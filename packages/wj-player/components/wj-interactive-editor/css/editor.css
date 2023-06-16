@@ -1,0 +1,71 @@
+/*!
+* direction.scss
+*/
+/* Skeleton Variables */
+:host {
+  background: #fff;
+  width: 400px;
+  position: absolute;
+  right: 49px;
+  padding: 1rem 1.5rem;
+  opacity: 0;
+  z-index: -1;
+  display: flex;
+  height: 100%;
+  border-left: 1px solid rgba(224, 224, 224, 0.7); }
+
+:host(.fade-in) {
+  animation: fadein .5s;
+  opacity: 1;
+  z-index: 1; }
+
+.interactive-editor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%; }
+  .interactive-editor .header {
+    /*min-height: 42px;*/
+    display: flex;
+    align-items: center; }
+  .interactive-editor scrollable-component {
+    height: 100%; }
+  .interactive-editor .footer {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0 0; }
+  .interactive-editor .item {
+    border-radius: 50%;
+    position: sticky;
+    width: 20px;
+    background: #19AD79;
+    aspect-ratio: 1/1;
+    margin-right: .5rem; }
+    .interactive-editor .item:after {
+      font-size: 11px;
+      content: attr(order);
+      display: grid;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      text-align: center;
+      color: #fff;
+      position: absolute; }
+    .interactive-editor .item:before {
+      content: "";
+      display: grid;
+      background: rgba(25, 173, 121, 0.4);
+      width: 130%;
+      aspect-ratio: 1/1;
+      position: absolute;
+      margin: -15%;
+      border-radius: 50%; }
+
+@keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+/*# sourceMappingURL=editor.css.map */
