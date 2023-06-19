@@ -1,4 +1,4 @@
-@import "../../../../../pages/scss/themes/net-basic/important.scss";
+@import "../../scss/themes/net-basic/important.scss";
 
 @mixin color($color, $track-color) {
   background-color: $track-color;
@@ -114,7 +114,7 @@ input[type="range"] {
     background: transparent;
   }
 
-  &[color="purple"] {
+  &[color="primary"] {
     @include color($color-primary, $color-info-lighter);
   }
 

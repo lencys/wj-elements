@@ -1,12 +1,13 @@
-import { default as WJElement, WjElementUtils } from "/templates/net/assets/js/components/wj-element.js?v=@@version@@";
+import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import "./scss/styles.scss";
 
 const template = document.createElement('template');
 
 template.innerHTML = `<style>
-	@import "/templates/net/assets/js/components/wj-slider/css/styles.css?v=@@version@@";
+	/*@import "/templates/net/assets/js/components/wj-slider/css/styles.css?v=@@version@@";*/
 </style>`;
 
-class Slider extends WJElement{
+export class Slider extends WJElement {
     constructor() {
         super(template)
     }
@@ -21,16 +22,23 @@ class Slider extends WJElement{
     }
 
     get value() {
-        return this.getAttribute("value");
+        return this.getAttribute("value") || 0;
+    }
+
+    set min(value) {
+        this.setAttribute("min", value);
+    }
+
+    get min() {
+        return this.getAttribute("min") || 0;
     }
 
     set max(value) {
         this.setAttribute("max", value);
-        // this.input.max = value;
     }
 
     get max() {
-        return this.getAttribute("max");
+        return this.getAttribute("max") || 100;
     }
 
     static get observedAttributes(){
@@ -55,7 +63,7 @@ class Slider extends WJElement{
         input.name = "slider";
         input.part = "slider";
         input.setAttribute("autocomplete", "off");
-        input.setAttribute("color", this.color || "purple");
+        input.setAttribute("color", this.color || "primary");
         input.addEventListener("input", (e) => {
             this.setHandlePosition(e.target);
         });
@@ -134,6 +142,7 @@ class Slider extends WJElement{
     }
 
     setHandlePosition = () => {
+        // console.log(this.input);
         this.input.style.backgroundSize = this.getPercentage(this.input.value, this.input.min, this.input.max) + '% 100%';
     }
 
@@ -143,8 +152,9 @@ class Slider extends WJElement{
         this.output.style.left = `calc(${newValue}% + (${8 - newValue * 0.15}px) - ${this.output.offsetWidth/2}px)`;
     }
 
-    getPercentage(value, min, max) {
-        return Number((value - min) * 100 / (max - min));
+    getPercentage(value = 0, min, max) {
+        console.log(value, min, max)
+        return Number((value - min) * 100 / (max - min)) || 0;
     }
 }
 

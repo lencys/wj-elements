@@ -30,7 +30,7 @@ class Player extends WJElement{
 				<div class="timer">00:00:00</div>
 				<div class="controls">
 					<div class="playpause">
-						<button class="play" data-icon="&#xf04b" aria-label="play pause toggle"></button>
+						<wj-button class="play" data-icon="&#xf04b" aria-label="play pause toggle"></wj-button>
 					</div>
 					<div>
 						<button class="volume" data-icon="&#xf027" aria-label="volume toggle"></button>

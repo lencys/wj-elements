@@ -1,12 +1,13 @@
-import { default as WJElement, WjElementUtils } from "/templates/net/assets/js/components/wj-element.js?v=@@version@@";
+import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import cssText from 'bundle-text:./scss/styles.scss';
 
-const template = document.createElement('template');
+const template = document.createElement("template");
 
 template.innerHTML = `<style>
-	@import "/templates/net/assets/js/components/wj-example-element/css/styles.css?v=@@version@@";
+	${cssText}
 </style>`;
 
-class ExampleElement extends WJElement{s
+export class ExampleElement extends WJElement {
     constructor() {
         super(template);
     }
@@ -27,10 +28,11 @@ class ExampleElement extends WJElement{s
     }
 
     draw(context, store, params) {
+        console.log(context, store, params)
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("div");
-        element.innerHTML = "Hello World";
+        element.innerHTML = params.text;
 
         fragment.appendChild(element);
 
@@ -42,4 +44,4 @@ class ExampleElement extends WJElement{s
     }
 }
 
-window.customElements.define("wj-example-element", ExampleElement);
+customElements.get("wj-example-element") || window.customElements.define("wj-example-element", ExampleElement);

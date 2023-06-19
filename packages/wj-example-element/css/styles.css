@@ -1,6 +1,4 @@
-/*!
-* direction.scss
-*/
-/* Skeleton Variables */
-
-/*# sourceMappingURL=styles.css.map */
+:host {
+    color: green;
+    background: green;
+}
