@@ -1,18 +1,33 @@
 {
-  "name": "wj-elements",
+  "name": "my-library",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "source": "packages/index.js",
+  "module": "dist/module.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "parcel watch",
+    "prebuild": "rm -rf dist",
+    "build": "parcel build --log-level verbose",
+    "serve": "parcel serve"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://gitlab.web.iway.local/londrejcek/wj-elements.git"
-  },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "typescript": "^4.9.4"
-  }
+    "@parcel/compressor-brotli": "^2.9.2",
+    "@parcel/compressor-gzip": "^2.9.2",
+    "@parcel/transformer-inline-string": "^2.9.2",
+    "@parcel/transformer-sass": "^2.9.2",
+    "parcel": "latest"
+  },
+  "@parcel/resolver-default": {
+    "packageExports": true
+  },
+  "@parcel/bundler-default": {
+    "minBundles": 1,
+    "minBundleSize": 3000,
+    "maxParallelRequests": 20
+  },
+  "targets": {
+    "module": {
+      "outputFormat": "esmodule"
+    }
+  },
+  "type": "module"
 }
