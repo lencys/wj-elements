@@ -1,0 +1,263 @@
+/*!
+* direction.scss
+*/
+/* Skeleton Variables */
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+  max-width: 100%; }
+
+.cropme-rotation-slider, .cropme-slider {
+  height: 28px;
+  margin: .25rem 0; }
+
+.cropme-slider {
+  top: 7px;
+  position: relative; }
+
+.cropme-container {
+  background-color: #ffffff;
+  opacity: 0.8;
+  background-image: repeating-linear-gradient(45deg, #cbcbcb 25%, transparent 25%, transparent 75%, #cbcbcb 75%, #cbcbcb), repeating-linear-gradient(45deg, #cbcbcb 25%, #ffffff 25%, #ffffff 75%, #cbcbcb 75%, #cbcbcb);
+  background-position: 0 0, 9px 9px;
+  background-size: 18px 18px; }
+
+.cropme-wrapper input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  margin: 0;
+  border-radius: 5px;
+  background-size: 70% 100%;
+  background-repeat: no-repeat;
+  background-color: #dbe6e8;
+  background-image: linear-gradient(#7252D3, #7252D3);
+  /* Input Thumb */
+  /* Input Thumb */
+  /* Input Track */ }
+  .cropme-wrapper input[type="range"]::-webkit-slider-thumb {
+    background: #7252D3; }
+  .cropme-wrapper input[type="range"]::-moz-range-thumb {
+    background: #7252D3; }
+  .cropme-wrapper input[type="range"]::-ms-thumb {
+    background: #7252D3; }
+  .cropme-wrapper input[type="range"]::-webkit-slider-thumb:active {
+    background: #7252D3;
+    box-shadow: 0 0 0 7px #eae0fb; }
+  .cropme-wrapper input[type="range"]::-moz-range-thumb:active {
+    background: #7252D3;
+    box-shadow: 0 0 0 7px #eae0fb; }
+  .cropme-wrapper input[type="range"]::-ms-thumb:active {
+    background: #7252D3;
+    box-shadow: 0 0 0 7px #eae0fb; }
+  .cropme-wrapper input[type="range"]::-webkit-slider-thumb:hover {
+    background: #7252D3;
+    box-shadow: 0 0 0 7px #eae0fb; }
+  .cropme-wrapper input[type="range"]::-moz-range-thumb:hover {
+    background: #7252D3;
+    box-shadow: 0 0 0 7px #eae0fb; }
+  .cropme-wrapper input[type="range"]::-ms-thumb:hover {
+    background: #7252D3;
+    box-shadow: 0 0 0 7px #eae0fb; }
+  .cropme-wrapper input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    cursor: ew-resize;
+    transition: background .3s ease-in-out; }
+  .cropme-wrapper input[type="range"]::-moz-range-thumb {
+    -webkit-appearance: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background .3s ease-in-out;
+    border: 0; }
+  .cropme-wrapper input[type="range"]::-ms-thumb {
+    -webkit-appearance: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    cursor: ew-resize;
+    transition: background .3s ease-in-out; }
+  .cropme-wrapper input[type="range"]::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent; }
+  .cropme-wrapper input[type="range"]::-moz-range-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent; }
+  .cropme-wrapper input[type="range"]::-ms-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent; }
+  .cropme-wrapper input[type="range"][color="purple"] {
+    background-color: #dbe6e8;
+    background-image: linear-gradient(#7252D3, #7252D3);
+    /* Input Thumb */ }
+    .cropme-wrapper input[type="range"][color="purple"]::-webkit-slider-thumb {
+      background: #7252D3; }
+    .cropme-wrapper input[type="range"][color="purple"]::-moz-range-thumb {
+      background: #7252D3; }
+    .cropme-wrapper input[type="range"][color="purple"]::-ms-thumb {
+      background: #7252D3; }
+    .cropme-wrapper input[type="range"][color="purple"]::-webkit-slider-thumb:active {
+      background: #7252D3;
+      box-shadow: 0 0 0 7px #eae0fb; }
+    .cropme-wrapper input[type="range"][color="purple"]::-moz-range-thumb:active {
+      background: #7252D3;
+      box-shadow: 0 0 0 7px #eae0fb; }
+    .cropme-wrapper input[type="range"][color="purple"]::-ms-thumb:active {
+      background: #7252D3;
+      box-shadow: 0 0 0 7px #eae0fb; }
+    .cropme-wrapper input[type="range"][color="purple"]::-webkit-slider-thumb:hover {
+      background: #7252D3;
+      box-shadow: 0 0 0 7px #eae0fb; }
+    .cropme-wrapper input[type="range"][color="purple"]::-moz-range-thumb:hover {
+      background: #7252D3;
+      box-shadow: 0 0 0 7px #eae0fb; }
+    .cropme-wrapper input[type="range"][color="purple"]::-ms-thumb:hover {
+      background: #7252D3;
+      box-shadow: 0 0 0 7px #eae0fb; }
+  .cropme-wrapper input[type="range"][color="success"] {
+    background-color: #dbe6e8;
+    background-image: linear-gradient(#19AD79, #19AD79);
+    /* Input Thumb */ }
+    .cropme-wrapper input[type="range"][color="success"]::-webkit-slider-thumb {
+      background: #19AD79; }
+    .cropme-wrapper input[type="range"][color="success"]::-moz-range-thumb {
+      background: #19AD79; }
+    .cropme-wrapper input[type="range"][color="success"]::-ms-thumb {
+      background: #19AD79; }
+    .cropme-wrapper input[type="range"][color="success"]::-webkit-slider-thumb:active {
+      background: #19AD79;
+      box-shadow: 0 0 0 7px #d6f7f0; }
+    .cropme-wrapper input[type="range"][color="success"]::-moz-range-thumb:active {
+      background: #19AD79;
+      box-shadow: 0 0 0 7px #d6f7f0; }
+    .cropme-wrapper input[type="range"][color="success"]::-ms-thumb:active {
+      background: #19AD79;
+      box-shadow: 0 0 0 7px #d6f7f0; }
+    .cropme-wrapper input[type="range"][color="success"]::-webkit-slider-thumb:hover {
+      background: #19AD79;
+      box-shadow: 0 0 0 7px #d6f7f0; }
+    .cropme-wrapper input[type="range"][color="success"]::-moz-range-thumb:hover {
+      background: #19AD79;
+      box-shadow: 0 0 0 7px #d6f7f0; }
+    .cropme-wrapper input[type="range"][color="success"]::-ms-thumb:hover {
+      background: #19AD79;
+      box-shadow: 0 0 0 7px #d6f7f0; }
+  .cropme-wrapper input[type="range"][color="complete"] {
+    background-color: #dbe6e8;
+    background-image: linear-gradient(#0072EC, #0072EC);
+    /* Input Thumb */ }
+    .cropme-wrapper input[type="range"][color="complete"]::-webkit-slider-thumb {
+      background: #0072EC; }
+    .cropme-wrapper input[type="range"][color="complete"]::-moz-range-thumb {
+      background: #0072EC; }
+    .cropme-wrapper input[type="range"][color="complete"]::-ms-thumb {
+      background: #0072EC; }
+    .cropme-wrapper input[type="range"][color="complete"]::-webkit-slider-thumb:active {
+      background: #0072EC;
+      box-shadow: 0 0 0 7px #d3eeff; }
+    .cropme-wrapper input[type="range"][color="complete"]::-moz-range-thumb:active {
+      background: #0072EC;
+      box-shadow: 0 0 0 7px #d3eeff; }
+    .cropme-wrapper input[type="range"][color="complete"]::-ms-thumb:active {
+      background: #0072EC;
+      box-shadow: 0 0 0 7px #d3eeff; }
+    .cropme-wrapper input[type="range"][color="complete"]::-webkit-slider-thumb:hover {
+      background: #0072EC;
+      box-shadow: 0 0 0 7px #d3eeff; }
+    .cropme-wrapper input[type="range"][color="complete"]::-moz-range-thumb:hover {
+      background: #0072EC;
+      box-shadow: 0 0 0 7px #d3eeff; }
+    .cropme-wrapper input[type="range"][color="complete"]::-ms-thumb:hover {
+      background: #0072EC;
+      box-shadow: 0 0 0 7px #d3eeff; }
+  .cropme-wrapper input[type="range"][color="danger"] {
+    background-color: #dbe6e8;
+    background-image: linear-gradient(#D83C31, #D83C31);
+    /* Input Thumb */ }
+    .cropme-wrapper input[type="range"][color="danger"]::-webkit-slider-thumb {
+      background: #D83C31; }
+    .cropme-wrapper input[type="range"][color="danger"]::-moz-range-thumb {
+      background: #D83C31; }
+    .cropme-wrapper input[type="range"][color="danger"]::-ms-thumb {
+      background: #D83C31; }
+    .cropme-wrapper input[type="range"][color="danger"]::-webkit-slider-thumb:active {
+      background: #D83C31;
+      box-shadow: 0 0 0 7px #fde2da; }
+    .cropme-wrapper input[type="range"][color="danger"]::-moz-range-thumb:active {
+      background: #D83C31;
+      box-shadow: 0 0 0 7px #fde2da; }
+    .cropme-wrapper input[type="range"][color="danger"]::-ms-thumb:active {
+      background: #D83C31;
+      box-shadow: 0 0 0 7px #fde2da; }
+    .cropme-wrapper input[type="range"][color="danger"]::-webkit-slider-thumb:hover {
+      background: #D83C31;
+      box-shadow: 0 0 0 7px #fde2da; }
+    .cropme-wrapper input[type="range"][color="danger"]::-moz-range-thumb:hover {
+      background: #D83C31;
+      box-shadow: 0 0 0 7px #fde2da; }
+    .cropme-wrapper input[type="range"][color="danger"]::-ms-thumb:hover {
+      background: #D83C31;
+      box-shadow: 0 0 0 7px #fde2da; }
+  .cropme-wrapper input[type="range"][color="warning"] {
+    background-color: #dbe6e8;
+    background-image: linear-gradient(#FFd945, #FFd945);
+    /* Input Thumb */ }
+    .cropme-wrapper input[type="range"][color="warning"]::-webkit-slider-thumb {
+      background: #FFd945; }
+    .cropme-wrapper input[type="range"][color="warning"]::-moz-range-thumb {
+      background: #FFd945; }
+    .cropme-wrapper input[type="range"][color="warning"]::-ms-thumb {
+      background: #FFd945; }
+    .cropme-wrapper input[type="range"][color="warning"]::-webkit-slider-thumb:active {
+      background: #FFd945;
+      box-shadow: 0 0 0 7px #fffde1; }
+    .cropme-wrapper input[type="range"][color="warning"]::-moz-range-thumb:active {
+      background: #FFd945;
+      box-shadow: 0 0 0 7px #fffde1; }
+    .cropme-wrapper input[type="range"][color="warning"]::-ms-thumb:active {
+      background: #FFd945;
+      box-shadow: 0 0 0 7px #fffde1; }
+    .cropme-wrapper input[type="range"][color="warning"]::-webkit-slider-thumb:hover {
+      background: #FFd945;
+      box-shadow: 0 0 0 7px #fffde1; }
+    .cropme-wrapper input[type="range"][color="warning"]::-moz-range-thumb:hover {
+      background: #FFd945;
+      box-shadow: 0 0 0 7px #fffde1; }
+    .cropme-wrapper input[type="range"][color="warning"]::-ms-thumb:hover {
+      background: #FFd945;
+      box-shadow: 0 0 0 7px #fffde1; }
+
+.cropme-wrapper datalist {
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+  overflow: hidden;
+  margin-top: 16px; }
+  .cropme-wrapper datalist option:before {
+    content: '';
+    display: block;
+    width: 0;
+    height: auto;
+    padding-left: 3px;
+    text-indent: 0; }
+
+.cropme-wrapper output {
+  position: absolute;
+  background: #000;
+  color: #fff;
+  top: -36px;
+  padding: 4px 8px;
+  border-radius: 4px; }
+
+/*# sourceMappingURL=styles.css.map */
