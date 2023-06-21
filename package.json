@@ -1,33 +1,24 @@
 {
-  "name": "my-library",
-  "version": "1.0.0",
-  "source": "packages/index.js",
-  "module": "dist/module.js",
+  "name": "wj-elements",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "files": [
+    "wj-elements/dist"
+  ],
+  "module": "./dist/my-lib.js",
   "scripts": {
-    "watch": "parcel watch",
-    "prebuild": "rm -rf dist",
-    "build": "parcel build --log-level verbose",
-    "serve": "parcel serve"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "devDependencies": {
-    "@parcel/compressor-brotli": "^2.9.2",
-    "@parcel/compressor-gzip": "^2.9.2",
-    "@parcel/transformer-inline-string": "^2.9.2",
-    "@parcel/transformer-sass": "^2.9.2",
-    "parcel": "latest"
-  },
-  "@parcel/resolver-default": {
-    "packageExports": true
-  },
-  "@parcel/bundler-default": {
-    "minBundles": 1,
-    "minBundleSize": 3000,
-    "maxParallelRequests": 20
-  },
-  "targets": {
-    "module": {
-      "outputFormat": "esmodule"
+  "exports": {
+    ".": {
+      "import": "./dist/my-lib.js"
     }
   },
-  "type": "module"
+  "devDependencies": {
+    "sass": "^1.63.5",
+    "vite": "^4.3.9"
+  }
 }
