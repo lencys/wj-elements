@@ -1,10 +1,10 @@
 import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
-import "./scss/styles.scss";
+import styles from "./scss/styles.scss?inline";
 
 const template = document.createElement('template');
 
 template.innerHTML = `<style>
-	/*@import "/templates/net/assets/js/components/wj-slider/css/styles.css?v=@@version@@";*/
+	${styles}
 </style>`;
 
 export class Slider extends WJElement {

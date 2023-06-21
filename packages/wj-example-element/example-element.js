@@ -1,5 +1,5 @@
 import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
-import cssText from 'bundle-text:./scss/styles.scss';
+import cssText from './scss/styles.scss';
 
 const template = document.createElement("template");
 
@@ -12,6 +12,7 @@ export class ExampleElement extends WJElement {
         super(template);
     }
 
+    className = "ExampleElement";
     static get observedAttributes() {
         return [];
     }
