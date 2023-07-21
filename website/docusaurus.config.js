@@ -11,7 +11,7 @@
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
+  title: 'WebJET Elements',
   tagline: 'The tagline of my site',
   favicon: 'img/favicon.ico',
 
@@ -54,7 +54,9 @@ const config = {
       }),
     ],
   ],
-  // plugins: ['@docusaurus/theme-live-codeblock'],
+  pplugins: [[ require.resolve('docusaurus-lunr-search'), {
+    languages: ['en', 'de'] // language codes
+  }]],
   // themes: ['@docusaurus/theme-live-codeblock'],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -157,9 +159,6 @@ const config = {
         // Please do not remove the credits, help to publicize Docusaurus :)
         copyright: `Copyright © ${new Date().getFullYear()} Meta Platforms, Inc. Built with Docusaurus.`,
       },
-      // liveCodeBlock: {
-      //   playgroundPosition: 'bottom',
-      // },
     }),
 };
 

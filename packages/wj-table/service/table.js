@@ -1,8 +1,10 @@
 import { UniversalService } from "/templates/net/assets/js/service/universal-service.js?v=@@version@@";
 import { defaultStoreActions, store } from "/templates/net/assets/js/store/store.js?v=@@version@@";
 import { TabulatorFull, RowComponent} from "../plugins/tabulator/js/tabulator_esm.js?v=@@version@@";
+
+import "../components/wj-action-dropdown/action-dropdown.js?v=@@version@@";
+
 import "/templates/net/assets/js/hub-profile-photo.js?v=@@version@@";
-import "/templates/net/assets/js/components/wj-table/wj-table-action-dropdown.js?v=@@version@@";
 
 export class Table extends HTMLElement {
     constructor() {
@@ -83,7 +85,7 @@ export class Table extends HTMLElement {
                     "items": "items", //the plural for items
                 },
                 "pagination": {
-                    "page_size":"Počet stránok", //label for the page size select element
+                    "page_size":"Počet záznamov na stránke", //label for the page size select element
                     "page_title": "Show Page",//tooltip text for the numeric page button, appears in front of the page number (eg. "Show Page" will result in a tool tip of "Show Page 1" on the page 1 button)
                     "first":"First", //text for the first page button
                     "first_title":"Prvá stránka", //tooltip text for the first page button
@@ -487,6 +489,19 @@ export class Table extends HTMLElement {
         };
     }
 
+    static setNavActive(id, data) {
+        return store.getState().nav.map(i => {
+            if(i.id == id) {
+                i = data ? data : i;
+                i.active = true;
+            } else {
+                i.active = false;
+            }
+
+            return i;
+        });
+    }
+
     static atob_utf8(value) {
         const value_latin1 = atob(value);
         return new TextDecoder('utf-8').decode(
@@ -504,6 +519,37 @@ export class Table extends HTMLElement {
                     .encode(value)
             )
         );
+    }
+
+    static saveTab(method, endpoint, data) {
+        return fetch(endpoint, {
+            method: method,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(res =>{
+            if(res.ok){
+                return res.json();
+            } else {
+                return res.text;
+            }
+        });
+    }
+
+    static deleteTab(endpoint) {
+        return fetch(endpoint, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res =>{
+            if(res.ok){
+                return res.json();
+            } else {
+                return res.text;
+            }
+        });
     }
 }
 

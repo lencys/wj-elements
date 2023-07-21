@@ -15,6 +15,7 @@ export default ({
             // Could also be a dictionary or array of multiple entry points
             entry: {
                 "main": "./packages/index.js",
+                "store": "./packages/wj-store/store.js",
                 "element": "./packages/wj-element/wj-element.js",
                 "slider": "./packages/wj-slider/slider.js",
                 "example-element": "./packages/wj-example-element/example-element.js",

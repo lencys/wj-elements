@@ -1,5 +1,5 @@
 import { UniversalService } from './service/universal-service.js?v=@@version@@';
-import { defaultStoreActions, store } from '../store/store.js?v=@@version@@';
+import { defaultStoreActions, store } from '../wj-store/store.js?v=@@version@@';
 import { WjPermissionsApi } from '../utils/wj-permissions-api.js?v=@@version@@';
 import { WjElementUtils } from '../utils/wj-element-utils.js?v=@@version@@';
 

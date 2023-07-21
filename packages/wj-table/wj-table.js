@@ -1,21 +1,21 @@
 import { defaultStoreActions, store } from '/templates/net/assets/js/store/store.js?v=@@version@@';
 import { Table } from './service/table.js?v=@@version@@';
 import { TabulatorFull } from './plugins/tabulator/js/tabulator_esm.js?v=@@version@@';
+import { default as Popup} from "./components/wj-table-modules/wj-table-modules.js";
 import * as luxon from 'https://moment.github.io/luxon/es6/luxon.min.js?v=@@version@@';
+import './components/wj-options/options.js?v=@@version@@';
+import './components/wj-search/search.js?v=@@version@@';
+import './components/wj-filter-simple/filter-simple.js?v=@@version@@';
+import './components/wj-filter-advanced/filter-advanced.js?v=@@version@@';
+
 import 'https://oss.sheetjs.com/sheetjs/xlsx.full.min.js?v=@@version@@';
 import 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js?v=@@version@@';
 import 'https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plugin.autotable.min.js?v=@@version@@';
-import '/templates/net/assets/js/components/wj-table/wj-table-search.js?v=@@version@@';
-import '/templates/net/assets/js/components/wj-table/wj-table-filter-advanced.js?v=@@version@@';
-import '/templates/net/assets/js/components/wj-table/wj-table-filter-simple.js?v=@@version@@';
-import '/templates/net/assets/js/components/wj-table/wj-table-options.js?v=@@version@@';
-import '/templates/net/assets/plugins/flatpickr/flatpickr.js?v=@@version@@';
-import '/templates/net/assets/plugins/flatpickr/l10n/sk.js?v=@@version@@';
-import '/templates/net/assets/plugins/flatpickr/plugins/monthSelectPlugin.js?v=@@version@@';
 
-import { default as Popup} from "./components/wj-table-modules/wj-table-modules.js";
+import '/templates/net/assets/js/components/wj-nav/nav.js?v=@@version@@';
+import '/templates/net/assets/js/components/wj-dropdown/wj-dropdown.js?v=@@version@@';
 
-intranet.loadCSS('/templates/net/assets/plugins/flatpickr/themes/net-basic.css?v=@@version@@');
+
 
 const template = document.createElement('template');
 template.innerHTML = `<style>
@@ -39,26 +39,46 @@ template.innerHTML = `<style>
     .controls {
         display: grid;
         grid-template-columns: 1fr auto;
+        align-items: start;
     }
     
+    .nav-tabs > li {
+        display: flex;
+        align-items: center;
+        position:relative;
+    }
     .nav-tabs > li > a {
-      min-width: auto;
-      
-      line-height: 1rem;
+        display: initial;
+        min-width: auto;
+        line-height: 1rem;
+        padding: .5rem 2rem .5rem 1rem;
     }
     
     .nav-tabs li:first-child a {
-        font-size: 1rem;
+        font-size: 1rem;   
+    }
+    
+    .dot {
+        position: absolute;
+        right: 1rem;
+        width: 1rem;
+        height: 1rem;
+        display: flex;
+        justify-content: right;
+    }
+    .dot:not([open]) {
+        display: none;
+        
+    }
+    
+    .nav-tabs > li:hover .dot {
+        display: flex;
     }
 </style>
 
 <div class="controls">
-    <div class="d-flex align-items-center">
-        <slot name="filter"></slot>
-    </div>
-    <div class="d-flex align-items-center ml-3">
-        <slot></slot>
-    </div>
+    <slot class="d-flex align-items-center" name="filter"></slot>
+    <slot class="d-flex align-items-center ml-3"></slot>
 </div>
 
 <div class="card card-default mb-0" routerlinks>
@@ -71,6 +91,8 @@ export default class WjTable extends Table {
     constructor() {
         super();
         window.luxon = luxon;
+
+        this.addEventListener('wj-nav-change',this.eventClickTab)
 
         // RHR - zaregistrovanie nášho popup modulu
         TabulatorFull.registerModule(Popup);
@@ -111,6 +133,14 @@ export default class WjTable extends Table {
         return this.setAttribute("filterable", value);
     }
 
+    get pageSize() {
+        return this.getAttribute("pagesize") || 10;
+    }
+
+    set pageSize(value) {
+        return this.setAttribute("pagesize", value);
+    }
+
     static getInstance(instanceId) {
         return WjTable.instances.get(instanceId)
     }
@@ -149,16 +179,55 @@ export default class WjTable extends Table {
         WjTable.deleteInstance(this.tableId);
     }
 
-    async connectedCallback() {
+    connectedCallback() {
+        // store.define('objTabs-' + this.tableId, [], null);
         WjTable.addInstance(this.tableId, this)
 
-        let tabs = await this.createTabs();
+        // Vytvorime taby ak nejake su
+         this.service.get(`/private/rest/hub/tabulator/filter/${btoa(this.getAttribute("dataurl"))}`, null, false)
+            .then((res) => {
+                if(res.length < 1)
+                    return;
 
-        if(tabs)
-            this.shadowRoot.insertBefore(tabs, this.shadowRoot.querySelector(".controls"));
+                let home = {
+                    "id": 0,
+                    "filter": "W10=",
+                    "sort": "",
+                    "tab": '<i class="fa-light fa-house"></i>',
+                    "url": "/private/rest/dsk/project/1/tasks/list_tab",
+                    "hideMenu": true,
+                    "active": true,
+                }
 
-        store.define('columnOptions-' + this.tableId, {}, null);
-        store.define('filterObj-' + this.tableId, {}, null);
+                res.unshift(home);
+
+                let json = [{
+                        icon: '',
+                        title: 'Edit',
+                        wjClick: this.eventClickTabEdit,
+                    },
+                    {
+                        icon: '',
+                        title: 'Resetovať',
+                        wjClick: this.eventClickTabReset,
+                    },
+                    {
+                        icon: '',
+                        title: 'Delete',
+                        wjClick: this.eventClickTabDelete,
+                    }];
+
+                let nav = document.createElement("wj-nav");
+                nav.jsonActions = json;
+
+                this.shadowRoot.insertBefore(nav, this.shadowRoot.querySelector(".controls"));
+                store.pause();
+                store.dispatch(defaultStoreActions.loadAction('nav')(res));
+                store.play();
+            });
+
+        store.define("columnOptions-" + this.tableId, {}, null);
+        store.define("filterObj-" + this.tableId, {}, null);
 
         this.shadowRoot.appendChild(template.content.cloneNode(true));
 
@@ -211,90 +280,71 @@ export default class WjTable extends Table {
             progressiveLoad: this.infinity ? "scroll" : false,
             pagination: this.infinity ? false : true,
             progressiveLoadScrollMargin: 30,
-            paginationSize: 6,
+            paginationSize: this.pageSize,
             paginationSizeSelector: [6, 10, 25, 50, 100, 500],
             paginationCounter: (pageSize, currentRow, currentPage, totalRows, totalPages) => {
                 return 'Záznamov ' + totalRows;
             },
-            // popupContainer: this,
             resizableColumnFit: false,
             placeholder: "Nie sú k dispozícii žiadne dáta",
             maxHeight: this.getAttribute("max-height") || false,
         });
-    }
 
-    async createTabs() {
-        let objTabs = await this.service.get(`/private/rest/hub/tabulator/filter/${btoa(this.getAttribute("dataurl"))}`, null, false);
-
-        if(objTabs.length < 1)
-            return false;
-
-        let fragment = document.createDocumentFragment();
-        let tabs = document.createElement("div");
-        tabs.classList.add("tabs");
-
-        let ul = document.createElement("ul");
-        ul.classList.add("nav", "nav-tabs", "nav-tabs-simple", "mb-3");
-
-        let li = this.getDOMList();
-        let a = this.getDOMAnchor();
-        a.innerHTML = '<i class="fa-light fa-house"></i>';
-        a.data = {
-            filter: Table.btoa_utf8(JSON.stringify([]))
-        };
-        a.addEventListener("click", this.eventClickTab);
-
-        li.appendChild(a);
-        ul.appendChild(li);
-
-        objTabs.forEach((t) => {
-            let li = this.getDOMList();
-            let a = this.getDOMAnchor();
-            a.innerText = t.tab;
-            a.data = t;
-            a.addEventListener("click", this.eventClickTab);
-
-            li.appendChild(a);
-            ul.appendChild(li)
-        });
-
-        tabs.appendChild(ul);
-        fragment.appendChild(tabs);
-
-        return fragment;
-    }
-
-    getDOMList() {
-        let li = document.createElement("li");
-        li.classList.add("nav-item");
-
-        return li;
-    }
-
-    getDOMAnchor() {
-        let a = document.createElement("a");
-        a.classList.add("nav-tabs-primary");
-        a.setAttribute("href", "javascript:void(0);");
-        a.dataset.toggle = "tab";
-
-        return a;
-    }
-
-    getAllTabs() {
-        this.service.get(`/private/rest/hub/tabulator/filter/${encodeURI(this.getAttribute("dataurl"))}`)
+        this.table.filterable = this.filterable;
     }
 
     eventClickTab = (e) => {
-        let filterArray = []
-        if(e.target.tagName == "A")
-            filterArray = JSON.parse(Table.atob_utf8(e.target.data.filter))
-
-
-
+        let filterArray = JSON.parse(Table.atob_utf8(e.detail.data.filter));
         store.dispatch(defaultStoreActions.addAction("filterObj-" + this.tableId)({
             "filter": filterArray,
             "table": this.tableId
         }));
+    }
+
+    eventClickTabEdit = ( e, item, anchor ) => {
+        anchor.setAttribute("contenteditable", true)
+        anchor.focus();
+        anchor.onblur = (e) => {
+            anchor.removeAttribute("contenteditable");
+            anchor.blur();
+            let data = item.data;
+            data.tab = anchor.innerText;
+            Table.saveTab("PUT", "/private/rest/hub/tabulator/filter/" + data.id, data).then((res) => {
+                intranet.notification(res);
+                item?.refresh();
+            });
+
+            anchor.onblur = () => {};
+        }
+    }
+
+    eventClickTabReset = ( e, item, anchor ) => {
+        let nav = Table.setNavActive(item.data.id);
+
+        store.dispatch(defaultStoreActions.loadAction("nav")(nav));
+
+        let filterArray = JSON.parse(Table.atob_utf8(item.data.filter));
+        store.dispatch(defaultStoreActions.addAction("filterObj-" + this.tableId)({
+            "filter": filterArray,
+            "table": this.tableId,
+        }));
+    }
+
+    eventClickTabDelete = ( e, item, anchor ) => {
+        Table.deleteTab("/private/rest/hub/tabulator/filter/" + item.data.id).then((res) => {
+            store.dispatch(defaultStoreActions.deleteAction("nav")(item.data));
+            let nav = Table.setNavActive(0, res.data);
+
+            store.dispatch(defaultStoreActions.loadAction("nav")(nav));
+
+            let filterArray = JSON.parse(Table.atob_utf8(store.getState().nav[0].filter));
+            store.dispatch(defaultStoreActions.addAction("filterObj-" + this.tableId)({
+                "filter": filterArray,
+                "table": this.tableId
+            }));
+
+            intranet.notification(res);
+        });
     }
 
     ajaxURLGenerator = (url, config, params) => {
@@ -367,7 +417,6 @@ export default class WjTable extends Table {
 
         return response;
     }
-
 
     headerPopupFormatter = (e, column, onRendered, a) => {
         e.stopPropagation();
@@ -445,7 +494,7 @@ export default class WjTable extends Table {
             let filter = document.createElement('wj-table-filter-advanced');
             filter.setAttribute("slot", "filter");
             filter.setAttribute('hidden', '');
-            filter.classList.add("mb-3");
+            // filter.classList.add("mb-3");
             filter.id = this.tableId;
             this.appendChild(filter);
         }

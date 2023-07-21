@@ -1,4 +1,4 @@
-import { default as Dropdown } from "/templates/net/assets/js/components/hub-dropdown.js";
+import { default as Dropdown } from "/templates/net/assets/js/components/wj-dropdown/wj-dropdown.js";
 
 const template = document.createElement('template');
 template.innerHTML = `<style>
@@ -24,10 +24,6 @@ export default class ActionDropdown extends Dropdown {
         button.innerHTML = '<i class="fa-light fa-ellipsis-vertical"></i>';
         return button;
     }
-
-    // disconnectedCallback() {
-    //     console.log("TEST")
-    // }
 }
 
 let __esModule = "true";

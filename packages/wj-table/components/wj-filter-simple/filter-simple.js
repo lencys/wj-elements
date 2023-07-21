@@ -11,7 +11,7 @@ template.innerHTML = `<style>
     :host {
         display: flex;
         align-items: center;
-        margin: 0 0 0 auto;
+        margin: 1rem 0 1rem auto;
     }
     
     .search {
@@ -19,22 +19,26 @@ template.innerHTML = `<style>
     }
        
     input {
-        border: 0 none !important;
+        /*border: 0 none !important;*/
+        min-height: 28px !important;
+        padding: 2px 5px;
+        max-height: 24px !important;
     }
     
     .btn-search {
         position: absolute;
-        right: 0px;
-        top: 0px;
+        right: 0;
+        top: 0;
+        min-height: 28px !important;
     }
 </style>
 
 <div class="search">
-    <input type="text" placeholder="Vyhľadávanie" class="input-xs" />
+    <input type="text" placeholder="Vyhľadávanie" class="form-control input-xs" />
     <button class="btn btn-link btn-search"><i class="fa-light fa-search"></i></button>
 </div>`;
 
-export default class TableFilterSimple extends WJElement {
+export default class FilterSimple extends WJElement {
     constructor() {
         super(template);
     }
@@ -61,4 +65,4 @@ export default class TableFilterSimple extends WJElement {
 let __esModule = "true";
 export {__esModule};
 
-customElements.get("wj-table-filter-simple") || customElements.define("wj-table-filter-simple", TableFilterSimple);
+customElements.get("wj-table-filter-simple") || customElements.define("wj-table-filter-simple", FilterSimple);

@@ -1,9 +1,12 @@
 import { defaultStoreActions, store } from "/templates/net/assets/js/store/store.js?v=@@version@@";
-import { default as Dropdown } from "/templates/net/assets/js/components/hub-dropdown.js";
+import { default as Dropdown } from "/templates/net/assets/js/components/wj-dropdown/wj-dropdown.js";
 import { default as WjTable } from "/templates/net/assets/js/components/wj-table/wj-table.js?v=@@version@@";
-import "/templates/net/assets/plugins/flatpickr/flatpickr.js?v=@@version@@";
-import "/templates/net/assets/plugins/flatpickr/l10n/sk.js?v=@@version@@";
-import "/templates/net/assets/plugins/flatpickr/plugins/monthSelectPlugin.js?v=@@version@@";
+
+import '/templates/net/assets/plugins/flatpickr/flatpickr.js?v=@@version@@';
+import '/templates/net/assets/plugins/flatpickr/l10n/sk.js?v=@@version@@';
+import '/templates/net/assets/plugins/flatpickr/plugins/monthSelectPlugin.js?v=@@version@@';
+
+intranet.loadCSS('/templates/net/assets/plugins/flatpickr/themes/net-basic.css?v=@@version@@');
 
 const template = document.createElement('template');
 template.innerHTML = `<style>
@@ -49,11 +52,12 @@ export default class FilterDropdown extends Dropdown {
         let div = super.getDropdown('div');
 
         div.classList.add("form-group", "mb-0");
-
+        console.log("SOM TU")
         let input = document.createElement("input");
         input.type = "text";
-        input.value = this.title;
-        input.classList.add("form-control", "input-sm");
+        input.setAttribute("value", this.title);
+        input.classList.add("form-control", "input-sm", "dasdsa");
+        input.setAttribute("name", "text")
 
         let range = null;
         if (this.type == "DATE-RANGE" || this.type == "NUMBER-RANGE") {
@@ -105,6 +109,9 @@ export default class FilterDropdown extends Dropdown {
         }
 
         input.addEventListener("keyup", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
             if(e.key.toUpperCase() == "ENTER"){
                 this.executionFilter(input);
             }
