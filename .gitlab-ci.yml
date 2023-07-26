@@ -29,7 +29,7 @@ build:
 
   artifacts:
     paths:
-      - website/build
+      - website/build/*
     expire_in: 2 days
 
 
