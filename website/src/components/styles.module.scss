@@ -12,11 +12,16 @@
  * and scoped locally.
  */
 
+.hero {
+  color: inherit !important;
+}
+
 .heroBanner {
-  padding: 4rem 0;
-  text-align: center;
+  padding: 10rem 0 10rem;
+  width: 50%;
   position: relative;
-  overflow: hidden;
+  //overflow: hidden;
+  background: transparent;
 }
 
 @media screen and (max-width: 996px) {
@@ -27,8 +32,8 @@
 
 .buttons {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: start;
+  justify-content: start;
 }
 
 .features {

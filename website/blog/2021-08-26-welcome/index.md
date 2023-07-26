@@ -5,7 +5,7 @@ authors: [slorber, yangshun]
 tags: [facebook, hello, docusaurus]
 ---
 
-[Docusaurus blogging features](https://docusaurus.io/docs/blog) are powered by the [blog plugin](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog).
+[Docusaurus blogging features](https://docusaurus.io/docs/blog) are powered by the [blog plugin](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog). Lorem ipsum dolor sit amet. este nieco ine.
 
 Simply add Markdown files (or folders) to the `blog` directory.
 

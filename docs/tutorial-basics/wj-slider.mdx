@@ -1,0 +1,91 @@
+---
+sidebar_position: 7
+---
+
+import { Slider } from "../../../dist/wj-main.js";
+
+# Slider
+
+Posuvníky sú užitočné interaktívne ovládacie prvky, ktoré umožňujú používateľom intuitívne a pohodlne vybrať hodnotu z daného rozsahu. Tieto vizuálne prvky poskytujú používateľom možnosť presného nastavenia parametrov, ako napríklad hlasitosť, jas obrazovky, časový údaj alebo iné hodnoty, ktoré je potrebné zmeniť.
+
+Používateľ môže jednoducho ovládať posuvník pomocou interakcie s myšou, dotykovým displejom alebo inými vstupnými zariadeniami. Týmto spôsobom môže plynule posúvať posuvník po pásme alebo zónach a v reálnom čase sledovať zmenu hodnoty. Vizuálny prvok posuvníka poskytuje spätnú väzbu používateľovi, čím mu umožňuje presne určiť zvolenú hodnotu.
+
+## Atributy elementu
+
+### Value
+
+Určuje počiatočnú hodnotu komponenty.
+
+### Min
+#### Minimálna hodnota
+
+Najnižšia hodnota v rozsahu povolených hodnôt. Ak value je hodnota prvku menšia ako táto hodnota, prvok zlyhá pri overení obmedzenia . Ak je zadaná hodnota, minktorá nie je platným číslom, vstup nemá žiadnu minimálnu hodnotu.
+
+### Max
+#### Maximálna hodnota
+
+Najvyššia hodnota v rozsahu povolených hodnôt. Ak hodnota valuezadaná do prvku túto hodnotu prekročí, prvok zlyhá pri overení obmedzenia . Ak hodnota atribútu maxnie je číslo, prvok nemá maximálnu hodnotu.
+
+Táto hodnota musí byť väčšia alebo rovná hodnote atribútu min. Pozrite si atribút HTML max.
+
+### Step
+Atribút stepje číslo, ktoré určuje úroveň podrobnosti, ktorú musí hodnota dodržiavať. Platné sú iba hodnoty, ktoré zodpovedajú zadanému intervalu krokovania ( minak je zadaný, inak, alebo vhodná predvolená hodnota, ak nie je zadaná žiadna z nich).value
+
+### Color
+
+[**primary**, danger, complete, warning, success]
+
+Color určuje farbu posuvníka. Ak sa hodnota nezadá, posuvnik bude mať farbu purple.
+
+```html title="Zápis v HTML"
+<wj-slider color="primary"></wj-slider>
+```
+
+##### primary
+<Webcomponent color="primary"></Webcomponent>
+
+##### success
+<Webcomponent color="success"></Webcomponent>
+
+##### warning
+<Webcomponent color="warning"></Webcomponent>
+
+##### danger
+<Webcomponent color="danger"></Webcomponent>
+
+##### complete
+<Webcomponent color="complete"></Webcomponent>
+
+##### contrast
+<Webcomponent color="contrast"></Webcomponent>
+
+Atribute bey parametra. Ak existuje atribut s názvom bubble, tak komponenta vykreslí nad tiahlom bublinu s vybranou hodnotou.
+
+```html title="Zápis v HTML"
+<wj-slider color="complete"></wj-slider>
+```
+
+```js title="Zápis v Javascripte"
+let exampleElement = document.querySelector('wj-slider');
+exampleElement.setAttribute('color', 'complete');
+```
+
+## Usage
+
+<Webcomponent color="primary"></Webcomponent>
+
+export const Webcomponent = ({color}) => (
+    <span style={{
+        display: "block",
+        width: "100%",
+        padding: "1rem",
+        borderWidth: "1px",
+        borderColor: "var(--ifm-toc-border-color)",
+        borderStyle: "solid",
+        borderRadius: "var(--ifm-code-border-radius)",
+        overflowX: "auto",
+        marginBottom: "var(--ifm-leading)"
+    }}>
+        <wj-slider color={color}></wj-slider>
+    </span>
+);
