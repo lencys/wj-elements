@@ -65,7 +65,7 @@ const config = {
     ({
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Meta Project',
+        title: '',
         logo: {
           alt: 'My Meta Project Logo',
           src: 'img/logo.svg',
@@ -75,7 +75,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Dokumentácia',
           },
           {to: 'blog', label: 'Blog', position: 'left'},
           // Please keep GitHub link to the right for consistency.

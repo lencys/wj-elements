@@ -28,6 +28,7 @@
   --ifm-bg-card: rgb(255 255 255);
   --ifm-footer-background-image: linear-gradient(148.68deg,#2c139a 30.68%,#0d52ff 77.17%,#80d9ff 106.89%);
   --ifm-navbar-background-color: rgb(255 255 255);
+  --doc-sidebar-width: 230px !important;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -43,21 +44,24 @@
   --ifm-bg-card: rgb(17 24 39);
   --ifm-footer-background-image: linear-gradient(148.68deg,#2c139a 30.68%,#0d52ff 77.17%,#80d9ff 106.89%);
   --ifm-navbar-background-color: rgb(31 41 55);
+  --doc-sidebar-width: 230px;
 }
 
 html {
-  //-webkit-font-smoothing:antialiased;
-  //-moz-osx-font-smoothing:grayscale;
-  //font-feature-settings:"rlig" 1,"calt" 1,"ss01" 1;
-  //-webkit-tap-highlight-color:transparent;
-  //font-size:1rem
   background-color: var(--ifm-bg-card);
+  &:not(.plugin-docs,.blog-wrapper) {
+    background-image: url('/img/bg-highlight-light-new.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
 
-html:not(.plugin-docs) {
-  background-image:  url('/img/bg-highlight-light-new.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
+main article {
+  margin: 0 3rem;
+}
+
+.menu__caret::before {
+  background: var(--ifm-menu-link-sublist-icon) 50% / 1.5rem 1.5rem;
 }
 
 .hero {
@@ -139,4 +143,16 @@ html:not(.plugin-docs) {
 
 .docSidebarContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-Sidebar-styles-module {
   border: 0 none !important;
+}
+
+@media (min-width: 1416px) {
+  .main-wrapper {
+    align-self:center;
+    max-width: 1400px;
+    width: 1400px
+  }
+}
+
+.menu_node_modules-\@docusaurus-theme-classic-lib-theme-DocSidebar-Desktop-Content-styles-module {
+  padding-top: 4rem !important;
 }
