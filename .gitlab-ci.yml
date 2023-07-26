@@ -15,6 +15,9 @@ build:
       nvm install;
       nvm use;
       node -v;
+      whereis node;
+      node -v;
+      npm -v;
       fi;
       echo "build app";
       )
