@@ -63,6 +63,7 @@ main article, main .pagination-nav {
 
 .main-wrapper aside {
   padding-top: 4rem !important;
+  border: 0 none !important;
 }
 
 .menu__caret::before {
@@ -144,10 +145,6 @@ main article, main .pagination-nav {
     font-size: 0.875rem;
     margin-left: auto;
   }
-}
-
-.docSidebarContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-Sidebar-styles-module {
-  border: 0 none !important;
 }
 
 @media (min-width: 1416px) {
