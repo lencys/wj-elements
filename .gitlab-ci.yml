@@ -2,8 +2,6 @@ stages:
   - build
 
 build:
-  only:
-    - schedules
   stage: build
   script:
     - NODE_VERSION=$(cat ./.nvmrc)
