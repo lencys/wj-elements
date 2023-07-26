@@ -16,7 +16,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://elements.webjet.sk',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -161,6 +161,19 @@ const config = {
       //   playgroundPosition: 'bottom',
       // },
     }),
+    i18n: {
+      defaultLocale: 'en',
+      locales: ['en', 'sk'],
+      localeConfigs: {
+        en: {
+          htmlLang: 'en-GB',
+        },
+        // You can omit a locale (e.g. fr) if you don't need to override the defaults
+        fa: {
+          direction: 'rtl',
+        },
+      },
+    },
 };
 
 module.exports = config;

@@ -1,8 +1,10 @@
 ---
 sidebar_position: 7
 ---
+import BrowserOnly from '@docusaurus/BrowserOnly';
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
-import { ExampleElement } from "../../../dist/wj-main.js";
+import { useEffect } from 'react';
 
 # Example element
 
@@ -11,14 +13,28 @@ import { ExampleElement } from "../../../dist/wj-main.js";
 ```
 
 ```js title="Zápis v Javascripte"
-let exampleElement = document.querySelector('wj-example-element');
-exampleElement.setAttribute('text', 'Hello word');
+    let exampleElement = document.querySelector('wj-example-element');
+    exampleElement.setAttribute('text', 'Hello word');
 ```
 
 ## Usage
 
-export const Webcomponent = () => (
-    <wj-example-element text="Hello word"></wj-example-element>
-);
+
+export const Webcomponent = () => {
+    useEffect(()=>{
+        if (ExecutionEnvironment.canUseDOM){
+            import("../../../dist/wj-main.js")
+        }
+    }, []);
+    
+    return (
+        <BrowserOnly fallback={<div>Loading...</div>}>
+            {() => {
+                return <wj-example-element text="Hello word"></wj-example-element>;
+            }}
+        </BrowserOnly>
+    )
+};
+
 
 <Webcomponent></Webcomponent>

@@ -1,12 +1,12 @@
 import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
-import cssText from './scss/styles.scss';
 
-const template = document.createElement("template");
+import styles from "./scss/styles.scss?inline";
+
+const template = document.createElement('template');
 
 template.innerHTML = `<style>
-	${cssText}
+	${styles}
 </style>`;
-
 export class ExampleElement extends WJElement {
     constructor() {
         super(template);

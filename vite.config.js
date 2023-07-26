@@ -23,7 +23,7 @@ export default ({
             // the proper extensions will be added
             fileName: (format, name) => `wj-${name}.js`,
             formats: ['es'],
-        }
+        },
     },
 
 })
