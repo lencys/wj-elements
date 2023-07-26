@@ -1,8 +1,8 @@
 import { UniversalService } from "/templates/net/assets/js/service/universal-service.js?v=@@version@@";
 import { defaultStoreActions, store } from "/templates/net/assets/js/store/store.js?v=@@version@@";
 import { default as WjTable } from "/templates/net/assets/js/components/wj-table/wj-table.js?v=@@version@@";
-import { Table } from './service/table.js?v=@@version@@';
-import "/templates/net/assets/js/components/wj-table/wj-table-filter-dropdown.js?v=@@version@@";
+
+import "../wj-filter-dropdown/filter-dropdown.js?v=@@version@@";
 
 const template = document.createElement("template");
 template.innerHTML = `<style>
@@ -12,6 +12,7 @@ template.innerHTML = `<style>
     @import "/templates/net/assets/plugins/font-awesome/css/light.min.css";
     
     :host {
+        margin: 1rem 0;
         display: flex;
         align-items: center;
     }
@@ -19,6 +20,8 @@ template.innerHTML = `<style>
     #filter {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
+        gap: .5rem 0;
     }
     
     .andor {
@@ -38,7 +41,7 @@ template.innerHTML = `<style>
 <div id="filter"></div>
 <div id="options"></div>`;
 
-export default class TableFilterAdvanced extends HTMLElement {
+export default class FilterAdvanced extends HTMLElement {
     constructor() {
         super();
 
@@ -110,6 +113,7 @@ export default class TableFilterAdvanced extends HTMLElement {
         dropdown.setAttribute("position", "bottom-right");
         dropdown.setAttribute("hide-icon", "");
         dropdown.setAttribute("slot-button", "");
+        dropdown.setAttribute("input-inside", "");
         dropdown.title = f.text;
         dropdown.filter = f; // do dropdownu si vlozime object
 
@@ -125,15 +129,11 @@ export default class TableFilterAdvanced extends HTMLElement {
 
         // CHIP
         let button = document.createElement("div");
-        button.classList.add("btn-item", "border-0");
+        button.classList.add("btn-item", "border-0", "trakakak");
         button.type = "button";
         button.innerHTML = f.title;
         button.appendChild(type);
         button.appendChild(dropdown);
-
-        // if(f.inputType == "DATE-RANGE" || f.inputType == "DATE") {
-        //     button.innerText = f.title + " " + f.type + " " + ((f.value.length > 1) ? moment(+f.value[0]).format("L") + " - " + moment(+f.value[1]).format("L") : moment(+f.value[0]).format("L"));
-        // }
 
         // REMOVE
         let i = document.createElement("button");
@@ -218,13 +218,9 @@ export default class TableFilterAdvanced extends HTMLElement {
 
         table.setFilter(this.filterForServer());
     }
-
-    options() {
-
-    }
 }
 
 let __esModule = "true";
 export {__esModule};
 
-customElements.get("wj-table-filter-advanced") || customElements.define("wj-table-filter-advanced", TableFilterAdvanced);
+customElements.get("wj-table-filter-advanced") || customElements.define("wj-table-filter-advanced", FilterAdvanced);

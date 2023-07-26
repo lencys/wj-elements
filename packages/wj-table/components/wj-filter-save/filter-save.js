@@ -7,7 +7,6 @@ template.innerHTML = `
 <style>
     @import "/templates/net/assets/plugins/bootstrap/css/bootstrap.css?v=@@version@@";
     @import "/templates/net/pages/css/themes/net-basic.css?v=@@version@@";
-    /*@import "/templates/net/pages/css/themes/net-basic/var.css?v=@@version@@";*/
     @import "/templates/net/assets/plugins/font-awesome/css/fontawesome.css?v=@@version@@";
     @import "/templates/net/assets/plugins/font-awesome/css/light.min.css?v=@@version@@";
     @import "/templates/net/assets/js/components/wj-table/components/wj-filter-save/css/styles.css?v=@@version@@";
@@ -86,56 +85,80 @@ export default class FilterSave extends WJElement {
             this.heading.classList.add("fade-out");
         });
 
-        this.btnSave.addEventListener('click', e =>{
-            console.log("SAVE")
-            this.save({
-                filter: Table.btoa_utf8(JSON.stringify([])),
-                url: this.table.options.ajaxURL,
-                sort: "",
-                tab: context.querySelector('[type="text"]').value
-            });
+        this.btnSave.addEventListener('click', e => {
+            // console.log("POST", this.table.element.id, this.store.getState()["filterObj-" + this.table.element.id])
+
+            this.save();
         });
     }
 
-    save(data){
-        return fetch(this.endpoint, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }).then(res =>{
-            if(res.ok){
-                return res.json();
-            } else {
-                return res.text;
-            }
-        }).then(res =>{
-            this.title = res.tab
-            this.refresh()
+    save(){
+        return Table.saveTab("POST", this.endpoint,{
+            filter: Table.btoa_utf8(JSON.stringify(this.store.getState()["filterObj-" + this.table.element.id].filter)),
+            url: this.table.options.ajaxURL,
+            sort: "",
+            tab: this.context.querySelector('[type="text"]').value
+        }).then(res => {
+            // this.title = res.data;
+            this.refresh();
 
-            $('body').pgNotification({
-                message: res.message,
-                timeout: 4000,
-                type: 'success'
-            }).show();
+            let nav = this.store.getState().nav.map(i => {
+                i.active = false;
 
-            this.dispatchEvent(new CustomEvent('saved-data-response', {
-                bubbles:true,
-                detail: res
-            }))
-        }).catch(reason => {
-            $('body').pgNotification({
-                message: reason,
-                timeout: 4000,
-                type: 'danger'
-            }).show();
+                return i;
+            });
 
-            this.dispatchEvent(new CustomEvent('saved-data-error-response', {
-                bubbles:true,
-                detail: reason
-            }))
+            res.data.active = true;
+            nav.push(res.data);
+
+            this.store.dispatch(this.defaultStoreActions.loadAction('nav')(nav));
+
+            // this.table.element.getRootNode().querySelector("wj-nav").data = this.store.getState().nav;
+            // this.table.element.getRootNode().querySelector("wj-nav").refresh().then(() => {
+            //     this.table.element.getRootNode().host.querySelector("wj-table-options").refresh();
+            // });
+            intranet.notification(res);
+        }).catch(res => {
+            intranet.notification(res);
+
+            this.dispatchError(res);
         })
+    }
+
+    dispatchEdit(value){
+        document.dispatchEvent(
+            new CustomEvent("wj-filter-save-save", {
+                bubbles: true,
+                detail: {
+                    value: value,
+                    element: this
+                }
+            })
+        );
+    }
+
+    dispatchResponse(value){
+        document.dispatchEvent(
+            new CustomEvent("wj-filter-save-response", {
+                bubbles: true,
+                detail: {
+                    value: value,
+                    element: this
+                }
+            })
+        );
+    }
+
+    dispatchError(value){
+        document.dispatchEvent(
+            new CustomEvent("wj-filter-save-error", {
+                bubbles: true,
+                detail: {
+                    value: value,
+                    element: this
+                }
+            })
+        );
     }
 }
 
