@@ -33,4 +33,9 @@ build:
       - website/build/*
     expire_in: 2 days
 
+deploy:
+  stage: deploy
+  script:
+    - echo "deploy"
+    - sh /usr/local/bin/wj-rsync.sh webjet2b.srv.iway.local website/build /www/tomcat_au20/webapps/elements_webjet_sk/ tomcat_au20 tomcat_au20
 
