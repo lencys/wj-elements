@@ -1,6 +1,5 @@
 stages:
   - build
-  - deploy
 
 build:
   only:
@@ -30,17 +29,10 @@ build:
       cd -;
       ls -l;
       )
+    - echo "deploy"
+    - sh /usr/local/bin/wj-rsync.sh webjet2b.srv.iway.local website/build /www/tomcat_au20/webapps/elements_webjet_sk/ tomcat_au20 tomcat_au20
 
   artifacts:
     paths:
       - website/build
     expire_in: 2 days
-
-deploy:
-  only:
-    - schedules
-  stage: deploy
-  script:
-    - echo "deploy"
-    - sh /usr/local/bin/wj-rsync.sh webjet2b.srv.iway.local website/build /www/tomcat_au20/webapps/elements_webjet_sk/ tomcat_au20 tomcat_au20
-
