@@ -47,10 +47,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          routeBasePath: '/learn/',
         },
         blog: false,
         theme: {
@@ -75,7 +72,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Dokumentácia',
+            label: 'Nauč sa',
           },
           {to: 'blog', label: 'Blog', position: 'left'},
           // Please keep GitHub link to the right for consistency.
@@ -94,7 +91,7 @@ const config = {
             items: [
               {
                 label: 'Style Guide',
-                to: 'docs/intro',
+                to: 'learn/intro',
               }
             
             ],

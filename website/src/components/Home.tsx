@@ -1,3 +1,4 @@
+// @ts-ignore
 import React from 'react';
 import clsx from 'clsx';
 import Layout from '@theme/Layout';
@@ -6,7 +7,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.scss';
 import BlogPostItem from "@theme/BlogPostItem";
-import { Content } from "@theme/BlogPostPage";
+import { Content } from '@theme/BlogPostPage';
 
 
 interface HomeProps {
