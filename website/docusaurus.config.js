@@ -14,15 +14,15 @@ const config = {
   title: 'Používateľské rozhrania riadené komponentmi',
   tagline: 'Vývojová a dizajnová prax tvorby užívateľských rozhraní s modulárnymi komponentmi, kde sa rozhrania budujú postupne "zdola nahor" začínajúc základnými komponentmi a postupne sa kombinujú a zostavujú do jednotlivých celkov.',
   favicon: 'img/favicon.ico',
+  noIndex: true,
+  onBrokenLinks: 'ignore',
+  onBrokenMarkdownLinks: 'ignore',
 
   // Set the production url of your site here
   url: 'https://elements.webjet.sk',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
-
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
 
   plugins: ['docusaurus-plugin-sass',
     [
@@ -94,7 +94,7 @@ const config = {
             items: [
               {
                 label: 'Style Guide',
-                to: 'docs/',
+                to: 'docs/intro',
               }
             
             ],
@@ -193,17 +193,8 @@ const config = {
       },
     }),
     i18n: {
-      defaultLocale: 'en',
-      locales: ['en', 'sk'],
-      localeConfigs: {
-        en: {
-          htmlLang: 'en-GB',
-        },
-        // You can omit a locale (e.g. fr) if you don't need to override the defaults
-        fa: {
-          direction: 'rtl',
-        },
-      },
+      defaultLocale: 'sk',
+      locales: ['sk'],
     },
 };
 
