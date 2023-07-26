@@ -3,6 +3,7 @@ stages:
 
 build:
   stage: build
+  when: manual
   script:
     - NODE_VERSION=$(cat ./.nvmrc)
     - VERSION_LENGTH=${#NODE_VERSION}
