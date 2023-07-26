@@ -61,6 +61,10 @@ main article, main .pagination-nav {
   margin-right: 3rem;
 }
 
+.main-wrapper aside {
+  padding-top: 4rem !important;
+}
+
 .menu__caret::before {
   background: var(--ifm-menu-link-sublist-icon) 50% / 1.5rem 1.5rem;
 }
@@ -152,8 +156,4 @@ main article, main .pagination-nav {
     max-width: 1400px;
     width: 1400px
   }
-}
-
-.menu_node_modules-\@docusaurus-theme-classic-lib-theme-DocSidebar-Desktop-Content-styles-module {
-  padding-top: 4rem !important;
 }
