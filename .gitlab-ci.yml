@@ -26,7 +26,6 @@ build:
       npm run build;
       cd -;
       echo "deploy";
-      cat /usr/local/bin/wj-rsync.sh;
       /usr/local/bin/wj-rsync.sh webjet2b.srv.iway.local website/build /www/tomcat_au20/webapps/elements_webjet_sk/ tomcat_au20 tomcat_au20;
       )
 
