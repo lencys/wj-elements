@@ -27,5 +27,9 @@ build:
       npm run build
       )
 
+  artifacts:
+    paths:
+      - website/build
+    expire_in: 2 days
 
 
