@@ -25,6 +25,7 @@ build:
       cd website
       npm install
       npm run build
+      ls -l
       )
 
   artifacts:
