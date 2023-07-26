@@ -1,5 +1,5 @@
 import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
-import styles from './scss/styles.scss';
+// import styles from './scss/styles.scss';
 
 import styles from "./scss/styles.scss?inline";
 
