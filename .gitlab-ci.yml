@@ -3,6 +3,8 @@ stages:
   - deploy
 
 build:
+  only:
+    - schedules
   stage: build
   script:
     - NODE_VERSION=$(cat ./.nvmrc)
@@ -31,10 +33,12 @@ build:
 
   artifacts:
     paths:
-      - website/build/*
+      - website/build
     expire_in: 2 days
 
 deploy:
+  only:
+    - schedules
   stage: deploy
   script:
     - echo "deploy"
