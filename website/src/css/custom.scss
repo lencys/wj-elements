@@ -29,6 +29,7 @@
   --ifm-footer-background-image: linear-gradient(148.68deg,#2c139a 30.68%,#0d52ff 77.17%,#80d9ff 106.89%);
   --ifm-navbar-background-color: rgb(255 255 255);
   --doc-sidebar-width: 230px !important;
+  --docusaurus-highlighted-code-line-bg: rgb(72, 77, 91);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -45,6 +46,7 @@
   --ifm-footer-background-image: linear-gradient(148.68deg,#2c139a 30.68%,#0d52ff 77.17%,#80d9ff 106.89%);
   --ifm-navbar-background-color: rgb(31 41 55);
   --doc-sidebar-width: 230px;
+  --docusaurus-highlighted-code-line-bg: rgb(100, 100, 100);
 }
 
 html {

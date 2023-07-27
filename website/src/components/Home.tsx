@@ -177,6 +177,18 @@ export function Home({ recentPosts }: HomeProps) {
           </section>
         )}
       </main>
+      <section className="why">
+        <div className="containers">
+          <h2>Výhody</h2>
+          <p><b>Kvalita</b>: <br/>Overte, či používateľské rozhrania fungujú v rôznych scenároch, a to vytvorením komponentov v izolácii a definovaním ich relevantných stavov.</p>
+
+          <p><b>Trvanlivosť</b>: <br/>Identifikujte chyby do detailov testovaním na úrovni komponentov. Je to menej práce a presnejšie ako testovanie obrazoviek.</p>
+
+          <p><b>Rýchlosť</b>: <br/>Zostavte používateľské rozhrania rýchlejšie opätovným použitím existujúcich komponentov z knižnice komponentov alebo návrhového systému.</p>
+
+          <p><b>Efektivita</b>: <br/>Paralelizácia vývoja a dizajnu spočíva vo fragmentácii používateľského rozhrania na samostatné komponenty a následnom zdieľaní pracovnej záťaže medzi jednotlivými členmi tímu.</p>
+        </div>
+      </section>
     </Layout>
   );
 }
