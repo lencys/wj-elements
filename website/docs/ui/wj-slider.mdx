@@ -1,13 +1,13 @@
 ---
-sidebar_position: 7
+title: Slider
 ---
 
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+import { Sandpack } from "@codesandbox/sandpack-react";
 
 import { useEffect } from 'react';
 
-# Slider
 
 Posuvníky sú užitočné interaktívne ovládacie prvky, ktoré umožňujú používateľom intuitívne a pohodlne vybrať hodnotu z daného rozsahu. Tieto vizuálne prvky poskytujú používateľom možnosť presného nastavenia parametrov, ako napríklad hlasitosť, jas obrazovky, časový údaj alebo iné hodnoty, ktoré je potrebné zmeniť.
 
@@ -22,21 +22,21 @@ Určuje počiatočnú hodnotu komponenty.
 ### Min
 #### Minimálna hodnota
 
-Najnižšia hodnota v rozsahu povolených hodnôt. Ak value je hodnota prvku menšia ako táto hodnota, prvok zlyhá pri overení obmedzenia . Ak je zadaná hodnota, minktorá nie je platným číslom, vstup nemá žiadnu minimálnu hodnotu.
+Najnižšia hodnota v rozsahu povolených hodnôt. Ak value je hodnota prvku menšia ako táto hodnota, prvok zlyhá pri overení obmedzenia. Ak je zadaná hodnota, min ktorá nie je platným číslom, vstup nemá žiadnu minimálnu hodnotu.
 
 ### Max
 #### Maximálna hodnota
 
-Najvyššia hodnota v rozsahu povolených hodnôt. Ak hodnota valuezadaná do prvku túto hodnotu prekročí, prvok zlyhá pri overení obmedzenia . Ak hodnota atribútu maxnie je číslo, prvok nemá maximálnu hodnotu.
+Najvyššia hodnota v rozsahu povolených hodnôt. Ak hodnota value zadaná do prvku túto hodnotu prekročí, prvok zlyhá pri overení obmedzenia. Ak hodnota atribútu max nie je číslo, prvok nemá maximálnu hodnotu.
 
 Táto hodnota musí byť väčšia alebo rovná hodnote atribútu min. Pozrite si atribút HTML max.
 
 ### Step
-Atribút stepje číslo, ktoré určuje úroveň podrobnosti, ktorú musí hodnota dodržiavať. Platné sú iba hodnoty, ktoré zodpovedajú zadanému intervalu krokovania ( minak je zadaný, inak, alebo vhodná predvolená hodnota, ak nie je zadaná žiadna z nich).value
+Atribút step je číslo, ktoré určuje úroveň podrobnosti, ktorú musí hodnota dodržiavať. Platné sú iba hodnoty, ktoré zodpovedajú zadanému intervalu krokovania ( min ak je zadaný, inak, alebo vhodná predvolená hodnota, ak nie je zadaná žiadna z nich).
 
 ### Color
 
-[**primary**, danger, complete, warning, success]
+`primary`, `danger`, `complete`, `warning`, `success`
 
 Color určuje farbu posuvníka. Ak sa hodnota nezadá, posuvnik bude mať farbu purple.
 
@@ -45,60 +45,79 @@ Color určuje farbu posuvníka. Ak sa hodnota nezadá, posuvnik bude mať farbu 
 ```
 
 ##### primary
+
 <Webcomponent color="primary"></Webcomponent>
 
 ##### success
+
 <Webcomponent color="success"></Webcomponent>
 
 ##### warning
+
 <Webcomponent color="warning"></Webcomponent>
 
 ##### danger
+
 <Webcomponent color="danger"></Webcomponent>
 
 ##### complete
+
 <Webcomponent color="complete"></Webcomponent>
 
 ##### contrast
+
 <Webcomponent color="contrast"></Webcomponent>
 
-Atribute bey parametra. Ak existuje atribut s názvom bubble, tak komponenta vykreslí nad tiahlom bublinu s vybranou hodnotou.
+Ak existuje atribut s názvom bubble, tak komponenta vykreslí nad tiahlom bublinu s vybranou hodnotou.
 
 ```html title="Zápis v HTML"
-<wj-slider color="complete"></wj-slider>
+<wj-slider color="complete" min="20" max="80" value="32" step="2" bubble></wj-slider>
 ```
 
 ```js title="Zápis v Javascripte"
-let exampleElement = document.querySelector('wj-slider');
-exampleElement.setAttribute('color', 'complete');
+let slider = document.querySelector('wj-slider');
+
+slider.setAttribute('color', 'complete');
+slider.setAttribute('min', '20');
+slider.setAttribute('max', '80');
+slider.setAttribute('value', '32');
+slider.setAttribute('step', '2');
+slider.setAttribute('bubble', '');
 ```
 
-## Usage
+## Použitie
 
-<Webcomponent color="primary"></Webcomponent>
+<Webcomponent color="complete" min="20" max="80" value="32" step="1" bubble="true"></Webcomponent>
 
-export const Webcomponent = ({color}) => {
-    useEffect(()=>{
+[//]: # (export default function App&#40;&#41; {)
+
+[//]: # ()
+[//]: # (  return <Sandpack />)
+
+[//]: # ()
+[//]: # (})
+
+export const Webcomponent = ({color, min=0, max=100, value=50, step=1, bubble=false}) => {
+  console.log(Sandpack)
+    useEffect(() => {
         if (ExecutionEnvironment.canUseDOM){
             import("../../../dist/wj-main.js")
         }
     }, []);
-    
     return (
         <BrowserOnly fallback={<div>Loading...</div>}>
             {() => {
                 return (<span style={{
                     display: "block",
                     width: "100%",
-                    padding: "1rem",
+                    padding: "2rem",
                     borderWidth: "1px",
                     borderColor: "var(--ifm-toc-border-color)",
                     borderStyle: "solid",
                     borderRadius: "var(--ifm-code-border-radius)",
-                    overflowX: "auto",
                     marginBottom: "var(--ifm-leading)"
                 }}>
-                    <wj-slider color={color}></wj-slider>
+                    <wj-slider color={color} min={min} max={max} value={value} step={step} {...(bubble && {bubble})}></wj-slider>
                 </span>)
             }}
         </BrowserOnly>

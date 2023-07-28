@@ -41,8 +41,20 @@ export class Slider extends WJElement {
         return this.getAttribute("max") || 100;
     }
 
+    set step(value) {
+        this.setAttribute("step", value);
+    }
+
+    get step() {
+        return this.getAttribute("step") || 1;
+    }
+
     static get observedAttributes(){
         return ["max"];
+    }
+
+    setupAttributes() {
+        this.isShadowRoot = "open";
     }
 
     draw() {
@@ -57,7 +69,7 @@ export class Slider extends WJElement {
         input.type = "range";
         input.min = this.min;
         input.max = this.max;
-        input.step = this.step || 1;
+        input.step = this.step;
         input.value = this.value;
         input.id = "slider";
         input.name = "slider";
@@ -142,18 +154,16 @@ export class Slider extends WJElement {
     }
 
     setHandlePosition = () => {
-        // console.log(this.input);
         this.input.style.backgroundSize = this.getPercentage(this.input.value, this.input.min, this.input.max) + '% 100%';
     }
 
     setBubble = () => {
         let newValue = this.getPercentage(this.input.value, this.input.min, this.input.max);
-
         this.output.style.left = `calc(${newValue}% + (${8 - newValue * 0.15}px) - ${this.output.offsetWidth/2}px)`;
+        this.output.innerHTML = this.input.value;
     }
 
     getPercentage(value = 0, min, max) {
-        console.log(value, min, max)
         return Number((value - min) * 100 / (max - min)) || 0;
     }
 }

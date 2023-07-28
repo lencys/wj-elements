@@ -32,8 +32,6 @@
     box-shadow: 0 0 0 7px make-shade($color, $mix-percentage-lighter, $saturation-shift, $hue-shift, -2);
   }
 
-
-
   &::-webkit-slider-thumb:hover {
     background: $color;
     box-shadow: 0 0 0 7px make-shade($color, $mix-percentage-lighter, $saturation-shift, $hue-shift, -2);
@@ -162,7 +160,7 @@ output {
   position: absolute;
   background: #000;
   color: #fff;
-  top: -36px;
+  top: -46px;
   padding: 4px 8px;
   border-radius: 4px;
 }
