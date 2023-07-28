@@ -38,12 +38,13 @@ const config = {
           return `https://github.com/${process.env.ORGANIZATION_NAME}/${process.env.REPOSITORY_NAME}/edit/main/${blogDirPath}/${blogPath}`;
         },
       },
-    ]
+    ],
+    '@docusaurus/theme-live-codeblock'
   ],
   presets: [
     [
       'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
+      /** @type {import('@docusaurus/theme-live-codeblock').Options} */
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
@@ -56,14 +57,21 @@ const config = {
       }),
     ],
   ],
-  themes: ['@docusaurus/theme-live-codeblock'],
+  // themes: ['@docusaurus/theme-live-codeblock'],
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    /** @type {import('@docusaurus/theme-live-codeblock').ThemeConfig} */
     ({
       image: 'img/docusaurus-social-card.jpg',
       prism: {
         theme: require('prism-react-renderer/themes/github'),
         darkTheme: require('prism-react-renderer/themes/palenight'),
+      },
+      liveCodeBlock: {
+        /**
+         * The position of the live playground, above or under the editor
+         * Possible values: "top" | "bottom"
+         */
+        playgroundPosition: 'bottom',
       },
       navbar: {
         title: '',
