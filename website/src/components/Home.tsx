@@ -6,7 +6,6 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.scss';
-import BlogPostItem from "@theme/BlogPostItem";
 import { Content } from '@theme/BlogPostPage';
 
 
@@ -109,8 +108,6 @@ function WjBlogPost({index, title, permalink, formattedDate, description}) {
 }
 
 export function Home({ recentPosts }: HomeProps) {
-
-  console.log(recentPosts);
   const context = useDocusaurusContext();
   const {siteConfig = {}} = context;
 

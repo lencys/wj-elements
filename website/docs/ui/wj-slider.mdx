@@ -2,12 +2,8 @@
 title: Slider
 ---
 
-import BrowserOnly from '@docusaurus/BrowserOnly';
-import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
-import { Sandpack } from "@codesandbox/sandpack-react";
 
-import { useEffect } from 'react';
-
+import { Webcomponent } from '@site/src/components/Webcomponent';
 
 Posuvníky sú užitočné interaktívne ovládacie prvky, ktoré umožňujú používateľom intuitívne a pohodlne vybrať hodnotu z daného rozsahu. Tieto vizuálne prvky poskytujú používateľom možnosť presného nastavenia parametrov, ako napríklad hlasitosť, jas obrazovky, časový údaj alebo iné hodnoty, ktoré je potrebné zmeniť.
 
@@ -88,38 +84,3 @@ slider.setAttribute('bubble', '');
 ## Použitie
 
 <Webcomponent color="complete" min="20" max="80" value="32" step="1" bubble="true"></Webcomponent>
-
-[//]: # (export default function App&#40;&#41; {)
-
-[//]: # ()
-[//]: # (  return <Sandpack />)
-
-[//]: # ()
-[//]: # (})
-
-export const Webcomponent = ({color, min=0, max=100, value=50, step=1, bubble=false}) => {
-  console.log(Sandpack)
-    useEffect(() => {
-        if (ExecutionEnvironment.canUseDOM){
-            import("../../../dist/wj-main.js")
-        }
-    }, []);
-    return (
-        <BrowserOnly fallback={<div>Loading...</div>}>
-            {() => {
-                return (<span style={{
-                    display: "block",
-                    width: "100%",
-                    padding: "2rem",
-                    borderWidth: "1px",
-                    borderColor: "var(--ifm-toc-border-color)",
-                    borderStyle: "solid",
-                    borderRadius: "var(--ifm-code-border-radius)",
-                    marginBottom: "var(--ifm-leading)"
-                }}>
-                    <wj-slider color={color} min={min} max={max} value={value} step={step} {...(bubble && {bubble})}></wj-slider>
-                </span>)
-            }}
-        </BrowserOnly>
-    )
-};
