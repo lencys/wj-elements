@@ -34,4 +34,10 @@ export class WjElementUtils {
                 return acc
             }, {})
     }
+
+    static attributesToString( object){
+        return Object.entries(object).map(([key,value]) =>{
+            return `${key}="${value}"`
+        }).join(' ')
+    }
 }

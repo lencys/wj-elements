@@ -38,7 +38,7 @@ async function buildPluginApiDocs(pluginId) {
   const fileName = `${pluginId}.md`;
 
   fs.writeFileSync(`docs/native/${fileName}`, apiContent);
-  fs.writeFileSync(`versioned_docs/version-v6/native/${fileName}`, apiContent);
+  // fs.writeFileSync(`versioned_docs/version-v6/native/${fileName}`, apiContent);
 }
 
 function createApiPage(pluginId, readme, pkgJson) {

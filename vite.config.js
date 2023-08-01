@@ -19,6 +19,7 @@ export default ({
                 "element": "./packages/wj-element/wj-element.js",
                 "slider": "./packages/wj-slider/slider.js",
                 "example-element": "./packages/wj-example-element/example-element.js",
+                "item": "./packages/wj-item/item.js",
             },
             name: 'MyLib',
             // the proper extensions will be added

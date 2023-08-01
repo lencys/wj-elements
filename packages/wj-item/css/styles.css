@@ -1,0 +1,117 @@
+/*!
+* direction.scss
+*/
+/* Skeleton Variables */
+::slotted(*) {
+  margin: 0 !important; }
+
+:host {
+  --border-radius: 0px;
+  --border-width: 0px;
+  --border-style: solid;
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-end: 0px;
+  --padding-start: 0px;
+  --inner-border-width: 0px;
+  --inner-padding-top: 0px;
+  --inner-padding-bottom: 0px;
+  --inner-padding-start: 0px;
+  --inner-padding-end: 0px;
+  --inner-box-shadow: none;
+  --show-full-highlight: 0;
+  --show-inset-highlight: 0;
+  --detail-icon-color: initial;
+  --detail-icon-font-size: 20px;
+  --detail-icon-opacity: 0.25;
+  --color-activated: var(--color);
+  --color-focused: var(--color);
+  --color-hover: var(--color);
+  --ripple-color: currentColor;
+  display: block;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  outline: none;
+  color: var(--color);
+  text-align: initial;
+  text-decoration: none;
+  overflow: hidden;
+  box-sizing: border-box; }
+
+.item-native {
+  --min-height: 40px;
+  --background: #FFFFFF;
+  --transition: opacity 15ms linear, background-color 15ms linear;
+  border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  margin: 0 0 0 0;
+  padding: var(--padding-top) var(--padding-end) var(--padding-bottom) calc(var(--padding-start) + var(--ion-safe-area-left, 0px));
+  display: flex;
+  position: relative;
+  align-items: inherit;
+  justify-content: inherit;
+  width: 100%;
+  min-height: var(--min-height);
+  transition: var(--transition);
+  border-width: var(--border-width);
+  border-style: var(--border-style);
+  border-color: var(--border-color);
+  outline: none;
+  background: var(--background);
+  overflow: inherit;
+  box-sizing: border-box;
+  z-index: 1;
+  text-decoration: none;
+  color: #000; }
+  .item-native .item-inner {
+    margin: 0 0 0 0;
+    padding: var(--inner-padding-top) calc(var(--ion-safe-area-right, 0px) + var(--inner-padding-end)) var(--inner-padding-bottom) var(--inner-padding-start);
+    display: flex;
+    position: relative;
+    flex: 1;
+    flex-direction: inherit;
+    align-items: inherit;
+    align-self: stretch;
+    min-height: inherit;
+    border-width: var(--inner-border-width);
+    border-style: var(--border-style);
+    border-color: var(--border-color);
+    box-shadow: var(--inner-box-shadow);
+    overflow: inherit;
+    box-sizing: border-box; }
+    .item-native .item-inner .input-wrapper {
+      margin: 1rem;
+      display: flex;
+      flex: 1;
+      flex-direction: inherit;
+      align-items: inherit;
+      align-self: stretch;
+      text-overflow: ellipsis;
+      overflow: inherit;
+      box-sizing: border-box; }
+  .item-native .item-bottom {
+    padding: 0 var(--inner-padding-end) 0 calc(var(--padding-start) + var(--ion-safe-area-left, 0px));
+    display: flex;
+    justify-content: space-between; }
+
+@media (any-hover: hover) {
+  :host(:hover) .item-native {
+    color: #212121; }
+    :host(:hover) .item-native :after {
+      transition: var(--transition);
+      z-index: -1;
+      inset: 0px;
+      position: absolute;
+      content: "";
+      background: #f4f4f4;
+      opacity: 0.7; } }
+
+button,
+a {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-drag: none; }
+
+/*# sourceMappingURL=styles.css.map */
