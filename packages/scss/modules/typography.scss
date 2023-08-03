@@ -1,6 +1,19 @@
 // Import important
 @import "../themes/net-basic/important";
 
+:root {
+  --wj-color: #{$color};
+  --wj-font-family: #{$font-family};
+  --wj-font-size: #{$font-size};
+  --wj-line-height: #{$line-height};
+  --wj-color-contrast: #{$color};
+
+  --wj-border-radius: #{$border-radius};
+  --wj-border-color: #{$border-color};
+  --wj-border-size: #{$border-size};
+  --wj-border-style: #{$border-style};
+}
+
 /*------------------------------------------------------------------
 [5@mixin  Typography]
 */
@@ -10,41 +23,42 @@
 */
 
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600");
-@font-face {
-  font-family: 'Inter UI';
-  src:url('/templates/net/pages/fonts/Inter/Inter-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Inter UI';
-  src:url('/templates/net/pages/fonts/Inter/Inter-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Inter UI';
-  src:url('/templates/net/pages/fonts/Inter/Inter-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Inter UI';
-  src:url('/templates/net/pages/fonts/Inter/Inter-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Inter UI';
-  src:url('/templates/net/pages/fonts/Inter/Inter-Light-BETA.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
+@import url("https://keplerapis.com/fonts/css?family=Inter+UI:300,400,500,600");
+//@font-face {
+//  font-family: 'Inter UI';
+//  src:url('/templates/net/pages/fonts/Inter/Inter-Regular.woff2') format('woff2');
+//  font-weight: 400;
+//  font-style: normal;
+//  font-display: swap;
+//}
+//@font-face {
+//  font-family: 'Inter UI';
+//  src:url('/templates/net/pages/fonts/Inter/Inter-Medium.woff2') format('woff2');
+//  font-weight: 500;
+//  font-style: normal;
+//  font-display: swap;
+//}
+//@font-face {
+//  font-family: 'Inter UI';
+//  src:url('/templates/net/pages/fonts/Inter/Inter-SemiBold.woff2') format('woff2');
+//  font-weight: 600;
+//  font-style: normal;
+//  font-display: swap;
+//}
+//@font-face {
+//  font-family: 'Inter UI';
+//  src:url('/templates/net/pages/fonts/Inter/Inter-Bold.woff2') format('woff2');
+//  font-weight: 700;
+//  font-style: normal;
+//  font-display: swap;
+//}
+//@font-face {
+//  font-family: 'Inter UI';
+//  src:url('/templates/net/pages/fonts/Inter/Inter-Light-BETA.woff2') format('woff2');
+//  font-weight: 300;
+//  font-style: normal;
+//  font-display: swap;
+//}
 
 html {
   font-size: 100%;

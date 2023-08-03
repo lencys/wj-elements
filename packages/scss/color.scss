@@ -448,6 +448,17 @@
 }
 
 //--------------------------------
+// Current Color
+//--------------------------------
+@function current-color($variation, $alpha: null) {
+  @if $alpha == null {
+    @return var(--wj-color-#{$variation});
+  } @else {
+    @return rgba(var(--wj-color-#{$variation}-rgb), ç);
+  }
+}
+
+//--------------------------------
 // HSL and HSV
 //--------------------------------
 // @see https://gist.github.com/1069204

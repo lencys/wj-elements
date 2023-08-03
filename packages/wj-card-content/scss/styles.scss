@@ -1,0 +1,36 @@
+@import "../../scss/themes/net-basic/important.scss";
+@import "../../scss/modules/color-picker.scss";
+
+// Import important
+//@import "../themes/net-basic/important";
+
+/*------------------------------------------------------------------
+[Card - Content]
+*/
+
+:host {
+  display: block;
+  padding: $panel-padding;
+  &.no-padding {
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  &.no-bottom-padding {
+    padding-bottom: 0;
+  }
+  &.no-top-padding {
+    padding-top: 0;
+  }
+  .title {
+    margin-top: 0px;
+  }
+  &.scrollable {
+    margin-bottom: $panel-padding;
+  }
+  h3 {
+    line-height: 34px;
+    font-size: 26px;
+  }
+}

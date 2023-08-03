@@ -1,0 +1,20 @@
+@import "../../scss/themes/net-basic/important.scss";
+
+:host {
+  --wj-color: #{$color};
+  --wj-card-subtitle-font-size: 28px;
+  --wj-card-subtitle-font-family: #{$secondary-font-family};
+  font-family: var(--wj-card-subtitle-font-family);
+  text-transform: uppercase;
+  display: inline-block;
+  letter-spacing: 0.06em;
+  font-size: 10.5px;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  filter: alpha(opacity=40);
+  @include transition(opacity 0.3s ease);
+}

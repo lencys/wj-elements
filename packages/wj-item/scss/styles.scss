@@ -3,19 +3,17 @@
 // Item
 // --------------------------------------------------
 
-::slotted(*) {
-    margin:0!important;
-}
+//::slotted(*) {
+//    margin:0!important;
+//}
 
 :host {
-    --border-radius: 0px;
-    --border-width: 0px;
-    --border-style: solid;
+    --wj-border-width: 0 0 1px 0;
     --padding-top: 0px;
     --padding-bottom: 0px;
     --padding-end: 0px;
     --padding-start: 0px;
-    --inner-border-width: 0px;
+    --inner-border-width: 0 0 1px 0;
     --inner-padding-top: 0px;
     --inner-padding-bottom: 0px;
     --inner-padding-start: 0px;
@@ -41,6 +39,8 @@
     text-decoration: none;
     overflow: hidden;
     box-sizing: border-box;
+
+    isolation: isolate;
 }
 
 
@@ -67,11 +67,11 @@
     align-items: inherit;
     justify-content: inherit;
     width: 100%;
-    min-height: var(--min-height);
+    //min-height: var(--min-height);
     transition: var(--transition);
-    border-width: var(--border-width);
-    border-style: var(--border-style);
-    border-color: var(--border-color);
+    //border-width: var(--wj-border-width);
+    //border-style: var(--wj-border-style);
+    //border-color: var(--wj-border-color);
     outline: none;
     background: var(--background);
     overflow: inherit;
@@ -102,16 +102,16 @@
 
         min-height: inherit;
 
-        border-width: var(--inner-border-width);
-        border-style: var(--border-style);
-        border-color: var(--border-color);
+        border-width: var(--wj-border-width);
+        border-style: var(--wj-border-style);
+        border-color: var(--wj-border-color);
 
         box-shadow: var(--inner-box-shadow);
         overflow: inherit;
         box-sizing: border-box;
 
         .input-wrapper {
-            margin: 1rem;
+            //margin: 1rem;
             display: flex;
             flex: 1;
             flex-direction: inherit;
@@ -144,7 +144,7 @@
         :after {
             transition: var(--transition);
             z-index: -1;
-            inset: 0px;
+            inset: 0;
             position: absolute;
             content: "";
             background: $color-contrast-lower;
@@ -153,10 +153,13 @@
     }
 }
 
-
 button,
 a {
     cursor: pointer;
     user-select: none;
     -webkit-user-drag: none;
+}
+
+::slotted([slot="start"]) {
+    margin-inline: 0px 16px;
 }

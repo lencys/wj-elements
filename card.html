@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="module" src="./website/static/wj-elements/wj-main.js"></script>
+  <link rel="stylesheet" href="./packages/scss/modules/typography.scss">
+  <style>
+    body {
+      padding: 1rem;
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .container wj-card{
+        flex: 1 1 28%;
+    }
+  </style>
+</head>
+<body>
+
+  <!--IMG-->
+<!--<style>-->
+<!--    wj-card{-->
+<!--        &#45;&#45;wj-body-color: #ff0000;-->
+<!--        &#45;&#45;wj-font-family: #{$font-family};-->
+<!--        &#45;&#45;wj-font-size: #{$font-size};-->
+<!--        &#45;&#45;wj-line-height: #{$line-height};-->
+
+<!--        &#45;&#45;wj-border-radius: #{$border-radius};-->
+<!--        &#45;&#45;wj-border-color: #{$border-color};-->
+<!--        &#45;&#45;wj-border-size: #{$border-size};-->
+<!--        &#45;&#45;wj-border-style: #{$border-style};-->
+
+<!--        &#45;&#45;wj-card-margin-bottom: 1.5rem;-->
+<!--    }-->
+<!--    wj-card-header {-->
+<!--        &#45;&#45;wj-body-color: blue;-->
+<!--    }-->
+<!--    wj-card-title {-->
+<!--        &#45;&#45;wj-body-color: yellow;-->
+<!--    }-->
+<!--    </style>-->
+  <wj-card>
+    <img alt="Lorem ipsum" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+    <wj-card-header>
+      <wj-card-subtitle>Subtitle</wj-card-subtitle>
+      <wj-card-title>Title</wj-card-title>
+    </wj-card-header>
+    <wj-card-content>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut feugiat diam velit, at scelerisque ligula bibendum fermentum. Etiam mollis enim at nulla ullamcorper, sed convallis odio cursus. Vestibulum vitae libero porttitor, tristique neque et, rhoncus purus. Proin pellentesque odio eget pharetra auctor. Aenean non leo sagittis, efficitur sem quis, gravida metus. Aliquam odio ligula, placerat vel nulla ac, efficitur feugiat velit. Cras sed sapien blandit, accumsan purus id, laoreet neque. Pellentesque sapien magna, mollis et nisl sit amet, lobortis pharetra arcu. Vestibulum volutpat et nulla vitae euismod. Ut non placerat velit. Vivamus lectus erat, dictum eu lectus at, imperdiet pellentesque magna. Duis finibus eleifend augue, et hendrerit arcu.
+    </wj-card-content>
+  </wj-card>
+
+  <wj-card>
+    <wj-card-header>
+      <wj-card-subtitle>Subtitle</wj-card-subtitle>
+      <wj-card-title>Title</wj-card-title>
+    </wj-card-header>
+    <wj-card-content>
+      <wj-list>
+        <wj-item>
+          <wj-thumbnail slot="start">
+            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+          </wj-thumbnail>
+          <wj-label>Item</wj-label>
+        </wj-item>
+
+        <wj-item>
+          <wj-thumbnail slot="start">
+            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+          </wj-thumbnail>
+          <wj-label>Item</wj-label>
+        </wj-item>
+
+        <wj-item>
+          <wj-thumbnail slot="start">
+            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+          </wj-thumbnail>
+          <wj-label>Item</wj-label>
+        </wj-item>
+
+        <wj-item lines="none">
+          <wj-thumbnail slot="start">
+            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+          </wj-thumbnail>
+          <wj-label>Item</wj-label>
+        </wj-item>
+      </wj-list>
+    </wj-card-content>
+  </wj-card>
+
+  <!--COLORS-->
+  <div class="container">
+    <style>
+        .container {
+            margin-inline: -1rem;
+        }
+        .container wj-card {
+            --wj-card-margin-top: 1rem;
+            --wj-card-margin-bottom: 1rem;
+            --wj-card-margin-inline: 1rem;
+        }
+    </style>
+    <wj-card color="primary">
+      <wj-card-header>
+        <wj-card-subtitle>Primary</wj-card-subtitle>
+        <wj-card-title>Title</wj-card-title>
+      </wj-card-header>
+      <wj-card-content>
+        Content
+      </wj-card-content>
+    </wj-card>
+
+    <wj-card color="complete">
+      <wj-card-header>
+        <wj-card-subtitle>Complete</wj-card-subtitle>
+        <wj-card-title>Title</wj-card-title>
+      </wj-card-header>
+      <wj-card-content>
+        Content
+      </wj-card-content>
+    </wj-card>
+
+    <wj-card color="success">
+      <wj-card-header>
+        <wj-card-subtitle>Success</wj-card-subtitle>
+        <wj-card-title>Title</wj-card-title>
+      </wj-card-header>
+      <wj-card-content>
+        Content
+      </wj-card-content>
+    </wj-card>
+
+    <wj-card color="warning">
+      <wj-card-header>
+        <wj-card-subtitle>Warning</wj-card-subtitle>
+        <wj-card-title>Title</wj-card-title>
+      </wj-card-header>
+      <wj-card-content>
+        Content
+      </wj-card-content>
+    </wj-card>
+
+    <wj-card color="danger">
+      <wj-card-header>
+        <wj-card-subtitle>Danger</wj-card-subtitle>
+        <wj-card-title>Title</wj-card-title>
+      </wj-card-header>
+      <wj-card-content>
+        Content
+      </wj-card-content>
+    </wj-card>
+
+    <wj-card color="info">
+      <wj-card-header>
+        <wj-card-subtitle>Info</wj-card-subtitle>
+        <wj-card-title>Title</wj-card-title>
+      </wj-card-header>
+      <wj-card-content>
+        Content
+      </wj-card-content>
+    </wj-card>
+
+    <wj-card color="menu">
+      <wj-card-header>
+        <wj-card-subtitle>Menu</wj-card-subtitle>
+        <wj-card-title>Title</wj-card-title>
+      </wj-card-header>
+      <wj-card-content>
+        Content
+      </wj-card-content>
+    </wj-card>
+  </div>
+</body>
+</html>

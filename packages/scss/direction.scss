@@ -325,3 +325,11 @@ $side: both;
 		transform: translate3d(-1*($x), $y, $z);
 	}
 }
+
+// "margin:" rule
+
+@mixin wjMargin($top, $bottom, $inline) {
+	margin-top: $top;
+	margin-bottom: $bottom;
+	margin-inline: $inline;
+}

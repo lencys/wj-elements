@@ -1,210 +1,330 @@
-/**
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @format
- */
-// @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
+const path = require('path');
+const prismic = require('@prismicio/client');
+const fetch = require('node-fetch');
 
-/** @type {import('@docusaurus/types').Config} */
-const config = {
-  title: 'Používateľské rozhrania riadené komponentmi',
-  tagline: 'Vývojová a dizajnová prax tvorby užívateľských rozhraní s modulárnymi komponentmi, kde sa rozhrania budujú postupne "zdola nahor" začínajúc základnými komponentmi a postupne sa kombinujú a zostavujú do jednotlivých celkov.',
-  favicon: 'img/favicon.ico',
-  noIndex: true,
-  onBrokenLinks: 'ignore',
-  onBrokenMarkdownLinks: 'ignore',
+// const VERSIONS_JSON = require('./versions.json');
+const VERSIONS_JSON = [];
 
-  // Set the production url of your site here
+const BASE_URL = '/docs';
+
+module.exports = {
+  title: 'Ionic Documentation',
+  tagline:
+    'Ionic is the app platform for web developers. Build amazing mobile, web, and desktop apps all with one shared code base and open web standards',
   url: 'https://elements.webjet.sk',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
-
-  plugins: ['docusaurus-plugin-sass',
-    [
-      "./plugins/blog-plugin",
-      {
-        id: "blog",
-        routeBasePath: "blog",
-        path: "./blog",
-        blogSidebarCount: 0,
-        showReadingTime: true,
-        editUrl: ({ blogDirPath, blogPath }) => {
-          console.log(blogDirPath, blogPath);
-          return `https://github.com/${process.env.ORGANIZATION_NAME}/${process.env.REPOSITORY_NAME}/edit/main/${blogDirPath}/${blogPath}`;
-        },
-      },
-    ],
-    '@docusaurus/theme-live-codeblock'
-  ],
+  baseUrl: `${BASE_URL}/`,
+  i18n: {
+    defaultLocale: 'sk',
+    locales: ['sk', 'en'],
+    localeConfigs: {
+      sk: { label: 'Slovensky' },
+      en: { label: 'English' },
+      // ja: { label: '日本語' },
+    },
+  },
+  onBrokenLinks: 'warn',
+  onBrokenMarkdownLinks: 'warn',
+  favicon: 'img/meta/favicon-96x96.png',
+  organizationName: 'Webjet',
+  projectName: 'webjet-elements-docs',
   presets: [
     [
-      'classic',
-      /** @type {import('@docusaurus/theme-live-codeblock').Options} */
-      ({
+      '@docusaurus/preset-classic',
+      /** @type {import('@docusaurus/preset-classic').Options} */
+      {
+        // Will be passed to @docusaurus/plugin-content-docs (false to disable)
         docs: {
+          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
-          routeBasePath: '/learn/',
+          editUrl: ({ versionDocsDirPath, docPath, locale }) => {
+            if (locale != 'en') {
+              return 'https://crowdin.com/project/ionic-docs';
+            }
+            if ((match = docPath.match(/api\/(.*)\.md/)) != null) {
+              return `https://github.com/ionic-team/ionic-docs/tree/main/docs/api/${match[1]}.md`;
+            }
+            if ((match = docPath.match(/cli\/commands\/(.*)\.md/)) != null) {
+              return `https://github.com/ionic-team/ionic-cli/edit/develop/packages/@ionic/cli/src/commands/${match[1].replace(
+                '-',
+                '/'
+              )}.ts`;
+            }
+            if ((match = docPath.match(/native\/(.*)\.md/)) != null) {
+              return `https://github.com/ionic-team/capacitor-plugins/edit/main/${match[1]}/README.md`;
+            }
+            return `https://github.com/ionic-team/ionic-docs/edit/main/${versionDocsDirPath}/${docPath}`;
+          },
+          exclude: ['README.md'],
+          lastVersion: 'current',
+          versions: {
+            current: {
+              label: 'v7',
+            },
+          },
         },
-        blog: false,
+        // Will be passed to @docusaurus/theme-classic.
         theme: {
-          customCss: require.resolve('./src/css/custom.scss'),
+          customCss: [
+            require.resolve('./node_modules/modern-normalize/modern-normalize.css'),
+            require.resolve('./node_modules/@ionic-internal/ionic-ds/dist/tokens/tokens.css'),
+            require.resolve('./src/styles/custom.scss'),
+          ],
         },
-      }),
+      },
     ],
   ],
-  // themes: ['@docusaurus/theme-live-codeblock'],
-  themeConfig:
-    /** @type {import('@docusaurus/theme-live-codeblock').ThemeConfig} */
-    ({
-      image: 'img/docusaurus-social-card.jpg',
-      prism: {
-        theme: require('prism-react-renderer/themes/github'),
-        darkTheme: require('prism-react-renderer/themes/palenight'),
+  /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+  themeConfig: {
+    metadata: [
+      { name: 'og:image', content: 'https://ionicframework.com/docs/img/meta/open-graph.png' },
+      // { name: 'twitter:image', content: 'https://ionicframework.com/docs/img/meta/open-graph.png' },
+      // {
+      //   name: 'twitter:card',
+      //   content: 'summary_large_image',
+      // },
+      // {
+      //   name: 'twitter:domain',
+      //   content: 'ionicframework.com',
+      // },
+      // {
+      //   name: 'twitter:site',
+      //   content: '@ionicframework',
+      // },
+      // {
+      //   name: 'twitter:creator',
+      //   content: 'ionicframework',
+      // },
+      {
+        name: 'fb:page_id',
+        content: '1321836767955949',
       },
-      liveCodeBlock: {
-        /**
-         * The position of the live playground, above or under the editor
-         * Possible values: "top" | "bottom"
-         */
-        playgroundPosition: 'bottom',
+      {
+        name: 'og:type',
+        content: 'website',
       },
-      navbar: {
-        title: '',
-        logo: {
-          alt: 'My Meta Project Logo',
-          src: 'img/logo.svg',
-        },
-        items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Nauč sa',
-          },
-          {to: 'blog', label: 'Blog', position: 'left'},
-          // Please keep GitHub link to the right for consistency.
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
-          },
-        ],
+      {
+        name: 'og:site_name',
+        content: 'Ionic Framework Docs',
       },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Learn',
-            items: [
-              {
-                label: 'Style Guide',
-                to: 'learn/intro',
-              }
-            
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: 'blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'Legal',
-            // Please do not remove the privacy and terms, it's a legal requirement.
-            items: [
-              {
-                label: 'Privacy',
-                href: 'https://opensource.fb.com/legal/privacy/',
-              },
-              {
-                label: 'Terms',
-                href: 'https://opensource.fb.com/legal/terms/',
-              },
-              {
-                label: 'Data Policy',
-                href: 'https://opensource.fb.com/legal/data-policy/',
-              },
-              {
-                label: 'Cookie Policy',
-                href: 'https://opensource.fb.com/legal/cookie-policy/',
-              },
-            ],
-          },
-        ],
-        logo: {
-          alt: 'Meta Open Source Logo',
-          // This default includes a positive & negative version, allowing for
-          // appropriate use depending on your site's style.
-          src: '/img/meta_opensource_logo_negative.svg',
-          href: 'https://opensource.fb.com',
-        },
-        // Please do not remove the credits, help to publicize Docusaurus :)
-        copyright: `Copyright © ${new Date().getFullYear()} Meta Platforms, Inc. Built with Docusaurus.`,
-      },
-      algolia: {
-        // The application ID provided by Algolia
-        appId: 'YOUR_APP_ID',
-
-        // Public API key: it is safe to commit it
-        apiKey: 'YOUR_SEARCH_API_KEY',
-
-        indexName: 'YOUR_INDEX_NAME',
-
-        // Optional: see doc section below
-        contextualSearch: true,
-
-        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-        externalUrlRegex: 'external\\.com|domain\\.com',
-
-        // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
-        replaceSearchResultPathname: {
-          from: '/docs/', // or as RegExp: /\/docs\//
-          to: '/',
-        },
-
-        // Optional: Algolia search parameters
-        searchParameters: {},
-
-        // Optional: path for search page that enabled by default (`false` to disable it)
-        searchPagePath: 'search',
-
-        //... other Algolia params
-      },
-    }),
-    i18n: {
-      defaultLocale: 'sk',
-      locales: ['sk'],
+    ],
+    colorMode: {
+      defaultMode: 'light',
     },
-};
+    navbar: {
+      hideOnScroll: true,
+      logo: {
+        alt: 'Site Logo',
+        src: `/logos/ionic-text-docs-dark.svg`,
+        srcDark: `/logos/ionic-text-docs-light.svg`,
+        href: '/',
+        target: '_self',
+        width: 139,
+        height: 28,
+      },
+      items: [
+        {
+          type: 'doc',
+          docId: 'index',
+          label: 'Guide',
+          position: 'left',
+        },
+        {
+          type: 'doc',
+          docId: 'components',
+          label: 'Components',
+          position: 'left',
+        },
+        // {
+        //   type: 'doc',
+        //   docId: 'cli',
+        //   label: 'CLI',
+        //   position: 'left',
+        // },
+        // {
+        //   type: 'doc',
+        //   docId: 'native',
+        //   label: 'Native',
+        //   position: 'left',
+        // },
+        // {
+        //   type: 'doc',
+        //   docId: 'updating/7-0',
+        //   label: 'Ionic v7.0.0 Upgrade Guide',
+        //   position: 'left',
+        //   className: 'cta',
+        // },
+        {
+          type: 'docsVersionDropdown',
+          position: 'right',
+          dropdownItemsAfter: [
+            // { to: 'https://ionicframework.com/docs/v4/components', label: 'v4', target: '_blank' },
+            // { to: 'https://ionicframework.com/docs/v3/', label: 'v3', target: '_blank' },
+          ],
+          dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
+          dropdownActiveClassDisabled: true,
+        },
+        {
+          type: 'search',
+          position: 'right',
+        },
+        // {
+        //   label: 'Community',
+        //   position: 'right',
+        //   items: [
+        //     {
+        //       href: 'https://ionicframework.com/community',
+        //       label: 'Community Hub',
+        //       target: '_blank',
+        //       rel: null,
+        //     },
+        //     {
+        //       href: 'https://forum.ionicframework.com/',
+        //       label: 'Forum',
+        //       target: '_blank',
+        //       rel: null,
+        //     },
+        //     {
+        //       href: 'https://www.meetup.com/topics/ionic-framework/',
+        //       label: 'Meetups',
+        //       target: '_blank',
+        //       rel: null,
+        //     },
+        //     {
+        //       href: 'https://blog.ionicframework.com/',
+        //       label: 'Blog',
+        //       target: '_blank',
+        //       rel: null,
+        //     },
+        //     {
+        //       href: 'https://twitter.com/ionicframework',
+        //       label: 'Twitter',
+        //       target: '_blank',
+        //       rel: null,
+        //     },
+        //   ],
+        //   className: 'navbar__link--community',
+        // },
+        // {
+        //   label: 'Support',
+        //   position: 'right',
+        //   items: [
+        //     {
+        //       href: 'https://ionicframework.com/support',
+        //       label: 'Help Center',
+        //       target: '_blank',
+        //       rel: null,
+        //     },
+        //     {
+        //       href: 'https://ionic.zendesk.com/',
+        //       label: 'Customer Support',
+        //       target: '_blank',
+        //       rel: null,
+        //     },
+        //     {
+        //       href: 'https://ionicframework.com/advisory',
+        //       label: 'Enterprise Advisory',
+        //       target: '_blank',
+        //       rel: null,
+        //     },
+        //   ],
+        //   className: 'navbar__link--support',
+        // },
+        {
+          type: 'html',
+          position: 'right',
+          value: '<div class="separator" />',
+        },
+        {
+          type: 'localeDropdown',
+          position: 'right',
+          dropdownItemsBefore: [],
+          dropdownItemsAfter: [
+            {
+              href: 'https://ionicframework.com/translate',
+              label: 'Translate',
+              target: '_blank',
+              rel: null,
+            },
+          ],
+          className: 'icon-link language navbar__item',
+        },
+        // {
+        //   href: 'https://twitter.com/Ionicframework',
+        //   position: 'right',
+        //   className: 'icon-link icon-link-mask icon-link-twitter',
+        //   'aria-label': 'Twitter',
+        //   target: '_blank',
+        // },
+        {
+          href: 'https://github.com/ionic-team/ionic-framework',
+          position: 'right',
+          className: 'icon-link icon-link-mask icon-link-github',
+          'aria-label': 'GitHub repository',
+          target: '_blank',
+        },
+        // {
+        //   href: 'https://ionic.link/discord',
+        //   position: 'right',
+        //   className: 'icon-link icon-link-mask icon-link-discord',
+        //   'aria-label': 'Discord',
+        //   target: '_blank',
+        // },
+      ],
+    },
+    tagManager: {
+      trackingID: 'GTM-TKMGCBC',
+    },
+    prism: {
+      theme: { plain: {}, styles: [] },
+      // https://github.com/FormidableLabs/prism-react-renderer/blob/5a1c93592c6475fb230bfcb8a9666b72b331638b/packages/generate-prism-languages/index.ts#L9-L24
+      additionalLanguages: ['shell-session', 'http'],
+    },
+    algolia: {
+      appId: 'O9QSL985BS',
+      apiKey: 'ceb5366064b8fbf70959827cf9f69227',
+      indexName: 'ionicframework',
+      contextualSearch: true,
+    },
+  },
+  plugins: [
+    'docusaurus-plugin-sass',
+    [
+      'docusaurus-plugin-module-alias',
+      {
+        alias: {
+          'styled-components': path.resolve(__dirname, './node_modules/styled-components'),
+          react: path.resolve(__dirname, './node_modules/react'),
+          'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
+          '@components': path.resolve(__dirname, './src/components'),
+          '@wj-elements': path.resolve(__dirname, '../dist'),
+        },
+      },
+    ],
+    '@ionic-internal/docusaurus-plugin-tag-manager',
+    function (context, options) {
+      return {
+        name: 'ionic-docs-ads',
+        async loadContent() {
+          const repoName = 'ionicframeworkcom';
+          const endpoint = prismic.getEndpoint(repoName);
+          const client = prismic.createClient(endpoint, {
+            fetch,
+          });
 
-module.exports = config;
+          return await client.getByType('docs_ad');
+        },
+        async contentLoaded({ content, actions: { setGlobalData, addRoute } }) {
+          return setGlobalData({ prismicAds: content.results });
+        },
+      };
+    },
+    [
+      path.resolve(__dirname, 'plugins', 'docusaurus-plugin-ionic-component-api'),
+      {
+        versions: VERSIONS_JSON,
+      },
+    ],
+  ],
+  customFields: {},
+  themes: [],
+};

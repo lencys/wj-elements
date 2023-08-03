@@ -242,7 +242,6 @@ $body-color: $color-contrast-high ; // Default font color
 
 $color-border-a: $color-contrast-low-a; //rgba value of $color-contrast-low for borders
 $color-hinted-a: $color-contrast-medium-a; //rgba value of $color-contrast-medium for hinted text
-$panel-border-color: transparent; //panel border color
 
 // ==================== FONTS ========================
 $base-font-family: "Inter UI", -apple-system, BlinkMacSystemFont,  "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell","Fira Sans", "Droid Sans", "Helvetica Neue",sans-serif;
@@ -251,8 +250,13 @@ $secondary-font-family: "Montserrat", -apple-system, BlinkMacSystemFont,  "Segoe
 $force-mac-font-family: -apple-system, BlinkMacSystemFont,"Inter UI",  "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell","Fira Sans", "Droid Sans", "Helvetica Neue",sans-serif;
 $fontawesome-font-family: "Font Awesome 6 Pro", -apple-system, BlinkMacSystemFont,"Inter UI",  "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell","Fira Sans", "Droid Sans", "Helvetica Neue",sans-serif;
 
-$body-font-family: $base-font-family ;
-$body-font-size: 13px ;
+$body-font-family: $base-font-family;
+$body-font-size: 13px;
+
+$font-family: $base-font-family;
+$font-size: 14px;
+$line-height: 21px;
+$color: #212529;
 
 // ================ PAGES MENU ====================
 //Menu Vertical (sidebar)
@@ -290,7 +294,6 @@ $panel-heading-padding: 16px 16px 7px $panel-padding ;
 $panel-heading-min-height: 48px ;
 $panel-condensed-heading-padding: 9px 13px 0 13px ;
 $panel-condensed-body-padding: 13px ;
-$panel-border-size: 0px;
 $panel-condensed-heading-min-height: 48px ;
 
 // ================ MISC ====================
@@ -383,3 +386,12 @@ $dimensions: (
   "5": 500,
   "6": 600
 );
+
+// Border
+$border-size: 0px;
+$border-radius: 8px;
+$border-color: rgba(0, 0, 0, 0.08);
+$border-style: solid;
+
+// Card
+$card-border-color: transparent;
