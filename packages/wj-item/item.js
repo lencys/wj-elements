@@ -47,7 +47,7 @@ export class Item extends WJElement {
 	}
 
 	isClickable() {
-		return this.hasAttribute('href') !== undefined || this.button;
+		return this.hasAttribute('href') || this.button;
 	}
 
 	setupAttributes() {
@@ -59,27 +59,27 @@ export class Item extends WJElement {
 	draw( context, store, params ) {
 		const TagType = this.isClickable() ? this.hasAttribute('href') === undefined ? 'button' : 'a' : 'div';
 
-		return /*html*/ `<${TagType}
-            ${WjElementUtils.attributesToString(WjElementUtils.getAttributes(this))}
-            class="item-native"
-            part="native">
-            <slot name="start"></slot>
-            <div class="item-inner">
-                <div class="input-wrapper">
-                    <slot></slot>
-                </div>
-                <slot name="end"></slot>
-            </div>
-            <div class="item-highlight"></div>
-        </${TagType}>
-        <div class="item-bottom">
-            <slot name="error"></slot>
-            <slot name="helper"></slot>
-        </div>`;
+		// this.classList.add('item');
+
+		return `<${TagType} ${WjElementUtils.attributesToString(WjElementUtils.getAttributes(this))} class="item-native" part="native">
+			<slot name="start"></slot>
+			<div class="item-inner">
+					<div class="input-wrapper">
+							<slot></slot>
+					</div>
+					<slot name="end"></slot>
+			</div>
+			<div class="item-highlight"></div>
+    </${TagType}>
+		<div class="item-bottom">
+				<slot name="error"></slot>
+				<slot name="helper"></slot>
+		</div>`;
 	}
 
-	afterDraw( context, store, params ) {}
+	afterDraw( context, store, params ) {
+
+	}
 }
 
 customElements.get("wj-item") ||  window.customElements.define('wj-item', Item);
-

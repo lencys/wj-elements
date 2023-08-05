@@ -1,0 +1,20 @@
+@import "../../scss/themes/net-basic/important.scss";
+
+/*
+[ List ]
+*/
+
+:host {
+  margin: 0;
+  padding: 0;
+
+  display: block;
+
+  contain: content;
+  list-style-type: none;
+}
+
+:host(.list-inset) {
+  transform: translateZ(0);
+  overflow: hidden;
+}

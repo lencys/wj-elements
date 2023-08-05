@@ -9,8 +9,9 @@
 */
 
 :host {
+  --wj-card-padding: 0 1rem 1rem;
   display: block;
-  padding: $panel-padding;
+  padding: var(--wj-card-padding);
   &.no-padding {
     .row {
       margin-left: 0;
@@ -24,7 +25,7 @@
     padding-top: 0;
   }
   .title {
-    margin-top: 0px;
+    margin-top: 0;
   }
   &.scrollable {
     margin-bottom: $panel-padding;

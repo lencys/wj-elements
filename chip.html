@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chip</title>
+  <script type="module" src="./assets/js/demo.js"></script>
+  <link rel="stylesheet" href="./packages/scss/global.scss" />
+  <link rel="stylesheet" href="./assets/css/demo.css" />
+</head>
+<body>
+  <wj-demo-header></wj-demo-header>
+  <h1>Chip</h1>
+  <div class="container">
+
+    <!--  BASIC-->
+
+    <h2>Basic</h2>
+    <div class="playground">
+      <div class="content">
+        <wj-chip>Default</wj-chip>
+        <wj-chip active>Default</wj-chip>
+        <wj-chip disabled>Disabled</wj-chip>
+        <wj-chip outline>Outline</wj-chip>
+      </div>
+    </div>
+
+    <!--  SLOTTING -->
+
+    <h2>Slottings</h2>
+    <div class="playground">
+      <div class="content">
+        <wj-chip>
+          <wj-avatar>
+            <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </wj-avatar>
+          <wj-label>Avatar Chip</wj-label>
+          <wj-icon name="circle-xmark"></wj-icon>
+        </wj-chip>
+
+        <wj-chip>
+          <wj-icon name="location-pin" color="complete"></wj-icon>
+          <wj-label>Icon Chip</wj-label>
+          <wj-icon name="xmark"></wj-icon>
+        </wj-chip>
+      </div>
+    </div>
+
+    <!-- COLORS -->
+
+    <h2>Colors</h2>
+    <div class="playground">
+      <div class="content">
+        <wj-chip>Default</wj-chip>
+        <wj-chip color="primary">Primary</wj-chip>
+        <wj-chip color="complete">Complete</wj-chip>
+        <wj-chip color="success">Success</wj-chip>
+        <wj-chip color="warning">Warning</wj-chip>
+        <wj-chip color="danger">Danger</wj-chip>
+        <wj-chip color="info">Info</wj-chip>
+        <wj-chip color="menu">Menu</wj-chip>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

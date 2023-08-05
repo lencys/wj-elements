@@ -1,6 +1,4 @@
 import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
-// import styles from './scss/styles.scss';
-
 import styles from "./scss/styles.scss?inline";
 
 const template = document.createElement('template');
@@ -14,9 +12,6 @@ export class CardControls extends WJElement {
     }
 
     className = "CardControls";
-    static get observedAttributes() {
-        return [];
-    }
 
     setupAttributes() {
         this.isShadowRoot = "open";
@@ -33,10 +28,6 @@ export class CardControls extends WJElement {
         fragment.appendChild(element);
 
         return fragment;
-    }
-
-    afterDraw(context, store, params) {
-        console.log("afterDraw", this.params);
     }
 }
 

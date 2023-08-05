@@ -40,7 +40,6 @@ export class Card extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-        console.log("COLOR", this.color, this.params);
         let element = document.createElement("slot");
 
         if(this.color)

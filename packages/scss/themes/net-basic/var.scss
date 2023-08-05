@@ -6,6 +6,21 @@ $pages-root-url: "../../";
 $base-img-url: "../../img";
 $assets-url: "../../../assets";
 
+// Border
+$border-size: 0px;
+$border-radius: 8px;
+$border-color: rgba(0, 0, 0, 0.08);
+$border-style: solid;
+
+// Card
+$card-border-color: transparent;
+$card-padding: 20px ;
+$card-heading-padding: 1rem 1rem .5rem;
+$card-heading-min-height: 48px ;
+$card-condensed-heading-padding: 9px 13px 0 13px ;
+$card-condensed-body-padding: 13px ;
+$card-condensed-heading-min-height: 48px ;
+
 // ================ COLOR PALETTE ====================
 $color-primary: #7252D3;
 $color-complete: #0072EC;
@@ -290,7 +305,7 @@ $layout-gutter-sm: 5px ;
 
 // Panels
 $panel-padding: 20px ;
-$panel-heading-padding: 16px 16px 7px $panel-padding ;
+$panel-heading-padding: $card-heading-padding;
 $panel-heading-min-height: 48px ;
 $panel-condensed-heading-padding: 9px 13px 0 13px ;
 $panel-condensed-body-padding: 13px ;
@@ -386,12 +401,3 @@ $dimensions: (
   "5": 500,
   "6": 600
 );
-
-// Border
-$border-size: 0px;
-$border-radius: 8px;
-$border-color: rgba(0, 0, 0, 0.08);
-$border-style: solid;
-
-// Card
-$card-border-color: transparent;

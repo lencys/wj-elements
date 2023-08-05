@@ -1,30 +1,40 @@
 import { default as e } from "./wj-element.js";
 import { store as m } from "./wj-store.js";
-import { Slider as f } from "./wj-slider.js";
-import { ExampleElement as x } from "./wj-example-element.js";
-import { Item as l } from "./wj-item.js";
-import { Card as C } from "./wj-card.js";
-import { CardHeader as i } from "./wj-card-header.js";
-import { CardTitle as b } from "./wj-card-title.js";
-import { CardSubtitle as S } from "./wj-card-subtitle.js";
-import { CardControls as h } from "./wj-card-controls.js";
-import { CardContent as T } from "./wj-card-content.js";
-import { Thumbnail as A } from "./wj-thumbnail.js";
-import { Label as I } from "./wj-label.js";
-import { d as L } from "./default-store-actions-ff3e8b0b.js";
+import { Avatar as p } from "./wj-avatar.js";
+import { Badge as a } from "./wj-badge.js";
+import { Card as d } from "./wj-card.js";
+import { CardContent as C } from "./wj-card-content.js";
+import { CardControls as s } from "./wj-card-controls.js";
+import { CardHeader as u } from "./wj-card-header.js";
+import { CardSubtitle as E } from "./wj-card-subtitle.js";
+import { CardTitle as g } from "./wj-card-title.js";
+import { ExampleElement as A } from "./wj-example-element.js";
+import { Chip as L } from "./wj-chip.js";
+import { Icon as v } from "./wj-icon.js";
+import { Item as H } from "./wj-item.js";
+import { Label as W } from "./wj-label.js";
+import { List as k } from "./wj-list.js";
+import { Thumbnail as w } from "./wj-thumbnail.js";
+import { Slider as z } from "./wj-slider.js";
+import { d as F } from "./default-store-actions-ff3e8b0b.js";
 export {
-  C as Card,
-  T as CardContent,
-  h as CardControls,
-  i as CardHeader,
-  S as CardSubtitle,
-  b as CardTitle,
-  x as ExampleElement,
-  l as Item,
-  I as Label,
-  f as Slider,
-  A as Thumbnail,
+  p as Avatar,
+  a as Badge,
+  d as Card,
+  C as CardContent,
+  s as CardControls,
+  u as CardHeader,
+  E as CardSubtitle,
+  g as CardTitle,
+  L as Chip,
+  A as ExampleElement,
+  v as Icon,
+  H as Item,
+  W as Label,
+  k as List,
+  z as Slider,
+  w as Thumbnail,
   e as WJElement,
-  L as defaultStoreActions,
+  F as defaultStoreActions,
   m as store
 };

@@ -1,0 +1,59 @@
+@import "../../scss/themes/net-basic/important.scss";
+
+/*
+[ Badge ]
+*/
+
+:host(.wj-color-primary) {
+  --wj-color-base: #{$color-primary} !important;
+  --wj-color-contrast: #{text-contrast($color-primary)} !important;
+}
+
+:host(.wj-color-complete) {
+  --wj-color-base: #{$color-complete} !important;
+  --wj-color-contrast: #{text-contrast($color-complete)} !important;
+}
+
+:host(.wj-color-success) {
+  --wj-color-base: #{$color-success} !important;
+  --wj-color-contrast: #{text-contrast($color-success)} !important;
+}
+
+:host(.wj-color-warning) {
+  --wj-color-base: #{$color-warning} !important;
+  --wj-color-contrast: #{text-contrast($color-warning)} !important;
+}
+
+:host(.wj-color-danger) {
+  --wj-color-base: #{$color-danger} !important;
+  --wj-color-contrast: #{text-contrast($color-danger)} !important;
+}
+
+:host(.wj-color-info) {
+  --wj-color-base: #{$color-info} !important;
+  --wj-color-contrast: #{text-contrast($color-info)} !important;
+}
+
+:host(.wj-color-menu) {
+  --wj-color-base: #{$color-contrast-lower} !important;
+  --wj-color-contrast: #{text-contrast($color-contrast-lower)} !important;
+}
+
+:host {
+  --wj-chip-border-radius: 100px;
+
+  text-shadow: none;
+  font-family: $base-font-family;
+  font-weight: 600;
+  background-color: $color-contrast-low;
+  font-size: 11px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: $color-contrast-high;
+  border-radius: 10px;
+}
+
+:host(.wj-color) {
+  background-color: var(--wj-color-base, red) ;
+  color: var(--wj-color-contrast);
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Badge</title>
+  <script type="module" src="./assets/js/demo.js"></script>
+  <link rel="stylesheet" href="./packages/scss/global.scss" />
+  <link rel="stylesheet" href="./assets/css/demo.css" />
+</head>
+<body>
+  <wj-demo-header></wj-demo-header>
+  <h1>Badge</h1>
+  <div class="container">
+
+    <!--  BASIC-->
+
+    <h2>Basic</h2>
+    <div class="playground">
+      <div class="content">
+        <wj-list>
+          <wj-item>
+            <wj-label>Pokémon Yellow</wj-label>
+          </wj-item>
+          <wj-item>
+            <wj-label>Mega Man X</wj-label>
+          </wj-item>
+          <wj-item>
+            <wj-label>The Legend of Zelda</wj-label>
+          </wj-item>
+          <wj-item>
+            <wj-label>Pac-Man</wj-label>
+          </wj-item>
+          <wj-item>
+            <wj-label>Super Mario World</wj-label>
+          </wj-item>
+        </wj-list>
+      </div>
+    </div>
+
+    <!--  INSET -->
+
+    <h2>Inset list</h2>
+    <div class="playground">
+      <div class="content">
+        <wj-list inset="true">
+          <wj-item>
+            <wj-label>Pokémon Yellow</wj-label>
+          </wj-item>
+          <wj-item>
+            <wj-label>Mega Man X</wj-label>
+          </wj-item>
+          <wj-item>
+            <wj-label>The Legend of Zelda</wj-label>
+          </wj-item>
+          <wj-item>
+            <wj-label>Pac-Man</wj-label>
+          </wj-item>
+          <wj-item>
+            <wj-label>Super Mario World</wj-label>
+          </wj-item>
+        </wj-list>
+      </div>
+    </div>
+    
+    <!--  LINES -->
+    
+    <h2>Lines</h2>
+    <div class="playground">
+      <div class="content">
+        <wj-list lines="full">
+          <wj-item>
+            <wj-label>Full Lines</wj-label>
+          </wj-item>
+          <wj-item>
+            <wj-label>Full Lines</wj-label>
+          </wj-item>
+          <wj-item>
+            <wj-label>Full Lines</wj-label>
+          </wj-item>
+        </wj-list>
+
+        <wj-list lines="inset">
+          <wj-item>
+            <wj-label>Inset Lines</wj-label>
+          </wj-item>
+          <wj-item>
+            <wj-label>Inset Lines</wj-label>
+          </wj-item>
+          <wj-item>
+            <wj-label>Inset Lines</wj-label>
+          </wj-item>
+        </wj-list>
+
+        <wj-list lines="none">
+          <wj-item>
+            <wj-label>No Lines</wj-label>
+          </wj-item>
+          <wj-item>
+            <wj-label>No Lines</wj-label>
+          </wj-item>
+          <wj-item>
+            <wj-label>No Lines</wj-label>
+          </wj-item>
+        </wj-list>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

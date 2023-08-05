@@ -17,4 +17,37 @@
   text-overflow: ellipsis;
   filter: alpha(opacity=40);
   @include transition(opacity 0.3s ease);
+  position: absolute;
+  right: 1rem;
 }
+
+//.card-controls {
+//  @include float(right);
+//  margin-top: -3px;
+//  display: flex;
+//  ul {
+//    margin: 0;
+//    padding: 0;
+//    display: flex;
+//    align-items: center;
+//    li {
+//      padding-left: 0px;
+//      display: inline-block;
+//      list-style: none;
+//      line-height: 0;
+//      font-size: 12px;
+//      color: $color-hinted-a;
+//      a {
+//        min-width: 20px;
+//        display: inline-block;
+//        text-align: center;
+//        padding: 0;
+//      }
+//    }
+//  }
+//  &:after {
+//    content: "";
+//    display: table;
+//    clear: both;
+//  }
+//}

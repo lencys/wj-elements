@@ -1,0 +1,72 @@
+@import "../../scss/themes/net-basic/important.scss";
+
+/*
+[ Chip ]
+*/
+
+:host(.wj-color-primary) {
+  --wj-color-base: #{$color-primary-lighter} !important;
+  --wj-color-contrast: #{$color-primary-light} !important;
+}
+
+:host(.wj-color-complete) {
+  --wj-color-base: #{$color-complete-lighter} !important;
+  --wj-color-contrast: #{$color-complete-light} !important;
+}
+
+:host(.wj-color-success) {
+  --wj-color-base: #{$color-success-lighter} !important;
+  --wj-color-contrast: #{$color-success-light} !important;
+}
+
+:host(.wj-color-warning) {
+  --wj-color-base: #{$color-warning-lighter} !important;
+  --wj-color-contrast: #{$color-warning-light} !important;
+}
+
+:host(.wj-color-danger) {
+  --wj-color-base: #{$color-danger-lighter} !important;
+  --wj-color-contrast: #{$color-danger-light} !important;
+}
+
+:host(.wj-color-info) {
+  --wj-color-base: #{$color-info-lighter} !important;
+  --wj-color-contrast: #{$color-info-light} !important;
+}
+
+:host(.wj-color-menu) {
+  --wj-color-base: #{$color-contrast-lower} !important;
+  --wj-color-contrast: #{$color-menu-dark} !important;
+}
+
+:host {
+  display: inline-block;
+
+  width: 1em;
+  height: 1em;
+
+  contain: strict;
+
+  fill: currentColor;
+
+  box-sizing: content-box !important;
+}
+
+.icon-inner, svg {
+  display: block;
+
+  height: 100%;
+  width: 100%;
+}
+
+:host(.wj-size-small) {
+  font-size: 18px !important;
+}
+
+:host(.wj-size-large) {
+  font-size: 32px !important;
+}
+
+:host(.wj-color) {
+  color: var(--wj-color-contrast);
+}

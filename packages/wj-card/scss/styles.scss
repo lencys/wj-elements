@@ -5,8 +5,6 @@
 */
 
 :host {
-
-
   --wj-card-margin-top: 0;
   --wj-card-margin-bottom: 1rem;
   --wj-card-margin-inline: 0;
@@ -23,7 +21,7 @@
   --wj-color-contrast: #{text-contrast($color-complete)} !important;
 }
 
-  :host(.wj-color-success) {
+:host(.wj-color-success) {
   --wj-color-base: #{$color-success} !important;
   --wj-color-contrast: #{text-contrast($color-success)} !important;
 }
@@ -58,7 +56,6 @@
   border-style: var(--wj-border-style);
   border-width: var(--wj-border-size);
   border-radius: var(--wj-border-radius);
-  margin-bottom: var(--wj-card-margin-bottom);
   font-family: var(--wj-font-family);
   font-size: var(--wj-font-size);
   line-height: var(--wj-line-height);

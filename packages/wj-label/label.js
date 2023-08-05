@@ -12,6 +12,14 @@ export class Label extends WJElement {
         super(template);
     }
 
+    set color(value) {
+        this.setAttribute("color", value);
+    }
+
+    get color() {
+        return this.getAttribute("color");
+    }
+
     className = "Label";
     static get observedAttributes() {
         return [];
@@ -28,6 +36,9 @@ export class Label extends WJElement {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("slot");
+
+        if(this.color)
+            this.classList.add("wj-color-" + this.color, "wj-color");
 
         fragment.appendChild(element);
 

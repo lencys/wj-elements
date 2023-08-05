@@ -1,0 +1,23 @@
+@import "../../scss/themes/net-basic/important.scss";
+
+// Avatar
+// --------------------------------------------------
+
+:host {
+  --wj-avatar-width: 48px;
+  --wj-avatar-height: 48px;
+  --wj-avatar-border-radius: 50%;
+  width: var(--wj-avatar-width);
+  height: var(--wj-avatar-height);
+  border-radius: var(--wj-avatar-border-radius);
+  display: block;
+}
+
+::slotted(wj-img),
+::slotted(img) {
+  border-radius: var(--wj-avatar-border-radius);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}

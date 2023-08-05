@@ -1,0 +1,157 @@
+@import "../../scss/themes/net-basic/important.scss";
+
+/*
+[ Chip ]
+*/
+
+:host(.wj-color-primary) {
+  --wj-color-base: #{$color-primary-lighter} !important;
+  --wj-color-contrast: #{$color-primary-light} !important;
+}
+
+:host(.wj-color-complete) {
+  --wj-color-base: #{$color-complete-lighter} !important;
+  --wj-color-contrast: #{$color-complete-light} !important;
+}
+
+:host(.wj-color-success) {
+  --wj-color-base: #{$color-success-lighter} !important;
+  --wj-color-contrast: #{$color-success-light} !important;
+}
+
+:host(.wj-color-warning) {
+  --wj-color-base: #{$color-warning-lighter} !important;
+  --wj-color-contrast: #{$color-warning-light} !important;
+}
+
+:host(.wj-color-danger) {
+  --wj-color-base: #{$color-danger-lighter} !important;
+  --wj-color-contrast: #{$color-danger-light} !important;
+}
+
+:host(.wj-color-info) {
+  --wj-color-base: #{$color-info-lighter} !important;
+  --wj-color-contrast: #{$color-info-light} !important;
+}
+
+:host(.wj-color-menu) {
+  --wj-color-base: #{$color-contrast-lower} !important;
+  --wj-color-contrast: #{$color-menu-dark} !important;
+}
+
+:host {
+  --wj-chip-border-radius: 100px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $force-mac-font-family;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.006em;
+  margin: 4px;
+  padding: 7px 12px;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  color: $color-contrast-high;
+  background: $color-contrast-low;
+  text-shadow: none;
+  box-shadow: none;
+  border: 0 none;
+  line-height: 14px;
+  min-height: 28px;
+  height: 32px;
+  width: 100%;
+  max-width: fit-content;
+  min-width: 28px;
+  position: relative;
+  transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+  border-radius: var(--wj-chip-border-radius);
+  overflow: hidden;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+:host(.focus) {
+  box-shadow: none;
+}
+:host(:hover:not(.wj-active)) {
+  background: $color-contrast-lower;
+  color: $color-contrast-high;
+}
+
+:host(.wj-active) {
+  background: red;
+  border: 1px solid opacify($color-border-a, 0.06);
+  border-bottom: 1px solid opacify($color-border-a, 0.15);
+  color: $color-contrast-high;
+}
+
+:host(:focus, :active:focus, .wj-active:focus) {
+  outline: none !important;
+  box-shadow: 0 0 0 $focus-width $color-focus;
+}
+
+//i {
+//  display: inline-flex;
+//  position: relative;
+//  left: 0;
+//  top: 0;
+//  align-items: center;
+//  justify-content: center;
+//}
+
+:host(.wj-active) {
+    background: $color-contrast-low;
+    border-color: transparent;
+    //padding-left: 4px;
+    i {
+      width: 20px;
+    }
+  }
+  //&:hover:not(.active) {
+  //  background: darken($color-contrast-low, 10%);
+  //}
+  //i {
+  //  width: 0;
+  //  overflow: hidden;
+  //  transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  //}
+
+
+:host(.wj-disabled) {
+  background: $color-contrast-lower;
+  color: $color-contrast-medium;
+  border: 0;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+::slotted(wj-avatar) {
+  width: 24px;
+  height: 24px;
+}
+
+::slotted(wj-avatar:first-child) {
+  margin-inline: -8px 8px;
+  margin-top: -4px;
+  margin-bottom: -4px;
+}
+
+:host(.wj-color) {
+  background-color: var(--wj-color-base, red) ;
+  color: var(--wj-color-contrast);
+}
+
+//:host(:not(.wj-color)) ::slotted(wj-icon) {
+//  color: rgba($text-color-rgb, .54);
+//}
+
+::slotted(wj-icon:first-child) {
+  @include margin(-4px, 8px, -4px, -4px);
+}
+
+::slotted(wj-icon:last-child) {
+  @include margin(-4px, -4px, -4px, 8px);
+}
