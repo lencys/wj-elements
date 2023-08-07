@@ -9,56 +9,53 @@ template.innerHTML = `<style>
 </style>`;
 export class List extends WJElement {
     constructor() {
-        super(template);
+        super();
     }
 
-    set color(value) {
-        this.setAttribute("color", value);
+    set lines(value) {
+        this.setAttribute("lines", value);
     }
 
-    get color() {
-        return this.getAttribute("color");
+    get lines() {
+        return this.getAttribute("lines");
     }
 
-    set disabled(value) {
-        this.setAttribute("disabled", "");
+    set inset(value) {
+        this.setAttribute("inset", "");
     }
 
-    get disabled() {
-        return this.hasAttribute("disabled");
+    get inset() {
+        return this.hasAttribute("inset");
     }
 
     className = "List";
 
     setupAttributes() {
-        this.isShadowRoot = "open";
+        // this.isShadowRoot = "open";
     }
 
     draw(context, store, params) {
-        let fragment = document.createDocumentFragment();
+        // let fragment = document.createDocumentFragment();
+        //
+        // // let element = document.createElement("slot");
+        //
+        // if(this.hasAttribute("lines"))
+        //     this.classList.add("wj-lines-" + this.lines);
+        //
+        // if(this.inset)
+        //     this.classList.add("wj-inset");
+        //
+        // // fragment.appendChild(element);
+        //
+        // return fragment;
+    }
 
-        let element = document.createElement("slot");
+    afterDraw() {
+        if(this.hasAttribute("lines"))
+            this.classList.add("wj-lines-" + this.lines);
 
-        if(this.color)
-            this.classList.add("wj-color-" + this.color, "wj-color");
-
-        if(this.active) {
-            this.classList.add("wj-active");
-            let i = document.createElement("wj-icon");
-            i.setAttribute("name", "check");
-
-            this.appendChild(i);
-        }
-
-        if(this.disabled)
-            this.classList.add("wj-disabled");
-
-        if(this.outline)
-            this.classList.add("wj-outline");
-
-        fragment.appendChild(element);
-
-        return fragment;
+        if(this.inset)
+            this.classList.add("wj-inset");
     }
 }
 

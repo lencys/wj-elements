@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Grid</title>
+  <script type="module" src="./assets/js/demo.js"></script>
+  <link rel="stylesheet" href="./packages/scss/global.scss" />
+  <link rel="stylesheet" href="./assets/css/demo.css" />
+  <style>
+
+  </style>
+</head>
+<body>
+  <wj-demo-header></wj-demo-header>
+  <h1>Grid</h1>
+  <div class="container">
+    <style>
+      wj-col {
+        background-color: #135d54;
+        border: solid 1px #fff;
+        color: #fff;
+        text-align: center;
+      }
+    </style>
+
+    <!--  BASIC-->
+
+    <h2>Basic</h2>
+    <div class="playground">
+      <div class="content">
+        <wj-grid>
+          <wj-row>
+            <wj-col>1</wj-col>
+            <wj-col>2</wj-col>
+            <wj-col>3</wj-col>
+          </wj-row>
+        </wj-grid>
+
+        <wj-grid>
+          <wj-row>
+            <wj-col>1</wj-col>
+            <wj-col>2</wj-col>
+            <wj-col>3</wj-col>
+            <wj-col>4</wj-col>
+            <wj-col>5</wj-col>
+            <wj-col>6</wj-col>
+          </wj-row>
+        </wj-grid>
+
+        <wj-grid>
+          <wj-row>
+            <wj-col>1</wj-col>
+            <wj-col>2</wj-col>
+            <wj-col>3</wj-col>
+            <wj-col>4</wj-col>
+            <wj-col>5</wj-col>
+            <wj-col>6</wj-col>
+            <wj-col>7</wj-col>
+            <wj-col>8</wj-col>
+            <wj-col>9</wj-col>
+            <wj-col>10</wj-col>
+            <wj-col>11</wj-col>
+            <wj-col>12</wj-col>
+          </wj-row>
+        </wj-grid>
+      </div>
+    </div>
+
+    <!-- SIZE -->
+
+    <h2>Size</h2>
+    <div class="playground">
+      <div class="content">
+        <b>Column 1 has <code>size</code> set to <code>"auto"</code></b>
+        <wj-grid>
+          <wj-row class="row">
+            <wj-col size="auto" class="col-6">1</wj-col>
+            <wj-col>2</wj-col>
+            <wj-col>3</wj-col>
+          </wj-row>
+        </wj-grid>
+
+        <b>Column 3 contains an input and has <code>size</code> set to <code>"auto"</code></b>
+        <wj-grid>
+          <wj-row>
+            <wj-col>1</wj-col>
+            <wj-col>2</wj-col>
+            <wj-col size="auto">
+              <wj-input placeholder="3"></wj-input>
+            </wj-col>
+            <wj-col>4</wj-col>
+            <wj-col>5</wj-col>
+            <wj-col>6</wj-col>
+          </wj-row>
+        </wj-grid>
+
+        <b>Column 2 has <code>size</code> set to <code>"auto"</code> and a defined width</b>
+        <wj-grid>
+          <wj-row>
+            <wj-col>1</wj-col>
+            <wj-col size="auto">
+              <div style="width: 150px">2</div>
+            </wj-col>
+          </wj-row>
+        </wj-grid>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

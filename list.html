@@ -2,14 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Badge</title>
+  <title>List</title>
   <script type="module" src="./assets/js/demo.js"></script>
   <link rel="stylesheet" href="./packages/scss/global.scss" />
   <link rel="stylesheet" href="./assets/css/demo.css" />
+  <style>
+    .stretch {
+        flex-flow: column;
+        align-items: stretch;
+        justify-content: space-evenly;
+    }
+  </style>
 </head>
 <body>
   <wj-demo-header></wj-demo-header>
-  <h1>Badge</h1>
+  <h1>List</h1>
   <div class="container">
 
     <!--  BASIC-->
@@ -40,7 +47,7 @@
     <!--  INSET -->
 
     <h2>Inset list</h2>
-    <div class="playground">
+    <div class="playground" style="background-color: rgba(0,0,0,.08);">
       <div class="content">
         <wj-list inset="true">
           <wj-item>
@@ -66,7 +73,7 @@
     
     <h2>Lines</h2>
     <div class="playground">
-      <div class="content">
+      <div class="content stretch">
         <wj-list lines="full">
           <wj-item>
             <wj-label>Full Lines</wj-label>

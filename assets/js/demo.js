@@ -27,6 +27,7 @@ export class DemoHeader extends WJElement {
 
     let element = document.createElement("div");
     element.innerHTML = `
+      <a href="./grid.html">Grid</a>
       <a href="./badge.html">Badge</a>
       <a href="./card.html">Card</a>
       <a href="./chip.html">Chip</a>

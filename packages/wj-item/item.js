@@ -59,9 +59,11 @@ export class Item extends WJElement {
 	draw( context, store, params ) {
 		const TagType = this.isClickable() ? this.hasAttribute('href') === undefined ? 'button' : 'a' : 'div';
 
-		// this.classList.add('item');
-
-		return `<${TagType} ${WjElementUtils.attributesToString(WjElementUtils.getAttributes(this))} class="item-native" part="native">
+		if(this.hostContext('wj-list', this)) {
+			this.classList.add('wj-item-list');
+		}
+		//  ${WjElementUtils.attributesToString(WjElementUtils.getAttributes(this))}
+		return `<${TagType} class="item-native" part="native">
 			<slot name="start"></slot>
 			<div class="item-inner">
 					<div class="input-wrapper">
@@ -77,8 +79,8 @@ export class Item extends WJElement {
 		</div>`;
 	}
 
-	afterDraw( context, store, params ) {
-
+	hostContext = (selector, el) => {
+		return el.closest(selector) !== null;
 	}
 }
 

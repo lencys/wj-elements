@@ -11,12 +11,15 @@ import { CardControls } from "./wj-card-controls/card-controls.js";
 import { CardHeader } from "./wj-card-header/card-header.js";
 import { CardSubtitle } from "./wj-card-subtitle/card-subtitle.js";
 import { CardTitle } from "./wj-card-title/card-title.js";
+import { Col } from "./wj-col/col.js";
 import { ExampleElement } from "./wj-example-element/example-element.js";
+import { Grid } from "./wj-grid/grid.js";
 import { Chip } from "./wj-chip/chip.js";
 import { Icon } from "./wj-icon/icon.js";
 import { Item } from "./wj-item/item.js";
 import { Label } from "./wj-label/label.js";
 import { List } from "./wj-list/list.js";
+import { Row } from "./wj-row/row.js";
 import { Thumbnail } from "./wj-thumbnail/thumbnail.js";
 import { Slider } from "./wj-slider/slider.js";
 
@@ -29,12 +32,15 @@ export { WJElement, defaultStoreActions, store,
   CardHeader,
   CardSubtitle,
   CardTitle,
+  Col,
   ExampleElement,
+  Grid,
   Chip,
   Icon,
   Item,
   Label,
   List,
+  Row,
   Slider,
   Thumbnail,
 };

@@ -4,7 +4,12 @@
 [ List ]
 */
 
-:host {
+wj-list {
+  --wj-list-inset-padding: 1rem;
+  --wj-list-border-radius: 8px;
+  --wj-list-background: #{$color-contrast-lowest};
+
+
   margin: 0;
   padding: 0;
 
@@ -14,7 +19,14 @@
   list-style-type: none;
 }
 
-:host(.list-inset) {
+:host(.wj-inset) {
+  background: var(--wj-list-background);
   transform: translateZ(0);
   overflow: hidden;
+  padding: var(--wj-list-inset-padding);
+  border-radius: var(--wj-list-border-radius);
+}
+
+.wj-lines-none wj-item.wj-item-list {
+  --wj-border-width: 0 !important;
 }

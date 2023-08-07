@@ -1,46 +1,41 @@
-var r = Object.defineProperty;
-var c = (s, e, t) => e in s ? r(s, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : s[e] = t;
-var l = (s, e, t) => (c(s, typeof e != "symbol" ? e + "" : e, t), t);
-import d from "./wj-element.js";
+var n = Object.defineProperty;
+var r = (e, s, t) => s in e ? n(e, s, { enumerable: !0, configurable: !0, writable: !0, value: t }) : e[s] = t;
+var i = (e, s, t) => (r(e, typeof s != "symbol" ? s + "" : s, t), t);
+import a from "./wj-element.js";
 import "./default-store-actions-ff3e8b0b.js";
-const m = `/*!
+const l = `/*!
 * direction.scss
-*/:host{margin:0;padding:0;display:block;contain:content;list-style-type:none}:host(.list-inset){transform:translateZ(0);overflow:hidden}
-`, n = document.createElement("template");
-n.innerHTML = `<style>
-	${m}
+*/wj-list{--wj-list-inset-padding: 1rem;--wj-list-border-radius: 8px;--wj-list-background: #fff;margin:0;padding:0;display:block;contain:content;list-style-type:none}:host(.wj-inset){background:var(--wj-list-background);transform:translateZ(0);overflow:hidden;padding:var(--wj-list-inset-padding);border-radius:var(--wj-list-border-radius)}.wj-lines-none wj-item.wj-item-list{--wj-border-width: 0 !important}
+`, d = document.createElement("template");
+d.innerHTML = `<style>
+	${l}
 </style>`;
-class h extends d {
+class o extends a {
   constructor() {
-    super(n);
-    l(this, "className", "List");
+    super();
+    i(this, "className", "List");
   }
-  set color(t) {
-    this.setAttribute("color", t);
+  set lines(t) {
+    this.setAttribute("lines", t);
   }
-  get color() {
-    return this.getAttribute("color");
+  get lines() {
+    return this.getAttribute("lines");
   }
-  set disabled(t) {
-    this.setAttribute("disabled", "");
+  set inset(t) {
+    this.setAttribute("inset", "");
   }
-  get disabled() {
-    return this.hasAttribute("disabled");
+  get inset() {
+    return this.hasAttribute("inset");
   }
   setupAttributes() {
-    this.isShadowRoot = "open";
   }
-  draw(t, u, p) {
-    let i = document.createDocumentFragment(), a = document.createElement("slot");
-    if (this.color && this.classList.add("wj-color-" + this.color, "wj-color"), this.active) {
-      this.classList.add("wj-active");
-      let o = document.createElement("wj-icon");
-      o.setAttribute("name", "check"), this.appendChild(o);
-    }
-    return this.disabled && this.classList.add("wj-disabled"), this.outline && this.classList.add("wj-outline"), i.appendChild(a), i;
+  draw(t, w, c) {
+  }
+  afterDraw() {
+    this.hasAttribute("lines") && this.classList.add("wj-lines-" + this.lines), this.inset && this.classList.add("wj-inset");
   }
 }
-customElements.get("wj-list") || window.customElements.define("wj-list", h);
+customElements.get("wj-list") || window.customElements.define("wj-list", o);
 export {
-  h as List
+  o as List
 };

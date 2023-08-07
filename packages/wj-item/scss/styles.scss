@@ -83,10 +83,10 @@
         @include margin(0,0,0,0);
 
         @include padding(
-                        var(--inner-padding-top),
-                        calc(var(--ion-safe-area-right, 0px) + var(--inner-padding-end)),
-                        var(--inner-padding-bottom),
-                        var(--inner-padding-start)
+            var(--inner-padding-top),
+            calc(var(--ion-safe-area-right, 0px) + var(--inner-padding-end)),
+            var(--inner-padding-bottom),
+            var(--inner-padding-start)
         );
 
         display: flex;
@@ -167,3 +167,11 @@ a {
 ::slotted(wj-label:not([slot="end"])) {
     flex: 1 1 0;
 }
+
+/*
+[ lines ]
+*/
+
+//:host(.item-lines-none) {
+//    --wj-border-width: 0;
+//}
