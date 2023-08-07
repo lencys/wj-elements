@@ -227,10 +227,11 @@ export default class WJElement extends HTMLElement {
     display(force = false, processId) {
         if (this.isProcessingFlow(processId)) return;
 
-        if (force) {
+        if (force && this.isShadowRoot) {
             [...this.context.children].forEach(this.context.removeChild.bind(this.context));
             this.isAttached = false;
         }
+
         if (this.isAttached) {
             console.log('Already rendered...', this);
             // return;
