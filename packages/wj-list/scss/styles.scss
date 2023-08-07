@@ -27,6 +27,14 @@ wj-list {
   border-radius: var(--wj-list-border-radius);
 }
 
-.wj-lines-none wj-item.wj-item-list {
+:host-context(.wj-lines-none) ::slotted(.wj-item-list){
   --wj-border-width: 0 !important;
+}
+
+:host-context(.wj-lines-full) ::slotted(.wj-item-list){
+  --wj-border-width: 0 0 1px 0;
+}
+
+:host-context(.wj-lines-inset) ::slotted(.wj-item-list){
+  --wj-border-inner-width: 0 0 1px 0;
 }

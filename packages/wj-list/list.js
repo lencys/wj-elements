@@ -1,15 +1,12 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
-
+import WJElement from "../wj-element/wj-element.js";
 import styles from "./scss/styles.scss?inline";
 
-const template = document.createElement('template');
+const template = document.createElement("template");
+template.innerHTML = `<style>${styles}</style>`;
 
-template.innerHTML = `<style>
-	${styles}
-</style>`;
 export class List extends WJElement {
     constructor() {
-        super();
+        super(template);
     }
 
     set lines(value) {
@@ -31,31 +28,24 @@ export class List extends WJElement {
     className = "List";
 
     setupAttributes() {
-        // this.isShadowRoot = "open";
+        this.isShadowRoot = "open";
     }
 
     draw(context, store, params) {
-        // let fragment = document.createDocumentFragment();
-        //
-        // // let element = document.createElement("slot");
-        //
-        // if(this.hasAttribute("lines"))
-        //     this.classList.add("wj-lines-" + this.lines);
-        //
-        // if(this.inset)
-        //     this.classList.add("wj-inset");
-        //
-        // // fragment.appendChild(element);
-        //
-        // return fragment;
+        let fragment = document.createDocumentFragment();
+        let element = document.createElement("slot");
+
+        this.classList.toggle("wj-lines-" + this.lines, this.hasAttribute("lines"));
+        this.classList.toggle("wj-inset", this.inset);
+
+        fragment.appendChild(element);
+
+        return fragment;
     }
 
     afterDraw() {
-        if(this.hasAttribute("lines"))
-            this.classList.add("wj-lines-" + this.lines);
-
-        if(this.inset)
-            this.classList.add("wj-inset");
+        this.classList.toggle("wj-lines-" + this.lines, this.hasAttribute("lines"));
+        this.classList.toggle("wj-inset", this.inset);
     }
 }
 
