@@ -403,3 +403,39 @@ $dimensions: (
 );
 
 $variable-prefix: "wj-";
+
+$enable-grid-classes: true;
+$enable-important-utilities:  true !default;
+$grid-columns: 12;
+$grid-gutter-width: 1.5rem;
+$grid-row-columns: 6 !default;
+
+$grid-breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px,
+        xxl: 1400px
+);
+
+$utilities: () !default;
+$utilities: map-merge(
+  (
+    "order": (
+      responsive: true,
+      property: order,
+      values: (
+        first: -1,
+        0: 0,
+        1: 1,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        last: 6,
+      ),
+    ),
+  ),
+  $utilities
+);

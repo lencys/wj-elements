@@ -537,6 +537,47 @@
   }
 }
 
+// Utility generator - LON - 11.08.23
+@mixin generate-utility($utility, $infix, $is-rfs-media-query: false) {
+  $values: map-get($utility, values);
+
+  // If the values are a list or string, convert it into a map
+  @if type-of($values) == "string" or type-of(nth($values, 1)) != "list" {
+    $values: zip($values, $values);
+  }
+
+  @each $key, $value in $values {
+    $properties: map-get($utility, property);
+
+    // Multiple properties are possible, for example with vertical or horizontal margins or paddings
+    @if type-of($properties) == "string" {
+      $properties: append((), $properties);
+    }
+
+    // Use custom class if present
+    $property-class: if(map-has-key($utility, class), map-get($utility, class), nth($properties, 1));
+    $property-class: if($property-class == null, "", $property-class);
+
+    // State params to generate pseudo-classes
+    $state: if(map-has-key($utility, state), map-get($utility, state), ());
+
+    $infix: if($property-class == "" and str-slice($infix, 1, 1) == "-", str-slice($infix, 2), $infix);
+
+    // Don't prefix if value key is null (eg. with shadow class)
+    $property-class-modifier: if($key, if($property-class == "" and $infix == "", "", "-") + $key, "");
+
+    $is-rtl: map-get($utility, rtl);
+
+    @if $value != null {
+      :host(.#{$property-class + $infix + $property-class-modifier}) {
+        @each $property in $properties {
+          #{$property}: $value if($enable-important-utilities, !important, null);
+        }
+      }
+    }
+  }
+}
+
 // Import the Compass Plugin
 //--------------------------------
 // Normal
@@ -1161,3 +1202,45 @@
 	  @return $text-color;
 }
 
+// LON 11.08.23 - Potrebne pre generovanie grid-u
+@function divide($dividend, $divisor, $precision: 10) {
+  $sign: if($dividend > 0 and $divisor > 0 or $dividend < 0 and $divisor < 0, 1, -1);
+  $dividend: abs($dividend);
+  $divisor: abs($divisor);
+  @if $dividend == 0 {
+    @return 0;
+  }
+  @if $divisor == 0 {
+    @error "Cannot divide by 0";
+  }
+  $remainder: $dividend;
+  $result: 0;
+  $factor: 10;
+  @while ($remainder > 0 and $precision >= 0) {
+    $quotient: 0;
+    @while ($remainder >= $divisor) {
+      $remainder: $remainder - $divisor;
+      $quotient: $quotient + 1;
+    }
+    $result: $result * 10 + $quotient;
+    $factor: $factor * .1;
+    $remainder: $remainder * 10;
+    $precision: $precision - 1;
+    @if ($precision < 0 and $remainder >= $divisor * 5) {
+      $result: $result + 1;
+    }
+  }
+  $result: $result * $factor * $sign;
+  $dividend-unit: unit($dividend);
+  $divisor-unit: unit($divisor);
+  $unit-map: (
+          "px": 1px,
+          "rem": 1rem,
+          "em": 1em,
+          "%": 1%
+  );
+  @if ($dividend-unit != $divisor-unit and map-has-key($unit-map, $dividend-unit)) {
+    $result: $result * map-get($unit-map, $dividend-unit);
+  }
+  @return $result;
+}
