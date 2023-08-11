@@ -13,14 +13,6 @@ export class Col extends WJElement {
         super(template);
     }
 
-    set size(value) {
-        this.setAttribute("color", value);
-    }
-
-    get size() {
-        return this.getAttribute("color");
-    }
-
     className = "Col";
 
     static get observedAttributes() {
@@ -42,9 +34,25 @@ export class Col extends WJElement {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("slot");
+        console.log(this.size, this.sizeSm, params);
+
+        if(this.order)
+        this.classList.add("order-" + this.order);
 
         if(this.size)
-            this.classList.add("wj-color-" + this.color, "wj-color");
+            this.classList.add("wj-col-" + this.size);
+
+        if(this.sizeSm)
+            this.classList.add("wj-col-sm-" + this.sizeSm);
+
+        if(this.sizeMd)
+            this.classList.add("wj-col-md-" + this.sizeMd);
+
+        if(this.offset)
+            this.classList.add("wj-offset-" + this.offset);
+
+        if(this.offsetSm)
+            this.classList.add("wj-offset-sm-" + this.offsetSm);
 
         fragment.appendChild(element);
 

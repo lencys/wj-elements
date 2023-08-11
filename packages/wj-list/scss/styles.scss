@@ -19,7 +19,7 @@ wj-list {
   list-style-type: none;
 }
 
-:host(.wj-inset) {
+wj-list.wj-inset {
   background: var(--wj-list-background);
   transform: translateZ(0);
   overflow: hidden;
@@ -27,14 +27,18 @@ wj-list {
   border-radius: var(--wj-list-border-radius);
 }
 
-:host-context(.wj-lines-none) ::slotted(.wj-item-list){
+.wj-lines-none .wj-item-list {
   --wj-border-width: 0 !important;
 }
 
-:host-context(.wj-lines-full) ::slotted(.wj-item-list){
-  --wj-border-width: 0 0 1px 0;
-}
-
-:host-context(.wj-lines-inset) ::slotted(.wj-item-list){
-  --wj-border-inner-width: 0 0 1px 0;
-}
+//:host-context(.wj-lines-none) ::slotted(.wj-item-list){
+//  --wj-border-width: 0 !important;
+//}
+//
+//:host-context(.wj-lines-full) ::slotted(.wj-item-list){
+//  --wj-border-width: 0 0 1px 0;
+//}
+//
+//:host-context(.wj-lines-inset) ::slotted(.wj-item-list){
+//  --wj-border-inner-width: 0 0 1px 0;
+//}

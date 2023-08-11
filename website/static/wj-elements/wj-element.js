@@ -1,6 +1,6 @@
-var A = Object.defineProperty;
-var w = (h, e, t) => e in h ? A(h, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : h[e] = t;
-var o = (h, e, t) => (w(h, typeof e != "symbol" ? e + "" : e, t), t);
+var w = Object.defineProperty;
+var A = (h, e, t) => e in h ? w(h, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : h[e] = t;
+var o = (h, e, t) => (A(h, typeof e != "symbol" ? e + "" : e, t), t);
 import { P as y, d as p } from "./default-store-actions-ff3e8b0b.js";
 class b {
   constructor(e = {}) {
@@ -385,7 +385,7 @@ class g extends HTMLElement {
     return null;
   }
   display(t = !1, s) {
-    this.isProcessingFlow(s) || (t && ([...this.context.children].forEach(this.context.removeChild.bind(this.context)), this.isAttached = !1), this.isAttached && console.log("Already rendered...", this), this.context.append(this.template.content.cloneNode(!0)), this.isPermissionCheck || this.isShow ? c.isPermissionFulfilled.bind(this)(this.permission) ? this._resolveRender(s) : this.remove() : this._resolveRender(s));
+    this.isProcessingFlow(s) || (t && this.isShadowRoot && ([...this.context.children].forEach(this.context.removeChild.bind(this.context)), this.isAttached = !1), this.isAttached && console.log("Already rendered...", this), this.context.append(this.template.content.cloneNode(!0)), this.isPermissionCheck || this.isShow ? c.isPermissionFulfilled.bind(this)(this.permission) ? this._resolveRender(s) : this.remove() : this._resolveRender(s));
   }
   render(t) {
     if (this.drawingStatus = "DRAWING", this.isProcessingFlow(t))

@@ -12,15 +12,8 @@ export class Label extends WJElement {
         super(template);
     }
 
-    set color(value) {
-        this.setAttribute("color", value);
-    }
-
-    get color() {
-        return this.getAttribute("color");
-    }
-
     className = "Label";
+
     static get observedAttributes() {
         return [];
     }
@@ -35,18 +28,14 @@ export class Label extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-        let element = document.createElement("slot");
-
         if(this.color)
-            this.classList.add("wj-color-" + this.color, "wj-color");
+            this.classList.add("wj-color-" + params.color, "wj-color");
+
+        let element = document.createElement("slot");
 
         fragment.appendChild(element);
 
         return fragment;
-    }
-
-    afterDraw(context, store, params) {
-        console.log("afterDraw", this.params);
     }
 }
 

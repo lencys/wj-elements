@@ -17,9 +17,6 @@ export class CardControls extends WJElement {
         this.isShadowRoot = "open";
     }
 
-    beforeDraw(context, store, params) {
-    }
-
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 

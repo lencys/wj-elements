@@ -27,22 +27,6 @@ export class List extends WJElement {
 
     className = "List";
 
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
-
-    draw(context, store, params) {
-        let fragment = document.createDocumentFragment();
-        let element = document.createElement("slot");
-
-        this.classList.toggle("wj-lines-" + this.lines, this.hasAttribute("lines"));
-        this.classList.toggle("wj-inset", this.inset);
-
-        fragment.appendChild(element);
-
-        return fragment;
-    }
-
     afterDraw() {
         this.classList.toggle("wj-lines-" + this.lines, this.hasAttribute("lines"));
         this.classList.toggle("wj-inset", this.inset);

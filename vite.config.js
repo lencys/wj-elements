@@ -20,6 +20,7 @@ export default ({
                 "element": "./packages/wj-element/wj-element.js",
                 "avatar": "./packages/wj-avatar/avatar.js",
                 "badge": "./packages/wj-badge/badge.js",
+                "button": "./packages/wj-button/button.js",
                 "card": "./packages/wj-card/card.js",
                 "card-header": "./packages/wj-card-header/card-header.js",
                 "card-content": "./packages/wj-card-content/card-content.js",
@@ -27,6 +28,7 @@ export default ({
                 "card-subtitle": "./packages/wj-card-subtitle/card-subtitle.js",
                 "card-title": "./packages/wj-card-title/card-title.js",
                 "col": "./packages/wj-col/col.js",
+                "dialog": "./packages/wj-dialog/dialog.js",
                 "example-element": "./packages/wj-example-element/example-element.js",
                 "grid": "./packages/wj-grid/grid.js",
                 "chip": "./packages/wj-chip/chip.js",
@@ -34,6 +36,7 @@ export default ({
                 "item": "./packages/wj-item/item.js",
                 "label": "./packages/wj-label/label.js",
                 "list": "./packages/wj-list/list.js",
+                "progress-bar": "./packages/wj-progress-bar/progress-bar.js",
                 "row": "./packages/wj-row/row.js",
                 "slider": "./packages/wj-slider/slider.js",
                 "thumbnail": "./packages/wj-thumbnail/thumbnail.js",
@@ -44,6 +47,5 @@ export default ({
             formats: ['es'],
         },
     },
-
 })
 

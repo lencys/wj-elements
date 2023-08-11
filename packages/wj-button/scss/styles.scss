@@ -1,0 +1,300 @@
+@import "../../scss/themes/net-basic/important.scss";
+
+/*
+[ Button ]
+*/
+
+:host(.wj-button-solid.wj-color-primary) {
+  --wj-color-base: #{$color-primary};
+  --wj-color-contrast: #{text-contrast($color-primary)} !important;
+}
+
+:host(.wj-button-outline.wj-color-primary) {
+  --wj-button-border-color: #{opacify($color-primary, 0.03)};
+  --wj-color-contrast: #{$color-primary} !important;
+}
+
+:host(.wj-button-solid.wj-color-complete) {
+  --wj-color-base: #{$color-complete};
+  --wj-color-contrast: #{text-contrast($color-complete)} !important;
+}
+
+:host(.wj-button-outline.wj-color-complete) {
+  --wj-button-border-color: #{opacify($color-complete, 0.03)};
+  --wj-color-contrast: #{$color-complete} !important;
+}
+
+:host(.wj-button-solid.wj-color-success) {
+  --wj-color-base: #{$color-success};
+  --wj-color-contrast: #{text-contrast($color-success)} !important;
+}
+
+:host(.wj-button-outline.wj-color-success) {
+  --wj-button-border-color: #{opacify($color-success, 0.03)};
+  --wj-color-contrast: #{$color-success} !important;
+}
+
+:host(.wj-button-solid.wj-color-warning) {
+  --wj-color-base: #{$color-warning};
+  --wj-color-contrast: #{text-contrast($color-warning)} !important;
+}
+
+:host(.wj-button-outline.wj-color-warning) {
+  --wj-button-border-color: #{opacify($color-warning, 0.03)};
+  --wj-color-contrast: #{$color-warning} !important;
+}
+
+:host(.wj-button-solid.wj-color-danger) {
+  --wj-color-base: #{$color-danger};
+  --wj-color-contrast: #{text-contrast($color-danger)} !important;
+}
+
+:host(.wj-button-outline.wj-color-danger) {
+  --wj-button-border-color: #{opacify($color-danger, 0.03)};
+  --wj-color-contrast: #{$color-danger} !important;
+}
+
+:host(.wj-button-solid.wj-color-dark) {
+  --wj-color-base: #{$color-contrast-higher};
+  --wj-color-contrast: #{text-contrast($color-contrast-higher)} !important;
+}
+
+:host(.wj-button-outline.wj-color-dark) {
+  --wj-button-border-color: #{opacify($color-contrast-higher, 0.03)};
+  --wj-color-contrast: #{$color-contrast-higher} !important;
+}
+
+:host(.wj-button-solid.wj-color-light) {
+  --wj-color-base: #{$color-contrast-lowest};
+  --wj-color-contrast: #{text-contrast($color-contrast-lowest)} !important;
+}
+
+:host(.wj-button-outline.wj-color-light) {
+  --wj-button-border-color: #{opacify($color-border-a, 0.03)};
+  --wj-color-base: #{$color-contrast-lowest};
+  --wj-color-contrast: #{text-contrast($color-contrast-lowest)} !important;
+}
+
+:host {
+  --wj-border-border-radius: 4px;
+  --wj-button-border-width: 1px;
+  --wj-button-border-style: solid;
+  --wj-button-border-color: #{opacify($color-border-a, 0.03)};
+  --padding-top: .4rem;
+  --padding-start: .5rem;
+  --padding-end: .5rem;
+  --padding-bottom: .4rem;
+  display: inline-flex;
+  margin-inline: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.button-native {
+  display: flex;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  overflow: hidden;
+  //transition: var(--transition);
+
+  border-width: var(--wj-button-border-width);
+  border-style: var(--wj-button-border-style);
+  border-color: var(--wj-button-border-color);
+  outline: none;
+
+  background: var(--wj-color-base);
+  color: var(--wj-color-contrast);
+  line-height: 1;
+  //box-shadow: var(--box-shadow);
+  contain: layout style;
+  cursor: pointer;
+  //opacity: var(--opacity);
+  //overflow: var(--overflow);
+  z-index: 0;
+  box-sizing: border-box;
+  appearance: none;
+  margin: 0;
+  border-radius: var(--wj-border-border-radius);
+  padding-top: var(--padding-top);
+  padding-bottom: var(--padding-bottom);
+  padding-left: var(--padding-start);
+  padding-right: var(--padding-end);
+}
+
+@mixin hover($background-color, $border-color, $text-color: text-contrast($background-color)) {
+  --wj-color-base: #{make-shade($background-color, $mix-percentage-light, $saturation-shift, $hue-shift, -1)};
+  --wj-button-border-color: #{$border-color};
+  --wj-color-contrast: #{$text-color};
+}
+
+@mixin hover-outline($color) {
+  --wj-color-base: #{rgba($color, 0.1)};
+  --wj-button-border-color: #{$color};
+  --wj-color-contrast: #{$color};
+}
+
+@media (any-hover: hover) {
+  :host(.wj-button-solid:hover) {
+    @include hover($color-primary, $color-primary);
+  }
+
+  :host(.wj-button-outline:hover) {
+    @include hover-outline($color-primary);
+  }
+
+  :host(.wj-button-solid.wj-color-complete:hover) {
+    @include hover($color-complete, $color-complete);
+  }
+
+  :host(.wj-button-outline.wj-color-complete:hover) {
+    @include hover-outline($color-complete);
+  }
+
+  :host(.wj-button-solid.wj-color-success:hover) {
+    @include hover($color-success, $color-success);
+  }
+
+  :host(.wj-button-outline.wj-color-success:hover) {
+    @include hover-outline($color-success);
+  }
+
+  :host(.wj-button-solid.wj-color-warning:hover) {
+    @include hover($color-warning, $color-warning);
+  }
+
+  :host(.wj-button-outline.wj-color-warning:hover) {
+    @include hover-outline($color-warning);
+  }
+
+  :host(.wj-button-solid.wj-color-danger:hover) {
+    @include hover($color-danger, $color-danger);
+  }
+
+  :host(.wj-button-outline.wj-color-danger:hover) {
+    @include hover-outline($color-danger);
+  }
+
+  :host(.wj-button-solid.wj-color-dark:hover) {
+    @include hover($color-contrast-higher, $color-contrast-higher);
+  }
+
+  :host(.wj-button-outline.wj-color-dark:hover) {
+    @include hover-outline($color-contrast-higher);
+  }
+
+  :host(.wj-button-solid.wj-color-light:hover) {
+    @include hover($color-contrast-lowest, $color-contrast-lowest);
+  }
+
+  :host(.wj-button-outline.wj-color-light:hover) {
+    --wj-color-base: #{rgba($color-contrast-low, 0.1)};
+    --wj-button-border-color: #{$color-contrast-low};
+    --wj-color-contrast: #{text-contrast($color-contrast-lowest)};
+  }
+
+  :host(.wj-button-link:hover) {
+    --wj-color-base: #{rgba(128, 128, 128, 0.2) !important};
+    --wj-button-border-color: transparent !important;
+    //--wj-border-border-radius: 34px !important;
+    color: $color-contrast-high !important;
+    //background: rgba(128, 128, 128, 0.2) !important;
+  }
+}
+
+.button-inner {
+  display: flex;
+  position: relative;
+  flex-flow: row nowrap;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+:host(.button-solid.wj-color) {
+  background-color: var(--wj-color-base) ;
+  color: var(--wj-color-contrast);
+}
+
+:host(.wj-button-disabled) {
+  cursor: default;
+  opacity: .5;
+  pointer-events: none;
+}
+
+/*
+[ Default = Solid ]
+*/
+
+:host(.wj-button-solid) {
+  --wj-color-base: #{$color-primary};
+  --wj-color-contrast: #{text-contrast($color-primary)} !important;
+}
+
+/*
+[ Outline ]
+*/
+
+:host(.wj-button-outline) {
+  --wj-button-border-color: #{opacify($color-primary, 0.03)};
+  --wj-color-base: transparent;
+  //--wj-color-contrast: #{$color-primary};
+  --wj-color-contrast: #{$color-primary} !important;
+}
+
+/*
+[ Link ]
+*/
+
+:host(.wj-button-link) {
+  --wj-button-border-width: 1px;
+  --wj-button-border-color: transparent;
+  --wj-color-base: transparent !important;
+}
+
+/*
+[ Disabled ]
+*/
+
+:host(.wj-button-disabled) {
+  cursor: default;
+  opacity: .5;
+  pointer-events: none;
+}
+
+/*
+[ Round ]
+*/
+
+:host(.wj-button-round) {
+  --wj-border-border-radius: 100px;
+}
+
+:host(.wj-button-large) {
+  //--border-radius: #{$button-ios-large-border-radius};
+  --padding-top: .6rem;
+  --padding-start: .7rem;
+  --padding-end: .7rem;
+  --padding-bottom: .6rem;
+}
+
+:host(.wj-button-small) {
+  //--border-radius: #{$button-ios-small-border-radius};
+  --padding-top: .25rem;
+  --padding-start: .25rem;
+  --padding-end: .25rem;
+  --padding-bottom: .25rem;
+}
+
+::slotted(wj-icon[slot="start"]) {
+  margin: 0 .3rem 0 -.3rem;
+}
+
+::slotted(wj-icon[slot="end"]) {
+  margin: 0 -.2rem 0 .3rem;
+}

@@ -5,12 +5,12 @@ import d, { WjElementUtils as u } from "./wj-element.js";
 import "./default-store-actions-ff3e8b0b.js";
 const p = `/*!
 * direction.scss
-*/:host{display:block;flex:1}
+*/:host{width:100%;flex-grow:0}
 `, c = document.createElement("template");
 c.innerHTML = `<style>
 	${p}
 </style>`;
-class h extends d {
+class w extends d {
   constructor() {
     super(c);
     l(this, "className", "Grid");
@@ -39,7 +39,7 @@ class h extends d {
     console.log("afterDraw", this.params);
   }
 }
-customElements.get("wj-grid") || window.customElements.define("wj-grid", h);
+customElements.get("wj-grid") || window.customElements.define("wj-grid", w);
 export {
-  h as Grid
+  w as Grid
 };

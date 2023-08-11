@@ -68,13 +68,13 @@
 
     <!-- SIZE -->
 
-    <h2>Size</h2>
+    <h2>Auto size</h2>
     <div class="playground">
       <div class="content">
         <b>Column 1 has <code>size</code> set to <code>"auto"</code></b>
         <wj-grid>
           <wj-row class="row">
-            <wj-col size="auto" class="col-6">1</wj-col>
+            <wj-col size="auto">1</wj-col>
             <wj-col>2</wj-col>
             <wj-col>3</wj-col>
           </wj-row>
@@ -85,9 +85,7 @@
           <wj-row>
             <wj-col>1</wj-col>
             <wj-col>2</wj-col>
-            <wj-col size="auto">
-              <wj-input placeholder="3"></wj-input>
-            </wj-col>
+            <wj-col size="auto">Som 3 stlpec</wj-col>
             <wj-col>4</wj-col>
             <wj-col>5</wj-col>
             <wj-col>6</wj-col>
@@ -101,6 +99,179 @@
             <wj-col size="auto">
               <div style="width: 150px">2</div>
             </wj-col>
+          </wj-row>
+        </wj-grid>
+      </div>
+    </div>
+
+    <!-- SIZE -->
+
+    <h2>Size</h2>
+    <div class="playground">
+      <div class="content">
+        <b>Column 2 has <code>size</code> set to <code>"8"</code></b>
+        <wj-grid>
+          <wj-row>
+            <wj-col>1</wj-col>
+            <wj-col size="8">2</wj-col>
+            <wj-col>3</wj-col>
+          </wj-row>
+        </wj-grid>
+
+        <b>Columns 3 & 4 have <code>size</code> set to <code>"3"</code></b>
+        <wj-grid>
+          <wj-row>
+            <wj-col>1</wj-col>
+            <wj-col>2</wj-col>
+            <wj-col size="3">3</wj-col>
+            <wj-col size="3">4</wj-col>
+            <wj-col>5</wj-col>
+            <wj-col>6</wj-col>
+          </wj-row>
+        </wj-grid>
+
+        <b>Columns 1 & 2 have <code>size</code> set to <code>"4"</code></b>
+        <wj-grid>
+          <wj-row>
+            <wj-col size="4">1</wj-col>
+            <wj-col size="4">2</wj-col>
+          </wj-row>
+        </wj-grid>
+      </div>
+    </div>
+
+    <!-- RESPONSIVE SIZE -->
+
+    <h2>Responsive size</h2>
+    <div class="playground">
+      <div class="content">
+        <b>Stacked for xs breakpoint, equal width for sm and up</b>
+        <wj-grid>
+          <wj-row>
+            <wj-col size="12" size-sm="3">1</wj-col>
+            <wj-col size="12" size-sm="3">2</wj-col>
+            <wj-col size="12" size-sm="3">3</wj-col>
+            <wj-col size="12" size-sm="3">4</wj-col>
+          </wj-row>
+        </wj-grid>
+
+        <b>Equal width until md breakpoint, last column takes full width for md and up</b>
+        <wj-grid>
+          <wj-row>
+            <wj-col size-md="6">1</wj-col>
+            <wj-col size-md="6">2</wj-col>
+            <wj-col size-md="12">3</wj-col>
+          </wj-row>
+        </wj-grid>
+
+        <b>2 per row until md breakpoint, 3 per row for md, equal width for lg and up</b>
+        <wj-grid>
+          <wj-row>
+            <wj-col size="6" size-md="4" size-lg="2">1</wj-col>
+            <wj-col size="6" size-md="4" size-lg="2">2</wj-col>
+            <wj-col size="6" size-md="4" size-lg="2">3</wj-col>
+            <wj-col size="6" size-md="4" size-lg="2">4</wj-col>
+            <wj-col size="6" size-md="4" size-lg="2">5</wj-col>
+            <wj-col size="6" size-md="4" size-lg="2">6</wj-col>
+          </wj-row>
+        </wj-grid>
+      </div>
+    </div>
+
+    <!-- OFFSET -->
+
+    <h2>Offset</h2>
+    <div class="playground">
+      <div class="content">
+        <b>Column 2 has <code>offset</code> set to <code>"3"</code></b>
+        <wj-grid>
+          <wj-row>
+            <wj-col>1</wj-col>
+            <wj-col offset="3">2</wj-col>
+            <wj-col>3</wj-col>
+          </wj-row>
+        </wj-grid>
+
+        <b>Column 5 has <code>offset</code> set to <code>"2"</code></b>
+        <wj-grid>
+          <wj-row>
+            <wj-col>1</wj-col>
+            <wj-col>2</wj-col>
+            <wj-col>3</wj-col>
+            <wj-col>4</wj-col>
+            <wj-col offset="2">5</wj-col>
+          </wj-row>
+        </wj-grid>
+
+        <b>Column 1 has <code>offset</code> set to <code>"4"</code></b>
+        <wj-grid>
+          <wj-row>
+            <wj-col size="2" offset="4">1</wj-col>
+            <wj-col size="2">2</wj-col>
+          </wj-row>
+        </wj-grid>
+      </div>
+    </div>
+
+    <!-- RESPONSIVE OFFSET -->
+
+    <h2>Responsive offset</h2>
+    <div class="playground">
+      <div class="content">
+        <b>No offset for xs breakpoint, offset 1st column for sm and up</b>
+        <wj-grid>
+          <wj-row>
+            <wj-col offset-sm="2">1</wj-col>
+            <wj-col>2</wj-col>
+            <wj-col>3</wj-col>
+            <wj-col>4</wj-col>
+            <wj-col>5</wj-col>
+          </wj-row>
+        </wj-grid>
+
+        <b>No offset for xs breakpoint, offset last 3 columns for md and up</b>
+        <wj-grid>
+          <wj-row>
+            <wj-col>1</wj-col>
+            <wj-col offset-md="2">2</wj-col>
+            <wj-col offset-md="2">3</wj-col>
+            <wj-col offset-md="2">4</wj-col>
+          </wj-row>
+        </wj-grid>
+
+        <b>Offset all columns by 6 for xs breakpoint, offset by 4 for md, offset by 2 for lg and up</b>
+        <wj-grid>
+          <wj-row>
+            <wj-col offset="6" offset-md="4" offset-lg="2">1</wj-col>
+            <wj-col offset="6" offset-md="4" offset-lg="2">2</wj-col>
+          </wj-row>
+        </wj-grid>
+      </div>
+    </div>
+
+    <!-- ORDER -->
+
+    <h2>Order</h2>
+    <div class="playground">
+      <div class="content">
+        <b>V ukážke zmeníme poradie column pomocou <code>order</code> z 3 2 1 na 1 2 3</b>
+        <wj-grid>
+          <wj-row>
+            <wj-col order="3">3</wj-col>
+            <wj-col order="2">2</wj-col>
+            <wj-col order="1">1</wj-col>
+          </wj-row>
+        </wj-grid>
+
+        <b>Column 2 presunieme na poziciu 4 a column 3 na poziciu 5</b>
+        <wj-grid>
+          <wj-row>
+            <wj-col>1</wj-col>
+            <wj-col order="4">2</wj-col>
+            <wj-col order="5">3</wj-col>
+            <wj-col>4</wj-col>
+            <wj-col>5</wj-col>
+            <wj-col>6</wj-col>
           </wj-row>
         </wj-grid>
       </div>
