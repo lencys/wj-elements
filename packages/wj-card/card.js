@@ -13,14 +13,6 @@ export class Card extends WJElement {
         super(template);
     }
 
-    set color(value) {
-        this.setAttribute("color", value);
-    }
-
-    get color() {
-        return this.getAttribute("color");
-    }
-
     className = "Card";
     static get observedAttributes() {
         return [];
@@ -42,8 +34,8 @@ export class Card extends WJElement {
 
         let element = document.createElement("slot");
 
-        if(this.color)
-            this.classList.add("wj-color-" + this.color, "wj-color");
+        if(params.color)
+            this.classList.add("wj-color-" + params.color, "wj-color");
 
         fragment.appendChild(element);
 

@@ -1,60 +1,65 @@
 @import "../../scss/themes/net-basic/important.scss";
 
 /*
-[ Chip ]
+[ Progress bar ]
 */
 
+//:host #bar {
+//  stroke: #{$color-primary}
+//}
+
+:host(.wj-color-primary) #bar {
+  --wj-progress-bar-color: #{$color-primary};
+}
+
+:host(.wj-color-complete) #bar {
+  --wj-progress-bar-color: #{$color-complete};
+}
+
+:host(.wj-color-success) #bar {
+  --wj-progress-bar-color: #{$color-success};
+}
+
+:host(.wj-color-warning) #bar {
+  --wj-progress-bar-color: #{$color-warning};
+}
+
+:host(.wj-color-danger) #bar {
+  --wj-progress-bar-color: #{$color-danger};
+}
+
+:host(.wj-color-dark) #bar {
+  --wj-progress-bar-color: #{$color-contrast-higher};
+}
+
+:host(.wj-color-light) #bar {
+  --wj-progress-bar-color: #{$color-contrast-lowest};
+}
+
 :host {
-  .base-timer {
+  --wj-progress-bar-color: #{$color-contrast-higher};
+  .progress {
     position: relative;
-    width: 100px;
-    height: 100px;
-  }
-
-  .base-timer__svg {
-    transform: scaleX(-1);
-  }
-
-  .base-timer__circle {
-    fill: none;
-    stroke: none;
-  }
-
-  .base-timer__path-elapsed {
-    stroke-width: 7px;
-    stroke: grey;
-  }
-
-  .base-timer__path-remaining {
-    stroke-width: 7px;
-    stroke-linecap: round;
-    transform: rotate(90deg);
-    transform-origin: center;
-    transition: 1s linear all;
-    fill-rule: nonzero;
-    stroke: currentColor;
-  }
-
-  .base-timer__path-remaining.green {
-    color: rgb(65, 184, 131);
-  }
-
-  .base-timer__path-remaining.orange {
-    color: orange;
-  }
-
-  .base-timer__path-remaining.red {
-    color: red;
-  }
-
-  .base-timer__label {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    top: 0;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
   }
+
+  svg {
+  }
+
+  .slot-wrapper {
+    display: flex;
+    position: absolute;
+    top: 0;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+  }
+  #bar {
+    stroke: var(--wj-progress-bar-color, red) ;
+  }
+}
+
+:host(.wj-color) #bar {
+  stroke: var(--wj-progress-bar-color) ;
 }

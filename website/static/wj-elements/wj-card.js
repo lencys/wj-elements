@@ -1,6 +1,6 @@
-var d = Object.defineProperty;
-var l = (r, t, o) => t in r ? d(r, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : r[t] = o;
-var s = (r, t, o) => (l(r, typeof t != "symbol" ? t + "" : t, o), o);
+var i = Object.defineProperty;
+var l = (r, o, t) => o in r ? i(r, o, { enumerable: !0, configurable: !0, writable: !0, value: t }) : r[o] = t;
+var s = (r, o, t) => (l(r, typeof o != "symbol" ? o + "" : o, t), t);
 import h, { WjElementUtils as p } from "./wj-element.js";
 import "./default-store-actions-ff3e8b0b.js";
 const b = `/*!
@@ -10,16 +10,10 @@ const b = `/*!
 c.innerHTML = `<style>
 	${b}
 </style>`;
-class m extends h {
+class f extends h {
   constructor() {
     super(c);
     s(this, "className", "Card");
-  }
-  set color(o) {
-    this.setAttribute("color", o);
-  }
-  get color() {
-    return this.getAttribute("color");
   }
   static get observedAttributes() {
     return [];
@@ -29,17 +23,17 @@ class m extends h {
       test: "test"
     });
   }
-  beforeDraw(o, e, a) {
+  beforeDraw(t, a, e) {
   }
-  draw(o, e, a) {
-    let n = document.createDocumentFragment(), i = document.createElement("slot");
-    return this.color && this.classList.add("wj-color-" + this.color, "wj-color"), n.appendChild(i), n;
+  draw(t, a, e) {
+    let n = document.createDocumentFragment(), d = document.createElement("slot");
+    return e.color && this.classList.add("wj-color-" + e.color, "wj-color"), n.appendChild(d), n;
   }
-  afterDraw(o, e, a) {
+  afterDraw(t, a, e) {
     console.log("afterDraw", this.params);
   }
 }
-customElements.get("wj-card") || window.customElements.define("wj-card", m);
+customElements.get("wj-card") || window.customElements.define("wj-card", f);
 export {
-  m as Card
+  f as Card
 };

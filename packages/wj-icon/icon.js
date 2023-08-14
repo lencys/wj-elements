@@ -54,13 +54,10 @@ export class Icon extends WJElement {
 
         let element = document.createElement("div");
         element.classList.add("icon-inner");
-        console.log("NAME", this.name);
         let url = getUrl(this);
-        console.log("URL", url);
-        console.log("SVG333", getSvgContent(url).then((svgContent) => {
-            console.log("SVG", iconContent.get(url));
+        getSvgContent(url).then((svgContent) => {
             element.innerHTML = iconContent.get(url);
-        }));
+        });
 
         if(this.color)
             this.classList.add("wj-color-" + this.color, "wj-color");
@@ -68,7 +65,7 @@ export class Icon extends WJElement {
         // if(this.name)
 
         if(this.size)
-            this.classList.add("wj-size-" + this.size);
+            this.classList.add("wj-size", "wj-size-" + this.size);
 
         fragment.appendChild(element);
 

@@ -60,6 +60,21 @@ export class Slider extends WJElement {
     draw() {
         let fragment = document.createDocumentFragment();
 
+        let element = document.createElement("div");
+        element.className = "native-slider";
+
+        let slider = document.createElement("div");
+        slider.className = "slider";
+
+        let label = document.createElement("slot");
+        label.name = "label";
+
+        let start = document.createElement("slot");
+        start.name = "start";
+
+        let end = document.createElement("slot");
+        end.name = "end";
+
         let output = document.createElement("output");
         output.setAttribute("for", "slider");
         output.id = "output";
@@ -80,11 +95,17 @@ export class Slider extends WJElement {
             this.setHandlePosition(e.target);
         });
 
-        fragment.appendChild(input);
 
+        slider.appendChild(input);
         if(this.hasAttribute("bubble")) {
-            fragment.appendChild(output);
+          slider.appendChild(output);
         }
+        element.appendChild(label);
+        element.appendChild(start);
+        element.appendChild(slider);
+        element.appendChild(end);
+
+        fragment.appendChild(element);
 
         this.input = input;
         this.output = output;

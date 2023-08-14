@@ -60,11 +60,15 @@
 }
 
 :host(.wj-size-small) {
-  font-size: 18px !important;
+  --wj-icon-size: 18px;
 }
 
 :host(.wj-size-large) {
-  font-size: 32px !important;
+  --wj-icon-size: 32px;
+}
+
+:host(.wj-size) {
+  font-size: var(--wj-icon-size) !important;
 }
 
 :host(.wj-color) {

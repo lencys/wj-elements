@@ -52,6 +52,26 @@
   position: relative;
   display: flex;
   align-items: center;
+  max-width: 100%;
+  .native-slider {
+    display: flex;
+    position: relative;
+    flex-grow: 1;
+    align-items: center;
+    height: inherit;
+  }
+  .slider {
+    display: flex;
+    //flex: 1;
+    align-items: center;
+    position: relative;
+    flex: 1 1 0%;
+    width: 100%;
+    height: var(--height);
+    contain: size layout style;
+    cursor: grab;
+    touch-action: pan-y;
+  }
 }
 
 input[type="range"] {
@@ -163,4 +183,18 @@ output {
   top: -46px;
   padding: 4px 8px;
   border-radius: 4px;
+}
+
+
+::slotted([slot="label"]) {
+  margin-inline: 0 1rem;
+  font-size: #{($font-size)};
+}
+
+::slotted([slot="start"]) {
+  margin-inline: 0 1rem;
+}
+
+::slotted([slot="end"]) {
+  margin-inline: 1rem 0;
 }

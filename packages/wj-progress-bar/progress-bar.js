@@ -15,10 +15,30 @@ export class ProgressBar extends WJElement {
         this.timeLimit = 60;
     }
 
+    set radius(value) {
+        this.setAttribute("radius", value);
+    }
+
+    get radius() {
+        return +this.getAttribute("radius") || 70;
+    }
+
+    get diameter() {
+        return this.radius * 2 + this.stroke;
+    }
+
+    set stroke(value) {
+        this.setAttribute("stroke", value);
+    }
+
+    get stroke() {
+        return +this.getAttribute("stroke") || 12;
+    }
+
     className = "ProgressBar";
 
     static get observedAttributes() {
-        return [];
+        return ["progress"];
     }
 
     setupAttributes() {
@@ -26,41 +46,79 @@ export class ProgressBar extends WJElement {
     }
 
     draw(context, store, params) {
+        let xy = (this.radius + this.stroke/2);
+
         let fragment = document.createDocumentFragment();
 
-        let element = document.createElement("slot");
-
         if(params.color)
-            this.classList.add("wj-color-" + this.color, "wj-color");
+            this.classList.add("wj-color-" + params.color, "wj-color");
 
-        let div = document.createElement("div");
-        div.classList.add("base-timer");
-        div.innerHTML = `<svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <g class="base-timer__circle">
-              <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
-              <path
-                id="base-timer-path-remaining"
-                stroke-dasharray="0"
-                class="base-timer__path-remaining red"
-                d="
-                  M 50, 50
-                  m -45, 0
-                  a 45,45 0 1,0 90,0
-                  a 45,45 0 1,0 -90,0
-                "
-              ></path>
-            </g>
-          </svg>`;
-        this.shadowRoot.appendChild(div);
-        // <span id="base-timer-label" class="base-timer__label">${this.formatTime(timeLeft)}</span>
+        let element = document.createElement("div");
+        element.classList.add("progress");
+
+        let slot = document.createElement("slot");
+
+        let slotWrapper = document.createElement("div");
+        slotWrapper.classList.add("slot-wrapper");
+
+        let svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+        svg.setAttribute("width", this.diameter);
+        svg.setAttribute("height", this.diameter);
+        svg.setAttribute("viewBox", `0 0 ${this.diameter} ${this.diameter}`);
+        svg.setAttribute("style", "transform: rotate(-90deg)");
+        svg.setAttribute("id", "mask");
+
+        let circleBg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        circleBg.setAttribute("r", this.radius);
+        circleBg.setAttribute("cx", xy);
+        circleBg.setAttribute("cy", xy);
+        circleBg.setAttribute("fill", "transparent");
+        circleBg.setAttribute("stroke", "#e0e0e0");
+        circleBg.setAttribute("stroke-width", this.stroke + "px");
+
+        let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        circle.setAttribute("r", this.radius);
+        circle.setAttribute("cx", xy);
+        circle.setAttribute("cy", xy);
+        circle.setAttribute("fill", "transparent");
+        // circle.setAttribute("stroke", "var(--wj-color-primary)");
+        circle.setAttribute("stroke-linecap", "round");
+        circle.setAttribute("stroke-width", this.stroke + "px");
+        circle.setAttribute("stroke-dasharray", "0");
+        circle.setAttribute("stroke-dashoffset", "0");
+        circle.setAttribute("id", "bar");
+
+        svg.appendChild(circleBg);
+        svg.appendChild(circle);
+
+        slotWrapper.appendChild(slot);
+
+        element.appendChild(slotWrapper);
+        element.appendChild(svg);
 
         fragment.appendChild(element);
+
+        this.circleBg = circleBg;
+        this.circle = circle;
 
         return fragment;
     }
 
-    afterDraw() {
-        this.startTimer();
+    afterDraw(context, store, params) {
+        console.log(params);
+        this.circleBg.setAttribute("stroke-dasharray", this.getCircleDashoffset(100) + "px");
+        this.circleBg.setAttribute("stroke-dashoffset", "0px");
+        this.circle.setAttribute("stroke-dasharray", this.getCircleDasharray(this.radius) + "px");
+        this.circle.setAttribute("stroke-dashoffset", this.getCircleDashoffset(params.progress, this.radius) + "px");
+        // this.startTimer();
+    }
+
+    getCircleDasharray(radius = 70) {
+        return 2 * Math.PI * radius;
+    }
+
+    getCircleDashoffset(progress = 0, radius) {
+        return this.getCircleDasharray(radius) * ((100 - progress)/100);
     }
 
     startTimer() {
