@@ -518,7 +518,7 @@ Events / .event-container
 			}
 			.event-start-time, .event-end-time{
 				font-size: 12px;
-				color: rgba(0, 0, 0, $mix-percentage-contrast-medium/100);
+				color: rgba(0, 0, 0, calc($mix-percentage-contrast-medium / 100)
 			}
 			.event-title{
 				font-size: 14px;

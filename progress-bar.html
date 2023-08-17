@@ -9,7 +9,7 @@
 </head>
 <body>
   <wj-demo-header></wj-demo-header>
-  <h1>Chip</h1>
+  <h1>Progress bar</h1>
   <div class="container">
 
     <!--  BASIC-->
@@ -21,12 +21,47 @@
       </div>
     </div>
 
-    <!--  RADIUS-->
+    <!-- TYPE -->
+
+    <h2>Type</h2>
+    <div class="playground">
+      <div class="content" style="flex-direction: column;">
+        <p>
+          <wj-progress-bar progress="60"></wj-progress-bar>
+        </p>
+        <p>
+          <wj-progress-bar progress="60" type="circle" radius="30"></wj-progress-bar>
+        </p>
+      </div>
+    </div>
+
+    <!-- LABEL -->
+
+    <h2>Label</h2>
+    <div class="playground">
+      <div class="content">
+        <wj-progress-bar progress="60" type="circle" radius="30">
+          <wj-label slot="start">Slot Start</wj-label>
+          <wj-label slot="end">Slot End</wj-label>
+        </wj-progress-bar>
+      </div>
+    </div>
+
+    <!-- LINECAP -->
+
+    <h2>Linecap</h2>
+    <div class="playground">
+      <div class="content" style="flex-direction: column;">
+        <wj-progress-bar progress="80" stroke="12" linecap="round"></wj-progress-bar>
+      </div>
+    </div>
+
+    <!-- RADIUS-->
 
     <h2>Radius</h2>
     <div class="playground">
       <div class="content">
-        <wj-progress-bar progress="60" radius="70"></wj-progress-bar>
+        <wj-progress-bar progress="60" radius="70" type="circle"></wj-progress-bar>
       </div>
     </div>
 
@@ -44,7 +79,7 @@
     <h2>Progress bar with image</h2>
     <div class="playground">
       <div class="content">
-        <wj-progress-bar progress="60" radius="20" stroke="3">
+        <wj-progress-bar progress="60" radius="20" stroke="3" color="danger" type="circle">
           <wj-thumbnail>
             <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
           </wj-thumbnail>
@@ -64,14 +99,30 @@
     <h2>Colors</h2>
     <div class="playground">
       <div class="content">
-        <wj-progress-bar progress="60" radius="20"></wj-progress-bar>
-        <wj-progress-bar progress="60" radius="20" color="primary"></wj-progress-bar>
-        <wj-progress-bar progress="60" radius="20" color="complete"></wj-progress-bar>
-        <wj-progress-bar progress="60" radius="20" color="success"></wj-progress-bar>
-        <wj-progress-bar progress="60" radius="20" color="warning"></wj-progress-bar>
-        <wj-progress-bar progress="60" radius="20" color="danger"></wj-progress-bar>
-        <wj-progress-bar progress="60" radius="20" color="dark"></wj-progress-bar>
-        <wj-progress-bar progress="60" radius="20" color="light"></wj-progress-bar>
+        <p>
+          <wj-progress-bar progress="60" radius="20"></wj-progress-bar>
+        </p>
+        <p>
+          <wj-progress-bar progress="60" radius="20" color="primary"></wj-progress-bar>
+        </p>
+        <p>
+          <wj-progress-bar progress="60" radius="20" color="complete"></wj-progress-bar>
+        </p>
+        <p>
+          <wj-progress-bar progress="60" radius="20" color="success"></wj-progress-bar>
+        </p>
+        <p>
+          <wj-progress-bar progress="60" radius="20" color="warning"></wj-progress-bar>
+        </p>
+        <p>
+          <wj-progress-bar progress="60" radius="20" color="danger"></wj-progress-bar>
+        </p>
+        <p>
+          <wj-progress-bar progress="60" radius="20" color="dark"></wj-progress-bar>
+        </p>
+        <p>
+          <wj-progress-bar progress="60" radius="20" color="light"></wj-progress-bar>
+        </p>
       </div>
     </div>
   </div>

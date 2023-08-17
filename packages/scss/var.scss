@@ -28,16 +28,16 @@ $saturation-shift: 18; //This value changes the saturation shift in shades
 $hue-shift: 8; //This value changes the hue of shades
 
 //Primary and Extended color scale
-$mix-percentage-lighter: 16;
-$mix-percentage-light: 90;
-$mix-percentage-darker: 60;
-$mix-percentage-dark: 81;
+$mix-percentage-lighter: 16%;
+$mix-percentage-light: 90%;
+$mix-percentage-darker: 60%;
+$mix-percentage-dark: 81%;
 
 //Neutral color contrast scale 
-$mix-percentage-contrast-lower: 5;   //Background
-$mix-percentage-contrast-low: 14;	  //Borders
-$mix-percentage-contrast-medium: 62; //Hinted text
-$mix-percentage-contrast-high: 81;	  //Body text
+$mix-percentage-contrast-lower: 5%;   //Background
+$mix-percentage-contrast-low: 14%;	  //Borders
+$mix-percentage-contrast-medium: 62%; //Hinted text
+$mix-percentage-contrast-high: 81%;	  //Body text
 
 // ================ COLOR FACTORY ====================
 //color shades and variable generation
@@ -80,7 +80,7 @@ $color-contrast-high: mix($color-contrast-higher, $color-contrast-lowest, $mix-p
 //Neutral color shades - rgba values
 $color-contrast-lower-a: rgba($color-contrast-higher, $mix-percentage-contrast-lower/100);
 $color-contrast-low-a: rgba($color-contrast-higher, $mix-percentage-contrast-low/100);
-$color-contrast-medium-a: rgba($color-contrast-higher, $mix-percentage-contrast-medium/100);
+$color-contrast-medium-a: rgba($color-contrast-higher, calc($mix-percentage-contrast-medium / 100)
 $color-contrast-high-a: rgba($color-contrast-higher, $mix-percentage-contrast-high/100);
 
 //Menu colors generation

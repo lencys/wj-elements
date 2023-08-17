@@ -158,7 +158,7 @@
   @return blend-normal(rgba($bm-red, $bm-green, $bm-blue, opacity($foreground)), $background);
 }
 @function blend-screen-color($foreground, $background) {
-  @return (255 - ( ( (255 - $foreground) * (255 - $background)) / 256));
+  @return calc(255 - ( ( (255 - $foreground) * (255 - $background)) / 256));
 }
 
 //--------------------------------
@@ -226,9 +226,9 @@
 @function blend-hardlight-color($foreground, $background) {
   $tmp-blend: $foreground;
   @if $tmp-blend < 128 {
-    $foreground: $background * $tmp-blend * (2 / 255);
+    $foreground: $background * $tmp-blend * calc(2 / 255);
   } @else {
-    $foreground: 255 - (255-$background) * (255-$tmp-blend) * (2 / 255);
+    $foreground: 255 - (255-$background) * (255-$tmp-blend) * calc(2 / 255);
   }
   @return $foreground;
 }
@@ -269,7 +269,7 @@
   // TODO: hacked to replicate photoshop
   @if $foreground == 0 {
     $foreground: 255;
-  } @elseif $tmp < 0 {
+  } @else if $tmp < 0 {
     $foreground: 0;
   } @else {
     $foreground: $tmp;
@@ -540,5 +540,5 @@
 }
 
 @function fade($color, $opacity){
-  @return fade-out($color, 1- ($opacity/100))
+  @return fade-out($color, 1- calc($opacity/100))
 }

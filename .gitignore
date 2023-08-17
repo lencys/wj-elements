@@ -4,3 +4,4 @@
 /.cache/
 website/static/wj-elements/
 /assets/js/bootstrap-5.0.2/
+/tests/output/

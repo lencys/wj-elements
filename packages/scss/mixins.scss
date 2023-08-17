@@ -738,7 +738,7 @@
   @return blend-normal(rgba($bm-red, $bm-green, $bm-blue, opacity($foreground)), $background);
 }
 @function blend-screen-color($foreground, $background) {
-  @return (255 - ( ( (255 - $foreground) * (255 - $background)) / 256));
+  @return calc(255 - ( ( (255 - $foreground) * (255 - $background)) / 256));
 }
 
 //--------------------------------
@@ -806,9 +806,9 @@
 @function blend-hardlight-color($foreground, $background) {
   $tmp-blend: $foreground;
   @if $tmp-blend < 128 {
-    $foreground: $background * $tmp-blend * (2 / 255);
+    $foreground: $background * $tmp-blend * calc(2 / 255);
   } @else {
-    $foreground: 255 - (255-$background) * (255-$tmp-blend) * (2 / 255);
+    $foreground: 255 - (255-$background) * (255-$tmp-blend) * calc(2 / 255);
   }
   @return $foreground;
 }
@@ -849,7 +849,7 @@
   // TODO: hacked to replicate photoshop
   @if $foreground == 0 {
     $foreground: 255;
-  } @elseif $tmp < 0 {
+  } @else if $tmp < 0 {
     $foreground: 0;
   } @else {
     $foreground: $tmp;
@@ -1114,9 +1114,7 @@
 	$-local-green: green(rgba($c, 1.0));
 	$-local-blue: blue(rgba($c, 1.0));
    
-	@return (0.2126 * $-local-red  +
-			 0.7152 * $-local-green +
-			 0.0722 * $-local-blue) / 255;
+	@return calc((0.2126 * $-local-red + 0.7152 * $-local-green + 0.0722 * $-local-blue) / 255);
 }
 
 @function make-shade($color, $mix-percentage, $saturation-shift, $hue-shift, $level){
@@ -1136,20 +1134,20 @@
 	$color-hue: $hue-shift;
 
 	@if(saturation($color-mix) > 5){
-		$color-saturate: saturate($color-mix, $saturation-shift / $divider)
+		$color-saturate: saturate($color-mix, calc($saturation-shift / $divider))
 	}
 	
 	@if($level < 0){
 		@if(luma(adjust-hue($color, $hue-shift)) > luma($color)){
-			$color-hue: ($hue-shift / $divider);
+			$color-hue: calc($hue-shift / $divider);
 		}@else{
-			$color-hue: -($hue-shift / $divider);
+			$color-hue: - calc($hue-shift / $divider);
 		}
 	} @else if($level > 0){
 		@if(luma(adjust-hue($color, $hue-shift)) > luma($color)){
-			$color-hue: -($hue-shift / $divider);
+			$color-hue: - calc($hue-shift / $divider);
 		}@else{
-			$color-hue: ($hue-shift / $divider);
+			$color-hue: calc($hue-shift / $divider);
 		}
 	}
 	@return adjust-hue($color-saturate, $color-hue);
@@ -1158,9 +1156,9 @@
 
 // Legibility standards, WCAG 2.0 - Returns black or white text color
 @function text-contrast($background-color) {
-	$color-brightness: round((red($background-color) * 299) + (green($background-color) * 587) + (blue($background-color) * 114) / 1000);
-	$light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114) / 1000);
-	@if abs($color-brightness) < ($light-color/2){
+	$color-brightness: round((red($background-color) * 299) + (green($background-color) * 587) + calc((blue($background-color) * 114) / 1000));
+	$light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 587) + calc((blue(#ffffff) * 114) / 1000));
+	@if abs($color-brightness) < calc($light-color/2){
 	  @return $f-color-light;
 	}
 	@else {

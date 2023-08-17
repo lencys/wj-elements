@@ -1,5 +1,21 @@
 # Slider
 
+**Nieco**
+
+Lorem ipsum dolor sit amet
+
+| A   | B   | C   |
+| --- | --- | --- |
+| 1   | 2   | 3   |
+
+# Nadpis
+
+```markup
+<wj-slider></wj-slider>
+```
+
+# Slider
+
 Posuvníky umožňujú používateľom vyberať z rozsahu hodnôt.
 
 ## Atributy elementu

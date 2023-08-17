@@ -38,12 +38,12 @@
 
 :host {
   --wj-progress-bar-color: #{$color-contrast-higher};
+  --wj-progress-bar-text-size: 1rem;
+  //line-height: 0;
   .progress {
     position: relative;
     display: flex;
-  }
-
-  svg {
+    align-items: center;
   }
 
   .slot-wrapper {
@@ -58,8 +58,24 @@
   #bar {
     stroke: var(--wj-progress-bar-color, red) ;
   }
+
+  text {
+    transform: rotate(90deg);
+    transform-origin: center;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    font-size: var(--wj-progress-bar-text-size);
+  }
 }
 
 :host(.wj-color) #bar {
   stroke: var(--wj-progress-bar-color) ;
+}
+
+::slotted([slot="start"]) {
+  margin-inline: 0 1rem;
+}
+
+::slotted([slot="end"]) {
+  margin-inline: 1rem 0;
 }
