@@ -23,8 +23,9 @@ import { Label } from "./wj-label/label.js";
 import { List } from "./wj-list/list.js";
 import { ProgressBar } from "./wj-progress-bar/progress-bar.js";
 import { Row } from "./wj-row/row.js";
-import { Thumbnail } from "./wj-thumbnail/thumbnail.js";
 import { Slider } from "./wj-slider/slider.js";
+import { Thumbnail } from "./wj-thumbnail/thumbnail.js";
+import { Toggle } from "./wj-toggle/toggle.js"
 
 export { WJElement, defaultStoreActions, store,
   Avatar,
@@ -49,4 +50,5 @@ export { WJElement, defaultStoreActions, store,
   Row,
   Slider,
   Thumbnail,
+  Toggle,
 };

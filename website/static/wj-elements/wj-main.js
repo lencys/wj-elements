@@ -5,12 +5,12 @@ import { Badge as a } from "./wj-badge.js";
 import { Button as d } from "./wj-button.js";
 import { Card as C } from "./wj-card.js";
 import { CardContent as s } from "./wj-card-content.js";
-import { CardControls as b } from "./wj-card-controls.js";
+import { CardControls as u } from "./wj-card-controls.js";
 import { CardHeader as c } from "./wj-card-header.js";
 import { CardSubtitle as E } from "./wj-card-subtitle.js";
-import { CardTitle as h } from "./wj-card-title.js";
-import { Col as I } from "./wj-col.js";
-import { Dialog as T } from "./wj-dialog.js";
+import { CardTitle as T } from "./wj-card-title.js";
+import { Col as A } from "./wj-col.js";
+import { Dialog as L } from "./wj-dialog.js";
 import { ExampleElement as w } from "./wj-example-element.js";
 import { Grid as G } from "./wj-grid.js";
 import { Chip as J } from "./wj-chip.js";
@@ -20,22 +20,23 @@ import { Label as q } from "./wj-label.js";
 import { List as z } from "./wj-list.js";
 import { ProgressBar as K } from "./wj-progress-bar.js";
 import { Row as N } from "./wj-row.js";
-import { Thumbnail as Q } from "./wj-thumbnail.js";
-import { Slider as V } from "./wj-slider.js";
-import { d as Y } from "./default-store-actions-ff3e8b0b.js";
+import { Slider as Q } from "./wj-slider.js";
+import { Thumbnail as V } from "./wj-thumbnail.js";
+import { Toggle as Y } from "./wj-toggle.js";
+import { d as _ } from "./default-store-actions-ff3e8b0b.js";
 export {
   p as Avatar,
   a as Badge,
   d as Button,
   C as Card,
   s as CardContent,
-  b as CardControls,
+  u as CardControls,
   c as CardHeader,
   E as CardSubtitle,
-  h as CardTitle,
+  T as CardTitle,
   J as Chip,
-  I as Col,
-  T as Dialog,
+  A as Col,
+  L as Dialog,
   w as ExampleElement,
   G as Grid,
   R as Icon,
@@ -44,9 +45,10 @@ export {
   z as List,
   K as ProgressBar,
   N as Row,
-  V as Slider,
-  Q as Thumbnail,
+  Q as Slider,
+  V as Thumbnail,
+  Y as Toggle,
   e as WJElement,
-  Y as defaultStoreActions,
+  _ as defaultStoreActions,
   m as store
 };

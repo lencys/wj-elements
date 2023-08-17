@@ -40,6 +40,7 @@ export default ({
                 "row": "./packages/wj-row/row.js",
                 "slider": "./packages/wj-slider/slider.js",
                 "thumbnail": "./packages/wj-thumbnail/thumbnail.js",
+                "toggle": "./packages/wj-toggle/toggle.js"
             },
             name: 'MyLib',
             // the proper extensions will be added

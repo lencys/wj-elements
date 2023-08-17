@@ -39,6 +39,7 @@ export class DemoHeader extends WJElement {
       <a href="./media.html">Media</a>
       <a href="./progress-bar.html">Progress bar</a>
       <a href="./slider.html">Slider</a>
+      <a href="./toggle.html">Toggle</a>
     `;
 
     fragment.appendChild(element);
