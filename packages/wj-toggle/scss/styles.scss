@@ -32,11 +32,16 @@ $switch-duration: 250ms;
 $switch-curve: cubic-bezier(.4,0,.2,1);
 
 :host {
+  --wj-toggle-color-base: $color-contrast-lowest;
   --wj-toggle-width: 30px;
   --wj-toggle-height: 18px;
+  --wj-toggle-border-radius: 50px;
   --wj-toggle-handle-width: 14px;
   --wj-toggle-handle-height: 14px;
-  --wj-toggle-handle-border-radius: 50px;
+  --wj-toggle-handle-border-radius: 9px;
+  --wj-toggle-handle-color: #fff;
+  --wj-toggle-handle-shadow:  1px 0 1px 0.5px rgba(0,0,0,0.12), 2px 4px 6px rgba(0,0,0,0.2);
+  --wj-toggle-handle-shadow-checked:  1px 1px 0 rgba(0,0,0,0.08), -3px 3px 6px rgba(0,0,0,0.3);
 }
 
 .native-toggle {
@@ -45,7 +50,6 @@ $switch-curve: cubic-bezier(.4,0,.2,1);
 label {
   display: flex;
   cursor: pointer;
-  //margin-bottom: 0;
   align-items: center;
   user-select: none;
   .label-wrapper {
@@ -60,18 +64,16 @@ label {
       cursor: pointer;
       width: 100%;
       height: 100%;
-      top: 0;
+      top: auto;
       left: 0;
-      background-color: $color-contrast-lowest;
-      //background-image: -webkit-linear-gradient(to right, $color-primary 0%, $color-primary-light 44%, rgba(0,0,0,0.14) 62%, rgba(0,0,0,0.04) 97%);
-      //background-image: -moz-linear-gradient(to right, $color-primary 0%, $color-primary-light 44%, rgba(0,0,0,0.14) 62%, rgba(0,0,0,0.04) 97%);
-      //background-image: linear-gradient(to right, $color-primary 0%, $color-primary-light 44%, rgba(0,0,0,0.14) 62%, rgba(0,0,0,0.04) 97%);
-      background-image: var(--wj-toggle-color-base);
+      background: var(--wj-toggle-color-base);
+      //background-color: $color-contrast-lowest;
+      //background-image: var(--wj-toggle-color-base);
       background-size: 300%;
       background-position: right;
-      border-radius: var(--wj-toggle-handle-border-radius);
+      border-radius: var(--wj-toggle-border-radius);
       border: none;
-      box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.12);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.12);
       transition: background ($switch-duration + ($switch-duration * 0.24)), box-shadow $switch-duration;
       transition-timing-function: $switch-curve;
     }
@@ -79,13 +81,13 @@ label {
       content: "";
       position: absolute;
       transform: translateX(0%);
-      background: #fff;
-      top: 2px;
-      left: 2px;
+      background: var(--wj-toggle-handle-color);
       width: var(--wj-toggle-handle-width);
       height: var(--wj-toggle-handle-height);
-      border-radius: 9px;
-      box-shadow: 1px 0px 1px 0.5px rgba(0,0,0,0.12), 2px 4px 6px rgba(0,0,0,0.2);
+      border-radius: var(--wj-toggle-handle-border-radius);
+      top: auto;
+      left: 2px;
+      box-shadow: var(--wj-toggle-handle-shadow);
       transition: transform, box-shadow;
       transition-duration: $switch-duration;
       transition-timing-function: $switch-curve;
@@ -105,11 +107,8 @@ input[type="checkbox"][disabled] {
   }
 }
 input[type="checkbox"]{
-  background:red;
   position: absolute;
-  margin: 0;
   z-index: -1;
-  width: 16px;
   opacity: 0;
   &:checked{
     & + label {
@@ -119,7 +118,7 @@ input[type="checkbox"]{
       }
       .label-wrapper:after{
         transform: translateX(calc(var(--wj-toggle-width) - var(--wj-toggle-handle-width) - 4px));
-        box-shadow: 1px 1px 0 rgba(0,0,0,0.08), -3px 3px 6px rgba(0,0,0,0.3);
+        box-shadow: var(--wj-toggle-handle-shadow-checked);
       }
     }
   }
