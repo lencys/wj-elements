@@ -20,42 +20,54 @@ export class Toggle extends WJElement {
         return this.hasAttribute("checked");
     }
 
-    className = "Chip";
+    className = "Toggle";
 
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
+    static get observedAttributes() {
+        // return ["checked"];
+    }
+
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-        let element = document.createElement("input");
-        element.setAttribute("type", "checkbox");
-        element.setAttribute("name", this.name);
-        element.setAttribute("id", "input");
+        let element = document.createElement("div")
+        element.classList.add("native-toggle");
+
+        let input = document.createElement("input");
+        input.setAttribute("part", "input")
+        input.setAttribute("type", "checkbox");
+        input.setAttribute("name", this.name);
+        input.setAttribute("id", "input");
 
         let label = document.createElement("label");
         label.setAttribute("for", "input");
 
-        let textWrapper = document.createElement("div");
-        textWrapper.classList.add("text");
+        let labelWrapper = document.createElement("div");
+        labelWrapper.setAttribute("part", "toggle");
+        labelWrapper.classList.add("label-wrapper");
 
-        let slot = document.createElement("slot");
+        let text = document.createElement("div");
+        text.classList.add("text");
+        text.innerHTML = "<slot></slot>";
 
         if(this.color)
             this.classList.add("wj-color-" + this.color, "wj-color");
 
         if(this.checked)
-            element.checked = this.checked;
+            input.checked = this.checked;
 
         if(this.disabled)
-            element.disabled = this.disabled;
+            input.disabled = this.disabled;
 
-        textWrapper.appendChild(slot);
-        label.appendChild(textWrapper);
+        element.appendChild(input);
+        element.appendChild(label);
+        label.appendChild(labelWrapper);
+        label.appendChild(text);
 
-        fragment.appendChild(element)
-        fragment.appendChild(label);
+        fragment.appendChild(element);
 
         return fragment;
     }

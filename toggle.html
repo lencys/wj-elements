@@ -29,6 +29,72 @@
         <wj-item>
           <wj-toggle checked disabled>Disabled Checked Toggle</wj-toggle>
         </wj-item>
+        <wj-item>
+          <wj-toggle color="success" checked disabled>Disabled Checked Toggle</wj-toggle>
+        </wj-item>
+      </div>
+    </div>
+
+    <!-- COLORS -->
+
+    <h3>Colors</h3>
+    <div class="playground">
+      <div class="content">
+        <wj-item>
+          <wj-toggle checked>Default Toggle</wj-toggle>
+        </wj-item>
+        <wj-item>
+          <wj-toggle color="primary" checked>Primary Toggle</wj-toggle>
+        </wj-item>
+        <wj-item>
+          <wj-toggle color="complete" checked>Complete Toggle</wj-toggle>
+        </wj-item>
+        <wj-item>
+          <wj-toggle color="success" checked>Success Toggle</wj-toggle>
+        </wj-item>
+        <wj-item>
+          <wj-toggle color="warning" checked>Warning Toggle</wj-toggle>
+        </wj-item>
+        <wj-item>
+          <wj-toggle color="danger" checked>Danger Toggle</wj-toggle>
+        </wj-item>
+        <wj-item>
+          <wj-toggle color="dark" checked>Dark Toggle</wj-toggle>
+        </wj-item>
+      </div>
+    </div>
+
+    <!--  CUSTOM-->
+
+    <h3>Basic</h3>
+    <div class="playground">
+      <div class="content">
+        <wj-toggle id="custom-toggle" checked>Default Toggle
+          <style>
+            #custom-toggle {
+              --wj-toggle-width: 60px;
+              --wj-toggle-height: 10px;
+              --wj-toggle-handle-width: 20px;
+              --wj-toggle-handle-height: 20px;
+              --wj-toggle-handle-border-radius: 0;
+            }
+
+            #custom-toggle::part(toggle):before {
+              background: #2dd36f;
+              height: 10px;
+              /*width: 100%;*/
+              top: auto;
+              /*border-radius: 0;*/
+              /*box-shadow: none;*/
+            }
+            #custom-toggle::part(toggle):after {
+                background: #aa0000;
+                top: auto;
+                border-radius: 0;
+                box-shadow: none;
+            }
+          </style>
+        </wj-toggle>
       </div>
     </div>
   </div>
