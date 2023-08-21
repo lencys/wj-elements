@@ -18,6 +18,7 @@ import { ExampleElement } from "./wj-example-element/example-element.js";
 import { Grid } from "./wj-grid/grid.js";
 import { Chip } from "./wj-chip/chip.js";
 import { Icon } from "./wj-icon/icon.js";
+import { Img } from "./wj-img/img.js";
 import { InfiniteScroll } from "./wj-infinite-scroll/infinite-scroll.js";
 import { Item } from "./wj-item/item.js";
 import { Label } from "./wj-label/label.js";
@@ -44,6 +45,7 @@ export { WJElement, defaultStoreActions, store,
   Grid,
   Chip,
   Icon,
+  Img,
   InfiniteScroll,
   Item,
   Label,

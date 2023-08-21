@@ -33,6 +33,7 @@ export default ({
                 "grid": "./packages/wj-grid/grid.js",
                 "chip": "./packages/wj-chip/chip.js",
                 "icon": "./packages/wj-icon/icon.js",
+                "img": "./packages/wj-img/img.js",
                 "infinite-scroll": "./packages/wj-infinite-scroll/infinite-scroll.js",
                 "item": "./packages/wj-item/item.js",
                 "label": "./packages/wj-label/label.js",
