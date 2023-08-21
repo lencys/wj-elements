@@ -26,10 +26,6 @@ export class Toggle extends WJElement {
         this.isShadowRoot = "open";
     }
 
-    static get observedAttributes() {
-        // return ["checked"];
-    }
-
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 

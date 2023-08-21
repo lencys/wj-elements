@@ -213,25 +213,25 @@ input[type="checkbox"]{
 //  }
 //}
   /* hide focus style if not from keyboard navigation */
-  .js-focus-visible .form-check.switch input[type="checkbox"]:focus:not(.focus-visible) + label:before {
-    box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.12);
-  }
-
-  /* Accessibility focus for screen readers*/
-  .form-check.switch{
-    input[type="checkbox"]{
-      top: 1px;
-      width: 28px;
-      height: 18px;
-    }
-  }
-  .form-check.switch.switch-lg{
-    input[type="checkbox"]{
-      top: 0px;
-      width: 34px;
-      height: 22px;
-    }
-  }
+  //.js-focus-visible .form-check.switch input[type="checkbox"]:focus:not(.focus-visible) + label:before {
+  //  box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.12);
+  //}
+  //
+  ///* Accessibility focus for screen readers*/
+  //.form-check.switch{
+  //  input[type="checkbox"]{
+  //    top: 1px;
+  //    width: 28px;
+  //    height: 18px;
+  //  }
+  //}
+  //.form-check.switch.switch-lg{
+  //  input[type="checkbox"]{
+  //    top: 0px;
+  //    width: 34px;
+  //    height: 22px;
+  //  }
+  //}
 
 
 :host(.wj-color) {
