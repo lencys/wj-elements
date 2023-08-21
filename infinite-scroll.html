@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Infinite Scroll</title>
+  <script type="module" src="./assets/js/demo.js"></script>
+  <link rel="stylesheet" href="./packages/scss/global.scss" />
+  <link rel="stylesheet" href="./assets/css/demo.css" />
+</head>
+<body>
+  <wj-demo-header></wj-demo-header>
+  <h1>Infinite Scroll</h1>
+  <div class="container">
+
+    <!-- BASIC -->
+
+    <h3>Basic</h3>
+    <div class="playground">
+      <div class="content">
+        <wj-infinite-scroll url="/api/users" container="wj-list">
+          <wj-list>
+            <wj-item iterate>
+              <wj-lable>
+                <h4>{{fullName}}</h4>
+                <p>{{jobTitle}}</p>
+              </wj-lable>
+            </wj-item>
+          </wj-list>
+        </wj-infinite-scroll>
+      </div>
+    </div>
+
+    <!-- SIZE -->
+
+    <h3>Size</h3>
+    <div class="playground">
+      <div class="content">
+        <wj-infinite-scroll url="/api/users" placement="wj-list" size="20">
+          <wj-list>
+            <wj-item iterate>
+              <wj-lable>
+                <h4>{{fullName}}</h4>
+                <p>{{jobTitle}}</p>
+              </wj-lable>
+            </wj-item>
+          </wj-list>
+        </wj-infinite-scroll>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

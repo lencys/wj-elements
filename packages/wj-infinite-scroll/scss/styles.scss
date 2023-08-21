@@ -1,0 +1,13 @@
+@import "../../scss/themes/net-basic/important.scss";
+
+/*
+[ InfiniteScroll ]
+*/
+
+:host {
+  --wj-infinite-scroll-width: 100%;
+  --wj-infinite-scroll-height: 300px;
+  overflow-x: auto;
+  width: var(--wj-infinite-scroll-width);
+  height: var(--wj-infinite-scroll-height);
+}

@@ -17,7 +17,11 @@
       "import": "./dist2/my-lib.js"
     }
   },
+  "dependencies": {
+    "@faker-js/faker": "^8.0.0"
+  },
   "devDependencies": {
+    "miragejs": "^0.1.47",
     "sass": "^1.63.5",
     "vite": "^4.3.9"
   }
