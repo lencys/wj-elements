@@ -38,6 +38,7 @@ export class Icon extends WJElement {
     }
 
     className = "Icon";
+
     static get observedAttributes() {
         return [];
     }
@@ -46,15 +47,13 @@ export class Icon extends WJElement {
         this.isShadowRoot = "open";
     }
 
-    beforeDraw(context, store, params) {
-    }
-
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("div");
         element.classList.add("icon-inner");
         let url = getUrl(this);
+
         getSvgContent(url).then((svgContent) => {
             element.innerHTML = iconContent.get(url);
         });
@@ -62,27 +61,12 @@ export class Icon extends WJElement {
         if(this.color)
             this.classList.add("wj-color-" + this.color, "wj-color");
 
-        // if(this.name)
-
         if(this.size)
             this.classList.add("wj-size", "wj-size-" + this.size);
 
         fragment.appendChild(element);
 
         return fragment;
-    }
-
-    afterDraw(context, store, params) {
-        // let req = fetch("../../assets/img/icons/svgs/brands/yelp.svg").then((rsp) => {
-        //     if (rsp.ok) {
-        //         return rsp.text().then((svgContent) => {
-        //             console.log("SVG", svgContent);
-        //             // if (svgContent && sanitize !== false) {
-        //             //     svgContent = validateContent(svgContent);
-        //             // }
-        //         });
-        //     }
-        // });
     }
 }
 

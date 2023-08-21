@@ -68,10 +68,8 @@ export const isValid = (elm) => {
 
 export const getSvgContent = (url, sanitize) => {
   let req = requests.get(url);
-  console.log(!req);
   if (!req) {
     if (typeof fetch !== 'undefined' && typeof document !== 'undefined') {
-      console.log("SVG", isSvgDataUrl(url) && isEncodedDataUrl(url));
       if (isSvgDataUrl(url) && isEncodedDataUrl(url)) {
         if (!parser) {
           parser = new DOMParser();

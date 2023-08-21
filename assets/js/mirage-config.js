@@ -23,9 +23,7 @@ export function makeServer({ environment = 'development' } = {}) {
     },
 
     routes() {
-      this.namespace = "api";
-
-      this.get("/users", function(schema, request) {
+      this.get("/api/users", function(schema, request) {
         const page = +request.queryParams.page;
         const size = +request.queryParams.size;
 
@@ -42,6 +40,8 @@ export function makeServer({ environment = 'development' } = {}) {
           data: users,
         }
       })
+
+      this.passthrough("/assets/**")
     },
   })
 

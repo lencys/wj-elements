@@ -35,7 +35,6 @@ export class Img extends WJElement {
 
     afterDraw(context, store, params) {
         let lazyImageObserver = new IntersectionObserver((entries, observer) => {
-            console.log(entries);
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.src = this.src;
