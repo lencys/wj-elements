@@ -52,7 +52,6 @@ export default class FilterDropdown extends Dropdown {
         let div = super.getDropdown('div');
 
         div.classList.add("form-group", "mb-0");
-        console.log("SOM TU")
         let input = document.createElement("input");
         input.type = "text";
         input.setAttribute("value", this.title);

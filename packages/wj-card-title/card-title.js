@@ -34,10 +34,6 @@ export class CardTitle extends WJElement {
 
         return fragment;
     }
-
-    afterDraw(context, store, params) {
-        console.log("afterDraw", this.params);
-    }
 }
 
 customElements.get("wj-card-title") || window.customElements.define("wj-card-title", CardTitle);

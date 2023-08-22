@@ -133,7 +133,7 @@ class S {
     return this.events.subscribe(e, t);
   }
   unsubscribe(e) {
-    console.log(this), delete this.events[e];
+    delete this.events[e];
   }
   pause() {
     return this._isPause = !0, this;

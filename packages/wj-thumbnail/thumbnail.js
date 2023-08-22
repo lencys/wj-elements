@@ -33,10 +33,6 @@ export class Thumbnail extends WJElement {
 
         return fragment;
     }
-
-    afterDraw(context, store, params) {
-        console.log("afterDraw", this.params);
-    }
 }
 
 customElements.get("wj-thumbnail") || window.customElements.define("wj-thumbnail", Thumbnail);

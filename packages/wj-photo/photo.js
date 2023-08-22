@@ -80,7 +80,6 @@ class Photo extends WJElement{
         });
 
         document.addEventListener("wj-uploaded-file-exist-disk", (e) => {
-            console.log(this, e.detail.file.url)
             this.value.fileId = e.detail.file.id || 1;
             this.src = e.detail.file.url;
         });

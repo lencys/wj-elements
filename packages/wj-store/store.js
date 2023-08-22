@@ -65,8 +65,6 @@ class Store {
     }
 
     unsubscribe(eventName)  {
-        // debugger
-        console.log(this)
         delete this.events[eventName];
     }
 

@@ -34,10 +34,6 @@ export class CardSubtitle extends WJElement {
 
         return fragment;
     }
-
-    afterDraw(context, store, params) {
-        console.log("afterDraw", this.params);
-    }
 }
 
 customElements.get("wj-card-subtitle") || window.customElements.define("wj-card-subtitle", CardSubtitle);

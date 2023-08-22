@@ -88,9 +88,6 @@ export class Button extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-
-        // this.classList.add("button-solid");
-        console.log(this.disabled);
         if(this.disabled)
             this.classList.add("wj-button-disabled");
 
@@ -102,24 +99,6 @@ export class Button extends WJElement {
 
         if(this.size)
             this.classList.add("wj-button-" + this.size);
-
-        // <TagType
-        //   {...attrs}
-        //   class="button-native"
-        //   part="native"
-        //   disabled={disabled}
-        //   onFocus={this.onFocus}
-        //   onBlur={this.onBlur}
-        //   {...inheritedAttributes}
-        // >
-        //   <span class="button-inner">
-        //     <slot name="icon-only"></slot>
-        //     <slot name="start"></slot>
-        //     <slot></slot>
-        //     <slot name="end"></slot>
-        //   </span>
-        //     {mode === 'md' && <ion-ripple-effect type={this.rippleType}></ion-ripple-effect>}
-        // </TagType>
 
         if(this.color)
             this.classList.add("wj-color-" + this.color, "wj-color");
