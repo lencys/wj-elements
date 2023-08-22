@@ -76,14 +76,14 @@
 }
 
 :host {
-  --wj-border-border-radius: 4px;
+  --wj-button-border-radius: 4px;
   --wj-button-border-width: 1px;
   --wj-button-border-style: solid;
   --wj-button-border-color: #{opacify($color-border-a, 0.03)};
-  --padding-top: .4rem;
-  --padding-start: .5rem;
-  --padding-end: .5rem;
-  --padding-bottom: .4rem;
+  --wj-padding-top: .4rem;
+  --wj-padding-start: .5rem;
+  --wj-padding-end: .5rem;
+  --wj-padding-bottom: .4rem;
   display: inline-flex;
   margin-inline: 2px;
   margin-top: 2px;
@@ -117,11 +117,11 @@
   box-sizing: border-box;
   appearance: none;
   margin: 0;
-  border-radius: var(--wj-border-border-radius);
-  padding-top: var(--padding-top);
-  padding-bottom: var(--padding-bottom);
-  padding-left: var(--padding-start);
-  padding-right: var(--padding-end);
+  border-radius: var(--wj-button-border-radius);
+  padding-top: var(--wj-padding-top);
+  padding-bottom: var(--wj-padding-bottom);
+  padding-left: var(--wj-padding-start);
+  padding-right: var(--wj-padding-end);
 }
 
 @mixin hover($background-color, $border-color, $text-color: text-contrast($background-color)) {
@@ -233,7 +233,7 @@
 
 :host(.wj-button-solid) {
   --wj-color-base: #{$color-primary};
-  --wj-color-contrast: #{text-contrast($color-primary)} !important;
+  --wj-color-contrast: #{text-contrast($color-primary)};
 }
 
 /*
@@ -244,7 +244,7 @@
   --wj-button-border-color: #{opacify($color-primary, 0.03)};
   --wj-color-base: transparent;
   //--wj-color-contrast: #{$color-primary};
-  --wj-color-contrast: #{$color-primary} !important;
+  --wj-color-contrast: #{$color-primary};
 }
 
 /*
@@ -272,23 +272,23 @@
 */
 
 :host(.wj-button-round) {
-  --wj-border-border-radius: 100px;
+  --wj-button-border-radius: 100px;
 }
 
 :host(.wj-button-large) {
   //--border-radius: #{$button-ios-large-border-radius};
-  --padding-top: .6rem;
-  --padding-start: .7rem;
-  --padding-end: .7rem;
-  --padding-bottom: .6rem;
+  --wj-padding-top: .6rem;
+  --wj-padding-start: .7rem;
+  --wj-padding-end: .7rem;
+  --wj-padding-bottom: .6rem;
 }
 
 :host(.wj-button-small) {
   //--border-radius: #{$button-ios-small-border-radius};
-  --padding-top: .25rem;
-  --padding-start: .25rem;
-  --padding-end: .25rem;
-  --padding-bottom: .25rem;
+  --wj-padding-top: .25rem;
+  --wj-padding-start: .25rem;
+  --wj-padding-end: .25rem;
+  --wj-padding-bottom: .25rem;
 }
 
 ::slotted(wj-icon[slot="start"]) {
