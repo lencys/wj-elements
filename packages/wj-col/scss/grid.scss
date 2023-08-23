@@ -113,6 +113,18 @@
             }
           }
         }
+
+        @each $key, $value in $gutters {
+          .g#{$infix}-#{$key},
+          .gx#{$infix}-#{$key} {
+            --#{$variable-prefix}gutter-x: #{$value};
+          }
+
+          .g#{$infix}-#{$key},
+          .gy#{$infix}-#{$key} {
+            --#{$variable-prefix}gutter-y: #{$value};
+          }
+        }
       }
     }
   }

@@ -1,4 +1,5 @@
 @import "../../scss/themes/net-basic/important.scss";
+@import "./grid.scss";
 
 /*
 [ Row ]
@@ -7,4 +8,16 @@
 :host {
   display: flex;
   flex-wrap: wrap;
+}
+
+// Row
+
+@if $enable-grid-classes {
+  :host {
+    @include make-row();
+  }
+}
+
+@if $enable-grid-classes {
+  @include make-grid-columns();
 }

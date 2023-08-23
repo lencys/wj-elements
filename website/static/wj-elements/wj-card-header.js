@@ -30,7 +30,7 @@ class k extends p {
   }
   draw(o, n, e) {
     let a = document.createDocumentFragment(), i = document.createElement("slot");
-    return console.log("separator", this.separator), this.separator && this.classList.add("wj-separator"), a.appendChild(i), a;
+    return this.separator && this.classList.add("wj-separator"), a.appendChild(i), a;
   }
 }
 customElements.get("wj-card-header") || window.customElements.define("wj-card-header", k);

@@ -5,7 +5,7 @@ import m from "./wj-element.js";
 import "./default-store-actions-ff3e8b0b.js";
 const w = `/*!
 * direction.scss
-*/:host{--wj-card-title-font-size: 28px;--wj-card-title-font-weight: 500;--wj-card-title-margin: 0;--wj-card-title-padding: 0;--wj-card-title-line-height: 1.2}:host{font-size:var(--wj-card-title-font-size);font-weight:var(--wj-card-title-font-weight);margin:var(--wj-card-title-margin);padding:var(--wj-card-title-padding);line-height:var(--wj-card-title-line-height);display:block;position:relative}
+*/:host{--wj-card-title-font-size: 24px;--wj-card-title-font-weight: 500;--wj-card-title-margin: 0;--wj-card-title-padding: 0;--wj-card-title-line-height: 1.2}:host{font-size:var(--wj-card-title-font-size);font-weight:var(--wj-card-title-font-weight);margin:var(--wj-card-title-margin);padding:var(--wj-card-title-padding);line-height:var(--wj-card-title-line-height);display:block;position:relative}
 `, n = document.createElement("template");
 n.innerHTML = `<style>
 	${w}

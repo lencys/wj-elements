@@ -13,26 +13,10 @@ export class Row extends WJElement {
         super(template);
     }
 
-    set color(value) {
-        this.setAttribute("color", value);
-    }
-
-    get color() {
-        return this.getAttribute("color");
-    }
-
     className = "Row";
-
-    static get observedAttributes() {
-        return [];
-    }
 
     setupAttributes() {
         this.isShadowRoot = "open";
-        // or
-        WjElementUtils.setAttributesToElement(this, {
-            "test": "test"
-        });
     }
 
     beforeDraw(context, store, params) {
@@ -43,16 +27,9 @@ export class Row extends WJElement {
 
         let element = document.createElement("slot");
 
-        if(this.color)
-            this.classList.add("wj-color-" + this.color, "wj-color");
-
         fragment.appendChild(element);
 
         return fragment;
-    }
-
-    afterDraw(context, store, params) {
-        console.log("afterDraw", this.params);
     }
 }
 

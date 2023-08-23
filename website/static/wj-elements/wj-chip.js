@@ -15,12 +15,6 @@ class h extends d {
     super(a);
     s(this, "className", "Chip");
   }
-  set color(t) {
-    this.setAttribute("color", t);
-  }
-  get color() {
-    return this.getAttribute("color");
-  }
   set active(t) {
     this.setAttribute("active", "");
   }

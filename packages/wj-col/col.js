@@ -15,16 +15,8 @@ export class Col extends WJElement {
 
     className = "Col";
 
-    static get observedAttributes() {
-        return [];
-    }
-
     setupAttributes() {
         this.isShadowRoot = "open";
-        // or
-        WjElementUtils.setAttributesToElement(this, {
-            "test": "test"
-        });
     }
 
     beforeDraw(context, store, params) {
@@ -34,7 +26,6 @@ export class Col extends WJElement {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("slot");
-        console.log(this.size, this.sizeSm, params);
 
         if(this.order)
         this.classList.add("order-" + this.order);
@@ -57,10 +48,6 @@ export class Col extends WJElement {
         fragment.appendChild(element);
 
         return fragment;
-    }
-
-    afterDraw(context, store, params) {
-        console.log("afterDraw", this.params);
     }
 }
 

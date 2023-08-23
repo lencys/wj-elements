@@ -1,7 +1,5 @@
 /** @type {import('vite').UserConfig} */
 
-import { resolve } from 'path'
-
 export default ({
     css: {
         preprocessorOptions: {
@@ -42,6 +40,7 @@ export default ({
                 "row": "./packages/wj-row/row.js",
                 "slider": "./packages/wj-slider/slider.js",
                 "thumbnail": "./packages/wj-thumbnail/thumbnail.js",
+                "toast": "./packages/wj-toast/toast.js",
                 "toggle": "./packages/wj-toggle/toggle.js"
             },
             name: 'MyLib',

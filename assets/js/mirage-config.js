@@ -9,11 +9,17 @@ export function makeServer({ environment = 'development' } = {}) {
 
     factories: {
       user: Factory.extend({
+        image(i) {
+          return faker.image.urlLoremFlickr({ category: 'animals' });
+        },
         fullName(i) {
           return faker.person.fullName()
         },
         jobTitle(i) {
           return faker.person.jobTitle()
+        },
+        description(i) {
+          return faker.lorem.sentence()
         }
       }),
     },

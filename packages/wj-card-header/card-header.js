@@ -38,7 +38,7 @@ export class CardHeader extends WJElement {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("slot");
-        console.log("separator", this.separator);
+
         if(this.separator)
             this.classList.add("wj-separator");
 

@@ -27,6 +27,7 @@ import { ProgressBar } from "./wj-progress-bar/progress-bar.js";
 import { Row } from "./wj-row/row.js";
 import { Slider } from "./wj-slider/slider.js";
 import { Thumbnail } from "./wj-thumbnail/thumbnail.js";
+import { Toast } from "./wj-toast/toast.js";
 import { Toggle } from "./wj-toggle/toggle.js"
 
 export { WJElement, defaultStoreActions, store,
@@ -54,5 +55,6 @@ export { WJElement, defaultStoreActions, store,
   Row,
   Slider,
   Thumbnail,
+  Toast,
   Toggle,
 };

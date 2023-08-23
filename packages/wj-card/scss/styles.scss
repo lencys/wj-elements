@@ -9,6 +9,8 @@
   --wj-card-margin-bottom: 1rem;
   --wj-card-margin-inline: 0;
   --wj-card-border-color: #{$card-border-color};
+  --wj-color-base: #{$color-contrast-lowest};
+  --wj-color-contrast: #{text-contrast($color-contrast-lowest)};
 }
 
 :host(.wj-color-primary) {
@@ -47,6 +49,8 @@
 }
 
 :host {
+  background-color: var(--wj-color-base, red) ;
+  color: var(--wj-color-contrast);
   @include transition(all 0.2s ease);
   margin-top: var(--wj-card-margin-top);
   margin-bottom: var(--wj-card-margin-bottom);
@@ -59,7 +63,6 @@
   font-family: var(--wj-font-family);
   font-size: var(--wj-font-size);
   line-height: var(--wj-line-height);
-  color: var(--wj-color-contrast);
   position: relative;
   width: 100%;
   word-wrap: normal;

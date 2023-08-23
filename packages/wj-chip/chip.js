@@ -12,14 +12,6 @@ export class Chip extends WJElement {
         super(template);
     }
 
-    set color(value) {
-        this.setAttribute("color", value);
-    }
-
-    get color() {
-        return this.getAttribute("color");
-    }
-
     set active(value) {
         this.setAttribute("active", "");
     }
@@ -45,6 +37,7 @@ export class Chip extends WJElement {
     }
 
     className = "Chip";
+
     static get observedAttributes() {
         return [];
     }

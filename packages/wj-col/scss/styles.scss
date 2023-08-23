@@ -2,25 +2,20 @@
 @import "./grid.scss";
 
 /*
-[ Grid ]
+[ Col ]
 */
 
 :host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   flex: 1;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--wj-gutter-x) * .5);
+  padding-left: calc(var(--wj-gutter-x) * .5);
+  margin-top: var(--wj-gutter-y)
 }
-
-// Row
-
-//@if $enable-grid-classes {
-//  .row {
-//    @include make-row();
-//
-//    > * {
-//      @include make-col-ready();
-//    }
-//  }
-//}
 
 // Columns
 
