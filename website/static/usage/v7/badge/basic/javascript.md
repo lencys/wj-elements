@@ -1,12 +1,12 @@
 ```html
-<ion-list>
-  <ion-item>
-    <ion-badge slot="start">11</ion-badge>
-    <ion-label>Badge in start slot</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-badge slot="end">22</ion-badge>
-    <ion-label>Badge in end slot</ion-label>
-  </ion-item>
-</ion-list>
+<wj-list>
+  <wj-item shadow="open" class="wj-item-list">
+    <wj-badge slot="start" shadow="open">11</wj-badge>
+    <wj-label shadow="open">Badge in start slot</wj-label>
+  </wj-item>
+  <wj-item shadow="open" class="wj-item-list">
+    <wj-badge slot="end" shadow="open">22</wj-badge>
+    <wj-label shadow="open">Badge in end slot</wj-label>
+  </wj-item>
+</wj-list>
 ```
