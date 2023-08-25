@@ -28,7 +28,7 @@ export class Badge extends WJElement {
         return this.hasAttribute("disabled");
     }
 
-    className = "Chip";
+    className = "Badge";
 
     setupAttributes() {
         this.isShadowRoot = "open";

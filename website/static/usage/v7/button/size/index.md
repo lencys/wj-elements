@@ -1,8 +1,6 @@
 import Playground from '@site/src/components/global/Playground';
 
-import javascript from './javascript.md';
-import react from './react.md';
-import vue from './vue.md';
-import angular from './angular.md';
+import html from './html.md';
 
-<Playground version="7" code={{ javascript, react, vue, angular }} src="usage/v7/button/size/demo.html" />
+
+<Playground version="7" code={{ html }} src="usage/v7/button/size/demo.html" />

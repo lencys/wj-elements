@@ -86,7 +86,7 @@ Without a reliable code reproduction, it is unlikely we will be able to resolve 
 2. A browser should open at `http://localhost:3333/`.
 3. From here, navigate to one of the component's tests to preview your changes.
 4. If a test showing your change doesn't exist, [add a new test or update an existing one](#modifying-tests).
-5. To test in RTL mode, once you are in the desired component's test, add `?rtl=true` at the end of the url; for example: `http://localhost:3333/src/components/alert/test/basic?rtl=true`.
+5. To test in RTL mode, once you are in the desired component's test, add `?rtl=true` at the end of the url; for example: `http://localhost:3333/src/components/alert/button/basic?rtl=true`.
 
 #### Lint Changes
 
@@ -120,7 +120,7 @@ Without a reliable code reproduction, it is unlikely we will be able to resolve 
 4. To run screenshot locally, use the following command: `npm run test.screenshot`.
    - To run screenshot for a specific test, pass the path to the test or a string to search for.
    - For example, running all `alert` tests: `npm run test.screenshot alert`.
-   - Or, running the basic `alert` tests: `npm run test.screenshot src/components/alert/test/basic/e2e.ts`.
+   - Or, running the basic `alert` tests: `npm run test.screenshot src/components/alert/button/basic/e2e.ts`.
 
 #### Building Changes
 

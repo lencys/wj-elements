@@ -1,5 +1,5 @@
 ---
-title: UI Components
+title: WebJET Elementy
 hide_table_of_contents: true
 ---
 

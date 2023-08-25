@@ -1,35 +1,31 @@
 ---
-title: "ion-card-content"
+title: "Card Content"
 ---
-import Props from '@ionic-internal/component-api/v7/card-content/props.md';
-import Events from '@ionic-internal/component-api/v7/card-content/events.md';
-import Methods from '@ionic-internal/component-api/v7/card-content/methods.md';
-import Parts from '@ionic-internal/component-api/v7/card-content/parts.md';
-import CustomProps from '@ionic-internal/component-api/v7/card-content/custom-props.md';
-import Slots from '@ionic-internal/component-api/v7/card-content/slots.md';
 
-import EncapsulationPill from '@components/page/api/EncapsulationPill';
+Tento element slúži na použitie v karte pre umiestnenie primárneho obsahu karty.
 
+:::note Poznámka
 
-Card content is a child component of card that adds padding around its contents. It is recommended that any text content for a card should be placed inside of card content.
+Pre viac informácií o použítí Card Content sa presuňte do dokumentácie elementu [**Card**](./card).
 
-See the [Card](./card) documentation for more information.
+:::
 
+## Eventy
 
-## Properties
-<Props />
+Pre tento komponent nie sú k dispozícii žiadne eventy.
 
-## Events
-<Events />
+## Metódy
 
-## Methods
-<Methods />
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
 ## CSS Shadow Parts
-<Parts />
 
-## CSS Custom Properties
-<CustomProps />
+Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
 
-## Slots
-<Slots />
+## CSS Custom Vlastnosti
+
+Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
+
+## Sloty
+
+Pre tento komponent nie sú k dispozícii žiadne sloty.

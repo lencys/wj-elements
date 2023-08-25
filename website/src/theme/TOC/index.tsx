@@ -38,12 +38,12 @@ export default function TOC({ className, editUrl, ...props }: TOCProps): JSX.Ele
   return (
     // CUSTOM CODE - toc wrapper
     <div className="toc-wrapper">
-      <h2>Contents</h2>
+      <h2>Obsah</h2>
       <div className={clsx(styles.tableOfContents, 'thin-scrollbar', className)}>
         <TOCItems {...props} linkClassName={LINK_CLASS_NAME} linkActiveClassName={LINK_ACTIVE_CLASS_NAME} />
       </div>
       {/* CUSTOM CODE  */}
-      <EditThisPage editUrl={editUrl} />
+     {/* <EditThisPage editUrl={editUrl} />
       {activeAd && (
         <div className="internal-ad">
           <a
@@ -51,7 +51,6 @@ export default function TOC({ className, editUrl, ...props }: TOCProps): JSX.Ele
             target={activeAd.ad_url.target}
             // onClick={e => trackClick(activeAd.ad_id, e)}
           >
-            {/* Reponsive image since Prismic supports it out of the box */}
             <picture>
               <source media="(min-width: 37.5em)" src={activeAd.ad_image.url} />
               <source src={activeAd.ad_image['1x'].url} />
@@ -65,8 +64,8 @@ export default function TOC({ className, editUrl, ...props }: TOCProps): JSX.Ele
             </picture>
             <PrismicRichText field={activeAd.ad_copy} />
           </a>
-        </div>
-      )}
+        </div> 
+      )} */}
       {/* CUSTOM CODE END */}
     </div>
   );

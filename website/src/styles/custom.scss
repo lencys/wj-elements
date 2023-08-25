@@ -64,7 +64,7 @@ html[data-theme='light'] {
 }
 
 html[data-theme='dark'] {
-  --token-primary-bg-c: #03060b;
+  --token-primary-bg-c: #272b35;
   --token-secondary-bg-c: #13171c;
 
   --ifm-link-color: var(--c-blue-70);
@@ -179,4 +179,13 @@ iframe {
 
 .cordova-ee-card p {
   margin: 1rem 0 0;
+}
+
+.content {
+  width: 400px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }

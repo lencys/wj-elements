@@ -8,7 +8,7 @@ const VERSIONS_JSON = [];
 const BASE_URL = '/docs';
 
 module.exports = {
-  title: 'Ionic Documentation',
+  title: 'Dokumentácia WebJET Elementov',
   tagline:
     'Ionic is the app platform for web developers. Build amazing mobile, web, and desktop apps all with one shared code base and open web standards',
   url: 'https://elements.webjet.sk',
@@ -58,7 +58,7 @@ module.exports = {
           lastVersion: 'current',
           versions: {
             current: {
-              label: 'v7',
+              label: 'v1',
             },
           },
         },
@@ -114,8 +114,8 @@ module.exports = {
       hideOnScroll: true,
       logo: {
         alt: 'Site Logo',
-        src: `/logos/ionic-text-docs-dark.svg`,
-        srcDark: `/logos/ionic-text-docs-light.svg`,
+        src: `/logos/logo-webjetnet-black.png`,
+        srcDark: `/logos/logo-webjetnet-white.png`,
         href: '/',
         target: '_self',
         width: 139,
@@ -238,14 +238,14 @@ module.exports = {
           type: 'localeDropdown',
           position: 'right',
           dropdownItemsBefore: [],
-          dropdownItemsAfter: [
-            {
-              href: 'https://ionicframework.com/translate',
-              label: 'Translate',
-              target: '_blank',
-              rel: null,
-            },
-          ],
+          // dropdownItemsAfter: [
+          //   {
+          //     href: 'https://ionicframework.com/translate',
+          //     label: 'Translate',
+          //     target: '_blank',
+          //     rel: null,
+          //   },
+          // ],
           className: 'icon-link language navbar__item',
         },
         // {
@@ -284,6 +284,7 @@ module.exports = {
       apiKey: 'ceb5366064b8fbf70959827cf9f69227',
       indexName: 'ionicframework',
       contextualSearch: true,
+      placeholder: 'Custom Placeholder Text',
     },
   },
   plugins: [

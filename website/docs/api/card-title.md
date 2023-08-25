@@ -1,42 +1,31 @@
 ---
-title: "ion-card-title"
+title: "Card Title"
 ---
-import Props from '@ionic-internal/component-api/v7/card-title/props.md';
-import Events from '@ionic-internal/component-api/v7/card-title/events.md';
-import Methods from '@ionic-internal/component-api/v7/card-title/methods.md';
-import Parts from '@ionic-internal/component-api/v7/card-title/parts.md';
-import CustomProps from '@ionic-internal/component-api/v7/card-title/custom-props.md';
-import Slots from '@ionic-internal/component-api/v7/card-title/slots.md';
 
-import EncapsulationPill from '@components/page/api/EncapsulationPill';
+Element `Card Title` je komponent navrhnutý na použitie v rámci elementu `"Card Header"` na poskytnutie  názvu karty, čím používateľovi umožňuje rýchlo identifikovať obsah karty.
 
-<head>
-  <title>ion-card-title | Ionic App Card Title Component and Properties</title>
-  <meta name="description" content="ion-card-title is a child component of ion-card. Read to learn more about card title properties and how this component is used on Ionic Framework apps." />
-</head>
+:::note Poznámka
 
-<EncapsulationPill type="shadow" />
+Pre viac informácií o použítí Card Title sa presuňte do dokumentácie elementu [**Card**](./card)
 
+:::
 
-Card title is a child component of card that should be placed inside of a [card header](./card-header).
+## Eventy
 
-See the [Card](./card) documentation for more information.
+Pre tento komponent nie sú k dispozícii žiadne eventy.
 
+## Metódy
 
-## Properties
-<Props />
-
-## Events
-<Events />
-
-## Methods
-<Methods />
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
 ## CSS Shadow Parts
-<Parts />
 
-## CSS Custom Properties
-<CustomProps />
+Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
 
-## Slots
-<Slots />
+## CSS Custom Vlastnosti
+
+Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
+
+## Sloty
+
+Pre tento komponent nie sú k dispozícii žiadne sloty.

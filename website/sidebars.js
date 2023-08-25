@@ -266,12 +266,23 @@ module.exports = {
       collapsed: false,
       items: ['api/breadcrumb', 'api/breadcrumbs'],
     },
+    // {
+    //   type: 'category',
+    //   label: 'Button',
+    //   collapsed: false,
+    //   items: ['api/button'],
+    // },
     {
-      type: 'category',
-      label: 'Button',
-      collapsed: false,
-      items: ['api/button', 'api/ripple-effect'],
+      type: 'doc',
+      id: 'api/button', // document ID
+      label: 'Button', // sidebar label
     },
+    // {
+    //   type: 'category',
+    //   label: 'Button Ionic',
+    //   collapsed: false,
+    //   items: ['api/button', 'api/ripple-effect'],
+    // },
     {
       type: 'category',
       label: 'Card',

@@ -24,7 +24,7 @@ th {
 table {
   display: table;
   border-radius: 8px;
-
+  width: 100%;
   border-style: hidden; /* hide standard table (collapsed) border */
   box-shadow: inset 0 0 0 1px var(--ifm-table-border-color);
 
@@ -37,6 +37,9 @@ table {
 
 th {
   text-align: start;
+}
+tr td:first-of-type {
+  width: 30%;
 }
 
 th,
