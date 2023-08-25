@@ -1,5 +1,7 @@
 export enum UsageTarget {
-  HTML = 'html',
+  JavaScript = 'javascript',
+  React = 'react',
+  Vue = 'vue',
 }
 
 export enum Mode {

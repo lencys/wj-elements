@@ -11,17 +11,13 @@
 
   <body>    
     <div class="playground">
-      <div class="content">
-        <wj-list>
-          <wj-item>
-            <wj-badge slot="start">11</wj-badge>
-            <wj-label>Badge in start slot</wj-label>
-          </wj-item>
-          <wj-item>
-            <wj-badge slot="end">22</wj-badge>
-            <wj-label>Badge in end slot</wj-label>
-          </wj-item>
-        </wj-list>
+      <div class="content" style="flex-direction: column;">
+        <p>
+          <wj-progress-bar progress="60"></wj-progress-bar>
+        </p>
+        <p>
+          <wj-progress-bar progress="60" type="circle" radius="30"></wj-progress-bar>
+        </p>
       </div>
     </div>
   </body>

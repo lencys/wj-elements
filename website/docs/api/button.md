@@ -1,12 +1,12 @@
 ---
 title: "Button"
 ---
-import Props from '@ionic-internal/component-api/v7/button/props.md';
-import Events from '@ionic-internal/component-api/v7/button/events.md';
-import Methods from '@ionic-internal/component-api/v7/button/methods.md';
-import Parts from '@ionic-internal/component-api/v7/button/parts.md';
-import CustomProps from '@ionic-internal/component-api/v7/button/custom-props.md';
-import Slots from '@ionic-internal/component-api/v7/button/slots.md';
+
+<head>
+  <title>Button | Tlačidlo</title>
+  <meta name="description" content="Tlačidlá sú klikateľný element, ktorý umožnuje zobraziť text, ikonu, prípadne oboje. Tlačidlá si je možné jednoducho prispôsobiť použitím rôznych atribútov a CSS vlastností." />
+</head>
+
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
@@ -19,11 +19,7 @@ Ak chcete použiť komponent Button, zahrňte ho do HTML s požadovanými atrib�
 
 import Basic from '@site/static/usage/v7/button/basic/index.md';
 
-
-
 <Basic />
-
-
 
 ## Tvar tlačidla
 

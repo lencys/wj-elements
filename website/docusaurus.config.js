@@ -24,7 +24,8 @@ module.exports = {
   },
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/meta/favicon-96x96.png',
+  favicon: '/logos/wj-favicon.png',
+  // favicon: 'img/meta/favicon-96x96.png',
   organizationName: 'Webjet',
   projectName: 'webjet-elements-docs',
   presets: [
@@ -114,8 +115,8 @@ module.exports = {
       hideOnScroll: true,
       logo: {
         alt: 'Site Logo',
-        src: `/logos/logo-webjetnet-black.png`,
-        srcDark: `/logos/logo-webjetnet-white.png`,
+        src: `/logos/logo-wj-elements-light.png`,
+        srcDark: `/logos/logo-wj-elements-dark.png`,
         href: '/',
         target: '_self',
         width: 139,

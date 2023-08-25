@@ -6,48 +6,44 @@
     <title>Badge</title>
     <link rel="stylesheet" href="../../../../common.css" />
     <script src="../../../../common.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@7/dist/ionic/ionic.esm.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@7/css/ionic.bundle.css" />
+    <script type="module" src="./../../../../../wj-elements/wj-main.js"></script>
 
-    <style>
-      ion-list {
-        width: 250px;
-      }
-    </style>
   </head>
 
   <body>
-    <ion-app>
-      <ion-content>
-        <div class="container">
-          <ion-list>
-            <ion-item>
-              <ion-label>Followers</ion-label>
-              <ion-badge color="primary">22k</ion-badge>
-            </ion-item>
-            <ion-item>
-              <ion-label>Likes</ion-label>
-              <ion-badge color="secondary">118k</ion-badge>
-            </ion-item>
-            <ion-item>
-              <ion-label>Stars</ion-label>
-              <ion-badge color="tertiary">34k</ion-badge>
-            </ion-item>
-            <ion-item>
-              <ion-label>Completed</ion-label>
-              <ion-badge color="success">80</ion-badge>
-            </ion-item>
-            <ion-item>
-              <ion-label>Warnings</ion-label>
-              <ion-badge color="warning">70</ion-badge>
-            </ion-item>
-            <ion-item>
-              <ion-label>Notifications</ion-label>
-              <ion-badge color="danger">1000</ion-badge>
-            </ion-item>
-          </ion-list>
-        </div>
-      </ion-content>
-    </ion-app>
+    <div class="playground">
+      <div class="content">
+        <wj-list>
+          <wj-item>
+            <wj-label>Followers</wj-label>
+            <wj-badge color="primary">22k</wj-badge>
+          </wj-item>
+          <wj-item>
+            <wj-label>Likes</wj-label>
+            <wj-badge color="complete">118k</wj-badge>
+          </wj-item>
+          <wj-item>
+            <wj-label>Stars</wj-label>
+            <wj-badge color="success">34k</wj-badge>
+          </wj-item>
+          <wj-item>
+            <wj-label>Completed</wj-label>
+            <wj-badge color="warning">80</wj-badge>
+          </wj-item>
+          <wj-item>
+            <wj-label>Warnings</wj-label>
+            <wj-badge color="danger">70</wj-badge>
+          </wj-item>
+          <wj-item>
+            <wj-label>Notifications</wj-label>
+            <wj-badge color="info">1000</wj-badge>
+          </wj-item>
+          <wj-item>
+            <wj-label>Notifications</wj-label>
+            <wj-badge color="menu">1000</wj-badge>
+          </wj-item>
+        </wj-list>
+      </div>
+    </div>
   </body>
 </html>

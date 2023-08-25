@@ -1,6 +1,12 @@
 ---
 title: "Badge"
 ---
+
+<head>
+  <title>Badge | Odznaky</title>
+  <meta name="description" content="Badge sú inline-block elementy, ktoré majú informatívny charakter a zvyčajne sa zobrazujú v blízkosti iného elementu. Používajú sa ako upozornenie, že k elementu sú priradené ďalšie elementy, a informujú používateľa o ich počte." />
+</head>
+
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
@@ -11,65 +17,19 @@ Badge sú inline-block elementy, ktoré majú informatívny charakter a zvyčajn
 
 Ak chcete použiť komponent Badge, zahrňte ho do HTML s požadovanými atribútmi.
 
+import Basic from '@site/static/usage/v7/badge/basic/index.md';
 
+<Basic />
 
-```html
-<wj-list>
-  <wj-item>
-    <wj-badge slot="start">11</wj-badge>
-    <wj-label>Badge in start slot</wj-label>
-  </wj-item>
-  <wj-item>
-    <wj-badge slot="end">22</wj-badge>
-    <wj-label>Badge in end slot</wj-label>
-  </wj-item>
-</wj-list>
-```
 
 ## Úprava štýlov
 
 ### Farby
 
+import Colors from '@site/static/usage/v7/badge/theming/colors/index.md';
 
+<Colors />
 
-```html
-<wj-list>
-  <wj-item>
-    <wj-label>Followers</wj-label>
-    <wj-badge color="primary">22k</wj-badge>
-  </wj-item>
-  <wj-item>
-    <wj-label>Likes</wj-label>
-    <wj-badge color="complete">118k</wj-badge>
-  </wj-item>
-  <wj-item>
-    <wj-label>Stars</wj-label>
-    <wj-badge color="success">34k</wj-badge>
-  </wj-item>
-  <wj-item>
-    <wj-label>Completed</wj-label>
-    <wj-badge color="warning">80</wj-badge>
-  </wj-item>
-  <wj-item>
-    <wj-label>Warnings</wj-label>
-    <wj-badge color="danger">70</wj-badge>
-  </wj-item>
-  <wj-item>
-    <wj-label>Notifications</wj-label>
-    <wj-badge color="info">1000</wj-badge>
-  </wj-item>
-  <wj-item>
-    <wj-label>Notifications</wj-label>
-    <wj-badge color="menu">1000</wj-badge>
-  </wj-item>
-</wj-list>
-```
-
-### CSS Custom Vlastnosti
-
-```html
-
-```
 
 ## Atribúty a Vlastnosti
 
@@ -77,7 +37,7 @@ Ak chcete použiť komponent Badge, zahrňte ho do HTML s požadovanými atribú
 
 |  |  |
 | --- | --- |
-| Popis | Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `"primary"`, `"complete"`, `"success"`, `"warning"`, `"danger"`, `"info"`, `"contrast-low"` a `"menu"`. |
+| Popis | Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `"primary"`, `"complete"`,  `"success"`, `"warning"`, `"danger"`, `"info"`, `"contrast-low"` a `"menu"`. |
 | Atribút | `color` |
 | Typ | `"complete"` ｜ `"danger"` ｜ `"info"` ｜ `"menu"` ｜ `"primary"` ｜ `"success"` ｜ `"warning"` ｜ `undefined` |
 | Predvolená hodnota | `"contrast-low"` |
