@@ -4,4 +4,4 @@ import javascript from './javascript.md';
 import react from './react.md';
 import vue from './vue.md';
 
-<Playground version="7" code={{ javascript, react, vue }} src="usage/v7/progress-bar/linecap/demo.html" />
+<Playground version="7" code={{ javascript, react, vue }} src="usage/v7/progress-bar/stroke/demo.html" />

@@ -87,7 +87,7 @@ import Custom from '@site/static/usage/v7/button/theming/css-properties/index.md
 
 ## Atribúty a Vlastnosti
 
-### **active**
+### active
 
 |  |  |
 | --- | --- |

@@ -1,8 +1,3 @@
 ```html
-<div class="playground">
-  <div class="content">
-    <wj-button>Default</wj-button>
-    <wj-button disabled>Disabled</wj-button>
-  </div>
-</div>
+<wj-progress-bar progress="80" stroke="12" linecap="round"></wj-progress-bar>
 ```
