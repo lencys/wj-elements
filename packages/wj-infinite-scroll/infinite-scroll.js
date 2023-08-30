@@ -46,6 +46,10 @@ export class InfiniteScroll extends WJElement {
         this.isShadowRoot = "open";
     }
 
+    beforeDraw(context, store, params) {
+        this.setAttribute("style", "height: " + this.height);
+    }
+
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 

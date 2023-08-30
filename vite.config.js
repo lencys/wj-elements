@@ -1,6 +1,7 @@
 /** @type {import('vite').UserConfig} */
 
 export default ({
+    base: '/',
     css: {
         preprocessorOptions: {
             scss: {
@@ -9,6 +10,7 @@ export default ({
         },
     },
     build: {
+        minify: false,
         outDir: './website/static/wj-elements',
         lib: {
             // Could also be a dictionary or array of multiple entry points
@@ -27,16 +29,22 @@ export default ({
                 "card-title": "./packages/wj-card-title/card-title.js",
                 "col": "./packages/wj-col/col.js",
                 "dialog": "./packages/wj-dialog/dialog.js",
-                "example-element": "./packages/wj-example-element/example-element.js",
+                // "example-element": "./packages/wj-example-element/example-element.js",
+                "form": "./packages/wj-form/form.js",
                 "grid": "./packages/wj-grid/grid.js",
                 "chip": "./packages/wj-chip/chip.js",
                 "icon": "./packages/wj-icon/icon.js",
                 "img": "./packages/wj-img/img.js",
                 "infinite-scroll": "./packages/wj-infinite-scroll/infinite-scroll.js",
+                "input": "./packages/wj-input/input.js",
                 "item": "./packages/wj-item/item.js",
                 "label": "./packages/wj-label/label.js",
                 "list": "./packages/wj-list/list.js",
                 "progress-bar": "./packages/wj-progress-bar/progress-bar.js",
+                "route": "./packages/wj-route/route.js",
+                "routerx": "./packages/wj-router/router.js",
+                "router-link": "./packages/wj-router-link/router-link.js",
+                "router-outlet": "./packages/wj-router-outlet/router-outlet.js",
                 "row": "./packages/wj-row/row.js",
                 "slider": "./packages/wj-slider/slider.js",
                 "thumbnail": "./packages/wj-thumbnail/thumbnail.js",

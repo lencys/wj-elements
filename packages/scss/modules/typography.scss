@@ -1,6 +1,3 @@
-// Import important
-@import "../themes/net-basic/important";
-
 /*------------------------------------------------------------------
 [5@mixin  Typography]
 */
@@ -64,7 +61,7 @@ body {
   -webkit-font-feature-settings: "kern" 1;
   -moz-font-feature-settings: "kern" 1;
 }
-/* Headings 
+/* Headings
 ------------------------------------
 */
 h1,
@@ -83,28 +80,28 @@ h6 {
   display: inline-block;
 }
 h1 {
-  font-size: 44px;
-  line-height: 50px;
+  font-size: 34px;
+  line-height: 44px;
   letter-spacing: -0.0141279em;
 }
 h2 {
-  font-size: 30px;
-  line-height: 38px;
+  font-size: 26px;
+  line-height: 34px;
   letter-spacing: -0.021em;
 }
 h3 {
-  font-size: 27px;
-  line-height: 35px;
+  font-size: 22px;
+  line-height: 28px;
   letter-spacing: -0.0114923em;
 }
 h4 {
-  font-size: 22px;
-  line-height: 32px;
+  font-size: 20px;
+  line-height: 26px;
   letter-spacing: -0.00865734em;
 }
 h5 {
   font-size: 18px;
-  line-height: 26px;
+  line-height: 24px;
   letter-spacing: -0.00630069em;
 }
 h3 small,
@@ -127,7 +124,7 @@ a {
   text-shadow: none !important;
   color: $color-primary-dark;
   transition: color 0.1s linear 0s, background-color 0.1s linear 0s,
-    opacity 0.2s linear 0s !important;
+  opacity 0.2s linear 0s !important;
   font-weight: 500;
 }
 a:focus,
@@ -283,11 +280,11 @@ code {
   padding: 5px 7px;
   margin: 0;
   &:hover {
-	color: $color-complete;
+    color: $color-complete;
   }
   &.code-sm{
-	padding: 3px 6px;
- }
+    padding: 3px 6px;
+  }
 }
 
 figcaption {
@@ -337,7 +334,7 @@ sub {
 var {
   font-family: $base-font-family;
   font-feature-settings: "calt" 1, "tnum" 1, "frac" 1, "case" 1, "ss01" 1,
-    "cv11" 1;
+  "cv11" 1;
 }
 
 abbr {
@@ -458,10 +455,10 @@ kbd {
   background-color: #fff;
   border-radius: 3px;
   box-shadow: 0px 2px 0px 1px #c7c7c7, 0px 1px 0px 1px rgba(0, 0, 0, 0.15),
-    0px 0px 0px 1px #ececec;
+  0px 0px 0px 1px #ececec;
 }
 
-/* Types 
+/* Types
 ------------------------------------
 */
 
@@ -472,7 +469,7 @@ kbd {
   font-size: 11px;
 }
 
-/* Font Sizes 
+/* Font Sizes
 ------------------------------------
 */
 
@@ -508,7 +505,7 @@ kbd {
   font-weight: 300 !important;
 }
 
-/* Misc 
+/* Misc
 ------------------------------------
 */
 
@@ -591,7 +588,7 @@ kbd {
   color: text-contrast($color-primary-lighter);
 }
 
-/* Complete 
+/* Complete
 ------------------------------------
 */
 .bg-complete {
@@ -615,7 +612,7 @@ kbd {
   color: text-contrast($color-complete-lighter);
 }
 
-/* Success 
+/* Success
 ------------------------------------
 */
 .bg-success {
@@ -663,7 +660,7 @@ kbd {
   color: text-contrast($color-info-lighter);
 }
 
-/* Danger 
+/* Danger
 ------------------------------------
 */
 .bg-danger {
@@ -711,7 +708,7 @@ kbd {
   color: text-contrast($color-warning-lighter);
 }
 
-/* Menu 
+/* Menu
 ------------------------------------
 */
 .bg-menu-dark {
@@ -732,26 +729,26 @@ kbd {
 */
 .gradient-grey {
   background: -webkit-linear-gradient(
-    top,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.8) 75%
+                  top,
+                  rgba(0, 0, 0, 0) 0%,
+                  rgba(0, 0, 0, 0.8) 75%
   );
   background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.8) 75%
+                  to bottom,
+                  rgba(0, 0, 0, 0) 0%,
+                  rgba(0, 0, 0, 0.8) 75%
   );
 }
 .gradient-black {
   background: -webkit-linear-gradient(
-    top,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.8) 75%
+                  top,
+                  rgba(0, 0, 0, 0) 0%,
+                  rgba(0, 0, 0, 0.8) 75%
   );
   background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.8) 75%
+                  to bottom,
+                  rgba(0, 0, 0, 0) 0%,
+                  rgba(0, 0, 0, 0.8) 75%
   );
 }
 
@@ -759,12 +756,12 @@ kbd {
 ------------------------------------
 */
 .bg-black {
-	background-color: $color-black !important;
-	color: text-contrast($color-black);
+  background-color: $color-black !important;
+  color: text-contrast($color-black);
 }
 .bg-white {
-	background-color: $color-contrast-lowest !important;
-	color: $color-contrast-high;
+  background-color: $color-contrast-lowest !important;
+  color: $color-contrast-high;
 }
 .bg-transparent {
   background-color: transparent !important;
@@ -1163,13 +1160,13 @@ z = font size
   }
 }
 
-/* For Windows : Fixes 
+/* For Windows : Fixes
 ------------------------------------
 */
 .windows {
-	.small-text, small, .small{
-    	-webkit-text-stroke: 0.028px;
-  	}
+  .small-text, small, .small{
+    -webkit-text-stroke: 0.028px;
+  }
 }
 
 

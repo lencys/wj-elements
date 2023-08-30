@@ -1,19 +1,20 @@
-var c = Object.defineProperty;
-var d = (r, t, e) => t in r ? c(r, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[t] = e;
-var a = (r, t, e) => (d(r, typeof t != "symbol" ? t + "" : t, e), e);
-import m from "./wj-element.js";
-import "./default-store-actions-ff3e8b0b.js";
-const w = `/*!
-* direction.scss
-*/:host{--wj-card-title-font-size: 24px;--wj-card-title-font-weight: 500;--wj-card-title-margin: 0;--wj-card-title-padding: 0;--wj-card-title-line-height: 1.2}:host{font-size:var(--wj-card-title-font-size);font-weight:var(--wj-card-title-font-weight);margin:var(--wj-card-title-margin);padding:var(--wj-card-title-padding);line-height:var(--wj-card-title-line-height);display:block;position:relative}
-`, n = document.createElement("template");
-n.innerHTML = `<style>
-	${w}
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+import "./default-store-actions-65bc7799.js";
+const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n:host {\n  --wj-card-title-font-size: 24px;\n  --wj-card-title-font-weight: 500;\n  --wj-card-title-margin: 0;\n  --wj-card-title-padding: 0;\n  --wj-card-title-line-height: 1.2;\n}\n:host {\n  font-size: var(--wj-card-title-font-size);\n  font-weight: var(--wj-card-title-font-weight);\n  margin: var(--wj-card-title-margin);\n  padding: var(--wj-card-title-padding);\n  line-height: var(--wj-card-title-line-height);\n  display: block;\n  position: relative;\n}";
+const template = document.createElement("template");
+template.innerHTML = `<style>
+	${styles}
 </style>`;
-class p extends m {
+class CardTitle extends WJElement {
   constructor() {
-    super(n);
-    a(this, "className", "CardTitle");
+    super(template);
+    __publicField(this, "className", "CardTitle");
   }
   static get observedAttributes() {
     return [];
@@ -21,14 +22,16 @@ class p extends m {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  beforeDraw(e, s, o) {
+  beforeDraw(context, store, params) {
   }
-  draw(e, s, o) {
-    let i = document.createDocumentFragment(), l = document.createElement("slot");
-    return i.appendChild(l), i;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-customElements.get("wj-card-title") || window.customElements.define("wj-card-title", p);
+customElements.get("wj-card-title") || window.customElements.define("wj-card-title", CardTitle);
 export {
-  p as CardTitle
+  CardTitle
 };

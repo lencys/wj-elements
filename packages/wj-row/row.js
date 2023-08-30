@@ -16,7 +16,7 @@ export class Row extends WJElement {
     className = "Row";
 
     setupAttributes() {
-        this.isShadowRoot = "open";
+        // this.isShadowRoot = "open";
     }
 
     beforeDraw(context, store, params) {

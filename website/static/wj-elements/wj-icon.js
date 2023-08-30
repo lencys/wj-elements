@@ -1,76 +1,134 @@
-var w = Object.defineProperty;
-var p = (t, e, o) => e in t ? w(t, e, { enumerable: !0, configurable: !0, writable: !0, value: o }) : t[e] = o;
-var d = (t, e, o) => (p(t, typeof e != "symbol" ? e + "" : e, o), o);
-import g from "./wj-element.js";
-import "./default-store-actions-ff3e8b0b.js";
-const s = /* @__PURE__ */ new Map(), m = /* @__PURE__ */ new Map();
-let c;
-const j = (t) => a(t) && (t = t.trim(), b(t)) ? t : null, b = (t) => t.length > 0 && /(\/|\.)/.test(t), v = (t) => t.startsWith("data:image/svg+xml"), z = (t) => t.indexOf(";utf8,") !== -1, a = (t) => typeof t == "string", x = (t) => {
-  const e = document.createElement("div");
-  e.innerHTML = t;
-  const o = e.firstElementChild;
-  return o && o.nodeName.toLowerCase() === "svg" && (o.getAttribute("class"), u(o)) ? e.innerHTML : "";
-}, u = (t) => {
-  if (t.nodeType === 1) {
-    if (t.nodeName.toLowerCase() === "script")
-      return !1;
-    for (let e = 0; e < t.attributes.length; e++) {
-      const o = t.attributes[e].name;
-      if (a(o) && o.toLowerCase().indexOf("on") === 0)
-        return !1;
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+import "./default-store-actions-65bc7799.js";
+const iconContent = /* @__PURE__ */ new Map();
+const requests = /* @__PURE__ */ new Map();
+let parser;
+const getSrc = (src) => {
+  if (isStr(src)) {
+    src = src.trim();
+    if (isSrc(src)) {
+      return src;
     }
-    for (let e = 0; e < t.childNodes.length; e++)
-      if (!u(t.childNodes[e]))
-        return !1;
   }
-  return !0;
-}, y = (t, e) => {
-  let o = m.get(t);
-  if (!o)
-    if (typeof fetch < "u" && typeof document < "u")
-      if (v(t) && z(t)) {
-        c || (c = new DOMParser());
-        const r = c.parseFromString(t, "text/html").querySelector("svg");
-        return r && s.set(t, r.outerHTML), Promise.resolve();
-      } else
-        o = fetch(t).then((n) => {
-          if (n.ok)
-            return n.text().then((r) => {
-              r && e !== !1 && (r = x(r)), s.set(t, r || "");
+  return null;
+};
+const isSrc = (str) => str.length > 0 && /(\/|\.)/.test(str);
+const isSvgDataUrl = (url) => url.startsWith("data:image/svg+xml");
+const isEncodedDataUrl = (url) => url.indexOf(";utf8,") !== -1;
+const isStr = (val) => typeof val === "string";
+const validateContent = (svgContent) => {
+  const div = document.createElement("div");
+  div.innerHTML = svgContent;
+  const svgElm = div.firstElementChild;
+  if (svgElm && svgElm.nodeName.toLowerCase() === "svg") {
+    svgElm.getAttribute("class") || "";
+    if (isValid(svgElm)) {
+      return div.innerHTML;
+    }
+  }
+  return "";
+};
+const isValid = (elm) => {
+  if (elm.nodeType === 1) {
+    if (elm.nodeName.toLowerCase() === "script") {
+      return false;
+    }
+    for (let i = 0; i < elm.attributes.length; i++) {
+      const name = elm.attributes[i].name;
+      if (isStr(name) && name.toLowerCase().indexOf("on") === 0) {
+        return false;
+      }
+    }
+    for (let i = 0; i < elm.childNodes.length; i++) {
+      if (!isValid(elm.childNodes[i])) {
+        return false;
+      }
+    }
+  }
+  return true;
+};
+const getSvgContent = (url, sanitize) => {
+  let req = requests.get(url);
+  if (!req) {
+    if (typeof fetch !== "undefined" && typeof document !== "undefined") {
+      if (isSvgDataUrl(url) && isEncodedDataUrl(url)) {
+        if (!parser) {
+          parser = new DOMParser();
+        }
+        const doc = parser.parseFromString(url, "text/html");
+        const svg = doc.querySelector("svg");
+        if (svg) {
+          iconContent.set(url, svg.outerHTML);
+        }
+        return Promise.resolve();
+      } else {
+        req = fetch(url).then((rsp) => {
+          if (rsp.ok) {
+            return rsp.text().then((svgContent) => {
+              if (svgContent && sanitize !== false) {
+                svgContent = validateContent(svgContent);
+              }
+              iconContent.set(url, svgContent || "");
             });
-          s.set(t, "");
-        }), m.set(t, o);
-    else
-      return s.set(t, ""), Promise.resolve();
-  return o;
-}, L = (t) => {
-  let e = j(t.src);
-  return e || (e = A(t.name), e ? C(e) : null);
-}, A = (t) => !a(t) || t.trim() === "" || t.replace(/[a-z]|-|\d/gi, "") !== "" ? null : t, C = (t) => `./assets/img/icons/svgs/solid/${t}.svg`, E = `/*!
-* direction.scss
-*/:host(.wj-color-primary){--wj-color-base: #eae0fb !important;--wj-color-contrast: #845ae0 !important}:host(.wj-color-complete){--wj-color-base: #d3eeff !important;--wj-color-contrast: #0f8ff9 !important}:host(.wj-color-success){--wj-color-base: #d6f7f0 !important;--wj-color-contrast: #26bf93 !important}:host(.wj-color-warning){--wj-color-base: #fffde1 !important;--wj-color-contrast: #ffe858 !important}:host(.wj-color-danger){--wj-color-base: #fde2da !important;--wj-color-contrast: #e6533c !important}:host(.wj-color-info){--wj-color-base: #dbe6e8 !important;--wj-color-contrast: #475b6b !important}:host(.wj-color-menu){--wj-color-base: #f4f4f4 !important;--wj-color-contrast: #21252d !important}:host{display:inline-block;width:1em;height:1em;contain:strict;fill:currentColor;box-sizing:content-box!important}.icon-inner,svg{display:block;height:100%;width:100%}:host(.wj-size-small){--wj-icon-size: 18px}:host(.wj-size-large){--wj-icon-size: 32px}:host(.wj-size){font-size:var(--wj-icon-size)!important}:host(.wj-color){color:var(--wj-color-contrast)}
-`, h = document.createElement("template");
-h.innerHTML = `<style>
-	${E}
+          }
+          iconContent.set(url, "");
+        });
+        requests.set(url, req);
+      }
+    } else {
+      iconContent.set(url, "");
+      return Promise.resolve();
+    }
+  }
+  return req;
+};
+const getUrl = (i) => {
+  let url = getSrc(i.src);
+  if (url) {
+    return url;
+  }
+  url = getName(i.name);
+  if (url) {
+    return getNamedUrl(url);
+  }
+  return null;
+};
+const getName = (iconName) => {
+  if (!isStr(iconName) || iconName.trim() === "") {
+    return null;
+  }
+  const invalidChars = iconName.replace(/[a-z]|-|\d/gi, "");
+  if (invalidChars !== "") {
+    return null;
+  }
+  return iconName;
+};
+const getNamedUrl = (iconName) => {
+  return `/demo/assets/img/icons/svgs/solid/${iconName}.svg`;
+};
+const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Chip ]\n*/\n:host(.wj-color-primary) {\n  --wj-color-base: #eae0fb !important;\n  --wj-color-contrast: #845ae0 !important;\n}\n:host(.wj-color-complete) {\n  --wj-color-base: #d3eeff !important;\n  --wj-color-contrast: #0f8ff9 !important;\n}\n:host(.wj-color-success) {\n  --wj-color-base: #d6f7f0 !important;\n  --wj-color-contrast: #26bf93 !important;\n}\n:host(.wj-color-warning) {\n  --wj-color-base: #fffde1 !important;\n  --wj-color-contrast: #ffe858 !important;\n}\n:host(.wj-color-danger) {\n  --wj-color-base: #fde2da !important;\n  --wj-color-contrast: #e6533c !important;\n}\n:host(.wj-color-info) {\n  --wj-color-base: #dbe6e8 !important;\n  --wj-color-contrast: #475b6b !important;\n}\n:host(.wj-color-menu) {\n  --wj-color-base: #f4f4f4 !important;\n  --wj-color-contrast: #21252d !important;\n}\n:host {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  contain: strict;\n  fill: currentColor;\n  box-sizing: content-box !important;\n}\n.icon-inner, svg {\n  display: block;\n  height: 100%;\n  width: 100%;\n}\n:host(.wj-size-small) {\n  --wj-icon-size: 18px;\n}\n:host(.wj-size-large) {\n  --wj-icon-size: 32px;\n}\n:host(.wj-size) {\n  font-size: var(--wj-icon-size) !important;\n}\n:host(.wj-color) {\n  color: var(--wj-color-contrast);\n}";
+const template = document.createElement("template");
+template.innerHTML = `<style>
+	${styles}
 </style>`;
-class M extends g {
+class Icon extends WJElement {
   constructor() {
-    super(h);
-    d(this, "className", "Icon");
+    super(template);
+    __publicField(this, "className", "Icon");
   }
-  set color(o) {
-    this.setAttribute("color", o);
-  }
-  get color() {
-    return this.getAttribute("color");
-  }
-  set name(o) {
-    this.setAttribute("name", o);
+  set name(value) {
+    this.setAttribute("name", value);
   }
   get name() {
     return this.getAttribute("name");
   }
-  set size(o) {
+  set size(value) {
     this.setAttribute("size", "");
   }
   get size() {
@@ -82,16 +140,23 @@ class M extends g {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(o, n, r) {
-    let l = document.createDocumentFragment(), i = document.createElement("div");
-    i.classList.add("icon-inner");
-    let f = L(this);
-    return y(f).then((S) => {
-      i.innerHTML = s.get(f);
-    }), this.color && this.classList.add("wj-color-" + this.color, "wj-color"), this.size && this.classList.add("wj-size", "wj-size-" + this.size), l.appendChild(i), l;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("div");
+    element.classList.add("icon-inner");
+    let url = getUrl(this);
+    getSvgContent(url).then((svgContent) => {
+      element.innerHTML = iconContent.get(url);
+    });
+    if (this.color)
+      this.classList.add("wj-color-" + this.color, "wj-color");
+    if (this.size)
+      this.classList.add("wj-size", "wj-size-" + this.size);
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-customElements.get("wj-icon") || window.customElements.define("wj-icon", M);
+customElements.get("wj-icon") || window.customElements.define("wj-icon", Icon);
 export {
-  M as Icon
+  Icon
 };

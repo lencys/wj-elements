@@ -12,35 +12,7 @@ export class Chip extends WJElement {
         super(template);
     }
 
-    set active(value) {
-        this.setAttribute("active", "");
-    }
-
-    get active() {
-        return this.hasAttribute("active");
-    }
-
-    set disabled(value) {
-        this.setAttribute("disabled", "");
-    }
-
-    get disabled() {
-        return this.hasAttribute("disabled");
-    }
-
-    set outline(value) {
-        this.setAttribute("outline", "");
-    }
-
-    get outline() {
-        return this.hasAttribute("outline");
-    }
-
     className = "Chip";
-
-    static get observedAttributes() {
-        return [];
-    }
 
     setupAttributes() {
         this.isShadowRoot = "open";
@@ -54,14 +26,6 @@ export class Chip extends WJElement {
         if(this.color)
             this.classList.add("wj-color-" + this.color, "wj-color");
 
-        if(this.active) {
-            this.classList.add("wj-active");
-            let i = document.createElement("wj-icon");
-            i.setAttribute("name", "check");
-
-            this.appendChild(i);
-        }
-
         if(this.disabled)
             this.classList.add("wj-disabled");
 
@@ -71,6 +35,17 @@ export class Chip extends WJElement {
         fragment.appendChild(element);
 
         return fragment;
+    }
+
+    afterDraw() {
+        if(this.hasAttribute("active")) {
+            this.classList.add("wj-active");
+
+            let i = document.createElement("wj-icon");
+            // i.setAttribute("name", "check");
+            // console.log(this, i);
+            // this.context.appendChild(i);
+        }
     }
 }
 

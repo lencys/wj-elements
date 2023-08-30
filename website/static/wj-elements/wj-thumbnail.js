@@ -1,19 +1,20 @@
-var d = Object.defineProperty;
-var l = (r, t, e) => t in r ? d(r, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[t] = e;
-var o = (r, t, e) => (l(r, typeof t != "symbol" ? t + "" : t, e), e);
-import h from "./wj-element.js";
-import "./default-store-actions-ff3e8b0b.js";
-const u = `/*!
-* direction.scss
-*/:host{--wj-thumbnail-width: 48px;--wj-thumbnail-height: 48px;--wj-border-radius: 0}:host{width:var(--wj-thumbnail-width);height:var(--wj-thumbnail-height);display:block;border-radius:var(--wj-border-radius)}::slotted(wj-img),::slotted(img){border-radius:var(--wj-border-radius);width:100%;height:100%;object-fit:cover;overflow:hidden}
-`, i = document.createElement("template");
-i.innerHTML = `<style>
-	${u}
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+import "./default-store-actions-65bc7799.js";
+const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n:host {\n  --wj-thumbnail-width: 48px;\n  --wj-thumbnail-height: 48px;\n  --wj-border-radius: 0;\n}\n:host {\n  width: var(--wj-thumbnail-width);\n  height: var(--wj-thumbnail-height);\n  display: block;\n  border-radius: var(--wj-border-radius);\n}\n::slotted(wj-img),\n::slotted(img) {\n  border-radius: var(--wj-border-radius);\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  overflow: hidden;\n}";
+const template = document.createElement("template");
+template.innerHTML = `<style>
+	${styles}
 </style>`;
-class c extends h {
+class Thumbnail extends WJElement {
   constructor() {
-    super(i);
-    o(this, "className", "Thumbnail");
+    super(template);
+    __publicField(this, "className", "Thumbnail");
   }
   static get observedAttributes() {
     return [];
@@ -21,14 +22,16 @@ class c extends h {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  beforeDraw(e, n, a) {
+  beforeDraw(context, store, params) {
   }
-  draw(e, n, a) {
-    let s = document.createDocumentFragment(), m = document.createElement("slot");
-    return s.appendChild(m), s;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-customElements.get("wj-thumbnail") || window.customElements.define("wj-thumbnail", c);
+customElements.get("wj-thumbnail") || window.customElements.define("wj-thumbnail", Thumbnail);
 export {
-  c as Thumbnail
+  Thumbnail
 };

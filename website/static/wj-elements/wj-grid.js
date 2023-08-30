@@ -1,45 +1,37 @@
-var a = Object.defineProperty;
-var m = (s, e, t) => e in s ? a(s, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : s[e] = t;
-var l = (s, e, t) => (m(s, typeof e != "symbol" ? e + "" : e, t), t);
-import d, { WjElementUtils as u } from "./wj-element.js";
-import "./default-store-actions-ff3e8b0b.js";
-const p = `/*!
-* direction.scss
-*/:host{width:100%;flex-grow:0}
-`, c = document.createElement("template");
-c.innerHTML = `<style>
-	${p}
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+import "./default-store-actions-65bc7799.js";
+const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Grid ]\n*/\n:host {\n  width: 100%;\n  flex-grow: 0;\n}";
+const template = document.createElement("template");
+template.innerHTML = `<style>
+	${styles}
 </style>`;
-class w extends d {
+class Grid extends WJElement {
   constructor() {
-    super(c);
-    l(this, "className", "Grid");
-  }
-  set color(t) {
-    this.setAttribute("color", t);
-  }
-  get color() {
-    return this.getAttribute("color");
+    super(template);
+    __publicField(this, "className", "Grid");
   }
   static get observedAttributes() {
     return [];
   }
   setupAttributes() {
-    this.isShadowRoot = "open", u.setAttributesToElement(this, {
-      test: "test"
-    });
+    this.isShadowRoot = "open";
   }
-  beforeDraw(t, r, o) {
-  }
-  draw(t, r, o) {
-    let n = document.createDocumentFragment(), i = document.createElement("slot");
-    return this.color && this.classList.add("wj-color-" + this.color, "wj-color"), n.appendChild(i), n;
-  }
-  afterDraw(t, r, o) {
-    console.log("afterDraw", this.params);
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    if (this.color)
+      this.classList.add("wj-color-" + this.color, "wj-color");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-customElements.get("wj-grid") || window.customElements.define("wj-grid", w);
+customElements.get("wj-grid") || window.customElements.define("wj-grid", Grid);
 export {
-  w as Grid
+  Grid
 };

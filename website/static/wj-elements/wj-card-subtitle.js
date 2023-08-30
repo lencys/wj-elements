@@ -1,19 +1,20 @@
-var c = Object.defineProperty;
-var m = (s, t, e) => t in s ? c(s, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : s[t] = e;
-var a = (s, t, e) => (m(s, typeof t != "symbol" ? t + "" : t, e), e);
-import d from "./wj-element.js";
-import "./default-store-actions-ff3e8b0b.js";
-const p = `/*!
-* direction.scss
-*/:host{--wj-card-subtitle-font-size: 10.5px;--wj-card-subtitle-font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif}:host{-webkit-transition:opacity .3s ease;transition:opacity .3s ease;font-family:var(--wj-card-subtitle-font-family);font-size:var(--wj-card-subtitle-font-size);text-transform:uppercase;display:inline-block;letter-spacing:.06em;font-weight:500;margin:0;padding:0;line-height:normal;overflow:hidden;text-overflow:ellipsis;filter:alpha(opacity=40)}
-`, o = document.createElement("template");
-o.innerHTML = `<style>
-	${p}
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+import "./default-store-actions-65bc7799.js";
+const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n:host {\n  --wj-card-subtitle-font-size: 10.5px;\n  --wj-card-subtitle-font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;\n}\n:host {\n  -webkit-transition: opacity 0.3s ease;\n  transition: opacity 0.3s ease;\n  font-family: var(--wj-card-subtitle-font-family);\n  font-size: var(--wj-card-subtitle-font-size);\n  text-transform: uppercase;\n  display: inline-block;\n  letter-spacing: 0.06em;\n  font-weight: 500;\n  margin: 0;\n  padding: 0;\n  line-height: normal;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  filter: alpha(opacity=40);\n}";
+const template = document.createElement("template");
+template.innerHTML = `<style>
+	${styles}
 </style>`;
-class u extends d {
+class CardSubtitle extends WJElement {
   constructor() {
-    super(o);
-    a(this, "className", "CardTitle");
+    super(template);
+    __publicField(this, "className", "CardTitle");
   }
   static get observedAttributes() {
     return [];
@@ -21,14 +22,16 @@ class u extends d {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  beforeDraw(e, r, i) {
+  beforeDraw(context, store, params) {
   }
-  draw(e, r, i) {
-    let n = document.createDocumentFragment(), l = document.createElement("slot");
-    return n.appendChild(l), n;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-customElements.get("wj-card-subtitle") || window.customElements.define("wj-card-subtitle", u);
+customElements.get("wj-card-subtitle") || window.customElements.define("wj-card-subtitle", CardSubtitle);
 export {
-  u as CardSubtitle
+  CardSubtitle
 };

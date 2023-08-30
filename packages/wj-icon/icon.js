@@ -13,14 +13,6 @@ export class Icon extends WJElement {
         super(template);
     }
 
-    set color(value) {
-        this.setAttribute("color", value);
-    }
-
-    get color() {
-        return this.getAttribute("color");
-    }
-
     set name(value) {
         this.setAttribute("name", value);
     }

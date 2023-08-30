@@ -23,7 +23,7 @@ export class Img extends WJElement {
         let fragment = document.createDocumentFragment();
 
         let img = document.createElement("img");
-        img.setAttribute("src", "./assets/img/image-loader.gif");
+        img.setAttribute("src", "./demo/assets/img/image-loader.gif");
         img.classList.add("lazy-loaded-image", "lazy");
         img.setAttribute("alt", this.alt || "");
 

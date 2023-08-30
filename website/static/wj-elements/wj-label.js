@@ -1,19 +1,20 @@
-var c = Object.defineProperty;
-var w = (e, t, o) => t in e ? c(e, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : e[t] = o;
-var a = (e, t, o) => (w(e, typeof t != "symbol" ? t + "" : t, o), o);
-import h from "./wj-element.js";
-import "./default-store-actions-ff3e8b0b.js";
-const m = `/*!
-* direction.scss
-*/:host(.wj-color-primary){--wj-color: #7252D3 !important}:host(.wj-color-complete){--wj-color: #0072EC !important}:host(.wj-color-success){--wj-color-base: #19AD79 !important;--wj-color-contrast: #fff !important}:host(.wj-color-warning){--wj-color-base: #FFd945 !important;--wj-color-contrast: #4b4b4b !important}:host(.wj-color-danger){--wj-color-base: #D83C31 !important;--wj-color-contrast: #fff !important}:host(.wj-color-info){--wj-color-base: #3B4752 !important;--wj-color-contrast: #fff !important}:host(.wj-color-menu){--wj-color-base: #2b303b !important;--wj-color-contrast: #fff !important}:host{--wj-label-text-wrap-font-size: 13px;--wj-label-text-wrap-line-height: 1.4}:host{--wj-color: initial;display:block;font-size:inherit;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;box-sizing:border-box}:host(.wj-color){color:var(--wj-color-base)}:host(.wj-text-wrap),:host([text-wrap]){white-space:normal!important;font-size:var(--wj-label-text-wrap-font-size);line-height:var(--wj-label-text-wrap-line-height)}:host(.label-fixed){flex:0 0 100px;width:100px;min-width:100px;max-width:200px}:host(.label-stacked),:host(.label-floating){margin:0;align-self:stretch;width:auto;max-width:100%}:host(.label-no-animate.label-floating){transition:none}::slotted(*) h1,::slotted(*) h2,::slotted(*) h3,::slotted(*) h4,::slotted(*) h5,::slotted(*) h6{text-overflow:inherit;overflow:inherit}:host(.wj-color){color:var(--wj-color)}::slotted(*:first-child){margin-top:0!important}::slotted(*:last-child){margin-bottom:0!important}
-`, s = document.createElement("template");
-s.innerHTML = `<style>
-	${m}
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+import "./default-store-actions-65bc7799.js";
+const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n:host(.wj-color-primary) {\n  --wj-color: #7252D3 !important;\n}\n:host(.wj-color-complete) {\n  --wj-color: #0072EC !important;\n}\n:host(.wj-color-success) {\n  --wj-color-base: #19AD79 !important;\n  --wj-color-contrast: #fff !important;\n}\n:host(.wj-color-warning) {\n  --wj-color-base: #FFd945 !important;\n  --wj-color-contrast: #4b4b4b !important;\n}\n:host(.wj-color-danger) {\n  --wj-color-base: #D83C31 !important;\n  --wj-color-contrast: #fff !important;\n}\n:host(.wj-color-info) {\n  --wj-color-base: #3B4752 !important;\n  --wj-color-contrast: #fff !important;\n}\n:host(.wj-color-menu) {\n  --wj-color-base: #2b303b !important;\n  --wj-color-contrast: #fff !important;\n}\n:host {\n  --wj-label-text-wrap-font-size: 13px;\n  --wj-label-text-wrap-line-height: 1.4;\n}\n:host {\n  --wj-color: initial;\n  display: block;\n  font-size: inherit;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n  box-sizing: border-box;\n}\n:host(.wj-color) {\n  color: var(--wj-color-base);\n}\n:host(.wj-text-wrap),\n:host([text-wrap]) {\n  white-space: normal !important;\n  font-size: var(--wj-label-text-wrap-font-size);\n  line-height: var(--wj-label-text-wrap-line-height);\n}\n:host(.label-fixed) {\n  flex: 0 0 100px;\n  width: 100px;\n  min-width: 100px;\n  max-width: 200px;\n}\n:host(.label-stacked),\n:host(.label-floating) {\n  margin: 0;\n  align-self: stretch;\n  width: auto;\n  max-width: 100%;\n}\n:host(.label-no-animate.label-floating) {\n  transition: none;\n}\n::slotted(*) h1,\n::slotted(*) h2,\n::slotted(*) h3,\n::slotted(*) h4,\n::slotted(*) h5,\n::slotted(*) h6 {\n  text-overflow: inherit;\n  overflow: inherit;\n}\n:host(.wj-color) {\n  color: var(--wj-color);\n}\n::slotted(*:first-child) {\n  margin-top: 0 !important;\n}\n::slotted(*:last-child) {\n  margin-bottom: 0 !important;\n}";
+const template = document.createElement("template");
+template.innerHTML = `<style>
+	${styles}
 </style>`;
-class p extends h {
+class Label extends WJElement {
   constructor() {
-    super(s);
-    a(this, "className", "Label");
+    super(template);
+    __publicField(this, "className", "Label");
   }
   static get observedAttributes() {
     return [];
@@ -21,16 +22,18 @@ class p extends h {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  beforeDraw(o, n, r) {
+  beforeDraw(context, store, params) {
   }
-  draw(o, n, r) {
-    let l = document.createDocumentFragment();
-    this.color && this.classList.add("wj-color-" + r.color, "wj-color");
-    let i = document.createElement("slot");
-    return l.appendChild(i), l;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    if (this.color)
+      this.classList.add("wj-color-" + params.color, "wj-color");
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-customElements.get("wj-label") || window.customElements.define("wj-label", p);
+customElements.get("wj-label") || window.customElements.define("wj-label", Label);
 export {
-  p as Label
+  Label
 };

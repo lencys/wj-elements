@@ -115,10 +115,10 @@ $color-contrast-low: mix($color-contrast-higher, $color-contrast-lowest, $mix-pe
 $color-contrast-medium: mix($color-contrast-higher, $color-contrast-lowest, $mix-percentage-contrast-medium);
 $color-contrast-high: mix($color-contrast-higher, $color-contrast-lowest, $mix-percentage-contrast-high);
 //Neutral color shades - rgba values
-$color-contrast-lower-a: rgba($color-contrast-higher, calc($mix-percentage-contrast-lower / 100));
-$color-contrast-low-a: rgba($color-contrast-higher, calc($mix-percentage-contrast-low / 100));
-$color-contrast-medium-a: rgba($color-contrast-higher, calc($mix-percentage-contrast-medium / 100));
-$color-contrast-high-a: rgba($color-contrast-higher, calc($mix-percentage-contrast-high / 100));
+$color-contrast-lower-a: rgba($color-contrast-higher, calc($mix-percentage-contrast-lower));
+$color-contrast-low-a: rgba($color-contrast-higher, calc($mix-percentage-contrast-low));
+$color-contrast-medium-a: rgba($color-contrast-higher, calc($mix-percentage-contrast-medium));
+$color-contrast-high-a: rgba($color-contrast-higher, calc($mix-percentage-contrast-high));
 
 
 

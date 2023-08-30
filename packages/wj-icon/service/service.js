@@ -99,7 +99,6 @@ export const getSvgContent = (url, sanitize) => {
       return Promise.resolve();
     }
   }
-
   return req;
 };
 
@@ -133,5 +132,5 @@ export const getName = (iconName) => {
 };
 
 const getNamedUrl = (iconName) => {
-  return `./assets/img/icons/svgs/solid/${iconName}.svg`;
+  return `/demo/assets/img/icons/svgs/solid/${iconName}.svg`;
 };

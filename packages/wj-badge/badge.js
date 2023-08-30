@@ -12,22 +12,6 @@ export class Badge extends WJElement {
         super(template);
     }
 
-    set color(value) {
-        this.setAttribute("color", value);
-    }
-
-    get color() {
-        return this.getAttribute("color");
-    }
-
-    set disabled(value) {
-        this.setAttribute("disabled", "");
-    }
-
-    get disabled() {
-        return this.hasAttribute("disabled");
-    }
-
     className = "Badge";
 
     setupAttributes() {
@@ -42,19 +26,6 @@ export class Badge extends WJElement {
         if(this.color)
             this.classList.add("wj-color-" + this.color, "wj-color");
 
-        if(this.active) {
-            this.classList.add("wj-active");
-            let i = document.createElement("wj-icon");
-            i.setAttribute("name", "check");
-
-            this.appendChild(i);
-        }
-
-        if(this.disabled)
-            this.classList.add("wj-disabled");
-
-        if(this.outline)
-            this.classList.add("wj-outline");
 
         fragment.appendChild(element);
 

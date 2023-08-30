@@ -1,20 +1,33 @@
-var d = Object.defineProperty;
-var l = (i, e, t) => e in i ? d(i, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : i[e] = t;
-var o = (i, e, t) => (l(i, typeof e != "symbol" ? e + "" : e, t), t);
-import p from "./wj-element.js";
-import "./default-store-actions-ff3e8b0b.js";
-const c = `/*!
-* direction.scss
-*/:host{--wj-border-width: 0 0 1px 0;--padding-top: 0px;--padding-bottom: 0px;--padding-end: 0px;--padding-start: 0px;--inner-border-width: 0 0 1px 0;--inner-padding-top: 0px;--inner-padding-bottom: 0px;--inner-padding-start: 0px;--inner-padding-end: 0px;--inner-box-shadow: none;--show-full-highlight: 0;--show-inset-highlight: 0;--detail-icon-color: initial;--detail-icon-font-size: 20px;--detail-icon-opacity: .25;--color-activated: var(--color);--color-focused: var(--color);--color-hover: var(--color);--ripple-color: currentColor;display:block;position:relative;align-items:center;justify-content:space-between;outline:none;color:var(--color);text-align:initial;text-decoration:none;overflow:hidden;box-sizing:border-box;width:100%}.item-native{--min-height: 40px;--background: #FFFFFF;--transition: opacity 15ms linear, background-color 15ms linear;border-radius:var(--border-radius);-webkit-border-radius:var(--border-radius);-moz-border-radius:var(--border-radius);margin:0;padding:var(--padding-top) var(--padding-end) var(--padding-bottom) calc(var(--padding-start) + var(--ion-safe-area-left, 0px));display:flex;position:relative;align-items:inherit;justify-content:inherit;width:100%;min-height:var(--min-height);transition:var(--transition);outline:none;background:var(--background);overflow:inherit;box-sizing:border-box;z-index:1;text-decoration:none;color:#000}.item-native .item-inner{margin:0;padding:var(--inner-padding-top) calc(var(--ion-safe-area-right, 0px) + var(--inner-padding-end)) var(--inner-padding-bottom) var(--inner-padding-start);display:flex;position:relative;flex:1 1 0;flex-direction:inherit;align-items:inherit;align-self:stretch;min-height:inherit;border-width:var(--wj-border-width);border-style:var(--wj-border-style);border-color:var(--wj-border-color);box-shadow:var(--inner-box-shadow);overflow:inherit;box-sizing:border-box}.item-native .item-inner .input-wrapper{display:flex;flex:1 1 0;flex-direction:inherit;align-items:inherit;align-self:stretch;text-overflow:ellipsis;overflow:inherit;box-sizing:border-box}.item-native .item-bottom{padding:0 var(--inner-padding-end) 0 calc(var(--padding-start) + var(--ion-safe-area-left, 0px));display:flex;justify-content:space-between}@media (any-hover: hover){:host(:hover) .item-native{color:#212121}:host(:hover) .item-native :after{transition:var(--transition);z-index:-1;inset:0;position:absolute;content:"";background:#f4f4f4;opacity:.7}}button,a{cursor:pointer;user-select:none;-webkit-user-drag:none}::slotted([slot=start]){margin-inline:0px 16px}::slotted(wj-label){margin:10px 8px 10px 0}::slotted(wj-label:not([slot=end])){flex:1 1 0}
-`, a = document.createElement("template");
-a.innerHTML = `<style>
-	${c}
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+import "./default-store-actions-65bc7799.js";
+const styles = '/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n:host {\n  --wj-border-width: 0 0 1px 0;\n  --padding-top: 0px;\n  --padding-bottom: 0px;\n  --padding-end: 0px;\n  --padding-start: 0px;\n  --inner-border-width: 0 0 1px 0;\n  --inner-padding-top: 0px;\n  --inner-padding-bottom: 0px;\n  --inner-padding-start: 0px;\n  --inner-padding-end: 0px;\n  --inner-box-shadow: none;\n  --show-full-highlight: 0;\n  --show-inset-highlight: 0;\n  --detail-icon-color: initial;\n  --detail-icon-font-size: 20px;\n  --detail-icon-opacity: 0.25;\n  --color-activated: var(--color);\n  --color-focused: var(--color);\n  --color-hover: var(--color);\n  --ripple-color: currentColor;\n  display: block;\n  position: relative;\n  align-items: center;\n  justify-content: space-between;\n  outline: none;\n  color: var(--color);\n  text-align: initial;\n  text-decoration: none;\n  overflow: hidden;\n  box-sizing: border-box;\n  width: 100%;\n}\n.item-native {\n  --min-height: 40px;\n  --background: #FFFFFF;\n  --transition: opacity 15ms linear, background-color 15ms linear;\n  border-radius: var(--border-radius);\n  -webkit-border-radius: var(--border-radius);\n  -moz-border-radius: var(--border-radius);\n  margin: 0 0 0 0;\n  padding: var(--padding-top) var(--padding-end) var(--padding-bottom) calc(var(--padding-start) + var(--ion-safe-area-left, 0px));\n  display: flex;\n  position: relative;\n  align-items: inherit;\n  justify-content: inherit;\n  width: 100%;\n  min-height: var(--min-height);\n  transition: var(--transition);\n  outline: none;\n  background: var(--background);\n  overflow: inherit;\n  box-sizing: border-box;\n  z-index: 1;\n  text-decoration: none;\n  color: #000;\n}\n.item-native .item-inner {\n  margin: 0 0 0 0;\n  padding: var(--inner-padding-top) calc(var(--ion-safe-area-right, 0px) + var(--inner-padding-end)) var(--inner-padding-bottom) var(--inner-padding-start);\n  display: flex;\n  position: relative;\n  flex: 1 1 0;\n  flex-direction: inherit;\n  align-items: inherit;\n  align-self: stretch;\n  min-height: inherit;\n  border-width: var(--wj-border-width);\n  border-style: var(--wj-border-style);\n  border-color: var(--wj-border-color);\n  box-shadow: var(--inner-box-shadow);\n  overflow: inherit;\n  box-sizing: border-box;\n}\n.item-native .item-inner .input-wrapper {\n  display: flex;\n  flex: 1 1 0;\n  flex-direction: inherit;\n  align-items: inherit;\n  align-self: stretch;\n  text-overflow: ellipsis;\n  overflow: inherit;\n  box-sizing: border-box;\n}\n.item-native .item-bottom {\n  padding: 0 var(--inner-padding-end) 0 calc(var(--padding-start) + var(--ion-safe-area-left, 0px));\n  display: flex;\n  justify-content: space-between;\n}\n@media (any-hover: hover) {\n  :host(:hover) .item-native {\n    color: #212121;\n  }\n  :host(:hover) .item-native :after {\n    transition: var(--transition);\n    z-index: -1;\n    inset: 0;\n    position: absolute;\n    content: "";\n    background: #f4f4f4;\n    opacity: 0.7;\n  }\n}\nbutton,\na {\n  cursor: pointer;\n  user-select: none;\n  -webkit-user-drag: none;\n}\n::slotted([slot=start]) {\n  margin-inline: 0px 16px;\n}\n::slotted(wj-label) {\n  margin: 10px 8px 10px 0;\n}\n::slotted(wj-label:not([slot=end])) {\n  flex: 1 1 0;\n}\n/*\n[ lines ]\n*/';
+const template = document.createElement("template");
+template.innerHTML = `<style>
+	${styles}
 </style>`;
-class h extends p {
+class Item extends WJElement {
   constructor() {
-    super(a);
-    o(this, "hostContext", (t, r) => r.closest(t) !== null);
-    this.labelColorStyles = {}, this.itemStyles = /* @__PURE__ */ new Map(), this.inheritedAriaAttributes = {}, this.multipleInputs = !1, this.focusable = !0, this.button = !1, this.detailIcon = "", this.disabled = !1, this.counter = !1, this.routerDirection = "forward", this.type = "button";
+    super(template);
+    __publicField(this, "hostContext", (selector, el) => {
+      return el.closest(selector) !== null;
+    });
+    this.labelColorStyles = {};
+    this.itemStyles = /* @__PURE__ */ new Map();
+    this.inheritedAriaAttributes = {};
+    this.multipleInputs = false;
+    this.focusable = true;
+    this.button = false;
+    this.detailIcon = ``;
+    this.disabled = false;
+    this.counter = false;
+    this.routerDirection = "forward";
+    this.type = "button";
   }
   isClickable() {
     return this.hasAttribute("href") || this.button;
@@ -22,11 +35,14 @@ class h extends p {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  beforeDraw(t, r, s) {
+  beforeDraw(context, store, params) {
   }
-  draw(t, r, s) {
-    const n = this.isClickable() ? this.hasAttribute("href") === void 0 ? "button" : "a" : "div";
-    return this.hostContext("wj-list", this) && this.classList.add("wj-item-list"), `<${n} class="item-native" part="native">
+  draw(context, store, params) {
+    const TagType = this.isClickable() ? this.hasAttribute("href") === void 0 ? "button" : "a" : "div";
+    if (this.hostContext("wj-list", this)) {
+      this.classList.add("wj-item-list");
+    }
+    return `<${TagType} class="item-native" part="native">
 			<slot name="start"></slot>
 			<div class="item-inner">
 					<div class="input-wrapper">
@@ -35,14 +51,14 @@ class h extends p {
 					<slot name="end"></slot>
 			</div>
 			<div class="item-highlight"></div>
-    </${n}>
+    </${TagType}>
 		<div class="item-bottom">
 				<slot name="error"></slot>
 				<slot name="helper"></slot>
 		</div>`;
   }
 }
-customElements.get("wj-item") || window.customElements.define("wj-item", h);
+customElements.get("wj-item") || window.customElements.define("wj-item", Item);
 export {
-  h as Item
+  Item
 };

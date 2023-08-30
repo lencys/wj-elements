@@ -1,46 +1,34 @@
-var c = Object.defineProperty;
-var l = (e, o, t) => o in e ? c(e, o, { enumerable: !0, configurable: !0, writable: !0, value: t }) : e[o] = t;
-var a = (e, o, t) => (l(e, typeof o != "symbol" ? o + "" : o, t), t);
-import d from "./wj-element.js";
-import "./default-store-actions-ff3e8b0b.js";
-const m = `/*!
-* direction.scss
-*/:host(.wj-color-primary){--wj-color-base: #7252D3 !important;--wj-color-contrast: #fff !important}:host(.wj-color-complete){--wj-color-base: #0072EC !important;--wj-color-contrast: #fff !important}:host(.wj-color-success){--wj-color-base: #19AD79 !important;--wj-color-contrast: #fff !important}:host(.wj-color-warning){--wj-color-base: #FFd945 !important;--wj-color-contrast: #4b4b4b !important}:host(.wj-color-danger){--wj-color-base: #D83C31 !important;--wj-color-contrast: #fff !important}:host(.wj-color-info){--wj-color-base: #3B4752 !important;--wj-color-contrast: #fff !important}:host(.wj-color-menu){--wj-color-base: #f4f4f4 !important;--wj-color-contrast: #4b4b4b !important}:host{--wj-chip-border-radius: 100px;text-shadow:none;font-family:Inter UI,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:600;background-color:#e0e0e0;font-size:11px;padding-left:6px;padding-right:6px;color:#4b4b4b;border-radius:10px}:host(.wj-color){background-color:var(--wj-color-base, red);color:var(--wj-color-contrast)}
-`, i = document.createElement("template");
-i.innerHTML = `<style>
-	${m}
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+import "./default-store-actions-65bc7799.js";
+const styles = '/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Badge ]\n*/\n:host(.wj-color-primary) {\n  --wj-color-base: #7252D3 !important;\n  --wj-color-contrast: #fff !important;\n}\n:host(.wj-color-complete) {\n  --wj-color-base: #0072EC !important;\n  --wj-color-contrast: #fff !important;\n}\n:host(.wj-color-success) {\n  --wj-color-base: #19AD79 !important;\n  --wj-color-contrast: #fff !important;\n}\n:host(.wj-color-warning) {\n  --wj-color-base: #FFd945 !important;\n  --wj-color-contrast: #4b4b4b !important;\n}\n:host(.wj-color-danger) {\n  --wj-color-base: #D83C31 !important;\n  --wj-color-contrast: #fff !important;\n}\n:host(.wj-color-info) {\n  --wj-color-base: #3B4752 !important;\n  --wj-color-contrast: #fff !important;\n}\n:host(.wj-color-menu) {\n  --wj-color-base: #f4f4f4 !important;\n  --wj-color-contrast: #4b4b4b !important;\n}\n:host {\n  --wj-chip-border-radius: 100px;\n  text-shadow: none;\n  font-family: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;\n  font-weight: 600;\n  background-color: #e0e0e0;\n  font-size: 11px;\n  padding-left: 6px;\n  padding-right: 6px;\n  color: #4b4b4b;\n  border-radius: 10px;\n}\n:host(.wj-color) {\n  background-color: var(--wj-color-base, red);\n  color: var(--wj-color-contrast);\n}';
+const template = document.createElement("template");
+template.innerHTML = `<style>
+	${styles}
 </style>`;
-class p extends d {
+class Badge extends WJElement {
   constructor() {
-    super(i);
-    a(this, "className", "Chip");
-  }
-  set color(t) {
-    this.setAttribute("color", t);
-  }
-  get color() {
-    return this.getAttribute("color");
-  }
-  set disabled(t) {
-    this.setAttribute("disabled", "");
-  }
-  get disabled() {
-    return this.hasAttribute("disabled");
+    super(template);
+    __publicField(this, "className", "Badge");
   }
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(t, w, b) {
-    let r = document.createDocumentFragment(), n = document.createElement("slot");
-    if (this.color && this.classList.add("wj-color-" + this.color, "wj-color"), this.active) {
-      this.classList.add("wj-active");
-      let s = document.createElement("wj-icon");
-      s.setAttribute("name", "check"), this.appendChild(s);
-    }
-    return this.disabled && this.classList.add("wj-disabled"), this.outline && this.classList.add("wj-outline"), r.appendChild(n), r;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    if (this.color)
+      this.classList.add("wj-color-" + this.color, "wj-color");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-customElements.get("wj-badge") || window.customElements.define("wj-badge", p);
+customElements.get("wj-badge") || window.customElements.define("wj-badge", Badge);
 export {
-  p as Badge
+  Badge
 };

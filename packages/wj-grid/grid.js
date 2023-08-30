@@ -13,14 +13,6 @@ export class Grid extends WJElement {
         super(template);
     }
 
-    set color(value) {
-        this.setAttribute("color", value);
-    }
-
-    get color() {
-        return this.getAttribute("color");
-    }
-
     className = "Grid";
 
     static get observedAttributes() {
@@ -29,13 +21,6 @@ export class Grid extends WJElement {
 
     setupAttributes() {
         this.isShadowRoot = "open";
-        // or
-        WjElementUtils.setAttributesToElement(this, {
-            "test": "test"
-        });
-    }
-
-    beforeDraw(context, store, params) {
     }
 
     draw(context, store, params) {
@@ -49,10 +34,6 @@ export class Grid extends WJElement {
         fragment.appendChild(element);
 
         return fragment;
-    }
-
-    afterDraw(context, store, params) {
-        console.log("afterDraw", this.params);
     }
 }
 

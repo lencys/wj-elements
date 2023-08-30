@@ -2,17 +2,12 @@ import { UniversalService } from './service/universal-service.js?v=@@version@@';
 import { defaultStoreActions, store } from '../wj-store/store.js?v=@@version@@';
 import { WjPermissionsApi } from '../utils/wj-permissions-api.js?v=@@version@@';
 import { WjElementUtils } from '../utils/wj-element-utils.js?v=@@version@@';
+import styles from "../wj-input/scss/styles.scss";
 
 const template = document.createElement('template');
 template.innerHTML = ``;
 
 export default class WJElement extends HTMLElement {
-    static processTemplates = (pTemplate, template) => {
-        const newTemplate = document.createElement('template');
-        newTemplate.innerHTML = [template.innerHTML, pTemplate?.innerHTML || ''].join('');
-        return newTemplate;
-    };
-
     constructor(componentTemplate) {
         super();
 
@@ -30,11 +25,28 @@ export default class WJElement extends HTMLElement {
         this.runtimeTimeout = null;
         this.generatedTooltips = [];
         this.count = 0;
-
         this.functionStack = [];
-
-
         this.scheludedRefresh = false;
+
+        this.setupAttributes?.();
+        if (this.isShadowRoot) {
+            !this.shadowRoot && this.attachShadow({mode: this.shadowType || 'open'});
+        }
+
+        const sheet = new CSSStyleSheet();
+        sheet.replaceSync( this.constructor.myCSSStyleSheet);
+
+        this.context.adoptedStyleSheets = [sheet];
+    }
+
+    static processTemplates = (pTemplate, template) => {
+        const newTemplate = document.createElement('template');
+        newTemplate.innerHTML = [template.innerHTML, pTemplate?.innerHTML || ''].join('');
+        return newTemplate;
+    };
+
+    static myCSSStyleSheet() {
+        return "";
     }
 
     get permission() {
@@ -113,7 +125,6 @@ export default class WJElement extends HTMLElement {
         };
         this.refreshUpdatePromise();
 
-
         await this.initWjElement(true);
         // TODO experiment�lne posielanie funkcii cez custom attributy
         // Object.defineProperty(this._attributes, sanitizedName, {
@@ -124,29 +135,24 @@ export default class WJElement extends HTMLElement {
         // })
     }
 
-    initWjElement = async (force = false) => {
+    async initWjElement(force = false) {
         this.functionStack = [];
 
         const processId = Date.now();
         this.functionStack.push(processId);
 
-        this.setupAttributes?.();
-        if (this.isShadowRoot) {
-            !this.shadowRoot && this.attachShadow({mode: this.shadowType || 'open'});
-        }
-
-        if (this.constructor.CSS) {
-            let stylesToAdopt = this.constructor.CSS()
-            if (Array.isArray(stylesToAdopt)) {
-
-                await Promise.all(stylesToAdopt.map(path => {
-                    return WjImport.call(this, path)
-                })).then()
-
-            } else {
-                WjImport.call(this, stylesToAdopt)
-            }
-        }
+        // if (this.constructor.CSS) {
+        //     let stylesToAdopt = this.constructor.CSS()
+        //     if (Array.isArray(stylesToAdopt)) {
+        //
+        //         await Promise.all(stylesToAdopt.map(path => {
+        //             return WjImport.call(this, path)
+        //         })).then()
+        //
+        //     } else {
+        //         WjImport.call(this, stylesToAdopt)
+        //     }
+        // }
 
         this.setUpAccessors();
 

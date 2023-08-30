@@ -13,15 +13,9 @@ export class Avatar extends WJElement {
     }
 
     className = "Thumbnail";
-    static get observedAttributes() {
-        return [];
-    }
 
     setupAttributes() {
         this.isShadowRoot = "open";
-    }
-
-    beforeDraw(context, store, params) {
     }
 
     draw(context, store, params) {
@@ -32,10 +26,6 @@ export class Avatar extends WJElement {
         fragment.appendChild(element);
 
         return fragment;
-    }
-
-    afterDraw(context, store, params) {
-        console.log("afterDraw", this.params);
     }
 }
 

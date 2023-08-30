@@ -14,19 +14,9 @@ export class Card extends WJElement {
     }
 
     className = "Card";
-    static get observedAttributes() {
-        return [];
-    }
 
     setupAttributes() {
         this.isShadowRoot = "open";
-        // or
-        WjElementUtils.setAttributesToElement(this, {
-            "test": "test"
-        });
-    }
-
-    beforeDraw(context, store, params) {
     }
 
     draw(context, store, params) {
@@ -40,10 +30,6 @@ export class Card extends WJElement {
         fragment.appendChild(element);
 
         return fragment;
-    }
-
-    afterDraw(context, store, params) {
-        console.log("afterDraw", this.params);
     }
 }
 

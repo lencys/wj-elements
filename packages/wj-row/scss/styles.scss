@@ -5,7 +5,7 @@
 [ Row ]
 */
 
-:host {
+wj-row {
   display: flex;
   flex-wrap: wrap;
 }
@@ -13,11 +13,13 @@
 // Row
 
 @if $enable-grid-classes {
-  :host {
+  wj-row {
     @include make-row();
   }
 }
 
 @if $enable-grid-classes {
-  @include make-grid-columns();
+  //:host {
+    @include make-grid-columns();
+  //}
 }
