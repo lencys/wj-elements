@@ -308,6 +308,12 @@ module.exports = {
     //   collapsed: false,
     //   items: ['api/datetime', 'api/datetime-button', 'api/picker'],
     // },
+      {
+        type: 'category',
+        label: 'Dialog',
+        collapsed: false,
+        items: ['api/dialog'],
+      },
     // {
     //   type: 'category',
     //   label: 'Floating Action Button',
