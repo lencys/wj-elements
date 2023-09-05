@@ -113,7 +113,6 @@ function updateLink (el, ownerEl) {
   const params = getRouteProp(ownerEl, routeName, el, 'params', 'param-')
   const query = getRouteProp(ownerEl, routeName, el, 'query', 'query-')
   try {
-    debugger
     const href = router.generate(routeName, params, query)
     const anchorEl = el.tagName === 'A' ? el : el.querySelector('a')
     if (anchorEl) anchorEl.setAttribute('href', href)
@@ -172,7 +171,7 @@ const createClass = (ctor, options = {}) => {
       super.connectedCallback && super.connectedCallback()
       const renderWait = this.updateComplete || resolved
       renderWait.then(() => {
-        
+
         this[unbindRouterLinks] = bindRouterLinks(this, options)
       })
     }
@@ -187,7 +186,6 @@ const createClass = (ctor, options = {}) => {
 }
 
 export const withRouterLinks = (optionsOrCtorOrDescriptor, options) => {
-  debugger
   // current state of decorators sucks. Lets abuse of duck typing
   if (typeof optionsOrCtorOrDescriptor === 'function') {
     // constructor -> typescript decorator or class mixin

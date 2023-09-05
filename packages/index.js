@@ -4,7 +4,7 @@ import { defaultStoreActions, store } from "./wj-store/store.js";
 import "./scss/global.scss";
 
 // SLICK ROUTER
-// import { bindRouterLinks, withRouterLinks } from './wj-router/plugins/slick-router/middlewares/router-links.js';
+import { bindRouterLinks, withRouterLinks } from './wj-router/plugins/slick-router/middlewares/router-links.js';
 
 import { Avatar } from "./wj-avatar/avatar.js";
 import { Badge } from "./wj-badge/badge.js";
@@ -44,8 +44,9 @@ import { Thumbnail } from "./wj-thumbnail/thumbnail.js";
 import { Toast } from "./wj-toast/toast.js";
 import { Toggle } from "./wj-toggle/toggle.js";
 import { Toolbar } from "./wj-toolbar/toolbar.js";
+import { ToolbarAction } from "./wj-toolbar-action/toolbar-action.js";
 
-export { WJElement, defaultStoreActions, store,
+export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks,
   Avatar,
   Badge,
   Breadcrumb,
@@ -81,5 +82,6 @@ export { WJElement, defaultStoreActions, store,
   Thumbnail,
   Toast,
   Toggle,
-  Toolbar
+  Toolbar,
+  ToolbarAction
 };

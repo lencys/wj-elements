@@ -4,7 +4,7 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import WJElement from "./wj-element.js";
+import { W as WJElement } from "./wj-element-e3d75f4b.js";
 import "./wj-store.js";
 const iconContent = /* @__PURE__ */ new Map();
 const requests = /* @__PURE__ */ new Map();

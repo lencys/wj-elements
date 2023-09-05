@@ -29,7 +29,7 @@ export class Routerx extends WJElement {
         const rootElement = htmlDocument.querySelector("wj-router");
 
         const routes = this.parseElement(rootElement).root;
-        const router = new Router({
+        this.router = new Router({
             outlet: this.outlet || "wj-router-outlet",
             log: false,
             logError: false,
@@ -39,14 +39,16 @@ export class Routerx extends WJElement {
 
         console.log("ROUTES:", routes);
 
-        router.map(routes);
-        router.use(this.setBreadcrumb);
-        router.use(wc);
-        router.use(routerLinks);
-        router.use(events);
-        router.listen();
+        this.router.map(routes);
+        this.router.use(this.setBreadcrumb);
+        this.router.use(wc);
+        this.router.use(routerLinks);
+        this.router.use(events);
+        this.router.listen();
 
-        interceptLinks(router);
+        interceptLinks(this.router);
+
+        console.log("ROUTER", this.router);
     }
 
     parseElement(element) {
@@ -83,6 +85,7 @@ export class Routerx extends WJElement {
     }
 
     setBreadcrumb = (transition) => {
+        console.log("setBreadcrumb", transition);
         let breadcrumb = [
             ...transition.routes
                 .filter((obj) => "breadcrumb" in obj.options)
@@ -91,6 +94,7 @@ export class Routerx extends WJElement {
                         name: b.options.breadcrumbPath || b.name,
                         text: b.options.breadcrumb instanceof Function ? b.options.breadcrumb?.(transition) : b.options.breadcrumb,
                         params: {...b.params, ...transition.params},
+                        path: this.router.generate(b.name, {...b.params, ...transition.params}),
                     }
                 }),
         ];

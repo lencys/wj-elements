@@ -4,7 +4,8 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import WJElement, { WjElementUtils } from "./wj-element.js";
+import { W as WJElement, a as WjElementUtils } from "./wj-element-e3d75f4b.js";
+import { b, w } from "./wj-element-e3d75f4b.js";
 import { defaultStoreActions, store } from "./wj-store.js";
 import { Avatar } from "./wj-avatar.js";
 import { Badge } from "./wj-badge.js";
@@ -38,7 +39,7 @@ import { Thumbnail } from "./wj-thumbnail.js";
 import { Toast } from "./wj-toast.js";
 import { Toggle } from "./wj-toggle.js";
 const global = "";
-const styles$6 = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Breadcrumbs ]\n*/\n:host {\n  --wj-breadcrumb-a: rgba(33, 33, 33, 0.81);\n  --wj-breadcrumb-a-hover: rgba(33, 33, 33, 0.62);\n  display: flex;\n  flex: 0 0 auto;\n  align-items: center;\n  line-height: 1.5;\n}\n:host(.collapsed) {\n  display: none;\n}\n.native-breadcrumb {\n  display: flex;\n  align-items: center;\n  width: 100%;\n  outline: none;\n  background: inherit;\n  padding: 0.25rem 0.75rem;\n  color: var(--wj-breadcrumb-a);\n  text-decoration: none;\n}\n.native-breadcrumb.hidden {\n  display: none;\n}\n.native-breadcrumb.active {\n  font-weight: bold;\n}\n.native-breadcrumb:hover {\n  color: var(--wj-breadcrumb-a-hover);\n}\nbutton {\n  margin-inline: 0.75rem;\n  border: 0 solid transparent;\n  border-radius: 3px;\n  background-color: transparent;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n.separator {\n  display: inline-flex;\n  align-items: center;\n}\n::slotted([slot=start]) {\n  margin-inline: 0 0.5rem;\n}\n::slotted([slot=end]) {\n  margin-inline: 0.5rem 0;\n}";
+const styles$7 = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Breadcrumbs ]\n*/\n:host {\n  --wj-breadcrumb-a: rgba(33, 33, 33, 0.81);\n  --wj-breadcrumb-a-hover: rgba(33, 33, 33, 0.62);\n  display: flex;\n  flex: 0 0 auto;\n  align-items: center;\n  line-height: 1.5;\n}\n:host(.collapsed) {\n  display: none;\n}\n.native-breadcrumb {\n  display: flex;\n  align-items: center;\n  width: 100%;\n  outline: none;\n  background: inherit;\n  padding: 0.25rem 0.75rem;\n  color: var(--wj-breadcrumb-a);\n  text-decoration: none;\n}\n.native-breadcrumb.hidden {\n  display: none;\n}\n.native-breadcrumb.active {\n  font-weight: bold;\n}\n.native-breadcrumb:hover {\n  color: var(--wj-breadcrumb-a-hover);\n}\nbutton {\n  margin-inline: 0.75rem;\n  border: 0 solid transparent;\n  border-radius: 3px;\n  background-color: transparent;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n.separator {\n  display: inline-flex;\n  align-items: center;\n}\n::slotted([slot=start]) {\n  margin-inline: 0 0.5rem;\n}\n::slotted([slot=end]) {\n  margin-inline: 0.5rem 0;\n}";
 class Breadcrumb extends WJElement {
   constructor() {
     super();
@@ -52,7 +53,7 @@ class Breadcrumb extends WJElement {
     this._showSeparator = value;
   }
   static get cssStyleSheet() {
-    return styles$6;
+    return styles$7;
   }
   static get observedAttributes() {
     return ["show-collapsed-indicator", "collapsed", "last"];
@@ -76,10 +77,11 @@ class Breadcrumb extends WJElement {
   draw(context, store2, params) {
     let fragment = document.createDocumentFragment();
     let native = document.createElement("a");
-    native.setAttribute("href", this.href);
     native.classList.add("native-breadcrumb");
     if (this.active)
       native.classList.add("active");
+    native.addEventListener("click", (e) => {
+    });
     let slot = document.createElement("slot");
     let start = document.createElement("slot");
     start.setAttribute("name", "start");
@@ -126,7 +128,7 @@ class Breadcrumb extends WJElement {
   }
 }
 customElements.get("wj-breadcrumb") || window.customElements.define("wj-breadcrumb", Breadcrumb);
-const styles$5 = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Breadcrumbs ]\n*/\n:host {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n}";
+const styles$6 = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Breadcrumbs ]\n*/\n:host {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n}";
 class Breadcrumbs extends WJElement {
   constructor() {
     super();
@@ -134,7 +136,7 @@ class Breadcrumbs extends WJElement {
     this.last = false;
   }
   static get cssStyleSheet() {
-    return styles$5;
+    return styles$6;
   }
   setupAttributes() {
     this.isShadowRoot = "open";
@@ -169,10 +171,10 @@ class Breadcrumbs extends WJElement {
   }
 }
 customElements.get("wj-breadcrumbs") || window.customElements.define("wj-breadcrumbs", Breadcrumbs);
-const styles$4 = ":host {\n  color: red;\n}";
+const styles$5 = ":host {\n  color: red;\n}";
 const template = document.createElement("template");
 template.innerHTML = `<style>
-	${styles$4}
+	${styles$5}
 </style>`;
 class ExampleElement extends WJElement {
   constructor() {
@@ -203,7 +205,7 @@ class ExampleElement extends WJElement {
   }
 }
 customElements.get("wj-example-element") || window.customElements.define("wj-example-element", ExampleElement);
-const styles$3 = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Tab ]\n*/\n:host {\n  display: block;\n}\n:host a {\n  scroll-snap-align: start;\n  display: inline-flex;\n  align-items: center;\n  white-space: nowrap;\n  font-size: 0.8rem;\n  color: var(--text-color);\n  font-weight: bold;\n  text-decoration: none;\n  padding: var(--space-2) var(--space-3);\n}\n:host a > svg {\n  inline-size: 1.5em;\n  pointer-events: none;\n}\n:host a:hover {\n  background: hsl(var(--accent)/5%);\n}\n:host a:focus {\n  outline-offset: -0.5ch;\n}\n@media (prefers-reduced-motion: reduce) {\n  /*\n    - swap to border-bottom styles\n    - transition colors\n    - hide the animated .indicator\n  */\n  a {\n    border-block-end: var(--indicator-size) solid hsl(var(--accent)/0%);\n    transition: color 0.7s ease, border-color 0.5s ease;\n  }\n  a:matches(:target, :active, [active]) {\n    color: var(--text-active-color);\n    border-block-end-color: hsl(var(--accent));\n  }\n  .snap-indicator {\n    visibility: hidden;\n  }\n}";
+const styles$4 = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Tab ]\n*/\n:host {\n  display: block;\n}\n:host a {\n  scroll-snap-align: start;\n  display: inline-flex;\n  align-items: center;\n  white-space: nowrap;\n  font-size: 0.8rem;\n  color: var(--text-color);\n  font-weight: bold;\n  text-decoration: none;\n  padding: var(--space-2) var(--space-3);\n}\n:host a > svg {\n  inline-size: 1.5em;\n  pointer-events: none;\n}\n:host a:hover {\n  background: hsl(var(--accent)/5%);\n}\n:host a:focus {\n  outline-offset: -0.5ch;\n}\n@media (prefers-reduced-motion: reduce) {\n  /*\n    - swap to border-bottom styles\n    - transition colors\n    - hide the animated .indicator\n  */\n  a {\n    border-block-end: var(--indicator-size) solid hsl(var(--accent)/0%);\n    transition: color 0.7s ease, border-color 0.5s ease;\n  }\n  a:matches(:target, :active, [active]) {\n    color: var(--text-active-color);\n    border-block-end-color: hsl(var(--accent));\n  }\n  .snap-indicator {\n    visibility: hidden;\n  }\n}";
 class Tab extends WJElement {
   constructor() {
     super();
@@ -211,7 +213,7 @@ class Tab extends WJElement {
     this.last = false;
   }
   static get cssStyleSheet() {
-    return styles$3;
+    return styles$4;
   }
   setupAttributes() {
     this.isShadowRoot = "open";
@@ -237,14 +239,14 @@ class Tab extends WJElement {
   }
 }
 customElements.get("wj-tab") || window.customElements.define("wj-tab", Tab);
-const styles$2 = ".native-tab-group {\n  --hue: 328deg;\n  --accent: var(--hue) 100% 54%;\n  --indicator-size: 2px;\n  --space-1: .5rem;\n  --space-2: 1rem;\n  --space-3: 1.5rem;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n  position: relative;\n}\n.native-tab-group :matches(header, nav, section, article, a) {\n  outline-color: hsl(var(--accent));\n  outline-offset: -5px;\n}\n\n.scroll-snap-x {\n  overflow: auto hidden;\n  overscroll-behavior-x: contain;\n  scroll-snap-type: x mandatory;\n}\n@media (prefers-reduced-motion: no-preference) {\n  .scroll-snap-x {\n    scroll-behavior: smooth;\n  }\n}\n@media (hover: none) {\n  .scroll-snap-x {\n    scrollbar-width: none;\n  }\n  .scroll-snap-x::-webkit-scrollbar {\n    width: 0;\n    height: 0;\n  }\n}\n\n.native-tab-group > header {\n  --text-color: hsl(var(--hue) 5% 40%);\n  --text-active-color: hsl(var(--hue) 20% 10%);\n  flex-shrink: 0;\n  min-block-size: fit-content;\n  display: flex;\n  flex-direction: column;\n}\n.native-tab-group > header > nav {\n  display: flex;\n}\n.native-tab-group > header > .snap-indicator {\n  inline-size: 0;\n  block-size: var(--indicator-size);\n  border-radius: var(--indicator-size);\n  background: hsl(var(--accent));\n}\n\n.native-tab-group > section {\n  block-size: 100%;\n  display: grid;\n  grid-auto-flow: column;\n  grid-auto-columns: 100%;\n}\n.native-tab-group > section > article {\n  scroll-snap-align: start;\n  overflow-y: auto;\n  overscroll-behavior-y: contain;\n  padding: var(--space-2) var(--space-3);\n}";
+const styles$3 = ".native-tab-group {\n  --hue: 328deg;\n  --accent: var(--hue) 100% 54%;\n  --indicator-size: 2px;\n  --space-1: .5rem;\n  --space-2: 1rem;\n  --space-3: 1.5rem;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n  position: relative;\n}\n.native-tab-group :matches(header, nav, section, article, a) {\n  outline-color: hsl(var(--accent));\n  outline-offset: -5px;\n}\n\n.scroll-snap-x {\n  overflow: auto hidden;\n  overscroll-behavior-x: contain;\n  scroll-snap-type: x mandatory;\n}\n@media (prefers-reduced-motion: no-preference) {\n  .scroll-snap-x {\n    scroll-behavior: smooth;\n  }\n}\n@media (hover: none) {\n  .scroll-snap-x {\n    scrollbar-width: none;\n  }\n  .scroll-snap-x::-webkit-scrollbar {\n    width: 0;\n    height: 0;\n  }\n}\n\n.native-tab-group > header {\n  --text-color: hsl(var(--hue) 5% 40%);\n  --text-active-color: hsl(var(--hue) 20% 10%);\n  flex-shrink: 0;\n  min-block-size: fit-content;\n  display: flex;\n  flex-direction: column;\n}\n.native-tab-group > header > nav {\n  display: flex;\n}\n.native-tab-group > header > .snap-indicator {\n  inline-size: 0;\n  block-size: var(--indicator-size);\n  border-radius: var(--indicator-size);\n  background: hsl(var(--accent));\n}\n\n.native-tab-group > section {\n  block-size: 100%;\n  display: grid;\n  grid-auto-flow: column;\n  grid-auto-columns: 100%;\n}\n.native-tab-group > section > article {\n  scroll-snap-align: start;\n  overflow-y: auto;\n  overscroll-behavior-y: contain;\n  padding: var(--space-2) var(--space-3);\n}";
 class TabGroup extends WJElement {
   constructor() {
     super();
     __publicField(this, "className", "TabGroup");
   }
   static get cssStyleSheet() {
-    return styles$2;
+    return styles$3;
   }
   setupAttributes() {
     this.isShadowRoot = "open";
@@ -287,14 +289,14 @@ class TabGroup extends WJElement {
   }
 }
 customElements.get("wj-tab-group") || window.customElements.define("wj-tab-group", TabGroup);
-const styles$1 = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Breadcrumbs ]\n*/\n:host {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n}";
+const styles$2 = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Breadcrumbs ]\n*/\n:host {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n}";
 class TabPanel extends WJElement {
   constructor() {
     super();
     __publicField(this, "className", "TabPanel");
   }
   static get cssStyleSheet() {
-    return styles$1;
+    return styles$2;
   }
   setupAttributes() {
     this.isShadowRoot = "open";
@@ -307,14 +309,14 @@ class TabPanel extends WJElement {
   }
 }
 customElements.get("wj-tab-panel") || window.customElements.define("wj-tab-panel", TabPanel);
-const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Toolbar ]\n*/\n:host {\n  --wj-toolbar-backcolor: #fff;\n  --wj-toolbar-min-height: 70px;\n  --wj-toolbar-padding-top: 1rem;\n  --wj-toolbar-padding-bottom: 1rem;\n  --wj-toolbar-padding-inline: 1.5rem;\n  --wj-toolbar-border-color: rgba(33, 33, 33, 0.14);\n  width: 100%;\n  height: var(--wj-toolbar-height);\n}\n.native-toolbar {\n  background-color: var(--wj-toolbar-backcolor);\n  display: flex;\n  align-items: center;\n  border-bottom: 1px solid var(--wj-toolbar-border-color);\n  padding-inline: var(--wj-toolbar-padding-inline);\n  padding-top: var(--wj-toolbar-padding-top);\n  padding-bottom: var(--wj-toolbar-padding-bottom);\n  box-shadow: 0 10px 30px 0 rgba(82, 63, 105, 0.05);\n}\n::slotted([slot=end]) {\n  margin-left: auto;\n}";
+const styles$1 = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Toolbar ]\n*/\n:host {\n  --wj-toolbar-backcolor: #fff;\n  --wj-toolbar-min-height: 70px;\n  --wj-toolbar-padding-top: 1rem;\n  --wj-toolbar-padding-bottom: 1rem;\n  --wj-toolbar-padding-inline: 1.5rem;\n  --wj-toolbar-border-color: rgba(33, 33, 33, 0.14);\n  width: 100%;\n  height: var(--wj-toolbar-height);\n}\n.native-toolbar {\n  background-color: var(--wj-toolbar-backcolor);\n  display: flex;\n  align-items: center;\n  border-bottom: 1px solid var(--wj-toolbar-border-color);\n  padding-inline: var(--wj-toolbar-padding-inline);\n  padding-top: var(--wj-toolbar-padding-top);\n  padding-bottom: var(--wj-toolbar-padding-bottom);\n  box-shadow: 0 10px 30px 0 rgba(82, 63, 105, 0.05);\n}\n::slotted([slot=end]) {\n  margin-left: auto;\n}";
 class Toolbar extends WJElement {
   constructor() {
     super();
     __publicField(this, "className", "Toolbar");
   }
   static get cssStyleSheet() {
-    return styles;
+    return styles$1;
   }
   static get observedAttributes() {
     return [];
@@ -337,6 +339,29 @@ class Toolbar extends WJElement {
   }
 }
 customElements.get("wj-toolbar") || window.customElements.define("wj-toolbar", Toolbar);
+const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Toolbar ]\n*/\n:host {\n  display: flex;\n}";
+class ToolbarAction extends WJElement {
+  constructor() {
+    super();
+    __publicField(this, "className", "ToolbarAction");
+  }
+  static get cssStyleSheet() {
+    return styles;
+  }
+  static get observedAttributes() {
+    return [];
+  }
+  setupAttributes() {
+    this.isShadowRoot = "open";
+  }
+  draw(context, store2, params) {
+    let fragment = document.createDocumentFragment();
+    var element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
+  }
+}
+customElements.get("wj-toolbar-action") || window.customElements.define("wj-toolbar-action", ToolbarAction);
 export {
   Avatar,
   Badge,
@@ -374,7 +399,10 @@ export {
   Toast,
   Toggle,
   Toolbar,
+  ToolbarAction,
   WJElement,
+  b as bindRouterLinks,
   defaultStoreActions,
-  store
+  store,
+  w as withRouterLinks
 };

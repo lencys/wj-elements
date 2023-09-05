@@ -10,6 +10,7 @@ export default class DemoToolbar extends WJElement {
   }
 
   draw(context, store2, params) {
+    console.log("DRAW", this.breadcrumbs);
     return `<h1>Toolbar</h1>
       <div class="container">
     
@@ -18,10 +19,10 @@ export default class DemoToolbar extends WJElement {
         <h2>Basic</h2>
         <div class="playground" style="background-color: rgba(0,0,0,.08);">
           <div class="content" style="width: 100%; margin: auto 1rem;">
-            <wj-toolbar>
+            <wj-toolbar routerlinks>
               <wj-breadcrumbs slot="start">
                 ${this.breadcrumbs.map((breadcrumb) => {
-                  return `<wj-breadcrumb>${breadcrumb.text}</wj-breadcrumb>`;
+                  return `<wj-breadcrumb route="${breadcrumb.name}">${breadcrumb.text}</wj-breadcrumb>`;
                 }).join("")}       
               </wj-breadcrumbs>
               <wj-toolbar-action slot="end">

@@ -48,10 +48,16 @@ export class Breadcrumb extends WJElement {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("a");
-        native.setAttribute("href", this.href);
+        // native.setAttribute("route", this.route);
         native.classList.add("native-breadcrumb");
         if(this.active)
             native.classList.add("active");
+
+        native.addEventListener("click", (e) => {
+            // console.log("CLICK");
+            // e.preventDefault();
+            // this.router.navigate(this.href);
+        });
 
         let slot = document.createElement("slot");
 

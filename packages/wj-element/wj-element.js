@@ -2,12 +2,13 @@ import { UniversalService } from './service/universal-service.js';
 import { defaultStoreActions, store } from '../wj-store/store.js';
 import { WjPermissionsApi } from '../utils/wj-permissions-api.js';
 import { WjElementUtils } from '../utils/wj-element-utils.js';
+import { withRouterLinks } from '../wj-router/plugins/slick-router/middlewares/router-links.js';
 
 import styles from "../wj-input/scss/styles.scss";
 
 const template = document.createElement('template');
 template.innerHTML = ``;
-export default class WJElement extends HTMLElement {
+export default class WJElement extends withRouterLinks(HTMLElement) {
     constructor(componentTemplate) {
         super();
 
@@ -115,6 +116,7 @@ export default class WJElement extends HTMLElement {
     }
 
     async connectedCallback() {
+        super.connectedCallback();
         // RHR toto sa tiež týka slick routeru pretože on začal routovanie ešte pred vykreslením wjelementu
         this.finisPromise = (resolve) => {
             resolve();

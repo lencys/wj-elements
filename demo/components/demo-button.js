@@ -4,7 +4,8 @@ const template = document.createElement('template');
 
 template.innerHTML = `<h1>Button</h1>
   <div class="container">
-
+  
+    <wj-router-outlet animation="fade"></wj-router-outlet>
     <!--  BASIC-->
 
     <h2>Basic</h2>
