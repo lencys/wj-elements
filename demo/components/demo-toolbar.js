@@ -19,8 +19,8 @@ export default class DemoToolbar extends WJElement {
         <h2>Basic</h2>
         <div class="playground" style="background-color: rgba(0,0,0,.08);">
           <div class="content" style="width: 100%; margin: auto 1rem;">
-            <wj-toolbar routerlinks>
-              <wj-breadcrumbs slot="start">
+            <wj-toolbar>
+              <wj-breadcrumbs slot="start" routerlinks>
                 ${this.breadcrumbs.map((breadcrumb) => {
                   return `<wj-breadcrumb route="${breadcrumb.name}">${breadcrumb.text}</wj-breadcrumb>`;
                 }).join("")}       

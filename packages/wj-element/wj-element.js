@@ -2,13 +2,12 @@ import { UniversalService } from './service/universal-service.js';
 import { defaultStoreActions, store } from '../wj-store/store.js';
 import { WjPermissionsApi } from '../utils/wj-permissions-api.js';
 import { WjElementUtils } from '../utils/wj-element-utils.js';
-import { withRouterLinks } from '../wj-router/plugins/slick-router/middlewares/router-links.js';
 
 import styles from "../wj-input/scss/styles.scss";
 
 const template = document.createElement('template');
 template.innerHTML = ``;
-export default class WJElement extends withRouterLinks(HTMLElement) {
+export default class WJElement extends HTMLElement {
     constructor(componentTemplate) {
         super();
 
@@ -31,11 +30,11 @@ export default class WJElement extends withRouterLinks(HTMLElement) {
 
         this.setupAttributes?.();
         if (this.isShadowRoot) {
-            !this.shadowRoot && this.attachShadow({mode: this.shadowType || 'open'});
+            !this.shadowRoot && this.attachShadow({ mode: this.shadowType || 'open' });
         }
 
         const sheet = new CSSStyleSheet();
-        sheet.replaceSync( this.constructor.cssStyleSheet);
+        sheet.replaceSync(this.constructor.cssStyleSheet);
 
         this.context.adoptedStyleSheets = [sheet];
     }
@@ -98,11 +97,11 @@ export default class WJElement extends withRouterLinks(HTMLElement) {
         return this.getAttribute('remove-class-after-connect')?.split(' ');
     }
 
-    beforeDraw() {}
+    beforeDraw() { }
 
-    afterDraw() {}
+    afterDraw() { }
 
-    makeRuntimeTimeout(callback = () => {}) {
+    makeRuntimeTimeout(callback = () => { }) {
         return setTimeout(() => {
             callback();
         }, 0);
@@ -116,7 +115,6 @@ export default class WJElement extends withRouterLinks(HTMLElement) {
     }
 
     async connectedCallback() {
-        super.connectedCallback();
         // RHR toto sa tiež týka slick routeru pretože on začal routovanie ešte pred vykreslením wjelementu
         this.finisPromise = (resolve) => {
             resolve();
@@ -168,9 +166,9 @@ export default class WJElement extends withRouterLinks(HTMLElement) {
         // }
     };
 
-    setupAttributes() {}
+    setupAttributes() { }
 
-    beforeDisconnect() {}
+    beforeDisconnect() { }
 
     disconnectedCallback() {
         this.beforeDisconnect?.();
@@ -195,7 +193,7 @@ export default class WJElement extends withRouterLinks(HTMLElement) {
     attributeChangedCallback(name, old, newName) {
         console.log('attributeChangedCallback WJ ELEMENT', name, old, newName);
         // console.log(!this.isAttached,name, old, newName, old !== newName)
-        if(!this.isAttached && old !== newName){
+        if (!this.isAttached && old !== newName) {
             this.scheludedRefresh = true;
             return;
         }
@@ -312,7 +310,7 @@ export default class WJElement extends withRouterLinks(HTMLElement) {
         });
     }
 
-    isProcessingFlow(processId){
+    isProcessingFlow(processId) {
         return !this.functionStack.find((d) => d == processId)
     }
 
@@ -354,7 +352,7 @@ export default class WJElement extends withRouterLinks(HTMLElement) {
                     // this.observer.observe(this, config);
 
 
-                    if(this.scheludedRefresh){
+                    if (this.scheludedRefresh) {
                         this.refresh()
                         this.scheludedRefresh = false;
                     }
@@ -380,6 +378,6 @@ export default class WJElement extends withRouterLinks(HTMLElement) {
 }
 
 let __esModule = 'true';
-export {__esModule, WjPermissionsApi, WjElementUtils};
+export { __esModule, WjPermissionsApi, WjElementUtils };
 
 customElements.get("wj-element") || customElements.define("wj-element", WJElement);

@@ -1,8 +1,9 @@
 import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { withRouterLinks } from '../wj-router/plugins/slick-router/middlewares/router-links.js';
 
 import styles from "./scss/styles.scss?inline";
 
-export class Toolbar extends WJElement {
+export class Toolbar extends withRouterLinks( WJElement) {
     constructor() {
         super();
     }
