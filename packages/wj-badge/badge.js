@@ -33,4 +33,7 @@ export class Badge extends WJElement {
     }
 }
 
+let __esModule = 'true';
+export { __esModule };
+
 customElements.get("wj-badge") || window.customElements.define("wj-badge", Badge);

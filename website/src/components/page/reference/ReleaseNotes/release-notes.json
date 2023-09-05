@@ -38,13 +38,5 @@
     "tag_name": "v7.2.2",
     "type": "patch",
     "version": "7.2.2"
-  },
-  {
-    "body": "<h3>Bug Fixes</h3>\n<ul>\n<li><strong>item-sliding:</strong> buttons are not interactive on close (<a href=\"https://github.com/ionic-team/ionic-framework/issues/27829\">#27829</a>) (<a href=\"https://github.com/ionic-team/ionic-framework/commit/6e4919caff90fc60988e5cc85ad7161844eb5b51\">6e4919c</a>), closes <a href=\"https://github.com/ionic-team/ionic-framework/issues/22722\">#22722</a></li>\n<li><strong>modal:</strong> body background is reset with inline card modals (<a href=\"https://github.com/ionic-team/ionic-framework/issues/27835\">#27835</a>) (<a href=\"https://github.com/ionic-team/ionic-framework/commit/38626d96809d1c6be523ea62a4fac1dec73ee891\">38626d9</a>), closes <a href=\"https://github.com/ionic-team/ionic-framework/issues/27830\">#27830</a></li>\n</ul>\n",
-    "name": "v7.2.1",
-    "published_at": "July 26 2023",
-    "tag_name": "v7.2.1",
-    "type": "patch",
-    "version": "7.2.1"
   }
 ]

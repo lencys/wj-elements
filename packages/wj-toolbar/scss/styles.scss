@@ -1,0 +1,31 @@
+@import "../../scss/themes/net-basic/important.scss";
+
+/*
+[ Toolbar ]
+*/
+
+:host {
+  --wj-toolbar-backcolor: #{$color-contrast-lowest};
+  --wj-toolbar-min-height: 70px;
+  --wj-toolbar-padding-top: 1rem;
+  --wj-toolbar-padding-bottom: 1rem;
+  --wj-toolbar-padding-inline: 1.5rem;
+  --wj-toolbar-border-color: #{$color-border-a};
+  width: 100%;
+  height: var(--wj-toolbar-height);
+}
+
+.native-toolbar {
+  background-color: var(--wj-toolbar-backcolor);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--wj-toolbar-border-color);
+  padding-inline: var(--wj-toolbar-padding-inline);
+  padding-top: var(--wj-toolbar-padding-top);
+  padding-bottom: var(--wj-toolbar-padding-bottom);
+  box-shadow: 0 10px 30px 0 rgba(82,63,105,.05);
+}
+
+::slotted([slot="end"]) {
+  margin-left: auto;
+}

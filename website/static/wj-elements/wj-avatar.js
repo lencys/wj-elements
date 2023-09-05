@@ -5,7 +5,7 @@ var __publicField = (obj, key, value) => {
   return value;
 };
 import WJElement from "./wj-element.js";
-import "./default-store-actions-65bc7799.js";
+import "./wj-store.js";
 const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n:host {\n  --wj-avatar-width: 48px;\n  --wj-avatar-height: 48px;\n  --wj-avatar-border-radius: 50%;\n  width: var(--wj-avatar-width);\n  height: var(--wj-avatar-height);\n  border-radius: var(--wj-avatar-border-radius);\n  display: block;\n}\n::slotted(wj-img),\n::slotted(img) {\n  border-radius: var(--wj-avatar-border-radius);\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  overflow: hidden;\n}";
 const template = document.createElement("template");
 template.innerHTML = `<style>

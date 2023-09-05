@@ -5,7 +5,7 @@ var __publicField = (obj, key, value) => {
   return value;
 };
 import WJElement from "./wj-element.js";
-import "./default-store-actions-65bc7799.js";
+import "./wj-store.js";
 const iconContent = /* @__PURE__ */ new Map();
 const requests = /* @__PURE__ */ new Map();
 let parser;

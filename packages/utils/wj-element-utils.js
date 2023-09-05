@@ -40,4 +40,14 @@ export class WjElementUtils {
             return `${key}="${value}"`
         }).join(' ')
     }
+
+    static hasSlot(el, slotName = null) {
+        let selector = slotName ? `[slot="${slotName}"]` : "[slot]";
+
+        return el.querySelectorAll(selector).length > 0 ? true : false;
+    }
+
+    static stringToBoolean(string) {
+        return !["false", "0", 0].includes(string)
+    }
 }

@@ -4,7 +4,95 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { P as PubSub, d as defaultStoreActions } from "./default-store-actions-65bc7799.js";
+class PubSub {
+  constructor() {
+    this.events = {};
+  }
+  /**
+   * Either create a new event instance for passed `event` name
+   * or push a new callback into the existing collection
+   *
+   * @param {string} event
+   * @param {function} callback
+   * @returns {number} A count of callbacks for this event
+   * @memberof PubSub
+   */
+  subscribe(event, callback) {
+    let self = this;
+    if (!self.events.hasOwnProperty(event)) {
+      self.events[event] = [];
+    }
+    self.events[event].push(callback) - 1;
+    return {
+      unsubscribe() {
+        self.events[event].splice(self.events[event].indexOf(callback), 1);
+      }
+    };
+  }
+  /**
+   * If the passed event has callbacks attached to it, loop through each one
+   * and call it
+   *
+   * @param {string} event
+   * @param {object} [data={}]
+   * @returns {array} The callbacks for this event, or an empty array if no event exits
+   * @memberof PubSub
+   */
+  publish(event, newData = {}, oldData) {
+    let self = this;
+    if (!self.events.hasOwnProperty(event)) {
+      return [];
+    }
+    return self.events[event].map((callback) => callback(newData, oldData));
+  }
+}
+const addAction = (stateValueName) => {
+  return (payload2) => {
+    return {
+      type: `${stateValueName}/ADD`,
+      payload: payload2
+    };
+  };
+};
+const addManyAction = (stateValueName) => {
+  return (payload2) => {
+    return {
+      type: `${stateValueName}/ADD_MANY`,
+      payload: payload2
+    };
+  };
+};
+const updateAction = (stateValueName) => {
+  return (payload2) => {
+    return {
+      type: `${stateValueName}/UPDATE`,
+      payload: payload2
+    };
+  };
+};
+const deleteAction = (stateValueName) => {
+  return (payload2) => {
+    return {
+      type: `${stateValueName}/DELETE`,
+      payload: payload2
+    };
+  };
+};
+const loadAction = (stateValueName) => {
+  return (payload2) => {
+    return {
+      type: `${stateValueName}/LOAD`,
+      payload: payload2
+    };
+  };
+};
+const defaultStoreActions = {
+  addAction,
+  deleteAction,
+  loadAction,
+  updateAction,
+  addManyAction
+};
 class Store {
   constructor(params = {}) {
     __publicField(this, "_state");

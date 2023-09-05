@@ -88,9 +88,6 @@ export class Dialog extends WJElement {
         dialog.appendChild(body);
         dialog.appendChild(footer);
 
-
-
-        // dialog.appendChild(close);
         fragment.appendChild(dialog);
 
         this.dialog = dialog;
@@ -101,7 +98,6 @@ export class Dialog extends WJElement {
         if(params.trigger) {
             document.addEventListener(params.trigger, () => {
                 this.dialog.showModal();
-                // this.classList.add("show");
             });
         }
     }

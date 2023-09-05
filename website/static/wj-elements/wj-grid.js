@@ -5,7 +5,7 @@ var __publicField = (obj, key, value) => {
   return value;
 };
 import WJElement from "./wj-element.js";
-import "./default-store-actions-65bc7799.js";
+import "./wj-store.js";
 const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Grid ]\n*/\n:host {\n  width: 100%;\n  flex-grow: 0;\n}";
 const template = document.createElement("template");
 template.innerHTML = `<style>

@@ -12,14 +12,6 @@ export class Button extends WJElement {
         super(template);
     }
 
-    set color(value) {
-        this.setAttribute("color", value);
-    }
-
-    get color() {
-        return this.getAttribute("color");
-    }
-
     set active(value) {
         this.setAttribute("active", "");
     }

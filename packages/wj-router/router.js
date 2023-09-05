@@ -31,21 +31,22 @@ export class Routerx extends WJElement {
         const routes = this.parseElement(rootElement).root;
         const router = new Router({
             outlet: this.outlet || "wj-router-outlet",
-            log: true,
-            logError: true,
+            log: false,
+            logError: false,
             root: "/",
             pushState: true,
         });
+
+        console.log("ROUTES:", routes);
+
         router.map(routes);
+        router.use(this.setBreadcrumb);
         router.use(wc);
         router.use(routerLinks);
         router.use(events);
         router.listen();
 
         interceptLinks(router);
-        // let b = document.createElement("demo-badge")
-        // console.log("router", b.shadowRoot);
-
     }
 
     parseElement(element) {
@@ -54,8 +55,14 @@ export class Routerx extends WJElement {
         const attributes = element.attributes;
         for (let i = 0; i < attributes.length; i++) {
             const attributeName = attributes[i].name;
-            if (attributeName !== 'shadow') {
-                obj[attributeName] = attributes[i].value;
+            const attributeValue = attributes[i].value;
+
+            if (attributeName === 'component' && attributeValue.indexOf(".js") > -1) {
+                obj.component = () => import(attributeValue); // lazy loading component
+            } else {
+                if (attributeName !== 'shadow') {
+                    obj[attributeName] = attributeValue;
+                }
             }
         }
 
@@ -73,6 +80,22 @@ export class Routerx extends WJElement {
         }
 
         return obj;
+    }
+
+    setBreadcrumb = (transition) => {
+        let breadcrumb = [
+            ...transition.routes
+                .filter((obj) => "breadcrumb" in obj.options)
+                .map((b, i) => {
+                    return {
+                        name: b.options.breadcrumbPath || b.name,
+                        text: b.options.breadcrumb instanceof Function ? b.options.breadcrumb?.(transition) : b.options.breadcrumb,
+                        params: {...b.params, ...transition.params},
+                    }
+                }),
+        ];
+
+        transition.breadcrumbs = breadcrumb;
     }
 }
 

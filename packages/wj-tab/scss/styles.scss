@@ -1,0 +1,59 @@
+@import "../../scss/themes/net-basic/important.scss";
+
+/*
+[ Tab ]
+*/
+
+:host {
+  display: block;
+  a {
+    scroll-snap-align: start;
+
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+
+    font-size: .8rem;
+    color: var(--text-color);
+    font-weight: bold;
+    text-decoration: none;
+    padding: var(--space-2) var(--space-3);
+
+    & > svg {
+      inline-size: 1.5em;
+      pointer-events: none;
+    }
+
+    &:hover {
+      background: hsl(var(--accent) / 5%);
+    }
+
+    &:focus {
+      outline-offset: -.5ch;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /*
+    - swap to border-bottom styles
+    - transition colors
+    - hide the animated .indicator
+  */
+
+  a {
+    border-block-end: var(--indicator-size) solid hsl(var(--accent) / 0%);
+    transition:
+            color .7s ease,
+            border-color .5s ease;
+
+    &:matches(:target,:active,[active]) {
+      color: var(--text-active-color);
+      border-block-end-color: hsl(var(--accent));
+    }
+  }
+
+  .snap-indicator {
+    visibility: hidden;
+  }
+}

@@ -1,0 +1,11 @@
+@import "../../scss/themes/net-basic/important.scss";
+
+/*
+[ Breadcrumbs ]
+*/
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}

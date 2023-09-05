@@ -160,7 +160,7 @@ a {
 }
 
 ::slotted([slot="start"]) {
-    margin-inline: 0px 16px;
+    margin-inline: 0 1rem;
 }
 
 ::slotted(wj-label) {

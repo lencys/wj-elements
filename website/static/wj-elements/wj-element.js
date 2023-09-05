@@ -4,7 +4,7 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { P as PubSub, d as defaultStoreActions } from "./default-store-actions-65bc7799.js";
+import { store, defaultStoreActions } from "./wj-store.js";
 class UniversalService {
   constructor(props = {}) {
     __publicField(this, "findByKey", (attrName, key, keyValue) => {
@@ -145,184 +145,6 @@ class UniversalService {
     return promise;
   }
 }
-class Store {
-  constructor(params = {}) {
-    __publicField(this, "_state");
-    __publicField(this, "_reducer");
-    __publicField(this, "events");
-    __publicField(this, "status");
-    this._isPause = false;
-    this._state = {};
-    this._reducer = function rootReducer(state = {}, action) {
-      return {};
-    };
-    this.status = "resting";
-    this.events = new PubSub();
-    if (params == null ? void 0 : params.hasOwnProperty("reducer")) {
-      this._reducer = params.reducer;
-    }
-    this.refreshProxy(params == null ? void 0 : params.state);
-  }
-  /**
-   * A dispatcher for actions that looks in the actions 
-   * collection and runs the action if it can find it
-   *
-   * @param {string} actionKey
-   * @param {mixed} payload
-   * @returns {boolean}
-   * @memberof Store
-   */
-  dispatch(action) {
-    this.status = "action";
-    let newState = this._reducer(this._state, action);
-    this.status = "mutation";
-    this._state = Object.assign(this._state, newState);
-    return true;
-  }
-  getState() {
-    return JSON.parse(JSON.stringify(this._state));
-  }
-  subscribe(eventName, callbackFn) {
-    return this.events.subscribe(eventName, callbackFn);
-  }
-  unsubscribe(eventName) {
-    delete this.events[eventName];
-  }
-  pause() {
-    this._isPause = true;
-    return this;
-  }
-  play(val) {
-    this._isPause = false;
-    return this;
-  }
-  mergeReducers(stateValueName, newReducer) {
-    let reducerCopy = this._reducer;
-    this._reducer = (state, newState) => {
-      let preState = reducerCopy(state, newState);
-      let result = {
-        ...preState,
-        [stateValueName]: newReducer(state[stateValueName], newState)
-      };
-      return result;
-    };
-  }
-  makeEveryArrayEntryAsStoreState(storeKey, array = [], identificator = "id") {
-    array.forEach((entry) => {
-      if (this.getState().hasOwnProperty(`${storeKey}-${entry[identificator]}`)) {
-        this.dispatch(defaultStoreActions.updateAction(`${storeKey}-${entry[identificator]}`)(entry));
-      } else {
-        this.define(`${storeKey}-${entry.id || entry.source || entry[identificator]}`, entry, null, identificator);
-      }
-    });
-  }
-  define(stateValueName, defaultValue, reducer, key = "id") {
-    if (this._state.hasOwnProperty(stateValueName)) {
-      console.warn(`STATE už obsahuje premennú ${stateValueName},ktorú sa pokúšate pridať`);
-      return;
-    }
-    if (reducer instanceof Function) {
-      this.mergeReducers(stateValueName, reducer);
-    } else {
-      if (defaultValue instanceof Array) {
-        this.mergeReducers(stateValueName, this.createArrayReducer(stateValueName, key));
-      } else {
-        this.mergeReducers(stateValueName, this.createObjectReducer(stateValueName, key));
-      }
-    }
-    this.refreshProxy({
-      ...this._state,
-      [stateValueName]: defaultValue
-    });
-  }
-  refreshProxy(state) {
-    this._state = new Proxy(state || {}, {
-      set: (state2, key, value) => {
-        if (JSON.stringify(state2[key]) === JSON.stringify(value)) {
-          return true;
-        }
-        let oldState = state2[key];
-        state2[key] = value;
-        if (!this._isPause)
-          this.events.publish(key, this._state, oldState);
-        if (this.status !== "mutation") {
-          console.warn(`You should use a mutation to set ${key}`);
-        }
-        this.status = "resting";
-        return true;
-      }
-    });
-  }
-  createObjectReducer(stateValueName) {
-    return (state = {}, action) => {
-      switch (action.type) {
-        case `${stateValueName}/ADD`:
-          return {
-            ...action.payload
-          };
-        case `${stateValueName}/UPDATE`:
-          return {
-            ...state,
-            ...action.payload
-          };
-        case `${stateValueName}/DELETE`:
-          return {};
-        default:
-          return state;
-      }
-    };
-  }
-  createArrayReducer(stateValueName, key) {
-    return (state = [], action) => {
-      switch (action.type) {
-        case `${stateValueName}/ADD`:
-          if (Array.isArray(action.payload)) {
-            return [
-              ...state,
-              ...action.payload
-            ];
-          } else {
-            return [
-              ...state,
-              action.payload
-            ];
-          }
-        case `${stateValueName}/ADD_MANY`:
-          return [
-            ...state,
-            ...action.payload
-          ];
-        case `${stateValueName}/UPDATE`:
-          if (state.some((obj) => obj[key] == action.payload[key])) {
-            return [
-              ...state.map((obj) => {
-                if (obj[key] == action.payload[key]) {
-                  return action.payload;
-                }
-                return obj;
-              })
-            ];
-          } else {
-            return [
-              ...state,
-              action.payload
-            ];
-          }
-        case `${stateValueName}/DELETE`:
-          return [
-            ...state.filter((obj) => obj.hasOwnProperty(key) && obj[key] != action.payload[key] || !obj.hasOwnProperty(key) && obj != action.payload)
-          ];
-        case `${stateValueName}/LOAD`:
-          return [
-            ...action.payload
-          ];
-        default:
-          return state;
-      }
-    };
-  }
-}
-let store = new Store();
 class WjPermissionsApi {
   constructor() {
   }
@@ -385,6 +207,13 @@ class WjElementUtils {
       return `${key}="${value}"`;
     }).join(" ");
   }
+  static hasSlot(el, slotName = null) {
+    let selector = slotName ? `[slot="${slotName}"]` : "[slot]";
+    return el.querySelectorAll(selector).length > 0 ? true : false;
+  }
+  static stringToBoolean(string) {
+    return !["false", "0", 0].includes(string);
+  }
 }
 const styles = '/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Input ]\n*/\n:host {\n  --wj-input-font-family: Inter UI, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;\n  --wj-input-background-color: #fff;\n  --wj-input-color: #212121;\n  --wj-input-color-invalid: #b91e1e;\n  --wj-input-border-color: rgba(33, 33, 33, 0.14);\n  --wj-input-border-color-focus: #7252D3;\n  --wj-input-border-radius: 2px;\n  --wj-input-margin-bottom: .5rem;\n  --wj-input-line-height: 20px;\n  width: 100%;\n  margin-bottom: var(--wj-input-margin-bottom);\n  display: block;\n}\n:host .error-message {\n  display: none;\n  position: absolute;\n  width: auto;\n  max-width: 90%;\n  border-radius: 50px;\n  background: black;\n  padding: 0.25rem 0.5rem;\n  top: 0;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  color: white;\n  font-size: 12px;\n  line-height: normal;\n}\n:host input {\n  background-color: var(--wj-input-background-color);\n  border: 1px solid var(--wj-input-border-color);\n  font-family: var(--wjinput-font-family);\n  color: var(--wj-input-color);\n  border-top-color: rgba(33, 33, 33, 0.21);\n  appearance: none;\n  outline: 0;\n  padding: 6px 8px;\n  line-height: var(--wj-input-line-height);\n  font-size: 14px;\n  font-weight: normal;\n  vertical-align: middle;\n  min-height: 32px;\n}\n:host .native-input {\n  display: grid;\n  grid-template-columns: auto 1fr auto;\n}\n:host .native-input .input-wrapper {\n  width: 100%;\n}\n:host .native-input.default {\n  background-color: var(--wj-input-background-color);\n  font-family: var(--wj-input-font-family);\n  position: relative;\n  border-radius: var(--wj-input-border-radius);\n  border: 1px solid var(--wj-input-border-color);\n  border-top-color: rgba(8, 8, 8, 0.14);\n  padding-inline: 9px;\n  padding-top: 5px;\n  padding-bottom: 4px;\n  transition: background-color 0.2s ease;\n  cursor: text;\n}\n:host .native-input.default.focused {\n  border: 1px solid var(--wj-input-border-color-focus) !important;\n}\n:host .native-input.default.focused label {\n  opacity: 0.67;\n  font-size: 12px;\n  letter-spacing: normal;\n}\n:host .native-input.default input {\n  border: none;\n  height: 25px;\n  min-height: 25px;\n  padding: 0;\n  margin-top: -4px;\n  background: none;\n  box-shadow: none;\n  width: 100%;\n}\n:host .native-input.default label {\n  margin: 0;\n  display: block;\n  opacity: 1;\n  cursor: text;\n  transition: opacity 0.2s ease;\n  line-height: var(--wj-input-line-height);\n}\n:host .native-input.default label.fade {\n  opacity: 0.5;\n  font-size: 12px;\n  letter-spacing: normal;\n}\n:host([required]) .input-wrapper::after {\n  color: #D83C31;\n  content: "*";\n  font-family: -apple-system, BlinkMacSystemFont, "Inter UI", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;\n  font-size: 20px;\n  position: absolute;\n  right: 10px;\n  top: 2px;\n}\n:host([invalid]) .error-message {\n  display: block;\n}\n:host([invalid]) label {\n  opacity: 1 !important;\n  color: var(--wj-input-color-invalid) !important;\n  animation-name: shake;\n  animation-duration: 0.4s;\n  animation-iteration-count: 1;\n}\nslot[name=start], slot[name=end] {\n  display: flex;\n  align-items: center;\n  position: relative;\n}\nslot[name=start] {\n  margin-inline: 0 10px;\n}\nslot[name=end] {\n  margin-inline: 10px 0;\n}\n::slotted([slot=start]) {\n  padding-inline: 0 10px;\n}\n::slotted([slot=start]):after {\n  border-right: 1px solid rgba(0, 0, 0, 0.16);\n  content: "";\n  display: block;\n  width: 1px;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  right: 0;\n}\n::slotted([slot=end]) {\n  padding-inline: 10px 0;\n}\n::slotted([slot=end]):after {\n  border-right: 1px solid rgba(0, 0, 0, 0.16);\n  content: "";\n  display: block;\n  width: 1px;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n}\n@keyframes shake {\n  8%, 41% {\n    transform: translateX(-4px);\n  }\n  25%, 58% {\n    transform: translateX(4px);\n  }\n  75% {\n    transform: translateX(-2px);\n  }\n  92% {\n    transform: translateX(2px);\n  }\n  0%, 100% {\n    transform: translateX(0);\n  }\n}';
 const template = document.createElement("template");
@@ -410,10 +239,10 @@ class WJElement extends HTMLElement {
       !this.shadowRoot && this.attachShadow({ mode: this.shadowType || "open" });
     }
     const sheet = new CSSStyleSheet();
-    sheet.replaceSync(this.constructor.myCSSStyleSheet);
+    sheet.replaceSync(this.constructor.cssStyleSheet);
     this.context.adoptedStyleSheets = [sheet];
   }
-  static myCSSStyleSheet() {
+  static cssStyleSheet() {
     return "";
   }
   get permission() {
@@ -509,6 +338,7 @@ class WJElement extends HTMLElement {
    * Lifecycle method, called whenever an observed property changes
    */
   attributeChangedCallback(name, old, newName) {
+    console.log("attributeChangedCallback WJ ELEMENT", name, old, newName);
     if (!this.isAttached && old !== newName) {
       this.scheludedRefresh = true;
       return;

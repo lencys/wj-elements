@@ -1,0 +1,78 @@
+.native-tab-group {
+  --hue: 328deg;
+  --accent: var(--hue) 100% 54%;
+  --indicator-size: 2px;
+
+  --space-1: .5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+  position: relative;
+
+  & :matches(header, nav, section, article, a) {
+    outline-color: hsl(var(--accent));
+    outline-offset: -5px;
+  }
+}
+
+.scroll-snap-x {
+  overflow: auto hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+
+  @media (hover: none) {
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+  }
+}
+
+.native-tab-group > header {
+  --text-color: hsl(var(--hue) 5% 40%);
+  --text-active-color: hsl(var(--hue) 20% 10%);
+
+  flex-shrink: 0;
+  min-block-size: fit-content;
+
+  display: flex;
+  flex-direction: column;
+
+  & > nav {
+    display: flex;
+  }
+
+  & > .snap-indicator {
+    inline-size: 0;
+    block-size: var(--indicator-size);
+    border-radius: var(--indicator-size);
+    background: hsl(var(--accent));
+  }
+}
+
+.native-tab-group > section {
+  block-size: 100%;
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+
+  & > article {
+    scroll-snap-align: start;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+
+    padding: var(--space-2) var(--space-3);
+  }
+}
+

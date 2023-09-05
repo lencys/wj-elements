@@ -1,13 +1,10 @@
 import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
 
-// import styles from './scss/styles.scss?' assert { type: 'css' };
 import styles from "./scss/styles.scss?inline";
-
-const template = document.createElement('template');
 
 export class Input extends WJElement {
     constructor(options = {}) {
-        super(template);
+        super();
 
         this.invalid = false;
         this.pristine = true;
@@ -66,7 +63,7 @@ export class Input extends WJElement {
 
     className = "Input";
 
-    static get myCSSStyleSheet() {
+    static get cssStyleSheet() {
         return styles;
     }
 

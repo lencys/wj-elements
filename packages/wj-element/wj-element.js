@@ -1,12 +1,12 @@
-import { UniversalService } from './service/universal-service.js?v=@@version@@';
-import { defaultStoreActions, store } from '../wj-store/store.js?v=@@version@@';
-import { WjPermissionsApi } from '../utils/wj-permissions-api.js?v=@@version@@';
-import { WjElementUtils } from '../utils/wj-element-utils.js?v=@@version@@';
+import { UniversalService } from './service/universal-service.js';
+import { defaultStoreActions, store } from '../wj-store/store.js';
+import { WjPermissionsApi } from '../utils/wj-permissions-api.js';
+import { WjElementUtils } from '../utils/wj-element-utils.js';
+
 import styles from "../wj-input/scss/styles.scss";
 
 const template = document.createElement('template');
 template.innerHTML = ``;
-
 export default class WJElement extends HTMLElement {
     constructor(componentTemplate) {
         super();
@@ -34,7 +34,7 @@ export default class WJElement extends HTMLElement {
         }
 
         const sheet = new CSSStyleSheet();
-        sheet.replaceSync( this.constructor.myCSSStyleSheet);
+        sheet.replaceSync( this.constructor.cssStyleSheet);
 
         this.context.adoptedStyleSheets = [sheet];
     }
@@ -45,7 +45,7 @@ export default class WJElement extends HTMLElement {
         return newTemplate;
     };
 
-    static myCSSStyleSheet() {
+    static cssStyleSheet() {
         return "";
     }
 
@@ -115,7 +115,6 @@ export default class WJElement extends HTMLElement {
     }
 
     async connectedCallback() {
-
         // RHR toto sa tiež týka slick routeru pretože on začal routovanie ešte pred vykreslením wjelementu
         this.finisPromise = (resolve) => {
             resolve();
@@ -192,6 +191,7 @@ export default class WJElement extends HTMLElement {
      * Lifecycle method, called whenever an observed property changes
      */
     attributeChangedCallback(name, old, newName) {
+        console.log('attributeChangedCallback WJ ELEMENT', name, old, newName);
         // console.log(!this.isAttached,name, old, newName, old !== newName)
         if(!this.isAttached && old !== newName){
             this.scheludedRefresh = true;

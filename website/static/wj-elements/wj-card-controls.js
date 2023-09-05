@@ -5,7 +5,7 @@ var __publicField = (obj, key, value) => {
   return value;
 };
 import WJElement from "./wj-element.js";
-import "./default-store-actions-65bc7799.js";
+import "./wj-store.js";
 const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n:host {\n  --wj-color: #212529;\n  --wj-card-subtitle-font-size: 28px;\n  --wj-card-subtitle-font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;\n  font-family: var(--wj-card-subtitle-font-family);\n  text-transform: uppercase;\n  display: inline-block;\n  letter-spacing: 0.06em;\n  font-size: 10.5px;\n  font-weight: 500;\n  margin: 0;\n  padding: 0;\n  line-height: normal;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  filter: alpha(opacity=40);\n  -webkit-transition: opacity 0.3s ease;\n  transition: opacity 0.3s ease;\n  position: absolute;\n  right: 1rem;\n  top: 0.5rem;\n}";
 const template = document.createElement("template");
 template.innerHTML = `<style>
