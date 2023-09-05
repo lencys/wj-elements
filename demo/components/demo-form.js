@@ -57,10 +57,13 @@ template.innerHTML = `<h1>Form</h1>
     </div>
   </div>`;
 
-export class DemoForm extends WJElement {
+export default class DemoForm extends WJElement {
   constructor() {
     super(template);
   }
 }
+
+let __esModule = 'true';
+export { __esModule };
 
 customElements.get("demo-form") || window.customElements.define("demo-form", DemoForm);

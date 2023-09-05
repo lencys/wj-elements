@@ -97,10 +97,13 @@ template.innerHTML = `<h1>Media</h1>
     </div>
   </div>`;
 
-export class DemoMedia extends WJElement {
+export default class DemoMedia extends WJElement {
   constructor() {
     super(template);
   }
 }
+
+let __esModule = 'true';
+export { __esModule };
 
 customElements.get("demo-media") || window.customElements.define("demo-media", DemoMedia);

@@ -82,10 +82,13 @@ template.innerHTML = `<h1>Toggle</h1>
     </div>
   </div>`;
 
-export class DemoToggle extends WJElement {
+export default class DemoToggle extends WJElement {
   constructor() {
     super(template);
   }
 }
+
+let __esModule = 'true';
+export { __esModule };
 
 customElements.get("demo-toggle") || window.customElements.define("demo-toggle", DemoToggle);

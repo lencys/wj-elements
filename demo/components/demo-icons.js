@@ -34,10 +34,13 @@ template.innerHTML = `<h1>Icons</h1>
     </div>
   </div>`;
 
-export class DemoIcons extends WJElement {
+export default class DemoIcons extends WJElement {
   constructor() {
     super(template);
   }
 }
+
+let __esModule = 'true';
+export { __esModule };
 
 customElements.get("demo-icons") || window.customElements.define("demo-icons", DemoIcons);

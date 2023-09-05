@@ -207,10 +207,13 @@ template.innerHTML = `<h1>Item</h1>
     <!--    </div>-->
   </div>`;
 
-export class DemoItem extends WJElement {
+export default class DemoItem extends WJElement {
   constructor() {
     super(template);
   }
 }
+
+let __esModule = 'true';
+export { __esModule };
 
 customElements.get("demo-item") || window.customElements.define("demo-item", DemoItem);

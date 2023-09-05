@@ -237,10 +237,13 @@ template.innerHTML = `<h1>Card</h1>
     </div>
   </div>`;
 
-export class DemoCard extends WJElement {
+export default class DemoCard extends WJElement {
   constructor() {
     super(template);
   }
 }
+
+let __esModule = 'true';
+export { __esModule };
 
 customElements.get("demo-card") || window.customElements.define("demo-card", DemoCard);

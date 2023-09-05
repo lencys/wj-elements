@@ -73,10 +73,13 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
     </div>
   </div>`;
 
-export class DemoInfinteScroll extends WJElement {
+export default class DemoInfinteScroll extends WJElement {
   constructor() {
     super(template);
   }
 }
+
+let __esModule = 'true';
+export { __esModule };
 
 customElements.get("demo-infinite-scroll") || window.customElements.define("demo-infinite-scroll", DemoInfinteScroll);

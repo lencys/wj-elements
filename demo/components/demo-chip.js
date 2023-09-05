@@ -55,10 +55,13 @@ template.innerHTML = `<h1>Chip</h1>
     </div>
   </div>`;
 
-export class DemoChip extends WJElement {
+export default class DemoChip extends WJElement {
   constructor() {
     super(template);
   }
 }
+
+let __esModule = 'true';
+export { __esModule };
 
 customElements.get("demo-chip") || window.customElements.define("demo-chip", DemoChip);

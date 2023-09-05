@@ -91,10 +91,13 @@ template.innerHTML = `<style>
     </div>
   </div>`;
 
-export class DemoSlider extends WJElement {
+export default class DemoSlider extends WJElement {
   constructor() {
     super(template);
   }
 }
+
+let __esModule = 'true';
+export { __esModule };
 
 customElements.get("demo-slider") || window.customElements.define("demo-slider", DemoSlider);

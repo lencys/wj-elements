@@ -3,47 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <title>Routing</title>
-  <script type="module" src="demo/assets/js/demo.js"></script>
+  <script type="module" src="./demo/assets/js/demo.js"></script>
   <link rel="stylesheet" href="./packages/scss/global.scss" />
-  <link rel="stylesheet" href="demo/assets/css/demo.css" />
+  <link rel="stylesheet" href="./demo/assets/css/demo.css" />
 </head>
 <body>
-  <p>
-    <a href="/badge">Badge</a>
-    <a href="/button">Button</a>
-    <a href="/card">Card</a>
-    <a href="/dialog">Dialog</a>
-    <a href="/form">Form</a>
-    <a href="/grid">Grid</a>
-    <a href="/chip">Chip</a>
-    <a href="/icons">Icon</a>
-    <a href="/infinite-scroll">Infinite scroll</a>
-    <a href="/item">Item</a>
-    <a href="/list">List</a>
-    <a href="/media">Media</a>
-    <a href="/progress-bar">Progress bar</a>
-    <a href="/slider">Slider</a>
-    <a href="/toast">Toast</a>
-    <a href="/toggle">Toggle</a>
-  </p>
-  <wj-router outlet="wj-router-outlet">
-    <wj-route name="badge" path="/badge" component="demo-badge"></wj-route>
-    <wj-route name="button" path="/button" component="demo-button"></wj-route>
-    <wj-route name="card" path="/card" component="demo-card"></wj-route>
-    <wj-route name="dialog" path="/dialog" component="demo-dialog"></wj-route>
-    <wj-route name="form" path="/form" component="demo-form"></wj-route>
-    <wj-route name="grid" path="/grid" component="demo-grid"></wj-route>
-    <wj-route name="chip" path="/chip" component="demo-chip"></wj-route>
-    <wj-route name="icons" path="/icons" component="demo-icons"></wj-route>
-    <wj-route name="infinite-scroll" path="/infinite-scroll" component="demo-infinite-scroll"></wj-route>
-    <wj-route name="item" path="/item" component="demo-item"></wj-route>
-    <wj-route name="list" path="/list" component="demo-list"></wj-route>
-    <wj-route name="media" path="/media" component="demo-media"></wj-route>
-    <wj-route name="progress-bar" path="/progress-bar" component="demo-progress-bar"></wj-route>
-    <wj-route name="slider" path="/slider" component="demo-slider"></wj-route>
-    <wj-route name="toast" path="/toast" component="demo-toast"></wj-route>
-    <wj-route name="toggle" path="/toggle" component="demo-toggle"></wj-route>
-  </wj-router>
-  <wj-router-outlet animation="fade"></wj-router-outlet>
+  <wj-application>
+    <wj-router outlet="wj-router-outlet">
+      <wj-route name="badge" component="/demo/components/demo-badge.js"></wj-route>
+      <wj-route name="breadcrumb" component="/demo/components/demo-breadcrumb.js"></wj-route>
+      <wj-route name="button" component="/demo/components/demo-button.js"></wj-route>
+      <wj-route name="card" component="/demo/components/demo-card.js"></wj-route>
+      <wj-route name="dialog" component="/demo/components/demo-dialog.js"></wj-route>
+      <wj-route name="form" component="/demo/components/demo-form.js"></wj-route>
+      <wj-route name="grid" component="/demo/components/demo-grid.js"></wj-route>
+      <wj-route name="chip" component="/demo/components/demo-chip.js"></wj-route>
+      <wj-route name="icons" component="/demo/components/demo-icons.js"></wj-route>
+      <wj-route name="infinite-scroll" component="/demo/components/demo-infinite-scroll.js"></wj-route>
+      <wj-route name="item" component="/demo/components/demo-item.js"></wj-route>
+      <wj-route name="list" component="/demo/components/demo-list.js"></wj-route>
+      <wj-route name="media" component="/demo/components/demo-media.js"></wj-route>
+      <wj-route name="progress-bar" component="/demo/components/demo-progress-bar.js"></wj-route>
+      <wj-route name="slider" component="/demo/components/demo-slider.js"></wj-route>
+      <wj-route name="tab" component="/demo/components/demo-tab.js"></wj-route>
+      <wj-route name="toast" component="/demo/components/demo-toast.js"></wj-route>
+      <wj-route name="toggle" component="/demo/components/demo-toggle.js"></wj-route>
+      <wj-route name="a" component="" breadcrumb="A">
+        <wj-route name="b" component="" breadcrumb="B">
+          <wj-route name="toolbar" component="/demo/components/demo-toolbar.js" breadcrumb="Toolbar"></wj-route>
+        </wj-route>
+      </wj-route>
+    </wj-router>
+
+    <p>
+      <a href="/badge">Badge</a>
+      <a href="/breadcrumb">Breadcrumb</a>
+      <a href="/button">Button</a>
+      <a href="/card">Card</a>
+      <a href="/dialog">Dialog</a>
+      <a href="/form">Form</a>
+      <a href="/grid">Grid</a>
+      <a href="/chip">Chip</a>
+      <a href="/icons">Icon</a>
+      <a href="/infinite-scroll">Infinite scroll</a>
+      <a href="/item">Item</a>
+      <a href="/list">List</a>
+      <a href="/media">Media</a>
+      <a href="/progress-bar">Progress bar</a>
+      <a href="/slider">Slider</a>
+      <a href="/tab">Tab</a>
+      <a href="/toast">Toast</a>
+      <a href="/toggle">Toggle</a>
+      <a href="/a/b/toolbar">Toolbar</a>
+    </p>
+    <wj-router-outlet animation="fade"></wj-router-outlet>
+  </wj-application>
 </body>
 </html>

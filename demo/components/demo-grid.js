@@ -320,10 +320,13 @@ template.innerHTML = `<h1>Grid</h1>
     </div>
   </div>`;
 
-export class DemoGrid extends WJElement {
+export default class DemoGrid extends WJElement {
   constructor() {
     super(template);
   }
 }
+
+let __esModule = 'true';
+export { __esModule };
 
 customElements.get("demo-grid") || window.customElements.define("demo-grid", DemoGrid);

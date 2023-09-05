@@ -3,8 +3,13 @@ import { defaultStoreActions, store } from "./wj-store/store.js";
 
 import "./scss/global.scss";
 
+// SLICK ROUTER
+// import { bindRouterLinks, withRouterLinks } from './wj-router/plugins/slick-router/middlewares/router-links.js';
+
 import { Avatar } from "./wj-avatar/avatar.js";
 import { Badge } from "./wj-badge/badge.js";
+import { Breadcrumb } from "./wj-breadcrumb/breadcrumb.js";
+import { Breadcrumbs } from "./wj-breadcrumbs/breadcrumbs.js";
 import { Button } from "./wj-button/button.js";
 import { Card } from "./wj-card/card.js";
 import { CardContent } from "./wj-card-content/card-content.js";
@@ -32,13 +37,19 @@ import { RouterLink } from "./wj-router-link/router-link.js";
 import "./wj-router-outlet/router-outlet.js";
 import { Row } from "./wj-row/row.js";
 import { Slider } from "./wj-slider/slider.js";
+import { Tab } from "./wj-tab/tab.js";
+import { TabGroup } from "./wj-tab-group/tab-group.js";
+import { TabPanel } from "./wj-tab-panel/tab-panel.js";
 import { Thumbnail } from "./wj-thumbnail/thumbnail.js";
 import { Toast } from "./wj-toast/toast.js";
-import { Toggle } from "./wj-toggle/toggle.js"
+import { Toggle } from "./wj-toggle/toggle.js";
+import { Toolbar } from "./wj-toolbar/toolbar.js";
 
 export { WJElement, defaultStoreActions, store,
   Avatar,
   Badge,
+  Breadcrumb,
+  Breadcrumbs,
   Button,
   Card,
   CardContent,
@@ -64,7 +75,11 @@ export { WJElement, defaultStoreActions, store,
   RouterLink,
   Row,
   Slider,
+  Tab,
+  TabGroup,
+  TabPanel,
   Thumbnail,
   Toast,
   Toggle,
+  Toolbar
 };

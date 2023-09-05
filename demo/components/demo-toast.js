@@ -48,10 +48,13 @@ template.innerHTML = `<h1>Toast</h1>
     </div>
   </div>`;
 
-export class DemoToast extends WJElement {
+export default class DemoToast extends WJElement {
   constructor() {
     super(template);
   }
 }
+
+let __esModule = 'true';
+export { __esModule };
 
 customElements.get("demo-toast") || window.customElements.define("demo-toast", DemoToast);

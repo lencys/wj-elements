@@ -2,12 +2,11 @@ import { WJElement } from "../../website/static/wj-elements/wj-main.js";
 
 const template = document.createElement('template');
 
-template.innerHTML = `  <style>
+template.innerHTML = `<style>
     .content {
       display: block;
     }
   </style>
-  
   <h1>Badge</h1>
   <div class="container">
 
@@ -72,10 +71,13 @@ template.innerHTML = `  <style>
     </div>
   </div>`;
 
-export class DemoBadge extends WJElement {
+export default class DemoBadge extends WJElement {
   constructor() {
     super(template);
   }
 }
+
+let __esModule = 'true';
+export { __esModule };
 
 customElements.get("demo-badge") || window.customElements.define("demo-badge", DemoBadge);

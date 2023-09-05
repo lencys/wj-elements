@@ -120,10 +120,13 @@ template.innerHTML = `<h1>Progress bar</h1>
     </div>
   </div>`;
 
-export class DemoProgressBar extends WJElement {
+export default class DemoProgressBar extends WJElement {
   constructor() {
     super(template);
   }
 }
+
+let __esModule = 'true';
+export { __esModule };
 
 customElements.get("demo-progress-bar") || window.customElements.define("demo-progress-bar", DemoProgressBar);

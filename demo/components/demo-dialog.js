@@ -113,10 +113,13 @@ template.innerHTML = `<style>
     </div>
   </div>`;
 
-export class DemoDialog extends WJElement {
+export default class DemoDialog extends WJElement {
   constructor() {
     super(template);
   }
 }
+
+let __esModule = 'true';
+export { __esModule };
 
 customElements.get("demo-dialog") || window.customElements.define("demo-dialog", DemoDialog);
