@@ -53,12 +53,6 @@ export class Breadcrumb extends WJElement {
         if(this.active)
             native.classList.add("active");
 
-        native.addEventListener("click", (e) => {
-            // console.log("CLICK");
-            // e.preventDefault();
-            // this.router.navigate(this.href);
-        });
-
         let slot = document.createElement("slot");
 
         let start = document.createElement("slot");
@@ -112,6 +106,8 @@ export class Breadcrumb extends WJElement {
         collapsedIndicator.setAttribute("part", "collapsed-indicator");
         collapsedIndicator.innerHTML = `<wj-icon name="ellipsis"></wj-icon>`;
         collapsedIndicator.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             this.native.classList.remove("hidden");
             collapsedIndicator.remove();
             this.parentElement.querySelectorAll("wj-breadcrumb").forEach((e) => {

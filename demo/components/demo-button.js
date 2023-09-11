@@ -8,15 +8,14 @@ export default class DemoButton extends WJElement {
     super(template);
   }
 
-  static get outlet() {
-    return 'wj-router-outlet'
-  }
+  // static get outlet() {
+  //   return 'wj-router-outlet'
+  // }
 
   draw(){
     return `<h1>Button</h1>
     <div class="container">
-    
-      <wj-router-outlet animation="fade"></wj-router-outlet>
+      
       <!--  BASIC-->
   
       <h2>Basic</h2>

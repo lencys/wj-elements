@@ -10,7 +10,7 @@
   --wj-color-contrast: #{$color};
 
   --wj-border-radius: #{$border-radius};
-  --wj-border-color: #{$border-color};
+  --wj-border-color: #{$border-color} !important;
   --wj-border-size: #{$border-size};
   --wj-border-style: #{$border-style};
 }

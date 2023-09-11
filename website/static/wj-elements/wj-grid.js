@@ -4,7 +4,7 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { W as WJElement } from "./wj-element-e3d75f4b.js";
+import WJElement from "./wj-element.js";
 import "./wj-store.js";
 const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Grid ]\n*/\n:host {\n  width: 100%;\n  flex-grow: 0;\n}";
 const template = document.createElement("template");

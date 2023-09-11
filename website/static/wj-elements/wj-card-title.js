@@ -4,7 +4,7 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { W as WJElement } from "./wj-element-e3d75f4b.js";
+import WJElement from "./wj-element.js";
 import "./wj-store.js";
 const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n:host {\n  --wj-card-title-font-size: 24px;\n  --wj-card-title-font-weight: 500;\n  --wj-card-title-margin: 0;\n  --wj-card-title-padding: 0;\n  --wj-card-title-line-height: 1.2;\n}\n:host {\n  font-size: var(--wj-card-title-font-size);\n  font-weight: var(--wj-card-title-font-weight);\n  margin: var(--wj-card-title-margin);\n  padding: var(--wj-card-title-padding);\n  line-height: var(--wj-card-title-line-height);\n  display: block;\n  position: relative;\n}";
 const template = document.createElement("template");

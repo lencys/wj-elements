@@ -19,13 +19,21 @@
   background-color: var(--wj-toolbar-backcolor);
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   border-bottom: 1px solid var(--wj-toolbar-border-color);
   padding-inline: var(--wj-toolbar-padding-inline);
   padding-top: var(--wj-toolbar-padding-top);
   padding-bottom: var(--wj-toolbar-padding-bottom);
   box-shadow: 0 10px 30px 0 rgba(82,63,105,.05);
+  //display: grid;
+  //grid-template-columns: repeat(auto-fill, minmax(0, 1fr)); /* Dynamicky prispôsobte šírku stĺpcov */
+  //gap: 10px; /* Medzera medzi elementami */
+}
+::slotted {
+  grid-column: span 4;
 }
 
-::slotted([slot="end"]) {
-  margin-left: auto;
+::slotted([slot="start"]) {
+  margin-right: auto;
 }

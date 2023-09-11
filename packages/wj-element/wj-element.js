@@ -191,8 +191,6 @@ export default class WJElement extends HTMLElement {
      * Lifecycle method, called whenever an observed property changes
      */
     attributeChangedCallback(name, old, newName) {
-        console.log('attributeChangedCallback WJ ELEMENT', name, old, newName);
-        // console.log(!this.isAttached,name, old, newName, old !== newName)
         if (!this.isAttached && old !== newName) {
             this.scheludedRefresh = true;
             return;

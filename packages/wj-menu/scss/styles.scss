@@ -1,0 +1,29 @@
+@import "../../scss/themes/net-basic/important.scss";
+
+/*
+[ Menu ]
+*/
+
+:host {
+  --wj-menu-background: #{$color-contrast-lowest};
+  --wj-menu-border-width: 1px;
+  --wj-menu-border-style: solid;
+  --wj-menu-border-color: var(--wj-border-color);
+  --wj-menu-border-radius: 4px;
+  --wj-menu-padding-top: .5rem;
+  --wj-menu-padding-bottom: .5rem;
+
+  background: var(--wj-menu-background);
+  display: block;
+  position: relative;
+  border-width: var(--wj-menu-border-width);
+  border-style: var(--wj-menu-border-style);
+  border-color: var(--wj-menu-border-color);
+
+  @include border-radius(var(--wj-menu-border-radius));
+
+  padding-top: var(--wj-menu-padding-top);
+  padding-bottom: var(--wj-menu-padding-bottom);
+  overflow: auto;
+  overscroll-behavior: none;
+}

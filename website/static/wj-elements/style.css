@@ -12,7 +12,7 @@
   --wj-line-height: 21px;
   --wj-color-contrast: #212529;
   --wj-border-radius: 8px;
-  --wj-border-color: rgba(0, 0, 0, 0.08);
+  --wj-border-color: rgba(0, 0, 0, 0.08) !important;
   --wj-border-size: 0px;
   --wj-border-style: solid;
 }

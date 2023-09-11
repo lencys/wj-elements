@@ -19,6 +19,8 @@ import { CardSubtitle } from "./wj-card-subtitle/card-subtitle.js";
 import { CardTitle } from "./wj-card-title/card-title.js";
 import { Col } from "./wj-col/col.js";
 import { Dialog } from "./wj-dialog/dialog.js";
+import { Divider } from "./wj-divider/divider.js";
+import { Dropdown } from "./wj-dropdown/dropdown.js";
 import { ExampleElement } from "./wj-example-element/example-element.js";
 import { Form } from "./wj-form/form.js";
 import { Grid } from "./wj-grid/grid.js";
@@ -30,6 +32,9 @@ import { Input } from "./wj-input/input.js";
 import { Item } from "./wj-item/item.js";
 import { Label } from "./wj-label/label.js";
 import { List } from "./wj-list/list.js";
+import { Menu } from "./wj-menu/menu.js";
+import { MenuItem } from "./wj-menu-item/menu-item.js";
+import { Popup } from "./wj-popup/popup.js";
 import { ProgressBar } from "./wj-progress-bar/progress-bar.js";
 import { Route } from "./wj-route/route.js";
 import { Routerx } from "./wj-router/router.js";
@@ -60,6 +65,8 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   CardTitle,
   Col,
   Dialog,
+  Divider,
+  Dropdown,
   ExampleElement,
   Grid,
   Chip,
@@ -70,6 +77,9 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   Item,
   Label,
   List,
+  Menu,
+  MenuItem,
+  Popup,
   ProgressBar,
   Route,
   Routerx,

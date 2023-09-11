@@ -171,7 +171,7 @@ const createClass = (ctor, options = {}) => {
       super.connectedCallback && super.connectedCallback()
       const renderWait = this.updateComplete || resolved
       renderWait.then(() => {
-debugger
+
         this[unbindRouterLinks] = bindRouterLinks(this, options)
       })
     }

@@ -74,7 +74,7 @@ function isEqual (obj1, obj2) {
 
 function getOutlet (el) {
   const renderRoot = el.shadowRoot || el
-  return renderRoot.querySelector(el.constructor.outlet || 'router-outlet')
+  return renderRoot.querySelector(el.constructor.outlet || 'wj-router-outlet')
 }
 
 function resolveRootOutlet () {

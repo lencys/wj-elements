@@ -24,22 +24,27 @@ export class ToolbarAction extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-        // let native = document.createElement("div");
-        // native.classList.add("native-toolbar");
-        //
-        // let start = document.createElement("slot");
-        // start.setAttribute("name", "start");
-        //
-        //
-        // let end = document.createElement("slot");
-        // end.setAttribute("name", "end");
-        //
-        // native.appendChild(start);
-        // native.appendChild(end);
-        var element = document.createElement("slot");
+        let maxItems = +this.maxItems || 0;
+        let actions = this.getActions();
+
+        let slot = document.createElement("slot");
+
+        let element = document.createElement("div");
+
+        const shouldCollapse = maxItems !== 0 && actions.length > maxItems;
+        if (shouldCollapse) {
+            element = document.createElement("wj-dropdown");
+        }
+
+        element.appendChild(slot);
+
         fragment.appendChild(element);
 
         return fragment;
+    }
+
+    getActions() {
+        return Array.from(this.querySelectorAll('wj-button'));
     }
 }
 

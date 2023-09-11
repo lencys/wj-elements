@@ -37,8 +37,6 @@ export class Routerx extends WJElement {
             pushState: true,
         });
 
-        console.log("ROUTES:", routes);
-
         this.router.map(routes);
         this.router.use(this.setBreadcrumb);
         this.router.use(wc);
@@ -47,8 +45,6 @@ export class Routerx extends WJElement {
         this.router.listen();
 
         interceptLinks(this.router);
-
-        console.log("ROUTER", this.router);
     }
 
     parseElement(element) {
@@ -85,7 +81,6 @@ export class Routerx extends WJElement {
     }
 
     setBreadcrumb = (transition) => {
-        console.log("setBreadcrumb", transition);
         let breadcrumb = [
             ...transition.routes
                 .filter((obj) => "breadcrumb" in obj.options)

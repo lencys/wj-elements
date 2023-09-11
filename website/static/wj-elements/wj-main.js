@@ -4,9 +4,10 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { W as WJElement, a as WjElementUtils } from "./wj-element-e3d75f4b.js";
-import { b, w } from "./wj-element-e3d75f4b.js";
+import WJElement, { WjElementUtils } from "./wj-element.js";
 import { defaultStoreActions, store } from "./wj-store.js";
+import { w as withRouterLinks } from "./router-05bc6a4a.js";
+import { R, b } from "./router-05bc6a4a.js";
 import { Avatar } from "./wj-avatar.js";
 import { Badge } from "./wj-badge.js";
 import { Button } from "./wj-button.js";
@@ -18,6 +19,8 @@ import { CardSubtitle } from "./wj-card-subtitle.js";
 import { CardTitle } from "./wj-card-title.js";
 import { Col } from "./wj-col.js";
 import { Dialog } from "./wj-dialog.js";
+import { Divider } from "./wj-divider.js";
+import { Dropdown } from "./wj-dropdown.js";
 import "./wj-form.js";
 import { Grid } from "./wj-grid.js";
 import { Chip } from "./wj-chip.js";
@@ -28,9 +31,11 @@ import { Input } from "./wj-input.js";
 import { Item } from "./wj-item.js";
 import { Label } from "./wj-label.js";
 import { List } from "./wj-list.js";
+import { Menu } from "./wj-menu.js";
+import { MenuItem } from "./wj-menu-item.js";
+import { Popup } from "./wj-popup.js";
 import { ProgressBar } from "./wj-progress-bar.js";
 import { Route } from "./wj-route.js";
-import { Routerx } from "./wj-routerx.js";
 import { RouterLink } from "./wj-router-link.js";
 import "./wj-router-outlet.js";
 import { Row } from "./wj-row.js";
@@ -80,8 +85,6 @@ class Breadcrumb extends WJElement {
     native.classList.add("native-breadcrumb");
     if (this.active)
       native.classList.add("active");
-    native.addEventListener("click", (e) => {
-    });
     let slot = document.createElement("slot");
     let start = document.createElement("slot");
     start.setAttribute("name", "start");
@@ -118,6 +121,8 @@ class Breadcrumb extends WJElement {
     collapsedIndicator.setAttribute("part", "collapsed-indicator");
     collapsedIndicator.innerHTML = `<wj-icon name="ellipsis"></wj-icon>`;
     collapsedIndicator.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       this.native.classList.remove("hidden");
       collapsedIndicator.remove();
       this.parentElement.querySelectorAll("wj-breadcrumb").forEach((e2) => {
@@ -309,8 +314,8 @@ class TabPanel extends WJElement {
   }
 }
 customElements.get("wj-tab-panel") || window.customElements.define("wj-tab-panel", TabPanel);
-const styles$1 = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Toolbar ]\n*/\n:host {\n  --wj-toolbar-backcolor: #fff;\n  --wj-toolbar-min-height: 70px;\n  --wj-toolbar-padding-top: 1rem;\n  --wj-toolbar-padding-bottom: 1rem;\n  --wj-toolbar-padding-inline: 1.5rem;\n  --wj-toolbar-border-color: rgba(33, 33, 33, 0.14);\n  width: 100%;\n  height: var(--wj-toolbar-height);\n}\n.native-toolbar {\n  background-color: var(--wj-toolbar-backcolor);\n  display: flex;\n  align-items: center;\n  border-bottom: 1px solid var(--wj-toolbar-border-color);\n  padding-inline: var(--wj-toolbar-padding-inline);\n  padding-top: var(--wj-toolbar-padding-top);\n  padding-bottom: var(--wj-toolbar-padding-bottom);\n  box-shadow: 0 10px 30px 0 rgba(82, 63, 105, 0.05);\n}\n::slotted([slot=end]) {\n  margin-left: auto;\n}";
-class Toolbar extends WJElement {
+const styles$1 = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Toolbar ]\n*/\n:host {\n  --wj-toolbar-backcolor: #fff;\n  --wj-toolbar-min-height: 70px;\n  --wj-toolbar-padding-top: 1rem;\n  --wj-toolbar-padding-bottom: 1rem;\n  --wj-toolbar-padding-inline: 1.5rem;\n  --wj-toolbar-border-color: rgba(33, 33, 33, 0.14);\n  width: 100%;\n  height: var(--wj-toolbar-height);\n}\n.native-toolbar {\n  background-color: var(--wj-toolbar-backcolor);\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n  border-bottom: 1px solid var(--wj-toolbar-border-color);\n  padding-inline: var(--wj-toolbar-padding-inline);\n  padding-top: var(--wj-toolbar-padding-top);\n  padding-bottom: var(--wj-toolbar-padding-bottom);\n  box-shadow: 0 10px 30px 0 rgba(82, 63, 105, 0.05);\n}\n::slotted {\n  grid-column: span 4;\n}\n::slotted([slot=start]) {\n  margin-right: auto;\n}";
+class Toolbar extends withRouterLinks(WJElement) {
   constructor() {
     super();
     __publicField(this, "className", "Toolbar");
@@ -356,9 +361,20 @@ class ToolbarAction extends WJElement {
   }
   draw(context, store2, params) {
     let fragment = document.createDocumentFragment();
-    var element = document.createElement("slot");
+    let maxItems = +this.maxItems || 0;
+    let actions = this.getActions();
+    let slot = document.createElement("slot");
+    let element = document.createElement("div");
+    const shouldCollapse = maxItems !== 0 && actions.length > maxItems;
+    if (shouldCollapse) {
+      element = document.createElement("wj-dropdown");
+    }
+    element.appendChild(slot);
     fragment.appendChild(element);
     return fragment;
+  }
+  getActions() {
+    return Array.from(this.querySelectorAll("wj-button"));
   }
 }
 customElements.get("wj-toolbar-action") || window.customElements.define("wj-toolbar-action", ToolbarAction);
@@ -377,6 +393,8 @@ export {
   Chip,
   Col,
   Dialog,
+  Divider,
+  Dropdown,
   ExampleElement,
   Grid,
   Icon,
@@ -386,10 +404,13 @@ export {
   Item,
   Label,
   List,
+  Menu,
+  MenuItem,
+  Popup,
   ProgressBar,
   Route,
   RouterLink,
-  Routerx,
+  R as Routerx,
   Row,
   Slider,
   Tab,
@@ -404,5 +425,5 @@ export {
   b as bindRouterLinks,
   defaultStoreActions,
   store,
-  w as withRouterLinks
+  withRouterLinks
 };
