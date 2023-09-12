@@ -1,30 +1,31 @@
-import { defaultStoreActions, store } from '/templates/net/assets/js/store/store.js?v=@@version@@';
-import { Table } from './service/table.js?v=@@version@@';
-import { TabulatorFull } from './plugins/tabulator/js/tabulator_esm.js?v=@@version@@';
+import { TabulatorFull } from 'tabulator-tables';
+import { Service } from './service/service.js';
 import { default as Popup} from "./components/wj-table-modules/wj-table-modules.js";
 import * as luxon from 'https://moment.github.io/luxon/es6/luxon.min.js?v=@@version@@';
-import './components/wj-options/options.js?v=@@version@@';
-import './components/wj-search/search.js?v=@@version@@';
-import './components/wj-filter-simple/filter-simple.js?v=@@version@@';
-import './components/wj-filter-advanced/filter-advanced.js?v=@@version@@';
-
+// import './components/wj-options/options.js?v=@@version@@';
+// import './components/wj-search/search.js?v=@@version@@';
+// import './components/wj-filter-simple/filter-simple.js?v=@@version@@';
+// import './components/wj-filter-advanced/filter-advanced.js?v=@@version@@';
+//
 import 'https://oss.sheetjs.com/sheetjs/xlsx.full.min.js?v=@@version@@';
 import 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js?v=@@version@@';
 import 'https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plugin.autotable.min.js?v=@@version@@';
+// import tabulatorFull from "tabulator-tables/src/js/core/TabulatorFull.js";
+//
+// import '/templates/net/assets/js/components/wj-nav/nav.js?v=@@version@@';
+// import '/templates/net/assets/js/components/wj-dropdown/wj-dropdown.js?v=@@version@@';
 
-import '/templates/net/assets/js/components/wj-nav/nav.js?v=@@version@@';
-import '/templates/net/assets/js/components/wj-dropdown/wj-dropdown.js?v=@@version@@';
 
-
+import styles from "./scss/tabulator_webjet.scss?inline";
 
 const template = document.createElement('template');
 template.innerHTML = `<style>
-    @import "/templates/net/assets/plugins/bootstrap/css/bootstrap.css?v=@@version@@";
-    @import "/templates/net/pages/css/themes/net-basic.css?v=@@version@@";
-    @import "/templates/net/assets/js/components/wj-table/plugins/tabulator/css/themes/webjet/tabulator_webjet.css?v=@@version@@";
-    @import "/templates/net/assets/plugins/font-awesome/css/fontawesome.css?v=@@version@@";
-    @import "/templates/net/assets/plugins/font-awesome/css/light.min.css?v=@@version@@";
-    @import "/templates/net/pages/css/themes/net-basic/var.css?v=@@version@@";
+    /*@import "/templates/net/assets/plugins/bootstrap/css/bootstrap.css?v=@@version@@";*/
+    /*@import "/templates/net/pages/css/themes/net-basic.css?v=@@version@@";*/
+    /*@import "/templates/net/assets/js/components/wj-table/plugins/tabulator/css/themes/webjet/tabulator_webjet.css?v=@@version@@";*/
+    /*@import "/templates/net/assets/plugins/font-awesome/css/fontawesome.css?v=@@version@@";*/
+    /*@import "/templates/net/assets/plugins/font-awesome/css/light.min.css?v=@@version@@";*/
+    /*@import "/templates/net/pages/css/themes/net-basic/var.css?v=@@version@@";*/
     
     .filtered {
         color: black;
@@ -85,26 +86,24 @@ template.innerHTML = `<style>
     <div class="table position-relative"></div>
 </div>`;
 
-export default class WjTable extends Table {
+export class Table extends Service {
     static instances = new Map();
 
     constructor() {
         super();
+
         window.luxon = luxon;
 
         this.addEventListener('wj-nav-change',this.eventClickTab)
 
         // RHR - zaregistrovanie nášho popup modulu
-        TabulatorFull.registerModule(Popup);
+        // TabulatorFull.registerModule(Popup);
     }
 
-    get layout() {
-        return this.getAttribute("layout");
+    static get cssStyleSheet() {
+        return styles;
     }
 
-    set layout(value) {
-        return this.setAttribute("layout", value);
-    }
 
     get infinity() {
         return this.hasAttribute("infinity");
@@ -142,15 +141,15 @@ export default class WjTable extends Table {
     }
 
     static getInstance(instanceId) {
-        return WjTable.instances.get(instanceId)
+        return Table.instances.get(instanceId)
     }
 
     static addInstance(instanceId, instance) {
-        WjTable.instances.set(instanceId, instance);
+        Table.instances.set(instanceId, instance);
     }
 
     static deleteInstance(instanceId) {
-        WjTable.instances.delete(instanceId);
+        Table.instances.delete(instanceId);
     }
 
     static get observedAttributes() {
@@ -176,68 +175,94 @@ export default class WjTable extends Table {
     }
 
     disconnectedCallback() {
-        WjTable.deleteInstance(this.tableId);
+        Table.deleteInstance(this.tableId);
     }
 
-    connectedCallback() {
-        // store.define('objTabs-' + this.tableId, [], null);
-        WjTable.addInstance(this.tableId, this)
+    beforeDraw() {
+        // this.store.define('objTabs-' + this.tableId, [], null);
+        Table.addInstance(this.tableId, this);
+        
+        
 
         // Vytvorime taby ak nejake su
-         this.service.get(`/private/rest/hub/tabulator/filter/${btoa(this.getAttribute("dataurl"))}`, null, false)
-            .then((res) => {
-                if(res.length < 1)
-                    return;
+        //  this.service.get(`/private/rest/hub/tabulator/filter/${btoa(this.getAttribute("dataurl"))}`, null, false)
+        //     .then((res) => {
+        //         if(res.length < 1)
+        //             return;
+        //
+        //         let home = {
+        //             "id": 0,
+        //             "filter": "W10=",
+        //             "sort": "",
+        //             "tab": '<i class="fa-light fa-house"></i>',
+        //             "url": "/private/rest/dsk/project/1/tasks/list_tab",
+        //             "hideMenu": true,
+        //             "active": true,
+        //         }
+        //
+        //         res.unshift(home);
+        //
+        //         let json = [{
+        //                 icon: '',
+        //                 title: 'Edit',
+        //                 wjClick: this.eventClickTabEdit,
+        //             },
+        //             {
+        //                 icon: '',
+        //                 title: 'Resetovať',
+        //                 wjClick: this.eventClickTabReset,
+        //             },
+        //             {
+        //                 icon: '',
+        //                 title: 'Delete',
+        //                 wjClick: this.eventClickTabDelete,
+        //             }];
+        //
+        //         let nav = document.createElement("wj-nav");
+        //         nav.jsonActions = json;
+        //
+        //         this.shadowRoot.insertBefore(nav, this.shadowRoot.querySelector(".controls"));
+        //         this.store.pause();
+        //         this.store.dispatch(this.defaultStoreActions.loadAction('nav')(res));
+        //         this.store.play();
+        //     });
 
-                let home = {
-                    "id": 0,
-                    "filter": "W10=",
-                    "sort": "",
-                    "tab": '<i class="fa-light fa-house"></i>',
-                    "url": "/private/rest/dsk/project/1/tasks/list_tab",
-                    "hideMenu": true,
-                    "active": true,
-                }
+        this.store.define("columnOptions-" + this.tableId, {}, null);
+        this.store.define("filterObj-" + this.tableId, {}, null);
 
-                res.unshift(home);
+        // this.context.appendChild(template.content.cloneNode(true));
 
-                let json = [{
-                        icon: '',
-                        title: 'Edit',
-                        wjClick: this.eventClickTabEdit,
-                    },
-                    {
-                        icon: '',
-                        title: 'Resetovať',
-                        wjClick: this.eventClickTabReset,
-                    },
-                    {
-                        icon: '',
-                        title: 'Delete',
-                        wjClick: this.eventClickTabDelete,
-                    }];
+        // this.tableElement = this.shadowRoot.querySelector(".table");
+        // this.tableElement.id = this.tableId;
 
-                let nav = document.createElement("wj-nav");
-                nav.jsonActions = json;
-
-                this.shadowRoot.insertBefore(nav, this.shadowRoot.querySelector(".controls"));
-                store.pause();
-                store.dispatch(defaultStoreActions.loadAction('nav')(res));
-                store.play();
-            });
-
-        store.define("columnOptions-" + this.tableId, {}, null);
-        store.define("filterObj-" + this.tableId, {}, null);
-
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
-
-        this.tableElement = this.shadowRoot.querySelector(".table");
-        this.tableElement.id = this.tableId;
-
-        this.draw();
+        // this.draw();
     }
 
     draw() {
+        let fragment = new DocumentFragment();
+
+        let controls = document.createElement("div");
+        controls.innerHTML = `<slot class="d-flex align-items-center" name="filter"></slot>
+            <slot class="d-flex align-items-center ml-3"></slot>`;
+
+        let card = document.createElement("div");
+        card.classList.add("card", "card-default", "mb-0", "routerlinks");
+
+        let table = document.createElement("div");
+        table.classList.add("table", "position-relative");
+        table.setAttribute("id", this.tableId);
+
+        card.appendChild(table);
+
+        fragment.appendChild(controls);
+        fragment.appendChild(card);
+
+        this.tableElement = table;
+
+        return fragment;
+    }
+
+    afterDraw() {
         this.bulk = this.hasAttribute("bulk");
         this.initialized = false;
         this.resizable = this.getAttribute("resizable");
@@ -295,7 +320,7 @@ export default class WjTable extends Table {
 
     eventClickTab = (e) => {
         let filterArray = JSON.parse(Table.atob_utf8(e.detail.data.filter));
-        store.dispatch(defaultStoreActions.addAction("filterObj-" + this.tableId)({
+        this.store.dispatch(this.defaultStoreActions.addAction("filterObj-" + this.tableId)({
             "filter": filterArray,
             "table": this.tableId
         }));
@@ -321,10 +346,10 @@ export default class WjTable extends Table {
     eventClickTabReset = ( e, item, anchor ) => {
         let nav = Table.setNavActive(item.data.id);
 
-        store.dispatch(defaultStoreActions.loadAction("nav")(nav));
+        this.store.dispatch(this.defaultStoreActions.loadAction("nav")(nav));
 
         let filterArray = JSON.parse(Table.atob_utf8(item.data.filter));
-        store.dispatch(defaultStoreActions.addAction("filterObj-" + this.tableId)({
+        this.store.dispatch(this.defaultStoreActions.addAction("filterObj-" + this.tableId)({
             "filter": filterArray,
             "table": this.tableId,
         }));
@@ -332,13 +357,13 @@ export default class WjTable extends Table {
 
     eventClickTabDelete = ( e, item, anchor ) => {
         Table.deleteTab("/private/rest/hub/tabulator/filter/" + item.data.id).then((res) => {
-            store.dispatch(defaultStoreActions.deleteAction("nav")(item.data));
+            this.store.dispatch(this.defaultStoreActions.deleteAction("nav")(item.data));
             let nav = Table.setNavActive(0, res.data);
 
-            store.dispatch(defaultStoreActions.loadAction("nav")(nav));
+            this.store.dispatch(this.defaultStoreActions.loadAction("nav")(nav));
 
-            let filterArray = JSON.parse(Table.atob_utf8(store.getState().nav[0].filter));
-            store.dispatch(defaultStoreActions.addAction("filterObj-" + this.tableId)({
+            let filterArray = JSON.parse(Table.atob_utf8(this.store.getState().nav[0].filter));
+            this.store.dispatch(this.defaultStoreActions.addAction("filterObj-" + this.tableId)({
                 "filter": filterArray,
                 "table": this.tableId
             }));
@@ -392,8 +417,8 @@ export default class WjTable extends Table {
             // vlozime zatial takto bulk-y
             if (this.bulk) columns.splice(1, 0, this.bulkCell);
 
-            store.dispatch(
-                defaultStoreActions.updateAction('columnOptions-' + this.tableId)(response.columnOptions)
+            this.store.dispatch(
+                this.defaultStoreActions.updateAction('columnOptions-' + this.tableId)(response.columnOptions)
             );
 
             columns = columns.map((c) => {
@@ -568,7 +593,7 @@ export default class WjTable extends Table {
     }
 }
 
-let __esModule = 'true';
-export {__esModule};
+// let __esModule = 'true';
+// export {__esModule};
 
-customElements.get("wj-table") || customElements.define("wj-table", WjTable);
+customElements.get("wj-table") || customElements.define("wj-table", Table);

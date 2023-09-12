@@ -1,5 +1,5 @@
 import { default as WJElement } from "/templates/net/assets/js/components/wj-element.js?v=@@version@@";
-import { default as WjTable } from "/templates/net/assets/js/components/wj-table/wj-table.js?v=@@version@@";
+import { default as Table } from "../../wj-table.js?v=@@version@@";
 
 const template = document.createElement("template");
 template.innerHTML = `<style>

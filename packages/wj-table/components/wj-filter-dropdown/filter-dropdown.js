@@ -1,6 +1,6 @@
 import { defaultStoreActions, store } from "/templates/net/assets/js/store/store.js?v=@@version@@";
 import { default as Dropdown } from "/templates/net/assets/js/components/wj-dropdown/wj-dropdown.js";
-import { default as WjTable } from "/templates/net/assets/js/components/wj-table/wj-table.js?v=@@version@@";
+import { default as Table } from "../../wj-table.js?v=@@version@@";
 
 import '/templates/net/assets/plugins/flatpickr/flatpickr.js?v=@@version@@';
 import '/templates/net/assets/plugins/flatpickr/l10n/sk.js?v=@@version@@';

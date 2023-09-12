@@ -1,20 +1,14 @@
-import { UniversalService } from "/templates/net/assets/js/service/universal-service.js?v=@@version@@";
-import { defaultStoreActions, store } from "/templates/net/assets/js/store/store.js?v=@@version@@";
-import { TabulatorFull, RowComponent} from "../plugins/tabulator/js/tabulator_esm.js?v=@@version@@";
+import { default as WJElement, WjElementUtils } from "../../wj-element/wj-element.js";
+import { TabulatorFull, RowComponent} from 'tabulator-tables';
+// import { TabulatorFull, RowComponent} from "../plugins/tabulator/js/tabulator_esm.js?v=@@version@@";
 
-import "../components/wj-action-dropdown/action-dropdown.js?v=@@version@@";
+// import "../components/wj-action-dropdown/action-dropdown.js?v=@@version@@";
 
-import "/templates/net/assets/js/hub-profile-photo.js?v=@@version@@";
+// import "/templates/net/assets/js/hub-profile-photo.js?v=@@version@@";
 
-export class Table extends HTMLElement {
+export class Service extends WJElement {
     constructor() {
         super();
-
-        this.attachShadow({mode:"open"});
-
-        this.service = new UniversalService({
-            store: store,
-        });
 
         String.prototype.interpolate = function(params) {
             let template = this;
@@ -133,6 +127,10 @@ export class Table extends HTMLElement {
         TabulatorFull.extendModule("edit", "editors", {
             headerMenu: this.headerMenu
         });
+    }
+
+    setupAttributes() {
+        this.isShadowRoot = "open";
     }
 
     set tableId(value) {

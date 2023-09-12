@@ -1,6 +1,6 @@
 import { UniversalService } from "/templates/net/assets/js/service/universal-service.js?v=@@version@@";
 import { defaultStoreActions, store } from "/templates/net/assets/js/store/store.js?v=@@version@@";
-import { default as WjTable } from "/templates/net/assets/js/components/wj-table/wj-table.js?v=@@version@@";
+import { default as Table } from "../../table.js?v=@@version@@";
 
 import "../wj-filter-dropdown/filter-dropdown.js?v=@@version@@";
 

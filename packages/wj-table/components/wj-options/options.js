@@ -1,5 +1,5 @@
 import { default as WJElement } from "/templates/net/assets/js/components/wj-element.js";
-import { Table } from '../../service/table.js?v=@@version@@';
+import { Service } from '../../service/service.js?v=@@version@@';
 import "../wj-filter-save/filter-save.js?v=@@version@@";
 
 const template = document.createElement("template");
@@ -88,10 +88,10 @@ export default class Options extends WJElement {
         saveBtn.innerHTML = "Uložiť";
         saveBtn.addEventListener("click", () => {
             let newData = item;
-            newData.filter = Table.btoa_utf8(JSON.stringify(this.store.getState()["filterObj-" + this.tableId].filter));
+            newData.filter = Service.btoa_utf8(JSON.stringify(this.store.getState()["filterObj-" + this.tableId].filter));
 
-            Table.saveTab("PUT", "/private/rest/hub/tabulator/filter/" + newData.id, newData).then((res) => {
-                let nav = Table.setNavActive(item.id, res.data);
+            Service.saveTab("PUT", "/private/rest/hub/tabulator/filter/" + newData.id, newData).then((res) => {
+                let nav = Service.setNavActive(item.id, res.data);
 
                 this.store.dispatch(this.defaultStoreActions.loadAction("nav")(nav));
 
@@ -104,12 +104,12 @@ export default class Options extends WJElement {
         deleteBtn.classList.add("btn", "btn-default", "btn-sm");
         deleteBtn.innerHTML = "Zmazať";
         deleteBtn.addEventListener("click", () => {
-            Table.deleteTab("/private/rest/hub/tabulator/filter/" + item.id).then((res) => {
+            Service.deleteTab("/private/rest/hub/tabulator/filter/" + item.id).then((res) => {
                 this.store.dispatch(this.defaultStoreActions.deleteAction("nav")(item));
-                let nav = Table.setNavActive(0, res.data);
+                let nav = Service.setNavActive(0, res.data);
                 this.store.dispatch(this.defaultStoreActions.loadAction("nav")(nav));
 
-                let filterArray = JSON.parse(Table.atob_utf8(this.store.getState().nav[0].filter));
+                let filterArray = JSON.parse(Service.atob_utf8(this.store.getState().nav[0].filter));
                 this.store.dispatch(this.defaultStoreActions.addAction("filterObj-" + this.tableId)({
                     "filter": filterArray,
                     "table": this.tableId

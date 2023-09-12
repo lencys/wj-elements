@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "@faker-js/faker": "^8.0.0",
-    "@floating-ui/dom": "^1.5.1"
+    "@floating-ui/dom": "^1.5.1",
+    "tabulator-tables": "^5.5.2"
   },
   "devDependencies": {
     "miragejs": "^0.1.47",

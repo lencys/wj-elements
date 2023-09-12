@@ -40,9 +40,14 @@ import { RouterLink } from "./wj-router-link.js";
 import "./wj-router-outlet.js";
 import { Row } from "./wj-row.js";
 import { Slider } from "./wj-slider.js";
+import { Table } from "./wj-table.js";
 import { Thumbnail } from "./wj-thumbnail.js";
 import { Toast } from "./wj-toast.js";
 import { Toggle } from "./wj-toggle.js";
+import "https://moment.github.io/luxon/es6/luxon.min.js?v=@@version@@";
+import "https://oss.sheetjs.com/sheetjs/xlsx.full.min.js?v=@@version@@";
+import "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js?v=@@version@@";
+import "https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plugin.autotable.min.js?v=@@version@@";
 const global = "";
 const styles$7 = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Breadcrumbs ]\n*/\n:host {\n  --wj-breadcrumb-a: rgba(33, 33, 33, 0.81);\n  --wj-breadcrumb-a-hover: rgba(33, 33, 33, 0.62);\n  display: flex;\n  flex: 0 0 auto;\n  align-items: center;\n  line-height: 1.5;\n}\n:host(.collapsed) {\n  display: none;\n}\n.native-breadcrumb {\n  display: flex;\n  align-items: center;\n  width: 100%;\n  outline: none;\n  background: inherit;\n  padding: 0.25rem 0.75rem;\n  color: var(--wj-breadcrumb-a);\n  text-decoration: none;\n}\n.native-breadcrumb.hidden {\n  display: none;\n}\n.native-breadcrumb.active {\n  font-weight: bold;\n}\n.native-breadcrumb:hover {\n  color: var(--wj-breadcrumb-a-hover);\n}\nbutton {\n  margin-inline: 0.75rem;\n  border: 0 solid transparent;\n  border-radius: 3px;\n  background-color: transparent;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n.separator {\n  display: inline-flex;\n  align-items: center;\n}\n::slotted([slot=start]) {\n  margin-inline: 0 0.5rem;\n}\n::slotted([slot=end]) {\n  margin-inline: 0.5rem 0;\n}";
 class Breadcrumb extends WJElement {
@@ -447,6 +452,7 @@ export {
   Tab,
   TabGroup,
   TabPanel,
+  Table,
   Thumbnail,
   Toast,
   Toggle,

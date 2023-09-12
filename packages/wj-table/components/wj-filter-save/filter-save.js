@@ -1,6 +1,6 @@
 import { default as WJElement} from "/templates/net/assets/js/components/wj-element.js?v=@@version@@";
-import { Table } from '../../service/table.js?v=@@version@@';
-import "/templates/net/assets/js/components/wj-table/wj-table.js?v=@@version@@";
+import { Service } from '../../service/service.js?v=@@version@@';
+import "../../wj-table.js?v=@@version@@";
 
 const template = document.createElement("template");
 template.innerHTML = `
@@ -93,8 +93,8 @@ export default class FilterSave extends WJElement {
     }
 
     save(){
-        return Table.saveTab("POST", this.endpoint,{
-            filter: Table.btoa_utf8(JSON.stringify(this.store.getState()["filterObj-" + this.table.element.id].filter)),
+        return Service.saveTab("POST", this.endpoint,{
+            filter: Service.btoa_utf8(JSON.stringify(this.store.getState()["filterObj-" + this.table.element.id].filter)),
             url: this.table.options.ajaxURL,
             sort: "",
             tab: this.context.querySelector('[type="text"]').value

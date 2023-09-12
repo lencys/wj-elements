@@ -44,6 +44,7 @@ import { Row } from "./wj-row/row.js";
 import { Slider } from "./wj-slider/slider.js";
 import { Tab } from "./wj-tab/tab.js";
 import { TabGroup } from "./wj-tab-group/tab-group.js";
+import { Table } from "./wj-table/table.js";
 import { TabPanel } from "./wj-tab-panel/tab-panel.js";
 import { Thumbnail } from "./wj-thumbnail/thumbnail.js";
 import { Toast } from "./wj-toast/toast.js";
@@ -88,6 +89,7 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   Slider,
   Tab,
   TabGroup,
+  Table,
   TabPanel,
   Thumbnail,
   Toast,

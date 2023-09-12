@@ -51,6 +51,7 @@ export default ({
                 "router-outlet": "./packages/wj-router-outlet/router-outlet.js",
                 "row": "./packages/wj-row/row.js",
                 "slider": "./packages/wj-slider/slider.js",
+                "table": "./packages/wj-table/table.js",
                 "thumbnail": "./packages/wj-thumbnail/thumbnail.js",
                 "toast": "./packages/wj-toast/toast.js",
                 "toggle": "./packages/wj-toggle/toggle.js"
