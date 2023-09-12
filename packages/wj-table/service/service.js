@@ -182,37 +182,40 @@ export class Service extends WJElement {
                 let customAttributes = attributes.interpolate(rowData);
                 switch (action) {
                     case "wj-modal-delete":
-                        return `<hub-modal-open ${customAttributes} display="${display}" url="${interpolateUrl}" size="${size}" title="${title}" alert="${callback}" text="${text}" class="wj-dropdown-item">
+                        return `<wj-menu-item ${customAttributes} display="${display}" url="${interpolateUrl}" size="${size}" title="${title}" alert="${callback}" text="${text}" class="wj-dropdown-item">
                             <i class="${icon}"></i>&nbsp;${title}
-                        </hub-modal-open>`;
+                        </wj-menu-item>`;
                     default:
-                        return `<hub-modal-open ${customAttributes} url="${interpolateUrl}" size="${size}" ${footerHide ? "footer-hide=\"true\"" : ""} title="${title}" class="wj-dropdown-item">
+                        return `<wj-menu-item ${customAttributes} url="${interpolateUrl}" size="${size}" ${footerHide ? "footer-hide=\"true\"" : ""} title="${title}" class="wj-dropdown-item">
                             <i class="${icon}"></i>&nbsp;${title}
-                        </hub-modal-open>`;
+                        </wj-menu-item>`;
                 }
             });
+            console.log(el.join(""));
 
-
-            let dropdown = document.createElement("wj-table-action-dropdown");
-            dropdown.setAttribute("position", "bottom-right");
+            let dropdown = document.createElement("wj-dropdown");
+            dropdown.setAttribute("placement", "bottom-start");
             dropdown.setAttribute("collapse", "");
             dropdown.setAttribute("hide-icon", "");
-            dropdown.setAttribute("parent-element", 'body');
+            dropdown.innerHTML = `<wj-button slot="trigger">
+                <wj-icon name="ellipsis-vertical"></wj-icon>
+            </wj-button>
+            <wj-menu>${el.join("")}</wj-menu>`;
 
             // RHR: HACK ked bude čas treba fixnut
-            const oldFn = dropdown.getDropdown
-            dropdown.getDropdown = () => {
-                if(dropdown.dropdownContentElement){
-                    dropdown.dropdownContentElement.innerHTML = el.join("");
-                    return dropdown.dropdownContentElement;
-                }
-
-                const oldEl = oldFn();
-                oldEl.innerHTML = el.join("");
-                return oldEl;
-            }
+            // const oldFn = dropdown.getDropdown
+            // dropdown.getDropdown = () => {
+            //     if(dropdown.dropdownContentElement){
+            //         dropdown.dropdownContentElement.innerHTML = el.join("");
+            //         return dropdown.dropdownContentElement;
+            //     }
+            //
+            //     const oldEl = oldFn();
+            //     oldEl.innerHTML = el.join("");
+            //     return oldEl;
+            // }
             // dropdown.innerHTML = el.join("");
-
+            console.log(dropdown);
             return dropdown;
         } catch (error) {
             return formatterParams.invalidPlaceholder;

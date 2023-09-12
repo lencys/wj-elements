@@ -16,7 +16,7 @@ import 'https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plug
 // import '/templates/net/assets/js/components/wj-dropdown/wj-dropdown.js?v=@@version@@';
 
 
-import styles from "./scss/tabulator_webjet.scss?inline";
+import styles from "./scss/styles.scss?inline";
 
 const template = document.createElement('template');
 template.innerHTML = `<style>
@@ -27,64 +27,8 @@ template.innerHTML = `<style>
     /*@import "/templates/net/assets/plugins/font-awesome/css/light.min.css?v=@@version@@";*/
     /*@import "/templates/net/pages/css/themes/net-basic/var.css?v=@@version@@";*/
     
-    .filtered {
-        color: black;
-        font-weight: bold;
-    }
     
-    .table {
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .controls {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        align-items: start;
-    }
-    
-    .nav-tabs > li {
-        display: flex;
-        align-items: center;
-        position:relative;
-    }
-    .nav-tabs > li > a {
-        display: initial;
-        min-width: auto;
-        line-height: 1rem;
-        padding: .5rem 2rem .5rem 1rem;
-    }
-    
-    .nav-tabs li:first-child a {
-        font-size: 1rem;   
-    }
-    
-    .dot {
-        position: absolute;
-        right: 1rem;
-        width: 1rem;
-        height: 1rem;
-        display: flex;
-        justify-content: right;
-    }
-    .dot:not([open]) {
-        display: none;
-        
-    }
-    
-    .nav-tabs > li:hover .dot {
-        display: flex;
-    }
-</style>
-
-<div class="controls">
-    <slot class="d-flex align-items-center" name="filter"></slot>
-    <slot class="d-flex align-items-center ml-3"></slot>
-</div>
-
-<div class="card card-default mb-0" routerlinks>
-    <div class="table position-relative"></div>
-</div>`;
+</style>`;
 
 export class Table extends Service {
     static instances = new Map();
