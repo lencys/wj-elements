@@ -58,6 +58,17 @@ export default class DemoButton extends WJElement {
           <wj-button size="large">Large</wj-button>
         </div>
       </div>
+      
+       <!-- CARET -->
+  
+      <h2>Caret</h2>
+      <div class="playground">
+        <div class="content">
+          <wj-button color="default" fill="outline" size="small" caret>Small</wj-button>
+          <wj-button color="default" fill="outline" caret>Default</wj-button>
+          <wj-button color="default" fill="outline" size="large" caret>Large</wj-button>
+        </div>
+      </div>
   
       <!--  ICONS -->
   
@@ -72,6 +83,7 @@ export default class DemoButton extends WJElement {
             Right Icon
             <wj-icon slot="end" name="star"></wj-icon>
           </wj-button>
+          
           <wj-button>
             <wj-icon slot="icon-only" name="star"></wj-icon>
           </wj-button>
@@ -101,8 +113,7 @@ export default class DemoButton extends WJElement {
           <wj-button color="success">Success</wj-button>
           <wj-button color="warning">Warning</wj-button>
           <wj-button color="danger">Danger</wj-button>
-          <wj-button color="dark">Dark</wj-button>
-          <wj-button color="light">Light</wj-button>
+          <wj-button color="neutral">Neutral</wj-button>
         </div>
       </div>
   
@@ -117,8 +128,7 @@ export default class DemoButton extends WJElement {
           <wj-button color="success" fill="outline">Success</wj-button>
           <wj-button color="warning" fill="outline">Warning</wj-button>
           <wj-button color="danger" fill="outline">Danger</wj-button>
-          <wj-button color="dark" fill="outline">Dark</wj-button>
-          <wj-button color="light" fill="outline">Light</wj-button>
+          <wj-button color="neutral" fill="outline">Neutral</wj-button>
         </div>
       </div>
   

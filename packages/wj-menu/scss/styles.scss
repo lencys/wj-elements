@@ -12,6 +12,7 @@
   --wj-menu-border-radius: 4px;
   --wj-menu-padding-top: .5rem;
   --wj-menu-padding-bottom: .5rem;
+  --wj-menu-padding-inline: 0;
 
   background: var(--wj-menu-background);
   display: block;
@@ -24,6 +25,15 @@
 
   padding-top: var(--wj-menu-padding-top);
   padding-bottom: var(--wj-menu-padding-bottom);
+  padding-inline: var(--wj-menu-padding-inline);
   overflow: auto;
   overscroll-behavior: none;
+
+  .native-menu {
+    display: flex;
+    flex-direction: column;
+    ::slotted(wj-button) {
+      margin: 0;
+    }
+  }
 }

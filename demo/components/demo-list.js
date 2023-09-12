@@ -41,7 +41,7 @@ template.innerHTML = `  <style>
     <h2>Inset list</h2>
     <div class="playground" style="background-color: rgba(0,0,0,.08);">
       <div class="content">
-        <wj-list inset="true">
+        <wj-list inset>
           <wj-item>
             <wj-label>Pokémon Yellow</wj-label>
           </wj-item>

@@ -1,6 +1,4 @@
 import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
-import "../wj-icon/icon.js";
-import "../wj-popup/popup.js";
 
 import styles from "./scss/styles.scss?inline";
 
@@ -35,6 +33,12 @@ export class Dropdown extends WJElement {
             <slot name="trigger" slot="anchor"></slot>
             <slot></slot>
         </wj-popup>`;
+
+        // let popup = document.createElement("wj-popup");
+        // popup.setAttribute("placement", this.placement);
+        // popup.setAttribute("offset", this.offset);
+        // popup.innerHTML = `<slot name="trigger" slot="anchor"></slot>
+        //     <slot></slot>`;
 
         native.querySelector("wj-popup").addEventListener("click", (e) => {
             if(e.target.assignedSlot.parentElement.hasAttribute("active"))

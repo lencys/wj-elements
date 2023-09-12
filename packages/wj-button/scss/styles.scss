@@ -54,22 +54,22 @@
   --wj-color-contrast: #{$color-danger} !important;
 }
 
-:host(.wj-button-solid.wj-color-dark) {
+:host(.wj-button-solid.wj-color-neutral) {
   --wj-color-base: #{$color-contrast-higher};
   --wj-color-contrast: #{text-contrast($color-contrast-higher)} !important;
 }
 
-:host(.wj-button-outline.wj-color-dark) {
+:host(.wj-button-outline.wj-color-neutral) {
   --wj-button-border-color: #{opacify($color-contrast-higher, 0.03)};
   --wj-color-contrast: #{$color-contrast-higher} !important;
 }
 
-:host(.wj-button-solid.wj-color-light) {
+:host(.wj-button-solid.wj-color-default) {
   --wj-color-base: #{$color-contrast-lowest};
   --wj-color-contrast: #{text-contrast($color-contrast-lowest)} !important;
 }
 
-:host(.wj-button-outline.wj-color-light) {
+:host(.wj-button-outline.wj-color-default) {
   --wj-button-border-color: #{opacify($color-border-a, 0.03)};
   --wj-color-base: #{$color-contrast-lowest};
   --wj-color-contrast: #{text-contrast($color-contrast-lowest)} !important;
@@ -98,21 +98,15 @@
   height: 100%;
   min-height: inherit;
   overflow: hidden;
-  //transition: var(--transition);
-
   border-width: var(--wj-button-border-width);
   border-style: var(--wj-button-border-style);
   border-color: var(--wj-button-border-color);
   outline: none;
-
   background: var(--wj-color-base);
   color: var(--wj-color-contrast);
   line-height: 1;
-  //box-shadow: var(--box-shadow);
   contain: layout style;
   cursor: pointer;
-  //opacity: var(--opacity);
-  //overflow: var(--overflow);
   z-index: 0;
   box-sizing: border-box;
   appearance: none;
@@ -177,19 +171,25 @@
     @include hover-outline($color-danger);
   }
 
-  :host(.wj-button-solid.wj-color-dark:hover) {
+  :host(.wj-button-solid.wj-color-neutral:hover) {
     @include hover($color-contrast-higher, $color-contrast-higher);
   }
 
-  :host(.wj-button-outline.wj-color-dark:hover) {
+  :host(.wj-button-outline.wj-color-neutral:hover) {
     @include hover-outline($color-contrast-higher);
   }
 
-  :host(.wj-button-solid.wj-color-light:hover) {
-    @include hover($color-contrast-lowest, $color-contrast-lowest);
+  :host(.wj-button-solid.wj-color-default:hover) {
+    @include hover(rgba($color-contrast-low, 0.1), $color-contrast-low);
   }
 
-  :host(.wj-button-outline.wj-color-light:hover) {
+  //@mixin hover($background-color, $border-color, $text-color: text-contrast($background-color)) {
+  //  --wj-color-base: #{make-shade($background-color, $mix-percentage-light, $saturation-shift, $hue-shift, -1)};
+  //  --wj-button-border-color: #{$border-color};
+  //  --wj-color-contrast: #{$text-color};
+  //}
+
+  :host(.wj-button-outline.wj-color-default:hover) {
     --wj-color-base: #{rgba($color-contrast-low, 0.1)};
     --wj-button-border-color: #{$color-contrast-low};
     --wj-color-contrast: #{text-contrast($color-contrast-lowest)};
@@ -198,9 +198,7 @@
   :host(.wj-button-link:hover) {
     --wj-color-base: #{rgba(128, 128, 128, 0.2) !important};
     --wj-button-border-color: transparent !important;
-    //--wj-border-border-radius: 34px !important;
     color: $color-contrast-high !important;
-    //background: rgba(128, 128, 128, 0.2) !important;
   }
 }
 
@@ -243,7 +241,6 @@
 :host(.wj-button-outline) {
   --wj-button-border-color: #{opacify($color-primary, 0.03)};
   --wj-color-base: transparent;
-  //--wj-color-contrast: #{$color-primary};
   --wj-color-contrast: #{$color-primary};
 }
 
@@ -276,7 +273,6 @@
 }
 
 :host(.wj-button-large) {
-  //--border-radius: #{$button-ios-large-border-radius};
   --wj-padding-top: .6rem;
   --wj-padding-start: .7rem;
   --wj-padding-end: .7rem;
@@ -284,7 +280,6 @@
 }
 
 :host(.wj-button-small) {
-  //--border-radius: #{$button-ios-small-border-radius};
   --wj-padding-top: .25rem;
   --wj-padding-start: .25rem;
   --wj-padding-end: .25rem;
@@ -297,4 +292,8 @@
 
 ::slotted(wj-icon[slot="end"]) {
   margin: 0 -.2rem 0 .3rem;
+}
+
+::slotted(wj-icon[slot="caret"]) {
+  margin: 0 0 0 .3rem;
 }

@@ -180,10 +180,10 @@ export default class WJElement extends HTMLElement {
 
 		this.display(force, processId);
 
-        const sheet = new CSSStyleSheet();
-        sheet.replaceSync(this.constructor.cssStyleSheet);
+		const sheet = new CSSStyleSheet();
+		sheet.replaceSync(this.constructor.cssStyleSheet);
 
-        this.context.adoptedStyleSheets = [sheet];
+		this.context.adoptedStyleSheets = [sheet];
         
 		// RHR - zatial zakomentované pokiaľ by to pokazilo niečo iné
 		// for (let i = 0; i < this.childNodes.length; i++) {
@@ -257,7 +257,7 @@ export default class WJElement extends HTMLElement {
 	display(force = false, processId) {
 		if (this.isProcessingFlow(processId)) return;
 
-		if (force) {
+		if (force && this.isShadowRoot) {
 			[...this.context.children].forEach(this.context.removeChild.bind(this.context));
 			this.isAttached = false;
 		}

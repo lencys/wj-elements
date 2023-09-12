@@ -1,6 +1,6 @@
 import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
-import "../wj-icon/icon.js";
-import "../wj-popup/popup.js";
+// import "../wj-icon/icon.js";
+// import "../wj-popup/popup.js";
 
 import styles from "./scss/styles.scss?inline";
 
@@ -25,10 +25,6 @@ export class MenuItem extends WJElement {
         this.isShadowRoot = "open";
     }
 
-    beforeDraw(context, store, params) {
-        // this.tabIndex = "-1";
-    }
-
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
@@ -39,19 +35,26 @@ export class MenuItem extends WJElement {
         if(this.hasSubmenu)
             native.innerHTML = `<wj-popup anchor="anchor" placement="right-start"><slot name="submenu"></slot></wj-popup>`;
 
+        // CHECKED - Icon
         let checkedIcon = document.createElement("span");
         checkedIcon.classList.add("check-icon");
         checkedIcon.innerHTML = `<wj-icon name="check"></wj-icon>`;
 
+        (this.hasAttribute("checked")) ? checkedIcon.classList.add("checked") : checkedIcon.classList.remove("checked");
+
+        // SLOT - Start
         let start = document.createElement("slot");
         start.name = "start";
 
+        // SLOT - Start
         let slot = document.createElement("slot");
         slot.classList.add("label");
 
+        // SLOT - End
         let end = document.createElement("slot");
         end.name = "end";
 
+        // SUBMENU - Icon
         let submenutIcon = document.createElement("span");
         submenutIcon.classList.add("submenu-icon");
         submenutIcon.innerHTML = `<wj-icon name="chevron-right"></wj-icon>`;
@@ -86,10 +89,6 @@ export class MenuItem extends WJElement {
                 this.native.classList.remove("expanded-submenu");
             });
         }
-    }
-
-    disabledPopup = () => {
-        this.querySelector("wj-popup").removeAttribute("active");
     }
 }
 

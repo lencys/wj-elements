@@ -7,13 +7,23 @@ export class Breadcrumb extends WJElement {
         super();
 
         this._showSeparator = true;
+        this._collapsedVariant = this.parentElement?.collapsedVariant || "BUTTON";
     }
 
     get showSeparator() {
         return this._showSeparator;
     }
+
     set showSeparator(value) {
         this._showSeparator = value;
+    }
+
+    get collapsedVariant() {
+        return this._collapsedVariant.toUpperCase();
+    }
+
+    set collapsedVariant(value) {
+        this._collapsedVariant = value || this.parentElement.collapsedVariant;
     }
 
     className = "Breadcrumb";
@@ -68,7 +78,7 @@ export class Breadcrumb extends WJElement {
         fragment.appendChild(native);
 
         if(this.showCollapsedIndicator) {
-            // pridame bbutton za native element
+            // pridame button za native element
             fragment.appendChild(this.drawCollapsedIndicator());
 
             // removneme collapsed z host element
@@ -101,21 +111,48 @@ export class Breadcrumb extends WJElement {
     }
 
     drawCollapsedIndicator(){
-        let collapsedIndicator = document.createElement("button");
-        collapsedIndicator.setAttribute("aria-label", "Show more breadcrumbs");
-        collapsedIndicator.setAttribute("part", "collapsed-indicator");
-        collapsedIndicator.innerHTML = `<wj-icon name="ellipsis"></wj-icon>`;
-        collapsedIndicator.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
+        let collapsedIndicator = null;
+
+        if(this.collapsedVariant === "DROPDOWN") {
+            collapsedIndicator = this.collapseDropdown();
+        } else {
+            collapsedIndicator = this.collapseButton();
+        }
+
+        return collapsedIndicator;
+    }
+
+    collapseDropdown(){
+        console.log("DROPDOWN");
+        let dropdown = document.createElement("wj-dropdown");
+        dropdown.setAttribute("placement", "bottom");
+        dropdown.setAttribute("offset", "10");
+        dropdown.innerHTML = `<wj-button slot="trigger">
+            <wj-icon name="ellipsis"></wj-icon>
+        </wj-button>
+        <wj-menu>
+            <wj-menu-item>Tralala</wj-menu-item>
+            <wj-button>Test 1</wj-button>
+            <wj-button>Test 2</wj-button>
+        </wj-menu>`;
+
+        return dropdown;
+    }
+
+    collapseButton(){
+        console.log("BUTTON");
+        let button = document.createElement("button");
+        button.setAttribute("aria-label", "Show more breadcrumbs");
+        button.setAttribute("part", "collapsed-indicator");
+        button.innerHTML = `<wj-icon name="ellipsis"></wj-icon>`;
+        button.addEventListener("click", (e) => {
             this.native.classList.remove("hidden");
-            collapsedIndicator.remove();
+            button.remove();
             this.parentElement.querySelectorAll("wj-breadcrumb").forEach((e) => {
                 e.classList.remove("collapsed");
             });
         });
-
-        return collapsedIndicator;
+        return button;
     }
 }
 

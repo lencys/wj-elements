@@ -122,18 +122,6 @@ class Icon extends WJElement {
     super(template);
     __publicField(this, "className", "Icon");
   }
-  set name(value) {
-    this.setAttribute("name", value);
-  }
-  get name() {
-    return this.getAttribute("name");
-  }
-  set size(value) {
-    this.setAttribute("size", "");
-  }
-  get size() {
-    return this.getAttribute("size");
-  }
   static get observedAttributes() {
     return [];
   }

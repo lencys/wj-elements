@@ -11,7 +11,6 @@
 
   display: block;
 
-
   .native-menu-item {
     position: relative;
     display: flex;
@@ -48,8 +47,12 @@
       flex: 0 0 auto;
       display: flex;
       align-items: center;
+      justify-content: center;
       width: 1.5rem;
       visibility: hidden;
+      &.checked {
+        visibility: visible;
+      }
     }
     .submenu-icon {
       flex: 0 0 auto;

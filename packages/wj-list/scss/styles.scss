@@ -4,11 +4,10 @@
 [ List ]
 */
 
-wj-list {
+:host {
   --wj-list-inset-padding: 1rem;
   --wj-list-border-radius: 8px;
   --wj-list-background: #{$color-contrast-lowest};
-
 
   margin: 0;
   padding: 0;
@@ -19,7 +18,7 @@ wj-list {
   list-style-type: none;
 }
 
-wj-list.wj-inset {
+:host(.wj-inset) {
   background: var(--wj-list-background);
   transform: translateZ(0);
   overflow: hidden;
@@ -27,18 +26,6 @@ wj-list.wj-inset {
   border-radius: var(--wj-list-border-radius);
 }
 
-.wj-lines-none .wj-item-list {
+:host(.wj-lines-none) ::slotted(wj-item) {
   --wj-border-width: 0 !important;
 }
-
-//:host-context(.wj-lines-none) ::slotted(.wj-item-list){
-//  --wj-border-width: 0 !important;
-//}
-//
-//:host-context(.wj-lines-full) ::slotted(.wj-item-list){
-//  --wj-border-width: 0 0 1px 0;
-//}
-//
-//:host-context(.wj-lines-inset) ::slotted(.wj-item-list){
-//  --wj-border-inner-width: 0 0 1px 0;
-//}

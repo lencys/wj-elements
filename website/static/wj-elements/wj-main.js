@@ -47,15 +47,23 @@ const global = "";
 const styles$7 = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Breadcrumbs ]\n*/\n:host {\n  --wj-breadcrumb-a: rgba(33, 33, 33, 0.81);\n  --wj-breadcrumb-a-hover: rgba(33, 33, 33, 0.62);\n  display: flex;\n  flex: 0 0 auto;\n  align-items: center;\n  line-height: 1.5;\n}\n:host(.collapsed) {\n  display: none;\n}\n.native-breadcrumb {\n  display: flex;\n  align-items: center;\n  width: 100%;\n  outline: none;\n  background: inherit;\n  padding: 0.25rem 0.75rem;\n  color: var(--wj-breadcrumb-a);\n  text-decoration: none;\n}\n.native-breadcrumb.hidden {\n  display: none;\n}\n.native-breadcrumb.active {\n  font-weight: bold;\n}\n.native-breadcrumb:hover {\n  color: var(--wj-breadcrumb-a-hover);\n}\nbutton {\n  margin-inline: 0.75rem;\n  border: 0 solid transparent;\n  border-radius: 3px;\n  background-color: transparent;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n.separator {\n  display: inline-flex;\n  align-items: center;\n}\n::slotted([slot=start]) {\n  margin-inline: 0 0.5rem;\n}\n::slotted([slot=end]) {\n  margin-inline: 0.5rem 0;\n}";
 class Breadcrumb extends WJElement {
   constructor() {
+    var _a;
     super();
     __publicField(this, "className", "Breadcrumb");
     this._showSeparator = true;
+    this._collapsedVariant = ((_a = this.parentElement) == null ? void 0 : _a.collapsedVariant) || "BUTTON";
   }
   get showSeparator() {
     return this._showSeparator;
   }
   set showSeparator(value) {
     this._showSeparator = value;
+  }
+  get collapsedVariant() {
+    return this._collapsedVariant.toUpperCase();
+  }
+  set collapsedVariant(value) {
+    this._collapsedVariant = value || this.parentElement.collapsedVariant;
   }
   static get cssStyleSheet() {
     return styles$7;
@@ -116,20 +124,43 @@ class Breadcrumb extends WJElement {
     return fragment;
   }
   drawCollapsedIndicator() {
-    let collapsedIndicator = document.createElement("button");
-    collapsedIndicator.setAttribute("aria-label", "Show more breadcrumbs");
-    collapsedIndicator.setAttribute("part", "collapsed-indicator");
-    collapsedIndicator.innerHTML = `<wj-icon name="ellipsis"></wj-icon>`;
-    collapsedIndicator.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
+    let collapsedIndicator = null;
+    if (this.collapsedVariant === "DROPDOWN") {
+      collapsedIndicator = this.collapseDropdown();
+    } else {
+      collapsedIndicator = this.collapseButton();
+    }
+    return collapsedIndicator;
+  }
+  collapseDropdown() {
+    console.log("DROPDOWN");
+    let dropdown = document.createElement("wj-dropdown");
+    dropdown.setAttribute("placement", "bottom");
+    dropdown.setAttribute("offset", "10");
+    dropdown.innerHTML = `<wj-button slot="trigger">
+            <wj-icon name="ellipsis"></wj-icon>
+        </wj-button>
+        <wj-menu>
+            <wj-menu-item>Tralala</wj-menu-item>
+            <wj-button>Test 1</wj-button>
+            <wj-button>Test 2</wj-button>
+        </wj-menu>`;
+    return dropdown;
+  }
+  collapseButton() {
+    console.log("BUTTON");
+    let button = document.createElement("button");
+    button.setAttribute("aria-label", "Show more breadcrumbs");
+    button.setAttribute("part", "collapsed-indicator");
+    button.innerHTML = `<wj-icon name="ellipsis"></wj-icon>`;
+    button.addEventListener("click", (e) => {
       this.native.classList.remove("hidden");
-      collapsedIndicator.remove();
+      button.remove();
       this.parentElement.querySelectorAll("wj-breadcrumb").forEach((e2) => {
         e2.classList.remove("collapsed");
       });
     });
-    return collapsedIndicator;
+    return button;
   }
 }
 customElements.get("wj-breadcrumb") || window.customElements.define("wj-breadcrumb", Breadcrumb);

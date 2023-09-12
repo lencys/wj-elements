@@ -44,7 +44,7 @@ export class Popup extends WJElement {
         let slot = document.createElement("slot");
 
         this.setAnchor();
-
+        // await this.reposition();
 
         this.native.appendChild(slot);
 
@@ -88,6 +88,7 @@ export class Popup extends WJElement {
             strategy: 'fixed',
             middleware: middleware,
         }).then((position) => {
+            // debugger;
             this.native.style.setProperty("--wj-popup-top", position.y + "px");
             this.native.style.setProperty("--wj-popup-left", position.x + "px");
 
@@ -98,11 +99,9 @@ export class Popup extends WJElement {
     show() {
         this.native.classList.add("popup-active");
 
-        window.setTimeout(() => {
-            this.cleanup = autoUpdate(this.anchorEl, this.native, () => {
-                this.reposition();
-            })
-        }, 0);
+        this.cleanup = autoUpdate(this.anchorEl, this.native, () => {
+            this.reposition();
+        });
     }
 
     hide() {

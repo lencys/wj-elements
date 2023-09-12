@@ -12,24 +12,24 @@ template.innerHTML = `
     <div class="playground">
       <div class="content">
         <p style="overflow: hidden; height: 50px;">
-          <wj-dropdown label="Start" placement="bottom-start" offset="2">
-            <wj-button dialog="open-modal" slot="trigger">Open</wj-button>
+          <wj-dropdown label="Start" placement="bottom-start" offset="5">
+            <wj-button size="large" slot="trigger" caret>Large</wj-button>
             <wj-menu>
               <wj-menu-item>
                 <wj-icon name="plane" slot="start"></wj-icon>
-                <wj-label>Travel</wj-label>
+                <wj-label>Menu item</wj-label>
               </wj-menu-item>
               <wj-menu-item>
                 <wj-icon name="book" slot="start"></wj-icon>
-                <wj-label>Book</wj-label>
+                <wj-label>Menu item</wj-label>
               </wj-menu-item>
               <wj-menu-item>
                 <wj-icon name="music" slot="start"></wj-icon>
-                <wj-label>Music</wj-label>
+                <wj-label>Menu item</wj-label>
               </wj-menu-item>
               <wj-menu-item>
                 <wj-icon name="film" slot="start"></wj-icon>
-                <wj-label>Movie</wj-label>
+                <wj-label>Menu item</wj-label>
               </wj-menu-item>
             </wj-menu>
           </wj-dropdown>

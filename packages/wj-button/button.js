@@ -92,8 +92,20 @@ export class Button extends WJElement {
         if(this.size)
             this.classList.add("wj-button-" + this.size);
 
-        if(this.color)
+        if(this.hasAttribute("color"))
             this.classList.add("wj-color-" + this.color, "wj-color");
+        else
+            this.classList.add("wj-color-default", "wj-color");
+
+        if(this.hasAttribute("caret")) {
+            let i = document.createElement("wj-icon");
+            i.style.setProperty("--wj-icon-size", "10px");
+            i.setAttribute("slot", "caret");
+            i.setAttribute("size", "small");
+            i.setAttribute("name", "angle-down");
+
+            this.appendChild(i);
+        }
 
         if(this.active) {
             this.classList.add("wj-active");
@@ -129,6 +141,10 @@ export class Button extends WJElement {
 
         slot = document.createElement("slot");
         slot.setAttribute("name", "end");
+        span.appendChild(slot);
+
+        slot = document.createElement("slot");
+        slot.setAttribute("name", "caret");
         span.appendChild(slot);
 
         element.appendChild(span);

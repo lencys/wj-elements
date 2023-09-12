@@ -215,13 +215,27 @@ class WjElementUtils {
     return !["false", "0", 0].includes(string);
   }
 }
-const styles = '/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Input ]\n*/\n:host {\n  --wj-input-font-family: Inter UI, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;\n  --wj-input-background-color: #fff;\n  --wj-input-color: #212121;\n  --wj-input-color-invalid: #b91e1e;\n  --wj-input-border-color: rgba(33, 33, 33, 0.14);\n  --wj-input-border-color-focus: #7252D3;\n  --wj-input-border-radius: 2px;\n  --wj-input-margin-bottom: .5rem;\n  --wj-input-line-height: 20px;\n  width: 100%;\n  margin-bottom: var(--wj-input-margin-bottom);\n  display: block;\n}\n:host .error-message {\n  display: none;\n  position: absolute;\n  width: auto;\n  max-width: 90%;\n  border-radius: 50px;\n  background: black;\n  padding: 0.25rem 0.5rem;\n  top: 0;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  color: white;\n  font-size: 12px;\n  line-height: normal;\n}\n:host input {\n  background-color: var(--wj-input-background-color);\n  border: 1px solid var(--wj-input-border-color);\n  font-family: var(--wjinput-font-family);\n  color: var(--wj-input-color);\n  border-top-color: rgba(33, 33, 33, 0.21);\n  appearance: none;\n  outline: 0;\n  padding: 6px 8px;\n  line-height: var(--wj-input-line-height);\n  font-size: 14px;\n  font-weight: normal;\n  vertical-align: middle;\n  min-height: 32px;\n}\n:host .native-input {\n  display: grid;\n  grid-template-columns: auto 1fr auto;\n}\n:host .native-input .input-wrapper {\n  width: 100%;\n}\n:host .native-input.default {\n  background-color: var(--wj-input-background-color);\n  font-family: var(--wj-input-font-family);\n  position: relative;\n  border-radius: var(--wj-input-border-radius);\n  border: 1px solid var(--wj-input-border-color);\n  border-top-color: rgba(8, 8, 8, 0.14);\n  padding-inline: 9px;\n  padding-top: 5px;\n  padding-bottom: 4px;\n  transition: background-color 0.2s ease;\n  cursor: text;\n}\n:host .native-input.default.focused {\n  border: 1px solid var(--wj-input-border-color-focus) !important;\n}\n:host .native-input.default.focused label {\n  opacity: 0.67;\n  font-size: 12px;\n  letter-spacing: normal;\n}\n:host .native-input.default input {\n  border: none;\n  height: 25px;\n  min-height: 25px;\n  padding: 0;\n  margin-top: -4px;\n  background: none;\n  box-shadow: none;\n  width: 100%;\n}\n:host .native-input.default label {\n  margin: 0;\n  display: block;\n  opacity: 1;\n  cursor: text;\n  transition: opacity 0.2s ease;\n  line-height: var(--wj-input-line-height);\n}\n:host .native-input.default label.fade {\n  opacity: 0.5;\n  font-size: 12px;\n  letter-spacing: normal;\n}\n:host([required]) .input-wrapper::after {\n  color: #D83C31;\n  content: "*";\n  font-family: -apple-system, BlinkMacSystemFont, "Inter UI", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;\n  font-size: 20px;\n  position: absolute;\n  right: 10px;\n  top: 2px;\n}\n:host([invalid]) .error-message {\n  display: block;\n}\n:host([invalid]) label {\n  opacity: 1 !important;\n  color: var(--wj-input-color-invalid) !important;\n  animation-name: shake;\n  animation-duration: 0.4s;\n  animation-iteration-count: 1;\n}\nslot[name=start], slot[name=end] {\n  display: flex;\n  align-items: center;\n  position: relative;\n}\nslot[name=start] {\n  margin-inline: 0 10px;\n}\nslot[name=end] {\n  margin-inline: 10px 0;\n}\n::slotted([slot=start]) {\n  padding-inline: 0 10px;\n}\n::slotted([slot=start]):after {\n  border-right: 1px solid rgba(0, 0, 0, 0.16);\n  content: "";\n  display: block;\n  width: 1px;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  right: 0;\n}\n::slotted([slot=end]) {\n  padding-inline: 10px 0;\n}\n::slotted([slot=end]):after {\n  border-right: 1px solid rgba(0, 0, 0, 0.16);\n  content: "";\n  display: block;\n  width: 1px;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n}\n@keyframes shake {\n  8%, 41% {\n    transform: translateX(-4px);\n  }\n  25%, 58% {\n    transform: translateX(4px);\n  }\n  75% {\n    transform: translateX(-2px);\n  }\n  92% {\n    transform: translateX(2px);\n  }\n  0%, 100% {\n    transform: translateX(0);\n  }\n}';
 const template = document.createElement("template");
 template.innerHTML = ``;
 class WJElement extends HTMLElement {
   constructor(componentTemplate) {
-    var _a;
     super();
+    __publicField(this, "initWjElement", async (force = false) => {
+      var _a;
+      this.functionStack = [];
+      const processId = Date.now();
+      this.functionStack.push(processId);
+      (_a = this.setupAttributes) == null ? void 0 : _a.call(this);
+      if (this.isShadowRoot) {
+        !this.shadowRoot && this.attachShadow({ mode: this.shadowType || "open" });
+      }
+      this.setUpAccessors();
+      this.drawingStatus = "BEGINING";
+      this.display(force, processId);
+      const sheet = new CSSStyleSheet();
+      sheet.replaceSync(this.constructor.cssStyleSheet);
+      this.context.adoptedStyleSheets = [sheet];
+    });
     this.template = componentTemplate || template;
     this._attributes = {};
     this.isAttached = false;
@@ -234,16 +248,6 @@ class WJElement extends HTMLElement {
     this.count = 0;
     this.functionStack = [];
     this.scheludedRefresh = false;
-    (_a = this.setupAttributes) == null ? void 0 : _a.call(this);
-    if (this.isShadowRoot) {
-      !this.shadowRoot && this.attachShadow({ mode: this.shadowType || "open" });
-    }
-    const sheet = new CSSStyleSheet();
-    sheet.replaceSync(this.constructor.cssStyleSheet);
-    this.context.adoptedStyleSheets = [sheet];
-  }
-  static cssStyleSheet() {
-    return "";
   }
   get permission() {
     return this.getAttribute("permission-check");
@@ -276,6 +280,27 @@ class WJElement extends HTMLElement {
   get store() {
     return store;
   }
+  //		addAction,
+  //     deleteAction,
+  //     loadAction,
+  //     updateAction,
+  //     addManyAction
+  /**
+   * @typedef {Object} ArrayActions
+   * @property {function} addAction - Indicates whether the Courage component is present.
+   * @property {function} deleteAction - Indicates whether the Power component is present.
+   * @property {function} loadAction - Indicates whether the Wisdom component is present.
+   * @property {function} updateAction - Indicates whether the Wisdom component is present.
+   */
+  /**
+   * @typedef {Object} ObjectActions
+   * @property {function} addAction - Indicates whether the Courage component is present.
+   * @property {function} deleteAction - Indicates whether the Power component is present.
+   * @property {function} updateAction - Indicates whether the Wisdom component is present.
+   */
+  /**
+   * @return {ArrayActions, ObjectActions}
+   */
   get defaultStoreActions() {
     return defaultStoreActions;
   }
@@ -309,14 +334,6 @@ class WJElement extends HTMLElement {
     this.refreshUpdatePromise();
     await this.initWjElement(true);
   }
-  async initWjElement(force = false) {
-    this.functionStack = [];
-    const processId = Date.now();
-    this.functionStack.push(processId);
-    this.setUpAccessors();
-    this.drawingStatus = "BEGINING";
-    this.display(force, processId);
-  }
   setupAttributes() {
   }
   beforeDisconnect() {
@@ -335,8 +352,8 @@ class WJElement extends HTMLElement {
     (_b = this.afterDisconnect) == null ? void 0 : _b.call(this);
   }
   /**
-   * Lifecycle method, called whenever an observed property changes
-   */
+      * Lifecycle method, called whenever an observed property changes
+      */
   attributeChangedCallback(name, old, newName) {
     if (!this.isAttached && old !== newName) {
       this.scheludedRefresh = true;
@@ -357,8 +374,8 @@ class WJElement extends HTMLElement {
     }
   }
   /**
-   * To be implemented by the child class
-   */
+      * To be implemented by the child class
+      */
   draw(context, store2, params) {
     return null;
   }
@@ -402,16 +419,16 @@ class WJElement extends HTMLElement {
     this.context.appendChild(rendered);
   }
   /**
-   * Turns a string split with "-" into camel case notation
-   */
+      * Turns a string split with "-" into camel case notation
+      */
   sanitizeName(name) {
     let parts = name.split("-");
     return [parts.shift(), ...parts.map((n) => n[0].toUpperCase() + n.slice(1))].join("");
   }
   /**
-   * Creates one property on this class for every
-   * HTML property defined on the element
-   */
+      * Creates one property on this class for every
+      * HTML property defined on the element
+      */
   setUpAccessors() {
     let attrs = this.getAttributeNames();
     attrs.forEach((name) => {
