@@ -16,7 +16,7 @@ template.innerHTML = `
             Menu item
             <wj-icon slot="start" name="house"></wj-icon>
           </wj-menu-item>
-          <wj-menu-item value="redo" @wj-click="clickedEvent">
+          <wj-menu-item id="testicek" value="redo" @wj-click="openModalFn">
             Menu item
             <wj-icon slot="end" name="heart"></wj-icon>
           </wj-menu-item>
@@ -102,6 +102,22 @@ template.innerHTML = `
 export default class DemoMenu extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw(){
+    /// TODO process vsetky @wj-event
+
+
+    
+    this.context.addEventListener('wj:jozefko',(e)=>{
+      console.log(e);
+        // otvorenie modalka
+    })
+  }
+
+
+  openModalFn(){
+    debugger
   }
 }
 

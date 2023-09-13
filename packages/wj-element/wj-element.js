@@ -2,6 +2,7 @@ import { UniversalService } from './service/universal-service.js';
 import { defaultStoreActions, store } from '../wj-store/store.js';
 import { WjPermissionsApi } from '../utils/wj-permissions-api.js';
 import { WjElementUtils } from '../utils/wj-element-utils.js';
+import { WjEvents } from '../utils/wj-events.js';
 
 const template = document.createElement('template');
 template.innerHTML = ``;
@@ -196,13 +197,15 @@ export default class WJElement extends HTMLElement {
 		let allEvents = WjElementUtils.getEvents(this);
         let events = allEvents.forEach((customEvent,domEvent) => {
             this.addEventListener(domEvent, (e)=>{
-                this.dispatchEvent(new CustomEvent(`${customEvent}`, {
-                    detail: {
-                        originalEvent: e,
-                        context: this
-                    },
-                    bubbles: true
-                }));
+				this.getRootNode().host[customEvent]?.()
+
+                // this.dispatchEvent(new CustomEvent(`${customEvent}`, {
+                //     detail: {
+                //         originalEvent: e,
+                //         context: this
+                //     },
+                //     bubbles: true
+                // }));
             });
         })
 	}
@@ -414,6 +417,6 @@ export default class WJElement extends HTMLElement {
 }
 
 let __esModule = 'true';
-export {__esModule, WjPermissionsApi, WjElementUtils};
+export {__esModule, WjPermissionsApi, WjElementUtils, WjEvents};
 
 customElements.get("wj-element") || customElements.define("wj-element", WJElement);
