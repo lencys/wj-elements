@@ -94,7 +94,7 @@
                 "printField": "fullName"
             },
             "filterable": true,
-            "resizable": "header",
+            "resizable": true,
             "headerSort": false,
             "vertAlign": "middle",
             "headerFilterFuncParams": {
@@ -121,7 +121,7 @@
             "field": "term",
             "filterField": "term",
             "filterable": false,
-            "resizable": "true",
+            "resizable": true,
             "vertAlign": "middle",
             "hozAlign": "left",
             "headerSort": false,
@@ -129,7 +129,7 @@
             "headerHozAlign": "left"
         },
         {
-            "title": "",
+            "title": "dddrrr",
             "field": "invited",
             "filterField": "invited",
             "sortField": "invited",
@@ -138,7 +138,7 @@
                 "show-count": "1",
                 "printField": ""
             },
-            "resizable": "false",
+            "resizable": "header",
             "filterable": false,
             "hozAlign": "left",
             "vertAlign": "middle",

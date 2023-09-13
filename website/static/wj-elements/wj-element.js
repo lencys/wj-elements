@@ -191,7 +191,7 @@ class WjElementUtils {
   static getAttributes(el) {
     if (typeof el === "string")
       el = document.querySelector(el);
-    return Array.from(el.attributes).map((a) => [a.name.split("-").map((s, i) => {
+    return Array.from(el.attributes).filter((a) => !a.name.startsWith("@")).map((a) => [a.name.split("-").map((s, i) => {
       if (i != 0) {
         return s.charAt(0).toUpperCase() + s.slice(1);
       } else {
@@ -201,6 +201,14 @@ class WjElementUtils {
       acc[attr[0]] = attr[1];
       return acc;
     }, {});
+  }
+  static getEvents(el) {
+    if (typeof el === "string")
+      el = document.querySelector(el);
+    return Array.from(el.attributes).filter((a) => a.name.startsWith("@wj")).map((a) => [a.name.substring(3).split("-").join(""), a.value]).reduce((acc, attr) => {
+      acc.set(attr[0], attr[1]);
+      return acc;
+    }, /* @__PURE__ */ new Map());
   }
   static attributesToString(object) {
     return Object.entries(object).map(([key, value]) => {
@@ -335,6 +343,18 @@ class WJElement extends HTMLElement {
     await this.initWjElement(true);
   }
   setupAttributes() {
+    let allEvents = WjElementUtils.getEvents(this);
+    allEvents.forEach((customEvent, domEvent) => {
+      this.addEventListener(domEvent, (e) => {
+        this.dispatchEvent(new CustomEvent(`${customEvent}`, {
+          detail: {
+            originalEvent: e,
+            context: this
+          },
+          bubbles: true
+        }));
+      });
+    });
   }
   beforeDisconnect() {
   }
