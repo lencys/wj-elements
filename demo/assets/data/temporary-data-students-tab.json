@@ -13,8 +13,8 @@
             "department": "Produktové oddelenie",
             "status": "approved",
             "term": "24. 5. 2023 13:00 - 25. 5. 2023 13:00"
-            },
-            {
+        },
+        {
             "user": {
                 "userId": 34,
                 "title": "Ing.",
@@ -27,7 +27,7 @@
             "department": "Oddelenie ľudských zdrojov",
             "status": "pending",
             "term": "24. 5. 2023 13:00 - 25. 5. 2023 13:00"
-            }
+        }
     ],
     "lastPage": 1,
     "totalItems": 6,
@@ -109,7 +109,7 @@
             "field": "department",
             "filterField": "department",
             "filterable": false,
-            "resizable": "false",
+            "resizable": true,
             "vertAlign": "middle",
             "hozAlign": "left",
             "headerSort": false,
@@ -121,7 +121,7 @@
             "field": "term",
             "filterField": "term",
             "filterable": false,
-            "resizable": "false",
+            "resizable": "true",
             "vertAlign": "middle",
             "hozAlign": "left",
             "headerSort": false,

@@ -1,0 +1,55 @@
+@import "tabulator_webjet";
+
+:host {
+  .tabulator {
+    overflow: visible;
+  }
+}
+.filtered {
+  color: black;
+  font-weight: bold;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+}
+
+.nav-tabs > li {
+  display: flex;
+  align-items: center;
+  position:relative;
+}
+.nav-tabs > li > a {
+  display: initial;
+  min-width: auto;
+  line-height: 1rem;
+  padding: .5rem 2rem .5rem 1rem;
+}
+
+.nav-tabs li:first-child a {
+  font-size: 1rem;
+}
+
+.dot {
+  position: absolute;
+  right: 1rem;
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  justify-content: right;
+}
+.dot:not([open]) {
+  display: none;
+
+}
+
+.nav-tabs > li:hover .dot {
+  display: flex;
+}

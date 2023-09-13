@@ -16,9 +16,9 @@ export default class DemoTable extends WJElement {
         <!-- BASIC -->
     
         <h2>Basic</h2>
-        <div class="playground" style="background-color: rgba(0,0,0,.08);">
-          <div class="content" style="width: 100%; margin: auto 1rem;">
-             <wj-table dataUrl="/demo/assets/data/temporary-data-students-tab.json" table-id="people-tasks-list" filterable="simple" bulk sortable layout="fitColumns" responsiveLayout="collapse"></wj-table>
+        <div class="playground" style="background-color: rgba(0,0,0,.08); padding-inline: 1rem;">
+          <div class="content" style="width: 100%; margin: 0; display: block;">
+             <wj-table style="width: 100%;" dataUrl="/demo/assets/data/temporary-data-students-tab.json" table-id="people-tasks-list" filterable="simple" bulk sortable layout="fitColumns" responsiveLayout="collapse"></wj-table>
           </div>
         </div>
       </div>`;
