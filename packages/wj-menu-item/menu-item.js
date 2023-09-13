@@ -22,6 +22,7 @@ export class MenuItem extends WJElement {
     }
 
     setupAttributes() {
+        super.setupAttributes()
         this.isShadowRoot = "open";
     }
 

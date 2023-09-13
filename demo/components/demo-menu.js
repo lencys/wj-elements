@@ -16,7 +16,7 @@ template.innerHTML = `
             Menu item
             <wj-icon slot="start" name="house"></wj-icon>
           </wj-menu-item>
-          <wj-menu-item value="redo">
+          <wj-menu-item value="redo" @wj-click="clickedEvent">
             Menu item
             <wj-icon slot="end" name="heart"></wj-icon>
           </wj-menu-item>

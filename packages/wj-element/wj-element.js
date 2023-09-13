@@ -192,7 +192,20 @@ export default class WJElement extends HTMLElement {
 		// }
 	};
 
-	setupAttributes() {}
+	setupAttributes() {
+		let allEvents = WjElementUtils.getEvents(this);
+        let events = allEvents.forEach((customEvent,domEvent) => {
+            this.addEventListener(domEvent, (e)=>{
+                this.dispatchEvent(new CustomEvent(`${customEvent}`, {
+                    detail: {
+                        originalEvent: e,
+                        context: this
+                    },
+                    bubbles: true
+                }));
+            });
+        })
+	}
 
 	beforeDisconnect() {}
 

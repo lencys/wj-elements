@@ -5,3 +5,5 @@
 website/static/wj-elements/
 /demo/assets/js/bootstrap-5.0.2/
 /tests/output/
+package-lock.json
+wj-elements/website/static

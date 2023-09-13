@@ -22,6 +22,7 @@ export class WjElementUtils {
             el = document.querySelector(el);
 
         return Array.from(el.attributes)
+            .filter(a => !a.name.startsWith("@"))
             .map(a => [a.name.split("-").map((s, i) => {
                 if (i != 0) {
                     return s.charAt(0).toUpperCase() + s.slice(1);
@@ -33,6 +34,19 @@ export class WjElementUtils {
                 acc[attr[0]] = attr[1]
                 return acc
             }, {})
+    }
+
+    static getEvents(el) {
+        if (typeof el === "string")
+            el = document.querySelector(el);
+
+        return Array.from(el.attributes)
+            .filter(a => a.name.startsWith("@wj"))
+            .map(a => [a.name.substring(3).split("-").join(""), a.value])
+            .reduce((acc, attr) => {
+                acc.set(attr[0], attr[1])
+                return acc
+            },new Map());
     }
 
     static attributesToString( object){
