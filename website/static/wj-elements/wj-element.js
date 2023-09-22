@@ -223,6 +223,85 @@ class WjElementUtils {
     return !["false", "0", 0].includes(string);
   }
 }
+class WjEvent {
+  constructor() {
+    __publicField(this, "dispatch", (e) => {
+      let element = e.target;
+      let record = this.findRecordByElement(element);
+      let listeners = record.listeners[e.type];
+      listeners.forEach((listener, i) => {
+        element.dispatchEvent(
+          new CustomEvent(listener.event, {
+            detail: {
+              originalEvent: e.type,
+              context: element,
+              event: this
+            },
+            bubbles: true
+          })
+        );
+      });
+    });
+    this.customEventStorage = [];
+  }
+  findRecordByElement(element) {
+    for (var index = 0, length = this.customEventStorage.length; index < length; index++) {
+      var record = this.customEventStorage[index];
+      if (element == record.element) {
+        return record;
+      }
+    }
+    return false;
+  }
+  addListener(element, originalEvent, event2, listener, options) {
+    var record = this.findRecordByElement(element);
+    if (record) {
+      record.listeners[originalEvent] = record.listeners[originalEvent] || [];
+    } else {
+      record = {
+        element,
+        listeners: {}
+      };
+      record.listeners[originalEvent] = [];
+      this.customEventStorage.push(record);
+    }
+    listener = listener || this.dispatch;
+    let obj = {
+      listener,
+      options,
+      event: event2
+    };
+    if (!this.listenerExists(element, originalEvent, obj)) {
+      record.listeners[originalEvent].push(obj);
+      element.addEventListener(originalEvent, listener);
+    }
+  }
+  listenerExists(element, event2, listener) {
+    let record = this.findRecordByElement(element);
+    return record.listeners[event2].some((e) => JSON.stringify(e) === JSON.stringify(listener));
+  }
+  removeListener(element, originalEvent, event2, listener, options) {
+    let record = this.findRecordByElement(element);
+    if (record && originalEvent in record.listeners) {
+      var index = record.listeners[originalEvent].indexOf(listener);
+      if (~index) {
+        record.listeners[originalEvent].splice(index, 1);
+      }
+      if (!record.listeners[originalEvent].length) {
+        delete record.listeners[originalEvent];
+      }
+    }
+    listener = listener || this.dispatch;
+    element.removeEventListener(originalEvent, listener, options);
+  }
+  removeElement(element) {
+    this.customEventStorage = this.customEventStorage.filter((e) => {
+      if (e.element !== element)
+        return e;
+    });
+  }
+}
+let event = new WjEvent();
 const template = document.createElement("template");
 template.innerHTML = ``;
 class WJElement extends HTMLElement {
@@ -346,13 +425,8 @@ class WJElement extends HTMLElement {
     let allEvents = WjElementUtils.getEvents(this);
     allEvents.forEach((customEvent, domEvent) => {
       this.addEventListener(domEvent, (e) => {
-        this.dispatchEvent(new CustomEvent(`${customEvent}`, {
-          detail: {
-            originalEvent: e,
-            context: this
-          },
-          bubbles: true
-        }));
+        var _a, _b;
+        (_b = (_a = this.getRootNode().host)[customEvent]) == null ? void 0 : _b.call(_a);
       });
     });
   }
@@ -384,12 +458,13 @@ class WJElement extends HTMLElement {
     }
   }
   async refresh() {
-    var _a;
+    var _a, _b;
     this.refreshUpdatePromise();
     if (this.drawingStatus != "AFTER") {
       (_a = this.afterDisconnect) == null ? void 0 : _a.call(this);
       await this.initWjElement(true);
     } else {
+      (_b = this.unregister) == null ? void 0 : _b.call(this);
       await this.initWjElement(true);
     }
   }
@@ -513,5 +588,6 @@ export {
   WjElementUtils,
   WjPermissionsApi,
   __esModule,
-  WJElement as default
+  WJElement as default,
+  event
 };

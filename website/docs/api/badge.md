@@ -17,7 +17,7 @@ Badge sú inline-block elementy, ktoré majú informatívny charakter a zvyčajn
 
 Ak chcete použiť komponent Badge, zahrňte ho do HTML s požadovanými atribútmi.
 
-import Basic from '@site/static/usage/v7/badge/basic/index.md';
+import Basic from '@site/static/usage/v1/badge/basic/index.md';
 
 <Basic />
 
@@ -26,7 +26,7 @@ import Basic from '@site/static/usage/v7/badge/basic/index.md';
 
 ### Farby
 
-import Colors from '@site/static/usage/v7/badge/theming/colors/index.md';
+import Colors from '@site/static/usage/v1/badge/theming/colors/index.md';
 
 <Colors />
 

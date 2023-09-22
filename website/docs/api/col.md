@@ -1,12 +1,12 @@
 ---
 title: "ion-col"
 ---
-import Props from '@ionic-internal/component-api/v7/col/props.md';
-import Events from '@ionic-internal/component-api/v7/col/events.md';
-import Methods from '@ionic-internal/component-api/v7/col/methods.md';
-import Parts from '@ionic-internal/component-api/v7/col/parts.md';
-import CustomProps from '@ionic-internal/component-api/v7/col/custom-props.md';
-import Slots from '@ionic-internal/component-api/v7/col/slots.md';
+import Props from '@ionic-internal/component-api/v1/col/props.md';
+import Events from '@ionic-internal/component-api/v1/col/events.md';
+import Methods from '@ionic-internal/component-api/v1/col/methods.md';
+import Parts from '@ionic-internal/component-api/v1/col/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/col/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/col/slots.md';
 
 <head>
   <title>ion-col: Column Component Padding, Size and Other Properties</title>

@@ -17,7 +17,7 @@ Progress Bar element je dynamický komponent navrhnutý na vizualizáciu priebeh
 
 Pre použitie komponentu Progress Bar, ho zahrňte do HTML s požadovanými atribútmi. Atribút progress nastaví percentuálnu hodnotu priebehu v progress bare.
 
-import Basic from '@site/static/usage/v7/progress-bar/basic/index.md';
+import Basic from '@site/static/usage/v1/progress-bar/basic/index.md';
 
 <Basic />
 
@@ -26,7 +26,7 @@ import Basic from '@site/static/usage/v7/progress-bar/basic/index.md';
 Podporované sú dva typy progress barov. Pridaním vlastnosti `type` s hodnotou `“circle”` zobrazíte progress bar s okrúhlym dizajnom. 
 
 
-import Type from '@site/static/usage/v7/progress-bar/type/index.md';
+import Type from '@site/static/usage/v1/progress-bar/type/index.md';
 
 <Type />
 
@@ -34,7 +34,7 @@ import Type from '@site/static/usage/v7/progress-bar/type/index.md';
 
 Pre zobrazenie popisiek pri progress bare je potrebné vložiť do jeho vnútra `Label` element a definovať  mu pozíciu pridaním atribútu `slot` s hodnotou `"start"` alebo `"end"`. 
 
-import Label from '@site/static/usage/v7/progress-bar/label/index.md';
+import Label from '@site/static/usage/v1/progress-bar/label/index.md';
 
 <Label />
 
@@ -43,7 +43,7 @@ import Label from '@site/static/usage/v7/progress-bar/label/index.md';
 
 Pridaním vlastnosti `linecap` s hodnotou `“round”` zobrazíte ukazovateľ priebehu so zaobleným koncom.
 
-import Linecap from '@site/static/usage/v7/progress-bar/linecap/index.md';
+import Linecap from '@site/static/usage/v1/progress-bar/linecap/index.md';
 
 <Linecap />
 
@@ -52,7 +52,7 @@ import Linecap from '@site/static/usage/v7/progress-bar/linecap/index.md';
 
 Atribút radius určí priemer okrúhleho progress baru.
 
-import Radius from '@site/static/usage/v7/progress-bar/radius/index.md';
+import Radius from '@site/static/usage/v1/progress-bar/radius/index.md';
 
 <Radius />
 
@@ -62,7 +62,7 @@ import Radius from '@site/static/usage/v7/progress-bar/radius/index.md';
 Atribút stroke definuje šírku progress baru v pixeloch.
 
 
-import Stroke from '@site/static/usage/v7/progress-bar/stroke/index.md';
+import Stroke from '@site/static/usage/v1/progress-bar/stroke/index.md';
 
 <Stroke />
 
@@ -71,7 +71,7 @@ import Stroke from '@site/static/usage/v7/progress-bar/stroke/index.md';
 
 Pre zobrazenie obrázku vo vnútri elementu, je potrebné obrázok zaobaliť do progress bar elementu.
 
-import Image from '@site/static/usage/v7/progress-bar/image/index.md';
+import Image from '@site/static/usage/v1/progress-bar/image/index.md';
 
 <Image />
 
@@ -81,7 +81,7 @@ import Image from '@site/static/usage/v7/progress-bar/image/index.md';
 Vlastnosť `color` upravuje farbu elementu. V predvolenom nastavení má element farbu `dark`. Nastavením tejto hodnoty sa farba elementu zmení na jednu z farieb prednastavenej farebnej palety.
 
 
-import Colors from '@site/static/usage/v7/progress-bar/theming/colors/index.md';
+import Colors from '@site/static/usage/v1/progress-bar/theming/colors/index.md';
 
 <Colors />
 

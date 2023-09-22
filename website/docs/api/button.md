@@ -17,7 +17,7 @@ Tlačidlá sú klikateľný element, ktorý umožnuje zobraziť text, ikonu, pr�
 
 Ak chcete použiť komponent Button, zahrňte ho do HTML s požadovanými atribútmi. Pridaním atribútu `disabled` sa tlačidlo stane neaktívnym a nie je možné naň kliknúť.
 
-import Basic from '@site/static/usage/v7/button/basic/index.md';
+import Basic from '@site/static/usage/v1/button/basic/index.md';
 
 <Basic />
 
@@ -25,7 +25,7 @@ import Basic from '@site/static/usage/v7/button/basic/index.md';
 
 Vlastnosť `round` umožňuje upraviť tvar tlačidla. V predvolenom nastavení sú tlačidlá obdĺžnikové s malým zaoblením okrajov. Pridaním tohto atribútu sa zaoblenie tlačidla zväčší.
 
-import Shape from '@site/static/usage/v7/button/shape/index.md';
+import Shape from '@site/static/usage/v1/button/shape/index.md';
 
 <Shape />
 
@@ -34,7 +34,7 @@ import Shape from '@site/static/usage/v7/button/shape/index.md';
 
 Vlastnosť `Fill` určuje výplň pozadia a okraja tlačidla. V predvolenom nastavení majú tlačidlá jednoliate pozadie `solid`. Ďalšie možnosti sú `link` a `outline`. 
 
-import Fill from '@site/static/usage/v7/button/fill/index.md';
+import Fill from '@site/static/usage/v1/button/fill/index.md';
 
 <Fill />
 
@@ -44,7 +44,7 @@ import Fill from '@site/static/usage/v7/button/fill/index.md';
 Vlastnosť `size` určuje veľkosť tlačidla. Nastavením tejto vlastnosti sa zmení vnútorné odsadenie tlačidla.
 
 
-import Size from '@site/static/usage/v7/button/size/index.md';
+import Size from '@site/static/usage/v1/button/size/index.md';
 
 <Size />
 
@@ -56,7 +56,7 @@ Viac informácií o ikonách nájdete na stránke **[Ikony](https://www.notion.s
 
 
 
-import Icons from '@site/static/usage/v7/button/icons/index.md';
+import Icons from '@site/static/usage/v1/button/icons/index.md';
 
 <Icons />
 
@@ -66,7 +66,7 @@ import Icons from '@site/static/usage/v7/button/icons/index.md';
 
 Vlastnosť `color` upravuje farbu pozadia a okraja tlačidla. Nastavením tejto hodnoty sa farba tlačidla zmení na jednu z farieb prednastavenej farebnej palety. V predvolenom nastavení majú tlačidlá pozadie `primary`.
 
-import Colors from '@site/static/usage/v7/button/theming/colors/index.md';
+import Colors from '@site/static/usage/v1/button/theming/colors/index.md';
 
 <Colors />
 
@@ -74,13 +74,13 @@ import Colors from '@site/static/usage/v7/button/theming/colors/index.md';
 
 Vlastnosť `color` je možné kombinovať spolu s vlastnosťout `fill`.
 
-import Outline from '@site/static/usage/v7/button/outline/index.md';
+import Outline from '@site/static/usage/v1/button/outline/index.md';
 
 <Outline />
 
 ### CSS Custom Vlastnosti
 
-import Custom from '@site/static/usage/v7/button/theming/css-properties/index.md';
+import Custom from '@site/static/usage/v1/button/theming/css-properties/index.md';
 
 <Custom />
 
