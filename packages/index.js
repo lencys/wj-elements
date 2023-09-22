@@ -11,6 +11,7 @@ import { Badge } from "./wj-badge/badge.js";
 import { Breadcrumb } from "./wj-breadcrumb/breadcrumb.js";
 import { Breadcrumbs } from "./wj-breadcrumbs/breadcrumbs.js";
 import { Button } from "./wj-button/button.js";
+import { ButtonGroup } from "./wj-button-group/button-group.js";
 import { Card } from "./wj-card/card.js";
 import { CardContent } from "./wj-card-content/card-content.js";
 import { CardControls } from "./wj-card-controls/card-controls.js";
@@ -24,6 +25,7 @@ import { Dropdown } from "./wj-dropdown/dropdown.js";
 import { ExampleElement } from "./wj-example-element/example-element.js";
 import { Form } from "./wj-form/form.js";
 import { Grid } from "./wj-grid/grid.js";
+import { Checkbox } from "./wj-checkbox/checkbox.js";
 import { Chip } from "./wj-chip/chip.js";
 import { Icon } from "./wj-icon/icon.js";
 import { Img } from "./wj-img/img.js";
@@ -34,6 +36,7 @@ import { Label } from "./wj-label/label.js";
 import { List } from "./wj-list/list.js";
 import { Menu } from "./wj-menu/menu.js";
 import { MenuItem } from "./wj-menu-item/menu-item.js";
+import { MenuLabel } from "./wj-menu-label/menu-label.js";
 import { Popup } from "./wj-popup/popup.js";
 import { ProgressBar } from "./wj-progress-bar/progress-bar.js";
 import { Route } from "./wj-route/route.js";
@@ -51,6 +54,8 @@ import { Toast } from "./wj-toast/toast.js";
 import { Toggle } from "./wj-toggle/toggle.js";
 import { Toolbar } from "./wj-toolbar/toolbar.js";
 import { ToolbarAction } from "./wj-toolbar-action/toolbar-action.js";
+import { Tooltip } from "./wj-tooltip/tooltip.js";
+import { VisuallyHidden } from "./wj-visually-hidden/visually-hidden.js";
 
 export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks,
   Avatar,
@@ -58,6 +63,7 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   Breadcrumb,
   Breadcrumbs,
   Button,
+  ButtonGroup,
   Card,
   CardContent,
   CardControls,
@@ -70,6 +76,7 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   Dropdown,
   ExampleElement,
   Grid,
+  Checkbox,
   Chip,
   Icon,
   Img,
@@ -80,6 +87,7 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   List,
   Menu,
   MenuItem,
+  MenuLabel,
   Popup,
   ProgressBar,
   Route,
@@ -95,5 +103,7 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   Toast,
   Toggle,
   Toolbar,
-  ToolbarAction
+  ToolbarAction,
+  Tooltip,
+  VisuallyHidden
 };

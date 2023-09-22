@@ -53,3 +53,49 @@
 .nav-tabs > li:hover .dot {
   display: flex;
 }
+
+.hidden {
+  visibility: hidden;
+}
+
+//.tabulator .tabulator-col-title {
+//  overflow: auto !important;
+//}
+
+[tabulator-field="bulk"] {
+  &.show {
+    ::slotted([slot="row-activities"]) {
+      display: block;
+    }
+  }
+}
+
+::slotted([slot="row-activities"]) {
+  position: absolute;
+  left: 100%;
+  display: none;
+}
+
+.tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-title {
+  width: calc(100% + 1rem);
+  //padding-left: 1rem;
+  display: block;
+}
+
+.wj-table-title {
+  display: flex;
+  align-items: center;
+  span {
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+wj-button {
+  --wj-padding-top: 0;
+  --wj-padding-bottom: 0;
+  --wj-padding-start: 0;
+  --wj-padding-end: 0;
+}
+

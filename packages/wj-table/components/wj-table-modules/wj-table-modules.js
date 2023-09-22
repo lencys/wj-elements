@@ -117,6 +117,7 @@ class WjTableModules extends Module{
         var icon = column.definition.headerPopupIcon,
             headerPopupEl;
 
+        console.log(column.definition);
         headerPopupEl = document.createElement("span");
         headerPopupEl.classList.add("tabulator-header-popup-button");
 

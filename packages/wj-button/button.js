@@ -83,8 +83,13 @@ export class Button extends WJElement {
         if(this.disabled)
             this.classList.add("wj-button-disabled");
 
+        if(this.variant)
+            this.classList.add("wj-button-" + this.variant);
         if(this.round)
             this.classList.add("wj-button-round")
+
+        if(this.outline)
+            this.classList.add("wj-outline");
 
         if(this.fill)
             this.classList.add("wj-button-" + this.fill);
@@ -117,9 +122,6 @@ export class Button extends WJElement {
 
         if(this.disabled)
             this.classList.add("wj-disabled");
-
-        if(this.outline)
-            this.classList.add("wj-outline");
 
         let element = document.createElement(this.hasAttribute('href') ? 'a': 'button');
         element.classList.add("button-native");

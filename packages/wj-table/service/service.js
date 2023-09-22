@@ -122,6 +122,7 @@ export class Service extends WJElement {
             "wj-router-link": this.wjRouterLink,
             "wj-row-selection": this.wjRowSelection,
             "wj-title-with-description": this.wjTitleWithDescription,
+            "wj-header-advanced": this.wjHeaderAdvanced,
         });
 
         TabulatorFull.extendModule("edit", "editors", {
@@ -191,13 +192,12 @@ export class Service extends WJElement {
                         </wj-menu-item>`;
                 }
             });
-            console.log(el.join(""));
 
             let dropdown = document.createElement("wj-dropdown");
             dropdown.setAttribute("placement", "bottom-start");
             dropdown.setAttribute("collapse", "");
             dropdown.setAttribute("hide-icon", "");
-            dropdown.innerHTML = `<wj-button slot="trigger">
+            dropdown.innerHTML = `<wj-button slot="trigger" variant="link" size="small">
                 <wj-icon name="ellipsis-vertical"></wj-icon>
             </wj-button>
             <wj-menu>${el.join("")}</wj-menu>`;
@@ -215,7 +215,6 @@ export class Service extends WJElement {
             //     return oldEl;
             // }
             // dropdown.innerHTML = el.join("");
-            console.log(dropdown);
             return dropdown;
         } catch (error) {
             return formatterParams.invalidPlaceholder;
@@ -359,73 +358,155 @@ export class Service extends WJElement {
     }
 
     wjRowSelection = (cell, formatterParams, onRendered) => {
-        let uuid = this.generateUUID();
-        let div = document.createElement("div");
-        div.classList.add("form-check", "primary");
+        // debugger
+        // var checkbox = document.createElement("input");
+        let checkbox = document.createElement("wj-checkbox");
+        checkbox.setAttribute("color", "primary");
+        checkbox.setAttribute("style", "--wj-checkbox-margin-bottom: 0;");
+        var blocked = false;
 
-        let label = document.createElement("label");
-        label.setAttribute("for", uuid);
-
-        let checkbox = document.createElement("input");
-        checkbox.id = uuid;
-        let blocked = false;
-
-        checkbox.type = 'checkbox';
-        checkbox.setAttribute("aria-label", "Select Row");
-
-        if(this.table.modExists("selectRow", true)){
+        if(this.table.modExists("selectRow", true)) {
 
             checkbox.addEventListener("click", (e) => {
-                // e.stopPropagation();
+                e.stopPropagation();
             });
+
+            let rowActivities = document.createElement("slot");
+            rowActivities.setAttribute("name", "row-activities");
+            cell.getColumn().getElement().appendChild(rowActivities);
+
+            const toggleActivities = () => {
+                let columns = this.table.getColumns();
+                let startIndex = columns.findIndex((item) => item === cell.getColumn());
+
+                let countSelectedRows = this.table.getSelectedRows().length;
+
+                columns.slice(++startIndex).forEach(item => {
+                    item.getElement().classList.remove("hidden");
+
+                    if(countSelectedRows > 0)
+                        item.getElement().classList.add("hidden");
+                });
+
+                cell.getColumn().getElement().classList.remove("show");
+
+                if(countSelectedRows > 0)
+                    cell.getColumn().getElement().classList.add("show");
+            }
 
             if(typeof cell.getRow == 'function'){
                 let row = cell.getRow();
 
                 if(row instanceof RowComponent){
+                    checkbox.addEventListener("wj:checkbox:input", (e) => {
+                        row.isSelected() ? row.deselect() : row.select();
 
-                    checkbox.addEventListener("change", (e) => {
-                        if(this.table.options.selectableRangeMode === "click"){
-                            if(!blocked){
-                                row.toggleSelect();
-                            }else {
-                                blocked = false;
-                            }
-                        }else {
-                            row.toggleSelect();
-                        }
+                        toggleActivities();
                     });
 
-                    if(this.table.options.selectableRangeMode === "click"){
-                        checkbox.addEventListener("click", (e) => {
-                            blocked = true;
-                            this.table.modules.selectRow.handleComplexRowClick(row._row, e);
-                        });
-                    }
-
-                    checkbox.checked = row.isSelected && row.isSelected();
                     this.table.modules.selectRow.registerRowSelectCheckbox(row, checkbox);
-                }else {
+                } else {
                     checkbox = "";
                 }
-            }else {
-                checkbox.addEventListener("change", (e) => {
-                    if(this.table.modules.selectRow.selectedRows.length){
-                        this.table.deselectRow();
-                    }else {
-                        this.table.selectRow(formatterParams.rowRange);
-                    }
+            } else {
+                checkbox.addEventListener("wj:checkbox:input", (e) => {
+                    this.table.getRows().forEach(row => {
+                        row.isSelected() ? row.deselect() : row.select();
+                    });
+                    toggleActivities();
                 });
 
                 this.table.modules.selectRow.registerHeaderSelectCheckbox(checkbox);
             }
         }
 
-        div.appendChild(checkbox);
-        div.appendChild(label);
-
-        return div;
+        return checkbox;
     }
+
+    // wjRowSelection = (cell, formatterParams, onRendered) => {
+    //     let uuid = this.generateUUID();
+    //
+    //     let checkbox = document.createElement("wj-checkbox");
+    //     checkbox.setAttribute("color", "primary");
+    //     checkbox.setAttribute("style", "--wj-checkbox-margin-bottom: 0;");
+    //
+    //     // let div = document.createElement("div");
+    //     // div.classList.add("form-check", "primary");
+    //     //
+    //     // let label = document.createElement("label");
+    //     // label.setAttribute("for", uuid);
+    //     //
+    //     // let checkbox = document.createElement("input");
+    //     // checkbox.id = uuid;
+    //     let blocked = false;
+    //     //
+    //     // checkbox.type = 'checkbox';
+    //     // checkbox.setAttribute("aria-label", "Select Row");
+    //     if(this.table.modExists("selectRow", true)){
+    //
+    //         // checkbox.addEventListener("click", (e) => {
+    //         //     // e.stopPropagation();
+    //         // });
+    //         // console.log("CELL", cell, typeof cell.getRow);
+    //         if(typeof cell.getRow == 'function'){
+    //
+    //             let row = cell.getRow();
+    //
+    //             if(row instanceof RowComponent){
+    //
+    //                 checkbox.addEventListener("wj:checkbox:change", (e) => {
+    //                     console.log("CLIK NA ROW");
+    //                     if(this.table.options.selectableRangeMode === "click"){
+    //                         if(!blocked){
+    //                             row.toggleSelect();
+    //                         }else {
+    //                             blocked = false;
+    //                         }
+    //                     }else {
+    //                         row.toggleSelect();
+    //                     }
+    //                 });
+    //
+    //                 // if(this.table.options.selectableRangeMode === "click"){
+    //                 //     checkbox.addEventListener("click", (e) => {
+    //                 //         blocked = true;
+    //                 //         this.table.modules.selectRow.handleComplexRowClick(row._row, e);
+    //                 //     });
+    //                 // }
+    //
+    //                 // checkbox.checked = row.isSelected && row.isSelected();
+    //                 // if(row.isSelected && row.isSelected())
+    //                 //     checkbox.setAttribute("checked", "");
+    //                 // else
+    //                 //     checkbox.removeAttribute("checked");
+    //
+    //                 this.table.modules.selectRow.registerRowSelectCheckbox(row, checkbox);
+    //             }else {
+    //                 checkbox = "";
+    //             }
+    //         }else {
+    //
+    //             checkbox.addEventListener("wj:checkbox:change", (e) => {
+    //
+    //                 console.log("CLIK NA HEADER");
+    //                 if(this.table.modules.selectRow.selectedRows.length){
+    //                     this.table.deselectRow();
+    //                 }else {
+    //                     this.table.selectRow();
+    //                     // checkbox.setAttribute("checked", "");
+    //                     console.log(this.table.modules.selectRow.selectedRows);
+    //                 }
+    //             });
+    //
+    //             this.table.modules.selectRow.registerHeaderSelectCheckbox(checkbox);
+    //         }
+    //     }
+    //
+    //     // div.appendChild(checkbox);
+    //     // div.appendChild(label);
+    //
+    //     return checkbox;
+    // }
 
     wjTitleWithDescription = (cell, formatterParams) => {
         try {
@@ -453,6 +534,63 @@ export class Service extends WJElement {
             }
 
             return el;
+        } catch (error) {
+            return formatterParams.invalidPlaceholder;
+        }
+    }
+
+    wjHeaderAdvanced = (cell, formatterParams) => {
+        try {
+            // <wj-dropdown label="Start" placement="bottom-start" offset="5">
+            //     <wj-button size="large" slot="trigger" caret>Large</wj-button>
+            //     <wj-menu>
+            //         <wj-menu-item>
+            //             <wj-icon name="plane" slot="start"></wj-icon>
+            //             <wj-label>Menu item</wj-label>
+            //         </wj-menu-item>
+            //         <wj-menu-item>
+            //             <wj-icon name="book" slot="start"></wj-icon>
+            //             <wj-label>Menu item</wj-label>
+            //         </wj-menu-item>
+            //         <wj-menu-item>
+            //             <wj-icon name="music" slot="start"></wj-icon>
+            //             <wj-label>Menu item</wj-label>
+            //         </wj-menu-item>
+            //         <wj-menu-item>
+            //             <wj-icon name="film" slot="start"></wj-icon>
+            //             <wj-label>Menu item</wj-label>
+            //         </wj-menu-item>
+            //     </wj-menu>
+            // </wj-dropdown>
+            let fragment = document.createElement("div");
+            fragment.classList.add("wj-table-title");
+
+
+            let el = document.createElement("wj-dropdown");
+            el.setAttribute("label", "start");
+            el.setAttribute("placement", "button-start");
+            el.setAttribute("offset", "5");
+
+            // <wj-button size="large" slot="trigger" caret>Large</wj-button>
+            let button = document.createElement("wj-button");
+            button.setAttribute("size", "small");
+            button.setAttribute("slot", "trigger");
+            button.setAttribute("variant", "link");
+            button.innerHTML = `<wj-icon name="ellipsis-vertical"></wj-icon>`;
+
+            let menu = document.createElement("wj-menu");
+            menu.innerHTML = `<wj-menu-item>Nieco</wj-menu-item>`;
+
+            let text = document.createElement("span");
+            text.innerText = cell.getValue();
+
+            el.appendChild(button);
+            el.appendChild(menu);
+
+            fragment.appendChild(el);
+            fragment.appendChild(text);
+
+            return fragment;
         } catch (error) {
             return formatterParams.invalidPlaceholder;
         }

@@ -25,6 +25,7 @@ template.innerHTML = `
           <wj-menu-item value="copy">Menu item</wj-menu-item>
           <wj-menu-item value="paste">Menu item</wj-menu-item>
           <wj-divider style="--wj-divider-spacing: .5rem;"></wj-divider>
+          <wj-menu-label>Next menu</wj-menu-label>
           <wj-menu-item>
             Menu item
             <wj-menu slot="submenu">

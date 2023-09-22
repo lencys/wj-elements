@@ -101,6 +101,17 @@ export default class DemoButton extends WJElement {
           </wj-button>
         </div>
       </div>
+      
+      <!-- VARIANT -->
+  
+      <h2>Variant</h2>
+      <div class="playground">
+        <div class="content">
+          <wj-button variant="link">
+            Link
+          </wj-button>
+        </div>
+      </div>
   
       <!-- COLORS -->
   

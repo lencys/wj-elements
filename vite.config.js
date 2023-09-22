@@ -21,6 +21,7 @@ export default ({
                 "avatar": "./packages/wj-avatar/avatar.js",
                 "badge": "./packages/wj-badge/badge.js",
                 "button": "./packages/wj-button/button.js",
+                "button-group": "./packages/wj-button-group/button-group.js",
                 "card": "./packages/wj-card/card.js",
                 "card-header": "./packages/wj-card-header/card-header.js",
                 "card-content": "./packages/wj-card-content/card-content.js",
@@ -43,6 +44,7 @@ export default ({
                 "list": "./packages/wj-list/list.js",
                 "menu": "./packages/wj-menu/menu.js",
                 "menu-item": "./packages/wj-menu-item/menu-item.js",
+                "menu-label": "./packages/wj-menu-label/menu-label.js",
                 "popup": "./packages/wj-popup/popup.js",
                 "progress-bar": "./packages/wj-progress-bar/progress-bar.js",
                 "route": "./packages/wj-route/route.js",
@@ -54,7 +56,11 @@ export default ({
                 "table": "./packages/wj-table/table.js",
                 "thumbnail": "./packages/wj-thumbnail/thumbnail.js",
                 "toast": "./packages/wj-toast/toast.js",
-                "toggle": "./packages/wj-toggle/toggle.js"
+                "toggle": "./packages/wj-toggle/toggle.js",
+                "toolbar": "./packages/wj-toolbar/toolbar.js",
+                "toolbar-action": "./packages/wj-toolbar-action/toolbar-action.js",
+                "tooltip": "./packages/wj-tooltip/tooltip.js",
+                "visually-hidden": "./packages/wj-visually-hidden/visually-hidden.js"
             },
             name: 'MyLib',
             // the proper extensions will be added

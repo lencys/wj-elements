@@ -1,15 +1,15 @@
-import { UniversalService } from "/templates/net/assets/js/service/universal-service.js?v=@@version@@";
-import { defaultStoreActions, store } from "/templates/net/assets/js/store/store.js?v=@@version@@";
+// import { UniversalService } from "/templates/net/assets/js/service/universal-service.js?v=@@version@@";
+// import { defaultStoreActions, store } from "/templates/net/assets/js/store/store.js?v=@@version@@";
 import { default as Table } from "../../table.js?v=@@version@@";
 
 import "../wj-filter-dropdown/filter-dropdown.js?v=@@version@@";
 
 const template = document.createElement("template");
 template.innerHTML = `<style>
-    @import "/templates/net/assets/plugins/bootstrap/css/bootstrap.css?v=@@version@@";
-    @import "/templates/net/pages/css/themes/net-basic.css?v=@@version@@";
-    @import "/templates/net/assets/plugins/font-awesome/css/fontawesome.css?v=@@version@@";
-    @import "/templates/net/assets/plugins/font-awesome/css/light.min.css";
+    /*@import "/templates/net/assets/plugins/bootstrap/css/bootstrap.css?v=@@version@@";*/
+    /*@import "/templates/net/pages/css/themes/net-basic.css?v=@@version@@";*/
+    /*@import "/templates/net/assets/plugins/font-awesome/css/fontawesome.css?v=@@version@@";*/
+    /*@import "/templates/net/assets/plugins/font-awesome/css/light.min.css";*/
     
     :host {
         margin: 1rem 0;
@@ -114,7 +114,7 @@ export default class FilterAdvanced extends HTMLElement {
         dropdown.setAttribute("hide-icon", "");
         dropdown.setAttribute("slot-button", "");
         dropdown.setAttribute("input-inside", "");
-        dropdown.title = f.text;
+        dropdown.title = f.text + "jhjhdfjs";
         dropdown.filter = f; // do dropdownu si vlozime object
 
         let span = document.createElement("span");

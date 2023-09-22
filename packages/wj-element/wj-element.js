@@ -2,7 +2,7 @@ import { UniversalService } from './service/universal-service.js';
 import { defaultStoreActions, store } from '../wj-store/store.js';
 import { WjPermissionsApi } from '../utils/wj-permissions-api.js';
 import { WjElementUtils } from '../utils/wj-element-utils.js';
-import { WjEvents } from '../utils/wj-events.js';
+import { event } from '../utils/wj-event.js';
 
 const template = document.createElement('template');
 template.innerHTML = ``;
@@ -249,6 +249,7 @@ export default class WJElement extends HTMLElement {
 			this.afterDisconnect?.();
 			await this.initWjElement(true);
 		} else {
+			this.unregister?.();
 			await this.initWjElement(true);
 		}
 		// if(!this.runtimeTimeout){
@@ -417,6 +418,6 @@ export default class WJElement extends HTMLElement {
 }
 
 let __esModule = 'true';
-export {__esModule, WjPermissionsApi, WjElementUtils, WjEvents};
+export {__esModule, WjPermissionsApi, WjElementUtils, event};
 
 customElements.get("wj-element") || customElements.define("wj-element", WJElement);

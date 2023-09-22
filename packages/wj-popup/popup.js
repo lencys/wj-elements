@@ -1,11 +1,19 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
-import { computePosition, autoUpdate, offset, flip } from '@floating-ui/dom';
+import { default as WJElement, event } from "../wj-element/wj-element.js";
+import { computePosition, autoUpdate, offset, flip, arrow } from '@floating-ui/dom';
 
 import styles from "./scss/styles.scss?inline";
 
 export class Popup extends WJElement {
     constructor() {
         super();
+    }
+
+    set manual(value) {
+        this.setAttribute("manual", value);
+    }
+
+    get manual() {
+        return this.hasAttribute("manual");
     }
 
     className = "Popup";
@@ -38,20 +46,29 @@ export class Popup extends WJElement {
         let slotAnchor = document.createElement("slot");
         slotAnchor.setAttribute("name", "anchor");
 
-        this.native = document.createElement("div");
-        this.native.classList.add("native-popup");
+        let slotArrow = document.createElement("slot");
+        slotArrow.setAttribute("name", "arrow");
+
+        let native = document.createElement("div");
+        native.classList.add("native-popup");
 
         let slot = document.createElement("slot");
 
-        this.setAnchor();
-        // await this.reposition();
-
-        this.native.appendChild(slot);
+        native.appendChild(slot);
+        native.appendChild(slotArrow);
 
         fragment.appendChild(slotAnchor);
-        fragment.appendChild(this.native);
+        fragment.appendChild(native);
+
+        this.slotAnchor = slotAnchor;
+        this.slotArrow = slotArrow;
+        this.native = native;
 
         return fragment;
+    }
+
+    afterDraw(context, store, params) {
+        this.setAnchor();
     }
 
     isVirtualElement(e) {
@@ -59,22 +76,72 @@ export class Popup extends WJElement {
     }
 
     setAnchor() {
-        if (this.anchor && typeof this.anchor === 'string') {
+        console.log("ANCHOooooooR", this.slotAnchor, typeof this.anchor === 'string', this.slotAnchor && typeof this.anchor === 'string');
+        if (this.slotAnchor && typeof this.anchor === 'string') {
             const root = this.getRootNode();
             this.anchorEl = root.getElementById(this.anchor);
-        } else if (this.anchor instanceof Element || this.isVirtualElement(this.anchor)) {
-            this.anchorEl = this.anchor;
-        } else {
-            this.anchorEl = this.querySelector('[slot="anchor"]');
+        } else if (this.slotAnchor instanceof HTMLSlotElement) {
+            this.anchorEl = this.slotAnchor.assignedElements({ flatten: true })[0];
         }
 
-        if (this.anchorEl instanceof HTMLSlotElement) {
-            this.anchorEl = this.anchorEl.assignedElements({ flatten: true })[0];
+        // if (this.slotAnchor instanceof HTMLSlotElement) {
+        //     this.anchorEl = this.slotAnchor.assignedElements({ flatten: true })[0];
+        // }
+
+        console.log("TRALALA", this.anchorEl, this.manual);
+        if (this.manual) {
+            event.addListener(this.anchorEl, "click", null, (e) => {
+                this.showHide();
+            });
         }
+
+        event.addListener(this.anchorEl, "mouseover", null,(e) => {
+            if(this.manual) return;
+            this.showHide();
+        });
+
+        event.addListener(this.anchorEl, "mouseout", null,(e) => {
+            if(this.manual) return;
+            this.showHide();
+        });
+
+        document.addEventListener("click",(e) => {
+            let clickToHost = e.composedPath().some((el) => el === this);
+
+            if(!clickToHost) {
+                if(this.hasAttribute("active"))
+                    this.removeAttribute("active");
+            }
+        });
     }
+
+    showHide() {
+        if(this.hasAttribute("active"))
+            this.removeAttribute("active");
+        else
+            this.setAttribute("active", "");
+    }
+
     reposition() {
+
         const middleware = [];
 
+        if (this.slotArrow instanceof HTMLSlotElement) {
+            this.arrow = this.slotArrow.assignedElements({ flatten: true })[0];
+
+            if(this.arrow) {
+                middleware.push(
+                  arrow({
+                      element: this.arrow,
+                  })
+                );
+
+                if(this.offset)
+                    this.offset = Math.sqrt(2 * this.arrow.offsetWidth ** 2) / 2;
+            }
+        }
+
+        console.log("REPOSITION");
         middleware.push(
           offset(+this.offset || 0)
         );
@@ -87,27 +154,54 @@ export class Popup extends WJElement {
             placement: this.placement || "bottom",
             strategy: 'fixed',
             middleware: middleware,
-        }).then((position) => {
-            // debugger;
-            this.native.style.setProperty("--wj-popup-top", position.y + "px");
-            this.native.style.setProperty("--wj-popup-left", position.x + "px");
+        }).then(({ x, y, middlewareData, placement, strategy }) => {
+            console.log("STRATEGY", strategy, placement);
+            this.native.style.setProperty("--wj-popup-left", x + "px");
+            this.native.style.setProperty("--wj-popup-top", y + "px");
 
-            this.native.style.position = position.strategy;
+            this.native.style.position = strategy;
+
+            if(this.arrow) {
+                const side = this.placement.split("-")[0];
+
+                const staticSide = {
+                    top: "bottom",
+                    right: "left",
+                    bottom: "top",
+                    left: "right"
+                }[side];
+
+                if (middlewareData.arrow) {
+                    const {x, y} = middlewareData.arrow;
+
+                    Object.assign(this.arrow.style, {
+                        left: x != null ? `${x}px` : "",
+                        top: y != null ? `${y}px` : "",
+                        [staticSide]: `${-this.arrow.offsetWidth / 2}px`,
+
+                    });
+                }
+            }
         });
     }
 
     show() {
         this.native.classList.add("popup-active");
-
+        console.log("SHOW", this.anchorEl, this.native);
         this.cleanup = autoUpdate(this.anchorEl, this.native, () => {
             this.reposition();
         });
     }
 
     hide() {
+        console.log("HIDE", this.anchorEl, this.native);
         this.native.classList.remove("popup-active");
         this.cleanup();
         this.cleanup = undefined;
+    }
+
+    disconnectedCallback() {
+        event.removeElement(this.anchorEl)
     }
 }
 

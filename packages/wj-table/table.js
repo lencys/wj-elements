@@ -18,18 +18,6 @@ import 'https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plug
 
 import styles from "./scss/styles.scss?inline";
 
-const template = document.createElement('template');
-template.innerHTML = `<style>
-    /*@import "/templates/net/assets/plugins/bootstrap/css/bootstrap.css?v=@@version@@";*/
-    /*@import "/templates/net/pages/css/themes/net-basic.css?v=@@version@@";*/
-    /*@import "/templates/net/assets/js/components/wj-table/plugins/tabulator/css/themes/webjet/tabulator_webjet.css?v=@@version@@";*/
-    /*@import "/templates/net/assets/plugins/font-awesome/css/fontawesome.css?v=@@version@@";*/
-    /*@import "/templates/net/assets/plugins/font-awesome/css/light.min.css?v=@@version@@";*/
-    /*@import "/templates/net/pages/css/themes/net-basic/var.css?v=@@version@@";*/
-    
-    
-</style>`;
-
 export class Table extends Service {
     static instances = new Map();
 
@@ -103,7 +91,7 @@ export class Table extends Service {
     get bulkCell() {
         return {
             field: "bulk",
-            width: 50,
+            width: 30,
             formatter: "wj-row-selection",
             titleFormatter: "wj-row-selection",
             hozAlign: "center",
@@ -259,6 +247,7 @@ export class Table extends Service {
             maxHeight: this.getAttribute("max-height") || false,
         });
 
+        console.log("TABLE FILTERABLE", this.filterable);
         this.table.filterable = this.filterable;
     }
 
@@ -353,11 +342,11 @@ export class Table extends Service {
         if (!this.initialized) {
             let columns = response.columns;
 
-            if (this.filterable.toUpperCase() == 'ADVANCED') {
-                columns = response.columns.map((c) => {
-                    return { ...c, ...{headerFilterFunc: () => {}}};
-                });
-            }
+            // if (this.filterable.toUpperCase() == 'ADVANCED') {
+            //     columns = response.columns.map((c) => {
+            //         return { ...c, ...{headerFilterFunc: () => {}}};
+            //     });
+            // }
             // vlozime zatial takto bulk-y
             if (this.bulk) columns.splice(1, 0, this.bulkCell);
 
@@ -367,8 +356,8 @@ export class Table extends Service {
 
             columns = columns.map((c) => {
                 c = { ...c, accessorDownload: this.myPrintFormatter };
-                if (c.filterable && this.filterable.toUpperCase() == 'ADVANCED')
-                    return { ...c, headerPopup: this.headerPopupFormatter };
+                // if (c.filterable && this.filterable.toUpperCase() == 'ADVANCED')
+                //     return { ...c, headerPopup: this.headerPopupFormatter };
 
                 return c;
             });

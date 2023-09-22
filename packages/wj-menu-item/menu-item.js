@@ -34,7 +34,7 @@ export class MenuItem extends WJElement {
         native.setAttribute("id", "anchor");
 
         if(this.hasSubmenu)
-            native.innerHTML = `<wj-popup anchor="anchor" placement="right-start"><slot name="submenu"></slot></wj-popup>`;
+            native.innerHTML = `<wj-popup anchor="anchor" manual placement="right-start"><slot name="submenu"></slot></wj-popup>`;
 
         // CHECKED - Icon
         let checkedIcon = document.createElement("span");

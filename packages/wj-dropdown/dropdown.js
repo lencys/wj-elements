@@ -1,4 +1,4 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement, event } from "../wj-element/wj-element.js";
 
 import styles from "./scss/styles.scss?inline";
 
@@ -14,7 +14,7 @@ export class Dropdown extends WJElement {
     }
 
     static get observedAttributes() {
-        return [];
+        return ["active"];
     }
 
     setupAttributes() {
@@ -29,23 +29,21 @@ export class Dropdown extends WJElement {
         let native = document.createElement("div");
         native.classList.add("native-dropdown");
 
-        native.innerHTML = `<wj-popup placement="${this.placement}" offset="${this.offset}">
-            <slot name="trigger" slot="anchor"></slot>
-            <slot></slot>
-        </wj-popup>`;
+        // native.innerHTML = `<wj-popup placement="${this.placement}" offset="${this.offset}">
+        //     <slot name="trigger" slot="anchor"></slot>
+        //     <slot></slot>
+        // </wj-popup>`;
 
-        // let popup = document.createElement("wj-popup");
-        // popup.setAttribute("placement", this.placement);
-        // popup.setAttribute("offset", this.offset);
-        // popup.innerHTML = `<slot name="trigger" slot="anchor"></slot>
-        //     <slot></slot>`;
+        let popup = document.createElement("wj-popup");
+        popup.setAttribute("placement", this.placement);
+        popup.setAttribute("offset", this.offset);
+        popup.setAttribute("manual", "");
+        popup.innerHTML = `<slot name="trigger" slot="anchor"></slot>
+            <slot></slot>`;
 
-        native.querySelector("wj-popup").addEventListener("click", (e) => {
-            if(e.target.assignedSlot.parentElement.hasAttribute("active"))
-                e.target.assignedSlot.parentElement.removeAttribute("active");
-            else
-                e.target.assignedSlot.parentElement.setAttribute("active", "");
-        });
+        native.appendChild(popup);
+
+
 
         fragment.appendChild(native);
 
