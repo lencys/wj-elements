@@ -5,7 +5,7 @@ const template = document.createElement('template');
 template.innerHTML = `<h1>Avatar</h1>
   <div class="container">
 
-    <!-- BASIC -->
+    <!-- BASIC SKUSKA -->
 
     <h3>Basic</h3>
     <div class="playground">
