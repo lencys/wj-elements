@@ -41,6 +41,9 @@
 
 :host {
   --wj-chip-border-radius: 100px;
+  --wj-chip-background: #{$color-contrast-low};
+  --wj-chip-color: #{$color-contrast-high};
+
 
   display: inline-flex;
   justify-content: center;
@@ -54,8 +57,8 @@
   text-align: center;
   cursor: pointer;
   white-space: nowrap;
-  color: $color-contrast-high;
-  background: $color-contrast-low;
+  background: var(--wj-chip-background);
+  color: var(--wj-chip-color);
   text-shadow: none;
   box-shadow: none;
   border: 0 none;
@@ -93,32 +96,13 @@
   box-shadow: 0 0 0 $focus-width $color-focus;
 }
 
-//i {
-//  display: inline-flex;
-//  position: relative;
-//  left: 0;
-//  top: 0;
-//  align-items: center;
-//  justify-content: center;
-//}
-
 :host(.wj-active) {
-    background: $color-contrast-low;
-    border-color: transparent;
-    //padding-left: 4px;
-    i {
-      width: 20px;
-    }
+  background: $color-contrast-low;
+  border-color: transparent;
+  .check {
+    margin-inline: 4px 0;
   }
-  //&:hover:not(.active) {
-  //  background: darken($color-contrast-low, 10%);
-  //}
-  //i {
-  //  width: 0;
-  //  overflow: hidden;
-  //  transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  //}
-
+}
 
 :host(.wj-disabled) {
   background: $color-contrast-lower;
@@ -143,10 +127,6 @@
   background-color: var(--wj-color-base, red) ;
   color: var(--wj-color-contrast);
 }
-
-//:host(:not(.wj-color)) ::slotted(wj-icon) {
-//  color: rgba($text-color-rgb, .54);
-//}
 
 ::slotted(wj-icon:first-child) {
   @include margin(-4px, 8px, -4px, -4px);

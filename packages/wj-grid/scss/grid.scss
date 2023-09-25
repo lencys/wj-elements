@@ -8,7 +8,7 @@
   --#{$variable-prefix}gutter-x: #{$gutter};
   --#{$variable-prefix}gutter-y: 0;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   margin-top: calc(var(--#{$variable-prefix}gutter-y) * -1); // stylelint-disable-line function-disallowed-list
   margin-right: calc(var(--#{$variable-prefix}gutter-x) * -.5); // stylelint-disable-line function-disallowed-list
   margin-left: calc(var(--#{$variable-prefix}gutter-x) * -.5); // stylelint-disable-line function-disallowed-list
@@ -21,13 +21,13 @@
     @include media-breakpoint-up($breakpoint, $breakpoints) {
       @if $columns > 0 {
         @each $key, $value in $gutters {
-          :host(.g#{$infix}-#{$key}),
-          :host(.gx#{$infix}-#{$key}) {
+          .g#{$infix}-#{$key},
+          .gx#{$infix}-#{$key} {
             --#{$variable-prefix}gutter-x: #{$value};
           }
 
-          :host(.g#{$infix}-#{$key}),
-          :host(.gy#{$infix}-#{$key}) {
+          .g#{$infix}-#{$key},
+          .gy#{$infix}-#{$key} {
             --#{$variable-prefix}gutter-y: #{$value};
           }
         }

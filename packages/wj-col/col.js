@@ -2,18 +2,16 @@ import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.j
 
 import styles from "./scss/styles.scss?inline";
 
-const template = document.createElement('template');
-
-template.innerHTML = `<style>
-	${styles}
-</style>`;
-
 export class Col extends WJElement {
     constructor() {
-        super(template);
+        super();
     }
 
     className = "Col";
+
+    static get cssStyleSheet() {
+        return styles;
+    }
 
     setupAttributes() {
         this.isShadowRoot = "open";

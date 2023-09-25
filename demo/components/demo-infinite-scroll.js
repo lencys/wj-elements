@@ -1,4 +1,4 @@
-import { WJElement } from "../../website/static/wj-elements/wj-main.js";
+import { WJElement } from "../../dist/wj-main.js";
 
 const template = document.createElement('template');
 
@@ -48,7 +48,7 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
       <div class="content" style="width: auto;">
         <wj-infinite-scroll url="/api/users" placement="wj-row" size="20" class="example" height="440px">
           <wj-grid>
-            <wj-row>
+            <wj-row wrap>
               <wj-col size="6" iterate>
                 <wj-card>
                   <wj-img src="{{image}}"></wj-img>

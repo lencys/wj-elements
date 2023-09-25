@@ -7,6 +7,14 @@ export class Dropdown extends WJElement {
         super();
     }
 
+    set trigger(value) {
+        this.setAttribute("trigger", value);
+    }
+
+    get trigger() {
+        return this.getAttribute("trigger") || "click";
+    }
+
     className = "Dropdown";
 
     static get cssStyleSheet() {
@@ -27,19 +35,18 @@ export class Dropdown extends WJElement {
         this.classList.add("wj-placement", "wj-" + this.placement || "wj-start");
 
         let native = document.createElement("div");
+        native.setAttribute("part", "native");
         native.classList.add("native-dropdown");
-
-        // native.innerHTML = `<wj-popup placement="${this.placement}" offset="${this.offset}">
-        //     <slot name="trigger" slot="anchor"></slot>
-        //     <slot></slot>
-        // </wj-popup>`;
 
         let popup = document.createElement("wj-popup");
         popup.setAttribute("placement", this.placement);
         popup.setAttribute("offset", this.offset);
-        popup.setAttribute("manual", "");
         popup.innerHTML = `<slot name="trigger" slot="anchor"></slot>
             <slot></slot>`;
+
+        if(this.trigger === "click")
+            popup.setAttribute("manual", "");
+
 
         native.appendChild(popup);
 

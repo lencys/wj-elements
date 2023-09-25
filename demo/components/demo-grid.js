@@ -1,4 +1,4 @@
-import { WJElement } from "../../website/static/wj-elements/wj-main.js";
+import { WJElement } from "../../dist/wj-main.js";
 
 const template = document.createElement('template');
 
@@ -153,7 +153,7 @@ template.innerHTML = `<h1>Grid</h1>
 
         <span>Rovnaká šírka do md, posledný stĺpec má plnú šírku pre md a vyššie</span>
         <wj-grid>
-          <wj-row>
+          <wj-row wrap>
             <wj-col size-md="6">1</wj-col>
             <wj-col size-md="6">2</wj-col>
             <wj-col size-md="12">3</wj-col>
@@ -162,7 +162,7 @@ template.innerHTML = `<h1>Grid</h1>
 
         <span>2 na riadok do breakpointu md, 3 na riadok pre md, rovnaká šírka pre lg a vyššie</span>
         <wj-grid>
-          <wj-row>
+          <wj-row wrap>
             <wj-col size="6" size-md="4" size-lg="2">1</wj-col>
             <wj-col size="6" size-md="4" size-lg="2">2</wj-col>
             <wj-col size="6" size-md="4" size-lg="2">3</wj-col>
@@ -237,7 +237,7 @@ template.innerHTML = `<h1>Grid</h1>
 
         <span>Offset všetkých stĺpcov o 6 pre breakpoint xs, offset o 4 pre md, offset o 2 pre lg a vyššie</span>
         <wj-grid>
-          <wj-row>
+          <wj-row wrap>
             <wj-col offset="6" offset-md="4" offset-lg="2">1</wj-col>
             <wj-col offset="6" offset-md="4" offset-lg="2">2</wj-col>
           </wj-row>
@@ -274,7 +274,8 @@ template.innerHTML = `<h1>Grid</h1>
     </div>
 
     <!-- ALIGNMENT -->
-    <h2>ALIGNMENT</h2>
+    
+    <h2>Aligment</h2>
     <div class="playground">
       <div class="content">
         <b>Columns aligned at the start</b>
@@ -314,6 +315,58 @@ template.innerHTML = `<h1>Grid</h1>
           <wj-row class="wj-justify-content-between">
             <wj-col size="3"> 1 </wj-col>
             <wj-col size="3"> 2 </wj-col>
+          </wj-row>
+        </wj-grid>
+      </div>
+    </div>
+  
+    <!-- ALIGNMENT -->
+    
+    <h2>Aligment</h2>
+    <div class="playground">
+      <div class="content">
+        <b>Columns aligned at the top</b>
+        <wj-grid>
+          <wj-row class="wj-align-items-start">
+            <wj-col> 1 </wj-col>
+            <wj-col> 2 </wj-col>
+            <wj-col> 3 </wj-col>
+            <wj-col>
+              4 <br />
+              # <br />
+              # <br />
+              # <br />
+            </wj-col>
+          </wj-row>
+        </wj-grid>
+        
+        <b>Columns aligned at the center</b>
+        <wj-grid>
+          <wj-row class="wj-align-items-center">
+            <wj-col> 1 </wj-col>
+            <wj-col> 2 </wj-col>
+            <wj-col> 3 </wj-col>
+            <wj-col>
+              4 <br />
+              # <br />
+              # <br />
+              # <br />
+            </wj-col>
+          </wj-row>
+        </wj-grid>
+        
+        <b>Columns aligned at the bottom</b>
+        <wj-grid>
+          <wj-row class="wj-align-items-end">
+            <wj-col> 1 </wj-col>
+            <wj-col> 2 </wj-col>
+            <wj-col> 3 </wj-col>
+            <wj-col>
+              4 <br />
+              # <br />
+              # <br />
+              # <br />
+            </wj-col>
           </wj-row>
         </wj-grid>
       </div>

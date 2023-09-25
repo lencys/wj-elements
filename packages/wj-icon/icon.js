@@ -3,17 +3,16 @@ import { getName, getUrl, getSvgContent, iconContent } from "./service/service.j
 
 import styles from "./scss/styles.scss?inline";
 
-const template = document.createElement('template');
-
-template.innerHTML = `<style>
-	${styles}
-</style>`;
 export class Icon extends WJElement {
     constructor() {
-        super(template);
+        super();
     }
 
     className = "Icon";
+
+    static get cssStyleSheet() {
+        return styles;
+    }
 
     static get observedAttributes() {
         return [];

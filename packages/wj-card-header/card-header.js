@@ -1,37 +1,20 @@
 import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+
 import styles from "./scss/styles.scss?inline";
-
-const template = document.createElement('template');
-
-template.innerHTML = `<style>
-	${styles}
-</style>`;
 
 export class CardHeader extends WJElement {
     constructor() {
-        super(template);
-    }
-
-    get separator() {
-        return this.hasAttribute("separator");
-    }
-
-    set separator(value) {
-        if(value)
-            this.setAttribute("separator", "");
+        super();
     }
 
     className = "CardHeader";
 
-    setupAttributes() {
-        this.isShadowRoot = "open";
-        // or
-        WjElementUtils.setAttributesToElement(this, {
-            "test": "test"
-        });
+    static get cssStyleSheet() {
+        return styles;
     }
 
-    beforeDraw(context, store, params) {
+    setupAttributes() {
+        this.isShadowRoot = "open";
     }
 
     draw(context, store, params) {
@@ -39,7 +22,7 @@ export class CardHeader extends WJElement {
 
         let element = document.createElement("slot");
 
-        if(this.separator)
+        if(this.hasAttribute("separator"))
             this.classList.add("wj-separator");
 
         fragment.appendChild(element);

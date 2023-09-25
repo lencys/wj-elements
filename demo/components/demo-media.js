@@ -1,21 +1,11 @@
-import { WJElement } from "../../website/static/wj-elements/wj-main.js";
+import { WJElement } from "../../dist/wj-main.js";
 
 const template = document.createElement('template');
 
 template.innerHTML = `<h1>Media</h1>
   <div class="container">
 
-    <!--  AVATAR-->
-
-    <h2>Avatar</h2>
-    <h3>Basic</h3>
-    <div class="playground">
-      <div class="content">
-        <wj-avatar>
-          <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-        </wj-avatar>
-      </div>
-    </div>
+    <!-- AVATAR -->
 
     <h3>Chip</h3>
     <div class="playground">

@@ -1,15 +1,10 @@
 import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+
 import styles from "./scss/styles.scss?inline";
-
-const template = document.createElement('template');
-
-template.innerHTML = `<style>
-	${styles}
-</style>`;
 
 export class Slider extends WJElement {
     constructor() {
-        super(template)
+        super()
     }
 
     set value(value) {
@@ -47,6 +42,12 @@ export class Slider extends WJElement {
 
     get step() {
         return this.getAttribute("step") || 1;
+    }
+
+    className = "Slider";
+
+    static get cssStyleSheet() {
+        return styles;
     }
 
     static get observedAttributes(){

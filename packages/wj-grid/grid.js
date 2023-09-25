@@ -2,18 +2,16 @@ import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.j
 
 import styles from "./scss/styles.scss?inline";
 
-const template = document.createElement('template');
-
-template.innerHTML = `<style>
-	${styles}
-</style>`;
-
 export class Grid extends WJElement {
     constructor() {
-        super(template);
+        super();
     }
 
     className = "Grid";
+
+    static get cssStyleSheet() {
+        return styles;
+    }
 
     static get observedAttributes() {
         return [];

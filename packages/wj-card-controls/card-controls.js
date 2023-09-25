@@ -1,17 +1,16 @@
 import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
 import styles from "./scss/styles.scss?inline";
 
-const template = document.createElement('template');
-
-template.innerHTML = `<style>
-	${styles}
-</style>`;
 export class CardControls extends WJElement {
     constructor() {
-        super(template);
+        super();
     }
 
     className = "CardControls";
+
+    static get cssStyleSheet() {
+        return styles;
+    }
 
     setupAttributes() {
         this.isShadowRoot = "open";

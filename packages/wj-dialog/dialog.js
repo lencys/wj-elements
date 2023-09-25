@@ -1,16 +1,10 @@
 import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
-// import styles from './scss/styles.scss';
 
 import styles from "./scss/styles.scss?inline";
 
-const template = document.createElement('template');
-
-template.innerHTML = `<style>
-	${styles}
-</style>`;
 export class Dialog extends WJElement {
     constructor() {
-        super(template);
+        super();
     }
 
     set placement(value) {
@@ -22,6 +16,11 @@ export class Dialog extends WJElement {
     }
 
     className = "Dialog";
+
+    static get cssStyleSheet() {
+        return styles;
+    }
+
     static get observedAttributes() {
         return [];
     }

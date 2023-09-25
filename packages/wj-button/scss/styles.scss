@@ -84,11 +84,14 @@
   --wj-padding-start: .5rem;
   --wj-padding-end: .5rem;
   --wj-padding-bottom: .4rem;
-  //display: inline-flex;
-  //margin-inline: 2px;
-  //margin-top: 2px;
-  //margin-bottom: 2px;
 
+  display: inline-flex;
+  position: relative;
+  width: auto;
+  cursor: pointer;
+}
+
+:host(.wj-button-group-button) {
   display: block;
 }
 
@@ -202,13 +205,6 @@
     --wj-button-border-color: transparent !important;
     color: $color-contrast-high !important;
   }
-}
-
-:host {
-  display: block;
-  position: relative;
-  width: auto;
-  cursor: pointer;
 }
 
 .button-inner {

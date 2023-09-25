@@ -1,21 +1,13 @@
 import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
 
 import styles from "./scss/styles.scss?inline";
-
-const template = document.createElement('template');
-
-template.innerHTML = `<style>
-	${styles}
-</style>`;
 export class ProgressBar extends WJElement {
     constructor() {
-        super(template);
+        super();
 
         this.timerInterval = null;
         this.timeLimit = 60;
     }
-
-    className = "ProgressBar";
 
     set radius(value) {
         this.setAttribute("radius", value);
@@ -39,6 +31,12 @@ export class ProgressBar extends WJElement {
 
     get linecap() {
         return this.getAttribute("linecap") || "square";
+    }
+
+    className = "ProgressBar";
+
+    static get cssStyleSheet() {
+        return styles;
     }
 
     static get observedAttributes() {

@@ -1,4 +1,4 @@
-import { WJElement } from "../../website/static/wj-elements/wj-main.js";
+import { WJElement } from "../../dist/wj-main.js";
 
 export default class DemoToolbar extends WJElement {
   constructor() {

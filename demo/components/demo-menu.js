@@ -1,4 +1,4 @@
-import { WJElement, Menu, MenuItem, Popup } from "../../website/static/wj-elements/wj-main.js";
+import { WJElement, Menu, MenuItem, Popup } from "../../dist/wj-main.js";
 
 const template = document.createElement('template');
 

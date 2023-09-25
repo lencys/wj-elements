@@ -3,8 +3,6 @@ import { interceptLinks, Router } from './plugins/slick-router/slick-router.js';
 import { paramValue, wc } from './plugins/slick-router/middlewares/wc.js';
 import { routerLinks } from './plugins/slick-router/middlewares/router-links.js';
 import { events } from './plugins/slick-router/middlewares/events.js';
-// import "../../assets/components/demo-badge.js";
-// import { RouterOutlet } from  "../wj-router-outlet/router-outlet.js";
 
 export class Routerx extends WJElement {
     constructor() {

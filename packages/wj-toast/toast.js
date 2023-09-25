@@ -3,18 +3,16 @@ import { simple, bar, flip, circle } from "./service/service.js";
 
 import styles from "./scss/styles.scss?inline";
 
-const template = document.createElement('template');
-
-template.innerHTML = `<style>
-	${styles}
-</style>`;
-
 export class Toast extends WJElement {
     constructor() {
-        super(template);
+        super();
     }
 
     className = "Toast";
+
+    static get cssStyleSheet() {
+        return styles;
+    }
 
     setupAttributes() {
         this.isShadowRoot = "open";

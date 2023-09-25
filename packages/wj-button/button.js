@@ -2,14 +2,9 @@ import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.j
 
 import styles from "./scss/styles.scss?inline";
 
-const template = document.createElement('template');
-
-template.innerHTML = `<style>
-	${styles}
-</style>`;
 export class Button extends WJElement {
     constructor() {
-        super(template);
+        super();
     }
 
     set active(value) {
@@ -44,14 +39,6 @@ export class Button extends WJElement {
         return this.hasAttribute("outline");
     }
 
-    set size(value) {
-        this.setAttribute("size", value);
-    }
-
-    get size() {
-        return this.getAttribute("size");
-    }
-
     set round(value) {
         this.setAttribute("round", "");
     }
@@ -60,15 +47,12 @@ export class Button extends WJElement {
         return this.hasAttribute("round");
     }
 
-    set dialog(value) {
-        this.setAttribute("dialog", value);
+    className = "Button";
+
+    static get cssStyleSheet() {
+        return styles;
     }
 
-    get dialog() {
-        return this.getAttribute("dialog");
-    }
-
-    className = "Chip";
     static get observedAttributes() {
         return [];
     }
@@ -85,6 +69,7 @@ export class Button extends WJElement {
 
         if(this.variant)
             this.classList.add("wj-button-" + this.variant);
+
         if(this.round)
             this.classList.add("wj-button-round")
 

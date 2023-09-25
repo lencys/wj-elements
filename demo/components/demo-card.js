@@ -1,4 +1,4 @@
-import { WJElement } from "../../website/static/wj-elements/wj-main.js";
+import { WJElement } from "../../dist/wj-main.js";
 
 const template = document.createElement('template');
 
@@ -139,9 +139,6 @@ template.innerHTML = `<h1>Card</h1>
     <div class="playground">
       <div class="content d-flex col-4">
         <style>
-          /*.container {*/
-          /*  margin-inline: -1rem;*/
-          /*}*/
           .container wj-card {
             --wj-card-margin-top: 1rem;
             --wj-card-margin-bottom: 1rem;

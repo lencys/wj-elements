@@ -1,4 +1,4 @@
-import { WJElement } from "../../website/static/wj-elements/wj-main.js";
+import { WJElement } from "../../dist/wj-main.js";
 
 const template = document.createElement('template');
 
@@ -21,8 +21,8 @@ template.innerHTML = `<style>
           <h4>Lorem ipsum dolor sit amet</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
           <div slot="footer">
-            <wj-button fill="outline" color="light">Zatvoriť</wj-button>
-            <wj-button>Potvrdiť</wj-button>
+            <wj-button>Zatvoriť</wj-button>
+            <wj-button color="primary">Potvrdiť</wj-button>
           </div>
         </wj-dialog>
       </div>

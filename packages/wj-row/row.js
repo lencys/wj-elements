@@ -2,21 +2,19 @@ import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.j
 
 import styles from "./scss/styles.scss?inline";
 
-const template = document.createElement('template');
-
-template.innerHTML = `<style>
-	${styles}
-</style>`;
-
 export class Row extends WJElement {
     constructor() {
-        super(template);
+        super();
     }
 
     className = "Row";
 
+    static get cssStyleSheet() {
+        return styles;
+    }
+
     setupAttributes() {
-        // this.isShadowRoot = "open";
+        this.isShadowRoot = "open";
     }
 
     beforeDraw(context, store, params) {
@@ -24,6 +22,9 @@ export class Row extends WJElement {
 
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
+
+        if(this.hasAttribute("wrap"))
+            this.classList.add("wj-wrap");
 
         let element = document.createElement("slot");
 

@@ -2,14 +2,9 @@ import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.j
 
 import styles from "./scss/styles.scss?inline";
 
-const template = document.createElement('template');
-
-template.innerHTML = `<style>
-	${styles}
-</style>`;
 export class InfiniteScroll extends WJElement {
     constructor(options = {}) {
-        super(template);
+        super();
 
         this.infiniteScrollTemplate = this.querySelector("[iterate]").outerHTML;
         this.querySelector("[iterate]").remove(); // remove template
@@ -37,6 +32,10 @@ export class InfiniteScroll extends WJElement {
     }
 
     className = "InfiniteScroll";
+
+    static get cssStyleSheet() {
+        return styles;
+    }
 
     static get observedAttributes() {
         return [];

@@ -1,4 +1,4 @@
-import { WJElement } from "../../website/static/wj-elements/wj-main.js";
+import { WJElement } from "../../dist/wj-main.js";
 
 const template = document.createElement('template');
 template.innerHTML = ``;
@@ -7,10 +7,6 @@ export default class DemoButton extends WJElement {
   constructor() {
     super(template);
   }
-
-  // static get outlet() {
-  //   return 'wj-router-outlet'
-  // }
 
   draw(){
     return `<h1>Button</h1>

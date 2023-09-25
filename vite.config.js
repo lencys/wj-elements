@@ -11,9 +11,8 @@ export default ({
     },
     build: {
         minify: false,
-        outDir: './website/static/wj-elements',
+        outDir: './dist',
         lib: {
-            // Could also be a dictionary or array of multiple entry points
             entry: {
                 "main": "./packages/index.js",
                 "store": "./packages/wj-store/store.js",

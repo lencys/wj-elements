@@ -1,17 +1,9 @@
 import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
-// import styles from './scss/styles.scss';
 
 import styles from "./scss/styles.scss?inline";
-
-const template = document.createElement('template');
-
-template.innerHTML = `<style>
-	${styles}
-</style>`;
-
 export class Item extends WJElement {
 	constructor() {
-		super(template);
+		super();
 
 		this.labelColorStyles = {};
 		this.itemStyles = new Map();
@@ -48,6 +40,10 @@ export class Item extends WJElement {
 
 	isClickable() {
 		return this.hasAttribute('href') || this.button;
+	}
+
+	static get cssStyleSheet() {
+		return styles;
 	}
 
 	setupAttributes() {

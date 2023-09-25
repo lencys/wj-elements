@@ -2,17 +2,16 @@ import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.j
 
 import styles from "./scss/styles.scss?inline";
 
-const template = document.createElement('template');
-
-template.innerHTML = `<style>
-	${styles}
-</style>`;
 export class Chip extends WJElement {
     constructor() {
-        super(template);
+        super();
     }
 
     className = "Chip";
+
+    static get cssStyleSheet() {
+        return styles;
+    }
 
     setupAttributes() {
         this.isShadowRoot = "open";
@@ -42,9 +41,10 @@ export class Chip extends WJElement {
             this.classList.add("wj-active");
 
             let i = document.createElement("wj-icon");
-            // i.setAttribute("name", "check");
-            // console.log(this, i);
-            // this.context.appendChild(i);
+            i.setAttribute("name", "check");
+            i.classList.add("check");
+
+            this.context.appendChild(i);
         }
     }
 }

@@ -13,6 +13,7 @@ export class Popup extends WJElement {
     }
 
     get manual() {
+        console.log(this);
         return this.hasAttribute("manual");
     }
 
@@ -68,15 +69,18 @@ export class Popup extends WJElement {
     }
 
     afterDraw(context, store, params) {
+        // document.addEventListener("mousemove",(e) => {
+        //     let clickToHost = e.composedPath().some((el) => el.nodeName === "WJ-POPUP");
+        //     console.log(clickToHost, this.hasAttribute("active"), e.composedPath());
+        //     if(clickToHost && this.hasAttribute("active"))
+        //         this.manual = true;
+        //     else
+        //         this.manual = false;
+        // });
         this.setAnchor();
     }
 
-    isVirtualElement(e) {
-        return e !== null && typeof e === "object" && "getBoundingClientRect" in e
-    }
-
     setAnchor() {
-        console.log("ANCHOooooooR", this.slotAnchor, typeof this.anchor === 'string', this.slotAnchor && typeof this.anchor === 'string');
         if (this.slotAnchor && typeof this.anchor === 'string') {
             const root = this.getRootNode();
             this.anchorEl = root.getElementById(this.anchor);
@@ -84,11 +88,6 @@ export class Popup extends WJElement {
             this.anchorEl = this.slotAnchor.assignedElements({ flatten: true })[0];
         }
 
-        // if (this.slotAnchor instanceof HTMLSlotElement) {
-        //     this.anchorEl = this.slotAnchor.assignedElements({ flatten: true })[0];
-        // }
-
-        console.log("TRALALA", this.anchorEl, this.manual);
         if (this.manual) {
             event.addListener(this.anchorEl, "click", null, (e) => {
                 this.showHide();
@@ -141,7 +140,6 @@ export class Popup extends WJElement {
             }
         }
 
-        console.log("REPOSITION");
         middleware.push(
           offset(+this.offset || 0)
         );
@@ -155,7 +153,6 @@ export class Popup extends WJElement {
             strategy: 'fixed',
             middleware: middleware,
         }).then(({ x, y, middlewareData, placement, strategy }) => {
-            console.log("STRATEGY", strategy, placement);
             this.native.style.setProperty("--wj-popup-left", x + "px");
             this.native.style.setProperty("--wj-popup-top", y + "px");
 
@@ -187,14 +184,13 @@ export class Popup extends WJElement {
 
     show() {
         this.native.classList.add("popup-active");
-        console.log("SHOW", this.anchorEl, this.native);
+
         this.cleanup = autoUpdate(this.anchorEl, this.native, () => {
             this.reposition();
         });
     }
 
     hide() {
-        console.log("HIDE", this.anchorEl, this.native);
         this.native.classList.remove("popup-active");
         this.cleanup();
         this.cleanup = undefined;

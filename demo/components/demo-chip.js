@@ -1,4 +1,4 @@
-import { WJElement } from "../../website/static/wj-elements/wj-main.js";
+import { WJElement } from "../../dist/wj-main.js";
 
 const template = document.createElement('template');
 
@@ -13,7 +13,6 @@ template.innerHTML = `<h1>Chip</h1>
         <wj-chip>Default</wj-chip>
         <wj-chip active>Default</wj-chip>
         <wj-chip disabled>Disabled</wj-chip>
-        <wj-chip outline>Outline</wj-chip>
       </div>
     </div>
 
@@ -51,6 +50,22 @@ template.innerHTML = `<h1>Chip</h1>
         <wj-chip color="danger">Danger</wj-chip>
         <wj-chip color="info">Info</wj-chip>
         <wj-chip color="menu">Menu</wj-chip>
+      </div>
+    </div>
+    
+    <!-- COLORS -->
+
+    <h2>Custom</h2>
+    <div class="playground">
+      <div class="content">
+        <style>
+          wj-chip#custom {
+            --wj-chip-background: #00213f;
+            --wj-chip-color: #adefd1;
+          }
+        </style>
+        
+        <wj-chip id="custom">Default</wj-chip>
       </div>
     </div>
   </div>`;
