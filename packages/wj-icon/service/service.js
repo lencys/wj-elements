@@ -132,5 +132,5 @@ export const getName = (iconName) => {
 };
 
 const getNamedUrl = (iconName) => {
-  return `/demo/assets/img/icons/svgs/solid/${iconName}.svg`;
+  return `/public/assets/img/icons/svgs/solid/${iconName}.svg`;
 };
