@@ -26,6 +26,7 @@ export function makeServer({ environment = 'development' } = {}) {
 
     seeds(server) {
       server.createList("user", 0);
+
     },
 
     routes() {
