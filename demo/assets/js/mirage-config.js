@@ -47,7 +47,7 @@ export function makeServer({ environment = 'development' } = {}) {
         }
       })
 
-      this.passthrough("/demo/**")
+      this.passthrough("/demo/**", "/public/**");
     },
   })
 
