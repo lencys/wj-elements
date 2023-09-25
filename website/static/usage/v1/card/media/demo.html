@@ -13,7 +13,7 @@
       wj-card {
         --wj-card-margin-inline: 1rem;
       }
-      .container {
+      .content {
         max-width: 400px;
         margin: 0 auto;
       }
@@ -21,21 +21,19 @@
   </head>
 
   <body>
-    <ion-app>
-      <ion-content>
-        <div class="container">
-          <wj-card>
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-            <wj-card-header>
-              <wj-card-subtitle>Subtitle</wj-card-subtitle>
-              <wj-card-title>Title</wj-card-title>
-            </wj-card-header>
-            <wj-card-content>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </wj-card-content>
-          </wj-card>
-        </div>
-      </ion-content>
-    </ion-app>
+  <div class="playground">
+    <div class="content">
+      <wj-card>
+        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+        <wj-card-header>
+          <wj-card-subtitle>Subtitle</wj-card-subtitle>
+          <wj-card-title>Title</wj-card-title>
+        </wj-card-header>
+        <wj-card-content>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </wj-card-content>
+      </wj-card>
+    </div>
+    </div>
   </body>
 </html>

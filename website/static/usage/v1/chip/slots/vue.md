@@ -1,34 +1,26 @@
 ```html
 <template>
-  <ion-chip>
-    <ion-avatar>
+  <wj-chip>
+    <wj-avatar>
       <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-    </ion-avatar>
-    <ion-label>Avatar Chip</ion-label>
-    <ion-icon :icon="closeCircle"></ion-icon>
-  </ion-chip>
+    </wj-avatar>
+    <wj-label>Avatar Chip</wj-label>
+    <wj-icon name="circle-xmark"></wj-icon>
+  </wj-chip>
 
-  <ion-chip>
-    <ion-icon :icon="pin" color="primary"></ion-icon>
-    <ion-label>Icon Chip</ion-label>
-    <ion-icon :icon="close"></ion-icon>
-  </ion-chip>
+  <wj-chip>
+    <wj-icon name="location-pin" color="complete"></wj-icon>
+    <wj-label>Icon Chip</wj-label>
+    <wj-icon name="xmark"></wj-icon>
+  </wj-chip>
 </template>
 
 <script lang="ts">
-  import { IonChip, IonAvatar, IonLabel, IonIcon } from '@ionic/vue';
-  import { close, closeCircle, pin } from 'ionicons/icons';
+  import { Chip, Avatar, Label, Icon } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { IonChip, IonAvatar, IonLabel, IonIcon },
-    setup() {
-      return {
-        close,
-        closeCircle,
-        pin,
-      };
-    },
+    components: { Chip, Avatar, Label, Icon }
   });
 </script>
 ```

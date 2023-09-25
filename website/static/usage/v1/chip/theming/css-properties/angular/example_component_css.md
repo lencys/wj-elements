@@ -1,6 +1,6 @@
 ```css
-ion-chip {
-  --background: #00213f;
-  --color: #adefd1;
+wj-chip#custom {
+    --wj-chip-background: #00213f;
+    --wj-chip-color: #adefd1;
 }
 ```

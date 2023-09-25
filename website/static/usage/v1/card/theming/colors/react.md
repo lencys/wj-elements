@@ -1,91 +1,64 @@
 ```tsx
 import React from 'react';
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
+import { Card, CardContent, CardHeader, CardSubtitle, CardTitle } from '@elements/react';
 
 function Example() {
   return (
-    <>
-      <IonCard color="primary">
-        <IonCardHeader>
-          <IonCardTitle>Card Title</IonCardTitle>
-          <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-        </IonCardHeader>
+    <wj-card color="primary">
+      <wj-card-header>
+        <wj-card-subtitle>Primary</wj-card-subtitle>
+        <wj-card-title>Title</wj-card-title>
+      </wj-card-header>
+      <wj-card-content>Content</wj-card-content>
+    </wj-card>
 
-        <IonCardContent>Card Content</IonCardContent>
-      </IonCard>
-
-      <IonCard color="secondary">
-        <IonCardHeader>
-          <IonCardTitle>Card Title</IonCardTitle>
-          <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-        </IonCardHeader>
-
-        <IonCardContent>Card Content</IonCardContent>
-      </IonCard>
-
-      <IonCard color="tertiary">
-        <IonCardHeader>
-          <IonCardTitle>Card Title</IonCardTitle>
-          <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-        </IonCardHeader>
-
-        <IonCardContent>Card Content</IonCardContent>
-      </IonCard>
-
-      <IonCard color="success">
-        <IonCardHeader>
-          <IonCardTitle>Card Title</IonCardTitle>
-          <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-        </IonCardHeader>
-
-        <IonCardContent>Card Content</IonCardContent>
-      </IonCard>
-
-      <IonCard color="warning">
-        <IonCardHeader>
-          <IonCardTitle>Card Title</IonCardTitle>
-          <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-        </IonCardHeader>
-
-        <IonCardContent>Card Content</IonCardContent>
-      </IonCard>
-
-      <IonCard color="danger">
-        <IonCardHeader>
-          <IonCardTitle>Card Title</IonCardTitle>
-          <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-        </IonCardHeader>
-
-        <IonCardContent>Card Content</IonCardContent>
-      </IonCard>
-
-      <IonCard color="light">
-        <IonCardHeader>
-          <IonCardTitle>Card Title</IonCardTitle>
-          <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-        </IonCardHeader>
-
-        <IonCardContent>Card Content</IonCardContent>
-      </IonCard>
-
-      <IonCard color="medium">
-        <IonCardHeader>
-          <IonCardTitle>Card Title</IonCardTitle>
-          <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-        </IonCardHeader>
-
-        <IonCardContent>Card Content</IonCardContent>
-      </IonCard>
-
-      <IonCard color="dark">
-        <IonCardHeader>
-          <IonCardTitle>Card Title</IonCardTitle>
-          <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-        </IonCardHeader>
-
-        <IonCardContent>Card Content</IonCardContent>
-      </IonCard>
-    </>
+    <wj-card color="complete">
+      <wj-card-header>
+        <wj-card-subtitle>Complete</wj-card-subtitle>
+        <wj-card-title>Title</wj-card-title>
+      </wj-card-header>
+      <wj-card-content>Content</wj-card-content>
+    </wj-card>
+    
+    <wj-card color="success">
+      <wj-card-header>
+        <wj-card-subtitle>Success</wj-card-subtitle>
+        <wj-card-title>Title</wj-card-title>
+      </wj-card-header>
+      <wj-card-content> Content </wj-card-content>
+    </wj-card>
+    
+    <wj-card color="warning">
+      <wj-card-header>
+        <wj-card-subtitle>Warning</wj-card-subtitle>
+        <wj-card-title>Title</wj-card-title>
+      </wj-card-header>
+      <wj-card-content> Content </wj-card-content>
+    </wj-card>
+    
+    <wj-card color="danger">
+      <wj-card-header>
+        <wj-card-subtitle>Danger</wj-card-subtitle>
+        <wj-card-title>Title</wj-card-title>
+      </wj-card-header>
+      <wj-card-content> Content </wj-card-content>
+    </wj-card>
+    
+    <wj-card color="info">
+      <wj-card-header>
+        <wj-card-subtitle>Info</wj-card-subtitle>
+        <wj-card-title>Title</wj-card-title>
+      </wj-card-header>
+      <wj-card-content> Content </wj-card-content>
+    </wj-card>
+    
+    <wj-card color="menu">
+      <wj-card-header>
+        <wj-card-subtitle>Menu</wj-card-subtitle>
+        <wj-card-title>Title</wj-card-title>
+      </wj-card-header>
+      <wj-card-content> Content </wj-card-content>
+    </wj-card>
   );
 }
 export default Example;

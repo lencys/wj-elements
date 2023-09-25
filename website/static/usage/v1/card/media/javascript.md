@@ -1,13 +1,12 @@
 ```html
-<ion-card>
+<wj-card>
   <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-  <ion-card-header>
-    <ion-card-title>Card Title</ion-card-title>
-    <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-  </ion-card-header>
-
-  <ion-card-content>
-    Here's a small text description for the card content. Nothing more, nothing less.
-  </ion-card-content>
-</ion-card>
+  <wj-card-header>
+    <wj-card-subtitle>Subtitle</wj-card-subtitle>
+    <wj-card-title>Title</wj-card-title>
+  </wj-card-header>
+  <wj-card-content>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </wj-card-content>
+</wj-card>
 ```

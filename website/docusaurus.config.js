@@ -37,24 +37,24 @@ module.exports = {
         docs: {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: ({ versionDocsDirPath, docPath, locale }) => {
-            if (locale != 'en') {
-              return 'https://crowdin.com/project/ionic-docs';
-            }
-            if ((match = docPath.match(/api\/(.*)\.md/)) != null) {
-              return `https://github.com/ionic-team/ionic-docs/tree/main/docs/api/${match[1]}.md`;
-            }
-            if ((match = docPath.match(/cli\/commands\/(.*)\.md/)) != null) {
-              return `https://github.com/ionic-team/ionic-cli/edit/develop/packages/@ionic/cli/src/commands/${match[1].replace(
-                '-',
-                '/'
-              )}.ts`;
-            }
-            if ((match = docPath.match(/native\/(.*)\.md/)) != null) {
-              return `https://github.com/ionic-team/capacitor-plugins/edit/main/${match[1]}/README.md`;
-            }
-            return `https://github.com/ionic-team/ionic-docs/edit/main/${versionDocsDirPath}/${docPath}`;
-          },
+          // editUrl: ({ versionDocsDirPath, docPath, locale }) => {
+          //   if (locale != 'en') {
+          //     return 'https://crowdin.com/project/ionic-docs';
+          //   }
+          //   if ((match = docPath.match(/api\/(.*)\.md/)) != null) {
+          //     return `https://github.com/ionic-team/ionic-docs/tree/main/docs/api/${match[1]}.md`;
+          //   }
+          //   if ((match = docPath.match(/cli\/commands\/(.*)\.md/)) != null) {
+          //     return `https://github.com/ionic-team/ionic-cli/edit/develop/packages/@ionic/cli/src/commands/${match[1].replace(
+          //       '-',
+          //       '/'
+          //     )}.ts`;
+          //   }
+          //   if ((match = docPath.match(/native\/(.*)\.md/)) != null) {
+          //     return `https://github.com/ionic-team/capacitor-plugins/edit/main/${match[1]}/README.md`;
+          //   }
+          //   return `https://github.com/ionic-team/ionic-docs/edit/main/${versionDocsDirPath}/${docPath}`;
+          // },
           exclude: ['README.md'],
           lastVersion: 'current',
           versions: {
@@ -123,12 +123,12 @@ module.exports = {
         height: 28,
       },
       items: [
-        {
-          type: 'doc',
-          docId: 'index',
-          label: 'Guide',
-          position: 'left',
-        },
+        // {
+        //   type: 'doc',
+        //   docId: 'index',
+        //   label: 'Guide',
+        //   position: 'left',
+        // },
         {
           type: 'doc',
           docId: 'components',
@@ -158,11 +158,12 @@ module.exports = {
           type: 'docsVersionDropdown',
           position: 'right',
           dropdownItemsAfter: [
+            { to: '/docs', label: 'v1' }
             // { to: 'https://ionicframework.com/docs/v4/components', label: 'v4', target: '_blank' },
             // { to: 'https://ionicframework.com/docs/v3/', label: 'v3', target: '_blank' },
           ],
           dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
-          dropdownActiveClassDisabled: true,
+          dropdownActiveClassDisabled: false,
         },
         {
           type: 'search',

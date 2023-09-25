@@ -1,3 +1,3 @@
 ```html
-<ion-chip>Default</ion-chip>
+<wj-chip id="custom">Default</wj-chip>
 ```

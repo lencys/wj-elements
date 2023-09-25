@@ -1,5 +1,5 @@
 ---
-title: "ion-card-subtitle"
+title: "Card Subtitle"
 ---
 import Props from '@ionic-internal/component-api/v1/card-subtitle/props.md';
 import Events from '@ionic-internal/component-api/v1/card-subtitle/events.md';
@@ -12,17 +12,29 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
+Element card-subtitle je komponent navrhnutý na použitie v rámci elementu Card Header na poskytnutie doplnkového alebo sekundárneho textu, čím používateľovi poskytuje dodatočný kontext alebo informácie súvisiace s hlavným obsahom karty.
 
-Card subtitle is a child component of card that should be placed inside of a [card header](./card-header).
+Pre viac informácií o použítí Card Subtitle sa presuňte do dokumentácie elementu **[Card**.](https://www.notion.so/Card-1fff2f892aa7490db5637e5b7e096129?pvs=21)
 
-See the [Card](./card) documentation for more information.
+## Eventy
 
+Pre tento komponent nie sú k dispozícii žiadne eventy.
 
-## Properties
-<Props />
+## Metódy[](https://ionicframework.com/docs/api/badge#methods)
 
-## Events
-<Events />
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+
+## CSS Shadow Parts[](https://ionicframework.com/docs/api/badge#css-shadow-parts)
+
+Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+
+## CSS Custom Vlastnosti
+
+Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
+
+## Sloty
+
+Pre tento komponent nie sú k dispozícii žiadne sloty.
 
 ## Methods
 <Methods />

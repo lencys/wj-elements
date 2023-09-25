@@ -5,4 +5,4 @@ import react from './react.md';
 import vue from './vue.md';
 import angular from './angular.md';
 
-<Playground version="7" code={{ javascript, react, vue, angular }} src="usage/v7/range/no-visible-label/demo.html" />
+<Playground version="1" code={{ javascript, react, vue, angular }} src="usage/v1/card/separator/demo.html" size="300px" />

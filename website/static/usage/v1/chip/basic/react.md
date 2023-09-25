@@ -1,12 +1,12 @@
 ```tsx
 import React from 'react';
-import { IonChip } from '@ionic/react';
+import { Chip, Icon } from '@elements/react';
 function Example() {
   return (
     <>
-      <IonChip>Default</IonChip>
-      <IonChip disabled={true}>Disabled</IonChip>
-      <IonChip outline={true}>Outline</IonChip>
+      <wj-chip>Default</wj-chip>
+      <wj-chip active>Default</wj-chip>
+      <wj-chip disabled>Disabled</wj-chip>
     </>
   );
 }

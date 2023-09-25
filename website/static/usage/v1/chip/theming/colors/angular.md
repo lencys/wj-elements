@@ -1,12 +1,10 @@
 ```html
-<ion-chip>Default</ion-chip>
-<ion-chip color="primary">Primary</ion-chip>
-<ion-chip color="secondary">Secondary</ion-chip>
-<ion-chip color="tertiary">Tertiary</ion-chip>
-<ion-chip color="success">Success</ion-chip>
-<ion-chip color="warning">Warning</ion-chip>
-<ion-chip color="danger">Danger</ion-chip>
-<ion-chip color="light">Light</ion-chip>
-<ion-chip color="medium">Medium</ion-chip>
-<ion-chip color="dark">Dark</ion-chip>
+<wj-chip>Default</wj-chip>
+<wj-chip color="primary">Primary</wj-chip>
+<wj-chip color="complete">Complete</wj-chip>
+<wj-chip color="success">Success</wj-chip>
+<wj-chip color="warning">Warning</wj-chip>
+<wj-chip color="danger">Danger</wj-chip>
+<wj-chip color="info">Info</wj-chip>
+<wj-chip color="menu">Menu</wj-chip>
 ```

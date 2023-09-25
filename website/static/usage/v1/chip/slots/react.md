@@ -1,24 +1,23 @@
 ```tsx
 import React from 'react';
-import { IonChip, IonAvatar, IonLabel, IonIcon } from '@ionic/react';
-import { close, closeCircle, pin } from 'ionicons/icons';
+import { Chip, Avatar, Label, Icon } from '@elements/react';
 
 function Example() {
   return (
     <>
-      <IonChip>
-        <IonAvatar>
+      <wj-chip>
+        <wj-avatar>
           <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-        </IonAvatar>
-        <IonLabel>Avatar Chip</IonLabel>
-        <IonIcon icon={closeCircle}></IonIcon>
-      </IonChip>
+        </wj-avatar>
+        <wj-label>Avatar Chip</wj-label>
+        <wj-icon name="circle-xmark"></wj-icon>
+      </wj-chip>
 
-      <IonChip>
-        <IonIcon icon={pin} color="primary"></IonIcon>
-        <IonLabel>Icon Chip</IonLabel>
-        <IonIcon icon={close}></IonIcon>
-      </IonChip>
+      <wj-chip>
+        <wj-icon name="location-pin" color="complete"></wj-icon>
+        <wj-label>Icon Chip</wj-label>
+        <wj-icon name="xmark"></wj-icon>
+      </wj-chip>
     </>
   );
 }

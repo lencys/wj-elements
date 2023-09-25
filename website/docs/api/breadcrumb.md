@@ -1,5 +1,5 @@
 ---
-title: "ion-breadcrumb"
+title: "Breadcrumb"
 ---
 import Props from '@ionic-internal/component-api/v1/breadcrumb/props.md';
 import Events from '@ionic-internal/component-api/v1/breadcrumb/events.md';

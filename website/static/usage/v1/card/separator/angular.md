@@ -8,5 +8,8 @@
   <ion-card-content>
     Here's a small text description for the card content. Nothing more, nothing less.
   </ion-card-content>
+
+  <ion-button fill="clear">Action 1</ion-button>
+  <ion-button fill="clear">Action 2</ion-button>
 </ion-card>
 ```

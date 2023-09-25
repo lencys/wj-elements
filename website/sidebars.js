@@ -278,24 +278,24 @@ module.exports = {
     //   collapsed: false,
     //   items: ['api/button', 'api/ripple-effect'],
     // },
-    // {
-    //   type: 'category',
-    //   label: 'Card',
-    //   collapsed: false,
-    //   items: ['api/card', 'api/card-content', 'api/card-header', 'api/card-subtitle', 'api/card-title'],
-    // },
+    {
+      type: 'category',
+      label: 'Card',
+      collapsed: false,
+      items: ['api/card', 'api/card-content', 'api/card-controls', 'api/card-header', 'api/card-subtitle', 'api/card-title'],
+    },
     // {
     //   type: 'category',
     //   label: 'Checkbox',
     //   collapsed: false,
     //   items: ['api/checkbox'],
     // },
-    // {
-    //   type: 'category',
-    //   label: 'Chip',
-    //   collapsed: false,
-    //   items: ['api/chip'],
-    // },
+    {
+      type: 'category',
+      label: 'Chip',
+      collapsed: false,
+      items: ['api/chip'],
+    },
     // {
     //   type: 'category',
     //   label: 'Content',

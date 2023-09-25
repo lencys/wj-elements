@@ -1,23 +1,12 @@
 ---
-title: "ion-chip"
+title: "Chip"
 ---
-import Props from '@ionic-internal/component-api/v1/chip/props.md';
-import Events from '@ionic-internal/component-api/v1/chip/events.md';
-import Methods from '@ionic-internal/component-api/v1/chip/methods.md';
-import Parts from '@ionic-internal/component-api/v1/chip/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/chip/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/chip/slots.md';
-
-<head>
-  <title>ion-chip:  Name, Text, Icon and Avatar for Ionic Framework Apps</title>
-  <meta name="description" content="ion-chips represent complex entities in small blocks, such as a contact. A chip can contain several different elements such as names, avatars, text, and icons." />
-</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Chips represent complex entities in small blocks, such as a contact. A chip can contain several different elements such as avatars, text, and icons.
+Komponent Chip je univerzálny element, ktorý predstavuje malý vizuálny blok obsahujúci rôzne ďalšie elementy, ako napríklad avatary, text a ikony. Ponúka možnosti prispôsobenia farieb, stavov a ďalšie.
 
 ## Basic Usage
 
@@ -25,40 +14,73 @@ import Basic from '@site/static/usage/v1/chip/basic/index.md';
 
 <Basic />
 
-## Slotting Components and Icons
+## Vkladanie ďalších prvkov
+
+V elemente chip je možné zobraziť aj ďalšie elementy, napríklad elementy **avatar**, **label** a **icon**.
 
 import SlotExample from '@site/static/usage/v1/chip/slots/index.md';
 
 <SlotExample />
 
-## Theming
+## Štýlovanie
 
-### Colors
+### Farebné varianty
 
 import Colors from '@site/static/usage/v1/chip/theming/colors/index.md';
 
 <Colors />
 
-### CSS Custom Properties
+### Štýlovanie pomocou CSS custom vlastností
 
 import CSSProps from '@site/static/usage/v1/chip/theming/css-properties/index.md';
 
 <CSSProps />
 
-## Properties
-<Props />
+## Vlastnosti
 
-## Events
-<Events />
+### **active**
 
-## Methods
-<Methods />
+| Popis | Ak true, do elementu sa vloží ikona fajky (check) |
+| --- | --- |
+| Atribút | active |
+| Typ | boolean |
+| Predvolená hodnota | false |
 
-## CSS Shadow Parts
-<Parts />
+### color
 
-## CSS Custom Properties
-<CustomProps />
+| Popis | Farba, ktorá sa má použiť z palety farieb aplikácie.                                      |
+| --- |-------------------------------------------------------------------------------------------|
+| Atribút | color                                                                                     |
+| Typ | "danger" ｜ "dark" ｜ "light" ｜ "primary" ｜ "secondary" ｜ "success" ｜ "warning" ｜ undefined |
+| Predvolená hodnota | “primary”                                                                                 |
 
-## Slots
-<Slots />
+### disabled[](#disabled)
+
+| Popis | Ak true, používateľ nemôže s elementom interagovať. |
+| --- | --- |
+| Atribút | disabled |
+| Typ | boolean |
+| Predvolená hodnota | false |
+
+## Eventy[](#events)
+
+Pre tento komponent nie sú k dispozícii žiadne verejné eventy.
+
+## Metódy[](#methods)
+
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+
+## CSS Shadow Parts[](#css-shadow-parts)
+
+Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+
+## CSS Custom Vlastnosti
+
+| Name | Description |
+| --- | --- |
+| --background | Pozadie elementu chip |
+| --color | Farba elementu chip |
+
+## Sloty
+
+Pre tento komponent nie sú k dispozícii žiadne sloty.

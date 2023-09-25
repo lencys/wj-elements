@@ -10,126 +10,29 @@ Element **Card** je flexibilný a rozšíriteľný kontajner formátu karty. Umo
 
 ## Základné použitie
 
-```html
-<wj-card>
-  <wj-card-header>
-    <wj-card-subtitle>Subtitle</wj-card-subtitle>
-    <wj-card-title>Title</wj-card-title>
-  </wj-card-header>
-  <wj-card-content>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  </wj-card-content>
-</wj-card>
-```
+import Basic from '@site/static/usage/v1/card/basic/index.md';
+
+<Basic />
 
 ## Separator
 
 Vlastnosť separator slúži na zobrazenie horizontálneho oddelovača v elementer Card Header.
 
-```html
-<wj-card>
-  <wj-card-header separator>
-    <wj-card-subtitle>Subtitle</wj-card-subtitle>
-    <wj-card-title>Title</wj-card-title>
-    <wj-card-controls>
-      <wj-button fill="link" size="small">
-        <wj-icon name="up-right-and-down-left-from-center" slot="icon-only"></wj-icon>
-      </wj-button>
-      <wj-button fill="link" size="small">
-        <wj-icon name="chevron-up" slot="icon-only"></wj-icon>
-      </wj-button>
-      <wj-button fill="link" size="small">
-        <wj-icon name="rotate-right" slot="icon-only"></wj-icon>
-      </wj-button>
-      <wj-button fill="link" size="small">
-        <wj-icon name="ellipsis" slot="icon-only"></wj-icon>
-      </wj-button>
-      <wj-button fill="link" size="small">
-        <wj-icon name="xmark" slot="icon-only"></wj-icon>
-      </wj-button>
-    </wj-card-controls>
-  </wj-card-header>
-  <wj-card-content>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  </wj-card-content>
-</wj-card>
-```
+import Separator from '@site/static/usage/v1/card/separator/index.md';
+
+<Separator />
 
 ## Karta s obrázkom
 
+import Media from '@site/static/usage/v1/card/media/index.md';
 
-
-```html
-<wj-card>
-  <img
-    alt="Lorem ipsum"
-    src="https://ionicframework.com/docs/img/demos/card-media.png"
-  />
-  <wj-card-header>
-    <wj-card-subtitle>Subtitle</wj-card-subtitle>
-    <wj-card-title>Title</wj-card-title>
-  </wj-card-header>
-  <wj-card-content>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  </wj-card-content>
-</wj-card>
-```
+<Media />
 
 ## Karta so zoznamom
 
+import List from '@site/static/usage/v1/card/list/index.md';
 
-
-```html
-<wj-card>
-  <wj-card-header>
-    <wj-card-subtitle>Subtitle</wj-card-subtitle>
-    <wj-card-title>Title</wj-card-title>
-  </wj-card-header>
-  <wj-card-content>
-    <wj-list>
-      <wj-item>
-        <wj-thumbnail slot="start">
-          <img
-            alt="Silhouette of mountains"
-            src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
-          />
-        </wj-thumbnail>
-        <wj-label>Item</wj-label>
-      </wj-item>
-
-      <wj-item>
-        <wj-thumbnail slot="start">
-          <img
-            alt="Silhouette of mountains"
-            src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
-          />
-        </wj-thumbnail>
-        <wj-label>Item</wj-label>
-      </wj-item>
-
-      <wj-item>
-        <wj-thumbnail slot="start">
-          <img
-            alt="Silhouette of mountains"
-            src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
-          />
-        </wj-thumbnail>
-        <wj-label>Item</wj-label>
-      </wj-item>
-
-      <wj-item lines="none">
-        <wj-thumbnail slot="start">
-          <img
-            alt="Silhouette of mountains"
-            src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
-          />
-        </wj-thumbnail>
-        <wj-label>Item</wj-label>
-      </wj-item>
-    </wj-list>
-  </wj-card-content>
-</wj-card>
-```
+<List />
 
 ## Úprava štýlov
 
@@ -137,80 +40,16 @@ Vlastnosť separator slúži na zobrazenie horizontálneho oddelovača v element
 
 Vlastnosť `color` upravuje farbu pozadia a okraja karty. Nastavením tejto hodnoty sa farba tlačidla zmení na jednu z farieb prednastavenej farebnej palety.  V predvolenom nastavení má element pozadie `primary`. 
 
-```html
-<div class="playground">
-  <div class="content d-flex col-4">
-    <style>
-      /*.container {*/
-      /*  margin-inline: -1rem;*/
-      /*}*/
-      .container wj-card {
-        --wj-card-margin-top: 1rem;
-        --wj-card-margin-bottom: 1rem;
-        --wj-card-margin-inline: 1rem;
-      }
-    </style>
-    <wj-card color="primary" shadow="open" test="test" class="wj-color-primary wj-color">
-      <wj-card-header shadow="open" test="test">
-        <wj-card-subtitle shadow="open">Primary</wj-card-subtitle>
-        <wj-card-title shadow="open">Title</wj-card-title>
-      </wj-card-header>
-      <wj-card-content shadow="open" test="test"> Content </wj-card-content>
-    </wj-card>
+import Colors from '@site/static/usage/v1/card/theming/colors/index.md';
 
-    <wj-card color="complete" shadow="open" test="test" class="wj-color-complete wj-color">
-      <wj-card-header shadow="open" test="test">
-        <wj-card-subtitle shadow="open">Complete</wj-card-subtitle>
-        <wj-card-title shadow="open">Title</wj-card-title>
-      </wj-card-header>
-      <wj-card-content shadow="open" test="test"> Content </wj-card-content>
-    </wj-card>
-
-    <wj-card color="success" shadow="open" test="test" class="wj-color-success wj-color">
-      <wj-card-header shadow="open" test="test">
-        <wj-card-subtitle shadow="open">Success</wj-card-subtitle>
-        <wj-card-title shadow="open">Title</wj-card-title>
-      </wj-card-header>
-      <wj-card-content shadow="open" test="test"> Content </wj-card-content>
-    </wj-card>
-
-    <wj-card color="warning" shadow="open" test="test" class="wj-color-warning wj-color">
-      <wj-card-header shadow="open" test="test">
-        <wj-card-subtitle shadow="open">Warning</wj-card-subtitle>
-        <wj-card-title shadow="open">Title</wj-card-title>
-      </wj-card-header>
-      <wj-card-content shadow="open" test="test"> Content </wj-card-content>
-    </wj-card>
-
-    <wj-card color="danger" shadow="open" test="test" class="wj-color-danger wj-color">
-      <wj-card-header shadow="open" test="test">
-        <wj-card-subtitle shadow="open">Danger</wj-card-subtitle>
-        <wj-card-title shadow="open">Title</wj-card-title>
-      </wj-card-header>
-      <wj-card-content shadow="open" test="test"> Content </wj-card-content>
-    </wj-card>
-
-    <wj-card color="info" shadow="open" test="test" class="wj-color-info wj-color">
-      <wj-card-header shadow="open" test="test">
-        <wj-card-subtitle shadow="open">Info</wj-card-subtitle>
-        <wj-card-title shadow="open">Title</wj-card-title>
-      </wj-card-header>
-      <wj-card-content shadow="open" test="test"> Content </wj-card-content>
-    </wj-card>
-
-    <wj-card color="menu" shadow="open" test="test" class="wj-color-menu wj-color">
-      <wj-card-header shadow="open" test="test">
-        <wj-card-subtitle shadow="open">Menu</wj-card-subtitle>
-        <wj-card-title shadow="open">Title</wj-card-title>
-      </wj-card-header>
-      <wj-card-content shadow="open" test="test"> Content </wj-card-content>
-    </wj-card>
-  </div>
-</div>
-```
+<Colors />
 
 
 ### CSS Custom Vlastnosti
+
+import CssProperties from '@site/static/usage/v1/card/theming/css-properties/index.md';
+
+<CssProperties />
 
 ```html
 <wj-card id="custom">

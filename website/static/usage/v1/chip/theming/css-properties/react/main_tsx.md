@@ -1,11 +1,11 @@
 ```tsx
 import React from 'react';
-import { IonChip } from '@ionic/react';
+import { Chip } from '@elements/react';
 
 import './main.css';
 
 function Example() {
-  return <IonChip>Default</IonChip>;
+  return <wj-chip id="custom">Default</wj-chip>;
 }
 export default Example;
 ```

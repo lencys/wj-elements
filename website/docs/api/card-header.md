@@ -1,37 +1,35 @@
----
-title: "ion-card-header"
----
-import Props from '@ionic-internal/component-api/v1/card-header/props.md';
-import Events from '@ionic-internal/component-api/v1/card-header/events.md';
-import Methods from '@ionic-internal/component-api/v1/card-header/methods.md';
-import Parts from '@ionic-internal/component-api/v1/card-header/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/card-header/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/card-header/slots.md';
+# Card Header
 
-import EncapsulationPill from '@components/page/api/EncapsulationPill';
+Element Card header je komponent navrhnutý pre použitie v kartách a slúži ako kontajner na umiestnenie príslušných nadpisov, ikon alebo iného obsahu, ktorý pomáha používateľovi rýchlo pochopiť kontext alebo účel hlavného obsahu karty.
 
-<EncapsulationPill type="shadow" />
+Pre viac informácií o použítí Card Header sa presuňte do dokumentácie elementu **[Card**.](https://www.notion.so/Card-1fff2f892aa7490db5637e5b7e096129?pvs=21)
 
+## Atribúty a Vlastnosti
 
-Card header is a child component of card that should be placed before the card content. It can contain a [card title](./card-title) and a [card subtitle](./card-subtitle).
+### separator
 
-See the [Card](./card) documentation for more information.
+| Popis | Ak true, do elementu sa vloží horizontálny oddelovač |
+| --- | --- |
+| Atribút | separator |
+| Typ | boolean |
+| Predvolená hodnota | false |
 
+## Eventy
 
-## Properties
-<Props />
+Pre tento komponent nie sú k dispozícii žiadne eventy.
 
-## Events
-<Events />
+## Metódy[](https://ionicframework.com/docs/api/badge#methods)
 
-## Methods
-<Methods />
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
-## CSS Shadow Parts
-<Parts />
+## CSS Shadow Parts[](https://ionicframework.com/docs/api/badge#css-shadow-parts)
 
-## CSS Custom Properties
-<CustomProps />
+Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
 
-## Slots
-<Slots />
+## CSS Custom Vlastnosti
+
+Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
+
+## Sloty
+
+Pre tento komponent nie sú k dispozícii žiadne sloty.

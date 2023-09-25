@@ -1,93 +1,68 @@
 ```html
 <template>
-  <ion-card color="primary">
-    <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-    </ion-card-header>
+  <wj-card color="primary">
+    <wj-card-header>
+      <wj-card-subtitle>Primary</wj-card-subtitle>
+      <wj-card-title>Title</wj-card-title>
+    </wj-card-header>
+    <wj-card-content> Content </wj-card-content>
+  </wj-card>
 
-    <ion-card-content> Card Content </ion-card-content>
-  </ion-card>
+  <wj-card color="complete">
+    <wj-card-header>
+      <wj-card-subtitle>Complete</wj-card-subtitle>
+      <wj-card-title>Title</wj-card-title>
+    </wj-card-header>
+    <wj-card-content> Content </wj-card-content>
+  </wj-card>
 
-  <ion-card color="secondary">
-    <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-    </ion-card-header>
+  <wj-card color="success">
+    <wj-card-header>
+      <wj-card-subtitle>Success</wj-card-subtitle>
+      <wj-card-title>Title</wj-card-title>
+    </wj-card-header>
+    <wj-card-content> Content </wj-card-content>
+  </wj-card>
 
-    <ion-card-content> Card Content </ion-card-content>
-  </ion-card>
+  <wj-card color="warning">
+    <wj-card-header>
+      <wj-card-subtitle>Warning</wj-card-subtitle>
+      <wj-card-title>Title</wj-card-title>
+    </wj-card-header>
+    <wj-card-content> Content </wj-card-content>
+  </wj-card>
 
-  <ion-card color="tertiary">
-    <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-    </ion-card-header>
+  <wj-card color="danger">
+    <wj-card-header>
+      <wj-card-subtitle>Danger</wj-card-subtitle>
+      <wj-card-title>Title</wj-card-title>
+    </wj-card-header>
+    <wj-card-content> Content </wj-card-content>
+  </wj-card>
 
-    <ion-card-content> Card Content </ion-card-content>
-  </ion-card>
+  <wj-card color="info">
+    <wj-card-header>
+      <wj-card-subtitle>Info</wj-card-subtitle>
+      <wj-card-title>Title</wj-card-title>
+    </wj-card-header>
+    <wj-card-content> Content </wj-card-content>
+  </wj-card>
 
-  <ion-card color="success">
-    <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-    </ion-card-header>
-
-    <ion-card-content> Card Content </ion-card-content>
-  </ion-card>
-
-  <ion-card color="warning">
-    <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-    </ion-card-header>
-
-    <ion-card-content> Card Content </ion-card-content>
-  </ion-card>
-
-  <ion-card color="danger">
-    <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-    </ion-card-header>
-
-    <ion-card-content> Card Content </ion-card-content>
-  </ion-card>
-
-  <ion-card color="light">
-    <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-    </ion-card-header>
-
-    <ion-card-content> Card Content </ion-card-content>
-  </ion-card>
-
-  <ion-card color="medium">
-    <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-    </ion-card-header>
-
-    <ion-card-content> Card Content </ion-card-content>
-  </ion-card>
-
-  <ion-card color="dark">
-    <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-    </ion-card-header>
-
-    <ion-card-content> Card Content </ion-card-content>
-  </ion-card>
+  <wj-card color="menu">
+    <wj-card-header>
+      <wj-card-subtitle>Menu</wj-card-subtitle>
+      <wj-card-title>Title</wj-card-title>
+    </wj-card-header>
+    <wj-card-content> Content </wj-card-content>
+  </wj-card>
 </template>
 
 <script lang="ts">
-  import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/vue';
+  import { Card, CardContent, CardHeader, CardSubtitle, CardTitle } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle },
+    components: { Card, CardContent, CardHeader, CardSubtitle, CardTitle },
   });
 </script>
 ```

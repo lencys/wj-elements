@@ -1,18 +1,19 @@
 ```tsx
 import React from 'react';
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
+import { Card, CardContent, CardHeader, CardSubtitle, CardTitle } from '@elements/react';
 
 function Example() {
   return (
-    <IonCard>
+    <wj-card>
       <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-      <IonCardHeader>
-        <IonCardTitle>Card Title</IonCardTitle>
-        <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-      </IonCardHeader>
-
-      <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
-    </IonCard>
+      <wj-card-header>
+        <wj-card-subtitle>Subtitle</wj-card-subtitle>
+        <wj-card-title>Title</wj-card-title>
+      </wj-card-header>
+      <wj-card-content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </wj-card-content>
+    </wj-card>
   );
 }
 export default Example;

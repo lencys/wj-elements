@@ -1,15 +1,14 @@
 ```html
 <template>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-    </ion-card-header>
-
-    <ion-card-content>
-      Here's a small text description for the card content. Nothing more, nothing less.
-    </ion-card-content>
-  </ion-card>
+  <wj-card id="custom">
+    <wj-card-header>
+      <wj-card-subtitle>Subtitle</wj-card-subtitle>
+      <wj-card-title>Title</wj-card-title>
+    </wj-card-header>
+    <wj-card-content>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </wj-card-content>
+  </wj-card>
 </template>
 
 <script lang="ts">
@@ -22,17 +21,16 @@
 </script>
 
 <style scoped>
-  ion-card {
-    --background: #000;
-    --color: #9efff0;
-  }
-
-  ion-card-title {
-    --color: #52ffe4;
-  }
-
-  ion-card-subtitle {
-    --color: #d1fff8;
-  }
+#custom {
+  --wj-card-margin-top: 1rem;
+  --wj-card-margin-bottom: 1rem;
+  --wj-card-margin-inline: 1rem;
+  --wj-color-contrast: #f0f;
+  --wj-card-border-color: #000;
+  --wj-border-size: 2px;
+  --background-color: #000!important;
+  --wj-font-size: .8rem;
+  --wj-border-radius: 0;
+}
 </style>
 ```
