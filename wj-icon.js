@@ -110,7 +110,7 @@ const getName = (iconName) => {
   return iconName;
 };
 const getNamedUrl = (iconName) => {
-  return `/demo/assets/img/icons/svgs/solid/${iconName}.svg`;
+  return `/public/assets/img/icons/svgs/solid/${iconName}.svg`;
 };
 const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Chip ]\n*/\n:host(.wj-color-primary) {\n  --wj-color-base: #eae0fb !important;\n  --wj-color-contrast: #845ae0 !important;\n}\n:host(.wj-color-complete) {\n  --wj-color-base: #d3eeff !important;\n  --wj-color-contrast: #0f8ff9 !important;\n}\n:host(.wj-color-success) {\n  --wj-color-base: #d6f7f0 !important;\n  --wj-color-contrast: #26bf93 !important;\n}\n:host(.wj-color-warning) {\n  --wj-color-base: #fffde1 !important;\n  --wj-color-contrast: #ffe858 !important;\n}\n:host(.wj-color-danger) {\n  --wj-color-base: #fde2da !important;\n  --wj-color-contrast: #e6533c !important;\n}\n:host(.wj-color-info) {\n  --wj-color-base: #dbe6e8 !important;\n  --wj-color-contrast: #475b6b !important;\n}\n:host(.wj-color-menu) {\n  --wj-color-base: #f4f4f4 !important;\n  --wj-color-contrast: #21252d !important;\n}\n:host {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  contain: strict;\n  fill: currentColor;\n  box-sizing: content-box !important;\n}\n.icon-inner, svg {\n  display: block;\n  height: 100%;\n  width: 100%;\n}\n:host(.wj-size-small) {\n  --wj-icon-size: 18px;\n}\n:host(.wj-size-large) {\n  --wj-icon-size: 32px;\n}\n:host(.wj-size) {\n  font-size: var(--wj-icon-size) !important;\n}\n:host(.wj-color) {\n  color: var(--wj-color-contrast);\n}";
 class Icon extends WJElement {
