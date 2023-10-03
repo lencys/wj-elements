@@ -14,9 +14,10 @@ export default ({
         outDir: './dist',
         lib: {
             entry: {
-                "main": "./packages/index.js",
+                "index": "./packages/index.js",
                 "store": "./packages/wj-store/store.js",
                 "element": "./packages/wj-element/wj-element.js",
+                "aside": "./packages/wj-aside/aside.js",
                 "avatar": "./packages/wj-avatar/avatar.js",
                 "badge": "./packages/wj-badge/badge.js",
                 "button": "./packages/wj-button/button.js",
@@ -28,11 +29,14 @@ export default ({
                 "card-subtitle": "./packages/wj-card-subtitle/card-subtitle.js",
                 "card-title": "./packages/wj-card-title/card-title.js",
                 "col": "./packages/wj-col/col.js",
+                "container": "./packages/wj-container/container.js",
                 "dialog": "./packages/wj-dialog/dialog.js",
                 "divider": "./packages/wj-divider/divider.js",
                 "dropdown": "./packages/wj-dropdown/dropdown.js",
                 "form": "./packages/wj-form/form.js",
+                "footer": "./packages/wj-footer/footer.js",
                 "grid": "./packages/wj-grid/grid.js",
+                "header": "./packages/wj-header/header.js",
                 "chip": "./packages/wj-chip/chip.js",
                 "icon": "./packages/wj-icon/icon.js",
                 "img": "./packages/wj-img/img.js",
@@ -41,6 +45,7 @@ export default ({
                 "item": "./packages/wj-item/item.js",
                 "label": "./packages/wj-label/label.js",
                 "list": "./packages/wj-list/list.js",
+                "main": "./packages/wj-main/main.js",
                 "menu": "./packages/wj-menu/menu.js",
                 "menu-item": "./packages/wj-menu-item/menu-item.js",
                 "menu-label": "./packages/wj-menu-label/menu-label.js",
@@ -65,6 +70,7 @@ export default ({
             // the proper extensions will be added
             fileName: (format, name) => `wj-${name}.js`,
             formats: ['es'],
+            publicDir: false,
         },
     },
 })

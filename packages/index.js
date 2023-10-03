@@ -6,6 +6,7 @@ import "./scss/global.scss";
 // SLICK ROUTER
 import { bindRouterLinks, withRouterLinks } from './wj-router/plugins/slick-router/middlewares/router-links.js';
 
+import { Aside } from "./wj-aside/aside.js";
 import { Avatar } from "./wj-avatar/avatar.js";
 import { Badge } from "./wj-badge/badge.js";
 import { Breadcrumb } from "./wj-breadcrumb/breadcrumb.js";
@@ -19,12 +20,15 @@ import { CardHeader } from "./wj-card-header/card-header.js";
 import { CardSubtitle } from "./wj-card-subtitle/card-subtitle.js";
 import { CardTitle } from "./wj-card-title/card-title.js";
 import { Col } from "./wj-col/col.js";
+import { Container } from "./wj-container/container.js";
 import { Dialog } from "./wj-dialog/dialog.js";
 import { Divider } from "./wj-divider/divider.js";
 import { Dropdown } from "./wj-dropdown/dropdown.js";
 import { ExampleElement } from "./wj-example-element/example-element.js";
 import { Form } from "./wj-form/form.js";
+import { Footer } from "./wj-footer/footer.js";
 import { Grid } from "./wj-grid/grid.js";
+import { Header } from "./wj-header/header.js";
 import { Checkbox } from "./wj-checkbox/checkbox.js";
 import { Chip } from "./wj-chip/chip.js";
 import { Icon } from "./wj-icon/icon.js";
@@ -34,9 +38,11 @@ import { Input } from "./wj-input/input.js";
 import { Item } from "./wj-item/item.js";
 import { Label } from "./wj-label/label.js";
 import { List } from "./wj-list/list.js";
+import { Main } from "./wj-main/main.js";
 import { Menu } from "./wj-menu/menu.js";
 import { MenuItem } from "./wj-menu-item/menu-item.js";
 import { MenuLabel } from "./wj-menu-label/menu-label.js";
+import { NavMenu } from "./wj-nav-menu/nav-menu.js";
 import { Popup } from "./wj-popup/popup.js";
 import { ProgressBar } from "./wj-progress-bar/progress-bar.js";
 import { Route } from "./wj-route/route.js";
@@ -58,6 +64,7 @@ import { Tooltip } from "./wj-tooltip/tooltip.js";
 import { VisuallyHidden } from "./wj-visually-hidden/visually-hidden.js";
 
 export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks,
+  Aside,
   Avatar,
   Badge,
   Breadcrumb,
@@ -75,7 +82,9 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   Divider,
   Dropdown,
   ExampleElement,
+  Footer,
   Grid,
+  Header,
   Checkbox,
   Chip,
   Icon,
@@ -85,9 +94,11 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   Item,
   Label,
   List,
+  Main,
   Menu,
   MenuItem,
   MenuLabel,
+  NavMenu,
   Popup,
   ProgressBar,
   Route,

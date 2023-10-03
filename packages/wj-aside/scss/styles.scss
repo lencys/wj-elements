@@ -1,0 +1,11 @@
+@import "../../scss/themes/net-basic/important.scss";
+
+/*
+[ Aside ]
+*/
+
+:host {
+    box-sizing: border-box;
+    flex-shrink: 0;
+    overflow: auto;
+}
