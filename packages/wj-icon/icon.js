@@ -33,11 +33,12 @@ export class Icon extends WJElement {
             element.innerHTML = iconContent.get(url);
         });
 
+        this.classList.add("wj-size");
         if(this.color)
             this.classList.add("wj-color-" + this.color, "wj-color");
 
         if(this.size)
-            this.classList.add("wj-size", "wj-size-" + this.size);
+            this.classList.add("wj-size-" + this.size);
 
         fragment.appendChild(element);
 

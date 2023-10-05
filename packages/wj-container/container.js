@@ -24,8 +24,8 @@ export class Container extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-        if(this.hasAttribute("vertical"))
-            this.classList.add("wj-container-vertical");
+        if(this.indent)
+            this.style.setProperty("--wj-container-indent", this.indent);
 
         let element = document.createElement("slot");
 

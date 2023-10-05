@@ -24,8 +24,6 @@ export class Tooltip extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-        // this.classList.add("wj-placement", "wj-" + this.placement || "wj-start");
-
         let popup = document.createElement("wj-popup");
         popup.setAttribute("placement", this.placement || "top");
         popup.setAttribute("offset", this.offset || "0");

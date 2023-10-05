@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-main.js";
+import { WJElement } from "../../dist/wj-master.js";
 
 const template = document.createElement('template');
 
@@ -14,7 +14,7 @@ template.innerHTML = `
         <p style="overflow: hidden; height: 50px;">
           <wj-dropdown label="Start" placement="bottom-start" offset="5">
             <wj-button size="large" slot="trigger" caret>Large</wj-button>
-            <wj-menu>
+            <wj-menu variant="context">
               <wj-menu-item>
                 <wj-icon name="plane" slot="start"></wj-icon>
                 <wj-label>Menu item</wj-label>
@@ -45,7 +45,7 @@ template.innerHTML = `
         <p style="overflow: hidden; height: 50px;">
           <wj-dropdown label="Start" placement="bottom-start" offset="5">
             <wj-button size="large" slot="trigger" caret>Large</wj-button>
-            <wj-menu>
+            <wj-menu variant="context">
               <wj-menu-item>
                 <wj-icon name="plane" slot="start"></wj-icon>
                 <wj-label>Menu item</wj-label>

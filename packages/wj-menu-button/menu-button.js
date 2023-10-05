@@ -2,19 +2,19 @@ import { default as WJElement, event } from "../wj-element/wj-element.js";
 
 import styles from "./scss/styles.scss?inline";
 
-export class Menu extends WJElement {
+export class MenuButton extends WJElement {
     constructor() {
         super();
     }
 
-    className = "Menu";
+    className = "MenuButton";
 
     static get cssStyleSheet() {
         return styles;
     }
 
     static get observedAttributes() {
-        return ["active"];
+        return [];
     }
 
     setupAttributes() {
@@ -24,21 +24,19 @@ export class Menu extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-        this.classList.remove("wj-menu-collapse");
-
-        if(this.hasAttribute("collapse"))
-            this.classList.add("wj-menu-collapse");
-
-        let native = document.createElement("div");
-        native.classList.add("native-menu");
-
         let slot = document.createElement("slot");
 
-        native.appendChild(slot);
-        fragment.appendChild(native);
+        fragment.appendChild(slot);
 
         return fragment;
     }
+
+    afterDraw() {
+        event.addListener(this, "click", null, (e) => {
+            console.log("click menu button", this.contentId);
+            document.querySelector(`#${this.contentId}`).classList.toggle("open");
+        });
+    }
 }
 
-customElements.get("wj-menu") || window.customElements.define("wj-menu", Menu);
+customElements.get("wj-menu-button") || window.customElements.define("wj-menu-button", MenuButton);

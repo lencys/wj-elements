@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-main.js";
+import { WJElement } from "../../dist/wj-master.js";
 
 const template = document.createElement('template');
 
@@ -45,7 +45,7 @@ template.innerHTML = `
           </wj-breadcrumb>
         </wj-breadcrumbs>
         
-        <p>Ikonz na konci</p>
+        <p>Ikony na konci</p>
         <wj-breadcrumbs>
           <wj-breadcrumb href="/house">
             Home
@@ -69,7 +69,7 @@ template.innerHTML = `
     
     <!-- CUSTOM SEPARATOR -->
 
-    <h2>Cusotm Separator</h2>
+    <h2>Custom Separator</h2>
     <div class="playground">
       <div class="content">
         <wj-breadcrumbs>

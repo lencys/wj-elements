@@ -40,6 +40,7 @@ import { Label } from "./wj-label/label.js";
 import { List } from "./wj-list/list.js";
 import { Main } from "./wj-main/main.js";
 import { Menu } from "./wj-menu/menu.js";
+import { MenuButton } from "./wj-menu-button/menu-button.js";
 import { MenuItem } from "./wj-menu-item/menu-item.js";
 import { MenuLabel } from "./wj-menu-label/menu-label.js";
 import { NavMenu } from "./wj-nav-menu/nav-menu.js";
@@ -78,6 +79,7 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   CardSubtitle,
   CardTitle,
   Col,
+  Container,
   Dialog,
   Divider,
   Dropdown,
@@ -96,6 +98,7 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   List,
   Main,
   Menu,
+  MenuButton,
   MenuItem,
   MenuLabel,
   NavMenu,

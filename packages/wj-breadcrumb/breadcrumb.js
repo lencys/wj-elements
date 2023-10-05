@@ -1,4 +1,4 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement, WjElementUtils, event } from "../wj-element/wj-element.js";
 
 import styles from "./scss/styles.scss?inline";
 
@@ -127,31 +127,47 @@ export class Breadcrumb extends WJElement {
         let dropdown = document.createElement("wj-dropdown");
         dropdown.setAttribute("placement", "bottom");
         dropdown.setAttribute("offset", "10");
-        dropdown.innerHTML = `<wj-button slot="trigger">
+
+        let button = document.createElement("wj-button");
+        button.setAttribute("slot", "trigger");
+        button.setAttribute("variant", "link");
+        button.innerHTML = `<wj-icon name="ellipsis"></wj-icon>`;
+
+        let menu = document.createElement("wj-menu");
+
+        dropdown.appendChild(button);
+        dropdown.appendChild(menu);
+
+        dropdown.innerHTML = `<wj-button slot="trigger" variant="link">
             <wj-icon name="ellipsis"></wj-icon>
         </wj-button>
         <wj-menu>
             <wj-menu-item>Tralala</wj-menu-item>
-            <wj-button>Test 1</wj-button>
-            <wj-button>Test 2</wj-button>
+            <wj-menu-item>Test 1</wj-menu-item>
+            <wj-menu-item>Test 2</wj-menu-item>
         </wj-menu>`;
+
+        this.parentElement.querySelectorAll("wj-breadcrumb").forEach((el) => {
+            console.log(el);
+        });
 
         return dropdown;
     }
 
     collapseButton(){
-        console.log("BUTTON");
         let button = document.createElement("button");
         button.setAttribute("aria-label", "Show more breadcrumbs");
         button.setAttribute("part", "collapsed-indicator");
         button.innerHTML = `<wj-icon name="ellipsis"></wj-icon>`;
-        button.addEventListener("click", (e) => {
+        event.addListener( button,"click", null, (e) => {
             this.native.classList.remove("hidden");
             button.remove();
             this.parentElement.querySelectorAll("wj-breadcrumb").forEach((e) => {
                 e.classList.remove("collapsed");
             });
+            e.stopPropagation();
         });
+
         return button;
     }
 }

@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-main.js";
+import { WJElement } from "../../dist/wj-master.js";
 
 const template = document.createElement('template');
 
@@ -11,19 +11,19 @@ template.innerHTML = `
     <h2>Basic</h2>
     <div class="playground">
       <div class="content" style="display: flex; gap: 1rem;">
-        <wj-tooltip content="Som najkrajsi tooltip" placement="top">
+        <wj-tooltip content="Som najkrajsi tooltip hore" placement="top" offset="10">
           <wj-button size="large">Top</wj-button>
         </wj-tooltip>
         
-        <wj-tooltip content="Som najkrajsi tooltip" placement="bottom">
+        <wj-tooltip content="Som najkrajsi tooltip dole" placement="bottom" offset="10">
           <wj-button size="large">Bottom</wj-button>
         </wj-tooltip>
         
-        <wj-tooltip content="Som najkrajsi tooltip" placement="left">
+        <wj-tooltip content="Som najkrajsi tooltip vlavo" placement="left" offset="10">
           <wj-button size="large">Left</wj-button>
         </wj-tooltip>
         
-        <wj-tooltip content="Som najkrajsi tooltip" placement="right">
+        <wj-tooltip content="Som najkrajsi tooltip vpravo" placement="right" offset="10">
           <wj-button size="large">Right</wj-button>
         </wj-tooltip>
       </div>

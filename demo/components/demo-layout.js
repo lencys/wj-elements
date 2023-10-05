@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-main.js";
+import { WJElement } from "../../dist/wj-master.js";
 
 const template = document.createElement('template');
 
@@ -57,8 +57,15 @@ template.innerHTML = `
         <wj-container>
           <wj-aside width="200px">Aside</wj-aside>
           <wj-container vertical>
+            
             <wj-header>Header</wj-header>
-            <wj-main>Main</wj-main>
+            <wj-container>
+              <wj-aside width="200px">Aside</wj-aside>
+              <wj-aside width="200px">Aside</wj-aside>
+              <wj-main>Main</wj-main>
+              
+            </wj-container>
+            
             <wj-footer>Footer</wj-footer>
           </wj-container>
         </wj-container>
@@ -70,14 +77,14 @@ template.innerHTML = `
             margin: auto 3rem;
           }
           
-          wj-header, wj-footer {
+          .content wj-header, .content wj-footer {
             background-color: #B3C0D1;
             color: #333;
             text-align: center;
             line-height: 60px;
           }
           
-          wj-aside {
+          .content wj-aside {
             background-color: #D3DCE6;
             color: #333;
             text-align: center;
@@ -85,7 +92,7 @@ template.innerHTML = `
             width: 60px;
           }
           
-          wj-main {
+          .content wj-main {
             background-color: #E9EEF3;
             color: #333;
             text-align: center;
@@ -96,12 +103,12 @@ template.innerHTML = `
             margin-bottom: 40px;
           }
           
-          wj-container:nth-child(5) wj-aside,
-          wj-container:nth-child(6) wj-aside {
+          .content wj-container:nth-child(5) wj-aside,
+          .content wj-container:nth-child(6) wj-aside {
             line-height: 260px;
           }
           
-          wj-container:nth-child(7) wj-aside {
+          .content wj-container:nth-child(7) wj-aside {
             line-height: 320px;
           }
         </style>

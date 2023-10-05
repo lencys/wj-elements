@@ -24,7 +24,14 @@ export class Header extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-        let element = document.createElement("slot");
+
+        let element = document.createElement("header");
+        element.classList.add("native-header");
+        element.setAttribute("part", "native");
+
+        let slot = document.createElement("slot");
+
+        element.appendChild(slot);
 
         fragment.appendChild(element);
 

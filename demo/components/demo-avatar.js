@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-main.js";
+import { WJElement } from "../../dist/wj-master.js";
 
 const template = document.createElement('template');
 
@@ -66,14 +66,14 @@ template.innerHTML = `<h1>Avatar</h1>
       <div class="content">
         <wj-dropdown id="custom-dropdown" placement="right-start" trigger="hover" offset="5">
           <wj-avatar label="Lukáš Ondrejček" initials slot="trigger"></wj-avatar>
-          <wj-menu>
+          <wj-menu id="custom-menu">
             <h5 style="margin: 0;">Petr Rahman</h5>
             <p class="hint-text">Frontend Developer</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
           </wj-menu>
         </wj-dropdown>
         <style>
-          wj-menu {
+          #custom-menu {
             width: 200px;
             padding: 1rem 1rem 0;
           }
@@ -140,7 +140,7 @@ template.innerHTML = `<h1>Avatar</h1>
     </div>
   </div>`;
 
-export default class DemoMedia extends WJElement {
+export default class DemoAvatar extends WJElement {
   constructor() {
     super(template);
   }
@@ -149,4 +149,4 @@ export default class DemoMedia extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-media") || window.customElements.define("demo-media", DemoMedia);
+customElements.get("demo-avatar") || window.customElements.define("demo-avatar", DemoAvatar);

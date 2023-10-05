@@ -30,6 +30,7 @@ export class ToolbarAction extends WJElement {
         let slot = document.createElement("slot");
 
         let element = document.createElement("div");
+        element.classList.add("native-toolbar-action");
 
         const shouldCollapse = maxItems !== 0 && actions.length > maxItems;
         if (shouldCollapse) {

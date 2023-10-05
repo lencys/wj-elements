@@ -40,6 +40,8 @@
 }
 
 :host {
+  --wj-icon-width: 100%;
+  --wj-icon-height: 100%;
   display: inline-block;
 
   width: 1em;
@@ -55,8 +57,8 @@
 .icon-inner, svg {
   display: block;
 
-  height: 100%;
-  width: 100%;
+  height: var(--wj-icon-height);
+  width: var(--wj-icon-width);
 }
 
 :host(.wj-size-small) {

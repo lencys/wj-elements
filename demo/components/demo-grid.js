@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-main.js";
+import { WJElement } from "../../dist/wj-master.js";
 
 const template = document.createElement('template');
 
@@ -25,7 +25,7 @@ template.innerHTML = `<h1>Grid</h1>
     <div class="playground">
       <div class="content">
         <wj-grid>
-          <wj-row class="g-5">
+          <wj-row>
             <wj-col size="4">1</wj-col>
             <wj-col size="4">2</wj-col>
             <wj-col size="4">3</wj-col>

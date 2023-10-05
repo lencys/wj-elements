@@ -39,6 +39,9 @@ class WjEvent {
     }
 
     addListener (element, originalEvent, event, listener, options) {
+        if(!element)
+            return;
+
         var record = this.findRecordByElement(element);
 
         if (record) {

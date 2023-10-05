@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-main.js";
+import { WJElement } from "../../dist/wj-master.js";
 
 export default class DemoToolbar extends WJElement {
   constructor() {
@@ -77,7 +77,7 @@ export default class DemoToolbar extends WJElement {
         <div class="playground" style="background-color: rgba(0,0,0,.08);">
           <div class="content" style="width: 100%; margin: auto 1rem;">
             <wj-toolbar>
-              <wj-breadcrumbs slot="start" max-items="3" items-before-collapse="1">
+              <wj-breadcrumbs slot="start" max-items="3" items-before-collapse="1" collapsed-variant="dropdown">
                 <wj-breadcrumb href="/home"><wj-icon slot="start" name="house"></wj-icon></wj-breadcrumb>
                 <wj-breadcrumb href="/photography">Photography</wj-breadcrumb>
                 <wj-breadcrumb href="/cameras">Cameras</wj-breadcrumb>

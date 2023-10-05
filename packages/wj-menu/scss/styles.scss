@@ -13,9 +13,8 @@
   --wj-menu-padding-top: .5rem;
   --wj-menu-padding-bottom: .5rem;
   --wj-menu-padding-inline: 0;
-
+  display: none;
   background: var(--wj-menu-background);
-  display: block;
   position: relative;
   border-width: var(--wj-menu-border-width);
   border-style: var(--wj-menu-border-style);
@@ -28,12 +27,26 @@
   padding-inline: var(--wj-menu-padding-inline);
   overflow: auto;
   overscroll-behavior: none;
-
   .native-menu {
     display: flex;
     flex-direction: column;
+    width: 100%;
     ::slotted(wj-button) {
       margin: 0;
     }
   }
+}
+
+:host(.wj-menu-collapse) {
+  max-width: 70px !important;
+}
+
+:host([variant=context]) {
+  display: block !important;
+  //--wj-menu-border-width: 0;
+  margin-left: var(--wj-menu-submenu-offset);
+}
+
+:host([active]) {
+  display: flex  !important;
 }

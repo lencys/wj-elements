@@ -14,7 +14,7 @@ export default ({
         outDir: './dist',
         lib: {
             entry: {
-                "index": "./packages/index.js",
+                "master": "./packages/index.js",
                 "store": "./packages/wj-store/store.js",
                 "element": "./packages/wj-element/wj-element.js",
                 "aside": "./packages/wj-aside/aside.js",
@@ -47,6 +47,7 @@ export default ({
                 "list": "./packages/wj-list/list.js",
                 "main": "./packages/wj-main/main.js",
                 "menu": "./packages/wj-menu/menu.js",
+                "menu-button": "./packages/wj-menu-button/menu-button.js",
                 "menu-item": "./packages/wj-menu-item/menu-item.js",
                 "menu-label": "./packages/wj-menu-label/menu-label.js",
                 "popup": "./packages/wj-popup/popup.js",

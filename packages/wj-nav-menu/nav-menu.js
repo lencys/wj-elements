@@ -2,12 +2,12 @@ import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.j
 
 import styles from "./scss/styles.scss?inline";
 
-export class Aside extends WJElement {
+export class NavMenu extends WJElement {
     constructor() {
         super();
     }
 
-    className = "Aside";
+    className = "ButtonGroup";
 
     static get cssStyleSheet() {
         return styles;
@@ -24,13 +24,13 @@ export class Aside extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-        if(this.width)
-            this.style.setProperty("--wj-aside-width", this.width);
+        let element = document.createElement("div");
+        element.classList.add("native-button-group");
+        element.setAttribute("part", "native");
 
-        if(this.top && this.hasAttribute("fixed"))
-            this.style.setProperty("--wj-aside-top", this.top);
+        this.slotElement = document.createElement("slot");
 
-        let element = document.createElement("slot");
+        element.appendChild(this.slotElement);
 
         fragment.appendChild(element);
 
@@ -38,4 +38,4 @@ export class Aside extends WJElement {
     }
 }
 
-customElements.get("wj-aside") || window.customElements.define("wj-aside", Aside);
+customElements.get("wj-button-group") || window.customElements.define("wj-button-group", NavMenu);

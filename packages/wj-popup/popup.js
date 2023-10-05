@@ -6,15 +6,18 @@ import styles from "./scss/styles.scss?inline";
 export class Popup extends WJElement {
     constructor() {
         super();
+        this._manual = false;
     }
 
     set manual(value) {
-        this.setAttribute("manual", value);
+        this._manual = value;
     }
 
     get manual() {
-        console.log(this);
-        return this.hasAttribute("manual");
+        if(this.hasAttribute("manual"))
+            this._manual = true;
+
+        return this._manual;
     }
 
     className = "Popup";
@@ -122,9 +125,9 @@ export class Popup extends WJElement {
     }
 
     reposition() {
-
         const middleware = [];
 
+        this.offsetCalc = +this.offset || 0;
         if (this.slotArrow instanceof HTMLSlotElement) {
             this.arrow = this.slotArrow.assignedElements({ flatten: true })[0];
 
@@ -134,14 +137,12 @@ export class Popup extends WJElement {
                       element: this.arrow,
                   })
                 );
-
-                if(this.offset)
-                    this.offset = Math.sqrt(2 * this.arrow.offsetWidth ** 2) / 2;
+                this.offsetCalc = (Math.sqrt(2 * this.arrow.offsetWidth ** 2) / 2) + +this.offset
             }
         }
 
         middleware.push(
-          offset(+this.offset || 0)
+          offset(this.offsetCalc)
         );
 
         middleware.push(

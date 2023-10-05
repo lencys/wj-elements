@@ -41,6 +41,7 @@ export class Dropdown extends WJElement {
         let popup = document.createElement("wj-popup");
         popup.setAttribute("placement", this.placement);
         popup.setAttribute("offset", this.offset);
+        popup.setAttribute("manual", "");
         popup.innerHTML = `<slot name="trigger" slot="anchor"></slot>
             <slot></slot>`;
 

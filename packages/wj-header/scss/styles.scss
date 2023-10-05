@@ -5,7 +5,27 @@
 */
 
 :host {
-    box-sizing: border-box;
-    flex-shrink: 0;
+    --wj-header-background: #{$color-contrast-lowest};
+    --wj-header-border-color: #{$border-color};
+    --wj-header-border-width: 0 0 1px 0;
+    --wj-header-border-style: solid;
+    --wj-header-top: 0;
+    display: flex;
+    align-items: center;
     height: 60px;
+    width: 100%;
+    background: var(--wj-header-background);
+    border-width: var(--wj-header-border-width);
+    border-style: var(--wj-header-border-style);
+    border-color: var(--wj-header-border-color);
+    .native-header {
+        display: flex;
+        padding-inline: 1rem;
+    }
+}
+
+:host([sticky]) {
+    position: sticky;
+    top: var(--wj-header-top);
+    z-index: 999;
 }
