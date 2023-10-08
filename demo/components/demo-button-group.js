@@ -48,7 +48,7 @@ export default class DemoButtonGroup extends WJElement {
             <wj-button>Button</wj-button>
             <wj-dropdown placement="bottom-end" offset="5">
               <wj-button slot="trigger" caret>Dropdown</wj-button>
-              <wj-menu>
+              <wj-menu variant="context">
                 <wj-menu-item>Item 1</wj-menu-item>
                 <wj-menu-item>Item 2</wj-menu-item>
                 <wj-menu-item>Item 3</wj-menu-item>
@@ -116,7 +116,7 @@ export default class DemoButtonGroup extends WJElement {
               <wj-button slot="trigger" variant="primary" caret>
                 <wj-visually-hidden>More options</wj-visually-hidden>
               </wj-button>
-              <wj-menu>
+              <wj-menu variant="context">
                 <wj-menu-item>Save</wj-menu-item>
                 <wj-menu-item>Save as&hellip;</wj-menu-item>
                 <wj-menu-item>Save all</wj-menu-item>

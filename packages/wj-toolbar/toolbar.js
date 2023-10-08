@@ -28,12 +28,6 @@ export class Toolbar extends withRouterLinks( WJElement) {
         let native = document.createElement("div");
         native.classList.add("native-toolbar");
 
-        // if(this.breadcrumb) {
-        //     let breadcrumbs = document.createElement("wj-breadcrumbs");
-        //
-        //     let breadcrumb = document.createElement("wj-breadcrumb");
-        // }
-
         let start = document.createElement("slot");
         start.setAttribute("name", "start");
 

@@ -33,6 +33,7 @@ import { Checkbox } from "./wj-checkbox/checkbox.js";
 import { Chip } from "./wj-chip/chip.js";
 import { Icon } from "./wj-icon/icon.js";
 import { Img } from "./wj-img/img.js";
+import { ImgComparer } from "./wj-img-comparer/img-comparer.js";
 import { InfiniteScroll } from "./wj-infinite-scroll/infinite-scroll.js";
 import { Input } from "./wj-input/input.js";
 import { Item } from "./wj-item/item.js";
@@ -52,6 +53,7 @@ import { RouterLink } from "./wj-router-link/router-link.js";
 import "./wj-router-outlet/router-outlet.js";
 import { Row } from "./wj-row/row.js";
 import { Slider } from "./wj-slider/slider.js";
+import { SplitView } from "./wj-split-view/split-view.js";
 import { Tab } from "./wj-tab/tab.js";
 import { TabGroup } from "./wj-tab-group/tab-group.js";
 import { Table } from "./wj-table/table.js";
@@ -91,6 +93,7 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   Chip,
   Icon,
   Img,
+  ImgComparer,
   InfiniteScroll,
   Input,
   Item,
@@ -109,6 +112,7 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   RouterLink,
   Row,
   Slider,
+  SplitView,
   Tab,
   TabGroup,
   Table,

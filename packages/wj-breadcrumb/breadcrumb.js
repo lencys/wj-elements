@@ -134,6 +134,7 @@ export class Breadcrumb extends WJElement {
         button.innerHTML = `<wj-icon name="ellipsis"></wj-icon>`;
 
         let menu = document.createElement("wj-menu");
+        menu.setAttribute("variant", "context");
 
         dropdown.appendChild(button);
         dropdown.appendChild(menu);
@@ -141,7 +142,7 @@ export class Breadcrumb extends WJElement {
         dropdown.innerHTML = `<wj-button slot="trigger" variant="link">
             <wj-icon name="ellipsis"></wj-icon>
         </wj-button>
-        <wj-menu>
+        <wj-menu variant="context">
             <wj-menu-item>Tralala</wj-menu-item>
             <wj-menu-item>Test 1</wj-menu-item>
             <wj-menu-item>Test 2</wj-menu-item>

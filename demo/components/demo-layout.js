@@ -116,7 +116,7 @@ template.innerHTML = `
     </div>
   </div>`;
 
-export default class DemoTooltip extends WJElement {
+export default class DemoLayout extends WJElement {
   constructor() {
     super(template);
   }
@@ -125,4 +125,4 @@ export default class DemoTooltip extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-tooltip") || window.customElements.define("demo-tooltip", DemoTooltip);
+customElements.get("demo-layout") || window.customElements.define("demo-layout", DemoLayout);
