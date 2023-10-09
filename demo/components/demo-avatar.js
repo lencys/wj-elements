@@ -144,6 +144,11 @@ export default class DemoAvatar extends WJElement {
   constructor() {
     super(template);
   }
+
+  beforeRouteEnter(transition) {
+    this.breadcrumbs = transition.breadcrumbs;
+    console.log(transition);
+  }
 }
 
 let __esModule = 'true';
