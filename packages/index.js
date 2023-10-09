@@ -45,6 +45,7 @@ import { MenuButton } from "./wj-menu-button/menu-button.js";
 import { MenuItem } from "./wj-menu-item/menu-item.js";
 import { MenuLabel } from "./wj-menu-label/menu-label.js";
 import { NavMenu } from "./wj-nav-menu/nav-menu.js";
+import { Option } from "./wj-option/option.js";
 import { Popup } from "./wj-popup/popup.js";
 import { ProgressBar } from "./wj-progress-bar/progress-bar.js";
 import { Route } from "./wj-route/route.js";
@@ -52,6 +53,7 @@ import { Routerx } from "./wj-router/router.js";
 import { RouterLink } from "./wj-router-link/router-link.js";
 import "./wj-router-outlet/router-outlet.js";
 import { Row } from "./wj-row/row.js";
+import { Select } from "./wj-select/select.js";
 import { Slider } from "./wj-slider/slider.js";
 import { SplitView } from "./wj-split-view/split-view.js";
 import { Tab } from "./wj-tab/tab.js";
@@ -105,12 +107,14 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   MenuItem,
   MenuLabel,
   NavMenu,
+  Option,
   Popup,
   ProgressBar,
   Route,
   Routerx,
   RouterLink,
   Row,
+  Select,
   Slider,
   SplitView,
   Tab,

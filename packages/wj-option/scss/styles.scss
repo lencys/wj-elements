@@ -1,0 +1,19 @@
+@import "../../scss/themes/net-basic/important.scss";
+
+/*
+[ Option ]
+*/
+
+:host {
+  display: block;
+  wj-icon {
+    visibility: hidden;
+    margin-inline: 0.5rem;
+  }
+}
+
+:host([selected]) {
+  wj-icon {
+    visibility: visible;
+  }
+}
