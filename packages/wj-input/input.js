@@ -81,14 +81,17 @@ export class Input extends WJElement {
         let fragment = document.createDocumentFragment();
 
         // Wrapper
-        let div = document.createElement("div");
-        div.classList.add("native-input", "default");
+        let native = document.createElement("div");
+        native.classList.add("native-input", this.variant || "default");
 
         if(this.hasAttribute("invalid"))
-            div.classList.add("has-error");
+            native.classList.add("has-error");
 
         let wrapper = document.createElement("div");
-        wrapper.classList.add("input-wrapper");
+        wrapper.classList.add("wrapper");
+
+        let inputWrapper = document.createElement("div");
+        inputWrapper.classList.add("input-wrapper");
 
         // Label
         let label = document.createElement("label");
@@ -127,23 +130,32 @@ export class Input extends WJElement {
             end.setAttribute("name", "end");
         }
 
-        // Append elements
-        if(hasSlotStart)
-            div.appendChild(start);
+        if(hasSlotStart) {
+            wrapper.appendChild(start);
+            native.classList.add("has-start");
+        }
 
-        wrapper.appendChild(label);
-        wrapper.appendChild(input);
+        if(this.variant === "standard")
+            native.appendChild(label);
+        else
+            inputWrapper.appendChild(label);
 
-        div.appendChild(wrapper);
+        inputWrapper.appendChild(input);
 
-        if(hasSlotEnd)
-            div.appendChild(end);
+        wrapper.appendChild(inputWrapper);
 
-        div.appendChild(error);
+        native.appendChild(wrapper);
 
-        fragment.appendChild(div);
+        if(hasSlotEnd) {
+            wrapper.appendChild(end);
+            native.classList.add("has-end");
+        }
 
-        this.native = div;
+        native.appendChild(error);
+
+        fragment.appendChild(native);
+
+        this.native = native;
         this.labelElement = label;
         this.input = input;
         this.errorMessage = error;
@@ -206,8 +218,6 @@ export class Input extends WJElement {
         });
 
         this.addEventListener('focus', () => this.input.focus());
-
-        // this.validateInput();
     }
 
     validateInput() {
@@ -222,14 +232,10 @@ export class Input extends WJElement {
                     this.validationError = state.toString();
                     this.invalid = !this.pristine && !validState.valid;
 
-                    console.log("validationError:", this.validationError);
-
                     let errorMessage = this.message;
 
                     if(!this.hasAttribute("message"))
                         errorMessage = this.hasAttribute(attr) ? this.getAttribute(attr) : this.input.validationMessage;
-
-                    // console.log("errorMessage:", this.hasAttribute(attr), errorMessage, this.validationError);
 
                     this.internals.setValidity(
                       {[this.validationError]: true},

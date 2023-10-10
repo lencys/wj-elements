@@ -4,6 +4,9 @@
 [ Option ]
 */
 :host {
+  --wj-select-border-width: 1px;
+  --wj-select-border-style: solid;
+  --wj-select-border-color: var(--wj-border-color);
   wj-icon {
     visibility: hidden;
   }
@@ -13,4 +16,10 @@
   wj-icon {
     visibility: visible;
   }
+}
+
+.option-wrapper {
+  border-width: var(--wj-select-border-width);
+  border-style: var(--wj-select-border-style);
+  border-color: var(--wj-select-border-color);
 }

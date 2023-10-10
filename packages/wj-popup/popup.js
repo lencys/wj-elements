@@ -1,5 +1,5 @@
 import { default as WJElement, event } from "../wj-element/wj-element.js";
-import { computePosition, autoUpdate, offset, flip, arrow } from '@floating-ui/dom';
+import { computePosition, autoUpdate, offset, flip, arrow, size } from '@floating-ui/dom';
 
 import styles from "./scss/styles.scss?inline";
 
@@ -147,6 +147,17 @@ export class Popup extends WJElement {
 
         middleware.push(
           flip()
+        );
+
+        middleware.push(
+          size({
+              apply({availableWidth, availableHeight, elements}) {
+                  console.log(availableWidth, availableHeight, elements.reference.offsetWidth);
+                  Object.assign(elements.floating.style, {
+                      width: `${elements.reference.offsetWidth}px`
+                  });
+              },
+          })
         );
 
         computePosition(this.anchorEl, this.native, {

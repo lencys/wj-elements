@@ -13,7 +13,11 @@ template.innerHTML = `
       <div class="content">
         <wj-select label="Label test" placeholder="Tralala">
           <wj-option>Option 1</wj-option>
-          <wj-option selected><wj-icon name="house" slot="start"></wj-icon>Option 2</wj-option>
+          <wj-option selected>
+            <wj-icon name="house" slot="start"></wj-icon>
+            Option 2
+            <wj-icon name="heart" slot="end"></wj-icon>
+          </wj-option>
           <wj-option>Option 3</wj-option>
           <wj-option>Option 4</wj-option>
         </wj-select>

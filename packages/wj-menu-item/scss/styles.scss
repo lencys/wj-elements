@@ -101,7 +101,6 @@
   margin-inline-start: .5rem;
 }
 
-
 :host(.wj-menu-variant-nav) {
   // posun 2 a x urovne o 1 rem
   ::slotted([slot="submenu"]) {
@@ -110,10 +109,8 @@
 }
 
 :host {
-  //display: none;
   ::slotted([slot="start"]) {
     width: 1.5rem;
-    //--wj-icon-width: auto;
   }
   ::slotted([slot="submenu"]) {
     margin-left: var(--wj-menu-submenu-offset);

@@ -7,22 +7,21 @@ template.innerHTML = `<h1>Input</h1>
 
     <!-- INPUT -->
 
-    <h2>Basic</h2>
+    <h2>Default</h2>
     <div class="playground">
       <div class="content">
         <wj-input label="Default input"></wj-input>
-<!--        <wj-input label="Input with placeholder" placeholder="Enter company name"></wj-input>-->
-<!--        <wj-input label="Input with value" value="121 S Pinckney St #300"></wj-input>-->
-<!--        <wj-input label="Readonly input" value="Madison" readonly></wj-input>-->
-<!--        <wj-input label="Disabled input" value="53703" disabled></wj-input>-->
-          <wj-input label="Default input" type="text" minlength="5" message="Toto je moja hlaska" required validate-on-change custom-error-display ></wj-input>
-<!--          message-tooShort="Príliš krátky text" message-valueMissing="Toto pole je povinné"-->
+        <wj-input label="Input with placeholder" placeholder="Enter company name"></wj-input>
+        <wj-input label="Input with value" value="Mlynské Nivy 71"></wj-input>
+        <wj-input label="Readonly input" value="Bratislava" readonly></wj-input>
+        <wj-input label="Disabled input" value="84103" disabled></wj-input>
+        <wj-input label="Default input" type="text" minlength="5" message="Toto je moja hlaska" required validate-on-change custom-error-display ></wj-input>
       </div>
     </div>
-
+    
     <!-- INPUT -->
 
-    <h2>Slot</h2>
+    <h2>Form</h2>
     <div class="playground">
       <div class="content">
         <wj-grid>
@@ -55,6 +54,57 @@ template.innerHTML = `<h1>Input</h1>
         </wj-grid>
       </div>
     </div>
+    
+    <!-- INPUT -->
+
+    <h2>Standard</h2>
+    <div class="playground">
+      <div class="content">
+        <wj-input variant="standard" label="Default input"></wj-input>
+        <wj-input variant="standard" label="Input with placeholder" placeholder="Enter company name"></wj-input>
+        <wj-input variant="standard" label="Input with value" value="Mlynské Nivy 71"></wj-input>
+        <wj-input variant="standard" label="Readonly input" value="Bratislava" readonly></wj-input>
+        <wj-input variant="standard" label="Disabled input" value="84103" disabled></wj-input>
+        <wj-input variant="standard" label="Default input" type="text" minlength="5" message="Toto je moja hlaska" required validate-on-change custom-error-display ></wj-input>
+      </div>
+    </div>
+
+    <!-- INPUT -->
+
+    <h2>Form</h2>
+    <div class="playground">
+      <div class="content">
+        <wj-grid>
+          <wj-row class="gx-2">
+            <wj-col size="6">
+              <wj-input variant="standard" label="Project name"></wj-input>
+            </wj-col>
+            <wj-col size="6">
+              <wj-input variant="standard" label="Project code" placeholder="6 digit code" minlength="6" maxlength="6" message="Toto je moja hlaska" validate-on-change custom-error-display></wj-input>
+            </wj-col>
+          </wj-row>
+          <wj-row>
+            <wj-col size="12">
+              <wj-input variant="standard" label="Project URL">
+                <span slot="start"><wj-icon name="globe"></wj-icon></span>
+                <span slot="end">.com</span>
+              </wj-input>
+            </wj-col>
+          </wj-row>
+          <wj-row class="gx-2">
+            <wj-col size="6">
+              <wj-input variant="standard" label="Profit">
+                <span slot="end">&euro;</span>
+              </wj-input>
+            </wj-col>
+            <wj-col size="6">
+              <wj-input variant="standard" label="Email"></wj-input>
+            </wj-col>
+          </wj-row>
+        </wj-grid>
+      </div>
+    </div>
+    
   </div>`;
 
 export default class DemoInput extends WJElement {

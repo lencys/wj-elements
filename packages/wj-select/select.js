@@ -34,25 +34,36 @@ export class Select extends WJElement {
 
         this.classList.add("wj-placement", "wj-" + this.placement || "wj-start");
 
+        // zakladny obalovac
         let native = document.createElement("div");
         native.setAttribute("part", "native");
         native.classList.add("native-dropdown");
 
+        // obalovac pre input
+        let inputWrapper = document.createElement("div");
+        inputWrapper.classList.add("input-wrapper");
+        inputWrapper.setAttribute("slot", "anchor");
+
         let input = document.createElement("input");
-        input.setAttribute("part", "input");
         input.setAttribute("readonly", "");
         input.setAttribute("placeholder", this.placeholder || "");
-        // input.setAttribute("value", this.label || "");
-        input.setAttribute("slot", "anchor");
+
+        // obalovac pre option
+        let optionWrapper = document.createElement("div");
+        optionWrapper.classList.add("option-wrapper");
 
         let slot = document.createElement("slot");
 
+        // vytvorime popup
         let popup = document.createElement("wj-popup");
         popup.setAttribute("placement", "bottom-start");
         popup.setAttribute("manual", "");
 
-        popup.appendChild(input);
-        popup.appendChild(slot);
+        inputWrapper.appendChild(input);
+        optionWrapper.appendChild(slot);
+
+        popup.appendChild(inputWrapper);
+        popup.appendChild(optionWrapper);
 
         if(this.trigger === "click")
             popup.setAttribute("manual", "");
