@@ -7,19 +7,72 @@
   --wj-select-border-width: 1px;
   --wj-select-border-style: solid;
   --wj-select-border-color: var(--wj-border-color);
-  wj-icon {
-    visibility: hidden;
-  }
+  --wj-select-background-color: #{$color-contrast-lowest};
+  --wj-select-line-height: 20px;
+  --wj-select-color: #{$color-contrast-higher};
+  --wj-select-border-radius: 4px;
+  width: 100%;
+  //wj-icon {
+  //  visibility: hidden;
+  //}
 }
 
-:host([selected]) {
-  wj-icon {
-    visibility: visible;
-  }
+//:host([selected]) {
+//  wj-icon {
+//    visibility: visible;
+//  }
+//}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: var(--wj-select-background-color);
+  border: 1px solid var(--wj-select-border-color);
+  border-radius: var(--wj-select-border-radius);
+  min-height: 32px;
+  color: var(--wj-select-color);
+  line-height: var(--wj-select-line-height);
+  appearance: none;
+  padding: 0 .5rem;
+  font-size: 14px;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+input {
+  border: none;
+  padding: 0;
+  outline: 0;
+}
+
+:host [active] input {
+  border-radius: var(--wj-select-border-radius) var(--wj-select-border-radius) 0 0;
 }
 
 .option-wrapper {
   border-width: var(--wj-select-border-width);
   border-style: var(--wj-select-border-style);
   border-color: var(--wj-select-border-color);
+  border-radius: 0 0 var(--wj-select-border-radius) var(--wj-select-border-radius);
+  margin-top: -1px;
+  background: var(--wj-select-background-color);
+  overflow: hidden;
+}
+
+:host([multiple]) input {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+:host([multiple]) .chips {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  flex-wrap: wrap;
 }

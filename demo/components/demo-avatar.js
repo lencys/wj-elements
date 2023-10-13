@@ -147,7 +147,6 @@ export default class DemoAvatar extends WJElement {
 
   beforeRouteEnter(transition) {
     this.breadcrumbs = transition.breadcrumbs;
-    console.log(transition);
   }
 }
 

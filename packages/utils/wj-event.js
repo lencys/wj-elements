@@ -1,11 +1,14 @@
+var self;
+
 class WjEvent {
     constructor() {
         this.customEventStorage = [];
+        self = this;
     }
 
-    dispatch = (e) => {
-        let element = e.target;
-        let record = this.findRecordByElement(element);
+    dispatch(e) {
+        let element = this;
+        let record = self.findRecordByElement(element);
         let listeners = record.listeners[e.type];
 
         listeners.forEach((listener, i) => {
@@ -14,16 +17,16 @@ class WjEvent {
                   detail: {
                       originalEvent: e.type,
                       context: element,
-                      event: this
+                      event: self
                   },
-                  bubbles: true
+                  bubbles: true,
+                  composed: true
               })
             );
-            // if(e.type === "click")
-            //     e.preventDefault();
+
+            if(listener.options && listener.options.stopPropagation === true)
+                e.stopPropagation();
         });
-
-
     }
 
     findRecordByElement (element) {
@@ -42,7 +45,7 @@ class WjEvent {
         if(!element)
             return;
 
-        var record = this.findRecordByElement(element);
+        let record = this.findRecordByElement(element);
 
         if (record) {
             record.listeners[originalEvent] = record.listeners[originalEvent] || [];

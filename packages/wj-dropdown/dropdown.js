@@ -48,10 +48,7 @@ export class Dropdown extends WJElement {
         if(this.trigger === "click")
             popup.setAttribute("manual", "");
 
-
         native.appendChild(popup);
-
-
 
         fragment.appendChild(native);
 

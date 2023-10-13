@@ -1,10 +1,15 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement, event } from "../wj-element/wj-element.js";
 
 import styles from "./scss/styles.scss?inline";
 
 export class Option extends WJElement {
     constructor() {
         super();
+    }
+
+    set selected(value) {
+        console.log(value);
+        return (value) ? this.setAttribute("selected", "") : this.removeAttribute("selected");
     }
 
     className = "Option";
@@ -47,6 +52,10 @@ export class Option extends WJElement {
         fragment.appendChild(element);
 
         return fragment;
+    }
+
+    afterDraw() {
+        event.addListener(this, "click", "wj:option-change");
     }
 }
 

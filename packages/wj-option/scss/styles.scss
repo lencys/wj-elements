@@ -5,8 +5,9 @@
 */
 
 :host {
-  --wj-menu-item-padding-top: .5rem;
-  --wj-menu-item-padding-bottom: .5rem;
+  --wj-option-padding-top: .5rem;
+  --wj-option-padding-bottom: .5rem;
+  --wj-option-highlighted: #f4f4f4;
   display: block;
   wj-icon {
     visibility: hidden;
@@ -23,8 +24,12 @@
 .native-option {
   display: flex;
   align-items: center;
-  padding-top: var(--wj-menu-item-padding-top);
-  padding-bottom: var(--wj-menu-item-padding-bottom);
+  padding-top: var(--wj-option-padding-top);
+  padding-bottom: var(--wj-option-padding-bottom);
+}
+
+.native-option:hover {
+  background-color: var(--wj-option-highlighted);
 }
 
 ::slotted([slot="start"]) {

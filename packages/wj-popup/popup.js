@@ -72,14 +72,6 @@ export class Popup extends WJElement {
     }
 
     afterDraw(context, store, params) {
-        // document.addEventListener("mousemove",(e) => {
-        //     let clickToHost = e.composedPath().some((el) => el.nodeName === "WJ-POPUP");
-        //     console.log(clickToHost, this.hasAttribute("active"), e.composedPath());
-        //     if(clickToHost && this.hasAttribute("active"))
-        //         this.manual = true;
-        //     else
-        //         this.manual = false;
-        // });
         this.setAnchor();
     }
 
@@ -93,6 +85,7 @@ export class Popup extends WJElement {
 
         if (this.manual) {
             event.addListener(this.anchorEl, "click", null, (e) => {
+                if(this.hasAttribute("disabled")) return;
                 this.showHide();
             });
         }
@@ -152,7 +145,6 @@ export class Popup extends WJElement {
         middleware.push(
           size({
               apply({availableWidth, availableHeight, elements}) {
-                  console.log(availableWidth, availableHeight, elements.reference.offsetWidth);
                   Object.assign(elements.floating.style, {
                       width: `${elements.reference.offsetWidth}px`
                   });
