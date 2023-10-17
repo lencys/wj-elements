@@ -32,7 +32,7 @@ template.innerHTML = `
             Option 2
             <wj-icon name="heart" slot="end"></wj-icon>
           </wj-option>
-          <wj-option value="option-3" selected>Option 3</wj-option>
+          <wj-option value="option-3">Option 3</wj-option>
           <wj-option value="option-4">Option 4</wj-option>
         </wj-select>
       </div>
@@ -50,6 +50,20 @@ template.innerHTML = `
             <wj-icon name="heart" slot="end"></wj-icon>
           </wj-option>
           <wj-option value="option-3" selected>Option 3</wj-option>
+          <wj-option value="option-4">Option 4</wj-option>
+        </wj-select>
+      </div>
+    </div>
+    
+    <!-- CLEARABLE -->
+
+    <h2>Clearable</h2>
+    <div class="playground">
+      <div class="content">
+        <wj-select label="Label" placeholder="Select option" clearable>
+          <wj-option value="option-1">Option 1</wj-option>
+          <wj-option value="option-2">Option 2</wj-option>
+          <wj-option value="option-3">Option 3</wj-option>
           <wj-option value="option-4">Option 4</wj-option>
         </wj-select>
       </div>
@@ -81,7 +95,7 @@ template.innerHTML = `
     <h2>Multiple</h2>
     <div class="playground">
       <div class="content">
-        <wj-select placeholder="Select options" variant="standard" max-options="2" variant="standard" multiple>
+        <wj-select placeholder="Select options" variant="standard" max-options="2" variant="standard" multiple clearable>
           <wj-option value="option-1">Option 1</wj-option>
           <wj-option value="option-2">
             Option 2

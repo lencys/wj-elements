@@ -70,7 +70,7 @@
 
 .input-wrapper {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr auto auto;
   align-items: center;
   background-color: var(--wj-select-background-color);
   min-height: 28px;
@@ -147,4 +147,12 @@ input {
 
 wj-chip {
   --wj-chip-margin: 0 .25rem 0 0;
+}
+
+wj-button {
+  --wj-padding-top: .25rem;
+  --wj-padding-start: .25rem;
+  --wj-padding-end: .25rem;
+  --wj-padding-bottom: .25rem;
+  --wj-button-margin-inline: 0 .25rem;
 }

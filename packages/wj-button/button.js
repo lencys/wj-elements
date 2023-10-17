@@ -1,4 +1,4 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement, event } from "../wj-element/wj-element.js";
 
 import styles from "./scss/styles.scss?inline";
 
@@ -141,7 +141,9 @@ export class Button extends WJElement {
     }
 
     afterDraw() {
-        this.addEventListener("click", this.eventDialogOpen);
+        event.addListener(this, "click", "wj:button-click", null, { stopPropagation: true });
+        event.addListener(this, "click", null, this.eventDialogOpen);
+        // this.addEventListener("click", this.eventDialogOpen);
     }
 
     beforeDisconnect() {

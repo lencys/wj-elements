@@ -84,6 +84,15 @@ export class Select extends WJElement {
 
         let slot = document.createElement("slot");
 
+        let clear = document.createElement("wj-button");
+        clear.setAttribute("variant", "link")
+        clear.setAttribute("part", "clear");
+
+        let clearIcon = document.createElement("wj-icon");
+        clearIcon.setAttribute("name", "xmark");
+
+        clear.appendChild(clearIcon);
+
         // vytvorime popup
         let popup = document.createElement("wj-popup");
         popup.setAttribute("placement", "bottom-start");
@@ -92,9 +101,6 @@ export class Select extends WJElement {
 
         if(this.hasAttribute("disabled"))
             popup.setAttribute("disabled", "");
-
-        // if(this.hasAttribute("label"))
-        //     native.appendChild(label);
 
         if(this.variant === "standard") {
             if(this.hasAttribute("label"))
@@ -106,6 +112,9 @@ export class Select extends WJElement {
         inputWrapper.appendChild(input);
         if(this.hasAttribute("multiple"))
             inputWrapper.appendChild(chips);
+
+        if(this.hasAttribute("clearable"))
+            inputWrapper.appendChild(clear);
 
         inputWrapper.appendChild(arrow);
 
@@ -126,6 +135,7 @@ export class Select extends WJElement {
         this.labelElement = label;
         this.input = input;
         this.chips = chips;
+        this.clear = clear;
 
         fragment.appendChild(native);
 
@@ -145,6 +155,16 @@ export class Select extends WJElement {
         });
 
         this.addEventListener("wj:option-change", this.optionChange);
+        this.clear.addEventListener("wj:button-click", (e) => {
+            this.getAllOptions().forEach((option) => {
+                console.log("option", option);
+                option.selected = false;
+                option.removeAttribute("selected");
+            });
+            this.selections();
+            e.stopPropagation();
+        });
+
         this.selections();
     }
 

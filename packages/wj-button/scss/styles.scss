@@ -84,11 +84,13 @@
   --wj-padding-start: .5rem;
   --wj-padding-end: .5rem;
   --wj-padding-bottom: .4rem;
+  --wj-button-margin-inline: 0;
 
   display: inline-flex;
   position: relative;
   width: auto;
   cursor: pointer;
+  margin-inline: var(--wj-button-margin-inline);
 }
 
 :host(.wj-button-group-button) {
