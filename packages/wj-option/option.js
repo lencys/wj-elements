@@ -8,8 +8,7 @@ export class Option extends WJElement {
     }
 
     set selected(value) {
-        console.log(value);
-        return (value) ? this.setAttribute("selected", "") : this.removeAttribute("selected");
+        return value ? this.setAttribute("selected", "") : this.removeAttribute("selected");
     }
 
     className = "Option";

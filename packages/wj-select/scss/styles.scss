@@ -12,42 +12,100 @@
   --wj-select-color: #{$color-contrast-higher};
   --wj-select-border-radius: 4px;
   width: 100%;
-  //wj-icon {
-  //  visibility: hidden;
-  //}
+  [slot=arrow] {
+    transform: rotate(0deg);
+    transition: all .2s ease-in;
+  }
 }
 
-//:host([selected]) {
-//  wj-icon {
-//    visibility: visible;
-//  }
-//}
+.native-select {
+  &.default{
+    .wrapper {
+      display: block;
+      border: 1px solid var(--wj-select-border-color);
+      border-radius: var(--wj-select-border-radius);
+      padding-inline: .5rem;
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+    }
+    .input-wrapper {
+      padding: 0;
+      min-height: 25px;
+      margin-top: -4px;
+    }
+    &.focused {
+      wj-label {
+        opacity: 0.67;
+        font-size: 12px;
+        letter-spacing: normal;
+      }
+    }
+    wj-label {
+      margin: 0;
+      display: block;
+      opacity: 1;
+      cursor: text;
+      transition: opacity 0.2s ease 0s;
+      line-height: var(--wj-select-line-height);
+      &.fade {
+        opacity: 0.5;
+        font-size: 12px;
+        letter-spacing: normal;
+      }
+    }
+  }
+  &.standard {
+    .input-wrapper {
+      border: 1px solid var(--wj-select-border-color);
+      border-radius: var(--wj-select-border-radius);
+      width: 100%;
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+}
 
 .input-wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  width: 100%;
   background-color: var(--wj-select-background-color);
-  border: 1px solid var(--wj-select-border-color);
-  border-radius: var(--wj-select-border-radius);
-  min-height: 32px;
+  min-height: 28px;
   color: var(--wj-select-color);
   line-height: var(--wj-select-line-height);
   appearance: none;
-  padding: 0 .5rem;
+  padding: 2px .5rem;
   font-size: 14px;
   font-weight: normal;
   vertical-align: middle;
 }
 
 input {
-  border: none;
+  border: medium;
+  height: 25px;
+  min-height: 25px;
   padding: 0;
+  background: none;
+  box-shadow: none;
+  width: 100%;
   outline: 0;
 }
 
-:host [active] input {
-  border-radius: var(--wj-select-border-radius) var(--wj-select-border-radius) 0 0;
+::placeholder {
+  opacity: 1;
+}
+
+:host [active] {
+  .input-wrapper {
+    border-radius: var(--wj-select-border-radius) var(--wj-select-border-radius) 0 0;
+  }
+  [slot=arrow] {
+    transform: rotate(180deg);
+    transition: all .2s ease-in;
+  }
 }
 
 .option-wrapper {
@@ -75,4 +133,18 @@ input {
   flex: 1;
   align-items: center;
   flex-wrap: wrap;
+}
+
+:host([disabled]) .input-wrapper{
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.counter {
+  padding-inline: .5rem;
+}
+
+wj-chip {
+  --wj-chip-margin: 0 .25rem 0 0;
 }

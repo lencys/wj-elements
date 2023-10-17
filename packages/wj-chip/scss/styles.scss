@@ -43,7 +43,8 @@
   --wj-chip-border-radius: 100px;
   --wj-chip-background: #{$color-contrast-low};
   --wj-chip-color: #{$color-contrast-high};
-
+  --wj-chip-margin: 0;
+  margin: var(--wj-chip-margin);
 }
 
 .native-chip {
@@ -54,7 +55,7 @@
   font-weight: 500;
   font-size: 14px;
   letter-spacing: -0.006em;
-  margin: 0 .25rem;
+  margin: 0;
   padding: .5rem .75rem;
   text-align: center;
   cursor: pointer;

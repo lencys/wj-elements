@@ -7,10 +7,10 @@ export class Select extends WJElement {
         super();
 
         this._selected = [];
+        this.counterEl = null;
     }
 
     set selected(value) {
-        console.log("SET", value);
         this._selected = value;
     }
 
@@ -48,7 +48,12 @@ export class Select extends WJElement {
         // zakladny obalovac
         let native = document.createElement("div");
         native.setAttribute("part", "native");
-        native.classList.add("native-dropdown");
+        native.classList.add("native-select", this.variant || "default");
+
+        // wrapper pre label a inputWrapper
+        let wrapper = document.createElement("div");
+        wrapper.classList.add("wrapper");
+        wrapper.setAttribute("slot", "anchor");
 
         // label
         let label = document.createElement("wj-label");
@@ -57,7 +62,6 @@ export class Select extends WJElement {
         // obalovac pre input
         let inputWrapper = document.createElement("div");
         inputWrapper.classList.add("input-wrapper");
-        inputWrapper.setAttribute("slot", "anchor");
 
         let input = document.createElement("input");
         input.setAttribute("type", "text");
@@ -67,7 +71,7 @@ export class Select extends WJElement {
         input.setAttribute("placeholder", this.placeholder || "");
 
         let arrow = document.createElement("wj-icon");
-        arrow.setAttribute("name", "arrow-down");
+        arrow.setAttribute("name", "angle-down");
         arrow.setAttribute("slot", "arrow");
 
         let chips = document.createElement("div");
@@ -84,11 +88,20 @@ export class Select extends WJElement {
         let popup = document.createElement("wj-popup");
         popup.setAttribute("placement", "bottom-start");
         popup.setAttribute("manual", "");
+        popup.setAttribute("size", "");
+
         if(this.hasAttribute("disabled"))
             popup.setAttribute("disabled", "");
 
-        if(this.hasAttribute("label"))
-            native.appendChild(label);
+        // if(this.hasAttribute("label"))
+        //     native.appendChild(label);
+
+        if(this.variant === "standard") {
+            if(this.hasAttribute("label"))
+                native.appendChild(label);
+        } else {
+            wrapper.appendChild(label);
+        }
 
         inputWrapper.appendChild(input);
         if(this.hasAttribute("multiple"))
@@ -98,8 +111,9 @@ export class Select extends WJElement {
 
         optionWrapper.appendChild(slot);
 
-        // if(!this.hasAttribute("disabled"))
-        popup.appendChild(inputWrapper);
+        wrapper.appendChild(inputWrapper);
+
+        popup.appendChild(wrapper);
         popup.appendChild(optionWrapper);
 
         if(this.trigger === "click")
@@ -107,7 +121,9 @@ export class Select extends WJElement {
 
         native.appendChild(popup);
 
+        this.native = native;
         this.popup = popup;
+        this.labelElement = label;
         this.input = input;
         this.chips = chips;
 
@@ -117,7 +133,19 @@ export class Select extends WJElement {
     }
 
     afterDraw(context, store, params) {
+        this.input.addEventListener("focus", (e) => {
+            this.labelElement.classList.add("fade");
+            this.native.classList.add("focused");
+        });
+
+        this.input.addEventListener("blur", (e) => {
+            this.native.classList.remove("focused");
+            if(!e.target.value)
+                this.labelElement.classList.remove("fade")
+        });
+
         this.addEventListener("wj:option-change", this.optionChange);
+        this.selections();
     }
 
     optionChange = (e) => {
@@ -126,13 +154,14 @@ export class Select extends WJElement {
         if(!this.hasAttribute("multiple")) {
             allOptions.forEach((option) => {
                 option.selected = false;
+                option.removeAttribute("selected");
             });
             this.popup.removeAttribute("active");
         }
 
-        e.target.selected = e.target.hasAttribute("selected") ? false : true;
+        e.target.selected = !e.target.hasAttribute("selected");
 
-        this.selectionChanged();
+        this.selections(e.target);
     }
 
     getAllOptions() {
@@ -158,36 +187,75 @@ export class Select extends WJElement {
         return selectedOptions;
     }
 
-    selectionChanged() {
-        let options = this.getSelectedOptions();
-
-        this.selectedOptions = Array.isArray(options) ? options : Array.from(options);
-
+    selectionChanged(option = null, length = 0) {
         if (this.hasAttribute("multiple")) {
             this.value = this.selectedOptions.map(el => el).reverse();
-            if (this.placeholder && this.value.length === 0) {
+
+            if (this.placeholder && length === 0) {
                 this.chips.innerHTML = this.placeholder;
                 this.input.value = '';
             } else {
-                this.chips.innerHTML = "";
-                this.value.forEach(el => {
-                    this.chips.appendChild(this.getChip(el));
-                });
-
-                this.input.value = this.selectedOptions.length;
+                if(this.counterEl instanceof HTMLElement || length > +this.maxOptions) {
+                    this.counter();
+                } else {
+                    if(option != null)
+                        this.chips.appendChild(this.getChip(option));
+                }
             }
         } else {
-            let value = this.selectedOptions[0]?.textContent.trim() || "";
+            let value = option?.textContent.trim() || "";
             this.value = value;
             this.input.value = value;
         }
     }
 
+    selections(option) {
+        let options = this.getSelectedOptions();
+
+        this.selectedOptions = Array.isArray(options) ? options : Array.from(options);
+
+        if(this.selectedOptions.length >= +this.maxOptions) {
+            this.counterEl = null;
+        }
+
+        this.chips.innerHTML = "";
+        console.log("rrrr",this.selectedOptions);
+        if(this.selectedOptions.length > 0) {
+            this.selectedOptions.forEach((option, index) => {
+                this.selectionChanged(option, ++index);
+            });
+        } else {
+            this.selectionChanged();
+        }
+    }
+
+    counter() {
+        // zmazanie counter (span)
+        if (this.counterEl && this.value.length === +this.maxOptions) {
+            this.counterEl.remove();
+            this.counterEl = null;
+            return;
+        }
+
+        // ak counter nie je, tak ho vytvorime
+        if(!this.counterEl) {
+            this.counterEl = document.createElement("span");
+            this.counterEl.classList.add("counter");
+
+            this.chips.appendChild(this.counterEl);
+        }
+
+        // nastavime hodnotu counter
+        this.counterEl.innerText = `+${this.value.length - +this.maxOptions}`;
+    }
+
     getChip(option) {
+        console.log("getChip", option);
         let chip = document.createElement("wj-chip");
         chip.setAttribute("removable", "");
-        chip.option = option;
+        chip.setAttribute("color", "menu");
         chip.addEventListener("wj:chip-remove", this.removeChip);
+        chip.option = option;
 
         let label = document.createElement("wj-label");
         label.innerText = option.textContent.trim();
@@ -198,14 +266,13 @@ export class Select extends WJElement {
     }
 
     removeChip = (e) => {
-        e.target.option.selected = false;
+        console.log("removeChip", e.target);
+        let option = e.target.option;
+        option.selected = false;
+        option.removeAttribute("selected");
         e.target.parentNode.removeChild(e.target);
-        if (this.placeholder && this.value.length === 0) {
-            this.chips.innerHTML = this.placeholder;
-            this.input.value = '';
-        }
 
-        this.setSelected(e.target.option);
+        this.selections(null, 0);
     }
 }
 

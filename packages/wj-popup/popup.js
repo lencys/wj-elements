@@ -142,15 +142,17 @@ export class Popup extends WJElement {
           flip()
         );
 
-        middleware.push(
-          size({
-              apply({availableWidth, availableHeight, elements}) {
-                  Object.assign(elements.floating.style, {
-                      width: `${elements.reference.offsetWidth}px`
-                  });
-              },
-          })
-        );
+        if(this.hasAttribute("size")) {
+            middleware.push(
+                size({
+                    apply({availableWidth, availableHeight, elements}) {
+                        Object.assign(elements.floating.style, {
+                            width: `${elements.reference.offsetWidth}px`
+                        });
+                    },
+                })
+            );
+        }
 
         computePosition(this.anchorEl, this.native, {
             placement: this.placement || "bottom",
