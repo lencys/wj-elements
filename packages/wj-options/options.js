@@ -33,7 +33,6 @@ export class Options extends WJElement {
             fragment.appendChild(option);
         });
 
-        console.log("fragment",this.parentElement);
         this.parentElement.appendChild(fragment);
 
         // event.dispatchCustomEvent(this, "wj:options-load", {}); // nepomohlo to, v ff stale je scroll hore
