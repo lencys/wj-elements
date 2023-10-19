@@ -115,7 +115,7 @@ input {
   border-radius: 0 0 var(--wj-select-border-radius) var(--wj-select-border-radius);
   margin-top: -1px;
   background: var(--wj-select-background-color);
-  overflow: hidden;
+  overflow: auto;
 }
 
 :host([multiple]) input {

@@ -46,6 +46,7 @@ import { MenuItem } from "./wj-menu-item/menu-item.js";
 import { MenuLabel } from "./wj-menu-label/menu-label.js";
 import { NavMenu } from "./wj-nav-menu/nav-menu.js";
 import { Option } from "./wj-option/option.js";
+import { Options } from "./wj-options/options.js";
 import { Popup } from "./wj-popup/popup.js";
 import { ProgressBar } from "./wj-progress-bar/progress-bar.js";
 import { Route } from "./wj-route/route.js";
@@ -108,6 +109,7 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   MenuLabel,
   NavMenu,
   Option,
+  Options,
   Popup,
   ProgressBar,
   Route,

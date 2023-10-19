@@ -6,27 +6,31 @@ class WjEvent {
         self = this;
     }
 
-    dispatch(e) {
+    #dispatch(e) {
         let element = this;
         let record = self.findRecordByElement(element);
         let listeners = record.listeners[e.type];
 
         listeners.forEach((listener, i) => {
-            element.dispatchEvent(
-              new CustomEvent(listener.event, {
-                  detail: {
-                      originalEvent: e.type,
-                      context: element,
-                      event: self
-                  },
-                  bubbles: true,
-                  composed: true
-              })
-            );
+            self.dispatchCustomEvent(element, listener.event, {
+                originalEvent: e?.type || null,
+                context: element,
+                event: self
+            });
 
             if(listener.options && listener.options.stopPropagation === true)
                 e.stopPropagation();
         });
+    }
+
+    dispatchCustomEvent(element, event, detail) {
+        element.dispatchEvent(
+            new CustomEvent(event, {
+                detail: detail,
+                bubbles: true,
+                composed: true
+            })
+        );
     }
 
     findRecordByElement (element) {
@@ -61,7 +65,7 @@ class WjEvent {
 
             this.customEventStorage.push(record);
         }
-        listener = listener || this.dispatch;
+        listener = listener || this.#dispatch;
         let obj = {
             listener: listener,
             options: options,
@@ -97,7 +101,7 @@ class WjEvent {
             }
         }
 
-        listener = listener || this.dispatch;
+        listener = listener || this.#dispatch;
 
         element.removeEventListener(originalEvent, listener, options);
     }

@@ -79,8 +79,9 @@ export class Select extends WJElement {
         chips.innerText = this.placeholder || "";
 
         // obalovac pre option
-        let optionWrapper = document.createElement("div");
-        optionWrapper.classList.add("option-wrapper");
+        let optionsWrapper = document.createElement("div");
+        optionsWrapper.classList.add("option-wrapper");
+        optionsWrapper.style.setProperty("height", this.maxHeight || "auto");
 
         let slot = document.createElement("slot");
 
@@ -118,12 +119,12 @@ export class Select extends WJElement {
 
         inputWrapper.appendChild(arrow);
 
-        optionWrapper.appendChild(slot);
+        optionsWrapper.appendChild(slot);
 
         wrapper.appendChild(inputWrapper);
 
         popup.appendChild(wrapper);
-        popup.appendChild(optionWrapper);
+        popup.appendChild(optionsWrapper);
 
         if(this.trigger === "click")
             popup.setAttribute("manual", "");
@@ -134,6 +135,7 @@ export class Select extends WJElement {
         this.popup = popup;
         this.labelElement = label;
         this.input = input;
+        this.optionsWrapper = optionsWrapper;
         this.chips = chips;
         this.clear = clear;
 
@@ -157,7 +159,6 @@ export class Select extends WJElement {
         this.addEventListener("wj:option-change", this.optionChange);
         this.clear.addEventListener("wj:button-click", (e) => {
             this.getAllOptions().forEach((option) => {
-                console.log("option", option);
                 option.selected = false;
                 option.removeAttribute("selected");
             });
@@ -166,6 +167,11 @@ export class Select extends WJElement {
         });
 
         this.selections();
+
+        this.optionsWrapper.addEventListener("wj:options-load", (e) => {
+            this.optionsWrapper.scrollTop = 0;
+        });
+
     }
 
     optionChange = (e) => {
@@ -239,7 +245,6 @@ export class Select extends WJElement {
         }
 
         this.chips.innerHTML = "";
-        console.log("rrrr",this.selectedOptions);
         if(this.selectedOptions.length > 0) {
             this.selectedOptions.forEach((option, index) => {
                 this.selectionChanged(option, ++index);
@@ -270,7 +275,6 @@ export class Select extends WJElement {
     }
 
     getChip(option) {
-        console.log("getChip", option);
         let chip = document.createElement("wj-chip");
         chip.setAttribute("removable", "");
         chip.setAttribute("color", "menu");
@@ -286,7 +290,6 @@ export class Select extends WJElement {
     }
 
     removeChip = (e) => {
-        console.log("removeChip", e.target);
         let option = e.target.option;
         option.selected = false;
         option.removeAttribute("selected");

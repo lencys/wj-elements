@@ -145,3 +145,12 @@
 ::slotted(wj-icon:last-child) {
   @include margin(-4px, -4px, -4px, 8px);
 }
+
+wj-button {
+  --wj-button-border-radius: 50%;
+  --wj-button-margin-inline: .25rem -.5rem;
+  --wj-padding-top: .15rem;
+  --wj-padding-start: .15rem;
+  --wj-padding-end: .15rem;
+  --wj-padding-bottom: .15rem;
+}

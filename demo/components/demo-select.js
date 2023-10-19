@@ -21,6 +21,17 @@ template.innerHTML = `
 <!--        &lt;wj-option value="option-6"&gt;Option 6&lt;/wj-option&gt;-->
 <!--      &lt;/wj-select&gt;</pre>-->
     
+    <!-- OPTIONS -->
+
+    <h2>Options</h2>
+    <div class="playground">
+      <div class="content">
+        <wj-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
+          <wj-options url="/api/options" item-value="tralala" item-text="label"></wj-options>
+        </wj-select>
+      </div>
+    </div>
+    
     <!-- DEFAULT -->
 
     <h2>Default</h2>
