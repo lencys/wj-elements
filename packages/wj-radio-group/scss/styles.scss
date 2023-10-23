@@ -1,0 +1,16 @@
+@import "../../scss/themes/net-basic/important.scss";
+
+/*
+[ Radio Group ]
+*/
+
+:host {
+
+}
+
+.wj-inline {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
