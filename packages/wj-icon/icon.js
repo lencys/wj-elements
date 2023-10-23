@@ -15,7 +15,7 @@ export class Icon extends WJElement {
     }
 
     static get observedAttributes() {
-        return [];
+        return ["name"];
     }
 
     setupAttributes() {
@@ -24,6 +24,8 @@ export class Icon extends WJElement {
 
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
+
+        this.classList.remove(...this.classList);
 
         let element = document.createElement("div");
         element.classList.add("icon-inner");

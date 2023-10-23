@@ -169,7 +169,7 @@ export class Select extends WJElement {
         this.selections();
 
         this.optionsWrapper.addEventListener("wj:options-load", (e) => {
-            this.optionsWrapper.scrollTop = 0;
+            this.optionsWrapper.scrollTo(0, 0);
         });
 
     }

@@ -21,6 +21,7 @@ import { CardSubtitle } from "./wj-card-subtitle/card-subtitle.js";
 import { CardTitle } from "./wj-card-title/card-title.js";
 import { Col } from "./wj-col/col.js";
 import { Container } from "./wj-container/container.js";
+import { CopyButton } from "./wj-copy-button/copy-button.js";
 import { Dialog } from "./wj-dialog/dialog.js";
 import { Divider } from "./wj-divider/divider.js";
 import { Dropdown } from "./wj-dropdown/dropdown.js";
@@ -85,6 +86,7 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   CardTitle,
   Col,
   Container,
+  CopyButton,
   Dialog,
   Divider,
   Dropdown,

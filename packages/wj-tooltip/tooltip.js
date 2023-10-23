@@ -14,7 +14,7 @@ export class Tooltip extends WJElement {
     }
 
     static get observedAttributes() {
-        return ["active"];
+        return ["active", "content"];
     }
 
     setupAttributes() {

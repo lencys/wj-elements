@@ -1,47 +1,5 @@
 @import "../../scss/themes/net-basic/important.scss";
 
 /*
-[ Option ]
+[ Options ]
 */
-
-:host {
-  --wj-option-padding-top: .5rem;
-  --wj-option-padding-bottom: .5rem;
-  --wj-option-highlighted: #f4f4f4;
-  display: block;
-  wj-icon {
-    visibility: hidden;
-    margin-inline: 0.5rem;
-  }
-}
-
-:host([selected]) {
-  wj-icon {
-    visibility: visible;
-  }
-}
-
-.native-option {
-  display: flex;
-  align-items: center;
-  padding-top: var(--wj-option-padding-top);
-  padding-bottom: var(--wj-option-padding-bottom);
-}
-
-.native-option:hover {
-  background-color: var(--wj-option-highlighted);
-}
-
-::slotted([slot="start"]) {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  margin-inline-end: .5rem;
-}
-
-::slotted([slot="end"]) {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  margin-inline: auto .5rem;
-}

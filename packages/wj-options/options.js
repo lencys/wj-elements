@@ -35,7 +35,7 @@ export class Options extends WJElement {
 
         this.parentElement.appendChild(fragment);
 
-        // event.dispatchCustomEvent(this, "wj:options-load", {}); // nepomohlo to, v ff stale je scroll hore
+        event.dispatchCustomEvent(this, "wj:options-load", {}); // nepomohlo to, v ff stale je scroll hore
     }
 
     async getPages(page){
