@@ -111,10 +111,12 @@ export class Popup extends WJElement {
     }
 
     showHide() {
-        if(this.hasAttribute("active"))
+        if(this.hasAttribute("active")) {
             this.removeAttribute("active");
-        else
+        } else {
             this.setAttribute("active", "");
+            event.addListener(this, "click", "wj:popup-show");
+        }
     }
 
     reposition() {

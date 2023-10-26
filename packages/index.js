@@ -20,13 +20,13 @@ import { CardHeader } from "./wj-card-header/card-header.js";
 import { CardSubtitle } from "./wj-card-subtitle/card-subtitle.js";
 import { CardTitle } from "./wj-card-title/card-title.js";
 import { Col } from "./wj-col/col.js";
+import { ColorPicker } from "./wj-color-picker/color-picker.js";
 import { Container } from "./wj-container/container.js";
 import { CopyButton } from "./wj-copy-button/copy-button.js";
 import { Dialog } from "./wj-dialog/dialog.js";
 import { Divider } from "./wj-divider/divider.js";
 import { Dropdown } from "./wj-dropdown/dropdown.js";
 import { ExampleElement } from "./wj-example-element/example-element.js";
-import { Form } from "./wj-form/form.js";
 import { Footer } from "./wj-footer/footer.js";
 import { Grid } from "./wj-grid/grid.js";
 import { Header } from "./wj-header/header.js";
@@ -62,7 +62,6 @@ import { Slider } from "./wj-slider/slider.js";
 import { SplitView } from "./wj-split-view/split-view.js";
 import { Tab } from "./wj-tab/tab.js";
 import { TabGroup } from "./wj-tab-group/tab-group.js";
-import { Table } from "./wj-table/table.js";
 import { TabPanel } from "./wj-tab-panel/tab-panel.js";
 import { Thumbnail } from "./wj-thumbnail/thumbnail.js";
 import { Toast } from "./wj-toast/toast.js";
@@ -87,6 +86,7 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   CardSubtitle,
   CardTitle,
   Col,
+  ColorPicker,
   Container,
   CopyButton,
   Dialog,
@@ -127,7 +127,7 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   SplitView,
   Tab,
   TabGroup,
-  Table,
+  // Table,
   TabPanel,
   Thumbnail,
   Toast,

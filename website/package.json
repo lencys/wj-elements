@@ -58,7 +58,8 @@
     "remark-html": "^13.0.1",
     "remark-parse": "^8.0.3",
     "sass": "^1.44.0",
-    "semver": "^7.3.5"
+    "semver": "^7.3.5",
+    "tinycolor2": "^1.6.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^2.4.0",

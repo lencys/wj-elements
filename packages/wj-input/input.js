@@ -6,9 +6,19 @@ export class Input extends WJElement {
     constructor(options = {}) {
         super();
 
+        // this._value = "";
         this.invalid = false;
         this.pristine = true;
         this.internals = this.attachInternals();
+    }
+
+    set value(value) {
+
+        this.setAttribute("value", value);
+    }
+
+    get value() {
+        return this.getAttribute("value") || "";
     }
 
     get customErrorDisplay() {
@@ -68,7 +78,7 @@ export class Input extends WJElement {
     }
 
     static get observedAttributes() {
-        return [];
+        return ["value"];
     }
 
     setupAttributes() {
@@ -102,6 +112,7 @@ export class Input extends WJElement {
         // Input
         let input = document.createElement("input");
         input.setAttribute("type", "text");
+        input.setAttribute("part", "input");
         input.setAttribute("value", this.value || "");
         input.classList.add("form-control", "pristine");
 
@@ -135,10 +146,12 @@ export class Input extends WJElement {
             native.classList.add("has-start");
         }
 
-        if(this.variant === "standard")
-            native.appendChild(label);
-        else
+        if(this.variant === "standard") {
+            if(this.label)
+                native.appendChild(label);
+        } else {
             inputWrapper.appendChild(label);
+        }
 
         inputWrapper.appendChild(input);
 

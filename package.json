@@ -21,7 +21,8 @@
   "dependencies": {
     "@faker-js/faker": "^8.0.0",
     "@floating-ui/dom": "^1.5.1",
-    "tabulator-tables": "^5.5.2"
+    "tabulator-tables": "^5.5.2",
+    "tinycolor2": "^1.6.0"
   },
   "devDependencies": {
     "miragejs": "^0.1.47",
