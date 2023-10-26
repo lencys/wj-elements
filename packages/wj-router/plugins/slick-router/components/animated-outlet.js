@@ -40,7 +40,9 @@ var animationProp = 'animation'
 var animationEndEvent = 'animationend'
 
 function nextFrame (fn) {
+  window.scrollTo(0, 0);
   raf(function () {
+    window.scrollTo(0, 0);
     raf(fn)
   })
 }
@@ -129,7 +131,8 @@ function toMs (s) {
 
 function runTransition (el, name, type, cb) {
   el.classList.add(`${name}-${type}-active`)
-  nextFrame(function () {
+  nextFrame(function () { 
+    window.scrollTo(0, 0)
     el.classList.remove(`${name}-${type}`)
     el.classList.add(`${name}-${type}-to`)
     whenTransitionEnds(el, function () {
