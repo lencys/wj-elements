@@ -22,11 +22,12 @@ export class RouterLink extends WJElement {
 
     setupAttributes() {
         this.isShadowRoot = "open";
-        this.setAttribute('active-class', 'acitve')
+        this.setAttribute("active-class", "active")
     }
 
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
+
         let element = document.createElement("slot");
 
         fragment.appendChild(element);
