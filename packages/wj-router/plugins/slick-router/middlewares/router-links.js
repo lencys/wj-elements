@@ -16,7 +16,7 @@ let router
 const delegate = function (el, eventName, selector, listener, context) {
   const handler = function (e) {
     var node = e.target
-    for (; node && node !== el; node = node.parentNode) {
+    for (; node; node = node.parentNode) {
       if (node.matches && node.matches(selector)) {
         e.selectorTarget = node
         listener.call(context, e)
@@ -217,14 +217,12 @@ function done () {
   
   linkContainers.forEach(ownerEl => {
     const data = ownerEl[routerLinksData]
-    data.rootEls.forEach(rootEl => {
-      rootEl.querySelectorAll('[route]').forEach(el => {
-        const routeName = el.getAttribute('route')
-        if (!routeName) return
-        const params = getRouteProp(ownerEl, routeName, el, 'params', 'param-')
-        const query = getRouteProp(ownerEl, routeName, el, 'query', 'query-')
-        updateActiveClass(el, routeName, params, query)
-      })
+    data.rootEls.forEach(el => {
+      const routeName = el.getAttribute('route')
+      if (!routeName) return
+      const params = getRouteProp(ownerEl, routeName, el, 'params', 'param-')
+      const query = getRouteProp(ownerEl, routeName, el, 'query', 'query-')
+      updateActiveClass(el, routeName, params, query)
     })
   })
 }

@@ -55,7 +55,7 @@ export class MenuItem extends WJElement {
 
         this.classList.add("wj-menu-variant-" + this.variant.toLowerCase());
         this.querySelector("wj-menu")?.setAttribute("variant", this.variant.toLowerCase());
-        this.style.setProperty("--wj-menu-submenu-offset", this.offset + "px" || "0");
+        this.style.setProperty("--wj-menu-submenu-offset", (parseFloat(this.offset) || 0)  + "px");
 
         if (this.collapse)
             this.classList.add("wj-menu-collapse");

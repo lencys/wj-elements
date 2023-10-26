@@ -3,3 +3,9 @@
 /*
 [ Router ]
 */
+
+:host(.acitve){
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
