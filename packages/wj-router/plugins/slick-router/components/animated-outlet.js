@@ -156,6 +156,7 @@ export class GenericCSS extends AnimationHook {
   leave (outlet, el, done) {
     const name = outlet.getAttribute('animation') || 'outlet'
     el.classList.add(`${name}-leave`)
+    el.style.display = 'none'
     runTransition(el, name, 'leave', done)
   }
 }
