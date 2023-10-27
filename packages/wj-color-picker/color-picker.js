@@ -166,7 +166,7 @@ export class ColorPicker extends WJElement {
             button.classList.add("swatch");
             button.style.setProperty("--wj-color-picker-swatch", swatch);
             button.addEventListener("click", (e) => {
-                this.setSliders(tinycolor(swatch));
+                this.setSliders(swatch);
                 this.setColor(tinycolor(swatch), "swatch");
             });
 
@@ -273,6 +273,7 @@ export class ColorPicker extends WJElement {
     */
     setMarkerPositionByColor = (color = "red") => {
         let hsva = tinycolor(color).toHsv();
+
         return {
             x: this.colorAreaDimension.width * hsva.s,
             y: this.colorAreaDimension.height - (this.colorAreaDimension.height * hsva.v)
@@ -299,19 +300,6 @@ export class ColorPicker extends WJElement {
             this.colorPreview.style.setProperty("--wj-color-picker-value", currentColor.toHex8String());
             this.picker.style.setProperty("--wj-color-picker-value", currentColor.toHexString());
             this.marker.style.setProperty("--wj-color-picker-value", currentColor.toHex8String());
-
-            this.input.value = currentColor.toHex8String();
-        }
-
-        // SET: alpha - HEX8
-        if(type === "alpha") {
-            console.log("SOM ALPHA", this.input.value);
-            currentColor = tinycolor(this.input.value);
-            let hsv = currentColor.toHsv();
-            hsv.a = this.alphaSlider.value / 100;
-            this.colorPreview.style.setProperty("--wj-color-picker-value", tinycolor(hsv).toHex8String());
-
-            this.input.value = tinycolor(hsv).toHex8String();
         }
 
         // SET: hue - HEX
@@ -327,14 +315,30 @@ export class ColorPicker extends WJElement {
             this.input.value = markerColorByPosition.toHex8String();
         }
 
-        // SET: hue - HEX
+        // SET: alpha - HEX8
+        if(type === "alpha") {
+            currentColor = tinycolor(this.input.value);
+            let hsv = currentColor.toHsv();
+            hsv.a = this.alphaSlider.value / 100;
+            currentColor = tinycolor(hsv);
+            this.colorPreview.style.setProperty("--wj-color-picker-value", currentColor.toHex8String());
+
+            // this.input.value = currentColor.toHex8String();
+        }
+
+        // SET: swatch - HEX
         if(type === "swatch") {
             this.colorPreview.style.setProperty("--wj-color-picker-value", currentColor.toHex8String());
             this.marker.style.setProperty("--wj-color-picker-value", currentColor.toHexString());
             this.alphaSlider.style.setProperty("--wj-color-picker-value", currentColor.toHexString());
-            this.colorArea.style.setProperty("--wj-color-picker-area", currentColor.toHexString());
-            this.input.value = currentColor.toHex8String();
+            this.colorArea.style.setProperty("--wj-color-picker-area", currentColor.toHex8String());
+
+            this.markerPosition = this.setMarkerPositionByColor(currentColor.toHex8String());
+            this.setMarkerPosition(this.markerPosition.x, this.markerPosition.y);
         }
+
+        this.input.value = currentColor.toHex8String();
+        this.anchor.style.setProperty("--wj-color-picker-value", currentColor.toHexString());
     }
 
     /*

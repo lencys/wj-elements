@@ -2,58 +2,58 @@
 
 @mixin color($color, $thumb-color, $track-color) {
   $shadow: 0 0 0 7px make-shade($color, $mix-percentage-lighter, $saturation-shift, $hue-shift, -2);
-  --wj-slider-color: $color;
-  --wj-slider-thumb-color: $color-primary;
+  --wj-slider-color: #{$color};
+  --wj-slider-thumb-color: #{$color};
   --wj-slider-thumb-shadow: none;
-  --wj-slider-thumb-shadow-active: $shadow;
-  --wj-slider-track-color: $track-color;
-  background-color: var(--wj-slider-track-color, $track-color);
-  background-image: linear-gradient(var(--wj-slider-color, $color), var(--wj-slider-color, $color));
+  --wj-slider-thumb-shadow-active: #{$shadow};
+  --wj-slider-track-color: #{$track-color};
+  background-color: var(--wj-slider-track-color, #{$track-color});
+  background-image: linear-gradient(var(--wj-slider-color, #{$color}), var(--wj-slider-color, #{$color}));
 
   /* Input Thumb */
   &::-webkit-slider-thumb {
-    background: var(--wj-slider-thumb-color, $color);
-    box-shadow: var(--wj-slider-thumb-shadow, $shadow);
+    background: var(--wj-slider-thumb-color, #{$color});
+    box-shadow: var(--wj-slider-thumb-shadow, #{$shadow});
   }
 
   &::-moz-range-thumb {
-    background: var(--wj-slider-thumb-color, $color);
-    box-shadow: var(--wj-slider-thumb-shadow, $shadow);
+    background: var(--wj-slider-thumb-color, #{$color});
+    box-shadow: var(--wj-slider-thumb-shadow, #{$shadow});
   }
 
   &::-ms-thumb {
-    background: var(--wj-slider-thumb-color, $color);
-    box-shadow: var(--wj-slider-thumb-shadow, $shadow);
+    background: var(--wj-slider-thumb-color, #{$color});
+    box-shadow: var(--wj-slider-thumb-shadow, #{$shadow});
   }
 
   &::-webkit-slider-thumb:active {
-    background: var(--wj-slider-thumb-color, $color);
-    box-shadow: var(--wj-slider-thumb-shadow-active, $shadow);
+    background: var(--wj-slider-thumb-color, #{$color});
+    box-shadow: var(--wj-slider-thumb-shadow-active, #{$shadow});
   }
 
   &::-moz-range-thumb:active {
-    background: var(--wj-slider-thumb-color, $color);
-    box-shadow: var(--wj-slider-thumb-shadow-active, $shadow);;
+    background: var(--wj-slider-thumb-color, #{$color});
+    box-shadow: var(--wj-slider-thumb-shadow-active, #{$shadow});
   }
 
   &::-ms-thumb:active {
-    background: var(--wj-slider-thumb-color, $color);
-    box-shadow: var(--wj-slider-thumb-shadow-active, $shadow);
+    background: var(--wj-slider-thumb-color, #{$color});
+    box-shadow: var(--wj-slider-thumb-shadow-active, #{$shadow});
   }
 
   &::-webkit-slider-thumb:hover {
-    background: var(--wj-slider-thumb-color, $color);
-    box-shadow: var(--wj-slider-thumb-shadow-active, $shadow);
+    background: var(--wj-slider-thumb-color, #{$color});
+    box-shadow: var(--wj-slider-thumb-shadow-active, #{$shadow});
   }
 
   &::-moz-range-thumb:hover {
-    background: var(--wj-slider-thumb-color, $color);
-    box-shadow: var(--wj-slider-thumb-shadow-active, $shadow);
+    background: var(--wj-slider-thumb-color, #{$color});
+    box-shadow: var(--wj-slider-thumb-shadow-active, #{$shadow});
   }
 
   &::-ms-thumb:hover {
-    background: var(--wj-slider-thumb-color, $color);
-    box-shadow: var(--wj-slider-thumb-shadow-active, $shadow);
+    background: var(--wj-slider-thumb-color, #{$color});
+    box-shadow: var(--wj-slider-thumb-shadow-active, #{$shadow});
   }
 }
 
