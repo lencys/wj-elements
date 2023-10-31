@@ -63,6 +63,7 @@ import { SplitView } from "./wj-split-view/split-view.js";
 import { Tab } from "./wj-tab/tab.js";
 import { TabGroup } from "./wj-tab-group/tab-group.js";
 import { TabPanel } from "./wj-tab-panel/tab-panel.js";
+import { Textarea } from "./wj-textarea/textarea.js";
 import { Thumbnail } from "./wj-thumbnail/thumbnail.js";
 import { Toast } from "./wj-toast/toast.js";
 import { Toggle } from "./wj-toggle/toggle.js";
@@ -129,6 +130,7 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   TabGroup,
   // Table,
   TabPanel,
+  Textarea,
   Thumbnail,
   Toast,
   Toggle,

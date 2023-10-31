@@ -46,6 +46,7 @@
     <wj-route name="split-view" component="/demo/components/demo-split-view.js"></wj-route>
     <wj-route name="tab" component="/demo/components/demo-tab.js"></wj-route>
     <wj-route name="table" component="/demo/components/demo-table.js"></wj-route>
+    <wj-route name="textarea" component="/demo/components/demo-textarea.js"></wj-route>
     <wj-route name="thumbnail" component="/demo/components/demo-thumbnail.js"></wj-route>
     <wj-route name="toast" component="/demo/components/demo-toast.js"></wj-route>
     <wj-route name="toggle" component="/demo/components/demo-toggle.js"></wj-route>
@@ -60,13 +61,13 @@
   <wj-container vertical id="app">
     <wj-header sticky>
       <wj-menu-button id="open" content-id="sidebar">
-        <wj-button variant="link"><wj-icon name="bars"></wj-button>
+        <wj-button variant="link" stop-propagation="false"><wj-icon name="bars"></wj-icon></wj-button>
       </wj-menu-button>
     </wj-header>
     <wj-container>
       <wj-aside id="sidebar" width="240px" top="60px" variant="top-start" fixed>
         <wj-menu-button id="close" content-id="sidebar">
-          <wj-button variant="link"><wj-icon name="xmark"></wj-button>
+          <wj-button variant="link" stop-propagation="false"><wj-icon name="xmark"></wj-icon></wj-button>
         </wj-menu-button>
         <wj-menu id="navigation" variant="nav" active>
           <wj-menu-item><wj-router-link route="avatar">Avatar</wj-router-link></wj-menu-item>
@@ -99,6 +100,7 @@
           <wj-menu-item><wj-router-link route="split-view">Split view</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="tab">!Tab</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="table">!Table</wj-router-link></wj-menu-item>
+          <wj-menu-item><wj-router-link route="textarea">Textarea</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="thumbnail">Thumbnail</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="toast">Toast</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="toggle">Toggle</wj-router-link></wj-menu-item>

@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "files": [
-    "./dist2"
+    "./dist"
   ],
   "module": "./dist2/my-lib.js",
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "exports": {
     ".": {
-      "import": "./dist2/my-lib.js"
+      "import": "./dist/my-lib.js"
     }
   },
   "dependencies": {

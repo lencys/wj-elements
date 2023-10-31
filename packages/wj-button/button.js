@@ -1,4 +1,5 @@
 import { default as WJElement, event } from "../wj-element/wj-element.js";
+import { bool } from "../utils/wj-utils.js";
 
 import styles from "./scss/styles.scss?inline";
 
@@ -45,6 +46,15 @@ export class Button extends WJElement {
 
     get round() {
         return this.hasAttribute("round");
+    }
+
+    set stopPropagation(value) {
+        this.setAttribute("stop-propagation", bool(value));
+    }
+
+    get stopPropagation() {
+        console.log("SP:", bool(this.getAttribute("stop-propagation")), this.innerHTML,this.getAttribute("stop-propagation"))
+        return bool(this.getAttribute("stop-propagation"));
     }
 
     className = "Button";
@@ -141,9 +151,9 @@ export class Button extends WJElement {
     }
 
     afterDraw() {
-        event.addListener(this, "click", "wj:button-click", null, { stopPropagation: true });
+        console.log("Stop propagation: ", this.stopPropagation);
+        event.addListener(this, "click", "wj:button-click", null, { stopPropagation: this.stopPropagation });
         event.addListener(this, "click", null, this.eventDialogOpen);
-        // this.addEventListener("click", this.eventDialogOpen);
     }
 
     beforeDisconnect() {

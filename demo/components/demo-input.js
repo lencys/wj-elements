@@ -111,19 +111,6 @@ export default class DemoInput extends WJElement {
   constructor() {
     super(template);
   }
-
-  afterDraw() {
-    let test = this.context.querySelector('wj-checkbox');
-
-    test.addEventListener('wj:checkbox:change', (e) => {
-      console.log('ccccccchange');
-    });
-
-    test.addEventListener('wj:checkbox:input', (e) => {
-      // debugger
-      console.log('iiiiiiiinput');
-    });
-  }
 }
 
 let __esModule = 'true';

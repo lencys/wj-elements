@@ -13,7 +13,7 @@ template.innerHTML = `
       <div class="content">
         <p style="overflow: hidden; height: 50px;">
           <wj-dropdown label="Start" placement="bottom-start" offset="5">
-            <wj-button size="large" slot="trigger" caret>Large</wj-button>
+            <wj-button size="large" slot="trigger" stop-propagation="true" caret>Large</wj-button>
             <wj-menu variant="context">
               <wj-menu-item>
                 <wj-icon name="plane" slot="start"></wj-icon>
@@ -44,7 +44,7 @@ template.innerHTML = `
       <div class="content">
         <p style="overflow: hidden; height: 50px;">
           <wj-dropdown label="Start" placement="bottom-start" offset="5">
-            <wj-button size="large" slot="trigger" caret>Large</wj-button>
+            <wj-button size="large" slot="trigger" stop-propagation="true" caret>Large</wj-button>
             <wj-menu variant="context">
               <wj-menu-item>
                 <wj-icon name="plane" slot="start"></wj-icon>

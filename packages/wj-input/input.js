@@ -114,7 +114,7 @@ export class Input extends WJElement {
         input.setAttribute("type", "text");
         input.setAttribute("part", "input");
         input.setAttribute("value", this.value || "");
-        input.classList.add("form-control", "pristine");
+        input.classList.add("form-control");
 
         if(this.hasAttribute("placeholder"))
             input.setAttribute("placeholder", this.placeholder);

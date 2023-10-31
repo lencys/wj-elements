@@ -48,7 +48,7 @@ export class Radio extends WJElement {
         this.input = document.createElement("input");
         this.input.type = "radio";
         this.input.id = "radio";
-        this.input.name = this.name = "radio";
+        this.input.name = this.name + "-radio";
         this.input.checked = this.hasAttribute("checked");
         this.input.disabled = this.hasAttribute("disabled");
         this.input.indeterminate = this.hasAttribute("indeterminate");
