@@ -63,6 +63,7 @@ export class Textarea extends WJElement {
         input.classList.add("form-control");
         input.setAttribute("part", "input");
         input.setAttribute("rows", this.rows || 3);
+        input.setAttribute("spellcheck", false);
 
         if(this.resize === "auto")
             input.addEventListener("input", this.setTextareaHeight);

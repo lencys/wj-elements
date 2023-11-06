@@ -4,20 +4,51 @@
 [ Tab ]
 */
 
-:host {
-  display: block;
-  a {
-    scroll-snap-align: start;
+@mixin active() {
+  content: " ";
+  display: none;
+  block-size: 0.15rem;
+  writing-mode: var(--wj-tab-writing-mode);
+  background: var(--wj-tab-color-active);
+  //width: auto;
+  //height:;
+  position: absolute;
+  bottom: var(--wj-tab-bottom);
+  left: var(--wj-tab-start);
+  right: var(--wj-tab-end);
+  top: var(--wj-tab-top);
+}
 
-    display: inline-flex;
+:host {
+  $red: red($color-primary);
+  $green: green($color-primary);
+  $blue: blue($color-primary);
+  --wj-font-size: 10px;
+  --wj-tab-text-transfrom: uppercase;
+  --wj-tab-font-weight: 500;
+  --wj-tab-letter-spacing: 0.06em;
+  --wj-tab-padding-inline: 1rem;
+  --wj-tab-padding-top: .75rem;
+  --wj-tab-padding-bottom: .75rem;
+  --wj-tab-color-active: rgba(#{$red}, #{$green}, #{$blue}, 1);
+  --wj-tab-color-hover: rgba(#{$red}, #{$green}, #{$blue}, 0.05);
+
+  display: block;
+  position: relative;
+  a {
+    display: block;
     align-items: center;
     white-space: nowrap;
-
-    font-size: .8rem;
-    color: var(--text-color);
-    font-weight: bold;
+    font-family: var(--wj-font-family-secondary);
+    font-size: var(--wj-font-size);
+    letter-spacing: var(--wj-tab-letter-spacing);
+    text-transform: var(--wj-tab-text-transfrom);
+    font-weight: var(--wj-tab-font-weight);
     text-decoration: none;
-    padding: var(--space-2) var(--space-3);
+    padding-inline: var(--wj-tab-padding-inline);
+    padding-top: var(--wj-tab-padding-top);
+    padding-bottom: var(--wj-tab-padding-bottom);
+    color: var(--wj-color);
 
     & > svg {
       inline-size: 1.5em;
@@ -25,35 +56,28 @@
     }
 
     &:hover {
-      background: hsl(var(--accent) / 5%);
+      background: var(--wj-tab-color-hover);
+      &:after {
+        display: block;
+      }
     }
 
-    &:focus {
-      outline-offset: -.5ch;
+    &:after {
+      @include active();
     }
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  /*
-    - swap to border-bottom styles
-    - transition colors
-    - hide the animated .indicator
-  */
 
-  a {
-    border-block-end: var(--indicator-size) solid hsl(var(--accent) / 0%);
-    transition:
-            color .7s ease,
-            border-color .5s ease;
-
-    &:matches(:target,:active,[active]) {
-      color: var(--text-active-color);
-      border-block-end-color: hsl(var(--accent));
-    }
+:host([disabled]) a {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: inherit;
+  &:after {
+    display: none;
   }
+}
 
-  .snap-indicator {
-    visibility: hidden;
-  }
+:host([active]) a:after {
+  display: block;
 }
