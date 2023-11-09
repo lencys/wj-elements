@@ -41,6 +41,7 @@ export default ({
                 "header": "./packages/wj-header/header.js",
                 "chip": "./packages/wj-chip/chip.js",
                 "icon": "./packages/wj-icon/icon.js",
+                "icon-picker": "./packages/wj-icon-picker/icon-picker.js",
                 "img": "./packages/wj-img/img.js",
                 "img-comparer": "./packages/wj-img-comparer/img-comparer.js",
                 "infinite-scroll": "./packages/wj-infinite-scroll/infinite-scroll.js",

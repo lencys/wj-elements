@@ -33,6 +33,7 @@ import { Header } from "./wj-header/header.js";
 import { Checkbox } from "./wj-checkbox/checkbox.js";
 import { Chip } from "./wj-chip/chip.js";
 import { Icon } from "./wj-icon/icon.js";
+import { IconPicker } from "./wj-icon-picker/icon-picker.js";
 import { Img } from "./wj-img/img.js";
 import { ImgComparer } from "./wj-img-comparer/img-comparer.js";
 import { InfiniteScroll } from "./wj-infinite-scroll/infinite-scroll.js";
@@ -100,6 +101,7 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   Checkbox,
   Chip,
   Icon,
+  IconPicker,
   Img,
   ImgComparer,
   InfiniteScroll,
