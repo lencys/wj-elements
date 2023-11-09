@@ -28,7 +28,7 @@ template.innerHTML = `
                 <wj-label>Menu item</wj-label>
               </wj-menu-item>
               <wj-menu-item>
-                <wj-icon name="film" slot="start"></wj-icon>
+                <wj-icon name="video" slot="start"></wj-icon>
                 <wj-label>Menu item</wj-label>
               </wj-menu-item>
             </wj-menu>
@@ -59,7 +59,7 @@ template.innerHTML = `
                 <wj-label>Menu item</wj-label>
               </wj-menu-item>
               <wj-menu-item>
-                <wj-icon name="film" slot="start"></wj-icon>
+                <wj-icon name="video" slot="start"></wj-icon>
                 <wj-label>Menu item</wj-label>
               </wj-menu-item>
             </wj-menu>

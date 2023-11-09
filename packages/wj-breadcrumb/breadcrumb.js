@@ -100,7 +100,7 @@ export class Breadcrumb extends WJElement {
 
                 separator.appendChild(slotSeparator);
             } else {
-                separator.innerHTML = `<wj-icon name=${this.separator || "angle-right"}></wj-icon>`;
+                separator.innerHTML = `<wj-icon name=${this.separator || "chevron-right"}></wj-icon>`;
             }
 
             fragment.appendChild(separator);
@@ -131,7 +131,7 @@ export class Breadcrumb extends WJElement {
         let button = document.createElement("wj-button");
         button.setAttribute("slot", "trigger");
         button.setAttribute("variant", "link");
-        button.innerHTML = `<wj-icon name="ellipsis"></wj-icon>`;
+        button.innerHTML = `<wj-icon name="dots"></wj-icon>`;
 
         let menu = document.createElement("wj-menu");
         menu.setAttribute("variant", "context");
@@ -140,7 +140,7 @@ export class Breadcrumb extends WJElement {
         dropdown.appendChild(menu);
 
         dropdown.innerHTML = `<wj-button slot="trigger" variant="link">
-            <wj-icon name="ellipsis"></wj-icon>
+            <wj-icon name="dots"></wj-icon>
         </wj-button>
         <wj-menu variant="context">
             <wj-menu-item>Tralala</wj-menu-item>
@@ -159,7 +159,7 @@ export class Breadcrumb extends WJElement {
         let button = document.createElement("button");
         button.setAttribute("aria-label", "Show more breadcrumbs");
         button.setAttribute("part", "collapsed-indicator");
-        button.innerHTML = `<wj-icon name="ellipsis"></wj-icon>`;
+        button.innerHTML = `<wj-icon name="dots"></wj-icon>`;
         event.addListener( button,"click", null, (e) => {
             this.native.classList.remove("hidden");
             button.remove();

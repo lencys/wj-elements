@@ -25,14 +25,6 @@ export const validateContent = (svgContent) => {
   const div = document.createElement('div');
   div.innerHTML = svgContent;
 
-  // // setup this way to ensure it works on our buddy IE
-  // for (let i = div.childNodes.length - 1; i >= 0; i--) {
-  //   if (div.childNodes[i].nodeName.toLowerCase() !== 'svg') {
-  //     div.removeChild(div.childNodes[i]);
-  //   }
-  // }
-
-  // must only have 1 root element
   const svgElm = div.firstElementChild;
   if (svgElm && svgElm.nodeName.toLowerCase() === 'svg') {
     const svgClass = svgElm.getAttribute('class') || '';
@@ -132,5 +124,5 @@ export const getName = (iconName) => {
 };
 
 const getNamedUrl = (iconName) => {
-  return `/public/assets/img/icons/svgs/solid/${iconName}.svg`;
+  return `/public/assets/img/icons/svg/${iconName}.svg`;
 };

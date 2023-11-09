@@ -46,7 +46,7 @@ export class Dialog extends WJElement {
         dialog.classList.add("modal-dialog");
 
         let icon = document.createElement("wj-icon");
-        icon.setAttribute("name", "xmark");
+        icon.setAttribute("name", "x");
         icon.setAttribute("slot", "icon-only");
 
         let close = document.createElement("wj-button");

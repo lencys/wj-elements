@@ -32,19 +32,19 @@ template.innerHTML = `<h1>Card</h1>
             <wj-card-title>Title</wj-card-title>
             <wj-card-controls>
               <wj-button fill="link" size="small">
-                <wj-icon name="up-right-and-down-left-from-center" slot="icon-only"></wj-icon>
+                <wj-icon name="arrows-diagonal" slot="icon-only"></wj-icon>
               </wj-button>
               <wj-button fill="link" size="small">
                 <wj-icon name="chevron-up" slot="icon-only"></wj-icon>
               </wj-button>
               <wj-button fill="link" size="small">
-                <wj-icon name="rotate-right" slot="icon-only"></wj-icon>
+                <wj-icon name="rotate-clockwise" slot="icon-only"></wj-icon>
               </wj-button>
               <wj-button fill="link" size="small">
-                <wj-icon name="ellipsis" slot="icon-only"></wj-icon>
+                <wj-icon name="dots" slot="icon-only"></wj-icon>
               </wj-button>
               <wj-button fill="link" size="small">
-                <wj-icon name="xmark" slot="icon-only"></wj-icon>
+                <wj-icon name="x" slot="icon-only"></wj-icon>
               </wj-button>
             </wj-card-controls>
           </wj-card-header>

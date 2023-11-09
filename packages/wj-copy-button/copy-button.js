@@ -41,7 +41,7 @@ export class CopyButton extends WJElement {
         tooltip.setAttribute("content", this.label || "Copy");
 
         let icon = document.createElement("wj-icon");
-        icon.setAttribute("name", "copy");
+        icon.setAttribute("name", "clipboard");
 
         tooltip.appendChild(icon);
 
@@ -92,7 +92,7 @@ export class CopyButton extends WJElement {
 
         setTimeout(() => {
             this.icon.removeAttribute("color");
-            this.icon.setAttribute("name", "copy");
+            this.icon.setAttribute("name", "clipboard");
             this.tooltip.setAttribute("content", this.label || "Copy");
         }, this.timeout);
     }

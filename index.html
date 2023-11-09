@@ -29,6 +29,7 @@
     <wj-route name="grid" component="/demo/components/demo-grid.js"></wj-route>
     <wj-route name="chip" component="/demo/components/demo-chip.js"></wj-route>
     <wj-route name="icons" component="/demo/components/demo-icons.js"></wj-route>
+    <wj-route name="icon-picker" component="/demo/components/demo-icon-picker.js"></wj-route>
     <wj-route name="img" component="/demo/components/demo-img.js"></wj-route>
     <wj-route name="img-comparer" component="/demo/components/demo-img-comparer.js"></wj-route>
     <wj-route name="infinite-scroll" component="/demo/components/demo-infinite-scroll.js"></wj-route>
@@ -61,13 +62,13 @@
   <wj-container vertical id="app">
     <wj-header sticky>
       <wj-menu-button id="open" content-id="sidebar">
-        <wj-button variant="link" stop-propagation="false"><wj-icon name="bars"></wj-icon></wj-button>
+        <wj-button variant="link" stop-propagation="false"><wj-icon name="menu"></wj-icon></wj-button>
       </wj-menu-button>
     </wj-header>
     <wj-container>
       <wj-aside id="sidebar" width="240px" top="60px" variant="top-start" fixed>
         <wj-menu-button id="close" content-id="sidebar">
-          <wj-button variant="link" stop-propagation="false"><wj-icon name="xmark"></wj-icon></wj-button>
+          <wj-button variant="link" stop-propagation="false"><wj-icon name="x"></wj-icon></wj-button>
         </wj-menu-button>
         <wj-menu id="navigation" variant="nav" active>
           <wj-menu-item><wj-router-link route="avatar">Avatar</wj-router-link></wj-menu-item>
@@ -84,6 +85,7 @@
           <wj-menu-item><wj-router-link route="grid">Grid</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="chip">Chip</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="icons">Icon</wj-router-link></wj-menu-item>
+          <wj-menu-item><wj-router-link route="icon-picker">Icon Picker</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="img">Image</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="img-comparer">Image comparer</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="infinite-scroll">Infinite scroll</wj-router-link></wj-menu-item>
@@ -105,13 +107,13 @@
           <wj-menu-item><wj-router-link route="toast">Toast</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="toggle">Toggle</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="tooltip">Tooltip</wj-router-link></wj-menu-item>
-          <wj-menu-item><wj-router-link route="a/b/toolbar">Toolbar</wj-router-link></wj-menu-item>
+          <wj-menu-item><wj-router-link route="/a/b/toolbar">Toolbar</wj-router-link></wj-menu-item>
         </wj-menu>
       </wj-aside>
       <wj-container indent="240px" vertical>
         <wj-toolbar sticky style="--wj-toolbar-top: 60px;">
           <wj-breadcrumbs slot="start">
-            <wj-breadcrumb href="/home"><wj-icon slot="start" name="house"></wj-icon></wj-breadcrumb>
+            <wj-breadcrumb href="/home"><wj-icon slot="start" name="home"></wj-icon></wj-breadcrumb>
             <wj-breadcrumb href="/photography">Photography</wj-breadcrumb>
             <wj-breadcrumb href="/cameras">Cameras</wj-breadcrumb>
             <wj-breadcrumb href="/film">Film</wj-breadcrumb>

@@ -14,7 +14,7 @@ template.innerHTML = `
         <wj-menu active style="max-width: 200px;">
           <wj-menu-item>
             Menu item
-            <wj-icon slot="start" name="house"></wj-icon>
+            <wj-icon slot="start" name="home"></wj-icon>
           </wj-menu-item>
           <wj-menu-item id="testicek" @wj-click="openModalFn">
             Menu item
@@ -61,7 +61,7 @@ template.innerHTML = `
         <wj-menu active style="max-width: 200px; --wj-menu-padding-inline: 1rem;">
           <wj-menu-item>
             Menu item
-            <wj-icon slot="start" name="house"></wj-icon>
+            <wj-icon slot="start" name="home"></wj-icon>
           </wj-menu-item>
           <wj-menu-item>
             Menu item

@@ -110,7 +110,7 @@ export const bar = (notification, alert, options) => {
 
 const close = () => {
   let icon = document.createElement("wj-icon");
-  icon.setAttribute("name", "xmark");
+  icon.setAttribute("name", "x");
   icon.setAttribute("slot", "icon-only");
 
   let close = document.createElement("wj-button");

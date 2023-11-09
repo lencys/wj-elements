@@ -3,6 +3,7 @@ import { createServer, Model, Factory } from 'miragejs';
 
 export function makeServer({ environment = 'development' } = {}) {
   let server = createServer({
+
     models: {
       user: Model,
       option: Model,
@@ -72,6 +73,7 @@ export function makeServer({ environment = 'development' } = {}) {
 
       this.passthrough("/demo/**", "/public/**");
     },
+    // logging: false
   })
 
   return server;

@@ -71,7 +71,7 @@ export class Select extends WJElement {
         input.setAttribute("placeholder", this.placeholder || "");
 
         let arrow = document.createElement("wj-icon");
-        arrow.setAttribute("name", "angle-down");
+        arrow.setAttribute("name", "chevron-down");
         arrow.setAttribute("slot", "arrow");
 
         let chips = document.createElement("div");
@@ -90,7 +90,7 @@ export class Select extends WJElement {
         clear.setAttribute("part", "clear");
 
         let clearIcon = document.createElement("wj-icon");
-        clearIcon.setAttribute("name", "xmark");
+        clearIcon.setAttribute("name", "x");
 
         clear.appendChild(clearIcon);
 

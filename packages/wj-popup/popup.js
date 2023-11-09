@@ -85,18 +85,22 @@ export class Popup extends WJElement {
 
         if (this.manual) {
             event.addListener(this.anchorEl, "click", null, (e) => {
+                console.log("som CLICK");
                 if(this.hasAttribute("disabled")) return;
                 this.showHide();
-            });
+            }, {stopPropagation: true});
         }
 
         event.addListener(this.anchorEl, "mouseover", null,(e) => {
             if(this.manual) return;
+            console.log("som MOUSEOVER");
             this.showHide();
         });
 
         event.addListener(this.anchorEl, "mouseout", null,(e) => {
+
             if(this.manual) return;
+            console.log("som MOUSEOUT");
             this.showHide();
         });
 

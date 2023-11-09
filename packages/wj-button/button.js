@@ -99,10 +99,10 @@ export class Button extends WJElement {
 
         if(this.hasAttribute("caret")) {
             let i = document.createElement("wj-icon");
-            i.style.setProperty("--wj-icon-size", "10px");
+            i.style.setProperty("--wj-icon-size", "14px");
             i.setAttribute("slot", "caret");
-            i.setAttribute("size", "small");
-            i.setAttribute("name", "angle-down");
+            // i.setAttribute("size", "small");
+            i.setAttribute("name", "chevron-down");
 
             this.appendChild(i);
         }

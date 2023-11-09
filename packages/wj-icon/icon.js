@@ -25,15 +25,14 @@ export class Icon extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
+        this.classList.add("lazy-loaded-image", "lazy");
+
         this.classList.remove(...this.classList);
 
-        let element = document.createElement("div");
-        element.classList.add("icon-inner");
-        let url = getUrl(this);
+        this.element = document.createElement("div");
+        this.element.classList.add("icon-inner");
 
-        getSvgContent(url).then((svgContent) => {
-            element.innerHTML = iconContent.get(url);
-        });
+        this.url = getUrl(this);
 
         this.classList.add("wj-size");
         if(this.color)
@@ -42,9 +41,26 @@ export class Icon extends WJElement {
         if(this.size)
             this.classList.add("wj-size-" + this.size);
 
-        fragment.appendChild(element);
+        fragment.appendChild(this.element);
 
         return fragment;
+    }
+
+    afterDraw() {
+        let lazyImageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    getSvgContent(this.url).then((svgContent) => {
+                        this.element.innerHTML = iconContent.get(this.url);
+                    });
+                    // entry.target.name = this.src;
+                    this.classList.remove("lazy");
+                    lazyImageObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        lazyImageObserver.observe(this.element);
     }
 }
 

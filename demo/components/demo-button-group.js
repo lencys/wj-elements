@@ -98,7 +98,7 @@ export default class DemoButtonGroup extends WJElement {
             </wj-tooltip>
             <wj-tooltip content="Align justify">
               <wj-button>
-                <wj-icon slot="icon-only" name="align-justify"></wj-icon>
+                <wj-icon slot="icon-only" name="align-justified"></wj-icon>
               </wj-button>
             </wj-tooltip>
           </wj-button-group>

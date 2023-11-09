@@ -28,7 +28,7 @@ export class Chip extends WJElement {
         let remove = document.createElement("wj-button");
         remove.setAttribute("part", "remove");
         remove.setAttribute("variant", "link");
-        remove.innerHTML = `<wj-icon name="xmark"></wj-icon>`;
+        remove.innerHTML = `<wj-icon name="x"></wj-icon>`;
 
         let active = document.createElement("wj-icon");
         active.setAttribute("name", "check");

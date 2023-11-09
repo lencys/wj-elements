@@ -6,8 +6,6 @@ export class InfiniteScroll extends WJElement {
     constructor(options = {}) {
         super();
 
-        this.infiniteScrollTemplate = this.querySelector("[iterate]").outerHTML;
-        this.querySelector("[iterate]").remove(); // remove template
         this.totalPages = 0;
         this.isLoading = [];
 
@@ -46,6 +44,10 @@ export class InfiniteScroll extends WJElement {
     }
 
     beforeDraw(context, store, params) {
+        this.iterate = this.querySelector("[iterate]");
+        this.infiniteScrollTemplate = this.iterate.outerHTML;
+        this.iterate.remove(); // remove template
+
         this.setAttribute("style", "height: " + this.height);
     }
 
@@ -70,12 +72,18 @@ export class InfiniteScroll extends WJElement {
         this.size = +this.size || 10;
         this.currentPage = 0;
 
-        this.addEventListener('scroll', this.onScroll);
+        // this.scrollEvent();
         await this.loadPages(this.currentPage);
+    }
+
+    scrollEvent = () => {
+        this.addEventListener("scroll", this.onScroll);
     }
 
     onScroll = (e)=> {
         const { scrollTop, scrollHeight, clientHeight } = e.target;
+
+        console.log("onScroll:", scrollTop, scrollHeight, clientHeight);
 
         if (scrollTop + clientHeight >= scrollHeight - 300 && this.currentPage <= this.totalPages && this.isLoading.includes(this.currentPage)) {
             this.currentPage++;
@@ -118,11 +126,20 @@ export class InfiniteScroll extends WJElement {
         this.showLoader();
         try {
             if (this.hasMorePages(page)) {
+                let result;
+                let response;
 
-                const response = await this.getPages(page);
+                if (typeof this.setCustomData === "function") {
+                    console.log("setCustomData PAGE:",  page);
+                    response = await this.setCustomData(page);
+                } else {
+                    response = await this.getPages(page);
+                }
+
                 this.totalPages = response.totalPages;
                 this.currentPage = page;
-                let result = response.data.map((item) => {
+
+                result = response.data.map((item) => {
                     return this.infiniteScrollTemplate.interpolate(item);
                 });
 

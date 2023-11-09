@@ -28,7 +28,7 @@ template.innerHTML = `
         <p>Ikony na začiatku</p>
         <wj-breadcrumbs>
           <wj-breadcrumb href="/house">
-            <wj-icon slot="start" name="house"></wj-icon>
+            <wj-icon slot="start" name="home"></wj-icon>
             Home
           </wj-breadcrumb>
           <wj-breadcrumb href="/electronics">
@@ -40,7 +40,7 @@ template.innerHTML = `
             Cameras
           </wj-breadcrumb>
           <wj-breadcrumb href="/film">
-            <wj-icon slot="start" name="film"></wj-icon>
+            <wj-icon slot="start" name="video"></wj-icon>
             Film
           </wj-breadcrumb>
         </wj-breadcrumbs>
@@ -49,7 +49,7 @@ template.innerHTML = `
         <wj-breadcrumbs>
           <wj-breadcrumb href="/house">
             Home
-            <wj-icon slot="end" name="house"></wj-icon>
+            <wj-icon slot="end" name="home"></wj-icon>
           </wj-breadcrumb>
           <wj-breadcrumb href="/electronics">
             Electronics
@@ -61,7 +61,7 @@ template.innerHTML = `
           </wj-breadcrumb>
           <wj-breadcrumb href="/film">
             Film
-            <wj-icon slot="end" name="film"></wj-icon>
+            <wj-icon slot="end" name="video"></wj-icon>
           </wj-breadcrumb>
         </wj-breadcrumbs>
       </div>
@@ -75,19 +75,19 @@ template.innerHTML = `
         <wj-breadcrumbs>
           <wj-breadcrumb href="/home">
             Home
-            <wj-icon slot="separator" name="arrow-right-long"></wj-icon>
+            <wj-icon slot="separator" name="slash"></wj-icon>
           </wj-breadcrumb>
           <wj-breadcrumb href="/electronics">
             Electronics
-            <wj-icon slot="separator" name="arrow-right-long"></wj-icon>
+            <wj-icon slot="separator" name="slash"></wj-icon>
           </wj-breadcrumb>
           <wj-breadcrumb href="/cameras">
             Cameras
-            <wj-icon slot="separator" name="arrow-right-long"></wj-icon>
+            <wj-icon slot="separator" name="slash"></wj-icon>
           </wj-breadcrumb>
           <wj-breadcrumb href="/film">
             Film
-            <wj-icon slot="separator" name="arrow-right-long"></wj-icon>
+            <wj-icon slot="separator" name="slash"></wj-icon>
           </wj-breadcrumb>
         </wj-breadcrumbs>
       </div>

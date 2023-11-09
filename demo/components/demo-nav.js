@@ -3,7 +3,7 @@ import { WJElement, Menu, MenuItem, Popup } from "../../dist/wj-master.js";
 const template = document.createElement('template');
 
 template.innerHTML = `
-  <h1>Menu</h1>
+  <h1>Nav</h1>
   <div class="container">
 
     <!-- COLLAPSE -->
@@ -14,7 +14,7 @@ template.innerHTML = `
         <wj-menu id="custom" variant="nav" active collapse>
           <wj-menu-item offset="10">
             Home
-            <wj-icon slot="start" name="house"></wj-icon>
+            <wj-icon slot="start" name="home"></wj-icon>
           </wj-menu-item>
           <wj-menu-item offset="10">
             Navigation One
@@ -34,11 +34,11 @@ template.innerHTML = `
           </wj-menu-item>
           <wj-menu-item offset="10">
             Navigation Two
-            <wj-icon slot="start" name="location-dot"></wj-icon>
+            <wj-icon slot="start" name="map-pin"></wj-icon>
           </wj-menu-item>
           <wj-menu-item offset="10">
             Navigation Three
-            <wj-icon slot="start" name="gear"></wj-icon>
+            <wj-icon slot="start" name="settings"></wj-icon>
           </wj-menu-item>
         </wj-menu> 
    
@@ -64,7 +64,7 @@ template.innerHTML = `
         <wj-menu id="custom-1" variant="nav" active>
           <wj-menu-item offset="10">
             Home
-            <wj-icon slot="start" name="house"></wj-icon>
+            <wj-icon slot="start" name="home"></wj-icon>
           </wj-menu-item>
           <wj-menu-item offset="10">
             Navigation One
@@ -84,10 +84,10 @@ template.innerHTML = `
           </wj-menu-item>
           <wj-menu-item offset="10">
             Navigation Two
-            <wj-icon slot="start" name="location-dot"></wj-icon>
+            <wj-icon slot="start" name="map-pin"></wj-icon>
           </wj-menu-item>
           <wj-menu-item offset="10">
-            <wj-icon slot="start" name="gear"></wj-icon>
+            <wj-icon slot="start" name="settings"></wj-icon>
             Navigation Three
           </wj-menu-item>
         </wj-menu> 
