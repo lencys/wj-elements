@@ -74,7 +74,7 @@ template.innerHTML = `<h1>Progress bar</h1>
       <div class="content">
         <wj-progress-bar progress="60" radius="20" stroke="3" color="danger" type="circle">
           <wj-thumbnail>
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+            <img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg" />
           </wj-thumbnail>
           <style>
             wj-thumbnail {

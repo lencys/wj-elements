@@ -58,17 +58,17 @@ template.innerHTML = `<h1>Item</h1>
       <div class="content">
         <wj-item>
           <wj-label>Default Icon</wj-label>
-          <wj-icon name="information-circle" slot="end"></wj-icon>
+          <wj-icon name="info-circle" slot="end"></wj-icon>
         </wj-item>
 
         <wj-item>
           <wj-label>Large Icon</wj-label>
-          <wj-icon name="information-circle" size="large" slot="end"></wj-icon>
+          <wj-icon name="info-circle" size="large" slot="end"></wj-icon>
         </wj-item>
 
         <wj-item>
           <wj-label>Small Icon</wj-label>
-          <wj-icon name="information-circle" size="small" slot="end"></wj-icon>
+          <wj-icon name="info-circle" size="small" slot="end"></wj-icon>
         </wj-item>
 
         <wj-item>
@@ -102,25 +102,25 @@ template.innerHTML = `<h1>Item</h1>
         <wj-item>
           <wj-icon name="star" slot="start"></wj-icon>
           <wj-label>Default Item Lines</wj-label>
-          <wj-icon name="information-circle" slot="end"></wj-icon>
+          <wj-icon name="info-circle" slot="end"></wj-icon>
         </wj-item>
 
         <wj-item lines="inset">
           <wj-icon name="star" slot="start"></wj-icon>
           <wj-label>Item Lines Inset</wj-label>
-          <wj-icon name="information-circle" slot="end"></wj-icon>
+          <wj-icon name="info-circle" slot="end"></wj-icon>
         </wj-item>
 
         <wj-item lines="full">
           <wj-icon name="star" slot="start"></wj-icon>
           <wj-label>Item Lines Full</wj-label>
-          <wj-icon name="information-circle" slot="end"></wj-icon>
+          <wj-icon name="info-circle" slot="end"></wj-icon>
         </wj-item>
 
         <wj-item lines="none">
           <wj-icon name="star" slot="start"></wj-icon>
           <wj-label>Item Lines None</wj-label>
-          <wj-icon name="information-circle" slot="end"></wj-icon>
+          <wj-icon name="info-circle" slot="end"></wj-icon>
         </wj-item>
       </div>
     </div>
@@ -132,14 +132,14 @@ template.innerHTML = `<h1>Item</h1>
       <div class="content">
         <wj-item>
           <wj-avatar slot="start">
-            <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+            <wj-img alt="Silhouette of a person's head" src="/assets/img/avatar.svg"></wj-img>
           </wj-avatar>
           <wj-label> Avatar Item </wj-label>
         </wj-item>
 
         <wj-item>
           <wj-thumbnail slot="start">
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+            <wj-img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg"></wj-img>
           </wj-thumbnail>
           <wj-label> Thumbnail Item </wj-label>
         </wj-item>
@@ -187,24 +187,6 @@ template.innerHTML = `<h1>Item</h1>
         </wj-item>
       </div>
     </div>
-
-    <!--  CUSTOM -->
-
-    <!--    <h2>Custom</h2>-->
-    <!--    <div class="playground">-->
-    <!--        <div class="content">-->
-
-    <!--        </div>-->
-    <!--    </div>-->
-
-    <!--  CUSTOM -->
-
-    <!--    <h2>Custom</h2>-->
-    <!--    <div class="playground">-->
-    <!--        <div class="content">-->
-
-    <!--        </div>-->
-    <!--    </div>-->
   </div>`;
 
 export default class DemoItem extends WJElement {

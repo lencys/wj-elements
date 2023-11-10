@@ -92,7 +92,7 @@ template.innerHTML = `<h1>Card</h1>
                 <wj-thumbnail slot="start">
                   <img
                     alt="Silhouette of mountains"
-                    src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
+                    src="/assets/img/thumbnail.svg"
                   />
                 </wj-thumbnail>
                 <wj-label>Item</wj-label>
@@ -102,7 +102,7 @@ template.innerHTML = `<h1>Card</h1>
                 <wj-thumbnail slot="start">
                   <img
                     alt="Silhouette of mountains"
-                    src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
+                    src="/assets/img/thumbnail.svg"
                   />
                 </wj-thumbnail>
                 <wj-label>Item</wj-label>
@@ -112,7 +112,7 @@ template.innerHTML = `<h1>Card</h1>
                 <wj-thumbnail slot="start">
                   <img
                     alt="Silhouette of mountains"
-                    src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
+                    src="/assets/img/thumbnail.svg"
                   />
                 </wj-thumbnail>
                 <wj-label>Item</wj-label>
@@ -122,7 +122,7 @@ template.innerHTML = `<h1>Card</h1>
                 <wj-thumbnail slot="start">
                   <img
                     alt="Silhouette of mountains"
-                    src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
+                    src="/assets/img/thumbnail.svg"
                   />
                 </wj-thumbnail>
                 <wj-label>Item</wj-label>

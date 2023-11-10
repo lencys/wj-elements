@@ -11,7 +11,7 @@ template.innerHTML = `<h1>Avatar</h1>
     <div class="playground">
       <div class="content">
         <wj-avatar>
-          <wj-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></wj-img>
+          <wj-img src="/assets/img/avatar.svg"></wj-img>
         </wj-avatar>
       </div>
     </div>
@@ -22,13 +22,13 @@ template.innerHTML = `<h1>Avatar</h1>
     <div class="playground">
       <div class="content">
         <wj-avatar size="small">
-          <wj-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></wj-img>
+          <wj-img src="/assets/img/avatar.svg"></wj-img>
         </wj-avatar>
         <wj-avatar>
-          <wj-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></wj-img>
+          <wj-img src="/assets/img/avatar.svg"></wj-img>
         </wj-avatar>
         <wj-avatar size="large">
-          <wj-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></wj-img>
+          <wj-img src="/assets/img/avatar.svg"></wj-img>
         </wj-avatar>
       </div>
     </div>
@@ -99,13 +99,13 @@ template.innerHTML = `<h1>Avatar</h1>
       <div class="content">
         <div class="wj-avatar-group">
           <wj-avatar size="large">
-            <wj-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></wj-img>
+            <wj-img src="/assets/img/avatar.svg"></wj-img>
           </wj-avatar>
           <wj-avatar size="large">
-            <wj-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></wj-img>
+            <wj-img src="/assets/img/avatar.svg"></wj-img>
           </wj-avatar>
           <wj-avatar size="large">
-            <wj-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></wj-img>
+            <wj-img src="/assets/img/avatar.svg"></wj-img>
           </wj-avatar>
           <style>
             .wj-avatar-group wj-avatar:not(:first-of-type) {

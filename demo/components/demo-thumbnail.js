@@ -11,7 +11,7 @@ template.innerHTML = `<h1>Thumbnail</h1>
     <div class="playground">
       <div class="content">
         <wj-thumbnail>
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+          <img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg" />
         </wj-thumbnail>
       </div>
     </div>
@@ -23,7 +23,7 @@ template.innerHTML = `<h1>Thumbnail</h1>
       <div class="content">
         <wj-item>
           <wj-thumbnail slot="start">
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+            <img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg" />
           </wj-thumbnail>
           <wj-label>Item</wj-label>
         </wj-item>
@@ -36,7 +36,7 @@ template.innerHTML = `<h1>Thumbnail</h1>
     <div class="playground">
       <div class="content">
         <wj-thumbnail class="example-thumbnail">
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+          <img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg" />
         </wj-thumbnail>
 
         <style>
