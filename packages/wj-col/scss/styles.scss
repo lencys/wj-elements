@@ -6,9 +6,9 @@
 */
 
 :host {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  display: block;
+  //flex-direction: column;
+  //align-items: stretch;
   flex: 1;
   flex-shrink: 0;
   width: 100%;
