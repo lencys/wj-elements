@@ -105,6 +105,26 @@ template.innerHTML = `<h1>Input</h1>
       </div>
     </div>
     
+    <!-- SEARCH -->
+
+    <h2>Search</h2>
+    <div class="playground">
+      <div class="content">
+        <wj-input variant="standard" label="Default input" class="example">
+          <wj-button fill="link" slot="end"><wj-icon name="search"></wj-icon></wj-button>
+        </wj-input>
+        <style>
+          .example {
+            --wj-input-slot-padding-inline: 0 !important;
+          }
+          
+          .example wj-button {
+            --wj-button-border-radius: 0 !important;
+          }
+        </style>
+      </div>
+    </div>
+    
   </div>`;
 
 export default class DemoInput extends WJElement {
