@@ -22,14 +22,13 @@ template.innerHTML = `<h1>Icons</h1>
     <h2>Custom</h2>
     <div class="playground">
       <div class="content">
-        <wj-icon class="custom" name="check" size="large">
-          <style>
-            .custom {
-              --wj-icon-size: 60px;
-              color: #ff0000;
-            }
-          </style>
-        </wj-icon>
+        <wj-icon class="custom" name="check"></wj-icon>
+        <style>
+          .custom {
+            --wj-icon-size: 60px;
+            color: #ff0000;
+          }
+        </style>
       </div>
     </div>
   </div>`;
