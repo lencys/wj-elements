@@ -5,7 +5,8 @@
 */
 
 :host {
+    --wj-footer-height: 60px;
     padding: 0 20px;
     flex-shrink: 0;
-    height: 60px;
+    height: var(--wj-footer-height);
 }
