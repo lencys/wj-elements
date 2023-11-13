@@ -11,6 +11,8 @@
   --wj-input-color-invalid: #{$color-danger-dark};
   --wj-input-border-color: #{$color-border-a};
   --wj-input-border-color-focus: #{$color-primary};
+  --wj-input-border-width: 1px;
+  --wj-input-border-style: solid;
   --wj-input-border-radius: 4px;
   --wj-input-margin-bottom: .5rem;
   --wj-input-line-height: 20px;
@@ -166,7 +168,7 @@
 }
 
 :host([required]) .standard .input-wrapper::after {
-  top: 27px;
+  top: 0px;
 }
 
 :host([invalid]) {
@@ -188,7 +190,9 @@
   display: flex;
   height: 100%;
   align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-width: var(--wj-input-border-width);
+  border-style: var(--wj-input-border-style);
+  border-color: var(--wj-input-border-color);
   padding-inline: var(--wj-input-slot-padding-inline);
 }
 
