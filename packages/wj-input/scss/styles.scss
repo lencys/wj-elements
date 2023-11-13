@@ -188,7 +188,7 @@
 
 ::slotted([slot="start"]), ::slotted([slot="end"]) {
   display: flex;
-  height: 100%;
+  //height: 100%; // zrusene na ziadost SCS
   align-items: center;
   border-width: var(--wj-input-border-width);
   border-style: var(--wj-input-border-style);
