@@ -77,11 +77,11 @@
       }
     }
     &.expanded-submenu {
-      color: $color-contrast-high;
-      background-color: $color-contrast-lower !important;
+      color: var(--wj-menu-item-color-active);
+      background-color: var(--wj-menu-item-background-active);
       &:hover {
-        color: $color-contrast-high;
-        background-color: $color-contrast-lower !important;
+        color: var(--wj-menu-item-color-hover);
+        background-color: var(--wj-menu-item-background-hover);
       }
       &::after {
         content: '';
