@@ -94,6 +94,7 @@ export class MenuItem extends WJElement {
 
         // SLOT - Submenu
         let submenu = document.createElement("slot");
+        submenu.setAttribute("part", "submenu")
         submenu.name = "submenu";
 
         // SUBMENU - Icon
