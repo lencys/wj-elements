@@ -7,6 +7,9 @@
   --wj-select-border-width: 1px;
   --wj-select-border-style: solid;
   --wj-select-border-color: var(--wj-border-color);
+  --wj-select-options-border-width: 1px;
+  --wj-select-options-border-style: solid;
+  --wj-select-options-border-color: var(--wj-border-color);
   --wj-select-background-color: #{$color-contrast-lowest};
   --wj-select-line-height: 20px;
   --wj-select-color: #{$color-contrast-higher};
@@ -22,7 +25,9 @@
   &.default{
     .wrapper {
       display: block;
-      border: 1px solid var(--wj-select-border-color);
+      border-width: var(--wj-select-border-width);
+      border-style: var(--wj-select-border-style);
+      border-color: var(--wj-select-border-color);
       border-radius: var(--wj-select-border-radius);
       padding-inline: .5rem;
       padding-top: 0.25rem;
@@ -56,7 +61,9 @@
   }
   &.standard {
     .input-wrapper {
-      border: 1px solid var(--wj-select-border-color);
+      border-width: var(--wj-select-border-width);
+      border-style: var(--wj-select-border-style);
+      border-color: var(--wj-select-border-color);
       border-radius: var(--wj-select-border-radius);
       width: 100%;
     }
@@ -109,9 +116,9 @@ input {
 }
 
 .option-wrapper {
-  border-width: var(--wj-select-border-width);
-  border-style: var(--wj-select-border-style);
-  border-color: var(--wj-select-border-color);
+  border-width: var(--wj-select-options-border-width);
+  border-style: var(--wj-select-options-border-style);
+  border-color: var(--wj-select-options-border-color);
   border-radius: 0 0 var(--wj-select-border-radius) var(--wj-select-border-radius);
   margin-top: -1px;
   background: var(--wj-select-background-color);
