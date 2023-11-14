@@ -54,6 +54,7 @@ export class Popup extends WJElement {
         slotArrow.setAttribute("name", "arrow");
 
         let native = document.createElement("div");
+        native.setAttribute("part", "native");
         native.classList.add("native-popup");
 
         let slot = document.createElement("slot");
