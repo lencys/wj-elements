@@ -15,7 +15,10 @@
   --wj-menu-item-safe-triangle-submenu-start-y: 0;
   --wj-menu-item-safe-triangle-submenu-end-x: 0;
   --wj-menu-item-safe-triangle-submenu-end-y: 0;
-
+  --wj-menu-item-color-hover: $color-contrast-high;
+  --wj-menu-item-background-hover: $color-contrast-lower;
+  --wj-menu-item-color-active: $color-contrast-high;
+  --wj-menu-item-background-active: $color-contrast-lower;
 
   display: block;
   .native-menu-item {
@@ -34,19 +37,14 @@
     line-height: var(--wj-menu-item-line-height);
     &:hover,
     &:focus {
-      color: $color-contrast-high;
-      background-color: $color-contrast-lower !important;
+      color: var(--wj-menu-item-color-hover);
+      background-color: var(--wj-menu-item-background-hover);
     }
 
     &:active {
-      color: $color-contrast-high;
-      background-color: $color-contrast-lower !important;
+      color: var(--wj-menu-item-color-active);
+      background-color: var(--wj-menu-item-background-active);
     }
-    //&:focus-visible {
-    //  outline: none;
-    //  background-color: $color-contrast-lower !important;
-    //  color: $color-contrast-high;
-    //}
     .label {
       flex: 1 1 auto;
       display: inline-block;
@@ -88,7 +86,7 @@
       &::after {
         content: '';
         position: fixed;
-        z-index: calc(var(--wj-menu-z-index) - 1);
+        z-index: calc(var(--wj-z-index-menu) - 1);
         top: 0;
         right: 0;
         bottom: 0;
