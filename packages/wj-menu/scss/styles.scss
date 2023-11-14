@@ -13,12 +13,15 @@
   --wj-menu-padding-top: .5rem;
   --wj-menu-padding-bottom: .5rem;
   --wj-menu-padding-inline: 0;
+  --wj-menu-z-index: 900;
+
   display: none;
   background: var(--wj-menu-background);
   position: relative;
   border-width: var(--wj-menu-border-width);
   border-style: var(--wj-menu-border-style);
   border-color: var(--wj-menu-border-color);
+  z-index: var(--wj-menu-z-index);
 
   @include border-radius(var(--wj-menu-border-radius));
 
@@ -45,6 +48,23 @@
   display: block !important;
   //--wj-menu-border-width: 0;
   margin-left: var(--wj-menu-submenu-offset);
+}
+
+:host([variant=megamenu]) .native-menu {
+  flex-direction: row;
+  align-items: end;
+  flex-wrap: nowrap;
+  .check-icon {
+    display: none;
+  }
+}
+
+//wj-menu-item::part(check-icon) {
+//  background: red;
+//  visibility: visible;
+//}
+:host([variant=megamenu]) {
+    //--wj-menu-item-check-icon-display: none;
 }
 
 :host([active]) {

@@ -10,15 +10,22 @@ export class MenuItem extends WJElement {
         this._collapsible = false;
     }
 
-    set isCollapsible(value) {
-        this._collapsible = value;
+    get placement() {
+        let menu = this.querySelector("wj-menu");
+
+        if(menu?.hasAttribute("placement")) {
+            return menu.getAttribute("placement");
+        }
+        return "right-start";
     }
 
-    get isCollapsible() {
-        if(this.closest("[collapsible]"))
-            this._collapsible = true;
+    get offset() {
+        let menu = this.querySelector("wj-menu");
 
-        return this._collapsible;
+        if(menu?.hasAttribute("offset")) {
+            return menu.getAttribute("offset");
+        }
+        return "0";
     }
 
     get variant() {
@@ -55,12 +62,13 @@ export class MenuItem extends WJElement {
 
         this.classList.add("wj-menu-variant-" + this.variant.toLowerCase());
         this.querySelector("wj-menu")?.setAttribute("variant", this.variant.toLowerCase());
-        this.style.setProperty("--wj-menu-submenu-offset", (parseFloat(this.offset) || 0)  + "px");
+        // this.style.setProperty("--wj-menu-submenu-offset", (parseFloat(this.offset) || 0)  + "px");
 
         if (this.collapse)
             this.classList.add("wj-menu-collapse");
 
         let native = document.createElement("div");
+        native.setAttribute("slot", "anchor");
         native.setAttribute("part", "native");
         native.setAttribute("id", "anchor");
         native.classList.add("native-menu-item");
@@ -95,22 +103,28 @@ export class MenuItem extends WJElement {
 
         this.hasSubmenu ? native.classList.add("has-submenu") : native.classList.remove("has-submenu");
 
-        // ak je variant typu CONTEXT zobrazime submenu ako popup
-        if ((this.collapse && this.variant === "NAV" && this.hasSubmenu) || (this.variant === "CONTEXT" && this.hasSubmenu)) {
-            let popup = document.createElement("wj-popup");
-            popup.setAttribute("anchor", "anchor");
-            popup.setAttribute("manual", "");
-            popup.setAttribute("placement", "right-start");
-
-            popup.appendChild(submenu);
-            native.appendChild(popup);
-        }
-
         native.appendChild(checkedIcon);
         native.appendChild(start);
         native.appendChild(slot);
         native.appendChild(end);
         native.appendChild(submenutIcon);
+
+        let isAppend = false;
+        // ak je variant typu CONTEXT zobrazime submenu ako popup
+        if ((this.collapse && this.variant === "NAV" && this.hasSubmenu) || (this.variant === "CONTEXT" && this.hasSubmenu)) {
+            let popup = document.createElement("wj-popup");
+            popup.setAttribute("anchor", "anchor");
+            // popup.setAttribute("manual", "");
+            popup.setAttribute("placement", this.placement);
+            popup.setAttribute("offset", this.offset);
+
+            popup.appendChild(native);
+            popup.appendChild(submenu);
+
+            this.popup = popup;
+            fragment.appendChild(popup);
+            isAppend = true;
+        }
 
         this.native = native;
         this.submenu = submenu;
@@ -124,11 +138,11 @@ export class MenuItem extends WJElement {
             tooltip.appendChild(native);
 
             fragment.appendChild(tooltip);
-        } else {
+        } else if(!isAppend) {
             fragment.appendChild(native);
         }
 
-        if(!this.collapse && this.variant === "NAV" && this.hasSubmenu) {
+        if(!this.collapse && this.variant === "NAV" || this.variant === "MEGAMENU" && this.hasSubmenu) {
             fragment.appendChild(submenu);
         }
 
@@ -136,20 +150,28 @@ export class MenuItem extends WJElement {
     }
 
     afterDraw() {
-        if ((this.collapse && this.variant === "NAV" && this.hasSubmenu) || (this.variant === "CONTEXT" && this.hasSubmenu)) {
-            event.addListener(this, "mouseover", null, (e) => {
-                this.tabIndex = "-1";
-                this.focus();
-                this.native.querySelector("wj-popup").setAttribute("active", "true");
-                this.native.classList.add("expanded-submenu");
-            });
+        this.addEventListener("mousemove", this.dispatchMove);
+        this.addEventListener("wj-popup:reposition", this.dispatchReposition);
 
-            event.addListener(this, "mouseout", null, (e) => {
-                this.tabIndex = 0;
-                this.native.querySelector("wj-popup").removeAttribute("active");
-                this.native.classList.remove("expanded-submenu");
-            });
-        } else if (!this.collapse && this.variant === "NAV" && this.hasSubmenu) {
+        // Event na zobrazenie submenu
+        event.addListener(this, "mouseover", null, (e) => {
+            e.stopPropagation();
+
+            this.showSubmenu();
+
+            this.focus();
+        });
+
+        // Event na zrusenie zobrazenia submenu ked sa klikne mimo
+        event.addListener(this, "focusout", null, (e) => {
+            if (e.relatedTarget && this.contains(e.relatedTarget)) {
+                return;
+            }
+
+            this.hideSubmenu();
+        });
+
+        if (!this.collapse && this.variant === "NAV" && this.hasSubmenu) {
             event.addListener(this, "click", null, (e) => {
                 let submenutElements = this.submenu.assignedElements({ flatten: true })[0];
 
@@ -165,6 +187,37 @@ export class MenuItem extends WJElement {
             event.addListener(this, "click", null, (e) => {
                 console.log("CLICK", this);
             });
+        }
+    }
+
+    dispatchMove = (e) => {
+        this.style.setProperty("--wj-menu-item-safe-triangle-cursor-x", `${e.clientX}px`);
+        this.style.setProperty("--wj-menu-item-safe-triangle-cursor-y", `${e.clientY}px`);
+    }
+
+    dispatchReposition = (e) => {
+        let submenu = this.submenu.assignedNodes()[0];
+        const { left, top, width, height } = submenu.getBoundingClientRect();
+
+        this.style.setProperty('--wj-menu-item-safe-triangle-submenu-start-x', `${left}px`);
+        this.style.setProperty('--wj-menu-item-safe-triangle-submenu-start-y', `${top}px`);
+        this.style.setProperty('--wj-menu-item-safe-triangle-submenu-end-x', `${left}px`);
+        this.style.setProperty('--wj-menu-item-safe-triangle-submenu-end-y', `${top + height}px`);
+    }
+
+    showSubmenu() {
+        this.tabIndex = -1;
+        if(this.hasSubmenu) {
+            this.popup.setAttribute("active", "");
+            this.native.classList.add("expanded-submenu");
+        }
+    }
+
+    hideSubmenu() {
+        this.tabIndex = 0;
+        if(this.hasSubmenu) {
+            this.popup.removeAttribute("active");
+            this.native.classList.remove("expanded-submenu");
         }
     }
 }

@@ -73,7 +73,7 @@ class WjEvent {
         };
 
         // skontrolujeme ci uz tento listener neexistuje
-        if(!this.listenerExists(element, originalEvent,obj)) {
+        if(!this.listenerExists(element, originalEvent, obj)) {
             record.listeners[originalEvent].push(obj);
 
             element.addEventListener(originalEvent, listener);

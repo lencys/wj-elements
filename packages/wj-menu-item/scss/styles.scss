@@ -9,13 +9,19 @@
   --wj-menu-item-padding-top: .5rem;
   --wj-menu-item-padding-bottom: .5rem;
   --wj-menu-item-line-height: 1.8rem;
+  --wj-menu-item-safe-triangle-cursor-x: 0;
+  --wj-menu-item-safe-triangle-cursor-y: 0;
+  --wj-menu-item-safe-triangle-submenu-start-x: 0;
+  --wj-menu-item-safe-triangle-submenu-start-y: 0;
+  --wj-menu-item-safe-triangle-submenu-end-x: 0;
+  --wj-menu-item-safe-triangle-submenu-end-y: 0;
+
 
   display: block;
-
   .native-menu-item {
     position: relative;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     color: var(--wj-color);
     padding-top: var(--wj-menu-item-padding-top);
@@ -49,7 +55,7 @@
     }
     .check-icon {
       flex: 0 0 auto;
-      display: flex;
+      display: var(--wj-menu-item-check-icon-display, flex);
       align-items: center;
       justify-content: center;
       width: 1.5rem;
@@ -78,6 +84,20 @@
       &:hover {
         color: $color-contrast-high;
         background-color: $color-contrast-lower !important;
+      }
+      &::after {
+        content: '';
+        position: fixed;
+        z-index: calc(var(--wj-menu-z-index) - 1);
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        clip-path: polygon(
+          var(--wj-menu-item-safe-triangle-cursor-x) var(--wj-menu-item-safe-triangle-cursor-y),
+          var(--wj-menu-item-safe-triangle-submenu-start-x) var(--wj-menu-item-safe-triangle-submenu-start-y),
+          var(--wj-menu-item-safe-triangle-submenu-end-x) var(--wj-menu-item-safe-triangle-submenu-end-y)
+        );
       }
     }
   }

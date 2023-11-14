@@ -16,7 +16,7 @@ template.innerHTML = `
             Menu item
             <wj-icon slot="start" name="home"></wj-icon>
           </wj-menu-item>
-          <wj-menu-item id="testicek" @wj-click="openModalFn">
+          <wj-menu-item>
             Menu item
             <wj-icon slot="end" name="heart"></wj-icon>
           </wj-menu-item>
@@ -41,11 +41,18 @@ template.innerHTML = `
               <wj-menu-item>Menu item</wj-menu-item>
             </wj-menu>
           </wj-menu-item>
-          <wj-menu-item id="transformations">
+          <wj-menu-item>
             Menu item
             <wj-menu slot="submenu">
               <wj-menu-item>Menu item</wj-menu-item>
-              <wj-menu-item>Menu item</wj-menu-item>
+              <wj-menu-item>
+                Menu item
+                <wj-menu slot="submenu">
+                  <wj-menu-item>Menu item</wj-menu-item>
+                  <wj-menu-item>Menu item</wj-menu-item>
+                  <wj-menu-item>Menu item</wj-menu-item>
+                </wj-menu>
+              </wj-menu-item>
               <wj-menu-item>Menu item</wj-menu-item>
             </wj-menu>
           </wj-menu-item>

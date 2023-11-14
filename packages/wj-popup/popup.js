@@ -83,26 +83,27 @@ export class Popup extends WJElement {
             this.anchorEl = this.slotAnchor.assignedElements({ flatten: true })[0];
         }
 
-        if (this.manual) {
+        // if (this.manual) {
             event.addListener(this.anchorEl, "click", null, (e) => {
                 console.log("som CLICK");
                 if(this.hasAttribute("disabled")) return;
                 this.showHide();
             }, {stopPropagation: true});
-        }
+        // }
 
-        event.addListener(this.anchorEl, "mouseover", null,(e) => {
-            if(this.manual) return;
-            console.log("som MOUSEOVER");
-            this.showHide();
-        });
+        // event.addListener(this, "mouseover", null,(e) => {
+        //     if(this.manual) return;
+        //     console.log("som MOUSEOVER");
+        //     this.showHide();
+        // });
 
-        event.addListener(this.anchorEl, "mouseout", null,(e) => {
-
-            if(this.manual) return;
-            console.log("som MOUSEOUT");
-            this.showHide();
-        });
+        // event.addListener(this, "mouseout", null,(e) => {
+            // let clickToHost = e.composedPath().some((el) => el === this);
+            // console.log("som MOUSEOUT", e.relatedTarget.closest("wj-menu"), e.composedPath());
+        //     if(true) return;
+        //     console.log("som MOUSEOUT");
+        //     this.showHide();
+        // });
 
         document.addEventListener("click",(e) => {
             let clickToHost = e.composedPath().some((el) => el === this);
@@ -191,6 +192,12 @@ export class Popup extends WJElement {
                     });
                 }
             }
+        });
+
+        event.dispatchCustomEvent(this,"wj-popup:reposition", {
+            data: { top: 'bottom', right: 'left', bottom: 'top', left: 'right' },
+            context: this,
+            event: this
         });
     }
 
