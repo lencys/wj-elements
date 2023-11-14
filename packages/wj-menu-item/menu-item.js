@@ -155,6 +155,7 @@ export class MenuItem extends WJElement {
 
         // Event na zobrazenie submenu
         event.addListener(this, "mouseover", null, (e) => {
+            if(this.hasAttribute("manual")) return;
             e.stopPropagation();
 
             this.showSubmenu();
