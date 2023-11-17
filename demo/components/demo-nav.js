@@ -54,11 +54,6 @@ template.innerHTML = `
             --wj-menu-item-padding-top: .75rem;
             --wj-menu-item-padding-bottom: .75rem;
           }
-          
-          /*#custom-2 wj-menu-item::part(check-icon) {*/
-          /*  background: red;*/
-          /*  visibility: visible;*/
-          /*}*/
         </style>
       </div>
     </div>

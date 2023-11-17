@@ -2,6 +2,8 @@ import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.j
 
 import styles from "./scss/styles.scss?inline";
 
+console.log("STYLES ROW:", styles);
+
 export class Grid extends WJElement {
     constructor() {
         super();

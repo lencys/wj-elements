@@ -80,7 +80,7 @@ $color-contrast-high: mix($color-contrast-higher, $color-contrast-lowest, $mix-p
 //Neutral color shades - rgba values
 $color-contrast-lower-a: rgba($color-contrast-higher, $mix-percentage-contrast-lower/100);
 $color-contrast-low-a: rgba($color-contrast-higher, $mix-percentage-contrast-low/100);
-$color-contrast-medium-a: rgba($color-contrast-higher, calc($mix-percentage-contrast-medium / 100)
+$color-contrast-medium-a: rgba($color-contrast-higher, $mix-percentage-contrast-medium / 100);
 $color-contrast-high-a: rgba($color-contrast-higher, $mix-percentage-contrast-high/100);
 
 //Menu colors generation

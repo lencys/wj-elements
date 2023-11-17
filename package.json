@@ -1,12 +1,12 @@
 {
   "name": "wj-elements",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.0.5",
   "type": "module",
   "files": [
     "./dist"
   ],
-  "module": "./dist2/my-lib.js",
+  "module": "./dist/wj-master.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -15,7 +15,7 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/my-lib.js"
+      "import": "./dist/wj-master.js"
     }
   },
   "dependencies": {

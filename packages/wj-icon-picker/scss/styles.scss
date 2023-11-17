@@ -19,11 +19,11 @@
 
 .picker {
   width: 320px;
-  height: 360px;
+  height: 320px;
   box-shadow: 0 0 5px rgba(0,0,0,.05), 0 5px 20px rgba(0,0,0,.1);
   border-radius: var(--wj-color-picker-radius);
   overflow: auto;
-  padding: .5rem;
+  padding: 1rem;
 }
 
 .icon-items {
@@ -62,14 +62,22 @@ icon-item svg {
 }
 
 wj-input {
-  --wj-input-border-radius: 1rem;
+  --wj-input-border-radius: 4px;
   --wj-input-margin-bottom: 0;
 }
 
-wj-input::part(input) {
-  text-align: center;
+wj-infinite-scroll {
+  margin-top: 1rem;
 }
 
-wj-infinite-scroll {
-  margin-top: .5rem;
+wj-select {
+  --wj-select-border-width: 0 0 1px 0 !important;
+  --wj-select-border-radius: 0 !important;
+  margin-bottom: 1rem;
+}
+
+hr {
+  background: red;
+  height: 1px;
+  border: 0 none;
 }

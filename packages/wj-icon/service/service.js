@@ -124,5 +124,9 @@ export const getName = (iconName) => {
 };
 
 const getNamedUrl = (iconName) => {
-  return `/public/assets/img/icons/svg/${iconName}.svg`;
+  const iconUrl = `assets/img/icons/svg/${iconName}.svg`;
+  console.log("SOM:", iconUrl);
+  const url = new URL(iconUrl, import.meta.url);
+  console.log(url)
+  return url.href;
 };

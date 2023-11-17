@@ -10,7 +10,8 @@ export default ({
         },
     },
     build: {
-        minify: false,
+        assetsInlineLimit: 0,
+        minify: true,
         outDir: './dist',
         lib: {
             entry: {
@@ -20,6 +21,8 @@ export default ({
                 "aside": "./packages/wj-aside/aside.js",
                 "avatar": "./packages/wj-avatar/avatar.js",
                 "badge": "./packages/wj-badge/badge.js",
+                "breadcrumb": "./packages/wj-breadcrumb/breadcrumb.js",
+                "breadcrumbs": "./packages/wj-breadcrumbs/breadcrumbs.js",
                 "button": "./packages/wj-button/button.js",
                 "button-group": "./packages/wj-button-group/button-group.js",
                 "card": "./packages/wj-card/card.js",
@@ -28,6 +31,8 @@ export default ({
                 "card-controls": "./packages/wj-card-controls/card-controls.js",
                 "card-subtitle": "./packages/wj-card-subtitle/card-subtitle.js",
                 "card-title": "./packages/wj-card-title/card-title.js",
+                "checkbox": "./packages/wj-checkbox/checkbox.js",
+                "chip": "./packages/wj-chip/chip.js",
                 "col": "./packages/wj-col/col.js",
                 "color-picker": "./packages/wj-color-picker/color-picker.js",
                 "copy-button": "./packages/wj-copy-button/copy-button.js",
@@ -39,7 +44,6 @@ export default ({
                 "footer": "./packages/wj-footer/footer.js",
                 "grid": "./packages/wj-grid/grid.js",
                 "header": "./packages/wj-header/header.js",
-                "chip": "./packages/wj-chip/chip.js",
                 "icon": "./packages/wj-icon/icon.js",
                 "icon-picker": "./packages/wj-icon-picker/icon-picker.js",
                 "img": "./packages/wj-img/img.js",
@@ -66,6 +70,7 @@ export default ({
                 "slider": "./packages/wj-slider/slider.js",
                 "split-view": "./packages/wj-split-view/split-view.js",
                 // "table": "./packages/wj-table/table.js",
+                "textarea": "./packages/wj-textarea/textarea.js",
                 "thumbnail": "./packages/wj-thumbnail/thumbnail.js",
                 "toast": "./packages/wj-toast/toast.js",
                 "toggle": "./packages/wj-toggle/toggle.js",
@@ -74,12 +79,11 @@ export default ({
                 "tooltip": "./packages/wj-tooltip/tooltip.js",
                 "visually-hidden": "./packages/wj-visually-hidden/visually-hidden.js"
             },
-            name: 'MyLib',
-            // the proper extensions will be added
+            name: 'WjElements',
             fileName: (format, name) => `wj-${name}.js`,
             formats: ['es'],
             publicDir: false,
         },
     },
-})
+});
 

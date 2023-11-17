@@ -11,8 +11,7 @@
     --wj-header-border-style: solid;
     --wj-header-top: 0;
     --wj-header-height: 60px;
-    display: flex;
-    align-items: center;
+    display: block;
     height: var(--wj-header-height);
     width: 100%;
     background: var(--wj-header-background);

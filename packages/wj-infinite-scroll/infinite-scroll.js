@@ -83,8 +83,6 @@ export class InfiniteScroll extends WJElement {
     onScroll = (e)=> {
         const { scrollTop, scrollHeight, clientHeight } = e.target;
 
-        console.log("onScroll:", scrollTop, scrollHeight, clientHeight);
-
         if (scrollTop + clientHeight >= scrollHeight - 300 && this.currentPage <= this.totalPages && this.isLoading.includes(this.currentPage)) {
             this.currentPage++;
             this.loadPages(this.currentPage);
@@ -130,7 +128,6 @@ export class InfiniteScroll extends WJElement {
                 let response;
 
                 if (typeof this.setCustomData === "function") {
-                    console.log("setCustomData PAGE:",  page);
                     response = await this.setCustomData(page);
                 } else {
                     response = await this.getPages(page);

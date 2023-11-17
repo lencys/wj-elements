@@ -1,5 +1,6 @@
 import { default as WJElement } from "../wj-element/wj-element.js";
 import { InfiniteScroll } from "../wj-infinite-scroll/infinite-scroll.js";
+import { Tooltip } from "../wj-tooltip/tooltip.js";
 
 import styles from "./scss/styles.scss?inline";
 
@@ -7,7 +8,7 @@ export class IconPicker extends WJElement {
     constructor() {
         super();
 
-        this.size = 120;
+        this.size = 56;
     }
 
     set markerPosition(value) {
@@ -61,46 +62,38 @@ export class IconPicker extends WJElement {
         let picker = document.createElement("div");
         picker.classList.add("picker");
 
-        let input = document.createElement("wj-input");
-        input.classList.add("input");
-        input.setAttribute("variant", "standard");
-        input.value = "#ff0000";
-
-        let name = document.createElement("div");
-        name.classList.add("name");
-        name.innerText = "Name:";
-
-        let nameSpan = document.createElement("span");
-        nameSpan.classList.add("name-span");
-        nameSpan.innerText = "123";
-
         let select = document.createElement("wj-select");
         select.setAttribute("placeholder", "Category");
         select.setAttribute("variant", "standard");
         select.setAttribute("max-options", "1");
         select.setAttribute("variant", "standard");
-        select.setAttribute("max-height", "200px");
+        select.setAttribute("max-height", "180px");
         select.setAttribute("clearable", "");
         this.createOptions(select);
+
+        let input = document.createElement("wj-input");
+        input.classList.add("input");
+        input.setAttribute("variant", "standard");
+        input.setAttribute("placeholder", "type to filter...");
 
         let infiniteScroll = new InfiniteScroll();
 
         infiniteScroll.setAttribute("url", "/demo/assets/data/tags.json");
         infiniteScroll.setAttribute("placement", ".icon-items");
         infiniteScroll.setAttribute("size", this.size);
-        infiniteScroll.setAttribute("height", "280px");
+        infiniteScroll.setAttribute("height", "223px");
         infiniteScroll.innerHTML = `<div class="icon-items">
             <div class="icon-item" iterate>
-                <wj-icon name="{{name}}" size="large"></wj-icon>
+                <wj-tooltip content="{{name}}">
+                  <wj-icon name="{{name}}" size="large"></wj-icon>
+                </wj-tooltip>
             </div>
         </div>`;
 
         // APPEND
-        name.appendChild(nameSpan);
-
-        picker.appendChild(input);
-        picker.appendChild(name);
         picker.appendChild(select);
+        picker.appendChild(input);
+
         picker.appendChild(infiniteScroll);
 
         // POPUP

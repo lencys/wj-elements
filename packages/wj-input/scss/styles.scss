@@ -34,7 +34,9 @@
       font-family: var(--wj-input-font-family);
       position: relative;
       border-radius: var(--wj-input-border-radius);
-      border: 1px solid var(--wj-input-border-color);
+      border-width: var(--wj-input-border-width);
+      border-style: var(--wj-input-border-style);
+      border-color: var(--wj-input-border-color);
       border-top-color: darken($color-border-a, 10%);
       padding-inline: 0;
       padding-top: .25rem;
@@ -45,7 +47,7 @@
         margin-inline: .5rem;
       }
       &.focused {
-        border: 1px solid var(--wj-input-border-color-focus) !important;
+        border-color: var(--wj-input-border-color-focus) !important;
         label {
           opacity: 0.67;
           font-size: 12px;
@@ -100,7 +102,7 @@
       //margin-bottom: .5rem;
       &.focused {
         input {
-          border: 1px solid var(--wj-input-border-color-focus) !important;
+          border-color: var(--wj-input-border-color-focus) !important;
         }
       }
       input {
@@ -114,7 +116,9 @@
         width: 100%;
         box-sizing: border-box;
         border-radius: var(--wj-input-border-radius);
-        border: 1px solid var(--wj-input-border-color);
+        border-width: var(--wj-input-border-width);
+        border-style: var(--wj-input-border-style);
+        border-color: var(--wj-input-border-color);
       }
       label {
         margin: 0;
@@ -202,7 +206,9 @@ slot[name="start"], slot[name="end"] {
 
 input {
   background-color: var(--wj-input-background-color);
-  border: 1px solid var(--wj-input-border-color);
+  border-width: var(--wj-input-border-width);
+  border-style: var(--wj-input-border-style);
+  border-color: var(--wj-input-border-color);
   font-family: var(--wjinput-font-family);
   color: var(--wj-input-color);
   border-top-color: fade($color-contrast-higher, 21%);

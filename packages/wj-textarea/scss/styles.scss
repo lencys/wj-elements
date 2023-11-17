@@ -9,6 +9,8 @@
   --wj-textarea-background-color: #{$color-contrast-lowest};
   --wj-textarea-color: #{$color-contrast-higher};
   --wj-textarea-color-invalid: #{$color-danger-dark};
+  --wj-textarea-border-width: 1px;
+  --wj-textarea-border-style: solid;
   --wj-textarea-border-color: #{$color-border-a};
   --wj-textarea-border-color-focus: #{$color-primary};
   --wj-textarea-border-radius: 4px;
@@ -21,7 +23,9 @@
   .wrapper {
     display: flex;
     width: 100%;
-    border: 1px solid var(--wj-textarea-border-color);
+    border-width: var(--wj-textarea-border-width);
+    border-style: var(--wj-textarea-border-style);
+    border-color: var(--wj-textarea-border-color);
     border-radius: var(--wj-textarea-border-radius);
   }
   textarea {
@@ -56,7 +60,7 @@
     cursor: text;
     &.focused {
       .wrapper {
-        border: 1px solid var(--wj-textarea-border-color-focus) !important;
+        border-color: var(--wj-textarea-border-color-focus) !important;
       }
       label {
         opacity: 0.67;
@@ -109,7 +113,7 @@
     cursor: text;
     &.focused {
       .wrapper {
-        border: 1px solid var(--wj-textarea-border-color-focus) !important;
+        border-color: var(--wj-textarea-border-color-focus) !important;
       }
     }
     textarea {

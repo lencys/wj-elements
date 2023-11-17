@@ -19,6 +19,8 @@ import { CardControls } from "./wj-card-controls/card-controls.js";
 import { CardHeader } from "./wj-card-header/card-header.js";
 import { CardSubtitle } from "./wj-card-subtitle/card-subtitle.js";
 import { CardTitle } from "./wj-card-title/card-title.js";
+import { Checkbox } from "./wj-checkbox/checkbox.js";
+import { Chip } from "./wj-chip/chip.js";
 import { Col } from "./wj-col/col.js";
 import { ColorPicker } from "./wj-color-picker/color-picker.js";
 import { Container } from "./wj-container/container.js";
@@ -30,8 +32,6 @@ import { ExampleElement } from "./wj-example-element/example-element.js";
 import { Footer } from "./wj-footer/footer.js";
 import { Grid } from "./wj-grid/grid.js";
 import { Header } from "./wj-header/header.js";
-import { Checkbox } from "./wj-checkbox/checkbox.js";
-import { Chip } from "./wj-chip/chip.js";
 import { Icon } from "./wj-icon/icon.js";
 import { IconPicker } from "./wj-icon-picker/icon-picker.js";
 import { Img } from "./wj-img/img.js";
@@ -87,6 +87,8 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   CardHeader,
   CardSubtitle,
   CardTitle,
+  Checkbox,
+  Chip,
   Col,
   ColorPicker,
   Container,
@@ -98,8 +100,6 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   Footer,
   Grid,
   Header,
-  Checkbox,
-  Chip,
   Icon,
   IconPicker,
   Img,

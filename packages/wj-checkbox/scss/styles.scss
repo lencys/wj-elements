@@ -11,6 +11,8 @@ $white-check-icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAA
   --wj-checkbox-margin-top: 0;
   --wj-checkbox-margin-bottom: .5rem;
   --wj-checkbox-margin-inline: 0;
+  --wj-checkbox-width: 16px;
+  --wj-checkbox-height: 16px;
   display: block;
   margin-top: var(--wj-checkbox-margin-top);
   margin-bottom: var(--wj-checkbox-margin-bottom);
@@ -23,8 +25,8 @@ $white-check-icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAA
     cursor: pointer;
     position: relative;
     @include padding-left(25px);
-    min-width: 16px;
-    min-height: 16px;
+    min-width: var(--wj-checkbox-width);
+    min-height: var(--wj-checkbox-height);
     margin-bottom: 0;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */

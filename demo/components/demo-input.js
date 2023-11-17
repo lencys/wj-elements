@@ -111,7 +111,7 @@ template.innerHTML = `<h1>Input</h1>
     <div class="playground">
       <div class="content">
         <wj-input variant="standard" label="Default input" class="example">
-          <wj-button fill="link" slot="end"><wj-icon name="search"></wj-icon></wj-button>
+          <wj-button fill="solid" slot="end"><wj-icon name="search"></wj-icon></wj-button>
         </wj-input>
         <style>
           .example {
@@ -120,6 +120,7 @@ template.innerHTML = `<h1>Input</h1>
           
           .example wj-button {
             --wj-button-border-radius: 0 !important;
+            --wj-color-base: #000000 !important;
           }
         </style>
       </div>

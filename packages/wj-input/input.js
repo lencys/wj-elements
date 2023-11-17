@@ -92,6 +92,7 @@ export class Input extends WJElement {
 
         // Wrapper
         let native = document.createElement("div");
+        native.setAttribute("part", "native");
         native.classList.add("native-input", this.variant || "default");
 
         if(this.hasAttribute("invalid"))
