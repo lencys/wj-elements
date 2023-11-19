@@ -14,7 +14,12 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Element card-subtitle je komponent navrhnutý na použitie v rámci elementu Card Header na poskytnutie doplnkového alebo sekundárneho textu, čím používateľovi poskytuje dodatočný kontext alebo informácie súvisiace s hlavným obsahom karty.
 
-Pre viac informácií o použítí Card Subtitle sa presuňte do dokumentácie elementu **[Card**.](https://www.notion.so/Card-1fff2f892aa7490db5637e5b7e096129?pvs=21)
+:::note Poznámka
+
+Pre viac informácií o použítí Card Subtitle sa presuňte do dokumentácie elementu [Card.](./card)
+
+:::
+
 
 ## Eventy
 

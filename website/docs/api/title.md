@@ -42,7 +42,7 @@ import CollapsibleLargeTitle from '@site/static/usage/v1/title/collapsible-large
 
 ### Collapsible Buttons
 
-The [buttons](./buttons.md) component can be used with the [`collapse`](./buttons.md#collapse) property to additionally display in the header as the toolbar is collapsed.
+The [buttons](./button-group.md) component can be used with the [`collapse`](./button-group.md#collapse) property to additionally display in the header as the toolbar is collapsed.
 
 
 import CollapsibleLargeTitleButtons from '@site/static/usage/v1/title/collapsible-large-title/buttons/index.md';

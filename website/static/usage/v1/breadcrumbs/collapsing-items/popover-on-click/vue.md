@@ -1,34 +1,24 @@
 ```html
 <template>
-  <ion-breadcrumbs :max-items="4" @ionCollapsedClick="presentPopover($event)">
-    <ion-breadcrumb href="#home">Home</ion-breadcrumb>
-    <ion-breadcrumb href="#electronics">Electronics</ion-breadcrumb>
-    <ion-breadcrumb href="#photography">Photography</ion-breadcrumb>
-    <ion-breadcrumb href="#cameras">Cameras</ion-breadcrumb>
-    <ion-breadcrumb href="#film">Film</ion-breadcrumb>
-    <ion-breadcrumb href="#35mm">35 mm</ion-breadcrumb>
-  </ion-breadcrumbs>
-  <ion-popover :is-open="popoverOpen" :event="event" @didDismiss="popoverOpen = false">
-    <ion-content>
-      <ion-list>
-        <ion-item
-          v-for="(breadcrumb, i) in collapsedBreadcrumbs"
-          :href="breadcrumb.href"
-          :lines="i === collapsedBreadcrumbs.length - 1 ? 'none' : undefined"
-        >
-          <ion-label>{{ breadcrumb.textContent }}</ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-popover>
+  <wj-breadcrumbs max-items="4" items-before-collapse="2" collapsed-variant="dropdown">
+    <wj-breadcrumb href="/home">Home</wj-breadcrumb>
+    <wj-breadcrumb href="/electronics">Electronics</wj-breadcrumb>
+    <wj-breadcrumb href="/photography">Photography</wj-breadcrumb>
+    <wj-breadcrumb href="/cameras">Cameras</wj-breadcrumb>
+    <wj-breadcrumb href="/film">Film</wj-breadcrumb>
+    <wj-breadcrumb href="/35mm">35 mm</wj-breadcrumb>
+    <wj-breadcrumb href="/a">A</wj-breadcrumb>
+    <wj-breadcrumb href="/b">B</wj-breadcrumb>
+    <wj-breadcrumb href="/c">C</wj-breadcrumb>
+  </wj-breadcrumbs>
 </template>
 
 <script lang="ts">
-  import { IonBreadcrumb, IonBreadcrumbs, IonContent, IonItem, IonLabel, IonList, IonPopover } from '@ionic/vue';
+  import { Breadcrumb, Breadcrumbs, Content, Item, Label, List, Popover } from '@elements/vue';
   import Popover from './Popover.vue';
 
   export default {
-    components: { IonBreadcrumb, IonBreadcrumbs, IonContent, IonItem, IonLabel, IonList, IonPopover },
+    components: { Breadcrumb, Breadcrumbs, Content, Item, Label, List, Popover },
     data() {
       return {
         popoverOpen: false,

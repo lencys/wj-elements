@@ -1,28 +1,26 @@
 ```tsx
 import React from 'react';
-import { IonBreadcrumb, IonBreadcrumbs, IonIcon } from '@ionic/react';
-import { arrowForwardCircle } from 'ionicons/icons';
-
+import { Breadcrumb, Breadcrumbs } from '@elements/react';
 function Example() {
   return (
-    <IonBreadcrumbs>
-      <IonBreadcrumb href="#home">
-        Home
-        <IonIcon slot="separator" icon={arrowForwardCircle}></IonIcon>
-      </IonBreadcrumb>
-      <IonBreadcrumb href="#electronics">
-        Electronics
-        <IonIcon slot="separator" icon={arrowForwardCircle}></IonIcon>
-      </IonBreadcrumb>
-      <IonBreadcrumb href="#cameras">
-        Cameras
-        <IonIcon slot="separator" icon={arrowForwardCircle}></IonIcon>
-      </IonBreadcrumb>
-      <IonBreadcrumb href="#film">
-        Film
-        <IonIcon slot="separator" icon={arrowForwardCircle}></IonIcon>
-      </IonBreadcrumb>
-    </IonBreadcrumbs>
+  <wj-breadcrumbs>
+    <wj-breadcrumb href="/home">
+      Home
+      <wj-icon slot="separator" name="slash"></wj-icon>
+    </wj-breadcrumb>
+    <wj-breadcrumb href="/electronics">
+      Electronics
+      <wj-icon slot="separator" name="slash"></wj-icon>
+    </wj-breadcrumb>
+    <wj-breadcrumb href="/cameras">
+      Cameras
+      <wj-icon slot="separator" name="slash"></wj-icon>
+    </wj-breadcrumb>
+    <wj-breadcrumb href="/film">
+      Film
+      <wj-icon slot="separator" name="slash"></wj-icon>
+    </wj-breadcrumb>
+  </wj-breadcrumbs>
   );
 }
 export default Example;

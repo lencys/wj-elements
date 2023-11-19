@@ -6,61 +6,39 @@
     <title>Breadcrumbs</title>
     <link rel="stylesheet" href="../../../../common.css" />
     <script src="../../../../common.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@7/dist/ionic/ionic.esm.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@7/css/ionic.bundle.css" />
-
-    <style>
-      .container {
-        flex-direction: column;
-      }
-    </style>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/wj-main.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/style.css" />
   </head>
-
   <body>
-    <ion-app>
-      <ion-content>
-        <div class="container">
-          <div>Before Collapse = 2</div>
-          <ion-breadcrumbs max-items="4" items-before-collapse="2">
-            <ion-breadcrumb href="#home">Home</ion-breadcrumb>
-            <ion-breadcrumb href="#electronics">Electronics</ion-breadcrumb>
-            <ion-breadcrumb href="#photography">Photography</ion-breadcrumb>
-            <ion-breadcrumb href="#cameras">Cameras</ion-breadcrumb>
-            <ion-breadcrumb href="#film">Film</ion-breadcrumb>
-            <ion-breadcrumb href="#35mm">35 mm</ion-breadcrumb>
-          </ion-breadcrumbs>
-
-          <div class="ion-margin-top">Before Collapse = 0</div>
-          <ion-breadcrumbs max-items="4" items-before-collapse="0">
-            <ion-breadcrumb href="#home">Home</ion-breadcrumb>
-            <ion-breadcrumb href="#electronics">Electronics</ion-breadcrumb>
-            <ion-breadcrumb href="#photography">Photography</ion-breadcrumb>
-            <ion-breadcrumb href="#cameras">Cameras</ion-breadcrumb>
-            <ion-breadcrumb href="#film">Film</ion-breadcrumb>
-            <ion-breadcrumb href="#35mm">35 mm</ion-breadcrumb>
-          </ion-breadcrumbs>
-
-          <div class="ion-margin-top">After Collapse = 2</div>
-          <ion-breadcrumbs max-items="4" items-after-collapse="2">
-            <ion-breadcrumb href="#home">Home</ion-breadcrumb>
-            <ion-breadcrumb href="#electronics">Electronics</ion-breadcrumb>
-            <ion-breadcrumb href="#photography">Photography</ion-breadcrumb>
-            <ion-breadcrumb href="#cameras">Cameras</ion-breadcrumb>
-            <ion-breadcrumb href="#film">Film</ion-breadcrumb>
-            <ion-breadcrumb href="#35mm">35 mm</ion-breadcrumb>
-          </ion-breadcrumbs>
-
-          <div class="ion-margin-top">Before Collapse = 2, After Collapse = 2</div>
-          <ion-breadcrumbs max-items="4" items-before-collapse="2" items-after-collapse="2">
-            <ion-breadcrumb href="#home">Home</ion-breadcrumb>
-            <ion-breadcrumb href="#electronics">Electronics</ion-breadcrumb>
-            <ion-breadcrumb href="#photography">Photography</ion-breadcrumb>
-            <ion-breadcrumb href="#cameras">Cameras</ion-breadcrumb>
-            <ion-breadcrumb href="#film">Film</ion-breadcrumb>
-            <ion-breadcrumb href="#35mm">35 mm</ion-breadcrumb>
-          </ion-breadcrumbs>
+    <div class="playground">
+      <div class="content">
+        <div class="container" style="flex-direction: column;">
+          <wj-label>Počet položiek pred zbalením</wj-label>
+          <wj-breadcrumbs max-items="4" items-before-collapse="2">
+            <wj-breadcrumb href="/home">Home</wj-breadcrumb>
+            <wj-breadcrumb href="/electronics">Electronics</wj-breadcrumb>
+            <wj-breadcrumb href="/photography">Photography</wj-breadcrumb>
+            <wj-breadcrumb href="/cameras">Cameras</wj-breadcrumb>
+            <wj-breadcrumb href="/film">Film</wj-breadcrumb>
+            <wj-breadcrumb href="/35mm">35 mm</wj-breadcrumb>
+            <wj-breadcrumb href="/a">A</wj-breadcrumb>
+            <wj-breadcrumb href="/b">B</wj-breadcrumb>
+            <wj-breadcrumb href="/c">C</wj-breadcrumb>
+          </wj-breadcrumbs>
+          <wj-label>Počet položiek po zbaľovači</wj-label>
+          <wj-breadcrumbs max-items="4" items-after-collapse="2">
+            <wj-breadcrumb href="/home">Home</wj-breadcrumb>
+            <wj-breadcrumb href="/electronics">Electronics</wj-breadcrumb>
+            <wj-breadcrumb href="/photography">Photography</wj-breadcrumb>
+            <wj-breadcrumb href="/cameras">Cameras</wj-breadcrumb>
+            <wj-breadcrumb href="/film">Film</wj-breadcrumb>
+            <wj-breadcrumb href="/35mm">35 mm</wj-breadcrumb>
+            <wj-breadcrumb href="/a">A</wj-breadcrumb>
+            <wj-breadcrumb href="/b">B</wj-breadcrumb>
+            <wj-breadcrumb href="/c">C</wj-breadcrumb>
+          </wj-breadcrumbs>
         </div>
-      </ion-content>
-    </ion-app>
+      </div>
+    </div>
   </body>
 </html>

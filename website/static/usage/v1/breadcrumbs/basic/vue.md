@@ -1,19 +1,19 @@
 ```html
 <template>
-  <ion-breadcrumbs>
-    <ion-breadcrumb href="#home">Home</ion-breadcrumb>
-    <ion-breadcrumb href="#electronics">Electronics</ion-breadcrumb>
-    <ion-breadcrumb href="#cameras">Cameras</ion-breadcrumb>
-    <ion-breadcrumb href="#film">Film</ion-breadcrumb>
-  </ion-breadcrumbs>
+  <wj-breadcrumbs>
+    <wj-breadcrumb href="/house">Home</wj-breadcrumb>
+    <wj-breadcrumb href="/electronics">Electronics</wj-breadcrumb>
+    <wj-breadcrumb href="/cameras">Cameras</wj-breadcrumb>
+    <wj-breadcrumb href="/film">Film</wj-breadcrumb>
+  </wj-breadcrumbs>
 </template>
 
 <script lang="ts">
-  import { IonBreadcrumb, IonBreadcrumbs } from '@ionic/vue';
+  import { Breadcrumb, Breadcrumbs } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { IonBreadcrumb, IonBreadcrumbs },
+    components: { Breadcrumb, Breadcrumbs },
   });
 </script>
 ```
