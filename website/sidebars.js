@@ -302,12 +302,18 @@ module.exports = {
       collapsed: false,
       items: ['api/chip'],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Content',
-    //   collapsed: false,
-    //   items: ['api/app', 'api/content'],
-    // },
+    {
+      type: 'category',
+      label: 'Color picker',
+      collapsed: false,
+      items: ['api/color-picker'],
+    },
+    {
+      type: 'category',
+      label: 'Copy button',
+      collapsed: false,
+      items: ['api/copy-button'],
+    },
     // {
     //   type: 'category',
     //   label: 'Date & Time Pickers',
@@ -320,29 +326,59 @@ module.exports = {
         collapsed: false,
         items: ['api/dialog'],
       },
+      {
+        type: 'category',
+        label: 'Dropdown',
+        collapsed: false,
+        items: ['api/dropdown'],
+      },
     // {
     //   type: 'category',
     //   label: 'Floating Action Button',
     //   collapsed: false,
     //   items: ['api/fab', 'api/fab-button', 'api/fab-list'],
     // },
-    // {
-    //   type: 'category',
-    //   label: 'Grid',
-    //   collapsed: false,
-    //   items: ['api/grid', 'api/col', 'api/row'],
-    // },
+    {
+      type: 'category',
+      label: 'Grid',
+      collapsed: false,
+      items: ['api/grid', 'api/col', 'api/row'],
+    },
     // {
     //   type: 'category',
     //   label: 'Infinite Scroll',
     //   collapsed: false,
     //   items: ['api/infinite-scroll', 'api/infinite-scroll-content'],
     // },
-    // {
+    {
+      type: 'category',
+      label: 'Icons',
+      collapsed: false,
+      items: ['api/icon'],
+    },
+    {
+      type: 'category',
+      label: 'Icon picker TODO',
+      collapsed: false,
+      items: ['api/img']
+    },
+    {
+      type: 'category',
+      label: 'Image',
+      collapsed: false,
+      items: ['api/img']
+    },
+    {
+      type: 'category',
+      label: 'Image Comparer',
+      collapsed: false,
+      items: ['api/img-comparer']
+    },
+        // {
     //   type: 'category',
-    //   label: 'Icons',
+    //   label: 'Media',
     //   collapsed: false,
-    //   items: ['api/icon'],
+    //   items: ['api/avatar', 'api/icon', 'api/img', 'api/thumbnail'],
     // },
     // {
     //   type: 'category',

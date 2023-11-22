@@ -1,46 +1,64 @@
 ---
-title: "ion-img"
+title: "Image"
 ---
 
-import Props from '@ionic-internal/component-api/v1/img/props.md';
-import Events from '@ionic-internal/component-api/v1/img/events.md';
-import Methods from '@ionic-internal/component-api/v1/img/methods.md';
-import Parts from '@ionic-internal/component-api/v1/img/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/img/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/img/slots.md';
-
 <head>
-  <title>Img Tag to Lazy Load Images in Viewport | ion-img Tag</title>
-  <meta name="description" content="Img tag lazy loads images whenever the tag is in the viewport. Utilize this component when generating large lists—as images are only loaded when visible." />
+  <title>Image Element pre lazy loading obrázkov</title>
+  <meta name="description" content="Element Image pridáva obrázkom funkciu lazyload a počas načítavania zobrazuje zástupnú ikonu (placeholder) v podobe animovaného obrázka." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-
-Img is a tag that will lazily load an image whenever the tag is in the viewport. This is extremely useful when generating a large list as images are only loaded when they're visible. The component uses [Intersection Observer](https://caniuse.com/#feat=intersectionobserver) internally, which is supported in most modern browsers, but falls back to a `setTimeout` when it is not supported.
+Element Image pridáva obrázkom funkciu lazyload a počas načítavania zobrazuje zástupnú ikonu (placeholder) v podobe animovaného obrázka.
 
 ## Basic Usage
 
 import Basic from '@site/static/usage/v1/img/basic/index.md';
 
+<div class="large">
+
 <Basic />
 
-## Properties
-<Props />
+</div>
 
-## Events
-<Events />
+## Atribúty a Vlastnosti
 
-## Methods
-<Methods />
+### alt
+
+|  |  |
+| --- | --- |
+| Popis | Slúži ako alternatívny text na opis obsahu obrázka, ktorý sa zobrazí v prípade, ak sa obrázok nenačíta. Používajú ho tiež čítačky obrazovky. |
+| Atribút | `alt` |
+| Typ | `string` ｜ `undefined` |
+| Predvolená hodnota | `undefined` |
+
+### src
+
+|  |  |
+| --- | --- |
+| Popis | Určuje zdrojovú adresu URL súboru obrázka, ktorý sa má zobraziť na webovej stránke. |
+| Atribút | `src` |
+| Typ | `string` ｜ `undefined` |
+| Predvolená hodnota | `undefined` |
+
+## Eventy
+
+Pre tento komponent nie sú k dispozícii žiadne verejné eventy.
+
+## Metódy
+
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
 ## CSS Shadow Parts
-<Parts />
 
-## CSS Custom Properties
-<CustomProps />
+Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
 
-## Slots
-<Slots />
+## CSS Custom Vlastnosti
+
+Pre tento komponent nie sú k dispozícii žiadne CSS custom vlastnosti.
+
+## Sloty
+
+Pre tento komponent nie sú k dispozícii žiadne sloty.

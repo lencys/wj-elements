@@ -145,9 +145,9 @@ import Custom from '@site/static/usage/v1/button/theming/css-properties/index.md
 
 |  |  |
 | --- | --- |
-| Popis | Nastavte na `"small"` pre tlačidlo s menšou výškou a výplňou, na `"default"` pre tlačidlo s predvolenou výškou a výplňou alebo na `"large"` pre tlačidlo s väčšou výškou a výplňou. V predvolenom nastavení je veľkosť nenastavená, pokiaľ sa tlačidlo nenachádza vo vnútri položky, kde je predvolená veľkosť `"small"`. Nastavením veľkosti na `"default"` vo vnútri položky sa z neho stane tlačidlo štandardnej veľkosti. |
+| Popis | Nastavte na `"small"` pre tlačidlo s menšou výškou a výplňou, alebo na `"large"` pre tlačidlo s väčšou výškou a výplňou. V predvolenom nastavení je veľkosť nastavená na defaultnú.|
 | Atribút | `size` |
-| Typ | `"default"` ｜ `"large"` ｜ `"small"` ｜ `undefined` |
+| Typ | `"large"` ｜ `"small"` ｜ `undefined` |
 | Predvolená hodnota | `undefined` |
 
 ## Eventy

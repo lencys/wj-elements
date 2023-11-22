@@ -12,7 +12,7 @@ template.innerHTML = `<h1>Icons</h1>
       <div class="content">
         <wj-icon name="check"></wj-icon>
         <wj-icon name="check" size="large"></wj-icon>
-        <wj-icon name="check" color="danger"></wj-icon>
+        <wj-icon name="check" color="primary"></wj-icon>
         <wj-icon name="check" size="large" color="danger"></wj-icon>
       </div>
     </div>

@@ -199,8 +199,13 @@
 .playground iframe {
   box-shadow: none;
   background: transparent;
-
   width: 100%;
+}
+.large .playground iframe {
+  min-height: 300px;
+}
+.xlarge .playground iframe {
+  min-height: 330px;
 }
 
 .playground .frame-hidden {

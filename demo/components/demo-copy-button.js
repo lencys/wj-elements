@@ -15,7 +15,7 @@ template.innerHTML = `<h1>Copy Button</h1>
       
       <!-- CUSTOM LABEL -->
   
-      <h2>Custom</h2>
+      <h2>Custom label</h2>
       <div class="playground">
         <div class="content">
           <wj-copy-button value="I am copy - Value" label="Kopírovať" label-success="Skopírované"></wj-copy-button>

@@ -6,20 +6,19 @@
     <title>Icon</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@7/dist/ionic/ionic.esm.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@7/css/ionic.bundle.css" />
+    <!-- <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/wj-main.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/style.css" /> -->
+    <script type="module" src="./../../../../wj-elementy/wj-master.js"></script>
+    <link rel="stylesheet" href="./../../../../wj-elementy/style.css" />
   </head>
-
   <body>
-    <ion-app>
-      <ion-content>
-        <div class="container">
-          <ion-icon name="logo-ionic"></ion-icon>
-          <ion-icon name="logo-ionic" size="large"></ion-icon>
-          <ion-icon name="logo-ionic" color="primary"></ion-icon>
-          <ion-icon name="logo-ionic" size="large" color="primary"></ion-icon>
-        </div>
-      </ion-content>
-    </ion-app>
+    <div class="playground">
+        <div class="content" style="min-height: 100px;">
+          <wj-icon name="check"></wj-icon>
+          <wj-icon name="check" size="large"></wj-icon>
+          <wj-icon name="check" color="danger"></wj-icon>
+          <wj-icon name="check" size="large" color="danger"></wj-icon>
+      </div>
+    </div>
   </body>
 </html>

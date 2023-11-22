@@ -1,50 +1,41 @@
 ```html
 <template>
-  <b>Column 2 has <code>size</code> set to <code>"8"</code></b>
-  <ion-grid>
-    <ion-row>
-      <ion-col>1</ion-col>
-      <ion-col size="8">2</ion-col>
-      <ion-col>3</ion-col>
-    </ion-row>
-  </ion-grid>
+  <span>Slĺpec 2 má <strong>size</strong> <strong>"8"</strong></span>
+  <wj-grid>
+    <wj-row>
+      <wj-col>1</wj-col>
+      <wj-col size="8">2</wj-col>
+      <wj-col>3</wj-col>
+    </wj-row>
+  </wj-grid>
 
-  <b>Columns 3 & 4 have <code>size</code> set to <code>"3"</code></b>
-  <ion-grid>
-    <ion-row>
-      <ion-col>1</ion-col>
-      <ion-col>2</ion-col>
-      <ion-col size="3">3</ion-col>
-      <ion-col size="3">4</ion-col>
-      <ion-col>5</ion-col>
-      <ion-col>6</ion-col>
-    </ion-row>
-  </ion-grid>
+  <span>Stĺpce 3 & 4 majú <strong>size</strong> <strong>"3"</strong></span>
+  <wj-grid>
+    <wj-row>
+      <wj-col>1</wj-col>
+      <wj-col>2</wj-col>
+      <wj-col size="3">3</wj-col>
+      <wj-col size="3">4</wj-col>
+      <wj-col>5</wj-col>
+      <wj-col>6</wj-col>
+    </wj-row>
+  </wj-grid>
 
-  <b>Columns 1 & 2 have <code>size</code> set to <code>"4"</code></b>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="4">1</ion-col>
-      <ion-col size="4">2</ion-col>
-    </ion-row>
-  </ion-grid>
+  <span>Stĺpce 1 & 2 majú <strong>size</strong> nastavenú na <strong>"4"</strong></span>
+  <wj-grid>
+    <wj-row>
+      <wj-col size="4">1</wj-col>
+      <wj-col size="4">2</wj-col>
+    </wj-row>
+  </wj-grid>
 </template>
 
-<script lang="ts">
-  import { IonCol, IonGrid, IonRow } from '@ionic/vue';
+<script>
+  import { Col, Grid, Row } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { IonCol, IonGrid, IonRow },
+    components: { Col, Grid, Row  },
   });
 </script>
-
-<style scoped>
-  ion-col {
-    background-color: #135d54;
-    border: solid 1px #fff;
-    color: #fff;
-    text-align: center;
-  }
-</style>
 ```

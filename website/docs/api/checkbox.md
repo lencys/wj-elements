@@ -4,13 +4,12 @@ title: "Checkbox"
 
 <head>
   <title>Checkbox: WebJET Element pre vybratie viacerých možností</title>
-  <meta name="description" content="ion-checkboxes allow selection of multiple options from a set and appear as checked (ticked) when activated. Learn about the checkbox component for Ionic apps." />
+  <meta name="description" content="Checkbox, alebo tiež začiarkavacie políčko, je element, ktorý umožňuje používateľom vybrať jednu alebo viac možností z množiny. Kliknutím na checkbox zmeníte jeho stav na `true` alebo `false`." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
-
 
 Checkbox, alebo tiež začiarkavacie políčko, je element, ktorý umožňuje používateľom vybrať jednu alebo viac možností z množiny. Kliknutím na checkbox zmeníte jeho stav na `true` alebo `false`.
 
@@ -21,7 +20,7 @@ import Basic from '@site/static/usage/v1/checkbox/basic/index.md';
 <Basic />
 
 
-## Indeterminate (Neurčité) Checkboxy
+## Indeterminate checkbox
 
 Po pridaní atribútu `indeterminate` sa zobrazí checkbox, ktorého predvolený stav je neutrálny, tzn. ani `true` ani `false`.
 
@@ -36,10 +35,6 @@ Pridaní atribútu `variant` s hodnotou `circle` zobrazíte checkbox v okrúhlom
 import Variant from '@site/static/usage/v1/checkbox/variant/index.md';
 
 <Variant />
-
-## Theming
-
-### CSS Custom Properties
 
 ## Atribúty a Vlastnosti
 
@@ -90,15 +85,26 @@ import Variant from '@site/static/usage/v1/checkbox/variant/index.md';
 
 ## Eventy
 
+Pre tento komponent nie sú k dispozícii žiadne verejné eventy.
 
 ## Metódy
 
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
-## CSS Shadow Parts
+## CSS Shadow Party
 
+Pre tento komponent nie sú k dispozícii žiadne shadow party.
 
-## CSS Custom Properties
+## CSS Custom Vlastnosti
 
+| Vlastnosť                       | Popis                    |
+|---------------------------------|--------------------------|
+| `--wj-checkbox-height` | Určuje minimálnu výšku checkboxu | 
+| `--wj-checkbox-margin-bottom` | Veľkosť vonkajšieho spodného okraja | 
+| `--wj-checkbox-margin-inline` | Veľkosť vonkajších okrajov vľavo a vpravo | 
+| `--wj-checkbox-margin-top` | Veľkosť vonkajšieho horného okraja | 
+| `--wj-checkbox-width` | Určuje minimálnu šírku checkboxu | 
 
 ## Sloty
 
+Pre tento komponent nie sú k dispozícii žiadne sloty.

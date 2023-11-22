@@ -1,41 +1,32 @@
 ```html
-<b>Stacked for xs breakpoint, equal width for sm and up</b>
-<ion-grid>
-  <ion-row>
-    <ion-col size="12" size-sm="3">1</ion-col>
-    <ion-col size="12" size-sm="3">2</ion-col>
-    <ion-col size="12" size-sm="3">3</ion-col>
-    <ion-col size="12" size-sm="3">4</ion-col>
-  </ion-row>
-</ion-grid>
+<span>Naskladané pre xs breakpoint, rovnaká šírka pre sm a vyššie</span>
+<wj-grid>
+  <wj-row>
+    <wj-col size="12" size-sm="3">1</wj-col>
+    <wj-col size="12" size-sm="3">2</wj-col>
+    <wj-col size="12" size-sm="3">3</wj-col>
+    <wj-col size="12" size-sm="3">4</wj-col>
+  </wj-row>
+</wj-grid>
 
-<b>Equal width until md breakpoint, last column takes full width for md and up</b>
-<ion-grid>
-  <ion-row>
-    <ion-col size-md="6">1</ion-col>
-    <ion-col size-md="6">2</ion-col>
-    <ion-col size-md="12">3</ion-col>
-  </ion-row>
-</ion-grid>
+<span>Rovnaká šírka do md, posledný stĺpec má plnú šírku pre md a vyššie</span>
+<wj-grid>
+  <wj-row wrap>
+    <wj-col size-md="6">1</wj-col>
+    <wj-col size-md="6">2</wj-col>
+    <wj-col size-md="12">3</wj-col>
+  </wj-row>
+</wj-grid>
 
-<b>2 per row until md breakpoint, 3 per row for md, equal width for lg and up</b>
-<ion-grid>
-  <ion-row>
-    <ion-col size="6" size-md="4" size-lg="2">1</ion-col>
-    <ion-col size="6" size-md="4" size-lg="2">2</ion-col>
-    <ion-col size="6" size-md="4" size-lg="2">3</ion-col>
-    <ion-col size="6" size-md="4" size-lg="2">4</ion-col>
-    <ion-col size="6" size-md="4" size-lg="2">5</ion-col>
-    <ion-col size="6" size-md="4" size-lg="2">6</ion-col>
-  </ion-row>
-</ion-grid>
-
-<style>
-  ion-col {
-    background-color: #135d54;
-    border: solid 1px #fff;
-    color: #fff;
-    text-align: center;
-  }
-</style>
+<span>2 na riadok do breakpointu md, 3 na riadok pre md, rovnaká šírka pre lg a vyššie</span>
+<wj-grid>
+  <wj-row wrap>
+    <wj-col size="6" size-md="4" size-lg="2">1</wj-col>
+    <wj-col size="6" size-md="4" size-lg="2">2</wj-col>
+    <wj-col size="6" size-md="4" size-lg="2">3</wj-col>
+    <wj-col size="6" size-md="4" size-lg="2">4</wj-col>
+    <wj-col size="6" size-md="4" size-lg="2">5</wj-col>
+    <wj-col size="6" size-md="4" size-lg="2">6</wj-col>
+  </wj-row>
+</wj-grid>
 ```
