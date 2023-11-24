@@ -1,30 +1,29 @@
 ```tsx
 import React from 'react';
-import { IonIcon, IonItem, IonLabel } from '@ionic/react';
-import { informationCircle, star } from 'ionicons/icons';
+import { Item, Label, Icon } from '@elements/react';
 
 function Example() {
   return (
     <>
-      <IonItem>
-        <IonLabel>Default Icon</IonLabel>
-        <IonIcon icon={informationCircle} slot="end"></IonIcon>
-      </IonItem>
+      <wj-item>
+        <wj-label>Default Icon</wj-label>
+        <wj-icon name="info-circle" slot="end"></wj-icon>
+      </wj-item>
 
-      <IonItem>
-        <IonLabel>Large Icon</IonLabel>
-        <IonIcon icon={informationCircle} size="large" slot="end"></IonIcon>
-      </IonItem>
+      <wj-item>
+        <wj-label>Large Icon</wj-label>
+        <wj-icon name="info-circle" size="large" slot="end"></wj-icon>
+      </wj-item>
 
-      <IonItem>
-        <IonLabel>Small Icon</IonLabel>
-        <IonIcon icon={informationCircle} size="small" slot="end"></IonIcon>
-      </IonItem>
+      <wj-item>
+        <wj-label>Small Icon</wj-label>
+        <wj-icon name="info-circle" size="small" slot="end"></wj-icon>
+      </wj-item>
 
-      <IonItem>
-        <IonIcon icon={star} slot="start"></IonIcon>
-        <IonLabel>Default Icon</IonLabel>
-      </IonItem>
+      <wj-item>
+        <wj-icon name="star" slot="start"></wj-icon>
+        <wj-label>Default Icon</wj-label>
+      </wj-item>
     </>
   );
 }

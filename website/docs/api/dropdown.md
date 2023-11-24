@@ -51,7 +51,7 @@ Pre tento komponent nie sú k dispozícii žiadne verejné eventy.
 
 Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
-## CSS Shadow Parts
+## CSS Shadow Party
 
 | Názov                           | Popis                    |
 |---------------------------------|--------------------------|

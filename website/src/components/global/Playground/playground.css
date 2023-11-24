@@ -201,11 +201,18 @@
   background: transparent;
   width: 100%;
 }
+.small .playground iframe {
+  min-height: 240px;
+  height: auto;
+}
 .large .playground iframe {
   min-height: 300px;
 }
 .xlarge .playground iframe {
   min-height: 330px;
+}
+.xxlarge .playground iframe {
+  min-height: 360px;
 }
 
 .playground .frame-hidden {

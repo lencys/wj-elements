@@ -3,63 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Item</title>
+    <title>Icon</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@7/dist/ionic/ionic.esm.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@7/css/ionic.bundle.css" />
-
-    <style>
-      .container {
-        display: block;
-      }
-    </style>
+    <!-- <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/wj-main.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/style.css" /> -->
+    <script type="module" src="./../../../../wj-elementy/wj-master.js"></script>
+    <link rel="stylesheet" href="./../../../../wj-elementy/style.css" />
   </head>
-
   <body>
-    <ion-app>
-      <ion-content>
-        <div class="container">
-          <ion-item>
-            <ion-label>Basic Item</ion-label>
-          </ion-item>
+    <div class="playground">
+      <div class="content" style="display: block;max-width: 60%;margin: auto;">
+        <wj-item>
+          <wj-label>Basic Item</wj-label>
+        </wj-item>
 
-          <ion-item>
-            <ion-label>
-              Multi-line text that should ellipsis when it is too long to fit on one line. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit.
-            </ion-label>
-          </ion-item>
+        <wj-item>
+          <wj-label>
+            Multi-line text that should ellipsis when it is too long to fit on
+            one line. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </wj-label>
+        </wj-item>
 
-          <ion-item>
-            <ion-label class="ion-text-wrap">
-              Multi-line text that should wrap when it is too long to fit on one line. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit.
-            </ion-label>
-          </ion-item>
+        <wj-item>
+          <wj-label class="wj-text-wrap">
+            Multi-line text that should wrap when it is too long to fit on one
+            line. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </wj-label>
+        </wj-item>
 
-          <ion-item>
-            <ion-label>
-              <h1>H1 Heading</h1>
-              <p>Paragraph</p>
-            </ion-label>
-          </ion-item>
+        <wj-item>
+          <wj-label>
+            <h1>H1 Heading</h1>
+            <p>Paragraph</p>
+          </wj-label>
+        </wj-item>
 
-          <ion-item>
-            <ion-label>
-              <h2>H2 Heading</h2>
-              <p>Paragraph</p>
-            </ion-label>
-          </ion-item>
+        <wj-item>
+          <wj-label>
+            <h2>H2 Heading</h2>
+            <p>Paragraph</p>
+          </wj-label>
+        </wj-item>
 
-          <ion-item>
-            <ion-label>
-              <h3>H3 Heading</h3>
-              <p>Paragraph</p>
-            </ion-label>
-          </ion-item>
-        </div>
-      </ion-content>
-    </ion-app>
+        <wj-item>
+          <wj-label>
+            <h3>H3 Heading</h3>
+            <p>Paragraph</p>
+          </wj-label>
+        </wj-item>
+      </div>
+    </div>
   </body>
 </html>

@@ -1,24 +1,24 @@
 ```tsx
 import React from 'react';
-import { IonAvatar, IonItem, IonLabel, IonThumbnail } from '@ionic/react';
+import { Item, Label, Avatar, Image, Thumbnail } from '@elements/react';
 
 function Example() {
   return (
     <>
-      <IonItem>
-        <IonAvatar slot="start">
-          <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-        </IonAvatar>
-        <IonLabel>Avatar Item</IonLabel>
-      </IonItem>
+    <wj-item>
+      <wj-avatar slot="start">
+        <wj-img alt="Silhouette of a person's head" src="/assets/img/avatar.svg"></wj-img>
+      </wj-avatar>
+      <wj-label> Avatar Item </wj-label>
+    </wj-item>
 
-      <IonItem>
-        <IonThumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-        </IonThumbnail>
-        <IonLabel>Thumbnail Item</IonLabel>
-      </IonItem>
-    </>
+    <wj-item>
+      <wj-thumbnail slot="start">
+        <wj-img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg"></wj-img>
+      </wj-thumbnail>
+      <wj-label> Thumbnail Item </wj-label>
+    </wj-item>
+</>
   );
 }
 export default Example;

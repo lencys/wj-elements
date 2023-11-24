@@ -25,11 +25,11 @@ Pre viac informácií o použítí Card Subtitle sa presuňte do dokumentácie e
 
 Pre tento komponent nie sú k dispozícii žiadne eventy.
 
-## Metódy[](https://ionicframework.com/docs/api/badge#methods)
+## Metódy
 
 Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
-## CSS Shadow Parts[](https://ionicframework.com/docs/api/badge#css-shadow-parts)
+## CSS Shadow Parts
 
 Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
 
@@ -40,15 +40,3 @@ Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
 ## Sloty
 
 Pre tento komponent nie sú k dispozícii žiadne sloty.
-
-## Methods
-<Methods />
-
-## CSS Shadow Parts
-<Parts />
-
-## CSS Custom Properties
-<CustomProps />
-
-## Slots
-<Slots />

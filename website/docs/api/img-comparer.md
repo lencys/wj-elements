@@ -3,19 +3,19 @@ title: "Image Comparer"
 ---
 
 <head>
-  <title>Image Element pre lazy loading obrázkov</title>
-  <meta name="description" content="Element Image pridáva obrázkom funkciu lazyload a počas načítavania zobrazuje zástupnú ikonu (placeholder) v podobe animovaného obrázka." />
+  <title>Image Comparer: Porovnávač obrázkov</title>
+  <meta name="description" content="Element Image Comparer slúži na porovnanie dvoch obrázkov. Obrázky zobrazí na sebe a umožňuje odkrývať spodný obrázok pomocou vstavaného posuvníka." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element Image Comparer slúži na porovnanie dvoch obrázkov. Obrázky zobrazí na sebe a umožňuje odkrývať spodný obrázok pomocou vstavaného posúvača.
+Element Image Comparer slúži na porovnanie dvoch obrázkov. Obrázky zobrazí na sebe a umožňuje odkrývať spodný obrázok pomocou vstavaného posuvníka.
 
 ## Basic Usage
 
-import Basic from '@site/static/usage/v1/img/basic/index.md';
+import Basic from '@site/static/usage/v1/img-comparer/basic/index.md';
 
 <div class="large">
 
@@ -25,23 +25,7 @@ import Basic from '@site/static/usage/v1/img/basic/index.md';
 
 ## Atribúty a Vlastnosti
 
-### alt
-
-|  |  |
-| --- | --- |
-| Popis | Slúži ako alternatívny text na opis obsahu obrázka, ktorý sa zobrazí v prípade, ak sa obrázok nenačíta. Používajú ho tiež čítačky obrazovky. |
-| Atribút | `alt` |
-| Typ | `string` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
-
-### src
-
-|  |  |
-| --- | --- |
-| Popis | Určuje zdrojovú adresu URL súboru obrázka, ktorý sa má zobraziť na webovej stránke. |
-| Atribút | `src` |
-| Typ | `string` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
+Pre tento komponent nie sú k dispozícii žiadne Atribúty a Vlastnosti.
 
 ## Eventy
 
@@ -53,7 +37,9 @@ Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+| Názov                           | Popis                    |
+|---------------------------------|--------------------------|
+| `divider`                       | Odkazuje na div posuvníka `divider` vo vnútri elementu. |
 
 ## CSS Custom Vlastnosti
 
@@ -61,4 +47,7 @@ Pre tento komponent nie sú k dispozícii žiadne CSS custom vlastnosti.
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+| Názov                           | Popis                    |
+|---------------------------------|--------------------------|
+| `after`                         | Slúži na vloženie obrázka pred `posuvník`. |
+| `before`                        | Slúži na vloženie obrázka za `posuvník`. |

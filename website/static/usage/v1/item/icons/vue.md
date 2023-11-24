@@ -1,36 +1,32 @@
 ```html
 <template>
-  <ion-item>
-    <ion-label> Default Icon </ion-label>
-    <ion-icon :icon="informationCircle" slot="end"></ion-icon>
-  </ion-item>
+  <wj-item>
+    <wj-label>Default Icon</wj-label>
+    <wj-icon name="info-circle" slot="end"></wj-icon>
+  </wj-item>
 
-  <ion-item>
-    <ion-label> Large Icon </ion-label>
-    <ion-icon :icon="informationCircle" size="large" slot="end"></ion-icon>
-  </ion-item>
+  <wj-item>
+    <wj-label>Large Icon</wj-label>
+    <wj-icon name="info-circle" size="large" slot="end"></wj-icon>
+  </wj-item>
 
-  <ion-item>
-    <ion-label> Small Icon </ion-label>
-    <ion-icon :icon="informationCircle" size="small" slot="end"></ion-icon>
-  </ion-item>
+  <wj-item>
+    <wj-label>Small Icon</wj-label>
+    <wj-icon name="info-circle" size="small" slot="end"></wj-icon>
+  </wj-item>
 
-  <ion-item>
-    <ion-icon :icon="star" slot="start"></ion-icon>
-    <ion-label> Default Icon </ion-label>
-  </ion-item>
+  <wj-item>
+    <wj-icon name="star" slot="start"></wj-icon>
+    <wj-label>Default Icon</wj-label>
+  </wj-item>
 </template>
 
 <script lang="ts">
-  import { IonButton, IonIcon, IonItem, IonLabel } from '@ionic/vue';
-  import { informationCircle, star } from 'ionicons/icons';
+  import { Item, Label, Icon } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { IonButton, IonIcon, IonItem, IonLabel },
-    setup() {
-      return { informationCircle, star };
-    },
+    components: { Item, Label, Icon },
   });
 </script>
 ```

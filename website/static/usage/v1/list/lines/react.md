@@ -1,46 +1,44 @@
 ```tsx
 import React from 'react';
-import { IonItem, IonLabel, IonList } from '@ionic/react';
+import { Item, Label, List } from '@elements/react';
 
 function Example() {
   return (
-    <>
-      <IonList lines="full">
-        <IonItem>
-          <IonLabel>Full Lines</IonLabel>
-        </IonItem>
-        <IonItem>
-          <IonLabel>Full Lines</IonLabel>
-        </IonItem>
-        <IonItem>
-          <IonLabel>Full Lines</IonLabel>
-        </IonItem>
-      </IonList>
+    <wj-list lines="full">
+      <wj-item>
+        <wj-label>Full Lines</wj-label>
+      </wj-item>
+      <wj-item>
+        <wj-label>Full Lines</wj-label>
+      </wj-item>
+      <wj-item>
+        <wj-label>Full Lines</wj-label>
+      </wj-item>
+    </wj-list>
 
-      <IonList lines="inset">
-        <IonItem>
-          <IonLabel>Inset Lines</IonLabel>
-        </IonItem>
-        <IonItem>
-          <IonLabel>Inset Lines</IonLabel>
-        </IonItem>
-        <IonItem>
-          <IonLabel>Inset Lines</IonLabel>
-        </IonItem>
-      </IonList>
+    <wj-list lines="inset">
+      <wj-item>
+        <wj-label>Inset Lines</wj-label>
+      </wj-item>
+      <wj-item>
+        <wj-label>Inset Lines</wj-label>
+      </wj-item>
+      <wj-item>
+        <wj-label>Inset Lines</wj-label>
+      </wj-item>
+    </wj-list>
 
-      <IonList lines="none">
-        <IonItem>
-          <IonLabel>No Lines</IonLabel>
-        </IonItem>
-        <IonItem>
-          <IonLabel>No Lines</IonLabel>
-        </IonItem>
-        <IonItem>
-          <IonLabel>No Lines</IonLabel>
-        </IonItem>
-      </IonList>
-    </>
+    <wj-list lines="none">
+      <wj-item>
+        <wj-label>No Lines</wj-label>
+      </wj-item>
+      <wj-item>
+        <wj-label>No Lines</wj-label>
+      </wj-item>
+      <wj-item>
+        <wj-label>No Lines</wj-label>
+      </wj-item>
+    </wj-list>
   );
 }
 export default Example;

@@ -1,36 +1,36 @@
 ```html
-<ion-item>
-  <ion-button slot="start"> Start </ion-button>
-  <ion-label>Default Buttons</ion-label>
-  <ion-button slot="end"> End </ion-button>
-</ion-item>
+  <wj-item>
+    <wj-button slot="start"> Start </wj-button>
+    <wj-label>Default Buttons</wj-label>
+    <wj-button slot="end"> End </wj-button>
+  </wj-item>
 
-<ion-item>
-  <ion-button slot="start">
-    Start
-    <ion-icon name="home" slot="end"></ion-icon>
-  </ion-button>
-  <ion-label>Buttons with Icons</ion-label>
-  <ion-button slot="end">
-    <ion-icon name="star" slot="end"></ion-icon>
-    End
-  </ion-button>
-</ion-item>
+  <wj-item>
+    <wj-button slot="start">
+      Start
+      <wj-icon name="home" slot="end"></wj-icon>
+    </wj-button>
+    <wj-label>Buttons with Icons</wj-label>
+    <wj-button slot="end">
+      <wj-icon name="star" slot="end"></wj-icon>
+      End
+    </wj-button>
+  </wj-item>
 
-<ion-item>
-  <ion-button slot="start">
-    <ion-icon slot="icon-only" name="navigate"></ion-icon>
-  </ion-button>
-  <ion-label>Icon only Buttons</ion-label>
-  <ion-button slot="end">
-    <ion-icon slot="icon-only" name="star"></ion-icon>
-  </ion-button>
-</ion-item>
+  <wj-item>
+    <wj-button slot="start">
+      <wj-icon slot="icon-only" name="user"></wj-icon>
+    </wj-button>
+    <wj-label>Icon only Buttons</wj-label>
+    <wj-button slot="end">
+      <wj-icon slot="icon-only" name="star"></wj-icon>
+    </wj-button>
+  </wj-item>
 
-<ion-item>
-  <ion-label>Button Sizes</ion-label>
-  <ion-button slot="end" size="small"> Small </ion-button>
-  <ion-button slot="end" size="default"> Default </ion-button>
-  <ion-button slot="end" size="large"> Large </ion-button>
-</ion-item>
+  <wj-item>
+    <wj-label>Button Sizes</wj-label>
+    <wj-button slot="end" size="small"> Small </wj-button>
+    <wj-button slot="end" size="default"> Default </wj-button>
+    <wj-button slot="end" size="large"> Large </wj-button>
+  </wj-item>
 ```

@@ -1,10 +1,13 @@
 ```tsx
 import React from 'react';
-import { Img } from '@elements/react';
+import { Img, ImgComparer } from '@elements/react';
 
 function Example() {
   return (
-    <wj-img src="https://www.interway.sk/templates/interway2021/assets/images/og-interway.png" alt="Niekedy máme pocit, že chodíme v kruhoch..." />
+    <wj-img-comparer>
+      <wj-img src="./../../../../img/example-image.svg" slot="before"></wj-img>
+      <wj-img src="./../../../../img/example-image2.svg" slot="after"></wj-img>
+    </wj-img-comparer>
   );
 }
 export default Example;

@@ -1,37 +1,37 @@
 ```html
-<ion-list lines="full">
-  <ion-item>
-    <ion-label>Full Lines</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Full Lines</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Full Lines</ion-label>
-  </ion-item>
-</ion-list>
+<wj-list lines="full">
+  <wj-item>
+    <wj-label>Full Lines</wj-label>
+  </wj-item>
+  <wj-item>
+    <wj-label>Full Lines</wj-label>
+  </wj-item>
+  <wj-item>
+    <wj-label>Full Lines</wj-label>
+  </wj-item>
+</wj-list>
 
-<ion-list lines="inset">
-  <ion-item>
-    <ion-label>Inset Lines</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Inset Lines</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Inset Lines</ion-label>
-  </ion-item>
-</ion-list>
+<wj-list lines="inset">
+  <wj-item>
+    <wj-label>Inset Lines</wj-label>
+  </wj-item>
+  <wj-item>
+    <wj-label>Inset Lines</wj-label>
+  </wj-item>
+  <wj-item>
+    <wj-label>Inset Lines</wj-label>
+  </wj-item>
+</wj-list>
 
-<ion-list lines="none">
-  <ion-item>
-    <ion-label>No Lines</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>No Lines</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>No Lines</ion-label>
-  </ion-item>
-</ion-list>
+<wj-list lines="none">
+  <wj-item>
+    <wj-label>No Lines</wj-label>
+  </wj-item>
+  <wj-item>
+    <wj-label>No Lines</wj-label>
+  </wj-item>
+  <wj-item>
+    <wj-label>No Lines</wj-label>
+  </wj-item>
+</wj-list>
 ```

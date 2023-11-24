@@ -17,11 +17,7 @@ Element Image pridáva obrázkom funkciu lazyload a počas načítavania zobrazu
 
 import Basic from '@site/static/usage/v1/img/basic/index.md';
 
-<div class="large">
-
 <Basic />
-
-</div>
 
 ## Atribúty a Vlastnosti
 

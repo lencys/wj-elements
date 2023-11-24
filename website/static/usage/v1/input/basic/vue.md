@@ -1,34 +1,17 @@
 ```html
-<template>
-  <ion-list>
-    <ion-item>
-      <ion-input label="Default input"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input label="Input with placeholder" placeholder="Enter company name"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input label="Input with value" value="121 S Pinckney St #300"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input label="Readonly input" value="Madison" :readonly="true"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input label="Disabled input" value="53703" :disabled="true"></ion-input>
-    </ion-item>
-  </ion-list>
-</template>
+<wj-input label="Základný input"></wj-input>
+<wj-input label="Input s placeholderom" placeholder="Enter company name"></wj-input>
+<wj-input label="Input s predvyplnenou hodnotou" value="Mlynské Nivy 71"></wj-input>
+<wj-input label="Input iba na čítanie" value="Bratislava" readonly></wj-input>
+<wj-input label="Vypnutý input" value="84103" disabled></wj-input>
+<wj-input label="Povinný input s typom number a custom chybovou hláškou" type="number" minlength="5" message="Toto je moja chybová hláška" required validate-on-change custom-error-display ></wj-input>
 
 <script lang="ts">
-  import { IonInput, IonItem, IonList } from '@ionic/vue';
+  import Input from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { IonInput, IonItem, IonList },
+    components: Input,
   });
 </script>
 ```
