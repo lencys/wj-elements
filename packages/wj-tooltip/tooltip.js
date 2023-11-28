@@ -43,7 +43,7 @@ export class Tooltip extends WJElement {
         popup.appendChild(arrow);
         popup.appendChild(native);
 
-        this.slot = slot;
+        this.mySlot = slot;
         this.popup = popup;
 
         fragment.appendChild(popup);
@@ -52,8 +52,10 @@ export class Tooltip extends WJElement {
     }
 
     afterDraw() {
-        let anchorEl = this.slot.assignedElements()[0];
-        console.log(anchorEl);
+        let anchorEl = this.mySlot.assignedElements()[0];
+        if(!anchorEl)
+            return;
+
         event.addListener(anchorEl, "mouseenter", null, this.onShow);
         event.addListener(anchorEl, "mouseleave", null, this.onHide);
     }
