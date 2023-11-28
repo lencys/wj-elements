@@ -1,219 +1,190 @@
 ---
-title: "ion-input"
+title: "Input"
 ---
-import Props from '@ionic-internal/component-api/v1/input/props.md';
-import Events from '@ionic-internal/component-api/v1/input/events.md';
-import Methods from '@ionic-internal/component-api/v1/input/methods.md';
-import Parts from '@ionic-internal/component-api/v1/input/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/input/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/input/slots.md';
 
 <head>
-  <title>ion-input: Custom Input Value Type Styling and CSS Properties</title>
-  <meta name="description" content="ion-input is a wrapper to the HTML input element, with custom value type styling and functionality. It works on desktops and integrates with mobile keyboards." />
+  <title>Input: Custom Input Element</title>
+  <meta name="description" content="Input element rozširuje možnosti štandardného HTML inputu pokročilými funkciami a možnosťami prispôsobenia. " />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="scoped" />
 
+Input element rozširuje možnosti štandardného HTML inputu pokročilými funkciami a možnosťami prispôsobenia. 
 
-The input component is a wrapper to the HTML input element with custom styling and additional functionality. It accepts most of the same properties as the HTML input, but works great on desktop devices and integrates with the keyboard on mobile devices.
 
-
-## Basic Usage
+## Základné použitie
 
 import Basic from '@site/static/usage/v1/input/basic/index.md';
 
-<Basic />
+<div class="xxlarge">
 
+  <Basic />
 
-## Types
+</div>
 
-The input component is meant for text type inputs only, such as `"text"`, `"password"`, `"email"`, `"number"`, `"search"`, `"tel"`, and `"url"`. It supports all standard text input events including keyup, keydown, keypress, and more. The default `type` is `"text"`.
+## Použitie vo formulári
 
-import Types from '@site/static/usage/v1/input/types/index.md';
+import Form from '@site/static/usage/v1/input/form/index.md';
 
-<Types />
+<Form />
 
-## Labels
+## Variant: standard
 
-Labels should be used to describe the input. They can be used visually, and they will also be read out by screen readers when the user is focused on the input. This makes it easy for the user to understand the intent of the input. Input has several ways to assign a label:
+Input podporuje aj vizuál štandardného HTML inputu pridaním vlastnosti `variant` s hodnotou `standard`.
 
-- `label` property: used for plaintext labels
-- `label` slot: used for custom HTML labels (experimental)
-- `aria-label`: used to provide a label for screen readers but adds no visible label
+import Standard from '@site/static/usage/v1/input/standard/index.md';
 
-### Label Placement
+<Standard />
 
-Labels will take up the width of their content by default. Developers can use the `labelPlacement` property to control how the label is placed relative to the control.
+## Standard vo formulári
 
-import LabelPlacement from '@site/static/usage/v1/input/label-placement/index.md';
+import StandardForm from '@site/static/usage/v1/input/standard-form/index.md';
 
-<LabelPlacement />
+<StandardForm />
 
-### Label Slot (experimental)
+## Search
 
-While plaintext labels should be passed in via the `label` property, if custom HTML is needed, it can be passed through the `label` slot instead.
+V kombinácii s elementorm `Button` vytvorí plnohodnotné vyhľadávacie pole.
 
-Note that this feature is considered experimental because it relies on a simulated version of [Web Component slots](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_templates_and_slots). As a result, the simulated behavior may not exactly match the native slot behavior.
+import Search from '@site/static/usage/v1/input/search/index.md';
 
-import LabelSlot from '@site/static/usage/v1/input/label-slot/index.md';
+<div class="small">
 
-<LabelSlot />
+<Search />
 
-### No Visible Label
+</div>
 
-If no visible label is needed, developers should still supply an `aria-label` so the input is accessible to screen readers.
+## Atribúty a Vlastnosti
 
-import NoVisibleLabel from '@site/static/usage/v1/input/no-visible-label/index.md';
+### custom-error-display
 
-<NoVisibleLabel />
+|  |  |
+| --- | --- |
+| Popis | Aktivuje možnosť zobrazenia vlastnej chybovej hlášky. Pre jej nastavenie slúži vlastnosť `message` |
+| Atribút | `custom-error-display` |
+| Typ | `boolean` |
+| Predvolená hodnota | `false` |
 
-## Clear Options
+### disabled
 
-Inputs offer two options for clearing the input based on how you interact with it. The first way is by adding the `clearInput` property which will show a clear button when the input has a `value`. The second way is the `clearOnEdit` property which will clear the input after it has been blurred and then typed in again. Inputs with a `type` set to `"password"` will have `clearOnEdit` enabled by default.
+|  |  |
+| --- | --- |
+| Popis | Deaktivuje input |
+| Atribút | `disabled` |
+| Typ | `boolean` |
+| Predvolená hodnota | `false` |
 
-import Clear from '@site/static/usage/v1/input/clear/index.md';
+### label
 
-<Clear />
+|  |  |
+| --- | --- |
+| Popis | Popisný text inputu |
+| Atribút | `label` |
+| Typ | `string` |
+| Predvolená hodnota | `undefined` |
 
+### message
 
-## Filled Inputs
+|  |  |
+| --- | --- |
+| Popis | Text vlastnej chybovej hlášky |
+| Atribút | `message` |
+| Typ | `string` |
+| Predvolená hodnota | `undefined` |
 
-Material Design offers filled styles for an input. The `fill` property on the input can be set to either `"solid"` or `"outline"`.
+### placeholder
 
-Since the `fill` styles visually defines the input container, inputs that use `fill` should not be used in `ion-item`.
+|  |  |
+| --- | --- |
+| Popis | Zástupný text inputu |
+| Atribút | `placeholder` |
+| Typ | `string` |
+| Predvolená hodnota | `undefined` |
 
-import Fill from '@site/static/usage/v1/input/fill/index.md';
+### readonly
 
-<Fill />
+|  |  |
+| --- | --- |
+| Popis | Deaktivuje možnosť písania do inputu |
+| Atribút | `readonly` |
+| Typ | `boolean` |
+| Predvolená hodnota | `false` |
 
+### required
 
-## Helper & Error Text
+|  |  |
+| --- | --- |
+| Popis | Nastaví input ako povinný pre vyplnenie |
+| Atribút | `required` |
+| Typ | `boolean` |
+| Predvolená hodnota | `false` |
 
-Helper and error text can be used inside of an input with the `helperText` and `errorText` property. The error text will not be displayed unless the `ion-invalid` and `ion-touched` classes are added to the `ion-input`. This ensures errors are not shown before the user has a chance to enter data.
+### type
 
-In Angular, this is done automatically through form validation. In JavaScript, React and Vue, the class needs to be manually added based on your own validation.
+|  |  |
+| --- | --- |
+| Popis | Nastaví typ inputu. Podporované sú textové typy inputov ako napríklad `text`, `password`, `email`, `number`, `search`, `tel`, `url` |
+| Atribút | `type` |
+| Typ | `text`, `password`, `email`, `number`, `search`, `tel`, `url` |
+| Predvolená hodnota | `text` |
 
-import HelperError from '@site/static/usage/v1/input/helper-error/index.md';
+### validate-on-change
 
-<HelperError />
+|  |  |
+| --- | --- |
+| Popis | Nastaví validáciu obsahu inputu po každej vykonanej zmene v jeho obsahu |
+| Atribút | `validate-on-change` |
+| Typ | `boolean` |
+| Predvolená hodnota | `false` |
 
-## Input Counter
+### value
 
-The input counter is text that displays under an input to notify the user of how many characters have been entered out of the total that the input will accept. When adding counter, the default behavior is to format the value that gets displayed as `inputLength` / `maxLength`. This behavior can be customized by passing in a formatter function to the `counterFormatter` property.
+|  |  |
+| --- | --- |
+| Popis | Predvyplní obsah inputu zvolenou hodnotou |
+| Atribút | `value` |
+| Typ | `string` |
+| Predvolená hodnota | `undefined` |
 
-import Counter from '@site/static/usage/v1/input/counter/index.md';
 
-<Counter />
+## Eventy
 
-## Filtering User Input
+Pre tento komponent nie sú k dispozícii žiadne verejné eventy.
 
-Developers can use the `ionInput` event to update the input value in response to user input such as a keypress. This is useful for filtering out invalid or unwanted characters.
+## Metódy
 
-When storing the value in a state variable, we recommend updating both the state variable and the `ion-input` component value. This ensures that the state variable and the `ion-input` component value remain in sync.
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
-import FilteringData from '@site/static/usage/v1/input/filtering/index.md';
+## CSS Shadow Party
 
-<FilteringData />
+| Názov       | Popis                                    |
+|-------------|------------------------------------------|
+| `input`     | Odkazuje na `div` element vo vnútri Inputu |
+| `native`    | Odkazuje na `input` element vo vnútri Inputu |
 
-## Input Masking
 
-Input masks are expressions that constrain input to support valid input values. Ionic recommends using [Maskito](https://tinkoff.github.io/maskito/getting-started/what-is-maskito) for input masking. Maskito is a lightweight, dependency-free library for masking input fields. It supports a wide range of masks, including phone numbers, credit cards, dates, and more.
+## CSS Custom Vlastnosti
 
-To get started with Maskito, install the library:
+| Názov       | Popis                                  |
+|----------------------------------------|-------------|
+| `--wj-input-background-color`          |  Farba pozadia Inputu                        |
+| `--wj-input-border-color`              |  Farba okrajov Inputu                        |
+| `--wj-input-border-color-focus`        |  Farba okrajov Inputu pri focuse             |
+| `--wj-input-border-radius`             |  Zaoblenie okrajov Inputu                    |
+| `--wj-input-border-style`              |  Štýl okrajov Inputu                         |
+| `--wj-input-border-width`              |  Šírka okrajov Inputu                        |
+| `--wj-input-color`                     |  Farba textu Inputu                          |
+| `--wj-input-color-invalid`             |  Farba textu Inputu ak je neplatný           |
+| `--wj-input-font-family`               |  Font textu Inputu                           |
+| `--wj-input-line-height`               |  Výška riadka Inputu                         |
+| `--wj-input-margin-bottom`             |  Spodná medzera Inputu                       |
+| `--wj-input-slot-padding-inline`       |  Horizontálná medzera medzi slotmi Inputu    |
 
-```bash
-npm install @maskito/core @maskito/{angular,react,vue}
-```
+## Sloty
 
-import Masking from '@site/static/usage/v1/input/mask/index.md';
-
-<Masking />
-
-:::note
-
-Please submit bug reports with Maskito to the [Maskito Github repository](https://github.com/Tinkoff/maskito/issues). For technical support, please use the [Ionic Forum](https://forum.ionicframework.com/) or [Ionic Discord](http://chat.ionicframework.com/).
-
-:::
-
-## Theming
-
-### Colors
-
-Setting the `color` property changes the color palette for each input. On `ios` mode, this property changes the caret color. On `md` mode, this property changes the caret color and the highlight/underline color.
-
-import Colors from '@site/static/usage/v1/input/theming/colors/index.md';
-
-<Colors />
-
-### CSS Custom Properties
-
-Input uses scoped encapsulation, which means it will automatically scope its CSS by appending each of the styles with an additional class at runtime. Overriding scoped selectors in CSS requires a [higher specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) selector. Targeting the `ion-input` for customization will not work; therefore we recommend adding a class and customizing it that way.
-
-import CSSProps from '@site/static/usage/v1/input/theming/css-properties/index.md';
-
-<CSSProps />
-
-## Migrating from Legacy Input Syntax
-
-A simpler input syntax was introduced in Ionic 7.0. This new syntax reduces the boilerplate required to setup an input, resolves accessibility issues, and improves the developer experience.
-
-Developers can perform this migration one input at a time. While developers can continue using the legacy syntax, we recommend migrating as soon as possible.
-
-### Using the Modern Syntax
-
-Using the modern syntax involves three steps:
-
-1. Remove `ion-label` and use the `label` property on `ion-input` instead. The placement of the label can be configured using the `labelPlacement` property on `ion-input`.
-2. Move input-specific properties from `ion-item` on to `ion-input`. This includes the `counter`, `counterFormatter`, `fill`, and `shape` properties.
-3. Remove usages of the `helper` and `error` slots on `ion-item` and use the `helperText` and `errorText` properties on `ion-input` instead.
-
-import Migration from '@site/static/usage/v1/input/migration/index.md';
-
-<Migration />
-
-### Using the Legacy Syntax
-
-Ionic uses heuristics to detect if an app is using the modern input syntax. In some instances, it may be preferable to continue using the legacy syntax. Developers can set the `legacy` property on `ion-input` to `true` to force that instance of the input to use the legacy syntax.
-
-## Interfaces
-
-### InputChangeEventDetail
-
-```typescript
-interface InputChangeEventDetail {
-  value: string | undefined | null;
-}
-```
-
-### InputCustomEvent
-
-While not required, this interface can be used in place of the `CustomEvent` interface for stronger typing with Ionic events emitted from this component.
-
-```typescript
-interface InputCustomEvent extends CustomEvent {
-  detail: InputChangeEventDetail;
-  target: HTMLIonInputElement;
-}
-```
-
-
-## Properties
-<Props />
-
-## Events
-<Events />
-
-## Methods
-<Methods />
-
-## CSS Shadow Parts
-<Parts />
-
-## CSS Custom Properties
-<CustomProps />
-
-## Slots
-<Slots />
+| Názov | Popis |
+| --- | --- |
+| `end` | Obsah sa umiestni vpravo od inputu |
+| `start` | Obsah sa umiestni vľavo od inputu |

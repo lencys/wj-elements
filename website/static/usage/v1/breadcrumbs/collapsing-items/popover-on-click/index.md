@@ -4,22 +4,8 @@ import javascript from './javascript.md';
 import react from './react.md';
 import vue from './vue.md';
 
-import angular_example_component_html from './angular/example_component_html.md';
-import angular_example_component_ts from './angular/example_component_ts.md';
-
 <Playground
   version="7"
-  size="500px"
-  code={{
-    javascript,
-    react,
-    vue,
-    angular: {
-      files: {
-        'src/app/example.component.html': angular_example_component_html,
-        'src/app/example.component.ts': angular_example_component_ts,
-      },
-    },
-  }}
+  code={{ javascript, react, vue }}
   src="usage/v1/breadcrumbs/collapsing-items/popover-on-click/demo.html"
 />

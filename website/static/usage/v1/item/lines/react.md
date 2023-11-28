@@ -1,50 +1,49 @@
 ```tsx
 import React from 'react';
-import { IonIcon, IonItem, IonLabel } from '@ionic/react';
-import { informationCircle, star } from 'ionicons/icons';
+import { Item, Label } from '@elements/react';
 
 function Example() {
   return (
     <>
-      <IonItem>
-        <IonLabel>Default Item Lines</IonLabel>
-      </IonItem>
+      <wj-item>
+        <wj-label>Default Item Lines </wj-label>
+      </wj-item>
 
-      <IonItem lines="inset">
-        <IonLabel>Item Lines Inset</IonLabel>
-      </IonItem>
+      <wj-item lines="inset">
+        <wj-label>Item Lines Inset</wj-label>
+      </wj-item>
 
-      <IonItem lines="full">
-        <IonLabel>Item Lines Full</IonLabel>
-      </IonItem>
+      <wj-item lines="full">
+        <wj-label>Item Lines Full</wj-label>
+      </wj-item>
 
-      <IonItem lines="none">
-        <IonLabel>Item Lines None</IonLabel>
-      </IonItem>
+      <wj-item lines="none">
+        <wj-label>Item Lines None</wj-label>
+      </wj-item>
 
-      <IonItem>
-        <IonIcon icon={star} slot="start"></IonIcon>
-        <IonLabel>Default Item Lines</IonLabel>
-        <IonIcon icon={informationCircle} slot="end"></IonIcon>
-      </IonItem>
+      <wj-item>
+        <wj-icon name="star" slot="start"></wj-icon>
+        <wj-label>Default Item Lines</wj-label>
+        <wj-icon name="info-circle" slot="end"></wj-icon>
+      </wj-item>
 
-      <IonItem lines="inset">
-        <IonIcon icon={star} slot="start"></IonIcon>
-        <IonLabel>Item Lines Inset</IonLabel>
-        <IonIcon icon={informationCircle} slot="end"></IonIcon>
-      </IonItem>
+      <wj-item lines="inset">
+        <wj-icon name="star" slot="start"></wj-icon>
+        <wj-label>Item Lines Inset</wj-label>
+        <wj-icon name="info-circle" slot="end"></wj-icon>
+      </wj-item>
 
-      <IonItem lines="full">
-        <IonIcon icon={star} slot="start"></IonIcon>
-        <IonLabel>Item Lines Full</IonLabel>
-        <IonIcon icon={informationCircle} slot="end"></IonIcon>
-      </IonItem>
+      <wj-item lines="full">
+        <wj-icon name="star" slot="start"></wj-icon>
+        <wj-label>Item Lines Full</wj-label>
+        <wj-icon name="info-circle" slot="end"></wj-icon>
+      </wj-item>
 
-      <IonItem lines="none">
-        <IonIcon icon={star} slot="start"></IonIcon>
-        <IonLabel>Item Lines None</IonLabel>
-        <IonIcon icon={informationCircle} slot="end"></IonIcon>
-      </IonItem>
+      <wj-item lines="none">
+        <wj-icon name="star" slot="start"></wj-icon>
+        <wj-label>Item Lines None</wj-label>
+        <wj-icon name="info-circle" slot="end"></wj-icon>
+      </wj-item>
     </>
   );
 }

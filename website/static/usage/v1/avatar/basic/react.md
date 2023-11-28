@@ -1,13 +1,13 @@
 ```tsx
 import React from 'react';
-import { IonAvatar } from '@ionic/react';
+import { Avatar, Image } from '@elements/react';
 
 function Example() {
   return (
     <>
-      <IonAvatar>
-        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-      </IonAvatar>
+      <wj-avatar>
+        <wj-img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </wj-avatar>
     </>
   );
 }

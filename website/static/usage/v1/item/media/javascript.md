@@ -1,15 +1,15 @@
 ```html
-<ion-item>
-  <ion-avatar slot="start">
-    <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-  </ion-avatar>
-  <ion-label> Avatar Item </ion-label>
-</ion-item>
+   <wj-item>
+    <wj-avatar slot="start">
+      <wj-img alt="Silhouette of a person's head" src="/assets/img/avatar.svg"></wj-img>
+    </wj-avatar>
+    <wj-label> Avatar Item </wj-label>
+  </wj-item>
 
-<ion-item>
-  <ion-thumbnail slot="start">
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-  </ion-thumbnail>
-  <ion-label> Thumbnail Item </ion-label>
-</ion-item>
+  <wj-item>
+    <wj-thumbnail slot="start">
+      <wj-img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg"></wj-img>
+    </wj-thumbnail>
+    <wj-label> Thumbnail Item </wj-label>
+  </wj-item>
 ```

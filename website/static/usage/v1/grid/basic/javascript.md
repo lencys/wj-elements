@@ -1,46 +1,37 @@
 ```html
-<ion-grid>
-  <ion-row>
-    <ion-col>1</ion-col>
-    <ion-col>2</ion-col>
-    <ion-col>3</ion-col>
-  </ion-row>
-</ion-grid>
+<wj-grid>
+  <wj-row>
+    <wj-col>1</wj-col>
+    <wj-col>2</wj-col>
+    <wj-col>3</wj-col>
+  </wj-row>
+</wj-grid>
 
-<ion-grid>
-  <ion-row>
-    <ion-col>1</ion-col>
-    <ion-col>2</ion-col>
-    <ion-col>3</ion-col>
-    <ion-col>4</ion-col>
-    <ion-col>5</ion-col>
-    <ion-col>6</ion-col>
-  </ion-row>
-</ion-grid>
+<wj-grid>
+  <wj-row>
+    <wj-col>1</wj-col>
+    <wj-col>2</wj-col>
+    <wj-col>3</wj-col>
+    <wj-col>4</wj-col>
+    <wj-col>5</wj-col>
+    <wj-col>6</wj-col>
+  </wj-row>
+</wj-grid>
 
-<ion-grid>
-  <ion-row>
-    <ion-col>1</ion-col>
-    <ion-col>2</ion-col>
-    <ion-col>3</ion-col>
-    <ion-col>4</ion-col>
-    <ion-col>5</ion-col>
-    <ion-col>6</ion-col>
-    <ion-col>7</ion-col>
-    <ion-col>8</ion-col>
-    <ion-col>9</ion-col>
-    <ion-col>10</ion-col>
-    <ion-col>11</ion-col>
-    <ion-col>12</ion-col>
-  </ion-row>
-</ion-grid>
-
-<style>
-  ion-col {
-    background-color: #135d54;
-    border: solid 1px #fff;
-    color: #fff;
-    text-align: center;
-  }
-</style>
+<wj-grid>
+  <wj-row>
+    <wj-col>1</wj-col>
+    <wj-col>2</wj-col>
+    <wj-col>3</wj-col>
+    <wj-col>4</wj-col>
+    <wj-col>5</wj-col>
+    <wj-col>6</wj-col>
+    <wj-col>7</wj-col>
+    <wj-col>8</wj-col>
+    <wj-col>9</wj-col>
+    <wj-col>10</wj-col>
+    <wj-col>11</wj-col>
+    <wj-col>12</wj-col>
+  </wj-row>
+</wj-grid>
 ```

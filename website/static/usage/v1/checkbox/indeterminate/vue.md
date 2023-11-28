@@ -1,14 +1,14 @@
 ```html
 <template>
-  <ion-checkbox :indeterminate="true">Indeterminate checkbox</ion-checkbox>
+    <wj-checkbox color="warning" indeterminate>Default warning indeterminate</wj-checkbox>
 </template>
 
 <script lang="ts">
-  import { IonCheckbox } from '@ionic/vue';
+  import { Checkbox } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { IonCheckbox },
+    components: { Checkbox },
   });
 </script>
 ```

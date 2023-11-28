@@ -12,10 +12,13 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
+Breadcrumb zobrazuje jeden segment navigačnej cesty v aplikácii a je potomkom elementu Breadcrumbs. Môže zobrazovať aj ikonu.
 
-A Breadcrumb is a single navigation item that is a child of the Breadcrumbs component. A breadcrumb can link elsewhere in an app or it can be plain text. Each breadcrumb has a separator between it and the next breadcrumb and can optionally contain an icon.
+:::note Poznámka
 
-See the [Breadcrumbs](./breadcrumbs) documentation for more information.
+Pre viac informácií o použítí Breadcrumbs sa presuňte do dokumentácie elementu [**Breadcrumbs**](./breadcrumbs).
+
+:::
 
 ## Interfaces
 

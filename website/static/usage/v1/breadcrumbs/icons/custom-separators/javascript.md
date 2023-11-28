@@ -1,20 +1,20 @@
 ```html
-<ion-breadcrumbs>
-  <ion-breadcrumb href="#home">
+ <wj-breadcrumbs>
+  <wj-breadcrumb href="/home">
     Home
-    <ion-icon slot="separator" name="arrow-forward-circle"></ion-icon>
-  </ion-breadcrumb>
-  <ion-breadcrumb href="#electronics">
+    <wj-icon slot="separator" name="slash"></wj-icon>
+  </wj-breadcrumb>
+  <wj-breadcrumb href="/electronics">
     Electronics
-    <ion-icon slot="separator" name="arrow-forward-circle"></ion-icon>
-  </ion-breadcrumb>
-  <ion-breadcrumb href="#cameras">
+    <wj-icon slot="separator" name="slash"></wj-icon>
+  </wj-breadcrumb>
+  <wj-breadcrumb href="/cameras">
     Cameras
-    <ion-icon slot="separator" name="arrow-forward-circle"></ion-icon>
-  </ion-breadcrumb>
-  <ion-breadcrumb href="#film">
+    <wj-icon slot="separator" name="slash"></wj-icon>
+  </wj-breadcrumb>
+  <wj-breadcrumb href="/film">
     Film
-    <ion-icon slot="separator" name="arrow-forward-circle"></ion-icon>
-  </ion-breadcrumb>
-</ion-breadcrumbs>
+    <wj-icon slot="separator" name="slash"></wj-icon>
+  </wj-breadcrumb>
+</wj-breadcrumbs>
 ```

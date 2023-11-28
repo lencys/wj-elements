@@ -1,5 +1,5 @@
 ```html
-<b>Columns aligned at the start</b>
+<b>Stĺpce zarovnané na začiatok</b>
 <ion-grid>
   <ion-row class="ion-justify-content-start">
     <ion-col size="3"> 1 </ion-col>

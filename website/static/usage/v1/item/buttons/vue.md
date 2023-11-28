@@ -1,51 +1,26 @@
 ```html
 <template>
-  <ion-item>
-    <ion-button slot="start"> Start </ion-button>
-    <ion-label>Default Buttons</ion-label>
-    <ion-button slot="end"> End </ion-button>
-  </ion-item>
+  <wj-item>
+    <wj-avatar slot="start">
+      <wj-img alt="Silhouette of a person's head" src="/assets/img/avatar.svg"></wj-img>
+    </wj-avatar>
+    <wj-label> Avatar Item </wj-label>
+  </wj-item>
 
-  <ion-item>
-    <ion-button slot="start">
-      Start
-      <ion-icon :icon="home" slot="end"></ion-icon>
-    </ion-button>
-    <ion-label>Buttons with Icons</ion-label>
-    <ion-button slot="end">
-      <ion-icon :icon="star" slot="end"></ion-icon>
-      End
-    </ion-button>
-  </ion-item>
-
-  <ion-item>
-    <ion-button slot="start">
-      <ion-icon slot="icon-only" :icon="navigate"></ion-icon>
-    </ion-button>
-    <ion-label>Icon only Buttons</ion-label>
-    <ion-button slot="end">
-      <ion-icon slot="icon-only" :icon="star"></ion-icon>
-    </ion-button>
-  </ion-item>
-
-  <ion-item>
-    <ion-label>Button Sizes</ion-label>
-    <ion-button slot="end" size="small"> Small </ion-button>
-    <ion-button slot="end" size="default"> Default </ion-button>
-    <ion-button slot="end" size="large"> Large </ion-button>
-  </ion-item>
+  <wj-item>
+    <wj-thumbnail slot="start">
+      <wj-img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg"></wj-img>
+    </wj-thumbnail>
+    <wj-label> Thumbnail Item </wj-label>
+  </wj-item>
 </template>
 
 <script lang="ts">
-  import { IonButton, IonIcon, IonItem, IonLabel } from '@ionic/vue';
-  import { home, navigate, star } from 'ionicons/icons';
+  import { Item, Label, Button } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { IonButton, IonIcon, IonItem, IonLabel },
-    setup() {
-      return { home, navigate, star };
-    },
+    components: { Item, Label, Button },
   });
 </script>
 ```

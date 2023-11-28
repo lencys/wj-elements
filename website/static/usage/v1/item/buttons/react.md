@@ -1,52 +1,45 @@
 ```tsx
 import React from 'react';
-import { IonButton, IonIcon, IonItem, IonLabel } from '@ionic/react';
-import { home, navigate, star } from 'ionicons/icons';
+import { Item, Label, Button } from '@elements/react';
 
 function Example() {
   return (
     <>
-      <IonItem>
-        <IonButton slot="start">Start</IonButton>
-        <IonLabel>Default Buttons</IonLabel>
-        <IonButton slot="end">End</IonButton>
-      </IonItem>
+    <wj-item>
+      <wj-button slot="start"> Start </wj-button>
+      <wj-label>Default Buttons</wj-label>
+      <wj-button slot="end"> End </wj-button>
+    </wj-item>
 
-      <IonItem>
-        <IonButton slot="start">
-          Start
-          <IonIcon icon={home} slot="end"></IonIcon>
-        </IonButton>
-        <IonLabel>Buttons with Icons</IonLabel>
-        <IonButton slot="end">
-          <IonIcon icon={star} slot="end"></IonIcon>
-          End
-        </IonButton>
-      </IonItem>
+    <wj-item>
+      <wj-button slot="start">
+        Start
+        <wj-icon name="home" slot="end"></wj-icon>
+      </wj-button>
+      <wj-label>Buttons with Icons</wj-label>
+      <wj-button slot="end">
+        <wj-icon name="star" slot="end"></wj-icon>
+        End
+      </wj-button>
+    </wj-item>
 
-      <IonItem>
-        <IonButton slot="start">
-          <IonIcon slot="icon-only" icon={navigate}></IonIcon>
-        </IonButton>
-        <IonLabel>Icon only Buttons</IonLabel>
-        <IonButton slot="end">
-          <IonIcon slot="icon-only" icon={star}></IonIcon>
-        </IonButton>
-      </IonItem>
+    <wj-item>
+      <wj-button slot="start">
+        <wj-icon slot="icon-only" name="user"></wj-icon>
+      </wj-button>
+      <wj-label>Icon only Buttons</wj-label>
+      <wj-button slot="end">
+        <wj-icon slot="icon-only" name="star"></wj-icon>
+      </wj-button>
+    </wj-item>
 
-      <IonItem>
-        <IonLabel>Button Sizes</IonLabel>
-        <IonButton slot="end" size="small">
-          Small
-        </IonButton>
-        <IonButton slot="end" size="default">
-          Default
-        </IonButton>
-        <IonButton slot="end" size="large">
-          Large
-        </IonButton>
-      </IonItem>
-    </>
+    <wj-item>
+      <wj-label>Button Sizes</wj-label>
+      <wj-button slot="end" size="small"> Small </wj-button>
+      <wj-button slot="end" size="default"> Default </wj-button>
+      <wj-button slot="end" size="large"> Large </wj-button>
+    </wj-item>
+</>
   );
 }
 export default Example;

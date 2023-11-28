@@ -1,38 +1,29 @@
 ```html
-<b>Column 2 has <code>offset</code> set to <code>"3"</code></b>
-<ion-grid>
-  <ion-row>
-    <ion-col>1</ion-col>
-    <ion-col offset="3">2</ion-col>
-    <ion-col>3</ion-col>
-  </ion-row>
-</ion-grid>
+ <span>Stĺpec 2 má <strong>offset</strong> nastavený na <strong>"3"</strong></span>
+  <wj-grid>
+    <wj-row>
+      <wj-col>1</wj-col>
+      <wj-col offset="3">2</wj-col>
+      <wj-col>3</wj-col>
+    </wj-row>
+  </wj-grid>
 
-<b>Column 5 has <code>offset</code> set to <code>"2"</code></b>
-<ion-grid>
-  <ion-row>
-    <ion-col>1</ion-col>
-    <ion-col>2</ion-col>
-    <ion-col>3</ion-col>
-    <ion-col>4</ion-col>
-    <ion-col offset="2">5</ion-col>
-  </ion-row>
-</ion-grid>
+  <span>Stĺpec 5 má <strong>offset</strong> nastavený na <strong>"2"</strong></span>
+  <wj-grid>
+    <wj-row>
+      <wj-col>1</wj-col>
+      <wj-col>2</wj-col>
+      <wj-col>3</wj-col>
+      <wj-col>4</wj-col>
+      <wj-col offset="2">5</wj-col>
+    </wj-row>
+  </wj-grid>
 
-<b>Column 1 has <code>offset</code> set to <code>"4"</code></b>
-<ion-grid>
-  <ion-row>
-    <ion-col size="2" offset="4">1</ion-col>
-    <ion-col size="2">2</ion-col>
-  </ion-row>
-</ion-grid>
-
-<style>
-  ion-col {
-    background-color: #135d54;
-    border: solid 1px #fff;
-    color: #fff;
-    text-align: center;
-  }
-</style>
+  <span>Stĺpec 1 má <strong>offset</strong> nastavený na <strong>"4"</strong></span>
+  <wj-grid>
+    <wj-row>
+      <wj-col size="2" offset="4">1</wj-col>
+      <wj-col size="2">2</wj-col>
+    </wj-row>
+  </wj-grid>
 ```

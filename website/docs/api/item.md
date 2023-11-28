@@ -1,152 +1,102 @@
 ---
-title: "ion-item"
+title: "Item"
 ---
-import Props from '@ionic-internal/component-api/v1/item/props.md';
-import Events from '@ionic-internal/component-api/v1/item/events.md';
-import Methods from '@ionic-internal/component-api/v1/item/methods.md';
-import Parts from '@ionic-internal/component-api/v1/item/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/item/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/item/slots.md';
 
 <head>
-  <title>ion-item: Input, Edit, or Delete iOS and Android Item Elements</title>
-  <meta name="description" content="ion-item elements for iOS/Android contain text, icons, images, and other custom elements. They're placed in a list and can be input, deleted, edited, and more." />
+  <title>Item: Input, Edit, or Delete iOS and Android Item Elements</title>
+  <meta name="description" content="Komponenty Item sú bloky, ktoré môžu obsahovať rôzne typy obsahu vrátane textu, ikon, avatarov, obrázkov, inputov a iných štandardných alebo custom elementov. Item elementy sa zvyčajne nachádzajú vo vnútri List elementov." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Items are elements that can contain text, icons, avatars, images, inputs, and any other native or custom elements. Generally they are placed in a [list](./list) with other items. Items can be swiped, deleted, reordered, edited, and more.
+Komponenty Item sú bloky, ktoré môžu obsahovať rôzne typy obsahu vrátane textu, ikon, avatarov, obrázkov, inputov a iných štandardných alebo custom elementov. Item elementy sa zvyčajne nachádzajú vo vnútri [List](./list)  elementov.
 
-## Basic Usage
-
-Items left align text and add an ellipsis when the text is wider than the item. We can modify this behavior using the CSS Utilities provided by Ionic Framework, such as using `.ion-text-wrap` in the below example. See the [CSS Utilities Documentation](/docs/layout/css-utilities) for more classes that can be added to an item to transform the text.
+## Základné použitie
 
 import Basic from '@site/static/usage/v1/item/basic/index.md';
 
 <Basic />
 
-
-## Clickable Items
-
-An item is considered "clickable" if it has an `href` or `button` property set. Clickable items have a few visual differences that indicate they can be interacted with. For example, a clickable item receives the ripple effect upon activation in `md` mode, has a highlight when activated in `ios` mode, and has a [detail arrow](#detail-arrows) by default in `ios` mode.
-
-import Clickable from '@site/static/usage/v1/item/clickable/index.md';
-
-<Clickable />
-
-
-## Detail Arrows
-
-By default [clickable items](#clickable-items) will display a right arrow icon on `ios` mode. To hide the right arrow icon on clickable elements, set the `detail` property to `false`. To show the right arrow icon on an item that doesn't display it naturally, set the `detail` property to `true`.
-
-import DetailArrows from '@site/static/usage/v1/item/detail-arrows/index.md';
-
-<DetailArrows />
-
-
-<!--
-
-TODO add this functionality back as a css variable
-
-This feature is not enabled by default on clickable items for the `md` mode, but it can be enabled by setting the following CSS variable:
-
-```css
---item-detail-push-show: true;
-```
-
-See the [theming documentation](/docs/theming/css-variables) for more information.
-
--->
-
-
-## Item Lines
-
-Items show an inset bottom border by default. The border has padding on the left and does not appear under any content that is slotted in the `"start"` slot. The `lines` property can be modified to `"full"` or `"none"` which will show a full width border or no border, respectively.
+## Oddelovacie čiary
 
 import Lines from '@site/static/usage/v1/item/lines/index.md';
 
 <Lines />
 
 
-## Media Items
-
-[Avatars](./avatar) and [Thumbnails](./thumbnail) can be slotted inside of an item. This is useful when making lists of images and text.
+## Použitie s obrázkami
 
 import Media from '@site/static/usage/v1/item/media/index.md';
 
 <Media />
 
 
-## Buttons in Items
-
-Buttons are styled smaller inside of items than when they are outside of them. To make the button size match buttons outside of an item, set the `size` attribute to `"default"`.
+## Použitie s tlačidlami
 
 import Buttons from '@site/static/usage/v1/item/buttons/index.md';
 
 <Buttons />
 
 
-## Icons in Items
+## Použitie s ikonami
 
 import Icons from '@site/static/usage/v1/item/icons/index.md';
 
 <Icons />
 
 
-## Item Inputs
+## Atribúty a Vlastnosti
 
-import Inputs from '@site/static/usage/v1/item/inputs/index.md';
+### lines
 
-<Inputs />
-
-## Theming
-
-### Colors
-
-import Colors from '@site/static/usage/v1/item/theming/colors/index.md';
-
-<Colors />
-
-### CSS Shadow Parts
-
-import CSSParts from '@site/static/usage/v1/item/theming/css-shadow-parts/index.md';
-
-<CSSParts />
-
-### CSS Custom Properties
-
-import CSSProps from '@site/static/usage/v1/item/theming/css-properties/index.md';
-
-<CSSProps />
+|  |  |
+| --- | --- |
+| Popis | Štýl horizontálnych oddeľovačov elementov Item |
+| Atribút | `lines` |
+| Typ | `full`, `inset`, `none` |
+| Predvolená hodnota | `inset` |
 
 
-### Input Highlight
+## Eventy
 
-Items containing an input will highlight the bottom border of the input with a different color when focused, valid, or invalid. By default, `md` items have a highlight with a height set to `2px` and `ios` has no highlight (technically the height is set to `0`). The height can be changed using the `--highlight-height` CSS property. To turn off the highlight, set this variable to `0`.
+Pre tento komponent nie sú k dispozícii žiadne eventy.
 
-The highlight color changes based on the item state, but all of the states use Ionic colors by default. When focused, the input highlight will use the `primary` color. If the input is valid it will use the `success` color, and invalid inputs will use the `danger` color. This can be customized using the provided CSS properties.
+## Metódy
 
-import InputHighlight from '@site/static/usage/v1/item/theming/input-highlight/index.md';
-
-<InputHighlight />
-
-
-## Properties
-<Props />
-
-## Events
-<Events />
-
-## Methods
-<Methods />
+Pre tento komponent nie sú verejne dostupné žiadne metódy.
 
 ## CSS Shadow Parts
-<Parts />
 
-## CSS Custom Properties
-<CustomProps />
+| Názov | Popis |
+| --- | --- |
+| `native` | Odkazuje na `<div>` element vo vnútri elementu Item |
 
-## Slots
-<Slots />
+## CSS Custom Vlastnosti
+
+| Názov | Popis |
+| --- | --- |
+| `--wj-border-width`                      |     Šírka okrajov elementu        |
+| `--wj-item-background`                   |     Farba pozadia elementu        |
+| `--wj-item-background-hover`             |     Farba pozadia elementu pri ukázaní myšou        |
+| `--wj-item-color`                        |     Farba textu        |
+| `--wj-item-inner-border-width`           |     Hrúbka okrajov vnútornej časti elementu       |
+| `--wj-item-inner-box-shadow`             |     Vnútorný box-shadow vnútornej časti elementu        |
+| `--wj-item-inner-padding-bottom`         |     Spodné vnútorné odsadenie vnútornej časti elementu      |
+| `--wj-item-inner-padding-end`            |     Pravé vnútorné odsadenie vnútornej časti elementu       |
+| `--wj-item-inner-padding-start`          |     Ľavé vnútorné odsadenie vnútornej časti elementu         |
+| `--wj-item-inner-padding-top`            |     Horné vnútorné odsadenie vnútornej časti elementu         |
+| `--wj-item-min-height`                   |     Minimálna výška elementu        |
+| `--wj-item-padding-bottom`               |     Spodné vnútorné odsadenie         |
+| `--wj-item-padding-end`                  |     Pravé vnútorné odsadenie        |
+| `--wj-item-padding-start`                |     Ľavé vnútorné odsadenie        |
+| `--wj-item-padding-top`                  |     Horné vnútorné odsadenie       |
+| `--wj-item-transition`                   |     Prechody elementu        |
+
+## Sloty
+
+| Názov | Popis |
+| --- | --- |
+| `end` | Obsah sa umiestni vpravo od textu tlačidla v LTR a vľavo v RTL. |
+| `start` | Obsah je umiestnený vľavo od textu tlačidla v LTR a vpravo v RTL. |

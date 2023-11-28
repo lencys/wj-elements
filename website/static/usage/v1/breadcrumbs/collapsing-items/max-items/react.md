@@ -1,16 +1,19 @@
 ```tsx
 import React from 'react';
-import { IonBreadcrumb, IonBreadcrumbs } from '@ionic/react';
+import { Breadcrumb, Breadcrumbs } from '@elements/react';
 function Example() {
   return (
-    <IonBreadcrumbs maxItems={4}>
-      <IonBreadcrumb href="#home">Home</IonBreadcrumb>
-      <IonBreadcrumb href="#electronics">Electronics</IonBreadcrumb>
-      <IonBreadcrumb href="#photography">Photography</IonBreadcrumb>
-      <IonBreadcrumb href="#cameras">Cameras</IonBreadcrumb>
-      <IonBreadcrumb href="#film">Film</IonBreadcrumb>
-      <IonBreadcrumb href="#35mm">35 mm</IonBreadcrumb>
-    </IonBreadcrumbs>
+    <wj-breadcrumbs max-items="4">
+      <wj-breadcrumb href="/home">Home</wj-breadcrumb>
+      <wj-breadcrumb href="/electronics">Electronics</wj-breadcrumb>
+      <wj-breadcrumb href="/photography">Photography</wj-breadcrumb>
+      <wj-breadcrumb href="/cameras">Cameras</wj-breadcrumb>
+      <wj-breadcrumb href="/film">Film</wj-breadcrumb>
+      <wj-breadcrumb href="/35mm">35 mm</wj-breadcrumb>
+      <wj-breadcrumb href="/a">A</wj-breadcrumb>
+      <wj-breadcrumb href="/b">B</wj-breadcrumb>
+      <wj-breadcrumb href="/c">C</wj-breadcrumb>
+    </wj-breadcrumbs>
   );
 }
 export default Example;

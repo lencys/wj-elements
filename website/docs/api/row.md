@@ -1,49 +1,57 @@
 ---
-title: "ion-row"
+title: "Row"
 ---
-import Props from '@ionic-internal/component-api/v1/row/props.md';
-import Events from '@ionic-internal/component-api/v1/row/events.md';
-import Methods from '@ionic-internal/component-api/v1/row/methods.md';
-import Parts from '@ionic-internal/component-api/v1/row/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/row/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/row/slots.md';
+
 
 <head>
-  <title>ion-row: Horizontal Row Components and Alignment | Ionic API Docs</title>
-  <meta name="description" content="Rows are horizontal components of the grid system and contain varying numbers of columns. Read our ion-row API Docs for more information on alignment and usage." />
+  <title>Row: Horizontálny kontajner pre systém Grid</title>
+  <meta name="description" content="Row (Riadok) je základným prvkom responzívneho Grid systému. Slúži ako kontajner na usporiadanie a horizontálne zarovnanie stĺpcov v rámci väčších layoutov." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Rows are horizontal components of the [grid](./grid) system and contain varying numbers of
-[columns](./col). They ensure the columns are positioned properly.
+Row (Riadok) je základným prvkom responzívneho [Grid](./grid) systému a slúži ako horizontálny kontajner na usporiadanie a zarovnanie stĺpcov ([columns](./col)). 
 
-See the [grid](./grid) documentation for more information.
+:::note Poznámka
 
+Pre viac informácií o použítí **Row** sa presuňte do dokumentácie systému [**Grid**](./grid).
 
-## Row Alignment
+:::
 
-By default, columns will stretch to fill the entire height of the row and wrap when necessary. Rows are [flex containers](https://developer.mozilla.org/en-US/docs/Glossary/Flex_Container), so there are several [CSS classes](/docs/layout/css-utilities#flex-container-properties) that can be applied to a row to customize this behavior.
+## Atribúty a Vlastnosti
 
+### wrap
 
+|  |  |
+| --- | --- |
+| Popis | Nastaví na element zalamovanie riadkov pridaním `flex-wrap: wrap` |
+| Atribút | `wrap` |
+| Typ | `string` |
+| Predvolená hodnota | `undefined` |
 
+## Eventy
 
-## Properties
-<Props />
+Pre tento komponent nie sú k dispozícii žiadne eventy.
 
-## Events
-<Events />
+## Metódy
 
-## Methods
-<Methods />
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
 ## CSS Shadow Parts
-<Parts />
 
-## CSS Custom Properties
-<CustomProps />
+Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
 
-## Slots
-<Slots />
+## CSS Custom Vlastnosti
+
+## CSS Custom Vlastnosti
+
+| Vlastnosť                       | Popis                    |
+|---------------------------------|--------------------------|
+| `--wj-gutter-x` | Určuje veľkosť medzery medzi stĺpcami v horizontálnom smere | 
+| `--wj-gutter-y` | Určuje veľkosť vertikálnej medzery medzi stĺpcami | 
+
+## Sloty
+
+Pre tento komponent nie sú k dispozícii žiadne sloty.

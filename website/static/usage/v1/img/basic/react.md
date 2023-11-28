@@ -1,13 +1,10 @@
 ```tsx
 import React from 'react';
-import { IonImg } from '@ionic/react';
+import { Img } from '@elements/react';
 
 function Example() {
   return (
-    <IonImg
-      src="https://docs-demo.ionic.io/assets/madison.jpg"
-      alt="The Wisconsin State Capitol building in Madison, WI at night"
-    ></IonImg>
+    <wj-img src="../../../../img/img.png" alt="Niekedy máme pocit, že chodíme v kruhoch..."></wj-img>
   );
 }
 export default Example;

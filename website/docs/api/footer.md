@@ -1,79 +1,42 @@
 ---
-title: "ion-footer"
+title: "Footer"
 ---
-import Props from '@ionic-internal/component-api/v1/footer/props.md';
-import Events from '@ionic-internal/component-api/v1/footer/events.md';
-import Methods from '@ionic-internal/component-api/v1/footer/methods.md';
-import Parts from '@ionic-internal/component-api/v1/footer/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/footer/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/footer/slots.md';
 
 <head>
-  <title>Page Footer | Ionic App Footer: Wrapper Root Page Component</title>
-  <meta name="description" content="A footer is a root component that sits at the bottom of a page. Ionic footers can be a wrapper for ion-toolbar to make sure the content area is sized correctly." />
+  <title>Layout: Footer element</title>
+  <meta name="description" content="Footer element je prvok layoutu a slúži na tvorbu pätičky stránky." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
+<EncapsulationPill type="shadow" />
 
-Footer is a root component of a page that aligns itself to the bottom of the page. It is recommended to be used as a wrapper for one or more [toolbars](./toolbar), but it can be used to wrap any element. When a toolbar is used inside of a footer, the content will be adjusted so it is sized correctly, and the footer will account for any device safe areas.
+Footer element je prvok [Layoutu](./layout) a slúži na tvorbu pätičky stránky.
 
-## Basic Usage
+## Príklady použitia
 
-import Basic from '@site/static/usage/v1/footer/basic/index.md';
+Pre informácie o použítí **Footer** elementu sa presuňte do dokumentácie [Layoutu](./layout).
 
-<Basic />
+## Atribúty a Vlastnosti
 
+Pre tento komponent nie sú k dispozícii žiadne Atribúty a Vlastnosti.
 
-## Translucent Footer
+## Eventy
 
-Footers can match the transparency found in native iOS applications by setting the `translucent` property. In order to see the content scrolling behind the footer, the `fullscreen` property needs to be set on the content. This effect will only apply when the mode is `"ios"` and the device supports [backdrop-filter](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#browser_compatibility).
+Pre tento komponent nie sú k dispozícii žiadne eventy.
 
-import Translucent from '@site/static/usage/v1/footer/translucent/index.md';
+## Metódy
 
-<Translucent />
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
+## CSS Shadow Party
 
-## Fade Footer
+Pre tento komponent nie sú k dispozícii žiadne shadow party.
 
-Many native iOS applications have a fade effect on the toolbar. This can be achieved by setting the `collapse` property on the footer to `"fade"`. When the content is scrolled to the end, the background and border on the footer will fade away. This effect will only apply when the mode is `"ios"`.
+## CSS Custom Vlastnosti
 
-import Fade from '@site/static/usage/v1/footer/fade/index.md';
+Pre tento komponent nie sú k dispozícii žiadne CSS custom vlastnosti.
 
-<Fade />
+## Sloty
 
-
-### Usage with Virtual Scroll
-
-A fade footer requires a scroll container to work properly. When using a virtual scrolling solution, a custom scroll target needs to be provided. Scrolling on the content needs to be disabled and the `.ion-content-scroll-host` class needs to be added to the element responsible for scrolling.
-
-import CustomScrollTarget from '@site/static/usage/v1/footer/custom-scroll-target/index.md';
-
-<CustomScrollTarget />
-
-## Borders
-
-In `"md"` mode, the footer will have a `box-shadow` on the top. In `"ios"` mode, it will receive a `border` on the top. These can be removed by adding the `.ion-no-border` class to the footer.
-
-import NoBorder from '@site/static/usage/v1/footer/no-border/index.md';
-
-<NoBorder />
-
-
-## Properties
-<Props />
-
-## Events
-<Events />
-
-## Methods
-<Methods />
-
-## CSS Shadow Parts
-<Parts />
-
-## CSS Custom Properties
-<CustomProps />
-
-## Slots
-<Slots />
+Pre tento komponent nie sú k dispozícii žiadne sloty.

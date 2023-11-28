@@ -1,17 +1,14 @@
 ```html
 <template>
-  <ion-img
-    src="https://docs-demo.ionic.io/assets/madison.jpg"
-    alt="The Wisconsin State Capitol building in Madison, WI at night"
-  ></ion-img>
+  <wj-img src="../../../../img/img.png" alt="Niekedy máme pocit, že chodíme v kruhoch..."></wj-img>
 </template>
 
 <script lang="ts">
-  import { IonImg } from '@ionic/vue';
+  import { Img } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { IonImg },
+    components: { Img },
   });
 </script>
 ```

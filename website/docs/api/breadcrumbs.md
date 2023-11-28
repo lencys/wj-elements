@@ -1,104 +1,109 @@
 ---
 title: "Breadcrumbs"
 ---
-import Props from '@ionic-internal/component-api/v1/breadcrumbs/props.md';
-import Events from '@ionic-internal/component-api/v1/breadcrumbs/events.md';
-import Methods from '@ionic-internal/component-api/v1/breadcrumbs/methods.md';
-import Parts from '@ionic-internal/component-api/v1/breadcrumbs/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/breadcrumbs/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/breadcrumbs/slots.md';
 
-
+<head>
+  <title>Breadcrumbs | Navigačná cesta</title>
+  <meta name="description" content="Breadcrumbs je komponent, ktorý zobrazuje cestu, po ktorej používateľ prešiel v rámci aplikácie alebo webu. Tento element zobrazuje hierarchické usporiadanie stránok, v ktorom každý segment cesty 
+  Breadcrumb je hyperlink, umožňujúci rýchly návrat na predchádzajúce úrovne. Breadcrumbs môže obsahovať ikonu." />
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Breadcrumbs are navigation items that are used to indicate where a user is on an app or site. They should be used for large sites and apps with hierarchically arranged pages. Breadcrumbs can be collapsed based on the maximum number that can show, and the collapsed indicator can be clicked on to present a popover with more information or expand the collapsed breadcrumbs.
+Breadcrumbs je komponent, ktorý zobrazuje cestu, po ktorej používateľ prešiel v rámci aplikácie alebo webu. Tento element zobrazuje hierarchické usporiadanie stránok, v ktorom každý segment cesty [**Breadcrumb**](./breadcrumb) je hyperlink, umožňujúci rýchly návrat na predchádzajúce úrovne. Breadcrumbs môže obsahovať ikonu.
 
-## Basic Usage
+## Základné použitie
 
 import Basic from '@site/static/usage/v1/breadcrumbs/basic/index.md';
 
 <Basic />
 
-## Using Icons
-
-### Icons on Items
+## Použitie s ikonami
 
 import IconsOnItems from '@site/static/usage/v1/breadcrumbs/icons/icons-on-items/index.md';
 
 <IconsOnItems />
 
-### Custom Separators
+## Vlastná ikona oddeľovača
 
 import CustomSeparators from '@site/static/usage/v1/breadcrumbs/icons/custom-separators/index.md';
 
 <CustomSeparators />
 
-## Collapsing Items
+## Zbaľovací breadcrumb
 
-### Max Items
+### Maximálny počet položiek
 
-If there are more items than the value of `maxItems`, the breadcrumbs will be collapsed. By default, only the first and last items will be shown.
+Ak je v zozname viac položiek ako hodnota `maxItems`, zoznam sa zbalí. V predvolenom nastavení sa zobrazí len prvá a posledná položky.
 
 import MaxItems from '@site/static/usage/v1/breadcrumbs/collapsing-items/max-items/index.md';
 
 <MaxItems />
 
-### Items Before or After Collapse
+### Počet položiek pred alebo po zbalení
 
-Once the items are collapsed, the number of items to show can be controlled by the `itemsBeforeCollapse` and `itemsAfterCollapse` properties.
+Keď sú položky zbalené, počet položiek, ktoré sa majú zobraziť, možno ovládať pridaním vlastností `itemsBeforeCollapse` a `itemsAfterCollapse`.
 
 import ItemsBeforeAfter from '@site/static/usage/v1/breadcrumbs/collapsing-items/items-before-after/index.md';
 
 <ItemsBeforeAfter />
 
-### Collapsed Indicator Click -- Expand Breadcrumbs
+### Rozbaľovacie okno
 
-Clicking the collapsed indicator will fire the `ionCollapsedClick` event. This can be used to, for example, expand the breadcrumbs.
-
-import ExpandOnClick from '@site/static/usage/v1/breadcrumbs/collapsing-items/expand-on-click/index.md';
-
-<ExpandOnClick />
-
-### Collapsed Indicator Click -- Present Popover
-
-The `ionCollapsedClick` event can also be used to present an overlay (in this case, an `ion-popover`) showing the hidden breadcrumbs.
+Zbalené položky je možné zobraziť aj v podobe rozbaľovacieho okna použítím vlastnosti `collapsed-variant` s hodnotou `dropdown`.
 
 import PopoverOnClick from '@site/static/usage/v1/breadcrumbs/collapsing-items/popover-on-click/index.md';
 
 <PopoverOnClick />
 
-## Theming
+## Atribúty a Vlastnosti
 
-### Colors
+### itemsAfterCollapse
 
-import Colors from '@site/static/usage/v1/breadcrumbs/theming/colors/index.md';
+|  |  |
+| --- | --- |
+| Popis | Určuje hodnotu maximálneho počtu zobrazených položiek po zbalení |
+| Atribút | `itemsAfterCollapse` |
+| Typ | `integer` |
+| Predvolená hodnota | `0` |
 
-<Colors />
+### itemsBeforeCollapse
 
-### CSS Custom Properties
+|  |  |
+| --- | --- |
+| Popis | Určuje hodnotu maximálneho počtu zobrazených položiek pred zbalení  |
+| Atribút | `itemsBeforeCollapse` |
+| Typ | `integer` |
+| Predvolená hodnota | `0` |
 
-import CSSProps from '@site/static/usage/v1/breadcrumbs/theming/css-properties/index.md';
+### maxItems
 
-<CSSProps />
+|  |  |
+| --- | --- |
+| Popis | Určuje hodnotu maximálneho počtu zobrazených položiek v navigácii Breadcrumbs |
+| Atribút | `maxItems` |
+| Typ | `integer` |
+| Predvolená hodnota | `0` |
 
 
-## Properties
-<Props />
+## Eventy
 
-## Events
-<Events />
+Pre tento komponent nie sú k dispozícii žiadne eventy.
 
-## Methods
-<Methods />
+## Metódy
+
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
 ## CSS Shadow Parts
-<Parts />
 
-## CSS Custom Properties
-<CustomProps />
+Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
 
-## Slots
-<Slots />
+## CSS Custom Vlastnosti
+
+Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
+
+## Sloty
+
+Pre tento komponent nie sú k dispozícií žiadne pomenované sloty.

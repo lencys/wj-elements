@@ -1,50 +1,41 @@
 ```html
-<b>Columns aligned at the start</b>
-<ion-grid>
-  <ion-row class="ion-justify-content-start">
-    <ion-col size="3"> 1 </ion-col>
-    <ion-col size="3"> 2 </ion-col>
-  </ion-row>
-</ion-grid>
+<span>Columns aligned at the start</span>
+<wj-grid>
+  <wj-row class="wj-justify-content-start">
+    <wj-col size="3"> 1 </wj-col>
+    <wj-col size="3"> 2 </wj-col>
+  </wj-row>
+</wj-grid>
 
-<b>Columns aligned at the center</b>
-<ion-grid>
-  <ion-row class="ion-justify-content-center">
-    <ion-col size="3"> 1 </ion-col>
-    <ion-col size="3"> 2 </ion-col>
-  </ion-row>
-</ion-grid>
+<span>Stĺpce zarovnané na stred</span>
+<wj-grid>
+  <wj-row class="wj-justify-content-center">
+    <wj-col size="3"> 1 </wj-col>
+    <wj-col size="3"> 2 </wj-col>
+  </wj-row>
+</wj-grid>
 
-<b>Columns aligned at the end</b>
-<ion-grid>
-  <ion-row class="ion-justify-content-end">
-    <ion-col size="3"> 1 </ion-col>
-    <ion-col size="3"> 2 </ion-col>
-  </ion-row>
-</ion-grid>
+<span>Stĺpce zarovnané na koniec</span>
+<wj-grid>
+  <wj-row class="wj-justify-content-end">
+    <wj-col size="3"> 1 </wj-col>
+    <wj-col size="3"> 2 </wj-col>
+  </wj-row>
+</wj-grid>
 
-<b>Columns aligned with space around</b>
-<ion-grid>
-  <ion-row class="ion-justify-content-around">
-    <ion-col size="3"> 1 </ion-col>
-    <ion-col size="3"> 2 </ion-col>
-  </ion-row>
-</ion-grid>
+<span>Stĺpce zarovnané so space-around</span>
+<wj-grid>
+  <wj-row class="wj-justify-content-around">
+    <wj-col size="3"> 1 </wj-col>
+    <wj-col size="3"> 2 </wj-col>
+  </wj-row>
+</wj-grid>
 
-<b>Columns aligned with space between</b>
-<ion-grid>
-  <ion-row class="ion-justify-content-between">
-    <ion-col size="3"> 1 </ion-col>
-    <ion-col size="3"> 2 </ion-col>
-  </ion-row>
-</ion-grid>
-
-<style>
-  ion-col {
-    background-color: #135d54;
-    border: solid 1px #fff;
-    color: #fff;
-    text-align: center;
-  }
-</style>
+<span>Stĺpce zarovnané so space-between</span>
+<wj-grid>
+  <wj-row class="wj-justify-content-between">
+    <wj-col size="3"> 1 </wj-col>
+    <wj-col size="3"> 2 </wj-col>
+  </wj-row>
+</wj-grid>
 ```
