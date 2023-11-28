@@ -84,27 +84,11 @@ export class Popup extends WJElement {
             this.anchorEl = this.slotAnchor.assignedElements({ flatten: true })[0];
         }
 
-        // if (this.manual) {
-            event.addListener(this.anchorEl, "click", null, (e) => {
-                console.log("som CLICK");
-                if(this.hasAttribute("disabled")) return;
-                this.showHide();
-            }, {stopPropagation: true});
-        // }
+        event.addListener(this.anchorEl, "click", null, (e) => {
+            if(this.hasAttribute("disabled")) return;
+            this.showHide();
+        }, {stopPropagation: true});
 
-        // event.addListener(this, "mouseover", null,(e) => {
-        //     if(this.manual) return;
-        //     console.log("som MOUSEOVER");
-        //     this.showHide();
-        // });
-
-        // event.addListener(this, "mouseout", null,(e) => {
-            // let clickToHost = e.composedPath().some((el) => el === this);
-            // console.log("som MOUSEOUT", e.relatedTarget.closest("wj-menu"), e.composedPath());
-        //     if(true) return;
-        //     console.log("som MOUSEOUT");
-        //     this.showHide();
-        // });
 
         document.addEventListener("click",(e) => {
             let clickToHost = e.composedPath().some((el) => el === this);
@@ -121,7 +105,6 @@ export class Popup extends WJElement {
             this.removeAttribute("active");
         } else {
             this.setAttribute("active", "");
-            event.addListener(this, "click", "wj:popup-show");
         }
     }
 
@@ -203,6 +186,7 @@ export class Popup extends WJElement {
     }
 
     show() {
+        event.dispatchCustomEvent(this,"wj-popup:show");
         this.native.classList.add("popup-active");
 
         this.cleanup = autoUpdate(this.anchorEl, this.native, () => {
@@ -211,6 +195,7 @@ export class Popup extends WJElement {
     }
 
     hide() {
+        event.dispatchCustomEvent(this,"wj-popup:hide");
         this.native.classList.remove("popup-active");
         this.cleanup();
         this.cleanup = undefined;
