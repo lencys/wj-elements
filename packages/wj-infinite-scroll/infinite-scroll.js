@@ -72,7 +72,7 @@ export class InfiniteScroll extends WJElement {
         this.size = +this.size || 10;
         this.currentPage = 0;
 
-        // this.scrollEvent();
+        this.scrollEvent();
         await this.loadPages(this.currentPage);
     }
 
