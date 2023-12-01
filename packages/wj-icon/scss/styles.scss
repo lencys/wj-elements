@@ -40,25 +40,24 @@
 }
 
 :host {
-  --wj-icon-width: 100%;
-  --wj-icon-height: 100%;
+  --wj-icon-size: 1rem;
+  --wj-icon-width: var(--wj-icon-size, 100%);
+  --wj-icon-height: var(--wj-icon-size, 100%);
   display: inline-block;
 
   width: 1em;
   height: 1em;
 
   contain: strict;
-
   fill: currentColor;
-
   box-sizing: content-box !important;
 }
 
 .icon-inner, svg {
   display: block;
 
-  height: var(--wj-icon-height);
   width: var(--wj-icon-width);
+  height: var(--wj-icon-height);
 }
 
 :host(.wj-size-small) {
@@ -70,7 +69,7 @@
 }
 
 :host(.wj-size) {
-  font-size: var(--wj-icon-size) !important;
+  font-size: var(--wj-icon-size);
 }
 
 :host(.wj-color) {

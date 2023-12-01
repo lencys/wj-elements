@@ -123,10 +123,22 @@ export const getName = (iconName) => {
   return iconName;
 };
 
+// const getNamedUrl = (iconName) => {
+//   const iconUrl = `assets/img/icons/svg/${iconName}.svg`;
+//   console.log("SOM:", iconUrl);
+//   const url = new URL(iconUrl, import.meta.url);
+//   console.log(url)
+//   return url.href;
+// };
+
 const getNamedUrl = (iconName) => {
-  const iconUrl = `assets/img/icons/svg/${iconName}.svg`;
-  console.log("SOM:", iconUrl);
-  const url = new URL(iconUrl, import.meta.url);
-  console.log(url)
-  return url.href;
+  const path = `/assets/img/icons/svg/${iconName}.svg`
+
+  let parsedUrl = new URL(import.meta.url);
+  let pathName = parsedUrl.pathname;
+
+  // Remove the file name from the path to get the directory
+  let folderPath = pathName.substring(0, pathName.lastIndexOf('/'));
+
+  return new URL(parsedUrl.origin + folderPath + path).href;
 };

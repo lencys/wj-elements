@@ -27,8 +27,6 @@ export class Icon extends WJElement {
 
         this.classList.add("lazy-loaded-image", "lazy");
 
-        this.classList.remove(...this.classList);
-
         this.element = document.createElement("div");
         this.element.classList.add("icon-inner");
 
