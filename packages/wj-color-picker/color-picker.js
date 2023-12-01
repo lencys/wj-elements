@@ -185,22 +185,23 @@ export class ColorPicker extends WJElement {
     afterDraw() {
         this.init = false;
         // ak sa otvori popup tak si odchytime event a nastavime potrebne parametre
-        this.addEventListener("wj:popup-show", (e) => {
+        this.addEventListener("wj-popup:show", (e) => {
             if(!this.init) {
-                this.colorAreaDimension = {
-                    width: this.colorArea.offsetWidth,
-                    height: this.colorArea.offsetHeight,
-                    x: this.colorArea.offsetLeft,
-                    y: this.colorArea.offsetTop,
-                };
+                window.setTimeout(() => {
+                    this.colorAreaDimension = {
+                        width: this.colorArea.offsetWidth,
+                        height: this.colorArea.offsetHeight,
+                        x: this.colorArea.offsetLeft,
+                        y: this.colorArea.offsetTop,
+                    };
+                    this.markerPosition = this.setMarkerPositionByColor(this.input.value);
+                    this.setMarkerPosition(this.markerPosition.x, this.markerPosition.y);
 
-                this.markerPosition = this.setMarkerPositionByColor(this.input.value);
-                this.setMarkerPosition(this.markerPosition.x, this.markerPosition.y);
+                    if(this.input.value != "")
+                        this.alphaSlider.value = 100;
 
-                if(this.input.value != "")
-                    this.alphaSlider.value = 100;
-
-                this.setColor();
+                    this.setColor();
+                }, 0);
 
                 this.init = true;
             }
@@ -213,7 +214,7 @@ export class ColorPicker extends WJElement {
 
     moveMarker = (event) => {
         const pointer = this.getPointerPosition(event);
-        console.log("colorAreaDimension", this.colorAreaDimension);
+
         let x = pointer.pageX - this.colorAreaDimension.x;
         let y = pointer.pageY - this.colorAreaDimension.y;
 
@@ -255,7 +256,6 @@ export class ColorPicker extends WJElement {
     * @returns {tinycolor}
     */
     setColorAtPosition(x, y, alpha = 100) {
-        console.log("x", x, "y", y, "alpha", alpha);
         const hsva = {
             h: this.hueSlider.value * 1,
             s: x / this.colorAreaDimension.width * 100,
@@ -273,7 +273,6 @@ export class ColorPicker extends WJElement {
     */
     setMarkerPositionByColor = (color = "red") => {
         let hsva = tinycolor(color).toHsv();
-
         return {
             x: this.colorAreaDimension.width * hsva.s,
             y: this.colorAreaDimension.height - (this.colorAreaDimension.height * hsva.v)
@@ -287,14 +286,12 @@ export class ColorPicker extends WJElement {
         let currentColor = color;
 
         if(currentColor === null && type === "") {
-            console.log("SOM NULL");
             currentColor = tinycolor(this.input.value);
             this.colorArea.style.setProperty("--wj-color-picker-area", currentColor.toHexString());
         }
 
         // SET: marker - HEX8
         if(type === "marker") {
-            console.log("SOM MARKER");
             this.alphaSlider.value = 100;
             this.alphaSlider.style.setProperty("--wj-color-picker-value", currentColor.toHexString());
             this.colorPreview.style.setProperty("--wj-color-picker-value", currentColor.toHex8String());
