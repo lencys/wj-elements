@@ -1,5 +1,7 @@
-import { faker } from '@faker-js/faker';
-import { createServer, Model, Factory } from 'miragejs';
+// import { faker } from '@faker-js/faker';
+// import { createServer, Model, Factory } from 'miragejs';
+import  { createServer, Model, Factory } from 'https://cdn.jsdelivr.net/npm/miragejs@0.1.48/+esm'
+import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
 
 export function makeServer({ environment = 'development' } = {}) {
   let server = createServer({

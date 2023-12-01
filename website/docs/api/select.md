@@ -1,270 +1,177 @@
 ---
-title: "ion-select"
+title: "Select"
 ---
-import Props from '@ionic-internal/component-api/v1/select/props.md';
-import Events from '@ionic-internal/component-api/v1/select/events.md';
-import Methods from '@ionic-internal/component-api/v1/select/methods.md';
-import Parts from '@ionic-internal/component-api/v1/select/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/select/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/select/slots.md';
+
+import { Icon } from '@iconify/react';
 
 <head>
-  <title>ion-select: Select One or Multiple Value Boxes or Placeholders</title>
-  <meta name="description" content="ion-select is represented by selected value(s), or a placeholder, and dropdown icon. When you tap select, a dialog box appears with an easy to select list." />
+  <title>Select: Element rozširuje možnosti štandardného HTML select elementu.</title>
+  <meta name="description" content="Select element rozširuje možnosti štandardného HTML select elementu. Podporuje jeden alebo viacero výberov pridaním atribútu `multiple`.Okrem toho ponúka funkcie, ako sú vymazateľné výbery a vlastný zastupný text (placeholder)." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
+**Select** element rozširuje možnosti štandardného HTML select elementu. Podporuje jeden alebo viacero výberov pridaním atribútu `multiple`.
+Okrem toho ponúka funkcie, ako sú vymazateľné výbery a vlastný zastupný text (placeholder). Vizuálne môže komponent zobrazovať vybrané možnosti ako chipy a obsahuje vstupné pole a rozbaľovací zoznam možností.
 
-Selects are form controls to select an option, or options, from a set of options, similar to a native `<select>` element. When a user taps the select, a dialog appears with all of the options in a large, easy to select list.
+## Základné použitie
 
-A select should be used with child `<ion-select-option>` elements. If the child option is not given a `value` attribute then its text will be used as the value.
-
-If `value` is set on the `<ion-select>`, the selected option will be chosen based on that value.
-
-## Labels
-
-Labels should be used to describe the select. They can be used visually, and they will also be read out by screen readers when the user is focused on the select. This makes it easy for the user to understand the intent of the select. Select has several ways to assign a label:
-
-Select has several options for supplying a label for the component:
-
-- `label` property: used for plaintext labels
-- `label` slot: used for custom HTML labels
-- `aria-label`: used to provide a label for screen readers but adds no visible label
-
-### Label Placement
-
-Labels will take up the width of their content by default. Developers can use the `labelPlacement` property to control how the label is placed relative to the control. While the `label` property is used here, `labelPlacement` can also be used with the `label` slot.
-
-import LabelPlacement from '@site/static/usage/v1/select/label-placement/index.md';
-
-<LabelPlacement />
-
-### Label Slot
-
-While plaintext labels should be passed in via the `label` property, if custom HTML is needed, it can be passed through the `label` slot instead.
-
-import LabelSlot from '@site/static/usage/v1/select/label-slot/index.md';
-
-<LabelSlot />
-
-### No Visible Label
-
-If no visible label is needed, developers should still supply an `aria-label` so the select is accessible to screen readers.
-
-import NoVisibleLabel from '@site/static/usage/v1/select/no-visible-label/index.md';
-
-<NoVisibleLabel />
-
-## Single Selection
-
-By default, the select allows the user to select only one option. The alert interface presents users with a radio button styled list of options. The select component's value receives the value of the selected option's value.
+V predvolenom nastavení výber umožňuje používateľovi vybrať len jednu možnosť. Zahrnutím elementu `Icon` sa pri možnosti zobrazí aj zvolená ikona.
 
 import SingleSelectionExample from '@site/static/usage/v1/select/basic/single-selection/index.md';
 
 <SingleSelectionExample />
 
-## Interfaces
+## Výber viacerých položiek
 
-By default, select uses [ion-alert](alert.md) to open up the overlay of options in an alert. The interface can be changed to use [ion-action-sheet](action-sheet.md) or [ion-popover](popover.md) by passing `action-sheet` or `popover`, respectively, to the `interface` property. Read on to the other sections for the limitations of the different interfaces.
-
-### Action Sheet
-
-import ActionSheetExample from '@site/static/usage/v1/select/interfaces/action-sheet/index.md';
-
-<ActionSheetExample />
-
-### Popover
-
-import PopoverExample from '@site/static/usage/v1/select/interfaces/popover/index.md';
-
-<PopoverExample />
-
-## Multiple Selection
-
-By adding the `multiple` attribute to select, users are able to select multiple options. When multiple options can be selected, the alert or popover overlay presents users with a checkbox styled list of options. The select component's value receives an array of all of the selected option values.
-
-Note: the `action-sheet` interface will not work with multiple selection.
+Pridaním atribútu `multiple` umožníte používateľovi vybrať viacero možností.
 
 import MultipleSelectionExample from '@site/static/usage/v1/select/basic/multiple-selection/index.md';
 
+<div className="xxlarge">
+
 <MultipleSelectionExample />
 
-## Responding to Interaction
+</div>
 
-The main ways of handling user interaction with the select are the `ionChange`, `ionDismiss`, and `ionCancel` events. See [Events](#events) for more details on these and other events that select fires.
+## Clearable
 
-import RespondingToInteractionExample from '@site/static/usage/v1/select/basic/responding-to-interaction/index.md';
+Pridaním atribútu `clearable` umožníte používateľovi odstraniť všetky zvolené možnosti kliknutím na ikonu <Icon icon="radix-icons:cross-2" height="14" />.
 
-<RespondingToInteractionExample />
+import Clearable from '@site/static/usage/v1/select/clearable/index.md';
 
-## Object Value References
+<div className="xxlarge">
 
-When using objects for select values, it is possible for the identities of these objects to change if they are coming from a server or database, while the selected value's identity remains the same. For example, this can occur when an existing record with the desired object value is loaded into the select, but the newly retrieved select options now have different identities. This will result in the select appearing to have no value at all, even though the original selection in still intact.
+<Clearable />
 
-By default, the select uses object equality (`===`) to determine if an option is selected. This can be overridden by providing a property name or a function to the `compareWith` property.
+</div>
 
-### Using compareWith
+## Disabled
 
-import UsingCompareWithExample from '@site/static/usage/v1/select/objects-as-values/using-comparewith/index.md';
+Pridaním atribútu `disabled` zabránite používateľovi interagovať so Selectom.
 
-<UsingCompareWithExample />
+import Disabled from '@site/static/usage/v1/select/disabled/index.md';
 
-### Object Values and Multiple Selection
+<div className="xxlarge">
 
-import ObjectValuesAndMultipleSelectionExample from '@site/static/usage/v1/select/objects-as-values/multiple-selection/index.md';
+<Disabled />
 
-<ObjectValuesAndMultipleSelectionExample />
+</div>
 
-## Justification
-  
-Developers can use the `justify` property to control how the label and control are packed on a line.
+## Standard
 
-import JustifyExample from '@site/static/usage/v1/select/justify/index.md';
+Pridaním atribútu `standard` sa zobrazí Select v štýle štandardného HTML selectu.
 
-<JustifyExample />
+import Standard from '@site/static/usage/v1/select/standard/index.md';
 
-## Filled Selects
+<div className="xxlarge">
 
-Material Design offers filled styles for a select. The `fill` property on the select can be set to either `"solid"` or `"outline"`.
+<Standard />
 
-Since the `fill` styles visually defines the select container, selects that use `fill` should not be used in `ion-item`.
+</div>
 
-import FillExample from '@site/static/usage/v1/select/fill/index.md';
 
-<FillExample />
+## Atribúty a Vlastnosti
 
-## Select Buttons
+### clearable
 
-The alert supports two buttons: `Cancel` and `OK`. Each button's text can be customized using the `cancelText` and `okText` properties.
+|  |  |
+| --- | --- |
+| Popis | Ak `true`, zobrazí sa ikona <Icon icon="radix-icons:cross-2" height="14" /> na zmazanie všetkých zvolených možností. |
+| Atribút | `clearable` |
+| Typ | `boolean` |
+| Predvolená hodnota | `false` |
 
-The `action-sheet` and `popover` interfaces do not have an `OK` button, clicking on any of the options will automatically close the overlay and select that value. The `popover` interface does not have a `Cancel` button, clicking on the backdrop will close the overlay.
+### disabled
 
-import ButtonTextExample from '@site/static/usage/v1/select/customization/button-text/index.md';
+|  |  |
+| --- | --- |
+| Popis | Ak `true`, s elementom nebude možné interagovať. |
+| Atribút | `disabled` |
+| Typ | `boolean` |
+| Predvolená hodnota | `false` |
 
-<ButtonTextExample />
 
-## Interface Options
+### label
 
-Since select uses the alert, action sheet and popover interfaces, options can be passed to these components through the `interfaceOptions` property. This can be used to pass a custom header, subheader, css class, and more.
+|  |  |
+| --- | --- |
+| Popis | Slúži na nastavenie popisu |
+| Atribút | `label` |
+| Typ | `string` |
+| Predvolená hodnota | `undefined` |
 
-See the [ion-alert docs](alert.md), [ion-action-sheet docs](action-sheet.md), and [ion-popover docs](popover.md) for the properties that each interface accepts.
+### multiple
 
-Note: `interfaceOptions` will not override `inputs` or `buttons` with the `alert` interface.
+|  |  |
+| --- | --- |
+| Popis | Nastaví select na výber viacerých možností |
+| Atribút | `multiple` |
+| Typ | `boolean` |
+| Predvolená hodnota | `false` |
 
-import InterfaceOptionsExample from '@site/static/usage/v1/select/customization/interface-options/index.md';
+### placeholder
 
-<InterfaceOptionsExample />
+|  |  |
+| --- | --- |
+| Popis | Slúži na nastavenie zástupného textu  |
+| Atribút | `placeholder` |
+| Typ | `string` |
+| Predvolená hodnota | `undefined` |
 
-## Customization
+### trigger
 
-There are two units that make up the Select component and each need to be styled separately. The `ion-select` element is represented on the view by the selected value(s), or placeholder if there is none, and dropdown icon. The interface, which is defined in the [Interfaces](#interfaces) section above, is the dialog that opens when clicking on the `ion-select`. The interface contains all of the options defined by adding `ion-select-option` elements. The following sections will go over the differences between styling these.
+|  |  |
+| --- | --- |
+| Popis | Určuje selectu spôsobom rozkliknutia |
+| Atribút | `trigger` |
+| Typ | `click`, `hover` |
+| Predvolená hodnota | `click` |
 
-### Styling Select Element
+## Eventy
 
-As mentioned, the `ion-select` element consists only of the value(s), or placeholder, and icon that is displayed on the view. To customize this, style using a combination of CSS and any of the [CSS custom properties](#css-custom-properties).
-
-Alternatively, depending on the [browser support](https://caniuse.com/#feat=mdn-css_selectors_part) needed, CSS shadow parts can be used to style the select. Notice that by using `::part`, any CSS property on the element can be targeted.
-
-import StylingSelectExample from '@site/static/usage/v1/select/customization/styling-select/index.md';
-
-<StylingSelectExample />
-
-### Styling Select Interface
-
-Customizing the interface dialog should be done by following the Customization section in that interface's documentation:
-
-- [Alert Customization](alert.md#customization)
-- [Action Sheet Customization](action-sheet.md#customization)
-- [Popover Customization](popover.md#customization)
-
-However, the Select Option does set a class for easier styling and allows for the ability to pass a class to the overlay option, see the [Select Options documentation](select-option.md) for usage examples of customizing options.
-
-### Custom Toggle Icons
-
-The icon that displays next to the select text can be set to any [Ionicon](https://ionic.io/ionicons) using the `toggleIcon` and/or `expandedIcon` properties.
-
-import CustomToggleIconsExample from '@site/static/usage/v1/select/customization/custom-toggle-icons/index.md';
-
-<CustomToggleIconsExample />
-
-### Icon Flip Behavior
-
-By default, when the select is open, the toggle icon will automatically rotate on `md` mode and remain static on `ios` mode. This behavior can be customized using CSS.
-
-The below example also uses a [custom `toggleIcon`](#custom-toggle-icons) to better demonstrate the flip behavior on `ios`, since the default icon is vertically symmetrical.
-
-import IconFlipBehaviorExample from '@site/static/usage/v1/select/customization/icon-flip-behavior/index.md';
-
-<IconFlipBehaviorExample />
-
-## Typeahead Component
-
-Typeahead or autocomplete functionality can be built using existing Ionic components. We recommend using an `ion-modal` to make the best use of the available screen space.
-
-import TypeaheadExample from '@site/static/usage/v1/select/typeahead/index.md';
-
-<TypeaheadExample />
-
-## Interfaces
-
-### SelectChangeEventDetail
-
-```typescript
-interface SelectChangeEventDetail<T = any> {
-  value: T;
-}
-```
-
-### SelectCustomEvent
-
-While not required, this interface can be used in place of the `CustomEvent` interface for stronger typing with Ionic events emitted from this component.
-
-```typescript
-interface SelectCustomEvent<T = any> extends CustomEvent {
-  detail: SelectChangeEventDetail<T>;
-  target: HTMLIonSelectElement;
-}
-```
-
-## Migrating from Legacy Select Syntax
-
-A simpler select syntax was introduced in Ionic 7.0. This new syntax reduces the boilerplate required to setup an select, resolves accessibility issues, and improves the developer experience.
-
-Developers can perform this migration one select at a time. While developers can continue using the legacy syntax, we recommend migrating as soon as possible.
-
-
-### Using the Modern Syntax
-
-Using the modern syntax involves two steps:
-
-1. Remove `ion-label` and use the `label` property on `ion-select` instead. The placement of the label can be configured using the `labelPlacement` property on `ion-select`.
-2. Move any usage of `fill` and `shape` from `ion-item` on to `ion-select`.
-
-import Migration from '@site/static/usage/v1/select/migration/index.md';
-
-<Migration />
-
-### Using the Legacy Syntax
-
-Ionic uses heuristics to detect if an app is using the modern select syntax. In some instances, it may be preferable to continue using the legacy syntax. Developers can set the `legacy` property on `ion-select` to `true` to force that instance of the input to use the legacy syntax.
-
-## Properties
-<Props />
-
-## Events
-<Events />
-
-## Methods
-<Methods />
+| Event             | Popis                                                                      |
+|-------------------|----------------------------------------------------------------------------|
+| blur              | Vyvolaný keď elemenet stratí focus.                                        |
+| focus             | Vyvolaný keď elemenet dostane focus.                                       |
+| wj:button-click   | Vyvolaný po kliknuti na tlačidlo odstránenia všetkých zvolených možností.  |
+| wj:chip-remove    | Vyvolaný po odstránení Chip elementu.                                      |
+| wj:option-change  | Vyvolaný po zmene zvolenej možnosti.                                       |
+| wj:options-load   | Vyvolaný po načítaní možností                                              |
+
+## Metódy
+
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
 ## CSS Shadow Parts
-<Parts />
 
-## CSS Custom Properties
-<CustomProps />
+| Názov | Popis |
+| --- | --- |
+| `clear` | Odkazuje na tlačidlo `<wj-button>` pre zmazanie všetkých zvolených možností  |
+| `input` | Odkazuje na `<input>` element |
+| `native` | Odkazuje na `<div>` element |
+
+
+## CSS Custom Vlastnosti
+
+| Vlastnosť                             | Popis                         |
+|---------------------------------------|-------------------------------|
+| `--wj-select-background-color`        | Farba pozadia elementu        |
+| `--wj-select-border-color`            | Farba okrajov elementu        |
+| `--wj-select-border-radius`           | Zaoblenie okrajov elementu    |
+| `--wj-select-border-style`            | Štýl zaoblenia elementu       |
+| `--wj-select-border-width`            | Šírka okrajov elementu        |
+| `--wj-select-color`                   | Farba elementu                |
+| `--wj-select-line-height`             | Výška riadka elementu         |
+| `--wj-select-options-border-color`    | Farba okrajov rozbalovacieho okna       |
+| `--wj-select-options-border-style`    | Štýl okrajov rozbalovacieho okna        |
+| `--wj-select-options-border-width`    | Šírka okrajov rozbalovacieho okna       |
 
 ## Slots
-<Slots />
+
+| Slot | Popis |
+| --- | --- |
+| `anchor` | Obsah sa umiestni do elementu `.wrapper` |
+| `arrow` | Obsah sa umiestni do elementu `wj-icon` vo vnútri   |

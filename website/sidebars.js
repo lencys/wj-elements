@@ -410,12 +410,12 @@ module.exports = {
     //   collapsed: false,
     //   items: ['api/avatar', 'api/icon', 'api/img', 'api/thumbnail'],
     // },
-    // {
-    //   type: 'category',
-    //   label: 'Menu',
-    //   collapsed: false,
-    //   items: ['api/menu', 'api/menu-button', 'api/menu-toggle', 'api/split-pane'],
-    // },
+    {
+      type: 'category',
+      label: 'Menu',
+      collapsed: false,
+      items: ['api/menu', 'api/menu-item'],
+    },
     // {
     //   type: 'category',
     //   label: 'Modal',
@@ -440,12 +440,12 @@ module.exports = {
       collapsed: false,
       items: ['api/progress-bar'],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Radio',
-    //   collapsed: false,
-    //   items: ['api/radio', 'api/radio-group'],
-    // },
+    {
+      type: 'category',
+      label: 'Radio',
+      collapsed: false,
+      items: ['api/radio', 'api/radio-group'],
+    },
     // {
     //   type: 'category',
     //   label: 'Range',
@@ -482,18 +482,30 @@ module.exports = {
     //   collapsed: false,
     //   items: ['api/segment', 'api/segment-button'],
     // },
-    // {
-    //   type: 'category',
-    //   label: 'Select',
-    //   collapsed: false,
-    //   items: ['api/select', 'api/select-option'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Tabs',
-    //   collapsed: false,
-    //   items: ['api/tabs', 'api/tab', 'api/tab-bar', 'api/tab-button'],
-    // },
+    {
+      type: 'category',
+      label: 'Select',
+      collapsed: false,
+      items: ['api/select', 'api/select-option'],
+    },
+    {
+      type: 'category',
+      label: 'Slider',
+      collapsed: false,
+      items: ['api/slider'],
+    },
+    {
+      type: 'category',
+      label: 'Split View',
+      collapsed: false,
+      items: ['api/split-view'],
+    },
+    {
+      type: 'category',
+      label: 'Tabs',
+      collapsed: false,
+      items: ['api/tab-group', 'api/tab', 'api/tab-panel' ],
+    },
     // {
     //   type: 'category',
     //   label: 'Toast',

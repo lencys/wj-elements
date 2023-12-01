@@ -14,7 +14,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 import Basic from '@site/static/usage/v1/infinite-scroll/basic/index.md';
 
+
 <Basic />
+
 
 ## Počet načítaných položiek (size)
 

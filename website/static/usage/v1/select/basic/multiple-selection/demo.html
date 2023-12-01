@@ -3,28 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Select - Multiple Selection</title>
+    <title>ProgressBar</title>
     <link rel="stylesheet" href="../../../../common.css" />
     <script src="../../../../common.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@7/dist/ionic/ionic.esm.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@7/css/ionic.bundle.css" />
+    <script type="module" src="../../../../../js/demo.js"></script>
+      <!-- <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/wj-main.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/style.css" /> -->
+    <script type="module" src="./../../../../../wj-elementy/wj-master.js"></script>
+    <link rel="stylesheet" href="./../../../../../wj-elementy/style.css" />
   </head>
 
   <body>
-    <ion-app>
-      <ion-content>
-        <div class="container">
-          <ion-list>
-            <ion-item>
-              <ion-select aria-label="Fruit" placeholder="Select all fruits that apply" multiple="true">
-                <ion-select-option value="apples">Apples</ion-select-option>
-                <ion-select-option value="oranges">Oranges</ion-select-option>
-                <ion-select-option value="bananas">Bananas</ion-select-option>
-              </ion-select>
-            </ion-item>
-          </ion-list>
-        </div>
-      </ion-content>
-    </ion-app>
+    <div class="playground">
+      <div class="content" style="max-width: 60%;margin: auto;">
+        <wj-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
+          <wj-options url="/api/options" item-value="tralala" item-text="label"></wj-options>
+        </wj-select>
+      </div>
+    </div>
   </body>
 </html>
