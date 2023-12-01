@@ -24,9 +24,9 @@ template.innerHTML = `<h1>Icons</h1>
       <div class="content">
         <wj-icon class="custom" name="check"></wj-icon>
         <style>
-          .custom {
+          wj-icon.custom {
             --wj-icon-size: 60px;
-            color: #ff0000;
+            color: blue;
           }
         </style>
       </div>
