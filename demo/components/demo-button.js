@@ -9,7 +9,12 @@ export default class DemoButton extends WJElement {
   }
 
   draw(){
-    return `<h1>Button</h1>
+    return `<style>
+      wj-button {
+        margin: .25rem;
+      }
+    </style>
+    <h1>Button</h1>
     <div class="container">
       
       <!--  BASIC-->
