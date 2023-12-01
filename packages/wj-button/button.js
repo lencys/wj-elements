@@ -53,7 +53,6 @@ export class Button extends WJElement {
     }
 
     get stopPropagation() {
-        console.log("SP:", bool(this.getAttribute("stop-propagation")), this.innerHTML,this.getAttribute("stop-propagation"))
         return bool(this.getAttribute("stop-propagation"));
     }
 
@@ -97,11 +96,10 @@ export class Button extends WJElement {
         else
             this.classList.add("wj-color-default", "wj-color");
 
-        if(this.hasAttribute("caret")) {
+        if(this.hasAttribute("caret") || this.hasAttribute("only-caret")) {
             let i = document.createElement("wj-icon");
             i.style.setProperty("--wj-icon-size", "14px");
             i.setAttribute("slot", "caret");
-            // i.setAttribute("size", "small");
             i.setAttribute("name", "chevron-down");
 
             this.appendChild(i);
@@ -151,7 +149,6 @@ export class Button extends WJElement {
     }
 
     afterDraw() {
-        console.log("Stop propagation: ", this.stopPropagation);
         event.addListener(this, "click", "wj:button-click", null, { stopPropagation: this.stopPropagation });
         event.addListener(this, "click", null, this.eventDialogOpen);
     }

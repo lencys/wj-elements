@@ -7,7 +7,7 @@ export class RouterLink extends WJElement {
     constructor() {
         super();
 
-        bindRouterLinks(this, { selector: false })
+        bindRouterLinks(this, { selector: false });
     }
 
     className = "RouterLink";
@@ -22,7 +22,7 @@ export class RouterLink extends WJElement {
 
     setupAttributes() {
         this.isShadowRoot = "open";
-        this.setAttribute("active-class", "active")
+        this.setAttribute("active-class", "active");
     }
 
     draw(context, store, params) {

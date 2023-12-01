@@ -2,8 +2,6 @@ import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.j
 
 import styles from "./scss/styles.scss?inline";
 
-console.log("STYLES COL:", styles);
-
 export class Col extends WJElement {
     constructor() {
         super();
