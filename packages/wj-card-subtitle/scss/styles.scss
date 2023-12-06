@@ -6,6 +6,7 @@
 }
 
 :host {
+  --wj-card-subtitle-padding: 0;
   @include transition(opacity 0.3s ease);
   font-family: var(--wj-card-subtitle-font-family);
   font-size: var(--wj-card-subtitle-font-size);
@@ -14,7 +15,7 @@
   letter-spacing: 0.06em;
   font-weight: 500;
   margin: 0;
-  padding: 0;
+  padding: var(--wj-card-subtitle-padding);
   line-height: normal;
   overflow: hidden;
   text-overflow: ellipsis;

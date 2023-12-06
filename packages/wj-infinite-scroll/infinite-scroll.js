@@ -1,4 +1,4 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement, event } from "../wj-element/wj-element.js";
 
 import styles from "./scss/styles.scss?inline";
 
@@ -80,6 +80,10 @@ export class InfiniteScroll extends WJElement {
         this.addEventListener("scroll", this.onScroll);
     }
 
+    unScrollEvent = () => {
+        this.removeEventListener("scroll", this.onScroll);
+    }
+
     onScroll = (e)=> {
         const { scrollTop, scrollHeight, clientHeight } = e.target;
 
@@ -123,7 +127,8 @@ export class InfiniteScroll extends WJElement {
     async loadPages (page){
         this.showLoader();
         try {
-            if (this.hasMorePages(page)) {
+            if (this.hasMorePages(page) || typeof this.setCustomData === "function") {
+
                 let result;
                 let response;
 
@@ -136,9 +141,7 @@ export class InfiniteScroll extends WJElement {
                 this.totalPages = response.totalPages;
                 this.currentPage = page;
 
-                result = response.data.map((item) => {
-                    return this.infiniteScrollTemplate.interpolate(item);
-                });
+                const parser = new DOMParser();
 
                 let placement = this;
 
@@ -146,7 +149,17 @@ export class InfiniteScroll extends WJElement {
                 if(this.hasAttribute("placement"))
                     placement = this.querySelector(this.placement);
 
-                placement.insertAdjacentHTML("beforeend", result.join(""));
+                response.data.forEach((item) => {
+                    const interpolateItem = this.infiniteScrollTemplate.interpolate(item);
+                    const doc = parser.parseFromString(interpolateItem, 'text/html');
+                    const element = doc.querySelector(".icon-item");
+
+                    event.addListener(element, "click", "wj-infinite-scroll:click-item", null, { stopPropagation: true });
+
+                    placement.insertAdjacentElement("beforeend", element);
+                });
+
+
 
                 this.isLoading.push(page);
             }

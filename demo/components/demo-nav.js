@@ -16,14 +16,14 @@ template.innerHTML = `
             Home
             <wj-icon slot="start" name="home"></wj-icon>
           </wj-menu-item>
-          <wj-menu-item offset="5" manual>
-            Navigation One
+          <wj-menu-item offset="5" variant="context" manual>
+            One
             <wj-icon slot="start" name="heart"></wj-icon>
             <wj-menu slot="submenu" offset="5" placement="bottom-start">
               <wj-menu-item>Menu item 1</wj-menu-item>
-              <wj-menu-item>
+              <wj-menu-item variant="context">
                 Menu item 2
-                <wj-menu slot="submenu" variant="context" offset="10">
+                <wj-menu slot="submenu" offset="5">
                   <wj-menu-item>Menu item 2.1</wj-menu-item>
                   <wj-menu-item>Menu item 2.2</wj-menu-item>
                   <wj-menu-item>Menu item 2.3</wj-menu-item>
@@ -33,12 +33,12 @@ template.innerHTML = `
             </wj-menu>
           </wj-menu-item>
           <wj-menu-item>
-            Navigation Two
+            Two
             <wj-icon slot="start" name="map-pin"></wj-icon>
           </wj-menu-item>
           <wj-menu-item>
             <wj-icon slot="start" name="settings"></wj-icon>
-            Navigation Three
+            Three
           </wj-menu-item>
         </wj-menu> 
         
@@ -63,33 +63,35 @@ template.innerHTML = `
     <h2>Collapse</h2>
     <div class="playground" style="align-items: start;">
       <div class="content" style="display: block; margin: 0 auto;">
-        <wj-menu id="custom" variant="nav" active collapse>
-          <wj-menu-item offset="10">
+        <wj-button id="toggle">Toggle</wj-button>
+        
+        <wj-menu id="custom" variant="nav" collapse active>
+          <wj-menu-item>
             Home
             <wj-icon slot="start" name="home"></wj-icon>
           </wj-menu-item>
-          <wj-menu-item offset="10">
-            Navigation One
+          <wj-menu-item>
+            One
             <wj-icon slot="start" name="heart"></wj-icon>
-            <wj-menu slot="submenu" variant="context" offset="10">
+            <wj-menu slot="submenu">
               <wj-menu-item>Menu item 1</wj-menu-item>
               <wj-menu-item>
                 Menu item 2
-                <wj-menu slot="submenu" variant="context">
+                <wj-menu slot="submenu">
                   <wj-menu-item>Menu item 2.1</wj-menu-item>
                   <wj-menu-item>Menu item 2.2</wj-menu-item>
                   <wj-menu-item>Menu item 2.3</wj-menu-item>
                 </wj-menu >
               </wj-menu-item>
-              <wj-menu-item offset="10">Menu item 3</wj-menu-item>
+              <wj-menu-item>Menu item 3</wj-menu-item>
             </wj-menu>
           </wj-menu-item>
-          <wj-menu-item offset="10">
-            Navigation Two
+          <wj-menu-item>
+            Two
             <wj-icon slot="start" name="map-pin"></wj-icon>
           </wj-menu-item>
-          <wj-menu-item offset="10">
-            Navigation Three
+          <wj-menu-item>
+            Three
             <wj-icon slot="start" name="settings"></wj-icon>
           </wj-menu-item>
         </wj-menu> 
@@ -115,12 +117,12 @@ template.innerHTML = `
     <div class="playground" style="align-items: start;">
       <div class="content" style="display: block; margin: 0 auto;">
         <wj-menu id="custom-1" variant="nav" active>
-          <wj-menu-item offset="10">
+          <wj-menu-item>
             Home
             <wj-icon slot="start" name="home"></wj-icon>
           </wj-menu-item>
-          <wj-menu-item offset="10">
-            Navigation One
+          <wj-menu-item>
+            One
             <wj-icon slot="start" name="heart"></wj-icon>
             <wj-menu slot="submenu" variant="nav">
               <wj-menu-item offset="10">Menu item 1</wj-menu-item>
@@ -135,13 +137,13 @@ template.innerHTML = `
               <wj-menu-item offset="10">Menu item 3</wj-menu-item>
             </wj-menu>
           </wj-menu-item>
-          <wj-menu-item offset="10">
-            Navigation Two
+          <wj-menu-item>
+            Two
             <wj-icon slot="start" name="map-pin"></wj-icon>
           </wj-menu-item>
-          <wj-menu-item offset="10">
+          <wj-menu-item>
             <wj-icon slot="start" name="settings"></wj-icon>
-            Navigation Three
+            Three
           </wj-menu-item>
         </wj-menu> 
         
@@ -164,6 +166,22 @@ template.innerHTML = `
 export default class DemoNav extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    const toggle = document.querySelector("#toggle");
+    const menu = document.querySelector("#custom");
+
+    // console.log(expand, collapse, menu)
+    toggle.addEventListener("wj:button-click", (e) => {
+      console.log("collapse");
+      menu.toggleAttribute("collapse");
+    });
+
+    // toggle.addEventListener("wj:button-click", (e) => {
+    //   console.log("expand");
+    //   menu.toggleAttribute("collapse");
+    // });
   }
 }
 

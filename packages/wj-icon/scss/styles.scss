@@ -45,8 +45,8 @@
   --wj-icon-height: var(--wj-icon-size, 100%);
   display: inline-block;
 
-  width: 1em;
-  height: 1em;
+  width: var(--wj-icon-width);
+  height: var(--wj-icon-height);
 
   contain: strict;
   fill: currentColor;

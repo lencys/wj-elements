@@ -120,3 +120,11 @@ router-outlet > * {
 wj-menu-button#close {
     margin: 1rem 0 0 1rem;
 }
+
+wj-button {
+  margin: .25rem;
+}
+
+wj-chip {
+  margin: .25rem;
+}

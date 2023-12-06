@@ -4493,20 +4493,6 @@
     "version": "1.6",
     "unicode": "ebcc"
   },
-  "brackets-angle-off": {
-    "name": "brackets-angle-off",
-    "category": "",
-    "tags": ["brackets", "angle", "off", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcb1"
-  },
-  "brackets-angle": {
-    "name": "brackets-angle",
-    "category": "",
-    "tags": ["brackets", "angle", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcb2"
-  },
   "brackets-contain-end": {
     "name": "brackets-contain-end",
     "category": "Math",
@@ -4716,13 +4702,6 @@
     "tags": ["brand", "asana", "task", "management", "project management", "manage", "collaborate", "collaboration", "team", "teamwork", "technology", "icon", "stroke", "outline"],
     "version": "1.36",
     "unicode": "edc5"
-  },
-  "brand-auth0": {
-    "name": "brand-auth0",
-    "category": "Brand",
-    "tags": ["brand", "auth0", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcb3"
   },
   "brand-aws": {
     "name": "brand-aws",
@@ -5487,13 +5466,6 @@
     "version": "1.9",
     "unicode": "ec1e"
   },
-  "brand-google-filled": {
-    "name": "brand-google-filled",
-    "category": "Filled",
-    "tags": ["brand", "google", "filled", "icon", "stroke", "outline"],
-    "version": "2.40",
-    "unicode": "fd1a"
-  },
   "brand-google-fit": {
     "name": "brand-google-fit",
     "category": "Brand",
@@ -6061,13 +6033,6 @@
     "version": "2.31",
     "unicode": "fc42"
   },
-  "brand-patreon-filled": {
-    "name": "brand-patreon-filled",
-    "category": "Filled",
-    "tags": ["brand", "patreon", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fcff"
-  },
   "brand-patreon": {
     "name": "brand-patreon",
     "category": "Brand",
@@ -6158,13 +6123,6 @@
     "tags": ["brand", "powershell", "microsoft", "command", "interpreter", "software", "opensource", "icon", "stroke", "outline"],
     "version": "1.113",
     "unicode": "f5ed"
-  },
-  "brand-printables": {
-    "name": "brand-printables",
-    "category": "Brand",
-    "tags": ["brand", "printables", "icon", "stroke", "outline"],
-    "version": "2.40",
-    "unicode": "fd1b"
   },
   "brand-prisma": {
     "name": "brand-prisma",
@@ -6585,13 +6543,6 @@
     "tags": ["brand", "tether", "coin", "crypto", "cryptocurrency", "digital", "icon", "stroke", "outline"],
     "version": "1.110",
     "unicode": "f5a3"
-  },
-  "brand-thingiverse": {
-    "name": "brand-thingiverse",
-    "category": "Brand",
-    "tags": ["brand", "thingiverse", "icon", "stroke", "outline"],
-    "version": "2.40",
-    "unicode": "fd1c"
   },
   "brand-threads": {
     "name": "brand-threads",
@@ -7090,13 +7041,6 @@
     "version": "2.25",
     "unicode": "fb03"
   },
-  "briefcase-filled": {
-    "name": "briefcase-filled",
-    "category": "Filled",
-    "tags": ["briefcase", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd00"
-  },
   "briefcase-off": {
     "name": "briefcase-off",
     "category": "",
@@ -7250,13 +7194,6 @@
     "tags": ["bucket", "collection", "container", "water", "liquid", "icon", "stroke", "outline"],
     "version": "1.0",
     "unicode": "ea47"
-  },
-  "bug-filled": {
-    "name": "bug-filled",
-    "category": "Filled",
-    "tags": ["bug", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd01"
   },
   "bug-off": {
     "name": "bug-off",
@@ -7489,13 +7426,6 @@
     "version": "1.34",
     "unicode": "ee1d"
   },
-  "burger": {
-    "name": "burger",
-    "category": "",
-    "tags": ["burger", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcb4"
-  },
   "bus-off": {
     "name": "bus-off",
     "category": "Vehicles",
@@ -7720,13 +7650,6 @@
     "version": "2.22",
     "unicode": "fad2"
   },
-  "calendar-sad": {
-    "name": "calendar-sad",
-    "category": "",
-    "tags": ["calendar", "sad", "icon", "stroke", "outline"],
-    "version": "2.40",
-    "unicode": "fd1d"
-  },
   "calendar-search": {
     "name": "calendar-search",
     "category": "System",
@@ -7740,13 +7663,6 @@
     "tags": ["calendar", "share", "icon", "stroke", "outline"],
     "version": "2.10",
     "unicode": "f82f"
-  },
-  "calendar-smile": {
-    "name": "calendar-smile",
-    "category": "",
-    "tags": ["calendar", "smile", "icon", "stroke", "outline"],
-    "version": "2.40",
-    "unicode": "fd1e"
   },
   "calendar-star": {
     "name": "calendar-star",
@@ -7775,13 +7691,6 @@
     "tags": ["calendar", "up", "icon", "stroke", "outline"],
     "version": "2.10",
     "unicode": "f831"
-  },
-  "calendar-user": {
-    "name": "calendar-user",
-    "category": "",
-    "tags": ["calendar", "user", "icon", "stroke", "outline"],
-    "version": "2.40",
-    "unicode": "fd1f"
   },
   "calendar-x": {
     "name": "calendar-x",
@@ -8182,13 +8091,6 @@
     "version": "2.26",
     "unicode": "fb2b"
   },
-  "caret-left-right-filled": {
-    "name": "caret-left-right-filled",
-    "category": "Filled",
-    "tags": ["caret", "left", "right", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd02"
-  },
   "caret-left-right": {
     "name": "caret-left-right",
     "category": "",
@@ -8216,13 +8118,6 @@
     "tags": ["caret", "right", "next", "play", "more", "icon", "stroke", "outline"],
     "version": "1.2",
     "unicode": "eb5f"
-  },
-  "caret-up-down-filled": {
-    "name": "caret-up-down-filled",
-    "category": "Filled",
-    "tags": ["caret", "up", "down", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd03"
   },
   "caret-up-down": {
     "name": "caret-up-down",
@@ -8349,20 +8244,6 @@
     "tags": ["category", "filled", "icon", "stroke", "outline"],
     "version": "2.26",
     "unicode": "fb2e"
-  },
-  "category-minus": {
-    "name": "category-minus",
-    "category": "",
-    "tags": ["category", "minus", "icon", "stroke", "outline"],
-    "version": "2.40",
-    "unicode": "fd20"
-  },
-  "category-plus": {
-    "name": "category-plus",
-    "category": "",
-    "tags": ["category", "plus", "icon", "stroke", "outline"],
-    "version": "2.40",
-    "unicode": "fd21"
   },
   "category": {
     "name": "category",
@@ -8644,26 +8525,12 @@
     "version": "1.61",
     "unicode": "f098"
   },
-  "chart-dots-filled": {
-    "name": "chart-dots-filled",
-    "category": "Filled",
-    "tags": ["chart", "dots", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd04"
-  },
   "chart-dots": {
     "name": "chart-dots",
     "category": "Charts",
     "tags": ["chart", "dots", "statistics", "data", "value", "variable", "scale", "statistical", "icon", "stroke", "outline"],
     "version": "1.39",
     "unicode": "ee2f"
-  },
-  "chart-grid-dots-filled": {
-    "name": "chart-grid-dots-filled",
-    "category": "Filled",
-    "tags": ["chart", "grid", "dots", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd05"
   },
   "chart-grid-dots": {
     "name": "chart-grid-dots",
@@ -10751,13 +10618,6 @@
     "version": "1.108",
     "unicode": "f579"
   },
-  "coin-bitcoin-filled": {
-    "name": "coin-bitcoin-filled",
-    "category": "Filled",
-    "tags": ["coin", "bitcoin", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd06"
-  },
   "coin-bitcoin": {
     "name": "coin-bitcoin",
     "category": "E-commerce",
@@ -10765,33 +10625,12 @@
     "version": "1.81",
     "unicode": "f2be"
   },
-  "coin-euro-filled": {
-    "name": "coin-euro-filled",
-    "category": "Filled",
-    "tags": ["coin", "euro", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd07"
-  },
   "coin-euro": {
     "name": "coin-euro",
     "category": "E-commerce",
     "tags": ["coin", "euro", "money", "earn", "salary", "change", "icon", "stroke", "outline"],
     "version": "1.81",
     "unicode": "f2bf"
-  },
-  "coin-filled": {
-    "name": "coin-filled",
-    "category": "Filled",
-    "tags": ["coin", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd08"
-  },
-  "coin-monero-filled": {
-    "name": "coin-monero-filled",
-    "category": "Filled",
-    "tags": ["coin", "monero", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd09"
   },
   "coin-monero": {
     "name": "coin-monero",
@@ -10807,26 +10646,12 @@
     "version": "1.63",
     "unicode": "f0d1"
   },
-  "coin-pound-filled": {
-    "name": "coin-pound-filled",
-    "category": "Filled",
-    "tags": ["coin", "pound", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd0a"
-  },
   "coin-pound": {
     "name": "coin-pound",
     "category": "E-commerce",
     "tags": ["coin", "pound", "money", "earn", "salary", "change", "icon", "stroke", "outline"],
     "version": "1.81",
     "unicode": "f2c0"
-  },
-  "coin-rupee-filled": {
-    "name": "coin-rupee-filled",
-    "category": "Filled",
-    "tags": ["coin", "rupee", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd0b"
   },
   "coin-rupee": {
     "name": "coin-rupee",
@@ -10835,40 +10660,12 @@
     "version": "1.81",
     "unicode": "f2c1"
   },
-  "coin-taka-filled": {
-    "name": "coin-taka-filled",
-    "category": "Filled",
-    "tags": ["coin", "taka", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd0c"
-  },
-  "coin-taka": {
-    "name": "coin-taka",
-    "category": "",
-    "tags": ["coin", "taka", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd0d"
-  },
-  "coin-yen-filled": {
-    "name": "coin-yen-filled",
-    "category": "Filled",
-    "tags": ["coin", "yen", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd0e"
-  },
   "coin-yen": {
     "name": "coin-yen",
     "category": "E-commerce",
     "tags": ["coin", "yen", "money", "earn", "salary", "change", "icon", "stroke", "outline"],
     "version": "1.81",
     "unicode": "f2c2"
-  },
-  "coin-yuan-filled": {
-    "name": "coin-yuan-filled",
-    "category": "Filled",
-    "tags": ["coin", "yuan", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd0f"
   },
   "coin-yuan": {
     "name": "coin-yuan",
@@ -11002,13 +10799,6 @@
     "tags": ["command", "apple", "key", "keyboard", "cmd", "icon", "stroke", "outline"],
     "version": "1.0",
     "unicode": "ea78"
-  },
-  "compass-filled": {
-    "name": "compass-filled",
-    "category": "Filled",
-    "tags": ["compass", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd10"
   },
   "compass-off": {
     "name": "compass-off",
@@ -11408,13 +11198,6 @@
     "tags": ["creative", "commons", "licence", "license", "icon", "stroke", "outline"],
     "version": "1.49",
     "unicode": "efb3"
-  },
-  "credit-card-filled": {
-    "name": "credit-card-filled",
-    "category": "Filled",
-    "tags": ["credit", "card", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd11"
   },
   "credit-card-off": {
     "name": "credit-card-off",
@@ -15350,13 +15133,6 @@
     "version": "1.0",
     "unicode": "ea9f"
   },
-  "file-neutral": {
-    "name": "file-neutral",
-    "category": "",
-    "tags": ["file", "neutral", "icon", "stroke", "outline"],
-    "version": "2.40",
-    "unicode": "fd22"
-  },
   "file-off": {
     "name": "file-off",
     "category": "Document",
@@ -15420,13 +15196,6 @@
     "version": "1.56",
     "unicode": "f03b"
   },
-  "file-sad": {
-    "name": "file-sad",
-    "category": "",
-    "tags": ["file", "sad", "icon", "stroke", "outline"],
-    "version": "2.40",
-    "unicode": "fd23"
-  },
   "file-scissors": {
     "name": "file-scissors",
     "category": "Document",
@@ -15461,13 +15230,6 @@
     "tags": ["file", "signal", "wi-fi", "connection", "internet", "online", "connected", "icon", "stroke", "outline"],
     "version": "1.56",
     "unicode": "f03d"
-  },
-  "file-smile": {
-    "name": "file-smile",
-    "category": "",
-    "tags": ["file", "smile", "icon", "stroke", "outline"],
-    "version": "2.40",
-    "unicode": "fd24"
   },
   "file-spreadsheet": {
     "name": "file-spreadsheet",
@@ -15931,13 +15693,6 @@
     "version": "1.65",
     "unicode": "f12a"
   },
-  "fingerprint-scan": {
-    "name": "fingerprint-scan",
-    "category": "",
-    "tags": ["fingerprint", "scan", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcb5"
-  },
   "fingerprint": {
     "name": "fingerprint",
     "category": "System",
@@ -16246,13 +16001,6 @@
     "version": "1.39",
     "unicode": "ee8e"
   },
-  "flask-2-filled": {
-    "name": "flask-2-filled",
-    "category": "Filled",
-    "tags": ["flask", "2", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd12"
-  },
   "flask-2-off": {
     "name": "flask-2-off",
     "category": "Health",
@@ -16266,13 +16014,6 @@
     "tags": ["flask", "2", "liquid", "container", "glass", "chemistry", "icon", "stroke", "outline"],
     "version": "1.44",
     "unicode": "ef60"
-  },
-  "flask-filled": {
-    "name": "flask-filled",
-    "category": "Filled",
-    "tags": ["flask", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd13"
   },
   "flask-off": {
     "name": "flask-off",
@@ -16757,13 +16498,6 @@
     "version": "1.72",
     "unicode": "f225"
   },
-  "galaxy": {
-    "name": "galaxy",
-    "category": "",
-    "tags": ["galaxy", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcb6"
-  },
   "garden-cart-off": {
     "name": "garden-cart-off",
     "category": "Vehicles",
@@ -17016,13 +16750,6 @@
     "version": "1.93",
     "unicode": "f3aa"
   },
-  "gift-filled": {
-    "name": "gift-filled",
-    "category": "Filled",
-    "tags": ["gift", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd14"
-  },
   "gift-off": {
     "name": "gift-off",
     "category": "",
@@ -17204,13 +16931,6 @@
     "tags": ["grain", "dots", "pattern", "random", "round", "circle", "nodes", "icon", "stroke", "outline"],
     "version": "1.39",
     "unicode": "ee92"
-  },
-  "graph-filled": {
-    "name": "graph-filled",
-    "category": "Filled",
-    "tags": ["graph", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd15"
   },
   "graph-off": {
     "name": "graph-off",
@@ -18675,13 +18395,6 @@
     "version": "2.31",
     "unicode": "fc46"
   },
-  "horseshoe": {
-    "name": "horseshoe",
-    "category": "",
-    "tags": ["horseshoe", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcb7"
-  },
   "hotel-service": {
     "name": "hotel-service",
     "category": "",
@@ -19928,13 +19641,6 @@
     "version": "1.40",
     "unicode": "ef10"
   },
-  "letter-a-small": {
-    "name": "letter-a-small",
-    "category": "Letters",
-    "tags": ["letter", "a", "small", "a", "alpha", "alphabet", "first", "letter", "initial", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcc7"
-  },
   "letter-a": {
     "name": "letter-a",
     "category": "Letters",
@@ -19942,26 +19648,12 @@
     "version": "1.12",
     "unicode": "ec50"
   },
-  "letter-b-small": {
-    "name": "letter-b-small",
-    "category": "Letters",
-    "tags": ["letter", "b", "small", "b", "beta", "second", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcc8"
-  },
   "letter-b": {
     "name": "letter-b",
     "category": "Letters",
     "tags": ["letter", "b", "alphabet", "symbol", "text", "code", "icon", "stroke", "outline"],
     "version": "1.12",
     "unicode": "ec51"
-  },
-  "letter-c-small": {
-    "name": "letter-c-small",
-    "category": "Letters",
-    "tags": ["letter", "c", "small", "c", "charlie", "third", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcc9"
   },
   "letter-c": {
     "name": "letter-c",
@@ -19998,26 +19690,12 @@
     "version": "1.39",
     "unicode": "eea5"
   },
-  "letter-d-small": {
-    "name": "letter-d-small",
-    "category": "Letters",
-    "tags": ["letter", "d", "small", "d", "delta", "fourth", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcca"
-  },
   "letter-d": {
     "name": "letter-d",
     "category": "Letters",
     "tags": ["letter", "d", "alphabet", "symbol", "text", "code", "icon", "stroke", "outline"],
     "version": "1.12",
     "unicode": "ec53"
-  },
-  "letter-e-small": {
-    "name": "letter-e-small",
-    "category": "Letters",
-    "tags": ["letter", "e", "small", "e", "echo", "fifth", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fccb"
   },
   "letter-e": {
     "name": "letter-e",
@@ -20026,26 +19704,12 @@
     "version": "1.12",
     "unicode": "ec54"
   },
-  "letter-f-small": {
-    "name": "letter-f-small",
-    "category": "Letters",
-    "tags": ["letter", "f", "small", "f", "foxtrot", "sixth", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fccc"
-  },
   "letter-f": {
     "name": "letter-f",
     "category": "Letters",
     "tags": ["letter", "f", "alphabet", "symbol", "text", "code", "icon", "stroke", "outline"],
     "version": "1.12",
     "unicode": "ec55"
-  },
-  "letter-g-small": {
-    "name": "letter-g-small",
-    "category": "Letters",
-    "tags": ["letter", "g", "small", "g", "golf", "seventh", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fccd"
   },
   "letter-g": {
     "name": "letter-g",
@@ -20054,26 +19718,12 @@
     "version": "1.12",
     "unicode": "ec56"
   },
-  "letter-h-small": {
-    "name": "letter-h-small",
-    "category": "Letters",
-    "tags": ["letter", "h", "small", "h", "hotel", "eighth", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcce"
-  },
   "letter-h": {
     "name": "letter-h",
     "category": "Letters",
     "tags": ["letter", "h", "alphabet", "symbol", "text", "code", "icon", "stroke", "outline"],
     "version": "1.12",
     "unicode": "ec57"
-  },
-  "letter-i-small": {
-    "name": "letter-i-small",
-    "category": "Letters",
-    "tags": ["letter", "i", "small", "i", "india", "ninth", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fccf"
   },
   "letter-i": {
     "name": "letter-i",
@@ -20082,26 +19732,12 @@
     "version": "1.12",
     "unicode": "ec58"
   },
-  "letter-j-small": {
-    "name": "letter-j-small",
-    "category": "Letters",
-    "tags": ["letter", "j", "small", "j", "juliett", "tenth", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcd0"
-  },
   "letter-j": {
     "name": "letter-j",
     "category": "Letters",
     "tags": ["letter", "j", "alphabet", "symbol", "text", "code", "icon", "stroke", "outline"],
     "version": "1.12",
     "unicode": "ec59"
-  },
-  "letter-k-small": {
-    "name": "letter-k-small",
-    "category": "Letters",
-    "tags": ["letter", "k", "small", "k", "kilo", "eleventh", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcd1"
   },
   "letter-k": {
     "name": "letter-k",
@@ -20110,26 +19746,12 @@
     "version": "1.12",
     "unicode": "ec5a"
   },
-  "letter-l-small": {
-    "name": "letter-l-small",
-    "category": "Letters",
-    "tags": ["letter", "l", "small", "l", "lima", "twelfth", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcd2"
-  },
   "letter-l": {
     "name": "letter-l",
     "category": "Letters",
     "tags": ["letter", "l", "alphabet", "symbol", "text", "code", "icon", "stroke", "outline"],
     "version": "1.12",
     "unicode": "ec5b"
-  },
-  "letter-m-small": {
-    "name": "letter-m-small",
-    "category": "Letters",
-    "tags": ["letter", "m", "small", "m", "mike", "thirteenth", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcd3"
   },
   "letter-m": {
     "name": "letter-m",
@@ -20138,26 +19760,12 @@
     "version": "1.12",
     "unicode": "ec5c"
   },
-  "letter-n-small": {
-    "name": "letter-n-small",
-    "category": "Letters",
-    "tags": ["letter", "n", "small", "n", "november", "fourteenth", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcd4"
-  },
   "letter-n": {
     "name": "letter-n",
     "category": "Letters",
     "tags": ["letter", "n", "alphabet", "symbol", "text", "code", "icon", "stroke", "outline"],
     "version": "1.12",
     "unicode": "ec5d"
-  },
-  "letter-o-small": {
-    "name": "letter-o-small",
-    "category": "Letters",
-    "tags": ["letter", "o", "small", "o", "oscar", "fifteenth", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcd5"
   },
   "letter-o": {
     "name": "letter-o",
@@ -20166,26 +19774,12 @@
     "version": "1.12",
     "unicode": "ec5e"
   },
-  "letter-p-small": {
-    "name": "letter-p-small",
-    "category": "Letters",
-    "tags": ["letter", "p", "small", "p", "papa", "sixteenth", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcd6"
-  },
   "letter-p": {
     "name": "letter-p",
     "category": "Letters",
     "tags": ["letter", "p", "alphabet", "symbol", "text", "code", "icon", "stroke", "outline"],
     "version": "1.12",
     "unicode": "ec5f"
-  },
-  "letter-q-small": {
-    "name": "letter-q-small",
-    "category": "Letters",
-    "tags": ["letter", "q", "small", "q", "quebec", "seventeenth", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcd7"
   },
   "letter-q": {
     "name": "letter-q",
@@ -20194,26 +19788,12 @@
     "version": "1.12",
     "unicode": "ec60"
   },
-  "letter-r-small": {
-    "name": "letter-r-small",
-    "category": "Letters",
-    "tags": ["letter", "r", "small", "r", "romeo", "eighteenth", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcd8"
-  },
   "letter-r": {
     "name": "letter-r",
     "category": "Letters",
     "tags": ["letter", "r", "alphabet", "symbol", "text", "code", "icon", "stroke", "outline"],
     "version": "1.12",
     "unicode": "ec61"
-  },
-  "letter-s-small": {
-    "name": "letter-s-small",
-    "category": "Letters",
-    "tags": ["letter", "s", "small", "s", "sierra", "nineteenth", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcd9"
   },
   "letter-s": {
     "name": "letter-s",
@@ -20229,26 +19809,12 @@
     "version": "1.39",
     "unicode": "eea6"
   },
-  "letter-t-small": {
-    "name": "letter-t-small",
-    "category": "Letters",
-    "tags": ["letter", "t", "small", "t", "tango", "twentieth", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcda"
-  },
   "letter-t": {
     "name": "letter-t",
     "category": "Letters",
     "tags": ["letter", "t", "alphabet", "symbol", "text", "code", "icon", "stroke", "outline"],
     "version": "1.12",
     "unicode": "ec63"
-  },
-  "letter-u-small": {
-    "name": "letter-u-small",
-    "category": "Letters",
-    "tags": ["letter", "u", "small", "u", "uniform", "twenty-first", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcdb"
   },
   "letter-u": {
     "name": "letter-u",
@@ -20257,26 +19823,12 @@
     "version": "1.12",
     "unicode": "ec64"
   },
-  "letter-v-small": {
-    "name": "letter-v-small",
-    "category": "Letters",
-    "tags": ["letter", "v", "small", "v", "victor", "twenty-second", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcdc"
-  },
   "letter-v": {
     "name": "letter-v",
     "category": "Letters",
     "tags": ["letter", "v", "alphabet", "symbol", "text", "code", "icon", "stroke", "outline"],
     "version": "1.12",
     "unicode": "ec65"
-  },
-  "letter-w-small": {
-    "name": "letter-w-small",
-    "category": "Letters",
-    "tags": ["letter", "w", "small", "w", "whiskey", "twenty-third", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcdd"
   },
   "letter-w": {
     "name": "letter-w",
@@ -20285,13 +19837,6 @@
     "version": "1.12",
     "unicode": "ec66"
   },
-  "letter-x-small": {
-    "name": "letter-x-small",
-    "category": "Letters",
-    "tags": ["letter", "x", "small", "x", "x-ray", "twenty-fourth", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcde"
-  },
   "letter-x": {
     "name": "letter-x",
     "category": "Letters",
@@ -20299,26 +19844,12 @@
     "version": "1.12",
     "unicode": "ec67"
   },
-  "letter-y-small": {
-    "name": "letter-y-small",
-    "category": "Letters",
-    "tags": ["letter", "y", "small", "y", "yankee", "twenty-fifth", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcdf"
-  },
   "letter-y": {
     "name": "letter-y",
     "category": "Letters",
     "tags": ["letter", "y", "alphabet", "symbol", "text", "code", "icon", "stroke", "outline"],
     "version": "1.12",
     "unicode": "ec68"
-  },
-  "letter-z-small": {
-    "name": "letter-z-small",
-    "category": "Letters",
-    "tags": ["letter", "z", "small", "z", "zulu", "twenty-sixth", "letter", "alphabet", "character", "typeface", "glyph", "script", "symbol", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fce0"
   },
   "letter-z": {
     "name": "letter-z",
@@ -20383,13 +19914,6 @@
     "version": "1.3",
     "unicode": "eb94"
   },
-  "line-scan": {
-    "name": "line-scan",
-    "category": "",
-    "tags": ["line", "scan", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcb8"
-  },
   "line": {
     "name": "line",
     "category": "Design",
@@ -20397,26 +19921,12 @@
     "version": "1.11",
     "unicode": "ec40"
   },
-  "link-minus": {
-    "name": "link-minus",
-    "category": "",
-    "tags": ["link", "minus", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd16"
-  },
   "link-off": {
     "name": "link-off",
     "category": "Text",
     "tags": ["link", "off", "zoom-filled", "icon", "stroke", "outline"],
     "version": "1.94",
     "unicode": "f402"
-  },
-  "link-plus": {
-    "name": "link-plus",
-    "category": "",
-    "tags": ["link", "plus", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd17"
   },
   "link": {
     "name": "link",
@@ -21047,13 +20557,6 @@
     "tags": ["magnet", "magnetic field", "pole", "iron", "attract", "icon", "stroke", "outline"],
     "version": "1.0",
     "unicode": "eae3"
-  },
-  "magnetic": {
-    "name": "magnetic",
-    "category": "",
-    "tags": ["magnetic", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcb9"
   },
   "mail-ai": {
     "name": "mail-ai",
@@ -22574,13 +22077,6 @@
     "version": "1.70",
     "unicode": "f1fd"
   },
-  "metronome": {
-    "name": "metronome",
-    "category": "",
-    "tags": ["metronome", "icon", "stroke", "outline"],
-    "version": "2.40",
-    "unicode": "fd25"
-  },
   "michelin-bib-gourmand": {
     "name": "michelin-bib-gourmand",
     "category": "Food",
@@ -23526,13 +23022,6 @@
     "version": "2.28",
     "unicode": "fbf0"
   },
-  "navigation-east": {
-    "name": "navigation-east",
-    "category": "Map",
-    "tags": ["navigation", "east", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcba"
-  },
   "navigation-exclamation": {
     "name": "navigation-exclamation",
     "category": "",
@@ -23565,8 +23054,8 @@
     "name": "navigation-north",
     "category": "Map",
     "tags": ["navigation", "north", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcbb"
+    "version": "2.23",
+    "unicode": "faec"
   },
   "navigation-off": {
     "name": "navigation-off",
@@ -23617,13 +23106,6 @@
     "version": "2.28",
     "unicode": "fbf9"
   },
-  "navigation-south": {
-    "name": "navigation-south",
-    "category": "Map",
-    "tags": ["navigation", "south", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcbc"
-  },
   "navigation-star": {
     "name": "navigation-star",
     "category": "",
@@ -23631,26 +23113,12 @@
     "version": "2.28",
     "unicode": "fbfa"
   },
-  "navigation-top": {
-    "name": "navigation-top",
-    "category": "Map",
-    "tags": ["navigation", "top", "icon", "stroke", "outline"],
-    "version": "2.23",
-    "unicode": "faec"
-  },
   "navigation-up": {
     "name": "navigation-up",
     "category": "",
     "tags": ["navigation", "up", "icon", "stroke", "outline"],
     "version": "2.28",
     "unicode": "fbfb"
-  },
-  "navigation-west": {
-    "name": "navigation-west",
-    "category": "Map",
-    "tags": ["navigation", "west", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcbd"
   },
   "navigation-x": {
     "name": "navigation-x",
@@ -23813,26 +23281,12 @@
     "version": "1.0",
     "unicode": "eafe"
   },
-  "number-0-small": {
-    "name": "number-0-small",
-    "category": "Numbers",
-    "tags": ["number", "0", "small", "zero", "nil", "none", "naught", "nought", "nothing", "void", "zilch", "zip", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fce1"
-  },
   "number-0": {
     "name": "number-0",
     "category": "Numbers",
     "tags": ["number", "0", "zero", "maths", "value", "quantity", "calculate", "calculation", "total", "amount", "sum", "order", "digit", "icon", "stroke", "outline"],
     "version": "1.38",
     "unicode": "edf0"
-  },
-  "number-1-small": {
-    "name": "number-1-small",
-    "category": "Numbers",
-    "tags": ["number", "1", "small", "one", "singular", "first", "unit", "solitary", "individual", "alone", "unique", "sole", "individualistic", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fce2"
   },
   "number-1": {
     "name": "number-1",
@@ -23841,166 +23295,12 @@
     "version": "1.38",
     "unicode": "edf1"
   },
-  "number-10-small": {
-    "name": "number-10-small",
-    "category": "Numbers",
-    "tags": ["number", "10", "small", "ten", "decade", "decuple", "decad", "tenfold", "decenary", "dec", "decuplet", "tenth", "deca", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fce3"
-  },
-  "number-11-small": {
-    "name": "number-11-small",
-    "category": "Numbers",
-    "tags": ["number", "11", "small", "eleven", "undecade", "eleventh", "undecuple", "undecad", "elevenfold", "undecenary", "undec", "undecuplet", "11th", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fce4"
-  },
-  "number-12-small": {
-    "name": "number-12-small",
-    "category": "Numbers",
-    "tags": ["number", "12", "small", "twelve", "duodecade", "twelfth", "duodecuple", "duodecad", "twelvefold", "duodenary", "duodec", "duodecuplet", "12th", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fce5"
-  },
-  "number-13-small": {
-    "name": "number-13-small",
-    "category": "Numbers",
-    "tags": ["number", "13", "small", "thirteen", "thirteenth", "tredecade", "tredecuple", "tredecad", "thirteenfold", "tredecenary", "tredec", "tredecuplet", "13th", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fce6"
-  },
-  "number-14-small": {
-    "name": "number-14-small",
-    "category": "Numbers",
-    "tags": ["number", "14", "small", "fourteen", "fourteenth", "quattuordecade", "quattuordecuple", "quattuordecad", "fourteenfold", "quattuordecenary", "quattuordec", "quattuordecuplet", "14th", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fce7"
-  },
-  "number-15-small": {
-    "name": "number-15-small",
-    "category": "Numbers",
-    "tags": ["number", "15", "small", "fifteen", "fifteenth", "quindecade", "quindecuple", "quindecad", "fifteenfold", "quindecenary", "quindec", "quindecuplet", "15th", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fce8"
-  },
-  "number-16-small": {
-    "name": "number-16-small",
-    "category": "Numbers",
-    "tags": ["number", "16", "small", "sixteen", "sixteenth", "sexdecade", "sexdecuple", "sexdecad", "sixteenfold", "sexdecenary", "sexdec", "sexdecuplet", "16th", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fce9"
-  },
-  "number-17-small": {
-    "name": "number-17-small",
-    "category": "Numbers",
-    "tags": ["number", "17", "small", "seventeen", "seventeenth", "septendecade", "septendecuple", "septendecad", "seventeenfold", "septendecenary", "septendec", "septendecuplet", "17th", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcea"
-  },
-  "number-18-small": {
-    "name": "number-18-small",
-    "category": "Numbers",
-    "tags": ["number", "18", "small", "eighteen", "eighteenth", "octodecade", "octodecuple", "octodecad", "eighteenfold", "octodecenary", "octodec", "octodecuplet", "18th", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fceb"
-  },
-  "number-19-small": {
-    "name": "number-19-small",
-    "category": "Numbers",
-    "tags": ["number", "19", "small", "nineteen", "nineteenth", "novendecade", "novendecuple", "novendecad", "nineteenfold", "novendecenary", "novendec", "novendecuplet", "19th", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcec"
-  },
-  "number-2-small": {
-    "name": "number-2-small",
-    "category": "Numbers",
-    "tags": ["number", "2", "small", "two", "pair", "duo", "double", "twofold", "dual", "second", "couple", "dyad", "binary", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fced"
-  },
   "number-2": {
     "name": "number-2",
     "category": "Numbers",
     "tags": ["number", "2", "two", "maths", "value", "quantity", "calculate", "calculation", "total", "amount", "sum", "order", "digit", "icon", "stroke", "outline"],
     "version": "1.38",
     "unicode": "edf2"
-  },
-  "number-20-small": {
-    "name": "number-20-small",
-    "category": "Numbers",
-    "tags": ["number", "20", "small", "twenty", "twentieth", "vigintidecade", "vigintidecuple", "vigintidecad", "twentyfold", "vigintidecenary", "vigintidec", "vigintidecuplet", "20th", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcee"
-  },
-  "number-21-small": {
-    "name": "number-21-small",
-    "category": "Numbers",
-    "tags": ["number", "21", "small", "twenty-one", "21st", "twenty-first", "viginti-uno", "viginti-first", "twenty", "and", "one", "plus", "21th", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcef"
-  },
-  "number-22-small": {
-    "name": "number-22-small",
-    "category": "Numbers",
-    "tags": ["number", "22", "small", "twenty-two", "22nd", "twenty-second", "viginti-duo", "viginti-second", "twenty", "and", "two", "plus", "2th2", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcf0"
-  },
-  "number-23-small": {
-    "name": "number-23-small",
-    "category": "Numbers",
-    "tags": ["number", "23", "small", "twenty-three", "23rd", "twenty-third", "viginti-tertio", "viginti-third", "twenty", "and", "three", "plus", "23", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcf1"
-  },
-  "number-24-small": {
-    "name": "number-24-small",
-    "category": "Numbers",
-    "tags": ["number", "24", "small", "twenty-four", "24th", "twenty-fourth", "viginti-quarto", "viginti-fourth", "twenty", "and", "four", "plus", "24", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcf2"
-  },
-  "number-25-small": {
-    "name": "number-25-small",
-    "category": "Numbers",
-    "tags": ["number", "25", "small", "twenty-five", "25th", "twenty-fifth", "viginti-quinto", "viginti-fifth", "twenty", "and", "five", "plus", "25", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcf3"
-  },
-  "number-26-small": {
-    "name": "number-26-small",
-    "category": "Numbers",
-    "tags": ["number", "26", "small", "twenty-six", "26th", "twenty-sixth", "viginti-sexto", "viginti-sixth", "twenty", "and", "six", "plus", "26", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcf4"
-  },
-  "number-27-small": {
-    "name": "number-27-small",
-    "category": "Numbers",
-    "tags": ["number", "27", "small", "twenty-seven", "27th", "twenty-seventh", "viginti-septimo", "viginti-seventh", "twenty", "and", "seven", "plus", "27", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcf5"
-  },
-  "number-28-small": {
-    "name": "number-28-small",
-    "category": "Numbers",
-    "tags": ["number", "28", "small", "twenty-eight", "28th", "twenty-eighth", "viginti-octavo", "viginti-eighth", "twenty", "and", "eight", "plus", "28", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcf6"
-  },
-  "number-29-small": {
-    "name": "number-29-small",
-    "category": "Numbers",
-    "tags": ["number", "29", "small", "twenty-nine", "29th", "twenty-ninth", "viginti-nono", "viginti-ninth", "twenty", "and", "nine", "plus", "29", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcf7"
-  },
-  "number-3-small": {
-    "name": "number-3-small",
-    "category": "Numbers",
-    "tags": ["number", "3", "small", "three", "trio", "triplet", "third", "treble", "triad", "tertiary", "threesome", "triple", "triangular", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcf8"
   },
   "number-3": {
     "name": "number-3",
@@ -24009,26 +23309,12 @@
     "version": "1.38",
     "unicode": "edf3"
   },
-  "number-4-small": {
-    "name": "number-4-small",
-    "category": "Numbers",
-    "tags": ["number", "4", "small", "four", "quartet", "quadruple", "tetrad", "fourfold", "quaternary", "quadrant", "quartile", "quadruplet", "quad", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcf9"
-  },
   "number-4": {
     "name": "number-4",
     "category": "Numbers",
     "tags": ["number", "4", "four", "maths", "value", "quantity", "calculate", "calculation", "total", "amount", "sum", "order", "digit", "icon", "stroke", "outline"],
     "version": "1.38",
     "unicode": "edf4"
-  },
-  "number-5-small": {
-    "name": "number-5-small",
-    "category": "Numbers",
-    "tags": ["number", "5", "small", "five", "quintet", "quintuple", "pentad", "fivefold", "quinary", "quint", "quintuplet", "fifth", "penta", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcfa"
   },
   "number-5": {
     "name": "number-5",
@@ -24037,26 +23323,12 @@
     "version": "1.38",
     "unicode": "edf5"
   },
-  "number-6-small": {
-    "name": "number-6-small",
-    "category": "Numbers",
-    "tags": ["number", "6", "small", "six", "sextet", "sextuple", "hexad", "sixfold", "senary", "sextuplet", "hexagonal", "sixth", "hex", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcfb"
-  },
   "number-6": {
     "name": "number-6",
     "category": "Numbers",
     "tags": ["number", "6", "six", "maths", "value", "quantity", "calculate", "calculation", "total", "amount", "sum", "order", "digit", "icon", "stroke", "outline"],
     "version": "1.38",
     "unicode": "edf6"
-  },
-  "number-7-small": {
-    "name": "number-7-small",
-    "category": "Numbers",
-    "tags": ["number", "7", "small", "seven", "septet", "septuple", "heptad", "sevenfold", "septenary", "sept", "septuplet", "seventh", "hepta", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcfc"
   },
   "number-7": {
     "name": "number-7",
@@ -24065,26 +23337,12 @@
     "version": "1.38",
     "unicode": "edf7"
   },
-  "number-8-small": {
-    "name": "number-8-small",
-    "category": "Numbers",
-    "tags": ["number", "8", "small", "eight", "octet", "octuple", "octad", "eightfold", "octenary", "oct", "octuplet", "eighth", "octa", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcfd"
-  },
   "number-8": {
     "name": "number-8",
     "category": "Numbers",
     "tags": ["number", "8", "eight", "maths", "value", "quantity", "calculate", "calculation", "total", "amount", "sum", "order", "digit", "icon", "stroke", "outline"],
     "version": "1.38",
     "unicode": "edf8"
-  },
-  "number-9-small": {
-    "name": "number-9-small",
-    "category": "Numbers",
-    "tags": ["number", "9", "small", "nine", "nonet", "nonuple", "ennead", "ninefold", "novenary", "non", "nonuplet", "ninth", "ennea", "icon", "stroke", "outline"],
-    "version": "2.38",
-    "unicode": "fcfe"
   },
   "number-9": {
     "name": "number-9",
@@ -26865,13 +26123,6 @@
     "version": "1.54",
     "unicode": "f018"
   },
-  "robot-face": {
-    "name": "robot-face",
-    "category": "",
-    "tags": ["robot", "face", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcbe"
-  },
   "robot-off": {
     "name": "robot-off",
     "category": "",
@@ -27082,13 +26333,6 @@
     "version": "1.66",
     "unicode": "f194"
   },
-  "route-scan": {
-    "name": "route-scan",
-    "category": "",
-    "tags": ["route", "scan", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcbf"
-  },
   "route-square-2": {
     "name": "route-square-2",
     "category": "Maps",
@@ -27228,13 +26472,6 @@
     "tags": ["run", "jog", "dislocating", "movement", "motion", "sprint", "icon", "stroke", "outline"],
     "version": "1.14",
     "unicode": "ec82"
-  },
-  "rv-truck": {
-    "name": "rv-truck",
-    "category": "",
-    "tags": ["rv", "truck", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcc0"
   },
   "s-turn-down": {
     "name": "s-turn-down",
@@ -28705,13 +27942,6 @@
     "tags": ["sofa", "chair", "seat", "home", "furniture", "couch", "icon", "stroke", "outline"],
     "version": "1.48",
     "unicode": "efaf"
-  },
-  "solar-electricity": {
-    "name": "solar-electricity",
-    "category": "",
-    "tags": ["solar", "electricity", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcc1"
   },
   "solar-panel-2": {
     "name": "solar-panel-2",
@@ -30407,41 +29637,6 @@
     "version": "1.47",
     "unicode": "ef9d"
   },
-  "stack-back": {
-    "name": "stack-back",
-    "category": "",
-    "tags": ["stack", "back", "icon", "stroke", "outline"],
-    "version": "2.40",
-    "unicode": "fd26"
-  },
-  "stack-backward": {
-    "name": "stack-backward",
-    "category": "",
-    "tags": ["stack", "backward", "icon", "stroke", "outline"],
-    "version": "2.40",
-    "unicode": "fd27"
-  },
-  "stack-forward": {
-    "name": "stack-forward",
-    "category": "",
-    "tags": ["stack", "forward", "icon", "stroke", "outline"],
-    "version": "2.40",
-    "unicode": "fd28"
-  },
-  "stack-front": {
-    "name": "stack-front",
-    "category": "",
-    "tags": ["stack", "front", "icon", "stroke", "outline"],
-    "version": "2.40",
-    "unicode": "fd29"
-  },
-  "stack-middle": {
-    "name": "stack-middle",
-    "category": "",
-    "tags": ["stack", "middle", "icon", "stroke", "outline"],
-    "version": "2.40",
-    "unicode": "fd2a"
-  },
   "stack-pop": {
     "name": "stack-pop",
     "category": "Design",
@@ -30679,13 +29874,6 @@
     "tags": ["sum", "equation", "add", "plus", "amount", "total", "icon", "stroke", "outline"],
     "version": "1.2",
     "unicode": "eb73"
-  },
-  "sun-electricity": {
-    "name": "sun-electricity",
-    "category": "",
-    "tags": ["sun", "electricity", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcc2"
   },
   "sun-filled": {
     "name": "sun-filled",
@@ -31254,13 +30442,6 @@
     "version": "1.46",
     "unicode": "ef87"
   },
-  "text-scan-2": {
-    "name": "text-scan-2",
-    "category": "",
-    "tags": ["text", "scan", "2", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcc3"
-  },
   "text-size": {
     "name": "text-size",
     "category": "Text",
@@ -31471,13 +30652,6 @@
     "version": "1.119",
     "unicode": "f662"
   },
-  "timeline-event-filled": {
-    "name": "timeline-event-filled",
-    "category": "Filled",
-    "tags": ["timeline", "event", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd18"
-  },
   "timeline-event-minus": {
     "name": "timeline-event-minus",
     "category": "Development",
@@ -31582,13 +30756,6 @@
     "tags": ["tools", "kitchen", "2", "knife", "fork", "spoon", "cutlery", "eat", "restaurant", "menu", "cafe", "cook", "cut", "soup", "dinner", "breakfast", "dining", "plate", "dish", "icon", "stroke", "outline"],
     "version": "1.39",
     "unicode": "eeff"
-  },
-  "tools-kitchen-3": {
-    "name": "tools-kitchen-3",
-    "category": "",
-    "tags": ["tools", "kitchen", "3", "icon", "stroke", "outline"],
-    "version": "2.40",
-    "unicode": "fd2b"
   },
   "tools-kitchen-off": {
     "name": "tools-kitchen-off",
@@ -32206,13 +31373,6 @@
     "version": "1.1",
     "unicode": "eba2"
   },
-  "universe": {
-    "name": "universe",
-    "category": "",
-    "tags": ["universe", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcc4"
-  },
   "unlink": {
     "name": "unlink",
     "category": "Text",
@@ -32310,13 +31470,6 @@
     "tags": ["user", "exclamation", "user", "account", "note", "excitement", "admiration", "mark", "icon", "stroke", "outline"],
     "version": "1.8",
     "unicode": "ec12"
-  },
-  "user-filled": {
-    "name": "user-filled",
-    "category": "Filled",
-    "tags": ["user", "filled", "icon", "stroke", "outline"],
-    "version": "2.39",
-    "unicode": "fd19"
   },
   "user-heart": {
     "name": "user-heart",
@@ -33116,13 +32269,6 @@
     "version": "1.19",
     "unicode": "ecd5"
   },
-  "waves-electricity": {
-    "name": "waves-electricity",
-    "category": "",
-    "tags": ["waves", "electricity", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcc5"
-  },
   "webhook-off": {
     "name": "webhook-off",
     "category": "Development",
@@ -33206,13 +32352,6 @@
     "tags": ["wifi", "online", "connection", "signal", "wireless", "icon", "stroke", "outline"],
     "version": "1.0",
     "unicode": "eb52"
-  },
-  "wind-electricity": {
-    "name": "wind-electricity",
-    "category": "",
-    "tags": ["wind", "electricity", "icon", "stroke", "outline"],
-    "version": "2.37",
-    "unicode": "fcc6"
   },
   "wind-off": {
     "name": "wind-off",
