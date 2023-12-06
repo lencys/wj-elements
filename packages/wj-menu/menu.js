@@ -1,4 +1,4 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement, event } from "../wj-element/wj-element.js";
 
 import styles from "./scss/styles.scss?inline";
 
@@ -14,7 +14,7 @@ export class Menu extends WJElement {
     }
 
     static get observedAttributes() {
-        return [];
+        return ["active", "collapse"];
     }
 
     setupAttributes() {
@@ -22,7 +22,13 @@ export class Menu extends WJElement {
     }
 
     draw(context, store, params) {
+        console.log("TRALALA", this.hasAttribute("collapse"));
         let fragment = document.createDocumentFragment();
+
+        this.classList.remove("wj-menu-collapse");
+
+        if(this.hasAttribute("collapse"))
+            this.classList.add("wj-menu-collapse");
 
         let native = document.createElement("div");
         native.classList.add("native-menu");

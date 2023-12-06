@@ -1,18 +1,15 @@
 ```tsx
 import React from 'react';
-import { IonRadio, IonRadioGroup } from '@ionic/react';
+import { Radio, RadioGroup } from '@elements/react';
 
 function Example() {
   return (
-    <IonRadioGroup value="strawberries">
-      <IonRadio value="grapes">Grapes</IonRadio>
-      <br />
-      <IonRadio value="strawberries">Strawberries</IonRadio>
-      <br />
-      <IonRadio value="pineapple">Pineapple</IonRadio>
-      <br />
-      <IonRadio value="cherries">Cherries</IonRadio>
-    </IonRadioGroup>
+    <wj-radio-group value="dog">
+      <wj-radio value="cat">Cat</wj-radio>
+      <wj-radio value="dog">Dog</wj-radio>
+      <wj-radio value="elephant" disabled="">Elephant</wj-radio>
+      <wj-radio value="rabbit" >Rabbit</wj-radio>
+    </wj-radio-group>
   );
 }
 export default Example;

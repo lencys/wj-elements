@@ -1,4 +1,4 @@
-import { WJElement, Menu, MenuItem, Popup } from "../../dist/wj-main.js";
+import { WJElement, Menu, MenuItem, Popup } from "../../dist/wj-master.js";
 
 const template = document.createElement('template');
 
@@ -6,47 +6,54 @@ template.innerHTML = `
   <h1>Menu</h1>
   <div class="container">
 
-    <!--  BASIC-->
+    <!-- BASIC -->
 
     <h2>Basic</h2>
     <div class="playground">
       <div class="content" style="display: block;">
-        <wj-menu style="max-width: 200px;">
+        <wj-menu active style="max-width: 200px;">
           <wj-menu-item>
             Menu item
-            <wj-icon slot="start" name="house"></wj-icon>
+            <wj-icon slot="start" name="home"></wj-icon>
           </wj-menu-item>
-          <wj-menu-item id="testicek" value="redo" @wj-click="openModalFn">
+          <wj-menu-item>
             Menu item
             <wj-icon slot="end" name="heart"></wj-icon>
           </wj-menu-item>
           <wj-divider style="--wj-divider-spacing: .5rem;"></wj-divider>
-          <wj-menu-item value="cut">Menu item</wj-menu-item>
-          <wj-menu-item value="copy">Menu item</wj-menu-item>
-          <wj-menu-item value="paste">Menu item</wj-menu-item>
+          <wj-menu-item>Menu item</wj-menu-item>
+          <wj-menu-item>Menu item</wj-menu-item>
+          <wj-menu-item>Menu item</wj-menu-item>
           <wj-divider style="--wj-divider-spacing: .5rem;"></wj-divider>
           <wj-menu-label>Next menu</wj-menu-label>
           <wj-menu-item>
             Menu item
             <wj-menu slot="submenu">
-              <wj-menu-item value="find">Menu item</wj-menu-item>
-              <wj-menu-item value="find-previous">
+              <wj-menu-item>Menu item</wj-menu-item>
+              <wj-menu-item>
                 Menu item
                 <wj-menu slot="submenu">
-                  <wj-menu-item value="find">Menu item</wj-menu-item>
-                  <wj-menu-item value="find-previous">Menu item</wj-menu-item>
-                  <wj-menu-item value="find-next">Menu item</wj-menu-item>
+                  <wj-menu-item>Menu item</wj-menu-item>
+                  <wj-menu-item>Menu item</wj-menu-item>
+                  <wj-menu-item>Menu item</wj-menu-item>
                 </wj-menu>
               </wj-menu-item>
-              <wj-menu-item value="find-next">Menu item</wj-menu-item>
+              <wj-menu-item>Menu item</wj-menu-item>
             </wj-menu>
           </wj-menu-item>
-          <wj-menu-item id="transformations">
+          <wj-menu-item>
             Menu item
             <wj-menu slot="submenu">
-              <wj-menu-item value="uppercase">Menu item</wj-menu-item>
-              <wj-menu-item value="lowercase">Menu item</wj-menu-item>
-              <wj-menu-item value="capitalize">Menu item</wj-menu-item>
+              <wj-menu-item>Menu item</wj-menu-item>
+              <wj-menu-item>
+                Menu item
+                <wj-menu slot="submenu">
+                  <wj-menu-item>Menu item</wj-menu-item>
+                  <wj-menu-item>Menu item</wj-menu-item>
+                  <wj-menu-item>Menu item</wj-menu-item>
+                </wj-menu>
+              </wj-menu-item>
+              <wj-menu-item>Menu item</wj-menu-item>
             </wj-menu>
           </wj-menu-item>
         </wj-menu>    
@@ -58,41 +65,41 @@ template.innerHTML = `
     <h2>Inset</h2>
     <div class="playground">
       <div class="content" style="display: block;">
-        <wj-menu style="max-width: 200px; --wj-menu-padding-inline: 1rem;">
+        <wj-menu active style="max-width: 200px; --wj-menu-padding-inline: 1rem;">
           <wj-menu-item>
             Menu item
-            <wj-icon slot="start" name="house"></wj-icon>
+            <wj-icon slot="start" name="home"></wj-icon>
           </wj-menu-item>
-          <wj-menu-item value="redo">
+          <wj-menu-item>
             Menu item
             <wj-icon slot="end" name="heart"></wj-icon>
           </wj-menu-item>
           <wj-divider style="--wj-divider-spacing: .5rem;"></wj-divider>
-          <wj-menu-item value="cut">Menu item</wj-menu-item>
-          <wj-menu-item value="copy" checked>Menu item</wj-menu-item>
-          <wj-menu-item value="paste">Menu item</wj-menu-item>
+          <wj-menu-item>Menu item</wj-menu-item>
+          <wj-menu-item checked>Menu item</wj-menu-item>
+          <wj-menu-item>Menu item</wj-menu-item>
           <wj-divider style="--wj-divider-spacing: .5rem;"></wj-divider>
           <wj-menu-item>
             Menu item
             <wj-menu slot="submenu">
-              <wj-menu-item value="find">Menu item</wj-menu-item>
-              <wj-menu-item value="find-previous">
+              <wj-menu-item>Menu item</wj-menu-item>
+              <wj-menu-item>
                 Menu item
                 <wj-menu slot="submenu">
-                  <wj-menu-item value="find">Menu item</wj-menu-item>
-                  <wj-menu-item value="find-previous">Menu item</wj-menu-item>
-                  <wj-menu-item value="find-next">Menu item</wj-menu-item>
+                  <wj-menu-item>Menu item</wj-menu-item>
+                  <wj-menu-item>Menu item</wj-menu-item>
+                  <wj-menu-item>Menu item</wj-menu-item>
                 </wj-menu>
               </wj-menu-item>
-              <wj-menu-item value="find-next">Menu item</wj-menu-item>
+              <wj-menu-item>Menu item</wj-menu-item>
             </wj-menu>
           </wj-menu-item>
           <wj-menu-item id="transformations">
             Menu item
             <wj-menu slot="submenu">
-              <wj-menu-item value="uppercase">Menu item</wj-menu-item>
-              <wj-menu-item value="lowercase">Menu item</wj-menu-item>
-              <wj-menu-item value="capitalize">Menu item</wj-menu-item>
+              <wj-menu-item>Menu item</wj-menu-item>
+              <wj-menu-item>Menu item</wj-menu-item>
+              <wj-menu-item>Menu item</wj-menu-item>
             </wj-menu>
           </wj-menu-item>
         </wj-menu>    

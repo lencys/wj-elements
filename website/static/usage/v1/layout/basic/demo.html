@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Icon</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <!-- <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/wj-main.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/style.css" /> -->
+    <script type="module" src="./../../../../wj-elementy/wj-master.js"></script>
+    <link rel="stylesheet" href="./../../../../wj-elementy/style.css" />
+  </head>
+  <body>
+    <div class="playground">
+      <div class="content" style="display: block;max-width: 60%;margin: auto;">
+        <wj-container vertical>
+          <wj-header>Header</wj-header>
+          <wj-main>Main</wj-main>
+        </wj-container>
+        
+        <wj-container vertical>
+          <wj-header>Header</wj-header>
+          <wj-main>Main</wj-main>
+          <wj-footer>Footer</wj-footer>
+        </wj-container>
+        
+        <wj-container>
+          <wj-aside width="200px">Aside</wj-aside>
+          <wj-main>Main</wj-main>
+        </wj-container>
+        
+        <wj-container vertical>
+          <wj-header>Header</wj-header>
+          <wj-container>
+            <wj-aside width="200px">Aside</wj-aside>
+            <wj-main>Main</wj-main>
+          </wj-container>
+        </wj-container>
+        
+        <wj-container vertical>
+          <wj-header>Header</wj-header>
+          <wj-container>
+            <wj-aside width="200px">Aside</wj-aside>
+            <wj-container vertical>
+              <wj-main>Main</wj-main>
+              <wj-footer>Footer</wj-footer>
+            </wj-container>
+          </wj-container>
+        </wj-container>
+        
+        <wj-container>
+          <wj-aside width="200px">Aside</wj-aside>
+          <wj-container vertical>
+            <wj-header>Header</wj-header>
+            <wj-main>Main</wj-main>
+          </wj-container>
+        </wj-container>
+        
+        <wj-container>
+          <wj-aside width="200px">Aside</wj-aside>
+          <wj-container vertical>
+            <wj-header>Header</wj-header>
+            <wj-container>
+              <wj-aside width="200px">Aside</wj-aside>
+              <wj-aside width="200px">Aside</wj-aside>
+              <wj-main>Main</wj-main>
+            </wj-container>
+            <wj-footer>Footer</wj-footer>
+          </wj-container>
+        </wj-container>
+        <style>
+          .content {
+            display: block; 
+            width: 100%; 
+            margin: auto 3rem;
+          }
+          
+          .content wj-header, .content wj-footer {
+            background-color: #B3C0D1;
+            color: #333;
+            text-align: center;
+            line-height: 60px;
+          }
+          
+          .content wj-aside {
+            background-color: #D3DCE6;
+            color: #333;
+            text-align: center;
+            line-height: 200px;
+            width: 60px;
+            display: block!important;
+          }
+          
+          .content wj-main {
+            background-color: #E9EEF3;
+            color: #333;
+            text-align: center;
+          }
+          
+          /* Margin na spodok prveho containeru */
+          .content > wj-container {
+            margin-bottom: 40px;
+          }
+          
+          .content wj-container:nth-child(5) wj-aside,
+          .content wj-container:nth-child(6) wj-aside {
+            line-height: 260px;
+          }
+          
+          .content wj-container:nth-child(7) wj-aside {
+            line-height: 320px;
+          }
+        </style>
+      </div>
+    </div>
+  </body>
+</html>

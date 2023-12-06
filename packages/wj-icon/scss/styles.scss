@@ -1,7 +1,7 @@
 @import "../../scss/themes/net-basic/important.scss";
 
 /*
-[ Chip ]
+[ Icon ]
 */
 
 :host(.wj-color-primary) {
@@ -40,23 +40,24 @@
 }
 
 :host {
+  --wj-icon-size: 1rem;
+  --wj-icon-width: var(--wj-icon-size, 100%);
+  --wj-icon-height: var(--wj-icon-size, 100%);
   display: inline-block;
 
-  width: 1em;
-  height: 1em;
+  width: var(--wj-icon-width);
+  height: var(--wj-icon-height);
 
   contain: strict;
-
   fill: currentColor;
-
   box-sizing: content-box !important;
 }
 
 .icon-inner, svg {
   display: block;
 
-  height: 100%;
-  width: 100%;
+  width: var(--wj-icon-width);
+  height: var(--wj-icon-height);
 }
 
 :host(.wj-size-small) {
@@ -68,7 +69,7 @@
 }
 
 :host(.wj-size) {
-  font-size: var(--wj-icon-size) !important;
+  font-size: var(--wj-icon-size);
 }
 
 :host(.wj-color) {

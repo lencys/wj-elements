@@ -12,19 +12,13 @@
 }
 .native-tooltip {
   display: block;
-  //max-width:200px;
-  //max-inline-size: 200px;
-  //overflow-wrap: break-word;
-  //inline-size: max-content;
-  padding: 5px .5rem;
+  padding: .5rem;
   color:#FFFFFF;
   background-color:var(--arrow-color);
   font-weight: normal;
   font-size: .75rem !important;
   border-radius: 4px;
   line-height: 1;
-  //position:fixed;
-  //z-index: 99999999;
   box-sizing: border-box;
   box-shadow: 0 1px 8px rgba(0,0,0,0.5);
 }

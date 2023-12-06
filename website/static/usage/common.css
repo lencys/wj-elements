@@ -8,7 +8,9 @@
   src: url("../fonts/Roboto-Medium.ttf") format("truetype");
   font-weight: 450 500;
 }
-
+*, ::before, ::after {
+  box-sizing: border-box;
+}
 :root {
   /** primary **/
   --ion-color-primary: #3880ff;
@@ -244,12 +246,9 @@ body {
 }
 .container {
   display: flex;
-
   align-items: center;
   justify-content: center;
-
   height: 100%;
-
   min-height: 200px;
 }
 
@@ -264,4 +263,9 @@ body {
 :root {
   --ion-safe-area-top: 20px;
   --ion-safe-area-bottom: 22px;
+}
+
+span {
+  color: var(--ion-color-dark);
+  font-family: system-ui,-apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji','Segoe UI Emoji';
 }

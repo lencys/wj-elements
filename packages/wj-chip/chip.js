@@ -1,4 +1,4 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement, event } from "../wj-element/wj-element.js";
 
 import styles from "./scss/styles.scss?inline";
 
@@ -20,7 +20,19 @@ export class Chip extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-        let element = document.createElement("slot");
+        let native = document.createElement("div");
+        native.classList.add("native-chip");
+
+        let slot = document.createElement("slot");
+
+        let remove = document.createElement("wj-button");
+        remove.setAttribute("part", "remove");
+        remove.setAttribute("variant", "link");
+        remove.innerHTML = `<wj-icon name="x"></wj-icon>`;
+
+        let active = document.createElement("wj-icon");
+        active.setAttribute("name", "check");
+        active.classList.add("check");
 
         if(this.color)
             this.classList.add("wj-color-" + this.color, "wj-color");
@@ -31,21 +43,20 @@ export class Chip extends WJElement {
         if(this.outline)
             this.classList.add("wj-outline");
 
-        fragment.appendChild(element);
+        native.appendChild(slot);
+        native.appendChild(active);
 
+        if(this.hasAttribute("removable"))
+            native.appendChild(remove);
+
+        fragment.appendChild(native);
+
+        this.remove = remove;
         return fragment;
     }
 
     afterDraw() {
-        if(this.hasAttribute("active")) {
-            this.classList.add("wj-active");
-
-            let i = document.createElement("wj-icon");
-            i.setAttribute("name", "check");
-            i.classList.add("check");
-
-            this.context.appendChild(i);
-        }
+        event.addListener(this.remove, "click", "wj:chip-remove", null, { stopPropagation: true });
     }
 }
 

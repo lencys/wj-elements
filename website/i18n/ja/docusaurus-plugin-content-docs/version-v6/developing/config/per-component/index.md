@@ -2,11 +2,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs
-  groupId="per-component-config"
+  groupId="framework"
   defaultValue="javascript"
   values={[
     { value: 'javascript', label: 'JavaScript' },
     { value: 'angular', label: 'Angular' },
+    { value: 'angular-standalone', label: 'Angular (Standalone)' },
     { value: 'react', label: 'React' },
     { value: 'vue', label: 'Vue' },
   ]}
@@ -58,6 +59,42 @@ import { IonicModule } from '@ionic/angular';
   ],
   ...
 });
+```
+
+**Recommended**
+
+```html
+<ion-back-button [text]="backButtonText"></ion-back-button>
+```
+
+```ts
+@Component(...)
+class MyComponent {
+  /**
+   * The back button text can be updated
+   * anytime the locale changes.
+   */
+  backButtonText = 'Go Back';
+}
+```
+
+</TabItem>
+<TabItem value="angular-standalone">
+
+**Not recommended**
+
+```ts
+import { provideIonicAngular } from '@ionic/angular/standalone';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    ...,
+    provideIonicAngular({
+      // Not recommended when your app requires reactive values
+      backButtonText: 'Go Back'
+    })
+  ]
+})
 ```
 
 **Recommended**

@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-main.js";
+import { WJElement } from "../../dist/wj-master.js";
 
 const template = document.createElement('template');
 
@@ -45,11 +45,11 @@ template.innerHTML = `<style>
     <h2>Icons</h2>
     <div class="playground">
       <div class="content">
-        <wj-slider min="20" max="80" value="50" bubble>
-          <wj-icon name="volume-low" size="large" slot="start"></wj-icon>
-          <wj-icon name="volume-high" size="large" slot="end"></wj-icon>
+        <wj-slider class="example" min="20" max="80" value="50" bubble>
+          <wj-icon name="volume-3" size="large" slot="start"></wj-icon>
+          <wj-icon name="volume" size="large" slot="end"></wj-icon>
           <style>
-              wj-icon {
+              .example wj-icon {
                   --wj-icon-size: 24px;
               }
           </style>

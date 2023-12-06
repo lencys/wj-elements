@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <!-- <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/wj-main.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/style.css" /> -->
+    <script type="module" src="./../../../../wj-elementy/wj-master.js"></script>
+    <link rel="stylesheet" href="./../../../../wj-elementy/style.css" />
+  </head>
+  <body>
+    <div class="playground">
+      <div class="content" style="display: block;max-width: 60%;margin: auto;">
+        <wj-menu active style="max-width: 200px; --wj-menu-padding-inline: 1rem;">
+          <wj-menu-item>
+            Menu item
+            <wj-icon slot="start" name="home"></wj-icon>
+          </wj-menu-item>
+          <wj-menu-item>
+            Menu item
+            <wj-icon slot="end" name="heart"></wj-icon>
+          </wj-menu-item>
+          <wj-divider style="--wj-divider-spacing: .5rem;"></wj-divider>
+          <wj-menu-item>Menu item</wj-menu-item>
+          <wj-menu-item checked>Menu item</wj-menu-item>
+          <wj-menu-item>Menu item</wj-menu-item>
+          <wj-divider style="--wj-divider-spacing: .5rem;"></wj-divider>
+          <wj-menu-item>
+            Menu item
+            <wj-menu variant="NAV" slot="submenu">
+              <wj-menu-item>Menu item</wj-menu-item>
+              <wj-menu-item>
+                Menu item
+                <wj-menu slot="submenu">
+                  <wj-menu-item>Menu item</wj-menu-item>
+                  <wj-menu-item>Menu item</wj-menu-item>
+                  <wj-menu-item>Menu item</wj-menu-item>
+                </wj-menu>
+              </wj-menu-item>
+              <wj-menu-item>Menu item</wj-menu-item>
+            </wj-menu>
+          </wj-menu-item>
+          <wj-menu-item id="transformations">
+            Menu item
+            <wj-menu slot="submenu">
+              <wj-menu-item>Menu item</wj-menu-item>
+              <wj-menu-item>Menu item</wj-menu-item>
+              <wj-menu-item>Menu item</wj-menu-item>
+            </wj-menu>
+          </wj-menu-item>
+        </wj-menu>
+      </div>
+    </div>
+  </body>
+</html>

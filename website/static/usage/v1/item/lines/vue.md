@@ -1,56 +1,52 @@
 ```html
 <template>
-  <ion-item>
-    <ion-label> Default Item Lines </ion-label>
-  </ion-item>
+   <wj-item>
+      <wj-label>Default Item Lines </wj-label>
+    </wj-item>
 
-  <ion-item lines="inset">
-    <ion-label>Item Lines Inset</ion-label>
-  </ion-item>
+    <wj-item lines="inset">
+      <wj-label>Item Lines Inset</wj-label>
+    </wj-item>
 
-  <ion-item lines="full">
-    <ion-label>Item Lines Full</ion-label>
-  </ion-item>
+    <wj-item lines="full">
+      <wj-label>Item Lines Full</wj-label>
+    </wj-item>
 
-  <ion-item lines="none">
-    <ion-label>Item Lines None</ion-label>
-  </ion-item>
+    <wj-item lines="none">
+      <wj-label>Item Lines None</wj-label>
+    </wj-item>
 
-  <ion-item>
-    <ion-icon :icon="star" slot="start"></ion-icon>
-    <ion-label>Default Item Lines</ion-label>
-    <ion-icon :icon="informationCircle" slot="end"></ion-icon>
-  </ion-item>
+    <wj-item>
+      <wj-icon name="star" slot="start"></wj-icon>
+      <wj-label>Default Item Lines</wj-label>
+      <wj-icon name="info-circle" slot="end"></wj-icon>
+    </wj-item>
 
-  <ion-item lines="inset">
-    <ion-icon :icon="star" slot="start"></ion-icon>
-    <ion-label>Item Lines Inset</ion-label>
-    <ion-icon :icon="informationCircle" slot="end"></ion-icon>
-  </ion-item>
+    <wj-item lines="inset">
+      <wj-icon name="star" slot="start"></wj-icon>
+      <wj-label>Item Lines Inset</wj-label>
+      <wj-icon name="info-circle" slot="end"></wj-icon>
+    </wj-item>
 
-  <ion-item lines="full">
-    <ion-icon :icon="star" slot="start"></ion-icon>
-    <ion-label>Item Lines Full</ion-label>
-    <ion-icon :icon="informationCircle" slot="end"></ion-icon>
-  </ion-item>
+    <wj-item lines="full">
+      <wj-icon name="star" slot="start"></wj-icon>
+      <wj-label>Item Lines Full</wj-label>
+      <wj-icon name="info-circle" slot="end"></wj-icon>
+    </wj-item>
 
-  <ion-item lines="none">
-    <ion-icon :icon="star" slot="start"></ion-icon>
-    <ion-label>Item Lines None</ion-label>
-    <ion-icon :icon="informationCircle" slot="end"></ion-icon>
-  </ion-item>
+    <wj-item lines="none">
+      <wj-icon name="star" slot="start"></wj-icon>
+      <wj-label>Item Lines None</wj-label>
+      <wj-icon name="info-circle" slot="end"></wj-icon>
+    </wj-item>
 </template>
 
 <script lang="ts">
-  import { IonIcon, IonItem, IonLabel } from '@ionic/vue';
-  import { informationCircle, star } from 'ionicons/icons';
+  import { Item, Label } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { IonIcon, IonItem, IonLabel },
-    setup() {
-      return { informationCircle, star };
-    },
+    components: { Item, Label },
   });
 </script>
 ```

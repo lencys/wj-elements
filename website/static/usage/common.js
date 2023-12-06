@@ -5,6 +5,7 @@
  * listener will fire before the body is ready.
  */
 window.addEventListener('DOMContentLoaded', () => {
+  console.log('DOMContentLoaded');
   /**
    * The parent Playground component will
    * dispatch messages whenever the theme on

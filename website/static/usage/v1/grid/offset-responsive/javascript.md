@@ -1,39 +1,30 @@
 ```html
-<b>No offset for xs breakpoint, offset 1st column for sm and up</b>
-<ion-grid>
-  <ion-row>
-    <ion-col offset-sm="2">1</ion-col>
-    <ion-col>2</ion-col>
-    <ion-col>3</ion-col>
-    <ion-col>4</ion-col>
-    <ion-col>5</ion-col>
-  </ion-row>
-</ion-grid>
+  <span>Žiadny offset pre breakpoint xs, posun 1. stĺpca pre sm a vyššie</span>
+  <wj-grid>
+    <wj-row>
+      <wj-col offset-sm="2">1</wj-col>
+      <wj-col>2</wj-col>
+      <wj-col>3</wj-col>
+      <wj-col>4</wj-col>
+      <wj-col>5</wj-col>
+    </wj-row>
+  </wj-grid>
 
-<b>No offset for xs breakpoint, offset last 3 columns for md and up</b>
-<ion-grid>
-  <ion-row>
-    <ion-col>1</ion-col>
-    <ion-col offset-md="2">2</ion-col>
-    <ion-col offset-md="2">3</ion-col>
-    <ion-col offset-md="2">4</ion-col>
-  </ion-row>
-</ion-grid>
+  <span>Žiadny offset pre breakpoint xs, offset posledných 3 stĺpcov pre md a vyššie</span>
+  <wj-grid>
+    <wj-row>
+      <wj-col>1</wj-col>
+      <wj-col offset-md="2">2</wj-col>
+      <wj-col offset-md="2">3</wj-col>
+      <wj-col offset-md="2">4</wj-col>
+    </wj-row>
+  </wj-grid>
 
-<b>Offset all columns by 6 for xs breakpoint, offset by 4 for md, offset by 2 for lg and up</b>
-<ion-grid>
-  <ion-row>
-    <ion-col offset="6" offset-md="4" offset-lg="2">1</ion-col>
-    <ion-col offset="6" offset-md="4" offset-lg="2">2</ion-col>
-  </ion-row>
-</ion-grid>
-
-<style>
-  ion-col {
-    background-color: #135d54;
-    border: solid 1px #fff;
-    color: #fff;
-    text-align: center;
-  }
-</style>
+  <span>Offset všetkých stĺpcov o 6 pre breakpoint xs, offset o 4 pre md, offset o 2 pre lg a vyššie</span>
+  <wj-grid>
+    <wj-row wrap>
+      <wj-col offset="6" offset-md="4" offset-lg="2">1</wj-col>
+      <wj-col offset="6" offset-md="4" offset-lg="2">2</wj-col>
+    </wj-row>
+  </wj-grid>
 ```

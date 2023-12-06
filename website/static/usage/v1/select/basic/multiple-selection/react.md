@@ -1,17 +1,12 @@
 ```tsx
 import React from 'react';
-import { IonItem, IonList, IonSelect, IonSelectOption } from '@ionic/react';
+import { Select, Option } from '@elements/react';
+
 function Example() {
   return (
-    <IonList>
-      <IonItem>
-        <IonSelect aria-label="Fruit" placeholder="Select all fruits that apply" multiple={true}>
-          <IonSelectOption value="apples">Apples</IonSelectOption>
-          <IonSelectOption value="oranges">Oranges</IonSelectOption>
-          <IonSelectOption value="bananas">Bananas</IonSelectOption>
-        </IonSelect>
-      </IonItem>
-    </IonList>
+    <wj-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
+      <wj-options url="/api/options" item-value="tralala" item-text="label"></wj-options>
+    </wj-select>
   );
 }
 export default Example;

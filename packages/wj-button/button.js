@@ -1,4 +1,5 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement, event } from "../wj-element/wj-element.js";
+import { bool } from "../utils/wj-utils.js";
 
 import styles from "./scss/styles.scss?inline";
 
@@ -47,6 +48,14 @@ export class Button extends WJElement {
         return this.hasAttribute("round");
     }
 
+    set stopPropagation(value) {
+        this.setAttribute("stop-propagation", bool(value));
+    }
+
+    get stopPropagation() {
+        return bool(this.getAttribute("stop-propagation"));
+    }
+
     className = "Button";
 
     static get cssStyleSheet() {
@@ -87,12 +96,11 @@ export class Button extends WJElement {
         else
             this.classList.add("wj-color-default", "wj-color");
 
-        if(this.hasAttribute("caret")) {
+        if(this.hasAttribute("caret") || this.hasAttribute("only-caret")) {
             let i = document.createElement("wj-icon");
-            i.style.setProperty("--wj-icon-size", "10px");
+            i.style.setProperty("--wj-icon-size", "14px");
             i.setAttribute("slot", "caret");
-            i.setAttribute("size", "small");
-            i.setAttribute("name", "angle-down");
+            i.setAttribute("name", "chevron-down");
 
             this.appendChild(i);
         }
@@ -141,7 +149,8 @@ export class Button extends WJElement {
     }
 
     afterDraw() {
-        this.addEventListener("click", this.eventDialogOpen);
+        event.addListener(this, "click", "wj:button-click", null, { stopPropagation: this.stopPropagation });
+        event.addListener(this, "click", null, this.eventDialogOpen);
     }
 
     beforeDisconnect() {

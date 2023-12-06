@@ -1,42 +1,53 @@
 ---
-title: "ion-select-option"
+title: "Option"
 ---
-import Props from '@ionic-internal/component-api/v1/select-option/props.md';
-import Events from '@ionic-internal/component-api/v1/select-option/events.md';
-import Methods from '@ionic-internal/component-api/v1/select-option/methods.md';
-import Parts from '@ionic-internal/component-api/v1/select-option/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/select-option/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/select-option/slots.md';
+
 
 <head>
-  <title>Select Option | What Is An Option Select on Ionic Framework Apps</title>
-  <meta name="description" content="What is an option select? Select Options are child element components of a Select—each option defined is passed and displayed in the Select dialog." />
+  <title>Option | jednotlivé voliteľné možnosti v rámci komponentu Select</title>
+  <meta name="description" content="Element Option predstavuje jednotlivé voliteľné možnosti v rámci komponentu Select. Je obdobný štandardnému elementu HTML select a umožňuje používateľom vykonať jeden alebo viacero výberov na základe konfigurácie komponentu Select." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
+Element Option predstavuje jednotlivé voliteľné možnosti v rámci komponentu [Select](./select). Je obdobný štandardnému elementu HTML select a umožňuje používateľom vykonať jeden alebo viacero výberov na základe konfigurácie komponentu `select`. Tieto elementry sa môžu dynamicky napĺňať a sú navrhnuté tak, aby bezproblémovo spolupracovali s vlastnou logikou komponentu wj-select vrátane funkcií, ako je viacnásobný výber a vlastné štylizovanie.
 
-Select Options are components that are child elements of a Select. Each option defined is passed and displayed in the Select dialog.
-
-For usage examples, see the [Select](./select) documentation.
+Pre informácie o použití Option sa presuňte do dokumentácie elementu [Select.](./select)
 
 
-## Properties
-<Props />
+## Atribúty a Vlastnosti
 
-## Events
-<Events />
+### value
 
-## Methods
-<Methods />
+|  |  |
+| --- | --- |
+| Popis | Určuje hodnotu daného option elementu |
+| Atribút | `value` |
+| Typ | `any` |
+| Predvolená hodnota | `undefined` |
+
+## Eventy
+
+Pre tento komponent nie sú k dispozícii žiadne eventy.
+
+## Metódy
+
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
 ## CSS Shadow Parts
-<Parts />
+
+| Názov | Popis |
+| --- | --- |
+| `native` | Odkazuje na `<div>` element |
 
 ## CSS Custom Properties
 <CustomProps />
 
 ## Slots
-<Slots />
+| Názov | Popis |
+| --- | --- |
+| `` | Obsah sa umiestni medzi named sloty. |
+| `end` | Obsah sa umiestni vpravo. |
+| `start` | Obsah je umiestnený vľavo. |

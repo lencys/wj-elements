@@ -14,17 +14,22 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Element card-subtitle je komponent navrhnutý na použitie v rámci elementu Card Header na poskytnutie doplnkového alebo sekundárneho textu, čím používateľovi poskytuje dodatočný kontext alebo informácie súvisiace s hlavným obsahom karty.
 
-Pre viac informácií o použítí Card Subtitle sa presuňte do dokumentácie elementu **[Card**.](https://www.notion.so/Card-1fff2f892aa7490db5637e5b7e096129?pvs=21)
+:::note Poznámka
+
+Pre viac informácií o použítí Card Subtitle sa presuňte do dokumentácie elementu [Card.](./card)
+
+:::
+
 
 ## Eventy
 
 Pre tento komponent nie sú k dispozícii žiadne eventy.
 
-## Metódy[](https://ionicframework.com/docs/api/badge#methods)
+## Metódy
 
 Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
-## CSS Shadow Parts[](https://ionicframework.com/docs/api/badge#css-shadow-parts)
+## CSS Shadow Parts
 
 Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
 
@@ -35,15 +40,3 @@ Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
 ## Sloty
 
 Pre tento komponent nie sú k dispozícii žiadne sloty.
-
-## Methods
-<Methods />
-
-## CSS Shadow Parts
-<Parts />
-
-## CSS Custom Properties
-<CustomProps />
-
-## Slots
-<Slots />

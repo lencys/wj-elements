@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-main.js";
+import { WJElement } from "../../dist/wj-master.js";
 
 class Application extends WJElement {
     constructor() {

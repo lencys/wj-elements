@@ -3,64 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Item</title>
+    <title>Icon</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@7/dist/ionic/ionic.esm.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@7/css/ionic.bundle.css" />
-
-    <style>
-      .container {
-        display: block;
-      }
-    </style>
+    <!-- <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/wj-main.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/style.css" /> -->
+    <script type="module" src="./../../../../wj-elementy/wj-master.js"></script>
+    <link rel="stylesheet" href="./../../../../wj-elementy/style.css" />
   </head>
-
   <body>
-    <ion-app>
-      <ion-content>
-        <div class="container">
-          <ion-item>
-            <ion-label> Default Item Lines </ion-label>
-          </ion-item>
+    <div class="playground">
+      <div class="content" style="display: block;max-width: 60%;margin: auto;">
+        <wj-item>
+          <wj-label>Default Item Lines </wj-label>
+        </wj-item>
 
-          <ion-item lines="inset">
-            <ion-label>Item Lines Inset</ion-label>
-          </ion-item>
+        <wj-item lines="inset">
+          <wj-label>Item Lines Inset</wj-label>
+        </wj-item>
 
-          <ion-item lines="full">
-            <ion-label>Item Lines Full</ion-label>
-          </ion-item>
+        <wj-item lines="full">
+          <wj-label>Item Lines Full</wj-label>
+        </wj-item>
 
-          <ion-item lines="none">
-            <ion-label>Item Lines None</ion-label>
-          </ion-item>
+        <wj-item lines="none">
+          <wj-label>Item Lines None</wj-label>
+        </wj-item>
 
-          <ion-item>
-            <ion-icon name="star" slot="start"></ion-icon>
-            <ion-label>Default Item Lines</ion-label>
-            <ion-icon name="information-circle" slot="end"></ion-icon>
-          </ion-item>
+        <wj-item>
+          <wj-icon name="star" slot="start"></wj-icon>
+          <wj-label>Default Item Lines</wj-label>
+          <wj-icon name="info-circle" slot="end"></wj-icon>
+        </wj-item>
 
-          <ion-item lines="inset">
-            <ion-icon name="star" slot="start"></ion-icon>
-            <ion-label>Item Lines Inset</ion-label>
-            <ion-icon name="information-circle" slot="end"></ion-icon>
-          </ion-item>
+        <wj-item lines="inset">
+          <wj-icon name="star" slot="start"></wj-icon>
+          <wj-label>Item Lines Inset</wj-label>
+          <wj-icon name="info-circle" slot="end"></wj-icon>
+        </wj-item>
 
-          <ion-item lines="full">
-            <ion-icon name="star" slot="start"></ion-icon>
-            <ion-label>Item Lines Full</ion-label>
-            <ion-icon name="information-circle" slot="end"></ion-icon>
-          </ion-item>
+        <wj-item lines="full">
+          <wj-icon name="star" slot="start"></wj-icon>
+          <wj-label>Item Lines Full</wj-label>
+          <wj-icon name="info-circle" slot="end"></wj-icon>
+        </wj-item>
 
-          <ion-item lines="none">
-            <ion-icon name="star" slot="start"></ion-icon>
-            <ion-label>Item Lines None</ion-label>
-            <ion-icon name="information-circle" slot="end"></ion-icon>
-          </ion-item>
-        </div>
-      </ion-content>
-    </ion-app>
+        <wj-item lines="none">
+          <wj-icon name="star" slot="start"></wj-icon>
+          <wj-label>Item Lines None</wj-label>
+          <wj-icon name="info-circle" slot="end"></wj-icon>
+        </wj-item>
+      </div>
+    </div>
   </body>
 </html>

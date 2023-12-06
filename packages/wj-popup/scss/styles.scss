@@ -7,8 +7,7 @@
 :host {
   --wj-popup-top: auto;
   --wj-popup-left: auto;
-  display: contents;
-
+  display: flex; // zmenene z contents na flex kvoli breadcrumbs v a jeho trom bodkam
 }
 
 .native-popup {

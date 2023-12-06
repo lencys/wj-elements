@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-main.js";
+import { WJElement } from "../../dist/wj-master.js";
 
 const template = document.createElement('template');
 
@@ -25,7 +25,7 @@ template.innerHTML = `<h1>Grid</h1>
     <div class="playground">
       <div class="content">
         <wj-grid>
-          <wj-row class="g-5">
+          <wj-row>
             <wj-col size="4">1</wj-col>
             <wj-col size="4">2</wj-col>
             <wj-col size="4">3</wj-col>
@@ -69,7 +69,7 @@ template.innerHTML = `<h1>Grid</h1>
       <div class="content">
         <span>Stĺpec 1 má <strong>size</strong> nastavenú na <strong>"auto"</strong></span>
         <wj-grid>
-          <wj-row class="row">
+          <wj-row>
             <wj-col size="auto">1</wj-col>
             <wj-col>2</wj-col>
             <wj-col>3</wj-col>
@@ -227,8 +227,8 @@ template.innerHTML = `<h1>Grid</h1>
 
         <span>Žiadny offset pre breakpoint xs, offset posledných 3 stĺpcov pre md a vyššie</span>
         <wj-grid>
-          <wj-row>
-            <wj-col>1</wj-col>
+          <wj-row >
+            <wj-col class="gx-sm-1">1</wj-col>
             <wj-col offset-md="2">2</wj-col>
             <wj-col offset-md="2">3</wj-col>
             <wj-col offset-md="2">4</wj-col>
@@ -263,7 +263,7 @@ template.innerHTML = `<h1>Grid</h1>
         <wj-grid>
           <wj-row>
             <wj-col>1</wj-col>
-            <wj-col order="4">2</wj-col>
+            <wj-col order="first">2</wj-col>
             <wj-col order="5">3</wj-col>
             <wj-col>4</wj-col>
             <wj-col>5</wj-col>

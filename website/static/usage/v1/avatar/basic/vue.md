@@ -1,16 +1,16 @@
 ```html
 <template>
-  <ion-avatar>
-    <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-  </ion-avatar>
+  <wj-avatar>
+    <wj-img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+  </wj-avatar>
 </template>
 
 <script lang="ts">
-  import { IonAvatar } from '@ionic/vue';
+  import { Avatar, Image } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { IonAvatar },
+    components: { Avatar, Image },
   });
 </script>
 ```

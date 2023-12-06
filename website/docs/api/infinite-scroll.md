@@ -1,115 +1,93 @@
 ---
-title: "ion-infinite-scroll"
+title: "Infinite-scroll"
 ---
 
-import Props from '@ionic-internal/component-api/v1/infinite-scroll/props.md';
-import Events from '@ionic-internal/component-api/v1/infinite-scroll/events.md';
-import Methods from '@ionic-internal/component-api/v1/infinite-scroll/methods.md';
-import Parts from '@ionic-internal/component-api/v1/infinite-scroll/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/infinite-scroll/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/infinite-scroll/slots.md';
-
 <head>
-  <title>Infinite Scroller | ion-infinite-scroll Action Component</title>
+  <title>Infinite Scroll | ion-infinite-scroll Action Component</title>
   <meta name="description" content="The ion-infinite-scroll component calls an action to be performed when the user scrolls a specified distance from the bottom or top of the page." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 
-The Infinite Scroll component calls an action to be performed when the user scrolls a specified distance from the bottom or top of the page.
-
-The expression assigned to the `ionInfinite` event is called when the user reaches that defined distance. When this expression has finished any and all tasks, it should call the `complete()` method on the infinite scroll instance.
+ Infinite Scroll umožňuje implementovať dynamické načítavanie dát, keď používatelia scrollujú väčším množstvom obsahu. Element umožňuje zobraziť akýkoľvek obsah zo zvoleného koncového bodu (endpointu) bez toho, aby bola potrebná ďalšia interakcia, napríklad kliknutie na tlačidlo “Načítať viac” alebo na odkaz na ďalšiu stránku. Komponent zároveň zobrazuje indikátor načítania (loader), aby informoval používateľov o načítavaní nového obsahu.
 
 import Basic from '@site/static/usage/v1/infinite-scroll/basic/index.md';
 
+
 <Basic />
 
-## Loading Text and Spinner
 
-The `ion-infinite-scroll-content` is responsible for the visual display of the infinite scroll interaction. By default this component changes its look depending on the infinite scroll's state. It displays a spinner that looks best based on the platform the user is on. Both the spinner and loading text can be customized by setting properties on the `ion-infinite-scroll-content` component.
+## Počet načítaných položiek (size)
 
-import InfiniteScrollContent from '@site/static/usage/v1/infinite-scroll/infinite-scroll-content/index.md';
+Atribút `size` definuje počet položiek pri každom načítaní nového obsahu.
 
-<InfiniteScrollContent />
+import Size from '@site/static/usage/v1/infinite-scroll/size/index.md';
 
-## Custom Content
+<Size />
 
-Separating the `ion-infinite-scroll` and `ion-infinite-scroll-content` components allows developers to create their own content components, if desired. This content can contain anything, from an SVG element to elements with unique CSS animations.
+## Vlastný obsah
 
-import CustomContent from '@site/static/usage/v1/infinite-scroll/custom-infinite-scroll-content/index.md';
+Element Infinite scroll je možné použiť v kombinácii s akýmkoľvek Elements elementom. Napríklad `Card`.
 
-<CustomContent />
+import Card from '@site/static/usage/v1/infinite-scroll/card/index.md';
 
-## Usage with Virtual Scroll
+<Card />
 
-Infinite scroll requires a scroll container to function. When using a virtual scrolling solution, you will need to disable scrolling on the `ion-content` and indicate which element container is responsible for the scroll container with the `.ion-content-scroll-host` class target.
+## Atribúty a Vlastnosti
 
-```html
-<ion-content scroll-y="false">
-  <virtual-scroll-element class="ion-content-scroll-host">
-    <!-- Your virtual scroll content -->
-  </virtual-scroll-element>
-  <ion-infinite-scroll>
-    <ion-infinite-scroll-content></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
-</ion-content>
-```
+### iterate
 
-## Accessibility
+|  |  |
+| --- | --- |
+| Popis | Slúži na identifikáciu elementu, ktorý má byť použitý ako šablóna pre jednotlivé položky počas procesu nekonečného scrollovania. |
+| Atribút | `iterate `|
+| Typ |`string` |
+| Predvolená hodnota | undefined |
 
-Developers should assign the `role="feed"` attribute to the scrollable list of items that are added to or removed from as the user scrolls.
+### placement
 
-Individual list items should either have `role="article"` or use the `<article>` element directly.
+|  |  |
+| --- | --- |
+| Popis | Používa sa na určenie cieľového elementu, do ktorého sa majú načítané údaje vložiť počas procesu nekonečného scrollovania. Určuje, kam sa novo načítaný obsah pridá v rámci DOM. |
+| Atribút | `placement` |
+| Typ | `string` |
+| Predvolená hodnota | undefined |
 
-For example, when rendering a collection of items in an `ion-list`:
+### size
 
-```html
-<ion-content role="feed">
-  <ion-list>
-    <ion-item role="article">
-      First item
-    </ion-item>
-    <ion-item role="article">
-      Second item
-    </ion-item>
-    ...
-  </ion-list>
+|  |  |
+| --- | --- |
+| Popis | Definuje počet položiek pri každom načítaní |
+| Atribút | `size` |
+| Typ | `integer` |
+| Predvolená hodnota | `10` |
 
-  <ion-infinite-scroll>
-    <ion-infinite-scroll-content></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
-</ion-content>
-```
+### url
 
-Please refer to the [ARIA: feed role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/feed_role) documentation for additional information.
+|  |  |
+| --- | --- |
+| Popis | Definuje url adresu koncového bodu (endpointu) dát na načítanie |
+| Atribút | `url` |
+| Typ | string |
+| Predvolená hodnota | undefined |
 
-## Interfaces
+## Eventy
 
-### InfiniteScrollCustomEvent
+Pre tento komponent nie sú k dispozícii žiadne eventy.
 
-While not required, this interface can be used in place of the `CustomEvent` interface for stronger typing with Ionic events emitted from this component.
+## Metódy
 
-```typescript
-interface InfiniteScrollCustomEvent extends CustomEvent {
-  target: HTMLIonInfiniteScrollElement;
-}
-```
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
-## Properties
-<Props />
+## CSS Shadow Parts[](https://ionicframework.com/docs/api/badge#css-shadow-parts)
 
-## Events
-<Events />
+Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
 
-## Methods
-<Methods />
+## CSS Custom Vlastnosti
 
-## CSS Shadow Parts
-<Parts />
+Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
 
-## CSS Custom Properties
-<CustomProps />
+## Sloty
 
-## Slots
-<Slots />
+Pre tento komponent nie sú k dispozícii žiadne sloty.

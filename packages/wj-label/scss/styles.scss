@@ -38,8 +38,8 @@
 }
 
 :host {
-  --wj-label-text-wrap-font-size: 13px;
-  --wj-label-text-wrap-line-height: 1.4;
+  //--wj-label-text-wrap-font-size: 13px;
+  //--wj-label-text-wrap-line-height: 1.4;
 }
 
 :host {
@@ -61,8 +61,8 @@
 :host(.wj-text-wrap),
 :host([text-wrap]) {
   white-space: normal !important;
-  font-size: var(--wj-label-text-wrap-font-size);
-  line-height: var(--wj-label-text-wrap-line-height);
+  //font-size: var(--wj-label-text-wrap-font-size);
+  //line-height: var(--wj-label-text-wrap-line-height);
 }
 
 //:host-context(.item-interactive-disabled:not(.item-multiple-inputs)) {

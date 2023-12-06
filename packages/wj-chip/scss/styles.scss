@@ -43,8 +43,11 @@
   --wj-chip-border-radius: 100px;
   --wj-chip-background: #{$color-contrast-low};
   --wj-chip-color: #{$color-contrast-high};
+  --wj-chip-margin: 0;
+  margin: var(--wj-chip-margin);
+}
 
-
+.native-chip {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -52,8 +55,8 @@
   font-weight: 500;
   font-size: 14px;
   letter-spacing: -0.006em;
-  margin: 4px;
-  padding: 7px 12px;
+  margin: 0;
+  padding: .5rem .75rem;
   text-align: center;
   cursor: pointer;
   white-space: nowrap;
@@ -64,7 +67,7 @@
   border: 0 none;
   line-height: 14px;
   min-height: 28px;
-  height: 32px;
+  height: 28px;
   width: 100%;
   max-width: fit-content;
   min-width: 28px;
@@ -76,15 +79,17 @@
   vertical-align: middle;
   box-sizing: border-box;
 }
+
 :host(.focus) {
   box-shadow: none;
 }
-:host(:hover:not(.wj-active)) {
+
+:host(:hover:not(.wj-active)) .native-chip {
   background: $color-contrast-lower;
   color: $color-contrast-high;
 }
 
-:host(.wj-active) {
+:host(.wj-active) .native-chip {
   background: red;
   border: 1px solid opacify($color-border-a, 0.06);
   border-bottom: 1px solid opacify($color-border-a, 0.15);
@@ -96,10 +101,15 @@
   box-shadow: 0 0 0 $focus-width $color-focus;
 }
 
-:host(.wj-active) {
-  background: $color-contrast-low;
-  border-color: transparent;
+.check {
+  display: none;
+}
+
+:host([active]) {
+  //background: $color-contrast-low;
+  //border-color: transparent;
   .check {
+    display: block;
     margin-inline: 4px 0;
   }
 }
@@ -113,8 +123,8 @@
 }
 
 ::slotted(wj-avatar) {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
 }
 
 ::slotted(wj-avatar:first-child) {
@@ -123,7 +133,7 @@
   margin-bottom: -4px;
 }
 
-:host(.wj-color) {
+:host(.wj-color) .native-chip {
   background-color: var(--wj-color-base, red) ;
   color: var(--wj-color-contrast);
 }
@@ -134,4 +144,13 @@
 
 ::slotted(wj-icon:last-child) {
   @include margin(-4px, -4px, -4px, 8px);
+}
+
+wj-button {
+  --wj-button-border-radius: 50%;
+  --wj-button-margin-inline: .25rem -.5rem;
+  --wj-padding-top: .15rem;
+  --wj-padding-start: .15rem;
+  --wj-padding-end: .15rem;
+  --wj-padding-bottom: .15rem;
 }

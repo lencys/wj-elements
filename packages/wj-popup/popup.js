@@ -1,20 +1,23 @@
 import { default as WJElement, event } from "../wj-element/wj-element.js";
-import { computePosition, autoUpdate, offset, flip, arrow } from '@floating-ui/dom';
+import { computePosition, autoUpdate, offset, flip, arrow, size } from '@floating-ui/dom';
 
 import styles from "./scss/styles.scss?inline";
 
 export class Popup extends WJElement {
     constructor() {
         super();
+        this._manual = false;
     }
 
     set manual(value) {
-        this.setAttribute("manual", value);
+        this._manual = value;
     }
 
     get manual() {
-        console.log(this);
-        return this.hasAttribute("manual");
+        if(this.hasAttribute("manual"))
+            this._manual = true;
+
+        return this._manual;
     }
 
     className = "Popup";
@@ -51,6 +54,7 @@ export class Popup extends WJElement {
         slotArrow.setAttribute("name", "arrow");
 
         let native = document.createElement("div");
+        native.setAttribute("part", "native");
         native.classList.add("native-popup");
 
         let slot = document.createElement("slot");
@@ -69,14 +73,6 @@ export class Popup extends WJElement {
     }
 
     afterDraw(context, store, params) {
-        // document.addEventListener("mousemove",(e) => {
-        //     let clickToHost = e.composedPath().some((el) => el.nodeName === "WJ-POPUP");
-        //     console.log(clickToHost, this.hasAttribute("active"), e.composedPath());
-        //     if(clickToHost && this.hasAttribute("active"))
-        //         this.manual = true;
-        //     else
-        //         this.manual = false;
-        // });
         this.setAnchor();
     }
 
@@ -88,21 +84,11 @@ export class Popup extends WJElement {
             this.anchorEl = this.slotAnchor.assignedElements({ flatten: true })[0];
         }
 
-        if (this.manual) {
-            event.addListener(this.anchorEl, "click", null, (e) => {
-                this.showHide();
-            });
-        }
-
-        event.addListener(this.anchorEl, "mouseover", null,(e) => {
-            if(this.manual) return;
+        event.addListener(this.anchorEl, "click", null, (e) => {
+            if(this.hasAttribute("disabled")) return;
             this.showHide();
-        });
+        }, { stopPropagation: true });
 
-        event.addListener(this.anchorEl, "mouseout", null,(e) => {
-            if(this.manual) return;
-            this.showHide();
-        });
 
         document.addEventListener("click",(e) => {
             let clickToHost = e.composedPath().some((el) => el === this);
@@ -115,16 +101,17 @@ export class Popup extends WJElement {
     }
 
     showHide() {
-        if(this.hasAttribute("active"))
+        if(this.hasAttribute("active")) {
             this.removeAttribute("active");
-        else
+        } else {
             this.setAttribute("active", "");
+        }
     }
 
     reposition() {
-
         const middleware = [];
 
+        this.offsetCalc = +this.offset || 0;
         if (this.slotArrow instanceof HTMLSlotElement) {
             this.arrow = this.slotArrow.assignedElements({ flatten: true })[0];
 
@@ -134,19 +121,29 @@ export class Popup extends WJElement {
                       element: this.arrow,
                   })
                 );
-
-                if(this.offset)
-                    this.offset = Math.sqrt(2 * this.arrow.offsetWidth ** 2) / 2;
+                this.offsetCalc = (Math.sqrt(2 * this.arrow.offsetWidth ** 2) / 2) + +this.offset
             }
         }
 
         middleware.push(
-          offset(+this.offset || 0)
+          offset(this.offsetCalc)
         );
 
         middleware.push(
           flip()
         );
+
+        if(this.hasAttribute("size")) {
+            middleware.push(
+                size({
+                    apply({availableWidth, availableHeight, elements}) {
+                        Object.assign(elements.floating.style, {
+                            width: `${elements.reference.offsetWidth}px`
+                        });
+                    },
+                })
+            );
+        }
 
         computePosition(this.anchorEl, this.native, {
             placement: this.placement || "bottom",
@@ -180,9 +177,16 @@ export class Popup extends WJElement {
                 }
             }
         });
+
+        event.dispatchCustomEvent(this,"wj-popup:reposition", {
+            data: { top: 'bottom', right: 'left', bottom: 'top', left: 'right' },
+            context: this,
+            event: this
+        });
     }
 
     show() {
+        event.dispatchCustomEvent(this,"wj-popup:show");
         this.native.classList.add("popup-active");
 
         this.cleanup = autoUpdate(this.anchorEl, this.native, () => {
@@ -191,9 +195,14 @@ export class Popup extends WJElement {
     }
 
     hide() {
+        event.dispatchCustomEvent(this,"wj-popup:hide");
         this.native.classList.remove("popup-active");
         this.cleanup();
         this.cleanup = undefined;
+    }
+
+    onHide() {
+        this.removeAttribute("active");
     }
 
     disconnectedCallback() {

@@ -3,82 +3,85 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Grid</title>
+    <title>Dropdown</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@7/dist/ionic/ionic.esm.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@7/css/ionic.bundle.css" />
-
-    <style>
-      .container {
-        flex-direction: column;
-        justify-content: space-evenly;
-      }
-
-      ion-grid {
-        width: 100%;
-        flex-grow: 0;
-      }
-
-      ion-col {
-        background-color: #135d54;
-        border: solid 1px #fff;
-        color: #fff;
-        text-align: center;
-      }
-    </style>
+    <!-- <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/wj-main.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/style.css" /> -->
+    <script type="module" src="./../../../../wj-elementy/wj-master.js"></script>
+    <link rel="stylesheet" href="./../../../../wj-elementy/style.css" />
   </head>
-
   <body>
-    <ion-app>
-      <ion-content>
-        <div class="container">
-          <b>Columns aligned at the top</b>
-          <ion-grid>
-            <ion-row class="ion-align-items-start">
-              <ion-col> 1 </ion-col>
-              <ion-col> 2 </ion-col>
-              <ion-col> 3 </ion-col>
-              <ion-col>
+    <div class="playground">
+        <div class="content">
+          <span>Stĺpce zarovnané nahor</span>
+          <wj-grid>
+            <wj-row class="wj-align-items-start">
+              <wj-col> 1 </wj-col>
+              <wj-col> 2 </wj-col>
+              <wj-col> 3 </wj-col>
+              <wj-col>
                 4 <br />
                 # <br />
                 # <br />
                 # <br />
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-
-          <b>Columns aligned at the center</b>
-          <ion-grid>
-            <ion-row class="ion-align-items-center">
-              <ion-col> 1 </ion-col>
-              <ion-col> 2 </ion-col>
-              <ion-col> 3 </ion-col>
-              <ion-col>
+              </wj-col>
+            </wj-row>
+          </wj-grid>
+          
+          <span>Stĺpce zarovnané na stred</span>
+          <wj-grid>
+            <wj-row class="wj-align-items-center">
+              <wj-col> 1 </wj-col>
+              <wj-col> 2 </wj-col>
+              <wj-col> 3 </wj-col>
+              <wj-col>
                 4 <br />
                 # <br />
                 # <br />
                 # <br />
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-
-          <b>Columns aligned at the bottom</b>
-          <ion-grid>
-            <ion-row class="ion-align-items-end">
-              <ion-col> 1 </ion-col>
-              <ion-col> 2 </ion-col>
-              <ion-col> 3 </ion-col>
-              <ion-col>
+              </wj-col>
+            </wj-row>
+          </wj-grid>
+          
+          <span>Stĺpce zarovnané nadol</span>
+          <wj-grid>
+            <wj-row class="wj-align-items-end">
+              <wj-col> 1 </wj-col>
+              <wj-col> 2 </wj-col>
+              <wj-col> 3 </wj-col>
+              <wj-col>
                 4 <br />
                 # <br />
                 # <br />
                 # <br />
-              </ion-col>
-            </ion-row>
-          </ion-grid>
+              </wj-col>
+            </wj-row>
+          </wj-grid>
         </div>
-      </ion-content>
-    </ion-app>
+      </div>
+    </div>
   </body>
+  <style>
+    .content {
+      width: 400px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    }
+    wj-col {
+      background-color: #7252D3;
+      border: solid 1px #fff;
+      color: #fff;
+      text-align: center;
+    }
+    wj-col[size="auto"], wj-col[size], wj-col[offset]  {
+      background-color: #19AD79;
+    }
+    span {
+      text-align: center;
+    }
+  </style>
 </html>

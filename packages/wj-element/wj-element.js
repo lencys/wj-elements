@@ -29,7 +29,6 @@ export default class WJElement extends HTMLElement {
 		this.rendering = false;
 
 		this.runtimeTimeout = null;
-		this.generatedTooltips = [];
 		this.count = 0;
 
 		this.functionStack = [];
@@ -219,13 +218,6 @@ export default class WJElement extends HTMLElement {
 
 		this.isAttached = false;
 
-		// Odmazanie pôvodných tooltipov, dobré v prípade prekreslovania
-		while (this.generatedTooltips.length) {
-			let a = this.generatedTooltips.pop();
-			a?.hide();
-			a?.remove();
-		}
-
 		this.afterDisconnect?.();
 	}
 
@@ -373,7 +365,6 @@ export default class WJElement extends HTMLElement {
 					// toto bude treba rozšíriť aby sme lepšie vedeli kontrolovať vykreslovanie elementov, a flow hookov.
 					this.finisPromise();
 
-					this.tooltip();
 					this.rendering = false;
 					this.isAttached = true;
 
@@ -398,21 +389,6 @@ export default class WJElement extends HTMLElement {
 					}
 				}
 			);
-		});
-	}
-
-	tooltip() {
-		// Odmazanie pôvodných tooltipov, dobré v prípade prekreslovania
-		while (this.generatedTooltips.length) {
-			let a = this.generatedTooltips.pop();
-			a?.hide();
-			a?.remove();
-		}
-
-		this.context.querySelectorAll('[wj-tooltip]').forEach((el) => {
-			// WjElementUtils.initTooltip(el).then((ret) => {
-			// 	this.generatedTooltips.push(ret);
-			// });
 		});
 	}
 }

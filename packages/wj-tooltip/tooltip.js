@@ -14,7 +14,7 @@ export class Tooltip extends WJElement {
     }
 
     static get observedAttributes() {
-        return ["active"];
+        return ["active", "content"];
     }
 
     setupAttributes() {
@@ -23,8 +23,6 @@ export class Tooltip extends WJElement {
 
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
-
-        // this.classList.add("wj-placement", "wj-" + this.placement || "wj-start");
 
         let popup = document.createElement("wj-popup");
         popup.setAttribute("placement", this.placement || "top");
@@ -45,9 +43,30 @@ export class Tooltip extends WJElement {
         popup.appendChild(arrow);
         popup.appendChild(native);
 
+        this.mySlot = slot;
+        this.popup = popup;
+
         fragment.appendChild(popup);
 
         return fragment;
+    }
+
+    afterDraw() {
+        let anchorEl = this.mySlot.assignedElements()[0];
+        if(!anchorEl)
+            return;
+
+        event.addListener(anchorEl, "mouseenter", null, this.onShow);
+        event.addListener(anchorEl, "mouseleave", null, this.onHide);
+    }
+
+    onShow = () => {
+        console.log("show");
+        this.popup.show();
+    }
+
+    onHide = () => {
+        this.popup.hide();
     }
 }
 

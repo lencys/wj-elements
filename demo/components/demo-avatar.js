@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-main.js";
+import { WJElement } from "../../dist/wj-master.js";
 
 const template = document.createElement('template');
 
@@ -11,7 +11,7 @@ template.innerHTML = `<h1>Avatar</h1>
     <div class="playground">
       <div class="content">
         <wj-avatar>
-          <wj-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></wj-img>
+          <wj-img src="/assets/img/avatar.svg"></wj-img>
         </wj-avatar>
       </div>
     </div>
@@ -22,13 +22,13 @@ template.innerHTML = `<h1>Avatar</h1>
     <div class="playground">
       <div class="content">
         <wj-avatar size="small">
-          <wj-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></wj-img>
+          <wj-img src="/assets/img/avatar.svg"></wj-img>
         </wj-avatar>
         <wj-avatar>
-          <wj-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></wj-img>
+          <wj-img src="/assets/img/avatar.svg"></wj-img>
         </wj-avatar>
         <wj-avatar size="large">
-          <wj-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></wj-img>
+          <wj-img src="/assets/img/avatar.svg"></wj-img>
         </wj-avatar>
       </div>
     </div>
@@ -39,13 +39,13 @@ template.innerHTML = `<h1>Avatar</h1>
     <div class="playground">
       <div class="content">
         <wj-avatar size="small">
-          <wj-icon name="image" slot="icon"></wj-icon>
+          <wj-icon name="photo" slot="icon"></wj-icon>
         </wj-avatar>
         <wj-avatar>
-          <wj-icon name="image" slot="icon"></wj-icon>
+          <wj-icon name="photo" slot="icon"></wj-icon>
         </wj-avatar>
         <wj-avatar size="large">
-          <wj-icon name="image" slot="icon"></wj-icon>
+          <wj-icon name="photo" slot="icon"></wj-icon>
         </wj-avatar>
       </div>
     </div>
@@ -66,14 +66,14 @@ template.innerHTML = `<h1>Avatar</h1>
       <div class="content">
         <wj-dropdown id="custom-dropdown" placement="right-start" trigger="hover" offset="5">
           <wj-avatar label="Lukáš Ondrejček" initials slot="trigger"></wj-avatar>
-          <wj-menu>
+          <wj-menu id="custom-menu" active>
             <h5 style="margin: 0;">Petr Rahman</h5>
             <p class="hint-text">Frontend Developer</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
           </wj-menu>
         </wj-dropdown>
         <style>
-          wj-menu {
+          #custom-menu {
             width: 200px;
             padding: 1rem 1rem 0;
           }
@@ -99,13 +99,13 @@ template.innerHTML = `<h1>Avatar</h1>
       <div class="content">
         <div class="wj-avatar-group">
           <wj-avatar size="large">
-            <wj-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></wj-img>
+            <wj-img src="/assets/img/avatar.svg"></wj-img>
           </wj-avatar>
           <wj-avatar size="large">
-            <wj-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></wj-img>
+            <wj-img src="/assets/img/avatar.svg"></wj-img>
           </wj-avatar>
           <wj-avatar size="large">
-            <wj-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></wj-img>
+            <wj-img src="/assets/img/avatar.svg"></wj-img>
           </wj-avatar>
           <style>
             .wj-avatar-group wj-avatar:not(:first-of-type) {
@@ -140,13 +140,17 @@ template.innerHTML = `<h1>Avatar</h1>
     </div>
   </div>`;
 
-export default class DemoMedia extends WJElement {
+export default class DemoAvatar extends WJElement {
   constructor() {
     super(template);
+  }
+
+  beforeRouteEnter(transition) {
+    this.breadcrumbs = transition.breadcrumbs;
   }
 }
 
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-media") || window.customElements.define("demo-media", DemoMedia);
+customElements.get("demo-avatar") || window.customElements.define("demo-avatar", DemoAvatar);

@@ -27,16 +27,8 @@ export class TabGroup extends WJElement {
         header.classList.add("scroll-snap-x");
 
         let nav = document.createElement("nav");
-        nav.addEventListener("wj-tab:change", (e) => {
-            console.log(e);
-            alert(1)
-        });
-
-        let snap = document.createElement("span");
-        snap.classList.add("snap-indicator");
 
         let section = document.createElement("section");
-        section.classList.add("scroll-snap-x");
 
         let slot = document.createElement("slot");
 
@@ -44,7 +36,6 @@ export class TabGroup extends WJElement {
         slotNav.setAttribute("name", "nav");
 
         header.appendChild(nav);
-        header.appendChild(snap);
         nav.appendChild(slotNav);
         section.appendChild(slot);
 
@@ -57,15 +48,48 @@ export class TabGroup extends WJElement {
     }
 
     afterDraw() {
-        console.log(this.getNavAll());
+        console.log(this.context.querySelectorAll('[active]'));
+        let activeTab = this.getActiveTab();
+        let activeTabName = (activeTab) ? activeTab[0].name : this.getTabAll()[0].panel;
+        console.log("NAME:", activeTab, activeTabName, this.getTabAll());
+        this.setActiveTab(activeTabName);
+
+        this.addEventListener("wj:tab-change", (e) => {
+            console.log("TAB CHANGE", e.detail.context.hasAttribute("disabled"));
+            if(e.detail.context.hasAttribute("disabled"))
+                return false;
+
+            this.setActiveTab(e.detail.context.panel);
+        });
     }
 
-    getNavAll() {
+    removeActiveTab() {
+        this.getPanelAll().forEach((el) => {
+            el.removeAttribute("active");
+        });
+
+        this.getTabAll().forEach((el) => {
+            el.removeAttribute("active");
+        });
+    }
+
+    setActiveTab(tab) {
+        this.removeActiveTab();
+        this.querySelector(`[panel="${tab}"]`).setAttribute("active", "");
+        this.querySelector(`[name="${tab}"]`).setAttribute("active", "");
+    }
+
+    getActiveTab() {
+        let activeTabs = Array.from(this.context.querySelectorAll('[active]'));
+        return activeTabs.length > 0 ? activeTabs[0] : null;
+    }
+
+    getTabAll() {
         return this.context.querySelector('[name="nav"]').assignedElements();
     }
 
     getPanelAll() {
-        return this.context.querySelector("slot").assignedElements();
+        return Array.from(this.querySelectorAll("wj-tab-panel"));
     }
 }
 

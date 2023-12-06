@@ -11,7 +11,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Progress Bar element je dynamický komponent navrhnutý na vizualizáciu priebehu. Ponúka možnosť vytvárať prispôsobiteľné kruhové ukazovatele s rôznymi možnosťami konfigurácie. 
+Progress Bar element je komponent navrhnutý na vizualizáciu priebehu. Ponúka možnosť vytvárať prispôsobiteľné kruhové alebo rovné ukazovatele s rôznymi možnosťami konfigurácie. 
 
 ## Základné použitie
 
@@ -156,7 +156,7 @@ Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
 
 ## CSS Custom Vlastnosti
 
-| Name | Description |
+| Názov | Popis |
 | --- | --- |
 | `--wj-progress-bar-color` | Definuje farbu ukazovateľa priebehu |
 | `--wj-progress-bar-text-size` | Definuje veľkosť textu |

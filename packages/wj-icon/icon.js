@@ -15,7 +15,7 @@ export class Icon extends WJElement {
     }
 
     static get observedAttributes() {
-        return [];
+        return ["name"];
     }
 
     setupAttributes() {
@@ -25,23 +25,40 @@ export class Icon extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-        let element = document.createElement("div");
-        element.classList.add("icon-inner");
-        let url = getUrl(this);
+        this.classList.add("lazy-loaded-image", "lazy");
 
-        getSvgContent(url).then((svgContent) => {
-            element.innerHTML = iconContent.get(url);
-        });
+        this.element = document.createElement("div");
+        this.element.classList.add("icon-inner");
 
+        this.url = getUrl(this);
+
+        this.classList.add("wj-size");
         if(this.color)
             this.classList.add("wj-color-" + this.color, "wj-color");
 
         if(this.size)
-            this.classList.add("wj-size", "wj-size-" + this.size);
+            this.classList.add("wj-size-" + this.size);
 
-        fragment.appendChild(element);
+        fragment.appendChild(this.element);
 
         return fragment;
+    }
+
+    afterDraw() {
+        let lazyImageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    getSvgContent(this.url).then((svgContent) => {
+                        this.element.innerHTML = iconContent.get(this.url);
+                    });
+                    // entry.target.name = this.src;
+                    this.classList.remove("lazy");
+                    lazyImageObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        lazyImageObserver.observe(this.element);
     }
 }
 

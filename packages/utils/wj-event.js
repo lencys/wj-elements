@@ -1,29 +1,36 @@
+var self;
+
 class WjEvent {
     constructor() {
         this.customEventStorage = [];
+        self = this;
     }
 
-    dispatch = (e) => {
-        let element = e.target;
-        let record = this.findRecordByElement(element);
+    #dispatch(e) {
+        let element = this;
+        let record = self.findRecordByElement(element);
         let listeners = record.listeners[e.type];
 
         listeners.forEach((listener, i) => {
-            element.dispatchEvent(
-              new CustomEvent(listener.event, {
-                  detail: {
-                      originalEvent: e.type,
-                      context: element,
-                      event: this
-                  },
-                  bubbles: true
-              })
-            );
-            // if(e.type === "click")
-            //     e.preventDefault();
+            self.dispatchCustomEvent(element, listener.event, {
+                originalEvent: e?.type || null,
+                context: element,
+                event: self
+            });
+
+            if(listener.options && listener.options.stopPropagation === true)
+                e.stopPropagation();
         });
+    }
 
-
+    dispatchCustomEvent(element, event, detail) {
+        element.dispatchEvent(
+            new CustomEvent(event, {
+                detail: detail,
+                bubbles: true,
+                composed: true
+            })
+        );
     }
 
     findRecordByElement (element) {
@@ -39,7 +46,10 @@ class WjEvent {
     }
 
     addListener (element, originalEvent, event, listener, options) {
-        var record = this.findRecordByElement(element);
+        if(!element)
+            return;
+
+        let record = this.findRecordByElement(element);
 
         if (record) {
             record.listeners[originalEvent] = record.listeners[originalEvent] || [];
@@ -55,7 +65,7 @@ class WjEvent {
 
             this.customEventStorage.push(record);
         }
-        listener = listener || this.dispatch;
+        listener = listener || this.#dispatch;
         let obj = {
             listener: listener,
             options: options,
@@ -63,7 +73,7 @@ class WjEvent {
         };
 
         // skontrolujeme ci uz tento listener neexistuje
-        if(!this.listenerExists(element, originalEvent,obj)) {
+        if(!this.listenerExists(element, originalEvent, obj)) {
             record.listeners[originalEvent].push(obj);
 
             element.addEventListener(originalEvent, listener);
@@ -91,7 +101,7 @@ class WjEvent {
             }
         }
 
-        listener = listener || this.dispatch;
+        listener = listener || this.#dispatch;
 
         element.removeEventListener(originalEvent, listener, options);
     }

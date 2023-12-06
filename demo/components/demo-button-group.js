@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-main.js";
+import { WJElement } from "../../dist/wj-master.js";
 
 const template = document.createElement('template');
 template.innerHTML = ``;
@@ -48,7 +48,7 @@ export default class DemoButtonGroup extends WJElement {
             <wj-button>Button</wj-button>
             <wj-dropdown placement="bottom-end" offset="5">
               <wj-button slot="trigger" caret>Dropdown</wj-button>
-              <wj-menu>
+              <wj-menu variant="context">
                 <wj-menu-item>Item 1</wj-menu-item>
                 <wj-menu-item>Item 2</wj-menu-item>
                 <wj-menu-item>Item 3</wj-menu-item>
@@ -98,7 +98,7 @@ export default class DemoButtonGroup extends WJElement {
             </wj-tooltip>
             <wj-tooltip content="Align justify">
               <wj-button>
-                <wj-icon slot="icon-only" name="align-justify"></wj-icon>
+                <wj-icon slot="icon-only" name="align-justified"></wj-icon>
               </wj-button>
             </wj-tooltip>
           </wj-button-group>
@@ -113,10 +113,10 @@ export default class DemoButtonGroup extends WJElement {
           <wj-button-group>
             <wj-button variant="primary">Save</wj-button>
             <wj-dropdown placement="bottom-end" offset="5">
-              <wj-button slot="trigger" variant="primary" caret>
+              <wj-button slot="trigger" variant="primary" only-caret>
                 <wj-visually-hidden>More options</wj-visually-hidden>
               </wj-button>
-              <wj-menu>
+              <wj-menu variant="context">
                 <wj-menu-item>Save</wj-menu-item>
                 <wj-menu-item>Save as&hellip;</wj-menu-item>
                 <wj-menu-item>Save all</wj-menu-item>

@@ -1,19 +1,19 @@
 ```html
 <template>
-  <ion-radio-group value="strawberries">
-    <ion-radio value="grapes">Grapes</ion-radio><br />
-    <ion-radio value="strawberries">Strawberries</ion-radio><br />
-    <ion-radio value="pineapple">Pineapple</ion-radio><br />
-    <ion-radio value="cherries">Cherries</ion-radio>
-  </ion-radio-group>
+  <wj-radio-group value="dog">
+    <wj-radio value="cat">Cat</wj-radio>
+    <wj-radio value="dog">Dog</wj-radio>
+    <wj-radio value="elephant" disabled="">Elephant</wj-radio>
+    <wj-radio value="rabbit" >Rabbit</wj-radio>
+  </wj-radio-group>
 </template>
 
 <script lang="ts">
-  import { IonRadio, IonRadioGroup } from '@ionic/vue';
+  import { Radio, RadioGroup } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { IonRadio, IonRadioGroup },
+    components: { Radio, RadioGroup },
   });
 </script>
 ```

@@ -25,14 +25,6 @@ export const validateContent = (svgContent) => {
   const div = document.createElement('div');
   div.innerHTML = svgContent;
 
-  // // setup this way to ensure it works on our buddy IE
-  // for (let i = div.childNodes.length - 1; i >= 0; i--) {
-  //   if (div.childNodes[i].nodeName.toLowerCase() !== 'svg') {
-  //     div.removeChild(div.childNodes[i]);
-  //   }
-  // }
-
-  // must only have 1 root element
   const svgElm = div.firstElementChild;
   if (svgElm && svgElm.nodeName.toLowerCase() === 'svg') {
     const svgClass = svgElm.getAttribute('class') || '';
@@ -131,6 +123,22 @@ export const getName = (iconName) => {
   return iconName;
 };
 
+// const getNamedUrl = (iconName) => {
+//   const iconUrl = `assets/img/icons/svg/${iconName}.svg`;
+//   console.log("SOM:", iconUrl);
+//   const url = new URL(iconUrl, import.meta.url);
+//   console.log(url)
+//   return url.href;
+// };
+
 const getNamedUrl = (iconName) => {
-  return `/public/assets/img/icons/svgs/solid/${iconName}.svg`;
+  const path = `/assets/img/icons/svg/${iconName}.svg`
+
+  let parsedUrl = new URL(import.meta.url);
+  let pathName = parsedUrl.pathname;
+
+  // Remove the file name from the path to get the directory
+  let folderPath = pathName.substring(0, pathName.lastIndexOf('/'));
+
+  return new URL(parsedUrl.origin + folderPath + path).href;
 };

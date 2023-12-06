@@ -5,6 +5,7 @@
 :root {
   --wj-color: #{$color};
   --wj-font-family: #{$font-family};
+  --wj-font-family-secondary: #{$secondary-font-family};
   --wj-font-size: #{$font-size};
   --wj-line-height: #{$line-height};
   --wj-color-contrast: #{$color};
@@ -16,4 +17,4 @@
 }
 
 @import "./modules/typography.scss";
-//@import "./modules/form_elements.scss";
+@import "./responsive.scss";

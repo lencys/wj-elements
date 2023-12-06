@@ -1,6 +1,6 @@
 ```tsx
 import React, { useRef, useState } from 'react';
-import { IonBreadcrumb, IonBreadcrumbs, IonContent, IonItem, IonLabel, IonList, IonPopover } from '@ionic/react';
+import { Breadcrumb, Breadcrumbs, Content, Item, Label, List, Popover } from '@elements/react';
 
 function Example() {
   const popover = useRef<HTMLIonPopoverElement>(null);
@@ -15,25 +15,17 @@ function Example() {
 
   return (
     <>
-      <IonBreadcrumbs maxItems={4} onIonCollapsedClick={openPopover}>
-        <IonBreadcrumb href="#home">Home</IonBreadcrumb>
-        <IonBreadcrumb href="#electronics">Electronics</IonBreadcrumb>
-        <IonBreadcrumb href="#photography">Photography</IonBreadcrumb>
-        <IonBreadcrumb href="#cameras">Cameras</IonBreadcrumb>
-        <IonBreadcrumb href="#film">Film</IonBreadcrumb>
-        <IonBreadcrumb href="#35mm">35 mm</IonBreadcrumb>
-      </IonBreadcrumbs>
-      <IonPopover ref={popover} isOpen={popoverOpen} onDidDismiss={() => setPopoverOpen(false)}>
-        <IonContent>
-          <IonList>
-            {collapsedBreadcrumbs.map((breadcrumb, i) => (
-              <IonItem href={breadcrumb.href} lines={i === collapsedBreadcrumbs.length - 1 ? 'none' : undefined}>
-                <IonLabel>{breadcrumb.textContent}</IonLabel>
-              </IonItem>
-            ))}
-          </IonList>
-        </IonContent>
-      </IonPopover>
+     <wj-breadcrumbs max-items="4" items-before-collapse="2" collapsed-variant="dropdown">
+      <wj-breadcrumb href="/home">Home</wj-breadcrumb>
+      <wj-breadcrumb href="/electronics">Electronics</wj-breadcrumb>
+      <wj-breadcrumb href="/photography">Photography</wj-breadcrumb>
+      <wj-breadcrumb href="/cameras">Cameras</wj-breadcrumb>
+      <wj-breadcrumb href="/film">Film</wj-breadcrumb>
+      <wj-breadcrumb href="/35mm">35 mm</wj-breadcrumb>
+      <wj-breadcrumb href="/a">A</wj-breadcrumb>
+      <wj-breadcrumb href="/b">B</wj-breadcrumb>
+      <wj-breadcrumb href="/c">C</wj-breadcrumb>
+    </wj-breadcrumbs>
     </>
   );
 }

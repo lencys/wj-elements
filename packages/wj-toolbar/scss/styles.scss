@@ -11,6 +11,7 @@
   --wj-toolbar-padding-bottom: 1rem;
   --wj-toolbar-padding-inline: 1.5rem;
   --wj-toolbar-border-color: #{$color-border-a};
+  --wj-toolbar-top: 0;
   width: 100%;
   height: var(--wj-toolbar-height);
 }
@@ -26,14 +27,18 @@
   padding-top: var(--wj-toolbar-padding-top);
   padding-bottom: var(--wj-toolbar-padding-bottom);
   box-shadow: 0 10px 30px 0 rgba(82,63,105,.05);
-  //display: grid;
-  //grid-template-columns: repeat(auto-fill, minmax(0, 1fr)); /* Dynamicky prispôsobte šírku stĺpcov */
-  //gap: 10px; /* Medzera medzi elementami */
 }
+
 ::slotted {
   grid-column: span 4;
 }
 
 ::slotted([slot="start"]) {
   margin-right: auto;
+}
+
+:host([sticky]) {
+  position: sticky;
+  top: var(--wj-toolbar-top);
+  z-index: 999;
 }

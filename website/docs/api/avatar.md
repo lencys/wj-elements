@@ -1,5 +1,5 @@
 ---
-title: "ion-avatar"
+title: "Avatar"
 ---
 
 import Props from '@ionic-internal/component-api/v1/avatar/props.md';
@@ -10,58 +10,138 @@ import CustomProps from '@ionic-internal/component-api/v1/avatar/custom-props.md
 import Slots from '@ionic-internal/component-api/v1/avatar/slots.md';
 
 <head>
-  <title>ion-avatar: Circular Application Avatar Icon Component</title>
-  <meta name="description" content="Ion-avatars are circular application components that wrap an image or icon. They can represent a person or an object, by themselves or inside of any element." />
+  <title>Avatar: Avatar Component</title>
+  <meta name="description" content="Element avatar slúži na vizuálnu prezentáciu používateľa alebo subjektu. Používa sa zvyčajne ako obaľovač a poskytuje praktický spôsob zobrazovania profilových obrázkov, ikon, alebo, ak tie nie sú posktytné, iniciálok.  Podporuje rôzne konfigurácie vrátane veľkosti, zoskupenia viacerých avatarov alebo zobrazenie dropdownu po kliknutí či tooltipu pri ukázaní myšou." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Avatars are circular components that usually wrap an image or icon. They can be used to represent a person or an object.
+Element avatar slúži na vizuálnu prezentáciu používateľa alebo subjektu. Používa sa zvyčajne ako obaľovač a poskytuje praktický spôsob zobrazovania profilových obrázkov, ikon, alebo, ak tie nie sú posktytné, iniciálok.  Podporuje rôzne konfigurácie vrátane veľkosti, zoskupenia viacerých avatarov alebo zobrazenie dropdownu po kliknutí či tooltipu pri ukázaní myšou.
 
-Avatars can be used by themselves or inside of any element. If placed inside of an `ion-chip` or `ion-item`, the avatar will resize to fit the parent component. To position an avatar on the left or right side of an item, set the slot to `start` or `end`, respectively.
-
-## Basic Usage
+## Základné použitie
 
 import Basic from '@site/static/usage/v1/avatar/basic/index.md';
 
 <Basic />
 
-## Chip Avatar
+## Veľkosť Avatara
 
-import Chip from '@site/static/usage/v1/avatar/chip/index.md';
+Vlastnosť `size` určuje veľkosť avatara. Nastavením tejto vlastnosti sa zmení vnútorné odsadenie tlačidla.
 
-<Chip />
+import Size from '@site/static/usage/v1/avatar/size/index.md';
 
-## Item Avatar
+<Size />
 
-import Item from '@site/static/usage/v1/avatar/item/index.md';
+## Avatar s ikonou
 
-<Item />
+Vnorením elementu `wj-icon` sa vo vnútri avataru zobrazí zvolená ikona.
 
-## Theming
+import Icon from '@site/static/usage/v1/avatar/icon/index.md';
 
-### CSS Custom Properties
+<Icon />
+
+## Avatar s iniciálmi
+
+Pridaním vlastností `initials` a `label` avatar zobrazí iniciály zvolenej hodnoty vlastnosti `label`.
+
+import Initials from '@site/static/usage/v1/avatar/initials/index.md';
+
+<Initials />
+
+## Avatar s dropdownom
+
+Pridaním elementu `wj-dropdown` sa po kliknutí na avatar zobrazí menu. V tomto prípade je nutné do elementu avatar pridať slot `trigger` s hodnotou `hover`.
+
+import Dropdown from '@site/static/usage/v1/avatar/dropdown/index.md';
+
+<Dropdown />
+
+## Avatar s tooltipom
+
+Pridaním elementu `wj-dropdown` sa po kliknutí na avatar zobrazí menu.
+
+import Tooltip from '@site/static/usage/v1/avatar/tooltip/index.md';
+
+<Tooltip />
+
+## Skupina avatarov
+
+import Group from '@site/static/usage/v1/avatar/group/index.md';
+
+<Group />
+
+## CSS Custom Properties
 
 import CSSProps from '@site/static/usage/v1/avatar/theming/css-properties/index.md';
 
 <CSSProps />
 
-## Properties
-<Props />
+## Atribúty a Vlastnosti
 
-## Events
-<Events />
+### initials
 
-## Methods
-<Methods />
+|  |  |
+| --- | --- |
+| Popis | Ak `true`, avatar zobrazí iniciály hodnoty atribútu `label` |
+| Atribút | `initials` |
+| Typ | `boolean` |
+| Predvolená hodnota | `false` |
+
+### label
+
+|  |  |
+| --- | --- |
+| Popis | Určuje hodnotu pre atribút `initials` |
+| Atribút | `label` |
+| Typ | `string` |
+| Predvolená hodnota | `undefined` |
+
+
+### size
+
+|  |  |
+| --- | --- |
+| Popis | Nastavte na `"small"` pre avatara s menším priemerom a na `"large"` pre avatara s väčším priemerom. V predvolenom nastavení je veľkosť nenastavená. |
+| Atribút | `size` |
+| Typ | `"large"` ｜ `"small"` ｜ `undefined` |
+| Predvolená hodnota | `undefined` |
+
+## Eventy
+
+Pre tento komponent nie sú k dispozícii žiadne verejné eventy.
+
+## Metódy
+
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
 ## CSS Shadow Parts
-<Parts />
 
-## CSS Custom Properties
-<CustomProps />
+| Názov                           | Popis                    |
+|---------------------------------|--------------------------|
+| `native`                        | Odkazuje na `div` element vo vnútri avatara |
 
-## Slots
-<Slots />
+
+
+## CSS Custom Vlastnosti
+
+| Vlastnosť                       | Popis                    |
+|---------------------------------|--------------------------|
+| `--wj-avatar-background-color`  | Farba pozadia avatara    |
+| `--wj-avatar-border-color`      | Farba okraja avatara     |
+| `--wj-avatar-border-radius`     | Zaoblenie okraja avatara |
+| `--wj-avatar-border-style`      | Štýl okraja avatara      |
+| `--wj-avatar-border-width`      | Šírka okraja             |
+| `--wj-avatar-color`             | Farba textu              |
+| `--wj-avatar-font-size`         | Veľkosť písma            |
+| `--wj-avatar-font-weight`       | Hrúbka písma             |
+| `--wj-avatar-height`            | Výška avatara            |
+| `--wj-avatar-width`             | Šírka avatara            |
+
+
+## Sloty
+
+| Názov      | Popis                    |
+|------------|--------------------------|
+| icon       | Mal by byť použitý v elemente `wj-icon` a obsahovať názov ikony pre zobrazenie.  |

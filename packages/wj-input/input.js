@@ -1,4 +1,4 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement, event } from "../wj-element/wj-element.js";
 
 import styles from "./scss/styles.scss?inline";
 
@@ -6,9 +6,19 @@ export class Input extends WJElement {
     constructor(options = {}) {
         super();
 
+        // this._value = "";
         this.invalid = false;
         this.pristine = true;
         this.internals = this.attachInternals();
+    }
+
+    set value(value) {
+
+        this.setAttribute("value", value);
+    }
+
+    get value() {
+        return this.getAttribute("value") || "";
     }
 
     get customErrorDisplay() {
@@ -68,7 +78,7 @@ export class Input extends WJElement {
     }
 
     static get observedAttributes() {
-        return [];
+        return ["value"];
     }
 
     setupAttributes() {
@@ -81,14 +91,18 @@ export class Input extends WJElement {
         let fragment = document.createDocumentFragment();
 
         // Wrapper
-        let div = document.createElement("div");
-        div.classList.add("native-input", "default");
+        let native = document.createElement("div");
+        native.setAttribute("part", "native");
+        native.classList.add("native-input", this.variant || "default");
 
         if(this.hasAttribute("invalid"))
-            div.classList.add("has-error");
+            native.classList.add("has-error");
 
         let wrapper = document.createElement("div");
-        wrapper.classList.add("input-wrapper");
+        wrapper.classList.add("wrapper");
+
+        let inputWrapper = document.createElement("div");
+        inputWrapper.classList.add("input-wrapper");
 
         // Label
         let label = document.createElement("label");
@@ -99,8 +113,9 @@ export class Input extends WJElement {
         // Input
         let input = document.createElement("input");
         input.setAttribute("type", "text");
+        input.setAttribute("part", "input");
         input.setAttribute("value", this.value || "");
-        input.classList.add("form-control", "pristine");
+        input.classList.add("form-control");
 
         if(this.hasAttribute("placeholder"))
             input.setAttribute("placeholder", this.placeholder);
@@ -127,23 +142,49 @@ export class Input extends WJElement {
             end.setAttribute("name", "end");
         }
 
-        // Append elements
-        if(hasSlotStart)
-            div.appendChild(start);
+        if(hasSlotStart) {
+            wrapper.appendChild(start);
+            native.classList.add("has-start");
+        }
 
-        wrapper.appendChild(label);
-        wrapper.appendChild(input);
+        if(this.variant === "standard") {
+            if(this.label)
+                native.appendChild(label);
+        } else {
+            inputWrapper.appendChild(label);
+        }
 
-        div.appendChild(wrapper);
+        inputWrapper.appendChild(input);
 
-        if(hasSlotEnd)
-            div.appendChild(end);
+        wrapper.appendChild(inputWrapper);
 
-        div.appendChild(error);
+        native.appendChild(wrapper);
 
-        fragment.appendChild(div);
+        if(this.hasAttribute("clearable")) {
+            this.clear = document.createElement("wj-button");
+            this.clear.classList.add("clear");
+            this.clear.setAttribute("variant", "link")
+            this.clear.setAttribute("part", "clear");
 
-        this.native = div;
+            let clearIcon = document.createElement("wj-icon");
+            clearIcon.setAttribute("name", "x");
+
+            this.clear.appendChild(clearIcon);
+
+            inputWrapper.appendChild(this.clear);
+        }
+
+        if(hasSlotEnd) {
+            wrapper.appendChild(end);
+            native.classList.add("has-end");
+        }
+
+
+        native.appendChild(error);
+
+        fragment.appendChild(native);
+
+        this.native = native;
         this.labelElement = label;
         this.input = input;
         this.errorMessage = error;
@@ -192,6 +233,10 @@ export class Input extends WJElement {
             this.dispatchEvent(clone);
 
             this.validateInput();
+
+            event.dispatchCustomEvent(this, "wj-input:input", {
+                value: this.input.value
+            });
         });
 
         this.addEventListener('invalid', (e) => {
@@ -207,7 +252,12 @@ export class Input extends WJElement {
 
         this.addEventListener('focus', () => this.input.focus());
 
-        // this.validateInput();
+        if(this.clear) {
+            this.clear.addEventListener("wj:button-click", (e) => {
+                this.input.value = "";
+                event.dispatchCustomEvent(this.clear, "wj-input:clear");
+            });
+        }
     }
 
     validateInput() {
@@ -222,14 +272,10 @@ export class Input extends WJElement {
                     this.validationError = state.toString();
                     this.invalid = !this.pristine && !validState.valid;
 
-                    console.log("validationError:", this.validationError);
-
                     let errorMessage = this.message;
 
                     if(!this.hasAttribute("message"))
                         errorMessage = this.hasAttribute(attr) ? this.getAttribute(attr) : this.input.validationMessage;
-
-                    // console.log("errorMessage:", this.hasAttribute(attr), errorMessage, this.validationError);
 
                     this.internals.setValidity(
                       {[this.validationError]: true},

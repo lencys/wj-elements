@@ -9,7 +9,7 @@ import CustomProps from '@ionic-internal/component-api/v7/radio/custom-props.md'
 import Slots from '@ionic-internal/component-api/v7/radio/slots.md';
 
 <head>
-  <title>ion-radio Component: Radio Property for iOS and Android</title>
+  <title>ion-radio: Radio Component for iOS and Android</title>
   <meta name="description" content="Radioコンポーネントは、iOSおよびAndroidデバイスのion-radio-groupsの内部で使用する必要があります。Radioコンポーネントの使用方法とインストール方法については、こちらをご覧ください。" />
 </head>
 
@@ -30,23 +30,34 @@ import Basic from '@site/static/usage/v7/radio/basic/index.md';
 
 ## Label Placement
 
-開発者は `labelPlacement` プロパティを使用して、ラベルがどのように配置されるかを制御することができます。
+開発者は `labelPlacement` プロパティを使用して、ラベルをコントロールに対してどのように配置するかを制御できます。 このプロパティはフレックスボックスの `flex-direction` プロパティを反映しています。
 
 import LabelPlacement from '@site/static/usage/v7/radio/label-placement/index.md';
 
 <LabelPlacement />
 
+## Alignment
+
+Developers can use the `alignment` property to control how the label and control are aligned on the cross axis. This property mirrors the flexbox `align-items` property.
+
+:::note
+Stacked radios can be aligned using the `alignment` property. This can be useful when the label and control need to be centered horizontally.
+:::
+
+import Alignment from '@site/static/usage/v7/radio/alignment/index.md';
+
+<Alignment />
+
 ## Justification
 
-開発者は `justify` プロパティを使用して、ラベルとコントロールの行の詰め方を制御することができます。
+開発者は `justify` プロパティを使用して、ラベルとコントロールの行の詰め方を制御することができます。このプロパティはフレックスボックスの `justify-content` プロパティを反映しています。
 
 import Justify from '@site/static/usage/v7/radio/justify/index.md';
 
 <Justify />
 
-
 :::note
-`ion-item` is only used in the demos to emphasize how `justify` works. It is not needed in order for `justify` to function correctly.
+`ion-item`は、`justify`がどのように機能するかを強調するためにデモで使用されているだけです。 `justify` が正しく機能するために必須ではありません。
 :::
 
 ## ラジオの選択を解除する

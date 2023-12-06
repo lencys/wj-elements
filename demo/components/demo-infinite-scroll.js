@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-main.js";
+import { WJElement } from "../../dist/wj-master.js";
 
 const template = document.createElement('template');
 
@@ -13,10 +13,10 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
         <wj-infinite-scroll url="/api/users" placement="wj-list">
           <wj-list>
             <wj-item iterate>
-              <wj-lable>
+              <wj-label>
                 <h4>{{fullName}}</h4>
                 <p>{{jobTitle}}</p>
-              </wj-lable>
+              </wj-label>
             </wj-item>
           </wj-list>
         </wj-infinite-scroll>
@@ -28,13 +28,13 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
     <h3>Size</h3>
     <div class="playground">
       <div class="content">
-        <wj-infinite-scroll url="/api/users" placement="wj-list" size="20">
+        <wj-infinite-scroll url="/api/users" placement="wj-list" size="5">
           <wj-list>
             <wj-item iterate>
-              <wj-lable>
+              <wj-label>
                 <h4>{{fullName}}</h4>
                 <p>{{jobTitle}}</p>
-              </wj-lable>
+              </wj-label>
             </wj-item>
           </wj-list>
         </wj-infinite-scroll>

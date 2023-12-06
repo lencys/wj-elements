@@ -5,5 +5,7 @@
 */
 
 :host {
-  display: flex;
+  .native-toolbar-action {
+    display: flex;
+  }
 }

@@ -89,15 +89,27 @@ import CanDismissPreventSwipeToCloseExample from '@site/static/usage/v7/modal/ca
 
 <CanDismissPreventSwipeToCloseExample />
 
+### 子コンポーネントでのdismiss動作の変更
+
+あるシナリオでは、開発者は提示されたモーダルの状態に基づいて `canDismiss` コールバックの動作をカスタマイズする必要があるかもしれません。このカスタマイズは、たとえば、モーダル内のフォームが無効な場合にモーダルが却下されないようにしたい場合に特に便利です。
+
+このカスタマイズを実現するために、子コンポーネントは、親コンポーネントと通信して `canDismiss` コールバックを管理する条件を更新するために、関数コールバック、イベントエミッション、その他のリアクティビティメカニズムなどのさまざまなテクニックを使用できます。
+
+以下は、子コンポーネントが親コンポーネントとどのように通信して `canDismiss` コールバックを変更できるかを示す簡単な例です：
+
+import CanDismissChildStateExample from '@site/static/usage/v7/modal/can-dismiss/child-state/index.md';
+
+<CanDismissChildStateExample />
+
 ## モーダルの種類
  
 ### Card Modal
 
-Developers can create a card modal effect where the modal appears as a card stacked on top of your app's main content. To create a card modal, developers need to set the `presentingElement` property on `ion-modal`.
+開発者は、アプリのメインコンテンツの上にカードが積み重なったようにモーダルが表示されるカードモーダルエフェクトを作成できます。カードモーダルを作成するには、開発者は `ion-modal` に `presentingElement` プロパティを設定する必要があります。
 
 開発者は、アプリのメインコンテンツの上にカードが積み重なったように表示されるカードモーダル効果を作成することができます。カードモーダルを作成するには、開発者は `ion-modal` に `presentingElement` プロパティと `swipeToClose` プロパティを設定する必要があります。
 
-The `canDismiss` property can be used to control whether or not the card modal can be swiped to close.
+`canDismiss` プロパティを使用して、カードモーダルをスワイプして閉じることができるかどうかを制御することができます。
 
 :::note
 The card display style is only available on iOS.

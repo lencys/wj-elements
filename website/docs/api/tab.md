@@ -1,49 +1,68 @@
 ---
-title: "ion-tab"
+title: "Tab"
 ---
 
-import Props from '@ionic-internal/component-api/v1/tab/props.md';
-import Events from '@ionic-internal/component-api/v1/tab/events.md';
-import Methods from '@ionic-internal/component-api/v1/tab/methods.md';
-import Parts from '@ionic-internal/component-api/v1/tab/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/tab/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/tab/slots.md';
-
 <head>
-  <title>ion-tab - Ionic Framework Application Component</title>
-  <meta name="description" content="ion-tab is a child component of tabs. Each ion-tab can contain a top level navigation stack for an application or a single view. Read to learn more." />
+  <title>Tab - tlačidlo navigácie založenej na záložkách</title>
+  <meta name="description" content="Komponent Tab je podriadeným komponentom TabGroup a slúži ako tlačidlo navigácie založenej na záložkách. Používa sa v kombinácii s elementom TabPanel." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
+Komponent `Tab` je podriadeným komponentom [TabGroup](tab-group.md) a slúži ako tlačidlo navigácie založenej na záložkách. Používa sa v kombinácii s elementom [TabPanel](tab-panel.md).
 
-The tab component is a child component of [tabs](tabs.md). Each tab can contain a top level navigation stack for an app or a single view. An app can have many tabs, all with their own independent navigation.
+Pre príklady použitia komponentu `Tab` prejdite na dokumentáciu [TabGroup](tab-group.md).
 
-:::note
- Note: This component should only be used with vanilla JavaScript projects. For Angular, React, and Vue apps you do not need to use `ion-tab` to declare your tab components.
-:::
+## Atribúty a Vlastnosti
+
+### active
+
+|  |  |
+| --- | --- |
+| Popis |  Určuje, ktorý tab bude predvolene otvorený  |
+| Atribút | `active` |
+| Typ | `boolean` |
+| Predvolená hodnota | `false` |
+
+### panel
+
+|  |  |
+| --- | --- |
+| Popis |  Identifikátor názvu panela, ktorý sa zobrazí po kliknutí na tab.  |
+| Atribút | `panel` |
+| Typ | `any` |
+| Predvolená hodnota | `undefined` |
+
+## Eventy
+
+Pre tento komponent nie sú k dispozícii žiadne eventy.
+
+| Názov | Popis |
+|-----------|-------------|
+| `wj:tab-change` |  Vyvolaný po kliknuti na záložku |
+
+## Metódy
+
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+
+## CSS Shadow Party
+
+Pre tento komponent nie sú k dispozícii žiadne shadow party.
 
 
-See the [tabs documentation](tabs.md) for more details on configuring tabs.
+## CSS Custom Vlastnosti
+
+| Názov | Popis |
+|-----------|-------------|
+| `--wj-tab-bottom` | Používa sa interne na určenie spodného odsadenia označenia aktívneho Tab elementu. |
+| `--wj-tab-end` |  Používa sa interne na určenie koncového odsadenia označenia aktívneho Tab elementu. |
+| `--wj-tab-start` | Používa sa interne na určenie počiatočného odsadenia označenia aktívneho Tab elementu. |
+| `--wj-tab-top` | Používa sa interne na určenie horného odsadenia označenia aktívneho Tab elementu. |
+| `--wj-tab-writing-mode` | Určuje orientáciu textu v Tab elementoch.  |
 
 
+## Sloty
 
-## Properties
-<Props />
-
-## Events
-<Events />
-
-## Methods
-<Methods />
-
-## CSS Shadow Parts
-<Parts />
-
-## CSS Custom Properties
-<CustomProps />
-
-## Slots
-<Slots />
+Pre tento komponent nie sú k dispozícii žiadne sloty.

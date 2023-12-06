@@ -1,22 +1,22 @@
 ```html
 <template>
-  <ion-list>
-    <ion-item>
-      <ion-select aria-label="fruit" placeholder="Select fruit">
-        <ion-select-option value="apples">Apples</ion-select-option>
-        <ion-select-option value="oranges">Oranges</ion-select-option>
-        <ion-select-option value="bananas">Bananas</ion-select-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
+  <wj-select label="Label test" placeholder="Select option">
+    <wj-option value="option-1">Option 1</wj-option>
+    <wj-option value="option-2">
+      Option 2
+      <wj-icon name="heart" slot="end"></wj-icon>
+    </wj-option>
+    <wj-option value="option-3">Option 3</wj-option>
+    <wj-option value="option-4">Option 4</wj-option>
+  </wj-select>
 </template>
 
 <script>
-  import { IonItem, IonList, IonSelect, IonSelectOption } from '@ionic/vue';
+  import { Select, Option, Icon } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { IonItem, IonList, IonSelect, IonSelectOption },
+    components: { Select, Option, Icon },
   });
 </script>
 ```

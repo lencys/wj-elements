@@ -1,19 +1,19 @@
 ```html
-<ion-list>
-  <ion-item>
-    <ion-label>Pokémon Yellow</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Mega Man X</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>The Legend of Zelda</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Pac-Man</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Super Mario World</ion-label>
-  </ion-item>
-</ion-list>
+<wj-list>
+  <wj-item>
+    <wj-label>Pokémon Yellow</wj-label>
+  </wj-item>
+  <wj-item>
+    <wj-label>Mega Man X</wj-label>
+  </wj-item>
+  <wj-item>
+    <wj-label>The Legend of Zelda</wj-label>
+  </wj-item>
+  <wj-item>
+    <wj-label>Pac-Man</wj-label>
+  </wj-item>
+  <wj-item>
+    <wj-label>Super Mario World</wj-label>
+  </wj-item>
+</wj-list>
 ```

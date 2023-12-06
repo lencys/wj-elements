@@ -1,50 +1,49 @@
 ```tsx
 import React from 'react';
-import { IonBreadcrumb, IonBreadcrumbs, IonIcon, IonLabel } from '@ionic/react';
-import { camera, film, flash, home } from 'ionicons/icons';
+import { Breadcrumb, Breadcrumbs, Icon, Label } from '@elements/react';
 
 function Example() {
   return (
     <>
-      <IonLabel>Icons at Start</IonLabel>
-      <IonBreadcrumbs>
-        <IonBreadcrumb href="#home">
-          <IonIcon slot="start" icon={home}></IonIcon>
+      <wj-label>Ikony na začiatku</wj-label>
+      <wj-breadcrumbs>
+        <wj-breadcrumb href="/house">
+          <wj-icon slot="start" name="home"></wj-icon>
           Home
-        </IonBreadcrumb>
-        <IonBreadcrumb href="#electronics">
-          <IonIcon slot="start" icon={flash}></IonIcon>
+        </wj-breadcrumb>
+        <wj-breadcrumb href="/electronics">
+          <wj-icon slot="start" name="bolt"></wj-icon>
           Electronics
-        </IonBreadcrumb>
-        <IonBreadcrumb href="#cameras">
-          <IonIcon slot="start" icon={camera}></IonIcon>
+        </wj-breadcrumb>
+        <wj-breadcrumb href="/cameras">
+          <wj-icon slot="start" name="camera"></wj-icon>
           Cameras
-        </IonBreadcrumb>
-        <IonBreadcrumb href="#film">
-          <IonIcon slot="start" icon={film}></IonIcon>
+        </wj-breadcrumb>
+        <wj-breadcrumb href="/film">
+          <wj-icon slot="start" name="video"></wj-icon>
           Film
-        </IonBreadcrumb>
-      </IonBreadcrumbs>
+        </wj-breadcrumb>
+      </wj-breadcrumbs>
 
-      <IonLabel class="ion-margin-top">Icons at End</IonLabel>
-      <IonBreadcrumbs>
-        <IonBreadcrumb href="#home">
+      <wj-label>Ikony na konci</wj-label>
+      <wj-breadcrumbs>
+        <wj-breadcrumb href="/house">
           Home
-          <IonIcon slot="end" icon={home}></IonIcon>
-        </IonBreadcrumb>
-        <IonBreadcrumb href="#electronics">
+          <wj-icon slot="end" name="home"></wj-icon>
+        </wj-breadcrumb>
+        <wj-breadcrumb href="/electronics">
           Electronics
-          <IonIcon slot="end" icon={flash}></IonIcon>
-        </IonBreadcrumb>
-        <IonBreadcrumb href="#cameras">
+          <wj-icon slot="end" name="bolt"></wj-icon>
+        </wj-breadcrumb>
+        <wj-breadcrumb href="/cameras">
           Cameras
-          <IonIcon slot="end" icon={camera}></IonIcon>
-        </IonBreadcrumb>
-        <IonBreadcrumb href="#film">
+          <wj-icon slot="end" name="camera"></wj-icon>
+        </wj-breadcrumb>
+        <wj-breadcrumb href="/film">
           Film
-          <IonIcon slot="end" icon={film}></IonIcon>
-        </IonBreadcrumb>
-      </IonBreadcrumbs>
+          <wj-icon slot="end" name="video"></wj-icon>
+        </wj-breadcrumb>
+      </wj-breadcrumbs>
     </>
   );
 }

@@ -1,10 +1,13 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement } from "../wj-element/wj-element.js";
+import { bindRouterLinks } from "../wj-router/plugins/slick-router/middlewares/router-links.js";
 
 import styles from "./scss/styles.scss?inline";
 
 export class RouterLink extends WJElement {
     constructor() {
         super();
+
+        bindRouterLinks(this, { selector: false });
     }
 
     className = "RouterLink";
@@ -19,6 +22,7 @@ export class RouterLink extends WJElement {
 
     setupAttributes() {
         this.isShadowRoot = "open";
+        this.setAttribute("active-class", "active");
     }
 
     draw(context, store, params) {

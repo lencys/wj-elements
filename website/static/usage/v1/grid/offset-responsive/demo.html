@@ -3,66 +3,69 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Grid</title>
+    <title>Dropdown</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@7/dist/ionic/ionic.esm.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@7/css/ionic.bundle.css" />
-
-    <style>
-      .container {
-        flex-direction: column;
-        justify-content: space-evenly;
-      }
-
-      ion-grid {
-        width: 100%;
-        flex-grow: 0;
-      }
-
-      ion-col {
-        background-color: #135d54;
-        border: solid 1px #fff;
-        color: #fff;
-        text-align: center;
-      }
-    </style>
+    <!-- <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/wj-main.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/style.css" /> -->
+    <script type="module" src="./../../../../wj-elementy/wj-master.js"></script>
+    <link rel="stylesheet" href="./../../../../wj-elementy/style.css" />
   </head>
-
   <body>
-    <ion-app>
-      <ion-content>
-        <div class="container">
-          <b>No offset for xs breakpoint, offset 1st column for sm and up</b>
-          <ion-grid>
-            <ion-row>
-              <ion-col offset-sm="2">1</ion-col>
-              <ion-col>2</ion-col>
-              <ion-col>3</ion-col>
-              <ion-col>4</ion-col>
-              <ion-col>5</ion-col>
-            </ion-row>
-          </ion-grid>
-
-          <b>No offset for xs breakpoint, offset last 3 columns for md and up</b>
-          <ion-grid>
-            <ion-row>
-              <ion-col>1</ion-col>
-              <ion-col offset-md="2">2</ion-col>
-              <ion-col offset-md="2">3</ion-col>
-              <ion-col offset-md="2">4</ion-col>
-            </ion-row>
-          </ion-grid>
-
-          <b>Offset all columns by 6 for xs breakpoint, offset by 4 for md, offset by 2 for lg and up</b>
-          <ion-grid>
-            <ion-row>
-              <ion-col offset="6" offset-md="4" offset-lg="2">1</ion-col>
-              <ion-col offset="6" offset-md="4" offset-lg="2">2</ion-col>
-            </ion-row>
-          </ion-grid>
+    <div class="playground">
+        <div class="content">
+          <span>Žiadny offset pre breakpoint xs, posun 1. stĺpca pre sm a vyššie</span>
+          <wj-grid>
+            <wj-row>
+              <wj-col offset-sm="2">1</wj-col>
+              <wj-col>2</wj-col>
+              <wj-col>3</wj-col>
+              <wj-col>4</wj-col>
+              <wj-col>5</wj-col>
+            </wj-row>
+          </wj-grid>
+  
+          <span>Žiadny offset pre breakpoint xs, offset posledných 3 stĺpcov pre md a vyššie</span>
+          <wj-grid>
+            <wj-row>
+              <wj-col>1</wj-col>
+              <wj-col offset-md="2">2</wj-col>
+              <wj-col offset-md="2">3</wj-col>
+              <wj-col offset-md="2">4</wj-col>
+            </wj-row>
+          </wj-grid>
+  
+          <span>Offset všetkých stĺpcov o 6 pre breakpoint xs, offset o 4 pre md, offset o 2 pre lg a vyššie</span>
+          <wj-grid>
+            <wj-row wrap>
+              <wj-col offset="6" offset-md="4" offset-lg="2">1</wj-col>
+              <wj-col offset="6" offset-md="4" offset-lg="2">2</wj-col>
+            </wj-row>
+          </wj-grid>
         </div>
-      </ion-content>
-    </ion-app>
+      </div>
+    </div>
   </body>
+  <style>
+    .content {
+      width: 400px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    }
+    wj-col {
+      background-color: #7252D3;
+      border: solid 1px #fff;
+      color: #fff;
+      text-align: center;
+    }
+    wj-col[size="auto"], wj-col[size], wj-col[offset]  {
+      background-color: #19AD79;
+    }
+    span {
+      text-align: center;
+    }
+  </style>
 </html>

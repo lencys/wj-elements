@@ -1,4 +1,4 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement, event } from "../wj-element/wj-element.js";
 
 import styles from "./scss/styles.scss?inline";
 
@@ -6,8 +6,6 @@ export class InfiniteScroll extends WJElement {
     constructor(options = {}) {
         super();
 
-        this.infiniteScrollTemplate = this.querySelector("[iterate]").outerHTML;
-        this.querySelector("[iterate]").remove(); // remove template
         this.totalPages = 0;
         this.isLoading = [];
 
@@ -46,6 +44,10 @@ export class InfiniteScroll extends WJElement {
     }
 
     beforeDraw(context, store, params) {
+        this.iterate = this.querySelector("[iterate]");
+        this.infiniteScrollTemplate = this.iterate.outerHTML;
+        this.iterate.remove(); // remove template
+
         this.setAttribute("style", "height: " + this.height);
     }
 
@@ -70,8 +72,16 @@ export class InfiniteScroll extends WJElement {
         this.size = +this.size || 10;
         this.currentPage = 0;
 
-        this.addEventListener('scroll', this.onScroll);
+        this.scrollEvent();
         await this.loadPages(this.currentPage);
+    }
+
+    scrollEvent = () => {
+        this.addEventListener("scroll", this.onScroll);
+    }
+
+    unScrollEvent = () => {
+        this.removeEventListener("scroll", this.onScroll);
     }
 
     onScroll = (e)=> {
@@ -117,14 +127,21 @@ export class InfiniteScroll extends WJElement {
     async loadPages (page){
         this.showLoader();
         try {
-            if (this.hasMorePages(page)) {
+            if (this.hasMorePages(page) || typeof this.setCustomData === "function") {
 
-                const response = await this.getPages(page);
+                let result;
+                let response;
+
+                if (typeof this.setCustomData === "function") {
+                    response = await this.setCustomData(page);
+                } else {
+                    response = await this.getPages(page);
+                }
+
                 this.totalPages = response.totalPages;
                 this.currentPage = page;
-                let result = response.data.map((item) => {
-                    return this.infiniteScrollTemplate.interpolate(item);
-                });
+
+                const parser = new DOMParser();
 
                 let placement = this;
 
@@ -132,7 +149,17 @@ export class InfiniteScroll extends WJElement {
                 if(this.hasAttribute("placement"))
                     placement = this.querySelector(this.placement);
 
-                placement.insertAdjacentHTML("beforeend", result.join(""));
+                response.data.forEach((item) => {
+                    const interpolateItem = this.infiniteScrollTemplate.interpolate(item);
+                    const doc = parser.parseFromString(interpolateItem, 'text/html');
+                    const element = doc.querySelector(".icon-item");
+
+                    event.addListener(element, "click", "wj-infinite-scroll:click-item", null, { stopPropagation: true });
+
+                    placement.insertAdjacentElement("beforeend", element);
+                });
+
+
 
                 this.isLoading.push(page);
             }

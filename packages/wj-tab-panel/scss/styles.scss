@@ -5,7 +5,12 @@
 */
 
 :host {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   align-items: center;
+  padding: 1rem;
+}
+
+:host([active]) {
+  display: block;
 }

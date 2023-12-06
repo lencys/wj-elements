@@ -1,45 +1,82 @@
 ---
-title: 'ion-icon'
+title: 'Icon'
 ---
 
 <head>
-  <title>ion-icon: Icon Component for Ionic Framework Apps</title>
+  <title>Icon: WebJET Element pre zobrazovanie ikon</title>
   <meta
     name="description"
-    content="Ion-icon is a component for displaying premium designed icons with support for SVG and web font."
+    content="Tento komponent poskytuje jednoduchý spôsob zobrazenia ikon zo sady SVG obrázkov, pričom umožňuje rôzne možnosti prispôsobenia."
   />
 </head>
 
-Icon is a simple component made available through the <a href="https://ionic.io/ionicons">Ionicons</a> library, which comes pre-packaged by default with all Ionic Framework applications. It can be used to display any icon from the Ionicons set, or a custom SVG. It also has support for styling such as size and color.
+import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
-For a list of all available icons, see <a href="https://ionic.io/ionicons">ionic.io/ionicons</a>. For more information including styling and custom SVG usage, see <a href="https://ionic.io/ionicons/usage">the Usage page</a>.
+<EncapsulationPill type="shadow" />
 
-## Basic Usage
+Tento komponent poskytuje jednoduchý spôsob zobrazenia ikon zo sady SVG obrázkov, pričom umožňuje rôzne možnosti prispôsobenia.
+
+## Základné použitie
 
 import Basic from '@site/static/usage/v1/icon/basic/index.md';
 
 <Basic />
 
+## Custom
 
-## Accessibility
+import Custom from '@site/static/usage/v1/icon/custom/index.md';
 
-Icons that are purely decorative content should have <code>aria-hidden="true"</code>. This will not visually hide the icon, but it will hide the element from assistive technology.
+<Custom />
 
-```html
-<ion-icon name="heart" aria-hidden="true"></ion-icon>
-```
+## Atribúty a Vlastnosti
 
+### color
 
-If the icon is interactive, it should have alternate text defined by adding an <code>aria-label</code>.
+|  |  |
+| --- | --- |
+| Popis | Farba ikony z palety farieb aplikácie. Predvolené možnosti sú: `"primary"`, `"secondary"`, `"complete"`, `"success"`, `"warning"`, `"danger"`, `"dark"`, a `"light"`. |
+| Atribút | `color` |
+| Typ | `"danger"` ｜ `"dark"` ｜ `"light"` ｜ `"primary"` ｜ `"secondary"` ｜ `"success"` ｜ `"warning"` ｜ undefined |
+| Predvolená hodnota | `inherit` |
 
-```html
-<ion-icon name="heart" aria-label="Favorite"></ion-icon>
-```
+### name
 
-Alternatively, if the icon is inside of another element that it is describing, that element should have the <code>aria-label</code> added to it, and the icon should be hidden using <code>aria-hidden</code>.
+|  |  |
+| --- | --- |
+| Popis | Určuje názov ikony na zobrazenie zo sady priloženej kolekcie SVG ikon. |
+| Atribút | `name` |
+| Typ | `string` ｜ `undefined` |
+| Predvolená hodnota | `undefined` |
 
-```html
-<ion-button aria-label="Favorite">
-  <ion-icon name="heart" aria-hidden="true"></ion-icon>
-</ion-button>
-```
+### size
+
+|  |  |
+| --- | --- |
+| Popis | Nastavte na `"small"` pre menšiu ikonu, alebo na `"large"` pre väčšiu ikonu. V predvolenom nastavení je veľkosť nenastavená. |
+| Atribút | `size` |
+| Typ | `large` ｜ `small` ｜ `undefined` |
+| Predvolená hodnota | `undefined` |
+
+## Eventy
+
+Pre tento komponent nie sú k dispozícii žiadne eventy.
+
+## Metódy
+
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+
+## CSS Shadow Parts
+
+Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+
+## CSS Custom vlastnosti
+
+| Názov   | Popis    |
+|---------|----------|
+| `--wj-icon-height` | Definuje výšku ikony |
+| `--wj-icon-size` | Definuje veľkosť ikony |
+| `--wj-icon-width` | Definuje šírku ikony |
+
+## Sloty
+
+Pre tento komponent nie sú k dispozícii žiadne sloty.

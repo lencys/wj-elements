@@ -91,7 +91,7 @@ export class Slider extends WJElement {
         input.name = "slider";
         input.part = "slider";
         input.setAttribute("autocomplete", "off");
-        input.setAttribute("color", this.color || "primary");
+        input.setAttribute("color", this.color || "");
         input.addEventListener("input", (e) => {
             this.setHandlePosition(e.target);
         });
@@ -141,7 +141,7 @@ export class Slider extends WJElement {
 
     dispatchInit(value) {
         this.dispatchEvent(
-            new CustomEvent("wj-slider-init", {
+            new CustomEvent("wj:slider-init", {
                 bubbles: true,
                 detail: {
                     value: value,
@@ -153,7 +153,7 @@ export class Slider extends WJElement {
 
     dispatchMove(value) {
         this.dispatchEvent(
-            new CustomEvent("wj-slider-move", {
+            new CustomEvent("wj:slider-move", {
                 bubbles: true,
                 detail: {
                     value: value,
@@ -165,7 +165,7 @@ export class Slider extends WJElement {
 
     dispatchChange(value) {
         this.dispatchEvent(
-            new CustomEvent("wj-slider-change", {
+            new CustomEvent("wj:slider-change", {
                 bubbles: true,
                 detail: {
                     value: value,

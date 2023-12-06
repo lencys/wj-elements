@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avatar</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/wj-main.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@eace00fa0caefcf87398367090ebf3ed2a4e946b/style.css" />
+  </head>
+  <body>
+    <div class="playground">
+      <div class="content">
+        <wj-dropdown id="custom-dropdown" placement="right-start" trigger="hover" offset="5">
+          <wj-avatar label="Lukáš Ondrejček" initials slot="trigger"></wj-avatar>
+          <wj-menu id="custom-menu" active>
+            <h5 style="margin: 0;">Petr Rahman</h5>
+            <p class="hint-text">Frontend Developer</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
+          </wj-menu>
+        </wj-dropdown>
+        <style>
+          #custom-menu {
+            width: 200px;
+            padding: 1rem 1rem 0;
+          }
+        </style>
+      </div>
+    </div>
+  </body>
+</html>

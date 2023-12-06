@@ -40,6 +40,7 @@ export class Routerx extends WJElement {
         this.router.use(wc);
         this.router.use(routerLinks);
         this.router.use(events);
+        this.router.use(this.resetScrollPosition);
         this.router.listen();
 
         interceptLinks(this.router);
@@ -93,6 +94,10 @@ export class Routerx extends WJElement {
         ];
 
         transition.breadcrumbs = breadcrumb;
+    }
+
+    resetScrollPosition = (transition) => {
+        window.scrollTo(0, 0);
     }
 }
 

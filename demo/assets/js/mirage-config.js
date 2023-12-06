@@ -3,8 +3,10 @@ import { createServer, Model, Factory } from 'miragejs';
 
 export function makeServer({ environment = 'development' } = {}) {
   let server = createServer({
+
     models: {
       user: Model,
+      option: Model,
     },
 
     factories: {
@@ -20,6 +22,17 @@ export function makeServer({ environment = 'development' } = {}) {
         },
         description(i) {
           return faker.lorem.sentence()
+        }
+      }),
+      option: Factory.extend({
+        value(i) {
+          return faker.string.uuid();
+        },
+        text(i) {
+          return faker.location.country();
+        },
+        label(i) {
+          return faker.location.state();
         }
       }),
     },
@@ -48,8 +61,19 @@ export function makeServer({ environment = 'development' } = {}) {
         }
       })
 
-      this.passthrough("/demo/**", "/public/**");
+      this.get("/api/options", function(schema, request) {
+        server.db.users.remove(); // musime najprv precistit
+        server.createList("option", 10);
+
+        let data = schema.options.all();
+        let options = this.serialize(data).options;
+
+        return options;
+      })
+
+      this.passthrough();
     },
+    // logging: false
   })
 
   return server;

@@ -1,48 +1,48 @@
 ```tsx
 import React from 'react';
-import { IonItem, IonLabel } from '@ionic/react';
+import { Item, Label } from '@elements/react';
 
 function Example() {
   return (
     <>
-      <IonItem>
-        <IonLabel>Basic Item</IonLabel>
-      </IonItem>
+      <wj-item>
+        <wj-label>Basic Item</wj-label>
+      </wj-item>
 
-      <IonItem>
-        <IonLabel>
-          Multi-line text that should ellipsis when it is too long to fit on one line. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit.
-        </IonLabel>
-      </IonItem>
+      <wj-item>
+        <wj-label>
+          Multi-line text that should ellipsis when it is too long to fit on
+          one line. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </wj-label>
+      </wj-item>
 
-      <IonItem>
-        <IonLabel class="ion-text-wrap">
-          Multi-line text that should wrap when it is too long to fit on one line. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit.
-        </IonLabel>
-      </IonItem>
+      <wj-item>
+        <wj-label class="wj-text-wrap">
+          Multi-line text that should wrap when it is too long to fit on one
+          line. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </wj-label>
+      </wj-item>
 
-      <IonItem>
-        <IonLabel>
+      <wj-item>
+        <wj-label>
           <h1>H1 Heading</h1>
           <p>Paragraph</p>
-        </IonLabel>
-      </IonItem>
+        </wj-label>
+      </wj-item>
 
-      <IonItem>
-        <IonLabel>
+      <wj-item>
+        <wj-label>
           <h2>H2 Heading</h2>
           <p>Paragraph</p>
-        </IonLabel>
-      </IonItem>
+        </wj-label>
+      </wj-item>
 
-      <IonItem>
-        <IonLabel>
+      <wj-item>
+        <wj-label>
           <h3>H3 Heading</h3>
           <p>Paragraph</p>
-        </IonLabel>
-      </IonItem>
+        </wj-label>
+      </wj-item>
     </>
   );
 }

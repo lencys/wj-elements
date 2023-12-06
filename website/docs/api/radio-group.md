@@ -1,60 +1,53 @@
 ---
-title: "ion-radio-group"
+title: "RadioGroup"
 ---
-import Props from '@ionic-internal/component-api/v1/radio-group/props.md';
-import Events from '@ionic-internal/component-api/v1/radio-group/events.md';
-import Methods from '@ionic-internal/component-api/v1/radio-group/methods.md';
-import Parts from '@ionic-internal/component-api/v1/radio-group/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/radio-group/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/radio-group/slots.md';
 
 <head>
-  <title>ion-radio-group | Radio Button Group Usage for Ionic Apps</title>
-  <meta name="description" content="A radio group is a group of radio buttons. Radio groups allow a user to select at most one radio button from a set. Learn more about ion-radio-group usage." />
+  <title>RadioGroup | Kontajner pre rádiové tlačidlá</title>
+  <meta name="description" content="RadioGroup slúži ako kontajner pre skupinu rádio tlačidiel. " />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
+RadioGroup slúži ako kontajner pre skupinu [rádio](./radio) tlačidiel.
+Umožňuje používateľom vybrať jednu možnosť zo súboru možností, pričom sa zabezpečí, že v danom okamihu bude vybrané iba jedno rádiové tlačidlo v rámci skupiny. Komponent podporuje atribút `inline`, ktorý po nastavení usporiada rádiové tlačidlá v horizontálnom rozložení. Okrem toho programovo spravuje atribút `value`, ktorý reflektuje hodnotu práve vybraného rádiového tlačidla.
 
-A radio group is a container for a group of [radios](./radio). It allows a user to select at most one radio button from a set. Checking one radio button that belongs to a radio group unchecks any previous checked radio button within the same group. For example usage of the radio group, see the [radio](./radio) documentation.
+## Atribúty a Vlastnosti
 
+### inline
 
-## Interfaces
+|  |  |
+| --- | --- |
+| Popis | Usporiada elementy v horizontálnom rozložení |
+| Atribút | `inline` |
+| Typ | `boolean` |
+| Predvolená hodnota | `false` |
 
-### RadioGroupChangeEventDetail
+### value
 
-```typescript
-interface RadioGroupChangeEventDetail<T = any> {
-  value: T;
-}
-```
+|  |  |
+| --- | --- |
+| Popis | Nastaví radio element so zvolenou hodnotou ako predvolene označený |
+| Atribút | `value` |
+| Typ | `string` |
+| Predvolená hodnota | `undefined` |
 
-### RadioGroupCustomEvent
+## Eventy
 
-While not required, this interface can be used in place of the `CustomEvent` interface for stronger typing with Ionic events emitted from this component.
+Pre tento komponent nie sú k dispozícii žiadne eventy.
 
-```typescript
-interface RadioGroupCustomEvent<T = any> extends CustomEvent {
-  detail: RadioGroupChangeEventDetail<T>;
-  target: HTMLIonRadioGroupElement;
-}
-```
+## Metódy
 
-
-## Properties
-<Props />
-
-## Events
-<Events />
-
-## Methods
-<Methods />
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
 ## CSS Shadow Parts
-<Parts />
 
-## CSS Custom Properties
-<CustomProps />
+Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
 
-## Slots
-<Slots />
+## CSS Custom Vlastnosti
+
+Pre tento komponent nie sú k dispozícií žiadne CSS Custom Vlastnosti.
+
+## Sloty
+
+Pre tento komponent nie sú k dispozícii žiadne sloty.

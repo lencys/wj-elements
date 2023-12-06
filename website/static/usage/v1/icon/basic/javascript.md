@@ -1,6 +1,6 @@
 ```html
-<ion-icon name="logo-ionic"></ion-icon>
-<ion-icon name="logo-ionic" size="large"></ion-icon>
-<ion-icon name="logo-ionic" color="primary"></ion-icon>
-<ion-icon name="logo-ionic" size="large" color="primary"></ion-icon>
+<wj-icon name="check"></wj-icon>
+<wj-icon name="check" size="large"></wj-icon>
+<wj-icon name="check" color="danger"></wj-icon>
+<wj-icon name="check" size="large" color="danger"></wj-icon>
 ```

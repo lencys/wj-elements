@@ -1,26 +1,26 @@
 ```tsx
 import React from 'react';
-import { IonItem, IonLabel, IonList } from '@ionic/react';
+import { Item, Label, List } from '@elements/react';
 
 function Example() {
   return (
-    <IonList inset={true}>
-      <IonItem>
-        <IonLabel>Pokémon Yellow</IonLabel>
-      </IonItem>
-      <IonItem>
-        <IonLabel>Mega Man X</IonLabel>
-      </IonItem>
-      <IonItem>
-        <IonLabel>The Legend of Zelda</IonLabel>
-      </IonItem>
-      <IonItem>
-        <IonLabel>Pac-Man</IonLabel>
-      </IonItem>
-      <IonItem>
-        <IonLabel>Super Mario World</IonLabel>
-      </IonItem>
-    </IonList>
+    <wj-list inset>
+      <wj-item>
+        <wj-label>Pokémon Yellow</wj-label>
+      </wj-item>
+      <wj-item>
+        <wj-label>Mega Man X</wj-label>
+      </wj-item>
+      <wj-item>
+        <wj-label>The Legend of Zelda</wj-label>
+      </wj-item>
+      <wj-item>
+        <wj-label>Pac-Man</wj-label>
+      </wj-item>
+      <wj-item>
+        <wj-label>Super Mario World</wj-label>
+      </wj-item>
+    </wj-list>
   );
 }
 export default Example;

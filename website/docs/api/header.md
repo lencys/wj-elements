@@ -1,92 +1,59 @@
 ---
-title: "ion-header"
+title: "Header"
 ---
-import Props from '@ionic-internal/component-api/v1/header/props.md';
-import Events from '@ionic-internal/component-api/v1/header/events.md';
-import Methods from '@ionic-internal/component-api/v1/header/methods.md';
-import Parts from '@ionic-internal/component-api/v1/header/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/header/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/header/slots.md';
 
 <head>
-  <title>ion-header: Header Parent Component for Ionic Framework Apps</title>
-  <meta name="description" content="Ion-header is a parent component that holds the toolbar. It's important to note that ion-header needs to be the one of the three root elements of a page." />
+  <title>Layout: Header element</title>
+  <meta name="description" content="Header element je prvok layoutu a slúži na tvorbu hlavičky stránky." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
+<EncapsulationPill type="shadow" />
 
-Header is a root component of a page that aligns itself to the top of the page. It is recommended to be used as a wrapper for one or more [toolbars](./toolbar), but it can be used to wrap any element. When a toolbar is used inside of a header, the content will be adjusted so it is sized correctly, and the header will account for any device safe areas.
+Header element je prvok [Layoutu](./layout) a slúži na tvorbu hlavičky stránky.
 
+## Príklady použitia
 
-## Basic Usage
+Pre informácie o použítí **Header** elementu sa presuňte do dokumentácie [Layoutu](./layout).
 
-import Basic from '@site/static/usage/v1/header/basic/index.md';
+## Atribúty a Vlastnosti
 
-<Basic />
+### sticky
 
+|  |  |
+| --- | --- |
+| Popis | Ak true, Header dostane `position: "sticky"` |
+| Atribút | `sticky` |
+| Typ | `boolean` |
+| Predvolená hodnota | `false` |
 
-## Translucent Header
+## Eventy
 
-Headers can match the transparency found in native iOS applications by setting the `translucent` property. In order to see the content scrolling behind the header, the `fullscreen` property needs to be set on the content. This effect will only apply when the mode is `"ios"` and the device supports [backdrop-filter](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#browser_compatibility).
+Pre tento komponent nie sú k dispozícii žiadne eventy.
 
-import Translucent from '@site/static/usage/v1/header/translucent/index.md';
+## Metódy
 
-<Translucent />
-
-
-## Condensed Header
-
-Ionic provides the functionality found in native iOS applications to show a large toolbar title and then collapse it to a small title when scrolling. This can be done by adding two headers, one above the content and one inside of the content, and then setting the `collapse` property to `"condense"` on the header inside of the content. This effect will only apply when the mode is "ios".
-
-import Condense from '@site/static/usage/v1/header/condense/index.md';
-
-<Condense />
-
-
-## Fade Header
-
-Many native iOS applications have a fade effect on the toolbar. This can be achieved by setting the `collapse` property on the header to `"fade"`. When the page is first loaded, the background and border on the header will be hidden. As the content is scrolled, the header will fade back in. This effect will only apply when the mode is "ios".
-
-This functionality can be combined with a [Condensed Header](#condensed-header) as well. The `collapse` property with a value set to `"fade"` should be on the header outside of the content.
-
-import Fade from '@site/static/usage/v1/header/fade/index.md';
-
-<Fade />
-
-
-### Usage with Virtual Scroll
-
-A fade header requires a scroll container to work properly. When using a virtual scrolling solution, a custom scroll target needs to be provided. Scrolling on the content needs to be disabled and the `.ion-content-scroll-host` class needs to be added to the element responsible for scrolling.
-
-import CustomScrollTarget from '@site/static/usage/v1/header/custom-scroll-target/index.md';
-
-<CustomScrollTarget />
-
-
-## Borders
-
-In `"md"` mode, the header will have a `box-shadow` on the bottom. In `"ios"` mode, it will receive a `border` on the bottom. These can be removed by adding the `.ion-no-border` class to the header.
-
-import NoBorder from '@site/static/usage/v1/header/no-border/index.md';
-
-<NoBorder />
-
-
-## Properties
-<Props />
-
-## Events
-<Events />
-
-## Methods
-<Methods />
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
 ## CSS Shadow Parts
-<Parts />
 
-## CSS Custom Properties
-<CustomProps />
+| Názov | Popis |
+| --- | --- |
+| `native`        |     Šírka elementu       |
 
-## Slots
-<Slots />
+## CSS Custom Vlastnosti
+
+| Názov | Popis |
+| --- | --- |
+| `--wj-header-background`          | Farba pozadia elementu         |
+| `--wj-header-border-color`        | Farba okrajov elementu         |
+| `--wj-header-border-style`        | Štýl okrajov elementu          |
+| `--wj-header-border-width`        | Šírka okajov elementu          |
+| `--wj-header-height`              | Výška elementu                 |
+| `--wj-header-top`                 | Odsadenie elementu od vrchu ( len pri použití s atribútom `sticky` )   |
+
+
+## Sloty
+
+Pre tento komponent nie sú k dispozícii žiadne sloty.

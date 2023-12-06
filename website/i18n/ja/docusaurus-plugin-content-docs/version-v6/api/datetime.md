@@ -37,6 +37,7 @@ import HighlightedDatesCallback from '@site/static/usage/v7/datetime/highlighted
 import MultipleDateSelection from '@site/static/usage/v7/datetime/multiple/index.md';
 
 import GlobalTheming from '@site/static/usage/v7/datetime/styling/global-theming/index.md';
+import CalendarDaysStyling from '@site/static/usage/v7/datetime/styling/calendar-days/index.md';
 import WheelStyling from '@site/static/usage/v7/datetime/styling/wheel-styling/index.md';
 
 <head>
@@ -61,7 +62,7 @@ Datetimeはカレンダーとタイムホイールのインターフェイスを
 Ionic Frameworkのdatetimeは、開発者が一般的な落とし穴を回避できるように設計されており、
 開発者は簡単にdatetime値を操作し、ユーザーにシンプルなdatetimeピッカーを提供し、素晴らしいユーザーエクスペリエンスを提供することができます。
 
-### ISO 8601 Datetime Format: YYYY-MM-DDTHH:mmZ
+### ISO 8601 Datetime Format: `YYYY-MM-DDTHH:mmZ`
 
 Ionic Frameworkでは、[ISO 8601 datetime format](https://www.w3.org/TR/NOTE-datetime) を値として使用します。
 この値は、JavaScriptの `Date` オブジェクトを使用するのではなく、単純に文字列として使用されます。
@@ -70,15 +71,15 @@ JSONオブジェクトやデータベース内でのシリアライズやパー�
 
 以下は、 `ion-datetime` で使用できる ISO 8601 フォーマットの例です:
 
-| Description          | Format                 | Datetime Value Example        |
-| -------------------- | ---------------------- | ----------------------------  |
-| Year                 | YYYY                   | 1994                          |
-| Year and Month       | YYYY-MM                | 1994-12                       |
-| Complete Date        | YYYY-MM-DD             | 1994-12-15                    |
-| Date and Time        | YYYY-MM-DDTHH:mm       | 1994-12-15T13:47              |
-| UTC Timezone         | YYYY-MM-DDTHH:mm:ssZ   | 1994-12-15T13:47:20Z          |
-| Timezone Offset      | YYYY-MM-DDTHH:mm:ssTZD | 1994-12-15T13:47:20+05:00     |
-| Hour and Minute      | HH:mm                  | 13:47                         |
+| Description          | Format                   | Datetime Value Example          |
+| -------------------- | ------------------------ | ------------------------------  |
+| Year                 | `YYYY`                   | `1994`                          |
+| Year and Month       | `YYYY-MM`                | `1994-12`                       |
+| Complete Date        | `YYYY-MM-DD`             | `1994-12-15`                    |
+| Date and Time        | `YYYY-MM-DDTHH:mm`       | `1994-12-15T13:47`              |
+| UTC Timezone         | `YYYY-MM-DDTHH:mm:ssZ`   | `1994-12-15T13:47:20Z`          |
+| Timezone Offset      | `YYYY-MM-DDTHH:mm:ssTZD` | `1994-12-15T13:47:20+05:00`     |
+| Hour and Minute      | `HH:mm`                  | `13:47`                         |
 
 年号は常に4桁、ミリ秒は（加算される場合は）常に3桁、その他は常に2桁であることに注意してください。
 ミリ秒は3桁、その他は2桁である。
@@ -98,13 +99,17 @@ JSONオブジェクトやデータベース内でのシリアライズやパー�
 
 モーダルやポップオーバーなどのオーバーレイで日付時刻を表示する必要がある場合は、 [ion-datetime-button](./datetime-button) を使用することをお勧めします。スペースに制約がある場合は、 `ion-datetime-button` を使用する必要があります。このコンポーネントは、現在の日付と時刻の値を表示するボタンを表示します。ボタンがタップされると、日付と時刻のピッカーがオーバーレイで表示されます。
 
+## 非同期に値を設定する
+
+すでにdatetimeが作成された後にプログラムで`value`が更新されると、datetimeは自動的に新しい日付にジャンプします。しかし、ユーザーがdatetimeを操作しているときに、この方法で`value`を更新することは避けることをお勧めします。例えば、datetimeの`value`が非同期処理で読み込まれる場合、値の更新が終わるまでCSSでdatetimeを非表示にすることをお勧めします。
+
 ## 日付コンテナ
 
 ### 日付の最小値と最大値
 
 日付の最小値と最大値をカスタマイズするには、 `min` と `max` コンポーネントプロパティを使用します。上の表にあるのと同じ IS0 8601 フォーマットに従って、各コンポーネントはユーザーが選択できる日付を制限することができます。
 
-次の例では、日付の選択を 2022 年 3 月から 2022 年 5 月のみに制限しています。
+以下の例では、日付の選択を2022年3月から2022年5月のみに制限しています。
 
 <MaxMin />
 
@@ -118,8 +123,8 @@ JSONオブジェクトやデータベース内でのシリアライズやパー�
 
 ### 高度な日付制限
 
-`isDateEnabled` プロパティを使用すると、開発者は ISO 8601 日付文字列を使用して、特定の日、日付の範囲、週末、または任意のカスタムルールを無効にするように `ion-datetime` をカスタマイズすることができます。
-`isDateEnabled` プロパティは、日付が有効かどうかを示す boolean 値を返す関数を受け付けます。この関数は、レンダリングされた各日付、前月、今月、来月に対して呼び出されます。カスタムの実装では、ジャンキングを避けるために、パフォーマンスを最適化する必要があります。
+`isDateEnabled` プロパティを使用すると、開発者は `ion-datetime` をカスタマイズして、ISO 8601 の日付文字列を使用して、特定の日、日付の範囲、週末、または任意のカスタムルールを無効にすることができる。
+isDateEnabled` プロパティは、日付が有効かどうかを示すブール値を返す関数を受け付ける。この関数は、レンダリングされた各日付、前月、当月、翌月に対して呼び出されます。カスタムの実装では、ジャンクを避けるためにパフォーマンスを最適化する必要があります。
 
 次の例では、週末の日付をすべて無効にする方法を示しています。より高度な日付操作を行うには、 `date-fns` のような日付ユーティリティを使用することをお勧めします。
 
@@ -241,9 +246,9 @@ import Wheel from '@site/static/usage/v7/datetime/presentation/wheel/index.md';
 
 <Wheel />
 
-## Multiple Date Selection
+## 複数の日付の選択
 
-If the `multiple` property is set to `true`, multiple dates can be selected from the calendar picker. Clicking a selected date will deselect it.
+`multiple`プロパティが`true`に設定されている場合、カレンダーピッカーから複数の日付を選択することができます。選択した日付をクリックすると選択が解除されます。
 
 :::note
 This property is only supported when using `presentation="date"` and `preferWheel="false"`.
@@ -287,31 +292,31 @@ This property is only supported when using `presentation="date"` and `preferWhee
 
 <CustomizingButtons />
 
-## Highlighting Specific Dates
+## 特定の日付をハイライトする
 
-Using the `highlightedDates` property, developers can style particular dates with custom text or background colors. This property can be defined as either an array of dates and their colors, or a callback that receives an ISO string and returns the colors to use.
+`highlightedDates`プロパティを使用すると、開発者は特定の日付をカスタムテキストや背景色でスタイル設定することができます。このプロパティは、日付とその色の配列として定義するか、ISO 文字列を受け取って使用する色を返すコールバックとして定義することができます。
 
-When specifying colors, any valid CSS color format can be used. This includes hex codes, rgba, [color variables](../theming/colors), etc.
+色を指定する場合は、有効な CSS カラーフォーマットを使用できます。これには、16進コード、`rgba` 、[color variables](../theming/colors) などが含まれます。
 
-To maintain a consistent user experience, the style of selected date(s) will always override custom highlights.
+一貫したユーザーエクスペリエンスを維持するため、選択された日付のスタイルは常にカスタムハイライトよりも優先されます。
 
 :::note
 This property is only supported when `preferWheel="false"`, and using a `presentation` of either `"date"`, `"date-time"`, or `"time-date"`.
 :::
 
-### Using Array
+### 配列を利用
 
-An array is better when the highlights apply to fixed dates, such as due dates.
+ハイライトが期日などの固定された日付に適用される場合は、配列の方が適しています。
 
 <HighlightedDatesArray />
 
-### Using Callback
+### Callbackを利用
 
-A callback is better when the highlighted dates are recurring, such as birthdays or recurring meetings.
+誕生日や定期的なミーティングなど、ハイライトされた日付が繰り返される場合は、コールバックを使用した方がよいでしょう。
 
 <HighlightedDatesCallback />
 
-## Styling
+## スタイリング
 
 ### グローバルテーマ
 
@@ -321,9 +326,19 @@ Ionicの強力なテーマシステムを使用すると、特定のテーマに
 
 <GlobalTheming />
 
+### Calendar Days
+
+The calendar days in a grid-style `ion-datetime` can be styled using CSS shadow parts.
+
+:::note
+The example below selects the day 2 days ago, unless that day is in the previous month, then it selects a day 2 days in the future. This is done for demo purposes in order to show how to apply custom styling to all days, the current day, and the selected day.
+:::
+
+<CalendarDaysStyling />
+
 ### Wheel Pickers
 
-The wheels used in `ion-datetime` can be styled through a combination of shadow parts and CSS variables. This applies to both the columns in wheel-style datetimes, and the month/year picker in grid-style datetimes.
+`ion-datetime`で使用するホイールは、シャドウパーツとCSS変数を組み合わせてスタイルを設定することができます。これは、ホイールスタイルのdatetimeのカラムにも、グリッドスタイルのdatetimeの月/年のピッカーにも適用されます。
 
 <WheelStyling />
 
@@ -363,7 +378,7 @@ import { format, parseISO } from 'date-fns';
 /**
  * This is provided in the event
  * payload from the `ionChange` event.
- * 
+ *
  * The value is an ISO-8601 date string.
  */
 const dateFromIonDatetime = '2021-06-04T14:23:00-04:00';

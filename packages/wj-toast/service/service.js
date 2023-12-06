@@ -87,7 +87,7 @@ export const circle = (notification, alert, options) => {
     message = `<p>${options.message}</p>`;
 
   alert.innerHTML = `<wj-avatar>
-      <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      <img alt="Silhouette of a person's head" src="/assets/img/avatar.svg" />
     </wj-avatar>
     <div>
       ${title + message}
@@ -110,7 +110,7 @@ export const bar = (notification, alert, options) => {
 
 const close = () => {
   let icon = document.createElement("wj-icon");
-  icon.setAttribute("name", "xmark");
+  icon.setAttribute("name", "x");
   icon.setAttribute("slot", "icon-only");
 
   let close = document.createElement("wj-button");

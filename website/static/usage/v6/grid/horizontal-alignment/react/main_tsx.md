@@ -7,7 +7,7 @@ import './main.css';
 function Example() {
   return (
     <>
-      <b>Columns aligned at the start</b>
+      <b>Stĺpce zarovnané na začiatok</b>
       <IonGrid>
         <IonRow class="ion-justify-content-start">
           <IonCol size="3">1</IonCol>

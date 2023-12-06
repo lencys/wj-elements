@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-main.js";
+import { WJElement } from "../../dist/wj-master.js";
 
 const template = document.createElement('template');
 template.innerHTML = ``;
@@ -9,7 +9,12 @@ export default class DemoButton extends WJElement {
   }
 
   draw(){
-    return `<h1>Button</h1>
+    return `<style>
+      wj-button {
+        margin: .25rem;
+      }
+    </style>
+    <h1>Button</h1>
     <div class="container">
       
       <!--  BASIC-->
@@ -147,10 +152,10 @@ export default class DemoButton extends WJElement {
           <wj-button id="custom">Custom</wj-button>
           <style>
             wj-button#custom {
-              --wj-color-base: #000000;
+              --wj-button-background-color: #000000;
               --wj-button-border-color: #0af4fc;
               --wj-button-border-radius: 0;
-              --wj-color-contrast: #0af4fc;
+              --wj-button-color: #0af4fc;
               --wj-padding-top: 1rem;
               --wj-padding-start: .7rem;
               --wj-padding-end: .7rem;
