@@ -87,7 +87,7 @@ export class Popup extends WJElement {
         event.addListener(this.anchorEl, "click", null, (e) => {
             if(this.hasAttribute("disabled")) return;
             this.showHide();
-        }, {stopPropagation: true});
+        }, { stopPropagation: true });
 
 
         document.addEventListener("click",(e) => {
@@ -199,6 +199,10 @@ export class Popup extends WJElement {
         this.native.classList.remove("popup-active");
         this.cleanup();
         this.cleanup = undefined;
+    }
+
+    onHide() {
+        this.removeAttribute("active");
     }
 
     disconnectedCallback() {
