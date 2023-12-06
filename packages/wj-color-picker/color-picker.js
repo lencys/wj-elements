@@ -67,6 +67,7 @@ export class ColorPicker extends WJElement {
         // ANCHOR
         let anchor = document.createElement("div");
         anchor.setAttribute("slot", "anchor");
+        anchor.setAttribute("part", "anchor");
         anchor.classList.add("anchor");
 
         // PICKER
@@ -188,12 +189,8 @@ export class ColorPicker extends WJElement {
         this.addEventListener("wj-popup:show", (e) => {
             if(!this.init) {
                 window.setTimeout(() => {
-                    this.colorAreaDimension = {
-                        width: this.colorArea.offsetWidth,
-                        height: this.colorArea.offsetHeight,
-                        x: this.colorArea.offsetLeft,
-                        y: this.colorArea.offsetTop,
-                    };
+
+                    this.colorAreaDimension = this.dimension();
                     this.markerPosition = this.setMarkerPositionByColor(this.input.value);
                     this.setMarkerPosition(this.markerPosition.x, this.markerPosition.y);
 
@@ -208,11 +205,21 @@ export class ColorPicker extends WJElement {
         });
     }
 
+    dimension() {
+        return {
+            width: this.colorArea.offsetWidth,
+            height: this.colorArea.offsetHeight,
+            x: this.colorArea.offsetLeft,
+            y: this.colorArea.offsetTop,
+        }
+    }
+
     disconnectedCallback() {
         this.init = false;
     }
 
     moveMarker = (event) => {
+        this.colorAreaDimension = this.dimension();
         const pointer = this.getPointerPosition(event);
 
         let x = pointer.pageX - this.colorAreaDimension.x;
@@ -224,8 +231,8 @@ export class ColorPicker extends WJElement {
 
     getPointerPosition(event) {
         return {
-            pageX: event.changedTouches ? event.changedTouches[0].pageX : event.pageX,
-            pageY: event.changedTouches ? event.changedTouches[0].pageY : event.pageY
+            pageX: event.changedTouches ? event.changedTouches[0].pageX : event.clientX,
+            pageY: event.changedTouches ? event.changedTouches[0].pageY : event.clientY
         };
     }
 
@@ -336,6 +343,20 @@ export class ColorPicker extends WJElement {
 
         this.input.value = currentColor.toHex8String();
         this.anchor.style.setProperty("--wj-color-picker-value", currentColor.toHexString());
+
+        this.value = {
+            "hex8": currentColor.toHex8String(),
+            "hex": currentColor.toHexString(),
+            "rgb": currentColor.toRgbString(),
+            "rgba": currentColor.toRgbString(),
+            "hsl": currentColor.toHslString(),
+            "hsla": currentColor.toHslString(),
+            "hsv": currentColor.toHsvString(),
+            "hsva": currentColor.toHsvString(),
+            "name": currentColor.toName(),
+            "format": currentColor.getFormat(),
+        };
+        event.dispatchCustomEvent(this, "wj-color-picker:select", this.value);
     }
 
     /*

@@ -6,12 +6,13 @@
 
 :host {
   --wj-color-picker-value: #ff0000;
+  --wj-color-picker-size: 1rem;
   --wj-color-picker-radius: 4px;
 }
 
 .anchor {
-  width: 1rem;
-  height: 1rem;
+  width: var(--wj-color-picker-size);
+  height: var(--wj-color-picker-size);
   background: var(--wj-color-picker-value);
 }
 
@@ -20,6 +21,7 @@
   min-height: 90px;
   box-shadow: 0 0 5px rgba(0,0,0,.05), 0 5px 20px rgba(0,0,0,.1);
   border-radius: var(--wj-color-picker-radius);
+  background: #fff;
 }
 
 .color-area {
