@@ -1,4 +1,4 @@
-import { default as WJElement } from "../wj-element/wj-element.js";
+import { default as WJElement, event } from "../wj-element/wj-element.js";
 import { InfiniteScroll } from "../wj-infinite-scroll/infinite-scroll.js";
 import { Tooltip } from "../wj-tooltip/tooltip.js";
 
@@ -8,7 +8,7 @@ export class IconPicker extends WJElement {
     constructor() {
         super();
 
-        this.size = 56;
+        this.size = 48;
     }
 
     set markerPosition(value) {
@@ -62,19 +62,22 @@ export class IconPicker extends WJElement {
         let picker = document.createElement("div");
         picker.classList.add("picker");
 
-        let select = document.createElement("wj-select");
-        select.setAttribute("placeholder", "Category");
-        select.setAttribute("variant", "standard");
-        select.setAttribute("max-options", "1");
-        select.setAttribute("variant", "standard");
-        select.setAttribute("max-height", "180px");
-        select.setAttribute("clearable", "");
-        this.createOptions(select);
+        // let select = document.createElement("wj-select");
+        // select.setAttribute("placeholder", "Category");
+        // select.setAttribute("variant", "standard");
+        // select.setAttribute("max-options", "1");
+        // select.setAttribute("variant", "standard");
+        // select.setAttribute("max-height", "180px");
+        // select.setAttribute("clearable", "");
+        // this.createOptions(select);
 
         let input = document.createElement("wj-input");
         input.classList.add("input");
         input.setAttribute("variant", "standard");
         input.setAttribute("placeholder", "type to filter...");
+        input.setAttribute("clearable", "");
+        input.addEventListener("wj-input:input", this.searchIcon);
+
 
         let infiniteScroll = new InfiniteScroll();
 
@@ -85,13 +88,13 @@ export class IconPicker extends WJElement {
         infiniteScroll.innerHTML = `<div class="icon-items">
             <div class="icon-item" iterate>
                 <wj-tooltip content="{{name}}">
-                  <wj-icon name="{{name}}" size="large"></wj-icon>
+                    <wj-icon name="{{name}}" size="large"></wj-icon>
                 </wj-tooltip>
             </div>
         </div>`;
 
         // APPEND
-        picker.appendChild(select);
+        // picker.appendChild(select);
         picker.appendChild(input);
 
         picker.appendChild(infiniteScroll);
@@ -109,6 +112,7 @@ export class IconPicker extends WJElement {
         fragment.appendChild(native);
 
         this.popup = popup;
+        this.input = input;
         this.anchor = anchor;
         this.picker = picker;
         this.infiniteScroll = infiniteScroll;
@@ -117,11 +121,49 @@ export class IconPicker extends WJElement {
     }
 
     afterDraw() {
-        this.addEventListener("wj:popup-show", (e) => {
-            this.infiniteScroll.scrollEvent();
+        this.setupInfiniteScroll();
+        this.addEventListener("wj-popup:show", (e) => {
+            this.initial();
         });
 
-        this.infiniteScroll.setCustomData = (page) => {
+        // udalost po vymazani inputu
+        this.addEventListener("wj-input:clear", (e) => {
+            this.setupInfiniteScroll(); // reset infinite scroll
+            this.clearIconsContainer(); // clear icons container
+            this.infiniteScroll.scrollEvent(); // bind scroll event
+            this.infiniteScroll.loadPages(0); // load first page
+        });
+
+
+        this.addEventListener("wj-infinite-scroll:click-item", (e) => {
+
+            console.log("A");
+            const icon = e.detail.context.querySelector("wj-icon");
+            const name = icon.getAttribute("name");
+            const object = this.tags.find(i => i.name === name);
+            const iconElement = document.createElement("wj-icon");
+            iconElement.setAttribute("name", name);
+
+            object.icon = iconElement;
+
+            this.value = object;
+
+            this.anchor.innerHTML = "";
+            this.anchor.appendChild(iconElement);
+
+            event.dispatchCustomEvent(this, "wj-icon-picker:select", object); // odpalenie custom eventu
+        });
+
+        this.init = false;
+    }
+
+    initial() {
+        this.infiniteScroll.scrollEvent();
+    }
+
+    setupInfiniteScroll() {
+        this.infiniteScroll.setCustomData = (page = 0) => {
+
             let data = Object.values(this.tags);
             let result = {
                 data: data.slice(page * this.size, page * this.size + this.size),
@@ -129,22 +171,8 @@ export class IconPicker extends WJElement {
                 size: this.size,
                 totalPages: Math.round(data.length / this.size)
             }
-
             return result;
         };
-
-        this.init = false;
-    }
-
-    createItems() {
-        let items = document.createElement("div");
-        items.classList.add("icon-items");
-
-        Object.values(this.tags).slice(0,200).forEach(i => {
-            items.appendChild(this.createIconItem(i));
-        });
-
-        return items;
     }
 
     createIconItem(i) {
@@ -168,11 +196,6 @@ export class IconPicker extends WJElement {
 
         return option;
     }
-    createOptions(select) {
-        this.category.forEach(i => {
-            select.appendChild(this.createOption(i));
-        });
-    }
 
     getCategory(tags) {
         let category = [...new Set(tags.map(obj => obj.category))];
@@ -186,6 +209,39 @@ export class IconPicker extends WJElement {
 
     disconnectedCallback() {
         this.init = false;
+    }
+
+    /*
+    * @description event handler pre vyhladavanie ikon
+    * @param e
+     */
+    searchIcon = (e) => {
+        this.infiniteScroll.unScrollEvent(); // unbind scroll event
+        this.infiniteScroll.setCustomData = (page = 0) => {
+            let data = this.tags.filter(i => i.tags.includes(e.detail.value));
+            let result = {
+                data: data,
+                page: page,
+                size: this.size,
+                totalPages: Math.round(data.length / this.size)
+            }
+
+            return result;
+        };
+
+        this.clearIconsContainer(); // clear icons container
+        this.infiniteScroll.loadPages(); // load only
+    }
+
+    /*
+    * @description vymazanie ikon z kontajnera
+     */
+    clearIconsContainer() {
+        this.context.querySelector(".icon-items").innerHTML = "";
+    }
+
+    onClose = () => {
+        this.popup.onHide();
     }
 }
 
