@@ -14,7 +14,7 @@ export class Menu extends WJElement {
     }
 
     static get observedAttributes() {
-        return ["active"];
+        return ["active", "collapse"];
     }
 
     setupAttributes() {
@@ -22,6 +22,7 @@ export class Menu extends WJElement {
     }
 
     draw(context, store, params) {
+        console.log("TRALALA", this.hasAttribute("collapse"));
         let fragment = document.createDocumentFragment();
 
         this.classList.remove("wj-menu-collapse");

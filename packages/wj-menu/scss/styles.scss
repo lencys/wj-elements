@@ -13,6 +13,9 @@
   --wj-menu-padding-top: .5rem;
   --wj-menu-padding-bottom: .5rem;
   --wj-menu-padding-inline: 0;
+  --wj-menu-margin-top: ;
+  --wj-menu-margin-bottom: 0;
+  --wj-menu-margin-inline: 0;
   --wj-menu-z-index: 900;
 
   display: none;
@@ -28,6 +31,9 @@
   padding-top: var(--wj-menu-padding-top);
   padding-bottom: var(--wj-menu-padding-bottom);
   padding-inline: var(--wj-menu-padding-inline);
+  margin-top: var(--wj-menu-margin-top);
+  margin-bottom: var(--wj-menu-margin-bottom);
+  margin-inline: var(--wj-menu-margin-inline);
   overflow: auto;
   overscroll-behavior: none;
   .native-menu {
@@ -57,14 +63,6 @@
   .check-icon {
     display: none;
   }
-}
-
-//wj-menu-item::part(check-icon) {
-//  background: red;
-//  visibility: visible;
-//}
-:host([variant=megamenu]) {
-    //--wj-menu-item-check-icon-display: none;
 }
 
 :host([active]) {
