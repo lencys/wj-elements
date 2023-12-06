@@ -19,6 +19,8 @@ import { CardControls } from "./wj-card-controls/card-controls.js";
 import { CardHeader } from "./wj-card-header/card-header.js";
 import { CardSubtitle } from "./wj-card-subtitle/card-subtitle.js";
 import { CardTitle } from "./wj-card-title/card-title.js";
+import { Carousel } from "./wj-carousel/carousel.js";
+import { CarouselItem } from "./wj-carousel-item/carousel-item.js";
 import { Checkbox } from "./wj-checkbox/checkbox.js";
 import { Chip } from "./wj-chip/chip.js";
 import { Col } from "./wj-col/col.js";
@@ -87,6 +89,8 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   CardHeader,
   CardSubtitle,
   CardTitle,
+  Carousel,
+  CarouselItem,
   Checkbox,
   Chip,
   Col,

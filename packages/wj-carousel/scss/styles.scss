@@ -1,0 +1,54 @@
+@import "../../scss/themes/net-basic/important.scss";
+
+/*
+[ Carousel ]
+*/
+
+:host {
+  --slide-gap: var(--sl-spacing-medium, 1rem);
+  --aspect-ratio: 16 / 9;
+  --scroll-hint: 0px;
+  --slides-per-page: 1;
+
+}
+
+.native-carousel {
+    display: grid;
+    grid-template-columns: min-content 1fr min-content;
+    grid-template-rows: 1fr min-content;
+    grid-template-areas:
+  '. slides .'
+  '. pagination .';
+    gap: var(--sl-spacing-medium);
+    align-items: center;
+    min-height: 100%;
+    min-width: 100%;
+    position: relative;
+}
+
+.carousel-slides {
+  grid-area: slides;
+
+  display: grid;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-items: center;
+  overflow: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  aspect-ratio: calc(var(--aspect-ratio) * var(--slides-per-page));
+  border-radius: var(--sl-border-radius-small);
+
+  --slide-size: calc((100% - (var(--slides-per-page) - 1) * var(--slide-gap)) / var(--slides-per-page));
+
+  grid-auto-flow: column;
+  grid-auto-columns: var(--slide-size);
+  grid-auto-rows: 100%;
+  column-gap: var(--slide-gap);
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--scroll-hint);
+  padding-inline: var(--scroll-hint);
+  overflow-y: hidden;
+}
+

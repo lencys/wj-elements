@@ -31,6 +31,8 @@ export default ({
                 "card-controls": "./packages/wj-card-controls/card-controls.js",
                 "card-subtitle": "./packages/wj-card-subtitle/card-subtitle.js",
                 "card-title": "./packages/wj-card-title/card-title.js",
+                "carousel": "./packages/wj-carousel/carousel.js",
+                "carousel-item": "./packages/wj-carousel-item/carousel-item.js",
                 "checkbox": "./packages/wj-checkbox/checkbox.js",
                 "chip": "./packages/wj-chip/chip.js",
                 "col": "./packages/wj-col/col.js",
