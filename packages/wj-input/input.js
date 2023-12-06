@@ -1,4 +1,4 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement, event } from "../wj-element/wj-element.js";
 
 import styles from "./scss/styles.scss?inline";
 
@@ -160,10 +160,25 @@ export class Input extends WJElement {
 
         native.appendChild(wrapper);
 
+        if(this.hasAttribute("clearable")) {
+            this.clear = document.createElement("wj-button");
+            this.clear.classList.add("clear");
+            this.clear.setAttribute("variant", "link")
+            this.clear.setAttribute("part", "clear");
+
+            let clearIcon = document.createElement("wj-icon");
+            clearIcon.setAttribute("name", "x");
+
+            this.clear.appendChild(clearIcon);
+
+            inputWrapper.appendChild(this.clear);
+        }
+
         if(hasSlotEnd) {
             wrapper.appendChild(end);
             native.classList.add("has-end");
         }
+
 
         native.appendChild(error);
 
@@ -218,6 +233,10 @@ export class Input extends WJElement {
             this.dispatchEvent(clone);
 
             this.validateInput();
+
+            event.dispatchCustomEvent(this, "wj-input:input", {
+                value: this.input.value
+            });
         });
 
         this.addEventListener('invalid', (e) => {
@@ -232,6 +251,13 @@ export class Input extends WJElement {
         });
 
         this.addEventListener('focus', () => this.input.focus());
+
+        if(this.clear) {
+            this.clear.addEventListener("wj:button-click", (e) => {
+                this.input.value = "";
+                event.dispatchCustomEvent(this.clear, "wj-input:clear");
+            });
+        }
     }
 
     validateInput() {

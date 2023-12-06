@@ -4,7 +4,7 @@ const template = document.createElement('template');
 
 template.innerHTML = `<h1>Input</h1>
   <div class="container">
-
+    
     <!-- INPUT -->
 
     <h2>Default</h2>
@@ -111,7 +111,7 @@ template.innerHTML = `<h1>Input</h1>
     <div class="playground">
       <div class="content">
         <wj-input variant="standard" label="Default input" class="example">
-          <wj-button fill="solid" slot="end"><wj-icon name="search"></wj-icon></wj-button>
+          <wj-button variant="link" slot="end"><wj-icon name="search"></wj-icon></wj-button>
         </wj-input>
         <style>
           .example {
@@ -119,10 +119,54 @@ template.innerHTML = `<h1>Input</h1>
           }
           
           .example wj-button {
+            --wj-button-border-width: 0 !important;
             --wj-button-border-radius: 0 !important;
             --wj-color-base: #000000 !important;
+            margin: 0;
           }
         </style>
+      </div>
+    </div>
+    
+    <!-- PICKERS -->
+
+    <h2>Pickers</h2>
+    <div class="playground">
+      <div class="content">
+        <wj-input variant="standard" label="Default input" class="example-icon" clearable>
+          <wj-icon-picker slot="start"></wj-icon-picker>
+        </wj-input>
+        
+        <wj-input variant="standard" label="Default input" class="example-color" clearable>
+          <wj-color-picker slot="start"></wj-color-picker>
+        </wj-input>
+        
+        <style>
+          .example-icon wj-icon-picker {
+            --wj-icon-picker-border-width: 0 !important;
+            --wj-icon-picker-padding: .15rem !important;
+            --wj-input-slot-padding-inline: .25rem !important;
+          }
+          
+          /*.example-color wj-color-picker {*/
+          /*  padding: 0;*/
+          /*  --wj-color-picker-size: calc(2rem - 2px) !important;*/
+          /*}*/
+          
+          .example-color wj-color-picker::part(anchor) {
+            /*border-radius: 3px 0 0 3px !important;*/
+            border-radius: 50%;
+          }
+        </style>
+      </div>
+    </div>
+    
+    <!-- CLEARABLE -->
+
+    <h2>Clearable</h2>
+    <div class="playground">
+      <div class="content">
+        <wj-input variant="standard" label="Default input" class="example" clearable></wj-input>
       </div>
     </div>
     
@@ -131,6 +175,18 @@ template.innerHTML = `<h1>Input</h1>
 export default class DemoInput extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    this.addEventListener('wj-icon-picker:select', (e) => {
+      e.target.closest("wj-input").value = e.detail.name;
+      e.target.onClose();
+    });
+
+    this.addEventListener('wj-color-picker:select', (e) => {
+      e.target.closest("wj-input").value = e.detail.hex8;
+      // e.target.onClose();
+    });
   }
 }
 
