@@ -1,10 +1,7 @@
-var __defProp = Object.defineProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
-class PubSub {
+var h = Object.defineProperty;
+var o = (u, r, e) => r in u ? h(u, r, { enumerable: !0, configurable: !0, writable: !0, value: e }) : u[r] = e;
+var n = (u, r, e) => (o(u, typeof r != "symbol" ? r + "" : r, e), e);
+class d {
   constructor() {
     this.events = {};
   }
@@ -17,15 +14,11 @@ class PubSub {
    * @returns {number} A count of callbacks for this event
    * @memberof PubSub
    */
-  subscribe(event, callback) {
-    let self = this;
-    if (!self.events.hasOwnProperty(event)) {
-      self.events[event] = [];
-    }
-    self.events[event].push(callback) - 1;
-    return {
+  subscribe(r, e) {
+    let t = this;
+    return t.events.hasOwnProperty(r) || (t.events[r] = []), t.events[r].push(e) - 1, {
       unsubscribe() {
-        self.events[event].splice(self.events[event].indexOf(callback), 1);
+        t.events[r].splice(t.events[r].indexOf(e), 1);
       }
     };
   }
@@ -38,78 +31,42 @@ class PubSub {
    * @returns {array} The callbacks for this event, or an empty array if no event exits
    * @memberof PubSub
    */
-  publish(event, newData = {}, oldData) {
-    let self = this;
-    if (!self.events.hasOwnProperty(event)) {
-      return [];
-    }
-    return self.events[event].map((callback) => callback(newData, oldData));
+  publish(r, e = {}, t) {
+    let s = this;
+    return s.events.hasOwnProperty(r) ? s.events[r].map((i) => i(e, t)) : [];
   }
 }
-const addAction = (stateValueName) => {
-  return (payload2) => {
-    return {
-      type: `${stateValueName}/ADD`,
-      payload: payload2
-    };
-  };
+const c = (u) => (r) => ({
+  type: `${u}/ADD`,
+  payload: r
+}), p = (u) => (r) => ({
+  type: `${u}/ADD_MANY`,
+  payload: r
+}), l = (u) => (r) => ({
+  type: `${u}/UPDATE`,
+  payload: r
+}), a = (u) => (r) => ({
+  type: `${u}/DELETE`,
+  payload: r
+}), f = (u) => (r) => ({
+  type: `${u}/LOAD`,
+  payload: r
+}), y = {
+  addAction: c,
+  deleteAction: a,
+  loadAction: f,
+  updateAction: l,
+  addManyAction: p
 };
-const addManyAction = (stateValueName) => {
-  return (payload2) => {
-    return {
-      type: `${stateValueName}/ADD_MANY`,
-      payload: payload2
-    };
-  };
-};
-const updateAction = (stateValueName) => {
-  return (payload2) => {
-    return {
-      type: `${stateValueName}/UPDATE`,
-      payload: payload2
-    };
-  };
-};
-const deleteAction = (stateValueName) => {
-  return (payload2) => {
-    return {
-      type: `${stateValueName}/DELETE`,
-      payload: payload2
-    };
-  };
-};
-const loadAction = (stateValueName) => {
-  return (payload2) => {
-    return {
-      type: `${stateValueName}/LOAD`,
-      payload: payload2
-    };
-  };
-};
-const defaultStoreActions = {
-  addAction,
-  deleteAction,
-  loadAction,
-  updateAction,
-  addManyAction
-};
-class Store {
-  constructor(params = {}) {
-    __publicField(this, "_state");
-    __publicField(this, "_reducer");
-    __publicField(this, "events");
-    __publicField(this, "status");
-    this._isPause = false;
-    this._state = {};
-    this._reducer = function rootReducer(state = {}, action) {
+class A {
+  constructor(r = {}) {
+    n(this, "_state");
+    n(this, "_reducer");
+    n(this, "events");
+    n(this, "status");
+    this._isPause = !1, this._state = {}, this._reducer = function(t = {}, s) {
       return {};
-    };
-    this.status = "resting";
-    this.events = new PubSub();
-    if (params == null ? void 0 : params.hasOwnProperty("reducer")) {
-      this._reducer = params.reducer;
-    }
-    this.refreshProxy(params == null ? void 0 : params.state);
+    }, this.status = "resting", this.events = new d(), r != null && r.hasOwnProperty("reducer") && (this._reducer = r.reducer), this.refreshProxy(r == null ? void 0 : r.state);
   }
   /**
    * A dispatcher for actions that looks in the actions 
@@ -120,158 +77,116 @@ class Store {
    * @returns {boolean}
    * @memberof Store
    */
-  dispatch(action) {
+  dispatch(r) {
     this.status = "action";
-    let newState = this._reducer(this._state, action);
-    this.status = "mutation";
-    this._state = Object.assign(this._state, newState);
-    return true;
+    let e = this._reducer(this._state, r);
+    return this.status = "mutation", this._state = Object.assign(this._state, e), !0;
   }
   getState() {
     return JSON.parse(JSON.stringify(this._state));
   }
-  subscribe(eventName, callbackFn) {
-    return this.events.subscribe(eventName, callbackFn);
+  subscribe(r, e) {
+    return this.events.subscribe(r, e);
   }
-  unsubscribe(eventName) {
-    delete this.events[eventName];
+  unsubscribe(r) {
+    delete this.events[r];
   }
   pause() {
-    this._isPause = true;
-    return this;
+    return this._isPause = !0, this;
   }
-  play(val) {
-    this._isPause = false;
-    return this;
+  play(r) {
+    return this._isPause = !1, this;
   }
-  mergeReducers(stateValueName, newReducer) {
-    let reducerCopy = this._reducer;
-    this._reducer = (state, newState) => {
-      let preState = reducerCopy(state, newState);
-      let result = {
-        ...preState,
-        [stateValueName]: newReducer(state[stateValueName], newState)
-      };
-      return result;
-    };
-  }
-  makeEveryArrayEntryAsStoreState(storeKey, array = [], identificator = "id") {
-    array.forEach((entry) => {
-      if (this.getState().hasOwnProperty(`${storeKey}-${entry[identificator]}`)) {
-        this.dispatch(defaultStoreActions.updateAction(`${storeKey}-${entry[identificator]}`)(entry));
-      } else {
-        this.define(`${storeKey}-${entry.id || entry.source || entry[identificator]}`, entry, null, identificator);
-      }
+  mergeReducers(r, e) {
+    let t = this._reducer;
+    this._reducer = (s, i) => ({
+      ...t(s, i),
+      [r]: e(s[r], i)
     });
   }
-  define(stateValueName, defaultValue, reducer, key = "id") {
-    if (this._state.hasOwnProperty(stateValueName)) {
-      console.warn(`STATE už obsahuje premennú ${stateValueName},ktorú sa pokúšate pridať`);
+  makeEveryArrayEntryAsStoreState(r, e = [], t = "id") {
+    e.forEach((s) => {
+      this.getState().hasOwnProperty(`${r}-${s[t]}`) ? this.dispatch(y.updateAction(`${r}-${s[t]}`)(s)) : this.define(`${r}-${s.id || s.source || s[t]}`, s, null, t);
+    });
+  }
+  define(r, e, t, s = "id") {
+    if (this._state.hasOwnProperty(r)) {
+      console.warn(`STATE už obsahuje premennú ${r},ktorú sa pokúšate pridať`);
       return;
     }
-    if (reducer instanceof Function) {
-      this.mergeReducers(stateValueName, reducer);
-    } else {
-      if (defaultValue instanceof Array) {
-        this.mergeReducers(stateValueName, this.createArrayReducer(stateValueName, key));
-      } else {
-        this.mergeReducers(stateValueName, this.createObjectReducer(stateValueName, key));
-      }
-    }
-    this.refreshProxy({
+    t instanceof Function ? this.mergeReducers(r, t) : e instanceof Array ? this.mergeReducers(r, this.createArrayReducer(r, s)) : this.mergeReducers(r, this.createObjectReducer(r, s)), this.refreshProxy({
       ...this._state,
-      [stateValueName]: defaultValue
+      [r]: e
     });
   }
-  refreshProxy(state) {
-    this._state = new Proxy(state || {}, {
-      set: (state2, key, value) => {
-        if (JSON.stringify(state2[key]) === JSON.stringify(value)) {
-          return true;
-        }
-        let oldState = state2[key];
-        state2[key] = value;
-        if (!this._isPause)
-          this.events.publish(key, this._state, oldState);
-        if (this.status !== "mutation") {
-          console.warn(`You should use a mutation to set ${key}`);
-        }
-        this.status = "resting";
-        return true;
+  refreshProxy(r) {
+    this._state = new Proxy(r || {}, {
+      set: (e, t, s) => {
+        if (JSON.stringify(e[t]) === JSON.stringify(s))
+          return !0;
+        let i = e[t];
+        return e[t] = s, this._isPause || this.events.publish(t, this._state, i), this.status !== "mutation" && console.warn(`You should use a mutation to set ${t}`), this.status = "resting", !0;
       }
     });
   }
-  createObjectReducer(stateValueName) {
-    return (state = {}, action) => {
-      switch (action.type) {
-        case `${stateValueName}/ADD`:
+  createObjectReducer(r) {
+    return (e = {}, t) => {
+      switch (t.type) {
+        case `${r}/ADD`:
           return {
-            ...action.payload
+            ...t.payload
           };
-        case `${stateValueName}/UPDATE`:
+        case `${r}/UPDATE`:
           return {
-            ...state,
-            ...action.payload
+            ...e,
+            ...t.payload
           };
-        case `${stateValueName}/DELETE`:
+        case `${r}/DELETE`:
           return {};
         default:
-          return state;
+          return e;
       }
     };
   }
-  createArrayReducer(stateValueName, key) {
-    return (state = [], action) => {
-      switch (action.type) {
-        case `${stateValueName}/ADD`:
-          if (Array.isArray(action.payload)) {
-            return [
-              ...state,
-              ...action.payload
-            ];
-          } else {
-            return [
-              ...state,
-              action.payload
-            ];
-          }
-        case `${stateValueName}/ADD_MANY`:
-          return [
-            ...state,
-            ...action.payload
+  createArrayReducer(r, e) {
+    return (t = [], s) => {
+      switch (s.type) {
+        case `${r}/ADD`:
+          return Array.isArray(s.payload) ? [
+            ...t,
+            ...s.payload
+          ] : [
+            ...t,
+            s.payload
           ];
-        case `${stateValueName}/UPDATE`:
-          if (state.some((obj) => obj[key] == action.payload[key])) {
-            return [
-              ...state.map((obj) => {
-                if (obj[key] == action.payload[key]) {
-                  return action.payload;
-                }
-                return obj;
-              })
-            ];
-          } else {
-            return [
-              ...state,
-              action.payload
-            ];
-          }
-        case `${stateValueName}/DELETE`:
+        case `${r}/ADD_MANY`:
           return [
-            ...state.filter((obj) => obj.hasOwnProperty(key) && obj[key] != action.payload[key] || !obj.hasOwnProperty(key) && obj != action.payload)
+            ...t,
+            ...s.payload
           ];
-        case `${stateValueName}/LOAD`:
+        case `${r}/UPDATE`:
+          return t.some((i) => i[e] == s.payload[e]) ? [
+            ...t.map((i) => i[e] == s.payload[e] ? s.payload : i)
+          ] : [
+            ...t,
+            s.payload
+          ];
+        case `${r}/DELETE`:
           return [
-            ...action.payload
+            ...t.filter((i) => i.hasOwnProperty(e) && i[e] != s.payload[e] || !i.hasOwnProperty(e) && i != s.payload)
+          ];
+        case `${r}/LOAD`:
+          return [
+            ...s.payload
           ];
         default:
-          return state;
+          return t;
       }
     };
   }
 }
-let store = new Store();
+let D = new A();
 export {
-  defaultStoreActions,
-  store
+  y as defaultStoreActions,
+  D as store
 };

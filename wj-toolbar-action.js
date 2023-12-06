@@ -1,19 +1,19 @@
-var __defProp = Object.defineProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
-import WJElement from "./wj-element.js";
+var i = Object.defineProperty;
+var m = (e, t, o) => t in e ? i(e, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : e[t] = o;
+var l = (e, t, o) => (m(e, typeof t != "symbol" ? t + "" : t, o), o);
+import d from "./wj-element.js";
 import "./wj-store.js";
-const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Toolbar ]\n*/\n:host {\n  display: flex;\n}";
-class ToolbarAction extends WJElement {
+const u = `/*!
+* direction.scss
+*/:host .native-toolbar-action{display:flex}
+`;
+class p extends d {
   constructor() {
     super();
-    __publicField(this, "className", "ToolbarAction");
+    l(this, "className", "ToolbarAction");
   }
   static get cssStyleSheet() {
-    return styles;
+    return u;
   }
   static get observedAttributes() {
     return [];
@@ -21,25 +21,15 @@ class ToolbarAction extends WJElement {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(context, store, params) {
-    let fragment = document.createDocumentFragment();
-    let maxItems = +this.maxItems || 0;
-    let actions = this.getActions();
-    let slot = document.createElement("slot");
-    let element = document.createElement("div");
-    const shouldCollapse = maxItems !== 0 && actions.length > maxItems;
-    if (shouldCollapse) {
-      element = document.createElement("wj-dropdown");
-    }
-    element.appendChild(slot);
-    fragment.appendChild(element);
-    return fragment;
+  draw(o, h, b) {
+    let n = document.createDocumentFragment(), r = +this.maxItems || 0, a = this.getActions(), c = document.createElement("slot"), s = document.createElement("div");
+    return s.classList.add("native-toolbar-action"), r !== 0 && a.length > r && (s = document.createElement("wj-dropdown")), s.appendChild(c), n.appendChild(s), n;
   }
   getActions() {
     return Array.from(this.querySelectorAll("wj-button"));
   }
 }
-customElements.get("wj-toolbar-action") || window.customElements.define("wj-toolbar-action", ToolbarAction);
+customElements.get("wj-toolbar-action") || window.customElements.define("wj-toolbar-action", p);
 export {
-  ToolbarAction
+  p as ToolbarAction
 };

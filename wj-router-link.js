@@ -1,34 +1,34 @@
-var __defProp = Object.defineProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
-import WJElement from "./wj-element.js";
+var i = Object.defineProperty;
+var c = (e, t, s) => t in e ? i(e, t, { enumerable: !0, configurable: !0, writable: !0, value: s }) : e[t] = s;
+var o = (e, t, s) => (c(e, typeof t != "symbol" ? t + "" : t, s), s);
+import a from "./wj-element.js";
+import { b as l } from "./router-links-e0087f84.js";
 import "./wj-store.js";
-const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Router ]\n*/";
-class RouterLink extends WJElement {
+const u = `/*!
+* direction.scss
+*/:host{display:block}:host(.active){cursor:pointer;font-weight:700}
+`;
+class m extends a {
   constructor() {
     super();
-    __publicField(this, "className", "RouterLink");
+    o(this, "className", "RouterLink");
+    l(this, { selector: !1 });
   }
   static get cssStyleSheet() {
-    return styles;
+    return u;
   }
   static get observedAttributes() {
     return [];
   }
   setupAttributes() {
-    this.isShadowRoot = "open";
+    this.isShadowRoot = "open", this.setAttribute("active-class", "active");
   }
-  draw(context, store, params) {
-    let fragment = document.createDocumentFragment();
-    let element = document.createElement("slot");
-    fragment.appendChild(element);
-    return fragment;
+  draw(s, d, p) {
+    let r = document.createDocumentFragment(), n = document.createElement("slot");
+    return r.appendChild(n), r;
   }
 }
-customElements.get("wj-router-link") || window.customElements.define("wj-router-link", RouterLink);
+customElements.get("wj-router-link") || window.customElements.define("wj-router-link", m);
 export {
-  RouterLink
+  m as RouterLink
 };

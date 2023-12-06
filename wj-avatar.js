@@ -1,69 +1,52 @@
-var __defProp = Object.defineProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
-import WJElement from "./wj-element.js";
+var d = Object.defineProperty;
+var h = (r, a, t) => a in r ? d(r, a, { enumerable: !0, configurable: !0, writable: !0, value: t }) : r[a] = t;
+var l = (r, a, t) => (h(r, typeof a != "symbol" ? a + "" : a, t), t);
+import v from "./wj-element.js";
 import "./wj-store.js";
-function getHsl(text, s = 30, l = 80) {
-  let str = text, hash = 0;
-  for (let i = 0; i < (str == null ? void 0 : str.length); i++) {
-    hash = str.charCodeAt(i) + ((hash << 5) - hash);
-  }
-  let h = hash % 360;
-  let hexColor = "hsl(" + h + ", " + s + "%, " + l + "%)";
-  return hexColor;
+function w(r, a = 30, t = 80) {
+  let i = r, s = 0;
+  for (let e = 0; e < (i == null ? void 0 : i.length); e++)
+    s = i.charCodeAt(e) + ((s << 5) - s);
+  return "hsl(" + s % 360 + ", " + a + "%, " + t + "%)";
 }
-function getInitials(string, length = 2) {
-  let names = string.split(" ");
-  let initials = names[0].substring(0, 1).toUpperCase();
-  if (names.length > 1 && length > 1) {
-    initials += names[names.length - 1].substring(0, 1).toUpperCase();
-  }
-  return initials;
+function c(r, a = 2) {
+  let t = r.split(" "), i = t[0].substring(0, 1).toUpperCase();
+  return t.length > 1 && a > 1 && (i += t[t.length - 1].substring(0, 1).toUpperCase()), i;
 }
-const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n:host {\n  --wj-avatar-width: 32px;\n  --wj-avatar-height: 32px;\n  --wj-avatar-font-size: .75rem;\n  --wj-avatar-font-weight: 400;\n  --wj-avatar-color: inherit;\n  --wj-avatar-background-color: rgba(33, 33, 33, 0.17);\n  --wj-avatar-border-radius: 50%;\n  --wj-avatar-border-color: transparent;\n  --wj-avatar-border-width: 1px;\n  --wj-avatar-border-style: solid;\n  display: inline-block;\n  width: var(--wj-avatar-width);\n  height: var(--wj-avatar-height);\n  font-size: var(--wj-avatar-font-size);\n  font-weight: var(--wj-avatar-font-weight);\n  color: var(--wj-avatar-color);\n}\n:host .native-avatar {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n  border-radius: var(--wj-avatar-border-radius);\n  background-color: var(--wj-avatar-background-color);\n}\n::slotted(wj-img),\n::slotted(img) {\n  border-radius: var(--wj-avatar-border-radius);\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  overflow: hidden;\n}\n:host(.wj-avatar-border) {\n  border-color: var(--wj-avatar-border-color);\n  border-width: var(--wj-avatar-border-width);\n  border-style: var(--wj-avatar-border-style);\n}\n:host(.wj-avatar-small) {\n  --wj-avatar-width: 24px;\n  --wj-avatar-height: 24px;\n}\n:host(.wj-avatar-large) {\n  --wj-avatar-width: 48px;\n  --wj-avatar-height: 48px;\n}";
-class Avatar extends WJElement {
+const g = `/*!
+* direction.scss
+*/:host{--wj-avatar-width: 32px;--wj-avatar-height: 32px;--wj-avatar-font-size: .75rem;--wj-avatar-font-weight: 400;--wj-avatar-color: inherit;--wj-avatar-background-color: rgba(33, 33, 33, .17);--wj-avatar-border-radius: 50%;--wj-avatar-border-color: transparent;--wj-avatar-border-width: 1px;--wj-avatar-border-style: solid;display:inline-block;width:var(--wj-avatar-width);height:var(--wj-avatar-height);font-size:var(--wj-avatar-font-size);font-weight:var(--wj-avatar-font-weight);color:var(--wj-avatar-color)}:host .native-avatar{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:var(--wj-avatar-border-radius);background-color:var(--wj-avatar-background-color)}::slotted(wj-img),::slotted(img){border-radius:var(--wj-avatar-border-radius);width:100%;height:100%;object-fit:cover;overflow:hidden}:host(.wj-avatar-border){border-color:var(--wj-avatar-border-color);border-width:var(--wj-avatar-border-width);border-style:var(--wj-avatar-border-style)}:host(.wj-avatar-small){--wj-avatar-width: 24px;--wj-avatar-height: 24px}:host(.wj-avatar-large){--wj-avatar-width: 48px;--wj-avatar-height: 48px}
+`;
+class j extends v {
   constructor() {
     super();
-    __publicField(this, "className", "Avatar");
+    l(this, "className", "Avatar");
   }
   static get cssStyleSheet() {
-    return styles;
+    return g;
   }
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(context, store, params) {
-    let fragment = document.createDocumentFragment();
-    let element = document.createElement("div");
-    element.setAttribute("part", "native");
-    element.classList.add("native-avatar");
-    if (this.size)
-      this.classList.add("wj-avatar-" + this.size);
-    if (this.isImage()) {
-      let slot = document.createElement("slot");
-      element.appendChild(slot);
+  draw(t, i, s) {
+    let n = document.createDocumentFragment(), o = document.createElement("div");
+    if (o.setAttribute("part", "native"), o.classList.add("native-avatar"), this.size && this.classList.add("wj-avatar-" + this.size), this.isImage()) {
+      let e = document.createElement("slot");
+      o.appendChild(e);
+    } else if (this.hasAttribute("initials")) {
+      let e = c(this.label);
+      this.setAttribute("style", `--wj-avatar-background-color: ${w(e)}`), o.innerText = e;
     } else {
-      if (this.hasAttribute("initials")) {
-        let initials = getInitials(this.label);
-        this.setAttribute("style", `--wj-avatar-background-color: ${getHsl(initials)}`);
-        element.innerText = initials;
-      } else {
-        let slotIcon = document.createElement("slot");
-        slotIcon.setAttribute("name", "icon");
-        element.appendChild(slotIcon);
-      }
+      let e = document.createElement("slot");
+      e.setAttribute("name", "icon"), o.appendChild(e);
     }
-    fragment.appendChild(element);
-    return fragment;
+    return n.appendChild(o), n;
   }
   isImage() {
     return this.getElementsByTagName("wj-img").length > 0;
   }
 }
-customElements.get("wj-avatar") || window.customElements.define("wj-avatar", Avatar);
+customElements.get("wj-avatar") || window.customElements.define("wj-avatar", j);
 export {
-  Avatar
+  j as Avatar
 };

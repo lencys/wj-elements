@@ -1,171 +1,111 @@
 import "./wj-element.js";
 import "./wj-store.js";
-class AnimationHook {
-  constructor(options = {}) {
-    this.options = options;
+class E {
+  constructor(t = {}) {
+    this.options = t;
   }
-  getOption(outlet, name) {
-    return outlet.hasAttribute(name) ? outlet.getAttribute(name) : this.options[name];
+  getOption(t, n) {
+    return t.hasAttribute(n) ? t.getAttribute(n) : this.options[n];
   }
-  hasOption(outlet, name) {
-    return outlet.hasAttribute(name) || this.options[name];
+  hasOption(t, n) {
+    return t.hasAttribute(n) || this.options[n];
   }
-  runParallel(outlet) {
-    return this.hasOption(outlet, "parallel");
+  runParallel(t) {
+    return this.hasOption(t, "parallel");
   }
-  beforeEnter(outlet, el) {
+  beforeEnter(t, n) {
   }
-  enter(outlet, el) {
+  enter(t, n) {
   }
-  leave(outlet, el, done) {
-    done();
+  leave(t, n, e) {
+    e();
   }
 }
-var raf = window.requestAnimationFrame;
-var TRANSITION = "transition";
-var ANIMATION = "animation";
-var transitionProp = "transition";
-var transitionEndEvent = "transitionend";
-var animationProp = "animation";
-var animationEndEvent = "animationend";
-function nextFrame(fn) {
-  raf(function() {
-    raf(fn);
+var v = window.requestAnimationFrame, m = "transition", T = "animation", p = "transition", C = "transitionend", d = "animation", b = "animationend";
+function $(i) {
+  window.scrollTo(0, 0), v(function() {
+    window.scrollTo(0, 0), v(i);
   });
 }
-function whenTransitionEnds(el, cb) {
-  var ref = getTransitionInfo(el);
-  var type = ref.type;
-  var timeout = ref.timeout;
-  var propCount = ref.propCount;
-  if (!type) {
-    return cb();
-  }
-  var event = type === TRANSITION ? transitionEndEvent : animationEndEvent;
-  var ended = 0;
-  var end = function() {
-    el.removeEventListener(event, onEnd);
-    cb();
-  };
-  var onEnd = function(e) {
-    if (e.target === el) {
-      if (++ended >= propCount) {
-        end();
-      }
-    }
+function L(i, t) {
+  var n = D(i), e = n.type, r = n.timeout, l = n.propCount;
+  if (!e)
+    return t();
+  var s = e === m ? C : b, u = 0, o = function() {
+    i.removeEventListener(s, a), t();
+  }, a = function(h) {
+    h.target === i && ++u >= l && o();
   };
   setTimeout(function() {
-    if (ended < propCount) {
-      end();
-    }
-  }, timeout + 1);
-  el.addEventListener(event, onEnd);
+    u < l && o();
+  }, r + 1), i.addEventListener(s, a);
 }
-function getTransitionInfo(el) {
-  var styles = window.getComputedStyle(el);
-  var transitionDelays = (styles[transitionProp + "Delay"] || "").split(", ");
-  var transitionDurations = (styles[transitionProp + "Duration"] || "").split(", ");
-  var transitionTimeout = getTimeout(transitionDelays, transitionDurations);
-  var animationDelays = (styles[animationProp + "Delay"] || "").split(", ");
-  var animationDurations = (styles[animationProp + "Duration"] || "").split(", ");
-  var animationTimeout = getTimeout(animationDelays, animationDurations);
-  var type;
-  var timeout = 0;
-  var propCount = 0;
-  timeout = Math.max(transitionTimeout, animationTimeout);
-  type = timeout > 0 ? transitionTimeout > animationTimeout ? TRANSITION : ANIMATION : null;
-  propCount = type ? type === TRANSITION ? transitionDurations.length : animationDurations.length : 0;
-  return {
-    type,
-    timeout,
-    propCount
+function D(i) {
+  var t = window.getComputedStyle(i), n = (t[p + "Delay"] || "").split(", "), e = (t[p + "Duration"] || "").split(", "), r = c(n, e), l = (t[d + "Delay"] || "").split(", "), s = (t[d + "Duration"] || "").split(", "), u = c(l, s), o, a = 0, h = 0;
+  return a = Math.max(r, u), o = a > 0 ? r > u ? m : T : null, h = o ? o === m ? e.length : s.length : 0, {
+    type: o,
+    timeout: a,
+    propCount: h
   };
 }
-function getTimeout(delays, durations) {
-  while (delays.length < durations.length) {
-    delays = delays.concat(delays);
-  }
-  return Math.max.apply(null, durations.map(function(d, i) {
-    return toMs(d) + toMs(delays[i]);
+function c(i, t) {
+  for (; i.length < t.length; )
+    i = i.concat(i);
+  return Math.max.apply(null, t.map(function(n, e) {
+    return f(n) + f(i[e]);
   }));
 }
-function toMs(s) {
-  return Number(s.slice(0, -1).replace(",", ".")) * 1e3;
+function f(i) {
+  return Number(i.slice(0, -1).replace(",", ".")) * 1e3;
 }
-function runTransition(el, name, type, cb) {
-  el.classList.add(`${name}-${type}-active`);
-  nextFrame(function() {
-    el.classList.remove(`${name}-${type}`);
-    el.classList.add(`${name}-${type}-to`);
-    whenTransitionEnds(el, function() {
-      el.classList.remove(`${name}-${type}-active`, `${name}-${type}-to`);
-      if (cb)
-        cb();
+function g(i, t, n, e) {
+  i.classList.add(`${t}-${n}-active`), $(function() {
+    window.scrollTo(0, 0), i.classList.remove(`${t}-${n}`), i.classList.add(`${t}-${n}-to`), L(i, function() {
+      i.classList.remove(`${t}-${n}-active`, `${t}-${n}-to`), e && e();
     });
   });
 }
-class GenericCSS extends AnimationHook {
-  beforeEnter(outlet, el) {
-    const name = outlet.getAttribute("animation") || "outlet";
-    el.classList.add(`${name}-enter`);
+class N extends E {
+  beforeEnter(t, n) {
+    const e = t.getAttribute("animation") || "outlet";
+    n.classList.add(`${e}-enter`);
   }
-  enter(outlet, el) {
-    const name = outlet.getAttribute("animation") || "outlet";
-    runTransition(el, name, "enter");
+  enter(t, n) {
+    const e = t.getAttribute("animation") || "outlet";
+    g(n, e, "enter");
   }
-  leave(outlet, el, done) {
-    const name = outlet.getAttribute("animation") || "outlet";
-    el.classList.add(`${name}-leave`);
-    runTransition(el, name, "leave", done);
+  leave(t, n, e) {
+    const r = t.getAttribute("animation") || "outlet";
+    n.classList.add(`${r}-leave`), n.style.display = "none", g(n, r, "leave", e);
   }
 }
-const animationRegistry = {};
-let defaultHook;
-function getAnimationHook(name) {
-  return animationRegistry[name] || defaultHook || (defaultHook = new GenericCSS());
+const O = {};
+let w;
+function A(i) {
+  return O[i] || w || (w = new N());
 }
-class AnimatedOutlet extends HTMLElement {
-  appendChild(el) {
+class k extends HTMLElement {
+  appendChild(t) {
     if (!this.hasAttribute("animation")) {
-      super.appendChild(el);
+      super.appendChild(t);
       return;
     }
-    const hook = getAnimationHook(this.getAttribute("animation"));
-    const runParallel = hook.runParallel(this);
-    hook.beforeEnter(this, el);
-    super.appendChild(el);
-    if (!runParallel && this.removing) {
-      this.appending = el;
-    } else {
-      hook.enter(this, el);
-    }
+    const n = A(this.getAttribute("animation")), e = n.runParallel(this);
+    n.beforeEnter(this, t), super.appendChild(t), !e && this.removing ? this.appending = t : n.enter(this, t);
   }
-  removeChild(el) {
+  removeChild(t) {
     if (!this.hasAttribute("animation")) {
-      super.removeChild(el);
+      super.removeChild(t);
       return;
     }
-    const hook = getAnimationHook(this.getAttribute("animation"));
-    if (this.removing && this.removing.parentNode === this) {
-      super.removeChild(this.removing);
-    }
-    if (el === this.appending) {
-      if (el.parentNode === this) {
-        super.removeChild(el);
-      }
-      this.removing = null;
+    const n = A(this.getAttribute("animation"));
+    if (this.removing && this.removing.parentNode === this && super.removeChild(this.removing), t === this.appending) {
+      t.parentNode === this && super.removeChild(t), this.removing = null;
       return;
     }
-    this.removing = el;
-    hook.leave(this, el, () => {
-      if (this.removing && this.removing.parentNode === this) {
-        super.removeChild(this.removing);
-      }
-      if (this.appending)
-        hook.enter(this, this.appending);
-      this.appending = null;
-      this.removing = null;
+    this.removing = t, n.leave(this, t, () => {
+      this.removing && this.removing.parentNode === this && super.removeChild(this.removing), this.appending && n.enter(this, this.appending), this.appending = null, this.removing = null;
     });
   }
 }
-customElements.get("wj-router-outlet") || window.customElements.define("wj-router-outlet", AnimatedOutlet);
+customElements.get("wj-router-outlet") || window.customElements.define("wj-router-outlet", k);

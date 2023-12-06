@@ -1,19 +1,19 @@
-var __defProp = Object.defineProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
-import WJElement from "./wj-element.js";
+var l = Object.defineProperty;
+var c = (s, t, e) => t in s ? l(s, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : s[t] = e;
+var r = (s, t, e) => (c(s, typeof t != "symbol" ? t + "" : t, e), e);
+import d from "./wj-element.js";
 import "./wj-store.js";
-const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n:host {\n  --wj-card-subtitle-font-size: 10.5px;\n  --wj-card-subtitle-font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;\n}\n:host {\n  -webkit-transition: opacity 0.3s ease;\n  transition: opacity 0.3s ease;\n  font-family: var(--wj-card-subtitle-font-family);\n  font-size: var(--wj-card-subtitle-font-size);\n  text-transform: uppercase;\n  display: inline-block;\n  letter-spacing: 0.06em;\n  font-weight: 500;\n  margin: 0;\n  padding: 0;\n  line-height: normal;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  filter: alpha(opacity=40);\n}";
-class CardSubtitle extends WJElement {
+const m = `/*!
+* direction.scss
+*/:host{--wj-card-subtitle-font-size: 10.5px;--wj-card-subtitle-font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif}:host{--wj-card-subtitle-padding: 0;-webkit-transition:opacity .3s ease;transition:opacity .3s ease;font-family:var(--wj-card-subtitle-font-family);font-size:var(--wj-card-subtitle-font-size);text-transform:uppercase;display:inline-block;letter-spacing:.06em;font-weight:500;margin:0;padding:var(--wj-card-subtitle-padding);line-height:normal;overflow:hidden;text-overflow:ellipsis;filter:alpha(opacity=40)}
+`;
+class u extends d {
   constructor() {
     super();
-    __publicField(this, "className", "CardTitle");
+    r(this, "className", "CardTitle");
   }
   static get cssStyleSheet() {
-    return styles;
+    return m;
   }
   static get observedAttributes() {
     return [];
@@ -21,16 +21,14 @@ class CardSubtitle extends WJElement {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  beforeDraw(context, store, params) {
+  beforeDraw(e, i, n) {
   }
-  draw(context, store, params) {
-    let fragment = document.createDocumentFragment();
-    let element = document.createElement("slot");
-    fragment.appendChild(element);
-    return fragment;
+  draw(e, i, n) {
+    let a = document.createDocumentFragment(), o = document.createElement("slot");
+    return a.appendChild(o), a;
   }
 }
-customElements.get("wj-card-subtitle") || window.customElements.define("wj-card-subtitle", CardSubtitle);
+customElements.get("wj-card-subtitle") || window.customElements.define("wj-card-subtitle", u);
 export {
-  CardSubtitle
+  u as CardSubtitle
 };

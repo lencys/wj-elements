@@ -1,25 +1,25 @@
-var __defProp = Object.defineProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
-import WJElement from "./wj-element.js";
+var a = Object.defineProperty;
+var c = (s, t, e) => t in s ? a(s, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : s[t] = e;
+var o = (s, t, e) => (c(s, typeof t != "symbol" ? t + "" : t, e), e);
+import l from "./wj-element.js";
 import "./wj-store.js";
-const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Dropdown ]\n*/";
-class Dropdown extends WJElement {
+const d = `/*!
+* direction.scss
+*/
+`;
+class p extends l {
   constructor() {
     super();
-    __publicField(this, "className", "Dropdown");
+    o(this, "className", "Dropdown");
   }
-  set trigger(value) {
-    this.setAttribute("trigger", value);
+  set trigger(e) {
+    this.setAttribute("trigger", e);
   }
   get trigger() {
     return this.getAttribute("trigger") || "click";
   }
   static get cssStyleSheet() {
-    return styles;
+    return d;
   }
   static get observedAttributes() {
     return ["active"];
@@ -27,25 +27,17 @@ class Dropdown extends WJElement {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(context, store, params) {
-    let fragment = document.createDocumentFragment();
+  draw(e, u, m) {
+    let i = document.createDocumentFragment();
     this.classList.add("wj-placement", "wj-" + this.placement || "wj-start");
-    let native = document.createElement("div");
-    native.setAttribute("part", "native");
-    native.classList.add("native-dropdown");
-    let popup = document.createElement("wj-popup");
-    popup.setAttribute("placement", this.placement);
-    popup.setAttribute("offset", this.offset);
-    popup.innerHTML = `<slot name="trigger" slot="anchor"></slot>
-            <slot></slot>`;
-    if (this.trigger === "click")
-      popup.setAttribute("manual", "");
-    native.appendChild(popup);
-    fragment.appendChild(native);
-    return fragment;
+    let n = document.createElement("div");
+    n.setAttribute("part", "native"), n.classList.add("native-dropdown");
+    let r = document.createElement("wj-popup");
+    return r.setAttribute("placement", this.placement), r.setAttribute("offset", this.offset), r.setAttribute("manual", ""), r.innerHTML = `<slot name="trigger" slot="anchor"></slot>
+            <slot></slot>`, this.trigger === "click" && r.setAttribute("manual", ""), n.appendChild(r), i.appendChild(n), i;
   }
 }
-customElements.get("wj-dropdown") || window.customElements.define("wj-dropdown", Dropdown);
+customElements.get("wj-dropdown") || window.customElements.define("wj-dropdown", p);
 export {
-  Dropdown
+  p as Dropdown
 };

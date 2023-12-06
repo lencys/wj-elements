@@ -1,31 +1,29 @@
-var __defProp = Object.defineProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
-import WJElement from "./wj-element.js";
+var a = Object.defineProperty;
+var i = (e, t, o) => t in e ? a(e, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : e[t] = o;
+var n = (e, t, o) => (i(e, typeof t != "symbol" ? t + "" : t, o), o);
+import l from "./wj-element.js";
 import "./wj-store.js";
-const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n:host {\n  --wj-color: #212529;\n  --wj-card-subtitle-font-size: 28px;\n  --wj-card-subtitle-font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;\n  font-family: var(--wj-card-subtitle-font-family);\n  text-transform: uppercase;\n  display: inline-block;\n  letter-spacing: 0.06em;\n  font-size: 10.5px;\n  font-weight: 500;\n  margin: 0;\n  padding: 0;\n  line-height: normal;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  filter: alpha(opacity=40);\n  -webkit-transition: opacity 0.3s ease;\n  transition: opacity 0.3s ease;\n  position: absolute;\n  right: 1rem;\n  top: 0.5rem;\n}";
-class CardControls extends WJElement {
+const c = `/*!
+* direction.scss
+*/:host{--wj-color: #212529;--wj-card-subtitle-font-size: 28px;--wj-card-subtitle-font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;font-family:var(--wj-card-subtitle-font-family);text-transform:uppercase;display:inline-block;letter-spacing:.06em;font-size:10.5px;font-weight:500;margin:0;padding:0;line-height:normal;overflow:hidden;text-overflow:ellipsis;filter:alpha(opacity=40);-webkit-transition:opacity .3s ease;transition:opacity .3s ease;position:absolute;right:1rem;top:.5rem}
+`;
+class m extends l {
   constructor() {
     super();
-    __publicField(this, "className", "CardControls");
+    n(this, "className", "CardControls");
   }
   static get cssStyleSheet() {
-    return styles;
+    return c;
   }
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(context, store, params) {
-    let fragment = document.createDocumentFragment();
-    let element = document.createElement("slot");
-    fragment.appendChild(element);
-    return fragment;
+  draw(o, p, d) {
+    let s = document.createDocumentFragment(), r = document.createElement("slot");
+    return s.appendChild(r), s;
   }
 }
-customElements.get("wj-card-controls") || window.customElements.define("wj-card-controls", CardControls);
+customElements.get("wj-card-controls") || window.customElements.define("wj-card-controls", m);
 export {
-  CardControls
+  m as CardControls
 };

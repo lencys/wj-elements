@@ -1,75 +1,107 @@
-var __defProp = Object.defineProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
-import WJElement, { WjElementUtils } from "./wj-element.js";
+var f = Object.defineProperty;
+var j = (o, n, e) => n in o ? f(o, n, { enumerable: !0, configurable: !0, writable: !0, value: e }) : o[n] = e;
+var m = (o, n, e) => (j(o, typeof n != "symbol" ? n + "" : n, e), e);
+import x, { WjElementUtils as y, event as l } from "./wj-element.js";
+import { b as k } from "./router-links-e0087f84.js";
 import "./wj-store.js";
-const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Menu Item ]\n*/\n:host {\n  --submenu-offset: -2px;\n  --wj-menu-item-padding-top: .5rem;\n  --wj-menu-item-padding-bottom: .5rem;\n  display: block;\n}\n:host .native-menu-item {\n  position: relative;\n  display: flex;\n  align-items: center;\n  color: var(--wj-color-neutral-700);\n  padding-top: var(--wj-menu-item-padding-top);\n  padding-bottom: var(--wj-menu-item-padding-bottom);\n  transition: var(--wj-transition-fast) fill;\n  user-select: none;\n  white-space: nowrap;\n  cursor: pointer;\n}\n:host .native-menu-item:hover, :host .native-menu-item:focus {\n  color: #4b4b4b;\n  background-color: #f4f4f4 !important;\n}\n:host .native-menu-item:active {\n  color: #4b4b4b;\n  background-color: #f4f4f4 !important;\n}\n:host .native-menu-item .label {\n  flex: 1 1 auto;\n  display: inline-block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n}\n:host .native-menu-item .check-icon {\n  flex: 0 0 auto;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 1.5rem;\n  visibility: hidden;\n}\n:host .native-menu-item .check-icon.checked {\n  visibility: visible;\n}\n:host .native-menu-item .submenu-icon {\n  flex: 0 0 auto;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 1.5rem;\n  visibility: hidden;\n}\n:host .native-menu-item.has-submenu .submenu-icon {\n  visibility: visible;\n}\n:host .native-menu-item.expanded-submenu {\n  color: #4b4b4b;\n  background-color: #f4f4f4 !important;\n}\n:host .native-menu-item.expanded-submenu:hover {\n  color: #4b4b4b;\n  background-color: #f4f4f4 !important;\n}\n:host(:focus-visible) {\n  outline: none;\n}\n::slotted([slot=start]) {\n  flex: 0 0 auto;\n  display: flex;\n  align-items: center;\n  margin-inline-end: 0.5rem;\n}\n::slotted([slot=end]) {\n  flex: 0 0 auto;\n  display: flex;\n  align-items: center;\n  margin-inline-start: 0.5rem;\n}\n::slotted([slot=submenu]) {\n  background: white;\n}\n.menu-item--submenu-expanded {\n  background-color: var(--sl-color-neutral-100);\n  color: var(--sl-color-neutral-1000);\n}";
-class MenuItem extends WJElement {
+const A = `/*!
+* direction.scss
+*/:host{--wj-menu-item-color: var(--wj-color);--wj-menu-item-background: transparent;--wj-menu-item-color-hover: $color-contrast-high;--wj-menu-item-background-hover: var(--wj-border-color);--wj-menu-item-color-focus: $color-contrast-high;--wj-menu-item-background-focus: $color-contrast-lower;--wj-menu-item-color-active: $color-contrast-high;--wj-menu-item-background-active: var(--wj-border-color);--wj-menu-item-padding-top: .5rem;--wj-menu-item-padding-bottom: .5rem;--wj-menu-item-line-height: 1.8rem;--wj-menu-item-safe-triangle-cursor-x: 0;--wj-menu-item-safe-triangle-cursor-y: 0;--wj-menu-item-safe-triangle-submenu-start-x: 0;--wj-menu-item-safe-triangle-submenu-start-y: 0;--wj-menu-item-safe-triangle-submenu-end-x: 0;--wj-menu-item-safe-triangle-submenu-end-y: 0;--wj-menu-submenu-offset: 0;--wj-menu-item-icon-visibility: hidden;display:block}:host .native-menu-item{background:var(--wj-menu-item-background);position:relative;display:flex;flex-wrap:nowrap;align-items:center;color:var(--wj-menu-item-color);padding-top:var(--wj-menu-item-padding-top);padding-bottom:var(--wj-menu-item-padding-bottom);transition:var(--wj-transition-fast) fill;-webkit-user-select:none;user-select:none;white-space:nowrap;cursor:pointer;width:100%;line-height:var(--wj-menu-item-line-height)}:host .native-menu-item:hover{color:var(--wj-menu-item-color-hover);background:var(--wj-menu-item-background-hover)}:host .native-menu-item:focus{color:var(--wj-menu-item-color-focus);background:var(--wj-menu-item-background-focus)}:host .native-menu-item:active{color:var(--wj-menu-item-color-active);background:var(--wj-menu-item-background-active)}:host .native-menu-item .label{flex:1 1 auto;display:inline-block;text-overflow:ellipsis;overflow:hidden}:host .native-menu-item .check-icon{flex:0 0 auto;display:var(--wj-menu-item-check-icon-display, flex);align-items:center;justify-content:center;width:1.5rem;visibility:hidden}:host .native-menu-item .check-icon.checked{visibility:visible}:host .native-menu-item.expanded-submenu{color:var(--wj-menu-item-color-active);background:var(--wj-menu-item-background-active)}:host .native-menu-item.expanded-submenu:hover{color:var(--wj-menu-item-color-hover);background:var(--wj-menu-item-background-hover)}:host .native-menu-item.expanded-submenu:after{content:"";position:fixed;z-index:1;top:0;right:0;bottom:0;left:0;clip-path:polygon(var(--wj-menu-item-safe-triangle-cursor-x) var(--wj-menu-item-safe-triangle-cursor-y),var(--wj-menu-item-safe-triangle-submenu-start-x) var(--wj-menu-item-safe-triangle-submenu-start-y),var(--wj-menu-item-safe-triangle-submenu-end-x) var(--wj-menu-item-safe-triangle-submenu-end-y))}.submenu-icon{--wj-icon-size: 14px !important;flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:1.5rem;visibility:var(--wj-menu-item-icon-visibility)}.has-submenu .submenu-icon{--wj-menu-item-icon-visibility: visible}.submenu-icon.collapse{flex:none;right:10px;position:relative}:host(:focus-visible){outline:none}::slotted([slot=start]){flex:0 0 auto;display:flex;align-items:center;margin-inline-end:.5rem}::slotted([slot=end]){flex:0 0 auto;display:flex;align-items:center;margin-inline-start:.5rem}:host(.wj-menu-variant-nav) ::slotted([slot=submenu]){--wj-menu-border-width: 0 !important;--wj-menu-margin-inline: 2rem 0 !important}:host ::slotted([slot=start]){width:1.5rem}:host(.wj-menu-variant-context){display:block}:host(.active){color:var(--wj-menu-item-color-active);background:var(--wj-menu-item-background-active)}:host(.open){color:var(--wj-menu-item-color-active);background:var(--wj-menu-item-background-active)}
+`;
+class L extends x {
   constructor() {
     super();
-    __publicField(this, "className", "MenuItem");
-    this.hasSubmenu = WjElementUtils.hasSlot(this, "submenu");
+    m(this, "className", "MenuItem");
+    m(this, "dispatchMove", (e) => {
+      this.style.setProperty("--wj-menu-item-safe-triangle-cursor-x", `${e.clientX}px`), this.style.setProperty("--wj-menu-item-safe-triangle-cursor-y", `${e.clientY}px`);
+    });
+    m(this, "dispatchReposition", (e) => {
+      if (this.submenu.assignedNodes().length === 0)
+        return;
+      let i = this.submenu.assignedNodes()[0];
+      const { left: c, top: s, width: t, height: a } = i.getBoundingClientRect();
+      this.style.setProperty("--wj-menu-item-safe-triangle-submenu-start-x", `${c}px`), this.style.setProperty("--wj-menu-item-safe-triangle-submenu-start-y", `${s}px`), this.style.setProperty("--wj-menu-item-safe-triangle-submenu-end-x", `${c}px`), this.style.setProperty("--wj-menu-item-safe-triangle-submenu-end-y", `${s + a}px`);
+    });
+    k(this, { selector: !1 }), this.hasSubmenu = y.hasSlot(this, "submenu"), this._collapsible = !1;
+  }
+  get placement() {
+    let e = this.querySelector("wj-menu");
+    return e != null && e.hasAttribute("placement") ? e.getAttribute("placement") : "right-start";
+  }
+  get offset() {
+    let e = this.querySelector("wj-menu");
+    return e != null && e.hasAttribute("offset") ? e.getAttribute("offset") : "0";
+  }
+  get variant() {
+    let e = this.querySelector("wj-menu");
+    return e != null && e.hasAttribute("variant") && !this.collapse ? e.getAttribute("variant").toUpperCase() : "CONTEXT";
+  }
+  get collapse() {
+    var e;
+    return (e = this.parentElement) == null ? void 0 : e.hasAttribute("collapse");
   }
   static get cssStyleSheet() {
-    return styles;
+    return A;
   }
   static get observedAttributes() {
     return [];
   }
   setupAttributes() {
-    super.setupAttributes();
-    this.isShadowRoot = "open";
+    super.setupAttributes(), this.isShadowRoot = "open", this.setAttribute("active-class", "open");
   }
-  draw(context, store, params) {
-    let fragment = document.createDocumentFragment();
-    let native = document.createElement("div");
-    native.classList.add("native-menu-item");
-    native.setAttribute("id", "anchor");
-    if (this.hasSubmenu)
-      native.innerHTML = `<wj-popup anchor="anchor" manual placement="right-start"><slot name="submenu"></slot></wj-popup>`;
-    let checkedIcon = document.createElement("span");
-    checkedIcon.classList.add("check-icon");
-    checkedIcon.innerHTML = `<wj-icon name="check"></wj-icon>`;
-    this.hasAttribute("checked") ? checkedIcon.classList.add("checked") : checkedIcon.classList.remove("checked");
-    let start = document.createElement("slot");
-    start.name = "start";
-    let slot = document.createElement("slot");
-    slot.classList.add("label");
-    let end = document.createElement("slot");
-    end.name = "end";
-    let submenutIcon = document.createElement("span");
-    submenutIcon.classList.add("submenu-icon");
-    submenutIcon.innerHTML = `<wj-icon name="chevron-right"></wj-icon>`;
-    this.hasSubmenu ? native.classList.add("has-submenu") : native.classList.remove("has-submenu");
-    native.appendChild(checkedIcon);
-    native.appendChild(start);
-    native.appendChild(slot);
-    native.appendChild(end);
-    native.appendChild(submenutIcon);
-    this.native = native;
-    fragment.appendChild(native);
-    return fragment;
+  draw(e, i, c) {
+    var w;
+    let s = document.createDocumentFragment();
+    this.setAttribute("tabindex", "0"), this.classList.add("wj-menu-variant-" + this.variant.toLowerCase()), (w = this.querySelector("wj-menu")) == null || w.setAttribute("variant", this.variant.toLowerCase());
+    let t = document.createElement("div");
+    t.setAttribute("part", "native"), t.setAttribute("id", "anchor"), t.classList.add("native-menu-item");
+    let a = document.createElement("span");
+    a.classList.add("check-icon"), a.innerHTML = '<wj-icon name="check"></wj-icon>', this.hasAttribute("checked") ? a.classList.add("checked") : a.classList.remove("checked");
+    let d = document.createElement("slot");
+    d.name = "start";
+    let p = document.createElement("slot");
+    p.classList.add("label");
+    let b = document.createElement("slot");
+    b.name = "end";
+    let u = document.createElement("slot");
+    u.setAttribute("part", "submenu"), u.name = "submenu";
+    let g = this.collapse ? "collapse" : "expand", h = document.createElement("span");
+    h.classList.add("submenu-icon", g), h.innerHTML = this.collapse ? '<wj-icon name="chevron-down"></wj-icon>' : '<wj-icon name="chevron-right"></wj-icon>', this.hasSubmenu ? t.classList.add("has-submenu") : t.classList.remove("has-submenu"), t.appendChild(a), t.appendChild(d), t.appendChild(p), t.appendChild(b), t.appendChild(h);
+    let v = !1;
+    if (
+      /*(this.collapse && this.variant === "NAV" && this.hasSubmenu) || */
+      this.variant === "CONTEXT" && this.hasSubmenu
+    ) {
+      t.setAttribute("slot", "anchor");
+      let r = document.createElement("wj-popup");
+      r.setAttribute("anchor", "anchor"), r.setAttribute("placement", this.placement), r.setAttribute("offset", this.offset), r.appendChild(t), r.appendChild(u), this.popup = r, s.appendChild(r), v = !0;
+    }
+    return this.collapse && !this.hasSubmenu ? s.appendChild(this.collapseItem(t)) : v || s.appendChild(t), (!this.collapse && this.variant === "NAV" || this.variant === "MEGAMENU" && this.hasSubmenu) && s.appendChild(u), this.native = t, this.submenu = u, s;
   }
   afterDraw() {
-    if (this.hasSubmenu) {
-      this.addEventListener("mouseover", (e) => {
-        this.tabIndex = "-1";
-        this.focus();
-        this.native.querySelector("wj-popup").setAttribute("active", "true");
-        this.native.classList.add("expanded-submenu");
-      });
-      this.addEventListener("mouseout", (e) => {
-        this.tabIndex = "0";
-        this.native.querySelector("wj-popup").removeAttribute("active");
-        this.native.classList.remove("expanded-submenu");
-      });
-    }
+    this.addEventListener("mousemove", this.dispatchMove), this.addEventListener("wj-popup:reposition", this.dispatchReposition), l.addListener(this, "mouseover", null, (e) => {
+      this.hasAttribute("manual") || this.variant === "NAV" && !this.collapse || (e.stopPropagation(), this.showSubmenu(), this.focus());
+    }), l.addListener(this, "focusout", null, (e) => {
+      e.relatedTarget && this.contains(e.relatedTarget) || this.variant === "NAV" && !this.collapse || this.hideSubmenu();
+    }), !this.collapse && this.variant === "NAV" && this.hasSubmenu ? l.addListener(this, "click", null, (e) => {
+      let i = this.submenu.assignedElements({ flatten: !0 })[0];
+      i.hasAttribute("active") ? this === e.target && i.removeAttribute("active") : i.setAttribute("active", ""), e.stopPropagation();
+    }) : l.addListener(this, "click", null, (e) => {
+      console.log("CLICK", this);
+    });
+  }
+  collapseItem(e) {
+    let i = document.createElement("wj-tooltip");
+    return i.setAttribute("content", this.textContent), i.setAttribute("placement", "right"), i.setAttribute("offset", this.offset || "0"), i.appendChild(e), i;
+  }
+  showSubmenu() {
+    this.tabIndex = -1, this.hasSubmenu && (this.popup.setAttribute("active", ""), this.classList.add("expanded-submenu"), this.native.classList.add("expanded-submenu"));
+  }
+  hideSubmenu() {
+    this.tabIndex = 0, this.hasSubmenu && (this.popup.removeAttribute("active"), this.classList.remove("expanded-submenu"), this.native.classList.remove("expanded-submenu"));
   }
 }
-customElements.get("wj-menu-item") || window.customElements.define("wj-menu-item", MenuItem);
+customElements.get("wj-menu-item") || window.customElements.define("wj-menu-item", L);
 export {
-  MenuItem
+  L as MenuItem
 };

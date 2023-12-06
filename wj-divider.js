@@ -1,19 +1,19 @@
-var __defProp = Object.defineProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
-import WJElement from "./wj-element.js";
+var n = Object.defineProperty;
+var a = (r, e, t) => e in r ? n(r, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : r[e] = t;
+var o = (r, e, t) => (a(r, typeof e != "symbol" ? e + "" : e, t), t);
+import c from "./wj-element.js";
 import "./wj-store.js";
-const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Divider ]\n*/\n:host {\n  --wj-border-size: 1px;\n  --wj-divider-border-color: var(--wj-border-color);\n  --wj-divider-border-width: var(--wj-border-size, 1px);\n  --wj-divider-spacing: 0;\n}\n:host(:not([vertical])) {\n  display: block;\n  border-top: solid var(--wj-divider-border-width) var(--wj-divider-border-color);\n  margin: var(--wj-divider-spacing) 0;\n}\n:host([vertical]) {\n  display: inline-block;\n  height: 100%;\n  border-left: solid var(--wj-divider-border-width) var(--wj-divider-border-color);\n  margin: 0 var(--wj-divider-spacing);\n}";
-class Divider extends WJElement {
+const l = `/*!
+* direction.scss
+*/:host{--wj-border-size: 1px;--wj-divider-border-color: var(--wj-border-color);--wj-divider-border-width: var(--wj-border-size, 1px);--wj-divider-spacing: 0}:host(:not([vertical])){display:block;border-top:solid var(--wj-divider-border-width) var(--wj-divider-border-color);margin:var(--wj-divider-spacing) 0}:host([vertical]){display:inline-block;height:100%;border-left:solid var(--wj-divider-border-width) var(--wj-divider-border-color);margin:0 var(--wj-divider-spacing)}
+`;
+class v extends c {
   constructor() {
     super();
-    __publicField(this, "className", "Divider");
+    o(this, "className", "Divider");
   }
   static get cssStyleSheet() {
-    return styles;
+    return l;
   }
   static get observedAttributes() {
     return [];
@@ -21,16 +21,12 @@ class Divider extends WJElement {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(context, store, params) {
-    let fragment = document.createDocumentFragment();
-    let native = document.createElement("div");
-    let slot = document.createElement("slot");
-    native.appendChild(slot);
-    fragment.appendChild(native);
-    return fragment;
+  draw(t, w, m) {
+    let i = document.createDocumentFragment(), d = document.createElement("div"), s = document.createElement("slot");
+    return d.appendChild(s), i.appendChild(d), i;
   }
 }
-customElements.get("wj-divider") || window.customElements.define("wj-divider", Divider);
+customElements.get("wj-divider") || window.customElements.define("wj-divider", v);
 export {
-  Divider
+  v as Divider
 };
