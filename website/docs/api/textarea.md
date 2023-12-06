@@ -1,176 +1,188 @@
 ---
-title: "ion-textarea"
+title: "Textarea"
 ---
-import Props from '@ionic-internal/component-api/v1/textarea/props.md';
-import Events from '@ionic-internal/component-api/v1/textarea/events.md';
-import Methods from '@ionic-internal/component-api/v1/textarea/methods.md';
-import Parts from '@ionic-internal/component-api/v1/textarea/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/textarea/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/textarea/slots.md';
 
 <head>
-  <title>Ionic Textarea Component and CSS Properties for Multi-Line Input</title>
-  <meta name="description" content="Textarea is for multi-line input. The component accepts native textarea attributes in addition to Ionic properties. Read to learn about use and CSS elements." />
+  <title>Textarea Component and CSS Properties for Multi-Line Input</title>
+  <meta name="description" content="Textarea rozširuje možnosti štandardného HTML textarea elementu. Pridáva štýly pre dosiahnutie vizuálne konzistného používateľského rozhrania a ponúka nové funkcie." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="scoped" />
 
-The textarea component is used for multi-line text input. A native textarea element is rendered inside of the component. The user experience and interactivity of the textarea component is improved by having control over the native textarea.
+Textarea rozširuje možnosti štandardného HTML `textarea` elementu. Pridáva štýly pre dosiahnutie vizuálne konzistného používateľského rozhrania a ponúka funkcie ako napríklad auto-height - prispôsobenie výšky elementu vloženému textu, alebo tiež počítadlo vložených znakov.
 
-Unlike the native textarea element, the Ionic textarea does not support loading its value from the inner content. The textarea value should be set in the `value` attribute.
 
-The textarea component accepts the [native textarea attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) in addition to the Ionic properties.
-
-## Basic Usage
+## Základné použitie
 
 import BasicPlayground from '@site/static/usage/v1/textarea/basic/index.md';
 
 <BasicPlayground />
 
-## Labels
+## Standard
 
-Labels should be used to describe the textarea. They can be used visually, and they will also be read out by screen readers when the user is focused on the textarea. This makes it easy for the user to understand the intent of the textarea. Textarea has several ways to assign a label:
+Pridaním atribútu `standard` sa zobrazí textarea v štýle štandardného HTML textarea elementu.
 
-- `label` property: used for plaintext labels
-- `label` slot: used for custom HTML labels (experimental)
-- `aria-label`: used to provide a label for screen readers but adds no visible label
+import Standard from '@site/static/usage/v1/textarea/standard/index.md';
 
-### Label Placement
+<Standard />
 
-Labels will take up the width of their content by default. Developers can use the `labelPlacement` property to control how the label is placed relative to the control.
+## Counter
 
-import LabelPlacement from '@site/static/usage/v1/textarea/label-placement/index.md';
-
-<LabelPlacement />
-
-### Label Slot (experimental)
-
-While plaintext labels should be passed in via the `label` property, if custom HTML is needed, it can be passed through the `label` slot instead.
-
-Note that this feature is considered experimental because it relies on a simulated version of [Web Component slots](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_templates_and_slots). As a result, the simulated behavior may not exactly match the native slot behavior.
-
-import LabelSlot from '@site/static/usage/v1/textarea/label-slot/index.md';
-
-<LabelSlot />
-
-### No Visible Label
-
-If no visible label is needed, developers should still supply an `aria-label` so the textarea is accessible to screen readers.
-
-import NoVisibleLabel from '@site/static/usage/v1/textarea/no-visible-label/index.md';
-
-<NoVisibleLabel />
-
-## Filled Textareas
-
-Material Design offers filled styles for a textarea. The `fill` property on the item can be set to either `"solid"` or `"outline"`.
-
-Since the `fill` styles visually defines the textarea container, textareas that use `fill` should not be used in `ion-item`.
-
-import Fill from '@site/static/usage/v1/textarea/fill/index.md';
-
-<Fill />
-
-## Helper & Error Text
-
-Helper and error text can be used inside of a textarea with the `helperText` and `errorText` property. The error text will not be displayed unless the `ion-invalid` and `ion-touched` classes are added to the `ion-textarea`. This ensures errors are not shown before the user has a chance to enter data.
-
-In Angular, this is done automatically through form validation. In JavaScript, React and Vue, the class needs to be manually added based on your own validation.
-
-import HelperError from '@site/static/usage/v1/textarea/helper-error/index.md';
-
-<HelperError />
-
-## Textarea Counter
-
-The textarea counter is text that displays under a textarea to notify the user of how many characters have been entered out of the total that the textarea will accept. When adding counter, the default behavior is to format the value that gets displayed as `inputLength` / `maxLength`. This behavior can be customized by passing in a formatter function to the `counterFormatter` property.
+Pridaním atribútu `counter` sa pod textareou zobrazí počítadlo zobrazujúce počet vložených znakov a ich maximálny povolený počet. Je potrebné použítie v kombinácii s vlastnosťou `max-length`. V opačnom prípade bude maximálny povolený počet nastavený na `1000`.
 
 import Counter from '@site/static/usage/v1/textarea/counter/index.md';
 
 <Counter />
 
-## Autogrow
+## Resize (none)
+Vlastnosť `resize` určuje správanie zmeny veľkosti elementu. Ak je nastavená na hodnotu `none`, veľkosť podľa zostane fixná. 
 
-When the `autoGrow` property is set to `true`, the textarea will grow and shrink based on its contents.
+import Resize from '@site/static/usage/v1/textarea/resize/index.md';
 
-import AutogrowPlayground from '@site/static/usage/v1/textarea/autogrow/index.md';
+<Resize />
 
-<AutogrowPlayground />
+## Resize (auto)
 
-## Clear on Edit
+Ak je vlastnosť `resize` nastavená na hodnotu `auto`, automaticky sa prispôsobí veľkosť elementu vloženému obsahu.
 
-Setting the `clearOnEdit` property to `true` will clear the textarea after it has been blurred and then typed in again.
+import AutoHeight from '@site/static/usage/v1/textarea/auto-height/index.md';
 
-import ClearOnEditPlayground from '@site/static/usage/v1/textarea/clear-on-edit/index.md';
+<AutoHeight />
 
-<ClearOnEditPlayground />
+## Disabled
 
-## Migrating from Legacy Textarea Syntax
+Pri vloženom atribúte `disabled` do elementu textarea nebude možné písať.
 
-A simpler textarea syntax was introduced in Ionic 7.0. This new syntax reduces the boilerplate required to setup an textarea, resolves accessibility issues, and improves the developer experience.
+import Disabled from '@site/static/usage/v1/textarea/disabled/index.md';
 
-Developers can perform this migration one textarea at a time. While developers can continue using the legacy syntax, we recommend migrating as soon as possible.
+<Disabled />
 
 
-### Using the Modern Syntax
 
-Using the modern syntax involves three steps:
+## Atribúty a Vlastnosti
 
-1. Remove `ion-label` and use the `label` property on `ion-textarea` instead. The placement of the label can be configured using the `labelPlacement` property on `ion-textarea`.
-2. Move textarea-specific properties from `ion-item` on to `ion-textarea`. This includes the `counter`, `counterFormatter`, `fill`, and `shape` properties.
-3. Remove usages of the `helper` and `error` slots on `ion-item` and use the `helperText` and `errorText` properties on `ion-textarea` instead.
+### counter
 
-import Migration from '@site/static/usage/v1/textarea/migration/index.md';
+|  |  |
+| --- | --- |
+| Popis | Ak `true`, pridá pod element počítadlo zobrazujúce počet vložených znakov a ich maximálny povolený počet. |
+| Atribút | `counter` |
+| Typ | `boolean` |
+| Predvolená hodnota | `false` |
 
-<Migration />
+### disabled
 
-### Using the Legacy Syntax
+|  |  |
+| --- | --- |
+| Popis | Ak `true`, do textarea nebude možné písať. |
+| Atribút | `disabled` |
+| Typ | `boolean` |
+| Predvolená hodnota | `false` |
 
-Ionic uses heuristics to detect if an app is using the modern textarea syntax. In some instances, it may be preferable to continue using the legacy syntax. Developers can set the `legacy` property on `ion-textarea` to `true` to force that instance of the textarea to use the legacy syntax.
 
-## Theming
+### label
 
-import ThemingPlayground from '@site/static/usage/v1/textarea/theming/index.md';
+|  |  |
+| --- | --- |
+| Popis | Slúži na nastavenie popisu k elementu textarea. |
+| Atribút | `label` |
+| Typ | `string` |
+| Predvolená hodnota | `undefined` |
 
-<ThemingPlayground />
+### maxLength
 
-## Interfaces
+|  |  |
+| --- | --- |
+| Popis | Nastaví maximálny povolený počet znakov. Používa sa v spojení s atribútom `counter`. |
+| Atribút | `maxLength` |
+| Typ | `number` |
+| Predvolená hodnota | `1000` |
 
-### TextareaChangeEventDetail
+### name
 
-```typescript
-interface TextareaChangeEventDetail {
-  value?: string | null;
-}
-```
+|  |  |
+| --- | --- |
+| Popis | Nastaví name atribút vnútorného textarea elementu dôležitého pri použití vo formulároch. |
+| Atribút | `name` |
+| Typ | `string` |
+| Predvolená hodnota | `undefined` |
 
-### TextareaCustomEvent
+### resize
 
-While not required, this interface can be used in place of the `CustomEvent` interface for stronger typing with Ionic events emitted from this component.
+|  |  |
+| --- | --- |
+| Popis |Určuje správanie pri zmene veľkosti. Ak je nastavená na hodnotu `auto`, automaticky sa zmení veľkosť podľa obsahu. |
+| Atribút | `resize` |
+| Typ | `auto`, `none` |
+| Predvolená hodnota | `none` |
 
-```typescript
-interface TextareaCustomEvent extends CustomEvent {
-  detail: TextareaChangeEventDetail;
-  target: HTMLIonTextareaElement;
-}
-```
+### rows
 
-## Properties
-<Props />
+|  |  |
+| --- | --- |
+| Popis |Určuje počet riadkov v textarea. |
+| Atribút | `rows` |
+| Typ | `number` |
+| Predvolená hodnota | `3` |
+
+### spellcheck
+
+|  |  |
+| --- | --- |
+| Popis |Ak `true`, na textarea bude aktivovaná kontrola pravopisu. |
+| Atribút | `spellcheck` |
+| Typ | `boolean` |
+| Predvolená hodnota | `false` |
+
+### variant
+
+|  |  |
+| --- | --- |
+| Popis | Nastavením na hodnotu `undefined` sa zobrazí textarea v štýle štandardného HTML textarea elementu |
+| Atribút | `variant` |
+| Typ | `standard`, `undefined` |
+| Predvolená hodnota | `undefined` |
+
 
 ## Events
-<Events />
 
-## Methods
-<Methods />
+| Event             | Popis                                      |
+|-------------------|--------------------------------------------|
+| `blur`              | Vyvolaný keď element stratí focus.      |
+| `focus`             | Vyvolaný keď element dostane focus.     |
+| `Resize`            | Vyvolaný po zmene veľkosti textarea.     |
+| `wj:textarea:change` | Vyvolaný po zmene zmene v textarea.     |
+| `wj:textarea:input` | Vyvolaný po vložení textu                |
+
+## Metódy
+Pre tento komponent nie sú k dispozícii žiadne Metódy.
 
 ## CSS Shadow Parts
-<Parts />
+
+| Názov | Popis |
+| --- | --- |
+| `input` | Odkazuje na vnútorný `<textarea>` element |
 
 ## CSS Custom Properties
-<CustomProps />
 
-## Slots
-<Slots />
+
+| CSS Custom Property                      | Description |
+| ---------------------------------------- | ----------- |
+| `--wj-textarea-background-color`         | Nastaví farbu pozadia elementu.                  |
+| `--wj-textarea-border-color`             | Nastaví farbu okrajov elementu.                  |
+| `--wj-textarea-border-color-focus`       | Nastaví farbu okrajov pri focuse.                |
+| `--wj-textarea-border-radius`            | Nastaví zaoblenie okrajov elementu.              |
+| `--wj-textarea-border-style`             | Nastaví štýl okrajov elementu.                   |
+| `--wj-textarea-border-width`             | Nastaví šírku okrajov elementu.                  |
+| `--wj-textarea-color`                    | Nastaví farbu textu elementu.                    |
+| `--wj-textarea-color-invalid`            | Nastaví farbu textu pri chybe.                   |
+| `--wj-textarea-font-family`              | Nastaví písmo elementu.                          |
+| `--wj-textarea-line-height`              | Nastaví výšku riadka elementu.                   |
+| `--wj-textarea-margin-bottom`            | Nastaví spodné vonkajšie odsadenie elementu.     |
+| `--wj-textarea-padding`                  | Nastaví vnútorné odsadenie elementu.             |
+
+
+## Sloty
+Pre tento komponent nie sú k dispozícii žiadne sloty.

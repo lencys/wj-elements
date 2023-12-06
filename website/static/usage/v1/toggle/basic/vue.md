@@ -1,17 +1,28 @@
 ```html
 <template>
-  <ion-toggle>Default Toggle</ion-toggle><br /><br />
-  <ion-toggle :checked="true">Checked Toggle</ion-toggle><br /><br />
-  <ion-toggle :disabled="true">Disabled Toggle</ion-toggle><br /><br />
-  <ion-toggle :checked="true" :disabled="true">Disabled Checked Toggle</ion-toggle>
+  <wj-item>
+    <wj-toggle>Default Toggle</wj-toggle>
+  </wj-item>
+  <wj-item>
+    <wj-toggle checked>Checked Toggle</wj-toggle>
+  </wj-item>
+  <wj-item>
+    <wj-toggle disabled>Disabled Toggle</wj-toggle>
+  </wj-item>
+  <wj-item>
+    <wj-toggle checked disabled>Disabled Checked Toggle</wj-toggle>
+  </wj-item>
+  <wj-item>
+    <wj-toggle color="success" checked disabled>Disabled Checked Toggle</wj-toggle>
+  </wj-item>
 </template>
 
 <script lang="ts">
-  import { IonToggle } from '@ionic/vue';
+  import { Toggle, Item } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { IonToggle },
+    components: { Toggle, Item },
   });
 </script>
 ```

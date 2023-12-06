@@ -11,7 +11,7 @@ template.innerHTML = `
     <h2>Basic</h2>
     <div class="playground">
       <div class="content" style="display: flex; gap: 1rem;">
-        <wj-tooltip content="Som najkrajsi tooltip hore" placement="top" offset="10">
+        <wj-tooltip content="Som najkrajsi tooltip hore"  offset="2">
           <wj-button size="large">Top</wj-button>
         </wj-tooltip>
         

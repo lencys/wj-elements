@@ -2,21 +2,18 @@
 
 Element Card header je komponent navrhnutý pre použitie v kartách a slúži ako kontajner na umiestnenie príslušných nadpisov, ikon alebo iného obsahu, ktorý pomáha používateľovi rýchlo pochopiť kontext alebo účel hlavného obsahu karty.
 
-:::note Poznámka
-
 Pre viac informácií o použítí Card Header sa presuňte do dokumentácie elementu [Card.](./card)
-
-:::
 
 ## Atribúty a Vlastnosti
 
 ### separator
 
-| Popis | Ak true, do elementu sa vloží horizontálny oddelovač |
+|  |  |
 | --- | --- |
-| Atribút | separator |
-| Typ | boolean |
-| Predvolená hodnota | false |
+| Popis | Ak `true`, do elementu sa vloží horizontálny oddelovač |
+| Atribút | `separator` |
+| Typ | `boolean` |
+| Predvolená hodnota | `false` |
 
 ## Eventy
 

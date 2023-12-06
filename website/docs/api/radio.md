@@ -112,7 +112,7 @@ Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
 
 ## CSS Custom Vlastnosti
 
-| Atribút             | Popis       |
+| Názov             | Popis       |
 |---------------------|-------------|
 | `--wj-radio-margin-bottom` | Spodné odsadenie radio elementu. |
 | `--wj-radio-margin-inline` | Pravé a ľavé odsadenie radio elementu.  |

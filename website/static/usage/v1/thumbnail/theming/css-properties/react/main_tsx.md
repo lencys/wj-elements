@@ -1,15 +1,15 @@
 ```tsx
 import React from 'react';
-import { IonThumbnail } from '@ionic/react';
+import { Thumbnail } from '@elements/react';
 
 import './main.css';
 
 function Example() {
   return (
     <>
-      <IonThumbnail>
-        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-      </IonThumbnail>
+      <wj-thumbnail class="example-thumbnail">
+        <img alt="Silhouette of mountains" src="../../../../../img/thumbnail.svg" />
+      </wj-thumbnail>
     </>
   );
 }

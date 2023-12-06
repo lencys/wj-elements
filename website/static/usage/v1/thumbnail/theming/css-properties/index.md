@@ -7,9 +7,6 @@ import react_main_css from './react/main_css.md';
 
 import vue from './vue.md';
 
-import angular_example_component_html from './angular/example_component_html.md';
-import angular_example_component_css from './angular/example_component_css.md';
-
 <Playground
   version="7"
   code={{
@@ -21,12 +18,6 @@ import angular_example_component_css from './angular/example_component_css.md';
       },
     },
     vue,
-    angular: {
-      files: {
-        'src/app/example.component.html': angular_example_component_html,
-        'src/app/example.component.css': angular_example_component_css,
-      },
-    },
   }}
   src="usage/v1/thumbnail/theming/css-properties/demo.html"
   size="250px"

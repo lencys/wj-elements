@@ -15,7 +15,7 @@ import AppWizard from '@components/page/intro/AppWizard';
 
 Ionic apps are created and developed primarily through the Ionic [command-line](../reference/glossary.md#cli) utility. The Ionic CLI is the preferred method of installation, as it offers a wide range of dev tools and help options along the way. It is also the main tool through which to run the app and connect it to other services, such as Appflow.
 
-<AppWizard />
+<!-- <AppWizard /> -->
 
 ## Install the Ionic CLI
 

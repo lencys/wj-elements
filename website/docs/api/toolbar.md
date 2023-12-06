@@ -1,109 +1,66 @@
 ---
-title: "ion-toolbar"
+title: "Toolbar"
 ---
-import Props from '@ionic-internal/component-api/v1/toolbar/props.md';
-import Events from '@ionic-internal/component-api/v1/toolbar/events.md';
-import Methods from '@ionic-internal/component-api/v1/toolbar/methods.md';
-import Parts from '@ionic-internal/component-api/v1/toolbar/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/toolbar/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/toolbar/slots.md';
 
 <head>
-  <title>Toolbar | Customize App Menu Toolbar Buttons and Icons</title>
-  <meta name="description" content="Ion-toolbar component lets you customize toolbar buttons on your app menu. Add fixed toolbars above or below content or use full screen to scroll with content." />
+  <title>Toolbar | Flexibilný kontajner určený na zobrazovanie rôzneho obsahu organizovaným spôsobom</title>
+  <meta name="description" content="Element Toolbar je flexibilný kontajner určený na zobrazovanie rôzneho obsahu organizovaným spôsobom, ktorý sa zvyčajne používa v hornej časti webových aplikácií alebo stránok. Môže obsahovať tlačidlá, navigáciu, pole vyhľadávania, a iné." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
+Element Toolbar je flexibilný kontajner určený na zobrazovanie rôzneho obsahu organizovaným spôsobom, ktorý sa zvyčajne používa v hornej časti webových aplikácií alebo stránok. Môže obsahovať tlačidlá, navigáciu, pole vyhľadávania, a iné. Podporuje zarovnanie obsahu a tiež ho možno prilepiť k hornej časti obrazovky.
 
-Toolbars are generally positioned above or below content and provide content and actions for the current screen. When placed within the [content](./content), toolbars will scroll with the content.
+Súčasťou Toolbar je element [ToolbarActions](./toolbar-actions), ktorý zoskupuje rôzne akcie v podobe tlačidiel do jedného celku.
 
-Toolbars can contain several different components including titles, buttons, icons, back buttons, menu buttons, searchbars, segments, progress bars, and more.
-
-
-## Basic Usage
-
-It is recommended to put a toolbar inside of a [header](./header) or [footer](./footer) for proper positioning. When a toolbar is placed in a header it will appear fixed at the top of the content. When it is placed in a footer it will appear fixed at the bottom. Fullscreen content will scroll behind a toolbar in a header or footer. A [title](./title) component can be used to display text inside of the toolbar.
+## Základné použitie
 
 import Basic from '@site/static/usage/v1/toolbar/basic/index.md';
 
 <Basic />
 
+## Dynamický breadcrumbs
 
-## Buttons in Toolbars
+import DynamicBreadcrumbs from '@site/static/usage/v1/toolbar/dynamic-breadcrumbs/index.md';
 
-Buttons placed in a toolbar should be placed inside of the [buttons](./button-group) component. The buttons component can be positioned inside of the toolbar using a named [slot](#slots). The `"primary"` and `"secondary"` slots behave differently in `ios` and `md` mode.
+<DynamicBreadcrumbs />
 
-The buttons component can wrap a standard [button](./button), [back button](./back-button), [menu button](./menu-button), or several of any of them. A button in a toolbar is styled to be clear by default, but this can be changed using the [`fill`](./button#fill) property on the button. The properties included on back button and menu button in this example are for display purposes; see their respective documentation for proper usage.
+## Dynamický action
 
-import Buttons from '@site/static/usage/v1/toolbar/buttons/index.md';
+import DynamicAction from '@site/static/usage/v1/toolbar/dynamic-action/index.md';
 
-<Buttons />
+<DynamicAction />
 
+## Eventy
 
-## Searchbars in Toolbars
+Pre tento komponent nie sú k dispozícii žiadne eventy.
 
-A [searchbar](./searchbar) can be placed inside of a toolbar to search through the content. It should be the only child component of the toolbar, and will take up the full width and height.
+## Metódy
 
-import Searchbars from '@site/static/usage/v1/toolbar/searchbars/index.md';
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
-<Searchbars />
+## CSS Shadow Party
 
+Pre tento komponent nie sú k dispozícií žiadne CSS shadow party.
 
-## Segments in Toolbars
+## CSS Custom Vlastnosti
 
-[Segments](./segment) are generally used in toolbars to toggle between two different content views on the same page. They can be placed in a toolbar with other components, such as buttons, but should not be placed alongside a title.
+| Názov                           | Popis       |
+|---------------------------------|-------------|
+| `--wj-toolbar-backcolor`        | Nastavuje farbu pozadia toolbaru. |
+| `--wj-toolbar-border-color`     | Určuje farbu okrajov toolbaru. |
+| `--wj-toolbar-min-height`       | Určuje minimálnu výšku toolbaru. |
+| `--wj-toolbar-padding-bottom`   | Určuje spodné vnútorné odsadenie toolbaru. |
+| `--wj-toolbar-padding-inline`   | Určuje vnútorné horizontálne odsadenie toolbaru. |
+| `--wj-toolbar-padding-top`      | Určuje horné vnútorné odsadenie toolbaru. |
+| `--wj-toolbar-top`              | Určuje pozíciu toolbaru z hora pri použití `sticky`. |
 
-import Segments from '@site/static/usage/v1/toolbar/segments/index.md';
+## Sloty
 
-<Segments />
+| Slot        | Popis                                                             |
+| ----------- | ----------------------------------------------------------------- |
+| `end`       | Obsah sa umiestni vpravo od textu tlačidla v LTR a vľavo v RTL.   |
+| `start`     | Obsah je umiestnený vľavo od textu tlačidla v LTR a vpravo v RTL. |
 
-
-## Progress Bars in Toolbars
-
-A [progress bar](./progress-bar) is used as a loading indicator to show an ongoing process in an app. Progress bars can be placed with any other components inside of a toolbar as they will align with the bottom of the toolbar.
-
-import ProgressBars from '@site/static/usage/v1/toolbar/progress-bars/index.md';
-
-<ProgressBars />
-
-
-## Theming
-
-### Colors
-
-import Colors from '@site/static/usage/v1/toolbar/theming/colors/index.md';
-
-<Colors />
-
-### CSS Custom Properties
-
-import CSSProps from '@site/static/usage/v1/toolbar/theming/css-properties/index.md';
-
-<CSSProps />
-
-
-## Borders
-
-In `md` mode, the `<ion-header>` will receive a box-shadow on the bottom, and the `<ion-footer>` will receive a box-shadow on the top.  In `ios` mode, the `<ion-header>` will receive a border on the bottom, and the `<ion-footer>` will receive a border on the top.
-
-
-## Properties
-<Props />
-
-## Events
-<Events />
-
-## Methods
-<Methods />
-
-## CSS Shadow Parts
-<Parts />
-
-## CSS Custom Properties
-<CustomProps />
-
-## Slots
-<Slots />

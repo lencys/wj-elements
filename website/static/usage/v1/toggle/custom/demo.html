@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toggle: Custom</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/wj-master.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/style.css" />
+  </head>
+  <body>
+    <div class="playground">
+      <div class="content">
+        <wj-toggle id="custom-toggle" checked>Default Toggle
+          <style>
+            #custom-toggle {
+              --wj-toggle-color-base: #ff0000;
+              --wj-toggle-width: 60px;
+              --wj-toggle-height: 8px;
+              --wj-toggle-border-radius: 0;
+              --wj-toggle-handle-width: 20px;
+              --wj-toggle-handle-height: 20px;
+              --wj-toggle-handle-border-radius: 0;
+              --wj-toggle-handle-color: #996633;
+              --wj-toggle-handle-shadow: none !important;
+              --wj-toggle-handle-shadow-checked: none !important;
+            }
+          </style>
+        </wj-toggle>
+      </div>
+    </div>
+  </body>
+</html>

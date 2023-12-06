@@ -1,12 +1,13 @@
 ```html
 <style>
-  ion-thumbnail {
-    --size: 140px;
-    --border-radius: 14px;
+  .example-thumbnail {
+    --wj-thumbnail-width: 80px !important;
+    --wj-thumbnail-height: 80px !important;
+    --wj-border-radius: 24px !important;
   }
 </style>
 
-<ion-thumbnail>
-  <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-</ion-thumbnail>
+<wj-thumbnail class="example-thumbnail">
+  <img alt="Silhouette of mountains" src="../../../../../img/thumbnail.svg" />
+</wj-thumbnail>
 ```
