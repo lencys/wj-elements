@@ -2,13 +2,9 @@
 title: "Card Title"
 ---
 
-Element `Card Title` je komponent navrhnutý na použitie v rámci elementu `"Card Header"` na poskytnutie  názvu karty, čím používateľovi umožňuje rýchlo identifikovať obsah karty.
+Element Card Title je komponent navrhnutý na použitie v rámci elementu [Card Header](./card-header) a zobrazuje názov karty, čím používateľovi umožňuje rýchlo identifikovať jej predmet alebo obsah.
 
-:::note Poznámka
-
-Pre viac informácií o použítí Card Title sa presuňte do dokumentácie elementu [**Card**](./card)
-
-:::
+Pre viac informácií o použítí Card Title sa presuňte do dokumentácie elementu [Card](./card)
 
 ## Eventy
 

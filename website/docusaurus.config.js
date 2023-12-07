@@ -123,16 +123,16 @@ module.exports = {
         height: 28,
       },
       items: [
-        // {
-        //   type: 'doc',
-        //   docId: 'index',
-        //   label: 'Guide',
-        //   position: 'left',
-        // },
+        {
+          type: 'doc',
+          docId: 'index',
+          label: 'Príručka',
+          position: 'left',
+        },
         {
           type: 'doc',
           docId: 'components',
-          label: 'Components',
+          label: 'Komponenty',
           position: 'left',
         },
         // {
@@ -258,7 +258,7 @@ module.exports = {
         //   target: '_blank',
         // },
         {
-          href: 'https://github.com/ionic-team/ionic-framework',
+          href: 'https://github.com/lencys/wj-elements',
           position: 'right',
           className: 'icon-link icon-link-mask icon-link-github',
           'aria-label': 'GitHub repository',

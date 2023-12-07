@@ -64,6 +64,15 @@ import Colors from '@site/static/usage/v1/slider/colors/index.md';
 | Typ | `boolean` |
 | Predvolená hodnota | `false` |
 
+### color
+
+|  |  |
+| --- | --- |
+| Popis | Určuje farbu slideru na jednu z farebnej palety aplikácie. Predvolené možnosti sú: `complete`, `danger`, `dark`, `primary`, `success` a `warning`. |
+| Atribút | `color` |
+| Typ | `complete`, `danger`, `dark`, `primary`, `success`, `warning` |
+| Predvolená hodnota | `undefined` |
+
 ### disabled
 
 |  |  |
@@ -125,7 +134,7 @@ import Colors from '@site/static/usage/v1/slider/colors/index.md';
 
 Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
-## CSS Shadow Parts
+## CSS Shadow Party
 
 | Názov | Popis |
 | --- | --- |
@@ -149,7 +158,7 @@ Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 | `--wj-select-options-border-style`    | Štýl okrajov rozbalovacieho okna        |
 | `--wj-select-options-border-width`    | Šírka okrajov rozbalovacieho okna       |
 
-## Slots
+## Sloty
 
 | Slot | Popis |
 | --- | --- |

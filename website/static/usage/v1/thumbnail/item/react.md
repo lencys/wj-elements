@@ -1,16 +1,15 @@
 ```tsx
 import React from 'react';
-import { IonItem, IonLabel, IonThumbnail } from '@ionic/react';
-
+import { Thumbnail, Item, Label } from '@elements/react';
 function Example() {
   return (
     <>
-      <IonItem>
-        <IonThumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-        </IonThumbnail>
-        <IonLabel>Item Thumbnail</IonLabel>
-      </IonItem>
+     <wj-item>
+        <wj-thumbnail slot="start">
+          <img alt="Silhouette of mountains" src="../../../../img/thumbnail.svg" />
+        </wj-thumbnail>
+        <wj-label>Item</wj-label>
+      </wj-item>
     </>
   );
 }

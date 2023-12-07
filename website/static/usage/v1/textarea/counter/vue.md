@@ -1,27 +1,14 @@
 ```html
 <template>
-  <ion-textarea label="Default counter" label-placement="floating" :counter="true" maxlength="20"></ion-textarea>
-
-  <ion-textarea
-    label="Custom Counter Format"
-    label-placement="floating"
-    :counter="true"
-    maxlength="20"
-    :counter-formatter="customFormatter"
-  ></ion-textarea>
+  <wj-textarea label="Label" name="dog" rows="4" max-length="24" counter></wj-textarea>
 </template>
 
 <script lang="ts">
-  import { IonTextarea } from '@ionic/vue';
+  import { Textarea } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { IonTextarea },
-    methods: {
-      customFormatter(inputLength, maxLength) {
-        return `${maxLength - inputLength} characters remaining`;
-      },
-    },
+    components: { Textarea },
   });
 </script>
 ```

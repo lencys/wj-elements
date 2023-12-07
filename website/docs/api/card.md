@@ -6,7 +6,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element **Card** je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky `"Card Header"`, hlavnej časti `"Card Content"` a pätičky `"Card Footer"`.
+Element **Card** je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky [CardHeader](./card-header), hlavnej časti [CardContent](./card-content) a pätičky [CardFooter](./card-footer).
 
 ## Základné použitie
 

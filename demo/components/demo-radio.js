@@ -14,7 +14,7 @@ template.innerHTML = `<h1>Radio</h1>
           <wj-radio value="cat">Cat</wj-radio>
           <wj-radio value="dog">Dog</wj-radio>
           <wj-radio value="elephant" disabled="">Elephant</wj-radio>
-          <wj-radio value="rabbit" >Rabbit</wj-radio>
+          <wj-radio indeterminate value="rabbit" >Rabbit</wj-radio>
         </wj-radio-group>
       </div>
     </div>

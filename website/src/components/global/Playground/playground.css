@@ -14,6 +14,10 @@
   --playground-tabs-background: var(--c-carbon-90);
   --playground-tab-btn-color: var(--c-carbon-20);
   --playground-tab-btn-border-color: transparent;
+  
+}
+[data-theme="dark"] .playground wj-radio {
+  --wj-color: #fff;
 }
 
 .playground {
@@ -213,6 +217,9 @@
 }
 .xxlarge .playground iframe {
   min-height: 360px;
+}
+.xxxlarge .playground iframe {
+  min-height: 390px;
 }
 
 .playground .frame-hidden {

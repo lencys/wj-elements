@@ -11,7 +11,7 @@ template.innerHTML = `
     <h2>Basic</h2>
     <div class="playground">
       <div class="content" style="display: block;">
-        <wj-menu active style="max-width: 200px;">
+        <wj-menu  active style="max-width: 200px;">
           <wj-menu-item>
             Menu item
             <wj-icon slot="start" name="home"></wj-icon>
@@ -28,7 +28,7 @@ template.innerHTML = `
           <wj-menu-label>Next menu</wj-menu-label>
           <wj-menu-item>
             Menu item
-            <wj-menu slot="submenu">
+            <wj-menu variant="NAV" slot="submenu">
               <wj-menu-item>Menu item</wj-menu-item>
               <wj-menu-item>
                 Menu item

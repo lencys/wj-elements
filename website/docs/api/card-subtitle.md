@@ -12,14 +12,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element card-subtitle je komponent navrhnutý na použitie v rámci elementu Card Header na poskytnutie doplnkového alebo sekundárneho textu, čím používateľovi poskytuje dodatočný kontext alebo informácie súvisiace s hlavným obsahom karty.
+Element card subtitle je komponent navrhnutý na použitie v rámci elementu [Card Header](./card-header) na zobrazenie doplnkového alebo sekundárneho textu, čím používateľovi poskytuje dodatočný kontext alebo informácie súvisiace s hlavným obsahom karty.
 
-:::note Poznámka
-
-Pre viac informácií o použítí Card Subtitle sa presuňte do dokumentácie elementu [Card.](./card)
-
-:::
-
+Pre viac informácií o použítí Card Subtitle sa presuňte do dokumentácie elementu [card](./card).
 
 ## Eventy
 

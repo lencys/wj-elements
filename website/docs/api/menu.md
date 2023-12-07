@@ -17,7 +17,7 @@ Menu element slúži na zobrazenie navigácie. V prvedvolenom stave je schovaný
 
 import BasicUsage from '@site/static/usage/v1/menu/basic/index.md';
 
-<div class="xxxlarge">
+<div className="xxxlarge">
 
 <BasicUsage />
 
@@ -28,7 +28,7 @@ import BasicUsage from '@site/static/usage/v1/menu/basic/index.md';
 
 import Inset from '@site/static/usage/v1/menu/inset/index.md';
 
-<div class="xxxlarge">
+<div className="xxxlarge">
 
 <Inset />
 

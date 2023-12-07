@@ -1,61 +1,61 @@
 ---
-title: "ion-thumbnail"
+title: "Thumbnail"
 ---
 
-import Props from '@ionic-internal/component-api/v1/thumbnail/props.md';
-import Events from '@ionic-internal/component-api/v1/thumbnail/events.md';
-import Methods from '@ionic-internal/component-api/v1/thumbnail/methods.md';
-import Parts from '@ionic-internal/component-api/v1/thumbnail/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/thumbnail/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/thumbnail/slots.md';
-
 <head>
-  <title>ion-thumbnail | Thumbnail App Component to Wrap Images or Icons</title>
-  <meta name="description" content="What is a thumbnail image? Thumbnail app components wrap an image or icon and can be used to display a layout of images or for previews of full-size images." />
+  <title>Thumbnail | Thumbnail App Component to Wrap Images or Icons</title>
+  <meta name="description" content="Thumbnail uľahčuje zobrazenie väčších obrázkov alebo iných médií zobrazením ich menšieho náhľadu. Je ho možné použiť samostatne ale aj v iných elementoch." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Thumbnails are square components that usually wrap an image or icon. They can be used to make it easier to display a group of larger images or provide a preview of the full-size image.
+Thumbnail uľahčuje zobrazenie väčších obrázkov alebo iných médií zobrazením ich menšieho náhľadu. Je ho možné použiť samostatne ale aj v iných elementoch.
 
-Thumbnails can be used by themselves or inside of any element. If placed inside of an `ion-item`, the thumbnail will resize to fit the parent component. To position a thumbnail on the left or right side of an item, set the slot to `start` or `end`, respectively.
-
-## Basic Usage
+## Základné použitie
 
 import Basic from '@site/static/usage/v1/thumbnail/basic/index.md';
 
 <Basic />
 
-## Item Thumbnails
+## Použitie v Itemoch
+
+Pri použití v elementoch [Item.](./item) sa jeho veľkosť prispôsobí veľkosti rodiča a jeho pozíciu je možné určiť pridaním `slotu` s hodnotou `start` pre umiestnenie vľavo, alebo `end` pre umiestnenie vpravo.
 
 import Item from '@site/static/usage/v1/thumbnail/item/index.md';
 
 <Item />
 
-## Theming
-
-### CSS Custom Properties
+## Vlastné štýly
 
 import CSSProps from '@site/static/usage/v1/thumbnail/theming/css-properties/index.md';
 
 <CSSProps />
 
-## Properties
-<Props />
+## Atribúty a Vlastnosti
 
-## Events
-<Events />
 
-## Methods
-<Methods />
+## Eventy
+
+Pre tento komponent nie sú k dispozícii žiadne eventy.
+
+## Metódy
+
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
 ## CSS Shadow Parts
-<Parts />
 
-## CSS Custom Properties
-<CustomProps />
+Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
 
-## Slots
-<Slots />
+## CSS Custom Vlastnosti
+
+| Vlasnosť   | Popis      |
+|-----------|-------------|
+| `--wj-border-radius`    | Zaoblenie okrajov elementu |
+| `--wj-thumbnail-height` | Výška elementu|
+| `--wj-thumbnail-width`  | Šírka elementu |
+
+## Sloty
+
+Pre tento komponent nie sú k dispozícii žiadne sloty.

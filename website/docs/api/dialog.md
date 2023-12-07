@@ -18,92 +18,26 @@ Element Dialog zobrazuje dialógové okno s prispôsobiteľným obsahom. Je mož
 Na zobrazenie komponentu Dialog sa používa komponent Button s atribútom dialog.
 Pre viac informácii prejdite na stránku [Button](./button.md).
 
+import Basic from '@site/static/usage/v1/dialog/basic/index.md';
 
-```markdown
-<wj-button dialog="open-modal">Open</wj-button>
-<wj-dialog trigger="open-modal" title="Title">
-  <h4>Lorem ipsum dolor sit amet</h4>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
-  <div slot="footer">
-    <wj-button fill="outline" color="light">Zatvorit</wj-button>
-    <wj-button>Potvrdit</wj-button>
-  </div>
-</wj-dialog>
-```
+<div className="xlarge">
+<Basic />
+</div>
 
 ### Placement (Umiestnenie)
 
 Vlastnosť `placement` určuje umiestnenie dialógového okna na obrazovke. Predvolená je hodnota slide-up. Ďalšie možnosti sú `"stick-up"`, `"fill-in"`, `"slide-left"`, `"slide-right"`. 
 
-```html
-<div class="content">
-	<wj-button dialog="open-modal-1">Open Slide Up</wj-button>
-	<wj-button dialog="open-modal-2">Open Stick Up</wj-button>
-	<wj-button dialog="open-modal-3">Open Fill In</wj-button>
-	<wj-button dialog="open-modal-4">Open Slide Left</wj-button>
-	<wj-button dialog="open-modal-5">Open Slide Right</wj-button>
-	
-	<wj-dialog trigger="open-modal-1" href="/nejaka-url/" placement="slide-up">
-	  <h2>Lorem ipsum dolor sit amet</h2>
-	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl. Pellentesque nec urna cursus, euismod nunc a, laoreet massa.</p>
-	</wj-dialog>
-	
-	<wj-dialog trigger="open-modal-2" href="/nejaka-url/" placement="stick-up">
-	  <h2>Lorem ipsum dolor sit amet</h2>
-	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
-	</wj-dialog>
-	
-	<wj-dialog trigger="open-modal-3" href="/nejaka-url/" placement="fill-in">
-	  <h2>Lorem ipsum dolor sit amet</h2>
-	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
-	</wj-dialog>
-	
-	<wj-dialog trigger="open-modal-4" href="/nejaka-url/" placement="slide-left">
-	  <h2>Lorem ipsum dolor sit amet</h2>
-	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
-	</wj-dialog>
-	
-	<wj-dialog trigger="open-modal-5" href="/nejaka-url/" placement="slide-right">
-	  <h2>Lorem ipsum dolor sit amet</h2>
-	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
-	
-	  <p>Nulla elit dui, tincidunt quis maximus nec, bibendum non tortor. Donec quam metus, tristique at erat ut, rhoncus volutpat justo.</p>
-	</wj-dialog>
+import Placement from '@site/static/usage/v1/dialog/placement/index.md';
+
+<div className="xxxlarge">
+<Placement />
 </div>
-```
 
 ### Size (Veľkosť)
 
 Vlastnosť `size` upravuje veľkosť dialógového okna na obrazovke. Predvolená je veľkosť `"small"`. Ďalšie možnosti sú `"medium"`, `"large"` a `"ex-large"`. 
 
-```html
-<div class="content">
-  <wj-button dialog="open-modal-small">Small</wj-button>
-  <wj-button dialog="open-modal-medium">Medium</wj-button>
-  <wj-button dialog="open-modal-large">Large</wj-button>
-  <wj-button dialog="open-modal-ex-large">Extra large</wj-button>
-
-  <wj-dialog trigger="open-modal-small" size="small">
-    <h2>Lorem ipsum dolor sit amet</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl. Pellentesque nec urna cursus, euismod nunc a, laoreet massa. Integer quis felis malesuada, faucibus mauris nec, aliquam velit.</p>
-  </wj-dialog>
-
-  <wj-dialog trigger="open-modal-medium" size="medium">
-    <h2>Lorem ipsum dolor sit amet</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
-  </wj-dialog>
-
-  <wj-dialog trigger="open-modal-large" size="large">
-    <h2>Lorem ipsum dolor sit amet</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
-  </wj-dialog>
-
-  <wj-dialog trigger="open-modal-ex-large" size="ex-large">
-    <h2>Lorem ipsum dolor sit amet</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
-  </wj-dialog>
-</div>
-```
 
 ## Vlastnosti
 

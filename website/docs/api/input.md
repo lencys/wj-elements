@@ -18,7 +18,7 @@ Input element rozširuje možnosti štandardného HTML inputu pokročilými funk
 
 import Basic from '@site/static/usage/v1/input/basic/index.md';
 
-<div class="xxlarge">
+<div className="xxlarge">
 
   <Basic />
 
@@ -50,7 +50,7 @@ V kombinácii s elementorm `Button` vytvorí plnohodnotné vyhľadávacie pole.
 
 import Search from '@site/static/usage/v1/input/search/index.md';
 
-<div class="small">
+<div className="small">
 
 <Search />
 

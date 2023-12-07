@@ -1,19 +1,11 @@
 ```tsx
 import React from 'react';
-import { IonItem, IonList, IonTextarea } from '@ionic/react';
+import { Textarea } from '@elements/react';
 function Example() {
   return (
-    <IonList>
-      <IonItem>
-        <IonTextarea label="Regular textarea" placeholder="Type something here"></IonTextarea>
-      </IonItem>
-      <IonItem>
-        <IonTextarea readonly={true} label="Readonly textarea" placeholder="Can't edit this"></IonTextarea>
-      </IonItem>
-      <IonItem>
-        <IonTextarea disabled={true} label="Disabled textarea" placeholder="Can't type here"></IonTextarea>
-      </IonItem>
-    </IonList>
+    <>
+      <wj-textarea label="Label" name="dog" rows="4"></wj-textarea>
+    </>
   );
 }
 export default Example;

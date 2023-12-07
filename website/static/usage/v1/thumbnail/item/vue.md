@@ -1,19 +1,19 @@
 ```html
 <template>
-  <ion-item>
-    <ion-thumbnail slot="start">
-      <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-    </ion-thumbnail>
-    <ion-label>Item Thumbnail</ion-label>
-  </ion-item>
+  <wj-item>
+    <wj-thumbnail slot="start">
+      <img alt="Silhouette of mountains" src="../../../../img/thumbnail.svg" />
+    </wj-thumbnail>
+    <wj-label>Item</wj-label>
+  </wj-item>
 </template>
 
 <script lang="ts">
-  import { IonItem, IonLabel, IonThumbnail } from '@ionic/vue';
+  import { Thumbnail, Item, Label } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { IonItem, IonLabel, IonThumbnail },
+    components: { Thumbnail, Item, Label },
   });
 </script>
 ```

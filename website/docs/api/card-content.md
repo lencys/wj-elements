@@ -4,11 +4,7 @@ title: "Card Content"
 
 Tento element slúži na použitie v karte pre umiestnenie primárneho obsahu karty.
 
-:::note Poznámka
-
-Pre viac informácií o použítí Card Content sa presuňte do dokumentácie elementu [**Card**](./card).
-
-:::
+Pre viac informácií o použítí Card Content sa presuňte do dokumentácie elementu [Card](./card).
 
 ## Eventy
 
