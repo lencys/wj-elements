@@ -44,36 +44,36 @@ import DocsCards from '@components/global/DocsCards';
 
 <DocsCard header="Card" href="api/card" icon="/icons/component-card-icon.png">
   <p>
-    Cards are a great way to display an important piece of content, and can contain images, buttons, text, and more.
+   Card je flexibilný a rozšíriteľný kontajner formátu karty, ktorý umožňuje zobraziť širokú škálu obsahu.
   </p>
 </DocsCard>
 
 <DocsCard header="Checkbox" href="api/checkbox" icon="/icons/component-checkbox-icon.png">
-  <p>Checkboxes can be used to let the user know they need to make a binary decision.</p>
+  <p>Checkbox umožňuje používateľom vybrať jednu alebo viac možností z množiny.</p>
 </DocsCard>
 
 <DocsCard header="Chip" href="api/chip" icon="/icons/component-chip-icon.png">
-  <p>Chips are a compact way to display data or actions.</p>
+  <p>Chip je univerzálny element, ktorý predstavuje malý vizuálny blok obsahujúci rôzne ďalšie elementy, ako napríklad avatary, text a ikony.</p>
 </DocsCard>
 
 <DocsCard header="Color picker" href="api/color-picker" icon="/icons/component-colorpicker-icon.png">
-  <p>Content is the quintessential way to interact with and navigate through an app.</p>
+  <p>Color picker je element, ktorý zobrazuje farebnú paletu a umožňuje používateľom vybrať jednu z jej farieb.</p>
 </DocsCard>
 
 <DocsCard header="Copy button" href="api/copy-button" icon="/icons/component-copybutton-icon.png">
-  <p>Content is the quintessential way to interact with and navigate through an app.</p>
+  <p>Copy button umožnuje jedným kliknutím skopírovať želaný obsah do clipboardu.</p>
 </DocsCard>
 
 <DocsCard header="Dialog" href="api/dialog" icon="/icons/component-popover-icon.png">
-  <p>Date & time pickers are used to present an interface that makes it easy for users to select dates and times.</p>
+  <p>Dialog zobrazuje dialógové okno nachádzajúce sa nad obsahom aplikácie.</p>
 </DocsCard>
 
 <DocsCard header="Dropdown" href="api/dropdown" icon="/icons/component-dropdown-icon.png">
-  <p>Date & time pickers are used to present an interface that makes it easy for users to select dates and times.</p>
+  <p>Dropdown element slúži na zobrazenie kontextového menu po kliknutí na tlačidlo.</p>
 </DocsCard>
 
 <DocsCard header="Icons" href="api/icon" img="/icons/feature-component-icons-icon.png">
-  <p>Beautifully designed icons for use in web, iOS, Android, and desktop apps.</p>
+  <p>Icon poskytuje jednoduchý spôsob zobrazenia ikon zo sady SVG obrázkov, pričom umožňuje rôzne možnosti prispôsobenia. </p>
 </DocsCard>
 
 <DocsCard header="Icon Picker" href="api/icon-picker" icon="/icons/component-iconpicker-icon.png">

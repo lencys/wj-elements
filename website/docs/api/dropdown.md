@@ -11,7 +11,8 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Dropdown element slúži na zobrazenie kontextového menu po kliknutí. Menu möže obsahovať aj ikony.
+Dropdown element slúži na zobrazenie kontextového menu po kliknutí na tlačidlo. Umožnuje používateľovi zvoliť jednu z preddefinovaných možností. Obsahuje element [Button](./button), ktorý funguje ako aktivátor a element [Menu](./menu) s obsahom v podobe jednotlivých položiek [MenuItem.](./menu-item). 
+
 
 ## Základné použitie
 

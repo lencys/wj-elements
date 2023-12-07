@@ -5,7 +5,7 @@ import p from "./wj-element.js";
 import "./wj-store.js";
 const m = `/*!
 * direction.scss
-*/:host{display:inline-block}:host .native-button-group{display:flex;flex-wrap:nowrap;line-height:1}:host slot{display:contents}::slotted(wj-button){margin:0}
+*/:host{display:inline-block}:host .native-button-group{display:flex;flex-wrap:nowrap;line-height:1}:host slot{display:contents}::slotted(wj-button){margin:0!important}
 `;
 class g extends p {
   constructor() {

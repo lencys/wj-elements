@@ -15,10 +15,10 @@ module.exports = {
   baseUrl: `${BASE_URL}/`,
   i18n: {
     defaultLocale: 'sk',
-    locales: ['sk', 'en'],
+    locales: ['sk'],
     localeConfigs: {
       sk: { label: 'Slovensky' },
-      en: { label: 'English' },
+      // en: { label: 'English' },
       // ja: { label: '日本語' },
     },
   },
@@ -154,17 +154,17 @@ module.exports = {
         //   position: 'left',
         //   className: 'cta',
         // },
-        {
-          type: 'docsVersionDropdown',
-          position: 'right',
-          dropdownItemsAfter: [
-            { to: '/docs', label: 'v1' }
-            // { to: 'https://ionicframework.com/docs/v4/components', label: 'v4', target: '_blank' },
-            // { to: 'https://ionicframework.com/docs/v3/', label: 'v3', target: '_blank' },
-          ],
-          dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
-          dropdownActiveClassDisabled: false,
-        },
+        // {
+        //   type: 'docsVersionDropdown',
+        //   position: 'right',
+        //   dropdownItemsAfter: [
+        //     { to: '/docs', label: 'v1' }
+        //     // { to: 'https://ionicframework.com/docs/v4/components', label: 'v4', target: '_blank' },
+        //     // { to: 'https://ionicframework.com/docs/v3/', label: 'v3', target: '_blank' },
+        //   ],
+        //   // dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
+        //   dropdownActiveClassDisabled: false,
+        // },
         {
           type: 'search',
           position: 'right',

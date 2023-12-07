@@ -20,9 +20,7 @@ Pre viac informácii prejdite na stránku [Button](./button.md).
 
 import Basic from '@site/static/usage/v1/dialog/basic/index.md';
 
-<div className="xlarge">
 <Basic />
-</div>
 
 ### Placement (Umiestnenie)
 
@@ -30,9 +28,7 @@ Vlastnosť `placement` určuje umiestnenie dialógového okna na obrazovke. Pred
 
 import Placement from '@site/static/usage/v1/dialog/placement/index.md';
 
-<div className="xxxlarge">
 <Placement />
-</div>
 
 ### Size (Veľkosť)
 

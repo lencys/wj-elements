@@ -37,7 +37,7 @@ import Counter from '@site/static/usage/v1/textarea/counter/index.md';
 <Counter />
 
 ## Resize (none)
-Vlastnosť `resize` určuje správanie zmeny veľkosti elementu. Ak je nastavená na hodnotu `none`, veľkosť podľa zostane fixná. 
+Vlastnosť `resize` určuje správanie zmeny veľkosti elementu. Ak je nastavená na hodnotu `none`, veľkosť poľa zostane fixná. 
 
 import Resize from '@site/static/usage/v1/textarea/resize/index.md';
 
@@ -113,7 +113,7 @@ import Disabled from '@site/static/usage/v1/textarea/disabled/index.md';
 
 |  |  |
 | --- | --- |
-| Popis |Určuje správanie pri zmene veľkosti. Ak je nastavená na hodnotu `auto`, automaticky sa zmení veľkosť podľa obsahu. |
+| Popis |Určuje správanie pri zmene veľkosti. Ak je nastavená na hodnotu `auto`, automaticky sa zmení veľkosť poľa obsahu. |
 | Atribút | `resize` |
 | Typ | `auto`, `none` |
 | Predvolená hodnota | `none` |

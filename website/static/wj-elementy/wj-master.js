@@ -17,51 +17,53 @@ import { CardControls as bt } from "./wj-card-controls.js";
 import { CardHeader as gt } from "./wj-card-header.js";
 import { CardSubtitle as ft } from "./wj-card-subtitle.js";
 import { CardTitle as jt } from "./wj-card-title.js";
-import { Checkbox as Et } from "./wj-checkbox.js";
-import { Chip as Ct } from "./wj-chip.js";
-import { Col as Tt } from "./wj-col.js";
-import { ColorPicker as kt } from "./wj-color-picker.js";
-import { Container as Dt } from "./wj-container.js";
-import { CopyButton as Nt } from "./wj-copy-button.js";
-import { Dialog as zt } from "./wj-dialog.js";
-import { Divider as Ht } from "./wj-divider.js";
-import { Dropdown as Bt } from "./wj-dropdown.js";
-import { Footer as It } from "./wj-footer.js";
-import { Grid as Gt } from "./wj-grid.js";
-import { Header as Vt } from "./wj-header.js";
-import { Icon as Jt } from "./wj-icon.js";
-import { IconPicker as Kt } from "./wj-icon-picker.js";
-import { Img as Xt } from "./wj-img.js";
-import { ImgComparer as Zt } from "./wj-img-comparer.js";
-import { InfiniteScroll as ee } from "./wj-infinite-scroll.js";
-import { Input as oe } from "./wj-input.js";
-import { Item as ie } from "./wj-item.js";
-import { Label as ne } from "./wj-label.js";
-import { List as ce } from "./wj-list.js";
-import { Main as pe } from "./wj-main.js";
-import { Menu as ue } from "./wj-menu.js";
-import { MenuButton as be } from "./wj-menu-button.js";
-import { MenuItem as ge } from "./wj-menu-item.js";
-import { MenuLabel as fe } from "./wj-menu-label.js";
-import { Popup as je } from "./wj-popup.js";
-import { ProgressBar as Ee } from "./wj-progress-bar.js";
-import { Radio as Ce } from "./wj-radio.js";
-import { RadioGroup as Te } from "./wj-radio-group.js";
-import { Route as ke } from "./wj-route.js";
-import { Routerx as De } from "./wj-routerx.js";
-import { RouterLink as Ne } from "./wj-router-link.js";
+import { Carousel as Et } from "./wj-carousel.js";
+import { CarouselItem as Ct } from "./wj-carousel-item.js";
+import { Checkbox as Tt } from "./wj-checkbox.js";
+import { Chip as Lt } from "./wj-chip.js";
+import { Col as Dt } from "./wj-col.js";
+import { ColorPicker as Nt } from "./wj-color-picker.js";
+import { Container as Mt } from "./wj-container.js";
+import { CopyButton as Ht } from "./wj-copy-button.js";
+import { Dialog as Bt } from "./wj-dialog.js";
+import { Divider as Ft } from "./wj-divider.js";
+import { Dropdown as Gt } from "./wj-dropdown.js";
+import { Footer as Vt } from "./wj-footer.js";
+import { Grid as Jt } from "./wj-grid.js";
+import { Header as Kt } from "./wj-header.js";
+import { Icon as Xt } from "./wj-icon.js";
+import { IconPicker as Zt } from "./wj-icon-picker.js";
+import { Img as ee } from "./wj-img.js";
+import { ImgComparer as oe } from "./wj-img-comparer.js";
+import { InfiniteScroll as ie } from "./wj-infinite-scroll.js";
+import { Input as ne } from "./wj-input.js";
+import { Item as ce } from "./wj-item.js";
+import { Label as pe } from "./wj-label.js";
+import { List as ue } from "./wj-list.js";
+import { Main as be } from "./wj-main.js";
+import { Menu as ge } from "./wj-menu.js";
+import { MenuButton as fe } from "./wj-menu-button.js";
+import { MenuItem as je } from "./wj-menu-item.js";
+import { MenuLabel as Ee } from "./wj-menu-label.js";
+import { Popup as Ce } from "./wj-popup.js";
+import { ProgressBar as Te } from "./wj-progress-bar.js";
+import { Radio as Le } from "./wj-radio.js";
+import { RadioGroup as De } from "./wj-radio-group.js";
+import { Route as Ne } from "./wj-route.js";
+import { Routerx as Me } from "./wj-routerx.js";
+import { RouterLink as He } from "./wj-router-link.js";
 import "./wj-router-outlet.js";
-import { Row as ze } from "./wj-row.js";
-import { Slider as He } from "./wj-slider.js";
-import { SplitView as Be } from "./wj-split-view.js";
-import { Textarea as Ie } from "./wj-textarea.js";
-import { Thumbnail as Ge } from "./wj-thumbnail.js";
-import { Toast as Ve } from "./wj-toast.js";
-import { Toggle as Je } from "./wj-toggle.js";
-import { Toolbar as Ke } from "./wj-toolbar.js";
-import { ToolbarAction as Xe } from "./wj-toolbar-action.js";
-import { Tooltip as Ze } from "./wj-tooltip.js";
-import { VisuallyHidden as er } from "./wj-visually-hidden.js";
+import { Row as Be } from "./wj-row.js";
+import { Slider as Fe } from "./wj-slider.js";
+import { SplitView as Ge } from "./wj-split-view.js";
+import { Textarea as Ve } from "./wj-textarea.js";
+import { Thumbnail as Je } from "./wj-thumbnail.js";
+import { Toast as Ke } from "./wj-toast.js";
+import { Toggle as Xe } from "./wj-toggle.js";
+import { Toolbar as Ze } from "./wj-toolbar.js";
+import { ToolbarAction as er } from "./wj-toolbar-action.js";
+import { Tooltip as or } from "./wj-tooltip.js";
+import { VisuallyHidden as ir } from "./wj-visually-hidden.js";
 const y = `:host{color:red}
 `;
 class C extends u {
@@ -116,11 +118,11 @@ class T extends u {
   }
 }
 customElements.get("wj-button-group") || window.customElements.define("wj-button-group", T);
-const L = `/*!
+const k = `/*!
 * direction.scss
 */:host{--wj-option-padding-top: .5rem;--wj-option-padding-bottom: .5rem;--wj-option-highlighted: #f4f4f4;display:block}:host wj-icon{visibility:hidden;margin-inline:.5rem}:host([selected]) wj-icon{visibility:visible}.native-option{display:flex;align-items:center;padding-top:var(--wj-option-padding-top);padding-bottom:var(--wj-option-padding-bottom)}.native-option:hover{background-color:var(--wj-option-highlighted)}::slotted([slot=start]){flex:0 0 auto;display:flex;align-items:center;margin-inline-end:.5rem}::slotted([slot=end]){flex:0 0 auto;display:flex;align-items:center;margin-inline:auto .5rem}
 `;
-class k extends u {
+class L extends u {
   constructor() {
     super();
     d(this, "className", "Option");
@@ -129,7 +131,7 @@ class k extends u {
     return t ? this.setAttribute("selected", "") : this.removeAttribute("selected");
   }
   static get cssStyleSheet() {
-    return L;
+    return k;
   }
   static get observedAttributes() {
     return [];
@@ -151,7 +153,7 @@ class k extends u {
     v.addListener(this, "click", "wj:option-change");
   }
 }
-customElements.get("wj-option") || window.customElements.define("wj-option", k);
+customElements.get("wj-option") || window.customElements.define("wj-option", L);
 const O = `/*!
 * direction.scss
 */
@@ -188,7 +190,7 @@ class D extends u {
 customElements.get("wj-options") || window.customElements.define("wj-options", D);
 const R = `/*!
 * direction.scss
-*/:host{--wj-select-border-width: 1px;--wj-select-border-style: solid;--wj-select-border-color: var(--wj-border-color);--wj-select-options-border-width: 1px;--wj-select-options-border-style: solid;--wj-select-options-border-color: var(--wj-border-color);--wj-select-background-color: #fff;--wj-select-line-height: 20px;--wj-select-color: #212121;--wj-select-border-radius: 4px;width:100%;display:block}:host [slot=arrow]{transform:rotate(0);transition:all .2s ease-in}.native-select.default .wrapper{display:block;border-width:var(--wj-select-border-width);border-style:var(--wj-select-border-style);border-color:var(--wj-select-border-color);border-radius:var(--wj-select-border-radius);padding-inline:.5rem;padding-top:.25rem;padding-bottom:.25rem}.native-select.default .input-wrapper{padding:0;min-height:25px;margin-top:-4px}.native-select.default.focused wj-label{opacity:.67;font-size:12px;letter-spacing:normal}.native-select.default wj-label{margin:0;display:block;opacity:1;cursor:text;transition:opacity .2s ease 0s;line-height:var(--wj-select-line-height)}.native-select.default wj-label.fade{opacity:.5;font-size:12px;letter-spacing:normal}.native-select.standard .input-wrapper{border-width:var(--wj-select-border-width);border-style:var(--wj-select-border-style);border-color:var(--wj-select-border-color);border-radius:var(--wj-select-border-radius);width:100%}.wrapper{display:flex;width:100%}.input-wrapper{display:grid;grid-template-columns:1fr auto auto;align-items:center;background-color:var(--wj-select-background-color);min-height:28px;color:var(--wj-select-color);line-height:var(--wj-select-line-height);appearance:none;padding:2px .5rem;font-size:14px;font-weight:400;vertical-align:middle}input{border:medium;height:25px;min-height:25px;padding:0;background:none;box-shadow:none;width:100%;outline:0}::placeholder{opacity:1}:host [active] .input-wrapper{border-radius:var(--wj-select-border-radius) var(--wj-select-border-radius) 0 0}:host [active] [slot=arrow]{transform:rotate(180deg);transition:all .2s ease-in}.option-wrapper{border-width:var(--wj-select-options-border-width);border-style:var(--wj-select-options-border-style);border-color:var(--wj-select-options-border-color);border-radius:0 0 var(--wj-select-border-radius) var(--wj-select-border-radius);margin-top:-1px;background:var(--wj-select-background-color);overflow:auto}:host([multiple]) input{position:absolute;z-index:-1;top:0;left:0;width:0;height:0;opacity:0}:host([multiple]) .chips{display:flex;flex:1;align-items:center;flex-wrap:wrap}:host([disabled]) .input-wrapper{opacity:.5;pointer-events:none;cursor:not-allowed}.counter{padding-inline:.5rem}wj-chip{--wj-chip-margin: 0 .25rem 0 0}wj-button{--wj-padding-top: .25rem;--wj-padding-start: .25rem;--wj-padding-end: .25rem;--wj-padding-bottom: .25rem;--wj-button-margin-inline: 0 .25rem}
+*/:host{--wj-select-border-width: 1px;--wj-select-border-style: solid;--wj-select-border-color: var(--wj-border-color);--wj-select-options-border-width: 1px;--wj-select-options-border-style: solid;--wj-select-options-border-color: var(--wj-border-color);--wj-select-background-color: #fff;--wj-select-line-height: 20px;--wj-select-color: #212121;--wj-select-border-radius: 4px;width:100%;display:block}:host [slot=arrow]{transform:rotate(0);transition:all .2s ease-in}.native-select.default .wrapper{display:block;border-width:var(--wj-select-border-width);border-style:var(--wj-select-border-style);border-color:var(--wj-select-border-color);border-radius:var(--wj-select-border-radius);padding-inline:.5rem;padding-top:.25rem;padding-bottom:.25rem}.native-select.default .input-wrapper{padding:0;min-height:25px;margin-top:-4px}.native-select.default.focused wj-label{opacity:.67;font-size:12px;letter-spacing:normal}.native-select.default wj-label{margin:0;display:block;opacity:1;cursor:text;transition:opacity .2s ease 0s;line-height:var(--wj-select-line-height)}.native-select.default wj-label.fade{opacity:.5;font-size:12px;letter-spacing:normal}.native-select.standard .input-wrapper{border-width:var(--wj-select-border-width);border-style:var(--wj-select-border-style);border-color:var(--wj-select-border-color);border-radius:var(--wj-select-border-radius);width:100%}.wrapper{display:flex;width:100%}.input-wrapper{display:grid;grid-template-columns:1fr auto auto;align-items:center;background-color:var(--wj-select-background-color);min-height:28px;color:var(--wj-select-color);line-height:var(--wj-select-line-height);-webkit-appearance:none;-moz-appearance:none;appearance:none;padding:2px .5rem;font-size:14px;font-weight:400;vertical-align:middle}input{border:medium;height:25px;min-height:25px;padding:0;background:none;box-shadow:none;width:100%;outline:0}::placeholder{opacity:1}:host [active] .input-wrapper{border-radius:var(--wj-select-border-radius) var(--wj-select-border-radius) 0 0}:host [active] [slot=arrow]{transform:rotate(180deg);transition:all .2s ease-in}.option-wrapper{border-width:var(--wj-select-options-border-width);border-style:var(--wj-select-options-border-style);border-color:var(--wj-select-options-border-color);border-radius:0 0 var(--wj-select-border-radius) var(--wj-select-border-radius);margin-top:-1px;background:var(--wj-select-background-color);overflow:auto}:host([multiple]) input{position:absolute;z-index:-1;top:0;left:0;width:0;height:0;opacity:0}:host([multiple]) .chips{display:flex;flex:1;align-items:center;flex-wrap:wrap}:host([disabled]) .input-wrapper{opacity:.5;pointer-events:none;cursor:not-allowed}.counter{padding-inline:.5rem}wj-chip{--wj-chip-margin: 0 .25rem 0 0}wj-button{--wj-padding-top: .25rem;--wj-padding-start: .25rem;--wj-padding-end: .25rem;--wj-padding-bottom: .25rem;--wj-button-margin-inline: 0 .25rem}
 `;
 class N extends u {
   constructor() {
@@ -308,18 +310,18 @@ class N extends u {
   }
 }
 customElements.get("wj-select") || window.customElements.define("wj-select", N);
-const M = `/*!
+const z = `/*!
 * direction.scss
 */:host{--wj-font-size: 10px;--wj-tab-text-transfrom: uppercase;--wj-tab-font-weight: 500;--wj-tab-letter-spacing: .06em;--wj-tab-padding-inline: 1rem;--wj-tab-padding-top: .75rem;--wj-tab-padding-bottom: .75rem;--wj-tab-color-active: rgba(114, 82, 211, 1);--wj-tab-color-hover: rgba(114, 82, 211, .05);display:block;position:relative}:host a{display:block;align-items:center;white-space:nowrap;font-family:var(--wj-font-family-secondary);font-size:var(--wj-font-size);letter-spacing:var(--wj-tab-letter-spacing);text-transform:var(--wj-tab-text-transfrom);font-weight:var(--wj-tab-font-weight);text-decoration:none;padding-inline:var(--wj-tab-padding-inline);padding-top:var(--wj-tab-padding-top);padding-bottom:var(--wj-tab-padding-bottom);color:var(--wj-color)}:host a>svg{inline-size:1.5em;pointer-events:none}:host a:hover{background:var(--wj-tab-color-hover)}:host a:hover:after{display:block}:host a:after{content:" ";display:none;block-size:.15rem;writing-mode:var(--wj-tab-writing-mode);background:var(--wj-tab-color-active);position:absolute;bottom:var(--wj-tab-bottom);left:var(--wj-tab-start);right:var(--wj-tab-end);top:var(--wj-tab-top)}:host([disabled]) a{opacity:.5;cursor:not-allowed;background:inherit}:host([disabled]) a:after{display:none}:host([active]) a:after{display:block}
 `;
-class z extends u {
+class M extends u {
   constructor() {
     super();
     d(this, "className", "Tab");
     this.last = !1;
   }
   static get cssStyleSheet() {
-    return M;
+    return z;
   }
   setupAttributes() {
     this.isShadowRoot = "open";
@@ -332,7 +334,7 @@ class z extends u {
     v.addListener(this, "click", "wj:tab-change");
   }
 }
-customElements.get("wj-tab") || window.customElements.define("wj-tab", z);
+customElements.get("wj-tab") || window.customElements.define("wj-tab", M);
 const P = `/*!
 * direction.scss
 */:host{--wj-tab-top: 0;--wj-tab-start: 0;--wj-tab-end: 0;--wj-tab-bottom: 0}.native-tab-group{display:flex;flex-direction:column;overflow:hidden;position:relative}.native-tab-group>header{display:flex;flex-direction:column}.native-tab-group>header>nav{display:flex}.native-tab-group>section{width:100%}.native-tab-group>section>article{scroll-snap-align:start;overflow-y:auto;overscroll-behavior-y:contain;padding:var(--space-2) var(--space-3)}:host([variant=top]){--wj-tab-top: auto !important;--wj-tab-writing-mode: horizontal-tb}:host([variant=top]) .native-tab-group{flex-direction:column}:host([variant=top]) nav{border-bottom:1px solid rgba(0,0,0,.1)}:host([variant=start]){--wj-tab-start: auto !important;--wj-tab-writing-mode: vertical-rl}:host([variant=start]) .native-tab-group{flex-direction:row}:host([variant=start]) nav{flex-direction:column;border-right:1px solid rgba(0,0,0,.1)}:host([variant=end]){--wj-tab-writing-mode: vertical-rl}:host([variant=end]) .native-tab-group{flex-direction:row-reverse}:host([variant=end]) nav{flex-direction:column;border-left:1px solid rgba(0,0,0,.1)}:host([variant=bottom]){--wj-tab-bottom: auto !important;--wj-tab-writing-mode: horizontal-tb}:host([variant=bottom]) .native-tab-group{flex-direction:column-reverse}:host([variant=bottom]) nav{border-top:1px solid rgba(0,0,0,.1)}
@@ -422,58 +424,60 @@ export {
   gt as CardHeader,
   ft as CardSubtitle,
   jt as CardTitle,
-  Et as Checkbox,
-  Ct as Chip,
-  Tt as Col,
-  kt as ColorPicker,
-  Dt as Container,
-  Nt as CopyButton,
-  zt as Dialog,
-  Ht as Divider,
-  Bt as Dropdown,
+  Et as Carousel,
+  Ct as CarouselItem,
+  Tt as Checkbox,
+  Lt as Chip,
+  Dt as Col,
+  Nt as ColorPicker,
+  Mt as Container,
+  Ht as CopyButton,
+  Bt as Dialog,
+  Ft as Divider,
+  Gt as Dropdown,
   C as ExampleElement,
-  It as Footer,
-  Gt as Grid,
-  Vt as Header,
-  Jt as Icon,
-  Kt as IconPicker,
-  Xt as Img,
-  Zt as ImgComparer,
-  ee as InfiniteScroll,
-  oe as Input,
-  ie as Item,
-  ne as Label,
-  ce as List,
-  pe as Main,
-  ue as Menu,
-  be as MenuButton,
-  ge as MenuItem,
-  fe as MenuLabel,
+  Vt as Footer,
+  Jt as Grid,
+  Kt as Header,
+  Xt as Icon,
+  Zt as IconPicker,
+  ee as Img,
+  oe as ImgComparer,
+  ie as InfiniteScroll,
+  ne as Input,
+  ce as Item,
+  pe as Label,
+  ue as List,
+  be as Main,
+  ge as Menu,
+  fe as MenuButton,
+  je as MenuItem,
+  Ee as MenuLabel,
   T as NavMenu,
-  k as Option,
+  L as Option,
   D as Options,
-  je as Popup,
-  Ee as ProgressBar,
-  Ce as Radio,
-  Te as RadioGroup,
-  ke as Route,
-  Ne as RouterLink,
-  De as Routerx,
-  ze as Row,
+  Ce as Popup,
+  Te as ProgressBar,
+  Le as Radio,
+  De as RadioGroup,
+  Ne as Route,
+  He as RouterLink,
+  Me as Routerx,
+  Be as Row,
   N as Select,
-  He as Slider,
-  Be as SplitView,
-  z as Tab,
+  Fe as Slider,
+  Ge as SplitView,
+  M as Tab,
   H as TabGroup,
   B as TabPanel,
-  Ie as Textarea,
-  Ge as Thumbnail,
-  Ve as Toast,
-  Je as Toggle,
-  Ke as Toolbar,
-  Xe as ToolbarAction,
-  Ze as Tooltip,
-  er as VisuallyHidden,
+  Ve as Textarea,
+  Je as Thumbnail,
+  Ke as Toast,
+  Xe as Toggle,
+  Ze as Toolbar,
+  er as ToolbarAction,
+  or as Tooltip,
+  ir as VisuallyHidden,
   u as WJElement,
   U as bindRouterLinks,
   V as defaultStoreActions,

@@ -1,5 +1,5 @@
 ---
-title: 'Icon'
+title: 'Icon Picker'
 ---
 
 <head>
@@ -14,19 +14,14 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Tento komponent poskytuje jednoduchý spôsob zobrazenia ikon zo sady SVG obrázkov, pričom umožňuje rôzne možnosti prispôsobenia. WebJET Elements využíva sadu ikon Tabler. Pre zoznam všetkých dostupných ikon navštívte [tabler-icons.io](https://tabler-icons.io/).
+Icon picker umožňuje používateľovi nájsť a zvoliť ikonu zo sady dostupných ikon. Obsahuje 
 
 ## Základné použitie
 
-import Basic from '@site/static/usage/v1/icon/basic/index.md';
+import Basic from '@site/static/usage/v1/icon-picker/basic/index.md';
 
 <Basic />
 
-## Custom
-
-import Custom from '@site/static/usage/v1/icon/custom/index.md';
-
-<Custom />
 
 ## Atribúty a Vlastnosti
 

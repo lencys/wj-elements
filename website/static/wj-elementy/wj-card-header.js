@@ -5,7 +5,7 @@ import c from "./wj-element.js";
 import "./wj-store.js";
 const i = `/*!
 * direction.scss
-*/:host{background:transparent;border-radius:0;border-bottom:0;padding:1rem 1rem .5rem;position:relative;display:flex;flex-direction:column;color:var(--wj-color-contrast)}:host(.wj-separator):after{content:"";height:1px;background:rgba(0,0,0,.08);margin-top:.5rem}
+*/:host{--wj-card-header-padding: 1rem 1rem .5rem;background:transparent;border-radius:0;border-bottom:0;padding:var(--wj-card-header-padding);position:relative;display:flex;flex-direction:column;color:var(--wj-color-contrast)}:host(.wj-separator):after{content:"";height:1px;background:rgba(0,0,0,.08);margin-top:.5rem}
 `;
 class m extends c {
   constructor() {

@@ -1,37 +1,40 @@
-var d = Object.defineProperty;
-var u = (a, r, t) => r in a ? d(a, r, { enumerable: !0, configurable: !0, writable: !0, value: t }) : a[r] = t;
-var h = (a, r, t) => (u(a, typeof r != "symbol" ? r + "" : r, t), t);
-import g from "./wj-element.js";
+var u = Object.defineProperty;
+var m = (l, r, t) => r in l ? u(l, r, { enumerable: !0, configurable: !0, writable: !0, value: t }) : l[r] = t;
+var c = (l, r, t) => (m(l, typeof r != "symbol" ? r + "" : r, t), t);
+import g, { event as p } from "./wj-element.js";
 import "./wj-store.js";
-const m = `/*!
+const f = `/*!
 * direction.scss
 */:host{--wj-infinite-scroll-width: 100%;--wj-infinite-scroll-height: 300px;overflow-x:auto;width:var(--wj-infinite-scroll-width);height:var(--wj-infinite-scroll-height);display:block}
 `;
-class p extends g {
+class w extends g {
   constructor(t = {}) {
     super();
-    h(this, "className", "InfiniteScroll");
-    h(this, "scrollEvent", () => {
+    c(this, "className", "InfiniteScroll");
+    c(this, "scrollEvent", () => {
       this.addEventListener("scroll", this.onScroll);
     });
-    h(this, "onScroll", (t) => {
+    c(this, "unScrollEvent", () => {
+      this.removeEventListener("scroll", this.onScroll);
+    });
+    c(this, "onScroll", (t) => {
       const { scrollTop: s, scrollHeight: e, clientHeight: i } = t.target;
       s + i >= e - 300 && this.currentPage <= this.totalPages && this.isLoading.includes(this.currentPage) && (this.currentPage++, this.loadPages(this.currentPage));
     });
     this.totalPages = 0, this.isLoading = [], String.prototype.interpolate = function(s) {
       let e = this, i = e.match(/\{{.*?\}}/g);
       if (i)
-        for (let o of i) {
-          let l = o.replace("{{", "").replace("}}", ""), n = "";
-          l.split(".").forEach((c) => {
-            n = n == "" ? s[c] : n[c];
-          }), e = e.replace(o, n);
+        for (let a of i) {
+          let o = a.replace("{{", "").replace("}}", ""), n = "";
+          o.split(".").forEach((h) => {
+            n = n == "" ? s[h] : n[h];
+          }), e = e.replace(a, n);
         }
       return e;
     };
   }
   static get cssStyleSheet() {
-    return m;
+    return f;
   }
   static get observedAttributes() {
     return [];
@@ -43,11 +46,11 @@ class p extends g {
     this.iterate = this.querySelector("[iterate]"), this.infiniteScrollTemplate = this.iterate.outerHTML, this.iterate.remove(), this.setAttribute("style", "height: " + this.height);
   }
   draw(t, s, e) {
-    let i = document.createDocumentFragment(), o = document.createElement("slot"), l = document.createElement("div");
-    return l.classList.add("loader"), i.appendChild(l), i.appendChild(o), this.loaderEl = l, i;
+    let i = document.createDocumentFragment(), a = document.createElement("slot"), o = document.createElement("div");
+    return o.classList.add("loader"), i.appendChild(o), i.appendChild(a), this.loaderEl = o, i;
   }
   async afterDraw() {
-    this.queryParams = this.queryParams || "", this.size = +this.size || 10, this.currentPage = 0, await this.loadPages(this.currentPage);
+    this.queryParams = this.queryParams || "", this.size = +this.size || 10, this.currentPage = 0, this.scrollEvent(), await this.loadPages(this.currentPage);
   }
   /** @function getPages
    * @description nacitanie dalsej stranky
@@ -76,11 +79,17 @@ class p extends g {
   async loadPages(t) {
     this.showLoader();
     try {
-      if (this.hasMorePages(t)) {
+      if (this.hasMorePages(t) || typeof this.setCustomData == "function") {
         let s, e;
-        typeof this.setCustomData == "function" ? e = await this.setCustomData(t) : e = await this.getPages(t), this.totalPages = e.totalPages, this.currentPage = t, s = e.data.map((o) => this.infiniteScrollTemplate.interpolate(o));
-        let i = this;
-        this.hasAttribute("placement") && (i = this.querySelector(this.placement)), i.insertAdjacentHTML("beforeend", s.join("")), this.isLoading.push(t);
+        typeof this.setCustomData == "function" ? e = await this.setCustomData(t) : e = await this.getPages(t), this.totalPages = e.totalPages, this.currentPage = t;
+        const i = new DOMParser();
+        let a = this;
+        this.hasAttribute("placement") && (a = this.querySelector(this.placement)), e.data.forEach((o) => {
+          const n = this.infiniteScrollTemplate.interpolate(o), h = i.parseFromString(n, "text/html");
+          console.log("DOC", this.iterate.tagName.toLowerCase());
+          const d = h.querySelector(this.iterate.tagName.toLowerCase());
+          p.addListener(d, "click", "wj-infinite-scroll:click-item", null, { stopPropagation: !0 }), a.insertAdjacentElement("beforeend", d);
+        }), this.isLoading.push(t);
       }
     } catch (s) {
       console.log(s.message);
@@ -89,7 +98,7 @@ class p extends g {
     }
   }
 }
-customElements.get("wj-infinite-scroll") || window.customElements.define("wj-infinite-scroll", p);
+customElements.get("wj-infinite-scroll") || window.customElements.define("wj-infinite-scroll", w);
 export {
-  p as InfiniteScroll
+  w as InfiniteScroll
 };
