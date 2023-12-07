@@ -70,7 +70,7 @@ Atribút `size` je možné nastaviť aj špecifickým breakpointom pridaním jeh
 
 import SizeResponsive from '@site/static/usage/v1/grid/size-responsive/index.md';
 
-<div class="large">
+<div className="large">
 
 <SizeResponsive />
 
@@ -108,7 +108,7 @@ Stĺpce je možné zarovnať vertikálne pomocou css tried `wj-align-items-start
 
 import VerticalAlignment from '@site/static/usage/v1/grid/vertical-alignment/index.md';
 
-<div class="xlarge">
+<div className="xlarge">
 
 <VerticalAlignment />
 
@@ -120,7 +120,7 @@ Stĺpce je možné zarovnať horizontálne pomocou css tried `wj-justify-content
 
 import HorizontalAlignment from '@site/static/usage/v1/grid/horizontal-alignment/index.md';
 
-<div class="large">
+<div className="large">
 
 <HorizontalAlignment />
 

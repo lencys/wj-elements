@@ -15,7 +15,7 @@ Dropdown element slúži na zobrazenie kontextového menu po kliknutí. Menu mö
 
 ## Základné použitie
 
-<div class="xlarge">
+<div className="xlarge">
 
 import Basic from '@site/static/usage/v1/dropdown/basic/index.md';
 
