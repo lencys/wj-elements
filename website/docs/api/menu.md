@@ -4,14 +4,14 @@ title: "Menu"
 
 <head>
   <title>Menu: Element pre zobrazenie menu</title>
-  <meta name="description" content="Menu element slúži na zobrazenie navigácie. V prvedvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo." />
+  <meta name="description" content="Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Menu element slúži na zobrazenie navigácie. V prvedvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo. Skladá sa z elementov [MenuItem.](./menu-item).
+Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo. Skladá sa z elementov [MenuItem.](./menu-item).
 
 ## Základné použitie
 

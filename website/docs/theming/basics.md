@@ -3,7 +3,7 @@ title: Theming Basics
 sidebar_label: Basics
 ---
 
-import ColorAccordion from '@components/page/theming/ColorAccordion';
+import ColorPalette from '@components/page/theming/ColorPalette';
 
 <head>
   <title>Theming | Ionic Apps: Color and Theming Basics Definition</title>
@@ -13,15 +13,28 @@ import ColorAccordion from '@components/page/theming/ColorAccordion';
   />
 </head>
 
-Ionic Framework is built to be a blank slate that can easily be customized and modified to fit a brand, while still following the standards of the different platforms. Theming Ionic apps is now easier than ever. Because the framework is built with CSS, it comes with pre-baked default styles which are extremely easy to change and modify.
 
-## Colors
 
-Ionic has nine default colors that can be used to change the color of many components. Each color is actually a collection of multiple properties, including a `shade` and `tint`, used throughout Ionic.
+Elements Framework ponúka rozsiahle možnosti prispôsobenia štýlov predovšetkým prostredníctvom premenných CSS. Vďaka tomu môžete ľahko zmeniť vzhľad aplikácie podľa vašich potrieb. Komponenty Elements používajú premenné CSS pre väčšinu štýlov, vďaka čomu je možné jednoducho upravovať ich predvolené hodnoty. Tieto premenné môžete prepísať vo svojom globálnom súbore štýlov. Okrem toho podporuje SASS, čo umožňuje pokročilejšie možnosti štylizácie a tematizácie. Pomocou premenných SASS a mixinov, ktoré poskytuje Elemenets, môžete vytvárať vlastné šablóny, upravovať rozloženia a definovať vlastné farebné schémy. 
 
-When changing a color, it is important to set all of the related properties. This can be done easily with the [Color Generator](color-generator.md) tool, but these can also be manually written if desired. For more information on Ionic colors, see [Colors](colors.md).
+## Farby
 
-<ColorAccordion />
+Farebná paleta Elements sa skladá zo 7 predvolených farieb, ktoré si je možné jednoducho upraviť. Paleta je navrhnutá tak aby spĺňala aktuálne trendy a zároveň zabezpečovala prístupnosť. Používatelia si môžu prispôsobiť jej farby pomocou CSS premenných, čo im umožňuje zmeniť predvolené farby alebo pridať vlastné.
+
+<ColorPalette />
+
+
+//Neutral color shades 
+contrast-lowest: #fff; 
+contrast-higher: #212121;
+
+//constant colors
+white: #fff;
+black: #000;
+
+
+
+
 
 ## Platform Standards
 

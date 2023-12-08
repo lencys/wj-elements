@@ -13,6 +13,7 @@ template.innerHTML = `<h1>Card</h1>
           <wj-card-header>
             <wj-card-subtitle>Subtitle</wj-card-subtitle>
             <wj-card-title>Title</wj-card-title>
+
           </wj-card-header>
           <wj-card-content>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.

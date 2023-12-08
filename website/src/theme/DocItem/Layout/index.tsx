@@ -68,7 +68,7 @@ export default function DocItemLayout({children}: Props): JSX.Element {
           <DocItemPaginator />
         </div>
         {/* ------- CUSTOM CODE -------- */}
-        <div className="spacer"></div>
+        {/* <div className="spacer"></div>
         
         {demoUrl && (
           <div
@@ -78,7 +78,7 @@ export default function DocItemLayout({children}: Props): JSX.Element {
           >
             <DocDemo url={demoUrl} source={demoSourceUrl} />
           </div>
-        )}
+        )} */}
         {/* ------- CUSTOM CODE END -------- */}
       </div>
       {docTOC.desktop && <div className="col col--3">{docTOC.desktop}</div>}

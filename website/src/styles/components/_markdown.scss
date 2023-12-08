@@ -142,4 +142,31 @@ html[data-theme='dark'] {
       }
     }
   }
+
+docs-cards {
+  wj-card {
+    --wj-color-base: var(--token-secondary-bg-c);
+    --wj-border-radius: 10px;
+  }
+  wj-icon {
+    padding: 12px;
+    --wj-icon-size: 24px;
+    margin-bottom: 1rem;
+    color: #fff;
+    border-radius: 50%;
+    background: rgb(63,94,251);
+    background: linear-gradient(90deg, #3A0087ee 0%, #AE40FDee 100%);
+  }
+  wj-icon svg {
+    stroke-width: 1px;
+  }
+  wj-card-title {
+    color: var(--markdown-text-intro-c);
+  }
+  wj-card-content p {
+    font-size: 0.75rem!important;
+    color: var(--markdown-text-intro-c);
+  }
+
+}
 }

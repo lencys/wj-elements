@@ -9,6 +9,7 @@ demoSourceUrl: https://github.com/ionic-team/docs-demo
 
 import DocsCard from '@components/global/DocsCard';
 import DocsCards from '@components/global/DocsCards';
+import { Card, CardHeader, Icon } from 'https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/wj-master.js';
 
 <head>
   <title>Moderná sada nástrojov používateľského rozhrania založená na web komponentoch</title>
@@ -20,6 +21,9 @@ import DocsCards from '@components/global/DocsCards';
   <link rel="alternate" href="https://ionicframework.com/docs" hreflang="x-default" />
   <link rel="alternate" href="https://ionicframework.com/docs" hreflang="en" />
   <meta property="og:url" content="https://ionicframework.com/docs" />
+  <link rel="stylesheet" href="./../static/wj-elementy/style.css" />
+    <style>{`
+  `}</style>
 </head>
 
 WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania využívajúca silu web komponentov, ktorá je určená na zjednodušenie vývoja webových aplikácií. Poskytuje kolekciu zapúzdrených a opakovane použiteľných elementov, ktoré môžu výrazne zvýšiť efektivitu a udržiavateľnosť projektov vývoja webových stránok.
@@ -30,31 +34,49 @@ Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/cli.md)
 <intro-end />
 
 <DocsCards>
-  <DocsCard header="Sprievodca inštaláciou" href="/intro/cli" icon="/icons/guide-installation-icon.svg" hoverIcon="/icons/guide-installation-icon-hover.svg">
-    <p>Podrobný sprievodca inštaláciou WebJET elementov.</p>
-  </DocsCard>
 
-<DocsCard
-  header="UI Komponenty"
-  href="/components"
-  icon="/icons/guide-components-icon.svg"
-  hoverIcon="/icons/guide-components-icon-hover.svg"
->
-  <p>Dive into Ionic beautifully designed UI component library.</p>
-</DocsCard>
+ <a href="intro/cli">
+    <wj-card>
+      <wj-card-header>
+          <wj-icon name="world-download" size="large"></wj-icon>
+          <wj-card-title>Sprievodca inštaláciou</wj-card-title>
+      </wj-card-header>
+      <wj-card-content>
+      <p>Podrobný sprievodca inštaláciou WebJET elementov.</p>
+      </wj-card-content>
+    </wj-card>
+  </a>
 
-<DocsCard
-  header="Native Functionality"
-  href="/native"
-  icon="/icons/guide-native-icon.svg"
-  hoverIcon="/icons/guide-native-icon-hover.svg"
->
-  <p>Integrate native device plugins, like Bluetooth, Maps, HealthKit, and more.</p>
-</DocsCard>
+  <wj-card href="intro/cli">
+    <wj-card-header>
+        <wj-icon name="layout-dashboard" size="large"></wj-icon>
+        <wj-card-title href="intro/cli">Elementy</wj-card-title>
+    </wj-card-header>
+    <wj-card-content>
+    <p>Nazrite do knižnice dostupných WebJET elementov.</p>
+    </wj-card-content>
+  </wj-card>
 
-  <DocsCard header="Theming" href="/theming/basics" icon="/icons/guide-theming-icon.svg" hoverIcon="/icons/guide-theming-icon-hover.svg">
-    <p>Learn to easily customize and modify your Ionic app's visual design to fit your brand.</p>
-  </DocsCard>
+  <wj-card href="api/grid">
+    <wj-card-header>
+      <wj-icon name="grid-4x4" size="large"></wj-icon>
+      <wj-card-title>Layout</wj-card-title>
+    </wj-card-header>
+    <wj-card-content>
+    <p>Zistite ako si vytvoriť rozloženie stránok podľa vašich potrieb.</p>
+    </wj-card-content>
+  </wj-card>
+
+  <wj-card href="api/avatar">
+    <wj-card-header>
+        <wj-icon name="brush" size="large"></wj-icon>
+        <wj-card-title>Úprava štýlov</wj-card-title>
+    </wj-card-header>
+    <wj-card-content>
+    <p>Naučte sa ako si jednoducho prispôsobiť vizuál Elements.</p>
+    </wj-card-content>
+  </wj-card>
+  
 </DocsCards>
 
 
