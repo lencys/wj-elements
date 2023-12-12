@@ -5,7 +5,7 @@ import react from './react.md';
 import vue from './vue.md';
 
 <Playground
-  version="7"
+  version="1"
   code={{
     javascript,
     react,

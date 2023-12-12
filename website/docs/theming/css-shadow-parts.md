@@ -10,33 +10,32 @@ title: CSS Shadow Parts
   />
 </head>
 
-CSS Shadow Parts allow developers to style CSS properties on an element inside of a shadow tree. This is extremely useful in customizing Ionic Framework <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM" target="_blank" rel="noopener noreferrer">Shadow DOM</a> components.
+CSS Shadow Parts je funkcia, ktorá umožňuje vývojárom štylizovať špecifické časti <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM" target="_blank" rel="noopener noreferrer">Shadow DOM</a> . Toto je užitočné v prípade WebJET Elements postavených na technológii <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank" rel="noopener noreferrer">Web komponentov</a>, kde by v opačnom prípade zapúzdrenie neumožnilo upraviť vzhľad vnútorných častí elementov.
 
-## Why Shadow Parts?
+## Výhody Shadow parts
 
-Ionic Framework is a distributed set of <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank" rel="noopener noreferrer">Web Components</a>. Web Components follow the <a href="https://w3c.github.io/webcomponents/spec/shadow/" target="_blank" rel="noopener noreferrer">Shadow DOM specification</a> in order to encapsulate styles and markup.
+Shadow Parts poskytujú spôsob, ako vystaviť špecifické prvky v rámci Shadow DOM pre účely štylizácie, pričom sa zachovávajú jeho výhody zapuzdrenia a izolácie podľa <a href="https://w3c.github.io/webcomponents/spec/shadow/" target="_blank" rel="noopener noreferrer">Shadow DOM špecifikácie</a>. Tým pádom nehrozí prenos štýlov z komponentov a ich neúmyselnému použitiu na iné elementy.
 
-:::note
+<!-- :::note
 Ionic Framework components are **not all** Shadow DOM components. If the component is a Shadow DOM component, there will be a badge in the top right of its [component documentation](../components.md). An example of a Shadow DOM component is the [button component](../api/button.md).
-:::
+::: -->
 
-Shadow DOM is useful for preventing styles from leaking out of components and unintentionally applying to other elements. For example, we assign a `.button` class to our `ion-button` component. Without Shadow DOM encapsulation, if a user were to set the class `.button` on one of their own elements, it would inherit the Ionic Framework button styles. Since `ion-button` is a Shadow component, this is not a problem.
+## Použitie Shadow parts
 
-However, due to this encapsulation, styles aren’t able to bleed into inner elements of Shadow components either. This means that if a Shadow component renders elements inside of its shadow tree, the inner elements cannot be targeted directly with CSS. Using the `ion-select` component as an example, it renders the following markup:
+Pri použití Web komponentov so Shadow DOM, nie je možné zacieliť vnútorné časti komponenty pomocou CSS selektora. Ako sme si vysvetlili vyššie, všetko vo vnútri Shadow DOM je izolované od zbytku aplikácie. V príklade nižšie je zobrazené to, akým spôsobom je vykreslená komponenta `wj-select`. 
 
 ```html
-<ion-select>
+<wj-select>
   #shadow-root
-  <div class="select-text select-placeholder"></div>
+  <div class="select-placeholder"></div>
   <div class="select-icon"></div>
-</ion-select>
+</wj-select>
 ```
-
-The placeholder text and icon elements are inside of the `#shadow-root`, which means the following CSS will **NOT** work to style the placeholder:
+Všetky elementy vo vnútri `#shadow-root` sú zapúzdrené a preto CSS selektor nižšie nebude fungovať.
 
 ```css
 /* Does NOT work */
-ion-select .select-placeholder {
+wj-select .select-placeholder {
   color: blue;
 }
 ```

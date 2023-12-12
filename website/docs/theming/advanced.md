@@ -1,6 +1,6 @@
 ---
-title: Advanced Theming
-sidebar_label: Advanced
+title: Pokročilá úprava štýlov
+sidebar_label: Pokročilá úprava štýlov
 initialTab: 'preview'
 inlineHtmlPreviews: true
 ---

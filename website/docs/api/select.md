@@ -30,7 +30,7 @@ Pridaním atribútu `multiple` umožníte používateľovi vybrať viacero možn
 
 import MultipleSelectionExample from '@site/static/usage/v1/select/basic/multiple-selection/index.md';
 
-<div className="xxlarge">
+<div className="xlarge">
 
 <MultipleSelectionExample />
 
@@ -42,7 +42,7 @@ Pridaním atribútu `clearable` umožníte používateľovi odstraniť všetky z
 
 import Clearable from '@site/static/usage/v1/select/clearable/index.md';
 
-<div className="xxlarge">
+<div className="xlarge">
 
 <Clearable />
 
@@ -54,7 +54,7 @@ Pridaním atribútu `disabled` zabránite používateľovi interagovať so Selec
 
 import Disabled from '@site/static/usage/v1/select/disabled/index.md';
 
-<div className="xxlarge">
+<div className="xlarge">
 
 <Disabled />
 
@@ -66,7 +66,7 @@ Pridaním atribútu `standard` sa zobrazí Select v štýle štandardného HTML 
 
 import Standard from '@site/static/usage/v1/select/standard/index.md';
 
-<div className="xxlarge">
+<div className="xlarge">
 
 <Standard />
 

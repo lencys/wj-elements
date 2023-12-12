@@ -1,5 +1,5 @@
 ---
-title: Dark Mode
+title: Tmavý režim
 initialTab: 'preview'
 inlineHtmlPreviews: true
 ---
@@ -7,14 +7,14 @@ inlineHtmlPreviews: true
 import Codepen from '@components/global/Codepen';
 
 <head>
-  <title>Dark Mode to Change Color Schemes and CSS Properties</title>
+  <title>Tmavý režim </title>
   <meta
     name="description"
-    content="Developers are adding dark mode CSS on native applications to support their user preferences. Read to learn more about dark color schemes for Ionic apps."
+    content="Tmavý režim v Elements je funkcia, ktorá umožňuje prepnúť farebnú schému stránok a komponentov na tmavšie odtiene, čo zlepšuje pohodlie používateľov v tvavších priestoroch a ponúka alternatívny estetický vzhľad. "
   />
 </head>
 
-Ionic makes it easy to change the themes of your app, including supporting dark color schemes. With growing support for dark mode in native apps, developers are now looking to add it to their apps to support user preferences.
+Tmavý režim v Elements je funkcia, ktorá umožňuje prepnúť farebnú schému stránok a komponentov na tmavšie odtiene, čo zlepšuje pohodlie používateľov v tvavších priestoroch a ponúka alternatívny estetický vzhľad. 
 
 ## Using Media Queries
 

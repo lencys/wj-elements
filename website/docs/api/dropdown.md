@@ -20,7 +20,7 @@ Dropdown element slúži na zobrazenie kontextového menu po kliknutí na tlači
 
 import Basic from '@site/static/usage/v1/dropdown/basic/index.md';
 
-<Basic size="large"/>
+<Basic/>
 
 </div>
 

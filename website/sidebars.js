@@ -31,7 +31,7 @@ module.exports = {
       label: 'Layout',
       collapsed: false,
       items: [
-        'layout/structure',
+        'api/layout',
         {
           type: 'link',
           label: 'Responsive Grid',
@@ -54,7 +54,7 @@ module.exports = {
         'theming/themes',
         'theming/dark-mode',
         'theming/advanced',
-        'theming/color-generator',
+        // 'theming/color-generator',
       ],
     },
     // {
@@ -208,23 +208,23 @@ module.exports = {
       collapsed: false,
       items: ['contributing/how-to-contribute', 'contributing/coc'],
     },
-    {
-      type: 'category',
-      label: 'Reference',
-      collapsed: false,
-      items: [
-        'reference/glossary',
-        'reference/versioning',
-        'reference/release-notes',
-        {
-          type: 'link',
-          label: 'GitHub Changelog',
-          href: 'https://github.com/ionic-team/ionic/blob/master/CHANGELOG.md',
-        },
-        'reference/support',
-        'reference/browser-support',
-      ],
-    },
+    // {
+    //   type: 'category',
+    //   label: 'Reference',
+    //   collapsed: false,
+    //   items: [
+    //     'reference/glossary',
+    //     'reference/versioning',
+    //     'reference/release-notes',
+    //     {
+    //       type: 'link',
+    //       label: 'GitHub Changelog',
+    //       href: 'https://github.com/ionic-team/ionic/blob/master/CHANGELOG.md',
+    //     },
+    //     'reference/support',
+    //     'reference/browser-support',
+    //   ],
+    // },
   ],
 
   api: [

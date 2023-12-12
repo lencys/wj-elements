@@ -10,7 +10,7 @@ const BASE_URL = '/docs';
 module.exports = {
   title: 'Dokumentácia WebJET Elementov',
   tagline:
-    'Ionic is the app platform for web developers. Build amazing mobile, web, and desktop apps all with one shared code base and open web standards',
+    'WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania využívajúca silu web komponentov, ktorá je určená na zjednodušenie vývoja webových aplikácií.',
   url: 'https://elements.webjet.sk',
   baseUrl: `${BASE_URL}/`,
   i18n: {

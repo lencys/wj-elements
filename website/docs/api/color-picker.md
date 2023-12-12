@@ -17,7 +17,7 @@ Color picker je element, ktorý zobrazuje farebnú paletu a umožňuje používa
 
 import Basic from '@site/static/usage/v1/color-picker/basic/index.md';
 
-<div class="xlarge">
+<div className="xxlarge">
 
 <Basic />
 

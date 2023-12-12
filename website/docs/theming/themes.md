@@ -1,5 +1,5 @@
 ---
-title: Themes
+title: Šablóny
 ---
 
 import CodeColor from '@components/page/theming/CodeColor';

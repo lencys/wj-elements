@@ -1,5 +1,5 @@
 ---
-title: Úvod do WebJET Elementov
+title: Úvod do WebJET Elements
 sidebar_label: Prehľad
 slug: /
 hide_table_of_contents: true
@@ -23,6 +23,9 @@ import { Card, CardHeader, Icon } from 'https://cdn.jsdelivr.net/gh/lencys/wj-el
   <meta property="og:url" content="https://ionicframework.com/docs" />
   <link rel="stylesheet" href="./../static/wj-elementy/style.css" />
     <style>{`
+    docs-cards > a{
+      display: flex;
+    }
   `}</style>
 </head>
 
@@ -47,7 +50,8 @@ Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/cli.md)
     </wj-card>
   </a>
 
-  <wj-card href="intro/cli">
+ <a href="/docs/components">
+  <wj-card>
     <wj-card-header>
         <wj-icon name="layout-dashboard" size="large"></wj-icon>
         <wj-card-title href="intro/cli">Elementy</wj-card-title>
@@ -56,8 +60,10 @@ Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/cli.md)
     <p>Nazrite do knižnice dostupných WebJET elementov.</p>
     </wj-card-content>
   </wj-card>
+</a>
 
-  <wj-card href="api/grid">
+ <a href="/docs/api/layout">
+  <wj-card>
     <wj-card-header>
       <wj-icon name="grid-4x4" size="large"></wj-icon>
       <wj-card-title>Layout</wj-card-title>
@@ -66,8 +72,10 @@ Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/cli.md)
     <p>Zistite ako si vytvoriť rozloženie stránok podľa vašich potrieb.</p>
     </wj-card-content>
   </wj-card>
+</a>
 
-  <wj-card href="api/avatar">
+ <a href="/docs/theming/basics">
+  <wj-card>
     <wj-card-header>
         <wj-icon name="brush" size="large"></wj-icon>
         <wj-card-title>Úprava štýlov</wj-card-title>
@@ -76,6 +84,8 @@ Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/cli.md)
     <p>Naučte sa ako si jednoducho prispôsobiť vizuál Elements.</p>
     </wj-card-content>
   </wj-card>
+</a>
+
   
 </DocsCards>
 
@@ -108,8 +118,8 @@ WebJET Elements je postavený na spoľahlivých štandardizovaných webových te
 
 **V dokumentácii WebJET Elements nájdete podrobné príklady, ktoré vám pomôžu rýchlo a efektívne vytvárať výnimočné webové aplikácie.**
 
-## License
+## Licencia
 
-The Ionic UI Toolkit is a free and open source project, released under the permissible <a href="https://opensource.org/licenses/MIT" target="_blank">MIT license</a>. This means it can be used in personal or commercial projects for free. MIT is the same license used by such popular projects as jQuery and Ruby on Rails.
+Elements is a free and open source project, released under the permissible <a href="https://opensource.org/licenses/MIT" target="_blank">MIT license</a>. This means it can be used in personal or commercial projects for free. MIT is the same license used by such popular projects as jQuery and Ruby on Rails.
 
 This documentation content (found in the <a href="https://github.com/ionic-team/ionic-docs" target="_blank">ionic-docs</a> repo) is licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2 license</a>.

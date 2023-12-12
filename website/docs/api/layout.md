@@ -17,7 +17,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 import Basic from '@site/static/usage/v1/layout/basic/index.md';
 
+<div className="xxxlarge">
+
 <Basic />
+
+</div>
 
 ## Atribúty a Vlastnosti
 

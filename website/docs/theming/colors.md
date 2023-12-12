@@ -1,5 +1,5 @@
 ---
-title: Colors
+title: Farby
 initialTab: 'preview'
 inlineHtmlPreviews: true
 ---
@@ -21,16 +21,13 @@ Ionic has nine default colors that can be used to change the color of many compo
 A color can be applied to an Ionic component in order to change the default colors using the `color` attribute. Notice in the buttons below that the text and background changes based on the `color` set. When there is no `color` set on the button it uses the `primary` color by default.
 
 ```html
-<ion-button>Default</ion-button>
-<ion-button color="primary">Primary</ion-button>
-<ion-button color="secondary">Secondary</ion-button>
-<ion-button color="tertiary">Tertiary</ion-button>
-<ion-button color="success">Success</ion-button>
-<ion-button color="warning">Warning</ion-button>
-<ion-button color="danger">Danger</ion-button>
-<ion-button color="light">Light</ion-button>
-<ion-button color="medium">Medium</ion-button>
-<ion-button color="dark">Dark</ion-button>
+<wj-button>Default</wj-button>
+<wj-button color="primary">Primary</wj-button>
+<wj-button color="complete">Complete</wj-button>
+<wj-button color="success">Success</wj-button>
+<wj-button color="warning">Warning</wj-button>
+<wj-button color="danger">Danger</wj-button>
+<wj-button color="neutral">Neutral</wj-button>
 ```
 
 ## Layered Colors
