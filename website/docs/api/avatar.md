@@ -56,7 +56,11 @@ Pridaním elementu `wj-dropdown` sa po kliknutí na avatar zobrazí menu. V tomt
 
 import Dropdown from '@site/static/usage/v1/avatar/dropdown/index.md';
 
+<div className="xlarge">
+
 <Dropdown />
+
+</div>
 
 ## Avatar s tooltipom
 
