@@ -25,44 +25,31 @@ Ionic Framework components are **not all** Shadow DOM components. If the compone
 Pri použití Web komponentov so Shadow DOM, nie je možné zacieliť vnútorné časti komponenty pomocou CSS selektora. Ako sme si vysvetlili vyššie, všetko vo vnútri Shadow DOM je izolované od zbytku aplikácie. V príklade nižšie je zobrazené to, akým spôsobom je vykreslená komponenta `wj-select`. 
 
 ```html
-<wj-select>
+<wj-button>
   #shadow-root
-  <div class="select-placeholder"></div>
-  <div class="select-icon"></div>
-</wj-select>
+  <button class="button-native" part="native"></button>
+</wj-button>
 ```
-Všetky elementy vo vnútri `#shadow-root` sú zapúzdrené a preto CSS selektor nižšie nebude fungovať.
+Element button vo vnútri `#shadow-root` je zapúzdrený a preto CSS selektor nižšie nebude fungovať.
 
 ```css
-/* Does NOT work */
-wj-select .select-placeholder {
+/* Nefunkčný selektor */
+wj-button .button-native {
   color: blue;
 }
 ```
 
-So how do we solve this? [CSS Shadow Parts](#shadow-parts-explained)!
+Tento problém riešia CSS Shadow Parts. V komponente `wj-button` sa nachádza atribút `part` s hodnotou, ktorú je možné v css zacieliť pomocou css pseudo-elementu<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank" rel="noopener noreferrer">`::part()`</a>. V tomto prípade je to hodnota `native`.
 
-## Shadow Parts Explained
+Funkčný css selektor by preto vyzeral nasledovne:
 
-Shadow parts allow developers to style inside a shadow tree, from outside of that shadow tree. In order to do so, the [part must be exposed](#exposing-a-part) and then it can be styled by using [::part](#how-part-works).
-
-### Exposing a part
-
-When creating a Shadow DOM component, a part can be added to an element inside of a shadow tree by assigning a `part` attribute on the element. This is added to the component in Ionic Framework and requires no action from an end user.
-
-Continuing to use the `ion-select` component as an example, the markup is updated to look like the following:
-
-```html
-<ion-select>
-  #shadow-root
-  <div part="placeholder" class="select-text select-placeholder"></div>
-  <div part="icon" class="select-icon"></div>
-</ion-select>
+```css
+wj-button::part(native) {
+  color: blue;
+}
 ```
 
-The above shows two parts: `placeholder` and `icon`. See the [select documentation](../api/select.md#css-shadow-parts) for all of its parts.
-
-With these parts exposed, the element can now be styled directly using [::part](#how-part-works).
+Viac informácii o tom ako 
 
 ### How ::part works
 
@@ -77,61 +64,32 @@ ion-select::part(placeholder) {
 }
 ```
 
-Styling using `::part` allows any CSS property that is accepted by that element to be changed.
+Štýlovanie pomocou `::part` umožňuje zmeniť akúkoľvek vlastnosť CSS, ktorú daný element akceptuje.
 
-In addition to being able to target the part, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements" target="_blank" rel="noopener noreferrer">pseudo-elements</a> can be styled without them being explicitly exposed:
-
-```css
-ion-select::part(placeholder)::first-letter {
-  font-size: 22px;
-  font-weight: 500;
-}
-```
-
-Parts work with most <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes" target="_blank" rel="noopener noreferrer">pseudo-classes</a>, as well:
-
-```css
-ion-item::part(native):hover {
-  color: green;
-}
-```
-
-:::note
-There are some known limitations with [vendor prefixed pseudo-elements](#vendor-prefixed-pseudo-elements) and [structural pseudo-classes](#structural-pseudo-classes).
-:::
-
-## Ionic Framework Parts
+## WebJET Elements parts
 
 All exposed parts for an Ionic Framework component can be found under the CSS Shadow Parts heading on its API page. To view all components and their API pages, see the [Component documentation](../components.md).
 
-In order to have parts a component must meet the following criteria:
 
-- It is a [Shadow DOM](../reference/glossary.md#shadow) component. If it is a [Scoped](../reference/glossary.md#scoped) or Light DOM component, the child elements can be targeted directly. If a component is Scoped or Shadow, it will be listed by its name on its [component documentation page](../components.md).
-- It contains children elements. For example, `ion-card-header` is a Shadow component, but all styles are applied to the host element. Since it has no child elements, there’s no need for parts.
-- The children elements are not structural. In certain components, including `ion-title`, the child element is a structural element used to position the inner elements. We do not recommend customizing structural elements as this can have unexpected results.
 
-:::note
-We welcome recommendations for additional parts. Please create a <a href="https://github.com/ionic-team/ionic-framework/issues/new?assignees=&labels=&template=feature_request.md&title=feat%3A+" target="_blank" rel="noopener noreferrer">new GitHub issue</a> with as much information as possible when requesting a part.
-:::
+## Limitácie
 
-## Known Limitations
+### Kompatibilita s prehliadačmi
 
-### Browser Support
+Shadow Parts CSS fungujú v najnovších verziách všetkých významných prehliadačov. Staršie verzie prehliadačov ich však nemusia podporovať. Pred použitím Shadow Parts vo svojej aplikácii skontrolujte <a href="https://caniuse.com/#feat=mdn-css_selectors_part" target="_blank" rel="noopener noreferrer">kompatibiltu s prehliadačom</a> a uistite sa, že vyhovuje vašim požiadavkám. Ak potrebujete podporovať staršie prehliadače, zvážte namiesto toho pre úpravu štýlov [CSS Premenné](../theming/css-variables.md).
 
-CSS Shadow Parts are supported in the recent versions of all of the major browsers. However, some of the older versions do not support shadow parts. Verify the <a href="https://caniuse.com/#feat=mdn-css_selectors_part" target="_blank" rel="noopener noreferrer">browser support</a> meets the requirements before implementing parts in an app. If browser support for older versions is required, we recommend continuing to use [CSS Variables](../theming/css-variables.md) for styling.
-
-### Vendor Prefixed Pseudo-Elements
+### Podpora prehliadačom prefixovaných pseudoelementov
 
 <p>
   <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix" target="_blank" rel="noopener noreferrer">
-    Vendor prefixed
+    Vendorom prefixované
   </a>{' '}
-  pseudo-elements are not supported at this time. An example of this would be any of the `::-webkit-scrollbar`
-  pseudo-elements:
+  pseudoelementy nie sú v súčasnosti podporované. Preto napríklad `::-webkit-scrollbar`
+  pseudoelement v príklade nižšie nebude funkčný.
 </p>
 
 ```css
-/* Does NOT work */
+/* Nie je podporovaný */
 my-component::part(scroll)::-webkit-scrollbar {
   background: green;
 }
@@ -139,26 +97,27 @@ my-component::part(scroll)::-webkit-scrollbar {
 
 See <a href="https://github.com/w3c/csswg-drafts/issues/4530" target="_blank" rel="noopener noreferrer">this issue on GitHub</a> for more information.
 
-### Structural Pseudo-Classes
+### Štrukturálne pseudotriedy
 
-Most pseudo-classes are supported with parts, however, <a href="https://www.w3.org/TR/selectors-4/#structural-pseudos" target="_blank" rel="noopener noreferrer">structural pseudo-classes</a> are not. An example of structural pseudo-classes that do not work is below.
+Väčšina pseudotried je podporovaná pomocou častí, avšak  <a href="https://www.w3.org/TR/selectors-4/#structural-pseudos" target="_blank" rel="noopener noreferrer">štrukturálne pseudotriedy</a> nie sú podporované. Príklad štrukturálnych pseudotried, ktoré nefungujú, je uvedený nižšie.
 
 ```css
-/* Does NOT work */
+/* Nie je podporovaný */
 my-component::part(container):first-child {
   background: green;
 }
 
-/* Does NOT work */
+/* Nie je podporovaný */
 my-component::part(container):last-child {
   background: green;
 }
 ```
 
-### Chaining Parts
+### Reťazenie viacerých Parts
 
-The `::part()` pseudo-element can not match additional `::part()`s.
+Pseudoelement `::part()` nemôže reťaziť viacero selektorov `::part().` Je to preto, aby sa zabránilo exponovaniu nadbytočného obsahu komponenty. Ak potrebujete zacieliť na konkrétnu časť, použite priamo hodnotu danej part.
 
-For example, `my-component::part(button)::part(label)` does not match anything. This is because doing so would expose more structural information than is intended.
-
-If the `<my-component>`’s internal button uses something like `part="label => button-label"` to forward the button’s internal parts up into the panel’s own part element map, then a selector like `my-component::part(button-label)` would select just the one button’s label, ignoring any other labels.
+```css
+/* Nie je podporovaný */
+my-component::part(button)::part(label)
+```

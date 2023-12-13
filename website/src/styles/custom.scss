@@ -110,6 +110,21 @@ a {
     color: var(--ifm-link-hover-color);
   }
 }
+ul.table-of-contents {
+  a {
+    
+    &:hover {
+      color: var(--ifm-link-hover-color)!important;
+    }
+    &.table-of-contents__link--active {
+      color: var(--ifm-link-color)!important;
+      
+      &:hover {
+        color: var(--ifm-link-hover-color)!important;
+      }
+    }
+  }
+}
 
 body {
   margin: 0;

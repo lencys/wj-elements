@@ -32,7 +32,11 @@ import Shape from '@site/static/usage/v1/button-group/shape/index.md';
 
 import Dropdown from '@site/static/usage/v1/button-group/dropdown/index.md';
 
+<div className="large">
+
 <Dropdown />
+
+</div>
 
 ## Ikony v ButtonGroup
 
@@ -46,7 +50,11 @@ ButtonGroup umožnuje zobraziť aj delené tlačidlo s viacerými funkciami.
 
 import SplitButtons from '@site/static/usage/v1/button-group/split-buttons/index.md';
 
+<div className="large">
+
 <SplitButtons />
+
+</div>
 
 ## Úprava štýlov
 

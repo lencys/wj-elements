@@ -34,7 +34,7 @@ module.exports = {
         'api/layout',
         {
           type: 'link',
-          label: 'Responsive Grid',
+          label: 'Responzívna mriežka',
           href: '/docs/api/grid',
         },
         'layout/global-stylesheets',
@@ -43,7 +43,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Theming',
+      label: 'Úprava štýlov',
       collapsed: false,
       items: [
         'theming/basics',
@@ -53,7 +53,7 @@ module.exports = {
         'theming/colors',
         'theming/themes',
         'theming/dark-mode',
-        'theming/advanced',
+        // 'theming/advanced',
         // 'theming/color-generator',
       ],
     },
