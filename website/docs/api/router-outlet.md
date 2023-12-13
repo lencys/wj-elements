@@ -1,24 +1,14 @@
 ---
-title: "ion-router-outlet"
+title: "Router outlet"
 ---
 
 import Props from '@ionic-internal/component-api/v1/router-outlet/props.md';
-import Events from '@ionic-internal/component-api/v1/router-outlet/events.md';
-import Methods from '@ionic-internal/component-api/v1/router-outlet/methods.md';
-import Parts from '@ionic-internal/component-api/v1/router-outlet/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/router-outlet/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/router-outlet/slots.md';
-
-
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-
-The router outlet behaves in a similar way to Angular's built-in router outlet component and Vue's router view component, but contains the logic for providing a stacked navigation, and animating views in and out.
-
-Although router outlet has methods for navigating around, it's recommended to use the navigation methods in your framework's router.
+Komponenta Router Outlet riadi vkladanie a odoberanie rôznych komponentov stránky na základe aktuálneho stavu routovania aplikácie. Zároveň kontroluje animácie a prechody pri prepínaní medzi stránkami (alebo pohľadmi), čo zvyšuje používateľský zážitok vďaka plynulým vizuálnym zmenám. V podstate funguje ako kontajner dynamického obsahu, ktorý automaticky aktualizuje zobrazený obsah podľa podľa interakcií používateľa.
 
 ## Life Cycle Hooks
 
@@ -38,22 +28,30 @@ These event tie into Ionic's animation system and can be used to coordinate part
 For handling Router Guards, the older `ionViewCanEnter` and `ionViewCanLeave` have been replaced with their framework specific equivalent. For Angular, there are [Router Guards](https://angular.io/guide/router#milestone-5-route-guards).
 
 
+## Atribúty a Vlastnosti
 
+### animation
 
-## Properties
+|  |  |
+| --- | --- |
+| Popis | The animation attribute specifies the type of animation to apply to child elements during their entry or exit transitions.
+Určuje typ animácie, ktorá sa má použiť na child elementy počas ich zobrazenia a odchodu z obrazovky. |
+| Atribút | `animation` |
+| Typ | `"fade"` ｜ undefined |
+| Predvolená hodnota | `outlet` |
+
 <Props />
 
-## Events
-<Events />
+## Eventy
+Pre tento komponent nie sú k dispozícii žiadne eventy.
 
-## Methods
-<Methods />
+## Metódy
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
 ## CSS Shadow Parts
-<Parts />
+Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+## CSS Custom vlastnosti
+Pre tento komponent nie sú k dispozícií žiadne CSS Custom vlastnosti.
 
-## CSS Custom Properties
-<CustomProps />
-
-## Slots
-<Slots />
+## Sloty
+Pre tento komponent nie sú k dispozícii žiadne sloty.

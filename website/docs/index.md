@@ -1,6 +1,6 @@
 ---
 title: Úvod do WebJET Elements
-sidebar_label: Prehľad
+sidebar_label: Úvod
 slug: /
 hide_table_of_contents: true
 demoUrl: https://docs-demo.ionic.io/
@@ -38,7 +38,7 @@ Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/cli.md)
 
 <DocsCards>
 
- <a href="intro/cli">
+ <a href="intro/install">
     <wj-card>
       <wj-card-header>
           <wj-icon name="world-download" size="large"></wj-icon>
@@ -65,7 +65,7 @@ Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/cli.md)
  <a href="/docs/api/layout">
   <wj-card>
     <wj-card-header>
-      <wj-icon name="grid-4x4" size="large"></wj-icon>
+      <wj-icon name="layout" size="large"></wj-icon>
       <wj-card-title>Layout</wj-card-title>
     </wj-card-header>
     <wj-card-content>

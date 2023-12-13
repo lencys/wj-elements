@@ -1,5 +1,5 @@
 ---
-title: "ion-router-link"
+title: "Router Link"
 ---
 
 import Props from '@ionic-internal/component-api/v1/router-link/props.md';
@@ -18,28 +18,48 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The router link component is used for navigating to a specified link. Similar to the browser's anchor tag, it can accept a href for the location, and a direction for the transition animation.
+Router link komponenta slúži ako prispôsobiteľný link navrhnutý na použitie v navigácii naprieč aplikáciou. 
 
-:::note
- Note: this component should only be used with vanilla and Stencil JavaScript projects. For Angular projects, use an `<a>` and `routerLink` with the Angular router.
-:::
+Pre viac informácií o použití Router Link prejdite na stránku [Router](./router) v dokumentácii.
 
-See the [Router](./router) documentation for more information.
+## Atribúty a Vlastnosti
 
-## Properties
-<Props />
 
-## Events
-<Events />
+### active-class
 
-## Methods
-<Methods />
+|  |  |
+| --- | --- |
+| Popis | Nastaví elementu triedu `active` pri aktívnom stave. |
+| Atribút | `active-class` |
+| Typ | `boolean` |
+| Predvolená hodnota | `false` |
+
+### className
+
+|  |  |
+| --- | --- |
+| Popis | Nastaví elementu triedu. |
+| Atribút | `className` |
+| Typ | `string` ｜`RouterLink` |
+| Predvolená hodnota | `RouterLink` |
+
+
+## Eventy
+
+Pre tento komponent nie sú k dispozícii žiadne eventy.
+
+## Metódy
+
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
 ## CSS Shadow Parts
-<Parts />
 
-## CSS Custom Properties
-<CustomProps />
+Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
 
-## Slots
-<Slots />
+## CSS Custom vlastnosti
+Pre tento komponent nie sú k dispozícií žiadne CSS Custom vlastnosti.
+
+
+## Sloty
+
+Pre tento komponent nie sú k dispozícii žiadne sloty.

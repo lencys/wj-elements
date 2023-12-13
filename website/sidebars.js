@@ -4,7 +4,7 @@ module.exports = {
       type: 'category',
       label: 'Začíname',
       collapsed: false,
-      items: ['index', 'intro/environment', 'intro/cli', 'intro/cdn', 'intro/next'],
+      items: ['index', 'intro/environment', 'intro/install'],
     },
     // {
     //   type: 'category',
@@ -12,20 +12,20 @@ module.exports = {
     //   collapsed: false,
     //   items: ['updating/7-0', 'updating/6-0', 'updating/5-0', 'updating/4-0'],
     // },
-    {
-      type: 'category',
-      label: 'Developing',
-      collapsed: false,
-      items: [
-        'developing/starting',
-        // 'developing/previewing',
-        'developing/scaffolding',
-        'developing/tips',
-        // 'developing/hardware-back-button',
-        // 'developing/keyboard',
-        // 'developing/config',
-      ],
-    },
+    // {
+    //   type: 'category',
+    //   label: 'Developing',
+    //   collapsed: false,
+    //   items: [
+    //     'developing/starting',
+    //     // 'developing/previewing',
+    //     'developing/scaffolding',
+    //     'developing/tips',
+    //     // 'developing/hardware-back-button',
+    //     // 'developing/keyboard',
+    //     // 'developing/config',
+    //   ],
+    // },
     {
       type: 'category',
       label: 'Layout',
@@ -228,12 +228,12 @@ module.exports = {
   ],
 
   api: [
-    // {
-    //   type: 'category',
-    //   label: 'Getting Started',
-    //   collapsed: false,
-    //   items: ['components'],
-    // },
+    {
+      type: 'category',
+      label: 'Úvod',
+      collapsed: false,
+      items: ['components'],
+    },
     // {
     //   type: 'category',
     //   label: 'Action Sheet',
@@ -462,12 +462,12 @@ module.exports = {
     //   collapsed: false,
     //   items: ['api/reorder', 'api/reorder-group'],
     // },
-    // {
-    //   type: 'category',
-    //   label: 'Routing',
-    //   collapsed: false,
-    //   items: ['api/router', 'api/router-link', 'api/router-outlet', 'api/route', 'api/route-redirect'],
-    // },
+    {
+      type: 'category',
+      label: 'Routovanie',
+      collapsed: false,
+      items: ['api/router', 'api/router-link', 'api/router-outlet', 'api/route', 'api/route-redirect'],
+    },
     // {
     //   type: 'category',
     //   label: 'Searchbar',

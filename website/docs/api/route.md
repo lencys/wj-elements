@@ -42,8 +42,6 @@ interface NavigationHookOptions {
 ```
 
 
-
-
 ## Usage
 
 <Tabs groupId="framework" defaultValue="javascript" values={[{ value: 'javascript', label: 'Javascript' }, { value: 'stencil', label: 'Stencil' }, { value: 'vue', label: 'Vue' }]}>
