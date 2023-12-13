@@ -1,4 +1,4 @@
-import { default as WJElement, event } from "../wj-element/wj-element.js";
+import { default as WJElement, WjElementUtils, event } from "../wj-element/wj-element.js";
 import { bool } from "../utils/wj-utils.js";
 
 import styles from "./scss/styles.scss?inline";
@@ -142,6 +142,16 @@ export class Button extends WJElement {
         slot.setAttribute("name", "caret");
         span.appendChild(slot);
 
+        console.log(WjElementUtils.hasSlot(this, "toggle"));
+        let hasToggle = WjElementUtils.hasSlot(this, "toggle");
+
+        if(hasToggle) {
+            this.slotToggle = document.createElement("slot");
+            this.slotToggle.setAttribute("name", "toggle");
+
+            span.appendChild(this.slotToggle);
+        }
+
         element.appendChild(span);
         fragment.appendChild(element);
 
@@ -149,8 +159,19 @@ export class Button extends WJElement {
     }
 
     afterDraw() {
+        // set the toggle slot to show or set to order by
+
+        console.log(this.toggle);
+        if(this.toggle === "on") {
+            this.slotToggle.assignedNodes()[0].classList.add("show");
+        } else {
+            this.slotToggle.assignedNodes()[1].classList.add("show");
+        }
+        // this.slotToggle
+
         event.addListener(this, "click", "wj:button-click", null, { stopPropagation: this.stopPropagation });
         event.addListener(this, "click", null, this.eventDialogOpen);
+        event.addListener(this, "click", "wj-button:toggle", this.toggleStates, { stopPropagation: this.stopPropagation });
     }
 
     beforeDisconnect() {
@@ -163,6 +184,18 @@ export class Button extends WJElement {
                 bubbles: true
             }
         ));
+    }
+
+    toggleStates = () => {
+        const nodes = this.slotToggle.assignedNodes().filter(node => node.nodeType === Node.ELEMENT_NODE);
+
+        nodes.forEach(node => {
+            if (node.classList.contains('show')) {
+                node.classList.remove('show');
+            } else {
+                node.classList.add('show');
+            }
+        });
     }
 }
 
