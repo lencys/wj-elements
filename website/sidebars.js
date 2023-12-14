@@ -466,7 +466,7 @@ module.exports = {
       type: 'category',
       label: 'Routovanie',
       collapsed: false,
-      items: ['api/router', 'api/router-link', 'api/router-outlet', 'api/route', 'api/route-redirect'],
+      items: ['api/router', 'api/router-link', 'api/router-outlet', 'api/route'],
     },
     // {
     //   type: 'category',

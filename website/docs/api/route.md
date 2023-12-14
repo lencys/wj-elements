@@ -1,5 +1,5 @@
 ---
-title: "ion-route"
+title: "Route"
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -12,19 +12,13 @@ import CustomProps from '@ionic-internal/component-api/v1/route/custom-props.md'
 import Slots from '@ionic-internal/component-api/v1/route/slots.md';
 
 <head>
-  <title>ion-route: API Route Component for Ionic Framework Apps</title>
-  <meta name="description" content="The ion-route component takes a component and renders it when the Browser URL matches the URL property. Learn more about the API route component for Ionic Apps." />
+  <title>Route: API Route Component for Ionic Framework Apps</title>
+  <meta name="description" content="Komponenta Route vykreslí zvolený komponent keď sa hodnota v jeho vlastnosti `url` zhoduje s URL v prehliadači." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
-
-The route component takes a component and renders it when the Browser URL matches the url property.
-
-:::note
- Note: this component should only be used with vanilla and Stencil JavaScript projects. For Angular projects, use [`ion-router-outlet`](router-outlet.md) and the Angular router.
-:::
-
+Komponenta Route vykreslí zvolený komponent keď sa hodnota v jeho vlastnosti `url` zhoduje s URL v prehliadači.
 
 ## Navigation Hooks
 
@@ -42,19 +36,19 @@ interface NavigationHookOptions {
 ```
 
 
-## Usage
+## Použitie
 
 <Tabs groupId="framework" defaultValue="javascript" values={[{ value: 'javascript', label: 'Javascript' }, { value: 'stencil', label: 'Stencil' }, { value: 'vue', label: 'Vue' }]}>
 
 <TabItem value="javascript">
 
 ```html
-<ion-router>
-  <ion-route url="/home" component="page-home"></ion-route>
-  <ion-route url="/dashboard" component="page-dashboard"></ion-route>
-  <ion-route url="/new-message" component="page-new-message"></ion-route>
-  <ion-route url="/login" component="page-login"></ion-route>
-</ion-router>
+<wj-router>
+  <wj-route url="/home" component="page-home"></wj-route>
+  <wj-route url="/dashboard" component="page-dashboard"></wj-route>
+  <wj-route url="/new-message" component="page-new-message"></wj-route>
+  <wj-route url="/login" component="page-login"></wj-route>
+</wj-router>
 ```
 
 ```javascript
@@ -126,12 +120,12 @@ import { alertController } from '@ionic/core';
 export class RouterExample {
   render() {
     return (
-      <ion-router>
-        <ion-route url="/home" component="page-home"></ion-route>
-        <ion-route url="/dashboard" component="page-dashboard" beforeEnter={isLoggedInGuard}></ion-route>
-        <ion-route url="/new-message" component="page-new-message" beforeLeave={hasUnsavedDataGuard}></ion-route>
-        <ion-route url="/login" component="page-login"></ion-route>
-      </ion-router>
+      <wj-router>
+        <wj-route url="/home" component="page-home"></wj-route>
+        <wj-route url="/dashboard" component="page-dashboard" beforeEnter={isLoggedInGuard}></wj-route>
+        <wj-route url="/new-message" component="page-new-message" beforeLeave={hasUnsavedDataGuard}></wj-route>
+        <wj-route url="/login" component="page-login"></wj-route>
+      </wj-router>
     )
   }
 }
@@ -248,20 +242,156 @@ const confirmDiscardChanges = async () => {
 
 </Tabs>
 
-## Properties
+## Atribúty a Vlastnosti
+
+### afterEnter
+
+|  |  |
+| --- | --- |
+| Popis |  |
+| Atribút | `afterEnter` |
+| Typ | `"fade"` ｜ undefined |
+| Predvolená hodnota | `outlet` |
+
+### afterLeave
+
+|  |  |
+| --- | --- |
+| Popis |  |
+| Atribút | `afterLeave` |
+| Typ | `"fade"` ｜ undefined |
+| Predvolená hodnota | `outlet` |
+
+
+### beforeEnter
+
+|  |  |
+| --- | --- |
+| Popis |  |
+| Atribút | `beforeEnter` |
+| Typ | `"fade"` ｜ undefined |
+| Predvolená hodnota | `outlet` |
+
+### beforeLeave
+
+|  |  |
+| --- | --- |
+| Popis |  |
+| Atribút | `beforeLeave` |
+| Typ | `"fade"` ｜ undefined |
+| Predvolená hodnota | `outlet` |
+
+### breadcrumbName
+
+|  |  |
+| --- | --- |
+| Popis |  |
+| Atribút | `breadcrumbName` |
+| Typ | `"fade"` ｜ undefined |
+| Predvolená hodnota | `outlet` |
+
+### breadcrumbPath
+
+|  |  |
+| --- | --- |
+| Popis |  |
+| Atribút | `breadcrumbPath` |
+| Typ | `"fade"` ｜ undefined |
+| Predvolená hodnota | `outlet` |
+
+### component
+
+|  |  |
+| --- | --- |
+| Popis | Určuje komponentu, ktorý sa vykreslí, keď sa cesta zhoduje s URL prehliadača. Môže obsahovať funkciu, ktorá vráti komponentu. |
+| Atribút | `component` |
+| Typ | `"fade"` ｜ undefined |
+| Predvolená hodnota | `outlet` |
+
+### name
+
+|  |  |
+| --- | --- |
+| Popis | Poskytuje unikátny identifikátor pre cestu |
+| Atribút | `name` |
+| Typ | `"string"` |
+| Predvolená hodnota | `undefined` |
+
+### path
+
+|  |  |
+| --- | --- |
+| Popis |  |
+| Atribút | `path` |
+| Typ | `"fade"` ｜ undefined |
+| Predvolená hodnota | `outlet` |
+
+### permissionsNeeded
+
+|  |  |
+| --- | --- |
+| Popis |  |
+| Atribút | `permissionsNeeded` |
+| Typ | `"fade"` ｜ undefined |
+| Predvolená hodnota | `outlet` |
+
+### permissionCallback
+
+|  |  |
+| --- | --- |
+| Popis |  |
+| Atribút | `permissionCallback` |
+| Typ | `"fade"` ｜ undefined |
+| Predvolená hodnota | `outlet` |
+
+### preserveActions
+
+|  |  |
+| --- | --- |
+| Popis |  |
+| Atribút | `preserveActions` |
+| Typ | `"fade"` ｜ undefined |
+| Predvolená hodnota | `outlet` |
+
+### properties
+
+|  |  |
+| --- | --- |
+| Popis |  |
+| Atribút | `properties` |
+| Typ | `"fade"` ｜ undefined |
+| Predvolená hodnota | `outlet` |
+
+### title
+
+|  |  |
+| --- | --- |
+| Popis |  |
+| Atribút | `title` |
+| Typ | `"fade"` ｜ undefined |
+| Predvolená hodnota | `outlet` |
+
+### url
+
+|  |  |
+| --- | --- |
+| Popis |  |
+| Atribút | `url` |
+| Typ | `"fade"` ｜ undefined |
+| Predvolená hodnota | `outlet` |
+
 <Props />
 
-## Events
+## Eventy
 <Events />
 
-## Methods
-<Methods />
+## Metódy
+Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
 ## CSS Shadow Parts
-<Parts />
+Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+## CSS Custom vlastnosti
+Pre tento komponent nie sú k dispozícií žiadne CSS Custom vlastnosti.
 
-## CSS Custom Properties
-<CustomProps />
-
-## Slots
-<Slots />
+## Sloty
+Pre tento komponent nie sú k dispozícii žiadne sloty.

@@ -1,5 +1,5 @@
 ---
-title: "Router outlet"
+title: "Router Outlet"
 ---
 
 import Props from '@ionic-internal/component-api/v1/router-outlet/props.md';
@@ -34,13 +34,10 @@ For handling Router Guards, the older `ionViewCanEnter` and `ionViewCanLeave` ha
 
 |  |  |
 | --- | --- |
-| Popis | The animation attribute specifies the type of animation to apply to child elements during their entry or exit transitions.
-Určuje typ animácie, ktorá sa má použiť na child elementy počas ich zobrazenia a odchodu z obrazovky. |
+| Popis | Určuje typ animácie, ktorá sa má použiť na child elementy počas ich zobrazenia a odchodu z obrazovky. |
 | Atribút | `animation` |
 | Typ | `"fade"` ｜ undefined |
 | Predvolená hodnota | `outlet` |
-
-<Props />
 
 ## Eventy
 Pre tento komponent nie sú k dispozícii žiadne eventy.

@@ -21,6 +21,16 @@ import Basic from '@site/static/usage/v1/button/basic/index.md';
 
 <Basic />
 
+## Toggle
+
+<!-- Vlastnosť `toggle` umožňuje priradiť tlačidlu dva rôzne stavy a kliknutím medzi nimi prepínať. Nastavením jej hodnoty sa tlačidlu priradí predvolený stav. <br/>Musí obsahovať dva podradené elementy so `slot` s hodnotou `toggle`a tiež vlastnosť `state`, ktorou tlačidlu určíte dostupné hodnoty stavu. -->
+
+Vlastnosť `toggle` umožňuje priradiť tlačidlu dva rôzne stavy a kliknutím medzi nimi prepínať. Nastavením hodnoty sa tlačidlu priradí predvolený stav. <br/>Pre nastavenie dostupných stavov je potrebné pridať tlačidlu dva podradené elementy so slotom s hodnotou `toggle`a tiež s vlastnosťou `state`, ktorá tlačidlu určí samotnú hodnotu stavu.
+
+import Toggle from '@site/static/usage/v1/button/toggle/index.md';
+
+<Toggle />
+
 ## Tvar tlačidla
 
 Vlastnosť `round` umožňuje upraviť tvar tlačidla. V predvolenom nastavení sú tlačidlá obdĺžnikové s malým zaoblením okrajov. Pridaním tohto atribútu sa zaoblenie tlačidla zväčší.
@@ -148,6 +158,15 @@ import Custom from '@site/static/usage/v1/button/theming/css-properties/index.md
 | Popis | Nastavte na `"small"` pre tlačidlo s menšou výškou a výplňou, alebo na `"large"` pre tlačidlo s väčšou výškou a výplňou. V predvolenom nastavení je veľkosť nastavená na defaultnú.|
 | Atribút | `size` |
 | Typ | `"large"` ｜ `"small"` ｜ `undefined` |
+| Predvolená hodnota | `undefined` |
+
+### toggle
+
+|  |  |
+| --- | --- |
+| Popis | Umožní priradiť tlačidlu dva rôzne stavy a kliknutím medzi nimi prepínať. Nastavením hodnoty sa tlačidlu priradí predvolený stav. Podradený element musí obsahovat `slot` s hodnotou `toggle` a tiež vlastnosť `state` s jednou z dvoch dostupných hodnôt stavu. |
+| Atribút | `toggle` |
+| Typ | `any` |
 | Predvolená hodnota | `undefined` |
 
 ## Eventy
