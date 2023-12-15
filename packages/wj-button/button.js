@@ -142,10 +142,9 @@ export class Button extends WJElement {
         slot.setAttribute("name", "caret");
         span.appendChild(slot);
 
-        console.log(WjElementUtils.hasSlot(this, "toggle"));
-        let hasToggle = WjElementUtils.hasSlot(this, "toggle");
+        this.hasToggle = WjElementUtils.hasSlot(this, "toggle");
 
-        if(hasToggle) {
+        if(this.hasToggle) {
             this.slotToggle = document.createElement("slot");
             this.slotToggle.setAttribute("name", "toggle");
 
@@ -159,15 +158,14 @@ export class Button extends WJElement {
     }
 
     afterDraw() {
-        // set the toggle slot to show or set to order by
-
-        console.log(this.toggle);
-        if(this.toggle === "on") {
-            this.slotToggle.assignedNodes()[0].classList.add("show");
-        } else {
-            this.slotToggle.assignedNodes()[1].classList.add("show");
+        // nastavenie toggle podla atributu, ak nie je nastaveny, tak sa zobrazi vzdy prvy element
+        if(this.hasToggle) {
+            if (this.toggle === "off") {
+                this.slotToggle.assignedNodes()[1].classList.add("show");
+            } else {
+                this.slotToggle.assignedNodes()[0].classList.add("show");
+            }
         }
-        // this.slotToggle
 
         event.addListener(this, "click", "wj:button-click", null, { stopPropagation: this.stopPropagation });
         event.addListener(this, "click", null, this.eventDialogOpen);

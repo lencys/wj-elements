@@ -52,7 +52,7 @@ template.innerHTML = `<h1>Toggle</h1>
           <wj-toggle color="danger" checked>Danger Toggle</wj-toggle>
         </wj-item>
         <wj-item>
-          <wj-toggle color="dark" checked>Dark Toggle</wj-toggle>
+          <wj-toggle color="info" checked>Info Toggle</wj-toggle>
         </wj-item>
       </div>
     </div>

@@ -72,7 +72,6 @@
   }
   .slider {
     display: flex;
-    //flex: 1;
     align-items: center;
     position: relative;
     flex: 1 1 0%;
@@ -190,8 +189,8 @@ datalist {
 
 output {
   position: absolute;
-  background: #000;
-  color: #fff;
+  background: var(--wj-color-contrast-11);
+  color: var(--wj-color-contrast-0);
   top: -46px;
   padding: 4px 8px;
   border-radius: 4px;
@@ -200,7 +199,7 @@ output {
 
 ::slotted([slot="label"]) {
   margin-inline: 0 1rem;
-  font-size: #{($font-size)};
+  font-size: var(--wj-font-size);
 }
 
 ::slotted([slot="start"]) {

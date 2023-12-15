@@ -1,11 +1,9 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Menu ]
+[ Wj Menu ]
 */
 
 :host {
-  --wj-menu-background: #{$color-contrast-lowest};
+  --wj-menu-background: var(--wj-background);
   --wj-menu-border-width: 1px;
   --wj-menu-border-style: solid;
   --wj-menu-border-color: var(--wj-border-color);
@@ -26,7 +24,7 @@
   border-color: var(--wj-menu-border-color);
   z-index: var(--wj-menu-z-index);
 
-  @include border-radius(var(--wj-menu-border-radius));
+  border-radius: var(--wj-border-radius-small);
 
   padding-top: var(--wj-menu-padding-top);
   padding-bottom: var(--wj-menu-padding-bottom);
@@ -52,7 +50,6 @@
 
 :host([variant=context]) {
   display: block !important;
-  //--wj-menu-border-width: 0;
   margin-left: var(--wj-menu-submenu-offset);
 }
 

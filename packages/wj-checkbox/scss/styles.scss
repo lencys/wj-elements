@@ -4,10 +4,9 @@
 [ Checkbox ]
 */
 
-$grey-check-icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAADsa5zLAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURUdwTHBwcG9vb3BwcBFjhIYAAAAEdFJOUwBG9tQE3MceAAAAVUlEQVQoz2NgGLKA0QGIDwDxBSCeAMEYgAWI2YCK2CagYgwgDcRSDhgYbAkKzsSKGdgakCyY6ADES7BiiCkgJ4PYyybgxAhQAsRZDrgxCpDEg4cAAAAp2ibhZRGLHgAAAABJRU5ErkJggg==";
-$white-check-icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAADsa5zLAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURUdwTP///////////waf0AoAAAAEdFJOUwBG9tQE3MceAAAAVUlEQVQoz2NgGLKA0QGIDwDxBSCeAMEYgAWI2YCK2CagYgwgDcRSDhgYbAkKzsSKGdgakCyY6ADES7BiiCkgJ4PYyybgxAhQAsRZDrgxCpDEg4cAAAAp2ibhZRGLHgAAAABJRU5ErkJggg==";
-
 :host {
+  --wj-grey-check-icon: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAADsa5zLAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURUdwTHBwcG9vb3BwcBFjhIYAAAAEdFJOUwBG9tQE3MceAAAAVUlEQVQoz2NgGLKA0QGIDwDxBSCeAMEYgAWI2YCK2CagYgwgDcRSDhgYbAkKzsSKGdgakCyY6ADES7BiiCkgJ4PYyybgxAhQAsRZDrgxCpDEg4cAAAAp2ibhZRGLHgAAAABJRU5ErkJggg==") left center;
+  --wj-white-check-icon: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAADsa5zLAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURUdwTP///////////waf0AoAAAAEdFJOUwBG9tQE3MceAAAAVUlEQVQoz2NgGLKA0QGIDwDxBSCeAMEYgAWI2YCK2CagYgwgDcRSDhgYbAkKzsSKGdgakCyY6ADES7BiiCkgJ4PYyybgxAhQAsRZDrgxCpDEg4cAAAAp2ibhZRGLHgAAAABJRU5ErkJggg==") left center;
   --wj-checkbox-margin-top: 0;
   --wj-checkbox-margin-bottom: .5rem;
   --wj-checkbox-margin-inline: 0;
@@ -24,7 +23,7 @@ $white-check-icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAA
     display: inline-block;
     cursor: pointer;
     position: relative;
-    @include padding-left(25px);
+    padding-left: 25px;
     min-width: var(--wj-checkbox-width);
     min-height: var(--wj-checkbox-height);
     margin-bottom: 0;
@@ -42,8 +41,8 @@ $white-check-icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAA
       left: 0;
       -webkit-box-sizing: inherit;
       box-sizing: border-box;
-      background-color: $color-contrast-lowest;
-      border: 1px solid mix($color-contrast-high, #fff, 30%);
+      background-color: var(--wj-color-contrast-lowest);
+      border: 1px solid var(--wj-border-color);
     }
   }
 }
@@ -54,11 +53,10 @@ $white-check-icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAA
     background-color 140ms linear 0s;
 
     &:hover {
-      color: $color-contrast-higher;
+      color: var(--wj-color-contrast-higher);
     }
 
     &:before {
-      //top: 2px;
       border-radius: 3px;
       transition: border 140ms linear 0s, color 140ms linear 0s,
       background-color 140ms linear 0s;
@@ -68,7 +66,6 @@ $white-check-icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAA
   input[type="checkbox"] {
     position: absolute;
     margin: 0;
-    //top: 3px;
     z-index: -1;
     width: 16px;
     height: 16px;
@@ -79,8 +76,7 @@ $white-check-icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAA
       &::after {
         content: "";
         position: absolute;
-        //top: 2px;
-        left: 0px;
+        left: 0;
         border-right: 0 solid transparent;
         border-bottom: 0 solid transparent;
         width: 16px;
@@ -106,7 +102,7 @@ $white-check-icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAA
     & + label {
       &::after {
         content: "";
-        background: url($grey-check-icon) left center;
+        background: var(--wj-grey-check-icon);
         background-size: 160px 16px;
         background-repeat: no-repeat;
         animation-name: checkbox-check;
@@ -130,7 +126,7 @@ $white-check-icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAA
 
   input[type="checkbox"]:focus {
     & + label {
-      color: $color-contrast-higher;
+      color: var(--wj-color-contrast-higher);
 
       &:before {
         outline: none !important;
@@ -142,7 +138,7 @@ $white-check-icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAA
   input[type="checkbox"][disabled] {
     & + label {
       cursor: not-allowed !important;
-      color: $color-contrast-high;
+      color: var(--wj-color-contrast-high);
       opacity: 0.58;
 
       &:before {
@@ -156,7 +152,7 @@ $white-check-icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAA
     & + label {
       &:after {
         background: none;
-        background-color: $color-contrast-high;
+        background-color: var(--wj-color-contrast-high);
         width: 10px;
         height: 2px;
         top: 6px;
@@ -168,11 +164,11 @@ $white-check-icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAA
 
   &.right {
     label {
-      @include padding-left(0px);
-      @include padding-right(26px);
+      padding-left: 0;
+      padding-right: 26px;
 
       &:before {
-        right: 0px;
+        right: 0;
         left: auto;
       }
     }
@@ -194,33 +190,33 @@ $white-check-icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAA
 // Colors
 input[type="checkbox"]:checked + label, input[type="checkbox"]:indeterminate + label {
   .success &:before {
-    border-color: $color-success;
-    background-color: $color-success;
+    border-color: var(--wj-color-success);
+    background-color: var(--wj-color-success);
   }
 
   .primary &:before {
-    border-color: $color-primary;
-    background-color: $color-primary;
+    border-color: var(--wj-color-primary);
+    background-color: var(--wj-color-primary);
   }
 
   .complete &:before {
-    border-color: $color-complete;
-    background-color: $color-complete;
+    border-color: var(--wj-color-complete);
+    background-color: var(--wj-color-complete);
   }
 
   .warning &:before {
-    border-color: $color-warning;
-    background-color: $color-warning;
+    border-color: var(--wj-color-warning);
+    background-color: var(--wj-color-warning);
   }
 
   .danger &:before {
-    border-color: $color-danger;
-    background-color: $color-danger;
+    border-color: var(--wj-color-danger);
+    background-color: var(--wj-color-danger);
   }
 
   .info &:before {
-    border-color: $color-info;
-    background-color: $color-info;
+    border-color: var(--wj-color-info);
+    background-color: var(--wj-color-info);
   }
 }
 
@@ -230,7 +226,7 @@ input[type="checkbox"]:checked + label {
   .complete &::after,
   .primary &::after,
   .success &::after {
-    background: url($white-check-icon) left center; //white-tick
+    background: var(--wj-white-check-icon); //white-tick
   }
 }
 
@@ -240,7 +236,7 @@ input[type="checkbox"]:indeterminate + label {
   .complete &::after,
   .primary &::after,
   .success &::after {
-    background-color: $color-contrast-lowest;
+    background-color: var(--wj-color-contrast-lowest);
   }
 }
 
@@ -258,7 +254,7 @@ input[type="checkbox"]:indeterminate + label {
 
 @keyframes checkbox-check {
   0% {
-    background-position: 0px;
+    background-position: 0;
   }
   100% {
     background-position: -144px;
@@ -271,6 +267,6 @@ input[type="checkbox"]:indeterminate + label {
 }
 
 input[type="checkbox"] {
-  accent-color: $color-primary !important;
+  accent-color: var(--wj-color-primary) !important;
   font-size: 50px;
 }

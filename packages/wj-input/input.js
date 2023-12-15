@@ -163,7 +163,7 @@ export class Input extends WJElement {
         if(this.hasAttribute("clearable")) {
             this.clear = document.createElement("wj-button");
             this.clear.classList.add("clear");
-            this.clear.setAttribute("variant", "link")
+            this.clear.setAttribute("fill", "link")
             this.clear.setAttribute("part", "clear");
 
             let clearIcon = document.createElement("wj-icon");

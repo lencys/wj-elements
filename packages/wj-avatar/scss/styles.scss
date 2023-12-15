@@ -1,7 +1,6 @@
-@import "../../scss/themes/net-basic/important.scss";
-
-// Avatar
-// --------------------------------------------------
+/*
+[ WJ Avatar ]
+*/
 
 :host {
   --wj-avatar-width: 32px;
@@ -9,7 +8,7 @@
   --wj-avatar-font-size: .75rem;
   --wj-avatar-font-weight: 400;
   --wj-avatar-color: inherit;
-  --wj-avatar-background-color: #{opacify($color-border-a, 0.03)};
+  --wj-avatar-background-color: var(--wj-color-contrast-low);
 
   --wj-avatar-border-radius: 50%;
   --wj-avatar-border-color: transparent;

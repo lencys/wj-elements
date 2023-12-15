@@ -1,14 +1,11 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Item ]
+[ WJ Item ]
 */
 
 :host {
-    --wj-item-color: $color-contrast-higher;
     --wj-border-width: 0 0 1px 0;
     --wj-item-background: transparent;
-    --wj-item-background-hover: #{$color-contrast-lower};
+    --wj-item-background-hover: var(--wj-color-contrast-3); //#{$color-contrast-lower};
     --wj-item-padding-top: 0px;
     --wj-item-padding-bottom: 0px;
     --wj-item-padding-end: 0px;
@@ -38,8 +35,7 @@
     border-radius: var(--wj-item-border-radius);
     padding-top: var(--wj-item-padding-top);
     padding-bottom: var(--wj-item-padding-bottom);
-    padding-left: var(--wj-item-padding-start);
-    padding-right: var(--wj-item-padding-end);
+    padding-inline: var(--wj-item-padding-start) var(--wj-item-padding-end);
     margin: 0;
     display: flex;
     position: relative;
@@ -123,10 +119,6 @@ a {
 ::slotted([slot="start"]) {
     margin-inline: 0 1rem;
 }
-
-//::slotted(wj-label) {
-//    margin: var(--wj-item-label-margin-top) var(--wj-item-inner-padding-end) var(--wj-item-inner-padding-bottom) var(--wj-item-inner-padding-start);
-//}
 
 ::slotted(wj-label:not([slot="end"])) {
     flex: 1 1 0;

@@ -1,38 +1,35 @@
 @import "../../scss/themes/net-basic/important.scss";
 
 /*
-[ Badge ]
+[ WJ Toggle ]
 */
 
 :host(.wj-color-primary) {
-  --wj-toggle-color-base: linear-gradient(to right, #{$color-primary} 0%, #{$color-primary-light} 44%, rgba(0, 0, 0, 0.14) 62%, rgba(0, 0, 0, 0.04) 97%);
+  --wj-toggle-color-base: var(--wj-color-primary);
 }
 
 :host(.wj-color-complete) {
-  --wj-toggle-color-base: linear-gradient(to right, #{$color-complete} 0%, #{$color-complete-light} 44%, rgba(0, 0, 0, 0.14) 62%, rgba(0, 0, 0, 0.04) 97%);
+  --wj-toggle-color-base: var(--wj-color-complete);
 }
 
 :host(.wj-color-success) {
-  --wj-toggle-color-base: linear-gradient(to right, #{$color-success} 0%, #{$color-success-light} 44%, rgba(0, 0, 0, 0.14) 62%, rgba(0, 0, 0, 0.04) 97%) !important;
+  --wj-toggle-color-base: var(--wj-color-success) !important;
 }
 
 :host(.wj-color-warning) {
-  --wj-toggle-color-base: linear-gradient(to right, #{$color-warning} 0%, #{$color-warning-light} 44%, rgba(0, 0, 0, 0.14) 62%, rgba(0, 0, 0, 0.04) 97%);
+  --wj-toggle-color-base: var(--wj-color-warning);
 }
 
 :host(.wj-color-danger) {
-  --wj-toggle-color-base: linear-gradient(to right, #{$color-danger} 0%, #{$color-danger-light} 44%, rgba(0, 0, 0, 0.14) 62%, rgba(0, 0, 0, 0.04) 97%);
+  --wj-toggle-color-base: var(--wj-color-danger);
 }
 
-:host(.wj-color-dark) {
-  --wj-toggle-color-base: linear-gradient(to right, #{$color-info} 0%, #{$color-info-light} 44%, rgba(0, 0, 0, 0.14) 62%, rgba(0, 0, 0, 0.04) 97%);
+:host(.wj-color-info) {
+  --wj-toggle-color-base: var(--wj-color-info);
 }
-
-$switch-duration: 250ms;
-$switch-curve: cubic-bezier(.4,0,.2,1);
 
 :host {
-  --wj-toggle-color-base: $color-contrast-lowest;
+  --wj-toggle-color-base: var(--wj-color-contrast-3);
   --wj-toggle-width: 30px;
   --wj-toggle-height: 18px;
   --wj-toggle-border-radius: 50px;
@@ -42,6 +39,8 @@ $switch-curve: cubic-bezier(.4,0,.2,1);
   --wj-toggle-handle-color: #fff;
   --wj-toggle-handle-shadow:  1px 0 1px 0.5px rgba(0,0,0,0.12), 2px 4px 6px rgba(0,0,0,0.2);
   --wj-toggle-handle-shadow-checked:  1px 1px 0 rgba(0,0,0,0.08), -3px 3px 6px rgba(0,0,0,0.3);
+  --switch-duration: 250ms;
+  --switch-curve: cubic-bezier(.4,0,.2,1);
 }
 
 .native-toggle {
@@ -67,15 +66,13 @@ label {
       top: auto;
       left: 0;
       background: var(--wj-toggle-color-base);
-      //background-color: $color-contrast-lowest;
-      //background-image: var(--wj-toggle-color-base);
       background-size: 300%;
       background-position: right;
       border-radius: var(--wj-toggle-border-radius);
       border: none;
       box-shadow: inset 0 0 0 1px rgba(0,0,0,0.12);
-      transition: background ($switch-duration + ($switch-duration * 0.24)), box-shadow $switch-duration;
-      transition-timing-function: $switch-curve;
+      transition: background calc(var(--switch-duration) + (var(--switch-duration) * 0.24)), box-shadow var(--switch-duration);
+      transition-timing-function: var(--switch-curve);
     }
     &:after {
       content: "";
@@ -89,20 +86,19 @@ label {
       left: 2px;
       box-shadow: var(--wj-toggle-handle-shadow);
       transition: transform, box-shadow;
-      transition-duration: $switch-duration;
-      transition-timing-function: $switch-curve;
+      transition-duration: var(--switch-duration);
+      transition-timing-function: var(--switch-curve);
     }
   }
 }
 input[type="checkbox"][disabled] {
   & + label {
     cursor: not-allowed !important;
-    color: $color-contrast-high;
+    color: var(--wj-color-contrast-9);
     opacity: 0.58;
 
     &:before {
       cursor: not-allowed !important;
-      //background: mix($color-contrast-higher, $color-contrast-lower, 04%);
     }
   }
 }
@@ -126,7 +122,7 @@ input[type="checkbox"]{
     & + label {
       .label-wrapper:before{
         outline: none !important;
-        box-shadow: inset 0 0 0 1px rgba(0,0,0,0.12) ,0 0 0 $focus-width $color-focus;
+        box-shadow: inset 0 0 0 1px rgba(0,0,0,0.12), 0 0 0 0 #78c8fe;
       }
     }
   }
@@ -158,85 +154,6 @@ input[type="checkbox"]{
       }
     }
   }
-}
-//:host {
-//  &.right {
-//    input[type="checkbox"] {
-//      & + label {
-//        @include padding-left(0px);
-//        @include padding-right(36px);
-//
-//        &:before {
-//          @include right(0px);
-//          @include left(auto);
-//        }
-//
-//        &:after {
-//          @include right(10px);
-//          @include left(auto);
-//        }
-//      }
-//    }
-//  }
-//
-//  &.switch-lg {
-//    input[type="checkbox"] {
-//      & + label {
-//        @include padding-left(42px);
-//
-//        &:before {
-//          width: 34px;
-//          height: 22px;
-//          top: 0px;
-//        }
-//
-//        &:after {
-//          width: 18px;
-//          height: 18px;
-//          top: 2px;
-//        }
-//      }
-//    }
-//
-//    &.right {
-//      input[type="checkbox"] {
-//        & + label {
-//          @include padding-left(0px);
-//          @include padding-right(44px);
-//
-//          &:after {
-//            @include right(14px);
-//          }
-//        }
-//      }
-//    }
-//  }
-//}
-  /* hide focus style if not from keyboard navigation */
-  //.js-focus-visible .form-check.switch input[type="checkbox"]:focus:not(.focus-visible) + label:before {
-  //  box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.12);
-  //}
-  //
-  ///* Accessibility focus for screen readers*/
-  //.form-check.switch{
-  //  input[type="checkbox"]{
-  //    top: 1px;
-  //    width: 28px;
-  //    height: 18px;
-  //  }
-  //}
-  //.form-check.switch.switch-lg{
-  //  input[type="checkbox"]{
-  //    top: 0px;
-  //    width: 34px;
-  //    height: 22px;
-  //  }
-  //}
-
-
-:host(.wj-color) {
-  //background-color: var(--wj-color-base, red) ;
-  //color: var(--wj-color-contrast);
 }
 
 :host .text {

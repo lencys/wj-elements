@@ -1,8 +1,6 @@
 import { default as WJElement } from "./wj-element/wj-element.js";
 import { defaultStoreActions, store } from "./wj-store/store.js";
 
-import "./scss/global.scss";
-
 // SLICK ROUTER
 import { bindRouterLinks, withRouterLinks } from './wj-router/plugins/slick-router/middlewares/router-links.js';
 

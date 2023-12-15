@@ -1,25 +1,24 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Radio ]
+[ WJ Radio ]
 */
 
 :host {
   --wj-radio-margin-top: 0;
   --wj-radio-margin-bottom: .5rem;
   --wj-radio-margin-inline: 0;
+
   display: block;
   margin-top: var(--wj-radio-margin-top);
   margin-bottom: var(--wj-radio-margin-bottom);
   margin-inline: var(--wj-radio-margin-inline);
   line-height: 100%;
-  @include padding-left(0px);
+  padding-left: 0;
 
   label {
     display: inline-flex;
     cursor: pointer;
     position: relative;
-    @include padding-left(25px);
+    padding-left: 1.5rem;
     min-width: 16px;
     min-height: 16px;
     margin-bottom: 0;
@@ -37,8 +36,8 @@
       left: 0;
       -webkit-box-sizing: inherit;
       box-sizing: border-box;
-      background-color: $color-contrast-lowest;
-      border: 1px solid mix($color-contrast-high, #fff, 30%);
+      background-color: var(--wj-color-contrast-1);
+      border: 1px solid var(--wj-color-contrast-4);
     }
   }
 }
@@ -46,35 +45,24 @@
 .native-radio {
   input[type="radio"] +label {
     &:before {
-      border-radius: 99px;
-      @include transition(
-                      border 0.3s 0s cubic-bezier(0.455, 0.03, 0.215, 1.33)
-      );
+      border-radius: var(--wj-border-radius-circle);
+      transition: border 0.3s 0s cubic-bezier(0.455, 0.03, 0.215, 1.33);
     }
   }
   input[type="radio"]:checked {
     & + label {
       &:before {
-        border-color: $color-contrast-medium;
+        border-color: var(--wj-color-contrast-6);
         border-width: 5px;
-      }
-    }
-  }
-  input[type="radio"]:hover{
-    &:active:not(:checked){
-      & + label {
-        &:before{
-          background-color:rgba(0, 0, 0, 0.08);
-        }
       }
     }
   }
   input[type="radio"]:focus {
     & + label {
-      color: $color-contrast-higher;
+      color: var(--wj-color);
       &:before{
         outline: none !important;
-        box-shadow: 0 0 0 $focus-width $color-focus;
+        box-shadow: 0 0 0 0 #78c8fe;
       }
     }
   }
@@ -90,11 +78,11 @@
   input[type="radio"][disabled] {
     & + label {
       cursor: not-allowed!important;
-      color: $color-contrast-high;
-      opacity: 0.58;
+      color: var(--wj-color-contrast-9);
+      opacity: 0.5;
       &:before {
         cursor: not-allowed!important;
-        background: mix($color-contrast-higher, $color-contrast-lower, 04%);
+        //background: mix($color-contrast-higher, $color-contrast-lower, 04%);
       }
     }
   }
@@ -102,21 +90,21 @@
 // Colors
 input[type="radio"]:checked + label:before {
   .success & {
-    border-color: $color-success;
+    border-color: var(--wj-color-success);
   }
   .primary & {
-    border-color: $color-primary;
+    border-color: var(--wj-color-primary);
   }
   .complete & {
-    border-color: $color-complete;
+    border-color: var(--wj-color-complete);
   }
   .warning & {
-    border-color: $color-warning;
+    border-color: var(--wj-color-warning);
   }
   .danger & {
-    border-color: $color-danger;
+    border-color: var(--wj-color-danger);
   }
   .neutral & {
-    border-color: $color-info;
+    border-color: var(--wj-color-info);
   }
 }

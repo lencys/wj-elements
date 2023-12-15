@@ -1,16 +1,22 @@
 * {
   box-sizing: border-box;
+  /*background: var(--wj-background);*/
 }
 
-/*h2 {*/
-/*  font-size: 20px;*/
-/*}*/
+html{
+  color: var(--wj-color);
+}
+
+body {
+  background: var(--wj-background);
+  color: var(--wj-color);
+}
 
 .container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  height: 100%;
+  /*height: 100%;*/
   flex-direction: column;
   max-width: 672px;
   margin: 0 auto;
@@ -21,8 +27,11 @@
         max-width: 100%;
     }
 }
+
 .playground {
-  border: 1px solid rgba(0,0,0,.08);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--wj-border-color);
   width: 100%;
   height: auto;
   min-height: 300px;
@@ -32,6 +41,8 @@
   border-radius: 8px;
   margin-bottom: 3rem;
   padding: 2rem 0;
+  background: transparent;
+
 }
 
 .content {
@@ -41,6 +52,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  background: transparent;
 }
 
 .d-flex {
@@ -51,19 +63,15 @@
   flex: 1 1 28%;
 }
 
-/* extracted from https://vuejs.org/v2/guide/transitions.html */
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
 }
 
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter, .fade-leave-to {
   opacity: 0;
 }
 
-/* Enter and leave animations can use different */
-/* durations and timing functions.              */
 .slide-fade-enter-active {
   transition: all 0.3s ease;
 }
@@ -72,8 +80,7 @@
   transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
-.slide-fade-enter, .slide-fade-leave-to
-  /* .slide-fade-leave-active below version 2.1.8 */ {
+.slide-fade-enter, .slide-fade-leave-to {
   transform: translateX(100px);
   opacity: 0;
 }
@@ -109,7 +116,6 @@ router-outlet > * {
 #navigation {
   --wj-menu-border-width: 0;
   max-width: 100%;
-  /*height: 100%;*/
 }
 
 #navigation a {
@@ -127,4 +133,35 @@ wj-button {
 
 wj-chip {
   margin: .25rem;
+}
+
+wj-header::part(native) {
+  height: 100%;
+  align-items: center;
+}
+
+wj-header wj-button {
+  margin-left: auto;
+}
+
+wj-header .logo {
+  --wj-img-width: 120px !important;
+}
+
+/*Light mode*/
+#logo-light {
+  display: block;
+}
+#logo-dark {
+  display: none;
+}
+
+
+.wj-theme-dark{
+  #logo-light {
+    display: none;
+  }
+  #logo-dark {
+    display: block;
+  }
 }

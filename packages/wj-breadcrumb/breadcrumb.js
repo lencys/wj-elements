@@ -123,14 +123,13 @@ export class Breadcrumb extends WJElement {
     }
 
     collapseDropdown(){
-        console.log("DROPDOWN");
         let dropdown = document.createElement("wj-dropdown");
         dropdown.setAttribute("placement", "bottom");
         dropdown.setAttribute("offset", "10");
 
         let button = document.createElement("wj-button");
         button.setAttribute("slot", "trigger");
-        button.setAttribute("variant", "link");
+        button.setAttribute("fill", "link");
         button.innerHTML = `<wj-icon name="dots"></wj-icon>`;
 
         let menu = document.createElement("wj-menu");
@@ -139,11 +138,11 @@ export class Breadcrumb extends WJElement {
         dropdown.appendChild(button);
         dropdown.appendChild(menu);
 
-        dropdown.innerHTML = `<wj-button slot="trigger" variant="link">
+        dropdown.innerHTML = `<wj-button slot="trigger" fill="link">
             <wj-icon name="dots"></wj-icon>
         </wj-button>
         <wj-menu variant="context">
-            <wj-menu-item>Tralala</wj-menu-item>
+            <wj-menu-item>Test 0</wj-menu-item>
             <wj-menu-item>Test 1</wj-menu-item>
             <wj-menu-item>Test 2</wj-menu-item>
         </wj-menu>`;
@@ -160,6 +159,7 @@ export class Breadcrumb extends WJElement {
         button.setAttribute("aria-label", "Show more breadcrumbs");
         button.setAttribute("part", "collapsed-indicator");
         button.innerHTML = `<wj-icon name="dots"></wj-icon>`;
+
         event.addListener( button,"click", null, (e) => {
             this.native.classList.remove("hidden");
             button.remove();

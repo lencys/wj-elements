@@ -1,7 +1,5 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Tab Group ]
+[ WJ Tab Group ]
 */
 
 :host {
@@ -35,8 +33,6 @@
     scroll-snap-align: start;
     overflow-y: auto;
     overscroll-behavior-y: contain;
-
-    padding: var(--space-2) var(--space-3);
   }
 }
 
@@ -48,7 +44,7 @@
     flex-direction: column;
   }
   nav {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--wj-border-color);
   }
 }
 
@@ -61,7 +57,7 @@
   }
   nav {
     flex-direction: column;
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-right: 1px solid var(--wj-border-color);
   }
 }
 
@@ -73,7 +69,7 @@
   }
   nav {
     flex-direction: column;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 1px solid var(--wj-border-color);
   }
 }
 
@@ -85,6 +81,6 @@
     flex-direction: column-reverse;
   }
   nav {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid var(--wj-border-color);
   }
 }

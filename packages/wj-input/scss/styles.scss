@@ -1,16 +1,14 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Input ]
+[ WJ Input ]
 */
 
 :host {
-  --wj-input-font-family: #{$base-font-family};
-  --wj-input-background-color: #{$color-contrast-lowest};
-  --wj-input-color: #{$color-contrast-higher};
-  --wj-input-color-invalid: #{$color-danger-dark};
-  --wj-input-border-color: #{$color-border-a};
-  --wj-input-border-color-focus: #{$color-primary};
+  --wj-input-font-family: var(--wj-font-family);
+  --wj-input-background-color: var(--wj-background);
+  --wj-input-color: var(--wj-color);
+  --wj-input-color-invalid: var(--wj-color-danger);
+  --wj-input-border-color: var(--wj-border-color);
+  --wj-input-border-color-focus: var(--wj-color-primary);
   --wj-input-border-width: 1px;
   --wj-input-border-style: solid;
   --wj-input-border-radius: 4px;
@@ -38,7 +36,6 @@
       border-width: var(--wj-input-border-width);
       border-style: var(--wj-input-border-style);
       border-color: var(--wj-input-border-color);
-      border-top-color: darken($color-border-a, 10%);
       padding-inline: 0;
       padding-top: .25rem;
       padding-bottom: .25rem;
@@ -182,7 +179,7 @@
 :host([required]) .input-wrapper::after {
   color: var(--wj-input-color-invalid);
   content: "*";
-  font-family: -apple-system, BlinkMacSystemFont, "Inter UI", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: var(--wj-force-mac-font-family);
   font-size: 20px;
   position: absolute;
   right: 10px;
@@ -210,7 +207,6 @@
 
 ::slotted([slot="start"]), ::slotted([slot="end"]) {
   display: flex;
-  //height: 100%; // zrusene na ziadost SCS
   align-items: center;
   border-width: var(--wj-input-border-width);
   border-style: var(--wj-input-border-style);
@@ -229,7 +225,6 @@ input {
   border-color: var(--wj-input-border-color);
   font-family: var(--wjinput-font-family);
   color: var(--wj-input-color);
-  border-top-color: fade($color-contrast-higher, 21%);
   appearance: none;
   outline: 0;
   padding: .25rem .5rem;

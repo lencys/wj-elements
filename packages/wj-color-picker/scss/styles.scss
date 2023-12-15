@@ -1,7 +1,5 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Color Picker ]
+[ Wj Color Picker ]
 */
 
 :host {
@@ -20,8 +18,11 @@
   width: 200px;
   min-height: 90px;
   box-shadow: 0 0 5px rgba(0,0,0,.05), 0 5px 20px rgba(0,0,0,.1);
-  border-radius: var(--wj-color-picker-radius);
-  background: #fff;
+  border-radius: var(--wj-border-radius-small);
+  border-width: 1px;
+  border-style: var(--wj-border-style);
+  border-color: var(--wj-border-color);
+  background: var(--wj-background);
 }
 
 .color-area {
@@ -29,9 +30,10 @@
   position: relative;
   height: 100px;
   color: var(--wj-color-picker-area);
-  background-image: linear-gradient(rgba(0,0,0,0),#000),linear-gradient(90deg,#fff,currentColor);
+  background-image: linear-gradient(rgba(0,0,0,0),#000),linear-gradient(90deg, #fff, currentColor);
   cursor: crosshair;
   border-radius: var(--wj-color-picker-radius) var(--wj-color-picker-radius) 0 0;
+  border-bottom: 1px solid var(--wj-border-color);
 }
 
 .wrapper {
@@ -51,7 +53,7 @@
 .hue::part(slider) {
   --wj-slider-color: transparent;
   --wj-slider-thumb-color: white;
-  --wj-slider-thumb-shadow: 0 0 0 1px #{$color-border-a};
+  --wj-slider-thumb-shadow: 0 0 0 1px var(--wj-border-color);
   --wj-slider-thumb-shadow-active: var(--wj-slider-thumb-shadow);
   --wj-slider-track-color: transparent;
 }
@@ -78,7 +80,7 @@
 .alpha::part(slider) {
   --wj-slider-color: transparent;
   --wj-slider-thumb-color: white;
-  --wj-slider-thumb-shadow: 0 0 0 1px #{$color-border-a};
+  --wj-slider-thumb-shadow: 0 0 0 1px var(--wj-border-color);
   --wj-slider-thumb-shadow-active: var(--wj-slider-thumb-shadow);
   --wj-slider-track-color: transparent;
   --wj-slider-track-height: 8px;

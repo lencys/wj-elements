@@ -1,22 +1,21 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Textarea ]
+[ WJ Textarea ]
 */
 
 :host {
-  --wj-textarea-font-family: #{$base-font-family};
-  --wj-textarea-background-color: #{$color-contrast-lowest};
-  --wj-textarea-color: #{$color-contrast-higher};
-  --wj-textarea-color-invalid: #{$color-danger-dark};
+  --wj-textarea-font-family: var(--wj-font-family);
+  --wj-textarea-background-color: var(--wj-background);
+  --wj-textarea-color: var(--wj-color);
+  --wj-textarea-color-invalid: var(--wj-color-danger);
   --wj-textarea-border-width: 1px;
   --wj-textarea-border-style: solid;
-  --wj-textarea-border-color: #{$color-border-a};
-  --wj-textarea-border-color-focus: #{$color-primary};
+  --wj-textarea-border-color: var(--wj-border-color);
+  --wj-textarea-border-color-focus: var(--wj-color-primary);
   --wj-textarea-border-radius: 4px;
   --wj-textarea-margin-bottom: .5rem;
   --wj-textarea-line-height: 20px;
   --wj-textarea-padding: 0.5rem;
+
   width: 100%;
   margin-bottom: var(--wj-textarea-margin-bottom);
   display: block;

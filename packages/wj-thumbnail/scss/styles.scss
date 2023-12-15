@@ -1,9 +1,10 @@
-@import "../../scss/themes/net-basic/important.scss";
+/*
+[ WJ Thumbnail ]
+*/
 
 :host {
   --wj-thumbnail-width: 48px;
   --wj-thumbnail-height: 48px;
-  --wj-border-radius: 0;
 }
 
 :host {
@@ -15,7 +16,7 @@
 
 ::slotted(wj-img),
 ::slotted(img) {
-  border-radius: var(--wj-border-radius);
+  border-radius: var(--wj-border-radius-medium);
   width: 100%;
   height: 100%;
   object-fit: cover;

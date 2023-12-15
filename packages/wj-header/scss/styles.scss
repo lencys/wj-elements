@@ -1,12 +1,10 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Header ]
+[ WJ Header ]
 */
 
 :host {
-    --wj-header-background: #{$color-contrast-lowest};
-    --wj-header-border-color: #{$border-color};
+    --wj-header-background: var(--wj-background);
+    --wj-header-border-color: var(--wj-border-color);
     --wj-header-border-width: 0 0 1px 0;
     --wj-header-border-style: solid;
     --wj-header-top: 0;

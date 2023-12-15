@@ -1,28 +1,8 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Tab ]
+[ WJ Tab ]
 */
 
-@mixin active() {
-  content: " ";
-  display: none;
-  block-size: 0.15rem;
-  writing-mode: var(--wj-tab-writing-mode);
-  background: var(--wj-tab-color-active);
-  //width: auto;
-  //height:;
-  position: absolute;
-  bottom: var(--wj-tab-bottom);
-  left: var(--wj-tab-start);
-  right: var(--wj-tab-end);
-  top: var(--wj-tab-top);
-}
-
 :host {
-  $red: red($color-primary);
-  $green: green($color-primary);
-  $blue: blue($color-primary);
   --wj-font-size: 10px;
   --wj-tab-text-transfrom: uppercase;
   --wj-tab-font-weight: 500;
@@ -30,8 +10,8 @@
   --wj-tab-padding-inline: 1rem;
   --wj-tab-padding-top: .75rem;
   --wj-tab-padding-bottom: .75rem;
-  --wj-tab-color-active: rgba(#{$red}, #{$green}, #{$blue}, 1);
-  --wj-tab-color-hover: rgba(#{$red}, #{$green}, #{$blue}, 0.05);
+  --wj-tab-color-active: var(--wj-color-primary-11);
+  --wj-tab-color-hover: var(--wj-color-primary-1);
 
   display: block;
   position: relative;
@@ -63,11 +43,19 @@
     }
 
     &:after {
-      @include active();
+      content: " ";
+      display: none;
+      block-size: 0.15rem;
+      writing-mode: var(--wj-tab-writing-mode);
+      background: var(--wj-tab-color-active);
+      position: absolute;
+      bottom: var(--wj-tab-bottom);
+      left: var(--wj-tab-start);
+      right: var(--wj-tab-end);
+      top: var(--wj-tab-top);
     }
   }
 }
-
 
 :host([disabled]) a {
   opacity: 0.5;

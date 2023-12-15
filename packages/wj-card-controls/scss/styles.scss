@@ -1,9 +1,11 @@
-@import "../../scss/themes/net-basic/important.scss";
+/*
+[ WJ Card - Controls ]
+*/
 
 :host {
-  --wj-color: #{$color};
   --wj-card-subtitle-font-size: 28px;
-  --wj-card-subtitle-font-family: #{$secondary-font-family};
+  --wj-card-subtitle-font-family: var(--wj-font-family-secondary);
+
   font-family: var(--wj-card-subtitle-font-family);
   text-transform: uppercase;
   display: inline-block;
@@ -16,7 +18,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   filter: alpha(opacity=40);
-  @include transition(opacity 0.3s ease);
+  transition: opacity 0.3s ease;
   position: absolute;
   right: 1rem;
   top: .5rem;

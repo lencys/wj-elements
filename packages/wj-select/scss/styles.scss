@@ -1,19 +1,19 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Option ]
+[ WJ Select ]
 */
 :host {
   --wj-select-border-width: 1px;
   --wj-select-border-style: solid;
   --wj-select-border-color: var(--wj-border-color);
+
   --wj-select-options-border-width: 1px;
-  --wj-select-options-border-style: solid;
+  --wj-select-options-border-style: var(--wj-border-style);
   --wj-select-options-border-color: var(--wj-border-color);
-  --wj-select-background-color: #{$color-contrast-lowest};
+
+  --wj-select-background: var(--wj-background);
   --wj-select-line-height: 20px;
-  --wj-select-color: #{$color-contrast-higher};
-  --wj-select-border-radius: 4px;
+  --wj-select-color: var(--wj-color);
+  --wj-select-border-radius: var(--wj-border-radius-medium);
   width: 100%;
   display: block;
   [slot=arrow] {
@@ -80,7 +80,7 @@
   display: grid;
   grid-template-columns: 1fr auto auto;
   align-items: center;
-  background-color: var(--wj-select-background-color);
+  background-color: var(--wj-select-background);
   min-height: 28px;
   color: var(--wj-select-color);
   line-height: var(--wj-select-line-height);
@@ -122,7 +122,7 @@ input {
   border-color: var(--wj-select-options-border-color);
   border-radius: 0 0 var(--wj-select-border-radius) var(--wj-select-border-radius);
   margin-top: -1px;
-  background: var(--wj-select-background-color);
+  background: var(--wj-select-background);
   overflow: auto;
 }
 

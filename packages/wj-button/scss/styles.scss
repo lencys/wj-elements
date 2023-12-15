@@ -1,7 +1,5 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Button ]
+[ WJ Button ]
 */
 
 :host(.wj-button-solid.wj-color-primary) {
@@ -77,7 +75,7 @@
 }
 
 :host(.wj-button-outline.wj-color-default) {
-  --wj-button-border-color: var(--wj-color-contrast-1);
+  --wj-button-border-color: var(--wj-color-contrast-4);
   --wj-button-color: var(--wj-color-contrast-11);
 }
 
@@ -343,10 +341,6 @@
 :host(.wj-button-group-button:not(.wj-button-group-first)) {
   margin-inline-start: calc(-1 * var(--wj-button-border-width)) !important;
 }
-
-//wj-button [slot=toggle] {
-//  display: none;
-//}
 
 ::slotted([slot="toggle"]) {
   display: none;

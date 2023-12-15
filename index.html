@@ -5,7 +5,8 @@
   <title>WJ ELements</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script type="module" src="./demo/assets/js/demo.js"></script>
-  <link rel="stylesheet" href="./packages/scss/global.scss" />
+  <link rel="stylesheet" href="packages/themes/light.scss" />
+  <link rel="stylesheet" href="packages/themes/dark.scss" />
   <link rel="stylesheet" href="./demo/assets/css/demo.css" />
   <style>
     body {
@@ -62,9 +63,16 @@
 
   <wj-container vertical id="app">
     <wj-header sticky>
+      <wj-img src="./demo/assets/img/logo-light.png" id="logo-light" alt="WJ Elements" class="logo"></wj-img>
+      <wj-img src="./demo/assets/img/logo-dark.png" id="logo-dark" alt="WJ Elements" class="logo"></wj-img>
       <wj-menu-button id="open" content-id="sidebar">
         <wj-button variant="link" stop-propagation="false"><wj-icon name="menu"></wj-icon></wj-button>
       </wj-menu-button>
+
+      <wj-button fill="link" toggle="on" class="dark-light-mode">
+        <wj-icon name="sun" slot="toggle" state="on"></wj-icon>
+        <wj-icon name="moon" slot="toggle" state="off"></wj-icon>
+      </wj-button>
     </wj-header>
     <wj-container>
       <wj-aside id="sidebar" width="240px" top="60px" variant="top-start" fixed>

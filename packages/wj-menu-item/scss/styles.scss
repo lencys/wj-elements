@@ -1,7 +1,5 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Menu Item ]
+[ WJ Menu Item ]
 */
 
 :host {
@@ -9,13 +7,13 @@
   --wj-menu-item-color: var(--wj-color);
   --wj-menu-item-background: transparent;
 
-  --wj-menu-item-color-hover: $color-contrast-high;
+  --wj-menu-item-color-hover: var(--wj-color-contrast-8);
   --wj-menu-item-background-hover: var(--wj-border-color);
 
-  --wj-menu-item-color-focus: $color-contrast-high;
-  --wj-menu-item-background-focus: $color-contrast-lower;
+  --wj-menu-item-color-focus: var(--wj-color-contrast-8);
+  --wj-menu-item-background-focus: var(--wj-border-color);
 
-  --wj-menu-item-color-active: $color-contrast-high;
+  --wj-menu-item-color-active: var(--wj-color-contrast-8);
   --wj-menu-item-background-active: var(--wj-border-color);
 
   --wj-menu-item-padding-top: .5rem;
@@ -163,23 +161,11 @@
   ::slotted([slot="start"]) {
     width: 1.5rem;
   }
-  //::slotted([slot="submenu"]) {
-  //  margin-left: var(--wj-menu-submenu-offset);
-  //}
 }
 
 :host(.wj-menu-variant-context) {
   display: block;
 }
-
-//:host(.wj-menu-collapse) {
-//  .label, .submenu-icon {
-//    --wj-menu-item-icon-visibility: none !important;
-//  }
-//  ::slotted([slot="end"]) {
-//    display: none;
-//  }
-//}
 
 :host(.active) {
   color: var(--wj-menu-item-color-active);
@@ -190,11 +176,3 @@
   color: var(--wj-menu-item-color-active);
   background: var(--wj-menu-item-background-active);
 }
-
-//wj-menu-item[variant="nav"] wj-menu {
-//  --wj-menu-margin-inline: 30px !important;
-//}
-
-// wj-menu-item {
-//  --wj-menu-item-icon-visibility: hidden !important;
-//}
