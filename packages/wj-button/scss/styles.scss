@@ -290,7 +290,12 @@
 */
 
 :host(.wj-button-round) {
-  --wj-button-border-radius: 100px;
+  --wj-button-border-radius: var(--wj-border-radius-pill);
+}
+
+:host(.wj-button-circle) {
+  --wj-button-border-radius: var(--wj-border-radius-circle);
+  aspect-ratio: 1/1;
 }
 
 :host(.wj-button-large) {

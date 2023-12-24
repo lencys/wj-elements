@@ -25,7 +25,7 @@ export class CarouselItem extends WJElement {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");
-        native.classList.add("native-carousel");
+        native.classList.add("native-carousel-item");
 
         let slot = document.createElement("slot");
 

@@ -40,14 +40,6 @@ export class Button extends WJElement {
         return this.hasAttribute("outline");
     }
 
-    set round(value) {
-        this.setAttribute("round", "");
-    }
-
-    get round() {
-        return this.hasAttribute("round");
-    }
-
     set stopPropagation(value) {
         this.setAttribute("stop-propagation", bool(value));
     }
@@ -79,8 +71,11 @@ export class Button extends WJElement {
         if(this.variant)
             this.classList.add("wj-button-" + this.variant);
 
-        if(this.round)
+        if(this.hasAttribute("round"))
             this.classList.add("wj-button-round")
+
+        if(this.hasAttribute("circle"))
+            this.classList.add("wj-button-circle")
 
         if(this.outline)
             this.classList.add("wj-outline");
@@ -169,7 +164,9 @@ export class Button extends WJElement {
 
         event.addListener(this, "click", "wj:button-click", null, { stopPropagation: this.stopPropagation });
         event.addListener(this, "click", null, this.eventDialogOpen);
-        event.addListener(this, "click", "wj-button:toggle", this.toggleStates, { stopPropagation: this.stopPropagation });
+
+        if(this.hasToggle)
+            event.addListener(this, "click", "wj-button:toggle", this.toggleStates, { stopPropagation: this.stopPropagation });
     }
 
     beforeDisconnect() {
