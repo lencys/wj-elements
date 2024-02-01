@@ -3,8 +3,12 @@ import { defaultStoreActions, store } from "./wj-store/store.js";
 
 // SLICK ROUTER
 import { bindRouterLinks, withRouterLinks } from './wj-router/plugins/slick-router/middlewares/router-links.js';
+import { Localizer } from "./utils/localize.js";
+import { sk } from "./translations/sk.js";
+import { en } from "./translations/en.js";
 
 import { Aside } from "./wj-aside/aside.js";
+import { Animation } from "./wj-animation/animation.js";
 import { Avatar } from "./wj-avatar/avatar.js";
 import { Badge } from "./wj-badge/badge.js";
 import { Breadcrumb } from "./wj-breadcrumb/breadcrumb.js";
@@ -29,7 +33,10 @@ import { Dialog } from "./wj-dialog/dialog.js";
 import { Divider } from "./wj-divider/divider.js";
 import { Dropdown } from "./wj-dropdown/dropdown.js";
 import { ExampleElement } from "./wj-example-element/example-element.js";
+import { FileUpload } from "./wj-file-upload/file-upload.js";
+import { FileUploadItem } from "./wj-file-upload-item/file-upload-item.js";
 import { Footer } from "./wj-footer/footer.js";
+import { FormatDigital } from "./wj-format-digital/format-digital.js";
 import { Grid } from "./wj-grid/grid.js";
 import { Header } from "./wj-header/header.js";
 import { Icon } from "./wj-icon/icon.js";
@@ -38,10 +45,12 @@ import { Img } from "./wj-img/img.js";
 import { ImgComparer } from "./wj-img-comparer/img-comparer.js";
 import { InfiniteScroll } from "./wj-infinite-scroll/infinite-scroll.js";
 import { Input } from "./wj-input/input.js";
+import { InputFile } from "./wj-input-file/input-file.js";
 import { Item } from "./wj-item/item.js";
 import { Label } from "./wj-label/label.js";
 import { List } from "./wj-list/list.js";
 import { Main } from "./wj-main/main.js";
+import { Masonry} from "./wj-masonry/masonry.js";
 import { Menu } from "./wj-menu/menu.js";
 import { MenuButton } from "./wj-menu-button/menu-button.js";
 import { MenuItem } from "./wj-menu-item/menu-item.js";
@@ -53,6 +62,8 @@ import { Popup } from "./wj-popup/popup.js";
 import { ProgressBar } from "./wj-progress-bar/progress-bar.js";
 import { Radio } from "./wj-radio/radio.js";
 import { RadioGroup } from "./wj-radio-group/radio-group.js";
+import { Rate } from "./wj-rate/rate.js";
+import { RelativeTime } from "./wj-relative-time/relative-time.js";
 import { Route } from "./wj-route/route.js";
 import { Routerx } from "./wj-router/router.js";
 import { RouterLink } from "./wj-router-link/router-link.js";
@@ -73,8 +84,9 @@ import { ToolbarAction } from "./wj-toolbar-action/toolbar-action.js";
 import { Tooltip } from "./wj-tooltip/tooltip.js";
 import { VisuallyHidden } from "./wj-visually-hidden/visually-hidden.js";
 
-export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks,
+export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks, Localizer,
   Aside,
+  Animation,
   Avatar,
   Badge,
   Breadcrumb,
@@ -99,7 +111,10 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   Divider,
   Dropdown,
   ExampleElement,
+  FileUpload,
+  FileUploadItem,
   Footer,
+  FormatDigital,
   Grid,
   Header,
   Icon,
@@ -108,10 +123,12 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   ImgComparer,
   InfiniteScroll,
   Input,
+  InputFile,
   Item,
   Label,
   List,
   Main,
+  Masonry,
   Menu,
   MenuButton,
   MenuItem,
@@ -123,6 +140,8 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   ProgressBar,
   Radio,
   RadioGroup,
+  Rate,
+  RelativeTime,
   Route,
   Routerx,
   RouterLink,

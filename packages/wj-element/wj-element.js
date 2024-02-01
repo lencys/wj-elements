@@ -271,8 +271,7 @@ export default class WJElement extends HTMLElement {
 			this.isAttached = false;
 		}
 		if (this.isAttached) {
-			console.log('Already rendered...', this);
-			// return;
+			// console.log('Already rendered...', this);
 		}
 
 		this.context.append(this.template.content.cloneNode(true));

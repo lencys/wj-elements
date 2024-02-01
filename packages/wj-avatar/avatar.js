@@ -1,7 +1,7 @@
 import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
-import { getHsl, getInitials } from "./service/service.js";
+import { getHsl, getInitials } from "../wj-animation/service/service.js";
 
-import styles from "./scss/styles.scss?inline";
+import styles from "../wj-animation/scss/styles.scss?inline";
 
 export class Avatar extends WJElement {
     constructor() {

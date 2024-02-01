@@ -150,10 +150,8 @@ export class InfiniteScroll extends WJElement {
                     placement = this.querySelector(this.placement);
 
                 response.data.forEach((item) => {
-                    // console.log(this.infiniteScrollTemplate);
                     const interpolateItem = this.infiniteScrollTemplate.interpolate(item);
                     const doc = parser.parseFromString(interpolateItem, 'text/html');
-                    console.log("DOC", this.iterate.tagName.toLowerCase());
                     const element = doc.querySelector(this.iterate.tagName.toLowerCase()); //doc.querySelector(".icon-item");
 
                     event.addListener(element, "click", "wj-infinite-scroll:click-item", null, { stopPropagation: true });

@@ -148,7 +148,7 @@ export class Breadcrumb extends WJElement {
         </wj-menu>`;
 
         this.parentElement.querySelectorAll("wj-breadcrumb").forEach((el) => {
-            console.log(el);
+            // console.log(el);
         });
 
         return dropdown;

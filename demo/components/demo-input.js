@@ -148,11 +148,6 @@ template.innerHTML = `<h1>Input</h1>
             --wj-input-slot-padding-inline: .25rem !important;
           }
           
-          /*.example-color wj-color-picker {*/
-          /*  padding: 0;*/
-          /*  --wj-color-picker-size: calc(2rem - 2px) !important;*/
-          /*}*/
-          
           .example-color wj-color-picker::part(anchor) {
             /*border-radius: 3px 0 0 3px !important;*/
             border-radius: 50%;

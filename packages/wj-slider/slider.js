@@ -51,7 +51,7 @@ export class Slider extends WJElement {
     }
 
     static get observedAttributes(){
-        return ["max"];
+        return ["max", "value"];
     }
 
     setupAttributes() {

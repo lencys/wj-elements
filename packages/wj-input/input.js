@@ -13,7 +13,6 @@ export class Input extends WJElement {
     }
 
     set value(value) {
-
         this.setAttribute("value", value);
     }
 
@@ -120,11 +119,23 @@ export class Input extends WJElement {
         if(this.hasAttribute("placeholder"))
             input.setAttribute("placeholder", this.placeholder);
 
+        if(this.hasAttribute("multiple"))
+            input.setAttribute("multiple", this.multiple);
+
         if(this.hasAttribute("disabled"))
             input.setAttribute("disabled", "");
 
         if(this.hasAttribute("readonly"))
             input.setAttribute("readonly", "");
+
+        if(this.hasAttribute("maxlength"))
+            input.setAttribute("maxlength", this.maxlength);
+
+        if(this.hasAttribute("max"))
+            input.setAttribute("max", this.max);
+
+        if(this.hasAttribute("min"))
+            input.setAttribute("min", this.min);
 
         // Error
         let error = document.createElement("div");
@@ -178,7 +189,6 @@ export class Input extends WJElement {
             wrapper.appendChild(end);
             native.classList.add("has-end");
         }
-
 
         native.appendChild(error);
 

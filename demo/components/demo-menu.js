@@ -112,18 +112,6 @@ export default class DemoMenu extends WJElement {
     super(template);
   }
 
-  afterDraw(){
-    /// TODO process vsetky @wj-event
-
-
-    
-    this.context.addEventListener('wj:jozefko',(e)=>{
-      console.log(e);
-        // otvorenie modalka
-    })
-  }
-
-
   openModalFn(){
     debugger
   }

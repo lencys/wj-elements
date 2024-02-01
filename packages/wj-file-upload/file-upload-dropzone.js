@@ -1,21 +1,17 @@
-import { WjElementUtils } from "/templates/net/assets/js/utils/wj-element-utils.js?v=@@version@@";
-import "/templates/net/assets/plugins/dropzone/dropzone.min.js?v=@@version@@";
-import "/templates/net/assets/plugins/md5.umd.min.js";
-import "/components/hub/disk/js/hub-disk.js?v=@@version@@";
+import { default as WJElement, event } from "../wj-element/wj-element.js";
+import "./plugins/dropzone/dropzone.min.js?v=@@version@@";
+import "./plugins/md5.umd.min.js";
+// import "/components/hub/disk/js/hub-disk.js?v=@@version@@";
+import styles from "./scss/styles.scss?inline";
 
 const templateB = document.createElement('template');
 templateB.innerHTML = `<style>
-    @import "/templates/net/assets/plugins/bootstrap/css/bootstrap.css?v=@@version@@";
-    @import "/templates/net/assets/plugins/font-awesome/css/fontawesome.css?v=@@version@@";
-    @import "/templates/net/assets/plugins/font-awesome/css/light.min.css?v=@@version@@";
-    /** TODO opraviť  import */
-    @import "/templates/net/pages/css/themes/net-basic.css?v=@@version@@";
-    @import "/templates/net/pages/css/themes/net-basic/var.css?v=@@version@@";
+
     
-    @import "/templates/net/assets/js/components/wj-file-upload/css/styles.css?v=@@version@@";
+    /*@import "/templates/net/assets/js/components/wj-file-upload/css/styles.css?v=@@version@@";*/
 </style>`;
 
-export default class FileUpload extends HTMLElement {
+export class FileUploadDropzone extends WJElement {
     constructor() {
         super();
         this._file = "";
@@ -87,10 +83,10 @@ export default class FileUpload extends HTMLElement {
                 "maxFileSize": 64000000,
         };
 
-        this.attachShadow({mode: 'open'})
-        this.shadowRoot.appendChild(templateB.content.cloneNode(true));
+        // this.attachShadow({mode: 'open'})
+        // this.shadowRoot.appendChild(templateB.content.cloneNode(true));
         this.uploadFile = true;
-        this.user = JSON.parse(intranet.storage().getItem("settings"));
+        this.user = 1;//JSON.parse(intranet.storage().getItem("settings"));
     }
 
     set acceptedFiles(value) {
@@ -135,7 +131,6 @@ export default class FileUpload extends HTMLElement {
     }
 
     get customTitle() {
-
         let customTitle = this.getAttribute("custom-title")
         return customTitle;
     }
@@ -150,37 +145,69 @@ export default class FileUpload extends HTMLElement {
         }
     }
 
-    connectedCallback() {
+    beforeDraw() {
         this.timestamp = new Date().getTime();
         this.eventName = `add-file-with-disk-${this.timestamp}`;
+        // this.timestamp = new Date().getTime();
+        // this.eventName = `add-file-with-disk-${this.timestamp}`;
+        // console.log(this);
+        // this = intranet.getAttributes(this);
+    }
 
-        this.diskAttributes = intranet.getAttributes(this);
-        this.shadowRoot.appendChild(this.drawDropzone());
+    draw() {
+        let fragment = document.createDocumentFragment();
 
+        let native = document.createElement("div");
+        native.classList.add("dropzone-wrapper");
+
+        let dropzone = document.createElement("div");
+        dropzone.id = "uploadDropzone";
+        dropzone.classList.add(this.variant == "photo-edit" ? "graphic" : this.variant, "dropzone");
+
+        let slot = document.createElement("slot");
+
+        let input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "uploadedFileKey";
+        input.setAttribute("data-net-upload", "fileKey");
+        input.classList.add("mb-0");
+
+        dropzone.appendChild(slot);
+        dropzone.appendChild(input);
+        native.appendChild(dropzone);
+
+        this.dropzone = dropzone;
+
+        fragment.appendChild(native);
+
+        return fragment;
+    }
+
+    afterDraw() {
         this.initDropzone();
 
-        if (this.design == "classic") {
-            this.shadowRoot.querySelector(".btn-fileinput").addEventListener("click", () => {
+        if (this.variant == "classic") {
+            this.context.querySelector(".btn-fileinput").addEventListener("click", () => {
                 this.uploadDropzone.hiddenFileInput.click();
             });
 
-            this.shadowRoot.querySelector(".btn-fileinput-result").addEventListener("click", (e) => {
+            this.context.querySelector(".btn-fileinput-result").addEventListener("click", (e) => {
                 e.preventDefault();
 
-                let element = e.target.closest('.remove')
+                let element = e.target.closest('.remove');
                 if (element) {
                     this.uploadDropzone.removeAllFiles();
-                    this.shadowRoot.querySelector('[data-net-upload="fileKey"]').value = "";
-                    this.shadowRoot.querySelector('[data-net-upload="input"]').value = "";
+                    this.context.querySelector('[data-net-upload="fileKey"]').value = "";
+                    this.context.querySelector('[data-net-upload="input"]').value = "";
                 } else {
                     this.uploadDropzone.hiddenFileInput.click();
                 }
             });
-        } else if (this.design == "slot") {
-            this.shadowRoot.addEventListener("click", () => {
+        } else if (this.variant == "slot") {
+            this.context.addEventListener("click", () => {
                 this.uploadDropzone.hiddenFileInput.click();
             });
-        } else if (this.design == "graphic") {
+        } else if (this.variant == "graphic") {
             document.querySelector("#modal-secondary .modal-footer").addEventListener(this.eventName, this.selectedFileWithDisk);
         }
     }
@@ -199,10 +226,11 @@ export default class FileUpload extends HTMLElement {
         }
 
         let that = this;
-        this.uploadDropzone = new Dropzone(this.shadowRoot.querySelector('#uploadDropzone'), {
+
+        this.uploadDropzone = new Dropzone(this.dropzone, {
             "dictDefaultMessage": "",
-            "init": function () {
-                if(that.design == "slot") {
+            "init": function() {
+                if(that.variant == "slot") {
                     // this.element.style.display = 'none';
                     return;
                 };
@@ -215,10 +243,10 @@ export default class FileUpload extends HTMLElement {
                 }
 
                 this.element.querySelectorAll('[wj-tooltip]').forEach((el) => {
-                    intranet.initTooltip(el).then((ret) => {});
+                    // intranet.initTooltip(el).then((ret) => {});
                 });
             },
-            "previewTemplate": this.getTemplateForDesign(this.design),
+            "previewTemplate": this.getTemplateForDesign(this.variant),
             "clickable": true,
             "acceptedFiles": this.acceptedFiles,
         });
@@ -249,78 +277,7 @@ export default class FileUpload extends HTMLElement {
             await this.getStorageReserve(this.queueKey, fileSize).then(async (res) => {
                 this.queue += files.length;
                 if(res.success) {
-                    for (let i = 0; i < files.length; i++) {
-                        let f = files[i];
-                        if (f.size >= this.uploadDropzone.options.maxFileSize) {
-                            this.uploadDropzone.cancelUpload(f);
-                            this.removeAndDrawRow({...this.file(f), ...{message: `Maximálne podporované veľkosti súborov sú ${filesize(this.uploadDropzone.options.maxFileSize)}`}}, "ERROR");
-                        }
-                        if(f.status.toUpperCase() != "ERROR") {
-                            if (this.getAttribute("type") == "version") {
-                                this.removeAndDrawRow(this.file(f), "ADDEDFILES");
-                                this.uploadDropzone.processQueue();
-                            } else {
-                                await this.readFile(f).then(md5 => {
-                                    fetch(`/private/rest/hub/file/uploadable/${this.diskAttributes.product}/${this.diskAttributes.module}/${this.diskAttributes.moduleId}/${md5}`, {
-                                        "method": "GET",
-                                        "headers": {
-                                            'Content-Type': 'application/json',
-                                        }
-                                    })
-                                        .then((response, e) => {
-                                            if (response.ok) {
-                                                return response.json();
-                                            }
-                                        })
-                                        .then((res) => {
-                                            if (res.success) {
-                                                this.uploadDropzone.processQueue();
-                                            } else {
-
-                                                let errorMessage= this.shadowRoot.querySelector("[data-dz-errormessage]");
-                                                let p = document.createElement("p");
-                                                p.innerHTML = res.message + " Chcete použiť tento súbor?";
-
-                                                let div = document.createElement("div");
-
-                                                let btnClose = document.createElement("button");
-                                                btnClose.classList.add("btn", "btn-outline-primary", "btn-primary", "mr-2", "ml-auto", "btn-close");
-                                                btnClose.setAttribute("data-dz-remove", "");
-                                                btnClose.innerHTML = "Zrušiť";
-                                                btnClose.addEventListener("click", () => {
-                                                    this.uploadDropzone.removeFile(f);
-                                                });
-
-                                                let btnSave = document.createElement("button");
-                                                btnSave.classList.add("btn", "btn-primary", "save");
-                                                btnSave.innerHTML = "Použiť";
-                                                btnSave.addEventListener("click", () => {
-                                                    this.dispatchEvent(
-                                                        new CustomEvent("wj-uploaded-file-exist", {
-                                                            bubbles: true,
-                                                            detail: {
-                                                                file: res.data,
-                                                            },
-                                                        })
-                                                    );
-
-                                                    this.uploadDropzone.cancelUpload(f);
-                                                    this.uploadDropzone.removeFile(f);
-                                                    this.removeAndDrawRow({...this.file(f), ...{message: res.message}}, "ERROR");
-                                                });
-
-                                                div.appendChild(btnClose);
-                                                div.appendChild(btnSave);
-
-                                                this.shadowRoot.querySelector(".dz-details").setAttribute("hidden", "");
-                                                errorMessage.appendChild(p);
-                                                errorMessage.appendChild(div);
-                                            }
-                                        });
-                                });
-                            }
-                        }
-                    }
+                    this.addedFiles();
                 }
             });
         });
@@ -377,11 +334,57 @@ export default class FileUpload extends HTMLElement {
         });
 
         // event po ktorom sa otvori okno expoloreru v OS
-        this.shadowRoot.querySelector('[data-dropzone-add="file"]').addEventListener("click", () => {
-            this.uploadDropzone.hiddenFileInput.click();
-        });
+        // this.shadowRoot.querySelector('[data-dropzone-add="file"]').addEventListener("click", () => {
+        //     this.uploadDropzone.hiddenFileInput.click();
+        // });
+    }
 
+    async addedFiles() {
+        for (let i = 0; i < files.length; i++) {
+            let f = files[i];
+            if (f.size >= this.uploadDropzone.options.maxFileSize) {
+                this.uploadDropzone.cancelUpload(f);
+                this.removeAndDrawRow({...this.file(f), ...{message: `Maximálne podporované veľkosti súborov sú ${filesize(this.uploadDropzone.options.maxFileSize)}`}}, "ERROR");
+            }
+            if(f.status.toUpperCase() != "ERROR") {
+                if (this.getAttribute("type") == "version") {
+                    this.removeAndDrawRow(this.file(f), "ADDEDFILES");
+                    this.uploadDropzone.processQueue();
+                } else {
+                    await this.readFile(f).then(md5 => {
+                        fetch(`/private/rest/hub/file/uploadable/${this.product}/${this.module}/${this.moduleId}/${md5}`, {
+                            "method": "GET",
+                            "headers": {
+                                'Content-Type': 'application/json',
+                            }
+                        })
+                          .then((response, e) => {
+                              if (response.ok) {
+                                  return response.json();
+                              }
+                          })
+                          .then((res) => {
+                              if (res.success) {
+                                  this.uploadDropzone.processQueue();
+                              } else {
+                                  let errorMessage= this.shadowRoot.querySelector("[data-dz-errormessage]");
+                                  let p = document.createElement("p");
+                                  p.innerHTML = res.message + " Chcete použiť tento súbor?";
 
+                                  let div = document.createElement("div");
+
+                                  div.appendChild(this.createCloseButton());
+                                  div.appendChild(this.createSaveButton());
+
+                                  this.shadowRoot.querySelector(".dz-details").setAttribute("hidden", "");
+                                  errorMessage.appendChild(p);
+                                  errorMessage.appendChild(div);
+                              }
+                          });
+                    });
+                }
+            }
+        }
     }
 
     file(f) {
@@ -406,7 +409,6 @@ export default class FileUpload extends HTMLElement {
                 "email": this.user.email
             },
             "url": f.url
-
         };
     }
 
@@ -466,7 +468,7 @@ export default class FileUpload extends HTMLElement {
 
     removeQueue() {
         this.uploadDropzone.removeAllFiles();
-        fetch(`/private/rest/hub/storage/release/${this.diskAttributes.product}/${this.queueKey}`, {
+        fetch(`/private/rest/hub/storage/release/${this.product}/${this.queueKey}`, {
             "method": 'PUT',
             "headers": {
                 'Content-Type': 'application/json',
@@ -514,10 +516,6 @@ export default class FileUpload extends HTMLElement {
         return file.xhr && JSON.parse(file.xhr.response).key;
     }
 
-    /** @function error
-     * @description ...
-     */
-
     error(file, errormessage) {
         this.uploadDropzone.removeFile(file);
         $(".alert-danger").text(errormessage).show();
@@ -554,22 +552,7 @@ export default class FileUpload extends HTMLElement {
         $(modal.modal[0]).modal("hide");
     }
 
-    drawDropzone() {
-        let wrapper = document.createElement("div");
-        wrapper.classList.add("dropzone-wrapper");
-
-        let dropzone = document.createElement("div");
-        dropzone.id = "uploadDropzone";
-        dropzone.classList.add(this.design == "photo-edit" ? "graphic" : this.design, "dropzone");
-
-        dropzone.insertAdjacentHTML("beforeend", `<slot></slot><input type="hidden" name="uploadedFileKey" value="" data-net-upload="fileKey" class="mb-0">`)
-        wrapper.appendChild(dropzone);
-
-        return wrapper;
-    }
-
     graphic() {
-        console.log("graphic", this.diskAttributes.moduleId);
         let div = document.createElement("div");
         div.classList.add("d-flex", "flex-column", "justify-content-center");
         div.innerHTML = `<div class="text-center">
@@ -579,7 +562,7 @@ export default class FileUpload extends HTMLElement {
                 <i class="fa-light fa-file mr-1"></i>Vybrať z úložiska
                 <button slot="actions" class="btn btn-primary" data-event="${this.eventName}">Pridať</button>
                 <template slot="htmlContent">
-                    <hub-disk file-types="${this.acceptedFiles.replaceAll(".", "")}" product="${this.diskAttributes.product}" module="${this.diskAttributes.module}" module-id="${this.diskAttributes.moduleId}" get="/private/rest/hub/file/${this.diskAttributes.product}/${this.diskAttributes.module}/${this.diskAttributes.moduleId}" scrollable-height="430px" search use-select detail="false" create-folder="false"></hub-disk>
+                    <hub-disk file-types="${this.acceptedFiles.replaceAll(".", "")}" product="${this.product}" module="${this.module}" module-id="${this.moduleId}" get="/private/rest/hub/file/${this.product}/${this.module}/${this.moduleId}" scrollable-height="430px" search use-select detail="false" create-folder="false"></hub-disk>
                 </template>
             </hub-modal-open>
             <button class="btn btn-default btn-lg" id="upload" data-dropzone-add="file"><i class="fa-light fa-upload mr-1"></i>Nahrať nový súbor</button>
@@ -604,6 +587,40 @@ export default class FileUpload extends HTMLElement {
 
         return div;
     }
+
+    createCloseButton() {
+        let btnClose = document.createElement("button");
+        btnClose.classList.add("btn", "btn-outline-primary", "btn-primary", "mr-2", "ml-auto", "btn-close");
+        btnClose.setAttribute("data-dz-remove", "");
+        btnClose.innerHTML = "Zrušiť";
+        btnClose.addEventListener("click", () => {
+            this.uploadDropzone.removeFile(f);
+        });
+
+        return btnClose;
+    }
+
+    createSaveButton() {
+        let btnSave = document.createElement("button");
+        btnSave.classList.add("btn", "btn-primary", "save");
+        btnSave.innerHTML = "Použiť";
+        btnSave.addEventListener("click", () => {
+            this.dispatchEvent(
+              new CustomEvent("wj-uploaded-file-exist", {
+                  bubbles: true,
+                  detail: {
+                      file: res.data,
+                  },
+              })
+            );
+
+            this.uploadDropzone.cancelUpload(f);
+            this.uploadDropzone.removeFile(f);
+            this.removeAndDrawRow({...this.file(f), ...{message: res.message}}, "ERROR");
+        });
+
+        return btnSave;
+    }
 }
 
-customElements.get("wj-file-upload") || customElements.define("wj-file-upload", FileUpload);
+customElements.get("wj-file-upload") || customElements.define("wj-file-upload", FileUploadDropzone);

@@ -22,7 +22,6 @@ const audioContext = new AudioContext();
  * @param {String} url the url of the audio we'd like to fetch
  */
 const drawAudio = url => {
-    console.log(url, "tralala")
     fetch(url)
         .then(response => response.arrayBuffer())
         .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))

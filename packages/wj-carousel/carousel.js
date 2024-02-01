@@ -55,7 +55,6 @@ export class Carousel extends WJElement {
         }
     }
 
-
     setupAttributes() {
         this.isShadowRoot = "open";
     }
@@ -142,7 +141,6 @@ export class Carousel extends WJElement {
     }
 
     goToSlide(index, behavior = "smooth", next = true) {
-        console.log("___________________ GO TO SLIDE ___________________", this.loop);
         const slides = this.getSlides();
         const slideWithClones = this.getSlidesWithClones();
 
