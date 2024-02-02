@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SplitView</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/wj-master.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/style.css" />
+  </head>
+  <body>
+    <div class="playground">
+      <div class="content" style="max-width: 60%;margin: auto;">
+        <wj-split-view vertical>
+          <div slot="start">Top</div>
+          <div slot="end">Bottom</div>
+        </wj-split-view>
+        <style>
+          wj-split-view {
+            height: 300px;
+            width: 100%;
+            border-color: var(--wj-border-color); 
+            border-style: solid;
+            border-width: 1px;
+          }
+        </style>
+      </div>
+    </div>
+  </body>
+</html>

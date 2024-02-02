@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toggle: Basic</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/wj-master.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/style.css" />
+  </head>
+  <body>
+    <div class="playground">
+      <div class="content" style="display: block;width: 60%; margin: auto;">
+        <wj-item>
+          <wj-toggle>Default Toggle</wj-toggle>
+        </wj-item>
+        <wj-item>
+          <wj-toggle checked>Checked Toggle</wj-toggle>
+        </wj-item>
+        <wj-item>
+          <wj-toggle disabled>Disabled Toggle</wj-toggle>
+        </wj-item>
+        <wj-item>
+          <wj-toggle checked disabled>Disabled Checked Toggle</wj-toggle>
+        </wj-item>
+        <wj-item>
+          <wj-toggle color="success" checked disabled>Disabled Checked Toggle</wj-toggle>
+        </wj-item>
+      </div>
+    </div>
+  </body>
+</html>

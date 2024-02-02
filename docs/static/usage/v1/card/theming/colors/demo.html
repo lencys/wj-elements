@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card</title>
+    <link rel="stylesheet" href="../../../../common.css" />
+    <script src="../../../../common.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/wj-master.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/style.css" />
+    <style>
+      .content {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      wj-card {
+        flex: 1 1 28%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="playground">
+      <div class="content">
+        <style>
+          .content wj-card {
+            --wj-card-margin-top: 1rem;
+            --wj-card-margin-bottom: 1rem;
+            --wj-card-margin-inline: 1rem;
+          }
+        </style>
+        <wj-card color="primary">
+          <wj-card-header>
+            <wj-card-subtitle>Primary</wj-card-subtitle>
+            <wj-card-title>Title</wj-card-title>
+          </wj-card-header>
+          <wj-card-content> Content </wj-card-content>
+        </wj-card>
+
+        <wj-card color="complete">
+          <wj-card-header>
+            <wj-card-subtitle>Complete</wj-card-subtitle>
+            <wj-card-title>Title</wj-card-title>
+          </wj-card-header>
+          <wj-card-content> Content </wj-card-content>
+        </wj-card>
+
+        <wj-card color="success">
+          <wj-card-header>
+            <wj-card-subtitle>Success</wj-card-subtitle>
+            <wj-card-title>Title</wj-card-title>
+          </wj-card-header>
+          <wj-card-content> Content </wj-card-content>
+        </wj-card>
+
+        <wj-card color="warning">
+          <wj-card-header>
+            <wj-card-subtitle>Warning</wj-card-subtitle>
+            <wj-card-title>Title</wj-card-title>
+          </wj-card-header>
+          <wj-card-content> Content </wj-card-content>
+        </wj-card>
+
+        <wj-card color="danger">
+          <wj-card-header>
+            <wj-card-subtitle>Danger</wj-card-subtitle>
+            <wj-card-title>Title</wj-card-title>
+          </wj-card-header>
+          <wj-card-content> Content </wj-card-content>
+        </wj-card>
+
+        <wj-card color="info">
+          <wj-card-header>
+            <wj-card-subtitle>Info</wj-card-subtitle>
+            <wj-card-title>Title</wj-card-title>
+          </wj-card-header>
+          <wj-card-content> Content </wj-card-content>
+        </wj-card>
+
+        <wj-card color="menu">
+          <wj-card-header>
+            <wj-card-subtitle>Menu</wj-card-subtitle>
+            <wj-card-title>Title</wj-card-title>
+          </wj-card-header>
+          <wj-card-content> Content </wj-card-content>
+        </wj-card>
+      </div>
+    </div>
+  </body>
+</html>

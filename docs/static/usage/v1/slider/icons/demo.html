@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/wj-master.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/style.css" />
+  </head>
+  <body>
+    <div class="playground">
+      <div class="content" style="max-width: 60%;margin: auto;">
+        <wj-slider class="example" min="20" max="80" value="50" bubble>
+          <wj-icon name="volume-3" size="large" slot="start"></wj-icon>
+          <wj-icon name="volume" size="large" slot="end"></wj-icon>
+          <style>
+            wj-slider {
+              width: 100%;
+            }
+            .example wj-icon {
+                --wj-icon-size: 24px;
+            }
+          </style>
+        </wj-slider>
+      </div>
+    </div>
+  </body>
+</html>

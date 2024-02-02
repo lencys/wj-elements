@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Icon</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script type="module" src="../../../../js/demo.js"></script>
+    <!-- <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/wj-master.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/style.css" /> -->
+    <script type="module" src="./../../../../wj-elementy/wj-master.js"></script>
+    <link rel="stylesheet" href="./../../../../wj-elementy/style.css" />
+  </head>
+  <body>
+    <div class="playground">
+      <div class="content" style="max-width: 90%;margin: auto;">
+        <wj-infinite-scroll url="/api/users" placement="wj-row" size="20" class="example" height="440px">
+          <wj-grid>
+            <wj-row wrap>
+              <wj-col size="6" iterate>
+                <wj-card>
+                  <wj-img src="{{image}}"></wj-img>
+                  <wj-card-header>
+                    <wj-card-subtitle>{{jobTitle}}</wj-card-subtitle>
+                    <wj-card-title>{{fullName}}</wj-card-title>
+                  </wj-card-header>
+                  <wj-card-content>
+                    <p>{{description}}</p>
+                  </wj-card-content>
+                </wj-card>
+              </wj-col>
+            </wj-row>
+          </wj-grid>
+          <style>
+            .example {
+              padding: 0 1rem;
+            }
+          </style>
+        </wj-infinite-scroll>
+      </div>
+    </div>
+  </body>
+</html>

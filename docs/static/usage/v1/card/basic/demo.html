@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/wj-master.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/style.css" />
+    <style>
+        wj-card {
+            --wj-card-margin-inline: 1rem;
+        }
+        .content {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="playground">
+      <div class="content">
+        <wj-card>
+          <wj-card-header>
+            <wj-card-subtitle>Subtitle</wj-card-subtitle>
+            <wj-card-title>Title</wj-card-title>
+          </wj-card-header>
+          <wj-card-content>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </wj-card-content>
+        </wj-card>
+      </div>
+    </div>
+  </body>
+</html>
+

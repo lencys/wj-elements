@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropdown</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/wj-master.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/style.css" />
+  </head>
+  <body>
+    <div class="playground">
+        <div class="content">
+          <span>Columns aligned at the start</span>
+          <wj-grid>
+            <wj-row class="wj-justify-content-start">
+              <wj-col size="3"> 1 </wj-col>
+              <wj-col size="3"> 2 </wj-col>
+            </wj-row>
+          </wj-grid>
+          
+          <span>Stĺpce zarovnané na stred</span>
+          <wj-grid>
+            <wj-row class="wj-justify-content-center">
+              <wj-col size="3"> 1 </wj-col>
+              <wj-col size="3"> 2 </wj-col>
+            </wj-row>
+          </wj-grid>
+          
+          <span>Stĺpce zarovnané na koniec</span>
+          <wj-grid>
+            <wj-row class="wj-justify-content-end">
+              <wj-col size="3"> 1 </wj-col>
+              <wj-col size="3"> 2 </wj-col>
+            </wj-row>
+          </wj-grid>
+          
+          <span>Stĺpce zarovnané so space-around</span>
+          <wj-grid>
+            <wj-row class="wj-justify-content-around">
+              <wj-col size="3"> 1 </wj-col>
+              <wj-col size="3"> 2 </wj-col>
+            </wj-row>
+          </wj-grid>
+          
+          <span>Stĺpce zarovnané so space-between</span>
+          <wj-grid>
+            <wj-row class="wj-justify-content-between">
+              <wj-col size="3"> 1 </wj-col>
+              <wj-col size="3"> 2 </wj-col>
+            </wj-row>
+          </wj-grid>
+        </div>
+      </div>
+    </div>
+  </body>
+  <style>
+    .content {
+      width: 400px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    }
+    wj-col {
+      background-color: #7252D3;
+      border: solid 1px #fff;
+      color: #fff;
+      text-align: center;
+    }
+    wj-col[size="auto"], wj-col[size], wj-col[offset]  {
+      background-color: #19AD79;
+    }
+    span {
+      text-align: center;
+    }
+  </style>
+</html>

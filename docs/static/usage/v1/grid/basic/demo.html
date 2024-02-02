@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropdown</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/wj-master.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/style.css" />
+  </head>
+  <body>
+    <div class="playground">
+        <div class="content">
+          <wj-grid>
+            <wj-row>
+              <wj-col>1</wj-col>
+              <wj-col>2</wj-col>
+              <wj-col>3</wj-col>
+            </wj-row>
+          </wj-grid>
+  
+          <wj-grid>
+            <wj-row>
+              <wj-col>1</wj-col>
+              <wj-col>2</wj-col>
+              <wj-col>3</wj-col>
+              <wj-col>4</wj-col>
+              <wj-col>5</wj-col>
+              <wj-col>6</wj-col>
+            </wj-row>
+          </wj-grid>
+  
+          <wj-grid>
+            <wj-row>
+              <wj-col>1</wj-col>
+              <wj-col>2</wj-col>
+              <wj-col>3</wj-col>
+              <wj-col>4</wj-col>
+              <wj-col>5</wj-col>
+              <wj-col>6</wj-col>
+              <wj-col>7</wj-col>
+              <wj-col>8</wj-col>
+              <wj-col>9</wj-col>
+              <wj-col>10</wj-col>
+              <wj-col>11</wj-col>
+              <wj-col>12</wj-col>
+            </wj-row>
+          </wj-grid>
+      </div>
+    </div>
+  </body>
+  <style>
+    .content {
+      width: 400px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    }
+    wj-col {
+      background-color: #7252D3;
+      border: solid 1px #fff;
+      color: #fff;
+      text-align: center;
+    }
+    wj-col[size="auto"], wj-col[size], wj-col[offset]  {
+      background-color: #19AD79;
+    }
+    span {
+      text-align: center;
+    }
+  </style>
+</html>
