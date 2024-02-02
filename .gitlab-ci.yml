@@ -27,7 +27,7 @@ build:
       npm run build:production;
       cd -;
       echo "deploy";
-      /usr/local/bin/wj-rsync.sh webjet2b.srv.iway.local website/build /www/tomcat_au20/webapps/elements_webjet_sk/ tomcat_au20 tomcat_au20;
+      /usr/local/bin/wj-rsync.sh webjet2b.srv.iway.local docs/build /www/tomcat_au20/webapps/elements_webjet_sk/ tomcat_au20 tomcat_au20;
       )
 
   artifacts:
