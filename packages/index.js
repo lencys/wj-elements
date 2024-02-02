@@ -3,6 +3,7 @@ import { defaultStoreActions, store } from "./wj-store/store.js";
 
 // SLICK ROUTER
 import { bindRouterLinks, withRouterLinks } from './wj-router/plugins/slick-router/middlewares/router-links.js';
+import { fetchAndParseCSS } from "./utils/animations.js";
 import { Localizer } from "./utils/localize.js";
 import { sk } from "./translations/sk.js";
 import { en } from "./translations/en.js";
@@ -84,7 +85,7 @@ import { ToolbarAction } from "./wj-toolbar-action/toolbar-action.js";
 import { Tooltip } from "./wj-tooltip/tooltip.js";
 import { VisuallyHidden } from "./wj-visually-hidden/visually-hidden.js";
 
-export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks, Localizer,
+export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks, fetchAndParseCSS, Localizer,
   Aside,
   Animation,
   Avatar,

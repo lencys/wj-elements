@@ -1,4 +1,5 @@
 /** @type {import('vite').UserConfig} */
+import { fetchAndParseCSS } from "./packages/utils/animations.js";
 
 export default ({
     base: '/',
@@ -16,6 +17,7 @@ export default ({
         lib: {
             entry: {
                 "master": "./packages/index.js",
+                "fetchAndParseCSS": "./packages/utils/animations.js",
                 "store": "./packages/wj-store/store.js",
                 "element": "./packages/wj-element/wj-element.js",
                 "animation": "./packages/wj-animation/animation.js",

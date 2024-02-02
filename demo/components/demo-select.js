@@ -5,21 +5,6 @@ const template = document.createElement('template');
 template.innerHTML = `
   <h1>Select</h1>
   <div class="container">
-
-    
-    
-<!--    <pre>-->
-<!--      &lt;wj-select placeholder="Select options" max-options="2" multiple&gt;-->
-<!--        &lt;wj-option value="option-1"&gt;Option 1&lt;/wj-option&gt;-->
-<!--        &lt;wj-option value="option-2"&gt;-->
-<!--          Option 2-->
-<!--          &lt;wj-icon name="heart" slot="end"&gt;&lt;/wj-icon&gt;-->
-<!--        &lt;/wj-option&gt;-->
-<!--        &lt;wj-option value="option-3"&gt;Option 3&lt;/wj-option&gt;-->
-<!--        &lt;wj-option value="option-4"&gt;Option 4&lt;/wj-option&gt;-->
-<!--        &lt;wj-option value="option-5"&gt;Option 5&lt;/wj-option&gt;-->
-<!--        &lt;wj-option value="option-6"&gt;Option 6&lt;/wj-option&gt;-->
-<!--      &lt;/wj-select&gt;</pre>-->
     
     <!-- OPTIONS -->
 

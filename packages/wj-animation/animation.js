@@ -1,4 +1,4 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement } from "../wj-element/wj-element.js";
 import { fetchAndParseCSS } from "../utils/animations.js";
 
 import styles from "../wj-avatar/scss/styles.scss?inline";
@@ -6,12 +6,25 @@ import styles from "../wj-avatar/scss/styles.scss?inline";
 export class Animation extends WJElement {
     constructor() {
         super();
+        this._animations = [];
+    }
+
+    set animations(value) {
+        this._animations = value;
+    }
+
+    get animations() {
+        return this._animations;
     }
 
     className = "Animation";
 
     static get cssStyleSheet() {
         return styles;
+    }
+
+    static get observedAttributes() {
+        return ["name"];
     }
 
     setupAttributes() {
@@ -31,10 +44,10 @@ export class Animation extends WJElement {
     }
 
     async afterDraw() {
+        this.destroyAnimation();
 
-        const cssUrl = 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css';
+        this.animations = await this.getAnimationsArray();
 
-        this.animations = await fetchAndParseCSS(cssUrl);
         const selected = this.animations.find(k => k.name === this.name);
 
         const element = this.slotEl.assignedElements()[0];
@@ -53,7 +66,16 @@ export class Animation extends WJElement {
         this.animation.play();
     }
 
+    destroyAnimation() {
+        if (this.animation) {
+            this.animation.cancel();
+        }
+    }
 
+    async getAnimationsArray() {
+        const cssUrl = 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css';
+        return await fetchAndParseCSS(cssUrl);
+    }
 }
 
 customElements.get("wj-animation") || window.customElements.define("wj-animation", Animation);

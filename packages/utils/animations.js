@@ -57,6 +57,7 @@ function parseProperties(propertiesString) {
 }
 
 export async function fetchAndParseCSS(url) {
+  let test = 'fetchAndParseCSS';
   try {
     if(animations.length > 0) {
       return animations;
@@ -66,7 +67,6 @@ export async function fetchAndParseCSS(url) {
     animations = parseCSS(cssText);
 
     return animations;
-    // Tu môžete spracovať extrahované animácie ďalej
   } catch (error) {
     console.error('Error:', error);
   }
