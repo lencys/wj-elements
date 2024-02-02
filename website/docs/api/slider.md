@@ -59,7 +59,7 @@ import Colors from '@site/static/usage/v1/slider/colors/index.md';
 
 |  |  |
 | --- | --- |
-| Popis | Ak `true`, zobrazí sa ikona <Icon icon="radix-icons:cross-2" height="14" /> na zmazanie všetkých zvolených možností. |
+| Popis | Ak `true`, zobrazí sa ikona na zmazanie všetkých zvolených možností. |
 | Atribút | `clearable` |
 | Typ | `boolean` |
 | Predvolená hodnota | `false` |

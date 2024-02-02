@@ -7,9 +7,9 @@ const VERSIONS_JSON = [];
 const BASE_URL = '/docs';
 
 module.exports = {
-  title: 'Ionic Documentation',
+  title: 'WJ Elements Documentation',
   tagline:
-    'Ionic is the app platform for web developers. Build amazing mobile and web apps with one shared code base and open web standards',
+    'WJ Elements is the app platform for web developers. Build amazing mobile and web apps with one shared code base and open web standards',
   url: 'https://ionicframework.com',
   baseUrl: `${BASE_URL}/`,
   i18n: {
@@ -158,10 +158,10 @@ module.exports = {
         {
           type: 'docsVersionDropdown',
           position: 'right',
-          dropdownItemsAfter: [
-            { to: 'https://ionicframework.com/docs/v4/components', label: 'v4', target: '_blank' },
-            { to: 'https://ionicframework.com/docs/v3/', label: 'v3', target: '_blank' },
-          ],
+          // dropdownItemsAfter: [
+          //   { to: 'https://ionicframework.com/docs/v4/components', label: 'v4', target: '_blank' },
+          //   { to: 'https://ionicframework.com/docs/v3/', label: 'v3', target: '_blank' },
+          // ],
           // dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
           dropdownActiveClassDisabled: true,
         },

@@ -234,25 +234,7 @@ module.exports = {
       collapsed: false,
       items: ['components'],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Action Sheet',
-    //   collapsed: false,
-    //   items: ['api/action-sheet'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Accordion',
-    //   collapsed: false,
-    //   items: ['api/accordion', 'api/accordion-group'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Alert',
-    //   collapsed: false,
-    //   items: ['api/alert'],
-    // },
-        {
+    {
       type: 'category',
       label: 'Avatar',
       collapsed: false,
@@ -312,30 +294,18 @@ module.exports = {
       collapsed: false,
       items: ['api/copy-button'],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Date & Time Pickers',
-    //   collapsed: false,
-    //   items: ['api/datetime', 'api/datetime-button', 'api/picker'],
-    // },
-      {
-        type: 'category',
-        label: 'Dialog',
-        collapsed: false,
-        items: ['api/dialog'],
-      },
-      {
-        type: 'category',
-        label: 'Dropdown',
-        collapsed: false,
-        items: ['api/dropdown'],
-      },
-    // {
-    //   type: 'category',
-    //   label: 'Floating Action Button',
-    //   collapsed: false,
-    //   items: ['api/fab', 'api/fab-button', 'api/fab-list'],
-    // },
+    {
+      type: 'category',
+      label: 'Dialog',
+      collapsed: false,
+      items: ['api/dialog'],
+    },
+    {
+      type: 'category',
+      label: 'Dropdown',
+      collapsed: false,
+      items: ['api/dropdown'],
+    },
     {
       type: 'category',
       label: 'Grid',
@@ -372,12 +342,6 @@ module.exports = {
       collapsed: false,
       items: ['api/img-comparer']
     },
-        // {
-    //   type: 'category',
-    //   label: 'Media',
-    //   collapsed: false,
-    //   items: ['api/avatar', 'api/icon', 'api/img', 'api/thumbnail'],
-    // },
     {
       type: 'category',
       label: 'Input',
@@ -402,36 +366,12 @@ module.exports = {
       collapsed: false,
       items: ['api/list'],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Media',
-    //   collapsed: false,
-    //   items: ['api/avatar', 'api/icon', 'api/img', 'api/thumbnail'],
-    // },
     {
       type: 'category',
       label: 'Menu',
       collapsed: false,
       items: ['api/menu', 'api/menu-item'],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Modal',
-    //   collapsed: false,
-    //   items: ['api/modal', 'api/backdrop'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Navigation',
-    //   collapsed: false,
-    //   items: ['api/nav', 'api/nav-link'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Popover',
-    //   collapsed: false,
-    //   items: ['api/popover'],
-    // },
     {
       type: 'category',
       label: 'Progress Bar',
@@ -444,42 +384,12 @@ module.exports = {
       collapsed: false,
       items: ['api/radio', 'api/radio-group'],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Range',
-    //   collapsed: false,
-    //   items: ['api/range'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Refresher',
-    //   collapsed: false,
-    //   items: ['api/refresher', 'api/refresher-content'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Reorder',
-    //   collapsed: false,
-    //   items: ['api/reorder', 'api/reorder-group'],
-    // },
     {
       type: 'category',
       label: 'Routovanie',
       collapsed: false,
       items: ['api/router', 'api/router-link', 'api/router-outlet', 'api/route'],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Searchbar',
-    //   collapsed: false,
-    //   items: ['api/searchbar'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Segment',
-    //   collapsed: false,
-    //   items: ['api/segment', 'api/segment-button'],
-    // },
     {
       type: 'category',
       label: 'Select',
@@ -540,18 +450,6 @@ module.exports = {
       collapsed: false,
       items: ['api/toolbar', 'api/toolbar-actions'],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Typography',
-    //   collapsed: false,
-    //   items: ['api/text'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Resources',
-    //   collapsed: false,
-    //   items: ['api'],
-    // },
   ],
 
   cli: [

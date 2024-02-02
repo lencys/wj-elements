@@ -43,7 +43,6 @@ Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 | `native` | Odkazuje na `<div>` element |
 
 ## CSS Custom Properties
-<CustomProps />
 
 ## Slots
 | Názov | Popis |

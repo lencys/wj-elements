@@ -1,6 +1,6 @@
 {
-  "name": "ionic-docs",
-  "version": "0.0.0",
+  "name": "WJ Elements",
+  "version": "1.0.0",
   "private": true,
   "engines": {
     "node": ">=20.0.0"
