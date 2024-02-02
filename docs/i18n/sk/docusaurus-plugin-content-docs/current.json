@@ -1,0 +1,194 @@
+{
+  "version.label": {
+    "message": "v1",
+    "description": "The label for version current"
+  },
+  "sidebar.docs.category.Začíname": {
+    "message": "Začíname",
+    "description": "The label for category Začíname in sidebar docs"
+  },
+  "sidebar.docs.category.Layout": {
+    "message": "Layout",
+    "description": "The label for category Layout in sidebar docs"
+  },
+  "sidebar.docs.category.Úprava štýlov": {
+    "message": "Úprava štýlov",
+    "description": "The label for category Úprava štýlov in sidebar docs"
+  },
+  "sidebar.docs.category.Contributing": {
+    "message": "Contributing",
+    "description": "The label for category Contributing in sidebar docs"
+  },
+  "sidebar.docs.link.Responzívna mriežka": {
+    "message": "Responzívna mriežka",
+    "description": "The label for link Responzívna mriežka in sidebar docs, linking to /docs/api/grid"
+  },
+  "sidebar.api.category.Úvod": {
+    "message": "Úvod",
+    "description": "The label for category Úvod in sidebar api"
+  },
+  "sidebar.api.category.Avatar": {
+    "message": "Avatar",
+    "description": "The label for category Avatar in sidebar api"
+  },
+  "sidebar.api.category.Badge": {
+    "message": "Badge",
+    "description": "The label for category Badge in sidebar api"
+  },
+  "sidebar.api.category.Breadcrumb": {
+    "message": "Breadcrumb",
+    "description": "The label for category Breadcrumb in sidebar api"
+  },
+  "sidebar.api.category.Button": {
+    "message": "Button",
+    "description": "The label for category Button in sidebar api"
+  },
+  "sidebar.api.category.Button Group": {
+    "message": "Button Group",
+    "description": "The label for category Button Group in sidebar api"
+  },
+  "sidebar.api.category.Card": {
+    "message": "Card",
+    "description": "The label for category Card in sidebar api"
+  },
+  "sidebar.api.category.Checkbox": {
+    "message": "Checkbox",
+    "description": "The label for category Checkbox in sidebar api"
+  },
+  "sidebar.api.category.Chip": {
+    "message": "Chip",
+    "description": "The label for category Chip in sidebar api"
+  },
+  "sidebar.api.category.Color picker": {
+    "message": "Color picker",
+    "description": "The label for category Color picker in sidebar api"
+  },
+  "sidebar.api.category.Copy button": {
+    "message": "Copy button",
+    "description": "The label for category Copy button in sidebar api"
+  },
+  "sidebar.api.category.Dialog": {
+    "message": "Dialog",
+    "description": "The label for category Dialog in sidebar api"
+  },
+  "sidebar.api.category.Dropdown": {
+    "message": "Dropdown",
+    "description": "The label for category Dropdown in sidebar api"
+  },
+  "sidebar.api.category.Grid": {
+    "message": "Grid",
+    "description": "The label for category Grid in sidebar api"
+  },
+  "sidebar.api.category.Infinite Scroll": {
+    "message": "Infinite Scroll",
+    "description": "The label for category Infinite Scroll in sidebar api"
+  },
+  "sidebar.api.category.Icons": {
+    "message": "Icons",
+    "description": "The label for category Icons in sidebar api"
+  },
+  "sidebar.api.category.Icon picker TODO": {
+    "message": "Icon picker TODO",
+    "description": "The label for category Icon picker TODO in sidebar api"
+  },
+  "sidebar.api.category.Image": {
+    "message": "Image",
+    "description": "The label for category Image in sidebar api"
+  },
+  "sidebar.api.category.Image Comparer": {
+    "message": "Image Comparer",
+    "description": "The label for category Image Comparer in sidebar api"
+  },
+  "sidebar.api.category.Input": {
+    "message": "Input",
+    "description": "The label for category Input in sidebar api"
+  },
+  "sidebar.api.category.Item": {
+    "message": "Item",
+    "description": "The label for category Item in sidebar api"
+  },
+  "sidebar.api.category.Layout": {
+    "message": "Layout",
+    "description": "The label for category Layout in sidebar api"
+  },
+  "sidebar.api.category.List": {
+    "message": "List",
+    "description": "The label for category List in sidebar api"
+  },
+  "sidebar.api.category.Menu": {
+    "message": "Menu",
+    "description": "The label for category Menu in sidebar api"
+  },
+  "sidebar.api.category.Progress Bar": {
+    "message": "Progress Bar",
+    "description": "The label for category Progress Bar in sidebar api"
+  },
+  "sidebar.api.category.Radio": {
+    "message": "Radio",
+    "description": "The label for category Radio in sidebar api"
+  },
+  "sidebar.api.category.Routovanie": {
+    "message": "Routovanie",
+    "description": "The label for category Routovanie in sidebar api"
+  },
+  "sidebar.api.category.Select": {
+    "message": "Select",
+    "description": "The label for category Select in sidebar api"
+  },
+  "sidebar.api.category.Slider": {
+    "message": "Slider",
+    "description": "The label for category Slider in sidebar api"
+  },
+  "sidebar.api.category.Split View": {
+    "message": "Split View",
+    "description": "The label for category Split View in sidebar api"
+  },
+  "sidebar.api.category.Tabs": {
+    "message": "Tabs",
+    "description": "The label for category Tabs in sidebar api"
+  },
+  "sidebar.api.category.Textarea": {
+    "message": "Textarea",
+    "description": "The label for category Textarea in sidebar api"
+  },
+  "sidebar.api.category.Thumbnail": {
+    "message": "Thumbnail",
+    "description": "The label for category Thumbnail in sidebar api"
+  },
+  "sidebar.api.category.Toast TODO": {
+    "message": "Toast TODO",
+    "description": "The label for category Toast TODO in sidebar api"
+  },
+  "sidebar.api.category.Toggle": {
+    "message": "Toggle",
+    "description": "The label for category Toggle in sidebar api"
+  },
+  "sidebar.api.category.Tooltip": {
+    "message": "Tooltip",
+    "description": "The label for category Tooltip in sidebar api"
+  },
+  "sidebar.api.category.Toolbar TODO": {
+    "message": "Toolbar TODO",
+    "description": "The label for category Toolbar TODO in sidebar api"
+  },
+  "sidebar.cli.category.CLI Documentation": {
+    "message": "CLI Documentation",
+    "description": "The label for category CLI Documentation in sidebar cli"
+  },
+  "sidebar.cli.category.Command Reference": {
+    "message": "Command Reference",
+    "description": "The label for category Command Reference in sidebar cli"
+  },
+  "sidebar.cli.link.Changelog": {
+    "message": "Changelog",
+    "description": "The label for link Changelog in sidebar cli, linking to https://github.com/ionic-team/ionic-cli/blob/develop/packages/@ionic/cli/CHANGELOG.md"
+  },
+  "sidebar.native.category.Getting Started": {
+    "message": "Getting Started",
+    "description": "The label for category Getting Started in sidebar native"
+  },
+  "sidebar.native.category.Plugins": {
+    "message": "Plugins",
+    "description": "The label for category Plugins in sidebar native"
+  }
+}
