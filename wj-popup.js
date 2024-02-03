@@ -879,9 +879,7 @@ const le = (t, e, n) => {
     ...i,
     platform: s
   });
-}, ae = `/*!
-* direction.scss
-*/:host{--wj-popup-top: auto;--wj-popup-left: auto;display:flex}.native-popup{position:absolute;isolation:isolate;z-index:999;left:var(--wj-popup-left);top:var(--wj-popup-top)}.native-popup:not(.popup-active){display:none}
+}, ae = `:host{--wj-popup-top: auto;--wj-popup-left: auto;display:flex}.native-popup{position:absolute;isolation:isolate;z-index:999;left:var(--wj-popup-left);top:var(--wj-popup-top)}.native-popup:not(.popup-active){display:none}
 `;
 class fe extends Tt {
   constructor() {

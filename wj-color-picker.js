@@ -241,8 +241,8 @@ function C(t, r, e) {
 function U(t, r, e) {
   var i, a, n;
   t = u(t, 360), r = u(r, 100), e = u(e, 100);
-  function o(d, g, c) {
-    return c < 0 && (c += 1), c > 1 && (c -= 1), c < 1 / 6 ? d + (g - d) * 6 * c : c < 1 / 2 ? g : c < 2 / 3 ? d + (g - d) * (2 / 3 - c) * 6 : d;
+  function o(c, g, d) {
+    return d < 0 && (d += 1), d > 1 && (d -= 1), d < 1 / 6 ? c + (g - c) * 6 * d : d < 1 / 2 ? g : d < 2 / 3 ? c + (g - c) * (2 / 3 - d) * 6 : c;
   }
   if (r === 0)
     i = a = n = e;
@@ -283,11 +283,11 @@ function R(t, r, e) {
 }
 function X(t, r, e) {
   t = u(t, 360) * 6, r = u(r, 100), e = u(e, 100);
-  var i = Math.floor(t), a = t - i, n = e * (1 - r), o = e * (1 - a * r), h = e * (1 - (1 - a) * r), l = i % 6, d = [e, o, n, n, h, e][l], g = [h, e, e, o, n, n][l], c = [n, n, h, e, e, o][l];
+  var i = Math.floor(t), a = t - i, n = e * (1 - r), o = e * (1 - a * r), h = e * (1 - (1 - a) * r), l = i % 6, c = [e, o, n, n, h, e][l], g = [h, e, e, o, n, n][l], d = [n, n, h, e, e, o][l];
   return {
-    r: d * 255,
+    r: c * 255,
     g: g * 255,
-    b: c * 255
+    b: d * 255
   };
 }
 function E(t, r, e, i) {
@@ -404,7 +404,7 @@ s.readability = function(t, r) {
 };
 s.isReadable = function(t, r, e) {
   var i = s.readability(t, r), a, n;
-  switch (n = !1, a = ce(e), a.level + a.size) {
+  switch (n = !1, a = de(e), a.level + a.size) {
     case "AAsmall":
     case "AAAlarge":
       n = i >= 4.5;
@@ -421,8 +421,8 @@ s.isReadable = function(t, r, e) {
 s.mostReadable = function(t, r, e) {
   var i = null, a = 0, n, o, h, l;
   e = e || {}, o = e.includeFallbackColors, h = e.level, l = e.size;
-  for (var d = 0; d < r.length; d++)
-    n = s.readability(t, r[d]), n > a && (a = n, i = s(r[d]));
+  for (var c = 0; c < r.length; c++)
+    n = s.readability(t, r[c]), n > a && (a = n, i = s(r[c]));
   return s.isReadable(t, i, {
     level: h,
     size: l
@@ -701,7 +701,7 @@ function ue(t) {
     format: r ? "name" : "hex"
   } : !1;
 }
-function ce(t) {
+function de(t) {
   var r, e;
   return t = t || {
     level: "AA",
@@ -711,9 +711,7 @@ function ce(t) {
     size: e
   };
 }
-const de = `/*!
-* direction.scss
-*/:host{--wj-color-picker-value: #ff0000;--wj-color-picker-size: 1rem;--wj-color-picker-radius: 4px}.anchor{width:var(--wj-color-picker-size);height:var(--wj-color-picker-size);background:var(--wj-color-picker-value)}.picker{width:200px;min-height:90px;box-shadow:0 0 5px #0000000d,0 5px 20px #0000001a;border-radius:var(--wj-color-picker-radius);background:#fff}.color-area{display:block;position:relative;height:100px;color:var(--wj-color-picker-area);background-image:linear-gradient(rgba(0,0,0,0),#000),linear-gradient(90deg,#fff,currentColor);cursor:crosshair;border-radius:var(--wj-color-picker-radius) var(--wj-color-picker-radius) 0 0}.wrapper{display:inline-table;width:calc(100% - 2rem);margin:1rem}.hue{border-radius:.25rem;background-image:linear-gradient(to right,rgb(255,0,0) 0%,rgb(255,255,0) 17%,rgb(0,255,0) 33%,rgb(0,255,255) 50%,rgb(0,0,255) 67%,rgb(255,0,255) 83%,rgb(255,0,0) 100%);width:100%;height:8px;margin:.75rem 0 1rem}.hue::part(slider){--wj-slider-color: transparent;--wj-slider-thumb-color: white;--wj-slider-thumb-shadow: 0 0 0 1px rgba(33, 33, 33, .14);--wj-slider-thumb-shadow-active: var(--wj-slider-thumb-shadow);--wj-slider-track-color: transparent}.alpha-wrapper{border-radius:.25rem;width:100%;height:8px;margin:.75rem 0 1rem;background-image:repeating-linear-gradient(45deg,#aaa 25%,transparent 25%,transparent 75%,#aaa 75%,#aaa),repeating-linear-gradient(45deg,#aaa 25%,#fff 25%,#fff 75%,#aaa 75%,#aaa);background-position:0 0,4px 4px;background-size:8px 8px}.alpha{color:var(--wj-color-picker-value);display:block;height:100%;width:100%;border-radius:inherit;background-image:linear-gradient(90deg,rgba(0,0,0,0),currentColor)}.alpha::part(slider){--wj-slider-color: transparent;--wj-slider-thumb-color: white;--wj-slider-thumb-shadow: 0 0 0 1px rgba(33, 33, 33, .14);--wj-slider-thumb-shadow-active: var(--wj-slider-thumb-shadow);--wj-slider-track-color: transparent;--wj-slider-track-height: 8px}.input-wrapper{display:grid;align-items:center;grid-template-columns:1fr auto}.color-preview{width:30px!important;height:30px!important;border-radius:50%;position:relative;margin-right:1rem}.color-preview:before,.color-preview:after{content:"";position:absolute;height:100%;width:100%;left:0;top:0;border:1px solid #fff;border-radius:50%}.color-preview:before{background-image:repeating-linear-gradient(45deg,#aaa 25%,transparent 25%,transparent 75%,#aaa 75%,#aaa),repeating-linear-gradient(45deg,#aaa 25%,#fff 25%,#fff 75%,#aaa 75%,#aaa);background-position:0 0,4px 4px;background-size:8px 8px}.color-preview:after{background:var(--wj-color-picker-value)}wj-input{--wj-input-border-radius: 1rem;--wj-input-margin-bottom: 0}wj-input::part(input){text-align:center}.swatches{margin-top:1rem;display:flex;justify-content:center;flex-wrap:wrap}.swatch{background:var(--wj-color-picker-swatch);position:relative;width:20px;height:20px;margin:0 4px 6px;padding:0;border:0;border-radius:50%;color:inherit;white-space:nowrap;overflow:hidden;cursor:pointer}.marker{position:absolute;width:12px;height:12px;margin:-6px 0 0 -6px;border:1px solid #fff;border-radius:50%;background-color:var(--wj-color-picker-value);cursor:pointer}
+const ce = `:host{--wj-color-picker-value: #ff0000;--wj-color-picker-size: 1rem;--wj-color-picker-radius: 4px}.anchor{width:var(--wj-color-picker-size);height:var(--wj-color-picker-size);background:var(--wj-color-picker-value)}.picker{width:200px;min-height:90px;box-shadow:0 0 5px #0000000d,0 5px 20px #0000001a;border-radius:var(--wj-border-radius-small);border-width:1px;border-style:var(--wj-border-style);border-color:var(--wj-border-color);background:var(--wj-background)}.color-area{display:block;position:relative;height:100px;color:var(--wj-color-picker-area);background-image:linear-gradient(rgba(0,0,0,0),#000),linear-gradient(90deg,#fff,currentColor);cursor:crosshair;border-radius:var(--wj-color-picker-radius) var(--wj-color-picker-radius) 0 0;border-bottom:1px solid var(--wj-border-color)}.wrapper{display:inline-table;width:calc(100% - 2rem);margin:1rem}.hue{border-radius:.25rem;background-image:linear-gradient(to right,rgb(255,0,0) 0%,rgb(255,255,0) 17%,rgb(0,255,0) 33%,rgb(0,255,255) 50%,rgb(0,0,255) 67%,rgb(255,0,255) 83%,rgb(255,0,0) 100%);width:100%;height:8px;margin:.75rem 0 1rem}.hue::part(slider){--wj-slider-color: transparent;--wj-slider-thumb-color: white;--wj-slider-thumb-shadow: 0 0 0 1px var(--wj-border-color);--wj-slider-thumb-shadow-active: var(--wj-slider-thumb-shadow);--wj-slider-track-color: transparent}.alpha-wrapper{border-radius:.25rem;width:100%;height:8px;margin:.75rem 0 1rem;background-image:repeating-linear-gradient(45deg,#aaa 25%,transparent 25%,transparent 75%,#aaa 75%,#aaa),repeating-linear-gradient(45deg,#aaa 25%,#fff 25%,#fff 75%,#aaa 75%,#aaa);background-position:0 0,4px 4px;background-size:8px 8px}.alpha{color:var(--wj-color-picker-value);display:block;height:100%;width:100%;border-radius:inherit;background-image:linear-gradient(90deg,rgba(0,0,0,0),currentColor)}.alpha::part(slider){--wj-slider-color: transparent;--wj-slider-thumb-color: white;--wj-slider-thumb-shadow: 0 0 0 1px var(--wj-border-color);--wj-slider-thumb-shadow-active: var(--wj-slider-thumb-shadow);--wj-slider-track-color: transparent;--wj-slider-track-height: 8px}.input-wrapper{display:grid;align-items:center;grid-template-columns:1fr auto}.color-preview{width:30px!important;height:30px!important;border-radius:50%;position:relative;margin-right:1rem}.color-preview:before,.color-preview:after{content:"";position:absolute;height:100%;width:100%;left:0;top:0;border:1px solid #fff;border-radius:50%}.color-preview:before{background-image:repeating-linear-gradient(45deg,#aaa 25%,transparent 25%,transparent 75%,#aaa 75%,#aaa),repeating-linear-gradient(45deg,#aaa 25%,#fff 25%,#fff 75%,#aaa 75%,#aaa);background-position:0 0,4px 4px;background-size:8px 8px}.color-preview:after{background:var(--wj-color-picker-value)}wj-input{--wj-input-border-radius: 1rem;--wj-input-margin-bottom: 0}wj-input::part(input){text-align:center}.swatches{margin-top:1rem;display:flex;justify-content:center;flex-wrap:wrap}.swatch{background:var(--wj-color-picker-swatch);position:relative;width:20px;height:20px;margin:0 4px 6px;padding:0;border:0;border-radius:50%;color:inherit;white-space:nowrap;overflow:hidden;cursor:pointer}.marker{position:absolute;width:12px;height:12px;margin:-6px 0 0 -6px;border:1px solid #fff;border-radius:50%;background-color:var(--wj-color-picker-value);cursor:pointer}
 `;
 class fe extends B {
   constructor() {
@@ -810,7 +808,7 @@ class fe extends B {
     return this._swatches;
   }
   static get cssStyleSheet() {
-    return de;
+    return ce;
   }
   static get observedAttributes() {
     return [];
@@ -825,12 +823,12 @@ class fe extends B {
     h.setAttribute("slot", "anchor"), h.setAttribute("part", "anchor"), h.classList.add("anchor");
     let l = document.createElement("div");
     l.classList.add("picker");
-    let d = document.createElement("div");
-    d.classList.add("marker");
+    let c = document.createElement("div");
+    c.classList.add("marker");
     let g = document.createElement("div");
     g.classList.add("color-area"), g.addEventListener("click", this.moveMarker);
-    let c = document.createElement("div");
-    c.classList.add("wrapper");
+    let d = document.createElement("div");
+    d.classList.add("wrapper");
     let x = document.createElement("wj-slider");
     x.setAttribute("min", "0"), x.setAttribute("max", "360"), x.classList.add("hue"), x.addEventListener("wj:slider-move", this.setHue);
     let H = document.createElement("div");
@@ -842,9 +840,9 @@ class fe extends B {
     let P = document.createElement("div");
     P.classList.add("color-preview");
     let _ = document.createElement("wj-input");
-    _.classList.add("input"), _.setAttribute("variant", "standard"), _.value = "#ff0000", g.appendChild(d), H.appendChild(w), A.appendChild(P), A.appendChild(_), c.appendChild(x), c.appendChild(H), c.appendChild(A), l.appendChild(g), l.appendChild(c), this.createSwatches(c);
+    _.classList.add("input"), _.setAttribute("variant", "standard"), _.value = "#ff0000", g.appendChild(c), H.appendChild(w), A.appendChild(P), A.appendChild(_), d.appendChild(x), d.appendChild(H), d.appendChild(A), l.appendChild(g), l.appendChild(d), this.createSwatches(d);
     let k = document.createElement("wj-popup");
-    return k.setAttribute("placement", this.placement || "bottom-start"), k.setAttribute("offset", this.offset), k.setAttribute("manual", ""), k.appendChild(h), k.appendChild(l), o.appendChild(k), n.appendChild(o), this.popup = k, this.anchor = h, this.picker = l, this.marker = d, this.colorArea = g, this.hueSlider = x, this.alphaSlider = w, this.colorPreview = P, this.input = _, n;
+    return k.setAttribute("placement", this.placement || "bottom-start"), k.setAttribute("offset", this.offset), k.setAttribute("manual", ""), k.appendChild(h), k.appendChild(l), o.appendChild(k), n.appendChild(o), this.popup = k, this.anchor = h, this.picker = l, this.marker = c, this.colorArea = g, this.hueSlider = x, this.alphaSlider = w, this.colorPreview = P, this.input = _, n;
   }
   createSwatches(e) {
     if (this.swatches.length === 0)

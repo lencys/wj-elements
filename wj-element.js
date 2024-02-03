@@ -4,13 +4,13 @@ var a = (o, e, t) => (E(o, typeof e != "symbol" ? e + "" : e, t), t), v = (o, e,
   if (!e.has(o))
     throw TypeError("Cannot " + t);
 };
-var y = (o, e, t) => {
+var b = (o, e, t) => {
   if (e.has(o))
     throw TypeError("Cannot add the same private member more than once");
   e instanceof WeakSet ? e.add(o) : e.set(o, t);
 };
 var f = (o, e, t) => (v(o, e, "access private method"), t);
-import { store as b, defaultStoreActions as P } from "./wj-store.js";
+import { store as w, defaultStoreActions as P } from "./wj-store.js";
 class j {
   constructor(e = {}) {
     a(this, "findByKey", (e, t, s) => {
@@ -171,7 +171,7 @@ class u {
 var d, l, m;
 class T {
   constructor() {
-    y(this, l);
+    b(this, l);
     this.customEventStorage = [], d = this;
   }
   dispatchCustomEvent(e, t, s) {
@@ -235,8 +235,8 @@ l = new WeakSet(), m = function(e) {
   });
 };
 let k = new T();
-const w = document.createElement("template");
-w.innerHTML = "";
+const y = document.createElement("template");
+y.innerHTML = "";
 class S extends HTMLElement {
   constructor(t) {
     super();
@@ -248,8 +248,8 @@ class S extends HTMLElement {
       const i = new CSSStyleSheet();
       i.replaceSync(this.constructor.cssStyleSheet), this.context.adoptedStyleSheets = [i];
     });
-    this.template = t || w, this._attributes = {}, this.isAttached = !1, this.service = new j({
-      store: b
+    this.template = t || y, this._attributes = {}, this.isAttached = !1, this.service = new j({
+      store: w
     }), this.rendering = !1, this.runtimeTimeout = null, this.count = 0, this.functionStack = [], this.scheludedRefresh = !1;
   }
   get permission() {
@@ -277,7 +277,7 @@ class S extends HTMLElement {
     return this.isShadowRoot ? this.shadowRoot : this;
   }
   get store() {
-    return b;
+    return w;
   }
   //		addAction,
   //     deleteAction,
@@ -364,7 +364,7 @@ class S extends HTMLElement {
     return null;
   }
   display(t = !1, s) {
-    this.isProcessingFlow(s) || (t && this.isShadowRoot && ([...this.context.children].forEach(this.context.removeChild.bind(this.context)), this.isAttached = !1), this.isAttached && console.log("Already rendered...", this), this.context.append(this.template.content.cloneNode(!0)), this.isPermissionCheck || this.isShow ? c.isPermissionFulfilled.bind(this)(this.permission) ? this._resolveRender(s) : this.remove() : this._resolveRender(s));
+    this.isProcessingFlow(s) || (t && this.isShadowRoot && ([...this.context.children].forEach(this.context.removeChild.bind(this.context)), this.isAttached = !1), this.isAttached, this.context.append(this.template.content.cloneNode(!0)), this.isPermissionCheck || this.isShow ? c.isPermissionFulfilled.bind(this)(this.permission) ? this._resolveRender(s) : this.remove() : this._resolveRender(s));
   }
   render(t) {
     if (this.drawingStatus = "DRAWING", this.isProcessingFlow(t))

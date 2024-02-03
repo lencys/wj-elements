@@ -1,19 +1,17 @@
-var s = Object.defineProperty;
-var l = (e, t, i) => t in e ? s(e, t, { enumerable: !0, configurable: !0, writable: !0, value: i }) : e[t] = i;
-var a = (e, t, i) => (l(e, typeof t != "symbol" ? t + "" : t, i), i);
-import o from "./wj-element.js";
+var l = Object.defineProperty;
+var s = (e, t, i) => t in e ? l(e, t, { enumerable: !0, configurable: !0, writable: !0, value: i }) : e[t] = i;
+var a = (e, t, i) => (s(e, typeof t != "symbol" ? t + "" : t, i), i);
+import d from "./wj-element.js";
 import "./wj-store.js";
-const d = `/*!
-* direction.scss
-*/:host{--wj-card-title-font-size: 24px;--wj-card-title-font-weight: 500;--wj-card-title-margin: 0;--wj-card-title-padding: 0;--wj-card-title-line-height: 1.2}:host{font-size:var(--wj-card-title-font-size);font-weight:var(--wj-card-title-font-weight);margin:var(--wj-card-title-margin);padding:var(--wj-card-title-padding);line-height:var(--wj-card-title-line-height);display:block;position:relative}
+const o = `:host{--wj-card-title-font-size: 24px;--wj-card-title-font-weight: 500;--wj-card-title-margin: 0;--wj-card-title-padding: 0;--wj-card-title-line-height: 1.2;font-size:var(--wj-card-title-font-size);font-weight:var(--wj-card-title-font-weight);margin:var(--wj-card-title-margin);padding:var(--wj-card-title-padding);line-height:var(--wj-card-title-line-height);display:block;position:relative}
 `;
-class c extends o {
+class c extends d {
   constructor() {
     super();
     a(this, "className", "CardTitle");
   }
   static get cssStyleSheet() {
-    return d;
+    return o;
   }
   static get observedAttributes() {
     return [];

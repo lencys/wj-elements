@@ -1,16 +1,14 @@
 var c = Object.defineProperty;
-var d = (o, e, t) => e in o ? c(o, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : o[e] = t;
-var u = (o, e, t) => (d(o, typeof e != "symbol" ? e + "" : e, t), t);
-import p from "./wj-element.js";
+var p = (n, e, t) => e in n ? c(n, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[e] = t;
+var i = (n, e, t) => (p(n, typeof e != "symbol" ? e + "" : e, t), t);
+import d from "./wj-element.js";
 import "./wj-store.js";
-const m = `/*!
-* direction.scss
-*/:host{display:inline-block}:host .native-button-group{display:flex;flex-wrap:nowrap;line-height:1}:host slot{display:contents}::slotted(wj-button){margin:0!important}
+const m = `:host{display:inline-block}:host .native-button-group{display:flex;flex-wrap:nowrap;line-height:1}:host slot{display:contents}::slotted(wj-button){margin:0!important}
 `;
-class g extends p {
+class g extends d {
   constructor() {
     super();
-    u(this, "className", "ButtonGroup");
+    i(this, "className", "ButtonGroup");
   }
   static get cssStyleSheet() {
     return m;
@@ -22,14 +20,14 @@ class g extends p {
     this.isShadowRoot = "open";
   }
   draw(t, l, a) {
-    let s = document.createDocumentFragment(), n = document.createElement("div");
-    return n.classList.add("native-button-group"), n.setAttribute("part", "native"), this.slotElement = document.createElement("slot"), n.appendChild(this.slotElement), s.appendChild(n), s;
+    let s = document.createDocumentFragment(), o = document.createElement("div");
+    return o.classList.add("native-button-group"), o.setAttribute("part", "native"), this.slotElement = document.createElement("slot"), o.appendChild(this.slotElement), s.appendChild(o), s;
   }
   afterDraw(t, l, a) {
     const s = [...this.slotElement.assignedElements({ flatten: !0 })];
-    s.forEach((n) => {
-      let i = s.indexOf(n), r = this.findButton(n);
-      r && (r.classList.add("wj-button-group-button"), r.classList.toggle("wj-button-group-first", i === 0), r.classList.toggle("wj-button-group-inner", i > 0 && i < s.length - 1), r.classList.toggle("wj-button-group-last", i === s.length - 1));
+    s.forEach((o) => {
+      let u = s.indexOf(o), r = this.findButton(o);
+      r && (r.classList.add("wj-button-group-button"), r.classList.toggle("wj-button-group-first", u === 0), r.classList.toggle("wj-button-group-inner", u > 0 && u < s.length - 1), r.classList.toggle("wj-button-group-last", u === s.length - 1));
     });
   }
   findButton(t) {

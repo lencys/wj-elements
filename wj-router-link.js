@@ -1,21 +1,19 @@
 var i = Object.defineProperty;
-var c = (e, t, s) => t in e ? i(e, t, { enumerable: !0, configurable: !0, writable: !0, value: s }) : e[t] = s;
-var o = (e, t, s) => (c(e, typeof t != "symbol" ? t + "" : t, s), s);
-import a from "./wj-element.js";
-import { b as l } from "./router-links-e0087f84.js";
+var a = (e, t, r) => t in e ? i(e, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[t] = r;
+var o = (e, t, r) => (a(e, typeof t != "symbol" ? t + "" : t, r), r);
+import c from "./wj-element.js";
+import { b as u } from "./router-links-e0087f84.js";
 import "./wj-store.js";
-const u = `/*!
-* direction.scss
-*/:host{display:block}:host(.active){cursor:pointer;font-weight:700}
+const l = `:host{display:block;background:transparent!important}:host(.active){cursor:pointer;font-weight:700}
 `;
-class m extends a {
+class m extends c {
   constructor() {
     super();
     o(this, "className", "RouterLink");
-    l(this, { selector: !1 });
+    u(this, { selector: !1 });
   }
   static get cssStyleSheet() {
-    return u;
+    return l;
   }
   static get observedAttributes() {
     return [];
@@ -23,9 +21,9 @@ class m extends a {
   setupAttributes() {
     this.isShadowRoot = "open", this.setAttribute("active-class", "active");
   }
-  draw(s, d, p) {
-    let r = document.createDocumentFragment(), n = document.createElement("slot");
-    return r.appendChild(n), r;
+  draw(r, p, d) {
+    let s = document.createDocumentFragment(), n = document.createElement("slot");
+    return s.appendChild(n), s;
   }
 }
 customElements.get("wj-router-link") || window.customElements.define("wj-router-link", m);

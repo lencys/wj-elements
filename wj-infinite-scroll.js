@@ -1,34 +1,32 @@
 var u = Object.defineProperty;
 var m = (l, r, t) => r in l ? u(l, r, { enumerable: !0, configurable: !0, writable: !0, value: t }) : l[r] = t;
-var c = (l, r, t) => (m(l, typeof r != "symbol" ? r + "" : r, t), t);
+var h = (l, r, t) => (m(l, typeof r != "symbol" ? r + "" : r, t), t);
 import g, { event as p } from "./wj-element.js";
 import "./wj-store.js";
-const f = `/*!
-* direction.scss
-*/:host{--wj-infinite-scroll-width: 100%;--wj-infinite-scroll-height: 300px;overflow-x:auto;width:var(--wj-infinite-scroll-width);height:var(--wj-infinite-scroll-height);display:block}
+const f = `:host{--wj-infinite-scroll-width: 100%;--wj-infinite-scroll-height: 300px;overflow-x:auto;width:var(--wj-infinite-scroll-width);height:var(--wj-infinite-scroll-height);display:block}
 `;
 class w extends g {
   constructor(t = {}) {
     super();
-    c(this, "className", "InfiniteScroll");
-    c(this, "scrollEvent", () => {
+    h(this, "className", "InfiniteScroll");
+    h(this, "scrollEvent", () => {
       this.addEventListener("scroll", this.onScroll);
     });
-    c(this, "unScrollEvent", () => {
+    h(this, "unScrollEvent", () => {
       this.removeEventListener("scroll", this.onScroll);
     });
-    c(this, "onScroll", (t) => {
+    h(this, "onScroll", (t) => {
       const { scrollTop: s, scrollHeight: e, clientHeight: i } = t.target;
       s + i >= e - 300 && this.currentPage <= this.totalPages && this.isLoading.includes(this.currentPage) && (this.currentPage++, this.loadPages(this.currentPage));
     });
     this.totalPages = 0, this.isLoading = [], String.prototype.interpolate = function(s) {
       let e = this, i = e.match(/\{{.*?\}}/g);
       if (i)
-        for (let o of i) {
-          let a = o.replace("{{", "").replace("}}", ""), n = "";
-          a.split(".").forEach((h) => {
-            n = n == "" ? s[h] : n[h];
-          }), e = e.replace(o, n);
+        for (let a of i) {
+          let o = a.replace("{{", "").replace("}}", ""), n = "";
+          o.split(".").forEach((c) => {
+            n = n == "" ? s[c] : n[c];
+          }), e = e.replace(a, n);
         }
       return e;
     };
@@ -46,8 +44,8 @@ class w extends g {
     this.iterate = this.querySelector("[iterate]"), this.infiniteScrollTemplate = this.iterate.outerHTML, this.iterate.remove(), this.setAttribute("style", "height: " + this.height);
   }
   draw(t, s, e) {
-    let i = document.createDocumentFragment(), o = document.createElement("slot"), a = document.createElement("div");
-    return a.classList.add("loader"), i.appendChild(a), i.appendChild(o), this.loaderEl = a, i;
+    let i = document.createDocumentFragment(), a = document.createElement("slot"), o = document.createElement("div");
+    return o.classList.add("loader"), i.appendChild(o), i.appendChild(a), this.loaderEl = o, i;
   }
   async afterDraw() {
     this.queryParams = this.queryParams || "", this.size = +this.size || 10, this.currentPage = 0, this.scrollEvent(), await this.loadPages(this.currentPage);
@@ -83,10 +81,10 @@ class w extends g {
         let s, e;
         typeof this.setCustomData == "function" ? e = await this.setCustomData(t) : e = await this.getPages(t), this.totalPages = e.totalPages, this.currentPage = t;
         const i = new DOMParser();
-        let o = this;
-        this.hasAttribute("placement") && (o = this.querySelector(this.placement)), e.data.forEach((a) => {
-          const n = this.infiniteScrollTemplate.interpolate(a), d = i.parseFromString(n, "text/html").querySelector(".icon-item");
-          p.addListener(d, "click", "wj-infinite-scroll:click-item", null, { stopPropagation: !0 }), o.insertAdjacentElement("beforeend", d);
+        let a = this;
+        this.hasAttribute("placement") && (a = this.querySelector(this.placement)), e.data.forEach((o) => {
+          const n = this.infiniteScrollTemplate.interpolate(o), d = i.parseFromString(n, "text/html").querySelector(this.iterate.tagName.toLowerCase());
+          p.addListener(d, "click", "wj-infinite-scroll:click-item", null, { stopPropagation: !0 }), a.insertAdjacentElement("beforeend", d);
         }), this.isLoading.push(t);
       }
     } catch (s) {

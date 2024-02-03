@@ -50,7 +50,7 @@ class w extends m {
       type: this.type || "success",
       title: this.title || "John Doe"
     };
-    return this.container = document.querySelector("body"), this.notification = document.createElement("div"), this.notification.classList.add("pgn", "push-on-sidebar-open"), this.classList.add("pgn-wrapper"), this.setAttribute("data-position", o.position), this.alert = document.createElement("div"), this.alert.classList.add("alert"), this.alert.classList.add("alert-" + o.type), o.style == "bar" ? g(this.notification, this.alert, o) : o.style == "flip" ? f(this.notification, this.alert, o) : o.style == "circle" ? b(this.notification, this.alert, o) : o.style == "simple" ? l(this.notification, this.alert, o) : l(this.notification, this.alert, o), console.log("alert", this.alert), this.notification.appendChild(this.alert), s.appendChild(this.notification), s;
+    return this.container = document.querySelector("body"), this.notification = document.createElement("div"), this.notification.classList.add("pgn", "push-on-sidebar-open"), this.classList.add("pgn-wrapper"), this.setAttribute("data-position", o.position), this.alert = document.createElement("div"), this.alert.classList.add("alert"), this.alert.classList.add("alert-" + o.type), o.style == "bar" ? g(this.notification, this.alert, o) : o.style == "flip" ? f(this.notification, this.alert, o) : o.style == "circle" ? b(this.notification, this.alert, o) : o.style == "simple" ? l(this.notification, this.alert, o) : l(this.notification, this.alert, o), this.notification.appendChild(this.alert), s.appendChild(this.notification), s;
   }
 }
 customElements.get("wj-toast") || window.customElements.define("wj-toast", w);
