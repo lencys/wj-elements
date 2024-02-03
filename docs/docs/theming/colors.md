@@ -1,5 +1,5 @@
 ---
-title: Colors
+title: Farby
 initialTab: 'preview'
 inlineHtmlPreviews: true
 ---
@@ -16,101 +16,63 @@ import CodeColor from '@components/page/theming/CodeColor';
   />
 </head>
 
-Ionic has nine default colors that can be used to change the color of many components. Each color is actually a collection of multiple properties, including a `shade` and `tint`, used throughout Ionic.
 
-A color can be applied to an Ionic component in order to change the default colors using the `color` attribute. Notice in the buttons below that the text and background changes based on the `color` set. When there is no `color` set on the button it uses the `primary` color by default.
+Farebná paleta Elements sa skladá zo 7 predvolených farieb, ktoré si je možné jednoducho upraviť. Paleta je navrhnutá tak aby spĺňala aktuálne trendy a zároveň zabezpečovala prístupnosť. Používatelia si môžu prispôsobiť jej farby pomocou CSS premenných, čo im umožňuje zmeniť predvolené farby alebo pridať vlastné.
+
+Vo vačšine elementov je možné nastaviť farbu elementu pomocou atribútu `color` a ako jeho hodnotu je potrebné zvoliť názov niektorej z farieb z farebnej palety.
 
 ```html
-<ion-button>Default</ion-button>
-<ion-button color="primary">Primary</ion-button>
-<ion-button color="secondary">Secondary</ion-button>
-<ion-button color="tertiary">Tertiary</ion-button>
-<ion-button color="success">Success</ion-button>
-<ion-button color="warning">Warning</ion-button>
-<ion-button color="danger">Danger</ion-button>
-<ion-button color="light">Light</ion-button>
-<ion-button color="medium">Medium</ion-button>
-<ion-button color="dark">Dark</ion-button>
+<wj-button>Default</wj-button>
+<wj-button color="primary">Primary</wj-button>
+<wj-button color="complete">Complete</wj-button>
+<wj-button color="success">Success</wj-button>
+<wj-button color="warning">Warning</wj-button>
+<wj-button color="danger">Danger</wj-button>
+<wj-button color="neutral">Neutral</wj-button>
 ```
 
-## Layered Colors
+## Upravenie existujúcej farby
 
-Each color consists of the following properties: a `base`, `contrast`, `shade`, and `tint`. The `base` and `contrast` colors also require a `rgb` property which is the same color, just in <a href="https://developer.mozilla.org/en-US/docs/Glossary/RGB" target="_blank">rgb format</a>. See [The Alpha Problem](advanced.md#the-alpha-problem) for an explanation of why the `rgb` property is also needed. Select from the dropdown below to see all of the default colors Ionic provides and their variations.
-
-<LayeredColorsSelect />
-
-## Modifying Colors
-
-To change the default values of a color, all of the listed variations for that color should be set. For example, to change the secondary color to <CodeColor color="#006600">#006600</CodeColor>, set the following CSS properties:
+Upravenie hodnoty niektorej z farieb farebnej palety dosiahnete nastavením CSS vlastnosti. Napríklad na upravenie hodnoty farby primary na <CodeColor color="#FFd945">#FFd945</CodeColor> použijete vlastnosť nižšie:
 
 ```css
 :root {
-  --ion-color-secondary: #006600;
-  --ion-color-secondary-rgb: 0, 102, 0;
-  --ion-color-secondary-contrast: #ffffff;
-  --ion-color-secondary-contrast-rgb: 255, 255, 255;
-  --ion-color-secondary-shade: #005a00;
-  --ion-color-secondary-tint: #1a751a;
+  --wj-color-primary: #FFd945;
 }
 ```
 
-When `secondary` is applied to a button, not only is the base color <CodeColor color="#006600">#006600</CodeColor> used, but the contrast color <CodeColor color="#ffffff">#ffffff</CodeColor> is used for the text, along with shade <CodeColor color="#005a00">#005a00</CodeColor> and tint <CodeColor color="#1a751a">#1a751a</CodeColor> colors for the different states of the button.
+## Pridanie novej farby
 
-:::note
-Not sure how to get the variation colors from the base color? Try out our [Color Generator](color-generator.md) that calculates all of the variations and provides code to copy/paste into an app!
-:::
+Farbu možno pridať na použitie v celej aplikácii nastavením vlastnosti `color` na komponente WebJET alebo štylizáciou pomocou CSS.
 
-See the [CSS Variables documentation](css-variables.md) for more information on CSS variables.
-
-## Adding Colors
-
-Colors can be added for use throughout an application by setting the `color` property on an Ionic component, or by styling with CSS. Read on to see how to manually add a new color, or use the [New Color Creator](#new-color-creator) below for a quick way to generate the code of a new color to be copy and pasted into an application.
-
-To add a new color, first define the CSS variables for all of the variations of the color at the root. For example, to add a new color called `favorite`, we can define the following variables:
+Ak chcete začleniť novú farbu do farebnej palety, začnite vytvorením jej premennej CSS na root úrovni. Ak chcete napríklad pridať farbu s názvom `coral`, s hodnotou <CodeColor color="#FF7F50">#FF7F50</CodeColor> je potrebné definovať premennú nasledovne:
 
 ```css
 :root {
-  --ion-color-favorite: #69bb7b;
-  --ion-color-favorite-rgb: 105, 187, 123;
-  --ion-color-favorite-contrast: #ffffff;
-  --ion-color-favorite-contrast-rgb: 255, 255, 255;
-  --ion-color-favorite-shade: #5ca56c;
-  --ion-color-favorite-tint: #78c288;
+  --wj-color-coral: #FF7F50;
 }
 ```
 
-Then, create a new class that uses these CSS variables. The class **must** be written in the format `.ion-color-{COLOR}` where `{COLOR}` is the name of the color to add:
+Potom vytvorte novú triedu, ktorá použije túto premennú CSS. Trieda musí byť zapísaná vo formáte `.wj-color-{COLOR}`, kde `{COLOR}` je názov farby, ktorú chcete pridať:
 
 ```css
-.ion-color-favorite {
-  --ion-color-base: var(--ion-color-favorite);
-  --ion-color-base-rgb: var(--ion-color-favorite-rgb);
-  --ion-color-contrast: var(--ion-color-favorite-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-favorite-contrast-rgb);
-  --ion-color-shade: var(--ion-color-favorite-shade);
-  --ion-color-tint: var(--ion-color-favorite-tint);
+.wj-color-coral {
+  --wj-color-base: var(--wj-color-coral);
 }
 ```
 
-After the class is added, the color can be used on any Ionic component that supports the `color` property. An example of using the `favorite` color on an Ionic button is below.
+Po pridaní triedy je možné farbu použiť v ľubovoľnej komponente WebJET, ktorá podporuje vlastnosť `color`. Príklad použitia farby `coral` na `wj-button` je uvedený nižšie.
 
 ```html
-<ion-button color="favorite">Favorite</ion-button>
+<wj-button color="coral">Coral</wj-button>
 ```
 
-The CSS variables defined at the root can also be used to style any element using CSS:
+Premenné CSS definované v koreňovom adresári možno použiť aj na štylizáciu ľubovoľného elementu pomocou CSS:
 
 ```css
 div {
-  background: var(--ion-color-favorite);
-  color: var(--ion-color-favorite-contrast);
+  background: var(--wj-color-coral);
 }
 ```
 
-See the [CSS Variables documentation](css-variables.md) for more information on setting and using CSS variables.
-
-## New Color Creator
-
-Create a new color below by changing the name and value, then copy and paste the code below into your project.
-
-<NewColorGenerator />
+Pre viac informácií o použití CSS premenných prejdite na stránku [CSS Premenné](css-variables.md)

@@ -8,7 +8,7 @@ const VERSIONS_JSON = [];
 const BASE_URL = '/docs';
 
 module.exports = {
-  title: 'Dokumentácia WebJET Elementov',
+  title: 'Dokumentácia WebJET Elements',
   tagline:
     'WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania využívajúca silu web komponentov, ktorá je určená na zjednodušenie vývoja webových aplikácií.',
   url: 'https://elements.webjet.sk',

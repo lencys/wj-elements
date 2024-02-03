@@ -28,8 +28,8 @@ function writePage(page) {
   ].join('');
 
   const path = `cli/commands/${commandToKebab(page.name)}.md`;
-  writeFileSync(`docs/${path}`, data);
-  writeFileSync(`versioned_docs/version-v6/${path}`, data);
+  // writeFileSync(`docs/${path}`, data);
+  // writeFileSync(`versioned_docs/version-v6/${path}`, data);
 }
 
 function renderFrontmatter({ name, groups }) {
