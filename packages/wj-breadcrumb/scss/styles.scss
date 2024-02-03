@@ -1,12 +1,10 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Breadcrumbs ]
+[ WJ Breadcrumbs ]
 */
 
 :host {
-  --wj-breadcrumb-a: #{$color-contrast-high-a};
-  --wj-breadcrumb-a-hover: #{$color-contrast-medium-a};
+  --wj-breadcrumb-a: var(--wj-color-contrast-high);
+  --wj-breadcrumb-a-hover: var(--wj-color-contrast-medium);
   display: flex;
   flex: 0 0 auto;
   align-items: center;

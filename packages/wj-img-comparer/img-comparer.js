@@ -41,7 +41,7 @@ export class ImgComparer extends WJElement {
         after.setAttribute("name", "after");
 
         let icon = document.createElement("wj-icon");
-        icon.setAttribute("name", "arrows-left-right");
+        icon.setAttribute("name", "arrow-bar-both");
 
         let dividerElement = document.createElement("div");
         dividerElement.classList.add("wj-divider");

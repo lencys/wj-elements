@@ -26,6 +26,23 @@ export default class DemoButton extends WJElement {
           <wj-button disabled>Disabled</wj-button>
         </div>
       </div>
+      
+       <!--  TOGGLE-->
+  
+      <h2>Toggle</h2>
+      <div class="playground">
+        <div class="content">
+          <wj-button fill="link" toggle="off">
+            <wj-icon name="sun" slot="toggle"></wj-icon>
+            <wj-icon name="moon" slot="toggle"></wj-icon>
+          </wj-button>
+          
+          <wj-button fill="link" toggle="off">
+            <span slot="toggle">On</span>
+            <span slot="toggle">Off</span>
+          </wj-button>
+        </div>
+      </div>
   
       <!--  SHAPE -->
   
@@ -103,14 +120,12 @@ export default class DemoButton extends WJElement {
         </div>
       </div>
       
-      <!-- VARIANT -->
+      <!-- LINK -->
   
-      <h2>Variant</h2>
+      <h2>Link</h2>
       <div class="playground">
         <div class="content">
-          <wj-button variant="link">
-            Link
-          </wj-button>
+          <wj-button fill="link">Link</wj-button>
         </div>
       </div>
   

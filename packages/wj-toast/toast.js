@@ -69,7 +69,6 @@ export class Toast extends WJElement {
             simple(this.notification, this.alert, options);
         }
 
-        console.log("alert", this.alert);
         this.notification.appendChild(this.alert);
 
         fragment.appendChild(this.notification);

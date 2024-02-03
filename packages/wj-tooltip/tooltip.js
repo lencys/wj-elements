@@ -61,7 +61,6 @@ export class Tooltip extends WJElement {
     }
 
     onShow = () => {
-        console.log("show");
         this.popup.show();
     }
 

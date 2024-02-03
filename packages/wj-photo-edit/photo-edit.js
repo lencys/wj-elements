@@ -25,8 +25,6 @@ class PhotoEdit extends WJElement{
     }
 
     afterDraw() {
-        console.log("scale:", this.scale, "cropScale:", this.cropScale, "getScale:", this.getScale(), "edit:", this.edit);
-
         setTimeout(() => {
             this.myCropme = new Cropme(this.photo, {
                 "url": this.src,

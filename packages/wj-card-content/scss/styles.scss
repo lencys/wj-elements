@@ -1,7 +1,5 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Card - Content ]
+[ WJ Card - Content ]
 */
 
 :host {
@@ -24,7 +22,7 @@
     margin-top: 0;
   }
   &.scrollable {
-    margin-bottom: $panel-padding;
+    margin-bottom: 20px;
   }
   h3 {
     line-height: 34px;

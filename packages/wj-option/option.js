@@ -11,6 +11,14 @@ export class Option extends WJElement {
         return value ? this.setAttribute("selected", "") : this.removeAttribute("selected");
     }
 
+    set value(value) {
+        this.setAttribute("value", value);
+    }
+
+    set text(value) {
+        this.innerText = value;
+    }
+
     className = "Option";
 
     static get cssStyleSheet() {

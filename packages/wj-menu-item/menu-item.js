@@ -187,7 +187,7 @@ export class MenuItem extends WJElement {
             });
         } else {
             event.addListener(this, "click", null, (e) => {
-                console.log("CLICK", this);
+                // console.log("CLICK", this);
             });
         }
     }

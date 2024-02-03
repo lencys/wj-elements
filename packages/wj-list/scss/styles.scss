@@ -1,13 +1,11 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ List ]
+[ WJ List ]
 */
 
 :host {
   --wj-list-inset-padding: 1rem;
   --wj-list-border-radius: 8px;
-  --wj-list-background: #{$color-contrast-lowest};
+  --wj-list-background: var(--wj-background);
 
   margin: 0;
   padding: 0;

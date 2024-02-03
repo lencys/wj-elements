@@ -1,7 +1,5 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ SplitView ]
+[ WJ Image Compare ]
 */
 
 :host {
@@ -62,10 +60,9 @@
     position: absolute;
     background-color: white;
     padding: .5rem;
-    color: var(--wj-color);
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    box-shadow: rgba(82, 63, 105, 0.2) 0px 0px 30px 10px;
+    color: var(--wj-color-dark);
+    border-radius: var(--wj-border-radius-circle);
+    box-shadow: rgba(82, 63, 105, 0.2) 0 0 30px 10px;
+    background: var(--wj-color-white) !important;
   }
 }

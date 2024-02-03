@@ -247,7 +247,6 @@ export class Table extends Service {
             maxHeight: this.getAttribute("max-height") || false,
         });
 
-        console.log("TABLE FILTERABLE", this.filterable);
         this.table.filterable = this.filterable;
     }
 

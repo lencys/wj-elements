@@ -239,7 +239,13 @@ export default class DemoButtonGroup extends WJElement {
           </p>
         </div>
       </div>
-    </div>`;
+    </div>
+    <style>
+      wj-button {
+        margin: 0;
+      }
+    </style>
+    `;
   }
 }
 

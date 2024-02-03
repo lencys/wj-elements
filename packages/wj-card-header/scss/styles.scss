@@ -1,7 +1,5 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Card - Header ]
+[ WJ Card - Header ]
 */
 
 :host {
@@ -13,7 +11,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  color: var(--wj-color-contrast);
 }
 
 :host(.wj-separator):after {

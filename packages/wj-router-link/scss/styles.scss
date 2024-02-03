@@ -1,11 +1,10 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Router Link ]
+[ WJ Router Link ]
 */
 
 :host{
     display: block;
+    background: transparent !important;
 }
 
 :host(.active){

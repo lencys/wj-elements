@@ -1,4 +1,6 @@
-@import "../../scss/themes/net-basic/important.scss";
+/*
+[ WJ Card - Title ]
+*/
 
 :host {
   --wj-card-title-font-size: 24px;
@@ -6,9 +8,7 @@
   --wj-card-title-margin: 0;
   --wj-card-title-padding: 0;
   --wj-card-title-line-height: 1.2;
-}
 
-:host {
   font-size: var(--wj-card-title-font-size);
   font-weight: var(--wj-card-title-font-weight);
   margin: var(--wj-card-title-margin);

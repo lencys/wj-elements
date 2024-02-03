@@ -86,7 +86,7 @@ export class Select extends WJElement {
         let slot = document.createElement("slot");
 
         let clear = document.createElement("wj-button");
-        clear.setAttribute("variant", "link")
+        clear.setAttribute("fill", "link")
         clear.setAttribute("part", "clear");
 
         let clearIcon = document.createElement("wj-icon");
@@ -277,7 +277,6 @@ export class Select extends WJElement {
     getChip(option) {
         let chip = document.createElement("wj-chip");
         chip.setAttribute("removable", "");
-        chip.setAttribute("color", "menu");
         chip.addEventListener("wj:chip-remove", this.removeChip);
         chip.option = option;
 

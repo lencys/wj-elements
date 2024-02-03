@@ -63,7 +63,7 @@ template.innerHTML = `
     <h2>Collapse</h2>
     <div class="playground" style="align-items: start;">
       <div class="content" style="display: block; margin: 0 auto;">
-        <wj-button id="toggle">Toggle</wj-button>
+<!--        <wj-button id="toggle">Toggle</wj-button>-->
         
         <wj-menu id="custom" variant="nav" collapse active>
           <wj-menu-item>
@@ -174,7 +174,6 @@ export default class DemoNav extends WJElement {
 
     // console.log(expand, collapse, menu)
     toggle.addEventListener("wj:button-click", (e) => {
-      console.log("collapse");
       menu.toggleAttribute("collapse");
     });
 

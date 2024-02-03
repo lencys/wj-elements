@@ -48,3 +48,24 @@ body {
 .col-4 wj-card {
   flex: 1 1 28%;
 }
+
+DocsCards  wj-icon {
+    padding: 12px;
+    --wj-icon-size: 32px;
+    margin-bottom: 1rem;
+    color: #fff;
+    border-radius: 50%;
+    background: rgb(63,94,251);
+    background: linear-gradient(90deg, #3A0087ee 0%, #AE40FDee 100%);
+  }
+  DocsCards wj-icon svg {
+    stroke-width: 1px;
+  }
+  DocsCards wj-card {
+    --wj-border-radius: 10px;
+  }
+  DocsCards wj-card-content p {
+    font-size: 0.75rem!important;
+  }
+
+

@@ -1,23 +1,21 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Toolbar ]
+[ WJ Toolbar ]
 */
 
 :host {
-  --wj-toolbar-backcolor: #{$color-contrast-lowest};
+  --wj-toolbar-background: var(--wj-background);
   --wj-toolbar-min-height: 70px;
   --wj-toolbar-padding-top: 1rem;
   --wj-toolbar-padding-bottom: 1rem;
   --wj-toolbar-padding-inline: 1.5rem;
-  --wj-toolbar-border-color: #{$color-border-a};
+  --wj-toolbar-border-color: var(--wj-border-color);
   --wj-toolbar-top: 0;
   width: 100%;
   height: var(--wj-toolbar-height);
 }
 
 .native-toolbar {
-  background-color: var(--wj-toolbar-backcolor);
+  background-color: var(--wj-toolbar-background);
   display: flex;
   align-items: center;
   flex-wrap: wrap;

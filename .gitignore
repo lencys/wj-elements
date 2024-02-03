@@ -7,3 +7,6 @@ website/static/wj-elements/
 /tests/output/
 package-lock.json
 wj-elements/website/static
+/docs/.docusaurus/
+/docs/build/
+/docs/node_modules/

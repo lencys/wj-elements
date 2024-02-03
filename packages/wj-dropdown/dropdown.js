@@ -1,7 +1,5 @@
 import { default as WJElement, event } from "../wj-element/wj-element.js";
 
-import styles from "./scss/styles.scss?inline";
-
 export class Dropdown extends WJElement {
     constructor() {
         super();

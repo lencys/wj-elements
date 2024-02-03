@@ -1,91 +1,94 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Button ]
+[ WJ Button ]
 */
 
 :host(.wj-button-solid.wj-color-primary) {
-  --wj-button-background-color: #{$color-primary};
-  --wj-button-color: #{text-contrast($color-primary)};
+  --wj-button-background-color: var(--wj-color-primary-10);
+  --wj-button-border-color: var(--wj-color-primary-11);
+  --wj-button-color: var(--wj-color-contrast-0);
 }
 
 :host(.wj-button-outline.wj-color-primary) {
-  --wj-button-border-color: #{opacify($color-primary, 0.03)};
-  --wj-button-color: #{$color-primary};
+  --wj-button-border-color: var(--wj-color-primary-6);
+  --wj-button-color: var(--wj-color-primary-6);
 }
 
 :host(.wj-button-solid.wj-color-complete) {
-  --wj-button-background-color: #{$color-complete};
-  --wj-button-color: #{text-contrast($color-complete)};
+  --wj-button-background-color: var(--wj-color-complete-10);
+  --wj-button-border-color: var(--wj-color-complete-11);
+  --wj-button-color: var(--wj-color-contrast-0);
 }
 
 :host(.wj-button-outline.wj-color-complete) {
-  --wj-button-border-color: #{opacify($color-complete, 0.03)};
-  --wj-button-color: #{$color-complete};
+  --wj-button-border-color: var(--wj-color-complete-6);
+  --wj-button-color: var(--wj-color-complete-6);
 }
 
 :host(.wj-button-solid.wj-color-success) {
-  --wj-button-background-color: #{$color-success};
-  --wj-button-color: #{text-contrast($color-success)};
+  --wj-button-background-color: var(--wj-color-success-10);
+  --wj-button-border-color: var(--wj-color-success-11);
+  --wj-button-color: var(--wj-color-contrast-0);
 }
 
 :host(.wj-button-outline.wj-color-success) {
-  --wj-button-border-color: #{opacify($color-success, 0.03)};
-  --wj-button-color: #{$color-success};
+  --wj-button-border-color: var(--wj-color-success-6);
+  --wj-button-color: var(--wj-color-success-6);
 }
 
 :host(.wj-button-solid.wj-color-warning) {
-  --wj-button-background-color: #{$color-warning};
-  --wj-button-color: #{text-contrast($color-warning)};
+  --wj-button-background-color: var(--wj-color-warning-10);
+  --wj-button-border-color: var(--wj-color-warning-11);
+  --wj-button-color: var(--wj-color-black);
 }
 
 :host(.wj-button-outline.wj-color-warning) {
-  --wj-button-border-color: #{opacify($color-warning, 0.03)};
-  --wj-button-color: #{$color-warning};
+  --wj-button-border-color: var(--wj-color-warning-6);
+  --wj-button-color: var(--wj-color-warning-6);
 }
 
 :host(.wj-button-solid.wj-color-danger) {
-  --wj-button-background-color: #{$color-danger};
-  --wj-button-color: #{text-contrast($color-danger)};
+  --wj-button-background-color: var(--wj-color-danger-10);
+  --wj-button-border-color: var(--wj-color-danger-11);
+  --wj-button-color: var(--wj-color-contrast-0);
 }
 
 :host(.wj-button-outline.wj-color-danger) {
-  --wj-button-border-color: #{opacify($color-danger, 0.03)};
-  --wj-button-color: #{$color-danger};
+  --wj-button-border-color: var(--wj-color-danger-6);
+  --wj-button-color: var(--wj-color-danger-6);
 }
 
 :host(.wj-button-solid.wj-color-neutral) {
-  --wj-button-background-color: #{$color-contrast-higher};
-  --wj-button-color: #{text-contrast($color-contrast-higher)};
+  --wj-button-background-color: var(--wj-color-contrast-10);
+  --wj-button-border-color: var(--wj-color-contrast-11);
+  --wj-button-color: var(--wj-color-contrast-0);
 }
 
 :host(.wj-button-outline.wj-color-neutral) {
-  --wj-button-border-color: #{opacify($color-contrast-higher, 0.03)};
-  --wj-button-color: #{$color-contrast-higher};
+  --wj-button-border-color: var(--wj-color-contrast-6);
+  --wj-button-color: var(--wj-color-contrast-6);
 }
 
 :host(.wj-button-solid.wj-color-default) {
-  --wj-button-background-color: #{$color-contrast-lowest};
-  --wj-button-color: #{text-contrast($color-contrast-lowest)};
+  --wj-button-background-color: transparent;
+  --wj-button-border-color: var(--wj-color-contrast-4);
+  --wj-button-color: var(--wj-color-contrast-11);
 }
 
 :host(.wj-button-outline.wj-color-default) {
-  --wj-button-border-color: #{opacify($color-border-a, 0.03)};
-  --wj-button-background-color: #{$color-contrast-lowest};
-  --wj-button-color: #{text-contrast($color-contrast-lowest)};
+  --wj-button-border-color: var(--wj-color-contrast-4);
+  --wj-button-color: var(--wj-color-contrast-11);
 }
 
 :host {
   --wj-button-border-radius: 4px;
   --wj-button-border-width: 1px;
   --wj-button-border-style: solid;
-  --wj-button-border-color: #{opacify($color-border-a, 0.03)};
+  --wj-button-border-color: var(--wj-color-contrast-1);
   --wj-button-margin-inline: 0;
   --wj-padding-top: .4rem;
   --wj-padding-start: .5rem;
   --wj-padding-end: .5rem;
   --wj-padding-bottom: .4rem;
-  
 
   display: inline-flex;
   position: relative;
@@ -124,85 +127,99 @@
   border-radius: var(--wj-button-border-radius);
   padding-top: var(--wj-padding-top);
   padding-bottom: var(--wj-padding-bottom);
-  padding-left: var(--wj-padding-start);
-  padding-right: var(--wj-padding-end);
-}
-
-@mixin hover($background-color, $border-color, $text-color: text-contrast($background-color)) {
-  --wj-button-background-color: #{make-shade($background-color, $mix-percentage-light, $saturation-shift, $hue-shift, -1)};
-  --wj-button-border-color: #{$border-color};
-  --wj-button-color: #{$text-color};
-}
-
-@mixin hover-outline($color) {
-  --wj-button-background-color: #{rgba($color, 0.1)};
-  --wj-button-border-color: #{$color};
-  --wj-button-color: #{$color};
+  padding-inline: var(--wj-padding-start) var(--wj-padding-end);
 }
 
 @media (any-hover: hover) {
-  :host(.wj-button-solid:hover) {
-    @include hover($color-primary, $color-primary);
+  :host(.wj-button-solid.wj-color-primary:hover) {
+    --wj-button-background-color: var(--wj-color-primary-9);
+    --wj-button-border-color: var(--wj-color-primary-10);
+    --wj-button-color: var(--wj-color-contrast-0);
   }
 
-  :host(.wj-button-outline:hover) {
-    @include hover-outline($color-primary);
+  :host(.wj-button-outline.wj-color-primary:hover) {
+    --wj-button-background-color: var(--wj-color-primary-1);
+    --wj-button-border-color: var(--wj-color-primary-11);
+    --wj-button-color: var(--wj-color-primary-11);
   }
 
   :host(.wj-button-solid.wj-color-complete:hover) {
-    @include hover($color-complete, $color-complete);
+    --wj-button-background-color: var(--wj-color-complete-9);
+    --wj-button-border-color: var(--wj-color-complete-10);
+    --wj-button-color: var(--wj-color-contrast-0);
   }
 
   :host(.wj-button-outline.wj-color-complete:hover) {
-    @include hover-outline($color-complete);
+    --wj-button-background-color: var(--wj-color-complete-1);
+    --wj-button-border-color: var(--wj-color-complete-11);
+    --wj-button-color: var(--wj-color-complete-11);
   }
 
   :host(.wj-button-solid.wj-color-success:hover) {
-    @include hover($color-success, $color-success);
+    --wj-button-background-color: var(--wj-color-success-9);
+    --wj-button-border-color: var(--wj-color-success-10);
+    --wj-button-color: var(--wj-color-contrast-0);
   }
 
   :host(.wj-button-outline.wj-color-success:hover) {
-    @include hover-outline($color-success);
+    --wj-button-background-color: var(--wj-color-success-1);
+    --wj-button-border-color: var(--wj-color-success-11);
+    --wj-button-color: var(--wj-color-success-11);
   }
 
   :host(.wj-button-solid.wj-color-warning:hover) {
-    @include hover($color-warning, $color-warning);
+    --wj-button-background-color: var(--wj-color-warning-9);
+    --wj-button-border-color: var(--wj-color-warning-10);
+    --wj-button-color: var(--wj-color-black);
   }
 
   :host(.wj-button-outline.wj-color-warning:hover) {
-    @include hover-outline($color-warning);
+    --wj-button-background-color: var(--wj-color-warning-1);
+    --wj-button-border-color: var(--wj-color-warning-11);
+    --wj-button-color: var(--wj-color-warning-11);
   }
 
   :host(.wj-button-solid.wj-color-danger:hover) {
-    @include hover($color-danger, $color-danger);
+    --wj-button-background-color: var(--wj-color-danger-9);
+    --wj-button-border-color: var(--wj-color-danger-10);
+    --wj-button-color: var(--wj-color-contrast-0);
   }
 
   :host(.wj-button-outline.wj-color-danger:hover) {
-    @include hover-outline($color-danger);
+    --wj-button-background-color: var(--wj-color-danger-1);
+    --wj-button-border-color: var(--wj-color-danger-11);
+    --wj-button-color: var(--wj-color-danger-11);
   }
 
   :host(.wj-button-solid.wj-color-neutral:hover) {
-    @include hover($color-contrast-higher, $color-contrast-higher);
+    --wj-button-background-color: var(--wj-color-contrast-9);
+    --wj-button-border-color: var(--wj-color-contrast-10);
+    --wj-button-color: var(--wj-color-contrast-0);
   }
 
   :host(.wj-button-outline.wj-color-neutral:hover) {
-    @include hover-outline($color-contrast-higher);
+    --wj-button-background-color: var(--wj-color-contrast-1);
+    --wj-button-border-color: var(--wj-color-contrast-11);
+    --wj-button-color: var(--wj-color-contrast-11);
   }
 
   :host(.wj-button-solid.wj-color-default:hover) {
-    @include hover(rgba($color-contrast-low, 0.1), $color-contrast-low);
+    --wj-button-background-color: var(--wj-color-contrast-1);
+    --wj-button-border-color: var(--wj-color-contrast-2);
+    --wj-button-color: var(--wj-color-contrast-9);
   }
 
+
   :host(.wj-button-outline.wj-color-default:hover) {
-    --wj-button-background-color: #{rgba($color-contrast-low, 0.1)};
-    --wj-button-border-color: #{$color-contrast-low};
-    --wj-button-color: #{text-contrast($color-contrast-lowest)};
+    --wj-button-background-color: var(--wj-color-contrast-1);
+    --wj-button-border-color: var(--wj-color-contrast-2);
+    --wj-button-color: var(--wj-color-contrast-9);
   }
 
   :host(.wj-button-link:hover) {
-    --wj-button-background-color: #{rgba(128, 128, 128, 0.2) !important};
+    --wj-button-background-color: var(--wj-color-contrast-1) !important;
     --wj-button-border-color: transparent !important;
-    color: $color-contrast-high !important;
+    color: var(--wj-color-contrast-9) !important;
   }
 }
 
@@ -233,20 +250,20 @@
 [ Default = Solid ]
 */
 
-:host(.wj-button-solid) {
-  --wj-button-background-color: #{$color-primary};
-  --wj-button-color: #{text-contrast($color-primary)};
-}
+//:host(.wj-button-solid) {
+//  --wj-button-background-color: var(--wj-color-primary);
+//  --wj-button-color: var(--wj-color-contrast-lowest);
+//}
 
 /*
 [ Outline ]
 */
 
-:host(.wj-button-outline) {
-  --wj-button-border-color: #{opacify($color-primary, 0.03)};
-  --wj-button-background-color: transparent;
-  --wj-button-color: #{$color-primary};
-}
+//:host(.wj-button-outline) {
+//  --wj-button-border-color: var(--wj-color-primary);
+//  --wj-button-background-color: transparent;
+//  --wj-button-color: var(--wj-color-primary);
+//}
 
 /*
 [ Link ]
@@ -273,7 +290,12 @@
 */
 
 :host(.wj-button-round) {
-  --wj-button-border-radius: 100px;
+  --wj-button-border-radius: var(--wj-border-radius-pill);
+}
+
+:host(.wj-button-circle) {
+  --wj-button-border-radius: var(--wj-border-radius-circle);
+  aspect-ratio: 1/1;
 }
 
 :host(.wj-button-large) {
@@ -323,4 +345,12 @@
 
 :host(.wj-button-group-button:not(.wj-button-group-first)) {
   margin-inline-start: calc(-1 * var(--wj-button-border-width)) !important;
+}
+
+::slotted([slot="toggle"]) {
+  display: none;
+}
+
+::slotted([slot="toggle"].show) {
+  display: block;
 }

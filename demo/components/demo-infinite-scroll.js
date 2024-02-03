@@ -28,7 +28,7 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
     <h3>Size</h3>
     <div class="playground">
       <div class="content">
-        <wj-infinite-scroll url="/api/users" placement="wj-list" size="5">
+        <wj-infinite-scroll url="/api/users" placement="wj-list" size="6">
           <wj-list>
             <wj-item iterate>
               <wj-label>

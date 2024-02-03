@@ -2,41 +2,39 @@ module.exports = {
   docs: [
     {
       type: 'category',
-      label: 'Getting Started',
+      label: 'Začíname',
       collapsed: false,
-      items: ['index', 'intro/environment', 'intro/cli', 'intro/cdn', 'intro/vscode-extension', 'intro/next'],
+      items: ['index', 'intro/environment', 'intro/install'],
     },
-    {
-      type: 'category',
-      label: 'Upgrade Guides',
-      collapsed: false,
-      items: ['updating/7-0', 'updating/6-0', 'updating/5-0', 'updating/4-0'],
-    },
-    {
-      type: 'category',
-      label: 'Developing',
-      collapsed: false,
-      items: [
-        'developing/starting',
-        'developing/previewing',
-        'developing/scaffolding',
-        'developing/ios',
-        'developing/android',
-        'developing/tips',
-        'developing/hardware-back-button',
-        'developing/keyboard',
-        'developing/config',
-      ],
-    },
+    // {
+    //   type: 'category',
+    //   label: 'Upgrade Guides',
+    //   collapsed: false,
+    //   items: ['updating/7-0', 'updating/6-0', 'updating/5-0', 'updating/4-0'],
+    // },
+    // {
+    //   type: 'category',
+    //   label: 'Developing',
+    //   collapsed: false,
+    //   items: [
+    //     'developing/starting',
+    //     // 'developing/previewing',
+    //     'developing/scaffolding',
+    //     'developing/tips',
+    //     // 'developing/hardware-back-button',
+    //     // 'developing/keyboard',
+    //     // 'developing/config',
+    //   ],
+    // },
     {
       type: 'category',
       label: 'Layout',
       collapsed: false,
       items: [
-        'layout/structure',
+        'api/layout',
         {
           type: 'link',
-          label: 'Responsive Grid',
+          label: 'Responzívna mriežka',
           href: '/docs/api/grid',
         },
         'layout/global-stylesheets',
@@ -45,18 +43,18 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Theming',
+      label: 'Úprava štýlov',
       collapsed: false,
       items: [
         'theming/basics',
-        'theming/platform-styles',
+        // 'theming/platform-styles',
         'theming/css-variables',
         'theming/css-shadow-parts',
         'theming/colors',
         'theming/themes',
         'theming/dark-mode',
-        'theming/advanced',
-        'theming/color-generator',
+        // 'theming/advanced',
+        // 'theming/color-generator',
       ],
     },
     // {
@@ -158,12 +156,12 @@ module.exports = {
     //     'vue/performance',
     //   ],
     // },
-    {
-      type: 'category',
-      label: 'Utilities',
-      collapsed: false,
-      items: ['utilities/animations', 'utilities/gestures'],
-    },
+    // {
+    //   type: 'category',
+    //   label: 'Utilities',
+    //   collapsed: false,
+    //   items: ['utilities/animations', 'utilities/gestures'],
+    // },
     // {
     //   type: 'category',
     //   label: 'Deployment',
@@ -193,68 +191,50 @@ module.exports = {
     //     'troubleshooting/cors',
     //   ],
     // },
-    {
-      type: 'category',
-      label: 'Core Concepts',
-      collapsed: false,
-      items: [
-        'core-concepts/fundamentals',
-        'core-concepts/cross-platform',
-        'core-concepts/webview',
-        'core-concepts/what-are-progressive-web-apps',
-      ],
-    },
+    // {
+    //   type: 'category',
+    //   label: 'Core Concepts',
+    //   collapsed: false,
+    //   items: [
+    //     'core-concepts/fundamentals',
+    //     'core-concepts/cross-platform',
+    //     'core-concepts/webview',
+    //     'core-concepts/what-are-progressive-web-apps',
+    //   ],
+    // },
     {
       type: 'category',
       label: 'Contributing',
       collapsed: false,
       items: ['contributing/how-to-contribute', 'contributing/coc'],
     },
-    {
-      type: 'category',
-      label: 'Reference',
-      collapsed: false,
-      items: [
-        'reference/glossary',
-        'reference/versioning',
-        'reference/release-notes',
-        {
-          type: 'link',
-          label: 'GitHub Changelog',
-          href: 'https://github.com/ionic-team/ionic/blob/master/CHANGELOG.md',
-        },
-        'reference/support',
-        'reference/browser-support',
-      ],
-    },
+    // {
+    //   type: 'category',
+    //   label: 'Reference',
+    //   collapsed: false,
+    //   items: [
+    //     'reference/glossary',
+    //     'reference/versioning',
+    //     'reference/release-notes',
+    //     {
+    //       type: 'link',
+    //       label: 'GitHub Changelog',
+    //       href: 'https://github.com/ionic-team/ionic/blob/master/CHANGELOG.md',
+    //     },
+    //     'reference/support',
+    //     'reference/browser-support',
+    //   ],
+    // },
   ],
 
   api: [
-    // {
-    //   type: 'category',
-    //   label: 'Getting Started',
-    //   collapsed: false,
-    //   items: ['components'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Action Sheet',
-    //   collapsed: false,
-    //   items: ['api/action-sheet'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Accordion',
-    //   collapsed: false,
-    //   items: ['api/accordion', 'api/accordion-group'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Alert',
-    //   collapsed: false,
-    //   items: ['api/alert'],
-    // },
-        {
+    {
+      type: 'category',
+      label: 'Úvod',
+      collapsed: false,
+      items: ['components'],
+    },
+    {
       type: 'category',
       label: 'Avatar',
       collapsed: false,
@@ -314,30 +294,18 @@ module.exports = {
       collapsed: false,
       items: ['api/copy-button'],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Date & Time Pickers',
-    //   collapsed: false,
-    //   items: ['api/datetime', 'api/datetime-button', 'api/picker'],
-    // },
-      {
-        type: 'category',
-        label: 'Dialog',
-        collapsed: false,
-        items: ['api/dialog'],
-      },
-      {
-        type: 'category',
-        label: 'Dropdown',
-        collapsed: false,
-        items: ['api/dropdown'],
-      },
-    // {
-    //   type: 'category',
-    //   label: 'Floating Action Button',
-    //   collapsed: false,
-    //   items: ['api/fab', 'api/fab-button', 'api/fab-list'],
-    // },
+    {
+      type: 'category',
+      label: 'Dialog',
+      collapsed: false,
+      items: ['api/dialog'],
+    },
+    {
+      type: 'category',
+      label: 'Dropdown',
+      collapsed: false,
+      items: ['api/dropdown'],
+    },
     {
       type: 'category',
       label: 'Grid',
@@ -360,7 +328,7 @@ module.exports = {
       type: 'category',
       label: 'Icon picker TODO',
       collapsed: false,
-      items: ['api/img']
+      items: ['api/icon-picker']
     },
     {
       type: 'category',
@@ -374,12 +342,6 @@ module.exports = {
       collapsed: false,
       items: ['api/img-comparer']
     },
-        // {
-    //   type: 'category',
-    //   label: 'Media',
-    //   collapsed: false,
-    //   items: ['api/avatar', 'api/icon', 'api/img', 'api/thumbnail'],
-    // },
     {
       type: 'category',
       label: 'Input',
@@ -404,36 +366,12 @@ module.exports = {
       collapsed: false,
       items: ['api/list'],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Media',
-    //   collapsed: false,
-    //   items: ['api/avatar', 'api/icon', 'api/img', 'api/thumbnail'],
-    // },
     {
       type: 'category',
       label: 'Menu',
       collapsed: false,
       items: ['api/menu', 'api/menu-item'],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Modal',
-    //   collapsed: false,
-    //   items: ['api/modal', 'api/backdrop'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Navigation',
-    //   collapsed: false,
-    //   items: ['api/nav', 'api/nav-link'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Popover',
-    //   collapsed: false,
-    //   items: ['api/popover'],
-    // },
     {
       type: 'category',
       label: 'Progress Bar',
@@ -446,42 +384,12 @@ module.exports = {
       collapsed: false,
       items: ['api/radio', 'api/radio-group'],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Range',
-    //   collapsed: false,
-    //   items: ['api/range'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Refresher',
-    //   collapsed: false,
-    //   items: ['api/refresher', 'api/refresher-content'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Reorder',
-    //   collapsed: false,
-    //   items: ['api/reorder', 'api/reorder-group'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Routing',
-    //   collapsed: false,
-    //   items: ['api/router', 'api/router-link', 'api/router-outlet', 'api/route', 'api/route-redirect'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Searchbar',
-    //   collapsed: false,
-    //   items: ['api/searchbar'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Segment',
-    //   collapsed: false,
-    //   items: ['api/segment', 'api/segment-button'],
-    // },
+    {
+      type: 'category',
+      label: 'Routovanie',
+      collapsed: false,
+      items: ['api/router', 'api/router-link', 'api/router-outlet', 'api/route'],
+    },
     {
       type: 'category',
       label: 'Select',
@@ -506,36 +414,42 @@ module.exports = {
       collapsed: false,
       items: ['api/tab-group', 'api/tab', 'api/tab-panel' ],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Toast',
-    //   collapsed: false,
-    //   items: ['api/toast'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Toggle',
-    //   collapsed: false,
-    //   items: ['api/toggle'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Toolbar',
-    //   collapsed: false,
-    //   items: ['api/toolbar', 'api/header', 'api/footer', 'api/title', 'api/buttons', 'api/back-button'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Typography',
-    //   collapsed: false,
-    //   items: ['api/text'],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Resources',
-    //   collapsed: false,
-    //   items: ['api'],
-    // },
+    {
+      type: 'category',
+      label: 'Textarea',
+      collapsed: false,
+      items: ['api/textarea' ],
+    },
+    {
+      type: 'category',
+      label: 'Thumbnail',
+      collapsed: false,
+      items: ['api/thumbnail'],
+    },
+    {
+      type: 'category',
+      label: 'Toast TODO',
+      collapsed: false,
+      items: ['api/toast'],
+    },
+    {
+      type: 'category',
+      label: 'Toggle',
+      collapsed: false,
+      items: ['api/toggle'],
+    },
+    {
+      type: 'category',
+      label: 'Tooltip',
+      collapsed: false,
+      items: ['api/tooltip'],
+    },
+    {
+      type: 'category',
+      label: 'Toolbar TODO',
+      collapsed: false,
+      items: ['api/toolbar', 'api/toolbar-actions'],
+    },
   ],
 
   cli: [

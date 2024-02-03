@@ -262,13 +262,6 @@
 /*** Desktops & Laptops ***/
 @media only screen and (min-width: 980px) {
   body {
-    &.ie9.menu-pin {
-      .page-sidebar {
-        transform: none !important;
-        -webkit-transform: none !important;
-        -ms-transform: none !important;
-      }
-    }
     &.menu-pin {
       .header .brand {
         width: 245px;
@@ -305,11 +298,9 @@
         width: $layout-sidepanel-pin-width;
         .sidebar-header .sidebar-header-controls {
           transform: translateX(21px);
-          -webkit-transform: translateX(21px);
         }
         .menu-items .icon-thumbnail {
           transform: translate3d(-14px, 0, 0);
-          -webkit-transform: -webkit-translate3d(-14px, 0, 0);
         }
       }
     }
@@ -345,7 +336,6 @@
       .page-sidebar {
         left: auto;
         transform: none !important;
-        -webkit-transform: none !important;
       }
       .page-container .page-content-wrapper .footer {
         width: auto;

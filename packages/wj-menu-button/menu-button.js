@@ -33,7 +33,6 @@ export class MenuButton extends WJElement {
 
     afterDraw() {
         event.addListener(this, "click", null, (e) => {
-            console.log("click menu button", this.contentId);
             document.querySelector(`#${this.contentId}`).classList.toggle("open");
         });
     }

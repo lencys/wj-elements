@@ -4,8 +4,12 @@
   <meta charset="UTF-8" />
   <title>WJ ELements</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <script type="module" src="./demo/assets/js/demo.js"></script>
-  <link rel="stylesheet" href="./packages/scss/global.scss" />
+  <script type="module" src="./demo/assets/translations/ru.js"></script>
+
+  <link rel="stylesheet" href="packages/themes/light.scss" />
+  <link rel="stylesheet" href="packages/themes/dark.scss" />
   <link rel="stylesheet" href="./demo/assets/css/demo.css" />
   <style>
     body {
@@ -16,6 +20,7 @@
 <body>
   <wj-router outlet="wj-router-outlet">
     <wj-route name="avatar" component="/demo/components/demo-avatar.js"></wj-route>
+    <wj-route name="animation" component="/demo/components/demo-animation.js"></wj-route>
     <wj-route name="badge" component="/demo/components/demo-badge.js"></wj-route>
     <wj-route name="breadcrumb" component="/demo/components/demo-breadcrumb.js"></wj-route>
     <wj-route name="button" component="/demo/components/demo-button.js"></wj-route>
@@ -27,6 +32,9 @@
     <wj-route name="copy-button" component="/demo/components/demo-copy-button.js"></wj-route>
     <wj-route name="dialog" component="/demo/components/demo-dialog.js"></wj-route>
     <wj-route name="dropdown" component="/demo/components/demo-dropdown.js"></wj-route>
+    <wj-route name="file-upload" component="/demo/components/demo-file-upload.js"></wj-route>
+    <wj-route name="file-upload-item" component="/demo/components/demo-file-upload-item.js"></wj-route>
+    <wj-route name="format-digital" component="/demo/components/demo-format-digital.js"></wj-route>
     <wj-route name="grid" component="/demo/components/demo-grid.js"></wj-route>
     <wj-route name="chip" component="/demo/components/demo-chip.js"></wj-route>
     <wj-route name="icons" component="/demo/components/demo-icons.js"></wj-route>
@@ -35,12 +43,16 @@
     <wj-route name="img-comparer" component="/demo/components/demo-img-comparer.js"></wj-route>
     <wj-route name="infinite-scroll" component="/demo/components/demo-infinite-scroll.js"></wj-route>
     <wj-route name="input" component="/demo/components/demo-input.js"></wj-route>
+    <wj-route name="input-file" component="/demo/components/demo-input-file.js"></wj-route>
     <wj-route name="item" component="/demo/components/demo-item.js"></wj-route>
     <wj-route name="layout" component="/demo/components/demo-layout.js"></wj-route>
     <wj-route name="list" component="/demo/components/demo-list.js"></wj-route>
+    <wj-route name="masonry" component="/demo/components/demo-masonry.js"></wj-route>
     <wj-route name="menu" component="/demo/components/demo-menu.js"></wj-route>
     <wj-route name="nav" component="/demo/components/demo-nav.js"></wj-route>
     <wj-route name="radio" component="/demo/components/demo-radio.js"></wj-route>
+    <wj-route name="rate" component="/demo/components/demo-rate.js"></wj-route>
+    <wj-route name="relative-time" component="/demo/components/demo-relative-time.js"></wj-route>
     <wj-route name="popup" component="/demo/components/demo-popup.js"></wj-route>
     <wj-route name="progress-bar" component="/demo/components/demo-progress-bar.js"></wj-route>
     <wj-route name="select" component="/demo/components/demo-select.js"></wj-route>
@@ -62,9 +74,16 @@
 
   <wj-container vertical id="app">
     <wj-header sticky>
+      <wj-img src="./demo/assets/img/logo-light.png" id="logo-light" alt="WJ Elements" class="logo"></wj-img>
+      <wj-img src="./demo/assets/img/logo-dark.png" id="logo-dark" alt="WJ Elements" class="logo"></wj-img>
       <wj-menu-button id="open" content-id="sidebar">
         <wj-button variant="link" stop-propagation="false"><wj-icon name="menu"></wj-icon></wj-button>
       </wj-menu-button>
+
+      <wj-button fill="link" toggle="on" class="dark-light-mode">
+        <wj-icon name="sun" slot="toggle" state="on"></wj-icon>
+        <wj-icon name="moon" slot="toggle" state="off"></wj-icon>
+      </wj-button>
     </wj-header>
     <wj-container>
       <wj-aside id="sidebar" width="240px" top="60px" variant="top-start" fixed>
@@ -73,6 +92,7 @@
         </wj-menu-button>
         <wj-menu id="navigation" variant="nav" active>
           <wj-menu-item><wj-router-link route="avatar">Avatar</wj-router-link></wj-menu-item>
+          <wj-menu-item><wj-router-link route="animation">Animation</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="badge">Badge</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="breadcrumb">Breadcrumb</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="button">Button</wj-router-link></wj-menu-item>
@@ -84,6 +104,9 @@
           <wj-menu-item><wj-router-link route="copy-button">Copy button</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="dialog">Dialog</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="dropdown">Dropdown</wj-router-link></wj-menu-item>
+          <wj-menu-item><wj-router-link route="file-upload">File upload</wj-router-link></wj-menu-item>
+          <wj-menu-item><wj-router-link route="file-upload-item">File upload item</wj-router-link></wj-menu-item>
+          <wj-menu-item><wj-router-link route="format-digital">Format digital</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="grid">Grid</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="chip">Chip</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="icons">Icon</wj-router-link></wj-menu-item>
@@ -92,12 +115,16 @@
           <wj-menu-item><wj-router-link route="img-comparer">Image comparer</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="infinite-scroll">Infinite scroll</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="input">Input</wj-router-link></wj-menu-item>
+          <wj-menu-item><wj-router-link route="input-file">Input file</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="item">Item</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="layout">Layout</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="list">List</wj-router-link></wj-menu-item>
+          <wj-menu-item><wj-router-link route="masonry">Masonry</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="menu">Menu</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="nav">Nav</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="radio">Radio</wj-router-link></wj-menu-item>
+          <wj-menu-item><wj-router-link route="rate">Rate</wj-router-link></wj-menu-item>
+          <wj-menu-item><wj-router-link route="relative-time">Relative time</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="progress-bar">Progress bar</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="select">Select</wj-router-link></wj-menu-item>
           <wj-menu-item><wj-router-link route="slider">Slider</wj-router-link></wj-menu-item>

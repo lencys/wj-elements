@@ -19,7 +19,7 @@ template.innerHTML = `<h1>Textarea</h1>
     <h2>Standard</h2>
     <div class="playground" style="display: block;">
       <div class="content" style="display: block;">
-        <wj-textarea label="Label" name="dog" rows="4" variant="standard"></wj-textarea>
+        <wj-textarea label="Label" name="dog"  variant="standard"></wj-textarea>
       </div>
     </div>
     

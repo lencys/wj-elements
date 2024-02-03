@@ -47,9 +47,9 @@ html[data-theme='light'] {
   --token-primary-bg-c: #fff;
   --token-secondary-bg-c: #fff;
 
-  --ifm-link-color: var(--c-blue-90);
+  --ifm-link-color: #6E16BF;
   //rgb value is c-blue-90
-  --ifm-link-hover-color: rgba(27, 109, 255, 0.8);
+  --ifm-link-hover-color: #AE40FD;
 
   --ifm-background-surface-color: var(--token-primary-bg-c);
 
@@ -67,9 +67,9 @@ html[data-theme='dark'] {
   --token-primary-bg-c: #272b35;
   --token-secondary-bg-c: #13171c;
 
-  --ifm-link-color: var(--c-blue-70);
+  --ifm-link-color: #AE40FD;
   //rgb value is c-blue-70
-  --ifm-link-hover-color: rgba(77, 141, 255, 0.8);
+  --ifm-link-hover-color: #6E16BF;
 
   --ifm-background-surface-color: var(--token-primary-bg-c);
 
@@ -103,9 +103,26 @@ html {
 
 a {
   text-decoration: none;
+  color: var(--ifm-link-color);
 
   &:hover {
     text-decoration: none;
+    color: var(--ifm-link-hover-color);
+  }
+}
+ul.table-of-contents {
+  a {
+    
+    &:hover {
+      color: var(--ifm-link-hover-color)!important;
+    }
+    &.table-of-contents__link--active {
+      color: var(--ifm-link-color)!important;
+      
+      &:hover {
+        color: var(--ifm-link-hover-color)!important;
+      }
+    }
   }
 }
 
@@ -189,4 +206,3 @@ iframe {
   align-items: center;
   justify-content: center;
 }
-

@@ -72,7 +72,7 @@ template.innerHTML = `<h1>Progress bar</h1>
     <h2>Progress bar with image</h2>
     <div class="playground">
       <div class="content">
-        <wj-progress-bar progress="60" radius="20" stroke="3" color="danger" type="circle">
+        <wj-progress-bar progress="60" radius="20" stroke="3" color="danger" type="circle" class="example">
           <wj-thumbnail>
             <img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg" />
           </wj-thumbnail>
@@ -81,6 +81,11 @@ template.innerHTML = `<h1>Progress bar</h1>
               --wj-border-radius: 50%;
               --wj-thumbnail-width: 38px;
               --wj-thumbnail-height: 38px;
+            }
+            
+            wj-progress-bar.example {
+              --wj-progress-bar-text-color: #fff !important;
+              font-weight: bold;
             }
           </style>
         </wj-progress-bar>
@@ -123,6 +128,22 @@ template.innerHTML = `<h1>Progress bar</h1>
 export default class DemoProgressBar extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    let currentNumber = 0;
+    const totalTime = 20000; // Celkový čas v milisekundách (20s)
+    const intervalTime = totalTime / 100; // Časový interval pre každé číslo
+
+    const interval = setInterval(() => {
+      currentNumber++;
+
+      this.querySelector(".example").setAttribute("progress", currentNumber);
+      if (currentNumber >= 100) {
+        clearInterval(interval);
+      }
+    }, intervalTime);
+
   }
 }
 

@@ -3,11 +3,11 @@ var c = (s, e, t) => e in s ? d(s, e, { enumerable: !0, configurable: !0, writab
 var r = (s, e, t) => (c(s, typeof e != "symbol" ? e + "" : e, t), t);
 import u, { event as p } from "./wj-element.js";
 import "./wj-store.js";
-const h = `/*!
+const m = `/*!
 * direction.scss
 */:host{--arrow-size: 7px;--arrow-color: #000000}.native-tooltip{display:block;padding:.5rem;color:#fff;background-color:var(--arrow-color);font-weight:400;font-size:.75rem!important;border-radius:4px;line-height:1;box-sizing:border-box;box-shadow:0 1px 8px #00000080}.arrow{position:absolute;width:10px;height:10px;background:black;transform:rotate(45deg)}
 `;
-class m extends u {
+class h extends u {
   constructor() {
     super();
     r(this, "className", "Tooltip");
@@ -19,7 +19,7 @@ class m extends u {
     });
   }
   static get cssStyleSheet() {
-    return h;
+    return m;
   }
   static get observedAttributes() {
     return ["active", "content"];
@@ -35,14 +35,14 @@ class m extends u {
     let i = document.createElement("div");
     i.classList.add("arrow"), i.setAttribute("slot", "arrow");
     let a = document.createElement("div");
-    return a.classList.add("native-tooltip"), a.innerHTML = this.content, o.appendChild(n), o.appendChild(i), o.appendChild(a), this.slot = n, this.popup = o, l.appendChild(o), l;
+    return a.classList.add("native-tooltip"), a.innerHTML = this.content, o.appendChild(n), o.appendChild(i), o.appendChild(a), this.mySlot = n, this.popup = o, l.appendChild(o), l;
   }
   afterDraw() {
-    let t = this.slot.assignedElements()[0];
-    console.log(t), p.addListener(t, "mouseenter", null, this.onShow), p.addListener(t, "mouseleave", null, this.onHide);
+    let t = this.mySlot.assignedElements()[0];
+    t && (p.addListener(t, "mouseenter", null, this.onShow), p.addListener(t, "mouseleave", null, this.onHide));
   }
 }
-customElements.get("wj-tooltip") || window.customElements.define("wj-tooltip", m);
+customElements.get("wj-tooltip") || window.customElements.define("wj-tooltip", h);
 export {
-  m as Tooltip
+  h as Tooltip
 };

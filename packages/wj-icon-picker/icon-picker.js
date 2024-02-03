@@ -136,8 +136,6 @@ export class IconPicker extends WJElement {
 
 
         this.addEventListener("wj-infinite-scroll:click-item", (e) => {
-
-            console.log("A");
             const icon = e.detail.context.querySelector("wj-icon");
             const name = icon.getAttribute("name");
             const object = this.tags.find(i => i.name === name);

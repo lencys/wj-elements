@@ -8,17 +8,17 @@ const VERSIONS_JSON = [];
 const BASE_URL = '/docs';
 
 module.exports = {
-  title: 'Dokumentácia WebJET Elementov',
+  title: 'Dokumentácia WebJET Elements',
   tagline:
-    'Ionic is the app platform for web developers. Build amazing mobile, web, and desktop apps all with one shared code base and open web standards',
+    'WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania využívajúca silu web komponentov, ktorá je určená na zjednodušenie vývoja webových aplikácií.',
   url: 'https://elements.webjet.sk',
   baseUrl: `${BASE_URL}/`,
   i18n: {
     defaultLocale: 'sk',
-    locales: ['sk', 'en'],
+    locales: ['sk'],
     localeConfigs: {
       sk: { label: 'Slovensky' },
-      en: { label: 'English' },
+      // en: { label: 'English' },
       // ja: { label: '日本語' },
     },
   },
@@ -123,16 +123,16 @@ module.exports = {
         height: 28,
       },
       items: [
-        // {
-        //   type: 'doc',
-        //   docId: 'index',
-        //   label: 'Guide',
-        //   position: 'left',
-        // },
+        {
+          type: 'doc',
+          docId: 'index',
+          label: 'Príručka',
+          position: 'left',
+        },
         {
           type: 'doc',
           docId: 'components',
-          label: 'Components',
+          label: 'Komponenty',
           position: 'left',
         },
         // {
@@ -154,17 +154,17 @@ module.exports = {
         //   position: 'left',
         //   className: 'cta',
         // },
-        {
-          type: 'docsVersionDropdown',
-          position: 'right',
-          dropdownItemsAfter: [
-            { to: '/docs', label: 'v1' }
-            // { to: 'https://ionicframework.com/docs/v4/components', label: 'v4', target: '_blank' },
-            // { to: 'https://ionicframework.com/docs/v3/', label: 'v3', target: '_blank' },
-          ],
-          dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
-          dropdownActiveClassDisabled: false,
-        },
+        // {
+        //   type: 'docsVersionDropdown',
+        //   position: 'right',
+        //   dropdownItemsAfter: [
+        //     { to: '/docs', label: 'v1' }
+        //     // { to: 'https://ionicframework.com/docs/v4/components', label: 'v4', target: '_blank' },
+        //     // { to: 'https://ionicframework.com/docs/v3/', label: 'v3', target: '_blank' },
+        //   ],
+        //   // dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
+        //   dropdownActiveClassDisabled: false,
+        // },
         {
           type: 'search',
           position: 'right',
@@ -258,7 +258,7 @@ module.exports = {
         //   target: '_blank',
         // },
         {
-          href: 'https://github.com/ionic-team/ionic-framework',
+          href: 'https://github.com/lencys/wj-elements',
           position: 'right',
           className: 'icon-link icon-link-mask icon-link-github',
           'aria-label': 'GitHub repository',

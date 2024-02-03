@@ -1,13 +1,12 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Img ]
+[ WJ Img ]
 */
 
 img {
   display: block;
-  width: 100%;
+  width: var(--wj-img-width, 100%);
+  height: var(--wj-img-height, auto);
   max-width: 100%;
   object-fit: inherit;
-  object-position: inherit;
+  border-radius: var(--wj-img-border-radius, 0);
 }

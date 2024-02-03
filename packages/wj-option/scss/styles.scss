@@ -1,13 +1,11 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Option ]
+[ WJ Option ]
 */
 
 :host {
   --wj-option-padding-top: .5rem;
   --wj-option-padding-bottom: .5rem;
-  --wj-option-highlighted: #f4f4f4;
+  --wj-option-highlighted: var(--wj-color-contrast-3);
   display: block;
   wj-icon {
     visibility: hidden;

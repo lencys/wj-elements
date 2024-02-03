@@ -48,14 +48,12 @@ export class TabGroup extends WJElement {
     }
 
     afterDraw() {
-        console.log(this.context.querySelectorAll('[active]'));
         let activeTab = this.getActiveTab();
         let activeTabName = (activeTab) ? activeTab[0].name : this.getTabAll()[0].panel;
-        console.log("NAME:", activeTab, activeTabName, this.getTabAll());
+
         this.setActiveTab(activeTabName);
 
         this.addEventListener("wj:tab-change", (e) => {
-            console.log("TAB CHANGE", e.detail.context.hasAttribute("disabled"));
             if(e.detail.context.hasAttribute("disabled"))
                 return false;
 

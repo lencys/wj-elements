@@ -1,49 +1,29 @@
-@import "../../scss/themes/net-basic/important.scss";
-
 /*
-[ Aside ]
+[ WJ Carousel Item ]
 */
 
 :host {
-    --wj-aside-width: "100px";
-    --wj-aside-top: 0;
-    --wj-aside-border-color: var(--wj-border-color);
-    --wj-aside-border-width: 0 1px 0 0;
-    --wj-aside-border-style: solid;
-    box-sizing: border-box;
-    flex-shrink: 0;
-    overflow: auto;
-    border-color: var(--wj-aside-border-color);
-    border-width: var(--wj-aside-border-width);
-    border-style: var(--wj-aside-border-style);
+    --aspect-ratio: inherit;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: var(--wj-carousel-size, 100%);
+    max-height: 100%;
+    aspect-ratio: var(--aspect-ratio);
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
 }
 
-:host(.open) {
-    display: block !important;
+.native-carousel-item {
+    width: 100%;
+    height: 100%;
+    display: flex;
 }
-
-@media (min-width: 768px) {
-    :host([fixed]) {
-        position: fixed;
-        width: var(--wj-aside-width);
-        top: var(--wj-aside-top);
-        height: calc(100% - var(--wj-aside-top));
-    }
+::slotted(wj-img) {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+    display: flex;
 }
-
-@media (max-width: 768px) {
-    :host {
-        display: none;
-    }
-
-    :host([variant=top-start]) {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 80%;
-        height: 100%;
-        z-index: 9999;
-        background-color: #fff;
-    }
-}
-

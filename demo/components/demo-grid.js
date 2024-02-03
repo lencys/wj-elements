@@ -7,9 +7,10 @@ template.innerHTML = `<h1>Grid</h1>
     <style>
       wj-col {
         background-color: #7252D3;
-        border: solid 1px #fff;
+        /*border: 1px solid #fff;*/
         color: #fff;
         text-align: center;
+        /*box-sizing: border-box;*/
       }
       wj-col[size="auto"], wj-col[size], wj-col[offset]  {
         background-color: #19AD79;

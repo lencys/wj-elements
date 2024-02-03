@@ -50,8 +50,9 @@ export class Icon extends WJElement {
                 if (entry.isIntersecting) {
                     getSvgContent(this.url).then((svgContent) => {
                         this.element.innerHTML = iconContent.get(this.url);
+                        this.element.querySelector("svg").setAttribute("part", "svg");
                     });
-                    // entry.target.name = this.src;
+
                     this.classList.remove("lazy");
                     lazyImageObserver.unobserve(entry.target);
                 }
