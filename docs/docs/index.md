@@ -9,7 +9,6 @@ demoSourceUrl: https://github.com/ionic-team/docs-demo
 
 import DocsCard from '@components/global/DocsCard';
 import DocsCards from '@components/global/DocsCards';
-import { Card, CardHeader, Icon } from 'https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/wj-master.js';
 
 <head>
   <title>Moderná sada nástrojov používateľského rozhrania založená na web komponentoch</title>
@@ -27,6 +26,7 @@ import { Card, CardHeader, Icon } from 'https://cdn.jsdelivr.net/gh/lencys/wj-el
       display: flex;
     }
   `}</style>
+  <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/wj-master.js"></script>
 </head>
 
 WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania využívajúca silu web komponentov, ktorá je určená na zjednodušenie vývoja webových aplikácií. Poskytuje kolekciu zapúzdrených a opakovane použiteľných elementov, ktoré môžu výrazne zvýšiť efektivitu a udržiavateľnosť projektov vývoja webových stránok.
@@ -50,7 +50,7 @@ Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/cli.md)
     </wj-card>
   </a>
 
- <a href="/docs/components">
+ <a href="/components">
   <wj-card>
     <wj-card-header>
         <wj-icon name="layout-dashboard" size="large"></wj-icon>
@@ -62,7 +62,7 @@ Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/cli.md)
   </wj-card>
 </a>
 
- <a href="/docs/api/layout">
+ <a href="/api/layout">
   <wj-card>
     <wj-card-header>
       <wj-icon name="layout" size="large"></wj-icon>
@@ -74,7 +74,7 @@ Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/cli.md)
   </wj-card>
 </a>
 
- <a href="/docs/theming/basics">
+ <a href="/theming/basics">
   <wj-card>
     <wj-card-header>
         <wj-icon name="brush" size="large"></wj-icon>
@@ -85,8 +85,6 @@ Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/cli.md)
     </wj-card-content>
   </wj-card>
 </a>
-
-  
 </DocsCards>
 
 
@@ -97,23 +95,23 @@ WebJET Elements je pokročilá platforma na vytváranie a nasadzovanie modernýc
 Kľúčové vlastnosti rámca WebJET Elements Framework:
 
 ### Komplexná sada nástrojov používateľského rozhrania
- WebJET Elements obsahuje širokú škálu ovládacích prvkov a komponentov používateľského rozhrania, ktoré sú optimalizované pre webové rozhrania. Tieto komponenty pokrývajú rôzne funkcie a sú navrhnuté tak, aby sa dali ľahko integrovať do akejkoľvek webovej aplikácie.
+WebJET Elements obsahuje širokú škálu ovládacích prvkov a komponentov používateľského rozhrania, ktoré sú optimalizované pre webové rozhrania. Tieto komponenty pokrývajú rôzne funkcie a sú navrhnuté tak, aby sa dali ľahko integrovať do akejkoľvek webovej aplikácie.
 
 ### Integrácia s populárnymi frameworkami
- Framework podporuje bezproblémovú integráciu s modernými webovými technológiami [React](react.md) a [Vue](vue/overview.md), čím zabezpečuje kompatibilitu a flexibilitu pri vývoji.
+Framework podporuje bezproblémovú integráciu s modernými webovými technológiami [React](react.md) a [Vue](vue/overview.md), čím zabezpečuje kompatibilitu a flexibilitu pri vývoji.
 
 ### Stabilný a nezávislý
 
 WebJET Elements je postavený na spoľahlivých štandardizovaných webových technológiách W3C a využíva moderné webové rozhrania API, ako sú Custom Elements a Shadow DOM. Vďaka tomu majú komponenty stabilné rozhranie API a nie sú závislé od rozmaru dodávateľa platformy či knižníc tretích strán.
 
 ### Využívanie Shadow DOM
- WebJET Elements využíva Shadow DOM a zabezpečuje zapuzdrenie štýlu a správania svojich komponentov, čím podporuje čistejšiu a lepšie udržiavateľnú kódovú základňu.
+WebJET Elements využíva Shadow DOM a zabezpečuje zapuzdrenie štýlu a správania svojich komponentov, čím podporuje čistejšiu a lepšie udržiavateľnú kódovú základňu.
 
 ### Prispôsobenie a flexibilita
- Framework ponúka rozsiahle možnosti prispôsobenia prostredníctvom vlastných vlastností CSS, slotov a shadow parts, čo umožňuje vývojárom prispôsobiť komponenty konkrétnym potrebám.
+Framework ponúka rozsiahle možnosti prispôsobenia prostredníctvom vlastných vlastností CSS, slotov a shadow parts, čo umožňuje vývojárom prispôsobiť komponenty konkrétnym potrebám.
 
 ### Optimalizovaný pre výkon
- Optimalizovaný pre výkon, framework zabezpečuje, že komponenty sú nielen funkčné, ale aj efektívne, čo prispieva k plynulejšiemu používateľskému zážitku.
+Optimalizovaný pre výkon, framework zabezpečuje, že komponenty sú nielen funkčné, ale aj efektívne, čo prispieva k plynulejšiemu používateľskému zážitku.
 
 
 **V dokumentácii WebJET Elements nájdete podrobné príklady, ktoré vám pomôžu rýchlo a efektívne vytvárať výnimočné webové aplikácie.**

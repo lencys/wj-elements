@@ -3,7 +3,7 @@ title: Základy úpravy štýlov
 sidebar_label: Základy
 ---
 
-import ColorPalette from '@components/page/theming/ColorPalette';
+[//]: # (import ColorPalette from '@components/page/theming/ColorPalette';)
 
 <head>
   <title>Úpravy štýlov | Základné definície úprav farieb a šablón</title>
@@ -19,7 +19,7 @@ Elements Framework ponúka rozsiahle možnosti prispôsobenia štýlov predovše
 
 Farebná paleta Elements sa skladá zo 7 predvolených farieb, ktoré si je možné jednoducho upraviť. Paleta je navrhnutá tak aby spĺňala aktuálne trendy a zároveň zabezpečovala prístupnosť. Používatelia si môžu prispôsobiť jej farby pomocou CSS premenných, čo im umožňuje zmeniť predvolené farby alebo pridať vlastné.
 
-<ColorPalette />
+[//]: # (<ColorPalette />)
 
 
 //Neutral color shades 

@@ -31,7 +31,7 @@ module.exports = {
         'theming/css-shadow-parts',
         'theming/colors',
         'theming/themes',
-        'theming/dark-mode',
+        // 'theming/dark-mode',
       ],
     },
     {

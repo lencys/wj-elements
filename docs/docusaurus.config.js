@@ -60,11 +60,6 @@ module.exports = {
             },
           },
         },
-        // Will be passed to @docusaurus/plugin-google-tag-manager.
-        googleTagManager: {
-          containerId: 'GTM-TKMGCBC',
-        },
-        // Will be passed to @docusaurus/theme-classic.
         theme: {
           customCss: [
             require.resolve('./node_modules/modern-normalize/modern-normalize.css'),
