@@ -1,11 +1,9 @@
 var h = Object.defineProperty;
 var b = (o, a, e) => a in o ? h(o, a, { enumerable: !0, configurable: !0, writable: !0, value: e }) : o[a] = e;
 var p = (o, a, e) => (b(o, typeof a != "symbol" ? a + "" : a, e), e);
-import w, { WjElementUtils as l, event as g } from "./wj-element.js";
+import w, { WjElementUtils as l, event as j } from "./wj-element.js";
 import "./wj-store.js";
-const j = `/*!
-* direction.scss
-*/:host{--wj-breadcrumb-a: rgba(33, 33, 33, .81);--wj-breadcrumb-a-hover: rgba(33, 33, 33, .62);display:flex;flex:0 0 auto;align-items:center;line-height:1.5}:host(.collapsed){display:none}.native-breadcrumb{display:flex;align-items:center;width:100%;outline:none;background:inherit;padding:.25rem .75rem;color:var(--wj-breadcrumb-a);text-decoration:none}.native-breadcrumb.hidden{display:none}.native-breadcrumb.active{font-weight:700}.native-breadcrumb:hover{color:var(--wj-breadcrumb-a-hover)}button{margin-inline:.75rem;border:0 solid transparent;border-radius:3px;background-color:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer}.separator{display:inline-flex;align-items:center}::slotted([slot=start]){margin-inline:0 .5rem}::slotted([slot=end]){margin-inline:.5rem 0}
+const g = `:host{--wj-breadcrumb-a: var(--wj-color-contrast-high);--wj-breadcrumb-a-hover: var(--wj-color-contrast-medium);display:flex;flex:0 0 auto;align-items:center;line-height:1.5}:host(.collapsed){display:none}.native-breadcrumb{display:flex;align-items:center;width:100%;outline:none;background:inherit;padding:.25rem .75rem;color:var(--wj-breadcrumb-a);text-decoration:none}.native-breadcrumb.hidden{display:none}.native-breadcrumb.active{font-weight:700}.native-breadcrumb:hover{color:var(--wj-breadcrumb-a-hover)}button{margin-inline:.75rem;border:0 solid transparent;border-radius:3px;background-color:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer}.separator{display:inline-flex;align-items:center}::slotted([slot=start]){margin-inline:0 .5rem}::slotted([slot=end]){margin-inline:.5rem 0}
 `;
 class v extends w {
   constructor() {
@@ -27,7 +25,7 @@ class v extends w {
     this._collapsedVariant = e || this.parentElement.collapsedVariant;
   }
   static get cssStyleSheet() {
-    return j;
+    return g;
   }
   static get observedAttributes() {
     return ["show-collapsed-indicator", "collapsed", "last"];
@@ -60,26 +58,24 @@ class v extends w {
     return this.collapsedVariant === "DROPDOWN" ? e = this.collapseDropdown() : e = this.collapseButton(), e;
   }
   collapseDropdown() {
-    console.log("DROPDOWN");
     let e = document.createElement("wj-dropdown");
     e.setAttribute("placement", "bottom"), e.setAttribute("offset", "10");
     let r = document.createElement("wj-button");
-    r.setAttribute("slot", "trigger"), r.setAttribute("variant", "link"), r.innerHTML = '<wj-icon name="dots"></wj-icon>';
+    r.setAttribute("slot", "trigger"), r.setAttribute("fill", "link"), r.innerHTML = '<wj-icon name="dots"></wj-icon>';
     let t = document.createElement("wj-menu");
-    return t.setAttribute("variant", "context"), e.appendChild(r), e.appendChild(t), e.innerHTML = `<wj-button slot="trigger" variant="link">
+    return t.setAttribute("variant", "context"), e.appendChild(r), e.appendChild(t), e.innerHTML = `<wj-button slot="trigger" fill="link">
             <wj-icon name="dots"></wj-icon>
         </wj-button>
         <wj-menu variant="context">
-            <wj-menu-item>Tralala</wj-menu-item>
+            <wj-menu-item>Test 0</wj-menu-item>
             <wj-menu-item>Test 1</wj-menu-item>
             <wj-menu-item>Test 2</wj-menu-item>
         </wj-menu>`, this.parentElement.querySelectorAll("wj-breadcrumb").forEach((s) => {
-      console.log(s);
     }), e;
   }
   collapseButton() {
     let e = document.createElement("button");
-    return e.setAttribute("aria-label", "Show more breadcrumbs"), e.setAttribute("part", "collapsed-indicator"), e.innerHTML = '<wj-icon name="dots"></wj-icon>', g.addListener(e, "click", null, (r) => {
+    return e.setAttribute("aria-label", "Show more breadcrumbs"), e.setAttribute("part", "collapsed-indicator"), e.innerHTML = '<wj-icon name="dots"></wj-icon>', j.addListener(e, "click", null, (r) => {
       this.native.classList.remove("hidden"), e.remove(), this.parentElement.querySelectorAll("wj-breadcrumb").forEach((t) => {
         t.classList.remove("collapsed");
       }), r.stopPropagation();

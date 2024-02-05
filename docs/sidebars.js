@@ -173,7 +173,7 @@ module.exports = {
       type: 'category',
       label: 'Layout',
       collapsed: false,
-      items: ['api/layout', 'api/aside', 'api/main', 'api/container','api/footer', 'api/header'],
+      items: ['api/layout', 'api/aside', 'api/main', 'api/container'],//,'api/footer', 'api/header'
     },
     {
       type: 'category',
@@ -241,12 +241,12 @@ module.exports = {
       collapsed: false,
       items: ['api/thumbnail'],
     },
-    {
-      type: 'category',
-      label: 'Toast TODO',
-      collapsed: false,
-      items: ['api/toast'],
-    },
+    // {
+    //   type: 'category',
+    //   label: 'Toast TODO',
+    //   collapsed: false,
+    //   items: ['api/toast'],
+    // },
     {
       type: 'category',
       label: 'Toggle',

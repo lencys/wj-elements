@@ -5,13 +5,4 @@ import react from './react.md';
 import vue from './vue.md';
 
 
-<Playground
-  version="7"
-  code={{
-    javascript,
-    react,
-    vue
-  }}
-  src="usage/v1/grid/size-auto/demo.html"
-  size="200px"
-/>
+<Playground version="7" code={{ javascript, react, vue }} src="usage/v1/grid/size-auto/demo.html" size="200px" />

@@ -27,9 +27,7 @@ function u(o) {
   const t = f(o);
   return e.appendChild(t), l(t), e.removeChild(t), Promise.resolve();
 }
-const b = `/*!
-* direction.scss
-*/:host{cursor:pointer;padding:.5rem}
+const b = `:host{cursor:pointer;padding:.5rem}
 `;
 class y extends h {
   constructor() {

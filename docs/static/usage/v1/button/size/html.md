@@ -1,6 +1,6 @@
 ```html
 
-<div class="playground">
+<div class="container">
   <div class="content">
     <wj-button size="small">Small</wj-button>
     <wj-button size="default">Default</wj-button>

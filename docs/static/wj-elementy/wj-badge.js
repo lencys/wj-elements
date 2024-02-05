@@ -1,31 +1,31 @@
-var n = Object.defineProperty;
-var c = (t, o, r) => o in t ? n(t, o, { enumerable: !0, configurable: !0, writable: !0, value: r }) : t[o] = r;
-var s = (t, o, r) => (c(t, typeof o != "symbol" ? o + "" : o, r), r);
-import l from "./wj-element.js";
+var e = Object.defineProperty;
+var l = (r, o, t) => o in r ? e(r, o, { enumerable: !0, configurable: !0, writable: !0, value: t }) : r[o] = t;
+var c = (r, o, t) => (l(r, typeof o != "symbol" ? o + "" : o, t), t);
+import n from "./wj-element.js";
 import "./wj-store.js";
-const i = `/*!
+const w = `/*!
 * direction.scss
-*/:host(.wj-color-primary){--wj-color-base: #7252D3 !important;--wj-color-contrast: #fff !important}:host(.wj-color-complete){--wj-color-base: #0072EC !important;--wj-color-contrast: #fff !important}:host(.wj-color-success){--wj-color-base: #19AD79 !important;--wj-color-contrast: #fff !important}:host(.wj-color-warning){--wj-color-base: #FFd945 !important;--wj-color-contrast: #4b4b4b !important}:host(.wj-color-danger){--wj-color-base: #D83C31 !important;--wj-color-contrast: #fff !important}:host(.wj-color-info){--wj-color-base: #3B4752 !important;--wj-color-contrast: #fff !important}:host(.wj-color-menu){--wj-color-base: #f4f4f4 !important;--wj-color-contrast: #4b4b4b !important}:host{--wj-chip-border-radius: 100px;text-shadow:none;font-family:Inter UI,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:600;background-color:#e0e0e0;font-size:11px;padding-left:6px;padding-right:6px;color:#4b4b4b;border-radius:10px}:host(.wj-color){background-color:var(--wj-color-base, red);color:var(--wj-color-contrast)}
+*/:host(.wj-color-primary){--wj-color-base: var(--wj-color-primary) !important;--wj-color-contrast: var(--wj-color-contrast-lowest) !important}:host(.wj-color-complete){--wj-color-base: var(--wj-color-complete) !important;--wj-color-contrast: var(--wj-color-contrast-lowest) !important}:host(.wj-color-success){--wj-color-base: var(--wj-color-success) !important;--wj-color-contrast: var(--wj-color-contrast-lowest) !important}:host(.wj-color-warning){--wj-color-base: var(--wj-color-warning) !important;--wj-color-contrast: var(--wj-color-contrast-high) !important}:host(.wj-color-danger){--wj-color-base: var(--wj-color-danger) !important;--wj-color-contrast: var(--wj-color-contrast-lowest) !important}:host(.wj-color-info){--wj-color-base: var(--wj-color-info) !important;--wj-color-contrast: var(--wj-color-contrast-lowest) !important}:host(.wj-color-menu){--wj-color-base: var(--wj-color-contrast-lower) !important;--wj-color-contrast: var(--wj-color-contrast-high) !important}:host{--wj-chip-border-radius: 100px;text-shadow:none;font-family:var(--wj-font-family);font-weight:600;background-color:var(--wj-color-contrast-low);font-size:11px;padding-left:6px;padding-right:6px;color:var(--wj-color-contrast-high);border-radius:10px}:host(.wj-color){background-color:var(--wj-color-base, red);color:var(--wj-color-contrast)}
 `;
-class m extends l {
+class i extends n {
   constructor() {
     super();
-    s(this, "className", "Badge");
+    c(this, "className", "Badge");
   }
   static get cssStyleSheet() {
-    return i;
+    return w;
   }
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(r, w, p) {
-    let e = document.createDocumentFragment(), a = document.createElement("slot");
-    return this.color && this.classList.add("wj-color-" + this.color, "wj-color"), e.appendChild(a), e;
+  draw(t, j, m) {
+    let a = document.createDocumentFragment(), s = document.createElement("slot");
+    return this.color && this.classList.add("wj-color-" + this.color, "wj-color"), a.appendChild(s), a;
   }
 }
-let b = "true";
-customElements.get("wj-badge") || window.customElements.define("wj-badge", m);
+let g = "true";
+customElements.get("wj-badge") || window.customElements.define("wj-badge", i);
 export {
-  m as Badge,
-  b as __esModule
+  i as Badge,
+  g as __esModule
 };

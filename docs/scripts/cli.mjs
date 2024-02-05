@@ -18,18 +18,18 @@ const commandToKebab = (str) =>
 })();
 
 function writePage(page) {
-  const data = [
-    renderFrontmatter(page),
-    renderIntro(page),
-    renderInputs(page),
-    renderOptions(page),
-    renderAdvancedOptions(page),
-    renderExamples(page),
-  ].join('');
-
-  const path = `cli/commands/${commandToKebab(page.name)}.md`;
-  writeFileSync(`docs/${path}`, data);
-  writeFileSync(`versioned_docs/version-v6/${path}`, data);
+  // const data = [
+  //   renderFrontmatter(page),
+  //   renderIntro(page),
+  //   renderInputs(page),
+  //   renderOptions(page),
+  //   renderAdvancedOptions(page),
+  //   renderExamples(page),
+  // ].join('');
+  //
+  // const path = `cli/commands/${commandToKebab(page.name)}.md`;
+  // writeFileSync(`docs/${path}`, data);
+  // writeFileSync(`versioned_docs/version-v6/${path}`, data);
 }
 
 function renderFrontmatter({ name, groups }) {

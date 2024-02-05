@@ -15,7 +15,7 @@ export default function AppWizard(props) {
       </div>
       <div>
         <a href="https://ionicframework.com/start" className="wizard-button">
-          Open Wizard <ion-icon name="arrow-forward-outline" />
+          Open Wizard{/* <ion-icon name="arrow-forward-outline" />*/}
         </a>
       </div>
     </div>

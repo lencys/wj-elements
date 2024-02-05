@@ -3,9 +3,7 @@ var a = (e, t, s) => t in e ? o(e, t, { enumerable: !0, configurable: !0, writab
 var n = (e, t, s) => (a(e, typeof t != "symbol" ? t + "" : t, s), s);
 import l from "./wj-element.js";
 import "./wj-store.js";
-const d = `/*!
-* direction.scss
-*/:host{--wj-list-inset-padding: 1rem;--wj-list-border-radius: 8px;--wj-list-background: #fff;margin:0;padding:0;display:block;contain:content;list-style-type:none}:host(.wj-inset){background:var(--wj-list-background);transform:translateZ(0);overflow:hidden;padding:var(--wj-list-inset-padding);border-radius:var(--wj-list-border-radius)}:host(.wj-lines-none) ::slotted(wj-item){--wj-border-width: 0 !important}
+const d = `:host{--wj-list-inset-padding: 1rem;--wj-list-border-radius: 8px;--wj-list-background: var(--wj-background);margin:0;padding:0;display:block;contain:content;list-style-type:none}:host(.wj-inset){background:var(--wj-list-background);transform:translateZ(0);overflow:hidden;padding:var(--wj-list-inset-padding);border-radius:var(--wj-list-border-radius)}:host(.wj-lines-none) ::slotted(wj-item){--wj-border-width: 0 !important}
 `;
 class c extends l {
   constructor() {

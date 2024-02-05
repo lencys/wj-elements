@@ -3,17 +3,15 @@ var c = (e, t, s) => t in e ? m(e, t, { enumerable: !0, configurable: !0, writab
 var o = (e, t, s) => (c(e, typeof t != "symbol" ? t + "" : t, s), s);
 import a from "./wj-element.js";
 import "./wj-store.js";
-const i = `/*!
-* direction.scss
-*/:host{width:100%}
+const l = `:host{width:100%}
 `;
-class l extends a {
+class u extends a {
   constructor() {
     super();
     o(this, "className", "Form");
   }
   static get cssStyleSheet() {
-    return i;
+    return l;
   }
   static get observedAttributes() {
     return [];
@@ -21,12 +19,12 @@ class l extends a {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(s, u, d) {
+  draw(s, i, d) {
     let r = document.createDocumentFragment(), n = document.createElement("slot");
     return r.appendChild(n), r;
   }
 }
-customElements.get("wj-form") || window.customElements.define("wj-form", l);
+customElements.get("wj-form") || window.customElements.define("wj-form", u);
 export {
-  l as Form
+  u as Form
 };

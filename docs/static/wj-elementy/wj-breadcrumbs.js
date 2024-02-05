@@ -1,16 +1,14 @@
-var n = Object.defineProperty;
-var u = (r, t, e) => t in r ? n(r, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[t] = e;
-var i = (r, t, e) => (u(r, typeof t != "symbol" ? t + "" : t, e), e);
+var i = Object.defineProperty;
+var n = (r, t, e) => t in r ? i(r, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[t] = e;
+var u = (r, t, e) => (n(r, typeof t != "symbol" ? t + "" : t, e), e);
 import d from "./wj-element.js";
 import "./wj-store.js";
-const p = `/*!
-* direction.scss
-*/:host{display:flex;flex-wrap:wrap;align-items:center}
+const p = `:host{display:flex;flex-wrap:wrap;align-items:center}
 `;
 class b extends d {
   constructor() {
     super();
-    i(this, "className", "Breadcrumbs");
+    u(this, "className", "Breadcrumbs");
     this.last = !1;
   }
   static get cssStyleSheet() {

@@ -1,23 +1,21 @@
 var u = Object.defineProperty;
 var m = (l, r, t) => r in l ? u(l, r, { enumerable: !0, configurable: !0, writable: !0, value: t }) : l[r] = t;
-var c = (l, r, t) => (m(l, typeof r != "symbol" ? r + "" : r, t), t);
+var h = (l, r, t) => (m(l, typeof r != "symbol" ? r + "" : r, t), t);
 import g, { event as p } from "./wj-element.js";
 import "./wj-store.js";
-const f = `/*!
-* direction.scss
-*/:host{--wj-infinite-scroll-width: 100%;--wj-infinite-scroll-height: 300px;overflow-x:auto;width:var(--wj-infinite-scroll-width);height:var(--wj-infinite-scroll-height);display:block}
+const f = `:host{--wj-infinite-scroll-width: 100%;--wj-infinite-scroll-height: 300px;overflow-x:auto;width:var(--wj-infinite-scroll-width);height:var(--wj-infinite-scroll-height);display:block}
 `;
 class w extends g {
   constructor(t = {}) {
     super();
-    c(this, "className", "InfiniteScroll");
-    c(this, "scrollEvent", () => {
+    h(this, "className", "InfiniteScroll");
+    h(this, "scrollEvent", () => {
       this.addEventListener("scroll", this.onScroll);
     });
-    c(this, "unScrollEvent", () => {
+    h(this, "unScrollEvent", () => {
       this.removeEventListener("scroll", this.onScroll);
     });
-    c(this, "onScroll", (t) => {
+    h(this, "onScroll", (t) => {
       const { scrollTop: s, scrollHeight: e, clientHeight: i } = t.target;
       s + i >= e - 300 && this.currentPage <= this.totalPages && this.isLoading.includes(this.currentPage) && (this.currentPage++, this.loadPages(this.currentPage));
     });
@@ -26,8 +24,8 @@ class w extends g {
       if (i)
         for (let a of i) {
           let o = a.replace("{{", "").replace("}}", ""), n = "";
-          o.split(".").forEach((h) => {
-            n = n == "" ? s[h] : n[h];
+          o.split(".").forEach((c) => {
+            n = n == "" ? s[c] : n[c];
           }), e = e.replace(a, n);
         }
       return e;
@@ -85,9 +83,7 @@ class w extends g {
         const i = new DOMParser();
         let a = this;
         this.hasAttribute("placement") && (a = this.querySelector(this.placement)), e.data.forEach((o) => {
-          const n = this.infiniteScrollTemplate.interpolate(o), h = i.parseFromString(n, "text/html");
-          console.log("DOC", this.iterate.tagName.toLowerCase());
-          const d = h.querySelector(this.iterate.tagName.toLowerCase());
+          const n = this.infiniteScrollTemplate.interpolate(o), d = i.parseFromString(n, "text/html").querySelector(this.iterate.tagName.toLowerCase());
           p.addListener(d, "click", "wj-infinite-scroll:click-item", null, { stopPropagation: !0 }), a.insertAdjacentElement("beforeend", d);
         }), this.isLoading.push(t);
       }

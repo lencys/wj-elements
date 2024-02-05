@@ -3,9 +3,7 @@ var i = (t, e, s) => e in t ? a(t, e, { enumerable: !0, configurable: !0, writab
 var o = (t, e, s) => (i(t, typeof e != "symbol" ? e + "" : e, s), s);
 import m from "./wj-element.js";
 import "./wj-store.js";
-const c = `/*!
-* direction.scss
-*/:host{display:block;flex:1;flex-basis:auto;padding:1.5rem;box-sizing:border-box}
+const c = `:host{display:block;flex:1;flex-basis:auto;padding:1.5rem;box-sizing:border-box}
 `;
 class l extends m {
   constructor() {

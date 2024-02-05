@@ -1,25 +1,23 @@
-var d = Object.defineProperty;
-var c = (s, e, t) => e in s ? d(s, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : s[e] = t;
-var r = (s, e, t) => (c(s, typeof e != "symbol" ? e + "" : e, t), t);
-import u, { event as p } from "./wj-element.js";
+var p = Object.defineProperty;
+var c = (r, e, t) => e in r ? p(r, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : r[e] = t;
+var s = (r, e, t) => (c(r, typeof e != "symbol" ? e + "" : e, t), t);
+import m, { event as d } from "./wj-element.js";
 import "./wj-store.js";
-const m = `/*!
-* direction.scss
-*/:host{--arrow-size: 7px;--arrow-color: #000000}.native-tooltip{display:block;padding:.5rem;color:#fff;background-color:var(--arrow-color);font-weight:400;font-size:.75rem!important;border-radius:4px;line-height:1;box-sizing:border-box;box-shadow:0 1px 8px #00000080}.arrow{position:absolute;width:10px;height:10px;background:black;transform:rotate(45deg)}
+const u = `:host{--wj-tooltip-arrow-color: var(--wj-color-contrast-11)}.native-tooltip{display:block;padding:.5rem;color:var(--wj-color-contrast-0);background-color:var(--wj-color-contrast-11);font-weight:400;font-size:.75rem!important;border-radius:var(--wj-border-radius-small);line-height:1;box-sizing:border-box;box-shadow:var(--wj-box-shadow-medium)}.arrow{position:absolute;width:10px;height:10px;background:var(--wj-tooltip-arrow-color);transform:rotate(45deg)}
 `;
-class h extends u {
+class h extends m {
   constructor() {
     super();
-    r(this, "className", "Tooltip");
-    r(this, "onShow", () => {
-      console.log("show"), this.popup.show();
+    s(this, "className", "Tooltip");
+    s(this, "onShow", () => {
+      this.popup.show();
     });
-    r(this, "onHide", () => {
+    s(this, "onHide", () => {
       this.popup.hide();
     });
   }
   static get cssStyleSheet() {
-    return m;
+    return u;
   }
   static get observedAttributes() {
     return ["active", "content"];
@@ -39,7 +37,7 @@ class h extends u {
   }
   afterDraw() {
     let t = this.mySlot.assignedElements()[0];
-    t && (p.addListener(t, "mouseenter", null, this.onShow), p.addListener(t, "mouseleave", null, this.onHide));
+    t && (d.addListener(t, "mouseenter", null, this.onShow), d.addListener(t, "mouseleave", null, this.onHide));
   }
 }
 customElements.get("wj-tooltip") || window.customElements.define("wj-tooltip", h);

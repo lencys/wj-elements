@@ -6,17 +6,25 @@
     <title>Button</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
-    <!-- <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/wj-master.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/style.css" /> -->
     <script type="module" src="./../../../../wj-elementy/wj-master.js"></script>
     <link rel="stylesheet" href="./../../../../wj-elementy/style.css" />
   </head>
   <body>
-    <div class="playground">
+    <div class="container">
       <div class="content">
+<!--        <wj-button fill="link" toggle="off">-->
+<!--          <wj-icon name="sun" slot="toggle" state="on" size="large"></wj-icon>-->
+<!--          <wj-icon name="moon" slot="toggle" state="off" size="large"></wj-icon>-->
+<!--        </wj-button>-->
+
         <wj-button fill="link" toggle="off">
-          <wj-icon name="sun" slot="toggle" state="on" size="large"></wj-icon>
-          <wj-icon name="moon" slot="toggle" state="off" size="large"></wj-icon>
+          <wj-icon name="sun" slot="toggle"></wj-icon>
+          <wj-icon name="moon" slot="toggle"></wj-icon>
+        </wj-button>
+
+        <wj-button fill="link" toggle="off">
+          <span slot="toggle">On</span>
+          <span slot="toggle">Off</span>
         </wj-button>
       </div>
     </div>

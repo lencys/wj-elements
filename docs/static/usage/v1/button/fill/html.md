@@ -1,5 +1,5 @@
 ```html
-<div class="playground">
+<div class="container">
   <div class="content">
     <wj-button>Default</wj-button>
     <wj-button fill="link">Link</wj-button>
