@@ -10,11 +10,11 @@ import Codepen from '@components/global/Codepen';
   <title>Tmavý režim </title>
   <meta
     name="description"
-    content="Tmavý režim v Elements je funkcia, ktorá umožňuje prepnúť farebnú schému stránok a komponentov na tmavšie odtiene, čo zlepšuje pohodlie používateľov v tvavších priestoroch a ponúka alternatívny estetický vzhľad. "
+    content="Tmavý režim je funkcia, ktorá umožňuje prepnúť farebnú schému stránok a komponentov do tmavších odtieňov, čo ponúka možnosť použitia alternatívneho estetického vzhľadu. Používatelia môžu jednoducho prepínať medzi svetlým a tmavým režimom pre pohodlné zobrazenie, najmä v prostredí so slabým osvetlením."
   />
 </head>
 
-Tmavý režim v Elements je funkcia, ktorá umožňuje prepnúť farebnú schému stránok a komponentov na tmavšie odtiene, čo zlepšuje pohodlie používateľov v tvavších priestoroch a ponúka alternatívny estetický vzhľad. 
+Tmavý režim je funkcia, ktorá umožňuje prepnúť farebnú schému stránok a komponentov do tmavších odtieňov, čo ponúka možnosť použitia alternatívneho estetického vzhľadu. Používatelia môžu jednoducho prepínať medzi svetlým a tmavým režimom pre pohodlné zobrazenie, najmä v prostredí so slabým osvetlením.
 
 ## Using Media Queries
 

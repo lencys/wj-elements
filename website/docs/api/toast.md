@@ -11,7 +11,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponent toast poskytuje nenápadný spôsob zobrazovania krátkych oznámení používateľovi. Sú navrhnuté tak, aby sa objavovali a mizli plynulo, čím sa zabezpečí, že sa dôležité informácie dostanú k používateľom bez toho, aby boli rušivé.
+Komponent Toast poskytuje nenápadný spôsob zobrazovania krátkych oznámení používateľovi. Sú navrhnuté tak, aby sa objavovali a mizli plynulo, čím sa zabezpečí, že sa dôležité informácie dostanú k používateľom bez toho, aby boli rušivé.
 
 ## Základné použitie
 

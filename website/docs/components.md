@@ -6,6 +6,7 @@ hide_table_of_contents: true
 import DocsCard from '@components/global/DocsCard';
 import DocsCards from '@components/global/DocsCards';
 import { Card, CardHeader, Icon } from 'https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/wj-master.js';
+import 'https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/style.css';
 
 <head>
   <title>UI Komponenty | Stavebné prvky aplikácie</title>
@@ -26,7 +27,9 @@ import { Card, CardHeader, Icon } from 'https://cdn.jsdelivr.net/gh/lencys/wj-el
     }
   `}</style>
   
-  <link rel="stylesheet" href="./../static/wj-elementy/style.css" />
+  <link rel="stylesheet" href="./../../static/wj-elementy/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/style.css" />
+
 </head>
 
  WebJET Elements obsahuje širokú škálu komponentov, ktoré sú optimalizované pre webové rozhrania. Tieto komponenty pokrývajú rôzne funkcie a sú navrhnuté tak, aby sa dali ľahko integrovať do akejkoľvek webovej aplikácie.
