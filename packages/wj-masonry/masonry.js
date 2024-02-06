@@ -2,8 +2,6 @@ import { default as WJElement, event } from "../wj-element/wj-element.js";
 import { COL_COUNT_CSS_VAR_NAME, ColHeightMap, debounce, DEFAULT_COLS, DEFAULT_DEBOUNCE_MS, DEFAULT_GAP_PX, DEFAULT_MAX_COL_WIDTH, ELEMENT_NODE_TYPE, findSmallestColIndex, GAP_CSS_VAR_NAME, getColCount, getNumberAttribute } from "./service/service.js";
 
 import styles from "./scss/styles.scss?inline";
-import { bar, circle, flip, simple } from "../wj-toast/service/service.js";
-import { Logger } from "sass";
 
 export class Masonry extends WJElement {
     constructor() {
