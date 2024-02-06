@@ -51,6 +51,12 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Animation',
+      collapsed: false,
+      items: ['api/animation'],
+    },
+    {
+      type: 'category',
       label: 'Avatar',
       collapsed: false,
       items: ['api/avatar'],
@@ -129,6 +135,18 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'FileUpload',
+      collapsed: false,
+      items: [ 'api/file-upload', 'api/file-upload-item'],
+    },
+    {
+      type: 'category',
+      label: 'FormatDigital',
+      collapsed: false,
+      items: [ 'api/format-digital'],
+    },
+    {
+      type: 'category',
       label: 'Infinite Scroll',
       collapsed: false,
       items: ['api/infinite-scroll'],
@@ -183,6 +201,12 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Masonry',
+      collapsed: false,
+      items: ['api/masonry'],
+    },
+    {
+      type: 'category',
       label: 'Menu',
       collapsed: false,
       items: ['api/menu', 'api/menu-item'],
@@ -198,6 +222,12 @@ module.exports = {
       label: 'Radio',
       collapsed: false,
       items: ['api/radio', 'api/radio-group'],
+    },
+        {
+      type: 'category',
+      label: 'RelativeTime',
+      collapsed: false,
+      items: ['api/relative-time'],
     },
     {
       type: 'category',

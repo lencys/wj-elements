@@ -27,6 +27,10 @@
     "message": "Úvod",
     "description": "The label for category Úvod in sidebar api"
   },
+  "sidebar.api.category.Animation": {
+    "message": "Animation",
+    "description": "The label for category Animation in sidebar api"
+  },
   "sidebar.api.category.Avatar": {
     "message": "Avatar",
     "description": "The label for category Avatar in sidebar api"
@@ -79,6 +83,18 @@
     "message": "Grid",
     "description": "The label for category Grid in sidebar api"
   },
+  "sidebar.api.category.FileUpload": {
+    "message": "FileUpload",
+    "description": "The label for category FileUpload in sidebar api"
+  },
+  "sidebar.api.category.FileUploadItem": {
+    "message": "FileUploadItem",
+    "description": "The label for category FileUploadItem in sidebar api"
+  },
+  "sidebar.api.category.FormatDigital": {
+    "message": "FormatDigital",
+    "description": "The label for category FormatDigital in sidebar api"
+  },
   "sidebar.api.category.Infinite Scroll": {
     "message": "Infinite Scroll",
     "description": "The label for category Infinite Scroll in sidebar api"
@@ -115,6 +131,10 @@
     "message": "List",
     "description": "The label for category List in sidebar api"
   },
+  "sidebar.api.category.Masonry": {
+    "message": "Masonry",
+    "description": "The label for category Masonry in sidebar api"
+  },
   "sidebar.api.category.Menu": {
     "message": "Menu",
     "description": "The label for category Menu in sidebar api"
@@ -125,6 +145,10 @@
   },
   "sidebar.api.category.Radio": {
     "message": "Radio",
+    "description": "The label for category Radio in sidebar api"
+  },
+  "sidebar.api.category.RelativeTime": {
+    "message": "Relative Time",
     "description": "The label for category Radio in sidebar api"
   },
   "sidebar.api.category.Routovanie": {

@@ -236,6 +236,18 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Animation',
+      collapsed: false,
+      items: ['api/animation'],
+    },
+        {
+      type: 'category',
+      label: 'Animation',
+      collapsed: false,
+      items: ['api/animation'],
+    },
+        {
+      type: 'category',
       label: 'Avatar',
       collapsed: false,
       items: ['api/avatar'],
@@ -356,6 +368,18 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'FileUpload',
+      collapsed: false,
+      items: [ 'api/file-upload', 'api/file-upload-item'],
+    },
+    {
+      type: 'category',
+      label: 'FormatDigital',
+      collapsed: false,
+      items: [ 'api/format-digital'],
+    },
+    {
+      type: 'category',
       label: 'Layout',
       collapsed: false,
       items: ['api/layout', 'api/aside', 'api/main', 'api/container','api/footer', 'api/header'],
@@ -365,6 +389,12 @@ module.exports = {
       label: 'List',
       collapsed: false,
       items: ['api/list'],
+    },
+    {
+      type: 'category',
+      label: 'Masonry',
+      collapsed: false,
+      items: ['api/masonry'],
     },
     {
       type: 'category',
@@ -383,6 +413,18 @@ module.exports = {
       label: 'Radio',
       collapsed: false,
       items: ['api/radio', 'api/radio-group'],
+    },
+    {
+      type: 'category',
+      label: 'Rate',
+      collapsed: false,
+      items: ['api/rate'],
+    },
+    {
+      type: 'category',
+      label: 'RelativeTime',
+      collapsed: false,
+      items: ['api/relative-time'],
     },
     {
       type: 'category',
