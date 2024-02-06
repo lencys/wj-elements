@@ -6,7 +6,6 @@ export const DEFAULT_GAP_PX = 24
 export const COL_COUNT_CSS_VAR_NAME = `--wj-masonry-layout-col-count`
 export const GAP_CSS_VAR_NAME = `--wj-masonry-layout-gap`
 
-// https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType
 export const ELEMENT_NODE_TYPE = 1
 
 const DEBOUNCE_MAP = new Map()

@@ -1,7 +1,8 @@
+import "./themes/light.scss";
+import "./themes/dark.scss";
 import { default as WJElement } from "./wj-element/wj-element.js";
 import { defaultStoreActions, store } from "./wj-store/store.js";
 
-// SLICK ROUTER
 import { bindRouterLinks, withRouterLinks } from './wj-router/plugins/slick-router/middlewares/router-links.js';
 import { fetchAndParseCSS } from "./utils/animations.js";
 import { Localizer } from "./utils/localize.js";
