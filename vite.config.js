@@ -3,6 +3,9 @@ import { fetchAndParseCSS } from "./packages/utils/animations.js";
 
 export default ({
     base: '/',
+    server: {
+        hmr: true
+    },
     css: {
         preprocessorOptions: {
             scss: {
