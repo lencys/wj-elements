@@ -27,6 +27,7 @@ export class Routerx extends WJElement {
         const rootElement = htmlDocument.querySelector("wj-router");
 
         const routes = this.parseElement(rootElement).root;
+
         this.router = new Router({
             outlet: this.outlet || "wj-router-outlet",
             log: false,
@@ -55,7 +56,7 @@ export class Routerx extends WJElement {
             const attributeValue = attributes[i].value;
 
             if (attributeName === 'component' && attributeValue.indexOf(".js") > -1) {
-                obj.component = () => import(attributeValue); // lazy loading component
+                obj.component = () => import(new URL(attributeValue, import.meta.url).href); // lazy loading component
             } else {
                 if (attributeName !== 'shadow') {
                     obj[attributeName] = attributeValue;
