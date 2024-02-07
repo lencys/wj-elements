@@ -15,7 +15,7 @@ export default ({
     },
     build: {
         assetsInlineLimit: 0,
-        minify: true,
+        minify: false,
         outDir: './dist',
         lib: {
             entry: {
