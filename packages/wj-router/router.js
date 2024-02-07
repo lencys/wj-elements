@@ -44,7 +44,7 @@ export class Routerx extends WJElement {
         this.router.use(this.resetScrollPosition);
         this.router.listen();
 
-        interceptLinks(this.router);
+        this.unbindIntercept = interceptLinks(this.router);
     }
 
     parseElement(element) {
@@ -88,8 +88,8 @@ export class Routerx extends WJElement {
                     return {
                         name: b.options.breadcrumbPath || b.name,
                         text: b.options.breadcrumb instanceof Function ? b.options.breadcrumb?.(transition) : b.options.breadcrumb,
-                        params: {...b.params, ...transition.params},
-                        path: this.router.generate(b.name, {...b.params, ...transition.params}),
+                        params: { ...b.params, ...transition.params },
+                        path: this.router.generate(b.name, { ...b.params, ...transition.params }),
                     }
                 }),
         ];
@@ -99,6 +99,11 @@ export class Routerx extends WJElement {
 
     resetScrollPosition = (transition) => {
         window.scrollTo(0, 0);
+    }
+
+
+    beforeDisconnect() {
+        this.unbindIntercept();
     }
 }
 
