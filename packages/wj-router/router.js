@@ -31,7 +31,7 @@ export class Routerx extends WJElement {
             outlet: this.outlet || "wj-router-outlet",
             log: false,
             logError: false,
-            root: "/",
+            root: this.root || "/",
             pushState: true,
         });
 
