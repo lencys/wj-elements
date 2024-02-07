@@ -7,7 +7,7 @@ export class RouterLink extends WJElement {
     constructor() {
         super();
 
-        bindRouterLinks(this, { selector: false });
+        this.unbindRouterLinks = bindRouterLinks(this, { selector: false });
     }
 
     className = "RouterLink";
@@ -33,6 +33,10 @@ export class RouterLink extends WJElement {
         fragment.appendChild(element);
 
         return fragment;
+    }
+
+    beforeDisconnect() {
+        this.unbindRouterLinks();
     }
 }
 
