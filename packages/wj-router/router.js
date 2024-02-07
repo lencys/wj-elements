@@ -104,6 +104,7 @@ export class Routerx extends WJElement {
 
     beforeDisconnect() {
         this.unbindIntercept();
+        this.router.destroy();
     }
 }
 
