@@ -19,7 +19,7 @@ import Basic from '@site/static/usage/v1/item/basic/index.md';
 
 <Basic />
 
-## Oddelovacie čiary
+## Oddeľovacie čiary
 
 import Lines from '@site/static/usage/v1/item/lines/index.md';
 

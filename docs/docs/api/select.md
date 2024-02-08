@@ -14,7 +14,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 <EncapsulationPill type="shadow" />
 
 **Select** element rozširuje možnosti štandardného HTML select elementu. Podporuje jeden alebo viacero výberov pridaním atribútu `multiple`.
-Okrem toho ponúka funkcie, ako sú vymazateľné výbery a vlastný zastupný text (placeholder). Vizuálne môže komponent zobrazovať vybrané možnosti ako chipy a obsahuje vstupné pole a rozbaľovací zoznam možností.
+Okrem toho ponúka funkcie, ako sú zmazateľné výbery a vlastný zástupný text (placeholder). Vizuálne môže komponent zobrazovať vybrané možnosti ako chipy a obsahuje vstupné pole a rozbaľovací zoznam možností.
 
 ## Základné použitie
 
@@ -38,7 +38,7 @@ import MultipleSelectionExample from '@site/static/usage/v1/select/basic/multipl
 
 ## Clearable
 
-Pridaním atribútu `clearable` umožníte používateľovi odstraniť všetky zvolené možnosti kliknutím na ikonu <Icon icon="radix-icons:cross-2" height="14" />.
+Pridaním atribútu `clearable` umožníte používateľovi odstrániť všetky zvolené možnosti kliknutím na ikonu <Icon icon="radix-icons:cross-2" height="14" />.
 
 import Clearable from '@site/static/usage/v1/select/clearable/index.md';
 
@@ -152,8 +152,8 @@ import Standard from '@site/static/usage/v1/select/standard/index.md';
 
 | Event               | Popis                                                                      |
 |---------------------|----------------------------------------------------------------------------|
-| `blur`              | Vyvolaný keď elemenet stratí focus.                                        |
-| `focus`             | Vyvolaný keď elemenet dostane focus.                                       |
+| `blur`              | Vyvolaný keď element stratí focus.                                        |
+| `focus`             | Vyvolaný keď element dostane focus.                                       |
 | `wj:button-click`   | Vyvolaný po kliknuti na tlačidlo odstránenia všetkých zvolených možností.  |
 | `wj:chip-remove`    | Vyvolaný po odstránení Chip elementu.                                      |
 | `wj:option-change`  | Vyvolaný po zmene zvolenej možnosti.                                       |

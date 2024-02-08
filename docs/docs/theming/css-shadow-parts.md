@@ -3,10 +3,10 @@ title: CSS Shadow Parts
 ---
 
 <head>
-  <title>CSS Shadow Parts - Style CSS Properties Inside of A Shadow Tree</title>
+  <title>CSS Shadow Parts - Prispôsobte si štýly elementov vo vnútri Shadow DOMu.</title>
   <meta
     name="description"
-    content="CSS Shadow Parts allow developers to style CSS properties on elements inside of a shadow tree. Read to learn more about customizing Ionic Shadow DOM components."
+    content="Shadow Parts poskytujú spôsob, ako vystaviť špecifické prvky v rámci Shadow DOM pre účely štylizácie, pričom sa zachovávajú jeho výhody zapuzdrenia a izolácie podľa Shadow DOM špecifikácie."
   />
 </head>
 

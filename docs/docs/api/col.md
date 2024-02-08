@@ -11,11 +11,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponent **Col** (stĺpec) je základným stavebným prvkom [Gridu](./grid) a umožňuje horizontálne rozmiestniť obsah a upraviť jeho usporiadanie na základe veľkosti obrazovky. Používa sa pridánim do vnútra [Row](./row) elementu.
+Komponent **Col** (stĺpec) je základným stavebným prvkom [Gridu](./grid) a umožňuje horizontálne rozmiestniť obsah a upraviť jeho usporiadanie na základe veľkosti obrazovky. Používa sa pridaním do vnútra [Row](./row) elementu.
 
 :::note Poznámka
 
-Pre viac informácií o použítí **Col** sa presuňte do dokumentácie systému [**Grid**](./grid).
+Pre viac informácií o použití **Col** sa presuňte do dokumentácie systému [**Grid**](./grid).
 
 :::
 
@@ -25,7 +25,7 @@ Pre viac informácií o použítí **Col** sa presuňte do dokumentácie systém
 
 |  |  |
 | --- | --- |
-| Popis | Počet stĺpcov, o ktoré sa má stĺpec posúnuť. |
+| Popis | Počet stĺpcov, o ktoré sa má stĺpec posunúť. |
 | Atribút | `offset` |
 | Typ | `string` ｜ `undefined` |
 | Predvolená hodnota | `undefined` |
@@ -34,7 +34,7 @@ Pre viac informácií o použítí **Col** sa presuňte do dokumentácie systém
 
 |  |  |
 | --- | --- |
-| Popis | Počet stĺpcov, o ktoré sa má stĺpec posúnuť na obrazovkách veľkosti lg. |
+| Popis | Počet stĺpcov, o ktoré sa má stĺpec posunúť na obrazovkách veľkosti lg. |
 | Atribút | `offset-lg` |
 | Typ | `string` ｜ `undefined` |
 | Predvolená hodnota | `undefined` |
@@ -43,7 +43,7 @@ Pre viac informácií o použítí **Col** sa presuňte do dokumentácie systém
 
 |  |  |
 | --- | --- |
-| Popis | Počet stĺpcov, o ktoré sa má stĺpec posúnuť na obrazovkách veľkosti md. |
+| Popis | Počet stĺpcov, o ktoré sa má stĺpec posunúť na obrazovkách veľkosti md. |
 | Atribút | `offset-md` |
 | Typ | `string` ｜ `undefined` |
 | Predvolená hodnota | `undefined` |
@@ -52,7 +52,7 @@ Pre viac informácií o použítí **Col** sa presuňte do dokumentácie systém
 
 |  |  |
 | --- | --- |
-| Popis | Počet stĺpcov, o ktoré sa má stĺpec posúnuť na obrazovkách veľkosti sm. |
+| Popis | Počet stĺpcov, o ktoré sa má stĺpec posunúť na obrazovkách veľkosti sm. |
 | Atribút | `offset-sm` |
 | Typ | `string` ｜ `undefined` |
 | Predvolená hodnota | `undefined` |
@@ -61,7 +61,7 @@ Pre viac informácií o použítí **Col** sa presuňte do dokumentácie systém
 
 |  |  |
 | --- | --- |
-| Popis | Počet stĺpcov, o ktoré sa má stĺpec posúnuť na obrazovkách veľkosti xl. |
+| Popis | Počet stĺpcov, o ktoré sa má stĺpec posunúť na obrazovkách veľkosti xl. |
 | Atribút | `offset-xl` |
 | Typ | `string` ｜ `undefined` |
 | Predvolená hodnota | `undefined` |
@@ -70,7 +70,7 @@ Pre viac informácií o použítí **Col** sa presuňte do dokumentácie systém
 
 |  |  |
 | --- | --- |
-| Popis | Počet stĺpcov, o ktoré sa má stĺpec posúnuť na obrazovkách veľkosti xs. |
+| Popis | Počet stĺpcov, o ktoré sa má stĺpec posunúť na obrazovkách veľkosti xs. |
 | Atribút | `offset-xs` |
 | Typ | `string` ｜ `undefined` |
 | Predvolená hodnota | `undefined` |

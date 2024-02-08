@@ -9,14 +9,14 @@ import CustomProps from '@ionic-internal/component-api/v1/list/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/list/slots.md';
 
 <head>
-  <title>List: Item List View Component for iOS and Android Apps</title>
-  <meta name="description" content="Lists are made up of multiple rows of items containing text, icons, toggles, and more. Learn about the list view component for iOS and Android Ionic apps." />
+  <title>List: Komponent zobrazenia zoznamu položiek</title>
+  <meta name="description" content="Komponent List (Zoznam) sa skladá z viacerých elementov [Item](./item) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Listy vo všeobecnosti obsahujú položky s rovnakým obsahom a zoskupujú ich do väčšieho celku." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 
-Komponent **List** (Zoznam) sa skladá z viacerých elementov [Item](./item) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Listy vo všeobecnosti obsahujú itemy s rovnakým obsahom a zoskupujú ich do väčšieho celku.
+Komponent **List** (Zoznam) sa skladá z viacerých elementov [Item](./item) (položiek) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Listy vo všeobecnosti obsahujú položky s rovnakým obsahom a zoskupujú ich do väčšieho celku.
 
 ## Základné použitie
 
@@ -34,7 +34,7 @@ import Inset from '@site/static/usage/v1/list/inset/index.md';
 <Inset />
 
 
-## Oddelovacie čiary
+## Oddeľovanie čiary
 
 Vlastnosť **lines** upravuje spodný okraj itemov. Nastavením na "full" sa zobrazia okraje na celú šírku, "**inset**" zobrazí okraje upravené ľavým paddingom a "**none**" nezobrazí žiadne okraje. 
 

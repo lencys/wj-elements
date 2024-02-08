@@ -46,7 +46,7 @@ import Icons from '@site/static/usage/v1/button-group/icons/index.md';
 
 ## Delené tlačidlá
 
-ButtonGroup umožnuje zobraziť aj delené tlačidlo s viacerými funkciami.
+ButtonGroup umožňuje zobraziť aj delené tlačidlo s viacerými funkciami.
 
 import SplitButtons from '@site/static/usage/v1/button-group/split-buttons/index.md';
 

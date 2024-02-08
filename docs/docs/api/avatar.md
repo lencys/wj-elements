@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element avatar slúži na vizuálnu prezentáciu používateľa alebo subjektu. Používa sa zvyčajne ako obaľovač a poskytuje praktický spôsob zobrazovania profilových obrázkov, ikon, alebo, ak tie nie sú posktytné, iniciálok.  Podporuje rôzne konfigurácie vrátane veľkosti, zoskupenia viacerých avatarov alebo zobrazenie dropdownu po kliknutí či tooltipu pri ukázaní myšou.
+Element avatar slúži na vizuálnu prezentáciu používateľa alebo subjektu. Používa sa zvyčajne ako obaľovač a poskytuje praktický spôsob zobrazovania profilových obrázkov, ikon, alebo, ak tie nie sú poskytnuté, iniciálok.  Podporuje rôzne konfigurácie vrátane veľkosti, zoskupenia viacerých avatarov alebo zobrazenie dropdownu po kliknutí či tooltipu pri ukázaní myšou.
 
 ## Základné použitie
 
@@ -146,6 +146,5 @@ Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
 ## Sloty
 
-| Názov      | Popis                    |
-|------------|--------------------------|
-| icon       | Mal by byť použitý v elemente `wj-icon` a obsahovať názov ikony pre zobrazenie.  |
+Pre tento komponent nie sú k dispozícii žiadne sloty.
+

@@ -10,8 +10,8 @@ import CustomProps from '@ionic-internal/component-api/v1/router-link/custom-pro
 import Slots from '@ionic-internal/component-api/v1/router-link/slots.md';
 
 <head>
-  <title>Router Link | Navigating The ion-router-link Component</title>
-  <meta name="description" content="Use the ion-router-link component to navigate to a specified link. The router link can accept an href for location and a direction for the transition animation." />
+  <title>Router Link | Komponent na router navigáciu</title>
+  <meta name="description" content="Router link komponenta slúži ako prispôsobiteľný link navrhnutý na použitie v navigácii naprieč aplikáciou." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';

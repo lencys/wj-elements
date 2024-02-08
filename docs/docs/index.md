@@ -20,7 +20,6 @@ import DocsCards from '@components/global/DocsCards';
   <link rel="alternate" href="https://ionicframework.com/docs" hreflang="x-default" />
   <link rel="alternate" href="https://ionicframework.com/docs" hreflang="en" />
   <meta property="og:url" content="https://ionicframework.com/docs" />
-  <link rel="stylesheet" href="./../static/wj-elementy/style.css" />
     <style>{`
     docs-cards > a{
       display: flex;
@@ -30,10 +29,11 @@ import DocsCards from '@components/global/DocsCards';
 </head>
 
 WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania využívajúca silu web komponentov, ktorá je určená na zjednodušenie vývoja webových aplikácií. Poskytuje kolekciu zapúzdrených a opakovane použiteľných elementov, ktoré môžu výrazne zvýšiť efektivitu a udržiavateľnosť projektov vývoja webových stránok.
-Ponukajú jednoduchú integráciu s [React](react.md) a [Vue](vue/overview.md).
+Ponúkajú jednoduchú integráciu s [React](react.md) a [Vue](vue/overview.md).
 
 Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/cli.md).
 
+<br/>
 <intro-end />
 
 <DocsCards>
@@ -118,6 +118,6 @@ Optimalizovaný pre výkon, framework zabezpečuje, že komponenty sú nielen fu
 
 ## Licencia
 
-Elements is a free and open source project, released under the permissible <a href="https://opensource.org/licenses/MIT" target="_blank">MIT license</a>. This means it can be used in personal or commercial projects for free. MIT is the same license used by such popular projects as jQuery and Ruby on Rails.
+Elements je slobodný projekt s otvoreným zdrojovým kódom, vydaný pod povolenou licenciou MIT. To znamená, že sa môže bezplatne používať v osobných alebo komerčných projektoch. MIT je rovnaká licencia, akú používajú také populárne projekty ako jQuery a Ruby on Rails.
 
-This documentation content (found in the <a href="https://github.com/ionic-team/ionic-docs" target="_blank">ionic-docs</a> repo) is licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2 license</a>.
+Tento obsah dokumentácie (ktorý sa nachádza v repozitári <a href="https://github.com/ionic-team/ionic-docs" target="_blank">WJ Elements</a>) je licencovaný pod licenciou <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.</a>.

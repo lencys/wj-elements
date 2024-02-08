@@ -4,7 +4,7 @@ title: "Card Controls"
 
 Tento element slúži na použitie v [Card Header.](./card-header) pre zobrazenie tlačidiel na vykonanie rôznych akcií súvisiacich s kartou.
 
-Pre viac informácií o použítí Card Controls sa presuňte do dokumentácie elementu [Card Header.](./card-header).
+Pre viac informácií o použití Card Controls sa presuňte do dokumentácie elementu [Card Header.](./card-header).
 
 ## Eventy
 

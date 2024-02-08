@@ -60,7 +60,7 @@ import Gap from '@site/static/usage/v1/masonry/gap/index.md';
 
 |  |  |
 | --- | --- |
-| Popis | Definuje šírku medzery medzi slĺpcami v pixeloch. |
+| Popis | Definuje šírku medzery medzi stĺpcami v pixeloch. |
 | Atribút | `gap` |
 | Typ | `number` |
 | Predvolená hodnota | `24` |

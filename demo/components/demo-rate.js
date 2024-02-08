@@ -28,7 +28,7 @@ template.innerHTML = `<h1>Rating</h1>
     <h3>Precision</h3>
     <div class="playground">
       <div class="content">
-        <wj-rate value="3.5" max="5" precision="0.5"></wj-rate>
+        <wj-rate value="3.5" max="5" precision="0.1"></wj-rate>
       </div>
     </div>
     

@@ -26,7 +26,7 @@ export default function ColorGenerator(props) {
     <div className={clsx(props.className, 'stepped-color-generator')}>
       <div className={clsx(styles.inputRows)}>
         <ColorDot color={backgroundColor} />
-        <h3>Background</h3>
+        <h3>Pozadie</h3>
         <ColorInput color={backgroundColor} setColor={setBackgroundColor} />
         <ColorDot color={textColor} />
         <h3>Text</h3>
@@ -36,16 +36,16 @@ export default function ColorGenerator(props) {
         <code>
           :root {'{'}
           {'\n'}
-          {'\t'}--ion-background-color: <CodeColor color={backgroundColor}>{backgroundColor}</CodeColor>;{'\n'}
-          {'\t'}--ion-background-color-rgb:{' '}
+          {'\t'}--wj-background-color: <CodeColor color={backgroundColor}>{backgroundColor}</CodeColor>;{'\n'}
+          {'\t'}--wj-background-color-rgb:{' '}
           <CodeColor color={backgroundColor}>{new Color(backgroundColor).toList()}</CodeColor>;{'\n'}
           {'\n'}
-          {'\t'}--ion-text-color: <CodeColor color={textColor}>{textColor}</CodeColor>;{'\n'}
-          {'\t'}--ion-text-color-rgb: <CodeColor color={textColor}>{new Color(textColor).toList()}</CodeColor>;{'\n'}
+          {'\t'}--wj-text-color: <CodeColor color={textColor}>{textColor}</CodeColor>;{'\n'}
+          {'\t'}--wj-text-color-rgb: <CodeColor color={textColor}>{new Color(textColor).toList()}</CodeColor>;{'\n'}
           {'\n'}
           {steppedColors.map((color, i) => (
             <>
-              {'\t'}--ion-color-step-{(i + 1) * 50}: <CodeColor color={color}>{color}</CodeColor>;{'\n'}
+              {'\t'}--wj-color-step-{(i + 1)}: <CodeColor color={color}>{color}</CodeColor>;{'\n'}
             </>
           ))}
           {'}'}

@@ -4,14 +4,14 @@ title: "Radio"
 
 <head>
   <title>Radio komponent: Vylepšená verzia štandardného HTML radio elementu</title>
-  <meta name="description" content="Radio element je upravená verzia štandardného HTML radio elementu, rozšírená o štýly pre dosiahnutie vizuálne konzistnejšieho používateľského rozhrania." />
+  <meta name="description" content="Radio element je upravená verzia štandardného HTML radio elementu, rozšírená o štýly pre dosiahnutie vizuálne konzistentnejšieho používateľského rozhrania." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Radio element je upravená verzia štandardného HTML radio elementu, rozšírená o štýly pre dosiahnutie vizuálne konzistnejšieho používateľského rozhrania naprieč rôznymi zariadeniami. Funguje podobne ako štandardné rádio tlačidlo a umožňuje používateľom vybrať jednu z množiny možností. Používa sa vo vnútri elementu [radio group](./radio-group), ktorý im pridáva zarovnanie a zoskupuje ich do jedného celku.
+Radio element je upravená verzia štandardného HTML radio elementu, rozšírená o štýly pre dosiahnutie vizuálne konzistentnejšieho používateľského rozhrania naprieč rôznymi zariadeniami. Funguje podobne ako štandardné rádio tlačidlo a umožňuje používateľom vybrať jednu z množiny možností. Používa sa vo vnútri elementu [radio group](./radio-group), ktorý im pridáva zarovnanie a zoskupuje ich do jedného celku.
 
 ## Základné použitie
 

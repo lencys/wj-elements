@@ -11,7 +11,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Tlačidlá sú klikateľný element, ktorý umožnuje zobraziť text, ikonu, prípadne oboje. Tlačidlá si je možné jednoducho prispôsobiť použitím rôznych atribútov a CSS vlastností.
+Tlačidlá sú klikateľný element, ktorý umožňuje zobraziť text, ikonu, prípadne oboje. Tlačidlá si je možné jednoducho prispôsobiť použitím rôznych atribútov a CSS vlastností.
 
 ## Základné použitie
 
@@ -82,7 +82,7 @@ import Colors from '@site/static/usage/v1/button/theming/colors/index.md';
 
 ### Farba okrajov tlačidla
 
-Vlastnosť `color` je možné kombinovať spolu s vlastnosťout `fill`.
+Vlastnosť `color` je možné kombinovať spolu s vlastnosťou `fill`.
 
 import Outline from '@site/static/usage/v1/button/outline/index.md';
 
@@ -155,7 +155,7 @@ import Custom from '@site/static/usage/v1/button/theming/css-properties/index.md
 
 |  |  |
 | --- | --- |
-| Popis | Nastavte na `"small"` pre tlačidlo s menšou výškou a výplňou, alebo na `"large"` pre tlačidlo s väčšou výškou a výplňou. V predvolenom nastavení je veľkosť nastavená na defaultnú.|
+| Popis | Nastavte na `"small"` pre tlačidlo s menšou výškou a výplňou, alebo na `"large"` pre tlačidlo s väčšou výškou a výplňou. V predvolenom nastavení je veľkosť nastavená na predvolenú.|
 | Atribút | `size` |
 | Typ | `"large"` ｜ `"small"` ｜ `undefined` |
 | Predvolená hodnota | `undefined` |

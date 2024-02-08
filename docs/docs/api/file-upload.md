@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/avatar/custom-props.md
 import Slots from '@ionic-internal/component-api/v1/avatar/slots.md';
 
 <head>
-  <title>FileUpload Component</title>
+  <title>FileUpload Komponent</title>
   <meta name="description" content="Komponent FileUpload poskytuje univerzálnu funkciu nahrávania súborov pre webové aplikácie. Podporuje prispôsobiteľné atribúty, ako sú povolené typy súborov, veľkosť častí alebo tiež maximálnu veľkosť súboru, spolu s metódami drag-and-drop a tradičným výberom súborov." />
 </head>
 

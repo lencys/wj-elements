@@ -78,7 +78,7 @@ import Variant from '@site/static/usage/v1/checkbox/variant/index.md';
 
 |  |  |
 | --- | --- |
-| Popis | Zmení vzľad checkboxu. Podporovaný je okrúhly tvar pridaním hodnoty `circle`. |
+| Popis | Zmení vzhľad checkboxu. Podporovaný je okrúhly tvar pridaním hodnoty `circle`. |
 | Atribút | `variant` |
 | Typ | `circle` |
 | Predvolená hodnota | `undefined` |

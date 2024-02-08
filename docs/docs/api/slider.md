@@ -123,8 +123,8 @@ import Colors from '@site/static/usage/v1/slider/colors/index.md';
 
 | Event             | Popis                                                                      |
 |-------------------|----------------------------------------------------------------------------|
-| blur              | Vyvolaný keď elemenet stratí focus.                                        |
-| focus             | Vyvolaný keď elemenet dostane focus.                                       |
+| blur              | Vyvolaný keď element stratí focus.                                        |
+| focus             | Vyvolaný keď element dostane focus.                                       |
 | wj:button-click   | Vyvolaný po kliknuti na tlačidlo odstránenia všetkých zvolených možností.  |
 | wj:chip-remove    | Vyvolaný po odstránení Chip elementu.                                      |
 | wj:option-change  | Vyvolaný po zmene zvolenej možnosti.                                       |

@@ -16,7 +16,7 @@ import Basic from '@site/static/usage/v1/card/basic/index.md';
 
 ## Separator
 
-Vlastnosť separator slúži na zobrazenie horizontálneho oddelovača v elementer Card Header.
+Vlastnosť separator slúži na zobrazenie horizontálneho oddeľovača v elemente Card Header.
 
 import Separator from '@site/static/usage/v1/card/separator/index.md';
 

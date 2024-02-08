@@ -14,7 +14,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 ## Príklady použitia
 
-Pre informácie o použítí **Aside** elementu sa presuňte do dokumentácie [Layoutu](./layout).
+Pre informácie o použití **Aside** elementu sa presuňte do dokumentácie [Layoutu](./layout).
 
 ## Atribúty a Vlastnosti
 
@@ -52,7 +52,7 @@ Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
 
 | Názov | Popis |
 | --- | --- |
-| `--wj-container-indent` |  Odsadenie elementu zľava ( iba na obrazovkách väčšich ako 768px)  |
+| `--wj-container-indent` |  Odsadenie elementu zľava ( iba na obrazovkách väčších ako 768px)  |
 
 ## Sloty
 

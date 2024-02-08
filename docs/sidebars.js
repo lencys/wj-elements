@@ -15,7 +15,7 @@ module.exports = {
         {
           type: 'link',
           label: 'Responzívna mriežka',
-          href: '/docs/api/grid',
+          href: '/api/grid',
         },
         'layout/global-stylesheets',
         'layout/css-utilities',
@@ -23,7 +23,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Úprava štýlov',
+      label: 'Prispôsobenie',
       collapsed: false,
       items: [
         'theming/basics',
@@ -31,15 +31,10 @@ module.exports = {
         'theming/css-shadow-parts',
         'theming/colors',
         'theming/themes',
-        // 'theming/dark-mode',
+        'theming/dark-mode',
+        'theming/animations',
       ],
-    },
-    {
-      type: 'category',
-      label: 'Contributing',
-      collapsed: false,
-      items: ['contributing/how-to-contribute', 'contributing/coc'],
-    },
+    }
   ],
 
   api: [

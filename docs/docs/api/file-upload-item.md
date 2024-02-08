@@ -11,7 +11,7 @@ import Slots from '@ionic-internal/component-api/v1/avatar/slots.md';
 
 <head>
   <title>FileUploadItem</title>
-  <meta name="description" content="Element avatar slúži na vizuálnu prezentáciu používateľa alebo subjektu. Používa sa zvyčajne ako obaľovač a poskytuje praktický spôsob zobrazovania profilových obrázkov, ikon, alebo, ak tie nie sú posktytné, iniciálok.  Podporuje rôzne konfigurácie vrátane veľkosti, zoskupenia viacerých avatarov alebo zobrazenie dropdownu po kliknutí či tooltipu pri ukázaní myšou." />
+  <meta name="description" content="Element FileUploadItem predstavuje individuálnu položku (súbor) v rámci FileUpload komponentu. Zobrazuje podrobnosti, ako je názov súboru, veľkosť, priebeh nahrávania, a poskytuje akcie, ako je vymazanie súboru. Tento komponent je určený na použitie v kontexte FileUpload komponentu." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Element FileUploadItem predstavuje individuálnu položku (súbor) v rámci FileUpload komponentu. Zobrazuje podrobnosti, ako je názov súboru, veľkosť, priebeh nahrávania, a poskytuje akcie, ako je vymazanie súboru. Tento komponent je určený na použitie v kontexte FileUpload komponentu.
 
-Pre viac informácií o použítí FileUploadItem sa presuňte do dokumentácie elementu [FileUpload](./file-upload)
+Pre viac informácií o použití FileUploadItem sa presuňte do dokumentácie elementu [FileUpload](./file-upload)
 
 
 ## Základné použitie

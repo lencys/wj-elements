@@ -4,14 +4,14 @@ title: "Aside"
 
 <head>
   <title>Layout: Aside element</title>
-  <meta name="description" content="Layout v Elements sa skladá z troch komponentov Header, Aside a Footer. Pomocou nich je možné jednoducho vyskladať základné rozvrhnutie webstránky." />
+  <meta name="description" content="Aside je prvok na tvorbu layoutov a zobrazuje sa vedľa elementu Main. Používa sa väčšinou na zobrazenie doplnkových informácií k hlavnému obsahu, prípadne navigácie." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Aside je prvok na tvorbu layoutov a zobrazuje sa vedľa [Main](./main) elementu. Používa sa vačšinou na zobrazenie doplnkových informácií k hlavnému obsahu, prípadne navigácie.
+Aside je prvok na tvorbu layoutov a zobrazuje sa vedľa elementu [Main](./main). Používa sa väčšinou na zobrazenie doplnkových informácií k hlavnému obsahu, prípadne navigácie.
 
 
 ## Príklady použitia

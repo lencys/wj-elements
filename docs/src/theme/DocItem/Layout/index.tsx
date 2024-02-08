@@ -83,13 +83,13 @@ export default function DocItemLayout({children, ...props}: Props): JSX.Element 
       </div>
       {/* ------- CUSTOM CODE -------- */}
       {/* Ideally this would only render if there is a demoUrl and the it's a mobile device. However,the `windowSize` does not provide a tablet so we have to hide it through CSS. */}
-      {demoUrl && (
+      {/* {demoUrl && (
         <div className='col col--4'>
           <div className='doc-demo-wrapper'>
             <DocDemo url={demoUrl} source={demoSourceUrl} />
           </div>
         </div>
-      )}
+      )} */}
       {/* ------- CUSTOM CODE END -------- */}
       {docTOC.desktop && <div className="col col--3">{docTOC.desktop}</div>}
     </div>

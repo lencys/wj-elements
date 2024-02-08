@@ -3,20 +3,18 @@ title: "Infinite-scroll"
 ---
 
 <head>
-  <title>Infinite Scroll | ion-infinite-scroll Action Component</title>
-  <meta name="description" content="The ion-infinite-scroll component calls an action to be performed when the user scrolls a specified distance from the bottom or top of the page." />
+  <title>Infinite Scroll | Komponent Nekonečného scrollovania</title>
+  <meta name="description" content="Infinite Scroll umožňuje implementovať dynamické načítavanie dát, keď používatelia prechádzajú väčším množstvom obsahu. Element umožňuje zobraziť akýkoľvek obsah zo zvoleného koncového bodu (endpointu) bez toho, aby bola potrebná ďalšia interakcia, napríklad kliknutie na tlačidlo “Načítať viac” alebo na odkaz na ďalšiu stránku." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 
- Infinite Scroll umožňuje implementovať dynamické načítavanie dát, keď používatelia scrollujú väčším množstvom obsahu. Element umožňuje zobraziť akýkoľvek obsah zo zvoleného koncového bodu (endpointu) bez toho, aby bola potrebná ďalšia interakcia, napríklad kliknutie na tlačidlo “Načítať viac” alebo na odkaz na ďalšiu stránku. Komponent zároveň zobrazuje indikátor načítania (loader), aby informoval používateľov o načítavaní nového obsahu.
+ Infinite Scroll umožňuje implementovať dynamické načítavanie dát, keď používatelia prechádzajú väčším množstvom obsahu. Element umožňuje zobraziť akýkoľvek obsah zo zvoleného koncového bodu (endpointu) bez toho, aby bola potrebná ďalšia interakcia, napríklad kliknutie na tlačidlo “Načítať viac” alebo na odkaz na ďalšiu stránku. Komponent zároveň zobrazuje indikátor načítania (loader), aby informoval používateľov o načítavaní nového obsahu.
 
 import Basic from '@site/static/usage/v1/infinite-scroll/basic/index.md';
 
-
 <Basic />
-
 
 ## Počet načítaných položiek (size)
 
@@ -80,7 +78,7 @@ Pre tento komponent nie sú k dispozícii žiadne eventy.
 
 Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
-## CSS Shadow Parts[](https://ionicframework.com/docs/api/badge#css-shadow-parts)
+## CSS Shadow Parts
 
 Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
 

@@ -180,7 +180,7 @@ Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 | `--wj-input-font-family`               |  Font textu Inputu                           |
 | `--wj-input-line-height`               |  Výška riadka Inputu                         |
 | `--wj-input-margin-bottom`             |  Spodná medzera Inputu                       |
-| `--wj-input-slot-padding-inline`       |  Horizontálná medzera medzi slotmi Inputu    |
+| `--wj-input-slot-padding-inline`       |  Horizontálna medzera medzi slotmi Inputu    |
 
 ## Sloty
 

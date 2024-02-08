@@ -3,7 +3,7 @@ title: "Thumbnail"
 ---
 
 <head>
-  <title>Thumbnail | Thumbnail App Component to Wrap Images or Icons</title>
+  <title>Thumbnail | Komponent pre zobrazenie náhľadu</title>
   <meta name="description" content="Thumbnail uľahčuje zobrazenie väčších obrázkov alebo iných médií zobrazením ich menšieho náhľadu. Je ho možné použiť samostatne ale aj v iných elementoch." />
 </head>
 

@@ -16,7 +16,7 @@ Row (Riadok) je základným prvkom responzívneho [Grid](./grid) systému a slú
 
 :::note Poznámka
 
-Pre viac informácií o použítí **Row** sa presuňte do dokumentácie systému [**Grid**](./grid).
+Pre viac informácií o použití **Row** sa presuňte do dokumentácie systému [**Grid**](./grid).
 
 :::
 

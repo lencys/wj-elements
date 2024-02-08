@@ -34,7 +34,7 @@ import Vertical from '@site/static/usage/v1/split-view/vertical/index.md';
 
 ## Min/Max
 
-Pridaním vlastnosti `min` a `max` s hodnotami `“0”` až `“100”` obmedzíte škálu pohybu oddelovača.
+Pridaním vlastnosti `min` a `max` s hodnotami `“0”` až `“100”` obmedzíte škálu pohybu oddeľovača.
 
 import MinMax from '@site/static/usage/v1/split-view/min-max/index.md';
 
@@ -44,7 +44,7 @@ import MinMax from '@site/static/usage/v1/split-view/min-max/index.md';
 
 ## Disabled
 
-Pridaním atribút `disabled` deaktivuje možnosť posúvania oddelovača.
+Pridaním atribút `disabled` deaktivuje možnosť posúvania oddeľovača.
 
 import Disabled from '@site/static/usage/v1/split-view/disabled/index.md';
 
@@ -76,7 +76,7 @@ import Custom from '@site/static/usage/v1/split-view/custom/index.md';
 
 |  |  |
 | --- | --- |
-| Popis | Deaktivuje možnosť posúvania oddelovača |
+| Popis | Deaktivuje možnosť posúvania oddeľovača |
 | Atribút | `disabled` |
 | Typ | `boolean` |
 | Predvolená hodnota | `false` |
@@ -94,7 +94,7 @@ import Custom from '@site/static/usage/v1/split-view/custom/index.md';
 
 |  |  |
 | --- | --- |
-| Popis | Určuje hodnotu maximálnej pozície oddelovača |
+| Popis | Určuje hodnotu maximálnej pozície oddeľovača |
 | Atribút | `max` |
 | Typ | `integer` |
 | Predvolená hodnota | `100` |
@@ -103,7 +103,7 @@ import Custom from '@site/static/usage/v1/split-view/custom/index.md';
 
 |  |  |
 | --- | --- |
-| Popis | Určuje hodnotu minimálnej pozície oddelovača |
+| Popis | Určuje hodnotu minimálnej pozície oddeľovača |
 | Atribút | `min` |
 | Typ | `integer` |
 | Predvolená hodnota | `0` |
@@ -152,7 +152,7 @@ Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 | --wj-split-view-divider-area            | Určuje celkovú plochu (šírka/výška) oddeľovača vrátane interaktívnej plochy. |
 | --wj-split-view-divider-background      | Nastavuje farbu pozadia oddeľovača.                       |
 | --wj-split-view-divider-size            | Nastavuje šírku/výšku oddeľovača.                        |
-| --wj-split-view-divider-width           | Určuje hrúbku oddelovača.                              |
+| --wj-split-view-divider-width           | Určuje hrúbku oddeľovača.                              |
 | --wj-split-view-max                     | Predstavuje maximálnu povolenú veľkosť (v percentách) pre panel.    |
 | --wj-split-view-min                     | Predstavuje minimálnu povolenú veľkosť (v percentách) pre panel.    |
 
@@ -161,6 +161,6 @@ Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 
 | Názov | Popis |
 |-----------|--- |
-| `divider`   | Obsah sa umiestni do oddelovača wj-divider. |
+| `divider`   | Obsah sa umiestni do oddeľovača wj-divider. |
 | `end`      | Obsah sa umiestni do druhého panela. |
 | `start`     | Obsah sa umiestni do prvého panela. |

@@ -11,9 +11,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Komponent Router je nástroj určený na navigáciu v rámci webových aplikácií. Táto komponenta podporuje komplexné navigačné scenáre a lazy-load, čím zvyšuje výkon aplikácie a používateľský zážitok. Na to využíva ďalšie komponenty: [Router Link](./router-link.md), [Router Outlet](./router-outlet.md) a [Route](./route.md). 
 
-Navyše sa bezproblémovo integruje s komponentmi WebJET Elements, čím umožnuje jednoduchú implementáciu navigácie vo vašom projekte.
-
-
+Navyše sa bezproblémovo integruje s komponentmi WebJET Elements, čím umožňuje jednoduchú implementáciu navigácie vo vašom projekte.
 
 Komponent `wj-router` má za úlohu spravovať všetky interakcie s históriou prehliadača a zoskupovať aktualizácie prostredníctvom systému udalostí a mal by sa nachádzať v štruktúre aplikácie iba raz.
 

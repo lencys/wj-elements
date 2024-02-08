@@ -25,7 +25,7 @@ import Basic from '@site/static/usage/v1/color-picker/basic/index.md';
 
 ## Atribúty a Vlastnosti
 
-Pre tento komponent nie sú k dispozícii žiadne doplnkované atribúty a vlastnosti.
+Pre tento komponent nie sú k dispozícii žiadne dodatočné atribúty a vlastnosti.
 
 ## Eventy
 

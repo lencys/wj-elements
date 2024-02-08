@@ -91,7 +91,7 @@ Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
 | Názov                                  | Popis       |
 |----------------------------------------|-------------|
 | `--wj-toggle-border-radius`            | Určuje zaoblenie okrajov toggle elementu |
-| `--wj-toggle-color-base`               | Určuje farbu pozadia elementu. Tvorí ju liniárny gradient s farbou v atribúte `color`. |
+| `--wj-toggle-color-base`               | Určuje farbu pozadia elementu. Tvorí ju lineárny gradient s farbou v atribúte `color`. |
 | `--wj-toggle-handle-border-radius`     | Určuje zaoblenie okrajov toggle handle (rúčky) |
 | `--wj-toggle-handle-color`             | Určuje farbu toggle handle (rúčky) |
 | `--wj-toggle-handle-height`            | Určuje výšku toggle handle (rúčky) |

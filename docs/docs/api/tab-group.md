@@ -3,8 +3,8 @@ title: "TabGroup"
 ---
 
 <head>
-  <title>TabGroup: Tab-Based Component for App Top-Level Navigation</title>
-  <meta name="description" content="Tabs are top-level components to implement tab-based navigation. Ion-tabs have no styling & work as router outlets for navigation that behaves like native apps." />
+  <title>TabGroup: Navigácia založená na záložkách</title>
+  <meta name="description" content="TabGroup zobrazuje navigáciu založenú na záložkách, ktorá umožňuje používateľom prepínať sa a zobrazovať rôzne časti obsahu aplikácie bez potreby prechádzať na inú stránku." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -16,7 +16,7 @@ TabGroup element podporuje viacero variantov vzhľadu pomocou atribútu `variant
 
 ## Základné použitie
 
-Element `Card` bol použítý len za účelom tejto ukážky.
+Element `Card` bol použitý len za účelom tejto ukážky.
 
 import Basic from '@site/static/usage/v1/tab-group/basic/index.md';
 
@@ -77,7 +77,7 @@ Pre tento komponent nie sú k dispozícii žiadne shadow party.
 | `--wj-tab-color-active`    | Určuje farbu pozadia aktívneho tab elementu. |
 | `--wj-tab-color-hover`     | Určuje farbu pozadia tab elementu po ukázaní myšou.   |
 | `--wj-tab-font-weight`     | Nastavuje váhu písma.                    |
-| `--wj-tab-letter-spacing`  | Nastavuje vzdiaenosť medzi písmenami.    |
+| `--wj-tab-letter-spacing`  | Nastavuje vzdialenosť medzi písmenami.    |
 | `--wj-tab-padding-bottom`  | Určuje spodné odsadenie tabu.            |
 | `--wj-tab-padding-inline`  | Určuje horizontálne odsadenie tabu.      |
 | `--wj-tab-padding-top`     | Určuje horné odsadenie tabu.             |

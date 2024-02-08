@@ -52,7 +52,7 @@ import ItemsBeforeAfter from '@site/static/usage/v1/breadcrumbs/collapsing-items
 
 ### Rozbaľovacie okno
 
-Zbalené položky je možné zobraziť aj v podobe rozbaľovacieho okna použítím vlastnosti `collapsed-variant` s hodnotou `dropdown`.
+Zbalené položky je možné zobraziť aj v podobe rozbaľovacieho okna použitím vlastnosti `collapsed-variant` s hodnotou `dropdown`.
 
 import PopoverOnClick from '@site/static/usage/v1/breadcrumbs/collapsing-items/popover-on-click/index.md';
 

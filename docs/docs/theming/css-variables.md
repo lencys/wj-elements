@@ -3,7 +3,7 @@ title: CSS Premenné
 ---
 
 <head>
-  <title>CSS Premenné | CSS Custom Properties for Variables & Components</title>
+  <title>CSS Premenné | Custom CSS vlastnosti pre premenné a komponenty</title>
   <meta
     name="description"
     content="Ionic components are built with CSS Variables for easy custom app properties. They allow a value to be stored in one place, then referenced in multiple places."

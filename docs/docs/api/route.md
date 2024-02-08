@@ -12,7 +12,7 @@ import CustomProps from '@ionic-internal/component-api/v1/route/custom-props.md'
 import Slots from '@ionic-internal/component-api/v1/route/slots.md';
 
 <head>
-  <title>Route: API Route Component for Ionic Framework Apps</title>
+  <title>Route: API Route Komponent pre WebJET Elements</title>
   <meta name="description" content="Komponenta Route vykreslí zvolený komponent keď sa hodnota v jeho vlastnosti `url` zhoduje s URL v prehliadači." />
 </head>
 

@@ -3,7 +3,7 @@ title: "Tooltip"
 ---
 
 <head>
-  <title>Tooltip : Vyskakovacej nápovedy pri nájazde myšou</title>
+  <title>Tooltip : Vyskakovacia nápoveda pri nájazde myšou</title>
   <meta name="description" content="Element Tooltip slúži na zobrazovanie vyskakovacej nápovedy pri nájazde myšou a je ho možné pripojiť k rôznym elementom webovej stránky. Je ľahko prispôsobiteľný pomocou atribútov pre obsah a umiestnenie." />
 </head>
 

@@ -3,7 +3,7 @@ import { COLOR_NAMES, ColorVariable } from './color-variables';
 
 export const generateSteppedColors = (background = '#ffffff', text = '#000000') => {
   const color = new Color(background);
-  const colors = new Array(19).fill(null);
+  const colors = new Array(11).fill(null);
 
   return colors.map((_, i) => color.mix(text, ((i + 1) * 5) / 100).hex);
 };
