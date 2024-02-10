@@ -1,3 +1,4 @@
+"use strict";
 export const iconContent = new Map();
 const requests = new Map();
 
@@ -132,7 +133,7 @@ export const getName = (iconName) => {
 // };
 
 const getNamedUrl = (iconName) => {
-  const path = `/assets/img/icons/svg/${iconName}.svg`
+  const path = `/assets/img/icons/svg/${iconName}.svg`;
 
   let parsedUrl = new URL(import.meta.url);
   let pathName = parsedUrl.pathname;
