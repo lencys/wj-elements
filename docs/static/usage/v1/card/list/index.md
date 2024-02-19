@@ -20,5 +20,5 @@ import vue from './vue.md';
     vue
   }}
   src="usage/v1/card/list/demo.html"
-  size="400px"
+  size="300px"
 />

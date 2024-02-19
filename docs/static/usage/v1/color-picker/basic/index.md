@@ -4,4 +4,4 @@ import javascript from './javascript.md';
 import react from './react.md';
 import vue from './vue.md';
 
-<Playground version="7" code={{ javascript, react, vue }} src="usage/v1/color-picker/basic/demo.html" />
+<Playground version="7" code={{ javascript, react, vue }} src="usage/v1/color-picker/basic/demo.html" size="400px" />

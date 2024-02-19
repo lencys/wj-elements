@@ -488,7 +488,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Toolbar TODO',
+      label: 'Toolbar',
       collapsed: false,
       items: ['api/toolbar', 'api/toolbar-actions'],
     },

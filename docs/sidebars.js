@@ -184,6 +184,12 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Label',
+      collapsed: false,
+      items: [ 'api/label'],
+    },
+    {
+      type: 'category',
       label: 'Layout',
       collapsed: false,
       items: ['api/layout', 'api/aside', 'api/main', 'api/container'],//,'api/footer', 'api/header'
@@ -286,7 +292,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Toolbar TODO',
+      label: 'Toolbar',
       collapsed: false,
       items: ['api/toolbar', 'api/toolbar-actions'],
     },

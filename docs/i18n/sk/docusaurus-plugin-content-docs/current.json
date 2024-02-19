@@ -21,7 +21,7 @@
   },
   "sidebar.docs.link.Responzívna mriežka": {
     "message": "Responzívna mriežka",
-    "description": "The label for link Responzívna mriežka in sidebar docs, linking to /docs/api/grid"
+    "description": "The label for link Responzívna mriežka in sidebar docs, linking to /api/grid"
   },
   "sidebar.api.category.Úvod": {
     "message": "Úvod",
@@ -149,7 +149,7 @@
   },
   "sidebar.api.category.RelativeTime": {
     "message": "Relative Time",
-    "description": "The label for category Radio in sidebar api"
+    "description": "The label for category RelativeTime in sidebar api"
   },
   "sidebar.api.category.Routovanie": {
     "message": "Routovanie",
@@ -214,5 +214,9 @@
   "sidebar.native.category.Plugins": {
     "message": "Plugins",
     "description": "The label for category Plugins in sidebar native"
+  },
+  "sidebar.docs.category.Prispôsobenie": {
+    "message": "Prispôsobenie",
+    "description": "The label for category Prispôsobenie in sidebar docs"
   }
 }

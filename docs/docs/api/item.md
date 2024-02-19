@@ -49,14 +49,7 @@ import Icons from '@site/static/usage/v1/item/icons/index.md';
 
 ## Atribúty a Vlastnosti
 
-### lines
-
-|  |  |
-| --- | --- |
-| Popis | Štýl horizontálnych oddeľovačov elementov Item |
-| Atribút | `lines` |
-| Typ | `full`, `inset`, `none` |
-| Predvolená hodnota | `inset` |
+Pre tento komponent nie sú k dispozícii žiadne Atribúty a Vlastnosti.
 
 
 ## Eventy

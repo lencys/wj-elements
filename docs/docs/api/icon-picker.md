@@ -14,7 +14,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Icon picker umožňuje používateľovi nájsť a zvoliť ikonu zo sady dostupných ikon. Obsahuje 
+Icon picker umožňuje používateľovi nájsť a zvoliť ikonu zo sady dostupných ikon. Jeho súčasťou je textové vyhľádavanie pre jednoduchšie vyhľadanie ikony.
 
 ## Základné použitie
 
@@ -22,35 +22,8 @@ import Basic from '@site/static/usage/v1/icon-picker/basic/index.md';
 
 <Basic />
 
-
 ## Atribúty a Vlastnosti
-
-### color
-
-|  |  |
-| --- | --- |
-| Popis | Farba ikony z palety farieb aplikácie. Predvolené možnosti sú: `"primary"`, `"secondary"`, `"complete"`, `"success"`, `"warning"`, `"danger"`, `"dark"`, a `"light"`. |
-| Atribút | `color` |
-| Typ | `"danger"` ｜ `"dark"` ｜ `"light"` ｜ `"primary"` ｜ `"secondary"` ｜ `"success"` ｜ `"warning"` ｜ undefined |
-| Predvolená hodnota | `inherit` |
-
-### name
-
-|  |  |
-| --- | --- |
-| Popis | Určuje názov ikony na zobrazenie zo sady priloženej kolekcie SVG ikon. |
-| Atribút | `name` |
-| Typ | `string` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
-
-### size
-
-|  |  |
-| --- | --- |
-| Popis | Nastavte na `"small"` pre menšiu ikonu, alebo na `"large"` pre väčšiu ikonu. V predvolenom nastavení je veľkosť nenastavená. |
-| Atribút | `size` |
-| Typ | `large` ｜ `small` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
+Pre tento komponent nie sú k dispozícii žiadne Atribúty a Vlastnosti.
 
 ## Eventy
 
@@ -68,9 +41,12 @@ Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
 
 | Názov   | Popis    |
 |---------|----------|
-| `--wj-icon-height` | Definuje výšku ikony |
-| `--wj-icon-size` | Definuje veľkosť ikony |
-| `--wj-icon-width` | Definuje šírku ikony |
+| `--wj-icon-picker-border-color` | Definuje farbu okrajov elementu |
+| `--wj-icon-picker-border-style` | Definuje štýl okrajov elementu |
+| `--wj-icon-picker-border-width` | Definuje šírku okrajov elementu |
+| `--wj-icon-picker-icon-size` | Definuje veľkosť ikon elementu |
+| `--wj-icon-picker-padding` | Definuje vnútorné odsadenie elementu |
+| `--wj-icon-picker-radius` | Definuje veľkosť zaoblenia elementu |
 
 ## Sloty
 

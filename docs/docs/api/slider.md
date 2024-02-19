@@ -31,15 +31,11 @@ import Bubble from '@site/static/usage/v1/slider/bubble/index.md';
 
 ## Label
 
-Pridaním atribútu `Label` umožníte používateľovi vybrať viacero možností.
-
 import Label from '@site/static/usage/v1/slider/label/index.md';
 
 <Label />
 
 ## Icons
-
-Pridaním atribútu `Icons` umožníte používateľovi vybrať viacero možností.
 
 import Icons from '@site/static/usage/v1/slider/icons/index.md';
 
@@ -47,77 +43,13 @@ import Icons from '@site/static/usage/v1/slider/icons/index.md';
 
 ## Color
 
-Pridaním atribútu `color` umožníte používateľovi vybrať viacero možností.
-
 import Colors from '@site/static/usage/v1/slider/colors/index.md';
 
 <Colors />
 
 ## Atribúty a Vlastnosti
 
-### clearable
 
-|  |  |
-| --- | --- |
-| Popis | Ak `true`, zobrazí sa ikona na zmazanie všetkých zvolených možností. |
-| Atribút | `clearable` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### color
-
-|  |  |
-| --- | --- |
-| Popis | Určuje farbu slideru na jednu z farebnej palety aplikácie. Predvolené možnosti sú: `complete`, `danger`, `dark`, `primary`, `success` a `warning`. |
-| Atribút | `color` |
-| Typ | `complete`, `danger`, `dark`, `primary`, `success`, `warning` |
-| Predvolená hodnota | `undefined` |
-
-### disabled
-
-|  |  |
-| --- | --- |
-| Popis | Ak `true`, s elementom nebude možné interagovať. |
-| Atribút | `disabled` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-
-### label
-
-|  |  |
-| --- | --- |
-| Popis | Slúži na nastavenie popisu |
-| Atribút | `label` |
-| Typ | `string` |
-| Predvolená hodnota | `undefined` |
-
-### multiple
-
-|  |  |
-| --- | --- |
-| Popis | Nastaví select na výber viacerých možností |
-| Atribút | `multiple` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### placeholder
-
-|  |  |
-| --- | --- |
-| Popis | Slúži na nastavenie zástupného textu  |
-| Atribút | `placeholder` |
-| Typ | `string` |
-| Predvolená hodnota | `undefined` |
-
-### trigger
-
-|  |  |
-| --- | --- |
-| Popis | Určuje selectu spôsobom rozkliknutia |
-| Atribút | `trigger` |
-| Typ | `click`, `hover` |
-| Predvolená hodnota | `click` |
 
 ## Eventy
 

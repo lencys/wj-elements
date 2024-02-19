@@ -2,16 +2,23 @@
 title: "Animation"
 ---
 
+import Props from '@ionic-internal/component-api/v1/accordion-group/props.md';
+import Events from '@ionic-internal/component-api/v1/accordion-group/events.md';
+import Methods from '@ionic-internal/component-api/v1/accordion-group/methods.md';
+import Parts from '@ionic-internal/component-api/v1/accordion-group/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/accordion-group/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/accordion-group/slots.md';
+
 <head>
   <title>Animation: Integrácia animácií do webových aplikácií</title>
-  <meta name="description" content="Element Animation ponúka integráciu animácií do webových aplikácií čím umožňuje vytváranie pútavých používateľských rozhraní. Poskytuje možnosti prispôsobenia v podobe oneskorenia, trvania alebo napríklad tiež počtu opakování animácií. " />
+  <meta name="description" content="Element Animation ponúka integráciu animácií do webových aplikácií čím umožňuje vytváranie pútavých používateľských rozhraní. Poskytuje možnosti prispôsobenia v podobe oneskorenia, trvania alebo napríklad tiež počtu opakovaní animácií. " />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element Animation ponúka integráciu animácií do webových aplikácií čím zjednodušuje vytváranie pútavých používateľských rozhraní. Poskytuje možnosti prispôsobenia v podobe oneskorenia, trvania alebo napríklad tiež počtu opakování animácií. 
+Element Animation ponúka integráciu animácií do webových aplikácií čím zjednodušuje vytváranie pútavých používateľských rozhraní. Poskytuje možnosti prispôsobenia v podobe oneskorenia, trvania alebo napríklad tiež počtu opakovaní animácií. 
 
 
 ## Základné použitie
@@ -21,6 +28,8 @@ import Basic from '@site/static/usage/v1/animation/basic/index.md';
 <Basic />
 
 ## Atribúty a Vlastnosti
+
+<Props />
 
 ### delay
 
