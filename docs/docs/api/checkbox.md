@@ -3,7 +3,7 @@ title: "Checkbox"
 ---
 
 <head>
-  <title>Checkbox: WebJET Element pre vybratie viacerých možností</title>
+  <title>Checkbox | WebJET Element pre vybratie viacerých možností</title>
   <meta name="description" content="Checkbox, alebo tiež začiarkavacie políčko, je element, ktorý umožňuje používateľom vybrať jednu alebo viac možností z množiny. Kliknutím na checkbox zmeníte jeho stav na `true` alebo `false`." />
 </head>
 

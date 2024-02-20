@@ -2,6 +2,13 @@
 title: "ButtonGroup"
 ---
 
+import Props from '@ionic-internal/component-api/v1/breadcrumbs/props.md';
+import Events from '@ionic-internal/component-api/v1/breadcrumbs/events.md';
+import Methods from '@ionic-internal/component-api/v1/breadcrumbs/methods.md';
+import Parts from '@ionic-internal/component-api/v1/breadcrumbs/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/breadcrumbs/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/breadcrumbs/slots.md';
+
 
 <head>
   <title>ButtonGroup: Element pre zoskupovanie tlačidiel</title>

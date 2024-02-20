@@ -3,7 +3,7 @@ title: "Slider"
 ---
 
 <head>
-  <title>Slider: Element rozširuje možnosti štandardného HTML select elementu.</title>
+  <title>Slider | Element rozširuje možnosti štandardného HTML select elementu.</title>
   <meta name="description" content="Slider je interaktívny komponent posuvníka, ktorý umožňuje používateľom praktickým spôsobom vybrať hodnotu z rozsahu hodnôt." />
 </head>
 

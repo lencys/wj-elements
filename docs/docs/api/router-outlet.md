@@ -2,6 +2,11 @@
 title: "Router Outlet"
 ---
 
+<head>
+  <title>Router | Router Komponent navigácie v rámci webových aplikácií</title>
+  <meta name="description" content="Komponent Router je nástroj určený na navigáciu v rámci webových aplikácií. Táto komponenta podporuje komplexné navigačné scenáre a lazy-load, čím zvyšuje výkon aplikácie a používateľský zážitok." />
+</head>
+
 import Props from '@ionic-internal/component-api/v1/router-outlet/props.md';
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';

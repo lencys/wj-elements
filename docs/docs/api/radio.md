@@ -3,7 +3,7 @@ title: "Radio"
 ---
 
 <head>
-  <title>Radio komponent: Vylepšená verzia štandardného HTML radio elementu</title>
+  <title>Radio komponent | Vylepšená verzia štandardného HTML radio elementu</title>
   <meta name="description" content="Radio element je upravená verzia štandardného HTML radio elementu, rozšírená o štýly pre dosiahnutie vizuálne konzistentnejšieho používateľského rozhrania." />
 </head>
 

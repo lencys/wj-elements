@@ -3,7 +3,7 @@ title: "Masonry"
 ---
 
 <head>
-  <title>Format Digital Component</title>
+  <title>Masonry | Vytvára responzívne 'Masonry' rozvrhnutie podriadených prvkov</title>
   <meta name="description" content="Komponent Masonry vytvára responzívne 'Masonry' rozvrhnutie podriadených prvkov, ktorý ich dynamicky usporadúva do stĺpcov na základe zadaných atribútov. Podporuje prispôsobenie počtu stĺpcov, maximálnej šírky stĺpcov, medzery medzi prvkami a debouncing na optimalizáciu výkonu." />
 </head>
 

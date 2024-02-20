@@ -3,7 +3,7 @@ title: "Image Comparer"
 ---
 
 <head>
-  <title>Image Comparer: Porovnávač obrázkov</title>
+  <title>Image Comparer | Porovnávač obrázkov</title>
   <meta name="description" content="Element Image Comparer slúži na porovnanie dvoch obrázkov. Obrázky zobrazí na sebe a umožňuje odkrývať spodný obrázok pomocou vstavaného posuvníka." />
 </head>
 

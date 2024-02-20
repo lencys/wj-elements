@@ -3,7 +3,7 @@ title: "Thumbnail"
 ---
 
 <head>
-  <title>Thumbnail | Komponent pre zobrazenie náhľadu</title>
+  <title>Thumbnail | Komponent pre zobrazenie náhľadov obrázkov</title>
   <meta name="description" content="Thumbnail uľahčuje zobrazenie väčších obrázkov alebo iných médií zobrazením ich menšieho náhľadu. Je ho možné použiť samostatne ale aj v iných elementoch." />
 </head>
 

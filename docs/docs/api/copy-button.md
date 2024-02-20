@@ -3,7 +3,7 @@ title: "Copy button"
 ---
 
 <head>
-  <title>Copy button: WebJET Element umožnuje skopírovať obsah do clipboardu</title>
+  <title>Copy button | Skopírovanie do clipboardu na jeden klik</title>
   <meta name="description" content="Copy button umožňuje jedným kliknutím skopírovať obsah do clipboardu. Podporované sú `input`, `textarea`, `wj-input`, `wj-label` a `a` element. " />
 </head>
 

@@ -3,7 +3,7 @@ title: "Toggle"
 ---
 
 <head>
-  <title>Toggle : Ovládací prvov, ktorý umožňuje prepínať medzi dvoma stavmi</title>
+  <title>Toggle |  Element umožňujúci prepínať medzi dvoma stavmi</title>
   <meta name="description" content="Toggle elementy sú malé interaktívne ovládacie prvky, ktoré umožňujú prepínať medzi dvoma stavmi. Môžete ich aktivovať kliknutím myši." />
 </head>
 

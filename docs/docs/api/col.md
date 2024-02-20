@@ -3,8 +3,8 @@ title: "Col"
 ---
 
 <head>
-  <title>Col: Horizontálne rozmiestnenie obsahu na základe veľkosti obrazovky.</title>
-  <meta name="description" content="Col is a column component that goes inside a row. Content within a grid goes inside of a column. Read more on column padding, size, and other properties." />
+  <title>Col | Horizontálne rozmiestnenie obsahu na základe veľkosti obrazovky.</title>
+  <meta name="description" content="Komponent Col je základným stavebným prvkom [Gridu](./grid) a umožňuje horizontálne rozmiestniť obsah a upraviť jeho usporiadanie na základe veľkosti obrazovky." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';

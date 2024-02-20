@@ -2,6 +2,7 @@
 title: "Breadcrumbs"
 ---
 
+
 <head>
   <title>Breadcrumbs | Navigačná cesta</title>
   <meta name="description" content="Breadcrumbs je komponent, ktorý zobrazuje cestu, po ktorej používateľ prešiel v rámci aplikácie alebo webu. Tento element zobrazuje hierarchické usporiadanie stránok, v ktorom každý segment cesty 

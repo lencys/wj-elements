@@ -3,8 +3,8 @@ title: "Label"
 ---
 
 <head>
-  <title>Label vo WebJET Elements</title>
-  <meta name="description" content="Label je element, ktorý sa používa na pridávanie textového obsahu do komponentov. Label sa môže použiť napríklad vo vnútri elementov Item, Card alebo tiež v elemente Badge a ďalších." />
+  <title>Label | Element pre pridávanie popisného textového obsahu do komponentov</title>
+  <meta name="description" content="Label je element, ktorý sa používa na pridávanie popisného textového obsahu do komponentov. Label sa môže použiť napríklad vo vnútri elementov Item, Card alebo tiež v elemente Badge a ďalších." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';

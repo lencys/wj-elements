@@ -3,7 +3,7 @@ title: "Layout"
 ---
 
 <head>
-  <title>Layout v Elements</title>
+  <title>Layout | Element umožňujúci jednoducho zostaviť layout stránky</title>
   <meta name="description" content="Layout v Elements sa skladá z troch komponentov Header, Aside a Footer. Pomocou nich je možné jednoducho zostaviť základné rozvrhnutie webstránky." />
 </head>
 

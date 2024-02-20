@@ -5,7 +5,7 @@ title: "Select"
 import { Icon } from '@iconify/react';
 
 <head>
-  <title>Select: Element rozširuje možnosti štandardného HTML select elementu.</title>
+  <title>Select | Element rozširuje možnosti štandardného HTML select elementu.</title>
   <meta name="description" content="Select element rozširuje možnosti štandardného HTML select elementu. Podporuje jeden alebo viacero výberov pridaním atribútu `multiple`.Okrem toho ponúka funkcie, ako sú vymazateľné výbery a vlastný zastupný text (placeholder)." />
 </head>
 

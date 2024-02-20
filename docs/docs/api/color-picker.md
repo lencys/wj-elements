@@ -3,7 +3,7 @@ title: "Color Picker"
 ---
 
 <head>
-  <title>Color Picker: WebJET Element pre vybratie farby z farebnej palety</title>
+  <title>Color Picker | WebJET Element pre vybratie farby z farebnej palety</title>
   <meta name="description" content="Color picker je element, ktorý zobrazuje farebnú paletu a umožňuje používateľom vybrať jednu z jej farieb." />
 </head>
 

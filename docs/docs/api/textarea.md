@@ -3,7 +3,7 @@ title: "Textarea"
 ---
 
 <head>
-  <title>Textarea element rozšírený o nové funkcie</title>
+  <title>Textarea  |  Element textarea rozšírený o nové funkcie</title>
   <meta name="description" content="Textarea rozširuje možnosti štandardného HTML textarea elementu. Pridáva štýly pre dosiahnutie vizuálne konzistentného používateľského rozhrania a ponúka nové funkcie." />
 </head>
 

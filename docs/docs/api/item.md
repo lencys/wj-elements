@@ -3,7 +3,7 @@ title: "Item"
 ---
 
 <head>
-  <title>Item: Input, Edit, or Delete iOS and Android Item Elements</title>
+  <title>Item | Bloky List elementu s rôznorodým obsahom</title>
   <meta name="description" content="Komponenty Item sú bloky, ktoré môžu obsahovať rôzne typy obsahu vrátane textu, ikon, avatarov, obrázkov, inputov a iných štandardných alebo custom elementov. Item elementy sa zvyčajne nachádzajú vo vnútri List elementov." />
 </head>
 

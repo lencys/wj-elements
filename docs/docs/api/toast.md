@@ -3,7 +3,7 @@ title: "Toast TODO"
 ---
 
 <head>
-  <title>Toast: Nenápadný spôsob zobrazovania krátkych oznámení</title>
+  <title>Toast |  Nenápadný spôsob zobrazovania krátkych oznámení</title>
   <meta name="description" content="Komponent toast poskytuje nenápadný spôsob zobrazovania krátkych oznámení používateľovi." />
 </head>
 

@@ -3,15 +3,15 @@ title: "Main"
 ---
 
 <head>
-  <title>Layout: Main element</title>
-  <meta name="description" content="Main je prvok na tvorbu layoutov a zobrazuje sa vedľa [Main](./main) elementu. Používa sa väčšinou na zobrazenie hlavného obsahu." />
+  <title>Main | Element určený na tvorbu layoutov</title>
+  <meta name="description" content="Main je prvok na tvorbu layoutov a zobrazuje sa vedľa [Aside](./aside) elementu. Používa sa väčšinou na zobrazenie hlavného obsahu." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Main je prvok na tvorbu layoutov a zobrazuje sa vedľa [Main](./main) elementu. Používa sa väčšinou na zobrazenie hlavného obsahu.
+Main je prvok na tvorbu layoutov a zobrazuje sa vedľa [Aside](./aside) elementu. Používa sa väčšinou na zobrazenie hlavného obsahu.
 
 ## Príklady použitia
 

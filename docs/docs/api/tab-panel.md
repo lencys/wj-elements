@@ -3,7 +3,7 @@ title: "TabPanel"
 ---
 
 <head>
-  <title>TabPanel - Kontajner obsahu záložky (Tab)</title>
+  <title>TabPanel | Kontajner obsahu pre Tab element</title>
   <meta name="description" content="Komponent TabPanel je podriadeným komponentom TabGroup a slúži ako kontajner obsahu záložky. Používa sa v kombinácii s elementom Tab." />
 </head>
 

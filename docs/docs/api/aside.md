@@ -2,6 +2,13 @@
 title: "Aside"
 ---
 
+import Props from '@ionic-internal/component-api/v1/avatar/props.md';
+import Events from '@ionic-internal/component-api/v1/avatar/events.md';
+import Methods from '@ionic-internal/component-api/v1/avatar/methods.md';
+import Parts from '@ionic-internal/component-api/v1/avatar/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/avatar/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/avatar/slots.md';
+
 <head>
   <title>Layout: Aside element</title>
   <meta name="description" content="Aside je prvok na tvorbu layoutov a zobrazuje sa vedľa elementu Main. Používa sa väčšinou na zobrazenie doplnkových informácií k hlavnému obsahu, prípadne navigácie." />

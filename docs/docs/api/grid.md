@@ -3,7 +3,7 @@ title: "Grid"
 ---
 
 <head>
-  <title>Grid: flexibilný spôsob vytvárania responzívnych layoutov</title>
+  <title>Grid | Flexibilný spôsob vytvárania responzívnych layoutov</title>
   <meta name="description" content="Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí(layoutov) rozdelením obrazovky na mriežku riadkov (rows) a stĺpcov (columns). Grid je založený na rozložení s 12 stĺpcami, podobne ako mnohé iné populárne grid systémy." />
 </head>
 

@@ -3,7 +3,7 @@ title: "Tab"
 ---
 
 <head>
-  <title>Tab - tlačidlo navigácie založenej na záložkách</title>
+  <title>Tab |  Tlačidlo záložkovej navigácie</title>
   <meta name="description" content="Komponent Tab je podriadeným komponentom TabGroup a slúži ako tlačidlo navigácie založenej na záložkách. Používa sa v kombinácii s elementom TabPanel." />
 </head>
 

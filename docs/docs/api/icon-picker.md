@@ -3,7 +3,7 @@ title: 'Icon Picker'
 ---
 
 <head>
-  <title>Icon: WebJET Element pre zobrazovanie ikon</title>
+  <title>Icon | WebJET Element pre vybratie zo sady ikon</title>
   <meta
     name="description"
     content="Tento komponent poskytuje jednoduchý spôsob zobrazenia ikon zo sady SVG obrázkov, pričom umožňuje rôzne možnosti prispôsobenia."

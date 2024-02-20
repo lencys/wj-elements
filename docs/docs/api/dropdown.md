@@ -3,7 +3,7 @@ title: "Dropdown"
 ---
 
 <head>
-  <title>Dropdown: WebJET Element pre zobrazenie kontextového menu</title>
+  <title>Dropdown | WebJET Element pre zobrazenie kontextového menu</title>
   <meta name="description" content="Dropdown element slúži na zobrazenie kontextového menu po kliknutí. Menu möže obsahovať aj ikony." />
 </head>
 

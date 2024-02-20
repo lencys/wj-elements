@@ -218,5 +218,13 @@
   "sidebar.docs.category.Prispôsobenie": {
     "message": "Prispôsobenie",
     "description": "The label for category Prispôsobenie in sidebar docs"
+  },
+  "sidebar.api.category.Label": {
+    "message": "Label",
+    "description": "The label for category Label in sidebar api"
+  },
+  "sidebar.api.category.Toolbar": {
+    "message": "Toolbar",
+    "description": "The label for category Toolbar in sidebar api"
   }
 }

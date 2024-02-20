@@ -1,6 +1,17 @@
 ---
 title: "Card Title"
 ---
+import Props from '@ionic-internal/component-api/v1/card-subtitle/props.md';
+import Events from '@ionic-internal/component-api/v1/card-subtitle/events.md';
+import Methods from '@ionic-internal/component-api/v1/card-subtitle/methods.md';
+import Parts from '@ionic-internal/component-api/v1/card-subtitle/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/card-subtitle/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/card-subtitle/slots.md';
+
+<head>
+  <title>Card Title | Zobrazujúci názov karty</title>
+  <meta name="description" content="Element Card Title je komponent navrhnutý na použitie v rámci elementu Card Header a zobrazuje názov karty, čím používateľovi umožňuje rýchlo identifikovať jej predmet alebo obsah." />
+</head>
 
 Element Card Title je komponent navrhnutý na použitie v rámci elementu [Card Header](./card-header) a zobrazuje názov karty, čím používateľovi umožňuje rýchlo identifikovať jej predmet alebo obsah.
 

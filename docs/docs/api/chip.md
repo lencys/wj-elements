@@ -2,6 +2,11 @@
 title: "Chip"
 ---
 
+<head>
+  <title>Chip | Malý univerzálny vizuálny blok</title>
+  <meta name="description" content="Komponent Chip je univerzálny element, ktorý predstavuje malý vizuálny blok obsahujúci rôzne ďalšie elementy, ako napríklad avatary, text a ikony. Ponúka možnosti prispôsobenia farieb, stavov a ďalšie." />
+</head>
+
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />

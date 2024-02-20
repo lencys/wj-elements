@@ -2,6 +2,13 @@
 title: "Badge"
 ---
 
+import Props from '@ionic-internal/component-api/v1/avatar/props.md';
+import Events from '@ionic-internal/component-api/v1/avatar/events.md';
+import Methods from '@ionic-internal/component-api/v1/avatar/methods.md';
+import Parts from '@ionic-internal/component-api/v1/avatar/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/avatar/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/avatar/slots.md';
+
 <head>
   <title>Badge | Odznaky</title>
   <meta name="description" content="Badge sú inline-block elementy, ktoré majú informatívny charakter a zvyčajne sa zobrazujú v blízkosti iného elementu. Používajú sa ako upozornenie, že k elementu sú priradené ďalšie elementy, a informujú používateľa o ich počte." />

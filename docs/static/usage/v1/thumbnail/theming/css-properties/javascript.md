@@ -8,6 +8,6 @@
 </style>
 
 <wj-thumbnail class="example-thumbnail">
-  <img alt="Silhouette of mountains" src="../../../../../img/thumbnail.svg" />
+  <img alt="Silhouette of mountains" src="../../../../../img/demos/thumbnail.svg" />
 </wj-thumbnail>
 ```

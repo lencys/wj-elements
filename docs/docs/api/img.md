@@ -3,7 +3,7 @@ title: "Image"
 ---
 
 <head>
-  <title>Image Element pre lazy loading obrázkov</title>
+  <title>Image Element | Element pre zobrazovanie obrázkov</title>
   <meta name="description" content="Element Image pridáva obrázkom funkciu lazyload a počas načítavania zobrazuje zástupnú ikonu (placeholder) v podobe animovaného obrázka." />
 </head>
 

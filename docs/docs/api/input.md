@@ -3,7 +3,7 @@ title: "Input"
 ---
 
 <head>
-  <title>Input: Custom Input Element</title>
+  <title>Input: Rozšírenie štandardného Input elementu</title>
   <meta name="description" content="Input element rozširuje možnosti štandardného HTML inputu pokročilými funkciami a možnosťami prispôsobenia. " />
 </head>
 

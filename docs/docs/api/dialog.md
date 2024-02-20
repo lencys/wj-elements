@@ -3,7 +3,7 @@ title: "Dialog"
 ---
 
 <head>
-  <title>Dialog | Tlačidlo</title>
+  <title>Dialog | Dialógové okno s prispôsobiteľným obsahom</title>
   <meta name="description" content="Element Dialog zobrazuje dialógové okno s prispôsobiteľným obsahom. Je možné ho využiť napríklad na jednoduché zobrazenie informácie používateľovi alebo tiež vyžiadať jeho potvrdenie alebo zrušenie ním vykonanej akcie." />
 </head>
 

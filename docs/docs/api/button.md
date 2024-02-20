@@ -2,6 +2,13 @@
 title: "Button"
 ---
 
+import Props from '@ionic-internal/component-api/v1/button/props.md';
+import Events from '@ionic-internal/component-api/v1/button/events.md';
+import Methods from '@ionic-internal/component-api/v1/button/methods.md';
+import Parts from '@ionic-internal/component-api/v1/button/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/button/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/button/slots.md';
+
 <head>
   <title>Button | Tlačidlo</title>
   <meta name="description" content="Tlačidlá sú klikateľný element, ktorý umožnuje zobraziť text, ikonu, prípadne oboje. Tlačidlá si je možné jednoducho prispôsobiť použitím rôznych atribútov a CSS vlastností." />

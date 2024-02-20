@@ -3,8 +3,8 @@ title: "ToolbarActions"
 ---
 
 <head>
-  <title>ToolbarActions | Flexibilný kontajner určený na zobrazovanie rôzneho obsahu organizovaným spôsobom</title>
-  <meta name="description" content="Element Toolbar je flexibilný kontajner určený na zobrazovanie rôzneho obsahu organizovaným spôsobom, ktorý sa zvyčajne používa v hornej časti webových aplikácií alebo stránok. Môže obsahovať tlačidlá, navigáciu, pole vyhľadávania, a iné." />
+  <title>ToolbarActions |  Obaľovací kontajner pre tlačidlá vložené do elementu Toolbar</title>
+  <meta name="description" content="Element ToolbarActions slúži ako obaľovací kontajner pre tlačidlá vložené do elementu Toolbar a zoskupuje tak rôzne akcie toolbaru do jedného celku." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';

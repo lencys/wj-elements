@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/avatar/custom-props.md
 import Slots from '@ionic-internal/component-api/v1/avatar/slots.md';
 
 <head>
-  <title>FileUploadItem</title>
+  <title>FileUploadItem | Položka (súbor) v rámci FileUpload komponentu</title>
   <meta name="description" content="Element FileUploadItem predstavuje individuálnu položku (súbor) v rámci FileUpload komponentu. Zobrazuje podrobnosti, ako je názov súboru, veľkosť, priebeh nahrávania, a poskytuje akcie, ako je vymazanie súboru. Tento komponent je určený na použitie v kontexte FileUpload komponentu." />
 </head>
 

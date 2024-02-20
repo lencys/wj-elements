@@ -3,7 +3,7 @@ title: "TabGroup"
 ---
 
 <head>
-  <title>TabGroup: Navigácia založená na záložkách</title>
+  <title>TabGroup | Navigácia založená na záložkách</title>
   <meta name="description" content="TabGroup zobrazuje navigáciu založenú na záložkách, ktorá umožňuje používateľom prepínať sa a zobrazovať rôzne časti obsahu aplikácie bez potreby prechádzať na inú stránku." />
 </head>
 

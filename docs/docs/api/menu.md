@@ -3,7 +3,7 @@ title: "Menu"
 ---
 
 <head>
-  <title>Menu: Element pre zobrazenie menu</title>
+  <title>Menu | Element pre zobrazenie menu</title>
   <meta name="description" content="Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo." />
 </head>
 

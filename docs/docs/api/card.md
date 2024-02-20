@@ -1,6 +1,17 @@
 ---
 title: "Card"
 ---
+import Props from '@ionic-internal/component-api/v1/card-subtitle/props.md';
+import Events from '@ionic-internal/component-api/v1/card-subtitle/events.md';
+import Methods from '@ionic-internal/component-api/v1/card-subtitle/methods.md';
+import Parts from '@ionic-internal/component-api/v1/card-subtitle/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/card-subtitle/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/card-subtitle/slots.md';
+
+<head>
+  <title>Card | Kontajner formátu karty</title>
+  <meta name="description" content="Element Card je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky Card Header, hlavnej časti Card Content a pätičky CardFooter." />
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

@@ -3,18 +3,15 @@ title: "Container"
 ---
 
 <head>
-  <title>Container element</title>
-  <meta name="description" content="Komponenty Item sú bloky, ktoré môžu obsahovať rôzne typy obsahu vrátane textu, ikon, avatarov, obrázkov, inputov a iných štandardných alebo custom elementov. Item elementy sa zvyčajne nachádzajú vo vnútri list elementov a je s nimi možné interagovať, upravovať ich obsah, preusporiadať, odstrániť, a ďalšie." />
+  <title>Container | Kľúčový prvok pre tvorbu layoutov</title>
+  <meta name="description" content="Container je kľúčový prvok Layoutu, ktorý sa používa na obalenie obsahu stránky. Je navrhnutý tak, aby poskytoval konzistentné rozstupy, odsadenia a zarovnania elementov, ktoré sa v ňom nachádzajú, a zabezpečoval tak správne zobrazenie a tiež prispôsobenie sa rôznym zariadeniam a veľkostiam obrazovky." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-
-## Príklady použitia
-
-Pre informácie o použití **Aside** elementu sa presuňte do dokumentácie [Layoutu](./layout).
+Container je kľúčový prvok Layoutu, ktorý sa používa na obalenie obsahu stránky. Je navrhnutý tak, aby poskytoval konzistentné rozstupy, odsadenia a zarovnania elementov, ktoré sa v ňom nachádzajú, a zabezpečoval tak správne zobrazenie a tiež prispôsobenie sa rôznym zariadeniam a veľkostiam obrazovky. Pre informácie o použití **Container** elementu sa presuňte do dokumentácie [Layoutu](./layout).
 
 ## Atribúty a Vlastnosti
 

@@ -4,7 +4,7 @@ title: "Row"
 
 
 <head>
-  <title>Row: Horizontálny kontajner pre systém Grid</title>
+  <title>Row | Horizontálny kontajner pre systém Grid</title>
   <meta name="description" content="Row (Riadok) je základným prvkom responzívneho Grid systému. Slúži ako kontajner na usporiadanie a horizontálne zarovnanie stĺpcov v rámci väčších layoutov." />
 </head>
 
