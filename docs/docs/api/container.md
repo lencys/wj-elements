@@ -1,6 +1,12 @@
 ---
 title: "Container"
 ---
+import Props from '@ionic-internal/component-api/v1/container/props.md';
+import Events from '@ionic-internal/component-api/v1/container/events.md';
+import Methods from '@ionic-internal/component-api/v1/container/methods.md';
+import Parts from '@ionic-internal/component-api/v1/container/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/container/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/container/slots.md';
 
 <head>
   <title>Container | Kľúčový prvok pre tvorbu layoutov</title>
@@ -15,42 +21,24 @@ Container je kľúčový prvok Layoutu, ktorý sa používa na obalenie obsahu s
 
 ## Atribúty a Vlastnosti
 
-### indent
-
-|  |  |
-| --- | --- |
-| Popis | Ak true, Container dostane na obrazovkách väčších ako 768px odsadenie zľava.  |
-| Atribút | `indent` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### vertical
-
-|  |  |
-| --- | --- |
-| Popis | Ak true, Container dostane `flex-direcation: "column"` |
-| Atribút | `vertical` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Názov | Popis |
-| --- | --- |
-| `--wj-container-indent` |  Odsadenie elementu zľava ( iba na obrazovkách väčších ako 768px)  |
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

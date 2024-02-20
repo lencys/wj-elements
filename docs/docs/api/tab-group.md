@@ -1,6 +1,12 @@
 ---
 title: "TabGroup"
 ---
+import Props from '@ionic-internal/component-api/v1/tab-group/props.md';
+import Events from '@ionic-internal/component-api/v1/tab-group/events.md';
+import Methods from '@ionic-internal/component-api/v1/tab-group/methods.md';
+import Parts from '@ionic-internal/component-api/v1/tab-group/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/tab-group/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/tab-group/slots.md';
 
 <head>
   <title>TabGroup | Navigácia založená na záložkách</title>
@@ -46,46 +52,24 @@ import Bottom from '@site/static/usage/v1/tab-group/bottom/index.md';
 
 ## Atribúty a Vlastnosti
 
-### variant
-
-|  |  |
-| --- | --- |
-| Popis |  Určuje variantu rozloženia TabGroup. Medzi možné hodnoty patrí `start`, `end` a `bottom`.   |
-| Atribút | `variant` |
-| Typ | `start`, `end`,`bottom`, `undefined` |
-| Predvolená hodnota | `undefined` |
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
-## CSS Shadow Party
+## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícii žiadne shadow party.
-
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-
-| Názov                      | Description                                      |
-|----------------------------|--------------------------------------------------|
-| `--wj-font-size`           | Určuje veľkosť písma.                        |
-| `--wj-tab-color-active`    | Určuje farbu pozadia aktívneho tab elementu. |
-| `--wj-tab-color-hover`     | Určuje farbu pozadia tab elementu po ukázaní myšou.   |
-| `--wj-tab-font-weight`     | Nastavuje váhu písma.                    |
-| `--wj-tab-letter-spacing`  | Nastavuje vzdialenosť medzi písmenami.    |
-| `--wj-tab-padding-bottom`  | Určuje spodné odsadenie tabu.            |
-| `--wj-tab-padding-inline`  | Určuje horizontálne odsadenie tabu.      |
-| `--wj-tab-padding-top`     | Určuje horné odsadenie tabu.             |
-| `--wj-tab-text-transfrom`  | Nastavuje transformáciu textu v tabe.    |
-
+<CustomProps />
 
 ## Sloty
 
-| Názov | Popis |
-|-----------|--- |
-| `nav`      | Obsah sa umiestni do `nav` elementu. |
+<Slots />

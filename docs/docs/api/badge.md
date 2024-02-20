@@ -1,13 +1,12 @@
 ---
 title: "Badge"
 ---
-
-import Props from '@ionic-internal/component-api/v1/avatar/props.md';
-import Events from '@ionic-internal/component-api/v1/avatar/events.md';
-import Methods from '@ionic-internal/component-api/v1/avatar/methods.md';
-import Parts from '@ionic-internal/component-api/v1/avatar/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/avatar/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/avatar/slots.md';
+import Props from '@ionic-internal/component-api/v1/badge/props.md';
+import Events from '@ionic-internal/component-api/v1/badge/events.md';
+import Methods from '@ionic-internal/component-api/v1/badge/methods.md';
+import Parts from '@ionic-internal/component-api/v1/badge/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/badge/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/badge/slots.md';
 
 <head>
   <title>Badge | Odznaky</title>
@@ -40,39 +39,24 @@ import Colors from '@site/static/usage/v1/badge/theming/colors/index.md';
 
 ## Atribúty a Vlastnosti
 
-### color
-
-|  |  |
-| --- | --- |
-| Popis | Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `"primary"`, `"complete"`,  `"success"`, `"warning"`, `"danger"`, `"info"`, `"contrast-low"` a `"menu"`. |
-| Atribút | `color` |
-| Typ | `"complete"` ｜ `"danger"` ｜ `"info"` ｜ `"menu"` ｜ `"primary"` ｜ `"success"` ｜ `"warning"` ｜ `undefined` |
-| Predvolená hodnota | `"contrast-low"` |
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-
-| Názov | Popis |
-| --- | --- |
-| `--wj-chip-border-radius` | Upraví zaoblenie elementu badge |
+<CustomProps />
 
 ## Sloty
 
-| Názov | Popis |
-| --- | --- |
-| `` | Obsah sa umiestni medzi named sloty. |
-| `end` | Obsah sa umiestni vpravo v LTR a vľavo v RTL. |
-| `icon-only` | Mal by sa použiť na ikonu v tlačidle, ktoré neobsahuje text. |
-| `start` | Obsah je umiestnený vľavo v LTR a vpravo v RTL. |
+<Slots />

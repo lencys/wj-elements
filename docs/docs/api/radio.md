@@ -1,6 +1,12 @@
 ---
 title: "Radio"
 ---
+import Props from '@ionic-internal/component-api/v1/radio/props.md';
+import Events from '@ionic-internal/component-api/v1/radio/events.md';
+import Methods from '@ionic-internal/component-api/v1/radio/methods.md';
+import Parts from '@ionic-internal/component-api/v1/radio/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/radio/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/radio/slots.md';
 
 <head>
   <title>Radio komponent | Vylepšená verzia štandardného HTML radio elementu</title>
@@ -30,7 +36,7 @@ import Inline from '@site/static/usage/v1/radio/inline/index.md';
 
 ## Úprava štýlov
 
-### Colors
+### color
 
 Pomocou vlastnosti `color` je možné zmeniť farbu radio elementu.
 
@@ -38,87 +44,26 @@ import Color from '@site/static/usage/v1/radio/color/index.md';
 
 <Color />
 
-### CSS Custom Properties
-
 ## Atribúty a Vlastnosti
 
-### color
-
-
-|  |  |
-| --- | --- |
-| Popis | Určuje farbu radio inputu po vybratí elementu na jednu z farebnej palety vašej aplikácie. Predvolené možnosti sú: `complete`, `danger`, `neutral`, `primary`, `success` a `warning`. |
-| Atribút | `color` |
-| Typ | `complete`, `danger`, `neutral`, `primary`, `success`, `warning` |
-| Predvolená hodnota | `undefined` |
-
-### checked
-
-|  |  |
-| --- | --- |
-| Popis | Označuje aktuálne vybratú možnosť |
-| Atribút | `checked` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### disabled
-
-|  |  |
-| --- | --- |
-| Popis | Ak `true`, možnosť nie je možné zvoliť |
-| Atribút | `disabled` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### indeterminate
-
-|  |  |
-| --- | --- |
-| Popis | Po pridaní atribútu `indeterminate` sa nastaví predvolený stav radio elementu na neutrálny, tzn. ani `true` ani `false`. |
-| Atribút | `indeterminate` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### name
-
-|  |  |
-| --- | --- |
-| Popis | Názov radio elementu  |
-| Atribút | `name` |
-| Typ | `string` |
-| Predvolená hodnota | `this.inputId` |
-
-### value
-
-|  |  |
-| --- | --- |
-| Popis | Hodnota radio elementu  |
-| Atribút | `value` |
-| Typ | `string` |
-| Predvolená hodnota | `undefined` |
-
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Názov             | Popis       |
-|---------------------|-------------|
-| `--wj-radio-margin-bottom` | Spodné odsadenie radio elementu. |
-| `--wj-radio-margin-inline` | Pravé a ľavé odsadenie radio elementu.  |
-| `--wj-radio-margin-top` | Horné odsadenie radio elementu. |
-
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

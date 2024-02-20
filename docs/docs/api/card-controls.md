@@ -1,13 +1,12 @@
 ---
 title: "Card Controls"
 ---
-
-import Props from '@ionic-internal/component-api/v1/card-subtitle/props.md';
-import Events from '@ionic-internal/component-api/v1/card-subtitle/events.md';
-import Methods from '@ionic-internal/component-api/v1/card-subtitle/methods.md';
-import Parts from '@ionic-internal/component-api/v1/card-subtitle/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/card-subtitle/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/card-subtitle/slots.md';
+import Props from '@ionic-internal/component-api/v1/card-controls/props.md';
+import Events from '@ionic-internal/component-api/v1/card-controls/events.md';
+import Methods from '@ionic-internal/component-api/v1/card-controls/methods.md';
+import Parts from '@ionic-internal/component-api/v1/card-controls/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/card-controls/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/card-controls/slots.md';
 
 <head>
   <title>Card Controls</title>
@@ -18,22 +17,26 @@ Tento element slúži na použitie v [Card Header.](./card-header) pre zobrazeni
 
 Pre viac informácií o použití Card Controls sa presuňte do dokumentácie elementu [Card Header.](./card-header).
 
+## Atribúty a Vlastnosti
+
+<Props />
+
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

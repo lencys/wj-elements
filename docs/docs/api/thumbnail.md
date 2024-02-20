@@ -1,6 +1,12 @@
 ---
 title: "Thumbnail"
 ---
+import Props from '@ionic-internal/component-api/v1/thumbnail/props.md';
+import Events from '@ionic-internal/component-api/v1/thumbnail/events.md';
+import Methods from '@ionic-internal/component-api/v1/thumbnail/methods.md';
+import Parts from '@ionic-internal/component-api/v1/thumbnail/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/thumbnail/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/thumbnail/slots.md';
 
 <head>
   <title>Thumbnail | Komponent pre zobrazenie náhľadov obrázkov</title>
@@ -35,27 +41,24 @@ import CSSProps from '@site/static/usage/v1/thumbnail/theming/css-properties/ind
 
 ## Atribúty a Vlastnosti
 
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Vlasnosť   | Popis      |
-|-----------|-------------|
-| `--wj-border-radius`    | Zaoblenie okrajov elementu |
-| `--wj-thumbnail-height` | Výška elementu|
-| `--wj-thumbnail-width`  | Šírka elementu |
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

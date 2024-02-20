@@ -1,13 +1,12 @@
 ---
 title: "Card Header"
 ---
-
-import Props from '@ionic-internal/component-api/v1/card-subtitle/props.md';
-import Events from '@ionic-internal/component-api/v1/card-subtitle/events.md';
-import Methods from '@ionic-internal/component-api/v1/card-subtitle/methods.md';
-import Parts from '@ionic-internal/component-api/v1/card-subtitle/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/card-subtitle/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/card-subtitle/slots.md';
+import Props from '@ionic-internal/component-api/v1/card-header/props.md';
+import Events from '@ionic-internal/component-api/v1/card-header/events.md';
+import Methods from '@ionic-internal/component-api/v1/card-header/methods.md';
+import Parts from '@ionic-internal/component-api/v1/card-header/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/card-header/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/card-header/slots.md';
 
 <head>
   <title>Card Header</title>
@@ -22,31 +21,24 @@ Pre viac informácií o použití Card Header sa presuňte do dokumentácie elem
 
 ## Atribúty a Vlastnosti
 
-### separator
-
-|  |  |
-| --- | --- |
-| Popis | Ak `true`, do elementu sa vloží horizontálny oddeľovač |
-| Atribút | `separator` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

@@ -243,18 +243,25 @@ const confirmDiscardChanges = async () => {
 </Tabs>
 
 ## Atribúty a Vlastnosti
+
 <Props />
 
 ## Eventy
+
 <Events />
 
 ## Metódy
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+
+<Methods/>
 
 ## CSS Shadow Parts
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
-## CSS Custom vlastnosti
-Pre tento komponent nie sú k dispozícií žiadne CSS Custom vlastnosti.
+
+<Parts />
+
+## CSS Custom Vlastnosti
+
+<CustomProps />
 
 ## Sloty
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+
+<Slots />

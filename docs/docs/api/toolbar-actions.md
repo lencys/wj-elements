@@ -1,6 +1,12 @@
 ---
 title: "ToolbarActions"
 ---
+import Props from '@ionic-internal/component-api/v1/toolbar-actions/props.md';
+import Events from '@ionic-internal/component-api/v1/toolbar-actions/events.md';
+import Methods from '@ionic-internal/component-api/v1/toolbar-actions/methods.md';
+import Parts from '@ionic-internal/component-api/v1/toolbar-actions/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/toolbar-actions/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/toolbar-actions/slots.md';
 
 <head>
   <title>ToolbarActions |  Obaľovací kontajner pre tlačidlá vložené do elementu Toolbar</title>
@@ -17,25 +23,24 @@ Pre viac informácií o použití ToolbarActions prejdite do dokumentácie eleme
 
 ## Atribúty a Vlastnosti
 
-Pre tento komponent nie sú k dispozícii žiadne atribúty a vlastnosti.
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
-
+<Slots />

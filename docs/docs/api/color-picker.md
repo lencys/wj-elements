@@ -1,6 +1,12 @@
 ---
 title: "Color Picker"
 ---
+import Props from '@ionic-internal/component-api/v1/color-picker/props.md';
+import Events from '@ionic-internal/component-api/v1/color-picker/events.md';
+import Methods from '@ionic-internal/component-api/v1/color-picker/methods.md';
+import Parts from '@ionic-internal/component-api/v1/color-picker/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/color-picker/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/color-picker/slots.md';
 
 <head>
   <title>Color Picker | WebJET Element pre vybratie farby z farebnej palety</title>
@@ -25,24 +31,24 @@ import Basic from '@site/static/usage/v1/color-picker/basic/index.md';
 
 ## Atribúty a Vlastnosti
 
-Pre tento komponent nie sú k dispozícii žiadne dodatočné atribúty a vlastnosti.
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
-## CSS Shadow Party
+## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícii žiadne shadow party.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú k dispozícii žiadne CSS custom vlastnosti.
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

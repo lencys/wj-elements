@@ -1,6 +1,12 @@
 ---
 title: "Router"
 ---
+import Props from '@ionic-internal/component-api/v1/router/props.md';
+import Events from '@ionic-internal/component-api/v1/router/events.md';
+import Methods from '@ionic-internal/component-api/v1/router/methods.md';
+import Parts from '@ionic-internal/component-api/v1/router/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/router/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/router/slots.md';
 
 <head>
   <title>Router | Router Komponent navigácie v rámci webových aplikácií</title>
@@ -81,58 +87,24 @@ interface RouterCustomEvent extends CustomEvent {
 
 ## Atribúty a Vlastnosti
 
-### root
-
-|  |  |
-| --- | --- |
-| Popis | Description	The root path to use when matching URLs. By default, this is set to "/", but you can specify an alternate prefix for all URL paths. |
-| Atribút | `root` |
-| Typ | `string` |
-| Predvolená hodnota | `/` |
-
-### useHash
-
-|  |  |
-| --- | --- |
-| Popis | Description	The router can work in two "modes": - With hash: /index.html#/path/to/page - Without hash: /path/to/page. <br /><br /> Using one or another might depend in the requirements of your app and/or where it's deployed. Usually "hash-less" navigation works better for SEO and it's more user friendly too, but it might requires additional server-side configuration in order to properly work. <br /><br />On the other side hash-navigation is much easier to deploy, it even works over the file protocol. <br /> By default, this property is true, change to false to allow hash-less URLs. |
-| Atribút | `use-hash` |
-| Typ | `boolean` |
-| Predvolená hodnota | `true` |
+<Props />
 
 ## Eventy
 
-Name	Description
-ionRouteDidChange	Emitted when the route had changed
-ionRouteWillChange	Event emitted when the route is about to change
-
-| Názov                           | Popis                  |
-|---------------------------------|------------------------|
-| `ionRouteDidChange` | Emitted when the route had changed | 
-| `ionRouteWillChange` | Event emitted when the route is about to change | 
+<Events />
 
 ## Metódy
 
-### back
-
-|  |  |
-| --- | --- |
-| Popis | Go back to previous page in the window.history. |
-| Signature | `back() => Promise<void>` |
-
-
-### push
-
-|  |  |
-| --- | --- |
-| Popis | 	Navigate to the specified path. |
-| Signature | `Signature	push(path: string, direction?: RouterDirection, animation?: AnimationBuilder) => Promise<boolean>` |
-
+<Methods/>
 
 ## CSS Shadow Parts
-Pre tento komponent nie sú k dispozícii žiadne CSS Shadow Parts.
+
+<Parts />
 
 ## CSS Custom Vlastnosti
-Pre tento komponent nie sú k dispozícii žiadne CSS Custom Vlastnosti.
+
+<CustomProps />
 
 ## Sloty
-Pre tento komponent nie sú k dispozícii žiadne Sloty.
+
+<Slots />

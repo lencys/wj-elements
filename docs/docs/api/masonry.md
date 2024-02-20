@@ -1,6 +1,12 @@
 ---
 title: "Masonry"
 ---
+import Props from '@ionic-internal/component-api/v1/masonry/props.md';
+import Events from '@ionic-internal/component-api/v1/masonry/events.md';
+import Methods from '@ionic-internal/component-api/v1/masonry/methods.md';
+import Parts from '@ionic-internal/component-api/v1/masonry/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/masonry/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/masonry/slots.md';
 
 <head>
   <title>Masonry | Vytvára responzívne 'Masonry' rozvrhnutie podriadených prvkov</title>
@@ -38,65 +44,24 @@ import Gap from '@site/static/usage/v1/masonry/gap/index.md';
 
 ## Atribúty a Vlastnosti
 
-### cols
-
-|  |  |
-| --- | --- |
-| Popis | Definuje počet stĺpcov. Pri hodnote `auto` zvolí počet stĺpcov podľa šírky rodiča. |
-| Atribút | `cols` |
-| Typ | `auto`, `number` |
-| Predvolená hodnota | `auto` |
-
-### debounce
-
-|  |  |
-| --- | --- |
-| Popis | Určuje čas v ms, za ktorý sa rozloženie preformátuje pri každej zmene veľkosti rozloženia masonry. Tento reflow sa oneskoruje, aby sa zabránilo príliš častému vyvolaniu algoritmu rozloženia za sebou. |
-| Atribút | `debounce` |
-| Typ | `number` |
-| Predvolená hodnota | `300` |
-
-### gap
-
-|  |  |
-| --- | --- |
-| Popis | Definuje šírku medzery medzi stĺpcami v pixeloch. |
-| Atribút | `gap` |
-| Typ | `number` |
-| Predvolená hodnota | `24` |
-
-### max-col-width
-
-|  |  |
-| --- | --- |
-| Popis | Nastaví maximálnu šírku stĺpcov v pixeloch. |
-| Atribút | `max-col-width` |
-| Typ | `number` |
-| Predvolená hodnota | `500` |
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-| Názov           | Popis                    |
-|-----------------|--------------------------|
-| `native`        | Odkazuje na `div` element vo vnútri elementu |
-| `column`        | Odkazuje na všetky stĺpce vo vnútri elementu |
-| `column-index`  | Odkazuje na konkrétny stĺpec element vo vnútri elementu, kde `index` predstavuje poradie stĺpca. Poradie začína nulou. |
-
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
+<CustomProps />
 
 ## Sloty
 
-| Názov | Popis |
-| --- | --- |
-| `{index}` | Obsah sa umiestni do stĺpca, `index` predstavuje poradie stĺpca. |
+<Slots />

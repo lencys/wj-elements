@@ -1,6 +1,12 @@
 ---
 title: "Progress bar"
 ---
+import Props from '@ionic-internal/component-api/v1/progress-bar/props.md';
+import Events from '@ionic-internal/component-api/v1/progress-bar/events.md';
+import Methods from '@ionic-internal/component-api/v1/progress-bar/methods.md';
+import Parts from '@ionic-internal/component-api/v1/progress-bar/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/progress-bar/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/progress-bar/slots.md';
 
 <head>
   <title>Progress Bar | Horizontal App Progress Bar for Loading Indicator</title>
@@ -86,84 +92,26 @@ import Colors from '@site/static/usage/v1/progress-bar/theming/colors/index.md';
 <Colors />
 
 
-## Vlastnosti
+## Atribúty a Vlastnosti
 
-### color
-
-|  |  |
-| --- | --- |
-| Popis | Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `"primary"`, `"complete"`, `"success"`, `"warning"`, `"danger"`, `"dark"` a `"light"`. |
-| Atribút | `color` |
-| Typ | `"complete"` ｜ `"danger"` ｜ `"dark"` ｜ `"light"` ｜ `"primary"` ｜ `"success"` ｜ `"warning"` ｜ `undefined` |
-| Predvolená hodnota | `"dark"` |
-
-### linecap
-
-|  |  |
-| --- | --- |
-| Popis | Definuje ukazovateľ priebehu so zaobleným koncom. |
-| Atribút | `round` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### progress
-
-|  |  |
-| --- | --- |
-| Popis | Určuje hodnotu priebehu v percentách. |
-| Atribút | `progress` |
-| Typ | `number` |
-| Predvolená hodnota | `0` |
-
-### radius
-
-|  |  |
-| --- | --- |
-| Popis | Určuje hodnotu priemeru progress baru v pixeloch. |
-| Atribút | `radius` |
-| Typ | `number` |
-| Predvolená hodnota | `70` |
-
-### stroke
-
-|  |  |
-| --- | --- |
-| Popis | Určuje hodnotu šírky progress baru v pixeloch. |
-| Atribút | `stroke` |
-| Typ | `number` |
-| Predvolená hodnota | `12` |
-
-### type
-
-|  |  |
-| --- | --- |
-| Popis | Pridaním vlastnosti type s hodnotou “circle” zobrazíte progress bar s okrúhlym dizajnom.  |
-| Atribút | `type` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Názov | Popis |
-| --- | --- |
-| `--wj-progress-bar-color` | Definuje farbu ukazovateľa priebehu |
-| `--wj-progress-bar-text-size` | Definuje veľkosť textu |
+<CustomProps />
 
 ## Sloty
 
-| Názov | Popis |
-| --- | --- |
-| `end` | Obsah sa umiestni vpravo v LTR a vľavo v RTL. |
-| `start` | Obsah je umiestnený vľavo v LTR a vpravo v RTL. |
+<Slots />

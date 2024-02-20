@@ -1,6 +1,12 @@
 ---
 title: "Image Comparer"
 ---
+import Props from '@ionic-internal/component-api/v1/image-comparer/props.md';
+import Events from '@ionic-internal/component-api/v1/image-comparer/events.md';
+import Methods from '@ionic-internal/component-api/v1/image-comparer/methods.md';
+import Parts from '@ionic-internal/component-api/v1/image-comparer/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/image-comparer/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/image-comparer/slots.md';
 
 <head>
   <title>Image Comparer | Porovnávač obrázkov</title>
@@ -25,29 +31,24 @@ import Basic from '@site/static/usage/v1/img-comparer/basic/index.md';
 
 ## Atribúty a Vlastnosti
 
-Pre tento komponent nie sú k dispozícii žiadne Atribúty a Vlastnosti.
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-| Názov                           | Popis                    |
-|---------------------------------|--------------------------|
-| `divider`                       | Odkazuje na div posuvníka `divider` vo vnútri elementu. |
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú k dispozícii žiadne CSS custom vlastnosti.
+<CustomProps />
 
 ## Sloty
 
-| Názov                           | Popis                    |
-|---------------------------------|--------------------------|
-| `after`                         | Slúži na vloženie obrázka pred `posuvník`. |
-| `before`                        | Slúži na vloženie obrázka za `posuvník`. |
+<Slots />

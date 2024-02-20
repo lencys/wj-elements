@@ -21,22 +21,26 @@ Element Card subtitle je komponent navrhnutý na použitie v rámci elementu [Ca
 
 Pre viac informácií o použití Card Subtitle sa presuňte do dokumentácie elementu [card](./card).
 
+## Atribúty a Vlastnosti
+
+<Props />
+
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

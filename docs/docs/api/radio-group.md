@@ -1,6 +1,12 @@
 ---
 title: "RadioGroup"
 ---
+import Props from '@ionic-internal/component-api/v1/radio-group/props.md';
+import Events from '@ionic-internal/component-api/v1/radio-group/events.md';
+import Methods from '@ionic-internal/component-api/v1/radio-group/methods.md';
+import Parts from '@ionic-internal/component-api/v1/radio-group/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/radio-group/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/radio-group/slots.md';
 
 <head>
   <title>RadioGroup | Kontajner pre rádiové tlačidlá</title>
@@ -14,40 +20,24 @@ Umožňuje používateľom vybrať jednu možnosť zo súboru možností, pričo
 
 ## Atribúty a Vlastnosti
 
-### inline
-
-|  |  |
-| --- | --- |
-| Popis | Usporiada elementy v horizontálnom rozložení |
-| Atribút | `inline` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### value
-
-|  |  |
-| --- | --- |
-| Popis | Nastaví radio element so zvolenou hodnotou ako predvolene označený |
-| Atribút | `value` |
-| Typ | `string` |
-| Predvolená hodnota | `undefined` |
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú k dispozícií žiadne CSS Custom Vlastnosti.
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

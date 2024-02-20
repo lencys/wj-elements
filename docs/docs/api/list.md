@@ -47,39 +47,24 @@ import Lines from '@site/static/usage/v1/list/lines/index.md';
 
 ## Atribúty a Vlastnosti
 
-### lines
-
-|  |  |
-| --- | --- |
-| Popis | Štýl oddeľovacích čiar medzi elementami Item vo vnútri List elementu |
-| Atribút | `lines` |
-| Typ | `full`, `inset`, `none` |
-| Predvolená hodnota | `inset` |
-
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú verejne dostupné žiadne metódy.
+<Methods/>
 
-## CSS Shadow Party
+## CSS Shadow Parts
 
-Pre tento komponent nie sú verejne dostupné žiadne CSS Shadow Party.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Názov | Popis |
-| --- | --- |
-| `--wj-list-background`        |  Pozadie List elementu           |
-| `--wj-list-border-radius`     |  Zaoblenie List elementu           |
-| `--wj-list-inset-padding`     |  Vnútorné odsadenie List elementu           |
+<CustomProps />
 
 ## Sloty
 
-| Názov | Popis |
-| --- | --- |
-| `end` | Obsah sa umiestni vpravo od textu tlačidla v LTR a vľavo v RTL. |
-| `start` | Obsah je umiestnený vľavo od textu tlačidla v LTR a vpravo v RTL. |
+<Slots />

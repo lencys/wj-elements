@@ -1,6 +1,12 @@
 ---
 title: "Col"
 ---
+import Props from '@ionic-internal/component-api/v1/col/props.md';
+import Events from '@ionic-internal/component-api/v1/col/events.md';
+import Methods from '@ionic-internal/component-api/v1/col/methods.md';
+import Parts from '@ionic-internal/component-api/v1/col/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/col/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/col/slots.md';
 
 <head>
   <title>Col | Horizontálne rozmiestnenie obsahu na základe veľkosti obrazovky.</title>
@@ -21,139 +27,24 @@ Pre viac informácií o použití **Col** sa presuňte do dokumentácie systému
 
 ## Atribúty a Vlastnosti
 
-### offset
-
-|  |  |
-| --- | --- |
-| Popis | Počet stĺpcov, o ktoré sa má stĺpec posunúť. |
-| Atribút | `offset` |
-| Typ | `string` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
-
-### offsetLg
-
-|  |  |
-| --- | --- |
-| Popis | Počet stĺpcov, o ktoré sa má stĺpec posunúť na obrazovkách veľkosti lg. |
-| Atribút | `offset-lg` |
-| Typ | `string` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
-
-### offsetMd
-
-|  |  |
-| --- | --- |
-| Popis | Počet stĺpcov, o ktoré sa má stĺpec posunúť na obrazovkách veľkosti md. |
-| Atribút | `offset-md` |
-| Typ | `string` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
-
-### offsetSm
-
-|  |  |
-| --- | --- |
-| Popis | Počet stĺpcov, o ktoré sa má stĺpec posunúť na obrazovkách veľkosti sm. |
-| Atribút | `offset-sm` |
-| Typ | `string` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
-
-### offsetXl
-
-|  |  |
-| --- | --- |
-| Popis | Počet stĺpcov, o ktoré sa má stĺpec posunúť na obrazovkách veľkosti xl. |
-| Atribút | `offset-xl` |
-| Typ | `string` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
-
-### offsetXs
-
-|  |  |
-| --- | --- |
-| Popis | Počet stĺpcov, o ktoré sa má stĺpec posunúť na obrazovkách veľkosti xs. |
-| Atribút | `offset-xs` |
-| Typ | `string` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
-
-### order
-
-|  |  |
-| --- | --- |
-| Popis | Nastaví stĺpcu poradie v riadku pridaním hodnoty 1 až 5, first a last |
-| Atribút | `order` |
-| Typ | `string` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
-
-### size
-
-|  |  |
-| --- | --- |
-| Popis | Nastaví veľkosť stĺpca v zmysle toho, koľko stĺpcov má zaberať z celkového počtu dostupných stĺpcov. Ak je zadané "auto", stĺpec bude mať veľkosť svojho obsahu. |
-| Atribút | `size` |
-| Typ | `string` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
-
-### sizeLg
-
-|  |  |
-| --- | --- |
-| Popis | Nastaví veľkosť stĺpca na obrazovkách veľkosti lg v zmysle toho, koľko stĺpcov má zaberať z celkového počtu dostupných stĺpcov. Ak je zadané "auto", stĺpec bude mať veľkosť svojho obsahu. |
-| Atribút | `size-lg` |
-| Typ | `string` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
-
-### sizeMd
-
-|  |  |
-| --- | --- |
-| Popis | Nastaví veľkosť stĺpca na obrazovkách veľkosti md v zmysle toho, koľko stĺpcov má zaberať z celkového počtu dostupných stĺpcov. Ak je zadané "auto", stĺpec bude mať veľkosť svojho obsahu. |
-| Atribút | `size-md` |
-| Typ | `string` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
-
-### sizeSm
-
-|  |  |
-| --- | --- |
-| Popis | Nastaví veľkosť stĺpca na obrazovkách veľkosti sm v zmysle toho, koľko stĺpcov má zaberať z celkového počtu dostupných stĺpcov. Ak je zadané "auto", stĺpec bude mať veľkosť svojho obsahu. |
-| Atribút | `size-sm` |
-| Typ | `string` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
-
-### sizeXl
-
-|  |  |
-| --- | --- |
-| Popis | Nastaví veľkosť stĺpca na obrazovkách veľkosti xl v zmysle toho, koľko stĺpcov má zaberať z celkového počtu dostupných stĺpcov. Ak je zadané "auto", stĺpec bude mať veľkosť svojho obsahu. |
-| Atribút | `size-xl` |
-| Typ | `string` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
-
-### sizeXs
-
-|  |  |
-| --- | --- |
-| Popis | Nastaví veľkosť stĺpca na obrazovkách veľkosti xs v zmysle toho, koľko stĺpcov má zaberať z celkového počtu dostupných stĺpcov. Ak je zadané "auto", stĺpec bude mať veľkosť svojho obsahu. |
-| Atribút | `size-xs` |
-| Typ | `string` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
-## CSS Custom vlastnosti
+## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

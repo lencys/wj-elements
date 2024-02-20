@@ -7,7 +7,6 @@ demoUrl: https://docs-demo.ionic.io/
 demoSourceUrl: https://github.com/ionic-team/docs-demo
 ---
 
-import DocsCard from '@components/global/DocsCard';
 import DocsCards from '@components/global/DocsCards';
 
 <head>
@@ -85,6 +84,7 @@ Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/cli.md)
     </wj-card-content>
   </wj-card>
 </a>
+
 </DocsCards>
 
 

@@ -494,7 +494,32 @@
             "docs": "",
             "docsTags": [],
             "usage": {},
-            "props": [],
+            "props": [
+                {
+                    "name": "href",
+                    "type": "string | undefined",
+                    "complexType": {
+                      "original": "string | undefined",
+                      "resolved": "string | undefined",
+                      "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "href",
+                    "reflectToAttr": false,
+                    "docs": "Obsahuje adresu URL alebo fragment adresy URL, na ktorú hypertextový odkaz odkazuje.",
+                    "docsTags": [],
+                    "values": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "undefined"
+                      }
+                    ],
+                    "optional": false,
+                    "required": false
+                  }
+            ],
             "methods": [],
             "events": [],
             "listeners": [],
@@ -960,7 +985,7 @@
         {
             "filePath": "src/components/button-group/button-group.tsx",
             "encapsulation": "scoped",
-            "tag": "ButtonGroup",
+            "tag": "button-group",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -983,7 +1008,7 @@
         {
             "filePath": "src/components/card/card.tsx",
             "encapsulation": "shadow",
-            "tag": "Card",
+            "tag": "card",
             "docs": "",
             "docsTags": [
                 {
@@ -1097,7 +1122,7 @@
         {
             "filePath": "src/components/card-content/card-content.tsx",
             "encapsulation": "none",
-            "tag": "Card Content",
+            "tag": "card-content",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -1115,7 +1140,7 @@
         {
             "filePath": "src/components/card-header/card-header.tsx",
             "encapsulation": "shadow",
-            "tag": "Card Header",
+            "tag": "card-header",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -1156,7 +1181,7 @@
         {
             "filePath": "src/components/card-subtitle/card-subtitle.tsx",
             "encapsulation": "shadow",
-            "tag": "Card Subtitle",
+            "tag": "card-subtitle",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -1174,7 +1199,7 @@
         {
             "filePath": "src/components/card-title/card-title.tsx",
             "encapsulation": "shadow",
-            "tag": "Card Title",
+            "tag": "card-title",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -1192,7 +1217,7 @@
         {
             "filePath": "src/components/card-controls/card-controls.tsx",
             "encapsulation": "shadow",
-            "tag": "Card Controls",
+            "tag": "card-controls",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -1210,7 +1235,7 @@
         {
             "filePath": "src/components/checkbox/checkbox.tsx",
             "encapsulation": "shadow",
-            "tag": "Checkbox",
+            "tag": "checkbox",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -1398,7 +1423,7 @@
         {
             "filePath": "src/components/chip/chip.tsx",
             "encapsulation": "shadow",
-            "tag": "Chip",
+            "tag": "chip",
             "docs": "",
             "docsTags": [
                 {
@@ -1531,7 +1556,7 @@
         {
             "filePath": "src/components/color-picker/color-picker.tsx",
             "encapsulation": "shadow",
-            "tag": "Color Picker",
+            "tag": "color-picker",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -1549,7 +1574,7 @@
         {
             "filePath": "src/components/copy-button/copy-button.tsx",
             "encapsulation": "shadow",
-            "tag": "Copy Button",
+            "tag": "copy-button",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -1634,7 +1659,7 @@
         {
             "filePath": "src/components/dialog/dialog.tsx",
             "encapsulation": "shadow",
-            "tag": "Dialog",
+            "tag": "dialog",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -1785,7 +1810,7 @@
         {
             "filePath": "src/components/dropdown/dropdown.tsx",
             "encapsulation": "shadow",
-            "tag": "Dropdown",
+            "tag": "dropdown",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -1853,7 +1878,7 @@
         {
             "filePath": "src/components/grid/grid.tsx",
             "encapsulation": "shadow",
-            "tag": "Grid",
+            "tag": "grid",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -1871,7 +1896,7 @@
         {
             "filePath": "src/components/col/col.tsx",
             "encapsulation": "shadow",
-            "tag": "Col",
+            "tag": "col",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -2233,7 +2258,7 @@
         {
             "filePath": "src/components/row/row.tsx",
             "encapsulation": "shadow",
-            "tag": "Row",
+            "tag": "row",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -2285,7 +2310,7 @@
         {
             "filePath": "src/components/file-upload/file-upload.tsx",
             "encapsulation": "shadow",
-            "tag": "File Upload",
+            "tag": "file-upload",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -2375,7 +2400,7 @@
         {
             "filePath": "src/components/file-upload-item/file-upload-item.tsx",
             "encapsulation": "shadow",
-            "tag": "FileUpload Item",
+            "tag": "file-upload-item",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -2393,7 +2418,7 @@
         {
             "filePath": "src/components/format-digital/format-digital.tsx",
             "encapsulation": "shadow",
-            "tag": "FormatDigital",
+            "tag": "format-digital",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -2500,7 +2525,7 @@
         {
             "filePath": "src/components/infinite-scroll/infinite-scroll.tsx",
             "encapsulation": "shadow",
-            "tag": "Infinite-scroll",
+            "tag": "infinite-scroll",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -2607,7 +2632,7 @@
         {
             "filePath": "src/components/icon/icon.tsx",
             "encapsulation": "shadow",
-            "tag": "Icon",
+            "tag": "icon",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -2783,7 +2808,7 @@
         {
             "filePath": "src/components/icon-picker/icon-picker.tsx",
             "encapsulation": "shadow",
-            "tag": "Icon Picker",
+            "tag": "icon-picker",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -2830,9 +2855,9 @@
             "dependencyGraph": {}
         },
         {
-            "filePath": "src/components/img/img.tsx",
+            "filePath": "src/components/img/image.tsx",
             "encapsulation": "shadow",
-            "tag": "Image",
+            "tag": "image",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -2897,9 +2922,9 @@
             "dependencyGraph": {}
         },
         {
-            "filePath": "src/components/img/img-comparer.tsx",
+            "filePath": "src/components/image-comparer/image-comparer.tsx",
             "encapsulation": "shadow",
-            "tag": "Image Comparer",
+            "tag": "image-comparer",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -2931,7 +2956,7 @@
         {
             "filePath": "src/components/input/input.tsx",
             "encapsulation": "scoped",
-            "tag": "Input",
+            "tag": "input",
             "docs": "",
             "docsTags": [
                 {
@@ -3491,7 +3516,7 @@
         {
             "filePath": "src/components/item/item.tsx",
             "encapsulation": "shadow",
-            "tag": "Item",
+            "tag": "item",
             "docs": "",
             "docsTags": [
                 {
@@ -3634,7 +3659,7 @@
         {
             "filePath": "src/components/label/label.tsx",
             "encapsulation": "scoped",
-            "tag": "Label",
+            "tag": "label",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -3663,7 +3688,7 @@
         {
             "filePath": "src/components/layout/layout.tsx",
             "encapsulation": "scoped",
-            "tag": "Layout",
+            "tag": "layout",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -3681,7 +3706,7 @@
         {
             "filePath": "src/components/aside/aside.tsx",
             "encapsulation": "scoped",
-            "tag": "Aside",
+            "tag": "aside",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -3748,7 +3773,7 @@
         {
             "filePath": "src/components/main/main.tsx",
             "encapsulation": "scoped",
-            "tag": "Main",
+            "tag": "main",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -3766,7 +3791,7 @@
         {
             "filePath": "src/components/container/container.tsx",
             "encapsulation": "scoped",
-            "tag": "Container",
+            "tag": "container",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -3835,7 +3860,7 @@
         {
             "filePath": "src/components/list/list.tsx",
             "encapsulation": "none",
-            "tag": "List",
+            "tag": "list",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -3934,7 +3959,7 @@
         {
             "filePath": "src/components/masonry/masonry.tsx",
             "encapsulation": "none",
-            "tag": "Masonry",
+            "tag": "masonry",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -4082,7 +4107,7 @@
         {
             "filePath": "src/components/menu/menu.tsx",
             "encapsulation": "shadow",
-            "tag": "Menu",
+            "tag": "menu",
             "docs": "",
             "docsTags": [
                 {
@@ -4226,7 +4251,7 @@
         {
             "filePath": "src/components/menu-item/menu-item.tsx",
             "encapsulation": "shadow",
-            "tag": "Menu Item",
+            "tag": "menu-item",
             "docs": "",
             "docsTags": [
                 {
@@ -4453,7 +4478,7 @@
         {
             "filePath": "src/components/progress-bar/progress-bar.tsx",
             "encapsulation": "shadow",
-            "tag": "Progress Bar",
+            "tag": "progress-bar",
             "docs": "",
             "docsTags": [
                 {
@@ -4670,7 +4695,7 @@
         {
             "filePath": "src/components/radio/radio.tsx",
             "encapsulation": "shadow",
-            "tag": "Radio",
+            "tag": "radio",
             "docs": "",
             "docsTags": [
                 {
@@ -4886,7 +4911,7 @@
         {
             "filePath": "src/components/radio-group/radio-group.tsx",
             "encapsulation": "scoped",
-            "tag": "RadioGroup",
+            "tag": "radio-group",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -4949,7 +4974,7 @@
         {
             "filePath": "src/components/relative-time/relative-time.tsx",
             "encapsulation": "scoped",
-            "tag": "Relative time",
+            "tag": "relative-time",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -4990,7 +5015,7 @@
         {
             "filePath": "src/components/route/route.tsx",
             "encapsulation": "scoped",
-            "tag": "Route",
+            "tag": "route",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -5008,7 +5033,7 @@
         {
             "filePath": "src/components/router/router.tsx",
             "encapsulation": "none",
-            "tag": "ion-router",
+            "tag": "router",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -5221,7 +5246,7 @@
         {
             "filePath": "src/components/router-link/router-link.tsx",
             "encapsulation": "shadow",
-            "tag": "Router Link",
+            "tag": "router-link",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -5264,7 +5289,7 @@
         {
             "filePath": "src/components/router-outlet/router-outlet.tsx",
             "encapsulation": "shadow",
-            "tag": "Router Outlet",
+            "tag": "router-outlet",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -5310,7 +5335,7 @@
         {
             "filePath": "src/components/select/select.tsx",
             "encapsulation": "shadow",
-            "tag": "Select",
+            "tag": "select",
             "docs": "",
             "docsTags": [
                 {
@@ -5435,7 +5460,7 @@
         {
             "filePath": "src/components/select-option/select-option.tsx",
             "encapsulation": "shadow",
-            "tag": "option",
+            "tag": "select-option",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -5509,7 +5534,7 @@
         {
             "filePath": "src/components/slider/slider.tsx",
             "encapsulation": "shadow",
-            "tag": "Slider",
+            "tag": "slider",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -5716,7 +5741,7 @@
         {
             "filePath": "src/components/split-view/split-view.tsx",
             "encapsulation": "shadow",
-            "tag": "SplitView",
+            "tag": "split-view",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -5895,7 +5920,7 @@
         {
             "filePath": "src/components/tab/tab.tsx",
             "encapsulation": "shadow",
-            "tag": "Tab",
+            "tag": "tab",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -5996,7 +6021,7 @@
         {
             "filePath": "src/components/tab-panel/tab-panel.tsx",
             "encapsulation": "shadow",
-            "tag": "Tab",
+            "tag": "tab-panel",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -6042,7 +6067,7 @@
         {
             "filePath": "src/components/tab-group/tab-group.tsx",
             "encapsulation": "shadow",
-            "tag": "TabGroup",
+            "tag": "tab-group",
             "docs": "",
             "docsTags": [
                 {
@@ -6148,7 +6173,7 @@
         {
             "filePath": "src/components/textarea/textarea.tsx",
             "encapsulation": "scoped",
-            "tag": "Textarea",
+            "tag": "textarea",
             "docs": "",
             "docsTags": [
                 {
@@ -6536,7 +6561,7 @@
         {
             "filePath": "src/components/thumbnail/thumbnail.tsx",
             "encapsulation": "shadow",
-            "tag": "Thumbnail",
+            "tag": "thumbnail",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -6570,7 +6595,7 @@
         {
             "filePath": "src/components/title/title.tsx",
             "encapsulation": "shadow",
-            "tag": "ion-title",
+            "tag": "title",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -6690,7 +6715,7 @@
         {
             "filePath": "src/components/toast/toast.tsx",
             "encapsulation": "shadow",
-            "tag": "Toast",
+            "tag": "toast",
             "docs": "",
             "docsTags": [
                 {
@@ -7717,7 +7742,7 @@
         {
             "filePath": "src/components/toggle/toggle.tsx",
             "encapsulation": "shadow",
-            "tag": "Toggle",
+            "tag": "toggle",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -7948,7 +7973,7 @@
         {
             "filePath": "src/components/tooltip/tooltip.tsx",
             "encapsulation": "shadow",
-            "tag": "Tooltip",
+            "tag": "tooltip",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -8185,7 +8210,7 @@
         {
             "filePath": "src/components/toolbar-action/toolbar-action.tsx",
             "encapsulation": "shadow",
-            "tag": "ToolbarAction",
+            "tag": "toolbar-actions",
             "docs": "",
             "docsTags": [],
             "usage": {},

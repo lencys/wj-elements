@@ -1,12 +1,12 @@
 ---
 title: "Card"
 ---
-import Props from '@ionic-internal/component-api/v1/card-subtitle/props.md';
-import Events from '@ionic-internal/component-api/v1/card-subtitle/events.md';
-import Methods from '@ionic-internal/component-api/v1/card-subtitle/methods.md';
-import Parts from '@ionic-internal/component-api/v1/card-subtitle/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/card-subtitle/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/card-subtitle/slots.md';
+import Props from '@ionic-internal/component-api/v1/card/props.md';
+import Events from '@ionic-internal/component-api/v1/card/events.md';
+import Methods from '@ionic-internal/component-api/v1/card/methods.md';
+import Parts from '@ionic-internal/component-api/v1/card/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/card/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/card/slots.md';
 
 <head>
   <title>Card | Kontajner formátu karty</title>
@@ -89,38 +89,24 @@ import CssProperties from '@site/static/usage/v1/card/theming/css-properties/ind
 
 ## Atribúty a Vlastnosti
 
-### color
-
-|  |  |
-| --- | --- |
-| Popis | Farba, ktorá sa má použiť z palety farieb aplikácie. Predvolené možnosti sú: `"primary"`, `"secondary"`, `"complete"`, `"success"`, `"warning"`, `"danger"`, `"info"`, a `"menu"`. |
-| Atribút | color |
-| Typ | `"danger"` ｜ `"menu"` ｜ `"info"` ｜ `"primary"` ｜ `"secondary"` ｜ `"success"` ｜ `"warning"` ｜ undefined |
-| Predvolená hodnota | `“primary”` |
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Názov | Popis |
-| --- | --- |
-| `-—wj-card-border-color` | Definuje farbu okraja karty. |
-| `--wj-card-margin-bottom` | Definuje veľkosť medzery od dolného okraja karty |
-| `--wj-card-margin-inline` | Definuje veľkosť medzery od pravého a ľavého okraja karty |
-| `--wj-card-margin-top` | Definuje veľkosť medzery od horného okraja karty |
-| `--wj-color-base` | Definuje farbu pozadia karty |
-| `--wj-color-contrast` | Definuje farbu textu karty |
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícií žiadne sloty.
+<Slots />

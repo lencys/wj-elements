@@ -1,6 +1,12 @@
 ---
 title: "Checkbox"
 ---
+import Props from '@ionic-internal/component-api/v1/checkbox/props.md';
+import Events from '@ionic-internal/component-api/v1/checkbox/events.md';
+import Methods from '@ionic-internal/component-api/v1/checkbox/methods.md';
+import Parts from '@ionic-internal/component-api/v1/checkbox/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/checkbox/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/checkbox/slots.md';
 
 <head>
   <title>Checkbox | WebJET Element pre vybratie viacerých možností</title>
@@ -38,73 +44,24 @@ import Variant from '@site/static/usage/v1/checkbox/variant/index.md';
 
 ## Atribúty a Vlastnosti
 
-### checked
-
-|  |  |
-| --- | --- |
-| Popis | Zmení predvolený stav checkboxu na `true`. |
-| Atribút | `checked` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### color
-
-|  |  |
-| --- | --- |
-| Popis | Určuje farbu pozadia checkboxu. Predvolené možnosti sú: `"primary"`, `"secondary"`, `"complete"`, `"success"`, `"warning"`, `"danger"`, `"dark"`, a `"light"`. |
-| Atribút | `color` |
-| Typ | `"danger"` ｜ `"dark"` ｜ `"light"` ｜ `"primary"` ｜ `"secondary"` ｜ `"success"` ｜ `"warning"`｜ `undefined` |
-| Predvolená hodnota | `undefined` |
-
-### disabled
-
-|  |  |
-| --- | --- |
-| Popis | Deaktivuje checkbox takže jeho hodnotu nebude možné meniť |
-| Atribút | `disabled` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### indeterminate
-
-|  |  |
-| --- | --- |
-| Popis | Po pridaní atribútu `indeterminate` sa zobrazí checkbox, ktorého predvolený stav je neutrálny. |
-| Atribút | `indeterminate` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### variant
-
-|  |  |
-| --- | --- |
-| Popis | Zmení vzhľad checkboxu. Podporovaný je okrúhly tvar pridaním hodnoty `circle`. |
-| Atribút | `variant` |
-| Typ | `circle` |
-| Predvolená hodnota | `undefined` |
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
-## CSS Shadow Party
+## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícii žiadne shadow party.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Vlastnosť                       | Popis                    |
-|---------------------------------|--------------------------|
-| `--wj-checkbox-height` | Určuje minimálnu výšku checkboxu | 
-| `--wj-checkbox-margin-bottom` | Veľkosť vonkajšieho spodného okraja | 
-| `--wj-checkbox-margin-inline` | Veľkosť vonkajších okrajov vľavo a vpravo | 
-| `--wj-checkbox-margin-top` | Veľkosť vonkajšieho horného okraja | 
-| `--wj-checkbox-width` | Určuje minimálnu šírku checkboxu | 
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

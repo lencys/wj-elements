@@ -1,7 +1,6 @@
 ---
 title: "Avatar"
 ---
-
 import Props from '@ionic-internal/component-api/v1/avatar/props.md';
 import Events from '@ionic-internal/component-api/v1/avatar/events.md';
 import Methods from '@ionic-internal/component-api/v1/avatar/methods.md';
@@ -84,67 +83,25 @@ import CSSProps from '@site/static/usage/v1/avatar/theming/css-properties/index.
 
 ## Atribúty a Vlastnosti
 
-### initials
-
-|  |  |
-| --- | --- |
-| Popis | Ak `true`, avatar zobrazí iniciály hodnoty atribútu `label` |
-| Atribút | `initials` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### label
-
-|  |  |
-| --- | --- |
-| Popis | Určuje hodnotu pre atribút `initials` |
-| Atribút | `label` |
-| Typ | `string` |
-| Predvolená hodnota | `undefined` |
-
-
-### size
-
-|  |  |
-| --- | --- |
-| Popis | Nastavte na `"small"` pre avatara s menším priemerom a na `"large"` pre avatara s väčším priemerom. V predvolenom nastavení je veľkosť nenastavená. |
-| Atribút | `size` |
-| Typ | `"large"` ｜ `"small"` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-| Názov                           | Popis                    |
-|---------------------------------|--------------------------|
-| `native`                        | Odkazuje na `div` element vo vnútri avatara |
-
-
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Vlastnosť                       | Popis                    |
-|---------------------------------|--------------------------|
-| `--wj-avatar-background-color`  | Farba pozadia avatara    |
-| `--wj-avatar-border-color`      | Farba okraja avatara     |
-| `--wj-avatar-border-radius`     | Zaoblenie okraja avatara |
-| `--wj-avatar-border-style`      | Štýl okraja avatara      |
-| `--wj-avatar-border-width`      | Šírka okraja             |
-| `--wj-avatar-color`             | Farba textu              |
-| `--wj-avatar-font-size`         | Veľkosť písma            |
-| `--wj-avatar-font-weight`       | Hrúbka písma             |
-| `--wj-avatar-height`            | Výška avatara            |
-| `--wj-avatar-width`             | Šírka avatara            |
-
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />
 

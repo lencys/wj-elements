@@ -1,6 +1,12 @@
 ---
 title: "Grid"
 ---
+import Props from '@ionic-internal/component-api/v1/grid/props.md';
+import Events from '@ionic-internal/component-api/v1/grid/events.md';
+import Methods from '@ionic-internal/component-api/v1/grid/methods.md';
+import Parts from '@ionic-internal/component-api/v1/grid/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/grid/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/grid/slots.md';
 
 <head>
   <title>Grid | Flexibilný spôsob vytvárania responzívnych layoutov</title>
@@ -121,24 +127,24 @@ import HorizontalAlignment from '@site/static/usage/v1/grid/horizontal-alignment
 
 ## Atribúty a Vlastnosti
 
-Pre tento komponent nie sú k dispozícii žiadne atribúty a vlastnosti.
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

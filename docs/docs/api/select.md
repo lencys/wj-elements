@@ -1,7 +1,12 @@
 ---
 title: "Select"
 ---
-
+import Props from '@ionic-internal/component-api/v1/select/props.md';
+import Events from '@ionic-internal/component-api/v1/select/events.md';
+import Methods from '@ionic-internal/component-api/v1/select/methods.md';
+import Parts from '@ionic-internal/component-api/v1/select/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/select/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/select/slots.md';
 import { Icon } from '@iconify/react';
 
 <head>
@@ -72,107 +77,26 @@ import Standard from '@site/static/usage/v1/select/standard/index.md';
 
 </div>
 
-
 ## Atribúty a Vlastnosti
 
-### clearable
-
-|  |  |
-| --- | --- |
-| Popis | Ak `true`, zobrazí sa ikona <Icon icon="radix-icons:cross-2" height="14" /> na zmazanie všetkých zvolených možností. |
-| Atribút | `clearable` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### disabled
-
-|  |  |
-| --- | --- |
-| Popis | Ak `true`, s elementom nebude možné interagovať. |
-| Atribút | `disabled` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-
-### label
-
-|  |  |
-| --- | --- |
-| Popis | Slúži na nastavenie popisu |
-| Atribút | `label` |
-| Typ | `string` |
-| Predvolená hodnota | `undefined` |
-
-### multiple
-
-|  |  |
-| --- | --- |
-| Popis | Nastaví select na výber viacerých možností |
-| Atribút | `multiple` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### placeholder
-
-|  |  |
-| --- | --- |
-| Popis | Slúži na nastavenie zástupného textu  |
-| Atribút | `placeholder` |
-| Typ | `string` |
-| Predvolená hodnota | `undefined` |
-
-### trigger
-
-|  |  |
-| --- | --- |
-| Popis | Určuje selectu spôsobom rozkliknutia |
-| Atribút | `trigger` |
-| Typ | `click`, `hover` |
-| Predvolená hodnota | `click` |
-
+<Props />
 
 ## Eventy
 
-| Event               | Popis                                                                      |
-|---------------------|----------------------------------------------------------------------------|
-| `blur`              | Vyvolaný keď element stratí focus.                                        |
-| `focus`             | Vyvolaný keď element dostane focus.                                       |
-| `wj:button-click`   | Vyvolaný po kliknuti na tlačidlo odstránenia všetkých zvolených možností.  |
-| `wj:chip-remove`    | Vyvolaný po odstránení Chip elementu.                                      |
-| `wj:option-change`  | Vyvolaný po zmene zvolenej možnosti.                                       |
-| `wj:options-load`   | Vyvolaný po načítaní možností                                              |
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-| Názov | Popis |
-| --- | --- |
-| `clear` | Odkazuje na tlačidlo `<wj-button>` pre zmazanie všetkých zvolených možností  |
-| `input` | Odkazuje na `<input>` element |
-| `native` | Odkazuje na `<div>` element |
-
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Vlastnosť                             | Popis                         |
-|---------------------------------------|-------------------------------|
-| `--wj-select-background-color`        | Farba pozadia elementu        |
-| `--wj-select-border-color`            | Farba okrajov elementu        |
-| `--wj-select-border-radius`           | Zaoblenie okrajov elementu    |
-| `--wj-select-border-style`            | Štýl zaoblenia elementu       |
-| `--wj-select-border-width`            | Šírka okrajov elementu        |
-| `--wj-select-color`                   | Farba elementu                |
-| `--wj-select-line-height`             | Výška riadka elementu         |
-| `--wj-select-options-border-color`    | Farba okrajov rozbalovacieho okna       |
-| `--wj-select-options-border-style`    | Štýl okrajov rozbalovacieho okna        |
-| `--wj-select-options-border-width`    | Šírka okrajov rozbalovacieho okna       |
+<CustomProps />
 
-## Slots
+## Sloty
 
-| Slot | Popis |
-| --- | --- |
-| `anchor` | Obsah sa umiestni do elementu `.wrapper` |
-| `arrow` | Obsah sa umiestni do elementu `wj-icon` vo vnútri   |
+<Slots />

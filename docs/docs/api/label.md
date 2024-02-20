@@ -1,6 +1,12 @@
 ---
 title: "Label"
 ---
+import Props from '@ionic-internal/component-api/v1/label/props.md';
+import Events from '@ionic-internal/component-api/v1/label/events.md';
+import Methods from '@ionic-internal/component-api/v1/label/methods.md';
+import Parts from '@ionic-internal/component-api/v1/label/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/label/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/label/slots.md';
 
 <head>
   <title>Label | Element pre pridávanie popisného textového obsahu do komponentov</title>
@@ -17,29 +23,24 @@ Pozícia štítku vo vnútri prvku môže byť inline, pevná, naskladaná alebo
 
 ## Atribúty a Vlastnosti
 
-Pre tento komponent nie sú k dispozícii žiadne Atribúty a Vlastnosti.
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Názov | Popis |
-| ----- | ----- |
-| `--wj-color`  |     Definuje farbu elementu.        |
-
+<CustomProps />
 
 ## Sloty
 
-| Názov | Popis |
-| --- | --- |
-| `` | Predvolené umiestnenie pre obsah elementu. |
+<Slots />

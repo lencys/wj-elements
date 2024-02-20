@@ -1,6 +1,12 @@
 ---
 title: "Toast TODO"
 ---
+import Props from '@ionic-internal/component-api/v1/toast/props.md';
+import Events from '@ionic-internal/component-api/v1/toast/events.md';
+import Methods from '@ionic-internal/component-api/v1/toast/methods.md';
+import Parts from '@ionic-internal/component-api/v1/toast/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/toast/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/toast/slots.md';
 
 <head>
   <title>Toast |  Nenápadný spôsob zobrazovania krátkych oznámení</title>
@@ -19,26 +25,26 @@ import Basic from '@site/static/usage/v1/toast/inline/basic/index.md';
 
 <Basic />
 
+## Atribúty a Vlastnosti
+
+<Props />
+
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Vlasnosť   | Popis      |
-|-----------|-------------|
-| `--wj-border-radius`    | Zaoblenie okrajov elementu |
-| `--wj-thumbnail-height` | Výška elementu|
-| `--wj-thumbnail-width`  | Šírka elementu |
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

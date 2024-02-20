@@ -1,6 +1,12 @@
 ---
 title: "TabPanel"
 ---
+import Props from '@ionic-internal/component-api/v1/tab-panel/props.md';
+import Events from '@ionic-internal/component-api/v1/tab-panel/events.md';
+import Methods from '@ionic-internal/component-api/v1/tab-panel/methods.md';
+import Parts from '@ionic-internal/component-api/v1/tab-panel/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/tab-panel/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/tab-panel/slots.md';
 
 <head>
   <title>TabPanel | Kontajner obsahu pre Tab element</title>
@@ -17,30 +23,24 @@ Pre príklady použitia komponentu `Tab` prejdite na dokumentáciu [TabGroup](ta
 
 ## Atribúty a Vlastnosti
 
-### name
+<Props />
 
-|  |  |
-| --- | --- |
-| Popis |  Slúži ako identifikátor pre element `Tab`.  |
-| Atribút | `name` |
-| Typ | `string` |
-| Predvolená hodnota | `undefined` |
+## Eventy
+
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
-## CSS Shadow Party
+## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícii žiadne shadow party.
-
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú k dispozícii žiadne CSS Custom Vlastnosti.
+<CustomProps />
 
 ## Sloty
 
-| Názov     | Popis |
-|-----------|-------|
-| ``        | Predvolené umiestnenie pre obsah elementu. |
+<Slots />

@@ -2,12 +2,12 @@
 title: "Aside"
 ---
 
-import Props from '@ionic-internal/component-api/v1/avatar/props.md';
-import Events from '@ionic-internal/component-api/v1/avatar/events.md';
-import Methods from '@ionic-internal/component-api/v1/avatar/methods.md';
-import Parts from '@ionic-internal/component-api/v1/avatar/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/avatar/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/avatar/slots.md';
+import Props from '@ionic-internal/component-api/v1/aside/props.md';
+import Events from '@ionic-internal/component-api/v1/aside/events.md';
+import Methods from '@ionic-internal/component-api/v1/aside/methods.md';
+import Parts from '@ionic-internal/component-api/v1/aside/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/aside/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/aside/slots.md';
 
 <head>
   <title>Layout: Aside element</title>
@@ -20,45 +20,30 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Aside je prvok na tvorbu layoutov a zobrazuje sa vedľa elementu [Main](./main). Používa sa väčšinou na zobrazenie doplnkových informácií k hlavnému obsahu, prípadne navigácie.
 
-
 ## Príklady použitia
 
 Pre informácie o použítí **Aside** elementu sa presuňte do dokumentácie [Layoutu](./layout).
 
 ## Atribúty a Vlastnosti
 
-### fixed
-
-|  |  |
-| --- | --- |
-| Popis | Ak true, Aside dostane `position: "fixed"` |
-| Atribút | `fixed` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Názov | Popis |
-| --- | --- |
-| `--wj-aside-width`        |     Šírka elementu       |
-| `--wj-aside-top`          |     Horné odsadenie elementu pri použití `fixed` atribútu     |
-| `--wj-aside-border-color` |     Farba okrajov elementu       |
-| `--wj-aside-border-width` |     Šírka okrajov elementu      |
-| `--wj-aside-border-style` |     Štýl okrajov elementu      |
-
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

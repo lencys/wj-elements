@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const componentApi = require('../../i18n/sk/docusaurus-plugin-content-docs/core.json');
 
 module.exports = function (context, options) {
   return {
@@ -19,15 +20,16 @@ module.exports = function (context, options) {
        */
       const generateMarkdownForVersion = async (version, npmTag, isCurrentVersion) => {
         let COMPONENT_LINK_REGEXP;
-        const response = await fetch(`https://unpkg.com/@ionic/docs@${npmTag}/core.json`);
-        const { components } = await response.json();
+       // const response = await fetch(`https://unpkg.com/@ionic/docs@${npmTag}/core.json`);
+       const { components } = componentApi;
 
         const names = components.map((component) => component.tag.slice(4));
         // matches all relative markdown links to a component, e.g. (../button)
         COMPONENT_LINK_REGEXP = new RegExp(`\\(../(${names.join('|')})/?(#[^)]+)?\\)`, 'g');
 
         components.forEach((comp) => {
-          const compTag = comp.tag.slice(4);
+          const compTag = comp.tag;
+
           const outDir = getDirectoryPath(compTag, version, isCurrentVersion);
 
           data.push({
@@ -135,7 +137,7 @@ function formatType(attr, type) {
 
 function renderProperties({ props: properties }) {
   if (properties.length === 0) {
-    return 'No properties available for this component.';
+    return 'Pre tento komponent nie sú dostupné žiadne atribúty a vlastnosti.';
   }
 
   // NOTE: replaces | with U+FF5C since MDX renders \| in tables incorrectly
@@ -163,7 +165,7 @@ ${properties
 
 function renderEvents({ events }) {
   if (events.length === 0) {
-    return 'No events available for this component.';
+    return 'Pre tento komponent nie sú dostupné žiadne verejné eventy.';
   }
 
   return `
@@ -175,14 +177,14 @@ ${events.map((event) => `| \`${event.event}\` | ${formatMultiline(event.docs)} |
 }
 
 function renderMethods({ methods }) {
-  if (methods.length === 0) {
-    return 'No public methods available for this component.';
+  if (methods?.length === 0) {
+    return 'Pre tento komponent nie sú dostupné žiadne verejné metódy.';
   }
 
   // NOTE: replaces | with U+FF5C since MDX renders \| in tables incorrectly
   return `
 ${methods
-  .map(
+  ?.map(
     (method) => `
 ### ${method.name}
 
@@ -199,7 +201,7 @@ ${methods
 
 function renderParts({ parts }) {
   if (parts.length === 0) {
-    return 'No CSS shadow parts available for this component.';
+    return 'Pre tento komponent nie sú dostupné žiadne CSS shadow parts.';
   }
 
   return `
@@ -212,7 +214,7 @@ ${parts.map((prop) => `| \`${prop.name}\` | ${formatMultiline(prop.docs)} |`).jo
 
 function renderCustomProps({ styles: customProps }) {
   if (customProps.length === 0) {
-    return 'No CSS custom properties available for this component.';
+    return 'Pre tento komponent nie sú dostupné žiadne CSS custom vlastnosti.';
   }
 
   return `
@@ -225,7 +227,7 @@ ${customProps.map((prop) => `| \`${prop.name}\` | ${formatMultiline(prop.docs)} 
 
 function renderSlots({ slots }) {
   if (slots.length === 0) {
-    return 'No slots available for this component.';
+    return 'Pre tento komponent nie sú dostupné žiadne sloty.';
   }
 
   return `

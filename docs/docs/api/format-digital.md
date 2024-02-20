@@ -1,6 +1,12 @@
 ---
 title: "FormatDigital"
 ---
+import Props from '@ionic-internal/component-api/v1/format-digital/props.md';
+import Events from '@ionic-internal/component-api/v1/format-digital/events.md';
+import Methods from '@ionic-internal/component-api/v1/format-digital/methods.md';
+import Parts from '@ionic-internal/component-api/v1/format-digital/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/format-digital/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/format-digital/slots.md';
 
 <head>
   <title>Format Digital | Formátovanie číselných hodnôt</title>
@@ -37,55 +43,26 @@ import FormattingBits from '@site/static/usage/v1/format-digital/formatting-bits
 
 <FormattingBits />
 
-## Sloty
-
-import Slots from '@site/static/usage/v1/format-digital/slots/index.md';
-
-<Slots />
-
 ## Atribúty a Vlastnosti
 
-### unit
-
-|  |  |
-| --- | --- |
-| Popis | Definuje jednotku pre zobrazenie hodnôt. |
-| Atribút | `unit` |
-| Typ | `bit`, `byte` |
-| Predvolená hodnota | `byte` |
-
-### unit-display
-
-|  |  |
-| --- | --- |
-| Popis | Nastaví veľkosť fragmentu pre nahrávanie veľkých súborov v bajtoch. |
-| Atribút | `unit-display` |
-| Typ | `long`, `narrow`, `short` |
-| Predvolená hodnota | `short` |
-
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-| Názov           | Popis                    |
-|-----------------|--------------------------|
-| `native`        | Odkazuje na `div` element s triedou `native-format-digital` vo vnútri elementu |
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
+<CustomProps />
 
 ## Sloty
 
-| Názov | Popis |
-| --- | --- |
-| `` | Obsah sa umiestni medzi named sloty. |
-| `end` | Obsah sa umiestni vpravo od textu tlačidla v LTR a vľavo v RTL. |
-| `start` | Obsah je umiestnený vľavo od textu tlačidla v LTR a vpravo v RTL. |
+<Slots />

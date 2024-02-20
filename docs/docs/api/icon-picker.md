@@ -1,6 +1,12 @@
 ---
 title: 'Icon Picker'
 ---
+import Props from '@ionic-internal/component-api/v1/icon-picker/props.md';
+import Events from '@ionic-internal/component-api/v1/icon-picker/events.md';
+import Methods from '@ionic-internal/component-api/v1/icon-picker/methods.md';
+import Parts from '@ionic-internal/component-api/v1/icon-picker/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/icon-picker/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/icon-picker/slots.md';
 
 <head>
   <title>Icon | WebJET Element pre vybratie zo sady ikon</title>
@@ -23,31 +29,25 @@ import Basic from '@site/static/usage/v1/icon-picker/basic/index.md';
 <Basic />
 
 ## Atribúty a Vlastnosti
-Pre tento komponent nie sú k dispozícii žiadne Atribúty a Vlastnosti.
+
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
-## CSS Custom vlastnosti
+## CSS Custom Vlastnosti
 
-| Názov   | Popis    |
-|---------|----------|
-| `--wj-icon-picker-border-color` | Definuje farbu okrajov elementu |
-| `--wj-icon-picker-border-style` | Definuje štýl okrajov elementu |
-| `--wj-icon-picker-border-width` | Definuje šírku okrajov elementu |
-| `--wj-icon-picker-icon-size` | Definuje veľkosť ikon elementu |
-| `--wj-icon-picker-padding` | Definuje vnútorné odsadenie elementu |
-| `--wj-icon-picker-radius` | Definuje veľkosť zaoblenia elementu |
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />
