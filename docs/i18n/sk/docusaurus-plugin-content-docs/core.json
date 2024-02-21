@@ -8136,7 +8136,7 @@
         {
             "filePath": "src/components/toolbar/toolbar.tsx",
             "encapsulation": "shadow",
-            "tag": "Toolbar",
+            "tag": "toolbar",
             "docs": "",
             "docsTags": [
                 {
