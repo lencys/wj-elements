@@ -1,138 +1,175 @@
-var y = Object.defineProperty;
-var w = (r, s, e) => s in r ? y(r, s, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[s] = e;
-var h = (r, s, e) => (w(r, typeof s != "symbol" ? s + "" : s, e), e);
-import v from "./wj-element.js";
-import { L as x } from "./localize-762a9f0f.js";
-import "./wj-store.js";
-function A() {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+import { L as Localizer } from "./localize-DSOailh_.js";
+function fileType() {
   return [
     {
-      type: ["jpg", "jpeg", "png", "gif", "bpm", "tiff", "svg"],
-      name: "photo"
+      "type": ["jpg", "jpeg", "png", "gif", "bpm", "tiff", "svg"],
+      "name": "photo"
     },
     {
-      type: ["zip", "rar", "cab", "jar", "tar", "gzip", "uue", "bz2", "scorm", "war"],
-      name: "file-type-zip"
+      "type": ["zip", "rar", "cab", "jar", "tar", "gzip", "uue", "bz2", "scorm", "war"],
+      "name": "file-type-zip"
     },
     {
-      type: ["mov", "mp4", "avi", "flv"],
-      name: "video"
+      "type": ["mov", "mp4", "avi", "flv"],
+      "name": "video"
     },
     {
-      type: ["m4a", "mp3", "wav"],
-      name: "audio"
+      "type": ["m4a", "mp3", "wav"],
+      "name": "audio"
     },
     {
-      type: ["html", "html"],
-      name: "file-type-html"
+      "type": ["html", "html"],
+      "name": "file-type-html"
     },
     {
-      type: ["css"],
-      name: "code"
+      "type": ["css"],
+      "name": "code"
     },
     {
-      type: ["txt"],
-      name: "file-type-txt"
+      "type": ["txt"],
+      "name": "file-type-txt"
     },
     {
-      type: ["doc", "docx"],
-      name: "file-type-doc"
+      "type": ["doc", "docx"],
+      "name": "file-type-doc"
     },
     {
-      type: ["xls", "xlsx"],
-      name: "file-type-xls"
+      "type": ["xls", "xlsx"],
+      "name": "file-type-xls"
     },
     {
-      type: ["pdf"],
-      name: "file-type-pdf"
+      "type": ["pdf"],
+      "name": "file-type-pdf"
     },
     {
-      type: ["ppt", "pptx", "odp"],
-      name: "file-type-ppt"
+      "type": ["ppt", "pptx", "odp"],
+      "name": "file-type-ppt"
     }
   ];
 }
-function E(r) {
-  let s;
-  return r.toLowerCase() !== "folder" ? A().forEach((e) => {
-    e.type.includes(r.toLowerCase()) && (s = e.name);
-  }) : s = "folder", s;
+function getFileTypeIcon(type) {
+  let searchType;
+  if (type.toLowerCase() !== "folder") {
+    fileType().forEach((i) => {
+      if (i.type.includes(type.toLowerCase())) {
+        searchType = i.name;
+      }
+    });
+  } else {
+    searchType = "folder";
+  }
+  return searchType;
 }
-function z(r, s) {
-  console.log("FILE", r, s);
-  const e = r.type.split("/")[0];
-  console.log("BASE MIME TYPE", e);
-  let t = Array.isArray(s) ? s : s.split(",");
-  if (console.log("ACCEPTED TYPES", t), t.length === 0)
+function isValidFileType(file, acceptedFileTypes) {
+  console.log("FILE", file, acceptedFileTypes);
+  const baseMimeType = file.type.split("/")[0];
+  console.log("BASE MIME TYPE", baseMimeType);
+  let acceptedTypes = Array.isArray(acceptedFileTypes) ? acceptedFileTypes : acceptedFileTypes.split(",");
+  console.log("ACCEPTED TYPES", acceptedTypes);
+  if (acceptedTypes.length === 0) {
     throw new Error("acceptedFileTypes is empty");
-  for (let i of t)
-    if (i.includes(e + "/*") || i.includes(r.type) || i.includes(r.type.split("/")[1]))
-      return !0;
-  return !1;
+  }
+  for (let type of acceptedTypes) {
+    if (type.includes(baseMimeType + "/*")) {
+      return true;
+    }
+    if (type.includes(file.type) || type.includes(file.type.split("/")[1])) {
+      return true;
+    }
+  }
+  return false;
 }
-function L(r, s, e) {
-  console.log("UPLOAD FILE:", r, s, e);
-  let t = 0;
-  const i = new Array(Math.ceil(r.size / s)).fill(0), l = (a, p) => {
-    const n = new FileReader(), u = a / s, o = r.slice(a, p);
-    n.onload = (c) => {
-      const d = new XMLHttpRequest();
-      d.open("POST", "/upload", !0), d.setRequestHeader("Content-Range", `${a}-${p}/${r.size}`), d.upload.onprogress = (m) => {
-        if (m.lengthComputable) {
-          const g = m.loaded / m.total * 100;
-          i[u] = g, i.reduce((f, b) => f + b, 0) / i.length;
+function uploadFile(file, chunkSize, preview) {
+  console.log("UPLOAD FILE:", file, chunkSize, preview);
+  let start = 0;
+  const progressArray = new Array(Math.ceil(file.size / chunkSize)).fill(0);
+  const readAndUploadChunk = (start2, end) => {
+    const reader = new FileReader();
+    const chunkIndex = start2 / chunkSize;
+    const chunk = file.slice(start2, end);
+    reader.onload = (e) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "/upload", true);
+      xhr.setRequestHeader("Content-Range", `${start2}-${end}/${file.size}`);
+      xhr.upload.onprogress = (event) => {
+        if (event.lengthComputable) {
+          const progress = event.loaded / event.total * 100;
+          progressArray[chunkIndex] = progress;
+          progressArray.reduce((a, b) => a + b, 0) / progressArray.length;
         }
-      }, d.onload = () => {
-        d.status == 200 || d.status == 201 ? (i[u] = 100, a += s, a < r.size ? (e.setAttribute("uploaded", a), l(a, Math.min(a + s, r.size))) : (e.setAttribute("uploaded", a), console.log("Upload complete"))) : console.error("Error during upload: ", d.statusText);
-      }, d.send(c.target.result);
-    }, n.readAsArrayBuffer(o);
+      };
+      xhr.onload = () => {
+        if (xhr.status == 200 || xhr.status == 201) {
+          progressArray[chunkIndex] = 100;
+          start2 += chunkSize;
+          if (start2 < file.size) {
+            preview.setAttribute("uploaded", start2);
+            readAndUploadChunk(start2, Math.min(start2 + chunkSize, file.size));
+          } else {
+            preview.setAttribute("uploaded", start2);
+            console.log("Upload complete");
+          }
+        } else {
+          console.error("Error during upload: ", xhr.statusText);
+        }
+      };
+      xhr.send(e.target.result);
+    };
+    reader.readAsArrayBuffer(chunk);
   };
-  l(t, Math.min(t + s, r.size));
+  readAndUploadChunk(start, Math.min(start + chunkSize, file.size));
 }
-const j = `:host{width:100%}.native-file-upload{width:100%}.file-label{background:var(--wj-color-contrast-0);border:1px dashed var(--wj-border-color);border-radius:var(--wj-border-radius-medium);align-items:center;justify-content:center;display:flex;padding:1rem;margin-bottom:.5rem;flex-direction:column}.file-preview{display:grid;grid-template-columns:auto 1fr 1fr;grid-template-rows:auto auto auto;gap:0 0;grid-template-areas:"image name name" "image size size" "progress progress progress"}.file-image{grid-area:image;align-items:center;display:flex}.file-name{grid-area:name;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.file-size{grid-area:size;display:flex}.file-progress{grid-area:progress}wj-icon{margin-right:.25rem}wj-img{margin-right:.25rem}.file-info>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}wj-slider{flex-basis:100%;margin-top:.5rem}::part(slider)::-webkit-slider-thumb{visibility:hidden}::part(slider)::-moz-range-thumb{visibility:hidden}::part(slider)::-ms-thumb{visibility:hidden}wj-img{width:50px;height:50px;display:flex;align-items:center;padding:.25rem;border:1px solid var(--wj-border-color);border-radius:var(--wj-border-radius-medium)}
-`;
-class F extends v {
+const styles = '/*\n[ WJ File Upload ]\n*/\n:host {\n  width: 100%;\n}\n\n.native-file-upload {\n  width: 100%;\n}\n\n.file-label {\n  background: var(--wj-color-contrast-0);\n  border: 1px dashed var(--wj-border-color);\n  border-radius: var(--wj-border-radius-medium);\n  align-items: center;\n  justify-content: center;\n  display: flex;\n  padding: 1rem;\n  margin-bottom: 0.5rem;\n  flex-direction: column;\n}\n\n.file-preview {\n  display: grid;\n  grid-template-columns: auto 1fr 1fr;\n  grid-template-rows: auto auto auto;\n  gap: 0 0;\n  grid-template-areas: "image name name" "image size size" "progress progress progress";\n}\n\n.file-image {\n  grid-area: image;\n  align-items: center;\n  display: flex;\n}\n\n.file-name {\n  grid-area: name;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.file-size {\n  grid-area: size;\n  display: flex;\n}\n\n.file-progress {\n  grid-area: progress;\n}\n\nwj-icon {\n  margin-right: 0.25rem;\n}\n\nwj-img {\n  margin-right: 0.25rem;\n}\n\n.file-info > span {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\nwj-slider {\n  flex-basis: 100%;\n  margin-top: 0.5rem;\n}\n\n::part(slider)::-webkit-slider-thumb {\n  visibility: hidden;\n}\n::part(slider)::-moz-range-thumb {\n  visibility: hidden;\n}\n::part(slider)::-ms-thumb {\n  visibility: hidden;\n}\n\nwj-img {\n  width: 50px;\n  height: 50px;\n  display: flex;\n  align-items: center;\n  padding: 0.25rem;\n  border: 1px solid var(--wj-border-color);\n  border-radius: var(--wj-border-radius-medium);\n}';
+class FileUpload extends WJElement {
   constructor() {
     super();
-    h(this, "className", "FileUpload");
-    h(this, "handleDrop", (e) => {
-      const t = e.dataTransfer.files;
-      this.resetFormState(), this.uploadFiles(t);
+    __publicField(this, "className", "FileUpload");
+    __publicField(this, "handleDrop", (event) => {
+      const fileList = event.dataTransfer.files;
+      this.resetFormState();
+      this.uploadFiles(fileList);
     });
-    h(this, "handleInputChange", (e) => {
+    __publicField(this, "handleInputChange", (event) => {
       this.resetFormState();
       try {
-        this.handleSubmit(e);
-      } catch (t) {
-        console.log("NOT VALID 1", t);
+        this.handleSubmit(event);
+      } catch (err) {
+        console.log("NOT VALID 1", err);
         return;
       }
     });
-    this.localizer = new x(this);
+    this.localizer = new Localizer(this);
   }
-  set acceptedTypes(e) {
-    this.setAttribute("accepted-types", e);
+  set acceptedTypes(value) {
+    this.setAttribute("accepted-types", value);
   }
   get acceptedTypes() {
-    const e = this.getAttribute("accepted-types");
-    return this.hasAttribute("accepted-types") ? e : "";
+    const accepted = this.getAttribute("accepted-types");
+    return this.hasAttribute("accepted-types") ? accepted : "";
   }
-  set chunkSize(e) {
-    this.setAttribute("chunk-size", e);
+  set chunkSize(value) {
+    this.setAttribute("chunk-size", value);
   }
   get chunkSize() {
-    const e = this.getAttribute("chunk-size");
-    return this.hasAttribute("chunk-size") ? e : 1024 * 1024;
+    const chunk = this.getAttribute("chunk-size");
+    return this.hasAttribute("chunk-size") ? chunk : 1024 * 1024;
   }
-  set maxFileSize(e) {
-    this.setAttribute("max-file-size", e);
+  set maxFileSize(value) {
+    this.setAttribute("max-file-size", value);
   }
   get maxFileSize() {
-    const e = this.getAttribute("max-file-size");
-    return this.hasAttribute("max-file-size") ? e * 1024 * 1024 : 1024 * 1024;
+    const fileSize = this.getAttribute("max-file-size");
+    return this.hasAttribute("max-file-size") ? fileSize * 1024 * 1024 : 1024 * 1024;
   }
   static get cssStyleSheet() {
-    return j;
+    return styles;
   }
   static get observedAttributes() {
     return [];
@@ -140,82 +177,144 @@ class F extends v {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(e, t, i) {
-    let l = document.createDocumentFragment(), a = document.createElement("div");
-    a.classList.add("native-file-upload"), a.setAttribute("part", "native");
-    let p = document.createElement("div");
-    p.classList.add("file-label");
-    let n = document.createElement("wj-button");
-    n.innerText = this.label || this.localizer.translate("wj.file.upload.button");
-    let u = document.createElement("slot"), o = document.createElement("input");
-    o.setAttribute("type", "file"), o.setAttribute("multiple", ""), o.setAttribute("style", "display:none;"), n.appendChild(u), n.appendChild(o), this.fileInput = o;
-    let c = document.createElement("div");
-    return c.classList.add("file-list"), p.appendChild(u), p.appendChild(n), a.appendChild(o), a.appendChild(p), a.appendChild(c), l.appendChild(a), this.native = a, this.fileList = c, this.button = n, l;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    native.classList.add("native-file-upload");
+    native.setAttribute("part", "native");
+    let label = document.createElement("div");
+    label.classList.add("file-label");
+    let button = document.createElement("wj-button");
+    button.innerText = this.label || this.localizer.translate("wj.file.upload.button");
+    let slot = document.createElement("slot");
+    let fileInput = document.createElement("input");
+    fileInput.setAttribute("type", "file");
+    fileInput.setAttribute("multiple", "");
+    fileInput.setAttribute("style", "display:none;");
+    button.appendChild(slot);
+    button.appendChild(fileInput);
+    this.fileInput = fileInput;
+    let fileList = document.createElement("div");
+    fileList.classList.add("file-list");
+    label.appendChild(slot);
+    label.appendChild(button);
+    native.appendChild(fileInput);
+    native.appendChild(label);
+    native.appendChild(fileList);
+    fragment.appendChild(native);
+    this.native = native;
+    this.fileList = fileList;
+    this.button = button;
+    return fragment;
   }
   afterDraw() {
     this.button.addEventListener("click", () => {
       this.fileInput.click();
-    }), this.fileInput.addEventListener("change", this.handleInputChange), this.native.addEventListener("drop", this.handleDrop);
-    let e = 0;
-    this.native.addEventListener("dragenter", (t) => {
-      t.preventDefault(), e === 0 && this.native.classList.add("highlight"), e += 1;
-    }), this.native.addEventListener("dragover", (t) => {
-      t.preventDefault(), e === 0 && (e = 1);
-    }), this.native.addEventListener("dragleave", (t) => {
-      t.preventDefault(), e -= 1, e <= 0 && (e = 0, this.native.classList.remove("highlight"));
-    }), this.native.addEventListener("drop", (t) => {
-      t.preventDefault(), e = 0, this.native.classList.remove("highlight");
+    });
+    this.fileInput.addEventListener("change", this.handleInputChange);
+    this.native.addEventListener("drop", this.handleDrop);
+    let dragEventCounter = 0;
+    this.native.addEventListener("dragenter", (event) => {
+      event.preventDefault();
+      if (dragEventCounter === 0) {
+        this.native.classList.add("highlight");
+      }
+      dragEventCounter += 1;
+    });
+    this.native.addEventListener("dragover", (event) => {
+      event.preventDefault();
+      if (dragEventCounter === 0) {
+        dragEventCounter = 1;
+      }
+    });
+    this.native.addEventListener("dragleave", (event) => {
+      event.preventDefault();
+      dragEventCounter -= 1;
+      if (dragEventCounter <= 0) {
+        dragEventCounter = 0;
+        this.native.classList.remove("highlight");
+      }
+    });
+    this.native.addEventListener("drop", (event) => {
+      event.preventDefault();
+      dragEventCounter = 0;
+      this.native.classList.remove("highlight");
     });
   }
   createButton() {
-    let e = document.createElement("wj-button");
-    e.innerText = this.label || this.localizer.translate("wj.file.upload.button");
-    let t = document.createElement("slot"), i = document.createElement("input");
-    return i.setAttribute("type", "file"), i.setAttribute("multiple", ""), i.setAttribute("style", "display:none;"), e.appendChild(t), e.appendChild(i), this.fileInput = i, e;
+    let button = document.createElement("wj-button");
+    button.innerText = this.label || this.localizer.translate("wj.file.upload.button");
+    let slot = document.createElement("slot");
+    let fileInput = document.createElement("input");
+    fileInput.setAttribute("type", "file");
+    fileInput.setAttribute("multiple", "");
+    fileInput.setAttribute("style", "display:none;");
+    button.appendChild(slot);
+    button.appendChild(fileInput);
+    this.fileInput = fileInput;
+    return button;
   }
-  handleSubmit(e) {
-    e.preventDefault(), this.uploadFiles(this.fileInput.files);
+  handleSubmit(event) {
+    event.preventDefault();
+    this.uploadFiles(this.fileInput.files);
   }
   // tu treba pridat kontrolu chunku
-  uploadFiles(e) {
-    e.length !== 0 && Array.from(e).forEach((t) => {
-      this.assertFilesValid(t);
-      let i, l = new FileReader();
-      l.onload = (a) => {
-        i = this.createPreview(t, l), this.fileList.appendChild(i), L(t, this.chunkSize, i);
-      }, l.readAsDataURL(t);
+  uploadFiles(files) {
+    if (files.length === 0) {
+      return;
+    }
+    Array.from(files).forEach((file) => {
+      this.assertFilesValid(file);
+      let preview;
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        preview = this.createPreview(file, reader);
+        this.fileList.appendChild(preview);
+        uploadFile(file, this.chunkSize, preview);
+      };
+      reader.readAsDataURL(file);
     });
   }
-  createPreview(e, t) {
-    let i = document.createElement("wj-file-upload-item");
-    return i.setAttribute("name", e.name), i.setAttribute("size", e.size), i.setAttribute("uploaded", "0"), i.setAttribute("progress", "0"), i.innerHTML = `<wj-icon slot="img" name="${E(e.type.split("/")[1])}" size="large"></wj-icon>`, i;
+  createPreview(file, reader) {
+    let preview = document.createElement("wj-file-upload-item");
+    preview.setAttribute("name", file.name);
+    preview.setAttribute("size", file.size);
+    preview.setAttribute("uploaded", "0");
+    preview.setAttribute("progress", "0");
+    preview.innerHTML = `<wj-icon slot="img" name="${getFileTypeIcon(file.type.split("/")[1])}" size="large"></wj-icon>`;
+    return preview;
   }
-  createThumbnail(e, t) {
-    let i = document.createElement("img");
-    return i.setAttribute("src", t.result), i;
+  createThumbnail(file, reader) {
+    let img = document.createElement("img");
+    img.setAttribute("src", reader.result);
+    return img;
   }
   // TODO: alowed types a size limit by malo byt cez attributy
-  assertFilesValid(e) {
-    const { name: t, size: i } = e;
-    if (console.log("FILE", e, this.acceptedTypes), !z(e, this.acceptedTypes))
-      throw new Error(`❌ FILE: "${t}" Valid file types are: "${this.acceptedTypes}"`);
-    if (i > this.maxFileSize)
-      throw new Error(`❌ File "${t}" could not be uploaded. Only images up to ${this.maxFileSize} MB are allowed. Nie je to ${i}`);
+  assertFilesValid(file) {
+    const { name: fileName, size: fileSize } = file;
+    console.log("FILE", file, this.acceptedTypes);
+    if (!isValidFileType(file, this.acceptedTypes)) {
+      throw new Error(`❌ FILE: "${fileName}" Valid file types are: "${this.acceptedTypes}"`);
+    }
+    if (fileSize > this.maxFileSize) {
+      throw new Error(`❌ File "${fileName}" could not be uploaded. Only images up to ${this.maxFileSize} MB are allowed. Nie je to ${fileSize}`);
+    }
   }
-  updateStatusMessage(e) {
+  updateStatusMessage(text) {
   }
-  updateProgressBar(e, t) {
-    const i = Math.round(e);
-    this.context.querySelector("#id-" + t).value = i;
+  updateProgressBar(value, id) {
+    const percent = Math.round(value);
+    this.context.querySelector("#id-" + id).value = percent;
   }
   showPendingState() {
     this.updateStatusMessage("⏳ Pending...");
   }
   resetFormState() {
-    this.fileList.textContent = "", this.updateStatusMessage("🤷‍♂ Nothing's uploaded");
+    this.fileList.textContent = "";
+    this.updateStatusMessage(`🤷‍♂ Nothing's uploaded`);
   }
 }
-customElements.get("wj-file-upload") || window.customElements.define("wj-file-upload", F);
+customElements.get("wj-file-upload") || window.customElements.define("wj-file-upload", FileUpload);
 export {
-  F as FileUpload
+  FileUpload
 };

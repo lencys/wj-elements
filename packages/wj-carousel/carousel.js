@@ -8,7 +8,6 @@ export class Carousel extends WJElement {
 
         this.activeSlide = 0;
         this.slidePerPage = 1;
-        // this.loop = false;
     }
 
     set activeSlide(value) {

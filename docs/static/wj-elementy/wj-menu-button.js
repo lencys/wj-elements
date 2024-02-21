@@ -1,17 +1,18 @@
-var u = Object.defineProperty;
-var i = (n, t, e) => t in n ? u(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
-var o = (n, t, e) => (i(n, typeof t != "symbol" ? t + "" : t, e), e);
-import l, { event as c } from "./wj-element.js";
-import "./wj-store.js";
-const a = `:host{display:inline-flex}@media (min-width: 768px){:host{display:none}}
-`;
-class m extends l {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement, { event } from "./wj-element.js";
+const styles = "/*\n[ WJ Menu Label ]\n*/\n:host {\n  display: inline-flex;\n}\n\n@media (min-width: 768px) {\n  :host {\n    display: none;\n  }\n}";
+class MenuButton extends WJElement {
   constructor() {
     super();
-    o(this, "className", "MenuButton");
+    __publicField(this, "className", "MenuButton");
   }
   static get cssStyleSheet() {
-    return a;
+    return styles;
   }
   static get observedAttributes() {
     return [];
@@ -19,17 +20,19 @@ class m extends l {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(e, d, p) {
-    let s = document.createDocumentFragment(), r = document.createElement("slot");
-    return s.appendChild(r), s;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let slot = document.createElement("slot");
+    fragment.appendChild(slot);
+    return fragment;
   }
   afterDraw() {
-    c.addListener(this, "click", null, (e) => {
+    event.addListener(this, "click", null, (e) => {
       document.querySelector(`#${this.contentId}`).classList.toggle("open");
     });
   }
 }
-customElements.get("wj-menu-button") || window.customElements.define("wj-menu-button", m);
+customElements.get("wj-menu-button") || window.customElements.define("wj-menu-button", MenuButton);
 export {
-  m as MenuButton
+  MenuButton
 };

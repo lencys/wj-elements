@@ -1,88 +1,139 @@
-var h = Object.defineProperty;
-var b = (o, a, e) => a in o ? h(o, a, { enumerable: !0, configurable: !0, writable: !0, value: e }) : o[a] = e;
-var p = (o, a, e) => (b(o, typeof a != "symbol" ? a + "" : a, e), e);
-import w, { WjElementUtils as l, event as j } from "./wj-element.js";
-import "./wj-store.js";
-const g = `:host{--wj-breadcrumb-a: var(--wj-color-contrast-high);--wj-breadcrumb-a-hover: var(--wj-color-contrast-medium);display:flex;flex:0 0 auto;align-items:center;line-height:1.5}:host(.collapsed){display:none}.native-breadcrumb{display:flex;align-items:center;width:100%;outline:none;background:inherit;padding:.25rem .75rem;color:var(--wj-breadcrumb-a);text-decoration:none}.native-breadcrumb.hidden{display:none}.native-breadcrumb.active{font-weight:700}.native-breadcrumb:hover{color:var(--wj-breadcrumb-a-hover)}button{margin-inline:.75rem;border:0 solid transparent;border-radius:3px;background-color:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer}.separator{display:inline-flex;align-items:center}::slotted([slot=start]){margin-inline:0 .5rem}::slotted([slot=end]){margin-inline:.5rem 0}
-`;
-class v extends w {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement, { WjElementUtils, event } from "./wj-element.js";
+const styles = "/*\n[ WJ Breadcrumbs ]\n*/\n:host {\n  --wj-breadcrumb-a: var(--wj-color-contrast-high);\n  --wj-breadcrumb-a-hover: var(--wj-color-contrast-medium);\n  display: flex;\n  flex: 0 0 auto;\n  align-items: center;\n  line-height: 1.5;\n}\n\n:host(.collapsed) {\n  display: none;\n}\n\n.native-breadcrumb {\n  display: flex;\n  align-items: center;\n  width: 100%;\n  outline: none;\n  background: inherit;\n  padding: 0.25rem 0.75rem;\n  color: var(--wj-breadcrumb-a);\n  text-decoration: none;\n}\n.native-breadcrumb.hidden {\n  display: none;\n}\n.native-breadcrumb.active {\n  font-weight: bold;\n}\n.native-breadcrumb:hover {\n  color: var(--wj-breadcrumb-a-hover);\n}\n\nbutton {\n  margin-inline: 0.75rem;\n  border: 0 solid transparent;\n  border-radius: 3px;\n  background-color: transparent;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n\n.separator {\n  display: inline-flex;\n  align-items: center;\n}\n\n::slotted([slot=start]) {\n  margin-inline: 0 0.5rem;\n}\n\n::slotted([slot=end]) {\n  margin-inline: 0.5rem 0;\n}";
+class Breadcrumb extends WJElement {
   constructor() {
-    var e;
+    var _a;
     super();
-    p(this, "className", "Breadcrumb");
-    this._showSeparator = !0, this._collapsedVariant = ((e = this.parentElement) == null ? void 0 : e.collapsedVariant) || "BUTTON";
+    __publicField(this, "className", "Breadcrumb");
+    this._showSeparator = true;
+    this._collapsedVariant = ((_a = this.parentElement) == null ? void 0 : _a.collapsedVariant) || "BUTTON";
   }
   get showSeparator() {
     return this._showSeparator;
   }
-  set showSeparator(e) {
-    this._showSeparator = e;
+  set showSeparator(value) {
+    this._showSeparator = value;
   }
   get collapsedVariant() {
     return this._collapsedVariant.toUpperCase();
   }
-  set collapsedVariant(e) {
-    this._collapsedVariant = e || this.parentElement.collapsedVariant;
+  set collapsedVariant(value) {
+    this._collapsedVariant = value || this.parentElement.collapsedVariant;
   }
   static get cssStyleSheet() {
-    return g;
+    return styles;
   }
   static get observedAttributes() {
     return ["show-collapsed-indicator", "collapsed", "last"];
   }
-  attributeChangedCallback(e, r, t) {
-    return e === "collapsed" ? l.stringToBoolean(t) && this.classList.add("collapsed") : e === "show-collapsed-indicator" ? l.stringToBoolean(t) && (this.showCollapsedIndicator = !0) : e === "last" && (this.active = l.stringToBoolean(t), this.showSeparator = !l.stringToBoolean(t)), !1;
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "collapsed") {
+      if (WjElementUtils.stringToBoolean(newValue))
+        this.classList.add("collapsed");
+    } else if (name === "show-collapsed-indicator") {
+      if (WjElementUtils.stringToBoolean(newValue))
+        this.showCollapsedIndicator = true;
+    } else if (name === "last") {
+      this.active = WjElementUtils.stringToBoolean(newValue);
+      this.showSeparator = !WjElementUtils.stringToBoolean(newValue);
+    }
+    return false;
   }
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(e, r, t) {
-    let s = document.createDocumentFragment(), n = document.createElement("a");
-    n.classList.add("native-breadcrumb"), this.active && n.classList.add("active");
-    let u = document.createElement("slot"), d = document.createElement("slot");
-    d.setAttribute("name", "start");
-    let c = document.createElement("slot");
-    if (c.setAttribute("name", "end"), n.appendChild(d), n.appendChild(u), n.appendChild(c), s.appendChild(n), this.showCollapsedIndicator && (s.appendChild(this.drawCollapsedIndicator()), this.classList.remove("collapsed"), n.classList.add("hidden")), this.showSeparator) {
-      let i = document.createElement("span");
-      if (i.classList.add("separator"), i.setAttribute("part", "separator"), l.hasSlot(this, "separator")) {
-        let m = document.createElement("slot");
-        m.setAttribute("name", "separator"), i.appendChild(m);
-      } else
-        i.innerHTML = `<wj-icon name=${this.separator || "chevron-right"}></wj-icon>`;
-      s.appendChild(i);
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("a");
+    native.classList.add("native-breadcrumb");
+    if (this.active)
+      native.classList.add("active");
+    let slot = document.createElement("slot");
+    let start = document.createElement("slot");
+    start.setAttribute("name", "start");
+    let end = document.createElement("slot");
+    end.setAttribute("name", "end");
+    native.appendChild(start);
+    native.appendChild(slot);
+    native.appendChild(end);
+    fragment.appendChild(native);
+    if (this.showCollapsedIndicator) {
+      fragment.appendChild(this.drawCollapsedIndicator());
+      this.classList.remove("collapsed");
+      native.classList.add("hidden");
     }
-    return this.native = n, s;
+    if (this.showSeparator) {
+      let separator = document.createElement("span");
+      separator.classList.add("separator");
+      separator.setAttribute("part", "separator");
+      if (WjElementUtils.hasSlot(this, "separator")) {
+        let slotSeparator = document.createElement("slot");
+        slotSeparator.setAttribute("name", "separator");
+        separator.appendChild(slotSeparator);
+      } else {
+        separator.innerHTML = `<wj-icon name=${this.separator || "chevron-right"}></wj-icon>`;
+      }
+      fragment.appendChild(separator);
+    }
+    this.native = native;
+    return fragment;
   }
   drawCollapsedIndicator() {
-    let e = null;
-    return this.collapsedVariant === "DROPDOWN" ? e = this.collapseDropdown() : e = this.collapseButton(), e;
+    let collapsedIndicator = null;
+    if (this.collapsedVariant === "DROPDOWN") {
+      collapsedIndicator = this.collapseDropdown();
+    } else {
+      collapsedIndicator = this.collapseButton();
+    }
+    return collapsedIndicator;
   }
   collapseDropdown() {
-    let e = document.createElement("wj-dropdown");
-    e.setAttribute("placement", "bottom"), e.setAttribute("offset", "10");
-    let r = document.createElement("wj-button");
-    r.setAttribute("slot", "trigger"), r.setAttribute("fill", "link"), r.innerHTML = '<wj-icon name="dots"></wj-icon>';
-    let t = document.createElement("wj-menu");
-    return t.setAttribute("variant", "context"), e.appendChild(r), e.appendChild(t), e.innerHTML = `<wj-button slot="trigger" fill="link">
+    let dropdown = document.createElement("wj-dropdown");
+    dropdown.setAttribute("placement", "bottom");
+    dropdown.setAttribute("offset", "10");
+    let button = document.createElement("wj-button");
+    button.setAttribute("slot", "trigger");
+    button.setAttribute("fill", "link");
+    button.innerHTML = `<wj-icon name="dots"></wj-icon>`;
+    let menu = document.createElement("wj-menu");
+    menu.setAttribute("variant", "context");
+    dropdown.appendChild(button);
+    dropdown.appendChild(menu);
+    dropdown.innerHTML = `<wj-button slot="trigger" fill="link">
             <wj-icon name="dots"></wj-icon>
         </wj-button>
         <wj-menu variant="context">
             <wj-menu-item>Test 0</wj-menu-item>
             <wj-menu-item>Test 1</wj-menu-item>
             <wj-menu-item>Test 2</wj-menu-item>
-        </wj-menu>`, this.parentElement.querySelectorAll("wj-breadcrumb").forEach((s) => {
-    }), e;
+        </wj-menu>`;
+    this.parentElement.querySelectorAll("wj-breadcrumb").forEach((el) => {
+    });
+    return dropdown;
   }
   collapseButton() {
-    let e = document.createElement("button");
-    return e.setAttribute("aria-label", "Show more breadcrumbs"), e.setAttribute("part", "collapsed-indicator"), e.innerHTML = '<wj-icon name="dots"></wj-icon>', j.addListener(e, "click", null, (r) => {
-      this.native.classList.remove("hidden"), e.remove(), this.parentElement.querySelectorAll("wj-breadcrumb").forEach((t) => {
-        t.classList.remove("collapsed");
-      }), r.stopPropagation();
-    }), e;
+    let button = document.createElement("button");
+    button.setAttribute("aria-label", "Show more breadcrumbs");
+    button.setAttribute("part", "collapsed-indicator");
+    button.innerHTML = `<wj-icon name="dots"></wj-icon>`;
+    event.addListener(button, "click", null, (e) => {
+      this.native.classList.remove("hidden");
+      button.remove();
+      this.parentElement.querySelectorAll("wj-breadcrumb").forEach((e2) => {
+        e2.classList.remove("collapsed");
+      });
+      e.stopPropagation();
+    });
+    return button;
   }
 }
-customElements.get("wj-breadcrumb") || window.customElements.define("wj-breadcrumb", v);
+customElements.get("wj-breadcrumb") || window.customElements.define("wj-breadcrumb", Breadcrumb);
 export {
-  v as Breadcrumb
+  Breadcrumb
 };

@@ -1,7 +1,8 @@
-/** @type {import('vite').UserConfig} */
-import { fetchAndParseCSS } from "./packages/utils/animations.js";
+import { defineConfig } from 'vite';
+import path from 'path';
 
-export default ({
+/** @type {import('vite').UserConfig} */
+export default defineConfig({
     base: '/',
     server: {
         hmr: true
@@ -22,7 +23,6 @@ export default ({
                 "master": "./packages/index.js",
                 "fetchAndParseCSS": "./packages/utils/animations.js",
                 "store": "./packages/wj-store/store.js",
-                "element": "./packages/wj-element/wj-element.js",
                 "animation": "./packages/wj-animation/animation.js",
                 "aside": "./packages/wj-aside/aside.js",
                 "avatar": "./packages/wj-avatar/avatar.js",
@@ -48,6 +48,7 @@ export default ({
                 "dialog": "./packages/wj-dialog/dialog.js",
                 "divider": "./packages/wj-divider/divider.js",
                 "dropdown": "./packages/wj-dropdown/dropdown.js",
+                "element": "./packages/wj-element/wj-element.js",
                 "file-upload": "./packages/wj-file-upload/file-upload.js",
                 "file-upload-item": "./packages/wj-file-upload-item/file-upload-item.js",
                 "form": "./packages/wj-form/form.js",
@@ -71,6 +72,10 @@ export default ({
                 "menu-button": "./packages/wj-menu-button/menu-button.js",
                 "menu-item": "./packages/wj-menu-item/menu-item.js",
                 "menu-label": "./packages/wj-menu-label/menu-label.js",
+                "nav": "./packages/wj-nav/nav.js",
+                "nav-menu": "./packages/wj-nav-menu/nav-menu.js",
+                "option": "./packages/wj-option/option.js",
+                "options": "./packages/wj-options/options.js",
                 "popup": "./packages/wj-popup/popup.js",
                 "progress-bar": "./packages/wj-progress-bar/progress-bar.js",
                 "radio": "./packages/wj-radio/radio.js",
@@ -82,9 +87,12 @@ export default ({
                 "router-link": "./packages/wj-router-link/router-link.js",
                 "router-outlet": "./packages/wj-router-outlet/router-outlet.js",
                 "row": "./packages/wj-row/row.js",
+                "select": "./packages/wj-select/select.js",
                 "slider": "./packages/wj-slider/slider.js",
                 "split-view": "./packages/wj-split-view/split-view.js",
-                // "table": "./packages/wj-table/table.js",
+                "tab": "./packages/wj-tab/tab.js",
+                "tab-group": "./packages/wj-tab-group/tab-group.js",
+                "tab-panel": "./packages/wj-tab-panel/tab-panel.js",
                 "textarea": "./packages/wj-textarea/textarea.js",
                 "thumbnail": "./packages/wj-thumbnail/thumbnail.js",
                 "toast": "./packages/wj-toast/toast.js",
@@ -100,5 +108,10 @@ export default ({
             publicDir: false,
         },
     },
+    resolve: {
+        alias: {
+            'wj-master': path.resolve(__dirname, './dist/wj-master.js')
+        },
+    }
 });
 

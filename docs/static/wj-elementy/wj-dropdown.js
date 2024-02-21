@@ -1,15 +1,17 @@
-var a = Object.defineProperty;
-var c = (r, t, e) => t in r ? a(r, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[t] = e;
-var o = (r, t, e) => (c(r, typeof t != "symbol" ? t + "" : t, e), e);
-import l from "./wj-element.js";
-import "./wj-store.js";
-class p extends l {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+class Dropdown extends WJElement {
   constructor() {
     super();
-    o(this, "className", "Dropdown");
+    __publicField(this, "className", "Dropdown");
   }
-  set trigger(e) {
-    this.setAttribute("trigger", e);
+  set trigger(value) {
+    this.setAttribute("trigger", value);
   }
   get trigger() {
     return this.getAttribute("trigger") || "click";
@@ -23,17 +25,26 @@ class p extends l {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(e, d, u) {
-    let n = document.createDocumentFragment();
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
     this.classList.add("wj-placement", "wj-" + this.placement || "wj-start");
-    let i = document.createElement("div");
-    i.setAttribute("part", "native"), i.classList.add("native-dropdown");
-    let s = document.createElement("wj-popup");
-    return s.setAttribute("placement", this.placement), s.setAttribute("offset", this.offset), s.setAttribute("manual", ""), s.innerHTML = `<slot name="trigger" slot="anchor"></slot>
-            <slot></slot>`, this.trigger === "click" && s.setAttribute("manual", ""), i.appendChild(s), n.appendChild(i), n;
+    let native = document.createElement("div");
+    native.setAttribute("part", "native");
+    native.classList.add("native-dropdown");
+    let popup = document.createElement("wj-popup");
+    popup.setAttribute("placement", this.placement);
+    popup.setAttribute("offset", this.offset);
+    popup.setAttribute("manual", "");
+    popup.innerHTML = `<slot name="trigger" slot="anchor"></slot>
+            <slot></slot>`;
+    if (this.trigger === "click")
+      popup.setAttribute("manual", "");
+    native.appendChild(popup);
+    fragment.appendChild(native);
+    return fragment;
   }
 }
-customElements.get("wj-dropdown") || window.customElements.define("wj-dropdown", p);
+customElements.get("wj-dropdown") || window.customElements.define("wj-dropdown", Dropdown);
 export {
-  p as Dropdown
+  Dropdown
 };

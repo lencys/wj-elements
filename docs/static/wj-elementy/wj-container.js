@@ -1,17 +1,18 @@
-var s = Object.defineProperty;
-var a = (e, t, n) => t in e ? s(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
-var o = (e, t, n) => (a(e, typeof t != "symbol" ? t + "" : t, n), n);
-import c from "./wj-element.js";
-import "./wj-store.js";
-const d = `:host{--wj-container-indent: 0;display:flex;flex-direction:row;flex:1;flex-basis:auto;box-sizing:border-box;min-width:0}:host([vertical]){flex-direction:column}@media (min-width: 768px){:host([indent]){margin-left:var(--wj-container-indent)}}
-`;
-class l extends c {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+const styles = "/*\n[ WJ Container ]\n*/\n:host {\n  --wj-container-indent: 0;\n  display: flex;\n  flex-direction: row;\n  flex: 1;\n  flex-basis: auto;\n  box-sizing: border-box;\n  min-width: 0;\n}\n\n:host([vertical]) {\n  flex-direction: column;\n}\n\n@media (min-width: 768px) {\n  :host([indent]) {\n    margin-left: var(--wj-container-indent);\n  }\n}";
+class Container extends WJElement {
   constructor() {
     super();
-    o(this, "className", "Container");
+    __publicField(this, "className", "Container");
   }
   static get cssStyleSheet() {
-    return d;
+    return styles;
   }
   static get observedAttributes() {
     return [];
@@ -19,14 +20,16 @@ class l extends c {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(n, m, u) {
-    let i = document.createDocumentFragment();
-    this.indent && this.style.setProperty("--wj-container-indent", this.indent);
-    let r = document.createElement("slot");
-    return i.appendChild(r), i;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    if (this.indent)
+      this.style.setProperty("--wj-container-indent", this.indent);
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-customElements.get("wj-container") || window.customElements.define("wj-container", l);
+customElements.get("wj-container") || window.customElements.define("wj-container", Container);
 export {
-  l as Container
+  Container
 };

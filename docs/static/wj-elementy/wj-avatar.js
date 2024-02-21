@@ -1,50 +1,68 @@
-var d = Object.defineProperty;
-var h = (r, a, t) => a in r ? d(r, a, { enumerable: !0, configurable: !0, writable: !0, value: t }) : r[a] = t;
-var n = (r, a, t) => (h(r, typeof a != "symbol" ? a + "" : a, t), t);
-import v from "./wj-element.js";
-import "./wj-store.js";
-function w(r, a = 30, t = 80) {
-  let o = r, s = 0;
-  for (let e = 0; e < (o == null ? void 0 : o.length); e++)
-    s = o.charCodeAt(e) + ((s << 5) - s);
-  return "hsl(" + s % 360 + ", " + a + "%, " + t + "%)";
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+function getHsl(text, s = 30, l = 80) {
+  let str = text, hash = 0;
+  for (let i = 0; i < (str == null ? void 0 : str.length); i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  let h = hash % 360;
+  let hexColor = "hsl(" + h + ", " + s + "%, " + l + "%)";
+  return hexColor;
 }
-function c(r, a = 2) {
-  let t = r.split(" "), o = t[0].substring(0, 1).toUpperCase();
-  return t.length > 1 && a > 1 && (o += t[t.length - 1].substring(0, 1).toUpperCase()), o;
+function getInitials(string, length = 2) {
+  let names = string.split(" ");
+  let initials = names[0].substring(0, 1).toUpperCase();
+  if (names.length > 1 && length > 1) {
+    initials += names[names.length - 1].substring(0, 1).toUpperCase();
+  }
+  return initials;
 }
-const j = `:host{--wj-avatar-width: 32px;--wj-avatar-height: 32px;--wj-avatar-font-size: .75rem;--wj-avatar-font-weight: 400;--wj-avatar-color: inherit;--wj-avatar-background-color: var(--wj-color-contrast-low);--wj-avatar-border-radius: 50%;--wj-avatar-border-color: transparent;--wj-avatar-border-width: 1px;--wj-avatar-border-style: solid;display:inline-block;width:var(--wj-avatar-width);height:var(--wj-avatar-height);font-size:var(--wj-avatar-font-size);font-weight:var(--wj-avatar-font-weight);color:var(--wj-avatar-color)}:host .native-avatar{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:var(--wj-avatar-border-radius);background-color:var(--wj-avatar-background-color)}::slotted(wj-img),::slotted(img){border-radius:var(--wj-avatar-border-radius);width:100%;height:100%;object-fit:cover;overflow:hidden}:host(.wj-avatar-border){border-color:var(--wj-avatar-border-color);border-width:var(--wj-avatar-border-width);border-style:var(--wj-avatar-border-style)}:host(.wj-avatar-small){--wj-avatar-width: 24px;--wj-avatar-height: 24px}:host(.wj-avatar-large){--wj-avatar-width: 48px;--wj-avatar-height: 48px}
-`;
-class g extends v {
+const styles = "/*\n[ WJ Avatar ]\n*/\n:host {\n  --wj-avatar-width: 32px;\n  --wj-avatar-height: 32px;\n  --wj-avatar-font-size: .75rem;\n  --wj-avatar-font-weight: 400;\n  --wj-avatar-color: inherit;\n  --wj-avatar-background-color: var(--wj-color-contrast-low);\n  --wj-avatar-border-radius: 50%;\n  --wj-avatar-border-color: transparent;\n  --wj-avatar-border-width: 1px;\n  --wj-avatar-border-style: solid;\n  display: inline-block;\n  width: var(--wj-avatar-width);\n  height: var(--wj-avatar-height);\n  font-size: var(--wj-avatar-font-size);\n  font-weight: var(--wj-avatar-font-weight);\n  color: var(--wj-avatar-color);\n}\n:host .native-avatar {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n  border-radius: var(--wj-avatar-border-radius);\n  background-color: var(--wj-avatar-background-color);\n}\n\n::slotted(wj-img),\n::slotted(img) {\n  border-radius: var(--wj-avatar-border-radius);\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  overflow: hidden;\n}\n\n:host(.wj-avatar-border) {\n  border-color: var(--wj-avatar-border-color);\n  border-width: var(--wj-avatar-border-width);\n  border-style: var(--wj-avatar-border-style);\n}\n\n:host(.wj-avatar-small) {\n  --wj-avatar-width: 24px;\n  --wj-avatar-height: 24px;\n}\n\n:host(.wj-avatar-large) {\n  --wj-avatar-width: 48px;\n  --wj-avatar-height: 48px;\n}";
+class Avatar extends WJElement {
   constructor() {
     super();
-    n(this, "className", "Avatar");
+    __publicField(this, "className", "Avatar");
   }
   static get cssStyleSheet() {
-    return j;
+    return styles;
   }
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(t, o, s) {
-    let l = document.createDocumentFragment(), i = document.createElement("div");
-    if (i.setAttribute("part", "native"), i.classList.add("native-avatar"), this.size && this.classList.add("wj-avatar-" + this.size), this.isImage()) {
-      let e = document.createElement("slot");
-      i.appendChild(e);
-    } else if (this.hasAttribute("initials")) {
-      let e = c(this.label);
-      this.setAttribute("style", `--wj-avatar-background-color: ${w(e)}`), i.innerText = e;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("div");
+    element.setAttribute("part", "native");
+    element.classList.add("native-avatar");
+    if (this.size)
+      this.classList.add("wj-avatar-" + this.size);
+    if (this.isImage()) {
+      let slot = document.createElement("slot");
+      element.appendChild(slot);
     } else {
-      let e = document.createElement("slot");
-      e.setAttribute("name", "icon"), i.appendChild(e);
+      if (this.hasAttribute("initials")) {
+        let initials = getInitials(this.label);
+        this.setAttribute("style", `--wj-avatar-background-color: ${getHsl(initials)}`);
+        element.innerText = initials;
+      } else {
+        let slotIcon = document.createElement("slot");
+        slotIcon.setAttribute("name", "icon");
+        element.appendChild(slotIcon);
+      }
     }
-    return l.appendChild(i), l;
+    fragment.appendChild(element);
+    return fragment;
   }
   isImage() {
     return this.getElementsByTagName("wj-img").length > 0;
   }
 }
-customElements.get("wj-avatar") || window.customElements.define("wj-avatar", g);
+customElements.get("wj-avatar") || window.customElements.define("wj-avatar", Avatar);
 export {
-  g as Avatar
+  Avatar
 };

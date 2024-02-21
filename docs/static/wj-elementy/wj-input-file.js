@@ -1,17 +1,18 @@
-var c = Object.defineProperty;
-var b = (i, r, t) => r in i ? c(i, r, { enumerable: !0, configurable: !0, writable: !0, value: t }) : i[r] = t;
-var u = (i, r, t) => (b(i, typeof r != "symbol" ? r + "" : r, t), t);
-import m from "./wj-element.js";
-import "./wj-store.js";
-const h = `:host{--wj-input-font-family: var(--wj-font-family);--wj-input-background-color: var(--wj-background);--wj-input-color: var(--wj-color);--wj-input-color-invalid: var(--wj-color-danger);--wj-input-border-color: var(--wj-border-color);--wj-input-border-color-focus: var(--wj-color-primary);--wj-input-border-width: 1px;--wj-input-border-style: solid;--wj-input-border-radius: 4px;--wj-input-margin-bottom: .5rem;--wj-input-line-height: 20px;--wj-input-slot-padding-inline: .5rem;width:100%;margin-bottom:var(--wj-input-margin-bottom);display:block}:host .wrapper{display:flex;width:100%}:host .native-input .input-wrapper{width:100%;position:relative}:host .native-input.default{background-color:var(--wj-input-background-color);font-family:var(--wj-input-font-family);position:relative;border-radius:var(--wj-input-border-radius);border-width:var(--wj-input-border-width);border-style:var(--wj-input-border-style);border-color:var(--wj-input-border-color);padding-inline:0;padding-top:.25rem;padding-bottom:.25rem;transition:background-color .2s ease;cursor:text}:host .native-input.default .input-wrapper{margin-inline:.5rem}:host .native-input.default.focused{border-color:var(--wj-input-border-color-focus)!important}:host .native-input.default.focused label{opacity:.67;font-size:12px;letter-spacing:normal}:host .native-input.default input{border:none;height:25px;min-height:25px;padding:0;margin-top:-4px;background:none;box-shadow:none;width:100%}:host .native-input.default label{margin:0;display:block;opacity:1;cursor:text;transition:opacity .2s ease;line-height:var(--wj-input-line-height)}:host .native-input.default label.fade{opacity:.5;font-size:12px;letter-spacing:normal}:host .native-input.default ::slotted([slot=start]){border-left:none;border-top:none;border-bottom:none}:host .native-input.default ::slotted([slot=end]){border-right:none;border-top:none;border-bottom:none}:host .native-input.standard{background-color:var(--wj-input-background-color);font-family:var(--wj-input-font-family);position:relative;border-radius:var(--wj-input-border-radius);padding-inline:0;padding-top:0;padding-bottom:0;transition:background-color .2s ease;cursor:text}:host .native-input.standard.focused input{border-color:var(--wj-input-border-color-focus)!important}:host .native-input.standard input{display:block;min-height:32px;padding-inline:.5rem;padding-top:0;padding-bottom:0;background:none;box-shadow:none;width:100%;box-sizing:border-box;border-radius:var(--wj-input-border-radius);border-width:var(--wj-input-border-width);border-style:var(--wj-input-border-style);border-color:var(--wj-input-border-color)}:host .native-input.standard label{margin:0;display:inline-block;opacity:1;cursor:text;transition:opacity .2s ease;line-height:var(--wj-input-line-height)}:host .native-input.standard .input-wrapper:hover .clear{visibility:visible}:host .native-input.standard ::slotted([slot=start]){border-right:none;border-radius:var(--wj-input-border-radius) 0 0 var(--wj-input-border-radius)}:host .native-input.standard ::slotted([slot=end]){border-left:none;border-radius:0 var(--wj-input-border-radius) var(--wj-input-border-radius) 0}:host .native-input.standard.has-start input{border-top-left-radius:0;border-bottom-left-radius:0}:host .native-input.standard.has-end input{border-top-right-radius:0;border-bottom-right-radius:0}:host .native-input.standard .error-message{position:static;background:transparent;padding:.25rem 0;left:auto;transform:none;color:var(--wj-input-color-invalid);font-size:12px;line-height:normal}.clear{visibility:hidden;position:absolute;right:0;top:3px;--wj-padding-top: .25rem;--wj-padding-start: .25rem;--wj-padding-end: .25rem;--wj-padding-bottom: .25rem;--wj-button-margin-inline: 0 .25rem}:host([required]) .input-wrapper:after{color:var(--wj-input-color-invalid);content:"*";font-family:var(--wj-force-mac-font-family);font-size:20px;position:absolute;right:10px;top:2px}:host([required]) .standard .input-wrapper:after{top:0}:host([invalid]) .error-message{display:block}:host([invalid]) .default label{opacity:1!important;color:var(--wj-input-color-invalid)!important;animation-name:shake;animation-duration:.4s;animation-iteration-count:1}::slotted([slot=start]),::slotted([slot=end]){display:flex;align-items:center;border-width:var(--wj-input-border-width);border-style:var(--wj-input-border-style);border-color:var(--wj-input-border-color);padding-inline:var(--wj-input-slot-padding-inline)}slot[name=start],slot[name=end]{display:flex}input{background-color:var(--wj-input-background-color);border-width:var(--wj-input-border-width);border-style:var(--wj-input-border-style);border-color:var(--wj-input-border-color);font-family:var(--wjinput-font-family);color:var(--wj-input-color);-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:0;padding:.25rem .5rem;line-height:var(--wj-input-line-height);font-size:14px;font-weight:400;vertical-align:middle;min-height:32px}.error-message{display:none;position:absolute;width:auto;max-width:100%;min-width:auto;border-radius:50px;background:black;padding:.25rem .5rem;top:0;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:12px;line-height:normal}@keyframes shake{8%,41%{transform:translate(-4px)}25%,58%{transform:translate(4px)}75%{transform:translate(-2px)}92%{transform:translate(2px)}0%,to{transform:translate(0)}}
-`;
-class w extends m {
-  constructor(t = {}) {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+const styles = '/*\n[ WJ Input ]\n*/\n:host {\n  --wj-input-font-family: var(--wj-font-family);\n  --wj-input-background-color: var(--wj-background);\n  --wj-input-color: var(--wj-color);\n  --wj-input-color-invalid: var(--wj-color-danger);\n  --wj-input-border-color: var(--wj-border-color);\n  --wj-input-border-color-focus: var(--wj-color-primary);\n  --wj-input-border-width: 1px;\n  --wj-input-border-style: solid;\n  --wj-input-border-radius: 4px;\n  --wj-input-margin-bottom: .5rem;\n  --wj-input-line-height: 20px;\n  --wj-input-slot-padding-inline: .5rem;\n  width: 100%;\n  margin-bottom: var(--wj-input-margin-bottom);\n  display: block;\n}\n:host .wrapper {\n  display: flex;\n  width: 100%;\n}\n:host .native-input .input-wrapper {\n  width: 100%;\n  position: relative;\n}\n:host .native-input.default {\n  background-color: var(--wj-input-background-color);\n  font-family: var(--wj-input-font-family);\n  position: relative;\n  border-radius: var(--wj-input-border-radius);\n  border-width: var(--wj-input-border-width);\n  border-style: var(--wj-input-border-style);\n  border-color: var(--wj-input-border-color);\n  padding-inline: 0;\n  padding-top: 0.25rem;\n  padding-bottom: 0.25rem;\n  transition: background-color 0.2s ease;\n  cursor: text;\n}\n:host .native-input.default .input-wrapper {\n  margin-inline: 0.5rem;\n}\n:host .native-input.default.focused {\n  border-color: var(--wj-input-border-color-focus) !important;\n}\n:host .native-input.default.focused label {\n  opacity: 0.67;\n  font-size: 12px;\n  letter-spacing: normal;\n}\n:host .native-input.default input {\n  border: none;\n  height: 25px;\n  min-height: 25px;\n  padding: 0;\n  margin-top: -4px;\n  background: none;\n  box-shadow: none;\n  width: 100%;\n}\n:host .native-input.default label {\n  margin: 0;\n  display: block;\n  opacity: 1;\n  cursor: text;\n  transition: opacity 0.2s ease;\n  line-height: var(--wj-input-line-height);\n}\n:host .native-input.default label.fade {\n  opacity: 0.5;\n  font-size: 12px;\n  letter-spacing: normal;\n}\n:host .native-input.default ::slotted([slot=start]) {\n  border-left: none;\n  border-top: none;\n  border-bottom: none;\n}\n:host .native-input.default ::slotted([slot=end]) {\n  border-right: none;\n  border-top: none;\n  border-bottom: none;\n}\n:host .native-input.standard {\n  background-color: var(--wj-input-background-color);\n  font-family: var(--wj-input-font-family);\n  position: relative;\n  border-radius: var(--wj-input-border-radius);\n  padding-inline: 0;\n  padding-top: 0;\n  padding-bottom: 0;\n  transition: background-color 0.2s ease;\n  cursor: text;\n}\n:host .native-input.standard.focused input {\n  border-color: var(--wj-input-border-color-focus) !important;\n}\n:host .native-input.standard input {\n  display: block;\n  min-height: 32px;\n  padding-inline: 0.5rem;\n  padding-top: 0;\n  padding-bottom: 0;\n  background: none;\n  box-shadow: none;\n  width: 100%;\n  box-sizing: border-box;\n  border-radius: var(--wj-input-border-radius);\n  border-width: var(--wj-input-border-width);\n  border-style: var(--wj-input-border-style);\n  border-color: var(--wj-input-border-color);\n}\n:host .native-input.standard label {\n  margin: 0;\n  display: inline-block;\n  opacity: 1;\n  cursor: text;\n  transition: opacity 0.2s ease;\n  line-height: var(--wj-input-line-height);\n}\n:host .native-input.standard .input-wrapper:hover .clear {\n  visibility: visible;\n}\n:host .native-input.standard ::slotted([slot=start]) {\n  border-right: none;\n  border-radius: var(--wj-input-border-radius) 0 0 var(--wj-input-border-radius);\n}\n:host .native-input.standard ::slotted([slot=end]) {\n  border-left: none;\n  border-radius: 0 var(--wj-input-border-radius) var(--wj-input-border-radius) 0;\n}\n:host .native-input.standard.has-start input {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}\n:host .native-input.standard.has-end input {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n:host .native-input.standard .error-message {\n  position: static;\n  background: transparent;\n  padding: 0.25rem 0;\n  left: auto;\n  transform: none;\n  color: var(--wj-input-color-invalid);\n  font-size: 12px;\n  line-height: normal;\n}\n\n.clear {\n  visibility: hidden;\n  position: absolute;\n  right: 0;\n  top: 3px;\n  --wj-padding-top: .25rem;\n  --wj-padding-start: .25rem;\n  --wj-padding-end: .25rem;\n  --wj-padding-bottom: .25rem;\n  --wj-button-margin-inline: 0 .25rem;\n}\n\n:host([required]) .input-wrapper::after {\n  color: var(--wj-input-color-invalid);\n  content: "*";\n  font-family: var(--wj-force-mac-font-family);\n  font-size: 20px;\n  position: absolute;\n  right: 10px;\n  top: 2px;\n}\n\n:host([required]) .standard .input-wrapper::after {\n  top: 0;\n}\n\n:host([invalid]) .error-message {\n  display: block;\n}\n:host([invalid]) .default label {\n  opacity: 1 !important;\n  color: var(--wj-input-color-invalid) !important;\n  animation-name: shake;\n  animation-duration: 0.4s;\n  animation-iteration-count: 1;\n}\n\n::slotted([slot=start]), ::slotted([slot=end]) {\n  display: flex;\n  align-items: center;\n  border-width: var(--wj-input-border-width);\n  border-style: var(--wj-input-border-style);\n  border-color: var(--wj-input-border-color);\n  padding-inline: var(--wj-input-slot-padding-inline);\n}\n\nslot[name=start], slot[name=end] {\n  display: flex;\n}\n\ninput {\n  background-color: var(--wj-input-background-color);\n  border-width: var(--wj-input-border-width);\n  border-style: var(--wj-input-border-style);\n  border-color: var(--wj-input-border-color);\n  font-family: var(--wjinput-font-family);\n  color: var(--wj-input-color);\n  appearance: none;\n  outline: 0;\n  padding: 0.25rem 0.5rem;\n  line-height: var(--wj-input-line-height);\n  font-size: 14px;\n  font-weight: normal;\n  vertical-align: middle;\n  min-height: 32px;\n}\n\n.error-message {\n  display: none;\n  position: absolute;\n  width: auto;\n  max-width: 100%;\n  min-width: auto;\n  border-radius: 50px;\n  background: black;\n  padding: 0.25rem 0.5rem;\n  top: 0;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  color: white;\n  font-size: 12px;\n  line-height: normal;\n}\n\n@keyframes shake {\n  8%, 41% {\n    transform: translateX(-4px);\n  }\n  25%, 58% {\n    transform: translateX(4px);\n  }\n  75% {\n    transform: translateX(-2px);\n  }\n  92% {\n    transform: translateX(2px);\n  }\n  0%, 100% {\n    transform: translateX(0);\n  }\n}';
+class InputFile extends WJElement {
+  constructor(options = {}) {
     super();
-    u(this, "className", "Input");
+    __publicField(this, "className", "Input");
   }
   static get cssStyleSheet() {
-    return h;
+    return styles;
   }
   static get observedAttributes() {
     return [];
@@ -19,29 +20,50 @@ class w extends m {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(t, d, s) {
-    let o = document.createDocumentFragment(), n = document.createElement("div");
-    n.setAttribute("part", "native"), n.classList.add("native-input-file", this.variant || "default");
-    let a = document.createElement("input");
-    a.setAttribute("type", "file"), a.setAttribute("multiple", ""), a.setAttribute("hidden", "");
-    let e = document.createElement("wj-input");
-    e.setAttribute("variant", "standard"), e.setAttribute("type", "text"), e.setAttribute("placeholder", "Click to upload"), e.setAttribute("readonly", "");
-    let p = document.createElement("span");
-    p.setAttribute("slot", "start");
-    let l = document.createElement("wj-icon");
-    return l.setAttribute("slot", "icon-only"), l.setAttribute("name", "cloud-upload"), p.appendChild(l), e.appendChild(p), n.appendChild(e), n.appendChild(a), o.appendChild(n), this.native = n, this.input = e, this.fileInput = a, o;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    native.setAttribute("part", "native");
+    native.classList.add("native-input-file", this.variant || "default");
+    let fileInput = document.createElement("input");
+    fileInput.setAttribute("type", "file");
+    fileInput.setAttribute("multiple", "");
+    fileInput.setAttribute("hidden", "");
+    let input = document.createElement("wj-input");
+    input.setAttribute("variant", "standard");
+    input.setAttribute("type", "text");
+    input.setAttribute("placeholder", "Click to upload");
+    input.setAttribute("readonly", "");
+    let span = document.createElement("span");
+    span.setAttribute("slot", "start");
+    let icon = document.createElement("wj-icon");
+    icon.setAttribute("slot", "icon-only");
+    icon.setAttribute("name", "cloud-upload");
+    span.appendChild(icon);
+    input.appendChild(span);
+    native.appendChild(input);
+    native.appendChild(fileInput);
+    fragment.appendChild(native);
+    this.native = native;
+    this.input = input;
+    this.fileInput = fileInput;
+    return fragment;
   }
   afterDraw() {
     this.input.addEventListener("click", () => {
       this.fileInput.click();
-    }), this.fileInput.addEventListener("change", (t) => {
-      for (var d = t.target.files, s = [], o = 0; o < d.length; o++)
-        s.push(d[o].name);
-      this.input.value = s.join(", ");
+    });
+    this.fileInput.addEventListener("change", (e) => {
+      var files = e.target.files;
+      var fileNames = [];
+      for (var i = 0; i < files.length; i++) {
+        fileNames.push(files[i].name);
+      }
+      this.input.value = fileNames.join(", ");
     });
   }
 }
-customElements.get("wj-input-file") || window.customElements.define("wj-input-file", w);
+customElements.get("wj-input-file") || window.customElements.define("wj-input-file", InputFile);
 export {
-  w as InputFile
+  InputFile
 };

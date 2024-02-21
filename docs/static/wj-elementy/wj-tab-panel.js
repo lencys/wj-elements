@@ -5,17 +5,14 @@ var __publicField = (obj, key, value) => {
   return value;
 };
 import WJElement from "./wj-element.js";
-const styles = "/*\n[ WJ Main ]\n*/\n:host {\n  display: block;\n  flex: 1;\n  flex-basis: auto;\n  padding: 1.5rem;\n  box-sizing: border-box;\n}";
-class Main extends WJElement {
+const styles = "/*\n[ WJ Tab Panel ]\n*/\n:host {\n  display: none;\n  flex-wrap: wrap;\n  align-items: center;\n  padding: 1rem;\n}\n\n:host([active]) {\n  display: block;\n}";
+class TabPanel extends WJElement {
   constructor() {
     super();
-    __publicField(this, "className", "Main");
+    __publicField(this, "className", "TabPanel");
   }
   static get cssStyleSheet() {
     return styles;
-  }
-  static get observedAttributes() {
-    return [];
   }
   setupAttributes() {
     this.isShadowRoot = "open";
@@ -27,7 +24,7 @@ class Main extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-main") || window.customElements.define("wj-main", Main);
+customElements.get("wj-tab-panel") || window.customElements.define("wj-tab-panel", TabPanel);
 export {
-  Main
+  TabPanel
 };

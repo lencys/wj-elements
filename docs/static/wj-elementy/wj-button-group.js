@@ -1,17 +1,18 @@
-var c = Object.defineProperty;
-var p = (n, e, t) => e in n ? c(n, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[e] = t;
-var i = (n, e, t) => (p(n, typeof e != "symbol" ? e + "" : e, t), t);
-import d from "./wj-element.js";
-import "./wj-store.js";
-const m = `:host{display:inline-block}:host .native-button-group{display:flex;flex-wrap:nowrap;line-height:1}:host slot{display:contents}::slotted(wj-button){margin:0!important}
-`;
-class g extends d {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+const styles = "/*\n[ WJ Button Group ]\n*/\n:host {\n  display: inline-block;\n}\n:host .native-button-group {\n  display: flex;\n  flex-wrap: nowrap;\n  line-height: 1;\n}\n:host slot {\n  display: contents;\n}\n\n::slotted(wj-button) {\n  margin: 0 !important;\n}";
+class ButtonGroup extends WJElement {
   constructor() {
     super();
-    i(this, "className", "ButtonGroup");
+    __publicField(this, "className", "ButtonGroup");
   }
   static get cssStyleSheet() {
-    return m;
+    return styles;
   }
   static get observedAttributes() {
     return [];
@@ -19,23 +20,35 @@ class g extends d {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(t, l, a) {
-    let s = document.createDocumentFragment(), o = document.createElement("div");
-    return o.classList.add("native-button-group"), o.setAttribute("part", "native"), this.slotElement = document.createElement("slot"), o.appendChild(this.slotElement), s.appendChild(o), s;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("div");
+    element.classList.add("native-button-group");
+    element.setAttribute("part", "native");
+    this.slotElement = document.createElement("slot");
+    element.appendChild(this.slotElement);
+    fragment.appendChild(element);
+    return fragment;
   }
-  afterDraw(t, l, a) {
-    const s = [...this.slotElement.assignedElements({ flatten: !0 })];
-    s.forEach((o) => {
-      let u = s.indexOf(o), r = this.findButton(o);
-      r && (r.classList.add("wj-button-group-button"), r.classList.toggle("wj-button-group-first", u === 0), r.classList.toggle("wj-button-group-inner", u > 0 && u < s.length - 1), r.classList.toggle("wj-button-group-last", u === s.length - 1));
+  afterDraw(context, store, params) {
+    const slottedElements = [...this.slotElement.assignedElements({ flatten: true })];
+    slottedElements.forEach((el) => {
+      let index = slottedElements.indexOf(el);
+      let button = this.findButton(el);
+      if (button) {
+        button.classList.add("wj-button-group-button");
+        button.classList.toggle("wj-button-group-first", index === 0);
+        button.classList.toggle("wj-button-group-inner", index > 0 && index < slottedElements.length - 1);
+        button.classList.toggle("wj-button-group-last", index === slottedElements.length - 1);
+      }
     });
   }
-  findButton(t) {
-    const l = "wj-button";
-    return t.closest(l) ?? t.querySelector(l);
+  findButton(el) {
+    const selector = "wj-button";
+    return el.closest(selector) ?? el.querySelector(selector);
   }
 }
-customElements.get("wj-button-group") || window.customElements.define("wj-button-group", g);
+customElements.get("wj-button-group") || window.customElements.define("wj-button-group", ButtonGroup);
 export {
-  g as ButtonGroup
+  ButtonGroup
 };

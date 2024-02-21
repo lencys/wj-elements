@@ -1,20 +1,19 @@
-var r = Object.defineProperty;
-var o = (t, e, n) => e in t ? r(t, e, { enumerable: !0, configurable: !0, writable: !0, value: n }) : t[e] = n;
-var l = (t, e, n) => (o(t, typeof e != "symbol" ? e + "" : e, n), n);
-import i, { WjElementUtils as m } from "./wj-element.js";
-import "./wj-store.js";
-const d = `/*!
-* direction.scss
-*/:host{--wj-menu-label-font-size: .75rem;--wj-menu-label-weight: 600;--wj-letter-spacing: .025rem;--wj-menu-label-color: var(--wj-color-contrast-6);--wj-padding-top: 0;--wj-padding-bottom: 0;--wj-padding-start: 1.5rem;--wj-padding-end: 1.5rem}:host .native-menu-label{font-size:var(--wj-menu-label-font-size);display:inline-block;font-weight:var(--wj-menu-label-weight);letter-spacing:var(--wj-letter-spacing);color:var(--wj-menu-label-color);padding:var(--wj-padding-top) var(--wj-padding-start) var(--wj-padding-bottom) var(--wj-padding-end)}
-`;
-class u extends i {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement, { WjElementUtils } from "./wj-element.js";
+const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Menu Label ]\n*/\n:host {\n  --wj-menu-label-font-size: .75rem;\n  --wj-menu-label-weight: 600;\n  --wj-letter-spacing: .025rem;\n  --wj-menu-label-color: var(--wj-color-contrast-6);\n  --wj-padding-top: 0;\n  --wj-padding-bottom: 0;\n  --wj-padding-start: 1.5rem;\n  --wj-padding-end: 1.5rem;\n}\n:host .native-menu-label {\n  font-size: var(--wj-menu-label-font-size);\n  display: inline-block;\n  font-weight: var(--wj-menu-label-weight);\n  letter-spacing: var(--wj-letter-spacing);\n  color: var(--wj-menu-label-color);\n  padding: var(--wj-padding-top) var(--wj-padding-start) var(--wj-padding-bottom) var(--wj-padding-end);\n}";
+class MenuLabel extends WJElement {
   constructor() {
     super();
-    l(this, "className", "MenuLabel");
-    this.hasSubmenu = m.hasSlot(this, "submenu");
+    __publicField(this, "className", "MenuLabel");
+    this.hasSubmenu = WjElementUtils.hasSlot(this, "submenu");
   }
   static get cssStyleSheet() {
-    return d;
+    return styles;
   }
   static get observedAttributes() {
     return [];
@@ -22,12 +21,16 @@ class u extends i {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(n, c, w) {
-    let s = document.createDocumentFragment(), a = document.createElement("slot");
-    return a.setAttribute("part", "base"), a.classList.add("native-menu-label"), s.appendChild(a), s;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let slot = document.createElement("slot");
+    slot.setAttribute("part", "base");
+    slot.classList.add("native-menu-label");
+    fragment.appendChild(slot);
+    return fragment;
   }
 }
-customElements.get("wj-menu-label") || window.customElements.define("wj-menu-label", u);
+customElements.get("wj-menu-label") || window.customElements.define("wj-menu-label", MenuLabel);
 export {
-  u as MenuLabel
+  MenuLabel
 };

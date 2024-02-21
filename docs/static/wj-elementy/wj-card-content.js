@@ -1,27 +1,30 @@
-var s = Object.defineProperty;
-var d = (e, t, o) => t in e ? s(e, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : e[t] = o;
-var r = (e, t, o) => (d(e, typeof t != "symbol" ? t + "" : t, o), o);
-import i from "./wj-element.js";
-import "./wj-store.js";
-const m = `:host{--wj-card-padding: 0 1rem 1rem;display:block;padding:var(--wj-card-padding)}:host.no-padding .row{margin-left:0;margin-right:0}:host.no-bottom-padding{padding-bottom:0}:host.no-top-padding{padding-top:0}:host .title{margin-top:0}:host.scrollable{margin-bottom:20px}:host h3{line-height:34px;font-size:26px}
-`;
-class p extends i {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+const styles = "/*\n[ WJ Card - Content ]\n*/\n:host {\n  --wj-card-padding: 0 1rem 1rem;\n  display: block;\n  padding: var(--wj-card-padding);\n}\n:host.no-padding .row {\n  margin-left: 0;\n  margin-right: 0;\n}\n:host.no-bottom-padding {\n  padding-bottom: 0;\n}\n:host.no-top-padding {\n  padding-top: 0;\n}\n:host .title {\n  margin-top: 0;\n}\n:host.scrollable {\n  margin-bottom: 20px;\n}\n:host h3 {\n  line-height: 34px;\n  font-size: 26px;\n}";
+class CardContent extends WJElement {
   constructor() {
     super();
-    r(this, "className", "CardContent");
+    __publicField(this, "className", "CardContent");
   }
   static get cssStyleSheet() {
-    return m;
+    return styles;
   }
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(o, c, l) {
-    let n = document.createDocumentFragment(), a = document.createElement("slot");
-    return n.appendChild(a), n;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-customElements.get("wj-card-content") || window.customElements.define("wj-card-content", p);
+customElements.get("wj-card-content") || window.customElements.define("wj-card-content", CardContent);
 export {
-  p as CardContent
+  CardContent
 };

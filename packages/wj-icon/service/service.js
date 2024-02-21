@@ -1,4 +1,3 @@
-"use strict";
 export const iconContent = new Map();
 const requests = new Map();
 
@@ -138,8 +137,6 @@ const getNamedUrl = (iconName) => {
   let parsedUrl = new URL(import.meta.url);
   let pathName = parsedUrl.pathname;
 
-  // Remove the file name from the path to get the directory
   let folderPath = pathName.substring(0, pathName.lastIndexOf('/'));
-
   return new URL(parsedUrl.origin + folderPath + path).href;
 };

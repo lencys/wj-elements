@@ -1,37 +1,53 @@
-var i = Object.defineProperty;
-var n = (r, t, e) => t in r ? i(r, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[t] = e;
-var u = (r, t, e) => (n(r, typeof t != "symbol" ? t + "" : t, e), e);
-import d from "./wj-element.js";
-import "./wj-store.js";
-const p = `:host{display:flex;flex-wrap:wrap;align-items:center}
-`;
-class b extends d {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+const styles = "/*\n[ WJ Breadcrumbs ]\n*/\n:host {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n}";
+class Breadcrumbs extends WJElement {
   constructor() {
     super();
-    u(this, "className", "Breadcrumbs");
-    this.last = !1;
+    __publicField(this, "className", "Breadcrumbs");
+    this.last = false;
   }
   static get cssStyleSheet() {
-    return p;
+    return styles;
   }
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(e, l, o) {
-    let s = document.createDocumentFragment(), c = document.createElement("slot");
-    return s.appendChild(c), s;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
   afterDraw() {
-    let e = +this.maxItems || 0, l = +this.itemsBeforeCollapse || 1, o = +this.itemsAfterCollapse || 1, s = this.getBreadcrumbs();
-    s.findLast((a) => a).setAttribute("last", !0), e !== void 0 && s.length > e && l + o <= e && s.forEach((a, m) => {
-      m === l && a.setAttribute("show-collapsed-indicator", !0), m >= l && m < s.length - o && a.setAttribute("collapsed", !0);
-    });
+    let maxItems = +this.maxItems || 0;
+    let itemsBeforeCollapse = +this.itemsBeforeCollapse || 1;
+    let itemsAfterCollapse = +this.itemsAfterCollapse || 1;
+    let breadcrumbs = this.getBreadcrumbs();
+    let breadcrumb = breadcrumbs.findLast((e) => e);
+    breadcrumb.setAttribute("last", true);
+    const shouldCollapse = maxItems !== void 0 && breadcrumbs.length > maxItems && itemsBeforeCollapse + itemsAfterCollapse <= maxItems;
+    if (shouldCollapse) {
+      breadcrumbs.forEach((breadcrumb2, index) => {
+        if (index === itemsBeforeCollapse) {
+          breadcrumb2.setAttribute("show-collapsed-indicator", true);
+        }
+        if (index >= itemsBeforeCollapse && index < breadcrumbs.length - itemsAfterCollapse) {
+          breadcrumb2.setAttribute("collapsed", true);
+        }
+      });
+    }
   }
   getBreadcrumbs() {
     return Array.from(this.querySelectorAll("wj-breadcrumb"));
   }
 }
-customElements.get("wj-breadcrumbs") || window.customElements.define("wj-breadcrumbs", b);
+customElements.get("wj-breadcrumbs") || window.customElements.define("wj-breadcrumbs", Breadcrumbs);
 export {
-  b as Breadcrumbs
+  Breadcrumbs
 };

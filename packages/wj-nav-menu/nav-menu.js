@@ -7,7 +7,7 @@ export class NavMenu extends WJElement {
         super();
     }
 
-    className = "ButtonGroup";
+    className = "NavMenu";
 
     static get cssStyleSheet() {
         return styles;

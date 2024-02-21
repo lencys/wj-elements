@@ -6,7 +6,6 @@ export class Input extends WJElement {
     constructor(options = {}) {
         super();
 
-        // this._value = "";
         this.invalid = false;
         this.pristine = true;
         this.internals = this.attachInternals();

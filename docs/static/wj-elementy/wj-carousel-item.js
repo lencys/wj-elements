@@ -1,17 +1,18 @@
-var n = Object.defineProperty;
-var l = (e, t, s) => t in e ? n(e, t, { enumerable: !0, configurable: !0, writable: !0, value: s }) : e[t] = s;
-var r = (e, t, s) => (l(e, typeof t != "symbol" ? t + "" : t, s), s);
-import c from "./wj-element.js";
-import "./wj-store.js";
-const m = `:host{--aspect-ratio: inherit;display:flex;align-items:center;justify-content:center;flex-direction:column;width:var(--wj-carousel-size, 100%);max-height:100%;aspect-ratio:var(--aspect-ratio);scroll-snap-align:center;scroll-snap-stop:always}.native-carousel-item{width:100%;height:100%;display:flex}::slotted(wj-img){width:100%!important;height:100%!important;object-fit:contain;display:flex}
-`;
-class d extends c {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+const styles = "/*\n[ WJ Carousel Item ]\n*/\n:host {\n  --aspect-ratio: inherit;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column;\n  width: var(--wj-carousel-size, 100%);\n  max-height: 100%;\n  aspect-ratio: var(--aspect-ratio);\n  scroll-snap-align: center;\n  scroll-snap-stop: always;\n}\n\n.native-carousel-item {\n  width: 100%;\n  height: 100%;\n  display: flex;\n}\n\n::slotted(wj-img) {\n  width: 100% !important;\n  height: 100% !important;\n  object-fit: contain;\n  display: flex;\n}";
+class CarouselItem extends WJElement {
   constructor() {
     super();
-    r(this, "className", "CarouselItem");
+    __publicField(this, "className", "CarouselItem");
   }
   static get cssStyleSheet() {
-    return m;
+    return styles;
   }
   static get observedAttributes() {
     return [];
@@ -19,14 +20,18 @@ class d extends c {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(s, u, p) {
-    let i = document.createDocumentFragment(), a = document.createElement("div");
-    a.classList.add("native-carousel-item"), a.setAttribute("part", "native");
-    let o = document.createElement("slot");
-    return a.appendChild(o), i.appendChild(a), i;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    native.classList.add("native-carousel-item");
+    native.setAttribute("part", "native");
+    let slot = document.createElement("slot");
+    native.appendChild(slot);
+    fragment.appendChild(native);
+    return fragment;
   }
 }
-customElements.get("wj-carousel-item") || window.customElements.define("wj-carousel-item", d);
+customElements.get("wj-carousel-item") || window.customElements.define("wj-carousel-item", CarouselItem);
 export {
-  d as CarouselItem
+  CarouselItem
 };

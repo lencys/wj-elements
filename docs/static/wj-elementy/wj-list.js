@@ -1,30 +1,34 @@
-var o = Object.defineProperty;
-var a = (e, t, s) => t in e ? o(e, t, { enumerable: !0, configurable: !0, writable: !0, value: s }) : e[t] = s;
-var n = (e, t, s) => (a(e, typeof t != "symbol" ? t + "" : t, s), s);
-import l from "./wj-element.js";
-import "./wj-store.js";
-const d = `:host{--wj-list-inset-padding: 1rem;--wj-list-border-radius: 8px;--wj-list-background: var(--wj-background);margin:0;padding:0;display:block;contain:content;list-style-type:none}:host(.wj-inset){background:var(--wj-list-background);transform:translateZ(0);overflow:hidden;padding:var(--wj-list-inset-padding);border-radius:var(--wj-list-border-radius)}:host(.wj-lines-none) ::slotted(wj-item){--wj-border-width: 0 !important}
-`;
-class c extends l {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+const styles = "/*\n[ WJ List ]\n*/\n:host {\n  --wj-list-inset-padding: 1rem;\n  --wj-list-border-radius: 8px;\n  --wj-list-background: var(--wj-background);\n  margin: 0;\n  padding: 0;\n  display: block;\n  contain: content;\n  list-style-type: none;\n}\n\n:host(.wj-inset) {\n  background: var(--wj-list-background);\n  transform: translateZ(0);\n  overflow: hidden;\n  padding: var(--wj-list-inset-padding);\n  border-radius: var(--wj-list-border-radius);\n}\n\n:host(.wj-lines-none) ::slotted(wj-item) {\n  --wj-border-width: 0 !important;\n}";
+class List extends WJElement {
   constructor() {
     super();
-    n(this, "className", "List");
+    __publicField(this, "className", "List");
   }
   static get cssStyleSheet() {
-    return d;
+    return styles;
   }
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(s, m, w) {
-    let i = document.createDocumentFragment(), r = document.createElement("slot");
-    return i.appendChild(r), i;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
   afterDraw() {
-    this.classList.toggle("wj-lines-" + this.lines, this.hasAttribute("lines")), this.classList.toggle("wj-inset", this.hasAttribute("inset"));
+    this.classList.toggle("wj-lines-" + this.lines, this.hasAttribute("lines"));
+    this.classList.toggle("wj-inset", this.hasAttribute("inset"));
   }
 }
-customElements.get("wj-list") || window.customElements.define("wj-list", c);
+customElements.get("wj-list") || window.customElements.define("wj-list", List);
 export {
-  c as List
+  List
 };

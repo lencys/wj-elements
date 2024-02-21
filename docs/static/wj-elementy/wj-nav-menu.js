@@ -5,11 +5,11 @@ var __publicField = (obj, key, value) => {
   return value;
 };
 import WJElement from "./wj-element.js";
-const styles = "/*\n[ WJ Main ]\n*/\n:host {\n  display: block;\n  flex: 1;\n  flex-basis: auto;\n  padding: 1.5rem;\n  box-sizing: border-box;\n}";
-class Main extends WJElement {
+const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ Button Group ]\n*/\n:host {\n  display: inline-block;\n}\n:host .native-button-group {\n  display: flex;\n  flex-wrap: nowrap;\n  line-height: 1;\n}\n:host slot {\n  display: contents;\n}\n::slotted(wj-button) {\n  margin: 0;\n}";
+class NavMenu extends WJElement {
   constructor() {
     super();
-    __publicField(this, "className", "Main");
+    __publicField(this, "className", "NavMenu");
   }
   static get cssStyleSheet() {
     return styles;
@@ -22,12 +22,16 @@ class Main extends WJElement {
   }
   draw(context, store, params) {
     let fragment = document.createDocumentFragment();
-    let element = document.createElement("slot");
+    let element = document.createElement("div");
+    element.classList.add("native-button-group");
+    element.setAttribute("part", "native");
+    this.slotElement = document.createElement("slot");
+    element.appendChild(this.slotElement);
     fragment.appendChild(element);
     return fragment;
   }
 }
-customElements.get("wj-main") || window.customElements.define("wj-main", Main);
+customElements.get("wj-button-group") || window.customElements.define("wj-button-group", NavMenu);
 export {
-  Main
+  NavMenu
 };

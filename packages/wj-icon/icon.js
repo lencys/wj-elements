@@ -1,5 +1,5 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
-import { getName, getUrl, getSvgContent, iconContent } from "./service/service.js";
+import { default as WJElement } from "../wj-element/wj-element.js";
+import { getUrl, getSvgContent, iconContent } from "./service/service.js";
 
 import styles from "./scss/styles.scss?inline";
 

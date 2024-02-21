@@ -1,17 +1,18 @@
-var m = Object.defineProperty;
-var c = (e, t, s) => t in e ? m(e, t, { enumerable: !0, configurable: !0, writable: !0, value: s }) : e[t] = s;
-var o = (e, t, s) => (c(e, typeof t != "symbol" ? t + "" : t, s), s);
-import a from "./wj-element.js";
-import "./wj-store.js";
-const l = `:host{width:100%}
-`;
-class u extends a {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+const styles = "/*\n[ Wj Form ]\n*/\n:host {\n  width: 100%;\n}";
+class Form extends WJElement {
   constructor() {
     super();
-    o(this, "className", "Form");
+    __publicField(this, "className", "Form");
   }
   static get cssStyleSheet() {
-    return l;
+    return styles;
   }
   static get observedAttributes() {
     return [];
@@ -19,12 +20,14 @@ class u extends a {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(s, i, d) {
-    let r = document.createDocumentFragment(), n = document.createElement("slot");
-    return r.appendChild(n), r;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-customElements.get("wj-form") || window.customElements.define("wj-form", u);
+customElements.get("wj-form") || window.customElements.define("wj-form", Form);
 export {
-  u as Form
+  Form
 };

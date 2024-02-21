@@ -1,38 +1,56 @@
-var w = Object.defineProperty;
-var u = (i, e, t) => e in i ? w(i, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : i[e] = t;
-var p = (i, e, t) => (u(i, typeof e != "symbol" ? e + "" : e, t), t);
-import h from "./wj-element.js";
-import "./wj-store.js";
-function f(i, e) {
-  function t(o) {
-    const d = i.getBoundingClientRect(), r = i.ownerDocument.defaultView, n = d.left + r.pageXOffset, l = d.top + r.pageYOffset, c = o.pageX - n, m = o.pageY - l;
-    e != null && e.onMove && e.onMove(c, m);
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+function drag(container, options) {
+  function move(pointerEvent) {
+    const dims = container.getBoundingClientRect();
+    const defaultView = container.ownerDocument.defaultView;
+    const offsetX = dims.left + defaultView.pageXOffset;
+    const offsetY = dims.top + defaultView.pageYOffset;
+    const x = pointerEvent.pageX - offsetX;
+    const y = pointerEvent.pageY - offsetY;
+    if (options == null ? void 0 : options.onMove) {
+      options.onMove(x, y);
+    }
   }
-  function a() {
-    document.removeEventListener("pointermove", t), document.removeEventListener("pointerup", a), e != null && e.onStop && e.onStop();
+  function stop() {
+    document.removeEventListener("pointermove", move);
+    document.removeEventListener("pointerup", stop);
+    if (options == null ? void 0 : options.onStop) {
+      options.onStop();
+    }
   }
-  document.addEventListener("pointermove", t, { passive: !0 }), document.addEventListener("pointerup", a), (e == null ? void 0 : e.initialEvent) instanceof PointerEvent && t(e.initialEvent);
+  document.addEventListener("pointermove", move, { passive: true });
+  document.addEventListener("pointerup", stop);
+  if ((options == null ? void 0 : options.initialEvent) instanceof PointerEvent) {
+    move(options.initialEvent);
+  }
 }
-const g = `:host{--wj-img-compare-divider-area: 12px;--wj-img-compare-divider-background: white;--wj-img-compare-divider-size: 2px;--wj-img-compare-divider-left: 50%;--wj-img-compare-position: 50%;--wj-img-compare-clip-path: inset(0 calc(100% - var(--wj-img-compare-position)) 0 0);display:inline-block;position:relative;width:100%;border-color:var(--wj-border-color);border-style:solid;border-width:1px}.wj-before,.wj-after{display:block}.wj-after{position:absolute;top:0;left:0;height:100%;width:100%;clip-path:var(--wj-img-compare-clip-path)}.native-split-view{max-width:100%;max-height:100%;overflow:hidden}.wj-divider{display:flex;position:absolute;align-items:center;justify-content:center;z-index:1;background-color:var(--wj-img-compare-divider-background);height:100%;width:var(--wj-img-compare-divider-size);cursor:col-resize;top:0;left:var(--wj-img-compare-divider-left)}.wj-divider:after{display:flex;content:"";position:absolute;height:100%;left:calc(var(--wj-img-compare-divider-area) / -2 + var(--wj-img-compare-divider-size) / 2);width:var(---wj-img-compare-divider-area)}.wj-divider wj-icon{position:absolute;background-color:#fff;padding:.5rem;color:var(--wj-color-dark);border-radius:var(--wj-border-radius-circle);box-shadow:#523f6933 0 0 30px 10px;background:var(--wj-color-white)!important}
-`;
-class j extends h {
+const styles = '/*\n[ WJ Image Compare ]\n*/\n:host {\n  --wj-img-compare-divider-area: 12px;\n  --wj-img-compare-divider-background: white;\n  --wj-img-compare-divider-size: 2px;\n  --wj-img-compare-divider-left: 50%;\n  --wj-img-compare-position: 50%;\n  --wj-img-compare-clip-path: inset(0 calc(100% - var(--wj-img-compare-position)) 0 0);\n  display: inline-block;\n  position: relative;\n  width: 100%;\n  border-color: var(--wj-border-color);\n  border-style: solid;\n  border-width: 1px;\n}\n\n.wj-before, .wj-after {\n  display: block;\n}\n\n.wj-after {\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 100%;\n  clip-path: var(--wj-img-compare-clip-path);\n}\n\n.native-split-view {\n  max-width: 100%;\n  max-height: 100%;\n  overflow: hidden;\n}\n\n.wj-divider {\n  display: flex;\n  position: absolute;\n  align-items: center;\n  justify-content: center;\n  z-index: 1;\n  background-color: var(--wj-img-compare-divider-background);\n  height: 100%;\n  width: var(--wj-img-compare-divider-size);\n  cursor: col-resize;\n  top: 0;\n  left: var(--wj-img-compare-divider-left);\n}\n.wj-divider:after {\n  display: flex;\n  content: "";\n  position: absolute;\n  height: 100%;\n  left: calc(var(--wj-img-compare-divider-area) / -2 + var(--wj-img-compare-divider-size) / 2);\n  width: var(---wj-img-compare-divider-area);\n}\n.wj-divider wj-icon {\n  position: absolute;\n  background-color: white;\n  padding: 0.5rem;\n  color: var(--wj-color-dark);\n  border-radius: var(--wj-border-radius-circle);\n  box-shadow: rgba(82, 63, 105, 0.2) 0 0 30px 10px;\n  background: var(--wj-color-white) !important;\n}';
+class ImgComparer extends WJElement {
   constructor() {
     super();
-    p(this, "className", "ImgComparer");
-    p(this, "handleDrag", (t) => {
-      const { width: a } = this.native.getBoundingClientRect();
-      f(this, {
-        onMove: (o) => {
-          let d = o / a * 100;
-          this.position = parseFloat(this.clamp(d, 0, 100).toFixed(2)), this.native.style.setProperty("--wj-img-compare-divider-left", this.position + "%"), this.native.style.setProperty("--wj-img-compare-clip-path", `inset(0 ${100 - this.position}% 0 0)`);
+    __publicField(this, "className", "ImgComparer");
+    __publicField(this, "handleDrag", (e) => {
+      const { width } = this.native.getBoundingClientRect();
+      drag(this, {
+        onMove: (x) => {
+          let value = x / width * 100;
+          this.position = parseFloat(this.clamp(value, 0, 100).toFixed(2));
+          this.native.style.setProperty("--wj-img-compare-divider-left", this.position + "%");
+          this.native.style.setProperty("--wj-img-compare-clip-path", `inset(0 ${100 - this.position}% 0 0)`);
         },
-        initialEvent: t
+        initialEvent: e
       });
     });
-    p(this, "clamp", (t, a, o) => Math.min(Math.max(t, a), o));
+    __publicField(this, "clamp", (num, min, max) => Math.min(Math.max(num, min), max));
   }
   static get cssStyleSheet() {
-    return g;
+    return styles;
   }
   static get observedAttributes() {
     return [];
@@ -40,24 +58,36 @@ class j extends h {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(t, a, o) {
-    let d = document.createDocumentFragment(), r = document.createElement("div");
-    r.classList.add("native-split-view");
-    let n = document.createElement("div");
-    n.classList.add("wj-before");
-    let l = document.createElement("slot");
-    l.setAttribute("name", "before");
-    let c = document.createElement("div");
-    c.classList.add("wj-after");
-    let m = document.createElement("slot");
-    m.setAttribute("name", "after");
-    let v = document.createElement("wj-icon");
-    v.setAttribute("name", "arrow-bar-both");
-    let s = document.createElement("div");
-    return s.classList.add("wj-divider"), s.setAttribute("part", "divider"), s.addEventListener("mousedown", this.handleDrag, !1), n.appendChild(l), c.appendChild(m), s.appendChild(v), r.appendChild(n), r.appendChild(c), r.appendChild(s), d.appendChild(r), this.native = r, d;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    native.classList.add("native-split-view");
+    let beforeElement = document.createElement("div");
+    beforeElement.classList.add("wj-before");
+    let before = document.createElement("slot");
+    before.setAttribute("name", "before");
+    let afterElement = document.createElement("div");
+    afterElement.classList.add("wj-after");
+    let after = document.createElement("slot");
+    after.setAttribute("name", "after");
+    let icon = document.createElement("wj-icon");
+    icon.setAttribute("name", "arrow-bar-both");
+    let dividerElement = document.createElement("div");
+    dividerElement.classList.add("wj-divider");
+    dividerElement.setAttribute("part", "divider");
+    dividerElement.addEventListener("mousedown", this.handleDrag, false);
+    beforeElement.appendChild(before);
+    afterElement.appendChild(after);
+    dividerElement.appendChild(icon);
+    native.appendChild(beforeElement);
+    native.appendChild(afterElement);
+    native.appendChild(dividerElement);
+    fragment.appendChild(native);
+    this.native = native;
+    return fragment;
   }
 }
-customElements.get("wj-img-comparer") || window.customElements.define("wj-img-comparer", j);
+customElements.get("wj-img-comparer") || window.customElements.define("wj-img-comparer", ImgComparer);
 export {
-  j as ImgComparer
+  ImgComparer
 };

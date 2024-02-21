@@ -720,9 +720,9 @@
 // Difference
 //--------------------------------
 @function blend-difference ($foreground, $background) {
-  $bm-red: abs(red($background) - red($foreground));
-  $bm-green: abs(green($background) - green($foreground));
-  $bm-blue: abs(blue($background) - blue($foreground));
+  $bm-red: abs(#{red($background) - red($foreground)});
+  $bm-green: abs(#{green($background) - green($foreground)});
+  $bm-blue: abs(#{blue($background) - blue($foreground)});
 
   @return blend-normal(rgba($bm-red, $bm-green, $bm-blue, opacity($foreground)), $background);
 }

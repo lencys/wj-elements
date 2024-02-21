@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import { WJElement } from "wj-master";
 
 const template = document.createElement('template');
 template.innerHTML = ``;

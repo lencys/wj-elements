@@ -1,6 +1,6 @@
 import { Localizer } from "../utils/localize.js";
 
-const sk = {
+export const sk = {
   code: 'sk',
   name: 'Slovak',
   dir: 'ltr',
@@ -10,4 +10,5 @@ const sk = {
   "wj.file.upload.uploaded": "Nahraných: ",
   "wj.file.upload.from": "z",
 };
+
 Localizer.registerTranslation(sk);

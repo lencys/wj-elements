@@ -1,43 +1,60 @@
-let o = [];
-function f(n) {
-  const t = /@keyframes\s+([\w-]+)\s*{([\s\S]+?})\s*}/g;
-  let e, s = [];
-  for (; (e = t.exec(n)) !== null; ) {
-    let r = e[1], a = e[2].trim(), i = l(a);
-    s.push({ name: r, keyframes: i });
+let animations = [];
+function parseCSS(css) {
+  const keyframesRegex = /@keyframes\s+([\w-]+)\s*{([\s\S]+?})\s*}/g;
+  let match;
+  let localAnimations = [];
+  while ((match = keyframesRegex.exec(css)) !== null) {
+    let name = match[1];
+    let frames = match[2].trim();
+    let keyframes = parseKeyframes(frames);
+    localAnimations.push({ name, keyframes });
   }
-  return s;
+  return localAnimations;
 }
-function l(n) {
-  const t = /([\d%]+)\s*{([\s\S]+?)}/g;
-  let e, s = [];
-  for (; (e = t.exec(n)) !== null; ) {
-    let r = parseFloat(e[1]) / 100, a = c(e[2]), i = {
-      offset: r,
-      ...a
+function parseKeyframes(frames) {
+  const frameRegex = /([\d%]+)\s*{([\s\S]+?)}/g;
+  let match;
+  let keyframes = [];
+  while ((match = frameRegex.exec(frames)) !== null) {
+    let offset = parseFloat(match[1]) / 100;
+    let properties = parseProperties(match[2]);
+    let keyframeObject = {
+      offset,
+      ...properties
     };
-    s.push(i);
+    keyframes.push(keyframeObject);
   }
-  return s.sort((r, a) => r.offset - a.offset), s;
+  keyframes.sort((a, b) => a.offset - b.offset);
+  return keyframes;
 }
-function c(n) {
-  const t = {};
-  return n.split(";").forEach((e) => {
-    const [s, r] = e.split(":").map((a) => a.trim());
-    s && r && (s === "animation-timing-function" ? t.easing = r : t[s] = r);
-  }), t;
+function parseProperties(propertiesString) {
+  const properties = {};
+  propertiesString.split(";").forEach((property) => {
+    const [key, value] = property.split(":").map((part) => part.trim());
+    if (key && value) {
+      if (key === "animation-timing-function") {
+        properties["easing"] = value;
+      } else {
+        properties[key] = value;
+      }
+    }
+  });
+  return properties;
 }
-async function m(n) {
+async function fetchAndParseCSS(url) {
   try {
-    if (o.length > 0)
-      return o;
-    const e = await (await fetch(n)).text();
-    return o = f(e), o;
-  } catch (t) {
-    console.error("Error:", t);
+    if (animations.length > 0) {
+      return animations;
+    }
+    const response = await fetch(url);
+    const cssText = await response.text();
+    animations = parseCSS(cssText);
+    return animations;
+  } catch (error) {
+    console.error("Error:", error);
   }
 }
 export {
-  o as animations,
-  m as fetchAndParseCSS
+  animations,
+  fetchAndParseCSS
 };

@@ -1,50 +1,54 @@
-var b = Object.defineProperty;
-var c = (a, o, e) => o in a ? b(a, o, { enumerable: !0, configurable: !0, writable: !0, value: e }) : a[o] = e;
-var s = (a, o, e) => (c(a, typeof o != "symbol" ? o + "" : o, e), e);
-import w from "./wj-element.js";
-import "./wj-store.js";
-const p = `/*!
-* direction.scss
-*/:host{--wj-slider-track-height: 4px;position:relative;display:flex;align-items:center;max-width:100%}:host .native-slider{display:flex;position:relative;flex-grow:1;align-items:center;height:inherit}:host .slider{display:flex;align-items:center;position:relative;flex:1 1 0%;width:100%;height:var(--height);contain:size layout style;cursor:grab;touch-action:pan-y}input[type=range]{-webkit-appearance:none;width:100%;height:var(--wj-slider-track-height);margin:0;border-radius:5px;background-size:70% 100%;background-repeat:no-repeat;--wj-slider-color: #7252D3;--wj-slider-thumb-color: #7252D3;--wj-slider-thumb-shadow: none;--wj-slider-thumb-shadow-active: 0 0 0 7px #eae0fb;--wj-slider-track-color: #dbe6e8;background-color:var(--wj-slider-track-color, #dbe6e8);background-image:linear-gradient(var(--wj-slider-color, #7252D3),var(--wj-slider-color, #7252D3))}input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;height:18px;width:18px;border-radius:50%;cursor:ew-resize;transition:background .3s ease-in-out}input[type=range]::-moz-range-thumb{-webkit-appearance:none;height:18px;width:18px;border-radius:50%;cursor:pointer;transition:background .3s ease-in-out;border:0}input[type=range]::-ms-thumb{-webkit-appearance:none;height:18px;width:18px;border-radius:50%;cursor:ew-resize;transition:background .3s ease-in-out}input[type=range]::-webkit-slider-runnable-track{-webkit-appearance:none;box-shadow:none;border:none;background:transparent}input[type=range]::-moz-range-track{-webkit-appearance:none;box-shadow:none;border:none;background:transparent}input[type=range]::-ms-track{-webkit-appearance:none;box-shadow:none;border:none;background:transparent}input[type=range][color=primary]{--wj-slider-color: #7252D3;--wj-slider-thumb-color: #7252D3;--wj-slider-thumb-shadow: none;--wj-slider-thumb-shadow-active: 0 0 0 7px #eae0fb;--wj-slider-track-color: #dbe6e8;background-color:var(--wj-slider-track-color, #dbe6e8);background-image:linear-gradient(var(--wj-slider-color, #7252D3),var(--wj-slider-color, #7252D3))}input[type=range][color=primary]::-webkit-slider-thumb{background:var(--wj-slider-thumb-color, #7252D3);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px #eae0fb)}input[type=range][color=primary]::-moz-range-thumb{background:var(--wj-slider-thumb-color, #7252D3);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px #eae0fb)}input[type=range][color=primary]::-ms-thumb{background:var(--wj-slider-thumb-color, #7252D3);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px #eae0fb)}input[type=range][color=primary]::-webkit-slider-thumb:active{background:var(--wj-slider-thumb-color, #7252D3);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb)}input[type=range][color=primary]::-moz-range-thumb:active{background:var(--wj-slider-thumb-color, #7252D3);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb)}input[type=range][color=primary]::-ms-thumb:active{background:var(--wj-slider-thumb-color, #7252D3);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb)}input[type=range][color=primary]::-webkit-slider-thumb:hover{background:var(--wj-slider-thumb-color, #7252D3);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb)}input[type=range][color=primary]::-moz-range-thumb:hover{background:var(--wj-slider-thumb-color, #7252D3);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb)}input[type=range][color=primary]::-ms-thumb:hover{background:var(--wj-slider-thumb-color, #7252D3);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb)}input[type=range][color=success]{--wj-slider-color: #19AD79;--wj-slider-thumb-color: #19AD79;--wj-slider-thumb-shadow: none;--wj-slider-thumb-shadow-active: 0 0 0 7px #d6f7f0;--wj-slider-track-color: #dbe6e8;background-color:var(--wj-slider-track-color, #dbe6e8);background-image:linear-gradient(var(--wj-slider-color, #19AD79),var(--wj-slider-color, #19AD79))}input[type=range][color=success]::-webkit-slider-thumb{background:var(--wj-slider-thumb-color, #19AD79);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px #d6f7f0)}input[type=range][color=success]::-moz-range-thumb{background:var(--wj-slider-thumb-color, #19AD79);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px #d6f7f0)}input[type=range][color=success]::-ms-thumb{background:var(--wj-slider-thumb-color, #19AD79);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px #d6f7f0)}input[type=range][color=success]::-webkit-slider-thumb:active{background:var(--wj-slider-thumb-color, #19AD79);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d6f7f0)}input[type=range][color=success]::-moz-range-thumb:active{background:var(--wj-slider-thumb-color, #19AD79);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d6f7f0)}input[type=range][color=success]::-ms-thumb:active{background:var(--wj-slider-thumb-color, #19AD79);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d6f7f0)}input[type=range][color=success]::-webkit-slider-thumb:hover{background:var(--wj-slider-thumb-color, #19AD79);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d6f7f0)}input[type=range][color=success]::-moz-range-thumb:hover{background:var(--wj-slider-thumb-color, #19AD79);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d6f7f0)}input[type=range][color=success]::-ms-thumb:hover{background:var(--wj-slider-thumb-color, #19AD79);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d6f7f0)}input[type=range][color=complete]{--wj-slider-color: #0072EC;--wj-slider-thumb-color: #0072EC;--wj-slider-thumb-shadow: none;--wj-slider-thumb-shadow-active: 0 0 0 7px #d3eeff;--wj-slider-track-color: #dbe6e8;background-color:var(--wj-slider-track-color, #dbe6e8);background-image:linear-gradient(var(--wj-slider-color, #0072EC),var(--wj-slider-color, #0072EC))}input[type=range][color=complete]::-webkit-slider-thumb{background:var(--wj-slider-thumb-color, #0072EC);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px #d3eeff)}input[type=range][color=complete]::-moz-range-thumb{background:var(--wj-slider-thumb-color, #0072EC);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px #d3eeff)}input[type=range][color=complete]::-ms-thumb{background:var(--wj-slider-thumb-color, #0072EC);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px #d3eeff)}input[type=range][color=complete]::-webkit-slider-thumb:active{background:var(--wj-slider-thumb-color, #0072EC);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d3eeff)}input[type=range][color=complete]::-moz-range-thumb:active{background:var(--wj-slider-thumb-color, #0072EC);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d3eeff)}input[type=range][color=complete]::-ms-thumb:active{background:var(--wj-slider-thumb-color, #0072EC);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d3eeff)}input[type=range][color=complete]::-webkit-slider-thumb:hover{background:var(--wj-slider-thumb-color, #0072EC);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d3eeff)}input[type=range][color=complete]::-moz-range-thumb:hover{background:var(--wj-slider-thumb-color, #0072EC);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d3eeff)}input[type=range][color=complete]::-ms-thumb:hover{background:var(--wj-slider-thumb-color, #0072EC);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d3eeff)}input[type=range][color=danger]{--wj-slider-color: #D83C31;--wj-slider-thumb-color: #D83C31;--wj-slider-thumb-shadow: none;--wj-slider-thumb-shadow-active: 0 0 0 7px #fde2da;--wj-slider-track-color: #dbe6e8;background-color:var(--wj-slider-track-color, #dbe6e8);background-image:linear-gradient(var(--wj-slider-color, #D83C31),var(--wj-slider-color, #D83C31))}input[type=range][color=danger]::-webkit-slider-thumb{background:var(--wj-slider-thumb-color, #D83C31);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px #fde2da)}input[type=range][color=danger]::-moz-range-thumb{background:var(--wj-slider-thumb-color, #D83C31);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px #fde2da)}input[type=range][color=danger]::-ms-thumb{background:var(--wj-slider-thumb-color, #D83C31);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px #fde2da)}input[type=range][color=danger]::-webkit-slider-thumb:active{background:var(--wj-slider-thumb-color, #D83C31);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fde2da)}input[type=range][color=danger]::-moz-range-thumb:active{background:var(--wj-slider-thumb-color, #D83C31);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fde2da)}input[type=range][color=danger]::-ms-thumb:active{background:var(--wj-slider-thumb-color, #D83C31);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fde2da)}input[type=range][color=danger]::-webkit-slider-thumb:hover{background:var(--wj-slider-thumb-color, #D83C31);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fde2da)}input[type=range][color=danger]::-moz-range-thumb:hover{background:var(--wj-slider-thumb-color, #D83C31);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fde2da)}input[type=range][color=danger]::-ms-thumb:hover{background:var(--wj-slider-thumb-color, #D83C31);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fde2da)}input[type=range][color=warning]{--wj-slider-color: #FFd945;--wj-slider-thumb-color: #FFd945;--wj-slider-thumb-shadow: none;--wj-slider-thumb-shadow-active: 0 0 0 7px #fffde1;--wj-slider-track-color: #dbe6e8;background-color:var(--wj-slider-track-color, #dbe6e8);background-image:linear-gradient(var(--wj-slider-color, #FFd945),var(--wj-slider-color, #FFd945))}input[type=range][color=warning]::-webkit-slider-thumb{background:var(--wj-slider-thumb-color, #FFd945);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px #fffde1)}input[type=range][color=warning]::-moz-range-thumb{background:var(--wj-slider-thumb-color, #FFd945);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px #fffde1)}input[type=range][color=warning]::-ms-thumb{background:var(--wj-slider-thumb-color, #FFd945);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px #fffde1)}input[type=range][color=warning]::-webkit-slider-thumb:active{background:var(--wj-slider-thumb-color, #FFd945);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fffde1)}input[type=range][color=warning]::-moz-range-thumb:active{background:var(--wj-slider-thumb-color, #FFd945);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fffde1)}input[type=range][color=warning]::-ms-thumb:active{background:var(--wj-slider-thumb-color, #FFd945);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fffde1)}input[type=range][color=warning]::-webkit-slider-thumb:hover{background:var(--wj-slider-thumb-color, #FFd945);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fffde1)}input[type=range][color=warning]::-moz-range-thumb:hover{background:var(--wj-slider-thumb-color, #FFd945);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fffde1)}input[type=range][color=warning]::-ms-thumb:hover{background:var(--wj-slider-thumb-color, #FFd945);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fffde1)}input[type=range][color=contrast]{--wj-slider-color: #fff;--wj-slider-thumb-color: #fff;--wj-slider-thumb-shadow: none;--wj-slider-thumb-shadow-active: 0 0 0 7px white;--wj-slider-track-color: #757575;background-color:var(--wj-slider-track-color, #757575);background-image:linear-gradient(var(--wj-slider-color, #fff),var(--wj-slider-color, #fff))}input[type=range][color=contrast]::-webkit-slider-thumb{background:var(--wj-slider-thumb-color, #fff);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px white)}input[type=range][color=contrast]::-moz-range-thumb{background:var(--wj-slider-thumb-color, #fff);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px white)}input[type=range][color=contrast]::-ms-thumb{background:var(--wj-slider-thumb-color, #fff);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px white)}input[type=range][color=contrast]::-webkit-slider-thumb:active{background:var(--wj-slider-thumb-color, #fff);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px white)}input[type=range][color=contrast]::-moz-range-thumb:active{background:var(--wj-slider-thumb-color, #fff);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px white)}input[type=range][color=contrast]::-ms-thumb:active{background:var(--wj-slider-thumb-color, #fff);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px white)}input[type=range][color=contrast]::-webkit-slider-thumb:hover{background:var(--wj-slider-thumb-color, #fff);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px white)}input[type=range][color=contrast]::-moz-range-thumb:hover{background:var(--wj-slider-thumb-color, #fff);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px white)}input[type=range][color=contrast]::-ms-thumb:hover{background:var(--wj-slider-thumb-color, #fff);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px white)}input[type=range]::-webkit-slider-thumb{background:var(--wj-slider-thumb-color, #7252D3);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px #eae0fb)}input[type=range]::-moz-range-thumb{background:var(--wj-slider-thumb-color, #7252D3);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px #eae0fb)}input[type=range]::-ms-thumb{background:var(--wj-slider-thumb-color, #7252D3);box-shadow:var(--wj-slider-thumb-shadow, 0 0 0 7px #eae0fb)}input[type=range]::-webkit-slider-thumb:active{background:var(--wj-slider-thumb-color, #7252D3);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb)}input[type=range]::-moz-range-thumb:active{background:var(--wj-slider-thumb-color, #7252D3);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb)}input[type=range]::-ms-thumb:active{background:var(--wj-slider-thumb-color, #7252D3);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb)}input[type=range]::-webkit-slider-thumb:hover{background:var(--wj-slider-thumb-color, #7252D3);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb)}input[type=range]::-moz-range-thumb:hover{background:var(--wj-slider-thumb-color, #7252D3);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb)}input[type=range]::-ms-thumb:hover{background:var(--wj-slider-thumb-color, #7252D3);box-shadow:var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb)}datalist{display:flex;justify-content:space-between;height:auto;overflow:hidden;margin-top:16px}datalist option:before{content:"";display:block;width:0;height:auto;padding-left:3px;text-indent:0}output{position:absolute;background:var(--wj-color-contrast-11);color:var(--wj-color-contrast-0);top:-46px;padding:4px 8px;border-radius:4px}::slotted([slot=label]){margin-inline:0 1rem;font-size:var(--wj-font-size)}::slotted([slot=start]){margin-inline:0 1rem}::slotted([slot=end]){margin-inline:1rem 0}
-`;
-class m extends w {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+const styles = '/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n:host {\n  --wj-slider-track-height: 4px;\n  position: relative;\n  display: flex;\n  align-items: center;\n  max-width: 100%;\n}\n:host .native-slider {\n  display: flex;\n  position: relative;\n  flex-grow: 1;\n  align-items: center;\n  height: inherit;\n}\n:host .slider {\n  display: flex;\n  align-items: center;\n  position: relative;\n  flex: 1 1 0%;\n  width: 100%;\n  height: var(--height);\n  contain: size layout style;\n  cursor: grab;\n  touch-action: pan-y;\n}\ninput[type=range] {\n  -webkit-appearance: none;\n  width: 100%;\n  height: var(--wj-slider-track-height);\n  margin: 0;\n  border-radius: 5px;\n  background-size: 70% 100%;\n  background-repeat: no-repeat;\n  /* Input Track */\n  --wj-slider-color: #7252D3;\n  --wj-slider-thumb-color: #7252D3;\n  --wj-slider-thumb-shadow: none;\n  --wj-slider-thumb-shadow-active: 0 0 0 7px #eae0fb;\n  --wj-slider-track-color: #dbe6e8;\n  background-color: var(--wj-slider-track-color, #dbe6e8);\n  background-image: linear-gradient(var(--wj-slider-color, #7252D3), var(--wj-slider-color, #7252D3));\n  /* Input Thumb */\n}\ninput[type=range]::-webkit-slider-thumb {\n  -webkit-appearance: none;\n  height: 18px;\n  width: 18px;\n  border-radius: 50%;\n  cursor: ew-resize;\n  transition: background 0.3s ease-in-out;\n}\ninput[type=range]::-moz-range-thumb {\n  -webkit-appearance: none;\n  height: 18px;\n  width: 18px;\n  border-radius: 50%;\n  cursor: pointer;\n  transition: background 0.3s ease-in-out;\n  border: 0;\n}\ninput[type=range]::-ms-thumb {\n  -webkit-appearance: none;\n  height: 18px;\n  width: 18px;\n  border-radius: 50%;\n  cursor: ew-resize;\n  transition: background 0.3s ease-in-out;\n}\ninput[type=range]::-webkit-slider-runnable-track {\n  -webkit-appearance: none;\n  box-shadow: none;\n  border: none;\n  background: transparent;\n}\ninput[type=range]::-moz-range-track {\n  -webkit-appearance: none;\n  box-shadow: none;\n  border: none;\n  background: transparent;\n}\ninput[type=range]::-ms-track {\n  -webkit-appearance: none;\n  box-shadow: none;\n  border: none;\n  background: transparent;\n}\ninput[type=range][color=primary] {\n  --wj-slider-color: #7252D3;\n  --wj-slider-thumb-color: #7252D3;\n  --wj-slider-thumb-shadow: none;\n  --wj-slider-thumb-shadow-active: 0 0 0 7px #eae0fb;\n  --wj-slider-track-color: #dbe6e8;\n  background-color: var(--wj-slider-track-color, #dbe6e8);\n  background-image: linear-gradient(var(--wj-slider-color, #7252D3), var(--wj-slider-color, #7252D3));\n  /* Input Thumb */\n}\ninput[type=range][color=primary]::-webkit-slider-thumb {\n  background: var(--wj-slider-thumb-color, #7252D3);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px #eae0fb);\n}\ninput[type=range][color=primary]::-moz-range-thumb {\n  background: var(--wj-slider-thumb-color, #7252D3);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px #eae0fb);\n}\ninput[type=range][color=primary]::-ms-thumb {\n  background: var(--wj-slider-thumb-color, #7252D3);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px #eae0fb);\n}\ninput[type=range][color=primary]::-webkit-slider-thumb:active {\n  background: var(--wj-slider-thumb-color, #7252D3);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb);\n}\ninput[type=range][color=primary]::-moz-range-thumb:active {\n  background: var(--wj-slider-thumb-color, #7252D3);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb);\n}\ninput[type=range][color=primary]::-ms-thumb:active {\n  background: var(--wj-slider-thumb-color, #7252D3);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb);\n}\ninput[type=range][color=primary]::-webkit-slider-thumb:hover {\n  background: var(--wj-slider-thumb-color, #7252D3);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb);\n}\ninput[type=range][color=primary]::-moz-range-thumb:hover {\n  background: var(--wj-slider-thumb-color, #7252D3);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb);\n}\ninput[type=range][color=primary]::-ms-thumb:hover {\n  background: var(--wj-slider-thumb-color, #7252D3);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb);\n}\ninput[type=range][color=success] {\n  --wj-slider-color: #19AD79;\n  --wj-slider-thumb-color: #19AD79;\n  --wj-slider-thumb-shadow: none;\n  --wj-slider-thumb-shadow-active: 0 0 0 7px #d6f7f0;\n  --wj-slider-track-color: #dbe6e8;\n  background-color: var(--wj-slider-track-color, #dbe6e8);\n  background-image: linear-gradient(var(--wj-slider-color, #19AD79), var(--wj-slider-color, #19AD79));\n  /* Input Thumb */\n}\ninput[type=range][color=success]::-webkit-slider-thumb {\n  background: var(--wj-slider-thumb-color, #19AD79);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px #d6f7f0);\n}\ninput[type=range][color=success]::-moz-range-thumb {\n  background: var(--wj-slider-thumb-color, #19AD79);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px #d6f7f0);\n}\ninput[type=range][color=success]::-ms-thumb {\n  background: var(--wj-slider-thumb-color, #19AD79);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px #d6f7f0);\n}\ninput[type=range][color=success]::-webkit-slider-thumb:active {\n  background: var(--wj-slider-thumb-color, #19AD79);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d6f7f0);\n}\ninput[type=range][color=success]::-moz-range-thumb:active {\n  background: var(--wj-slider-thumb-color, #19AD79);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d6f7f0);\n}\ninput[type=range][color=success]::-ms-thumb:active {\n  background: var(--wj-slider-thumb-color, #19AD79);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d6f7f0);\n}\ninput[type=range][color=success]::-webkit-slider-thumb:hover {\n  background: var(--wj-slider-thumb-color, #19AD79);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d6f7f0);\n}\ninput[type=range][color=success]::-moz-range-thumb:hover {\n  background: var(--wj-slider-thumb-color, #19AD79);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d6f7f0);\n}\ninput[type=range][color=success]::-ms-thumb:hover {\n  background: var(--wj-slider-thumb-color, #19AD79);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d6f7f0);\n}\ninput[type=range][color=complete] {\n  --wj-slider-color: #0072EC;\n  --wj-slider-thumb-color: #0072EC;\n  --wj-slider-thumb-shadow: none;\n  --wj-slider-thumb-shadow-active: 0 0 0 7px #d3eeff;\n  --wj-slider-track-color: #dbe6e8;\n  background-color: var(--wj-slider-track-color, #dbe6e8);\n  background-image: linear-gradient(var(--wj-slider-color, #0072EC), var(--wj-slider-color, #0072EC));\n  /* Input Thumb */\n}\ninput[type=range][color=complete]::-webkit-slider-thumb {\n  background: var(--wj-slider-thumb-color, #0072EC);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px #d3eeff);\n}\ninput[type=range][color=complete]::-moz-range-thumb {\n  background: var(--wj-slider-thumb-color, #0072EC);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px #d3eeff);\n}\ninput[type=range][color=complete]::-ms-thumb {\n  background: var(--wj-slider-thumb-color, #0072EC);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px #d3eeff);\n}\ninput[type=range][color=complete]::-webkit-slider-thumb:active {\n  background: var(--wj-slider-thumb-color, #0072EC);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d3eeff);\n}\ninput[type=range][color=complete]::-moz-range-thumb:active {\n  background: var(--wj-slider-thumb-color, #0072EC);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d3eeff);\n}\ninput[type=range][color=complete]::-ms-thumb:active {\n  background: var(--wj-slider-thumb-color, #0072EC);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d3eeff);\n}\ninput[type=range][color=complete]::-webkit-slider-thumb:hover {\n  background: var(--wj-slider-thumb-color, #0072EC);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d3eeff);\n}\ninput[type=range][color=complete]::-moz-range-thumb:hover {\n  background: var(--wj-slider-thumb-color, #0072EC);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d3eeff);\n}\ninput[type=range][color=complete]::-ms-thumb:hover {\n  background: var(--wj-slider-thumb-color, #0072EC);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #d3eeff);\n}\ninput[type=range][color=danger] {\n  --wj-slider-color: #D83C31;\n  --wj-slider-thumb-color: #D83C31;\n  --wj-slider-thumb-shadow: none;\n  --wj-slider-thumb-shadow-active: 0 0 0 7px #fde2da;\n  --wj-slider-track-color: #dbe6e8;\n  background-color: var(--wj-slider-track-color, #dbe6e8);\n  background-image: linear-gradient(var(--wj-slider-color, #D83C31), var(--wj-slider-color, #D83C31));\n  /* Input Thumb */\n}\ninput[type=range][color=danger]::-webkit-slider-thumb {\n  background: var(--wj-slider-thumb-color, #D83C31);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px #fde2da);\n}\ninput[type=range][color=danger]::-moz-range-thumb {\n  background: var(--wj-slider-thumb-color, #D83C31);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px #fde2da);\n}\ninput[type=range][color=danger]::-ms-thumb {\n  background: var(--wj-slider-thumb-color, #D83C31);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px #fde2da);\n}\ninput[type=range][color=danger]::-webkit-slider-thumb:active {\n  background: var(--wj-slider-thumb-color, #D83C31);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fde2da);\n}\ninput[type=range][color=danger]::-moz-range-thumb:active {\n  background: var(--wj-slider-thumb-color, #D83C31);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fde2da);\n}\ninput[type=range][color=danger]::-ms-thumb:active {\n  background: var(--wj-slider-thumb-color, #D83C31);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fde2da);\n}\ninput[type=range][color=danger]::-webkit-slider-thumb:hover {\n  background: var(--wj-slider-thumb-color, #D83C31);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fde2da);\n}\ninput[type=range][color=danger]::-moz-range-thumb:hover {\n  background: var(--wj-slider-thumb-color, #D83C31);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fde2da);\n}\ninput[type=range][color=danger]::-ms-thumb:hover {\n  background: var(--wj-slider-thumb-color, #D83C31);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fde2da);\n}\ninput[type=range][color=warning] {\n  --wj-slider-color: #FFd945;\n  --wj-slider-thumb-color: #FFd945;\n  --wj-slider-thumb-shadow: none;\n  --wj-slider-thumb-shadow-active: 0 0 0 7px #fffde1;\n  --wj-slider-track-color: #dbe6e8;\n  background-color: var(--wj-slider-track-color, #dbe6e8);\n  background-image: linear-gradient(var(--wj-slider-color, #FFd945), var(--wj-slider-color, #FFd945));\n  /* Input Thumb */\n}\ninput[type=range][color=warning]::-webkit-slider-thumb {\n  background: var(--wj-slider-thumb-color, #FFd945);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px #fffde1);\n}\ninput[type=range][color=warning]::-moz-range-thumb {\n  background: var(--wj-slider-thumb-color, #FFd945);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px #fffde1);\n}\ninput[type=range][color=warning]::-ms-thumb {\n  background: var(--wj-slider-thumb-color, #FFd945);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px #fffde1);\n}\ninput[type=range][color=warning]::-webkit-slider-thumb:active {\n  background: var(--wj-slider-thumb-color, #FFd945);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fffde1);\n}\ninput[type=range][color=warning]::-moz-range-thumb:active {\n  background: var(--wj-slider-thumb-color, #FFd945);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fffde1);\n}\ninput[type=range][color=warning]::-ms-thumb:active {\n  background: var(--wj-slider-thumb-color, #FFd945);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fffde1);\n}\ninput[type=range][color=warning]::-webkit-slider-thumb:hover {\n  background: var(--wj-slider-thumb-color, #FFd945);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fffde1);\n}\ninput[type=range][color=warning]::-moz-range-thumb:hover {\n  background: var(--wj-slider-thumb-color, #FFd945);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fffde1);\n}\ninput[type=range][color=warning]::-ms-thumb:hover {\n  background: var(--wj-slider-thumb-color, #FFd945);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #fffde1);\n}\ninput[type=range][color=contrast] {\n  --wj-slider-color: #fff;\n  --wj-slider-thumb-color: #fff;\n  --wj-slider-thumb-shadow: none;\n  --wj-slider-thumb-shadow-active: 0 0 0 7px white;\n  --wj-slider-track-color: #757575;\n  background-color: var(--wj-slider-track-color, #757575);\n  background-image: linear-gradient(var(--wj-slider-color, #fff), var(--wj-slider-color, #fff));\n  /* Input Thumb */\n}\ninput[type=range][color=contrast]::-webkit-slider-thumb {\n  background: var(--wj-slider-thumb-color, #fff);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px white);\n}\ninput[type=range][color=contrast]::-moz-range-thumb {\n  background: var(--wj-slider-thumb-color, #fff);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px white);\n}\ninput[type=range][color=contrast]::-ms-thumb {\n  background: var(--wj-slider-thumb-color, #fff);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px white);\n}\ninput[type=range][color=contrast]::-webkit-slider-thumb:active {\n  background: var(--wj-slider-thumb-color, #fff);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px white);\n}\ninput[type=range][color=contrast]::-moz-range-thumb:active {\n  background: var(--wj-slider-thumb-color, #fff);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px white);\n}\ninput[type=range][color=contrast]::-ms-thumb:active {\n  background: var(--wj-slider-thumb-color, #fff);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px white);\n}\ninput[type=range][color=contrast]::-webkit-slider-thumb:hover {\n  background: var(--wj-slider-thumb-color, #fff);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px white);\n}\ninput[type=range][color=contrast]::-moz-range-thumb:hover {\n  background: var(--wj-slider-thumb-color, #fff);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px white);\n}\ninput[type=range][color=contrast]::-ms-thumb:hover {\n  background: var(--wj-slider-thumb-color, #fff);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px white);\n}\ninput[type=range]::-webkit-slider-thumb {\n  background: var(--wj-slider-thumb-color, #7252D3);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px #eae0fb);\n}\ninput[type=range]::-moz-range-thumb {\n  background: var(--wj-slider-thumb-color, #7252D3);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px #eae0fb);\n}\ninput[type=range]::-ms-thumb {\n  background: var(--wj-slider-thumb-color, #7252D3);\n  box-shadow: var(--wj-slider-thumb-shadow, 0 0 0 7px #eae0fb);\n}\ninput[type=range]::-webkit-slider-thumb:active {\n  background: var(--wj-slider-thumb-color, #7252D3);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb);\n}\ninput[type=range]::-moz-range-thumb:active {\n  background: var(--wj-slider-thumb-color, #7252D3);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb);\n}\ninput[type=range]::-ms-thumb:active {\n  background: var(--wj-slider-thumb-color, #7252D3);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb);\n}\ninput[type=range]::-webkit-slider-thumb:hover {\n  background: var(--wj-slider-thumb-color, #7252D3);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb);\n}\ninput[type=range]::-moz-range-thumb:hover {\n  background: var(--wj-slider-thumb-color, #7252D3);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb);\n}\ninput[type=range]::-ms-thumb:hover {\n  background: var(--wj-slider-thumb-color, #7252D3);\n  box-shadow: var(--wj-slider-thumb-shadow-active, 0 0 0 7px #eae0fb);\n}\ndatalist {\n  display: flex;\n  justify-content: space-between;\n  height: auto;\n  overflow: hidden;\n  margin-top: 16px;\n}\ndatalist option:before {\n  content: "";\n  display: block;\n  width: 0;\n  height: auto;\n  padding-left: 3px;\n  text-indent: 0;\n}\noutput {\n  position: absolute;\n  background: var(--wj-color-contrast-11);\n  color: var(--wj-color-contrast-0);\n  top: -46px;\n  padding: 4px 8px;\n  border-radius: 4px;\n}\n::slotted([slot=label]) {\n  margin-inline: 0 1rem;\n  font-size: var(--wj-font-size);\n}\n::slotted([slot=start]) {\n  margin-inline: 0 1rem;\n}\n::slotted([slot=end]) {\n  margin-inline: 1rem 0;\n}';
+class Slider extends WJElement {
   constructor() {
     super();
-    s(this, "className", "Slider");
-    s(this, "setHandlePosition", () => {
+    __publicField(this, "className", "Slider");
+    __publicField(this, "setHandlePosition", () => {
       this.input.style.backgroundSize = this.getPercentage(this.input.value, this.input.min, this.input.max) + "% 100%";
     });
-    s(this, "setBubble", () => {
-      let e = this.getPercentage(this.input.value, this.input.min, this.input.max);
-      this.output.style.left = `calc(${e}% + (${8 - e * 0.15}px) - ${this.output.offsetWidth / 2}px)`, this.output.innerHTML = this.input.value;
+    __publicField(this, "setBubble", () => {
+      let newValue = this.getPercentage(this.input.value, this.input.min, this.input.max);
+      this.output.style.left = `calc(${newValue}% + (${8 - newValue * 0.15}px) - ${this.output.offsetWidth / 2}px)`;
+      this.output.innerHTML = this.input.value;
     });
   }
-  set value(e) {
-    this.setAttribute("value", e), this.input && (this.input.value = e, this.setHandlePosition());
+  set value(value) {
+    this.setAttribute("value", value);
+    if (this.input) {
+      this.input.value = value;
+      this.setHandlePosition();
+    }
   }
   get value() {
     return this.getAttribute("value") || 0;
   }
-  set min(e) {
-    this.setAttribute("min", e);
+  set min(value) {
+    this.setAttribute("min", value);
   }
   get min() {
     return this.getAttribute("min") || 0;
   }
-  set max(e) {
-    this.setAttribute("max", e);
+  set max(value) {
+    this.setAttribute("max", value);
   }
   get max() {
     return this.getAttribute("max") || 100;
   }
-  set step(e) {
-    this.setAttribute("step", e);
+  set step(value) {
+    this.setAttribute("step", value);
   }
   get step() {
     return this.getAttribute("step") || 1;
   }
   static get cssStyleSheet() {
-    return p;
+    return styles;
   }
   static get observedAttributes() {
     return ["max", "value"];
@@ -53,68 +57,105 @@ class m extends w {
     this.isShadowRoot = "open";
   }
   draw() {
-    let e = document.createDocumentFragment(), t = document.createElement("div");
-    t.className = "native-slider";
-    let i = document.createElement("div");
-    i.className = "slider";
-    let n = document.createElement("slot");
-    n.name = "label";
-    let l = document.createElement("slot");
-    l.name = "start";
-    let u = document.createElement("slot");
-    u.name = "end";
-    let d = document.createElement("output");
-    d.setAttribute("for", "slider"), d.id = "output", d.setAttribute("hidden", "");
-    let r = document.createElement("input");
-    return r.type = "range", r.min = this.min, r.max = this.max, r.step = this.step, r.value = this.value, r.id = "slider", r.name = "slider", r.part = "slider", r.setAttribute("autocomplete", "off"), r.setAttribute("color", this.color || ""), r.addEventListener("input", (h) => {
-      this.setHandlePosition(h.target);
-    }), i.appendChild(r), this.hasAttribute("bubble") && i.appendChild(d), t.appendChild(n), t.appendChild(l), t.appendChild(i), t.appendChild(u), e.appendChild(t), this.input = r, this.output = d, e;
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("div");
+    element.className = "native-slider";
+    let slider = document.createElement("div");
+    slider.className = "slider";
+    let label = document.createElement("slot");
+    label.name = "label";
+    let start = document.createElement("slot");
+    start.name = "start";
+    let end = document.createElement("slot");
+    end.name = "end";
+    let output = document.createElement("output");
+    output.setAttribute("for", "slider");
+    output.id = "output";
+    output.setAttribute("hidden", "");
+    let input = document.createElement("input");
+    input.type = "range";
+    input.min = this.min;
+    input.max = this.max;
+    input.step = this.step;
+    input.value = this.value;
+    input.id = "slider";
+    input.name = "slider";
+    input.part = "slider";
+    input.setAttribute("autocomplete", "off");
+    input.setAttribute("color", this.color || "");
+    input.addEventListener("input", (e) => {
+      this.setHandlePosition(e.target);
+    });
+    slider.appendChild(input);
+    if (this.hasAttribute("bubble")) {
+      slider.appendChild(output);
+    }
+    element.appendChild(label);
+    element.appendChild(start);
+    element.appendChild(slider);
+    element.appendChild(end);
+    fragment.appendChild(element);
+    this.input = input;
+    this.output = output;
+    return fragment;
   }
   afterDraw() {
-    this.setHandlePosition(), this.hasAttribute("bubble") && (this.output.innerHTML = this.input.value, this.output.removeAttribute("hidden"), setTimeout(this.setBubble, 50)), this.dispatchInit(this.input.value), this.input.addEventListener("input", (e) => {
-      this.value = e.target.value, this.dispatchMove(this.value), this.hasAttribute("bubble") && this.setBubble();
-    }), this.input.addEventListener("change", (e) => {
+    this.setHandlePosition();
+    if (this.hasAttribute("bubble")) {
+      this.output.innerHTML = this.input.value;
+      this.output.removeAttribute("hidden");
+      setTimeout(this.setBubble, 50);
+    }
+    this.dispatchInit(this.input.value);
+    this.input.addEventListener("input", (e) => {
+      this.value = e.target.value;
+      this.dispatchMove(this.value);
+      if (this.hasAttribute("bubble")) {
+        this.setBubble();
+      }
+    });
+    this.input.addEventListener("change", (e) => {
       this.dispatchChange(e.target.value);
     });
   }
-  dispatchInit(e) {
+  dispatchInit(value) {
     this.dispatchEvent(
       new CustomEvent("wj:slider-init", {
-        bubbles: !0,
+        bubbles: true,
         detail: {
-          value: e,
+          value,
           output: this.output
         }
       })
     );
   }
-  dispatchMove(e) {
+  dispatchMove(value) {
     this.dispatchEvent(
       new CustomEvent("wj:slider-move", {
-        bubbles: !0,
+        bubbles: true,
         detail: {
-          value: e,
+          value,
           output: this.output
         }
       })
     );
   }
-  dispatchChange(e) {
+  dispatchChange(value) {
     this.dispatchEvent(
       new CustomEvent("wj:slider-change", {
-        bubbles: !0,
+        bubbles: true,
         detail: {
-          value: e,
+          value,
           output: this.output
         }
       })
     );
   }
-  getPercentage(e = 0, t, i) {
-    return Number((e - t) * 100 / (i - t)) || 0;
+  getPercentage(value = 0, min, max) {
+    return Number((value - min) * 100 / (max - min)) || 0;
   }
 }
-customElements.get("wj-slider") || customElements.define("wj-slider", m);
+customElements.get("wj-slider") || customElements.define("wj-slider", Slider);
 export {
-  m as Slider
+  Slider
 };

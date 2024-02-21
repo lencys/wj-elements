@@ -1,32 +1,39 @@
-var i = Object.defineProperty;
-var a = (e, t, r) => t in e ? i(e, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[t] = r;
-var o = (e, t, r) => (a(e, typeof t != "symbol" ? t + "" : t, r), r);
-import c from "./wj-element.js";
-import { b as u } from "./router-links-e0087f84.js";
-import "./wj-store.js";
-const l = `:host{display:block;background:transparent!important}:host(.active){cursor:pointer;font-weight:700}
-`;
-class m extends c {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+import { b as bindRouterLinks } from "./router-links-F7MJWhZi.js";
+const styles = "/*\n[ WJ Router Link ]\n*/\n:host {\n  display: block;\n  background: transparent !important;\n}\n\n:host(.active) {\n  cursor: pointer;\n  font-weight: bold;\n}";
+class RouterLink extends WJElement {
   constructor() {
     super();
-    o(this, "className", "RouterLink");
-    u(this, { selector: !1 });
+    __publicField(this, "className", "RouterLink");
+    this.unbindRouterLinks = bindRouterLinks(this, { selector: false });
   }
   static get cssStyleSheet() {
-    return l;
+    return styles;
   }
   static get observedAttributes() {
     return [];
   }
   setupAttributes() {
-    this.isShadowRoot = "open", this.setAttribute("active-class", "active");
+    this.isShadowRoot = "open";
+    this.setAttribute("active-class", "active");
   }
-  draw(r, p, d) {
-    let s = document.createDocumentFragment(), n = document.createElement("slot");
-    return s.appendChild(n), s;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
+  }
+  beforeDisconnect() {
+    this.unbindRouterLinks();
   }
 }
-customElements.get("wj-router-link") || window.customElements.define("wj-router-link", m);
+customElements.get("wj-router-link") || window.customElements.define("wj-router-link", RouterLink);
 export {
-  m as RouterLink
+  RouterLink
 };

@@ -2,7 +2,7 @@ import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.j
 
 import styles from "./scss/styles.scss?inline";
 
-class Nav extends WJElement {
+export class Nav extends WJElement {
     constructor() {
         super(template);
 
@@ -15,7 +15,7 @@ class Nav extends WJElement {
         });
     }
 
-    className = "Breadcrumb";
+    className = "Nav";
 
     static get cssStyleSheet() {
         return styles;
@@ -67,4 +67,4 @@ class Nav extends WJElement {
     }
 }
 
-window.customElements.define('wj-nav', Nav);
+customElements.get("wj-nav") || window.customElements.define('wj-nav', Nav);

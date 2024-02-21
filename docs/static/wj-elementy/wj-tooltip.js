@@ -1,23 +1,24 @@
-var p = Object.defineProperty;
-var c = (r, e, t) => e in r ? p(r, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : r[e] = t;
-var s = (r, e, t) => (c(r, typeof e != "symbol" ? e + "" : e, t), t);
-import m, { event as d } from "./wj-element.js";
-import "./wj-store.js";
-const u = `:host{--wj-tooltip-arrow-color: var(--wj-color-contrast-11)}.native-tooltip{display:block;padding:.5rem;color:var(--wj-color-contrast-0);background-color:var(--wj-color-contrast-11);font-weight:400;font-size:.75rem!important;border-radius:var(--wj-border-radius-small);line-height:1;box-sizing:border-box;box-shadow:var(--wj-box-shadow-medium)}.arrow{position:absolute;width:10px;height:10px;background:var(--wj-tooltip-arrow-color);transform:rotate(45deg)}
-`;
-class h extends m {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement, { event } from "./wj-element.js";
+const styles = "/*\n[ WJ Tooltip ]\n*/\n:host {\n  --wj-tooltip-arrow-color: var(--wj-color-contrast-11);\n}\n\n.native-tooltip {\n  display: block;\n  padding: 0.5rem;\n  color: var(--wj-color-contrast-0);\n  background-color: var(--wj-color-contrast-11);\n  font-weight: normal;\n  font-size: 0.75rem !important;\n  border-radius: var(--wj-border-radius-small);\n  line-height: 1;\n  box-sizing: border-box;\n  box-shadow: var(--wj-box-shadow-medium);\n}\n\n.arrow {\n  position: absolute;\n  width: 10px;\n  height: 10px;\n  background: var(--wj-tooltip-arrow-color);\n  transform: rotate(45deg);\n}";
+class Tooltip extends WJElement {
   constructor() {
     super();
-    s(this, "className", "Tooltip");
-    s(this, "onShow", () => {
+    __publicField(this, "className", "Tooltip");
+    __publicField(this, "onShow", () => {
       this.popup.show();
     });
-    s(this, "onHide", () => {
+    __publicField(this, "onHide", () => {
       this.popup.hide();
     });
   }
   static get cssStyleSheet() {
-    return u;
+    return styles;
   }
   static get observedAttributes() {
     return ["active", "content"];
@@ -25,22 +26,36 @@ class h extends m {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(t, w, b) {
-    let l = document.createDocumentFragment(), o = document.createElement("wj-popup");
-    o.setAttribute("placement", this.placement || "top"), o.setAttribute("offset", this.offset || "0");
-    let n = document.createElement("slot");
-    n.setAttribute("slot", "anchor");
-    let i = document.createElement("div");
-    i.classList.add("arrow"), i.setAttribute("slot", "arrow");
-    let a = document.createElement("div");
-    return a.classList.add("native-tooltip"), a.innerHTML = this.content, o.appendChild(n), o.appendChild(i), o.appendChild(a), this.mySlot = n, this.popup = o, l.appendChild(o), l;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let popup = document.createElement("wj-popup");
+    popup.setAttribute("placement", this.placement || "top");
+    popup.setAttribute("offset", this.offset || "0");
+    let slot = document.createElement("slot");
+    slot.setAttribute("slot", "anchor");
+    let arrow = document.createElement("div");
+    arrow.classList.add("arrow");
+    arrow.setAttribute("slot", "arrow");
+    let native = document.createElement("div");
+    native.classList.add("native-tooltip");
+    native.innerHTML = this.content;
+    popup.appendChild(slot);
+    popup.appendChild(arrow);
+    popup.appendChild(native);
+    this.mySlot = slot;
+    this.popup = popup;
+    fragment.appendChild(popup);
+    return fragment;
   }
   afterDraw() {
-    let t = this.mySlot.assignedElements()[0];
-    t && (d.addListener(t, "mouseenter", null, this.onShow), d.addListener(t, "mouseleave", null, this.onHide));
+    let anchorEl = this.mySlot.assignedElements()[0];
+    if (!anchorEl)
+      return;
+    event.addListener(anchorEl, "mouseenter", null, this.onShow);
+    event.addListener(anchorEl, "mouseleave", null, this.onHide);
   }
 }
-customElements.get("wj-tooltip") || window.customElements.define("wj-tooltip", h);
+customElements.get("wj-tooltip") || window.customElements.define("wj-tooltip", Tooltip);
 export {
-  h as Tooltip
+  Tooltip
 };

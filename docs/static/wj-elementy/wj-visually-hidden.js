@@ -1,17 +1,18 @@
-var r = Object.defineProperty;
-var a = (e, t, n) => t in e ? r(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
-var i = (e, t, n) => (a(e, typeof t != "symbol" ? t + "" : t, n), n);
-import p from "./wj-element.js";
-import "./wj-store.js";
-const l = `:host(:not(:focus-within)){position:absolute!important;width:1px!important;height:1px!important;clip:rect(0 0 0 0)!important;clip-path:inset(50%)!important;border:none!important;overflow:hidden!important;white-space:nowrap!important;padding:0!important}
-`;
-class m extends p {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+const styles = "/*\n[ WJ Visually Hidden ]\n*/\n:host(:not(:focus-within)) {\n  position: absolute !important;\n  width: 1px !important;\n  height: 1px !important;\n  clip: rect(0 0 0 0) !important;\n  clip-path: inset(50%) !important;\n  border: none !important;\n  overflow: hidden !important;\n  white-space: nowrap !important;\n  padding: 0 !important;\n}";
+class VisuallyHidden extends WJElement {
   constructor() {
     super();
-    i(this, "className", "VisuallyHidden");
+    __publicField(this, "className", "VisuallyHidden");
   }
   static get cssStyleSheet() {
-    return l;
+    return styles;
   }
   static get observedAttributes() {
     return [];
@@ -19,12 +20,14 @@ class m extends p {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(n, d, c) {
-    let o = document.createDocumentFragment(), s = document.createElement("slot");
-    return o.appendChild(s), o;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let slot = document.createElement("slot");
+    fragment.appendChild(slot);
+    return fragment;
   }
 }
-customElements.get("wj-visually-hidden") || window.customElements.define("wj-visually-hidden", m);
+customElements.get("wj-visually-hidden") || window.customElements.define("wj-visually-hidden", VisuallyHidden);
 export {
-  m as VisuallyHidden
+  VisuallyHidden
 };

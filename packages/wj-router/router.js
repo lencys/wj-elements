@@ -49,14 +49,14 @@ export class Routerx extends WJElement {
 
     parseElement(element) {
         const obj = {};
-
         const attributes = element.attributes;
+
         for (let i = 0; i < attributes.length; i++) {
             const attributeName = attributes[i].name;
             const attributeValue = attributes[i].value;
 
             if (attributeName === 'component' && attributeValue.indexOf(".js") > -1) {
-                obj.component = () => import(new URL(attributeValue, this.origin || "").href); // lazy loading component
+                obj.component = () => import(/* @vite-ignore */ attributeValue); // lazy loading component
             } else {
                 if (attributeName !== 'shadow') {
                     obj[attributeName] = attributeValue;

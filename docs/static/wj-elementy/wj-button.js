@@ -1,62 +1,71 @@
-var d = Object.defineProperty;
-var b = (t, e, o) => e in t ? d(t, e, { enumerable: !0, configurable: !0, writable: !0, value: o }) : t[e] = o;
-var c = (t, e, o) => (b(t, typeof e != "symbol" ? e + "" : e, o), o);
-import j, { WjElementUtils as h, event as i } from "./wj-element.js";
-import "./wj-store.js";
-const u = (t) => t === "false" || t === "null" || t === "NaN" || t === "undefined" || t === "0" ? !1 : !!t, g = `:host(.wj-button-solid.wj-color-primary){--wj-button-background-color: var(--wj-color-primary-10);--wj-button-border-color: var(--wj-color-primary-11);--wj-button-color: var(--wj-color-contrast-0)}:host(.wj-button-outline.wj-color-primary){--wj-button-border-color: var(--wj-color-primary-6);--wj-button-color: var(--wj-color-primary-6)}:host(.wj-button-solid.wj-color-complete){--wj-button-background-color: var(--wj-color-complete-10);--wj-button-border-color: var(--wj-color-complete-11);--wj-button-color: var(--wj-color-contrast-0)}:host(.wj-button-outline.wj-color-complete){--wj-button-border-color: var(--wj-color-complete-6);--wj-button-color: var(--wj-color-complete-6)}:host(.wj-button-solid.wj-color-success){--wj-button-background-color: var(--wj-color-success-10);--wj-button-border-color: var(--wj-color-success-11);--wj-button-color: var(--wj-color-contrast-0)}:host(.wj-button-outline.wj-color-success){--wj-button-border-color: var(--wj-color-success-6);--wj-button-color: var(--wj-color-success-6)}:host(.wj-button-solid.wj-color-warning){--wj-button-background-color: var(--wj-color-warning-10);--wj-button-border-color: var(--wj-color-warning-11);--wj-button-color: var(--wj-color-black)}:host(.wj-button-outline.wj-color-warning){--wj-button-border-color: var(--wj-color-warning-6);--wj-button-color: var(--wj-color-warning-6)}:host(.wj-button-solid.wj-color-danger){--wj-button-background-color: var(--wj-color-danger-10);--wj-button-border-color: var(--wj-color-danger-11);--wj-button-color: var(--wj-color-contrast-0)}:host(.wj-button-outline.wj-color-danger){--wj-button-border-color: var(--wj-color-danger-6);--wj-button-color: var(--wj-color-danger-6)}:host(.wj-button-solid.wj-color-neutral){--wj-button-background-color: var(--wj-color-contrast-10);--wj-button-border-color: var(--wj-color-contrast-11);--wj-button-color: var(--wj-color-contrast-0)}:host(.wj-button-outline.wj-color-neutral){--wj-button-border-color: var(--wj-color-contrast-6);--wj-button-color: var(--wj-color-contrast-6)}:host(.wj-button-solid.wj-color-default){--wj-button-background-color: transparent;--wj-button-border-color: var(--wj-color-contrast-4);--wj-button-color: var(--wj-color-contrast-11)}:host(.wj-button-outline.wj-color-default){--wj-button-border-color: var(--wj-color-contrast-4);--wj-button-color: var(--wj-color-contrast-11)}:host{--wj-button-border-radius: 4px;--wj-button-border-width: 1px;--wj-button-border-style: solid;--wj-button-border-color: var(--wj-color-contrast-1);--wj-button-margin-inline: 0;--wj-padding-top: .4rem;--wj-padding-start: .5rem;--wj-padding-end: .5rem;--wj-padding-bottom: .4rem;display:inline-flex;position:relative;width:auto;cursor:pointer;margin-inline:var(--wj-button-margin-inline)}:host(.wj-button-group-button){display:block}.button-native{font-family:var(--wj-font-family);font-size:var(--wj-font-size);display:flex;position:relative;align-items:center;width:100%;height:100%;min-height:inherit;overflow:hidden;border-width:var(--wj-button-border-width);border-style:var(--wj-button-border-style);border-color:var(--wj-button-border-color);outline:none;background-color:var(--wj-button-background-color);color:var(--wj-button-color);line-height:1;contain:layout style;cursor:pointer;z-index:0;box-sizing:border-box;-webkit-appearance:none;-moz-appearance:none;appearance:none;margin:0;border-radius:var(--wj-button-border-radius);padding-top:var(--wj-padding-top);padding-bottom:var(--wj-padding-bottom);padding-inline:var(--wj-padding-start) var(--wj-padding-end)}@media (any-hover: hover){:host(.wj-button-solid.wj-color-primary:hover){--wj-button-background-color: var(--wj-color-primary-9);--wj-button-border-color: var(--wj-color-primary-10);--wj-button-color: var(--wj-color-contrast-0)}:host(.wj-button-outline.wj-color-primary:hover){--wj-button-background-color: var(--wj-color-primary-1);--wj-button-border-color: var(--wj-color-primary-11);--wj-button-color: var(--wj-color-primary-11)}:host(.wj-button-solid.wj-color-complete:hover){--wj-button-background-color: var(--wj-color-complete-9);--wj-button-border-color: var(--wj-color-complete-10);--wj-button-color: var(--wj-color-contrast-0)}:host(.wj-button-outline.wj-color-complete:hover){--wj-button-background-color: var(--wj-color-complete-1);--wj-button-border-color: var(--wj-color-complete-11);--wj-button-color: var(--wj-color-complete-11)}:host(.wj-button-solid.wj-color-success:hover){--wj-button-background-color: var(--wj-color-success-9);--wj-button-border-color: var(--wj-color-success-10);--wj-button-color: var(--wj-color-contrast-0)}:host(.wj-button-outline.wj-color-success:hover){--wj-button-background-color: var(--wj-color-success-1);--wj-button-border-color: var(--wj-color-success-11);--wj-button-color: var(--wj-color-success-11)}:host(.wj-button-solid.wj-color-warning:hover){--wj-button-background-color: var(--wj-color-warning-9);--wj-button-border-color: var(--wj-color-warning-10);--wj-button-color: var(--wj-color-black)}:host(.wj-button-outline.wj-color-warning:hover){--wj-button-background-color: var(--wj-color-warning-1);--wj-button-border-color: var(--wj-color-warning-11);--wj-button-color: var(--wj-color-warning-11)}:host(.wj-button-solid.wj-color-danger:hover){--wj-button-background-color: var(--wj-color-danger-9);--wj-button-border-color: var(--wj-color-danger-10);--wj-button-color: var(--wj-color-contrast-0)}:host(.wj-button-outline.wj-color-danger:hover){--wj-button-background-color: var(--wj-color-danger-1);--wj-button-border-color: var(--wj-color-danger-11);--wj-button-color: var(--wj-color-danger-11)}:host(.wj-button-solid.wj-color-neutral:hover){--wj-button-background-color: var(--wj-color-contrast-9);--wj-button-border-color: var(--wj-color-contrast-10);--wj-button-color: var(--wj-color-contrast-0)}:host(.wj-button-outline.wj-color-neutral:hover){--wj-button-background-color: var(--wj-color-contrast-1);--wj-button-border-color: var(--wj-color-contrast-11);--wj-button-color: var(--wj-color-contrast-11)}:host(.wj-button-solid.wj-color-default:hover){--wj-button-background-color: var(--wj-color-contrast-1);--wj-button-border-color: var(--wj-color-contrast-2);--wj-button-color: var(--wj-color-contrast-9)}:host(.wj-button-outline.wj-color-default:hover){--wj-button-background-color: var(--wj-color-contrast-1);--wj-button-border-color: var(--wj-color-contrast-2);--wj-button-color: var(--wj-color-contrast-9)}:host(.wj-button-link:hover){--wj-button-background-color: var(--wj-color-contrast-1) !important;--wj-button-border-color: transparent !important;color:var(--wj-color-contrast-9)!important}}.button-inner{display:flex;position:relative;flex-flow:row nowrap;flex-shrink:0;align-items:center;justify-content:center;width:100%;height:100%;z-index:1}:host(.button-solid.wj-color){background-color:var(--wj-button-background-color);color:var(--wj-button-color)}:host(.wj-button-link){--wj-button-border-width: 1px;--wj-button-border-color: transparent;--wj-button-background-color: transparent !important}:host(.wj-button-disabled){cursor:default;opacity:.5;pointer-events:none}:host(.wj-button-round){--wj-button-border-radius: var(--wj-border-radius-pill)}:host(.wj-button-circle){--wj-button-border-radius: var(--wj-border-radius-circle);aspect-ratio:1/1}:host(.wj-button-large){--wj-padding-top: .6rem;--wj-padding-start: .7rem;--wj-padding-end: .7rem;--wj-padding-bottom: .6rem}:host(.wj-button-small){--wj-padding-top: .25rem;--wj-padding-start: .25rem;--wj-padding-end: .25rem;--wj-padding-bottom: .25rem}::slotted(wj-icon[slot=start]){margin:0 .3rem 0 -.3rem}::slotted(wj-icon[slot=end]){margin:0 -.2rem 0 .3rem}:host(:not([only-caret])) slot[name=caret]{padding:0 0 0 .3rem}:host([only-caret]) slot[name=caret]{padding:0;display:block}:host(.wj-button-group-first:not(.wj-button-group-last)) .button-native{border-start-end-radius:0;border-end-end-radius:0}:host(.wj-button-group-inner) .button-native{border-radius:0}:host(.wj-button-group-last:not(.wj-button-group-first)) .button-native{border-start-start-radius:0;border-end-start-radius:0}:host(.wj-button-group-button:not(.wj-button-group-first)){margin-inline-start:calc(-1 * var(--wj-button-border-width))!important}::slotted([slot=toggle]){display:none}::slotted([slot=toggle].show){display:block}
-`;
-class p extends j {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement, { WjElementUtils, event } from "./wj-element.js";
+const bool = (v) => {
+  return v === "false" || v === "null" || v === "NaN" || v === "undefined" || v === "0" ? false : !!v;
+};
+const styles = "/*\n[ WJ Button ]\n*/\n:host(.wj-button-solid.wj-color-primary) {\n  --wj-button-background-color: var(--wj-color-primary-10);\n  --wj-button-border-color: var(--wj-color-primary-11);\n  --wj-button-color: var(--wj-color-contrast-0);\n}\n\n:host(.wj-button-outline.wj-color-primary) {\n  --wj-button-border-color: var(--wj-color-primary-6);\n  --wj-button-color: var(--wj-color-primary-6);\n}\n\n:host(.wj-button-solid.wj-color-complete) {\n  --wj-button-background-color: var(--wj-color-complete-10);\n  --wj-button-border-color: var(--wj-color-complete-11);\n  --wj-button-color: var(--wj-color-contrast-0);\n}\n\n:host(.wj-button-outline.wj-color-complete) {\n  --wj-button-border-color: var(--wj-color-complete-6);\n  --wj-button-color: var(--wj-color-complete-6);\n}\n\n:host(.wj-button-solid.wj-color-success) {\n  --wj-button-background-color: var(--wj-color-success-10);\n  --wj-button-border-color: var(--wj-color-success-11);\n  --wj-button-color: var(--wj-color-contrast-0);\n}\n\n:host(.wj-button-outline.wj-color-success) {\n  --wj-button-border-color: var(--wj-color-success-6);\n  --wj-button-color: var(--wj-color-success-6);\n}\n\n:host(.wj-button-solid.wj-color-warning) {\n  --wj-button-background-color: var(--wj-color-warning-10);\n  --wj-button-border-color: var(--wj-color-warning-11);\n  --wj-button-color: var(--wj-color-black);\n}\n\n:host(.wj-button-outline.wj-color-warning) {\n  --wj-button-border-color: var(--wj-color-warning-6);\n  --wj-button-color: var(--wj-color-warning-6);\n}\n\n:host(.wj-button-solid.wj-color-danger) {\n  --wj-button-background-color: var(--wj-color-danger-10);\n  --wj-button-border-color: var(--wj-color-danger-11);\n  --wj-button-color: var(--wj-color-contrast-0);\n}\n\n:host(.wj-button-outline.wj-color-danger) {\n  --wj-button-border-color: var(--wj-color-danger-6);\n  --wj-button-color: var(--wj-color-danger-6);\n}\n\n:host(.wj-button-solid.wj-color-neutral) {\n  --wj-button-background-color: var(--wj-color-contrast-10);\n  --wj-button-border-color: var(--wj-color-contrast-11);\n  --wj-button-color: var(--wj-color-contrast-0);\n}\n\n:host(.wj-button-outline.wj-color-neutral) {\n  --wj-button-border-color: var(--wj-color-contrast-6);\n  --wj-button-color: var(--wj-color-contrast-6);\n}\n\n:host(.wj-button-solid.wj-color-default) {\n  --wj-button-background-color: transparent;\n  --wj-button-border-color: var(--wj-color-contrast-4);\n  --wj-button-color: var(--wj-color-contrast-11);\n}\n\n:host(.wj-button-outline.wj-color-default) {\n  --wj-button-border-color: var(--wj-color-contrast-4);\n  --wj-button-color: var(--wj-color-contrast-11);\n}\n\n:host {\n  --wj-button-border-radius: 4px;\n  --wj-button-border-width: 1px;\n  --wj-button-border-style: solid;\n  --wj-button-border-color: var(--wj-color-contrast-1);\n  --wj-button-margin-inline: 0;\n  --wj-padding-top: .4rem;\n  --wj-padding-start: .5rem;\n  --wj-padding-end: .5rem;\n  --wj-padding-bottom: .4rem;\n  display: inline-flex;\n  position: relative;\n  width: auto;\n  cursor: pointer;\n  margin-inline: var(--wj-button-margin-inline);\n}\n\n:host(.wj-button-group-button) {\n  display: block;\n}\n\n.button-native {\n  font-family: var(--wj-font-family);\n  font-size: var(--wj-font-size);\n  display: flex;\n  position: relative;\n  align-items: center;\n  width: 100%;\n  height: 100%;\n  min-height: inherit;\n  overflow: hidden;\n  border-width: var(--wj-button-border-width);\n  border-style: var(--wj-button-border-style);\n  border-color: var(--wj-button-border-color);\n  outline: none;\n  background-color: var(--wj-button-background-color);\n  color: var(--wj-button-color);\n  line-height: 1;\n  contain: layout style;\n  cursor: pointer;\n  z-index: 0;\n  box-sizing: border-box;\n  appearance: none;\n  margin: 0;\n  border-radius: var(--wj-button-border-radius);\n  padding-top: var(--wj-padding-top);\n  padding-bottom: var(--wj-padding-bottom);\n  padding-inline: var(--wj-padding-start) var(--wj-padding-end);\n}\n\n@media (any-hover: hover) {\n  :host(.wj-button-solid.wj-color-primary:hover) {\n    --wj-button-background-color: var(--wj-color-primary-9);\n    --wj-button-border-color: var(--wj-color-primary-10);\n    --wj-button-color: var(--wj-color-contrast-0);\n  }\n  :host(.wj-button-outline.wj-color-primary:hover) {\n    --wj-button-background-color: var(--wj-color-primary-1);\n    --wj-button-border-color: var(--wj-color-primary-11);\n    --wj-button-color: var(--wj-color-primary-11);\n  }\n  :host(.wj-button-solid.wj-color-complete:hover) {\n    --wj-button-background-color: var(--wj-color-complete-9);\n    --wj-button-border-color: var(--wj-color-complete-10);\n    --wj-button-color: var(--wj-color-contrast-0);\n  }\n  :host(.wj-button-outline.wj-color-complete:hover) {\n    --wj-button-background-color: var(--wj-color-complete-1);\n    --wj-button-border-color: var(--wj-color-complete-11);\n    --wj-button-color: var(--wj-color-complete-11);\n  }\n  :host(.wj-button-solid.wj-color-success:hover) {\n    --wj-button-background-color: var(--wj-color-success-9);\n    --wj-button-border-color: var(--wj-color-success-10);\n    --wj-button-color: var(--wj-color-contrast-0);\n  }\n  :host(.wj-button-outline.wj-color-success:hover) {\n    --wj-button-background-color: var(--wj-color-success-1);\n    --wj-button-border-color: var(--wj-color-success-11);\n    --wj-button-color: var(--wj-color-success-11);\n  }\n  :host(.wj-button-solid.wj-color-warning:hover) {\n    --wj-button-background-color: var(--wj-color-warning-9);\n    --wj-button-border-color: var(--wj-color-warning-10);\n    --wj-button-color: var(--wj-color-black);\n  }\n  :host(.wj-button-outline.wj-color-warning:hover) {\n    --wj-button-background-color: var(--wj-color-warning-1);\n    --wj-button-border-color: var(--wj-color-warning-11);\n    --wj-button-color: var(--wj-color-warning-11);\n  }\n  :host(.wj-button-solid.wj-color-danger:hover) {\n    --wj-button-background-color: var(--wj-color-danger-9);\n    --wj-button-border-color: var(--wj-color-danger-10);\n    --wj-button-color: var(--wj-color-contrast-0);\n  }\n  :host(.wj-button-outline.wj-color-danger:hover) {\n    --wj-button-background-color: var(--wj-color-danger-1);\n    --wj-button-border-color: var(--wj-color-danger-11);\n    --wj-button-color: var(--wj-color-danger-11);\n  }\n  :host(.wj-button-solid.wj-color-neutral:hover) {\n    --wj-button-background-color: var(--wj-color-contrast-9);\n    --wj-button-border-color: var(--wj-color-contrast-10);\n    --wj-button-color: var(--wj-color-contrast-0);\n  }\n  :host(.wj-button-outline.wj-color-neutral:hover) {\n    --wj-button-background-color: var(--wj-color-contrast-1);\n    --wj-button-border-color: var(--wj-color-contrast-11);\n    --wj-button-color: var(--wj-color-contrast-11);\n  }\n  :host(.wj-button-solid.wj-color-default:hover) {\n    --wj-button-background-color: var(--wj-color-contrast-1);\n    --wj-button-border-color: var(--wj-color-contrast-2);\n    --wj-button-color: var(--wj-color-contrast-9);\n  }\n  :host(.wj-button-outline.wj-color-default:hover) {\n    --wj-button-background-color: var(--wj-color-contrast-1);\n    --wj-button-border-color: var(--wj-color-contrast-2);\n    --wj-button-color: var(--wj-color-contrast-9);\n  }\n  :host(.wj-button-link:hover) {\n    --wj-button-background-color: var(--wj-color-contrast-1) !important;\n    --wj-button-border-color: transparent !important;\n    color: var(--wj-color-contrast-9) !important;\n  }\n}\n.button-inner {\n  display: flex;\n  position: relative;\n  flex-flow: row nowrap;\n  flex-shrink: 0;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n  z-index: 1;\n}\n\n:host(.button-solid.wj-color) {\n  background-color: var(--wj-button-background-color);\n  color: var(--wj-button-color);\n}\n\n:host(.wj-button-disabled) {\n  cursor: default;\n  opacity: 0.5;\n  pointer-events: none;\n}\n\n/*\n[ Default = Solid ]\n*/\n/*\n[ Outline ]\n*/\n/*\n[ Link ]\n*/\n:host(.wj-button-link) {\n  --wj-button-border-width: 1px;\n  --wj-button-border-color: transparent;\n  --wj-button-background-color: transparent !important;\n}\n\n/*\n[ Disabled ]\n*/\n:host(.wj-button-disabled) {\n  cursor: default;\n  opacity: 0.5;\n  pointer-events: none;\n}\n\n/*\n[ Round ]\n*/\n:host(.wj-button-round) {\n  --wj-button-border-radius: var(--wj-border-radius-pill);\n}\n\n:host(.wj-button-circle) {\n  --wj-button-border-radius: var(--wj-border-radius-circle);\n  aspect-ratio: 1/1;\n}\n\n:host(.wj-button-large) {\n  --wj-padding-top: .6rem;\n  --wj-padding-start: .7rem;\n  --wj-padding-end: .7rem;\n  --wj-padding-bottom: .6rem;\n}\n\n:host(.wj-button-small) {\n  --wj-padding-top: .25rem;\n  --wj-padding-start: .25rem;\n  --wj-padding-end: .25rem;\n  --wj-padding-bottom: .25rem;\n}\n\n::slotted(wj-icon[slot=start]) {\n  margin: 0 0.3rem 0 -0.3rem;\n}\n\n::slotted(wj-icon[slot=end]) {\n  margin: 0 -0.2rem 0 0.3rem;\n}\n\n:host(:not([only-caret])) slot[name=caret] {\n  padding: 0 0 0 0.3rem;\n}\n\n:host([only-caret]) slot[name=caret] {\n  padding: 0;\n  display: block;\n}\n\n:host(.wj-button-group-first:not(.wj-button-group-last)) .button-native {\n  border-start-end-radius: 0;\n  border-end-end-radius: 0;\n}\n\n:host(.wj-button-group-inner) .button-native {\n  border-radius: 0;\n}\n\n:host(.wj-button-group-last:not(.wj-button-group-first)) .button-native {\n  border-start-start-radius: 0;\n  border-end-start-radius: 0;\n}\n\n:host(.wj-button-group-button:not(.wj-button-group-first)) {\n  margin-inline-start: calc(-1 * var(--wj-button-border-width)) !important;\n}\n\n::slotted([slot=toggle]) {\n  display: none;\n}\n\n::slotted([slot=toggle].show) {\n  display: block;\n}";
+class Button extends WJElement {
   constructor() {
     super();
-    c(this, "className", "Button");
-    c(this, "eventDialogOpen", (o) => {
+    __publicField(this, "className", "Button");
+    __publicField(this, "eventDialogOpen", (e) => {
       document.dispatchEvent(
         new CustomEvent(
           this.dialog,
           {
-            bubbles: !0
+            bubbles: true
           }
         )
       );
     });
-    c(this, "toggleStates", () => {
-      this.slotToggle.assignedNodes().filter((l) => l.nodeType === Node.ELEMENT_NODE).forEach((l) => {
-        l.classList.contains("show") ? l.classList.remove("show") : l.classList.add("show");
+    __publicField(this, "toggleStates", () => {
+      const nodes = this.slotToggle.assignedNodes().filter((node) => node.nodeType === Node.ELEMENT_NODE);
+      nodes.forEach((node) => {
+        if (node.classList.contains("show")) {
+          node.classList.remove("show");
+        } else {
+          node.classList.add("show");
+        }
       });
     });
   }
-  set active(o) {
+  set active(value) {
     this.setAttribute("active", "");
   }
   get active() {
     return this.hasAttribute("active");
   }
-  set disabled(o) {
+  set disabled(value) {
     this.setAttribute("disabled", "");
   }
   get disabled() {
     return this.hasAttribute("disabled");
   }
-  set fill(o) {
-    this.setAttribute("fill", o);
+  set fill(value) {
+    this.setAttribute("fill", value);
   }
   get fill() {
     return this.getAttribute("fill") || "solid";
   }
-  set outline(o) {
+  set outline(value) {
     this.setAttribute("outline", "");
   }
   get outline() {
     return this.hasAttribute("outline");
   }
-  set stopPropagation(o) {
-    this.setAttribute("stop-propagation", u(o));
+  set stopPropagation(value) {
+    this.setAttribute("stop-propagation", bool(value));
   }
   get stopPropagation() {
-    return u(this.getAttribute("stop-propagation"));
+    return bool(this.getAttribute("stop-propagation"));
   }
   static get cssStyleSheet() {
-    return g;
+    return styles;
   }
   static get observedAttributes() {
     return [];
@@ -64,33 +73,88 @@ class p extends j {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(o, l, v) {
-    let w = document.createDocumentFragment();
-    if (this.disabled && this.classList.add("wj-button-disabled"), this.variant && this.classList.add("wj-button-" + this.variant), this.hasAttribute("round") && this.classList.add("wj-button-round"), this.hasAttribute("circle") && this.classList.add("wj-button-circle"), this.outline && this.classList.add("wj-outline"), this.fill && this.classList.add("wj-button-" + this.fill), this.size && this.classList.add("wj-button-" + this.size), this.hasAttribute("color") ? this.classList.add("wj-color-" + this.color, "wj-color") : this.classList.add("wj-color-default", "wj-color"), this.hasAttribute("caret") || this.hasAttribute("only-caret")) {
-      let a = document.createElement("wj-icon");
-      a.style.setProperty("--wj-icon-size", "14px"), a.setAttribute("slot", "caret"), a.setAttribute("name", "chevron-down"), this.appendChild(a);
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    if (this.disabled)
+      this.classList.add("wj-button-disabled");
+    if (this.variant)
+      this.classList.add("wj-button-" + this.variant);
+    if (this.hasAttribute("round"))
+      this.classList.add("wj-button-round");
+    if (this.hasAttribute("circle"))
+      this.classList.add("wj-button-circle");
+    if (this.outline)
+      this.classList.add("wj-outline");
+    if (this.fill)
+      this.classList.add("wj-button-" + this.fill);
+    if (this.size)
+      this.classList.add("wj-button-" + this.size);
+    if (this.hasAttribute("color"))
+      this.classList.add("wj-color-" + this.color, "wj-color");
+    else
+      this.classList.add("wj-color-default", "wj-color");
+    if (this.hasAttribute("caret") || this.hasAttribute("only-caret")) {
+      let i = document.createElement("wj-icon");
+      i.style.setProperty("--wj-icon-size", "14px");
+      i.setAttribute("slot", "caret");
+      i.setAttribute("name", "chevron-down");
+      this.appendChild(i);
     }
     if (this.active) {
       this.classList.add("wj-active");
-      let a = document.createElement("wj-icon");
-      a.setAttribute("name", "check"), this.appendChild(a);
+      let i = document.createElement("wj-icon");
+      i.setAttribute("name", "check");
+      this.appendChild(i);
     }
-    this.disabled && this.classList.add("wj-disabled");
-    let s = document.createElement(this.hasAttribute("href") ? "a" : "button");
-    s.classList.add("button-native"), s.setAttribute("part", "native");
-    let n = document.createElement("span");
-    n.classList.add("button-inner");
-    let r = document.createElement("slot");
-    return r.setAttribute("name", "icon-only"), n.appendChild(r), r = document.createElement("slot"), r.setAttribute("name", "start"), n.appendChild(r), r = document.createElement("slot"), n.appendChild(r), r = document.createElement("slot"), r.setAttribute("name", "end"), n.appendChild(r), r = document.createElement("slot"), r.setAttribute("name", "caret"), n.appendChild(r), this.hasToggle = h.hasSlot(this, "toggle"), this.hasToggle && (this.slotToggle = document.createElement("slot"), this.slotToggle.setAttribute("name", "toggle"), n.appendChild(this.slotToggle)), s.appendChild(n), w.appendChild(s), w;
+    if (this.disabled)
+      this.classList.add("wj-disabled");
+    let element = document.createElement(this.hasAttribute("href") ? "a" : "button");
+    element.classList.add("button-native");
+    element.setAttribute("part", "native");
+    let span = document.createElement("span");
+    span.classList.add("button-inner");
+    let slot = document.createElement("slot");
+    slot.setAttribute("name", "icon-only");
+    span.appendChild(slot);
+    slot = document.createElement("slot");
+    slot.setAttribute("name", "start");
+    span.appendChild(slot);
+    slot = document.createElement("slot");
+    span.appendChild(slot);
+    slot = document.createElement("slot");
+    slot.setAttribute("name", "end");
+    span.appendChild(slot);
+    slot = document.createElement("slot");
+    slot.setAttribute("name", "caret");
+    span.appendChild(slot);
+    this.hasToggle = WjElementUtils.hasSlot(this, "toggle");
+    if (this.hasToggle) {
+      this.slotToggle = document.createElement("slot");
+      this.slotToggle.setAttribute("name", "toggle");
+      span.appendChild(this.slotToggle);
+    }
+    element.appendChild(span);
+    fragment.appendChild(element);
+    return fragment;
   }
   afterDraw() {
-    this.hasToggle && (this.toggle === "off" ? this.slotToggle.assignedNodes()[1].classList.add("show") : this.slotToggle.assignedNodes()[0].classList.add("show")), i.addListener(this, "click", "wj:button-click", null, { stopPropagation: this.stopPropagation }), i.addListener(this, "click", null, this.eventDialogOpen), this.hasToggle && i.addListener(this, "click", "wj-button:toggle", this.toggleStates, { stopPropagation: this.stopPropagation });
+    if (this.hasToggle) {
+      if (this.toggle === "off") {
+        this.slotToggle.assignedNodes()[1].classList.add("show");
+      } else {
+        this.slotToggle.assignedNodes()[0].classList.add("show");
+      }
+    }
+    event.addListener(this, "click", "wj:button-click", null, { stopPropagation: this.stopPropagation });
+    event.addListener(this, "click", null, this.eventDialogOpen);
+    if (this.hasToggle)
+      event.addListener(this, "click", "wj-button:toggle", this.toggleStates, { stopPropagation: this.stopPropagation });
   }
   beforeDisconnect() {
     this.removeEventListener("click", this.eventDialogOpen);
   }
 }
-customElements.get("wj-button") || window.customElements.define("wj-button", p);
+customElements.get("wj-button") || window.customElements.define("wj-button", Button);
 export {
-  p as Button
+  Button
 };

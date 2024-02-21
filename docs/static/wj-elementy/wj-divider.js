@@ -1,17 +1,18 @@
-var a = Object.defineProperty;
-var n = (r, e, t) => e in r ? a(r, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : r[e] = t;
-var o = (r, e, t) => (n(r, typeof e != "symbol" ? e + "" : e, t), t);
-import l from "./wj-element.js";
-import "./wj-store.js";
-const c = `:host{--wj-border-size: 1px;--wj-divider-border-color: var(--wj-border-color);--wj-divider-border-width: var(--wj-border-size, 1px);--wj-divider-spacing: 0}:host(:not([vertical])){display:block;border-top:solid var(--wj-divider-border-width) var(--wj-divider-border-color);margin:var(--wj-divider-spacing) 0}:host([vertical]){display:inline-block;height:100%;border-left:solid var(--wj-divider-border-width) var(--wj-divider-border-color);margin:0 var(--wj-divider-spacing)}
-`;
-class v extends l {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+const styles = "/*\n[ WJ Divider ]\n*/\n:host {\n  --wj-border-size: 1px;\n  --wj-divider-border-color: var(--wj-border-color);\n  --wj-divider-border-width: var(--wj-border-size, 1px);\n  --wj-divider-spacing: 0;\n}\n\n:host(:not([vertical])) {\n  display: block;\n  border-top: solid var(--wj-divider-border-width) var(--wj-divider-border-color);\n  margin: var(--wj-divider-spacing) 0;\n}\n\n:host([vertical]) {\n  display: inline-block;\n  height: 100%;\n  border-left: solid var(--wj-divider-border-width) var(--wj-divider-border-color);\n  margin: 0 var(--wj-divider-spacing);\n}";
+class Divider extends WJElement {
   constructor() {
     super();
-    o(this, "className", "Divider");
+    __publicField(this, "className", "Divider");
   }
   static get cssStyleSheet() {
-    return c;
+    return styles;
   }
   static get observedAttributes() {
     return [];
@@ -19,12 +20,16 @@ class v extends l {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(t, w, m) {
-    let i = document.createDocumentFragment(), d = document.createElement("div"), s = document.createElement("slot");
-    return d.appendChild(s), i.appendChild(d), i;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    let slot = document.createElement("slot");
+    native.appendChild(slot);
+    fragment.appendChild(native);
+    return fragment;
   }
 }
-customElements.get("wj-divider") || window.customElements.define("wj-divider", v);
+customElements.get("wj-divider") || window.customElements.define("wj-divider", Divider);
 export {
-  v as Divider
+  Divider
 };

@@ -1,36 +1,53 @@
-var l = Object.defineProperty;
-var d = (r, o, t) => o in r ? l(r, o, { enumerable: !0, configurable: !0, writable: !0, value: t }) : r[o] = t;
-var n = (r, o, t) => (d(r, typeof o != "symbol" ? o + "" : o, t), t);
-import w, { event as h } from "./wj-element.js";
-import "./wj-store.js";
-const j = `/*!
-* direction.scss
-*/:host{--wj-chip-border-radius: 100px;--wj-chip-background: var();--wj-chip-color: #4b4b4b;--wj-chip-margin: 0;--wj-card-background: var(--wj-color-contrast-2);--wj-card-color: var(--wj-color);margin:var(--wj-chip-margin)}:host(.wj-color-primary){--wj-card-background: var(--wj-color-primary)}:host(.wj-color-complete){--wj-card-background: var(--wj-color-complete)}:host(.wj-color-success){--wj-card-background: var(--wj-color-success)}:host(.wj-color-warning){--wj-card-background: var(--wj-color-warning)}:host(.wj-color-danger){--wj-card-background: var(--wj-color-danger)}:host(.wj-color-info){--wj-card-background: var(--wj-color-info)}:host(.wj-color-menu){--wj-card-background: var(--wj-color-menu)}:host(.wj-color-primary){--wj-card-color: var(--wj-color-white)}:host(.wj-color-complete){--wj-card-color: var(--wj-color-white)}:host(.wj-color-success){--wj-card-color: var(--wj-color-white)}:host(.wj-color-warning){--wj-card-color: var(--wj-color)}:host(.wj-color-danger){--wj-card-color: var(--wj-color-white)}:host(.wj-color-info){--wj-card-color: var(--wj-color-white)}:host(.wj-color-menu){--wj-card-color: var(--wj-color-white) !important}.native-chip{display:inline-flex;justify-content:center;align-items:center;font-size:14px;letter-spacing:-.006em;margin:0;padding:.5rem .75rem;text-align:center;cursor:pointer;white-space:nowrap;background:var(--wj-chip-background);color:var(--wj-chip-color);text-shadow:none;box-shadow:none;border:0 none;line-height:14px;min-height:28px;height:28px;width:100%;max-width:fit-content;min-width:28px;position:relative;transition:width .15s cubic-bezier(.4,0,.2,1);border-radius:var(--wj-chip-border-radius);overflow:hidden;vertical-align:middle;box-sizing:border-box}:host(.focus){box-shadow:none}:host(:hover:not(.wj-active)) .native-chip{background:var(--wj-color-contrast-3);color:var(--wj-color)}:host(.wj-active) .native-chip{border:1px solid rgba(33,33,33,.2)}:host(:focus,:active:focus,.wj-active:focus){outline:none!important;box-shadow:0 0 #78c8fe}.check{display:none}:host([active]) .check{display:block;margin-inline:4px 0}:host(.wj-disabled){background:#f4f4f4;color:#757575;border:0;pointer-events:none;cursor:not-allowed}::slotted(wj-avatar){width:22px;height:22px}::slotted(wj-avatar:first-child){margin-inline:-8px 8px;margin-top:-4px;margin-bottom:-4px}:host .native-chip{background-color:var(--wj-card-background, #fff);color:var(--wj-card-color)}::slotted(wj-icon:first-child){margin:-4px 8px -4px -4px}::slotted(wj-icon:last-child){margin:-4px -4px -4px 8px}wj-button{--wj-button-border-radius: 50%;--wj-button-margin-inline: .25rem -.5rem;--wj-padding-top: .15rem;--wj-padding-start: .15rem;--wj-padding-end: .15rem;--wj-padding-bottom: .15rem}
-`;
-class p extends w {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement, { event } from "./wj-element.js";
+const styles = "/*!\n* direction.scss\n*/\n/* Skeleton Variables */\n/*\n[ WJ Chip ]\n*/\n:host {\n  --wj-chip-border-radius: 100px;\n  --wj-chip-background: var();\n  --wj-chip-color: #4b4b4b;\n  --wj-chip-margin: 0;\n  --wj-card-background: var(--wj-color-contrast-2);\n  --wj-card-color: var(--wj-color);\n  margin: var(--wj-chip-margin);\n}\n:host(.wj-color-primary) {\n  --wj-card-background: var(--wj-color-primary);\n}\n:host(.wj-color-complete) {\n  --wj-card-background: var(--wj-color-complete);\n}\n:host(.wj-color-success) {\n  --wj-card-background: var(--wj-color-success);\n}\n:host(.wj-color-warning) {\n  --wj-card-background: var(--wj-color-warning);\n}\n:host(.wj-color-danger) {\n  --wj-card-background: var(--wj-color-danger);\n}\n:host(.wj-color-info) {\n  --wj-card-background: var(--wj-color-info);\n}\n:host(.wj-color-menu) {\n  --wj-card-background: var(--wj-color-menu);\n}\n:host(.wj-color-primary) {\n  --wj-card-color: var(--wj-color-white);\n}\n:host(.wj-color-complete) {\n  --wj-card-color: var(--wj-color-white);\n}\n:host(.wj-color-success) {\n  --wj-card-color: var(--wj-color-white);\n}\n:host(.wj-color-warning) {\n  --wj-card-color: var(--wj-color);\n}\n:host(.wj-color-danger) {\n  --wj-card-color: var(--wj-color-white);\n}\n:host(.wj-color-info) {\n  --wj-card-color: var(--wj-color-white);\n}\n:host(.wj-color-menu) {\n  --wj-card-color: var(--wj-color-white) !important;\n}\n.native-chip {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 14px;\n  letter-spacing: -0.006em;\n  margin: 0;\n  padding: 0.5rem 0.75rem;\n  text-align: center;\n  cursor: pointer;\n  white-space: nowrap;\n  background: var(--wj-chip-background);\n  color: var(--wj-chip-color);\n  text-shadow: none;\n  box-shadow: none;\n  border: 0 none;\n  line-height: 14px;\n  min-height: 28px;\n  height: 28px;\n  width: 100%;\n  max-width: fit-content;\n  min-width: 28px;\n  position: relative;\n  transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1);\n  border-radius: var(--wj-chip-border-radius);\n  overflow: hidden;\n  vertical-align: middle;\n  box-sizing: border-box;\n}\n:host(.focus) {\n  box-shadow: none;\n}\n:host(:hover:not(.wj-active)) .native-chip {\n  background: var(--wj-color-contrast-3);\n  color: var(--wj-color);\n}\n:host(.wj-active) .native-chip {\n  border: 1px solid rgba(33, 33, 33, 0.2);\n}\n:host(:focus, :active:focus, .wj-active:focus) {\n  outline: none !important;\n  box-shadow: 0 0 0 0px #78c8fe;\n}\n.check {\n  display: none;\n}\n:host([active]) .check {\n  display: block;\n  margin-inline: 4px 0;\n}\n:host(.wj-disabled) {\n  background: #f4f4f4;\n  color: #757575;\n  border: 0;\n  pointer-events: none;\n  cursor: not-allowed;\n}\n::slotted(wj-avatar) {\n  width: 22px;\n  height: 22px;\n}\n::slotted(wj-avatar:first-child) {\n  margin-inline: -8px 8px;\n  margin-top: -4px;\n  margin-bottom: -4px;\n}\n:host .native-chip {\n  background-color: var(--wj-card-background, #fff);\n  color: var(--wj-card-color);\n}\n::slotted(wj-icon:first-child) {\n  margin: -4px 8px -4px -4px;\n}\n::slotted(wj-icon:last-child) {\n  margin: -4px -4px -4px 8px;\n}\nwj-button {\n  --wj-button-border-radius: 50%;\n  --wj-button-margin-inline: .25rem -.5rem;\n  --wj-padding-top: .15rem;\n  --wj-padding-start: .15rem;\n  --wj-padding-end: .15rem;\n  --wj-padding-bottom: .15rem;\n}";
+class Chip extends WJElement {
   constructor() {
     super();
-    n(this, "className", "Chip");
+    __publicField(this, "className", "Chip");
   }
   static get cssStyleSheet() {
-    return j;
+    return styles;
   }
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(t, m, u) {
-    let a = document.createDocumentFragment(), e = document.createElement("div");
-    e.classList.add("native-chip");
-    let s = document.createElement("slot"), c = document.createElement("wj-button");
-    c.setAttribute("part", "remove"), c.setAttribute("fill", "link"), c.innerHTML = '<wj-icon name="x"></wj-icon>';
-    let i = document.createElement("wj-icon");
-    return i.setAttribute("name", "check"), i.classList.add("check"), this.color && this.classList.add("wj-color-" + this.color, "wj-color"), this.disabled && this.classList.add("wj-disabled"), this.outline && this.classList.add("wj-outline"), e.appendChild(s), e.appendChild(i), this.hasAttribute("removable") && e.appendChild(c), a.appendChild(e), this.remove = c, a;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    native.classList.add("native-chip");
+    let slot = document.createElement("slot");
+    let remove = document.createElement("wj-button");
+    remove.setAttribute("part", "remove");
+    remove.setAttribute("fill", "link");
+    remove.innerHTML = `<wj-icon name="x"></wj-icon>`;
+    let active = document.createElement("wj-icon");
+    active.setAttribute("name", "check");
+    active.classList.add("check");
+    if (this.color)
+      this.classList.add("wj-color-" + this.color, "wj-color");
+    if (this.disabled)
+      this.classList.add("wj-disabled");
+    if (this.outline)
+      this.classList.add("wj-outline");
+    native.appendChild(slot);
+    native.appendChild(active);
+    if (this.hasAttribute("removable"))
+      native.appendChild(remove);
+    fragment.appendChild(native);
+    this.remove = remove;
+    return fragment;
   }
   afterDraw() {
-    h.addListener(this.remove, "click", "wj:chip-remove", null, { stopPropagation: !0 });
+    event.addListener(this.remove, "click", "wj:chip-remove", null, { stopPropagation: true });
   }
 }
-customElements.get("wj-chip") || window.customElements.define("wj-chip", p);
+customElements.get("wj-chip") || window.customElements.define("wj-chip", Chip);
 export {
-  p as Chip
+  Chip
 };

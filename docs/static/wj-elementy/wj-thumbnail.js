@@ -1,17 +1,18 @@
-var d = Object.defineProperty;
-var m = (r, t, e) => t in r ? d(r, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[t] = e;
-var s = (r, t, e) => (m(r, typeof t != "symbol" ? t + "" : t, e), e);
-import u from "./wj-element.js";
-import "./wj-store.js";
-const h = `:host{--wj-thumbnail-width: 48px;--wj-thumbnail-height: 48px;--wj-thumbnail-border-radius: var(--wj-border-radius-medium)}:host{width:var(--wj-thumbnail-width);height:var(--wj-thumbnail-height);display:block;border-radius:var(--wj-border-radius)}::slotted(wj-img),::slotted(img){border-radius:var(--wj-thumbnail-border-radius);width:100%;height:100%;object-fit:cover;overflow:hidden}
-`;
-class l extends u {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+const styles = "/*\n[ WJ Thumbnail ]\n*/\n:host {\n  --wj-thumbnail-width: 48px;\n  --wj-thumbnail-height: 48px;\n  --wj-thumbnail-border-radius: var(--wj-border-radius-medium);\n}\n\n:host {\n  width: var(--wj-thumbnail-width);\n  height: var(--wj-thumbnail-height);\n  display: block;\n  border-radius: var(--wj-border-radius);\n}\n\n::slotted(wj-img),\n::slotted(img) {\n  border-radius: var(--wj-thumbnail-border-radius);\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  overflow: hidden;\n}";
+class Thumbnail extends WJElement {
   constructor() {
     super();
-    s(this, "className", "Thumbnail");
+    __publicField(this, "className", "Thumbnail");
   }
   static get cssStyleSheet() {
-    return h;
+    return styles;
   }
   static get observedAttributes() {
     return [];
@@ -19,14 +20,16 @@ class l extends u {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  beforeDraw(e, a, o) {
+  beforeDraw(context, store, params) {
   }
-  draw(e, a, o) {
-    let i = document.createDocumentFragment(), n = document.createElement("slot");
-    return i.appendChild(n), i;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-customElements.get("wj-thumbnail") || window.customElements.define("wj-thumbnail", l);
+customElements.get("wj-thumbnail") || window.customElements.define("wj-thumbnail", Thumbnail);
 export {
-  l as Thumbnail
+  Thumbnail
 };

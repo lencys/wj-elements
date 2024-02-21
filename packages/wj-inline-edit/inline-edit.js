@@ -7,7 +7,7 @@ template.innerHTML = `<style>
 	@import "/templates/net/pages/css/themes/net-basic/form_elements.css?v=@@version@@";
 	@import "/templates/net/pages/css/themes/net-basic/buttons.css?v=@@version@@";
 	@import "/templates/net/assets/plugins/font-awesome/css/fontawesome.css?v=@@version@@";
-    @import "/templates/net/assets/plugins/font-awesome/css/light.min.css";
+  @import "/templates/net/assets/plugins/font-awesome/css/light.min.css";
 	@import "/templates/net/assets/js/components/wj-inline-edit/css/styles.css?v=@@version@@";
 </style>`;
 

@@ -1,22 +1,33 @@
-var g = Object.defineProperty;
-var h = (n, i, t) => i in n ? g(n, i, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[i] = t;
-var d = (n, i, t) => (h(n, typeof i != "symbol" ? i + "" : i, t), t);
-import v from "./wj-element.js";
-import { L as p } from "./localize-762a9f0f.js";
-import "./wj-store.js";
-const w = "";
-class S extends v {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+import { L as Localizer } from "./localize-DSOailh_.js";
+const styles = "/*\n[ WJ Avatar ]\n*/";
+class RelativeTime extends WJElement {
   constructor() {
     super();
-    d(this, "className", "RelativeTime");
-    this.localizer = new p(this);
+    __publicField(this, "className", "RelativeTime");
+    this.localizer = new Localizer(this);
   }
   get dateISO() {
-    let t = /* @__PURE__ */ new Date(), e = this.getAttribute("date");
-    return this.hasAttribute("date") && (this.isISODate(e) ? e = e : e = +e * 1e3, t = new Date(e)), t.toISOString();
+    let date = /* @__PURE__ */ new Date();
+    let inputDate = this.getAttribute("date");
+    if (this.hasAttribute("date")) {
+      if (this.isISODate(inputDate)) {
+        inputDate = inputDate;
+      } else {
+        inputDate = +inputDate * 1e3;
+      }
+      date = new Date(inputDate);
+    }
+    return date.toISOString();
   }
   static get cssStyleSheet() {
-    return w;
+    return styles;
   }
   static get observedAttributes() {
     return [""];
@@ -24,27 +35,39 @@ class S extends v {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(t, e, l) {
-    let s = document.createDocumentFragment(), a = document.createElement("div");
-    return a.setAttribute("part", "native"), a.classList.add("native-relative-time"), a.innerText = this.getRelativeTimeString(this.dateISO), s.appendChild(a), s;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("div");
+    element.setAttribute("part", "native");
+    element.classList.add("native-relative-time");
+    element.innerText = this.getRelativeTimeString(this.dateISO);
+    fragment.appendChild(element);
+    return fragment;
   }
-  getRelativeTimeString(t, e = navigator.language) {
-    const s = new Date(t).getTime(), a = Math.round((s - Date.now()) / 1e3), o = [
+  getRelativeTimeString(date, lang = navigator.language) {
+    let dateObj = new Date(date);
+    const timeMs = dateObj.getTime();
+    const deltaSeconds = Math.round((timeMs - Date.now()) / 1e3);
+    const cutoffs = [
       60,
       3600,
       86400,
       86400 * 7,
       86400 * 30,
       86400 * 365,
-      1 / 0
-    ], m = ["second", "minute", "hour", "day", "week", "month", "year"], r = o.findIndex((u) => u > Math.abs(a)), c = r ? o[r - 1] : 1;
-    return this.localizer.relativeTime(Math.floor(a / c), m[r], { numeric: "auto" });
+      Infinity
+    ];
+    const units = ["second", "minute", "hour", "day", "week", "month", "year"];
+    const unitIndex = cutoffs.findIndex((cutoff) => cutoff > Math.abs(deltaSeconds));
+    const divisor = unitIndex ? cutoffs[unitIndex - 1] : 1;
+    return this.localizer.relativeTime(Math.floor(deltaSeconds / divisor), units[unitIndex], { numeric: "auto" });
   }
-  isISODate(t) {
-    return /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\+\d{2}:\d{2}|Z)$/.test(t);
+  isISODate(str) {
+    let regex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\+\d{2}:\d{2}|Z)$/;
+    return regex.test(str);
   }
 }
-customElements.get("wj-relative-time") || window.customElements.define("wj-relative-time", S);
+customElements.get("wj-relative-time") || window.customElements.define("wj-relative-time", RelativeTime);
 export {
-  S as RelativeTime
+  RelativeTime
 };

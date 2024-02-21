@@ -1,5 +1,5 @@
 import { default as WJElement, event } from "../wj-element/wj-element.js";
-import { COL_COUNT_CSS_VAR_NAME, ColHeightMap, debounce, DEFAULT_COLS, DEFAULT_DEBOUNCE_MS, DEFAULT_GAP_PX, DEFAULT_MAX_COL_WIDTH, ELEMENT_NODE_TYPE, findSmallestColIndex, GAP_CSS_VAR_NAME, getColCount, getNumberAttribute } from "./service/service.js";
+import { COL_COUNT_CSS_VAR_NAME, debounce, DEFAULT_DEBOUNCE_MS, DEFAULT_MAX_COL_WIDTH, ELEMENT_NODE_TYPE, findSmallestColIndex, GAP_CSS_VAR_NAME, getColCount, getNumberAttribute } from "./service/service.js";
 
 import styles from "./scss/styles.scss?inline";
 

@@ -1,4 +1,6 @@
 import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import '../wj-button/button.js';
+import '../wj-icon/icon.js';
 
 import styles from "./scss/styles.scss?inline";
 

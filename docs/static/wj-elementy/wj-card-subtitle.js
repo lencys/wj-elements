@@ -1,17 +1,18 @@
-var l = Object.defineProperty;
-var c = (r, t, e) => t in r ? l(r, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[t] = e;
-var s = (r, t, e) => (c(r, typeof t != "symbol" ? t + "" : t, e), e);
-import d from "./wj-element.js";
-import "./wj-store.js";
-const m = `:host{--wj-card-subtitle-font-size: 10.5px;--wj-card-subtitle-font-family: var(--wj-font-family-secondary);--wj-card-subtitle-padding: 0;transition:opacity .3s ease;font-family:var(--wj-card-subtitle-font-family);font-size:var(--wj-card-subtitle-font-size);text-transform:uppercase;display:inline-block;letter-spacing:.06em;font-weight:500;margin:0;padding:var(--wj-card-subtitle-padding);line-height:normal;overflow:hidden;text-overflow:ellipsis;filter:alpha(opacity=40)}
-`;
-class u extends d {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+const styles = "/*\n[ WJ Card - Subtitle ]\n*/\n:host {\n  --wj-card-subtitle-font-size: 10.5px;\n  --wj-card-subtitle-font-family: var(--wj-font-family-secondary);\n  --wj-card-subtitle-padding: 0;\n  transition: opacity 0.3s ease;\n  font-family: var(--wj-card-subtitle-font-family);\n  font-size: var(--wj-card-subtitle-font-size);\n  text-transform: uppercase;\n  display: inline-block;\n  letter-spacing: 0.06em;\n  font-weight: 500;\n  margin: 0;\n  padding: var(--wj-card-subtitle-padding);\n  line-height: normal;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  filter: alpha(opacity=40);\n}";
+class CardSubtitle extends WJElement {
   constructor() {
     super();
-    s(this, "className", "CardTitle");
+    __publicField(this, "className", "CardTitle");
   }
   static get cssStyleSheet() {
-    return m;
+    return styles;
   }
   static get observedAttributes() {
     return [];
@@ -19,14 +20,16 @@ class u extends d {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  beforeDraw(e, i, n) {
+  beforeDraw(context, store, params) {
   }
-  draw(e, i, n) {
-    let a = document.createDocumentFragment(), o = document.createElement("slot");
-    return a.appendChild(o), a;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-customElements.get("wj-card-subtitle") || window.customElements.define("wj-card-subtitle", u);
+customElements.get("wj-card-subtitle") || window.customElements.define("wj-card-subtitle", CardSubtitle);
 export {
-  u as CardSubtitle
+  CardSubtitle
 };

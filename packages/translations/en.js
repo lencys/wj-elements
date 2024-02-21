@@ -1,6 +1,6 @@
 import { Localizer } from "../utils/localize.js";
 
-const en = {
+export const en = {
   code: 'en',
   name: 'English',
   dir: 'ltr',

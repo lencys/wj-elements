@@ -1,35 +1,46 @@
-var g = Object.defineProperty;
-var n = (r, e, t) => e in r ? g(r, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : r[e] = t;
-var m = (r, e, t) => (n(r, typeof e != "symbol" ? e + "" : e, t), t);
-import l from "./wj-element.js";
-import "./wj-store.js";
-const d = `img{display:block;width:var(--wj-img-width, 100%);height:var(--wj-img-height, auto);max-width:100%;object-fit:inherit;border-radius:var(--wj-img-border-radius, 0)}
-`;
-class h extends l {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import WJElement from "./wj-element.js";
+const styles = "/*\n[ WJ Img ]\n*/\nimg {\n  display: block;\n  width: var(--wj-img-width, 100%);\n  height: var(--wj-img-height, auto);\n  max-width: 100%;\n  object-fit: inherit;\n  border-radius: var(--wj-img-border-radius, 0);\n}";
+class Img extends WJElement {
   constructor() {
     super();
-    m(this, "className", "Img");
+    __publicField(this, "className", "Img");
   }
   static get cssStyleSheet() {
-    return d;
+    return styles;
   }
   setupAttributes() {
     this.isShadowRoot = "open";
   }
-  draw(t, o, c) {
-    let i = document.createDocumentFragment(), s = document.createElement("img");
-    return s.setAttribute("src", "./demo/assets/img/image-loader.gif"), s.classList.add("lazy-loaded-image", "lazy"), s.setAttribute("alt", this.alt || ""), this.img = s, i.appendChild(s), i;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let img = document.createElement("img");
+    img.setAttribute("src", "./demo/assets/img/image-loader.gif");
+    img.classList.add("lazy-loaded-image", "lazy");
+    img.setAttribute("alt", this.alt || "");
+    this.img = img;
+    fragment.appendChild(img);
+    return fragment;
   }
-  afterDraw(t, o, c) {
-    let i = new IntersectionObserver((s, u) => {
-      s.forEach((a) => {
-        a.isIntersecting && (a.target.src = this.src, this.classList.remove("lazy"), i.unobserve(a.target));
+  afterDraw(context, store, params) {
+    let lazyImageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.src = this.src;
+          this.classList.remove("lazy");
+          lazyImageObserver.unobserve(entry.target);
+        }
       });
     });
-    i.observe(this.img);
+    lazyImageObserver.observe(this.img);
   }
 }
-customElements.get("wj-img") || window.customElements.define("wj-img", h);
+customElements.get("wj-img") || window.customElements.define("wj-img", Img);
 export {
-  h as Img
+  Img
 };

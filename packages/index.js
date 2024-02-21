@@ -9,8 +9,8 @@ import { Localizer } from "./utils/localize.js";
 import { sk } from "./translations/sk.js";
 import { en } from "./translations/en.js";
 
-import { Aside } from "./wj-aside/aside.js";
 import { Animation } from "./wj-animation/animation.js";
+import { Aside } from "./wj-aside/aside.js";
 import { Avatar } from "./wj-avatar/avatar.js";
 import { Badge } from "./wj-badge/badge.js";
 import { Breadcrumb } from "./wj-breadcrumb/breadcrumb.js";
@@ -34,7 +34,6 @@ import { CopyButton } from "./wj-copy-button/copy-button.js";
 import { Dialog } from "./wj-dialog/dialog.js";
 import { Divider } from "./wj-divider/divider.js";
 import { Dropdown } from "./wj-dropdown/dropdown.js";
-import { ExampleElement } from "./wj-example-element/example-element.js";
 import { FileUpload } from "./wj-file-upload/file-upload.js";
 import { FileUploadItem } from "./wj-file-upload-item/file-upload-item.js";
 import { Footer } from "./wj-footer/footer.js";
@@ -57,6 +56,7 @@ import { Menu } from "./wj-menu/menu.js";
 import { MenuButton } from "./wj-menu-button/menu-button.js";
 import { MenuItem } from "./wj-menu-item/menu-item.js";
 import { MenuLabel } from "./wj-menu-label/menu-label.js";
+import { Nav } from "./wj-nav/nav.js";
 import { NavMenu } from "./wj-nav-menu/nav-menu.js";
 import { Option } from "./wj-option/option.js";
 import { Options } from "./wj-options/options.js";
@@ -112,7 +112,6 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   Dialog,
   Divider,
   Dropdown,
-  ExampleElement,
   FileUpload,
   FileUploadItem,
   Footer,
@@ -135,6 +134,7 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   MenuButton,
   MenuItem,
   MenuLabel,
+  Nav,
   NavMenu,
   Option,
   Options,
@@ -153,7 +153,6 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   SplitView,
   Tab,
   TabGroup,
-  // Table,
   TabPanel,
   Textarea,
   Thumbnail,
