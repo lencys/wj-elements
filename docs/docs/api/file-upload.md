@@ -28,7 +28,7 @@ import Basic from '@site/static/usage/v1/file-upload/basic/index.md';
 
 ## Ikona
 
-import Icon from '@site/static/usage/v1/file-upload/Icon/index.md';
+import Icon from '@site/static/usage/v1/file-upload/icon/index.md';
 
 <Icon />
 
