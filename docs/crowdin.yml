@@ -1,9 +1,9 @@
-project_id: '359747'
-api_token_env: 'CROWDIN_PERSONAL_TOKEN'
+project_id: '649946'
+api_token: 'f8c97dda2f090b8e084239ac991ff11c53c13e6f055cadd3b542b97d6ec76df73af0567f4c677ab0'
 preserve_hierarchy: true
 
 files:
-  - source: /i18n/en/**/*
+  - source: /i18n/sk/**/*
     translation: /i18n/%two_letters_code%/**/%original_file_name%
   - source: /docs/**/*
     translation: /i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/**/%original_file_name%

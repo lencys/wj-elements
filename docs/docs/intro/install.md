@@ -23,13 +23,13 @@ Pred pokračovaním sa uistite, že máte v počítači nainštalovaný Node.js.
 Nainštalujte WebJet Elements pomocou npm:
 
 ```shell
-npm install elements
+$ npm install wj-elements
 ```
 
 Ak existovala predchádzajúca inštalácia rozhrania Ionic CLI, bude potrebné ju odinštalovať z dôvodu zmeny názvu balíka.
 
 ```shell
-$ npm uninstall elements
+$ npm uninstall wj-elements
 ```
 
 ## Inštalácia s CDN

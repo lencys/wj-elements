@@ -12,7 +12,7 @@ import CustomProps from '@ionic-internal/component-api/v1/route/custom-props.md'
 import Slots from '@ionic-internal/component-api/v1/route/slots.md';
 
 <head>
-  <title>Route: API Route Component for Ionic Framework Apps</title>
+  <title>Route | API Route Komponent pre WebJET Elements</title>
   <meta name="description" content="Komponenta Route vykreslí zvolený komponent keď sa hodnota v jeho vlastnosti `url` zhoduje s URL v prehliadači." />
 </head>
 
@@ -244,154 +244,24 @@ const confirmDiscardChanges = async () => {
 
 ## Atribúty a Vlastnosti
 
-### afterEnter
-
-|  |  |
-| --- | --- |
-| Popis |  |
-| Atribút | `afterEnter` |
-| Typ | `"fade"` ｜ undefined |
-| Predvolená hodnota | `outlet` |
-
-### afterLeave
-
-|  |  |
-| --- | --- |
-| Popis |  |
-| Atribút | `afterLeave` |
-| Typ | `"fade"` ｜ undefined |
-| Predvolená hodnota | `outlet` |
-
-
-### beforeEnter
-
-|  |  |
-| --- | --- |
-| Popis |  |
-| Atribút | `beforeEnter` |
-| Typ | `"fade"` ｜ undefined |
-| Predvolená hodnota | `outlet` |
-
-### beforeLeave
-
-|  |  |
-| --- | --- |
-| Popis |  |
-| Atribút | `beforeLeave` |
-| Typ | `"fade"` ｜ undefined |
-| Predvolená hodnota | `outlet` |
-
-### breadcrumbName
-
-|  |  |
-| --- | --- |
-| Popis |  |
-| Atribút | `breadcrumbName` |
-| Typ | `"fade"` ｜ undefined |
-| Predvolená hodnota | `outlet` |
-
-### breadcrumbPath
-
-|  |  |
-| --- | --- |
-| Popis |  |
-| Atribút | `breadcrumbPath` |
-| Typ | `"fade"` ｜ undefined |
-| Predvolená hodnota | `outlet` |
-
-### component
-
-|  |  |
-| --- | --- |
-| Popis | Určuje komponentu, ktorý sa vykreslí, keď sa cesta zhoduje s URL prehliadača. Môže obsahovať funkciu, ktorá vráti komponentu. |
-| Atribút | `component` |
-| Typ | `"fade"` ｜ undefined |
-| Predvolená hodnota | `outlet` |
-
-### name
-
-|  |  |
-| --- | --- |
-| Popis | Poskytuje unikátny identifikátor pre cestu |
-| Atribút | `name` |
-| Typ | `"string"` |
-| Predvolená hodnota | `undefined` |
-
-### path
-
-|  |  |
-| --- | --- |
-| Popis |  |
-| Atribút | `path` |
-| Typ | `"fade"` ｜ undefined |
-| Predvolená hodnota | `outlet` |
-
-### permissionsNeeded
-
-|  |  |
-| --- | --- |
-| Popis |  |
-| Atribút | `permissionsNeeded` |
-| Typ | `"fade"` ｜ undefined |
-| Predvolená hodnota | `outlet` |
-
-### permissionCallback
-
-|  |  |
-| --- | --- |
-| Popis |  |
-| Atribút | `permissionCallback` |
-| Typ | `"fade"` ｜ undefined |
-| Predvolená hodnota | `outlet` |
-
-### preserveActions
-
-|  |  |
-| --- | --- |
-| Popis |  |
-| Atribút | `preserveActions` |
-| Typ | `"fade"` ｜ undefined |
-| Predvolená hodnota | `outlet` |
-
-### properties
-
-|  |  |
-| --- | --- |
-| Popis |  |
-| Atribút | `properties` |
-| Typ | `"fade"` ｜ undefined |
-| Predvolená hodnota | `outlet` |
-
-### title
-
-|  |  |
-| --- | --- |
-| Popis |  |
-| Atribút | `title` |
-| Typ | `"fade"` ｜ undefined |
-| Predvolená hodnota | `outlet` |
-
-### url
-
-|  |  |
-| --- | --- |
-| Popis |  |
-| Atribút | `url` |
-| Typ | `"fade"` ｜ undefined |
-| Predvolená hodnota | `outlet` |
-
 <Props />
 
 ## Eventy
+
 <Events />
 
 ## Metódy
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+
+<Methods/>
 
 ## CSS Shadow Parts
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
-## CSS Custom vlastnosti
-Pre tento komponent nie sú k dispozícií žiadne CSS Custom vlastnosti.
+
+<Parts />
+
+## CSS Custom Vlastnosti
+
+<CustomProps />
 
 ## Sloty
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+
+<Slots />

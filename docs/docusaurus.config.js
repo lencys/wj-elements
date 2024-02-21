@@ -122,13 +122,13 @@ module.exports = {
         {
           type: 'doc',
           docId: 'index',
-          label: 'Guide',
+          label: 'Príručka',
           position: 'left',
         },
         {
           type: 'doc',
           docId: 'components',
-          label: 'Components',
+          label: 'Komponenty',
           position: 'left',
         },
         {
@@ -159,13 +159,13 @@ module.exports = {
           // ],
           className: 'icon-link language navbar__item',
         },
-        {
-          href: 'https://twitter.com/Ionicframework',
-          position: 'right',
-          className: 'icon-link icon-link-mask icon-link-twitter',
-          'aria-label': 'Twitter',
-          target: '_blank',
-        },
+        // {
+        //   href: 'https://twitter.com/Ionicframework',
+        //   position: 'right',
+        //   className: 'icon-link icon-link-mask icon-link-twitter',
+        //   'aria-label': 'Twitter',
+        //   target: '_blank',
+        // },
         {
           href: 'https://ionic.link/discord',
           position: 'right',

@@ -265,6 +265,18 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
+<a href="api/masonry">
+<wj-card href="api/masonry">
+  <wj-card-header>
+      <wj-icon name="layout-dashboard" size="large"></wj-icon>
+      <wj-card-title>Masonry</wj-card-title>
+  </wj-card-header>
+  <wj-card-content>
+  <p>Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a vyvolá sa napríklad kliknutím na tlačidlo.</p>
+  </wj-card-content>
+</wj-card>
+</a>
+
 <a href="api/menu">
 <wj-card href="api/menu">
   <wj-card-header>

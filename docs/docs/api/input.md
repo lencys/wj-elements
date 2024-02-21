@@ -1,9 +1,15 @@
 ---
 title: "Input"
 ---
+import Props from '@ionic-internal/component-api/v1/input/props.md';
+import Events from '@ionic-internal/component-api/v1/input/events.md';
+import Methods from '@ionic-internal/component-api/v1/input/methods.md';
+import Parts from '@ionic-internal/component-api/v1/input/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/input/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/input/slots.md';
 
 <head>
-  <title>Input: Custom Input Element</title>
+  <title>Input: Rozšírenie štandardného Input elementu</title>
   <meta name="description" content="Input element rozširuje možnosti štandardného HTML inputu pokročilými funkciami a možnosťami prispôsobenia. " />
 </head>
 
@@ -58,133 +64,24 @@ import Search from '@site/static/usage/v1/input/search/index.md';
 
 ## Atribúty a Vlastnosti
 
-### custom-error-display
-
-|  |  |
-| --- | --- |
-| Popis | Aktivuje možnosť zobrazenia vlastnej chybovej hlášky. Pre jej nastavenie slúži vlastnosť `message` |
-| Atribút | `custom-error-display` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### disabled
-
-|  |  |
-| --- | --- |
-| Popis | Deaktivuje input |
-| Atribút | `disabled` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### label
-
-|  |  |
-| --- | --- |
-| Popis | Popisný text inputu |
-| Atribút | `label` |
-| Typ | `string` |
-| Predvolená hodnota | `undefined` |
-
-### message
-
-|  |  |
-| --- | --- |
-| Popis | Text vlastnej chybovej hlášky |
-| Atribút | `message` |
-| Typ | `string` |
-| Predvolená hodnota | `undefined` |
-
-### placeholder
-
-|  |  |
-| --- | --- |
-| Popis | Zástupný text inputu |
-| Atribút | `placeholder` |
-| Typ | `string` |
-| Predvolená hodnota | `undefined` |
-
-### readonly
-
-|  |  |
-| --- | --- |
-| Popis | Deaktivuje možnosť písania do inputu |
-| Atribút | `readonly` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### required
-
-|  |  |
-| --- | --- |
-| Popis | Nastaví input ako povinný pre vyplnenie |
-| Atribút | `required` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### type
-
-|  |  |
-| --- | --- |
-| Popis | Nastaví typ inputu. Podporované sú textové typy inputov ako napríklad `text`, `password`, `email`, `number`, `search`, `tel`, `url` |
-| Atribút | `type` |
-| Typ | `text`, `password`, `email`, `number`, `search`, `tel`, `url` |
-| Predvolená hodnota | `text` |
-
-### validate-on-change
-
-|  |  |
-| --- | --- |
-| Popis | Nastaví validáciu obsahu inputu po každej vykonanej zmene v jeho obsahu |
-| Atribút | `validate-on-change` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### value
-
-|  |  |
-| --- | --- |
-| Popis | Predvyplní obsah inputu zvolenou hodnotou |
-| Atribút | `value` |
-| Typ | `string` |
-| Predvolená hodnota | `undefined` |
-
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
-## CSS Shadow Party
+## CSS Shadow Parts
 
-| Názov       | Popis                                    |
-|-------------|------------------------------------------|
-| `input`     | Odkazuje na `div` element vo vnútri Inputu |
-| `native`    | Odkazuje na `input` element vo vnútri Inputu |
-
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Názov       | Popis                                  |
-|----------------------------------------|-------------|
-| `--wj-input-background-color`          |  Farba pozadia Inputu                        |
-| `--wj-input-border-color`              |  Farba okrajov Inputu                        |
-| `--wj-input-border-color-focus`        |  Farba okrajov Inputu pri focuse             |
-| `--wj-input-border-radius`             |  Zaoblenie okrajov Inputu                    |
-| `--wj-input-border-style`              |  Štýl okrajov Inputu                         |
-| `--wj-input-border-width`              |  Šírka okrajov Inputu                        |
-| `--wj-input-color`                     |  Farba textu Inputu                          |
-| `--wj-input-color-invalid`             |  Farba textu Inputu ak je neplatný           |
-| `--wj-input-font-family`               |  Font textu Inputu                           |
-| `--wj-input-line-height`               |  Výška riadka Inputu                         |
-| `--wj-input-margin-bottom`             |  Spodná medzera Inputu                       |
-| `--wj-input-slot-padding-inline`       |  Horizontálná medzera medzi slotmi Inputu    |
+<CustomProps />
 
 ## Sloty
 
-| Názov | Popis |
-| --- | --- |
-| `end` | Obsah sa umiestni vpravo od inputu |
-| `start` | Obsah sa umiestni vľavo od inputu |
+<Slots />

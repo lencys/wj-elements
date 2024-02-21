@@ -58,5 +58,13 @@
   "item.label.Enterprise Advisory": {
     "message": "Enterprise Advisory",
     "description": "Navbar item with label Enterprise Advisory"
+  },
+  "item.label.Príručka": {
+    "message": "Príručka",
+    "description": "Navbar item with label Príručka"
+  },
+  "item.label.Komponenty": {
+    "message": "Komponenty",
+    "description": "Navbar item with label Komponenty"
   }
 }

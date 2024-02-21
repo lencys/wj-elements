@@ -10,8 +10,8 @@ import CustomProps from '@ionic-internal/component-api/v1/router-link/custom-pro
 import Slots from '@ionic-internal/component-api/v1/router-link/slots.md';
 
 <head>
-  <title>Router Link | Navigating The ion-router-link Component</title>
-  <meta name="description" content="Use the ion-router-link component to navigate to a specified link. The router link can accept an href for location and a direction for the transition animation." />
+  <title>Router Link | Komponent na router navigáciu</title>
+  <meta name="description" content="Router link komponenta slúži ako prispôsobiteľný link navrhnutý na použitie v navigácii naprieč aplikáciou." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -24,42 +24,24 @@ Pre viac informácií o použití Router Link prejdite na stránku [Router](./ro
 
 ## Atribúty a Vlastnosti
 
-
-### active-class
-
-|  |  |
-| --- | --- |
-| Popis | Nastaví elementu triedu `active` pri aktívnom stave. |
-| Atribút | `active-class` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### className
-
-|  |  |
-| --- | --- |
-| Popis | Nastaví elementu triedu. |
-| Atribút | `className` |
-| Typ | `string` ｜`RouterLink` |
-| Predvolená hodnota | `RouterLink` |
-
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
-## CSS Custom vlastnosti
-Pre tento komponent nie sú k dispozícií žiadne CSS Custom vlastnosti.
+## CSS Custom Vlastnosti
 
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

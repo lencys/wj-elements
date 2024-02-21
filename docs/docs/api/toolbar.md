@@ -1,6 +1,12 @@
 ---
 title: "Toolbar"
 ---
+import Props from '@ionic-internal/component-api/v1/toolbar/props.md';
+import Events from '@ionic-internal/component-api/v1/toolbar/events.md';
+import Methods from '@ionic-internal/component-api/v1/toolbar/methods.md';
+import Parts from '@ionic-internal/component-api/v1/toolbar/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/toolbar/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/toolbar/slots.md';
 
 <head>
   <title>Toolbar | Flexibilný kontajner určený na zobrazovanie rôzneho obsahu organizovaným spôsobom</title>
@@ -33,34 +39,26 @@ import DynamicAction from '@site/static/usage/v1/toolbar/dynamic-action/index.md
 
 <DynamicAction />
 
+## Atribúty a Vlastnosti
+
+<Props />
+
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
-## CSS Shadow Party
+## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow party.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Názov                           | Popis       |
-|---------------------------------|-------------|
-| `--wj-toolbar-backcolor`        | Nastavuje farbu pozadia toolbaru. |
-| `--wj-toolbar-border-color`     | Určuje farbu okrajov toolbaru. |
-| `--wj-toolbar-min-height`       | Určuje minimálnu výšku toolbaru. |
-| `--wj-toolbar-padding-bottom`   | Určuje spodné vnútorné odsadenie toolbaru. |
-| `--wj-toolbar-padding-inline`   | Určuje vnútorné horizontálne odsadenie toolbaru. |
-| `--wj-toolbar-padding-top`      | Určuje horné vnútorné odsadenie toolbaru. |
-| `--wj-toolbar-top`              | Určuje pozíciu toolbaru z hora pri použití `sticky`. |
+<CustomProps />
 
 ## Sloty
 
-| Slot        | Popis                                                             |
-| ----------- | ----------------------------------------------------------------- |
-| `end`       | Obsah sa umiestni vpravo od textu tlačidla v LTR a vľavo v RTL.   |
-| `start`     | Obsah je umiestnený vľavo od textu tlačidla v LTR a vpravo v RTL. |
-
+<Slots />

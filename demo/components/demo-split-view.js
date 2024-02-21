@@ -29,7 +29,7 @@ template.innerHTML = `<h1>Split View</h1>
     
     <!-- VERTICAL -->
 
-    <h2>Verical</h2>
+    <h2>Vertical</h2>
     <div class="playground">
       <div class="content">
         <wj-split-view vertical>

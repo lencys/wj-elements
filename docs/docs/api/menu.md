@@ -1,9 +1,15 @@
 ---
 title: "Menu"
 ---
+import Props from '@ionic-internal/component-api/v1/menu/props.md';
+import Events from '@ionic-internal/component-api/v1/menu/events.md';
+import Methods from '@ionic-internal/component-api/v1/menu/methods.md';
+import Parts from '@ionic-internal/component-api/v1/menu/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/menu/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/menu/slots.md';
 
 <head>
-  <title>Menu: Element pre zobrazenie menu</title>
+  <title>Menu | Element pre zobrazenie menu</title>
   <meta name="description" content="Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo." />
 </head>
 
@@ -37,51 +43,24 @@ import Inset from '@site/static/usage/v1/menu/inset/index.md';
 
 ## Atribúty a Vlastnosti
 
-### active
-
-|  |  |
-| --- | --- |
-| Popis | Ak `true`, aktivuje menu a zviditeľní ho pridaním `display: "flex"` |
-| Atribút | `active` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### collapse
-
-|  |  |
-| --- | --- |
-| Popis | Ak `true`, menu je v stave zbalené  |
-| Atribút | `collapse` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Vlasnosť   | Popis       |
-|-----------|-------------|
-| `--wj-menu-background` | Farba pozadia elementu |
-| `--wj-menu-border-color` | Farba okrajov elementu |
-| `--wj-menu-border-radius` | Zaoblenie okrajov elementu |
-| `--wj-menu-border-style` | Štýl zaoblenia elementu |
-| `--wj-menu-border-width` | Šírka okrajov elementu |
-| `--wj-menu-padding-bottom` | Spodné vnútorné odsadenie elementu |
-| `--wj-menu-padding-inline` | Vnútorné odsadenie elementu vľavo a vpravo |
-| `--wj-menu-padding-top` | Horné vnútorné odsadenie elementu  |
-| `--wj-menu-z-index` | Z-index elementu |
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

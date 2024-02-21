@@ -1,6 +1,12 @@
 ---
 title: "Relative Time"
 ---
+import Props from '@ionic-internal/component-api/v1/relative-time/props.md';
+import Events from '@ionic-internal/component-api/v1/relative-time/events.md';
+import Methods from '@ionic-internal/component-api/v1/relative-time/methods.md';
+import Parts from '@ionic-internal/component-api/v1/relative-time/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/relative-time/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/relative-time/slots.md';
 
 <head>
   <title>Reorder | ion-reorder: Drag and Drop Icon to Reorder Items</title>
@@ -19,3 +25,27 @@ Komponent RelativeTime je element slúžiaci na zobrazenie relatívneho času na
 import Basic from '@site/static/usage/v1/relative-time/basic/index.md';
 
 <Basic />
+
+## Atribúty a Vlastnosti
+
+<Props />
+
+## Eventy
+
+<Events />
+
+## Metódy
+
+<Methods/>
+
+## CSS Shadow Parts
+
+<Parts />
+
+## CSS Custom Vlastnosti
+
+<CustomProps />
+
+## Sloty
+
+<Slots />

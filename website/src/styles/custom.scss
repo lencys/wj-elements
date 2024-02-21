@@ -42,7 +42,6 @@
   --z-backdrop: 1100;
   //#endregion
 }
-
 html[data-theme='light'] {
   --token-primary-bg-c: #fff;
   --token-secondary-bg-c: #fff;
@@ -112,7 +111,6 @@ a {
 }
 ul.table-of-contents {
   a {
-    
     &:hover {
       color: var(--ifm-link-hover-color)!important;
     }

@@ -1,5 +1,19 @@
 [
   {
+    "name": "v7.7.2",
+    "published_at": "February 14 2024",
+    "tag_name": "v7.7.2",
+    "type": "patch",
+    "version": "7.7.2"
+  },
+  {
+    "name": "v7.7.1",
+    "published_at": "February 7 2024",
+    "tag_name": "v7.7.1",
+    "type": "patch",
+    "version": "7.7.1"
+  },
+  {
     "name": "v7.7.0",
     "published_at": "January 31 2024",
     "tag_name": "v7.7.0",
@@ -54,12 +68,5 @@
     "tag_name": "v7.6.1",
     "type": "patch",
     "version": "7.6.1"
-  },
-  {
-    "name": "v7.6.0",
-    "published_at": "December 6 2023",
-    "tag_name": "v7.6.0",
-    "type": "minor",
-    "version": "7.6.0"
   }
 ]

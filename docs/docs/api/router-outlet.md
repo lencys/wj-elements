@@ -1,8 +1,17 @@
 ---
 title: "Router Outlet"
 ---
-
 import Props from '@ionic-internal/component-api/v1/router-outlet/props.md';
+import Events from '@ionic-internal/component-api/v1/router-outlet/events.md';
+import Methods from '@ionic-internal/component-api/v1/router-outlet/methods.md';
+import Parts from '@ionic-internal/component-api/v1/router-outlet/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/router-outlet/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/router-outlet/slots.md';
+
+<head>
+  <title>Router | Router Komponent navigácie v rámci webových aplikácií</title>
+  <meta name="description" content="Komponent Router je nástroj určený na navigáciu v rámci webových aplikácií. Táto komponenta podporuje komplexné navigačné scenáre a lazy-load, čím zvyšuje výkon aplikácie a používateľský zážitok." />
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
@@ -30,25 +39,24 @@ For handling Router Guards, the older `ionViewCanEnter` and `ionViewCanLeave` ha
 
 ## Atribúty a Vlastnosti
 
-### animation
-
-|  |  |
-| --- | --- |
-| Popis | Určuje typ animácie, ktorá sa má použiť na child elementy počas ich zobrazenia a odchodu z obrazovky. |
-| Atribút | `animation` |
-| Typ | `"fade"` ｜ undefined |
-| Predvolená hodnota | `outlet` |
+<Props />
 
 ## Eventy
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+
+<Events />
 
 ## Metódy
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+
+<Methods/>
 
 ## CSS Shadow Parts
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
-## CSS Custom vlastnosti
-Pre tento komponent nie sú k dispozícií žiadne CSS Custom vlastnosti.
+
+<Parts />
+
+## CSS Custom Vlastnosti
+
+<CustomProps />
 
 ## Sloty
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+
+<Slots />

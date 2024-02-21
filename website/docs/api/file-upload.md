@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponent FileUpload poskytuje univerzálnu funkciu nahrávania súborov pre webové aplikácie. Podporuje prispôsobiteľné atribúty, ako sú povolené typy súborov, veľkosť častí alebo tiež maximálnu veľkosť súboru, spolu s metódami drag-and-drop a tradičným výberom súborov.
+Komponent FileUpload poskytuje univerzálnu funkciu nahrávania súborov pre webové aplikácie. Podporuje prispôsobiteľné atribúty, ako sú povolené typy súborov, veľkosť častí alebo tiež maximálnu veľkosť súboru, spolu s metódami drag-and-drop, tradičným výberom súborov a podporuje lokalizáciu.
 
 ## Základné použitie
 

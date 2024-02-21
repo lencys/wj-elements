@@ -1,17 +1,23 @@
 ---
 title: "Copy button"
 ---
+import Props from '@ionic-internal/component-api/v1/copy-button/props.md';
+import Events from '@ionic-internal/component-api/v1/copy-button/events.md';
+import Methods from '@ionic-internal/component-api/v1/copy-button/methods.md';
+import Parts from '@ionic-internal/component-api/v1/copy-button/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/copy-button/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/copy-button/slots.md';
 
 <head>
-  <title>Copy button: WebJET Element umožnuje skopírovať obsah do clipboardu</title>
-  <meta name="description" content="Copy button umožnuje jedným kliknutím skopírovať obsah do clipboardu. Podporované sú `input`, `textarea`, `wj-input`, `wj-label` a `a` element. " />
+  <title>Copy button | Skopírovanie do clipboardu na jeden klik</title>
+  <meta name="description" content="Copy button umožňuje jedným kliknutím skopírovať obsah do clipboardu. Podporované sú `input`, `textarea`, `wj-input`, `wj-label` a `a` element. " />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Copy button umožnuje jedným kliknutím skopírovať želaný obsah do clipboardu. Podporované sú `input`, `textarea`, `wj-input`, `wj-label` a `a` element. 
+Copy button umožňuje jedným kliknutím skopírovať želaný obsah do clipboardu. Podporované sú `input`, `textarea`, `wj-input`, `wj-label` a `a` element. 
 
 ## Základné použitie
 
@@ -53,49 +59,24 @@ import Hyperlink from '@site/static/usage/v1/copy-button/hyperlink/index.md';
 
 ## Atribúty a Vlastnosti
 
-### for
-
-|  |  |
-| --- | --- |
-| Popis | Id elementu, ktorého obsah sa skopíruje. |
-| Atribút | `for` |
-| Typ | `string` |
-| Predvolená hodnota | `undefined` |
-
-### label
-
-|  |  |
-| --- | --- |
-| Popis | Určuje hodnotu tooltipu. |
-| Atribút | `label` |
-| Typ | `string` |
-| Predvolená hodnota | `undefined` |
-
-### label-success
-
-|  |  |
-| --- | --- |
-| Popis | Určuje hodnotu tooltipu po skopírovaní hodnoty. |
-| Atribút | `label-success` |
-| Typ | `string` |
-| Predvolená hodnota | `undefined` |
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
-## CSS Shadow Party
+## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícii žiadne shadow party.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú k dispozícii žiadne CSS custom vlastnosti.
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

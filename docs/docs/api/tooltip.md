@@ -1,9 +1,15 @@
 ---
 title: "Tooltip"
 ---
+import Props from '@ionic-internal/component-api/v1/tooltip/props.md';
+import Events from '@ionic-internal/component-api/v1/tooltip/events.md';
+import Methods from '@ionic-internal/component-api/v1/tooltip/methods.md';
+import Parts from '@ionic-internal/component-api/v1/tooltip/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/tooltip/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/tooltip/slots.md';
 
 <head>
-  <title>Tooltip : Vyskakovacej nápovedy pri nájazde myšou</title>
+  <title>Tooltip |  Vyskakovacia nápoveda pri nájazde myšou</title>
   <meta name="description" content="Element Tooltip slúži na zobrazovanie vyskakovacej nápovedy pri nájazde myšou a je ho možné pripojiť k rôznym elementom webovej stránky. Je ľahko prispôsobiteľný pomocou atribútov pre obsah a umiestnenie." />
 </head>
 
@@ -19,71 +25,26 @@ import Basic from '@site/static/usage/v1/tooltip/basic/index.md';
 
 <Basic />
 
-
 ## Atribúty a Vlastnosti
 
-### active
-
-|  |  |
-| --- | --- |
-| Popis | Ak `true`, toggle je aktivovaný |
-| Atribút | `active` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### content
-
-|  |  |
-| --- | --- |
-| Popis | Ak `true`, s toggle elementom nie je možné interagovať |
-| Atribút | `content` |
-| Typ | `boolean` |
-| Predvolená hodnota | `false` |
-
-### offset
-
-|  |  |
-| --- | --- |
-| Popis | Určuje veľkosť odsadenia tooltip elementu v pixeloch.|
-| Atribút | `offset` |
-| Typ | `number` |
-| Predvolená hodnota | `0` |
-
-### placement
-
-|  |  |
-| --- | --- |
-| Popis | Určuje pozíciu tooltip elementu. Predvolené možnosti sú: `top`, `bottom`, `left` a `right`. |
-| Atribút | `placement` |
-| Typ | `bottom`, `left`, `right`, `top` |
-| Predvolená hodnota | `top` |
-
+<Props />
 
 ## Eventy
 
-| Event             | Popis                                  |
-|-------------------|----------------------------------------|
-| `mouseenter`      | Vyvolaný pri ukázaní na element myšou.     |
-| `mouseleave`      | Vyvolaný keď myš opustí element.     |
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
-## CSS Shadow Party
+## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
-
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Názov                      | Popis       |
-|----------------------------|-------------|
-| `--arrow-size`          | Určuje veľkosť šípky tooltipu |
-| `--arrow-color`         | Určuje farbu šípky tooltipu |
-
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
-
+<Slots />

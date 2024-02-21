@@ -9,13 +9,12 @@ import NewColorGenerator from '@components/page/theming/NewColorGenerator';
 import CodeColor from '@components/page/theming/CodeColor';
 
 <head>
-  <title>Ionic CSS Color Component: Style or Change Default App Colors</title>
+  <title>Farby: Prispôsobte si farby palety alebo vytvorte novú</title>
   <meta
     name="description"
-    content="Ionic has nine default colors that can be used to change the color of many components. Learn how to utilize Ionic CSS color properties to style your apps."
+    content="Farebná paleta Elements sa skladá zo 7 predvolených farieb, ktoré si je možné jednoducho upraviť. Paleta je navrhnutá tak aby spĺňala aktuálne trendy a zároveň zabezpečovala prístupnosť. Používatelia si môžu prispôsobiť jej farby pomocou CSS premenných, čo im umožňuje zmeniť predvolené farby alebo pridať vlastné."
   />
 </head>
-
 
 Farebná paleta Elements sa skladá zo 7 predvolených farieb, ktoré si je možné jednoducho upraviť. Paleta je navrhnutá tak aby spĺňala aktuálne trendy a zároveň zabezpečovala prístupnosť. Používatelia si môžu prispôsobiť jej farby pomocou CSS premenných, čo im umožňuje zmeniť predvolené farby alebo pridať vlastné.
 

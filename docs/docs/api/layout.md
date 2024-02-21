@@ -1,17 +1,23 @@
 ---
 title: "Layout"
 ---
+import Props from '@ionic-internal/component-api/v1/layout/props.md';
+import Events from '@ionic-internal/component-api/v1/layout/events.md';
+import Methods from '@ionic-internal/component-api/v1/layout/methods.md';
+import Parts from '@ionic-internal/component-api/v1/layout/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/layout/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/layout/slots.md';
 
 <head>
-  <title>Layout v Elements</title>
-  <meta name="description" content="Layout v Elements sa skladá z troch komponentov Header, Aside a Footer. Pomocou nich je možné jednoducho vyskladať základné rozvrhnutie webstránky." />
+  <title>Layout | Element umožňujúci jednoducho zostaviť layout stránky</title>
+  <meta name="description" content="Layout v Elements sa skladá z troch komponentov Header, Aside a Footer. Pomocou nich je možné jednoducho zostaviť základné rozvrhnutie webstránky." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-**Elements** umožnuje jednoduché vyskladanie rozvrhnutia pomocou 4 základných elementov: [Container](./container), [Header](./header), [Aside](./aside) a [Footer](./footer). V prípade komplexnejších rozvhnutí je možné použiť tiež systém [Grid](./gid).
+**Elements** umožňuje si jednoducho zostaviť rozvrhnutie stránok pomocou 4 základných elementov: [Container](./container), [Header](./header), [Aside](./aside) a [Footer](./footer). V prípade komplexnejších rozvrhnutí je možné použiť tiež systém [Grid](./gid).
 
 ## Príklady použitia
 
@@ -25,24 +31,24 @@ import Basic from '@site/static/usage/v1/layout/basic/index.md';
 
 ## Atribúty a Vlastnosti
 
-Pre tento komponent nie sú k dispozícii žiadne Atribúty a vlastnosti.
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

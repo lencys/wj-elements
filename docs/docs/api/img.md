@@ -1,9 +1,15 @@
 ---
 title: "Image"
 ---
+import Props from '@ionic-internal/component-api/v1/image/props.md';
+import Events from '@ionic-internal/component-api/v1/image/events.md';
+import Methods from '@ionic-internal/component-api/v1/image/methods.md';
+import Parts from '@ionic-internal/component-api/v1/image/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/image/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/image/slots.md';
 
 <head>
-  <title>Image Element pre lazy loading obrázkov</title>
+  <title>Image Element | Element pre zobrazovanie obrázkov</title>
   <meta name="description" content="Element Image pridáva obrázkom funkciu lazyload a počas načítavania zobrazuje zástupnú ikonu (placeholder) v podobe animovaného obrázka." />
 </head>
 
@@ -21,40 +27,24 @@ import Basic from '@site/static/usage/v1/img/basic/index.md';
 
 ## Atribúty a Vlastnosti
 
-### alt
-
-|  |  |
-| --- | --- |
-| Popis | Slúži ako alternatívny text na opis obsahu obrázka, ktorý sa zobrazí v prípade, ak sa obrázok nenačíta. Používajú ho tiež čítačky obrazovky. |
-| Atribút | `alt` |
-| Typ | `string` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
-
-### src
-
-|  |  |
-| --- | --- |
-| Popis | Určuje zdrojovú adresu URL súboru obrázka, ktorý sa má zobraziť na webovej stránke. |
-| Atribút | `src` |
-| Typ | `string` ｜ `undefined` |
-| Predvolená hodnota | `undefined` |
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú k dispozícii žiadne CSS custom vlastnosti.
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

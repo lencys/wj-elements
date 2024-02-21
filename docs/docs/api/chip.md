@@ -1,6 +1,17 @@
 ---
 title: "Chip"
 ---
+import Props from '@ionic-internal/component-api/v1/chip/props.md';
+import Events from '@ionic-internal/component-api/v1/chip/events.md';
+import Methods from '@ionic-internal/component-api/v1/chip/methods.md';
+import Parts from '@ionic-internal/component-api/v1/chip/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/chip/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/chip/slots.md';
+
+<head>
+  <title>Chip | Malý univerzálny vizuálny blok</title>
+  <meta name="description" content="Komponent Chip je univerzálny element, ktorý predstavuje malý vizuálny blok obsahujúci rôzne ďalšie elementy, ako napríklad avatary, text a ikony. Ponúka možnosti prispôsobenia farieb, stavov a ďalšie." />
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
@@ -36,51 +47,26 @@ import CSSProps from '@site/static/usage/v1/chip/theming/css-properties/index.md
 
 <CSSProps />
 
-## Vlastnosti
+## Atribúty a Vlastnosti
 
-### **active**
+<Props />
 
-| Popis | Ak true, do elementu sa vloží ikona fajky (check) |
-| --- | --- |
-| Atribút | active |
-| Typ | boolean |
-| Predvolená hodnota | false |
+## Eventy
 
-### color
+<Events />
 
-| Popis | Farba, ktorá sa má použiť z palety farieb aplikácie.                                      |
-| --- |-------------------------------------------------------------------------------------------|
-| Atribút | color                                                                                     |
-| Typ | "danger" ｜ "dark" ｜ "light" ｜ "primary" ｜ "secondary" ｜ "success" ｜ "warning" ｜ undefined |
-| Predvolená hodnota | “primary”                                                                                 |
+## Metódy
 
-### disabled[](#disabled)
+<Methods/>
 
-| Popis | Ak true, používateľ nemôže s elementom interagovať. |
-| --- | --- |
-| Atribút | disabled |
-| Typ | boolean |
-| Predvolená hodnota | false |
+## CSS Shadow Parts
 
-## Eventy[](#events)
-
-Pre tento komponent nie sú k dispozícii žiadne verejné eventy.
-
-## Metódy[](#methods)
-
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
-
-## CSS Shadow Parts[](#css-shadow-parts)
-
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Name | Description |
-| --- | --- |
-| --background | Pozadie elementu chip |
-| --color | Farba elementu chip |
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

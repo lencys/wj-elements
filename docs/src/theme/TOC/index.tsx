@@ -37,17 +37,17 @@ export default function TOCWrapper(props: TOCProps): JSX.Element {
 
   return (
     <div className="toc-wrapper">
-      <h2>Contents</h2>
+      <h2>Obsah</h2>
       <TOC {...props} />
-      <EditThisPage editUrl={metadata.editUrl} />
-      {activeAd && (
+      {/* <EditThisPage editUrl={metadata.editUrl} /> */}
+      {/*activeAd && (
         <div className="internal-ad">
           <a
             href={activeAd.ad_url.url}
             target={activeAd.ad_url.target}
             // onClick={e => trackClick(activeAd.ad_id, e)}
           >
-            {/* Reponsive image since Prismic supports it out of the box */}
+            {/* Reponsive image since Prismic supports it out of the box }
             <picture>
               <source media="(min-width: 37.5em)" src={activeAd.ad_image.url} />
               <source src={activeAd.ad_image['1x'].url} />
@@ -62,7 +62,7 @@ export default function TOCWrapper(props: TOCProps): JSX.Element {
             <PrismicRichText field={activeAd.ad_copy} />
           </a>
         </div>
-      )}
+      )*/}
     </div>
   );
 }

@@ -1,42 +1,48 @@
 ---
 title: "Main"
 ---
+import Props from '@ionic-internal/component-api/v1/main/props.md';
+import Events from '@ionic-internal/component-api/v1/main/events.md';
+import Methods from '@ionic-internal/component-api/v1/main/methods.md';
+import Parts from '@ionic-internal/component-api/v1/main/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/main/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/main/slots.md';
 
 <head>
-  <title>Layout: Main element</title>
-  <meta name="description" content="Main je prvok na tvorbu layoutov a zobrazuje sa vedľa [Main](./main) elementu. Používa sa vačšinou na zobrazenie hlavného obsahu." />
+  <title>Main | Element určený na tvorbu layoutov</title>
+  <meta name="description" content="Main je prvok na tvorbu layoutov a zobrazuje sa vedľa [Aside](./aside) elementu. Používa sa väčšinou na zobrazenie hlavného obsahu." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Main je prvok na tvorbu layoutov a zobrazuje sa vedľa [Main](./main) elementu. Používa sa vačšinou na zobrazenie hlavného obsahu.
+Main je prvok na tvorbu layoutov a zobrazuje sa vedľa [Aside](./aside) elementu. Používa sa väčšinou na zobrazenie hlavného obsahu.
 
 ## Príklady použitia
 
-Pre informácie o použítí **Main** elementu sa presuňte do dokumentácie [Layoutu](./layout).
+Pre informácie o použití **Main** elementu sa presuňte do dokumentácie [Layoutu](./layout).
 
 ## Atribúty a Vlastnosti
 
-Pre tento komponent nie sú k dispozícii žiadne Atribúty a vlastnosti.
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

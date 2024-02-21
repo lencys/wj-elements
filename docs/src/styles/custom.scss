@@ -26,7 +26,7 @@
 
 :root {
   --ifm-background-color: var(--token-primary-bg-c);
-
+  --ifm-card-shadow: initial;
   --ifm-navbar-link-hover-color: initial;
   --ifm-navbar-padding-vertical: 0;
   --ifm-navbar-item-padding-vertical: 0;
@@ -41,13 +41,15 @@
   --z-sidebar: 2000;
   --z-backdrop: 1100;
   //#endregion
+
+  scroll-behavior: smooth;
 }
 
 html[data-theme='light'] {
   --token-primary-bg-c: #fff;
   --token-secondary-bg-c: #fff;
 
-  --ifm-link-color: var(--c-blue-90);
+  --ifm-link-color: #ae40fd;
   //rgb value is c-blue-90
   --ifm-link-hover-color: rgba(27, 109, 255, 0.8);
 
@@ -61,13 +63,15 @@ html[data-theme='light'] {
 
   --ifm-code-background: var(--c-indigo-10);
   --ifm-font-color-base: var(--c-carbon-90);
+
+  --wj-box-shadow-large: var(--c-carbon-10);
 }
 
 html[data-theme='dark'] {
   --token-primary-bg-c: #03060b;
   --token-secondary-bg-c: #13171c;
 
-  --ifm-link-color: var(--c-blue-70);
+  --ifm-link-color: #ae40fd;
   //rgb value is c-blue-70
   --ifm-link-hover-color: rgba(77, 141, 255, 0.8);
 
@@ -84,6 +88,9 @@ html[data-theme='dark'] {
   --ifm-dropdown-background-color: var(--token-secondary-bg-c);
 
   --ifm-menu-link-sublist-icon-filter: invert(100%);
+  --wj-box-shadow-large: var(--token-primary-bg-c);
+  --wj-card-background: var(--ifm-menu-color-background-active);
+
 }
 
 html {
@@ -129,7 +136,7 @@ figure {
   margin: 0;
 }
 
-figure > * {
+figure>* {
   display: block;
   margin: 0 auto;
 }
@@ -187,4 +194,52 @@ iframe {
 
 .cordova-ee-card p {
   margin: 1rem 0 0;
+}
+
+docs-cards {
+  wj-icon {
+    padding: 12px;
+    --wj-icon-size: 32px;
+    margin-bottom: 1rem;
+    color: #fff;
+    border-radius: 50%;
+    background: rgb(63, 94, 251);
+    background: linear-gradient(90deg, #3A0087ee 0%, #AE40FDee 100%);
+  }
+
+  wj-icon svg {
+    stroke-width: 1px;
+  }
+  wj-card {
+    border-radius: 10px;
+    --wj-color-base: var(--token-secondary-bg-c);
+    box-shadow: var(--wj-box-shadow-large) 0 4px 16px;
+    background-color: var(--wj-card-background);
+
+  }
+  wj-card-title {
+    color: var(--markdown-text-intro-c);
+  }
+  wj-card-content p {
+    font-size: 0.75rem!important;
+    color: var(--markdown-text-intro-c);
+  }
+  wj-card-content p {
+    font-size: 0.75rem !important;
+  }
+}
+ul.table-of-contents {
+  a.table-of-contents__link--active {
+  color: var(--ifm-link-color) !important;
+  }
+  a.table-of-contents__link:hover {
+    color: var(--ifm-link-color) !important;
+  }
+}
+.DocSearch-Search-Icon, .DocSearch-Reset {
+  color: var(--docsearch-text-color)!important;
+}
+.DocSearch-Logo svg path, .DocSearch-Logo svg rect {
+  fill: var(--ifm-link-color);
+
 }

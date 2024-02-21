@@ -1,6 +1,12 @@
 ---
 title: "ButtonGroup"
 ---
+import Props from '@ionic-internal/component-api/v1/button-group/props.md';
+import Events from '@ionic-internal/component-api/v1/button-group/events.md';
+import Methods from '@ionic-internal/component-api/v1/button-group/methods.md';
+import Parts from '@ionic-internal/component-api/v1/button-group/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/button-group/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/button-group/slots.md';
 
 
 <head>
@@ -46,7 +52,7 @@ import Icons from '@site/static/usage/v1/button-group/icons/index.md';
 
 ## Delené tlačidlá
 
-ButtonGroup umožnuje zobraziť aj delené tlačidlo s viacerými funkciami.
+ButtonGroup umožňuje zobraziť aj delené tlačidlo s viacerými funkciami.
 
 import SplitButtons from '@site/static/usage/v1/button-group/split-buttons/index.md';
 
@@ -70,28 +76,26 @@ import ColorsOutline from '@site/static/usage/v1/button-group/colors-outline/ind
 
 <ColorsOutline />
 
-## Atribúty a vlastnosti
+## Atribúty a Vlastnosti
 
-Pre tento komponent nie sú verejne dostupné žiadne atribúty a vlastnosti.
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú verejne dostupné žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú verejne dostupné žiadne metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-| Názov | Popis |
-| --- | --- |
-| `native` | Odkazuje na `<div>` element vo vnútri tlačidla |
+<Parts />
 
-## CSS Vlastné Properties
+## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú verejne dostupné žiadne CSS vlastné properties.
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />

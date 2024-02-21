@@ -1,6 +1,17 @@
 ---
 title: "Card"
 ---
+import Props from '@ionic-internal/component-api/v1/card/props.md';
+import Events from '@ionic-internal/component-api/v1/card/events.md';
+import Methods from '@ionic-internal/component-api/v1/card/methods.md';
+import Parts from '@ionic-internal/component-api/v1/card/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/card/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/card/slots.md';
+
+<head>
+  <title>Card | Kontajner formátu karty</title>
+  <meta name="description" content="Element Card je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky Card Header, hlavnej časti Card Content a pätičky CardFooter." />
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
@@ -16,7 +27,7 @@ import Basic from '@site/static/usage/v1/card/basic/index.md';
 
 ## Separator
 
-Vlastnosť separator slúži na zobrazenie horizontálneho oddelovača v elementer Card Header.
+Vlastnosť separator slúži na zobrazenie horizontálneho oddeľovača v elemente Card Header.
 
 import Separator from '@site/static/usage/v1/card/separator/index.md';
 
@@ -78,38 +89,24 @@ import CssProperties from '@site/static/usage/v1/card/theming/css-properties/ind
 
 ## Atribúty a Vlastnosti
 
-### color
-
-|  |  |
-| --- | --- |
-| Popis | Farba, ktorá sa má použiť z palety farieb aplikácie. Predvolené možnosti sú: `"primary"`, `"secondary"`, `"complete"`, `"success"`, `"warning"`, `"danger"`, `"info"`, a `"menu"`. |
-| Atribút | color |
-| Typ | `"danger"` ｜ `"menu"` ｜ `"info"` ｜ `"primary"` ｜ `"secondary"` ｜ `"success"` ｜ `"warning"` ｜ undefined |
-| Predvolená hodnota | `“primary”` |
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Názov | Popis |
-| --- | --- |
-| `-—wj-card-border-color` | Definuje farbu okraja karty. |
-| `--wj-card-margin-bottom` | Definuje veľkosť medzery od dolného okraja karty |
-| `--wj-card-margin-inline` | Definuje veľkosť medzery od pravého a ľavého okraja karty |
-| `--wj-card-margin-top` | Definuje veľkosť medzery od horného okraja karty |
-| `--wj-color-base` | Definuje farbu pozadia karty |
-| `--wj-color-contrast` | Definuje farbu textu karty |
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícií žiadne sloty.
+<Slots />

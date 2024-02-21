@@ -1,6 +1,12 @@
 ---
 title: "Breadcrumbs"
 ---
+import Props from '@ionic-internal/component-api/v1/breadcrumbs/props.md';
+import Events from '@ionic-internal/component-api/v1/breadcrumbs/events.md';
+import Methods from '@ionic-internal/component-api/v1/breadcrumbs/methods.md';
+import Parts from '@ionic-internal/component-api/v1/breadcrumbs/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/breadcrumbs/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/breadcrumbs/slots.md';
 
 <head>
   <title>Breadcrumbs | Navigačná cesta</title>
@@ -52,7 +58,7 @@ import ItemsBeforeAfter from '@site/static/usage/v1/breadcrumbs/collapsing-items
 
 ### Rozbaľovacie okno
 
-Zbalené položky je možné zobraziť aj v podobe rozbaľovacieho okna použítím vlastnosti `collapsed-variant` s hodnotou `dropdown`.
+Zbalené položky je možné zobraziť aj v podobe rozbaľovacieho okna použitím vlastnosti `collapsed-variant` s hodnotou `dropdown`.
 
 import PopoverOnClick from '@site/static/usage/v1/breadcrumbs/collapsing-items/popover-on-click/index.md';
 
@@ -60,50 +66,24 @@ import PopoverOnClick from '@site/static/usage/v1/breadcrumbs/collapsing-items/p
 
 ## Atribúty a Vlastnosti
 
-### itemsAfterCollapse
-
-|  |  |
-| --- | --- |
-| Popis | Určuje hodnotu maximálneho počtu zobrazených položiek po zbalení |
-| Atribút | `itemsAfterCollapse` |
-| Typ | `integer` |
-| Predvolená hodnota | `0` |
-
-### itemsBeforeCollapse
-
-|  |  |
-| --- | --- |
-| Popis | Určuje hodnotu maximálneho počtu zobrazených položiek pred zbalení  |
-| Atribút | `itemsBeforeCollapse` |
-| Typ | `integer` |
-| Predvolená hodnota | `0` |
-
-### maxItems
-
-|  |  |
-| --- | --- |
-| Popis | Určuje hodnotu maximálneho počtu zobrazených položiek v navigácii Breadcrumbs |
-| Atribút | `maxItems` |
-| Typ | `integer` |
-| Predvolená hodnota | `0` |
-
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícií žiadne pomenované sloty.
+<Slots />

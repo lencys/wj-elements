@@ -8,6 +8,12 @@ import Parts from '@ionic-internal/component-api/v1/breadcrumb/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/breadcrumb/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/breadcrumb/slots.md';
 
+<head>
+  <title>Breadcrumbs | Segment navigačnej cesty</title>
+  <meta name="description" content="Breadcrumbs je komponent, ktorý zobrazuje cestu, po ktorej používateľ prešiel v rámci aplikácie alebo webu. Tento element zobrazuje hierarchické usporiadanie stránok, v ktorom každý segment cesty 
+  Breadcrumb je hyperlink, umožňujúci rýchly návrat na predchádzajúce úrovne. Breadcrumbs môže obsahovať ikonu." />
+</head>
+
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
@@ -20,44 +26,26 @@ Pre viac informácií o použítí Breadcrumbs sa presuňte do dokumentácie ele
 
 :::
 
-## Interfaces
+## Atribúty a Vlastnosti
 
-### BreadcrumbCollapsedClickEventDetail
-
-```typescript
-interface BreadcrumbCollapsedClickEventDetail {
-  collapsedBreadcrumbs?: HTMLIonBreadcrumbElement[];
-}
-```
-
-### BreadcrumbCustomEvent
-
-While not required, this interface can be used in place of the `CustomEvent` interface for stronger typing .
-
-```typescript
-interface BreadcrumbCustomEvent extends CustomEvent {
-  detail: BreadcrumbCollapsedClickEventDetail;
-  target: HTMLIonBreadcrumbElement;
-}
-```
-
-
-
-
-## Properties
 <Props />
 
-## Events
+## Eventy
+
 <Events />
 
-## Methods
-<Methods />
+## Metódy
+
+<Methods/>
 
 ## CSS Shadow Parts
+
 <Parts />
 
-## CSS Custom Properties
+## CSS Custom Vlastnosti
+
 <CustomProps />
 
-## Slots
+## Sloty
+
 <Slots />

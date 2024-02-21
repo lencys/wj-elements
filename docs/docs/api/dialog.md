@@ -1,9 +1,15 @@
 ---
 title: "Dialog"
 ---
+import Props from '@ionic-internal/component-api/v1/dialog/props.md';
+import Events from '@ionic-internal/component-api/v1/dialog/events.md';
+import Methods from '@ionic-internal/component-api/v1/dialog/methods.md';
+import Parts from '@ionic-internal/component-api/v1/dialog/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/dialog/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/dialog/slots.md';
 
 <head>
-  <title>Dialog | Tlačidlo</title>
+  <title>Dialog | Dialógové okno s prispôsobiteľným obsahom</title>
   <meta name="description" content="Element Dialog zobrazuje dialógové okno s prispôsobiteľným obsahom. Je možné ho využiť napríklad na jednoduché zobrazenie informácie používateľovi alebo tiež vyžiadať jeho potvrdenie alebo zrušenie ním vykonanej akcie." />
 </head>
 
@@ -35,65 +41,26 @@ import Placement from '@site/static/usage/v1/dialog/placement/index.md';
 Vlastnosť `size` upravuje veľkosť dialógového okna na obrazovke. Predvolená je veľkosť `"small"`. Ďalšie možnosti sú `"medium"`, `"large"` a `"ex-large"`. 
 
 
-## Vlastnosti
+## Atribúty a Vlastnosti
 
-### **placement**
+<Props />
 
-|  |  |
-| --- | --- |
-| Popis | Určuje umiestnenie dialógového okna na obrazovke. Medzi možné hodnoty patrí `"slide-up"` (posunúť hore), `"slide-down"` (posunúť dole) a ďalšie. |
-| Atribút | `placement` |
-| Typ | `"slide-up"` ｜ `"slide-down"` ｜ `"slide-left"` ｜ `"slide-right"` ｜ `"fill-in"`  |
-| Predvolená hodnota | `“slide-up”` |
+## Eventy
 
-### size
+<Events />
 
-|  |  |
-| --- | --- |
-| Popis | Určuje veľkosť dialógového okna na obrazovke. Medzi možné hodnoty patrí `"small"` (malé), `"medium"` (stredné) a ďalšie. |
-| Atribút | `size` |
-| Typ | `"small"` ｜ `"medium"` ｜ `"large"` ｜ `"ex-large"`｜ `undefined` |
-| Predvolená hodnota | `“small”` |
+## Metódy
 
-## Eventy[](https://ionicframework.com/docs/api/badge#events)
+<Methods/>
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+## CSS Shadow Parts
 
-## Metódy[](https://ionicframework.com/docs/api/badge#methods)
-
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
-
-## CSS Shadow Parts[](https://ionicframework.com/docs/api/badge#css-shadow-parts)
-
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
-
-| Názov | Popis |
-| --- | --- |
-| `body` | Odkazuje na hlavný obsah dialógového okna |
-| `header` | Odkazuje na záhlavie dialógového okna |
-| `footer` | Odkazuje na pätičku dialógového okna |
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-| Názov | Popis |
-| --- | --- |
-| `--wj-backdrop` | Farba pozadia (backdropu) |
-| `--wj-backdrop-opacity` | Priehľadnosť pozadia (backdropu) |
-| `--wj-dialog-border-color` | Farba okrajov dialógového okna |
-| `--wj-dialog-border-radius` | Zaoblenie okrajov dialógového okna |
-| `--wj-dialog-border-style` | Štýl okrajov dialógového okna |
-| `--wj-dialog-border-width` | Hrúbka okrajov dialógového okna |
-| `--wj-dialog-height` | Výška dialógového okna |
-| `--wj-dialog-margin-bottom` | Spodné vonkajšie odsadenie dialógového okna |
-| `--wj-dialog-margin-end` | Ľavé vonkajšie odsadenie dialógového okna |
-| `--wj-dialog-margin-start` | Pravé vonkajšie odsadenie dialógového okna |
-| `--wj-dialog-margin-top` | Horné vonkajšie odsadenie dialógového okna |
-| `--wj-dialog-padding` | Vnútorné odsadenie dialógového okna |
-| `--wj-dialog-width` | Šírka dialógového okna |
+<CustomProps />
 
-## Sloty[](https://ionicframework.com/docs/api/button#slots)
+## Sloty
 
-| Názov | Popis |
-| --- | --- |
-| `header` | Tento slot sa používa pre záhlavie dialógu. |
-| `footer` | Tento slot sa používa pre pätičku dialógu. |
+<Slots />

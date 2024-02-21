@@ -8,30 +8,39 @@ import Parts from '@ionic-internal/component-api/v1/card-subtitle/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/card-subtitle/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/card-subtitle/slots.md';
 
+<head>
+  <title>Card Subtitle | Doplnkový alebo sekundárny text Card</title>
+  <meta name="description" content="Element Card subtitle je komponent navrhnutý na použitie v rámci elementu Card Header na zobrazenie doplnkového alebo sekundárneho textu, čím používateľovi poskytuje dodatočný kontext alebo informácie súvisiace s hlavným obsahom karty." />
+</head>
+
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element card subtitle je komponent navrhnutý na použitie v rámci elementu [Card Header](./card-header) na zobrazenie doplnkového alebo sekundárneho textu, čím používateľovi poskytuje dodatočný kontext alebo informácie súvisiace s hlavným obsahom karty.
+Element Card subtitle je komponent navrhnutý na použitie v rámci elementu [Card Header](./card-header) na zobrazenie doplnkového alebo sekundárneho textu, čím používateľovi poskytuje dodatočný kontext alebo informácie súvisiace s hlavným obsahom karty.
 
-Pre viac informácií o použítí Card Subtitle sa presuňte do dokumentácie elementu [card](./card).
+Pre viac informácií o použití Card Subtitle sa presuňte do dokumentácie elementu [card](./card).
+
+## Atribúty a Vlastnosti
+
+<Props />
 
 ## Eventy
 
-Pre tento komponent nie sú k dispozícii žiadne eventy.
+<Events />
 
 ## Metódy
 
-Pre tento komponent nie sú k dispozícii žiadne verejné metódy.
+<Methods/>
 
 ## CSS Shadow Parts
 
-Pre tento komponent nie sú k dispozícií žiadne CSS shadow parts.
+<Parts />
 
 ## CSS Custom Vlastnosti
 
-Pre tento komponent nie sú k dispozícií žiadne CSS custom vlastnosti.
+<CustomProps />
 
 ## Sloty
 
-Pre tento komponent nie sú k dispozícii žiadne sloty.
+<Slots />
