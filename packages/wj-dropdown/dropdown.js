@@ -15,10 +15,6 @@ export class Dropdown extends WJElement {
 
     className = "Dropdown";
 
-    static get cssStyleSheet() {
-        return styles;
-    }
-
     static get observedAttributes() {
         return ["active"];
     }
