@@ -35,11 +35,7 @@ Pridaním atribútu `multiple` umožníte používateľovi vybrať viacero možn
 
 import MultipleSelectionExample from '@site/static/usage/v1/select/basic/multiple-selection/index.md';
 
-<div className="xlarge">
-
 <MultipleSelectionExample />
-
-</div>
 
 ## Clearable
 
@@ -47,11 +43,7 @@ Pridaním atribútu `clearable` umožníte používateľovi odstrániť všetky 
 
 import Clearable from '@site/static/usage/v1/select/clearable/index.md';
 
-<div className="xlarge">
-
 <Clearable />
-
-</div>
 
 ## Disabled
 
@@ -59,11 +51,15 @@ Pridaním atribútu `disabled` zabránite používateľovi interagovať so Selec
 
 import Disabled from '@site/static/usage/v1/select/disabled/index.md';
 
-<div className="xlarge">
-
 <Disabled />
 
-</div>
+## Dynamický zoznam možností
+
+Použitím komponentu Options je podporovaný aj dynamicky generovaný zoznam možností, ktorý sa asynchrónne načíta zo zadanej URL adresy.
+
+import Options from '@site/static/usage/v1/select/options/index.md';
+
+<Options />
 
 ## Standard
 
@@ -71,11 +67,7 @@ Pridaním atribútu `standard` sa zobrazí Select v štýle štandardného HTML 
 
 import Standard from '@site/static/usage/v1/select/standard/index.md';
 
-<div className="xlarge">
-
 <Standard />
-
-</div>
 
 ## Atribúty a Vlastnosti
 

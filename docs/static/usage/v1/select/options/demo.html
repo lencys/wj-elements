@@ -3,16 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Icon Picker</title>
+    <title>ProgressBar</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
+    <script type="module" src="../../../../js/demo.js"></script>
     <script type="module" src="./../../../../wj-elementy/wj-master.js"></script>
     <link rel="stylesheet" href="./../../../../wj-elementy/style.css" />
   </head>
+
   <body>
     <div class="container">
-      <div class="content">
-        <wj-icon-picker></wj-icon-picker>
+      <div class="content" style="flex-direction: column;justify-content: flex-start; margin-bottom: 20%;min-width:260px;">
+        <wj-select placeholder="Select options" max-options="1" max-height="200px" multiple clearable>
+          <wj-options url="/api/options" item-value="value" item-text="label"></wj-options>
+        </wj-select>
       </div>
     </div>
   </body>

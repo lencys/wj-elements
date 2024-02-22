@@ -243,3 +243,10 @@ ul.table-of-contents {
   fill: var(--ifm-link-color);
 
 }
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+table tr th:nth-child(1), table tr td:nth-child(1) {
+  width: 30%;
+}

@@ -5532,6 +5532,91 @@
             "dependencyGraph": {}
         },
         {
+            "filePath": "src/components/select-option/select-options.tsx",
+            "encapsulation": "shadow",
+            "tag": "select-options",
+            "docs": "",
+            "docsTags": [],
+            "usage": {},
+            "props": [
+                {
+                    "name": "item-text",
+                    "type": "any",
+                    "complexType": {
+                        "original": "any | null",
+                        "resolved": "any",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "item-text",
+                    "reflectToAttr": false,
+                    "docs": "Textová hodnota elementu",
+                    "docsTags": [],
+                    "values": [
+                        {
+                            "type": "any"
+                        }
+                    ],
+                    "optional": true,
+                    "required": false
+                },
+                {
+                    "name": "item-value",
+                    "type": "any",
+                    "complexType": {
+                        "original": "any | null",
+                        "resolved": "any",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "item-value",
+                    "reflectToAttr": false,
+                    "docs": "Textová hodnota elementu",
+                    "docsTags": [],
+                    "values": [
+                        {
+                            "type": "any"
+                        }
+                    ],
+                    "optional": true,
+                    "required": false
+                },
+                {
+                    "name": "url",
+                    "type": "string | undefined",
+                    "complexType": {
+                      "original": "string | undefined",
+                      "resolved": "string | undefined",
+                      "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "url",
+                    "reflectToAttr": false,
+                    "docs": "Obsahuje adresu URL alebo fragment adresy URL s dátami, ktoré sa majú získať.",
+                    "docsTags": [],
+                    "values": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "undefined"
+                      }
+                    ],
+                    "optional": false,
+                    "required": false
+                  }
+            ],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
             "filePath": "src/components/slider/slider.tsx",
             "encapsulation": "shadow",
             "tag": "slider",

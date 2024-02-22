@@ -240,7 +240,7 @@ module.exports = {
       type: 'category',
       label: 'Select',
       collapsed: false,
-      items: ['api/select', 'api/select-option'],
+      items: ['api/select', 'api/select-options', 'api/select-option'],
     },
     {
       type: 'category',
