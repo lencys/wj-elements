@@ -167,17 +167,18 @@
   --wj-color-contrast-medium-a: rgba(33, 33, 33, 0.62);
   --wj-color-contrast-high-a: rgba(33, 33, 33, 0.81);
 }
+:root *,
+:host *,
+.wj-theme-light *,
+.light * {
+  box-sizing: border-box !important;
+}
 /*------------------------------------------------------------------
 [5@mixin  Typography]
 */
 /* Standard elements
 --------------------------------------------------
 */
-
-* {
-  box-sizing: border-box;
-}
-
 html {
   font-size: 100%;
   -ms-text-size-adjust: 100%;
