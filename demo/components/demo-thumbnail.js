@@ -5,6 +5,17 @@ const template = document.createElement('template');
 template.innerHTML = `<h1>Thumbnail</h1>
   <div class="container">
 
+    <!-- CIRCLE -->
+
+    <h3>Circle</h3>
+    <div class="playground">
+      <div class="content">
+        <wj-thumbnail circle>
+          <img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg" />
+        </wj-thumbnail>
+      </div>
+    </div>
+    
     <!-- BASIC -->
 
     <h3>Basic</h3>

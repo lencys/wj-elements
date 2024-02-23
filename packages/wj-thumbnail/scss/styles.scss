@@ -15,6 +15,9 @@
   border-radius: var(--wj-border-radius);
 }
 
+:host([circle]) ::slotted(img) {
+  border-radius: 50%;
+}
 ::slotted(wj-img),
 ::slotted(img) {
   border-radius: var(--wj-thumbnail-border-radius);
