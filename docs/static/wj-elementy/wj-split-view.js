@@ -40,7 +40,7 @@ class SplitView extends WJElement {
         return false;
       drag(this, {
         onMove: (x, y) => {
-          let newPositionInPixels = this.hasAttribute("vertical") ? y : x;
+          let newPositionInPixels = this.hasAttribute("horizontal") ? y : x;
           let sizeA = this.pixelsToPercentage(newPositionInPixels);
           let sizeB = 100 - this.pixelsToPercentage(newPositionInPixels);
           this.style.setProperty("--wj-split-view-calc-a", sizeA + "%");
@@ -94,7 +94,7 @@ class SplitView extends WJElement {
   }
   detectSize() {
     const { width, height } = this.getBoundingClientRect();
-    this.size = this.hasAttribute("vertical") ? height : width;
+    this.size = this.hasAttribute("horizontal") ? height : width;
   }
   percentageToPixels(value) {
     return this.size * (value / 100);

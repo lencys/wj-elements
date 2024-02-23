@@ -15,6 +15,9 @@ export default defineConfig({
         },
     },
     build: {
+        // rollupOptions: {
+        //     external: ['/assets/tags.json']
+        // },
         assetsInlineLimit: 0,
         minify: false,
         outDir: './dist',

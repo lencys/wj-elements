@@ -34,6 +34,12 @@ class IconPicker extends WJElement {
     __publicField(this, "onClose", () => {
       this.popup.onHide();
     });
+    __publicField(this, "getTagsUrl", (path) => {
+      let parsedUrl = new URL(import.meta.url);
+      let pathName = parsedUrl.pathname;
+      let folderPath = pathName.substring(0, pathName.lastIndexOf("/"));
+      return new URL(parsedUrl.origin + folderPath + path).href;
+    });
     this.size = 48;
   }
   set markerPosition(value) {
@@ -77,7 +83,7 @@ class IconPicker extends WJElement {
     input.setAttribute("clearable", "");
     input.addEventListener("wj-input:input", this.searchIcon);
     let infiniteScroll = new InfiniteScroll();
-    infiniteScroll.setAttribute("url", "/demo/assets/data/tags.json");
+    infiniteScroll.setAttribute("url", this.getTagsUrl("/assets/tags.json"));
     infiniteScroll.setAttribute("placement", ".icon-items");
     infiniteScroll.setAttribute("size", this.size);
     infiniteScroll.setAttribute("height", "223px");
@@ -165,7 +171,7 @@ class IconPicker extends WJElement {
     return category;
   }
   async getTags() {
-    const response = await fetch(`/demo/assets/data/tags.json`);
+    const response = await fetch(this.getTagsUrl("/assets/tags.json"));
     return response.json();
   }
   disconnectedCallback() {

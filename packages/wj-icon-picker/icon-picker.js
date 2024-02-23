@@ -1,6 +1,7 @@
 import { default as WJElement, event } from "../wj-element/wj-element.js";
 import { InfiniteScroll } from "../wj-infinite-scroll/infinite-scroll.js";
 import { Tooltip } from "../wj-tooltip/tooltip.js";
+// import tags from '/assets/tags.json';
 
 import styles from "./scss/styles.scss?inline";
 
@@ -81,7 +82,7 @@ export class IconPicker extends WJElement {
 
         let infiniteScroll = new InfiniteScroll();
 
-        infiniteScroll.setAttribute("url", "/demo/assets/data/tags.json");
+        infiniteScroll.setAttribute("url", this.getTagsUrl('/assets/tags.json'));
         infiniteScroll.setAttribute("placement", ".icon-items");
         infiniteScroll.setAttribute("size", this.size);
         infiniteScroll.setAttribute("height", "223px");
@@ -201,7 +202,7 @@ export class IconPicker extends WJElement {
     }
 
     async getTags() {
-        const response = await fetch(`/demo/assets/data/tags.json`);
+        const response = await fetch(this.getTagsUrl('/assets/tags.json'));
         return response.json();
     }
 
@@ -241,6 +242,16 @@ export class IconPicker extends WJElement {
     onClose = () => {
         this.popup.onHide();
     }
+
+    getTagsUrl = (path) => {
+        // const path = `/assets/img/icons/svg/${iconName}.svg`;
+
+        let parsedUrl = new URL(import.meta.url);
+        let pathName = parsedUrl.pathname;
+
+        let folderPath = pathName.substring(0, pathName.lastIndexOf('/'));
+        return new URL(parsedUrl.origin + folderPath + path).href;
+    };
 }
 
 customElements.get("wj-icon-picker") || window.customElements.define("wj-icon-picker", IconPicker);
