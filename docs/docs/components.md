@@ -37,6 +37,17 @@ import DocsCards from '@components/global/DocsCards';
 <!-- Todo: Linky -->
 
 <DocsCards>
+  <a href="api/animation">
+    <wj-card className="Card-without-image" href="api/animation">
+        <wj-card-header>
+            <wj-icon name="bounce-right" size="large"></wj-icon>
+            <wj-card-title>Animation</wj-card-title>
+        </wj-card-header>
+        <wj-card-content>
+          <p>Jednoduchá integrácia animácií do webových aplikácií.</p>
+        </wj-card-content>
+    </wj-card>
+  </a>
   <a href="api/avatar">
     <wj-card className="Card-without-image" href="api/avatar">
         <wj-card-header>
@@ -168,6 +179,17 @@ import DocsCards from '@components/global/DocsCards';
   </wj-card-content>
 </wj-card>
 </a>
+  <a href="api/file-upload">
+    <wj-card className="Card-without-image" href="api/file-upload">
+        <wj-card-header>
+            <wj-icon name="file-upload" size="large"></wj-icon>
+            <wj-card-title>File Upload</wj-card-title>
+        </wj-card-header>
+        <wj-card-content>
+          <p>Jednoduchá integrácia animácií do webových aplikácií.</p>
+        </wj-card-content>
+    </wj-card>
+  </a>
 
 <a href="api/icon">
 <wj-card href="api/icon">

@@ -11,13 +11,14 @@
   </head>
   <body>
     <div class="container">
-      <div class="content" style="max-width: 60%;margin: auto;">
+      <div class="content" style="min-width: 60%;margin: auto;">
         <wj-split-view disabled>
           <div slot="start">Start</div>
           <div slot="end">End</div>
         </wj-split-view>
         <style>
           wj-split-view {
+            display: block;
             height: 300px;
             width: 100%;
             border-color: var(--wj-border-color); 

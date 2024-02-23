@@ -18,19 +18,24 @@
   <div class="playground" style="height: 100%;">
     <div class="container">
       <div class="content" style="text-align: center;">
-        <wj-animation name="heartBeat">
-          <wj-avatar>
-            <wj-img src="../../../../img/demos/avatar.svg"></wj-img>
-          </wj-avatar>
-        </wj-animation>
-        <div style="margin-top: 1rem">
-          <wj-button id="stop">Stop</wj-button>
-          <wj-button id="play">Play</wj-button>
-        </div>
+      <wj-animation name="heartBeat" delay="500" duration="500">
+        <wj-avatar>
+          <wj-img src="../../../../img/demos/avatar.svg"></wj-img>
+        </wj-avatar>
+      </wj-animation>
+      <div style="margin-top: 1rem">
+        <wj-button id="stop">Stop</wj-button>
+        <wj-button id="play">Play</wj-button>
       </div>
     </div>
-
   </div>
 </body>
-
 </html>
+<script>
+document.querySelector("#stop").addEventListener('click', (e) => {
+  document.querySelector('wj-animation').animation.cancel();
+});
+document.querySelector("#play").addEventListener('click', (e) => {
+  document.querySelector('wj-animation').animation.play();
+});
+</script>

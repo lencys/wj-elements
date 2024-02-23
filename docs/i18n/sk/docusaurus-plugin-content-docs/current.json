@@ -103,9 +103,9 @@
     "message": "Icons",
     "description": "The label for category Icons in sidebar api"
   },
-  "sidebar.api.category.Icon picker TODO": {
-    "message": "Icon picker TODO",
-    "description": "The label for category Icon picker TODO in sidebar api"
+  "sidebar.api.category.Icon picker": {
+    "message": "Icon picker",
+    "description": "The label for category Icon picker in sidebar api"
   },
   "sidebar.api.category.Image": {
     "message": "Image",

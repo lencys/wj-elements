@@ -2971,6 +2971,28 @@
             "usage": {},
             "props": [
                 {
+                    "name": "clearable",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "clearable",
+                    "reflectToAttr": false,
+                    "docs": "Ak `true`, umožní vymazať obsah inputu pomocou tlačidla.",
+                    "docsTags": [],
+                    "default": "false",
+                    "values": [
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                },
+                {
                     "name": "custom-error-display",
                     "type": "boolean",
                     "complexType": {

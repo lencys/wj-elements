@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Icon</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script type="module" src="../../../../wj-elementy/wj-master.js"></script>
+    <link rel="stylesheet" href="../../../../wj-elementy/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content" style="min-width: 60%;margin: auto;display: block;">
+        <wj-input variant="standard" label="Default input" class="example-icon" clearable>
+          <wj-icon-picker slot="start"></wj-icon-picker>
+        </wj-input>
+        
+        <wj-input variant="standard" label="Default input" class="example-color" clearable>
+          <wj-color-picker slot="start"></wj-color-picker>
+        </wj-input>
+        
+        <style>
+          .example-icon wj-icon-picker {
+            --wj-icon-picker-border-width: 0 !important;
+            --wj-icon-picker-padding: .15rem !important;
+            --wj-input-slot-padding-inline: .25rem !important;
+          }
+          
+          .example-color wj-color-picker::part(anchor) {
+            /*border-radius: 3px 0 0 3px !important;*/
+            border-radius: 50%;
+          }
+        </style>
+      </div>
+    </div>
+  </body>
+</html>

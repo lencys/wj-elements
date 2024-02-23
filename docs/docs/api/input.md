@@ -62,6 +62,22 @@ import Search from '@site/static/usage/v1/input/search/index.md';
 
 </div>
 
+## Pickers
+
+V kombinácii s elementorm `Button` vytvorí plnohodnotné vyhľadávacie pole.
+
+import Pickers from '@site/static/usage/v1/input/pickers/index.md';
+
+<Pickers />
+
+## Clearable
+
+V kombinácii s elementorm `Button` vytvorí plnohodnotné vyhľadávacie pole.
+
+import Clearable from '@site/static/usage/v1/input/clearable/index.md';
+
+<Clearable />
+
 ## Atribúty a Vlastnosti
 
 <Props />

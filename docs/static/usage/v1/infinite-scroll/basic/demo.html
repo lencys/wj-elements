@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="content" style="max-width: 60%;margin: auto;">
+      <div class="content" style="min-width: 80%;margin: auto;">
         <wj-infinite-scroll url="/api/users" placement="wj-list">
           <wj-list>
             <wj-item iterate>
@@ -25,6 +25,11 @@
             </wj-item>
           </wj-list>
         </wj-infinite-scroll>
+        <style>
+          wj-infinite-scroll {
+            min-width: 250px;
+          }
+        </style>
       </div>
     </div>
   </body>
