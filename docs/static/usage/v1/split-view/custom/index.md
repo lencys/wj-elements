@@ -7,6 +7,7 @@ import vue from './vue.md';
 
 <Playground
   version="7"
+  size="medium"
   code={{
     javascript,
     react: {

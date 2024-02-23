@@ -58,7 +58,10 @@ class IconPicker extends WJElement {
     this.isShadowRoot = "open";
   }
   async beforeDraw() {
+
     this.tags = Object.values(await this.getTags());
+    debugger;
+
     this.category = this.getCategory(this.tags);
   }
   draw(context, store, params) {
@@ -165,7 +168,7 @@ class IconPicker extends WJElement {
     return category;
   }
   async getTags() {
-    const response = await fetch(`/demo/assets/data/tags.json`);
+    const response = await fetch(`/data/tags.json`);
     return response.json();
   }
   disconnectedCallback() {

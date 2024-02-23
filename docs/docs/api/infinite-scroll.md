@@ -34,9 +34,9 @@ import Size from '@site/static/usage/v1/infinite-scroll/size/index.md';
 
 Element Infinite scroll je možné použiť v kombinácii s akýmkoľvek Elements elementom. Napríklad `Card`.
 
-import Card from '@site/static/usage/v1/infinite-scroll/card/index.md';
+import Custom from '@site/static/usage/v1/infinite-scroll/custom/index.md';
 
-<Card />
+<Custom />
 
 ## Atribúty a Vlastnosti
 

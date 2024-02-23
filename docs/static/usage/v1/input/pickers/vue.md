@@ -9,11 +9,11 @@
 </template>
 
 <script lang="ts">
-  import { Input } from '@elements/vue';
+  import { Input, IconPicker, ColorPicker } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: Input,
+    components: Input, IconPicker, ColorPicker,
   });
 </script>
 ```

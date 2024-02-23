@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="content" style="max-width: 90%;margin: auto;">
+      <div class="content" style="max-width: 100%;margin: auto;overflow: hidden;">
         <wj-infinite-scroll url="/api/users" placement="wj-row" size="20" class="example" height="440px">
           <wj-grid>
             <wj-row wrap>
@@ -34,6 +34,7 @@
           </wj-grid>
           <style>
             .example {
+              min-width: 250px;
               padding: 0 1rem;
             }
           </style>

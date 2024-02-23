@@ -217,6 +217,11 @@ docs-cards {
     background-color: var(--wj-card-background);
 
   }
+  wj-card:hover {
+   
+    filter: brightness(110%);
+
+  }
   wj-card-title {
     color: var(--markdown-text-intro-c);
   }

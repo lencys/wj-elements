@@ -11,7 +11,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="content" style="max-width: 60%;margin: auto;">
+      <div class="content" style="min-width: 60%;margin: auto;">
         <wj-split-view id="custom">
           <div slot="start">Start</div>
           <wj-icon name="grip-vertical" slot="divider"></wj-icon>
@@ -19,6 +19,7 @@
         </wj-split-view>
         <style>
           wj-split-view {
+            display: block;
             height: 300px;
             width: 100%;
             border-color: var(--wj-border-color); 

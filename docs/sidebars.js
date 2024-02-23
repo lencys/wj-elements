@@ -154,7 +154,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Icon picker TODO',
+      label: 'Icon picker',
       collapsed: false,
       items: ['api/icon-picker']
     },

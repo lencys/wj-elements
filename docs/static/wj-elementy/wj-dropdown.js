@@ -16,9 +16,6 @@ class Dropdown extends WJElement {
   get trigger() {
     return this.getAttribute("trigger") || "click";
   }
-  static get cssStyleSheet() {
-    return styles;
-  }
   static get observedAttributes() {
     return ["active"];
   }
