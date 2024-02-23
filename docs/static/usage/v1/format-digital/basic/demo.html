@@ -6,23 +6,32 @@
     <title>FormatDigital</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/wj-master.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/style.css" />
-    <script type="module"  src="https://cdn.jsdelivr.net/npm/wj-elements@0.0/+esm"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="content" style="display: flex;align-items: center;">
-        <wj-input type="number" variant="standard" placeholder="Typing number" value="1000000"></wj-input>
-        <wj-format-digital value="1000000" class="example"></wj-format-digital>
-        <style>
-          wj-input {
+    <script type="module" src="../../../../wj-elementy/wj-master.js"></script>
+    <link rel="stylesheet" href="../../../../wj-elementy/style.css" />
+    <style>
+        .content {
+            max-width: 400px;
+            min-width: 320px;
+        }
+
+        wj-input {
             width: 200px;
             margin-inline: 0 .5rem;
             --wj-input-margin-bottom: 0;
-          }
-        </style>
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content" style="display: flex; justify-content: start; align-items: center;">
+        <wj-input type="number" variant="standard" placeholder="Typing number" value="1000000"></wj-input>
+        <wj-format-digital value="1000000" class="example"></wj-format-digital>
       </div>
     </div>
+    <script>
+      document.addEventListener('wj-input:input', (e) => {
+        document.querySelector('.example').setAttribute('value', e.detail.value);
+      });
+    </script>
   </body>
 </html>
