@@ -8,9 +8,23 @@
     <script src="../../../common.js"></script>
     <script type="module" src="../../../../wj-elementy/wj-master.js"></script>
     <link rel="stylesheet" href="../../../../wj-elementy/style.css" />
+    <style>
+        .content {
+            max-width: 400px;
+            margin: 0 auto;display: flex;
+        }
+        #example-gap div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: var(--wj-color-white);
+            background: var(--wj-color-danger);
+        }
+    </style>
   </head>
   <body>
-    <div class="playground">
+    <div class="playground" style="padding-inline: 1rem;">
       <div class="content">
         <wj-masonry cols="2" gap="2" class="example" id="example-gap">
           <div style="height: 300px">1</div>
@@ -19,12 +33,6 @@
           <div style="height: 377px">4</div>
           <div style="height: 200px">5</div>
         </wj-masonry>
-        <style>
-          #example-gap div {
-            color: var(--wj-color-white);
-            background: var(--wj-color-danger);
-          }
-        </style>
       </div>
     </div>
   </body>

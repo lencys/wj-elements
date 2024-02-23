@@ -8,10 +8,23 @@
     <script src="../../../common.js"></script>
     <script type="module" src="../../../../wj-elementy/wj-master.js"></script>
     <link rel="stylesheet" href="../../../../wj-elementy/style.css" />
-<!--    <script type="module"  src="https://cdn.jsdelivr.net/npm/wj-elements@0.0/+esm"></script>-->
+    <style>
+        .content {
+            max-width: 400px;
+            margin: 0 auto;display: flex;
+        }
+        .example div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: var(--wj-color-black);
+            background: var(--wj-color-warning);
+        }
+    </style>
   </head>
   <body>
-    <div class="playground">
+    <div class="playground" style="padding-inline: 1rem;">
       <div class="content">
         <wj-masonry cols="2" class="example">
           <div style="height: 300px">1</div>
