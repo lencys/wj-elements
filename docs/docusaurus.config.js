@@ -10,7 +10,7 @@ module.exports = {
   title: 'Dokumentácia WJ Elements',
   tagline:
     'WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania využívajúca silu web komponentov, ktorá je určená na zjednodušenie vývoja webových aplikácií.',
-  url: 'https://elements.webjet.com',
+  url: 'https://elements.webjet.sk',
   baseUrl: `${BASE_URL}/`,
   i18n: {
     defaultLocale: 'sk',
@@ -73,15 +73,15 @@ module.exports = {
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
   themeConfig: {
     metadata: [
-      { name: 'og:image', content: 'https://ionicframework.com/docs/img/meta/open-graph.png' },
-      { name: 'twitter:image', content: 'https://ionicframework.com/docs/img/meta/open-graph.png' },
+      { name: 'og:image', content: './img/webjet-elements.svg' },
+      { name: 'twitter:image', content: './img/webjet-elements.svg' },
       {
         name: 'twitter:card',
         content: 'summary_large_image',
       },
       {
         name: 'twitter:domain',
-        content: 'ionicframework.com',
+        content: 'elements.webjet.com',
       },
       {
         name: 'twitter:site',
@@ -101,7 +101,7 @@ module.exports = {
       },
       {
         name: 'og:site_name',
-        content: 'Ionic Framework Docs',
+        content: 'WebJET Elements Docs',
       },
     ],
     colorMode: {
@@ -167,14 +167,14 @@ module.exports = {
         //   target: '_blank',
         // },
         {
-          href: 'https://ionic.link/discord',
+          href: 'https://discord.gg/b5DqKM997s',
           position: 'right',
           className: 'icon-link icon-link-mask icon-link-discord',
           'aria-label': 'Discord',
           target: '_blank',
         },
         {
-          href: 'https://github.com/ionic-team/ionic-framework',
+          href: 'https://github.com/lencys/wj-elements',
           position: 'right',
           className: 'icon-link icon-link-mask icon-link-github',
           'aria-label': 'GitHub repository',
