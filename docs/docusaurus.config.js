@@ -73,28 +73,7 @@ module.exports = {
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
   themeConfig: {
     metadata: [
-      { name: 'og:image', content: './img/webjet-elements.svg' },
-      { name: 'twitter:image', content: './img/webjet-elements.svg' },
-      {
-        name: 'twitter:card',
-        content: 'summary_large_image',
-      },
-      {
-        name: 'twitter:domain',
-        content: 'elements.webjet.com',
-      },
-      {
-        name: 'twitter:site',
-        content: '@ionicframework',
-      },
-      {
-        name: 'twitter:creator',
-        content: 'ionicframework',
-      },
-      {
-        name: 'fb:page_id',
-        content: '1321836767955949',
-      },
+      { name: 'og:image', content: 'https://elements.webjet.sk/img/webjet-elements.svg' },
       {
         name: 'og:type',
         content: 'website',
@@ -159,13 +138,6 @@ module.exports = {
           // ],
           className: 'icon-link language navbar__item',
         },
-        // {
-        //   href: 'https://twitter.com/Ionicframework',
-        //   position: 'right',
-        //   className: 'icon-link icon-link-mask icon-link-twitter',
-        //   'aria-label': 'Twitter',
-        //   target: '_blank',
-        // },
         {
           href: 'https://discord.gg/b5DqKM997s',
           position: 'right',
