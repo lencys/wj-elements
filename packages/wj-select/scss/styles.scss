@@ -61,11 +61,14 @@
     }
   }
   &.standard {
-    .input-wrapper {
+    .wrapper {
       border-width: var(--wj-select-border-width);
       border-style: var(--wj-select-border-style);
       border-color: var(--wj-select-border-color);
       border-radius: var(--wj-select-border-radius);
+    }
+    .input-wrapper {
+      background: transparent;
       width: 100%;
     }
   }
@@ -107,7 +110,7 @@ input {
 }
 
 :host [active] {
-  .input-wrapper {
+  .wrapper {
     border-radius: var(--wj-select-border-radius) var(--wj-select-border-radius) 0 0;
   }
   [slot=arrow] {

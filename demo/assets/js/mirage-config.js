@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { createServer, Model, Factory } from 'miragejs';
 
-export function makeServer({ environment = 'development' } = {}) {
+export function makeServer() {
   let server = createServer({
 
     models: {
@@ -92,8 +92,8 @@ export function makeServer({ environment = 'development' } = {}) {
       this.passthrough();
       this.passthrough('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
     },
-    // logging: false
-  })
+    logging: true
+  });
 
   return server;
 }

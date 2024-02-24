@@ -10,9 +10,6 @@ class Options extends WJElement {
     super();
     __publicField(this, "className", "Options");
   }
-  static get cssStyleSheet() {
-    return styles;
-  }
   static get observedAttributes() {
     return [];
   }
@@ -36,7 +33,8 @@ class Options extends WJElement {
     if (!response.ok) {
       throw new Error(`An error occurred: ${response.status}`);
     }
-    return await response.json();
+    const data = await response.json();
+    return data;
   }
 }
 customElements.get("wj-options") || window.customElements.define("wj-options", Options);

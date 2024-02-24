@@ -25,7 +25,7 @@
     "tinycolor2": "^1.6.0"
   },
   "devDependencies": {
-    "miragejs": "^0.1.47",
+    "miragejs": "^0.1.48",
     "sass": "^1.63.5",
     "vite": "^5.1.2"
   }

@@ -80,7 +80,7 @@
 }
 
 :host {
-  --wj-button-border-radius: 4px;
+  --wj-button-border-radius: var(--wj-border-radius-medium);
   --wj-button-border-width: 1px;
   --wj-button-border-style: solid;
   --wj-button-border-color: var(--wj-color-contrast-1);

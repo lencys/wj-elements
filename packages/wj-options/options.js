@@ -7,10 +7,6 @@ export class Options extends WJElement {
 
     className = "Options";
 
-    static get cssStyleSheet() {
-        return styles;
-    }
-
     static get observedAttributes() {
         return [];
     }
@@ -41,7 +37,8 @@ export class Options extends WJElement {
         if (!response.ok) {
             throw new Error(`An error occurred: ${response.status}`);
         }
-        return await response.json();
+        const data = await response.json();
+        return data;
     }
 }
 

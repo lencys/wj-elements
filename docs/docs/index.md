@@ -3,8 +3,6 @@ title: Úvod do WebJET Elements
 sidebar_label: Úvod
 slug: /
 hide_table_of_contents: true
-demoUrl: https://docs-demo.ionic.io/
-demoSourceUrl: https://github.com/ionic-team/docs-demo
 ---
 
 import DocsCards from '@components/global/DocsCards';
