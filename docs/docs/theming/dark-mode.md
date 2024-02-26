@@ -16,312 +16,278 @@ import Codepen from '@components/global/Codepen';
 
 Tmavý režim v Elements je funkcia, ktorá umožňuje prepnúť farebnú schému stránok a komponentov na tmavšie odtiene, čo zlepšuje pohodlie používateľov v tmavších priestoroch a ponúka alternatívny estetický vzhľad. 
 
-## Using Media Queries
+## Použitím media query
 
-The first way to enable dark mode is by using the [CSS media query for the user's preferred color scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme). This media query will hook into the system setting of the user's device and apply the theme if a dark mode is enabled.
-
-```css
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* dark mode variables go here */
-  }
-}
-```
-
-Currently, the `prefers-color-scheme` media query has [limited browser support](https://caniuse.com/#feat=prefers-color-scheme), so users will not be able to benefit from having the dark mode applied using this media query in certain browsers. However, the dark mode can still be applied by using a [CSS class fallback](#css-class-fallback).
-
-## CSS Class Fallback
-
-As a fallback method for devices that don't support the media query, the dark mode can be applied by styling a CSS selector and applying the class to the document body.
+Prvým spôsobom, ako zapnúť tmavý režim, je použitie [CSS media query pre používateľom preferovanú farebnú schému](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme). Tento media query sa napojí na systémové nastavenie zariadenia používateľa a použije tému, ak je tmavý režim povolený.
 
 ```css
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Dark mode variables go here */
+    /* sem vložiť premenné tmavého režimu */
   }
 }
-
-/* Fallback for older browsers or manual mode */
-body.dark {
-  /* Dark mode variables go here */
-}
 ```
 
-With the variables targeting the `body.dark` selector, all that is needed now is to add the class to the `<body>` in the app. This can be done in a variety of ways depending on the framework your app is built with.
+V súčasnosti má media query `prefers-color-scheme` [podporu prehliadačov](https://caniuse.com/#feat=prefers-color-scheme).
 
-Notice that the variables should be in both places in this example. We can [use JavaScript](#combining-with-javascript) in order to avoid setting the variables in two places.
+## Úprava systémového UI
 
-## Combining with JavaScript
+Pri vývoji tmavej témy si môžete všimnúť, že niektoré systémové komponenty používateľského rozhrania sa neprispôsobujú tmavému režimu správne. To fix this you will need to specify the `color-scheme`. See the <a href="https://caniuse.com/#feat=mdn-html_elements_meta_name_color-scheme" target="_blank" >kompatibilita prehliadačov pre color-scheme</a> for details on cross browser support.
 
-In order to keep the CSS variables written once and avoid having to update them in multiple places, the fallback and class can be combined by using JavaScript to check the value of the `prefers-color-scheme` media query and adding the `dark` class if the preference is `dark`. Here's what the CSS would look like:
-
-```css
-body.dark {
-  /* Dark mode variables go here */
-}
-```
-
-Notice that the variables above are only in the `body.dark` selector now, and the `prefers-color-scheme` media query has been removed.
-
-### Automatically Enable Dark Mode
-
-In the JavaScript, the `dark` class can be added to the `<body>` by checking if the document matches the media query using [matchMedia()](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia). This will enable dark mode to still work based on the user preference.
-
-```javascript
-// Use matchMedia to check the user preference
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-
-toggleDarkTheme(prefersDark.matches);
-
-// Listen for changes to the prefers-color-scheme media query
-prefersDark.addEventListener('change', (mediaQuery) => toggleDarkTheme(mediaQuery.matches));
-
-// Add or remove the "dark" class based on if the media query matches
-function toggleDarkTheme(shouldAdd) {
-  document.body.classList.toggle('dark', shouldAdd);
-}
-```
-
-:::note
-Tip: make sure to view the Codepen below in a [supported browser](https://caniuse.com/#feat=prefers-color-scheme) and then try changing the system preferences on your device between light & dark mode. Here's [how to enable dark mode on Windows 10](https://blogs.windows.com/windowsexperience/2016/08/08/windows-10-tip-personalize-your-pc-by-enabling-the-dark-theme/) and [how to enable it on a Mac](https://support.apple.com/en-us/HT208976).
-:::
-
-<!-- Codepen https://codepen.io/ionic/pen/jONzJpG -->
-
-<Codepen preview="false" user="ionic" slug="jONzJpG" height="550px" default-tab="js,result" />
-
-### Manually Toggle Dark Mode
-
-In addition to calling `toggleDarkTheme()` when the app loads and when the media query changes, the `toggleDarkTheme()` function could be called by the app, such as when a user changes a toggle, to switch between the light and dark themes:
-
-```javascript
-// Query for the toggle that is used to change between themes
-const toggle = document.querySelector('#themeToggle');
-
-// Listen for the toggle check/uncheck to toggle the dark class on the <body>
-toggle.addEventListener('ionChange', (ev) => {
-  document.body.classList.toggle('dark', ev.detail.checked);
-});
-
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-
-// Listen for changes to the prefers-color-scheme media query
-prefersDark.addEventListener('change', (e) => checkToggle(e.matches));
-
-// Called when the app loads
-function loadApp() {
-  checkToggle(prefersDark.matches);
-}
-
-// Called by the media query to check/uncheck the toggle
-function checkToggle(shouldCheck) {
-  toggle.checked = shouldCheck;
-}
-```
-
-<!-- Codepen https://codepen.io/ionic/pen/zYOpQLj -->
-
-<Codepen preview="false" user="ionic" slug="zYOpQLj" height="600px" default-tab="js,result" />
-
-## Adjusting System UI Components
-
-When developing a dark theme, you may notice that certain system UI components are not adjusting to dark mode properly. To fix this you will need to specify the `color-scheme`. See the <a href="https://caniuse.com/#feat=mdn-html_elements_meta_name_color-scheme" target="_blank">browser compatibility for color-scheme</a> for details on cross browser support.
-
-While you may be mainly using Ionic components instead of only native components, `color-scheme` can also affect aspects of your application such as the scrollbar. In order to use `color-scheme` you will need to add the following HTML to the `head` of your application:
+Hoci možno používate hlavne komponenty Elements a nie iba natívne komponenty, `color-scheme` môže ovplyvniť aj také aspekty vašej aplikácie, ako je napríklad scroll bar. Aby ste mohli používať `color-scheme`, budete musieť pridať nasledujúce HTML do `head` vašej aplikácie:
 
 ```html
 <meta name="color-scheme" content="light dark" />
 ```
 
-This allows the page to indicate which color scheme it is comfortable being rendered with. Alternatively, you can add the following CSS to do this on a per-element basis:
+To umožní stránke označiť, ktorá farebná schéma jej vyhovuje pri vykresľovaní. Alternatively, you can add the following CSS to do this on a per-element basis:
 
 ```css
 color-scheme: light dark;
 ```
 
-| Default scrollbar                                                        | Scrollbar with `color-scheme`                                        |
+| Predvolený scrollbar | Scrollbar s `color-scheme` |
 | ------------------------------------------------------------------------ | -------------------------------------------------------------------- |
-| ![Application without color-scheme](/img/theming/color-scheme-light.png) | ![Application with color-scheme](/img/theming/color-scheme-dark.png) |
+| ![Aplikácia bez color-scheme](/img/theming/color-scheme-light.png) | ![Aplikácia s color-scheme](/img/theming/color-scheme-dark.png) |
 
-For more information regarding `color-scheme` please see https://web.dev/color-scheme/.
+Viac informácií o `color-scheme` nájdete na adrese https://web.dev/color-scheme/.
 
-:::note
-`color-scheme` does not apply to the keyboard. For details on how dark mode works with the keyboard, see [Keyboard Documentation](../developing/keyboard.md#dark-mode).
+:::poznámka
+Vývojári, ktorí chcú prispôsobiť farbu motívu pod stavovým riadkom v Safari v systéme iOS 15 alebo panela nástrojov v Safari v systéme macOS, si môžu pozrieť [`theme-color` Meta](./advanced.md#theme-color-meta).
 :::
 
-:::note
-For developers looking to customize the theme color under the status bar in Safari on iOS 15 or the toolbar in Safari on macOS, see [`theme-color` Meta](./advanced.md#theme-color-meta).
-:::
+## WebJET Tmavý režim
 
-## Ionic Dark Theme
+WebJET Elements má odporúčanú šablónu premenných, ktorú môžete použiť na vytvorenie tmavého režimu.
 
-Ionic has a recommended theme for variables to use in order to get a dark mode based on the device running the app. It can be broken down into the following parts:
+Nasledujúci kód môžete skopírovať a vložiť do aplikácie, aby ste získali tmavú tému WebJET Elements. Triedu `dark` pridáme do body pomocou JavaScriptu, ako je uvedené v časti [kombinovanie s JavaScriptom](#combining-with-javascript). Tmavý režim nebude povolený, kým sa do body nepridá trieda `dark`.
 
-1. Changing the default [Ionic colors](colors.md) for all [modes](platform-styles.md#ionic-modes) to complement the dark background in the `body.dark` selector.
-1. Setting variables for the dark theme on `ios` devices.
-1. Setting variables for the dark theme on `md` devices.
-
-The following code can be copied and pasted into an app to get Ionic's dark theme. We add the `dark` class to the document body using JavaScript as mentioned in the [combining with JavaScript](#combining-with-javascript) section. The dark mode will not be enabled until the `dark` class is added to the document body.
-
-:::note
-For more information on the variables that are being changed, including other variables that can be added to further customize, see [Themes](themes.md).
+:::poznámka
+Viac informácií o premenných, ktoré sa menia, vrátane ďalších premenných, ktoré možno pridať na ďalšie prispôsobenie, nájdete v časti [Šablóny](themes.md).
 :::
 
 ```css
 /*
- * Dark Colors
+ * Dark mode
  * -------------------------------------------
  */
 
-body.dark {
-  --ion-color-primary: #428cff;
-  --ion-color-primary-rgb: 66, 140, 255;
-  --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3a7be0;
-  --ion-color-primary-tint: #5598ff;
+:host,
+.wj-theme-dark,
+.dark {
+  color-scheme: dark;
 
-  --ion-color-secondary: #50c8ff;
-  --ion-color-secondary-rgb: 80, 200, 255;
-  --ion-color-secondary-contrast: #ffffff;
-  --ion-color-secondary-contrast-rgb: 255, 255, 255;
-  --ion-color-secondary-shade: #46b0e0;
-  --ion-color-secondary-tint: #62ceff;
+  --wj-font-size-x-small: 0.625rem;
+  --wj-font-size-small: 0.75rem;
+  --wj-font-size: 0.875rem;
+  --wj-font-size-medium: 1rem;
+  --wj-font-size-large:	1.25rem;
+  --wj-font-size-x-large: 1.5rem;
+  --wj-font-size-2x-large: 2.25rem;
+  --wj-font-size-3x-large: 3rem;
+  --wj-font-size-4x-large: 4.5rem;
 
-  --ion-color-tertiary: #6a64ff;
-  --ion-color-tertiary-rgb: 106, 100, 255;
-  --ion-color-tertiary-contrast: #ffffff;
-  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
-  --ion-color-tertiary-shade: #5d58e0;
-  --ion-color-tertiary-tint: #7974ff;
+  --wj-line-height: 21px;
 
-  --ion-color-success: #2fdf75;
-  --ion-color-success-rgb: 47, 223, 117;
-  --ion-color-success-contrast: #000000;
-  --ion-color-success-contrast-rgb: 0, 0, 0;
-  --ion-color-success-shade: #29c467;
-  --ion-color-success-tint: #44e283;
+  --wj-border-radius-small: .25rem; // 4px
+  --wj-border-radius-medium: .5rem; // 8px
+  --wj-border-radius-large: .75rem; // 2px
+  --wj-border-radius-x-large: 1rem; // 16px
+  --wj-border-radius-circle: 50%;
+  --wj-border-radius-pill: 50rem;
 
-  --ion-color-warning: #ffd534;
-  --ion-color-warning-rgb: 255, 213, 52;
-  --ion-color-warning-contrast: #000000;
-  --ion-color-warning-contrast-rgb: 0, 0, 0;
-  --ion-color-warning-shade: #e0bb2e;
-  --ion-color-warning-tint: #ffd948;
+  --wj-border-size: 0px;
+  --wj-border-style: solid;
 
-  --ion-color-danger: #ff4961;
-  --ion-color-danger-rgb: 255, 73, 97;
-  --ion-color-danger-contrast: #ffffff;
-  --ion-color-danger-contrast-rgb: 255, 255, 255;
-  --ion-color-danger-shade: #e04055;
-  --ion-color-danger-tint: #ff5b71;
+  --wj-box-shadow-medium: 0 1px 8px rgba(0,0,0,0.5);
+  --wj-box-shadow-large: rgba(0, 0, 0, 0.12) 0 4px 16px;
 
-  --ion-color-dark: #f4f5f8;
-  --ion-color-dark-rgb: 244, 245, 248;
-  --ion-color-dark-contrast: #000000;
-  --ion-color-dark-contrast-rgb: 0, 0, 0;
-  --ion-color-dark-shade: #d7d8da;
-  --ion-color-dark-tint: #f5f6f9;
+  --wj-backdrop: rgb(0, 0, 0);
+  --wj-backdrop-opacity: .3;
 
-  --ion-color-medium: #989aa2;
-  --ion-color-medium-rgb: 152, 154, 162;
-  --ion-color-medium-contrast: #000000;
-  --ion-color-medium-contrast-rgb: 0, 0, 0;
-  --ion-color-medium-shade: #86888f;
-  --ion-color-medium-tint: #a2a4ab;
+  /*
+  * Dark Colors
+  * -------------------------------------------
+  */
+  --wj-color: var(--wj-color-contrast-11);
+  --wj-color-dark: hsl(0, 0%, 29%);
+  --wj-color-light: hsl(0 0% 95%);
+  --wj-background: hsl(218, 57%, 3%);//hsl(223, 15%, 18%);
+  --wj-border-color: var(--wj-color-contrast-4);
 
-  --ion-color-light: #222428;
-  --ion-color-light-rgb: 34, 36, 40;
-  --ion-color-light-contrast: #ffffff;
-  --ion-color-light-contrast-rgb: 255, 255, 255;
-  --ion-color-light-shade: #1e2023;
-  --ion-color-light-tint: #383a3e;
-}
+  --wj-card-background: var(--wj-color-contrast-3);
+  --wj-card-color: var(--wj-color-white) !important;
 
-/*
- * iOS Dark Theme
- * -------------------------------------------
- */
+  --wj-color-primary: var(--wj-color-primary-1);
+  --wj-color-complete: var(--wj-color-complete-1);
+  --wj-color-success: var(--wj-color-success-1);
+  --wj-color-warning: var(--wj-color-warning-1);
+  --wj-color-danger: var(--wj-color-danger-1);
+  --wj-color-info: var(--wj-color-info-1);
+  --wj-color-menu: hsl(220, 15%, 15%);
+  --wj-color-contrast: hsl(210, 11%, 15%); //#2b303b;
 
-.ios body.dark {
-  --ion-background-color: #000000;
-  --ion-background-color-rgb: 0, 0, 0;
+  --wj-color-white: #fff;
+  --wj-color-black: #000;
 
-  --ion-text-color: #ffffff;
-  --ion-text-color-rgb: 255, 255, 255;
+  /*
+  * Dark Contrast
+  * -------------------------------------------
+  */
+  --wj-color-contrast-lowest: hsl(0, 0%, 0%); //rgba(0, 0, 0, 1); //#000000
+  --wj-color-contrast-lower: hsl(0, 0%, 13%); //rgba(33, 33, 33, 1); //#212121
+  --wj-color-contrast-low: hsl(0, 0%, 29%); //rgba(33, 33, 33, 0.81); //#4b4b4b
+  --wj-color-contrast-medium: hsl(0, 0%, 46%); //rgba(33, 33, 33, 0.62); //#757575
+  --wj-color-contrast-high: hsl(0, 0%, 88%); //rgba(33, 33, 33, 0.14); //#e0e0e0
+  --wj-color-contrast-highter: hsl(0, 0%, 96%); //rgba(33, 33, 33, 0.05); //#f4f4f4
+  --wj-color-contrast-highest: hsl(0, 0%, 100%); //rgba(255, 255, 255, 1); //#ffffff
 
-  --ion-color-step-50: #0d0d0d;
-  --ion-color-step-100: #1a1a1a;
-  --ion-color-step-150: #262626;
-  --ion-color-step-200: #333333;
-  --ion-color-step-250: #404040;
-  --ion-color-step-300: #4d4d4d;
-  --ion-color-step-350: #595959;
-  --ion-color-step-400: #666666;
-  --ion-color-step-450: #737373;
-  --ion-color-step-500: #808080;
-  --ion-color-step-550: #8c8c8c;
-  --ion-color-step-600: #999999;
-  --ion-color-step-650: #a6a6a6;
-  --ion-color-step-700: #b3b3b3;
-  --ion-color-step-750: #bfbfbf;
-  --ion-color-step-800: #cccccc;
-  --ion-color-step-850: #d9d9d9;
-  --ion-color-step-900: #e6e6e6;
-  --ion-color-step-950: #f2f2f2;
 
-  --ion-item-background: #000000;
+  --wj-color-contrast-0: hsl(0, 0%, 0%);
+  --wj-color-contrast-1: hsl(240 5.1% 15%);
+  --wj-color-contrast-2: hsl(240 5.7% 18.2%);
+  --wj-color-contrast-3: hsl(240 4.6% 22%);
+  --wj-color-contrast-4: hsl(240 5% 27.6%);
+  --wj-color-contrast-5: hsl(240 5% 35.5%);
+  --wj-color-contrast-6: hsl(240 3.7% 44%);
+  --wj-color-contrast-7: hsl(240 5.3% 58%);
+  --wj-color-contrast-8: hsl(240 5.6% 73%);
+  --wj-color-contrast-9: hsl(240 7.3% 84%);
+  --wj-color-contrast-10: hsl(240 9.1% 91.8%);
+  --wj-color-contrast-11: hsl(0 0% 95%);
 
-  --ion-card-background: #1c1c1d;
-}
+  //--wj-color-contrast-0: hsl(0, 0%, 0%);
+  //--wj-color-contrast-1: hsl(0, 0%, 10%);
+  //--wj-color-contrast-2: hsl(0, 0%, 17%);
+  //--wj-color-contrast-3: hsl(0, 0%, 25%);
+  //--wj-color-contrast-4: hsl(0, 0%, 33%);
+  //--wj-color-contrast-5: hsl(0, 0%, 42%);
+  //--wj-color-contrast-6: hsl(0, 0%, 50%);
+  //--wj-color-contrast-7: hsl(0, 0%, 60%);
+  //--wj-color-contrast-8: hsl(0, 0%, 69%);
+  //--wj-color-contrast-9: hsl(0, 0%, 79%);
+  //--wj-color-contrast-10: hsl(0, 0%, 89%);
+  //--wj-color-contrast-11: hsl(0, 0%, 100%);
 
-.ios body.dark ion-modal {
-  --ion-background-color: var(--ion-color-step-100);
-  --ion-toolbar-background: var(--ion-color-step-150);
-  --ion-toolbar-border-color: var(--ion-color-step-250);
-  --ion-item-background: var(--ion-color-step-150);
-}
+  // PRIMARY
+  --wj-color-primary-1: hsl(254, 59%, 57%);
+  --wj-color-primary-2: hsl(256, 59%, 61%);
+  --wj-color-primary-3: hsl(257, 60%, 65%);
+  --wj-color-primary-4: hsl(257, 61%, 68%);
+  --wj-color-primary-5: hsl(258, 61%, 72%);
+  --wj-color-primary-6: hsl(259, 61%, 76%);
+  --wj-color-primary-7: hsl(260, 63%, 80%);
+  --wj-color-primary-8: hsl(260, 62%, 84%);
+  --wj-color-primary-9: hsl(260, 63%, 88%);
+  --wj-color-primary-10: hsl(260, 65%, 92%);
+  --wj-color-primary-11: hsl(261, 70%, 96%);
 
-/*
- * Material Design Dark Theme
- * -------------------------------------------
- */
+  // COMPLETE
+  --wj-color-complete-1: hsl(211, 100%, 46%);
+  --wj-color-complete-2: hsl(218, 83%, 59%);
+  --wj-color-complete-3: hsl(221, 83%, 65%);
+  --wj-color-complete-4: hsl(223, 83%, 70%);
+  --wj-color-complete-5: hsl(225, 83%, 74%);
+  --wj-color-complete-6: hsl(226, 83%, 78%);
+  --wj-color-complete-7: hsl(227, 84%, 82%);
+  --wj-color-complete-8: hsl(229, 85%, 86%);
+  --wj-color-complete-9: hsl(229, 84%, 89%);
+  --wj-color-complete-10: hsl(229, 88%, 93%);
+  --wj-color-complete-11: hsl(232, 88%, 96%);
 
-.md body.dark {
-  --ion-background-color: #121212;
-  --ion-background-color-rgb: 18, 18, 18;
+  // SUCCESS
+  --wj-color-success-1: hsl(158, 74%, 38%);
+  --wj-color-success-2: hsl(155, 48%, 47%);
+  --wj-color-success-3: hsl(153, 42%, 54%);
+  --wj-color-success-4: hsl(152, 42%, 59%);
+  --wj-color-success-5: hsl(151, 42%, 65%);
+  --wj-color-success-6: hsl(150, 41%, 70%);
+  --wj-color-success-7: hsl(149, 42%, 75%);
+  --wj-color-success-8: hsl(150, 41%, 80%);
+  --wj-color-success-9: hsl(149, 41%, 85%);
+  --wj-color-success-10: hsl(148, 42%, 90%);
+  --wj-color-success-11: hsl(147, 44%, 95%);
 
-  --ion-text-color: #ffffff;
-  --ion-text-color-rgb: 255, 255, 255;
+  // WARNING
+  --wj-color-warning-1: hsl(47, 100%, 63%);
+  --wj-color-warning-2: hsl(47, 100%, 67%);
+  --wj-color-warning-3: hsl(47, 100%, 71%);
+  --wj-color-warning-4: hsl(47, 100%, 74%);
+  --wj-color-warning-5: hsl(46, 100%, 77%);
+  --wj-color-warning-6: hsl(46, 100%, 81%);
+  --wj-color-warning-7: hsl(46, 100%, 84%);
+  --wj-color-warning-8: hsl(46, 100%, 87%);
+  --wj-color-warning-9: hsl(46, 100%, 90%);
+  --wj-color-warning-10: hsl(46, 100%, 93%);
+  --wj-color-warning-11: hsl(44, 100%, 96%);
 
-  --ion-border-color: #222222;
+  // DANGER
+  --wj-color-danger-1: hsl(3, 68%, 51%);
+  --wj-color-danger-2: hsl(6, 71%, 56%);
+  --wj-color-danger-3: hsl(7, 73%, 61%);
+  --wj-color-danger-4: hsl(8, 77%, 65%);
+  --wj-color-danger-5: hsl(8, 80%, 70%);
+  --wj-color-danger-6: hsl(10, 82%, 74%);
+  --wj-color-danger-7: hsl(9, 86%, 79%);
+  --wj-color-danger-8: hsl(10, 90%, 83%);
+  --wj-color-danger-9: hsl(11, 93%, 87%);
+  --wj-color-danger-10: hsl(11, 100%, 91%);
+  --wj-color-danger-11: hsl(9, 100%, 96%);
 
-  --ion-color-step-50: #1e1e1e;
-  --ion-color-step-100: #2a2a2a;
-  --ion-color-step-150: #363636;
-  --ion-color-step-200: #414141;
-  --ion-color-step-250: #4d4d4d;
-  --ion-color-step-300: #595959;
-  --ion-color-step-350: #656565;
-  --ion-color-step-400: #717171;
-  --ion-color-step-450: #7d7d7d;
-  --ion-color-step-500: #898989;
-  --ion-color-step-550: #949494;
-  --ion-color-step-600: #a0a0a0;
-  --ion-color-step-650: #acacac;
-  --ion-color-step-700: #b8b8b8;
-  --ion-color-step-750: #c4c4c4;
-  --ion-color-step-800: #d0d0d0;
-  --ion-color-step-850: #dbdbdb;
-  --ion-color-step-900: #e7e7e7;
-  --ion-color-step-950: #f3f3f3;
+// INFO
+  --wj-color-info-1: hsl(208, 16%, 27%);
+  --wj-color-info-2: hsl(208, 12%, 33%);
+  --wj-color-info-3: hsl(210, 9%, 39%);
+  --wj-color-info-4: hsl(210, 7%, 45%);
+  --wj-color-info-5: hsl(210, 6%, 52%);
+  --wj-color-info-6: hsl(207, 6%, 58%);
+  --wj-color-info-7: hsl(212, 6%, 65%);
+  --wj-color-info-8: hsl(206, 6%, 71%);
+  --wj-color-info-9: hsl(210, 7%, 78%);
+  --wj-color-info-10: hsl(204, 6%, 85%);
+  --wj-color-info-11: hsl(210, 5%, 92%);
 
-  --ion-item-background: #1e1e1e;
 
-  --ion-toolbar-background: #1f1f1f;
+  // PRIMARY
+  --wj-color-primary-lighter: #eae0fb;
+  --wj-color-primary-light: #845ae0;
+  --wj-color-primary-dark: #4e37b6;
+  --wj-color-primary-darker: #2d218f;
 
-  --ion-tab-bar-background: #1f1f1f;
+  // SUCCESS
+  --wj-color-success-lighter: #d6f7f0;
+  --wj-color-success-light: #26bf93;
+  --wj-color-success-dark: #0d935b;
+  --wj-color-success-darker: #04733e;
 
-  --ion-card-background: #1e1e1e;
+  // COMPLETE
+  --wj-color-complete-lighter: #d3eeff;
+  --wj-color-complete-light: #0f8ff9;
+  --wj-color-complete-dark: #004fbf;
+  --wj-color-complete-darker: #00318e;
+
+  // WARNING
+  --wj-color-warning-lighter: #fffde1;
+  --wj-color-warning-light: #ffe858;
+  --wj-color-warning-dark: #daab2d;
+  --wj-color-warning-darker: #aa7918;
+
+  // DANGER
+  --wj-color-danger-lighter: #fde2da;
+  --wj-color-danger-light: #e6533c;
+  --wj-color-danger-dark: #b91e1e;
+  --wj-color-danger-darker: #900f17;
+
+  // INFO
+  --wj-color-info-lighter: #dbe6e8;
+  --wj-color-info-light: #475b6b;
+  --wj-color-info-dark: #2b3947;
+  --wj-color-info-darker: #1b2839;
+
+  // CONTRAST A
+  --wj-color-contrast-lower-a: rgba(33, 33, 33, 0.05); //#f4f4f4
+  --wj-color-contrast-low-a: rgba(33, 33, 33, 0.14); // #e0e0e0
+  --wj-color-contrast-medium-a: rgba(33, 33, 33, 0.62); //#757575
+  --wj-color-contrast-high-a: rgba(33, 33, 33, 0.81); //#4b4b4b
 }
 ```

@@ -15,6 +15,8 @@ import Slots from '@ionic-internal/component-api/v1/radio-group/slots.md';
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
+<EncapsulationPill type="shadow" />
+
 RadioGroup slúži ako kontajner pre skupinu [rádio](./radio) tlačidiel.
 Umožňuje používateľom vybrať jednu možnosť zo súboru možností, pričom sa zabezpečí, že v danom okamihu bude vybrané iba jedno rádiové tlačidlo v rámci skupiny. Komponent podporuje atribút `inline`, ktorý po nastavení usporiada rádiové tlačidlá v horizontálnom rozložení. Okrem toho programovo spravuje atribút `value`, ktorý reflektuje hodnotu práve vybraného rádiového tlačidla.
 

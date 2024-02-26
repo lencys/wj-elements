@@ -1,0 +1,293 @@
+---
+title: Tmavý režim
+initialTab: preview
+inlineHtmlPreviews: true
+---
+
+import Codepen from '@components/global/Codepen';
+
+
+  <title>Tmavý režim </title>
+  <meta
+    name="description"
+    content="Tmavý režim v Elements je funkcia, ktorá umožňuje prepnúť farebnú schému stránok a komponentov na tmavšie odtiene, čo zlepšuje pohodlie používateľov v tmavších priestoroch a ponúka alternatívny estetický vzhľad. "
+  />
+
+
+Tmavý režim v Elements je funkcia, ktorá umožňuje prepnúť farebnú schému stránok a komponentov na tmavšie odtiene, čo zlepšuje pohodlie používateľov v tmavších priestoroch a ponúka alternatívny estetický vzhľad.
+
+## Použitím media query
+
+Prvým spôsobom, ako zapnúť tmavý režim, je použitie [CSS media query pre používateľom preferovanú farebnú schému](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme). Tento media query sa napojí na systémové nastavenie zariadenia používateľa a použije tému, ak je tmavý režim povolený.
+
+```css
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* sem vložiť premenné tmavého režimu */
+  }
+}
+```
+
+V súčasnosti má media query `prefers-color-scheme` [podporu prehliadačov](https://caniuse.com/#feat=prefers-color-scheme).
+
+## Úprava systémového UI
+
+Pri vývoji tmavej témy si môžete všimnúť, že niektoré systémové komponenty používateľského rozhrania sa neprispôsobujú tmavému režimu správne. To fix this you will need to specify the `color-scheme`. See the <a href="https://caniuse.com/#feat=mdn-html_elements_meta_name_color-scheme" target="_blank" >kompatibilita prehliadačov pre color-scheme</a> for details on cross browser support.
+
+Hoci možno používate hlavne komponenty Elements a nie iba natívne komponenty, `color-scheme` môže ovplyvniť aj také aspekty vašej aplikácie, ako je napríklad scroll bar. Aby ste mohli používať `color-scheme`, budete musieť pridať nasledujúce HTML do `head` vašej aplikácie:
+
+```html
+<meta name="color-scheme" content="light dark" />
+```
+
+To umožní stránke označiť, ktorá farebná schéma jej vyhovuje pri vykresľovaní. Alternatively, you can add the following CSS to do this on a per-element basis:
+
+```css
+color-scheme: light dark;
+```
+
+| Predvolený scrollbar                                               | Scrollbar s `color-scheme`                                      |
+| ------------------------------------------------------------------ | --------------------------------------------------------------- |
+| ![Aplikácia bez color-scheme](/img/theming/color-scheme-light.png) | ![Aplikácia s color-scheme](/img/theming/color-scheme-dark.png) |
+
+Viac informácií o `color-scheme` nájdete na adrese https\://web.dev/color-scheme/.
+
+:::poznámka
+Vývojári, ktorí chcú prispôsobiť farbu motívu pod stavovým riadkom v Safari v systéme iOS 15 alebo panela nástrojov v Safari v systéme macOS, si môžu pozrieť [`theme-color` Meta](./advanced.md#theme-color-meta).
+:::
+
+## WebJET Tmavý režim
+
+WebJET Elements má odporúčanú šablónu premenných, ktorú môžete použiť na vytvorenie tmavého režimu.
+
+Nasledujúci kód môžete skopírovať a vložiť do aplikácie, aby ste získali tmavú tému WebJET Elements. Triedu `dark` pridáme do body pomocou JavaScriptu, ako je uvedené v časti [kombinovanie s JavaScriptom](#combining-with-javascript). Tmavý režim nebude povolený, kým sa do body nepridá trieda `dark`.
+
+:::poznámka
+Viac informácií o premenných, ktoré sa menia, vrátane ďalších premenných, ktoré možno pridať na ďalšie prispôsobenie, nájdete v časti [Šablóny](themes.md).
+:::
+
+```css
+/*
+ * Dark mode
+ * -------------------------------------------
+ */
+
+:host,
+.wj-theme-dark,
+.dark {
+  color-scheme: dark;
+
+  --wj-font-size-x-small: 0.625rem;
+  --wj-font-size-small: 0.75rem;
+  --wj-font-size: 0.875rem;
+  --wj-font-size-medium: 1rem;
+  --wj-font-size-large:	1.25rem;
+  --wj-font-size-x-large: 1.5rem;
+  --wj-font-size-2x-large: 2.25rem;
+  --wj-font-size-3x-large: 3rem;
+  --wj-font-size-4x-large: 4.5rem;
+
+  --wj-line-height: 21px;
+
+  --wj-border-radius-small: .25rem; // 4px
+  --wj-border-radius-medium: .5rem; // 8px
+  --wj-border-radius-large: .75rem; // 2px
+  --wj-border-radius-x-large: 1rem; // 16px
+  --wj-border-radius-circle: 50%;
+  --wj-border-radius-pill: 50rem;
+
+  --wj-border-size: 0px;
+  --wj-border-style: solid;
+
+  --wj-box-shadow-medium: 0 1px 8px rgba(0,0,0,0.5);
+  --wj-box-shadow-large: rgba(0, 0, 0, 0.12) 0 4px 16px;
+
+  --wj-backdrop: rgb(0, 0, 0);
+  --wj-backdrop-opacity: .3;
+
+  /*
+  * Dark Colors
+  * -------------------------------------------
+  */
+  --wj-color: var(--wj-color-contrast-11);
+  --wj-color-dark: hsl(0, 0%, 29%);
+  --wj-color-light: hsl(0 0% 95%);
+  --wj-background: hsl(218, 57%, 3%);//hsl(223, 15%, 18%);
+  --wj-border-color: var(--wj-color-contrast-4);
+
+  --wj-card-background: var(--wj-color-contrast-3);
+  --wj-card-color: var(--wj-color-white) !important;
+
+  --wj-color-primary: var(--wj-color-primary-1);
+  --wj-color-complete: var(--wj-color-complete-1);
+  --wj-color-success: var(--wj-color-success-1);
+  --wj-color-warning: var(--wj-color-warning-1);
+  --wj-color-danger: var(--wj-color-danger-1);
+  --wj-color-info: var(--wj-color-info-1);
+  --wj-color-menu: hsl(220, 15%, 15%);
+  --wj-color-contrast: hsl(210, 11%, 15%); //#2b303b;
+
+  --wj-color-white: #fff;
+  --wj-color-black: #000;
+
+  /*
+  * Dark Contrast
+  * -------------------------------------------
+  */
+  --wj-color-contrast-lowest: hsl(0, 0%, 0%); //rgba(0, 0, 0, 1); //#000000
+  --wj-color-contrast-lower: hsl(0, 0%, 13%); //rgba(33, 33, 33, 1); //#212121
+  --wj-color-contrast-low: hsl(0, 0%, 29%); //rgba(33, 33, 33, 0.81); //#4b4b4b
+  --wj-color-contrast-medium: hsl(0, 0%, 46%); //rgba(33, 33, 33, 0.62); //#757575
+  --wj-color-contrast-high: hsl(0, 0%, 88%); //rgba(33, 33, 33, 0.14); //#e0e0e0
+  --wj-color-contrast-highter: hsl(0, 0%, 96%); //rgba(33, 33, 33, 0.05); //#f4f4f4
+  --wj-color-contrast-highest: hsl(0, 0%, 100%); //rgba(255, 255, 255, 1); //#ffffff
+
+
+  --wj-color-contrast-0: hsl(0, 0%, 0%);
+  --wj-color-contrast-1: hsl(240 5.1% 15%);
+  --wj-color-contrast-2: hsl(240 5.7% 18.2%);
+  --wj-color-contrast-3: hsl(240 4.6% 22%);
+  --wj-color-contrast-4: hsl(240 5% 27.6%);
+  --wj-color-contrast-5: hsl(240 5% 35.5%);
+  --wj-color-contrast-6: hsl(240 3.7% 44%);
+  --wj-color-contrast-7: hsl(240 5.3% 58%);
+  --wj-color-contrast-8: hsl(240 5.6% 73%);
+  --wj-color-contrast-9: hsl(240 7.3% 84%);
+  --wj-color-contrast-10: hsl(240 9.1% 91.8%);
+  --wj-color-contrast-11: hsl(0 0% 95%);
+
+  //--wj-color-contrast-0: hsl(0, 0%, 0%);
+  //--wj-color-contrast-1: hsl(0, 0%, 10%);
+  //--wj-color-contrast-2: hsl(0, 0%, 17%);
+  //--wj-color-contrast-3: hsl(0, 0%, 25%);
+  //--wj-color-contrast-4: hsl(0, 0%, 33%);
+  //--wj-color-contrast-5: hsl(0, 0%, 42%);
+  //--wj-color-contrast-6: hsl(0, 0%, 50%);
+  //--wj-color-contrast-7: hsl(0, 0%, 60%);
+  //--wj-color-contrast-8: hsl(0, 0%, 69%);
+  //--wj-color-contrast-9: hsl(0, 0%, 79%);
+  //--wj-color-contrast-10: hsl(0, 0%, 89%);
+  //--wj-color-contrast-11: hsl(0, 0%, 100%);
+
+  // PRIMARY
+  --wj-color-primary-1: hsl(254, 59%, 57%);
+  --wj-color-primary-2: hsl(256, 59%, 61%);
+  --wj-color-primary-3: hsl(257, 60%, 65%);
+  --wj-color-primary-4: hsl(257, 61%, 68%);
+  --wj-color-primary-5: hsl(258, 61%, 72%);
+  --wj-color-primary-6: hsl(259, 61%, 76%);
+  --wj-color-primary-7: hsl(260, 63%, 80%);
+  --wj-color-primary-8: hsl(260, 62%, 84%);
+  --wj-color-primary-9: hsl(260, 63%, 88%);
+  --wj-color-primary-10: hsl(260, 65%, 92%);
+  --wj-color-primary-11: hsl(261, 70%, 96%);
+
+  // COMPLETE
+  --wj-color-complete-1: hsl(211, 100%, 46%);
+  --wj-color-complete-2: hsl(218, 83%, 59%);
+  --wj-color-complete-3: hsl(221, 83%, 65%);
+  --wj-color-complete-4: hsl(223, 83%, 70%);
+  --wj-color-complete-5: hsl(225, 83%, 74%);
+  --wj-color-complete-6: hsl(226, 83%, 78%);
+  --wj-color-complete-7: hsl(227, 84%, 82%);
+  --wj-color-complete-8: hsl(229, 85%, 86%);
+  --wj-color-complete-9: hsl(229, 84%, 89%);
+  --wj-color-complete-10: hsl(229, 88%, 93%);
+  --wj-color-complete-11: hsl(232, 88%, 96%);
+
+  // SUCCESS
+  --wj-color-success-1: hsl(158, 74%, 38%);
+  --wj-color-success-2: hsl(155, 48%, 47%);
+  --wj-color-success-3: hsl(153, 42%, 54%);
+  --wj-color-success-4: hsl(152, 42%, 59%);
+  --wj-color-success-5: hsl(151, 42%, 65%);
+  --wj-color-success-6: hsl(150, 41%, 70%);
+  --wj-color-success-7: hsl(149, 42%, 75%);
+  --wj-color-success-8: hsl(150, 41%, 80%);
+  --wj-color-success-9: hsl(149, 41%, 85%);
+  --wj-color-success-10: hsl(148, 42%, 90%);
+  --wj-color-success-11: hsl(147, 44%, 95%);
+
+  // WARNING
+  --wj-color-warning-1: hsl(47, 100%, 63%);
+  --wj-color-warning-2: hsl(47, 100%, 67%);
+  --wj-color-warning-3: hsl(47, 100%, 71%);
+  --wj-color-warning-4: hsl(47, 100%, 74%);
+  --wj-color-warning-5: hsl(46, 100%, 77%);
+  --wj-color-warning-6: hsl(46, 100%, 81%);
+  --wj-color-warning-7: hsl(46, 100%, 84%);
+  --wj-color-warning-8: hsl(46, 100%, 87%);
+  --wj-color-warning-9: hsl(46, 100%, 90%);
+  --wj-color-warning-10: hsl(46, 100%, 93%);
+  --wj-color-warning-11: hsl(44, 100%, 96%);
+
+  // DANGER
+  --wj-color-danger-1: hsl(3, 68%, 51%);
+  --wj-color-danger-2: hsl(6, 71%, 56%);
+  --wj-color-danger-3: hsl(7, 73%, 61%);
+  --wj-color-danger-4: hsl(8, 77%, 65%);
+  --wj-color-danger-5: hsl(8, 80%, 70%);
+  --wj-color-danger-6: hsl(10, 82%, 74%);
+  --wj-color-danger-7: hsl(9, 86%, 79%);
+  --wj-color-danger-8: hsl(10, 90%, 83%);
+  --wj-color-danger-9: hsl(11, 93%, 87%);
+  --wj-color-danger-10: hsl(11, 100%, 91%);
+  --wj-color-danger-11: hsl(9, 100%, 96%);
+
+// INFO
+  --wj-color-info-1: hsl(208, 16%, 27%);
+  --wj-color-info-2: hsl(208, 12%, 33%);
+  --wj-color-info-3: hsl(210, 9%, 39%);
+  --wj-color-info-4: hsl(210, 7%, 45%);
+  --wj-color-info-5: hsl(210, 6%, 52%);
+  --wj-color-info-6: hsl(207, 6%, 58%);
+  --wj-color-info-7: hsl(212, 6%, 65%);
+  --wj-color-info-8: hsl(206, 6%, 71%);
+  --wj-color-info-9: hsl(210, 7%, 78%);
+  --wj-color-info-10: hsl(204, 6%, 85%);
+  --wj-color-info-11: hsl(210, 5%, 92%);
+
+
+  // PRIMARY
+  --wj-color-primary-lighter: #eae0fb;
+  --wj-color-primary-light: #845ae0;
+  --wj-color-primary-dark: #4e37b6;
+  --wj-color-primary-darker: #2d218f;
+
+  // SUCCESS
+  --wj-color-success-lighter: #d6f7f0;
+  --wj-color-success-light: #26bf93;
+  --wj-color-success-dark: #0d935b;
+  --wj-color-success-darker: #04733e;
+
+  // COMPLETE
+  --wj-color-complete-lighter: #d3eeff;
+  --wj-color-complete-light: #0f8ff9;
+  --wj-color-complete-dark: #004fbf;
+  --wj-color-complete-darker: #00318e;
+
+  // WARNING
+  --wj-color-warning-lighter: #fffde1;
+  --wj-color-warning-light: #ffe858;
+  --wj-color-warning-dark: #daab2d;
+  --wj-color-warning-darker: #aa7918;
+
+  // DANGER
+  --wj-color-danger-lighter: #fde2da;
+  --wj-color-danger-light: #e6533c;
+  --wj-color-danger-dark: #b91e1e;
+  --wj-color-danger-darker: #900f17;
+
+  // INFO
+  --wj-color-info-lighter: #dbe6e8;
+  --wj-color-info-light: #475b6b;
+  --wj-color-info-dark: #2b3947;
+  --wj-color-info-darker: #1b2839;
+
+  // CONTRAST A
+  --wj-color-contrast-lower-a: rgba(33, 33, 33, 0.05); //#f4f4f4
+  --wj-color-contrast-low-a: rgba(33, 33, 33, 0.14); // #e0e0e0
+  --wj-color-contrast-medium-a: rgba(33, 33, 33, 0.62); //#757575
+  --wj-color-contrast-high-a: rgba(33, 33, 33, 0.81); //#4b4b4b
+}
+```

@@ -9,8 +9,8 @@ import CustomProps from '@ionic-internal/component-api/v1/progress-bar/custom-pr
 import Slots from '@ionic-internal/component-api/v1/progress-bar/slots.md';
 
 <head>
-  <title>Progress Bar | Horizontal App Progress Bar for Loading Indicator</title>
-  <meta name="description" content="ion-progress-bars are horizontal loading indicators that inform users about the status of ongoing app processes—such as submitting a form or saving updates." />
+  <title>Progress Bar | Komponent na vizualizáciu priebehu</title>
+  <meta name="description" content="Progress Bar element je komponent navrhnutý na vizualizáciu priebehu. Ponúka možnosť vytvárať prispôsobiteľné kruhové alebo rovné ukazovatele s rôznymi možnosťami konfigurácie." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';

@@ -192,7 +192,7 @@ module.exports = {
       type: 'category',
       label: 'Layout',
       collapsed: false,
-      items: ['api/layout', 'api/aside', 'api/main', 'api/container'],//,'api/footer', 'api/header'
+      items: ['api/layout', 'api/aside', 'api/main', 'api/container','api/footer', 'api/header'],
     },
     {
       type: 'category',
