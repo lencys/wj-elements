@@ -35,8 +35,12 @@ export class Breadcrumbs extends WJElement {
         let itemsAfterCollapse = +this.itemsAfterCollapse || 1;
 
         let breadcrumbs = this.getBreadcrumbs();
+        // ak je praznde pole tak to ukoncime
+        if(breadcrumbs.length === 0)
+            return;
 
         let breadcrumb = breadcrumbs.findLast(e => e);
+
         breadcrumb.setAttribute("last", true);
 
         const shouldCollapse = maxItems !== undefined && breadcrumbs.length > maxItems && itemsBeforeCollapse + itemsAfterCollapse <= maxItems;
@@ -55,7 +59,7 @@ export class Breadcrumbs extends WJElement {
     }
 
     getBreadcrumbs() {
-        return Array.from(this.querySelectorAll('wj-breadcrumb'));
+        return Array.from(this.querySelectorAll('wj-breadcrumb')) || [];
     }
 }
 

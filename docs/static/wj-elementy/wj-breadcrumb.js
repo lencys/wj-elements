@@ -37,11 +37,14 @@ class Breadcrumb extends WJElement {
       if (WjElementUtils.stringToBoolean(newValue))
         this.classList.add("collapsed");
     } else if (name === "show-collapsed-indicator") {
-      if (WjElementUtils.stringToBoolean(newValue))
+      if (WjElementUtils.stringToBoolean(newValue)) {
         this.showCollapsedIndicator = true;
+        this.refresh();
+      }
     } else if (name === "last") {
       this.active = WjElementUtils.stringToBoolean(newValue);
       this.showSeparator = !WjElementUtils.stringToBoolean(newValue);
+      this.refresh();
     }
     return false;
   }
@@ -64,6 +67,7 @@ class Breadcrumb extends WJElement {
     native.appendChild(end);
     fragment.appendChild(native);
     if (this.showCollapsedIndicator) {
+      console.log("SOM TU");
       fragment.appendChild(this.drawCollapsedIndicator());
       this.classList.remove("collapsed");
       native.classList.add("hidden");

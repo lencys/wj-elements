@@ -29,6 +29,8 @@ class Breadcrumbs extends WJElement {
     let itemsBeforeCollapse = +this.itemsBeforeCollapse || 1;
     let itemsAfterCollapse = +this.itemsAfterCollapse || 1;
     let breadcrumbs = this.getBreadcrumbs();
+    if (breadcrumbs.length === 0)
+      return;
     let breadcrumb = breadcrumbs.findLast((e) => e);
     breadcrumb.setAttribute("last", true);
     const shouldCollapse = maxItems !== void 0 && breadcrumbs.length > maxItems && itemsBeforeCollapse + itemsAfterCollapse <= maxItems;
@@ -44,7 +46,7 @@ class Breadcrumbs extends WJElement {
     }
   }
   getBreadcrumbs() {
-    return Array.from(this.querySelectorAll("wj-breadcrumb"));
+    return Array.from(this.querySelectorAll("wj-breadcrumb")) || [];
   }
 }
 customElements.get("wj-breadcrumbs") || window.customElements.define("wj-breadcrumbs", Breadcrumbs);
