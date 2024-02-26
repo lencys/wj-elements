@@ -160,9 +160,9 @@ module.exports = {
       additionalLanguages: ['shell-session', 'http'],
     },
     algolia: {
-      appId: 'O9QSL985BS',
-      apiKey: 'ceb5366064b8fbf70959827cf9f69227',
-      indexName: 'ionicframework',
+      appId: 'W0DED3MH0V',
+      apiKey: '8423cfbc56b7dc0677817b93343eb914',
+      indexName: 'elements-webjet',
       contextualSearch: true,
     },
   },
