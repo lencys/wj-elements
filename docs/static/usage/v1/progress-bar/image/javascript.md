@@ -1,7 +1,7 @@
 ```html
 <wj-progress-bar progress="60" radius="20" stroke="3" color="danger" type="circle" shadow="open" class="wj-color-danger wj-color">
-    <wj-thumbnail shadow="open">
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg">
+    <wj-thumbnail circle>
+    <img alt="Silhouette of mountains" src="../../../../img/demos/thumbnail.svg">
     </wj-thumbnail>
     <style>
     wj-thumbnail {

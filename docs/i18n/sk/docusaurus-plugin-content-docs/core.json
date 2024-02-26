@@ -6672,7 +6672,30 @@
             "docs": "",
             "docsTags": [],
             "usage": {},
-            "props": [],
+            "props": [
+                {
+                    "name": "circle",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "circle",
+                    "reflectToAttr": false,
+                    "docs": "Nastaví na element zaoblenie pridaním css `\"border-radius: 50%\"`",
+                    "docsTags": [],
+                    "default": "false",
+                    "values": [
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                }
+            ],
             "methods": [],
             "events": [],
             "listeners": [],
