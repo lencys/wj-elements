@@ -12,6 +12,7 @@ module.exports = {
     'WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania využívajúca silu web komponentov, ktorá je určená na zjednodušenie vývoja webových aplikácií.',
   url: 'https://elements.webjet.sk',
   baseUrl: ``,
+  trailingSlash: true,
   i18n: {
     defaultLocale: 'sk',
     locales: ['sk'],
