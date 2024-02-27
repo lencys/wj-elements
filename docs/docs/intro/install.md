@@ -6,10 +6,7 @@ sidebar_label: Inštalácia
 
 <head>
   <title>Ako získať WebJET Elements pre svoj projekt</title>
-  <meta
-    name="description"
-    content="Zahrňte WebJET Elements do svojho projektu pomocou CDN alebo ho nainštalujte pomocou npm."
-  />
+  <meta name="description" content="Zahrňte WebJET Elements do svojho projektu pomocou CDN alebo ho nainštalujte pomocou npm." />
 </head>
 
 Zahrňte WebJET Elements do svojho projektu pomocou [CDN](#inštalácia-s-cdn) alebo ho nainštalujte pomocou [npm](#inštalácia-s-npm).

@@ -4,10 +4,7 @@ title: Konfigurácia prostredia
 
 <head>
   <title>Konfigurácia prostredia | Node & NPM Environment for WebJET App Setup</title>
-  <meta
-    name="description"
-    content="To get started with Ionic Framework, the only requirement is a Node & npm environment. Learn what environment setup is required for your Ionic apps."
-  />
+  <meta name="description" content="To get started with Ionic Framework, the only requirement is a Node & npm environment. Learn what environment setup is required for your Ionic apps." />
 </head>
 
 
