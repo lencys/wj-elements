@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/tooltip/custom-props.m
 import Slots from '@ionic-internal/component-api/v1/tooltip/slots.md';
 
 
-  <title>Tooltip |  Vyskakovacia nápoveda pri nájazde myšou</title>
+  <title>Tooltip | Mouseover popup tooltip</title>
   <meta name="description" content="Element Tooltip slúži na zobrazovanie vyskakovacej nápovedy pri nájazde myšou a je ho možné pripojiť k rôznym elementom webovej stránky. Je ľahko prispôsobiteľný pomocou atribútov pre obsah a umiestnenie." />
 
 
@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element `Tooltip` slúži na zobrazovanie vyskakovacej nápovedy pri nájazde myšou a je ho možné pripojiť k rôznym elementom webovej stránky. Je ľahko prispôsobiteľný pomocou atribútov pre obsah a umiestnenie. Tooltip sa zobrazí, keď používateľ prejde myšou nad cieľový element, a zmizne, keď myš element opustí.
+The `Tooltip` element is used to display a popup tooltip on mouseover and can be attached to various elements of a web page. It is easily customizable with attributes for content and location. The tooltip appears when the user hovers the mouse over the target element, and disappears when the mouse leaves the element.
 
 ## Basic Usage
 
@@ -26,15 +26,15 @@ import Basic from '@site/static/usage/v1/tooltip/basic/index.md';
 
 <Basic />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -42,10 +42,10 @@ import Basic from '@site/static/usage/v1/tooltip/basic/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

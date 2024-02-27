@@ -1,11 +1,12 @@
 ---
-title: WebJET Elementy
+title: WebJET Elements
 hide_table_of_contents: true
 ---
 
 import DocsCard from '@components/global/DocsCard';
 import DocsCards from '@components/global/DocsCards';
 
+<head>
 
   <title>UI Komponenty | Stavebné prvky aplikácie</title>
   <meta
@@ -25,9 +26,9 @@ import DocsCards from '@components/global/DocsCards';
     }
   `}</style>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@dddb1c19734498c5b2a17f2e6ed605d0cd40d02e/style.css" />
   <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@dddb1c19734498c5b2a17f2e6ed605d0cd40d02e/wj-master.js"></script>
 
+</head>
 
 WebJET Elements obsahuje širokú škálu komponentov, ktoré sú optimalizované pre webové rozhrania. Tieto komponenty pokrývajú rôzne funkcie a sú navrhnuté tak, aby sa dali ľahko integrovať do akejkoľvek webovej aplikácie.
 
@@ -293,7 +294,7 @@ WebJET Elements obsahuje širokú škálu komponentov, ktoré sú optimalizovan�
       <wj-card-title>Masonry</wj-card-title>
   </wj-card-header>
   <wj-card-content>
-  <p>Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a vyvolá sa napríklad kliknutím na tlačidlo.</p>
+  <p>Menu element slúži na zobrazenie navigácie. It is hidden by default and is called up, for example, by clicking a button.</p>
   </wj-card-content>
 </wj-card>
 </a>

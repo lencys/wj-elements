@@ -10,43 +10,43 @@ import CustomProps from '@ionic-internal/component-api/v1/infinite-scroll/custom
 import Slots from '@ionic-internal/component-api/v1/infinite-scroll/slots.md';
 
 
-  <title>Infinite Scroll | Komponent Nekonečného scrollovania</title>
+  <title>Infinite Scroll | Infinite Scroll Component</title>
   <meta name="description" content="Infinite Scroll umožňuje implementovať dynamické načítavanie dát, keď používatelia prechádzajú väčším množstvom obsahu. Element umožňuje zobraziť akýkoľvek obsah zo zvoleného koncového bodu (endpointu) bez toho, aby bola potrebná ďalšia interakcia, napríklad kliknutie na tlačidlo “Načítať viac” alebo na odkaz na ďalšiu stránku." />
 
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
-Infinite Scroll umožňuje implementovať dynamické načítavanie dát, keď používatelia prechádzajú väčším množstvom obsahu. Element umožňuje zobraziť akýkoľvek obsah zo zvoleného koncového bodu (endpointu) bez toho, aby bola potrebná ďalšia interakcia, napríklad kliknutie na tlačidlo “Načítať viac” alebo na odkaz na ďalšiu stránku. Komponent zároveň zobrazuje indikátor načítania (loader), aby informoval používateľov o načítavaní nového obsahu.
+Infinite Scroll allows you to implement dynamic data loading as users scroll through more content. The element allows you to view any content from a selected endpoint without requiring further interaction, such as clicking the "Load more" button or a link to the next page. The component also displays a loader indicator to inform users when new content is being loaded.
 
 import Basic from '@site/static/usage/v1/infinite-scroll/basic/index.md';
 
 <Basic />
 
-## Počet načítaných položiek (size)
+## Number of items loaded (size)
 
-Atribút `size` definuje počet položiek pri každom načítaní nového obsahu.
+The `size` attribute defines the number of items each time new content is loaded.
 
 import Size from '@site/static/usage/v1/infinite-scroll/size/index.md';
 
 <Size />
 
-## Vlastný obsah
+## Custom content
 
-Element Infinite scroll je možné použiť v kombinácii s akýmkoľvek Elements elementom. Napríklad `Card`.
+The Infinite scroll element can be used in combination with any Elements element. For example `Card`.
 
 import Custom from '@site/static/usage/v1/infinite-scroll/custom/index.md';
 
 <Custom />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -54,10 +54,10 @@ import Custom from '@site/static/usage/v1/infinite-scroll/custom/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

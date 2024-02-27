@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/button/custom-props.md
 import Slots from '@ionic-internal/component-api/v1/button/slots.md';
 
 
-  <title>Button | Tlačidlo</title>
+  <title>Button | Button</title>
   <meta name="description" content="Tlačidlá sú klikateľný element, ktorý umožnuje zobraziť text, ikonu, prípadne oboje. Tlačidlá si je možné jednoducho prispôsobiť použitím rôznych atribútov a CSS vlastností." />
 
 
@@ -18,11 +18,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Tlačidlá sú klikateľný element, ktorý umožňuje zobraziť text, ikonu, prípadne oboje. Tlačidlá si je možné jednoducho prispôsobiť použitím rôznych atribútov a CSS vlastností.
+Buttons are a clickable element that allows you to display text, an icon, or both. Buttons can be easily customized using various attributes and CSS properties.
 
-## Základné použitie
+## Basic Usage
 
-Ak chcete použiť komponent Button, zahrňte ho do HTML s požadovanými atribútmi. Pridaním atribútu `disabled` sa tlačidlo stane neaktívnym a nie je možné naň kliknúť.
+To use the Button component, include it in the HTML with the required attributes. Adding the `disabled` attribute makes the button inactive and unclickable.
 
 import Basic from '@site/static/usage/v1/button/basic/index.md';
 
@@ -32,79 +32,79 @@ import Basic from '@site/static/usage/v1/button/basic/index.md';
 
 <!-- Vlastnosť `toggle` umožňuje priradiť tlačidlu dva rôzne stavy a kliknutím medzi nimi prepínať. Nastavením jej hodnoty sa tlačidlu priradí predvolený stav. <br/>Musí obsahovať dva podradené elementy so `slot` s hodnotou `toggle`a tiež vlastnosť `state`, ktorou tlačidlu určíte dostupné hodnoty stavu. -->
 
-Vlastnosť `toggle` umožňuje priradiť tlačidlu dva rôzne stavy a kliknutím medzi nimi prepínať. Nastavením hodnoty sa tlačidlu priradí predvolený stav. <br/>Pre nastavenie dostupných stavov je potrebné pridať tlačidlu dva podradené elementy so slotom s hodnotou `toggle`a tiež s vlastnosťou `state`, ktorá tlačidlu určí samotnú hodnotu stavu.
+The `toggle` property allows you to assign two different states to a button and toggle between them with a click. Setting the value assigns a default state to the button. <br/>To set the available states, you need to add two child elements to the button with a `toggle` value slot and also with a `state` property, which determines the actual state value of the button.
 
 import Toggle from '@site/static/usage/v1/button/toggle/index.md';
 
 <Toggle />
 
-## Tvar tlačidla
+## The shape of the button
 
-Vlastnosť `round` umožňuje upraviť tvar tlačidla. V predvolenom nastavení sú tlačidlá obdĺžnikové s malým zaoblením okrajov. Pridaním tohto atribútu sa zaoblenie tlačidla zväčší.
+The `round` property allows you to adjust the shape of the button. By default, the buttons are rectangular with slightly rounded edges. Adding this attribute will increase the roundness of the button.
 
 import Shape from '@site/static/usage/v1/button/shape/index.md';
 
 <Shape />
 
-## Výplň tlačidla
+## Button filling
 
-Vlastnosť `Fill` určuje výplň pozadia a okraja tlačidla. V predvolenom nastavení majú tlačidlá jednoliate pozadie `solid`. Ďalšie možnosti sú `link` a `outline`.
+The `Fill` property specifies the background and border fill of the button. By default, the buttons have a `solid` background. Other options are `link` and `outline`.
 
 import Fill from '@site/static/usage/v1/button/fill/index.md';
 
 <Fill />
 
-## Veľkosť tlačidla
+## Button size
 
-Vlastnosť `size` určuje veľkosť tlačidla. Nastavením tejto vlastnosti sa zmení vnútorné odsadenie tlačidla.
+The `size` property specifies the size of the button. Setting this property will change the internal offset of the button.
 
 import Size from '@site/static/usage/v1/button/size/index.md';
 
 <Size />
 
-## Ikony tlačidla
+## Button icons
 
-V tlačidlách je možné zobraziť aj ikony vložením elementu `wj-icon`. Ich umiestnenie v rámci tlačidla upravíte pomocou atribútu slot a vlastnosti `start` alebo `end`. Ak tlačidlo neobsahuje žiaden text a skladá sa len z ikony, použite vlastnosť `icon-only`.
+Icons can also be displayed in buttons by inserting the `wj-icon` element. You modify their location within the button using the slot attribute and the `start` or `end` property. If the button contains no text and consists of an icon only, use the `icon-only` property.
 
-Viac informácií o ikonách nájdete na stránke **[Ikony](https://www.notion.so/Icon-d49ef040cef84b13b8dd3721d84d5397?pvs=21).**
+For more information about icons, see **[Icons](https://www.notion.so/Icon-d49ef040cef84b13b8dd3721d84d5397?pvs=21).**
 
 import Icons from '@site/static/usage/v1/button/icons/index.md';
 
 <Icons />
 
-## Úprava štýlov
+## Editing styles
 
-### Farby tlačidla
+### Button colours
 
-Vlastnosť `color` upravuje farbu pozadia a okraja tlačidla. Nastavením tejto hodnoty sa farba tlačidla zmení na jednu z farieb prednastavenej farebnej palety. V predvolenom nastavení majú tlačidlá pozadie `primary`.
+The `color` property modifies the background and border color of the button. Setting this value will change the button color to one of the colors in the preset color palette. By default, the buttons have a `primary` background.
 
 import Colors from '@site/static/usage/v1/button/theming/colors/index.md';
 
 <Colors />
 
-### Farba okrajov tlačidla
+### Colour of the button edges
 
-Vlastnosť `color` je možné kombinovať spolu s vlastnosťou `fill`.
+The `color` property can be combined with the `fill` property.
 
 import Outline from '@site/static/usage/v1/button/outline/index.md';
 
 <Outline />
 
-### CSS Custom Vlastnosti
+### CSS Custom Properties
 
 import Custom from '@site/static/usage/v1/button/theming/css-properties/index.md';
 
 <Custom />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -112,10 +112,10 @@ import Custom from '@site/static/usage/v1/button/theming/css-properties/index.md
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

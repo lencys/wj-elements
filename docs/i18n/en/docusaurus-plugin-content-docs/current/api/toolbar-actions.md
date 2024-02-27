@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/toolbar-actions/custom
 import Slots from '@ionic-internal/component-api/v1/toolbar-actions/slots.md';
 
 
-  <title>ToolbarActions |  Obaľovací kontajner pre tlačidlá vložené do elementu Toolbar</title>
+  <title>ToolbarActions | Wrapper for buttons inserted into the Toolbar element</title>
   <meta name="description" content="Element ToolbarActions slúži ako obaľovací kontajner pre tlačidlá vložené do elementu Toolbar a zoskupuje tak rôzne akcie toolbaru do jedného celku." />
 
 
@@ -18,19 +18,19 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element ToolbarActions slúži ako obaľovací kontajner pre tlačidlá vložené do elementu Toolbar a zoskupuje tak rôzne akcie toolbaru do jedného celku.
+The ToolbarActions element serves as a wrapper for the buttons inserted into the Toolbar element and thus groups the different toolbar actions into a single unit.
 
-Pre viac informácií o použití ToolbarActions prejdite do dokumentácie elementu [Toolbar](./toolbar).
+For more information on using ToolbarActions, go to the [Toolbar](./toolbar) element documentation.
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -38,10 +38,10 @@ Pre viac informácií o použití ToolbarActions prejdite do dokumentácie eleme
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

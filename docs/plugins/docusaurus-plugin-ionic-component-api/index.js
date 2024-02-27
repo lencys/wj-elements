@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const componentApi = require('../../i18n/sk/docusaurus-plugin-content-docs/core.json');
+const componentApi = require('../../i18n/en/docusaurus-plugin-content-docs/core.json');
 
 module.exports = function (context, options) {
   return {

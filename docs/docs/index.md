@@ -8,6 +8,7 @@ hide_table_of_contents: true
 import DocsCards from '@components/global/DocsCards';
 
 <head>
+
   <title>Moderná sada nástrojov používateľského rozhrania založená na web komponentoch</title>
   <meta
     name="description"
@@ -23,6 +24,7 @@ import DocsCards from '@components/global/DocsCards';
     }
   `}</style>
   <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@dddb1c19734498c5b2a17f2e6ed605d0cd40d02e/wj-master.js"></script>
+
 </head>
 
 WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania využívajúca silu web komponentov, ktorá je určená na zjednodušenie vývoja webových aplikácií. Poskytuje kolekciu zapúzdrených a opakovane použiteľných elementov, ktoré môžu výrazne zvýšiť efektivitu a udržiavateľnosť projektov vývoja webových stránok.

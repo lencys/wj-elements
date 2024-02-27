@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/toolbar/custom-props.m
 import Slots from '@ionic-internal/component-api/v1/toolbar/slots.md';
 
 
-  <title>Toolbar | Flexibilný kontajner určený na zobrazovanie rôzneho obsahu organizovaným spôsobom</title>
+  <title>Toolbar | Flexible container designed to display different content in an organized way</title>
   <meta name="description" content="Element Toolbar je flexibilný kontajner určený na zobrazovanie rôzneho obsahu organizovaným spôsobom, ktorý sa zvyčajne používa v hornej časti webových aplikácií alebo stránok. Môže obsahovať tlačidlá, navigáciu, pole vyhľadávania, a iné." />
 
 
@@ -18,37 +18,37 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element Toolbar je flexibilný kontajner určený na zobrazovanie rôzneho obsahu organizovaným spôsobom, ktorý sa zvyčajne používa v hornej časti webových aplikácií alebo stránok. Môže obsahovať tlačidlá, navigáciu, pole vyhľadávania, a iné. Podporuje zarovnanie obsahu a tiež ho možno prilepiť k hornej časti obrazovky.
+The Element Toolbar is a flexible container designed to display a variety of content in an organized manner, typically used at the top of web applications or pages. It may contain buttons, navigation, search box, and more. It supports content alignment and can also be glued to the top of the screen.
 
-Súčasťou Toolbar je element [ToolbarActions](./toolbar-actions), ktorý zoskupuje rôzne akcie v podobe tlačidiel do jedného celku.
+Part of the Toolbar is the [ToolbarActions](./toolbar-actions) element, which groups various actions in the form of buttons into a single unit.
 
-## Základné použitie
+## Basic use
 
 import Basic from '@site/static/usage/v1/toolbar/basic/index.md';
 
 <Basic />
 
-## Dynamický breadcrumbs
+## Dynamic breadcrumbs
 
 import DynamicBreadcrumbs from '@site/static/usage/v1/toolbar/dynamic-breadcrumbs/index.md';
 
 <DynamicBreadcrumbs />
 
-## Dynamický action
+## Dynamic action
 
 import DynamicAction from '@site/static/usage/v1/toolbar/dynamic-action/index.md';
 
 <DynamicAction />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -56,10 +56,10 @@ import DynamicAction from '@site/static/usage/v1/toolbar/dynamic-action/index.md
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

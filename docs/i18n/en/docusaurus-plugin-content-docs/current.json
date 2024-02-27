@@ -4,7 +4,7 @@
     "description": "The label for version current"
   },
   "sidebar.docs.category.Začíname": {
-    "message": "Začíname",
+    "message": "Getting Started",
     "description": "The label for category Začíname in sidebar docs"
   },
   "sidebar.docs.category.Layout": {
@@ -12,7 +12,7 @@
     "description": "The label for category Layout in sidebar docs"
   },
   "sidebar.docs.category.Úprava štýlov": {
-    "message": "Úprava štýlov",
+    "message": "Editing styles",
     "description": "The label for category Úprava štýlov in sidebar docs"
   },
   "sidebar.docs.category.Contributing": {
@@ -20,11 +20,11 @@
     "description": "The label for category Contributing in sidebar docs"
   },
   "sidebar.docs.link.Responzívna mriežka": {
-    "message": "Responzívna mriežka",
+    "message": "Responsive grid",
     "description": "The label for link Responzívna mriežka in sidebar docs, linking to /api/grid"
   },
   "sidebar.api.category.Úvod": {
-    "message": "Úvod",
+    "message": "Home",
     "description": "The label for category Úvod in sidebar api"
   },
   "sidebar.api.category.Animation": {
@@ -72,7 +72,7 @@
     "description": "The label for category Copy button in sidebar api"
   },
   "sidebar.api.category.Dialog": {
-    "message": "Dialog",
+    "message": "Dialogue",
     "description": "The label for category Dialog in sidebar api"
   },
   "sidebar.api.category.Dropdown": {
@@ -152,7 +152,7 @@
     "description": "The label for category RelativeTime in sidebar api"
   },
   "sidebar.api.category.Routovanie": {
-    "message": "Routovanie",
+    "message": "Routing",
     "description": "The label for category Routovanie in sidebar api"
   },
   "sidebar.api.category.Select": {
@@ -216,7 +216,7 @@
     "description": "The label for category Plugins in sidebar native"
   },
   "sidebar.docs.category.Prispôsobenie": {
-    "message": "Prispôsobenie",
+    "message": "Customizing",
     "description": "The label for category Prispôsobenie in sidebar docs"
   },
   "sidebar.api.category.Label": {

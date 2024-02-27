@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/router-link/custom-pro
 import Slots from '@ionic-internal/component-api/v1/router-link/slots.md';
 
 
-  <title>Router Link | Komponent na router navigáciu</title>
+  <title>Router Link | Router Navigation Component</title>
   <meta name="description" content="Router link komponenta slúži ako prispôsobiteľný link navrhnutý na použitie v navigácii naprieč aplikáciou." />
 
 
@@ -18,19 +18,19 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Router link komponenta slúži ako prispôsobiteľný link navrhnutý na použitie v navigácii naprieč aplikáciou.
+The router link component serves as a customizable link designed for use in navigation across the application.
 
-Pre viac informácií o použití Router Link prejdite na stránku [Router](./router) v dokumentácii.
+For more information on using Router Link, go to the [Router](./router) page in the documentation.
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -38,10 +38,10 @@ Pre viac informácií o použití Router Link prejdite na stránku [Router](./ro
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

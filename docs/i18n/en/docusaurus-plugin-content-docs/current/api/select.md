@@ -11,7 +11,7 @@ import Slots from '@ionic-internal/component-api/v1/select/slots.md';
 import { Icon } from '@iconify/react';
 
 
-  <title>Select | Element rozširuje možnosti štandardného HTML select elementu.</title>
+  <title>Select | Element extends the capabilities of the standard HTML select element.</title>
   <meta name="description" content="Select element rozširuje možnosti štandardného HTML select elementu. Podporuje jeden alebo viacero výberov pridaním atribútu `multiple`.Okrem toho ponúka funkcie, ako sú vymazateľné výbery a vlastný zastupný text (placeholder)." />
 
 
@@ -19,20 +19,20 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-**Select** element rozširuje možnosti štandardného HTML select elementu. Podporuje jeden alebo viacero výberov pridaním atribútu `multiple`.
-Okrem toho ponúka funkcie, ako sú zmazateľné výbery a vlastný zástupný text (placeholder). Vizuálne môže komponent zobrazovať vybrané možnosti ako chipy a obsahuje vstupné pole a rozbaľovací zoznam možností.
+The **Select** element extends the capabilities of the standard HTML select element. Supports one or more selections by adding the `multiple` attribute.
+In addition, it offers features such as deletable selections and custom placeholder text. Visually, the component can display the selected options as chips and includes an input field and a drop-down list of options.
 
-## Základné použitie
+## Basic use
 
-V predvolenom nastavení výber umožňuje používateľovi vybrať len jednu možnosť. Zahrnutím elementu `Icon` sa pri možnosti zobrazí aj zvolená ikona.
+By default, the selection allows the user to select only one option. Including the `Icon` element will also display the selected icon next to the option.
 
 import SingleSelectionExample from '@site/static/usage/v1/select/basic/single-selection/index.md';
 
 <SingleSelectionExample />
 
-## Výber viacerých položiek
+## Selecting multiple items
 
-Pridaním atribútu `multiple` umožníte používateľovi vybrať viacero možností.
+Adding the `multiple` attribute allows the user to select multiple options.
 
 import MultipleSelectionExample from '@site/static/usage/v1/select/basic/multiple-selection/index.md';
 
@@ -40,7 +40,7 @@ import MultipleSelectionExample from '@site/static/usage/v1/select/basic/multipl
 
 ## Clearable
 
-Pridaním atribútu `clearable` umožníte používateľovi odstrániť všetky zvolené možnosti kliknutím na ikonu <Icon icon="radix-icons:cross-2" height="14" />.
+Adding the `clearable` attribute allows the user to remove all selected options by clicking on the <Icon icon="radix-icons:cross-2" height="14" />icon.
 
 import Clearable from '@site/static/usage/v1/select/clearable/index.md';
 
@@ -48,15 +48,15 @@ import Clearable from '@site/static/usage/v1/select/clearable/index.md';
 
 ## Disabled
 
-Pridaním atribútu `disabled` zabránite používateľovi interagovať so Selectom.
+Adding the `disabled` attribute prevents the user from interacting with Select.
 
 import Disabled from '@site/static/usage/v1/select/disabled/index.md';
 
 <Disabled />
 
-## Dynamický zoznam možností
+## Dynamic list of options
 
-Použitím komponentu Options je podporovaný aj dynamicky generovaný zoznam možností, ktorý sa asynchrónne načíta zo zadanej URL adresy.
+Using the Options component, a dynamically generated list of options is also supported, which is asynchronously retrieved from the specified URL.
 
 import Options from '@site/static/usage/v1/select/options/index.md';
 
@@ -64,21 +64,21 @@ import Options from '@site/static/usage/v1/select/options/index.md';
 
 ## Standard
 
-Pridaním atribútu `standard` sa zobrazí Select v štýle štandardného HTML selectu.
+Adding the `standard` attribute will display the Select in the style of a standard HTML Select.
 
 import Standard from '@site/static/usage/v1/select/standard/index.md';
 
 <Standard />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -86,10 +86,10 @@ import Standard from '@site/static/usage/v1/select/standard/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

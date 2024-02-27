@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/row/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/row/slots.md';
 
 
-  <title>Row | Horizontálny kontajner pre systém Grid</title>
+  <title>Row | Horizontal container for Grid system</title>
   <meta name="description" content="Row (Riadok) je základným prvkom responzívneho Grid systému. Slúži ako kontajner na usporiadanie a horizontálne zarovnanie stĺpcov v rámci väčších layoutov." />
 
 
@@ -18,23 +18,23 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Row (Riadok) je základným prvkom responzívneho [Grid](./grid) systému a slúži ako horizontálny kontajner na usporiadanie a zarovnanie stĺpcov ([columns](./col)).
+Row is the basic element of a responsive [Grid](./grid) system and serves as a horizontal container for arranging and aligning columns ([columns](./col)).
 
-:::note Poznámka
+:::note Note
 
-Pre viac informácií o použití **Row** sa presuňte do dokumentácie systému [**Grid**](./grid).
+For more information on using **Row**, navigate to the [**Grid**](./grid) system documentation.
 
 :::
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -42,10 +42,10 @@ Pre viac informácií o použití **Row** sa presuňte do dokumentácie systému
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

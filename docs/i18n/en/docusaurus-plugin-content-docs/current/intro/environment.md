@@ -1,36 +1,33 @@
 ---
-title: Konfigurácia prostredia
+title: Environment configuration
 ---
 
 
-  <title>Konfigurácia prostredia | Node & NPM Environment for WebJET App Setup</title>
-  <meta
-    name="description"
-    content="To get started with Ionic Framework, the only requirement is a Node & npm environment. Learn what environment setup is required for your Ionic apps."
-  />
+  <title>Environment Configuration | Node & NPM Environment for WebJET App Setup</title>
+  <meta name="description" content="To get started with Ionic Framework, the only requirement is a Node & npm environment. Learn what environment setup is required for your Ionic apps." />
 
 
-Základnou požiadavkou na začatie práce s WebJET Elements je prostredie s nainštalovaným Node a NPM.
+The basic requirement to start working with WebJET Elements is an environment with Node and NPM installed.
 
-Okrem toho je nevyhnutný editor kódu. Najpopulárnejšie sú zdarma dostupný [Visual Studio Code](https://code.visualstudio.com/) alebo spoplatnený [WebStorm](https://www.jetbrains.com/webstorm/).
+In addition, a code editor is essential. The most popular are the free [Visual Studio Code](https://code.visualstudio.com/) or the paid [WebStorm](https://www.jetbrains.com/webstorm/).
 
-## Terminál
+## Terminal
 
-Je dôležité poznamenať, že vývoj pomocou WebJET Elements vyžaduje znalosť príkazového riadku. Pre začiatočníkov môže byť užitočné rýchle oboznámenie sa s príkazovým riadkom.
+It is important to note that development using WebJET Elements requires command line knowledge. For beginners, a quick introduction to the command line may be helpful.
 
-Pre používateľov systému Windows sú podporované **Príkazový riadok** a **PowerShell**. Používatelia systému macOS sa môžu spoľahnúť na vstavanú aplikáciu **Terminal**.
+For Windows users, **Command Prompt** and **PowerShell** are supported. macOS users can rely on the built-in **Terminal** app.
 
 ## Node & npm
 
-Node.js musí byť nainštalovaný aspoň vo verzii v18 alebo novšej. Nainštalovanú verziu môžete skontrolovať pomocou príkazu node --version. Podrobnosti týkajúce sa inštalácie node.js nájdete na stránke [Node.js](https://nodejs.org).
+Node.js must be installed at least v18 or later. You can check the installed version using the node --version command. For details on installing node.js, see [Node.js](https://nodejs.org).
 
-Nainštalovanú verziu môžete skontrolovať pomocou príkazov nižšie.
+You can check the installed version using the commands below.
 
 ```shell
 $ node --version
 $ npm --version
 ```
 
-## Odporúčania
+## Recommendations
 
-Za zváženie stojí aj použitie version control systému [GIT](https://git-scm.com/) pri vyvoji aplikácie.
+It is also worth considering the use of the version control system [GIT](https://git-scm.com/) when developing an application.

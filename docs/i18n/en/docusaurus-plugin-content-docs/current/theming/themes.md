@@ -1,79 +1,79 @@
 ---
-title: Šablóny
+title: Themes
 ---
 
 import CodeColor from '@components/page/theming/CodeColor';
 import SteppedColorGenerator from '@components/page/theming/SteppedColorGenerator';
 
 
-  <title>WebJet Elements šablóny | Zmena predvolených tém a farieb pozadia aplikácie</title>
+  <title>WebJet Elements Templates | Change default themes and background colors of the application</title>
   <meta
     name="description"
     content="WebJet Elements ponúka celý rad globálnych premenných, ktoré možno použiť na úpravu predvolenej témy v celej aplikácii. [Farby aplikácie](#application-colors) sú užitočné na zmenu vzhľadu mnohých WebJET komponentov."
   />
 
 
-WebJet Elements ponúka celý rad globálnych premenných, ktoré možno použiť na úpravu predvolenej témy v celej aplikácii. [Farby aplikácie](#application-colors) sú užitočné na zmenu vzhľadu mnohých WebJET komponentov.
+WebJet Elements offers a number of global variables that can be used to modify the default theme throughout the application. The [Application Colors](#application-colors) are useful for changing the appearance of many WebJET components.
 
-## Aplikačné farby
+## Application colours
 
-Aplikačné farby zohrávajú v aplikácii významnú úlohu a často sa používajú v rôznych kontextoch. Sú obzvlášť praktické na bezproblémové vytváranie tmavých tém alebo tém, ktoré sú v súlade s identitou značky.
+Application colours play an important role in the application and are often used in different contexts. They are particularly handy for seamlessly creating dark themes or topics that are in line with your brand identity.
 
-| Názov                        | Popis                                                       |
-| ---------------------------- | ----------------------------------------------------------- |
-| `--wj-border-color`          | Určuje farbu okrajov v celej aplikácii                      |
-| `--wj-border-radius`         | Určuje zaoblenie okrajov v celej aplikácii                  |
-| `--wj-border-size`           | Určuje šírku okrajov v celej aplikácii                      |
-| `--wj-border-style`          | Určuje štýl okrajov v celej aplikácii                       |
-| `--wj-color`                 | Určuje farbu textu naprieč aplikáciou                       |
-| `--wj-font-family`           | Určuje font textov v celej aplikácii                        |
-| `--wj-font-family-secondary` | Určuje sekundárny font textov v celej aplikácii             |
-| `--wj-force-mac-font-family` | Určuje font textov pre pre zariadenia Mac v celej aplikácii |
-| `--wj-font-size`             | Určuje veľkosť textu naprieč aplikáciou                     |
-| `--wj-line-height`           | Určuje výšku textov v celej aplikácii                       |
+| Name                         | Description                                                       |
+| ---------------------------- | ----------------------------------------------------------------- |
+| `--wj-border-color`          | Determines the color of the borders throughout the application    |
+| `--wj-border-radius`         | Determines the rounding of edges throughout the application       |
+| `--wj-border-size`           | Determines the width of the margins throughout the application    |
+| `--wj-border-style`          | Determines the style of borders throughout the application        |
+| `--wj-color`                 | Specifies the text colour across the application                  |
+| `--wj-font-family`           | Specifies the font of texts throughout the application            |
+| `--wj-font-family-secondary` | Specifies the secondary font for texts throughout the application |
+| `--wj-force-mac-font-family` | Specifies the font of texts for Mac devices throughout the app    |
+| `--wj-font-size`             | Specifies the size of text across the application                 |
+| `--wj-line-height`           | Determines the height of texts throughout the application         |
 
-| Názov                        | Popis                                                          |
-| ---------------------------- | -------------------------------------------------------------- |
-| `--wj-backdrop`              | Farba backdrop overlay overlays and modal backgrounds a pozadí |
-| `--wj-backdrop-opacity`      | Opacity of the backdrop                                        |
-| `--wj-border-radius-circle`  | Určuje predvolenú veľkosť zaoblenia v %                        |
-| `--wj-border-radius-large`   | Border radius for large-sized elements                         |
-| `--wj-border-radius-medium`  | Border radius for medium-sized elements                        |
-| `--wj-border-radius-pill`    | Border radius for pill-shaped elements                         |
-| `--wj-border-radius-small`   | Border radius for small-sized elements                         |
-| `--wj-border-radius-x-large` | Border radius for extra-large-sized elements                   |
-| `--wj-border-size`           | Hrúbka okrajov                                                 |
-| `--wj-border-style`          | Style of borders                                               |
-| `--wj-box-shadow-large`      | Box shadow for large-sized elements                            |
-| `--wj-box-shadow-medium`     | Box shadow for medium-sized elements                           |
-| `--wj-card-background`       | Background color for card elements                             |
-| `--wj-card-color`            | Text color for card elements                                   |
-| `--wj-color-white`           | White color                                                    |
-| `--wj-color-black`           | Black color                                                    |
-| `--wj-font-family`           | Určuje font textov v celej aplikácii                           |
-| `--wj-font-family-secondary` | Určuje sekundárny font textov v celej aplikácii                |
-| `--wj-force-mac-font-family` | Určuje font textov pre pre zariadenia Mac v celej aplikácii    |
-| `--wj-font-size`             | Base font size                                                 |
-| `--wj-font-size-2x-large`    | Font size for 2x large text                                    |
-| `--wj-font-size-3x-large`    | Font size for 3x large text                                    |
-| `--wj-font-size-4x-large`    | Font size for 4x large text                                    |
-| `--wj-font-size-large`       | Font size for large text                                       |
-| `--wj-font-size-medium`      | Font size for medium text                                      |
-| `--wj-font-size-small`       | Font size for small text                                       |
-| `--wj-font-size-x-large`     | Font size for extra-large text                                 |
-| `--wj-font-size-x-small`     | Font size for extra-small text                                 |
-| `--wj-line-height`           | Line height for text elements                                  |
+| Name                         | Description                                                           |
+| ---------------------------- | --------------------------------------------------------------------- |
+| `--wj-backdrop`              | Color backdrop overlay overlays and modal backgrounds and backgrounds |
+| `--wj-backdrop-opacity`      | Opacity of the backdrop                                               |
+| `--wj-border-radius-circle`  | Specifies the default roundness size in %                             |
+| `--wj-border-radius-large`   | Border radius for large-sized elements                                |
+| `--wj-border-radius-medium`  | Border radius for medium-sized elements                               |
+| `--wj-border-radius-pill`    | Border radius for pill-shaped elements                                |
+| `--wj-border-radius-small`   | Border radius for small-sized elements                                |
+| `--wj-border-radius-x-large` | Border radius for extra-large-sized elements                          |
+| `--wj-border-size`           | Edge thickness                                                        |
+| `--wj-border-style`          | Style of borders                                                      |
+| `--wj-box-shadow-large`      | Box shadow for large-sized elements                                   |
+| `--wj-box-shadow-medium`     | Box shadow for medium-sized elements                                  |
+| `--wj-card-background`       | Background color for card elements                                    |
+| `--wj-card-color`            | Text colour for card elements                                         |
+| `--wj-color-white`           | White colour                                                          |
+| `--wj-color-black`           | Black colour                                                          |
+| `--wj-font-family`           | Specifies the font of texts throughout the application                |
+| `--wj-font-family-secondary` | Specifies the secondary font for texts throughout the application     |
+| `--wj-force-mac-font-family` | Specifies the font of texts for Mac devices throughout the app        |
+| `--wj-font-size`             | Base font size                                                        |
+| `--wj-font-size-2x-large`    | Font size for 2x large text                                           |
+| `--wj-font-size-3x-large`    | Font size for 3x large text                                           |
+| `--wj-font-size-4x-large`    | Font size for 4x large text                                           |
+| `--wj-font-size-large`       | Font size for large text                                              |
+| `--wj-font-size-medium`      | Font size for medium text                                             |
+| `--wj-font-size-small`       | Font size for small text                                              |
+| `--wj-font-size-x-large`     | Font size for extra-large text                                        |
+| `--wj-font-size-x-small`     | Font size for extra-small text                                        |
+| `--wj-line-height`           | Line height for text elements                                         |
 
-## Odstupňované farby
+## Graduated colours
 
-Zatiaľ čo aktualizácia premenných pozadia (--wj-background-color) a textu (--wj-text-color) zmení vzhľad aplikácie pre väčšinu komponentov, existujú určité komponenty Ionic, kde to môže vyzerať neštandardne alebo nefunkčne. Bude to viac viditeľné pri použití tmavšej témy.
+While updating the background (--wj-background-color) and text (--wj-text-color) variables will change the appearance of the application for most components, there are certain Ionic components where this may look non-standard or non-functional. This will be more noticeable when using a darker theme.
 
-V niektorých komponentoch používame odtieň tmavší ako pozadie alebo svetlejší ako text. Napríklad text nadpisu položky môže potrebovať farbu #404040, ktorá je o niekoľko odtieňov svetlejšia ako naša predvolená farba textu. Medzitým je pozadie komponentu načítania o odtieň tmavšie ako biela, pričom sa používa #f2f2f2. Na definovanie týchto miernych odchýlok používame stupňovité farby. Pri aktualizácii farby pozadia alebo textu aplikácie je dôležité aktualizovať krokové farby.
+In some components, we use a shade darker than the background or lighter than the text. For example, the heading text of an item may need color #404040, which is a few shades lighter than our default text color. Meanwhile, the background of the loading component is a shade darker than white, using #f2f2f2. We use graded colours to define these slight deviations. When updating the background color or text of an application, it is important to update the step colors.
 
-V predvolenom nastavení začínajú krokové farby Ionic na predvolenej hodnote farby pozadia #ffffff a miešajú sa s hodnotou farby textu #000000 pomocou zvyšujúceho sa percenta. Úplný zoznam krokových farieb je uvedený v generátore nižšie.
+By default, Ionic's step colors start at the default background color value of #ffffff and blend with the text color value of #000000 using an increasing percentage. The full list of step colours is given in the generator below.
 
-## Generátor odstupňovaných farieb
+## Graduated colour generator
 
-Vytvorenie vlastnej témy pozadia a farby textu pre vašu aplikáciu. Aktualizujte hexadecimálne hodnoty farieb pozadia alebo textu nižšie a potom skopírujte a vložte vygenerovaný kód priamo do projektu WebJET Elements.
+Create a custom background theme and text color for your app. Update the hexadecimal values of the background colors or text below and then copy and paste the generated code directly into the WebJET Elements project.
 
 <SteppedColorGenerator />

@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/masonry/custom-props.m
 import Slots from '@ionic-internal/component-api/v1/masonry/slots.md';
 
 
-  <title>Masonry | Vytvára responzívne 'Masonry' rozvrhnutie podriadených prvkov</title>
+  <title>Masonry | Creates a responsive 'Masonry' layout of child elements</title>
   <meta name="description" content="Komponent Masonry vytvára responzívne 'Masonry' rozvrhnutie podriadených prvkov, ktorý ich dynamicky usporadúva do stĺpcov na základe zadaných atribútov. Podporuje prispôsobenie počtu stĺpcov, maximálnej šírky stĺpcov, medzery medzi prvkami a debouncing na optimalizáciu výkonu." />
 
 
@@ -18,39 +18,39 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponent Masonry vytvára responzívne "Masonry" rozvrhnutie podriadených prvkov, ktoré sú dynamicky usporiadané do stĺpcov na základe zadaných atribútov. Podporuje prispôsobenie počtu stĺpcov, maximálnej šírky stĺpcov, medzery medzi prvkami a debouncing na optimalizáciu výkonu.
+The Masonry component creates a responsive "Masonry" layout of child elements that are dynamically arranged into columns based on specified attributes. Supports customizing the number of columns, maximum column width, element spacing, and debouncing to optimize performance.
 
-## Základné použitie
+## Basic use
 
 import Basic from '@site/static/usage/v1/masonry/basic/index.md';
 
 <Basic />
 
-## Maximálna šírka stĺpcov
+## Maximum width of columns
 
-Použitím atribútu `max-col-width` obmedzíte šírku stĺpcov na zadanú hodnotu.
+Use the `max-col-width` attribute to limit the width of the columns to the specified value.
 
 import MaxColWidth from '@site/static/usage/v1/masonry/max-col-width/index.md';
 
 <MaxColWidth />
 
-## Gap
+## The Gap
 
-Použitím atribútu `gap` určíte šírku medzery medzi stĺpcami v pixeloch.
+Use the `gap` attribute to specify the width of the gap between columns in pixels.
 
 import Gap from '@site/static/usage/v1/masonry/gap/index.md';
 
 <Gap />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -58,10 +58,10 @@ import Gap from '@site/static/usage/v1/masonry/gap/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

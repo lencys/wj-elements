@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/menu-item/custom-props
 import Slots from '@ionic-internal/component-api/v1/menu-item/slots.md';
 
 
-  <title>MenuItem | Element pre zobrazenie položiek v elemente Menu</title>
+  <title>MenuItem | Element to display items in the Menu item</title>
   <meta name="description" content="MenuItem element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo." />
 
 
@@ -18,21 +18,21 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-MenuItem je podriadený elementu [Menu.](./menu) a predstavuje navigačnú položku v jeho vnútri. Môže zobrazovať podmenu s ďalšími navigačnými položkami a tiež umožňuje zobrazenie ikon.
+MenuItem is a child of the [Menu.](./menu) element and represents a navigation item within it. It can display a submenu with additional navigation items and also allows icons to be displayed.
 
-## Základné použitie
+## Basic use
 
-Pre príklady použitia MenuItem prejdite na stránku dokumentácie elementu [Menu.](./menu).
+For examples of using MenuItem, go to the documentation page for the [Menu.](./menu) element.
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -40,10 +40,10 @@ Pre príklady použitia MenuItem prejdite na stránku dokumentácie elementu [Me
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

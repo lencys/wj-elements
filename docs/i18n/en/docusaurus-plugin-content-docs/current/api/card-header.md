@@ -16,19 +16,19 @@ import Slots from '@ionic-internal/component-api/v1/card-header/slots.md';
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
-Element Card header je komponent navrhnutý pre použitie v kartách a slúži ako kontajner na umiestnenie príslušných nadpisov, ikon alebo iného obsahu, ktorý pomáha používateľovi rýchlo pochopiť kontext alebo účel hlavného obsahu karty.
+The Card header element is a component designed for use in tabs and serves as a container for placing relevant headings, icons, or other content that helps the user quickly understand the context or purpose of the main content of the tab.
 
-Pre viac informácií o použití Card Header sa presuňte do dokumentácie elementu [Card.](./card)
+For more information on using the Card Header, navigate to the [Card.](./card) element documentation
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -36,10 +36,10 @@ Pre viac informácií o použití Card Header sa presuňte do dokumentácie elem
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

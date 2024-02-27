@@ -18,41 +18,41 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element avatar slúži na vizuálnu prezentáciu používateľa alebo subjektu. Používa sa zvyčajne ako obaľovač a poskytuje praktický spôsob zobrazovania profilových obrázkov, ikon, alebo, ak tie nie sú poskytnuté, iniciálok.  Podporuje rôzne konfigurácie vrátane veľkosti, zoskupenia viacerých avatarov alebo zobrazenie dropdownu po kliknutí či tooltipu pri ukázaní myšou.
+The avatar element is used to visually represent a user or entity. It is usually used as a wrapper and provides a convenient way to display profile pictures, icons, or, if these are not provided, initials.  It supports a variety of configurations including size, grouping multiple avatars, or displaying a dropdown when clicked or a tooltip when pointed to with the mouse.
 
-## Základné použitie
+## Basic usage
 
 import Basic from '@site/static/usage/v1/avatar/basic/index.md';
 
 <Basic />
 
-## Veľkosť Avatara
+## Avatar size
 
-Vlastnosť `size` určuje veľkosť avatara. Nastavením tejto vlastnosti sa zmení vnútorné odsadenie tlačidla.
+The `size` property determines the size of the avatar. Setting this property will change the internal offset of the button.
 
 import Size from '@site/static/usage/v1/avatar/size/index.md';
 
 <Size />
 
-## Avatar s ikonou
+## Avatar with icon
 
-Vnorením elementu `wj-icon` sa vo vnútri avataru zobrazí zvolená ikona.
+Nesting the `wj-icon` element will display the selected icon inside the avatar.
 
 import Icon from '@site/static/usage/v1/avatar/icon/index.md';
 
 <Icon />
 
-## Avatar s iniciálmi
+## Avatar with initials
 
-Pridaním vlastností `initials` a `label` avatar zobrazí iniciály zvolenej hodnoty vlastnosti `label`.
+By adding the `initials` and `label` properties, the avatar displays the initials of the selected value of the `label` property.
 
 import Initials from '@site/static/usage/v1/avatar/initials/index.md';
 
 <Initials />
 
-## Avatar s dropdownom
+## Avatar with dropdown
 
-Pridaním elementu `wj-dropdown` sa po kliknutí na avatar zobrazí menu. V tomto prípade je nutné do elementu avatar pridať slot `trigger` s hodnotou `hover`.
+Adding the `wj-dropdown` element will display a menu when the avatar is clicked. In this case, you need to add a `trigger` slot with value `hover` to the avatar element.
 
 import Dropdown from '@site/static/usage/v1/avatar/dropdown/index.md';
 
@@ -62,15 +62,15 @@ import Dropdown from '@site/static/usage/v1/avatar/dropdown/index.md';
 
 </div>
 
-## Avatar s tooltipom
+## Avatar with tooltip
 
-Pridaním elementu `wj-dropdown` sa po kliknutí na avatar zobrazí menu.
+Adding the `wj-dropdown` element will display a menu when the avatar is clicked.
 
 import Tooltip from '@site/static/usage/v1/avatar/tooltip/index.md';
 
 <Tooltip />
 
-## Skupina avatarov
+## Group of avatars
 
 import Group from '@site/static/usage/v1/avatar/group/index.md';
 
@@ -82,15 +82,15 @@ import CSSProps from '@site/static/usage/v1/avatar/theming/css-properties/index.
 
 <CSSProps />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -98,10 +98,10 @@ import CSSProps from '@site/static/usage/v1/avatar/theming/css-properties/index.
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/slider/custom-props.md
 import Slots from '@ionic-internal/component-api/v1/slider/slots.md';
 
 
-  <title>Slider | Element rozširuje možnosti štandardného HTML select elementu.</title>
+  <title>Slider | Element extends the capabilities of the standard HTML select element.</title>
   <meta name="description" content="Slider je interaktívny komponent posuvníka, ktorý umožňuje používateľom praktickým spôsobom vybrať hodnotu z rozsahu hodnôt." />
 
 
@@ -18,11 +18,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element Slider je interaktívny komponent posuvníka, ktorý umožňuje používateľom praktickým spôsobom vybrať hodnotu z rozsahu hodnôt. Ponúka handle (rukoväť), ktorou možno pohybovať, takže je ideálny pri tých scenároch, ktoré od používateľa vyžadujú číselný vstup alebo úpravu nejakého nastavenia, napríklad hlasitosti.
+Element Slider is an interactive slider component that allows users to select a value from a range of values in a convenient way. It features a handle that can be moved, making it ideal for those scenarios that require the user to provide numeric input or adjust some setting such as volume.
 
-## Základné použitie
+## Basic use
 
-V predvolenom nastavení výber umožňuje používateľovi vybrať len jednu možnosť. Zahrnutím elementu `Icon` sa pri možnosti zobrazí aj zvolená ikona.
+By default, the selection allows the user to select only one option. Including the `Icon` element will also display the selected icon next to the option.
 
 import Basic from '@site/static/usage/v1/slider/basic/index.md';
 
@@ -30,7 +30,7 @@ import Basic from '@site/static/usage/v1/slider/basic/index.md';
 
 ## Bubble
 
-Pridaním atribútu bubble sa nad sliderom zobrazí bublina s číslom vyjadrujúcim aktuálnu hodnotu posuvníka.
+Adding the bubble attribute will display a bubble above the slider with a number representing the current value of the slider.
 
 import Bubble from '@site/static/usage/v1/slider/bubble/index.md';
 
@@ -54,15 +54,15 @@ import Colors from '@site/static/usage/v1/slider/colors/index.md';
 
 <Colors />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -70,10 +70,10 @@ import Colors from '@site/static/usage/v1/slider/colors/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

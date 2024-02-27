@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/input/custom-props.md'
 import Slots from '@ionic-internal/component-api/v1/input/slots.md';
 
 
-  <title>Input: Rozšírenie štandardného Input elementu</title>
+  <title>Input: extension of the standard Input element</title>
   <meta name="description" content="Input element rozširuje možnosti štandardného HTML inputu pokročilými funkciami a možnosťami prispôsobenia. " />
 
 
@@ -18,9 +18,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="scoped" />
 
-Input element rozširuje možnosti štandardného HTML inputu pokročilými funkciami a možnosťami prispôsobenia.
+Input element extends the capabilities of standard HTML input with advanced features and customization options.
 
-## Základné použitie
+## Basic use
 
 import Basic from '@site/static/usage/v1/input/basic/index.md';
 
@@ -30,7 +30,7 @@ import Basic from '@site/static/usage/v1/input/basic/index.md';
 
 </div>
 
-## Použitie vo formulári
+## Use in the form
 
 import Form from '@site/static/usage/v1/input/form/index.md';
 
@@ -38,13 +38,13 @@ import Form from '@site/static/usage/v1/input/form/index.md';
 
 ## Variant: standard
 
-Input podporuje aj vizuál štandardného HTML inputu pridaním vlastnosti `variant` s hodnotou `standard`.
+Input also supports the visual of standard HTML input by adding the `variant` property with the value `standard`.
 
 import Standard from '@site/static/usage/v1/input/standard/index.md';
 
 <Standard />
 
-## Standard vo formulári
+## Standard in the form
 
 import StandardForm from '@site/static/usage/v1/input/standard-form/index.md';
 
@@ -52,7 +52,7 @@ import StandardForm from '@site/static/usage/v1/input/standard-form/index.md';
 
 ## Search
 
-V kombinácii s elementorm `Button` vytvorí plnohodnotné vyhľadávacie pole.
+In combination with the `Button` elementorm, it creates a full-featured search box.
 
 import Search from '@site/static/usage/v1/input/search/index.md';
 
@@ -64,7 +64,7 @@ import Search from '@site/static/usage/v1/input/search/index.md';
 
 ## Pickers
 
-V kombinácii s elementorm `Button` vytvorí plnohodnotné vyhľadávacie pole.
+In combination with the `Button` elementorm, it creates a full-featured search box.
 
 import Pickers from '@site/static/usage/v1/input/pickers/index.md';
 
@@ -72,21 +72,21 @@ import Pickers from '@site/static/usage/v1/input/pickers/index.md';
 
 ## Clearable
 
-V kombinácii s elementorm `Button` vytvorí plnohodnotné vyhľadávacie pole.
+In combination with the `Button` elementorm, it creates a full-featured search box.
 
 import Clearable from '@site/static/usage/v1/input/clearable/index.md';
 
 <Clearable />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -94,10 +94,10 @@ import Clearable from '@site/static/usage/v1/input/clearable/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

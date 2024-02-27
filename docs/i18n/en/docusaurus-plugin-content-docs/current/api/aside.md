@@ -18,21 +18,21 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Aside je prvok na tvorbu layoutov a zobrazuje sa vedľa elementu [Main](./main). Používa sa väčšinou na zobrazenie doplnkových informácií k hlavnému obsahu, prípadne navigácie.
+Aside is an element for creating layouts and is displayed next to the [Main](./main) element. It is mostly used to display additional information to the main content or navigation.
 
-## Príklady použitia
+## Basic Usage
 
-Pre informácie o použítí **Aside** elementu sa presuňte do dokumentácie [Layoutu](./layout).
+For information on using the **Aside** element, navigate to the [Layout](./layout) documentation.
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -40,10 +40,10 @@ Pre informácie o použítí **Aside** elementu sa presuňte do dokumentácie [L
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

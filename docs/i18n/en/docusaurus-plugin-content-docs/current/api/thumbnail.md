@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/thumbnail/custom-props
 import Slots from '@ionic-internal/component-api/v1/thumbnail/slots.md';
 
 
-  <title>Thumbnail | Komponent pre zobrazenie náhľadov obrázkov</title>
+  <title>Thumbnail | Image thumbnail component</title>
   <meta name="description" content="Thumbnail uľahčuje zobrazenie väčších obrázkov alebo iných médií zobrazením ich menšieho náhľadu. Je ho možné použiť samostatne ale aj v iných elementoch." />
 
 
@@ -18,37 +18,37 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Thumbnail uľahčuje zobrazenie väčších obrázkov alebo iných médií zobrazením ich menšieho náhľadu. Je ho možné použiť samostatne ale aj v iných elementoch.
+Thumbnail makes it easier to view larger images or other media by displaying a smaller preview of them. It can be used alone but also in other elements.
 
-## Základné použitie
+## Basic use
 
 import Basic from '@site/static/usage/v1/thumbnail/basic/index.md';
 
 <Basic />
 
-## Použitie v Itemoch
+## Use in Items
 
-Pri použití v elementoch [Item.](./item) sa jeho veľkosť prispôsobí veľkosti rodiča a jeho pozíciu je možné určiť pridaním `slotu` s hodnotou `start` pre umiestnenie vľavo, alebo `end` pre umiestnenie vpravo.
+When used in [Item.](./item) elements, its size adjusts to the size of the parent, and its position can be determined by adding a `slot` with a value of `start` for left positioning, or `end` for right positioning.
 
 import Item from '@site/static/usage/v1/thumbnail/item/index.md';
 
 <Item />
 
-## Vlastné štýly
+## Custom styles
 
 import CSSProps from '@site/static/usage/v1/thumbnail/theming/css-properties/index.md';
 
 <CSSProps />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -56,10 +56,10 @@ import CSSProps from '@site/static/usage/v1/thumbnail/theming/css-properties/ind
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

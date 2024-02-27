@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/radio/custom-props.md'
 import Slots from '@ionic-internal/component-api/v1/radio/slots.md';
 
 
-  <title>Radio komponent | Vylepšená verzia štandardného HTML radio elementu</title>
+  <title>Radio component | Improved version of standard HTML radio element</title>
   <meta name="description" content="Radio element je upravená verzia štandardného HTML radio elementu, rozšírená o štýly pre dosiahnutie vizuálne konzistentnejšieho používateľského rozhrania." />
 
 
@@ -18,9 +18,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Radio element je upravená verzia štandardného HTML radio elementu, rozšírená o štýly pre dosiahnutie vizuálne konzistentnejšieho používateľského rozhrania naprieč rôznymi zariadeniami. Funguje podobne ako štandardné rádio tlačidlo a umožňuje používateľom vybrať jednu z množiny možností. Používa sa vo vnútri elementu [radio group](./radio-group), ktorý im pridáva zarovnanie a zoskupuje ich do jedného celku.
+The radio element is a modified version of the standard HTML radio element, enhanced with styles to achieve a more visually consistent user interface across devices. It works similarly to a standard radio button and allows users to select one from a set of options. It is used inside the [radio group](./radio-group) element to add alignment and group them together.
 
-## Základné použitie
+## Basic use
 
 import Basic from '@site/static/usage/v1/radio/basic/index.md';
 
@@ -28,31 +28,31 @@ import Basic from '@site/static/usage/v1/radio/basic/index.md';
 
 ## Inline
 
-Pridaním vlastnosti `inline` sa elementy usporiadajú v horizontálnom rozložení.
+Adding the `inline` property arranges the elements in a horizontal layout.
 
 import Inline from '@site/static/usage/v1/radio/inline/index.md';
 
 <Inline />
 
-## Úprava štýlov
+## Editing styles
 
 ### color
 
-Pomocou vlastnosti `color` je možné zmeniť farbu radio elementu.
+Using the `color` property it is possible to change the color of the radio element.
 
 import Color from '@site/static/usage/v1/radio/color/index.md';
 
 <Color />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -60,10 +60,10 @@ import Color from '@site/static/usage/v1/radio/color/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

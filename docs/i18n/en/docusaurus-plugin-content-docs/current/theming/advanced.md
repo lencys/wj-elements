@@ -1,7 +1,7 @@
 ---
-title: Pokročilá úprava štýlov
-sidebar_label: Pokročilá úprava štýlov
-initialTab: preview
+title: Advanced editing styles
+sidebar_label: Advanced editing styles
+initialTab: Preview
 inlineHtmlPreviews: true
 ---
 
@@ -60,7 +60,7 @@ While the application and stepped variables in the themes section are useful for
 | ------------------------- | ------------------------------------------------------------------------------------------ |
 | `--ion-font-family`       | Font family of the app                                                                     |
 | `--ion-statusbar-padding` | Statusbar padding top of the app                                                           |
-| `--ion-safe-area-top`     | Adjust the safe area inset top of the app                                                  |
+| `-ion-safe-area-top`      | Adjust the safe area inset top of the app                                                  |
 | `--ion-safe-area-right`   | Adjust the safe area inset right of the app                                                |
 | `--ion-safe-area-bottom`  | Adjust the safe area inset bottom of the app                                               |
 | `--ion-safe-area-left`    | Adjust the safe area inset left of the app                                                 |
@@ -69,19 +69,19 @@ While the application and stepped variables in the themes section are useful for
 
 ### Grid Variables
 
-| Name                           | Description                                    |
-| ------------------------------ | ---------------------------------------------- |
-| `--ion-grid-columns`           | Number of columns in the grid                  |
-| `--ion-grid-padding-xs`        | Padding of the grid for xs breakpoints         |
-| `--ion-grid-padding-sm`        | Padding of the grid for sm breakpoints         |
-| `--ion-grid-padding-md`        | Padding of the grid for md breakpoints         |
-| `--ion-grid-padding-lg`        | Padding of the grid for lg breakpoints         |
-| `--ion-grid-padding-xl`        | Padding of the grid for xl breakpoints         |
-| `--ion-grid-column-padding-xs` | Padding of the grid columns for xs breakpoints |
-| `--ion-grid-column-padding-sm` | Padding of the grid columns for sm breakpoints |
-| `--ion-grid-column-padding-md` | Padding of the grid columns for md breakpoints |
-| `--ion-grid-column-padding-lg` | Padding of the grid columns for lg breakpoints |
-| `--ion-grid-column-padding-xl` | Padding of the grid columns for xl breakpoints |
+| Name                          | Description                                    |
+| ----------------------------- | ---------------------------------------------- |
+| `-ion-grid-columns`           | Number of columns in the grid                  |
+| `-ion-grid-padding-xs`        | Padding of the grid for xs breakpoints         |
+| `-ion-grid-padding-sm`        | Padding of the grid for sm breakpoints         |
+| `-ion-grid-padding-md`        | Padding of the grid for md breakpoints         |
+| `-ion-grid-padding-lg`        | Padding of the grid for lg breakpoints         |
+| `-ion-grid-padding-xl`        | Padding of the grid for xl breakpoints         |
+| `-ion-grid-column-padding-xs` | Padding of the grid columns for xs breakpoints |
+| `-ion-grid-column-padding-sm` | Padding of the grid columns for sm breakpoints |
+| `-ion-grid-column-padding-md` | Padding of the grid columns for md breakpoints |
+| `-ion-grid-column-padding-lg` | Padding of the grid columns for lg breakpoints |
+| `-ion-grid-column-padding-xl` | Padding of the grid columns for xl breakpoints |
 
 ## Known Limitations with Variables
 

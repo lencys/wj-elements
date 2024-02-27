@@ -18,9 +18,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Color picker je element, ktorý zobrazuje farebnú paletu a umožňuje používateľom vybrať jednu z jej farieb. Zobrazuje hex kód vybranej farby, ktorý je používateľom možné jednoducho skopírovať.
+Color picker is an element that displays a color palette and allows users to select one of its colors. Displays the hex code of the selected color, which can be easily copied by the user.
 
-## Základné použitie
+## Basic Usage
 
 import Basic from '@site/static/usage/v1/color-picker/basic/index.md';
 
@@ -30,15 +30,15 @@ import Basic from '@site/static/usage/v1/color-picker/basic/index.md';
 
 </div>
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -46,10 +46,10 @@ import Basic from '@site/static/usage/v1/color-picker/basic/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

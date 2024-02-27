@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/col/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/col/slots.md';
 
 
-  <title>Col | Horizontálne rozmiestnenie obsahu na základe veľkosti obrazovky.</title>
+  <title>Col | Horizontal placement of content based on screen size.</title>
   <meta name="description" content="Komponent Col je základným stavebným prvkom [Gridu](./grid) a umožňuje horizontálne rozmiestniť obsah a upraviť jeho usporiadanie na základe veľkosti obrazovky." />
 
 
@@ -18,23 +18,23 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponent **Col** (stĺpec) je základným stavebným prvkom [Gridu](./grid) a umožňuje horizontálne rozmiestniť obsah a upraviť jeho usporiadanie na základe veľkosti obrazovky. Používa sa pridaním do vnútra [Row](./row) elementu.
+The **Col** (column) component is the basic building block of [Grid](./grid) and allows you to horizontally arrange content and adjust its layout based on the screen size. It is used by adding it to the inside of the [Row](./row) element.
 
-:::note Poznámka
+:::note Note
 
-Pre viac informácií o použití **Col** sa presuňte do dokumentácie systému [**Grid**](./grid).
+For more information on using **Col**, navigate to the [**Grid**](./grid) system documentation.
 
 :::
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -42,10 +42,10 @@ Pre viac informácií o použití **Col** sa presuňte do dokumentácie systému
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

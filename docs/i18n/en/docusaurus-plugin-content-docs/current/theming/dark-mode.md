@@ -1,69 +1,69 @@
 ---
-title: Tmavý režim
-initialTab: preview
+title: Dark mode
+initialTab: Preview
 inlineHtmlPreviews: true
 ---
 
 import Codepen from '@components/global/Codepen';
 
 
-  <title>Tmavý režim </title>
+  <title>Dark mode </title>
   <meta
     name="description"
     content="Tmavý režim v Elements je funkcia, ktorá umožňuje prepnúť farebnú schému stránok a komponentov na tmavšie odtiene, čo zlepšuje pohodlie používateľov v tmavších priestoroch a ponúka alternatívny estetický vzhľad. "
   />
 
 
-Tmavý režim v Elements je funkcia, ktorá umožňuje prepnúť farebnú schému stránok a komponentov na tmavšie odtiene, čo zlepšuje pohodlie používateľov v tmavších priestoroch a ponúka alternatívny estetický vzhľad.
+Dark Mode in Elements is a feature that allows you to switch the color scheme of pages and components to darker shades, improving user comfort in darker spaces and offering an alternative aesthetic.
 
-## Použitím media query
+## Using media query
 
-Prvým spôsobom, ako zapnúť tmavý režim, je použitie [CSS media query pre používateľom preferovanú farebnú schému](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme). Tento media query sa napojí na systémové nastavenie zariadenia používateľa a použije tému, ak je tmavý režim povolený.
+The first way to enable dark mode is to use [CSS media query for user preferred color scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme). This media query will link to the system settings of the user's device and apply a theme if dark mode is enabled.
 
 ```css
 @media (prefers-color-scheme: dark) {
   :root {
-    /* sem vložiť premenné tmavého režimu */
+    /* insert dark mode variables here */
   }
 }
 ```
 
-V súčasnosti má media query `prefers-color-scheme` [podporu prehliadačov](https://caniuse.com/#feat=prefers-color-scheme).
+Currently, the media query `prefers-color-scheme` has [browser support](https://caniuse.com/#feat=prefers-color-scheme).
 
-## Úprava systémového UI
+## Modification of system UI
 
-Pri vývoji tmavej témy si môžete všimnúť, že niektoré systémové komponenty používateľského rozhrania sa neprispôsobujú tmavému režimu správne. To fix this you will need to specify the `color-scheme`. See the <a href="https://caniuse.com/#feat=mdn-html_elements_meta_name_color-scheme" target="_blank" >kompatibilita prehliadačov pre color-scheme</a> for details on cross browser support.
+When developing a dark theme, you may notice that some system UI components do not adapt to the dark mode correctly. To fix this you will need to specify the `color-scheme`. See the <a href="https://caniuse.com/#feat=mdn-html_elements_meta_name_color-scheme" target="_blank" >browser compatibility for color-scheme</a> for details on cross browser support.
 
-Hoci možno používate hlavne komponenty Elements a nie iba natívne komponenty, `color-scheme` môže ovplyvniť aj také aspekty vašej aplikácie, ako je napríklad scroll bar. Aby ste mohli používať `color-scheme`, budete musieť pridať nasledujúce HTML do `head` vašej aplikácie:
+Although you may be using mostly Elements components and not just native components, the `color-scheme` can also affect aspects of your application such as the scroll bar. In order to use `color-scheme`, you will need to add the following HTML to the `head` of your application:
 
 ```html
 <meta name="color-scheme" content="light dark" />
 ```
 
-To umožní stránke označiť, ktorá farebná schéma jej vyhovuje pri vykresľovaní. Alternatively, you can add the following CSS to do this on a per-element basis:
+This will allow the page to indicate which color scheme suits it when rendering. Alternatively, you can add the following CSS to do this on a per-element basis:
 
 ```css
 color-scheme: light dark;
 ```
 
-| Predvolený scrollbar                                               | Scrollbar s `color-scheme`                                      |
-| ------------------------------------------------------------------ | --------------------------------------------------------------- |
-| ![Aplikácia bez color-scheme](/img/theming/color-scheme-light.png) | ![Aplikácia s color-scheme](/img/theming/color-scheme-dark.png) |
+| Default scrollbar                                                        | Scrollbar with `color-scheme`                                        |
+| ------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| ![Application without color-scheme](/img/theming/color-scheme-light.png) | ![Application with color-scheme](/img/theming/color-scheme-dark.png) |
 
-Viac informácií o `color-scheme` nájdete na adrese https\://web.dev/color-scheme/.
+For more information on `color-scheme`, please visit https\://web.dev/color-scheme/.
 
 :::poznámka
-Vývojári, ktorí chcú prispôsobiť farbu motívu pod stavovým riadkom v Safari v systéme iOS 15 alebo panela nástrojov v Safari v systéme macOS, si môžu pozrieť [`theme-color` Meta](./advanced.md#theme-color-meta).
+Developers who want to customize the theme color under the status bar in Safari on iOS 15 or the toolbar in Safari on macOS can check out [`theme-color` Meta](./advanced.md#theme-color-meta).
 :::
 
-## WebJET Tmavý režim
+## WebJET Dark Mode
 
-WebJET Elements má odporúčanú šablónu premenných, ktorú môžete použiť na vytvorenie tmavého režimu.
+WebJET Elements has a recommended variable template that you can use to create a dark mode.
 
-Nasledujúci kód môžete skopírovať a vložiť do aplikácie, aby ste získali tmavú tému WebJET Elements. Triedu `dark` pridáme do body pomocou JavaScriptu, ako je uvedené v časti [kombinovanie s JavaScriptom](#combining-with-javascript). Tmavý režim nebude povolený, kým sa do body nepridá trieda `dark`.
+You can copy and paste the following code into the app to get the WebJET Elements dark theme. Add the `dark` class to the body using JavaScript as described in [combining with JavaScript](#combining-with-javascript). Dark mode will not be enabled until the `dark` class is added to the body.
 
 :::poznámka
-Viac informácií o premenných, ktoré sa menia, vrátane ďalších premenných, ktoré možno pridať na ďalšie prispôsobenie, nájdete v časti [Šablóny](themes.md).
+See [Templates](themes.md) for more information about variables that change, including additional variables that can be added for further customization.
 :::
 
 ```css
@@ -81,7 +81,7 @@ Viac informácií o premenných, ktoré sa menia, vrátane ďalších premennýc
   --wj-font-size-small: 0.75rem;
   --wj-font-size: 0.875rem;
   --wj-font-size-medium: 1rem;
-  --wj-font-size-large:	1.25rem;
+  --wj-font-size-large: 1.25rem;
   --wj-font-size-x-large: 1.5rem;
   --wj-font-size-2x-large: 2.25rem;
   --wj-font-size-3x-large: 3rem;
@@ -136,7 +136,7 @@ Viac informácií o premenných, ktoré sa menia, vrátane ďalších premennýc
   */
   --wj-color-contrast-lowest: hsl(0, 0%, 0%); //rgba(0, 0, 0, 1); //#000000
   --wj-color-contrast-lower: hsl(0, 0%, 13%); //rgba(33, 33, 33, 1); //#212121
-  --wj-color-contrast-low: hsl(0, 0%, 29%); //rgba(33, 33, 33, 0.81); //#4b4b4b
+  --wj-color-contrast-lower: hsl(0, 0%, 29%); //rgba(33, 33, 33, 0.81); //#4b4b4b
   --wj-color-contrast-medium: hsl(0, 0%, 46%); //rgba(33, 33, 33, 0.62); //#757575
   --wj-color-contrast-high: hsl(0, 0%, 88%); //rgba(33, 33, 33, 0.14); //#e0e0e0
   --wj-color-contrast-highter: hsl(0, 0%, 96%); //rgba(33, 33, 33, 0.05); //#f4f4f4
@@ -286,7 +286,7 @@ Viac informácií o premenných, ktoré sa menia, vrátane ďalších premennýc
 
   // CONTRAST A
   --wj-color-contrast-lower-a: rgba(33, 33, 33, 0.05); //#f4f4f4
-  --wj-color-contrast-low-a: rgba(33, 33, 33, 0.14); // #e0e0e0
+  --wj-color-contrast-lower-a: rgba(33, 33, 33, 0.14); //#e0e0e0
   --wj-color-contrast-medium-a: rgba(33, 33, 33, 0.62); //#757575
   --wj-color-contrast-high-a: rgba(33, 33, 33, 0.81); //#4b4b4b
 }

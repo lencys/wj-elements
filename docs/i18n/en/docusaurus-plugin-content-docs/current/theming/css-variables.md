@@ -1,22 +1,22 @@
 ---
-title: CSS Premenné
+title: CSS Variables
 ---
 
 
-  <title>CSS Premenné | Custom CSS vlastnosti pre premenné a komponenty</title>
+  <title>CSS Variables | Custom CSS properties for variables and components</title>
   <meta
     name="description"
     content="Ionic components are built with CSS Variables for easy custom app properties. They allow a value to be stored in one place, then referenced in multiple places."
   />
 
 
-WebJET Elements využíva prednosti custom vlastností CSS, bežne známych ako <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables" target="_blank">CSS premenné</a>, aby sme zvýšili vaše možnosti štylizácie. Premenné CSS umožňujú definovať hodnoty na jednom mieste a následne ich opakovane využívať v celej aplikácii, vďaka čomu je vaše CSS efektívnejšie a ľahšie sa udržiava.
+WebJET Elements takes advantage of custom CSS properties, commonly known as <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables" target="_blank">CSS variables</a>, to enhance your styling options. CSS variables allow you to define values in one place and then reuse them throughout your application, making your CSS more efficient and easier to maintain.
 
-## Nastavenie hodnôt
+## Setting the values
 
-### Globálne premenné
+### Global variables
 
-Premenné CSS možno v aplikácii nastaviť globálne v selektore `:root`. Môžu sa tiež použiť len pre konkrétny režim, svetlý alebo tmavý. Viac informácií o globálnych premenných nájdete v časti [Premenné WebJET Elements](#premenné-webjet-elements).
+CSS variables can be set globally in the `:root` selector in the application. They can also be used only for a specific mode, light or dark. For more information about global variables, see [Variables WebJET Elements](#variables-webjet-elements).
 
 ```css
 /* Set variables for all modes */
@@ -29,36 +29,36 @@ Premenné CSS možno v aplikácii nastaviť globálne v selektore `:root`. Môž
 }
 ```
 
-### Premenné v komponentoch
+### Variables in components
 
-To set a CSS variable for a specific component, add the variable inside of its selector. See [Premenné WebJET Elements](#premenné-webjet-elements) for more information on the component-level variables Ionic provides.
+To set a CSS variable for a specific component, add the variable inside of its selector. See [Variable WebJET Elements](#variable-webjet-elements) for more information on the component-level variables Ionic provides.
 
 ```css
-/* Nastaví farbu okrajov všetkých tlačidiel */
+/* Sets the border color of all buttons */
 wj-button {
   --wj-button-border-color: #0af4fc;
 }
 
-/* Nastaví farbu okrajov všetkých tlačidla s id 'custom' */
+/* Sets the border color of all buttons with id 'custom' */
 #custom {
     --wj-button-border-color: #0af4fc;
 }
 ```
 
-### Premenné cez Javascript
+### Variables via Javascript
 
-CSS premenné je možné upraviť aj pomocou Javascript metódy [setProperty()](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty):
+CSS variables can also be modified using the Javascript method [setProperty()](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty):
 
 ```js
 const el = document.querySelector('#custom');
 el.style.setProperty('--wj-button-border-color', '#0af4fc');
 ```
 
-## Získanie hodnoty
+## Getting value
 
-### Použitím CSS
+### Using CSS
 
-Na získanie hodnoty premennej CSS použite funkciu [var() CSS function](https://developer.mozilla.org/en-US/docs/Web/CSS/var). Táto funkcia tiež umožňuje špecifikovať záložnú hodnotu. Napríklad v nasledujúcom príklade je vlastnosti `--wj-button-border-color` priradená hodnota premennej `--primary-light`. Ak premenná `--primary-light` nie je nastavená, ako náhradná hodnota sa použije `#0af4fc`.
+Use the [var() CSS function](https://developer.mozilla.org/en-US/docs/Web/CSS/var) to get the value of the CSS variable. This function also allows you to specify a fallback value. For example, in the following example, the `--wj-button-border-color` property is assigned the value of the `--primary-light` variable. If the `--primary-light` variable is not set, `#0af4fc` is used as a placeholder.
 
 ```css
 #custom {
@@ -66,21 +66,21 @@ Na získanie hodnoty premennej CSS použite funkciu [var() CSS function](https:/
 }
 ```
 
-### Použitím JavaScript
+### Using JavaScript
 
-CSS premenné je možné získať pomocou Javascript metódy [getPropertyValue()](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/getPropertyValue):
+CSS variables can be retrieved using the JavaScript method [getPropertyValue()](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/getPropertyValue):
 
 ```js
 const el = document.querySelector('#custom');
 const color = el.style.getPropertyValue('--charcoal');
 ```
 
-## Premenné WebJET Elements
+## WebJET Elements variables
 
-### Prispôsobenie komponentov pomocou premenných
+### Customizing components using variables
 
-Elements ponúka premenné špecifické pre komponenty, ako napríklad --background a --color, ktoré umožňujú jednoduché prispôsobenie. Úplný zoznam týchto premenných nájdete v časti CSS Custom Properties v referencii [API](../api.md) každej komponenty. Napríklad [CSS Custom Vlastnosti ](../api/button.md#css-custom-properties) komponentu Button si môžete pozrieť pre špecifické možnosti prispôsobenia.
+Elements offers component-specific variables, such as --background and --color, that allow for easy customization. For a complete list of these variables, see the CSS Custom Properties section in the [API](../api.md) reference of each component. For example, [CSS Custom Properties ](../api/button.md#css-custom-properties) of the Button component can be viewed for specific customization options.
 
-### Prispôsobenie aplikácie pomocou globálnych premenných
+### Customizing an application using global variables
 
-Elements poskytuje aj globálne premenné na zjednodušenie tematizácie celej aplikácie. Tieto premenné pokrývajú celý rad dizajnových vlastnosti. Podrobný návod na ich používanie na tematizáciu nájdete v [Farmy](colors.md), [Témy](themes.md) and [Pokročilé úpravy štýlov](advanced.md).
+Elements also provides global variables to simplify the theming of the entire application. These variables cover a range of design features. Detailed instructions on using them for theming can be found in [Farms](colors.md), [Themes](themes.md) and [Advanced Editing Styles](advanced.md).

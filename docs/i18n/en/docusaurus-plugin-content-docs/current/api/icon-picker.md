@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/icon-picker/custom-pro
 import Slots from '@ionic-internal/component-api/v1/icon-picker/slots.md';
 
 
-  <title>Icon | WebJET Element pre vybratie zo sady ikon</title>
+  <title>Icon | WebJET Element to select from a set of icons</title>
   <meta
     name="description"
     content="Tento komponent poskytuje jednoduchý spôsob zobrazenia ikon zo sady SVG obrázkov, pričom umožňuje rôzne možnosti prispôsobenia."
@@ -21,23 +21,23 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Icon picker umožňuje používateľovi nájsť a zvoliť ikonu zo sady dostupných ikon. Jeho súčasťou je textové vyhľádavanie pre jednoduchšie vyhľadanie ikony.
+Icon picker allows the user to find and select an icon from a set of available icons. It includes text search for easier icon retrieval.
 
-## Základné použitie
+## Basic use
 
 import Basic from '@site/static/usage/v1/icon-picker/basic/index.md';
 
 <Basic />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -45,10 +45,10 @@ import Basic from '@site/static/usage/v1/icon-picker/basic/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

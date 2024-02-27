@@ -16,19 +16,19 @@ import Slots from '@ionic-internal/component-api/v1/card-content/slots.md';
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
-Tento element slúži na použitie v karte pre umiestnenie primárneho obsahu karty.
+This element is for use in the tab to hold the primary contents of the tab.
 
-Pre viac informácií o použití Card Content sa presuňte do dokumentácie elementu [Card](./card).
+For more information on using Card Content, navigate to the [Card](./card) element documentation.
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -36,10 +36,10 @@ Pre viac informácií o použití Card Content sa presuňte do dokumentácie ele
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/layout/custom-props.md
 import Slots from '@ionic-internal/component-api/v1/layout/slots.md';
 
 
-  <title>Layout | Element umožňujúci jednoducho zostaviť layout stránky</title>
+  <title>Layout | Element to easily build a page layout</title>
   <meta name="description" content="Layout v Elements sa skladá z troch komponentov Header, Aside a Footer. Pomocou nich je možné jednoducho zostaviť základné rozvrhnutie webstránky." />
 
 
@@ -18,9 +18,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-**Elements** umožňuje si jednoducho zostaviť rozvrhnutie stránok pomocou 4 základných elementov: [Container](./container), [Header](./header), [Aside](./aside) a [Footer](./footer). V prípade komplexnejších rozvrhnutí je možné použiť tiež systém [Grid](./grid).
+**Elements** allows you to easily build your page layout using 4 basic elements: [Container](./container), [Header](./header), [Aside](./aside) and [Footer](./footer). For more complex layouts, the [Grid](./grid) system can also be used.
 
-## Príklady použitia
+## Examples of use
 
 import Basic from '@site/static/usage/v1/layout/basic/index.md';
 
@@ -30,15 +30,15 @@ import Basic from '@site/static/usage/v1/layout/basic/index.md';
 
 </div>
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -46,10 +46,10 @@ import Basic from '@site/static/usage/v1/layout/basic/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

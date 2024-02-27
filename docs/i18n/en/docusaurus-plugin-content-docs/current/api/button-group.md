@@ -18,23 +18,23 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="scoped" />
 
-ButtonGroup slúži na zoskupovanie elementov [Button](./button) a [Dropdown](./dropdown) do funkčnejších celkov, ktoré budú po vložení do vnútra elementu automaticky naštýlované a usporiadané.
+ButtonGroup is used to group [Button](./button) and [Dropdown](./dropdown) elements into more functional units, which will be automatically styled and arranged when inserted inside the element.
 
-## Základné použitie
+## Basic Usage
 
-Pridajte element `wj-button-group` do HTML s požadovanými atribútmi a do jeho vnútra zahrniete želané Button alebo Dropdown elementy.
+Add a `wj-button-group` element to the HTML with the desired attributes and include the desired Button or Dropdown elements inside it.
 
 import Basic from '@site/static/usage/v1/button-group/basic/index.md';
 
 <Basic />
 
-## Tvar ButtonGroup
+## ButtonGroup shape
 
 import Shape from '@site/static/usage/v1/button-group/shape/index.md';
 
 <Shape />
 
-## ButtonGroup s Dropdownom
+## ButtonGroup with Dropdown
 
 import Dropdown from '@site/static/usage/v1/button-group/dropdown/index.md';
 
@@ -44,15 +44,15 @@ import Dropdown from '@site/static/usage/v1/button-group/dropdown/index.md';
 
 </div>
 
-## Ikony v ButtonGroup
+## Icons in ButtonGroup
 
 import Icons from '@site/static/usage/v1/button-group/icons/index.md';
 
 <Icons />
 
-## Delené tlačidlá
+## Split buttons
 
-ButtonGroup umožňuje zobraziť aj delené tlačidlo s viacerými funkciami.
+ButtonGroup also allows you to display a split button with multiple functions.
 
 import SplitButtons from '@site/static/usage/v1/button-group/split-buttons/index.md';
 
@@ -62,29 +62,29 @@ import SplitButtons from '@site/static/usage/v1/button-group/split-buttons/index
 
 </div>
 
-## Úprava štýlov
+## Theming
 
-### Farby ButtonGroup
+### ButtonGroup colors
 
 import Colors from '@site/static/usage/v1/button-group/colors/index.md';
 
 <Colors />
 
-### Farba okrajov v ButtonGroup
+### Border colour in ButtonGroup
 
 import ColorsOutline from '@site/static/usage/v1/button-group/colors-outline/index.md';
 
 <ColorsOutline />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -92,10 +92,10 @@ import ColorsOutline from '@site/static/usage/v1/button-group/colors-outline/ind
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

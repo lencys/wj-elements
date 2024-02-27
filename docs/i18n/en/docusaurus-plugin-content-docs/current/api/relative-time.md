@@ -18,23 +18,23 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponent RelativeTime je element slúžiaci na zobrazenie relatívneho času na základe vloženého dátumu. Vypočíta a zobrazí relatívny časový rozdiel medzi aktuálnym dátumom a zadaným dátumom. Formát relatívneho času je lokalizovaný na základe jazyka prehliadača používateľa.
+The RelativeTime component is an element used to display the relative time based on the inserted date. Calculates and displays the relative time difference between the current date and the specified date. The relative time format is localized based on the language of the user's browser.
 
-## Základné použitie
+## Basic use
 
 import Basic from '@site/static/usage/v1/relative-time/basic/index.md';
 
 <Basic />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -42,10 +42,10 @@ import Basic from '@site/static/usage/v1/relative-time/basic/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

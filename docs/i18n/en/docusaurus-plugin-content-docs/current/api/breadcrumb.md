@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/breadcrumb/custom-prop
 import Slots from '@ionic-internal/component-api/v1/breadcrumb/slots.md';
 
 
-  <title>Breadcrumbs | Segment navigačnej cesty</title>
+  <title>Breadcrumbs | Navigation Route Segment</title>
   <meta name="description" content="Breadcrumbs je komponent, ktorý zobrazuje cestu, po ktorej používateľ prešiel v rámci aplikácie alebo webu. Tento element zobrazuje hierarchické usporiadanie stránok, v ktorom každý segment cesty 
   Breadcrumb je hyperlink, umožňujúci rýchly návrat na predchádzajúce úrovne. Breadcrumbs môže obsahovať ikonu." />
 
@@ -19,23 +19,23 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Breadcrumb zobrazuje jeden segment navigačnej cesty v aplikácii a je potomkom elementu Breadcrumbs. Môže zobrazovať aj ikonu.
+Breadcrumb displays one segment of the navigation path in the application and is a descendant of the Breadcrumbs element. It can also display an icon.
 
-:::note Poznámka
+:::note Note
 
-Pre viac informácií o použítí Breadcrumbs sa presuňte do dokumentácie elementu [**Breadcrumbs**](./breadcrumbs).
+For more information on using Breadcrumbs, navigate to the [**Breadcrumbs**](./breadcrumbs) element documentation.
 
 :::
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -43,10 +43,10 @@ Pre viac informácií o použítí Breadcrumbs sa presuňte do dokumentácie ele
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

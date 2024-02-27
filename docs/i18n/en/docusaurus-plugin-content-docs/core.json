@@ -14,7 +14,7 @@
             "docsTags": [
                 {
                     "name": "virtualProp",
-                    "text": "{\"ios\" | \"md\"} mode - The mode determines which platform styles to use."
+                    "text": "{ \"ios\". | \"md\"} mode - The mode determines which platform styles to use."
                 },
                 {
                     "name": "slot",
@@ -50,7 +50,7 @@
                     "mutable": false,
                     "attr": "delay",
                     "reflectToAttr": false,
-                    "docs": "Vlastnosť určujúca oneskorenie pred spustením animácie v milisekundách.",
+                    "docs": "Property specifying the delay before the animation starts in milliseconds.",
                     "docsTags": [],
                     "default": "0",
                     "values": [
@@ -67,7 +67,7 @@
                     "mutable": false,
                     "attr": "direction",
                     "reflectToAttr": false,
-                    "docs": "Vlastnosť určujúca smer animácie",
+                    "docs": "Animation direction property",
                     "docsTags": [],
                     "default": "normal",
                     "values": [
@@ -102,7 +102,7 @@
                     "mutable": false,
                     "attr": "duration",
                     "reflectToAttr": false,
-                    "docs": "Vlastnosť udávajúca trvanie animácie v milisekundách.",
+                    "docs": "A property indicating the duration of the animation in milliseconds.",
                     "docsTags": [],
                     "default": "1000",
                     "values": [
@@ -115,7 +115,7 @@
                 },
                 {
                     "name": "easing",
-                    "type": "\"ease\" | \"ease-in\" | \"ease-out\" | \"ease-in-out\" | \"linear\" | \"step-start\" | \"step-end\"",
+                    "type": "\"ease.\" | \"ease-in\" | \"ease-out\" | \"ease-in-out\" | \"linear\" | \"step-start\" | \"step-end\"",
                     "complexType": {
                         "original": "string",
                         "resolved": "string",
@@ -124,7 +124,7 @@
                     "mutable": false,
                     "attr": "toggle-icon",
                     "reflectToAttr": false,
-                    "docs": "Vlastnosť určujúca funkciu zvoľnenia pre animáciu.",
+                    "docs": "Property specifying the release function for the animation.",
                     "docsTags": [],
                     "default": "linear",
                     "values": [
@@ -146,7 +146,7 @@
                     "mutable": false,
                     "attr": "endDelay",
                     "reflectToAttr": false,
-                    "docs": "Vlastnosť určujúca zdržanie po skončení animácie v milisekundách.",
+                    "docs": "A property specifying the delay after the animation has finished, in milliseconds.",
                     "docsTags": [],
                     "default": "'0'",
                     "values": [
@@ -159,7 +159,7 @@
                 },
                 {
                     "name": "fill",
-                    "type": "\"auto\" | \"none\" | \"forwards\" | \"backwards\" | \"both\"",
+                    "type": "\"car\" | \"none\" | \"forwards\" | \"backwards\" | \"both\"",
                     "complexType": {
                         "original": "string",
                         "resolved": "string",
@@ -168,9 +168,9 @@
                     "mutable": false,
                     "attr": "fill",
                     "reflectToAttr": false,
-                    "docs": "Vlastnosť definujúca režim výplne animácie (pred a po animácii).",
+                    "docs": "Property defining the animation fill mode (before and after animation).",
                     "docsTags": [],
-                    "default": "`auto`",
+                    "default": "`car`",
                     "values": [
                         {
                             "type": "string"
@@ -181,7 +181,7 @@
                 },
                 {
                     "name": "name",
-                    "type": "\"auto\" | \"none\" | \"forwards\" | \"backwards\" | \"both\"",
+                    "type": "\"car\" | \"none\" | \"forwards\" | \"backwards\" | \"both\"",
                     "complexType": {
                         "original": "string",
                         "resolved": "string",
@@ -190,9 +190,9 @@
                     "mutable": false,
                     "attr": "name",
                     "reflectToAttr": false,
-                    "docs": "Vlastnosť definujúca názov animácie, ktorá sa má použiť. Zoznam všetkých dostupných animácií nájdete na \n[`animate.css`](https://animate.style).",
+                    "docs": "A property defining the name of the animation to be used. For a list of all available animations, see \n[`animate.css`](https://animate.style).",
                     "docsTags": [],
-                    "default": "`auto`",
+                    "default": "`car`",
                     "values": [
                         {
                             "type": "string"
@@ -220,7 +220,7 @@
             "docsTags": [
                 {
                     "name": "virtualProp",
-                    "text": "{\"ios\" | \"md\"} mode - The mode determines which platform styles to use."
+                    "text": "{ \"ios\". | \"md\"} mode - The mode determines which platform styles to use."
                 },
                 {
                     "name": "slot",
@@ -256,7 +256,7 @@
                     "mutable": false,
                     "attr": "initials",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, avatar zobrazí iniciály hodnoty atribútu `label`",
+                    "docs": "If `true`, the avatar displays the initials of the `label` attribute value",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -273,7 +273,7 @@
                     "mutable": false,
                     "attr": "label",
                     "reflectToAttr": false,
-                    "docs": "Určuje hodnotu pre atribút `initials`",
+                    "docs": "Specifies the value for the `initials` attribute",
                     "docsTags": [],
                     "values": [
                         {
@@ -294,7 +294,7 @@
                     "mutable": false,
                     "attr": "size",
                     "reflectToAttr": false,
-                    "docs": "Nastavte na `small` pre avatara s menším priemerom a na `large` pre avatara s väčším priemerom. V predvolenom nastavení je veľkosť nenastavená.",
+                    "docs": "Set to `small` for a smaller avatar and to `large` for a larger avatar. By default, the size is unset.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -322,59 +322,59 @@
                 {
                     "name": "--wj-avatar-background-color",
                     "annotation": "prop",
-                    "docs": "Farba pozadia avatara"
+                    "docs": "Avatar background colour"
                 },
                 {
                     "name": "--wj-avatar-border-color",
                     "annotation": "prop",
-                    "docs": "Farba okraja avatara"
+                    "docs": "Avatar border colour"
                 },
                 {
                     "name": "--wj-avatar-border-radius",
                     "annotation": "prop",
-                    "docs": "Zaoblenie okraja avatara"
+                    "docs": "Rounding of the edge of the avatar"
                 },
                 {
                     "name": "--wj-avatar-border-style",
                     "annotation": "prop",
-                    "docs": "Štýl okraja avatara"
+                    "docs": "Avatar border style"
                 },
                 {
                     "name": "--wj-avatar-border-width",
                     "annotation": "prop",
-                    "docs": "Šírka okraja"
+                    "docs": "Edge width"
                 },
                 {
                     "name": "--wj-avatar-color",
                     "annotation": "prop",
-                    "docs": "Farba textu"
+                    "docs": "Text colour"
                 },
                 {
                     "name": "--wj-avatar-font-size",
                     "annotation": "prop",
-                    "docs": "Veľkosť písma"
+                    "docs": "Font size"
                 },
                 {
                     "name": "--wj-avatar-font-weight",
                     "annotation": "prop",
-                    "docs": "Hrúbka písma"
+                    "docs": "Font thickness"
                 },
                 {
                     "name": "--wj-avatar-height",
                     "annotation": "prop",
-                    "docs": "Výška avatara"
+                    "docs": "Height of avatar"
                 },
                 {
                     "name": "--wj-avatar-width",
                     "annotation": "prop",
-                    "docs": "Šírka avatara"
+                    "docs": "Width of avatar"
                 }
             ],
             "slots": [],
             "parts": [
                 {
                     "name": "native",
-                    "docs": "Odkazuje na `div` element vo vnútri avatara"
+                    "docs": "Refers to the `div` element inside the avatar"
                 }
             ],
             "dependents": [],
@@ -412,7 +412,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": false,
-                    "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, `\"info\"`, and `\"menu\"`.\nPre viac informácií o farbách navštívte [Základy prispôsobenia](/theming/basics).",
+                    "docs": "The color to use from your application's color palette. The default options are: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"warning\"`, `\"complete\"`, `\"info\"`, and `\"menu\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -444,7 +444,7 @@
                             "type": "string"
                         },
                         {
-                            "type": "string & Record<never, never>"
+                            "type": "String & Record<never, never>"
                         },
                         {
                             "type": "undefined"
@@ -461,25 +461,25 @@
                 {
                     "name": "--wj-chip-border-radius",
                     "annotation": "prop",
-                    "docs": "Upraví zaoblenie elementu badge"
+                    "docs": "Adjusts the roundness of the badge element"
                 }
             ],
             "slots": [
                 {
                     "name": "",
-                    "docs": "Obsah sa umiestni medzi named sloty."
+                    "docs": "The contents are placed between the named slots."
                 },
                 {
                     "name": "end",
-                    "docs": "Obsah sa umiestni vpravo v LTR a vľavo v RTL."
+                    "docs": "The content is placed on the right in the LTR and on the left in the RTL."
                 },
                 {
                     "name": "icon-only",
-                    "docs": "Mal by sa použiť na ikonu v tlačidle, ktoré neobsahuje text."
+                    "docs": "It should be applied to an icon in a button that does not contain text."
                 },
                 {
                     "name": "start",
-                    "docs": "Obsah je umiestnený vľavo v LTR a vpravo v RTL."
+                    "docs": "The content is placed on the left in the LTR and on the right in the RTL."
                 }
             ],
             "parts": [],
@@ -506,7 +506,7 @@
                     "mutable": false,
                     "attr": "href",
                     "reflectToAttr": false,
-                    "docs": "Obsahuje adresu URL alebo fragment adresy URL, na ktorú hypertextový odkaz odkazuje.",
+                    "docs": "Contains the URL or URL fragment to which the hyperlink points.",
                     "docsTags": [],
                     "values": [
                         {
@@ -527,21 +527,21 @@
             "slots": [
                 {
                     "name": "end",
-                    "docs": "Obsah sa umiestni vpravo v LTR a vľavo v RTL."
+                    "docs": "The content is placed on the right in the LTR and on the left in the RTL."
                 },
                 {
                     "name": "separator",
-                    "docs": "Slot na prispôsobenie oddeľovača medzi položkami breadcrumbs. Ak nie je zadaný, predvolene sa používa ikona `\"chevron-right\"`."
+                    "docs": "Slot to customize the separator between breadcrumbs items. If not specified, the `\"chevron-right\"` icon is used by default."
                 },
                 {
                     "name": "start",
-                    "docs": "Obsah je umiestnený vľavo v LTR a vpravo v RTL."
+                    "docs": "The content is placed on the left in the LTR and on the right in the RTL."
                 }
             ],
             "parts": [
                 {
                     "name": "separator",
-                    "docs": "Odkazuje na `span` element obsahujúci oddeľovač medzi položkami breadcrumbs."
+                    "docs": "References a `span` element containing a separator between breadcrumbs items."
                 }
             ],
             "dependents": [
@@ -575,7 +575,7 @@
                     "mutable": false,
                     "attr": "itemsAfterCollapse",
                     "reflectToAttr": false,
-                    "docs": "Určuje hodnotu maximálneho počtu zobrazených položiek po zbalení",
+                    "docs": "Specifies the value of the maximum number of items displayed after packing",
                     "docsTags": [],
                     "default": "0",
                     "values": [
@@ -597,7 +597,7 @@
                     "mutable": false,
                     "attr": "itemsBeforeCollapse",
                     "reflectToAttr": false,
-                    "docs": "Určuje hodnotu maximálneho počtu zobrazených položiek pred zbalení",
+                    "docs": "Specifies the value of the maximum number of items displayed before packing",
                     "docsTags": [],
                     "default": "0",
                     "values": [
@@ -619,7 +619,7 @@
                     "mutable": false,
                     "attr": "maxItems",
                     "reflectToAttr": false,
-                    "docs": "Určuje hodnotu maximálneho počtu zobrazených položiek v navigácii Breadcrumbs",
+                    "docs": "Specifies the value of the maximum number of items displayed in the Breadcrumbs navigation",
                     "docsTags": [],
                     "default": "0",
                     "values": [
@@ -683,7 +683,7 @@
                     "mutable": true,
                     "attr": "active",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, v tlačidle sa zobrazí ikona `check`",
+                    "docs": "If `true`, a `check` icon will appear in the button",
                     "docsTags": [],
                     "default": "'false'",
                     "values": [
@@ -696,10 +696,10 @@
                 },
                 {
                     "name": "color",
-                    "type": "\"danger\" |  \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                    "type": "\"danger.\" | \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
                     "complexType": {
                         "original": "Color",
-                        "resolved": "\"danger\" |  \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                        "resolved": "\"danger.\" | \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
                         "references": {
                             "Color": {
                                 "location": "import",
@@ -711,7 +711,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": true,
-                    "docs": "Farba, ktorá sa má použiť z palety farieb aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"warning\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, and `\"neutral\"`.\nPre viac informácií o farbách navštívte [Základy prispôsobenia](/theming/basics).",
+                    "docs": "The color to be used from the application color palette. The default options are `\"primary\"`, `\"warning\"`, `\"success\"`, `\"warning\"`, `\"warning\"`, and `\"neutral\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -739,7 +739,7 @@
                             "type": "string"
                         },
                         {
-                            "type": "string & Record<never, never>"
+                            "type": "String & Record<never, never>"
                         },
                         {
                             "type": "undefined"
@@ -749,7 +749,7 @@
                     "required": false
                 },
                 {
-                    "name": "dialog",
+                    "name": "dialogue",
                     "type": "string",
                     "complexType": {
                         "original": "string",
@@ -757,9 +757,9 @@
                         "references": {}
                     },
                     "mutable": false,
-                    "attr": "dialog",
+                    "attr": "dialogue",
                     "reflectToAttr": true,
-                    "docs": "Asociuje tlačidlo so špecifickým eventom. Po kliknutí na tlačidlo sa spustí named event, čo umožní implementovať akcie, ako je otvorenie dialógového okna alebo vykonanie vlastného eventu. Viac informácií nájdete v komponente dialog.",
+                    "docs": "Associates a button with a specific event. When the button is clicked, the named event is triggered, allowing you to implement actions such as opening a dialog box or executing a custom event. See the dialog component for more information.",
                     "docsTags": [],
                     "values": [
                         {
@@ -780,7 +780,7 @@
                     "mutable": false,
                     "attr": "disabled",
                     "reflectToAttr": true,
-                    "docs": "Ak `true`, používateľ nemôže s tlačidlom interagovať.",
+                    "docs": "If `true`, the user cannot interact with the button.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -802,11 +802,11 @@
                     "mutable": true,
                     "attr": "fill",
                     "reflectToAttr": true,
-                    "docs": "Nastavte na \"link\" pre priehľadné tlačidlo bez okrajov, na \"outline\" pre priehľadné tlačidlo s okrajom, alebo na \"solid\" s vyplneným pozadím. Predvolená výplň je \"solid\".",
+                    "docs": "Set to \"link\" for a transparent button without borders, to \"outline\" for a transparent button with border, or to \"solid\" with filled background. The default fill is \"solid\".",
                     "docsTags": [],
                     "values": [
                         {
-                            "value": "link",
+                            "value": "Link",
                             "type": "string"
                         },
                         {
@@ -839,7 +839,7 @@
                     "mutable": false,
                     "attr": "size",
                     "reflectToAttr": true,
-                    "docs": "Nastavte na \"small\" pre tlačidlo s menšou výškou a výplňou, alebo na \"large\" pre tlačidlo s väčšou výškou a výplňou. V predvolenom nastavení je veľkosť nastavená na predvolenú.",
+                    "docs": "Set to \"small\" for a button with a smaller height and padding, or to \"large\" for a button with a larger height and padding. By default, the size is set to the default.",
                     "docsTags": [],
                     "values": [
                         {
@@ -872,7 +872,7 @@
                     "mutable": false,
                     "attr": "toggle",
                     "reflectToAttr": false,
-                    "docs": "Umožní priradiť tlačidlu dva rôzne stavy a kliknutím medzi nimi prepínať. Nastavením hodnoty sa tlačidlu priradí predvolený stav. Podradený element musí obsahovat slot s hodnotou `toggle` a tiež vlastnosť `state` s jednou z dvoch dostupných hodnôt stavu.",
+                    "docs": "Allows you to assign two different states to a button and toggle between them by clicking. Setting a value assigns a default state to the button. The child element must contain a slot with the value `toggle` and also a `state` property with one of the two available state values.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -887,7 +887,7 @@
             "methods": [],
             "events": [
                 {
-                    "event": "dialog",
+                    "event": "dialogue",
                     "detail": "void",
                     "bubbles": true,
                     "complexType": {
@@ -897,7 +897,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Vyvolaný pri kliknutí na tlačidlo",
+                    "docs": "Called when the button is clicked",
                     "docsTags": []
                 }
             ],
@@ -906,76 +906,76 @@
                 {
                     "name": "--wj-color-base",
                     "annotation": "prop",
-                    "docs": "Farba pozadia tlačidla"
+                    "docs": "Button background colour"
                 },
                 {
                     "name": "--wj-button-border-color",
                     "annotation": "prop",
-                    "docs": "Farba okraja tlačidla"
+                    "docs": "Button edge colour"
                 },
                 {
                     "name": "--wj-button-border-radius",
                     "annotation": "prop",
-                    "docs": "Zaoblenie okrajov tlačidla"
+                    "docs": "Rounding the edges of the button"
                 },
                 {
                     "name": "--wj-button-border-style",
                     "annotation": "prop",
-                    "docs": "Štýl okrajov tlačidla"
+                    "docs": "Button edge style"
                 },
                 {
                     "name": "--wj-button-border-width",
                     "annotation": "prop",
-                    "docs": "Šírka okrajov tlačidla"
+                    "docs": "Width of the button edges"
                 },
                 {
                     "name": "--wj-color-contrast",
                     "annotation": "prop",
-                    "docs": "Farba textu tlačidla"
+                    "docs": "Button text colour"
                 },
                 {
                     "name": "--wj-padding-bottom",
                     "annotation": "prop",
-                    "docs": "Spodné vnútorné odsadenie tlačidla"
+                    "docs": "Bottom inner indent button"
                 },
                 {
                     "name": "--wj-padding-end",
                     "annotation": "prop",
-                    "docs": "Pravé vnútorné odsadenie, ak je smer LTR, a ľavé vnútorné odsadenie, ak je smer RTL tlačidla"
+                    "docs": "Right internal offset if the direction is LTR, and left internal offset if the direction is RTL button"
                 },
                 {
                     "name": "--wj-padding-start",
                     "annotation": "prop",
-                    "docs": "Ľavé vnútorné odsadenie, ak je smer LTR, a pravé vnútorné odsadenie, ak je smer RTL tlačidla"
+                    "docs": "Left internal offset if the direction is LTR, and right internal offset if the direction is RTL button"
                 },
                 {
                     "name": "--wj-padding-top",
                     "annotation": "prop",
-                    "docs": "Horné vnútorné odsadenie tlačidla"
+                    "docs": "Upper internal offset button"
                 }
             ],
             "slots": [
                 {
                     "name": "",
-                    "docs": "Obsah sa umiestni medzi named sloty."
+                    "docs": "The contents are placed between the named slots."
                 },
                 {
                     "name": "end",
-                    "docs": "Obsah sa umiestni vpravo od textu tlačidla v LTR a vľavo v RTL."
+                    "docs": "The content is placed to the right of the button text in LTR and to the left in RTL."
                 },
                 {
                     "name": "icon-only",
-                    "docs": "Mal by sa použiť na ikonu v tlačidle, ktoré neobsahuje text."
+                    "docs": "It should be applied to an icon in a button that does not contain text."
                 },
                 {
                     "name": "start",
-                    "docs": "Obsah je umiestnený vľavo od textu tlačidla v LTR a vpravo v RTL."
+                    "docs": "The content is placed to the left of the button text in LTR and to the right in RTL."
                 }
             ],
             "parts": [
                 {
                     "name": "native",
-                    "docs": "Odkazuje na `<a>` element vo vnútri tlačidla"
+                    "docs": "Refers to the `<a>` element inside the button"
                 }
             ],
             "dependents": [],
@@ -998,7 +998,7 @@
             "parts": [
                 {
                     "name": "native",
-                    "docs": "Odkazuje na `<div>` element vo vnútri tlačidla"
+                    "docs": "Refers to the `<div>` element inside the button"
                 }
             ],
             "dependents": [],
@@ -1020,10 +1020,10 @@
             "props": [
                 {
                     "name": "color",
-                    "type": "\"danger\" |  \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                    "type": "\"danger.\" | \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
                     "complexType": {
                         "original": "Color",
-                        "resolved": "\"danger\" |  \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                        "resolved": "\"danger.\" | \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
                         "references": {
                             "Color": {
                                 "location": "import",
@@ -1035,7 +1035,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": true,
-                    "docs": "Farba, ktorá sa má použiť z palety farieb aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"warning\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, and `\"neutral\"`.\nPre viac informácií o farbách navštívte [Základy prispôsobenia](/theming/basics).",
+                    "docs": "The color to be used from the application color palette. The default options are `\"primary\"`, `\"warning\"`, `\"success\"`, `\"warning\"`, `\"warning\"`, and `\"neutral\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -1063,7 +1063,7 @@
                             "type": "string"
                         },
                         {
-                            "type": "string & Record<never, never>"
+                            "type": "String & Record<never, never>"
                         },
                         {
                             "type": "undefined"
@@ -1078,34 +1078,34 @@
             "listeners": [],
             "styles": [
                 {
-                    "name": "-—wj-card-border-color",
+                    "name": "--wj-card-border-color",
                     "annotation": "prop",
-                    "docs": "Definuje farbu okraja karty."
+                    "docs": "Defines the colour of the card edge."
                 },
                 {
                     "name": "--wj-card-margin-bottom",
                     "annotation": "prop",
-                    "docs": "Definuje veľkosť medzery od dolného okraja karty"
+                    "docs": "Defines the size of the gap from the bottom edge of the card"
                 },
                 {
                     "name": "--wj-card-margin-inline",
                     "annotation": "prop",
-                    "docs": "Definuje veľkosť medzery od pravého a ľavého okraja karty"
+                    "docs": "Defines the size of the gap from the right and left edges of the card"
                 },
                 {
                     "name": "--wj-card-margin-top",
                     "annotation": "prop",
-                    "docs": "Definuje veľkosť medzery od horného okraja karty"
+                    "docs": "Defines the size of the gap from the top edge of the card"
                 },
                 {
                     "name": "--wj-color-base",
                     "annotation": "prop",
-                    "docs": "Definuje farbu pozadia karty"
+                    "docs": "Defines the background colour of the card"
                 },
                 {
                     "name": "--wj-color-contrast",
                     "annotation": "prop",
-                    "docs": "Definuje farbu textu karty"
+                    "docs": "Defines the colour of the card text"
                 }
             ],
             "slots": [],
@@ -1156,7 +1156,7 @@
                     "mutable": false,
                     "attr": "separator",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, do elementu sa vloží horizontálny oddeľovač",
+                    "docs": "If `true`, a horizontal separator is inserted into the element",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -1251,7 +1251,7 @@
                     "mutable": true,
                     "attr": "checked",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, zmení sa predvolený stav checkboxu na true",
+                    "docs": "If `true`, the default state of the checkbox is changed to true",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -1264,10 +1264,10 @@
                 },
                 {
                     "name": "color",
-                    "type": "\"danger\" |  \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                    "type": "\"danger.\" | \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
                     "complexType": {
                         "original": "Color",
-                        "resolved": "\"danger\" |  \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                        "resolved": "\"danger.\" | \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
                         "references": {
                             "Color": {
                                 "location": "import",
@@ -1279,7 +1279,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": true,
-                    "docs": "Určuje farbu pozadia checkboxu. Predvolené možnosti sú `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
+                    "docs": "Specifies the background color of the checkbox. The default options are `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information, go to: [theming](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -1307,7 +1307,7 @@
                             "type": "string"
                         },
                         {
-                            "type": "string & Record<never, never>"
+                            "type": "String & Record<never, never>"
                         },
                         {
                             "type": "undefined"
@@ -1327,7 +1327,7 @@
                     "mutable": false,
                     "attr": "disabled",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, s checkboxom nie je možné interagovať",
+                    "docs": "If `true`, the checkbox cannot be interacted with",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -1349,7 +1349,7 @@
                     "mutable": true,
                     "attr": "indeterminate",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, zobrazí checkbox, ktorého predvolený stav je neutrálny.",
+                    "docs": "If `true`, displays a checkbox whose default state is neutral.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -1361,7 +1361,7 @@
                     "required": false
                 },
                 {
-                    "name": "variant",
+                    "name": "Option",
                     "type": "\"circle\"",
                     "complexType": {
                         "original": "\"circle\"",
@@ -1369,9 +1369,9 @@
                         "references": {}
                     },
                     "mutable": false,
-                    "attr": "variant",
+                    "attr": "Option",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, zmení sa vzhľad checkboxu na okrúhly.",
+                    "docs": "If `true`, the appearance of the checkbox is changed to round.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -1391,27 +1391,27 @@
                 {
                     "name": "--wj-checkbox-height",
                     "annotation": "prop",
-                    "docs": "Určuje minimálnu výšku checkboxu"
+                    "docs": "Specifies the minimum height of the checkbox"
                 },
                 {
                     "name": "--wj-checkbox-margin-bottom",
                     "annotation": "prop",
-                    "docs": "Veľkosť vonkajšieho spodného okraja"
+                    "docs": "Size of the outer bottom edge"
                 },
                 {
                     "name": "--wj-checkbox-margin-inline",
                     "annotation": "prop",
-                    "docs": "Veľkosť vonkajších okrajov vľavo a vpravo"
+                    "docs": "Size of outer edges left and right"
                 },
                 {
                     "name": "--wj-checkbox-margin-top",
                     "annotation": "prop",
-                    "docs": "Veľkosť vonkajšieho horného okraja"
+                    "docs": "Size of the outer upper edge"
                 },
                 {
                     "name": "--wj-checkbox-width",
                     "annotation": "prop",
-                    "docs": "Určuje minimálnu šírku checkboxu"
+                    "docs": "Specifies the minimum width of the checkbox"
                 }
             ],
             "slots": [],
@@ -1428,7 +1428,7 @@
             "docsTags": [
                 {
                     "name": "virtualProp",
-                    "text": "{\"ios\" | \"md\"} mode - The mode determines which platform styles to use."
+                    "text": "{ \"ios\". | \"md\"} mode - The mode determines which platform styles to use."
                 }
             ],
             "usage": {},
@@ -1444,7 +1444,7 @@
                     "mutable": true,
                     "attr": "active",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, zobrazí sa ikona `check`",
+                    "docs": "If `true`, the `check` icon is displayed",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -1457,10 +1457,10 @@
                 },
                 {
                     "name": "color",
-                    "type": "\"danger\" |  \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                    "type": "\"danger.\" | \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
                     "complexType": {
                         "original": "Color",
-                        "resolved": "\"danger\" |  \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                        "resolved": "\"danger.\" | \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
                         "references": {
                             "Color": {
                                 "location": "import",
@@ -1472,7 +1472,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": true,
-                    "docs": "Určuje farbu pozadia chip elementu. Predvolené možnosti sú `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
+                    "docs": "Specifies the background color of the chip element. The default options are `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information, go to: [theming](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -1500,7 +1500,7 @@
                             "type": "string"
                         },
                         {
-                            "type": "string & Record<never, never>"
+                            "type": "String & Record<never, never>"
                         },
                         {
                             "type": "undefined"
@@ -1520,7 +1520,7 @@
                     "mutable": false,
                     "attr": "disabled",
                     "reflectToAttr": false,
-                    "docs": "If `true`, používateľ nemôže s elementom interagovať.",
+                    "docs": "If `true`, the user cannot interact with the element.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -1539,12 +1539,12 @@
                 {
                     "name": "--background",
                     "annotation": "prop",
-                    "docs": "Pozadie elementu chip"
+                    "docs": "Background element chip"
                 },
                 {
                     "name": "--color",
                     "annotation": "prop",
-                    "docs": "Farba elementu chip"
+                    "docs": "Element colour chip"
                 }
             ],
             "slots": [],
@@ -1590,7 +1590,7 @@
                     "mutable": true,
                     "attr": "for",
                     "reflectToAttr": false,
-                    "docs": "Určuje ID elementu, ktorého obsah sa skopíruje.",
+                    "docs": "Specifies the ID of the element whose content is copied.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -1612,7 +1612,7 @@
                     "mutable": true,
                     "attr": "label",
                     "reflectToAttr": false,
-                    "docs": "Určuje hodnotu pomocného textu v nápovede.",
+                    "docs": "Specifies the value of the help text in the help.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -1634,7 +1634,7 @@
                     "mutable": true,
                     "attr": "label-success",
                     "reflectToAttr": false,
-                    "docs": "Určuje hodnotu pomocného textu v nápovede po úspešnom skopírovaní.",
+                    "docs": "Specifies the value of the help text in the help after a successful copy.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -1659,23 +1659,23 @@
         {
             "filePath": "src/components/dialog/dialog.tsx",
             "encapsulation": "shadow",
-            "tag": "dialog",
+            "tag": "dialogue",
             "docs": "",
             "docsTags": [],
             "usage": {},
             "props": [
                 {
                     "name": "placement",
-                    "type": "\"slide-up\" |  \"slide-down\" | \"slide-left\" | \"slide-right\" | \"fill-in\" | string & Record<never, never> | undefined",
+                    "type": "\"slide-up\" | \"slide-down\" | \"slide-left\" | \"slide-right\" | \"fill-in\" | string & Record<never, never> | undefined",
                     "complexType": {
                         "original": "string",
-                        "resolved": "\"slide-up\" |  \"slide-down\" | \"slide-left\" | \"slide-right\" | \"fill-in\" | string & Record<never, never> | undefined",
+                        "resolved": "\"slide-up\" | \"slide-down\" | \"slide-left\" | \"slide-right\" | \"fill-in\" | string & Record<never, never> | undefined",
                         "references": {}
                     },
                     "mutable": true,
                     "attr": "placement",
                     "reflectToAttr": false,
-                    "docs": "Určuje umiestnenie dialógového okna na obrazovke. Medzi možné hodnoty patrí \"slide-up\" (posunúť hore), \"slide-down\" (posunúť dole) a ďalšie.",
+                    "docs": "Specifies the location of the dialog box on the screen. Possible values include \"slide-up\", \"slide-down\" and others.",
                     "docsTags": [],
                     "default": "slide-up",
                     "values": [
@@ -1688,16 +1688,16 @@
                 },
                 {
                     "name": "size",
-                    "type": "\"small\" |  \"medium\" | \"large\" | \"ex-large\" | string & Record<never, never> | undefined",
+                    "type": "\"small\" | \"medium\" | \"large\" | \"ex-large\" | string & Record<never, never> | undefined",
                     "complexType": {
                         "original": "string",
-                        "resolved": "\"small\" |  \"medium\" | \"large\" | \"ex-large\" | string & Record<never, never> | undefined",
+                        "resolved": "\"small\" | \"medium\" | \"large\" | \"ex-large\" | string & Record<never, never> | undefined",
                         "references": {}
                     },
                     "mutable": true,
                     "attr": "size",
                     "reflectToAttr": false,
-                    "docs": "Určuje veľkosť dialógového okna na obrazovke. Medzi možné hodnoty patrí \"small\" (malé), \"medium\" (stredné) a ďalšie.",
+                    "docs": "Specifies the size of the dialog box on the screen. Possible values include \"small\", \"medium\" and others.",
                     "docsTags": [],
                     "default": "small",
                     "values": [
@@ -1716,91 +1716,91 @@
                 {
                     "name": "--wj-backdrop",
                     "annotation": "prop",
-                    "docs": "Farba pozadia (backdropu)"
+                    "docs": "Background (backdrop) colour"
                 },
                 {
                     "name": "--wj-backdrop-opacity",
                     "annotation": "prop",
-                    "docs": "Priehľadnosť pozadia (backdropu)"
+                    "docs": "Backdrop transparency"
                 },
                 {
                     "name": "--wj-dialog-border-color",
                     "annotation": "prop",
-                    "docs": "Farba okrajov dialógového okna"
+                    "docs": "The colour of the edges of the dialog box"
                 },
                 {
                     "name": "--wj-dialog-border-radius",
                     "annotation": "prop",
-                    "docs": "Zaoblenie okrajov dialógového okna"
+                    "docs": "Rounding the edges of the dialog box"
                 },
                 {
                     "name": "--wj-dialog-border-style",
                     "annotation": "prop",
-                    "docs": "Štýl okrajov dialógového okna"
+                    "docs": "Dialog box border style"
                 },
                 {
                     "name": "--wj-dialog-border-width",
                     "annotation": "prop",
-                    "docs": "Hrúbka okrajov dialógového okna"
+                    "docs": "Dialog box border thickness"
                 },
                 {
                     "name": "--wj-dialog-height",
                     "annotation": "prop",
-                    "docs": "Výška dialógového okna"
+                    "docs": "Height of the dialog box"
                 },
                 {
                     "name": "--wj-dialog-margin-bottom",
                     "annotation": "prop",
-                    "docs": "Spodné vonkajšie odsadenie dialógového okna"
+                    "docs": "Bottom outer indent of the dialogue window"
                 },
                 {
                     "name": "--wj-dialog-margin-end",
                     "annotation": "prop",
-                    "docs": "Ľavé vonkajšie odsadenie dialógového okna"
+                    "docs": "Left outer indent of the dialog box"
                 },
                 {
                     "name": "--wj-dialog-margin-start",
                     "annotation": "prop",
-                    "docs": "Pravé vonkajšie odsadenie dialógového okna"
+                    "docs": "Right outer indent of the dialog box"
                 },
                 {
                     "name": "--wj-dialog-margin-top",
                     "annotation": "prop",
-                    "docs": "Horné vonkajšie odsadenie dialógového okna"
+                    "docs": "Top outer indent of the dialog box"
                 },
                 {
                     "name": "--wj-dialog-padding",
                     "annotation": "prop",
-                    "docs": "Vnútorné odsadenie dialógového okna"
+                    "docs": "Internal dialog box indentation"
                 },
                 {
                     "name": "--wj-dialog-width",
                     "annotation": "prop",
-                    "docs": "Šírka dialógového okna"
+                    "docs": "Dialog window width"
                 }
             ],
             "slots": [
                 {
                     "name": "header",
-                    "docs": "Obsah sa umiestni v záhlaví dialógového okna."
+                    "docs": "The content is placed in the header of the dialog box."
                 },
                 {
                     "name": "footer",
-                    "docs": "Obsah sa umiestni v pätičke dialógového okna."
+                    "docs": "The content is placed in the footer of the dialog box."
                 }
             ],
             "parts": [
                 {
-                    "name": "body",
-                    "docs": "Odkazuje na hlavný obsah dialógového okna"
+                    "name": "bodies",
+                    "docs": "Refers to the main content of the dialog"
                 },
                 {
                     "name": "header",
-                    "docs": "Odkazuje na záhlavie dialógového okna"
+                    "docs": "Refers to the header of the dialog box"
                 },
                 {
                     "name": "footer",
-                    "docs": "Odkazuje na zápätí dialógového okna"
+                    "docs": "Refers to the footer of the dialog box"
                 }
             ],
             "dependents": [],
@@ -1826,7 +1826,7 @@
                     "mutable": false,
                     "attr": "offset",
                     "reflectToAttr": false,
-                    "docs": "Určuje vzdialenosť kontextového menu od tlačidla.",
+                    "docs": "Specifies the distance of the context menu from the button.",
                     "docsTags": [],
                     "default": "0",
                     "values": [
@@ -1839,16 +1839,16 @@
                 },
                 {
                     "name": "placement",
-                    "type": "\"bottom\" |  \"bottom-end\" | \"bottom-start\" | \"left-bottom\" | \"left\" | \"left-top\" | \"right-bottom\" | \"right\" | \"right-top\" | \"top\" | \"top-end\" | \"top-start\" | string & Record<never, never> | undefined",
+                    "type": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left-bottom\" | \"left\" | \"left-top\" | \"right-bottom\" | \"right\" | \"right-top\" | \"top\" | \"top-end\" | \"top-start\" | string & Record<never, never> | undefined",
                     "complexType": {
                         "original": "string",
-                        "resolved": "\"bottom\" |  \"bottom-end\" | \"bottom-start\" | \"left-bottom\" | \"left\" | \"left-top\" | \"right-bottom\" | \"right\" | \"right-top\" | \"top\" | \"top-end\" | \"top-start\" | string & Record<never, never> | undefined",
+                        "resolved": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left-bottom\" | \"left\" | \"left-top\" | \"right-bottom\" | \"right\" | \"right-top\" | \"top\" | \"top-end\" | \"top-start\" | string & Record<never, never> | undefined",
                         "references": {}
                     },
                     "mutable": true,
                     "attr": "placement",
                     "reflectToAttr": false,
-                    "docs": "Určuje umiestnenie nápovedy po skopírovaní hodnoty.",
+                    "docs": "Specifies the location of the hint after the value is copied.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -1868,7 +1868,7 @@
             "parts": [
                 {
                     "name": "native",
-                    "docs": "Odkazuje na `div` element vo vnútri dropdownu"
+                    "docs": "Refers to the `div` element inside the dropdown"
                 }
             ],
             "dependents": [],
@@ -1912,7 +1912,7 @@
                     "mutable": false,
                     "attr": "offset",
                     "reflectToAttr": false,
-                    "docs": "Počet stĺpcov, o ktoré sa má stĺpec posunúť.",
+                    "docs": "The number of columns by which the column should be shifted.",
                     "docsTags": [],
                     "values": [
                         {
@@ -1936,7 +1936,7 @@
                     "mutable": false,
                     "attr": "offset-lg",
                     "reflectToAttr": false,
-                    "docs": "Počet stĺpcov, o ktoré sa má stĺpec posunúť na obrazovkách veľkosti `lg`.",
+                    "docs": "The number of columns by which the column is to be shifted on screens of size `lg`.",
                     "docsTags": [],
                     "values": [
                         {
@@ -1960,7 +1960,7 @@
                     "mutable": false,
                     "attr": "offset-md",
                     "reflectToAttr": false,
-                    "docs": "Počet stĺpcov, o ktoré sa má stĺpec posunúť na obrazovkách veľkosti `md`.",
+                    "docs": "The number of columns by which the column is to be shifted on screens of size `md`.",
                     "docsTags": [],
                     "values": [
                         {
@@ -1984,7 +1984,7 @@
                     "mutable": false,
                     "attr": "offset-sm",
                     "reflectToAttr": false,
-                    "docs": "Počet stĺpcov, o ktoré sa má stĺpec posunúť na obrazovkách veľkosti `sm`.",
+                    "docs": "The number of columns by which the column is to be shifted on screens of size `sm`.",
                     "docsTags": [],
                     "values": [
                         {
@@ -2008,7 +2008,7 @@
                     "mutable": false,
                     "attr": "offset-xl",
                     "reflectToAttr": false,
-                    "docs": "Počet stĺpcov, o ktoré sa má stĺpec posunúť na obrazovkách veľkosti `xl`.",
+                    "docs": "The number of columns by which the column should be shifted on `xl` size screens.",
                     "docsTags": [],
                     "values": [
                         {
@@ -2032,7 +2032,7 @@
                     "mutable": false,
                     "attr": "offset-xs",
                     "reflectToAttr": false,
-                    "docs": "Počet stĺpcov, o ktoré sa má stĺpec posunúť na obrazovkách veľkosti `xs`.",
+                    "docs": "The number of columns by which the column is to be shifted on screens of size `xs`.",
                     "docsTags": [],
                     "values": [
                         {
@@ -2056,7 +2056,7 @@
                     "mutable": false,
                     "attr": "offset-xs",
                     "reflectToAttr": false,
-                    "docs": "Počet stĺpcov, o ktoré sa má stĺpec posunúť na obrazovkách veľkosti `xs`.",
+                    "docs": "The number of columns by which the column is to be shifted on screens of size `xs`.",
                     "docsTags": [],
                     "values": [
                         {
@@ -2080,7 +2080,7 @@
                     "mutable": false,
                     "attr": "order",
                     "reflectToAttr": false,
-                    "docs": "Nastaví stĺpcu poradie v riadku pridaním hodnoty 1 až 5, `\"first\"` a `\"last\"`",
+                    "docs": "Sets the column order in the row by adding the values 1 to 5, `\"first\"` and `\"last\"`",
                     "docsTags": [],
                     "values": [
                         {
@@ -2104,7 +2104,7 @@
                     "mutable": false,
                     "attr": "size",
                     "reflectToAttr": false,
-                    "docs": "Nastaví veľkosť stĺpca v zmysle toho, koľko stĺpcov má zaberať z celkového počtu dostupných stĺpcov. Ak je zadané `\"auto\"`, stĺpec bude mať veľkosť svojho obsahu.",
+                    "docs": "Sets the column size in terms of how many columns it should occupy out of the total number of available columns. If `\"auto\"` is specified, the column will be the size of its contents.",
                     "docsTags": [],
                     "values": [
                         {
@@ -2128,7 +2128,7 @@
                     "mutable": false,
                     "attr": "size-lg",
                     "reflectToAttr": false,
-                    "docs": "Nastaví veľkosť stĺpca na obrazovkách veľkosti `lg` v zmysle toho, koľko stĺpcov má zaberať z celkového počtu dostupných stĺpcov. Ak je zadané `\"auto\"`, stĺpec bude mať veľkosť svojho obsahu.",
+                    "docs": "Sets the column size on `lg` size screens in terms of how many columns it should occupy out of the total number of available columns. If `\"auto\"` is specified, the column will be the size of its contents.",
                     "docsTags": [],
                     "values": [
                         {
@@ -2152,7 +2152,7 @@
                     "mutable": false,
                     "attr": "size-md",
                     "reflectToAttr": false,
-                    "docs": "Nastaví veľkosť stĺpca na obrazovkách veľkosti `md` v zmysle toho, koľko stĺpcov má zaberať z celkového počtu dostupných stĺpcov. Ak je zadané `\"auto\"`, stĺpec bude mať veľkosť svojho obsahu.",
+                    "docs": "Sets the column size on `md` size screens in terms of how many columns to take up out of the total number of available columns. If `\"auto\"` is specified, the column will be the size of its contents.",
                     "docsTags": [],
                     "values": [
                         {
@@ -2176,7 +2176,7 @@
                     "mutable": false,
                     "attr": "size-sm",
                     "reflectToAttr": false,
-                    "docs": "Nastaví veľkosť stĺpca na obrazovkách veľkosti `sm` v zmysle toho, koľko stĺpcov má zaberať z celkového počtu dostupných stĺpcov. Ak je zadané `\"auto\"`, stĺpec bude mať veľkosť svojho obsahu.",
+                    "docs": "Sets the column size on `sm` size screens in terms of how many columns to take up out of the total number of available columns. If `\"auto\"` is specified, the column will be the size of its contents.",
                     "docsTags": [],
                     "values": [
                         {
@@ -2200,7 +2200,7 @@
                     "mutable": false,
                     "attr": "size-xl",
                     "reflectToAttr": false,
-                    "docs": "Nastaví veľkosť stĺpca na obrazovkách veľkosti `xl` v zmysle toho, koľko stĺpcov má zaberať z celkového počtu dostupných stĺpcov. Ak je zadané `\"auto\"`, stĺpec bude mať veľkosť svojho obsahu.",
+                    "docs": "Sets the column size on `xl` sized screens in terms of how many columns it should occupy out of the total number of available columns. If `\"auto\"` is specified, the column will be the size of its contents.",
                     "docsTags": [],
                     "values": [
                         {
@@ -2224,7 +2224,7 @@
                     "mutable": false,
                     "attr": "size-xs",
                     "reflectToAttr": false,
-                    "docs": "Nastaví veľkosť stĺpca na obrazovkách veľkosti `xs` v zmysle toho, koľko stĺpcov má zaberať z celkového počtu dostupných stĺpcov. Ak je zadané `\"auto\"`, stĺpec bude mať veľkosť svojho obsahu.",
+                    "docs": "Sets the column size on `xs` sized screens in terms of how many columns it should occupy out of the total number of available columns. If `\"auto\"` is specified, the column will be the size of its contents.",
                     "docsTags": [],
                     "values": [
                         {
@@ -2274,7 +2274,7 @@
                     "mutable": true,
                     "attr": "wrap",
                     "reflectToAttr": false,
-                    "docs": "Nastaví na element zalamovanie riadkov pridaním `\"flex-wrap: wrap\"`",
+                    "docs": "Sets line wrapping on an element by adding `\"flex-wrap: wrap\"`",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -2293,12 +2293,12 @@
                 {
                     "name": "--wj-gutter-x",
                     "annotation": "prop",
-                    "docs": "Určuje veľkosť medzery medzi stĺpcami v horizontálnom smere"
+                    "docs": "Specifies the size of the gap between columns in the horizontal direction"
                 },
                 {
                     "name": "--wj-gutter-y",
                     "annotation": "prop",
-                    "docs": "Určuje veľkosť vertikálnej medzery medzi stĺpcami"
+                    "docs": "Specifies the size of the vertical space between columns"
                 }
             ],
             "slots": [],
@@ -2326,7 +2326,7 @@
                     "mutable": true,
                     "attr": "accepted-types",
                     "reflectToAttr": false,
-                    "docs": "Nastaví akceptované typy súborov na nahratie.",
+                    "docs": "Sets the accepted file types to upload.",
                     "docsTags": [],
                     "default": "0",
                     "values": [
@@ -2348,7 +2348,7 @@
                     "mutable": true,
                     "attr": "chunk-size",
                     "reflectToAttr": false,
-                    "docs": "Nastaví veľkosť fragmentu pre nahrávanie veľkých súborov v bajtoch.",
+                    "docs": "Sets the fragment size for uploading large files in bytes.",
                     "docsTags": [],
                     "default": "1 MB",
                     "values": [
@@ -2370,7 +2370,7 @@
                     "mutable": true,
                     "attr": "max-file-size",
                     "reflectToAttr": false,
-                    "docs": "Nastaví maximálnu povolenú veľkosť súboru na nahrávanie v bajtoch.",
+                    "docs": "Sets the maximum file size allowed for uploading in bytes.",
                     "docsTags": [],
                     "default": "1 MB",
                     "values": [
@@ -2390,7 +2390,7 @@
             "parts": [
                 {
                     "name": "native",
-                    "docs": "Odkazuje na `div` element vo vnútri elementu."
+                    "docs": "Refers to a `div` element inside an element."
                 }
             ],
             "dependents": [],
@@ -2443,29 +2443,29 @@
             "props": [
                 {
                     "name": "unit",
-                    "type": "\"bit\" |  \"byte\" | string & Record<never, never> | undefined",
+                    "type": "\"bit\" | \"byte\" | string & Record<never, never> | undefined",
                     "complexType": {
                         "original": "string",
-                        "resolved": "\"bit\" |  \"byte\" | string & Record<never, never> | undefined",
+                        "resolved": "\"bit\" | \"byte\" | string & Record<never, never> | undefined",
                         "references": {}
                     },
                     "mutable": true,
                     "attr": "unit",
                     "reflectToAttr": false,
-                    "docs": "Definuje jednotku pre zobrazenie hodnôt.",
+                    "docs": "Defines the unit for displaying values.",
                     "docsTags": [],
-                    "default": "byte",
+                    "default": "bytes",
                     "values": [
                         {
                             "value": "bit",
                             "type": "string"
                         },
                         {
-                            "value": "byte",
+                            "value": "bytes",
                             "type": "string"
                         },
                         {
-                            "type": "string & Record<never, never>"
+                            "type": "String & Record<never, never>"
                         },
                         {
                             "type": "undefined"
@@ -2476,16 +2476,16 @@
                 },
                 {
                     "name": "unit-display",
-                    "type": "\"long\" |  \"narrow\" |  \"short\" | string & Record<never, never> | undefined",
+                    "type": "\"long\" | \"narrow\" | \"short\" | string & Record<never, never> | undefined",
                     "complexType": {
                         "original": "string",
-                        "resolved": "\"long\" |  \"narrow\" |  \"short\" | string & Record<never, never> | undefined",
+                        "resolved": "\"long\" | \"narrow\" | \"short\" | string & Record<never, never> | undefined",
                         "references": {}
                     },
                     "mutable": true,
                     "attr": "unit-display",
                     "reflectToAttr": false,
-                    "docs": "Nastaví veľkosť fragmentu pre nahrávanie veľkých súborov v bajtoch.",
+                    "docs": "Sets the fragment size for uploading large files in bytes.",
                     "docsTags": [],
                     "default": "short",
                     "values": [
@@ -2502,7 +2502,7 @@
                             "type": "string"
                         },
                         {
-                            "type": "string & Record<never, never>"
+                            "type": "String & Record<never, never>"
                         },
                         {
                             "type": "undefined"
@@ -2519,21 +2519,21 @@
             "slots": [
                 {
                     "name": "",
-                    "docs": "Obsah sa umiestni medzi named sloty."
+                    "docs": "The contents are placed between the named slots."
                 },
                 {
                     "name": "end",
-                    "docs": "Obsah sa umiestni vpravo od textu tlačidla v LTR a vľavo v RTL"
+                    "docs": "The content is placed to the right of the button text in LTR and to the left in RTL"
                 },
                 {
                     "name": "start",
-                    "docs": "Obsah je umiestnený vľavo od textu tlačidla v LTR a vpravo v RTL."
+                    "docs": "The content is placed to the left of the button text in LTR and to the right in RTL."
                 }
             ],
             "parts": [
                 {
                     "name": "native",
-                    "docs": "Odkazuje na `div` element s triedou `native-format-digital` vo vnútri elementu"
+                    "docs": "References a `div` element with the `native-format-digital` class inside the element"
                 }
             ],
             "dependents": [],
@@ -2577,7 +2577,7 @@
                     "mutable": true,
                     "attr": "iterate",
                     "reflectToAttr": false,
-                    "docs": "Slúži na identifikáciu elementu, ktorý má byť použitý ako šablóna pre jednotlivé položky počas procesu nekonečného scrollovania.",
+                    "docs": "It is used to identify the element to be used as a template for each item during the infinite scrolling process.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -2599,7 +2599,7 @@
                     "mutable": true,
                     "attr": "unit-display",
                     "reflectToAttr": false,
-                    "docs": "Používa sa na určenie cieľového elementu, do ktorého sa majú načítané údaje vložiť počas procesu nekonečného scrollovania. Určuje, kam sa novo načítaný obsah pridá v rámci DOM.",
+                    "docs": "It is used to specify the target element into which the loaded data is to be inserted during the infinite scroll process. Specifies where the newly loaded content is added within the DOM.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -2621,7 +2621,7 @@
                     "mutable": true,
                     "attr": "unit-display",
                     "reflectToAttr": false,
-                    "docs": "Definuje počet položiek pri každom načítaní.",
+                    "docs": "Defines the number of items on each load.",
                     "docsTags": [],
                     "default": "10",
                     "values": [
@@ -2643,7 +2643,7 @@
                     "mutable": true,
                     "attr": "unit-display",
                     "reflectToAttr": false,
-                    "docs": "Definuje url adresu koncového bodu (endpointu) dát na načítanie.",
+                    "docs": "Defines the url of the endpoint of the data to be retrieved.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -2675,10 +2675,10 @@
             "props": [
                 {
                     "name": "color",
-                    "type": "\"danger\" \"dark\" |  \"primary\"  |  \"secondary\" | \"success\" | \"light\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                    "type": "\"danger\" \"dark\" | \"primary\"  | \"secondary\" | \"success\" | \"light\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
                     "complexType": {
                         "original": "Color",
-                        "resolved": "\"danger\" \"dark\" |  \"primary\"  |  \"secondary\" | \"success\" | \"light\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                        "resolved": "\"danger\" \"dark\" | \"primary\"  | \"secondary\" | \"success\" | \"light\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
                         "references": {
                             "Color": {
                                 "location": "import",
@@ -2690,7 +2690,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": true,
-                    "docs": "Farba ikony z palety farieb aplikácie Predvolené možnosti sú `\"primary\"`, `\"secondary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, a `\"dark\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
+                    "docs": "Icon color from the application color palette The default options are `\"primary\"`, `\"secondary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, and `\"dark\"`.\nFor more information, go to: [theming](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -2722,7 +2722,7 @@
                             "type": "string"
                         },
                         {
-                            "type": "string & Record<never, never>"
+                            "type": "String & Record<never, never>"
                         },
                         {
                             "type": "undefined"
@@ -2742,7 +2742,7 @@
                     "mutable": false,
                     "attr": "name",
                     "reflectToAttr": false,
-                    "docs": "Určuje názov ikony na zobrazenie zo sady priloženej kolekcie SVG ikon.",
+                    "docs": "Specifies the name of the icon to display from the set of the included SVG icon collection.",
                     "docsTags": [],
                     "deprecation": "",
                     "values": [
@@ -2767,7 +2767,7 @@
                     "mutable": false,
                     "attr": "name",
                     "reflectToAttr": false,
-                    "docs": "Určuje názov ikony na zobrazenie zo sady priloženej kolekcie SVG ikon.",
+                    "docs": "Specifies the name of the icon to display from the set of the included SVG icon collection.",
                     "docsTags": [],
                     "deprecation": "",
                     "values": [
@@ -2783,16 +2783,16 @@
                 },
                 {
                     "name": "size",
-                    "type": "\"large\" |  \"small\" | string & Record<never, never> | undefined",
+                    "type": "\"large\" | \"small\" | string & Record<never, never> | undefined",
                     "complexType": {
                         "original": "string",
-                        "resolved": "\"large\" |  \"small\" | string & Record<never, never> | undefined",
+                        "resolved": "\"large\" | \"small\" | string & Record<never, never> | undefined",
                         "references": {}
                     },
                     "mutable": true,
                     "attr": "size",
                     "reflectToAttr": false,
-                    "docs": "Nastavte na `\"small\"` pre menšiu ikonu, alebo na `\"large\"` pre väčšiu ikonu. V predvolenom nastavení je veľkosť nenastavená.",
+                    "docs": "Set to `\"small\"` for a smaller icon, or to `\"large\"` for a larger icon. By default, the size is unset.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -2805,7 +2805,7 @@
                             "type": "string"
                         },
                         {
-                            "type": "string & Record<never, never>"
+                            "type": "String & Record<never, never>"
                         },
                         {
                             "type": "undefined"
@@ -2822,17 +2822,17 @@
                 {
                     "name": "--wj-icon-height",
                     "annotation": "prop",
-                    "docs": "Definuje výšku ikony"
+                    "docs": "Defines the height of the icon"
                 },
                 {
                     "name": "--wj-icon-size",
                     "annotation": "prop",
-                    "docs": "Definuje veľkosť ikony"
+                    "docs": "Defines the size of the icon"
                 },
                 {
                     "name": "--wj-icon-width",
                     "annotation": "prop",
-                    "docs": "Definuje šírku ikony"
+                    "docs": "Defines the width of the icon"
                 }
             ],
             "slots": [],
@@ -2856,32 +2856,32 @@
                 {
                     "name": "--wj-icon-picker-border-color`",
                     "annotation": "prop",
-                    "docs": "Definuje farbu okrajov elementu"
+                    "docs": "Defines the color of the element edges"
                 },
                 {
                     "name": "--wj-icon-picker-border-style`",
                     "annotation": "prop",
-                    "docs": "Definuje štýl okrajov elementu"
+                    "docs": "Defines the element's border style"
                 },
                 {
                     "name": "--wj-icon-picker-border-width`",
                     "annotation": "prop",
-                    "docs": "Definuje šírku okrajov elementu"
+                    "docs": "Defines the width of the edges of the element"
                 },
                 {
                     "name": "--wj-icon-picker-icon-size",
                     "annotation": "prop",
-                    "docs": "Definuje veľkosť ikon elementu"
+                    "docs": "Defines the size of the element icons"
                 },
                 {
                     "name": "--wj-icon-picker-padding",
                     "annotation": "prop",
-                    "docs": "Definuje vnútorné odsadenie elementu"
+                    "docs": "Defines the internal offset of the element"
                 },
                 {
                     "name": "--wj-icon-picker-radius",
                     "annotation": "prop",
-                    "docs": "Definuje veľkosť zaoblenia elementu"
+                    "docs": "Defines the size of the roundness of the element"
                 }
             ],
             "slots": [],
@@ -2909,7 +2909,7 @@
                     "mutable": false,
                     "attr": "alt",
                     "reflectToAttr": false,
-                    "docs": "Slúži ako alternatívny text na opis obsahu obrázka, ktorý sa zobrazí v prípade, ak sa obrázok nenačíta. Používajú ho tiež čítačky obrazovky.",
+                    "docs": "It serves as an alternative text to describe the content of the image, which will be displayed if the image is not loaded. It is also used by screen readers.",
                     "docsTags": [],
                     "values": [
                         {
@@ -2933,7 +2933,7 @@
                     "mutable": false,
                     "attr": "src",
                     "reflectToAttr": false,
-                    "docs": "Určuje zdrojovú adresu URL súboru obrázka, ktorý sa má zobraziť na webovej stránke.",
+                    "docs": "Specifies the source URL of the image file to be displayed on the web page.",
                     "docsTags": [],
                     "values": [
                         {
@@ -2972,17 +2972,17 @@
             "slots": [
                 {
                     "name": "after",
-                    "docs": "Slúži na vloženie obrázka pred posuvník."
+                    "docs": "It is used to insert an image in front of the slider."
                 },
                 {
                     "name": "before",
-                    "docs": "Slúži na vloženie obrázka za posuvník."
+                    "docs": "It is used to insert an image behind the slider."
                 }
             ],
             "parts": [
                 {
                     "name": "divider",
-                    "docs": "Odkazuje na `div` posuvníka divider vo vnútri elementu."
+                    "docs": "Refers to the `div` slider divider inside the element."
                 }
             ],
             "dependents": [],
@@ -2997,11 +2997,11 @@
             "docsTags": [
                 {
                     "name": "slot",
-                    "text": "start - Obsah sa umiestni vľavo od inputu v LTR a vpravo v RTL v podobe novej sekcie."
+                    "text": "start - The content is placed to the left of the input in the LTR and to the right in the RTL in the form of a new section."
                 },
                 {
                     "name": "slot",
-                    "text": "end - Obsah sa zobrazí vpravo od inputu v LTR a vľavo v RTL v podobe novej sekcie."
+                    "text": "end - The content is displayed to the right of the input in the LTR and to the left in the RTL as a new section."
                 }
             ],
             "usage": {},
@@ -3017,7 +3017,7 @@
                     "mutable": false,
                     "attr": "clearable",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, umožní vymazať obsah inputu pomocou tlačidla.",
+                    "docs": "If `true`, it will allow the contents of the input to be cleared using the button.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -3039,7 +3039,7 @@
                     "mutable": false,
                     "attr": "custom-error-display",
                     "reflectToAttr": false,
-                    "docs": "Aktivuje možnosť zobrazenia vlastnej chybovej hlášky. Pre jej nastavenie slúži vlastnosť `message`.",
+                    "docs": "Activates the option to display a custom error message. The `message` property is used to set it.",
                     "docsTags": [],
                     "deprecation": "",
                     "values": [
@@ -3061,7 +3061,7 @@
                     "mutable": false,
                     "attr": "disabled",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, deaktivuje možnosť interakcie s inputom",
+                    "docs": "If `true`, disables the ability to interact with the input",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -3083,7 +3083,7 @@
                     "mutable": false,
                     "attr": "label",
                     "reflectToAttr": false,
-                    "docs": "Definuje popisný text inputu.",
+                    "docs": "Defines the descriptive text of the input.",
                     "docsTags": [],
                     "values": [
                         {
@@ -3107,7 +3107,7 @@
                     "mutable": false,
                     "attr": "max",
                     "reflectToAttr": false,
-                    "docs": "Definuje maximálnu číselnú hodnotu v inpute (nesmie byť menšia ako jej minimálna hodnota - atribút `min`).",
+                    "docs": "Defines the maximum numeric value in the input (must not be less than its minimum value - the `min` attribute).",
                     "docsTags": [],
                     "values": [
                         {
@@ -3134,7 +3134,7 @@
                     "mutable": false,
                     "attr": "maxlength",
                     "reflectToAttr": false,
-                    "docs": "Určuje maximálny počet znakov, ktoré musí používateľ zadať (Platí pre inputy typu `text`, `email`, `search`, `password`, `tel` alebo `url`).",
+                    "docs": "Specifies the maximum number of characters the user must enter (Valid for inputs of type `text`, `email`, `search`, `password`, `tel`, or `url`).",
                     "docsTags": [],
                     "values": [
                         {
@@ -3158,7 +3158,7 @@
                     "mutable": false,
                     "attr": "min",
                     "reflectToAttr": false,
-                    "docs": "Definuje minimálnu číselnú hodnotu v inpute (nesmie byť menšia ako jej minimálna hodnota - atribút `min`).",
+                    "docs": "Defines the minimum numeric value in the input (must not be less than its minimum value - the `min` attribute).",
                     "docsTags": [],
                     "values": [
                         {
@@ -3185,7 +3185,7 @@
                     "mutable": false,
                     "attr": "minlength",
                     "reflectToAttr": false,
-                    "docs": "Určuje minimálny počet znakov, ktoré musí používateľ zadať (Platí pre inputy typu `text`, `email`, `search`, `password`, `tel` alebo `url`).",
+                    "docs": "Specifies the minimum number of characters the user must enter (Valid for inputs of type `text`, `email`, `search`, `password`, `tel` or `url`).",
                     "docsTags": [],
                     "values": [
                         {
@@ -3209,7 +3209,7 @@
                     "mutable": false,
                     "attr": "message",
                     "reflectToAttr": false,
-                    "docs": "Definuje text vlastnej chybovej hlášky.",
+                    "docs": "Defines the text of the custom error message.",
                     "docsTags": [],
                     "values": [
                         {
@@ -3233,7 +3233,7 @@
                     "mutable": false,
                     "attr": "pattern",
                     "reflectToAttr": false,
-                    "docs": "Regex, podľa ktorého sa hodnota kontroluje. Vzor musí zodpovedať celej hodnote, nie len jej časti. Pomocou atribútu title popíšte vzor, aby ste pomohli používateľovi. Tento atribút sa použije, ak je hodnota atribútu type `\"text\"`, `\"search\"`, `\"tel\"`, `\"url\"`, `\"email\"`, `\"date\"` alebo `\"password\"`, inak sa ignoruje. Ak je atribút type `\"date\"`, `pattern` sa použije len v prehliadačoch, ktoré nepodporujú vstupný typ `\"date\"` natívne. Viac informácií nájdete na https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date.",
+                    "docs": "Regex by which the value is checked. The pattern must correspond to the whole value, not just part of it. Use the title attribute to describe the pattern to help the user. This attribute is used if the attribute value is of type `\"text\"`, `\"search\"`, `\"tel\"`, `\"url\"`, `\"email\"`, `\"date\"` or `\"password\"`, otherwise it is ignored. If the attribute type is `\"date\"`, `pattern` will only be used in browsers that do not support the `\"date\"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.",
                     "docsTags": [],
                     "values": [
                         {
@@ -3257,7 +3257,7 @@
                     "mutable": false,
                     "attr": "placeholder",
                     "reflectToAttr": false,
-                    "docs": "Definuje zástupný text inputu.",
+                    "docs": "Defines the input placeholder text.",
                     "docsTags": [],
                     "values": [
                         {
@@ -3281,7 +3281,7 @@
                     "mutable": false,
                     "attr": "readonly",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, deaktivuje možnosť písania do inputu",
+                    "docs": "If `true`, disables the ability to write to the input",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -3303,7 +3303,7 @@
                     "mutable": false,
                     "attr": "required",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, nastaví input ako povinný pre vyplnenie.",
+                    "docs": "If `true`, sets the input as mandatory for completion.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -3331,7 +3331,7 @@
                     "mutable": false,
                     "attr": "type",
                     "reflectToAttr": false,
-                    "docs": "Nastaví typ inputu.",
+                    "docs": "Sets the input type.",
                     "docsTags": [],
                     "default": "'text'",
                     "values": [
@@ -3378,7 +3378,7 @@
                     "mutable": false,
                     "attr": "validate-on-change",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, nastaví validáciu obsahu inputu po každej vykonanej zmene.",
+                    "docs": "If `true`, sets the validation of the input content after each change is made.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -3400,7 +3400,7 @@
                     "mutable": true,
                     "attr": "value",
                     "reflectToAttr": false,
-                    "docs": "Hodnota inputu.",
+                    "docs": "Input value.",
                     "docsTags": [],
                     "default": "''",
                     "values": [
@@ -3439,7 +3439,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Vyvolaný po kliknutí na tlačidlo vyčistenia `Clear`.",
+                    "docs": "Called when the `Clear` button is clicked.",
                     "docsTags": []
                 },
                 {
@@ -3459,7 +3459,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Udalosť `wj-input:input` je vyvolaná vždy, keď používateľ zmení hodnotu vstupu. To sa zvyčajne deje pri každom stlačení klávesy, keď používateľ píše.",
+                    "docs": "The `wj-input:input` event is fired whenever the user changes the input value. This usually happens every time a key is pressed while the user is typing.",
                     "docsTags": []
                 }
             ],
@@ -3468,97 +3468,97 @@
                 {
                     "name": "--wj-input-background-color",
                     "annotation": "prop",
-                    "docs": "Farba pozadia Inputu"
+                    "docs": "Input background colour"
                 },
                 {
                     "name": "--wj-input-border-color",
                     "annotation": "prop",
-                    "docs": "Farba okrajov Inputu"
+                    "docs": "Input edge colour"
                 },
                 {
                     "name": "--wj-input-border-color-focus",
                     "annotation": "prop",
-                    "docs": "Farba okrajov Inputu pri focuse"
+                    "docs": "Input edge colour at focuse"
                 },
                 {
                     "name": "--wj-input-border-radius",
                     "annotation": "prop",
-                    "docs": "Zaoblenie okrajov Inputu"
+                    "docs": "Rounding the edges of the Input"
                 },
                 {
                     "name": "--wj-input-border-style",
                     "annotation": "prop",
-                    "docs": "Štýl okrajov Inputu"
+                    "docs": "Input border style"
                 },
                 {
                     "name": "--wj-input-border-width",
                     "annotation": "prop",
-                    "docs": "Šírka okrajov Inputu"
+                    "docs": "Input edge width"
                 },
                 {
                     "name": "--wj-input-color-invalid",
                     "annotation": "prop",
-                    "docs": "Farba chybovej hlášky Inputu"
+                    "docs": "Input error message colour"
                 },
                 {
                     "name": "--wj-input-font-family",
                     "annotation": "prop",
-                    "docs": "Písmo použité v Inpute"
+                    "docs": "Font used in Input"
                 },
                 {
                     "name": "--wj-input-line-height",
                     "annotation": "prop",
-                    "docs": "Výšky riadka Inputu"
+                    "docs": "Input line heights"
                 },
                 {
                     "name": "--wj-input-margin-bottom",
                     "annotation": "prop",
-                    "docs": "Spodná medzera Inputu"
+                    "docs": "Lower Input Gap"
                 },
                 {
                     "name": "--wj-input-slot-padding-inline",
                     "annotation": "prop",
-                    "docs": "Horizontálna medzera medzi slotmi Inputu"
+                    "docs": "Horizontal gap between Input slots"
                 },
                 {
                     "name": "--wj-padding-bottom",
                     "annotation": "prop",
-                    "docs": "Spodné vnútorné odsadenie Inputu"
+                    "docs": "Lower Input Internal Offset"
                 },
                 {
                     "name": "--wj-padding-end",
                     "annotation": "prop",
-                    "docs": "Pravé vnútorné odsadenie Inputu v LTR, a ľavé v RTL"
+                    "docs": "Right Input internal offset in LTR, and left in RTL"
                 },
                 {
                     "name": "--wj-padding-start",
                     "annotation": "prop",
-                    "docs": "Ľavé vnútorné odsadenie Inputu v LTR, a pravé v RTL"
+                    "docs": "Left Input internal offset in LTR, and right in RTL"
                 },
                 {
                     "name": "--wj-padding-top",
                     "annotation": "prop",
-                    "docs": "Horné vnútorné odsadenie Inputu"
+                    "docs": "Upper Input internal offset"
                 }
             ],
             "slots": [
                 {
                     "name": "end",
-                    "docs": "Obsah sa zobrazí vpravo od inputu v LTR a vľavo v RTL v podobe novej sekcie."
+                    "docs": "The content is displayed to the right of the input in the LTR and to the left in the RTL as a new section."
                 },
                 {
                     "name": "start",
-                    "docs": "Obsah sa umiestni vľavo od inputu v LTR a vpravo v RTL v podobe novej sekcie."
+                    "docs": "The content is placed to the left of the input in the LTR and to the right in the RTL in the form of a new section."
                 }
             ],
             "parts": [
                 {
                     "name": "input",
-                    "docs": "Odkazuje na `input` element vo vnútri Inputu."
+                    "docs": "Refers to the `input` element inside the Input."
                 },
                 {
                     "name": "native",
-                    "docs": "Odkazuje na `div` element vo vnútri Inputu."
+                    "docs": "Refers to the `div` element inside the Input."
                 }
             ],
             "dependents": [],
@@ -3579,11 +3579,11 @@
             "docsTags": [
                 {
                     "name": "slot",
-                    "text": "start - Obsah sa umiestni vľavo v LTR a vpravo v RTL."
+                    "text": "start - The content is placed on the left in the LTR and on the right in the RTL."
                 },
                 {
                     "name": "slot",
-                    "text": "end - Obsah sa umiestni vpravo v LTR a vľavo v RTL."
+                    "text": "end - The content is placed on the right in the LTR and on the left in the RTL."
                 }
             ],
             "usage": {},
@@ -3595,113 +3595,113 @@
                 {
                     "name": "--wj-border-color",
                     "annotation": "prop",
-                    "docs": "Farba okrajov elementu"
+                    "docs": "Colour of element edges"
                 },
                 {
                     "name": "--wj-border-style",
                     "annotation": "prop",
-                    "docs": "Štýl okrajov elementu"
+                    "docs": "Element edge style"
                 },
                 {
                     "name": "--wj-border-width",
                     "annotation": "prop",
-                    "docs": "Šírka okrajov elementu"
+                    "docs": "Width of the edges of the element"
                 },
                 {
                     "name": "--wj-item-background",
                     "annotation": "prop",
-                    "docs": "Farba pozadia elementu"
+                    "docs": "Background colour of the element"
                 },
                 {
                     "name": "--wj-item-background-hover",
                     "annotation": "prop",
-                    "docs": "Farba pozadia elementu pri ukázaní myšou"
+                    "docs": "Background colour of the element when pointing with the mouse"
                 },
                 {
                     "name": "--wj-item-border-radius",
                     "annotation": "prop",
-                    "docs": "Veľkosť zaoblenia elementu"
+                    "docs": "Size of the element roundness"
                 },
                 {
                     "name": "--wj-item-color",
                     "annotation": "prop",
-                    "docs": "Farba textu"
+                    "docs": "Text colour"
                 },
                 {
                     "name": "--wj-item-inner-border-width",
                     "annotation": "prop",
-                    "docs": "Hrúbka okrajov vnútornej časti elementu"
+                    "docs": "Thickness of the edges of the inner part of the element"
                 },
                 {
                     "name": "--wj-item-inner-box-shadow",
                     "annotation": "prop",
-                    "docs": "Vnútorný box-shadow vnútornej časti elementu"
+                    "docs": "Inner box-shadow of the inner part of the element"
                 },
                 {
                     "name": "--wj-item-inner-padding-bottom",
                     "annotation": "prop",
-                    "docs": "Spodné vnútorné odsadenie vnútornej časti elementu"
+                    "docs": "Lower internal offset of the inner part of the element"
                 },
                 {
                     "name": "--wj-item-inner-padding-end",
                     "annotation": "prop",
-                    "docs": "Pravé vnútorné odsadenie vnútornej časti elementu v LTR, a ľavé v RTL"
+                    "docs": "Right internal offset of the inner part of the element in LTR, and left in RTL"
                 },
                 {
                     "name": "--wj-item-inner-padding-start",
                     "annotation": "prop",
-                    "docs": "Ľavé vnútorné odsadenie vnútornej časti elementu v LTR, a pravé v RTL"
+                    "docs": "Left internal offset of the inner part of the element in LTR, and right in RTL"
                 },
                 {
                     "name": "--wj-item-inner-padding-top",
                     "annotation": "prop",
-                    "docs": "Horné vnútorné odsadenie vnútornej časti elementu"
+                    "docs": "Upper inner offset of the inner part of the element"
                 },
                 {
                     "name": "--wj-item-min-height",
                     "annotation": "prop",
-                    "docs": "Minimálna výška elementu"
+                    "docs": "Minimum height of the element"
                 },
                 {
                     "name": "--wj-item-padding-bottom",
                     "annotation": "prop",
-                    "docs": "Spodné vnútorné odsadenie"
+                    "docs": "Lower internal offset"
                 },
                 {
                     "name": "--wj-item-padding-end",
                     "annotation": "prop",
-                    "docs": "Pravé vnútorné odsadenie v LTR, a ľave v RTL."
+                    "docs": "Right internal offset in LTR, and left in RTL."
                 },
                 {
                     "name": "--wj-item-padding-start",
                     "annotation": "prop",
-                    "docs": "Ľavé vnútorné odsadenie v LTR, a pravé v RTL."
+                    "docs": "Left internal offset in LTR, and right in RTL."
                 },
                 {
                     "name": "--wj-item-padding-top",
                     "annotation": "prop",
-                    "docs": "Horné vnútorné odsadenie"
+                    "docs": "Upper internal offset"
                 },
                 {
                     "name": "--wj-item-transition",
                     "annotation": "prop",
-                    "docs": "Efekt prechodu použitý na elemente"
+                    "docs": "Transition effect applied to the element"
                 }
             ],
             "slots": [
                 {
                     "name": "end",
-                    "docs": "Obsah sa umiestni vpravo v LTR a vľavo v RTL."
+                    "docs": "The content is placed on the right in the LTR and on the left in the RTL."
                 },
                 {
                     "name": "start",
-                    "docs": "Obsah sa umiestni vľavo v LTR a vpravo v RTL."
+                    "docs": "The content is placed on the left in the LTR and on the right in the RTL."
                 }
             ],
             "parts": [
                 {
                     "name": "native",
-                    "docs": "Odkazuje na `div` element vo vnútri elementu."
+                    "docs": "Refers to a `div` element inside an element."
                 }
             ],
             "dependents": [],
@@ -3729,13 +3729,13 @@
                 {
                     "name": "--wj-color",
                     "annotation": "prop",
-                    "docs": "Definuje farbu elementu."
+                    "docs": "Defines the color of the element."
                 }
             ],
             "slots": [
                 {
                     "name": "",
-                    "docs": "Predvolené umiestnenie pre obsah elementu."
+                    "docs": "Default location for the element content."
                 }
             ],
             "parts": [],
@@ -3764,7 +3764,7 @@
         {
             "filePath": "src/components/aside/aside.tsx",
             "encapsulation": "scoped",
-            "tag": "aside",
+            "tag": "Aside",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -3780,7 +3780,7 @@
                     "mutable": false,
                     "attr": "fixed",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, element dostane `position: \"fixed\"`",
+                    "docs": "If `true`, the element gets `position: \"fixed\"`",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -3799,27 +3799,27 @@
                 {
                     "name": "--wj-aside-width",
                     "annotation": "prop",
-                    "docs": "Šírka elementu"
+                    "docs": "Element width"
                 },
                 {
                     "name": "--wj-aside-top",
                     "annotation": "prop",
-                    "docs": "Horné odsadenie elementu pri použití fixed atribútu"
+                    "docs": "Top offset of element when using fixed attribute"
                 },
                 {
                     "name": "--wj-aside-border-color",
                     "annotation": "prop",
-                    "docs": "Farba okrajov elementu"
+                    "docs": "Colour of element edges"
                 },
                 {
                     "name": "--wj-aside-border-width",
                     "annotation": "prop",
-                    "docs": "Šírka okrajov elementu"
+                    "docs": "Width of the edges of the element"
                 },
                 {
                     "name": "--wj-aside-border-style",
                     "annotation": "prop",
-                    "docs": "Štýl okrajov elementu"
+                    "docs": "Element edge style"
                 }
             ],
             "slots": [],
@@ -3865,7 +3865,7 @@
                     "mutable": false,
                     "attr": "indent",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, element dostane na obrazovkách väčších ako 768px odsadenie zľava.",
+                    "docs": "If `true`, the element will be indented to the left on screens larger than 768px.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -3887,7 +3887,7 @@
                     "mutable": false,
                     "attr": "vertical",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, element dostane `flex-direction: \"column\"`",
+                    "docs": "If `true`, the element gets `flex-direction: \"column\"`",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -3906,7 +3906,7 @@
                 {
                     "name": "--wj-container-indent",
                     "annotation": "prop",
-                    "docs": "Odsadenie elementu zľava ( iba na obrazovkách väčších ako 768px)"
+                    "docs": "Offset element from the left ( only on screens larger than 768px)"
                 }
             ],
             "slots": [],
@@ -3934,7 +3934,7 @@
                     "mutable": false,
                     "attr": "inset",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, element dostane vonkajšie odsadenie a zaoblenie.",
+                    "docs": "If `true`, the element gets an outer offset and rounding.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -3956,7 +3956,7 @@
                     "mutable": false,
                     "attr": "lines",
                     "reflectToAttr": false,
-                    "docs": "Určuje štýl oddeľovacích čiar medzi elementami Item vo vnútri List elementu",
+                    "docs": "Specifies the style of separator lines between Item elements inside the List element",
                     "docsTags": [],
                     "values": [
                         {
@@ -3986,27 +3986,27 @@
                 {
                     "name": "--wj-list-background",
                     "annotation": "prop",
-                    "docs": "Farba pozadia elementu"
+                    "docs": "Background colour of the element"
                 },
                 {
                     "name": "--wj-list-border-radius",
                     "annotation": "prop",
-                    "docs": "Veľkosť zaoblenia elementu"
+                    "docs": "Size of the element roundness"
                 },
                 {
                     "name": "--wj-list-inset-padding",
                     "annotation": "prop",
-                    "docs": "Vnútorné odsadenie elementu"
+                    "docs": "Internal offset of the element"
                 }
             ],
             "slots": [
                 {
                     "name": "end",
-                    "docs": "Obsah sa umiestni vpravo v LTR a vľavo v RTL."
+                    "docs": "The content is placed on the right in the LTR and on the left in the RTL."
                 },
                 {
                     "name": "start",
-                    "docs": "Obsah sa umiestni vľavo v LTR a vpravo v RTL."
+                    "docs": "The content is placed on the left in the LTR and on the right in the RTL."
                 }
             ],
             "parts": [],
@@ -4023,7 +4023,7 @@
             "usage": {},
             "props": [
                 {
-                    "name": "cols",
+                    "name": "inches",
                     "type": "string | undefined",
                     "complexType": {
                         "original": "string",
@@ -4031,9 +4031,9 @@
                         "references": {}
                     },
                     "mutable": false,
-                    "attr": "cols",
+                    "attr": "inches",
                     "reflectToAttr": false,
-                    "docs": "Definuje počet stĺpcov. Pri hodnote `auto` zvolí počet stĺpcov podľa šírky rodiča.",
+                    "docs": "Defines the number of columns. For `auto`, selects the number of columns according to the width of the parent.",
                     "docsTags": [],
                     "default": "auto",
                     "values": [
@@ -4058,7 +4058,7 @@
                     "mutable": false,
                     "attr": "debounce",
                     "reflectToAttr": false,
-                    "docs": "Určuje čas v ms, za ktorý sa rozloženie preformátuje pri každej zmene veľkosti rozloženia masonry. Tento reflow sa oneskoruje, aby sa zabránilo príliš častému vyvolaniu algoritmu rozloženia za sebou.",
+                    "docs": "Specifies the time in ms for the layout to reformat for each change in masonry layout size. This reflow is delayed to prevent the layout algorithm from being invoked too often in succession.",
                     "docsTags": [],
                     "default": "300",
                     "values": [
@@ -4083,7 +4083,7 @@
                     "mutable": false,
                     "attr": "gap",
                     "reflectToAttr": false,
-                    "docs": "Definuje šírku medzery medzi stĺpcami v pixeloch.",
+                    "docs": "Defines the width of the space between columns in pixels.",
                     "docsTags": [],
                     "default": "24",
                     "values": [
@@ -4108,7 +4108,7 @@
                     "mutable": false,
                     "attr": "max-col-width",
                     "reflectToAttr": false,
-                    "docs": "Nastaví maximálnu šírku stĺpcov v pixeloch.",
+                    "docs": "Sets the maximum width of the columns in pixels.",
                     "docsTags": [],
                     "default": "500",
                     "values": [
@@ -4130,32 +4130,32 @@
                 {
                     "name": "--wj-masonry-layout-col-count",
                     "annotation": "prop",
-                    "docs": "Definuje počet stĺpov v rozložení masonry."
+                    "docs": "Defines the number of columns in the masonry layout."
                 },
                 {
                     "name": "--wj-masonry-layout-gap",
                     "annotation": "prop",
-                    "docs": "Určuje medzeru medzi položkami v rozložení masonry."
+                    "docs": "Specifies the gap between items in the masonry layout."
                 }
             ],
             "slots": [
                 {
                     "name": "{index}",
-                    "docs": "Obsah sa umiestni do stĺpca, `index` predstavuje poradie stĺpca."
+                    "docs": "The contents are placed in a column, `index` represents the column order."
                 }
             ],
             "parts": [
                 {
                     "name": "column",
-                    "docs": "Odkazuje na všetky stĺpce vo vnútri elementu."
+                    "docs": "Refers to all columns inside the element."
                 },
                 {
                     "name": "column-index",
-                    "docs": "Odkazuje na konkrétny stĺpec element vo vnútri elementu, kde `index` predstavuje poradie stĺpca. Poradie začína nulou."
+                    "docs": "Refers to a specific column element within an element, where `index` represents the column order. The order starts with zero."
                 },
                 {
                     "name": "native",
-                    "docs": "Odkazuje na `div` element vo vnútri elementu."
+                    "docs": "Refers to a `div` element inside an element."
                 }
             ],
             "dependents": [],
@@ -4170,7 +4170,7 @@
             "docsTags": [
                 {
                     "name": "part",
-                    "text": "native - odkazuje na `div` element vo vnútri elementu."
+                    "text": "native - refers to the `div` element inside the element."
                 }
             ],
             "usage": {},
@@ -4186,7 +4186,7 @@
                     "mutable": true,
                     "attr": "active",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, aktivuje menu a zviditeľní ho pridaním `display: \"flex\"`.",
+                    "docs": "If `true`, activates the menu and makes it visible by adding `display: \"flex\"`.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -4208,7 +4208,7 @@
                     "mutable": true,
                     "attr": "collapse",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, menu je v stave zbalené.",
+                    "docs": "If `true`, the menu is in the collapsed state.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -4230,7 +4230,7 @@
                     "mutable": false,
                     "attr": "offset",
                     "reflectToAttr": false,
-                    "docs": "Určuje veľkosť odsadenia podmenu.",
+                    "docs": "Specifies the size of the submenu indentation.",
                     "docsTags": [],
                     "default": "0",
                     "values": [
@@ -4252,54 +4252,54 @@
                 {
                     "name": "--wj-menu-background",
                     "annotation": "prop",
-                    "docs": "Farba pozadia elementu"
+                    "docs": "Background colour of the element"
                 },
                 {
                     "name": "--wj-menu-border-color",
                     "annotation": "prop",
-                    "docs": "Farba okrajov elementu"
+                    "docs": "Colour of element edges"
                 },
                 {
                     "name": "--wj-menu-border-radius",
                     "annotation": "prop",
-                    "docs": "Zaoblenie okrajov elementu"
+                    "docs": "Rounding of the edges of the element"
                 },
                 {
                     "name": "--wj-menu-border-style",
                     "annotation": "prop",
-                    "docs": "Štýl zaoblenia elementu"
+                    "docs": "Rounding style of the element"
                 },
                 {
                     "name": "--wj-menu-border-width",
                     "annotation": "prop",
-                    "docs": "Šírka okrajov elementu"
+                    "docs": "Width of the edges of the element"
                 },
                 {
                     "name": "--wj-menu-padding-bottom",
                     "annotation": "prop",
-                    "docs": "Spodné vnútorné odsadenie elementu"
+                    "docs": "Lower internal offset of the element"
                 },
                 {
                     "name": "--wj-menu-padding-inline",
                     "annotation": "prop",
-                    "docs": "Vnútorné odsadenie elementu vľavo a vpravo"
+                    "docs": "Internal offset of the element left and right"
                 },
                 {
                     "name": "--wj-menu-padding-top",
                     "annotation": "prop",
-                    "docs": "Horné vnútorné odsadenie elementu"
+                    "docs": "Upper internal offset of the element"
                 },
                 {
-                    "name": "--wj-menu-z-index",
+                    "name": "--wj-menu-from-index",
                     "annotation": "prop",
-                    "docs": "Z-index elementu"
+                    "docs": "Z-index of the element"
                 }
             ],
             "slots": [],
             "parts": [
                 {
                     "name": "native",
-                    "docs": "Odkazuje na `div` element vo vnútri elementu."
+                    "docs": "Refers to a `div` element inside an element."
                 }
             ],
             "dependents": [],
@@ -4314,11 +4314,11 @@
             "docsTags": [
                 {
                     "name": "part",
-                    "text": "native - odkazuje na `div` element vo vnútri elementu."
+                    "text": "native - refers to the `div` element inside the element."
                 },
                 {
                     "name": "part",
-                    "text": "submenu - odkazuje na `slot` element vo vnútri elementu."
+                    "text": "submenu - refers to the `slot` element inside the element."
                 }
             ],
             "usage": {},
@@ -4334,7 +4334,7 @@
                     "mutable": true,
                     "attr": "checked",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, zobrazí sa v MenuItem ikona check.",
+                    "docs": "If `true`, a check icon appears in the MenuItem.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -4356,7 +4356,7 @@
                     "mutable": true,
                     "attr": "collapse",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, podmenu je v stave zbalené.",
+                    "docs": "If `true`, the submenu is in the collapsed state.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -4369,16 +4369,16 @@
                 },
                 {
                     "name": "placement",
-                    "type": "\"bottom\" |  \"bottom-end\" | \"bottom-start\" | \"left-bottom\" | \"left\" | \"left-top\" | \"right-bottom\" | \"right\" | \"right-top\" | \"top\" | \"top-end\" | \"top-start\" | string & Record<never, never> | undefined",
+                    "type": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left-bottom\" | \"left\" | \"left-top\" | \"right-bottom\" | \"right\" | \"right-top\" | \"top\" | \"top-end\" | \"top-start\" | string & Record<never, never> | undefined",
                     "complexType": {
                         "original": "string",
-                        "resolved": "\"bottom\" |  \"bottom-end\" | \"bottom-start\" | \"left-bottom\" | \"left\" | \"left-top\" | \"right-bottom\" | \"right\" | \"right-top\" | \"top\" | \"top-end\" | \"top-start\" | string & Record<never, never> | undefined",
+                        "resolved": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left-bottom\" | \"left\" | \"left-top\" | \"right-bottom\" | \"right\" | \"right-top\" | \"top\" | \"top-end\" | \"top-start\" | string & Record<never, never> | undefined",
                         "references": {}
                     },
                     "mutable": true,
                     "attr": "placement",
                     "reflectToAttr": false,
-                    "docs": "Určuje umiestnenie podmenu na obrazovke.",
+                    "docs": "Specifies the location of the submenu on the screen.",
                     "docsTags": [],
                     "default": "right-start",
                     "values": [
@@ -4431,7 +4431,7 @@
                             "type": "string"
                         },
                         {
-                            "type": "string & Record<never, never>"
+                            "type": "String & Record<never, never>"
                         },
                         {
                             "type": "undefined"
@@ -4441,7 +4441,7 @@
                     "required": true
                 },
                 {
-                    "name": "variant",
+                    "name": "Option",
                     "type": "string",
                     "complexType": {
                         "original": "string",
@@ -4449,9 +4449,9 @@
                         "references": {}
                     },
                     "mutable": true,
-                    "attr": "variant",
+                    "attr": "Option",
                     "reflectToAttr": false,
-                    "docs": "Určuje variantu podmenu. Medzi možné hodnoty patrí `context`, ktorý zobrazí podmenu v kontextovom okne alebo `nav`, ktorý sa podmenu zobrazí ako rozbalovacie menu.",
+                    "docs": "Specifies the submenu variant. Possible values include `context`, which displays the submenu in a context window, or `nav`, which displays the submenu as a drop-down menu.",
                     "docsTags": [],
                     "default": "context",
                     "values": [
@@ -4460,7 +4460,7 @@
                             "type": "string"
                         },
                         {
-                            "value": "nav",
+                            "value": "No",
                             "type": "string"
                         }
                     ],
@@ -4475,58 +4475,58 @@
                 {
                     "name": "--wj-menu-background",
                     "annotation": "prop",
-                    "docs": "Farba pozadia elementu"
+                    "docs": "Background colour of the element"
                 },
                 {
                     "name": "--wj-menu-border-color",
                     "annotation": "prop",
-                    "docs": "Farba okrajov elementu"
+                    "docs": "Colour of element edges"
                 },
                 {
                     "name": "--wj-menu-border-radius",
                     "annotation": "prop",
-                    "docs": "Zaoblenie okrajov elementu"
+                    "docs": "Rounding of the edges of the element"
                 },
                 {
                     "name": "--wj-menu-border-style",
                     "annotation": "prop",
-                    "docs": "Štýl zaoblenia elementu"
+                    "docs": "Rounding style of the element"
                 },
                 {
                     "name": "--wj-menu-border-width",
                     "annotation": "prop",
-                    "docs": "Šírka okrajov elementu"
+                    "docs": "Width of the edges of the element"
                 },
                 {
                     "name": "--wj-menu-padding-bottom",
                     "annotation": "prop",
-                    "docs": "Spodné vnútorné odsadenie elementu"
+                    "docs": "Lower internal offset of the element"
                 },
                 {
                     "name": "--wj-menu-padding-inline",
                     "annotation": "prop",
-                    "docs": "Vnútorné odsadenie elementu vľavo a vpravo"
+                    "docs": "Internal offset of the element left and right"
                 },
                 {
                     "name": "--wj-menu-padding-top",
                     "annotation": "prop",
-                    "docs": "Horné vnútorné odsadenie elementu"
+                    "docs": "Upper internal offset of the element"
                 },
                 {
-                    "name": "--wj-menu-z-index",
+                    "name": "--wj-menu-from-index",
                     "annotation": "prop",
-                    "docs": "Z-index elementu"
+                    "docs": "Z-index of the element"
                 }
             ],
             "slots": [],
             "parts": [
                 {
                     "name": "native",
-                    "docs": "Odkazuje na `div` element vo vnútri elementu."
+                    "docs": "Refers to a `div` element inside an element."
                 },
                 {
                     "name": "submenu",
-                    "docs": "odkazuje na `slot` element vo vnútri elementu."
+                    "docs": "refers to the `slot` element inside the element."
                 }
             ],
             "dependents": [],
@@ -4541,21 +4541,21 @@
             "docsTags": [
                 {
                     "name": "slot",
-                    "docs": "end - Obsah sa umiestni vpravo v LTR a vľavo v RTL."
+                    "docs": "end - The content is placed on the right in the LTR and on the left in the RTL."
                 },
                 {
                     "name": "slot",
-                    "docs": "start - Obsah sa umiestni vľavo v LTR a vpravo v RTL."
+                    "docs": "start - The content is placed on the left in the LTR and on the right in the RTL."
                 }
             ],
             "usage": {},
             "props": [
                 {
                     "name": "color",
-                    "type": "\"danger\" | \"dark\" |  \"primary\"  | \"success\" | \"light\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                    "type": "\"danger.\" | \"dark\" | \"primary\"  | \"success\" | \"light\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
                     "complexType": {
                         "original": "Color",
-                        "resolved": "\"danger\" | \"dark\" |  \"primary\"  | \"success\" | \"light\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                        "resolved": "\"danger.\" | \"dark\" | \"primary\"  | \"success\" | \"light\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
                         "references": {
                             "Color": {
                                 "location": "import",
@@ -4567,7 +4567,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": true,
-                    "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, a `\"dark\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
+                    "docs": "The color to use from your application's color palette. The default options are: `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"warning\"`, `\"light\"`, and `\"dark\"`.\nFor more information, go to: [theming](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -4595,7 +4595,7 @@
                             "type": "string"
                         },
                         {
-                            "type": "string & Record<never, never>"
+                            "type": "String & Record<never, never>"
                         },
                         {
                             "type": "undefined"
@@ -4615,7 +4615,7 @@
                     "mutable": false,
                     "attr": "linecap",
                     "reflectToAttr": false,
-                    "docs": "Definuje ukazovateľ priebehu so zaobleným koncom.",
+                    "docs": "Defines a waveform indicator with a rounded end.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -4637,7 +4637,7 @@
                     "mutable": false,
                     "attr": "progress",
                     "reflectToAttr": false,
-                    "docs": "Určuje hodnotu priebehu v percentách.",
+                    "docs": "Specifies the value of the waveform in percentage.",
                     "docsTags": [],
                     "default": "0",
                     "values": [
@@ -4659,7 +4659,7 @@
                     "mutable": false,
                     "attr": "radius",
                     "reflectToAttr": false,
-                    "docs": "Určuje hodnotu priebehu v percentách.",
+                    "docs": "Specifies the value of the waveform in percentage.",
                     "docsTags": [],
                     "default": "70",
                     "values": [
@@ -4681,7 +4681,7 @@
                     "mutable": false,
                     "attr": "stroke",
                     "reflectToAttr": false,
-                    "docs": "Určuje hodnotu priebehu v percentách.",
+                    "docs": "Specifies the value of the waveform in percentage.",
                     "docsTags": [],
                     "default": "12",
                     "values": [
@@ -4703,7 +4703,7 @@
                     "mutable": true,
                     "attr": "type",
                     "reflectToAttr": false,
-                    "docs": "Pridaním vlastnosti type s hodnotou “circle” zobrazíte progress bar s okrúhlym dizajnom.",
+                    "docs": "Add a type property with the value \"circle\" to display a progress bar with a circular design.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -4727,22 +4727,22 @@
                 {
                     "name": "--wj-progress-bar-color",
                     "annotation": "prop",
-                    "docs": "Definuje farbu ukazovateľa priebehu"
+                    "docs": "Defines the colour of the progress bar"
                 },
                 {
                     "name": "--wj-progress-bar-text-size",
                     "annotation": "prop",
-                    "docs": "Definuje veľkosť textu"
+                    "docs": "Defines the size of the text"
                 }
             ],
             "slots": [
                 {
                     "name": "end",
-                    "docs": "Obsah sa umiestni vpravo v LTR a vľavo v RTL."
+                    "docs": "The content is placed on the right in the LTR and on the left in the RTL."
                 },
                 {
                     "name": "start",
-                    "docs": "Obsah je umiestnený vľavo v LTR a vpravo v RTL."
+                    "docs": "The content is placed on the left in the LTR and on the right in the RTL."
                 }
             ],
             "parts": [],
@@ -4758,21 +4758,21 @@
             "docsTags": [
                 {
                     "name": "slot",
-                    "docs": "end - Obsah sa umiestni vpravo v LTR a vľavo v RTL."
+                    "docs": "end - The content is placed on the right in the LTR and on the left in the RTL."
                 },
                 {
                     "name": "slot",
-                    "docs": "start - Obsah sa umiestni vľavo v LTR a vpravo v RTL."
+                    "docs": "start - The content is placed on the left in the LTR and on the right in the RTL."
                 }
             ],
             "usage": {},
             "props": [
                 {
                     "name": "color",
-                    "type": "\"danger\" | \"neutral\" |  \"primary\" | \"success\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                    "type": "\"danger.\" | \"neutral\" | \"primary\" | \"success\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
                     "complexType": {
                         "original": "Color",
-                        "resolved": "\"danger\" | \"neutral\" |  \"primary\" | \"success\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                        "resolved": "\"danger.\" | \"neutral\" | \"primary\" | \"success\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
                         "references": {
                             "Color": {
                                 "location": "import",
@@ -4784,7 +4784,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": true,
-                    "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"` a `\"neutral\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
+                    "docs": "The color to use from your application's color palette. The default options are `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"warning\"` and `\"neutral\"`.\nFor more information, go to: [theming](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -4812,7 +4812,7 @@
                             "type": "string"
                         },
                         {
-                            "type": "string & Record<never, never>"
+                            "type": "String & Record<never, never>"
                         },
                         {
                             "type": "undefined"
@@ -4832,7 +4832,7 @@
                     "mutable": false,
                     "attr": "checked",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, možnosť je zvolená.",
+                    "docs": "If `true`, the option is selected.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -4854,7 +4854,7 @@
                     "mutable": false,
                     "attr": "disabled",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, možnosť nie je možné zvoliť.",
+                    "docs": "If `true`, the option cannot be selected.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -4876,7 +4876,7 @@
                     "mutable": false,
                     "attr": "indeterminate",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, nastaví predvolený stav radio elementu na neutrálny, tzn. ani `true` ani `false`.",
+                    "docs": "If `true`, it sets the default state of the radio element to neutral, i.e. neither `true` nor `false`.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -4898,7 +4898,7 @@
                     "mutable": false,
                     "attr": "name",
                     "reflectToAttr": false,
-                    "docs": "Určuje názov rádio elementu.",
+                    "docs": "Specifies the name of the radio element.",
                     "docsTags": [],
                     "default": "this.inputId",
                     "values": [
@@ -4920,7 +4920,7 @@
                     "mutable": false,
                     "attr": "value",
                     "reflectToAttr": false,
-                    "docs": "Hodnota radio elementu.",
+                    "docs": "The value of the radio element.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -4942,22 +4942,22 @@
                 {
                     "name": "--wj-border-radius-circle",
                     "annotation": "prop",
-                    "docs": "Definuje veľkost zaoblenia elementu."
+                    "docs": "Defines the size of the roundness of the element."
                 },
                 {
                     "name": "--wj-radio-margin-bottom",
                     "annotation": "prop",
-                    "docs": "Definuje spodné odsadenie elementu."
+                    "docs": "Defines the bottom offset of the element."
                 },
                 {
                     "name": "--wj-radio-margin-inline",
                     "annotation": "prop",
-                    "docs": "Pravé a ľavé odsadenie radio elementu."
+                    "docs": "Right and left offset of the radio element."
                 },
                 {
                     "name": "--wj-radio-margin-top",
                     "annotation": "prop",
-                    "docs": "Horné odsadenie radio elementu."
+                    "docs": "Top offset of the radio element."
                 }
             ],
             "slots": [],
@@ -4985,7 +4985,7 @@
                     "mutable": false,
                     "attr": "inline",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, elementy sa usporiadajú v horizontálnom rozložení.",
+                    "docs": "If `true`, the elements are arranged in a horizontal layout.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -5007,7 +5007,7 @@
                     "mutable": false,
                     "attr": "value",
                     "reflectToAttr": false,
-                    "docs": "Nastaví radio element so zvolenou hodnotou ako predvolene označený.",
+                    "docs": "Sets the radio element with the selected value as the default selected element.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -5048,9 +5048,9 @@
                     "mutable": false,
                     "attr": "date",
                     "reflectToAttr": false,
-                    "docs": "Určuje dátum alebo timestamp vo formáte ISO alebo vo formáte timestamp Unix (v sekundách). Ak nie je zadaný žiadny atribút dátumu, komponent predvolene použije aktuálny dátum a čas.",
+                    "docs": "Specifies the date or timestamp in ISO format or Unix timestamp format (in seconds). If no date attribute is specified, the component defaults to the current date and time.",
                     "docsTags": [],
-                    "default": "Aktuálny dátum a čas",
+                    "default": "Current date and time",
                     "values": [
                         {
                             "type": "string"
@@ -5129,7 +5129,7 @@
                     "mutable": false,
                     "attr": "use-hash",
                     "reflectToAttr": false,
-                    "docs": "The router can work in two \"modes\":\n- With hash: `/index.html#/path/to/page`\n- Without hash: `/path/to/page`\n\nUsing one or another might depend in the requirements of your app and/or where it's deployed.\n\nUsually \"hash-less\" navigation works better for SEO and it's more user friendly too, but it might\nrequires additional server-side configuration in order to properly work.\n\nOn the other side hash-navigation is much easier to deploy, it even works over the file protocol.\n\nBy default, this property is `true`, change to `false` to allow hash-less URLs.",
+                    "docs": "The router can work in two \"modes\":\n- With hash: `/index.html#/path/to/page`\n- Without hash: `/path/to/page`\n\nUsing one or another might depend in the requirements of your app and/or where it's deployed.\n\nUsually \"hash-less\" navigation works better for SEO and it's more user friendly too, but it might\nrequires additional server-side configuration in order to work properly.\n\nOn the other side hash-navigation is much easier to deploy, it even works over the file protocol.\n\nBy default, this property is `true`, change to `false` to allow hash-less URLs.",
                     "docsTags": [],
                     "default": "true",
                     "values": [
@@ -5228,11 +5228,11 @@
                     "docs": "Navigate to the specified path.",
                     "docsTags": [
                         {
-                            "name": "param",
+                            "name": "support",
                             "text": "path The path to navigate to."
                         },
                         {
-                            "name": "param",
+                            "name": "support",
                             "text": "direction The direction of the animation. Defaults to `\"forward\"`."
                         }
                     ]
@@ -5320,7 +5320,7 @@
                     "mutable": false,
                     "attr": "active-class",
                     "reflectToAttr": false,
-                    "docs": "Nastaví elementu triedu `active` pri aktívnom stave.",
+                    "docs": "Sets the `active` class of the element when it is active.",
                     "docsTags": [],
                     "values": [
                         {
@@ -5363,7 +5363,7 @@
                     "mutable": true,
                     "attr": "animation",
                     "reflectToAttr": false,
-                    "docs": "Určuje typ animácie, ktorá sa má použiť na child elementy počas ich zobrazenia a odchodu z obrazovky.",
+                    "docs": "Specifies the type of animation to apply to child elements as they appear and exit the screen.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -5437,63 +5437,63 @@
                 {
                     "name": "--wj-select-background-color",
                     "annotation": "prop",
-                    "docs": "Farba pozadia elementu"
+                    "docs": "Background colour of the element"
                 },
                 {
                     "name": "--wj-select-border-color",
                     "annotation": "prop",
-                    "docs": "Farba okrajov elementu"
+                    "docs": "Colour of element edges"
                 },
                 {
                     "name": "--wj-select-border-radius",
                     "annotation": "prop",
-                    "docs": "Zaoblenie okrajov elementu"
+                    "docs": "Rounding of the edges of the element"
                 },
                 {
                     "name": "--wj-select-border-style",
                     "annotation": "prop",
-                    "docs": "Štýl zaoblenia elementu"
+                    "docs": "Rounding style of the element"
                 },
                 {
                     "name": "--wj-select-border-width",
                     "annotation": "prop",
-                    "docs": "Šírka okrajov elementu"
+                    "docs": "Width of the edges of the element"
                 },
                 {
                     "name": "--wj-select-color",
                     "annotation": "prop",
-                    "docs": "Farba elementu"
+                    "docs": "Element colour"
                 },
                 {
                     "name": "--wj-select-line-height",
                     "annotation": "prop",
-                    "docs": "Výška riadka elementu"
+                    "docs": "Element row height"
                 },
                 {
                     "name": "--wj-select-options-border-color",
                     "annotation": "prop",
-                    "docs": "Farba okrajov rozbalovacieho okna"
+                    "docs": "The colour of the drop-down window edges"
                 },
                 {
                     "name": "--wj-select-options-border-style",
                     "annotation": "prop",
-                    "docs": "Štýl okrajov rozbalovacieho okna"
+                    "docs": "The style of the drop-down window borders"
                 },
                 {
                     "name": "--wj-select-options-border-width",
                     "annotation": "prop",
-                    "docs": "Šírka okrajov rozbalovacieho okna"
+                    "docs": "Width of the drop-down window edges"
                 }
             ],
             "slots": [],
             "parts": [
                 {
                     "name": "native",
-                    "docs": "Odkazuje na `div` vo vnútri elementu."
+                    "docs": "Refers to `div` inside an element."
                 },
                 {
                     "name": "arrow",
-                    "docs": "Obsah sa umiestni do elementu `wj-icon`"
+                    "docs": "The content is placed in the `wj-icon` element"
                 }
             ],
             "dependents": [],
@@ -5534,7 +5534,7 @@
                     "mutable": false,
                     "attr": "value",
                     "reflectToAttr": false,
-                    "docs": "Textová hodnota elementu",
+                    "docs": "Text value of the element",
                     "docsTags": [],
                     "values": [
                         {
@@ -5552,37 +5552,37 @@
                 {
                     "name": "--wj-option-highlighted",
                     "annotation": "prop",
-                    "docs": "Definuje farbu pozadia elementu pri ukazaní myšou."
+                    "docs": "Defines the background color of the element when shown with the mouse."
                 },
                 {
                     "name": "--wj-option-padding-bottom",
                     "annotation": "prop",
-                    "docs": "Definuje veľkosť spodného vnútorného odsadenia elementu."
+                    "docs": "Defines the size of the lower internal offset of the element."
                 },
                 {
                     "name": "--wj-option-padding-top",
                     "annotation": "prop",
-                    "docs": "Definuje veľkosť horného vnútorného odsadenia elementu."
+                    "docs": "Defines the size of the upper internal offset of the element."
                 }
             ],
             "slots": [
                 {
                     "name": "",
-                    "docs": "Obsah sa umiestni medzi named sloty."
+                    "docs": "The contents are placed between the named slots."
                 },
                 {
                     "name": "end",
-                    "docs": "Obsah sa umiestni vpravo v LTR a vľavo v RTL."
+                    "docs": "The content is placed on the right in the LTR and on the left in the RTL."
                 },
                 {
                     "name": "start",
-                    "docs": "Obsah je umiestnený vľavo v LTR a vpravo v RTL."
+                    "docs": "The content is placed on the left in the LTR and on the right in the RTL."
                 }
             ],
             "parts": [
                 {
                     "name": "native",
-                    "docs": "Odkazuje na `div` vo vnútri elementu."
+                    "docs": "Refers to `div` inside an element."
                 }
             ],
             "dependents": [],
@@ -5608,7 +5608,7 @@
                     "mutable": false,
                     "attr": "item-text",
                     "reflectToAttr": false,
-                    "docs": "Textová hodnota elementu",
+                    "docs": "Text value of the element",
                     "docsTags": [],
                     "values": [
                         {
@@ -5629,7 +5629,7 @@
                     "mutable": false,
                     "attr": "item-value",
                     "reflectToAttr": false,
-                    "docs": "Textová hodnota elementu",
+                    "docs": "Text value of the element",
                     "docsTags": [],
                     "values": [
                         {
@@ -5650,7 +5650,7 @@
                     "mutable": false,
                     "attr": "url",
                     "reflectToAttr": false,
-                    "docs": "Obsahuje adresu URL alebo fragment adresy URL s dátami, ktoré sa majú získať.",
+                    "docs": "Contains a URL or URL fragment with the data to be retrieved.",
                     "docsTags": [],
                     "values": [
                         {
@@ -5693,7 +5693,7 @@
                     "mutable": false,
                     "attr": "max",
                     "reflectToAttr": false,
-                    "docs": "Definuje maximálnu hodnotu posuvníka.",
+                    "docs": "Defines the maximum value of the slider.",
                     "docsTags": [],
                     "values": [
                         {
@@ -5717,7 +5717,7 @@
                     "mutable": false,
                     "attr": "min",
                     "reflectToAttr": false,
-                    "docs": "Definuje minimálnu hodnotu posuvníka.",
+                    "docs": "Defines the minimum value of the slider.",
                     "docsTags": [],
                     "values": [
                         {
@@ -5741,7 +5741,7 @@
                     "mutable": false,
                     "attr": "step",
                     "reflectToAttr": false,
-                    "docs": "Definuje interval medzi jednotlivými hodnotami posuvníka.",
+                    "docs": "Defines the interval between each slider value.",
                     "docsTags": [],
                     "values": [
                         {
@@ -5765,7 +5765,7 @@
                     "mutable": false,
                     "attr": "step",
                     "reflectToAttr": false,
-                    "docs": "Definuje aktuálnu hodnotu posuvníka.",
+                    "docs": "Defines the current value of the slider.",
                     "docsTags": [],
                     "values": [
                         {
@@ -5792,7 +5792,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Vyvolaný sa po zmene hodnoty slidera.",
+                    "docs": "Called up when the slider value is changed.",
                     "docsTags": []
                 },
                 {
@@ -5806,7 +5806,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Vyvolaný po prvotnom načítaní slidera.",
+                    "docs": "Called after the initial slider load.",
                     "docsTags": []
                 },
                 {
@@ -5820,7 +5820,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Vyvolaný po pohybe rukoväte slidera.",
+                    "docs": "Invoked after moving the slider handle.",
                     "docsTags": []
                 }
             ],
@@ -5829,52 +5829,52 @@
                 {
                     "name": "--wj-slider-color",
                     "annotation": "prop",
-                    "docs": "Definuje farbu slideru."
+                    "docs": "Defines the colour of the slider."
                 },
                 {
                     "name": "--wj-slider-thumb-color",
                     "annotation": "prop",
-                    "docs": "Definuje farbu rukoväťe slideru."
+                    "docs": "Defines the color of the slider handle."
                 },
                 {
                     "name": "--wj-slider-thumb-shadow",
                     "annotation": "prop",
-                    "docs": "Definuje box-shadow rukoväťe slideru."
+                    "docs": "Defines the box-shadow handles of the slider."
                 },
                 {
                     "name": "--wj-slider-thumb-shadow-active",
                     "annotation": "prop",
-                    "docs": "Definuje box-shadow rukoväťe slideru v aktívnom stave."
+                    "docs": "Defines the box-shadow of the slider handle in the active state."
                 },
                 {
                     "name": "--wj-slider-track-color",
                     "annotation": "prop",
-                    "docs": "Definuje farbu posuvnej dráhy slideru."
+                    "docs": "Defines the color of the slider's sliding path."
                 },
                 {
                     "name": "--wj-slider-track-height",
                     "annotation": "prop",
-                    "docs": "Definuje výšku posuvnej dráhy slideru."
+                    "docs": "Defines the height of the slider travel."
                 }
             ],
             "slots": [
                 {
                     "name": "end",
-                    "docs": "Obsah sa umiestni vpravo v LTR a vľavo v RTL."
+                    "docs": "The content is placed on the right in the LTR and on the left in the RTL."
                 },
                 {
                     "name": "label",
-                    "docs": "Obsah sa umiestni vpravo od dráhy slideru v LTR a vľavo v RTL."
+                    "docs": "The content is placed to the right of the slider path in LTR and to the left in RTL."
                 },
                 {
                     "name": "start",
-                    "docs": "Obsah je umiestnený vľavo v LTR a vpravo v RTL."
+                    "docs": "The content is placed on the left in the LTR and on the right in the RTL."
                 }
             ],
             "parts": [
                 {
                     "name": "slider",
-                    "docs": "Odkazuje na `input` vo vnútri elementu."
+                    "docs": "Refers to `input` inside the element."
                 }
             ],
             "dependents": [],
@@ -5900,7 +5900,7 @@
                     "mutable": false,
                     "attr": "disabled",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, deaktivuje sa možnosť posúvania oddeľovača",
+                    "docs": "If `true`, the option to scroll the separator is deactivated",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -5922,7 +5922,7 @@
                     "mutable": false,
                     "attr": "horizontal",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, zmení sa orientácia oddeľovača na horizontálnu.",
+                    "docs": "If `true`, the orientation of the separator changes to horizontal.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -5944,7 +5944,7 @@
                     "mutable": false,
                     "attr": "initial",
                     "reflectToAttr": false,
-                    "docs": "Definuje počiatočnú pozíciu posuvníka.",
+                    "docs": "Defines the initial position of the slider.",
                     "docsTags": [],
                     "values": [
                         {
@@ -5968,7 +5968,7 @@
                     "mutable": false,
                     "attr": "max",
                     "reflectToAttr": false,
-                    "docs": "Definuje hodnotu maximálnej možnej pozície oddeľovača.",
+                    "docs": "Defines the value of the maximum possible separator position.",
                     "docsTags": [],
                     "values": [
                         {
@@ -5992,7 +5992,7 @@
                     "mutable": false,
                     "attr": "min",
                     "reflectToAttr": false,
-                    "docs": "Definuje hodnotu minimálnej možnej pozície oddeľovača.",
+                    "docs": "Defines the value of the minimum possible separator position.",
                     "docsTags": [],
                     "values": [
                         {
@@ -6013,47 +6013,47 @@
                 {
                     "name": "--wj-split-view-divider-background",
                     "annotation": "prop",
-                    "docs": "Definuje pozadie elementu."
+                    "docs": "Defines the background of the element."
                 },
                 {
                     "name": "--wj-split-view-divider-size",
                     "annotation": "prop",
-                    "docs": "Nastavuje šírku/výšku oddeľovača."
+                    "docs": "Adjusts the width/height of the separator."
                 },
                 {
                     "name": "--wj-split-view-divider-width",
                     "annotation": "prop",
-                    "docs": "Určuje hrúbku oddeľovača."
+                    "docs": "Specifies the thickness of the separator."
                 },
                 {
                     "name": "--wj-split-view-max",
                     "annotation": "prop",
-                    "docs": "Predstavuje maximálnu povolenú veľkosť (v percentách) pre panel."
+                    "docs": "Represents the maximum allowed size (in percent) for the panel."
                 },
                 {
                     "name": "--wj-split-view-min",
                     "annotation": "prop",
-                    "docs": "Predstavuje minimálnu povolenú veľkosť (v percentách) pre panel."
+                    "docs": "Represents the minimum allowed size (in percent) for the panel."
                 }
             ],
             "slots": [
                 {
                     "name": "divider",
-                    "docs": "Obsah sa umiestni do oddeľovača."
+                    "docs": "The contents shall be placed in the separator."
                 },
                 {
                     "name": "end",
-                    "docs": "Obsah sa umiestni vpravo od oddeľovača v LTR a vľavo v RTL."
+                    "docs": "The content is placed to the right of the separator in the LTR and to the left in the RTL."
                 },
                 {
                     "name": "start",
-                    "docs": "Obsah je umiestnený vľavo od oddeľovača v LTR a vpravo v RTL."
+                    "docs": "The content is placed to the left of the separator in the LTR and to the right in the RTL."
                 }
             ],
             "parts": [
                 {
                     "name": "divider",
-                    "docs": "Odkazuje na `div` element oddeľovača."
+                    "docs": "Refers to the `div` element of the separator."
                 }
             ],
             "dependents": [],
@@ -6079,7 +6079,7 @@
                     "mutable": false,
                     "attr": "active",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, tab bude otvorený.",
+                    "docs": "If `true`, the tab will be open.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -6101,7 +6101,7 @@
                     "mutable": false,
                     "attr": "panel",
                     "reflectToAttr": false,
-                    "docs": "Identifikátor názvu panela, ktorý sa zobrazí po kliknutí na tab.",
+                    "docs": "The identifier of the panel name that appears when you click on the tab.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -6149,7 +6149,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Vyvolaný sa po zmene hodnoty slidera.",
+                    "docs": "Called up when the slider value is changed.",
                     "docsTags": []
                 }
             ],
@@ -6180,7 +6180,7 @@
                     "mutable": false,
                     "attr": "panel",
                     "reflectToAttr": false,
-                    "docs": "Slúži ako identifikátor pre atribút `\"name\"` elementu `Tab`.",
+                    "docs": "It serves as an identifier for the `\"name\"` attribute of the `Tab` element.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -6200,7 +6200,7 @@
             "parts": [
                 {
                     "name": "",
-                    "docs": "Predvolené umiestnenie pre obsah elementu."
+                    "docs": "Default location for the element content."
                 }
             ],
             "dependents": [],
@@ -6215,13 +6215,13 @@
             "docsTags": [
                 {
                     "name": "slot",
-                    "text": "nav - Obsah sa umiestni do `nav` elementu."
+                    "text": "nav - The content is placed in the `nav` element."
                 }
             ],
             "usage": {},
             "props": [
                 {
-                    "name": "variant",
+                    "name": "Option",
                     "type": "string",
                     "complexType": {
                         "original": "string",
@@ -6229,9 +6229,9 @@
                         "references": {}
                     },
                     "mutable": true,
-                    "attr": "variant",
+                    "attr": "Option",
                     "reflectToAttr": false,
-                    "docs": "Definuje variantu rozloženia TabGroup. Medzi možné hodnoty patrí `start`, `end` a `bottom`.",
+                    "docs": "Defines a variant of the TabGroup layout. Possible values include `start`, `end` and `bottom`.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -6259,53 +6259,53 @@
                 {
                     "name": "--wj-font-size",
                     "annotation": "prop",
-                    "docs": "Určuje veľkosť písma."
+                    "docs": "Specifies the font size."
                 },
                 {
                     "name": "--wj-tab-color-active",
                     "annotation": "prop",
-                    "docs": "Určuje farbu pozadia aktívneho tab elementu."
+                    "docs": "Specifies the background color of the active tab element."
                 },
                 {
                     "name": "--wj-tab-color-hover",
                     "annotation": "prop",
-                    "docs": "Určuje farbu pozadia tab elementu po ukázaní myšou."
+                    "docs": "Determines the background color of the tab element when the mouse is pointed to it."
                 },
                 {
                     "name": "--wj-tab-font-weight",
                     "annotation": "prop",
-                    "docs": "Nastavuje váhu písma."
+                    "docs": "Sets the font weight."
                 },
                 {
                     "name": "--wj-tab-letter-spacing",
                     "annotation": "prop",
-                    "docs": "Nastavuje vzdialenosť medzi písmenami."
+                    "docs": "Sets the distance between letters."
                 },
                 {
                     "name": "--wj-tab-padding-bottom",
                     "annotation": "prop",
-                    "docs": "Určuje spodné odsadenie tabu."
+                    "docs": "Specifies the bottom tab offset."
                 },
                 {
                     "name": "--wj-tab-padding-inline",
                     "annotation": "prop",
-                    "docs": "Určuje horizontálne odsadenie tabu."
+                    "docs": "Specifies the horizontal offset of the tab."
                 },
                 {
                     "name": "--wj-tab-padding-top",
                     "annotation": "prop",
-                    "docs": "Určuje horné odsadenie tabu."
+                    "docs": "Specifies the top tab offset."
                 },
                 {
                     "name": "--wj-tab-text-transfrom",
                     "annotation": "prop",
-                    "docs": "Nastavuje transformáciu textu v tabe."
+                    "docs": "Sets the transformation of the text in the tab."
                 }
             ],
             "slots": [
                 {
-                    "name": "nav",
-                    "docs": "Obsah sa umiestni do `nav` elementu."
+                    "name": "No",
+                    "docs": "The content is placed in the `nav` element."
                 }
             ],
             "parts": [],
@@ -6321,7 +6321,7 @@
             "docsTags": [
                 {
                     "name": "virtualProp",
-                    "text": "{\"ios\" | \"md\"} mode - The mode determines which platform styles to use."
+                    "text": "{ \"ios\". | \"md\"} mode - The mode determines which platform styles to use."
                 },
                 {
                     "name": "slot",
@@ -6349,7 +6349,7 @@
                     "mutable": false,
                     "attr": "counter",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, pridá pod element počítadlo zobrazujúce počet vložených znakov a tiež maximálny povolený počet.",
+                    "docs": "If `true`, adds a counter below the element showing the number of characters inserted and also the maximum number allowed.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -6371,7 +6371,7 @@
                     "mutable": false,
                     "attr": "disabled",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, do textarea nebude možné písať.",
+                    "docs": "If `true`, the textarea will not be writable.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -6393,7 +6393,7 @@
                     "mutable": false,
                     "attr": "label",
                     "reflectToAttr": false,
-                    "docs": "Definuje textový popis k elementu textarea.",
+                    "docs": "Defines the text description for the textarea element.",
                     "docsTags": [],
                     "values": [
                         {
@@ -6417,7 +6417,7 @@
                     "mutable": false,
                     "attr": "maxlength",
                     "reflectToAttr": false,
-                    "docs": "Nastaví maximálny povolený počet znakov. Používa sa v spojení s atribútom `counter`.",
+                    "docs": "Sets the maximum number of characters allowed. Used in conjunction with the `counter` attribute.",
                     "docsTags": [],
                     "default": "1000",
                     "values": [
@@ -6442,7 +6442,7 @@
                     "mutable": false,
                     "attr": "name",
                     "reflectToAttr": false,
-                    "docs": "Nastaví name atribút vnútorného textarea elementu. Ten je dôležitý napríklad pri použití vo formulároch.",
+                    "docs": "Sets the name attribute of the inner textarea of the element. This is important, for example, when used in forms.",
                     "docsTags": [],
                     "default": "this.inputId",
                     "values": [
@@ -6455,16 +6455,16 @@
                 },
                 {
                     "name": "resize",
-                    "type": "\"auto\"",
+                    "type": "\"car\"",
                     "complexType": {
-                        "original": "\"auto\"",
-                        "resolved": "\"auto\"",
+                        "original": "\"car\"",
+                        "resolved": "\"car\"",
                         "references": {}
                     },
                     "mutable": false,
                     "attr": "resize",
                     "reflectToAttr": false,
-                    "docs": "Definuje správanie zmeny veľkosti elementu. Ak je nastavená na hodnotu `\"auto\"`, veľkosť elementu sa automaticky prispôsobí obsahu.",
+                    "docs": "Defines the behavior of element resizing. If it is set to `\"auto\"`, the element size is automatically adjusted to the content.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -6487,7 +6487,7 @@
                     "mutable": false,
                     "attr": "rows",
                     "reflectToAttr": false,
-                    "docs": "Definuje počet viditeľných riadkov textu v elementu.",
+                    "docs": "Defines the number of visible lines of text in the element.",
                     "docsTags": [],
                     "values": [
                         {
@@ -6511,7 +6511,7 @@
                     "mutable": false,
                     "attr": "spellcheck",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, v textarea bude aktivovaná kontrola pravopisu.",
+                    "docs": "If `true`, spell checking will be activated in textarea.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -6523,7 +6523,7 @@
                     "required": false
                 },
                 {
-                    "name": "variant",
+                    "name": "Option",
                     "type": "string",
                     "complexType": {
                         "original": "string",
@@ -6531,9 +6531,9 @@
                         "references": {}
                     },
                     "mutable": true,
-                    "attr": "variant",
+                    "attr": "Option",
                     "reflectToAttr": false,
-                    "docs": "Nastavením na hodnotu `\"standard\"` sa zobrazí textarea v štýle štandardného HTML textarea elementu.",
+                    "docs": "Setting it to `\"standard\"` will display a textarea in the style of the standard HTML textarea element.",
                     "docsTags": [],
                     "default": "''",
                     "values": [
@@ -6564,7 +6564,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Vyvolaný keď element stratí focus.",
+                    "docs": "Fired when an element loses focus.",
                     "docsTags": []
                 },
                 {
@@ -6584,7 +6584,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Je vyvolaný po zmene v textarea.",
+                    "docs": "It is invoked after a change in textarea.",
                     "docsTags": []
                 },
                 {
@@ -6603,7 +6603,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Vyvolaný keď element dostane focus.",
+                    "docs": "Called when the element gets focus.",
                     "docsTags": []
                 },
                 {
@@ -6632,69 +6632,69 @@
                 {
                     "name": "--wj-textarea-background-color",
                     "annotation": "prop",
-                    "docs": "Nastaví farbu pozadia elementu."
+                    "docs": "Sets the background color of the element."
                 },
                 {
                     "name": "--wj-textarea-border-color",
                     "annotation": "prop",
-                    "docs": "Nastaví farbu okrajov elementu."
+                    "docs": "Sets the color of the edges of the element."
                 },
                 {
                     "name": "--wj-textarea-border-color-focus",
                     "annotation": "prop",
-                    "docs": "Nastaví farbu okrajov pri focuse."
+                    "docs": "Sets the color of the edges when you take a photo."
                 },
                 {
                     "name": "--wj-textarea-border-radius",
                     "annotation": "prop",
-                    "docs": "Nastaví zaoblenie okrajov elementu."
+                    "docs": "Adjusts the rounding of the element edges."
                 },
                 {
                     "name": "--wj-textarea-border-style",
                     "annotation": "prop",
-                    "docs": "Nastaví štýl okrajov elementu."
+                    "docs": "Sets the element's border style."
                 },
                 {
                     "name": "--wj-textarea-border-width",
                     "annotation": "prop",
-                    "docs": "Nastaví šírku okrajov elementu."
+                    "docs": "Sets the width of the element edges."
                 },
                 {
                     "name": "--wj-textarea-color",
                     "annotation": "prop",
-                    "docs": "Nastaví farbu textu elementu."
+                    "docs": "Sets the text color of the element."
                 },
                 {
                     "name": "--wj-textarea-color-invalid",
                     "annotation": "prop",
-                    "docs": "Nastaví farbu textu pri chybe."
+                    "docs": "Sets the text color on error."
                 },
                 {
                     "name": "--wj-textarea-font-family",
                     "annotation": "prop",
-                    "docs": "Nastaví písmo elementu."
+                    "docs": "Sets the font of the element."
                 },
                 {
                     "name": "--wj-textarea-line-height",
                     "annotation": "prop",
-                    "docs": "Nastaví výšku riadka elementu."
+                    "docs": "Sets the height of the element row."
                 },
                 {
                     "name": "--wj-textarea-margin-bottom",
                     "annotation": "prop",
-                    "docs": "Nastaví spodné vonkajšie odsadenie elementu."
+                    "docs": "Sets the lower outer offset of the element."
                 },
                 {
                     "name": "--wj-textarea-padding",
                     "annotation": "prop",
-                    "docs": "Nastaví vnútorné odsadenie elementu."
+                    "docs": "Sets the internal offset of the element."
                 }
             ],
             "slots": [],
             "parts": [
                 {
                     "name": "input",
-                    "docs": "Odkazuje na element `textarea` vo vnútri elementu."
+                    "docs": "Refers to the `textarea` element inside the element."
                 }
             ],
             "dependents": [],
@@ -6720,7 +6720,7 @@
                     "mutable": true,
                     "attr": "circle",
                     "reflectToAttr": false,
-                    "docs": "Nastaví na element zaoblenie pridaním css `\"border-radius: 50%\"`",
+                    "docs": "Sets the element to round by adding css `\"border-radius: 50%\"`",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -6739,17 +6739,17 @@
                 {
                     "name": "--wj-border-radius",
                     "annotation": "prop",
-                    "docs": "Definuje veľkosť zaoblenia okrajov elementu."
+                    "docs": "Defines the amount of rounding of the edges of the element."
                 },
                 {
                     "name": "--wj-thumbnail-height",
                     "annotation": "prop",
-                    "docs": "Definuje výšku elementu."
+                    "docs": "Defines the height of the element."
                 },
                 {
                     "name": "--wj-thumbnail-width",
                     "annotation": "prop",
-                    "docs": "Definuje šírku elementu."
+                    "docs": "Defines the width of the element."
                 }
             ],
             "slots": [],
@@ -6768,10 +6768,10 @@
             "props": [
                 {
                     "name": "color",
-                    "type": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+                    "type": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
                     "complexType": {
                         "original": "Color",
-                        "resolved": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+                        "resolved": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
                         "references": {
                             "Color": {
                                 "location": "import",
@@ -6823,7 +6823,7 @@
                             "type": "string"
                         },
                         {
-                            "type": "string & Record<never, never>"
+                            "type": "String & Record<never, never>"
                         },
                         {
                             "type": "undefined"
@@ -6869,7 +6869,7 @@
                 {
                     "name": "--color",
                     "annotation": "prop",
-                    "docs": "Text color of the title"
+                    "docs": "Text colour of the title"
                 }
             ],
             "slots": [],
@@ -6886,7 +6886,7 @@
             "docsTags": [
                 {
                     "name": "virtualProp",
-                    "text": "{\"ios\" | \"md\"} mode - The mode determines which platform styles to use."
+                    "text": "{ \"ios\". | \"md\"} mode - The mode determines which platform styles to use."
                 },
                 {
                     "name": "part",
@@ -6971,10 +6971,10 @@
                 },
                 {
                     "name": "color",
-                    "type": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+                    "type": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
                     "complexType": {
                         "original": "Color",
-                        "resolved": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+                        "resolved": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
                         "references": {
                             "Color": {
                                 "location": "import",
@@ -7026,7 +7026,7 @@
                             "type": "string"
                         },
                         {
-                            "type": "string & Record<never, never>"
+                            "type": "String & Record<never, never>"
                         },
                         {
                             "type": "undefined"
@@ -7262,7 +7262,7 @@
                     "required": false
                 },
                 {
-                    "name": "leaveAnimation",
+                    "name": "LeaveAnimation",
                     "type": "((baseEl: any, opts?: any) => Animation) | undefined",
                     "complexType": {
                         "original": "AnimationBuilder",
@@ -7324,10 +7324,10 @@
                     "required": false
                 },
                 {
-                    "name": "mode",
+                    "name": "fashion",
                     "type": "\"ios\" | \"md\"",
                     "mutable": false,
-                    "attr": "mode",
+                    "attr": "fashion",
                     "reflectToAttr": false,
                     "docs": "The mode determines which platform styles to use.",
                     "docsTags": [],
@@ -7345,7 +7345,7 @@
                     "required": false
                 },
                 {
-                    "name": "position",
+                    "name": "Position",
                     "type": "\"bottom\" | \"middle\" | \"top\"",
                     "complexType": {
                         "original": "ToastPosition",
@@ -7359,7 +7359,7 @@
                         }
                     },
                     "mutable": false,
-                    "attr": "position",
+                    "attr": "Position",
                     "reflectToAttr": false,
                     "docs": "The starting position of the toast on the screen. Can be tweaked further\nusing the `positionAnchor` property.",
                     "docsTags": [],
@@ -7509,7 +7509,7 @@
                             {
                                 "name": "role",
                                 "type": "string | undefined",
-                                "docs": "The role of the element that is dismissing the toast.\nThis can be useful in a button handler for determining which button was\nclicked to dismiss the toast.\nSome examples include: ``\"cancel\"`, `\"destructive\"`, \"selected\"`, and `\"backdrop\"`."
+                                "docs": "The role of the element that is dismissing the toast.\nThis can be useful in a button handler for determining which button was\nclicked to dismiss the toast.\nSome examples include: `\"cancel\"`, `\"destructive\"`, \"selected\"`, and `\"backdrop\"`."
                             }
                         ],
                         "references": {
@@ -7535,18 +7535,18 @@
                         {
                             "name": "role",
                             "type": "string | undefined",
-                            "docs": "The role of the element that is dismissing the toast.\nThis can be useful in a button handler for determining which button was\nclicked to dismiss the toast.\nSome examples include: ``\"cancel\"`, `\"destructive\"`, \"selected\"`, and `\"backdrop\"`."
+                            "docs": "The role of the element that is dismissing the toast.\nThis can be useful in a button handler for determining which button was\nclicked to dismiss the toast.\nSome examples include: `\"cancel\"`, `\"destructive\"`, \"selected\"`, and `\"backdrop\"`."
                         }
                     ],
                     "docs": "Dismiss the toast overlay after it has been presented.",
                     "docsTags": [
                         {
-                            "name": "param",
+                            "name": "support",
                             "text": "data Any data to emit in the dismiss events."
                         },
                         {
-                            "name": "param",
-                            "text": "role The role of the element that is dismissing the toast.\nThis can be useful in a button handler for determining which button was\nclicked to dismiss the toast.\nSome examples include: ``\"cancel\"`, `\"destructive\"`, \"selected\"`, and `\"backdrop\"`."
+                            "name": "support",
+                            "text": "role The role of the element that is dismissing the toast.\nThis can be useful in a button handler for determining which button was\nclicked to dismiss the toast.\nSome examples include: `\"cancel\"`, `\"destructive\"`, \"selected\"`, and `\"backdrop\"`."
                         }
                     ]
                 },
@@ -7873,7 +7873,7 @@
                     "docs": "Any button element that is displayed inside of the toast."
                 },
                 {
-                    "name": "button cancel",
+                    "name": "cancel button",
                     "docs": "Any button element with role \"cancel\" that is displayed inside of the toast."
                 },
                 {
@@ -7924,7 +7924,7 @@
                     "mutable": true,
                     "attr": "checked",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, toggle je aktivovaný.",
+                    "docs": "If `true`, toggle is activated.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -7952,7 +7952,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": false,
-                    "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, a `\"dark\"`.\nPre viac informácií o farbách navštívte [Základy prispôsobenia](/theming/basics).",
+                    "docs": "The color to use from your application's color palette. The default options are `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, and `\"dark\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -7980,7 +7980,7 @@
                             "type": "string"
                         },
                         {
-                            "type": "string & Record<never, never>"
+                            "type": "String & Record<never, never>"
                         },
                         {
                             "type": "undefined"
@@ -8000,7 +8000,7 @@
                     "mutable": false,
                     "attr": "disabled",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, s toggle elementom nie je možné interagovať.",
+                    "docs": "If `true`, the toggle element cannot be interacted with.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -8022,7 +8022,7 @@
                     "mutable": false,
                     "attr": "name",
                     "reflectToAttr": false,
-                    "docs": "Definuje `name` atribút, ktorý je dôležitý napríklad pri použití vo formulároch.",
+                    "docs": "Defines a `name` attribute that is important, for example, when used in forms.",
                     "docsTags": [],
                     "default": "this.inputId",
                     "values": [
@@ -8053,7 +8053,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Vyvolaný pri zmene stavu elementu.",
+                    "docs": "Invoked when the state of the element changes.",
                     "docsTags": []
                 }
             ],
@@ -8113,17 +8113,17 @@
             "slots": [
                 {
                     "name": "",
-                    "docs": "Predvolené umiestnenie obsahu elementu."
+                    "docs": "Default location of the element content."
                 }
             ],
             "parts": [
                 {
                     "name": "input",
-                    "docs": "Odkazuje na `input` element typu checkbox"
+                    "docs": "Refers to an `input` element of type checkbox"
                 },
                 {
                     "name": "toggle",
-                    "docs": "Odkazuje na vnútorný `div` obaľovací element"
+                    "docs": "Refers to the inner `div` wrapping element"
                 }
             ],
             "dependents": [],
@@ -8155,7 +8155,7 @@
                     "mutable": true,
                     "attr": "active",
                     "reflectToAttr": false,
-                    "docs": "Ak `true`, tooltip je aktivovaný.",
+                    "docs": "If `true`, the tooltip is activated.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -8177,7 +8177,7 @@
                     "mutable": false,
                     "attr": "content",
                     "reflectToAttr": false,
-                    "docs": "Definuje obsah nápovedy tooltip.",
+                    "docs": "Defines the content of the tooltip.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -8205,7 +8205,7 @@
                     "mutable": false,
                     "attr": "placement",
                     "reflectToAttr": false,
-                    "docs": "Definuje kde sa má zobraziť nápoveda tooltip vzhľadom k nadradenému elementu.",
+                    "docs": "Defines where to display the tooltip relative to the parent element.",
                     "docsTags": [],
                     "default": "'top'",
                     "values": [
@@ -8240,7 +8240,7 @@
                     "mutable": false,
                     "attr": "offset",
                     "reflectToAttr": false,
-                    "docs": "Definuje vzdialenosť tooltipu od jeho nadradeného elementu v pixeloch.",
+                    "docs": "Defines the distance of the tooltip from its parent element in pixels.",
                     "docsTags": [],
                     "default": "undefined",
                     "values": [
@@ -8271,7 +8271,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Vyvolaný pri zmene stavu elementu.",
+                    "docs": "Called when the element state changes.",
                     "docsTags": []
                 }
             ],
@@ -8280,19 +8280,19 @@
                 {
                     "name": "--arrow-size",
                     "annotation": "prop",
-                    "docs": "Určuje veľkosť šípky tooltipu."
+                    "docs": "Specifies the size of the tooltip arrow."
                 },
                 {
                     "name": "--arrow-color",
                     "annotation": "prop",
-                    "docs": "Určuje farbu šípky tooltipu."
+                    "docs": "Specifies the color of the tooltip arrow."
                 }
             ],
             "slots": [],
             "parts": [
                 {
                     "name": "native",
-                    "docs": "Odkazuje na `div` element vo vnútri elementu popup."
+                    "docs": "Refers to the `div` element inside the popup element."
                 }
             ],
             "dependents": [],
@@ -8307,11 +8307,11 @@
             "docsTags": [
                 {
                     "name": "slot",
-                    "text": "start - Obsah je umiestnený vľavo od textu tlačidla v LTR a vpravo v RTL."
+                    "text": "start - The content is placed to the left of the button text in LTR and to the right in RTL."
                 },
                 {
                     "name": "slot",
-                    "text": "end - Obsah sa umiestni vpravo od textu tlačidla v LTR a vľavo v RTL."
+                    "text": "end - The content is placed to the right of the button text in LTR and to the left in RTL."
                 }
             ],
             "usage": {},
@@ -8361,11 +8361,11 @@
             "slots": [
                 {
                     "name": "end",
-                    "docs": "Obsah sa umiestni vpravo od textu tlačidla v LTR a vľavo v RTL."
+                    "docs": "The content is placed to the right of the button text in LTR and to the left in RTL."
                 },
                 {
                     "name": "start",
-                    "docs": "Obsah je umiestnený vľavo od textu tlačidla v LTR a vpravo v RTL."
+                    "docs": "The content is placed to the left of the button text in LTR and to the right in RTL."
                 }
             ],
             "parts": [],
@@ -8531,12 +8531,12 @@
             "path": "src/interface.d.ts"
         },
         "src/components/input/input-interface.ts::InputInputEventDetail": {
-            "declaration": "export interface InputInputEventDetail {\n  value?: string | null;\n  event?: Event;\n}",
+            "declaration": "export interface InputInputEventDetail {\n  value?: string | null;\n  event?: event;\n}",
             "docstring": "",
             "path": "src/components/input/input-interface.ts"
         },
         "src/components/input/input-interface.ts::InputChangeEventDetail": {
-            "declaration": "export interface InputChangeEventDetail {\n  value?: string | null;\n  event?: Event;\n}",
+            "declaration": "export interface InputChangeEventDetail {\n  value?: string | null;\n  event?: event;\n}",
             "docstring": "Values are converted to strings when emitted which is\nwhy we do not have a `number` type here even though the\n`value` prop accepts a `number` type.",
             "path": "src/components/input/input-interface.ts"
         },
@@ -8706,17 +8706,17 @@
             "path": "src/components/nav/nav-interface.ts"
         },
         "src/components/nav/nav-interface.ts::RouterOutletOptions": {
-            "declaration": "export interface RouterOutletOptions {\n  animated?: boolean;\n  animationBuilder?: AnimationBuilder;\n  duration?: number;\n  easing?: string;\n  showGoBack?: boolean;\n  direction?: NavDirection;\n  deepWait?: boolean;\n  mode?: Mode;\n  keyboardClose?: boolean;\n  skipIfBusy?: boolean;\n  progressAnimation?: boolean;\n}",
+            "declaration": "export interface RouterOutletOptions {\n  animated?: boolean;\n  animationBuilder?: AnimationBuilder;\n  duration?: number;\n  easing?: string;\n  showGoBack?: boolean;\n  direction?: NavDirection;\n  deepWait?: boolean;\n  mode?: mode;\n  keyboardClose?: boolean;\n  skipIfBusy?: boolean;\n  progressAnimation?: boolean;\n}",
             "docstring": "",
             "path": "src/components/nav/nav-interface.ts"
         },
         "src/components/searchbar/searchbar-interface.ts::SearchbarInputEventDetail": {
-            "declaration": "export interface SearchbarInputEventDetail {\n  value?: string | null;\n  event?: Event;\n}",
+            "declaration": "export interface SearchbarInputEventDetail {\n  value?: string | null;\n  event?: event;\n}",
             "docstring": "",
             "path": "src/components/searchbar/searchbar-interface.ts"
         },
         "src/components/searchbar/searchbar-interface.ts::SearchbarChangeEventDetail": {
-            "declaration": "export interface SearchbarChangeEventDetail {\n  value?: string | null;\n  event?: Event;\n}",
+            "declaration": "export interface SearchbarChangeEventDetail {\n  value?: string | null;\n  event?: event;\n}",
             "docstring": "",
             "path": "src/components/searchbar/searchbar-interface.ts"
         },
@@ -8771,12 +8771,12 @@
             "path": "src/components/tab-bar/tab-bar-interface.ts"
         },
         "src/components/textarea/textarea-interface.ts::TextareaChangeEventDetail": {
-            "declaration": "export interface TextareaChangeEventDetail {\n  value?: string | null;\n  event?: Event;\n}",
+            "declaration": "export interface TextareaChangeEventDetail {\n  value?: string | null;\n  event?: event;\n}",
             "docstring": "",
             "path": "src/components/textarea/textarea-interface.ts"
         },
         "src/components/textarea/textarea-interface.ts::TextareaInputEventDetail": {
-            "declaration": "export interface TextareaInputEventDetail {\n  value?: string | null;\n  event?: Event;\n}",
+            "declaration": "export interface TextareaInputEventDetail {\n  value?: string | null;\n  event?: event;\n}",
             "docstring": "",
             "path": "src/components/textarea/textarea-interface.ts"
         },
