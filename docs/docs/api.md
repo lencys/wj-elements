@@ -8,10 +8,10 @@ import APIList from '@components/page/api/APIList';
   <title>API Index | Ionic Docs API Index for all API Custom Elements</title>
   <meta
     name="description"
-    content="Each component in the Ionic Docs API Index consists of one or more custom elements—which each, in turn, may expose methods, events, and CSS custom properties."
+    content="Každý WebJET komponent sa skladá z jedného alebo viacerých custom elementov. Každý element zasa môže sprístupňovať vlastnosti, metódy, eventy a custom CSS vlastnosti."
   />
 </head>
 
-Each Ionic [component](/docs/components) consists of one or more [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements). Each custom element, in turn, may expose properties, methods, events, and CSS custom properties.
+Každý [WebJET komponent](/components) sa skladá z jedného alebo viacerých [custom elementov](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements). Každý element zasa môže sprístupňovať svoje vlastnosti, metódy, eventy a custom CSS vlastnosti.
 
 <APIList sidebar={require('@site/sidebars.js').default} />

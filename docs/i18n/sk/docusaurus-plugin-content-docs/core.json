@@ -412,7 +412,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": false,
-                    "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, `\"info\"`, and `\"menu\"`.\nPre viac informácií o farbách navštívte [Základy prispôsobenia](/docs/theming/basics).",
+                    "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, `\"info\"`, and `\"menu\"`.\nPre viac informácií o farbách navštívte [Základy prispôsobenia](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -711,7 +711,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": true,
-                    "docs": "Farba, ktorá sa má použiť z palety farieb aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"warning\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, and `\"neutral\"`.\nPre viac informácií o farbách navštívte [Základy prispôsobenia](/docs/theming/basics).",
+                    "docs": "Farba, ktorá sa má použiť z palety farieb aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"warning\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, and `\"neutral\"`.\nPre viac informácií o farbách navštívte [Základy prispôsobenia](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -1035,7 +1035,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": true,
-                    "docs": "Farba, ktorá sa má použiť z palety farieb aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"warning\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, and `\"neutral\"`.\nPre viac informácií o farbách navštívte [Základy prispôsobenia](/docs/theming/basics).",
+                    "docs": "Farba, ktorá sa má použiť z palety farieb aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"warning\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, and `\"neutral\"`.\nPre viac informácií o farbách navštívte [Základy prispôsobenia](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -1279,7 +1279,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": true,
-                    "docs": "Určuje farbu pozadia checkboxu. Predvolené možnosti sú `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nPre viac informácií prejdite na: [theming](/docs/theming/basics).",
+                    "docs": "Určuje farbu pozadia checkboxu. Predvolené možnosti sú `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -1472,7 +1472,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": true,
-                    "docs": "Určuje farbu pozadia chip elementu. Predvolené možnosti sú `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nPre viac informácií prejdite na: [theming](/docs/theming/basics).",
+                    "docs": "Určuje farbu pozadia chip elementu. Predvolené možnosti sú `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -2416,6 +2416,24 @@
             "dependencyGraph": {}
         },
         {
+            "filePath": "src/components/footer/footer.tsx",
+            "encapsulation": "scoped",
+            "tag": "footer",
+            "docs": "",
+            "docsTags": [],
+            "usage": {},
+            "props": [],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
             "filePath": "src/components/format-digital/format-digital.tsx",
             "encapsulation": "shadow",
             "tag": "format-digital",
@@ -2518,6 +2536,24 @@
                     "docs": "Odkazuje na `div` element s triedou `native-format-digital` vo vnútri elementu"
                 }
             ],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
+            "filePath": "src/components/header/header.tsx",
+            "encapsulation": "scoped",
+            "tag": "header",
+            "docs": "",
+            "docsTags": [],
+            "usage": {},
+            "props": [],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [],
+            "parts": [],
             "dependents": [],
             "dependencies": [],
             "dependencyGraph": {}
@@ -2654,7 +2690,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": true,
-                    "docs": "Farba ikony z palety farieb aplikácie Predvolené možnosti sú `\"primary\"`, `\"secondary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, a `\"dark\"`.\nPre viac informácií prejdite na: [theming](/docs/theming/basics).",
+                    "docs": "Farba ikony z palety farieb aplikácie Predvolené možnosti sú `\"primary\"`, `\"secondary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, a `\"dark\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -4531,7 +4567,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": true,
-                    "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, a `\"dark\"`.\nPre viac informácií prejdite na: [theming](/docs/theming/basics).",
+                    "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, a `\"dark\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -4748,7 +4784,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": true,
-                    "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"` a `\"neutral\"`.\nPre viac informácií prejdite na: [theming](/docs/theming/basics).",
+                    "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"` a `\"neutral\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -6747,7 +6783,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": true,
-                    "docs": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+                    "docs": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -6950,7 +6986,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": true,
-                    "docs": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+                    "docs": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {
@@ -7916,7 +7952,7 @@
                     "mutable": false,
                     "attr": "color",
                     "reflectToAttr": false,
-                    "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, a `\"dark\"`.\nPre viac informácií o farbách navštívte [Základy prispôsobenia](/docs/theming/basics).",
+                    "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, a `\"dark\"`.\nPre viac informácií o farbách navštívte [Základy prispôsobenia](/theming/basics).",
                     "docsTags": [],
                     "values": [
                         {

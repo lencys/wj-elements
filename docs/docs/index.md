@@ -26,7 +26,7 @@ import DocsCards from '@components/global/DocsCards';
 </head>
 
 WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania využívajúca silu web komponentov, ktorá je určená na zjednodušenie vývoja webových aplikácií. Poskytuje kolekciu zapúzdrených a opakovane použiteľných elementov, ktoré môžu výrazne zvýšiť efektivitu a udržiavateľnosť projektov vývoja webových stránok.
-Ponúkajú jednoduchú integráciu s [React](react.md) a [Vue](vue/overview.md).
+Ponúkajú jednoduchú integráciu s React a Vue.
 
 Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/install.md).
 
@@ -96,7 +96,7 @@ Kľúčové vlastnosti rámca WebJET Elements Framework:
 WebJET Elements obsahuje širokú škálu ovládacích prvkov a komponentov používateľského rozhrania, ktoré sú optimalizované pre webové rozhrania. Tieto komponenty pokrývajú rôzne funkcie a sú navrhnuté tak, aby sa dali ľahko integrovať do akejkoľvek webovej aplikácie.
 
 ### Integrácia s populárnymi frameworkami
-Framework podporuje bezproblémovú integráciu s modernými webovými technológiami [React](react.md) a [Vue](vue/overview.md), čím zabezpečuje kompatibilitu a flexibilitu pri vývoji.
+Framework podporuje bezproblémovú integráciu s modernými webovými technológiami React a Vue, čím zabezpečuje kompatibilitu a flexibilitu pri vývoji.
 
 ### Stabilný a nezávislý
 

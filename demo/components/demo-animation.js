@@ -10,7 +10,7 @@ template.innerHTML = `<h1>Animation</h1>
     <h3>Basic</h3>
     <div class="playground">
       <div class="content" style="flex-direction: column;">
-        <wj-animation name="heartBeat" delay="1000" duration="50">
+        <wj-animation name="heartBeat" delay="500" duration="50">
           <wj-avatar>
             <wj-img src="/assets/img/avatar.svg"></wj-img>
           </wj-avatar>

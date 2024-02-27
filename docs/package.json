@@ -6,7 +6,7 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "prebuild": "npm run generate-markdown",
+    "prebuild": "npm run generate-markdown; scripts/i18n.sh; if [ -n \\\"$CROWDIN_PERSONAL_TOKEN\\\" ]; then npm run crowdin:sync; fi",
     "build": "npm run build:${VERCEL_ENV:-preview}",
     "build:preview": "docusaurus build --locale en",
     "build:production": "docusaurus build",
@@ -14,7 +14,7 @@
     "crowdin:sync": "docusaurus write-translations && crowdin upload && crowdin download",
     "deploy": "docusaurus deploy",
     "docusaurus": "docusaurus",
-    "generate-markdown": "node scripts/native.mjs && concurrently \"node scripts/cli.mjs\" \"node scripts/release-notes.mjs\"",
+    "generate-markdown": "node scripts/native.mjs",
     "lint": "npm run prettier -- --write --cache",
     "serve": "docusaurus serve",
     "playground:new": "hygen playground new",
