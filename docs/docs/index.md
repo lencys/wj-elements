@@ -13,10 +13,10 @@ import DocsCards from '@components/global/DocsCards';
     name="description"
     content="WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania založená na web komponentoch, ktorá je určená na zjednodušenie vývoja webových aplikácií."
   />
-  <link rel="canonical" href="https://ionicframework.com/docs" />
-  <link rel="alternate" href="https://ionicframework.com/docs" hreflang="x-default" />
-  <link rel="alternate" href="https://ionicframework.com/docs" hreflang="en" />
-  <meta property="og:url" content="https://ionicframework.com/docs" />
+  <link rel="canonical" href="https://elements.webjet.sk/" />
+  <link rel="alternate" href="https://elements.webjet.sk/" hreflang="x-default" />
+  <link rel="alternate" href="https://elements.webjet.sk/" hreflang="en" />
+  <meta property="og:url" content="https://elements.webjet.sk/" />
     <style>{`
     docs-cards > a{
       display: flex;

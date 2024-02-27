@@ -179,23 +179,6 @@ module.exports = {
         },
       },
     ],
-    function (context, options) {
-      return {
-        name: 'ionic-docs-ads',
-        async loadContent() {
-          const repoName = 'ionicframeworkcom';
-          const endpoint = prismic.getEndpoint(repoName);
-          const client = prismic.createClient(endpoint, {
-            fetch,
-          });
-
-          return await client.getByType('docs_ad');
-        },
-        async contentLoaded({ content, actions: { setGlobalData, addRoute } }) {
-          return setGlobalData({ prismicAds: content.results });
-        },
-      };
-    },
     [
       path.resolve(__dirname, 'plugins', 'docusaurus-plugin-ionic-component-api'),
       {
