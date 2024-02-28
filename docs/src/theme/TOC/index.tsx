@@ -37,7 +37,7 @@ export default function TOCWrapper(props: TOCProps): JSX.Element {
 
   return (
     <div className="toc-wrapper">
-      <h2>Obsah</h2>
+      <h2>Content</h2>
       <TOC {...props} />
       {/* <EditThisPage editUrl={metadata.editUrl} /> */}
       {/*activeAd && (

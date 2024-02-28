@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="scoped" />
 
-ButtonGroup slúži na zoskupovanie elementov [Button](./button) a [Dropdown](./dropdown) do funkčnejších celkov, ktoré budú po vložení do vnútra elementu automaticky naštýlované a usporiadané.
+ButtonGroup slúži na zoskupovanie elementov [Button](../button) a [Dropdown](../dropdown) do funkčnejších celkov, ktoré budú po vložení do vnútra elementu automaticky naštýlované a usporiadané.
 
 ## Základné použitie
 

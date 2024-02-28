@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-**Elements** allows you to easily build your page layout using 4 basic elements: [Container](./container), [Header](./header), [Aside](./aside) and [Footer](./footer). For more complex layouts, the [Grid](./grid) system can also be used.
+**Elements** allows you to easily build your page layout using 4 basic elements: [Container](../container), [Header](../header), [Aside](../aside) and [Footer](../footer). For more complex layouts, the [Grid](../grid) system can also be used.
 
 ## Examples of use
 

@@ -39,8 +39,8 @@ import DocsCards from '@components/global/DocsCards';
 <!-- Todo: Linky -->
 
 <DocsCards>
-  <a href="api/animation">
-    <wj-card className="Card-without-image" href="api/animation">
+  <a href="../api/animation">
+    <wj-card className="Card-without-image" href="../api/animation">
         <wj-card-header>
             <wj-icon name="bounce-right" size="large"></wj-icon>
             <wj-card-title>Animation</wj-card-title>
@@ -50,8 +50,8 @@ import DocsCards from '@components/global/DocsCards';
         </wj-card-content>
     </wj-card>
   </a>
-  <a href="api/avatar">
-    <wj-card className="Card-without-image" href="api/avatar">
+  <a href="../api/avatar">
+    <wj-card className="Card-without-image" href="../api/avatar">
         <wj-card-header>
             <wj-icon name="user" size="large"></wj-icon>
             <wj-card-title>Avatar</wj-card-title>
@@ -62,8 +62,8 @@ import DocsCards from '@components/global/DocsCards';
     </wj-card>
   </a>
 
-<a href="api/badge">
-<wj-card href="api/badge">
+<a href="../api/badge">
+<wj-card href="../api/badge">
   <wj-card-header>
       <wj-icon name="badge" size="large"></wj-icon>
       <wj-card-title>Badge</wj-card-title>
@@ -74,8 +74,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/breadcrumbs">
-<wj-card  href="api/breadcrumbs">
+<a href="../api/breadcrumbs">
+<wj-card  href="../api/breadcrumbs">
   <wj-card-header>
       <wj-icon name="badges" size="large" style={{transform: "rotate(270deg)"}} ></wj-icon>
       <wj-card-title>Breadcrumbs</wj-card-title>
@@ -86,8 +86,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/button">
-<wj-card href="api/button">
+<a href="../api/button">
+<wj-card href="../api/button">
   <wj-card-header>
       <wj-icon name="click" size="large"></wj-icon>
       <wj-card-title>Button</wj-card-title>
@@ -98,8 +98,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/card">
-<wj-card href="api/card">
+<a href="../api/card">
+<wj-card href="../api/card">
   <wj-card-header>
       <wj-icon name="credit-card" size="large"></wj-icon>
       <wj-card-title>Card</wj-card-title>
@@ -110,8 +110,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/checkbox">
-<wj-card href="api/checkbox">
+<a href="../api/checkbox">
+<wj-card href="../api/checkbox">
   <wj-card-header>
       <wj-icon name="checkbox" size="large"></wj-icon>
       <wj-card-title>Checkbox</wj-card-title>
@@ -122,8 +122,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/chip">
-<wj-card href="api/chip">
+<a href="../api/chip">
+<wj-card href="../api/chip">
   <wj-card-header>
       <wj-icon name="capsule-horizontal" size="large"></wj-icon>
       <wj-card-title>Chip</wj-card-title>
@@ -134,8 +134,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/color-picker">
-<wj-card href="api/color-picker">
+<a href="../api/color-picker">
+<wj-card href="../api/color-picker">
   <wj-card-header>
       <wj-icon name="color-picker" size="large"></wj-icon>
       <wj-card-title>Color picker</wj-card-title>
@@ -146,8 +146,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/copy-button">
-<wj-card href="api/copy-button">
+<a href="../api/copy-button">
+<wj-card href="../api/copy-button">
   <wj-card-header>
       <wj-icon name="copy" size="large"></wj-icon>
       <wj-card-title>Copy button</wj-card-title>
@@ -158,8 +158,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/dialog">
-<wj-card href="api/dialog">
+<a href="../api/dialog">
+<wj-card href="../api/dialog">
   <wj-card-header>
       <wj-icon name="window-maximize" size="large"></wj-icon>
       <wj-card-title>Dialog</wj-card-title>
@@ -170,8 +170,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/dropdown">
-<wj-card href="api/dropdown">
+<a href="../api/dropdown">
+<wj-card href="../api/dropdown">
   <wj-card-header>
       <wj-icon name="menu-deep" size="large" style={{transform: "rotate(180deg)"}}></wj-icon>
       <wj-card-title>Dropdown</wj-card-title>
@@ -181,8 +181,8 @@ import DocsCards from '@components/global/DocsCards';
   </wj-card-content>
 </wj-card>
 </a>
-  <a href="api/file-upload">
-    <wj-card className="Card-without-image" href="api/file-upload">
+  <a href="../api/file-upload">
+    <wj-card className="Card-without-image" href="../api/file-upload">
         <wj-card-header>
             <wj-icon name="file-upload" size="large"></wj-icon>
             <wj-card-title>File Upload</wj-card-title>
@@ -193,8 +193,8 @@ import DocsCards from '@components/global/DocsCards';
     </wj-card>
   </a>
 
-<a href="api/icon">
-<wj-card href="api/icon">
+<a href="../api/icon">
+<wj-card href="../api/icon">
   <wj-card-header>
       <wj-icon name="icons" size="large"></wj-icon>
       <wj-card-title>Icon</wj-card-title>
@@ -205,8 +205,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/icon-picker">
-<wj-card href="api/icon-picker">
+<a href="../api/icon-picker">
+<wj-card href="../api/icon-picker">
   <wj-card-header>
       <wj-icon name="icons" size="large"></wj-icon>
       <wj-card-title>Icon Picker</wj-card-title>
@@ -217,8 +217,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/img-comparer">
-<wj-card href="api/image-comparer">
+<a href="../api/img-comparer">
+<wj-card href="../api/image-comparer">
   <wj-card-header>
       <wj-icon name="photo-scan" size="large"></wj-icon>
       <wj-card-title>Image comparer</wj-card-title>
@@ -229,8 +229,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/grid">
-<wj-card href="api/grid">
+<a href="../api/grid">
+<wj-card href="../api/grid">
   <wj-card-header>
       <wj-icon name="grid-4x4" size="large"></wj-icon>
       <wj-card-title>Grid</wj-card-title>
@@ -241,8 +241,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/infinite-scroll">
-<wj-card href="api/infinite-scroll">
+<a href="../api/infinite-scroll">
+<wj-card href="../api/infinite-scroll">
   <wj-card-header>
       <wj-icon name="infinity" size="large"></wj-icon>
       <wj-card-title>Infinite Scroll</wj-card-title>
@@ -253,8 +253,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/input">
-<wj-card href="api/input">
+<a href="../api/input">
+<wj-card href="../api/input">
   <wj-card-header>
       <wj-icon name="input-check" size="large"></wj-icon>
       <wj-card-title>Input</wj-card-title>
@@ -265,8 +265,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/item">
-<wj-card href="api/item">
+<a href="../api/item">
+<wj-card href="../api/item">
   <wj-card-header>
       <wj-icon name="list" size="large"></wj-icon>
       <wj-card-title>Item</wj-card-title>
@@ -277,8 +277,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/list">
-<wj-card href="api/list">
+<a href="../api/list">
+<wj-card href="../api/list">
   <wj-card-header>
       <wj-icon name="list" size="large"></wj-icon>
       <wj-card-title>List</wj-card-title>
@@ -289,8 +289,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/masonry">
-<wj-card href="api/masonry">
+<a href="../api/masonry">
+<wj-card href="../api/masonry">
   <wj-card-header>
       <wj-icon name="layout-dashboard" size="large"></wj-icon>
       <wj-card-title>Masonry</wj-card-title>
@@ -301,8 +301,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/menu">
-<wj-card href="api/menu">
+<a href="../api/menu">
+<wj-card href="../api/menu">
   <wj-card-header>
       <wj-icon name="menu-2" size="large"></wj-icon>
       <wj-card-title>Menu</wj-card-title>
@@ -313,8 +313,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/progress-bar">
-<wj-card href="api/progress-bar">
+<a href="../api/progress-bar">
+<wj-card href="../api/progress-bar">
   <wj-card-header>
       <wj-icon name="progress" size="large"></wj-icon>
       <wj-card-title>Progress Bar</wj-card-title>
@@ -325,8 +325,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/radio">
-<wj-card href="api/menu">
+<a href="../api/radio">
+<wj-card href="../api/menu">
   <wj-card-header>
       <wj-icon name="circle-dot" size="large"></wj-icon>
       <wj-card-title>Radio</wj-card-title>
@@ -337,8 +337,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/select">
-<wj-card href="api/menu">
+<a href="../api/select">
+<wj-card href="../api/menu">
   <wj-card-header>
       <wj-icon name="select" size="large"></wj-icon>
       <wj-card-title>Select</wj-card-title>
@@ -349,8 +349,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/slider">
-<wj-card href="api/menu">
+<a href="../api/slider">
+<wj-card href="../api/menu">
   <wj-card-header>
       <wj-icon name="adjustments-horizontal" size="large"></wj-icon>
       <wj-card-title>Slider</wj-card-title>
@@ -361,20 +361,20 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/split-view">
-<wj-card href="api/menu">
+<a href="../api/split-view">
+<wj-card href="../api/menu">
   <wj-card-header>
       <wj-icon name="layout-columns" size="large"></wj-icon>
       <wj-card-title>SplitView</wj-card-title>
   </wj-card-header>
   <wj-card-content>
-  <p>Split view je komponent, ktorý umožňuje vytvoriť delené zobrazenie s dvoma alebo viacerými sekciami a posuvomupravovať ich veľkosť.</p>
+  <p>Split view je komponent, ktorý umožňuje vytvoriť delené zobrazenie s dvoma alebo viacerými sekciami a posuvom upravovať ich veľkosť.</p>
   </wj-card-content>
 </wj-card>
 </a>
 
-<a href="api/tab-group">
-<wj-card href="api/menu">
+<a href="../api/tab-group">
+<wj-card href="../api/menu">
   <wj-card-header>
       <wj-icon name="rectangle-rounded-bottom" size="large"></wj-icon>
       <wj-card-title>Tab Group</wj-card-title>
@@ -385,8 +385,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/toast">
-<wj-card href="api/menu">
+<a href="../api/toast">
+<wj-card href="../api/menu">
   <wj-card-header>
       <wj-icon name="message-2-up" size="large"></wj-icon>
       <wj-card-title>Toast</wj-card-title>
@@ -397,8 +397,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/toggle">
-<wj-card href="api/menu">
+<a href="../api/toggle">
+<wj-card href="../api/menu">
   <wj-card-header>
       <wj-icon name="toggle-left" size="large"></wj-icon>
       <wj-card-title>Toggle</wj-card-title>
@@ -409,8 +409,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/tooltip">
-<wj-card href="api/menu">
+<a href="../api/tooltip">
+<wj-card href="../api/menu">
   <wj-card-header>
       <wj-icon name="tooltip" size="large"></wj-icon>
       <wj-card-title>Tooltip</wj-card-title>
@@ -421,8 +421,8 @@ import DocsCards from '@components/global/DocsCards';
 </wj-card>
 </a>
 
-<a href="api/toolbar">
-<wj-card href="api/menu">
+<a href="../api/toolbar">
+<wj-card href="../api/menu">
   <wj-card-header>
       <wj-icon name="box-align-top" size="large"></wj-icon>
       <wj-card-title>Toolbar</wj-card-title>

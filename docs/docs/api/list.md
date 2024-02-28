@@ -10,13 +10,13 @@ import Slots from '@ionic-internal/component-api/v1/list/slots.md';
 
 <head>
   <title>List | Komponent zobrazenia zoznamu položiek</title>
-  <meta name="description" content="Komponent List (Zoznam) sa skladá z viacerých elementov [Item](./item) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Listy vo všeobecnosti obsahujú položky s rovnakým obsahom a zoskupujú ich do väčšieho celku." />
+  <meta name="description" content="Komponent List (Zoznam) sa skladá z viacerých elementov [Item](item) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Listy vo všeobecnosti obsahujú položky s rovnakým obsahom a zoskupujú ich do väčšieho celku." />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 
-Komponent **List** (Zoznam) sa skladá z viacerých elementov [Item](./item) (položiek) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Listy vo všeobecnosti obsahujú položky s rovnakým obsahom a zoskupujú ich do väčšieho celku.
+Komponent **List** (Zoznam) sa skladá z viacerých elementov [Item](../item) (položiek) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Listy vo všeobecnosti obsahujú položky s rovnakým obsahom a zoskupujú ich do väčšieho celku.
 
 ## Základné použitie
 

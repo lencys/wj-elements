@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/button-group/custom-pr
 import Slots from '@ionic-internal/component-api/v1/button-group/slots.md';
 
 
-  <title>ButtonGroup: Element pre zoskupovanie tlačidiel</title>
+  <title>ButtonGroup: element for grouping buttons</title>
   <meta name="description" content="ButtonGroup slúži na zoskupovanie elementov Button, ktoré budú po vložení do vnútra elementu automaticky naštýlované a usporiadané." />
 
 
@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="scoped" />
 
-ButtonGroup is used to group [Button](./button) and [Dropdown](./dropdown) elements into more functional units, which will be automatically styled and arranged when inserted inside the element.
+ButtonGroup is used to group [Button](../button) and [Dropdown](../dropdown) elements into more functional units, which will be automatically styled and arranged when inserted inside the element.
 
 ## Basic Usage
 

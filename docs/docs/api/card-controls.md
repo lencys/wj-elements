@@ -13,9 +13,9 @@ import Slots from '@ionic-internal/component-api/v1/card-controls/slots.md';
   <meta name="description" content="Tento element slúži na použitie v Card Header pre zobrazenie tlačidiel na vykonanie rôznych akcií súvisiacich s kartou." />
 </head>
 
-Tento element slúži na použitie v [Card Header.](./card-header) pre zobrazenie tlačidiel na vykonanie rôznych akcií súvisiacich s kartou.
+Tento element slúži na použitie v [Card Header.](../card-header) pre zobrazenie tlačidiel na vykonanie rôznych akcií súvisiacich s kartou.
 
-Pre viac informácií o použití Card Controls sa presuňte do dokumentácie elementu [Card Header.](./card-header).
+Pre viac informácií o použití Card Controls sa presuňte do dokumentácie elementu [Card Header.](../card-header).
 
 ## Atribúty a Vlastnosti
 

@@ -17,11 +17,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponent **Col** (stĺpec) je základným stavebným prvkom [Gridu](./grid) a umožňuje horizontálne rozmiestniť obsah a upraviť jeho usporiadanie na základe veľkosti obrazovky. Používa sa pridaním do vnútra [Row](./row) elementu.
+Komponent **Col** (stĺpec) je základným stavebným prvkom [Gridu](../grid) a umožňuje horizontálne rozmiestniť obsah a upraviť jeho usporiadanie na základe veľkosti obrazovky. Používa sa pridaním do vnútra [Row](../row) elementu.
 
 :::note Poznámka
 
-Pre viac informácií o použití **Col** sa presuňte do dokumentácie systému [**Grid**](./grid).
+Pre viac informácií o použití **Col** sa presuňte do dokumentácie systému [**Grid**](../grid).
 
 :::
 

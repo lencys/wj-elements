@@ -23,7 +23,7 @@ Breadcrumb displays one segment of the navigation path in the application and is
 
 :::note Note
 
-For more information on using Breadcrumbs, navigate to the [**Breadcrumbs**](./breadcrumbs) element documentation.
+For more information on using Breadcrumbs, navigate to the [**Breadcrumbs**](../breadcrumbs) element documentation.
 
 :::
 

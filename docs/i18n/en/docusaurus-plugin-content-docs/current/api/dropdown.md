@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Dropdown element is used to display the context menu after clicking the button. Allows the user to select one of the predefined options. It contains a [Button](./button) element that acts as an activator and a [Menu](./menu) element with content in the form of individual [MenuItem.](./menu-item) items.
+Dropdown element is used to display the context menu after clicking the button. Allows the user to select one of the predefined options. It contains a [Button](../button) element that acts as an activator and a [Menu](../menu) element with content in the form of individual [MenuItem.](../menu-item) items.
 
 ## Basic use
 

@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/format-digital/custom-
 import Slots from '@ionic-internal/component-api/v1/format-digital/slots.md';
 
 
-  <title>Format Digital | Formátovanie číselných hodnôt</title>
+  <title>Format Digital | Formatting numeric values</title>
   <meta name="description" content="Komponent FormatDigital je určený na formátovanie číselných hodnôt do ľudsky čitateľného digitálneho formátu s ohľadom na rôzne predpony jednotiek, ako sú kilo, mega, giga atď. Ponúka možnosti prispôsobenia jednotiek, štýlu zobrazenia jednotiek a podporuje lokalizáciu." />
 
 

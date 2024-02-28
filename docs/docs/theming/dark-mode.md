@@ -52,17 +52,13 @@ color-scheme: light dark;
 
 Viac informácií o `color-scheme` nájdete na adrese https://web.dev/color-scheme/.
 
-:::poznámka
-Vývojári, ktorí chcú prispôsobiť farbu motívu pod stavovým riadkom v Safari v systéme iOS 15 alebo panela nástrojov v Safari v systéme macOS, si môžu pozrieť [`theme-color` Meta](./advanced.md#theme-color-meta).
-:::
-
 ## WebJET Tmavý režim
 
 WebJET Elements má odporúčanú šablónu premenných, ktorú môžete použiť na vytvorenie tmavého režimu.
 
-Nasledujúci kód môžete skopírovať a vložiť do aplikácie, aby ste získali tmavú tému WebJET Elements. Triedu `dark` pridáme do body pomocou JavaScriptu, ako je uvedené v časti [kombinovanie s JavaScriptom](#combining-with-javascript). Tmavý režim nebude povolený, kým sa do body nepridá trieda `dark`.
+Nasledujúci kód môžete skopírovať a vložiť do aplikácie, aby ste získali tmavú tému WebJET Elements. Tmavý režim nebude povolený, kým sa do body nepridá trieda `dark`.
 
-:::poznámka
+:::note Poznámka
 Viac informácií o premenných, ktoré sa menia, vrátane ďalších premenných, ktoré možno pridať na ďalšie prispôsobenie, nájdete v časti [Šablóny](themes.md).
 :::
 

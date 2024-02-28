@@ -14,9 +14,9 @@ import Slots from '@ionic-internal/component-api/v1/card-controls/slots.md';
   <meta name="description" content="Tento element slúži na použitie v Card Header pre zobrazenie tlačidiel na vykonanie rôznych akcií súvisiacich s kartou." />
 
 
-This element is for use in [Card Header.](./card-header) to display buttons to perform various card-related actions.
+This element is for use in [Card Header.](../card-header) to display buttons to perform various card-related actions.
 
-For more information on using Card Controls, navigate to the [Card Header.](./card-header) element documentation.
+For more information on using Card Controls, navigate to the [Card Header.](../card-header) element documentation.
 
 ## Attributes and Properties
 

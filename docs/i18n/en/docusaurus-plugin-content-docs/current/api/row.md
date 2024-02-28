@@ -18,11 +18,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Row is the basic element of a responsive [Grid](./grid) system and serves as a horizontal container for arranging and aligning columns ([columns](./col)).
+Row is the basic element of a responsive [Grid](../grid) system and serves as a horizontal container for arranging and aligning columns ([columns](../col)).
 
 :::note Note
 
-For more information on using **Row**, navigate to the [**Grid**](./grid) system documentation.
+For more information on using **Row**, navigate to the [**Grid**](../grid) system documentation.
 
 :::
 

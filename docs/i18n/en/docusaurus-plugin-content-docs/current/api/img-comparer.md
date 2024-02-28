@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/image-comparer/custom-
 import Slots from '@ionic-internal/component-api/v1/image-comparer/slots.md';
 
 
-  <title>Image Comparer | Porovnávač obrázkov</title>
+  <title>Image Comparer | Image Comparer</title>
   <meta name="description" content="Element Image Comparer slúži na porovnanie dvoch obrázkov. Obrázky zobrazí na sebe a umožňuje odkrývať spodný obrázok pomocou vstavaného posuvníka." />
 
 

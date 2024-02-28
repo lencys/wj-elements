@@ -18,11 +18,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Aside is an element for creating layouts and is displayed next to the [Main](./main) element. It is mostly used to display additional information to the main content or navigation.
+Aside is a layout element and is displayed next to the [Main](../main) element. It is mostly used to display additional information to the main content or navigation.
 
 ## Basic Usage
 
-For information on using the **Aside** element, navigate to the [Layout](./layout) documentation.
+For information on using the **Aside** element, navigate to the [Layout](../layout) documentation.
 
 ## Attributes and Properties
 

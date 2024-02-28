@@ -18,9 +18,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The Option element represents the individual options within the [Select](./select) component. It is similar to the standard HTML select element and allows users to make one or more selections based on the configuration of the `select` component. These elements can be dynamically populated and are designed to work seamlessly with the wj-select component's own logic, including features such as multiple selection and custom styling.
+The Option element represents the individual options within the [Select](../select) component. It is similar to the standard HTML select element and allows users to make one or more selections based on the configuration of the `select` component. These elements can be dynamically populated and are designed to work seamlessly with the wj-select component's own logic, including features such as multiple selection and custom styling.
 
-For information on using Option, navigate to the [Select.](./select) element documentation.
+For information on using Option, navigate to the [Select.](../select) element documentation.
 
 ## Attributes and Properties
 

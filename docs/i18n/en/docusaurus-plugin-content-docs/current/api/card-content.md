@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 This element is for use in the tab to hold the primary contents of the tab.
 
-For more information on using Card Content, navigate to the [Card](./card) element documentation.
+For more information on using Card Content, navigate to the [Card](../card) element documentation.
 
 ## Attributes and Properties
 

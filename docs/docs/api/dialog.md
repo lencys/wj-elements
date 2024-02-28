@@ -22,7 +22,7 @@ Element Dialog zobrazuje dialógové okno s prispôsobiteľným obsahom. Je mož
 ## Základné použitie
 
 Na zobrazenie komponentu Dialog sa používa komponent Button s atribútom dialog.
-Pre viac informácii prejdite na stránku [Button](./button.md).
+Pre viac informácii prejdite na stránku [Button](button.md).
 
 import Basic from '@site/static/usage/v1/dialog/basic/index.md';
 

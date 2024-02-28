@@ -18,11 +18,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-MenuItem is a child of the [Menu.](./menu) element and represents a navigation item within it. It can display a submenu with additional navigation items and also allows icons to be displayed.
+MenuItem is a child of the [Menu.](../menu) element and represents a navigation item within it. It can display a submenu with additional navigation items and also allows icons to be displayed.
 
 ## Basic use
 
-For examples of using MenuItem, go to the documentation page for the [Menu.](./menu) element.
+For examples of using MenuItem, go to the documentation page for the [Menu.](../menu) element.
 
 ## Attributes and Properties
 

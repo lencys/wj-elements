@@ -19,7 +19,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Element Toolbar je flexibilný kontajner určený na zobrazovanie rôzneho obsahu organizovaným spôsobom, ktorý sa zvyčajne používa v hornej časti webových aplikácií alebo stránok. Môže obsahovať tlačidlá, navigáciu, pole vyhľadávania, a iné. Podporuje zarovnanie obsahu a tiež ho možno prilepiť k hornej časti obrazovky.
 
-Súčasťou Toolbar je element [ToolbarActions](./toolbar-actions), ktorý zoskupuje rôzne akcie v podobe tlačidiel do jedného celku.
+Súčasťou Toolbar je element [ToolbarActions](../toolbar-actions), ktorý zoskupuje rôzne akcie v podobe tlačidiel do jedného celku.
 
 ## Základné použitie
 

@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/progress-bar/custom-pr
 import Slots from '@ionic-internal/component-api/v1/progress-bar/slots.md';
 
 
-  <title>Progress Bar | Komponent na vizualizáciu priebehu</title>
+  <title>Progress Bar | Progress visualization component</title>
   <meta name="description" content="Progress Bar element je komponent navrhnutý na vizualizáciu priebehu. Ponúka možnosť vytvárať prispôsobiteľné kruhové alebo rovné ukazovatele s rôznymi možnosťami konfigurácie." />
 
 
@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Progress Bar element je komponent navrhnutý na vizualizáciu priebehu. Ponúka možnosť vytvárať prispôsobiteľné kruhové alebo rovné ukazovatele s rôznymi možnosťami konfigurácie.
+The Progress Bar element is a component designed to visualize progress. It offers the ability to create customizable circular or straight indicators with different configuration options.
 
 ## Basic Usage
 

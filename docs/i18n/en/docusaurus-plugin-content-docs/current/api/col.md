@@ -18,11 +18,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The **Col** (column) component is the basic building block of [Grid](./grid) and allows you to horizontally arrange content and adjust its layout based on the screen size. It is used by adding it to the inside of the [Row](./row) element.
+The **Col** (column) component is the basic building block of [Grid](../grid) and allows you to horizontally arrange content and adjust its layout based on the screen size. It is used by adding it inside the [Row](../row) element.
 
 :::note Note
 
-For more information on using **Col**, navigate to the [**Grid**](./grid) system documentation.
+For more information on using **Col**, navigate to the system documentation [**Grid**](../grid).
 
 :::
 

@@ -27,7 +27,7 @@ import Basic from '@site/static/usage/v1/thumbnail/basic/index.md';
 
 ## Použitie v Itemoch
 
-Pri použití v elementoch [Item.](./item) sa jeho veľkosť prispôsobí veľkosti rodiča a jeho pozíciu je možné určiť pridaním `slotu` s hodnotou `start` pre umiestnenie vľavo, alebo `end` pre umiestnenie vpravo.
+Pri použití v elementoch [Item.](../item) sa jeho veľkosť prispôsobí veľkosti rodiča a jeho pozíciu je možné určiť pridaním `slotu` s hodnotou `start` pre umiestnenie vľavo, alebo `end` pre umiestnenie vpravo.
 
 import Item from '@site/static/usage/v1/thumbnail/item/index.md';
 

@@ -19,7 +19,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Breadcrumbs is a component that displays the path a user has taken within an application or site. This element displays a hierarchical page layout in which each segment of the [**Breadcrumb**](./breadcrumb) path is a hyperlink, allowing a quick return to previous levels. Breadcrumbs may contain an icon.
+Breadcrumbs is a component that displays the path a user has taken within an application or site. This element displays a hierarchical page layout in which each segment of the [**Breadcrumb**](../breadcrumb) path is a hyperlink, allowing a quick return to previous levels. Breadcrumbs may contain an icon.
 
 ## Basic use
 

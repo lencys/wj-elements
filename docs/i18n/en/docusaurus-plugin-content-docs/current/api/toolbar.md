@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The Element Toolbar is a flexible container designed to display a variety of content in an organized manner, typically used at the top of web applications or pages. It may contain buttons, navigation, search box, and more. It supports content alignment and can also be glued to the top of the screen.
 
-Part of the Toolbar is the [ToolbarActions](./toolbar-actions) element, which groups various actions in the form of buttons into a single unit.
+Part of the Toolbar is the [ToolbarActions](../toolbar-actions) element, which groups different actions in the form of buttons into a single unit.
 
 ## Basic use
 

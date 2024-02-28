@@ -17,8 +17,8 @@ module.exports = {
           label: 'Responzívna mriežka',
           href: '/api/grid',
         },
-        'layout/global-stylesheets',
-        'layout/css-utilities',
+        // 'layout/global-stylesheets',
+        // 'layout/css-utilities',
       ],
     },
     {

@@ -10,11 +10,11 @@ title: CSS Shadow Parts
   />
 
 
-CSS Shadow Parts is a feature that allows developers to style specific parts of the <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM" target="_blank" rel="noopener noreferrer">Shadow DOM</a> . This is useful in the case of WebJET Elements built on <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank" rel="noopener noreferrer">Web Components</a>technology, where encapsulation would otherwise not allow the appearance of the internal parts of the elements to be modified.
+CSS Shadow Parts is a feature that allows developers to style specific parts of the <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM" target="_blank" rel="noopener noreferrer">Shadow DOM</a> . This is useful in the case of WebJET Elements built on <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank" rel="noopener noreferrer">Web Components</a> technology, where encapsulation would otherwise not allow the appearance of the internal parts of the elements to be modified.
 
 ## Benefits of Shadow parts
 
-Shadow Parts provide a way to expose specific elements within the Shadow DOM for styling purposes, while maintaining its benefits of encapsulation and isolation according to the <a href="https://w3c.github.io/webcomponents/spec/shadow/" target="_blank" rel="noopener noreferrer">Shadow DOM specification</a>. This avoids the risk of styles being transferred from components and inadvertently applied to other elements.
+Shadow Parts provide a way to expose specific elements within the Shadow DOM for styling purposes, while maintaining its benefits of encapsulation and isolation according to the <a href="https://www.w3.org/TR/css-shadow-parts-1/" target="_blank" rel="noopener noreferrer">Shadow DOM specification</a>. This avoids the risk of styles being transferred from components and inadvertently applied to other elements.
 
 <!-- :::note
 Ionic Framework components are **not all** Shadow DOM components. If the component is a Shadow DOM component, there will be a badge in the top right of its [component documentation](../components.md). An example of a Shadow DOM component is the [button component](../api/button.md).

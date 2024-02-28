@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The Grid system is a flexible way to create responsive layouts by dividing the screen into a grid of rows [Rows](./row) and columns [Cols](./col). Grid is based on flexbox with layout divided into 12 columns with 5 responsive breakpoints.
+The Grid system is a flexible way to create responsive layouts by dividing the screen into a grid of rows [Rows](../row) and columns [Cols](../col). Grid is based on flexbox with layout divided into 12 columns with 5 responsive breakpoints.
 
 ## Overview of functions
 

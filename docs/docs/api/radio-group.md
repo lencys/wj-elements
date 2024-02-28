@@ -17,7 +17,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-RadioGroup slúži ako kontajner pre skupinu [rádio](./radio) tlačidiel.
+RadioGroup slúži ako kontajner pre skupinu [radio](../radio) tlačidiel.
 Umožňuje používateľom vybrať jednu možnosť zo súboru možností, pričom sa zabezpečí, že v danom okamihu bude vybrané iba jedno rádiové tlačidlo v rámci skupiny. Komponent podporuje atribút `inline`, ktorý po nastavení usporiada rádiové tlačidlá v horizontálnom rozložení. Okrem toho programovo spravuje atribút `value`, ktorý reflektuje hodnotu práve vybraného rádiového tlačidla.
 
 ## Atribúty a Vlastnosti

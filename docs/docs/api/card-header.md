@@ -17,7 +17,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Element Card header je komponent navrhnutý pre použitie v kartách a slúži ako kontajner na umiestnenie príslušných nadpisov, ikon alebo iného obsahu, ktorý pomáha používateľovi rýchlo pochopiť kontext alebo účel hlavného obsahu karty.
 
-Pre viac informácií o použití Card Header sa presuňte do dokumentácie elementu [Card.](./card)
+Pre viac informácií o použití Card Header sa presuňte do dokumentácie elementu [Card.](../card)
 
 ## Atribúty a Vlastnosti
 

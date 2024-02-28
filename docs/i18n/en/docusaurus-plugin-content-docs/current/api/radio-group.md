@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The RadioGroup serves as a container for a group of [radio](./radio) buttons.
+RadioGroup serves as a container for a group of [radio](../radio) buttons.
 Allows users to select one option from a set of options, ensuring that only one radio button within a group is selected at any given time. The component supports the `inline` attribute, which, when set, arranges the radio buttons in a horizontal layout. In addition, it programmatically manages the `value` attribute, which reflects the value of the currently selected radio button.
 
 ## Attributes and Properties

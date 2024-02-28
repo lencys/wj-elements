@@ -13,7 +13,7 @@ import SteppedColorGenerator from '@components/page/theming/SteppedColorGenerato
   />
 
 
-WebJet Elements offers a number of global variables that can be used to modify the default theme throughout the application. The [Application Colors](#application-colors) are useful for changing the appearance of many WebJET components.
+WebJet Elements offers a number of global variables that can be used to modify the default template throughout the application. Application colors are useful for changing the appearance of many WebJET components.
 
 ## Application colours
 

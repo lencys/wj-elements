@@ -18,11 +18,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Aside je prvok na tvorbu layoutov a zobrazuje sa vedľa elementu [Main](./main). Používa sa väčšinou na zobrazenie doplnkových informácií k hlavnému obsahu, prípadne navigácie.
+Aside je prvok na tvorbu layoutov a zobrazuje sa vedľa elementu [Main](../main). Používa sa väčšinou na zobrazenie doplnkových informácií k hlavnému obsahu, prípadne navigácie.
 
 ## Príklady použitia
 
-Pre informácie o použítí **Aside** elementu sa presuňte do dokumentácie [Layoutu](./layout).
+Pre informácie o použítí **Aside** elementu sa presuňte do dokumentácie [Layoutu](../layout).
 
 ## Atribúty a Vlastnosti
 

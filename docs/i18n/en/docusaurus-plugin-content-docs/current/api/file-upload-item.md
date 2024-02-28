@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The FileUploadItem element represents an individual item (file) within the FileUpload component. Displays details such as file name, size, upload progress, and provides actions such as deleting the file. This component is intended to be used in the context of the FileUpload component.
 
-For more information on using FileUploadItem, navigate to the [FileUpload](./file-upload) element documentation
+For more information on using FileUploadItem, navigate to the documentation of the [FileUpload](../file-upload) element
 
 ## Basic use
 

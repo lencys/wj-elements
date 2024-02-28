@@ -19,18 +19,6 @@ Elements Framework ponúka rozsiahle možnosti prispôsobenia štýlov predovše
 
 Farebná paleta Elements sa skladá zo 7 predvolených farieb, ktoré si je možné jednoducho upraviť. Paleta je navrhnutá tak aby spĺňala aktuálne trendy a zároveň zabezpečovala prístupnosť. Používatelia si môžu prispôsobiť jej farby pomocou CSS premenných, čo im umožňuje zmeniť predvolené farby alebo pridať vlastné.
 
-[//]: # (<ColorPalette />)
-
-
-//Neutral color shades 
-contrast-lowest: #fff; 
-contrast-higher: #212121;
-
-//constant colors
-white: #fff;
-black: #000;
-
-
 ## CSS Premenné
 
 WJ elements používa pre svoje štýly <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables" target="_blank" rel="noopener noreferrer">Premenné CSS</a>, čo umožňuje dosiahnuť centralizovanú správu štýlov, dynamické prepínanie motívov, obmedziť množstvo kódu a zlepšiť jeho udržiavateľnosť. Viac o ich použití nájdete na [CSS Premenné](css-variables.md)

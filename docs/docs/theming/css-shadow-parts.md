@@ -14,7 +14,7 @@ CSS Shadow Parts je funkcia, ktorá umožňuje vývojárom štylizovať špecifi
 
 ## Výhody Shadow parts
 
-Shadow Parts poskytujú spôsob, ako vystaviť špecifické prvky v rámci Shadow DOM pre účely štylizácie, pričom sa zachovávajú jeho výhody zapuzdrenia a izolácie podľa <a href="https://w3c.github.io/webcomponents/spec/shadow/" target="_blank" rel="noopener noreferrer">Shadow DOM špecifikácie</a>. Tým pádom nehrozí prenos štýlov z komponentov a ich neúmyselnému použitiu na iné elementy.
+Shadow Parts poskytujú spôsob, ako vystaviť špecifické prvky v rámci Shadow DOM pre účely štylizácie, pričom sa zachovávajú jeho výhody zapuzdrenia a izolácie podľa <a href="https://www.w3.org/TR/css-shadow-parts-1/" target="_blank" rel="noopener noreferrer">Shadow DOM špecifikácie</a>. Tým pádom nehrozí prenos štýlov z komponentov a ich neúmyselnému použitiu na iné elementy.
 
 <!-- :::note
 Ionic Framework components are **not all** Shadow DOM components. If the component is a Shadow DOM component, there will be a badge in the top right of its [component documentation](../components.md). An example of a Shadow DOM component is the [button component](../api/button.md).
@@ -22,7 +22,7 @@ Ionic Framework components are **not all** Shadow DOM components. If the compone
 
 ## Použitie Shadow parts
 
-Pri použití Web komponentov so Shadow DOM, nie je možné zacieliť vnútorné časti komponenty pomocou CSS selektora. Ako sme si vysvetlili vyššie, všetko vo vnútri Shadow DOM je izolované od zbytku aplikácie. V príklade nižšie je zobrazené to, akým spôsobom je vykreslená komponenta `wj-select`. 
+Pri použití Web komponentov so Shadow DOM, nie je možné zacieliť vnútorné časti komponenty pomocou CSS selektora. Ako sme si vysvetlili vyššie, všetko vo vnútri Shadow DOM je izolované od zbytku aplikácie. V príklade nižšie je zobrazené to, akým spôsobom je vykreslená komponenta `wj-select`.
 
 ```html
 <wj-button>

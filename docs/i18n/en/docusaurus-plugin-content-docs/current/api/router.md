@@ -16,7 +16,7 @@ import Slots from '@ionic-internal/component-api/v1/router/slots.md';
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
-The Router component is a tool for navigating within web applications. This component supports complex navigation scenarios and lazy-load, enhancing application performance and user experience. It uses the other components [Router Link](./router-link.md), [Router Outlet](./router-outlet.md), and [Route](./route.md) to do this.
+The Router component is a tool for navigating within web applications. This component supports complex navigation scenarios and lazy-load, enhancing application performance and user experience. It uses the other components [Router Link](router-link.md), [Router Outlet](router-outlet.md), and [Route](route.md) to do this.
 
 In addition, it integrates seamlessly with WebJET Elements components, allowing you to easily implement navigation in your project.
 

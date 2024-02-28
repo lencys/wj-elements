@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-**Label** is an element used to add text content to components. Label can be used for example inside [Item](./item), [Card](./card) elements or also in [Badge](./badge) element and others.
+**Label** is an element used to add text content to components. Label can be used for example inside elements [Item](../item), [Card](../card) or also in element [Badge](../badge) and others.
 
 The position of the label inside the element can be inline, fixed, stacked or floating.
 

@@ -17,11 +17,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Row (Riadok) je základným prvkom responzívneho [Grid](./grid) systému a slúži ako horizontálny kontajner na usporiadanie a zarovnanie stĺpcov ([columns](./col)). 
+Row (Riadok) je základným prvkom responzívneho [Grid](../grid) systému a slúži ako horizontálny kontajner na usporiadanie a zarovnanie stĺpcov ([columns](../col)). 
 
 :::note Poznámka
 
-Pre viac informácií o použití **Row** sa presuňte do dokumentácie systému [**Grid**](./grid).
+Pre viac informácií o použití **Row** sa presuňte do dokumentácie systému [**Grid**](../grid).
 
 :::
 

@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The ToolbarActions element serves as a wrapper for the buttons inserted into the Toolbar element and thus groups the different toolbar actions into a single unit.
 
-For more information on using ToolbarActions, go to the [Toolbar](./toolbar) element documentation.
+For more information on using ToolbarActions, go to the [Toolbar](../toolbar) element documentation.
 
 ## Attributes and Properties
 

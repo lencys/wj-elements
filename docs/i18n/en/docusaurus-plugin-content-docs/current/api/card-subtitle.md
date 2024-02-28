@@ -18,9 +18,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The Card subtitle element is a component designed to be used within the [Card Header](./card-header) element to display additional or secondary text, providing the user with additional context or information related to the main content of the card.
+The Card subtitle element is a component designed to be used within the [Card Header](../card-header) element to display additional or secondary text, providing the user with additional context or information related to the main content of the card.
 
-For more information on using Card Subtitle, navigate to the [card](./card) element documentation.
+For more information on using Card Subtitle, navigate to the [card](../card) element documentation.
 
 ## Attributes and Properties
 

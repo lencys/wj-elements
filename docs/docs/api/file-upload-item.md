@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Element FileUploadItem predstavuje individuálnu položku (súbor) v rámci FileUpload komponentu. Zobrazuje podrobnosti, ako je názov súboru, veľkosť, priebeh nahrávania, a poskytuje akcie, ako je vymazanie súboru. Tento komponent je určený na použitie v kontexte FileUpload komponentu.
 
-Pre viac informácií o použití FileUploadItem sa presuňte do dokumentácie elementu [FileUpload](./file-upload)
+Pre viac informácií o použití FileUploadItem sa presuňte do dokumentácie elementu [FileUpload](../file-upload)
 
 
 ## Základné použitie

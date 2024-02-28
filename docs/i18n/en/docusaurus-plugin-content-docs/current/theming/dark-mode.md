@@ -52,17 +52,13 @@ color-scheme: light dark;
 
 For more information on `color-scheme`, please visit https\://web.dev/color-scheme/.
 
-:::poznámka
-Developers who want to customize the theme color under the status bar in Safari on iOS 15 or the toolbar in Safari on macOS can check out [`theme-color` Meta](./advanced.md#theme-color-meta).
-:::
-
 ## WebJET Dark Mode
 
 WebJET Elements has a recommended variable template that you can use to create a dark mode.
 
-You can copy and paste the following code into the app to get the WebJET Elements dark theme. Add the `dark` class to the body using JavaScript as described in [combining with JavaScript](#combining-with-javascript). Dark mode will not be enabled until the `dark` class is added to the body.
+You can copy and paste the following code into the app to get the WebJET Elements dark theme. Dark mode will not be enabled until the `dark` class is added to the body.
 
-:::poznámka
+:::note Note
 See [Templates](themes.md) for more information about variables that change, including additional variables that can be added for further customization.
 :::
 

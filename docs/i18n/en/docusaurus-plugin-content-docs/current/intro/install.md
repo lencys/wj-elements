@@ -8,7 +8,7 @@ sidebar_label: Installation
   <meta name="description" content="Zahrňte WebJET Elements do svojho projektu pomocou CDN alebo ho nainštalujte pomocou npm." />
 
 
-Include WebJET Elements in your project using [CDN](#install-s-cdn) or install it using [npm](#install-s-npm).
+Include WebJET Elements in your project using **CDN** or install it using **npm**.
 
 ## Installing with npm
 

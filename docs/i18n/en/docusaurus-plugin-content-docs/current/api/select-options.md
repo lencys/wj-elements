@@ -18,9 +18,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The Options element is intended for use inside the [Select](./select) element and is used to display a dynamically generated list of options that is asynchronously retrieved from the specified URL.
+The Options element is intended for use inside the [Select](../select) element and is used to display a dynamically generated list of options that is asynchronously retrieved from the specified URL.
 
-For more information on using Options, navigate to the [Select.](./select) element documentation.
+For more information on using Options, navigate to the [Select.](../select) element documentation.
 
 ## Attributes and Properties
 

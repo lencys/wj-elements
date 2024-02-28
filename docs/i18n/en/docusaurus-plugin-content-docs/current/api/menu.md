@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The menu element is used to display the navigation. It is hidden by default and is displayed by adding the `active` attribute, for example, when a button is clicked. It consists of [MenuItem.](./menu-item) elements.
+The menu element is used to display the navigation. It is hidden by default and is displayed by adding the `active` attribute, for example, when a button is clicked. It consists of [MenuItem.](../menu-item) elements.
 
 ## Basic use
 

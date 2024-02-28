@@ -15,23 +15,13 @@ sidebar_label: The Basics
 
 Elements Framework offers extensive options for customizing styles, primarily through CSS variables. This makes it easy to change the look and feel of the app to suit your needs. Elements components use CSS variables for most styles, making it easy to edit their default values. You can override these variables in your global stylesheet. In addition, it supports SASS, allowing for more advanced styling and theming options. Using the SASS variables and mixins provided by Elements, you can create custom templates, modify layouts, and define custom color schemes.
 
-## Paints
+## Colors
 
-The Elements colour palette consists of 7 preset colours that can be easily customised. The palette is designed to meet current trends while ensuring accessibility. Users can customize its colors using CSS variables, allowing them to change the default colors or add their own.
-
-[//]: # "<ColorPalette />"
-
-//Neutral color shades
-contrast-lowest: #fff;
-contrast-higher: #212121;
-
-//constant colors
-white: #fff;
-black: #000;
+The Elements color palette consists of 7 preset colors that can be easily customised. The palette is designed to meet current trends while ensuring accessibility. Users can customize its colors using CSS variables, allowing them to change the default colors or add their own.
 
 ## CSS Variables
 
-WJ elements uses <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables" target="_blank" rel="noopener noreferrer">CSS</a>variables for its styles, which allows you to achieve centralized style management, dynamic theme switching, reduce the amount of code, and improve maintainability. For more on their use, see [CSS Variables](css-variables.md)
+WJ elements uses <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables" target="_blank" rel="noopener noreferrer">CSS variables</a> for its styles, which allows you to achieve centralized style management, dynamic theme switching, reduce the amount of code, and improve maintainability. For more on their use, see [CSS Variables](css-variables.md)
 
 ## CSS Shadow Parts
 

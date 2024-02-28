@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The Card header element is a component designed for use in tabs and serves as a container for placing relevant headings, icons, or other content that helps the user quickly understand the context or purpose of the main content of the tab.
 
-For more information on using the Card Header, navigate to the [Card.](./card) element documentation
+For more information on using the Card Header, navigate to the [Card.](../card) element documentation.
 
 ## Attributes and Properties
 

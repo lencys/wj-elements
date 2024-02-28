@@ -28,7 +28,7 @@ import Basic from '@site/static/usage/v1/thumbnail/basic/index.md';
 
 ## Use in Items
 
-When used in [Item.](./item) elements, its size adjusts to the size of the parent, and its position can be determined by adding a `slot` with a value of `start` for left positioning, or `end` for right positioning.
+When used in [Item.](../item) elements, its size adjusts to the size of the parent, and its position can be specified by adding a `slot` with a value of `start` for left positioning, or `end` for right positioning.
 
 import Item from '@site/static/usage/v1/thumbnail/item/index.md';
 

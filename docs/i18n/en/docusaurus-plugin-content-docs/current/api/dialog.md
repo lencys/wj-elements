@@ -1,5 +1,5 @@
 ---
-title: Dialogue
+title: Dialog
 ---
 
 import Props from '@ionic-internal/component-api/v1/dialog/props.md';
@@ -23,7 +23,7 @@ The Dialog element displays a dialog box with customizable content. It can be us
 ## Basic use
 
 The Button component with the dialog attribute is used to display the Dialog component.
-For more information, go to [Button](./button.md).
+For more information, go to [Button](button.md).
 
 import Basic from '@site/static/usage/v1/dialog/basic/index.md';
 
