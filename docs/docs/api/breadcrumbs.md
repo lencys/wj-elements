@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Breadcrumbs je komponent, ktorý zobrazuje cestu, po ktorej používateľ prešiel v rámci aplikácie alebo webu. Tento element zobrazuje hierarchické usporiadanie stránok, v ktorom každý segment cesty [**Breadcrumb**](./breadcrumb) je hyperlink, umožňujúci rýchly návrat na predchádzajúce úrovne. Breadcrumbs môže obsahovať ikonu.
+Breadcrumbs je komponent, ktorý zobrazuje cestu, po ktorej používateľ prešiel v rámci aplikácie alebo webu. Tento element zobrazuje hierarchické usporiadanie stránok, v ktorom každý segment cesty [**Breadcrumb**](../breadcrumb) je hyperlink, umožňujúci rýchly návrat na predchádzajúce úrovne. Breadcrumbs môže obsahovať ikonu.
 
 ## Základné použitie
 

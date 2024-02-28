@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/tab/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/tab/slots.md';
 
 
-  <title>Tab |  Tlačidlo záložkovej navigácie</title>
+  <title>Tab | Tab navigation button</title>
   <meta name="description" content="Komponent Tab je podriadeným komponentom TabGroup a slúži ako tlačidlo navigácie založenej na záložkách. Používa sa v kombinácii s elementom TabPanel." />
 
 
@@ -18,19 +18,19 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponent `Tab` je podriadeným komponentom [TabGroup](tab-group.md) a slúži ako tlačidlo navigácie založenej na záložkách. Používa sa v kombinácii s elementom [TabPanel](tab-panel.md).
+The `Tab` component is a child of the [TabGroup](tab-group.md) component and serves as a tab-based navigation button. It is used in combination with the [TabPanel](tab-panel.md) element.
 
-Pre príklady použitia komponentu `Tab` prejdite na dokumentáciu [TabGroup](tab-group.md).
+For examples of using the `Tab` component, go to the [TabGroup](tab-group.md) documentation.
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -38,10 +38,10 @@ Pre príklady použitia komponentu `Tab` prejdite na dokumentáciu [TabGroup](ta
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

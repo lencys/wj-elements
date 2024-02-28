@@ -10,23 +10,23 @@ import CustomProps from '@ionic-internal/component-api/v1/card-title/custom-prop
 import Slots from '@ionic-internal/component-api/v1/card-title/slots.md';
 
 
-  <title>Card Title | Zobrazujúci názov karty</title>
+  <title>Card Title | Showing card title</title>
   <meta name="description" content="Element Card Title je komponent navrhnutý na použitie v rámci elementu Card Header a zobrazuje názov karty, čím používateľovi umožňuje rýchlo identifikovať jej predmet alebo obsah." />
 
 
-Element Card Title je komponent navrhnutý na použitie v rámci elementu [Card Header](./card-header) a zobrazuje názov karty, čím používateľovi umožňuje rýchlo identifikovať jej predmet alebo obsah.
+The Card Title element is a component designed for use within the [Card Header](../card-header) element and displays the title of the card, allowing the user to quickly identify its subject or contents.
 
-Pre viac informácií o použití Card Title sa presuňte do dokumentácie elementu [Card](./card)
+For more information on using Card Title, navigate to the [Card](../card) element documentation.
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -34,10 +34,10 @@ Pre viac informácií o použití Card Title sa presuňte do dokumentácie eleme
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

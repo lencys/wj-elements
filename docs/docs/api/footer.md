@@ -21,7 +21,7 @@ Footer je súčasťou elementov určených na tvorbu layoutov a zobrazuje sa v s
 
 ## Príklady použitia
 
-Pre informácie o použití **Footer** elementu sa presuňte do dokumentácie [Layoutu](./layout).
+Pre informácie o použití **Footer** elementu sa presuňte do dokumentácie [Layoutu](../layout).
 
 ## Atribúty a Vlastnosti
 

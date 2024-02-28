@@ -22,7 +22,7 @@ Breadcrumb zobrazuje jeden segment navigačnej cesty v aplikácii a je potomkom 
 
 :::note Poznámka
 
-Pre viac informácií o použítí Breadcrumbs sa presuňte do dokumentácie elementu [**Breadcrumbs**](./breadcrumbs).
+Pre viac informácií o použítí Breadcrumbs sa presuňte do dokumentácie elementu [**Breadcrumbs**](../breadcrumbs).
 
 :::
 

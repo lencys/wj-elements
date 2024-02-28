@@ -12,12 +12,12 @@ import Parts from '@ionic-internal/component-api/v1/route/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/route/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/route/slots.md';
 
-  <title>Route | API Route Komponent pre WebJET Elements</title>
+  <title>Route | API Route Component for WebJET Elements</title>
   <meta name="description" content="Komponenta Route vykreslí zvolený komponent keď sa hodnota v jeho vlastnosti `url` zhoduje s URL v prehliadači." />
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
-Komponenta Route vykreslí zvolený komponent keď sa hodnota v jeho vlastnosti `url` zhoduje s URL v prehliadači.
+The Route component renders the selected component when the value in its `url` property matches the URL in the browser.
 
 ## Navigation Hooks
 
@@ -34,15 +34,15 @@ interface NavigationHookOptions {
 }
 ```
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -50,10 +50,10 @@ interface NavigationHookOptions {
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

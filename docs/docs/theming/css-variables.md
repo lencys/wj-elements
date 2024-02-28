@@ -84,4 +84,4 @@ Elements ponúka premenné špecifické pre komponenty, ako napríklad --backgro
 
 ### Prispôsobenie aplikácie pomocou globálnych premenných
 
-Elements poskytuje aj globálne premenné na zjednodušenie tematizácie celej aplikácie. Tieto premenné pokrývajú celý rad dizajnových vlastnosti. Podrobný návod na ich používanie na tematizáciu nájdete v [Farmy](colors.md), [Témy](themes.md) and [Pokročilé úpravy štýlov](advanced.md).
+Elements poskytuje aj globálne premenné na zjednodušenie tematizácie celej aplikácie. Tieto premenné pokrývajú celý rad dizajnových vlastnosti. Podrobný návod na ich používanie na tematizáciu nájdete na stránkach [Farby](colors.md) a [Témy](themes.md).

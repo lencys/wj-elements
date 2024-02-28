@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/container/custom-props
 import Slots from '@ionic-internal/component-api/v1/container/slots.md';
 
 
-  <title>Container | Kľúčový prvok pre tvorbu layoutov</title>
+  <title>Container | Key element for creating layouts</title>
   <meta name="description" content="Container je kľúčový prvok Layoutu, ktorý sa používa na obalenie obsahu stránky. Je navrhnutý tak, aby poskytoval konzistentné rozstupy, odsadenia a zarovnania elementov, ktoré sa v ňom nachádzajú, a zabezpečoval tak správne zobrazenie a tiež prispôsobenie sa rôznym zariadeniam a veľkostiam obrazovky." />
 
 
@@ -18,17 +18,17 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Container je kľúčový prvok Layoutu, ktorý sa používa na obalenie obsahu stránky. Je navrhnutý tak, aby poskytoval konzistentné rozstupy, odsadenia a zarovnania elementov, ktoré sa v ňom nachádzajú, a zabezpečoval tak správne zobrazenie a tiež prispôsobenie sa rôznym zariadeniam a veľkostiam obrazovky. Pre informácie o použití **Container** elementu sa presuňte do dokumentácie [Layoutu](./layout).
+Container is a key Layout element that is used to wrap the content of a page. It is designed to provide consistent spacing, offsets and alignment of the elements within it to ensure proper display and also to adapt to different devices and screen sizes. For information on using the **Container** element, navigate to the [Layout](../layout) documentation.
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -36,10 +36,10 @@ Container je kľúčový prvok Layoutu, ktorý sa používa na obalenie obsahu s
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/copy-button/custom-pro
 import Slots from '@ionic-internal/component-api/v1/copy-button/slots.md';
 
 
-  <title>Copy button | Skopírovanie do clipboardu na jeden klik</title>
+  <title>Copy button | Copy to clipboard in one click</title>
   <meta name="description" content="Copy button umožňuje jedným kliknutím skopírovať obsah do clipboardu. Podporované sú `input`, `textarea`, `wj-input`, `wj-label` a `a` element. " />
 
 
@@ -18,9 +18,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Copy button umožňuje jedným kliknutím skopírovať želaný obsah do clipboardu. Podporované sú `input`, `textarea`, `wj-input`, `wj-label` a `a` element.
+The Copy button allows you to copy the desired content to the clipboard with one click. Supported elements are `input`, `textarea`, `wj-input`, `wj-label` and `a` element.
 
-## Základné použitie
+## Basic Usage
 
 import Basic from '@site/static/usage/v1/copy-button/basic/index.md';
 
@@ -28,7 +28,7 @@ import Basic from '@site/static/usage/v1/copy-button/basic/index.md';
 
 ## Custom label
 
-Pridaním vlastnosti `label` a `label-success` zmeníte text tooltipu po skopírovaní hodnoty.
+Adding the `label` and `label-success` properties will change the tooltip text after copying the value.
 
 import CustomLabel from '@site/static/usage/v1/copy-button/custom-label/index.md';
 
@@ -58,15 +58,15 @@ import Hyperlink from '@site/static/usage/v1/copy-button/hyperlink/index.md';
 
 <Hyperlink />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -74,10 +74,10 @@ import Hyperlink from '@site/static/usage/v1/copy-button/hyperlink/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

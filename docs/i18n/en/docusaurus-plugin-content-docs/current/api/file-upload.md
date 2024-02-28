@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/file-upload/custom-pro
 import Slots from '@ionic-internal/component-api/v1/file-upload/slots.md';
 
 
-  <title>FileUpload | Nahrávanie súborov pre webové aplikácie</title>
+  <title>FileUpload | File Upload for Web Apps</title>
   <meta name="description" content="Komponent FileUpload poskytuje univerzálnu funkciu nahrávania súborov pre webové aplikácie. Podporuje prispôsobiteľné atribúty, ako sú povolené typy súborov, veľkosť častí alebo tiež maximálnu veľkosť súboru, spolu s metódami drag-and-drop a tradičným výberom súborov." />
 
 
@@ -18,29 +18,29 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponent FileUpload poskytuje univerzálnu funkciu nahrávania súborov pre webové aplikácie. Podporuje prispôsobiteľné atribúty, ako sú povolené typy súborov, veľkosť častí alebo tiež maximálnu veľkosť súboru, spolu s metódami drag-and-drop a tradičným výberom súborov.
+The FileUpload component provides a universal file upload function for web applications. It supports customizable attributes such as allowed file types, part size or also maximum file size, along with drag-and-drop methods and traditional file selection.
 
-## Základné použitie
+## Basic Usage
 
 import Basic from '@site/static/usage/v1/file-upload/basic/index.md';
 
 <Basic />
 
-## Ikona
+## Icon
 
 import Icon from '@site/static/usage/v1/file-upload/icon/index.md';
 
 <Icon />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -48,10 +48,10 @@ import Icon from '@site/static/usage/v1/file-upload/icon/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/file-upload-item/custo
 import Slots from '@ionic-internal/component-api/v1/file-upload-item/slots.md';
 
 
-  <title>FileUploadItem | Položka (súbor) v rámci FileUpload komponentu</title>
+  <title>FileUploadItem | Item (file) within the FileUpload component</title>
   <meta name="description" content="Element FileUploadItem predstavuje individuálnu položku (súbor) v rámci FileUpload komponentu. Zobrazuje podrobnosti, ako je názov súboru, veľkosť, priebeh nahrávania, a poskytuje akcie, ako je vymazanie súboru. Tento komponent je určený na použitie v kontexte FileUpload komponentu." />
 
 
@@ -18,31 +18,31 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element FileUploadItem predstavuje individuálnu položku (súbor) v rámci FileUpload komponentu. Zobrazuje podrobnosti, ako je názov súboru, veľkosť, priebeh nahrávania, a poskytuje akcie, ako je vymazanie súboru. Tento komponent je určený na použitie v kontexte FileUpload komponentu.
+The FileUploadItem element represents an individual item (file) within the FileUpload component. Displays details such as file name, size, upload progress, and provides actions such as deleting the file. This component is intended to be used in the context of the FileUpload component.
 
-Pre viac informácií o použití FileUploadItem sa presuňte do dokumentácie elementu [FileUpload](./file-upload)
+For more information on using FileUploadItem, navigate to the documentation of the [FileUpload](../file-upload) element
 
-## Základné použitie
+## Basic Usage
 
 import Basic from '@site/static/usage/v1/file-upload-item/basic/index.md';
 
 <Basic />
 
-## S obrázkom
+## With picture
 
 import Icon from '@site/static/usage/v1/file-upload-item/image/index.md';
 
 <Icon />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -50,10 +50,10 @@ import Icon from '@site/static/usage/v1/file-upload-item/image/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Router link komponenta slúži ako prispôsobiteľný link navrhnutý na použitie v navigácii naprieč aplikáciou. 
 
-Pre viac informácií o použití Router Link prejdite na stránku [Router](./router) v dokumentácii.
+Pre viac informácií o použití Router Link prejdite na stránku [Router](../router) v dokumentácii.
 
 ## Atribúty a Vlastnosti
 

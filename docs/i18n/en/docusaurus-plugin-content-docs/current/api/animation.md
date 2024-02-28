@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/animation/custom-props
 import Slots from '@ionic-internal/component-api/v1/animation/slots.md';
 
 
-  <title>Animation: Integrácia animácií do webových aplikácií</title>
+  <title>Animation: integrating animations into web applications</title>
   <meta name="description" content="Element Animation ponúka integráciu animácií do webových aplikácií čím umožňuje vytváranie pútavých používateľských rozhraní. Poskytuje možnosti prispôsobenia v podobe oneskorenia, trvania alebo napríklad tiež počtu opakovaní animácií. " />
 
 
@@ -18,23 +18,23 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element Animation ponúka integráciu animácií do webových aplikácií čím zjednodušuje vytváranie pútavých používateľských rozhraní. Poskytuje možnosti prispôsobenia v podobe oneskorenia, trvania alebo napríklad tiež počtu opakovaní animácií.
+Element Animation offers animation integration into web applications, making it easy to create engaging user interfaces. It provides customisation options in the form of delay, duration or, for example, the number of animation repeats.
 
-## Základné použitie
+## Basic usage
 
 import Basic from '@site/static/usage/v1/animation/basic/index.md';
 
 <Basic />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -42,10 +42,10 @@ import Basic from '@site/static/usage/v1/animation/basic/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

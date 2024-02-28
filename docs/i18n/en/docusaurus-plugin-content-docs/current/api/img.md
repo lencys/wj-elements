@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/image/custom-props.md'
 import Slots from '@ionic-internal/component-api/v1/image/slots.md';
 
 
-  <title>Image Element | Element pre zobrazovanie obrázkov</title>
+  <title>Image Element | Image Display Element</title>
   <meta name="description" content="Element Image pridáva obrázkom funkciu lazyload a počas načítavania zobrazuje zástupnú ikonu (placeholder) v podobe animovaného obrázka." />
 
 
@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element Image pridáva obrázkom funkciu lazyload a počas načítavania zobrazuje zástupnú ikonu (placeholder) v podobe animovaného obrázka.
+The Image element adds a lazyload function to images and displays a placeholder icon in the form of an animated image during loading.
 
 ## Basic Usage
 
@@ -26,15 +26,15 @@ import Basic from '@site/static/usage/v1/img/basic/index.md';
 
 <Basic />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -42,10 +42,10 @@ import Basic from '@site/static/usage/v1/img/basic/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

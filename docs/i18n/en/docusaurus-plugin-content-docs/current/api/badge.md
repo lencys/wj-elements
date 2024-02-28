@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/badge/custom-props.md'
 import Slots from '@ionic-internal/component-api/v1/badge/slots.md';
 
 
-  <title>Badge | Odznaky</title>
+  <title>Badge | Badges</title>
   <meta name="description" content="Badge sú inline-block elementy, ktoré majú informatívny charakter a zvyčajne sa zobrazujú v blízkosti iného elementu. Používajú sa ako upozornenie, že k elementu sú priradené ďalšie elementy, a informujú používateľa o ich počte." />
 
 
@@ -18,33 +18,33 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Badge sú inline-block elementy, ktoré majú informatívny charakter a zvyčajne sa zobrazujú v blízkosti iného elementu. Používajú sa ako upozornenie, že k elementu sú priradené ďalšie elementy, a informujú používateľa o ich počte.
+Badges are inline-block elements that are informative and usually appear near another element. They are used as a notification that there are other elements associated with the element and inform the user of their number.
 
-## Použitie
+## Basic usage
 
-Ak chcete použiť komponent Badge, zahrňte ho do HTML s požadovanými atribútmi.
+To use the Badge component, include it in the HTML with the required attributes.
 
 import Basic from '@site/static/usage/v1/badge/basic/index.md';
 
 <Basic />
 
-## Úprava štýlov
+## Theming
 
-### Farby
+### Colors
 
 import Colors from '@site/static/usage/v1/badge/theming/colors/index.md';
 
 <Colors />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -52,10 +52,10 @@ import Colors from '@site/static/usage/v1/badge/theming/colors/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

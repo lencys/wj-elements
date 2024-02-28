@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/select-option/custom-p
 import Slots from '@ionic-internal/component-api/v1/select-option/slots.md';
 
 
-  <title>Option | jednotlivé voliteľné možnosti v rámci komponentu Select</title>
+  <title>Option | individual options within the Select component</title>
   <meta name="description" content="Element Option predstavuje jednotlivé voliteľné možnosti v rámci komponentu Select. Je obdobný štandardnému elementu HTML select a umožňuje používateľom vykonať jeden alebo viacero výberov na základe konfigurácie komponentu Select." />
 
 
@@ -18,19 +18,19 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element Option predstavuje jednotlivé voliteľné možnosti v rámci komponentu [Select](./select). Je obdobný štandardnému elementu HTML select a umožňuje používateľom vykonať jeden alebo viacero výberov na základe konfigurácie komponentu `select`. Tieto elementy sa môžu dynamicky napĺňať a sú navrhnuté tak, aby bezproblémovo spolupracovali s vlastnou logikou komponentu wj-select vrátane funkcií, ako je viacnásobný výber a vlastné štylizovanie.
+The Option element represents the individual options within the [Select](../select) component. It is similar to the standard HTML select element and allows users to make one or more selections based on the configuration of the `select` component. These elements can be dynamically populated and are designed to work seamlessly with the wj-select component's own logic, including features such as multiple selection and custom styling.
 
-Pre informácie o použití Option sa presuňte do dokumentácie elementu [Select.](./select)
+For information on using Option, navigate to the [Select.](../select) element documentation.
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -38,10 +38,10 @@ Pre informácie o použití Option sa presuňte do dokumentácie elementu [Selec
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

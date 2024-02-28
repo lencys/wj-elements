@@ -1,6 +1,7 @@
 ---
-title: "Progress bar"
+title: Progress bar
 ---
+
 import Props from '@ionic-internal/component-api/v1/progress-bar/props.md';
 import Events from '@ionic-internal/component-api/v1/progress-bar/events.md';
 import Methods from '@ionic-internal/component-api/v1/progress-bar/methods.md';
@@ -8,20 +9,20 @@ import Parts from '@ionic-internal/component-api/v1/progress-bar/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/progress-bar/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/progress-bar/slots.md';
 
-<head>
-  <title>Progress Bar | Komponent na vizualizáciu priebehu</title>
+
+  <title>Progress Bar | Progress visualization component</title>
   <meta name="description" content="Progress Bar element je komponent navrhnutý na vizualizáciu priebehu. Ponúka možnosť vytvárať prispôsobiteľné kruhové alebo rovné ukazovatele s rôznymi možnosťami konfigurácie." />
-</head>
+
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Progress Bar element je komponent navrhnutý na vizualizáciu priebehu. Ponúka možnosť vytvárať prispôsobiteľné kruhové alebo rovné ukazovatele s rôznymi možnosťami konfigurácie. 
+The Progress Bar element is a component designed to visualize progress. It offers the ability to create customizable circular or straight indicators with different configuration options.
 
-## Základné použitie
+## Basic Usage
 
-Pre použitie komponentu Progress Bar, ho zahrňte do HTML s požadovanými atribútmi. Atribút progress nastaví percentuálnu hodnotu priebehu v progress bare.
+To use the Progress Bar component, include it in the HTML with the required attributes. The progress attribute sets the percentage value of the progress in the progress bar.
 
 import Basic from '@site/static/usage/v1/progress-bar/basic/index.md';
 
@@ -29,8 +30,7 @@ import Basic from '@site/static/usage/v1/progress-bar/basic/index.md';
 
 ## Type
 
-Podporované sú dva typy progress barov. Pridaním vlastnosti `type` s hodnotou `“circle”` zobrazíte progress bar s okrúhlym dizajnom. 
-
+Two types of progress bars are supported. Add the `type` property with the value `"circle"` to display a progress bar with a circular design.
 
 import Type from '@site/static/usage/v1/progress-bar/type/index.md';
 
@@ -38,7 +38,7 @@ import Type from '@site/static/usage/v1/progress-bar/type/index.md';
 
 ## Label
 
-Pre zobrazenie popisiek pri progress bare je potrebné vložiť do jeho vnútra `Label` element a definovať  mu pozíciu pridaním atribútu `slot` s hodnotou `"start"` alebo `"end"`. 
+To display labels at the progress bar, it is necessary to insert a `Label` element inside it and define its position by adding the `slot` attribute with the value `"start"` or `"end"`.
 
 import Label from '@site/static/usage/v1/progress-bar/label/index.md';
 
@@ -46,16 +46,15 @@ import Label from '@site/static/usage/v1/progress-bar/label/index.md';
 
 ## Linecap
 
-Pridaním vlastnosti `linecap` s hodnotou `“round”` zobrazíte ukazovateľ priebehu so zaobleným koncom.
+Add the `linecap` property with the value `"round"` to display a progress bar with a rounded end.
 
 import Linecap from '@site/static/usage/v1/progress-bar/linecap/index.md';
 
 <Linecap />
 
-
 ## Radius
 
-Atribút radius určí priemer okrúhleho progress baru.
+The radius attribute determines the diameter of the round progress bar.
 
 import Radius from '@site/static/usage/v1/progress-bar/radius/index.md';
 
@@ -63,39 +62,37 @@ import Radius from '@site/static/usage/v1/progress-bar/radius/index.md';
 
 ## Stroke
 
-Atribút stroke definuje šírku progress baru v pixeloch.
-
+The stroke attribute defines the width of the progress bar in pixels.
 
 import Stroke from '@site/static/usage/v1/progress-bar/stroke/index.md';
 
 <Stroke />
 
+## Progress bar with picture
 
-## Progress bar s obrázkom
-
-Pre zobrazenie obrázku vo vnútri elementu, je potrebné obrázok zaobaliť do progress bar elementu.
+To display an image inside an element, you need to wrap the image in the progress bar of the element.
 
 import Images from '@site/static/usage/v1/progress-bar/image/index.md';
 
 <Images />
 
-## Farebné varianty progress baru
+## Colour variants of the progress bar
 
-Vlastnosť `color` upravuje farbu elementu. V predvolenom nastavení má element farbu `dark`. Nastavením tejto hodnoty sa farba elementu zmení na jednu z farieb prednastavenej farebnej palety.
+The `color` property modifies the color of the element. By default, the element has the color `dark`. Setting this value changes the element color to one of the colors of the preset color palette.
 
 import Colors from '@site/static/usage/v1/progress-bar/colors/index.md';
 
 <Colors />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -103,10 +100,10 @@ import Colors from '@site/static/usage/v1/progress-bar/colors/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

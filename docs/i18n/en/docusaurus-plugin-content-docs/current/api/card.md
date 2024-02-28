@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/card/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/card/slots.md';
 
 
-  <title>Card | Kontajner formátu karty</title>
+  <title>Card | Card format container</title>
   <meta name="description" content="Element Card je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky Card Header, hlavnej časti Card Content a pätičky CardFooter." />
 
 
@@ -18,9 +18,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element **Card** je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky [CardHeader](./card-header) a hlavnej časti [CardContent](./card-content).
+The **Card** element is a flexible and expandable card format container. It allows you to display a wide range of content and consists of a header [CardHeader](../card-header) and a main section [CardContent](../card-content).
 
-## Základné použitie
+## Basic Usage
 
 import Basic from '@site/static/usage/v1/card/basic/index.md';
 
@@ -28,35 +28,35 @@ import Basic from '@site/static/usage/v1/card/basic/index.md';
 
 ## Separator
 
-Vlastnosť separator slúži na zobrazenie horizontálneho oddeľovača v elemente Card Header.
+The separator property is used to display a horizontal separator in the Card Header element.
 
 import Separator from '@site/static/usage/v1/card/separator/index.md';
 
 <Separator />
 
-## Karta s obrázkom
+## Card with picture
 
 import Media from '@site/static/usage/v1/card/media/index.md';
 
 <Media />
 
-## Karta so zoznamom
+## Card with list
 
 import List from '@site/static/usage/v1/card/list/index.md';
 
 <List />
 
-## Úprava štýlov
+## Editing styles
 
-### Prednastavené farebné varianty elementu Card
+### Preset colour variants of the element Card
 
-Vlastnosť `color` upravuje farbu pozadia a okraja karty. Nastavením tejto hodnoty sa farba tlačidla zmení na jednu z farieb prednastavenej farebnej palety.  V predvolenom nastavení má element pozadie `primary`.
+The `color` property adjusts the background and border color of the card. Setting this value will change the button color to one of the colors in the preset color palette.  By default, the element has a `primary` background.
 
 import Colors from '@site/static/usage/v1/card/theming/colors/index.md';
 
 <Colors />
 
-### CSS Custom Vlastnosti
+### CSS Custom Properties
 
 import CssProperties from '@site/static/usage/v1/card/theming/css-properties/index.md';
 
@@ -87,15 +87,15 @@ import CssProperties from '@site/static/usage/v1/card/theming/css-properties/ind
 </style>
 ```
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -103,10 +103,10 @@ import CssProperties from '@site/static/usage/v1/card/theming/css-properties/ind
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

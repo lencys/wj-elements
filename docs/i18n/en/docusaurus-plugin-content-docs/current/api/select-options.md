@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/select-options/custom-
 import Slots from '@ionic-internal/component-api/v1/select-options/slots.md';
 
 
-  <title>Options | jednotlivé voliteľné možnosti v rámci komponentu Select</title>
+  <title>Options | individual options within the Select component</title>
   <meta name="description" content="Element Options je určený na použití vo vnútri elementu [Select](./select) a slúži na zobrazovanie dynamicky generovaného zoznamu možností, ktorý sa asynchrónne načíta zo zadanej URL adresy." />
 
 
@@ -18,19 +18,19 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element Options je určený na použitie vo vnútri elementu [Select](./select) a slúži na zobrazovanie dynamicky generovaného zoznamu možností, ktorý sa asynchrónne načíta zo zadanej URL adresy.
+The Options element is intended for use inside the [Select](../select) element and is used to display a dynamically generated list of options that is asynchronously retrieved from the specified URL.
 
-Pre viac informácií o použití Options sa presuňte do dokumentácie elementu [Select.](./select)
+For more information on using Options, navigate to the [Select.](../select) element documentation.
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -38,10 +38,10 @@ Pre viac informácií o použití Options sa presuňte do dokumentácie elementu
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

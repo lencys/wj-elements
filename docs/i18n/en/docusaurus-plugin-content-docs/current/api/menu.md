@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/menu/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/menu/slots.md';
 
 
-  <title>Menu | Element pre zobrazenie menu</title>
+  <title>Menu | Element to display the menu</title>
   <meta name="description" content="Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo." />
 
 
@@ -18,9 +18,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo. Skladá sa z elementov [MenuItem.](./menu-item).
+The menu element is used to display the navigation. It is hidden by default and is displayed by adding the `active` attribute, for example, when a button is clicked. It consists of [MenuItem.](../menu-item) elements.
 
-## Základné použitie
+## Basic Usage
 
 import BasicUsage from '@site/static/usage/v1/menu/basic/index.md';
 
@@ -40,15 +40,15 @@ import Inset from '@site/static/usage/v1/menu/inset/index.md';
 
 </div>
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -56,10 +56,10 @@ import Inset from '@site/static/usage/v1/menu/inset/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

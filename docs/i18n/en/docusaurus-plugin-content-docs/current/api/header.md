@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/header/custom-props.md
 import Slots from '@ionic-internal/component-api/v1/header/slots.md';
 
 
-  <title>Header | Element určený na tvorbu layoutov</title>
+  <title>Header | Element for creating layouts</title>
   <meta name="description" content="Header je súčasťou elementov určených na tvorbu layoutov a zobrazuje sa v hornej časti. Používa sa väčšinou na zobrazenie navigácie, loga a pod." />
 
 
@@ -18,21 +18,21 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Header je súčasťou elementov určených na tvorbu layoutov a zobrazuje sa v hornej časti. Používa sa väčšinou na zobrazenie navigácie, loga a pod.
+The header is part of the layout elements and is displayed at the top. It is mostly used to display navigation, logos, etc.
 
-## Príklady použitia
+## Examples of use
 
-Pre informácie o použití **Header** elementu sa presuňte do dokumentácie [Layoutu](./layout).
+For information on using the **Header** element, navigate to the [Layout](../layout) documentation.
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -40,10 +40,10 @@ Pre informácie o použití **Header** elementu sa presuňte do dokumentácie [L
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

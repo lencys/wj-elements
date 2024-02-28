@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/textarea/custom-props.
 import Slots from '@ionic-internal/component-api/v1/textarea/slots.md';
 
 
-  <title>Textarea  |  Element textarea rozšírený o nové funkcie</title>
+  <title>Textarea | Textarea element extended with new functions</title>
   <meta name="description" content="Textarea rozširuje možnosti štandardného HTML textarea elementu. Pridáva štýly pre dosiahnutie vizuálne konzistentného používateľského rozhrania a ponúka nové funkcie." />
 
 
@@ -18,9 +18,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="scoped" />
 
-Textarea rozširuje možnosti štandardného HTML `textarea` elementu. Pridáva štýly pre dosiahnutie vizuálne konzistentného používateľského rozhrania a ponúka funkcie ako napríklad auto-height - prispôsobenie výšky elementu vloženému textu, alebo tiež počítadlo vložených znakov.
+Textarea extends the capabilities of the standard HTML `textarea` element. It adds styles to achieve a visually consistent user interface and offers features such as auto-height - adjusting the height of an element to the inserted text, or also a counter for inserted characters.
 
-## Základné použitie
+## Basic Usage
 
 import BasicPlayground from '@site/static/usage/v1/textarea/basic/index.md';
 
@@ -28,7 +28,7 @@ import BasicPlayground from '@site/static/usage/v1/textarea/basic/index.md';
 
 ## Standard
 
-Pridaním atribútu `standard` sa zobrazí textarea v štýle štandardného HTML textarea elementu.
+Adding the `standard` attribute will display a textarea in the style of the standard HTML textarea element.
 
 import Standard from '@site/static/usage/v1/textarea/standard/index.md';
 
@@ -36,7 +36,7 @@ import Standard from '@site/static/usage/v1/textarea/standard/index.md';
 
 ## Counter
 
-Pridaním atribútu `counter` sa pod textareou zobrazí počítadlo zobrazujúce počet vložených znakov a ich maximálny povolený počet. Je potrebné použitie v kombinácii s vlastnosťou `max-length`. V opačnom prípade bude maximálny povolený počet nastavený na `1000`.
+Adding the `counter` attribute will display a counter below the textarea showing the number of characters inserted and the maximum number of characters allowed. It is to be used in combination with the `max-length` property. Otherwise, the maximum number allowed will be set to `1000`.
 
 import Counter from '@site/static/usage/v1/textarea/counter/index.md';
 
@@ -44,7 +44,7 @@ import Counter from '@site/static/usage/v1/textarea/counter/index.md';
 
 ## Resize (none)
 
-Vlastnosť `resize` určuje správanie zmeny veľkosti elementu. Ak je nastavená na hodnotu `none`, veľkosť poľa zostane fixná.
+The `resize` property specifies the behavior of element resizing. If set to `none`, the field size remains fixed.
 
 import Resize from '@site/static/usage/v1/textarea/resize/index.md';
 
@@ -52,7 +52,7 @@ import Resize from '@site/static/usage/v1/textarea/resize/index.md';
 
 ## Resize (auto)
 
-Ak je vlastnosť `resize` nastavená na hodnotu `auto`, automaticky sa prispôsobí veľkosť elementu vloženému obsahu.
+If the `resize` property is set to `auto`, the size of the element is automatically adjusted to the inserted content.
 
 import AutoHeight from '@site/static/usage/v1/textarea/auto-height/index.md';
 
@@ -60,21 +60,21 @@ import AutoHeight from '@site/static/usage/v1/textarea/auto-height/index.md';
 
 ## Disabled
 
-Pri vloženom atribúte `disabled` do elementu textarea nebude možné písať.
+When the `disabled` attribute is inserted into the textarea element, it will not be possible to write.
 
 import Disabled from '@site/static/usage/v1/textarea/disabled/index.md';
 
 <Disabled />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -82,10 +82,10 @@ import Disabled from '@site/static/usage/v1/textarea/disabled/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

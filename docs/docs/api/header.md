@@ -21,7 +21,7 @@ Header je súčasťou elementov určených na tvorbu layoutov a zobrazuje sa v h
 
 ## Príklady použitia
 
-Pre informácie o použití **Header** elementu sa presuňte do dokumentácie [Layoutu](./layout).
+Pre informácie o použití **Header** elementu sa presuňte do dokumentácie [Layoutu](../layout).
 
 ## Atribúty a Vlastnosti
 

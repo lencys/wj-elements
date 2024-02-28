@@ -17,7 +17,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Tento element slúži na použitie v karte pre umiestnenie primárneho obsahu karty.
 
-Pre viac informácií o použití Card Content sa presuňte do dokumentácie elementu [Card](./card).
+Pre viac informácií o použití Card Content sa presuňte do dokumentácie elementu [Card](../card).
 
 ## Atribúty a Vlastnosti
 

@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/label/custom-props.md'
 import Slots from '@ionic-internal/component-api/v1/label/slots.md';
 
 
-  <title>Label | Element pre pridávanie popisného textového obsahu do komponentov</title>
+  <title>Label | Element for adding descriptive text content to components</title>
   <meta name="description" content="Label je element, ktorý sa používa na pridávanie popisného textového obsahu do komponentov. Label sa môže použiť napríklad vo vnútri elementov Item, Card alebo tiež v elemente Badge a ďalších." />
 
 
@@ -18,19 +18,19 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-**Label** je element, ktorý sa používa na pridávanie textového obsahu do komponentov. Label sa môže použiť napríklad vo vnútri elementov [Item](./item), [Card](./card) alebo tiež v elemente [Badge](./badge) a ďalších.
+**Label** is an element used to add text content to components. Label can be used for example inside elements [Item](../item), [Card](../card) or also in element [Badge](../badge) and others.
 
-Pozícia štítku vo vnútri prvku môže byť inline, pevná, naskladaná alebo plávajúca.
+The position of the label inside the element can be inline, fixed, stacked or floating.
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -38,10 +38,10 @@ Pozícia štítku vo vnútri prvku môže byť inline, pevná, naskladaná alebo
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

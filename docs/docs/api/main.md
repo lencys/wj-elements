@@ -17,11 +17,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Main je prvok na tvorbu layoutov a zobrazuje sa vedľa [Aside](./aside) elementu. Používa sa väčšinou na zobrazenie hlavného obsahu.
+Main je prvok na tvorbu layoutov a zobrazuje sa vedľa [Aside](../aside) elementu. Používa sa väčšinou na zobrazenie hlavného obsahu.
 
 ## Príklady použitia
 
-Pre informácie o použití **Main** elementu sa presuňte do dokumentácie [Layoutu](./layout).
+Pre informácie o použití **Main** elementu sa presuňte do dokumentácie [Layoutu](../layout).
 
 ## Atribúty a Vlastnosti
 

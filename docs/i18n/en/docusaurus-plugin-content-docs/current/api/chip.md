@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/chip/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/chip/slots.md';
 
 
-  <title>Chip | Malý univerzálny vizuálny blok</title>
+  <title>Chip | Small universal visual block</title>
   <meta name="description" content="Komponent Chip je univerzálny element, ktorý predstavuje malý vizuálny blok obsahujúci rôzne ďalšie elementy, ako napríklad avatary, text a ikony. Ponúka možnosti prispôsobenia farieb, stavov a ďalšie." />
 
 
@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponent Chip je univerzálny element, ktorý predstavuje malý vizuálny blok obsahujúci rôzne ďalšie elementy, ako napríklad avatary, text a ikony. Ponúka možnosti prispôsobenia farieb, stavov a ďalšie.
+The Chip component is a universal element that is a small visual block containing various other elements such as avatars, text and icons. It offers options to customize colors, states and more.
 
 ## Basic Usage
 
@@ -26,37 +26,37 @@ import Basic from '@site/static/usage/v1/chip/basic/index.md';
 
 <Basic />
 
-## Vkladanie ďalších prvkov
+## Inserting other elements
 
-V elemente chip je možné zobraziť aj ďalšie elementy, napríklad elementy **avatar**, **label** a **icon**.
+It is also possible to display other elements in the chip element, for example **avatar**, **label** and **icon** elements.
 
 import SlotExample from '@site/static/usage/v1/chip/slots/index.md';
 
 <SlotExample />
 
-## Štýlovanie
+## Styling
 
-### Farebné varianty
+### Colour variants
 
 import Colors from '@site/static/usage/v1/chip/theming/colors/index.md';
 
 <Colors />
 
-### Štýlovanie pomocou CSS custom vlastností
+### Styling with CSS custom properties
 
 import CSSProps from '@site/static/usage/v1/chip/theming/css-properties/index.md';
 
 <CSSProps />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -64,10 +64,10 @@ import CSSProps from '@site/static/usage/v1/chip/theming/css-properties/index.md
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

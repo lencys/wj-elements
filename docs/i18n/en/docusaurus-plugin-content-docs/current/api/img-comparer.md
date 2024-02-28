@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/image-comparer/custom-
 import Slots from '@ionic-internal/component-api/v1/image-comparer/slots.md';
 
 
-  <title>Image Comparer | Porovnávač obrázkov</title>
+  <title>Image Comparer | Image Comparer</title>
   <meta name="description" content="Element Image Comparer slúži na porovnanie dvoch obrázkov. Obrázky zobrazí na sebe a umožňuje odkrývať spodný obrázok pomocou vstavaného posuvníka." />
 
 
@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element Image Comparer slúži na porovnanie dvoch obrázkov. Obrázky zobrazí na sebe a umožňuje odkrývať spodný obrázok pomocou vstavaného posuvníka.
+The Image Comparer element is used to compare two images. It displays the images on top of each other and allows you to reveal the bottom image using the built-in slider.
 
 ## Basic Usage
 
@@ -30,15 +30,15 @@ import Basic from '@site/static/usage/v1/img-comparer/basic/index.md';
 
 </div>
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -46,10 +46,10 @@ import Basic from '@site/static/usage/v1/img-comparer/basic/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

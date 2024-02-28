@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/footer/custom-props.md
 import Slots from '@ionic-internal/component-api/v1/footer/slots.md';
 
 
-  <title>Footer | Element určený na tvorbu layoutov</title>
+  <title>Footer | Element for creating layouts</title>
   <meta name="description" content="Footer je súčasťou elementov určených na tvorbu layoutov a zobrazuje sa v spodnej časti obrazovky. Používa sa väčšinou na zobrazenie dodatočných informácií." />
 
 
@@ -18,21 +18,21 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Footer je súčasťou elementov určených na tvorbu layoutov a zobrazuje sa v spodnej časti obrazovky. Používa sa väčšinou na zobrazenie dodatočných informácií.
+The footer is part of the layout elements and appears at the bottom of the screen. It is mostly used to display additional information.
 
-## Príklady použitia
+## Examples of use
 
-Pre informácie o použití **Footer** elementu sa presuňte do dokumentácie [Layoutu](./layout).
+For information on using the **Footer** element, navigate to the [Layout](../layout) documentation.
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -40,10 +40,10 @@ Pre informácie o použití **Footer** elementu sa presuňte do dokumentácie [L
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

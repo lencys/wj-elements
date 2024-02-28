@@ -10,47 +10,47 @@ import CustomProps from '@ionic-internal/component-api/v1/list/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/list/slots.md';
 
 
-  <title>List | Komponent zobrazenia zoznamu položiek</title>
-  <meta name="description" content="Komponent List (Zoznam) sa skladá z viacerých elementov [Item](./item) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Listy vo všeobecnosti obsahujú položky s rovnakým obsahom a zoskupujú ich do väčšieho celku." />
+  <title>List | List of items display component</title>
+  <meta name="description" content="Komponent List (Zoznam) sa skladá z viacerých elementov [Item](item) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Listy vo všeobecnosti obsahujú položky s rovnakým obsahom a zoskupujú ich do väčšieho celku." />
 
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
-Komponent **List** (Zoznam) sa skladá z viacerých elementov [Item](./item) (položiek) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Listy vo všeobecnosti obsahujú položky s rovnakým obsahom a zoskupujú ich do väčšieho celku.
+The **List** (List) component consists of multiple [Item](../item) elements and can contain text, buttons, toggles, icons, image thumbnails, and much more. Sheets generally contain items with the same content and group them into a larger whole.
 
-## Základné použitie
+## Basic Usage
 
 import Basic from '@site/static/usage/v1/list/basic/index.md';
 
 <Basic />
 
-## Vnorený list
+## Nested leaf
 
-Nastavením hodnoty vlastnosti inset na true sa do okolia elementu pridá margin a vznikne tak vnorený zoznam.
+Setting the value of the inset property to true adds a margin to the element's surroundings to create a nested list.
 
 import Inset from '@site/static/usage/v1/list/inset/index.md';
 
 <Inset />
 
-## Oddeľovanie čiary
+## Line separation
 
-Vlastnosť **lines** upravuje spodný okraj itemov. Nastavením na "full" sa zobrazia okraje na celú šírku, "**inset**" zobrazí okraje upravené ľavým paddingom a "**none**" nezobrazí žiadne okraje.
+The **lines** property modifies the bottom edge of items. Setting it to "full" will show full-width margins, "**inset**" will show left-padded margins, and "**none**" will show no margins.
 
-Ak je na iteme nastavená vlastnosť lines, bude mať táto vlastnosť prednosť pred vlastnosťou na liste.
+If the lines property is set on the item, this property will take precedence over the property on the sheet.
 
 import Lines from '@site/static/usage/v1/list/lines/index.md';
 
 <Lines />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -58,10 +58,10 @@ import Lines from '@site/static/usage/v1/list/lines/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

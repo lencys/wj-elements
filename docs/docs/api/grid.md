@@ -17,7 +17,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí(layoutov) rozdelením obrazovky na mriežku riadkov [Rows](./row) a stĺpcov [Cols](./col). Grid je založený na flexboxe s rozložením rozdeleným na 12 stĺpcov s 5 responzívnymi breakpointami.
+Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí(layoutov) rozdelením obrazovky na mriežku riadkov [Rows](../row) a stĺpcov [Cols](../col). Grid je založený na flexboxe s rozložením rozdeleným na 12 stĺpcov s 5 responzívnymi breakpointami.
 
 ## Prehľad funkcií
 

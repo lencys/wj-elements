@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/router-outlet/custom-p
 import Slots from '@ionic-internal/component-api/v1/router-outlet/slots.md';
 
 
-  <title>Router | Router Komponent navigácie v rámci webových aplikácií</title>
+  <title>Router | Router The navigation component within web applications</title>
   <meta name="description" content="Komponent Router je nástroj určený na navigáciu v rámci webových aplikácií. Táto komponenta podporuje komplexné navigačné scenáre a lazy-load, čím zvyšuje výkon aplikácie a používateľský zážitok." />
 
 
@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponenta Router Outlet riadi vkladanie a odoberanie rôznych komponentov stránky na základe aktuálneho stavu routovania aplikácie. Zároveň kontroluje animácie a prechody pri prepínaní medzi stránkami (alebo pohľadmi), čo zvyšuje používateľský zážitok vďaka plynulým vizuálnym zmenám. V podstate funguje ako kontajner dynamického obsahu, ktorý automaticky aktualizuje zobrazený obsah podľa podľa interakcií používateľa.
+The Router Outlet component manages the insertion and removal of various page components based on the current routing state of the application. It also controls animations and transitions when switching between pages (or views), enhancing the user experience with smooth visual changes. Essentially, it functions as a dynamic content container that automatically updates the displayed content according to user interactions.
 
 ## Life Cycle Hooks
 
@@ -31,19 +31,19 @@ Routes rendered in a Router Outlet have access to specific Ionic events that are
 | `ionViewWillLeave` | Fired when the component routing from is about to animate.         |
 | `ionViewDidLeave`  | Fired when the component routing to has finished animating.        |
 
-These event tie into Ionic's animation system and can be used to coordinate parts of your app when a Components is done with its animation. These events are not a replacement for your framework's own event system, but an addition.
+These events tie into Ionic's animation system and can be used to coordinate parts of your app when a Components is done with its animation. These events are not a replacement for your framework's own event system, but an addition.
 
 For handling Router Guards, the older `ionViewCanEnter` and `ionViewCanLeave` have been replaced with their framework specific equivalent. For Angular, there are [Router Guards](https://angular.io/guide/router#milestone-5-route-guards).
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -51,10 +51,10 @@ For handling Router Guards, the older `ionViewCanEnter` and `ionViewCanLeave` ha
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

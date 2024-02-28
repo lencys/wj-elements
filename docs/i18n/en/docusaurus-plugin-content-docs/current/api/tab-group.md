@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/tab-group/custom-props
 import Slots from '@ionic-internal/component-api/v1/tab-group/slots.md';
 
 
-  <title>TabGroup | Navigácia založená na záložkách</title>
+  <title>TabGroup | Tab-based navigation</title>
   <meta name="description" content="TabGroup zobrazuje navigáciu založenú na záložkách, ktorá umožňuje používateľom prepínať sa a zobrazovať rôzne časti obsahu aplikácie bez potreby prechádzať na inú stránku." />
 
 
@@ -18,20 +18,20 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-TabGroup zobrazuje navigáciu založenú na záložkách, ktorá umožňuje používateľom prepínať sa a zobrazovať rôzne časti obsahu aplikácie bez potreby prechádzať na inú stránku. Skladá sa z jednotlivých záložiek [Tab](tab.md) a [Panelov](tab-panel.md), ktoré po kliknutí na záložku zobrazia jej obsah.
-TabGroup element podporuje viacero variantov vzhľadu pomocou atribútu `variant`.
+TabGroup displays a tab-based navigation that allows users to switch between and view different parts of the application's content without having to navigate to another page. It consists of individual tabs [Tab](tab.md) and [Panels](tab-panel.md), which when clicked display the contents of the tab.
+The TabGroup element supports multiple appearance variants using the `variant` attribute.
 
-## Základné použitie
+## Basic Usage
 
-Element `Card` bol použitý len za účelom tejto ukážky.
+The `Card` element has been used only for the purpose of this demonstration.
 
 import Basic from '@site/static/usage/v1/tab-group/basic/index.md';
 
 <Basic />
 
-## Varianty umiestnenia tabov
+## Variants of tab placement
 
-Pridaním vlastnosti `variant` je možné zmeniť umiestnenie tabov. Podporované sú hodnoty `start`, `end` a `bottom`.
+By adding the `variant` property it is possible to change the location of the tabs. Supported values are `start`, `end` and `bottom`.
 
 ### Start
 
@@ -51,15 +51,15 @@ import Bottom from '@site/static/usage/v1/tab-group/bottom/index.md';
 
 <Bottom />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -67,10 +67,10 @@ import Bottom from '@site/static/usage/v1/tab-group/bottom/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

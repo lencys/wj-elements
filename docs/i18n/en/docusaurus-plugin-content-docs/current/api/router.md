@@ -10,17 +10,17 @@ import CustomProps from '@ionic-internal/component-api/v1/router/custom-props.md
 import Slots from '@ionic-internal/component-api/v1/router/slots.md';
 
 
-  <title>Router | Router Komponent navigácie v rámci webových aplikácií</title>
+  <title>Router | Router The navigation component within web applications</title>
   <meta name="description" content="Komponent Router je nástroj určený na navigáciu v rámci webových aplikácií. Táto komponenta podporuje komplexné navigačné scenáre a lazy-load, čím zvyšuje výkon aplikácie a používateľský zážitok." />
 
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
-Komponent Router je nástroj určený na navigáciu v rámci webových aplikácií. Táto komponenta podporuje komplexné navigačné scenáre a lazy-load, čím zvyšuje výkon aplikácie a používateľský zážitok. Na to využíva ďalšie komponenty: [Router Link](./router-link.md), [Router Outlet](./router-outlet.md) a [Route](./route.md).
+The Router component is a tool for navigating within web applications. This component supports complex navigation scenarios and lazy-load, enhancing application performance and user experience. It uses the other components [Router Link](router-link.md), [Router Outlet](router-outlet.md), and [Route](route.md) to do this.
 
-Navyše sa bezproblémovo integruje s komponentmi WebJET Elements, čím umožňuje jednoduchú implementáciu navigácie vo vašom projekte.
+In addition, it integrates seamlessly with WebJET Elements components, allowing you to easily implement navigation in your project.
 
-Komponent `wj-router` má za úlohu spravovať všetky interakcie s históriou prehliadača a zoskupovať aktualizácie prostredníctvom systému udalostí a mal by sa nachádzať v štruktúre aplikácie iba raz.
+The `wj-router` component is tasked with managing all interactions with the browser history and grouping updates through the event system, and should only be found once in the application structure.
 
 `wj-router` is just a URL coordinator for the navigation outlets of ionic: `wj-nav`, `wj-tabs`, and `wj-router-outlet`.
 
@@ -28,13 +28,13 @@ That means the `wj-router` never touches the DOM, it does NOT show the component
 
 In order to configure this relationship between components (to load/select) and URLs, `wj-router` uses a declarative syntax using JSX/HTML to define a tree of routes.
 
-## Základné použitie
+## Basic Usage
 
 import BasicExample from '@site/static/usage/v1/router/basic/index.md';
 
 <BasicExample />
 
-## Rozhrania
+## Interfaces
 
 ### RouterEventDetail
 
@@ -57,7 +57,7 @@ interface RouterCustomEvent extends CustomEvent {
 }
 ```
 
-## Použitie
+## Use
 
 ```html
 <wj-router>
@@ -86,15 +86,15 @@ interface RouterCustomEvent extends CustomEvent {
 
 ```
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -102,10 +102,10 @@ interface RouterCustomEvent extends CustomEvent {
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

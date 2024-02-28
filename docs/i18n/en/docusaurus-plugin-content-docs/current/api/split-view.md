@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/split-view/custom-prop
 import Slots from '@ionic-internal/component-api/v1/split-view/slots.md';
 
 
-  <title>SplitView | jednotlivé voliteľné možnosti v rámci komponentu Select</title>
+  <title>SplitView | individual options within the Select component</title>
   <meta name="description" content="Element Option predstavuje jednotlivé voliteľné možnosti v rámci komponentu Select. Je obdobný štandardnému elementu HTML select a umožňuje používateľom vykonať jeden alebo viacero výberov na základe konfigurácie komponentu Select." />
 
 
@@ -18,17 +18,17 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element Split view je všestranný komponent, ktorý umožňuje vytvoriť delené zobrazenie s dvoma alebo viacerými sekciami. Poskytuje deliaci posuvník, ktorý umožňuje dynamicky meniť veľkosť sekcií. Podporované sú dve orientácie – vertikálna a horizontálna a vnorením ďalšieho SplitView vytvoriť zložitejšie zobrazenia.
+The Split view element is a versatile component that allows you to create a split view with two or more sections. Provides a divider slider that allows you to dynamically resize sections. Two orientations are supported - vertical and horizontal, and nesting another SplitView to create more complex views.
 
-## Základné použitie
+## Basic Usage
 
 import Basic from '@site/static/usage/v1/split-view/basic/index.md';
 
 <Basic />
 
-## Vertikálny SplitView
+## Vertical SplitView
 
-Podporované sú dve orientácie. Pridaním atribútu `vertical` zobrazíte vertikálny SplitView.
+Two orientations are supported. Add the `vertical` attribute to display a vertical SplitView.
 
 import Vertical from '@site/static/usage/v1/split-view/vertical/index.md';
 
@@ -36,7 +36,7 @@ import Vertical from '@site/static/usage/v1/split-view/vertical/index.md';
 
 ## Min/Max
 
-Pridaním vlastnosti `min` a `max` s hodnotami `“0”` až `“100”` obmedzíte škálu pohybu oddeľovača.
+Adding the `min` and `max` properties with values `"0"` to `"100"` will limit the range of motion of the separator.
 
 import MinMax from '@site/static/usage/v1/split-view/min-max/index.md';
 
@@ -44,35 +44,35 @@ import MinMax from '@site/static/usage/v1/split-view/min-max/index.md';
 
 ## Disabled
 
-Pridaním atribút `disabled` deaktivuje možnosť posúvania oddeľovača.
+Adding the `disabled` attribute disables the ability to scroll the separator.
 
 import Disabled from '@site/static/usage/v1/split-view/disabled/index.md';
 
 <Disabled />
 
-## Vnorený SplitView
+## Nested SplitView
 
-Vnorením ďalšieho SplitView je možné vytvoriť zložitejšie zobrazenia.
+By nesting another SplitView, more complex views can be created.
 
 import Split from '@site/static/usage/v1/split-view/split/index.md';
 
 <Split />
 
-## Úprava štýlov
+## Editing styles
 
 import Custom from '@site/static/usage/v1/split-view/custom/index.md';
 
 <Custom />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -80,10 +80,10 @@ import Custom from '@site/static/usage/v1/split-view/custom/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

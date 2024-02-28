@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/toggle/custom-props.md
 import Slots from '@ionic-internal/component-api/v1/toggle/slots.md';
 
 
-  <title>Toggle |  Element umožňujúci prepínať medzi dvoma stavmi</title>
+  <title>Toggle | Element allowing to switch between two states</title>
   <meta name="description" content="Toggle elementy sú malé interaktívne ovládacie prvky, ktoré umožňujú prepínať medzi dvoma stavmi. Môžete ich aktivovať kliknutím myši." />
 
 
@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Toggle elementy sú malé interaktívne ovládacie prvky, ktoré umožňujú prepínať medzi dvoma stavmi. Môžete ich aktivovať kliknutím myši. Najčastejšie sa používajú na aktiváciu a deaktiváciu funkcionalít prípadne na prepínanie medzi zobrazením a skrytím iných elementov.
+Toggle elements are small interactive controls that allow you to switch between two states. You can activate them with a click of the mouse. They are most often used to activate and deactivate functionalities or to switch between showing and hiding other elements.
 
 ## Basic Usage
 
@@ -33,15 +33,15 @@ import Colors from '@site/static/usage/v1/toggle/colors/index.md';
 <div className="large">
 <Colors /></div>
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -49,10 +49,10 @@ import Colors from '@site/static/usage/v1/toggle/colors/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

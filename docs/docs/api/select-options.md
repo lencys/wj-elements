@@ -17,9 +17,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element Options je určený na použitie vo vnútri elementu [Select](./select) a slúži na zobrazovanie dynamicky generovaného zoznamu možností, ktorý sa asynchrónne načíta zo zadanej URL adresy.
+Element Options je určený na použitie vo vnútri elementu [Select](../select) a slúži na zobrazovanie dynamicky generovaného zoznamu možností, ktorý sa asynchrónne načíta zo zadanej URL adresy.
 
-Pre viac informácií o použití Options sa presuňte do dokumentácie elementu [Select.](./select)
+Pre viac informácií o použití Options sa presuňte do dokumentácie elementu [Select.](../select)
 
 ## Atribúty a Vlastnosti
 

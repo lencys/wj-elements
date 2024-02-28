@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/dropdown/custom-props.
 import Slots from '@ionic-internal/component-api/v1/dropdown/slots.md';
 
 
-  <title>Dropdown | WebJET Element pre zobrazenie kontextového menu</title>
+  <title>Dropdown | WebJET Element to display the context menu</title>
   <meta name="description" content="Dropdown element slúži na zobrazenie kontextového menu po kliknutí. Menu möže obsahovať aj ikony." />
 
 
@@ -18,9 +18,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Dropdown element slúži na zobrazenie kontextového menu po kliknutí na tlačidlo. Umožňuje používateľovi zvoliť jednu z preddefinovaných možností. Obsahuje element [Button](./button), ktorý funguje ako aktivátor a element [Menu](./menu) s obsahom v podobe jednotlivých položiek [MenuItem.](./menu-item).
+Dropdown element is used to display the context menu after clicking the button. Allows the user to select one of the predefined options. It contains a [Button](../button) element that acts as an activator and a [Menu](../menu) element with content in the form of individual [MenuItem.](../menu-item) items.
 
-## Základné použitie
+## Basic Usage
 
 <div className="xlarge">
 
@@ -30,15 +30,15 @@ import Basic from '@site/static/usage/v1/dropdown/basic/index.md';
 
 </div>
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -46,10 +46,10 @@ import Basic from '@site/static/usage/v1/dropdown/basic/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

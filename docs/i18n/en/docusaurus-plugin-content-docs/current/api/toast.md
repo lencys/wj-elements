@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/toast/custom-props.md'
 import Slots from '@ionic-internal/component-api/v1/toast/slots.md';
 
 
-  <title>Toast |  Nenápadný spôsob zobrazovania krátkych oznámení</title>
+  <title>Toast | An unobtrusive way to display short notifications</title>
   <meta name="description" content="Komponent toast poskytuje nenápadný spôsob zobrazovania krátkych oznámení používateľovi." />
 
 
@@ -18,23 +18,23 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponent Toast poskytuje nenápadný spôsob zobrazovania krátkych oznámení používateľovi. Sú navrhnuté tak, aby sa objavovali a mizli plynulo, čím sa zabezpečí, že sa dôležité informácie dostanú k používateľom bez toho, aby boli rušivé.
+The Toast component provides an unobtrusive way of displaying short notifications to the user. They are designed to appear and disappear seamlessly, ensuring that important information reaches users without being intrusive.
 
-## Základné použitie
+## Basic use
 
 import Basic from '@site/static/usage/v1/toast/inline/basic/index.md';
 
 <Basic />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -42,10 +42,10 @@ import Basic from '@site/static/usage/v1/toast/inline/basic/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

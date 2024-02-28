@@ -14,10 +14,17 @@ module.exports = {
   baseUrl: ``,
   trailingSlash: true,
   i18n: {
-    defaultLocale: 'sk',
-    locales: ['sk'],
+    defaultLocale: 'en',
+    locales: ['sk', 'en'],
     localeConfigs: {
       sk: { label: 'Slovensky' },
+      en: {
+        label: 'English',
+        direction: 'ltr',
+        htmlLang: 'en-US',
+        calendar: 'gregory',
+        path: 'en',
+      },
     },
   },
   onBrokenLinks: 'warn',
@@ -34,25 +41,25 @@ module.exports = {
         docs: {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
-          // editUrl: ({ versionDocsDirPath, docPath, locale }) => {
-          //   if (locale != 'en') {
-          //     return 'https://crowdin.com/project/ionic-docs';
-          //   }
-          //   let match;
-          //   if ((match = docPath.match(/api\/(.*)\.md/)) != null) {
-          //     return `https://github.com/ionic-team/ionic-docs/tree/main/docs/api/${match[1]}.md`;
-          //   }
-          //   if ((match = docPath.match(/cli\/commands\/(.*)\.md/)) != null) {
-          //     return `https://github.com/ionic-team/ionic-cli/edit/develop/packages/@ionic/cli/src/commands/${match[1].replace(
-          //       '-',
-          //       '/'
-          //     )}.ts`;
-          //   }
-          //   if ((match = docPath.match(/native\/(.*)\.md/)) != null) {
-          //     return `https://github.com/ionic-team/capacitor-plugins/edit/main/${match[1]}/README.md`;
-          //   }
-          //   return `https://github.com/ionic-team/ionic-docs/edit/main/${versionDocsDirPath}/${docPath}`;
-          // },
+          editUrl: ({ versionDocsDirPath, docPath, locale }) => {
+            if (locale != 'en') {
+              return 'https://crowdin.com/project/ionic-docs';
+            }
+            let match;
+            if ((match = docPath.match(/api\/(.*)\.md/)) != null) {
+              return `https://github.com/ionic-team/ionic-docs/tree/main/docs/api/${match[1]}.md`;
+            }
+            if ((match = docPath.match(/cli\/commands\/(.*)\.md/)) != null) {
+              return `https://github.com/ionic-team/ionic-cli/edit/develop/packages/@ionic/cli/src/commands/${match[1].replace(
+                '-',
+                '/'
+              )}.ts`;
+            }
+            if ((match = docPath.match(/native\/(.*)\.md/)) != null) {
+              return `https://github.com/ionic-team/capacitor-plugins/edit/main/${match[1]}/README.md`;
+            }
+            return `https://github.com/ionic-team/ionic-docs/edit/main/${versionDocsDirPath}/${docPath}`;
+          },
           exclude: ['README.md'],
           lastVersion: 'current',
           versions: {

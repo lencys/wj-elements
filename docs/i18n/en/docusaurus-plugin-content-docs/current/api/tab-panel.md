@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/tab-panel/custom-props
 import Slots from '@ionic-internal/component-api/v1/tab-panel/slots.md';
 
 
-  <title>TabPanel | Kontajner obsahu pre Tab element</title>
+  <title>TabPanel | Content container for Tab element</title>
   <meta name="description" content="Komponent TabPanel je podriadeným komponentom TabGroup a slúži ako kontajner obsahu záložky. Používa sa v kombinácii s elementom Tab." />
 
 
@@ -18,19 +18,19 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponent `TabPanel` je podriadeným komponentom [TabGroup](tab-group.md) a slúži ako kontajner obsahu záložky. Používa sa v kombinácii s elementom [Tab](tab.md).
+The `TabPanel` component is a child of the [TabGroup](tab-group.md) component and serves as a container for the contents of the tab. It is used in combination with element [Tab](tab.md).
 
-Pre príklady použitia komponentu `Tab` prejdite na dokumentáciu [TabGroup](tab-group.md).
+For examples of using the `Tab` component, go to the [TabGroup](tab-group.md) documentation.
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -38,10 +38,10 @@ Pre príklady použitia komponentu `Tab` prejdite na dokumentáciu [TabGroup](ta
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

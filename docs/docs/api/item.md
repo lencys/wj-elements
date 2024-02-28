@@ -17,7 +17,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponenty Item sú bloky, ktoré môžu obsahovať rôzne typy obsahu vrátane textu, ikon, avatarov, obrázkov, inputov a iných štandardných alebo custom elementov. Item elementy sa zvyčajne nachádzajú vo vnútri [List](./list)  elementov.
+Komponenty Item sú bloky, ktoré môžu obsahovať rôzne typy obsahu vrátane textu, ikon, avatarov, obrázkov, inputov a iných štandardných alebo custom elementov. Item elementy sa zvyčajne nachádzajú vo vnútri [List](../list)  elementov.
 
 ## Základné použitie
 

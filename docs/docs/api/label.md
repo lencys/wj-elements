@@ -17,7 +17,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-**Label** je element, ktorý sa používa na pridávanie textového obsahu do komponentov. Label sa môže použiť napríklad vo vnútri elementov [Item](./item), [Card](./card) alebo tiež v elemente [Badge](./badge) a ďalších.
+**Label** je element, ktorý sa používa na pridávanie textového obsahu do komponentov. Label sa môže použiť napríklad vo vnútri elementov [Item](../item), [Card](../card) alebo tiež v elemente [Badge](../badge) a ďalších.
 
 Pozícia štítku vo vnútri prvku môže byť inline, pevná, naskladaná alebo plávajúca.
 

@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/icon/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/icon/slots.md';
 
 
-  <title>Icon | WebJET Element pre zobrazovanie ikon</title>
+  <title>Icon | WebJET Element for displaying icons</title>
   <meta
     name="description"
     content="Tento komponent poskytuje jednoduchý spôsob zobrazenia ikon zo sady SVG obrázkov, pričom umožňuje rôzne možnosti prispôsobenia."
@@ -21,9 +21,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Tento komponent poskytuje jednoduchý spôsob zobrazenia ikon zo sady SVG obrázkov, pričom umožňuje rôzne možnosti prispôsobenia. WebJET Elements využíva sadu ikon Tabler. Pre zoznam všetkých dostupných ikon navštívte [tabler-icons.io](https://tabler-icons.io/).
+This component provides a simple way to display icons from a set of SVG images, while allowing various customization options. WebJET Elements uses the Tabler icon set. For a list of all available icons, visit [tabler-icons.io](https://tabler-icons.io/).
 
-## Základné použitie
+## Basic Usage
 
 import Basic from '@site/static/usage/v1/icon/basic/index.md';
 
@@ -35,15 +35,15 @@ import Custom from '@site/static/usage/v1/icon/custom/index.md';
 
 <Custom />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -51,10 +51,10 @@ import Custom from '@site/static/usage/v1/icon/custom/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

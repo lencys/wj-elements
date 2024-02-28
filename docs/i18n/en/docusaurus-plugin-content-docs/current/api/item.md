@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/item/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/item/slots.md';
 
 
-  <title>Item | Bloky List elementu s rôznorodým obsahom</title>
+  <title>Item | Blocks List element with diverse content</title>
   <meta name="description" content="Komponenty Item sú bloky, ktoré môžu obsahovať rôzne typy obsahu vrátane textu, ikon, avatarov, obrázkov, inputov a iných štandardných alebo custom elementov. Item elementy sa zvyčajne nachádzajú vo vnútri List elementov." />
 
 
@@ -18,47 +18,47 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponenty Item sú bloky, ktoré môžu obsahovať rôzne typy obsahu vrátane textu, ikon, avatarov, obrázkov, inputov a iných štandardných alebo custom elementov. Item elementy sa zvyčajne nachádzajú vo vnútri [List](./list)  elementov.
+Item components are blocks that can contain various types of content, including text, icons, avatars, images, inputs, and other standard or custom elements. Item elements are usually inside [List](../list) elements.
 
-## Základné použitie
+## Basic Usage
 
 import Basic from '@site/static/usage/v1/item/basic/index.md';
 
 <Basic />
 
-## Oddeľovacie čiary
+## Separation lines
 
 import Lines from '@site/static/usage/v1/item/lines/index.md';
 
 <Lines />
 
-## Použitie s obrázkami
+## Use with images
 
 import Media from '@site/static/usage/v1/item/media/index.md';
 
 <Media />
 
-## Použitie s tlačidlami
+## Use with buttons
 
 import Buttons from '@site/static/usage/v1/item/buttons/index.md';
 
 <Buttons />
 
-## Použitie s ikonami
+## Use with icons
 
 import Icons from '@site/static/usage/v1/item/icons/index.md';
 
 <Icons />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -66,10 +66,10 @@ import Icons from '@site/static/usage/v1/item/icons/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

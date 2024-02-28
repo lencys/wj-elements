@@ -13,7 +13,7 @@ import SteppedColorGenerator from '@components/page/theming/SteppedColorGenerato
   />
 </head>
 
-WebJet Elements ponúka celý rad globálnych premenných, ktoré možno použiť na úpravu predvolenej témy v celej aplikácii. [Farby aplikácie](#application-colors) sú užitočné na zmenu vzhľadu mnohých WebJET komponentov.
+WebJet Elements ponúka celý rad globálnych premenných, ktoré možno použiť na úpravu predvolenej šablóny v celej aplikácii. Farby aplikácie sú užitočné na zmenu vzhľadu mnohých WebJET komponentov.
 
 ## Aplikačné farby
 

@@ -8,6 +8,7 @@ hide_table_of_contents: true
 import DocsCards from '@components/global/DocsCards';
 
 <head>
+
   <title>Moderná sada nástrojov používateľského rozhrania založená na web komponentoch</title>
   <meta
     name="description"
@@ -23,6 +24,7 @@ import DocsCards from '@components/global/DocsCards';
     }
   `}</style>
   <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@dddb1c19734498c5b2a17f2e6ed605d0cd40d02e/wj-master.js"></script>
+
 </head>
 
 WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania využívajúca silu web komponentov, ktorá je určená na zjednodušenie vývoja webových aplikácií. Poskytuje kolekciu zapúzdrených a opakovane použiteľných elementov, ktoré môžu výrazne zvýšiť efektivitu a udržiavateľnosť projektov vývoja webových stránok.
@@ -47,7 +49,7 @@ Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/install
     </wj-card>
   </a>
 
- <a href="/components">
+ <a href="components">
   <wj-card>
     <wj-card-header>
         <wj-icon name="layout-dashboard" size="large"></wj-icon>
@@ -59,7 +61,7 @@ Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/install
   </wj-card>
 </a>
 
- <a href="/api/layout">
+ <a href="api/layout">
   <wj-card>
     <wj-card-header>
       <wj-icon name="layout" size="large"></wj-icon>
@@ -71,7 +73,7 @@ Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/install
   </wj-card>
 </a>
 
- <a href="/theming/basics">
+ <a href="theming/basics">
   <wj-card>
     <wj-card-header>
         <wj-icon name="brush" size="large"></wj-icon>
@@ -118,4 +120,4 @@ Optimalizovaný pre výkon, framework zabezpečuje, že komponenty sú nielen fu
 
 Elements je slobodný projekt s otvoreným zdrojovým kódom, vydaný pod povolenou licenciou MIT. To znamená, že sa môže bezplatne používať v osobných alebo komerčných projektoch. MIT je rovnaká licencia, akú používajú také populárne projekty ako jQuery a Ruby on Rails.
 
-Tento obsah dokumentácie (ktorý sa nachádza v repozitári <a href="https://github.com/ionic-team/ionic-docs" target="_blank">WJ Elements</a>) je licencovaný pod licenciou <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.</a>.
+Tento obsah dokumentácie (ktorý sa nachádza v repozitári <a href="https://github.com/lencys/wj-elements" target="_blank">WJ Elements</a>) je licencovaný pod licenciou <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.</a>.

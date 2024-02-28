@@ -1,36 +1,37 @@
 ---
-title: Úvod do WebJET Elements
-sidebar_label: Úvod
+title: Introduction to WebJET Elements
+sidebar_label: Home
 slug: /
 hide_table_of_contents: true
 ---
 
 import DocsCards from '@components/global/DocsCards';
 
+<head>
 
-  <title>Moderná sada nástrojov používateľského rozhrania založená na web komponentoch</title>
+  <title>A modern set of user interface tools based on web components</title>
   <meta
     name="description"
     content="WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania založená na web komponentoch, ktorá je určená na zjednodušenie vývoja webových aplikácií."
-  />
+  />  
   
-  
-  <link rel="canonical" href="https://ionicframework.com/docs" />
-  <link rel="alternate" href="https://ionicframework.com/docs" hreflang="x-default" />
-  <link rel="alternate" href="https://ionicframework.com/docs" hreflang="en" />
-  <meta property="og:url" content="https://ionicframework.com/docs" />
+  <link rel="canonical" href="https://elements.webjet.sk/" />
+  <link rel="alternate" href="https://elements.webjet.sk/" hreflang="x-default" />
+  <link rel="alternate" href="https://elements.webjet.sk/" hreflang="en" />
+  <meta property="og:url" content="https://elements.webjet.sk/" />
     <style>{`
     docs-cards > a{
       display: flex;
     }
-  `}</style>
+`}</style>
   <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@dddb1c19734498c5b2a17f2e6ed605d0cd40d02e/wj-master.js"></script>
 
+</head>
 
-WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania využívajúca silu web komponentov, ktorá je určená na zjednodušenie vývoja webových aplikácií. Poskytuje kolekciu zapúzdrených a opakovane použiteľných elementov, ktoré môžu výrazne zvýšiť efektivitu a udržiavateľnosť projektov vývoja webových stránok.
-Ponúkajú jednoduchú integráciu s React a Vue.
+WebJET Elements is a modern set of user interface tools harnessing the power of web components designed to simplify web application development. It provides a collection of encapsulated and reusable elements that can greatly increase the efficiency and maintainability of web development projects.
+They offer easy integration with React and Vue.
 
-Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/install.md).
+Start creating your application [by installing WebJET elements](intro/install.md).
 
 <br/>
 <intro-end />
@@ -41,86 +42,86 @@ Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/install
     <wj-card>
       <wj-card-header>
           <wj-icon name="world-download" size="large"></wj-icon>
-          <wj-card-title>Sprievodca inštaláciou</wj-card-title>
+          <wj-card-title>Installation Guide</wj-card-title>
       </wj-card-header>
       <wj-card-content>
-      <p>Podrobný sprievodca inštaláciou WebJET elementov.</p>
+      <p>Detailed guide to installing WebJET elements.</p>
       </wj-card-content>
     </wj-card>
   </a>
 
- <a href="/components">
+ <a href="components">
   <wj-card>
     <wj-card-header>
         <wj-icon name="layout-dashboard" size="large"></wj-icon>
-        <wj-card-title href="intro/cli">Elementy</wj-card-title>
+        <wj-card-title href="intro/cli">Elements</wj-card-title>
     </wj-card-header>
     <wj-card-content>
-    <p>Nazrite do knižnice dostupných WebJET elementov.</p>
+    <p>Take a look at the library of available WebJET elements.</p>
     </wj-card-content>
   </wj-card>
 </a>
 
- <a href="/api/layout">
+ <a href="api/layout">
   <wj-card>
     <wj-card-header>
       <wj-icon name="layout" size="large"></wj-icon>
       <wj-card-title>Layout</wj-card-title>
     </wj-card-header>
     <wj-card-content>
-    <p>Zistite ako si vytvoriť rozloženie stránok podľa vašich potrieb.</p>
+    <p>Find out how to create a page layout to suit your needs.</p>
     </wj-card-content>
   </wj-card>
 </a>
 
- <a href="/theming/basics">
+ <a href="theming/basics">
   <wj-card>
     <wj-card-header>
         <wj-icon name="brush" size="large"></wj-icon>
-        <wj-card-title>Úprava štýlov</wj-card-title>
+        <wj-card-title>Editing Styles</wj-card-title>
     </wj-card-header>
     <wj-card-content>
-    <p>Naučte sa ako si jednoducho prispôsobiť vizuál Elements.</p>
+    <p>Learn how to easily customize your Elements visual.</p>
     </wj-card-content>
   </wj-card>
 </a>
 
 </DocsCards>
 
-## Prehľad
+## Overview
 
-WebJET Elements je pokročilá platforma na vytváranie a nasadzovanie moderných webových aplikácií a mikrofrontendových riešení. Tento framework je založený na technológii webových komponentov a využíva možnosti webových komponentov a Shadow DOM, aby ponúkol univerzálnu sadu elementov. Tieto elementy sú navrhnuté tak, aby zlepšili a zefektívnili proces vývoja a umožnili vám vytvárať a implementovať pôsobivé aplikácie s vyššou efektivitou.
+WebJET Elements is an advanced platform for creating and deploying modern web applications and micro-frontend solutions. This framework is based on web component technology and uses the capabilities of web components and the Shadow DOM to offer a universal set of elements. These elements are designed to improve and streamline the development process, allowing you to create and implement compelling applications with greater efficiency.
 
-Kľúčové vlastnosti rámca WebJET Elements Framework:
+Key features of the WebJET Elements Framework:
 
-### Komplexná sada nástrojov používateľského rozhrania
+### Comprehensive set of user interface tools
 
-WebJET Elements obsahuje širokú škálu ovládacích prvkov a komponentov používateľského rozhrania, ktoré sú optimalizované pre webové rozhrania. Tieto komponenty pokrývajú rôzne funkcie a sú navrhnuté tak, aby sa dali ľahko integrovať do akejkoľvek webovej aplikácie.
+WebJET Elements includes a wide range of controls and user interface components that are optimized for web interfaces. These components cover a variety of functions and are designed to be easily integrated into any web application.
 
-### Integrácia s populárnymi frameworkami
+### Integration with popular frameworks
 
-Framework podporuje bezproblémovú integráciu s modernými webovými technológiami React a Vue, čím zabezpečuje kompatibilitu a flexibilitu pri vývoji.
+The framework supports seamless integration with modern web technologies React and Vue, ensuring compatibility and flexibility in development.
 
-### Stabilný a nezávislý
+### Stable and independent
 
-WebJET Elements je postavený na spoľahlivých štandardizovaných webových technológiách W3C a využíva moderné webové rozhrania API, ako sú Custom Elements a Shadow DOM. Vďaka tomu majú komponenty stabilné rozhranie API a nie sú závislé od rozmaru dodávateľa platformy či knižníc tretích strán.
+WebJET Elements is built on reliable W3C standardized web technologies and uses modern web APIs such as Custom Elements and Shadow DOM. As a result, components have a stable API and are not dependent on the whim of the platform vendor or third-party libraries.
 
-### Využívanie Shadow DOM
+### Using Shadow DOM
 
-WebJET Elements využíva Shadow DOM a zabezpečuje zapuzdrenie štýlu a správania svojich komponentov, čím podporuje čistejšiu a lepšie udržiavateľnú kódovú základňu.
+WebJET Elements leverages the Shadow DOM and provides encapsulation of the style and behavior of its components, supporting a cleaner and more maintainable codebase.
 
-### Prispôsobenie a flexibilita
+### Customisation and flexibility
 
-Framework ponúka rozsiahle možnosti prispôsobenia prostredníctvom vlastných vlastností CSS, slotov a shadow parts, čo umožňuje vývojárom prispôsobiť komponenty konkrétnym potrebám.
+The framework offers extensive customization options through custom CSS properties, slots, and shadow parts, allowing developers to tailor components to specific needs.
 
-### Optimalizovaný pre výkon
+### Optimised for performance
 
-Optimalizovaný pre výkon, framework zabezpečuje, že komponenty sú nielen funkčné, ale aj efektívne, čo prispieva k plynulejšiemu používateľskému zážitku.
+Optimized for performance, the framework ensures that components are not only functional but also efficient, contributing to a smoother user experience.
 
-**V dokumentácii WebJET Elements nájdete podrobné príklady, ktoré vám pomôžu rýchlo a efektívne vytvárať výnimočné webové aplikácie.**
+**In the WebJET Elements documentation you will find detailed examples to help you create exceptional web applications quickly and efficiently.**
 
-## Licencia
+## License
 
-Elements je slobodný projekt s otvoreným zdrojovým kódom, vydaný pod povolenou licenciou MIT. To znamená, že sa môže bezplatne používať v osobných alebo komerčných projektoch. MIT je rovnaká licencia, akú používajú také populárne projekty ako jQuery a Ruby on Rails.
+Elements is a free and open source project, released under the MIT permissive license. This means that it can be used for free in personal or commercial projects. MIT is the same license used by such popular projects as jQuery and Ruby on Rails.
 
-Tento obsah dokumentácie (ktorý sa nachádza v repozitári <a href="https://github.com/ionic-team/ionic-docs" target="_blank">WJ Elements</a>) je licencovaný pod licenciou <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.</a>.
+This documentation content (located in the <a href="https://github.com/lencys/wj-elements" target="_blank">WJ Elements repository</a>) is licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2 license.</a>.

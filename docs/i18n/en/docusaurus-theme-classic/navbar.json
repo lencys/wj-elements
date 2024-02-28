@@ -60,11 +60,11 @@
     "description": "Navbar item with label Enterprise Advisory"
   },
   "item.label.Príručka": {
-    "message": "Príručka",
+    "message": "Handbook",
     "description": "Navbar item with label Príručka"
   },
   "item.label.Komponenty": {
-    "message": "Komponenty",
+    "message": "Components",
     "description": "Navbar item with label Komponenty"
   }
 }

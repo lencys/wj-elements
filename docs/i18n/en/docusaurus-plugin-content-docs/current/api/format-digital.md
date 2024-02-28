@@ -10,7 +10,7 @@ import CustomProps from '@ionic-internal/component-api/v1/format-digital/custom-
 import Slots from '@ionic-internal/component-api/v1/format-digital/slots.md';
 
 
-  <title>Format Digital | Formátovanie číselných hodnôt</title>
+  <title>Format Digital | Formatting numeric values</title>
   <meta name="description" content="Komponent FormatDigital je určený na formátovanie číselných hodnôt do ľudsky čitateľného digitálneho formátu s ohľadom na rôzne predpony jednotiek, ako sú kilo, mega, giga atď. Ponúka možnosti prispôsobenia jednotiek, štýlu zobrazenia jednotiek a podporuje lokalizáciu." />
 
 
@@ -18,41 +18,41 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponent FormatDigital je určený na formátovanie číselných hodnôt do ľudsky čitateľného digitálneho formátu s ohľadom na rôzne predpony jednotiek, ako sú kilo, mega, giga atď. Ponúka možnosti prispôsobenia jednotiek, štýlu zobrazenia jednotiek a podporuje lokalizáciu.
+The FormatDigital component is designed to format numeric values into a human-readable digital format with respect to various unit prefixes such as kilo, mega, giga, etc. It offers options to customize units, display style of units and supports localization.
 
-## Základné použitie
+## Basic Usage
 
 import Basic from '@site/static/usage/v1/format-digital/basic/index.md';
 
 <Basic />
 
-## Formáty zobrazenia
+## Display formats
 
 import FormattingDisplay from '@site/static/usage/v1/format-digital/formatting-display/index.md';
 
 <FormattingDisplay />
 
-## Formáty bajtov
+## Byte formats
 
 import FormattingBytes from '@site/static/usage/v1/format-digital/formatting-bytes/index.md';
 
 <FormattingBytes />
 
-## Formáty bitov
+## Bit formats
 
 import FormattingBits from '@site/static/usage/v1/format-digital/formatting-bits/index.md';
 
 <FormattingBits />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -60,10 +60,10 @@ import FormattingBits from '@site/static/usage/v1/format-digital/formatting-bits
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />
