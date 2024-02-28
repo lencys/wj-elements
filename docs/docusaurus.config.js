@@ -163,8 +163,7 @@ module.exports = {
     algolia: {
       appId: 'W0DED3MH0V',
       apiKey: '8423cfbc56b7dc0677817b93343eb914',
-      indexName: 'elements-webjet',
-      contextualSearch: true,
+      indexName: 'elements-webjet'
     },
   },
   plugins: [
