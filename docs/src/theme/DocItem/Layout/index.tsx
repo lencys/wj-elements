@@ -76,7 +76,7 @@ export default function DocItemLayout({children, ...props}: Props): JSX.Element 
             <DocVersionBadge />
             {docTOC.mobile}
             <DocItemContent>{children}</DocItemContent>
-            <DocItemFooter />
+            {/* <DocItemFooter /> */}
           </article>
           <DocItemPaginator />
         </div>
