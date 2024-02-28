@@ -749,7 +749,7 @@
                     "required": false
                 },
                 {
-                    "name": "dialogue",
+                    "name": "dialog",
                     "type": "string",
                     "complexType": {
                         "original": "string",
@@ -757,7 +757,7 @@
                         "references": {}
                     },
                     "mutable": false,
-                    "attr": "dialogue",
+                    "attr": "dialog",
                     "reflectToAttr": true,
                     "docs": "Associates a button with a specific event. When the button is clicked, the named event is triggered, allowing you to implement actions such as opening a dialog box or executing a custom event. See the dialog component for more information.",
                     "docsTags": [],
@@ -887,7 +887,7 @@
             "methods": [],
             "events": [
                 {
-                    "event": "dialogue",
+                    "event": "dialog",
                     "detail": "void",
                     "bubbles": true,
                     "complexType": {
@@ -1659,7 +1659,7 @@
         {
             "filePath": "src/components/dialog/dialog.tsx",
             "encapsulation": "shadow",
-            "tag": "dialogue",
+            "tag": "dialog",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -1751,7 +1751,7 @@
                 {
                     "name": "--wj-dialog-margin-bottom",
                     "annotation": "prop",
-                    "docs": "Bottom outer indent of the dialogue window"
+                    "docs": "Bottom outer indent of the dialog window"
                 },
                 {
                     "name": "--wj-dialog-margin-end",
@@ -3764,7 +3764,7 @@
         {
             "filePath": "src/components/aside/aside.tsx",
             "encapsulation": "scoped",
-            "tag": "Aside",
+            "tag": "aside",
             "docs": "",
             "docsTags": [],
             "usage": {},

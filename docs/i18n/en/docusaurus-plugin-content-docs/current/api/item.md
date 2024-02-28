@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Item components are blocks that can contain various types of content, including text, icons, avatars, images, inputs, and other standard or custom elements. Item elements are usually inside [List](../list) elements.
 
-## Basic use
+## Basic Usage
 
 import Basic from '@site/static/usage/v1/item/basic/index.md';
 

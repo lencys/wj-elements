@@ -137,7 +137,7 @@ function formatType(attr, type) {
 
 function renderProperties({ props: properties }) {
   if (properties.length === 0) {
-    return 'Pre tento komponent nie sú dostupné žiadne atribúty a vlastnosti.';
+    return 'No properties available for this component.';
   }
 
   // NOTE: replaces | with U+FF5C since MDX renders \| in tables incorrectly
@@ -165,7 +165,7 @@ ${properties
 
 function renderEvents({ events }) {
   if (events.length === 0) {
-    return 'Pre tento komponent nie sú dostupné žiadne verejné eventy.';
+    return 'No events available for this component.';
   }
 
   return `
@@ -178,7 +178,7 @@ ${events.map((event) => `| \`${event.event}\` | ${formatMultiline(event.docs)} |
 
 function renderMethods({ methods }) {
   if (methods?.length === 0) {
-    return 'Pre tento komponent nie sú dostupné žiadne verejné metódy.';
+    return 'No public methods available for this component.';
   }
 
   // NOTE: replaces | with U+FF5C since MDX renders \| in tables incorrectly
@@ -201,7 +201,7 @@ ${methods
 
 function renderParts({ parts }) {
   if (parts.length === 0) {
-    return 'Pre tento komponent nie sú dostupné žiadne CSS shadow parts.';
+    return 'No CSS shadow parts available for this component.';
   }
 
   return `
@@ -214,7 +214,7 @@ ${parts.map((prop) => `| \`${prop.name}\` | ${formatMultiline(prop.docs)} |`).jo
 
 function renderCustomProps({ styles: customProps }) {
   if (customProps.length === 0) {
-    return 'Pre tento komponent nie sú dostupné žiadne CSS custom vlastnosti.';
+    return 'No CSS custom properties available for this component.';
   }
 
   return `
@@ -227,7 +227,7 @@ ${customProps.map((prop) => `| \`${prop.name}\` | ${formatMultiline(prop.docs)} 
 
 function renderSlots({ slots }) {
   if (slots.length === 0) {
-    return 'Pre tento komponent nie sú dostupné žiadne sloty.';
+    return 'No slots available for this component.';
   }
 
   return `

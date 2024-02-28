@@ -28,7 +28,7 @@ That means the `wj-router` never touches the DOM, it does NOT show the component
 
 In order to configure this relationship between components (to load/select) and URLs, `wj-router` uses a declarative syntax using JSX/HTML to define a tree of routes.
 
-## Basic use
+## Basic Usage
 
 import BasicExample from '@site/static/usage/v1/router/basic/index.md';
 

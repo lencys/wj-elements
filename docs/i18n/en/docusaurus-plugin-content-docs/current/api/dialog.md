@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The Dialog element displays a dialog box with customizable content. It can be used, for example, to simply display information to the user or to request confirmation or cancellation of an action taken by the user. It is located above the application content and must be manually dismissed by the user in order to continue interacting with the application. The dialog can be displayed in different screen sizes and positions.
 
-## Basic use
+## Basic Usage
 
 The Button component with the dialog attribute is used to display the Dialog component.
 For more information, go to [Button](button.md).

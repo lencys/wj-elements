@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Input element extends the capabilities of standard HTML input with advanced features and customization options.
 
-## Basic use
+## Basic Usage
 
 import Basic from '@site/static/usage/v1/input/basic/index.md';
 

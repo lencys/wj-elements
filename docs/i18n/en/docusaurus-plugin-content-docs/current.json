@@ -72,7 +72,7 @@
     "description": "The label for category Copy button in sidebar api"
   },
   "sidebar.api.category.Dialog": {
-    "message": "Dialogue",
+    "message": "Dialog",
     "description": "The label for category Dialog in sidebar api"
   },
   "sidebar.api.category.Dropdown": {

@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 A checkbox, or also a check box, is an element that allows users to select one or more options from a set. Click on the checkbox to change its status to `true` or `false`.
 
-## Basic use
+## Basic Usage
 
 import Basic from '@site/static/usage/v1/checkbox/basic/index.md';
 

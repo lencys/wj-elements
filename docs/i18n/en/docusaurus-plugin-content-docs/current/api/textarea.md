@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Textarea extends the capabilities of the standard HTML `textarea` element. It adds styles to achieve a visually consistent user interface and offers features such as auto-height - adjusting the height of an element to the inserted text, or also a counter for inserted characters.
 
-## Basic use
+## Basic Usage
 
 import BasicPlayground from '@site/static/usage/v1/textarea/basic/index.md';
 

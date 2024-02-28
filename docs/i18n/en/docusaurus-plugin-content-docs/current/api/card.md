@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The **Card** element is a flexible and expandable card format container. It allows you to display a wide range of content and consists of a header [CardHeader](../card-header) and a main section [CardContent](../card-content).
 
-## Basic use
+## Basic Usage
 
 import Basic from '@site/static/usage/v1/card/basic/index.md';
 

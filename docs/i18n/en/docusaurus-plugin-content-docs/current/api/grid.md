@@ -44,7 +44,7 @@ import Basic from '@site/static/usage/v1/grid/basic/index.md';
 
 <Basic />
 
-## Column size: car
+## Column size: auto
 
 Setting `size` to `auto` adjusts the column to the width of its contents, and adjacent columns automatically adjust their width to fill the remaining space in the row.
 

@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The RelativeTime component is an element used to display the relative time based on the inserted date. Calculates and displays the relative time difference between the current date and the specified date. The relative time format is localized based on the language of the user's browser.
 
-## Basic use
+## Basic Usage
 
 import Basic from '@site/static/usage/v1/relative-time/basic/index.md';
 
