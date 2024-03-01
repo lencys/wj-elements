@@ -212,4 +212,12 @@ module.exports = {
   ],
   customFields: {},
   themes: [],
+  custom_settings: {
+    attributesForFaceting: [
+      "language",
+      "version",
+      "type",
+      "docusaurus_tag"
+    ]
+  }
 };
