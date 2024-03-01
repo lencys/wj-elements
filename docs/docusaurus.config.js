@@ -170,7 +170,8 @@ module.exports = {
     algolia: {
       appId: 'W0DED3MH0V',
       apiKey: '8423cfbc56b7dc0677817b93343eb914',
-      indexName: 'elements-webjet'
+      indexName: 'elements-webjet',
+      contextualSearch: true,
     },
   },
   plugins: [
@@ -211,13 +212,5 @@ module.exports = {
     ],
   ],
   customFields: {},
-  themes: [],
-  custom_settings: {
-    attributesForFaceting: [
-      "language",
-      "version",
-      "type",
-      "docusaurus_tag"
-    ]
-  }
+  themes: []
 };
