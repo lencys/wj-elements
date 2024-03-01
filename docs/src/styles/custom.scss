@@ -43,6 +43,7 @@
   //#endregion
 
   scroll-behavior: smooth;
+  --docsearch-primary-color: var(--ifm-link-color)!important;
 }
 
 html[data-theme='light'] {
@@ -90,6 +91,7 @@ html[data-theme='dark'] {
   --ifm-menu-link-sublist-icon-filter: invert(100%);
   --wj-box-shadow-large: var(--token-primary-bg-c);
   --wj-card-background: var(--ifm-menu-color-background-active);
+  --docsearch-modal-background: var(--token-primary-bg-c)!important;
 
 }
 
@@ -259,4 +261,9 @@ table tr th:nth-child(1), table tr td:nth-child(1) {
 .docs-doc-id-api\/dialog .playground__preview {
   padding: 0;
   margin: 0;
+}
+
+.DocSearch-Footer {
+  align-items: center;
+  background: transparent!important;
 }
