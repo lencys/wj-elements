@@ -13,11 +13,11 @@ template.innerHTML = `
       <div class="content" style="display: block; margin: 0; width: 100%;">
         <wj-menu id="custom-2" variant="megamenu" active>
           <wj-menu-item>
-            Home
+            <span>Home</span>
             <wj-icon slot="start" name="home"></wj-icon>
           </wj-menu-item>
           <wj-menu-item offset="5" variant="context" manual>
-            One
+            <span>One</span>
             <wj-icon slot="start" name="heart"></wj-icon>
             <wj-menu slot="submenu" offset="5" placement="bottom-start">
               <wj-menu-item>Menu item 1</wj-menu-item>
@@ -33,12 +33,12 @@ template.innerHTML = `
             </wj-menu>
           </wj-menu-item>
           <wj-menu-item>
-            Two
+            <span>Two</span>
             <wj-icon slot="start" name="map-pin"></wj-icon>
           </wj-menu-item>
           <wj-menu-item>
             <wj-icon slot="start" name="settings"></wj-icon>
-            Three
+            <span>Three</span>
           </wj-menu-item>
         </wj-menu> 
         
@@ -63,7 +63,10 @@ template.innerHTML = `
     <h2>Collapse</h2>
     <div class="playground" style="align-items: start;">
       <div class="content" style="display: block; margin: 0 auto;">
-<!--        <wj-button id="toggle">Toggle</wj-button>-->
+        <wj-button fill="link" toggle="off" id="toggle">
+          <wj-icon name="chevron-left" slot="toggle"></wj-icon>
+          <wj-icon name="chevron-right" slot="toggle"></wj-icon>
+        </wj-button>
         
         <wj-menu id="custom" variant="nav" collapse active>
           <wj-menu-item>
@@ -73,11 +76,11 @@ template.innerHTML = `
           <wj-menu-item>
             One
             <wj-icon slot="start" name="heart"></wj-icon>
-            <wj-menu slot="submenu">
+            <wj-menu slot="submenu" variant="nav">
               <wj-menu-item>Menu item 1</wj-menu-item>
               <wj-menu-item>
                 Menu item 2
-                <wj-menu slot="submenu">
+                <wj-menu slot="submenu" variant="nav">
                   <wj-menu-item>Menu item 2.1</wj-menu-item>
                   <wj-menu-item>Menu item 2.2</wj-menu-item>
                   <wj-menu-item>Menu item 2.3</wj-menu-item>
@@ -97,10 +100,16 @@ template.innerHTML = `
         </wj-menu> 
    
         <style>
+          #toggle {
+            margin-left: 1rem;
+          }
           #custom {
             --wj-menu-border-width: 0 1px 0 0;
-            --wj-menu-border-radius: 0;
-            max-width: 240px; 
+            --wj-menu-border-radius: 0 !important;
+            overflow: hidden;
+            max-width: 240px;
+            /*--wj-menu-collapse-width: 48px !important;*/
+            /*--wj-menu-check-icon-width: 15px;*/
           }
           
           #custom wj-menu-item::part(native) {
@@ -132,7 +141,7 @@ template.innerHTML = `
                   <wj-menu-item offset="10">Menu item 2.1</wj-menu-item>
                   <wj-menu-item offset="10">Menu item 2.2</wj-menu-item>
                   <wj-menu-item offset="10">Menu item 2.3</wj-menu-item>
-                </wj-menu >
+                </wj-menu>
               </wj-menu-item>
               <wj-menu-item offset="10">Menu item 3</wj-menu-item>
             </wj-menu>
@@ -175,6 +184,7 @@ export default class DemoNav extends WJElement {
     // console.log(expand, collapse, menu)
     toggle.addEventListener("wj:button-click", (e) => {
       menu.toggleAttribute("collapse");
+      menu.refresh();
     });
 
     // toggle.addEventListener("wj:button-click", (e) => {
