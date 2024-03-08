@@ -6,7 +6,6 @@ export function drag(container, options) {
     const offsetY = dims.top + defaultView.pageYOffset
     const x = pointerEvent.pageX - offsetX
     const y = pointerEvent.pageY - offsetY
-
     if (options?.onMove) {
       options.onMove(x, y)
     }
