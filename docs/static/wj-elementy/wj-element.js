@@ -392,11 +392,11 @@ class WJElement extends HTMLElement {
   get store() {
     return store;
   }
-  //		addAction,
-  //     deleteAction,
-  //     loadAction,
-  //     updateAction,
-  //     addManyAction
+  // addAction,
+  // deleteAction,
+  // loadAction,
+  // updateAction,
+  // addManyAction
   /**
    * @typedef {Object} ArrayActions
    * @property {function} addAction - Indicates whether the Courage component is present.
@@ -460,6 +460,7 @@ class WJElement extends HTMLElement {
   disconnectedCallback() {
     var _a, _b;
     (_a = this.beforeDisconnect) == null ? void 0 : _a.call(this);
+    console.log(this.isAttached);
     if (this.isAttached)
       this.context.innerHTML = "";
     this.isAttached = false;
@@ -584,6 +585,13 @@ class WJElement extends HTMLElement {
         }
       );
     });
+  }
+  static define(name, elementConstructor = this, options = {}) {
+    const definedElement = customElements.get(name);
+    if (!definedElement) {
+      customElements.define(name, elementConstructor, options);
+      return;
+    }
   }
 }
 __publicField(WJElement, "processTemplates", (pTemplate, template2) => {

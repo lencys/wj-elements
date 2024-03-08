@@ -1444,7 +1444,7 @@ class Popup extends WJElement {
   hide() {
     event.dispatchCustomEvent(this, "wj-popup:hide");
     this.native.classList.remove("popup-active");
-    this.cleanup();
+    this.cleanup;
     this.cleanup = void 0;
   }
   onHide() {
