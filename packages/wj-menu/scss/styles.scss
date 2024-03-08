@@ -7,14 +7,14 @@
   --wj-menu-border-width: 1px;
   --wj-menu-border-style: solid;
   --wj-menu-border-color: var(--wj-border-color);
-  --wj-menu-border-radius: 4px;
+  --wj-menu-border-radius: var(--wj-border-radius-small);
   --wj-menu-padding-top: .5rem;
   --wj-menu-padding-bottom: .5rem;
   --wj-menu-padding-inline: 0;
   --wj-menu-margin-top: ;
   --wj-menu-margin-bottom: 0;
   --wj-menu-margin-inline: 0;
-  --wj-menu-z-index: 900;
+  --wj-menu-collapse-width: 65px;
 
   display: none;
   background: var(--wj-menu-background);
@@ -22,9 +22,9 @@
   border-width: var(--wj-menu-border-width);
   border-style: var(--wj-menu-border-style);
   border-color: var(--wj-menu-border-color);
-  z-index: var(--wj-menu-z-index);
+  z-index: var(--wj-menu-z-index, 8);
 
-  border-radius: var(--wj-border-radius-small);
+  border-radius: var(--wj-menu-border-radius);
 
   padding-top: var(--wj-menu-padding-top);
   padding-bottom: var(--wj-menu-padding-bottom);
@@ -45,7 +45,7 @@
 }
 
 :host(.wj-menu-collapse) {
-  max-width: 70px !important;
+  width: var(--wj-menu-collapse-width);
 }
 
 :host([variant=context]) {

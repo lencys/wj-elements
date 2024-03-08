@@ -39,6 +39,16 @@ export class Menu extends WJElement {
 
         return fragment;
     }
+
+    afterDraw() {
+        Array.from(this.children).forEach((child) => {
+            child.refresh();
+        });
+    }
+
+    beforeDisconnect() {
+        this.context.innerHTML = "";
+    }
 }
 
 customElements.get("wj-menu") || window.customElements.define("wj-menu", Menu);

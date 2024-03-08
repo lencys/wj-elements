@@ -42,7 +42,11 @@ export class MenuItem extends WJElement {
     }
 
     get collapse() {
-        return this.parentElement?.hasAttribute("collapse");
+        if (this.closest('[collapse]'))
+            return true;
+
+        return false;
+        // return this.parentElement?.hasAttribute("collapse");
     }
 
     className = "MenuItem";
@@ -61,20 +65,30 @@ export class MenuItem extends WJElement {
         this.setAttribute("active-class", "open");
     }
 
+    beforeDraw(context, store, params) {
+        this.querySelector("wj-menu")?.removeAttribute("active");
+    }
+
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
         this.setAttribute("tabindex", "0");
+        console.log("DRAW", this.variant, this.collapse);
+        this.classList.forEach(className => {
+          // Ak trieda začína na "wj-menu-variant-", odstráňte ju
+          if (className.startsWith('wj-menu-variant-')) {
+            this.classList.remove(className);
+          }
+        });
 
+        this.classList.remove("collapse");
         this.classList.add("wj-menu-variant-" + this.variant.toLowerCase());
-        this.querySelector("wj-menu")?.setAttribute("variant", this.variant.toLowerCase());
-        // this.style.setProperty("--wj-menu-submenu-offset", (parseFloat(this.offset) || 0)  + "px");
 
-
-        // if (this.collapse)
-        //     this.classList.add("wj-menu-collapse");
-        // else
-        //     this.classList.remove("wj-menu-collapse");
+        if(!this.collapse) {
+            this.querySelector("wj-menu")?.setAttribute("variant", this.variant.toLowerCase());
+        } else if (this.parentElement?.hasAttribute("collapse")) {
+            this.classList.add("collapse");
+        }
 
         let native = document.createElement("div");
         native.setAttribute("part", "native");
@@ -137,7 +151,7 @@ export class MenuItem extends WJElement {
             isAppend = true;
         }
 
-        if (this.collapse && !this.hasSubmenu) {
+        if (this.parentElement?.hasAttribute("collapse") && !this.hasSubmenu ) {
             fragment.appendChild(this.collapseItem(native));
         } else if(!isAppend) {
             fragment.appendChild(native);
@@ -157,39 +171,41 @@ export class MenuItem extends WJElement {
         this.addEventListener("mousemove", this.dispatchMove);
         this.addEventListener("wj-popup:reposition", this.dispatchReposition);
 
+
         // Event na zobrazenie submenu
         event.addListener(this, "mouseover", null, (e) => {
-            if(this.hasAttribute("manual") || this.variant === "NAV" && !this.collapse) return;
-            e.stopPropagation();
-            this.showSubmenu();
-            this.focus();
+            if(this.collapse || this.variant === "CONTEXT" && this.hasSubmenu) {
+                if (this.hasAttribute("manual") || this.variant === "NAV" && this.collapse) return;
+
+                this.submenuActivated(e);
+
+                e.stopPropagation();
+
+                this.showSubmenu();
+                this.focus();
+            }
         });
 
         // Event na zrusenie zobrazenia submenu ked sa klikne mimo
         event.addListener(this, "focusout", null, (e) => {
-            if (e.relatedTarget && this.contains(e.relatedTarget) || this.variant === "NAV" && !this.collapse) {
-                return;
-            }
+            if(this.collapse || this.variant === "CONTEXT" && this.hasSubmenu) {
+              console.log("SOM TU:");
+                if (e.relatedTarget && this.contains(e.relatedTarget) || this.variant === "NAV" && !this.collapse) {
+                    return;
+                }
 
-            this.hideSubmenu();
+                this.submenuActivated(e);
+                this.hideSubmenu();
+            }
         });
 
-        if (!this.collapse && this.variant === "NAV" && this.hasSubmenu) {
-            event.addListener(this, "click", null, (e) => {
-                let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
-                if(!submenuElements.hasAttribute("active")) {
-                    submenuElements.setAttribute("active", "");
-                } else {
-                    if(this === e.target)
-                        submenuElements.removeAttribute("active");
-                }
+        event.addListener(this, "click", null, (e) => {
+            if (!this.collapse && this.variant === "NAV" && this.hasSubmenu) {
+                this.submenuActivated(e);
+                this.hideSubmenu();
                 e.stopPropagation();
-            });
-        } else {
-            event.addListener(this, "click", null, (e) => {
-                // console.log("CLICK", this);
-            });
-        }
+            }
+        });
     }
 
     collapseItem(native) {
@@ -222,6 +238,7 @@ export class MenuItem extends WJElement {
     }
 
     showSubmenu() {
+        console.log("SHOW SUBMENU", this.hasSubmenu);
         this.tabIndex = -1;
         if(this.hasSubmenu) {
             this.popup.setAttribute("active", "");
@@ -231,12 +248,29 @@ export class MenuItem extends WJElement {
     }
 
     hideSubmenu() {
+        console.log("HIDE SUBMENU", this);
         this.tabIndex = 0;
         if(this.hasSubmenu) {
             this.popup.removeAttribute("active");
             this.classList.remove("expanded-submenu");
             this.native.classList.remove("expanded-submenu");
         }
+    }
+
+    submenuActivated(e) {
+      if(this.hasSubmenu) {
+        let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
+        if (!submenuElements.hasAttribute("active")) {
+            submenuElements.setAttribute("active", "");
+        } else {
+            if (this === e.target)
+                submenuElements.removeAttribute("active");
+        }
+      }
+    }
+
+    beforeDisconnect() {
+        this.context.innerHTML = "";
     }
 }
 

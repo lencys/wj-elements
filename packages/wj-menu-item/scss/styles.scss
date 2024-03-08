@@ -36,6 +36,7 @@
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+    justify-content: center;
     color: var(--wj-menu-item-color);
     padding-top: var(--wj-menu-item-padding-top);
     padding-bottom: var(--wj-menu-item-padding-bottom);
@@ -44,7 +45,7 @@
     white-space: nowrap;
     cursor: pointer;
     width: 100%;
-    line-height: var(--wj-menu-item-line-height);
+    //line-height: var(--wj-menu-item-line-height);
 
     &:hover {
       color: var(--wj-menu-item-color-hover);
@@ -66,6 +67,7 @@
       display: inline-block;
       text-overflow: ellipsis;
       overflow: hidden;
+      line-height: normal;
     }
 
     .check-icon {
@@ -73,7 +75,7 @@
       display: var(--wj-menu-item-check-icon-display, flex);
       align-items: center;
       justify-content: center;
-      width: 1.5rem;
+      width: var(--wj-menu-check-icon-width, 1.5rem);
       visibility: hidden;
 
       &.checked {
@@ -109,6 +111,25 @@
   }
 }
 
+:host(.collapse) {
+
+  ::slotted([slot="start"]) {
+    margin: 0;
+    width: auto;
+    display: contents;
+  }
+
+  ::slotted([slot="end"]) {
+    display: none;
+  }
+
+  .label,
+  .check-icon,
+  .submenu-icon {
+    display: none;
+  }
+
+}
 .submenu-icon {
   --wj-icon-size: 14px !important;
   flex: 0 0 auto;
