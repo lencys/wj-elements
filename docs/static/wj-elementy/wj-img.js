@@ -40,7 +40,7 @@ class Img extends WJElement {
     lazyImageObserver.observe(this.img);
   }
 }
-customElements.get("wj-img") || window.customElements.define("wj-img", Img);
+WJElement.define("wj-img", Img);
 export {
-  Img
+  Img as default
 };

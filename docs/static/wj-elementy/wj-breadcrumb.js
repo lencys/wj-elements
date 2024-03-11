@@ -138,6 +138,7 @@ class Breadcrumb extends WJElement {
   }
 }
 customElements.get("wj-breadcrumb") || window.customElements.define("wj-breadcrumb", Breadcrumb);
+WJElement.define("wj-breadcrumb", Breadcrumb);
 export {
-  Breadcrumb
+  Breadcrumb as default
 };

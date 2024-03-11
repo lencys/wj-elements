@@ -67,7 +67,7 @@ class RelativeTime extends WJElement {
     return regex.test(str);
   }
 }
-customElements.get("wj-relative-time") || window.customElements.define("wj-relative-time", RelativeTime);
+WJElement.define("wj-relative-time", RelativeTime);
 export {
-  RelativeTime
+  RelativeTime as default
 };

@@ -1,41 +1,8 @@
-import { default as WJElement, event } from "../wj-element/wj-element.js";
+import { default as WJElement } from "../wj-element/wj-element.js";
+import CarouselItem from "./carousel-item.element.js";
 
-import styles from "./scss/styles.scss?inline";
+// export * from "./carousel-item.element.js";
+export default CarouselItem;
 
-export class CarouselItem extends WJElement {
-    constructor() {
-        super();
-    }
+WJElement.define("wj-carousel-item", CarouselItem);
 
-    className = "CarouselItem";
-
-    static get cssStyleSheet() {
-        return styles;
-    }
-
-    static get observedAttributes() {
-        return [];
-    }
-
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
-
-    draw(context, store, params) {
-        let fragment = document.createDocumentFragment();
-
-        let native = document.createElement("div");
-        native.classList.add("native-carousel-item");
-        native.setAttribute("part", "native");
-
-        let slot = document.createElement("slot");
-
-        native.appendChild(slot);
-
-        fragment.appendChild(native);
-
-        return fragment;
-    }
-}
-
-customElements.get("wj-carousel-item") || window.customElements.define("wj-carousel-item", CarouselItem);

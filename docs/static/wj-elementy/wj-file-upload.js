@@ -314,7 +314,7 @@ class FileUpload extends WJElement {
     this.updateStatusMessage(`🤷‍♂ Nothing's uploaded`);
   }
 }
-customElements.get("wj-file-upload") || window.customElements.define("wj-file-upload", FileUpload);
+WJElement.define("wj-file-upload", FileUpload);
 export {
-  FileUpload
+  FileUpload as default
 };

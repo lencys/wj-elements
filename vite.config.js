@@ -72,8 +72,6 @@ export default defineConfig({
                 "menu-button": "./packages/wj-menu-button/menu-button.js",
                 "menu-item": "./packages/wj-menu-item/menu-item.js",
                 "menu-label": "./packages/wj-menu-label/menu-label.js",
-                "nav": "./packages/wj-nav/nav.js",
-                "nav-menu": "./packages/wj-nav-menu/nav-menu.js",
                 "option": "./packages/wj-option/option.js",
                 "options": "./packages/wj-options/options.js",
                 "popup": "./packages/wj-popup/popup.js",

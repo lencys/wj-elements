@@ -26,7 +26,7 @@ class Card extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-card") || window.customElements.define("wj-card", Card);
+WJElement.define("wj-card", Card);
 export {
-  Card
+  Card as default
 };

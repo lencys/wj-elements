@@ -29,7 +29,7 @@ class CardSubtitle extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-card-subtitle") || window.customElements.define("wj-card-subtitle", CardSubtitle);
+WJElement.define("wj-card-subtitle", CardSubtitle);
 export {
-  CardSubtitle
+  CardSubtitle as default
 };

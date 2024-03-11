@@ -30,7 +30,7 @@ class Tab extends WJElement {
     event.addListener(this, "click", "wj:tab-change");
   }
 }
-customElements.get("wj-tab") || window.customElements.define("wj-tab", Tab);
+WJElement.define("wj-tab", Tab);
 export {
-  Tab
+  Tab as default
 };

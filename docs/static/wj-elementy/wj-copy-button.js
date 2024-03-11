@@ -5,7 +5,7 @@ var __publicField = (obj, key, value) => {
   return value;
 };
 import WJElement, { event } from "./wj-element.js";
-import { Input } from "./wj-input.js";
+import Input from "./wj-input.js";
 function createNode(text) {
   const node = document.createElement("pre");
   node.style.width = "1px";
@@ -145,7 +145,7 @@ class CopyButton extends WJElement {
     }
   }
 }
-customElements.get("wj-copy-button") || window.customElements.define("wj-copy-button", CopyButton);
+WJElement.define("wj-copy-button", CopyButton);
 export {
-  CopyButton
+  CopyButton as default
 };

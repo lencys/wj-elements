@@ -29,7 +29,7 @@ class Container extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-container") || window.customElements.define("wj-container", Container);
+WJElement.define("wj-container", Container);
 export {
-  Container
+  Container as default
 };

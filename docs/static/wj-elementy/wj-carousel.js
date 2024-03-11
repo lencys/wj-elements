@@ -248,7 +248,7 @@ class Carousel extends WJElement {
     return this.querySelector(".native-carousel").scrollLeft > 0;
   }
 }
-customElements.get("wj-carousel") || window.customElements.define("wj-carousel", Carousel);
+WJElement.define("wj-carousel", Carousel);
 export {
-  Carousel
+  Carousel as default
 };

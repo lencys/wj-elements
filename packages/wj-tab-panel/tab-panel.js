@@ -1,31 +1,8 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement } from "../wj-element/wj-element.js";
+import TabPanel from "./tab-panel.element.js";
 
-import styles from "./scss/styles.scss?inline";
+// export * from "./tab-panel.element.js";
+export default TabPanel;
 
-export class TabPanel extends WJElement {
-    constructor() {
-        super();
-    }
+WJElement.define("wj-tab-panel", TabPanel);
 
-    className = "TabPanel";
-
-    static get cssStyleSheet() {
-        return styles;
-    }
-
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
-
-    draw(context, store, params) {
-        let fragment = document.createDocumentFragment();
-
-        let element = document.createElement("slot");
-
-        fragment.appendChild(element);
-
-        return fragment;
-    }
-}
-
-customElements.get("wj-tab-panel") || window.customElements.define("wj-tab-panel", TabPanel);

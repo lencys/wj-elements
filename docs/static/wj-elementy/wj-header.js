@@ -31,7 +31,7 @@ class Header extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-header") || window.customElements.define("wj-header", Header);
+WJElement.define("wj-header", Header);
 export {
-  Header
+  Header as default
 };

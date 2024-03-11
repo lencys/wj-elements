@@ -82,7 +82,7 @@ class FileUploadItem extends WJElement {
     this.button.addEventListener("wj:button-click", this.onDelete);
   }
 }
-customElements.get("wj-file-upload-item") || window.customElements.define("wj-file-upload-item", FileUploadItem);
+WJElement.define("wj-file-upload-item", FileUploadItem);
 export {
-  FileUploadItem
+  FileUploadItem as default
 };

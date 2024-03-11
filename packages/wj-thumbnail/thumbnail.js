@@ -1,38 +1,8 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement } from "../wj-element/wj-element.js";
+import Thumbnail from "./thumbnail.element.js";
 
-import styles from "./scss/styles.scss?inline";
+// export * from "./thumbnail.element.js";
+export default Thumbnail;
 
-export class Thumbnail extends WJElement {
-    constructor() {
-        super();
-    }
+WJElement.define("wj-thumbnail", Thumbnail);
 
-    className = "Thumbnail";
-
-    static get cssStyleSheet() {
-        return styles;
-    }
-
-    static get observedAttributes() {
-        return [];
-    }
-
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
-
-    beforeDraw(context, store, params) {
-    }
-
-    draw(context, store, params) {
-        let fragment = document.createDocumentFragment();
-
-        let element = document.createElement("slot");
-
-        fragment.appendChild(element);
-
-        return fragment;
-    }
-}
-
-customElements.get("wj-thumbnail") || window.customElements.define("wj-thumbnail", Thumbnail);

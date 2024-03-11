@@ -1,35 +1,8 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement } from "../wj-element/wj-element.js";
+import Main from "./main.element.js";
 
-import styles from "./scss/styles.scss?inline";
+// export * from "./main.element.js";
+export default Main;
 
-export class Main extends WJElement {
-    constructor() {
-        super();
-    }
+WJElement.define("wj-main", Main);
 
-    className = "Main";
-
-    static get cssStyleSheet() {
-        return styles;
-    }
-
-    static get observedAttributes() {
-        return [];
-    }
-
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
-
-    draw(context, store, params) {
-        let fragment = document.createDocumentFragment();
-
-        let element = document.createElement("slot");
-
-        fragment.appendChild(element);
-
-        return fragment;
-    }
-}
-
-customElements.get("wj-main") || window.customElements.define("wj-main", Main);

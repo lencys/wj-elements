@@ -1527,7 +1527,7 @@ class Routerx extends WJElement {
     this.router.destroy();
   }
 }
-customElements.get("wj-router") || window.customElements.define("wj-router", Routerx);
+WJElement.define("wj-router", Routerx);
 export {
-  Routerx
+  Routerx as default
 };

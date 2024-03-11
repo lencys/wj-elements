@@ -27,7 +27,7 @@ class Form extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-form") || window.customElements.define("wj-form", Form);
+WJElement.define("wj-form", Form);
 export {
-  Form
+  Form as default
 };

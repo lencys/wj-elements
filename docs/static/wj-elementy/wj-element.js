@@ -330,7 +330,7 @@ dispatch_fn = function(e) {
 let event = new WjEvent();
 const template = document.createElement("template");
 template.innerHTML = ``;
-class WJElement extends HTMLElement {
+const _WJElement = class _WJElement extends HTMLElement {
   constructor(componentTemplate) {
     super();
     __publicField(this, "initWjElement", async (force = false) => {
@@ -350,16 +350,17 @@ class WJElement extends HTMLElement {
       this.context.adoptedStyleSheets = [sheet];
     });
     this.template = componentTemplate || template;
-    this._attributes = {};
     this.isAttached = false;
     this.service = new UniversalService({
       store
     });
+    this.defineDepandencies();
     this.rendering = false;
     this.runtimeTimeout = null;
     this.count = 0;
     this.functionStack = [];
     this.scheludedRefresh = false;
+    this._depandencies = {};
   }
   get permission() {
     return this.getAttribute("permission-check");
@@ -419,6 +420,23 @@ class WJElement extends HTMLElement {
   get removeClassAfterConnect() {
     var _a;
     return (_a = this.getAttribute("remove-class-after-connect")) == null ? void 0 : _a.split(" ");
+  }
+  get depandencies() {
+    return this._depandencies;
+  }
+  set depandencies(value) {
+    this._depandencies = value;
+  }
+  static define(name, elementConstructor = this, options = {}) {
+    const definedElement = customElements.get(name);
+    if (!definedElement) {
+      customElements.define(name, elementConstructor, options);
+      return;
+    }
+  }
+  defineDepandencies() {
+    if (this.depandencies)
+      Object.entries(depandencies).forEach((name, component) => _WJElement.define(name, component));
   }
   beforeDraw() {
   }
@@ -586,21 +604,14 @@ class WJElement extends HTMLElement {
       );
     });
   }
-  static define(name, elementConstructor = this, options = {}) {
-    const definedElement = customElements.get(name);
-    if (!definedElement) {
-      customElements.define(name, elementConstructor, options);
-      return;
-    }
-  }
-}
-__publicField(WJElement, "processTemplates", (pTemplate, template2) => {
+};
+__publicField(_WJElement, "processTemplates", (pTemplate, template2) => {
   const newTemplate = document.createElement("template");
   newTemplate.innerHTML = [template2.innerHTML, (pTemplate == null ? void 0 : pTemplate.innerHTML) || ""].join("");
   return newTemplate;
 });
+let WJElement = _WJElement;
 let __esModule = "true";
-customElements.get("wj-element") || customElements.define("wj-element", WJElement);
 export {
   WjElementUtils,
   WjPermissionsApi,

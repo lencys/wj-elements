@@ -14,7 +14,7 @@ class Route extends WJElement {
     return [];
   }
 }
-customElements.get("wj-route") || window.customElements.define("wj-route", Route);
+WJElement.define("wj-route", Route);
 export {
-  Route
+  Route as default
 };

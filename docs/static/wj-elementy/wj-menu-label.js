@@ -30,7 +30,7 @@ class MenuLabel extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-menu-label") || window.customElements.define("wj-menu-label", MenuLabel);
+WJElement.define("wj-menu-label", MenuLabel);
 export {
-  MenuLabel
+  MenuLabel as default
 };

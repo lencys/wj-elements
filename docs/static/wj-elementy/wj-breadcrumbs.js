@@ -49,7 +49,7 @@ class Breadcrumbs extends WJElement {
     return Array.from(this.querySelectorAll("wj-breadcrumb")) || [];
   }
 }
-customElements.get("wj-breadcrumbs") || window.customElements.define("wj-breadcrumbs", Breadcrumbs);
+WJElement.define("wj-breadcrumbs", Breadcrumbs);
 export {
-  Breadcrumbs
+  Breadcrumbs as default
 };

@@ -70,7 +70,7 @@ class TabGroup extends WJElement {
     return Array.from(this.querySelectorAll("wj-tab-panel"));
   }
 }
-customElements.get("wj-tab-group") || window.customElements.define("wj-tab-group", TabGroup);
+WJElement.define("wj-tab-group", TabGroup);
 export {
-  TabGroup
+  TabGroup as default
 };

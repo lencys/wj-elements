@@ -1,43 +1,8 @@
 import { default as WJElement } from "../wj-element/wj-element.js";
-import { bindRouterLinks } from "../wj-router/plugins/slick-router/middlewares/router-links.js";
+import RouterLink from "./router-link.element.js";
 
-import styles from "./scss/styles.scss?inline";
+// export * from "./router-link.element.js";
+export default RouterLink;
 
-export class RouterLink extends WJElement {
-    constructor() {
-        super();
+WJElement.define("wj-router-link", RouterLink);
 
-        this.unbindRouterLinks = bindRouterLinks(this, { selector: false });
-    }
-
-    className = "RouterLink";
-
-    static get cssStyleSheet() {
-        return styles;
-    }
-
-    static get observedAttributes() {
-        return [];
-    }
-
-    setupAttributes() {
-        this.isShadowRoot = "open";
-        this.setAttribute("active-class", "active");
-    }
-
-    draw(context, store, params) {
-        let fragment = document.createDocumentFragment();
-
-        let element = document.createElement("slot");
-
-        fragment.appendChild(element);
-
-        return fragment;
-    }
-
-    beforeDisconnect() {
-        this.unbindRouterLinks();
-    }
-}
-
-customElements.get("wj-router-link") || window.customElements.define("wj-router-link", RouterLink);

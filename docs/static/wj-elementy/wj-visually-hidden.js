@@ -27,7 +27,7 @@ class VisuallyHidden extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-visually-hidden") || window.customElements.define("wj-visually-hidden", VisuallyHidden);
+WJElement.define("wj-visually-hidden", VisuallyHidden);
 export {
-  VisuallyHidden
+  VisuallyHidden as default
 };

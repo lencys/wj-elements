@@ -59,7 +59,7 @@ class FormatDigital extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-format-digital") || window.customElements.define("wj-format-digital", FormatDigital);
+WJElement.define("wj-format-digital", FormatDigital);
 export {
-  FormatDigital
+  FormatDigital as default
 };

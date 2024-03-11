@@ -48,7 +48,7 @@ class ButtonGroup extends WJElement {
     return el.closest(selector) ?? el.querySelector(selector);
   }
 }
-customElements.get("wj-button-group") || window.customElements.define("wj-button-group", ButtonGroup);
+WJElement.define("wj-button-group", ButtonGroup);
 export {
-  ButtonGroup
+  ButtonGroup as default
 };

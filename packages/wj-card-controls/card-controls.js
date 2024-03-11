@@ -1,30 +1,8 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
-import styles from "./scss/styles.scss?inline";
+import { default as WJElement } from "../wj-element/wj-element.js";
+import CardControls from "./card-controls.element.js";
 
-export class CardControls extends WJElement {
-    constructor() {
-        super();
-    }
+// export * from "./card-controls.element.js";
+export default CardControls;
 
-    className = "CardControls";
+WJElement.define("wj-card-controls", CardControls);
 
-    static get cssStyleSheet() {
-        return styles;
-    }
-
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
-
-    draw(context, store, params) {
-        let fragment = document.createDocumentFragment();
-
-        let element = document.createElement("slot");
-
-        fragment.appendChild(element);
-
-        return fragment;
-    }
-}
-
-customElements.get("wj-card-controls") || window.customElements.define("wj-card-controls", CardControls);

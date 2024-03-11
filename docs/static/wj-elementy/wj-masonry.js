@@ -183,7 +183,7 @@ class Masonry extends WJElement {
     debounce(this.layout, ms, this.debounceId);
   }
 }
-customElements.get("wj-masonry") || window.customElements.define("wj-masonry", Masonry);
+WJElement.define("wj-masonry", Masonry);
 export {
-  Masonry
+  Masonry as default
 };

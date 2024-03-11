@@ -170,7 +170,7 @@ class Rate extends WJElement {
     return Math.ceil(numberToRound * multiplier) / multiplier;
   }
 }
-customElements.get("wj-rate") || window.customElements.define("wj-rate", Rate);
+WJElement.define("wj-rate", Rate);
 export {
-  Rate
+  Rate as default
 };

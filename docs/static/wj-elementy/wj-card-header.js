@@ -26,7 +26,7 @@ class CardHeader extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-card-header") || window.customElements.define("wj-card-header", CardHeader);
+WJElement.define("wj-card-header", CardHeader);
 export {
-  CardHeader
+  CardHeader as default
 };

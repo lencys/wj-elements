@@ -236,7 +236,7 @@ class Input extends WJElement {
   }
 }
 __publicField(Input, "formAssociated", true);
-customElements.get("wj-input") || window.customElements.define("wj-input", Input);
+WJElement.define("wj-input", Input);
 export {
-  Input
+  Input as default
 };

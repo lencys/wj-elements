@@ -27,7 +27,7 @@ class Main extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-main") || window.customElements.define("wj-main", Main);
+WJElement.define("wj-main", Main);
 export {
-  Main
+  Main as default
 };

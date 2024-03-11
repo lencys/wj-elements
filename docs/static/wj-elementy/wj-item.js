@@ -57,7 +57,7 @@ class Item extends WJElement {
 		</div>`;
   }
 }
-customElements.get("wj-item") || window.customElements.define("wj-item", Item);
+WJElement.define("wj-item", Item);
 export {
-  Item
+  Item as default
 };

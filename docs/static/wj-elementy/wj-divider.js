@@ -29,7 +29,7 @@ class Divider extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-divider") || window.customElements.define("wj-divider", Divider);
+WJElement.define("wj-divider", Divider);
 export {
-  Divider
+  Divider as default
 };

@@ -26,9 +26,7 @@ class Badge extends WJElement {
     return fragment;
   }
 }
-let __esModule = "true";
-customElements.get("wj-badge") || window.customElements.define("wj-badge", Badge);
+WJElement.define("wj-badge", Badge);
 export {
-  Badge,
-  __esModule
+  Badge as default
 };

@@ -127,7 +127,7 @@ class ProgressBar extends WJElement {
     return this.getCircleDasharray(radius) * ((100 - progress) / 100);
   }
 }
-customElements.get("wj-progress-bar") || window.customElements.define("wj-progress-bar", ProgressBar);
+WJElement.define("wj-progress-bar", ProgressBar);
 export {
-  ProgressBar
+  ProgressBar as default
 };

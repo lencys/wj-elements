@@ -105,7 +105,7 @@ class Toast extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-toast") || window.customElements.define("wj-toast", Toast);
+WJElement.define("wj-toast", Toast);
 export {
-  Toast
+  Toast as default
 };

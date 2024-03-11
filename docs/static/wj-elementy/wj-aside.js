@@ -31,7 +31,7 @@ class Aside extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-aside") || window.customElements.define("wj-aside", Aside);
+WJElement.define("wj-aside", Aside);
 export {
-  Aside
+  Aside as default
 };

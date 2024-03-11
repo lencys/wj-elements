@@ -31,7 +31,7 @@ class Label extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-label") || window.customElements.define("wj-label", Label);
+WJElement.define("wj-label", Label);
 export {
-  Label
+  Label as default
 };

@@ -37,7 +37,7 @@ class Options extends WJElement {
     return data;
   }
 }
-customElements.get("wj-options") || window.customElements.define("wj-options", Options);
+WJElement.define("wj-options", Options);
 export {
-  Options
+  Options as default
 };

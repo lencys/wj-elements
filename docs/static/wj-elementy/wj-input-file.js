@@ -63,7 +63,7 @@ class InputFile extends WJElement {
     });
   }
 }
-customElements.get("wj-input-file") || window.customElements.define("wj-input-file", InputFile);
+WJElement.define("wj-input-file", InputFile);
 export {
-  InputFile
+  InputFile as default
 };

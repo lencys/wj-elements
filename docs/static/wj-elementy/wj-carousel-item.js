@@ -31,7 +31,7 @@ class CarouselItem extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-carousel-item") || window.customElements.define("wj-carousel-item", CarouselItem);
+WJElement.define("wj-carousel-item", CarouselItem);
 export {
-  CarouselItem
+  CarouselItem as default
 };

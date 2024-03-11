@@ -1,15 +1,8 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement } from "../wj-element/wj-element.js";
+import Route from "./route.element.js";
 
-export class Route extends WJElement {
-    constructor() {
-        super();
-    }
+// export * from "./route.element.js";
+export default Route;
 
-    className = "Route";
+WJElement.define("wj-route", Route);
 
-    static get observedAttributes() {
-        return [];
-    }
-}
-
-customElements.get("wj-route") || window.customElements.define("wj-route", Route);

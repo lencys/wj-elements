@@ -62,7 +62,7 @@ class Avatar extends WJElement {
     return this.getElementsByTagName("wj-img").length > 0;
   }
 }
-customElements.get("wj-avatar") || window.customElements.define("wj-avatar", Avatar);
+WJElement.define("wj-avatar", Avatar);
 export {
-  Avatar
+  Avatar as default
 };

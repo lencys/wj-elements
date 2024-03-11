@@ -155,7 +155,7 @@ class Slider extends WJElement {
     return Number((value - min) * 100 / (max - min)) || 0;
   }
 }
-customElements.get("wj-slider") || customElements.define("wj-slider", Slider);
+WJElement.define("wj-slider", Slider);
 export {
-  Slider
+  Slider as default
 };

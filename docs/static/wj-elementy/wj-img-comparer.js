@@ -87,7 +87,7 @@ class ImgComparer extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-img-comparer") || window.customElements.define("wj-img-comparer", ImgComparer);
+WJElement.define("wj-img-comparer", ImgComparer);
 export {
-  ImgComparer
+  ImgComparer as default
 };

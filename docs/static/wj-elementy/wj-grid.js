@@ -29,7 +29,7 @@ class Grid extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-grid") || window.customElements.define("wj-grid", Grid);
+WJElement.define("wj-grid", Grid);
 export {
-  Grid
+  Grid as default
 };

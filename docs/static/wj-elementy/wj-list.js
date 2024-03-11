@@ -28,7 +28,7 @@ class List extends WJElement {
     this.classList.toggle("wj-inset", this.hasAttribute("inset"));
   }
 }
-customElements.get("wj-list") || window.customElements.define("wj-list", List);
+WJElement.define("wj-list", List);
 export {
-  List
+  List as default
 };

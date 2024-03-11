@@ -54,7 +54,7 @@ class Toggle extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-toggle") || window.customElements.define("wj-toggle", Toggle);
+WJElement.define("wj-toggle", Toggle);
 export {
-  Toggle
+  Toggle as default
 };

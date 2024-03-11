@@ -41,7 +41,7 @@ class Dropdown extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-dropdown") || window.customElements.define("wj-dropdown", Dropdown);
+WJElement.define("wj-dropdown", Dropdown);
 export {
-  Dropdown
+  Dropdown as default
 };

@@ -108,7 +108,7 @@ class Textarea extends WJElement {
     this.resizeObserver.unobserve(this.input);
   }
 }
-customElements.get("wj-textarea") || window.customElements.define("wj-textarea", Textarea);
+WJElement.define("wj-textarea", Textarea);
 export {
-  Textarea
+  Textarea as default
 };

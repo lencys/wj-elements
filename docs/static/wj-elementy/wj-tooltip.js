@@ -55,7 +55,7 @@ class Tooltip extends WJElement {
     event.addListener(anchorEl, "mouseleave", null, this.onHide);
   }
 }
-customElements.get("wj-tooltip") || window.customElements.define("wj-tooltip", Tooltip);
+WJElement.define("wj-tooltip", Tooltip);
 export {
-  Tooltip
+  Tooltip as default
 };

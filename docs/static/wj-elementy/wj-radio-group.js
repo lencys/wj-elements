@@ -5,7 +5,7 @@ var __publicField = (obj, key, value) => {
   return value;
 };
 import WJElement from "./wj-element.js";
-import { Radio } from "./wj-radio.js";
+import Radio from "./wj-radio.js";
 const styles = "/*\n[ WJ Radio Group ]\n*/\n.wj-inline {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  gap: 0.5rem;\n}";
 class RadioGroup extends WJElement {
   constructor() {
@@ -58,7 +58,7 @@ class RadioGroup extends WJElement {
     return Array.from(this.childNodes);
   }
 }
-customElements.get("wj-radio-group") || window.customElements.define("wj-radio-group", RadioGroup);
+WJElement.define("wj-radio-group", RadioGroup);
 export {
-  RadioGroup
+  RadioGroup as default
 };

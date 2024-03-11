@@ -1,38 +1,8 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement } from "../wj-element/wj-element.js";
+import CardSubtitle from "./card-subtitle.element.js";
 
-import styles from "./scss/styles.scss?inline";
+// export * from "./card-subtitle.element.js";
+export default CardSubtitle;
 
-export class CardSubtitle extends WJElement {
-    constructor() {
-        super();
-    }
+WJElement.define("wj-card-subtitle", CardSubtitle);
 
-    className = "CardTitle";
-
-    static get cssStyleSheet() {
-        return styles;
-    }
-
-    static get observedAttributes() {
-        return [];
-    }
-
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
-
-    beforeDraw(context, store, params) {
-    }
-
-    draw(context, store, params) {
-        let fragment = document.createDocumentFragment();
-
-        let element = document.createElement("slot");
-
-        fragment.appendChild(element);
-
-        return fragment;
-    }
-}
-
-customElements.get("wj-card-subtitle") || window.customElements.define("wj-card-subtitle", CardSubtitle);

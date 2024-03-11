@@ -24,7 +24,7 @@ class CardControls extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-card-controls") || window.customElements.define("wj-card-controls", CardControls);
+WJElement.define("wj-card-controls", CardControls);
 export {
-  CardControls
+  CardControls as default
 };

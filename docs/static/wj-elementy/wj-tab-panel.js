@@ -24,7 +24,7 @@ class TabPanel extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-tab-panel") || window.customElements.define("wj-tab-panel", TabPanel);
+WJElement.define("wj-tab-panel", TabPanel);
 export {
-  TabPanel
+  TabPanel as default
 };

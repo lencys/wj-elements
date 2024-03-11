@@ -70,7 +70,7 @@ class Animation extends WJElement {
     return await fetchAndParseCSS(cssUrl);
   }
 }
-customElements.get("wj-animation") || window.customElements.define("wj-animation", Animation);
+WJElement.define("wj-animation", Animation);
 export {
-  Animation
+  Animation as default
 };

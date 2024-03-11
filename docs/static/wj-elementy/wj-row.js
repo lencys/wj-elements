@@ -28,7 +28,7 @@ class Row extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-row") || window.customElements.define("wj-row", Row);
+WJElement.define("wj-row", Row);
 export {
-  Row
+  Row as default
 };

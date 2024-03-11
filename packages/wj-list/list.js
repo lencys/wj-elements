@@ -1,36 +1,8 @@
-import WJElement from "../wj-element/wj-element.js";
+import { default as WJElement } from "../wj-element/wj-element.js";
+import List from "./list.element.js";
 
-import styles from "./scss/styles.scss?inline";
+// export * from "./list.element.js";
+export default List;
 
-export class List extends WJElement {
-    constructor() {
-        super();
-    }
+WJElement.define("wj-list", List);
 
-    className = "List";
-
-    static get cssStyleSheet() {
-        return styles;
-    }
-
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
-
-    draw(context, store, params) {
-        let fragment = document.createDocumentFragment();
-
-        let element = document.createElement("slot");
-
-        fragment.appendChild(element);
-
-        return fragment;
-    }
-
-    afterDraw() {
-        this.classList.toggle("wj-lines-" + this.lines, this.hasAttribute("lines"));
-        this.classList.toggle("wj-inset", this.hasAttribute("inset"));
-    }
-}
-
-customElements.get("wj-list") || window.customElements.define("wj-list", List);

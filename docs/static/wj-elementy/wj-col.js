@@ -38,7 +38,7 @@ class Col extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-col") || window.customElements.define("wj-col", Col);
+WJElement.define("wj-col", Col);
 export {
-  Col
+  Col as default
 };

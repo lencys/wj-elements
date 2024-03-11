@@ -33,7 +33,7 @@ class RouterLink extends WJElement {
     this.unbindRouterLinks();
   }
 }
-customElements.get("wj-router-link") || window.customElements.define("wj-router-link", RouterLink);
+WJElement.define("wj-router-link", RouterLink);
 export {
-  RouterLink
+  RouterLink as default
 };

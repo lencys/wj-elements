@@ -32,7 +32,7 @@ class MenuButton extends WJElement {
     });
   }
 }
-customElements.get("wj-menu-button") || window.customElements.define("wj-menu-button", MenuButton);
+WJElement.define("wj-menu-button", MenuButton);
 export {
-  MenuButton
+  MenuButton as default
 };

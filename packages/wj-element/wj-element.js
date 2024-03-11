@@ -8,33 +8,26 @@ const template = document.createElement('template');
 template.innerHTML = ``;
 
 export default class WJElement extends HTMLElement {
-	static processTemplates = (pTemplate, template) => {
-		const newTemplate = document.createElement('template');
-		newTemplate.innerHTML = [template.innerHTML, pTemplate?.innerHTML || ''].join('');
-		return newTemplate;
-	};
-
 	constructor(componentTemplate) {
 		super();
 
 		this.template = componentTemplate || template;
 
-		// TODO RHR- zatial nevyužívané
-		this._attributes = {};
 		this.isAttached = false;
 		this.service = new UniversalService({
 			store: store,
 		});
 
-		this.rendering = false;
+		// definujeme vsetky zavislosti.
+		// Do zavislosti patria len komponenty, ktore su zavisle od ktoreho je zavisly tento komponent
+		this.defineDepandencies();
 
+		this.rendering = false;
 		this.runtimeTimeout = null;
 		this.count = 0;
-
 		this.functionStack = [];
-
-
-		this.scheludedRefresh = false; 
+		this.scheludedRefresh = false;
+		this._depandencies = {};
 	}
 
 	get permission() {
@@ -107,6 +100,33 @@ export default class WJElement extends HTMLElement {
 
 	get removeClassAfterConnect() {
 		return this.getAttribute('remove-class-after-connect')?.split(' ');
+	}
+
+	get depandencies(){
+		return this._depandencies;
+	}
+
+	set depandencies(value){
+		this._depandencies = value;
+	};
+
+	static processTemplates = (pTemplate, template) => {
+		const newTemplate = document.createElement('template');
+		newTemplate.innerHTML = [template.innerHTML, pTemplate?.innerHTML || ''].join('');
+		return newTemplate;
+	};
+
+	static define(name, elementConstructor = this, options = {}) {
+		const definedElement = customElements.get(name);
+		if (!definedElement) {
+			customElements.define(name, elementConstructor, options);
+			return;
+		}
+	}
+
+	defineDepandencies(){
+		if(this.depandencies)
+			Object.entries(depandencies).forEach((name, component) => WJElement.define(name, component))
 	}
 
 	beforeDraw() {}
@@ -388,17 +408,9 @@ export default class WJElement extends HTMLElement {
 			);
 		});
 	}
-
-	static define(name, elementConstructor = this, options = {}) {
-		const definedElement = customElements.get(name);
-		if (!definedElement) {
-			customElements.define(name, elementConstructor, options);
-			return;
-		}
-	}
 }
 
 let __esModule = 'true';
 export {__esModule, WjPermissionsApi, WjElementUtils, event};
 
-customElements.get("wj-element") || customElements.define("wj-element", WJElement);
+// customElements.get("wj-element") || customElements.define("wj-element", WJElement);

@@ -1,35 +1,8 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement } from "../wj-element/wj-element.js";
+import Footer from "./footer.element.js";
 
-import styles from "./scss/styles.scss?inline";
+// export * from "./footer.element.js";
+export default Footer;
 
-export class Footer extends WJElement {
-    constructor() {
-        super();
-    }
+WJElement.define("wj-footer", Footer);
 
-    className = "Footer";
-
-    static get cssStyleSheet() {
-        return styles;
-    }
-
-    static get observedAttributes() {
-        return [];
-    }
-
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
-
-    draw(context, store, params) {
-        let fragment = document.createDocumentFragment();
-
-        let element = document.createElement("slot");
-
-        fragment.appendChild(element);
-
-        return fragment;
-    }
-}
-
-customElements.get("wj-footer") || window.customElements.define("wj-footer", Footer);

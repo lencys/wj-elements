@@ -65,7 +65,7 @@ class Radio extends WJElement {
     event.removeElement(this);
   }
 }
-customElements.get("wj-radio") || window.customElements.define("wj-radio", Radio);
+WJElement.define("wj-radio", Radio);
 export {
-  Radio
+  Radio as default
 };

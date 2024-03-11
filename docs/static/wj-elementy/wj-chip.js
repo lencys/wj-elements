@@ -47,7 +47,7 @@ class Chip extends WJElement {
     event.addListener(this.remove, "click", "wj:chip-remove", null, { stopPropagation: true });
   }
 }
-customElements.get("wj-chip") || window.customElements.define("wj-chip", Chip);
+WJElement.define("wj-chip", Chip);
 export {
-  Chip
+  Chip as default
 };

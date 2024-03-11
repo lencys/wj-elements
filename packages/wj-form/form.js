@@ -1,35 +1,8 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement } from "../wj-element/wj-element.js";
+import Form from "./form.element.js";
 
-import styles from "./scss/styles.scss?inline";
+// export * from "./form.element.js";
+export default Form;
 
-export class Form extends WJElement {
-    constructor() {
-        super();
-    }
+WJElement.define("wj-form", Form);
 
-    className = "Form";
-
-    static get cssStyleSheet() {
-        return styles;
-    }
-
-    static get observedAttributes() {
-        return [];
-    }
-
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
-
-    draw(context, store, params) {
-        let fragment = document.createDocumentFragment();
-
-        let element = document.createElement("slot");
-
-        fragment.appendChild(element);
-
-        return fragment;
-    }
-}
-
-customElements.get("wj-form") || window.customElements.define("wj-form", Form);

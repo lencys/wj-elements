@@ -103,7 +103,7 @@ class SplitView extends WJElement {
     return value / this.size * 100;
   }
 }
-customElements.get("wj-split-view") || window.customElements.define("wj-split-view", SplitView);
+WJElement.define("wj-split-view", SplitView);
 export {
-  SplitView
+  SplitView as default
 };

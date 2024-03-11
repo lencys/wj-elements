@@ -41,7 +41,7 @@ class Menu extends WJElement {
     this.context.innerHTML = "";
   }
 }
-customElements.get("wj-menu") || window.customElements.define("wj-menu", Menu);
+WJElement.define("wj-menu", Menu);
 export {
-  Menu
+  Menu as default
 };

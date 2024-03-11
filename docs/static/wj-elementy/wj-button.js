@@ -5,6 +5,7 @@ var __publicField = (obj, key, value) => {
   return value;
 };
 import WJElement, { WjElementUtils, event } from "./wj-element.js";
+import IconElement from "./wj-icon.js";
 const bool = (v) => {
   return v === "false" || v === "null" || v === "NaN" || v === "undefined" || v === "0" ? false : !!v;
 };
@@ -12,6 +13,9 @@ const styles = "/*\n[ WJ Button ]\n*/\n:host(.wj-button-solid.wj-color-primary) 
 class Button extends WJElement {
   constructor() {
     super();
+    __publicField(this, "depandencies", {
+      "wj-icon": IconElement
+    });
     __publicField(this, "className", "Button");
     __publicField(this, "eventDialogOpen", (e) => {
       document.dispatchEvent(
@@ -154,7 +158,7 @@ class Button extends WJElement {
     this.removeEventListener("click", this.eventDialogOpen);
   }
 }
-customElements.get("wj-button") || window.customElements.define("wj-button", Button);
+WJElement.define("wj-button", Button);
 export {
-  Button
+  Button as default
 };

@@ -29,7 +29,7 @@ class Thumbnail extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-thumbnail") || window.customElements.define("wj-thumbnail", Thumbnail);
+WJElement.define("wj-thumbnail", Thumbnail);
 export {
-  Thumbnail
+  Thumbnail as default
 };

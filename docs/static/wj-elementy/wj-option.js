@@ -52,7 +52,7 @@ class Option extends WJElement {
     event.addListener(this, "click", "wj:option-change");
   }
 }
-customElements.get("wj-option") || window.customElements.define("wj-option", Option);
+WJElement.define("wj-option", Option);
 export {
-  Option
+  Option as default
 };

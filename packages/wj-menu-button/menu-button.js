@@ -1,41 +1,8 @@
-import { default as WJElement, event } from "../wj-element/wj-element.js";
+import { default as WJElement } from "../wj-element/wj-element.js";
+import MenuButton from "./menu-button.element.js";
 
-import styles from "./scss/styles.scss?inline";
+// export * from "./menu-button.element.js";
+export default MenuButton;
 
-export class MenuButton extends WJElement {
-    constructor() {
-        super();
-    }
+WJElement.define("wj-menu-button", MenuButton);
 
-    className = "MenuButton";
-
-    static get cssStyleSheet() {
-        return styles;
-    }
-
-    static get observedAttributes() {
-        return [];
-    }
-
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
-
-    draw(context, store, params) {
-        let fragment = document.createDocumentFragment();
-
-        let slot = document.createElement("slot");
-
-        fragment.appendChild(slot);
-
-        return fragment;
-    }
-
-    afterDraw() {
-        event.addListener(this, "click", null, (e) => {
-            document.querySelector(`#${this.contentId}`).classList.toggle("open");
-        });
-    }
-}
-
-customElements.get("wj-menu-button") || window.customElements.define("wj-menu-button", MenuButton);

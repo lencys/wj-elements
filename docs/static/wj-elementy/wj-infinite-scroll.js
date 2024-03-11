@@ -131,7 +131,7 @@ class InfiniteScroll extends WJElement {
     }
   }
 }
-customElements.get("wj-infinite-scroll") || window.customElements.define("wj-infinite-scroll", InfiniteScroll);
+WJElement.define("wj-infinite-scroll", InfiniteScroll);
 export {
-  InfiniteScroll
+  InfiniteScroll as default
 };

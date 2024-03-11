@@ -35,7 +35,7 @@ class Toolbar extends withRouterLinks(WJElement) {
     return fragment;
   }
 }
-customElements.get("wj-toolbar") || window.customElements.define("wj-toolbar", Toolbar);
+WJElement.define("wj-toolbar", Toolbar);
 export {
-  Toolbar
+  Toolbar as default
 };

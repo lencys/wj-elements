@@ -1454,7 +1454,7 @@ class Popup extends WJElement {
     event.removeElement(this.anchorEl);
   }
 }
-customElements.get("wj-popup") || window.customElements.define("wj-popup", Popup);
+WJElement.define("wj-popup", Popup);
 export {
-  Popup
+  Popup as default
 };

@@ -39,7 +39,7 @@ class ToolbarAction extends WJElement {
     return Array.from(this.querySelectorAll("wj-button"));
   }
 }
-customElements.get("wj-toolbar-action") || window.customElements.define("wj-toolbar-action", ToolbarAction);
+WJElement.define("wj-toolbar-action", ToolbarAction);
 export {
-  ToolbarAction
+  ToolbarAction as default
 };

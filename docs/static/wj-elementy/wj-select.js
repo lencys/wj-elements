@@ -223,7 +223,7 @@ class Select extends WJElement {
     return chip;
   }
 }
-customElements.get("wj-select") || window.customElements.define("wj-select", Select);
+WJElement.define("wj-select", Select);
 export {
-  Select
+  Select as default
 };

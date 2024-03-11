@@ -27,7 +27,7 @@ class Footer extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-footer") || window.customElements.define("wj-footer", Footer);
+WJElement.define("wj-footer", Footer);
 export {
-  Footer
+  Footer as default
 };

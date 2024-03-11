@@ -66,6 +66,7 @@ class Checkbox extends WJElement {
   }
 }
 customElements.get("wj-checkbox") || window.customElements.define("wj-checkbox", Checkbox);
+WJElement.define("wj-checkbox", Checkbox);
 export {
-  Checkbox
+  Checkbox as default
 };

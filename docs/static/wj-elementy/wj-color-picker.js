@@ -1277,7 +1277,7 @@ class ColorPicker extends WJElement {
     return tinycolor(hsva);
   }
 }
-customElements.get("wj-color-picker") || window.customElements.define("wj-color-picker", ColorPicker);
+WJElement.define("wj-color-picker", ColorPicker);
 export {
-  ColorPicker
+  ColorPicker as default
 };

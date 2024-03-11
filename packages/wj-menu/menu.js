@@ -1,54 +1,8 @@
-import { default as WJElement, event } from "../wj-element/wj-element.js";
+import { default as WJElement } from "../wj-element/wj-element.js";
+import Menu from "./menu.element.js";
 
-import styles from "./scss/styles.scss?inline";
+// export * from "./menu.element.js";
+export default Menu;
 
-export class Menu extends WJElement {
-    constructor() {
-        super();
-    }
+WJElement.define("wj-menu", Menu);
 
-    className = "Menu";
-
-    static get cssStyleSheet() {
-        return styles;
-    }
-
-    static get observedAttributes() {
-        return ["active", "collapse"];
-    }
-
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
-
-    draw(context, store, params) {
-        let fragment = document.createDocumentFragment();
-
-        this.classList.remove("wj-menu-collapse");
-
-        if(this.hasAttribute("collapse"))
-            this.classList.add("wj-menu-collapse");
-
-        let native = document.createElement("div");
-        native.classList.add("native-menu");
-
-        let slot = document.createElement("slot");
-
-        native.appendChild(slot);
-        fragment.appendChild(native);
-
-        return fragment;
-    }
-
-    afterDraw() {
-        Array.from(this.children).forEach((child) => {
-            child.refresh();
-        });
-    }
-
-    beforeDisconnect() {
-        this.context.innerHTML = "";
-    }
-}
-
-customElements.get("wj-menu") || window.customElements.define("wj-menu", Menu);

@@ -27,7 +27,7 @@ class CardTitle extends WJElement {
     return fragment;
   }
 }
-customElements.get("wj-card-title") || window.customElements.define("wj-card-title", CardTitle);
+WJElement.define("wj-card-title", CardTitle);
 export {
-  CardTitle
+  CardTitle as default
 };

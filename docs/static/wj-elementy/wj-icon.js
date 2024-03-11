@@ -116,7 +116,7 @@ const getNamedUrl = (iconName) => {
   return new URL(parsedUrl.origin + folderPath + path).href;
 };
 const styles = "/*\n[ WJ Icon ]\n*/\n:host(.wj-color-primary) {\n  --wj-icon-color: var(--wj-color-primary);\n}\n\n:host(.wj-color-complete) {\n  --wj-icon-color: var(--wj-color-complete);\n}\n\n:host(.wj-color-success) {\n  --wj-icon-color: var(--wj-color-success);\n}\n\n:host(.wj-color-warning) {\n  --wj-icon-color: var(--wj-color-warning);\n}\n\n:host(.wj-color-danger) {\n  --wj-icon-color: var(--wj-color-danger);\n}\n\n:host(.wj-color-info) {\n  --wj-icon-color: var(--wj-color-info);\n}\n\n:host {\n  --wj-icon-size: 1rem;\n  --wj-icon-width: var(--wj-icon-size, 100%);\n  --wj-icon-height: var(--wj-icon-size, 100%);\n  display: inline-block;\n  width: var(--wj-icon-width);\n  height: var(--wj-icon-height);\n  contain: strict;\n  fill: currentColor;\n  box-sizing: content-box !important;\n}\n\n.icon-inner, svg {\n  display: block;\n  width: var(--wj-icon-width);\n  height: var(--wj-icon-height);\n}\n\n:host(.wj-size-small) {\n  --wj-icon-size: 18px;\n}\n\n:host(.wj-size-large) {\n  --wj-icon-size: 32px;\n}\n\n:host(.wj-size) {\n  font-size: var(--wj-icon-size);\n}\n\n:host(.wj-color) {\n  color: var(--wj-icon-color) !important;\n}";
-class Icon extends WJElement {
+class IconElement extends WJElement {
   constructor() {
     super();
     __publicField(this, "className", "Icon");
@@ -160,7 +160,7 @@ class Icon extends WJElement {
     lazyImageObserver.observe(this.element);
   }
 }
-customElements.get("wj-icon") || window.customElements.define("wj-icon", Icon);
+WJElement.define("wj-icon", IconElement);
 export {
-  Icon
+  IconElement as default
 };

@@ -214,7 +214,7 @@ class MenuItem extends WJElement {
     this.context.innerHTML = "";
   }
 }
-customElements.get("wj-menu-item") || window.customElements.define("wj-menu-item", MenuItem);
+WJElement.define("wj-menu-item", MenuItem);
 export {
-  MenuItem
+  MenuItem as default
 };
