@@ -98,9 +98,9 @@ template.innerHTML = `<h1>Carousel</h1>
       </div>
     </div>
     
-    <!-- PAGINATION -->
+    <!-- SPLIT -->
     
-    <h2>Pagination</h2>
+    <h2>Split</h2>
     <div class="playground" style="padding-inline: 2rem;">
       <div class="content">
         <wj-carousel pagination class="example-content">
@@ -146,7 +146,7 @@ template.innerHTML = `<h1>Carousel</h1>
     </div>
   </div>`;
 
-export default class DemoCard extends WJElement {
+export default class DemoCarousel extends WJElement {
   constructor() {
     super(template);
   }
@@ -155,4 +155,4 @@ export default class DemoCard extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-card") || window.customElements.define("demo-card", DemoCard);
+customElements.get("demo-carousel") || window.customElements.define("demo-carousel", DemoCarousel);

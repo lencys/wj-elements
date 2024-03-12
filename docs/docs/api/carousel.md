@@ -38,59 +38,23 @@ import Pagination from '@site/static/usage/v1/carousel/pagination/index.md';
 
 <Pagination />
 
-## Karta s obrázkom
+## Nahľadový obrázok
 
 import Thumbnail from '@site/static/usage/v1/carousel/thumbnail/index.md';
 
 <Thumbnail />
 
-## Karta so zoznamom
+## Odsadenie
 
 import Spacing from '@site/static/usage/v1/carousel/spacing/index.md';
 
 <Spacing />
 
-## Úprava štýlov
-
-### Prednastavené farebné varianty elementu Card
-
-Vlastnosť `color` upravuje farbu pozadia a okraja karty. Nastavením tejto hodnoty sa farba tlačidla zmení na jednu z farieb prednastavenej farebnej palety.  V predvolenom nastavení má element pozadie `primary`. 
+## Rozdelenie
 
 import Split from '@site/static/usage/v1/carousel/split/index.md';
 
 <Split />
-
-
-### CSS Custom Vlastnosti
-
-import CssProperties from '@site/static/usage/v1/card/theming/css-properties/index.md';
-
-<CssProperties />
-
-```html
-<wj-card id="custom">
-  <wj-card-header>
-    <wj-card-subtitle>Subtitle</wj-card-subtitle>
-    <wj-card-title>Title</wj-card-title>
-  </wj-card-header>
-  <wj-card-content>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  </wj-card-content>
-</wj-card>
-<style>
-  #custom {
-    --wj-card-margin-top: 1rem;
-    --wj-card-margin-bottom: 1rem;
-    --wj-card-margin-inline: 1rem;
-    --wj-color-contrast: #f0f;
-    --wj-card-border-color: #000;
-    --wj-border-size: 2px;
-    --background-color: #000!important;
-    --wj-font-size: .8rem;
-    --wj-border-radius: 0;
-  }
-</style>
-```
 
 ## Atribúty a Vlastnosti
 

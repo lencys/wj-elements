@@ -1,15 +1,27 @@
 ```html
 <template>
-  <input id="copy-input" value="I am copy - Input">
-  <wj-copy-button for="copy-input"></wj-copy-button>
+  <wj-carousel thumbnails loop navigation>
+    <wj-carousel-item>
+      <wj-img src="https://picsum.photos/500/375?i=1"></wj-img>
+    </wj-carousel-item>
+    <wj-carousel-item>
+      <wj-img src="https://picsum.photos/500/375?i=2"></wj-img>
+    </wj-carousel-item>
+    <wj-carousel-item>
+      <wj-img src="https://picsum.photos/500/375?i=3"></wj-img>
+    </wj-carousel-item>
+    <wj-carousel-item>
+      <wj-img src="https://picsum.photos/500/375?i=4"></wj-img>
+    </wj-carousel-item>
+  </wj-carousel>
 </template>
 
 <script lang="ts">
-  import { CopyButton } from '@elements/vue';
+  import { Carousel } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { CopyButton },
+    components: { Carousel },
   });
 </script>
 ```
