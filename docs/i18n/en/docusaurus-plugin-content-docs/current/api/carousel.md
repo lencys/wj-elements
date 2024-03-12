@@ -1,6 +1,7 @@
 ---
-title: "Carousel"
+title: Carousel
 ---
+
 import Props from '@ionic-internal/component-api/v1/carousel/props.md';
 
 import Events from '@ionic-internal/component-api/v1/carousel/events.md';
@@ -9,22 +10,22 @@ import Methods from '@ionic-internal/component-api/v1/carousel/methods.md';
 
 import Parts from '@ionic-internal/component-api/v1/carousel/parts.md';
 
-<!-- import CustomProps from '@ionic-internal/component-api/v1/card/custom-props.md'; -->
+<!-- import CustomProps from '@ionic-internal/component-api/v1/carousel/custom-props.md'; -->
 
 import Slots from '@ionic-internal/component-api/v1/carousel/slots.md';
 
-<head>
-  <title>Card | Kontajner formátu karty</title>
+
+  <title>Card | Card format container</title>
   <meta name="description" content="Element Card je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky Card Header, hlavnej časti Card Content a pätičky CardFooter." />
-</head>
+
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element **Card** je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky [CardHeader](../card-header) a hlavnej časti [CardContent](../card-content).
+The **Card** element is a flexible and expandable card format container. It allows you to display a wide range of content and consists of a header [CardHeader](../card-header) and a main section [CardContent](../card-content).
 
-## Základné použitie
+## Basic use
 
 import Basic from '@site/static/usage/v1/carousel/basic/index.md';
 
@@ -32,36 +33,35 @@ import Basic from '@site/static/usage/v1/carousel/basic/index.md';
 
 ## Paginaton
 
-Vlastnosť separator slúži na zobrazenie horizontálneho oddeľovača v elemente Card Header.
+The separator property is used to display a horizontal separator in the Card Header element.
 
 import Pagination from '@site/static/usage/v1/carousel/pagination/index.md';
 
 <Pagination />
 
-## Karta s obrázkom
+## Card with picture
 
 import Thumbnail from '@site/static/usage/v1/carousel/thumbnail/index.md';
 
 <Thumbnail />
 
-## Karta so zoznamom
+## Card with list
 
 import Spacing from '@site/static/usage/v1/carousel/spacing/index.md';
 
 <Spacing />
 
-## Úprava štýlov
+## Editing styles
 
-### Prednastavené farebné varianty elementu Card
+### Preset colour variants of the element Card
 
-Vlastnosť `color` upravuje farbu pozadia a okraja karty. Nastavením tejto hodnoty sa farba tlačidla zmení na jednu z farieb prednastavenej farebnej palety.  V predvolenom nastavení má element pozadie `primary`. 
+The `color` property adjusts the background and border color of the card. Setting this value will change the button color to one of the colors in the preset color palette.  By default, the element has a `primary` background.
 
 import Split from '@site/static/usage/v1/carousel/split/index.md';
 
 <Split />
 
-
-### CSS Custom Vlastnosti
+### CSS Custom Properties
 
 import CssProperties from '@site/static/usage/v1/card/theming/css-properties/index.md';
 
@@ -92,15 +92,15 @@ import CssProperties from '@site/static/usage/v1/card/theming/css-properties/ind
 </style>
 ```
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -108,10 +108,10 @@ import CssProperties from '@site/static/usage/v1/card/theming/css-properties/ind
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <!-- <CustomProps /> -->
 
-## Sloty
+## Slots
 
 <Slots />
