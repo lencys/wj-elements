@@ -72,10 +72,6 @@ import Split from '@site/static/usage/v1/carousel/split/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
-
-<!-- <CustomProps /> -->
-
 ## Sloty
 
 <Slots />

@@ -55,6 +55,14 @@
     "message": "Card",
     "description": "The label for category Card in sidebar api"
   },
+  "sidebar.api.category.Carousel": {
+    "message": "Carousel",
+    "description": "The label for category Carousel in sidebar api"
+  },
+  "sidebar.api.category.Carousel item": {
+    "message": "Carousel item",
+    "description": "The label for category Carousel Item in sidebar api"
+  },
   "sidebar.api.category.Checkbox": {
     "message": "Checkbox",
     "description": "The label for category Checkbox in sidebar api"

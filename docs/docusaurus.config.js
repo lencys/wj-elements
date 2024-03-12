@@ -14,7 +14,7 @@ module.exports = {
   baseUrl: ``,
   trailingSlash: true,
   i18n: {
-    defaultLocale: 'en',
+    defaultLocale: 'sk',
     locales: ['sk', 'en'],
     localeConfigs: {
       sk: { label: 'Slovensky' },
