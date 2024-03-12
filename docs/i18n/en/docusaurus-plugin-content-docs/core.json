@@ -1233,6 +1233,138 @@
             "dependencyGraph": {}
         },
         {
+            "filePath": "src/components/carousel/carousel.tsx",
+            "encapsulation": "shadow",
+            "tag": "carousel",
+            "docs": "",
+            "docsTags": [
+                {
+                    "name": "part",
+                    "text": "native - The native HTML button, anchor, or div element that wraps all child elements."
+                }
+            ],
+            "usage": {},
+            "props": [
+                {
+                    "name": "color",
+                    "type": "\"danger.\" | \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                    "complexType": {
+                        "original": "Color",
+                        "resolved": "\"danger.\" | \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                        "references": {
+                            "Color": {
+                                "location": "import",
+                                "path": "../../interface",
+                                "id": "src/interface.d.ts::Color"
+                            }
+                        }
+                    },
+                    "mutable": false,
+                    "attr": "color",
+                    "reflectToAttr": true,
+                    "docs": "The color to be used from the application color palette. The default options are `\"primary\"`, `\"warning\"`, `\"success\"`, `\"warning\"`, `\"warning\"`, and `\"neutral\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
+                    "docsTags": [],
+                    "values": [
+                        {
+                            "value": "danger",
+                            "type": "string"
+                        },
+                        {
+                            "value": "primary",
+                            "type": "string"
+                        },
+                        {
+                            "value": "neutral",
+                            "type": "string"
+                        },
+                        {
+                            "value": "success",
+                            "type": "string"
+                        },
+                        {
+                            "value": "complete",
+                            "type": "string"
+                        },
+                        {
+                            "value": "warning",
+                            "type": "string"
+                        },
+                        {
+                            "type": "String & Record<never, never>"
+                        },
+                        {
+                            "type": "undefined"
+                        }
+                    ],
+                    "optional": true,
+                    "required": false
+                }
+            ],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [
+                {
+                    "name": "--wj-card-border-color",
+                    "annotation": "prop",
+                    "docs": "Defines the colour of the card edge."
+                },
+                {
+                    "name": "--wj-card-margin-bottom",
+                    "annotation": "prop",
+                    "docs": "Defines the size of the gap from the bottom edge of the card"
+                },
+                {
+                    "name": "--wj-card-margin-inline",
+                    "annotation": "prop",
+                    "docs": "Defines the size of the gap from the right and left edges of the card"
+                },
+                {
+                    "name": "--wj-card-margin-top",
+                    "annotation": "prop",
+                    "docs": "Defines the size of the gap from the top edge of the card"
+                },
+                {
+                    "name": "--wj-color-base",
+                    "annotation": "prop",
+                    "docs": "Defines the background colour of the card"
+                },
+                {
+                    "name": "--wj-color-contrast",
+                    "annotation": "prop",
+                    "docs": "Defines the colour of the card text"
+                }
+            ],
+            "slots": [],
+            "parts": [
+                {
+                    "name": "native",
+                    "docs": "The native HTML button, anchor, or div element that wraps all child elements."
+                }
+            ],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
+            "filePath": "src/components/carousel-item/carousel-item.tsx",
+            "encapsulation": "shadow",
+            "tag": "carousel-item",
+            "docs": "",
+            "docsTags": [],
+            "usage": {},
+            "props": [],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
             "filePath": "src/components/checkbox/checkbox.tsx",
             "encapsulation": "shadow",
             "tag": "checkbox",
@@ -1659,7 +1791,7 @@
         {
             "filePath": "src/components/dialog/dialog.tsx",
             "encapsulation": "shadow",
-            "tag": "dialog",
+            "tag": "dialogue",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -1751,7 +1883,7 @@
                 {
                     "name": "--wj-dialog-margin-bottom",
                     "annotation": "prop",
-                    "docs": "Bottom outer indent of the dialog window"
+                    "docs": "Bottom outer indent of the dialogue window"
                 },
                 {
                     "name": "--wj-dialog-margin-end",
@@ -3764,7 +3896,7 @@
         {
             "filePath": "src/components/aside/aside.tsx",
             "encapsulation": "scoped",
-            "tag": "aside",
+            "tag": "Aside",
             "docs": "",
             "docsTags": [],
             "usage": {},
@@ -8271,7 +8403,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Called when the element state changes.",
+                    "docs": "Invoked when the state of the element changes.",
                     "docsTags": []
                 }
             ],

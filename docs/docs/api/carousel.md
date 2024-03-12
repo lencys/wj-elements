@@ -1,17 +1,17 @@
 ---
 title: "Carousel"
 ---
-import Props from '@ionic-internal/component-api/v1/card/props.md';
+import Props from '@ionic-internal/component-api/v1/carousel/props.md';
 
-import Events from '@ionic-internal/component-api/v1/card/events.md';
+import Events from '@ionic-internal/component-api/v1/carousel/events.md';
 
-import Methods from '@ionic-internal/component-api/v1/card/methods.md';
+import Methods from '@ionic-internal/component-api/v1/carousel/methods.md';
 
-import Parts from '@ionic-internal/component-api/v1/card/parts.md';
+import Parts from '@ionic-internal/component-api/v1/carousel/parts.md';
 
-import CustomProps from '@ionic-internal/component-api/v1/card/custom-props.md';
+<!-- import CustomProps from '@ionic-internal/component-api/v1/card/custom-props.md'; -->
 
-import Slots from '@ionic-internal/component-api/v1/card/slots.md';
+import Slots from '@ionic-internal/component-api/v1/carousel/slots.md';
 
 <head>
   <title>Card | Kontajner formátu karty</title>
@@ -74,7 +74,7 @@ import Split from '@site/static/usage/v1/carousel/split/index.md';
 
 ## CSS Custom Vlastnosti
 
-<CustomProps />
+<!-- <CustomProps /> -->
 
 ## Sloty
 
