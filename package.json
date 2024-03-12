@@ -1,8 +1,24 @@
 {
   "name": "wj-elements",
-  "private": false,
-  "version": "0.0.29",
+  "description": "WebJET Elements is a modern set of user interface tools harnessing the power of web components designed to simplify web application development.",
+  "version": "0.0.31",
+  "homepage": "https://github.com/lencys/wj-elements",
+  "author": "Lukáš Ondrejček <lukas.ondrejcek@gmail.com>",
+  "license": "MIT",
+  "customElements": "dist/custom-elements.json",
+  "keywords": [
+    "Web Components",
+    "Custom Elements",
+    "UI Components",
+    "Components",
+    "Elements"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lencys/wj-elements.git"
+  },
   "type": "module",
+  "private": false,
   "files": [
     "./dist"
   ],
@@ -25,6 +41,7 @@
     "tinycolor2": "^1.6.0"
   },
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.9.3",
     "miragejs": "^0.1.48",
     "sass": "^1.63.5",
     "vite": "^5.1.2"

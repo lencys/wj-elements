@@ -1233,6 +1233,138 @@
             "dependencyGraph": {}
         },
         {
+            "filePath": "src/components/carousel/carousel.tsx",
+            "encapsulation": "shadow",
+            "tag": "carousel",
+            "docs": "",
+            "docsTags": [
+                {
+                    "name": "part",
+                    "text": "native - The native HTML button, anchor, or div element that wraps all child elements."
+                }
+            ],
+            "usage": {},
+            "props": [
+                {
+                    "name": "color",
+                    "type": "\"danger\" |  \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                    "complexType": {
+                        "original": "Color",
+                        "resolved": "\"danger\" |  \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                        "references": {
+                            "Color": {
+                                "location": "import",
+                                "path": "../../interface",
+                                "id": "src/interface.d.ts::Color"
+                            }
+                        }
+                    },
+                    "mutable": false,
+                    "attr": "color",
+                    "reflectToAttr": true,
+                    "docs": "Farba, ktorá sa má použiť z palety farieb aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"warning\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, and `\"neutral\"`.\nPre viac informácií o farbách navštívte [Základy prispôsobenia](/theming/basics).",
+                    "docsTags": [],
+                    "values": [
+                        {
+                            "value": "danger",
+                            "type": "string"
+                        },
+                        {
+                            "value": "primary",
+                            "type": "string"
+                        },
+                        {
+                            "value": "neutral",
+                            "type": "string"
+                        },
+                        {
+                            "value": "success",
+                            "type": "string"
+                        },
+                        {
+                            "value": "complete",
+                            "type": "string"
+                        },
+                        {
+                            "value": "warning",
+                            "type": "string"
+                        },
+                        {
+                            "type": "string & Record<never, never>"
+                        },
+                        {
+                            "type": "undefined"
+                        }
+                    ],
+                    "optional": true,
+                    "required": false
+                }
+            ],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [
+                {
+                    "name": "-—wj-card-border-color",
+                    "annotation": "prop",
+                    "docs": "Definuje farbu okraja karty."
+                },
+                {
+                    "name": "--wj-card-margin-bottom",
+                    "annotation": "prop",
+                    "docs": "Definuje veľkosť medzery od dolného okraja karty"
+                },
+                {
+                    "name": "--wj-card-margin-inline",
+                    "annotation": "prop",
+                    "docs": "Definuje veľkosť medzery od pravého a ľavého okraja karty"
+                },
+                {
+                    "name": "--wj-card-margin-top",
+                    "annotation": "prop",
+                    "docs": "Definuje veľkosť medzery od horného okraja karty"
+                },
+                {
+                    "name": "--wj-color-base",
+                    "annotation": "prop",
+                    "docs": "Definuje farbu pozadia karty"
+                },
+                {
+                    "name": "--wj-color-contrast",
+                    "annotation": "prop",
+                    "docs": "Definuje farbu textu karty"
+                }
+            ],
+            "slots": [],
+            "parts": [
+                {
+                    "name": "native",
+                    "docs": "The native HTML button, anchor, or div element that wraps all child elements."
+                }
+            ],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
+            "filePath": "src/components/carousel-item/carousel-item.tsx",
+            "encapsulation": "shadow",
+            "tag": "carousel-item",
+            "docs": "",
+            "docsTags": [],
+            "usage": {},
+            "props": [],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
             "filePath": "src/components/checkbox/checkbox.tsx",
             "encapsulation": "shadow",
             "tag": "checkbox",

@@ -88,6 +88,12 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Carousel',
+      collapsed: false,
+      items: ['api/carousel', 'api/carousel-item'],
+    },
+    {
+      type: 'category',
       label: 'Checkbox',
       collapsed: false,
       items: ['api/checkbox'],
