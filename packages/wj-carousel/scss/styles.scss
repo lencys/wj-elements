@@ -68,12 +68,13 @@ wj-button {
 // PAGINATION
 
 .pagination {
-  position: absolute;
+  position: relative;
   bottom: -.5rem;
   left: 50%;
   transform: translate(-50%, 100%);
   display: flex;
   z-index: 2;
+  justify-content: center;
 }
 .pagination-item {
   cursor: pointer;

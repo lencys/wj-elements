@@ -27,6 +27,31 @@ template.innerHTML = `<h1>Carousel</h1>
       </div>
     </div>
     
+    <!-- DIALOG -->
+
+    <h2>Dialog</h2>
+    <div class="playground" style="padding-inline: 2rem;">
+      <div class="content">
+        <wj-button dialog="open-modal">Open</wj-button>
+        <wj-dialog trigger="open-modal" title="Title" size="large">
+          <wj-carousel pagination loop>
+            <wj-carousel-item>
+              <wj-img src="https://picsum.photos/500/375?i=1"></wj-img>
+            </wj-carousel-item>
+            <wj-carousel-item>
+              <wj-img src="https://picsum.photos/500/375?i=2"></wj-img>
+            </wj-carousel-item>
+            <wj-carousel-item>
+              <wj-img src="https://picsum.photos/500/375?i=3"></wj-img>
+            </wj-carousel-item>
+            <wj-carousel-item>
+              <wj-img src="https://picsum.photos/500/375?i=4"></wj-img>
+            </wj-carousel-item>
+          </wj-carousel>
+        </wj-dialog>
+      </div>
+    </div>
+    
     <!-- PAGINATION -->
     
     <h2>Pagination</h2>
@@ -156,6 +181,10 @@ export default class DemoCarousel extends WJElement {
       carousel.addEventListener("wj-carousel-item:click", (event) => {
         console.log("Clicked", event.target);
       });
+    });
+
+    this.querySelector("wj-dialog").addEventListener("wj-dialog:open", (e) => {
+      e.target.querySelector("wj-carousel").goToSlide(0, "auto"); // prejdeme na prvy slide pri otvoreni dialogu
     });
   }
 }

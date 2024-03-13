@@ -1,4 +1,4 @@
-import { default as WJElement, WjElementUtils } from "../wj-element/wj-element.js";
+import { default as WJElement, event } from "../wj-element/wj-element.js";
 import '../wj-button/button.element.js';
 import '../wj-icon/icon.element.js';
 
@@ -29,10 +29,6 @@ export default class Dialog extends WJElement {
 
     setupAttributes() {
         this.isShadowRoot = "open";
-        // or
-        WjElementUtils.setAttributesToElement(this, {
-            "test": "test"
-        });
     }
 
     beforeDraw(context, store, params) {
@@ -99,6 +95,11 @@ export default class Dialog extends WJElement {
         if(params.trigger) {
             document.addEventListener(params.trigger, () => {
                 this.dialog.showModal();
+
+                // dispatch event ak je to otvorene
+                if(this.dialog.open) {
+                    event.dispatchCustomEvent(this.dialog,"wj-dialog:open");
+                }
             });
         }
     }

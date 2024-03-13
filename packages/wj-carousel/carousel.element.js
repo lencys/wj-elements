@@ -57,8 +57,8 @@ export default class Carousel extends WJElement {
         this.isShadowRoot = "open";
     }
 
-    async beforeDraw(context, store, params) {
-        await this.cloneFirstAndLastItems();
+    beforeDraw(context, store, params) {
+        this.cloneFirstAndLastItems();
     }
 
     draw(context, store, params) {
