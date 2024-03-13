@@ -176,6 +176,22 @@ export default class DemoCarousel extends WJElement {
     super(template);
   }
 
+  fetchCarousel = () => {
+    return `<wj-carousel pagination loop>
+      <wj-carousel-item>
+        <wj-img src="https://picsum.photos/500/375?i=1"></wj-img>
+      </wj-carousel-item>
+      <wj-carousel-item>
+        <wj-img src="https://picsum.photos/500/375?i=2"></wj-img>
+      </wj-carousel-item>
+      <wj-carousel-item>
+        <wj-img src="https://picsum.photos/500/375?i=3"></wj-img>
+      </wj-carousel-item>
+      <wj-carousel-item>
+        <wj-img src="https://picsum.photos/500/375?i=4"></wj-img>
+      </wj-carousel-item>
+    </wj-carousel>`;
+  }
   afterDraw() {
     this.querySelectorAll("wj-carousel-item").forEach((carousel) => {
       carousel.addEventListener("wj-carousel-item:click", (event) => {
@@ -184,7 +200,7 @@ export default class DemoCarousel extends WJElement {
     });
 
     this.querySelector("wj-dialog").addEventListener("wj-dialog:open", (e) => {
-      e.target.querySelector("wj-carousel").goToSlide(0, "auto"); // prejdeme na prvy slide pri otvoreni dialogu
+      e.target.querySelector("wj-carousel").goToSlide(0, "auto");
     });
   }
 }

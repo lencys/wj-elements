@@ -31,9 +31,6 @@ export default class Dialog extends WJElement {
         this.isShadowRoot = "open";
     }
 
-    beforeDraw(context, store, params) {
-    }
-
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
@@ -94,6 +91,7 @@ export default class Dialog extends WJElement {
     afterDraw(context, store, params) {
         if(params.trigger) {
             document.addEventListener(params.trigger, () => {
+                event.dispatchCustomEvent(this.dialog,"wj-dialog:click");
                 this.dialog.showModal();
 
                 // dispatch event ak je to otvorene
