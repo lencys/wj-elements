@@ -10,7 +10,6 @@ class Carousel extends WJElement {
   constructor() {
     super();
     __publicField(this, "className", "Carousel");
-    this.activeSlide = 0;
     this.slidePerPage = 1;
   }
   set activeSlide(value) {
@@ -48,6 +47,9 @@ class Carousel extends WJElement {
   setupAttributes() {
     this.isShadowRoot = "open";
   }
+  beforeDraw(context, store, params) {
+    this.cloneFirstAndLastItems();
+  }
   draw(context, store, params) {
     let fragment = document.createDocumentFragment();
     let native = document.createElement("div");
@@ -67,23 +69,7 @@ class Carousel extends WJElement {
       native.appendChild(this.createThumbnails());
     fragment.appendChild(native);
     this.slides = slides;
-    this.cloneFirstAndLastItems();
     return fragment;
-  }
-  setIntersectionObserver() {
-    this.intersectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        this.entriesMap.set(entry.target, entry);
-      });
-    }, {
-      root: this.context.querySelector(".carousel-slides"),
-      threshold: 0.5
-    });
-    this.entriesMap = /* @__PURE__ */ new Map();
-    this.records = this.intersectionObserver.takeRecords();
-    this.records.forEach((entry) => {
-      this.entriesMap.set(entry.target, entry);
-    });
   }
   afterDraw() {
     this.setIntersectionObserver();
@@ -106,6 +92,21 @@ class Carousel extends WJElement {
         let slideIndex = slides.indexOf(visibleEntries.target);
         this.activeSlide = slideIndex;
       }
+    });
+  }
+  setIntersectionObserver() {
+    this.intersectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        this.entriesMap.set(entry.target, entry);
+      });
+    }, {
+      root: this.context.querySelector(".carousel-slides"),
+      threshold: 0.5
+    });
+    this.entriesMap = /* @__PURE__ */ new Map();
+    this.records = this.intersectionObserver.takeRecords();
+    this.records.forEach((entry) => {
+      this.entriesMap.set(entry.target, entry);
     });
   }
   goToSlide(index, behavior = "smooth", next = true) {

@@ -6,7 +6,7 @@ export default class Carousel extends WJElement {
     constructor() {
         super();
 
-        this.activeSlide = 0;
+        // this.activeSlide = 0;
         this.slidePerPage = 1;
     }
 
@@ -58,6 +58,10 @@ export default class Carousel extends WJElement {
         this.isShadowRoot = "open";
     }
 
+    beforeDraw(context, store, params) {
+        this.cloneFirstAndLastItems();
+    }
+
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
@@ -87,26 +91,7 @@ export default class Carousel extends WJElement {
 
         this.slides = slides;
 
-        this.cloneFirstAndLastItems();
-
         return fragment;
-    }
-
-    setIntersectionObserver() {
-        this.intersectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                this.entriesMap.set(entry.target, entry);
-            });
-        }, {
-            root: this.context.querySelector('.carousel-slides'),
-            threshold: 0.5
-        });
-
-        this.entriesMap = new Map();
-        this.records = this.intersectionObserver.takeRecords();
-        this.records.forEach(entry => {
-            this.entriesMap.set(entry.target, entry);
-        });
     }
 
     afterDraw() {
@@ -139,6 +124,23 @@ export default class Carousel extends WJElement {
         });
     }
 
+    setIntersectionObserver() {
+        this.intersectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                this.entriesMap.set(entry.target, entry);
+            });
+        }, {
+            root: this.context.querySelector('.carousel-slides'),
+            threshold: 0.5
+        });
+
+        this.entriesMap = new Map();
+        this.records = this.intersectionObserver.takeRecords();
+        this.records.forEach(entry => {
+            this.entriesMap.set(entry.target, entry);
+        });
+    }
+
     goToSlide(index, behavior = "smooth", next = true) {
         const slides = this.getSlides();
         const slideWithClones = this.getSlidesWithClones();
@@ -150,6 +152,7 @@ export default class Carousel extends WJElement {
 
         let newActiveSlide = this.loop ? (index + slides.length) % slides.length : Math.min(Math.max(index, 0), slides.length - 1);
         this.activeSlide = newActiveSlide;
+
 
         const nextSlideIndex = Math.min(Math.max(index + (this.loop ? this.slidePerPage : 0), 0), slideWithClones.length - 1);
         const nextSlideEl = this.getSlidesWithClones()[nextSlideIndex];
@@ -167,15 +170,16 @@ export default class Carousel extends WJElement {
 
     cloneFirstAndLastItems() {
         const items = this.getSlides();
+
         if (items.length && this.loop) {
-            // Klonování prvního položky a přidání na konec
+            // Klonovánie prveho položky a pridanie na koniec
             const firstItemClone = items[0].cloneNode(true);
             firstItemClone.classList.add("clone");
             firstItemClone.setAttribute("clone-index", 0);
 
             this.appendChild(firstItemClone);
 
-            // Klonování posledního položky a přidání na začátek
+            // Klonovanie poslednej položky a pridanie na zaciatok
             const lastItemClone = items[items.length - 1].cloneNode(true);
             lastItemClone.classList.add("clone");
             lastItemClone.setAttribute("clone-index", items.length - 1);

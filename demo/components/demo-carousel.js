@@ -10,7 +10,7 @@ template.innerHTML = `<h1>Carousel</h1>
     <h2>Basic</h2>
     <div class="playground" style="padding-inline: 2rem;">
       <div class="content">
-        <wj-carousel pagination loop navigation>
+        <wj-carousel pagination loop navigation active-slide="2">
           <wj-carousel-item>
             <wj-img src="https://picsum.photos/500/375?i=1"></wj-img>
           </wj-carousel-item>
