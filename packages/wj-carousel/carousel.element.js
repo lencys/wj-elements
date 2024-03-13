@@ -6,7 +6,6 @@ export default class Carousel extends WJElement {
     constructor() {
         super();
 
-        // this.activeSlide = 0;
         this.slidePerPage = 1;
     }
 

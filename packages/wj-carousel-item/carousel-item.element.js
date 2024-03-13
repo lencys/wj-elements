@@ -36,4 +36,8 @@ export default class CarouselItem extends WJElement {
 
         return fragment;
     }
+
+    afterDraw() {
+        event.addListener(this, "click", "wj-carousel-item:click");
+    }
 }

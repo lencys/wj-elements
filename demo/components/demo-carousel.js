@@ -150,6 +150,14 @@ export default class DemoCarousel extends WJElement {
   constructor() {
     super(template);
   }
+
+  afterDraw() {
+    this.querySelectorAll("wj-carousel-item").forEach((carousel) => {
+      carousel.addEventListener("wj-carousel-item:click", (event) => {
+        console.log("Clicked", event.target);
+      });
+    });
+  }
 }
 
 let __esModule = 'true';

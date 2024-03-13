@@ -231,7 +231,7 @@ export default class WJElement extends HTMLElement {
 
 	disconnectedCallback() {
 		this.beforeDisconnect?.();
-		console.log(this.isAttached);
+
 		if (this.isAttached) this.context.innerHTML = '';
 
 		this.isAttached = false;
