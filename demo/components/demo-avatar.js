@@ -66,14 +66,23 @@ template.innerHTML = `<h1>Avatar</h1>
       <div class="content">
         <wj-dropdown id="custom-dropdown" placement="right-start" trigger="hover" offset="5">
           <wj-avatar label="Petr Rahman" initials slot="trigger"></wj-avatar>
-          <wj-menu id="custom-menu" active>
+          <wj-menu class="custom-menu" active>
+            <h5 style="margin: 0;">Petr Rahman</h5>
+            <p class="hint-text">Frontend Developer</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
+          </wj-menu>
+        </wj-dropdown>
+        
+        <wj-dropdown id="custom-dropdown" placement="right-start" offset="5">
+          <wj-avatar label="Petr Rahman" initials slot="trigger"></wj-avatar>
+          <wj-menu class="custom-menu" active>
             <h5 style="margin: 0;">Petr Rahman</h5>
             <p class="hint-text">Frontend Developer</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
           </wj-menu>
         </wj-dropdown>
         <style>
-          #custom-menu {
+          .custom-menu {
             width: 200px;
             padding: 1rem 1rem 0;
           }

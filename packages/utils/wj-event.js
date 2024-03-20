@@ -24,7 +24,6 @@ class WjEvent {
     }
 
     dispatchCustomEvent(element, event, detail) {
-        console.log("dispatchCustomEvent", element, event, detail);
         element.dispatchEvent(
             new CustomEvent(event, {
                 detail: detail,
