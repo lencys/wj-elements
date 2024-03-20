@@ -55,6 +55,46 @@ template.innerHTML = `<h1>Card</h1>
         </wj-card>
       </div>
     </div>
+    
+    <!-- SEPARATOR -->
+
+    <h2>Dropdown</h2>
+    <div class="playground">
+      <div class="content">
+        <wj-card>
+          <wj-card-header>
+            <wj-card-subtitle>Subtitle</wj-card-subtitle>
+            <wj-card-title>Title</wj-card-title>
+            <wj-card-controls>
+              <wj-dropdown label="Start" placement="bottom-start" offset="5">
+                <wj-button size="large" slot="trigger" stop-propagation="true" caret>Large</wj-button>
+                <wj-menu variant="context">
+                  <wj-menu-item>
+                    <wj-icon name="plane" slot="start"></wj-icon>
+                    <wj-label>Menu item</wj-label>
+                  </wj-menu-item>
+                  <wj-menu-item>
+                    <wj-icon name="book" slot="start"></wj-icon>
+                    <wj-label>Menu item</wj-label>
+                  </wj-menu-item>
+                  <wj-menu-item>
+                    <wj-icon name="music" slot="start"></wj-icon>
+                    <wj-label>Menu item</wj-label>
+                  </wj-menu-item>
+                  <wj-menu-item>
+                    <wj-icon name="video" slot="start"></wj-icon>
+                    <wj-label>Menu item</wj-label>
+                  </wj-menu-item>
+                </wj-menu>
+              </wj-dropdown>
+            </wj-card-controls>
+          </wj-card-header>
+          <wj-card-content>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </wj-card-content>
+        </wj-card>
+      </div>
+    </div>
 
     <!--  IMAGE-->
 
@@ -77,7 +117,7 @@ template.innerHTML = `<h1>Card</h1>
       </div>
     </div>
 
-    <!-- BASIC -->
+    <!-- LIST CARD -->
 
     <h2>List card</h2>
     <div class="playground">

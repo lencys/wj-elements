@@ -9,7 +9,7 @@
   --wj-card-border-color: transparent;
 }
 
-// BG
+/*BG*/
 :host(.wj-color-primary) {
   --wj-card-background: var(--wj-color-primary);
 }
@@ -38,7 +38,7 @@
   --wj-card-background: var(--wj-color-menu);
 }
 
-// Text
+/*TEXT*/
 :host(.wj-color-primary) {
   --wj-card-color: var(--wj-color-white);
 }
@@ -86,7 +86,7 @@
   word-wrap: normal;
   display: flex;
   flex-direction: column;
-  contain: content;
+  /*contain: content; odstranene kvoli dropdown ktory bol orezany */
   overflow: hidden;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
