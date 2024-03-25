@@ -1,22 +1,22 @@
 ```html
 <template>
-  <wj-list inset>
-    <wj-item>
-      <wj-label>Pokémon Yellow</wj-label>
-    </wj-item>
-    <wj-item>
-      <wj-label>Mega Man X</wj-label>
-    </wj-item>
-    <wj-item>
-      <wj-label>The Legend of Zelda</wj-label>
-    </wj-item>
-    <wj-item>
-      <wj-label>Pac-Man</wj-label>
-    </wj-item>
-    <wj-item>
-      <wj-label>Super Mario World</wj-label>
-    </wj-item>
-  </wj-list>
+  <wje-list inset>
+    <wje-item>
+      <wje-label>Pokémon Yellow</wje-label>
+    </wje-item>
+    <wje-item>
+      <wje-label>Mega Man X</wje-label>
+    </wje-item>
+    <wje-item>
+      <wje-label>The Legend of Zelda</wje-label>
+    </wje-item>
+    <wje-item>
+      <wje-label>Pac-Man</wje-label>
+    </wje-item>
+    <wje-item>
+      <wje-label>Super Mario World</wje-label>
+    </wje-item>
+  </wje-list>
 </template>
 
 <script lang="ts">

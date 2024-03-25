@@ -4,7 +4,7 @@ import { Slider } from '@elements/react';
 function Example() {
   return (
     <>
-     <wj-slider></wj-slider>
+     <wje-slider></wje-slider>
     </>
   );
 }

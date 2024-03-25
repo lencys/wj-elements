@@ -8,44 +8,44 @@ function Example() {
   return (
     <>
     <span>Columns aligned at the start</span>
-    <wj-grid>
-      <wj-row class="wj-justify-content-start">
-        <wj-col size="3"> 1 </wj-col>
-        <wj-col size="3"> 2 </wj-col>
-      </wj-row>
-    </wj-grid>
+    <wje-grid>
+      <wje-row class="wje-justify-content-start">
+        <wje-col size="3"> 1 </wje-col>
+        <wje-col size="3"> 2 </wje-col>
+      </wje-row>
+    </wje-grid>
     
     <span>Stĺpce zarovnané na stred</span>
-    <wj-grid>
-      <wj-row class="wj-justify-content-center">
-        <wj-col size="3"> 1 </wj-col>
-        <wj-col size="3"> 2 </wj-col>
-      </wj-row>
-    </wj-grid>
+    <wje-grid>
+      <wje-row class="wje-justify-content-center">
+        <wje-col size="3"> 1 </wje-col>
+        <wje-col size="3"> 2 </wje-col>
+      </wje-row>
+    </wje-grid>
     
     <span>Stĺpce zarovnané na koniec</span>
-    <wj-grid>
-      <wj-row class="wj-justify-content-end">
-        <wj-col size="3"> 1 </wj-col>
-        <wj-col size="3"> 2 </wj-col>
-      </wj-row>
-    </wj-grid>
+    <wje-grid>
+      <wje-row class="wje-justify-content-end">
+        <wje-col size="3"> 1 </wje-col>
+        <wje-col size="3"> 2 </wje-col>
+      </wje-row>
+    </wje-grid>
     
     <span>Stĺpce zarovnané so space-around</span>
-    <wj-grid>
-      <wj-row class="wj-justify-content-around">
-        <wj-col size="3"> 1 </wj-col>
-        <wj-col size="3"> 2 </wj-col>
-      </wj-row>
-    </wj-grid>
+    <wje-grid>
+      <wje-row class="wje-justify-content-around">
+        <wje-col size="3"> 1 </wje-col>
+        <wje-col size="3"> 2 </wje-col>
+      </wje-row>
+    </wje-grid>
     
     <span>Stĺpce zarovnané so space-between</span>
-    <wj-grid>
-      <wj-row class="wj-justify-content-between">
-        <wj-col size="3"> 1 </wj-col>
-        <wj-col size="3"> 2 </wj-col>
-      </wj-row>
-    </wj-grid>
+    <wje-grid>
+      <wje-row class="wje-justify-content-between">
+        <wje-col size="3"> 1 </wje-col>
+        <wje-col size="3"> 2 </wje-col>
+      </wje-row>
+    </wje-grid>
     </>
   );
 }

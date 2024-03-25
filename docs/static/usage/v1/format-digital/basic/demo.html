@@ -6,30 +6,32 @@
     <title>FormatDigital</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
-    <script type="module" src="../../../../wj-elementy/wj-master.js"></script>
-    <link rel="stylesheet" href="../../../../wj-elementy/style.css" />
+    <script type="module" src="../../../../wje-elementy/wje-master.js"></script>
+    <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
     <style>
         .content {
             max-width: 400px;
             min-width: 320px;
         }
 
-        wj-input {
+        wje-input {
             width: 200px;
             margin-inline: 0 .5rem;
-            --wj-input-margin-bottom: 0;
+            --wje-input-margin-bottom: 0;
         }
     </style>
   </head>
   <body>
     <div class="container">
       <div class="content" style="display: flex; justify-content: start; align-items: center;">
-        <wj-input type="number" variant="standard" placeholder="Typing number" value="1000000"></wj-input>
-        <wj-format-digital value="1000000" class="example"></wj-format-digital>
+        <wje-input type="number" variant="standard" placeholder="Typing number" value="1000000"></wje-input>
+        <wje-format-digital value="1000000" class="example"></wje-format-digital>
       </div>
     </div>
     <script>
-      document.addEventListener('wj-input:input', (e) => {
+      document.addEventListener('wje-input:input', (e) => {
         document.querySelector('.example').setAttribute('value', e.detail.value);
       });
     </script>

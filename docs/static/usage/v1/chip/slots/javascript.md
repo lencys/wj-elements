@@ -1,14 +1,14 @@
 ```html
-<wj-chip>
-  <wj-avatar>
-    <wj-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></wj-img>
-  </wj-avatar>
-  <wj-label>Avatar Chip</wj-label>
-  <wj-icon name="circle-xmark"></wj-icon>
-</wj-chip>
+<wje-chip>
+  <wje-avatar>
+    <wje-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></wje-img>
+  </wje-avatar>
+  <wje-label>Avatar Chip</wje-label>
+  <wje-icon name="circle-xmark"></wje-icon>
+</wje-chip>
 
-<wj-chip removable>
-  <wj-icon name="location-pin" color="complete"></wj-icon>
-  <wj-label>Icon Chip</wj-label>
-</wj-chip>
+<wje-chip removable>
+  <wje-icon name="location-pin" color="complete"></wje-icon>
+  <wje-label>Icon Chip</wje-label>
+</wje-chip>
 ```

@@ -8,49 +8,49 @@ function Example() {
   return (
     <>
     <span>Stĺpce zarovnané nahor</span>
-    <wj-grid>
-      <wj-row class="wj-align-items-start">
-        <wj-col> 1 </wj-col>
-        <wj-col> 2 </wj-col>
-        <wj-col> 3 </wj-col>
-        <wj-col>
+    <wje-grid>
+      <wje-row class="wje-align-items-start">
+        <wje-col> 1 </wje-col>
+        <wje-col> 2 </wje-col>
+        <wje-col> 3 </wje-col>
+        <wje-col>
           4 <br />
           # <br />
           # <br />
           # <br />
-        </wj-col>
-      </wj-row>
-    </wj-grid>
+        </wje-col>
+      </wje-row>
+    </wje-grid>
     
     <span>Stĺpce zarovnané na stred</span>
-    <wj-grid>
-      <wj-row class="wj-align-items-center">
-        <wj-col> 1 </wj-col>
-        <wj-col> 2 </wj-col>
-        <wj-col> 3 </wj-col>
-        <wj-col>
+    <wje-grid>
+      <wje-row class="wje-align-items-center">
+        <wje-col> 1 </wje-col>
+        <wje-col> 2 </wje-col>
+        <wje-col> 3 </wje-col>
+        <wje-col>
           4 <br />
           # <br />
           # <br />
           # <br />
-        </wj-col>
-      </wj-row>
-    </wj-grid>
+        </wje-col>
+      </wje-row>
+    </wje-grid>
     
     <span>Stĺpce zarovnané nadol</span>
-    <wj-grid>
-      <wj-row class="wj-align-items-end">
-        <wj-col> 1 </wj-col>
-        <wj-col> 2 </wj-col>
-        <wj-col> 3 </wj-col>
-        <wj-col>
+    <wje-grid>
+      <wje-row class="wje-align-items-end">
+        <wje-col> 1 </wje-col>
+        <wje-col> 2 </wje-col>
+        <wje-col> 3 </wje-col>
+        <wje-col>
           4 <br />
           # <br />
           # <br />
           # <br />
-        </wj-col>
-      </wj-row>
-    </wj-grid>
+        </wje-col>
+      </wje-row>
+    </wje-grid>
     </>
   );
 }

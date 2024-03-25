@@ -1,6 +1,6 @@
 ```html
 <template>
-  <wj-copy-button value="I am copy - Value"></wj-copy-button>
+  <wje-copy-button value="I am copy - Value"></wje-copy-button>
 </template>
 
 <script lang="ts">

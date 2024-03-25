@@ -1,17 +1,17 @@
 ```html
-<wj-item>
-    <wj-toggle>Default Toggle</wj-toggle>
-</wj-item>
-<wj-item>
-    <wj-toggle checked>Checked Toggle</wj-toggle>
-</wj-item>
-<wj-item>
-    <wj-toggle disabled>Disabled Toggle</wj-toggle>
-</wj-item>
-<wj-item>
-    <wj-toggle checked disabled>Disabled Checked Toggle</wj-toggle>
-</wj-item>
-<wj-item>
-    <wj-toggle color="success" checked disabled>Disabled Checked Toggle</wj-toggle>
-</wj-item>
+<wje-item>
+    <wje-toggle>Default Toggle</wje-toggle>
+</wje-item>
+<wje-item>
+    <wje-toggle checked>Checked Toggle</wje-toggle>
+</wje-item>
+<wje-item>
+    <wje-toggle disabled>Disabled Toggle</wje-toggle>
+</wje-item>
+<wje-item>
+    <wje-toggle checked disabled>Disabled Checked Toggle</wje-toggle>
+</wje-item>
+<wje-item>
+    <wje-toggle color="success" checked disabled>Disabled Checked Toggle</wje-toggle>
+</wje-item>
 ```

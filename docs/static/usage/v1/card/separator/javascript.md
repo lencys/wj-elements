@@ -1,28 +1,28 @@
 ```html
-<wj-card>
-  <wj-card-header separator>
-    <wj-card-subtitle>Subtitle</wj-card-subtitle>
-    <wj-card-title>Title</wj-card-title>
-    <wj-card-controls>
-      <wj-button fill="link" size="small">
-        <wj-icon name="up-right-and-down-left-from-center" slot="icon-only"></wj-icon>
-      </wj-button>
-      <wj-button fill="link" size="small">
-        <wj-icon name="chevron-up" slot="icon-only"></wj-icon>
-      </wj-button>
-      <wj-button fill="link" size="small">
-        <wj-icon name="rotate-right" slot="icon-only"></wj-icon>
-      </wj-button>
-      <wj-button fill="link" size="small">
-        <wj-icon name="ellipsis" slot="icon-only"></wj-icon>
-      </wj-button>
-      <wj-button fill="link" size="small">
-        <wj-icon name="xmark" slot="icon-only"></wj-icon>
-      </wj-button>
-    </wj-card-controls>
-  </wj-card-header>
-  <wj-card-content>
+<wje-card>
+  <wje-card-header separator>
+    <wje-card-subtitle>Subtitle</wje-card-subtitle>
+    <wje-card-title>Title</wje-card-title>
+    <wje-card-controls>
+      <wje-button fill="link" size="small">
+        <wje-icon name="up-right-and-down-left-from-center" slot="icon-only"></wje-icon>
+      </wje-button>
+      <wje-button fill="link" size="small">
+        <wje-icon name="chevron-up" slot="icon-only"></wje-icon>
+      </wje-button>
+      <wje-button fill="link" size="small">
+        <wje-icon name="rotate-right" slot="icon-only"></wje-icon>
+      </wje-button>
+      <wje-button fill="link" size="small">
+        <wje-icon name="ellipsis" slot="icon-only"></wje-icon>
+      </wje-button>
+      <wje-button fill="link" size="small">
+        <wje-icon name="xmark" slot="icon-only"></wje-icon>
+      </wje-button>
+    </wje-card-controls>
+  </wje-card-header>
+  <wje-card-content>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  </wj-card-content>
-</wj-card>
+  </wje-card-content>
+</wje-card>
 ```

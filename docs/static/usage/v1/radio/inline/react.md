@@ -4,16 +4,16 @@ import { Radio, RadioGroup } from '@elements/react';
 
 function Example() {
   return (
-    <wj-radio-group inline>
-      <wj-radio value="cat">Cat</wj-radio>
-      <wj-radio value="dog">Dog</wj-radio>
-      <wj-radio value="horse">Horse</wj-radio>
-      <wj-radio value="rabbit" >Rabbit</wj-radio>
-      <wj-radio value="hen">Hen</wj-radio>
-      <wj-radio value="goose">Goose</wj-radio>
-      <wj-radio value="duck">Duck</wj-radio>
-      <wj-radio value="pig" >Pig</wj-radio>
-    </wj-radio-group>
+    <wje-radio-group inline>
+      <wje-radio value="cat">Cat</wje-radio>
+      <wje-radio value="dog">Dog</wje-radio>
+      <wje-radio value="horse">Horse</wje-radio>
+      <wje-radio value="rabbit" >Rabbit</wje-radio>
+      <wje-radio value="hen">Hen</wje-radio>
+      <wje-radio value="goose">Goose</wje-radio>
+      <wje-radio value="duck">Duck</wje-radio>
+      <wje-radio value="pig" >Pig</wje-radio>
+    </wje-radio-group>
   );
 }
 export default Example;

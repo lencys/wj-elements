@@ -1,15 +1,15 @@
 ```html
 <template>
-  <wj-card>
+  <wje-card>
     <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-    <wj-card-header>
-      <wj-card-subtitle>Subtitle</wj-card-subtitle>
-      <wj-card-title>Title</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+    <wje-card-header>
+      <wje-card-subtitle>Subtitle</wje-card-subtitle>
+      <wje-card-title>Title</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </template>
 
 <script lang="ts">

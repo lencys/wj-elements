@@ -1,14 +1,14 @@
 ```html
 <template>
-  <wj-avatar size="small">
-    <wj-icon name="image" slot="icon"></wj-icon>
-  </wj-avatar>
-  <wj-avatar>
-    <wj-icon name="image" slot="icon"></wj-icon>
-  </wj-avatar>
-  <wj-avatar size="large">
-    <wj-icon name="image" slot="icon"></wj-icon>
-  </wj-avatar>
+  <wje-avatar size="small">
+    <wje-icon name="image" slot="icon"></wje-icon>
+  </wje-avatar>
+  <wje-avatar>
+    <wje-icon name="image" slot="icon"></wje-icon>
+  </wje-avatar>
+  <wje-avatar size="large">
+    <wje-icon name="image" slot="icon"></wje-icon>
+  </wje-avatar>
 </template>
 
 <script lang="ts">

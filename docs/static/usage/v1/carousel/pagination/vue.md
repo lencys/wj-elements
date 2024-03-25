@@ -1,19 +1,19 @@
 ```html
 <template>
-  <wj-carousel pagination>
-    <wj-carousel-item>
-      <wj-img src="https://picsum.photos/500/375?i=1"></wj-img>
-    </wj-carousel-item>
-    <wj-carousel-item>
-      <wj-img src="https://picsum.photos/500/375?i=2"></wj-img>
-    </wj-carousel-item>
-    <wj-carousel-item>
-      <wj-img src="https://picsum.photos/500/375?i=3"></wj-img>
-    </wj-carousel-item>
-    <wj-carousel-item>
-      <wj-img src="https://picsum.photos/500/375?i=4"></wj-img>
-    </wj-carousel-item>
-  </wj-carousel>
+  <wje-carousel pagination>
+    <wje-carousel-item>
+      <wje-img src="https://picsum.photos/500/375?i=1"></wje-img>
+    </wje-carousel-item>
+    <wje-carousel-item>
+      <wje-img src="https://picsum.photos/500/375?i=2"></wje-img>
+    </wje-carousel-item>
+    <wje-carousel-item>
+      <wje-img src="https://picsum.photos/500/375?i=3"></wje-img>
+    </wje-carousel-item>
+    <wje-carousel-item>
+      <wje-img src="https://picsum.photos/500/375?i=4"></wje-img>
+    </wje-carousel-item>
+  </wje-carousel>
 </template>
 
 <script lang="ts">

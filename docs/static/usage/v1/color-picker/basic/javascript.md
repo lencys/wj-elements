@@ -1,3 +1,3 @@
 ```html
-    <wj-color-picker></wj-color-picker>
+    <wje-color-picker></wje-color-picker>
 ```

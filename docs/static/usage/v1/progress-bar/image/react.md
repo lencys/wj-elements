@@ -3,18 +3,18 @@ import React from 'react';
 import { ProgressBar, Thumbnail } from '@elemets/react';
 function Example() {
   return (
-  <wj-progress-bar progress="60" radius="20" stroke="3" color="danger" type="circle" shadow="open" class="wj-color-danger wj-color">
-    <wj-thumbnail circle>
+  <wje-progress-bar progress="60" radius="20" stroke="3" color="danger" type="circle" shadow="open" class="wje-color-danger wje-color">
+    <wje-thumbnail circle>
       <img alt="Silhouette of mountains" src="../../../../img/demos/thumbnail.svg">
-    </wj-thumbnail>
+    </wje-thumbnail>
     <style>
-    wj-thumbnail {
-        --wj-border-radius: 50%;
-        --wj-thumbnail-width: 38px;
-        --wj-thumbnail-height: 38px;
+    wje-thumbnail {
+        --wje-border-radius: 50%;
+        --wje-thumbnail-width: 38px;
+        --wje-thumbnail-height: 38px;
     }
     </style>
-  </wj-progress-bar>
+  </wje-progress-bar>
   );
 }
 export default Example;

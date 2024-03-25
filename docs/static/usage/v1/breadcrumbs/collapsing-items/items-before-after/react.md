@@ -3,29 +3,29 @@ import React from 'react';
 import { Breadcrumb, Breadcrumbs } from '@elements/react';
 function Example() {
   return (
-    <wj-breadcrumbs max-items="4" items-before-collapse="2">
-      <wj-breadcrumb href="/home">Home</wj-breadcrumb>
-      <wj-breadcrumb href="/electronics">Electronics</wj-breadcrumb>
-      <wj-breadcrumb href="/photography">Photography</wj-breadcrumb>
-      <wj-breadcrumb href="/cameras">Cameras</wj-breadcrumb>
-      <wj-breadcrumb href="/film">Film</wj-breadcrumb>
-      <wj-breadcrumb href="/35mm">35 mm</wj-breadcrumb>
-      <wj-breadcrumb href="/a">A</wj-breadcrumb>
-      <wj-breadcrumb href="/b">B</wj-breadcrumb>
-      <wj-breadcrumb href="/c">C</wj-breadcrumb>
-    </wj-breadcrumbs>
-    <wj-label>Počet položiek po zbaľovači</wj-label>
-    <wj-breadcrumbs max-items="4" items-after-collapse="2">
-      <wj-breadcrumb href="/home">Home</wj-breadcrumb>
-      <wj-breadcrumb href="/electronics">Electronics</wj-breadcrumb>
-      <wj-breadcrumb href="/photography">Photography</wj-breadcrumb>
-      <wj-breadcrumb href="/cameras">Cameras</wj-breadcrumb>
-      <wj-breadcrumb href="/film">Film</wj-breadcrumb>
-      <wj-breadcrumb href="/35mm">35 mm</wj-breadcrumb>
-      <wj-breadcrumb href="/a">A</wj-breadcrumb>
-      <wj-breadcrumb href="/b">B</wj-breadcrumb>
-      <wj-breadcrumb href="/c">C</wj-breadcrumb>
-    </wj-breadcrumbs>
+    <wje-breadcrumbs max-items="4" items-before-collapse="2">
+      <wje-breadcrumb href="/home">Home</wje-breadcrumb>
+      <wje-breadcrumb href="/electronics">Electronics</wje-breadcrumb>
+      <wje-breadcrumb href="/photography">Photography</wje-breadcrumb>
+      <wje-breadcrumb href="/cameras">Cameras</wje-breadcrumb>
+      <wje-breadcrumb href="/film">Film</wje-breadcrumb>
+      <wje-breadcrumb href="/35mm">35 mm</wje-breadcrumb>
+      <wje-breadcrumb href="/a">A</wje-breadcrumb>
+      <wje-breadcrumb href="/b">B</wje-breadcrumb>
+      <wje-breadcrumb href="/c">C</wje-breadcrumb>
+    </wje-breadcrumbs>
+    <wje-label>Počet položiek po zbaľovači</wje-label>
+    <wje-breadcrumbs max-items="4" items-after-collapse="2">
+      <wje-breadcrumb href="/home">Home</wje-breadcrumb>
+      <wje-breadcrumb href="/electronics">Electronics</wje-breadcrumb>
+      <wje-breadcrumb href="/photography">Photography</wje-breadcrumb>
+      <wje-breadcrumb href="/cameras">Cameras</wje-breadcrumb>
+      <wje-breadcrumb href="/film">Film</wje-breadcrumb>
+      <wje-breadcrumb href="/35mm">35 mm</wje-breadcrumb>
+      <wje-breadcrumb href="/a">A</wje-breadcrumb>
+      <wje-breadcrumb href="/b">B</wje-breadcrumb>
+      <wje-breadcrumb href="/c">C</wje-breadcrumb>
+    </wje-breadcrumbs>
   );
 }
 export default Example;

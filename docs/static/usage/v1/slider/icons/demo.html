@@ -6,24 +6,26 @@
     <title>Menu</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
-    <script type="module" src="../../../../wj-elementy/wj-master.js"></script>
-    <link rel="stylesheet" href="../../../../wj-elementy/style.css" />
+    <script type="module" src="./../../../../wje-elementy/wje-master.js"></script>
+    <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
   </head>
   <body>
     <div class="container">
       <div class="content" style="min-width: 60%;margin: auto;">
-        <wj-slider class="example" min="20" max="80" value="50" bubble>
-          <wj-icon name="volume-3" size="large" slot="start"></wj-icon>
-          <wj-icon name="volume" size="large" slot="end"></wj-icon>
+        <wje-slider class="example" min="20" max="80" value="50" bubble>
+          <wje-icon name="volume-3" size="large" slot="start"></wje-icon>
+          <wje-icon name="volume" size="large" slot="end"></wje-icon>
           <style>
-            wj-slider {
+            wje-slider {
               width: 100%;
             }
-            .example wj-icon {
-                --wj-icon-size: 24px;
+            .example wje-icon {
+                --wje-icon-size: 24px;
             }
           </style>
-        </wj-slider>
+        </wje-slider>
       </div>
     </div>
   </body>

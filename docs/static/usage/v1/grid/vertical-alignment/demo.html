@@ -6,56 +6,58 @@
     <title>Dropdown</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
-    <script type="module" src="../../../../wj-elementy/wj-master.js"></script>
-    <link rel="stylesheet" href="../../../../wj-elementy/style.css" />
+    <script type="module" src="../../../../wje-elementy/wje-master.js"></script>
+    <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
   </head>
   <body>
     <div class="container">
         <div class="content">
           <span>Stĺpce zarovnané nahor</span>
-          <wj-grid>
-            <wj-row class="wj-align-items-start">
-              <wj-col> 1 </wj-col>
-              <wj-col> 2 </wj-col>
-              <wj-col> 3 </wj-col>
-              <wj-col>
+          <wje-grid>
+            <wje-row class="wje-align-items-start">
+              <wje-col> 1 </wje-col>
+              <wje-col> 2 </wje-col>
+              <wje-col> 3 </wje-col>
+              <wje-col>
                 4 <br />
                 # <br />
                 # <br />
                 # <br />
-              </wj-col>
-            </wj-row>
-          </wj-grid>
+              </wje-col>
+            </wje-row>
+          </wje-grid>
           
           <span>Stĺpce zarovnané na stred</span>
-          <wj-grid>
-            <wj-row class="wj-align-items-center">
-              <wj-col> 1 </wj-col>
-              <wj-col> 2 </wj-col>
-              <wj-col> 3 </wj-col>
-              <wj-col>
+          <wje-grid>
+            <wje-row class="wje-align-items-center">
+              <wje-col> 1 </wje-col>
+              <wje-col> 2 </wje-col>
+              <wje-col> 3 </wje-col>
+              <wje-col>
                 4 <br />
                 # <br />
                 # <br />
                 # <br />
-              </wj-col>
-            </wj-row>
-          </wj-grid>
+              </wje-col>
+            </wje-row>
+          </wje-grid>
           
           <span>Stĺpce zarovnané nadol</span>
-          <wj-grid>
-            <wj-row class="wj-align-items-end">
-              <wj-col> 1 </wj-col>
-              <wj-col> 2 </wj-col>
-              <wj-col> 3 </wj-col>
-              <wj-col>
+          <wje-grid>
+            <wje-row class="wje-align-items-end">
+              <wje-col> 1 </wje-col>
+              <wje-col> 2 </wje-col>
+              <wje-col> 3 </wje-col>
+              <wje-col>
                 4 <br />
                 # <br />
                 # <br />
                 # <br />
-              </wj-col>
-            </wj-row>
-          </wj-grid>
+              </wje-col>
+            </wje-row>
+          </wje-grid>
         </div>
       </div>
     </div>
@@ -69,13 +71,13 @@
     align-items: center;
     justify-content: center;
     }
-    wj-col {
+    wje-col {
       background-color: #7252D3;
       border: solid 1px #fff;
       color: #fff;
       text-align: center;
     }
-    wj-col[size="auto"], wj-col[size], wj-col[offset]  {
+    wje-col[size="auto"], wje-col[size], wje-col[offset]  {
       background-color: #19AD79;
     }
     span {

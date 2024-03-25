@@ -43,6 +43,12 @@ import FormattingBits from '@site/static/usage/v1/format-digital/formatting-bits
 
 <FormattingBits />
 
+## Sloty
+
+import DisplaySlots from '@site/static/usage/v1/format-digital/slots/index.md';
+
+<DisplaySlots />
+
 ## Atribúty a Vlastnosti
 
 <Props />

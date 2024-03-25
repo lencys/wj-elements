@@ -6,15 +6,15 @@ import './main.css';
 
 function Example() {
   return (
-    <wj-card id="custom">
-      <wj-card-header>
-        <wj-card-subtitle>Subtitle</wj-card-subtitle>
-        <wj-card-title>Title</wj-card-title>
-      </wj-card-header>
-      <wj-card-content>
+    <wje-card id="custom">
+      <wje-card-header>
+        <wje-card-subtitle>Subtitle</wje-card-subtitle>
+        <wje-card-title>Title</wje-card-title>
+      </wje-card-header>
+      <wje-card-content>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      </wj-card-content>
-    </wj-card>
+      </wje-card-content>
+    </wje-card>
   );
 }
 export default Example;

@@ -1,6 +1,6 @@
 ```html
 <template>
-    <wj-checkbox color="warning" indeterminate>Default warning indeterminate</wj-checkbox>
+    <wje-checkbox color="warning" indeterminate>Default warning indeterminate</wje-checkbox>
 </template>
 
 <script lang="ts">

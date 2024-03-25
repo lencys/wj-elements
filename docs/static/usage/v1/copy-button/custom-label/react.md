@@ -4,7 +4,7 @@ import { CopyButton } from '@elements/react';
 
 function Example() {
   return 
-  <wj-copy-button value="I am copy - Value" label="Kopírovať" label-success="Skopírované"></wj-copy-button>;
+  <wje-copy-button value="I am copy - Value" label="Kopírovať" label-success="Skopírované"></wje-copy-button>;
 }
 export default Example;
 ```

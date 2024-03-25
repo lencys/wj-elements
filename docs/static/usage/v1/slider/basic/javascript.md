@@ -1,3 +1,3 @@
 ```html
-<wj-slider></wj-slider>
+<wje-slider></wje-slider>
 ```

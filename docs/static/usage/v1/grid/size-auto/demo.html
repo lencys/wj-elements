@@ -6,42 +6,44 @@
     <title>Dropdown</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
-    <script type="module" src="../../../../wj-elementy/wj-master.js"></script>
-    <link rel="stylesheet" href="../../../../wj-elementy/style.css" />
+    <script type="module" src="../../../../wje-elementy/wje-master.js"></script>
+    <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
   </head>
   <body>
     <div class="container">
         <div class="content">
           <span>Stĺpec 1 má <strong>size</strong> nastavenú na <strong>"auto"</strong></span>
-        <wj-grid>
-          <wj-row>
-            <wj-col size="auto">1</wj-col>
-            <wj-col>2</wj-col>
-            <wj-col>3</wj-col>
-          </wj-row>
-        </wj-grid>
+        <wje-grid>
+          <wje-row>
+            <wje-col size="auto">1</wje-col>
+            <wje-col>2</wje-col>
+            <wje-col>3</wje-col>
+          </wje-row>
+        </wje-grid>
 
         <span>Stĺpec 3 obsahuje text a má <strong>size "auto"</strong></span>
-        <wj-grid>
-          <wj-row>
-            <wj-col>1</wj-col>
-            <wj-col>2</wj-col>
-            <wj-col size="auto">Som stĺpec 3</wj-col>
-            <wj-col>4</wj-col>
-            <wj-col>5</wj-col>
-            <wj-col>6</wj-col>
-          </wj-row>
-        </wj-grid>
+        <wje-grid>
+          <wje-row>
+            <wje-col>1</wje-col>
+            <wje-col>2</wje-col>
+            <wje-col size="auto">Som stĺpec 3</wje-col>
+            <wje-col>4</wje-col>
+            <wje-col>5</wje-col>
+            <wje-col>6</wje-col>
+          </wje-row>
+        </wje-grid>
 
         <span>Stĺpec 2 má <strong>size</strong> <strong>"auto"</strong> a definovanú šírku</span>
-        <wj-grid>
-          <wj-row>
-            <wj-col>1</wj-col>
-            <wj-col size="auto">
+        <wje-grid>
+          <wje-row>
+            <wje-col>1</wje-col>
+            <wje-col size="auto">
               <div style="width: 150px">2</div>
-            </wj-col>
-          </wj-row>
-        </wj-grid>
+            </wje-col>
+          </wje-row>
+        </wje-grid>
         </div>
       </div>
     </div>
@@ -55,13 +57,13 @@
     align-items: center;
     justify-content: center;
     }
-    wj-col {
+    wje-col {
       background-color: #7252D3;
       border: solid 1px #fff;
       color: #fff;
       text-align: center;
     }
-    wj-col[size="auto"], wj-col[size], wj-col[offset]  {
+    wje-col[size="auto"], wje-col[size], wje-col[offset]  {
       background-color: #19AD79;
     }
     span {

@@ -5,7 +5,7 @@ import Rate from '@elements/react';
 function Example() {
   return (
     <>
-      <wj-rate max="5"></wj-rate>
+      <wje-rate max="5"></wje-rate>
     </>
   );
 }

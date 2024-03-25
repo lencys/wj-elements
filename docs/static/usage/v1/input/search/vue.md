@@ -1,16 +1,16 @@
 ```html
 <template>
-  <wj-input variant="standard" label="Default input" class="example">
-    <wj-button fill="solid" slot="end"><wj-icon name="search"></wj-icon></wj-button>
-  </wj-input>
+  <wje-input variant="standard" label="Default input" class="example">
+    <wje-button fill="solid" slot="end"><wje-icon name="search"></wje-icon></wje-button>
+  </wje-input>
   <style>
     .example {
-      --wj-input-slot-padding-inline: 0 !important;
+      --wje-input-slot-padding-inline: 0 !important;
     }
     
-    .example wj-button {
-      --wj-button-border-radius: 0 !important;
-      --wj-color-base: #000000 !important;
+    .example wje-button {
+      --wje-button-border-radius: 0 !important;
+      --wje-color-base: #000000 !important;
     }
   </style>
 </template>

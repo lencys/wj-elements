@@ -6,31 +6,33 @@
     <title>SplitView</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
-    <script type="module" src="../../../../wj-elementy/wj-master.js"></script>
-    <link rel="stylesheet" href="../../../../wj-elementy/style.css" />
+    <script type="module" src="../../../../wje-elementy/wje-master.js"></script>
+    <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
   </head>
   <body>
     <div class="container">
       <div class="content" style="min-width: 60%;margin: auto;">
-        <wj-split-view id="custom">
+        <wje-split-view id="custom">
           <div slot="start">Start</div>
-          <wj-icon name="grip-vertical" slot="divider"></wj-icon>
+          <wje-icon name="grip-vertical" slot="divider"></wje-icon>
           <div slot="end">End</div>
-        </wj-split-view>
+        </wje-split-view>
         <style>
-          wj-split-view {
+          wje-split-view {
             display: block;
             height: 300px;
             width: 100%;
-            border-color: var(--wj-border-color); 
+            border-color: var(--wje-border-color);
             border-style: solid;
             border-width: 1px;
           }
           #custom {
-            --wj-split-view-divider-background: mediumvioletred !important;
-            --wj-split-view-divider-size: 1px !important;
+            --wje-split-view-divider-background: mediumvioletred !important;
+            --wje-split-view-divider-size: 1px !important;
           }
-          #custom wj-icon {
+          #custom wje-icon {
             position: absolute;
             background-color: mediumvioletred;
             padding: .5rem 0.25rem;

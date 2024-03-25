@@ -5,7 +5,7 @@ import { Chip } from '@elements/react';
 import './main.css';
 
 function Example() {
-  return <wj-chip id="custom">Default</wj-chip>;
+  return <wje-chip id="custom">Default</wje-chip>;
 }
 export default Example;
 ```

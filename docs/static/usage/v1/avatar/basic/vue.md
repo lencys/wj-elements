@@ -1,8 +1,8 @@
 ```html
 <template>
-  <wj-avatar>
-    <wj-img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-  </wj-avatar>
+  <wje-avatar>
+    <wje-img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+  </wje-avatar>
 </template>
 
 <script lang="ts">

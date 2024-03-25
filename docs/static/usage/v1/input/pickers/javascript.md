@@ -1,9 +1,9 @@
 ```html
-<wj-input variant="standard" label="Default input" class="example-icon" clearable>
-    <wj-icon-picker slot="start"></wj-icon-picker>
-</wj-input>
+<wje-input variant="standard" label="Default input" class="example-icon" clearable>
+    <wje-icon-picker slot="start"></wje-icon-picker>
+</wje-input>
 
-<wj-input variant="standard" label="Default input" class="example-color" clearable>
-    <wj-color-picker slot="start"></wj-color-picker>
-</wj-input>
+<wje-input variant="standard" label="Default input" class="example-color" clearable>
+    <wje-color-picker slot="start"></wje-color-picker>
+</wje-input>
 ```

@@ -4,27 +4,27 @@ import { CopyButton } from '@elements/react';
 
 function Example() {
   return
-  <wj-carousel pagination class="example-content">
-    <wj-carousel-item>
+  <wje-carousel pagination class="example-content">
+    <wje-carousel-item>
       <div>A</div>
       <div>B</div>
-    </wj-carousel-item>
-    <wj-carousel-item>
+    </wje-carousel-item>
+    <wje-carousel-item>
       <div>C</div>
       <div>D</div>
-    </wj-carousel-item>
-    <wj-carousel-item>
+    </wje-carousel-item>
+    <wje-carousel-item>
       <div>E</div>
       <div>F</div>
-    </wj-carousel-item>
-    <wj-carousel-item>
+    </wje-carousel-item>
+    <wje-carousel-item>
       <div>G</div>
       <div>H</div>
-    </wj-carousel-item>
-  </wj-carousel>
+    </wje-carousel-item>
+  </wje-carousel>
   <style>
     .example-content {
-    --wj-carousel-width: 400px;
+    --wje-carousel-width: 400px;
   }
 
     .example-content div {

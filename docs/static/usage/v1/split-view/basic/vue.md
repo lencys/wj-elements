@@ -1,9 +1,9 @@
 ```html
 <template>
-  <wj-split-view initial="250">
+  <wje-split-view initial="250">
     <div slot="start">Start</div>
     <div slot="end">End</div>
-  </wj-split-view>
+  </wje-split-view>
 </template>
 
 <script lang="ts">

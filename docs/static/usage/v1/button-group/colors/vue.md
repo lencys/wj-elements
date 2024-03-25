@@ -1,53 +1,53 @@
 ```html
 <template>
   <p>
-    <wj-button-group>
-      <wj-button>Default</wj-button>
-      <wj-button>Default</wj-button>
-      <wj-button>Default</wj-button>
-    </wj-button-group>
+    <wje-button-group>
+      <wje-button>Default</wje-button>
+      <wje-button>Default</wje-button>
+      <wje-button>Default</wje-button>
+    </wje-button-group>
   </p>
   <p>
-    <wj-button-group>
-      <wj-button color="primary">Primary</wj-button>
-      <wj-button color="primary">Primary</wj-button>
-      <wj-button color="primary">Primary</wj-button>
-    </wj-button-group>
+    <wje-button-group>
+      <wje-button color="primary">Primary</wje-button>
+      <wje-button color="primary">Primary</wje-button>
+      <wje-button color="primary">Primary</wje-button>
+    </wje-button-group>
   </p>
   <p>
-    <wj-button-group>
-      <wj-button color="complete">Complete</wj-button>
-      <wj-button color="complete">Complete</wj-button>
-      <wj-button color="complete">Complete</wj-button>
-    </wj-button-group>
+    <wje-button-group>
+      <wje-button color="complete">Complete</wje-button>
+      <wje-button color="complete">Complete</wje-button>
+      <wje-button color="complete">Complete</wje-button>
+    </wje-button-group>
   </p>
   <p>
-    <wj-button-group>
-      <wj-button color="success">Success</wj-button>
-      <wj-button color="success">Success</wj-button>
-      <wj-button color="success">Success</wj-button>
-    </wj-button-group>
+    <wje-button-group>
+      <wje-button color="success">Success</wje-button>
+      <wje-button color="success">Success</wje-button>
+      <wje-button color="success">Success</wje-button>
+    </wje-button-group>
   </p>
   <p>
-    <wj-button-group>
-      <wj-button color="warning">Warning</wj-button>
-      <wj-button color="warning">Warning</wj-button>
-      <wj-button color="warning">Warning</wj-button>
-    </wj-button-group>
+    <wje-button-group>
+      <wje-button color="warning">Warning</wje-button>
+      <wje-button color="warning">Warning</wje-button>
+      <wje-button color="warning">Warning</wje-button>
+    </wje-button-group>
   </p>
   <p>
-    <wj-button-group>
-      <wj-button color="danger">Danger</wj-button>
-      <wj-button color="danger">Danger</wj-button>
-      <wj-button color="danger">Danger</wj-button>
-    </wj-button-group>
+    <wje-button-group>
+      <wje-button color="danger">Danger</wje-button>
+      <wje-button color="danger">Danger</wje-button>
+      <wje-button color="danger">Danger</wje-button>
+    </wje-button-group>
   </p>
   <p>
-    <wj-button-group>
-      <wj-button color="neutral">Neutral</wj-button>
-      <wj-button color="neutral">Neutral</wj-button>
-      <wj-button color="neutral">Neutral</wj-button>
-    </wj-button-group>
+    <wje-button-group>
+      <wje-button color="neutral">Neutral</wje-button>
+      <wje-button color="neutral">Neutral</wje-button>
+      <wje-button color="neutral">Neutral</wje-button>
+    </wje-button-group>
   </p>
 </template>
 

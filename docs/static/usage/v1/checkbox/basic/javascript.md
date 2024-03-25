@@ -1,8 +1,8 @@
 ```html
-<wj-checkbox>Default</wj-checkbox>
-<wj-checkbox checked>Default checked</wj-checkbox>
-<wj-checkbox disabled>Default disabled</wj-checkbox>
-<wj-checkbox checked disabled>Default checked disabled</wj-checkbox>
-<wj-checkbox color="primary" checked>Default primary checked</wj-checkbox>
-<wj-checkbox color="warning">Default warning</wj-checkbox>
+<wje-checkbox>Default</wje-checkbox>
+<wje-checkbox checked>Default checked</wje-checkbox>
+<wje-checkbox disabled>Default disabled</wje-checkbox>
+<wje-checkbox checked disabled>Default checked disabled</wje-checkbox>
+<wje-checkbox color="primary" checked>Default primary checked</wje-checkbox>
+<wje-checkbox color="warning">Default warning</wje-checkbox>
 ```

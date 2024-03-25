@@ -1,15 +1,15 @@
 ```html
- <wj-button-group>
-  <wj-button variant="primary">Save</wj-button>
-  <wj-dropdown placement="bottom-end" offset="5">
-    <wj-button slot="trigger" variant="primary" caret>
-      <wj-visually-hidden>More options</wj-visually-hidden>
-    </wj-button>
-    <wj-menu variant="context">
-      <wj-menu-item>Save</wj-menu-item>
-      <wj-menu-item>Save as&hellip;</wj-menu-item>
-      <wj-menu-item>Save all</wj-menu-item>
-    </wj-menu>
-  </wj-dropdown>
-</wj-button-group>
+ <wje-button-group>
+  <wje-button variant="primary">Save</wje-button>
+  <wje-dropdown placement="bottom-end" offset="5">
+    <wje-button slot="trigger" variant="primary" caret>
+      <wje-visually-hidden>More options</wje-visually-hidden>
+    </wje-button>
+    <wje-menu variant="context">
+      <wje-menu-item>Save</wje-menu-item>
+      <wje-menu-item>Save as&hellip;</wje-menu-item>
+      <wje-menu-item>Save all</wje-menu-item>
+    </wje-menu>
+  </wje-dropdown>
+</wje-button-group>
 ```

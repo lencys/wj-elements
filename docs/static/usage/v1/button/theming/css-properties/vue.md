@@ -1,6 +1,6 @@
 ```html
 <template>
-  <wj-button id="custom">Custom</wj-button>
+  <wje-button id="custom">Custom</wje-button>
 </template>
 
 <script lang="ts">
@@ -13,15 +13,15 @@
 </script>
 
 <style scoped>
-  wj-button#custom {
-    --wj-color-base: #000000;
-    --wj-button-border-color: #0af4fc;
-    --wj-button-border-radius: 0;
-    --wj-color-contrast: #0af4fc;
-    --wj-padding-top: 1rem;
-    --wj-padding-start: .7rem;
-    --wj-padding-end: .7rem;
-    --wj-padding-bottom: 1rem;
+  wje-button#custom {
+    --wje-color-base: #000000;
+    --wje-button-border-color: #0af4fc;
+    --wje-button-border-radius: 0;
+    --wje-color-contrast: #0af4fc;
+    --wje-padding-top: 1rem;
+    --wje-padding-start: .7rem;
+    --wje-padding-end: .7rem;
+    --wje-padding-bottom: 1rem;
   }
 </style>
 ```

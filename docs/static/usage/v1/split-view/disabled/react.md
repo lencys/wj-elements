@@ -4,10 +4,10 @@ import { SplitView } from '@elements/react';
 function Example() {
   return (
     <>
-      <wj-split-view disabled>
+      <wje-split-view disabled>
         <div slot="start">Start</div>
         <div slot="end">End</div>
-      </wj-split-view>
+      </wje-split-view>
     </>
   );
 }

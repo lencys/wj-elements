@@ -1,14 +1,14 @@
 ```html
 <template>
-  <wj-select label="Label test" placeholder="Select option" variant="standard">
-    <wj-option value="option-1">Option 1</wj-option>
-    <wj-option value="option-2">
+  <wje-select label="Label test" placeholder="Select option" variant="standard">
+    <wje-option value="option-1">Option 1</wje-option>
+    <wje-option value="option-2">
       Option 2
-      <wj-icon name="heart" slot="end"></wj-icon>
-    </wj-option>
-    <wj-option value="option-3" selected>Option 3</wj-option>
-    <wj-option value="option-4">Option 4</wj-option>
-  </wj-select>
+      <wje-icon name="heart" slot="end"></wje-icon>
+    </wje-option>
+    <wje-option value="option-3" selected>Option 3</wje-option>
+    <wje-option value="option-4">Option 4</wje-option>
+  </wje-select>
 </template>
 
 <script>

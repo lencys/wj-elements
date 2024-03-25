@@ -1,6 +1,6 @@
 ```html
 <template>
-  <wj-icon-picker></wj-icon-picker>
+  <wje-icon-picker></wje-icon-picker>
 </template>
 
 <script lang="ts">

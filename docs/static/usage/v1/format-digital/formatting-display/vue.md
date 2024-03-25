@@ -1,9 +1,9 @@
 ```html
 <template>
-    <wj-format-digital value="9900"></wj-format-digital><br/>
-    short<wj-format-digital value="9900" unit-display="short"></wj-format-digital><br/>
-    narrow<wj-format-digital value="9900" unit-display="narrow"></wj-format-digital><br/>
-    long<wj-format-digital value="9900" unit-display="long"></wj-format-digital>
+    <wje-format-digital value="9900"></wje-format-digital><br/>
+    short<wje-format-digital value="9900" unit-display="short"></wje-format-digital><br/>
+    narrow<wje-format-digital value="9900" unit-display="narrow"></wje-format-digital><br/>
+    long<wje-format-digital value="9900" unit-display="long"></wje-format-digital>
 </template>
 
 <script lang="ts">

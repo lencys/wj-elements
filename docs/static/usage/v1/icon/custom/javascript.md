@@ -1,8 +1,8 @@
 ```html
-<wj-icon id="custom" name="check"></wj-icon>
+<wje-icon id="custom" name="check"></wje-icon>
 <style>
     #custom {
-    --wj-icon-size: 60px;
+    --wje-icon-size: 60px;
     color: #ff0000;
     }
 </style>

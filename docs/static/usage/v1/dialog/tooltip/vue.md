@@ -1,8 +1,8 @@
 ```html
 <template>
-  <wj-tooltip content="Lukáš Ondrejček">
-    <wj-avatar label="Lukáš Ondrejček" initials></wj-avatar>
-  </wj-tooltip>
+  <wje-tooltip content="Lukáš Ondrejček">
+    <wje-avatar label="Lukáš Ondrejček" initials></wje-avatar>
+  </wje-tooltip>
 </template>
 
 <script lang="ts">

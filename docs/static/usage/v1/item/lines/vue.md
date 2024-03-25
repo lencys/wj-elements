@@ -1,44 +1,44 @@
 ```html
 <template>
-   <wj-item>
-      <wj-label>Default Item Lines </wj-label>
-    </wj-item>
+   <wje-item>
+      <wje-label>Default Item Lines </wje-label>
+    </wje-item>
 
-    <wj-item lines="inset">
-      <wj-label>Item Lines Inset</wj-label>
-    </wj-item>
+    <wje-item lines="inset">
+      <wje-label>Item Lines Inset</wje-label>
+    </wje-item>
 
-    <wj-item lines="full">
-      <wj-label>Item Lines Full</wj-label>
-    </wj-item>
+    <wje-item lines="full">
+      <wje-label>Item Lines Full</wje-label>
+    </wje-item>
 
-    <wj-item lines="none">
-      <wj-label>Item Lines None</wj-label>
-    </wj-item>
+    <wje-item lines="none">
+      <wje-label>Item Lines None</wje-label>
+    </wje-item>
 
-    <wj-item>
-      <wj-icon name="star" slot="start"></wj-icon>
-      <wj-label>Default Item Lines</wj-label>
-      <wj-icon name="info-circle" slot="end"></wj-icon>
-    </wj-item>
+    <wje-item>
+      <wje-icon name="star" slot="start"></wje-icon>
+      <wje-label>Default Item Lines</wje-label>
+      <wje-icon name="info-circle" slot="end"></wje-icon>
+    </wje-item>
 
-    <wj-item lines="inset">
-      <wj-icon name="star" slot="start"></wj-icon>
-      <wj-label>Item Lines Inset</wj-label>
-      <wj-icon name="info-circle" slot="end"></wj-icon>
-    </wj-item>
+    <wje-item lines="inset">
+      <wje-icon name="star" slot="start"></wje-icon>
+      <wje-label>Item Lines Inset</wje-label>
+      <wje-icon name="info-circle" slot="end"></wje-icon>
+    </wje-item>
 
-    <wj-item lines="full">
-      <wj-icon name="star" slot="start"></wj-icon>
-      <wj-label>Item Lines Full</wj-label>
-      <wj-icon name="info-circle" slot="end"></wj-icon>
-    </wj-item>
+    <wje-item lines="full">
+      <wje-icon name="star" slot="start"></wje-icon>
+      <wje-label>Item Lines Full</wje-label>
+      <wje-icon name="info-circle" slot="end"></wje-icon>
+    </wje-item>
 
-    <wj-item lines="none">
-      <wj-icon name="star" slot="start"></wj-icon>
-      <wj-label>Item Lines None</wj-label>
-      <wj-icon name="info-circle" slot="end"></wj-icon>
-    </wj-item>
+    <wje-item lines="none">
+      <wje-icon name="star" slot="start"></wje-icon>
+      <wje-label>Item Lines None</wje-label>
+      <wje-icon name="info-circle" slot="end"></wje-icon>
+    </wje-item>
 </template>
 
 <script lang="ts">

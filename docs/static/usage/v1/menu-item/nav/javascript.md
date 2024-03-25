@@ -1,40 +1,40 @@
 ```html
-<wj-menu active style="max-width: 200px; --wj-menu-padding-inline: 1rem;">
-  <wj-menu-item>
+<wje-menu active style="max-width: 200px; --wje-menu-padding-inline: 1rem;">
+  <wje-menu-item>
     Menu item
-    <wj-icon slot="start" name="home"></wj-icon>
-  </wj-menu-item>
-  <wj-menu-item>
+    <wje-icon slot="start" name="home"></wje-icon>
+  </wje-menu-item>
+  <wje-menu-item>
     Menu item
-    <wj-icon slot="end" name="heart"></wj-icon>
-  </wj-menu-item>
-  <wj-divider style="--wj-divider-spacing: .5rem;"></wj-divider>
-  <wj-menu-item>Menu item</wj-menu-item>
-  <wj-menu-item checked>Menu item</wj-menu-item>
-  <wj-menu-item>Menu item</wj-menu-item>
-  <wj-divider style="--wj-divider-spacing: .5rem;"></wj-divider>
-  <wj-menu-item>
+    <wje-icon slot="end" name="heart"></wje-icon>
+  </wje-menu-item>
+  <wje-divider style="--wje-divider-spacing: .5rem;"></wje-divider>
+  <wje-menu-item>Menu item</wje-menu-item>
+  <wje-menu-item checked>Menu item</wje-menu-item>
+  <wje-menu-item>Menu item</wje-menu-item>
+  <wje-divider style="--wje-divider-spacing: .5rem;"></wje-divider>
+  <wje-menu-item>
     Menu item
-    <wj-menu slot="submenu">
-      <wj-menu-item>Menu item</wj-menu-item>
-      <wj-menu-item>
+    <wje-menu slot="submenu">
+      <wje-menu-item>Menu item</wje-menu-item>
+      <wje-menu-item>
         Menu item
-        <wj-menu slot="submenu">
-          <wj-menu-item>Menu item</wj-menu-item>
-          <wj-menu-item>Menu item</wj-menu-item>
-          <wj-menu-item>Menu item</wj-menu-item>
-        </wj-menu>
-      </wj-menu-item>
-      <wj-menu-item>Menu item</wj-menu-item>
-    </wj-menu>
-  </wj-menu-item>
-  <wj-menu-item id="transformations">
+        <wje-menu slot="submenu">
+          <wje-menu-item>Menu item</wje-menu-item>
+          <wje-menu-item>Menu item</wje-menu-item>
+          <wje-menu-item>Menu item</wje-menu-item>
+        </wje-menu>
+      </wje-menu-item>
+      <wje-menu-item>Menu item</wje-menu-item>
+    </wje-menu>
+  </wje-menu-item>
+  <wje-menu-item id="transformations">
     Menu item
-    <wj-menu slot="submenu">
-      <wj-menu-item>Menu item</wj-menu-item>
-      <wj-menu-item>Menu item</wj-menu-item>
-      <wj-menu-item>Menu item</wj-menu-item>
-    </wj-menu>
-  </wj-menu-item>
-</wj-menu>
+    <wje-menu slot="submenu">
+      <wje-menu-item>Menu item</wje-menu-item>
+      <wje-menu-item>Menu item</wje-menu-item>
+      <wje-menu-item>Menu item</wje-menu-item>
+    </wje-menu>
+  </wje-menu-item>
+</wje-menu>
 ```

@@ -1,30 +1,30 @@
 ```html
-<wj-grid>
-    <wj-row class="gx-2">
-    <wj-col size="6">
-        <wj-input label="Project name"></wj-input>
-    </wj-col>
-    <wj-col size="6">
-        <wj-input label="Project code" placeholder="6 digit code" minlength="6" maxlength="6" message="Toto je moja hlaska" validate-on-change custom-error-display></wj-input>
-    </wj-col>
-    </wj-row>
-    <wj-row>
-    <wj-col size="12">
-        <wj-input label="Project URL">
-        <span slot="start"><wj-icon name="globe"></wj-icon></span>
+<wje-grid>
+    <wje-row class="gx-2">
+    <wje-col size="6">
+        <wje-input label="Project name"></wje-input>
+    </wje-col>
+    <wje-col size="6">
+        <wje-input label="Project code" placeholder="6 digit code" minlength="6" maxlength="6" message="Toto je moja hlaska" validate-on-change custom-error-display></wje-input>
+    </wje-col>
+    </wje-row>
+    <wje-row>
+    <wje-col size="12">
+        <wje-input label="Project URL">
+        <span slot="start"><wje-icon name="globe"></wje-icon></span>
         <span slot="end">.com</span>
-        </wj-input>
-    </wj-col>
-    </wj-row>
-    <wj-row class="gx-2">
-    <wj-col size="6">
-        <wj-input label="Profit">
+        </wje-input>
+    </wje-col>
+    </wje-row>
+    <wje-row class="gx-2">
+    <wje-col size="6">
+        <wje-input label="Profit">
         <span slot="end">&euro;</span>
-        </wj-input>
-    </wj-col>
-    <wj-col size="6">
-        <wj-input label="Email"></wj-input>
-    </wj-col>
-    </wj-row>
-</wj-grid>
+        </wje-input>
+    </wje-col>
+    <wje-col size="6">
+        <wje-input label="Email"></wje-input>
+    </wje-col>
+    </wje-row>
+</wje-grid>
 ```

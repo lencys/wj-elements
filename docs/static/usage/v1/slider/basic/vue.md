@@ -1,6 +1,6 @@
 ```html
 <template>
-  <wj-slider></wj-slider>
+  <wje-slider></wje-slider>
 </template>
 
 <script lang="ts">

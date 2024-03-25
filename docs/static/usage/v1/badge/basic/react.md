@@ -3,16 +3,16 @@ import React from 'react';
 import { Badge, Item, Label, List } from '@elements/react';
 function Example() {
   return (
-    <wj-list>
-      <wj-item>
-        <wj-badge slot="start">11</wj-badge>
-        <wj-label>Badge in start slot</wj-label>
-      </wj-item>
-      <wj-item>
-        <wj-badge slot="end">22</wj-badge>
-        <wj-label>Badge in end slot</wj-label>
-      </wj-item>
-    </wj-list>
+    <wje-list>
+      <wje-item>
+        <wje-badge slot="start">11</wje-badge>
+        <wje-label>Badge in start slot</wje-label>
+      </wje-item>
+      <wje-item>
+        <wje-badge slot="end">22</wje-badge>
+        <wje-label>Badge in end slot</wje-label>
+      </wje-item>
+    </wje-list>
   );
 }
 export default Example;

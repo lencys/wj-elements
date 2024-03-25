@@ -4,41 +4,41 @@ import { Item, Label, List } from '@elements/react';
 
 function Example() {
   return (
-    <wj-list lines="full">
-      <wj-item>
-        <wj-label>Full Lines</wj-label>
-      </wj-item>
-      <wj-item>
-        <wj-label>Full Lines</wj-label>
-      </wj-item>
-      <wj-item>
-        <wj-label>Full Lines</wj-label>
-      </wj-item>
-    </wj-list>
+    <wje-list lines="full">
+      <wje-item>
+        <wje-label>Full Lines</wje-label>
+      </wje-item>
+      <wje-item>
+        <wje-label>Full Lines</wje-label>
+      </wje-item>
+      <wje-item>
+        <wje-label>Full Lines</wje-label>
+      </wje-item>
+    </wje-list>
 
-    <wj-list lines="inset">
-      <wj-item>
-        <wj-label>Inset Lines</wj-label>
-      </wj-item>
-      <wj-item>
-        <wj-label>Inset Lines</wj-label>
-      </wj-item>
-      <wj-item>
-        <wj-label>Inset Lines</wj-label>
-      </wj-item>
-    </wj-list>
+    <wje-list lines="inset">
+      <wje-item>
+        <wje-label>Inset Lines</wje-label>
+      </wje-item>
+      <wje-item>
+        <wje-label>Inset Lines</wje-label>
+      </wje-item>
+      <wje-item>
+        <wje-label>Inset Lines</wje-label>
+      </wje-item>
+    </wje-list>
 
-    <wj-list lines="none">
-      <wj-item>
-        <wj-label>No Lines</wj-label>
-      </wj-item>
-      <wj-item>
-        <wj-label>No Lines</wj-label>
-      </wj-item>
-      <wj-item>
-        <wj-label>No Lines</wj-label>
-      </wj-item>
-    </wj-list>
+    <wje-list lines="none">
+      <wje-item>
+        <wje-label>No Lines</wje-label>
+      </wje-item>
+      <wje-item>
+        <wje-label>No Lines</wje-label>
+      </wje-item>
+      <wje-item>
+        <wje-label>No Lines</wje-label>
+      </wje-item>
+    </wje-list>
   );
 }
 export default Example;

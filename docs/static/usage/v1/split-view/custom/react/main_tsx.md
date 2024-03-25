@@ -6,11 +6,11 @@ import './main.css';
 
 function Example() {
   return (
-  <wj-split-view id="custom">
+  <wje-split-view id="custom">
     <div slot="start">Start</div>
-    <wj-icon name="grip-vertical" slot="divider"></wj-icon>
+    <wje-icon name="grip-vertical" slot="divider"></wje-icon>
     <div slot="end">End</div>
-  </wj-split-view>
+  </wje-split-view>
   );
 }
 export default Example;

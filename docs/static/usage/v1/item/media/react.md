@@ -5,19 +5,19 @@ import { Item, Label, Avatar, Image, Thumbnail } from '@elements/react';
 function Example() {
   return (
     <>
-    <wj-item>
-      <wj-avatar slot="start">
-        <wj-img alt="Silhouette of a person's head" src="/assets/img/avatar.svg"></wj-img>
-      </wj-avatar>
-      <wj-label> Avatar Item </wj-label>
-    </wj-item>
+    <wje-item>
+      <wje-avatar slot="start">
+        <wje-img alt="Silhouette of a person's head" src="/assets/img/avatar.svg"></wje-img>
+      </wje-avatar>
+      <wje-label> Avatar Item </wje-label>
+    </wje-item>
 
-    <wj-item>
-      <wj-thumbnail slot="start">
-        <wj-img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg"></wj-img>
-      </wj-thumbnail>
-      <wj-label> Thumbnail Item </wj-label>
-    </wj-item>
+    <wje-item>
+      <wje-thumbnail slot="start">
+        <wje-img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg"></wje-img>
+      </wje-thumbnail>
+      <wje-label> Thumbnail Item </wje-label>
+    </wje-item>
 </>
   );
 }

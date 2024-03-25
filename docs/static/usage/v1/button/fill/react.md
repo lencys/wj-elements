@@ -3,10 +3,10 @@ import React from 'react';
 import { Button } from '@elements/react';
 function Example() {
   return (
-    <wj-button>Default</wj-button>
-    <wj-button fill="link">Link</wj-button>
-    <wj-button fill="outline">Outline</wj-button>
-    <wj-button fill="solid">Solid</wj-button>
+    <wje-button>Default</wje-button>
+    <wje-button fill="link">Link</wje-button>
+    <wje-button fill="outline">Outline</wje-button>
+    <wje-button fill="solid">Solid</wje-button>
   );
 }
 export default Example;

@@ -4,61 +4,61 @@ import { Card, CardContent, CardHeader, CardSubtitle, CardTitle } from '@element
 
 function Example() {
   return (
-    <wj-card color="primary">
-      <wj-card-header>
-        <wj-card-subtitle>Primary</wj-card-subtitle>
-        <wj-card-title>Title</wj-card-title>
-      </wj-card-header>
-      <wj-card-content>Content</wj-card-content>
-    </wj-card>
+    <wje-card color="primary">
+      <wje-card-header>
+        <wje-card-subtitle>Primary</wje-card-subtitle>
+        <wje-card-title>Title</wje-card-title>
+      </wje-card-header>
+      <wje-card-content>Content</wje-card-content>
+    </wje-card>
 
-    <wj-card color="complete">
-      <wj-card-header>
-        <wj-card-subtitle>Complete</wj-card-subtitle>
-        <wj-card-title>Title</wj-card-title>
-      </wj-card-header>
-      <wj-card-content>Content</wj-card-content>
-    </wj-card>
+    <wje-card color="complete">
+      <wje-card-header>
+        <wje-card-subtitle>Complete</wje-card-subtitle>
+        <wje-card-title>Title</wje-card-title>
+      </wje-card-header>
+      <wje-card-content>Content</wje-card-content>
+    </wje-card>
     
-    <wj-card color="success">
-      <wj-card-header>
-        <wj-card-subtitle>Success</wj-card-subtitle>
-        <wj-card-title>Title</wj-card-title>
-      </wj-card-header>
-      <wj-card-content> Content </wj-card-content>
-    </wj-card>
+    <wje-card color="success">
+      <wje-card-header>
+        <wje-card-subtitle>Success</wje-card-subtitle>
+        <wje-card-title>Title</wje-card-title>
+      </wje-card-header>
+      <wje-card-content> Content </wje-card-content>
+    </wje-card>
     
-    <wj-card color="warning">
-      <wj-card-header>
-        <wj-card-subtitle>Warning</wj-card-subtitle>
-        <wj-card-title>Title</wj-card-title>
-      </wj-card-header>
-      <wj-card-content> Content </wj-card-content>
-    </wj-card>
+    <wje-card color="warning">
+      <wje-card-header>
+        <wje-card-subtitle>Warning</wje-card-subtitle>
+        <wje-card-title>Title</wje-card-title>
+      </wje-card-header>
+      <wje-card-content> Content </wje-card-content>
+    </wje-card>
     
-    <wj-card color="danger">
-      <wj-card-header>
-        <wj-card-subtitle>Danger</wj-card-subtitle>
-        <wj-card-title>Title</wj-card-title>
-      </wj-card-header>
-      <wj-card-content> Content </wj-card-content>
-    </wj-card>
+    <wje-card color="danger">
+      <wje-card-header>
+        <wje-card-subtitle>Danger</wje-card-subtitle>
+        <wje-card-title>Title</wje-card-title>
+      </wje-card-header>
+      <wje-card-content> Content </wje-card-content>
+    </wje-card>
     
-    <wj-card color="info">
-      <wj-card-header>
-        <wj-card-subtitle>Info</wj-card-subtitle>
-        <wj-card-title>Title</wj-card-title>
-      </wj-card-header>
-      <wj-card-content> Content </wj-card-content>
-    </wj-card>
+    <wje-card color="info">
+      <wje-card-header>
+        <wje-card-subtitle>Info</wje-card-subtitle>
+        <wje-card-title>Title</wje-card-title>
+      </wje-card-header>
+      <wje-card-content> Content </wje-card-content>
+    </wje-card>
     
-    <wj-card color="menu">
-      <wj-card-header>
-        <wj-card-subtitle>Menu</wj-card-subtitle>
-        <wj-card-title>Title</wj-card-title>
-      </wj-card-header>
-      <wj-card-content> Content </wj-card-content>
-    </wj-card>
+    <wje-card color="menu">
+      <wje-card-header>
+        <wje-card-subtitle>Menu</wje-card-subtitle>
+        <wje-card-title>Title</wje-card-title>
+      </wje-card-header>
+      <wje-card-content> Content </wje-card-content>
+    </wje-card>
   );
 }
 export default Example;

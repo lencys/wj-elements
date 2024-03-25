@@ -1,11 +1,11 @@
 ```html
-<wj-input type="number" variant="standard" placeholder="Typing number" value="1000000"></wj-input>
-<wj-format-digital value="1000000" class="example"></wj-format-digital>
+<wje-input type="number" variant="standard" placeholder="Typing number" value="1000000"></wje-input>
+<wje-format-digital value="1000000" class="example"></wje-format-digital>
 <style>
-  wj-input {
+  wje-input {
     width: 200px;
     margin-inline: 0 .5rem;
-    --wj-input-margin-bottom: 0;
+    --wje-input-margin-bottom: 0;
   }
 </style>
 ```

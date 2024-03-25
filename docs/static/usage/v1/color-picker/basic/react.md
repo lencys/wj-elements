@@ -4,7 +4,7 @@ import { ColorPicker } from '@elements/react';
 
 function Example() {
   return 
-  <wj-color-picker></wj-color-picker>;
+  <wje-color-picker></wje-color-picker>;
 }
 export default Example;
 ```

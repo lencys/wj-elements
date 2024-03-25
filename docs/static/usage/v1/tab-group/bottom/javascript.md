@@ -1,15 +1,15 @@
 ```html
-<wj-card>
-    <wj-tab-group variant="bottom">
-        <wj-tab slot="nav" panel="general">General</wj-tab>
-        <wj-tab slot="nav" panel="custom" active>Custom</wj-tab>
-        <wj-tab slot="nav" panel="advanced">Advanced</wj-tab>
-        <wj-tab slot="nav" panel="disabled" disabled>Disabled</wj-tab>
+<wje-card>
+    <wje-tab-group variant="bottom">
+        <wje-tab slot="nav" panel="general">General</wje-tab>
+        <wje-tab slot="nav" panel="custom" active>Custom</wje-tab>
+        <wje-tab slot="nav" panel="advanced">Advanced</wje-tab>
+        <wje-tab slot="nav" panel="disabled" disabled>Disabled</wje-tab>
         
-        <wj-tab-panel name="general">This is the general tab panel.</wj-tab-panel>
-        <wj-tab-panel name="custom">This is the custom tab panel.</wj-tab-panel>
-        <wj-tab-panel name="advanced">This is the advanced tab panel.</wj-tab-panel>
-        <wj-tab-panel name="disabled">This is a disabled tab panel.</wj-tab-panel>
-    </wj-tab-group>
-</wj-card>
+        <wje-tab-panel name="general">This is the general tab panel.</wje-tab-panel>
+        <wje-tab-panel name="custom">This is the custom tab panel.</wje-tab-panel>
+        <wje-tab-panel name="advanced">This is the advanced tab panel.</wje-tab-panel>
+        <wje-tab-panel name="disabled">This is a disabled tab panel.</wje-tab-panel>
+    </wje-tab-group>
+</wje-card>
 ```

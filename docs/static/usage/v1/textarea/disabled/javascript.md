@@ -1,3 +1,3 @@
 ```html
- <wj-textarea label="Label" disabled></wj-textarea>
+ <wje-textarea label="Label" disabled></wje-textarea>
 ```

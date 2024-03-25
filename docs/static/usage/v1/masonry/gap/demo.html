@@ -6,8 +6,10 @@
     <title>Masonry</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
-    <script type="module" src="../../../../wj-elementy/wj-master.js"></script>
-    <link rel="stylesheet" href="../../../../wj-elementy/style.css" />
+    <script type="module" src="../../../../wje-elementy/wje-master.js"></script>
+    <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
     <style>
         .content {
             max-width: 400px;
@@ -18,21 +20,21 @@
             justify-content: center;
             align-items: center;
             font-weight: bold;
-            color: var(--wj-color-white);
-            background: var(--wj-color-danger);
+            color: var(--wje-color-white);
+            background: var(--wje-color-danger);
         }
     </style>
   </head>
   <body>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content">
-        <wj-masonry cols="2" gap="2" class="example" id="example-gap">
+        <wje-masonry cols="2" gap="2" class="example" id="example-gap">
           <div style="height: 300px">1</div>
           <div style="height: 375px">2</div>
           <div style="height: 250px">3</div>
           <div style="height: 377px">4</div>
           <div style="height: 200px">5</div>
-        </wj-masonry>
+        </wje-masonry>
       </div>
     </div>
   </body>

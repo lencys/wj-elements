@@ -1,6 +1,6 @@
 ```html
 <template>
-  <wj-textarea label="Label" disabled></wj-textarea>
+  <wje-textarea label="Label" disabled></wje-textarea>
 </template>
 
 <script lang="ts">

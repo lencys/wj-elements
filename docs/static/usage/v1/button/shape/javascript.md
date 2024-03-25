@@ -1,4 +1,4 @@
 ```html
-<wj-button>Default</wj-button>
-<wj-button round>Round</wj-button>
+<wje-button>Default</wje-button>
+<wje-button round>Round</wje-button>
 ```

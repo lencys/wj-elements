@@ -1,6 +1,6 @@
 ```html
-<wj-icon name="check"></wj-icon>
-<wj-icon name="check" size="large"></wj-icon>
-<wj-icon name="check" color="danger"></wj-icon>
-<wj-icon name="check" size="large" color="danger"></wj-icon>
+<wje-icon name="check"></wje-icon>
+<wje-icon name="check" size="large"></wje-icon>
+<wje-icon name="check" color="danger"></wje-icon>
+<wje-icon name="check" size="large" color="danger"></wje-icon>
 ```

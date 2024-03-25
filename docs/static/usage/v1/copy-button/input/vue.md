@@ -1,7 +1,7 @@
 ```html
 <template>
   <input id="copy-input" value="I am copy - Input">
-  <wj-copy-button for="copy-input"></wj-copy-button>
+  <wje-copy-button for="copy-input"></wje-copy-button>
 </template>
 
 <script lang="ts">

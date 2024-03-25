@@ -5,21 +5,21 @@ import { Toolbar, ToolbarAction, Breadcrumbs, Breadcrumb, Button } from '@elemen
 function Example() {
   return (
     <>
-      <wj-toolbar>
-        <wj-breadcrumbs slot="start" max-items="3" items-before-collapse="1" collapsed-variant="dropdown">
-          <wj-breadcrumb href="/home"><wj-icon slot="start" name="home"></wj-icon></wj-breadcrumb>
-          <wj-breadcrumb href="/photography">Photography</wj-breadcrumb>
-          <wj-breadcrumb href="/cameras">Cameras</wj-breadcrumb>
-          <wj-breadcrumb href="/film">Film</wj-breadcrumb>
-          <wj-breadcrumb href="/35mm">35 mm</wj-breadcrumb>  
-        </wj-breadcrumbs>
-        <wj-toolbar-action slot="end" max-items="3">
-          <wj-button>Create</wj-button>
-          <wj-button>Read</wj-button>
-          <wj-button>Update</wj-button>
-          <wj-button>Delete</wj-button>
-        </wj-toolbar-action>
-      </wj-toolbar>
+      <wje-toolbar>
+        <wje-breadcrumbs slot="start" max-items="3" items-before-collapse="1" collapsed-variant="dropdown">
+          <wje-breadcrumb href="/home"><wje-icon slot="start" name="home"></wje-icon></wje-breadcrumb>
+          <wje-breadcrumb href="/photography">Photography</wje-breadcrumb>
+          <wje-breadcrumb href="/cameras">Cameras</wje-breadcrumb>
+          <wje-breadcrumb href="/film">Film</wje-breadcrumb>
+          <wje-breadcrumb href="/35mm">35 mm</wje-breadcrumb>  
+        </wje-breadcrumbs>
+        <wje-toolbar-action slot="end" max-items="3">
+          <wje-button>Create</wje-button>
+          <wje-button>Read</wje-button>
+          <wje-button>Update</wje-button>
+          <wje-button>Delete</wje-button>
+        </wje-toolbar-action>
+      </wje-toolbar>
     </>
   );
 }

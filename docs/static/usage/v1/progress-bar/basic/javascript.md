@@ -1,3 +1,3 @@
 ```html
-<wj-progress-bar progress="60" shadow="open"></wj-progress-bar>
+<wje-progress-bar progress="60" shadow="open"></wje-progress-bar>
 ```

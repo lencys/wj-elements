@@ -3,12 +3,12 @@ import React from 'react';
 import { Breadcrumb, Breadcrumbs } from '@elements/react';
 function Example() {
   return (
-    <wj-breadcrumbs>
-      <wj-breadcrumb href="/house">Home</wj-breadcrumb>
-      <wj-breadcrumb href="/electronics">Electronics</wj-breadcrumb>
-      <wj-breadcrumb href="/cameras">Cameras</wj-breadcrumb>
-      <wj-breadcrumb href="/film">Film</wj-breadcrumb>
-    </wj-breadcrumbs>
+    <wje-breadcrumbs>
+      <wje-breadcrumb href="/house">Home</wje-breadcrumb>
+      <wje-breadcrumb href="/electronics">Electronics</wje-breadcrumb>
+      <wje-breadcrumb href="/cameras">Cameras</wje-breadcrumb>
+      <wje-breadcrumb href="/film">Film</wje-breadcrumb>
+    </wje-breadcrumbs>
   );
 }
 export default Example;

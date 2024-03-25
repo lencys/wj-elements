@@ -1,5 +1,5 @@
 ```html
-<wj-file-upload accepted-types="image/*">
+<wje-file-upload accepted-types="image/*">
   <p>Drag and drop files here</p>
-</wj-file-upload>
+</wje-file-upload>
 ```

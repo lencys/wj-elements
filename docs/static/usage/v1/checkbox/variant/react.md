@@ -4,12 +4,12 @@ import { Checkbox } from '@elements/react';
 
 function Example() {
   return (
-  <wj-checkbox variant="circle">Circle</wj-checkbox>
-  <wj-checkbox variant="circle" checked>Circle checked</wj-checkbox>
-  <wj-checkbox variant="circle" disabled>Circle disabled</wj-checkbox>
-  <wj-checkbox variant="circle" checked disabled>Circle checked disabled</wj-checkbox>
-  <wj-checkbox variant="circle" color="complete" checked>Circle complete checked</wj-checkbox>
-  <wj-checkbox variant="circle" color="danger" indeterminate>Circle danger indeterminate</wj-checkbox>;
+  <wje-checkbox variant="circle">Circle</wje-checkbox>
+  <wje-checkbox variant="circle" checked>Circle checked</wje-checkbox>
+  <wje-checkbox variant="circle" disabled>Circle disabled</wje-checkbox>
+  <wje-checkbox variant="circle" checked disabled>Circle checked disabled</wje-checkbox>
+  <wje-checkbox variant="circle" color="complete" checked>Circle complete checked</wje-checkbox>
+  <wje-checkbox variant="circle" color="danger" indeterminate>Circle danger indeterminate</wje-checkbox>;
   )
 }
 export default Example;

@@ -1,17 +1,17 @@
 ```html
-<wj-tooltip content="Som najkrajsi tooltip hore"  offset="2">
-    <wj-button size="large">Top</wj-button>
-</wj-tooltip>
+<wje-tooltip content="Som najkrajsi tooltip hore"  offset="2">
+    <wje-button size="large">Top</wje-button>
+</wje-tooltip>
 
-<wj-tooltip content="Som najkrajsi tooltip dole" placement="bottom" offset="10">
-    <wj-button size="large">Bottom</wj-button>
-</wj-tooltip>
+<wje-tooltip content="Som najkrajsi tooltip dole" placement="bottom" offset="10">
+    <wje-button size="large">Bottom</wje-button>
+</wje-tooltip>
 
-<wj-tooltip content="Som najkrajsi tooltip vlavo" placement="left" offset="10">
-    <wj-button size="large">Left</wj-button>
-</wj-tooltip>
+<wje-tooltip content="Som najkrajsi tooltip vlavo" placement="left" offset="10">
+    <wje-button size="large">Left</wje-button>
+</wje-tooltip>
 
-<wj-tooltip content="Som najkrajsi tooltip vpravo" placement="right" offset="10">
-    <wj-button size="large">Right</wj-button>
-</wj-tooltip>
+<wje-tooltip content="Som najkrajsi tooltip vpravo" placement="right" offset="10">
+    <wje-button size="large">Right</wje-button>
+</wje-tooltip>
 ```

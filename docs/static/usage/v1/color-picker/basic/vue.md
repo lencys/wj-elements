@@ -1,6 +1,6 @@
 ```html
 <template>
-  <wj-color-picker></wj-color-picker>
+  <wje-color-picker></wje-color-picker>
 </template>
 
 <script lang="ts">

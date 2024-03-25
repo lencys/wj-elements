@@ -4,52 +4,52 @@ import { Menu, MenuItem, Divider, Icon } from '@elements/react';
 function Example() {
   return (
     <>
-      <wj-menu active style="max-width: 200px;">
-        <wj-menu-item>
+      <wje-menu active style="max-width: 200px;">
+        <wje-menu-item>
           Menu item
-          <wj-icon slot="start" name="home"></wj-icon>
-        </wj-menu-item>
-        <wj-menu-item>
+          <wje-icon slot="start" name="home"></wje-icon>
+        </wje-menu-item>
+        <wje-menu-item>
           Menu item
-          <wj-icon slot="end" name="heart"></wj-icon>
-        </wj-menu-item>
-        <wj-divider style="--wj-divider-spacing: .5rem;"></wj-divider>
-        <wj-menu-item>Menu item</wj-menu-item>
-        <wj-menu-item>Menu item</wj-menu-item>
-        <wj-menu-item>Menu item</wj-menu-item>
-        <wj-divider style="--wj-divider-spacing: .5rem;"></wj-divider>
-        <wj-menu-label>Next menu</wj-menu-label>
-        <wj-menu-item>
+          <wje-icon slot="end" name="heart"></wje-icon>
+        </wje-menu-item>
+        <wje-divider style="--wje-divider-spacing: .5rem;"></wje-divider>
+        <wje-menu-item>Menu item</wje-menu-item>
+        <wje-menu-item>Menu item</wje-menu-item>
+        <wje-menu-item>Menu item</wje-menu-item>
+        <wje-divider style="--wje-divider-spacing: .5rem;"></wje-divider>
+        <wje-menu-label>Next menu</wje-menu-label>
+        <wje-menu-item>
           Menu item
-          <wj-menu slot="submenu">
-            <wj-menu-item>Menu item</wj-menu-item>
-            <wj-menu-item>
+          <wje-menu slot="submenu">
+            <wje-menu-item>Menu item</wje-menu-item>
+            <wje-menu-item>
               Menu item
-              <wj-menu slot="submenu">
-                <wj-menu-item>Menu item</wj-menu-item>
-                <wj-menu-item>Menu item</wj-menu-item>
-                <wj-menu-item>Menu item</wj-menu-item>
-              </wj-menu>
-            </wj-menu-item>
-            <wj-menu-item>Menu item</wj-menu-item>
-          </wj-menu>
-        </wj-menu-item>
-        <wj-menu-item>
+              <wje-menu slot="submenu">
+                <wje-menu-item>Menu item</wje-menu-item>
+                <wje-menu-item>Menu item</wje-menu-item>
+                <wje-menu-item>Menu item</wje-menu-item>
+              </wje-menu>
+            </wje-menu-item>
+            <wje-menu-item>Menu item</wje-menu-item>
+          </wje-menu>
+        </wje-menu-item>
+        <wje-menu-item>
           Menu item
-          <wj-menu slot="submenu">
-            <wj-menu-item>Menu item</wj-menu-item>
-            <wj-menu-item>
+          <wje-menu slot="submenu">
+            <wje-menu-item>Menu item</wje-menu-item>
+            <wje-menu-item>
               Menu item
-              <wj-menu slot="submenu">
-                <wj-menu-item>Menu item</wj-menu-item>
-                <wj-menu-item>Menu item</wj-menu-item>
-                <wj-menu-item>Menu item</wj-menu-item>
-              </wj-menu>
-            </wj-menu-item>
-            <wj-menu-item>Menu item</wj-menu-item>
-          </wj-menu>
-        </wj-menu-item>
-      </wj-menu>
+              <wje-menu slot="submenu">
+                <wje-menu-item>Menu item</wje-menu-item>
+                <wje-menu-item>Menu item</wje-menu-item>
+                <wje-menu-item>Menu item</wje-menu-item>
+              </wje-menu>
+            </wje-menu-item>
+            <wje-menu-item>Menu item</wje-menu-item>
+          </wje-menu>
+        </wje-menu-item>
+      </wje-menu>
     </>
   );
 }

@@ -1,7 +1,7 @@
 ```html
 <template>
-    <wj-button>Default</wj-button>
-    <wj-button disabled>Disabled</wj-button>
+    <wje-button>Default</wje-button>
+    <wje-button disabled>Disabled</wje-button>
 </template>
 
 <script lang="ts">

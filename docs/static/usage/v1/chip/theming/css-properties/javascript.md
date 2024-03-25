@@ -1,10 +1,10 @@
 ```html
 <style>
-    wj-chip#custom {
-        --wj-chip-background: #00213f;
-        --wj-chip-color: #adefd1;
+    wje-chip#custom {
+        --wje-chip-background: #00213f;
+        --wje-chip-color: #adefd1;
     }
 </style>
 
-<wj-chip id="custom">Default</wj-chip>
+<wje-chip id="custom">Default</wje-chip>
 ```

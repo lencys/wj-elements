@@ -1,6 +1,6 @@
 ```html
 <template>
-  <wj-rate max="5"></wj-rate>
+  <wje-rate max="5"></wje-rate>
 </template>
 
 <script lang="ts">

@@ -7,9 +7,9 @@ import './main.css';
 function Example() {
   return (
     <>
-      <wj-thumbnail class="example-thumbnail">
+      <wje-thumbnail class="example-thumbnail">
         <img alt="Silhouette of mountains" src="../../../../../img/demos/thumbnail.svg" />
-      </wj-thumbnail>
+      </wje-thumbnail>
     </>
   );
 }

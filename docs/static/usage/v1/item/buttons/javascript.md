@@ -1,36 +1,36 @@
 ```html
-  <wj-item>
-    <wj-button slot="start"> Start </wj-button>
-    <wj-label>Default Buttons</wj-label>
-    <wj-button slot="end"> End </wj-button>
-  </wj-item>
+  <wje-item>
+    <wje-button slot="start"> Start </wje-button>
+    <wje-label>Default Buttons</wje-label>
+    <wje-button slot="end"> End </wje-button>
+  </wje-item>
 
-  <wj-item>
-    <wj-button slot="start">
+  <wje-item>
+    <wje-button slot="start">
       Start
-      <wj-icon name="home" slot="end"></wj-icon>
-    </wj-button>
-    <wj-label>Buttons with Icons</wj-label>
-    <wj-button slot="end">
-      <wj-icon name="star" slot="end"></wj-icon>
+      <wje-icon name="home" slot="end"></wje-icon>
+    </wje-button>
+    <wje-label>Buttons with Icons</wje-label>
+    <wje-button slot="end">
+      <wje-icon name="star" slot="end"></wje-icon>
       End
-    </wj-button>
-  </wj-item>
+    </wje-button>
+  </wje-item>
 
-  <wj-item>
-    <wj-button slot="start">
-      <wj-icon slot="icon-only" name="user"></wj-icon>
-    </wj-button>
-    <wj-label>Icon only Buttons</wj-label>
-    <wj-button slot="end">
-      <wj-icon slot="icon-only" name="star"></wj-icon>
-    </wj-button>
-  </wj-item>
+  <wje-item>
+    <wje-button slot="start">
+      <wje-icon slot="icon-only" name="user"></wje-icon>
+    </wje-button>
+    <wje-label>Icon only Buttons</wje-label>
+    <wje-button slot="end">
+      <wje-icon slot="icon-only" name="star"></wje-icon>
+    </wje-button>
+  </wje-item>
 
-  <wj-item>
-    <wj-label>Button Sizes</wj-label>
-    <wj-button slot="end" size="small"> Small </wj-button>
-    <wj-button slot="end" size="default"> Default </wj-button>
-    <wj-button slot="end" size="large"> Large </wj-button>
-  </wj-item>
+  <wje-item>
+    <wje-label>Button Sizes</wje-label>
+    <wje-button slot="end" size="small"> Small </wje-button>
+    <wje-button slot="end" size="default"> Default </wje-button>
+    <wje-button slot="end" size="large"> Large </wje-button>
+  </wje-item>
 ```

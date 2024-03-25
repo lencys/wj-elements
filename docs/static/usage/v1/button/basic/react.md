@@ -3,8 +3,8 @@ import React from 'react';
 import { Button } from '@elements/react';
 function Example() {
   return (
-    <wj-button>Default</wj-button>
-    <wj-button disabled>Disabled</wj-button>
+    <wje-button>Default</wje-button>
+    <wje-button disabled>Disabled</wje-button>
   );
 }
 export default Example;

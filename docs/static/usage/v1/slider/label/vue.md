@@ -1,8 +1,8 @@
 ```html
 <template>
-<wj-slider min="20" max="80" value="50" bubble>
+<wje-slider min="20" max="80" value="50" bubble>
   <span size="large" slot="label">Lorem ipsum</span>
-</wj-slider>
+</wje-slider>
 </template>
 
 <script lang="ts">

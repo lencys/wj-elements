@@ -4,27 +4,27 @@ import { Dropdown, Button, Menu, MenuItem, Icon, Label } from '@elements/react';
 
 function Example() {
   return (
-  <wj-dropdown label="Start" placement="bottom-start" offset="5">
-    <wj-button size="large" slot="trigger" stop-propagation="true" caret>Large</wj-button>
-    <wj-menu variant="context">
-      <wj-menu-item>
-        <wj-icon name="plane" slot="start"></wj-icon>
-        <wj-label>Menu item</wj-label>
-      </wj-menu-item>
-      <wj-menu-item>
-        <wj-icon name="book" slot="start"></wj-icon>
-        <wj-label>Menu item</wj-label>
-      </wj-menu-item>
-      <wj-menu-item>
-        <wj-icon name="music" slot="start"></wj-icon>
-        <wj-label>Menu item</wj-label>
-      </wj-menu-item>
-      <wj-menu-item>
-        <wj-icon name="video" slot="start"></wj-icon>
-        <wj-label>Menu item</wj-label>
-      </wj-menu-item>
-    </wj-menu>
-  </wj-dropdown>;
+  <wje-dropdown label="Start" placement="bottom-start" offset="5">
+    <wje-button size="large" slot="trigger" stop-propagation="true" caret>Large</wje-button>
+    <wje-menu variant="context">
+      <wje-menu-item>
+        <wje-icon name="plane" slot="start"></wje-icon>
+        <wje-label>Menu item</wje-label>
+      </wje-menu-item>
+      <wje-menu-item>
+        <wje-icon name="book" slot="start"></wje-icon>
+        <wje-label>Menu item</wje-label>
+      </wje-menu-item>
+      <wje-menu-item>
+        <wje-icon name="music" slot="start"></wje-icon>
+        <wje-label>Menu item</wje-label>
+      </wje-menu-item>
+      <wje-menu-item>
+        <wje-icon name="video" slot="start"></wje-icon>
+        <wje-label>Menu item</wje-label>
+      </wje-menu-item>
+    </wje-menu>
+  </wje-dropdown>;
 
   )
 }

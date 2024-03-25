@@ -1,10 +1,10 @@
 ```html
 <template>
-  <wj-button-group>
-    <wj-button>Start</wj-button>
-    <wj-button>Center</wj-button>
-    <wj-button>End</wj-button>
-  </wj-button-group>
+  <wje-button-group>
+    <wje-button>Start</wje-button>
+    <wje-button>Center</wje-button>
+    <wje-button>End</wje-button>
+  </wje-button-group>
 </template>
 
 <script lang="ts">

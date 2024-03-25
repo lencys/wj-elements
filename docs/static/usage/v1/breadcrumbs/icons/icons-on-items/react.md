@@ -5,45 +5,45 @@ import { Breadcrumb, Breadcrumbs, Icon, Label } from '@elements/react';
 function Example() {
   return (
     <>
-      <wj-label>Ikony na začiatku</wj-label>
-      <wj-breadcrumbs>
-        <wj-breadcrumb href="/house">
-          <wj-icon slot="start" name="home"></wj-icon>
+      <wje-label>Ikony na začiatku</wje-label>
+      <wje-breadcrumbs>
+        <wje-breadcrumb href="/house">
+          <wje-icon slot="start" name="home"></wje-icon>
           Home
-        </wj-breadcrumb>
-        <wj-breadcrumb href="/electronics">
-          <wj-icon slot="start" name="bolt"></wj-icon>
+        </wje-breadcrumb>
+        <wje-breadcrumb href="/electronics">
+          <wje-icon slot="start" name="bolt"></wje-icon>
           Electronics
-        </wj-breadcrumb>
-        <wj-breadcrumb href="/cameras">
-          <wj-icon slot="start" name="camera"></wj-icon>
+        </wje-breadcrumb>
+        <wje-breadcrumb href="/cameras">
+          <wje-icon slot="start" name="camera"></wje-icon>
           Cameras
-        </wj-breadcrumb>
-        <wj-breadcrumb href="/film">
-          <wj-icon slot="start" name="video"></wj-icon>
+        </wje-breadcrumb>
+        <wje-breadcrumb href="/film">
+          <wje-icon slot="start" name="video"></wje-icon>
           Film
-        </wj-breadcrumb>
-      </wj-breadcrumbs>
+        </wje-breadcrumb>
+      </wje-breadcrumbs>
 
-      <wj-label>Ikony na konci</wj-label>
-      <wj-breadcrumbs>
-        <wj-breadcrumb href="/house">
+      <wje-label>Ikony na konci</wje-label>
+      <wje-breadcrumbs>
+        <wje-breadcrumb href="/house">
           Home
-          <wj-icon slot="end" name="home"></wj-icon>
-        </wj-breadcrumb>
-        <wj-breadcrumb href="/electronics">
+          <wje-icon slot="end" name="home"></wje-icon>
+        </wje-breadcrumb>
+        <wje-breadcrumb href="/electronics">
           Electronics
-          <wj-icon slot="end" name="bolt"></wj-icon>
-        </wj-breadcrumb>
-        <wj-breadcrumb href="/cameras">
+          <wje-icon slot="end" name="bolt"></wje-icon>
+        </wje-breadcrumb>
+        <wje-breadcrumb href="/cameras">
           Cameras
-          <wj-icon slot="end" name="camera"></wj-icon>
-        </wj-breadcrumb>
-        <wj-breadcrumb href="/film">
+          <wje-icon slot="end" name="camera"></wje-icon>
+        </wje-breadcrumb>
+        <wje-breadcrumb href="/film">
           Film
-          <wj-icon slot="end" name="video"></wj-icon>
-        </wj-breadcrumb>
-      </wj-breadcrumbs>
+          <wje-icon slot="end" name="video"></wje-icon>
+        </wje-breadcrumb>
+      </wje-breadcrumbs>
     </>
   );
 }

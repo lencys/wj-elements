@@ -15,29 +15,29 @@ import {
 
 function Example() {
   return (
-    <wj-infinite-scroll url="/api/users" placement="wj-row" size="20" class="example" height="440px">
-      <wj-grid>
-        <wj-row wrap>
-          <wj-col size="6" iterate>
-            <wj-card>
-              <wj-img src="{{image}}"></wj-img>
-              <wj-card-header>
-                <wj-card-subtitle>{{jobTitle}}</wj-card-subtitle>
-                <wj-card-title>{{fullName}}</wj-card-title>
-              </wj-card-header>
-              <wj-card-content>
+    <wje-infinite-scroll url="/api/users" placement="wje-row" size="20" class="example" height="440px">
+      <wje-grid>
+        <wje-row wrap>
+          <wje-col size="6" iterate>
+            <wje-card>
+              <wje-img src="{{image}}"></wje-img>
+              <wje-card-header>
+                <wje-card-subtitle>{{jobTitle}}</wje-card-subtitle>
+                <wje-card-title>{{fullName}}</wje-card-title>
+              </wje-card-header>
+              <wje-card-content>
                 <p>{{description}}</p>
-              </wj-card-content>
-            </wj-card>
-          </wj-col>
-        </wj-row>
-      </wj-grid>
+              </wje-card-content>
+            </wje-card>
+          </wje-col>
+        </wje-row>
+      </wje-grid>
       <style>
         .example {
           padding: 0 1rem;
         }
       </style>
-    </wj-infinite-scroll>
+    </wje-infinite-scroll>
   );
 }
 export default Example;

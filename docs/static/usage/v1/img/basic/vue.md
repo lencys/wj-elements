@@ -1,6 +1,6 @@
 ```html
 <template>
-  <wj-img src="../../../../img/demos/card-media.png" alt="Image"></wj-img>
+  <wje-img src="../../../../img/demos/card-media.png" alt="Image"></wje-img>
 </template>
 
 <script lang="ts">

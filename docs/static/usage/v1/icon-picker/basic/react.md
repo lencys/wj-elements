@@ -5,7 +5,7 @@ import { IconPicker } from '@elements/react';
 function Example() {
   return (
     <>
-      <wj-icon-picker></wj-icon-picker>
+      <wje-icon-picker></wje-icon-picker>
     </>
   );
 }

@@ -1,53 +1,53 @@
 ```html
-<wj-card>
-  <wj-card-header>
-    <wj-card-subtitle>Subtitle</wj-card-subtitle>
-    <wj-card-title>Title</wj-card-title>
-  </wj-card-header>
-  <wj-card-content>
-    <wj-list>
-      <wj-item>
-        <wj-thumbnail slot="start">
+<wje-card>
+  <wje-card-header>
+    <wje-card-subtitle>Subtitle</wje-card-subtitle>
+    <wje-card-title>Title</wje-card-title>
+  </wje-card-header>
+  <wje-card-content>
+    <wje-list>
+      <wje-item>
+        <wje-thumbnail slot="start">
           <img
             alt="Silhouette of mountains"
             src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
           />
-        </wj-thumbnail>
-        <wj-label>Item</wj-label>
-      </wj-item>
+        </wje-thumbnail>
+        <wje-label>Item</wje-label>
+      </wje-item>
 
-      <wj-item>
-        <wj-thumbnail slot="start">
+      <wje-item>
+        <wje-thumbnail slot="start">
           <img
             alt="Silhouette of mountains"
             src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
           />
-        </wj-thumbnail>
-        <wj-label>Item</wj-label>
-      </wj-item>
+        </wje-thumbnail>
+        <wje-label>Item</wje-label>
+      </wje-item>
 
-      <wj-item>
-        <wj-thumbnail slot="start">
+      <wje-item>
+        <wje-thumbnail slot="start">
           <img
             alt="Silhouette of mountains"
             src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
           />
-        </wj-thumbnail>
-        <wj-label>Item</wj-label>
-      </wj-item>
+        </wje-thumbnail>
+        <wje-label>Item</wje-label>
+      </wje-item>
 
-      <wj-item lines="none">
-        <wj-thumbnail slot="start">
+      <wje-item lines="none">
+        <wje-thumbnail slot="start">
           <img
             alt="Silhouette of mountains"
             src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
           />
-        </wj-thumbnail>
-        <wj-label>Item</wj-label>
-      </wj-item>
-    </wj-list>
-  </wj-card-content>
-</wj-card>
+        </wje-thumbnail>
+        <wje-label>Item</wje-label>
+      </wje-item>
+    </wje-list>
+  </wje-card-content>
+</wje-card>
 
 <style>
   ion-item {

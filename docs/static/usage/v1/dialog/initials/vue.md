@@ -1,6 +1,6 @@
 ```html
 <template>
-  <wj-avatar label="Lukáš Ondrejček" initials></wj-avatar>
+  <wje-avatar label="Lukáš Ondrejček" initials></wje-avatar>
 </template>
 
 <script lang="ts">

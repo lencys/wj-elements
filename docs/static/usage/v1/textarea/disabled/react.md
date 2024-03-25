@@ -4,7 +4,7 @@ import { Textarea } from '@elements/react';
 function Example() {
   return (
     <>
-      <wj-textarea label="Label" disabled></wj-textarea>
+      <wje-textarea label="Label" disabled></wje-textarea>
     </>
   );
 }

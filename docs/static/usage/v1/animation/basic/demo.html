@@ -7,25 +7,24 @@
   <title>Animation</title>
   <link rel="stylesheet" href="../../../common.css" />
   <script src="../../../common.js"></script>
-  <script type="module"
-    src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/wj-master.js"></script>
-  <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/style.css" />
-  <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.0/+esm"></script>
+  <script type="module" src="../../../../wje-elementy/wje-master.js"></script>
+  <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
+  <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
+  <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
 </head>
 
 <body>
   <div class="playground" style="height: 100%;">
     <div class="container">
       <div class="content" style="text-align: center;">
-      <wj-animation name="heartBeat" delay="500" duration="500">
-        <wj-avatar>
-          <wj-img src="../../../../img/demos/avatar.svg"></wj-img>
-        </wj-avatar>
-      </wj-animation>
+      <wje-animation name="heartBeat" delay="500" duration="500">
+        <wje-avatar>
+          <wje-img src="../../../../img/demos/avatar.svg"></wje-img>
+        </wje-avatar>
+      </wje-animation>
       <div style="margin-top: 1rem">
-        <wj-button id="stop">Stop</wj-button>
-        <wj-button id="play">Play</wj-button>
+        <wje-button id="stop">Stop</wje-button>
+        <wje-button id="play">Play</wje-button>
       </div>
     </div>
   </div>
@@ -33,9 +32,9 @@
 </html>
 <script>
 document.querySelector("#stop").addEventListener('click', (e) => {
-  document.querySelector('wj-animation').animation.cancel();
+  document.querySelector('wje-animation').animation.cancel();
 });
 document.querySelector("#play").addEventListener('click', (e) => {
-  document.querySelector('wj-animation').animation.play();
+  document.querySelector('wje-animation').animation.play();
 });
 </script>

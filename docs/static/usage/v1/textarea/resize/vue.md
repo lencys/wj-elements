@@ -1,6 +1,6 @@
 ```html
 <template>
-  <wj-textarea label="Label" name="dog" rows="4" resize="none"></wj-textarea>
+  <wje-textarea label="Label" name="dog" rows="4" resize="none"></wje-textarea>
 </template>
 
 <script lang="ts">

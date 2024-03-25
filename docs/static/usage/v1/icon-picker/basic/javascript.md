@@ -1,3 +1,3 @@
 ```html
-<wj-icon-picker></wj-icon-picker>
+<wje-icon-picker></wje-icon-picker>
 ```

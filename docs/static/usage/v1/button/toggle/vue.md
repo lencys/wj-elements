@@ -1,13 +1,13 @@
 ```html
 <template>
-  <wj-button fill="link" toggle="off">
-    <wj-icon name="sun" slot="toggle"></wj-icon>
-    <wj-icon name="moon" slot="toggle"></wj-icon>
-  </wj-button>
-  <wj-button fill="link" toggle="off">
+  <wje-button fill="link" toggle="off">
+    <wje-icon name="sun" slot="toggle"></wje-icon>
+    <wje-icon name="moon" slot="toggle"></wje-icon>
+  </wje-button>
+  <wje-button fill="link" toggle="off">
     <span slot="toggle">On</span>
     <span slot="toggle">Off</span>
-  </wj-button>
+  </wje-button>
 </template>
 
 <script lang="ts">

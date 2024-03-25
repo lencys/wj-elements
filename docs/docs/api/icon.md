@@ -28,6 +28,12 @@ import Basic from '@site/static/usage/v1/icon/basic/index.md';
 
 <Basic />
 
+## Štýl Outline / Filled
+
+import Style from '@site/static/usage/v1/icon/style/index.md';
+
+<Style />
+
 ## Custom
 
 import Custom from '@site/static/usage/v1/icon/custom/index.md';

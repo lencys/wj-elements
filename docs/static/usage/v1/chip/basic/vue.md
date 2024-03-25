@@ -1,8 +1,8 @@
 ```html
 <template>
-  <wj-chip>Default</wj-chip>
-  <wj-chip active>Default</wj-chip>
-  <wj-chip disabled>Disabled</wj-chip>
+  <wje-chip>Default</wje-chip>
+  <wje-chip active>Default</wje-chip>
+  <wje-chip disabled>Disabled</wje-chip>
 </template>
 
 <script lang="ts">

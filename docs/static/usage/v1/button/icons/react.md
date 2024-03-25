@@ -3,33 +3,33 @@ import React from 'react';
 import { Button, Icon } from '@elements/react';
 function Example() {
   return (
-    <wj-button>
-      <wj-icon slot="start" name="star"></wj-icon>
+    <wje-button>
+      <wje-icon slot="start" name="star"></wje-icon>
       Left Icon
-    </wj-button>
+    </wje-button>
 
-    <wj-button>
+    <wje-button>
         Right Icon
-        <wj-icon slot="end" name="star"></wj-icon>
-    </wj-button>
+        <wje-icon slot="end" name="star"></wje-icon>
+    </wje-button>
     
-    <wj-button>
-      <wj-icon slot="icon-only" name="star"></wj-icon>
-    </wj-button>
+    <wje-button>
+      <wje-icon slot="icon-only" name="star"></wje-icon>
+    </wje-button>
     
-    <wj-button fill="outline">
-        <wj-icon slot="start" name="star"></wj-icon>
+    <wje-button fill="outline">
+        <wje-icon slot="start" name="star"></wje-icon>
         Left Icon
-    </wj-button>
+    </wje-button>
     
-    <wj-button fill="outline">
+    <wje-button fill="outline">
         Right Icon
-        <wj-icon slot="end" name="star"></wj-icon>
-    </wj-button>
+        <wje-icon slot="end" name="star"></wje-icon>
+    </wje-button>
     
-    <wj-button fill="outline">
-      <wj-icon slot="icon-only" name="star"></wj-icon>
-    </wj-button>
+    <wje-button fill="outline">
+      <wje-icon slot="icon-only" name="star"></wje-icon>
+    </wje-button>
   );
 }
 export default Example;

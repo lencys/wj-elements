@@ -1,8 +1,8 @@
 ```html
-<wj-radio-group value="dog">
-  <wj-radio value="cat">Cat</wj-radio>
-  <wj-radio value="dog">Dog</wj-radio>
-  <wj-radio value="elephant" disabled="">Elephant</wj-radio>
-  <wj-radio value="rabbit" >Rabbit</wj-radio>
-</wj-radio-group>
+<wje-radio-group value="dog">
+  <wje-radio value="cat">Cat</wje-radio>
+  <wje-radio value="dog">Dog</wje-radio>
+  <wje-radio value="elephant" disabled="">Elephant</wje-radio>
+  <wje-radio value="rabbit" >Rabbit</wje-radio>
+</wje-radio-group>
 ```

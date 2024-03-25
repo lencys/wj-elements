@@ -3,45 +3,45 @@ import React from 'react';
 import { Button, ButtonGroup, Icon, Tooltip } from '@elements/react';
 function Example() {
   return (
-    <wj-button-group style="margin-right: 1rem;">
-      <wj-tooltip content="Bold">
-        <wj-button>
-          <wj-icon slot="icon-only" name="bold"></wj-icon>
-        </wj-button>
-      </wj-tooltip>
-      <wj-tooltip content="Italic">
-        <wj-button>
-          <wj-icon slot="icon-only" name="italic"></wj-icon>
-        </wj-button>
-      </wj-tooltip>
-      <wj-tooltip content="Bold">
-        <wj-button>
-          <wj-icon slot="icon-only" name="underline"></wj-icon>
-        </wj-button>
-      </wj-tooltip>
-    </wj-button-group>
-    <wj-button-group>
-      <wj-tooltip content="Align left">
-        <wj-button>
-          <wj-icon slot="icon-only" name="align-left"></wj-icon>
-        </wj-button>
-        </wj-tooltip>
-      <wj-tooltip content="Align center">
-        <wj-button>
-          <wj-icon slot="icon-only" name="align-center"></wj-icon>
-        </wj-button>
-      </wj-tooltip>
-      <wj-tooltip content="Align right">
-        <wj-button>
-          <wj-icon slot="icon-only" name="align-right"></wj-icon>
-        </wj-button>
-      </wj-tooltip>
-      <wj-tooltip content="Align justify">
-        <wj-button>
-          <wj-icon slot="icon-only" name="align-justified"></wj-icon>
-        </wj-button>
-      </wj-tooltip>
-    </wj-button-group>
+    <wje-button-group style="margin-right: 1rem;">
+      <wje-tooltip content="Bold">
+        <wje-button>
+          <wje-icon slot="icon-only" name="bold"></wje-icon>
+        </wje-button>
+      </wje-tooltip>
+      <wje-tooltip content="Italic">
+        <wje-button>
+          <wje-icon slot="icon-only" name="italic"></wje-icon>
+        </wje-button>
+      </wje-tooltip>
+      <wje-tooltip content="Bold">
+        <wje-button>
+          <wje-icon slot="icon-only" name="underline"></wje-icon>
+        </wje-button>
+      </wje-tooltip>
+    </wje-button-group>
+    <wje-button-group>
+      <wje-tooltip content="Align left">
+        <wje-button>
+          <wje-icon slot="icon-only" name="align-left"></wje-icon>
+        </wje-button>
+        </wje-tooltip>
+      <wje-tooltip content="Align center">
+        <wje-button>
+          <wje-icon slot="icon-only" name="align-center"></wje-icon>
+        </wje-button>
+      </wje-tooltip>
+      <wje-tooltip content="Align right">
+        <wje-button>
+          <wje-icon slot="icon-only" name="align-right"></wje-icon>
+        </wje-button>
+      </wje-tooltip>
+      <wje-tooltip content="Align justify">
+        <wje-button>
+          <wje-icon slot="icon-only" name="align-justified"></wje-icon>
+        </wje-button>
+      </wje-tooltip>
+    </wje-button-group>
   );
 }
 export default Example;

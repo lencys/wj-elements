@@ -1,6 +1,6 @@
 ```css
-wj-chip#custom {
-    --wj-chip-background: #00213f;
-    --wj-chip-color: #adefd1;
+wje-chip#custom {
+    --wje-chip-background: #00213f;
+    --wje-chip-color: #adefd1;
 }
 ```

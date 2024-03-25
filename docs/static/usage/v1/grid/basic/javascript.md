@@ -1,37 +1,37 @@
 ```html
-<wj-grid>
-  <wj-row>
-    <wj-col>1</wj-col>
-    <wj-col>2</wj-col>
-    <wj-col>3</wj-col>
-  </wj-row>
-</wj-grid>
+<wje-grid>
+  <wje-row>
+    <wje-col>1</wje-col>
+    <wje-col>2</wje-col>
+    <wje-col>3</wje-col>
+  </wje-row>
+</wje-grid>
 
-<wj-grid>
-  <wj-row>
-    <wj-col>1</wj-col>
-    <wj-col>2</wj-col>
-    <wj-col>3</wj-col>
-    <wj-col>4</wj-col>
-    <wj-col>5</wj-col>
-    <wj-col>6</wj-col>
-  </wj-row>
-</wj-grid>
+<wje-grid>
+  <wje-row>
+    <wje-col>1</wje-col>
+    <wje-col>2</wje-col>
+    <wje-col>3</wje-col>
+    <wje-col>4</wje-col>
+    <wje-col>5</wje-col>
+    <wje-col>6</wje-col>
+  </wje-row>
+</wje-grid>
 
-<wj-grid>
-  <wj-row>
-    <wj-col>1</wj-col>
-    <wj-col>2</wj-col>
-    <wj-col>3</wj-col>
-    <wj-col>4</wj-col>
-    <wj-col>5</wj-col>
-    <wj-col>6</wj-col>
-    <wj-col>7</wj-col>
-    <wj-col>8</wj-col>
-    <wj-col>9</wj-col>
-    <wj-col>10</wj-col>
-    <wj-col>11</wj-col>
-    <wj-col>12</wj-col>
-  </wj-row>
-</wj-grid>
+<wje-grid>
+  <wje-row>
+    <wje-col>1</wje-col>
+    <wje-col>2</wje-col>
+    <wje-col>3</wje-col>
+    <wje-col>4</wje-col>
+    <wje-col>5</wje-col>
+    <wje-col>6</wje-col>
+    <wje-col>7</wje-col>
+    <wje-col>8</wje-col>
+    <wje-col>9</wje-col>
+    <wje-col>10</wje-col>
+    <wje-col>11</wje-col>
+    <wje-col>12</wje-col>
+  </wje-row>
+</wje-grid>
 ```

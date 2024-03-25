@@ -6,25 +6,27 @@
     <title>ProgressBar</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
-      <script type="module" src="../../../../wj-elementy/wj-master.js"></script>
-      <link rel="stylesheet" href="../../../../wj-elementy/style.css" />
+      <script type="module" src="../../../../wje-elementy/wje-master.js"></script>
+      <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
   </head>
 
   <body>    
     <div class="container">
       <div class="content" style="flex-direction: column;">
-        <wj-progress-bar progress="60" radius="20" stroke="3" color="danger" type="circle" shadow="open" class="wj-color-danger wj-color">
-          <wj-thumbnail circle>
+        <wje-progress-bar progress="60" radius="20" stroke="3" color="danger" type="circle" shadow="open" class="wje-color-danger wje-color">
+          <wje-thumbnail circle>
             <img alt="Silhouette of mountains" src="../../../../img/demos/thumbnail.svg">
-          </wj-thumbnail>
+          </wje-thumbnail>
           <style>
-          wj-thumbnail {
-              --wj-border-radius: 50%;
-              --wj-thumbnail-width: 38px;
-              --wj-thumbnail-height: 38px;
+          wje-thumbnail {
+              --wje-border-radius: 50%;
+              --wje-thumbnail-width: 38px;
+              --wje-thumbnail-height: 38px;
           }
           </style>
-        </wj-progress-bar>
+        </wje-progress-bar>
       </div>
     </div>
   </body>

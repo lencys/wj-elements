@@ -7,26 +7,26 @@
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
     <script type="module" src="../../../../js/demo.js"></script>
-    <!-- <script type="module" src="../../../../wj-elementy/wj-master.js"></script>
-    <link rel="stylesheet" href="../../../../wj-elementy/style.css" /> -->
-    <script type="module" src="./../../../../wj-elementy/wj-master.js"></script>
-    <link rel="stylesheet" href="./../../../../wj-elementy/style.css" />
+    <script type="module" src="./../../../../wje-elementy/wje-master.js"></script>
+    <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
   </head>
   <body>
     <div class="container">
       <div class="content" style="min-width: 80%;margin: auto;">
-        <wj-infinite-scroll url="/api/users" placement="wj-list">
-          <wj-list>
-            <wj-item iterate>
-              <wj-label>
+        <wje-infinite-scroll url="/api/users" placement="wje-list">
+          <wje-list>
+            <wje-item iterate>
+              <wje-label>
                 <h4>{{fullName}}</h4>
                 <p>{{jobTitle}}</p>
-              </wj-label>
-            </wj-item>
-          </wj-list>
-        </wj-infinite-scroll>
+              </wje-label>
+            </wje-item>
+          </wje-list>
+        </wje-infinite-scroll>
         <style>
-          wj-infinite-scroll {
+          wje-infinite-scroll {
             min-width: 250px;
           }
         </style>
