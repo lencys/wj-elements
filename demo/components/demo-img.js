@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,7 +10,7 @@ template.innerHTML = `<h1>Image</h1>
     <h3>Basic</h3>
     <div class="playground">
       <div class="content">
-        <wj-img src="/demo/assets/img/img.png" alt="Niekedy máme pocit, že chodíme v kruhoch..."></wj-img>
+        <wje-img src="/demo/assets/img/img.png" alt="Niekedy máme pocit, že chodíme v kruhoch..."></wje-img>
       </div>
     </div>
   </div>`;

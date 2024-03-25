@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -11,19 +11,19 @@ template.innerHTML = `
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
-        <wj-card>
-          <wj-tab-group variant="top">
-            <wj-tab slot="nav" panel="general">General</wj-tab>
-            <wj-tab slot="nav" panel="custom" active>Custom</wj-tab>
-            <wj-tab slot="nav" panel="advanced">Advanced</wj-tab>
-            <wj-tab slot="nav" panel="disabled" disabled>Disabled</wj-tab>
+        <wje-card>
+          <wje-tab-group variant="top">
+            <wje-tab slot="nav" panel="general">General</wje-tab>
+            <wje-tab slot="nav" panel="custom" active>Custom</wje-tab>
+            <wje-tab slot="nav" panel="advanced">Advanced</wje-tab>
+            <wje-tab slot="nav" panel="disabled" disabled>Disabled</wje-tab>
           
-            <wj-tab-panel name="general">This is the <b>general</b> tab panel.</wj-tab-panel>
-            <wj-tab-panel name="custom">This is the <b>custom</b> tab panel.</wj-tab-panel>
-            <wj-tab-panel name="advanced">This is the <b>advanced</b> tab panel.</wj-tab-panel>
-            <wj-tab-panel name="disabled">This is a disabled tab panel.</wj-tab-panel>
-          </wj-tab-group>
-        </wj-card>
+            <wje-tab-panel name="general">This is the <b>general</b> tab panel.</wje-tab-panel>
+            <wje-tab-panel name="custom">This is the <b>custom</b> tab panel.</wje-tab-panel>
+            <wje-tab-panel name="advanced">This is the <b>advanced</b> tab panel.</wje-tab-panel>
+            <wje-tab-panel name="disabled">This is a disabled tab panel.</wje-tab-panel>
+          </wje-tab-group>
+        </wje-card>
       </div>
     </div>
     
@@ -32,19 +32,19 @@ template.innerHTML = `
     <h2>Start</h2>
     <div class="playground">
       <div class="content">
-        <wj-card>
-          <wj-tab-group variant="start">
-            <wj-tab slot="nav" panel="general">General</wj-tab>
-            <wj-tab slot="nav" panel="custom" active>Custom</wj-tab>
-            <wj-tab slot="nav" panel="advanced">Advanced</wj-tab>
-            <wj-tab slot="nav" panel="disabled" disabled>Disabled</wj-tab>
+        <wje-card>
+          <wje-tab-group variant="start">
+            <wje-tab slot="nav" panel="general">General</wje-tab>
+            <wje-tab slot="nav" panel="custom" active>Custom</wje-tab>
+            <wje-tab slot="nav" panel="advanced">Advanced</wje-tab>
+            <wje-tab slot="nav" panel="disabled" disabled>Disabled</wje-tab>
           
-            <wj-tab-panel name="general">This is the general tab panel.</wj-tab-panel>
-            <wj-tab-panel name="custom">This is the custom tab panel.</wj-tab-panel>
-            <wj-tab-panel name="advanced">This is the advanced tab panel.</wj-tab-panel>
-            <wj-tab-panel name="disabled">This is a disabled tab panel.</wj-tab-panel>
-          </wj-tab-group>
-        </wj-card>
+            <wje-tab-panel name="general">This is the general tab panel.</wje-tab-panel>
+            <wje-tab-panel name="custom">This is the custom tab panel.</wje-tab-panel>
+            <wje-tab-panel name="advanced">This is the advanced tab panel.</wje-tab-panel>
+            <wje-tab-panel name="disabled">This is a disabled tab panel.</wje-tab-panel>
+          </wje-tab-group>
+        </wje-card>
       </div>
     </div>
     
@@ -53,19 +53,19 @@ template.innerHTML = `
     <h2>End</h2>
     <div class="playground">
       <div class="content">
-        <wj-card>
-          <wj-tab-group variant="end">
-            <wj-tab slot="nav" panel="general">General</wj-tab>
-            <wj-tab slot="nav" panel="custom" active>Custom</wj-tab>
-            <wj-tab slot="nav" panel="advanced">Advanced</wj-tab>
-            <wj-tab slot="nav" panel="disabled" disabled>Disabled</wj-tab>
+        <wje-card>
+          <wje-tab-group variant="end">
+            <wje-tab slot="nav" panel="general">General</wje-tab>
+            <wje-tab slot="nav" panel="custom" active>Custom</wje-tab>
+            <wje-tab slot="nav" panel="advanced">Advanced</wje-tab>
+            <wje-tab slot="nav" panel="disabled" disabled>Disabled</wje-tab>
           
-            <wj-tab-panel name="general">This is the general tab panel.</wj-tab-panel>
-            <wj-tab-panel name="custom">This is the custom tab panel.</wj-tab-panel>
-            <wj-tab-panel name="advanced">This is the advanced tab panel.</wj-tab-panel>
-            <wj-tab-panel name="disabled">This is a disabled tab panel.</wj-tab-panel>
-          </wj-tab-group>
-        </wj-card>
+            <wje-tab-panel name="general">This is the general tab panel.</wje-tab-panel>
+            <wje-tab-panel name="custom">This is the custom tab panel.</wje-tab-panel>
+            <wje-tab-panel name="advanced">This is the advanced tab panel.</wje-tab-panel>
+            <wje-tab-panel name="disabled">This is a disabled tab panel.</wje-tab-panel>
+          </wje-tab-group>
+        </wje-card>
       </div>
     </div>
     
@@ -74,19 +74,19 @@ template.innerHTML = `
     <h2>Bottom</h2>
     <div class="playground">
       <div class="content">
-        <wj-card>
-          <wj-tab-group variant="bottom">
-            <wj-tab slot="nav" panel="general">General</wj-tab>
-            <wj-tab slot="nav" panel="custom" active>Custom</wj-tab>
-            <wj-tab slot="nav" panel="advanced">Advanced</wj-tab>
-            <wj-tab slot="nav" panel="disabled" disabled>Disabled</wj-tab>
+        <wje-card>
+          <wje-tab-group variant="bottom">
+            <wje-tab slot="nav" panel="general">General</wje-tab>
+            <wje-tab slot="nav" panel="custom" active>Custom</wje-tab>
+            <wje-tab slot="nav" panel="advanced">Advanced</wje-tab>
+            <wje-tab slot="nav" panel="disabled" disabled>Disabled</wje-tab>
           
-            <wj-tab-panel name="general">This is the general tab panel.</wj-tab-panel>
-            <wj-tab-panel name="custom">This is the custom tab panel.</wj-tab-panel>
-            <wj-tab-panel name="advanced">This is the advanced tab panel.</wj-tab-panel>
-            <wj-tab-panel name="disabled">This is a disabled tab panel.</wj-tab-panel>
-          </wj-tab-group>
-        </wj-card>
+            <wje-tab-panel name="general">This is the general tab panel.</wje-tab-panel>
+            <wje-tab-panel name="custom">This is the custom tab panel.</wje-tab-panel>
+            <wje-tab-panel name="advanced">This is the advanced tab panel.</wje-tab-panel>
+            <wje-tab-panel name="disabled">This is a disabled tab panel.</wje-tab-panel>
+          </wje-tab-group>
+        </wje-card>
       </div>
     </div>
   </div>`;

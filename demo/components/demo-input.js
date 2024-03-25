@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,12 +10,12 @@ template.innerHTML = `<h1>Input</h1>
     <h2>Default</h2>
     <div class="playground">
       <div class="content">
-        <wj-input label="Default input"></wj-input>
-        <wj-input label="Input with placeholder" placeholder="Enter company name"></wj-input>
-        <wj-input label="Input with value" value="Mlynské Nivy 71"></wj-input>
-        <wj-input label="Readonly input" value="Bratislava" readonly></wj-input>
-        <wj-input label="Disabled input" value="84103" disabled></wj-input>
-        <wj-input label="Default input" type="number" minlength="5" message="Toto je moja hlaska" required validate-on-change custom-error-display ></wj-input>
+        <wje-input label="Default input"></wje-input>
+        <wje-input label="Input with placeholder" placeholder="Enter company name"></wje-input>
+        <wje-input label="Input with value" value="Mlynské Nivy 71"></wje-input>
+        <wje-input label="Readonly input" value="Bratislava" readonly></wje-input>
+        <wje-input label="Disabled input" value="84103" disabled></wje-input>
+        <wje-input label="Default input" type="number" minlength="5" message="Toto je moja hlaska" required validate-on-change custom-error-display ></wje-input>
       </div>
     </div>
     
@@ -24,34 +24,34 @@ template.innerHTML = `<h1>Input</h1>
     <h2>Form</h2>
     <div class="playground">
       <div class="content">
-        <wj-grid>
-          <wj-row class="gx-2">
-            <wj-col size="6">
-              <wj-input label="Project name"></wj-input>
-            </wj-col>
-            <wj-col size="6">
-              <wj-input label="Project code" placeholder="6 digit code" minlength="6" maxlength="6" message="Toto je moja hlaska" validate-on-change custom-error-display></wj-input>
-            </wj-col>
-          </wj-row>
-          <wj-row>
-            <wj-col size="12">
-              <wj-input label="Project URL">
-                <span slot="start"><wj-icon name="globe"></wj-icon></span>
+        <wje-grid>
+          <wje-row class="gx-2">
+            <wje-col size="6">
+              <wje-input label="Project name"></wje-input>
+            </wje-col>
+            <wje-col size="6">
+              <wje-input label="Project code" placeholder="6 digit code" minlength="6" maxlength="6" message="Toto je moja hlaska" validate-on-change custom-error-display></wje-input>
+            </wje-col>
+          </wje-row>
+          <wje-row>
+            <wje-col size="12">
+              <wje-input label="Project URL">
+                <span slot="start"><wje-icon name="globe"></wje-icon></span>
                 <span slot="end">.com</span>
-              </wj-input>
-            </wj-col>
-          </wj-row>
-          <wj-row class="gx-2">
-            <wj-col size="6">
-              <wj-input label="Profit">
+              </wje-input>
+            </wje-col>
+          </wje-row>
+          <wje-row class="gx-2">
+            <wje-col size="6">
+              <wje-input label="Profit">
                 <span slot="end">&euro;</span>
-              </wj-input>
-            </wj-col>
-            <wj-col size="6">
-              <wj-input label="Email"></wj-input>
-            </wj-col>
-          </wj-row>
-        </wj-grid>
+              </wje-input>
+            </wje-col>
+            <wje-col size="6">
+              <wje-input label="Email"></wje-input>
+            </wje-col>
+          </wje-row>
+        </wje-grid>
       </div>
     </div>
     
@@ -60,12 +60,12 @@ template.innerHTML = `<h1>Input</h1>
     <h2>Standard</h2>
     <div class="playground">
       <div class="content">
-        <wj-input variant="standard" label="Default input"></wj-input>
-        <wj-input variant="standard" label="Input with placeholder" placeholder="Enter company name"></wj-input>
-        <wj-input variant="standard" label="Input with value" value="Mlynské Nivy 71"></wj-input>
-        <wj-input variant="standard" label="Readonly input" value="Bratislava" readonly></wj-input>
-        <wj-input variant="standard" label="Disabled input" value="84103" disabled></wj-input>
-        <wj-input variant="standard" label="Default input" type="number" minlength="5" message="Toto je moja hlaska" required validate-on-change custom-error-display ></wj-input>
+        <wje-input variant="standard" label="Default input"></wje-input>
+        <wje-input variant="standard" label="Input with placeholder" placeholder="Enter company name"></wje-input>
+        <wje-input variant="standard" label="Input with value" value="Mlynské Nivy 71"></wje-input>
+        <wje-input variant="standard" label="Readonly input" value="Bratislava" readonly></wje-input>
+        <wje-input variant="standard" label="Disabled input" value="84103" disabled></wje-input>
+        <wje-input variant="standard" label="Default input" type="number" minlength="5" message="Toto je moja hlaska" required validate-on-change custom-error-display ></wje-input>
       </div>
     </div>
 
@@ -74,34 +74,34 @@ template.innerHTML = `<h1>Input</h1>
     <h2>Form</h2>
     <div class="playground">
       <div class="content">
-        <wj-grid>
-          <wj-row class="gx-2">
-            <wj-col size="6">
-              <wj-input variant="standard" label="Project name"></wj-input>
-            </wj-col>
-            <wj-col size="6">
-              <wj-input variant="standard" label="Project code" placeholder="6 digit code" minlength="6" maxlength="6" message="Toto je moja hlaska" validate-on-change custom-error-display></wj-input>
-            </wj-col>
-          </wj-row>
-          <wj-row>
-            <wj-col size="12">
-              <wj-input variant="standard" label="Project URL">
-                <span slot="start"><wj-icon name="globe"></wj-icon></span>
+        <wje-grid>
+          <wje-row class="gx-2">
+            <wje-col size="6">
+              <wje-input variant="standard" label="Project name"></wje-input>
+            </wje-col>
+            <wje-col size="6">
+              <wje-input variant="standard" label="Project code" placeholder="6 digit code" minlength="6" maxlength="6" message="Toto je moja hlaska" validate-on-change custom-error-display></wje-input>
+            </wje-col>
+          </wje-row>
+          <wje-row>
+            <wje-col size="12">
+              <wje-input variant="standard" label="Project URL">
+                <span slot="start"><wje-icon name="globe"></wje-icon></span>
                 <span slot="end">.com</span>
-              </wj-input>
-            </wj-col>
-          </wj-row>
-          <wj-row class="gx-2">
-            <wj-col size="6">
-              <wj-input variant="standard" label="Profit">
+              </wje-input>
+            </wje-col>
+          </wje-row>
+          <wje-row class="gx-2">
+            <wje-col size="6">
+              <wje-input variant="standard" label="Profit">
                 <span slot="end">&euro;</span>
-              </wj-input>
-            </wj-col>
-            <wj-col size="6">
-              <wj-input variant="standard" label="Email"></wj-input>
-            </wj-col>
-          </wj-row>
-        </wj-grid>
+              </wje-input>
+            </wje-col>
+            <wje-col size="6">
+              <wje-input variant="standard" label="Email"></wje-input>
+            </wje-col>
+          </wje-row>
+        </wje-grid>
       </div>
     </div>
     
@@ -110,18 +110,18 @@ template.innerHTML = `<h1>Input</h1>
     <h2>Search</h2>
     <div class="playground">
       <div class="content">
-        <wj-input variant="standard" label="Default input" class="example">
-          <wj-button variant="link" slot="end"><wj-icon name="search"></wj-icon></wj-button>
-        </wj-input>
+        <wje-input variant="standard" label="Default input" class="example">
+          <wje-button variant="link" slot="end"><wje-icon name="search"></wje-icon></wje-button>
+        </wje-input>
         <style>
           .example {
-            --wj-input-slot-padding-inline: 0 !important;
+            --wje-input-slot-padding-inline: 0 !important;
           }
           
-          .example wj-button {
-            --wj-button-border-width: 0 !important;
-            --wj-button-border-radius: 0 !important;
-            --wj-color-base: #000000 !important;
+          .example wje-button {
+            --wje-button-border-width: 0 !important;
+            --wje-button-border-radius: 0 !important;
+            --wje-color-base: #000000 !important;
             margin: 0;
           }
         </style>
@@ -133,22 +133,22 @@ template.innerHTML = `<h1>Input</h1>
     <h2>Pickers</h2>
     <div class="playground">
       <div class="content">
-        <wj-input variant="standard" label="Default input" class="example-icon" clearable>
-          <wj-icon-picker slot="start"></wj-icon-picker>
-        </wj-input>
+        <wje-input variant="standard" label="Default input" class="example-icon" clearable>
+          <wje-icon-picker slot="start"></wje-icon-picker>
+        </wje-input>
         
-        <wj-input variant="standard" label="Default input" class="example-color" clearable>
-          <wj-color-picker slot="start"></wj-color-picker>
-        </wj-input>
+        <wje-input variant="standard" label="Default input" class="example-color" clearable>
+          <wje-color-picker slot="start"></wje-color-picker>
+        </wje-input>
         
         <style>
-          .example-icon wj-icon-picker {
-            --wj-icon-picker-border-width: 0 !important;
-            --wj-icon-picker-padding: .15rem !important;
-            --wj-input-slot-padding-inline: .25rem !important;
+          .example-icon wje-icon-picker {
+            --wje-icon-picker-border-width: 0 !important;
+            --wje-icon-picker-padding: .15rem !important;
+            --wje-input-slot-padding-inline: .25rem !important;
           }
           
-          .example-color wj-color-picker::part(anchor) {
+          .example-color wje-color-picker::part(anchor) {
             /*border-radius: 3px 0 0 3px !important;*/
             border-radius: 50%;
           }
@@ -161,7 +161,7 @@ template.innerHTML = `<h1>Input</h1>
     <h2>Clearable</h2>
     <div class="playground">
       <div class="content">
-        <wj-input variant="standard" label="Default input" class="example" clearable></wj-input>
+        <wje-input variant="standard" label="Default input" class="example" clearable></wje-input>
       </div>
     </div>
     
@@ -173,13 +173,13 @@ export default class DemoInput extends WJElement {
   }
 
   afterDraw() {
-    this.addEventListener('wj-icon-picker:select', (e) => {
-      e.target.closest("wj-input").value = e.detail.name;
+    this.addEventListener('wje-icon-picker:select', (e) => {
+      e.target.closest("wje-input").value = e.detail.name;
       e.target.onClose();
     });
 
-    this.addEventListener('wj-color-picker:select', (e) => {
-      e.target.closest("wj-input").value = e.detail.hex8;
+    this.addEventListener('wje-color-picker:select', (e) => {
+      e.target.closest("wje-input").value = e.detail.hex8;
       // e.target.onClose();
     });
   }

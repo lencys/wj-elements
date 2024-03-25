@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,16 +10,16 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
     <h3>Basic</h3>
     <div class="playground">
       <div class="content">
-        <wj-infinite-scroll url="/api/users" placement="wj-list">
-          <wj-list>
-            <wj-item iterate>
-              <wj-label>
+        <wje-infinite-scroll url="/api/users" placement="wje-list">
+          <wje-list>
+            <wje-item iterate>
+              <wje-label>
                 <h4>{{fullName}}</h4>
                 <p>{{jobTitle}}</p>
-              </wj-label>
-            </wj-item>
-          </wj-list>
-        </wj-infinite-scroll>
+              </wje-label>
+            </wje-item>
+          </wje-list>
+        </wje-infinite-scroll>
       </div>
     </div>
 
@@ -28,16 +28,16 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
     <h3>Size</h3>
     <div class="playground">
       <div class="content">
-        <wj-infinite-scroll url="/api/users" placement="wj-list" size="6">
-          <wj-list>
-            <wj-item iterate>
-              <wj-label>
+        <wje-infinite-scroll url="/api/users" placement="wje-list" size="6">
+          <wje-list>
+            <wje-item iterate>
+              <wje-label>
                 <h4>{{fullName}}</h4>
                 <p>{{jobTitle}}</p>
-              </wj-label>
-            </wj-item>
-          </wj-list>
-        </wj-infinite-scroll>
+              </wje-label>
+            </wje-item>
+          </wje-list>
+        </wje-infinite-scroll>
       </div>
     </div>
 
@@ -46,29 +46,29 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
     <h3>Card</h3>
     <div class="playground" style="padding: 1rem 0;">
       <div class="content" style="width: auto;">
-        <wj-infinite-scroll url="/api/users" placement="wj-row" size="20" class="example" height="440px">
-          <wj-grid>
-            <wj-row wrap>
-              <wj-col size="6" iterate>
-                <wj-card>
-                  <wj-img src="{{image}}"></wj-img>
-                  <wj-card-header>
-                    <wj-card-subtitle>{{jobTitle}}</wj-card-subtitle>
-                    <wj-card-title>{{fullName}}</wj-card-title>
-                  </wj-card-header>
-                  <wj-card-content>
+        <wje-infinite-scroll url="/api/users" placement="wje-row" size="20" class="example" height="440px">
+          <wje-grid>
+            <wje-row wrap>
+              <wje-col size="6" iterate>
+                <wje-card>
+                  <wje-img src="{{image}}"></wje-img>
+                  <wje-card-header>
+                    <wje-card-subtitle>{{jobTitle}}</wje-card-subtitle>
+                    <wje-card-title>{{fullName}}</wje-card-title>
+                  </wje-card-header>
+                  <wje-card-content>
                     <p>{{description}}</p>
-                  </wj-card-content>
-                </wj-card>
-              </wj-col>
-            </wj-row>
-          </wj-grid>
+                  </wje-card-content>
+                </wje-card>
+              </wje-col>
+            </wje-row>
+          </wje-grid>
           <style>
             .example {
               padding: 0 1rem;
             }
           </style>
-        </wj-infinite-scroll>
+        </wje-infinite-scroll>
       </div>
     </div>
   </div>`;

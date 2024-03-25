@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -6,10 +6,10 @@ template.innerHTML = `<h1>Split View</h1>
   <div class="container">
     
     <style>
-      wj-split-view {
+      wje-split-view {
         height: 300px;
         width: 100%;
-        border-color: var(--wj-border-color); 
+        border-color: var(--wje-border-color); 
         border-style: solid;
         border-width: 1px;
       }
@@ -20,10 +20,10 @@ template.innerHTML = `<h1>Split View</h1>
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
-        <wj-split-view initial="250">
+        <wje-split-view initial="250">
           <div slot="start">Start</div>
           <div slot="end">End</div>
-        </wj-split-view>
+        </wje-split-view>
       </div>
     </div>    
     
@@ -32,10 +32,10 @@ template.innerHTML = `<h1>Split View</h1>
     <h2>Vertical</h2>
     <div class="playground">
       <div class="content">
-        <wj-split-view vertical>
+        <wje-split-view vertical>
           <div slot="start">Top</div>
           <div slot="end">Bottom</div>
-        </wj-split-view>
+        </wje-split-view>
       </div>
     </div>
     
@@ -44,10 +44,10 @@ template.innerHTML = `<h1>Split View</h1>
     <h2>Min/Max</h2>
     <div class="playground">
       <div class="content">
-        <wj-split-view min="50" max="50" initial="75">
+        <wje-split-view min="50" max="50" initial="75">
           <div slot="start">Start</div>
           <div slot="end">End</div>
-        </wj-split-view>
+        </wje-split-view>
       </div>
     </div> 
     
@@ -56,10 +56,10 @@ template.innerHTML = `<h1>Split View</h1>
     <h2>Disabled</h2>
     <div class="playground">
       <div class="content">
-        <wj-split-view disabled>
+        <wje-split-view disabled>
           <div slot="start">Start</div>
           <div slot="end">End</div>
-        </wj-split-view>
+        </wje-split-view>
       </div>
     </div> 
     
@@ -68,15 +68,15 @@ template.innerHTML = `<h1>Split View</h1>
     <h2>Split</h2>
     <div class="playground">
       <div class="content">
-        <wj-split-view initial="50">
+        <wje-split-view initial="50">
           <div slot="start">Start</div>
           <div slot="end">
-            <wj-split-view vertical id="custom-vertical-2">
+            <wje-split-view vertical id="custom-vertical-2">
               <div slot="start">Top</div>
               <div slot="end">Bottom</div>
-            </wj-split-view>
+            </wje-split-view>
           </div>
-        </wj-split-view>
+        </wje-split-view>
       </div>
     </div>
     
@@ -85,17 +85,17 @@ template.innerHTML = `<h1>Split View</h1>
     <h2>Custom</h2>
     <div class="playground">
       <div class="content">
-        <wj-split-view id="custom">
+        <wje-split-view id="custom">
           <div slot="start">Start</div>
-          <wj-icon name="grip-vertical" slot="divider"></wj-icon>
+          <wje-icon name="grip-vertical" slot="divider"></wje-icon>
           <div slot="end">End</div>
-        </wj-split-view>
+        </wje-split-view>
         <style>
           #custom {
-            --wj-split-view-divider-background: mediumvioletred !important;
-            --wj-split-view-divider-size: 1px !important;
+            --wje-split-view-divider-background: mediumvioletred !important;
+            --wje-split-view-divider-size: 1px !important;
           }
-          #custom wj-icon {
+          #custom wje-icon {
             position: absolute;
             background-color: mediumvioletred;
             padding: .5rem 0.25rem;

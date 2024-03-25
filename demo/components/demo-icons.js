@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,23 +10,45 @@ template.innerHTML = `<h1>Icons</h1>
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
-        <wj-icon name="check"></wj-icon>
-        <wj-icon name="check" size="large"></wj-icon>
-        <wj-icon name="check" color="primary"></wj-icon>
-        <wj-icon name="check" size="large" color="danger"></wj-icon>
+        <wje-icon name="check"></wje-icon>
+        <wje-icon name="check" size="large"></wje-icon>
+        <wje-icon name="check" color="primary"></wje-icon>
+        <wje-icon name="check" size="large" color="danger"></wje-icon>
       </div>
     </div>
 
+    <!-- STYLE -->
+
+    <h2>Style</h2>
+    <div class="playground">
+      <div class="content style">
+        <wje-icon name="alarm" size="large"></wje-icon>
+        <wje-icon name="alarm" size="large" filled></wje-icon>
+        <style>
+          .style wje-icon:not([filled])::part(svg) {
+            color: yellow;
+          }
+          .style wje-icon[filled]::part(svg) {
+            fill: red;
+          }
+        </style>
+      </div>
+    </div>
+    
     <!-- CUSTOM -->
 
     <h2>Custom</h2>
     <div class="playground">
       <div class="content">
-        <wj-icon class="custom" name="check"></wj-icon>
+        <wje-icon class="custom" name="check"></wje-icon>
         <style>
-          wj-icon.custom {
-            --wj-icon-size: 60px;
+          wje-icon.custom {
+            --wje-icon-size: 60px;
             color: blue;
+          }
+          
+          wje-icon::part(svg) {
+            stroke-width: 1;
           }
         </style>
       </div>

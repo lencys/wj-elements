@@ -1,0 +1,9 @@
+/*
+[ WJ Toolbar Action ]
+*/
+
+:host {
+  .native-toolbar-action {
+    display: flex;
+  }
+}

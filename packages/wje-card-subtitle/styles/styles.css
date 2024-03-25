@@ -1,0 +1,23 @@
+/*
+[ WJ Card - Subtitle ]
+*/
+
+:host {
+  --wje-card-subtitle-font-size: 11px;
+  --wje-card-subtitle-font-family: var(--wje-font-family-secondary);
+  --wje-card-subtitle-padding: 0;
+
+  transition: opacity 0.3s ease;
+  font-family: var(--wje-card-subtitle-font-family);
+  font-size: var(--wje-card-subtitle-font-size);
+  text-transform: uppercase;
+  display: inline-block;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  margin: 0;
+  padding: var(--wje-card-subtitle-padding);
+  line-height: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  filter: alpha(opacity=40);
+}

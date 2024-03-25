@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,13 +10,13 @@ template.innerHTML = `<h1>Masonry</h1>
     <h2>Basic</h2>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content">
-        <wj-masonry cols="2" class="example">
+        <wje-masonry cols="2" class="example">
           <div style="height: 300px">1</div>
           <div style="height: 375px">2</div>
           <div style="height: 250px">3</div>
           <div style="height: 390px">4</div>
           <div style="height: 200px">5</div>
-        </wj-masonry>
+        </wje-masonry>
       </div>
     </div>
     
@@ -25,15 +25,15 @@ template.innerHTML = `<h1>Masonry</h1>
     <h2>Max col width</h2>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content">
-        <wj-masonry max-col-width="150">
-          <wj-img src="https://picsum.photos/400/500?i=1"></wj-img>
-          <wj-img src="https://picsum.photos/400/375?i=2"></wj-img>
-          <wj-img src="https://picsum.photos/400/200?i=3"></wj-img>
-          <wj-img src="https://picsum.photos/400?/400i=4"></wj-img>
-          <wj-img src="https://picsum.photos/400/375?i=5"></wj-img>
-          <wj-img src="https://picsum.photos/400/500?i=6"></wj-img>
-          <wj-img src="https://picsum.photos/400/200?i=7"></wj-img>
-        </wj-masonry>
+        <wje-masonry max-col-width="150">
+          <wje-img src="https://picsum.photos/400/500?i=1"></wje-img>
+          <wje-img src="https://picsum.photos/400/375?i=2"></wje-img>
+          <wje-img src="https://picsum.photos/400/200?i=3"></wje-img>
+          <wje-img src="https://picsum.photos/400?/400i=4"></wje-img>
+          <wje-img src="https://picsum.photos/400/375?i=5"></wje-img>
+          <wje-img src="https://picsum.photos/400/500?i=6"></wje-img>
+          <wje-img src="https://picsum.photos/400/200?i=7"></wje-img>
+        </wje-masonry>
       </div>
     </div>
     
@@ -42,17 +42,17 @@ template.innerHTML = `<h1>Masonry</h1>
     <h2>Gap</h2>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content">
-        <wj-masonry cols="2" gap="2" class="example" id="example-gap">
+        <wje-masonry cols="2" gap="2" class="example" id="example-gap">
           <div style="height: 300px">1</div>
           <div style="height: 375px">2</div>
           <div style="height: 250px">3</div>
           <div style="height: 377px">4</div>
           <div style="height: 200px">5</div>
-        </wj-masonry>
+        </wje-masonry>
         <style>
           #example-gap div {
-            color: var(--wj-color-white);
-            background: var(--wj-color-danger);
+            color: var(--wje-color-white);
+            background: var(--wje-color-danger);
           }
         </style>
       </div>
@@ -64,8 +64,8 @@ template.innerHTML = `<h1>Masonry</h1>
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    color: var(--wj-color-black);
-    background: var(--wj-color-warning);
+    color: var(--wje-color-black);
+    background: var(--wje-color-warning);
   }
 </style>
 `;

@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,9 +10,9 @@ template.innerHTML = `<h1>Avatar</h1>
     <h3>Basic</h3>
     <div class="playground">
       <div class="content">
-        <wj-avatar>
-          <wj-img src="/assets/img/avatar.svg"></wj-img>
-        </wj-avatar>
+        <wje-avatar>
+          <wje-img src="/assets/img/avatar.svg"></wje-img>
+        </wje-avatar>
       </div>
     </div>
     
@@ -21,15 +21,15 @@ template.innerHTML = `<h1>Avatar</h1>
     <h3>Size</h3>
     <div class="playground">
       <div class="content">
-        <wj-avatar size="small">
-          <wj-img src="/assets/img/avatar.svg"></wj-img>
-        </wj-avatar>
-        <wj-avatar>
-          <wj-img src="/assets/img/avatar.svg"></wj-img>
-        </wj-avatar>
-        <wj-avatar size="large">
-          <wj-img src="/assets/img/avatar.svg"></wj-img>
-        </wj-avatar>
+        <wje-avatar size="small">
+          <wje-img src="/assets/img/avatar.svg"></wje-img>
+        </wje-avatar>
+        <wje-avatar>
+          <wje-img src="/assets/img/avatar.svg"></wje-img>
+        </wje-avatar>
+        <wje-avatar size="large">
+          <wje-img src="/assets/img/avatar.svg"></wje-img>
+        </wje-avatar>
       </div>
     </div>
     
@@ -38,15 +38,15 @@ template.innerHTML = `<h1>Avatar</h1>
     <h3>Icon</h3>
     <div class="playground">
       <div class="content">
-        <wj-avatar size="small">
-          <wj-icon name="photo" slot="icon"></wj-icon>
-        </wj-avatar>
-        <wj-avatar>
-          <wj-icon name="photo" slot="icon"></wj-icon>
-        </wj-avatar>
-        <wj-avatar size="large">
-          <wj-icon name="photo" slot="icon"></wj-icon>
-        </wj-avatar>
+        <wje-avatar size="small">
+          <wje-icon name="photo" slot="icon"></wje-icon>
+        </wje-avatar>
+        <wje-avatar>
+          <wje-icon name="photo" slot="icon"></wje-icon>
+        </wje-avatar>
+        <wje-avatar size="large">
+          <wje-icon name="photo" slot="icon"></wje-icon>
+        </wje-avatar>
       </div>
     </div>
     
@@ -55,7 +55,7 @@ template.innerHTML = `<h1>Avatar</h1>
     <h3>Initials</h3>
     <div class="playground">
       <div class="content">
-        <wj-avatar label="Lukáš Ondrejček" initials></wj-avatar>
+        <wje-avatar label="Lukáš Ondrejček" initials></wje-avatar>
       </div>
     </div>
     
@@ -64,23 +64,23 @@ template.innerHTML = `<h1>Avatar</h1>
     <h3>Dropdown</h3>
     <div class="playground">
       <div class="content">
-        <wj-dropdown id="custom-dropdown" placement="right-start" trigger="hover" offset="5">
-          <wj-avatar label="Petr Rahman" initials slot="trigger"></wj-avatar>
-          <wj-menu class="custom-menu" active>
+        <wje-dropdown id="custom-dropdown" placement="right-start" trigger="hover" offset="5">
+          <wje-avatar label="Petr Rahman" initials slot="trigger"></wje-avatar>
+          <wje-menu class="custom-menu" active>
             <h5 style="margin: 0;">Petr Rahman</h5>
             <p class="hint-text">Frontend Developer</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
-          </wj-menu>
-        </wj-dropdown>
+          </wje-menu>
+        </wje-dropdown>
         
-        <wj-dropdown id="custom-dropdown" placement="right-start" offset="5">
-          <wj-avatar label="Petr Rahman" initials slot="trigger"></wj-avatar>
-          <wj-menu class="custom-menu" active>
+        <wje-dropdown id="custom-dropdown" placement="right-start" offset="5">
+          <wje-avatar label="Petr Rahman" initials slot="trigger"></wje-avatar>
+          <wje-menu class="custom-menu" active>
             <h5 style="margin: 0;">Petr Rahman</h5>
             <p class="hint-text">Frontend Developer</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
-          </wj-menu>
-        </wj-dropdown>
+          </wje-menu>
+        </wje-dropdown>
         <style>
           .custom-menu {
             width: 200px;
@@ -95,9 +95,9 @@ template.innerHTML = `<h1>Avatar</h1>
     <h3>Tooltip</h3>
     <div class="playground">
       <div class="content">
-        <wj-tooltip content="Lukáš Ondrejček">
-          <wj-avatar label="Lukáš Ondrejček" initials></wj-avatar>
-        </wj-tooltip>
+        <wje-tooltip content="Lukáš Ondrejček">
+          <wje-avatar label="Lukáš Ondrejček" initials></wje-avatar>
+        </wje-tooltip>
       </div>
     </div>
     
@@ -106,22 +106,22 @@ template.innerHTML = `<h1>Avatar</h1>
     <h3>Group</h3>
     <div class="playground">
       <div class="content">
-        <div class="wj-avatar-group">
-          <wj-avatar size="large">
-            <wj-img src="/assets/img/avatar.svg"></wj-img>
-          </wj-avatar>
-          <wj-avatar size="large">
-            <wj-img src="/assets/img/avatar.svg"></wj-img>
-          </wj-avatar>
-          <wj-avatar size="large">
-            <wj-img src="/assets/img/avatar.svg"></wj-img>
-          </wj-avatar>
+        <div class="wje-avatar-group">
+          <wje-avatar size="large">
+            <wje-img src="/assets/img/avatar.svg"></wje-img>
+          </wje-avatar>
+          <wje-avatar size="large">
+            <wje-img src="/assets/img/avatar.svg"></wje-img>
+          </wje-avatar>
+          <wje-avatar size="large">
+            <wje-img src="/assets/img/avatar.svg"></wje-img>
+          </wje-avatar>
           <style>
-            .wj-avatar-group wj-avatar:not(:first-of-type) {
+            .wje-avatar-group wje-avatar:not(:first-of-type) {
               margin-left: -1rem;      
             }
             
-            .wj-avatar-group wj-avatar::part(native) {
+            .wje-avatar-group wje-avatar::part(native) {
               border: solid 2px #fff;
             }
           </style>
@@ -134,15 +134,15 @@ template.innerHTML = `<h1>Avatar</h1>
     <h3>Custom</h3>
     <div class="playground">
       <div class="content">
-        <wj-avatar id="custom" label="Lukáš Ondrejček" initials></wj-avatar>
+        <wje-avatar id="custom" label="Lukáš Ondrejček" initials></wje-avatar>
         <style>
-          wj-avatar#custom {
-            --wj-avatar-width: 100px;
-            --wj-avatar-height: 100px;
-            --wj-avatar-font-size: 2rem;
-            --wj-avatar-font-weight: 700;
-            --wj-avatar-color: #000 !important;
-            --wj-avatar-background-color: #ff0000 !important;
+          wje-avatar#custom {
+            --wje-avatar-width: 100px;
+            --wje-avatar-height: 100px;
+            --wje-avatar-font-size: 2rem;
+            --wje-avatar-font-weight: 700;
+            --wje-avatar-color: #000 !important;
+            --wje-avatar-background-color: #ff0000 !important;
           }
         </style>
       </div>

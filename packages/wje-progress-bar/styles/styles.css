@@ -1,0 +1,76 @@
+/*
+[ WJ Progress bar ]
+*/
+
+:host(.wje-color-primary) #bar {
+  --wje-progress-bar-color: var(--wje-color-primary);
+}
+
+:host(.wje-color-complete) #bar {
+  --wje-progress-bar-color: var(--wje-color-complete);
+}
+
+:host(.wje-color-success) #bar {
+  --wje-progress-bar-color: var(--wje-color-success);
+}
+
+:host(.wje-color-warning) #bar {
+  --wje-progress-bar-color: var(--wje-color-warning);
+}
+
+:host(.wje-color-danger) #bar {
+  --wje-progress-bar-color: var(--wje-color-danger);
+}
+
+:host(.wje-color-dark) #bar {
+  --wje-progress-bar-color: var(--wje-color-contrast-0);
+}
+
+:host(.wje-color-light) #bar {
+  --wje-progress-bar-color: var(--wje-color-contrast-11);
+}
+
+:host {
+  --wje-progress-bar-color: var(--wje-color-contrast-6);
+  --wje-progress-bar-text-size: .75rem;
+  --wje-progress-bar-text-color: var(--wje-color);
+  .progress {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .slot-wrapper {
+    display: flex;
+    position: absolute;
+    top: 0;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+  }
+  #bar {
+    stroke: var(--wje-progress-bar-color) ;
+  }
+
+  text {
+    transform: rotate(90deg);
+    transform-origin: center;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    font-size: var(--wje-progress-bar-text-size);
+    fill: var(--wje-progress-bar-text-color);
+  }
+}
+
+:host(.wje-color) #bar {
+  stroke: var(--wje-progress-bar-color) ;
+}
+
+::slotted([slot="start"]) {
+  margin-inline: 0 1rem;
+}
+
+::slotted([slot="end"]) {
+  margin-inline: 1rem 0;
+}

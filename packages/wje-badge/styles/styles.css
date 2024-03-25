@@ -1,0 +1,57 @@
+/*
+[ WJ Badge ]
+*/
+
+:host(.wje-color-primary) {
+  --wje-color-base: var(--wje-color-primary) !important;
+  --wje-color-contrast: var(--wje-color-contrast-lowest) !important;
+}
+
+:host(.wje-color-complete) {
+  --wje-color-base: var(--wje-color-complete) !important;
+  --wje-color-contrast: var(--wje-color-contrast-lowest) !important;
+}
+
+:host(.wje-color-success) {
+  --wje-color-base: var(--wje-color-success) !important;
+  --wje-color-contrast: var(--wje-color-contrast-lowest) !important;
+}
+
+:host(.wje-color-warning) {
+  --wje-color-base: var(--wje-color-warning) !important;
+  --wje-color-contrast: var(--wje-color-contrast-high) !important;
+}
+
+:host(.wje-color-danger) {
+  --wje-color-base: var(--wje-color-danger) !important;
+  --wje-color-contrast: var(--wje-color-contrast-lowest) !important;
+}
+
+:host(.wje-color-info) {
+  --wje-color-base: var(--wje-color-info) !important;
+  --wje-color-contrast: var(--wje-color-contrast-lowest) !important;
+}
+
+:host(.wje-color-menu) {
+  --wje-color-base: var(--wje-color-contrast-lower) !important;
+  --wje-color-contrast: var(--wje-color-contrast-high) !important;
+}
+
+:host {
+  --wje-chip-border-radius: 100px;
+
+  text-shadow: none;
+  font-family: var(--wje-font-family);
+  font-weight: 600;
+  background-color: var(--wje-color-contrast-low);
+  font-size: 11px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: var(--wje-color-contrast-high);
+  border-radius: 10px;
+}
+
+:host(.wje-color) {
+  background-color: var(--wje-color-base, red) ;
+  color: var(--wje-color-contrast);
+}

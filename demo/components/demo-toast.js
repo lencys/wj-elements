@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,36 +10,36 @@ template.innerHTML = `<h1>Toast</h1>
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
-        <wj-button id="open-toast">Run</wj-button>
+        <wje-button id="open-toast">Run</wje-button>
 
         <!-- SIMPLE -->
 
-<!--        <wj-toast duration="5000" position="top-left" type="success" design="simple"></wj-toast>-->
-<!--        <wj-toast duration="5000" position="top-right" type="warning" design="simple"></wj-toast>-->
-<!--        <wj-toast duration="5000" position="bottom-left" type="danger" design="simple"></wj-toast>-->
-<!--        <wj-toast duration="5000" position="bottom-right" type="info" design="simple"></wj-toast>-->
+<!--        <wje-toast duration="5000" position="top-left" type="success" design="simple"></wje-toast>-->
+<!--        <wje-toast duration="5000" position="top-right" type="warning" design="simple"></wje-toast>-->
+<!--        <wje-toast duration="5000" position="bottom-left" type="danger" design="simple"></wje-toast>-->
+<!--        <wje-toast duration="5000" position="bottom-right" type="info" design="simple"></wje-toast>-->
 
         <!-- BAR -->
 
-<!--        <wj-toast duration="5000" position="top" type="success" design="bar"></wj-toast>-->
-<!--        <wj-toast duration="5000" position="bottom" type="danger" design="bar"></wj-toast>-->
+<!--        <wje-toast duration="5000" position="top" type="success" design="bar"></wje-toast>-->
+<!--        <wje-toast duration="5000" position="bottom" type="danger" design="bar"></wje-toast>-->
 
         <!-- FLIP -->
 
-<!--        <wj-toast duration="5000" position="top-left" type="success" design="flip"></wj-toast>-->
-<!--        <wj-toast duration="5000" position="top-right" type="warning" design="flip"></wj-toast>-->
-<!--        <wj-toast duration="5000" position="bottom-left" type="danger" design="flip"></wj-toast>-->
-<!--        <wj-toast duration="5000" position="bottom-right" type="info" design="flip"></wj-toast>-->
+<!--        <wje-toast duration="5000" position="top-left" type="success" design="flip"></wje-toast>-->
+<!--        <wje-toast duration="5000" position="top-right" type="warning" design="flip"></wje-toast>-->
+<!--        <wje-toast duration="5000" position="bottom-left" type="danger" design="flip"></wje-toast>-->
+<!--        <wje-toast duration="5000" position="bottom-right" type="info" design="flip"></wje-toast>-->
 
         <!-- CIRCLE -->
 
-        <wj-toast duration="5000" position="top-left" type="success" design="circle"></wj-toast>
-        <wj-toast duration="5000" position="top-right" type="warning" design="circle"></wj-toast>
-        <wj-toast duration="5000" position="bottom-left" type="danger" design="circle"></wj-toast>
-        <wj-toast duration="5000" position="bottom-right" type="info" design="circle"></wj-toast>
+        <wje-toast duration="5000" position="top-left" type="success" design="circle"></wje-toast>
+        <wje-toast duration="5000" position="top-right" type="warning" design="circle"></wje-toast>
+        <wje-toast duration="5000" position="bottom-left" type="danger" design="circle"></wje-toast>
+        <wje-toast duration="5000" position="bottom-right" type="info" design="circle"></wje-toast>
 
         <script>
-          let toast = document.querySelector('wj-toast');
+          let toast = document.querySelector('wje-toast');
           toast.addEventListener('didDismiss', () => {
             toast.isOpen = false;
           });

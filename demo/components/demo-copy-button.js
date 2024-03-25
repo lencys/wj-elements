@@ -1,4 +1,4 @@
-import { WJElement, CopyButton } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 template.innerHTML = `<h1>Copy Button</h1>
@@ -9,7 +9,7 @@ template.innerHTML = `<h1>Copy Button</h1>
       <h2>Basic</h2>
       <div class="playground">
         <div class="content">
-          <wj-copy-button value="I am copy - Value"></wj-copy-button>
+          <wje-copy-button value="I am copy - Value"></wje-copy-button>
         </div>
       </div>
       
@@ -18,7 +18,7 @@ template.innerHTML = `<h1>Copy Button</h1>
       <h2>Custom label</h2>
       <div class="playground">
         <div class="content">
-          <wj-copy-button value="I am copy - Value" label="Kopírovať" label-success="Skopírované"></wj-copy-button>
+          <wje-copy-button value="I am copy - Value" label="Kopírovať" label-success="Skopírované"></wje-copy-button>
         </div>
       </div>
       
@@ -27,8 +27,8 @@ template.innerHTML = `<h1>Copy Button</h1>
       <h2>Element</h2>
       <div class="playground">
         <div class="content">
-          <wj-label id="copy">I am copy - Element</wj-label>
-          <wj-copy-button for="copy"></wj-copy-button>
+          <wje-label id="copy">I am copy - Element</wje-label>
+          <wje-copy-button for="copy"></wje-copy-button>
         </div>
       </div>
       
@@ -38,7 +38,7 @@ template.innerHTML = `<h1>Copy Button</h1>
       <div class="playground">
         <div class="content">
           <input id="copy-input" value="I am copy - Input">
-          <wj-copy-button for="copy-input"></wj-copy-button>
+          <wje-copy-button for="copy-input"></wje-copy-button>
         </div>
       </div>
       
@@ -47,9 +47,9 @@ template.innerHTML = `<h1>Copy Button</h1>
       <h2>WJ Input</h2>
       <div class="playground">
         <div class="content">
-          <wj-input label="Label" id="copy-wj-input" value="I am copy - WJ Input">
-            <wj-copy-button for="copy-wj-input" slot="end"></wj-copy-button>
-          </wj-input>
+          <wje-input label="Label" id="copy-wje-input" value="I am copy - WJ Input">
+            <wje-copy-button for="copy-wje-input" slot="end"></wje-copy-button>
+          </wje-input>
         </div>
       </div>
       
@@ -59,7 +59,7 @@ template.innerHTML = `<h1>Copy Button</h1>
       <div class="playground">
         <div class="content">
           <a href="http://www.google.com" id="copy-href">I am copy - Href</a>
-          <wj-copy-button for="copy-href"></wj-copy-button>
+          <wje-copy-button for="copy-href"></wje-copy-button>
         </div>
       </div>
     </div>`;

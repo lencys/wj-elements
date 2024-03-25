@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -9,16 +9,16 @@ template.innerHTML = `<h1>Card</h1>
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
-        <wj-card>
-          <wj-card-header>
-            <wj-card-subtitle>Subtitle</wj-card-subtitle>
-            <wj-card-title>Title</wj-card-title>
+        <wje-card>
+          <wje-card-header>
+            <wje-card-subtitle>Subtitle</wje-card-subtitle>
+            <wje-card-title>Title</wje-card-title>
 
-          </wj-card-header>
-          <wj-card-content>
+          </wje-card-header>
+          <wje-card-content>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </wj-card-content>
-        </wj-card>
+          </wje-card-content>
+        </wje-card>
       </div>
     </div>
 
@@ -27,32 +27,23 @@ template.innerHTML = `<h1>Card</h1>
     <h2>Separator</h2>
     <div class="playground">
       <div class="content">
-        <wj-card>
-          <wj-card-header separator>
-            <wj-card-subtitle>Subtitle</wj-card-subtitle>
-            <wj-card-title>Title</wj-card-title>
-            <wj-card-controls>
-              <wj-button fill="link" size="small">
-                <wj-icon name="arrows-diagonal" slot="icon-only"></wj-icon>
-              </wj-button>
-              <wj-button fill="link" size="small">
-                <wj-icon name="chevron-up" slot="icon-only"></wj-icon>
-              </wj-button>
-              <wj-button fill="link" size="small">
-                <wj-icon name="rotate-clockwise" slot="icon-only"></wj-icon>
-              </wj-button>
-              <wj-button fill="link" size="small">
-                <wj-icon name="dots" slot="icon-only"></wj-icon>
-              </wj-button>
-              <wj-button fill="link" size="small">
-                <wj-icon name="x" slot="icon-only"></wj-icon>
-              </wj-button>
-            </wj-card-controls>
-          </wj-card-header>
-          <wj-card-content>
+        <wje-card>
+          <wje-card-header separator>
+            <wje-card-subtitle>Subtitle</wje-card-subtitle>
+            <wje-card-title>Title</wje-card-title>
+            <wje-card-controls>
+              <wje-tooltip label="Tooltip" placement="top">
+                <wje-button fill="link" size="small">
+                  <wje-icon name="arrows-diagonal" slot="icon-only"></wje-icon>
+                </wje-button>
+              </wje-tooltip>
+             
+            </wje-card-controls>
+          </wje-card-header>
+          <wje-card-content>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </wj-card-content>
-        </wj-card>
+          </wje-card-content>
+        </wje-card>
       </div>
     </div>
     
@@ -61,38 +52,38 @@ template.innerHTML = `<h1>Card</h1>
     <h2>Dropdown</h2>
     <div class="playground">
       <div class="content">
-        <wj-card>
-          <wj-card-header>
-            <wj-card-subtitle>Subtitle</wj-card-subtitle>
-            <wj-card-title>Title</wj-card-title>
-            <wj-card-controls>
-              <wj-dropdown label="Start" placement="bottom-start" offset="5">
-                <wj-button size="large" slot="trigger" stop-propagation="true" caret>Large</wj-button>
-                <wj-menu variant="context">
-                  <wj-menu-item>
-                    <wj-icon name="plane" slot="start"></wj-icon>
-                    <wj-label>Menu item</wj-label>
-                  </wj-menu-item>
-                  <wj-menu-item>
-                    <wj-icon name="book" slot="start"></wj-icon>
-                    <wj-label>Menu item</wj-label>
-                  </wj-menu-item>
-                  <wj-menu-item>
-                    <wj-icon name="music" slot="start"></wj-icon>
-                    <wj-label>Menu item</wj-label>
-                  </wj-menu-item>
-                  <wj-menu-item>
-                    <wj-icon name="video" slot="start"></wj-icon>
-                    <wj-label>Menu item</wj-label>
-                  </wj-menu-item>
-                </wj-menu>
-              </wj-dropdown>
-            </wj-card-controls>
-          </wj-card-header>
-          <wj-card-content>
+        <wje-card>
+          <wje-card-header>
+            <wje-card-subtitle>Subtitle</wje-card-subtitle>
+            <wje-card-title>Title</wje-card-title>
+            <wje-card-controls>
+              <wje-dropdown label="Start" placement="bottom-start" offset="5">
+                <wje-button size="large" slot="trigger" stop-propagation="true" caret>Large</wje-button>
+                <wje-menu variant="context">
+                  <wje-menu-item>
+                    <wje-icon name="plane" slot="start"></wje-icon>
+                    <wje-label>Menu item</wje-label>
+                  </wje-menu-item>
+                  <wje-menu-item>
+                    <wje-icon name="book" slot="start"></wje-icon>
+                    <wje-label>Menu item</wje-label>
+                  </wje-menu-item>
+                  <wje-menu-item>
+                    <wje-icon name="music" slot="start"></wje-icon>
+                    <wje-label>Menu item</wje-label>
+                  </wje-menu-item>
+                  <wje-menu-item>
+                    <wje-icon name="video" slot="start"></wje-icon>
+                    <wje-label>Menu item</wje-label>
+                  </wje-menu-item>
+                </wje-menu>
+              </wje-dropdown>
+            </wje-card-controls>
+          </wje-card-header>
+          <wje-card-content>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </wj-card-content>
-        </wj-card>
+          </wje-card-content>
+        </wje-card>
       </div>
     </div>
 
@@ -101,19 +92,19 @@ template.innerHTML = `<h1>Card</h1>
     <h2>Image</h2>
     <div class="playground">
       <div class="content">
-        <wj-card>
+        <wje-card>
           <img
             alt="Lorem ipsum"
             src="https://ionicframework.com/docs/img/demos/card-media.png"
           />
-          <wj-card-header>
-            <wj-card-subtitle>Subtitle</wj-card-subtitle>
-            <wj-card-title>Title</wj-card-title>
-          </wj-card-header>
-          <wj-card-content>
+          <wje-card-header>
+            <wje-card-subtitle>Subtitle</wje-card-subtitle>
+            <wje-card-title>Title</wje-card-title>
+          </wje-card-header>
+          <wje-card-content>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </wj-card-content>
-        </wj-card>
+          </wje-card-content>
+        </wje-card>
       </div>
     </div>
 
@@ -122,55 +113,55 @@ template.innerHTML = `<h1>Card</h1>
     <h2>List card</h2>
     <div class="playground">
       <div class="content">
-        <wj-card>
-          <wj-card-header>
-            <wj-card-subtitle>Subtitle</wj-card-subtitle>
-            <wj-card-title>Title</wj-card-title>
-          </wj-card-header>
-          <wj-card-content>
-            <wj-list>
-              <wj-item>
-                <wj-thumbnail slot="start">
+        <wje-card>
+          <wje-card-header>
+            <wje-card-subtitle>Subtitle</wje-card-subtitle>
+            <wje-card-title>Title</wje-card-title>
+          </wje-card-header>
+          <wje-card-content>
+            <wje-list>
+              <wje-item>
+                <wje-thumbnail slot="start">
                   <img
                     alt="Silhouette of mountains"
                     src="/assets/img/thumbnail.svg"
                   />
-                </wj-thumbnail>
-                <wj-label>Item</wj-label>
-              </wj-item>
+                </wje-thumbnail>
+                <wje-label>Item</wje-label>
+              </wje-item>
 
-              <wj-item>
-                <wj-thumbnail slot="start">
+              <wje-item>
+                <wje-thumbnail slot="start">
                   <img
                     alt="Silhouette of mountains"
                     src="/assets/img/thumbnail.svg"
                   />
-                </wj-thumbnail>
-                <wj-label>Item</wj-label>
-              </wj-item>
+                </wje-thumbnail>
+                <wje-label>Item</wje-label>
+              </wje-item>
 
-              <wj-item>
-                <wj-thumbnail slot="start">
+              <wje-item>
+                <wje-thumbnail slot="start">
                   <img
                     alt="Silhouette of mountains"
                     src="/assets/img/thumbnail.svg"
                   />
-                </wj-thumbnail>
-                <wj-label>Item</wj-label>
-              </wj-item>
+                </wje-thumbnail>
+                <wje-label>Item</wje-label>
+              </wje-item>
 
-              <wj-item lines="none">
-                <wj-thumbnail slot="start">
+              <wje-item lines="none">
+                <wje-thumbnail slot="start">
                   <img
                     alt="Silhouette of mountains"
                     src="/assets/img/thumbnail.svg"
                   />
-                </wj-thumbnail>
-                <wj-label>Item</wj-label>
-              </wj-item>
-            </wj-list>
-          </wj-card-content>
-        </wj-card>
+                </wje-thumbnail>
+                <wje-label>Item</wje-label>
+              </wje-item>
+            </wje-list>
+          </wje-card-content>
+        </wje-card>
       </div>
     </div>
 
@@ -180,67 +171,67 @@ template.innerHTML = `<h1>Card</h1>
     <div class="playground">
       <div class="content d-flex col-4">
         <style>
-          .container wj-card {
-            --wj-card-margin-top: 1rem;
-            --wj-card-margin-bottom: 1rem;
-            --wj-card-margin-inline: 1rem;
+          .container wje-card {
+            --wje-card-margin-top: 1rem;
+            --wje-card-margin-bottom: 1rem;
+            --wje-card-margin-inline: 1rem;
           }
         </style>
-        <wj-card color="primary">
-          <wj-card-header>
-            <wj-card-subtitle>Primary</wj-card-subtitle>
-            <wj-card-title>Title</wj-card-title>
-          </wj-card-header>
-          <wj-card-content> Content </wj-card-content>
-        </wj-card>
+        <wje-card color="primary">
+          <wje-card-header>
+            <wje-card-subtitle>Primary</wje-card-subtitle>
+            <wje-card-title>Title</wje-card-title>
+          </wje-card-header>
+          <wje-card-content> Content </wje-card-content>
+        </wje-card>
 
-        <wj-card color="complete">
-          <wj-card-header>
-            <wj-card-subtitle>Complete</wj-card-subtitle>
-            <wj-card-title>Title</wj-card-title>
-          </wj-card-header>
-          <wj-card-content> Content </wj-card-content>
-        </wj-card>
+        <wje-card color="complete">
+          <wje-card-header>
+            <wje-card-subtitle>Complete</wje-card-subtitle>
+            <wje-card-title>Title</wje-card-title>
+          </wje-card-header>
+          <wje-card-content> Content </wje-card-content>
+        </wje-card>
 
-        <wj-card color="success">
-          <wj-card-header>
-            <wj-card-subtitle>Success</wj-card-subtitle>
-            <wj-card-title>Title</wj-card-title>
-          </wj-card-header>
-          <wj-card-content> Content </wj-card-content>
-        </wj-card>
+        <wje-card color="success">
+          <wje-card-header>
+            <wje-card-subtitle>Success</wje-card-subtitle>
+            <wje-card-title>Title</wje-card-title>
+          </wje-card-header>
+          <wje-card-content> Content </wje-card-content>
+        </wje-card>
 
-        <wj-card color="warning">
-          <wj-card-header>
-            <wj-card-subtitle>Warning</wj-card-subtitle>
-            <wj-card-title>Title</wj-card-title>
-          </wj-card-header>
-          <wj-card-content> Content </wj-card-content>
-        </wj-card>
+        <wje-card color="warning">
+          <wje-card-header>
+            <wje-card-subtitle>Warning</wje-card-subtitle>
+            <wje-card-title>Title</wje-card-title>
+          </wje-card-header>
+          <wje-card-content> Content </wje-card-content>
+        </wje-card>
 
-        <wj-card color="danger">
-          <wj-card-header>
-            <wj-card-subtitle>Danger</wj-card-subtitle>
-            <wj-card-title>Title</wj-card-title>
-          </wj-card-header>
-          <wj-card-content> Content </wj-card-content>
-        </wj-card>
+        <wje-card color="danger">
+          <wje-card-header>
+            <wje-card-subtitle>Danger</wje-card-subtitle>
+            <wje-card-title>Title</wje-card-title>
+          </wje-card-header>
+          <wje-card-content> Content </wje-card-content>
+        </wje-card>
 
-        <wj-card color="info">
-          <wj-card-header>
-            <wj-card-subtitle>Info</wj-card-subtitle>
-            <wj-card-title>Title</wj-card-title>
-          </wj-card-header>
-          <wj-card-content> Content </wj-card-content>
-        </wj-card>
+        <wje-card color="info">
+          <wje-card-header>
+            <wje-card-subtitle>Info</wje-card-subtitle>
+            <wje-card-title>Title</wje-card-title>
+          </wje-card-header>
+          <wje-card-content> Content </wje-card-content>
+        </wje-card>
 
-        <wj-card color="menu">
-          <wj-card-header>
-            <wj-card-subtitle>Menu</wj-card-subtitle>
-            <wj-card-title>Title</wj-card-title>
-          </wj-card-header>
-          <wj-card-content> Content </wj-card-content>
-        </wj-card>
+        <wje-card color="menu">
+          <wje-card-header>
+            <wje-card-subtitle>Menu</wje-card-subtitle>
+            <wje-card-title>Title</wje-card-title>
+          </wje-card-header>
+          <wje-card-content> Content </wje-card-content>
+        </wje-card>
       </div>
     </div>
 
@@ -249,26 +240,26 @@ template.innerHTML = `<h1>Card</h1>
     <h2>CSS Custom Vlastnosti</h2>
     <div class="playground">
       <div class="content">
-        <wj-card id="custom">
-          <wj-card-header>
-            <wj-card-subtitle>Subtitle</wj-card-subtitle>
-            <wj-card-title>Title</wj-card-title>
-          </wj-card-header>
-          <wj-card-content>
+        <wje-card id="custom">
+          <wje-card-header>
+            <wje-card-subtitle>Subtitle</wje-card-subtitle>
+            <wje-card-title>Title</wje-card-title>
+          </wje-card-header>
+          <wje-card-content>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </wj-card-content>
-        </wj-card>
+          </wje-card-content>
+        </wje-card>
         <style>
           #custom {
-            --wj-card-margin-top: 1rem;
-            --wj-card-margin-bottom: 1rem;
-            --wj-card-margin-inline: 1rem;
-            --wj-color-contrast: #f0f;
-            --wj-card-border-color: #000;
-            --wj-border-size: 2px;
+            --wje-card-margin-top: 1rem;
+            --wje-card-margin-bottom: 1rem;
+            --wje-card-margin-inline: 1rem;
+            --wje-color-contrast: #f0f;
+            --wje-card-border-color: #000;
+            --wje-border-size: 2px;
             --background-color: #000!important;
-            --wj-font-size: .8rem;
-            --wj-border-radius: 0;
+            --wje-font-size: .8rem;
+            --wje-border-radius: 0;
           }
         </style>
       </div>

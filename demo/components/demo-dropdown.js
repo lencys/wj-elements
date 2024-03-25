@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -12,27 +12,27 @@ template.innerHTML = `
     <div class="playground">
       <div class="content">
         <p style="overflow: hidden; height: 50px;">
-          <wj-dropdown label="Start" placement="bottom-start" offset="5">
-            <wj-button size="large" slot="trigger" stop-propagation="true" caret>Large</wj-button>
-            <wj-menu variant="context">
-              <wj-menu-item>
-                <wj-icon name="plane" slot="start"></wj-icon>
-                <wj-label>Menu item</wj-label>
-              </wj-menu-item>
-              <wj-menu-item>
-                <wj-icon name="book" slot="start"></wj-icon>
-                <wj-label>Menu item</wj-label>
-              </wj-menu-item>
-              <wj-menu-item>
-                <wj-icon name="music" slot="start"></wj-icon>
-                <wj-label>Menu item</wj-label>
-              </wj-menu-item>
-              <wj-menu-item>
-                <wj-icon name="video" slot="start"></wj-icon>
-                <wj-label>Menu item</wj-label>
-              </wj-menu-item>
-            </wj-menu>
-          </wj-dropdown>
+          <wje-dropdown label="Start" placement="bottom-start" offset="5">
+            <wje-button size="large" slot="trigger" stop-propagation="true" caret>Large</wje-button>
+            <wje-menu variant="context">
+              <wje-menu-item>
+                <wje-icon name="plane" slot="start"></wje-icon>
+                <wje-label>Menu item</wje-label>
+              </wje-menu-item>
+              <wje-menu-item>
+                <wje-icon name="book" slot="start"></wje-icon>
+                <wje-label>Menu item</wje-label>
+              </wje-menu-item>
+              <wje-menu-item>
+                <wje-icon name="music" slot="start"></wje-icon>
+                <wje-label>Menu item</wje-label>
+              </wje-menu-item>
+              <wje-menu-item>
+                <wje-icon name="video" slot="start"></wje-icon>
+                <wje-label>Menu item</wje-label>
+              </wje-menu-item>
+            </wje-menu>
+          </wje-dropdown>
         </p>
       </div>
     </div>
@@ -43,27 +43,27 @@ template.innerHTML = `
     <div class="playground">
       <div class="content">
         <p style="overflow: hidden; height: 50px;">
-          <wj-dropdown label="Start" placement="bottom-start" offset="5">
-            <wj-button size="large" slot="trigger" stop-propagation="true" caret>Large</wj-button>
-            <wj-menu variant="context">
-              <wj-menu-item>
-                <wj-icon name="plane" slot="start"></wj-icon>
-                <wj-label>Menu item</wj-label>
-              </wj-menu-item>
-              <wj-menu-item>
-                <wj-icon name="book" slot="start"></wj-icon>
-                <wj-label>Menu item</wj-label>
-              </wj-menu-item>
-              <wj-menu-item>
-                <wj-icon name="music" slot="start"></wj-icon>
-                <wj-label>Menu item</wj-label>
-              </wj-menu-item>
-              <wj-menu-item>
-                <wj-icon name="video" slot="start"></wj-icon>
-                <wj-label>Menu item</wj-label>
-              </wj-menu-item>
-            </wj-menu>
-          </wj-dropdown>
+          <wje-dropdown label="Start" placement="bottom-start" offset="5">
+            <wje-button size="large" slot="trigger" stop-propagation="true" caret>Large</wje-button>
+            <wje-menu variant="context">
+              <wje-menu-item>
+                <wje-icon name="plane" slot="start"></wje-icon>
+                <wje-label>Menu item</wje-label>
+              </wje-menu-item>
+              <wje-menu-item>
+                <wje-icon name="book" slot="start"></wje-icon>
+                <wje-label>Menu item</wje-label>
+              </wje-menu-item>
+              <wje-menu-item>
+                <wje-icon name="music" slot="start"></wje-icon>
+                <wje-label>Menu item</wje-label>
+              </wje-menu-item>
+              <wje-menu-item>
+                <wje-icon name="video" slot="start"></wje-icon>
+                <wje-label>Menu item</wje-label>
+              </wje-menu-item>
+            </wje-menu>
+          </wje-dropdown>
         </p>
       </div>
     </div>

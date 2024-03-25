@@ -1,0 +1,71 @@
+/*
+[ WJ Tab ]
+*/
+
+:host {
+  --wje-font-size: 10px;
+  --wje-tab-text-transfrom: uppercase;
+  --wje-tab-font-weight: 500;
+  --wje-tab-letter-spacing: 0.06em;
+  --wje-tab-padding-inline: 1rem;
+  --wje-tab-padding-top: .75rem;
+  --wje-tab-padding-bottom: .75rem;
+  --wje-tab-color-active: var(--wje-color-primary-11);
+  --wje-tab-color-hover: var(--wje-color-primary-1);
+
+  display: block;
+  position: relative;
+  a {
+    display: block;
+    align-items: center;
+    white-space: nowrap;
+    font-family: var(--wje-font-family-secondary);
+    font-size: var(--wje-font-size);
+    letter-spacing: var(--wje-tab-letter-spacing);
+    text-transform: var(--wje-tab-text-transfrom);
+    font-weight: var(--wje-tab-font-weight);
+    text-decoration: none;
+    padding-inline: var(--wje-tab-padding-inline);
+    padding-top: var(--wje-tab-padding-top);
+    padding-bottom: var(--wje-tab-padding-bottom);
+    color: var(--wje-color);
+
+    & > svg {
+      inline-size: 1.5em;
+      pointer-events: none;
+    }
+
+    &:hover {
+      background: var(--wje-tab-color-hover);
+      &:after {
+        display: block;
+      }
+    }
+
+    &:after {
+      content: " ";
+      display: none;
+      block-size: 0.15rem;
+      writing-mode: var(--wje-tab-writing-mode);
+      background: var(--wje-tab-color-active);
+      position: absolute;
+      bottom: var(--wje-tab-bottom);
+      left: var(--wje-tab-start);
+      right: var(--wje-tab-end);
+      top: var(--wje-tab-top);
+    }
+  }
+}
+
+:host([disabled]) a {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: inherit;
+  &:after {
+    display: none;
+  }
+}
+
+:host([active]) a:after {
+  display: block;
+}

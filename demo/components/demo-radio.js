@@ -1,4 +1,4 @@
-import { WJElement, Radio, RadioGroup } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,12 +10,12 @@ template.innerHTML = `<h1>Radio</h1>
     <h2>Basic</h2>
     <div class="playground">
       <div class="content" style="display: block;">
-        <wj-radio-group value="dog">
-          <wj-radio value="cat">Cat</wj-radio>
-          <wj-radio value="dog">Dog</wj-radio>
-          <wj-radio value="elephant" disabled="">Elephant</wj-radio>
-          <wj-radio indeterminate value="rabbit" >Rabbit</wj-radio>
-        </wj-radio-group>
+        <wje-radio-group value="dog">
+          <wje-radio value="cat">Cat</wje-radio>
+          <wje-radio value="dog">Dog</wje-radio>
+          <wje-radio value="elephant" disabled="">Elephant</wje-radio>
+          <wje-radio indeterminate value="rabbit" >Rabbit</wje-radio>
+        </wje-radio-group>
       </div>
     </div>
     
@@ -24,16 +24,16 @@ template.innerHTML = `<h1>Radio</h1>
     <h2>Inline</h2>
     <div class="playground">
       <div class="content" style="display: block;">
-        <wj-radio-group inline>
-          <wj-radio value="cat">Cat</wj-radio>
-          <wj-radio value="dog">Dog</wj-radio>
-          <wj-radio value="horse">Horse</wj-radio>
-          <wj-radio value="rabbit" >Rabbit</wj-radio>
-          <wj-radio value="hen">Hen</wj-radio>
-          <wj-radio value="goose">Goose</wj-radio>
-          <wj-radio value="duck">Duck</wj-radio>
-          <wj-radio value="pig" >Pig</wj-radio>
-        </wj-radio-group>
+        <wje-radio-group inline>
+          <wje-radio value="cat">Cat</wje-radio>
+          <wje-radio value="dog">Dog</wje-radio>
+          <wje-radio value="horse">Horse</wje-radio>
+          <wje-radio value="rabbit" >Rabbit</wje-radio>
+          <wje-radio value="hen">Hen</wje-radio>
+          <wje-radio value="goose">Goose</wje-radio>
+          <wje-radio value="duck">Duck</wje-radio>
+          <wje-radio value="pig" >Pig</wje-radio>
+        </wje-radio-group>
       </div>
     </div>
     
@@ -42,15 +42,15 @@ template.innerHTML = `<h1>Radio</h1>
     <h2>Colors</h2>
     <div class="playground">
       <div class="content" style="display: block;">
-        <wj-radio-group value="complete">
-          <wj-radio value="default">Default</wj-radio>
-          <wj-radio value="success" color="success">Success</wj-radio>
-          <wj-radio value="primary" color="primary">Primary</wj-radio>
-          <wj-radio value="complete" color="complete">Complete</wj-radio>
-          <wj-radio value="warning" color="warning">Warning</wj-radio>
-          <wj-radio value="danger" color="danger">Danger</wj-radio>
-          <wj-radio value="neutral" color="neutral">Neutral</wj-radio>
-        </wj-radio-group>
+        <wje-radio-group value="complete">
+          <wje-radio value="default">Default</wje-radio>
+          <wje-radio value="success" color="success">Success</wje-radio>
+          <wje-radio value="primary" color="primary">Primary</wje-radio>
+          <wje-radio value="complete" color="complete">Complete</wje-radio>
+          <wje-radio value="warning" color="warning">Warning</wje-radio>
+          <wje-radio value="danger" color="danger">Danger</wje-radio>
+          <wje-radio value="neutral" color="neutral">Neutral</wje-radio>
+        </wje-radio-group>
       </div>
     </div>
     

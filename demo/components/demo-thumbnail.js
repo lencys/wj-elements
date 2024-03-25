@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,9 +10,9 @@ template.innerHTML = `<h1>Thumbnail</h1>
     <h3>Circle</h3>
     <div class="playground">
       <div class="content">
-        <wj-thumbnail circle>
+        <wje-thumbnail circle>
           <img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg" />
-        </wj-thumbnail>
+        </wje-thumbnail>
       </div>
     </div>
     
@@ -21,9 +21,9 @@ template.innerHTML = `<h1>Thumbnail</h1>
     <h3>Basic</h3>
     <div class="playground">
       <div class="content">
-        <wj-thumbnail>
+        <wje-thumbnail>
           <img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg" />
-        </wj-thumbnail>
+        </wje-thumbnail>
       </div>
     </div>
 
@@ -32,12 +32,12 @@ template.innerHTML = `<h1>Thumbnail</h1>
     <h3>Item</h3>
     <div class="playground">
       <div class="content">
-        <wj-item>
-          <wj-thumbnail slot="start">
+        <wje-item>
+          <wje-thumbnail slot="start">
             <img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg" />
-          </wj-thumbnail>
-          <wj-label>Item</wj-label>
-        </wj-item>
+          </wje-thumbnail>
+          <wje-label>Item</wje-label>
+        </wje-item>
       </div>
     </div>
 
@@ -46,15 +46,15 @@ template.innerHTML = `<h1>Thumbnail</h1>
     <h3>Custom</h3>
     <div class="playground">
       <div class="content">
-        <wj-thumbnail class="example-thumbnail">
+        <wje-thumbnail class="example-thumbnail">
           <img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg" />
-        </wj-thumbnail>
+        </wje-thumbnail>
 
         <style>
           .example-thumbnail {
-            --wj-thumbnail-width: 80px !important;
-            --wj-thumbnail-height: 80px !important;
-            --wj-border-radius: 24px !important;
+            --wje-thumbnail-width: 80px !important;
+            --wje-thumbnail-height: 80px !important;
+            --wje-border-radius: 24px !important;
           }
         </style>
       </div>

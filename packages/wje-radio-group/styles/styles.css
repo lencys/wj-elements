@@ -1,0 +1,10 @@
+/*
+[ WJ Radio Group ]
+*/
+
+.wje-inline {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: .5rem;
+}

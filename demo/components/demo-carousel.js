@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,20 +10,20 @@ template.innerHTML = `<h1>Carousel</h1>
     <h2>Basic</h2>
     <div class="playground" style="padding-inline: 2rem;">
       <div class="content">
-        <wj-carousel pagination loop navigation>
-          <wj-carousel-item>
-            <wj-img src="https://picsum.photos/500/375?i=1"></wj-img>
-          </wj-carousel-item>
-          <wj-carousel-item>
-            <wj-img src="https://picsum.photos/500/375?i=2"></wj-img>
-          </wj-carousel-item>
-          <wj-carousel-item>
-            <wj-img src="https://picsum.photos/500/375?i=3"></wj-img>
-          </wj-carousel-item>
-          <wj-carousel-item>
-            <wj-img src="https://picsum.photos/500/375?i=4"></wj-img>
-          </wj-carousel-item>
-        </wj-carousel>
+        <wje-carousel pagination loop navigation>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=1"></wje-img>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=2"></wje-img>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=3"></wje-img>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=4"></wje-img>
+          </wje-carousel-item>
+        </wje-carousel>
       </div>
     </div>
     
@@ -32,23 +32,23 @@ template.innerHTML = `<h1>Carousel</h1>
     <h2>Dialog</h2>
     <div class="playground" style="padding-inline: 2rem;">
       <div class="content">
-        <wj-button dialog="open-modal">Open</wj-button>
-        <wj-dialog trigger="open-modal" title="Title" size="large">
-          <wj-carousel pagination loop>
-            <wj-carousel-item>
-              <wj-img src="https://picsum.photos/500/375?i=1"></wj-img>
-            </wj-carousel-item>
-            <wj-carousel-item>
-              <wj-img src="https://picsum.photos/500/375?i=2"></wj-img>
-            </wj-carousel-item>
-            <wj-carousel-item>
-              <wj-img src="https://picsum.photos/500/375?i=3"></wj-img>
-            </wj-carousel-item>
-            <wj-carousel-item>
-              <wj-img src="https://picsum.photos/500/375?i=4"></wj-img>
-            </wj-carousel-item>
-          </wj-carousel>
-        </wj-dialog>
+        <wje-button dialog="open-modal">Open</wje-button>
+        <wje-dialog trigger="open-modal" title="Title" size="large">
+          <wje-carousel pagination loop>
+            <wje-carousel-item>
+              <wje-img src="https://picsum.photos/500/375?i=1"></wje-img>
+            </wje-carousel-item>
+            <wje-carousel-item>
+              <wje-img src="https://picsum.photos/500/375?i=2"></wje-img>
+            </wje-carousel-item>
+            <wje-carousel-item>
+              <wje-img src="https://picsum.photos/500/375?i=3"></wje-img>
+            </wje-carousel-item>
+            <wje-carousel-item>
+              <wje-img src="https://picsum.photos/500/375?i=4"></wje-img>
+            </wje-carousel-item>
+          </wje-carousel>
+        </wje-dialog>
       </div>
     </div>
     
@@ -57,20 +57,20 @@ template.innerHTML = `<h1>Carousel</h1>
     <h2>Pagination</h2>
     <div class="playground" style="padding-inline: 2rem;">
       <div class="content">
-        <wj-carousel pagination>
-          <wj-carousel-item>
-            <wj-img src="https://picsum.photos/500/375?i=1"></wj-img>
-          </wj-carousel-item>
-          <wj-carousel-item>
-            <wj-img src="https://picsum.photos/500/375?i=2"></wj-img>
-          </wj-carousel-item>
-          <wj-carousel-item>
-            <wj-img src="https://picsum.photos/500/375?i=3"></wj-img>
-          </wj-carousel-item>
-          <wj-carousel-item>
-            <wj-img src="https://picsum.photos/500/375?i=4"></wj-img>
-          </wj-carousel-item>
-        </wj-carousel>
+        <wje-carousel pagination>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=1"></wje-img>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=2"></wje-img>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=3"></wje-img>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=4"></wje-img>
+          </wje-carousel-item>
+        </wje-carousel>
       </div>
     </div>
     
@@ -79,20 +79,20 @@ template.innerHTML = `<h1>Carousel</h1>
     <h2>Thumbnail</h2>
     <div class="playground" style="padding-inline: 2rem;">
       <div class="content">
-        <wj-carousel thumbnails loop navigation>
-          <wj-carousel-item>
-            <wj-img src="https://picsum.photos/500/375?i=1"></wj-img>
-          </wj-carousel-item>
-          <wj-carousel-item>
-            <wj-img src="https://picsum.photos/500/375?i=2"></wj-img>
-          </wj-carousel-item>
-          <wj-carousel-item>
-            <wj-img src="https://picsum.photos/500/375?i=3"></wj-img>
-          </wj-carousel-item>
-          <wj-carousel-item>
-            <wj-img src="https://picsum.photos/500/375?i=4"></wj-img>
-          </wj-carousel-item>
-        </wj-carousel>
+        <wje-carousel thumbnails loop navigation>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=1"></wje-img>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=2"></wje-img>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=3"></wje-img>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=4"></wje-img>
+          </wje-carousel-item>
+        </wje-carousel>
       </div>
     </div>
     
@@ -101,23 +101,23 @@ template.innerHTML = `<h1>Carousel</h1>
     <h2>Spacing</h2>
     <div class="playground" style="padding-inline: 2rem;">
       <div class="content">
-        <wj-carousel pagination loop navigation class="example-spacing">
-          <wj-carousel-item>
-            <wj-img src="https://picsum.photos/500/375?i=1"></wj-img>
-          </wj-carousel-item>
-          <wj-carousel-item>
-            <wj-img src="https://picsum.photos/500/375?i=2"></wj-img>
-          </wj-carousel-item>
-          <wj-carousel-item>
-            <wj-img src="https://picsum.photos/500/375?i=3"></wj-img>
-          </wj-carousel-item>
-          <wj-carousel-item>
-            <wj-img src="https://picsum.photos/500/375?i=4"></wj-img>
-          </wj-carousel-item>
-        </wj-carousel>
+        <wje-carousel pagination loop navigation class="example-spacing">
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=1"></wje-img>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=2"></wje-img>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=3"></wje-img>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=4"></wje-img>
+          </wje-carousel-item>
+        </wje-carousel>
         <style>
           .example-spacing {
-            --wj-spacing-inline: 3rem;
+            --wje-spacing-inline: 3rem;
           }
         </style>
       </div>
@@ -128,27 +128,27 @@ template.innerHTML = `<h1>Carousel</h1>
     <h2>Split</h2>
     <div class="playground" style="padding-inline: 2rem;">
       <div class="content">
-        <wj-carousel pagination class="example-content">
-          <wj-carousel-item>
+        <wje-carousel pagination class="example-content">
+          <wje-carousel-item>
             <div>A</div>
             <div>B</div>
-          </wj-carousel-item>
-          <wj-carousel-item>
+          </wje-carousel-item>
+          <wje-carousel-item>
             <div>C</div>
             <div>D</div>
-          </wj-carousel-item>
-          <wj-carousel-item>
+          </wje-carousel-item>
+          <wje-carousel-item>
             <div>E</div>
             <div>F</div>
-          </wj-carousel-item>
-          <wj-carousel-item>
+          </wje-carousel-item>
+          <wje-carousel-item>
             <div>G</div>
             <div>H</div>
-          </wj-carousel-item>
-        </wj-carousel>
+          </wje-carousel-item>
+        </wje-carousel>
         <style>
           .example-content {
-            --wj-carousel-width: 400px;
+            --wje-carousel-width: 400px;
           }
           
           .example-content div {
@@ -177,30 +177,30 @@ export default class DemoCarousel extends WJElement {
   }
 
   fetchCarousel = () => {
-    return `<wj-carousel pagination loop>
-      <wj-carousel-item>
-        <wj-img src="https://picsum.photos/500/375?i=1"></wj-img>
-      </wj-carousel-item>
-      <wj-carousel-item>
-        <wj-img src="https://picsum.photos/500/375?i=2"></wj-img>
-      </wj-carousel-item>
-      <wj-carousel-item>
-        <wj-img src="https://picsum.photos/500/375?i=3"></wj-img>
-      </wj-carousel-item>
-      <wj-carousel-item>
-        <wj-img src="https://picsum.photos/500/375?i=4"></wj-img>
-      </wj-carousel-item>
-    </wj-carousel>`;
+    return `<wje-carousel pagination loop>
+      <wje-carousel-item>
+        <wje-img src="https://picsum.photos/500/375?i=1"></wje-img>
+      </wje-carousel-item>
+      <wje-carousel-item>
+        <wje-img src="https://picsum.photos/500/375?i=2"></wje-img>
+      </wje-carousel-item>
+      <wje-carousel-item>
+        <wje-img src="https://picsum.photos/500/375?i=3"></wje-img>
+      </wje-carousel-item>
+      <wje-carousel-item>
+        <wje-img src="https://picsum.photos/500/375?i=4"></wje-img>
+      </wje-carousel-item>
+    </wje-carousel>`;
   }
   afterDraw() {
-    this.querySelectorAll("wj-carousel-item").forEach((carousel) => {
-      carousel.addEventListener("wj-carousel-item:click", (event) => {
+    this.querySelectorAll("wje-carousel-item").forEach((carousel) => {
+      carousel.addEventListener("wje-carousel-item:click", (event) => {
         console.log("Clicked", event.target);
       });
     });
 
-    this.querySelector("wj-dialog").addEventListener("wj-dialog:open", (e) => {
-      e.target.querySelector("wj-carousel").goToSlide(0, "auto");
+    this.querySelector("wje-dialog").addEventListener("wje-dialog:open", (e) => {
+      e.target.querySelector("wje-carousel").goToSlide(0, "auto");
     });
   }
 }

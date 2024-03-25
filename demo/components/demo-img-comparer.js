@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,10 +10,10 @@ template.innerHTML = `<h1>Img Comparer</h1>
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
-        <wj-img-comparer>
-          <wj-img src="/demo/assets/img/example-image.svg" slot="before"></wj-img>
-          <wj-img src="/demo/assets/img/example-image2.svg" slot="after"></wj-img>
-        </wj-img-comparer>
+        <wje-img-comparer>
+          <wje-img src="/demo/assets/img/example-image.svg" slot="before"></wje-img>
+          <wje-img src="/demo/assets/img/example-image2.svg" slot="after"></wje-img>
+        </wje-img-comparer>
       </div>
     </div>
   </div>`;

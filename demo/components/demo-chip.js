@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,9 +10,9 @@ template.innerHTML = `<h1>Chip</h1>
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
-        <wj-chip>Default</wj-chip>
-        <wj-chip active>Default</wj-chip>
-        <wj-chip disabled>Disabled</wj-chip>
+        <wje-chip>Default</wje-chip>
+        <wje-chip active>Default</wje-chip>
+        <wje-chip disabled>Disabled</wje-chip>
       </div>
     </div>
 
@@ -21,18 +21,18 @@ template.innerHTML = `<h1>Chip</h1>
     <h2>Slottings</h2>
     <div class="playground">
       <div class="content">
-        <wj-chip>
-          <wj-avatar>
-            <wj-img src="/assets/img/avatar.svg"></wj-img>
-          </wj-avatar>
-          <wj-label>Avatar Chip</wj-label>
-          <wj-icon name="circle-xmark"></wj-icon>
-        </wj-chip>
+        <wje-chip>
+          <wje-avatar>
+            <wje-img src="/assets/img/avatar.svg"></wje-img>
+          </wje-avatar>
+          <wje-label>Avatar Chip</wje-label>
+          <wje-icon name="circle-xmark"></wje-icon>
+        </wje-chip>
 
-        <wj-chip removable>
-          <wj-icon name="location-pin" color="complete"></wj-icon>
-          <wj-label>Icon Chip</wj-label>
-        </wj-chip>
+        <wje-chip removable>
+          <wje-icon name="location-pin" color="complete"></wje-icon>
+          <wje-label>Icon Chip</wje-label>
+        </wje-chip>
       </div>
     </div>
 
@@ -41,14 +41,14 @@ template.innerHTML = `<h1>Chip</h1>
     <h2>Colors</h2>
     <div class="playground">
       <div class="content">
-        <wj-chip>Default</wj-chip>
-        <wj-chip color="primary">Primary</wj-chip>
-        <wj-chip color="complete">Complete</wj-chip>
-        <wj-chip color="success">Success</wj-chip>
-        <wj-chip color="warning">Warning</wj-chip>
-        <wj-chip color="danger">Danger</wj-chip>
-        <wj-chip color="info">Info</wj-chip>
-        <wj-chip color="menu">Menu</wj-chip>
+        <wje-chip>Default</wje-chip>
+        <wje-chip color="primary">Primary</wje-chip>
+        <wje-chip color="complete">Complete</wje-chip>
+        <wje-chip color="success">Success</wje-chip>
+        <wje-chip color="warning">Warning</wje-chip>
+        <wje-chip color="danger">Danger</wje-chip>
+        <wje-chip color="info">Info</wje-chip>
+        <wje-chip color="menu">Menu</wje-chip>
       </div>
     </div>
     
@@ -58,13 +58,13 @@ template.innerHTML = `<h1>Chip</h1>
     <div class="playground">
       <div class="content">
         <style>
-          wj-chip#custom {
-            --wj-chip-background: #00213f;
-            --wj-chip-color: #adefd1;
+          wje-chip#custom {
+            --wje-chip-background: #00213f;
+            --wje-chip-color: #adefd1;
           }
         </style>
         
-        <wj-chip id="custom">Default</wj-chip>
+        <wje-chip id="custom">Default</wje-chip>
       </div>
     </div>
   </div>`;

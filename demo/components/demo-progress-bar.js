@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,7 +10,7 @@ template.innerHTML = `<h1>Progress bar</h1>
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
-        <wj-progress-bar progress="60"></wj-progress-bar>
+        <wje-progress-bar progress="60"></wje-progress-bar>
       </div>
     </div>
 
@@ -20,10 +20,10 @@ template.innerHTML = `<h1>Progress bar</h1>
     <div class="playground">
       <div class="content" style="flex-direction: column;">
         <p>
-          <wj-progress-bar progress="60"></wj-progress-bar>
+          <wje-progress-bar progress="60"></wje-progress-bar>
         </p>
         <p>
-          <wj-progress-bar progress="60" type="circle" radius="30"></wj-progress-bar>
+          <wje-progress-bar progress="60" type="circle" radius="30"></wje-progress-bar>
         </p>
       </div>
     </div>
@@ -33,10 +33,10 @@ template.innerHTML = `<h1>Progress bar</h1>
     <h2>Label</h2>
     <div class="playground">
       <div class="content">
-        <wj-progress-bar progress="60" type="circle" radius="30">
-          <wj-label slot="start">Slot Start</wj-label>
-          <wj-label slot="end">Slot End</wj-label>
-        </wj-progress-bar>
+        <wje-progress-bar progress="60" type="circle" radius="30">
+          <wje-label slot="start">Slot Start</wje-label>
+          <wje-label slot="end">Slot End</wje-label>
+        </wje-progress-bar>
       </div>
     </div>
 
@@ -45,7 +45,7 @@ template.innerHTML = `<h1>Progress bar</h1>
     <h2>Linecap</h2>
     <div class="playground">
       <div class="content" style="flex-direction: column;">
-        <wj-progress-bar progress="80" stroke="12" linecap="round"></wj-progress-bar>
+        <wje-progress-bar progress="80" stroke="12" linecap="round"></wje-progress-bar>
       </div>
     </div>
 
@@ -54,7 +54,7 @@ template.innerHTML = `<h1>Progress bar</h1>
     <h2>Radius</h2>
     <div class="playground">
       <div class="content">
-        <wj-progress-bar progress="60" radius="70" type="circle"></wj-progress-bar>
+        <wje-progress-bar progress="60" radius="70" type="circle"></wje-progress-bar>
       </div>
     </div>
 
@@ -63,7 +63,7 @@ template.innerHTML = `<h1>Progress bar</h1>
     <h2>Stroke</h2>
     <div class="playground">
       <div class="content">
-        <wj-progress-bar progress="60" radius="20" stroke="1"></wj-progress-bar>
+        <wje-progress-bar progress="60" radius="20" stroke="1"></wje-progress-bar>
       </div>
     </div>
 
@@ -72,23 +72,23 @@ template.innerHTML = `<h1>Progress bar</h1>
     <h2>Progress bar with image</h2>
     <div class="playground">
       <div class="content">
-        <wj-progress-bar progress="60" radius="20" stroke="3" color="danger" type="circle" class="example">
-          <wj-thumbnail circle>
+        <wje-progress-bar progress="60" radius="20" stroke="3" color="danger" type="circle" class="example">
+          <wje-thumbnail circle>
             <img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg" />
-          </wj-thumbnail>
+          </wje-thumbnail>
           <style>
-            wj-thumbnail {
-              --wj-border-radius: 50%;
-              --wj-thumbnail-width: 38px;
-              --wj-thumbnail-height: 38px;
+            wje-thumbnail {
+              --wje-border-radius: 50%;
+              --wje-thumbnail-width: 38px;
+              --wje-thumbnail-height: 38px;
             }
             
-            wj-progress-bar.example {
-              --wj-progress-bar-text-color: #fff !important;
+            wje-progress-bar.example {
+              --wje-progress-bar-text-color: #fff !important;
               font-weight: bold;
             }
           </style>
-        </wj-progress-bar>
+        </wje-progress-bar>
       </div>
     </div>
 
@@ -98,28 +98,28 @@ template.innerHTML = `<h1>Progress bar</h1>
     <div class="playground">
       <div class="content">
         <p>
-          <wj-progress-bar progress="60" radius="20"></wj-progress-bar>
+          <wje-progress-bar progress="60" radius="20"></wje-progress-bar>
         </p>
         <p>
-          <wj-progress-bar progress="60" radius="20" color="primary"></wj-progress-bar>
+          <wje-progress-bar progress="60" radius="20" color="primary"></wje-progress-bar>
         </p>
         <p>
-          <wj-progress-bar progress="60" radius="20" color="complete"></wj-progress-bar>
+          <wje-progress-bar progress="60" radius="20" color="complete"></wje-progress-bar>
         </p>
         <p>
-          <wj-progress-bar progress="60" radius="20" color="success"></wj-progress-bar>
+          <wje-progress-bar progress="60" radius="20" color="success"></wje-progress-bar>
         </p>
         <p>
-          <wj-progress-bar progress="60" radius="20" color="warning"></wj-progress-bar>
+          <wje-progress-bar progress="60" radius="20" color="warning"></wje-progress-bar>
         </p>
         <p>
-          <wj-progress-bar progress="60" radius="20" color="danger"></wj-progress-bar>
+          <wje-progress-bar progress="60" radius="20" color="danger"></wje-progress-bar>
         </p>
         <p>
-          <wj-progress-bar progress="60" radius="20" color="dark"></wj-progress-bar>
+          <wje-progress-bar progress="60" radius="20" color="dark"></wje-progress-bar>
         </p>
         <p>
-          <wj-progress-bar progress="60" radius="20" color="light"></wj-progress-bar>
+          <wje-progress-bar progress="60" radius="20" color="light"></wje-progress-bar>
         </p>
       </div>
     </div>

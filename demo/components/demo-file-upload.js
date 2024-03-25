@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,9 +10,9 @@ template.innerHTML = `<h1>File upload</h1>
     <h2>Basic</h2>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content">
-        <wj-file-upload accepted-types="image/*">
+        <wje-file-upload accepted-types="image/*">
           <p>Drag and drop files here</p>
-        </wj-file-upload>
+        </wje-file-upload>
       </div>
     </div>
     
@@ -21,10 +21,10 @@ template.innerHTML = `<h1>File upload</h1>
     <h2>Icon</h2>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content">
-        <wj-file-upload max-file-size="10000" accepted-types="mp4" icon>
-          <wj-icon name="cloud-upload" style="--wj-icon-size: 4rem;"></wj-icon>
+        <wje-file-upload max-file-size="10000" accepted-types="mp4" icon>
+          <wje-icon name="cloud-upload" style="--wje-icon-size: 4rem;"></wje-icon>
           <p>Drag and drop to upload</p>
-        </wj-file-upload>
+        </wje-file-upload>
       </div>
     </div>
   </div>`;

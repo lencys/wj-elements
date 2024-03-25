@@ -1,0 +1,274 @@
+/*
+[ WJ Input ]
+*/
+
+:host {
+  --wje-input-font-family: var(--wje-font-family);
+  --wje-input-background-color: var(--wje-background);
+  --wje-input-color: var(--wje-color);
+  --wje-input-color-invalid: var(--wje-color-danger);
+  --wje-input-border-color: var(--wje-border-color);
+  --wje-input-border-color-focus: var(--wje-color-primary);
+  --wje-input-border-width: 1px;
+  --wje-input-border-style: solid;
+  --wje-input-border-radius: 4px;
+  --wje-input-margin-bottom: .5rem;
+  --wje-input-line-height: 20px;
+  --wje-input-slot-padding-inline: .5rem;
+  width: 100%;
+  margin-bottom: var(--wje-input-margin-bottom);
+  display: block;
+
+  .wrapper {
+    display: flex;
+    width: 100%;
+  }
+  .native-input {
+    .input-wrapper {
+      width: 100%;
+      position: relative;
+    }
+    &.default {
+      background-color: var(--wje-input-background-color);
+      font-family: var(--wje-input-font-family);
+      position: relative;
+      border-radius: var(--wje-input-border-radius);
+      border-width: var(--wje-input-border-width);
+      border-style: var(--wje-input-border-style);
+      border-color: var(--wje-input-border-color);
+      padding-inline: 0;
+      padding-top: .25rem;
+      padding-bottom: .25rem;
+      transition: background-color 0.2s ease;
+      cursor: text;
+      .input-wrapper {
+        margin-inline: .5rem;
+      }
+      &.focused {
+        border-color: var(--wje-input-border-color-focus) !important;
+        label {
+          opacity: 0.67;
+          font-size: 12px;
+          letter-spacing: normal;
+        }
+      }
+      input {
+        border: none;
+        height: 25px;
+        min-height: 25px;
+        padding: 0;
+        margin-top: -4px;
+        background: none;
+        box-shadow: none;
+        width: 100%;
+      }
+      label {
+        margin: 0;
+        display: block;
+        opacity: 1;
+        cursor: text;
+        transition: opacity 0.2s ease;
+        line-height: var(--wje-input-line-height);
+        &.fade {
+          opacity: 0.5;
+          font-size: 12px;
+          letter-spacing: normal;
+        }
+      }
+      ::slotted([slot="start"]) {
+        border-left: none;
+        border-top: none;
+        border-bottom: none;
+      }
+
+      ::slotted([slot="end"]) {
+        border-right: none;
+        border-top: none;
+        border-bottom: none;
+      }
+    }
+    &.standard {
+      background-color: var(--wje-input-background-color);
+      font-family: var(--wje-input-font-family);
+      position: relative;
+      border-radius: var(--wje-input-border-radius);
+      padding-inline: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      transition: background-color 0.2s ease;
+      cursor: text;
+      &.focused {
+        input {
+          border-color: var(--wje-input-border-color-focus) !important;
+        }
+      }
+      input {
+        display: block;
+        min-height: 32px;
+        padding-inline: .5rem;
+        padding-top: 0;
+        padding-bottom: 0;
+        background: none;
+        box-shadow: none;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: var(--wje-input-border-radius);
+        border-width: var(--wje-input-border-width);
+        border-style: var(--wje-input-border-style);
+        border-color: var(--wje-input-border-color);
+      }
+      label {
+        margin: 0;
+        display: inline-block;
+        opacity: 1;
+        cursor: text;
+        transition: opacity 0.2s ease;
+        line-height: var(--wje-input-line-height);
+      }
+      .input-wrapper {
+        &:hover .clear {
+          visibility: visible;
+        }
+      }
+      ::slotted([slot="start"]) {
+        border-right: none;
+        border-radius: var(--wje-input-border-radius) 0 0 var(--wje-input-border-radius);
+      }
+
+      ::slotted([slot="end"]) {
+        border-left: none;
+        border-radius: 0 var(--wje-input-border-radius) var(--wje-input-border-radius) 0;
+      }
+
+      &.has-start input{
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      &.has-end input{
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      .error-message {
+        position: static;
+
+        background: transparent;
+        padding: 0.25rem 0;
+        left: auto;
+        transform: none;
+        color: var(--wje-input-color-invalid);
+        font-size: 12px;
+        line-height: normal;
+      }
+    }
+  }
+}
+
+.clear {
+  visibility: hidden;
+  position: absolute;
+  right: 0;
+  top: 3px;
+  --wje-padding-top: .25rem;
+  --wje-padding-start: .25rem;
+  --wje-padding-end: .25rem;
+  --wje-padding-bottom: .25rem;
+  --wje-button-margin-inline: 0 .25rem;
+}
+
+:host([required]) .input-wrapper::after {
+  color: var(--wje-input-color-invalid);
+  content: "*";
+  font-family: var(--wje-force-mac-font-family);
+  font-size: 20px;
+  position: absolute;
+  right: 10px;
+  top: 2px;
+}
+
+:host([required]) .standard .input-wrapper::after {
+  top: 0;
+}
+
+:host([invalid]) {
+  .error-message {
+    display: block;
+  }
+  .default {
+    label {
+      opacity: 1 !important;
+      color: var(--wje-input-color-invalid) !important;
+      animation-name: shake;
+      animation-duration: 0.4s;
+      animation-iteration-count: 1;
+    }
+  }
+}
+
+::slotted([slot="start"]), ::slotted([slot="end"]) {
+  display: flex;
+  align-items: center;
+  border-width: var(--wje-input-border-width);
+  border-style: var(--wje-input-border-style);
+  border-color: var(--wje-input-border-color);
+  padding-inline: var(--wje-input-slot-padding-inline);
+}
+
+slot[name="start"], slot[name="end"] {
+  display: flex;
+}
+
+input {
+  background-color: var(--wje-input-background-color);
+  border-width: var(--wje-input-border-width);
+  border-style: var(--wje-input-border-style);
+  border-color: var(--wje-input-border-color);
+  font-family: var(--wje-input-font-family);
+  color: var(--wje-input-color);
+  appearance: none;
+  outline: 0;
+  padding: .25rem .5rem;
+  line-height: var(--wje-input-line-height);
+  font-size: 14px;
+  font-weight: normal;
+  vertical-align: middle;
+  min-height: 32px;
+}
+
+.error-message {
+  display: none;
+  position: absolute;
+  width: auto;
+  max-width: 100%;
+  min-width: auto;
+  border-radius: 50px;
+  background: black;
+  padding: .25rem .5rem;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  line-height: normal;
+}
+
+@keyframes shake {
+  8%,
+  41% {
+    transform: translateX(-4px);
+  }
+  25%,
+  58% {
+    transform: translateX(4px);
+  }
+  75% {
+    transform: translateX(-2px);
+  }
+  92% {
+    transform: translateX(2px);
+  }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+}

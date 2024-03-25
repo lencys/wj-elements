@@ -1,0 +1,6610 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-animation/animation.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "This class represents an Animation element, extending the WJElement class.",
+          "name": "Animation",
+          "members": [
+            {
+              "kind": "field",
+              "name": "animations",
+              "description": "Getter for the animations property.",
+              "parameters": [
+                {
+                  "description": "The new value for the animations property.",
+                  "name": "value",
+                  "type": {
+                    "text": "Array"
+                  }
+                }
+              ],
+              "return": {
+                "type": {
+                  "text": "Array"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Animation\"",
+              "description": "The class name for the Animation element."
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "description": "Getter for the CSS stylesheet.",
+              "return": {
+                "type": {
+                  "text": "Object"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes",
+              "description": "Method to setup attributes for the Animation element."
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context",
+                  "description": "The context in which the element is drawn.",
+                  "type": {
+                    "text": "Object"
+                  }
+                },
+                {
+                  "name": "store",
+                  "description": "The store containing the state of the element.",
+                  "type": {
+                    "text": "Object"
+                  }
+                },
+                {
+                  "name": "params",
+                  "description": "The parameters for drawing the element.",
+                  "type": {
+                    "text": "Object"
+                  }
+                }
+              ],
+              "description": "Method to draw the Animation element.",
+              "return": {
+                "type": {
+                  "text": "Object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw",
+              "description": "Method to perform actions after the Animation element is drawn.\nThis method destroys any existing animation, fetches a new animations array,\nselects the appropriate animation, and applies it to the element."
+            },
+            {
+              "kind": "method",
+              "name": "destroyAnimation",
+              "description": "Method to destroy the current animation."
+            },
+            {
+              "kind": "method",
+              "name": "getAnimationsArray",
+              "description": "Method to fetch and parse the animations array from a CSS file.",
+              "return": {
+                "type": {
+                  "text": "Array"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_animations",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Animation",
+            "module": "packages/wj-animation/animation.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-aside/aside.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "This class represents an Aside element, extending the WJElement class.",
+          "name": "Aside",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Aside\"",
+              "description": "The class name for the Aside element ddddd."
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "description": "Getter for the CSS stylesheet.",
+              "return": {
+                "type": {
+                  "text": "Object"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes",
+              "description": "Method to setup attributes for the Aside element."
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context",
+                  "description": "The context in which the element is drawn.",
+                  "type": {
+                    "text": "Object"
+                  }
+                },
+                {
+                  "name": "store",
+                  "description": "The store containing the state of the element.",
+                  "type": {
+                    "text": "Object"
+                  }
+                },
+                {
+                  "name": "params",
+                  "description": "The parameters for drawing the element.",
+                  "type": {
+                    "text": "Object"
+                  }
+                }
+              ],
+              "description": "Method to draw the Aside element.",
+              "return": {
+                "type": {
+                  "text": "Object"
+                }
+              }
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Aside",
+            "module": "packages/wj-aside/aside.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-avatar/avatar.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Avatar",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Avatar\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "isImage"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Avatar",
+            "module": "packages/wj-avatar/avatar.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-badge/badge.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Badge",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Badge\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Badge",
+            "module": "packages/wj-badge/badge.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-breadcrumb/breadcrumb.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Breadcrumb",
+          "members": [
+            {
+              "kind": "field",
+              "name": "showSeparator"
+            },
+            {
+              "kind": "field",
+              "name": "collapsedVariant"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Breadcrumb\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "drawCollapsedIndicator"
+            },
+            {
+              "kind": "method",
+              "name": "collapseDropdown"
+            },
+            {
+              "kind": "method",
+              "name": "collapseButton"
+            },
+            {
+              "kind": "field",
+              "name": "_showSeparator",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "_collapsedVariant"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "show-collapsed-indicator"
+            },
+            {
+              "name": "collapsed"
+            },
+            {
+              "name": "last"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Breadcrumb",
+            "module": "packages/wj-breadcrumb/breadcrumb.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-breadcrumbs/breadcrumbs.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Breadcrumbs",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Breadcrumbs\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "method",
+              "name": "getBreadcrumbs"
+            },
+            {
+              "kind": "field",
+              "name": "last",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Breadcrumbs",
+            "module": "packages/wj-breadcrumbs/breadcrumbs.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-button/button.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Button",
+          "members": [
+            {
+              "kind": "field",
+              "name": "depandencies",
+              "type": {
+                "text": "object"
+              },
+              "default": "{\n        \"wj-icon\": Icon\n    }"
+            },
+            {
+              "kind": "field",
+              "name": "active"
+            },
+            {
+              "kind": "field",
+              "name": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "fill"
+            },
+            {
+              "kind": "field",
+              "name": "outline"
+            },
+            {
+              "kind": "field",
+              "name": "stopPropagation"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Button\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "method",
+              "name": "beforeDisconnect"
+            },
+            {
+              "kind": "field",
+              "name": "eventDialogOpen"
+            },
+            {
+              "kind": "field",
+              "name": "toggleStates"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Button",
+            "module": "packages/wj-button/button.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-button-group/button-group.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ButtonGroup",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"ButtonGroup\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "findButton",
+              "parameters": [
+                {
+                  "name": "el"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ButtonGroup",
+            "module": "packages/wj-button-group/button-group.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-card/card.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Card",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Card\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Card",
+            "module": "packages/wj-card/card.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-card-content/card-content.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "CardContent",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"CardContent\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CardContent",
+            "module": "packages/wj-card-content/card-content.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-card-controls/card-controls.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "CardControls",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"CardControls\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CardControls",
+            "module": "packages/wj-card-controls/card-controls.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-card-header/card-header.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "CardHeader",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"CardHeader\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CardHeader",
+            "module": "packages/wj-card-header/card-header.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-card-subtitle/card-subtitle.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "CardSubtitle",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"CardTitle\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "beforeDraw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CardSubtitle",
+            "module": "packages/wj-card-subtitle/card-subtitle.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-card-title/card-title.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "CardTitle",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"CardTitle\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CardTitle",
+            "module": "packages/wj-card-title/card-title.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-carousel/carousel.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Carousel",
+          "members": [
+            {
+              "kind": "field",
+              "name": "activeSlide"
+            },
+            {
+              "kind": "field",
+              "name": "pagination",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "navigation",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "thumbnails",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "loop",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Carousel\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "beforeDraw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "method",
+              "name": "setIntersectionObserver"
+            },
+            {
+              "kind": "method",
+              "name": "goToSlide",
+              "parameters": [
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "behavior",
+                  "default": "\"smooth\""
+                },
+                {
+                  "name": "next",
+                  "default": "true"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "cloneFirstAndLastItems"
+            },
+            {
+              "kind": "method",
+              "name": "removeActiveSlide"
+            },
+            {
+              "kind": "method",
+              "name": "changePagination"
+            },
+            {
+              "kind": "method",
+              "name": "changeThumbnails"
+            },
+            {
+              "kind": "method",
+              "name": "createNextButton"
+            },
+            {
+              "kind": "method",
+              "name": "createPreviousButton"
+            },
+            {
+              "kind": "method",
+              "name": "createPagination"
+            },
+            {
+              "kind": "method",
+              "name": "createThumbnails"
+            },
+            {
+              "kind": "method",
+              "name": "nextSlide"
+            },
+            {
+              "kind": "method",
+              "name": "previousSlide"
+            },
+            {
+              "kind": "method",
+              "name": "getSlides"
+            },
+            {
+              "kind": "method",
+              "name": "getSlidesWithClones"
+            },
+            {
+              "kind": "method",
+              "name": "canGoNext"
+            },
+            {
+              "kind": "method",
+              "name": "canGoPrevious"
+            },
+            {
+              "kind": "field",
+              "name": "slidePerPage",
+              "type": {
+                "text": "number"
+              },
+              "default": "1"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "active-slide"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Carousel",
+            "module": "packages/wj-carousel/carousel.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-carousel-item/carousel-item.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "CarouselItem",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"CarouselItem\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CarouselItem",
+            "module": "packages/wj-carousel-item/carousel-item.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-checkbox/checkbox.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Checkbox",
+          "members": [
+            {
+              "kind": "field",
+              "name": "checked"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Checkbox\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "field",
+              "name": "inputEvent"
+            },
+            {
+              "kind": "field",
+              "name": "_checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "checked"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Checkbox",
+            "module": "packages/wj-checkbox/checkbox.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-chip/chip.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Chip",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Chip\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Chip",
+            "module": "packages/wj-chip/chip.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-col/col.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Col",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Col\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "beforeDraw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Col",
+            "module": "packages/wj-col/col.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-color-picker/color-picker.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ColorPicker",
+          "members": [
+            {
+              "kind": "field",
+              "name": "markerPosition"
+            },
+            {
+              "kind": "field",
+              "name": "swatches"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"ColorPicker\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "createSwatches",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setSliders",
+              "parameters": [
+                {
+                  "name": "color"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "method",
+              "name": "dimension"
+            },
+            {
+              "kind": "field",
+              "name": "moveMarker"
+            },
+            {
+              "kind": "method",
+              "name": "getPointerPosition",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setMarkerPosition",
+              "parameters": [
+                {
+                  "name": "x"
+                },
+                {
+                  "name": "y"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setColorAtPosition",
+              "parameters": [
+                {
+                  "name": "x"
+                },
+                {
+                  "name": "y"
+                },
+                {
+                  "name": "alpha",
+                  "default": "100"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "setMarkerPositionByColor"
+            },
+            {
+              "kind": "field",
+              "name": "setColor"
+            },
+            {
+              "kind": "field",
+              "name": "setHue"
+            },
+            {
+              "kind": "field",
+              "name": "setAlpha"
+            },
+            {
+              "kind": "field",
+              "name": "getHSVA"
+            },
+            {
+              "kind": "field",
+              "name": "_markerPosition",
+              "type": {
+                "text": "object"
+              },
+              "default": "{\n            markerX: \"0\",\n            markerY: \"0\"\n        }"
+            },
+            {
+              "kind": "field",
+              "name": "_swatches",
+              "type": {
+                "text": "array"
+              },
+              "default": "[\n            '#264653',\n            '#2a9d8f',\n            '#e9c46a',\n            'rgb(244,162,97)',\n            '#e76f51',\n            '#d62828',\n            'navy',\n            '#07b',\n            '#0096c7',\n            '#00b4d880',\n            'rgba(0,119,182,0.8)'\n        ]"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ColorPicker",
+            "module": "packages/wj-color-picker/color-picker.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-container/container.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Container",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Container\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Container",
+            "module": "packages/wj-container/container.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-copy-button/copy-button.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "CopyButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"CopyButton\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw"
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "field",
+              "name": "clicked"
+            },
+            {
+              "kind": "field",
+              "name": "keydown"
+            },
+            {
+              "kind": "field",
+              "name": "focused"
+            },
+            {
+              "kind": "field",
+              "name": "blurred"
+            },
+            {
+              "kind": "field",
+              "name": "copied"
+            },
+            {
+              "kind": "method",
+              "name": "copy",
+              "parameters": [
+                {
+                  "name": "button"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "copyTarget",
+              "parameters": [
+                {
+                  "name": "content"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "timeout",
+              "type": {
+                "text": "number"
+              },
+              "default": "1000"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CopyButton",
+            "module": "packages/wj-copy-button/copy-button.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-dialog/dialog.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Dialog",
+          "members": [
+            {
+              "kind": "field",
+              "name": "placement"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Dialog\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Dialog",
+            "module": "packages/wj-dialog/dialog.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-divider/divider.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Divider",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Divider\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Divider",
+            "module": "packages/wj-divider/divider.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-dropdown/dropdown.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Dropdown",
+          "members": [
+            {
+              "kind": "field",
+              "name": "trigger"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Dropdown\""
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "active"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Dropdown",
+            "module": "packages/wj-dropdown/dropdown.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-file-upload/file-upload.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "FileUpload",
+          "members": [
+            {
+              "kind": "field",
+              "name": "acceptedTypes"
+            },
+            {
+              "kind": "field",
+              "name": "chunkSize"
+            },
+            {
+              "kind": "field",
+              "name": "maxFileSize"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"FileUpload\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "method",
+              "name": "createButton"
+            },
+            {
+              "kind": "method",
+              "name": "handleSubmit",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "handleDrop"
+            },
+            {
+              "kind": "field",
+              "name": "handleInputChange"
+            },
+            {
+              "kind": "method",
+              "name": "uploadFiles",
+              "parameters": [
+                {
+                  "name": "files"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "createPreview",
+              "parameters": [
+                {
+                  "name": "file"
+                },
+                {
+                  "name": "reader"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "createThumbnail",
+              "parameters": [
+                {
+                  "name": "file"
+                },
+                {
+                  "name": "reader"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "assertFilesValid",
+              "parameters": [
+                {
+                  "name": "file"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "updateStatusMessage",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "updateProgressBar",
+              "parameters": [
+                {
+                  "name": "value"
+                },
+                {
+                  "name": "id"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "showPendingState"
+            },
+            {
+              "kind": "method",
+              "name": "resetFormState"
+            },
+            {
+              "kind": "field",
+              "name": "localizer",
+              "default": "new Localizer(this)"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "FileUpload",
+            "module": "packages/wj-file-upload/file-upload.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-file-upload-item/file-upload-item.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "FileUploadItem",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"FileUploadItem\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw"
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "field",
+              "name": "onDelete"
+            },
+            {
+              "kind": "field",
+              "name": "localizer",
+              "default": "new Localizer(this)"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "uploaded"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "FileUploadItem",
+            "module": "packages/wj-file-upload-item/file-upload-item.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-footer/footer.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Footer",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Footer\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Footer",
+            "module": "packages/wj-footer/footer.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-form/form.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Form",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Form\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Form",
+            "module": "packages/wj-form/form.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-format-digital/format-digital.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "FormatDigital",
+          "members": [
+            {
+              "kind": "field",
+              "name": "unit",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"FormatDigital\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "beforeDraw"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "localizer",
+              "default": "new Localizer(this)"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "FormatDigital",
+            "module": "packages/wj-format-digital/format-digital.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-grid/grid.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Grid",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Grid\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Grid",
+            "module": "packages/wj-grid/grid.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-header/header.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Header",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Header\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Header",
+            "module": "packages/wj-header/header.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-icon/icon.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "IconElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Icon\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "IconElement",
+            "module": "packages/wj-icon/icon.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-icon-picker/icon-picker.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "IconPicker",
+          "members": [
+            {
+              "kind": "field",
+              "name": "markerPosition"
+            },
+            {
+              "kind": "field",
+              "name": "swatches"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"IconPicker\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "beforeDraw"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "method",
+              "name": "initial"
+            },
+            {
+              "kind": "method",
+              "name": "setupInfiniteScroll"
+            },
+            {
+              "kind": "method",
+              "name": "createIconItem",
+              "parameters": [
+                {
+                  "name": "i"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "createOption",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getCategory",
+              "parameters": [
+                {
+                  "name": "tags"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getTags"
+            },
+            {
+              "kind": "field",
+              "name": "searchIcon"
+            },
+            {
+              "kind": "method",
+              "name": "clearIconsContainer"
+            },
+            {
+              "kind": "field",
+              "name": "onClose"
+            },
+            {
+              "kind": "field",
+              "name": "getTagsUrl"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "number"
+              },
+              "default": "48"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "IconPicker",
+            "module": "packages/wj-icon-picker/icon-picker.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-img/img.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Img",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Img\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Img",
+            "module": "packages/wj-img/img.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-img-comparer/img-comparer.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ImgComparer",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"ImgComparer\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "handleDrag"
+            },
+            {
+              "kind": "field",
+              "name": "clamp"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ImgComparer",
+            "module": "packages/wj-img-comparer/img-comparer.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-infinite-scroll/infinite-scroll.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "InfiniteScroll",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"InfiniteScroll\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "beforeDraw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "field",
+              "name": "scrollEvent"
+            },
+            {
+              "kind": "field",
+              "name": "unScrollEvent"
+            },
+            {
+              "kind": "field",
+              "name": "onScroll"
+            },
+            {
+              "kind": "method",
+              "name": "getPages",
+              "parameters": [
+                {
+                  "name": "page"
+                }
+              ],
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hideLoader"
+            },
+            {
+              "kind": "method",
+              "name": "showLoader"
+            },
+            {
+              "kind": "method",
+              "name": "hasMorePages",
+              "parameters": [
+                {
+                  "name": "page"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "loadPages",
+              "parameters": [
+                {
+                  "name": "page"
+                }
+              ],
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "totalPages",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "isLoading",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "interpolate",
+              "default": "function(params) {\n            let template = this;\n            let keys = template.match(/\\{{.*?\\}}/g);\n\n            if(keys) {\n                for (let key of keys) {\n                    let cleanKey = key.replace('{{', '').replace('}}', '');\n                    let val = '';\n\n                    cleanKey.split('.').forEach(k => {\n                        val = (val == '') ?  params[k] : val[k];\n                    });\n\n                    template = template.replace(key, val);\n                }\n            }\n            return template;\n        }"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "InfiniteScroll",
+            "module": "packages/wj-infinite-scroll/infinite-scroll.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-input/input.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Input",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value"
+            },
+            {
+              "kind": "field",
+              "name": "customErrorDisplay",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "validateOnChange",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "invalid",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "validity",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "validationMessage",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "willValidate",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "checkValidity"
+            },
+            {
+              "kind": "method",
+              "name": "reportValidity"
+            },
+            {
+              "kind": "field",
+              "name": "formAssociated",
+              "type": {
+                "text": "boolean"
+              },
+              "static": true,
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Input\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "method",
+              "name": "validateInput"
+            },
+            {
+              "kind": "method",
+              "name": "hasSlot",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "slotName",
+                  "default": "null"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "pristine",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "internals"
+            }
+          ],
+          "events": [
+            {
+              "name": "invalid",
+              "type": {
+                "text": "Event"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Input",
+            "module": "packages/wj-input/input.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-input-file/input-file.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "InputFile",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Input\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "InputFile",
+            "module": "packages/wj-input-file/input-file.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-label/label.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Label",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Label\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "beforeDraw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Label",
+            "module": "packages/wj-label/label.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-item/item.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Item",
+          "members": [
+            {
+              "kind": "method",
+              "name": "isClickable"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Item\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "beforeDraw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "hostContext"
+            },
+            {
+              "kind": "field",
+              "name": "labelColorStyles",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "itemStyles",
+              "default": "new Map()"
+            },
+            {
+              "kind": "field",
+              "name": "inheritedAriaAttributes",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "multipleInputs",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "focusable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "button",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "detailIcon",
+              "default": "``"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "counter",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "routerDirection",
+              "type": {
+                "text": "string"
+              },
+              "default": "'forward'"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "default": "'button'"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Item",
+            "module": "packages/wj-item/item.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-list/list.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "List",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"List\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "List",
+            "module": "packages/wj-list/list.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-main/main.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Main",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Main\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Main",
+            "module": "packages/wj-main/main.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-masonry/masonry.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Masonry",
+          "members": [
+            {
+              "kind": "field",
+              "name": "maxColWidth"
+            },
+            {
+              "kind": "field",
+              "name": "cols"
+            },
+            {
+              "kind": "field",
+              "name": "gap"
+            },
+            {
+              "kind": "field",
+              "name": "debounce"
+            },
+            {
+              "kind": "field",
+              "name": "columns",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "debounceId",
+              "default": "`layout_${Math.random()}`"
+            },
+            {
+              "kind": "field",
+              "name": "ro",
+              "default": "undefined"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Masonry\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "field",
+              "name": "onSlotChange"
+            },
+            {
+              "kind": "field",
+              "name": "onResize"
+            },
+            {
+              "kind": "method",
+              "name": "renderCols",
+              "parameters": [
+                {
+                  "name": "colCount"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "scheduleLayout",
+              "parameters": [
+                {
+                  "name": "ms",
+                  "default": "this.debounce"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "layout"
+            },
+            {
+              "kind": "field",
+              "name": "currentRequestAnimationFrameCallback",
+              "default": "undefined"
+            },
+            {
+              "kind": "field",
+              "name": "unsetSlot",
+              "default": "undefined"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "max-col-width"
+            },
+            {
+              "name": "gap"
+            },
+            {
+              "name": "cols"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Masonry",
+            "module": "packages/wj-masonry/masonry.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-menu/menu.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Menu",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Menu\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "method",
+              "name": "beforeDisconnect"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "active"
+            },
+            {
+              "name": "collapse"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Menu",
+            "module": "packages/wj-menu/menu.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-menu-button/menu-button.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MenuButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"MenuButton\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MenuButton",
+            "module": "packages/wj-menu-button/menu-button.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-menu-item/menu-item.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MenuItem",
+          "members": [
+            {
+              "kind": "field",
+              "name": "placement",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "offset",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "collapse",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"MenuItem\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "beforeDraw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "method",
+              "name": "collapseItem",
+              "parameters": [
+                {
+                  "name": "native"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "dispatchMove"
+            },
+            {
+              "kind": "field",
+              "name": "dispatchReposition"
+            },
+            {
+              "kind": "method",
+              "name": "showSubmenu"
+            },
+            {
+              "kind": "method",
+              "name": "hideSubmenu"
+            },
+            {
+              "kind": "method",
+              "name": "submenuActivated",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "beforeDisconnect"
+            },
+            {
+              "kind": "field",
+              "name": "hasSubmenu"
+            },
+            {
+              "kind": "field",
+              "name": "_collapsible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MenuItem",
+            "module": "packages/wj-menu-item/menu-item.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-menu-label/menu-label.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MenuLabel",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"MenuLabel\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "hasSubmenu"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MenuLabel",
+            "module": "packages/wj-menu-label/menu-label.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-options/options.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Options",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Options\""
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "beforeDraw"
+            },
+            {
+              "kind": "method",
+              "name": "getPages",
+              "parameters": [
+                {
+                  "name": "page"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Options",
+            "module": "packages/wj-options/options.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-option/option.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Option",
+          "members": [
+            {
+              "kind": "field",
+              "name": "selected"
+            },
+            {
+              "kind": "field",
+              "name": "value"
+            },
+            {
+              "kind": "field",
+              "name": "text"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Option\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Option",
+            "module": "packages/wj-option/option.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-panel/panel.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Panel",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Panel\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "method",
+              "name": "getBreadcrumbs"
+            },
+            {
+              "kind": "field",
+              "name": "last",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Panel",
+            "module": "packages/wj-panel/panel.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-popup/popup.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Popup",
+          "members": [
+            {
+              "kind": "field",
+              "name": "manual"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Popup\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setAnchor"
+            },
+            {
+              "kind": "method",
+              "name": "showHide"
+            },
+            {
+              "kind": "method",
+              "name": "reposition"
+            },
+            {
+              "kind": "method",
+              "name": "show"
+            },
+            {
+              "kind": "method",
+              "name": "hide"
+            },
+            {
+              "kind": "method",
+              "name": "onHide"
+            },
+            {
+              "kind": "field",
+              "name": "_manual",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "active"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Popup",
+            "module": "packages/wj-popup/popup.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-progress-bar/progress-bar.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ProgressBar",
+          "members": [
+            {
+              "kind": "field",
+              "name": "radius"
+            },
+            {
+              "kind": "field",
+              "name": "diameter",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "stroke"
+            },
+            {
+              "kind": "field",
+              "name": "linecap",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"ProgressBar\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getCircleDasharray",
+              "parameters": [
+                {
+                  "name": "radius",
+                  "default": "70"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getCircleDashoffset",
+              "parameters": [
+                {
+                  "name": "progress",
+                  "default": "0"
+                },
+                {
+                  "name": "radius"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "timerInterval",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "timeLimit",
+              "type": {
+                "text": "number"
+              },
+              "default": "60"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "progress"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ProgressBar",
+            "module": "packages/wj-progress-bar/progress-bar.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-radio/radio.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Radio",
+          "members": [
+            {
+              "kind": "field",
+              "name": "checked"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Radio\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "field",
+              "name": "inputEvent"
+            },
+            {
+              "kind": "field",
+              "name": "_checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "checked"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Radio",
+            "module": "packages/wj-radio/radio.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-radio-group/radio-group.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "RadioGroup",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"RadioGroup\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "method",
+              "name": "getRadioByValue",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "removeCheck"
+            },
+            {
+              "kind": "method",
+              "name": "setRadioToChekced",
+              "parameters": [
+                {
+                  "name": "radio"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getAllElements"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "RadioGroup",
+            "module": "packages/wj-radio-group/radio-group.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-rate/rate.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Rate",
+          "members": [
+            {
+              "kind": "field",
+              "name": "precision"
+            },
+            {
+              "kind": "field",
+              "name": "max"
+            },
+            {
+              "kind": "field",
+              "name": "icons"
+            },
+            {
+              "kind": "field",
+              "name": "value"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Rate\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "method",
+              "name": "createIcons",
+              "parameters": [
+                {
+                  "name": "i"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "changeRate"
+            },
+            {
+              "kind": "field",
+              "name": "onMouseEnter"
+            },
+            {
+              "kind": "field",
+              "name": "onMouseLeave"
+            },
+            {
+              "kind": "field",
+              "name": "onMouseMove"
+            },
+            {
+              "kind": "field",
+              "name": "onTouchStart"
+            },
+            {
+              "kind": "field",
+              "name": "onTouchEnd"
+            },
+            {
+              "kind": "field",
+              "name": "onTouchMove"
+            },
+            {
+              "kind": "field",
+              "name": "onClick"
+            },
+            {
+              "kind": "method",
+              "name": "getIcons",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getValueFromXPosition",
+              "parameters": [
+                {
+                  "name": "coordinate"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "roundToPrecision",
+              "parameters": [
+                {
+                  "name": "numberToRound"
+                },
+                {
+                  "name": "precision",
+                  "default": "0.5"
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "is-hover"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Rate",
+            "module": "packages/wj-rate/rate.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-relative-time/relative-time.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "RelativeTime",
+          "members": [
+            {
+              "kind": "field",
+              "name": "dateISO",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"RelativeTime\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getRelativeTimeString",
+              "parameters": [
+                {
+                  "name": "date"
+                },
+                {
+                  "name": "lang",
+                  "default": "navigator.language"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "isISODate",
+              "parameters": [
+                {
+                  "name": "str"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "localizer",
+              "default": "new Localizer(this)"
+            }
+          ],
+          "attributes": [
+            {
+              "name": ""
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "RelativeTime",
+            "module": "packages/wj-relative-time/relative-time.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-route/route.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Route",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Route\""
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Route",
+            "module": "packages/wj-route/route.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-router/router.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Routerx",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Routerx\""
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "method",
+              "name": "parseElement",
+              "parameters": [
+                {
+                  "name": "element"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "setBreadcrumb"
+            },
+            {
+              "kind": "field",
+              "name": "resetScrollPosition"
+            },
+            {
+              "kind": "method",
+              "name": "beforeDisconnect"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Routerx",
+            "module": "packages/wj-router/router.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-router-link/router-link.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "RouterLink",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"RouterLink\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "beforeDisconnect"
+            },
+            {
+              "kind": "field",
+              "name": "unbindRouterLinks"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "RouterLink",
+            "module": "packages/wj-router-link/router-link.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-row/row.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Row",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Row\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "beforeDraw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Row",
+            "module": "packages/wj-row/row.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-select/select.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Select",
+          "members": [
+            {
+              "kind": "field",
+              "name": "selected"
+            },
+            {
+              "kind": "field",
+              "name": "trigger"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Select\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "optionChange"
+            },
+            {
+              "kind": "method",
+              "name": "getAllOptions"
+            },
+            {
+              "kind": "method",
+              "name": "getSelectedOptions"
+            },
+            {
+              "kind": "method",
+              "name": "getSelected",
+              "parameters": [
+                {
+                  "name": "option"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "selectionChanged",
+              "parameters": [
+                {
+                  "name": "option",
+                  "default": "null"
+                },
+                {
+                  "name": "length",
+                  "default": "0"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "selections",
+              "parameters": [
+                {
+                  "name": "option"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "counter"
+            },
+            {
+              "kind": "method",
+              "name": "getChip",
+              "parameters": [
+                {
+                  "name": "option"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "removeChip"
+            },
+            {
+              "kind": "field",
+              "name": "_selected",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "counterEl",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "active"
+            },
+            {
+              "name": "value"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Select",
+            "module": "packages/wj-select/select.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-slider/slider.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Slider",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value"
+            },
+            {
+              "kind": "field",
+              "name": "min"
+            },
+            {
+              "kind": "field",
+              "name": "max"
+            },
+            {
+              "kind": "field",
+              "name": "step"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Slider\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw"
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "method",
+              "name": "dispatchInit",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "dispatchMove",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "dispatchChange",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "setHandlePosition"
+            },
+            {
+              "kind": "field",
+              "name": "setBubble"
+            },
+            {
+              "kind": "method",
+              "name": "getPercentage",
+              "parameters": [
+                {
+                  "name": "value",
+                  "default": "0"
+                },
+                {
+                  "name": "min"
+                },
+                {
+                  "name": "max"
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "wj:slider-init",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "wj:slider-move",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "wj:slider-change",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "max"
+            },
+            {
+              "name": "value"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Slider",
+            "module": "packages/wj-slider/slider.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-split-view/split-view.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SplitView",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"SplitView\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "field",
+              "name": "handleDrag"
+            },
+            {
+              "kind": "method",
+              "name": "detectSize"
+            },
+            {
+              "kind": "method",
+              "name": "percentageToPixels",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "pixelsToPercentage",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SplitView",
+            "module": "packages/wj-split-view/split-view.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-tab/tab.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Tab",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Tab\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "field",
+              "name": "last",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Tab",
+            "module": "packages/wj-tab/tab.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-tab-group/tab-group.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TabGroup",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"TabGroup\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "method",
+              "name": "removeActiveTab"
+            },
+            {
+              "kind": "method",
+              "name": "setActiveTab",
+              "parameters": [
+                {
+                  "name": "tab"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getActiveTab"
+            },
+            {
+              "kind": "method",
+              "name": "getTabAll"
+            },
+            {
+              "kind": "method",
+              "name": "getPanelAll"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TabGroup",
+            "module": "packages/wj-tab-group/tab-group.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-tab-panel/tab-panel.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TabPanel",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"TabPanel\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TabPanel",
+            "module": "packages/wj-tab-panel/tab-panel.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-textarea/textarea.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Textarea",
+          "members": [
+            {
+              "kind": "field",
+              "name": "checked"
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Textarea\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "field",
+              "name": "setTextareaHeight"
+            },
+            {
+              "kind": "field",
+              "name": "counter"
+            },
+            {
+              "kind": "field",
+              "name": "_checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "checked"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Textarea",
+            "module": "packages/wj-textarea/textarea.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-thumbnail/thumbnail.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Thumbnail",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Thumbnail\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "beforeDraw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Thumbnail",
+            "module": "packages/wj-thumbnail/thumbnail.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-toast/toast.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Toast",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Toast\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Toast",
+            "module": "packages/wj-toast/toast.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-toggle/toggle.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Toggle",
+          "members": [
+            {
+              "kind": "field",
+              "name": "disabled",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Toggle\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Toggle",
+            "module": "packages/wj-toggle/toggle.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-toolbar/toolbar.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Toolbar",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Toolbar\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "mixins": [
+            {
+              "name": "withRouterLinks",
+              "module": "/packages/wj-router/plugins/slick-router/middlewares/router-links.js"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Toolbar",
+            "module": "packages/wj-toolbar/toolbar.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-toolbar-action/toolbar-action.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ToolbarAction",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"ToolbarAction\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getActions"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ToolbarAction",
+            "module": "packages/wj-toolbar-action/toolbar-action.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-tooltip/tooltip.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Tooltip",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Tooltip\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "afterDraw"
+            },
+            {
+              "kind": "field",
+              "name": "onShow"
+            },
+            {
+              "kind": "field",
+              "name": "onHide"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "active"
+            },
+            {
+              "name": "content"
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Tooltip",
+            "module": "packages/wj-tooltip/tooltip.element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/wj-visually-hidden/visually-hidden.element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "VisuallyHidden",
+          "members": [
+            {
+              "kind": "field",
+              "name": "className",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"VisuallyHidden\""
+            },
+            {
+              "kind": "field",
+              "name": "cssStyleSheet",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "store"
+                },
+                {
+                  "name": "params"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WJElement",
+            "module": "/packages/wj-element/wj-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "VisuallyHidden",
+            "module": "packages/wj-visually-hidden/visually-hidden.element.js"
+          }
+        }
+      ]
+    }
+  ],
+  "package": {
+    "name": "wj-elements",
+    "description": "WebJET Elements is a modern set of user interface tools harnessing the power of web components designed to simplify web application development.",
+    "version": "0.0.31",
+    "author": "Lukáš Ondrejček <lukas.ondrejcek@gmail.com>",
+    "homepage": "https://github.com/lencys/wj-elements",
+    "license": "MIT"
+  }
+}

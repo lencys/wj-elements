@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,7 +10,7 @@ template.innerHTML = `<h1>Rating</h1>
     <h3>Basic</h3>
     <div class="playground">
       <div class="content">
-        <wj-rate max="5"></wj-rate>
+        <wje-rate max="5"></wje-rate>
       </div>
     </div>
     
@@ -19,7 +19,7 @@ template.innerHTML = `<h1>Rating</h1>
     <h3>Value</h3>
     <div class="playground">
       <div class="content">
-        <wj-rate value="3" icons="['heart-filled', 'heart-filled', 'heart-filled', 'heart-filled', 'heart-filled']"></wj-rate>
+        <wje-rate value="3" icons="['heart-filled', 'heart-filled', 'heart-filled', 'heart-filled', 'heart-filled']"></wje-rate>
       </div>
     </div>
     
@@ -28,7 +28,7 @@ template.innerHTML = `<h1>Rating</h1>
     <h3>Precision</h3>
     <div class="playground">
       <div class="content">
-        <wj-rate value="3.5" max="5" precision="0.1"></wj-rate>
+        <wje-rate value="3.5" max="5" precision="0.1"></wje-rate>
       </div>
     </div>
     
@@ -37,7 +37,7 @@ template.innerHTML = `<h1>Rating</h1>
     <h3>Readonly</h3>
     <div class="playground">
       <div class="content">
-        <wj-rate max="5" value="4" readonly></wj-rate>
+        <wje-rate max="5" value="4" readonly></wje-rate>
       </div>
     </div>
     
@@ -46,7 +46,7 @@ template.innerHTML = `<h1>Rating</h1>
     <h3>Disabled</h3>
     <div class="playground">
       <div class="content">
-        <wj-rate max="5" value="2" disabled></wj-rate>
+        <wje-rate max="5" value="2" disabled></wje-rate>
       </div>
     </div>
   </div>`;

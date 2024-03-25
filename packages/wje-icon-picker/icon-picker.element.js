@@ -1,0 +1,338 @@
+import { default as WJElement, event } from "../wje-element/element.js";
+import InfiniteScroll from "../wje-infinite-scroll/infinite-scroll.js";
+import Input from "../wje-input/input.js";
+import Tooltip from "../wje-tooltip/tooltip.js";
+import Popup from "../wje-popup/popup.js";
+import styles from "./styles/styles.css?inline";
+
+/**
+ * @summary This element allows users to pick an icon. `IconPicker` is a custom web component that represents an icon picker.
+ * It extends from `WJElement` and uses the `InfiniteScroll`, `Input`, and `Tooltip` components.
+ * @documentation https://elements.webjet.sk/components/icon-picker
+ * @status stable
+ *
+ * @extends {WJElement}
+ *
+ * @part native - The native part
+ * @part anchor - The anchor part
+ * @part picker - The picker part
+ * @part input - The input part
+ *
+ * @cssproperty [--wje-icon-picker-radius=var(--wje-border-radius-small)] - The border radius of the icon picker
+ * @cssproperty [--wje-icon-picker-icon-size=1.5rem] - The size of the icon picker
+ * @cssproperty [--wje-icon-picker-border-width=1px] - The border width of the icon picker
+ * @cssproperty [--wje-icon-picker-border-style=solid] - The border style of the icon picker
+ * @cssproperty [--wje-icon-picker-border-color=var(--wje-border-color)] - The border color of the icon picker
+ * @cssproperty [--wje-icon-picker-padding=.25rem .5rem] - The padding of the icon picker
+ *
+ * @tag wje-icon-picker
+ */
+export default class IconPicker extends WJElement {
+    /**
+     * Creates an instance of IconPicker.
+     *
+     * @constructor
+     */
+    constructor() {
+        super();
+        this.size = 48;
+    }
+
+    /**
+     * Dependencies of the IconPicker component.
+     *
+     * @property {Object} depandencies
+     */
+    depandencies = {
+        "wje-input": Input,
+        "wje-infinite-scroll": InfiniteScroll,
+        "wje-tooltip": Tooltip,
+        "wje-popup": Popup
+    }
+
+    /**
+     * Setter for the markerPosition property.
+     *
+     * @param {any} value - The value to set.
+     */
+    set markerPosition(value) {
+        this._markerPosition = value;
+    }
+
+    /**
+     * Getter for the markerPosition property.
+     *
+     * @returns {any} The value of the markerPosition property.
+     */
+    get markerPosition() {
+        return this._markerPosition;
+    }
+
+    /**
+     * Setter for the swatches property.
+     *
+     * @param {any} value - The value to set.
+     */
+    set swatches(value) {
+        this.setAttribute("swatches", value.split(","));
+    }
+
+    /**
+     * Getter for the swatches property.
+     *
+     * @returns {any} The value of the swatches property.
+     */
+    get swatches() {
+        return this._swatches;
+    }
+
+    className = "IconPicker";
+
+    /**
+     * Returns the CSS styles for the component.
+     *
+     * @static
+     * @returns {CSSStyleSheet}
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
+
+    /**
+     * Returns the list of attributes to observe for changes.
+     *
+     * @static
+     * @returns {Array<string>}
+     */
+    static get observedAttributes() {
+        return [];
+    }
+
+    /**
+     * Sets up the attributes for the component.
+     */
+    setupAttributes() {
+        this.isShadowRoot = "open";
+    }
+
+    /**
+     * Prepares the component before drawing.
+     */
+    async beforeDraw() {
+        this.tags =  Object.values(await this.getTags());
+        this.category = this.getCategory(this.tags);
+    }
+
+    /**
+     * Draws the component.
+     *
+     * @param {Object} context - The context for drawing.
+     * @param {Object} store - The store for drawing.
+     * @param {Object} params - The parameters for drawing.
+     * @returns {DocumentFragment}
+     */
+    draw(context, store, params) {
+        let fragment = document.createDocumentFragment();
+
+        let native = document.createElement("div");
+        native.classList.add("native-color-picker");
+
+        // ANCHOR
+        let anchor = document.createElement("div");
+        anchor.setAttribute("slot", "anchor");
+        anchor.classList.add("anchor");
+
+        // PICKER
+        let picker = document.createElement("div");
+        picker.classList.add("picker");
+
+        let input = document.createElement("wje-input");
+        input.classList.add("input");
+        input.setAttribute("variant", "standard");
+        input.setAttribute("placeholder", "type to filter...");
+        input.setAttribute("clearable", "");
+        input.addEventListener("wje-input:input", this.searchIcon);
+
+        let infiniteScroll = new InfiniteScroll();
+
+        infiniteScroll.setAttribute("url", this.getTagsUrl('/assets/tags.json'));
+        infiniteScroll.setAttribute("placement", ".icon-items");
+        infiniteScroll.setAttribute("size", this.size);
+        infiniteScroll.setAttribute("height", "223px");
+        infiniteScroll.innerHTML = `<div class="icon-items">
+            <div class="icon-item" iterate>
+                <wje-tooltip content="{{name}}">
+                    <wje-icon name="{{name}}" size="large"></wje-icon>
+                </wje-tooltip>
+            </div>
+        </div>`;
+
+        // APPEND
+        picker.appendChild(input);
+
+        picker.appendChild(infiniteScroll);
+
+        // POPUP
+        let popup = document.createElement("wje-popup");
+        popup.setAttribute("placement", this.placement || "bottom-start");
+        popup.setAttribute("offset", this.offset);
+        popup.setAttribute("manual", "");
+        popup.appendChild(anchor);
+        popup.appendChild(picker);
+
+        native.appendChild(popup);
+
+        fragment.appendChild(native);
+
+        this.popup = popup;
+        this.input = input;
+        this.anchor = anchor;
+        this.picker = picker;
+        this.infiniteScroll = infiniteScroll;
+
+        return fragment;
+    }
+
+    /**
+     * Called after the component has been drawn.
+     */
+    afterDraw() {
+        this.setupInfiniteScroll();
+        this.addEventListener("wje-popup:show", (e) => {
+            this.initial();
+        });
+
+        // udalost po vymazani inputu
+        this.addEventListener("wje-input:clear", (e) => {
+            this.setupInfiniteScroll(); // reset infinite scroll
+            this.clearIconsContainer(); // clear icons container
+            this.infiniteScroll.scrollEvent(); // bind scroll event
+            this.infiniteScroll.loadPages(0); // load first page
+        });
+
+
+        this.addEventListener("wje-infinite-scroll:click-item", (e) => {
+            const icon = e.detail.context.querySelector("wje-icon");
+            const name = icon.getAttribute("name");
+            const object = this.tags.find(i => i.name === name);
+            const iconElement = document.createElement("wje-icon");
+            iconElement.setAttribute("name", name);
+
+            object.icon = iconElement;
+
+            this.value = object;
+
+            this.anchor.innerHTML = "";
+            this.anchor.appendChild(iconElement);
+
+            event.dispatchCustomEvent(this, "wje-icon-picker:select", object); // odpalenie custom eventu
+        });
+
+        this.init = false;
+    }
+
+    /**
+     * Initializes the component.
+     */
+    initial() {
+        this.infiniteScroll.scrollEvent();
+    }
+
+    /**
+     * Sets up the infinite scroll for the component.
+     */
+    setupInfiniteScroll() {
+        this.infiniteScroll.setCustomData = (page = 0) => {
+
+            let data = Object.values(this.tags);
+            let result = {
+                data: data.slice(page * this.size, page * this.size + this.size),
+                page: page,
+                size: this.size,
+                totalPages: Math.round(data.length / this.size)
+            }
+            return result;
+        };
+    }
+
+    /**
+     * Gets the category of the tags.
+     *
+     * @param {Array} tags - The tags to get the category of.
+     * @returns {Array} The category of the tags.
+     */
+    getCategory(tags) {
+        let category = [...new Set(tags.map(obj => obj.category))];
+        return category;
+    }
+
+    /**
+     * Gets the tags.
+     *
+     * @returns {Promise<Array>} The tags.
+     */
+    async getTags() {
+        const response = await fetch(this.getTagsUrl('/assets/tags.json'));
+        return response.json();
+    }
+
+    /**
+     * Called when the component is disconnected.
+     */
+    disconnectedCallback() {
+        this.init = false;
+    }
+
+    /**
+     * Event handler for searching icons.
+     *
+     * @param {Event} e - The event.
+     */
+    searchIcon = (e) => {
+        this.infiniteScroll.unScrollEvent(); // unbind scroll event
+        this.infiniteScroll.setCustomData = (page = 0) => {
+            let data = this.tags.filter(i => i.tags.includes(e.detail.value));
+            let result = {
+                data: data,
+                page: page,
+                size: this.size,
+                totalPages: Math.round(data.length / this.size)
+            }
+
+            return result;
+        };
+
+        this.clearIconsContainer(); // clear icons container
+        this.infiniteScroll.loadPages(); // load only
+    }
+
+    /**
+     * Clears the icons container.
+     */
+    clearIconsContainer() {
+        this.context.querySelector(".icon-items").innerHTML = "";
+    }
+
+    /**
+     * Closes the component.
+     */
+    onClose = () => {
+        this.popup.onHide();
+    }
+
+    /**
+     * Gets the URL of the tags.
+     *
+     * @param {string} path - The path to get the URL of.
+     * @returns {string} The URL of the tags.
+     */
+    getTagsUrl = (path) => {
+        // const path = `/assets/img/icons/svg/${iconName}.svg`;
+
+        let parsedUrl = new URL(import.meta.url);
+        let pathName = parsedUrl.pathname;
+
+        let folderPath = pathName.substring(0, pathName.lastIndexOf('/'));
+        return new URL(parsedUrl.origin + folderPath + path).href;
+    };
+}

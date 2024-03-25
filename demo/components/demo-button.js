@@ -1,4 +1,4 @@
-import { WJElement } from "wj-master";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 template.innerHTML = ``;
@@ -10,7 +10,7 @@ export default class DemoButton extends WJElement {
 
   draw(){
     return `<style>
-      wj-button {
+      wje-button {
         margin: .25rem;
       }
     </style>
@@ -22,8 +22,8 @@ export default class DemoButton extends WJElement {
       <h2>Basic</h2>
       <div class="playground">
         <div class="content">
-          <wj-button>Default</wj-button>
-          <wj-button disabled>Disabled</wj-button>
+          <wje-button>Default</wje-button>
+          <wje-button disabled>Disabled</wje-button>
         </div>
       </div>
       
@@ -32,15 +32,15 @@ export default class DemoButton extends WJElement {
       <h2>Toggle</h2>
       <div class="playground">
         <div class="content">
-          <wj-button fill="link" toggle="off">
-            <wj-icon name="sun" slot="toggle"></wj-icon>
-            <wj-icon name="moon" slot="toggle"></wj-icon>
-          </wj-button>
+          <wje-button fill="link" toggle="off">
+            <wje-icon name="sun" slot="toggle"></wje-icon>
+            <wje-icon name="moon" slot="toggle"></wje-icon>
+          </wje-button>
           
-          <wj-button fill="link" toggle="off">
+          <wje-button fill="link" toggle="off">
             <span slot="toggle">On</span>
             <span slot="toggle">Off</span>
-          </wj-button>
+          </wje-button>
         </div>
       </div>
   
@@ -49,8 +49,8 @@ export default class DemoButton extends WJElement {
       <h2>Shape</h2>
       <div class="playground">
         <div class="content">
-          <wj-button>Default</wj-button>
-          <wj-button round>Round</wj-button>
+          <wje-button>Default</wje-button>
+          <wje-button round>Round</wje-button>
         </div>
       </div>
   
@@ -59,10 +59,10 @@ export default class DemoButton extends WJElement {
       <h2>Fill</h2>
       <div class="playground">
         <div class="content">
-          <wj-button>Default</wj-button>
-          <wj-button fill="link">Link</wj-button>
-          <wj-button fill="outline">Outline</wj-button>
-          <wj-button fill="solid">Solid</wj-button>
+          <wje-button>Default</wje-button>
+          <wje-button fill="link">Link</wje-button>
+          <wje-button fill="outline">Outline</wje-button>
+          <wje-button fill="solid">Solid</wje-button>
         </div>
       </div>
   
@@ -71,9 +71,9 @@ export default class DemoButton extends WJElement {
       <h2>Size</h2>
       <div class="playground">
         <div class="content">
-          <wj-button size="small">Small</wj-button>
-          <wj-button>Default</wj-button>
-          <wj-button size="large">Large</wj-button>
+          <wje-button size="small">Small</wje-button>
+          <wje-button>Default</wje-button>
+          <wje-button size="large">Large</wje-button>
         </div>
       </div>
       
@@ -82,9 +82,9 @@ export default class DemoButton extends WJElement {
       <h2>Caret</h2>
       <div class="playground">
         <div class="content">
-          <wj-button color="default" fill="outline" size="small" caret>Small</wj-button>
-          <wj-button color="default" fill="outline" caret>Default</wj-button>
-          <wj-button color="default" fill="outline" size="large" caret>Large</wj-button>
+          <wje-button color="default" fill="outline" size="small" caret>Small</wje-button>
+          <wje-button color="default" fill="outline" caret>Default</wje-button>
+          <wje-button color="default" fill="outline" size="large" caret>Large</wje-button>
         </div>
       </div>
   
@@ -93,30 +93,30 @@ export default class DemoButton extends WJElement {
       <h2>Icons</h2>
       <div class="playground">
         <div class="content">
-          <wj-button>
-            <wj-icon slot="start" name="star"></wj-icon>
+          <wje-button>
+            <wje-icon slot="start" name="star"></wje-icon>
             Left Icon
-          </wj-button>
-          <wj-button>
+          </wje-button>
+          <wje-button>
             Right Icon
-            <wj-icon slot="end" name="star"></wj-icon>
-          </wj-button>
+            <wje-icon slot="end" name="star"></wje-icon>
+          </wje-button>
           
-          <wj-button>
-            <wj-icon slot="icon-only" name="star"></wj-icon>
-          </wj-button>
+          <wje-button>
+            <wje-icon slot="icon-only" name="star"></wje-icon>
+          </wje-button>
   
-          <wj-button fill="outline">
-            <wj-icon slot="start" name="star"></wj-icon>
+          <wje-button fill="outline">
+            <wje-icon slot="start" name="star"></wje-icon>
             Left Icon
-          </wj-button>
-          <wj-button fill="outline">
+          </wje-button>
+          <wje-button fill="outline">
             Right Icon
-            <wj-icon slot="end" name="star"></wj-icon>
-          </wj-button>
-          <wj-button fill="outline">
-            <wj-icon slot="icon-only" name="star"></wj-icon>
-          </wj-button>
+            <wje-icon slot="end" name="star"></wje-icon>
+          </wje-button>
+          <wje-button fill="outline">
+            <wje-icon slot="icon-only" name="star"></wje-icon>
+          </wje-button>
         </div>
       </div>
       
@@ -125,7 +125,7 @@ export default class DemoButton extends WJElement {
       <h2>Link</h2>
       <div class="playground">
         <div class="content">
-          <wj-button fill="link">Link</wj-button>
+          <wje-button fill="link">Link</wje-button>
         </div>
       </div>
   
@@ -134,13 +134,15 @@ export default class DemoButton extends WJElement {
       <h2>Colors</h2>
       <div class="playground">
         <div class="content">
-          <wj-button>Default</wj-button>
-          <wj-button color="primary">Primary</wj-button>
-          <wj-button color="complete">Complete</wj-button>
-          <wj-button color="success">Success</wj-button>
-          <wj-button color="warning">Warning</wj-button>
-          <wj-button color="danger">Danger</wj-button>
-          <wj-button color="neutral">Neutral</wj-button>
+          <wje-button>Default</wje-button>
+          <wje-button color="primary">Primary</wje-button>
+          <wje-button color="complete">Complete</wje-button>
+          <wje-button color="success">Success</wje-button>
+          <wje-button color="warning">Warning</wje-button>
+          <wje-button color="danger">Danger</wje-button>
+          <wje-button color="neutral">Neutral</wje-button>
+          
+          <wje-button fill="outline">Default</wje-button>
         </div>
       </div>
   
@@ -149,13 +151,13 @@ export default class DemoButton extends WJElement {
       <h2>Colors outline</h2>
       <div class="playground">
         <div class="content">
-          <wj-button fill="outline">Default</wj-button>
-          <wj-button color="primary" fill="outline">Primary</wj-button>
-          <wj-button color="complete" fill="outline">Complete</wj-button>
-          <wj-button color="success" fill="outline">Success</wj-button>
-          <wj-button color="warning" fill="outline">Warning</wj-button>
-          <wj-button color="danger" fill="outline">Danger</wj-button>
-          <wj-button color="neutral" fill="outline">Neutral</wj-button>
+          <wje-button fill="outline">Default</wje-button>
+          <wje-button color="primary" fill="outline">Primary</wje-button>
+          <wje-button color="complete" fill="outline">Complete</wje-button>
+          <wje-button color="success" fill="outline">Success</wje-button>
+          <wje-button color="warning" fill="outline">Warning</wje-button>
+          <wje-button color="danger" fill="outline">Danger</wje-button>
+          <wje-button color="neutral" fill="outline">Neutral</wje-button>
         </div>
       </div>
   
@@ -164,17 +166,17 @@ export default class DemoButton extends WJElement {
       <h2>Custom CSS Vlastnosti</h2>
       <div class="playground">
         <div class="content">
-          <wj-button id="custom">Custom</wj-button>
+          <wje-button id="custom">Custom</wje-button>
           <style>
-            wj-button#custom {
-              --wj-button-background-color: #000000;
-              --wj-button-border-color: #0af4fc;
-              --wj-button-border-radius: 0;
-              --wj-button-color: #0af4fc;
-              --wj-padding-top: 1rem;
-              --wj-padding-start: .7rem;
-              --wj-padding-end: .7rem;
-              --wj-padding-bottom: 1rem;
+            wje-button#custom {
+              --wje-button-background-color: #000000;
+              --wje-button-border-color: #0af4fc;
+              --wje-button-border-radius: 0;
+              --wje-button-color: #0af4fc;
+              --wje-padding-top: 1rem;
+              --wje-padding-start: .7rem;
+              --wje-padding-end: .7rem;
+              --wje-padding-bottom: 1rem;
             }
           </style>
         </div>
@@ -187,3 +189,4 @@ let __esModule = 'true';
 export { __esModule };
 
 customElements.get("demo-button") || window.customElements.define("demo-button", DemoButton);
+

@@ -1,0 +1,29 @@
+/*
+[ WJ Header ]
+*/
+
+:host {
+    --wje-header-background: var(--wje-background);
+    --wje-header-border-color: var(--wje-border-color);
+    --wje-header-border-width: 0 0 1px 0;
+    --wje-header-border-style: solid;
+    --wje-header-top: 0;
+    --wje-header-height: 60px;
+    display: block;
+    height: var(--wje-header-height);
+    width: 100%;
+    background: var(--wje-header-background);
+    border-width: var(--wje-header-border-width);
+    border-style: var(--wje-header-border-style);
+    border-color: var(--wje-header-border-color);
+    .native-header {
+        display: flex;
+        padding-inline: 1rem;
+    }
+}
+
+:host([sticky]) {
+    position: sticky;
+    top: var(--wje-header-top);
+    z-index: 999;
+}

@@ -1,0 +1,169 @@
+/*
+[ WJ Textarea ]
+*/
+
+:host {
+  --wje-textarea-font-family: var(--wje-font-family);
+  --wje-textarea-background-color: var(--wje-background);
+  --wje-textarea-color: var(--wje-color);
+  --wje-textarea-color-invalid: var(--wje-color-danger);
+  --wje-textarea-border-width: 1px;
+  --wje-textarea-border-style: solid;
+  --wje-textarea-border-color: var(--wje-border-color);
+  --wje-textarea-border-color-focus: var(--wje-color-primary);
+  --wje-textarea-border-radius: 4px;
+  --wje-textarea-margin-bottom: .5rem;
+  --wje-textarea-line-height: 20px;
+  --wje-textarea-padding: 0.5rem;
+
+  width: 100%;
+  margin-bottom: var(--wje-textarea-margin-bottom);
+  display: block;
+  .wrapper {
+    display: flex;
+    width: 100%;
+    border-width: var(--wje-textarea-border-width);
+    border-style: var(--wje-textarea-border-style);
+    border-color: var(--wje-textarea-border-color);
+    border-radius: var(--wje-textarea-border-radius);
+  }
+  textarea {
+    font-family: var(--wje-textarea-font-family);
+    color: var(--wje-textarea-color);
+    font-size: 14px;
+    border: 0 none;
+    padding: 0 var(--wje-textarea-padding);
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+:host([resize="auto"]) textarea,
+:host([resize="none"]) textarea {
+  resize: none;
+}
+
+.native-textarea {
+  .input-wrapper {
+    width: 100%;
+    line-height: normal;
+  }
+  &.default {
+    background-color: var(--wje-textarea-background-color);
+    font-family: var(--wje-textarea-font-family);
+    position: relative;
+    padding-inline: 0;
+    padding-top: 0;
+    transition: background-color 0.2s ease;
+    cursor: text;
+    &.focused {
+      .wrapper {
+        border-color: var(--wje-textarea-border-color-focus) !important;
+      }
+      label {
+        opacity: 0.67;
+        font-size: 12px;
+        letter-spacing: normal;
+      }
+    }
+    textarea {
+      border: none;
+      padding-top: 0;
+      background: none;
+      box-shadow: none;
+      width: calc(100% - var(--wje-textarea-padding) * 2);
+      max-width: calc(100% - var(--wje-textarea-padding) * 2);
+      min-width: calc(100% - var(--wje-textarea-padding) * 2);
+    }
+    label {
+      padding: 0 var(--wje-textarea-padding);
+      display: block;
+      opacity: 1;
+      cursor: text;
+      transition: opacity 0.2s ease;
+      line-height: var(--wje-textarea-line-height);
+      padding-top: .25rem;
+      &.fade {
+        opacity: 0.5;
+        font-size: 12px;
+        letter-spacing: normal;
+      }
+    }
+    ::slotted([slot="start"]) {
+      border-left: none;
+      border-top: none;
+      border-bottom: none;
+    }
+
+    ::slotted([slot="end"]) {
+      border-right: none;
+      border-top: none;
+      border-bottom: none;
+    }
+  }
+  &.standard {
+    background-color: var(--wje-textarea-background-color);
+    font-family: var(--wje-textarea-font-family);
+    position: relative;
+    border-radius: var(--wje-textarea-border-radius);
+    padding: 0;
+    transition: background-color 0.2s ease;
+    cursor: text;
+    &.focused {
+      .wrapper {
+        border-color: var(--wje-textarea-border-color-focus) !important;
+      }
+    }
+    textarea {
+      display: block;
+      min-height: 32px;
+      background: none;
+      box-shadow: none;
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: var(--wje-textarea-border-radius);
+    }
+    label {
+      margin: 0;
+      display: inline-block;
+      opacity: 1;
+      cursor: text;
+      transition: opacity 0.2s ease;
+      line-height: var(--wje-textarea-line-height);
+    }
+    ::slotted([slot="start"]) {
+      border-right: none;
+      border-radius: var(--wje-textarea-border-radius) 0 0 var(--wje-textarea-border-radius);
+    }
+
+    ::slotted([slot="end"]) {
+      border-left: none;
+      border-radius: 0 var(--wje-textarea-border-radius) var(--wje-textarea-border-radius) 0;
+    }
+
+    &.has-start textarea{
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &.has-end textarea{
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .error-message {
+      position: static;
+      background: transparent;
+      padding: 0.25rem 0;
+      left: auto;
+      transform: none;
+      color: var(--wje-textarea-color-invalid);
+      font-size: 12px;
+      line-height: normal;
+    }
+  }
+}
+
+.counter {
+  float: right;
+}

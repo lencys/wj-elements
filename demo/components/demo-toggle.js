@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,21 +10,21 @@ template.innerHTML = `<h1>Toggle</h1>
     <h3>Basic</h3>
     <div class="playground">
       <div class="content">
-        <wj-item>
-          <wj-toggle>Default Toggle</wj-toggle>
-        </wj-item>
-        <wj-item>
-          <wj-toggle checked>Checked Toggle</wj-toggle>
-        </wj-item>
-        <wj-item>
-          <wj-toggle disabled>Disabled Toggle</wj-toggle>
-        </wj-item>
-        <wj-item>
-          <wj-toggle checked disabled>Disabled Checked Toggle</wj-toggle>
-        </wj-item>
-        <wj-item>
-          <wj-toggle color="success" checked disabled>Disabled Checked Toggle</wj-toggle>
-        </wj-item>
+        <wje-item>
+          <wje-toggle>Default Toggle</wje-toggle>
+        </wje-item>
+        <wje-item>
+          <wje-toggle checked>Checked Toggle</wje-toggle>
+        </wje-item>
+        <wje-item>
+          <wje-toggle disabled>Disabled Toggle</wje-toggle>
+        </wje-item>
+        <wje-item>
+          <wje-toggle checked disabled>Disabled Checked Toggle</wje-toggle>
+        </wje-item>
+        <wje-item>
+          <wje-toggle color="success" checked disabled>Disabled Checked Toggle</wje-toggle>
+        </wje-item>
       </div>
     </div>
 
@@ -33,27 +33,27 @@ template.innerHTML = `<h1>Toggle</h1>
     <h3>Colors</h3>
     <div class="playground">
       <div class="content">
-        <wj-item>
-          <wj-toggle checked>Default Toggle</wj-toggle>
-        </wj-item>
-        <wj-item>
-          <wj-toggle color="primary" checked>Primary Toggle</wj-toggle>
-        </wj-item>
-        <wj-item>
-          <wj-toggle color="complete" checked>Complete Toggle</wj-toggle>
-        </wj-item>
-        <wj-item>
-          <wj-toggle color="success" checked>Success Toggle</wj-toggle>
-        </wj-item>
-        <wj-item>
-          <wj-toggle color="warning" checked>Warning Toggle</wj-toggle>
-        </wj-item>
-        <wj-item>
-          <wj-toggle color="danger" checked>Danger Toggle</wj-toggle>
-        </wj-item>
-        <wj-item>
-          <wj-toggle color="info" checked>Info Toggle</wj-toggle>
-        </wj-item>
+        <wje-item>
+          <wje-toggle checked>Default Toggle</wje-toggle>
+        </wje-item>
+        <wje-item>
+          <wje-toggle color="primary" checked>Primary Toggle</wje-toggle>
+        </wje-item>
+        <wje-item>
+          <wje-toggle color="complete" checked>Complete Toggle</wje-toggle>
+        </wje-item>
+        <wje-item>
+          <wje-toggle color="success" checked>Success Toggle</wje-toggle>
+        </wje-item>
+        <wje-item>
+          <wje-toggle color="warning" checked>Warning Toggle</wje-toggle>
+        </wje-item>
+        <wje-item>
+          <wje-toggle color="danger" checked>Danger Toggle</wje-toggle>
+        </wje-item>
+        <wje-item>
+          <wje-toggle color="info" checked>Info Toggle</wje-toggle>
+        </wje-item>
       </div>
     </div>
 
@@ -62,22 +62,22 @@ template.innerHTML = `<h1>Toggle</h1>
     <h3>Custom</h3>
     <div class="playground">
       <div class="content">
-        <wj-toggle id="custom-toggle" checked>Default Toggle
+        <wje-toggle id="custom-toggle" checked>Default Toggle
           <style>
             #custom-toggle {
-              --wj-toggle-color-base: #ff0000;
-              --wj-toggle-width: 60px;
-              --wj-toggle-height: 8px;
-              --wj-toggle-border-radius: 0;
-              --wj-toggle-handle-width: 20px;
-              --wj-toggle-handle-height: 20px;
-              --wj-toggle-handle-border-radius: 0;
-              --wj-toggle-handle-color: #996633;
-              --wj-toggle-handle-shadow: none !important;
-              --wj-toggle-handle-shadow-checked: none !important;
+              --wje-toggle-color-base: #ff0000;
+              --wje-toggle-width: 60px;
+              --wje-toggle-height: 8px;
+              --wje-toggle-border-radius: 0;
+              --wje-toggle-handle-width: 20px;
+              --wje-toggle-handle-height: 20px;
+              --wje-toggle-handle-border-radius: 0;
+              --wje-toggle-handle-color: #996633;
+              --wje-toggle-handle-shadow: none !important;
+              --wje-toggle-handle-shadow-checked: none !important;
             }
           </style>
-        </wj-toggle>
+        </wje-toggle>
       </div>
     </div>
   </div>`;

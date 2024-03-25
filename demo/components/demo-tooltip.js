@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -11,21 +11,21 @@ template.innerHTML = `
     <h2>Basic</h2>
     <div class="playground">
       <div class="content" style="display: flex; gap: 1rem;">
-        <wj-tooltip content="Som najkrajsi tooltip hore"  offset="2">
-          <wj-button size="large">Top</wj-button>
-        </wj-tooltip>
+        <wje-tooltip content="Som najkrajsi tooltip hore"  offset="2">
+          <wje-button size="large">Top</wje-button>
+        </wje-tooltip>
         
-        <wj-tooltip content="Som najkrajsi tooltip dole" placement="bottom" offset="10">
-          <wj-button size="large">Bottom</wj-button>
-        </wj-tooltip>
+        <wje-tooltip content="Som najkrajsi tooltip dole" placement="bottom" offset="10">
+          <wje-button size="large">Bottom</wje-button>
+        </wje-tooltip>
         
-        <wj-tooltip content="Som najkrajsi tooltip vlavo" placement="left" offset="10">
-          <wj-button size="large">Left</wj-button>
-        </wj-tooltip>
+        <wje-tooltip content="Som najkrajsi tooltip vlavo" placement="left" offset="10">
+          <wje-button size="large">Left</wje-button>
+        </wje-tooltip>
         
-        <wj-tooltip content="Som najkrajsi tooltip vpravo" placement="right" offset="10">
-          <wj-button size="large">Right</wj-button>
-        </wj-tooltip>
+        <wje-tooltip content="Som najkrajsi tooltip vpravo" placement="right" offset="10">
+          <wje-button size="large">Right</wje-button>
+        </wje-tooltip>
       </div>
     </div>
   </div>`;

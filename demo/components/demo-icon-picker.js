@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,7 +10,7 @@ template.innerHTML = `<h1>Icon Picker</h1>
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
-        <wj-icon-picker></wj-icon-picker>
+        <wje-icon-picker></wje-icon-picker>
       </div>
     </div>
     

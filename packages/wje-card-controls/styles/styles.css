@@ -1,0 +1,25 @@
+/*
+[ WJ Card - Controls ]
+*/
+
+:host {
+  --wje-card-controls-font-size: 11px;
+  --wje-card-controls-font-family: var(--wje-font-family-secondary);
+
+  font-family: var(--wje-card-controls-font-family);
+  text-transform: uppercase;
+  display: inline-block;
+  letter-spacing: 0.06em;
+  font-size: var(--wje-card-controls-font-size);
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  filter: alpha(opacity=40);
+  transition: opacity 0.3s ease;
+  position: absolute;
+  right: 1rem;
+  top: .5rem;
+}

@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -11,9 +11,9 @@ template.innerHTML = `
     <h2>Options</h2>
     <div class="playground">
       <div class="content">
-        <wj-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
-          <wj-options url="/api/options" item-value="tralala" item-text="label"></wj-options>
-        </wj-select>
+        <wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
+          <wje-options url="/api/options" item-value="tralala" item-text="label"></wje-options>
+        </wje-select>
       </div>
     </div>
     
@@ -22,15 +22,15 @@ template.innerHTML = `
     <h2>Default</h2>
     <div class="playground">
       <div class="content">
-        <wj-select label="Label test" placeholder="Select option">
-          <wj-option value="option-1">Option 1</wj-option>
-          <wj-option value="option-2">
+        <wje-select label="Label test" placeholder="Select option">
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2">
             Option 2
-            <wj-icon name="heart" slot="end"></wj-icon>
-          </wj-option>
-          <wj-option value="option-3">Option 3</wj-option>
-          <wj-option value="option-4">Option 4</wj-option>
-        </wj-select>
+            <wje-icon name="heart" slot="end"></wje-icon>
+          </wje-option>
+          <wje-option value="option-3">Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+        </wje-select>
       </div>
     </div>
     
@@ -39,15 +39,15 @@ template.innerHTML = `
     <h2>Standard</h2>
     <div class="playground">
       <div class="content">
-        <wj-select label="Label test" placeholder="Select option" variant="standard">
-          <wj-option value="option-1">Option 1</wj-option>
-          <wj-option value="option-2">
+        <wje-select label="Label test" placeholder="Select option" variant="standard">
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2">
             Option 2
-            <wj-icon name="heart" slot="end"></wj-icon>
-          </wj-option>
-          <wj-option value="option-3" selected>Option 3</wj-option>
-          <wj-option value="option-4">Option 4</wj-option>
-        </wj-select>
+            <wje-icon name="heart" slot="end"></wje-icon>
+          </wje-option>
+          <wje-option value="option-3" selected>Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+        </wje-select>
       </div>
     </div>
     
@@ -56,12 +56,12 @@ template.innerHTML = `
     <h2>Clearable</h2>
     <div class="playground">
       <div class="content">
-        <wj-select label="Label" placeholder="Select option" clearable>
-          <wj-option value="option-1">Option 1</wj-option>
-          <wj-option value="option-2">Option 2</wj-option>
-          <wj-option value="option-3">Option 3</wj-option>
-          <wj-option value="option-4">Option 4</wj-option>
-        </wj-select>
+        <wje-select label="Label" placeholder="Select option" clearable>
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2">Option 2</wje-option>
+          <wje-option value="option-3">Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+        </wje-select>
       </div>
     </div>
     
@@ -70,19 +70,19 @@ template.innerHTML = `
     <h2>Disabled</h2>
     <div class="playground">
       <div class="content">
-        <wj-select placeholder="Select option" label="Label" disabled style="margin-bottom: 1rem;">
-          <wj-option value="option-1">Option 1</wj-option>
-          <wj-option value="option-2" selected>Option 2</wj-option>
-          <wj-option value="option-3">Option 3</wj-option>
-          <wj-option value="option-4">Option 4</wj-option>
-        </wj-select>
+        <wje-select placeholder="Select option" label="Label" disabled style="margin-bottom: 1rem;">
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2" selected>Option 2</wje-option>
+          <wje-option value="option-3">Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+        </wje-select>
 
-        <wj-select placeholder="Select option" variant="standard" disabled>
-          <wj-option value="option-1">Option 1</wj-option>
-          <wj-option value="option-2" selected>Option 2</wj-option>
-          <wj-option value="option-3">Option 3</wj-option>
-          <wj-option value="option-4">Option 4</wj-option>
-        </wj-select>
+        <wje-select placeholder="Select option" variant="standard" disabled>
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2" selected>Option 2</wje-option>
+          <wje-option value="option-3">Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+        </wje-select>
       </div>
     </div>
     
@@ -91,17 +91,17 @@ template.innerHTML = `
     <h2>Multiple</h2>
     <div class="playground">
       <div class="content">
-        <wj-select placeholder="Select options" variant="standard" max-options="2" variant="standard" multiple clearable>
-          <wj-option value="option-1">Option 1</wj-option>
-          <wj-option value="option-2">
+        <wje-select placeholder="Select options" variant="standard" max-options="2" variant="standard" multiple clearable>
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2">
             Option 2
-            <wj-icon name="heart" slot="end"></wj-icon>
-          </wj-option>
-          <wj-option value="option-3" selected>Option 3</wj-option>
-          <wj-option value="option-4" selected>Option 4</wj-option>
-          <wj-option value="option-5" selected>Option 5</wj-option>
-          <wj-option value="option-6">Option 6</wj-option>
-        </wj-select>
+            <wje-icon name="heart" slot="end"></wje-icon>
+          </wje-option>
+          <wje-option value="option-3" selected>Option 3</wje-option>
+          <wje-option value="option-4" selected>Option 4</wje-option>
+          <wje-option value="option-5" selected>Option 5</wje-option>
+          <wje-option value="option-6">Option 6</wje-option>
+        </wje-select>
       </div>
     </div>
     

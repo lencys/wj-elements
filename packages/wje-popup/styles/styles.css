@@ -1,0 +1,20 @@
+/*
+[ WJ Popup ]
+*/
+
+:host {
+  --wje-popup-top: auto;
+  --wje-popup-left: auto;
+  display: flex; /* zmenene z contents na flex kvoli breadcrumbs v a jeho trom bodkam */
+}
+
+.native-popup {
+  position: absolute;
+  isolation: isolate;
+  z-index: 999;
+  left: var(--wje-popup-left);
+  top: var(--wje-popup-top);
+}
+.native-popup:not(.popup-active) {
+  display: none;
+}

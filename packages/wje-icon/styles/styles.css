@@ -1,0 +1,66 @@
+/*
+[ WJ Icon ]
+*/
+
+:host(.wje-color-primary) {
+  --wje-icon-color: var(--wje-color-primary);
+}
+
+:host(.wje-color-complete) {
+  --wje-icon-color: var(--wje-color-complete);
+}
+
+:host(.wje-color-success) {
+  --wje-icon-color: var(--wje-color-success);
+}
+
+:host(.wje-color-warning) {
+  --wje-icon-color: var(--wje-color-warning);
+}
+
+:host(.wje-color-danger) {
+  --wje-icon-color: var(--wje-color-danger);
+}
+
+:host(.wje-color-info) {
+  --wje-icon-color: var(--wje-color-info);
+}
+
+:host {
+  --wje-icon-size: 1rem;
+  --wje-icon-width: var(--wje-icon-size, 100%);
+  --wje-icon-height: var(--wje-icon-size, 100%);
+
+  //background: transparent !important;
+  display: inline-block;
+
+  width: var(--wje-icon-width);
+  height: var(--wje-icon-height);
+
+  contain: strict;
+  fill: currentColor;
+  box-sizing: content-box !important;
+}
+
+.icon-inner, svg {
+  display: block;
+
+  width: var(--wje-icon-width);
+  height: var(--wje-icon-height);
+}
+
+:host(.wje-size-small) {
+  --wje-icon-size: 18px;
+}
+
+:host(.wje-size-large) {
+  --wje-icon-size: 32px;
+}
+
+:host(.wje-size) {
+  font-size: var(--wje-icon-size);
+}
+
+:host(.wje-color) {
+  color: var(--wje-icon-color) !important;
+}

@@ -1,0 +1,28 @@
+/*
+[ WJ Tooltip ]
+*/
+
+:host {
+  --wje-tooltip-arrow-color: var(--wje-color-contrast-11);
+}
+
+.native-tooltip {
+  display: block;
+  padding: .5rem;
+  color: var(--wje-color-contrast-0);
+  background-color: var(--wje-color-contrast-11);
+  font-weight: normal;
+  font-size: .75rem !important;
+  border-radius: var(--wje-border-radius-small);
+  line-height: 1;
+  box-sizing: border-box;
+  box-shadow: var(--wje-box-shadow-medium);
+}
+
+.arrow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--wje-tooltip-arrow-color);
+  transform: rotate(45deg);
+}

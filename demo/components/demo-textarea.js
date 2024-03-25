@@ -1,4 +1,4 @@
-import { WJElement, Textarea, RadioGroup } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,7 +10,7 @@ template.innerHTML = `<h1>Textarea</h1>
     <h2>Basic</h2>
     <div class="playground" style="display: block;">
       <div class="content" style="display: block;">
-        <wj-textarea label="Label" name="dog" rows="4"></wj-textarea>
+        <wje-textarea label="Label" name="dog" rows="4"></wje-textarea>
       </div>
     </div>
     
@@ -19,7 +19,7 @@ template.innerHTML = `<h1>Textarea</h1>
     <h2>Standard</h2>
     <div class="playground" style="display: block;">
       <div class="content" style="display: block;">
-        <wj-textarea label="Label" name="dog"  variant="standard"></wj-textarea>
+        <wje-textarea label="Label" name="dog"  variant="standard"></wje-textarea>
       </div>
     </div>
     
@@ -28,7 +28,7 @@ template.innerHTML = `<h1>Textarea</h1>
     <h2>Counter</h2>
     <div class="playground" style="display: block;">
       <div class="content" style="display: block;">
-        <wj-textarea label="Label" name="dog" rows="4" max-length="24" counter></wj-textarea>
+        <wje-textarea label="Label" name="dog" rows="4" max-length="24" counter></wje-textarea>
       </div>
     </div>
     
@@ -37,7 +37,7 @@ template.innerHTML = `<h1>Textarea</h1>
     <h2>Resize (none)</h2>
     <div class="playground" style="display: block;">
       <div class="content" style="display: block;">
-        <wj-textarea label="Label" name="dog" rows="4" resize="none"></wj-textarea>
+        <wje-textarea label="Label" name="dog" rows="4" resize="none"></wje-textarea>
       </div>
     </div>
     
@@ -46,7 +46,7 @@ template.innerHTML = `<h1>Textarea</h1>
     <h2>Auto height</h2>
     <div class="playground" style="display: block;">
       <div class="content" style="display: block;">
-        <wj-textarea label="Label" name="dog" rows="3" resize="auto" counter></wj-textarea>
+        <wje-textarea label="Label" name="dog" rows="3" resize="auto" counter></wje-textarea>
       </div>
     </div>
     
@@ -55,7 +55,7 @@ template.innerHTML = `<h1>Textarea</h1>
     <h2>Disabled</h2>
     <div class="playground">
       <div class="content" style="display: block;">
-        <wj-textarea label="Label" disabled></wj-textarea>
+        <wje-textarea label="Label" disabled></wje-textarea>
       </div>
     </div>
     

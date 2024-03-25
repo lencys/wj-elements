@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -16,7 +16,7 @@ template.innerHTML = `<style>
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
-          <wj-slider></wj-slider>
+          <wje-slider></wje-slider>
       </div>
     </div>
 
@@ -25,7 +25,7 @@ template.innerHTML = `<style>
     <h2>Bubble</h2>
     <div class="playground">
       <div class="content">
-        <wj-slider bubble></wj-slider>
+        <wje-slider bubble></wje-slider>
       </div>
     </div>
 
@@ -34,9 +34,9 @@ template.innerHTML = `<style>
     <h2>Label</h2>
     <div class="playground">
       <div class="content">
-        <wj-slider min="20" max="80" value="50" bubble>
+        <wje-slider min="20" max="80" value="50" bubble>
           <span size="large" slot="label">Lorem ipsum</span>
-        </wj-slider>
+        </wje-slider>
       </div>
     </div>
 
@@ -45,15 +45,15 @@ template.innerHTML = `<style>
     <h2>Icons</h2>
     <div class="playground">
       <div class="content">
-        <wj-slider class="example" min="20" max="80" value="50" bubble>
-          <wj-icon name="volume-3" size="large" slot="start"></wj-icon>
-          <wj-icon name="volume" size="large" slot="end"></wj-icon>
+        <wje-slider class="example" min="20" max="80" value="50" bubble>
+          <wje-icon name="volume-3" size="large" slot="start"></wje-icon>
+          <wje-icon name="volume" size="large" slot="end"></wje-icon>
           <style>
-              .example wj-icon {
-                  --wj-icon-size: 24px;
+              .example wje-icon {
+                  --wje-icon-size: 24px;
               }
           </style>
-        </wj-slider>
+        </wje-slider>
       </div>
     </div>
 
@@ -62,31 +62,31 @@ template.innerHTML = `<style>
     <h2>Colors</h2>
     <div class="playground">
       <div class="content">
-        <wj-grid>
-          <wj-row>
-            <wj-col>
-              <wj-slider color="primary" value="50"></wj-slider>
-            </wj-col>
-            <wj-col>
-              <wj-slider color="complete" value="50"></wj-slider>
-            </wj-col>
-            <wj-col>
-              <wj-slider color="success" value="50"></wj-slider>
-            </wj-col>
-            <wj-col>
-              <wj-slider color="warning" value="50"></wj-slider>
-            </wj-col>
-            <wj-col>
-              <wj-slider color="danger" value="50"></wj-slider>
-            </wj-col>
-            <wj-col>
-              <wj-slider color="dark" value="50"></wj-slider>
-            </wj-col>
-            <wj-col>
-              <wj-slider color="light" value="50"></wj-slider>
-            </wj-col>
-          </wj-row>
-        </wj-grid>
+        <wje-grid>
+          <wje-row>
+            <wje-col>
+              <wje-slider color="primary" value="50"></wje-slider>
+            </wje-col>
+            <wje-col>
+              <wje-slider color="complete" value="50"></wje-slider>
+            </wje-col>
+            <wje-col>
+              <wje-slider color="success" value="50"></wje-slider>
+            </wje-col>
+            <wje-col>
+              <wje-slider color="warning" value="50"></wje-slider>
+            </wje-col>
+            <wje-col>
+              <wje-slider color="danger" value="50"></wje-slider>
+            </wje-col>
+            <wje-col>
+              <wje-slider color="dark" value="50"></wje-slider>
+            </wje-col>
+            <wje-col>
+              <wje-slider color="light" value="50"></wje-slider>
+            </wje-col>
+          </wje-row>
+        </wje-grid>
       </div>
     </div>
   </div>`;

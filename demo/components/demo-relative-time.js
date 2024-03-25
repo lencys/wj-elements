@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -11,13 +11,13 @@ template.innerHTML = `<h1>Relative time</h1>
     <div class="playground">
       <div class="content" style="display: block;">
         <b>No date</b>
-        <wj-relative-time></wj-relative-time><br/>
+        <wje-relative-time></wje-relative-time><br/>
         
         <b>Timestamp</b>
-        <wj-relative-time date="1704067200" lang="cz"></wj-relative-time><br/>
+        <wje-relative-time date="1704067200" lang="cz"></wje-relative-time><br/>
         
         <b>ISO Date</b>
-        <wj-relative-time date="2024-01-01T00:00:00+00:00"></wj-relative-time><br/>
+        <wje-relative-time date="2024-01-01T00:00:00+00:00"></wje-relative-time><br/>
       </div>
     </div>
   </div>`;

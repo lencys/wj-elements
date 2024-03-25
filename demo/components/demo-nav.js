@@ -1,4 +1,4 @@
-import { WJElement, Menu, MenuItem, Popup } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -11,48 +11,48 @@ template.innerHTML = `
     <h2>Megamenu</h2>
     <div class="playground" style="align-items: start;">
       <div class="content" style="display: block; margin: 0; width: 100%;">
-        <wj-menu id="custom-2" variant="megamenu" active>
-          <wj-menu-item>
+        <wje-menu id="custom-2" variant="megamenu" active>
+          <wje-menu-item>
             <span>Home</span>
-            <wj-icon slot="start" name="home"></wj-icon>
-          </wj-menu-item>
-          <wj-menu-item offset="5" variant="context" manual>
+            <wje-icon slot="start" name="home"></wje-icon>
+          </wje-menu-item>
+          <wje-menu-item offset="5" variant="context" manual>
             <span>One</span>
-            <wj-icon slot="start" name="heart"></wj-icon>
-            <wj-menu slot="submenu" offset="5" placement="bottom-start">
-              <wj-menu-item>Menu item 1</wj-menu-item>
-              <wj-menu-item variant="context">
+            <wje-icon slot="start" name="heart"></wje-icon>
+            <wje-menu slot="submenu" offset="5" placement="bottom-start">
+              <wje-menu-item>Menu item 1</wje-menu-item>
+              <wje-menu-item variant="context">
                 Menu item 2
-                <wj-menu slot="submenu" offset="5">
-                  <wj-menu-item>Menu item 2.1</wj-menu-item>
-                  <wj-menu-item>Menu item 2.2</wj-menu-item>
-                  <wj-menu-item>Menu item 2.3</wj-menu-item>
-                </wj-menu >
-              </wj-menu-item>
-              <wj-menu-item offset="10">Menu item 3</wj-menu-item>
-            </wj-menu>
-          </wj-menu-item>
-          <wj-menu-item>
+                <wje-menu slot="submenu" offset="5">
+                  <wje-menu-item>Menu item 2.1</wje-menu-item>
+                  <wje-menu-item>Menu item 2.2</wje-menu-item>
+                  <wje-menu-item>Menu item 2.3</wje-menu-item>
+                </wje-menu >
+              </wje-menu-item>
+              <wje-menu-item offset="10">Menu item 3</wje-menu-item>
+            </wje-menu>
+          </wje-menu-item>
+          <wje-menu-item>
             <span>Two</span>
-            <wj-icon slot="start" name="map-pin"></wj-icon>
-          </wj-menu-item>
-          <wj-menu-item>
-            <wj-icon slot="start" name="settings"></wj-icon>
+            <wje-icon slot="start" name="map-pin"></wje-icon>
+          </wje-menu-item>
+          <wje-menu-item>
+            <wje-icon slot="start" name="settings"></wje-icon>
             <span>Three</span>
-          </wj-menu-item>
-        </wj-menu> 
+          </wje-menu-item>
+        </wje-menu> 
         
         <style>
           #custom-2 {
-            --wj-menu-border-width: 0 0 1px 0;
-            --wj-menu-border-radius: 0;
+            --wje-menu-border-width: 0 0 1px 0;
+            --wje-menu-border-radius: 0;
             max-width: 100%;
             padding: 0;
           }
           
-          #custom-2 wj-menu-item::part(native) {
-            --wj-menu-item-padding-top: .75rem;
-            --wj-menu-item-padding-bottom: .75rem;
+          #custom-2 wje-menu-item::part(native) {
+            --wje-menu-item-padding-top: .75rem;
+            --wje-menu-item-padding-bottom: .75rem;
           }
         </style>
       </div>
@@ -63,58 +63,58 @@ template.innerHTML = `
     <h2>Collapse</h2>
     <div class="playground" style="align-items: start;">
       <div class="content" style="display: block; margin: 0 auto;">
-        <wj-button fill="link" toggle="off" id="toggle">
-          <wj-icon name="chevron-left" slot="toggle"></wj-icon>
-          <wj-icon name="chevron-right" slot="toggle"></wj-icon>
-        </wj-button>
+        <wje-button fill="link" toggle="off" id="toggle">
+          <wje-icon name="chevron-left" slot="toggle"></wje-icon>
+          <wje-icon name="chevron-right" slot="toggle"></wje-icon>
+        </wje-button>
         
-        <wj-menu id="custom" variant="nav" collapse active>
-          <wj-menu-item>
+        <wje-menu id="custom" variant="nav" collapse active>
+          <wje-menu-item>
             Home
-            <wj-icon slot="start" name="home"></wj-icon>
-          </wj-menu-item>
-          <wj-menu-item>
+            <wje-icon slot="start" name="home"></wje-icon>
+          </wje-menu-item>
+          <wje-menu-item>
             One
-            <wj-icon slot="start" name="heart"></wj-icon>
-            <wj-menu slot="submenu" variant="nav">
-              <wj-menu-item>Menu item 1</wj-menu-item>
-              <wj-menu-item>
+            <wje-icon slot="start" name="heart"></wje-icon>
+            <wje-menu slot="submenu" variant="nav">
+              <wje-menu-item>Menu item 1</wje-menu-item>
+              <wje-menu-item>
                 Menu item 2
-                <wj-menu slot="submenu" variant="nav">
-                  <wj-menu-item>Menu item 2.1</wj-menu-item>
-                  <wj-menu-item>Menu item 2.2</wj-menu-item>
-                  <wj-menu-item>Menu item 2.3</wj-menu-item>
-                </wj-menu >
-              </wj-menu-item>
-              <wj-menu-item>Menu item 3</wj-menu-item>
-            </wj-menu>
-          </wj-menu-item>
-          <wj-menu-item>
+                <wje-menu slot="submenu" variant="nav">
+                  <wje-menu-item>Menu item 2.1</wje-menu-item>
+                  <wje-menu-item>Menu item 2.2</wje-menu-item>
+                  <wje-menu-item>Menu item 2.3</wje-menu-item>
+                </wje-menu >
+              </wje-menu-item>
+              <wje-menu-item>Menu item 3</wje-menu-item>
+            </wje-menu>
+          </wje-menu-item>
+          <wje-menu-item>
             Two
-            <wj-icon slot="start" name="map-pin"></wj-icon>
-          </wj-menu-item>
-          <wj-menu-item>
+            <wje-icon slot="start" name="map-pin"></wje-icon>
+          </wje-menu-item>
+          <wje-menu-item>
             Three
-            <wj-icon slot="start" name="settings"></wj-icon>
-          </wj-menu-item>
-        </wj-menu> 
+            <wje-icon slot="start" name="settings"></wje-icon>
+          </wje-menu-item>
+        </wje-menu> 
    
         <style>
           #toggle {
             margin-left: 1rem;
           }
           #custom {
-            --wj-menu-border-width: 0 1px 0 0;
-            --wj-menu-border-radius: 0 !important;
+            --wje-menu-border-width: 0 1px 0 0;
+            --wje-menu-border-radius: 0 !important;
             overflow: hidden;
             max-width: 240px;
-            /*--wj-menu-collapse-width: 48px !important;*/
-            /*--wj-menu-check-icon-width: 15px;*/
+            /*--wje-menu-collapse-width: 48px !important;*/
+            /*--wje-menu-check-icon-width: 15px;*/
           }
           
-          #custom wj-menu-item::part(native) {
-            --wj-menu-item-padding-top: .75rem;
-            --wj-menu-item-padding-bottom: .75rem;
+          #custom wje-menu-item::part(native) {
+            --wje-menu-item-padding-top: .75rem;
+            --wje-menu-item-padding-bottom: .75rem;
           }
         </style>
       </div>
@@ -125,47 +125,47 @@ template.innerHTML = `
     <h2>Expand</h2>
     <div class="playground" style="align-items: start;">
       <div class="content" style="display: block; margin: 0 auto;">
-        <wj-menu id="custom-1" variant="nav" active>
-          <wj-menu-item>
+        <wje-menu id="custom-1" variant="nav" active>
+          <wje-menu-item>
             Home
-            <wj-icon slot="start" name="home"></wj-icon>
-          </wj-menu-item>
-          <wj-menu-item>
+            <wje-icon slot="start" name="home"></wje-icon>
+          </wje-menu-item>
+          <wje-menu-item>
             One
-            <wj-icon slot="start" name="heart"></wj-icon>
-            <wj-menu slot="submenu" variant="nav">
-              <wj-menu-item offset="10">Menu item 1</wj-menu-item>
-              <wj-menu-item offset="10">
+            <wje-icon slot="start" name="heart"></wje-icon>
+            <wje-menu slot="submenu" variant="nav">
+              <wje-menu-item offset="10">Menu item 1</wje-menu-item>
+              <wje-menu-item offset="10">
                 Menu item 2
-                <wj-menu slot="submenu" variant="nav">
-                  <wj-menu-item offset="10">Menu item 2.1</wj-menu-item>
-                  <wj-menu-item offset="10">Menu item 2.2</wj-menu-item>
-                  <wj-menu-item offset="10">Menu item 2.3</wj-menu-item>
-                </wj-menu>
-              </wj-menu-item>
-              <wj-menu-item offset="10">Menu item 3</wj-menu-item>
-            </wj-menu>
-          </wj-menu-item>
-          <wj-menu-item>
+                <wje-menu slot="submenu" variant="nav">
+                  <wje-menu-item offset="10">Menu item 2.1</wje-menu-item>
+                  <wje-menu-item offset="10">Menu item 2.2</wje-menu-item>
+                  <wje-menu-item offset="10">Menu item 2.3</wje-menu-item>
+                </wje-menu>
+              </wje-menu-item>
+              <wje-menu-item offset="10">Menu item 3</wje-menu-item>
+            </wje-menu>
+          </wje-menu-item>
+          <wje-menu-item>
             Two
-            <wj-icon slot="start" name="map-pin"></wj-icon>
-          </wj-menu-item>
-          <wj-menu-item>
-            <wj-icon slot="start" name="settings"></wj-icon>
+            <wje-icon slot="start" name="map-pin"></wje-icon>
+          </wje-menu-item>
+          <wje-menu-item>
+            <wje-icon slot="start" name="settings"></wje-icon>
             Three
-          </wj-menu-item>
-        </wj-menu> 
+          </wje-menu-item>
+        </wje-menu> 
         
         <style>
           #custom-1 {
-            --wj-menu-border-width: 0 1px 0 0;
-            --wj-menu-border-radius: 0;
+            --wje-menu-border-width: 0 1px 0 0;
+            --wje-menu-border-radius: 0;
             max-width: 240px; 
           }
           
-          #custom-1 wj-menu-item::part(native) {
-            --wj-menu-item-padding-top: .75rem;
-            --wj-menu-item-padding-bottom: .75rem;
+          #custom-1 wje-menu-item::part(native) {
+            --wje-menu-item-padding-top: .75rem;
+            --wje-menu-item-padding-bottom: .75rem;
           }
         </style>
       </div>
@@ -182,12 +182,12 @@ export default class DemoNav extends WJElement {
     const menu = document.querySelector("#custom");
 
     // console.log(expand, collapse, menu)
-    toggle.addEventListener("wj:button-click", (e) => {
+    toggle.addEventListener("wje:button-click", (e) => {
       menu.toggleAttribute("collapse");
       menu.refresh();
     });
 
-    // toggle.addEventListener("wj:button-click", (e) => {
+    // toggle.addEventListener("wje:button-click", (e) => {
     //   console.log("expand");
     //   menu.toggleAttribute("collapse");
     // });

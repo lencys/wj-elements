@@ -1,0 +1,12 @@
+/*
+[ Wj nfinite Scroll ]
+*/
+
+:host {
+  --wje-infinite-scroll-width: 100%;
+  --wje-infinite-scroll-height: 300px;
+  overflow-x: auto;
+  width: var(--wje-infinite-scroll-width);
+  height: var(--wje-infinite-scroll-height);
+  display: block;
+}

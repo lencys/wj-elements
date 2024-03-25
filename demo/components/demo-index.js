@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 class Application extends WJElement {
     constructor() {
@@ -16,4 +16,4 @@ class Application extends WJElement {
     }
 }
 
-customElements.define('wj-application', Application)
+customElements.define('wje-application', Application)

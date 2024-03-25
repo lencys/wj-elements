@@ -1,4 +1,4 @@
-import { Localizer } from "../../../dist/wj-master.js";
+import { Localizer } from "../../../dist/wje-master.js";
 
 const ru = {
   code: 'ru',

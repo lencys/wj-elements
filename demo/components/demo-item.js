@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,44 +10,44 @@ template.innerHTML = `<h1>Item</h1>
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
-        <wj-item>
-          <wj-label>Basic Item</wj-label>
-        </wj-item>
+        <wje-item>
+          <wje-label>Basic Item</wje-label>
+        </wje-item>
 
-        <wj-item>
-          <wj-label>
+        <wje-item>
+          <wje-label>
             Multi-line text that should ellipsis when it is too long to fit on
             one line. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </wj-label>
-        </wj-item>
+          </wje-label>
+        </wje-item>
 
-        <wj-item>
-          <wj-label class="wj-text-wrap">
+        <wje-item>
+          <wje-label class="wje-text-wrap">
             Multi-line text that should wrap when it is too long to fit on one
             line. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </wj-label>
-        </wj-item>
+          </wje-label>
+        </wje-item>
 
-        <wj-item>
-          <wj-label>
+        <wje-item>
+          <wje-label>
             <h1>H1 Heading</h1>
             <p>Paragraph</p>
-          </wj-label>
-        </wj-item>
+          </wje-label>
+        </wje-item>
 
-        <wj-item>
-          <wj-label>
+        <wje-item>
+          <wje-label>
             <h2>H2 Heading</h2>
             <p>Paragraph</p>
-          </wj-label>
-        </wj-item>
+          </wje-label>
+        </wje-item>
 
-        <wj-item>
-          <wj-label>
+        <wje-item>
+          <wje-label>
             <h3>H3 Heading</h3>
             <p>Paragraph</p>
-          </wj-label>
-        </wj-item>
+          </wje-label>
+        </wje-item>
       </div>
     </div>
 
@@ -56,25 +56,25 @@ template.innerHTML = `<h1>Item</h1>
     <h2>Icons in items</h2>
     <div class="playground">
       <div class="content">
-        <wj-item>
-          <wj-label>Default Icon</wj-label>
-          <wj-icon name="info-circle" slot="end"></wj-icon>
-        </wj-item>
+        <wje-item>
+          <wje-label>Default Icon</wje-label>
+          <wje-icon name="info-circle" slot="end"></wje-icon>
+        </wje-item>
 
-        <wj-item>
-          <wj-label>Large Icon</wj-label>
-          <wj-icon name="info-circle" size="large" slot="end"></wj-icon>
-        </wj-item>
+        <wje-item>
+          <wje-label>Large Icon</wje-label>
+          <wje-icon name="info-circle" size="large" slot="end"></wje-icon>
+        </wje-item>
 
-        <wj-item>
-          <wj-label>Small Icon</wj-label>
-          <wj-icon name="info-circle" size="small" slot="end"></wj-icon>
-        </wj-item>
+        <wje-item>
+          <wje-label>Small Icon</wje-label>
+          <wje-icon name="info-circle" size="small" slot="end"></wje-icon>
+        </wje-item>
 
-        <wj-item>
-          <wj-icon name="star" slot="start"></wj-icon>
-          <wj-label>Default Icon</wj-label>
-        </wj-item>
+        <wje-item>
+          <wje-icon name="star" slot="start"></wje-icon>
+          <wje-label>Default Icon</wje-label>
+        </wje-item>
       </div>
     </div>
 
@@ -83,45 +83,45 @@ template.innerHTML = `<h1>Item</h1>
     <h2>Item lines</h2>
     <div class="playground">
       <div class="content">
-        <wj-item>
-          <wj-label> Default Item Lines </wj-label>
-        </wj-item>
+        <wje-item>
+          <wje-label> Default Item Lines </wje-label>
+        </wje-item>
 
-        <wj-item lines="inset">
-          <wj-label>Item Lines Inset</wj-label>
-        </wj-item>
+        <wje-item lines="inset">
+          <wje-label>Item Lines Inset</wje-label>
+        </wje-item>
 
-        <wj-item lines="full">
-          <wj-label>Item Lines Full</wj-label>
-        </wj-item>
+        <wje-item lines="full">
+          <wje-label>Item Lines Full</wje-label>
+        </wje-item>
 
-        <wj-item lines="none">
-          <wj-label>Item Lines None</wj-label>
-        </wj-item>
+        <wje-item lines="none">
+          <wje-label>Item Lines None</wje-label>
+        </wje-item>
 
-        <wj-item>
-          <wj-icon name="star" slot="start"></wj-icon>
-          <wj-label>Default Item Lines</wj-label>
-          <wj-icon name="info-circle" slot="end"></wj-icon>
-        </wj-item>
+        <wje-item>
+          <wje-icon name="star" slot="start"></wje-icon>
+          <wje-label>Default Item Lines</wje-label>
+          <wje-icon name="info-circle" slot="end"></wje-icon>
+        </wje-item>
 
-        <wj-item lines="inset">
-          <wj-icon name="star" slot="start"></wj-icon>
-          <wj-label>Item Lines Inset</wj-label>
-          <wj-icon name="info-circle" slot="end"></wj-icon>
-        </wj-item>
+        <wje-item lines="inset">
+          <wje-icon name="star" slot="start"></wje-icon>
+          <wje-label>Item Lines Inset</wje-label>
+          <wje-icon name="info-circle" slot="end"></wje-icon>
+        </wje-item>
 
-        <wj-item lines="full">
-          <wj-icon name="star" slot="start"></wj-icon>
-          <wj-label>Item Lines Full</wj-label>
-          <wj-icon name="info-circle" slot="end"></wj-icon>
-        </wj-item>
+        <wje-item lines="full">
+          <wje-icon name="star" slot="start"></wje-icon>
+          <wje-label>Item Lines Full</wje-label>
+          <wje-icon name="info-circle" slot="end"></wje-icon>
+        </wje-item>
 
-        <wj-item lines="none">
-          <wj-icon name="star" slot="start"></wj-icon>
-          <wj-label>Item Lines None</wj-label>
-          <wj-icon name="info-circle" slot="end"></wj-icon>
-        </wj-item>
+        <wje-item lines="none">
+          <wje-icon name="star" slot="start"></wje-icon>
+          <wje-label>Item Lines None</wje-label>
+          <wje-icon name="info-circle" slot="end"></wje-icon>
+        </wje-item>
       </div>
     </div>
 
@@ -130,19 +130,19 @@ template.innerHTML = `<h1>Item</h1>
     <h2>Media Items</h2>
     <div class="playground">
       <div class="content">
-        <wj-item>
-          <wj-avatar slot="start">
-            <wj-img alt="Silhouette of a person's head" src="/assets/img/avatar.svg"></wj-img>
-          </wj-avatar>
-          <wj-label> Avatar Item </wj-label>
-        </wj-item>
+        <wje-item>
+          <wje-avatar slot="start">
+            <wje-img alt="Silhouette of a person's head" src="/assets/img/avatar.svg"></wje-img>
+          </wje-avatar>
+          <wje-label> Avatar Item </wje-label>
+        </wje-item>
 
-        <wj-item>
-          <wj-thumbnail slot="start">
-            <wj-img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg"></wj-img>
-          </wj-thumbnail>
-          <wj-label> Thumbnail Item </wj-label>
-        </wj-item>
+        <wje-item>
+          <wje-thumbnail slot="start">
+            <wje-img alt="Silhouette of mountains" src="/assets/img/thumbnail.svg"></wje-img>
+          </wje-thumbnail>
+          <wje-label> Thumbnail Item </wje-label>
+        </wje-item>
       </div>
     </div>
 
@@ -151,40 +151,40 @@ template.innerHTML = `<h1>Item</h1>
     <h2>Buttons in Items</h2>
     <div class="playground">
       <div class="content">
-        <wj-item>
-          <wj-button slot="start"> Start </wj-button>
-          <wj-label>Default Buttons</wj-label>
-          <wj-button slot="end"> End </wj-button>
-        </wj-item>
+        <wje-item>
+          <wje-button slot="start"> Start </wje-button>
+          <wje-label>Default Buttons</wje-label>
+          <wje-button slot="end"> End </wje-button>
+        </wje-item>
 
-        <wj-item>
-          <wj-button slot="start">
+        <wje-item>
+          <wje-button slot="start">
             Start
-            <wj-icon name="home" slot="end"></wj-icon>
-          </wj-button>
-          <wj-label>Buttons with Icons</wj-label>
-          <wj-button slot="end">
-            <wj-icon name="star" slot="end"></wj-icon>
+            <wje-icon name="home" slot="end"></wje-icon>
+          </wje-button>
+          <wje-label>Buttons with Icons</wje-label>
+          <wje-button slot="end">
+            <wje-icon name="star" slot="end"></wje-icon>
             End
-          </wj-button>
-        </wj-item>
+          </wje-button>
+        </wje-item>
 
-        <wj-item>
-          <wj-button slot="start">
-            <wj-icon slot="icon-only" name="user"></wj-icon>
-          </wj-button>
-          <wj-label>Icon only Buttons</wj-label>
-          <wj-button slot="end">
-            <wj-icon slot="icon-only" name="star"></wj-icon>
-          </wj-button>
-        </wj-item>
+        <wje-item>
+          <wje-button slot="start">
+            <wje-icon slot="icon-only" name="user"></wje-icon>
+          </wje-button>
+          <wje-label>Icon only Buttons</wje-label>
+          <wje-button slot="end">
+            <wje-icon slot="icon-only" name="star"></wje-icon>
+          </wje-button>
+        </wje-item>
 
-        <wj-item>
-          <wj-label>Button Sizes</wj-label>
-          <wj-button slot="end" size="small"> Small </wj-button>
-          <wj-button slot="end" size="default"> Default </wj-button>
-          <wj-button slot="end" size="large"> Large </wj-button>
-        </wj-item>
+        <wje-item>
+          <wje-label>Button Sizes</wje-label>
+          <wje-button slot="end" size="small"> Small </wje-button>
+          <wje-button slot="end" size="default"> Default </wje-button>
+          <wje-button slot="end" size="large"> Large </wje-button>
+        </wje-item>
       </div>
     </div>
   </div>`;

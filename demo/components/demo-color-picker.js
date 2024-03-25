@@ -1,4 +1,4 @@
-import { WJElement, Radio, RadioGroup } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,7 +10,7 @@ template.innerHTML = `<h1>Color Picker</h1>
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
-        <wj-color-picker></wj-color-picker>
+        <wje-color-picker></wje-color-picker>
       </div>
     </div>
     

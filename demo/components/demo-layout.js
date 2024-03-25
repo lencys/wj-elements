@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -11,64 +11,64 @@ template.innerHTML = `
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
-        <wj-container vertical>
-          <wj-header>Header</wj-header>
-          <wj-main>Main</wj-main>
-        </wj-container>
+        <wje-container vertical>
+          <wje-header>Header</wje-header>
+          <wje-main>Main</wje-main>
+        </wje-container>
         
-        <wj-container vertical>
-          <wj-header>Header</wj-header>
-          <wj-main>Main</wj-main>
-          <wj-footer>Footer</wj-footer>
-        </wj-container>
+        <wje-container vertical>
+          <wje-header>Header</wje-header>
+          <wje-main>Main</wje-main>
+          <wje-footer>Footer</wje-footer>
+        </wje-container>
+        <wje-animation></wje-animation>
+        <wje-container>
+          <wje-aside width="200px">Aside</wje-aside>
+          <wje-main>Main</wje-main>
+        </wje-container>
         
-        <wj-container>
-          <wj-aside width="200px">Aside</wj-aside>
-          <wj-main>Main</wj-main>
-        </wj-container>
+        <wje-container vertical>
+          <wje-header>Header</wje-header>
+          <wje-container>
+            <wje-aside width="200px">Aside</wje-aside>
+            <wje-main>Main</wje-main>
+          </wje-container>
+        </wje-container>
         
-        <wj-container vertical>
-          <wj-header>Header</wj-header>
-          <wj-container>
-            <wj-aside width="200px">Aside</wj-aside>
-            <wj-main>Main</wj-main>
-          </wj-container>
-        </wj-container>
+        <wje-container vertical>
+          <wje-header>Header</wje-header>
+          <wje-container>
+            <wje-aside width="200px">Aside</wje-aside>
+            <wje-container vertical>
+              <wje-main>Main</wje-main>
+              <wje-footer>Footer</wje-footer>
+            </wje-container>
+          </wje-container>
+        </wje-container>
         
-        <wj-container vertical>
-          <wj-header>Header</wj-header>
-          <wj-container>
-            <wj-aside width="200px">Aside</wj-aside>
-            <wj-container vertical>
-              <wj-main>Main</wj-main>
-              <wj-footer>Footer</wj-footer>
-            </wj-container>
-          </wj-container>
-        </wj-container>
+        <wje-container>
+          <wje-aside width="200px">Aside</wje-aside>
+          <wje-container vertical>
+            <wje-header>Header</wje-header>
+            <wje-main>Main</wje-main>
+          </wje-container>
+        </wje-container>
         
-        <wj-container>
-          <wj-aside width="200px">Aside</wj-aside>
-          <wj-container vertical>
-            <wj-header>Header</wj-header>
-            <wj-main>Main</wj-main>
-          </wj-container>
-        </wj-container>
-        
-        <wj-container>
-          <wj-aside width="200px">Aside</wj-aside>
-          <wj-container vertical>
+        <wje-container>
+          <wje-aside width="200px">Aside</wje-aside>
+          <wje-container vertical>
             
-            <wj-header>Header</wj-header>
-            <wj-container>
-              <wj-aside width="200px">Aside</wj-aside>
-              <wj-aside width="200px">Aside</wj-aside>
-              <wj-main>Main</wj-main>
+            <wje-header>Header</wje-header>
+            <wje-container>
+              <wje-aside width="200px">Aside</wje-aside>
+              <wje-aside width="200px">Aside</wje-aside>
+              <wje-main>Main</wje-main>
               
-            </wj-container>
+            </wje-container>
             
-            <wj-footer>Footer</wj-footer>
-          </wj-container>
-        </wj-container>
+            <wje-footer>Footer</wje-footer>
+          </wje-container>
+        </wje-container>
         
         <style>
           .content {
@@ -77,14 +77,14 @@ template.innerHTML = `
             margin: auto 3rem;
           }
           
-          .content wj-header, .content wj-footer {
+          .content wje-header, .content wje-footer {
             background-color: #B3C0D1;
             color: #333;
             text-align: center;
             line-height: 60px;
           }
           
-          .content wj-aside {
+          .content wje-aside {
             background-color: #D3DCE6;
             color: #333;
             text-align: center;
@@ -92,23 +92,23 @@ template.innerHTML = `
             width: 60px;
           }
           
-          .content wj-main {
+          .content wje-main {
             background-color: #E9EEF3;
             color: #333;
             text-align: center;
           }
           
           /* Margin na spodok prveho containeru */
-          .content > wj-container {
+          .content > wje-container {
             margin-bottom: 40px;
           }
           
-          .content wj-container:nth-child(5) wj-aside,
-          .content wj-container:nth-child(6) wj-aside {
+          .content wje-container:nth-child(5) wje-aside,
+          .content wje-container:nth-child(6) wje-aside {
             line-height: 260px;
           }
           
-          .content wj-container:nth-child(7) wj-aside {
+          .content wje-container:nth-child(7) wje-aside {
             line-height: 320px;
           }
         </style>

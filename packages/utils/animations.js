@@ -56,15 +56,12 @@ function parseProperties(propertiesString) {
   return properties;
 }
 
-export async function fetchAndParseCSS(url) {
-  let test = 'fetchAndParseCSS';
+export async function fetchAndParseCSS(css) {
   try {
     if(animations.length > 0) {
       return animations;
     }
-    const response = await fetch(url);
-    const cssText = await response.text();
-    animations = parseCSS(cssText);
+    animations = parseCSS(css);
 
     return animations;
   } catch (error) {

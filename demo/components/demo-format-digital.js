@@ -1,4 +1,4 @@
-import { WJElement } from "../../dist/wj-master.js";
+import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
@@ -10,13 +10,13 @@ template.innerHTML = `<h1>Format byte</h1>
     <h2>Basic</h2>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content" style="justify-content: start;">
-        <wj-input type="number" variant="standard" placeholder="Typing number" value="1000000"></wj-input>
-        <wj-format-digital value="1000000" class="example"></wj-format-digital>
+        <wje-input type="number" variant="standard" placeholder="Typing number" value="1000000"></wje-input>
+        <wje-format-digital value="1000000" class="example"></wje-format-digital>
         <style>
-          wj-input {
+          wje-input {
             width: 200px;
             margin-inline: 0 .5rem;
-            --wj-input-margin-bottom: 0;
+            --wje-input-margin-bottom: 0;
           }
         </style>
       </div>
@@ -27,10 +27,10 @@ template.innerHTML = `<h1>Format byte</h1>
     <h2>Formatting display</h2>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content" style="display: block;">
-        <wj-format-digital value="9900"></wj-format-digital><br/>
-        short<wj-format-digital value="9900" unit-display="short"></wj-format-digital><br/>
-        narrow<wj-format-digital value="9900" unit-display="narrow"></wj-format-digital><br/>
-        long<wj-format-digital value="9900" unit-display="long"></wj-format-digital>
+        <wje-format-digital value="9900"></wje-format-digital><br/>
+        short<wje-format-digital value="9900" unit-display="short"></wje-format-digital><br/>
+        narrow<wje-format-digital value="9900" unit-display="narrow"></wje-format-digital><br/>
+        long<wje-format-digital value="9900" unit-display="long"></wje-format-digital>
       </div>
     </div>
     
@@ -39,10 +39,10 @@ template.innerHTML = `<h1>Format byte</h1>
     <h2>Formatting Bytes</h2>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content" style="display: block;">
-        <wj-format-digital value="99"></wj-format-digital><br/>
-        <wj-format-digital value="9900"></wj-format-digital><br/>
-        <wj-format-digital value="9900000"></wj-format-digital><br/>
-        <wj-format-digital value="9900000000"></wj-format-digital>
+        <wje-format-digital value="99"></wje-format-digital><br/>
+        <wje-format-digital value="9900"></wje-format-digital><br/>
+        <wje-format-digital value="9900000"></wje-format-digital><br/>
+        <wje-format-digital value="9900000000"></wje-format-digital>
       </div>
     </div>
     
@@ -51,10 +51,10 @@ template.innerHTML = `<h1>Format byte</h1>
     <h2>Formatting Bits</h2>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content" style="display: block;">
-        <wj-format-digital value="99" unit="bit"></wj-format-digital><br/>
-        <wj-format-digital value="9900" unit="bit"></wj-format-digital><br/>
-        <wj-format-digital value="9900000" unit="bit"></wj-format-digital><br/>
-        <wj-format-digital value="9900000000" unit="bit"></wj-format-digital>
+        <wje-format-digital value="99" unit="bit"></wje-format-digital><br/>
+        <wje-format-digital value="9900" unit="bit"></wje-format-digital><br/>
+        <wje-format-digital value="9900000" unit="bit"></wje-format-digital><br/>
+        <wje-format-digital value="9900000000" unit="bit"></wje-format-digital>
       </div>
     </div>
     
@@ -63,8 +63,8 @@ template.innerHTML = `<h1>Format byte</h1>
     <h2>Slots</h2>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content" style="display: flex;">
-        <wj-format-digital value="900000"><span slot="start">Nahraných: </span></wj-format-digital>
-        <wj-format-digital value="9900000"><span slot="start">&nbsp;z </span></wj-format-digital>
+        <wje-format-digital value="900000"><span slot="start">Nahraných: </span></wje-format-digital>
+        <wje-format-digital value="9900000"><span slot="start">&nbsp;z </span></wje-format-digital>
       </div>
     </div>
     
@@ -76,7 +76,7 @@ export default class DemoFormatDigital extends WJElement {
   }
 
   afterDraw() {
-    this.addEventListener('wj-input:input', (e) => {
+    this.addEventListener('wje-input:input', (e) => {
       document.querySelector('.example').setAttribute('value', e.detail.value);
     });
   }
