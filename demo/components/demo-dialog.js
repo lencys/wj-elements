@@ -21,8 +21,8 @@ template.innerHTML = `<style>
           <h4>Lorem ipsum dolor sit amet</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
           <div slot="footer">
-            <wje-button>Zatvoriť</wje-button>
-            <wje-button color="primary">Potvrdiť</wje-button>
+            <wje-button class="close">Zatvoriť</wje-button>
+            <wje-button id="save" color="primary">Potvrdiť</wje-button>
           </div>
         </wje-dialog>
       </div>
@@ -116,6 +116,16 @@ template.innerHTML = `<style>
 export default class DemoDialog extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    this.querySelectorAll("wje-button").forEach((button) => {
+      if(button.classList.contains("close")) {
+        button.addEventListener("wje-button:click", (e) => {
+          e.target.closest(`wje-dialog`).close();
+        });
+      }
+    });
   }
 }
 

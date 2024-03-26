@@ -89,8 +89,11 @@ export default class Dialog extends WJElement {
         return fragment;
     }
 
+    close() {
+        this.dialog.close();
+    }
+
     afterDraw(context, store, params) {
-        console.log("Dialog afterDraw", params);
         if(params.trigger) {
             document.addEventListener(params.trigger, () => {
                 event.dispatchCustomEvent(this.dialog,"wje-dialog:click");
