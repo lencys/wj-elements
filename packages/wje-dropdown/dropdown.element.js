@@ -1,5 +1,5 @@
 import { default as WJElement, event } from "../wje-element/element.js";
-import Popup from "../wje-popup/popup.element.js";
+import Popup from "../wje-popup/popup.js";
 
 export default class Dropdown extends WJElement {
     constructor() {

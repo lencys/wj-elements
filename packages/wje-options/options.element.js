@@ -1,5 +1,5 @@
 import { default as WJElement, event } from "../wje-element/element.js";
-import Option from "../wje-option/option.element.js";
+import Option from "../wje-option/option.js";
 
 /**
  * `Options` is a custom web component that represents a set of options.

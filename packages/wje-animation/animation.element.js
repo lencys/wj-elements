@@ -1,6 +1,6 @@
 import { default as WJElement } from "../wje-element/element.js";
 import { fetchAndParseCSS } from "../utils/animations.js";
-import styles from "../wje-avatar/styles/styles.css?inline";
+import styles from "../styles/styles.css?inline";
 import animations from 'animate.css?inline';
 
 /**

@@ -1,5 +1,5 @@
 import { default as WJElement, event } from "../wje-element/element.js";
-import Icon from "../wje-icon/icon.element.js";
+import Icon from "../wje-icon/icon.js";
 import styles from "./styles/styles.css?inline";
 
 /**
