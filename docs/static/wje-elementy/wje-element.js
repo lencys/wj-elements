@@ -1,16 +1,16 @@
-var S = Object.defineProperty;
-var E = (o, e, t) => e in o ? S(o, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : o[e] = t;
-var a = (o, e, t) => (E(o, typeof e != "symbol" ? e + "" : e, t), t), v = (o, e, t) => {
-  if (!e.has(o))
+var E = Object.defineProperty;
+var v = (h, e, t) => e in h ? E(h, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : h[e] = t;
+var a = (h, e, t) => (v(h, typeof e != "symbol" ? e + "" : e, t), t), P = (h, e, t) => {
+  if (!e.has(h))
     throw TypeError("Cannot " + t);
 };
-var b = (o, e, t) => {
-  if (e.has(o))
+var y = (h, e, t) => {
+  if (e.has(h))
     throw TypeError("Cannot add the same private member more than once");
-  e instanceof WeakSet ? e.add(o) : e.set(o, t);
+  e instanceof WeakSet ? e.add(h) : e.set(h, t);
 };
-var f = (o, e, t) => (v(o, e, "access private method"), t);
-import { store as y, defaultStoreActions as P } from "./wje-store.js";
+var m = (h, e, t) => (P(h, e, "access private method"), t);
+import { store as w, defaultStoreActions as T } from "./wje-store.js";
 class j {
   constructor(e = {}) {
     a(this, "findByKey", (e, t, s) => {
@@ -40,10 +40,10 @@ class j {
       },
       async: !0,
       referrerPolicy: "same-origin"
-    }).then((r, h) => {
-      var g;
-      let p = (g = r.headers.get("permissions")) == null ? void 0 : g.split(",");
-      if (n(p), r.ok)
+    }).then((r, o) => {
+      var b;
+      let g = (b = r.headers.get("permissions")) == null ? void 0 : b.split(",");
+      if (n(g), r.ok)
         return r.json();
       throw r.json();
     }).then((r) => (this._store.dispatch(t(r)), r)));
@@ -71,7 +71,7 @@ class j {
         "Content-Type": "application/json"
       },
       referrerPolicy: "same-origin"
-    }).then((h) => (h.ok, h.json()));
+    }).then((o) => (o.ok, o.json()));
     return this.dispatch(r, i, s);
   }
   _get(e, t, s) {
@@ -85,8 +85,8 @@ class j {
     }).then(async (n) => {
       let r;
       try {
-        let h = await n.text();
-        return JSON.parse(h);
+        let o = await n.text();
+        return JSON.parse(o);
       } catch {
         return r;
       }
@@ -111,7 +111,7 @@ class j {
     }) : e;
   }
 }
-class T {
+class c {
   constructor() {
   }
   static get permissions() {
@@ -121,7 +121,7 @@ class T {
     ];
   }
   static includesKey(e) {
-    return WjePermissionsApi.permissions.includes(e);
+    return c.permissions.includes(e);
   }
   static getKeys() {
     let e = [];
@@ -131,10 +131,10 @@ class T {
     return this.hasAttribute("show") && JSON.parse(this.getAttribute("show"));
   }
   static isPermissionFulfilled() {
-    return WjePermissionsApi.getKeys.bind(this)().some((e) => WjePermissionsApi.permissions.includes(e)) || WjePermissionsApi.shouldShow.bind(this)();
+    return c.getKeys.bind(this)().some((e) => c.permissions.includes(e)) || c.shouldShow.bind(this)();
   }
 }
-class c {
+class u {
   constructor() {
   }
   /**
@@ -168,11 +168,11 @@ class c {
     return !["false", "0", 0].includes(e);
   }
 }
-var l, u, m;
+var d, l, p;
 class C {
   constructor() {
-    b(this, u);
-    this.customEventStorage = [], l = this;
+    y(this, l);
+    this.customEventStorage = [], d = this;
   }
   dispatchCustomEvent(e, t, s) {
     e.dispatchEvent(
@@ -198,13 +198,13 @@ class C {
     r ? r.listeners[t] = r.listeners[t] || [] : (r = {
       element: e,
       listeners: {}
-    }, r.listeners[t] = [], this.customEventStorage.push(r)), i = i || f(this, u, m);
-    let h = {
+    }, r.listeners[t] = [], this.customEventStorage.push(r)), i = i || m(this, l, p);
+    let o = {
       listener: i,
       options: n,
       event: s
     };
-    this.listenerExists(e, t, h) || (r.listeners[t].push(h), e.addEventListener(t, i));
+    this.listenerExists(e, t, o) || (r.listeners[t].push(o), e.addEventListener(t, i));
   }
   listenerExists(e, t, s) {
     return this.findRecordByElement(e).listeners[t].some((n) => JSON.stringify(n) === JSON.stringify(s));
@@ -212,10 +212,10 @@ class C {
   removeListener(e, t, s, i, n) {
     let r = this.findRecordByElement(e);
     if (r && t in r.listeners) {
-      var h = r.listeners[t].indexOf(i);
-      ~h && r.listeners[t].splice(h, 1), r.listeners[t].length || delete r.listeners[t];
+      var o = r.listeners[t].indexOf(i);
+      ~o && r.listeners[t].splice(o, 1), r.listeners[t].length || delete r.listeners[t];
     }
-    i = i || f(this, u, m), e.removeEventListener(t, i, n);
+    i = i || m(this, l, p), e.removeEventListener(t, i, n);
   }
   removeElement(e) {
     this.customEventStorage = this.customEventStorage.filter((t) => {
@@ -224,20 +224,20 @@ class C {
     });
   }
 }
-u = new WeakSet(), m = function(e) {
+l = new WeakSet(), p = function(e) {
   let t = this;
-  l.findRecordByElement(t).listeners[e.type].forEach((n, r) => {
-    l.dispatchCustomEvent(t, n.event, {
+  d.findRecordByElement(t).listeners[e.type].forEach((n, r) => {
+    d.dispatchCustomEvent(t, n.event, {
       originalEvent: (e == null ? void 0 : e.type) || null,
       context: t,
-      event: l
+      event: d
     }), n.options && n.options.stopPropagation === !0 && e.stopPropagation();
   });
 };
-let k = new C();
-const w = document.createElement("template");
-w.innerHTML = "";
-const d = class d extends HTMLElement {
+let _ = new C();
+const A = document.createElement("template");
+A.innerHTML = "";
+const f = class f extends HTMLElement {
   constructor(t) {
     super();
     a(this, "initWjElement", async (t = !1) => {
@@ -248,8 +248,8 @@ const d = class d extends HTMLElement {
       const i = new CSSStyleSheet();
       i.replaceSync(this.constructor.cssStyleSheet), this.context.adoptedStyleSheets = [i];
     });
-    this.template = t || w, this.isAttached = !1, this.service = new j({
-      store: y
+    this.template = t || A, this.isAttached = !1, this.service = new j({
+      store: w
     }), this.defineDepandencies(), this.rendering = !1, this.runtimeTimeout = null, this.count = 0, this.functionStack = [], this.scheludedRefresh = !1, this._depandencies = {};
   }
   get permission() {
@@ -277,7 +277,7 @@ const d = class d extends HTMLElement {
     return this.isShadowRoot ? this.shadowRoot : this;
   }
   get store() {
-    return y;
+    return w;
   }
   // addAction,
   // deleteAction,
@@ -301,7 +301,7 @@ const d = class d extends HTMLElement {
    * @return {ArrayActions, ObjectActions}
    */
   get defaultStoreActions() {
-    return P;
+    return T;
   }
   get removeClassAfterConnect() {
     var t;
@@ -320,7 +320,7 @@ const d = class d extends HTMLElement {
     }
   }
   defineDepandencies() {
-    this.depandencies && Object.entries(depandencies).forEach((t, s) => d.define(t, s));
+    this.depandencies && Object.entries(depandencies).forEach((t, s) => f.define(t, s));
   }
   beforeDraw() {
   }
@@ -345,10 +345,10 @@ const d = class d extends HTMLElement {
     }, this.refreshUpdatePromise(), await this.initWjElement(!0);
   }
   setupAttributes() {
-    c.getEvents(this).forEach((s, i) => {
+    u.getEvents(this).forEach((s, i) => {
       this.addEventListener(i, (n) => {
-        var r, h;
-        (h = (r = this.getRootNode().host)[s]) == null || h.call(r);
+        var r, o;
+        (o = (r = this.getRootNode().host)[s]) == null || o.call(r);
       });
     });
   }
@@ -379,12 +379,12 @@ const d = class d extends HTMLElement {
     return null;
   }
   display(t = !1, s) {
-    this.isProcessingFlow(s) || (t && this.isShadowRoot && ([...this.context.children].forEach(this.context.removeChild.bind(this.context)), this.isAttached = !1), this.isAttached, this.context.append(this.template.content.cloneNode(!0)), this.isPermissionCheck || this.isShow ? T.isPermissionFulfilled.bind(this)(this.permission) ? this._resolveRender(s) : this.remove() : this._resolveRender(s));
+    this.isProcessingFlow(s) || (t && this.isShadowRoot && ([...this.context.children].forEach(this.context.removeChild.bind(this.context)), this.isAttached = !1), this.isAttached, this.context.append(this.template.content.cloneNode(!0)), this.isPermissionCheck || this.isShow ? c.isPermissionFulfilled.bind(this)(this.permission) ? this._resolveRender(s) : this.remove() : this._resolveRender(s));
   }
   render(t) {
     if (this.drawingStatus = "DRAWING", this.isProcessingFlow(t))
       return;
-    let s = this.draw(this.context, this.store, c.getAttributes(this)) || "", i;
+    let s = this.draw(this.context, this.store, u.getAttributes(this)) || "", i;
     if (s instanceof HTMLElement || s instanceof DocumentFragment)
       i = s;
     else {
@@ -418,25 +418,25 @@ const d = class d extends HTMLElement {
     return !this.functionStack.find((s) => s == t);
   }
   _resolveRender(t) {
-    this.isProcessingFlow(t) || (this.params = c.getAttributes(this), Promise.resolve(this.beforeDraw(this.context, this.store, c.getAttributes(this))).then((s) => {
+    this.isProcessingFlow(t) || (this.params = u.getAttributes(this), Promise.resolve(this.beforeDraw(this.context, this.store, u.getAttributes(this))).then((s) => {
       var i;
-      this.drawingStatus = "BEFORE", this.render(t), !this.isProcessingFlow(t) && Promise.resolve((i = this.afterDraw) == null ? void 0 : i.call(this, this.context, this.store, c.getAttributes(this))).then(
-        (n, r, h) => {
+      this.drawingStatus = "BEFORE", this.render(t), !this.isProcessingFlow(t) && Promise.resolve((i = this.afterDraw) == null ? void 0 : i.call(this, this.context, this.store, u.getAttributes(this))).then(
+        (n, r, o) => {
           this.drawingStatus = "AFTER", this.finisPromise(), this.rendering = !1, this.isAttached = !0, this.removeClassAfterConnect && this.classList.remove(...this.removeClassAfterConnect), this.scheludedRefresh && (this.refresh(), this.scheludedRefresh = !1);
         }
       );
     }));
   }
 };
-a(d, "processTemplates", (t, s) => {
+a(f, "processTemplates", (t, s) => {
   const i = document.createElement("template");
   return i.innerHTML = [s.innerHTML, (t == null ? void 0 : t.innerHTML) || ""].join(""), i;
 });
-let A = d, x = "true";
+let S = f, x = "true";
 export {
-  c as WjElementUtils,
-  T as WjPermissionsApi,
+  u as WjElementUtils,
+  c as WjePermissionsApi,
   x as __esModule,
-  A as default,
-  k as event
+  S as default,
+  _ as event
 };

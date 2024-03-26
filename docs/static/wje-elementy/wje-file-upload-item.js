@@ -6,8 +6,7 @@ import { L as x } from "./localize-7fxVJArK.js";
 import E from "./wje-format-digital.js";
 import z from "./wje-button.js";
 import A from "./wje-slider.js";
-import "./wje-icon.js";
-import { I as C } from "./icon.element-DOiXP3pi.js";
+import C from "./wje-icon.js";
 const L = ':host{width:100%}.native-file-upload-item{display:grid;grid-template-columns:auto 1fr 1fr;grid-template-rows:auto auto auto;gap:0 .5rem;grid-template-areas:"image name actions" "image size actions" "progress progress progress";padding:.5rem;border:1px solid var(--wje-border-color);border-radius:var(--wje-border-radius-medium)}.image{grid-area:image;align-items:center;display:flex}::slotted([slot="img"]){--wje-img-border-radius: var(--wje-border-radius-medium) !important}.name{grid-area:name;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700}.size{grid-area:size;display:flex}.actions{grid-area:actions;display:flex;align-items:center;justify-content:flex-end}.file-progress{grid-area:progress}wje-icon{margin-right:.25rem}wje-img{margin-right:.25rem}.file-info>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}wje-slider{flex-basis:100%;margin-top:.5rem}:is()::-webkit-slider-thumb{visibility:hidden}:is()::-moz-range-thumb{visibility:hidden}:is()::-ms-thumb{visibility:hidden}wje-img{width:50px;height:50px;display:flex;align-items:center;padding:.25rem;border:1px solid var(--wje-border-color);border-radius:var(--wje-border-radius-medium)}';
 class g extends v {
   /**

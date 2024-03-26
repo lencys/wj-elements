@@ -2,7 +2,7 @@ var c = Object.defineProperty;
 var u = (i, t, e) => t in i ? c(i, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : i[t] = e;
 var s = (i, t, e) => (u(i, typeof t != "symbol" ? t + "" : t, e), e);
 import h, { event as p } from "./wje-element.js";
-import { P as m } from "./popup.element-BXak-Fgc.js";
+import m from "./wje-popup.js";
 class l extends h {
   constructor() {
     super();

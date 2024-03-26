@@ -56,7 +56,8 @@ export default class Dialog extends WJElement {
         let header = document.createElement("div");
         header.setAttribute("part", "header");
         header.classList.add("dialog-header");
-        header.innerHTML = `<span>${this.title}</span>`;
+        if(this.hasAttributes("headline"))
+            header.innerHTML = `<span>${this.headline}</span>`;
         header.appendChild(close);
 
         let slotHeader = document.createElement("slot");

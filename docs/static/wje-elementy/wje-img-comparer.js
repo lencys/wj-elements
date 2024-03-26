@@ -2,8 +2,7 @@ var u = Object.defineProperty;
 var f = (i, e, t) => e in i ? u(i, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : i[e] = t;
 var l = (i, e, t) => (f(i, typeof e != "symbol" ? e + "" : e, t), t);
 import h from "./wje-element.js";
-import "./wje-icon.js";
-import { I as g } from "./icon.element-DOiXP3pi.js";
+import g from "./wje-icon.js";
 function j(i, e) {
   function t(o) {
     const d = i.getBoundingClientRect(), r = i.ownerDocument.defaultView, n = d.left + r.pageXOffset, m = d.top + r.pageYOffset, c = o.pageX - n, p = o.pageY - m;

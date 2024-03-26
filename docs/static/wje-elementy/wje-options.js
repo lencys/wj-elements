@@ -2,7 +2,7 @@ var p = Object.defineProperty;
 var c = (o, e, t) => e in o ? p(o, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : o[e] = t;
 var a = (o, e, t) => (c(o, typeof e != "symbol" ? e + "" : e, t), t);
 import d, { event as u } from "./wje-element.js";
-import { O as h } from "./option.element-CpeafIM-.js";
+import h from "./wje-option.js";
 class r extends d {
   /**
    * Creates an instance of Options.

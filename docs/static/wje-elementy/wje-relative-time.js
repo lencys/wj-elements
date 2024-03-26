@@ -2,7 +2,7 @@ var h = Object.defineProperty;
 var v = (n, i, e) => i in n ? h(n, i, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[i] = e;
 var d = (n, i, e) => (v(n, typeof i != "symbol" ? i + "" : i, e), e);
 import f from "./wje-element.js";
-import { L as S } from "./localize-7fxVJArK.js";
+import { L as p } from "./localize-7fxVJArK.js";
 class l extends f {
   /**
    * Creates an instance of RelativeTime.
@@ -12,7 +12,7 @@ class l extends f {
   constructor() {
     super();
     d(this, "className", "RelativeTime");
-    this.localizer = new S(this);
+    this.localizer = new p(this);
   }
   /**
    * Gets the ISO date of the relative time component.
@@ -22,15 +22,6 @@ class l extends f {
   get dateISO() {
     let e = /* @__PURE__ */ new Date(), t = this.getAttribute("date");
     return this.hasAttribute("date") && (this.isISODate(t) ? t = t : t = +t * 1e3, e = new Date(t)), e.toISOString();
-  }
-  /**
-   * Returns the CSS styles for the component.
-   *
-   * @static
-   * @returns {CSSStyleSheet}
-   */
-  static get cssStyleSheet() {
-    return styles;
   }
   /**
    * Returns the list of attributes to observe for changes.
@@ -75,8 +66,8 @@ class l extends f {
       86400 * 30,
       86400 * 365,
       1 / 0
-    ], c = ["second", "minute", "hour", "day", "week", "month", "year"], s = o.findIndex((g) => g > Math.abs(a)), m = s ? o[s - 1] : 1;
-    return this.localizer.relativeTime(Math.floor(a / m), c[s], { numeric: "auto" });
+    ], m = ["second", "minute", "hour", "day", "week", "month", "year"], s = o.findIndex((g) => g > Math.abs(a)), c = s ? o[s - 1] : 1;
+    return this.localizer.relativeTime(Math.floor(a / c), m[s], { numeric: "auto" });
   }
   /**
    * Checks if the given string is an ISO date.

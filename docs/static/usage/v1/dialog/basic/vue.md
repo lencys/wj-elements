@@ -1,7 +1,7 @@
 ```html
 <template>
   <wje-button dialog="open-modal">Open</wje-button>
-  <wje-dialog trigger="open-modal" title="Title">
+  <wje-dialog trigger="open-modal" headline="Title">
     <h4>Lorem ipsum dolor sit amet</h4>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
     <div slot="footer">
