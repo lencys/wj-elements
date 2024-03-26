@@ -1,4 +1,4 @@
-document.querySelector(".dark-light-mode").addEventListener("wje:button-click", () => {
+document.querySelector(".dark-light-mode").addEventListener("wje-button:click", () => {
   document.body.classList.toggle("wje-theme-dark");
   saveModePreference();
 });
