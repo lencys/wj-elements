@@ -126,6 +126,10 @@ export default class DemoDialog extends WJElement {
         });
       }
     });
+
+    document.getElementById('save').addEventListener("wje-button:click", (e) => {
+      console.log("Save clicked");
+    });
   }
 }
 
