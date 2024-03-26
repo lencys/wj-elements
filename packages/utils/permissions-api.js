@@ -1,4 +1,4 @@
-export class WjPermissionsApi {
+export class WjePermissionsApi {
     constructor() {}
 
     static get permissions() {
