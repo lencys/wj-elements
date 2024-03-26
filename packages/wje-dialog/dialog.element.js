@@ -2,7 +2,7 @@ import { default as WJElement, event } from "../wje-element/element.js";
 import '../wje-button/button.element.js';
 import '../wje-icon/icon.element.js';
 
-import styles from "./scss/styles.scss?inline";
+import styles from "./styles/styles.css?inline";
 
 export default class Dialog extends WJElement {
     constructor() {
@@ -34,7 +34,7 @@ export default class Dialog extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-        this.classList.add("modal", "fade", this.placement, params.size);
+        this.classList.add("fade", this.placement, params.size);
 
         let slot = document.createElement("slot");
         let dialog = document.createElement("dialog");
@@ -89,6 +89,7 @@ export default class Dialog extends WJElement {
     }
 
     afterDraw(context, store, params) {
+        console.log("Dialog afterDraw", params);
         if(params.trigger) {
             document.addEventListener(params.trigger, () => {
                 event.dispatchCustomEvent(this.dialog,"wje-dialog:click");

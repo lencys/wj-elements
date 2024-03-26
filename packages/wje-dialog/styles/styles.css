@@ -13,6 +13,10 @@
   --wje-dialog-margin-start: auto;
   --wje-dialog-margin-end: auto;
   --wje-dialog-margin-bottom: auto;
+  --wje-dialog-padding: 1rem;
+  --wje-dialog-padding-inline: 1rem;
+  --wje-dialog-padding-top: 1rem;
+  --wje-dialog-padding-bottom: 1rem;
   .close {
     margin-left: auto;
   }
@@ -25,9 +29,9 @@
   .dialog-header {
     position: relative;
     border-bottom: 0;
-    padding-inline: var(--wje-dialog-padding, 1rem);
-    padding-top: var(--wje-dialog-padding, 1rem);
-    padding-bottom: var(--wje-dialog-padding, 0);
+    padding-inline: var(--wje-dialog-padding);
+    padding-top: var(--wje-dialog-padding);
+    padding-bottom: var(--wje-dialog-padding);
     display: flex;
     align-items: center;
     span {
@@ -48,7 +52,7 @@
 
   .dialog-content {
     box-shadow: none;
-    padding-inline: var(--wje-dialog-padding, 1rem);
+    padding-inline: var(--wje-dialog-padding);
     white-space: normal;
     z-index: 1;
   }
@@ -59,9 +63,9 @@
     border-top: none;
     box-shadow: none;
     margin-top: 0;
-    padding-inline: var(--wje-dialog-padding-inline, 1rem);
-    padding-top: var(--wje-dialog-padding-top, 1rem);
-    padding-bottom: var(--wje-dialog-padding-bottom, 1rem);
+    padding-inline: var(--wje-dialog-padding-inline);
+    padding-top: var(--wje-dialog-padding-top);
+    padding-bottom: var(--wje-dialog-padding-bottom);
   }
 }
 
@@ -74,8 +78,8 @@ dialog::backdrop {
   content: "";
   height: 1px;
   background: rgba(0, 0, 0, 0.08);
-  left: var(--wje-dialog-padding, 1rem);
-  right: var(--wje-dialog-padding, 1rem);
+  left: var(--wje-dialog-padding);
+  right: var(--wje-dialog-padding);
   position: absolute;
   bottom: 0;
 }
@@ -102,7 +106,7 @@ dialog::backdrop {
   }
 }
 
-// Top
+/*Top*/
 :host(.stick-up) {
   --wje-dialog-width: 300px !important;
   --wje-dialog-height: fit-content;
@@ -113,7 +117,7 @@ dialog::backdrop {
   --wje-dialog-template-to: translateX(0);
 }
 
-// Cenetered
+/*Cenetered*/
 :host(.slide-up) {
   --wje-dialog-width: 300px !important;
   --wje-dialog-height: fit-content;
@@ -124,7 +128,7 @@ dialog::backdrop {
   --wje-dialog-translate-to: scale(1);
 }
 
-// Fullscreen
+/*Fullscreen*/
 :host(.fill-in) {
   --wje-dialog-width: 100%;
   --wje-dialog-height: 100%;
@@ -142,7 +146,7 @@ dialog::backdrop {
   }
 }
 
-// Slide Left
+/*Slide Left*/
 :host(.slide-left) {
   --wje-dialog-width: 300px !important;
   --wje-dialog-height: 100% !important;
@@ -159,7 +163,7 @@ dialog::backdrop {
   }
 }
 
-// Slide Right
+/*Slide Right*/
 :host(.slide-right) {
   --wje-dialog-width: 300px !important;
   --wje-dialog-height: 100% !important;
