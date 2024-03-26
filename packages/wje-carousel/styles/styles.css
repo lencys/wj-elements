@@ -6,7 +6,7 @@
   --wje-scroll-hint: 0px;
   --wje-carousel-width: 100%;
   --wje-carousel-height: auto;
-  //display: flex;
+  --wje-carousel-size: 100%
 }
 
 .native-carousel {
@@ -38,11 +38,11 @@
 }
 
 ::slotted(wje-carousel-item) {
-  flex: 0 0 var(--wje-carousel-size, 100%);
+  flex: 0 0 var(--wje-carousel-size);
   height: 100%;
 }
 
-// NAVIGATION
+/*NAVIGATION*/
 
 wje-button {
   position: absolute;
@@ -63,7 +63,7 @@ wje-button {
   transform: translate(100%, -50%);
 }
 
-// PAGINATION
+/*PAGINATION*/
 
 .pagination {
   position: relative;
@@ -87,7 +87,7 @@ wje-button {
   background-color: var(--wje-color);
 }
 
-// THUMBNAILS
+/*THUMBNAILS*/
 
 .thumbnails {
   display: flex;

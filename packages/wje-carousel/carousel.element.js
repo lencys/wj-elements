@@ -1,6 +1,5 @@
 import { default as WJElement, event } from "../wje-element/element.js";
-
-import styles from "./scss/styles.scss?inline";
+import styles from "./styles/styles.css?inline";
 
 export default class Carousel extends WJElement {
     constructor() {
@@ -76,8 +75,11 @@ export default class Carousel extends WJElement {
         native.appendChild(slides);
 
         if(this.navigation) {
-            native.appendChild(this.createPreviousButton());
-            native.appendChild(this.createNextButton());
+            this.prevButton = this.createPreviousButton();
+            this.nextButton = this.createNextButton();
+
+            native.appendChild(this.prevButton);
+            native.appendChild(this.nextButton);
         }
 
         if(this.pagination)
@@ -152,7 +154,6 @@ export default class Carousel extends WJElement {
         let newActiveSlide = this.loop ? (index + slides.length) % slides.length : Math.min(Math.max(index, 0), slides.length - 1);
         this.activeSlide = newActiveSlide;
 
-
         const nextSlideIndex = Math.min(Math.max(index + (this.loop ? this.slidePerPage : 0), 0), slideWithClones.length - 1);
         const nextSlideEl = this.getSlidesWithClones()[nextSlideIndex];
         nextSlideEl.classList.add("active");
@@ -164,7 +165,18 @@ export default class Carousel extends WJElement {
             left: nextSlideRect.left - slidesContainerRect.left + this.slides.scrollLeft,
             top: nextSlideRect.top - slidesContainerRect.top + this.slides.scrollTop,
             behavior: behavior === "smooth" ? "smooth" : "auto"
-        })
+        });
+
+        if(this.navigation) {
+            this.nextButton.removeAttribute("disabled");
+            this.prevButton.removeAttribute("disabled");
+            console.log("activeSlide:", this.activeSlide, slides.length - 1);
+            if(this.activeSlide === slides.length - 1)
+                this.nextButton.setAttribute("disabled", "");
+
+            if(this.activeSlide === 0)
+                this.prevButton.setAttribute("disabled", "");
+        }
     }
 
     cloneFirstAndLastItems() {
@@ -230,7 +242,7 @@ export default class Carousel extends WJElement {
     createNextButton() {
         const nextButton = document.createElement("wje-button");
         nextButton.classList.add("next");
-        nextButton.innerHTML = '<wje-icon name="chevron-right" size="large"></wje-icon';
+        nextButton.innerHTML = '<wje-icon name="chevron-right" size="large"></wje-icon>';
         nextButton.setAttribute("circle", "");
         nextButton.setAttribute("fill", "link");
         nextButton.addEventListener("click", (e) => {
@@ -243,7 +255,7 @@ export default class Carousel extends WJElement {
     createPreviousButton() {
         const previousButton = document.createElement("wje-button");
         previousButton.classList.add("prev");
-        previousButton.innerHTML = '<wje-icon name="chevron-left" size="large"></wje-icon';
+        previousButton.innerHTML = '<wje-icon name="chevron-left" size="large"></wje-icon>';
         previousButton.setAttribute("circle", "");
         previousButton.setAttribute("fill", "link");
         previousButton.addEventListener("click", (e) => {

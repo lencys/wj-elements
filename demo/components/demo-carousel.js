@@ -27,6 +27,28 @@ template.innerHTML = `<h1>Carousel</h1>
       </div>
     </div>
     
+    <!-- NO LOOP -->
+
+    <h2>No Loop</h2>
+    <div class="playground" style="padding-inline: 2rem;">
+      <div class="content">
+        <wje-carousel pagination navigation>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=1"></wje-img>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=2"></wje-img>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=3"></wje-img>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=4"></wje-img>
+          </wje-carousel-item>
+        </wje-carousel>
+      </div>
+    </div>
+    
     <!-- DIALOG -->
 
     <h2>Dialog</h2>
