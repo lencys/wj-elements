@@ -48,16 +48,6 @@ export default class RelativeTime extends WJElement {
     className = "RelativeTime";
 
     /**
-     * Returns the CSS styles for the component.
-     *
-     * @static
-     * @returns {CSSStyleSheet}
-     */
-    static get cssStyleSheet() {
-        return styles;
-    }
-
-    /**
      * Returns the list of attributes to observe for changes.
      *
      * @static
