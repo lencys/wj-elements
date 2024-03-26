@@ -108,7 +108,6 @@ export default class Carousel extends WJElement {
         this.goToSlide(this.activeSlide, "auto");
 
         this.slides.addEventListener("scrollend", (e) => {
-            console.log("scrollend", this.entriesMap);
             const slides = this.getSlides();
             const entries = [...this.entriesMap.values()];
             const visibleEntries = entries.find(entry => entry.isIntersecting);
@@ -167,10 +166,10 @@ export default class Carousel extends WJElement {
             behavior: behavior === "smooth" ? "smooth" : "auto"
         });
 
-        if(this.navigation) {
+        if(this.navigation && !this.loop) {
             this.nextButton.removeAttribute("disabled");
             this.prevButton.removeAttribute("disabled");
-            console.log("activeSlide:", this.activeSlide, slides.length - 1);
+
             if(this.activeSlide === slides.length - 1)
                 this.nextButton.setAttribute("disabled", "");
 
