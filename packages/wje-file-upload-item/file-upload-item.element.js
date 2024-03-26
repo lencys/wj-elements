@@ -25,7 +25,7 @@ import styles from "./styles/styles.css?inline";
  * @slot img - Slot for the image
  * @slot action - Slot for the action buttons
  *
- * @fires wje:button-click - Dispatches when the delete button is clicked
+ * @fires wje-button:click - Dispatches when the delete button is clicked
  *
  * @tag wje-file-upload
  */
@@ -171,7 +171,7 @@ export default class FileUploadItem extends WJElement {
    * Called after the component has been drawn.
    */
   afterDraw() {
-    this.button.addEventListener("wje:button-click", this.onDelete);
+    this.button.addEventListener("wje-button:click", this.onDelete);
   }
 
   /**

@@ -381,7 +381,7 @@ export default class Input extends WJElement {
         this.addEventListener('focus', () => this.input.focus());
 
         if(this.clear) {
-            this.clear.addEventListener("wje:button-click", (e) => {
+            this.clear.addEventListener("wje-button:click", (e) => {
                 this.input.value = "";
                 event.dispatchCustomEvent(this.clear, "wje-input:clear");
             });

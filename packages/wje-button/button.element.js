@@ -150,7 +150,7 @@ export default class Button extends WJElement {
      * @returns {Array<string>} observedAttributes - The observed attributes
      */
     static get observedAttributes() {
-        return [];
+        return ['disabled'];
     }
 
     /**
@@ -169,6 +169,8 @@ export default class Button extends WJElement {
      */
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
+
+        this.classList.remove("wje-button-disabled");
 
         if(this.disabled)
             this.classList.add("wje-button-disabled");
@@ -212,9 +214,6 @@ export default class Button extends WJElement {
 
             this.appendChild(i);
         }
-
-        if(this.disabled)
-            this.classList.add("wje-disabled");
 
         let element = document.createElement(this.hasAttribute('href') ? 'a': 'button');
         element.classList.add("button-native");
@@ -270,7 +269,7 @@ export default class Button extends WJElement {
             }
         }
 
-        event.addListener(this, "click", "wje:button-click", null, { stopPropagation: this.stopPropagation });
+        event.addListener(this, "click", "wje-button:click", null, { stopPropagation: this.stopPropagation });
         event.addListener(this, "click", null, this.eventDialogOpen);
 
         if(this.hasToggle)

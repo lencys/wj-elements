@@ -182,12 +182,12 @@ export default class DemoNav extends WJElement {
     const menu = document.querySelector("#custom");
 
     // console.log(expand, collapse, menu)
-    toggle.addEventListener("wje:button-click", (e) => {
+    toggle.addEventListener("wje-button:click", (e) => {
       menu.toggleAttribute("collapse");
       menu.refresh();
     });
 
-    // toggle.addEventListener("wje:button-click", (e) => {
+    // toggle.addEventListener("wje-button:click", (e) => {
     //   console.log("expand");
     //   menu.toggleAttribute("collapse");
     // });

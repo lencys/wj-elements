@@ -253,7 +253,7 @@ export default class Select extends WJElement {
         });
 
         this.addEventListener("wje:option-change", this.optionChange);
-        this.clear.addEventListener("wje:button-click", (e) => {
+        this.clear.addEventListener("wje-button:click", (e) => {
             this.getAllOptions().forEach((option) => {
                 option.selected = false;
                 option.removeAttribute("selected");
