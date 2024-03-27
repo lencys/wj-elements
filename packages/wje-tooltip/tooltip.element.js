@@ -1,4 +1,4 @@
-import { default as WJElement, event } from "../wje-element/element.js";
+import { default as WJElement, event, WjElementUtils } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**
@@ -27,6 +27,17 @@ export default class Tooltip extends WJElement {
         super();
     }
 
+    set content(value) {
+        this.setAttribute("content", value);
+    }
+
+    get content() {
+        if(this.hasAttribute('content'))
+            return this.getAttribute('content');
+
+        return "";
+    }
+
     /**
      * @summary Class name
      * @type {string}
@@ -48,7 +59,7 @@ export default class Tooltip extends WJElement {
      * @returns {Array} An array of observed attributes
      */
     static get observedAttributes() {
-        return ["active", "content"];
+        return ["active"];
     }
 
     /**
@@ -90,6 +101,7 @@ export default class Tooltip extends WJElement {
 
         this.mySlot = slot;
         this.popup = popup;
+        this.native = native;
 
         fragment.appendChild(popup);
 
@@ -108,11 +120,29 @@ export default class Tooltip extends WJElement {
         event.addListener(anchorEl, "mouseleave", null, this.onHide);
     }
 
+    dispatch(customEvent) {
+        return new Promise(resolve => {
+            event.dispatchCustomEvent(this, customEvent, {
+                resolve: resolve
+            });
+        });
+    }
+
+    beforeShow() {}
+
+    afterShow() {}
+
     /**
      * @summary Show tooltip
      */
     onShow = () => {
-        this.popup.show();
+        Promise.resolve(this.beforeShow(this)).then((res) => {
+            if(res)
+                this.native.innerHTML = res;
+
+            this.popup.show(); // Show tooltip
+            Promise.resolve(this.afterShow(this));
+        });
     }
 
     /**

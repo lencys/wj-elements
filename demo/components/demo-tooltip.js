@@ -3,7 +3,7 @@ import WJElement from "../../dist/wje-element.js";
 const template = document.createElement('template');
 
 template.innerHTML = `
-  <h1>Dropdown</h1>
+  <h1>Tooltip</h1>
   <div class="container">
 
     <!--  BASIC-->
@@ -28,11 +28,36 @@ template.innerHTML = `
         </wje-tooltip>
       </div>
     </div>
+    
+    <!-- EVENTS -->
+
+    <h2>Events</h2>
+    <div class="playground">
+      <div class="content" style="display: flex; gap: 1rem;">
+        <wje-tooltip id="events">
+          <wje-avatar>
+            <wje-img src="/assets/img/avatar.svg"></wje-img>
+          </wje-avatar>
+        </wje-tooltip>
+      </div>
+    </div>
   </div>`;
 
 export default class DemoTooltip extends WJElement {
   constructor() {
     super(template);
+  }
+
+  async afterDraw() {
+    this.querySelector("#events").beforeShow = async (e) => {
+      // const response = await fetch("./demo/assets/test.json");
+      // const data = await response.json();
+      // const result = data.map((item) => {
+      //   return `<div>${item.name}</div>`;
+      // }).join('');
+      return 'Changed tooltip content';
+      // return result;
+    }
   }
 }
 
