@@ -1,5 +1,4 @@
 import { default as WJElement, event } from "../wje-element/element.js";
-
 import styles from "./scss/styles.scss?inline";
 
 export default class Checkbox extends WJElement {
@@ -19,6 +18,9 @@ export default class Checkbox extends WJElement {
     }
 
     get checked() {
+        if(this.hasAttribute("checked"))
+            this._checked = true;
+
         return this._checked;
     }
 
@@ -48,20 +50,22 @@ export default class Checkbox extends WJElement {
         if(this.color)
             native.classList.add(this.color);
 
-        this.input = document.createElement("input");
-        this.input.type = "checkbox";
-        this.input.id = "checkbox";
-        this.input.name = this.name = "checkbox";
-        this.input.checked = this.hasAttribute("checked");
-        this.input.disabled = this.hasAttribute("disabled");
-        this.input.indeterminate = this.hasAttribute("indeterminate");
+        let input = document.createElement("input");
+        input.type = "checkbox";
+        input.id = "checkbox";
+        input.name = this.name = "checkbox";
+        input.checked = this.hasAttribute("checked");
+        input.disabled = this.hasAttribute("disabled");
+        input.indeterminate = this.hasAttribute("indeterminate");
 
         let label = document.createElement("label");
         label.htmlFor = "checkbox";
         label.innerHTML = "<slot></slot>";
 
-        native.appendChild(this.input);
+        native.appendChild(input);
         native.appendChild(label);
+
+        this.input = input;
 
         fragment.appendChild(native);
 
@@ -69,15 +73,15 @@ export default class Checkbox extends WJElement {
     }
 
     afterDraw() {
-        event.addListener(this, "click", "wje:checkbox:change");
-        event.addListener(this, "click", "wje:checkbox:input");
+        event.addListener(this.input, "input", null, this.inputEvent);
     }
 
     inputEvent = (e) => {
-        this.checked = e.target.checked;
+        this.checked = this.input.checked;
+        event.dispatchCustomEvent(this, "wje-checkbox:change");
     }
 
     disconnectedCallback() {
-        event.removeElement(this);
+        event.removeElement(this.input);
     }
 }

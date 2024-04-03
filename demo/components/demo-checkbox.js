@@ -33,14 +33,14 @@ export default class DemoCheckbox extends WJElement {
   }
 
   afterDraw() {
-    let test = this.context.querySelector('wje-checkbox');
+    let test = this.context.querySelector('#test');
 
-    test.addEventListener('wje:checkbox:change', (e) => {
-      // console.log('wje:checkbox:change');
-    });
+    // test.addEventListener('wje-checkbox:change', (e) => {
+    //   // console.log('wje:checkbox:change');
+    // });
 
-    test.addEventListener('wje:checkbox:input', (e) => {
-      // console.log('wje:checkbox:input');
+    test.addEventListener('wje-checkbox:change', (e) => {
+      console.log('wje-checkbox:INPUT:', e);
     });
   }
 }
