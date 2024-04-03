@@ -30,9 +30,9 @@ export default class Checkbox extends WJElement {
         return styles;
     }
 
-    static get observedAttributes() {
-        return ["checked"];
-    }
+    // static get observedAttributes() {
+    //     return ["checked"];
+    // }
 
     setupAttributes() {
         this.isShadowRoot = "open";
