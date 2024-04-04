@@ -82,29 +82,28 @@
       opacity: 0.5;
       &:before {
         cursor: not-allowed!important;
-        //background: mix($color-contrast-higher, $color-contrast-lower, 04%);
+        /*background: mix($color-contrast-higher, $color-contrast-lower, 04%);*/
       }
     }
   }
 }
-// Colors
-input[type="radio"]:checked + label:before {
-  .success & {
-    border-color: var(--wje-color-success);
-  }
-  .primary & {
-    border-color: var(--wje-color-primary);
-  }
-  .complete & {
-    border-color: var(--wje-color-complete);
-  }
-  .warning & {
-    border-color: var(--wje-color-warning);
-  }
-  .danger & {
-    border-color: var(--wje-color-danger);
-  }
-  .neutral & {
-    border-color: var(--wje-color-info);
-  }
+
+/*Colors*/
+.success input[type="radio"]:checked + label:before {
+  border-color: var(--wje-color-success);
+}
+.primary input[type="radio"]:checked + label:before {
+  border-color: var(--wje-color-primary);
+}
+.complete input[type="radio"]:checked + label:before {
+  border-color: var(--wje-color-complete);
+}
+.warning input[type="radio"]:checked + label:before {
+  border-color: var(--wje-color-warning);
+}
+.danger input[type="radio"]:checked + label:before {
+  border-color: var(--wje-color-danger);
+}
+.neutral input[type="radio"]:checked + label:before {
+  border-color: var(--wje-color-info);
 }

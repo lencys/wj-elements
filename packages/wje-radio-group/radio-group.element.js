@@ -86,7 +86,7 @@ export default class RadioGroup extends WJElement {
             this.setRadioToChekced(this.getRadioByValue(this.value));
         }
 
-        this.addEventListener("wje:radio:input", (e) => {
+        this.addEventListener("wje-radio:input", (e) => {
             this.removeCheck();
             this.setRadioToChekced(e.detail.context);
         });

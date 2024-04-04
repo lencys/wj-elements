@@ -1,6 +1,6 @@
 import { default as WJElement, event } from "../wje-element/element.js";
 
-import styles from "./scss/styles.scss?inline";
+import styles from "./styles/styles.css?inline";
 
 export default class Radio extends WJElement {
     constructor() {
@@ -67,8 +67,8 @@ export default class Radio extends WJElement {
 
     afterDraw() {
         if (!this.hasAttribute("disabled")) {
-            event.addListener(this, "click", "wje:radio:change");
-            event.addListener(this, "click", "wje:radio:input");
+            event.addListener(this, "click", "wje-radio:change");
+            event.addListener(this, "click", "wje-radio:input");
         }
     }
 
