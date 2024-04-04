@@ -151,7 +151,7 @@ export default class MenuItem extends WJElement {
         let fragment = document.createDocumentFragment();
 
         this.setAttribute("tabindex", "0");
-        console.log("DRAW", this.variant, this.collapse);
+
         this.classList.forEach(className => {
           // Ak trieda začína na "wje-menu-variant-", odstráňte ju
           if (className.startsWith('wje-menu-variant-')) {
@@ -270,7 +270,6 @@ export default class MenuItem extends WJElement {
         // Event na zrusenie zobrazenia submenu ked sa klikne mimo
         event.addListener(this, "focusout", null, (e) => {
             if(this.collapse || this.variant === "CONTEXT" && this.hasSubmenu) {
-              console.log("SOM TU:");
                 if (e.relatedTarget && this.contains(e.relatedTarget) || this.variant === "NAV" && !this.collapse) {
                     return;
                 }
@@ -285,6 +284,8 @@ export default class MenuItem extends WJElement {
                 this.submenuActivated(e);
                 this.hideSubmenu();
                 e.stopPropagation();
+            } else {
+                event.dispatchCustomEvent(this, "wje-menu-item:click");
             }
         });
     }
@@ -317,7 +318,7 @@ export default class MenuItem extends WJElement {
      * Dispatches a reposition event.
      */
     dispatchReposition = (e) => {
-        // ak neemame submenu tak to ukoncime
+        // ak nemame submenu tak to ukoncime
         if(this.submenu.assignedNodes().length === 0) return;
 
         let submenu = this.submenu.assignedNodes()[0];
@@ -333,7 +334,6 @@ export default class MenuItem extends WJElement {
      * Shows the submenu of the MenuItem.
      */
     showSubmenu() {
-        console.log("SHOW SUBMENU", this.hasSubmenu);
         this.tabIndex = -1;
         if(this.hasSubmenu) {
             this.popup.setAttribute("active", "");
@@ -346,7 +346,6 @@ export default class MenuItem extends WJElement {
      * Hides the submenu of the MenuItem.
      */
     hideSubmenu() {
-        console.log("HIDE SUBMENU", this);
         this.tabIndex = 0;
         if(this.hasSubmenu) {
             this.popup.removeAttribute("active");

@@ -1,5 +1,5 @@
 import { default as WJElement, event } from "../wje-element/element.js";
-import Popup from "../wje-popup/popup.js";
+import Popup from "../wje-popup/popup.element.js";
 
 export default class Dropdown extends WJElement {
     constructor() {
@@ -68,6 +68,8 @@ export default class Dropdown extends WJElement {
             event.addListener(this.anchorSlot, "mouseenter", null, this.onShow);
             event.addListener(this.anchorSlot, "mouseleave", null, this.onHide);
         }
+
+        event.addListener(this.popup, "click", "wje-menu-item:click", this.onHide);
     }
 
     /**

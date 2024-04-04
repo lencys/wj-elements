@@ -282,6 +282,7 @@ export default class Popup extends WJElement {
     hide() {
         event.dispatchCustomEvent(this,"wje-popup:hide");
         this.native.classList.remove("popup-active");
+        this.removeAttribute("active");
         this.cleanup;
         this.cleanup = undefined;
     }
