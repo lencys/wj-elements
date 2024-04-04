@@ -217,9 +217,9 @@
   }
 
   :host(.wje-button-link:hover) {
-    --wje-button-background-color: var(--wje-color-contrast-1) !important;
-    --wje-button-border-color: transparent !important;
-    color: var(--wje-color-contrast-9) !important;
+    --wje-button-background-color: var(--wje-color-contrast-1);
+    --wje-button-border-color: transparent;
+    color: var(--wje-color-contrast-9);
   }
 }
 
@@ -272,7 +272,7 @@
 :host(.wje-button-link) {
   --wje-button-border-width: 1px;
   --wje-button-border-color: transparent;
-  --wje-button-background-color: transparent !important;
+  --wje-button-background-color: transparent;
 }
 
 /*
