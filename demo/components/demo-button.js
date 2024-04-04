@@ -166,7 +166,7 @@ export default class DemoButton extends WJElement {
       <h2>Custom CSS Vlastnosti</h2>
       <div class="playground">
         <div class="content">
-          <wje-button id="custom">Custom</wje-button>
+          <wje-button id="custom" fill="link">Custom</wje-button>
           <style>
             #custom {
               --wje-button-background-color: #000000;
