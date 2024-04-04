@@ -168,7 +168,7 @@ export default class DemoButton extends WJElement {
         <div class="content">
           <wje-button id="custom">Custom</wje-button>
           <style>
-            wje-button#custom {
+            #custom {
               --wje-button-background-color: #000000;
               --wje-button-border-color: #0af4fc;
               --wje-button-border-radius: 0;
@@ -177,6 +177,11 @@ export default class DemoButton extends WJElement {
               --wje-padding-start: .7rem;
               --wje-padding-end: .7rem;
               --wje-padding-bottom: 1rem;
+            }
+            
+            #custom:hover {
+              --wje-button-background-color: #0af4fc;
+              --wje-button-color: #000000;
             }
           </style>
         </div>
