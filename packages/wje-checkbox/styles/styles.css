@@ -51,7 +51,7 @@
     background-color 140ms linear 0s;
 
     &:hover {
-      color: var(--wje-color-contrast-higher);
+      color: var(--wje-color-contrast-highest);
     }
 
     &:before {
@@ -124,7 +124,7 @@
 
   input[type="checkbox"]:focus {
     & + label {
-      color: var(--wje-color-contrast-higher);
+      color: var(--wje-color-contrast-highest);
 
       &:before {
         outline: none !important;
@@ -177,7 +177,7 @@
 
         &::after {
           position: absolute;
-          right: 0px;
+          right: 0;
           left: auto;
         }
       }
@@ -185,7 +185,7 @@
   }
 }
 
-// Colors
+/*Colors*/
 input[type="checkbox"]:checked + label, input[type="checkbox"]:indeterminate + label {
   .success &:before {
     border-color: var(--wje-color-success);
@@ -224,7 +224,7 @@ input[type="checkbox"]:checked + label {
   .complete &::after,
   .primary &::after,
   .success &::after {
-    background: var(--wje-white-check-icon); //white-tick
+    background: var(--wje-white-check-icon);
   }
 }
 
