@@ -286,6 +286,9 @@ export default class MenuItem extends WJElement {
                 e.stopPropagation();
             } else {
                 event.dispatchCustomEvent(this, "wje-menu-item:click");
+                event.dispatchCustomEvent(this, this.dialog, {
+                    bubbles: true
+                });
             }
         });
     }

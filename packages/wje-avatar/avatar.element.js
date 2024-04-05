@@ -3,13 +3,13 @@ import { getHsl, getInitials } from "./service/service.js";
 import styles from "./styles/styles.css?inline";
 
 /**
- * @summary This class represents an Aside element, extending the WJElement class.
+ * @summary This class represents an Avatar element, extending the WJElement class.
  * @documentation https://elements.webjet.sk/components/avatar
  * @status stable
  *
  * @extends WJElement
  *
- * @slot - The aside main content.
+ * @slot - The avatar main content.
  *
  * @csspart native - The component's native wrapper.
  *

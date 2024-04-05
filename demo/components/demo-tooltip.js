@@ -50,7 +50,7 @@ export default class DemoTooltip extends WJElement {
 
   async afterDraw() {
     this.querySelector("#events").beforeShow = async (e) => {
-      // const response = await fetch("./demo/assets/test.json");
+      // const response = await fetch("./demo/assets/persons.json");
       // const data = await response.json();
       // const result = data.map((item) => {
       //   return `<div>${item.name}</div>`;
