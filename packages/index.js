@@ -85,6 +85,8 @@ import { default as Toolbar } from "./wje-toolbar/toolbar.js";
 import { default as ToolbarAction } from "./wje-toolbar-action/toolbar-action.js";
 import { default as Tooltip } from "./wje-tooltip/tooltip.js";
 import { default as VisuallyHidden } from "./wje-visually-hidden/visually-hidden.js";
+import { default as Reorder } from "./wje-reorder/reorder.js";
+import { default as ReorderItem } from "./wje-reorder-item/reorder-item.js";
 
 export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks, fetchAndParseCSS, Localizer,
   Aside,
@@ -161,5 +163,7 @@ export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks
   Toolbar,
   ToolbarAction,
   Tooltip,
-  VisuallyHidden
+  VisuallyHidden,
+  Reorder,
+  ReorderItem
 };
