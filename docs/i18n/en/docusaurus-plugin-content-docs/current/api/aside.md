@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Aside is a layout element and is displayed next to the [Main](../main) element. It is mostly used to display additional information to the main content or navigation.
 
-## Basic Usage
+## Examples of use
 
 For information on using the **Aside** element, navigate to the [Layout](../layout) documentation.
 

@@ -42,10 +42,10 @@ Start creating your application [by installing WebJET elements](intro/install.md
     <wj-card>
       <wj-card-header>
           <wj-icon name="world-download" size="large"></wj-icon>
-          <wj-card-title>Installation Guide</wj-card-title>
+          <wj-card-title>Installation guide</wj-card-title>
       </wj-card-header>
       <wj-card-content>
-      <p>Detailed guide to installing WebJET elements.</p>
+      <p>Detailed installation guide for WebJET elements.</p>
       </wj-card-content>
     </wj-card>
   </a>
@@ -78,7 +78,7 @@ Start creating your application [by installing WebJET elements](intro/install.md
   <wj-card>
     <wj-card-header>
         <wj-icon name="brush" size="large"></wj-icon>
-        <wj-card-title>Editing Styles</wj-card-title>
+        <wj-card-title>Editing styles</wj-card-title>
     </wj-card-header>
     <wj-card-content>
     <p>Learn how to easily customize your Elements visual.</p>
@@ -124,4 +124,4 @@ Optimized for performance, the framework ensures that components are not only fu
 
 Elements is a free and open source project, released under the MIT permissive license. This means that it can be used for free in personal or commercial projects. MIT is the same license used by such popular projects as jQuery and Ruby on Rails.
 
-This documentation content (located in the <a href="https://github.com/lencys/wj-elements" target="_blank">WJ Elements repository</a>) is licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2 license.</a>.
+This documentation content (located in the <a href="https://github.com/lencys/wj-elements" target="_blank">WJ Elements</a> repository) is licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.</a> license.

@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The Masonry component creates a responsive "Masonry" layout of child elements that are dynamically arranged into columns based on specified attributes. Supports customizing the number of columns, maximum column width, element spacing, and debouncing to optimize performance.
 
-## Basic Usage
+## Basic use
 
 import Basic from '@site/static/usage/v1/masonry/basic/index.md';
 

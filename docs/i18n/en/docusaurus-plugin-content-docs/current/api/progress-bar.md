@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The Progress Bar element is a component designed to visualize progress. It offers the ability to create customizable circular or straight indicators with different configuration options.
 
-## Basic Usage
+## Basic use
 
 To use the Progress Bar component, include it in the HTML with the required attributes. The progress attribute sets the percentage value of the progress in the progress bar.
 

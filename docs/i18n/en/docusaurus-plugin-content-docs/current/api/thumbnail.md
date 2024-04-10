@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Thumbnail makes it easier to view larger images or other media by displaying a smaller preview of them. It can be used alone but also in other elements.
 
-## Basic Usage
+## Basic use
 
 import Basic from '@site/static/usage/v1/thumbnail/basic/index.md';
 

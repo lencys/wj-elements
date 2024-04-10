@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Buttons are a clickable element that allows you to display text, an icon, or both. Buttons can be easily customized using various attributes and CSS properties.
 
-## Basic Usage
+## Basic usage
 
 To use the Button component, include it in the HTML with the required attributes. Adding the `disabled` attribute makes the button inactive and unclickable.
 
@@ -76,7 +76,7 @@ import Icons from '@site/static/usage/v1/button/icons/index.md';
 
 ### Button colours
 
-The `color` property modifies the background and border color of the button. Setting this value will change the button color to one of the colors in the preset color palette. By default, the buttons have a `primary` background.
+The `color` property adjusts the background and border color of the button. Setting this value will change the button color to one of the colors in the preset color palette. By default, the buttons have a `primary` background.
 
 import Colors from '@site/static/usage/v1/button/theming/colors/index.md';
 

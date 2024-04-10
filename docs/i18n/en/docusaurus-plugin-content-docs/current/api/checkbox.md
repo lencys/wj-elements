@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 A checkbox, or also a check box, is an element that allows users to select one or more options from a set. Click on the checkbox to change its status to `true` or `false`.
 
-## Basic Usage
+## Basic use
 
 import Basic from '@site/static/usage/v1/checkbox/basic/index.md';
 
@@ -28,7 +28,7 @@ import Basic from '@site/static/usage/v1/checkbox/basic/index.md';
 
 ## Indeterminate checkbox
 
-When the `indeterminate` attribute is added, a checkbox is displayed whose default state is neutral, i.e. neither `true` nor `false`.
+
 
 import Indeterminate from '@site/static/usage/v1/checkbox/indeterminate/index.md';
 

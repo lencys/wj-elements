@@ -50,7 +50,7 @@ color-scheme: light dark;
 | ------------------------------------------------------------------------ | -------------------------------------------------------------------- |
 | ![Application without color-scheme](/img/theming/color-scheme-light.png) | ![Application with color-scheme](/img/theming/color-scheme-dark.png) |
 
-For more information on `color-scheme`, please visit https\://web.dev/color-scheme/.
+For more information on `color-scheme`, please visit https://web.dev/color-scheme/.
 
 ## WebJET Dark Mode
 

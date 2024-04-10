@@ -16,7 +16,7 @@ WebJET Elements takes advantage of custom CSS properties, commonly known as <a h
 
 ### Global variables
 
-CSS variables can be set globally in the `:root` selector in the application. They can also be used only for a specific mode, light or dark. For more information about global variables, see [WebJET Elements Variables](#webjet-elements-variables).
+CSS variables can be set globally in the `:root` selector in the application. They can also be used only for a specific mode, light or dark. For more information about global variables, see [Variables WebJET Elements](#variables-webjet-elements).
 
 ```css
 /* Set variables for all modes */
@@ -31,7 +31,7 @@ CSS variables can be set globally in the `:root` selector in the application. Th
 
 ### Variables in components
 
-To set a CSS variable for a specific component, add the variable inside of its selector. See [Variable WebJET Elements](#webjet-elements-variables) for more information on the component-level variables Ionic provides.
+To set a CSS variable for a specific component, add the variable inside of its selector. See [Variable WebJET Elements](#variable-webjet-elements) for more information on the component-level variables Ionic provides.
 
 ```css
 /* Sets the border color of all buttons */

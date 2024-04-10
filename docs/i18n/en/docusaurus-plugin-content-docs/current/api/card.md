@@ -18,9 +18,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The **Card** element is a flexible and expandable card format container. It allows you to display a wide range of content and consists of a header [CardHeader](../card-header) and a main section [CardContent](../card-content).
+The **Card** element is a flexible and expandable card format container. It allows you to display a wide range of content and consists of a [CardHeader](../card-header) and a [CardContent](../card-content) header.
 
-## Basic Usage
+## Basic use
 
 import Basic from '@site/static/usage/v1/card/basic/index.md';
 

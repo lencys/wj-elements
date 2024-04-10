@@ -10,7 +10,7 @@ import Methods from '@ionic-internal/component-api/v1/carousel/methods.md';
 
 import Parts from '@ionic-internal/component-api/v1/carousel/parts.md';
 
-<!-- import CustomProps from '@ionic-internal/component-api/v1/carousel/custom-props.md'; -->
+<!-- import CustomProps from '@ionic-internal/component-api/v1/card/custom-props.md'; -->
 
 import Slots from '@ionic-internal/component-api/v1/carousel/slots.md';
 
@@ -39,58 +39,23 @@ import Pagination from '@site/static/usage/v1/carousel/pagination/index.md';
 
 <Pagination />
 
-## Card with picture
+## Thumbnail image
 
 import Thumbnail from '@site/static/usage/v1/carousel/thumbnail/index.md';
 
 <Thumbnail />
 
-## Card with list
+## Offset
 
 import Spacing from '@site/static/usage/v1/carousel/spacing/index.md';
 
 <Spacing />
 
-## Editing styles
-
-### Preset colour variants of the element Card
-
-The `color` property adjusts the background and border color of the card. Setting this value will change the button color to one of the colors in the preset color palette.  By default, the element has a `primary` background.
+## Distribution
 
 import Split from '@site/static/usage/v1/carousel/split/index.md';
 
 <Split />
-
-### CSS Custom Properties
-
-import CssProperties from '@site/static/usage/v1/card/theming/css-properties/index.md';
-
-<CssProperties />
-
-```html
-<wj-card id="custom">
-  <wj-card-header>
-    <wj-card-subtitle>Subtitle</wj-card-subtitle>
-    <wj-card-title>Title</wj-card-title>
-  </wj-card-header>
-  <wj-card-content>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  </wj-card-content>
-</wj-card>
-<style>
-  #custom {
-    --wj-card-margin-top: 1rem;
-    --wj-card-margin-bottom: 1rem;
-    --wj-card-margin-inline: 1rem;
-    --wj-color-contrast: #f0f;
-    --wj-card-border-color: #000;
-    --wj-border-size: 2px;
-    --background-color: #000!important;
-    --wj-font-size: .8rem;
-    --wj-border-radius: 0;
-  }
-</style>
-```
 
 ## Attributes and Properties
 
@@ -107,10 +72,6 @@ import CssProperties from '@site/static/usage/v1/card/theming/css-properties/ind
 ## CSS Shadow Parts
 
 <Parts />
-
-## CSS Custom Properties
-
-<!-- <CustomProps /> -->
 
 ## Slots
 

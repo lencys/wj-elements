@@ -24,8 +24,8 @@ The Router Outlet component manages the insertion and removal of various page co
 
 Routes rendered in a Router Outlet have access to specific Ionic events that are wired up to animations
 
-| Event Name         | Trigger                                                            |
-| ------------------ | ------------------------------------------------------------------ |
+| Event Name         | Trigger                                                                            |
+| ------------------ | ---------------------------------------------------------------------------------- |
 | `ionViewWillEnter` | Fired when the component routing to is about to animate into view. |
 | `ionViewDidEnter`  | Fired when the component routing to has finished animating.        |
 | `ionViewWillLeave` | Fired when the component routing from is about to animate.         |

@@ -14,4 +14,4 @@ import APIList from '@components/page/api/APIList';
 
 Each [WebJET component](/components) consists of one or more [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements). Each element in turn can make its properties, methods, events and custom CSS properties available.
 
-\<APIList sidebar={require('@site/sidebars.js').default} />
+\\<APIList sidebar={require('@site/sidebars.js').default} />

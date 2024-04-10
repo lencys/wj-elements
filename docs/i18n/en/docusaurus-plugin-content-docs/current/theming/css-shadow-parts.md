@@ -10,7 +10,7 @@ title: CSS Shadow Parts
   />
 
 
-CSS Shadow Parts is a feature that allows developers to style specific parts of the <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM" target="_blank" rel="noopener noreferrer">Shadow DOM</a> . This is useful in the case of WebJET Elements built on <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank" rel="noopener noreferrer">Web Components</a> technology, where encapsulation would otherwise not allow the appearance of the internal parts of the elements to be modified.
+CSS Shadow Parts is a feature that allows developers to stylize specific parts of the <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM" target="_blank" rel="noopener noreferrer">Shadow DOM</a>. This is useful in the case of WebJET Elements built on <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank" rel="noopener noreferrer">Web Component</a> technology, where otherwise the encapsulation would not allow the appearance of the internal parts of the elements to be modified.
 
 ## Benefits of Shadow parts
 
@@ -40,7 +40,7 @@ wj-button .button-native {
 }
 ```
 
-This problem is solved by CSS Shadow Parts. The `wj-button` component contains a `part` attribute with a value that can be targeted in css using the css pseudo-element<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank" rel="noopener noreferrer">`::part()`</a>. In this case it is the value `native`.
+This problem is solved by CSS Shadow Parts. The `wj-button` component contains a `part` attribute with a value that can be targeted in css using the css pseudo-element `<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank" rel="noopener noreferrer">::part()`</a>. In this case it is the value `native`.
 
 A functional css selector would therefore look like this:
 
@@ -75,15 +75,15 @@ All exposed parts for an Ionic Framework component can be found under the CSS Sh
 
 ### Compatibility with browsers
 
-Shadow Parts CSS works in the latest versions of all major browsers. However, older browser versions may not support them. Before using Shadow Parts in your application, check <a href="https://caniuse.com/#feat=mdn-css_selectors_part" target="_blank" rel="noopener noreferrer">browser compatibility</a> to make sure it fits your requirements. If you need to support older browsers, consider [CSS Variables](../theming/css-variables.md) instead for editing styles.
+Shadow Parts CSS works in the latest versions of all major browsers. However, older browser versions may not support them. Before using Shadow Parts in your application, check your <a href="https://caniuse.com/#feat=mdn-css_selectors_part" target="_blank" rel="noopener noreferrer">browser compatibility</a> and make sure it meets your requirements. If you need to support older browsers, consider [CSS Variables](../theming/css-variables.md) instead for editing styles.
 
 ### Support for browser-prefixed pseudoelements
 
 <p>
   <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix" target="_blank" rel="noopener noreferrer">
-    Vendor-prefixed
+    </a> <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix" target="_blank" rel="noopener noreferrer"> Vendor-prefixed
   </a>{' '}
-  pseudo-elements are not currently supported. Therefore, for example, the `::-webkit-scrollbar`
+  pseudoelements are not currently supported. Therefore, for example, the `::-webkit-scrollbar`
   pseudoelement in the example below will not work.
 </p>
 
@@ -98,7 +98,7 @@ See <a href="https://github.com/w3c/csswg-drafts/issues/4530" target="_blank" re
 
 ### Structural pseudo-classes
 
-Most pseudo-classes are supported using parts, but  <a href="https://www.w3.org/TR/selectors-4/#structural-pseudos" target="_blank" rel="noopener noreferrer">structural pseudo-classes</a> are not supported. An example of structural pseudo-classes that do not work is given below.
+Most pseudo-classes are supported using parts, but <a href="https://www.w3.org/TR/selectors-4/#structural-pseudos" target="_blank" rel="noopener noreferrer">structural pseudo-classes</a> are not supported. An example of structural pseudo-classes that do not work is given below.
 
 ```css
 /* Not supported */

@@ -16,7 +16,7 @@ import Slots from '@ionic-internal/component-api/v1/card-title/slots.md';
 
 The Card Title element is a component designed for use within the [Card Header](../card-header) element and displays the title of the card, allowing the user to quickly identify its subject or contents.
 
-For more information on using Card Title, navigate to the [Card](../card) element documentation.
+For more information on using Card Title, navigate to the [Card](../card) element documentation
 
 ## Attributes and Properties
 

@@ -1,5 +1,5 @@
 ---
-title: Colors
+title: Paints
 initialTab: Preview
 inlineHtmlPreviews: true
 ---
@@ -32,7 +32,7 @@ In most elements it is possible to set the color of the element using the `color
 
 ## Adjusting the existing colour
 
-Adjusting the value of one of the colors of the color palette is achieved by setting the CSS property. For example, you would use the property below to modify the value of the primary color at <CodeColor color="#FFd945">#FFd945</CodeColor> :
+Adjusting the value of one of the colors of the color palette is achieved by setting the CSS property. For example, you would use the property below to adjust the primary color value to <CodeColor color="#FFd945">#FFd945</CodeColor>:
 
 ```css
 :root {
@@ -44,7 +44,7 @@ Adjusting the value of one of the colors of the color palette is achieved by set
 
 Color can be added for use throughout the application by setting the `color` property on the WebJET component or by styling with CSS.
 
-To incorporate a new color into the color palette, start by creating its CSS variable at the root level. For example, if you want to add a color named `coral`, with the value <CodeColor color="#FF7F50">#FF7F50</CodeColor> you need to define the variable as follows:
+To incorporate a new color into the color palette, start by creating its CSS variable at the root level. For example, if you want to add a color named `coral`, with value <CodeColor color="#FF7F50">#FF7F50</CodeColor>, you need to define the variable as follows:
 
 ```css
 :root {

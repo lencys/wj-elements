@@ -1,5 +1,5 @@
 ---
-title: Themes
+title: Templates
 ---
 
 import CodeColor from '@components/page/theming/CodeColor';

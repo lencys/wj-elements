@@ -23,11 +23,17 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 This component provides a simple way to display icons from a set of SVG images, while allowing various customization options. WebJET Elements uses the Tabler icon set. For a list of all available icons, visit [tabler-icons.io](https://tabler-icons.io/).
 
-## Basic Usage
+## Basic use
 
 import Basic from '@site/static/usage/v1/icon/basic/index.md';
 
 <Basic />
+
+## Style Outline / Filled
+
+import Style from '@site/static/usage/v1/icon/style/index.md';
+
+<Style />
 
 ## Custom
 
@@ -35,15 +41,15 @@ import Custom from '@site/static/usage/v1/icon/custom/index.md';
 
 <Custom />
 
-## Attributes and Properties
+## Atribúty a Vlastnosti
 
 <Props />
 
-## Events
+## Eventy
 
 <Events />
 
-## Methods
+## Metódy
 
 <Methods/>
 
@@ -51,10 +57,10 @@ import Custom from '@site/static/usage/v1/icon/custom/index.md';
 
 <Parts />
 
-## CSS Custom Properties
+## CSS Custom Vlastnosti
 
 <CustomProps />
 
-## Slots
+## Sloty
 
 <Slots />

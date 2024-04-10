@@ -18,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The avatar element is used to visually represent a user or entity. It is usually used as a wrapper and provides a convenient way to display profile pictures, icons, or, if these are not provided, initials.  It supports a variety of configurations including size, grouping multiple avatars, or displaying a dropdown when clicked or a tooltip when pointed to with the mouse.
+The avatar element is used to visually represent a user or entity. It is usually used as a wrapper and provides a convenient way to display profile pictures, icons, or, if these are not provided, initials.
 
 ## Basic usage
 

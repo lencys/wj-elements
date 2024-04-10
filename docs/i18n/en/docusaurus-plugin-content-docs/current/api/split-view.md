@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The Split view element is a versatile component that allows you to create a split view with two or more sections. Provides a divider slider that allows you to dynamically resize sections. Two orientations are supported - vertical and horizontal, and nesting another SplitView to create more complex views.
 
-## Basic Usage
+## Basic use
 
 import Basic from '@site/static/usage/v1/split-view/basic/index.md';
 

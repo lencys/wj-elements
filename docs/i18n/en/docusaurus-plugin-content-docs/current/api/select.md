@@ -19,10 +19,10 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The **Select** element extends the capabilities of the standard HTML select element. Supports one or more selections by adding the `multiple` attribute.
+The **Select** element extends the capabilities of the standard HTML select element. Supports single or multiple selections by adding the `multiple` attribute.
 In addition, it offers features such as deletable selections and custom placeholder text. Visually, the component can display the selected options as chips and includes an input field and a drop-down list of options.
 
-## Basic Usage
+## Basic use
 
 By default, the selection allows the user to select only one option. Including the `Icon` element will also display the selected icon next to the option.
 
@@ -40,7 +40,7 @@ import MultipleSelectionExample from '@site/static/usage/v1/select/basic/multipl
 
 ## Clearable
 
-Adding the `clearable` attribute allows the user to remove all selected options by clicking on the <Icon icon="radix-icons:cross-2" height="14" />icon.
+Adding the `clearable` attribute allows the user to remove all selected options by clicking on the <Icon icon="radix-icons:cross-2" height="14" /> icon.
 
 import Clearable from '@site/static/usage/v1/select/clearable/index.md';
 

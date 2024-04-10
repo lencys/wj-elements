@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 ButtonGroup is used to group [Button](../button) and [Dropdown](../dropdown) elements into more functional units, which will be automatically styled and arranged when inserted inside the element.
 
-## Basic Usage
+## Basic use
 
 Add a `wj-button-group` element to the HTML with the desired attributes and include the desired Button or Dropdown elements inside it.
 
@@ -62,9 +62,9 @@ import SplitButtons from '@site/static/usage/v1/button-group/split-buttons/index
 
 </div>
 
-## Theming
+## Editing styles
 
-### ButtonGroup colors
+### ButtonGroup paints
 
 import Colors from '@site/static/usage/v1/button-group/colors/index.md';
 
