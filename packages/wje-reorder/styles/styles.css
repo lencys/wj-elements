@@ -1,21 +1,15 @@
-.item.dragging {
+.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.wje-reorder-item.dragging {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0) scale(1.15);
     pointer-events: none;
     z-index: 1000;
-  }
-  .insert-animation {
-    animation: scaleit 0.1s ease-in-out;
-  }
-  @keyframes scaleit {
-    from {
-      transform: translate(-50%, 0) scale(1);
-    }
-  }
-  .item.dragging .name {
-    color: rgb(218, 83, 80);
-  }
-  .item.dragging .start{
-    color: rgb(214, 104, 103);
-  }
+}
