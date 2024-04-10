@@ -10,6 +10,8 @@ import { Localizer } from "./utils/localize.js";
 import { sk } from "./translations/sk.js";
 import { en } from "./translations/en.js";
 
+import { default as Accordion } from "./wje-accordion/accordion.js";
+import { default as AccordionItem } from "./wje-accordion-item/accordion-item.js";
 import { default as Animation } from "./wje-animation/animation.js";
 import { default as Aside } from "./wje-aside/aside.js";
 import { default as Avatar } from "./wje-avatar/avatar.js";
@@ -87,8 +89,10 @@ import { default as Tooltip } from "./wje-tooltip/tooltip.js";
 import { default as VisuallyHidden } from "./wje-visually-hidden/visually-hidden.js";
 
 export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks, fetchAndParseCSS, Localizer,
-  Aside,
+  Accordion,
+  AccordionItem,
   Animation,
+  Aside,
   Avatar,
   Badge,
   Breadcrumb,

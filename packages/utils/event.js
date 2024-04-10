@@ -26,7 +26,10 @@ class Event {
     dispatchCustomEvent(element, event, detail) {
         element.dispatchEvent(
             new CustomEvent(event, {
-                detail: detail,
+                detail: detail || {
+                    context: element,
+                    event: self
+                },
                 bubbles: true,
                 composed: true
             })

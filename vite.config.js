@@ -44,6 +44,8 @@ export default defineConfig({
                 "dark": "./packages/themes/dark.css",
                 "fetchAndParseCSS": "./packages/utils/animations.js",
                 "store": "./packages/wje-store/store.js",
+                "accordion": "./packages/wje-accordion/accordion.js",
+                "accordion-item": "./packages/wje-accordion-item/accordion-item.js",
                 "animation": "./packages/wje-animation/animation.js",
                 "aside": "./packages/wje-aside/aside.js",
                 "avatar": "./packages/wje-avatar/avatar.js",

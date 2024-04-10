@@ -43,7 +43,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: ({ versionDocsDirPath, docPath, locale }) => {
             if (locale != 'en') {
-              return 'https://crowdin.com/project/ionic-docs';
+              return 'https://crowdin.com/project/wje';
             }
             let match;
             if ((match = docPath.match(/api\/(.*)\.md/)) != null) {
