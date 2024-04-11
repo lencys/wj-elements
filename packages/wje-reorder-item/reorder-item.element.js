@@ -1,3 +1,5 @@
+// ReorderItem.js
+
 import { default as WJElement } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
@@ -27,8 +29,8 @@ export default class ReorderItem extends WJElement {
         element.classList.add("name");
 
         let start = document.createElement("slot");
-        start.setAttribute("name", "start");
-        start.classList.add("start");
+        start.setAttribute("name", "handle");
+        start.classList.add("handle");
 
         wrapper.appendChild(start);
         wrapper.appendChild(element);
@@ -42,4 +44,3 @@ export default class ReorderItem extends WJElement {
         console.log("www");
     }
 }
-

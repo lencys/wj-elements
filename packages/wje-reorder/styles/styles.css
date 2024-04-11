@@ -1,15 +1,8 @@
 .container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
+    max-width: 500px;
+    width: 100%;
 
-.wje-reorder-item.dragging {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0) scale(1.15);
-    pointer-events: none;
-    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
 }
