@@ -59,126 +59,140 @@ export default class Reorder extends WJElement {
    * Overrides the `afterDraw` method of the `WJElement` class to handle the drag and drop events.
    */
   afterDraw() {
-    const DnD = {
-      dragEl: null,
-      prevRect: null,
-
-      /**
-       * Handles the drag start event.
-       * @param {DragEvent} e - The drag event.
-       */
-      onDragStart(e) {
-        DnD.dragEl = this;
-        DnD.prevRect = DnD.dragEl.getBoundingClientRect();
-        e.dataTransfer.effectAllowed = "move";
-        e.dataTransfer.setData("text/html", `${DnD.dragEl.innerHTML}`);
-        DnD.dragEl.style.opacity = "0.5";
-      },
-
-      /**
-       * Handles the drag over event.
-       * @param {DragEvent} e - The drag event.
-       */
-      onDragOver(e) {
-        e.preventDefault();
-        const droppedElement = this;
-        if (DnD.dragEl !== droppedElement) {
-          const parent = droppedElement.parentNode;
-          const dragIndex = Array.from(parent.children).indexOf(DnD.dragEl);
-          const dropIndex = Array.from(parent.children).indexOf(droppedElement);
-
-          if (dragIndex < dropIndex) {
-            parent.insertBefore(DnD.dragEl, droppedElement.nextSibling);
-          } else {
-            parent.insertBefore(DnD.dragEl, droppedElement);
-          }
-
-          DnD.dragEl.classList.remove("drag--moving");
-          DnD.dragEl.style.transform = "";
-          document.querySelectorAll(".item").forEach((item) => {
-            item.style.marginTop = "";
-            item.style.marginBottom = "";
-            item.classList.remove("drag--hover");
-          });
-        }
-      },
-
-      /**
-       * Handles the drag enter event.
-       * @param {DragEvent} e - The drag event.
-       */
-      onDragEnter(e) {
-        this.classList.add("drag--hover");
-      },
-
-      /**
-       * Handles the drag leave event.
-       * @param {DragEvent} e - The drag event.
-       */
-      onDragLeave(e) {
-        this.classList.remove("drag--hover");
-      },
-
-      /**
-       * Handles the drop event.
-       * @param {DragEvent} e - The drag event.
-       */
-      onDrop(e) {
-        const droppedElement = this;
-
-        if (DnD.dragEl !== droppedElement) {
-          e.preventDefault();
-
-          const parent = droppedElement.parentNode;
-          const dragIndex = Array.from(parent.children).indexOf(DnD.dragEl);
-          const dropIndex = Array.from(parent.children).indexOf(droppedElement);
-
-          if (dragIndex < dropIndex) {
-            parent.insertBefore(DnD.dragEl, droppedElement.nextSibling);
-          } else {
-            parent.insertBefore(DnD.dragEl, droppedElement);
-          }
-
-          DnD.dragEl.classList.remove("drag--moving");
-          DnD.dragEl.style.transform = "";
-          document.querySelectorAll(".item").forEach((item) => {
-            item.style.marginTop = "";
-            item.style.marginBottom = "";
-            item.classList.remove("drag--hover");
-          });
-        }
-      },
-
-      /**
-       * Handles the drag end event.
-       * @param {DragEvent} e - The drag event.
-       */
-      onDragEnd(e) {
-        DnD.dragEl.classList.remove("drag--moving");
-        DnD.dragEl.style.transform = "";
-        document.querySelectorAll(".item").forEach((item) => {
-          item.classList.remove("drag--hover");
-        });
-
-        DnD.dragEl.style.opacity = "1";
-      },
-    };
-
     const slots = this.shadowRoot.querySelectorAll("slot");
     slots.forEach((slot) => {
       slot.classList.add("item");
       slot.assignedElements().forEach((e) => {
         e.classList.add("item");    
         e.draggable = true;
-        e.addEventListener("dragstart", DnD.onDragStart, false);
-        e.addEventListener("touchstart", DnD.onDragStart, false);
-        e.addEventListener("dragenter", DnD.onDragEnter, false);
-        e.addEventListener("dragover", DnD.onDragOver, false);
-        e.addEventListener("dragleave", DnD.onDragLeave, false);
-        e.addEventListener("drop", DnD.onDrop, false);
-        e.addEventListener("dragend", DnD.onDragEnd, false);
-        e.addEventListener("touchend", DnD.onDragEnd, false);
+        e.addEventListener("dragstart", this.onDragStart.bind(this), false);
+        e.addEventListener("touchstart", this.onDragStart.bind(this), false);
+        e.addEventListener("dragenter", this.onDragEnter.bind(this), false);
+        e.addEventListener("dragover", this.onDragOver.bind(this), false);
+        e.addEventListener("dragleave", this.onDragLeave.bind(this), false);
+        e.addEventListener("drop", this.onDrop.bind(this), false);
+        e.addEventListener("dragend", this.onDragEnd.bind(this), false);
+        e.addEventListener("touchend", this.onDragEnd.bind(this), false);
       });
     });
   }
+
+  /**
+   * Handles the drag start event.
+   * @param {DragEvent} e - The drag event.
+   */
+  onDragStart(e) {
+    this.dragEl = e.currentTarget;
+    this.prevRect = this.dragEl.getBoundingClientRect();
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("text/html", `${this.dragEl.innerHTML}`);
+    this.dragEl.style.opacity = "0.5";
+    this.originalIndex = Array.from(this.dragEl.parentNode.children).indexOf(this.dragEl);
+  }
+
+  /**
+   * Handles the drag over event.
+   * @param {DragEvent} e - The drag event.
+   */
+  onDragOver(e) {
+    e.preventDefault();
+    const droppedElement = e.currentTarget;
+    if (this.dragEl !== droppedElement) {
+      const parent = droppedElement.parentNode;
+      const dragIndex = Array.from(parent.children).indexOf(this.dragEl);
+      const dropIndex = Array.from(parent.children).indexOf(droppedElement);
+
+      if (dragIndex < dropIndex) {
+        parent.insertBefore(this.dragEl, droppedElement.nextSibling);
+      } else {
+        parent.insertBefore(this.dragEl, droppedElement);
+      }
+
+      this.dragEl.classList.remove("drag--moving");
+      this.dragEl.style.transform = "";
+      document.querySelectorAll(".item").forEach((item) => {
+        item.style.marginTop = "";
+        item.style.marginBottom = "";
+        item.classList.remove("drag--hover");
+      });
+    }
+  }
+
+  /**
+   * Handles the drag enter event.
+   * @param {DragEvent} e - The drag event.
+   */
+  onDragEnter(e) {
+    e.currentTarget.classList.add("drag--hover");
+  }
+
+  /**
+   * Handles the drag leave event.
+   * @param {DragEvent} e - The drag event.
+   */
+  onDragLeave(e) {
+    e.currentTarget.classList.remove("drag--hover");
+  }
+
+  /**
+   * Handles the drop event.
+   * @param {DragEvent} e - The drag event.
+   */
+  onDrop(e) {
+    const droppedElement = e.currentTarget;
+
+    if (this.dragEl !== droppedElement) {
+      e.preventDefault();
+
+      const parent = droppedElement.parentNode;
+      const dragIndex = Array.from(parent.children).indexOf(this.dragEl);
+      const dropIndex = Array.from(parent.children).indexOf(droppedElement);
+
+      if (dragIndex < dropIndex) {
+        parent.insertBefore(this.dragEl, droppedElement.nextSibling);
+      } else {
+        parent.insertBefore(this.dragEl, droppedElement);
+      }
+
+      this.dragEl.classList.remove("drag--moving");
+      this.dragEl.style.transform = "";
+      document.querySelectorAll(".item").forEach((item) => {
+        item.style.marginTop = "";
+        item.style.marginBottom = "";
+        item.classList.remove("drag--hover");
+      });
+    }
+  }
+
+  /**
+   * Handles the drag end event.
+   * @param {DragEvent} e - The drag event.
+   */
+  onDragEnd(e) {
+    this.dragEl.classList.remove("drag--moving");
+    this.dragEl.style.transform = "";
+    document.querySelectorAll(".item").forEach((item) => {
+      item.classList.remove("drag--hover");
+    });
+
+    const newIndex = Array.from(this.dragEl.parentNode.children).indexOf(this.dragEl);
+    const newOrder = Array.from(this.dragEl.parentNode.children).map(el => el.textContent || el.innerText);
+
+    this.dispatchChange(this.originalIndex, newIndex, newOrder);
+
+    this.dragEl.style.opacity = "1";
+  }
+
+  dispatchChange(from, to, order) {
+    console.log("FROM:", from);
+    console.log("TO:", to);
+    console.log("ORDER:", order);
+    this.dispatchEvent(
+        new CustomEvent("wje-reorder:change", {
+            from: from,
+            to: to,
+            order: order
+        })
+    );
+  }  
 }
