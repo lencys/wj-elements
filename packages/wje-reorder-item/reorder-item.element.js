@@ -23,7 +23,7 @@ export default class ReorderItem extends WJElement {
 
         let wrapper = document.createElement("div");
         wrapper.classList.add("item");
-        wrapper.setAttribute("part", "native");
+        wrapper.setAttribute("part", "wrapper");
 
         let element = document.createElement("slot");
         element.classList.add("name");
@@ -38,9 +38,5 @@ export default class ReorderItem extends WJElement {
         fragment.appendChild(wrapper);
 
         return fragment;
-    }
-
-    onShow() {
-        console.log("www");
     }
 }
