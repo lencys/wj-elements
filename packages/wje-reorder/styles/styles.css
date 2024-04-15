@@ -9,16 +9,10 @@
     animation: fadeIn 1s ease-in-out;
 }
 
-
 ::slotted(.item) {
-    animation: fadeIn 1s ease-in-out;
+    transition: all 0.5s;
 }
-  
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+
+::slotted(.item:hover) {
+    transform: translateY(-5px);
 }
