@@ -59,6 +59,19 @@ template.innerHTML = `<h1>Avatar</h1>
       </div>
     </div>
     
+    <!-- STATUS -->
+
+    <h3>Status</h3>
+    <div class="playground">
+      <div class="content">
+        <wje-avatar label="Lukáš Ondrejček" initials>
+         <span slot="status">
+          <wje-icon name="check"></wje-icon>
+         </span>
+        </wje-avatar>
+      </div>
+    </div>
+    
     <!-- DROPDOWN -->
 
     <h3>Dropdown</h3>
