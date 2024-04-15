@@ -2,6 +2,7 @@
 // import "./themes/dark.scss";
 // import "./styles/styles.css";
 import { default as WJElement } from "./wje-element/element.js";
+import { event } from "./utils/event.js";
 import { defaultStoreActions, store } from "./wje-store/store.js";
 
 import { bindRouterLinks, withRouterLinks } from './wje-router/plugins/slick-router/middlewares/router-links.js';
@@ -88,7 +89,7 @@ import { default as ToolbarAction } from "./wje-toolbar-action/toolbar-action.js
 import { default as Tooltip } from "./wje-tooltip/tooltip.js";
 import { default as VisuallyHidden } from "./wje-visually-hidden/visually-hidden.js";
 
-export { WJElement, defaultStoreActions, store, bindRouterLinks, withRouterLinks, fetchAndParseCSS, Localizer,
+export { WJElement, defaultStoreActions, store, event, bindRouterLinks, withRouterLinks, fetchAndParseCSS, Localizer,
   Accordion,
   AccordionItem,
   Animation,
