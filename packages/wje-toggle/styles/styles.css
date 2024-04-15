@@ -2,30 +2,6 @@
 [ WJ Toggle ]
 */
 
-:host(.wje-color-primary) {
-  --wje-toggle-color-base: var(--wje-color-primary);
-}
-
-:host(.wje-color-complete) {
-  --wje-toggle-color-base: var(--wje-color-complete);
-}
-
-:host(.wje-color-success) {
-  --wje-toggle-color-base: var(--wje-color-success) !important;
-}
-
-:host(.wje-color-warning) {
-  --wje-toggle-color-base: var(--wje-color-warning);
-}
-
-:host(.wje-color-danger) {
-  --wje-toggle-color-base: var(--wje-color-danger);
-}
-
-:host(.wje-color-info) {
-  --wje-toggle-color-base: var(--wje-color-info);
-}
-
 :host {
   --wje-toggle-color-base: var(--wje-color-contrast-3);
   --wje-toggle-width: 30px;
@@ -39,6 +15,30 @@
   --wje-toggle-handle-shadow-checked:  1px 1px 0 rgba(0,0,0,0.08), -3px 3px 6px rgba(0,0,0,0.3);
   --wje-toggle-duration: 250ms;
   --wje-toggle-curve: cubic-bezier(.4,0,.2,1);
+}
+
+:host(.wje-color-primary) input:checked + label > .label-wrapper  {
+  --wje-toggle-color-base: var(--wje-color-primary) !important;
+}
+
+:host(.wje-color-complete) input:checked + label > .label-wrapper {
+  --wje-toggle-color-base: var(--wje-color-complete);
+}
+
+:host(.wje-color-success) input:checked + label > .label-wrapper {
+  --wje-toggle-color-base: var(--wje-color-success) !important;
+}
+
+:host(.wje-color-warning) input:checked + label > .label-wrapper {
+  --wje-toggle-color-base: var(--wje-color-warning);
+}
+
+:host(.wje-color-danger) input:checked + label > .label-wrapper {
+  --wje-toggle-color-base: var(--wje-color-danger);
+}
+
+:host(.wje-color-info) input:checked + label > .label-wrapper {
+  --wje-toggle-color-base: var(--wje-color-info);
 }
 
 .native-toggle {
