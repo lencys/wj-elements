@@ -11,7 +11,7 @@ template.innerHTML = `<h1>Toggle</h1>
     <div class="playground">
       <div class="content">
         <wje-item>
-          <wje-toggle>Default Toggle</wje-toggle>
+          <wje-toggle id="default">Default Toggle</wje-toggle>
         </wje-item>
         <wje-item>
           <wje-toggle checked>Checked Toggle</wje-toggle>
@@ -37,7 +37,7 @@ template.innerHTML = `<h1>Toggle</h1>
           <wje-toggle checked>Default Toggle</wje-toggle>
         </wje-item>
         <wje-item>
-          <wje-toggle color="primary" checked>Primary Toggle</wje-toggle>
+          <wje-toggle color="primary">Primary Toggle</wje-toggle>
         </wje-item>
         <wje-item>
           <wje-toggle color="complete" checked>Complete Toggle</wje-toggle>
@@ -85,6 +85,14 @@ template.innerHTML = `<h1>Toggle</h1>
 export default class DemoToggle extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    let defaultInput = this.querySelector("#default");
+
+    this.querySelector("#default").addEventListener("wje-toggle:input", (e) => {
+      console.log("Default Toggle: ", e.target.checked);
+    });
   }
 }
 

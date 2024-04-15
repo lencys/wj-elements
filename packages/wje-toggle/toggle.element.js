@@ -1,4 +1,4 @@
-import { default as WJElement } from "../wje-element/element.js";
+import { default as WJElement, event } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**
@@ -37,6 +37,8 @@ export default class Toggle extends WJElement {
      */
     constructor() {
         super();
+
+        this._checked = false;
     }
 
     /**
@@ -45,6 +47,19 @@ export default class Toggle extends WJElement {
      */
     get disabled() {
         return this.hasAttribute("disabled");
+    }
+
+    /**
+     * @summary Set checked attribute
+     * @returns {boolean} true if the toggle is checked, false otherwise
+     */
+    set checked(value) {
+        this._checked = value;
+
+        if(value)
+            this.setAttribute("checked", "");
+        else
+            this.removeAttribute("checked");
     }
 
     /**
@@ -69,6 +84,10 @@ export default class Toggle extends WJElement {
     static get cssStyleSheet() {
         return styles;
     }
+
+    // static get observedAttributes() {
+    //     return ["checked"];
+    // }
 
     /**
      * @summary Setup attributes
@@ -96,6 +115,8 @@ export default class Toggle extends WJElement {
         input.setAttribute("type", "checkbox");
         input.setAttribute("name", this.name);
         input.setAttribute("id", "input");
+        input.checked = this.hasAttribute("checked");
+        // input.checked = this.checked;
 
         let label = document.createElement("label");
         label.setAttribute("for", "input");
@@ -111,9 +132,6 @@ export default class Toggle extends WJElement {
         if(this.color)
             this.classList.add("wje-color-" + this.color, "wje-color");
 
-        if(this.checked)
-            input.checked = this.checked;
-
         if(this.disabled)
             input.disabled = this.disabled;
 
@@ -124,6 +142,22 @@ export default class Toggle extends WJElement {
 
         fragment.appendChild(element);
 
+        this.input = input;
+
         return fragment;
+    }
+
+    afterDraw() {
+        if (!this.disabled) {
+            this.input.addEventListener("input", (e) => {
+                this.checked = e.target.checked;
+                event.dispatchCustomEvent(this, "wje-toggle:input");
+            });
+
+            this.input.addEventListener("change", (e) => {
+                this.checked = e.target.checked;
+                event.dispatchCustomEvent(this, "wje-toggle:change");
+            });
+        }
     }
 }
