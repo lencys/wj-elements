@@ -85,9 +85,9 @@ export default class Toggle extends WJElement {
         return styles;
     }
 
-    // static get observedAttributes() {
-    //     return ["checked"];
-    // }
+    static get observedAttributes() {
+        return ["checked"];
+    }
 
     /**
      * @summary Setup attributes
