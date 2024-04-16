@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import { event } from "../../packages/utils/event.js";
 
 const template = document.createElement('template');
 
@@ -18,6 +19,23 @@ template.innerHTML = `<style>
       <div class="content">
         <wje-button dialog="open-modal">Open</wje-button>
         <wje-dialog trigger="open-modal" headline="Title">
+          <h4>Lorem ipsum dolor sit amet</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
+          <div slot="footer">
+            <wje-button class="close">Zatvoriť</wje-button>
+            <wje-button id="save" color="primary">Potvrdiť</wje-button>
+          </div>
+        </wje-dialog>
+      </div>
+    </div>
+    
+    <!-- ELEMENT -->
+
+    <h2>Element</h2>
+    <div class="playground">
+      <div class="content">
+        <div id="open-modal-div" dialog="open-modal-div"><p>Open</p></div>
+        <wje-dialog trigger="open-modal-div" headline="Title">
           <h4>Lorem ipsum dolor sit amet</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
           <div slot="footer">
@@ -126,6 +144,16 @@ export default class DemoDialog extends WJElement {
         });
       }
     });
+
+    this.querySelector("#open-modal-div").addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+
+      console.log("TARGET: ", e.target);
+
+      event.dispatchCustomEvent(this, e.target.getAttribute("dialog"));
+    },false);
 
     document.getElementById('save').addEventListener("wje-button:click", (e) => {
       console.log("Save clicked");

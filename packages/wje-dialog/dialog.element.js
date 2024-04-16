@@ -90,18 +90,20 @@ export default class Dialog extends WJElement {
     }
 
     close() {
+        event.dispatchCustomEvent(this.dialog,"wje-dialog:close");
         this.dialog.close();
+        event.dispatchCustomEvent(this.dialog,"wje-dialog:closed");
     }
 
     afterDraw(context, store, params) {
         if(params.trigger) {
             document.addEventListener(params.trigger, () => {
-                event.dispatchCustomEvent(this.dialog,"wje-dialog:click");
+                event.dispatchCustomEvent(this.dialog,"wje-dialog:open");
                 this.dialog.showModal();
 
                 // dispatch event ak je to otvorene
                 if(this.dialog.open) {
-                    event.dispatchCustomEvent(this.dialog,"wje-dialog:open");
+                    event.dispatchCustomEvent(this.dialog,"wje-dialog:opened");
                 }
             });
         }
