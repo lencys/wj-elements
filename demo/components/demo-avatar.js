@@ -69,6 +69,13 @@ template.innerHTML = `<h1>Avatar</h1>
           <wje-icon name="check"></wje-icon>
          </span>
         </wje-avatar>
+        <style>
+          span[slot="status"] {
+            background: var(--wje-color-contrast-lower);
+            border-radius: var(--wje-border-radius-circle);
+            border: 1px solid var(--wje-color-contrast-low);
+          }
+        </style>
       </div>
     </div>
     
