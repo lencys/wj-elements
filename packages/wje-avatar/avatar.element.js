@@ -89,6 +89,17 @@ export default class Avatar extends WJElement {
             }
         }
 
+        let status = document.createElement("slot");
+        status.setAttribute("name", "status");
+        status.setAttribute("part", "status");
+
+        let secondary = document.createElement("slot");
+        secondary.setAttribute("name", "secondary");
+        secondary.setAttribute("part", "secondary");
+
+        element.appendChild(status);
+        element.appendChild(secondary);
+
         fragment.appendChild(element)
 
         return fragment;
