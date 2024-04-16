@@ -98,9 +98,7 @@ export default class Animation extends WJElement {
         this.destroyAnimation();
 
         const element = this.slotEl.assignedElements()[0];
-
         this.animations = await this.getAnimationsArray();
-
         const selected = this.animations.find(k => k.name === this.name);
 
         this.animation = element?.animate(selected.keyframes , {

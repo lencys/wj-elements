@@ -21,7 +21,6 @@ template.innerHTML = `
           <wje-main>Main</wje-main>
           <wje-footer>Footer</wje-footer>
         </wje-container>
-        <wje-animation></wje-animation>
         <wje-container>
           <wje-aside width="200px">Aside</wje-aside>
           <wje-main>Main</wje-main>

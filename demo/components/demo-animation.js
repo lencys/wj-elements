@@ -11,7 +11,7 @@ template.innerHTML = `<h1>Animation</h1>
     <div class="playground">
       <div class="content" style="flex-direction: column;">
       
-        <wje-animation name="heartBeat" delay="500" duration="50">
+        <wje-animation name="heartBeat" delay="1000" duration="1000">
           <wje-avatar>
             <wje-img src="/assets/img/avatar.svg"></wje-img>
           </wje-avatar>
@@ -37,7 +37,7 @@ export default class DemoAnimation extends WJElement {
 
   async afterDraw() {
     // let keyframes = await fetchAndParseCSS();
-
+    const animationElement = this.querySelector('wje-animation');
     const select = this.querySelector('wje-select');
     let keyframes = await this.querySelector('wje-animation').getAnimationsArray();
     keyframes.map(obj => {
@@ -50,18 +50,18 @@ export default class DemoAnimation extends WJElement {
     });
 
     select.addEventListener('wje:option-change', (e) => {
-      this.querySelector('wje-animation').setAttribute('name', e.detail.context.value);
+      animationElement.setAttribute('name', e.detail.context.value);
     });
 
 
     this.querySelector('#stop').addEventListener('click', (e) => {
-      this.querySelector('wje-animation').cancel();
+      animationElement.cancel();
     });
 
     this.querySelector('#play').addEventListener('click', (e) => {
-      this.querySelector('wje-animation').play();
+      animationElement.play();
     });
-    breadcrumb.cssStyleSheet
+    // breadcrumb.cssStyleSheet
   }
 }
 
