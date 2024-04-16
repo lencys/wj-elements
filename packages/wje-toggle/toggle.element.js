@@ -37,8 +37,17 @@ export default class Toggle extends WJElement {
      */
     constructor() {
         super();
+    }
 
-        this._checked = false;
+    /**
+     * @summary Set checked attribute
+     * @returns {boolean} true if the toggle is checked, false otherwise
+     */
+    set disabled(value) {
+        if(value)
+            this.setAttribute("disabled", "");
+        else
+            this.removeAttribute("disabled");
     }
 
     /**
@@ -54,8 +63,6 @@ export default class Toggle extends WJElement {
      * @returns {boolean} true if the toggle is checked, false otherwise
      */
     set checked(value) {
-        this._checked = value;
-
         if(value)
             this.setAttribute("checked", "");
         else
@@ -86,7 +93,7 @@ export default class Toggle extends WJElement {
     }
 
     static get observedAttributes() {
-        return ["checked"];
+        return ["checked", "disabled"];
     }
 
     /**
@@ -116,6 +123,7 @@ export default class Toggle extends WJElement {
         input.setAttribute("name", this.name);
         input.setAttribute("id", "input");
         input.checked = this.hasAttribute("checked");
+        input.disabled = this.hasAttribute("disabled");
         // input.checked = this.checked;
 
         let label = document.createElement("label");
@@ -131,9 +139,6 @@ export default class Toggle extends WJElement {
 
         if(this.color)
             this.classList.add("wje-color-" + this.color, "wje-color");
-
-        if(this.disabled)
-            input.disabled = this.disabled;
 
         element.appendChild(input);
         element.appendChild(label);
