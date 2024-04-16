@@ -101,7 +101,7 @@ export default class Reorder extends WJElement {
       const dropIndex = Array.from(parent.children).indexOf(droppedElement);
       const moveDirection = dragIndex < dropIndex ? 1 : -1; // 1 for moving down, -1 for moving up
       droppedElement.style.transform = `translateY(${
-        moveDirection === 1 ? "-25px" : "25px"
+        moveDirection === 1 ? "-15px" : "15px"
       })`;
       droppedElement.style.transition = "transform .3s";
       if (dragIndex < dropIndex) {
@@ -111,7 +111,6 @@ export default class Reorder extends WJElement {
       }
 
       this.dragEl.classList.remove("drag--moving");
-      this.dragEl.style.transform = "";
       document.querySelectorAll(".item").forEach((item) => {
         item.classList.remove("drag--hover");
       });
@@ -168,8 +167,7 @@ export default class Reorder extends WJElement {
     const newIndex = Array.from(parent.children).indexOf(this.dragEl);
     parent.childNodes.forEach((item) => {
       if (item.nodeType === 1) {
-        item.style.marginBottom = "";
-        item.style.marginTop = "";
+        item.style.transform = "";
       }
     });
     const newOrder = Array.from(parent.children).map(
