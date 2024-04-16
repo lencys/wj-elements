@@ -1,6 +1,5 @@
 import { default as WJElement, event } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
-import svgIcon from "/assets/img/icons/outline/chevron-down.svg";
 
 /**
  * @summary This class represents an Accordion Item element, extending the WJElement class.
@@ -60,47 +59,33 @@ export default class AccordionItem extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-        // <input type="checkbox" id="label" />
-        // <label for="label">
-        let native = document.createElement("details");
+        let native = document.createElement("div");
         native.setAttribute("part", "native");
-        native.setAttribute("open", "");
-
-        let summary = document.createElement("summary");
-        summary.setAttribute("part", "summary");
-
-        let input = document.createElement("input");
-        input.setAttribute("type", "checkbox");
-        input.setAttribute("id", "label");
-
-        let label = document.createElement("label");
-        label.setAttribute("for", "label");
+        native.classList.add("native-accordion-item");
 
         let headline = document.createElement("slot");
         headline.setAttribute("name", "headline");
         headline.setAttribute("id", "headline");
 
+        let toggle = document.createElement("slot");
+        toggle.setAttribute("name", "toggle");
+        toggle.setAttribute("id", "toggle");
+
         let content = document.createElement("div");
-        content.classList.add("content");
+        content.setAttribute("id", "content");
 
         let slot = document.createElement("slot");
         slot.setAttribute("name", "content");
 
-        summary.appendChild(label);
+        content.appendChild(slot); // Append the slot to the content div.
 
-        label.appendChild(headline);
-
-        content.appendChild(slot);
-
-        native.appendChild(summary);
+        native.appendChild(headline);
         native.appendChild(content);
 
-        fragment.appendChild(input);
         fragment.appendChild(native);
 
-        this.input = input;
-        this.summary = summary;
-        this.native = native;
+        this.headline = headline;
+        this.toggle = toggle;
 
         return fragment;
     }
@@ -108,27 +93,42 @@ export default class AccordionItem extends WJElement {
     /**
      * Method to execute after the Accordion Item element is drawn.
      */
-    afterDraw(context, store, params) {
-        this.summary.style.setProperty("--wje-accordion-marker", `url(${svgIcon})`);
-        this.summary.style.setProperty("--wje-accordion-marker-rotate", '180deg');
+    afterDraw() {
+        if(!this.classList.contains("expanded"))
+            this.classList.add("collapsed");
 
-        this.native.addEventListener("toggle", (e) => {
-            // e.stopPropagation();
-            console.log("toggle", this.native.open, this.input.checked);
-            if (this.native.open) {
+        this.headline.addEventListener("click", () => {
+            if(this.classList.contains("collapsed")) {
+                this.collapse();
                 event.dispatchCustomEvent(this, "wje-accordion-item:open");
             } else {
+                this.expand();
                 event.dispatchCustomEvent(this, "wje-accordion-item:close");
             }
         });
     }
 
+    // afterDraw(context, store, params) {
+    //     this.summary.style.setProperty("--wje-accordion-marker", `url(${svgIcon})`);
+    //     this.summary.style.setProperty("--wje-accordion-marker-rotate", '180deg');
+    //
+    //     this.native.addEventListener("toggle", (e) => {
+    //         e.stopPropagation();
+    //         if (this.native.open) {
+    //             event.dispatchCustomEvent(this, "wje-accordion-item:open");
+    //         } else {
+    //             event.dispatchCustomEvent(this, "wje-accordion-item:close");
+    //         }
+    //     });
+    // }
+
     collapse = () => {
-        this.input.checked = false;
-        this.native.open = false;
+        this.classList.remove("expanded");
+        this.classList.add("collapsed");
     }
 
-    onOpen = () => {
-        this.native.open = true;
+    expand = () => {
+        this.classList.remove("collapsed");
+        this.classList.add("expanded");
     }
 }

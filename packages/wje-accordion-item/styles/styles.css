@@ -69,74 +69,71 @@
 }
 
 :host {
-    --wje-accordion-marker: '🎮';
-    --wje-accordion-marker-rotate: 90deg;
     display: block;
     margin-bottom: .5rem;
 }
 
-details {
+/*:host(.expanding) #content {*/
+/*    display: none;*/
+/*}*/
+
+/*:host(.collapsing) #content {*/
+/*    max-height: 0;*/
+/*}*/
+
+.native-accordion-item {
     display: block;
     background-color: var(--wje-accordion-background);
     border-radius: var(--wje-border-radius-small);
     border-width: 1px;
     border-style: solid;
     border-color: var(--wje-accordion-border);
-    overflow: hidden;
-    transition: max-height 200ms ease-in-out, background-color 200ms ease-in-out;
-    max-height: calc(2 * .75rem + 1.1rem);
+    transition: background-color 200ms ease-in-out;
     &:hover {
         background-color: var(--wje-accordion-background-hover);
         border-color: var(--wje-accordion-border-hover);
     }
 }
 
-.content {
-    padding: 0 .75rem .75rem .75rem;
-    color: var(--wje-accordion-content-color);
-    font-size: var(--wje-font-size)
+:host(.expanded) .native-accordion-item {
+    background-color: var(--wje-accordion-background-expanded);
+    border-color: var(--wje-accordion-border-expanded);
 }
 
-summary {
+#headline {
     display: block;
 }
 
-input {
-    display: none;
-}
-
-label {
-    display: flex;
+#headline::slotted(span) {
+    display: block;
     text-transform: uppercase;
     font-size: var(--wje-font-size) !important;
     color: var(--wje-accordion-headline-color);
     line-height: normal !important;
     margin: 0 !important;
     padding: .75rem;
-    background: transparent;
-    &:hover {
-        cursor: pointer;
-    }
-    &::after {
-        display: flex;
-        width: 1rem;
-        height: 1rem;
-        content: var(--wje-accordion-marker);
-        transform-origin: center center 0;
-        margin: 0 0 0 auto;
-        align-self: center;
-    }
 }
 
-input:checked + details,
-details:has(input:checked) {
-    max-height: 1000px;
-    opacity: 1;
-    background-color: var(--wje-accordion-background-expanded);
-    border-color: var(--wje-accordion-border-expanded);
+#content {
+    display: block;
+    color: var(--wje-accordion-content-color);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 200ms ease-in-out;
 }
 
-input:checked + details label::after,
-details:has(input:checked) label::after {
-    transform: rotate(var(--wje-accordion-marker-rotate));
+#content slot{
+    display: block;
+    margin: 0 .75rem .75rem .75rem;
+}
+
+:host(.collapsed) #content {
+    /*display: none;*/
+    /*max-height: 0;*/
+}
+
+:host(.expanded) #content {
+    /*display: block;*/
+    /*padding: 0 .75rem .75rem .75rem;*/
+    max-height: 100vh;
 }

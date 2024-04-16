@@ -50,15 +50,15 @@ template.innerHTML = `<h1>Accordion</h1>
       <div class="content" style="flex-direction: column;">
         <wje-accordion multiple index="3">
           <wje-accordion-item  color="info">
-            <h2 slot="headline">Headline</h2>
+            <span slot="headline">Headline</span>
             <div slot="content">Click headers to expand/collapse content that is broken into logical sections, much like tabs. Optionally, toggle sections open/closed on mouseover.</div>
           </wje-accordion-item>
           <wje-accordion-item color="info">
-            <h2 slot="headline">Headline</h2>
+            <span slot="headline">Headline</span>
             <div slot="content">Click headers to expand/collapse content that is broken into logical sections, much like tabs. Optionally, toggle sections open/closed on mouseover.</div>
           </wje-accordion-item>
           <wje-accordion-item color="info">
-            <h2 slot="headline">Headline</h2>
+            <span slot="headline">Headline</span>
             <div slot="content">Click headers to expand/collapse content that is broken into logical sections, much like tabs. Optionally, toggle sections open/closed on mouseover.</div>
           </wje-accordion-item>
         </wje-accordion>
