@@ -70,7 +70,10 @@ export default class Button extends WJElement {
      * @param {boolean} value - The value to set
      */
     set disabled(value) {
-        this.setAttribute("disabled", "");
+        if(value)
+            this.setAttribute("disabled", "");
+        else
+            this.removeAttribute("disabled");
     }
 
     /**
