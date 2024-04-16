@@ -221,7 +221,7 @@ export default class DemoCarousel extends WJElement {
       });
     });
 
-    this.querySelector("wje-dialog").addEventListener("wje-dialog:open", (e) => {
+    this.querySelector("wje-dialog").addEventListener("wje-dialog:opened", (e) => {
       e.target.querySelector("wje-carousel").goToSlide(0, "auto");
     });
   }
