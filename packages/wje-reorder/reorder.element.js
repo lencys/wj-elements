@@ -83,7 +83,9 @@ export default class Reorder extends WJElement {
     e.dataTransfer.effectAllowed = "move";
     e.dataTransfer.setData("text/html", `${this.dragEl.innerHTML}`);
     this.dragEl.style.opacity = "0.5";
-    this.originalIndex = [...this.dragEl.parentNode.children].indexOf(this.dragEl);
+    this.originalIndex = [...this.dragEl.parentNode.children].indexOf(
+      this.dragEl
+    );
   }
 
   /**
@@ -97,19 +99,17 @@ export default class Reorder extends WJElement {
       const parent = droppedElement.parentNode;
       const dragIndex = Array.from(parent.children).indexOf(this.dragEl);
       const dropIndex = Array.from(parent.children).indexOf(droppedElement);
+      const moveDirection = dragIndex < dropIndex ? 1 : -1; // 1 for moving down, -1 for moving up
+      droppedElement.style.transform = `translateY(${
+        moveDirection === 1 ? "-25px" : "25px"
+      })`;
+      droppedElement.style.transition = "transform .3s";
       if (dragIndex < dropIndex) {
         parent.insertBefore(this.dragEl, droppedElement.nextSibling);
       } else {
         parent.insertBefore(this.dragEl, droppedElement);
       }
-      const items = parent.children;
-      Array.from(items).forEach((item) => {
-        if (item !== this.dragEl) {
-          const margin = droppedElement === item ? "10px" : "";
-          item.style.marginBottom = margin;
-          item.style.marginTop = margin;
-        }
-      });
+
       this.dragEl.classList.remove("drag--moving");
       this.dragEl.style.transform = "";
       document.querySelectorAll(".item").forEach((item) => {
@@ -142,6 +142,8 @@ export default class Reorder extends WJElement {
     const droppedElement = e.currentTarget;
     if (this.dragEl !== droppedElement) {
       e.preventDefault();
+      droppedElement.style.transform = "";
+      droppedElement.style.transition = "";
       const parent = droppedElement.parentNode;
       const dragIndex = Array.from(parent.children).indexOf(this.dragEl);
       const dropIndex = Array.from(parent.children).indexOf(droppedElement);
@@ -160,17 +162,21 @@ export default class Reorder extends WJElement {
   onDragEnd(e) {
     this.dragEl.classList.remove("drag--moving");
     this.dragEl.style.transform = "";
-    document.querySelectorAll(".item").forEach((item) => {
-      item.style.marginTop = "";
-      item.style.marginBottom = "";
+    this.dragEl.style.transition = "";
+
+    const parent = this.dragEl.parentNode;
+    const newIndex = Array.from(parent.children).indexOf(this.dragEl);
+    parent.childNodes.forEach((item) => {
+      if (item.nodeType === 1) {
+        item.style.marginBottom = "";
+        item.style.marginTop = "";
+      }
     });
-    const newIndex = Array.from(this.dragEl.parentNode.children).indexOf(
-      this.dragEl
-    );
-    const newOrder = Array.from(this.dragEl.parentNode.children).map(
+    const newOrder = Array.from(parent.children).map(
       (el) => el.textContent || el.innerText
     );
     this.dispatchChange(this.originalIndex, newIndex, newOrder);
+
     this.dragEl.style.opacity = "1";
   }
 
