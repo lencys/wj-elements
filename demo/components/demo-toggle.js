@@ -27,6 +27,25 @@ template.innerHTML = `<h1>Toggle</h1>
         </wje-item>
       </div>
     </div>
+    
+    <!-- PLACEMENT -->
+
+    <h3>Placement</h3>
+    <div class="playground">
+      <div class="content">
+        <wje-toggle id="placement" placement="end" color="success">
+          <wje-icon name="list"></wje-icon>Placement Toggle
+        </wje-toggle>
+        <style>
+          #placement {
+            width: 100%;
+            wje-icon {
+              margin-inline: 0 .5rem;
+            }
+          }
+        </style>
+      </div>
+    </div>
 
     <!-- COLORS -->
 

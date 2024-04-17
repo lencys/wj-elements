@@ -124,7 +124,6 @@ export default class Toggle extends WJElement {
         input.setAttribute("id", "input");
         input.checked = this.hasAttribute("checked");
         input.disabled = this.hasAttribute("disabled");
-        // input.checked = this.checked;
 
         let label = document.createElement("label");
         label.setAttribute("for", "input");
@@ -142,8 +141,15 @@ export default class Toggle extends WJElement {
 
         element.appendChild(input);
         element.appendChild(label);
-        label.appendChild(labelWrapper);
-        label.appendChild(text);
+
+        if(this.placement === "end") {
+            element.classList.add("end");
+            label.appendChild(text);
+            label.appendChild(labelWrapper);
+        } else {
+            label.appendChild(labelWrapper);
+            label.appendChild(text);
+        }
 
         fragment.appendChild(element);
 

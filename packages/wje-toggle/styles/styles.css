@@ -7,8 +7,8 @@
   --wje-toggle-width: 30px;
   --wje-toggle-height: 18px;
   --wje-toggle-border-radius: 50px;
-  --wje-toggle-handle-width: 14px;
-  --wje-toggle-handle-height: 14px;
+  --wje-toggle-handle-width: 13px;
+  --wje-toggle-handle-height: 13px;
   --wje-toggle-handle-border-radius: 9px;
   --wje-toggle-handle-color: #fff;
   --wje-toggle-handle-shadow:  1px 0 1px 0.5px rgba(0,0,0,0.12), 2px 4px 6px rgba(0,0,0,0.2);
@@ -44,13 +44,15 @@
 .native-toggle {
   display: flex;
 }
+
 label {
   display: flex;
   cursor: pointer;
   align-items: center;
   user-select: none;
   .label-wrapper {
-    width: var(--wje-toggle-width);
+    width: var(--wje-toggle-width) !important;
+    min-width: var(--wje-toggle-width);
     height: var(--wje-toggle-height);
     position: relative;
     display: flex;
@@ -100,6 +102,7 @@ input[type="checkbox"][disabled] {
     }
   }
 }
+
 input[type="checkbox"]{
   position: absolute;
   z-index: -1;
@@ -156,4 +159,21 @@ input[type="checkbox"]{
 
 :host .text {
   margin-inline: .5rem 0;
+}
+
+/*Placememt*/
+:host .end {
+  label {
+    width: 100%;
+  }
+  .text {
+    margin-inline: 0 .5rem;
+    width: 100%;
+  }
+}
+
+slot {
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
