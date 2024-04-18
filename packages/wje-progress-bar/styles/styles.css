@@ -34,6 +34,8 @@
   --wje-progress-bar-color: var(--wje-color-contrast-6);
   --wje-progress-bar-text-size: .75rem;
   --wje-progress-bar-text-color: var(--wje-color);
+  --wje-progress-bar-stroke: var(--wje-color-contrast-3);
+  stroke: var(--wje-progress-bar-stroke);
   .progress {
     position: relative;
     display: flex;
@@ -60,6 +62,7 @@
     dominant-baseline: middle;
     font-size: var(--wje-progress-bar-text-size);
     fill: var(--wje-progress-bar-text-color);
+    stroke: var(--wje-progress-bar-text-color);
   }
 }
 

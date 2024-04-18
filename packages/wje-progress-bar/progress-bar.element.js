@@ -192,7 +192,7 @@ export default class ProgressBar extends WJElement {
             bar.setAttribute("y2", this.stroke / 2);
         }
 
-        background.setAttribute("stroke", "#e0e0e0");
+        // background.setAttribute("stroke", "#e0e0e0");
         background.setAttribute("stroke-linecap", this.linecap);
         background.setAttribute("stroke-width", this.stroke + "px");
 
