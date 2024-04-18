@@ -201,7 +201,7 @@ export default class Button extends WJElement {
         else
             this.classList.add("wje-color-default", "wje-color");
 
-        if(this.hasAttribute("caret") || this.hasAttribute("only-caret")) {
+        if(this.querySelectorAll('[slot=caret]').length < 1 && this.hasAttribute("caret") || this.hasAttribute("only-caret")) {
             let i = document.createElement("wje-icon");
             i.style.setProperty("--wje-icon-size", "14px");
             i.setAttribute("slot", "caret");
