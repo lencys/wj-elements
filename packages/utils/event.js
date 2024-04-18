@@ -51,11 +51,10 @@ class Event {
     addListener (element, originalEvent, event, listener, options) {
         if(!element)
             return;
-        console.log('1st:',element);
+
         if(!Array.isArray(element))
             element = [element];
 
-        console.log('2nd:',element);
         element.forEach((el) => {
             this.writeRecord(el, originalEvent, event, listener, options);
         });

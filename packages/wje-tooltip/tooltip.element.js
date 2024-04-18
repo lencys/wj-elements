@@ -137,11 +137,17 @@ export default class Tooltip extends WJElement {
      */
     onShow = () => {
         Promise.resolve(this.beforeShow(this)).then((res) => {
-            if(res)
-                this.native.innerHTML = res;
+            if (!res) {
+                throw new Error("beforeShow returned false");
+            }
+
+            this.native.innerHTML = res;
 
             this.popup.show(); // Show tooltip
             Promise.resolve(this.afterShow(this));
+        }).catch((error) => {
+            // ak je nejaka chyba tak to len zatvorime
+            this.popup.hide();
         });
     }
 
