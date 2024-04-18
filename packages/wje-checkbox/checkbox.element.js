@@ -35,18 +35,32 @@ export default class Checkbox extends WJElement {
      */
     constructor() {
         super();
-
-        // Represents the checked state of the checkbox.
-        this._checked = false;
     }
 
     /**
-     * Setter for the checked property.
-     * @param {boolean} value - The new checked state.
+     * @summary Set checked attribute
+     * @returns {boolean} true if the toggle is checked, false otherwise
+     */
+    set disabled(value) {
+        if(value)
+            this.setAttribute("disabled", "");
+        else
+            this.removeAttribute("disabled");
+    }
+
+    /**
+     * @summary Get disabled attribute
+     * @returns {boolean} true if the toggle is disabled, false otherwise
+     */
+    get disabled() {
+        return this.hasAttribute("disabled");
+    }
+
+     /**
+     * @summary Set checked attribute
+     * @returns {boolean} true if the toggle is checked, false otherwise
      */
     set checked(value) {
-        this._checked = value;
-
         if(value)
             this.setAttribute("checked", "");
         else
@@ -54,14 +68,11 @@ export default class Checkbox extends WJElement {
     }
 
     /**
-     * Getter for the checked property.
-     * @returns {boolean} The current checked state.
+     * @summary Get checked attribute
+     * @returns {boolean} true if the toggle is checked, false otherwise
      */
     get checked() {
-        if(this.hasAttribute("checked"))
-            this._checked = true;
-
-        return this._checked;
+        return this.hasAttribute("checked");
     }
 
     /**
@@ -75,6 +86,10 @@ export default class Checkbox extends WJElement {
      */
     static get cssStyleSheet() {
         return styles;
+    }
+
+    static get observedAttributes() {
+        return ["checked", "disabled"];
     }
 
     /**
@@ -129,17 +144,27 @@ export default class Checkbox extends WJElement {
      * Adds an event listener after drawing the checkbox.
      */
     afterDraw() {
-        event.addListener(this.input, "input", null, this.inputEvent);
+        if (!this.disabled) {
+            this.input.addEventListener("input", (e) => {
+                this.checked = e.target.checked;
+                event.dispatchCustomEvent(this, "wje-toggle:input");
+            });
+
+            this.input.addEventListener("change", (e) => {
+                this.checked = e.target.checked;
+                event.dispatchCustomEvent(this, "wje-toggle:change");
+            });
+        }
     }
 
     /**
      * Handles the input event.
      * @param {Event} e - The event.
      */
-    inputEvent = (e) => {
-        this.checked = this.input.checked;
-        event.dispatchCustomEvent(this, "wje-checkbox:change");
-    }
+    // inputEvent = (e) => {
+    //     this.checked = this.input.checked;
+    //     event.dispatchCustomEvent(this, "wje-checkbox:change");
+    // }
 
     /**
      * Removes the event listener when the checkbox is disconnected.
