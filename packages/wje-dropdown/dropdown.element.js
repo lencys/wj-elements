@@ -69,7 +69,7 @@ export default class Dropdown extends WJElement {
             event.addListener(this.anchorSlot, "mouseleave", null, this.onHide);
         }
 
-        event.addListener(this.popup, "click", "wje-menu-item:click", this.onHide);
+        event.addListener(Array.from(this.querySelectorAll("wje-menu-item")), "click", "wje-menu-item:click", this.onHide);
     }
 
     /**

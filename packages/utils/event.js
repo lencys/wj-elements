@@ -51,13 +51,22 @@ class Event {
     addListener (element, originalEvent, event, listener, options) {
         if(!element)
             return;
+        console.log('1st:',element);
+        if(!Array.isArray(element))
+            element = [element];
 
+        console.log('2nd:',element);
+        element.forEach((el) => {
+            this.writeRecord(el, originalEvent, event, listener, options);
+        });
+    }
+
+    writeRecord (element, originalEvent, event, listener, options) {
         let record = this.findRecordByElement(element);
 
         if (record) {
             record.listeners[originalEvent] = record.listeners[originalEvent] || [];
-        }
-        else {
+        } else {
             record = {
                 element: element,
                 listeners: {}
@@ -68,6 +77,7 @@ class Event {
 
             this.customEventStorage.push(record);
         }
+
         listener = listener || this.#dispatch;
         let obj = {
             listener: listener,
@@ -76,7 +86,7 @@ class Event {
         };
 
         // skontrolujeme ci uz tento listener neexistuje
-        if(!this.listenerExists(element, originalEvent, obj)) {
+        if (!this.listenerExists(element, originalEvent, obj)) {
             record.listeners[originalEvent].push(obj);
 
             element.addEventListener(originalEvent, listener);

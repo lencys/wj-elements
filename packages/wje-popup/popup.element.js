@@ -153,7 +153,9 @@ export default class Popup extends WJElement {
         }
 
         event.addListener(this.anchorEl, "click", null, (e) => {
+            console.log("SOM V POPUP EC+VENET CLICK", this.hasAttribute("active"), this.hasAttribute("disabled"));
             if(this.hasAttribute("disabled")) return;
+
             this.showHide();
         }, { stopPropagation: true });
 
@@ -267,6 +269,7 @@ export default class Popup extends WJElement {
      */
     show() {
         event.dispatchCustomEvent(this,"wje-popup:show");
+
         this.native.classList.add("popup-active");
 
         this.cleanup = autoUpdate(this.anchorEl, this.native, () => {

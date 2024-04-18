@@ -99,12 +99,15 @@ template.innerHTML = `<h1>Avatar</h1>
             <h5 style="margin: 0;">Petr Rahman</h5>
             <p class="hint-text">Frontend Developer</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
+            <wje-divider></wje-divider>
+            <wje-menu-item>Link A</wje-menu-item>
+            <wje-menu-item>Link B</wje-menu-item>
           </wje-menu>
         </wje-dropdown>
         <style>
           .custom-menu {
             width: 200px;
-            padding: 1rem 1rem 0;
+            padding: 1rem 1rem 1rem;
           }
         </style>
       </div>
