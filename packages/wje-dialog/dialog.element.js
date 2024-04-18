@@ -17,6 +17,14 @@ export default class Dialog extends WJElement {
         return this.getAttribute("placement") || "slide-up";
     }
 
+    set async(value) {
+        this.setAttribute("async", "");
+    }
+
+    get async() {
+        return this.hasAttribute("async");
+    }
+
     className = "Dialog";
 
     static get cssStyleSheet() {
@@ -49,7 +57,7 @@ export default class Dialog extends WJElement {
         close.setAttribute("size", "small");
         close.classList.add("close");
         close.addEventListener("click", () => {
-            dialog.close();
+            this.close();
         });
         close.appendChild(icon);
 
@@ -90,22 +98,46 @@ export default class Dialog extends WJElement {
     }
 
     close() {
-        event.dispatchCustomEvent(this.dialog,"wje-dialog:close");
-        this.dialog.close();
-        event.dispatchCustomEvent(this.dialog,"wje-dialog:closed");
+        this.onClose();
     }
 
     afterDraw(context, store, params) {
+        this.button = document.querySelector(`[dialog=${params.trigger}]`);
         if(params.trigger) {
-            document.addEventListener(params.trigger, () => {
-                event.dispatchCustomEvent(this.dialog,"wje-dialog:open");
-                this.dialog.showModal();
-
-                // dispatch event ak je to otvorene
-                if(this.dialog.open) {
-                    event.dispatchCustomEvent(this.dialog,"wje-dialog:opened");
-                }
-            });
+            event.addListener(this.button, params.trigger, null, this.onOpen);
         }
+    }
+
+    beforeOpen() {}
+
+    afterOpen() {}
+
+    beforeClose() {}
+
+    afterClose() {}
+
+    onOpen = (e) => {
+        Promise.resolve(this.beforeOpen(this)).then((res) => {
+            this.dialog.showModal();  // Now open the dialog
+
+            if(this.dialog.open) {
+                Promise.resolve(this.afterOpen(this));
+            }
+        });
+    }
+
+    onClose = (e) => {
+        Promise.resolve(this.beforeClose(this)).then((res) => {
+            this.dialog.close(); // Now close the dialog
+
+            if(this.dialog.open) {
+                Promise.resolve(this.afterClose(this));
+            }
+        });
+    }
+
+    disconnectedCallback() {
+        event.removeElement(this.button);
+        event.removeElement(this.dialog);
     }
 }

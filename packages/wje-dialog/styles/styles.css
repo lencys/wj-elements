@@ -74,6 +74,10 @@ dialog::backdrop {
   background-color: var(--wje-backdrop);
 }
 
+dialog:focus-visible {
+  outline: none;
+}
+
 :host(.separator) .dialog-header:after {
   content: "";
   height: 1px;

@@ -34,8 +34,8 @@ template.innerHTML = `<style>
     <h2>Element</h2>
     <div class="playground">
       <div class="content">
-        <div id="open-modal-div" dialog="open-modal-div"><p>Open</p></div>
-        <wje-dialog trigger="open-modal-div" headline="Title">
+        <div id="open-modal-button" dialog="open-modal-div"><p>Open</p></div>
+        <wje-dialog trigger="open-modal-div" headline="Title" async>
           <h4>Lorem ipsum dolor sit amet</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
           <div slot="footer">
@@ -145,19 +145,24 @@ export default class DemoDialog extends WJElement {
       }
     });
 
-    this.querySelector("#open-modal-div").addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-
-      console.log("TARGET: ", e.target);
-
-      event.dispatchCustomEvent(this, e.target.getAttribute("dialog"));
-    },false);
-
     document.getElementById('save').addEventListener("wje-button:click", (e) => {
       console.log("Save clicked");
     });
+
+    // ukazka ako sa da zmenit content dialogu pred zobrazenim
+    // po kliku na button dispatchneme custom event
+    // na dialogu staci vytvorit async funkciu beforeShow v nej budeme editovat obsah dialogu
+    // taketo funkcie mozu byt beforeShow, afterShow, beforeHide, afterHide
+    let customButton = this.querySelector("#open-modal-button");
+
+    customButton.addEventListener("click", function (e) {
+      event.dispatchCustomEvent(this, this.getAttribute("dialog"));
+    });
+
+    this.querySelector("[trigger=open-modal-div]").beforeOpen = async (element) => {
+      const date = new Date().toLocaleString();
+      element.innerHTML = "Changed content" + date;
+    }
   }
 }
 
