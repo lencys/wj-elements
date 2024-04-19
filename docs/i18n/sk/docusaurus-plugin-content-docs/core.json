@@ -2633,7 +2633,7 @@
                         "references": {}
                     },
                     "mutable": true,
-                    "attr": "unit-display",
+                    "attr": "placement",
                     "reflectToAttr": false,
                     "docs": "Používa sa na určenie cieľového elementu, do ktorého sa majú načítané údaje vložiť počas procesu nekonečného scrollovania. Určuje, kam sa novo načítaný obsah pridá v rámci DOM.",
                     "docsTags": [],
@@ -2655,7 +2655,7 @@
                         "references": {}
                     },
                     "mutable": true,
-                    "attr": "unit-display",
+                    "attr": "size",
                     "reflectToAttr": false,
                     "docs": "Definuje počet položiek pri každom načítaní.",
                     "docsTags": [],
@@ -2677,7 +2677,7 @@
                         "references": {}
                     },
                     "mutable": true,
-                    "attr": "unit-display",
+                    "attr": "url",
                     "reflectToAttr": false,
                     "docs": "Definuje url adresu koncového bodu (endpointu) dát na načítanie.",
                     "docsTags": [],
