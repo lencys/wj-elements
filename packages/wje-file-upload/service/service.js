@@ -63,13 +63,10 @@ export function getFileTypeIcon(type) {
 }
 
 export function isValidFileType(file, acceptedFileTypes) {
-  console.log("FILE", file, acceptedFileTypes);
   // Get the base MIME type
   const baseMimeType = file.type.split('/')[0];
-  console.log("BASE MIME TYPE", baseMimeType);
   // If acceptedFileTypes is a string, convert it to an array
   let acceptedTypes = Array.isArray(acceptedFileTypes) ? acceptedFileTypes : acceptedFileTypes.split(',');
-  console.log("ACCEPTED TYPES", acceptedTypes);
   // If acceptedFileTypes is empty, throw an error
   if (acceptedTypes.length === 0) {
     throw new Error("acceptedFileTypes is empty");
@@ -93,8 +90,6 @@ export function isValidFileType(file, acceptedFileTypes) {
 }
 
 export function uploadFile(file, chunkSize, preview) {
-
-  console.log("UPLOAD FILE:", file, chunkSize, preview);
   let start = 0;
   const progressArray = new Array(Math.ceil(file.size / chunkSize)).fill(0);
 
@@ -131,7 +126,6 @@ export function uploadFile(file, chunkSize, preview) {
             readAndUploadChunk(start, Math.min(start + chunkSize, file.size));
           } else {
             preview.setAttribute("uploaded", start);
-            console.log('Upload complete');
           }
         } else {
           console.error('Error during upload: ', xhr.statusText);

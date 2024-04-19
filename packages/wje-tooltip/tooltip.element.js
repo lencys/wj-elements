@@ -137,7 +137,7 @@ export default class Tooltip extends WJElement {
      */
     onShow = () => {
         Promise.resolve(this.beforeShow(this)).then((res) => {
-            if (!res) {
+            if (!res && typeof res !== "string") {
                 throw new Error("beforeShow returned false");
             }
 

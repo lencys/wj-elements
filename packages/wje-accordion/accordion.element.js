@@ -103,7 +103,6 @@ export default class Accordion extends WJElement {
     }
 
     collapseAll(exception) {
-        console.log("collapseAll", exception);
         this.getAccordions().forEach((accordion) => {
             if(accordion !== exception)
                 accordion.collapse();

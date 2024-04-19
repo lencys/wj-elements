@@ -60,7 +60,6 @@ export default class InlineEditElement extends WJElement {
     }
 
     draw(context, store, params) {
-        console.log("Draw", this.notEditable, !this.notEditable)
         let fragment = document.createDocumentFragment();
 
         // Heading
@@ -77,7 +76,6 @@ export default class InlineEditElement extends WJElement {
         fragment.appendChild(this.heading);
 
         if(!this.notEditable) {
-            console.log("VOJDEM TU")
             // Span
             this.span = document.createElement("span");
             this.span.classList.add("edit", "text-primary");

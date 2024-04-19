@@ -143,7 +143,6 @@ export default class Breadcrumb extends WJElement {
         fragment.appendChild(native);
 
         if(this.showCollapsedIndicator) {
-            console.log("SOM TU");
             // pridame button za native element
             fragment.appendChild(this.drawCollapsedIndicator());
 
