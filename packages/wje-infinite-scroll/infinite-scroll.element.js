@@ -61,6 +61,14 @@ export default class InfiniteScroll extends WJElement {
         };
     }
 
+    set objectName(value) {
+        this.setAttribute("object-name", value);
+    }
+
+    get objectName() {
+        return this.getAttribute("object-name") || "data";
+    }
+
     className = "InfiniteScroll";
 
     /**
@@ -238,7 +246,8 @@ export default class InfiniteScroll extends WJElement {
                 if(this.hasAttribute("placement"))
                     placement = this.querySelector(this.placement);
 
-                response.data.forEach((item) => {
+                console.log(response[this.objectName]);
+                response[this.objectName].forEach((item) => {
                     const interpolateItem = this.infiniteScrollTemplate.interpolate(item);
                     const doc = parser.parseFromString(interpolateItem, 'text/html');
                     const element = doc.querySelector(this.iterate.tagName.toLowerCase()); //doc.querySelector(".icon-item");
