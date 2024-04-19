@@ -101,7 +101,8 @@ export default class Menu extends WJElement {
      */
     afterDraw() {
         Array.from(this.children).forEach((child) => {
-            child.refresh();
+            if(child.tagName.includes('-'))
+                child.refresh();
         });
     }
 

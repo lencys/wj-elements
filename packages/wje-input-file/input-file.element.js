@@ -1,4 +1,4 @@
-import { default as WJElement } from "../wje-element/element.js";
+import { default as WJElement, event } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**
@@ -13,6 +13,8 @@ import styles from "./styles/styles.css?inline";
  * @csspart input - The text input.
  * @csspart file-input - The file input.
  *
+ * @fires wje-input-file:change - Event fired when the file input changes.
+ *
  * @tag wje-input-file
  */
 export default class InputFile extends WJElement {
@@ -23,6 +25,15 @@ export default class InputFile extends WJElement {
      */
     constructor(options = {}) {
         super();
+        this._value = "";
+    }
+
+    set value(value) {
+        this._value = value;
+    }
+
+    get value() {
+        return this._value;
     }
 
     /**
@@ -114,14 +125,16 @@ export default class InputFile extends WJElement {
         });
 
         this.fileInput.addEventListener('change', (e) => {
-            var files = e.target.files;
-            var fileNames = [];
+            let files = e.target.files;
+            let fileNames = [];
 
-            for (var i = 0; i < files.length; i++) {
+            for (let i = 0; i < files.length; i++) {
                 fileNames.push(files[i].name);
             }
 
             this.input.value = fileNames.join(', ');
+            this.value = files;
+            event.dispatchCustomEvent(this, "wje-input-file:change", { files: files });
         });
     }
 }

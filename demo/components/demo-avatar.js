@@ -93,7 +93,7 @@ template.innerHTML = `<h1>Avatar</h1>
           </wje-menu>
         </wje-dropdown>
         
-        <wje-dropdown id="custom-dropdown" placement="right-start" offset="5">
+        <wje-dropdown id="custom-dropdown" placement="right-start" offset="5" collapsible>
           <wje-avatar label="Petr Rahman" initials slot="trigger"></wje-avatar>
           <wje-menu class="custom-menu" active>
             <h5 style="margin: 0;">Petr Rahman</h5>

@@ -2,7 +2,7 @@ import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
-template.innerHTML = `<h1>Input</h1>
+template.innerHTML = `<h1>Input file</h1>
   <div class="container">
     
     <!-- BASIC -->
