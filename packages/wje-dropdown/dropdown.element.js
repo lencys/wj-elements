@@ -69,7 +69,9 @@ export default class Dropdown extends WJElement {
             event.addListener(this.anchorSlot, "mouseleave", null, this.onHide);
         }
 
-        event.addListener(Array.from(this.querySelectorAll("wje-menu-item")), "click", "wje-menu-item:click", this.onHide);
+        console.log("collapsible:", this.collapsible);
+        if(this.hasAttribute("collapsible"))
+            event.addListener(Array.from(this.querySelectorAll("wje-menu-item")), "click", "wje-menu-item:click", this.onHide);
     }
 
     /**

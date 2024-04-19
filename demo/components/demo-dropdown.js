@@ -2,7 +2,11 @@ import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
-template.innerHTML = `
+template.innerHTML = `<style>
+    wje-button [slot=caret] {
+      margin-inline: .5rem 0;
+    }
+  </style>
   <h1>Dropdown</h1>
   <div class="container">
 
@@ -42,7 +46,7 @@ template.innerHTML = `
     <h2>Open Dialog</h2>
     <div class="playground">
       <div class="content">
-        <wje-dropdown label="Start" placement="bottom-start" offset="5">
+        <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible>
           <wje-button size="large" slot="trigger" stop-propagation="true" caret>Large</wje-button>
           <wje-menu variant="context">
             <wje-menu-item dialog="open-modal">
@@ -102,14 +106,17 @@ template.innerHTML = `
     <h3>Inner avatar</h3>
     <div class="playground">
       <div class="content">
-        <wje-dropdown id="custom-dropdown" placement="right-start" offset="5">
+        <wje-dropdown id="custom-dropdown" placement="right-start" offset="5" collapsible>
           <wje-avatar label="Petr Rahman" initials slot="trigger"></wje-avatar>
           <wje-menu class="custom-menu" active>
-            <wje-avatar>
-              <wje-img src="/assets/img/avatar.svg"></wje-img>
-            </wje-avatar>
-            <h5 style="margin: 0;">Petr Rahman</h5>
-            <p class="hint-text">Frontend Developer</p>
+            <div style="display: flex; align-items: center;">
+              <wje-avatar>
+                <wje-img src="/assets/img/avatar.svg"></wje-img>
+              </wje-avatar>
+              <h5 style="margin: 0 0 0 .5rem; line-height: normal;">Petr Rahman</h5>
+             
+            </div>
+            <wje-divider style="--wje-divider-spacing: .5rem"></wje-divider>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
             <wje-divider></wje-divider>
             <wje-menu-item>Link A</wje-menu-item>
