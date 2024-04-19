@@ -128,7 +128,9 @@ export default class Tooltip extends WJElement {
         });
     }
 
-    beforeShow() {}
+    beforeShow() {
+        return this.content;
+    }
 
     afterShow() {}
 
@@ -138,7 +140,7 @@ export default class Tooltip extends WJElement {
     onShow = () => {
         Promise.resolve(this.beforeShow(this)).then((res) => {
             if (!res && typeof res !== "string") {
-                throw new Error("beforeShow returned false");
+                throw new Error("beforeShow method returned false or not string");
             }
 
             this.native.innerHTML = res;
