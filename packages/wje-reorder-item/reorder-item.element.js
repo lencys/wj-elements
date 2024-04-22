@@ -4,39 +4,44 @@ import { default as WJElement } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 export default class ReorderItem extends WJElement {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    className = "ReorderItem";
+  className = "ReorderItem";
 
-    static get cssStyleSheet() {
-        return styles;
-    }
+  static get cssStyleSheet() {
+    return styles;
+  }
 
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
+  setupAttributes() {
+    this.isShadowRoot = "open";
+  }
 
-    draw(content, store, params) {
-        let fragment = document.createDocumentFragment();
+  draw(content, store, params) {
+    let fragment = document.createDocumentFragment();
 
-        let wrapper = document.createElement("div");
-        wrapper.classList.add("item");
-        wrapper.setAttribute("part", "wrapper");
+    let wrapper = document.createElement("div");
+    wrapper.classList.add("item");
+    wrapper.setAttribute("part", "native-reorder-item");
 
-        let element = document.createElement("slot");
-        element.classList.add("name");
+    let element = document.createElement("slot");
+    element.classList.add("name");
 
-        let start = document.createElement("slot");
-        start.setAttribute("name", "handle");
-        start.classList.add("handle");
+    // let start = document.createElement("slot");
+    // start.setAttribute("name", "handle");
+    // start.classList.add("handle");
 
-        wrapper.appendChild(start);
-        wrapper.appendChild(element);
+    // const img = document.createElement("img");
+    // img.setAttribute("src", "public/assets/img/icons/outline/baseline-density-medium.svg");
 
-        fragment.appendChild(wrapper);
+    // start.appendChild(img);
 
-        return fragment;
-    }
+    // wrapper.appendChild(start);
+    wrapper.appendChild(element);
+
+    fragment.appendChild(wrapper);
+
+    return fragment;
+  }
 }

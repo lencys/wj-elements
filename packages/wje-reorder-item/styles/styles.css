@@ -1,26 +1,45 @@
 .item {
-    width: 350px;
-    height: 60px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    background: white;
-    border-radius: 3mm;
-    margin: 10px 0;
-    cursor: grab;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 5px 10px,
-      rgba(0, 0, 0, 0.23) 0px 3px 3px;
-    transition: transform 0.3s ease, margin 0.25s ease; 
-    animation: fadeIn 1s ease-in-out;
+  width: 134px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 8px;
+  padding: 8px;
+  transition: transform .2s ease-in;
+  border-radius: var(--wje-border-radius-small);
+  background-color:  var(--wje-color-contrast-lowest);
+  
+  transform: var(--item-transform);
+}
+
+.item:hover {
+  background-color: #F4F4F5;
+}
+
+.item:active {
+  background-color:  var(--wje-color-contrast-lowest);
+}
+
+.moving {
+  background-color: lightgrey;
 }
 
 .name {
-    width: 100%;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 500;
-    transition: transform 0.3s ease, margin 0.25s ease; 
-    animation: fadeIn 1s ease-in-out;
-  }
+  width: 98px;
+  height: 19px;
+  text-align: center;
+  font-size: var(--wje-font-size-medium);
+  font-weight: 400;
+  line-height: 19.36px;
+  gap: 10px;
+}
+
+.drag--down {
+  --item-transform: translateY(-10px);
+}
+
+.drag--up {
+  --item-transform: translateY(10px);
+}
