@@ -34,6 +34,7 @@ export default class InfiniteScroll extends WJElement {
 
         this.totalPages = 0;
         this.isLoading = [];
+        this._response = {};
 
         /**
          * Interpolates a string with the given parameters.
@@ -59,6 +60,14 @@ export default class InfiniteScroll extends WJElement {
             }
             return template;
         };
+    }
+
+    set response(value) {
+        this._response = value;
+    }
+
+    get response() {
+        return this._response;
     }
 
     set objectName(value) {
@@ -267,6 +276,10 @@ export default class InfiniteScroll extends WJElement {
                 // if there is a "container" attribute, find the element
                 if(this.hasAttribute("placement"))
                     placement = this.querySelector(this.placement);
+
+                event.dispatchCustomEvent(this, "wje-infinite-scroll:load", { detail: response });
+
+                this.response = response;
 
                 response[this.objectName].forEach((item) => {
                     const interpolateItem = this.infiniteScrollTemplate.interpolate(item);
