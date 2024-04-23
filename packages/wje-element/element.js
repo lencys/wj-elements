@@ -102,11 +102,11 @@ export default class WJElement extends HTMLElement {
 		return this.getAttribute('remove-class-after-connect')?.split(' ');
 	}
 
-	get depandencies(){
+	get depandencies() {
 		return this._depandencies;
 	}
 
-	set depandencies(value){
+	set depandencies(value) {
 		this._depandencies = value;
 	};
 
@@ -124,20 +124,14 @@ export default class WJElement extends HTMLElement {
 		}
 	}
 
-	defineDepandencies(){
-		if(this.depandencies)
+	defineDepandencies() {
+		if (this.depandencies)
 			Object.entries(depandencies).forEach((name, component) => WJElement.define(name, component))
 	}
 
-	beforeDraw() {}
+	beforeDraw() { }
 
-	afterDraw() {}
-
-	makeRuntimeTimeout(callback = () => {}) {
-		return setTimeout(() => {
-			callback();
-		}, 0);
-	}
+	afterDraw() { }
 
 	refreshUpdatePromise() {
 		this.updateComplete = new Promise((resolve, reject) => {
@@ -176,21 +170,21 @@ export default class WJElement extends HTMLElement {
 
 		this.setupAttributes?.();
 		if (this.isShadowRoot) {
-			!this.shadowRoot && this.attachShadow({mode: this.shadowType || 'open'});
+			!this.shadowRoot && this.attachShadow({ mode: this.shadowType || 'open' });
 		}
 
 		// if (this.constructor.CSS) {
-        //     let stylesToAdopt = this.constructor.CSS()
-        //     if (Array.isArray(stylesToAdopt)) {
-        //
-        //         await Promise.all(stylesToAdopt.map(path => {
-        //             return WjImport.call(this, path)
-        //         })).then()
-        //
-        //     } else {
-        //         WjImport.call(this, stylesToAdopt)
-        //     }
-        // }
+		//     let stylesToAdopt = this.constructor.CSS()
+		//     if (Array.isArray(stylesToAdopt)) {
+		//
+		//         await Promise.all(stylesToAdopt.map(path => {
+		//             return WjImport.call(this, path)
+		//         })).then()
+		//
+		//     } else {
+		//         WjImport.call(this, stylesToAdopt)
+		//     }
+		// }
 
 		this.setUpAccessors();
 
@@ -202,7 +196,7 @@ export default class WJElement extends HTMLElement {
 		sheet.replaceSync(this.constructor.cssStyleSheet);
 
 		this.context.adoptedStyleSheets = [sheet];
-        
+
 		// RHR - zatial zakomentované pokiaľ by to pokazilo niečo iné
 		// for (let i = 0; i < this.childNodes.length; i++) {
 		//     let child = this.childNodes[i];
@@ -211,39 +205,43 @@ export default class WJElement extends HTMLElement {
 	};
 
 	setupAttributes() {
+		// Keď neaký element si zadefinuje funkciu "setupAttributes" tak sa obsah tejto funkcie nezavolá
+		console.log('Inner call of setupAttributes method...')
+
 		let allEvents = WjElementUtils.getEvents(this);
-        let events = allEvents.forEach((customEvent,domEvent) => {
-            this.addEventListener(domEvent, (e)=>{
+		let events = allEvents.forEach((customEvent, domEvent) => {
+			this.addEventListener(domEvent, (e) => {
 				this.getRootNode().host[customEvent]?.()
 
-                // this.dispatchEvent(new CustomEvent(`${customEvent}`, {
-                //     detail: {
-                //         originalEvent: e,
-                //         context: this
-                //     },
-                //     bubbles: true
-                // }));
-            });
-        })
+				// this.dispatchEvent(new CustomEvent(`${customEvent}`, {
+				//     detail: {
+				//         originalEvent: e,
+				//         context: this
+				//     },
+				//     bubbles: true
+				// }));
+			});
+		})
 	}
 
-	beforeDisconnect() {}
+	beforeDisconnect() { }
 
 	disconnectedCallback() {
 		this.beforeDisconnect?.();
 
 		if (this.isAttached) this.context.innerHTML = '';
 
+		this.drawingStatus = 'DISCONNECTED';
 		this.isAttached = false;
 
 		this.afterDisconnect?.();
 	}
 
 	/**
-     * Lifecycle method, called whenever an observed property changes
-     */
+	 * Lifecycle method, called whenever an observed property changes
+	 */
 	attributeChangedCallback(name, old, newName) {
-		if(!this.isAttached && old !== newName){
+		if (!this.isAttached && old !== newName) {
 			this.scheludedRefresh = true;
 			return;
 		}
@@ -262,21 +260,11 @@ export default class WJElement extends HTMLElement {
 			this.unregister?.();
 			await this.initWjElement(true);
 		}
-		// if(!this.runtimeTimeout){
-		//
-		// } else {
-		//     this.afterDisconnect?.()
-		//     // clearTimeout(this.runtimeTimeout)
-		//     // this.runtimeTimeout = this.makeRuntimeTimeout(()=>{
-		//         // this.innerHTML = ''
-		//         // this.context.innerHTML = ''
-		//     // })
-		// }
 	}
 
 	/**
-     * To be implemented by the child class
-     */
+	 * To be implemented by the child class
+	 */
 	draw(context, store, params) {
 		return null;
 	}
@@ -284,15 +272,28 @@ export default class WJElement extends HTMLElement {
 	display(force = false, processId) {
 		if (this.isProcessingFlow(processId)) return;
 
-		if (force && this.isShadowRoot) {
-			[...this.context.children].forEach(this.context.removeChild.bind(this.context));
+		// gather slotted elements and save then to variable
+		// let allSlotedElements = this.context.querySelectorAll('slot');
+		// let slotedElements = [...allSlotedElements].map((el) => {
+		// 	return {
+		// 		name: el.name,
+		// 		elements: [...el.assignedElements()],
+		// 	};
+		// });
+
+		if (force) {
+			[...this.context.childNodes].forEach(this.context.removeChild.bind(this.context));
 			this.isAttached = false;
-		}
-		if (this.isAttached) {
-			// console.log('Already rendered...', this);
 		}
 
 		this.context.append(this.template.content.cloneNode(true));
+
+		// // restore slotted elements
+		// slotedElements.forEach((slot) => {
+		// 	let slotted = this.context.querySelector(`slot[name="${slot.name}"]`);
+		// 	slot.elements.forEach((el) => {
+		// 	});
+		// });
 
 		if (this.isPermissionCheck || this.isShow) {
 			if (WjePermissionsApi.isPermissionFulfilled.bind(this)(this.permission)) {
@@ -310,40 +311,42 @@ export default class WJElement extends HTMLElement {
 		// })
 	}
 
-	render( processId ) {
+	async render(processId) {
 		this.drawingStatus = 'DRAWING';
 
-		if( this.isProcessingFlow(processId) ) return;
-		let rend = this.draw(this.context, this.store, WjElementUtils.getAttributes(this)) || '';
-		let element;
+		if (this.isProcessingFlow(processId)) return;
+		await Promise.resolve(this.draw(this.context, this.store, WjElementUtils.getAttributes(this))).then((res) => {
+			let rend = res || '';
+			let element;
 
-		if( rend instanceof HTMLElement || rend instanceof DocumentFragment ) {
-			element = rend;
-		} else {
-			let template = document.createElement('template');
-			template.innerHTML = rend;
-			element = template.content.cloneNode(true);
-		}
+			if (rend instanceof HTMLElement || rend instanceof DocumentFragment) {
+				element = rend;
+			} else {
+				let template = document.createElement('template');
+				template.innerHTML = rend;
+				element = template.content.cloneNode(true);
+			}
 
-		let rendered = element;
-		// this.isAttached = true;
+			let rendered = element;
+			// this.isAttached = true;
 
-		if( this.isProcessingFlow(processId) ) return;
-		this.context.appendChild(rendered);
+			if (this.isProcessingFlow(processId)) return;
+			this.context.appendChild(rendered);
+		});
 	}
 
 	/**
-     * Turns a string split with "-" into camel case notation
-     */
+	 * Turns a string split with "-" into camel case notation
+	 */
 	sanitizeName(name) {
 		let parts = name.split('-');
 		return [parts.shift(), ...parts.map((n) => n[0].toUpperCase() + n.slice(1))].join('');
 	}
 
 	/**
-     * Creates one property on this class for every
-     * HTML property defined on the element
-     */
+	 * Creates one property on this class for every
+	 * HTML property defined on the element
+	 */
 	setUpAccessors() {
 		let attrs = this.getAttributeNames();
 		attrs.forEach((name) => {
@@ -359,7 +362,7 @@ export default class WJElement extends HTMLElement {
 		});
 	}
 
-	isProcessingFlow(processId){
+	isProcessingFlow(processId) {
 		return !this.functionStack.find((d) => d == processId)
 	}
 
@@ -371,44 +374,44 @@ export default class WJElement extends HTMLElement {
 		Promise.resolve(this.beforeDraw(this.context, this.store, WjElementUtils.getAttributes(this))).then((res) => {
 			this.drawingStatus = 'BEFORE';
 
-			this.render(processId);
+			Promise.resolve(this.render(processId)).then((res) => {
+				if (this.isProcessingFlow(processId)) return;
 
-			if (this.isProcessingFlow(processId)) return;
-			Promise.resolve(this.afterDraw?.(this.context, this.store, WjElementUtils.getAttributes(this))).then(
-				(a, b, c) => {
-					this.drawingStatus = 'AFTER';
+				Promise.resolve(this.afterDraw?.(this.context, this.store, WjElementUtils.getAttributes(this))).then(
+					(a, b, c) => {
+						this.drawingStatus = 'AFTER';
 
-					// RHR toto je bicykel pre slickRouter  pretože routovanie nieje vykonané pokiaľ sa nezavolá updateComplete promise,
-					// toto bude treba rozšíriť aby sme lepšie vedeli kontrolovať vykreslovanie elementov, a flow hookov.
-					this.finisPromise();
+						// RHR toto je bicykel pre slickRouter  pretože routovanie nieje vykonané pokiaľ sa nezavolá updateComplete promise,
+						// toto bude treba rozšíriť aby sme lepšie vedeli kontrolovať vykreslovanie elementov, a flow hookov.
+						this.finisPromise();
 
-					this.rendering = false;
-					this.isAttached = true;
+						this.rendering = false;
+						this.isAttached = true;
 
-					this.removeClassAfterConnect && this.classList.remove(...this.removeClassAfterConnect);
+						this.removeClassAfterConnect && this.classList.remove(...this.removeClassAfterConnect);
 
-					// this.observer?.disconnect()
-					// const config = {
-					//     attributes: true,
-					//     childList: false,
-					//     subtree: false,
-					//     characterData: false,
-					//     characterDataOldValue: false,
-					// };
-					//
-					// this.observer = new MutationObserver(()=>{this.refresh()});
-					// this.observer.observe(this, config);
+						// this.observer?.disconnect()
+						// const config = {
+						//     attributes: true,
+						//     childList: false,
+						//     subtree: false,
+						//     characterData: false,
+						//     characterDataOldValue: false,
+						// };
+						//
+						// this.observer = new MutationObserver(()=>{this.refresh()});
+						// this.observer.observe(this, config);
 
-
-					if(this.scheludedRefresh){
-						this.refresh()
-						this.scheludedRefresh = false;
+						if (this.scheludedRefresh) {
+							this.refresh();
+							this.scheludedRefresh = false;
+						}
 					}
-				}
-			);
+				);
+			});
 		});
 	}
 }
 
 let __esModule = 'true';
-export {__esModule, WjePermissionsApi, WjElementUtils, event};
+export { __esModule, WjePermissionsApi, WjElementUtils, event };
