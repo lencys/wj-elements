@@ -50,8 +50,9 @@ export default class InfiniteScroll extends WJElement {
                 for (let key of keys) {
                     let cleanKey = key.replace('{{', '').replace('}}', '');
                     let val = '';
-
+                    console.log("CLEAN KEY", cleanKey);
                     cleanKey.split('.').forEach(k => {
+                        console.log(k);
                         val = (val == '') ?  params[k] : val[k];
                     });
 
@@ -277,7 +278,7 @@ export default class InfiniteScroll extends WJElement {
                 if(this.hasAttribute("placement"))
                     placement = this.querySelector(this.placement);
 
-                event.dispatchCustomEvent(this, "wje-infinite-scroll:load", { detail: response });
+                event.dispatchCustomEvent(this, "wje-infinite-scroll:load", response);
 
                 this.response = response;
 
