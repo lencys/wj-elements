@@ -10,7 +10,7 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
     <h3>Basic</h3>
     <div class="playground">
       <div class="content">
-        <wje-infinite-scroll url="/api/users" placement="wje-list">
+        <wje-infinite-scroll url="/api/users" placement="wje-list" id="basic">
           <wje-list>
             <wje-item iterate>
               <wje-label>
@@ -19,6 +19,8 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
               </wje-label>
             </wje-item>
           </wje-list>
+          <wje-icon name="arrow-bar-to-down" size="large" slot="ending"></wje-icon>
+          <wje-icon name="loader" size="large" slot="loader"></wje-icon>
         </wje-infinite-scroll>
       </div>
     </div>
@@ -37,6 +39,7 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
               </wje-label>
             </wje-item>
           </wje-list>
+<!--          <wje-icon name="arrow-bar-to-down" size="large" slot="ending"></wje-icon>-->
         </wje-infinite-scroll>
       </div>
     </div>
@@ -68,6 +71,8 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
               padding: 0 1rem;
             }
           </style>
+          <wje-icon name="arrow-bar-to-down" size="large" slot="ending"></wje-icon>
+          <wje-icon name="loader" size="large" slot="loader"></wje-icon>
         </wje-infinite-scroll>
       </div>
     </div>
@@ -76,6 +81,12 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
 export default class DemoInfinteScroll extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    this.querySelector("#basic").addEventListener("wje-infinite-scroll:complete", (e) => {
+      console.log(e, e.detail);
+    });
   }
 }
 

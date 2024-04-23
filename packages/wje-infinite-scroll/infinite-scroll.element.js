@@ -1,4 +1,4 @@
-import { default as WJElement, event } from "../wje-element/element.js";
+import { default as WJElement, WjElementUtils, event } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**
@@ -124,15 +124,37 @@ export default class InfiniteScroll extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
+        let native = document.createElement("div");
+        native.classList.add("native");
+        native.setAttribute("part", "native-infinite-scroll");
+
         let slot = document.createElement("slot");
 
-        let loader = document.createElement("div");
-        loader.classList.add("loader");
+        let ending = document.createElement("slot");
+        ending.setAttribute("name", "ending");
 
-        fragment.appendChild(loader);
-        fragment.appendChild(slot);
+        if(WjElementUtils.hasSlot(this, "loader")) {
+            let loading = document.createElement("div");
+            loading.classList.add("loading");
 
-        this.loaderEl = loader;
+            let loader = document.createElement("slot");
+            loader.setAttribute("name", "loader");
+
+            loading.appendChild(loader);
+
+            this.loadingEl = loading;
+
+            fragment.appendChild(loading);
+        }
+
+
+        native.appendChild(slot);
+        native.appendChild(ending);
+
+        fragment.appendChild(native);
+
+
+        this.endingEl = ending;
 
         return fragment;
     }
@@ -196,14 +218,14 @@ export default class InfiniteScroll extends WJElement {
      * Hides the loader.
      */
     hideLoader(){
-        this.loaderEl.classList.remove('show');
+        this?.loadingEl?.classList.remove('show');
     }
 
     /**
      * Shows the loader.
      */
     showLoader(){
-        this.loaderEl.classList.add('show');
+        this?.loadingEl?.classList.add('show');
     }
 
     /**
@@ -246,7 +268,6 @@ export default class InfiniteScroll extends WJElement {
                 if(this.hasAttribute("placement"))
                     placement = this.querySelector(this.placement);
 
-                console.log(response[this.objectName]);
                 response[this.objectName].forEach((item) => {
                     const interpolateItem = this.infiniteScrollTemplate.interpolate(item);
                     const doc = parser.parseFromString(interpolateItem, 'text/html');
@@ -259,6 +280,9 @@ export default class InfiniteScroll extends WJElement {
                 });
 
                 this.isLoading.push(page);
+            } else {
+                event.dispatchCustomEvent(this, "wje-infinite-scroll:complete");
+                this.endingEl.classList.add("show");
             }
         } catch (error) {
             console.log(error.message);
