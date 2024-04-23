@@ -13,6 +13,14 @@ template.innerHTML = `<h1>Avatar</h1>
         <wje-avatar>
           <wje-img src="/assets/img/avatar.svg"></wje-img>
         </wje-avatar>
+        
+        <wje-avatar label="Lukáš Ondrejček" initials>
+          <wje-img src="/assets/img/avatar.svg"></wje-img>
+        </wje-avatar>
+        
+        <wje-avata label="Lukáš Ondrejček" initials>
+          <wje-icon name="" slot="icon"></wje-icon>
+        </wje-avatar>
       </div>
     </div>
     

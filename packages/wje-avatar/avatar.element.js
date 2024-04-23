@@ -71,11 +71,11 @@ export default class Avatar extends WJElement {
         if(this.size)
             this.classList.add("wje-avatar-" + this.size);
 
-        if(this.isImage()) {
+        // if(this.isImage()) {
             let slot = document.createElement("slot");
 
             element.appendChild(slot);
-        } else {
+        // } else {
             if(this.hasAttribute("initials")) {
                 let initials = getInitials(this.label);
 
@@ -87,7 +87,7 @@ export default class Avatar extends WJElement {
 
                 element.appendChild(slotIcon);
             }
-        }
+        // }
 
         let status = document.createElement("slot");
         status.setAttribute("name", "status");
