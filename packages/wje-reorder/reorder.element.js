@@ -32,72 +32,60 @@ export default class Reorder extends WJElement {
 
     fragment.appendChild(container);
 
+    this.container = container;
+
     return fragment;
   }
 
-  afterDraw() {
-    const slots = this.shadowRoot.querySelectorAll('slot');
-    
-    for (const slot of slots) {
-      for (let e of slot.assignedElements()) {
-        if (!e.classList.contains("item")) e.classList.add("item");
+  afterDraw(context, store, params) {
+    const items = this.querySelectorAll("wje-reorder-item");
+    const dropZones = this.querySelectorAll("wje-reorder-dropzone");
 
-        // TODO fix to wje-icon "baseline-density-medium" -- doesn't work right now
-        // let handle = document.createElement("span");
-        // handle.classList.add("handle");
-        // handle.setAttribute("part", "handle");
+    if (dropZones) {
+      dropZones.forEach((dropZone) => {
+        this.container.classList.remove("container");
+        this.container.classList.add("container-w-dropzones");
+      });
+    }
 
-        // if(WjElementUtils.hasSlot(this, "handle")) {
-        //   let slotHandle = document.createElement("slot");
-        //   slotHandle.setAttribute("name", "handle");
+    if (items) {
+      items.forEach((item) => {
+        const handles = item.querySelectorAll("[slot=handle]");
+        const draggableElement = handles.length > 0 ? handles : [item];
 
-        //   handle.appendChild(slotHandle);
-        // } else {
-        //   handle.innerHTML = `<wje-icon name="baseline-density-medium"></wje-icon>`;
-        // }
-
-        const handle = document.createElement("span");
-        this.handle = handle;
-        handle.classList.add("handle");
-        handle.textContent = "☰"; 
-        e.insertBefore(handle, e.firstChild);
-
-        handle.style.cursor= "grab";
-        
-        if (this.hasAttribute('disabled')) {
-          handle.style.cursor= "not-allowed";
-        }
-
-        handle.draggable = true;
-        this.attachEventListeners(e);
-      }
+        draggableElement.forEach((element) => {
+          element.setAttribute("draggable", "true");
+          this.attachEventListeners(element);
+        });
+      });
     }
   }
 
   onDragStart(e) {
-    const dragImage = new Image();
-    dragImage.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEElEQVR42mNkAAIAAAoAAv/lxKUAAAAASUVORK5CYII=";
-    e.dataTransfer.setDragImage(dragImage, 0, 0);
-
-    if (this.hasAttribute('disabled') || e.target.closest('[disabled]') || !this.handle) {
+    if (this.hasAttribute("disabled")) {
       e.preventDefault();
       return;
     }
 
+    const dragImage = new Image();
+    dragImage.src =
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEElEQVR42mNkAAIAAAoAAv/lxKUAAAAASUVORK5CYII=";
+    e.dataTransfer.setDragImage(dragImage, 0, 0);
 
-    this.dragEl = e.currentTarget;
+    this.dragEl = e.currentTarget.closest("wje-reorder-item");
     e.dataTransfer.effectAllowed = "move";
     e.dataTransfer.setData("text/html", `${this.dragEl.innerHTML}`);
 
     this.originalIndex = [...this.dragEl.parentNode.children].indexOf(
       this.dragEl
     );
+    this.originalParent = this.dragEl.parentNode;
   }
 
   onDragOver(e) {
     e.preventDefault();
 
-    const droppedElement = e.currentTarget;
+    const droppedElement = e.currentTarget.closest("wje-reorder-item");
     const parent = droppedElement.parentNode;
 
     if (this.dragEl !== droppedElement) {
@@ -108,45 +96,46 @@ export default class Reorder extends WJElement {
     }
   }
 
-  onDragEnter(e) { }
+  onDragEnter(e) {}
 
-  onDragLeave(e) { }
+  onDragLeave(e) {}
 
   onDrop(e) {
-    const droppedElement = e.currentTarget;
+    e.preventDefault();
+
+    const droppedElement = e.currentTarget.closest("wje-reorder-item");
     droppedElement.shadowRoot.querySelector("div").classList.remove("moving");
 
     if (!droppedElement.parentNode) return;
     const parent = droppedElement.parentNode;
-
-    if (this.dragEl !== droppedElement) {
-      e.preventDefault();
-      this.updateItemsPosition(parent, droppedElement, this.isMovingDown(e));
-    }
+    parent.insertBefore(this.dragEl, droppedElement);
   }
 
   onDragEnd(e) {
     const parent = this.dragEl.parentNode;
     const newIndex = Array.from(parent.children).indexOf(this.dragEl);
 
-    parent.childNodes.forEach((item) => {
-      if (item.nodeType === 1) {
-        ["drag--up", "drag--down", "moving"].forEach((cls) =>
-          item.shadowRoot.querySelector("div").classList.remove(cls)
-        );
-      }
+    [parent, this.originalParent].forEach((container) => {
+      container.childNodes.forEach((item) => {
+        if (item.nodeType === 1) {
+          const div = item.shadowRoot.querySelector("div");
+          if (div) {
+            ["drag--up", "drag--down", "moving"].forEach((cls) =>
+              div.classList.remove(cls)
+            );
+          }
+        }
+      });
     });
 
-    const newOrder = Array.from(parent.children)
-      .map((el) => {
-        const clonedNode = el.cloneNode(true);
-        const handle = clonedNode.querySelector('.handle');
-        if (handle) {
-          handle.remove(); 
-        }
-        return clonedNode.innerText.trim(); 
-      });
-
+    const newOrder = Array.from(parent.children).map((el) => {
+      const clonedNode = el.cloneNode(true);
+      const handle = clonedNode.querySelector(".handle");
+      if (handle) {
+        handle.remove();
+      }
+      return clonedNode.innerText.trim();
+    });
 
     this.dispatchChange(this.originalIndex, newIndex, newOrder);
   }
@@ -170,13 +159,18 @@ export default class Reorder extends WJElement {
   }
 
   updateItemsPosition(parent, droppedElement, isMovingDown) {
-    parent.insertBefore(this.dragEl, isMovingDown ? droppedElement.nextSibling : droppedElement);
+    parent.insertBefore(
+      this.dragEl,
+      isMovingDown ? droppedElement.nextSibling : droppedElement
+    );
   }
 
   isMovingDown(target) {
-    const parent = target.currentTarget.parentNode;
+    const parent = target.currentTarget.closest("wje-reorder-item").parentNode;
     const dragIndex = Array.from(parent.children).indexOf(this.dragEl);
-    const dropIndex = Array.from(parent.children).indexOf(target.currentTarget);
+    const dropIndex = Array.from(parent.children).indexOf(
+      target.currentTarget.closest("wje-reorder-item")
+    );
 
     return dragIndex < dropIndex;
   }

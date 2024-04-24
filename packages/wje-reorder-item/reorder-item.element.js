@@ -1,6 +1,6 @@
 // ReorderItem.js
 
-import { default as WJElement } from "../wje-element/element.js";
+import { default as WJElement, WjElementUtils } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 export default class ReorderItem extends WJElement {
@@ -28,16 +28,18 @@ export default class ReorderItem extends WJElement {
     let element = document.createElement("slot");
     element.classList.add("name");
 
-    // let start = document.createElement("slot");
-    // start.setAttribute("name", "handle");
-    // start.classList.add("handle");
+    if(WjElementUtils.hasSlot(this, "handle")) {
+        const handle = document.createElement("slot");
+        handle.classList.add("handle");
+        wrapper.classList.add("item-w-handle");
+        handle.setAttribute("name", "handle");
+        handle.setAttribute("part", "handle-part");
+        
+        wrapper.appendChild(handle);
+    } else {
+      element.setAttribute("draggable", "true");
+    }
 
-    // const img = document.createElement("img");
-    // img.setAttribute("src", "public/assets/img/icons/outline/baseline-density-medium.svg");
-
-    // start.appendChild(img);
-
-    // wrapper.appendChild(start);
     wrapper.appendChild(element);
 
     fragment.appendChild(wrapper);
