@@ -288,7 +288,7 @@ export default class InfiniteScroll extends WJElement {
                 response[this.objectName].forEach((item) => {
                     const interpolateItem = this.infiniteScrollTemplate.interpolate(item);
                     const doc = parser.parseFromString(interpolateItem, 'text/html');
-                    const element = doc.querySelector(doc.firstChild.nodeName.toLowerCase());
+                    const element = doc.activeElement.firstElementChild;
 
                     event.addListener(element, "click", "wje-infinite-scroll:click-item", null);
 
