@@ -243,7 +243,7 @@ export default class InfiniteScroll extends WJElement {
      * @returns {boolean} Whether there are more pages to load.
      */
     hasMorePages(page){
-        return this.totalPages === 0 || page <= this.totalPages;
+        return this.totalPages === 0 || page < this.totalPages;
     }
 
     /**
