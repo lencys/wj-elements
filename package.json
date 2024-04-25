@@ -41,6 +41,7 @@
     "@faker-js/faker": "^8.0.0",
     "@floating-ui/dom": "^1.5.1",
     "animate.css": "^4.1.1",
+    "qrious": "^4.0.2",
     "tinycolor2": "^1.6.0"
   },
   "devDependencies": {
