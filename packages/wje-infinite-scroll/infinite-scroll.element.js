@@ -35,6 +35,8 @@ export default class InfiniteScroll extends WJElement {
         this.totalPages = 0;
         this.isLoading = [];
         this._response = {};
+        this.iterate = null;
+        this._infiniteScrollTemplate = null;
 
         /**
          * Interpolates a string with the given parameters.
@@ -59,6 +61,14 @@ export default class InfiniteScroll extends WJElement {
             }
             return template;
         };
+    }
+
+    set infiniteScrollTemplate(value) {
+        this._infiniteScrollTemplate = value;
+    }
+
+    get infiniteScrollTemplate() {
+        return this._infiniteScrollTemplate;
     }
 
     set response(value) {
@@ -115,8 +125,8 @@ export default class InfiniteScroll extends WJElement {
      */
     beforeDraw(context, store, params) {
         this.iterate = this.querySelector("[iterate]");
-        this.infiniteScrollTemplate = this.iterate.outerHTML;
-        this.iterate.remove(); // remove template
+        this.infiniteScrollTemplate = this.iterate?.outerHTML;
+        this.iterate?.remove(); // remove template
 
         this.setAttribute("style", "height: " + this.height);
     }
@@ -274,17 +284,13 @@ export default class InfiniteScroll extends WJElement {
                 if(this.hasAttribute("placement"))
                     placement = this.querySelector(this.placement);
 
-                event.dispatchCustomEvent(this, "wje-infinite-scroll:load", response);
-
                 this.response = response;
-
                 response[this.objectName].forEach((item) => {
                     const interpolateItem = this.infiniteScrollTemplate.interpolate(item);
                     const doc = parser.parseFromString(interpolateItem, 'text/html');
-                    const element = doc.querySelector(this.iterate.tagName.toLowerCase()); //doc.querySelector(".icon-item");
+                    const element = doc.querySelector(doc.firstChild.nodeName.toLowerCase());
 
                     event.addListener(element, "click", "wje-infinite-scroll:click-item", null);
-
 
                     placement.insertAdjacentElement("beforeend", element);
                 });

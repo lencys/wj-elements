@@ -31,14 +31,7 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
     <div class="playground">
       <div class="content">
         <wje-infinite-scroll placement="wje-list" id="custom-data">
-          <wje-list>
-            <wje-item iterate>
-              <wje-label>
-                <h4>{{fullName}}</h4>
-                <p>{{jobTitle}}</p>
-              </wje-label>
-            </wje-item>
-          </wje-list>
+          <wje-list></wje-list>
           <wje-icon name="arrow-bar-to-down" size="large" slot="ending"></wje-icon>
           <wje-icon name="loader" size="large" slot="loader"></wje-icon>
         </wje-infinite-scroll>
@@ -104,7 +97,18 @@ export default class DemoInfinteScroll extends WJElement {
   }
 
   beforeDraw() {
-    this.querySelector("#custom-data").setCustomData = async () => {
+
+    const infiniteScroll = this.querySelector("#custom-data");
+
+    infiniteScroll.setCustomData = async () => {
+      infiniteScroll.infiniteScrollTemplate = `<wje-item">
+          <wje-label>
+            <h4>{{fullName}}</h4>
+            <p>{{jobTitle}}</p>
+          </wje-label>
+        </wje-item>
+      `;
+
       return {
         "page": 0,
         "size": 1,
@@ -118,23 +122,23 @@ export default class DemoInfinteScroll extends WJElement {
             "id": "1"
           }
         ]
-      }
+      };
     }
   }
 
   afterDraw() {
-    const basicEl = this.querySelector("#basic");
-    basic.addEventListener("wje-infinite-scroll:click-item", (e) => {
-      console.log("wje-infinite-scroll:click-item", e.detail)
-    });
-
-    basicEl.addEventListener("wje-infinite-scroll:complete", (e) => {
-      // console.log("wje-infinite-scroll:complete", e.detail);
-    });
-
-    basicEl.addEventListener("wje-infinite-scroll:load", (e) => {
-      // console.log("wje-infinite-scroll:load", e.detail)
-    });
+    // const basicEl = this.querySelector("#basic");
+    // basic.addEventListener("wje-infinite-scroll:click-item", (e) => {
+    //   console.log("wje-infinite-scroll:click-item", e.detail)
+    // });
+    //
+    // basicEl.addEventListener("wje-infinite-scroll:complete", (e) => {
+    //   // console.log("wje-infinite-scroll:complete", e.detail);
+    // });
+    //
+    // basicEl.addEventListener("wje-infinite-scroll:load", (e) => {
+    //   // console.log("wje-infinite-scroll:load", e.detail)
+    // });
   }
 }
 
