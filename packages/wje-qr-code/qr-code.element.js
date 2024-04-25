@@ -33,11 +33,24 @@ export default class QrCode extends WJElement {
   draw(context, store, params) {
     let fragment = document.createDocumentFragment();
 
+    let wrapper = document.createElement("div");
+    wrapper.classList.add("container");
+
     let qrCode = document.createElement("canvas");
     qrCode.classList.add("qr");
     qrCode.setAttribute("part", "native");
 
-    fragment.appendChild(qrCode);
+    let slotTop = document.createElement('slot');
+    slotTop.setAttribute("name", "top");
+    
+    let slotBottom = document.createElement('slot');
+    slotBottom.setAttribute("name", "bottom");
+    
+    wrapper.appendChild(slotTop);
+    wrapper.appendChild(qrCode);
+    wrapper.appendChild(slotBottom);
+
+    fragment.appendChild(wrapper)
 
     return fragment;
   }

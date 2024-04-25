@@ -13,13 +13,35 @@ template.innerHTML = `
                     size="200"
                     padding="25"
                     foregroung="black"
+                    foregroundAlpha="1"
                     background="white"
-                ></wje-qr-code>
-                <wje-input changeValue label="Change value" type="text" value="https://www.mcdonalds.sk/"></wje-input>
-                <wje-input changeSize label="Change size" type="text" value="200"></wje-input>
-                <wje-input changePadding label="Change padding" type="text" value="25"></wje-input>
-                <wje-select colorSelectForeground label="Foreground color" placeholder="select color" max-options="1" max-height="200px"></wje-select>
-                <wje-select colorSelectBackground label="Background color" placeholder="select color" max-options="1" max-height="200px"></wje-select>
+                    backgroundAlpha="1"
+                    level="L"
+                >
+                    <h3 slot="top">
+                        Name of QR code
+                    </h3>
+                    <h3 slot="bottom">
+                        Description of qr code
+                    </h3>
+                </wje-qr-code>
+
+                <wje-input changeValue label="Change value" type="text" value="https://www.mcdonalds.sk/">
+                </wje-input>
+                <wje-input changeSize label="Change size" type="text" value="200">
+                </wje-input>
+                <wje-input changePadding label="Change padding" type="text" value="25">
+                </wje-input>
+                <wje-select colorSelectForeground label="Foreground color" placeholder="select color" max-options="1" max-height="200px">
+                </wje-select>
+                <wje-input changeForegroundAlpha label="Change foreground alpha" type="text" value="1">
+                </wje-input>
+                <wje-select colorSelectBackground label="Background color" placeholder="select color" max-options="1" max-height="200px">
+                </wje-select>
+                <wje-input changeBackgroundAlpha label="Change background alpha" type="text" value="1">
+                </wje-input>
+                <wje-select levelSelect label="Level" placeholder="select level" max-options="1">
+                </wje-select>
             </div>
         </div>
     </div>
@@ -33,15 +55,16 @@ export default class DemoQrCode extends WJElement {
     afterDraw() {
         const qr = document.querySelector('wje-qr-code');
         const colors = ["black", "blue", "red", "green", "orange", "white"];
+        const levels = ["L", "M", "Q", "H"];
     
-        function populateColorOptions(selectElement) {
-            colors.forEach(color => {
-                const option = Object.assign(document.createElement('wje-option'), {
-                    text: color,
-                    value: color,
-                    label: color
+        function populateOptions(selectElement, options) {
+            options.forEach(option => {
+                const optionElement = Object.assign(document.createElement('wje-option'), {
+                    text: option,
+                    value: option,
+                    label: option
                 });
-                selectElement.appendChild(option);
+                selectElement.appendChild(optionElement);
             });
         }
     
@@ -54,15 +77,28 @@ export default class DemoQrCode extends WJElement {
     
         const colorSelectF = document.querySelector('[colorSelectForeground]');
         const colorSelectB = document.querySelector('[colorSelectBackground]');
-        populateColorOptions(colorSelectF);
-        populateColorOptions(colorSelectB);
+        const levelSelect = document.querySelector('[levelSelect]');
     
-        handleInputOrSelectChange('[changeValue]', 'wje-input:input', 'value');
-        handleInputOrSelectChange('[changeSize]', 'wje-input:input', 'size');
-        handleInputOrSelectChange('[changePadding]', 'wje-input:input', 'padding');
-        handleInputOrSelectChange('[colorSelectForeground]', 'wje:option-change', 'foreground');
-        handleInputOrSelectChange('[colorSelectBackground]', 'wje:option-change', 'background');
+        populateOptions(colorSelectF, colors);
+        populateOptions(colorSelectB, colors);
+        populateOptions(levelSelect, levels);
+    
+        const elements = [
+            { selector: '[changeValue]', eventType: 'wje-input:input', attribute: 'value' },
+            { selector: '[changeSize]', eventType: 'wje-input:input', attribute: 'size' },
+            { selector: '[changePadding]', eventType: 'wje-input:input', attribute: 'padding' },
+            { selector: '[colorSelectForeground]', eventType: 'wje:option-change', attribute: 'foreground' },
+            { selector: '[changeForegroundAlpha]', eventType: 'wje-input:input', attribute: 'foregroundAlpha' },
+            { selector: '[colorSelectBackground]', eventType: 'wje:option-change', attribute: 'background' },
+            { selector: '[changeBackgroundAlpha]', eventType: 'wje-input:input', attribute: 'backgroundAlpha' },
+            { selector: '[levelSelect]', eventType: 'wje:option-change', attribute: 'level' }
+        ];
+    
+        elements.forEach(({ selector, eventType, attribute }) => {
+            handleInputOrSelectChange(selector, eventType, attribute);
+        });
     }
+    
     
 }
 
