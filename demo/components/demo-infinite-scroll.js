@@ -24,6 +24,26 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
         </wje-infinite-scroll>
       </div>
     </div>
+    
+    <!-- CUSTOM DATA -->
+
+    <h3>Custom Data</h3>
+    <div class="playground">
+      <div class="content">
+        <wje-infinite-scroll placement="wje-list" id="custom-data">
+          <wje-list>
+            <wje-item iterate>
+              <wje-label>
+                <h4>{{fullName}}</h4>
+                <p>{{jobTitle}}</p>
+              </wje-label>
+            </wje-item>
+          </wje-list>
+          <wje-icon name="arrow-bar-to-down" size="large" slot="ending"></wje-icon>
+          <wje-icon name="loader" size="large" slot="loader"></wje-icon>
+        </wje-infinite-scroll>
+      </div>
+    </div>
 
     <!-- SIZE -->
 
@@ -83,9 +103,37 @@ export default class DemoInfinteScroll extends WJElement {
     super(template);
   }
 
+  beforeDraw() {
+    this.querySelector("#custom-data").setCustomData = async () => {
+      return {
+        "page": 0,
+        "size": 1,
+        "totalPages": 1,
+        "data": [
+          {
+            "description": "Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.",
+            "jobTitle": "Congo",
+            "fullName": "Petr Rahman",
+            "image": "https://loremflickr.com/640/480/city?lock=4569138139758592",
+            "id": "1"
+          }
+        ]
+      }
+    }
+  }
+
   afterDraw() {
-    this.querySelector("#basic").addEventListener("wje-infinite-scroll:complete", (e) => {
-      console.log(e, e.detail);
+    const basicEl = this.querySelector("#basic");
+    basic.addEventListener("wje-infinite-scroll:click-item", (e) => {
+      console.log("wje-infinite-scroll:click-item", e.detail)
+    });
+
+    basicEl.addEventListener("wje-infinite-scroll:complete", (e) => {
+      // console.log("wje-infinite-scroll:complete", e.detail);
+    });
+
+    basicEl.addEventListener("wje-infinite-scroll:load", (e) => {
+      // console.log("wje-infinite-scroll:load", e.detail)
     });
   }
 }
