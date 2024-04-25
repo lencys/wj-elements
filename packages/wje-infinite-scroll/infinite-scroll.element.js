@@ -50,9 +50,7 @@ export default class InfiniteScroll extends WJElement {
                 for (let key of keys) {
                     let cleanKey = key.replace('{{', '').replace('}}', '');
                     let val = '';
-                    console.log("CLEAN KEY", cleanKey);
                     cleanKey.split('.').forEach(k => {
-                        console.log(k);
                         val = (val == '') ?  params[k] : val[k];
                     });
 
@@ -257,8 +255,6 @@ export default class InfiniteScroll extends WJElement {
         this.showLoader();
         try {
             if (this.hasMorePages(page) || typeof this.setCustomData === "function") {
-
-                let result;
                 let response;
 
                 if (typeof this.setCustomData === "function") {
@@ -287,7 +283,7 @@ export default class InfiniteScroll extends WJElement {
                     const doc = parser.parseFromString(interpolateItem, 'text/html');
                     const element = doc.querySelector(this.iterate.tagName.toLowerCase()); //doc.querySelector(".icon-item");
 
-                    event.addListener(element, "click", "wje-infinite-scroll:click-item", null, { stopPropagation: true });
+                    event.addListener(element, "click", "wje-infinite-scroll:click-item", null);
 
 
                     placement.insertAdjacentElement("beforeend", element);

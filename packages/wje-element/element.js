@@ -206,7 +206,6 @@ export default class WJElement extends HTMLElement {
 
 	setupAttributes() {
 		// Keď neaký element si zadefinuje funkciu "setupAttributes" tak sa obsah tejto funkcie nezavolá
-		console.log('Inner call of setupAttributes method...')
 
 		let allEvents = WjElementUtils.getEvents(this);
 		let events = allEvents.forEach((customEvent, domEvent) => {
@@ -221,7 +220,7 @@ export default class WJElement extends HTMLElement {
 				//     bubbles: true
 				// }));
 			});
-		})
+		});
 	}
 
 	beforeDisconnect() { }
