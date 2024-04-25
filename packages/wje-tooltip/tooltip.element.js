@@ -138,8 +138,9 @@ export default class Tooltip extends WJElement {
      * @summary Show tooltip
      */
     onShow = () => {
+        this.classList.add("active");
         Promise.resolve(this.beforeShow(this)).then((res) => {
-            if (!res && typeof res !== "string") {
+            if (!this.classList.contains("active") || (!res || typeof res !== "string")) {
                 throw new Error("beforeShow method returned false or not string");
             }
 
@@ -149,6 +150,7 @@ export default class Tooltip extends WJElement {
             Promise.resolve(this.afterShow(this));
         }).catch((error) => {
             // ak je nejaka chyba tak to len zatvorime
+            this.classList.remove("active");
             this.popup.hide();
         });
     }
@@ -157,6 +159,7 @@ export default class Tooltip extends WJElement {
      * @summary Hide tooltip
      */
     onHide = () => {
+        this.classList.remove("active");
         this.popup.hide();
     }
 }
