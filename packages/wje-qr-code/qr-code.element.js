@@ -17,6 +17,19 @@ export default class QrCode extends WJElement {
     this.isShadowRoot = "open";
   }
 
+  static get observedAttributes() {
+    return [
+        "value",
+        "background",
+        "backgroundAlpha",
+        "foreground",
+        "foregroundAlpha",
+        "level",
+        "padding",
+        "size",
+    ];
+  }
+
   draw(context, store, params) {
     let fragment = document.createDocumentFragment();
 
@@ -32,7 +45,7 @@ export default class QrCode extends WJElement {
   afterDraw(context, store, params) {
     const canvas = this.shadowRoot.querySelector("canvas");
     const qrOptions = {};
-  
+
     const attributes = [
       "value",
       "background",
@@ -41,24 +54,23 @@ export default class QrCode extends WJElement {
       "foregroundAlpha",
       "level",
       "padding",
-      "size"
+      "size",
     ];
-  
-    attributes.forEach(attribute => {
+
+    attributes.forEach((attribute) => {
       const value = this.getAttribute(attribute);
       if (value !== null) {
         qrOptions[attribute] = value;
       }
     });
-  
+
     if (!qrOptions.hasOwnProperty("value")) {
       qrOptions.value = "empty value";
     }
-  
-    new QRious({
+
+    const qr = new QRious({
       element: canvas,
-      ...qrOptions
+      ...qrOptions,
     });
   }
-  
 }
