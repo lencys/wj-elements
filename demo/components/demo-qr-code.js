@@ -19,10 +19,10 @@ template.innerHTML = `
                     level="L"
                 >
                     <h3 slot="top">
-                        Name of QR code
+                        Name on top of QR code
                     </h3>
                     <h3 slot="bottom">
-                        Description of qr code
+                        Name on bottom of QR code
                     </h3>
                 </wje-qr-code>
 
@@ -32,14 +32,26 @@ template.innerHTML = `
                 </wje-input>
                 <wje-input changePadding label="Change padding" type="text" value="25">
                 </wje-input>
-                <wje-select colorSelectForeground label="Foreground color" placeholder="select color" max-options="1" max-height="200px">
-                </wje-select>
-                <wje-input changeForegroundAlpha label="Change foreground alpha" type="text" value="1">
-                </wje-input>
-                <wje-select colorSelectBackground label="Background color" placeholder="select color" max-options="1" max-height="200px">
-                </wje-select>
-                <wje-input changeBackgroundAlpha label="Change background alpha" type="text" value="1">
-                </wje-input>
+                <div style="display: flex; flex-direction: row;">
+                    <wje-color-picker colorSelectForeground style="margin: 10px;">
+                    </wje-color-picker>
+
+                    <div style="margin: 10px;">Foreground</div>
+                
+                    <wje-input changeForegroundAlpha label="Change foreground alpha" type="text" value="1" style="margin-left: 10px;">
+                    </wje-input>
+                </div>
+            
+                <div style="display: flex; flex-direction: row;">
+                    <wje-color-picker colorSelectBackground style="margin: 10px;">
+                    </wje-color-picker>
+                        
+                    <div style="margin: 10px;">Background</div>
+
+                    <wje-input changeBackgroundAlpha label="Change background alpha" type="text" value="1" style="margin-left: 10px;">
+                    </wje-input>
+                </div>
+
                 <wje-select levelSelect label="Level" placeholder="select level" max-options="1">
                 </wje-select>
             </div>
@@ -71,7 +83,7 @@ export default class DemoQrCode extends WJElement {
         function handleInputOrSelectChange(selector, eventType, attribute) {
             const element = document.querySelector(selector);
             element.addEventListener(eventType, (e) => {
-                qr.setAttribute(attribute, e.detail.context ? e.detail.context.value : e.detail.value);
+                qr.setAttribute(attribute, e.detail.context ? e.detail.context.value : e.detail.hex8 ? e.detail.hex8 : e.detail.value);
             });
         }
     
@@ -87,9 +99,9 @@ export default class DemoQrCode extends WJElement {
             { selector: '[changeValue]', eventType: 'wje-input:input', attribute: 'value' },
             { selector: '[changeSize]', eventType: 'wje-input:input', attribute: 'size' },
             { selector: '[changePadding]', eventType: 'wje-input:input', attribute: 'padding' },
-            { selector: '[colorSelectForeground]', eventType: 'wje:option-change', attribute: 'foreground' },
+            { selector: '[colorSelectForeground]', eventType: 'wje-color-picker:select', attribute: 'foreground' },
             { selector: '[changeForegroundAlpha]', eventType: 'wje-input:input', attribute: 'foregroundAlpha' },
-            { selector: '[colorSelectBackground]', eventType: 'wje:option-change', attribute: 'background' },
+            { selector: '[colorSelectBackground]', eventType: 'wje-color-picker:select', attribute: 'background' },
             { selector: '[changeBackgroundAlpha]', eventType: 'wje-input:input', attribute: 'backgroundAlpha' },
             { selector: '[levelSelect]', eventType: 'wje:option-change', attribute: 'level' }
         ];
