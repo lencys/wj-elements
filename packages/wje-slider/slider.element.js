@@ -1,4 +1,4 @@
-import { default as WJElement } from "../wje-element/element.js";
+import { default as WJElement, event } from "../wje-element/element.js";
 import styles from "./scss/styles.scss?inline";
 
 /**
@@ -134,7 +134,7 @@ export default class Slider extends WJElement {
      * @returns {Array<string>}
      */
     static get observedAttributes(){
-        return ["max", "value"];
+        return ["max"];
     }
 
     /**
@@ -187,10 +187,10 @@ export default class Slider extends WJElement {
         input.part = "slider";
         input.setAttribute("autocomplete", "off");
         input.setAttribute("color", this.color || "");
-        input.addEventListener("input", (e) => {
+
+        input.addEventListener("input", null, (e) => {
             this.setHandlePosition(e.target);
         });
-
 
         slider.appendChild(input);
         if(this.hasAttribute("bubble")) {
@@ -222,70 +222,30 @@ export default class Slider extends WJElement {
             setTimeout(this.setBubble, 50);
         }
 
-        this.dispatchInit(this.input.value);
+        event.dispatchCustomEvent(this.input, "wje-slider:init", {
+            value: this.input.value,
+            output: this.output
+        });
 
-        this.input.addEventListener("input", (e) => {
+        event.addListener(this.input, "input", null, (e) => {
             this.value = e.target.value;
-            this.dispatchMove(this.value);
+
+            event.dispatchCustomEvent(this.input, "wje-slider:move", {
+                value: e.target.value,
+                output: this.output
+            });
+
             if(this.hasAttribute("bubble")) {
                 this.setBubble();
             }
         });
 
-        this.input.addEventListener("change", (e) => {
-            this.dispatchChange(e.target.value);
+        event.addListener(this.input, "change", null, (e) => {
+            event.dispatchCustomEvent(this.input, "wje-slider:change", {
+                value: e.target.value,
+                output: this.output
+            });
         });
-    }
-
-    /**
-     * Dispatches the slider initialization event.
-     *
-     * @param {number} value - The value of the slider.
-     */
-    dispatchInit(value) {
-        this.dispatchEvent(
-            new CustomEvent("wje:slider-init", {
-                bubbles: true,
-                detail: {
-                    value: value,
-                    output: this.output
-                },
-            })
-        );
-    }
-
-    /**
-     * Dispatches the slider move event.
-     *
-     * @param {number} value - The value of the slider.
-     */
-    dispatchMove(value) {
-        this.dispatchEvent(
-            new CustomEvent("wje:slider-move", {
-                bubbles: true,
-                detail: {
-                    value: value,
-                    output: this.output
-                },
-            })
-        );
-    }
-
-    /**
-     * Dispatches the slider change event.
-     *
-     * @param {number} value - The value of the slider.
-     */
-    dispatchChange(value) {
-        this.dispatchEvent(
-            new CustomEvent("wje:slider-change", {
-                bubbles: true,
-                detail: {
-                    value: value,
-                    output: this.output
-                },
-            })
-        );
     }
 
     /**
