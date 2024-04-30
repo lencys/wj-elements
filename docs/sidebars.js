@@ -226,6 +226,12 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'QR Code',
+      collapsed: false,
+      items: ['api/qr-generator'],
+    },
+    {
+      type: 'category',
       label: 'Radio',
       collapsed: false,
       items: ['api/radio', 'api/radio-group'],

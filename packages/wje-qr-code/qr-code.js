@@ -1,4 +1,4 @@
-import QrCode from "./qr-code.element";
+import QrCode from "./qr-code.element.js";
 
 export default QrCode;
 

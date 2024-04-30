@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: var(--flex-direction);
 }
 
 .container-w-dropzones {
@@ -12,4 +12,12 @@
   align-items: center;
   justify-content: center;
   flex-direction: row;
+}
+
+.reversed {
+  --flex-direction: column-reverse;
+}
+
+.basic {
+  --flex-direction: column;
 }

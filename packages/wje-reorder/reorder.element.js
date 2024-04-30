@@ -59,6 +59,12 @@ export default class Reorder extends WJElement {
         });
       });
     }
+
+    if (this.hasAttribute('reverse')) {
+      this.container.classList.add("reversed");
+    } else {
+      this.container.classList.add("basic");
+    }
   }
 
   onDragStart(e) {

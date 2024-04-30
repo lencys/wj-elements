@@ -1,9 +1,9 @@
-var g = Object.defineProperty;
-var m = (l, r, t) => r in l ? g(l, r, { enumerable: !0, configurable: !0, writable: !0, value: t }) : l[r] = t;
-var h = (l, r, t) => (m(l, typeof r != "symbol" ? r + "" : r, t), t);
-import p, { event as f } from "./wje-element.js";
-const w = ":host{--wje-infinite-scroll-width: 100%;--wje-infinite-scroll-height: 300px;overflow-x:auto;width:var(--wje-infinite-scroll-width);height:var(--wje-infinite-scroll-height);display:block}";
-class u extends p {
+var m = Object.defineProperty;
+var p = (l, r, t) => r in l ? m(l, r, { enumerable: !0, configurable: !0, writable: !0, value: t }) : l[r] = t;
+var d = (l, r, t) => (p(l, typeof r != "symbol" ? r + "" : r, t), t);
+import f, { WjElementUtils as w, event as g } from "./wje-element.js";
+const y = ":host{--wje-infinite-scroll-width: 100%;--wje-infinite-scroll-height: 300px;--wje-infinite-scroll-loading-bg: rgba(0, 0, 0, 0);overflow-x:auto;width:var(--wje-infinite-scroll-width);height:var(--wje-infinite-scroll-height);display:block}.native{position:relative}.loading{position:sticky;display:none;justify-content:center;align-items:center;width:100%;height:100%;top:0;left:0;z-index:9999;background-color:var(--wje-infinite-scroll-loading-bg)}.loading.show{display:flex}[name=ending]{display:none;margin-top:1rem;text-align:center}[name=ending].show{display:block}";
+class u extends f {
   /**
    * Creates an instance of InfiniteScroll.
    *
@@ -12,17 +12,17 @@ class u extends p {
    */
   constructor(t = {}) {
     super();
-    h(this, "className", "InfiniteScroll");
+    d(this, "className", "InfiniteScroll");
     /**
      * Adds the scroll event listener.
      */
-    h(this, "scrollEvent", () => {
+    d(this, "scrollEvent", () => {
       this.addEventListener("scroll", this.onScroll);
     });
     /**
      * Removes the scroll event listener.
      */
-    h(this, "unScrollEvent", () => {
+    d(this, "unScrollEvent", () => {
       this.removeEventListener("scroll", this.onScroll);
     });
     /**
@@ -30,21 +30,33 @@ class u extends p {
      *
      * @param {Event} e - The event.
      */
-    h(this, "onScroll", (t) => {
-      const { scrollTop: s, scrollHeight: e, clientHeight: i } = t.target;
-      s + i >= e - 300 && this.currentPage <= this.totalPages && this.isLoading.includes(this.currentPage) && (this.currentPage++, this.loadPages(this.currentPage));
+    d(this, "onScroll", (t) => {
+      const { scrollTop: i, scrollHeight: e, clientHeight: n } = t.target;
+      i + n >= e - 300 && this.currentPage <= this.totalPages && this.isLoading.includes(this.currentPage) && (this.currentPage++, this.loadPages(this.currentPage));
     });
-    this.totalPages = 0, this.isLoading = [], String.prototype.interpolate = function(s) {
-      let e = this, i = e.match(/\{{.*?\}}/g);
-      if (i)
-        for (let a of i) {
-          let o = a.replace("{{", "").replace("}}", ""), n = "";
-          o.split(".").forEach((c) => {
-            n = n == "" ? s[c] : n[c];
-          }), e = e.replace(a, n);
+    this.totalPages = 0, this.isLoading = [], this._response = {}, String.prototype.interpolate = function(i) {
+      let e = this, n = e.match(/\{{.*?\}}/g);
+      if (n)
+        for (let s of n) {
+          let c = s.replace("{{", "").replace("}}", ""), a = "";
+          console.log("CLEAN KEY", c), c.split(".").forEach((o) => {
+            console.log(o), a = a == "" ? i[o] : a[o];
+          }), e = e.replace(s, a);
         }
       return e;
     };
+  }
+  set response(t) {
+    this._response = t;
+  }
+  get response() {
+    return this._response;
+  }
+  set objectName(t) {
+    this.setAttribute("object-name", t);
+  }
+  get objectName() {
+    return this.getAttribute("object-name") || "data";
   }
   /**
    * Returns the CSS styles for the component.
@@ -53,7 +65,7 @@ class u extends p {
    * @returns {CSSStyleSheet}
    */
   static get cssStyleSheet() {
-    return w;
+    return y;
   }
   /**
    * Returns the list of attributes to observe for changes.
@@ -77,7 +89,7 @@ class u extends p {
    * @param {Object} store - The store for drawing.
    * @param {Object} params - The parameters for drawing.
    */
-  beforeDraw(t, s, e) {
+  beforeDraw(t, i, e) {
     this.iterate = this.querySelector("[iterate]"), this.infiniteScrollTemplate = this.iterate.outerHTML, this.iterate.remove(), this.setAttribute("style", "height: " + this.height);
   }
   /**
@@ -88,9 +100,17 @@ class u extends p {
    * @param {Object} params - The parameters for drawing.
    * @returns {DocumentFragment}
    */
-  draw(t, s, e) {
-    let i = document.createDocumentFragment(), a = document.createElement("slot"), o = document.createElement("div");
-    return o.classList.add("loader"), i.appendChild(o), i.appendChild(a), this.loaderEl = o, i;
+  draw(t, i, e) {
+    let n = document.createDocumentFragment(), s = document.createElement("div");
+    s.classList.add("native"), s.setAttribute("part", "native-infinite-scroll");
+    let c = document.createElement("slot"), a = document.createElement("slot");
+    if (a.setAttribute("name", "ending"), w.hasSlot(this, "loader")) {
+      let o = document.createElement("div");
+      o.classList.add("loading");
+      let h = document.createElement("slot");
+      h.setAttribute("name", "loader"), o.appendChild(h), this.loadingEl = o, n.appendChild(o);
+    }
+    return s.appendChild(c), s.appendChild(a), n.appendChild(s), this.endingEl = a, n;
   }
   /**
    * Called after the component has been drawn.
@@ -105,8 +125,8 @@ class u extends p {
    * @returns {Promise<Object>} The response from the server.
    */
   async getPages(t) {
-    let s = this.url.includes("?");
-    const e = await fetch(`${this.url}${s ? "&" : "?"}page=${t}&size=${this.size}${this == null ? void 0 : this.queryParams}`);
+    let i = this.url.includes("?");
+    const e = await fetch(`${this.url}${i ? "&" : "?"}page=${t}&size=${this.size}${this == null ? void 0 : this.queryParams}`);
     if (!e.ok)
       throw new Error(`An error occurred: ${e.status}`);
     return await e.json();
@@ -115,13 +135,15 @@ class u extends p {
    * Hides the loader.
    */
   hideLoader() {
-    this.loaderEl.classList.remove("show");
+    var t;
+    (t = this == null ? void 0 : this.loadingEl) == null || t.classList.remove("show");
   }
   /**
    * Shows the loader.
    */
   showLoader() {
-    this.loaderEl.classList.add("show");
+    var t;
+    (t = this == null ? void 0 : this.loadingEl) == null || t.classList.add("show");
   }
   /**
    * Checks if there are more pages to load.
@@ -141,17 +163,18 @@ class u extends p {
     this.showLoader();
     try {
       if (this.hasMorePages(t) || typeof this.setCustomData == "function") {
-        let s, e;
+        let i, e;
         typeof this.setCustomData == "function" ? e = await this.setCustomData(t) : e = await this.getPages(t), this.totalPages = e.totalPages, this.currentPage = t;
-        const i = new DOMParser();
-        let a = this;
-        this.hasAttribute("placement") && (a = this.querySelector(this.placement)), e.data.forEach((o) => {
-          const n = this.infiniteScrollTemplate.interpolate(o), d = i.parseFromString(n, "text/html").querySelector(this.iterate.tagName.toLowerCase());
-          f.addListener(d, "click", "wje-infinite-scroll:click-item", null, { stopPropagation: !0 }), a.insertAdjacentElement("beforeend", d);
+        const n = new DOMParser();
+        let s = this;
+        this.hasAttribute("placement") && (s = this.querySelector(this.placement)), g.dispatchCustomEvent(this, "wje-infinite-scroll:load", e), this.response = e, e[this.objectName].forEach((c) => {
+          const a = this.infiniteScrollTemplate.interpolate(c), h = n.parseFromString(a, "text/html").querySelector(this.iterate.tagName.toLowerCase());
+          g.addListener(h, "click", "wje-infinite-scroll:click-item", null, { stopPropagation: !0 }), s.insertAdjacentElement("beforeend", h);
         }), this.isLoading.push(t);
-      }
-    } catch (s) {
-      console.log(s.message);
+      } else
+        g.dispatchCustomEvent(this, "wje-infinite-scroll:complete"), this.endingEl.classList.add("show");
+    } catch (i) {
+      console.log(i.message);
     } finally {
       this.hideLoader();
     }

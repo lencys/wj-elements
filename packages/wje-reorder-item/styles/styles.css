@@ -56,11 +56,11 @@
 }
 
 .drag--down {
-  --item-transform: translateY(-10px);
+  --item-transform: translateY(-5px);
 }
 
 .drag--up {
-  --item-transform: translateY(10px);
+  --item-transform: translateY(5px);
 }
 
 .item {

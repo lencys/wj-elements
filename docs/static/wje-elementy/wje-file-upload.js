@@ -1,10 +1,10 @@
 var v = Object.defineProperty;
-var w = (r, s, e) => s in r ? v(r, s, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[s] = e;
-var h = (r, s, e) => (w(r, typeof s != "symbol" ? s + "" : s, e), e);
+var w = (s, r, e) => r in s ? v(s, r, { enumerable: !0, configurable: !0, writable: !0, value: e }) : s[r] = e;
+var h = (s, r, e) => (w(s, typeof r != "symbol" ? r + "" : r, e), e);
 import x from "./wje-element.js";
-import { L as A } from "./localize-7fxVJArK.js";
-import E from "./wje-button.js";
-function z() {
+import { L as z } from "./localize-7fxVJArK.js";
+import A from "./wje-button.js";
+function L() {
   return [
     {
       type: ["jpg", "jpeg", "png", "gif", "bpm", "tiff", "svg"],
@@ -52,42 +52,39 @@ function z() {
     }
   ];
 }
-function L(r) {
-  let s;
-  return r.toLowerCase() !== "folder" ? z().forEach((e) => {
-    e.type.includes(r.toLowerCase()) && (s = e.name);
-  }) : s = "folder", s;
+function E(s) {
+  let r;
+  return s.toLowerCase() !== "folder" ? L().forEach((e) => {
+    e.type.includes(s.toLowerCase()) && (r = e.name);
+  }) : r = "folder", r;
 }
-function F(r, s) {
-  console.log("FILE", r, s);
-  const e = r.type.split("/")[0];
-  console.log("BASE MIME TYPE", e);
-  let t = Array.isArray(s) ? s : s.split(",");
-  if (console.log("ACCEPTED TYPES", t), t.length === 0)
+function j(s, r) {
+  const e = s.type.split("/")[0];
+  let t = Array.isArray(r) ? r : r.split(",");
+  if (t.length === 0)
     throw new Error("acceptedFileTypes is empty");
   for (let i of t)
-    if (i.includes(e + "/*") || i.includes(r.type) || i.includes(r.type.split("/")[1]))
+    if (i.includes(e + "/*") || i.includes(s.type) || i.includes(s.type.split("/")[1]))
       return !0;
   return !1;
 }
-function j(r, s, e) {
-  console.log("UPLOAD FILE:", r, s, e);
+function F(s, r, e) {
   let t = 0;
-  const i = new Array(Math.ceil(r.size / s)).fill(0), l = (a, p) => {
-    const n = new FileReader(), u = a / s, o = r.slice(a, p);
-    n.onload = (c) => {
-      const d = new XMLHttpRequest();
-      d.open("POST", "/upload", !0), d.setRequestHeader("Content-Range", `${a}-${p}/${r.size}`), d.upload.onprogress = (m) => {
+  const i = new Array(Math.ceil(s.size / r)).fill(0), n = (a, p) => {
+    const l = new FileReader(), u = a / r, d = s.slice(a, p);
+    l.onload = (c) => {
+      const o = new XMLHttpRequest();
+      o.open("POST", "/upload", !0), o.setRequestHeader("Content-Range", `${a}-${p}/${s.size}`), o.upload.onprogress = (m) => {
         if (m.lengthComputable) {
           const g = m.loaded / m.total * 100;
           i[u] = g, i.reduce((b, y) => b + y, 0) / i.length;
         }
-      }, d.onload = () => {
-        d.status == 200 || d.status == 201 ? (i[u] = 100, a += s, a < r.size ? (e.setAttribute("uploaded", a), l(a, Math.min(a + s, r.size))) : (e.setAttribute("uploaded", a), console.log("Upload complete"))) : console.error("Error during upload: ", d.statusText);
-      }, d.send(c.target.result);
-    }, n.readAsArrayBuffer(o);
+      }, o.onload = () => {
+        o.status == 200 || o.status == 201 ? (i[u] = 100, a += r, a < s.size ? (e.setAttribute("uploaded", a), n(a, Math.min(a + r, s.size))) : e.setAttribute("uploaded", a)) : console.error("Error during upload: ", o.statusText);
+      }, o.send(c.target.result);
+    }, l.readAsArrayBuffer(d);
   };
-  l(t, Math.min(t + s, r.size));
+  n(t, Math.min(t + r, s.size));
 }
 const C = ':host{width:100%}.native-file-upload{width:100%}.file-label{background:var(--wje-color-contrast-0);border:1px dashed var(--wje-border-color);border-radius:var(--wje-border-radius-medium);align-items:center;justify-content:center;display:flex;padding:1rem;margin-bottom:.5rem;flex-direction:column}.file-preview{display:grid;grid-template-columns:auto 1fr 1fr;grid-template-rows:auto auto auto;gap:0 0;grid-template-areas:"image name name" "image size size" "progress progress progress"}.file-image{grid-area:image;align-items:center;display:flex}.file-name{grid-area:name;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.file-size{grid-area:size;display:flex}.file-progress{grid-area:progress}wje-icon{margin-right:.25rem}wje-img{margin-right:.25rem}.file-info>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}wje-slider{flex-basis:100%;margin-top:.5rem}:is()::-webkit-slider-thumb{visibility:hidden}:is()::-moz-range-thumb{visibility:hidden}:is()::-ms-thumb{visibility:hidden}wje-img{width:50px;height:50px;display:flex;align-items:center;padding:.25rem;border:1px solid var(--wje-border-color);border-radius:var(--wje-border-radius-medium)}';
 class f extends x {
@@ -102,7 +99,7 @@ class f extends x {
      * @type {Object}
      */
     h(this, "depandencies", {
-      "wje-button": E
+      "wje-button": A
     });
     h(this, "className", "FileUpload");
     /**
@@ -125,7 +122,7 @@ class f extends x {
         return;
       }
     });
-    this.localizer = new A(this);
+    this.localizer = new z(this);
   }
   /**
    * Setter for acceptedTypes attribute.
@@ -200,16 +197,16 @@ class f extends x {
    * @returns {DocumentFragment} The fragment containing the component.
    */
   draw(e, t, i) {
-    let l = document.createDocumentFragment(), a = document.createElement("div");
+    let n = document.createDocumentFragment(), a = document.createElement("div");
     a.classList.add("native-file-upload"), a.setAttribute("part", "native");
     let p = document.createElement("div");
     p.classList.add("file-label");
-    let n = document.createElement("wje-button");
-    n.innerText = this.label || this.localizer.translate("wj.file.upload.button");
-    let u = document.createElement("slot"), o = document.createElement("input");
-    o.setAttribute("type", "file"), o.setAttribute("multiple", ""), o.setAttribute("style", "display:none;"), n.appendChild(u), n.appendChild(o), this.fileInput = o;
+    let l = document.createElement("wje-button");
+    l.innerText = this.label || this.localizer.translate("wj.file.upload.button");
+    let u = document.createElement("slot"), d = document.createElement("input");
+    d.setAttribute("type", "file"), d.setAttribute("multiple", ""), d.setAttribute("style", "display:none;"), l.appendChild(u), l.appendChild(d), this.fileInput = d;
     let c = document.createElement("div");
-    return c.classList.add("file-list"), p.appendChild(u), p.appendChild(n), a.appendChild(o), a.appendChild(p), a.appendChild(c), l.appendChild(a), this.native = a, this.fileList = c, this.button = n, l;
+    return c.classList.add("file-list"), p.appendChild(u), p.appendChild(l), a.appendChild(d), a.appendChild(p), a.appendChild(c), n.appendChild(a), this.native = a, this.fileList = c, this.button = l, n;
   }
   /**
    * Method to perform actions after the component is drawn.
@@ -243,10 +240,10 @@ class f extends x {
   uploadFiles(e) {
     e.length !== 0 && Array.from(e).forEach((t) => {
       this.assertFilesValid(t);
-      let i, l = new FileReader();
-      l.onload = (a) => {
-        i = this.createPreview(t, l), this.fileList.appendChild(i), j(t, this.chunkSize, i);
-      }, l.readAsDataURL(t);
+      let i, n = new FileReader();
+      n.onload = (a) => {
+        i = this.createPreview(t, n), this.fileList.appendChild(i), F(t, this.chunkSize, i);
+      }, n.readAsDataURL(t);
     });
   }
   /**
@@ -257,7 +254,7 @@ class f extends x {
    */
   createPreview(e, t) {
     let i = document.createElement("wje-file-upload-item");
-    return i.setAttribute("name", e.name), i.setAttribute("size", e.size), i.setAttribute("uploaded", "0"), i.setAttribute("progress", "0"), i.innerHTML = `<wje-icon slot="img" name="${L(e.type.split("/")[1])}" size="large"></wje-icon>`, i;
+    return i.setAttribute("name", e.name), i.setAttribute("size", e.size), i.setAttribute("uploaded", "0"), i.setAttribute("progress", "0"), i.innerHTML = `<wje-icon slot="img" name="${E(e.type.split("/")[1])}" size="large"></wje-icon>`, i;
   }
   /**
    * Method to create a thumbnail for the file.
@@ -276,7 +273,7 @@ class f extends x {
    */
   assertFilesValid(e) {
     const { name: t, size: i } = e;
-    if (!F(e, this.acceptedTypes))
+    if (!j(e, this.acceptedTypes))
       throw new Error(`❌ FILE: "${t}" Valid file types are: "${this.acceptedTypes}"`);
     if (i > this.maxFileSize)
       throw new Error(`❌ File "${t}" could not be uploaded. Only images up to ${this.maxFileSize} MB are allowed. Nie je to ${i}`);

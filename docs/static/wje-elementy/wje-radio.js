@@ -34,7 +34,7 @@ class c extends p {
     return o.htmlFor = "radio", o.innerHTML = "<slot></slot>", r.appendChild(this.input), r.appendChild(o), d.appendChild(r), d;
   }
   afterDraw() {
-    this.hasAttribute("disabled") || (n.addListener(this, "click", "wje:radio:change"), n.addListener(this, "click", "wje:radio:input"));
+    this.hasAttribute("disabled") || (n.addListener(this, "click", "wje-radio:change"), n.addListener(this, "click", "wje-radio:input"));
   }
   disconnectedCallback() {
     n.removeElement(this);
