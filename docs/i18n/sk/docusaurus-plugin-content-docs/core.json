@@ -459,9 +459,24 @@
             "listeners": [],
             "styles": [
                 {
-                    "name": "--wj-chip-border-radius",
+                    "name": "--wje-badge-border-radius",
                     "annotation": "prop",
-                    "docs": "Upraví zaoblenie elementu badge"
+                    "docs": "Upravuje zaoblenie elementu"
+                },
+                {
+                    "name": "--wje-badge-padding-bottom",
+                    "annotation": "prop",
+                    "docs": "Upravuje spodné vnútorné odsadenie elementu"
+                },
+                {
+                    "name": "--wje-badge-padding-inline",
+                    "annotation": "prop",
+                    "docs": "Upravuje horizontálne vnútorné odsadenie elementu"
+                },
+                {
+                    "name": "--wje-badge-padding-top",
+                    "annotation": "prop",
+                    "docs": "Upravuje horné vnútorné odsadenie elementu"
                 }
             ],
             "slots": [
