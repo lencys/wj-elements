@@ -38,17 +38,23 @@
 }
 
 :host {
-  --wje-chip-border-radius: 100px;
+  --wje-badge-border-radius: var(--wje-border-radius-large);
+  --wje-badge-padding-top: 2px;
+  --wje-badge-padding-bottom: 2px;
+  --wje-badge-padding-inline: 6px;
 
+  display: inline-block;
   text-shadow: none;
   font-family: var(--wje-font-family);
   font-weight: 600;
   background-color: var(--wje-color-contrast-low);
   font-size: 11px;
-  padding-left: 6px;
-  padding-right: 6px;
+  line-height: 1;
+  padding-top: var(--wje-badge-padding-top);
+  padding-bottom: var(--wje-badge-padding-bottom);
+  padding-inline: var(--wje-badge-padding-inline);
   color: var(--wje-color-contrast-high);
-  border-radius: 10px;
+  border-radius: var(--wje-badge-border-radius);
 }
 
 :host(.wje-color) {
