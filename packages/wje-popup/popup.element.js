@@ -226,29 +226,28 @@ export default class Popup extends WJElement {
             strategy: 'fixed',
             middleware: middleware,
         }).then(({ x, y, middlewareData, placement, strategy }) => {
+
             this.native.style.setProperty("--wje-popup-left", x + "px");
             this.native.style.setProperty("--wje-popup-top", y + "px");
 
             this.native.style.position = strategy;
 
             if(this.arrow) {
-                const side = this.placement.split("-")[0];
-
                 const staticSide = {
                     top: "bottom",
                     right: "left",
                     bottom: "top",
                     left: "right"
-                }[side];
+                }[placement];
 
                 if (middlewareData.arrow) {
+                    const { width, height } = this.native.getBoundingClientRect();
                     const {x, y} = middlewareData.arrow;
 
                     Object.assign(this.arrow.style, {
-                        left: x != null ? `${x}px` : "",
-                        top: y != null ? `${y}px` : "",
-                        [staticSide]: `${-this.arrow.offsetWidth / 2}px`,
-
+                        left: x != null ? `${width / 2 - this.arrow.offsetWidth / 2}px` : "",
+                        top: y != null ? `${height / 2 - this.arrow.offsetHeight / 2}px` : "",
+                        [staticSide]: `${ - this.arrow.offsetHeight / 2}px`,
                     });
                 }
             }
