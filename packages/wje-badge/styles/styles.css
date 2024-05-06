@@ -32,7 +32,7 @@
   --wje-color-contrast: var(--wje-color-contrast-lowest) !important;
 }
 
-:host(.wje-color-menu) {
+:host(.wje-color-contrast) {
   --wje-color-base: var(--wje-color-contrast-lower) !important;
   --wje-color-contrast: var(--wje-color-contrast-high) !important;
 }
