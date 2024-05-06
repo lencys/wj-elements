@@ -2,7 +2,12 @@ import WJElement from "../../dist/wje-element.js";
 
 const template = document.createElement('template');
 
-template.innerHTML = `
+template.innerHTML = `<style>
+    wje-badge {
+      --wje-badge-padding-top: 4px;
+      --wje-badge-padding-bottom: 4px;
+    }
+  </style>
   <h1>Tab</h1>
   <div class="container">
 
@@ -13,7 +18,7 @@ template.innerHTML = `
       <div class="content">
         <wje-card>
           <wje-tab-group variant="top">
-            <wje-tab slot="nav" panel="general">General <wje-badge>3</wje-badge></wje-tab>
+            <wje-tab slot="nav" panel="general">General <wje-badge color="primary">3</wje-badge></wje-tab>
             <wje-tab slot="nav" panel="custom" active>Custom</wje-tab>
             <wje-tab slot="nav" panel="advanced">Advanced</wje-tab>
             <wje-tab slot="nav" panel="disabled" disabled>Disabled</wje-tab>

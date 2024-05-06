@@ -73,9 +73,11 @@ export default class Tab extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
+        let slot = document.createElement("slot");
+
         let a = document.createElement("a");
         a.setAttribute("href", "#" + this.panel);
-        a.innerHTML = this.innerHTML;
+        a.appendChild(slot);
 
         fragment.appendChild(a);
 
