@@ -272,8 +272,11 @@ export default class Button extends WJElement {
             }
         }
 
-        event.addListener(this, "click", "wje-button:click", null); // { stopPropagation: this.stopPropagation } - zrusene kvoli dropdown kde som nevedel odchytit event click
-        event.addListener(this, "click", null, this.eventDialogOpen);
+        if(this.hasAttribute("dialog")) {
+            event.addListener(this, "click", null, this.eventDialogOpen);
+        } else {
+            event.addListener(this, "click", "wje-button:click", null); // { stopPropagation: this.stopPropagation } - zrusene kvoli dropdown kde som nevedel odchytit event click
+        }
 
         if(this.hasToggle)
             event.addListener(this, "click", "wje-button:toggle", this.toggleStates, { stopPropagation: this.stopPropagation });
