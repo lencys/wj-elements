@@ -152,17 +152,20 @@ export default class Popup extends WJElement {
             this.anchorEl = this.slotAnchor.assignedElements({ flatten: true })[0];
         }
 
-        event.addListener(this.anchorEl, "click", null, (e) => {
-            if(this.hasAttribute("disabled")) return;
+        if(!this.manual) {
+            event.addListener(this.anchorEl, "click", null, (e) => {
+                if(this.hasAttribute("disabled")) return;
 
-            this.showHide();
-        }, { stopPropagation: true });
-
+                this.showHide();
+            }, { stopPropagation: true });
+        }
 
         document.addEventListener("click",(e) => {
             let clickToHost = e.composedPath().some((el) => el === this);
 
+            console.log(clickToHost);
             if(!clickToHost) {
+                console.log("click outside", this.hasAttribute("active"));
                 if(this.hasAttribute("active"))
                     this.removeAttribute("active");
             }
@@ -273,6 +276,9 @@ export default class Popup extends WJElement {
         this.cleanup = autoUpdate(this.anchorEl, this.native, () => {
             this.reposition();
         });
+
+        if(!this.hasAttribute("active"))
+            this.setAttribute("active", "");
     }
 
     /**

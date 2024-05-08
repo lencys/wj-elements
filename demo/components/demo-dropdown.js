@@ -16,7 +16,7 @@ template.innerHTML = `<style>
     <div class="playground">
       <div class="content">
         <p style="overflow: hidden; height: 50px;">
-          <wje-dropdown label="Start" placement="bottom-start" offset="5">
+          <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible trigger="hover" id="custom-basic" offset="0">
             <wje-button size="large" slot="trigger" stop-propagation="true" caret>Large</wje-button>
             <wje-menu variant="context">
               <wje-menu-item>
@@ -136,6 +136,17 @@ template.innerHTML = `<style>
 export default class DemoDropdown extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+
+    this.querySelector("#custom-basic").beforeShow = () => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve("Dáta načítané");
+        }, 1000);  // Simuluje 1 sekundové oneskorenie
+      });
+    }
   }
 }
 
