@@ -50,7 +50,7 @@ export default class Dropdown extends WJElement {
         popup.appendChild(anchorSlot);
         popup.appendChild(slot);
 
-        if(this.trigger === "click")
+        // if(this.trigger === "click")
             popup.setAttribute("manual", "");
 
         native.appendChild(popup);
@@ -65,25 +65,49 @@ export default class Dropdown extends WJElement {
 
     afterDraw() {
         if(this.trigger != "click") {
-            event.addListener(this.anchorSlot, "mouseenter", null, this.onShow);
-            event.addListener(this.anchorSlot, "mouseleave", null, this.onHide);
+            event.addListener(this, "mouseenter", null, this.onOpen);
+            event.addListener(this, "mouseleave", null, this.onClose);
+        } else {
+            event.addListener(this.anchorSlot, "click", null, this.onOpen);
         }
 
         if(this.hasAttribute("collapsible"))
-            event.addListener(Array.from(this.querySelectorAll("wje-menu-item")), "click", "wje-menu-item:click", this.onHide);
+            event.addListener(Array.from(this.querySelectorAll("wje-menu-item")), "click", "wje-menu-item:click", this.onClose);
     }
 
-    /**
-     * @summary Show tooltip
-     */
-    onShow = () => {
-        this.popup.show();
+    beforeShow() {
+        return this.content;
     }
 
+    afterShow() {}
+
+
     /**
-     * @summary Hide tooltip
+     * @summary Open the popup
+     * @param e
      */
-    onHide = () => {
-        this.popup.hide();
+    onOpen = async (e) => {
+        this.classList.add("active");
+        Promise.resolve(this.beforeShow(this)).then((res) => {
+            if (!this.classList.contains("active")) {
+                throw new Error("beforeShow method returned false or not string");
+            }
+
+            this.popup.show(); // Show tooltip
+            Promise.resolve(this.afterShow(this));
+        }).catch((error) => {
+            // ak je nejaka chyba tak to len zatvorime
+            this.classList.remove("active");
+            this.popup.hide();
+        });
+    }
+
+    /*
+      * @summary Close the popup
+      * @param e
+     */
+    onClose = async (e) => {
+        this.classList.remove("active");
+        this.popup.hide(); // Now close the popup
     }
 }
