@@ -163,9 +163,7 @@ export default class Popup extends WJElement {
         document.addEventListener("click",(e) => {
             let clickToHost = e.composedPath().some((el) => el === this);
 
-            console.log(clickToHost);
             if(!clickToHost) {
-                console.log("click outside", this.hasAttribute("active"));
                 if(this.hasAttribute("active"))
                     this.removeAttribute("active");
             }
