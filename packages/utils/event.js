@@ -124,6 +124,18 @@ class Event {
                 return e;
         });
     }
+
+    // TODO
+    createPromiseFromEvent (element, event) {
+        return new Promise((resolve) => {
+            let success = () => {
+                element.removeEventListener(event, success);
+                resolve();
+            }
+
+            element.addEventListener(event, success);
+        });
+    }
 }
 
 let event = new Event();
