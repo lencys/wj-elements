@@ -1,5 +1,3 @@
-// ReorderItem.js
-
 import { default as WJElement, WjElementUtils } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
@@ -31,10 +29,10 @@ export default class ReorderItem extends WJElement {
     if(WjElementUtils.hasSlot(this, "handle")) {
         const handle = document.createElement("slot");
         handle.classList.add("handle");
-        wrapper.classList.add("item-w-handle");
         handle.setAttribute("name", "handle");
         handle.setAttribute("part", "handle-part");
-        
+
+        wrapper.classList.add("item-w-handle");
         wrapper.appendChild(handle);
     } else {
       element.setAttribute("draggable", "true");
