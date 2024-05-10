@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/thumbnail/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/thumbnail/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/thumbnail/slots.md';
 
-
+<head>
   <title>Thumbnail | Image thumbnail component</title>
   <meta name="description" content="Thumbnail uľahčuje zobrazenie väčších obrázkov alebo iných médií zobrazením ich menšieho náhľadu. Je ho možné použiť samostatne ale aj v iných elementoch." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

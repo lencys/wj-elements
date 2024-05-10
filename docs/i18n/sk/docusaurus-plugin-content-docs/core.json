@@ -4787,6 +4787,207 @@
             "dependencyGraph": {}
         },
         {
+            "filePath": "src/components/wje-qr-code/wje-qr-code.tsx",
+            "encapsulation": "shadow",
+            "tag": "qr-code",
+            "docs": "",
+            "docsTags": [
+                {
+                    "name": "slot",
+                    "docs": "start - Obsah sa umiestni hore."
+                },
+                {
+                    "name": "slot",
+                    "docs": "start - Obsah sa umiestni dole."
+                }
+            ],
+            "usage": {},
+            "props": [
+              {
+                "name": "value",
+                "type": "string",
+                "complexType": {
+                  "original": "string",
+                  "resolved": "string",
+                  "references": {}
+                },
+                "mutable": false,
+                "attr": "value",
+                "docs": "Hodnota zakódovaná v kóde QR",
+                "values": [
+                    {
+                        "type": "string | undefined"
+                    }
+                ],
+                "reflectToAttr": true,
+                "optional": false,
+                "required": false
+              },
+              {
+                "name": "size",
+                "type": "number",
+                "complexType": {
+                  "original": "number",
+                  "resolved": "number",
+                  "references": {}
+                },
+                "mutable": false,
+                "attr": "size",
+                "docs": "Veľkosť QR kódu (v pixeloch)",
+                "values": [
+                    {
+                        "type": "number | undefined"
+                    }
+                ],
+                "reflectToAttr": true,
+                "optional": false,
+                "required": false
+              },
+              {
+                "name": "padding",
+                "type": "number",
+                "complexType": {
+                  "original": "number",
+                  "resolved": "number",
+                  "references": {}
+                },
+                "mutable": false,
+                "attr": "padding",
+                "docs": "Výplň pre QR kód (pixely)",
+                "values": [
+                    {
+                        "type": "number | undefined"
+                    }
+                ],
+                "reflectToAttr": true,
+                "optional": false,
+                "required": false
+              },
+              {
+                "name": "foreground",
+                "type": "string",
+                "complexType": {
+                  "original": "string",
+                  "resolved": "string",
+                  "references": {}
+                },
+                "mutable": false,
+                "attr": "foreground",
+                "docs": "Farba popredia QR kódu",
+                "values": [
+                    {
+                        "type": "string | undefined"
+                    }
+                ],
+                "reflectToAttr": true,
+                "optional": false,
+                "required": false
+              },
+              {
+                "name": "foregroundAlpha",
+                "type": "number",
+                "complexType": {
+                  "original": "number",
+                  "resolved": "number",
+                  "references": {}
+                },
+                "mutable": false,
+                "attr": "foreground-alpha",
+                "docs": "Popredie alfa kódu QR",
+                "values": [
+                    {
+                        "type": "string | undefined"
+                    }
+                ],
+                "reflectToAttr": true,
+                "optional": false,
+                "required": false
+              },
+              {
+                "name": "background",
+                "type": "string",
+                "complexType": {
+                  "original": "string",
+                  "resolved": "string",
+                  "references": {}
+                },
+                "mutable": false,
+                "attr": "background",
+                "docs": "Farba pozadia QR kódu",
+                "values": [
+                    {
+                        "type": "string | undefined"
+                    }
+                ],
+                "reflectToAttr": true,
+                "optional": false,
+                "required": false
+              },
+              {
+                "name": "backgroundAlpha",
+                "type": "number",
+                "complexType": {
+                  "original": "number",
+                  "resolved": "number",
+                  "references": {}
+                },
+                "mutable": false,
+                "attr": "background-alpha",
+                "docs": "Pozadie alfa kódu QR",
+                "values": [
+                    {
+                        "type": "number | undefined"
+                    }
+                ],
+                "reflectToAttr": true,
+                "optional": false,
+                "required": false
+              },
+              {
+                "name": "level",
+                "type": "string",
+                "complexType": {
+                  "original": "string",
+                  "resolved": "string",
+                  "references": {}
+                },
+                "mutable": false,
+                "attr": "level",
+                "docs": "Úroveň opravy chýb QR kódu (L, M, Q, H)",
+                "values": [
+                    {
+                        "type": "string | undefined"
+                    }
+                ],
+                "reflectToAttr": true,
+                "optional": false,
+                "required": false
+              }
+            ],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [
+                {
+                    "name": "",
+                    "docs": "Obsah sa umiestni medzi named sloty."
+                },
+                {
+                    "name": "top",
+                    "docs": "Obsah sa umiestni hore."
+                },
+                {
+                    "name": "bottom",
+                    "docs": "Obsah sa umiestni dole."
+                }
+            ],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
             "filePath": "src/components/radio/radio.tsx",
             "encapsulation": "shadow",
             "tag": "radio",
@@ -5096,6 +5297,108 @@
                     "required": false
                 }
             ],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
+        "filePath": "src/components/wje-qr-code/wje-reorder.tsx",
+            "encapsulation": "shadow",
+            "tag": "reorder",
+            "docs": "",
+            "docsTags": [],
+            "usage": {},
+            "props": [
+                {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "disabled",
+                    "docs": "Ak `true`, elementy nebude možné usporiadať pomocou drag and drop funkcionality.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": false
+                },
+                {
+                    "name": "reverse",
+                    "type": "boolean",
+                    "complexType": {
+                      "original": "boolean",
+                      "resolved": "boolean",
+                      "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "reverse",
+                    "docs": "Ak `true`, elementy budú usporiadané v opačnom poradí.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": false
+                }
+            ],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
+        "filePath": "src/components/wje-qr-code/wje-reorder-item.tsx",
+            "encapsulation": "shadow",
+            "tag": "reorder-item",
+            "docs": "",
+            "docsTags": [],
+            "usage": {},
+            "props": [],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [
+                {
+                    "name": "handle",
+                    "docs": "Obsah sa umiestni na zaciatok elementu."
+                }
+            ],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
+        "filePath": "src/components/wje-qr-code/wje-reorder-dropzone.tsx",
+            "encapsulation": "shadow",
+            "tag": "reorder-dropzone",
+            "docs": "",
+            "docsTags": [],
+            "usage": {},
+            "props": [],
             "methods": [],
             "events": [],
             "listeners": [],

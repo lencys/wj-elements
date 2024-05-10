@@ -13,52 +13,56 @@
     <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
 </head>
 
-
 <body>
-    <div class="playground">
-        <div class="container" style="height: max-content;">
-            <div class="content">
-                <wje-qr-code value="https://www.mcdonalds.sk/" size="200" padding="25" foregroung="black"
-                    foregroundAlpha="1" background="white" backgroundAlpha="1" level="L">
-                    <h3 slot="top">
-                        Name on top of QR code
-                    </h3>
-                    <h3 slot="bottom">
-                        Name on bottom of QR code
-                    </h3>
-                </wje-qr-code>
-    
-                <wje-input changeValue label="Change value" type="text" value="https://www.mcdonalds.sk/">
+    <div class="container">
+        <div class="content">
+            <wje-qr-code 
+                value="https://www.mcdonalds.sk/" 
+                size="200" 
+                padding="25" 
+                foregroung="black"
+                foregroundAlpha="1" 
+                background="white" 
+                backgroundAlpha="1" 
+                level="L">
+                <h3 slot="top">
+                    Name on top of QR code
+                </h3>
+                <h3 slot="bottom">
+                    Name on bottom of QR code
+                </h3>
+            </wje-qr-code>
+
+            <wje-input changeValue label="Change value" type="text" value="https://www.mcdonalds.sk/">
+            </wje-input>
+            <wje-input changeSize label="Change size" type="text" value="200">
+            </wje-input>
+            <wje-input changePadding label="Change padding" type="text" value="25">
+            </wje-input>
+            <div style="display: flex; flex-direction: row;">
+                <wje-color-picker colorSelectForeground style="margin: 10px;">
+                </wje-color-picker>
+
+                <div style="margin: 10px;">Foreground</div>
+
+                <wje-input changeForegroundAlpha label="Change foreground alpha" type="text" value="1"
+                    style="margin-left: 10px;">
                 </wje-input>
-                <wje-input changeSize label="Change size" type="text" value="200">
-                </wje-input>
-                <wje-input changePadding label="Change padding" type="text" value="25">
-                </wje-input>
-                <div style="display: flex; flex-direction: row;">
-                    <wje-color-picker colorSelectForeground style="margin: 10px;">
-                    </wje-color-picker>
-    
-                    <div style="margin: 10px;">Foreground</div>
-    
-                    <wje-input changeForegroundAlpha label="Change foreground alpha" type="text" value="1"
-                        style="margin-left: 10px;">
-                    </wje-input>
-                </div>
-    
-                <div style="display: flex; flex-direction: row;">
-                    <wje-color-picker colorSelectBackground style="margin: 10px;">
-                    </wje-color-picker>
-    
-                    <div style="margin: 10px;">Background</div>
-    
-                    <wje-input changeBackgroundAlpha label="Change background alpha" type="text" value="1"
-                        style="margin-left: 10px;">
-                    </wje-input>
-                </div>
-    
-                <wje-select levelSelect label="Level" placeholder="select level" max-options="1">
-                </wje-select>
             </div>
+
+            <div style="display: flex; flex-direction: row;">
+                <wje-color-picker colorSelectBackground style="margin: 10px;">
+                </wje-color-picker>
+
+                <div style="margin: 10px;">Background</div>
+
+                <wje-input changeBackgroundAlpha label="Change background alpha" type="text" value="1"
+                    style="margin-left: 10px;">
+                </wje-input>
+            </div>
+
+            <wje-select levelSelect label="Level" placeholder="select level" max-options="1">
+            </wje-select>
         </div>
     </div>
 </body>
@@ -66,7 +70,6 @@
 </html>
 <script>
     const qr = document.querySelector('wje-qr-code');
-    const colors = ["black", "blue", "red", "green", "orange", "white"];
     const levels = ["L", "M", "Q", "H"];
 
     function populateOptions(selectElement, options) {
@@ -91,8 +94,6 @@
     const colorSelectB = document.querySelector('[colorSelectBackground]');
     const levelSelect = document.querySelector('[levelSelect]');
 
-    populateOptions(colorSelectF, colors);
-    populateOptions(colorSelectB, colors);
     populateOptions(levelSelect, levels);
 
     const elements = [

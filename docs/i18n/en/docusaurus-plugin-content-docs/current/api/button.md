@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/button/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/button/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/button/slots.md';
 
-
+<head>
   <title>Button | Button</title>
   <meta name="description" content="Tlačidlá sú klikateľný element, ktorý umožnuje zobraziť text, ikonu, prípadne oboje. Tlačidlá si je možné jednoducho prispôsobiť použitím rôznych atribútov a CSS vlastností." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

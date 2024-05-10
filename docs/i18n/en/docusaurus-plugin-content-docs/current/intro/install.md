@@ -3,10 +3,10 @@ title: Installing WebJET Elements
 sidebar_label: Installation
 ---
 
-
+<head>
   <title>How to get WebJET Elements for your project</title>
   <meta name="description" content="Zahrňte WebJET Elements do svojho projektu pomocou CDN alebo ho nainštalujte pomocou npm." />
-
+</head>
 
 Include WebJET Elements in your project using **CDN** or install it using **npm**.
 

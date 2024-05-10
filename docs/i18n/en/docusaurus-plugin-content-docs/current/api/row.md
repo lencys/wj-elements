@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/row/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/row/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/row/slots.md';
 
-
+<head>
   <title>Row | Horizontal container for Grid system</title>
   <meta name="description" content="Row (Riadok) je základným prvkom responzívneho Grid systému. Slúži ako kontajner na usporiadanie a horizontálne zarovnanie stĺpcov v rámci väčších layoutov." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

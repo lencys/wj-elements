@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/card-content/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/card-content/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/card-content/slots.md';
 
-
+<head>
   <title>Card Header</title>
   <meta name="description" content="Tento element slúži na použitie v karte pre umiestnenie primárneho obsahu karty." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

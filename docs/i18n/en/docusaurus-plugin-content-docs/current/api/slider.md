@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/slider/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/slider/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/slider/slots.md';
 
-
+<head>
   <title>Slider | Element extends the capabilities of the standard HTML select element.</title>
   <meta name="description" content="Slider je interaktívny komponent posuvníka, ktorý umožňuje používateľom praktickým spôsobom vybrať hodnotu z rozsahu hodnôt." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

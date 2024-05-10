@@ -9,16 +9,16 @@ import Parts from '@ionic-internal/component-api/v1/format-digital/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/format-digital/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/format-digital/slots.md';
 
-
+<head>
   <title>Format Digital | Formatting numeric values</title>
   <meta name="description" content="Komponent FormatDigital je určený na formátovanie číselných hodnôt do ľudsky čitateľného digitálneho formátu s ohľadom na rôzne predpony jednotiek, ako sú kilo, mega, giga atď. Ponúka možnosti prispôsobenia jednotiek, štýlu zobrazenia jednotiek a podporuje lokalizáciu." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-
+The FormatDigital component is designed to format numeric values into a human-readable digital format with respect to various unit prefixes such as kilo, mega, giga, etc. It offers options to customize units, display style of units and supports localization.
 
 ## Basic use
 

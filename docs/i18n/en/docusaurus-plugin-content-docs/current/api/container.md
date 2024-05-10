@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/container/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/container/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/container/slots.md';
 
-
+<head>
   <title>Container | Key element for creating layouts</title>
   <meta name="description" content="Container je kľúčový prvok Layoutu, ktorý sa používa na obalenie obsahu stránky. Je navrhnutý tak, aby poskytoval konzistentné rozstupy, odsadenia a zarovnania elementov, ktoré sa v ňom nachádzajú, a zabezpečoval tak správne zobrazenie a tiež prispôsobenie sa rôznym zariadeniam a veľkostiam obrazovky." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

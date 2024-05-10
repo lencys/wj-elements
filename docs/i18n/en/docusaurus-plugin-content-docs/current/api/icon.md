@@ -9,13 +9,13 @@ import Parts from '@ionic-internal/component-api/v1/icon/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/icon/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/icon/slots.md';
 
-
+<head>
   <title>Icon | WebJET Element for displaying icons</title>
   <meta
     name="description"
     content="Tento komponent poskytuje jednoduchý spôsob zobrazenia ikon zo sady SVG obrázkov, pričom umožňuje rôzne možnosti prispôsobenia."
   />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

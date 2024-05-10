@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/file-upload-item/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/file-upload-item/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/file-upload-item/slots.md';
 
-
+<head>
   <title>FileUploadItem | Item (file) within the FileUpload component</title>
   <meta name="description" content="Element FileUploadItem predstavuje individuálnu položku (súbor) v rámci FileUpload komponentu. Zobrazuje podrobnosti, ako je názov súboru, veľkosť, priebeh nahrávania, a poskytuje akcie, ako je vymazanie súboru. Tento komponent je určený na použitie v kontexte FileUpload komponentu." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

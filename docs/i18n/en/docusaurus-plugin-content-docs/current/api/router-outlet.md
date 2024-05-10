@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/router-outlet/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/router-outlet/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/router-outlet/slots.md';
 
-
+<head>
   <title>Router | Router The navigation component within web applications</title>
   <meta name="description" content="Komponent Router je nástroj určený na navigáciu v rámci webových aplikácií. Táto komponenta podporuje komplexné navigačné scenáre a lazy-load, čím zvyšuje výkon aplikácie a používateľský zážitok." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

@@ -8,13 +8,13 @@ import LayeredColorsSelect from '@components/page/theming/LayeredColorsSelect';
 import NewColorGenerator from '@components/page/theming/NewColorGenerator';
 import CodeColor from '@components/page/theming/CodeColor';
 
-
+<head>
   <title>Colours: customise your palette colours or create a new one</title>
   <meta
     name="description"
     content="Farebná paleta Elements sa skladá zo 7 predvolených farieb, ktoré si je možné jednoducho upraviť. Paleta je navrhnutá tak aby spĺňala aktuálne trendy a zároveň zabezpečovala prístupnosť. Používatelia si môžu prispôsobiť jej farby pomocou CSS premenných, čo im umožňuje zmeniť predvolené farby alebo pridať vlastné."
   />
-
+</head>
 
 The Elements colour palette consists of 7 preset colours that can be easily customised. The palette is designed to meet current trends while ensuring accessibility. Users can customize its colors using CSS variables, allowing them to change the default colors or add their own.
 

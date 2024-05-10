@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/image/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/image/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/image/slots.md';
 
-
+<head>
   <title>Image Element | Image Display Element</title>
   <meta name="description" content="Element Image pridáva obrázkom funkciu lazyload a počas načítavania zobrazuje zástupnú ikonu (placeholder) v podobe animovaného obrázka." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

@@ -2,13 +2,13 @@
 title: CSS Shadow Parts
 ---
 
-
+<head>
   <title>CSS Shadow Parts - Customize the styles of elements inside the Shadow DOM.</title>
   <meta
     name="description"
     content="Shadow Parts poskytujú spôsob, ako vystaviť špecifické prvky v rámci Shadow DOM pre účely štylizácie, pričom sa zachovávajú jeho výhody zapuzdrenia a izolácie podľa Shadow DOM špecifikácie."
   />
-
+</head>
 
 CSS Shadow Parts is a feature that allows developers to stylize specific parts of the <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM" target="_blank" rel="noopener noreferrer">Shadow DOM</a>. This is useful in the case of WebJET Elements built on <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank" rel="noopener noreferrer">Web Component</a> technology, where otherwise the encapsulation would not allow the appearance of the internal parts of the elements to be modified.
 
@@ -40,7 +40,7 @@ wj-button .button-native {
 }
 ```
 
-This problem is solved by CSS Shadow Parts. The `wj-button` component contains a `part` attribute with a value that can be targeted in css using the css pseudo-element `<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank" rel="noopener noreferrer">::part()`</a>. In this case it is the value `native`.
+This problem is solved by CSS Shadow Parts. The `wj-button` component contains a `part` attribute with a value that can be targeted in css using the css pseudo-element <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank" rel="noopener noreferrer">`::part()`</a>. In this case it is the value `native`.
 
 A functional css selector would therefore look like this:
 
@@ -80,10 +80,8 @@ Shadow Parts CSS works in the latest versions of all major browsers. However, ol
 ### Support for browser-prefixed pseudoelements
 
 <p>
-  <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix" target="_blank" rel="noopener noreferrer">
-    </a> <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix" target="_blank" rel="noopener noreferrer"> Vendor-prefixed
-  </a>{' '}
-  pseudoelements are not currently supported. Therefore, for example, the `::-webkit-scrollbar`
+  <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix" target="_blank" rel="noopener noreferrer">Vendor-prefixed</a>{' '}
+  pseudo-elements are not currently supported. Therefore, for example, the `::-webkit-scrollbar`
   pseudoelement in the example below will not work.
 </p>
 

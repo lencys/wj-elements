@@ -2,12 +2,12 @@
 title: "QR Code"
 ---
 
-<!-- import Props from '@ionic-internal/component-api/v1/qr-code/props.md';
+import Props from '@ionic-internal/component-api/v1/qr-code/props.md';
 import Events from '@ionic-internal/component-api/v1/qr-code/events.md';
 import Methods from '@ionic-internal/component-api/v1/qr-code/methods.md';
 import Parts from '@ionic-internal/component-api/v1/qr-code/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/qr-code/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/qr-code/slots.md'; -->
+import Slots from '@ionic-internal/component-api/v1/qr-code/slots.md';
 
 <head>
     <title>QR Code | QR Kód</title>
@@ -28,7 +28,7 @@ import Basic from '@site/static/usage/v1/qr-code/basic/index.md';
 
 <Basic />
 
-<!-- ## Atribúty a Vlastnosti
+## Atribúty a Vlastnosti
 
 <Props />
 
@@ -50,4 +50,4 @@ import Basic from '@site/static/usage/v1/qr-code/basic/index.md';
 
 ## Sloty
 
-<Slots /> -->
+<Slots />

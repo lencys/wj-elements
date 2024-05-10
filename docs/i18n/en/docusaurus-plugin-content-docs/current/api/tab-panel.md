@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/tab-panel/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/tab-panel/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/tab-panel/slots.md';
 
-
+<head>
   <title>TabPanel | Content container for Tab element</title>
   <meta name="description" content="Komponent TabPanel je podriadeným komponentom TabGroup a slúži ako kontajner obsahu záložky. Používa sa v kombinácii s elementom Tab." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

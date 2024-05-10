@@ -9,16 +9,16 @@ import Parts from '@ionic-internal/component-api/v1/avatar/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/avatar/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/avatar/slots.md';
 
-
+<head>
   <title>Avatar: Avatar Component</title>
   <meta name="description" content="Element avatar slúži na vizuálnu prezentáciu používateľa alebo subjektu. Používa sa zvyčajne ako obaľovač a poskytuje praktický spôsob zobrazovania profilových obrázkov, ikon, alebo, ak tie nie sú posktytné, iniciálok.  Podporuje rôzne konfigurácie vrátane veľkosti, zoskupenia viacerých avatarov alebo zobrazenie dropdownu po kliknutí či tooltipu pri ukázaní myšou." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The avatar element is used to visually represent a user or entity. It is usually used as a wrapper and provides a convenient way to display profile pictures, icons, or, if these are not provided, initials.
+The avatar element is used to visually represent a user or entity. It is usually used as a wrapper and provides a convenient way to display profile pictures, icons, or, if these are not provided, initials.  It supports a variety of configurations including size, grouping multiple avatars, or displaying a dropdown when clicked or a tooltip when pointed to with the mouse.
 
 ## Basic usage
 

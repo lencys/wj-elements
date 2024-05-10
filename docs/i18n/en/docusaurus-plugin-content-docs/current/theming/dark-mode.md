@@ -6,13 +6,13 @@ inlineHtmlPreviews: true
 
 import Codepen from '@components/global/Codepen';
 
-
+<head>
   <title>Dark mode </title>
   <meta
     name="description"
     content="Tmavý režim v Elements je funkcia, ktorá umožňuje prepnúť farebnú schému stránok a komponentov na tmavšie odtiene, čo zlepšuje pohodlie používateľov v tmavších priestoroch a ponúka alternatívny estetický vzhľad. "
   />
-
+</head>
 
 Dark Mode in Elements is a feature that allows you to switch the color scheme of pages and components to darker shades, improving user comfort in darker spaces and offering an alternative aesthetic.
 

@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/tab-group/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/tab-group/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/tab-group/slots.md';
 
-
+<head>
   <title>TabGroup | Tab-based navigation</title>
   <meta name="description" content="TabGroup zobrazuje navigáciu založenú na záložkách, ktorá umožňuje používateľom prepínať sa a zobrazovať rôzne časti obsahu aplikácie bez potreby prechádzať na inú stránku." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

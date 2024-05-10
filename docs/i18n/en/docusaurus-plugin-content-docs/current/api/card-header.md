@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/card-header/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/card-header/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/card-header/slots.md';
 
-
+<head>
   <title>Card Header</title>
   <meta name="description" content="Element Card header je komponent navrhnutý pre použitie v kartách a slúži ako kontajner na umiestnenie príslušných nadpisov, ikon alebo iného obsahu, ktorý pomáha používateľovi rýchlo pochopiť kontext alebo účel hlavného obsahu karty." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

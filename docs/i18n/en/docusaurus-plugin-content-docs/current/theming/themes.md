@@ -5,13 +5,13 @@ title: Templates
 import CodeColor from '@components/page/theming/CodeColor';
 import SteppedColorGenerator from '@components/page/theming/SteppedColorGenerator';
 
-
+<head>
   <title>WebJet Elements Templates | Change default themes and background colors of the application</title>
   <meta
     name="description"
     content="WebJet Elements ponúka celý rad globálnych premenných, ktoré možno použiť na úpravu predvolenej témy v celej aplikácii. [Farby aplikácie](#application-colors) sú užitočné na zmenu vzhľadu mnohých WebJET komponentov."
   />
-
+</head>
 
 WebJet Elements offers a number of global variables that can be used to modify the default template throughout the application. Application colors are useful for changing the appearance of many WebJET components.
 

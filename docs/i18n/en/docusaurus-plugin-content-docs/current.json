@@ -234,5 +234,13 @@
   "sidebar.api.category.Toolbar": {
     "message": "Toolbar",
     "description": "The label for category Toolbar in sidebar api"
+  },
+  "sidebar.api.category.QR Code": {
+    "message": "QR Code",
+    "description": "The label for category QR Code in sidebar api"
+  },
+  "sidebar.api.category.Reorder": {
+    "message": "Reorder",
+    "description": "The label for category Reorder in sidebar api"
   }
 }

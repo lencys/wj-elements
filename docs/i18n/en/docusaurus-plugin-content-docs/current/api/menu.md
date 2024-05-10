@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/menu/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/menu/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/menu/slots.md';
 
-
+<head>
   <title>Menu | Element to display the menu</title>
   <meta name="description" content="Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

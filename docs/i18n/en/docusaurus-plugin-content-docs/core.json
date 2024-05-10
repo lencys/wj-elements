@@ -2633,7 +2633,7 @@
                         "references": {}
                     },
                     "mutable": true,
-                    "attr": "unit-display",
+                    "attr": "placement",
                     "reflectToAttr": false,
                     "docs": "It is used to specify the target element into which the loaded data is to be inserted during the infinite scroll process. Specifies where the newly loaded content is added within the DOM.",
                     "docsTags": [],
@@ -2655,7 +2655,7 @@
                         "references": {}
                     },
                     "mutable": true,
-                    "attr": "unit-display",
+                    "attr": "size",
                     "reflectToAttr": false,
                     "docs": "Defines the number of items on each load.",
                     "docsTags": [],
@@ -2677,7 +2677,7 @@
                         "references": {}
                     },
                     "mutable": true,
-                    "attr": "unit-display",
+                    "attr": "url",
                     "reflectToAttr": false,
                     "docs": "Defines the url of the endpoint of the data to be retrieved.",
                     "docsTags": [],
@@ -4787,6 +4787,207 @@
             "dependencyGraph": {}
         },
         {
+            "filePath": "src/components/wje-qr-code/wje-qr-code.tsx",
+            "encapsulation": "shadow",
+            "tag": "qr-code",
+            "docs": "",
+            "docsTags": [
+                {
+                    "name": "slot",
+                    "docs": "start - The content is placed at the top."
+                },
+                {
+                    "name": "slot",
+                    "docs": "start - The content is placed at the bottom."
+                }
+            ],
+            "usage": {},
+            "props": [
+                {
+                    "name": "value",
+                    "type": "string",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "value",
+                    "docs": "Value encoded in the QR code",
+                    "values": [
+                        {
+                            "type": "string | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "size",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "size",
+                    "docs": "QR code size (in pixels)",
+                    "values": [
+                        {
+                            "type": "number | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "padding",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "padding",
+                    "docs": "Filling for QR code (pixels)",
+                    "values": [
+                        {
+                            "type": "number | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "foreground",
+                    "type": "string",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "foreground",
+                    "docs": "QR code foreground colour",
+                    "values": [
+                        {
+                            "type": "string | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "foregroundAlpha",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "foreground-alpha",
+                    "docs": "Foreground alpha code QR",
+                    "values": [
+                        {
+                            "type": "string | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "background",
+                    "type": "string",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "background",
+                    "docs": "QR code background colour",
+                    "values": [
+                        {
+                            "type": "string | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "backgroundAlpha",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "background-alpha",
+                    "docs": "QR alpha code background",
+                    "values": [
+                        {
+                            "type": "number | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "level",
+                    "type": "string",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "level",
+                    "docs": "QR code error correction level (L, M, Q, H)",
+                    "values": [
+                        {
+                            "type": "string | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false
+                }
+            ],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [
+                {
+                    "name": "",
+                    "docs": "The contents are placed between the named slots."
+                },
+                {
+                    "name": "top",
+                    "docs": "The contents are placed on top."
+                },
+                {
+                    "name": "bottom",
+                    "docs": "The contents are placed down."
+                }
+            ],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
             "filePath": "src/components/radio/radio.tsx",
             "encapsulation": "shadow",
             "tag": "radio",
@@ -4993,7 +5194,7 @@
                 {
                     "name": "--wj-radio-margin-top",
                     "annotation": "prop",
-                    "docs": "Top offset of the radio element."
+                    "docs": "Upper offset of the radio element."
                 }
             ],
             "slots": [],
@@ -5084,7 +5285,7 @@
                     "mutable": false,
                     "attr": "date",
                     "reflectToAttr": false,
-                    "docs": "Specifies the date or timestamp in ISO format or Unix timestamp format (in seconds). If no date attribute is specified, the component defaults to the current date and time.",
+                    "docs": "Specifies a date or timestamp in ISO format or Unix timestamp format (in seconds). If no date attribute is specified, the component defaults to the current date and time.",
                     "docsTags": [],
                     "default": "Current date and time",
                     "values": [
@@ -5096,6 +5297,108 @@
                     "required": false
                 }
             ],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
+            "filePath": "src/components/wje-qr-code/wje-reorder.tsx",
+            "encapsulation": "shadow",
+            "tag": "reorder",
+            "docs": "",
+            "docsTags": [],
+            "usage": {},
+            "props": [
+                {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "disabled",
+                    "docs": "If `true`, elements cannot be arranged using drag and drop functionality.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": false
+                },
+                {
+                    "name": "reverse",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "reverse",
+                    "docs": "If `true`, the elements will be arranged in reverse order.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": false
+                }
+            ],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
+            "filePath": "src/components/wje-qr-code/wje-reorder-item.tsx",
+            "encapsulation": "shadow",
+            "tag": "reorder-item",
+            "docs": "",
+            "docsTags": [],
+            "usage": {},
+            "props": [],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [
+                {
+                    "name": "handle",
+                    "docs": "The content is placed at the beginning of the element."
+                }
+            ],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
+            "filePath": "src/components/wje-qr-code/wje-reorder-dropzone.tsx",
+            "encapsulation": "shadow",
+            "tag": "reorder-dropzone",
+            "docs": "",
+            "docsTags": [],
+            "usage": {},
+            "props": [],
             "methods": [],
             "events": [],
             "listeners": [],
@@ -6547,7 +6850,7 @@
                     "mutable": false,
                     "attr": "spellcheck",
                     "reflectToAttr": false,
-                    "docs": "If `true`, spell checking will be activated in textarea.",
+                    "docs": "If `true`, the spell checker will be activated in textarea.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -8089,7 +8392,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Invoked when the state of the element changes.",
+                    "docs": "Called when the element state changes.",
                     "docsTags": []
                 }
             ],
@@ -8149,7 +8452,7 @@
             "slots": [
                 {
                     "name": "",
-                    "docs": "Default location of the element content."
+                    "docs": "The default location of the element content."
                 }
             ],
             "parts": [
@@ -8307,7 +8610,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Invoked when the state of the element changes.",
+                    "docs": "Called when the element state changes.",
                     "docsTags": []
                 }
             ],

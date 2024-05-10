@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/list/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/list/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/list/slots.md';
 
-
+<head>
   <title>List | List of items display component</title>
   <meta name="description" content="Komponent List (Zoznam) sa skladá z viacerých elementov [Item](item) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Listy vo všeobecnosti obsahujú položky s rovnakým obsahom a zoskupujú ich do väčšieho celku." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

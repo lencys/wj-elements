@@ -39,7 +39,7 @@ wj-button .button-native {
 }
 ```
 
-Tento problém riešia CSS Shadow Parts. V komponente `wj-button` sa nachádza atribút `part` s hodnotou, ktorú je možné v css zacieliť pomocou css pseudo-elementu<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank" rel="noopener noreferrer">`::part()`</a>. V tomto prípade je to hodnota `native`.
+Tento problém riešia CSS Shadow Parts. V komponente `wj-button` sa nachádza atribút `part` s hodnotou, ktorú je možné v css zacieliť pomocou css pseudo-elementu <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank" rel="noopener noreferrer">`::part()`</a>. V tomto prípade je to hodnota `native`.
 
 Funkčný css selektor by preto vyzeral nasledovne:
 
@@ -81,9 +81,7 @@ Shadow Parts CSS fungujú v najnovších verziách všetkých významných prehl
 ### Podpora prehliadačom prefixovaných pseudoelementov
 
 <p>
-  <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix" target="_blank" rel="noopener noreferrer">
-    Vendorom prefixované
-  </a>{' '}
+  <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix" target="_blank" rel="noopener noreferrer">Vendorom prefixované</a>{' '}
   pseudoelementy nie sú v súčasnosti podporované. Preto napríklad `::-webkit-scrollbar`
   pseudoelement v príklade nižšie nebude funkčný.
 </p>
