@@ -60,11 +60,7 @@ export default class Reorder extends WJElement {
       });
     }
 
-    if (this.hasAttribute('reverse')) {
-      this.container.classList.add("reversed");
-    } else {
-      this.container.classList.add("basic");
-    }
+    this.container.classList.add(this.hasAttribute('reverse') ? "reversed" : "basic");
   }
 
   onDragStart(e) {
@@ -73,10 +69,10 @@ export default class Reorder extends WJElement {
       return;
     }
 
-    const dragImage = new Image();
-    dragImage.src =
-      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEElEQVR42mNkAAIAAAoAAv/lxKUAAAAASUVORK5CYII=";
-    e.dataTransfer.setDragImage(dragImage, 0, 0);
+    // const dragImage = new Image();
+    // dragImage.src =
+    //   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEElEQVR42mNkAAIAAAoAAv/lxKUAAAAASUVORK5CYII=";
+    // e.dataTransfer.setDragImage(dragImage, 0, 0);
 
     this.dragEl = e.currentTarget.closest("wje-reorder-item");
     e.dataTransfer.effectAllowed = "move";
@@ -160,8 +156,9 @@ export default class Reorder extends WJElement {
   updateDropStyles(element, isMovingDown) {
     const elementStyles = element.shadowRoot.querySelector("div").classList;
 
-    elementStyles.toggle("drag--down", isMovingDown);
-    elementStyles.toggle("drag--up", !isMovingDown);
+    const reverse = this.hasAttribute('reverse');
+    elementStyles.toggle("drag--down", reverse ^ isMovingDown);
+    elementStyles.toggle("drag--up", reverse ^ !isMovingDown);
   }
 
   updateItemsPosition(parent, droppedElement, isMovingDown) {
