@@ -69,13 +69,14 @@ export default class Reorder extends WJElement {
       return;
     }
 
-    // const dragImage = new Image();
-    // dragImage.src =
-    //   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEElEQVR42mNkAAIAAAoAAv/lxKUAAAAASUVORK5CYII=";
-    // e.dataTransfer.setDragImage(dragImage, 0, 0);
+    const dragImage = new Image();
+    dragImage.src =
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEElEQVR42mNkAAIAAAoAAv/lxKUAAAAASUVORK5CYII=";
+    e.dataTransfer.setDragImage(dragImage, 0, 0);
 
     this.dragEl = e.currentTarget.closest("wje-reorder-item");
     e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.dropEffect = "move";
     e.dataTransfer.setData("text/html", `${this.dragEl.innerHTML}`);
 
     this.originalIndex = [...this.dragEl.parentNode.children].indexOf(
@@ -85,6 +86,7 @@ export default class Reorder extends WJElement {
   }
 
   onDragOver(e) {
+    console.log(e.target.parentElement.shadowRoot);
     e.preventDefault();
 
     const droppedElement = e.currentTarget.closest("wje-reorder-item");
