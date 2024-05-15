@@ -22,7 +22,9 @@ Aside je prvok na tvorbu layoutov a zobrazuje sa vedľa elementu [Main](../main)
 
 ## Príklady použitia
 
-Pre informácie o použítí **Aside** elementu sa presuňte do dokumentácie [Layoutu](../layout).
+:::note
+Pre informácie o použítí **Aside** elementu sa presuňte do dokumentácie [**Layoutu**](../layout).
+:::
 
 ## Atribúty a Vlastnosti
 

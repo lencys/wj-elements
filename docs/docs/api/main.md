@@ -21,7 +21,9 @@ Main je prvok na tvorbu layoutov a zobrazuje sa vedľa [Aside](../aside) element
 
 ## Príklady použitia
 
-Pre informácie o použití **Main** elementu sa presuňte do dokumentácie [Layoutu](../layout).
+:::note
+Pre informácie o použití **Main** elementu sa presuňte do dokumentácie [**Layoutu**](../layout).
+:::
 
 ## Atribúty a Vlastnosti
 

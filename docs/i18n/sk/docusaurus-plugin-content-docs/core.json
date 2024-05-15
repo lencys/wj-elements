@@ -1254,7 +1254,92 @@
             "docs": "",
             "docsTags": [],
             "usage": {},
-            "props": [],
+            "props": [
+                {
+                    "name": "pagination",
+                    "type": "boolean",
+                    "complexType": {
+                      "original": "boolean",
+                      "resolved": "boolean",
+                      "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "value",
+                    "docs": "Určuje, či sú povolené indikátory stránkovania.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": true
+                },
+                {
+                    "name": "loop",
+                    "type": "boolean",
+                    "complexType": {
+                      "original": "boolean",
+                      "resolved": "boolean",
+                      "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "value",
+                    "docs": "Určuje, či sa má carousel nekonečne opakovať.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": true
+                },
+                {
+                    "name": "navigation",
+                    "type": "boolean",
+                    "complexType": {
+                      "original": "boolean",
+                      "resolved": "boolean",
+                      "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "value",
+                    "docs": "Určuje, či sú povolené navigačné tlačidlá.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": true
+                },
+                {
+                    "name": "thumbnails",
+                    "type": "boolean",
+                    "complexType": {
+                      "original": "boolean",
+                      "resolved": "boolean",
+                      "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "value",
+                    "docs": "Určuje, či sú povolené miniatúry pre snímky.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": true
+                }
+            ],
             "methods": [],
             "events": [],
             "listeners": [],
@@ -1436,7 +1521,36 @@
                 }
             ],
             "methods": [],
-            "events": [],
+            "events": [
+                {
+                    "event": "input",
+                    "detail": "void",
+                    "bubbles": true,
+                    "complexType": {
+                        "original": "void",
+                        "resolved": "void",
+                        "references": {}
+                    },
+                    "cancelable": true,
+                    "composed": true,
+                    "docs": "Vyvolaný pri kliknutí na checkbox",
+                    "docsTags": []
+                },
+                {
+                    "event": "change",
+                    "detail": "void",
+                    "bubbles": true,
+                    "complexType": {
+                        "original": "void",
+                        "resolved": "void",
+                        "references": {}
+                    },
+                    "cancelable": true,
+                    "composed": true,
+                    "docs": "Vyvolaný pri zmene hodnoty v checkboxe",
+                    "docsTags": []
+                }
+            ],
             "listeners": [],
             "styles": [
                 {
@@ -1572,6 +1686,28 @@
                     "attr": "disabled",
                     "reflectToAttr": false,
                     "docs": "If `true`, používateľ nemôže s elementom interagovať.",
+                    "docsTags": [],
+                    "default": "false",
+                    "values": [
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                }, 
+                {
+                    "name": "removable",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "removable",
+                    "reflectToAttr": false,
+                    "docs": "If `true`, používateľ môže element odstrániť z obrazovky.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -1760,7 +1896,17 @@
                     "required": true
                 }
             ],
-            "methods": [],
+            "methods": [
+                {
+                    "name": "beforeOpen",
+                    "returns": {},
+                    "complexType": {},
+                    "signature": "back() => Promise<void>",
+                    "parameters": [],
+                    "docs": "Test Test",
+                    "docsTags": []
+                }
+            ],
             "events": [],
             "listeners": [],
             "styles": [
@@ -2431,6 +2577,24 @@
                     ],
                     "optional": false,
                     "required": false
+                },
+                {
+                    "name": "icon",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "icon",
+                    "reflectToAttr": false,
+                    "docs": "Povolí zobrazenie ikony pre file upload.",
+                    "docsTags": [],
+                    "default": true,
+                    "values": [],
+                    "optional": false,
+                    "required": false
                 }
             ],
             "methods": [],
@@ -2455,12 +2619,125 @@
             "docs": "",
             "docsTags": [],
             "usage": {},
-            "props": [],
+            "props": [
+                {
+                    "name": "name",
+                    "type": "string | undefined",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "attr": "name",
+                    "reflectToAttr": false,
+                    "docs": "Nastaví meno pre file upload item.",
+                    "docsTags": [],
+                    "default": "undefined",
+                    "values": [
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "size",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "size",
+                    "reflectToAttr": false,
+                    "docs": "Nastaví maximálnu povolenú veľkosť súboru na nahrávanie v bajtoch.",
+                    "docsTags": [],
+                    "default": "1 MB",
+                    "values": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "uploaded",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "uploaded",
+                    "reflectToAttr": false,
+                    "docs": "Nastaví veľkosť nahraných bajtov súboru.",
+                    "docsTags": [],
+                    "values": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "progress",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "progress",
+                    "reflectToAttr": false,
+                    "docs": "Nastaví percentuálny progres nahrávania súboru.",
+                    "docsTags": [],
+                    "values": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "lang",
+                    "type": "string",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "lang",
+                    "reflectToAttr": false,
+                    "docs": "Použitý jazyk.",
+                    "docsTags": [],
+                    "default": "sk",
+                    "values": [
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                }
+            ],
             "methods": [],
             "events": [],
             "listeners": [],
             "styles": [],
-            "slots": [],
+            "slots": [
+                {
+                    "name": "img",
+                    "docs": "Slot na umiestnenie obrázku/ikony."
+                }
+            ],
             "parts": [],
             "dependents": [],
             "dependencies": [],
@@ -2559,6 +2836,21 @@
                             "type": "undefined"
                         }
                     ],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "value",
+                    "type": "number",
+                    "complexType":{
+                        "original": "string",
+                        "resolved": "string | undefined"
+                    },
+                    "attr": "value",
+                    "reflectToAttr": false,
+                    "docs": "Nastaví hodnotu elementu.",
+                    "docsTags": [],
+                    "default": "",
                     "optional": false,
                     "required": false
                 }
@@ -2862,6 +3154,21 @@
                             "type": "undefined"
                         }
                     ],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "filled",
+                    "type": "boolean",
+                    "complexType":{
+                        "original": "boolean",
+                        "resolved": "boolean"
+                    },
+                    "attr": "filled",
+                    "reflectToAttr": false,
+                    "docs": "Nastaví či má ikona byť vyplnená farbou.",
+                    "docsTags": [],
+                    "default": "true",
                     "optional": false,
                     "required": false
                 }
@@ -3638,7 +3945,37 @@
                 }
             ],
             "usage": {},
-            "props": [],
+            "props": [
+                {
+                    "name": "lines",
+                    "type": "\"inset\" | \"full\" |  \"none\"",
+                    "complexType": {
+                        "original": "Lines",
+                        "resolved": "\"inset\" | \"full\" |  \"none\""
+                    },
+                    "mutable": false,
+                    "attr": "color",
+                    "reflectToAttr": true,
+                    "docs": "Voľba typu oddeľovacích čiar pri inpute.",
+                    "docsTags": [],
+                    "values": [
+                        {
+                            "value": "inset",
+                            "type": "string"
+                        },
+                        {
+                            "value": "full",
+                            "type": "string"
+                        },
+                        {
+                            "value": "none",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": true,
+                    "required": false
+                }
+            ],
             "methods": [],
             "events": [],
             "listeners": [],
@@ -4569,7 +4906,20 @@
                     "docs": "Z-index elementu"
                 }
             ],
-            "slots": [],
+            "slots": [
+                {
+                    "name": "submenu",
+                    "docs": "Umožňuje vložiť Menu element ako item na vytvorenie podmenu."
+                },
+                {
+                    "name": "start",
+                    "docs": "Vloží element na začiatok."
+                },
+                {
+                    "name": "end",
+                    "docs": "Vloží element na koniec."
+                }
+            ],
             "parts": [
                 {
                     "name": "native",
@@ -5784,7 +6134,116 @@
                 }
             ],
             "usage": {},
-            "props": [],
+            "props": [
+                {
+                    "name": "clearable",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "clearable",
+                    "reflectToAttr": false,
+                    "docs": "Pridáva možnosť vyčistiť zvolenú možnosť.",
+                    "docsTags": [],
+                    "default": false,
+                    "values": [],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "disabled",
+                    "reflectToAttr": false,
+                    "docs": "Select je disabled.",
+                    "docsTags": [],
+                    "default": false,
+                    "values": [],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "label",
+                    "type": "string",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "label",
+                    "reflectToAttr": false,
+                    "docs": "Definuje popisný text selectu.",
+                    "docsTags": [],
+                    "default": "undefined",
+                    "values": [],
+                    "optional": false,
+                    "required": true
+                },
+                {
+                    "name": "max-options",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "max-options",
+                    "reflectToAttr": false,
+                    "docs": "Definuje maximálny počet itemov v selecte.",
+                    "docsTags": [],
+                    "default": "undefined",
+                    "values": [],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "multiple",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "multiple",
+                    "reflectToAttr": false,
+                    "docs": "Umožní výber viacerých možností.",
+                    "docsTags": [],
+                    "default": false,
+                    "values": [],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "placeholder",
+                    "type": "string",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "placeholder",
+                    "reflectToAttr": false,
+                    "docs": "Text zobrazený na select elemente.",
+                    "docsTags": [],
+                    "default": "undefined",
+                    "values": [],
+                    "optional": false,
+                    "required": false
+                }
+            ],
             "events": [],
             "listeners": [],
             "styles": [

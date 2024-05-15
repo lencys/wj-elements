@@ -86,7 +86,6 @@ export default class Reorder extends WJElement {
   }
 
   onDragOver(e) {
-    console.log(e.target.parentElement.shadowRoot);
     e.preventDefault();
 
     const droppedElement = e.currentTarget.closest("wje-reorder-item");

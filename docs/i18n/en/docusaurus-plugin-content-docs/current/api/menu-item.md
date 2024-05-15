@@ -22,7 +22,9 @@ MenuItem is a child of the [Menu.](../menu) element and represents a navigation 
 
 ## Basic use
 
-For examples of using MenuItem, go to the documentation page for the [Menu.](../menu) element.
+:::note
+For examples of using MenuItem, go to the [**Menu**](../menu) element documentation page.
+:::
 
 ## Attributes and Properties
 

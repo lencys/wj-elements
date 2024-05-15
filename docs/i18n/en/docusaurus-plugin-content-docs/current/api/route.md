@@ -17,6 +17,8 @@ import Slots from '@ionic-internal/component-api/v1/route/slots.md';
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
+<EncapsulationPill type="shadow" />
+
 The Route component renders the selected component when the value in its `url` property matches the URL in the browser.
 
 ## Navigation Hooks

@@ -20,7 +20,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The router link component serves as a customizable link designed for use in navigation across the application.
 
-For more information on using Router Link, go to the [Router](../router) page in the documentation.
+:::note
+For more information on using Router Link, go to the [**Router**](../router) page in the documentation.
+:::
 
 ## Attributes and Properties
 

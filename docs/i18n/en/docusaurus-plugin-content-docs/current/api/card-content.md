@@ -16,9 +16,15 @@ import Slots from '@ionic-internal/component-api/v1/card-content/slots.md';
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
+<EncapsulationPill type="shadow" />
+
 This element is for use in the tab to hold the primary contents of the tab.
 
-For more information on using Card Content, navigate to the [Card](../card) element documentation.
+:::note Note
+
+For more information on using Card Content, navigate to the [**Card**](../card) element documentation.
+
+:::
 
 ## Attributes and Properties
 

@@ -22,7 +22,9 @@ Aside is a layout element and is displayed next to the [Main](../main) element. 
 
 ## Examples of use
 
-For information on using the **Aside** element, navigate to the [Layout](../layout) documentation.
+:::note
+For information on using the **Aside** element, navigate to the [**Layout**](../layout) documentation.
+:::
 
 ## Attributes and Properties
 

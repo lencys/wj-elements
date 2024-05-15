@@ -22,7 +22,9 @@ The footer is part of the layout elements and appears at the bottom of the scree
 
 ## Examples of use
 
-For information on using the **Footer** element, navigate to the [Layout](../layout) documentation.
+:::note
+For information on using the **Footer** element, navigate to the [**Layout**](../layout) documentation.
+:::
 
 ## Attributes and Properties
 

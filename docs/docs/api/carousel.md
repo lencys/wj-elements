@@ -22,7 +22,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element **Card** je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky [CardHeader](../card-header) a hlavnej časti [CardContent](../card-content).
+**Carousel** je element, ktorý zobrazuje viacero položiek, ako sú obrázky alebo aktualizácie noviniek, rotujúcim spôsobom.
 
 ## Základné použitie
 
@@ -31,8 +31,6 @@ import Basic from '@site/static/usage/v1/carousel/basic/index.md';
 <Basic />
 
 ## Paginaton
-
-Vlastnosť separator slúži na zobrazenie horizontálneho oddeľovača v elemente Card Header.
 
 import Pagination from '@site/static/usage/v1/carousel/pagination/index.md';
 

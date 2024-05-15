@@ -19,7 +19,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Element Card subtitle je komponent navrhnutý na použitie v rámci elementu [Card Header](../card-header) na zobrazenie doplnkového alebo sekundárneho textu, čím používateľovi poskytuje dodatočný kontext alebo informácie súvisiace s hlavným obsahom karty.
 
-Pre viac informácií o použití Card Subtitle sa presuňte do dokumentácie elementu [card](../card).
+:::note Poznámka
+Pre viac informácií o použití Card Subtitle sa presuňte do dokumentácie elementu [**Card**](../card).
+:::
 
 ## Atribúty a Vlastnosti
 

@@ -22,7 +22,9 @@ The header is part of the layout elements and is displayed at the top. It is mos
 
 ## Examples of use
 
-For information on using the **Header** element, navigate to the [Layout](../layout) documentation.
+:::note
+For information on using the **Header** element, navigate to the [**Layout**](../layout) documentation.
+:::
 
 ## Attributes and Properties
 

@@ -2,6 +2,8 @@
 title: QR Code
 ---
 
+<!-- label, placeholder, clearable, variant, max-options, multiple, disabled -->
+
 import Props from '@ionic-internal/component-api/v1/qr-code/props.md';
 import Events from '@ionic-internal/component-api/v1/qr-code/events.md';
 import Methods from '@ionic-internal/component-api/v1/qr-code/methods.md';

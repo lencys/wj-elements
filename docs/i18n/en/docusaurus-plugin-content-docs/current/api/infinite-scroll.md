@@ -16,6 +16,8 @@ import Slots from '@ionic-internal/component-api/v1/infinite-scroll/slots.md';
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
+<EncapsulationPill type="shadow" />
+
 Infinite Scroll allows you to implement dynamic data loading as users scroll through more content. The element allows you to view any content from a selected endpoint without requiring further interaction, such as clicking the "Load more" button or a link to the next page. The component also displays a loader indicator to inform users when new content is being loaded.
 
 import Basic from '@site/static/usage/v1/infinite-scroll/basic/index.md';

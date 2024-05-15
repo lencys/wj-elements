@@ -15,9 +15,15 @@ import Slots from '@ionic-internal/component-api/v1/card-content/slots.md';
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
+<EncapsulationPill type="shadow" />
+
 Tento element slúži na použitie v karte pre umiestnenie primárneho obsahu karty.
 
-Pre viac informácií o použití Card Content sa presuňte do dokumentácie elementu [Card](../card).
+:::note Poznámka
+
+Pre viac informácií o použití Card Content sa presuňte do dokumentácie elementu [**Card**](../card).
+
+:::
 
 ## Atribúty a Vlastnosti
 

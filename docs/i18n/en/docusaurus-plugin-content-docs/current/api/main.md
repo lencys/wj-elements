@@ -22,7 +22,9 @@ Main is a layout element and is displayed next to the [Aside](../aside) element.
 
 ## Examples of use
 
-For information on using the **Main** element, navigate to the [Layout](../layout) documentation.
+:::note
+For information on using the **Main** element, navigate to the [**Layout**](../layout) documentation.
+:::
 
 ## Attributes and Properties
 

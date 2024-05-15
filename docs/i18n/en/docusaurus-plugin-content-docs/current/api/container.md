@@ -18,7 +18,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Container is a key Layout element that is used to wrap the content of a page. It is designed to provide consistent spacing, offsets and alignment of the elements within it to ensure proper display and also to adapt to different devices and screen sizes. For information on using the **Container** element, navigate to the [Layout](../layout) documentation.
+Container is a key Layout element that is used to wrap the content of a page. It is designed to provide consistent spacing, offsets and alignment of the elements within it to ensure proper display and also to adapt to different devices and screen sizes.
+
+:::note
+For information on using the **Container** element, navigate to the [**Layout**](../layout) documentation.
+:::
 
 ## Attributes and Properties
 

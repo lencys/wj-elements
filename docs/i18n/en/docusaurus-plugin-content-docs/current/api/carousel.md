@@ -23,7 +23,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The **Card** element is a flexible and expandable card format container. It allows you to display a wide range of content and consists of a header [CardHeader](../card-header) and a main section [CardContent](../card-content).
+A **Carousel** is an element that displays multiple items, such as images or news updates, in a rotating fashion.
 
 ## Basic use
 
@@ -32,8 +32,6 @@ import Basic from '@site/static/usage/v1/carousel/basic/index.md';
 <Basic />
 
 ## Paginaton
-
-The separator property is used to display a horizontal separator in the Card Header element.
 
 import Pagination from '@site/static/usage/v1/carousel/pagination/index.md';
 
