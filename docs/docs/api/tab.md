@@ -19,7 +19,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Komponent `Tab` je podriadeným komponentom [TabGroup](tab-group.md) a slúži ako tlačidlo navigácie založenej na záložkách. Používa sa v kombinácii s elementom [TabPanel](tab-panel.md).
 
-Pre príklady použitia komponentu `Tab` prejdite na dokumentáciu [TabGroup](tab-group.md).
+:::note
+Pre príklady použitia komponentu `Tab` prejdite na dokumentáciu [**TabGroup**](tab-group.md).
+:::
 
 ## Atribúty a Vlastnosti
 

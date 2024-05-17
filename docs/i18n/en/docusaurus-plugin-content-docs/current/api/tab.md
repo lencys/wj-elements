@@ -20,7 +20,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The `Tab` component is a child of the [TabGroup](tab-group.md) component and serves as a tab-based navigation button. It is used in combination with the [TabPanel](tab-panel.md) element.
 
-For examples of using the `Tab` component, go to the [TabGroup](tab-group.md) documentation.
+:::note
+Pre príklady použitia komponentu `Tab` prejdite na dokumentáciu [**TabGroup**](tab-group.md).
+:::
 
 ## Attributes and Properties
 

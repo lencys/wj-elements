@@ -19,7 +19,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Element ToolbarActions slúži ako obaľovací kontajner pre tlačidlá vložené do elementu Toolbar a zoskupuje tak rôzne akcie toolbaru do jedného celku.
 
-Pre viac informácií o použití ToolbarActions prejdite do dokumentácie elementu [Toolbar](../toolbar).
+:::note
+Pre viac informácií o použití ToolbarActions prejdite do dokumentácie elementu [**Toolbar**](../toolbar).
+:::
 
 ## Atribúty a Vlastnosti
 
