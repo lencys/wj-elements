@@ -94,8 +94,8 @@ export default class Icon extends WJElement {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     getSvgContent(this.url).then((svgContent) => {
-                        this.element.innerHTML = iconContent.get(this.url);
-                        this.element.querySelector("svg").setAttribute("part", "svg");
+                        this.element.innerHTML = iconContent?.get(this.url);
+                        this.element.querySelector("svg")?.setAttribute("part", "svg");
 
                     });
 
