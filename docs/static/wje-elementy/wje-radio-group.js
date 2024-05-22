@@ -57,7 +57,7 @@ class l extends h {
    * Handles the selection of radio buttons.
    */
   afterDraw() {
-    this.value && this.setRadioToChekced(this.getRadioByValue(this.value)), this.addEventListener("wje:radio:input", (e) => {
+    this.value && this.setRadioToChekced(this.getRadioByValue(this.value)), this.addEventListener("wje-radio:input", (e) => {
       this.removeCheck(), this.setRadioToChekced(e.detail.context);
     });
   }

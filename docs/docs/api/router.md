@@ -15,6 +15,8 @@ import Slots from '@ionic-internal/component-api/v1/router/slots.md';
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
+<EncapsulationPill type="shadow" />
+
 Komponent Router je nástroj určený na navigáciu v rámci webových aplikácií. Táto komponenta podporuje komplexné navigačné scenáre a lazy-load, čím zvyšuje výkon aplikácie a používateľský zážitok. Na to využíva ďalšie komponenty: [Router Link](router-link.md), [Router Outlet](router-outlet.md) a [Route](route.md). 
 
 Navyše sa bezproblémovo integruje s komponentmi WebJET Elements, čím umožňuje jednoduchú implementáciu navigácie vo vašom projekte.

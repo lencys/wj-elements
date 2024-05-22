@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/card-subtitle/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/card-subtitle/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/card-subtitle/slots.md';
 
-
+<head>
   <title>Card Subtitle | Supplementary or secondary text Card</title>
   <meta name="description" content="Element Card subtitle je komponent navrhnutý na použitie v rámci elementu Card Header na zobrazenie doplnkového alebo sekundárneho textu, čím používateľovi poskytuje dodatočný kontext alebo informácie súvisiace s hlavným obsahom karty." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
@@ -20,7 +20,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The Card subtitle element is a component designed to be used within the [Card Header](../card-header) element to display additional or secondary text, providing the user with additional context or information related to the main content of the card.
 
-For more information on using Card Subtitle, navigate to the [card](../card) element documentation.
+:::note Note
+For more information on using Card Subtitle, navigate to the [**Card**](../card) element documentation.
+:::
 
 ## Attributes and Properties
 

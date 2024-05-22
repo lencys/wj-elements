@@ -15,6 +15,7 @@ import Slots from '@ionic-internal/component-api/v1/infinite-scroll/slots.md';
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
+<EncapsulationPill type="shadow" />
 
  Infinite Scroll umožňuje implementovať dynamické načítavanie dát, keď používatelia prechádzajú väčším množstvom obsahu. Element umožňuje zobraziť akýkoľvek obsah zo zvoleného koncového bodu (endpointu) bez toho, aby bola potrebná ďalšia interakcia, napríklad kliknutie na tlačidlo “Načítať viac” alebo na odkaz na ďalšiu stránku. Komponent zároveň zobrazuje indikátor načítania (loader), aby informoval používateľov o načítavaní nového obsahu.
 

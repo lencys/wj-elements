@@ -1254,7 +1254,92 @@
             "docs": "",
             "docsTags": [],
             "usage": {},
-            "props": [],
+            "props": [
+                {
+                    "name": "pagination",
+                    "type": "boolean",
+                    "complexType": {
+                      "original": "boolean",
+                      "resolved": "boolean",
+                      "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "value",
+                    "docs": "Určuje, či sú povolené indikátory stránkovania.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": true
+                },
+                {
+                    "name": "loop",
+                    "type": "boolean",
+                    "complexType": {
+                      "original": "boolean",
+                      "resolved": "boolean",
+                      "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "value",
+                    "docs": "Určuje, či sa má carousel nekonečne opakovať.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": true
+                },
+                {
+                    "name": "navigation",
+                    "type": "boolean",
+                    "complexType": {
+                      "original": "boolean",
+                      "resolved": "boolean",
+                      "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "value",
+                    "docs": "Určuje, či sú povolené navigačné tlačidlá.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": true
+                },
+                {
+                    "name": "thumbnails",
+                    "type": "boolean",
+                    "complexType": {
+                      "original": "boolean",
+                      "resolved": "boolean",
+                      "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "value",
+                    "docs": "Určuje, či sú povolené miniatúry pre snímky.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": true
+                }
+            ],
             "methods": [],
             "events": [],
             "listeners": [],
@@ -1436,7 +1521,36 @@
                 }
             ],
             "methods": [],
-            "events": [],
+            "events": [
+                {
+                    "event": "input",
+                    "detail": "void",
+                    "bubbles": true,
+                    "complexType": {
+                        "original": "void",
+                        "resolved": "void",
+                        "references": {}
+                    },
+                    "cancelable": true,
+                    "composed": true,
+                    "docs": "Vyvolaný pri kliknutí na checkbox",
+                    "docsTags": []
+                },
+                {
+                    "event": "change",
+                    "detail": "void",
+                    "bubbles": true,
+                    "complexType": {
+                        "original": "void",
+                        "resolved": "void",
+                        "references": {}
+                    },
+                    "cancelable": true,
+                    "composed": true,
+                    "docs": "Vyvolaný pri zmene hodnoty v checkboxe",
+                    "docsTags": []
+                }
+            ],
             "listeners": [],
             "styles": [
                 {
@@ -1572,6 +1686,28 @@
                     "attr": "disabled",
                     "reflectToAttr": false,
                     "docs": "If `true`, používateľ nemôže s elementom interagovať.",
+                    "docsTags": [],
+                    "default": "false",
+                    "values": [
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                }, 
+                {
+                    "name": "removable",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "removable",
+                    "reflectToAttr": false,
+                    "docs": "If `true`, používateľ môže element odstrániť z obrazovky.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -1760,7 +1896,17 @@
                     "required": true
                 }
             ],
-            "methods": [],
+            "methods": [
+                {
+                    "name": "beforeOpen",
+                    "returns": {},
+                    "complexType": {},
+                    "signature": "back() => Promise<void>",
+                    "parameters": [],
+                    "docs": "Test Test",
+                    "docsTags": []
+                }
+            ],
             "events": [],
             "listeners": [],
             "styles": [
@@ -2431,6 +2577,24 @@
                     ],
                     "optional": false,
                     "required": false
+                },
+                {
+                    "name": "icon",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "icon",
+                    "reflectToAttr": false,
+                    "docs": "Povolí zobrazenie ikony pre file upload.",
+                    "docsTags": [],
+                    "default": true,
+                    "values": [],
+                    "optional": false,
+                    "required": false
                 }
             ],
             "methods": [],
@@ -2455,12 +2619,125 @@
             "docs": "",
             "docsTags": [],
             "usage": {},
-            "props": [],
+            "props": [
+                {
+                    "name": "name",
+                    "type": "string | undefined",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "attr": "name",
+                    "reflectToAttr": false,
+                    "docs": "Nastaví meno pre file upload item.",
+                    "docsTags": [],
+                    "default": "undefined",
+                    "values": [
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "size",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "size",
+                    "reflectToAttr": false,
+                    "docs": "Nastaví maximálnu povolenú veľkosť súboru na nahrávanie v bajtoch.",
+                    "docsTags": [],
+                    "default": "1 MB",
+                    "values": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "uploaded",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "uploaded",
+                    "reflectToAttr": false,
+                    "docs": "Nastaví veľkosť nahraných bajtov súboru.",
+                    "docsTags": [],
+                    "values": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "progress",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "progress",
+                    "reflectToAttr": false,
+                    "docs": "Nastaví percentuálny progres nahrávania súboru.",
+                    "docsTags": [],
+                    "values": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "lang",
+                    "type": "string",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "lang",
+                    "reflectToAttr": false,
+                    "docs": "Použitý jazyk.",
+                    "docsTags": [],
+                    "default": "sk",
+                    "values": [
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                }
+            ],
             "methods": [],
             "events": [],
             "listeners": [],
             "styles": [],
-            "slots": [],
+            "slots": [
+                {
+                    "name": "img",
+                    "docs": "Slot na umiestnenie obrázku/ikony."
+                }
+            ],
             "parts": [],
             "dependents": [],
             "dependencies": [],
@@ -2559,6 +2836,21 @@
                             "type": "undefined"
                         }
                     ],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "value",
+                    "type": "number",
+                    "complexType":{
+                        "original": "string",
+                        "resolved": "string | undefined"
+                    },
+                    "attr": "value",
+                    "reflectToAttr": false,
+                    "docs": "Nastaví hodnotu elementu.",
+                    "docsTags": [],
+                    "default": "",
                     "optional": false,
                     "required": false
                 }
@@ -2862,6 +3154,21 @@
                             "type": "undefined"
                         }
                     ],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "filled",
+                    "type": "boolean",
+                    "complexType":{
+                        "original": "boolean",
+                        "resolved": "boolean"
+                    },
+                    "attr": "filled",
+                    "reflectToAttr": false,
+                    "docs": "Nastaví či má ikona byť vyplnená farbou.",
+                    "docsTags": [],
+                    "default": "true",
                     "optional": false,
                     "required": false
                 }
@@ -3638,7 +3945,37 @@
                 }
             ],
             "usage": {},
-            "props": [],
+            "props": [
+                {
+                    "name": "lines",
+                    "type": "\"inset\" | \"full\" |  \"none\"",
+                    "complexType": {
+                        "original": "Lines",
+                        "resolved": "\"inset\" | \"full\" |  \"none\""
+                    },
+                    "mutable": false,
+                    "attr": "color",
+                    "reflectToAttr": true,
+                    "docs": "Voľba typu oddeľovacích čiar pri inpute.",
+                    "docsTags": [],
+                    "values": [
+                        {
+                            "value": "inset",
+                            "type": "string"
+                        },
+                        {
+                            "value": "full",
+                            "type": "string"
+                        },
+                        {
+                            "value": "none",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": true,
+                    "required": false
+                }
+            ],
             "methods": [],
             "events": [],
             "listeners": [],
@@ -4569,7 +4906,20 @@
                     "docs": "Z-index elementu"
                 }
             ],
-            "slots": [],
+            "slots": [
+                {
+                    "name": "submenu",
+                    "docs": "Umožňuje vložiť Menu element ako item na vytvorenie podmenu."
+                },
+                {
+                    "name": "start",
+                    "docs": "Vloží element na začiatok."
+                },
+                {
+                    "name": "end",
+                    "docs": "Vloží element na koniec."
+                }
+            ],
             "parts": [
                 {
                     "name": "native",
@@ -4794,6 +5144,207 @@
                 {
                     "name": "start",
                     "docs": "Obsah je umiestnený vľavo v LTR a vpravo v RTL."
+                }
+            ],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
+            "filePath": "src/components/wje-qr-code/wje-qr-code.tsx",
+            "encapsulation": "shadow",
+            "tag": "qr-code",
+            "docs": "",
+            "docsTags": [
+                {
+                    "name": "slot",
+                    "docs": "start - Obsah sa umiestni hore."
+                },
+                {
+                    "name": "slot",
+                    "docs": "start - Obsah sa umiestni dole."
+                }
+            ],
+            "usage": {},
+            "props": [
+              {
+                "name": "value",
+                "type": "string",
+                "complexType": {
+                  "original": "string",
+                  "resolved": "string",
+                  "references": {}
+                },
+                "mutable": false,
+                "attr": "value",
+                "docs": "Hodnota zakódovaná v kóde QR",
+                "values": [
+                    {
+                        "type": "string | undefined"
+                    }
+                ],
+                "reflectToAttr": true,
+                "optional": false,
+                "required": false
+              },
+              {
+                "name": "size",
+                "type": "number",
+                "complexType": {
+                  "original": "number",
+                  "resolved": "number",
+                  "references": {}
+                },
+                "mutable": false,
+                "attr": "size",
+                "docs": "Veľkosť QR kódu (v pixeloch)",
+                "values": [
+                    {
+                        "type": "number | undefined"
+                    }
+                ],
+                "reflectToAttr": true,
+                "optional": false,
+                "required": false
+              },
+              {
+                "name": "padding",
+                "type": "number",
+                "complexType": {
+                  "original": "number",
+                  "resolved": "number",
+                  "references": {}
+                },
+                "mutable": false,
+                "attr": "padding",
+                "docs": "Výplň pre QR kód (pixely)",
+                "values": [
+                    {
+                        "type": "number | undefined"
+                    }
+                ],
+                "reflectToAttr": true,
+                "optional": false,
+                "required": false
+              },
+              {
+                "name": "foreground",
+                "type": "string",
+                "complexType": {
+                  "original": "string",
+                  "resolved": "string",
+                  "references": {}
+                },
+                "mutable": false,
+                "attr": "foreground",
+                "docs": "Farba popredia QR kódu",
+                "values": [
+                    {
+                        "type": "string | undefined"
+                    }
+                ],
+                "reflectToAttr": true,
+                "optional": false,
+                "required": false
+              },
+              {
+                "name": "foregroundAlpha",
+                "type": "number",
+                "complexType": {
+                  "original": "number",
+                  "resolved": "number",
+                  "references": {}
+                },
+                "mutable": false,
+                "attr": "foreground-alpha",
+                "docs": "Popredie alfa kódu QR",
+                "values": [
+                    {
+                        "type": "string | undefined"
+                    }
+                ],
+                "reflectToAttr": true,
+                "optional": false,
+                "required": false
+              },
+              {
+                "name": "background",
+                "type": "string",
+                "complexType": {
+                  "original": "string",
+                  "resolved": "string",
+                  "references": {}
+                },
+                "mutable": false,
+                "attr": "background",
+                "docs": "Farba pozadia QR kódu",
+                "values": [
+                    {
+                        "type": "string | undefined"
+                    }
+                ],
+                "reflectToAttr": true,
+                "optional": false,
+                "required": false
+              },
+              {
+                "name": "backgroundAlpha",
+                "type": "number",
+                "complexType": {
+                  "original": "number",
+                  "resolved": "number",
+                  "references": {}
+                },
+                "mutable": false,
+                "attr": "background-alpha",
+                "docs": "Pozadie alfa kódu QR",
+                "values": [
+                    {
+                        "type": "number | undefined"
+                    }
+                ],
+                "reflectToAttr": true,
+                "optional": false,
+                "required": false
+              },
+              {
+                "name": "level",
+                "type": "string",
+                "complexType": {
+                  "original": "string",
+                  "resolved": "string",
+                  "references": {}
+                },
+                "mutable": false,
+                "attr": "level",
+                "docs": "Úroveň opravy chýb QR kódu (L, M, Q, H)",
+                "values": [
+                    {
+                        "type": "string | undefined"
+                    }
+                ],
+                "reflectToAttr": true,
+                "optional": false,
+                "required": false
+              }
+            ],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [
+                {
+                    "name": "",
+                    "docs": "Obsah sa umiestni medzi named sloty."
+                },
+                {
+                    "name": "top",
+                    "docs": "Obsah sa umiestni hore."
+                },
+                {
+                    "name": "bottom",
+                    "docs": "Obsah sa umiestni dole."
                 }
             ],
             "parts": [],
@@ -5111,6 +5662,108 @@
                     "required": false
                 }
             ],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
+        "filePath": "src/components/wje-qr-code/wje-reorder.tsx",
+            "encapsulation": "shadow",
+            "tag": "reorder",
+            "docs": "",
+            "docsTags": [],
+            "usage": {},
+            "props": [
+                {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "disabled",
+                    "docs": "Ak `true`, elementy nebude možné usporiadať pomocou drag and drop funkcionality.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": false
+                },
+                {
+                    "name": "reverse",
+                    "type": "boolean",
+                    "complexType": {
+                      "original": "boolean",
+                      "resolved": "boolean",
+                      "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "reverse",
+                    "docs": "Ak `true`, elementy budú usporiadané v opačnom poradí.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": false
+                }
+            ],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
+        "filePath": "src/components/wje-qr-code/wje-reorder-item.tsx",
+            "encapsulation": "shadow",
+            "tag": "reorder-item",
+            "docs": "",
+            "docsTags": [],
+            "usage": {},
+            "props": [],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [
+                {
+                    "name": "handle",
+                    "docs": "Obsah sa umiestni na zaciatok elementu."
+                }
+            ],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
+        "filePath": "src/components/wje-qr-code/wje-reorder-dropzone.tsx",
+            "encapsulation": "shadow",
+            "tag": "reorder-dropzone",
+            "docs": "",
+            "docsTags": [],
+            "usage": {},
+            "props": [],
             "methods": [],
             "events": [],
             "listeners": [],
@@ -5481,7 +6134,116 @@
                 }
             ],
             "usage": {},
-            "props": [],
+            "props": [
+                {
+                    "name": "clearable",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "clearable",
+                    "reflectToAttr": false,
+                    "docs": "Pridáva možnosť vyčistiť zvolenú možnosť.",
+                    "docsTags": [],
+                    "default": false,
+                    "values": [],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "disabled",
+                    "reflectToAttr": false,
+                    "docs": "Select je disabled.",
+                    "docsTags": [],
+                    "default": false,
+                    "values": [],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "label",
+                    "type": "string",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "label",
+                    "reflectToAttr": false,
+                    "docs": "Definuje popisný text selectu.",
+                    "docsTags": [],
+                    "default": "undefined",
+                    "values": [],
+                    "optional": false,
+                    "required": true
+                },
+                {
+                    "name": "max-options",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "max-options",
+                    "reflectToAttr": false,
+                    "docs": "Definuje maximálny počet itemov v selecte.",
+                    "docsTags": [],
+                    "default": "undefined",
+                    "values": [],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "multiple",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "multiple",
+                    "reflectToAttr": false,
+                    "docs": "Umožní výber viacerých možností.",
+                    "docsTags": [],
+                    "default": false,
+                    "values": [],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "placeholder",
+                    "type": "string",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "placeholder",
+                    "reflectToAttr": false,
+                    "docs": "Text zobrazený na select elemente.",
+                    "docsTags": [],
+                    "default": "undefined",
+                    "values": [],
+                    "optional": false,
+                    "required": false
+                }
+            ],
             "events": [],
             "listeners": [],
             "styles": [
@@ -5733,6 +6495,78 @@
             "docsTags": [],
             "usage": {},
             "props": [
+                {
+                    "name": "bubble",
+                    "type": "boolean | undefined",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean | undefined",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "boolean",
+                    "reflectToAttr": false,
+                    "docs": "Zobrazí bublinu s hodnotou posuvníka.",
+                    "docsTags": [],
+                    "values": [],
+                    "optional": true,
+                    "required": false,
+                    "default": false
+                },
+                {
+                    "name": "color",
+                    "type": "\"danger\" | \"neutral\" |  \"primary\" | \"success\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                    "complexType": {
+                        "original": "Color",
+                        "resolved": "\"danger\" | \"neutral\" |  \"primary\" | \"success\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                        "references": {
+                            "Color": {
+                                "location": "import",
+                                "path": "../../interface",
+                                "id": "src/interface.d.ts::Color"
+                            }
+                        }
+                    },
+                    "mutable": false,
+                    "attr": "color",
+                    "reflectToAttr": true,
+                    "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"` a `\"neutral\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
+                    "docsTags": [],
+                    "values": [
+                        {
+                            "value": "danger",
+                            "type": "string"
+                        },
+                        {
+                            "value": "neutral",
+                            "type": "string"
+                        },
+                        {
+                            "value": "primary",
+                            "type": "string"
+                        },
+                        {
+                            "value": "complete",
+                            "type": "string"
+                        },
+                        {
+                            "value": "success",
+                            "type": "string"
+                        },
+                        {
+                            "value": "warning",
+                            "type": "string"
+                        },
+                        {
+                            "type": "string & Record<never, never>"
+                        },
+                        {
+                            "type": "undefined"
+                        }
+                    ],
+                    "optional": true,
+                    "required": false
+                },
                 {
                     "name": "max",
                     "type": "number | undefined",
@@ -6054,6 +6888,28 @@
                         }
                     ],
                     "optional": true,
+                    "required": false
+                },
+                {
+                    "name": "vertical",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "vertical",
+                    "reflectToAttr": false,
+                    "docs": "Ak `true`, zmení sa orientácia oddeľovača na vertikálnu.",
+                    "docsTags": [],
+                    "default": "false",
+                    "values": [
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "optional": false,
                     "required": false
                 }
             ],

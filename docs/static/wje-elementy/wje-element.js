@@ -1,16 +1,16 @@
-var E = Object.defineProperty;
-var v = (h, e, t) => e in h ? E(h, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : h[e] = t;
+var A = Object.defineProperty;
+var v = (h, e, t) => e in h ? A(h, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : h[e] = t;
 var a = (h, e, t) => (v(h, typeof e != "symbol" ? e + "" : e, t), t), P = (h, e, t) => {
   if (!e.has(h))
     throw TypeError("Cannot " + t);
 };
-var y = (h, e, t) => {
+var b = (h, e, t) => {
   if (e.has(h))
     throw TypeError("Cannot add the same private member more than once");
   e instanceof WeakSet ? e.add(h) : e.set(h, t);
 };
-var m = (h, e, t) => (P(h, e, "access private method"), t);
-import { store as w, defaultStoreActions as T } from "./wje-store.js";
+var p = (h, e, t) => (P(h, e, "access private method"), t);
+import { store as w, defaultStoreActions as C } from "./wje-store.js";
 class j {
   constructor(e = {}) {
     a(this, "findByKey", (e, t, s) => {
@@ -41,9 +41,9 @@ class j {
       async: !0,
       referrerPolicy: "same-origin"
     }).then((r, o) => {
-      var b;
-      let g = (b = r.headers.get("permissions")) == null ? void 0 : b.split(",");
-      if (n(g), r.ok)
+      var y;
+      let m = (y = r.headers.get("permissions")) == null ? void 0 : y.split(",");
+      if (n(m), r.ok)
         return r.json();
       throw r.json();
     }).then((r) => (this._store.dispatch(t(r)), r)));
@@ -168,16 +168,19 @@ class u {
     return !["false", "0", 0].includes(e);
   }
 }
-var d, l, p;
-class C {
+var l, d, g;
+class T {
   constructor() {
-    y(this, l);
-    this.customEventStorage = [], d = this;
+    b(this, d);
+    this.customEventStorage = [], l = this;
   }
   dispatchCustomEvent(e, t, s) {
     e.dispatchEvent(
       new CustomEvent(t, {
-        detail: s,
+        detail: s || {
+          context: e,
+          event: l
+        },
         bubbles: !0,
         composed: !0
       })
@@ -192,13 +195,16 @@ class C {
     return !1;
   }
   addListener(e, t, s, i, n) {
-    if (!e)
-      return;
+    e && (Array.isArray(e) || (e = [e]), e.forEach((r) => {
+      this.writeRecord(r, t, s, i, n);
+    }));
+  }
+  writeRecord(e, t, s, i, n) {
     let r = this.findRecordByElement(e);
     r ? r.listeners[t] = r.listeners[t] || [] : (r = {
       element: e,
       listeners: {}
-    }, r.listeners[t] = [], this.customEventStorage.push(r)), i = i || m(this, l, p);
+    }, r.listeners[t] = [], this.customEventStorage.push(r)), i = i || p(this, d, g);
     let o = {
       listener: i,
       options: n,
@@ -215,7 +221,7 @@ class C {
       var o = r.listeners[t].indexOf(i);
       ~o && r.listeners[t].splice(o, 1), r.listeners[t].length || delete r.listeners[t];
     }
-    i = i || m(this, l, p), e.removeEventListener(t, i, n);
+    i = i || p(this, d, g), e.removeEventListener(t, i, n);
   }
   removeElement(e) {
     this.customEventStorage = this.customEventStorage.filter((t) => {
@@ -224,19 +230,19 @@ class C {
     });
   }
 }
-l = new WeakSet(), p = function(e) {
+d = new WeakSet(), g = function(e) {
   let t = this;
-  d.findRecordByElement(t).listeners[e.type].forEach((n, r) => {
-    d.dispatchCustomEvent(t, n.event, {
+  l.findRecordByElement(t).listeners[e.type].forEach((n, r) => {
+    l.dispatchCustomEvent(t, n.event, {
       originalEvent: (e == null ? void 0 : e.type) || null,
       context: t,
-      event: d
+      event: l
     }), n.options && n.options.stopPropagation === !0 && e.stopPropagation();
   });
 };
-let _ = new C();
-const A = document.createElement("template");
-A.innerHTML = "";
+let _ = new T();
+const E = document.createElement("template");
+E.innerHTML = "";
 const f = class f extends HTMLElement {
   constructor(t) {
     super();
@@ -248,7 +254,7 @@ const f = class f extends HTMLElement {
       const i = new CSSStyleSheet();
       i.replaceSync(this.constructor.cssStyleSheet), this.context.adoptedStyleSheets = [i];
     });
-    this.template = t || A, this.isAttached = !1, this.service = new j({
+    this.template = t || E, this.isAttached = !1, this.service = new j({
       store: w
     }), this.defineDepandencies(), this.rendering = !1, this.runtimeTimeout = null, this.count = 0, this.functionStack = [], this.scheludedRefresh = !1, this._depandencies = {};
   }
@@ -301,7 +307,7 @@ const f = class f extends HTMLElement {
    * @return {ArrayActions, ObjectActions}
    */
   get defaultStoreActions() {
-    return T;
+    return C;
   }
   get removeClassAfterConnect() {
     var t;
@@ -326,12 +332,6 @@ const f = class f extends HTMLElement {
   }
   afterDraw() {
   }
-  makeRuntimeTimeout(t = () => {
-  }) {
-    return setTimeout(() => {
-      t();
-    }, 0);
-  }
   refreshUpdatePromise() {
     this.updateComplete = new Promise((t, s) => {
       this.finisPromise = t, this.rejectPromise = s;
@@ -345,7 +345,7 @@ const f = class f extends HTMLElement {
     }, this.refreshUpdatePromise(), await this.initWjElement(!0);
   }
   setupAttributes() {
-    u.getEvents(this).forEach((s, i) => {
+    console.log("Inner call of setupAttributes method..."), u.getEvents(this).forEach((s, i) => {
       this.addEventListener(i, (n) => {
         var r, o;
         (o = (r = this.getRootNode().host)[s]) == null || o.call(r);
@@ -356,11 +356,11 @@ const f = class f extends HTMLElement {
   }
   disconnectedCallback() {
     var t, s;
-    (t = this.beforeDisconnect) == null || t.call(this), this.isAttached && (this.context.innerHTML = ""), this.isAttached = !1, (s = this.afterDisconnect) == null || s.call(this);
+    (t = this.beforeDisconnect) == null || t.call(this), this.isAttached && (this.context.innerHTML = ""), this.drawingStatus = "DISCONNECTED", this.isAttached = !1, (s = this.afterDisconnect) == null || s.call(this);
   }
   /**
-      * Lifecycle method, called whenever an observed property changes
-      */
+   * Lifecycle method, called whenever an observed property changes
+   */
   attributeChangedCallback(t, s, i) {
     if (!this.isAttached && s !== i) {
       this.scheludedRefresh = !0;
@@ -373,38 +373,38 @@ const f = class f extends HTMLElement {
     this.refreshUpdatePromise(), this.drawingStatus != "AFTER" ? ((t = this.afterDisconnect) == null || t.call(this), await this.initWjElement(!0)) : ((s = this.unregister) == null || s.call(this), await this.initWjElement(!0));
   }
   /**
-      * To be implemented by the child class
-      */
+   * To be implemented by the child class
+   */
   draw(t, s, i) {
     return null;
   }
   display(t = !1, s) {
-    this.isProcessingFlow(s) || (t && this.isShadowRoot && ([...this.context.children].forEach(this.context.removeChild.bind(this.context)), this.isAttached = !1), this.isAttached, this.context.append(this.template.content.cloneNode(!0)), this.isPermissionCheck || this.isShow ? c.isPermissionFulfilled.bind(this)(this.permission) ? this._resolveRender(s) : this.remove() : this._resolveRender(s));
+    this.isProcessingFlow(s) || (t && ([...this.context.childNodes].forEach(this.context.removeChild.bind(this.context)), this.isAttached = !1), this.context.append(this.template.content.cloneNode(!0)), this.isPermissionCheck || this.isShow ? c.isPermissionFulfilled.bind(this)(this.permission) ? this._resolveRender(s) : this.remove() : this._resolveRender(s));
   }
-  render(t) {
-    if (this.drawingStatus = "DRAWING", this.isProcessingFlow(t))
-      return;
-    let s = this.draw(this.context, this.store, u.getAttributes(this)) || "", i;
-    if (s instanceof HTMLElement || s instanceof DocumentFragment)
-      i = s;
-    else {
-      let r = document.createElement("template");
-      r.innerHTML = s, i = r.content.cloneNode(!0);
-    }
-    let n = i;
-    this.isProcessingFlow(t) || this.context.appendChild(n);
+  async render(t) {
+    this.drawingStatus = "DRAWING", !this.isProcessingFlow(t) && await Promise.resolve(this.draw(this.context, this.store, u.getAttributes(this))).then((s) => {
+      let i = s || "", n;
+      if (i instanceof HTMLElement || i instanceof DocumentFragment)
+        n = i;
+      else {
+        let o = document.createElement("template");
+        o.innerHTML = i, n = o.content.cloneNode(!0);
+      }
+      let r = n;
+      this.isProcessingFlow(t) || this.context.appendChild(r);
+    });
   }
   /**
-      * Turns a string split with "-" into camel case notation
-      */
+   * Turns a string split with "-" into camel case notation
+   */
   sanitizeName(t) {
     let s = t.split("-");
     return [s.shift(), ...s.map((i) => i[0].toUpperCase() + i.slice(1))].join("");
   }
   /**
-      * Creates one property on this class for every
-      * HTML property defined on the element
-      */
+   * Creates one property on this class for every
+   * HTML property defined on the element
+   */
   setUpAccessors() {
     this.getAttributeNames().forEach((s) => {
       const i = this.sanitizeName(s);
@@ -419,12 +419,14 @@ const f = class f extends HTMLElement {
   }
   _resolveRender(t) {
     this.isProcessingFlow(t) || (this.params = u.getAttributes(this), Promise.resolve(this.beforeDraw(this.context, this.store, u.getAttributes(this))).then((s) => {
-      var i;
-      this.drawingStatus = "BEFORE", this.render(t), !this.isProcessingFlow(t) && Promise.resolve((i = this.afterDraw) == null ? void 0 : i.call(this, this.context, this.store, u.getAttributes(this))).then(
-        (n, r, o) => {
-          this.drawingStatus = "AFTER", this.finisPromise(), this.rendering = !1, this.isAttached = !0, this.removeClassAfterConnect && this.classList.remove(...this.removeClassAfterConnect), this.scheludedRefresh && (this.refresh(), this.scheludedRefresh = !1);
-        }
-      );
+      this.drawingStatus = "BEFORE", Promise.resolve(this.render(t)).then((i) => {
+        var n;
+        this.isProcessingFlow(t) || Promise.resolve((n = this.afterDraw) == null ? void 0 : n.call(this, this.context, this.store, u.getAttributes(this))).then(
+          (r, o, m) => {
+            this.drawingStatus = "AFTER", this.finisPromise(), this.rendering = !1, this.isAttached = !0, this.removeClassAfterConnect && this.classList.remove(...this.removeClassAfterConnect), this.scheludedRefresh && (this.refresh(), this.scheludedRefresh = !1);
+          }
+        );
+      });
     }));
   }
 };
@@ -432,11 +434,11 @@ a(f, "processTemplates", (t, s) => {
   const i = document.createElement("template");
   return i.innerHTML = [s.innerHTML, (t == null ? void 0 : t.innerHTML) || ""].join(""), i;
 });
-let S = f, x = "true";
+let S = f, k = "true";
 export {
   u as WjElementUtils,
   c as WjePermissionsApi,
-  x as __esModule,
+  k as __esModule,
   S as default,
   _ as event
 };

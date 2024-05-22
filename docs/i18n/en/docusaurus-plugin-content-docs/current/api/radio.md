@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/radio/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/radio/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/radio/slots.md';
 
-
+<head>
   <title>Radio component | Improved version of standard HTML radio element</title>
   <meta name="description" content="Radio element je upravená verzia štandardného HTML radio elementu, rozšírená o štýly pre dosiahnutie vizuálne konzistentnejšieho používateľského rozhrania." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

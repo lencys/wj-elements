@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/color-picker/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/color-picker/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/color-picker/slots.md';
 
-
+<head>
   <title>Color Picker | WebJET Element for selecting a color from the color palette</title>
   <meta name="description" content="Color picker je element, ktorý zobrazuje farebnú paletu a umožňuje používateľom vybrať jednu z jej farieb." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

@@ -10,10 +10,10 @@ import CustomProps from '@ionic-internal/component-api/v1/select/custom-props.md
 import Slots from '@ionic-internal/component-api/v1/select/slots.md';
 import { Icon } from '@iconify/react';
 
-
+<head>
   <title>Select | Element extends the capabilities of the standard HTML select element.</title>
   <meta name="description" content="Select element rozširuje možnosti štandardného HTML select elementu. Podporuje jeden alebo viacero výberov pridaním atribútu `multiple`.Okrem toho ponúka funkcie, ako sú vymazateľné výbery a vlastný zastupný text (placeholder)." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/layout/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/layout/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/layout/slots.md';
 
-
+<head>
   <title>Layout | Element to easily build a page layout</title>
   <meta name="description" content="Layout v Elements sa skladá z troch komponentov Header, Aside a Footer. Pomocou nich je možné jednoducho zostaviť základné rozvrhnutie webstránky." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

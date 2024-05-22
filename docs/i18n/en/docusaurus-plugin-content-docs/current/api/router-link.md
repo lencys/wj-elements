@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/router-link/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/router-link/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/router-link/slots.md';
 
-
+<head>
   <title>Router Link | Router Navigation Component</title>
   <meta name="description" content="Router link komponenta slúži ako prispôsobiteľný link navrhnutý na použitie v navigácii naprieč aplikáciou." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
@@ -20,7 +20,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The router link component serves as a customizable link designed for use in navigation across the application.
 
-For more information on using Router Link, go to the [Router](../router) page in the documentation.
+:::note
+For more information on using Router Link, go to the [**Router**](../router) page in the documentation.
+:::
 
 ## Attributes and Properties
 

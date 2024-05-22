@@ -9,12 +9,14 @@ import Parts from '@ionic-internal/component-api/v1/infinite-scroll/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/infinite-scroll/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/infinite-scroll/slots.md';
 
-
+<head>
   <title>Infinite Scroll | Infinite Scroll Component</title>
   <meta name="description" content="Infinite Scroll umožňuje implementovať dynamické načítavanie dát, keď používatelia prechádzajú väčším množstvom obsahu. Element umožňuje zobraziť akýkoľvek obsah zo zvoleného koncového bodu (endpointu) bez toho, aby bola potrebná ďalšia interakcia, napríklad kliknutie na tlačidlo “Načítať viac” alebo na odkaz na ďalšiu stránku." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
+
+<EncapsulationPill type="shadow" />
 
 Infinite Scroll allows you to implement dynamic data loading as users scroll through more content. The element allows you to view any content from a selected endpoint without requiring further interaction, such as clicking the "Load more" button or a link to the next page. The component also displays a loader indicator to inform users when new content is being loaded.
 

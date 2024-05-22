@@ -21,6 +21,18 @@ template.innerHTML = `
             </div>
         </div>
 
+     <!-- <h2>Reversed</h2>
+        <div class="playground">
+            <div class="content">
+                <wje-reorder reverse>
+                    <wje-reorder-item>Reorder item 1</wje-reorder-item>
+                    <wje-reorder-item>Reorder item 2</wje-reorder-item>
+                    <wje-reorder-item>Reorder item 3</wje-reorder-item>
+                    <wje-reorder-item>Reorder item 4</wje-reorder-item>
+                </wje-reorder>
+            </div>
+        </div> -->
+
         <h2>Items With Handle</h2>
         <div class="playground">
             <div class="content">
@@ -44,7 +56,8 @@ template.innerHTML = `
                 </wje-reorder>
             </div>
         </div>
-
+        
+        
         <h2>Disabled</h2>
         <div class="playground">
             <div class="content">
@@ -56,8 +69,8 @@ template.innerHTML = `
                 </wje-reorder>
             </div>
         </div>
-
-        <h2>Multiple Drop Zones</h2>
+        
+        <!-- <h2>Multiple Drop Zones</h2>
         <div class="playground">
             <div class="content">
                 <wje-reorder>
@@ -76,7 +89,7 @@ template.innerHTML = `
                     </wje-reorder-dropzone>
                 </wje-reorder>
             </div>
-        </div>
+        </div>  -->
     </div>
 `;
 

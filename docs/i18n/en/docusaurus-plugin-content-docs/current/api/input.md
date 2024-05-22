@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/input/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/input/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/input/slots.md';
 
-
+<head>
   <title>Input: extension of the standard Input element</title>
   <meta name="description" content="Input element rozširuje možnosti štandardného HTML inputu pokročilými funkciami a možnosťami prispôsobenia. " />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

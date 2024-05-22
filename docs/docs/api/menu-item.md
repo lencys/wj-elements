@@ -21,7 +21,9 @@ MenuItem je podriadený elementu [Menu.](../menu) a predstavuje navigačnú polo
 
 ## Základné použitie
 
-Pre príklady použitia MenuItem prejdite na stránku dokumentácie elementu [Menu.](../menu).
+:::note
+Pre príklady použitia MenuItem prejdite na stránku dokumentácie elementu [**Menu**](../menu).
+:::
 
 ## Atribúty a Vlastnosti
 

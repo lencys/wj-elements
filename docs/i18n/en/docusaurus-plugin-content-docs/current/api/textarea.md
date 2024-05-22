@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/textarea/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/textarea/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/textarea/slots.md';
 
-
+<head>
   <title>Textarea | Textarea element extended with new functions</title>
   <meta name="description" content="Textarea rozširuje možnosti štandardného HTML textarea elementu. Pridáva štýly pre dosiahnutie vizuálne konzistentného používateľského rozhrania a ponúka nové funkcie." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

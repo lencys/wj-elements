@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/card/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/card/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/card/slots.md';
 
-
+<head>
   <title>Card | Card format container</title>
   <meta name="description" content="Element Card je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky Card Header, hlavnej časti Card Content a pätičky CardFooter." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

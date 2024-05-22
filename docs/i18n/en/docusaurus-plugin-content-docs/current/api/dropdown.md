@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/dropdown/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/dropdown/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/dropdown/slots.md';
 
-
+<head>
   <title>Dropdown | WebJET Element to display the context menu</title>
   <meta name="description" content="Dropdown element slúži na zobrazenie kontextového menu po kliknutí. Menu möže obsahovať aj ikony." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

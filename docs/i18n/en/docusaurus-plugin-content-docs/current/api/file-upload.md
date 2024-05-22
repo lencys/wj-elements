@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/file-upload/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/file-upload/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/file-upload/slots.md';
 
-
+<head>
   <title>FileUpload | File Upload for Web Apps</title>
   <meta name="description" content="Komponent FileUpload poskytuje univerzálnu funkciu nahrávania súborov pre webové aplikácie. Podporuje prispôsobiteľné atribúty, ako sú povolené typy súborov, veľkosť častí alebo tiež maximálnu veľkosť súboru, spolu s metódami drag-and-drop a tradičným výberom súborov." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

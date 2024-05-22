@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/select-options/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/select-options/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/select-options/slots.md';
 
-
+<head>
   <title>Options | individual options within the Select component</title>
   <meta name="description" content="Element Options je určený na použití vo vnútri elementu [Select](./select) a slúži na zobrazovanie dynamicky generovaného zoznamu možností, ktorý sa asynchrónne načíta zo zadanej URL adresy." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
@@ -20,7 +20,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The Options element is intended for use inside the [Select](../select) element and is used to display a dynamically generated list of options that is asynchronously retrieved from the specified URL.
 
-For more information on using Options, navigate to the [Select.](../select) element documentation.
+:::note
+For more information on using Options, navigate to the [**Select**](../select) element documentation
+:::
 
 ## Attributes and Properties
 

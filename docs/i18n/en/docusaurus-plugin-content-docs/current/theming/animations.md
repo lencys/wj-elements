@@ -2,13 +2,13 @@
 title: Animation
 ---
 
-
+<head>
   <title>WebJet Elements Templates | Change default themes and background colors of the application</title>
   <meta
     name="description"
     content="WebJet Elements ponúka ponúka jednoduchú integráciu animácií do webových aplikácií čím zjednodušuje vytváranie pútavých používateľských rozhraní. Poskytuje možnosti prispôsobenia v podobe oneskorenia, trvania alebo napríklad tiež počtu opakování animácií."
   />
-
+</head>
 
 WebJet Elements offers easy integration of animations into web applications using the `Animation` element, simplifying the creation of engaging user interfaces. It provides customisation options in the form of delay, duration or, for example, the number of animation repeats.
 

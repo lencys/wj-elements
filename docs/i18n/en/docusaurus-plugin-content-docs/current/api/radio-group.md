@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/radio-group/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/radio-group/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/radio-group/slots.md';
 
-
+<head>
   <title>RadioGroup | Container for radio buttons</title>
   <meta name="description" content="RadioGroup slúži ako kontajner pre skupinu rádio tlačidiel. " />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

@@ -106,7 +106,7 @@ class g extends v {
    * Called after the component has been drawn.
    */
   afterDraw() {
-    this.button.addEventListener("wje:button-click", this.onDelete);
+    this.button.addEventListener("wje-button:click", this.onDelete);
   }
 }
 g.define("wje-file-upload-item", g);

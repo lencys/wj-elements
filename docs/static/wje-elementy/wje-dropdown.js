@@ -1,9 +1,9 @@
-var c = Object.defineProperty;
-var u = (i, t, e) => t in i ? c(i, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : i[t] = e;
-var s = (i, t, e) => (u(i, typeof t != "symbol" ? t + "" : t, e), e);
-import h, { event as p } from "./wje-element.js";
-import m from "./wje-popup.js";
-class l extends h {
+var d = Object.defineProperty;
+var u = (r, t, e) => t in r ? d(r, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[t] = e;
+var s = (r, t, e) => (u(r, typeof t != "symbol" ? t + "" : t, e), e);
+import h, { event as a } from "./wje-element.js";
+import { P as m } from "./popup.element-BFIsYEbU.js";
+class p extends h {
   constructor() {
     super();
     s(this, "depandencies", {
@@ -36,20 +36,20 @@ class l extends h {
     this.isShadowRoot = "open";
   }
   draw(e, g, w) {
-    let a = document.createDocumentFragment();
+    let l = document.createDocumentFragment();
     this.classList.add("wje-placement", "wje-" + this.placement || "wje-start");
     let o = document.createElement("div");
     o.setAttribute("part", "native"), o.classList.add("native-dropdown");
     let n = document.createElement("slot");
     n.setAttribute("name", "trigger"), n.setAttribute("slot", "anchor");
-    let d = document.createElement("slot"), r = document.createElement("wje-popup");
-    return r.setAttribute("placement", this.placement), r.setAttribute("offset", this.offset), r.appendChild(n), r.appendChild(d), this.trigger === "click" && r.setAttribute("manual", ""), o.appendChild(r), a.appendChild(o), this.popup = r, this.anchorSlot = n, a;
+    let c = document.createElement("slot"), i = document.createElement("wje-popup");
+    return i.setAttribute("placement", this.placement), i.setAttribute("offset", this.offset), i.appendChild(n), i.appendChild(c), this.trigger === "click" && i.setAttribute("manual", ""), o.appendChild(i), l.appendChild(o), this.popup = i, this.anchorSlot = n, l;
   }
   afterDraw() {
-    this.trigger != "click" && (p.addListener(this.anchorSlot, "mouseenter", null, this.onShow), p.addListener(this.anchorSlot, "mouseleave", null, this.onHide));
+    this.trigger != "click" && (a.addListener(this.anchorSlot, "mouseenter", null, this.onShow), a.addListener(this.anchorSlot, "mouseleave", null, this.onHide)), this.hasAttribute("collapsible") && a.addListener(Array.from(this.querySelectorAll("wje-menu-item")), "click", "wje-menu-item:click", this.onHide);
   }
 }
-l.define("wje-dropdown", l);
+p.define("wje-dropdown", p);
 export {
-  l as default
+  p as default
 };

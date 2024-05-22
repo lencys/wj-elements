@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/aside/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/aside/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/aside/slots.md';
 
-
+<head>
   <title>Layout: Aside element</title>
   <meta name="description" content="Aside je prvok na tvorbu layoutov a zobrazuje sa vedľa elementu Main. Používa sa väčšinou na zobrazenie doplnkových informácií k hlavnému obsahu, prípadne navigácie." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
@@ -22,7 +22,9 @@ Aside is a layout element and is displayed next to the [Main](../main) element. 
 
 ## Examples of use
 
-For information on using the **Aside** element, navigate to the [Layout](../layout) documentation.
+:::note
+For information on using the **Aside** element, navigate to the [**Layout**](../layout) documentation.
+:::
 
 ## Attributes and Properties
 

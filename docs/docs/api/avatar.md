@@ -75,11 +75,11 @@ import Group from '@site/static/usage/v1/avatar/group/index.md';
 
 <Group />
 
-## CSS Custom Properties
+<!-- ## CSS Custom Properties
 
 import CSSProps from '@site/static/usage/v1/avatar/theming/css-properties/index.md';
 
-<CSSProps />
+<CSSProps /> -->
 
 ## Atribúty a Vlastnosti
 

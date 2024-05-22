@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/toast/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/toast/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/toast/slots.md';
 
-
+<head>
   <title>Toast | An unobtrusive way to display short notifications</title>
   <meta name="description" content="Komponent toast poskytuje nenápadný spôsob zobrazovania krátkych oznámení používateľovi." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

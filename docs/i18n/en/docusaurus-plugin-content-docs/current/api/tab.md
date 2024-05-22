@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/tab/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/tab/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/tab/slots.md';
 
-
+<head>
   <title>Tab | Tab navigation button</title>
   <meta name="description" content="Komponent Tab je podriadeným komponentom TabGroup a slúži ako tlačidlo navigácie založenej na záložkách. Používa sa v kombinácii s elementom TabPanel." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
@@ -20,7 +20,9 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The `Tab` component is a child of the [TabGroup](tab-group.md) component and serves as a tab-based navigation button. It is used in combination with the [TabPanel](tab-panel.md) element.
 
-For examples of using the `Tab` component, go to the [TabGroup](tab-group.md) documentation.
+:::note
+For examples of using the `Tab` component, go to the documentation [**TabGroup**](tab-group.md).
+:::
 
 ## Attributes and Properties
 

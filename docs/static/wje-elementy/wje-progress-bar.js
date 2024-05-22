@@ -2,7 +2,7 @@ var A = Object.defineProperty;
 var j = (i, o, e) => o in i ? A(i, o, { enumerable: !0, configurable: !0, writable: !0, value: e }) : i[o] = e;
 var g = (i, o, e) => (j(i, typeof o != "symbol" ? o + "" : o, e), e);
 import k from "./wje-element.js";
-const f = ':host(.wje-color-primary) #bar{--wje-progress-bar-color: var(--wje-color-primary)}:host(.wje-color-complete) #bar{--wje-progress-bar-color: var(--wje-color-complete)}:host(.wje-color-success) #bar{--wje-progress-bar-color: var(--wje-color-success)}:host(.wje-color-warning) #bar{--wje-progress-bar-color: var(--wje-color-warning)}:host(.wje-color-danger) #bar{--wje-progress-bar-color: var(--wje-color-danger)}:host(.wje-color-dark) #bar{--wje-progress-bar-color: var(--wje-color-contrast-0)}:host(.wje-color-light) #bar{--wje-progress-bar-color: var(--wje-color-contrast-11)}:host{--wje-progress-bar-color: var(--wje-color-contrast-6);--wje-progress-bar-text-size: .75rem;--wje-progress-bar-text-color: var(--wje-color)}:host .progress{position:relative;display:flex;align-items:center}:host .slot-wrapper{display:flex;position:absolute;top:0;align-items:center;width:100%;height:100%;justify-content:center}:host #bar{stroke:var(--wje-progress-bar-color)}:host text{transform:rotate(90deg);transform-origin:center;text-anchor:middle;dominant-baseline:middle;font-size:var(--wje-progress-bar-text-size);fill:var(--wje-progress-bar-text-color)}:host(.wje-color) #bar{stroke:var(--wje-progress-bar-color)}::slotted([slot="start"]){margin-inline:0 1rem}::slotted([slot="end"]){margin-inline:1rem 0}';
+const f = ':host(.wje-color-primary) #bar{--wje-progress-bar-color: var(--wje-color-primary)}:host(.wje-color-complete) #bar{--wje-progress-bar-color: var(--wje-color-complete)}:host(.wje-color-success) #bar{--wje-progress-bar-color: var(--wje-color-success)}:host(.wje-color-warning) #bar{--wje-progress-bar-color: var(--wje-color-warning)}:host(.wje-color-danger) #bar{--wje-progress-bar-color: var(--wje-color-danger)}:host(.wje-color-dark) #bar{--wje-progress-bar-color: var(--wje-color-contrast-0)}:host(.wje-color-light) #bar{--wje-progress-bar-color: var(--wje-color-contrast-11)}:host{--wje-progress-bar-color: var(--wje-color-contrast-6);--wje-progress-bar-text-size: .75rem;--wje-progress-bar-text-color: var(--wje-color);--wje-progress-bar-stroke: var(--wje-color-contrast-3);stroke:var(--wje-progress-bar-stroke)}:host .progress{position:relative;display:flex;align-items:center}:host .slot-wrapper{display:flex;position:absolute;top:0;align-items:center;width:100%;height:100%;justify-content:center}:host #bar{stroke:var(--wje-progress-bar-color)}:host text{transform:rotate(90deg);transform-origin:center;text-anchor:middle;dominant-baseline:middle;font-size:var(--wje-progress-bar-text-size);fill:var(--wje-progress-bar-text-color);stroke:var(--wje-progress-bar-text-color)}:host(.wje-color) #bar{stroke:var(--wje-progress-bar-color)}::slotted([slot="start"]){margin-inline:0 1rem}::slotted([slot="end"]){margin-inline:1rem 0}';
 class w extends k {
   /**
    * Creates an instance of ProgressBar.
@@ -100,10 +100,10 @@ class w extends k {
     a.classList.add("progress");
     let m = document.createElement("slot"), d = document.createElement("div");
     d.classList.add("slot-wrapper");
-    let b = document.createElement("slot");
-    b.setAttribute("name", "start");
     let p = document.createElement("slot");
-    p.setAttribute("name", "end");
+    p.setAttribute("name", "start");
+    let b = document.createElement("slot");
+    b.setAttribute("name", "end");
     let s = document.createElementNS("http://www.w3.org/2000/svg", "svg"), r, t;
     if ((this == null ? void 0 : this.type) === "circle") {
       s.setAttribute("width", this.diameter), s.setAttribute("height", this.diameter), s.setAttribute("viewBox", `0 0 ${this.diameter} ${this.diameter}`), s.setAttribute("style", "transform: rotate(-90deg)"), r = document.createElementNS("http://www.w3.org/2000/svg", "circle"), r.setAttribute("r", this.radius), r.setAttribute("cx", c), r.setAttribute("cy", c), r.setAttribute("fill", "transparent"), t = document.createElementNS("http://www.w3.org/2000/svg", "circle"), t.setAttribute("r", this.radius), t.setAttribute("cx", c), t.setAttribute("cy", c), t.setAttribute("fill", "transparent"), t.setAttribute("stroke-dasharray", "0"), t.setAttribute("stroke-dashoffset", "0");
@@ -111,7 +111,7 @@ class w extends k {
       n.setAttribute("x", "50%"), n.setAttribute("y", "50%"), n.innerHTML = this.progress + "%", s.appendChild(n);
     } else
       s.setAttribute("width", "100%"), s.setAttribute("height", this.stroke), s.setAttribute("preserveAspectRatio", "none"), r = document.createElementNS("http://www.w3.org/2000/svg", "line"), r.setAttribute("x1", 0), r.setAttribute("y1", this.stroke / 2), r.setAttribute("x2", "100%"), r.setAttribute("y2", this.stroke / 2), t = document.createElementNS("http://www.w3.org/2000/svg", "line"), t.setAttribute("x1", 0), t.setAttribute("y1", this.stroke / 2), t.setAttribute("x2", this.progress + "%"), t.setAttribute("y2", this.stroke / 2);
-    return r.setAttribute("stroke", "#e0e0e0"), r.setAttribute("stroke-linecap", this.linecap), r.setAttribute("stroke-width", this.stroke + "px"), t.setAttribute("stroke-linecap", this.linecap), t.setAttribute("stroke-width", this.stroke + "px"), t.setAttribute("id", "bar"), s.appendChild(r), s.appendChild(t), d.appendChild(m), a.appendChild(b), a.appendChild(d), a.appendChild(s), a.appendChild(p), u.appendChild(a), this.background = r, this.bar = t, u;
+    return r.setAttribute("stroke-linecap", this.linecap), r.setAttribute("stroke-width", this.stroke + "px"), t.setAttribute("stroke-linecap", this.linecap), t.setAttribute("stroke-width", this.stroke + "px"), t.setAttribute("id", "bar"), s.appendChild(r), s.appendChild(t), d.appendChild(m), a.appendChild(p), a.appendChild(d), a.appendChild(s), a.appendChild(b), u.appendChild(a), this.background = r, this.bar = t, u;
   }
   /**
    * Adds event listeners after the component is drawn.

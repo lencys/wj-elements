@@ -2,13 +2,13 @@
 title: CSS Variables
 ---
 
-
+<head>
   <title>CSS Variables | Custom CSS properties for variables and components</title>
   <meta
     name="description"
     content="Ionic components are built with CSS Variables for easy custom app properties. They allow a value to be stored in one place, then referenced in multiple places."
   />
-
+</head>
 
 WebJET Elements takes advantage of custom CSS properties, commonly known as <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables" target="_blank">CSS variables</a>, to enhance your styling options. CSS variables allow you to define values in one place and then reuse them throughout your application, making your CSS more efficient and easier to maintain.
 

@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/toolbar/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/toolbar/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/toolbar/slots.md';
 
-
+<head>
   <title>Toolbar | Flexible container designed to display different content in an organized way</title>
   <meta name="description" content="Element Toolbar je flexibilný kontajner určený na zobrazovanie rôzneho obsahu organizovaným spôsobom, ktorý sa zvyčajne používa v hornej časti webových aplikácií alebo stránok. Môže obsahovať tlačidlá, navigáciu, pole vyhľadávania, a iné." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

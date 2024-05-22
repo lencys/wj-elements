@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/masonry/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/masonry/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/masonry/slots.md';
 
-
+<head>
   <title>Masonry | Creates a responsive 'Masonry' layout of child elements</title>
   <meta name="description" content="Komponent Masonry vytvára responzívne 'Masonry' rozvrhnutie podriadených prvkov, ktorý ich dynamicky usporadúva do stĺpcov na základe zadaných atribútov. Podporuje prispôsobenie počtu stĺpcov, maximálnej šírky stĺpcov, medzery medzi prvkami a debouncing na optimalizáciu výkonu." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

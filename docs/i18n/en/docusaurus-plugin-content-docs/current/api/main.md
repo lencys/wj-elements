@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/main/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/main/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/main/slots.md';
 
-
+<head>
   <title>Main | Element for creating layouts</title>
   <meta name="description" content="Main je prvok na tvorbu layoutov a zobrazuje sa vedľa [Aside](./aside) elementu. Používa sa väčšinou na zobrazenie hlavného obsahu." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
@@ -22,7 +22,9 @@ Main is a layout element and is displayed next to the [Aside](../aside) element.
 
 ## Examples of use
 
-For information on using the **Main** element, navigate to the [Layout](../layout) documentation.
+:::note
+For information on using the **Main** element, navigate to the [**Layout**](../layout) documentation.
+:::
 
 ## Attributes and Properties
 

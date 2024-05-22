@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/tooltip/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/tooltip/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/tooltip/slots.md';
 
-
+<head>
   <title>Tooltip | Mouseover popup tooltip</title>
   <meta name="description" content="Element Tooltip slúži na zobrazovanie vyskakovacej nápovedy pri nájazde myšou a je ho možné pripojiť k rôznym elementom webovej stránky. Je ľahko prispôsobiteľný pomocou atribútov pre obsah a umiestnenie." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

@@ -226,6 +226,12 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'QR Code',
+      collapsed: false,
+      items: ['api/qr-generator'],
+    },
+    {
+      type: 'category',
       label: 'Radio',
       collapsed: false,
       items: ['api/radio', 'api/radio-group'],
@@ -235,6 +241,12 @@ module.exports = {
       label: 'RelativeTime',
       collapsed: false,
       items: ['api/relative-time'],
+    },
+    {
+      type: 'category',
+      label: 'Reorder',
+      collapsed: false,
+      items: ['api/reorder', 'api/reorder-item', 'api/reorder-dropzone'],
     },
     {
       type: 'category',

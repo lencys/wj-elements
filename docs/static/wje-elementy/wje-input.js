@@ -194,7 +194,7 @@ class m extends x {
       });
     }), this.addEventListener("invalid", (t) => {
       this.invalid = !0, this.pristine = !1, this.errorMessage.textContent = this.internals.validationMessage, this.customErrorDisplay && t.preventDefault();
-    }), this.addEventListener("focus", () => this.input.focus()), this.clear && this.clear.addEventListener("wje:button-click", (t) => {
+    }), this.addEventListener("focus", () => this.input.focus()), this.clear && this.clear.addEventListener("wje-button:click", (t) => {
       this.input.value = "", w.dispatchCustomEvent(this.clear, "wje-input:clear");
     });
   }

@@ -459,9 +459,24 @@
             "listeners": [],
             "styles": [
                 {
-                    "name": "--wj-chip-border-radius",
+                    "name": "--wje-badge-border-radius",
                     "annotation": "prop",
-                    "docs": "Adjusts the roundness of the badge element"
+                    "docs": "Adjusts the roundness of the element"
+                },
+                {
+                    "name": "--wje-badge-padding-bottom",
+                    "annotation": "prop",
+                    "docs": "Adjusts the lower internal offset of the element"
+                },
+                {
+                    "name": "--wje-badge-padding-inline",
+                    "annotation": "prop",
+                    "docs": "Adjusts the horizontal internal offset of the element"
+                },
+                {
+                    "name": "--wje-badge-padding-top",
+                    "annotation": "prop",
+                    "docs": "Adjusts the upper internal offset of the element"
                 }
             ],
             "slots": [
@@ -1239,7 +1254,92 @@
             "docs": "",
             "docsTags": [],
             "usage": {},
-            "props": [],
+            "props": [
+                {
+                    "name": "pagination",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "value",
+                    "docs": "Specifies whether paging indicators are enabled.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": true
+                },
+                {
+                    "name": "loop",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "value",
+                    "docs": "Determines whether the carousel should repeat infinitely.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": true
+                },
+                {
+                    "name": "navigation",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "value",
+                    "docs": "Specifies whether navigation buttons are enabled.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": true
+                },
+                {
+                    "name": "thumbnails",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "value",
+                    "docs": "Specifies whether thumbnails are allowed for images.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": true
+                }
+            ],
             "methods": [],
             "events": [],
             "listeners": [],
@@ -1421,7 +1521,36 @@
                 }
             ],
             "methods": [],
-            "events": [],
+            "events": [
+                {
+                    "event": "input",
+                    "detail": "void",
+                    "bubbles": true,
+                    "complexType": {
+                        "original": "void",
+                        "resolved": "void",
+                        "references": {}
+                    },
+                    "cancelable": true,
+                    "composed": true,
+                    "docs": "Called when the checkbox is clicked",
+                    "docsTags": []
+                },
+                {
+                    "event": "change",
+                    "detail": "void",
+                    "bubbles": true,
+                    "complexType": {
+                        "original": "void",
+                        "resolved": "void",
+                        "references": {}
+                    },
+                    "cancelable": true,
+                    "composed": true,
+                    "docs": "Called when the value in the checkbox is changed",
+                    "docsTags": []
+                }
+            ],
             "listeners": [],
             "styles": [
                 {
@@ -1557,6 +1686,28 @@
                     "attr": "disabled",
                     "reflectToAttr": false,
                     "docs": "If `true`, the user cannot interact with the element.",
+                    "docsTags": [],
+                    "default": "false",
+                    "values": [
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "removable",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "removable",
+                    "reflectToAttr": false,
+                    "docs": "If `true`, the user can remove the element from the screen.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -1745,7 +1896,17 @@
                     "required": true
                 }
             ],
-            "methods": [],
+            "methods": [
+                {
+                    "name": "BeforeOpen",
+                    "returns": {},
+                    "complexType": {},
+                    "signature": "back() => Promise<void>",
+                    "parameters": [],
+                    "docs": "Test Test",
+                    "docsTags": []
+                }
+            ],
             "events": [],
             "listeners": [],
             "styles": [
@@ -2416,6 +2577,24 @@
                     ],
                     "optional": false,
                     "required": false
+                },
+                {
+                    "name": "icon",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "icon",
+                    "reflectToAttr": false,
+                    "docs": "Enables the icon for file upload.",
+                    "docsTags": [],
+                    "default": true,
+                    "values": [],
+                    "optional": false,
+                    "required": false
                 }
             ],
             "methods": [],
@@ -2440,12 +2619,125 @@
             "docs": "",
             "docsTags": [],
             "usage": {},
-            "props": [],
+            "props": [
+                {
+                    "name": "name",
+                    "type": "string | undefined",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "attr": "name",
+                    "reflectToAttr": false,
+                    "docs": "Sets the name for the file upload item.",
+                    "docsTags": [],
+                    "default": "undefined",
+                    "values": [
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "size",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "size",
+                    "reflectToAttr": false,
+                    "docs": "Sets the maximum file size allowed for uploading in bytes.",
+                    "docsTags": [],
+                    "default": "1 MB",
+                    "values": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "uploaded by",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "uploaded by",
+                    "reflectToAttr": false,
+                    "docs": "Sets the size of the uploaded bytes of the file.",
+                    "docsTags": [],
+                    "values": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "progress",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "progress",
+                    "reflectToAttr": false,
+                    "docs": "Sets the file upload progress percentage.",
+                    "docsTags": [],
+                    "values": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "window",
+                    "type": "string",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "window",
+                    "reflectToAttr": false,
+                    "docs": "Language used.",
+                    "docsTags": [],
+                    "default": "See",
+                    "values": [
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "required": false
+                }
+            ],
             "methods": [],
             "events": [],
             "listeners": [],
             "styles": [],
-            "slots": [],
+            "slots": [
+                {
+                    "name": "img",
+                    "docs": "Slot for placing a picture/icon."
+                }
+            ],
             "parts": [],
             "dependents": [],
             "dependencies": [],
@@ -2546,6 +2838,21 @@
                     ],
                     "optional": false,
                     "required": false
+                },
+                {
+                    "name": "value",
+                    "type": "number",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string | undefined"
+                    },
+                    "attr": "value",
+                    "reflectToAttr": false,
+                    "docs": "Sets the value of the element.",
+                    "docsTags": [],
+                    "default": "",
+                    "optional": false,
+                    "required": false
                 }
             ],
             "methods": [],
@@ -2633,7 +2940,7 @@
                         "references": {}
                     },
                     "mutable": true,
-                    "attr": "unit-display",
+                    "attr": "placement",
                     "reflectToAttr": false,
                     "docs": "It is used to specify the target element into which the loaded data is to be inserted during the infinite scroll process. Specifies where the newly loaded content is added within the DOM.",
                     "docsTags": [],
@@ -2655,7 +2962,7 @@
                         "references": {}
                     },
                     "mutable": true,
-                    "attr": "unit-display",
+                    "attr": "size",
                     "reflectToAttr": false,
                     "docs": "Defines the number of items on each load.",
                     "docsTags": [],
@@ -2677,7 +2984,7 @@
                         "references": {}
                     },
                     "mutable": true,
-                    "attr": "unit-display",
+                    "attr": "url",
                     "reflectToAttr": false,
                     "docs": "Defines the url of the endpoint of the data to be retrieved.",
                     "docsTags": [],
@@ -2847,6 +3154,21 @@
                             "type": "undefined"
                         }
                     ],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "filled",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean"
+                    },
+                    "attr": "filled",
+                    "reflectToAttr": false,
+                    "docs": "Sets whether the icon should be filled with color.",
+                    "docsTags": [],
+                    "default": "true",
                     "optional": false,
                     "required": false
                 }
@@ -3623,7 +3945,37 @@
                 }
             ],
             "usage": {},
-            "props": [],
+            "props": [
+                {
+                    "name": "lines",
+                    "type": "\"inset\" | \"full\" | \"none\"",
+                    "complexType": {
+                        "original": "Lines",
+                        "resolved": "\"inset\" | \"full\" | \"none\""
+                    },
+                    "mutable": false,
+                    "attr": "color",
+                    "reflectToAttr": true,
+                    "docs": "Selection of the type of separator lines at input.",
+                    "docsTags": [],
+                    "values": [
+                        {
+                            "value": "inset",
+                            "type": "string"
+                        },
+                        {
+                            "value": "full",
+                            "type": "string"
+                        },
+                        {
+                            "value": "none",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": true,
+                    "required": false
+                }
+            ],
             "methods": [],
             "events": [],
             "listeners": [],
@@ -4554,7 +4906,20 @@
                     "docs": "Z-index of the element"
                 }
             ],
-            "slots": [],
+            "slots": [
+                {
+                    "name": "submenu",
+                    "docs": "Allows you to insert a Menu item as an item to create a submenu."
+                },
+                {
+                    "name": "start",
+                    "docs": "Inserts the element at the beginning."
+                },
+                {
+                    "name": "end",
+                    "docs": "Inserts the element at the end."
+                }
+            ],
             "parts": [
                 {
                     "name": "native",
@@ -4787,6 +5152,207 @@
             "dependencyGraph": {}
         },
         {
+            "filePath": "src/components/wje-qr-code/wje-qr-code.tsx",
+            "encapsulation": "shadow",
+            "tag": "qr-code",
+            "docs": "",
+            "docsTags": [
+                {
+                    "name": "slot",
+                    "docs": "start - The content is placed at the top."
+                },
+                {
+                    "name": "slot",
+                    "docs": "start - The content is placed at the bottom."
+                }
+            ],
+            "usage": {},
+            "props": [
+                {
+                    "name": "value",
+                    "type": "string",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "value",
+                    "docs": "Value encoded in the QR code",
+                    "values": [
+                        {
+                            "type": "string | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "size",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "size",
+                    "docs": "QR code size (in pixels)",
+                    "values": [
+                        {
+                            "type": "number | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "padding",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "padding",
+                    "docs": "Filling for QR code (pixels)",
+                    "values": [
+                        {
+                            "type": "number | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "foreground",
+                    "type": "string",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "foreground",
+                    "docs": "QR code foreground colour",
+                    "values": [
+                        {
+                            "type": "string | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "foregroundAlpha",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "foreground-alpha",
+                    "docs": "Foreground alpha code QR",
+                    "values": [
+                        {
+                            "type": "string | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "background",
+                    "type": "string",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "background",
+                    "docs": "QR code background colour",
+                    "values": [
+                        {
+                            "type": "string | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "backgroundAlpha",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "background-alpha",
+                    "docs": "QR alpha code background",
+                    "values": [
+                        {
+                            "type": "number | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "level",
+                    "type": "string",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "level",
+                    "docs": "QR code error correction level (L, M, Q, H)",
+                    "values": [
+                        {
+                            "type": "string | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false
+                }
+            ],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [
+                {
+                    "name": "",
+                    "docs": "The contents are placed between the named slots."
+                },
+                {
+                    "name": "top",
+                    "docs": "The contents are placed on top."
+                },
+                {
+                    "name": "bottom",
+                    "docs": "The contents are placed down."
+                }
+            ],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
             "filePath": "src/components/radio/radio.tsx",
             "encapsulation": "shadow",
             "tag": "radio",
@@ -4993,7 +5559,7 @@
                 {
                     "name": "--wj-radio-margin-top",
                     "annotation": "prop",
-                    "docs": "Top offset of the radio element."
+                    "docs": "Upper offset of the radio element."
                 }
             ],
             "slots": [],
@@ -5084,7 +5650,7 @@
                     "mutable": false,
                     "attr": "date",
                     "reflectToAttr": false,
-                    "docs": "Specifies the date or timestamp in ISO format or Unix timestamp format (in seconds). If no date attribute is specified, the component defaults to the current date and time.",
+                    "docs": "Specifies a date or timestamp in ISO format or Unix timestamp format (in seconds). If no date attribute is specified, the component defaults to the current date and time.",
                     "docsTags": [],
                     "default": "Current date and time",
                     "values": [
@@ -5096,6 +5662,108 @@
                     "required": false
                 }
             ],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
+            "filePath": "src/components/wje-qr-code/wje-reorder.tsx",
+            "encapsulation": "shadow",
+            "tag": "reorder",
+            "docs": "",
+            "docsTags": [],
+            "usage": {},
+            "props": [
+                {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "disabled",
+                    "docs": "If `true`, elements cannot be arranged using drag and drop functionality.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": false
+                },
+                {
+                    "name": "reverse",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "reverse",
+                    "docs": "If `true`, the elements will be arranged in reverse order.",
+                    "values": [
+                        {
+                            "type": "boolean | undefined"
+                        }
+                    ],
+                    "reflectToAttr": true,
+                    "optional": false,
+                    "required": false,
+                    "default": false
+                }
+            ],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
+            "filePath": "src/components/wje-qr-code/wje-reorder-item.tsx",
+            "encapsulation": "shadow",
+            "tag": "reorder-item",
+            "docs": "",
+            "docsTags": [],
+            "usage": {},
+            "props": [],
+            "methods": [],
+            "events": [],
+            "listeners": [],
+            "styles": [],
+            "slots": [
+                {
+                    "name": "handle",
+                    "docs": "The content is placed at the beginning of the element."
+                }
+            ],
+            "parts": [],
+            "dependents": [],
+            "dependencies": [],
+            "dependencyGraph": {}
+        },
+        {
+            "filePath": "src/components/wje-qr-code/wje-reorder-dropzone.tsx",
+            "encapsulation": "shadow",
+            "tag": "reorder-dropzone",
+            "docs": "",
+            "docsTags": [],
+            "usage": {},
+            "props": [],
             "methods": [],
             "events": [],
             "listeners": [],
@@ -5466,7 +6134,116 @@
                 }
             ],
             "usage": {},
-            "props": [],
+            "props": [
+                {
+                    "name": "clearable",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "clearable",
+                    "reflectToAttr": false,
+                    "docs": "Adds the ability to clear the selected option.",
+                    "docsTags": [],
+                    "default": false,
+                    "values": [],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "disabled",
+                    "reflectToAttr": false,
+                    "docs": "Select is disabled.",
+                    "docsTags": [],
+                    "default": false,
+                    "values": [],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "label",
+                    "type": "string",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "label",
+                    "reflectToAttr": false,
+                    "docs": "Defines the descriptive text of the selection.",
+                    "docsTags": [],
+                    "default": "undefined",
+                    "values": [],
+                    "optional": false,
+                    "required": true
+                },
+                {
+                    "name": "max-options",
+                    "type": "number",
+                    "complexType": {
+                        "original": "number",
+                        "resolved": "number",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "max-options",
+                    "reflectToAttr": false,
+                    "docs": "Defines the maximum number of items in the selection.",
+                    "docsTags": [],
+                    "default": "undefined",
+                    "values": [],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "multiple",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "multiple",
+                    "reflectToAttr": false,
+                    "docs": "It will allow you to select multiple options.",
+                    "docsTags": [],
+                    "default": false,
+                    "values": [],
+                    "optional": false,
+                    "required": false
+                },
+                {
+                    "name": "placeholder",
+                    "type": "string",
+                    "complexType": {
+                        "original": "string",
+                        "resolved": "string",
+                        "references": {}
+                    },
+                    "mutable": true,
+                    "attr": "placeholder",
+                    "reflectToAttr": false,
+                    "docs": "Text displayed on select element.",
+                    "docsTags": [],
+                    "default": "undefined",
+                    "values": [],
+                    "optional": false,
+                    "required": false
+                }
+            ],
             "events": [],
             "listeners": [],
             "styles": [
@@ -5718,6 +6495,78 @@
             "docsTags": [],
             "usage": {},
             "props": [
+                {
+                    "name": "bubble",
+                    "type": "boolean | undefined",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean | undefined",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "boolean",
+                    "reflectToAttr": false,
+                    "docs": "Displays a bubble with the value of the slider.",
+                    "docsTags": [],
+                    "values": [],
+                    "optional": true,
+                    "required": false,
+                    "default": false
+                },
+                {
+                    "name": "color",
+                    "type": "\"danger.\" | \"neutral\" | \"primary\" | \"success\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                    "complexType": {
+                        "original": "Color",
+                        "resolved": "\"danger.\" | \"neutral\" | \"primary\" | \"success\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+                        "references": {
+                            "Color": {
+                                "location": "import",
+                                "path": "../../interface",
+                                "id": "src/interface.d.ts::Color"
+                            }
+                        }
+                    },
+                    "mutable": false,
+                    "attr": "color",
+                    "reflectToAttr": true,
+                    "docs": "The color to use from your application's color palette. The default options are `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"warning\"` and `\"neutral\"`.\nFor more information, go to: [theming](/theming/basics).",
+                    "docsTags": [],
+                    "values": [
+                        {
+                            "value": "danger",
+                            "type": "string"
+                        },
+                        {
+                            "value": "neutral",
+                            "type": "string"
+                        },
+                        {
+                            "value": "primary",
+                            "type": "string"
+                        },
+                        {
+                            "value": "complete",
+                            "type": "string"
+                        },
+                        {
+                            "value": "success",
+                            "type": "string"
+                        },
+                        {
+                            "value": "warning",
+                            "type": "string"
+                        },
+                        {
+                            "type": "String & Record<never, never>"
+                        },
+                        {
+                            "type": "undefined"
+                        }
+                    ],
+                    "optional": true,
+                    "required": false
+                },
                 {
                     "name": "max",
                     "type": "number | undefined",
@@ -6039,6 +6888,28 @@
                         }
                     ],
                     "optional": true,
+                    "required": false
+                },
+                {
+                    "name": "vertical",
+                    "type": "boolean",
+                    "complexType": {
+                        "original": "boolean",
+                        "resolved": "boolean",
+                        "references": {}
+                    },
+                    "mutable": false,
+                    "attr": "vertical",
+                    "reflectToAttr": false,
+                    "docs": "If `true`, the orientation of the separator changes to vertical.",
+                    "docsTags": [],
+                    "default": "false",
+                    "values": [
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "optional": false,
                     "required": false
                 }
             ],
@@ -6547,7 +7418,7 @@
                     "mutable": false,
                     "attr": "spellcheck",
                     "reflectToAttr": false,
-                    "docs": "If `true`, spell checking will be activated in textarea.",
+                    "docs": "If `true`, the spell checker will be activated in textarea.",
                     "docsTags": [],
                     "default": "false",
                     "values": [
@@ -8089,7 +8960,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Invoked when the state of the element changes.",
+                    "docs": "Called when the element state changes.",
                     "docsTags": []
                 }
             ],
@@ -8149,7 +9020,7 @@
             "slots": [
                 {
                     "name": "",
-                    "docs": "Default location of the element content."
+                    "docs": "The default location of the element content."
                 }
             ],
             "parts": [
@@ -8307,7 +9178,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Invoked when the state of the element changes.",
+                    "docs": "Called when the element state changes.",
                     "docsTags": []
                 }
             ],

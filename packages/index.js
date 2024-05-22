@@ -65,6 +65,7 @@ import { default as Option } from "./wje-option/option.js";
 import { default as Options } from "./wje-options/options.js";
 import { default as Popup } from "./wje-popup/popup.js";
 import { default as ProgressBar } from "./wje-progress-bar/progress-bar.js";
+import { default as QrCode } from "./wje-qr-code/qr-code.js"; 
 import { default as Radio } from "./wje-radio/radio.js";
 import { default as RadioGroup } from "./wje-radio-group/radio-group.js";
 import { default as Rate } from "./wje-rate/rate.js";
@@ -147,6 +148,7 @@ export { WJElement, defaultStoreActions, store, event, bindRouterLinks, withRout
   Options,
   Popup,
   ProgressBar,
+  QrCode,
   Radio,
   RadioGroup,
   Rate,

@@ -9,14 +9,20 @@ import Parts from '@ionic-internal/component-api/v1/card-controls/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/card-controls/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/card-controls/slots.md';
 
-
+<head>
   <title>Card Controls</title>
   <meta name="description" content="Tento element slúži na použitie v Card Header pre zobrazenie tlačidiel na vykonanie rôznych akcií súvisiacich s kartou." />
+</head>
 
+import EncapsulationPill from '@components/page/api/EncapsulationPill';
+
+<EncapsulationPill type="shadow" />
 
 This element is for use in [Card Header.](../card-header) to display buttons to perform various card-related actions.
 
-For more information on using Card Controls, navigate to the [Card Header.](../card-header) element documentation.
+:::note Note
+For more information on using Card Controls, navigate to the [**Card Header**](../card-header) element documentation.
+:::
 
 ## Attributes and Properties
 

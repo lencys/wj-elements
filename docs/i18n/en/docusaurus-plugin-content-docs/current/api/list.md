@@ -9,12 +9,14 @@ import Parts from '@ionic-internal/component-api/v1/list/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/list/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/list/slots.md';
 
-
+<head>
   <title>List | List of items display component</title>
   <meta name="description" content="Komponent List (Zoznam) sa skladá z viacerých elementov [Item](item) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Listy vo všeobecnosti obsahujú položky s rovnakým obsahom a zoskupujú ich do väčšieho celku." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
+
+<EncapsulationPill type="shadow" />
 
 The **List** (List) component consists of multiple [Item](../item) elements and can contain text, buttons, toggles, icons, image thumbnails, and much more. Sheets generally contain items with the same content and group them into a larger whole.
 

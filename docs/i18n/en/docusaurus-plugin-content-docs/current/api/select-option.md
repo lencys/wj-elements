@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/select-option/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/select-option/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/select-option/slots.md';
 
-
+<head>
   <title>Option | individual options within the Select component</title>
   <meta name="description" content="Element Option predstavuje jednotlivé voliteľné možnosti v rámci komponentu Select. Je obdobný štandardnému elementu HTML select a umožňuje používateľom vykonať jeden alebo viacero výberov na základe konfigurácie komponentu Select." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

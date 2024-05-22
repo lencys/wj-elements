@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/header/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/header/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/header/slots.md';
 
-
+<head>
   <title>Header | Element for creating layouts</title>
   <meta name="description" content="Header je súčasťou elementov určených na tvorbu layoutov a zobrazuje sa v hornej časti. Používa sa väčšinou na zobrazenie navigácie, loga a pod." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
@@ -22,7 +22,9 @@ The header is part of the layout elements and is displayed at the top. It is mos
 
 ## Examples of use
 
-For information on using the **Header** element, navigate to the [Layout](../layout) documentation.
+:::note
+For information on using the **Header** element, navigate to the [**Layout**](../layout) documentation.
+:::
 
 ## Attributes and Properties
 

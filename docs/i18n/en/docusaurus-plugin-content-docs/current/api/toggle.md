@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/toggle/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/toggle/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/toggle/slots.md';
 
-
+<head>
   <title>Toggle | Element allowing to switch between two states</title>
   <meta name="description" content="Toggle elementy sú malé interaktívne ovládacie prvky, ktoré umožňujú prepínať medzi dvoma stavmi. Môžete ich aktivovať kliknutím myši." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

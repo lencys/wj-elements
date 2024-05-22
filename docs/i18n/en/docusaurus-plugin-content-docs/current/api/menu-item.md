@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/menu-item/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/menu-item/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/menu-item/slots.md';
 
-
+<head>
   <title>MenuItem | Element to display items in the Menu item</title>
   <meta name="description" content="MenuItem element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
@@ -22,7 +22,9 @@ MenuItem is a child of the [Menu.](../menu) element and represents a navigation 
 
 ## Basic use
 
-For examples of using MenuItem, go to the documentation page for the [Menu.](../menu) element.
+:::note
+For examples of using MenuItem, go to the [**Menu**](../menu) element documentation page.
+:::
 
 ## Attributes and Properties
 

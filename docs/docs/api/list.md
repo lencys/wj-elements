@@ -15,6 +15,7 @@ import Slots from '@ionic-internal/component-api/v1/list/slots.md';
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
+<EncapsulationPill type="shadow" />
 
 Komponent **List** (Zoznam) sa skladá z viacerých elementov [Item](../item) (položiek) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Listy vo všeobecnosti obsahujú položky s rovnakým obsahom a zoskupujú ich do väčšieho celku.
 

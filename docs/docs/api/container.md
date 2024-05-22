@@ -17,7 +17,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Container je kľúčový prvok Layoutu, ktorý sa používa na obalenie obsahu stránky. Je navrhnutý tak, aby poskytoval konzistentné rozstupy, odsadenia a zarovnania elementov, ktoré sa v ňom nachádzajú, a zabezpečoval tak správne zobrazenie a tiež prispôsobenie sa rôznym zariadeniam a veľkostiam obrazovky. Pre informácie o použití **Container** elementu sa presuňte do dokumentácie [Layoutu](../layout).
+Container je kľúčový prvok Layoutu, ktorý sa používa na obalenie obsahu stránky. Je navrhnutý tak, aby poskytoval konzistentné rozstupy, odsadenia a zarovnania elementov, ktoré sa v ňom nachádzajú, a zabezpečoval tak správne zobrazenie a tiež prispôsobenie sa rôznym zariadeniam a veľkostiam obrazovky. 
+
+:::note
+Pre informácie o použití **Container** elementu sa presuňte do dokumentácie [**Layoutu**](../layout).
+:::
 
 ## Atribúty a Vlastnosti
 

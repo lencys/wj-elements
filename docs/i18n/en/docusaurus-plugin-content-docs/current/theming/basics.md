@@ -5,13 +5,13 @@ sidebar_label: The Basics
 
 [//]: # "import ColorPalette from '@components/page/theming/ColorPalette';"
 
-
+<head>
   <title>Customization basics | Basic definitions of colour and template adjustments</title>
   <meta
     name="description"
     content="Elements Framework ponúka rozsiahle možnosti prispôsobenia štýlov predovšetkým prostredníctvom premenných CSS. Vďaka tomu môžete ľahko zmeniť vzhľad aplikácie podľa vašich potrieb."
   />
-
+</head>
 
 Elements Framework offers extensive options for customizing styles, primarily through CSS variables. This makes it easy to change the look and feel of the app to suit your needs. Elements components use CSS variables for most styles, making it easy to edit their default values. You can override these variables in your global stylesheet. In addition, it supports SASS, allowing for more advanced styling and theming options. Using the SASS variables and mixins provided by Elements, you can create custom templates, modify layouts, and define custom color schemes.
 

@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/dialog/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/dialog/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/dialog/slots.md';
 
-
+<head>
   <title>Dialog | Dialog with customizable content</title>
   <meta name="description" content="Element Dialog zobrazuje dialógové okno s prispôsobiteľným obsahom. Je možné ho využiť napríklad na jednoduché zobrazenie informácie používateľovi alebo tiež vyžiadať jeho potvrdenie alebo zrušenie ním vykonanej akcie." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

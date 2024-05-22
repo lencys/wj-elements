@@ -9,10 +9,10 @@ import Parts from '@ionic-internal/component-api/v1/button-group/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/button-group/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/button-group/slots.md';
 
-
+<head>
   <title>ButtonGroup: element for grouping buttons</title>
   <meta name="description" content="ButtonGroup slúži na zoskupovanie elementov Button, ktoré budú po vložení do vnútra elementu automaticky naštýlované a usporiadané." />
-
+</head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 

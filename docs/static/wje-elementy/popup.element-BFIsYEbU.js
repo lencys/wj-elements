@@ -1069,7 +1069,7 @@ class we extends Pt {
    * Cleans up the auto update for repositioning.
    */
   hide() {
-    U.dispatchCustomEvent(this, "wje-popup:hide"), this.native.classList.remove("popup-active"), this.cleanup, this.cleanup = void 0;
+    U.dispatchCustomEvent(this, "wje-popup:hide"), this.native.classList.remove("popup-active"), this.removeAttribute("active"), this.cleanup, this.cleanup = void 0;
   }
   /**
    * Removes the active attribute when the popup is hidden.
