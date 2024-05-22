@@ -6,7 +6,7 @@ template.innerHTML = `
   <h1>Tooltip</h1>
   <div class="container">
 
-    <!--  BASIC-->
+    <!-- BASIC -->
 
     <h2>Basic</h2>
     <div class="playground">
@@ -25,6 +25,19 @@ template.innerHTML = `
         
         <wje-tooltip content="Som najkrajsi tooltip vpravo" placement="right" offset="0">
           <wje-button size="large">Right - Offset 0</wje-button>
+        </wje-tooltip>
+      </div>
+    </div>
+    
+    <!-- SLOTS -->
+
+    <h2>Slots</h2>
+    <div class="playground">
+      <div class="content" style="display: flex; gap: 1rem;">
+        <wje-tooltip content="Cloud" offset="0">
+          <wje-icon name="cloud" slot="start"></wje-icon>
+          <span slot="end">Ctrl + D</span>
+          <wje-button size="large">Cloud</wje-button>
         </wje-tooltip>
       </div>
     </div>

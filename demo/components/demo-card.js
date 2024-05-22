@@ -171,10 +171,8 @@ template.innerHTML = `<h1>Card</h1>
     <div class="playground">
       <div class="content d-flex col-4">
         <style>
-          .container wje-card {
-            --wje-card-margin-top: 1rem;
-            --wje-card-margin-bottom: 1rem;
-            --wje-card-margin-inline: 1rem;
+          .content {
+            gap: 1rem;
           }
         </style>
         <wje-card color="primary">
@@ -251,15 +249,12 @@ template.innerHTML = `<h1>Card</h1>
         </wje-card>
         <style>
           #custom {
-            --wje-card-margin-top: 1rem;
-            --wje-card-margin-bottom: 1rem;
-            --wje-card-margin-inline: 1rem;
-            --wje-color-contrast: #f0f;
-            --wje-card-border-color: #000;
-            --wje-border-size: 2px;
-            --background-color: #000!important;
-            --wje-font-size: .8rem;
-            --wje-border-radius: 0;
+            color: #f0f;
+            border-color: #000;
+            border-width: 2px;
+            background-color: #000!important;
+            font-size: .8rem;
+            border-radius: 0;
           }
         </style>
       </div>

@@ -6,9 +6,9 @@ import path from 'path';
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
     base: '/',
-    server: {
-        hmr: true
-    },
+    // server: {
+    //     hmr: false
+    // },
     css: {
         preprocessorOptions: {
             scss: {
@@ -105,6 +105,9 @@ export default defineConfig({
                 "radio-group": "./packages/wje-radio-group/radio-group.js",
                 "rate": "./packages/wje-rate/rate.js",
                 "relative-time": "./packages/wje-relative-time/relative-time.js",
+                "reorder":  "./packages/wje-reorder/reorder.js",
+                "reorder-dropzone":  "./packages/wje-reorder-dropzone/reorder-dropzone.js",
+                "reorder-item":  "./packages/wje-reorder-item/reorder-item.js",
                 "route": "./packages/wje-route/route.js",
                 "routerx": "./packages/wje-router/router.js",
                 "router-link": "./packages/wje-router-link/router-link.js",

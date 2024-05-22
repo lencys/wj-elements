@@ -1,5 +1,5 @@
 :host {
-  --reorder-background-color: var(--wje-color-contrast-lowest);
+  /*--reorder-background-color: var(--wje-color-contrast-0);*/
   --reorder-item-spacing: .5rem;
 }
 

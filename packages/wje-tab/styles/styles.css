@@ -3,16 +3,6 @@
 */
 
 :host {
-  --wje-font-size: 10px;
-  --wje-tab-text-transfrom: uppercase;
-  --wje-tab-font-weight: 500;
-  --wje-tab-letter-spacing: 0.06em;
-  --wje-tab-padding-inline: 1rem;
-  --wje-tab-padding-top: .75rem;
-  --wje-tab-padding-bottom: .75rem;
-  --wje-tab-color-active: var(--wje-color-primary-11);
-  --wje-tab-color-hover: var(--wje-color-primary-1);
-
   display: block;
   position: relative;
   a {
@@ -20,7 +10,7 @@
     align-items: center;
     white-space: nowrap;
     font-family: var(--wje-font-family-secondary);
-    font-size: var(--wje-font-size);
+    font-size: var(--wje-font-size-small);
     letter-spacing: var(--wje-tab-letter-spacing);
     text-transform: var(--wje-tab-text-transfrom);
     font-weight: var(--wje-tab-font-weight);

@@ -69,6 +69,26 @@ template.innerHTML = `<style>
         </wje-list>
       </div>
     </div>
+    
+    <!--  BACUSTOMSIC-->
+
+    <h2>Custom</h2>
+    <div class="playground">
+      <div class="content">
+       <wje-badge slot="start" id="custom-badge">1</wje-badge>
+       <style>
+         #custom-badge {
+            --wje-badge-padding-block-start: 8px !important;
+            --wje-badge-padding-block-end: 8px !important;
+            &::part(native) {
+              background: red;
+              color: white;
+              border: 1px dashed blue;
+            }
+         }
+       </style>
+      </div>
+    </div>
   </div>`;
 
 export default class DemoBadge extends WJElement {

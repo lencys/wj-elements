@@ -3,12 +3,6 @@
 */
 
 :host {
-  --wje-thumbnail-width: 48px;
-  --wje-thumbnail-height: 48px;
-  --wje-thumbnail-border-radius: var(--wje-border-radius-medium);
-}
-
-:host {
   width: var(--wje-thumbnail-width);
   height: var(--wje-thumbnail-height);
   display: block;

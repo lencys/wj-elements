@@ -5,7 +5,7 @@ export class LocalizerDefault {
     this.element = element;
     this.languages = translations;
 
-    this.lang = this.element.lang || document.documentElement.lang || 'en';
+    this.lang = this.element.lang || document.documentElement.lang || 'sk';
     this.dir = this.element.dir || document.documentElement.dir || 'ltr';
 
     this.setLanguage();

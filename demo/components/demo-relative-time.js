@@ -14,7 +14,7 @@ template.innerHTML = `<h1>Relative time</h1>
         <wje-relative-time></wje-relative-time><br/>
         
         <b>Timestamp</b>
-        <wje-relative-time date="1704067200" lang="cz"></wje-relative-time><br/>
+        <wje-relative-time date="1704067200"></wje-relative-time><br/>
         
         <b>ISO Date</b>
         <wje-relative-time date="2024-01-01T00:00:00+00:00"></wje-relative-time><br/>

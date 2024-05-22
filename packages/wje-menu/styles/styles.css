@@ -3,19 +3,22 @@
 */
 
 :host {
-  --wje-menu-background: var(--wje-background);
-  --wje-menu-border-width: 1px;
-  --wje-menu-border-style: solid;
-  --wje-menu-border-color: var(--wje-border-color);
-  --wje-menu-border-radius: var(--wje-border-radius-small);
-  --wje-menu-padding-top: .5rem;
-  --wje-menu-padding-bottom: .5rem;
-  --wje-menu-padding-inline: 0;
-  --wje-menu-margin-top: ;
-  --wje-menu-margin-bottom: 0;
-  --wje-menu-margin-inline: 0;
-  --wje-menu-collapse-width: 65px;
+  /*--wje-menu-background: var(--wje-background);*/
+  /*--wje-menu-border-width: 1px;*/
+  /*--wje-menu-border-style: solid;*/
+  /*--wje-menu-border-color: var(--wje-border-color);*/
+  /*--wje-menu-border-radius: var(--wje-border-radius-small);*/
+  /*--wje-menu-padding-top: .5rem;*/
+  /*--wje-menu-padding-bottom: .5rem;*/
+  /*--wje-menu-padding-inline: 0;*/
+  /*--wje-menu-margin-top: 0;*/
+  /*--wje-menu-margin-bottom: 0;*/
+  /*--wje-menu-margin-inline: 0;*/
+  /*--wje-menu-collapse-width: 65px;*/
+  /*--wje-menu-z-index: 8;*/
+}
 
+:host {
   display: none;
   background: var(--wje-menu-background);
   position: relative;

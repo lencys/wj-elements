@@ -3,9 +3,6 @@
 */
 
 :host {
-  --wje-infinite-scroll-width: 100%;
-  --wje-infinite-scroll-height: 300px;
-  --wje-infinite-scroll-loading-bg: rgba(0, 0, 0, 0);
   overflow-x: auto;
   width: var(--wje-infinite-scroll-width);
   height: var(--wje-infinite-scroll-height);

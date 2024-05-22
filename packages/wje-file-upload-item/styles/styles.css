@@ -16,7 +16,9 @@
     "image size actions"
     "progress progress progress";
     padding: .5rem;
-    border: 1px solid var(--wje-border-color);
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--wje-border-color);
     border-radius: var(--wje-border-radius-medium);
 }
 

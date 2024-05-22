@@ -3,9 +3,6 @@
 */
 
 :host {
-  --wje-option-padding-top: .5rem;
-  --wje-option-padding-bottom: .5rem;
-  --wje-option-highlighted: var(--wje-color-contrast-3);
   display: block;
   wje-icon {
     visibility: hidden;

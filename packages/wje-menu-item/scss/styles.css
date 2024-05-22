@@ -3,31 +3,12 @@
 */
 
 :host {
-
-  --wje-menu-item-color: var(--wje-color);
-  --wje-menu-item-background: transparent;
-
-  --wje-menu-item-color-hover: var(--wje-color-contrast-8);
-  --wje-menu-item-background-hover: var(--wje-border-color);
-
-  --wje-menu-item-color-focus: var(--wje-color-contrast-8);
-  --wje-menu-item-background-focus: var(--wje-border-color);
-
-  --wje-menu-item-color-active: var(--wje-color-contrast-8);
-  --wje-menu-item-background-active: var(--wje-border-color);
-
-  --wje-menu-item-padding-top: .5rem;
-  --wje-menu-item-padding-bottom: .5rem;
-  --wje-menu-item-line-height: 1.8rem;
   --wje-menu-item-safe-triangle-cursor-x: 0;
   --wje-menu-item-safe-triangle-cursor-y: 0;
   --wje-menu-item-safe-triangle-submenu-start-x: 0;
   --wje-menu-item-safe-triangle-submenu-start-y: 0;
   --wje-menu-item-safe-triangle-submenu-end-x: 0;
   --wje-menu-item-safe-triangle-submenu-end-y: 0;
-
-  --wje-menu-submenu-offset: 0;
-  --wje-menu-item-icon-visibility: hidden;
 
   display: block;
   .native-menu-item {
@@ -147,7 +128,7 @@
 
 .submenu-icon.collapse {
   flex: none;
-  right: 10px;
+  /*right: 10px;*/
   position: relative;
 }
 

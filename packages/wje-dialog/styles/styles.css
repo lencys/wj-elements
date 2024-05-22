@@ -3,20 +3,6 @@
 */
 
 :host {
-  --wje-dialog-width: 600px;
-  --wje-dialog-height: 600px;
-  --wje-dialog-border-radius: var(--wje-border-radius-large);
-  --wje-dialog-border-width: var(--wje-border-width);
-  --wje-dialog-border-style: var(--wje-border-style);
-  --wje-dialog-border-color: var(--wje-border-color);
-  --wje-dialog-margin-top: auto;
-  --wje-dialog-margin-start: auto;
-  --wje-dialog-margin-end: auto;
-  --wje-dialog-margin-bottom: auto;
-  --wje-dialog-padding: 1rem;
-  --wje-dialog-padding-inline: 1rem;
-  --wje-dialog-padding-top: 1rem;
-  --wje-dialog-padding-bottom: 1rem;
   .close {
     margin-left: auto;
   }

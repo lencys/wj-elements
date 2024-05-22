@@ -1,10 +1,14 @@
-import WJElement from "../wje-element/element.js";
+import { default as WJElement } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 export default class Reorder extends WJElement {
+  /**
+   * Creates an instance of Select.
+   *
+   * @constructor
+   */
   constructor() {
     super();
-    this.className = "Reorder";
     this.dragEl = null;
     this.items = [];
     this.originalIndex = null;
@@ -14,10 +18,31 @@ export default class Reorder extends WJElement {
     this.cloneEl = null; 
   }
 
+  className = "Select";
+
+  /**
+   * Returns the CSS styles for the component.
+   *
+   * @static
+   * @returns {CSSStyleSheet}
+   */
   static get cssStyleSheet() {
     return styles;
   }
 
+  /**
+   * Returns the list of attributes to observe for changes.
+   *
+   * @static
+   * @returns {Array<string>}
+   */
+  static get observedAttributes() {
+    return [];
+  }
+
+  /**
+   * Sets up the attributes for the component.
+   */
   setupAttributes() {
     this.isShadowRoot = "open";
   }

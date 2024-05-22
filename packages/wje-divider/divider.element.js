@@ -11,9 +11,9 @@ import styles from "./styles/styles.css?inline";
  *
  * @slot - This is a default/unnamed slot.
  *
- * @cssproperty [--wje-border-size=1px] - The size of the border.
+ * @cssproperty [--wje-border-width=1px] - The size of the border.
  * @cssproperty [--wje-divider-border-color=var(--wje-border-color)] - The color of the divider border.
- * @cssproperty [--wje-divider-border-width=var(--wje-border-size, 1px)] - The width of the divider border.
+ * @cssproperty [--wje-divider-border-width=var(--wje-border-width, 1px)] - The width of the divider border.
  * @cssproperty [--wje-divider-spacing=0] - The spacing for the divider.
  *
  * @tag wje-divider

@@ -3,8 +3,6 @@
 */
 
 :host {
-  --wje-menu-label-font-size: .75rem;
-  --wje-menu-label-weight: 600;
   --wje-letter-spacing: .025rem;
   --wje-menu-label-color: var(--wje-color-contrast-6);
   --wje-padding-top: 0;

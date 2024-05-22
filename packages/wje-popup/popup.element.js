@@ -48,6 +48,7 @@ export default class Popup extends WJElement {
      * @returns {boolean} The value of the manual property.
      */
     get manual() {
+        console.log("MANUAL", this.hasAttribute("manual"), this._manual);
         if(this.hasAttribute("manual"))
             this._manual = true;
 
@@ -152,7 +153,7 @@ export default class Popup extends WJElement {
             this.anchorEl = this.slotAnchor.assignedElements({ flatten: true })[0];
         }
 
-        if(!this.manual) {
+        if(this.manual) {
             event.addListener(this.anchorEl, "click", null, (e) => {
                 if(this.hasAttribute("disabled")) return;
 

@@ -2,62 +2,56 @@
 [ WJ Badge ]
 */
 
-:host(.wje-color-primary) {
-  --wje-color-base: var(--wje-color-primary) !important;
-  --wje-color-contrast: var(--wje-color-contrast-lowest) !important;
-}
-
-:host(.wje-color-complete) {
-  --wje-color-base: var(--wje-color-complete) !important;
-  --wje-color-contrast: var(--wje-color-contrast-lowest) !important;
-}
-
-:host(.wje-color-success) {
-  --wje-color-base: var(--wje-color-success) !important;
-  --wje-color-contrast: var(--wje-color-contrast-lowest) !important;
-}
-
-:host(.wje-color-warning) {
-  --wje-color-base: var(--wje-color-warning) !important;
-  --wje-color-contrast: var(--wje-color-contrast-high) !important;
-}
-
-:host(.wje-color-danger) {
-  --wje-color-base: var(--wje-color-danger) !important;
-  --wje-color-contrast: var(--wje-color-contrast-lowest) !important;
-}
-
-:host(.wje-color-info) {
-  --wje-color-base: var(--wje-color-info) !important;
-  --wje-color-contrast: var(--wje-color-contrast-lowest) !important;
-}
-
-:host(.wje-color-contrast) {
-  --wje-color-base: var(--wje-color-contrast-lower) !important;
-  --wje-color-contrast: var(--wje-color-contrast-high) !important;
-}
-
-:host {
-  --wje-badge-border-radius: var(--wje-border-radius-large);
-  --wje-badge-padding-top: 2px;
-  --wje-badge-padding-bottom: 2px;
-  --wje-badge-padding-inline: 6px;
-
+.native-badge {
   display: inline-block;
   text-shadow: none;
   font-family: var(--wje-font-family);
   font-weight: 600;
-  background-color: var(--wje-color-contrast-low);
+  background-color: var(--wje-color-contrast-3);
   font-size: 11px;
   line-height: 1;
-  padding-top: var(--wje-badge-padding-top);
-  padding-bottom: var(--wje-badge-padding-bottom);
-  padding-inline: var(--wje-badge-padding-inline);
-  color: var(--wje-color-contrast-high);
+  padding-block: var(--wje-badge-padding-block-start) var(--wje-badge-padding-block-end);
+  padding-inline: var(--wje-badge-padding-inline-start) var(--wje-badge-padding-inline-end);
+  color: var(--wje-color-contrast-8);
   border-radius: var(--wje-badge-border-radius);
 }
 
-:host(.wje-color) {
-  background-color: var(--wje-color-base, red) ;
-  color: var(--wje-color-contrast);
+.wje-color-primary {
+  background-color: var(--wje-color-primary-11);
+  color: var(--wje-color-contrast-0);
 }
+
+.wje-color-complete {
+  background-color: var(--wje-color-complete-11);
+  color: var(--wje-color-contrast-0);
+}
+
+.wje-color-success {
+  background-color: var(--wje-color-success-11);
+  color: var(--wje-color-contrast-0);
+}
+
+.wje-color-warning {
+  background-color: var(--wje-color-warning-11);
+  color: var(--wje-color-contrast-8);
+}
+
+.wje-color-danger {
+  background-color: var(--wje-color-danger-11);
+  color: var(--wje-color-contrast-0);
+}
+
+.wje-color-info {
+  background-color: var(--wje-color-info-11);
+  color: var(--wje-color-contrast-0);
+}
+
+.wje-color-contrast {
+  background-color: var(--wje-color-contrast-11);
+  color: var(--wje-color-contrast-8);
+}
+
+/*:host(.wje-color) {*/
+/*  background-color: var(--wje-color-base) ;*/
+/*  color: var(--wje-color-contrast);*/
+/*}*/
