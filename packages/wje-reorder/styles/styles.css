@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: auto;
   flex-direction: var(--flex-direction);
 }
 
@@ -20,4 +21,14 @@
 
 .basic {
   --flex-direction: column;
+}
+
+.dragging {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.reorder-item {
+  transition: top 0.3s ease, left 0.3s ease;
 }

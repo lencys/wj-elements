@@ -8,6 +8,10 @@ export default class Reorder extends WJElement {
     this.dragEl = null;
     this.items = [];
     this.originalIndex = null;
+    this.isDragging = false;
+    this.offsetX = 0;
+    this.offsetY = 0;
+    this.cloneEl = null; 
   }
 
   static get cssStyleSheet() {
@@ -40,6 +44,7 @@ export default class Reorder extends WJElement {
   afterDraw(context, store, params) {
     const items = this.querySelectorAll("wje-reorder-item");
     const dropZones = this.querySelectorAll("wje-reorder-dropzone");
+    this.container.classList.add(this.hasAttribute('reverse') ? "reversed" : "basic");
 
     if (dropZones) {
       dropZones.forEach((dropZone) => {
@@ -54,82 +59,141 @@ export default class Reorder extends WJElement {
         const draggableElement = handles.length > 0 ? handles : [item];
 
         draggableElement.forEach((element) => {
-          element.setAttribute("draggable", "true");
           this.attachEventListeners(element);
         });
       });
     }
-
-    this.container.classList.add(this.hasAttribute('reverse') ? "reversed" : "basic");
   }
 
-  onDragStart(e) {
+  attachEventListeners(element) {
+    element.addEventListener("mousedown", this.onMouseDown.bind(this), false);
+    element.addEventListener("touchstart", this.onTouchStart.bind(this), false);
+    element.addEventListener("dragstart", this.onDragStart.bind(this), false);
+  }
+
+  /*Initialization of dragging
+  **********************************************************************************/
+
+  onMouseDown(e) {
+    this.startDragging(e.clientX, e.clientY, e.currentTarget);
+    document.addEventListener("mousemove", this.onMouseMove.bind(this), false);
+    document.addEventListener("mouseup", this.onMouseUp.bind(this), false);
+    document.body.style.userSelect = "none"; 
+  }
+
+  onTouchStart(e) {
+    const touch = e.touches[0];
+    this.startDragging(touch.clientX, touch.clientY, e.currentTarget);
+    document.addEventListener("touchmove", this.onTouchMove.bind(this), false);
+    document.addEventListener("touchend", this.onTouchEnd.bind(this), false);
+    document.body.style.userSelect = "none"; 
+  }
+
+  startDragging(clientX, clientY, target) {
     if (this.hasAttribute("disabled")) {
-      e.preventDefault();
       return;
     }
 
-    const dragImage = new Image();
-    dragImage.src =
-      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEElEQVR42mNkAAIAAAoAAv/lxKUAAAAASUVORK5CYII=";
-    e.dataTransfer.setDragImage(dragImage, 0, 0);
+    this.isDragging = true;
+    this.dragEl = target.closest("wje-reorder-item");
 
-    this.dragEl = e.currentTarget.closest("wje-reorder-item");
-    e.dataTransfer.effectAllowed = "move";
-    e.dataTransfer.dropEffect = "move";
-    e.dataTransfer.setData("text/html", `${this.dragEl.innerHTML}`);
+    this.createClone();
 
-    this.originalIndex = [...this.dragEl.parentNode.children].indexOf(
-      this.dragEl
-    );
+    this.dragEl.style.opacity = "0.3";
+
+    const rect = this.dragEl.getBoundingClientRect();
+    this.offsetX = clientX - rect.left;
+    this.offsetY = clientY - rect.top;
+
+    this.dragEl.classList.add("dragging");
+
+    this.originalIndex = [...this.dragEl.parentNode.children].indexOf(this.dragEl);
     this.originalParent = this.dragEl.parentNode;
   }
 
-  onDragOver(e) {
-    e.preventDefault();
+  /*Initialization of movement
+  **********************************************************************************/
 
-    const droppedElement = e.currentTarget.closest("wje-reorder-item");
-    const parent = droppedElement.parentNode;
+  onMouseMove(e) {
+    if (!this.isDragging) return;
+    this.moveElement(e.pageX, e.pageY);
 
-    if (this.dragEl !== droppedElement) {
-      this.updateDropStyles(droppedElement, this.isMovingDown(e));
-      this.updateItemsPosition(parent, droppedElement, this.isMovingDown(e));
-    } else {
-      droppedElement.shadowRoot.querySelector("div").classList.add("moving");
+    if (this.cloneEl) {
+      this.cloneEl.style.left = `${e.pageX - this.offsetX}px`;
+      this.cloneEl.style.top = `${e.pageY -  this.offsetY}px`;
     }
   }
 
-  onDragEnter(e) {}
-
-  onDragLeave(e) {}
-
-  onDrop(e) {
-    e.preventDefault();
-
-    const droppedElement = e.currentTarget.closest("wje-reorder-item");
-    droppedElement.shadowRoot.querySelector("div").classList.remove("moving");
-
-    if (!droppedElement.parentNode) return;
-    const parent = droppedElement.parentNode;
-    parent.insertBefore(this.dragEl, droppedElement);
+  onTouchMove(e) {
+    if (!this.isDragging) return;
+    const touch = e.touches[0];
+    this.moveElement(touch.pageX, touch.pageY);
   }
 
-  onDragEnd(e) {
+  moveElement(pageX, pageY) {
+    const scrollX = window.scrollX || document.documentElement.scrollLeft;
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+    const adjustedPageX = pageX - scrollX;
+    const adjustedPageY = pageY - scrollY;
+
+    this.dragEl.style.left = `${adjustedPageX}px`;
+    this.dragEl.style.top = `${adjustedPageY}px`;
+
+    if (this.cloneEl) {
+        this.cloneEl.style.left = `${adjustedPageX}px`;
+        this.cloneEl.style.top = `${adjustedPageY}px`;
+    }
+
+    const items = this.querySelectorAll("wje-reorder-item");
+    items.forEach(item => {
+        if (item === this.dragEl) return;
+
+        const boundingBox = item.getBoundingClientRect();
+        const mouseY = adjustedPageY - boundingBox.top;
+        const mouseYPercent = (mouseY / boundingBox.height) * 100;
+
+        if (mouseYPercent > 30 && this.isMovingDown(item)) {
+            item.parentNode.insertBefore(this.dragEl, item.nextSibling);
+        } else if (mouseYPercent < 30 && !this.isMovingDown(item)) {
+            item.parentNode.insertBefore(this.dragEl, item);
+        }
+    });
+  }
+
+  /*End of dragging
+  **********************************************************************************/
+
+  onMouseUp() {
+    this.stopDragging();
+    document.removeEventListener("mousemove", this.onMouseMove.bind(this), false);
+    document.removeEventListener("mouseup", this.onMouseUp.bind(this), false);
+
+    if (this.cloneEl) {
+      this.cloneEl.remove();
+      this.cloneEl = null;
+    }
+
+    if (this.dragEl) {
+      this.dragEl.style.opacity = "1";
+    }
+  }
+
+  onTouchEnd() {
+    this.stopDragging();
+    document.removeEventListener("touchmove", this.onTouchMove.bind(this), false);
+    document.removeEventListener("touchend", this.onTouchEnd.bind(this), false);
+  }
+
+  stopDragging() {
+    if (!this.isDragging) return;
+
+    this.isDragging = false;
+    this.dragEl.classList.remove("dragging");
+    this.dragEl.style.left = "";
+    this.dragEl.style.top = "";
+
     const parent = this.dragEl.parentNode;
     const newIndex = Array.from(parent.children).indexOf(this.dragEl);
-
-    [parent, this.originalParent].forEach((container) => {
-      container.childNodes.forEach((item) => {
-        if (item.nodeType === 1) {
-          const div = item.shadowRoot.querySelector("div");
-          if (div) {
-            ["drag--up", "drag--down", "moving"].forEach((cls) =>
-              div.classList.remove(cls)
-            );
-          }
-        }
-      });
-    });
 
     const newOrder = Array.from(parent.children).map((el) => {
       const clonedNode = el.cloneNode(true);
@@ -141,40 +205,29 @@ export default class Reorder extends WJElement {
     });
 
     this.dispatchChange(this.originalIndex, newIndex, newOrder);
+    document.body.style.userSelect = ""; 
   }
 
-  attachEventListeners(element) {
-    element.addEventListener("dragstart", this.onDragStart.bind(this), false);
-    element.addEventListener("touchstart", this.onDragStart.bind(this), false);
-    element.addEventListener("dragenter", this.onDragEnter.bind(this), false);
-    element.addEventListener("dragover", this.onDragOver.bind(this), false);
-    element.addEventListener("dragleave", this.onDragLeave.bind(this), false);
-    element.addEventListener("drop", this.onDrop.bind(this), false);
-    element.addEventListener("dragend", this.onDragEnd.bind(this), false);
-    element.addEventListener("touchend", this.onDragEnd.bind(this), false);
+  onDragStart(e) {
+    e.preventDefault();
   }
 
-  updateDropStyles(element, isMovingDown) {
-    const elementStyles = element.shadowRoot.querySelector("div").classList;
+  /*Helpers
+  **********************************************************************************/
 
-    const reverse = this.hasAttribute('reverse');
-    elementStyles.toggle("drag--down", reverse ^ isMovingDown);
-    elementStyles.toggle("drag--up", reverse ^ !isMovingDown);
+  createClone() {
+    this.cloneEl = this.dragEl.cloneNode(true);
+    this.cloneEl.style.position = "absolute";
+    this.cloneEl.style.pointerEvents = "none";
+    this.cloneEl.style.visibility = "visible";
+
+    document.body.appendChild(this.cloneEl);
   }
 
-  updateItemsPosition(parent, droppedElement, isMovingDown) {
-    parent.insertBefore(
-      this.dragEl,
-      isMovingDown ? droppedElement.nextSibling : droppedElement
-    );
-  }
-
-  isMovingDown(target) {
-    const parent = target.currentTarget.closest("wje-reorder-item").parentNode;
+  isMovingDown(droppedElement) {
+    const parent = droppedElement.parentNode;
     const dragIndex = Array.from(parent.children).indexOf(this.dragEl);
-    const dropIndex = Array.from(parent.children).indexOf(
-      target.currentTarget.closest("wje-reorder-item")
-    );
+    const dropIndex = Array.from(parent.children).indexOf(droppedElement);
 
     return dragIndex < dropIndex;
   }
