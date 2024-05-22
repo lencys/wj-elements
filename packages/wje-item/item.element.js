@@ -1,6 +1,6 @@
 import { default as WJElement, WjElementUtils } from "../wje-element/element.js";
 
-import styles from "./scss/styles.scss?inline";
+import styles from "./styles/styles.css?inline";
 
 export default class Item extends WJElement {
 	constructor() {

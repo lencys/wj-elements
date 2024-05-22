@@ -19,7 +19,7 @@ template.innerHTML = `<h1>Rating</h1>
     <h3>Value</h3>
     <div class="playground">
       <div class="content">
-        <wje-rate value="3" icons="['heart-filled', 'heart-filled', 'heart-filled', 'heart-filled', 'heart-filled']"></wje-rate>
+        <wje-rate value="3" icons="['heart', 'heart', 'heart', 'heart', 'heart']"></wje-rate>
       </div>
     </div>
     

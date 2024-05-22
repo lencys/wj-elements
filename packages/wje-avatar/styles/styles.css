@@ -3,18 +3,6 @@
 */
 
 :host {
-  --wje-avatar-width: 32px;
-  --wje-avatar-height: 32px;
-  --wje-avatar-font-size: .75rem;
-  --wje-avatar-font-weight: 400;
-  --wje-avatar-color: inherit;
-  --wje-avatar-background-color: var(--wje-color-contrast-low);
-
-  --wje-avatar-border-radius: 50%;
-  --wje-avatar-border-color: transparent;
-  --wje-avatar-border-width: 1px;
-  --wje-avatar-border-style: solid;
-
   display: inline-block;
   width: var(--wje-avatar-width);
   height: var(--wje-avatar-height);

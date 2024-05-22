@@ -3,12 +3,6 @@
 */
 
 :host {
-  --wje-card-title-font-size: 24px;
-  --wje-card-title-font-weight: 500;
-  --wje-card-title-margin: 0;
-  --wje-card-title-padding: 0;
-  --wje-card-title-line-height: 1.2;
-
   font-size: var(--wje-card-title-font-size);
   font-weight: var(--wje-card-title-font-weight);
   margin: var(--wje-card-title-margin);

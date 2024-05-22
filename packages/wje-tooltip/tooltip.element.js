@@ -83,6 +83,7 @@ export default class Tooltip extends WJElement {
         popup.setAttribute("placement", this.placement || "top");
         popup.setAttribute("offset", this.offset || "0");
 
+        // SLOT - Anchor
         let slot = document.createElement("slot");
         slot.setAttribute("slot", "anchor");
 
@@ -90,10 +91,24 @@ export default class Tooltip extends WJElement {
         arrow.classList.add("arrow");
         arrow.setAttribute("slot", "arrow");
 
+        // SLOT - Start
+        let start = document.createElement("slot");
+        start.setAttribute("name", "start");
+
+        // SLOT - End
+        let end = document.createElement("slot");
+        end.setAttribute("name", "end");
+
+        let content = document.createElement("div");
+        content.innerHTML = this.content;
+
         let native = document.createElement("div");
         native.setAttribute("part", "native");
         native.classList.add("native-tooltip");
-        native.innerHTML = this.content;
+
+        native.appendChild(start);
+        native.appendChild(content);
+        native.appendChild(end);
 
         popup.appendChild(slot);
         popup.appendChild(arrow);
@@ -129,7 +144,7 @@ export default class Tooltip extends WJElement {
     }
 
     beforeShow() {
-        return this.content;
+        return this.native.innerHTML;
     }
 
     afterShow() {}
@@ -139,6 +154,7 @@ export default class Tooltip extends WJElement {
      */
     onShow = () => {
         this.classList.add("active");
+
         Promise.resolve(this.beforeShow(this)).then((res) => {
             if (!this.classList.contains("active") || (!res || typeof res !== "string")) {
                 throw new Error("beforeShow method returned false or not string");

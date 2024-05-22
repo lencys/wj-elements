@@ -3,9 +3,8 @@
 */
 
 :host {
-  --wje-card-padding: 0 1rem 1rem;
   display: block;
-  padding: var(--wje-card-padding);
+  padding: var(--wje-card-content-padding);
   &.no-padding {
     .row {
       margin-left: 0;

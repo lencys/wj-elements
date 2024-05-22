@@ -51,12 +51,18 @@ export default class Badge extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-        let element = document.createElement("slot");
+        let native = document.createElement('div');
+        native.setAttribute('part', 'native');
+        native.classList.add('native-badge');
 
         if(this.color)
-            this.classList.add("wje-color-" + this.color, "wje-color");
+            native.classList.add("wje-color-" + this.color, "wje-color");
 
-        fragment.appendChild(element);
+        let slot = document.createElement("slot");
+
+        native.appendChild(slot);
+
+        fragment.appendChild(native);
 
         return fragment;
     }

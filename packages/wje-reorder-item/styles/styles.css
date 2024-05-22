@@ -1,5 +1,5 @@
 :host {
-  --reorder-background-color: var(--wje-color-contrast-lowest);
+  /*--reorder-background-color: var(--wje-color-contrast-0);*/
   --reorder-item-spacing: .5rem;
 }
 
@@ -13,7 +13,7 @@
   gap: var(--reorder-item-spacing);
   padding: var(--reorder-item-spacing);
   border-radius: var(--wje-border-radius-small);
-  background-color: --reorder-background-color;
+  /*background-color: var(--reorder-background-color);*/
   cursor: grab;
   transition: transform 0.3s linear;
 }
@@ -27,7 +27,7 @@
 }
 
 .item:active:not(.item-w-handle):not(.moving) {
-  background-color: --reorder-background-color;
+  /*background-color: var(--reorder-background-color);*/
   cursor: grabbing;
 
 }

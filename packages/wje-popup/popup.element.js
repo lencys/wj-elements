@@ -153,6 +153,7 @@ export default class Popup extends WJElement {
         }
 
         if(!this.manual) {
+            console.log("SOM TU????", this.anchorEl);
             event.addListener(this.anchorEl, "click", null, (e) => {
                 if(this.hasAttribute("disabled")) return;
 

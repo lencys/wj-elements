@@ -69,6 +69,9 @@ import { default as Radio } from "./wje-radio/radio.js";
 import { default as RadioGroup } from "./wje-radio-group/radio-group.js";
 import { default as Rate } from "./wje-rate/rate.js";
 import { default as RelativeTime } from "./wje-relative-time/relative-time.js";
+import { default as Reorder } from "./wje-reorder/reorder.js";
+import { default as ReorderDropzone } from "./wje-reorder-dropzone/reorder-dropzone.js";
+import { default as ReorderItem } from "./wje-reorder-item/reorder-item.js";
 import { default as Route } from "./wje-route/route.js";
 import { default as Routerx } from "./wje-router/router.js";
 import { default as RouterLink } from "./wje-router-link/router-link.js";
@@ -88,9 +91,6 @@ import { default as Toolbar } from "./wje-toolbar/toolbar.js";
 import { default as ToolbarAction } from "./wje-toolbar-action/toolbar-action.js";
 import { default as Tooltip } from "./wje-tooltip/tooltip.js";
 import { default as VisuallyHidden } from "./wje-visually-hidden/visually-hidden.js";
-import { default as Reorder } from "./wje-reorder/reorder.js";
-import { default as ReorderItem } from "./wje-reorder-item/reorder-item.js";
-import { default as ReorderDropzone } from "./wje-reorder-dropzone/reorder-dropzone.js"
 
 export { WJElement, defaultStoreActions, store, event, bindRouterLinks, withRouterLinks, fetchAndParseCSS, Localizer,
   Accordion,
@@ -151,6 +151,9 @@ export { WJElement, defaultStoreActions, store, event, bindRouterLinks, withRout
   RadioGroup,
   Rate,
   RelativeTime,
+  Reorder,
+  ReorderDropzone,
+  ReorderItem,
   Route,
   Routerx,
   RouterLink,
@@ -169,8 +172,5 @@ export { WJElement, defaultStoreActions, store, event, bindRouterLinks, withRout
   Toolbar,
   ToolbarAction,
   Tooltip,
-  VisuallyHidden,
-  Reorder,
-  ReorderItem,
-  ReorderDropzone
+  VisuallyHidden
 };

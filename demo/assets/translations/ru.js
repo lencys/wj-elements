@@ -5,6 +5,7 @@ const ru = {
   name: 'Russian',
   dir: 'ltr',
 
-  welcome: 'Dobro pozhalovat',
+  "welcome": 'Dobro pozhalovat',
+  "wj.file.upload.button": "TRALALA",
 };
 Localizer.registerTranslation(ru);

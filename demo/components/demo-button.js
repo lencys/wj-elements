@@ -166,19 +166,23 @@ template.innerHTML = `<style>
         <wje-button id="custom" fill="link">Custom</wje-button>
         <style>
           #custom {
-            --wje-button-background-color: #000000;
-            --wje-button-border-color: #0af4fc;
-            --wje-button-border-radius: 0;
-            --wje-button-color: #0af4fc;
-            --wje-padding-top: 1rem;
-            --wje-padding-start: .7rem;
-            --wje-padding-end: .7rem;
-            --wje-padding-bottom: 1rem;
+            &::part(native) {
+              background-color: #000000;
+              border-color: #0af4fc;
+              border-radius: 0;
+              color: #0af4fc;
+              --wje-padding-top: 1rem;
+              --wje-padding-start: .7rem;
+              --wje-padding-end: .7rem;
+              --wje-padding-bottom: 1rem;
+            }
           }
           
           #custom:hover {
-            --wje-button-background-color: #0af4fc;
-            --wje-button-color: #000000;
+            &::part(native) {
+              background-color: #0af4fc;
+              color: #000000;
+            }
           }
         </style>
       </div>

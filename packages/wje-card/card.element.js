@@ -57,12 +57,18 @@ export default class Card extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-        let element = document.createElement("slot");
+        let native = document.createElement('div');
+        native.setAttribute('part', 'native');
+        native.classList.add('native-card');
+
+        let slot = document.createElement("slot");
 
         if(params.color)
-            this.classList.add("wje-color-" + params.color, "wje-color");
+            native.classList.add('wje-color-' + params.color);
 
-        fragment.appendChild(element);
+        native.appendChild(slot);
+
+        fragment.appendChild(native);
 
         return fragment;
     }

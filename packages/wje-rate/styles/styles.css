@@ -27,7 +27,7 @@
 }
 
 .half wje-icon:first-child {
-  color: white;
+  color: var(--wje-color);
 }
 
 .half wje-icon:last-child {

@@ -48,6 +48,11 @@ template.innerHTML = `
             --wje-menu-border-radius: 0;
             max-width: 100%;
             padding: 0;
+            wje-menu-item {
+              wje-menu {
+                --wje-menu-border-width: 1px;
+              }
+            }
           }
           
           #custom-2 wje-menu-item::part(native) {
@@ -108,8 +113,11 @@ template.innerHTML = `
             --wje-menu-border-radius: 0 !important;
             overflow: hidden;
             max-width: 240px;
-            /*--wje-menu-collapse-width: 48px !important;*/
-            /*--wje-menu-check-icon-width: 15px;*/
+            wje-menu-item {
+              wje-menu {
+                --wje-menu-border-width: 1px;
+              }
+            }
           }
           
           #custom wje-menu-item::part(native) {

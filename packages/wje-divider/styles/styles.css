@@ -2,22 +2,15 @@
 [ WJ Divider ]
 */
 
-:host {
-  --wje-border-size: 1px;
-  --wje-divider-border-color: var(--wje-border-color);
-  --wje-divider-border-width: var(--wje-border-size, 1px);
-  --wje-divider-spacing: 0;
-}
-
 :host(:not([vertical])) {
   display: block;
-  border-top: solid var(--wje-divider-border-width) var(--wje-divider-border-color);
+  border-top: var(--wje-divider-border-width) var(--wje-divider-border-style) var(--wje-divider-border-color);
   margin: var(--wje-divider-spacing) 0;
 }
 
 :host([vertical]) {
   display: inline-block;
   height: 100%;
-  border-left: solid var(--wje-divider-border-width) var(--wje-divider-border-color);
+  border-left: var(--wje-divider-border-width) var(--wje-divider-border-style) var(--wje-divider-border-color);
   margin: 0 var(--wje-divider-spacing);
 }

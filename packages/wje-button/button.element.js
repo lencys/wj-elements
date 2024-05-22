@@ -173,33 +173,37 @@ export default class Button extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
+        let native = document.createElement(this.hasAttribute('href') ? 'a': 'button');
+        native.classList.add("native-button");
+        native.setAttribute("part", "native");
+
         this.classList.remove("wje-button-disabled");
 
         if(this.disabled)
-            this.classList.add("wje-button-disabled");
+            native.classList.add("wje-button-disabled");
 
         if(this.variant)
-            this.classList.add("wje-button-" + this.variant);
+            native.classList.add("wje-button-" + this.variant);
 
         if(this.hasAttribute("round"))
-            this.classList.add("wje-button-round")
+            native.classList.add("wje-button-round")
 
         if(this.hasAttribute("circle"))
-            this.classList.add("wje-button-circle")
+            native.classList.add("wje-button-circle")
 
         if(this.outline)
-            this.classList.add("wje-outline");
+            native.classList.add("wje-outline");
 
         if(this.fill)
-            this.classList.add("wje-button-" + this.fill);
+            native.classList.add("wje-button-" + this.fill);
 
         if(this.size)
-            this.classList.add("wje-button-" + this.size);
+            native.classList.add("wje-button-" + this.size);
 
         if(this.hasAttribute("color"))
-            this.classList.add("wje-color-" + this.color, "wje-color");
+            native.classList.add("wje-color-" + this.color, "wje-color");
         else
-            this.classList.add("wje-color-default", "wje-color");
+            native.classList.add("wje-color-default", "wje-color");
 
         if(this.querySelectorAll('[slot=caret]').length < 1 && this.hasAttribute("caret") || this.hasAttribute("only-caret")) {
             let i = document.createElement("wje-icon");
@@ -217,10 +221,6 @@ export default class Button extends WJElement {
 
             this.appendChild(i);
         }
-
-        let element = document.createElement(this.hasAttribute('href') ? 'a': 'button');
-        element.classList.add("button-native");
-        element.setAttribute("part", "native");
 
         let  span = document.createElement("span");
         span.classList.add("button-inner");
@@ -253,8 +253,8 @@ export default class Button extends WJElement {
             span.appendChild(this.slotToggle);
         }
 
-        element.appendChild(span);
-        fragment.appendChild(element);
+        native.appendChild(span);
+        fragment.appendChild(native);
 
         return fragment;
     }

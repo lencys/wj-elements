@@ -69,19 +69,15 @@ export default class Icon extends WJElement {
 
         this.classList.add("lazy-loaded-image", "lazy");
 
-        this.element = document.createElement("div");
-        this.element.classList.add("icon-inner");
+        let native = document.createElement("div");
+        native.setAttribute('part', 'native');
+        native.classList.add("native-icon");
 
         this.url = getUrl(this);
 
-        this.classList.add("wje-size");
-        if(this.color)
-            this.classList.add("wje-color-" + this.color, "wje-color");
+        fragment.appendChild(native);
 
-        if(this.size)
-            this.classList.add("wje-size-" + this.size);
-
-        fragment.appendChild(this.element);
+        this.native = native;
 
         return fragment;
     }
@@ -94,8 +90,8 @@ export default class Icon extends WJElement {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     getSvgContent(this.url).then((svgContent) => {
-                        this.element.innerHTML = iconContent?.get(this.url);
-                        this.element.querySelector("svg")?.setAttribute("part", "svg");
+                        this.native.innerHTML = iconContent?.get(this.url);
+                        this.native.querySelector("svg")?.setAttribute("part", "svg");
 
                     });
 
@@ -105,6 +101,6 @@ export default class Icon extends WJElement {
             });
         });
 
-        lazyImageObserver.observe(this.element);
+        lazyImageObserver.observe(this.native);
     }
 }

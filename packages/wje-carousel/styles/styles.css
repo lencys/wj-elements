@@ -2,13 +2,6 @@
 [ Carousel ]
 */
 
-:host {
-  --wje-scroll-hint: 0px;
-  --wje-carousel-width: 100%;
-  --wje-carousel-height: auto;
-  --wje-carousel-size: 100%
-}
-
 .native-carousel {
   position: relative;
   width: var(--wje-carousel-width, 100%);

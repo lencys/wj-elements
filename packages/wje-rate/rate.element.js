@@ -76,7 +76,7 @@ export default class Rate extends WJElement {
      * @returns {Array<string>} The value of the icons.
      */
     get icons() {
-        return this.hasAttribute("icons") ? JSON.parse(this.getAttribute("icons").replace(/'/g, '\"')) : ['star-filled'];
+        return this.hasAttribute("icons") ? JSON.parse(this.getAttribute("icons").replace(/'/g, '\"')) : ['star'];
     }
 
     /**

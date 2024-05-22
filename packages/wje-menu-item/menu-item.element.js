@@ -184,7 +184,7 @@ export default class MenuItem extends WJElement {
         let start = document.createElement("slot");
         start.name = "start";
 
-        // SLOT - Start
+        // SLOT
         let slot = document.createElement("slot");
         slot.classList.add("label");
 

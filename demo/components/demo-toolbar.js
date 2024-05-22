@@ -92,6 +92,10 @@ export default class DemoToolbar extends WJElement {
     });
   }
 
+  beforeDraw() {
+    console.log("TRALALA")
+  }
+
   afterDraw(context, store2, params) {
     const breadcrumbs = this.querySelector("#custom-dynamic");
     this.objs.forEach((obj) => {

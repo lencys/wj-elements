@@ -8,13 +8,16 @@ template.innerHTML = `
         <h2>Default</h2>
         <div class="playground">
             <div class="content">
+            
                 <wje-reorder>
-                    <wje-reorder-item>Reorder item 1</wje-reorder-item>
-                    <wje-reorder-item>Reorder item 2</wje-reorder-item>
-                    <wje-reorder-item>Reorder item 3</wje-reorder-item>
-                    <wje-reorder-item>Reorder item 4</wje-reorder-item>
-                    
+                    <wje-menu active>                   
+                      <wje-menu-item><wje-reorder-item><wje-icon name="arrows-move" slot="handle"></wje-icon>Reorder item 1</wje-reorder-item></wje-menu-item>
+                      <wje-menu-item><wje-reorder-item>Reorder item 2</wje-reorder-item></wje-menu-item>
+                      <wje-menu-item><wje-reorder-item>Reorder item 3<wje-reorder-item></wje-menu-item>
+                      <wje-menu-item><wje-reorder-item>Reorder item 4</wje-reorder-item></wje-menu-item>
+                    </wje-menu>
                 </wje-reorder>
+            
             </div>
         </div>
 

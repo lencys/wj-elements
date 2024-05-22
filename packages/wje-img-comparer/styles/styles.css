@@ -3,13 +3,6 @@
 */
 
 :host {
-  --wje-img-compare-divider-area: 12px;
-  --wje-img-compare-divider-background: white;
-  --wje-img-compare-divider-size: 2px;
-  --wje-img-compare-divider-left: 50%;
-  --wje-img-compare-position: 50%;
-  --wje-img-compare-clip-path: inset(0 calc(100% - var(--wje-img-compare-position)) 0 0);
-  ---wje-img-compare-divider-area: auto;
   display: inline-block;
   position: relative;
   width: 100%;
