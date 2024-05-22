@@ -6,9 +6,9 @@ import path from 'path';
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
     base: '/',
-    server: {
-        hmr: true
-    },
+    // server: {
+    //     hmr: false
+    // },
     css: {
         preprocessorOptions: {
             scss: {
