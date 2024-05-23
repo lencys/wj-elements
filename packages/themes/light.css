@@ -361,6 +361,7 @@
   --wje-menu-margin-inline: 0;
   --wje-menu-collapse-width: 65px;
   --wje-menu-z-index: 8;
+  --wje-menu-shadow: var(--wje-shadow-medium);
 
   /* Menu - Item */
   --wje-menu-item-color: var(--wje-color);
