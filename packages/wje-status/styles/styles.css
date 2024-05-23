@@ -17,19 +17,30 @@
   border-style: solid;
   border-color: transparent;
   border-radius: var(--wje-border-radius-circle);
-  /*margin-inline: var(--wje-spacing-x-small);*/
 }
 
-/*active - Tento stav môže znamenať, že objekt je aktívny, dostupný alebo funkčný.*/
-/*remote-work - Tento stav označuje, že objekt je v režime práce na diaľku alebo vzdialene.*/
-/*inactive - Tento stav znamená, že objekt nie je aktívny alebo je dočasne nečinný.*/
-/*pending - Tento stav signalizuje, že objekt čaká na nejakú akciu alebo spracovanie.*/
-/*error - Tento stav sa používa, keď objekt narazil na chybu alebo problém.*/
-/*maintenance - Tento stav označuje, že objekt je v režime údržby alebo aktualizácie.*/
-/*unknown - Tento stav sa používa, keď nie je možné určiť aktuálny stav objektu.*/
-/*loading - Tento stav indikuje, že sa stav objektu načítava alebo prebieha nejaký proces.*/
-/*idle - Tento stav označuje, že objekt je v pokoji alebo nečinný, ale nie je vypnutý. */
+:host ::slotted([slot="start"]) {
+  margin-right: var(--wje-spacing-x-small);
+}
 
+:host ::slotted([slot="end"]) {
+  margin-left: var(--wje-spacing-x-small);
+}
+
+/* Size */
+:host([size=small]) {
+  --wje-status-size: var(--wje-size-small);
+}
+
+:host([size=medium]) {
+  --wje-status-size: var(--wje-size);
+}
+
+:host([size=large]) {
+  --wje-status-size: var(--wje-size-large);
+}
+
+/* Color */
 :host([color=primary]) .bullet {
   background-color: var(--wje-color-primary-9);
   color: var(--wje-color-contrast-0);
@@ -92,17 +103,4 @@
 
 :host([border=contrast-reverse]) .bullet {
   border-color: var(--wje-color-contrast-11);
-}
-
-/* Size */
-:host([size=small]) {
-  --wje-status-size: var(--wje-size-small);
-}
-
-:host([size=medium]) {
-  --wje-status-size: var(--wje-size);
-}
-
-:host([size=large]) {
-  --wje-status-size: var(--wje-size-large);
 }
