@@ -2,12 +2,15 @@
 [ WJ Icon ]
 */
 
+:host {
+  width: var(--wje-icon-size);
+  height: var(--wje-icon-size);
+}
 .native-icon {
   display: flex;
   align-items: center;
 
-  width: var(--wje-icon-size);
-  height: var(--wje-icon-size);
+
 }
 
 svg {
@@ -39,6 +42,10 @@ svg {
 }
 
 /*SIZE*/
+:host([size="2x-small"]) {
+  --wje-icon-size: var(--wje-size-2x-small);
+}
+
 :host([size="x-small"]) {
   --wje-icon-size: var(--wje-size-x-small);
 }

@@ -55,7 +55,7 @@
       display: var(--wje-menu-item-check-icon-display, flex);
       align-items: center;
       justify-content: center;
-      width: var(--wje-menu-check-icon-width, 1.5rem);
+      width: var(--wje-menu-item-check-icon-width, 1.5rem);
       visibility: hidden;
 
       &.checked {

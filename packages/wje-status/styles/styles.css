@@ -1,0 +1,108 @@
+/*
+[ WJ Status ]
+*/
+
+.native-status {
+  display: flex;
+  align-items: center;
+}
+
+.bullet {
+  width: var(--wje-status-size);
+  height: var(--wje-status-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: var(--wje-border-radius-circle);
+  /*margin-inline: var(--wje-spacing-x-small);*/
+}
+
+/*active - Tento stav môže znamenať, že objekt je aktívny, dostupný alebo funkčný.*/
+/*remote-work - Tento stav označuje, že objekt je v režime práce na diaľku alebo vzdialene.*/
+/*inactive - Tento stav znamená, že objekt nie je aktívny alebo je dočasne nečinný.*/
+/*pending - Tento stav signalizuje, že objekt čaká na nejakú akciu alebo spracovanie.*/
+/*error - Tento stav sa používa, keď objekt narazil na chybu alebo problém.*/
+/*maintenance - Tento stav označuje, že objekt je v režime údržby alebo aktualizácie.*/
+/*unknown - Tento stav sa používa, keď nie je možné určiť aktuálny stav objektu.*/
+/*loading - Tento stav indikuje, že sa stav objektu načítava alebo prebieha nejaký proces.*/
+/*idle - Tento stav označuje, že objekt je v pokoji alebo nečinný, ale nie je vypnutý. */
+
+:host([color=primary]) .bullet {
+  background-color: var(--wje-color-primary-9);
+  color: var(--wje-color-contrast-0);
+}
+
+:host([color=complete]) .bullet {
+  background-color: var(--wje-color-complete-9);
+  color: var(--wje-color-contrast-0);
+}
+
+:host([color=success]) .bullet {
+  background-color: var(--wje-color-success-9);
+  color: var(--wje-color-contrast-0);
+}
+
+:host([color=warning]) .bullet{
+  background-color: var(--wje-color-warning-9);
+  color: var(--wje-color-contrast-11);
+}
+
+:host([color=danger]) .bullet {
+  background-color: var(--wje-color-danger-9);
+  color: var(--wje-color-contrast-0);
+}
+
+:host([color=contrast]) .bullet {
+  background-color: var(--wje-color-contrast-2);
+  color: var(--wje-color-contrast-11);
+}
+
+:host([color=contrast-reverse]) .bullet {
+  background-color: var(--wje-color-contrast-11);
+  color: var(--wje-color-contrast-0);
+}
+
+/* Border */
+:host([border=primary]) .bullet {
+  border-color: var(--wje-color-primary-9);
+}
+
+:host([border=complete]) .bullet {
+  border-color: var(--wje-color-complete-9);
+}
+
+:host([border=success]) .bullet {
+  border-color: var(--wje-color-success-9);
+}
+
+:host([border=warning]) .bullet {
+  border-color: var(--wje-color-warning-9);
+}
+
+:host([border=danger]) .bullet {
+  border-color: var(--wje-color-danger-9);
+}
+
+:host([border=contrast]) .bullet {
+  border-color: var(--wje-color-contrast-2);
+}
+
+:host([border=contrast-reverse]) .bullet {
+  border-color: var(--wje-color-contrast-11);
+}
+
+/* Size */
+:host([size=small]) {
+  --wje-status-size: var(--wje-size-small);
+}
+
+:host([size=medium]) {
+  --wje-status-size: var(--wje-size);
+}
+
+:host([size=large]) {
+  --wje-status-size: var(--wje-size-large);
+}

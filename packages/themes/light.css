@@ -64,7 +64,7 @@
 
   /* Shadows */
   --wje-shadow-small: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --wje-shadow-medium: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --wje-shadow-medium: 2px 2px 11px 0px hsla(0, 0%, 0%, 0.08);
   --wje-shadow-large: 0 4px 8px rgba(0, 0, 0, 0.1);
   --wje-shadow-x-large: 0 8px 16px rgba(0, 0, 0, 0.1);
   --wje-shadow-2x-large: 0 16px 32px rgba(0, 0, 0, 0.1);
@@ -223,9 +223,8 @@
   */
 
   /* Avatar */
-  --wje-avatar-width: 32px;
-  --wje-avatar-height: 32px;
-  --wje-avatar-font-size: var(--wje-font-size-small);
+  --wje-avatar-size: var(--wje-size-x-large);
+  --wje-avatar-font-size: var(--wje-font-size-x-small);
   --wje-avatar-font-weight: var(--wje-font-weight-normal);
   --wje-avatar-color: inherit;
   --wje-avatar-background-color: var(--wje-color-contrast-3);
@@ -377,6 +376,8 @@
   --wje-menu-item-line-height: 1.8rem;
   --wje-menu-submenu-offset: 0;
   --wje-menu-item-icon-visibility: hidden;
+  --wje-menu-item-check-icon-display: flex;
+  --wje-menu-item-check-icon-width: 1.5rem;
 
   /* Menu - Label  */
   --wje-menu-label-font-size: var(--wje-font-size-small);
@@ -389,6 +390,9 @@
 
   /* Rate */
   --wje-rate-gap: .25rem;
+
+  /* Status */
+  --wje-status-size: var(--wje-size-small);
 
   /* Tab */
   --wje-tab-text-transfrom: uppercase;

@@ -68,8 +68,8 @@ export default class Avatar extends WJElement {
         element.setAttribute("part", "native");
         element.classList.add("native-avatar");
 
-        if(this.size)
-            this.classList.add("wje-avatar-" + this.size);
+        // if(this.size)
+        //     this.classList.add("wje-avatar-" + this.size);
 
         // if(this.isImage()) {
             let slot = document.createElement("slot");

@@ -116,6 +116,7 @@ export default defineConfig({
                 "select": "./packages/wje-select/select.js",
                 "slider": "./packages/wje-slider/slider.js",
                 "split-view": "./packages/wje-split-view/split-view.js",
+                "status": "./packages/wje-status/status.js",
                 "tab": "./packages/wje-tab/tab.js",
                 "tab-group": "./packages/wje-tab-group/tab-group.js",
                 "tab-panel": "./packages/wje-tab-panel/tab-panel.js",

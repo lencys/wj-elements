@@ -81,6 +81,7 @@ import { default as Row } from "./wje-row/row.js";
 import { default as Select } from "./wje-select/select.js";
 import { default as Slider } from "./wje-slider/slider.js";
 import { default as SplitView } from "./wje-split-view/split-view.js";
+import { default as Status } from "./wje-status/status.js";
 import { default as Tab } from "./wje-tab/tab.js";
 import { default as TabGroup } from "./wje-tab-group/tab-group.js";
 import { default as TabPanel } from "./wje-tab-panel/tab-panel.js";
@@ -164,6 +165,7 @@ export { WJElement, defaultStoreActions, store, event, bindRouterLinks, withRout
   Select,
   Slider,
   SplitView,
+  Status,
   Tab,
   TabGroup,
   TabPanel,

@@ -9,17 +9,17 @@ template.innerHTML = `<h1>Avatar</h1>
 
     <h3>Basic</h3>
     <div class="playground">
-      <div class="content">
+      <div class="content" style="display: flex; gap: .25rem;">
         <wje-avatar>
           <wje-img src="/assets/img/avatar.svg"></wje-img>
         </wje-avatar>
         
-        <wje-avatar label="Lukáš Ondrejček" initials>
+        <wje-avatar label="Petr Rahman" initials>
           <wje-img src="/assets/img/avatar.svg"></wje-img>
         </wje-avatar>
         
-        <wje-avata label="Lukáš Ondrejček" initials>
-          <wje-icon name="" slot="icon"></wje-icon>
+        <wje-avatar>
+          <wje-icon name="check" slot="icon"></wje-icon>
         </wje-avatar>
       </div>
     </div>
@@ -28,16 +28,33 @@ template.innerHTML = `<h1>Avatar</h1>
 
     <h3>Size</h3>
     <div class="playground">
-      <div class="content">
-        <wje-avatar size="small">
-          <wje-img src="/assets/img/avatar.svg"></wje-img>
-        </wje-avatar>
-        <wje-avatar>
-          <wje-img src="/assets/img/avatar.svg"></wje-img>
-        </wje-avatar>
-        <wje-avatar size="large">
-          <wje-img src="/assets/img/avatar.svg"></wje-img>
-        </wje-avatar>
+      <div class="content" style="display: flex; gap: .25rem;">
+        <wje-avatar size="small"><wje-img src="/assets/img/avatar.svg"></wje-img></wje-avatar>
+        <wje-avatar size="medium"><wje-img src="/assets/img/avatar.svg"></wje-img></wje-avatar>
+        <wje-avatar size="normal"><wje-img src="/assets/img/avatar.svg"></wje-img></wje-avatar>
+        <wje-avatar size="large"><wje-img src="/assets/img/avatar.svg"></wje-img></wje-avatar>
+        <wje-avatar size="x-large"><wje-img src="/assets/img/avatar.svg"></wje-img></wje-avatar>
+        <wje-avatar size="2x-large"><wje-img src="/assets/img/avatar.svg"></wje-img></wje-avatar>
+        <wje-avatar size="3x-large"><wje-img src="/assets/img/avatar.svg"></wje-img></wje-avatar>
+        <wje-avatar size="4x-large"><wje-img src="/assets/img/avatar.svg"></wje-img></wje-avatar>
+        <wje-avatar size="5x-large"><wje-img src="/assets/img/avatar.svg"></wje-img></wje-avatar>
+      </div>
+    </div>
+    
+    <!-- SIZE INITIALS -->
+    
+    <h3>Size - Initials</h3>
+    <div class="playground">
+      <div class="content" style="display: flex; gap: .25rem;">
+        <wje-avatar size="small" label="Petr Rahman" initials></wje-avatar>
+        <wje-avatar size="medium" label="Petr Rahman" initials></wje-avatar>
+        <wje-avatar size="normal" label="Petr Rahman" initials></wje-avatar>
+        <wje-avatar size="large" label="Petr Rahman" initials></wje-avatar>
+        <wje-avatar size="x-large" label="Petr Rahman" initials></wje-avatar>
+        <wje-avatar size="2x-large" label="Petr Rahman" initials></wje-avatar>
+        <wje-avatar size="3x-large" label="Petr Rahman" initials></wje-avatar>
+        <wje-avatar size="4x-large" label="Petr Rahman" initials></wje-avatar>
+        <wje-avatar size="5x-large" label="Petr Rahman" initials></wje-avatar>
       </div>
     </div>
     
@@ -46,14 +63,8 @@ template.innerHTML = `<h1>Avatar</h1>
     <h3>Icon</h3>
     <div class="playground">
       <div class="content">
-        <wje-avatar size="small">
-          <wje-icon name="photo" slot="icon"></wje-icon>
-        </wje-avatar>
         <wje-avatar>
-          <wje-icon name="photo" slot="icon"></wje-icon>
-        </wje-avatar>
-        <wje-avatar size="large">
-          <wje-icon name="photo" slot="icon"></wje-icon>
+          <wje-icon name="check" slot="icon"></wje-icon>
         </wje-avatar>
       </div>
     </div>
@@ -63,7 +74,7 @@ template.innerHTML = `<h1>Avatar</h1>
     <h3>Initials</h3>
     <div class="playground">
       <div class="content">
-        <wje-avatar label="Lukáš Ondrejček" initials></wje-avatar>
+        <wje-avatar label="Petr Rahman" initials></wje-avatar>
       </div>
     </div>
     
@@ -71,19 +82,30 @@ template.innerHTML = `<h1>Avatar</h1>
 
     <h3>Status</h3>
     <div class="playground">
-      <div class="content">
-        <wje-avatar label="Lukáš Ondrejček" initials>
-         <span slot="status">
-          <wje-icon name="check"></wje-icon>
-         </span>
+      <div class="content" style="display: flex; gap: 1rem; width: 100px;">
+        <wje-avatar label="Petr Rahman" status-placement="top-start" initials>
+          <wje-status color="success" slot="status">
+            <wje-icon name="check" size="2x-small"></wje-icon>
+          </wje-status>
         </wje-avatar>
-        <style>
-          span[slot="status"] {
-            background: var(--wje-color-contrast-lower);
-            border-radius: var(--wje-border-radius-circle);
-            border: 1px solid var(--wje-color-contrast-low);
-          }
-        </style>
+        
+        <wje-avatar label="Petr Rahman" status-placement="top-end" initials>
+          <wje-status color="success" slot="status">
+            <wje-icon name="check" size="2x-small"></wje-icon>
+          </wje-status>
+        </wje-avatar>
+        
+        <wje-avatar label="Petr Rahman" status-placement="bottom-start" initials>
+          <wje-status color="success" slot="status">
+            <wje-icon name="check" size="2x-small"></wje-icon>
+          </wje-status>
+        </wje-avatar>
+        
+        <wje-avatar label="Petr Rahman" status-placement="bottom-end" initials>
+          <wje-status color="success" slot="status">
+            <wje-icon name="check" size="2x-small"></wje-icon>
+          </wje-status>
+        </wje-avatar>
       </div>
     </div>
     
@@ -91,7 +113,7 @@ template.innerHTML = `<h1>Avatar</h1>
 
     <h3>Dropdown</h3>
     <div class="playground">
-      <div class="content">
+      <div class="content" style="display: flex; gap: .25rem;">
         <wje-dropdown id="custom-dropdown" placement="right-start" trigger="hover" offset="5">
           <wje-avatar label="Petr Rahman" initials slot="trigger"></wje-avatar>
           <wje-menu class="custom-menu" active>
@@ -126,8 +148,8 @@ template.innerHTML = `<h1>Avatar</h1>
     <h3>Tooltip</h3>
     <div class="playground">
       <div class="content">
-        <wje-tooltip content="Lukáš Ondrejček">
-          <wje-avatar label="Lukáš Ondrejček" initials></wje-avatar>
+        <wje-tooltip content="Petr Rahman">
+          <wje-avatar label="Petr Rahman" initials></wje-avatar>
         </wje-tooltip>
       </div>
     </div>
@@ -138,13 +160,13 @@ template.innerHTML = `<h1>Avatar</h1>
     <div class="playground">
       <div class="content">
         <div class="wje-avatar-group">
-          <wje-avatar size="large">
+          <wje-avatar>
             <wje-img src="/assets/img/avatar.svg"></wje-img>
           </wje-avatar>
-          <wje-avatar size="large">
+          <wje-avatar>
             <wje-img src="/assets/img/avatar.svg"></wje-img>
           </wje-avatar>
-          <wje-avatar size="large">
+          <wje-avatar>
             <wje-img src="/assets/img/avatar.svg"></wje-img>
           </wje-avatar>
           <style>
@@ -165,11 +187,10 @@ template.innerHTML = `<h1>Avatar</h1>
     <h3>Custom</h3>
     <div class="playground">
       <div class="content">
-        <wje-avatar id="custom" label="Lukáš Ondrejček" initials></wje-avatar>
+        <wje-avatar id="custom" label="Petr Rahman" initials></wje-avatar>
         <style>
           wje-avatar#custom {
-            --wje-avatar-width: 100px;
-            --wje-avatar-height: 100px;
+            --wje-avatar-size: 100px;
             --wje-avatar-font-size: 2rem;
             --wje-avatar-font-weight: 700;
             --wje-avatar-color: #000 !important;

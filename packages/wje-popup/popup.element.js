@@ -48,7 +48,6 @@ export default class Popup extends WJElement {
      * @returns {boolean} The value of the manual property.
      */
     get manual() {
-        console.log("MANUAL", this.hasAttribute("manual"), this._manual);
         if(this.hasAttribute("manual"))
             this._manual = true;
 
