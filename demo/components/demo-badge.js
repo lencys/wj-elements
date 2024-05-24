@@ -4,7 +4,9 @@ const template = document.createElement('template');
 
 template.innerHTML = `<style>
     .content {
-      display: block;
+      /*display: block;*/
+      flex-direction: column;
+      gap: .5rem;
     }
   </style>
   <h1>Badge</h1>
@@ -13,6 +15,16 @@ template.innerHTML = `<style>
     <!--  BASIC-->
 
     <h2>Basic</h2>
+    <div class="playground">
+      <div class="content" style="flex-direction: row;">
+        <wje-badge>11</wje-badge>
+        <wje-badge>8</wje-badge>
+      </div>
+    </div>
+    
+    <!-- LIST -->
+
+    <h2>List</h2>
     <div class="playground">
       <div class="content">
         <wje-list>
@@ -28,45 +40,18 @@ template.innerHTML = `<style>
       </div>
     </div>
 
-    <!--  COLORS -->
+    <!-- COLORS -->
 
     <h2>Colors</h2>
     <div class="playground">
       <div class="content">
-        <wje-list>
-          <wje-item>
-            <wje-label>Default</wje-label>
-            <wje-badge>22k</wje-badge>
-          </wje-item>
-          <wje-item>
-            <wje-label>Followers</wje-label>
-            <wje-badge color="primary">22k</wje-badge>
-          </wje-item>
-          <wje-item>
-            <wje-label>Likes</wje-label>
-            <wje-badge color="complete">118k</wje-badge>
-          </wje-item>
-          <wje-item>
-            <wje-label>Completed</wje-label>
-            <wje-badge color="success">34k</wje-badge>
-          </wje-item>
-          <wje-item>
-            <wje-label>Stars</wje-label>
-            <wje-badge color="warning">80</wje-badge>
-          </wje-item>
-          <wje-item>
-            <wje-label>Warnings</wje-label>
-            <wje-badge color="danger">70</wje-badge>
-          </wje-item>
-          <wje-item>
-            <wje-label>Notifications</wje-label>
-            <wje-badge color="info">1000</wje-badge>
-          </wje-item>
-          <wje-item>
-            <wje-label>Notifications</wje-label>
-            <wje-badge color="menu">1000</wje-badge>
-          </wje-item>
-        </wje-list>
+        <wje-badge color="primary">22k</wje-badge>
+        <wje-badge color="complete">118k</wje-badge>
+        <wje-badge color="success">34k</wje-badge>
+        <wje-badge color="warning">80</wje-badge>
+        <wje-badge color="danger">70</wje-badge>
+        <wje-badge color="info">1000</wje-badge>
+        <wje-badge color="menu">1000</wje-badge>
       </div>
     </div>
     

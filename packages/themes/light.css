@@ -235,10 +235,6 @@
 
   /* Badge */
   --wje-badge-border-radius: var(--wje-border-radius-pill);
-  --wje-badge-padding-block-start: var(--wje-spacing-3x-small);
-  --wje-badge-padding-block-end: var(--wje-spacing-3x-small);
-  --wje-badge-padding-inline-start: var(--wje-spacing-2x-small);
-  --wje-badge-padding-inline-end: var(--wje-spacing-2x-small);
 
   /* Breadcrumb */
   --wje-breadcrumb-a: var(--wje-color-contrast-8);
