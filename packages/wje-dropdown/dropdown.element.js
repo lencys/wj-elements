@@ -37,6 +37,9 @@ export default class Dropdown extends WJElement {
         native.setAttribute("part", "native");
         native.classList.add("native-dropdown");
 
+        let tooltip = document.createElement("wje-tooltip");
+        tooltip.setAttribute("content", this.tooltip);
+
         let anchorSlot = document.createElement("slot");
         anchorSlot.setAttribute("name", "trigger");
         anchorSlot.setAttribute("slot", "anchor");

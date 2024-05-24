@@ -87,6 +87,8 @@ export default class Tooltip extends WJElement {
         let slot = document.createElement("slot");
         slot.setAttribute("slot", "anchor");
 
+        // let slot = this.querySelector("wje-button");
+
         let arrow = document.createElement("div");
         arrow.classList.add("arrow");
         arrow.setAttribute("slot", "arrow");
@@ -127,12 +129,20 @@ export default class Tooltip extends WJElement {
      * @summary After draw method
      */
     afterDraw() {
+
+        console.log("Assigned",this.selector, this.mySlot.assignedElements()[0].querySelector(this.selector));
+
         let anchorEl = this.mySlot.assignedElements()[0];
+        if(this.selector) {
+            anchorEl = this.checkSelector(anchorEl);
+        }
+
         if(!anchorEl)
             return;
 
         event.addListener(anchorEl, "mouseenter", null, this.onShow);
         event.addListener(anchorEl, "mouseleave", null, this.onHide);
+        event.addListener(anchorEl, "click", null, this.onHide);
     }
 
     dispatch(customEvent) {
@@ -177,5 +187,14 @@ export default class Tooltip extends WJElement {
     onHide = () => {
         this.classList.remove("active");
         this.popup.hide();
+    }
+
+    checkSelector(anchorEl) {
+        const newAnchorEl = anchorEl.querySelector(this.selector);
+        if(newAnchorEl === null) {
+            console.error("Selector not found:", this.selector, );
+        }
+
+        return newAnchorEl;
     }
 }

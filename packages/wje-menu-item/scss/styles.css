@@ -158,11 +158,11 @@
   }
 }
 
-:host {
-  ::slotted([slot="start"]) {
-    width: 1.5rem;
-  }
-}
+/*:host {*/
+/*  ::slotted([slot="start"]) {*/
+/*    width: 1.5rem;*/
+/*  }*/
+/*}*/
 
 :host(.wje-menu-variant-context) {
   display: block;

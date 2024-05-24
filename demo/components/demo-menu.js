@@ -18,10 +18,14 @@ template.innerHTML = `
           </wje-menu-item>
           <wje-menu-item>
             Menu item
+            <wje-icon slot="start" name="check"></wje-icon>
             <wje-icon slot="end" name="heart"></wje-icon>
           </wje-menu-item>
           <wje-divider style="--wje-divider-spacing: .5rem;"></wje-divider>
-          <wje-menu-item>Menu item</wje-menu-item>
+          <wje-menu-item>
+            Menu item
+            <wje-icon slot="start" name="point"></wje-icon>
+          </wje-menu-item>
           <wje-menu-item>Menu item</wje-menu-item>
           <wje-menu-item>Menu item</wje-menu-item>
           <wje-divider style="--wje-divider-spacing: .5rem;"></wje-divider>
