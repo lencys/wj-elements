@@ -8,10 +8,10 @@
   padding: var(--wje-tooltip-spacing);
   color: var(--wje-tooltip-color);
   background-color: var(--wje-tooltip-background);
-  font-weight: normal;
+  font-weight: var(--wje-tooltip-font-weight);
   font-size:  var(--wje-tooltip-font-size);
   border-radius: var(--wje-tooltip-border-radius);
-  line-height: 1;
+  line-height: var(--wje-tooltip-line-height);
   box-sizing: border-box;
   box-shadow: var(--wje-tooltip-shadow);
 }

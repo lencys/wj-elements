@@ -77,6 +77,8 @@ template.innerHTML = `
           <wje-menu-item>
             Home
             <wje-icon slot="start" name="home"></wje-icon>
+            <span slot="tooltip-start">START</span>
+            <span slot="tooltip-end">END</span>
           </wje-menu-item>
           <wje-menu-item>
             One

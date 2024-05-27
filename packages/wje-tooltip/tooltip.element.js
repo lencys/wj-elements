@@ -129,9 +129,6 @@ export default class Tooltip extends WJElement {
      * @summary After draw method
      */
     afterDraw() {
-
-        console.log("Assigned",this.selector, this.mySlot.assignedElements()[0].querySelector(this.selector));
-
         let anchorEl = this.mySlot.assignedElements()[0];
         if(this.selector) {
             anchorEl = this.checkSelector(anchorEl);

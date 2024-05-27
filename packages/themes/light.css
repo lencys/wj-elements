@@ -392,6 +392,8 @@
   --wje-status-size: var(--wje-size-small);
 
   /* Tab */
+  --wje-tab-font-family: var(--wje-font-family-secondary);
+  --wje-tab-font-size: var(--wje-font-size-small);
   --wje-tab-text-transfrom: uppercase;
   --wje-tab-font-weight: var(--wje-font-weight-medium);
   --wje-tab-letter-spacing: var(--wje-letter-spacing-widest);
@@ -400,6 +402,7 @@
   --wje-tab-padding-bottom: var(--wje-spacing-small);
   --wje-tab-color-active: var(--wje-color-primary-11);
   --wje-tab-color-hover: var(--wje-color-primary-1);
+  --wje-tab-border-radius: 0;
 
   /* Textarea */
   --wje-textarea-font-family: var(--wje-font-family);
@@ -425,6 +428,8 @@
   --wje-tooltip-background: var(--wje-color-contrast-11);
   --wje-tooltip-color: var(--wje-color-contrast-1);
   --wje-tooltip-font-size: var(--wje-font-size-small);
+  --wje-tooltip-font-weight: var(--wje-font-weight-normal);
+    --wje-tooltip-line-height: var(--wje-line-height-normal);
   --wje-tooltip-shadow: var(--wje-shadow-medium);
   --wje-tooltip-spacing: var(--wje-spacing-x-small);
   --wje-tooltip-border-radius: var(--wje-border-radius-medium);

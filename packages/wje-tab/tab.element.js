@@ -77,6 +77,8 @@ export default class Tab extends WJElement {
 
         let a = document.createElement("a");
         a.setAttribute("href", "#" + this.panel);
+        a.setAttribute("part", "native");
+        a.classList.add("native-tab");
         a.appendChild(slot);
 
         fragment.appendChild(a);

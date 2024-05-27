@@ -58,14 +58,17 @@ export default class TabGroup extends WJElement {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");
+        native.setAttribute("part", "native");
         native.classList.add("native-tab-group");
 
         let header = document.createElement("header");
+        header.setAttribute("part", "tabs");
         header.classList.add("scroll-snap-x");
 
         let nav = document.createElement("nav");
 
         let section = document.createElement("section");
+        section.setAttribute("part", "panels");
 
         let slot = document.createElement("slot");
 

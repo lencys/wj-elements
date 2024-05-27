@@ -175,6 +175,7 @@ export default class MenuItem extends WJElement {
 
         // CHECKED - Icon
         let checkedIcon = document.createElement("span");
+        checkedIcon.setAttribute("part", "check");
         checkedIcon.classList.add("check-icon");
         checkedIcon.innerHTML = `<wje-icon name="check"></wje-icon>`;
 
@@ -299,11 +300,22 @@ export default class MenuItem extends WJElement {
      * @returns {HTMLElement} The tooltip element.
      */
     collapseItem(native) {
+        console.log("collapseItem", this.getTextFromElement(this));
+        let tooltipStart = document.createElement("slot");
+        tooltipStart.setAttribute("slot", "start");
+        tooltipStart.setAttribute("name", "tooltip-start");
+
+        let tooltipEnd = document.createElement("slot");
+        tooltipEnd.setAttribute("slot", "end");
+        tooltipEnd.setAttribute("name", "tooltip-end");
+
         let tooltip = document.createElement("wje-tooltip");
-        tooltip.setAttribute("content", this.textContent);
+        tooltip.setAttribute("content", this.getTextFromElement(this));
         tooltip.setAttribute("placement", "right");
         tooltip.setAttribute("offset", this.offset || "0");
 
+        tooltip.appendChild(tooltipStart);
+        tooltip.appendChild(tooltipEnd);
         tooltip.appendChild(native);
 
         return tooltip;
@@ -377,5 +389,15 @@ export default class MenuItem extends WJElement {
      */
     beforeDisconnect() {
         this.context.innerHTML = "";
+    }
+
+    getTextFromElement(element) {
+        let text = '';
+        for (let node of element.childNodes) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                text += node.textContent;
+            }
+        }
+        return text.trim();
     }
 }

@@ -119,6 +119,15 @@ export default class DemoMenu extends WJElement {
   openModalFn(){
     debugger
   }
+
+  afterDraw() {
+    this.querySelectorAll('wje-menu-item').forEach(item => {
+      item.addEventListener('wje-menu-item:click', () => {
+        console.log('click menu item');
+      });
+    });
+
+  }
 }
 
 let __esModule = 'true';
