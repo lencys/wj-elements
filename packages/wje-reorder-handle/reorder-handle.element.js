@@ -5,6 +5,7 @@ export default class ReorderHandle extends WJElement {
     constructor() {
         super();
         this.addEventListener('mousedown', this.startDrag.bind(this));
+        this.addEventListener('touchstart', this.startTouchDrag.bind(this));
     }
 
     className = "ReorderHandle";
@@ -14,7 +15,7 @@ export default class ReorderHandle extends WJElement {
     }
 
     static get observedAttributes() {
-        return [];
+        return ['dropzone'];
     }
 
     setupAttributes() {
@@ -23,7 +24,7 @@ export default class ReorderHandle extends WJElement {
 
     draw() {
         const fragment = document.createDocumentFragment();
-    
+
         const container = document.createElement("div");
         container.classList.add("container");
         container.setAttribute("part", "native");
@@ -33,7 +34,7 @@ export default class ReorderHandle extends WJElement {
         container.appendChild(slot);
 
         fragment.appendChild(container);
-    
+
         return fragment;
     }
 
@@ -44,15 +45,26 @@ export default class ReorderHandle extends WJElement {
     }
 
     startDrag(event) {
-        if (this.hasAttribute('disabled')) return;
+        if (this.hasAttribute('disabled') || this.hasAttribute('locked')) return; 
+        this.startDragAction(event.clientX, event.clientY);
+    }
 
-        const handle = this;
+    startTouchDrag(event) {
+        if (this.hasAttribute('disabled') || this.hasAttribute('locked')) return; 
+        const touch = event.touches[0];
+        this.startDragAction(touch.clientX, touch.clientY);
+    }
+
+    startDragAction(clientX, clientY) {
         const draggable = this.parentElement;
-        const container = this.getDropzone(draggable);
+        const initialContainer = this.getDropzone(draggable);
+
+        if (!this.getAttribute("dropzone"))
+            this.setAttribute("dropzone", initialContainer.localName);
 
         const rect = draggable.getBoundingClientRect();
-        const offsetX = event.clientX - rect.left;
-        const offsetY = event.clientY - rect.top;
+        const offsetX = clientX - rect.left;
+        const offsetY = clientY - rect.top;
 
         let placeholder = document.createElement('div');
         placeholder.classList.add('sortable-item');
@@ -62,7 +74,7 @@ export default class ReorderHandle extends WJElement {
         draggable.classList.add('dragging');
 
         draggable.style.position = 'fixed';
-        draggable.style.zIndex = '1000';
+        draggable.style.zIndex = '1000'; 
         draggable.style.width = `${rect.width}px`;
 
         const moveAt = (pageX, pageY) => {
@@ -70,19 +82,24 @@ export default class ReorderHandle extends WJElement {
             draggable.style.top = `${pageY - offsetY - document.documentElement.scrollTop}px`;
         };
 
-        moveAt(event.pageX, event.pageY);
+        moveAt(clientX, clientY);
 
         const onMouseMove = (event) => {
             moveAt(event.pageX, event.pageY);
 
-            const siblings = Array.from(container.children).filter(child => child !== draggable && child !== placeholder);
+            const dropzone = this.getClosestDropzone(event.clientX, event.clientY);
+            if (!dropzone) return;
+
+            const siblings = Array.from(dropzone.children).filter(child => child !== draggable && child !== placeholder);
             for (const sibling of siblings) {
+                if (sibling.children[0]?.hasAttribute("locked")) continue;
+                
                 const siblingRect = sibling.getBoundingClientRect();
                 if (event.clientY > siblingRect.top && event.clientY < siblingRect.bottom) {
                     if (event.clientY < siblingRect.top + siblingRect.height / 2) {
-                        container.insertBefore(placeholder, sibling);
+                        dropzone.insertBefore(placeholder, sibling);
                     } else {
-                        container.insertBefore(placeholder, sibling.nextSibling);
+                        dropzone.insertBefore(placeholder, sibling.nextSibling);
                     }
                     break;
                 }
@@ -101,14 +118,15 @@ export default class ReorderHandle extends WJElement {
             draggable.style.top = '';
             draggable.style.width = '';
 
-            container.insertBefore(draggable, placeholder);
-            container.removeChild(placeholder);
+            const finalContainer = placeholder.parentElement;
+            finalContainer.insertBefore(draggable, placeholder);
+            finalContainer.removeChild(placeholder);
         };
 
         document.addEventListener('mousemove', onMouseMove);
         document.addEventListener('mouseup', onMouseUp);
 
-        container.insertBefore(placeholder, draggable);
+        initialContainer.insertBefore(placeholder, draggable);
     }
 
     getDropzone(element) {
@@ -118,5 +136,15 @@ export default class ReorderHandle extends WJElement {
             if (dropzone) return dropzone;
         }
         return element.parentElement;
+    }
+
+    getClosestDropzone(clientX, clientY) {
+        const elements = document.elementsFromPoint(clientX, clientY);
+        for (const element of elements) {
+            if (element.matches(this.getAttribute('dropzone'))) {
+                return element;
+            }
+        }
+        return null;
     }
 }
