@@ -117,6 +117,7 @@ export default class Dialog extends WJElement {
     afterClose() {}
 
     onOpen = (e) => {
+        console.log("open dialog 111");
         Promise.resolve(this.beforeOpen(this)).then((res) => {
             this.dialog.showModal();  // Now open the dialog
 

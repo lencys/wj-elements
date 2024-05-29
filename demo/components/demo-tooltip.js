@@ -5,7 +5,7 @@ const template = document.createElement('template');
 template.innerHTML = `
   <h1>Tooltip</h1>
   <div class="container">
-
+    
     <!-- BASIC -->
 
     <h2>Basic</h2>
@@ -52,6 +52,25 @@ template.innerHTML = `
             <wje-img src="/assets/img/avatar.svg"></wje-img>
           </wje-avatar>
         </wje-tooltip>
+        <style>
+          #events::part(native) {
+            display: block;
+          }
+        </style>
+      </div>
+    </div>
+    
+    <!-- DIALOG -->
+
+    <h2>Dialog</h2>
+    <div class="playground">
+      <div class="content" style="display: flex; gap: 1rem;">
+        <wje-tooltip content="Tooltip text">
+          <wje-button dialog="dialog">Button</wje-button>  
+        </wje-tooltip>
+        <wje-dialog trigger="dialog" headline="Title">
+          Lorem ipsum dolor sit amte
+        </wje-dialog>
       </div>
     </div>
   </div>`;

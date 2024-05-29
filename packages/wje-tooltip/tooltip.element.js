@@ -139,7 +139,7 @@ export default class Tooltip extends WJElement {
 
         event.addListener(anchorEl, "mouseenter", null, this.onShow);
         event.addListener(anchorEl, "mouseleave", null, this.onHide);
-        event.addListener(anchorEl, "click", null, this.onHide);
+        event.addListener(anchorEl, "click", null, this.onHide, { stopPropagation: false });
     }
 
     dispatch(customEvent) {

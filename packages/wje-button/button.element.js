@@ -294,6 +294,7 @@ export default class Button extends WJElement {
      * @param {Event} e - The event
      */
     eventDialogOpen = (e) => {
+        console.log("open dialog");
         event.dispatchCustomEvent(this, this.dialog, {
             bubbles: true
         });
