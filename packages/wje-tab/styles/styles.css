@@ -6,7 +6,7 @@
   display: block;
   position: relative;
   .native-tab {
-    display: block;
+    display: flex;
     align-items: center;
     white-space: nowrap;
     font-family: var(--wje-tab-font-family);
@@ -20,7 +20,7 @@
     padding-bottom: var(--wje-tab-padding-bottom);
     border-radius: var(--wje-tab-border-radius);
     color: var(--wje-color);
-
+    line-height: var(--wje-tab-line-height);
     & > svg {
       inline-size: 1.5em;
       pointer-events: none;

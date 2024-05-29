@@ -17,28 +17,28 @@
   --wje-toggle-curve: cubic-bezier(.4,0,.2,1);
 }
 
-:host(.wje-color-primary) input:checked + label > .label-wrapper  {
-  --wje-toggle-color-base: var(--wje-color-primary) !important;
+:host([color=primary]) input:checked + label > .label-wrapper  {
+  --wje-toggle-color-base: var(--wje-color-primary-9) !important;
 }
 
-:host(.wje-color-complete) input:checked + label > .label-wrapper {
-  --wje-toggle-color-base: var(--wje-color-complete);
+:host([color=complete]) input:checked + label > .label-wrapper {
+  --wje-toggle-color-base: var(--wje-color-complete-9);
 }
 
-:host(.wje-color-success) input:checked + label > .label-wrapper {
-  --wje-toggle-color-base: var(--wje-color-success) !important;
+:host([color=success]) input:checked + label > .label-wrapper {
+  --wje-toggle-color-base: var(--wje-color-success-9) !important;
 }
 
-:host(.wje-color-warning) input:checked + label > .label-wrapper {
-  --wje-toggle-color-base: var(--wje-color-warning);
+:host([color=warning]) input:checked + label > .label-wrapper {
+  --wje-toggle-color-base: var(--wje-color-warning-9);
 }
 
-:host(.wje-color-danger) input:checked + label > .label-wrapper {
-  --wje-toggle-color-base: var(--wje-color-danger);
+:host([color=danger]) input:checked + label > .label-wrapper {
+  --wje-toggle-color-base: var(--wje-color-danger-9);
 }
 
-:host(.wje-color-info) input:checked + label > .label-wrapper {
-  --wje-toggle-color-base: var(--wje-color-info);
+:host([color=info]) input:checked + label > .label-wrapper {
+  --wje-toggle-color-base: var(--wje-color-info-9);
 }
 
 .native-toggle {
@@ -162,7 +162,7 @@ input[type="checkbox"]{
 }
 
 /*Placememt*/
-:host .end {
+:host([placement=end]) {
   label {
     width: 100%;
   }

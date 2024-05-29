@@ -80,7 +80,6 @@
         right: 0;
         bottom: 0;
         left: 0;
-        //background: yellow;
         clip-path: polygon(
                         var(--wje-menu-item-safe-triangle-cursor-x) var(--wje-menu-item-safe-triangle-cursor-y),
                         var(--wje-menu-item-safe-triangle-submenu-start-x) var(--wje-menu-item-safe-triangle-submenu-start-y),

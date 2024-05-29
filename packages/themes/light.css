@@ -189,7 +189,7 @@
   --wje-color-danger-8: hsla(8, 77%, 65%, 1);
   --wje-color-danger-9: hsla(3, 78%, 59%, 1);
   --wje-color-danger-10: hsla(3, 68%, 41%, 1);
-  --wje-color-danger-11: hsla(3, 68%, 41%, 1);
+  --wje-color-danger-11: hsla(3, 81%, 31%, 1);
 
   /* Info */
   --wje-color-info-1: hsla(210, 5%, 92%, 1);
@@ -249,6 +249,7 @@
   --wje-button-outline: none;
 
   /* Card */
+  --wje-card-border-radius: var(--wje-border-radius-large);
   --wje-card-border-color: transparent;
 
   /* Card - Header */
@@ -273,7 +274,7 @@
   --wje-card-title-padding: 0;
   --wje-card-title-line-height: 1.2;
 
-  /*CAROUSEL*/
+  /* Carousel */
   --wje-scroll-hint: 0px;
   --wje-carousel-width: 100%;
   --wje-carousel-height: auto;
@@ -286,13 +287,13 @@
   --wje-container-indent: 0;
 
   /* Checkbox */
-  --wje-grey-check-icon: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAADsa5zLAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURUdwTHBwcG9vb3BwcBFjhIYAAAAEdFJOUwBG9tQE3MceAAAAVUlEQVQoz2NgGLKA0QGIDwDxBSCeAMEYgAWI2YCK2CagYgwgDcRSDhgYbAkKzsSKGdgakCyY6ADES7BiiCkgJ4PYyybgxAhQAsRZDrgxCpDEg4cAAAAp2ibhZRGLHgAAAABJRU5ErkJggg==") left center;
-  --wje-white-check-icon: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAQAgMAAADsa5zLAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURUdwTP///////////waf0AoAAAAEdFJOUwBG9tQE3MceAAAAVUlEQVQoz2NgGLKA0QGIDwDxBSCeAMEYgAWI2YCK2CagYgwgDcRSDhgYbAkKzsSKGdgakCyY6ADES7BiiCkgJ4PYyybgxAhQAsRZDrgxCpDEg4cAAAAp2ibhZRGLHgAAAABJRU5ErkJggg==") left center;
+  --wje-checkbox-interminate: url("data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiAgd2lkdGg9IjI0IiAgaGVpZ2h0PSIyNCIgIHZpZXdCb3g9IjAgMCAyNCAyNCIgIGZpbGw9Im5vbmUiICBzdHJva2U9ImN1cnJlbnRDb2xvciIgIHN0cm9rZS13aWR0aD0iMiIgIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgIHN0cm9rZS1saW5lam9pbj0icm91bmQiICBjbGFzcz0iaWNvbiBpY29uLXRhYmxlciBpY29ucy10YWJsZXItb3V0bGluZSBpY29uLXRhYmxlci1taW51cyI+PHBhdGggc3Ryb2tlPSJub25lIiBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTUgMTJsMTQgMCIgLz48L3N2Zz4=");
+  --wje-checkbox-checkmark: url('data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiAgd2lkdGg9IjI0IiAgaGVpZ2h0PSIyNCIgIHZpZXdCb3g9IjAgMCAyNCAyNCIgIGZpbGw9Im5vbmUiICBzdHJva2U9ImN1cnJlbnRDb2xvciIgIHN0cm9rZS13aWR0aD0iMiIgIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgIHN0cm9rZS1saW5lam9pbj0icm91bmQiICBjbGFzcz0iaWNvbiBpY29uLXRhYmxlciBpY29ucy10YWJsZXItb3V0bGluZSBpY29uLXRhYmxlci1jaGVjayI+PHBhdGggc3Ryb2tlPSJub25lIiBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTUgMTJsNSA1bDEwIC0xMCIgLz48L3N2Zz4=');
   --wje-checkbox-margin-top: 0;
   --wje-checkbox-margin-bottom: var(--wje-spacing-x-small);
   --wje-checkbox-margin-inline: 0;
-  --wje-checkbox-width: 1rem;
-  --wje-checkbox-height: 1rem;
+  --wje-checkbox-size: var(--wje-font-size-medium);
+  --wje-checkbox-border-radius: var(--wje-border-radius-medium);
 
   /* Chip */
   --wje-chip-border-radius: 100px;
@@ -393,14 +394,15 @@
 
   /* Tab */
   --wje-tab-font-family: var(--wje-font-family-secondary);
-  --wje-tab-font-size: var(--wje-font-size-small);
+  --wje-tab-font-size: var(--wje-font-size-x-small);
+  --wje-tab-line-height: var(--wje-line-height-looser);
   --wje-tab-text-transfrom: uppercase;
   --wje-tab-font-weight: var(--wje-font-weight-medium);
   --wje-tab-letter-spacing: var(--wje-letter-spacing-widest);
   --wje-tab-padding-inline: var(--wje-spacing-medium);
   --wje-tab-padding-top: var(--wje-spacing-small);
   --wje-tab-padding-bottom: var(--wje-spacing-small);
-  --wje-tab-color-active: var(--wje-color-primary-11);
+  --wje-tab-color-active: var(--wje-color-primary-9);
   --wje-tab-color-hover: var(--wje-color-primary-1);
   --wje-tab-border-radius: 0;
 
@@ -429,7 +431,7 @@
   --wje-tooltip-color: var(--wje-color-contrast-1);
   --wje-tooltip-font-size: var(--wje-font-size-small);
   --wje-tooltip-font-weight: var(--wje-font-weight-normal);
-    --wje-tooltip-line-height: var(--wje-line-height-normal);
+  --wje-tooltip-line-height: var(--wje-line-height-normal);
   --wje-tooltip-shadow: var(--wje-shadow-medium);
   --wje-tooltip-spacing: var(--wje-spacing-x-small);
   --wje-tooltip-border-radius: var(--wje-border-radius-medium);

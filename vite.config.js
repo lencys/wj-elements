@@ -108,6 +108,7 @@ export default defineConfig({
                 "reorder":  "./packages/wje-reorder/reorder.js",
                 "reorder-dropzone":  "./packages/wje-reorder-dropzone/reorder-dropzone.js",
                 "reorder-item":  "./packages/wje-reorder-item/reorder-item.js",
+                "reorder-handle":  "./packages/wje-reorder-handle/reorder-handle.js",
                 "route": "./packages/wje-route/route.js",
                 "routerx": "./packages/wje-router/router.js",
                 "router-link": "./packages/wje-router-link/router-link.js",

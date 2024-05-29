@@ -13,7 +13,7 @@
   border-color: var(--wje-border-color);
   border-style: var(--wje-border-style);
   border-width: var(--wje-border-width);
-  border-radius: var(--wje-border-radius-medium);
+  border-radius: var(--wje-card-border-radius);
   font-family: var(--wje-font-family);
   font-size: var(--wje-font-size);
   line-height: var(--wje-line-height-normal);
@@ -29,36 +29,43 @@
 
 /*BG - TEXT*/
 .native-card.wje-color-primary {
-  background: var(--wje-color-primary-11);
+  background: var(--wje-color-primary-9);
   color: var(--wje-color-contrast-0);
+  border-color: var(--wje-color-primary-9);
 }
 
 .native-card.wje-color-complete {
-  background: var(--wje-color-complete-11);
+  background: var(--wje-color-complete-9);
   color: var(--wje-color-contrast-0);
+  border-color: var(--wje-color-complete-9);
 }
 
 .native-card.wje-color-success {
-  background: var(--wje-color-success-11);
+  background: var(--wje-color-success-9);
   color: var(--wje-color-contrast-0);
+  border-color: var(--wje-color-success-9);
 }
 
 .native-card.wje-color-warning {
-  background: var(--wje-color-warning-11);
+  background: var(--wje-color-warning-9);
   color: var(--wje-color);
+  border-color: var(--wje-color-warning-9);
 }
 
 .native-card.wje-color-danger {
-  background: var(--wje-color-danger-11);
+  background: var(--wje-color-danger-9);
   color: var(--wje-color-contrast-0);
+  border-color: var(--wje-color-danger-9);
 }
 
 .native-card.wje-color-info {
-  background: var(--wje-color-info-11);
+  background: var(--wje-color-info-9);
   color: var(--wje-color-contrast-0);
+  border-color: var(--wje-color-info-9);
 }
 
 .native-card.wje-color-menu {
-  background: var(--wje-color-contrast-11);
+  background: var(--wje-color-contrast-9);
   color: var(--wje-color-contrast-0);
+  border-color: var(--wje-color-contrast-9);
 }

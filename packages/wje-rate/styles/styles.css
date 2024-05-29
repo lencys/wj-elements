@@ -19,7 +19,7 @@
 }
 
 .selected {
-  color: var(--wje-color-danger);
+  color: var(--wje-color-danger-9);
 }
 
 :host(:not([readonly])) .wje-rate-icon:hover {

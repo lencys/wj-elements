@@ -4,8 +4,8 @@
 
 /*PRIMARY*/
 .wje-button-solid.wje-color-primary {
-  background-color: var(--wje-color-primary-10);
-  border-color: var(--wje-color-primary-11);
+  background-color: var(--wje-color-primary-9);
+  border-color: var(--wje-color-primary-9);
   color: var(--wje-color-contrast-0);
 }
 
@@ -17,8 +17,8 @@
 
 /*COMPLETE*/
 .wje-button-solid.wje-color-complete {
-  background-color: var(--wje-color-complete-10);
-  border-color: var(--wje-color-complete-11);
+  background-color: var(--wje-color-complete-9);
+  border-color: var(--wje-color-complete-9);
   color: var(--wje-color-contrast-0);
 }
 
@@ -29,8 +29,8 @@
 
 /*SUCCESS*/
 .wje-button-solid.wje-color-success {
-  background-color: var(--wje-color-success-10);
-  border-color: var(--wje-color-success-11);
+  background-color: var(--wje-color-success-9);
+  border-color: var(--wje-color-success-9);
   color: var(--wje-color-contrast-0);
 }
 
@@ -41,8 +41,8 @@
 
 /*WARNING*/
 .wje-button-solid.wje-color-warning {
-  background-color: var(--wje-color-warning-10);
-  border-color: var(--wje-color-warning-11);
+  background-color: var(--wje-color-warning-9);
+  border-color: var(--wje-color-warning-9);
   color: var(--wje-color-black);
 }
 
@@ -53,8 +53,8 @@
 
 /*DANGER*/
 .wje-button-solid.wje-color-danger {
-  background-color: var(--wje-color-danger-10);
-  border-color: var(--wje-color-danger-11);
+  background-color: var(--wje-color-danger-9);
+  border-color: var(--wje-color-danger-9);
   color: var(--wje-color-contrast-0);
 }
 
@@ -65,8 +65,8 @@
 
 /*NEUTRAL*/
 .wje-button-solid.wje-color-neutral {
-  background-color: var(--wje-color-contrast-10);
-  border-color: var(--wje-color-contrast-11);
+  background-color: var(--wje-color-contrast-9);
+  border-color: var(--wje-color-contrast-9);
   color: var(--wje-color-contrast-0);
 }
 
@@ -135,7 +135,7 @@
 
 @media (any-hover: hover) {
   .wje-button-solid.wje-color-primary:hover {
-    background-color: var(--wje-color-primary-9);
+    background-color: var(--wje-color-primary-10);
     border-color: var(--wje-color-primary-10);
     color: var(--wje-color-contrast-0);
   }
@@ -147,7 +147,7 @@
   }
 
   .wje-button-solid.wje-color-complete:hover {
-    background-color: var(--wje-color-complete-9);
+    background-color: var(--wje-color-complete-10);
     border-color: var(--wje-color-complete-10);
     color: var(--wje-color-contrast-0);
   }
@@ -159,7 +159,7 @@
   }
 
   .wje-button-solid.wje-color-success:hover {
-    background-color: var(--wje-color-success-9);
+    background-color: var(--wje-color-success-10);
     border-color: var(--wje-color-success-10);
     color: var(--wje-color-contrast-0);
   }
@@ -171,7 +171,7 @@
   }
 
   .wje-button-solid.wje-color-warning:hover {
-    background-color: var(--wje-color-warning-9);
+    background-color: var(--wje-color-warning-10);
     border-color: var(--wje-color-warning-10);
     color: var(--wje-color-black);
   }
@@ -183,7 +183,7 @@
   }
 
   .wje-button-solid.wje-color-danger:hover {
-    background-color: var(--wje-color-danger-9);
+    background-color: var(--wje-color-danger-10);
     border-color: var(--wje-color-danger-10);
     color: var(--wje-color-contrast-0);
   }
@@ -195,7 +195,7 @@
   }
 
   .wje-button-solid.wje-color-neutral:hover {
-    background-color: var(--wje-color-contrast-9);
+    background-color: var(--wje-color-contrast-10);
     border-color: var(--wje-color-contrast-10);
     color: var(--wje-color-contrast-0);
   }

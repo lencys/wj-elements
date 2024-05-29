@@ -34,7 +34,6 @@
       width: 16px;
       height: 16px;
       left: 0;
-      -webkit-box-sizing: inherit;
       box-sizing: border-box;
       background-color: var(--wje-color-contrast-1);
       border: 1px solid var(--wje-color-contrast-4);
@@ -82,28 +81,33 @@
       opacity: 0.5;
       &:before {
         cursor: not-allowed!important;
-        /*background: mix($color-contrast-higher, $color-contrast-lower, 04%);*/
       }
     }
   }
 }
 
-/*Colors*/
-.success input[type="radio"]:checked + label:before {
-  border-color: var(--wje-color-success);
+/* Colors */
+
+:host([color=primary]) input[type="radio"]:checked + label:before {
+  border-color: var(--wje-color-primary-9);
 }
-.primary input[type="radio"]:checked + label:before {
-  border-color: var(--wje-color-primary);
+
+:host([color=complete]) input[type="radio"]:checked + label:before {
+  border-color: var(--wje-color-complete-9);
 }
-.complete input[type="radio"]:checked + label:before {
-  border-color: var(--wje-color-complete);
+
+:host([color=success]) input[type="radio"]:checked + label:before {
+  border-color: var(--wje-color-success-9);
 }
-.warning input[type="radio"]:checked + label:before {
-  border-color: var(--wje-color-warning);
+
+:host([color=warning]) input[type="radio"]:checked + label:before {
+  border-color: var(--wje-color-warning-9);
 }
-.danger input[type="radio"]:checked + label:before {
-  border-color: var(--wje-color-danger);
+
+:host([color=danger]) input[type="radio"]:checked + label:before {
+  border-color: var(--wje-color-danger-9);
 }
-.neutral input[type="radio"]:checked + label:before {
-  border-color: var(--wje-color-info);
+
+:host([color=info]) input[type="radio"]:checked + label:before {
+  border-color: var(--wje-color-info-9);
 }

@@ -110,18 +110,13 @@ export default class Checkbox extends WJElement {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");
+        native.setAttribute("part", "native");
         native.classList.add("native-checkbox");
-
-        if(this.variant === "circle")
-            native.classList.add("checkbox-circle");
-
-        if(this.color)
-            native.classList.add(this.color);
 
         let input = document.createElement("input");
         input.type = "checkbox";
         input.id = "checkbox";
-        input.name = this.name = "checkbox";
+        input.name = this.name || "checkbox";
         input.checked = this.hasAttribute("checked");
         input.disabled = this.hasAttribute("disabled");
         input.indeterminate = this.hasAttribute("indeterminate");

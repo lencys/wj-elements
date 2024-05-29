@@ -18,18 +18,14 @@ template.innerHTML = `
                     <wje-menu-item><wje-reorder-handle dropzone="wje-menu" slot="start"><wje-icon name="arrows-move"></wje-icon></wje-reorder-handle>Item 6</wje-menu-item>
                     <wje-menu-item><wje-reorder-handle dropzone="wje-menu" slot="start"><wje-icon name="arrows-move"></wje-icon></wje-reorder-handle>
                         Submenu item
-                        <wje-menu slot="submenu">
-                        <wje-menu-item>Menu item</wje-menu-item>
-                        <wje-menu-item>
-                            Subsubmenu item
-                            <wje-menu slot="submenu">
-                            <wje-menu-item>Menu item</wje-menu-item>
-                            <wje-menu-item>Menu item</wje-menu-item>
-                            <wje-menu-item>Menu item</wje-menu-item>
-                            </wje-menu>
-                        </wje-menu-item>
-                        <wje-menu-item>Submenu item</wje-menu-item>
-                        </wje-menu>
+<!--                        <wje-menu slot="submenu">-->
+<!--                        <wje-menu-item>Menu item</wje-menu-item>-->
+<!--                        <wje-menu-item>-->
+<!--                            Subsubmenu item-->
+<!--                           -->
+<!--                        </wje-menu-item>-->
+<!--                        <wje-menu-item>Submenu item</wje-menu-item>-->
+<!--                        </wje-menu>-->
                     </wje-menu-item>
                 </wje-menu>
 
