@@ -11,30 +11,8 @@
   --wje-font-family-secondary: "Montserrat", -apple-system, BlinkMacSystemFont,  "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell","Fira Sans", "Droid Sans", "Helvetica Neue",sans-serif;
   --wje-force-mac-font-family: -apple-system, BlinkMacSystemFont,"Inter UI",  "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell","Fira Sans", "Droid Sans", "Helvetica Neue",sans-serif;
 
-  --wje-font-size-x-small: 0.625rem;
-  --wje-font-size-small: 0.75rem;
-  --wje-font-size: 0.875rem;
-  --wje-font-size-medium: 1rem;
-  --wje-font-size-large:	1.25rem;
-  --wje-font-size-x-large: 1.5rem;
-  --wje-font-size-2x-large: 2.25rem;
-  --wje-font-size-3x-large: 3rem;
-  --wje-font-size-4x-large: 4.5rem;
-
-  --wje-line-height: 21px;
-
-  --wje-border-radius-small: .25rem; /*4px*/
-  --wje-border-radius-medium: .5rem; /*8px*/
-  --wje-border-radius-large: .75rem; /*12px*/
-  --wje-border-radius-x-large: 1rem; /*16px*/
-  --wje-border-radius-circle: 50%;
-  --wje-border-radius-pill: 50rem;
-
   --wje-border-size: 0px;
   --wje-border-style: solid;
-
-  --wje-box-shadow-medium: 0 1px 8px rgba(0,0,0,0.5);
-  --wje-box-shadow-large: rgba(0, 0, 0, 0.12) 0 4px 16px;
 
   --wje-backdrop: rgb(0, 0, 0);
   --wje-backdrop-opacity: .3;
@@ -165,6 +143,9 @@
 
   /* Button */
   --wje-button-border-color: var(--wje-color-contrast-1);
+
+  /* Divider */
+  --wje-divider-border-color: var(--wje-border-color);
 
   /* List */
   --wje-list-background: var(--wje-background);

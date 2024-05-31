@@ -80,29 +80,29 @@ svg {
 
 /*COLOR*/
 :host([color="primary"]) .native-icon {
-  color: var(--wje-color-primary-11);
+  color: var(--wje-color-primary-9);
 }
 
 :host([color="complete"]) .native-icon {
-  color: var(--wje-color-complete-11);
+  color: var(--wje-color-complete-9);
 }
 
 :host([color="success"]) .native-icon {
-  color: var(--wje-color-success-11);
+  color: var(--wje-color-success-9);
 }
 
 :host([color="warning"]) .native-icon {
-  color: var(--wje-color-warning-11);
+  color: var(--wje-color-warning-9);
 }
 
 :host([color="danger"]) .native-icon {
-  color: var(--wje-color-danger-11);
+  color: var(--wje-color-danger-9);
 }
 
 :host([color="info"]) .native-icon {
-  color: var(--wje-color-info-11);
+  color: var(--wje-color-info-9);
 }
 
 :host([color="menu"]) .native-icon {
-  color: var(--wje-color-contrast-11);
+  color: var(--wje-color-contrast-9);
 }

@@ -300,7 +300,6 @@ export default class MenuItem extends WJElement {
      * @returns {HTMLElement} The tooltip element.
      */
     collapseItem(native) {
-        console.log("collapseItem", this.getTextFromElement(this));
         let tooltipStart = document.createElement("slot");
         tooltipStart.setAttribute("slot", "start");
         tooltipStart.setAttribute("name", "tooltip-start");
