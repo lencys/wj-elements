@@ -6,9 +6,6 @@ import path from 'path';
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
     base: '/',
-    // server: {
-    //     hmr: false
-    // },
     css: {
         preprocessorOptions: {
             scss: {
@@ -100,15 +97,15 @@ export default defineConfig({
                 "options": "./packages/wje-options/options.js",
                 "popup": "./packages/wje-popup/popup.js",
                 "progress-bar": "./packages/wje-progress-bar/progress-bar.js",
-                "qr-code" : "./packages/wje-qr-code/qr-code.js",
+                "qr-code": "./packages/wje-qr-code/qr-code.js",
                 "radio": "./packages/wje-radio/radio.js",
                 "radio-group": "./packages/wje-radio-group/radio-group.js",
                 "rate": "./packages/wje-rate/rate.js",
                 "relative-time": "./packages/wje-relative-time/relative-time.js",
-                "reorder":  "./packages/wje-reorder/reorder.js",
-                "reorder-dropzone":  "./packages/wje-reorder-dropzone/reorder-dropzone.js",
-                "reorder-item":  "./packages/wje-reorder-item/reorder-item.js",
-                "reorder-handle":  "./packages/wje-reorder-handle/reorder-handle.js",
+                "reorder": "./packages/wje-reorder/reorder.js",
+                "reorder-dropzone": "./packages/wje-reorder-dropzone/reorder-dropzone.js",
+                "reorder-item": "./packages/wje-reorder-item/reorder-item.js",
+                "reorder-handle": "./packages/wje-reorder-handle/reorder-handle.js",
                 "route": "./packages/wje-route/route.js",
                 "routerx": "./packages/wje-router/router.js",
                 "router-link": "./packages/wje-router-link/router-link.js",

@@ -182,8 +182,8 @@
   font-family: var(--wje-force-mac-font-family);
   font-size: 20px;
   position: absolute;
-  right: 10px;
-  top: 2px;
+  right: 0;
+  top: 0;
 }
 
 :host([required]) .standard .input-wrapper::after {
@@ -216,6 +216,15 @@
 
 slot[name="start"], slot[name="end"] {
   display: flex;
+}
+
+slot[name="error"] {
+  display: none;
+  margin-inline: .5rem;
+}
+
+:host([invalid]) slot[name="error"] {
+  display: block;
 }
 
 input {
