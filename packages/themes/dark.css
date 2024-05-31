@@ -39,96 +39,97 @@
   --wje-color-white: #fff;
   --wje-color-black: #000;
 
-  --wje-color-contrast-0: hsl(0, 0%, 0%);
-  --wje-color-contrast-1: hsl(240 5.1% 15%);
-  --wje-color-contrast-2: hsl(240 5.7% 18.2%);
-  --wje-color-contrast-3: hsl(240 4.6% 22%);
-  --wje-color-contrast-4: hsl(240 5% 27.6%);
-  --wje-color-contrast-5: hsl(240 5% 35.5%);
-  --wje-color-contrast-6: hsl(240 3.7% 44%);
-  --wje-color-contrast-7: hsl(240 5.3% 58%);
-  --wje-color-contrast-8: hsl(240 5.6% 73%);
-  --wje-color-contrast-9: hsl(240 7.3% 84%);
-  --wje-color-contrast-10: hsl(240 9.1% 91.8%);
-  --wje-color-contrast-11: hsl(0 0% 95%);
+  /* Primary */
+  --wje-color-primary-1: hsla(254, 59%, 35%, 1);
+  --wje-color-primary-2: hsla(254, 59%, 45%, 1);
+  --wje-color-primary-3: hsla(254, 67%, 62%, 1);
+  --wje-color-primary-4: hsla(257, 61%, 68%, 1);
+  --wje-color-primary-5: hsla(258, 61%, 72%, 1);
+  --wje-color-primary-6: hsla(259, 61%, 76%, 1);
+  --wje-color-primary-7: hsla(260, 63%, 80%, 1);
+  --wje-color-primary-8: hsla(260, 61%, 84%, 1);
+  --wje-color-primary-9: hsla(260, 64%, 88%, 1);
+  --wje-color-primary-10: hsla(260, 66%, 92%, 1);
+  --wje-color-primary-11: hsla(261, 70%, 96%, 1);
 
-  /*PRIMARY*/
-  --wje-color-primary-1: hsl(254, 59%, 57%);
-  --wje-color-primary-2: hsl(256, 59%, 61%);
-  --wje-color-primary-3: hsl(257, 60%, 65%);
-  --wje-color-primary-4: hsl(257, 61%, 68%);
-  --wje-color-primary-5: hsl(258, 61%, 72%);
-  --wje-color-primary-6: hsl(259, 61%, 76%);
-  --wje-color-primary-7: hsl(260, 63%, 80%);
-  --wje-color-primary-8: hsl(260, 62%, 84%);
-  --wje-color-primary-9: hsl(260, 63%, 88%);
-  --wje-color-primary-10: hsl(260, 65%, 92%);
-  --wje-color-primary-11: hsl(261, 70%, 96%);
+  /* Complete */
+  --wje-color-complete-1: hsla(211, 100%, 28%, 1);
+  --wje-color-complete-2: hsla(211, 100%, 45%, 1);
+  --wje-color-complete-3: hsla(211, 100%, 60%, 1);
+  --wje-color-complete-4: hsla(223, 83%, 70%, 1);
+  --wje-color-complete-5: hsla(225, 83%, 74%, 1);
+  --wje-color-complete-6: hsla(226, 82%, 78%, 1);
+  --wje-color-complete-7: hsla(228, 85%, 82%, 1);
+  --wje-color-complete-8: hsla(229, 86%, 86%, 1);
+  --wje-color-complete-9: hsla(229, 86%, 89%, 1);
+  --wje-color-complete-10: hsla(229, 89%, 93%, 1);
+  --wje-color-complete-11: hsla(233, 90%, 96%, 1);
 
-  /*COMPLETE*/
-  --wje-color-complete-1: hsl(211, 100%, 46%);
-  --wje-color-complete-2: hsl(218, 83%, 59%);
-  --wje-color-complete-3: hsl(221, 83%, 65%);
-  --wje-color-complete-4: hsl(223, 83%, 70%);
-  --wje-color-complete-5: hsl(225, 83%, 74%);
-  --wje-color-complete-6: hsl(226, 83%, 78%);
-  --wje-color-complete-7: hsl(227, 84%, 82%);
-  --wje-color-complete-8: hsl(229, 85%, 86%);
-  --wje-color-complete-9: hsl(229, 84%, 89%);
-  --wje-color-complete-10: hsl(229, 88%, 93%);
-  --wje-color-complete-11: hsl(232, 88%, 96%);
+  /* Success */
+  --wje-color-success-1: hsla(158, 93%, 23%, 1);
+  --wje-color-success-2: hsla(158, 74%, 30%, 1);
+  --wje-color-success-3: hsla(158, 67%, 45%, 1);
+  --wje-color-success-4: hsla(152, 42%, 59%, 1);
+  --wje-color-success-5: hsla(151, 42%, 65%, 1);
+  --wje-color-success-6: hsla(150, 41%, 70%, 1);
+  --wje-color-success-7: hsla(149, 42%, 75%, 1);
+  --wje-color-success-8: hsla(150, 41%, 80%, 1);
+  --wje-color-success-9: hsla(149, 40%, 85%, 1);
+  --wje-color-success-10: hsla(149, 41%, 90%, 1);
+  --wje-color-success-11: hsla(147, 44%, 95%, 1);
 
-  /*SUCCESS*/
-  --wje-color-success-1: hsl(158, 74%, 38%);
-  --wje-color-success-2: hsl(155, 48%, 47%);
-  --wje-color-success-3: hsl(153, 42%, 54%);
-  --wje-color-success-4: hsl(152, 42%, 59%);
-  --wje-color-success-5: hsl(151, 42%, 65%);
-  --wje-color-success-6: hsl(150, 41%, 70%);
-  --wje-color-success-7: hsl(149, 42%, 75%);
-  --wje-color-success-8: hsl(150, 41%, 80%);
-  --wje-color-success-9: hsl(149, 41%, 85%);
-  --wje-color-success-10: hsl(148, 42%, 90%);
-  --wje-color-success-11: hsl(147, 44%, 95%);
+  /* Warning */
+  --wje-color-warning-1: hsla(47, 75%, 38%, 1);
+  --wje-color-warning-2: hsla(47, 100%, 53%, 1);
+  --wje-color-warning-3: hsla(47, 100%, 67%, 1);
+  --wje-color-warning-4: hsla(47, 100%, 74%, 1);
+  --wje-color-warning-5: hsla(46, 100%, 77%, 1);
+  --wje-color-warning-6: hsla(46, 100%, 81%, 1);
+  --wje-color-warning-7: hsla(46, 100%, 84%, 1);
+  --wje-color-warning-8: hsla(46, 100%, 87%, 1);
+  --wje-color-warning-9: hsla(46, 100%, 90%, 1);
+  --wje-color-warning-10: hsla(47, 100%, 93%, 1);
+  --wje-color-warning-11: hsla(45, 100%, 96%, 1);
 
-  /*WARNING*/
-  --wje-color-warning-1: hsl(47, 100%, 63%);
-  --wje-color-warning-2: hsl(47, 100%, 67%);
-  --wje-color-warning-3: hsl(47, 100%, 71%);
-  --wje-color-warning-4: hsl(47, 100%, 74%);
-  --wje-color-warning-5: hsl(46, 100%, 77%);
-  --wje-color-warning-6: hsl(46, 100%, 81%);
-  --wje-color-warning-7: hsl(46, 100%, 84%);
-  --wje-color-warning-8: hsl(46, 100%, 87%);
-  --wje-color-warning-9: hsl(46, 100%, 90%);
-  --wje-color-warning-10: hsl(46, 100%, 93%);
-  --wje-color-warning-11: hsl(44, 100%, 96%);
+  /* Danger */
+  --wje-color-danger-1: hsla(3, 81%, 31%, 1);
+  --wje-color-danger-2: hsla(3, 68%, 41%, 1);
+  --wje-color-danger-3: hsla(3, 78%, 59%, 1);
+  --wje-color-danger-4: hsla(8, 77%, 65%, 1);
+  --wje-color-danger-5: hsla(8, 80%, 70%, 1);
+  --wje-color-danger-6: hsla(10, 82%, 74%, 1);
+  --wje-color-danger-7: hsla(9, 87%, 79%, 1);
+  --wje-color-danger-8: hsla(10, 91%, 83%, 1);
+  --wje-color-danger-9: hsla(11, 94%, 87%, 1);
+  --wje-color-danger-10: hsla(12, 100%, 91%, 1);
+  --wje-color-danger-11: hsla(9, 100%, 96%, 1);
 
-  /*DANGER*/
-  --wje-color-danger-1: hsl(3, 68%, 51%);
-  --wje-color-danger-2: hsl(6, 71%, 56%);
-  --wje-color-danger-3: hsl(7, 73%, 61%);
-  --wje-color-danger-4: hsl(8, 77%, 65%);
-  --wje-color-danger-5: hsl(8, 80%, 70%);
-  --wje-color-danger-6: hsl(10, 82%, 74%);
-  --wje-color-danger-7: hsl(9, 86%, 79%);
-  --wje-color-danger-8: hsl(10, 90%, 83%);
-  --wje-color-danger-9: hsl(11, 93%, 87%);
-  --wje-color-danger-10: hsl(11, 100%, 91%);
-  --wje-color-danger-11: hsl(9, 100%, 96%);
+  /* Info */
+  --wje-color-info-1: hsla(207, 36%, 16%, 1);
+  --wje-color-info-2: hsla(207, 16%, 27%, 1);
+  --wje-color-info-3: hsla(207, 20%, 35%, 1);
+  --wje-color-info-4: hsla(210, 7%, 45%, 1);
+  --wje-color-info-5: hsla(208, 6%, 52%, 1);
+  --wje-color-info-6: hsla(203, 6%, 58%, 1);
+  --wje-color-info-7: hsla(213, 6%, 65%, 1);
+  --wje-color-info-8: hsla(203, 5%, 71%, 1);
+  --wje-color-info-9: hsla(210, 7%, 78%, 1);
+  --wje-color-info-10: hsla(204, 6%, 85%, 1);
+  --wje-color-info-11: hsla(210, 5%, 92%, 1);
 
-  /*INFO*/
-  --wje-color-info-1: hsl(208, 16%, 27%);
-  --wje-color-info-2: hsl(208, 12%, 33%);
-  --wje-color-info-3: hsl(210, 9%, 39%);
-  --wje-color-info-4: hsl(210, 7%, 45%);
-  --wje-color-info-5: hsl(210, 6%, 52%);
-  --wje-color-info-6: hsl(207, 6%, 58%);
-  --wje-color-info-7: hsl(212, 6%, 65%);
-  --wje-color-info-8: hsl(206, 6%, 71%);
-  --wje-color-info-9: hsl(210, 7%, 78%);
-  --wje-color-info-10: hsl(204, 6%, 85%);
-  --wje-color-info-11: hsl(210, 5%, 92%);
+  /* Contrast */
+  --wje-color-contrast-0: hsla(0, 0%, 0%, 1);
+  --wje-color-contrast-1: hsla(240, 7%, 8%, 1);
+  --wje-color-contrast-2: hsla(240, 6%, 10%, 1);
+  --wje-color-contrast-3: hsla(240, 4%, 16%, 1);
+  --wje-color-contrast-4: hsla(240, 5%, 26%, 1);
+  --wje-color-contrast-5: hsla(240, 5%, 34%, 1);
+  --wje-color-contrast-6: hsla(240, 4%, 46%, 1);
+  --wje-color-contrast-7: hsla(240, 5%, 65%, 1);
+  --wje-color-contrast-8: hsla(240, 5%, 84%, 1);
+  --wje-color-contrast-9: hsla(240, 6%, 90%, 1);
+  --wje-color-contrast-10: hsla(240, 5%, 96%, 1);
+  --wje-color-contrast-11: hsla(0, 0%, 98%, 1);
 
   /*
    [ Elements ]
