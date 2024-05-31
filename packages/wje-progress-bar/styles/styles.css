@@ -3,23 +3,23 @@
 */
 
 :host(.wje-color-primary) #bar {
-  --wje-progress-bar-color: var(--wje-color-primary);
+  --wje-progress-bar-color: var(--wje-color-primary-9);
 }
 
 :host(.wje-color-complete) #bar {
-  --wje-progress-bar-color: var(--wje-color-complete);
+  --wje-progress-bar-color: var(--wje-color-complete-9);
 }
 
 :host(.wje-color-success) #bar {
-  --wje-progress-bar-color: var(--wje-color-success);
+  --wje-progress-bar-color: var(--wje-color-success-9);
 }
 
 :host(.wje-color-warning) #bar {
-  --wje-progress-bar-color: var(--wje-color-warning);
+  --wje-progress-bar-color: var(--wje-color-warning-9);
 }
 
 :host(.wje-color-danger) #bar {
-  --wje-progress-bar-color: var(--wje-color-danger);
+  --wje-progress-bar-color: var(--wje-color-danger-9);
 }
 
 :host(.wje-color-dark) #bar {
@@ -27,7 +27,7 @@
 }
 
 :host(.wje-color-light) #bar {
-  --wje-progress-bar-color: var(--wje-color-contrast-11);
+  --wje-progress-bar-color: var(--wje-color-contrast-9);
 }
 
 :host {
