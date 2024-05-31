@@ -15,7 +15,7 @@ export default class ReorderHandle extends WJElement {
     }
 
     static get observedAttributes() {
-        return ['dropzone'];
+        return ['dropzone', 'parent'];
     }
 
     setupAttributes() {
@@ -56,11 +56,19 @@ export default class ReorderHandle extends WJElement {
     }
 
     startDragAction(clientX, clientY) {
-        const draggable = this.parentElement;
+        let draggable;
+        if (this.hasAttribute('parent')) {
+            const parentSelector = this.getAttribute('parent');
+            draggable = this.closest(parentSelector);
+        } else {
+            draggable = this.parentElement;
+        }
+
         const initialContainer = this.getDropzone(draggable);
 
-        if (!this.getAttribute("dropzone"))
+        if (!this.getAttribute("dropzone")) {
             this.setAttribute("dropzone", initialContainer.localName);
+        }
 
         const rect = draggable.getBoundingClientRect();
         const offsetX = clientX - rect.left;
@@ -74,7 +82,7 @@ export default class ReorderHandle extends WJElement {
         draggable.classList.add('dragging');
 
         draggable.style.position = 'fixed';
-        draggable.style.zIndex = '1000'; 
+        draggable.style.zIndex = '1000';
         draggable.style.width = `${rect.width}px`;
 
         const moveAt = (pageX, pageY) => {
@@ -93,7 +101,7 @@ export default class ReorderHandle extends WJElement {
             const siblings = Array.from(dropzone.children).filter(child => child !== draggable && child !== placeholder);
             for (const sibling of siblings) {
                 if (sibling.children[0]?.hasAttribute("locked")) continue;
-                
+
                 const siblingRect = sibling.getBoundingClientRect();
                 if (event.clientY > siblingRect.top && event.clientY < siblingRect.bottom) {
                     if (event.clientY < siblingRect.top + siblingRect.height / 2) {
