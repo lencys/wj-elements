@@ -256,7 +256,7 @@ const f = class f extends HTMLElement {
     });
     this.template = t || E, this.isAttached = !1, this.service = new j({
       store: w
-    }), this.defineDepandencies(), this.rendering = !1, this.runtimeTimeout = null, this.count = 0, this.functionStack = [], this.scheludedRefresh = !1, this._depandencies = {};
+    }), this.definedependencies(), this.rendering = !1, this.runtimeTimeout = null, this.count = 0, this.functionStack = [], this.scheludedRefresh = !1, this._dependencies = {};
   }
   get permission() {
     return this.getAttribute("permission-check");
@@ -313,11 +313,11 @@ const f = class f extends HTMLElement {
     var t;
     return (t = this.getAttribute("remove-class-after-connect")) == null ? void 0 : t.split(" ");
   }
-  get depandencies() {
-    return this._depandencies;
+  get dependencies() {
+    return this._dependencies;
   }
-  set depandencies(t) {
-    this._depandencies = t;
+  set dependencies(t) {
+    this._dependencies = t;
   }
   static define(t, s = this, i = {}) {
     if (!customElements.get(t)) {
@@ -325,8 +325,8 @@ const f = class f extends HTMLElement {
       return;
     }
   }
-  defineDepandencies() {
-    this.depandencies && Object.entries(depandencies).forEach((t, s) => f.define(t, s));
+  definedependencies() {
+    this.dependencies && Object.entries(dependencies).forEach((t, s) => f.define(t, s));
   }
   beforeDraw() {
   }

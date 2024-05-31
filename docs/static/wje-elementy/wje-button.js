@@ -15,7 +15,7 @@ class d extends h {
      * Dependencies
      * @type {Object}
      */
-    s(this, "depandencies", {
+    s(this, "dependencies", {
       "wje-icon": p
     });
     /**

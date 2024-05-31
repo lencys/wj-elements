@@ -37,7 +37,7 @@ export default class FileUpload extends WJElement {
    * Dependencies
    * @type {Object}
    */
-  depandencies = {
+  dependencies = {
     "wje-button": Button,
   }
 

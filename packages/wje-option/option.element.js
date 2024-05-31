@@ -33,7 +33,7 @@ export default class Option extends WJElement {
     /**
      * Dependencies of the Option component.
      */
-    depandencies = {
+    dependencies = {
         "wje-icon": Icon
     }
 

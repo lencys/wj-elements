@@ -6,7 +6,7 @@ export default class Dropdown extends WJElement {
         super();
     }
 
-    depandencies = {
+    dependencies = {
         "wje-popup": Popup
     }
 

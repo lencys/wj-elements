@@ -98,7 +98,7 @@ class f extends x {
      * Dependencies
      * @type {Object}
      */
-    h(this, "depandencies", {
+    h(this, "dependencies", {
       "wje-button": A
     });
     h(this, "className", "FileUpload");

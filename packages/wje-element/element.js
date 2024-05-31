@@ -20,14 +20,14 @@ export default class WJElement extends HTMLElement {
 
 		// definujeme vsetky zavislosti.
 		// Do zavislosti patria len komponenty, ktore su zavisle od ktoreho je zavisly tento komponent
-		this.defineDepandencies();
+		this.definedependencies();
 
 		this.rendering = false;
 		this.runtimeTimeout = null;
 		this.count = 0;
 		this.functionStack = [];
 		this.scheludedRefresh = false;
-		this._depandencies = {};
+		this._dependencies = {};
 	}
 
 	get permission() {
@@ -102,12 +102,12 @@ export default class WJElement extends HTMLElement {
 		return this.getAttribute('remove-class-after-connect')?.split(' ');
 	}
 
-	get depandencies() {
-		return this._depandencies;
+	get dependencies() {
+		return this._dependencies;
 	}
 
-	set depandencies(value) {
-		this._depandencies = value;
+	set dependencies(value) {
+		this._dependencies = value;
 	};
 
 	static processTemplates = (pTemplate, template) => {
@@ -124,9 +124,9 @@ export default class WJElement extends HTMLElement {
 		}
 	}
 
-	defineDepandencies() {
-		if (this.depandencies)
-			Object.entries(depandencies).forEach((name, component) => WJElement.define(name, component))
+	definedependencies() {
+		if (this.dependencies)
+			Object.entries(dependencies).forEach((name, component) => WJElement.define(name, component))
 	}
 
 	beforeDraw() { }

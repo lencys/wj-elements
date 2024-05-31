@@ -19,9 +19,9 @@ class m extends b {
     /**
      * Dependencies of the IconPicker component.
      *
-     * @property {Object} depandencies
+     * @property {Object} dependencies
      */
-    p(this, "depandencies", {
+    p(this, "dependencies", {
       "wje-input": v,
       "wje-infinite-scroll": u,
       "wje-tooltip": f,

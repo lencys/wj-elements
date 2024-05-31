@@ -38,9 +38,9 @@ export default class ImgComparer extends WJElement {
     /**
      * Dependencies of the ImgComparer component.
      *
-     * @property {Object} depandencies
+     * @property {Object} dependencies
      */
-    depandencies = {
+    dependencies = {
         "wje-icon": Icon
     }
 

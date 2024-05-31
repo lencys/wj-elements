@@ -25,9 +25,9 @@ class w extends h {
     /**
      * Dependencies of the ImgComparer component.
      *
-     * @property {Object} depandencies
+     * @property {Object} dependencies
      */
-    l(this, "depandencies", {
+    l(this, "dependencies", {
       "wje-icon": g
     });
     l(this, "className", "ImgComparer");
