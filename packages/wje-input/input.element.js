@@ -1,4 +1,4 @@
-import { default as WJElement, event } from "../wje-element/element.js";
+import {default as WJElement, event} from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**
@@ -50,7 +50,10 @@ export default class Input extends WJElement {
      * @param {string} value - The value to set.
      */
     set value(value) {
-        this.setAttribute("value", value);
+        this.internals.setFormValue(value);
+
+        if (this.input)
+            this.input.value = value;
     }
 
     /**
@@ -58,7 +61,7 @@ export default class Input extends WJElement {
      * @returns {string} The value of the attribute.
      */
     get value() {
-        return this.getAttribute("value") || "";
+        return this.input?.value || "";
     }
 
     /**
@@ -90,7 +93,7 @@ export default class Input extends WJElement {
      * @param {boolean} isInvalid - Whether the input is invalid.
      */
     set invalid(isInvalid) {
-        isInvalid && this.customErrorDisplay ? this.setAttribute('invalid', '') : this.removeAttribute('invalid');
+        isInvalid ? this.setAttribute('invalid', '') : this.removeAttribute('invalid');
     }
 
     /**
@@ -142,26 +145,25 @@ export default class Input extends WJElement {
     }
 
     /**
-     * Checks the validity of the input.
-     * @returns {boolean} Whether the input is valid.
+     * @summary Getter for the defaultValue attribute.
+     * This method retrieves the 'value' attribute of the custom input element.
+     * The 'value' attribute represents the default value of the input element.
+     * If the 'value' attribute is not set, it returns an empty string.
+     * @returns {string} The default value of the input element.
      */
-    checkValidity() {
-        return this.internals.checkValidity();
+    get defaultValue() {
+        return this.getAttribute('value') ?? '';
     }
 
     /**
-     * Reports the validity of the input.
-     * @returns {boolean} Whether the input is valid.
+     * @summary Setter for the defaultValue attribute.
+     * This method sets the 'value' attribute of the custom input element to the provided value.
+     * The 'value' attribute represents the default value of the input element.
+     * @param {string} value - The value to set as the default value.
      */
-    reportValidity() {
-        return this.internals.reportValidity();
+    set defaultValue(value) {
+        this.setAttribute('value', value);
     }
-
-    /**
-     * Whether the input is associated with a form.
-     * @type {boolean}
-     */
-    static formAssociated = true;
 
     /**
      * The class name of the input.
@@ -186,10 +188,17 @@ export default class Input extends WJElement {
     }
 
     /**
+     * Whether the input is associated with a form.
+     * @type {boolean}
+     */
+    static formAssociated = true;
+
+    /**
      * Sets up the attributes for the input.
      */
     setupAttributes() {
         this.isShadowRoot = "open";
+        this.value = this.defaultValue;
     }
 
     /**
@@ -202,6 +211,7 @@ export default class Input extends WJElement {
     draw(context, store, params) {
         let hasSlotStart = this.hasSlot(this, "start");
         let hasSlotEnd = this.hasSlot(this, "end");
+        let hasSlotError = this.hasSlot(this, "error");
         let fragment = document.createDocumentFragment();
 
         // Wrapper
@@ -209,11 +219,13 @@ export default class Input extends WJElement {
         native.setAttribute("part", "native");
         native.classList.add("native-input", this.variant || "default");
 
-        if(this.hasAttribute("invalid"))
+        if (this.hasAttribute("invalid"))
             native.classList.add("has-error");
 
         let wrapper = document.createElement("div");
         wrapper.classList.add("wrapper");
+
+        native.appendChild(wrapper);
 
         let inputWrapper = document.createElement("div");
         inputWrapper.classList.add("input-wrapper");
@@ -221,7 +233,7 @@ export default class Input extends WJElement {
         // Label
         let label = document.createElement("label");
         label.innerText = this.label;
-        if(this.value && !this.hasAttribute("error"))
+        if (this.value && !this.hasAttribute("error"))
             label.classList.add("fade");
 
         // Input
@@ -231,62 +243,64 @@ export default class Input extends WJElement {
         input.setAttribute("value", this.value || "");
         input.classList.add("form-control");
 
-        if(this.hasAttribute("placeholder"))
-            input.setAttribute("placeholder", this.placeholder);
+        const attributes = ["placeholder", "multiple", "disabled", "readonly", "maxlength", "max", "min"];
 
-        if(this.hasAttribute("multiple"))
-            input.setAttribute("multiple", this.multiple);
-
-        if(this.hasAttribute("disabled"))
-            input.setAttribute("disabled", "");
-
-        if(this.hasAttribute("readonly"))
-            input.setAttribute("readonly", "");
-
-        if(this.hasAttribute("maxlength"))
-            input.setAttribute("maxlength", this.maxlength);
-
-        if(this.hasAttribute("max"))
-            input.setAttribute("max", this.max);
-
-        if(this.hasAttribute("min"))
-            input.setAttribute("min", this.min);
+        attributes.forEach(attr => {
+            if (this.hasAttribute(attr)) {
+                input.setAttribute(attr, this[attr] || "");
+            }
+        });
 
         // Error
         let error = document.createElement("div");
         error.classList.add("error-message");
+        error.setAttribute("part", "error");
+
+        let errorSlot = null;
+        if (hasSlotError) {
+            errorSlot = document.createElement("slot");
+            errorSlot.setAttribute("name", "error");
+
+            if(this.hasAttribute('error-inline')){
+                // inline version of error message
+                native.appendChild(errorSlot);
+            } else {
+                // tooltip version of error message
+                error.appendChild(errorSlot);
+                wrapper.appendChild(error);
+            }
+        } else {
+            wrapper.appendChild(error);
+        }
 
         let start = null;
-        if(hasSlotStart) {
+        if (hasSlotStart) {
             start = document.createElement("slot");
             start.setAttribute("name", "start");
         }
 
         let end = null;
-        if(hasSlotEnd) {
+        if (hasSlotEnd) {
             end = document.createElement("slot");
             end.setAttribute("name", "end");
         }
 
-        if(hasSlotStart) {
+        if (hasSlotStart) {
             wrapper.appendChild(start);
             native.classList.add("has-start");
         }
 
-        if(this.variant === "standard") {
-            if(this.label)
+        if (this.variant === "standard") {
+            if (this.label)
                 native.appendChild(label);
         } else {
             inputWrapper.appendChild(label);
         }
 
         inputWrapper.appendChild(input);
-
         wrapper.appendChild(inputWrapper);
 
-        native.appendChild(wrapper);
-
-        if(this.hasAttribute("clearable")) {
+        if (this.hasAttribute("clearable")) {
             this.clear = document.createElement("wje-button");
             this.clear.classList.add("clear");
             this.clear.setAttribute("fill", "link")
@@ -294,18 +308,14 @@ export default class Input extends WJElement {
 
             let clearIcon = document.createElement("wje-icon");
             clearIcon.setAttribute("name", "x");
-
             this.clear.appendChild(clearIcon);
-
             inputWrapper.appendChild(this.clear);
         }
 
-        if(hasSlotEnd) {
+        if (hasSlotEnd) {
             wrapper.appendChild(end);
             native.classList.add("has-end");
         }
-
-        native.appendChild(error);
 
         fragment.appendChild(native);
 
@@ -333,7 +343,7 @@ export default class Input extends WJElement {
             'pattern'
         ].forEach((attr) => {
             const attrValue = attr === 'required' ? this.hasAttribute(attr) : this.getAttribute(attr);
-            if(attrValue !== null && attrValue !== undefined) {
+            if (attrValue !== null && attrValue !== undefined) {
                 this.input[attr] = attrValue;
             }
         });
@@ -345,84 +355,124 @@ export default class Input extends WJElement {
 
         this.input.addEventListener("blur", (e) => {
             this.native.classList.remove("focused");
-            if(!e.target.value)
+            if (!e.target.value)
                 this.labelElement.classList.remove("fade")
         });
 
         this.input.addEventListener('input', (e) => {
-            if(this.validateOnChange) {
-                this.pristine = false;
-            }
-            this.input.classList.remove("pristine");
+            this.validateInput();
 
+            if (this.validateOnChange) {
+                this.pristine = false;
+                this.propagateValidation();
+            }
+
+            this.input.classList.remove("pristine");
             this.labelElement.classList.add("fade");
 
             const clone = new e.constructor(e.type, e);
             this.dispatchEvent(clone);
 
-            this.validateInput();
-
             event.dispatchCustomEvent(this, "wje-input:input", {
                 value: this.input.value
             });
+
+            this.value = this.input.value;
         });
 
         this.addEventListener('invalid', (e) => {
             this.invalid = true;
             this.pristine = false;
 
-            this.errorMessage.textContent = this.internals.validationMessage;
+            this.showInvalidMessage();
 
-            if(this.customErrorDisplay) {
+            if (this.customErrorDisplay) {
                 e.preventDefault();
             }
         });
 
         this.addEventListener('focus', () => this.input.focus());
 
-        if(this.clear) {
+        if (this.clear) {
             this.clear.addEventListener("wje-button:click", (e) => {
                 this.input.value = "";
                 event.dispatchCustomEvent(this.clear, "wje-input:clear");
             });
         }
+
+        this.validateInput();
     }
 
     /**
-     * Validates the input.
+     * @summary Displays the validation message for the input.
+     * If the input has a slot named 'error', it sets the text content of the element with attribute 'error-message' inside the slot to the validation message.
+     * If the input does not have an 'error' slot, it sets the text content of the errorMessage property to the validation message.
+     */
+    showInvalidMessage() {
+        let hasSlotError = this.hasSlot(this, "error");
+
+        if (hasSlotError) {
+            const slot = this.querySelector("[slot='error']");
+            let errorMessage = slot.querySelector("[error-message]");
+
+            if(!errorMessage){
+                const error = document.createElement("div");
+                error.setAttribute("error-message", "");
+                slot.appendChild(error);
+                errorMessage = error;
+            }
+
+            errorMessage.textContent = this.internals.validationMessage;
+        } else {
+            this.errorMessage.textContent = this.internals.validationMessage;
+        }
+    }
+
+    /**
+     * @summary Validates the input.
+     * This method checks the validity state of the input. If the input is not valid, it iterates over the validity state object.
+     * For each invalid state, it constructs an attribute name and checks if the input has this attribute.
+     * If the input has the attribute, it sets the validation error to the state and the error message to the attribute value.
+     * If the input does not have the attribute, it sets the error message to the default validation message of the input.
+     * It then sets the validity in the form internals to an object with the validation error as key and true as value, and the error message.
+     * If the input is valid, it sets the validity in the form internals to an empty object.
      */
     validateInput() {
         const validState = this.input.validity;
-        this.invalid = false;
 
-        if(!validState.valid) {
-            for(let state in validState) {
+        if (!validState.valid) {
+            for (let state in validState) {
                 const attr = `message-${state.toString()}`;
 
-                if(validState[state]) {
+                if (validState[state]) {
                     this.validationError = state.toString();
-                    this.invalid = !this.pristine && !validState.valid;
-
                     let errorMessage = this.message;
 
-                    if(!this.hasAttribute("message"))
+                    // TODO this take error messages based on lang from operating system of user  should we implement custom translations based on app language ?
+                    if (!this.hasAttribute("message"))
                         errorMessage = this.hasAttribute(attr) ? this.getAttribute(attr) : this.input.validationMessage;
 
                     this.internals.setValidity(
-                      {[this.validationError]: true},
-                      errorMessage
+                        {[this.validationError]: true},
+                        errorMessage
                     );
-
-                    if(this.invalid && this.customErrorDisplay) {
-                        this.dispatchEvent(new Event('invalid'));
-                    }
                 }
             }
-        }
-        else {
+        } else {
             this.internals.setValidity({});
-            this.pristine = false;
-            this.errorMessage.textContent = this.input.validationMessage;
+        }
+    }
+
+    /**
+     * @summary Propagates the validation state of the input.
+     * This method sets the 'invalid' property of the input based on its 'pristine' state and its internal validity state.
+     * If the input is invalid and the 'customErrorDisplay' property is true, it dispatches an 'invalid' event.
+     */
+    propagateValidation() {
+        this.invalid = !this.pristine && !this.internals.validity.valid;
+
+        if (this.invalid && this.customErrorDisplay) {
+            this.dispatchEvent(new Event('invalid'));
         }
     }
 
@@ -436,5 +486,74 @@ export default class Input extends WJElement {
         let selector = slotName ? `[slot="${slotName}"]` : "[slot]";
 
         return el.querySelectorAll(selector).length > 0 ? true : false;
+    }
+
+    /**
+     * @summary Callback function that is called when the custom element is associated with a form.
+     * This function adds an event listener to the form's submit event, which validates the input and propagates the validation.
+     * @param {HTMLFormElement} form - The form the custom element is associated with.
+     */
+    formAssociatedCallback(form) {
+        form.addEventListener('submit', () => {
+            this.validateInput();
+            this.propagateValidation();
+        });
+    }
+
+    /**
+     * The formResetCallback method is a built-in lifecycle callback that gets called when a form gets reset.
+     * This method is responsible for resetting the value of the custom input element to its default value.
+     * It also resets the form value and validity state in the form internals.
+     *
+     * @method
+     */
+    formResetCallback() {
+        // Set the value of the custom input element to its default value
+        this.value = this.defaultValue;
+        // Reset the form value in the form internals to the default value
+        this.internals.setFormValue(this.defaultValue);
+        // Reset the validity state in the form internals
+        this.internals.setValidity({});
+    }
+
+    /**
+     * The formStateRestoreCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is restored.
+     * This method is responsible for restoring the value of the custom input element to its saved state.
+     * It also restores the form value and validity state in the form internals to their saved states.
+     *
+     * @param {Object} state - The saved state of the custom input element.
+     * @method
+     */
+    formStateRestoreCallback(state) {
+        // Set the value of the custom input element to its saved value
+        this.value = state.value;
+        // Restore the form value in the form internals to the saved value
+        this.internals.setFormValue(state.value);
+        // Restore the validity state in the form internals to the saved state
+        this.internals.setValidity({});
+    }
+
+    /**
+     * The formStateSaveCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is saved.
+     * This method is responsible for saving the value of the custom input element.
+     *
+     * @returns {Object} The saved state of the custom input element.
+     * @method
+     */
+    formStateSaveCallback() {
+        return {
+            value: this.value
+        };
+    }
+
+    /**
+     * The formDisabledCallback method is a built-in lifecycle callback that gets called when the disabled state of a form-associated custom element changes.
+     * This method is not implemented yet.
+     *
+     * @param {boolean} disabled - The new disabled state of the custom input element.
+     * @method
+     */
+    formDisabledCallback(disabled) {
+        console.warn('formDisabledCallback not implemented yet')
     }
 }
