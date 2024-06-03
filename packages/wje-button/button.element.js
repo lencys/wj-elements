@@ -1,5 +1,5 @@
-import { default as WJElement, WjElementUtils, event } from "../wje-element/element.js";
-import { bool } from "../utils/utils.js";
+import {default as WJElement, WjElementUtils, event} from "../wje-element/element.js";
+import {bool} from "../utils/utils.js";
 import Icon from "../wje-icon/icon.js";
 
 import styles from "./styles/styles.css?inline";
@@ -10,6 +10,7 @@ import styles from "./styles/styles.css?inline";
  * @status stable
  *
  * @extends WJElement
+ *
  *
  * @dependency wje-icon
  *
@@ -39,13 +40,15 @@ export default class Button extends WJElement {
      */
     constructor() {
         super();
+
+        this.internals_ = this.attachInternals();
     }
 
     /**
      * Dependencies
      * @type {Object}
      */
-    depandencies = {
+    dependencies = {
         "wje-icon": Icon
     }
 
@@ -70,7 +73,7 @@ export default class Button extends WJElement {
      * @param {boolean} value - The value to set
      */
     set disabled(value) {
-        if(value)
+        if (value)
             this.setAttribute("disabled", "");
         else
             this.removeAttribute("disabled");
@@ -157,6 +160,35 @@ export default class Button extends WJElement {
     }
 
     /**
+     * @summary A static property that indicates whether the custom element is form-associated or not.
+     * Form-associated custom elements are elements that can participate in form submission.
+     * @type {boolean}
+     */
+    static formAssociated = true;
+
+    /**
+     * @summary Callback function that is called when the custom element is associated with a form.
+     * This function sets the internal `_form` property to the associated form.
+     * @param {HTMLFormElement} form - The form the custom element is associated with.
+     */
+    formAssociatedCallback(form) {
+        this._form = form;
+    }
+
+    /**
+     * @summary Callback function that is called when the form-associated state of the custom element changes.
+     * This function updates the 'disabled' attribute of the element based on the new state.
+     * @param {boolean} disabled - The new form-associated state.
+     */
+    formDisabledCallback(disabled) {
+        if (disabled) {
+            this.setAttribute('disabled', '');
+        } else {
+            this.removeAttribute('disabled');
+        }
+    }
+
+    /**
      * Setup attributes
      */
     setupAttributes() {
@@ -173,39 +205,47 @@ export default class Button extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-        let native = document.createElement(this.hasAttribute('href') ? 'a': 'button');
+        let native = document.createElement(this.hasAttribute('href') ? 'a' : 'button');
+        if (this.hasAttribute('href')) {
+            native.setAttribute('href', this.getAttribute('href'));
+        } else {
+            if (this.type === "submit") {
+                native.setAttribute("type", "submit");
+            }
+        }
+
         native.classList.add("native-button");
         native.setAttribute("part", "native");
 
         this.classList.remove("wje-button-disabled");
 
-        if(this.disabled)
+        if (this.disabled)
             native.classList.add("wje-button-disabled");
 
-        if(this.variant)
+        if (this.variant)
             native.classList.add("wje-button-" + this.variant);
 
-        if(this.hasAttribute("round"))
+        if (this.hasAttribute("round"))
             native.classList.add("wje-button-round")
 
-        if(this.hasAttribute("circle"))
+        if (this.hasAttribute("circle"))
             native.classList.add("wje-button-circle")
 
-        if(this.outline)
+        if (this.outline)
             native.classList.add("wje-outline");
 
-        if(this.fill)
+        if (this.fill)
             native.classList.add("wje-button-" + this.fill);
 
-        if(this.size)
+        if (this.size)
             native.classList.add("wje-button-" + this.size);
 
-        if(this.hasAttribute("color"))
+        if (this.hasAttribute("color"))
             native.classList.add("wje-color-" + this.color, "wje-color");
         else
             native.classList.add("wje-color-default", "wje-color");
 
-        if(this.querySelectorAll('[slot=caret]').length < 1 && this.hasAttribute("caret") || this.hasAttribute("only-caret")) {
+        if (this.querySelectorAll('[slot=caret]').length < 1 && this.hasAttribute("caret") || this.hasAttribute("only-caret")) {
             let i = document.createElement("wje-icon");
             i.style.setProperty("--wje-icon-size", "14px");
             i.setAttribute("slot", "caret");
@@ -214,7 +254,7 @@ export default class Button extends WJElement {
             this.appendChild(i);
         }
 
-        if(this.active) {
+        if (this.active) {
             this.classList.add("wje-active");
             let i = document.createElement("wje-icon");
             i.setAttribute("name", "check");
@@ -222,7 +262,7 @@ export default class Button extends WJElement {
             this.appendChild(i);
         }
 
-        let  span = document.createElement("span");
+        let span = document.createElement("span");
         span.classList.add("button-inner");
 
         let slot = document.createElement("slot");
@@ -246,7 +286,7 @@ export default class Button extends WJElement {
 
         this.hasToggle = WjElementUtils.hasSlot(this, "toggle");
 
-        if(this.hasToggle) {
+        if (this.hasToggle) {
             this.slotToggle = document.createElement("slot");
             this.slotToggle.setAttribute("name", "toggle");
 
@@ -264,7 +304,7 @@ export default class Button extends WJElement {
      */
     afterDraw() {
         // nastavenie toggle podla atributu, ak nie je nastaveny, tak sa zobrazi vzdy prvy element
-        if(this.hasToggle) {
+        if (this.hasToggle) {
             if (this.toggle === "off") {
                 this.slotToggle.assignedNodes()[1].classList.add("show");
             } else {
@@ -272,14 +312,26 @@ export default class Button extends WJElement {
             }
         }
 
-        if(this.hasAttribute("dialog")) {
+        if (this.hasAttribute("dialog")) {
             event.addListener(this, "click", null, this.eventDialogOpen);
         } else {
             event.addListener(this, "click", "wje-button:click", null); // { stopPropagation: this.stopPropagation } - zrusene kvoli dropdown kde som nevedel odchytit event click
         }
 
-        if(this.hasToggle)
-            event.addListener(this, "click", "wje-button:toggle", this.toggleStates, { stopPropagation: this.stopPropagation });
+        if (this.hasToggle)
+            event.addListener(this, "click", "wje-button:toggle", this.toggleStates, {stopPropagation: this.stopPropagation});
+
+        if (this.type === "submit") {
+            event.addListener(this, "click", "wje-button:submit", () => {
+                event.dispatchCustomEvent(this.internals_.form, "submit", {});
+            });
+        }
+
+        if (this.type === "reset") {
+            event.addListener(this, "click", "wje-button:reset", () => {
+                this.internals_.form.reset()
+            });
+        }
     }
 
     /**

@@ -1,4 +1,4 @@
-import { default as WJElement, WjElementUtils } from "/templates/net/assets/js/components/element.js?v=@@version@@";
+import { default as WJElement, WjElementUtils } from "../wje-element/element.js";
 
 export class CalendarO365 extends WJElement {
     constructor() {

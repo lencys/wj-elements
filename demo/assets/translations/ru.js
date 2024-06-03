@@ -1,11 +1,16 @@
-import { Localizer } from "../../../dist/wje-master.js";
+import {serverPromise} from '../js/mirage-config.js';
 
-const ru = {
-  code: 'ru',
-  name: 'Russian',
-  dir: 'ltr',
+serverPromise.then((master) => {
+    const ru = {
+        code: 'ru',
+        name: 'Russian',
+        dir: 'ltr',
 
-  "welcome": 'Dobro pozhalovat',
-  "wj.file.upload.button": "TRALALA",
-};
-Localizer.registerTranslation(ru);
+        "welcome": 'Dobro pozhalovat',
+        "wj.file.upload.button": "TRALALA",
+    };
+
+    import('/dist/wje-master.js').then((master) => {
+        master.Localizer.registerTranslation(ru);
+    });
+});
