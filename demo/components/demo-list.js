@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -36,6 +37,8 @@ template.innerHTML = `  <style>
       </div>
     </div>
 
+    <div class="html-snippet"></div>
+
     <!--  INSET -->
 
     <h2>Inset list</h2>
@@ -60,6 +63,8 @@ template.innerHTML = `  <style>
         </wje-list>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!--  LINES -->
     
@@ -103,11 +108,18 @@ template.innerHTML = `  <style>
         </wje-list>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoList extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
   }
 }
 

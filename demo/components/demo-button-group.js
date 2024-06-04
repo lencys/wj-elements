@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 template.innerHTML = ``;

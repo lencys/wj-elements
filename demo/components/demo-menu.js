@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -63,6 +64,8 @@ template.innerHTML = `
         </wje-menu>    
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- INSET -->
 
@@ -109,6 +112,8 @@ template.innerHTML = `
         </wje-menu>    
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoMenu extends WJElement {
@@ -121,6 +126,9 @@ export default class DemoMenu extends WJElement {
   }
 
   afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
+
     this.querySelectorAll('wje-menu-item').forEach(item => {
       item.addEventListener('wje-menu-item:click', () => {
         console.log('click menu item');

@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -24,6 +25,8 @@ template.innerHTML = `<h1>Animation</h1>
         <wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px"></wje-select>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoAnimation extends WJElement {
@@ -36,6 +39,8 @@ export default class DemoAnimation extends WJElement {
   }
 
   async afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
     // let keyframes = await fetchAndParseCSS();
     const animationElement = this.querySelector('wje-animation');
     const select = this.querySelector('wje-select');

@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -24,6 +25,8 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
         </wje-infinite-scroll>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- CUSTOM DATA -->
 
@@ -38,6 +41,7 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
       </div>
     </div>
 
+    <div class="html-snippet"></div>
     <!-- SIZE -->
 
     <h3>Size</h3>
@@ -61,6 +65,7 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
       </div>
     </div>
 
+    <div class="html-snippet"></div>
     <!-- CARRD -->
 
     <h3>Card</h3>
@@ -93,6 +98,8 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
         </wje-infinite-scroll>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoInfinteScroll extends WJElement {
@@ -131,6 +138,8 @@ export default class DemoInfinteScroll extends WJElement {
   }
 
   afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
     // const basicEl = this.querySelector("#basic");
     // basic.addEventListener("wje-infinite-scroll:click-item", (e) => {
     //   console.log("wje-infinite-scroll:click-item", e.detail)

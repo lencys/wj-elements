@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -30,6 +31,8 @@ template.innerHTML = `<h1>Toolbar</h1>
       </wje-toolbar>
     </div>
   </div>
+
+  <div class="html-snippet"></div>
   
   <!--  DYNAMIC BRADCRUMB -->
 
@@ -49,6 +52,8 @@ template.innerHTML = `<h1>Toolbar</h1>
       </wje-toolbar>
     </div>
   </div>
+
+  <div class="html-snippet"></div>
   
   <!--  DYNAMIC ACTION -->
 
@@ -74,6 +79,8 @@ template.innerHTML = `<h1>Toolbar</h1>
       </wje-toolbar>
     </div>
   </div>
+
+  <div class="html-snippet"></div>
 </div>`;
 
 export default class DemoToolbar extends WJElement {
@@ -97,6 +104,9 @@ export default class DemoToolbar extends WJElement {
   }
 
   afterDraw(context, store2, params) {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
+
     const breadcrumbs = this.querySelector("#custom-dynamic");
     this.objs.forEach((obj) => {
       let breadcrumb = document.createElement("wje-breadcrumb");

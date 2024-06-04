@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -51,6 +52,9 @@ template.innerHTML = `<h1>Item</h1>
       </div>
     </div>
 
+    <h3>HTML Snippet</h3>
+        <div class="html-snippet"></div>
+
     <!--  ICONS IN ITEM -->
 
     <h2>Icons in items</h2>
@@ -77,6 +81,9 @@ template.innerHTML = `<h1>Item</h1>
         </wje-item>
       </div>
     </div>
+
+    <h3>HTML Snippet</h3>
+        <div class="html-snippet"></div>
 
     <!-- ITEM LINES -->
 
@@ -125,6 +132,9 @@ template.innerHTML = `<h1>Item</h1>
       </div>
     </div>
 
+    <h3>HTML Snippet</h3>
+        <div class="html-snippet"></div>
+
     <!-- MEDIA -->
 
     <h2>Media Items</h2>
@@ -145,6 +155,9 @@ template.innerHTML = `<h1>Item</h1>
         </wje-item>
       </div>
     </div>
+
+    <h3>HTML Snippet</h3>
+        <div class="html-snippet"></div>
 
     <!-- BUTTONS -->
 
@@ -187,11 +200,19 @@ template.innerHTML = `<h1>Item</h1>
         </wje-item>
       </div>
     </div>
+
+    <h3>HTML Snippet</h3>
+        <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoItem extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
   }
 }
 

@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -56,6 +57,8 @@ template.innerHTML = `
                 </wje-select>
             </div>
         </div>
+
+        <div class="html-snippet"></div>
     </div>
 `;
 
@@ -65,6 +68,9 @@ export default class DemoQrCode extends WJElement {
     }
 
     afterDraw() {
+        const codeSnippet = new CodeSnippet();
+        codeSnippet.generateSnippet(template, document);
+
         const qr = document.querySelector('wje-qr-code');
         const colors = ["black", "blue", "red", "green", "orange", "white"];
         const levels = ["L", "M", "Q", "H"];

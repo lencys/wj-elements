@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -13,6 +14,8 @@ template.innerHTML = `<h1>Rating</h1>
         <wje-rate max="5"></wje-rate>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- VALUE -->
 
@@ -22,6 +25,8 @@ template.innerHTML = `<h1>Rating</h1>
         <wje-rate value="3" icons="['heart', 'heart', 'heart', 'heart', 'heart']"></wje-rate>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- PRECISION -->
 
@@ -31,6 +36,8 @@ template.innerHTML = `<h1>Rating</h1>
         <wje-rate value="3.5" max="5" precision="0.1"></wje-rate>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- READONLY -->
 
@@ -40,6 +47,8 @@ template.innerHTML = `<h1>Rating</h1>
         <wje-rate max="5" value="4" readonly></wje-rate>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- DISABLED -->
 
@@ -49,11 +58,18 @@ template.innerHTML = `<h1>Rating</h1>
         <wje-rate max="5" value="2" disabled></wje-rate>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoRate extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
   }
 }
 

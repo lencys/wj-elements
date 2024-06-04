@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -42,6 +43,8 @@ template.innerHTML = `<h1>Accordion</h1>
         </wje-accordion>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- MULTIPLE -->
 
@@ -64,11 +67,18 @@ template.innerHTML = `<h1>Accordion</h1>
         </wje-accordion>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoAccordion extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
   }
 }
 

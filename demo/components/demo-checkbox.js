@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -14,6 +15,8 @@ template.innerHTML = `<h1>Checkbox</h1>
         <wje-checkbox checked>Default checked</wje-checkbox>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- End -->
 
@@ -24,6 +27,8 @@ template.innerHTML = `<h1>Checkbox</h1>
         <wje-checkbox placement="end" checked>Default checked</wje-checkbox>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- COLOR -->
 
@@ -66,6 +71,8 @@ template.innerHTML = `<h1>Checkbox</h1>
         <wje-checkbox color="info" indeterminate>Default info indeterminate</wje-checkbox>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- CIRCLE -->
 
@@ -108,6 +115,8 @@ template.innerHTML = `<h1>Checkbox</h1>
         <wje-checkbox variant="circle" color="info" indeterminate>Default info indeterminate</wje-checkbox>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- DISABLED -->
 
@@ -122,6 +131,8 @@ template.innerHTML = `<h1>Checkbox</h1>
         <wje-checkbox variant="circle" checked disabled>Circle checked disabled</wje-checkbox>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoCheckbox extends WJElement {
@@ -130,6 +141,9 @@ export default class DemoCheckbox extends WJElement {
   }
 
   afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
+
     let test = this.context.querySelector('#test');
 
     test.addEventListener('wje-checkbox:change', (e) => {

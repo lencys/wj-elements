@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -20,11 +21,18 @@ template.innerHTML = `<h1>Relative time</h1>
         <wje-relative-time date="2024-01-01T00:00:00+00:00"></wje-relative-time><br/>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoRelativeTime extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
   }
 }
 

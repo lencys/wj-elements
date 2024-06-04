@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -19,6 +20,8 @@ template.innerHTML = `<h1>Masonry</h1>
         </wje-masonry>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- MAXCOLWIDTH -->
 
@@ -36,6 +39,8 @@ template.innerHTML = `<h1>Masonry</h1>
         </wje-masonry>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- GAP -->
 
@@ -57,6 +62,9 @@ template.innerHTML = `<h1>Masonry</h1>
         </style>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
+
   </div>
 <style>
   .example div {
@@ -73,6 +81,11 @@ template.innerHTML = `<h1>Masonry</h1>
 export default class DemoMasonry extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
   }
 }
 

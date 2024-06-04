@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -25,7 +26,9 @@ template.innerHTML = `<h1>Split View</h1>
           <div slot="end">End</div>
         </wje-split-view>
       </div>
-    </div>    
+    </div>   
+    
+    <div class="html-snippet"></div>
     
     <!-- VERTICAL -->
 
@@ -38,6 +41,8 @@ template.innerHTML = `<h1>Split View</h1>
         </wje-split-view>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- MIN/MAX -->
 
@@ -50,6 +55,8 @@ template.innerHTML = `<h1>Split View</h1>
         </wje-split-view>
       </div>
     </div> 
+
+    <div class="html-snippet"></div>
     
     <!-- DISABLED -->
 
@@ -62,6 +69,8 @@ template.innerHTML = `<h1>Split View</h1>
         </wje-split-view>
       </div>
     </div> 
+
+    <div class="html-snippet"></div>
     
     <!-- SPLIT -->
 
@@ -79,6 +88,8 @@ template.innerHTML = `<h1>Split View</h1>
         </wje-split-view>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- CUSTOM -->
 
@@ -105,11 +116,18 @@ template.innerHTML = `<h1>Split View</h1>
         </style>  
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoSplitView extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
   }
 }
 

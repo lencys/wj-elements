@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -14,6 +15,8 @@ template.innerHTML = `<h1>Progress bar</h1>
       </div>
     </div>
 
+    <div class="html-snippet"></div>
+
     <!-- TYPE -->
 
     <h2>Type</h2>
@@ -28,6 +31,8 @@ template.innerHTML = `<h1>Progress bar</h1>
       </div>
     </div>
 
+    <div class="html-snippet"></div>
+
     <!-- LABEL -->
 
     <h2>Label</h2>
@@ -40,6 +45,8 @@ template.innerHTML = `<h1>Progress bar</h1>
       </div>
     </div>
 
+    <div class="html-snippet"></div>
+
     <!-- LINECAP -->
 
     <h2>Linecap</h2>
@@ -48,6 +55,8 @@ template.innerHTML = `<h1>Progress bar</h1>
         <wje-progress-bar progress="80" stroke="12" linecap="round"></wje-progress-bar>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
 
     <!-- RADIUS-->
 
@@ -58,6 +67,8 @@ template.innerHTML = `<h1>Progress bar</h1>
       </div>
     </div>
 
+    <div class="html-snippet"></div>
+
     <!--  STROKE-->
 
     <h2>Stroke</h2>
@@ -66,6 +77,8 @@ template.innerHTML = `<h1>Progress bar</h1>
         <wje-progress-bar progress="60" radius="20" stroke="1"></wje-progress-bar>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
 
     <!--  IMAGE-->
 
@@ -91,6 +104,8 @@ template.innerHTML = `<h1>Progress bar</h1>
         </wje-progress-bar>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
 
     <!--  COLORS-->
 
@@ -123,6 +138,8 @@ template.innerHTML = `<h1>Progress bar</h1>
         </p>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoProgressBar extends WJElement {
@@ -131,6 +148,9 @@ export default class DemoProgressBar extends WJElement {
   }
 
   afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
+
     let currentNumber = 0;
     const totalTime = 20000; // Celkový čas v milisekundách (20s)
     const intervalTime = totalTime / 100; // Časový interval pre každé číslo

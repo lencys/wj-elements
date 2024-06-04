@@ -1,5 +1,6 @@
 import WJElement from "../../dist/wje-element.js";
 import { event } from "../../packages/utils/event.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -28,6 +29,8 @@ template.innerHTML = `<style>
         </wje-dialog>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- ELEMENT -->
 
@@ -45,6 +48,8 @@ template.innerHTML = `<style>
         </wje-dialog>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
 
     <!--  PLACEMENT-->
 
@@ -98,6 +103,8 @@ template.innerHTML = `<style>
       </div>
     </div>
 
+    <div class="html-snippet"></div>
+
     <!-- SIZE -->
 
     <h2>Size</h2>
@@ -129,6 +136,8 @@ template.innerHTML = `<style>
         </wje-dialog>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoDialog extends WJElement {
@@ -137,6 +146,9 @@ export default class DemoDialog extends WJElement {
   }
 
   afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
+
     this.querySelectorAll("wje-button").forEach((button) => {
       if(button.classList.contains("close")) {
         button.addEventListener("wje-button:click", (e) => {

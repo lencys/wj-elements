@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -19,6 +20,8 @@ template.innerHTML = `
         </wje-breadcrumbs>
       </div>
     </div>
+        
+    <div class="html-snippet"></div>
     
     <!-- ICONS -->
 
@@ -66,6 +69,8 @@ template.innerHTML = `
         </wje-breadcrumbs>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- CUSTOM SEPARATOR -->
 
@@ -93,6 +98,8 @@ template.innerHTML = `
       </div>
     </div>
 
+    <div class="html-snippet"></div>
+
     <!-- MAX ITEMS -->
 
     <h2>Max Items</h2>
@@ -111,6 +118,8 @@ template.innerHTML = `
         </wje-breadcrumbs>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- MAX ITEMS - DROPDOWN -->
 
@@ -130,11 +139,18 @@ template.innerHTML = `
         </wje-breadcrumbs>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoBreadcrumb extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
   }
 }
 

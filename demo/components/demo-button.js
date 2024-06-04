@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 template.innerHTML = `<style>
@@ -18,6 +19,8 @@ template.innerHTML = `<style>
         <wje-button disabled>Disabled</wje-button>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
      <!--  EVENTS -->
 
@@ -29,6 +32,8 @@ template.innerHTML = `<style>
         <wje-button type="submit" id="text-submit">Submit</wje-button>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     
     <!--  BUTTON IN FORM-->
@@ -48,6 +53,8 @@ template.innerHTML = `<style>
         </form>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
      <!--  TOGGLE-->
 
@@ -66,6 +73,8 @@ template.innerHTML = `<style>
       </div>
     </div>
 
+    <div class="html-snippet"></div>
+
     <!--  SHAPE -->
 
     <h2>Shape</h2>
@@ -75,6 +84,8 @@ template.innerHTML = `<style>
         <wje-button round>Round</wje-button>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
 
     <!--  FILL -->
 
@@ -88,6 +99,8 @@ template.innerHTML = `<style>
       </div>
     </div>
 
+    <div class="html-snippet"></div>
+
     <!--  SIZE -->
 
     <h2>Size</h2>
@@ -98,6 +111,8 @@ template.innerHTML = `<style>
         <wje-button size="large">Large</wje-button>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
      <!-- CARET -->
 
@@ -114,6 +129,8 @@ template.innerHTML = `<style>
         </style>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
 
     <!--  ICONS -->
 
@@ -146,6 +163,8 @@ template.innerHTML = `<style>
         </wje-button>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- LINK -->
 
@@ -155,6 +174,8 @@ template.innerHTML = `<style>
         <wje-button fill="link">Link</wje-button>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
 
     <!-- COLORS -->
 
@@ -173,6 +194,8 @@ template.innerHTML = `<style>
       </div>
     </div>
 
+    <div class="html-snippet"></div>
+
     <!-- COLORS - OUTLINE -->
 
     <h2>Colors outline</h2>
@@ -187,6 +210,8 @@ template.innerHTML = `<style>
         <wje-button color="neutral" fill="outline">Neutral</wje-button>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
 
     <!-- CUSTOM CSS Attributes -->
 
@@ -217,6 +242,38 @@ template.innerHTML = `<style>
         </style>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
+
+    <div class="content" style="display: none;">
+      this.querySelector("#caret").refresh();
+
+      this.context.querySelector('#text-submit').addEventListener('click', (e) => {
+          console.log('klikol som submit')
+      });
+
+      this.context.querySelector('#text-submit').addEventListener('wje-button:submit', (e) => {
+          console.log('klikol som submit')
+      });
+
+      let form = this.context.querySelector('#test-form');
+      form.addEventListener('submit', (e) => {
+          e.preventDefault()
+          if(e.target.checkValidity()){
+              let formDate = new FormData(e.target)
+              for (var pair of formDate.entries()) {
+                  console.log(pair[0]+ ', '+ pair[1]);
+              }
+              console.log('klikol som form submit', e)
+          }
+      })
+
+      this.context.querySelector('#test-form').addEventListener('reset', (e) => {
+          console.log('klikol som form reset', e)
+      })
+    </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoButton extends WJElement {
@@ -225,6 +282,9 @@ export default class DemoButton extends WJElement {
     }
 
     afterDraw() {
+        const codeSnippet = new CodeSnippet();
+        codeSnippet.generateSnippet(template, document);
+
         this.querySelector("#caret").refresh();
 
         this.context.querySelector('#text-submit').addEventListener('click', (e) => {

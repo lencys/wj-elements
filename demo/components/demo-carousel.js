@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -26,6 +27,8 @@ template.innerHTML = `<h1>Carousel</h1>
         </wje-carousel>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- NO LOOP -->
 
@@ -48,6 +51,8 @@ template.innerHTML = `<h1>Carousel</h1>
         </wje-carousel>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- DIALOG -->
 
@@ -73,6 +78,8 @@ template.innerHTML = `<h1>Carousel</h1>
         </wje-dialog>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- PAGINATION -->
     
@@ -95,6 +102,8 @@ template.innerHTML = `<h1>Carousel</h1>
         </wje-carousel>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- THUMBNAIL -->
 
@@ -117,6 +126,8 @@ template.innerHTML = `<h1>Carousel</h1>
         </wje-carousel>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- SPACING -->
     
@@ -144,6 +155,8 @@ template.innerHTML = `<h1>Carousel</h1>
         </style>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- SPLIT -->
     
@@ -191,6 +204,8 @@ template.innerHTML = `<h1>Carousel</h1>
         </style>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoCarousel extends WJElement {
@@ -215,6 +230,9 @@ export default class DemoCarousel extends WJElement {
     </wje-carousel>`;
   }
   afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
+
     this.querySelectorAll("wje-carousel-item").forEach((carousel) => {
       carousel.addEventListener("wje-carousel-item:click", (event) => {
         console.log("Clicked", event.target);

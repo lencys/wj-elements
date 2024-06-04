@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -18,6 +19,8 @@ template.innerHTML = `<h1>Input</h1>
         <wje-input label="Default input" type="number" minlength="5" message="Toto je moja hlaska" required validate-on-change custom-error-display ></wje-input>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- INPUT -->
 
@@ -54,6 +57,8 @@ template.innerHTML = `<h1>Input</h1>
         </wje-grid>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- INPUT -->
 
@@ -68,6 +73,8 @@ template.innerHTML = `<h1>Input</h1>
         <wje-input variant="standard" label="Default input" type="number" minlength="5" message="Toto je moja hlaska" required validate-on-change custom-error-display ></wje-input>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
 
     <!-- INPUT -->
 
@@ -104,6 +111,8 @@ template.innerHTML = `<h1>Input</h1>
         </wje-grid>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- SEARCH -->
 
@@ -127,6 +136,8 @@ template.innerHTML = `<h1>Input</h1>
         </style>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- PICKERS -->
 
@@ -155,6 +166,8 @@ template.innerHTML = `<h1>Input</h1>
         </style>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- CLEARABLE -->
 
@@ -164,6 +177,8 @@ template.innerHTML = `<h1>Input</h1>
         <wje-input variant="standard" label="Default input" class="example" clearable></wje-input>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     
         <!--  VALIDATION IN FORM-->
@@ -183,6 +198,8 @@ template.innerHTML = `<h1>Input</h1>
         </form>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoInput extends WJElement {
@@ -191,6 +208,9 @@ export default class DemoInput extends WJElement {
   }
 
   afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
+
     this.addEventListener('wje-icon-picker:select', (e) => {
       e.target.closest("wje-input").value = e.detail.name;
       e.target.onClose();

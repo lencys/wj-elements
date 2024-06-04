@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -40,6 +41,8 @@ template.innerHTML = `<style>
         </p>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- OPEN DIALOG -->
 
@@ -78,6 +81,8 @@ template.innerHTML = `<style>
         </wje-dialog>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- HOVER -->
 
@@ -100,6 +105,8 @@ template.innerHTML = `<style>
           </style>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- TOOLTIP -->
 
@@ -118,6 +125,8 @@ template.innerHTML = `<style>
         </wje-tooltip>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- INNER AVATAR -->
 
@@ -148,6 +157,8 @@ template.innerHTML = `<style>
         </style>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoDropdown extends WJElement {
@@ -156,6 +167,8 @@ export default class DemoDropdown extends WJElement {
   }
 
   afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
 
     // Simulácia oneskorenia načítania dát
     this.querySelector("#custom-dropdown-basic").beforeShow = () => {

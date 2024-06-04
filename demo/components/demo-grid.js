@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -63,6 +64,8 @@ template.innerHTML = `<h1>Grid</h1>
       </div>
     </div>
 
+    <div class="html-snippet"></div>
+
     <!-- SIZE -->
 
     <h2>Auto size</h2>
@@ -101,6 +104,8 @@ template.innerHTML = `<h1>Grid</h1>
       </div>
     </div>
 
+    <div class="html-snippet"></div>
+
     <!-- SIZE -->
 
     <h2>Size</h2>
@@ -136,6 +141,8 @@ template.innerHTML = `<h1>Grid</h1>
         </wje-grid>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
 
     <!-- RESPONSIVE SIZE -->
 
@@ -175,6 +182,8 @@ template.innerHTML = `<h1>Grid</h1>
       </div>
     </div>
 
+    <div class="html-snippet"></div>
+
     <!-- OFFSET -->
 
     <h2>Offset</h2>
@@ -209,6 +218,8 @@ template.innerHTML = `<h1>Grid</h1>
         </wje-grid>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
 
     <!-- RESPONSIVE OFFSET -->
 
@@ -246,6 +257,8 @@ template.innerHTML = `<h1>Grid</h1>
       </div>
     </div>
 
+    <div class="html-snippet"></div>
+
     <!-- ORDER -->
 
     <h2>Order</h2>
@@ -273,6 +286,8 @@ template.innerHTML = `<h1>Grid</h1>
         </wje-grid>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
 
     <!-- ALIGNMENT -->
     
@@ -320,6 +335,8 @@ template.innerHTML = `<h1>Grid</h1>
         </wje-grid>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   
     <!-- ALIGNMENT -->
     
@@ -372,11 +389,18 @@ template.innerHTML = `<h1>Grid</h1>
         </wje-grid>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoGrid extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
   }
 }
 

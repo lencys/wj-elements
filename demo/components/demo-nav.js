@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -63,6 +64,7 @@ template.innerHTML = `
       </div>
     </div>
     
+    <div class="html-snippet"></div>
     <!-- COLLAPSE -->
 
     <h2>Collapse</h2>
@@ -129,6 +131,8 @@ template.innerHTML = `
         </style>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- EXPAND -->
 
@@ -180,6 +184,8 @@ template.innerHTML = `
         </style>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoNav extends WJElement {
@@ -188,6 +194,9 @@ export default class DemoNav extends WJElement {
   }
 
   afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
+
     const toggle = document.querySelector("#toggle");
     const menu = document.querySelector("#custom");
 

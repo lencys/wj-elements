@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -23,6 +24,8 @@ template.innerHTML = `<h1>Avatar</h1>
         </wje-avatar>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- SIZE -->
 
@@ -40,6 +43,8 @@ template.innerHTML = `<h1>Avatar</h1>
         <wje-avatar size="5x-large"><wje-img src="/assets/img/avatar.svg"></wje-img></wje-avatar>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- SIZE INITIALS -->
     
@@ -57,6 +62,8 @@ template.innerHTML = `<h1>Avatar</h1>
         <wje-avatar size="5x-large" label="Petr Rahman" initials></wje-avatar>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- ICON -->
 
@@ -68,6 +75,8 @@ template.innerHTML = `<h1>Avatar</h1>
         </wje-avatar>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- INITIALS -->
 
@@ -77,6 +86,8 @@ template.innerHTML = `<h1>Avatar</h1>
         <wje-avatar label="Petr Rahman" initials></wje-avatar>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- STATUS -->
 
@@ -108,6 +119,8 @@ template.innerHTML = `<h1>Avatar</h1>
         </wje-avatar>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- DROPDOWN -->
 
@@ -142,6 +155,8 @@ template.innerHTML = `<h1>Avatar</h1>
         </style>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- TOOLTIP -->
 
@@ -153,6 +168,8 @@ template.innerHTML = `<h1>Avatar</h1>
         </wje-tooltip>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- GROUP -->
 
@@ -181,6 +198,8 @@ template.innerHTML = `<h1>Avatar</h1>
         </div>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- CUSTOM -->
 
@@ -199,11 +218,18 @@ template.innerHTML = `<h1>Avatar</h1>
         </style>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoAvatar extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
   }
 
   beforeRouteEnter(transition) {

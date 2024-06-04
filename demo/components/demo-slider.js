@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -20,6 +21,8 @@ template.innerHTML = `<style>
       </div>
     </div>
 
+    <div class="html-snippet"></div>
+
     <!--  BUBBLE-->
 
     <h2>Bubble</h2>
@@ -28,6 +31,8 @@ template.innerHTML = `<style>
         <wje-slider bubble></wje-slider>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
 
     <!--  MIN-MAX-->
 
@@ -39,6 +44,8 @@ template.innerHTML = `<style>
         </wje-slider>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
 
     <!-- ICONS -->
 
@@ -56,6 +63,8 @@ template.innerHTML = `<style>
         </wje-slider>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
 
     <!--  COLORS-->
 
@@ -89,11 +98,18 @@ template.innerHTML = `<style>
         </wje-grid>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoSlider extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
   }
 }
 

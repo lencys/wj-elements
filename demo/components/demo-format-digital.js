@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -21,6 +22,8 @@ template.innerHTML = `<h1>Format byte</h1>
         </style>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- BYTES -->
 
@@ -33,6 +36,8 @@ template.innerHTML = `<h1>Format byte</h1>
         long<wje-format-digital value="9900" unit-display="long"></wje-format-digital>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- BYTES -->
 
@@ -45,6 +50,8 @@ template.innerHTML = `<h1>Format byte</h1>
         <wje-format-digital value="9900000000"></wje-format-digital>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- BIT -->
 
@@ -57,6 +64,8 @@ template.innerHTML = `<h1>Format byte</h1>
         <wje-format-digital value="9900000000" unit="bit"></wje-format-digital>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- SLOTS -->
 
@@ -67,6 +76,8 @@ template.innerHTML = `<h1>Format byte</h1>
         <wje-format-digital value="9900000"><span slot="start">&nbsp;z </span></wje-format-digital>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
   </div>`;
 
@@ -76,6 +87,9 @@ export default class DemoFormatDigital extends WJElement {
   }
 
   afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
+
     this.addEventListener('wje-input:input', (e) => {
       document.querySelector('.example').setAttribute('value', e.detail.value);
     });

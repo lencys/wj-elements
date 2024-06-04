@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -28,6 +29,8 @@ template.innerHTML = `
         </wje-tooltip>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- SLOTS -->
 
@@ -41,6 +44,8 @@ template.innerHTML = `
         </wje-tooltip>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- EVENTS -->
 
@@ -59,6 +64,8 @@ template.innerHTML = `
         </style>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- DIALOG -->
 
@@ -73,6 +80,8 @@ template.innerHTML = `
         </wje-dialog>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoTooltip extends WJElement {
@@ -81,6 +90,9 @@ export default class DemoTooltip extends WJElement {
   }
 
   async afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
+
     this.querySelector("#events").beforeShow = async (e) => {
         const response = await fetch("/demo/assets/test.json");
         const data = await response.json();

@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -15,6 +16,8 @@ template.innerHTML = `<h1>File upload item</h1>
         </wje-file-upload-item>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
     
     <!-- IMAGE -->
 
@@ -26,11 +29,18 @@ template.innerHTML = `<h1>File upload item</h1>
         </wje-file-upload-item>
       </div>
     </div>
+
+    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoFileUploadItem extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
   }
 }
 

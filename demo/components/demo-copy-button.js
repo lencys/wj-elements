@@ -1,4 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 template.innerHTML = `<h1>Copy Button</h1>
@@ -12,6 +13,8 @@ template.innerHTML = `<h1>Copy Button</h1>
           <wje-copy-button value="I am copy - Value"></wje-copy-button>
         </div>
       </div>
+
+      <div class="html-snippet"></div>
       
       <!-- CUSTOM LABEL -->
   
@@ -21,6 +24,8 @@ template.innerHTML = `<h1>Copy Button</h1>
           <wje-copy-button value="I am copy - Value" label="Kopírovať" label-success="Skopírované"></wje-copy-button>
         </div>
       </div>
+
+      <div class="html-snippet"></div>
       
       <!-- ELEMENT -->
   
@@ -31,6 +36,8 @@ template.innerHTML = `<h1>Copy Button</h1>
           <wje-copy-button for="copy"></wje-copy-button>
         </div>
       </div>
+
+      <div class="html-snippet"></div>
       
       <!-- INPUT -->
   
@@ -41,6 +48,8 @@ template.innerHTML = `<h1>Copy Button</h1>
           <wje-copy-button for="copy-input"></wje-copy-button>
         </div>
       </div>
+
+      <div class="html-snippet"></div>
       
       <!-- WJ INPUT -->
   
@@ -52,6 +61,8 @@ template.innerHTML = `<h1>Copy Button</h1>
           </wje-input>
         </div>
       </div>
+
+      <div class="html-snippet"></div>
       
       <!-- HYPERLINK -->
   
@@ -62,11 +73,18 @@ template.innerHTML = `<h1>Copy Button</h1>
           <wje-copy-button for="copy-href"></wje-copy-button>
         </div>
       </div>
+
+      <div class="html-snippet"></div>
     </div>`;
 
 export default class DemoCopyButton extends WJElement {
   constructor() {
     super(template);
+  }
+
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document);
   }
 }
 
