@@ -45,12 +45,12 @@ export default class ReorderHandle extends WJElement {
     }
 
     startDrag(event) {
-        if (this.hasAttribute('disabled') || this.hasAttribute('locked')) return; 
+        if (this.hasAttribute('disabled') || this.hasAttribute('locked')) return;
         this.startDragAction(event.clientX, event.clientY);
     }
 
     startTouchDrag(event) {
-        if (this.hasAttribute('disabled') || this.hasAttribute('locked')) return; 
+        if (this.hasAttribute('disabled') || this.hasAttribute('locked')) return;
         const touch = event.touches[0];
         this.startDragAction(touch.clientX, touch.clientY);
     }
@@ -96,13 +96,14 @@ export default class ReorderHandle extends WJElement {
             moveAt(event.pageX, event.pageY);
 
             const dropzone = this.getClosestDropzone(event.clientX, event.clientY);
-            if (!dropzone) return;
+            if (!dropzone) return; 
 
             const siblings = Array.from(dropzone.children).filter(child => child !== draggable && child !== placeholder);
             for (const sibling of siblings) {
+                const siblingRect = sibling.getBoundingClientRect();
+
                 if (sibling.children[0]?.hasAttribute("locked")) continue;
 
-                const siblingRect = sibling.getBoundingClientRect();
                 if (event.clientY > siblingRect.top && event.clientY < siblingRect.bottom) {
                     if (event.clientY < siblingRect.top + siblingRect.height / 2) {
                         dropzone.insertBefore(placeholder, sibling);
@@ -129,6 +130,8 @@ export default class ReorderHandle extends WJElement {
             const finalContainer = placeholder.parentElement;
             finalContainer.insertBefore(draggable, placeholder);
             finalContainer.removeChild(placeholder);
+
+            this.reIndexItems(finalContainer);
         };
 
         document.addEventListener('mousemove', onMouseMove);
@@ -154,5 +157,19 @@ export default class ReorderHandle extends WJElement {
             }
         }
         return null;
+    }
+
+    reIndexItems(container) {
+        const items = Array.from(container.children);
+        let index = 0;
+
+        items.forEach((child) => {
+            if (child.children[0]?.hasAttribute("locked")) {
+                child.dataset.index = index;
+            } else {
+                child.dataset.index = index;
+            }
+            index++;
+        });
     }
 }
