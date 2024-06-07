@@ -18,7 +18,7 @@ class Event {
                 event: self
             });
 
-            if(listener.options && listener.options.stopPropagation === true)
+            if (listener.options && listener.options.stopPropagation === true)
                 e.stopPropagation();
         });
     }
@@ -36,7 +36,7 @@ class Event {
         );
     }
 
-    findRecordByElement (element) {
+    findRecordByElement(element) {
         for (var index = 0, length = this.customEventStorage.length; index < length; index++) {
             var record = this.customEventStorage[index];
 
@@ -48,11 +48,11 @@ class Event {
         return false;
     }
 
-    addListener (element, originalEvent, event, listener, options) {
-        if(!element)
+    addListener(element, originalEvent, event, listener, options) {
+        if (!element)
             return;
 
-        if(!Array.isArray(element))
+        if (!Array.isArray(element))
             element = [element];
 
         element.forEach((el) => {
@@ -60,7 +60,7 @@ class Event {
         });
     }
 
-    writeRecord (element, originalEvent, event, listener, options) {
+    writeRecord(element, originalEvent, event, listener, options) {
         let record = this.findRecordByElement(element);
 
         if (record) {
@@ -88,17 +88,20 @@ class Event {
         if (!this.listenerExists(element, originalEvent, obj)) {
             record.listeners[originalEvent].push(obj);
 
-            element.addEventListener(originalEvent, listener);
+            element.addEventListener(originalEvent, listener, options);
+        } else {
+            // in case we want to add the same listener multiple times trigger a warning for a better debugging
+            // console.warn("Listener already exists", element, originalEvent, listener);
         }
     }
 
-    listenerExists (element, event, listener) {
+    listenerExists(element, event, listener) {
         let record = this.findRecordByElement(element);
 
         return record.listeners[event].some((e) => JSON.stringify(e) === JSON.stringify(listener));
     }
 
-    removeListener (element, originalEvent, event, listener, options) {
+    removeListener(element, originalEvent, event, listener, options) {
         let record = this.findRecordByElement(element);
 
         if (record && originalEvent in record.listeners) {
@@ -118,15 +121,15 @@ class Event {
         element.removeEventListener(originalEvent, listener, options);
     }
 
-    removeElement (element) {
+    removeElement(element) {
         this.customEventStorage = this.customEventStorage.filter((e) => {
-            if(e.element !== element)
+            if (e.element !== element)
                 return e;
         });
     }
 
     // TODO
-    createPromiseFromEvent (element, event) {
+    createPromiseFromEvent(element, event) {
         return new Promise((resolve) => {
             let success = () => {
                 element.removeEventListener(event, success);

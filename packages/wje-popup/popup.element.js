@@ -48,7 +48,7 @@ export default class Popup extends WJElement {
      * @returns {boolean} The value of the manual property.
      */
     get manual() {
-        if(this.hasAttribute("manual"))
+        if (this.hasAttribute("manual"))
             this._manual = true;
 
         return this._manual;
@@ -91,13 +91,17 @@ export default class Popup extends WJElement {
      * @param {string} newName - The new value of the attribute.
      */
     attributeChangedCallback(name, old, newName) {
-        if(name === "active") {
-            if(this.hasAttribute(name)) {
+        if (name === "active") {
+            if (this.hasAttribute(name)) {
                 this.show();
             } else {
                 this.hide();
             }
         }
+    }
+
+    beforeDraw(context, store, params) {
+        document.removeEventListener("click", this.clickHandler);
     }
 
     /**
@@ -152,29 +156,31 @@ export default class Popup extends WJElement {
             this.anchorEl = this.slotAnchor.assignedElements({ flatten: true })[0];
         }
 
-        if(this.manual) {
+        if (this.manual) {
             event.addListener(this.anchorEl, "click", null, (e) => {
-                if(this.hasAttribute("disabled")) return;
+                if (this.hasAttribute("disabled")) return;
 
                 this.showHide();
             }, { stopPropagation: true });
         }
 
-        document.addEventListener("click",(e) => {
-            let clickToHost = e.composedPath().some((el) => el === this);
+        document.addEventListener("click", this.clickHandler);
+    }
 
-            if(!clickToHost) {
-                if(this.hasAttribute("active"))
-                    this.removeAttribute("active");
-            }
-        });
+    clickHandler = (e) => {
+        let clickToHost = e.composedPath().some((el) => el === this);
+
+        if (!clickToHost) {
+            if (this.hasAttribute("active"))
+                this.removeAttribute("active");
+        }
     }
 
     /**
      * Toggles the active attribute of the popup.
      */
     showHide() {
-        if(this.hasAttribute("active")) {
+        if (this.hasAttribute("active")) {
             this.removeAttribute("active");
         } else {
             this.setAttribute("active", "");
@@ -192,28 +198,28 @@ export default class Popup extends WJElement {
         if (this.slotArrow instanceof HTMLSlotElement) {
             this.arrow = this.slotArrow.assignedElements({ flatten: true })[0];
 
-            if(this.arrow) {
+            if (this.arrow) {
                 middleware.push(
-                  arrow({
-                      element: this.arrow,
-                  })
+                    arrow({
+                        element: this.arrow,
+                    })
                 );
                 this.offsetCalc = (Math.sqrt(2 * this.arrow.offsetWidth ** 2) / 2) + +this.offset
             }
         }
 
         middleware.push(
-          offset(this.offsetCalc)
+            offset(this.offsetCalc)
         );
 
         middleware.push(
-          flip()
+            flip()
         );
 
-        if(this.hasAttribute("size")) {
+        if (this.hasAttribute("size")) {
             middleware.push(
                 size({
-                    apply({availableWidth, availableHeight, elements}) {
+                    apply({ availableWidth, availableHeight, elements }) {
                         Object.assign(elements.floating.style, {
                             width: `${elements.reference.offsetWidth}px`
                         });
@@ -233,7 +239,7 @@ export default class Popup extends WJElement {
 
             this.native.style.position = strategy;
 
-            if(this.arrow) {
+            if (this.arrow) {
                 const staticSide = {
                     top: "bottom",
                     right: "left",
@@ -243,18 +249,18 @@ export default class Popup extends WJElement {
 
                 if (middlewareData.arrow) {
                     const { width, height } = this.native.getBoundingClientRect();
-                    const {x, y} = middlewareData.arrow;
+                    const { x, y } = middlewareData.arrow;
 
                     Object.assign(this.arrow.style, {
                         left: x != null ? `${width / 2 - this.arrow.offsetWidth / 2}px` : "",
                         top: y != null ? `${height / 2 - this.arrow.offsetHeight / 2}px` : "",
-                        [staticSide]: `${ - this.arrow.offsetHeight / 2}px`,
+                        [staticSide]: `${- this.arrow.offsetHeight / 2}px`,
                     });
                 }
             }
         });
 
-        event.dispatchCustomEvent(this,"wje-popup:reposition", {
+        event.dispatchCustomEvent(this, "wje-popup:reposition", {
             data: { top: 'bottom', right: 'left', bottom: 'top', left: 'right' },
             context: this,
             event: this
@@ -267,7 +273,7 @@ export default class Popup extends WJElement {
      * Sets up auto update for repositioning.
      */
     show() {
-        event.dispatchCustomEvent(this,"wje-popup:show");
+        event.dispatchCustomEvent(this, "wje-popup:show");
 
         this.native.classList.add("popup-active");
 
@@ -275,7 +281,7 @@ export default class Popup extends WJElement {
             this.reposition();
         });
 
-        if(!this.hasAttribute("active"))
+        if (!this.hasAttribute("active"))
             this.setAttribute("active", "");
     }
 
@@ -285,7 +291,7 @@ export default class Popup extends WJElement {
      * Cleans up the auto update for repositioning.
      */
     hide() {
-        event.dispatchCustomEvent(this,"wje-popup:hide");
+        event.dispatchCustomEvent(this, "wje-popup:hide");
         this.native.classList.remove("popup-active");
         this.removeAttribute("active");
         this.cleanup;
