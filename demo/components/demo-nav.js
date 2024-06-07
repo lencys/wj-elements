@@ -195,7 +195,7 @@ export default class DemoNav extends WJElement {
 
   afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, document);
+    codeSnippet.generateSnippet(template, this.context);
 
     const toggle = document.querySelector("#toggle");
     const menu = document.querySelector("#custom");

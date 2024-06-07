@@ -125,7 +125,7 @@ export default class DemoLayout extends WJElement {
 
   afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, document);
+    codeSnippet.generateSnippet(template, this.context);
   }
 }
 

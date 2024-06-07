@@ -35,7 +35,7 @@ export default class DemoImg extends WJElement {
         const externalJsContent = `
             afterDraw() {
                 const codeSnippet = new CodeSnippet();
-                codeSnippet.generateSnippet(template, document);
+                codeSnippet.generateSnippet(template, this.context);
             }
         `;
         generateSnippets(externalJsContent || null);

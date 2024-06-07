@@ -84,7 +84,7 @@ export default class DemoCopyButton extends WJElement {
 
   afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, document);
+    codeSnippet.generateSnippet(template, this.context);
   }
 }
 

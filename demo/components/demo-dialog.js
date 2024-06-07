@@ -147,10 +147,10 @@ export default class DemoDialog extends WJElement {
 
   afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, document);
+    codeSnippet.generateSnippet(template, this.context);
 
     this.querySelectorAll("wje-button").forEach((button) => {
-      if(button.classList.contains("close")) {
+      if (button.classList.contains("close")) {
         button.addEventListener("wje-button:click", (e) => {
           e.target.closest(`wje-dialog`).close();
         });

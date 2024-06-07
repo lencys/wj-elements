@@ -105,7 +105,7 @@ export default class DemoToolbar extends WJElement {
 
   afterDraw(context, store2, params) {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, document);
+    codeSnippet.generateSnippet(template, this.context);
 
     const breadcrumbs = this.querySelector("#custom-dynamic");
     this.objs.forEach((obj) => {

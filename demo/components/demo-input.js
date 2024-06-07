@@ -209,7 +209,7 @@ export default class DemoInput extends WJElement {
 
   afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, document);
+    codeSnippet.generateSnippet(template, this.context);
 
     this.addEventListener('wje-icon-picker:select', (e) => {
       e.target.closest("wje-input").value = e.detail.name;
@@ -224,10 +224,10 @@ export default class DemoInput extends WJElement {
     let form = this.context.querySelector('#test-form');
     form.addEventListener('submit', (e) => {
       e.preventDefault()
-      if(e.target.checkValidity()){
+      if (e.target.checkValidity()) {
         let formDate = new FormData(e.target)
         for (var pair of formDate.entries()) {
-          console.log(pair[0]+ ', '+ pair[1]);
+          console.log(pair[0] + ', ' + pair[1]);
         }
         console.log('klikol som form submit', e)
       }

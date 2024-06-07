@@ -99,7 +99,7 @@ export default class DemoAnimation extends WJElement {
 
   async afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, document);
+    codeSnippet.generateSnippet(template, this.context);
     // let keyframes = await fetchAndParseCSS();
     const animationElement = this.querySelector('wje-animation');
     const select = this.querySelector('wje-select');

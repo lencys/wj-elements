@@ -117,7 +117,7 @@ export default class DemoToggle extends WJElement {
 
   afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, document);
+    codeSnippet.generateSnippet(template, this.context);
 
     let defaultInput = this.querySelector("#default");
 

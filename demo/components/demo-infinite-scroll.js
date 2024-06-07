@@ -139,7 +139,7 @@ export default class DemoInfinteScroll extends WJElement {
 
   afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, document);
+    codeSnippet.generateSnippet(template, this.context);
     // const basicEl = this.querySelector("#basic");
     // basic.addEventListener("wje-infinite-scroll:click-item", (e) => {
     //   console.log("wje-infinite-scroll:click-item", e.detail)

@@ -121,13 +121,13 @@ export default class DemoMenu extends WJElement {
     super(template);
   }
 
-  openModalFn(){
+  openModalFn() {
     debugger
   }
 
   afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, document);
+    codeSnippet.generateSnippet(template, this.context);
 
     this.querySelectorAll('wje-menu-item').forEach(item => {
       item.addEventListener('wje-menu-item:click', () => {

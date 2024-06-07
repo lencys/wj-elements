@@ -285,7 +285,7 @@ export default class DemoCarousel extends WJElement {
   }
   afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, document);
+    codeSnippet.generateSnippet(template, this.context);
 
     this.querySelectorAll("wje-carousel-item").forEach((carousel) => {
       carousel.addEventListener("wje-carousel-item:click", (event) => {

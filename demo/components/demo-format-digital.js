@@ -88,7 +88,7 @@ export default class DemoFormatDigital extends WJElement {
 
   afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, document);
+    codeSnippet.generateSnippet(template, this.context);
 
     this.addEventListener('wje-input:input', (e) => {
       document.querySelector('.example').setAttribute('value', e.detail.value);

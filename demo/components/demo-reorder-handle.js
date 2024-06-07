@@ -94,18 +94,18 @@ template.innerHTML = `
 `;
 
 export default class DemoReorderHandle extends WJElement {
-  constructor() {
-    super(template);
-  }
+    constructor() {
+        super(template);
+    }
 
-  afterDraw() {
-    const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, document);
-  }
+    afterDraw() {
+        const codeSnippet = new CodeSnippet();
+        codeSnippet.generateSnippet(template, this.context);
+    }
 }
 
 let __esModule = "true";
 export { __esModule };
 
 customElements.get("demo-reorder-handle") ||
-  window.customElements.define("demo-reorder-handle", DemoReorderHandle);
+    window.customElements.define("demo-reorder-handle", DemoReorderHandle);

@@ -307,44 +307,44 @@ template.innerHTML = `<style>
   </div>`;
 
 export default class DemoButton extends WJElement {
-    constructor() {
-        super(template);
-    }
+  constructor() {
+    super(template);
+  }
 
-    afterDraw() {
-        const codeSnippet = new CodeSnippet();
-        codeSnippet.generateSnippet(template, document);
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, this.context);
 
-        this.querySelector("#caret").refresh();
+    this.querySelector("#caret").refresh();
 
-        this.context.querySelector('#text-submit').addEventListener('click', (e) => {
-            console.log('klikol som submit')
-        });
+    this.context.querySelector('#text-submit').addEventListener('click', (e) => {
+      console.log('klikol som submit')
+    });
 
-        this.context.querySelector('#text-submit').addEventListener('wje-button:submit', (e) => {
-            console.log('klikol som submit')
-        });
+    this.context.querySelector('#text-submit').addEventListener('wje-button:submit', (e) => {
+      console.log('klikol som submit')
+    });
 
-        let form = this.context.querySelector('#test-form');
-        form.addEventListener('submit', (e) => {
-            e.preventDefault()
-            if(e.target.checkValidity()){
-                let formDate = new FormData(e.target)
-                for (var pair of formDate.entries()) {
-                    console.log(pair[0]+ ', '+ pair[1]);
-                }
-                console.log('klikol som form submit', e)
-            }
-        })
+    let form = this.context.querySelector('#test-form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault()
+      if (e.target.checkValidity()) {
+        let formDate = new FormData(e.target)
+        for (var pair of formDate.entries()) {
+          console.log(pair[0] + ', ' + pair[1]);
+        }
+        console.log('klikol som form submit', e)
+      }
+    })
 
-        this.context.querySelector('#test-form').addEventListener('reset', (e) => {
-            console.log('klikol som form reset', e)
-        })
-    }
+    this.context.querySelector('#test-form').addEventListener('reset', (e) => {
+      console.log('klikol som form reset', e)
+    })
+  }
 }
 
 let __esModule = 'true';
-export {__esModule};
+export { __esModule };
 
 customElements.get("demo-button") || window.customElements.define("demo-button", DemoButton);
 

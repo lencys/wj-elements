@@ -168,7 +168,7 @@ export default class DemoDropdown extends WJElement {
 
   afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, document);
+    codeSnippet.generateSnippet(template, this.context);
 
     // Simulácia oneskorenia načítania dát
     this.querySelector("#custom-dropdown-basic").beforeShow = () => {

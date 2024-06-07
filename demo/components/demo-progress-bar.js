@@ -149,7 +149,7 @@ export default class DemoProgressBar extends WJElement {
 
   afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, document);
+    codeSnippet.generateSnippet(template, this.context);
 
     let currentNumber = 0;
     const totalTime = 20000; // Celkový čas v milisekundách (20s)

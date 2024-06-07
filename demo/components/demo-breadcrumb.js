@@ -184,7 +184,7 @@ export default class DemoBreadcrumb extends WJElement {
 
   afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, document);
+    codeSnippet.generateSnippet(template, this.context);
   }
 }
 
