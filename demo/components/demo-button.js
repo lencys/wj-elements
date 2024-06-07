@@ -6,6 +6,27 @@ template.innerHTML = `<style>
     wje-button {
       margin: .25rem;
     }
+
+    pre {
+      overflow-x: auto;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      padding: 10px;
+      border: 1px solid hsla(240, 6%, 90%, 1);
+      border-radius: 4px;
+      background: #f9f9f9;
+      max-width: 100%;
+      font-size: 1em;
+      line-height: 1.7rem;
+      position: relative;
+    }
+
+    code {
+      font-family: monospace;
+      padding: 2px 4px;
+      background: #f9f9f9;
+      border-radius: 4px;
+    }
   </style>
   <h1>Button</h1>
   <div class="container">
@@ -245,35 +266,44 @@ template.innerHTML = `<style>
 
     <div class="html-snippet"></div>
 
-    <div class="content" style="display: none;">
-      this.querySelector("#caret").refresh();
+    <!-- <div class="html-snippet"></div> -->
 
-      this.context.querySelector('#text-submit').addEventListener('click', (e) => {
-          console.log('klikol som submit')
-      });
+    <h3>Javascript</h3>
+        
+    <pre>
+      <code>
+        eventDialogOpen = (e) => {
+          console.log("open dialog");
+          event.dispatchCustomEvent(this, this.dialog, {
+              bubbles: true
+          });
+        }
+      </code>
+    </pre>
 
-      this.context.querySelector('#text-submit').addEventListener('wje-button:submit', (e) => {
-          console.log('klikol som submit')
-      });
+    <pre>
+      <code>
+        toggleStates = () => {
+          const nodes = this.slotToggle.assignedNodes().filter(node => node.nodeType === Node.ELEMENT_NODE);
 
-      let form = this.context.querySelector('#test-form');
-      form.addEventListener('submit', (e) => {
-          e.preventDefault()
-          if(e.target.checkValidity()){
-              let formDate = new FormData(e.target)
-              for (var pair of formDate.entries()) {
-                  console.log(pair[0]+ ', '+ pair[1]);
+          nodes.forEach(node => {
+              if (node.classList.contains('show')) {
+                  node.classList.remove('show');
+              } else {
+                  node.classList.add('show');
               }
-              console.log('klikol som form submit', e)
-          }
-      })
+          });
+        }
+      </code>
+    </pre>
 
-      this.context.querySelector('#test-form').addEventListener('reset', (e) => {
-          console.log('klikol som form reset', e)
-      })
-    </div>
-
-    <div class="html-snippet"></div>
+    <pre>
+      <code>
+        beforeDisconnect() {
+          this.removeEventListener("click", this.eventDialogOpen);
+        }
+      </code>
+    </pre>
   </div>`;
 
 export default class DemoButton extends WJElement {

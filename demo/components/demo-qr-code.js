@@ -34,20 +34,18 @@ template.innerHTML = `
                 <wje-input changePadding label="Change padding" type="text" value="25">
                 </wje-input>
                 <div style="display: flex; flex-direction: row;">
-                    <wje-color-picker colorSelectForeground style="margin: 10px;">
-                    </wje-color-picker>
-
-                    <div style="margin: 10px;">Foreground</div>
+                    <wje-input label="Foreground color" class="example-color" clearable>
+                        <wje-color-picker slot="start" colorSelectForeground></wje-color-picker>
+                    </wje-input>
                 
                     <wje-input changeForegroundAlpha label="Change foreground alpha" type="text" value="1" style="margin-left: 10px;">
                     </wje-input>
                 </div>
             
                 <div style="display: flex; flex-direction: row;">
-                    <wje-color-picker colorSelectBackground style="margin: 10px;">
-                    </wje-color-picker>
-                        
-                    <div style="margin: 10px;">Background</div>
+                    <wje-input label="Background color" class="example-color" clearable>
+                        <wje-color-picker slot="start" colorSelectBackground></wje-color-picker>
+                    </wje-input>
 
                     <wje-input changeBackgroundAlpha label="Change background alpha" type="text" value="1" style="margin-left: 10px;">
                     </wje-input>

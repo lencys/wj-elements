@@ -3,7 +3,30 @@ import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
-template.innerHTML = `<h1>Animation</h1>
+template.innerHTML = `
+<style>
+  pre {
+      overflow-x: auto;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      padding: 10px;
+      border: 1px solid hsla(240, 6%, 90%, 1);
+      border-radius: 4px;
+      background: #f9f9f9;
+      max-width: 100%;
+      font-size: 1em;
+      line-height: 1.7rem;
+      position: relative;
+    }
+
+    code {
+      font-family: monospace;
+      padding: 2px 4px;
+      background: #f9f9f9;
+      border-radius: 4px;
+    }
+</style>
+<h1>Animation</h1>
   <div class="container">
 
     <!-- BASIC -->
@@ -27,6 +50,42 @@ template.innerHTML = `<h1>Animation</h1>
     </div>
 
     <div class="html-snippet"></div>
+
+    <h3>Javascript</h3>
+    <pre>
+      <code>
+      async getAnimationsArray() {
+        return fetchAndParseCSS(animations);
+      }
+      </code>
+    </pre>
+    <pre>
+      <code>
+      destroyAnimation() {
+        if (this.animation) {
+            this.cancel();
+        }
+      }
+      </code>
+    </pre>
+    <pre>
+      <code>
+      play() {
+        if (this.animation) {
+            this.animation.play();
+        }
+      }
+      </code>
+    </pre>
+    <pre>
+      <code>
+      cancel() {
+        if (this.animation) {
+            this.animation.cancel();
+        }
+      }
+      </code>
+    </pre>
   </div>`;
 
 export default class DemoAnimation extends WJElement {

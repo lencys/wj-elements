@@ -4,6 +4,27 @@ import CodeSnippet from "./snippet/code-snippet-builder.js";
 const template = document.createElement('template');
 
 template.innerHTML = `<style>
+
+pre {
+      overflow-x: auto;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      padding: 10px;
+      border: 1px solid hsla(240, 6%, 90%, 1);
+      border-radius: 4px;
+      background: #f9f9f9;
+      max-width: 100%;
+      font-size: 1em;
+      line-height: 1.7rem;
+      position: relative;
+    }
+
+    code {
+      font-family: monospace;
+      padding: 2px 4px;
+      background: #f9f9f9;
+      border-radius: 4px;
+    }
     .content {
       display: block;
     }
@@ -100,6 +121,22 @@ template.innerHTML = `<style>
     </div>
 
     <div class="html-snippet"></div>
+
+    <h3>Javascript</h3>
+    <pre>
+      <code>
+        setHandlePosition = () => {
+          this.input.style.backgroundSize = this.getPercentage(this.input.value, this.input.min, this.input.max) + '% 100%';
+        }
+      </code>
+    </pre>
+    <pre>
+      <code>
+        getPercentage(value = 0, min, max) {
+          return Number((value - min) * 100 / (max - min)) || 0;
+        }
+      </code>
+    </pre>
   </div>`;
 
 export default class DemoSlider extends WJElement {

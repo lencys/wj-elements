@@ -3,7 +3,30 @@ import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
-template.innerHTML = `<h1>Split View</h1>
+template.innerHTML = `
+<style>
+    pre {
+      overflow-x: auto;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      padding: 10px;
+      border: 1px solid hsla(240, 6%, 90%, 1);
+      border-radius: 4px;
+      background: #f9f9f9;
+      max-width: 100%;
+      font-size: 1em;
+      line-height: 1.7rem;
+      position: relative;
+    }
+
+    code {
+      font-family: monospace;
+      padding: 2px 4px;
+      background: #f9f9f9;
+      border-radius: 4px;
+    }
+  </style>
+<h1>Split View</h1>
   <div class="container">
     
     <style>
@@ -118,6 +141,43 @@ template.innerHTML = `<h1>Split View</h1>
     </div>
 
     <div class="html-snippet"></div>
+
+    <h3>Javascript</h3>
+    <pre>
+      <code>
+        handleDrag = (e) => {
+          if(this.hasAttribute("disabled"))
+              return false;
+
+          drag(this, {
+              onMove: (x, y) => {
+                  let newPositionInPixels = this.hasAttribute("vertical") ? y : x;
+                  let sizeA = this.pixelsToPercentage(newPositionInPixels);
+                  let sizeB = 100 - this.pixelsToPercentage(newPositionInPixels);
+
+                  this.style.setProperty("--wje-split-view-calc-a", sizeA + "%");
+                  this.style.setProperty("--wje-split-view-calc-b", sizeB + "%");
+              },
+              initialEvent: e
+          });
+        }
+      </code>
+    </pre>
+    <pre>
+      <code>
+        detectSize() {
+          const { width, height } = this.getBoundingClientRect();
+          this.size = this.hasAttribute("vertical") ? height : width;
+        }
+      </code>
+    </pre>
+    <pre>
+      <code>
+        pixelsToPercentage(value) {
+          return (value / this.size) * 100;
+        }
+      </code>
+    </pre>
   </div>`;
 
 export default class DemoSplitView extends WJElement {

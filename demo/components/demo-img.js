@@ -3,35 +3,28 @@ import CodeSnippet from "./snippet/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
-template.innerHTML = `<h1>Image</h1>
-    <div class="container">
+template.innerHTML = `
+<h1>Image</h1>
+<div class="container">
 
-        <!-- BASIC -->
+    <!-- BASIC -->
 
-        <h3>Basic</h3>
-        <div class="playground">
-            <div class="content">
-                <wje-img src="/demo/assets/img/img.png" alt="Niekedy máme pocit, že chodíme v kruhoch..."></wje-img>
-            </div>
+    <h3>Basic</h3>
+    <div class="playground">
+        <div class="content">
+            <wje-img src="/demo/assets/img/img.png" alt="Niekedy máme pocit, že chodíme v kruhoch..."></wje-img>
         </div>
+    </div>
 
-        <!-- HTML Snippet -->
+    <div class="html-snippet"></div>
 
-        <h3>HTML Snippet</h3>
-        <div class="html-snippet"></div>
+</div>
+`;
 
-        
-
-        <div class="content" style="display: none;">
-            afterDraw() {
-                const codeSnippet = new CodeSnippet();
-                codeSnippet.generateSnippet(template, document);
-            }
-        </div>
-
-        <h3>JS Snippet</h3>
-        <div class="html-snippet"></div>
-    </div>`;
+function generateSnippets(externalJsContent) {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, document, externalJsContent);
+}
 
 export default class DemoImg extends WJElement {
     constructor() {
@@ -39,8 +32,13 @@ export default class DemoImg extends WJElement {
     }
 
     afterDraw() {
-      const codeSnippet = new CodeSnippet();
-      codeSnippet.generateSnippet(template, document);
+        const externalJsContent = `
+            afterDraw() {
+                const codeSnippet = new CodeSnippet();
+                codeSnippet.generateSnippet(template, document);
+            }
+        `;
+        generateSnippets(externalJsContent || null);
     }
 }
 
