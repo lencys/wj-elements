@@ -32,7 +32,7 @@ export default class Tooltip extends WJElement {
     }
 
     get content() {
-        if(this.hasAttribute('content'))
+        if (this.hasAttribute('content'))
             return this.getAttribute('content');
 
         return "";
@@ -130,16 +130,17 @@ export default class Tooltip extends WJElement {
      */
     afterDraw() {
         let anchorEl = this.mySlot.assignedElements()[0];
-        if(this.selector) {
+        if (this.selector) {
             anchorEl = this.checkSelector(anchorEl);
         }
 
-        if(!anchorEl)
+        if (!anchorEl)
             return;
 
         event.addListener(anchorEl, "mouseenter", null, this.onShow);
         event.addListener(anchorEl, "mouseleave", null, this.onHide);
-        event.addListener(anchorEl, "click", null, this.onHide, { stopPropagation: false });
+        event.addListener(this, "wje-dropdown:open", null, this.onHide);
+        event.addListener(this, "wje-dropdown:close", null, this.onShow);
     }
 
     dispatch(customEvent) {
@@ -154,13 +155,17 @@ export default class Tooltip extends WJElement {
         return this.native.innerHTML;
     }
 
-    afterShow() {}
+    afterShow() { }
 
     /**
      * @summary Show tooltip
      */
     onShow = () => {
         this.classList.add("active");
+
+        if (this.querySelector("wje-dropdown")?.classList.contains("active")) {
+            return;
+        }
 
         Promise.resolve(this.beforeShow(this)).then((res) => {
             if (!this.classList.contains("active") || (!res || typeof res !== "string")) {
@@ -170,6 +175,7 @@ export default class Tooltip extends WJElement {
             this.native.innerHTML = res;
 
             this.popup.show(); // Show tooltip
+
             Promise.resolve(this.afterShow(this));
         }).catch((error) => {
             // ak je nejaka chyba tak to len zatvorime
@@ -188,8 +194,8 @@ export default class Tooltip extends WJElement {
 
     checkSelector(anchorEl) {
         const newAnchorEl = anchorEl.querySelector(this.selector);
-        if(newAnchorEl === null) {
-            console.error("Selector not found:", this.selector, );
+        if (newAnchorEl === null) {
+            console.error("Selector not found:", this.selector);
         }
 
         return newAnchorEl;

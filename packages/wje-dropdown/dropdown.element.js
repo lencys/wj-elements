@@ -106,21 +106,9 @@ export default class Dropdown extends WJElement {
     }
 
     afterDisconnect() {
-        document.removeEventListener(
-            "wje-dropdown:open",
-            this.otherDropdownOpennedCallback
-        );
         event.removeListener(this, "mouseenter", null, this.onOpen);
         event.removeListener(this, "mouseleave", null, this.onClose);
-        event.removeListener(
-            this.anchorSlot,
-            "click",
-            null,
-            this.toggleCallback,
-            {
-                capture: true,
-            }
-        );
+        event.removeListener(this.anchorSlot, "click", null, this.toggleCallback, { capture: true });
     }
 
     afterDraw() {
@@ -132,29 +120,11 @@ export default class Dropdown extends WJElement {
             event.addListener(this, "mouseenter", null, this.onOpen);
             event.addListener(this, "mouseleave", null, this.onClose);
         } else {
-            event.addListener(
-                this.anchorSlot,
-                "click",
-                null,
-                this.toggleCallback,
-                {
-                    capture: true,
-                }
-            );
+            event.addListener(this.anchorSlot, "click", null, this.toggleCallback, { capture: true });
         }
 
         if (this.hasAttribute("collapsible")) {
-            document.addEventListener(
-                "wje-dropdown:open",
-                this.otherDropdownOpennedCallback
-            );
-
-            event.addListener(
-                Array.from(this.querySelectorAll("wje-menu-item")),
-                "click",
-                "wje-menu-item:click",
-                this.onClose
-            );
+            event.addListener(Array.from(this.querySelectorAll("wje-menu-item")), "click", "wje-menu-item:click", this.onClose);
         }
     }
 

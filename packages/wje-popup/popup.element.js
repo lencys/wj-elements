@@ -164,7 +164,7 @@ export default class Popup extends WJElement {
             }, { stopPropagation: true });
         }
 
-        document.addEventListener("click", this.clickHandler);
+        document.addEventListener("click", this.clickHandler, { capture: true });
     }
 
     clickHandler = (e) => {
