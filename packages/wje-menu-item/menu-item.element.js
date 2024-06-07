@@ -50,7 +50,6 @@ export default class MenuItem extends WJElement {
 
         bindRouterLinks(this, { selector: false })
 
-        this.hasSubmenu =  WjElementUtils.hasSlot(this, "submenu");
         this._collapsible = false;
     }
 
@@ -61,7 +60,7 @@ export default class MenuItem extends WJElement {
     get placement() {
         let menu = this.querySelector("wje-menu");
 
-        if(menu?.hasAttribute("placement")) {
+        if (menu?.hasAttribute("placement")) {
             return menu.getAttribute("placement");
         }
         return "right-start";
@@ -74,7 +73,7 @@ export default class MenuItem extends WJElement {
     get offset() {
         let menu = this.querySelector("wje-menu");
 
-        if(menu?.hasAttribute("offset")) {
+        if (menu?.hasAttribute("offset")) {
             return menu.getAttribute("offset");
         }
         return "0";
@@ -87,7 +86,7 @@ export default class MenuItem extends WJElement {
     get variant() {
         let menu = this.querySelector("wje-menu");
 
-        if(menu?.hasAttribute("variant") && !this.collapse) {
+        if (menu?.hasAttribute("variant") && !this.collapse) {
             return menu.getAttribute("variant").toUpperCase();
         }
 
@@ -148,21 +147,23 @@ export default class MenuItem extends WJElement {
      * @returns {DocumentFragment} The fragment to be appended to the MenuItem.
      */
     draw(context, store, params) {
+        this.hasSubmenu = WjElementUtils.hasSlot(this, "submenu");
+
         let fragment = document.createDocumentFragment();
 
         this.setAttribute("tabindex", "0");
 
         this.classList.forEach(className => {
-          // Ak trieda začína na "wje-menu-variant-", odstráňte ju
-          if (className.startsWith('wje-menu-variant-')) {
-            this.classList.remove(className);
-          }
+            // Ak trieda začína na "wje-menu-variant-", odstráňte ju
+            if (className.startsWith('wje-menu-variant-')) {
+                this.classList.remove(className);
+            }
         });
 
         this.classList.remove("collapse");
         this.classList.add("wje-menu-variant-" + this.variant.toLowerCase());
 
-        if(!this.collapse) {
+        if (!this.collapse) {
             this.querySelector("wje-menu")?.setAttribute("variant", this.variant.toLowerCase());
         } else if (this.parentElement?.hasAttribute("collapse")) {
             this.classList.add("collapse");
@@ -230,13 +231,13 @@ export default class MenuItem extends WJElement {
             isAppend = true;
         }
 
-        if (this.parentElement?.hasAttribute("collapse") && !this.hasSubmenu ) {
+        if (this.parentElement?.hasAttribute("collapse") && !this.hasSubmenu) {
             fragment.appendChild(this.collapseItem(native));
-        } else if(!isAppend) {
+        } else if (!isAppend) {
             fragment.appendChild(native);
         }
 
-        if(!this.collapse && this.variant === "NAV" || this.variant === "MEGAMENU" && this.hasSubmenu) {
+        if (!this.collapse && this.variant === "NAV" || this.variant === "MEGAMENU" && this.hasSubmenu) {
             fragment.appendChild(submenu);
         }
 
@@ -256,7 +257,7 @@ export default class MenuItem extends WJElement {
 
         // Event na zobrazenie submenu
         event.addListener(this, "mouseover", null, (e) => {
-            if(this.collapse || this.variant === "CONTEXT" && this.hasSubmenu) {
+            if (this.collapse || this.variant === "CONTEXT" && this.hasSubmenu) {
                 if (this.hasAttribute("manual") || this.variant === "NAV" && this.collapse) return;
 
                 this.submenuActivated(e);
@@ -270,7 +271,7 @@ export default class MenuItem extends WJElement {
 
         // Event na zrusenie zobrazenia submenu ked sa klikne mimo
         event.addListener(this, "focusout", null, (e) => {
-            if(this.collapse || this.variant === "CONTEXT" && this.hasSubmenu) {
+            if (this.collapse || this.variant === "CONTEXT" && this.hasSubmenu) {
                 if (e.relatedTarget && this.contains(e.relatedTarget) || this.variant === "NAV" && !this.collapse) {
                     return;
                 }
@@ -333,7 +334,7 @@ export default class MenuItem extends WJElement {
      */
     dispatchReposition = (e) => {
         // ak nemame submenu tak to ukoncime
-        if(this.submenu.assignedNodes().length === 0) return;
+        if (this.submenu.assignedNodes().length === 0) return;
 
         let submenu = this.submenu.assignedNodes()[0];
         const { left, top, width, height } = submenu.getBoundingClientRect();
@@ -349,7 +350,7 @@ export default class MenuItem extends WJElement {
      */
     showSubmenu() {
         this.tabIndex = -1;
-        if(this.hasSubmenu) {
+        if (this.hasSubmenu) {
             this.popup.setAttribute("active", "");
             this.classList.add("expanded-submenu");
             this.native.classList.add("expanded-submenu");
@@ -361,7 +362,7 @@ export default class MenuItem extends WJElement {
      */
     hideSubmenu() {
         this.tabIndex = 0;
-        if(this.hasSubmenu) {
+        if (this.hasSubmenu) {
             this.popup.removeAttribute("active");
             this.classList.remove("expanded-submenu");
             this.native.classList.remove("expanded-submenu");
@@ -372,15 +373,15 @@ export default class MenuItem extends WJElement {
      * Activates or deactivates the submenu of the MenuItem.
      */
     submenuActivated(e) {
-      if(this.hasSubmenu) {
-        let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
-        if (!submenuElements.hasAttribute("active")) {
-            submenuElements.setAttribute("active", "");
-        } else {
-            if (this === e.target)
-                submenuElements.removeAttribute("active");
+        if (this.hasSubmenu) {
+            let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
+            if (!submenuElements.hasAttribute("active")) {
+                submenuElements.setAttribute("active", "");
+            } else {
+                if (this === e.target)
+                    submenuElements.removeAttribute("active");
+            }
         }
-      }
     }
 
     /**

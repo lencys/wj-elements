@@ -81,7 +81,7 @@ export default class Menu extends WJElement {
 
         this.classList.remove("wje-menu-collapse");
 
-        if(this.hasAttribute("collapse"))
+        if (this.hasAttribute("collapse"))
             this.classList.add("wje-menu-collapse");
 
         let native = document.createElement("div");
@@ -101,7 +101,7 @@ export default class Menu extends WJElement {
      */
     afterDraw() {
         Array.from(this.children).forEach((child) => {
-            if(child.tagName.includes('-'))
+            if (child.tagName.includes('-'))
                 child.refresh();
         });
     }

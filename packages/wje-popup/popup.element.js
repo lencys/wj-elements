@@ -151,7 +151,7 @@ export default class Popup extends WJElement {
     setAnchor() {
         if (this.slotAnchor && typeof this.anchor === 'string') {
             const root = this.getRootNode();
-            this.anchorEl = root.getElementById(this.anchor);
+            this.anchorEl = root.querySelector('#' + this.anchor);
         } else if (this.slotAnchor instanceof HTMLSlotElement) {
             this.anchorEl = this.slotAnchor.assignedElements({ flatten: true })[0];
         }
