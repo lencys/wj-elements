@@ -5,12 +5,12 @@
 :host {
   width: var(--wje-icon-size);
   height: var(--wje-icon-size);
+  display: block;
 }
+
 .native-icon {
   display: flex;
   align-items: center;
-
-
 }
 
 svg {

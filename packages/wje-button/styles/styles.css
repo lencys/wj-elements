@@ -10,7 +10,6 @@
 }
 
 .wje-button-outline.wje-color-primary {
-  background-color: var(--wje-button-background-color);
   border-color: var(--wje-color-primary-6);
   color: var(--wje-color-primary-6);
 }
@@ -261,27 +260,51 @@
 [ Round ]
 */
 
-.wje-button-round {
+:host([round]) .native-button {
   border-radius: var(--wje-border-radius-pill);
 }
 
-.wje-button-circle {
+:host([circle]) .native-button {
   border-radius: var(--wje-border-radius-circle);
   aspect-ratio: 1/1;
+  width: 1.813rem;
+  display: flex;
+  align-items: center;
+  --wje-padding-top: 0;
+  --wje-padding-start: 0;
+  --wje-padding-end: 0;
+  --wje-padding-bottom: 0;
+
 }
 
-.wje-button-large {
+:host([size=small]) .native-button {
+  --wje-padding-top: .25rem;
+  --wje-padding-start: .25rem;
+  --wje-padding-end: .25rem;
+  --wje-padding-bottom: .25rem;
+}
+
+:host([size=large]) .native-button {
   --wje-padding-top: .6rem;
   --wje-padding-start: .7rem;
   --wje-padding-end: .7rem;
   --wje-padding-bottom: .6rem;
 }
 
-.wje-button-small {
-  --wje-padding-top: .25rem;
-  --wje-padding-start: .25rem;
-  --wje-padding-end: .25rem;
-  --wje-padding-bottom: .25rem;
+:host([size=small][circle]) .native-button {
+  width: 1.5rem;
+  --wje-padding-top: 0;
+  --wje-padding-start: 0;
+  --wje-padding-end: 0;
+  --wje-padding-bottom: 0;
+}
+
+:host([size=large][circle]) .native-button {
+  width: 2.188rem;
+  --wje-padding-top: 0;
+  --wje-padding-start: 0;
+  --wje-padding-end: 0;
+  --wje-padding-bottom: 0;
 }
 
 ::slotted(wje-icon[slot="start"]) {

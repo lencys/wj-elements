@@ -94,8 +94,8 @@
 
   ::slotted([slot="start"]) {
     margin: 0;
-    width: auto;
-    display: contents;
+    /*width: auto;*/
+    /*display: contents;*/
   }
 
   ::slotted([slot="end"]) {
