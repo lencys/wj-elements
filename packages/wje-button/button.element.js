@@ -307,8 +307,10 @@ export default class Button extends WJElement {
         if (this.hasToggle) {
             if (this.toggle === "off") {
                 this.slotToggle.assignedNodes()[1].classList.add("show");
+                this.setAttribute("value", "off");
             } else {
                 this.slotToggle.assignedNodes()[0].classList.add("show");
+                this.setAttribute("value", "on");
             }
         }
 
@@ -346,7 +348,6 @@ export default class Button extends WJElement {
      * @param {Event} e - The event
      */
     eventDialogOpen = (e) => {
-        console.log("open dialog");
         event.dispatchCustomEvent(this, this.dialog, {
             bubbles: true
         });
@@ -358,11 +359,12 @@ export default class Button extends WJElement {
     toggleStates = () => {
         const nodes = this.slotToggle.assignedNodes().filter(node => node.nodeType === Node.ELEMENT_NODE);
 
-        nodes.forEach(node => {
+        nodes.forEach((node, index) => {
             if (node.classList.contains('show')) {
                 node.classList.remove('show');
             } else {
                 node.classList.add('show');
+                this.setAttribute("value", index === 0 ? "on" : "off");
             }
         });
     }

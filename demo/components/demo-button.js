@@ -103,6 +103,7 @@ template.innerHTML = `<style>
       <div class="content">
         <wje-button>Default</wje-button>
         <wje-button round>Round</wje-button>
+        <wje-button circle><wje-icon name="clock" slot="icon-only"></wje-icon></wje-button>
       </div>
     </div>
 
@@ -134,6 +135,17 @@ template.innerHTML = `<style>
     </div>
 
     <div class="html-snippet"></div>
+    
+    <!-- SIZE - CIRCLE -->
+
+    <h2>Size</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-button circle size="small"><wje-icon name="clock"></wje-icon></wje-button>
+        <wje-button circle><wje-icon name="clock"></wje-icon></wje-button>
+        <wje-button circle size="large"><wje-icon name="clock"></wje-icon></wje-button>
+      </div>
+    </div>
     
      <!-- CARET -->
 
