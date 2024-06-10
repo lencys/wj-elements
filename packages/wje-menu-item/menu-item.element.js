@@ -192,6 +192,7 @@ export default class MenuItem extends WJElement {
 
         // SLOT - End
         let end = document.createElement("slot");
+        end.setAttribute("part", "end");
         end.name = "end";
 
         // SLOT - Submenu
@@ -202,6 +203,7 @@ export default class MenuItem extends WJElement {
         // SUBMENU - Icon
         let submenuIconClass = (this.collapse) ? "collapse" : "expand";
         let submenuIcon = document.createElement("span");
+        submenuIcon.setAttribute("part", "submenu-icon");
         submenuIcon.classList.add("submenu-icon", submenuIconClass);
         submenuIcon.innerHTML = (this.collapse) ? `<wje-icon name="chevron-down"></wje-icon>` : `<wje-icon name="chevron-right"></wje-icon>`;
 
