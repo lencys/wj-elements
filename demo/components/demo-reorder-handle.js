@@ -6,10 +6,12 @@ const template = document.createElement("template");
 template.innerHTML = `
     <h1>Reorder Handle</h1>
     <div class="container">
-        <h2>Basic (menu usage)</h2>
+    
+        <!-- BASIC -->
+        
+        <h2>Basic</h2>
         <div class="playground">
             <div class="content">
-
                 <wje-menu active>                   
                     <wje-menu-item>
                         <wje-reorder-handle dropzone="wje-menu" slot="start" locked>
@@ -47,27 +49,62 @@ template.innerHTML = `
                         </wje-reorder-handle>
                         Item 6
                     </wje-menu-item>
+                </wje-menu>
+            </div>
+        </div>
+
+        <div class="html-snippet"></div>
+        
+        <!-- PARENT -->
+        
+        <h2>Parent</h2>
+        <div class="playground">
+            <div class="content" style="flex-direction: column;">
+                <wje-button fill="link" toggle="off" value="off" id="remove-locked">
+                  <span slot="toggle">Locked</span>
+                  <span slot="toggle">Unlocked</span>
+                </wje-button>
+                <wje-menu id="parent" active>                   
                     <wje-menu-item>
-                        <wje-reorder-handle dropzone="wje-menu" slot="start">
-                            <wje-icon name="arrows-move"></wje-icon>
-                        </wje-reorder-handle>
-                        Submenu item
-<!--                        <wje-menu slot="submenu">-->
-<!--                        <wje-menu-item>Menu item</wje-menu-item>-->
-<!--                        <wje-menu-item>-->
-<!--                            Subsubmenu item-->
-<!--                           -->
-<!--                        </wje-menu-item>-->
-<!--                        <wje-menu-item>Submenu item</wje-menu-item>-->
-<!--                        </wje-menu>-->
+                        <div slot="start">
+                            <wje-reorder-handle dropzone="wje-menu" parent="wje-menu-item">
+                                <wje-icon name="arrows-move"></wje-icon>
+                            </wje-reorder-handle>
+                            Item 1
+                        </div>
+                    </wje-menu-item>
+                    <wje-menu-item>
+                        <div slot="start">
+                            <wje-reorder-handle dropzone="wje-menu" parent="wje-menu-item">
+                                <wje-icon name="arrows-move"></wje-icon>
+                            </wje-reorder-handle>
+                            Item 2
+                        </div>
+                    </wje-menu-item>
+                    <wje-menu-item>
+                        <div slot="start">
+                            <wje-reorder-handle dropzone="wje-menu" parent="wje-menu-item">
+                                <wje-icon name="arrows-move"></wje-icon>
+                            </wje-reorder-handle>
+                            Item 3
+                        </div>
+                    </wje-menu-item>
+                    <wje-menu-item>
+                        <div slot="start">
+                            <wje-reorder-handle dropzone="wje-menu" parent="wje-menu-item">
+                                <wje-icon name="arrows-move"></wje-icon>
+                            </wje-reorder-handle>
+                            Item 4
+                        </div>
                     </wje-menu-item>
                 </wje-menu>
-
             </div>
         </div>
 
         <div class="html-snippet"></div>
 
+        <!-- NO DEFINED DROPZONE -->
+        
         <h2>No defined dropzone (menu usage)</h2>
         <div class="playground">
             <div class="content">
@@ -101,11 +138,16 @@ export default class DemoReorderHandle extends WJElement {
     afterDraw() {
         const codeSnippet = new CodeSnippet();
         codeSnippet.generateSnippet(template, this.context);
+
+        this.querySelector("#remove-locked").addEventListener("wje-button:click", (e) => {
+            this.querySelectorAll("#parent wje-reorder-handle").forEach((item) => {
+                e.target.value === "on" ? item.removeAttribute("locked") : item.setAttribute("locked", "");
+            });
+        });
     }
 }
 
 let __esModule = "true";
 export { __esModule };
 
-customElements.get("demo-reorder-handle") ||
-    window.customElements.define("demo-reorder-handle", DemoReorderHandle);
+customElements.get("demo-reorder-handle") || window.customElements.define("demo-reorder-handle", DemoReorderHandle);
