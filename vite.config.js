@@ -38,6 +38,7 @@ export default defineConfig({
                 "master": "./packages/index.js",
                 "styles": "./packages/styles/styles.css",
                 "light": "./packages/themes/light.css",
+                "localize": "./packages/utils/localize.js",
                 "dark": "./packages/themes/dark.css",
                 "fetchAndParseCSS": "./packages/utils/animations.js",
                 "store": "./packages/wje-store/store.js",
@@ -128,7 +129,12 @@ export default defineConfig({
                 "visually-hidden": "./packages/wje-visually-hidden/visually-hidden.js"
             },
             name: 'WjElements',
-            fileName: (format, name) => `wje-${name}.js`,
+            fileName: (format, name) => {
+                console.log("Format:", format, "Name:", name);
+                if(name === 'localize')
+                    return name + '.js';
+                return 'wje-' + name + '.js';
+            },
             formats: ['es'],
             publicDir: false,
         },

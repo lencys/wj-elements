@@ -1,14 +1,17 @@
-export const translations = new Map();
+// export const translations = new Map();
 
 export class LocalizerDefault {
   constructor(element) {
     this.element = element;
-    this.languages = translations;
 
     this.lang = this.element.lang || document.documentElement.lang || 'sk';
     this.dir = this.element.dir || document.documentElement.dir || 'ltr';
 
     this.setLanguage();
+  }
+
+  get languages() {
+    return window.translations;
   }
 
   // Nastavenie aktuálneho jazyka
