@@ -96,9 +96,10 @@ export default class ReorderHandle extends WJElement {
             moveAt(event.pageX, event.pageY);
 
             const dropzone = this.getClosestDropzone(event.clientX, event.clientY);
-            if (!dropzone) return; 
+            if (!dropzone) return;
 
             const siblings = Array.from(dropzone.children).filter(child => child !== draggable && child !== placeholder);
+
             for (const sibling of siblings) {
                 const siblingRect = sibling.getBoundingClientRect();
 
@@ -150,13 +151,30 @@ export default class ReorderHandle extends WJElement {
     }
 
     getClosestDropzone(clientX, clientY) {
-        const elements = document.elementsFromPoint(clientX, clientY);
+        const elements = this.getElementsFromPointAll(clientX, clientY);
         for (const element of elements) {
             if (element.matches(this.getAttribute('dropzone'))) {
                 return element;
             }
         }
         return null;
+    }
+
+    // Rekurzívne prechádza všetky shadow roots bez opakovania elementov
+    getElementsFromPointAll(x, y, root = document, visited = new Set()) {
+        if (visited.has(root)) return [];
+        visited.add(root);
+
+        const elements = root.elementsFromPoint(x, y);
+        let allElements = [...elements];
+
+        for (const element of elements) {
+            if (element.shadowRoot && !visited.has(element.shadowRoot)) {
+                allElements = allElements.concat(this.getElementsFromPointAll(x, y, element.shadowRoot, visited));
+            }
+        }
+
+        return allElements;
     }
 
     reIndexItems(container) {
