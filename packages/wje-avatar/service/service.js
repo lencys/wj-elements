@@ -1,4 +1,4 @@
-export function getHsl(text, s = 30, l = 80) {
+export function getHsl(text, s = 40, l = 90) {
   let str = text,
     hash = 0;
 
