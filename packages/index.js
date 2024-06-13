@@ -88,6 +88,8 @@ import { default as TabGroup } from "./wje-tab-group/tab-group.js";
 import { default as TabPanel } from "./wje-tab-panel/tab-panel.js";
 import { default as Textarea } from "./wje-textarea/textarea.js";
 import { default as Thumbnail } from "./wje-thumbnail/thumbnail.js";
+import { default as Timeline } from "./wje-timeline/timeline.js";
+import { default as TimelineItem } from "./wje-timeline-item/timeline-item.js";
 import { default as Toast } from "./wje-toast/toast.js";
 import { default as Toggle } from "./wje-toggle/toggle.js";
 import { default as Toolbar } from "./wje-toolbar/toolbar.js";
@@ -173,6 +175,8 @@ export { WJElement, defaultStoreActions, store, event, bindRouterLinks, withRout
   TabPanel,
   Textarea,
   Thumbnail,
+  Timeline,
+  TimelineItem,
   Toast,
   Toggle,
   Toolbar,

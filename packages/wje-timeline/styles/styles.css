@@ -1,0 +1,12 @@
+.timeline-container {
+    position: relative;
+}
+
+.vertical-line {
+    position: absolute;
+    margin-left: 1.88rem;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: lightgray;
+}
