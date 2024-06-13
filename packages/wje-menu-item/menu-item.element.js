@@ -1,6 +1,6 @@
 import { default as WJElement, WjElementUtils, event } from "../wje-element/element.js";
 import { bindRouterLinks } from "../wje-router/plugins/slick-router/middlewares/router-links.js";
-import styles from "./scss/styles.css?inline";
+import styles from "./styles/styles.css?inline";
 
 /**
  * `MenuItem` is a custom web component that represents a menu item.
@@ -258,7 +258,7 @@ export default class MenuItem extends WJElement {
 
 
         // Event na zobrazenie submenu
-        event.addListener(this, "mouseover", null, (e) => {
+        event.addListener(this, "mouseenter", null, (e) => {
             if (this.collapse || this.variant === "CONTEXT" && this.hasSubmenu) {
                 if (this.hasAttribute("manual") || this.variant === "NAV" && this.collapse) return;
 
@@ -267,7 +267,19 @@ export default class MenuItem extends WJElement {
                 e.stopPropagation();
 
                 this.showSubmenu();
-                this.focus();
+                // this.focus();
+            }
+        });
+
+        // Event na zrusenie zobrazenia submenu ked sa klikne mimo
+        event.addListener(this, "mouseleave", null, (e) => {
+            if (this.collapse || this.variant === "CONTEXT" && this.hasSubmenu) {
+                if (e.relatedTarget && this.contains(e.relatedTarget) || this.variant === "NAV" && !this.collapse) {
+                    return;
+                }
+
+                this.submenuActivated(e);
+                this.hideSubmenu();
             }
         });
 

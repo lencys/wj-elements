@@ -32,4 +32,29 @@ export default class Route extends WJElement {
     static get observedAttributes() {
         return [];
     }
+
+    /**
+     * Sets up the attributes for the component.
+     */
+    setupAttributes() {
+        this.isShadowRoot = "open";
+    }
+
+    /**
+     * Draws the component.
+     *
+     * @param {Object} context - The context for drawing.
+     * @param {Object} store - The store for drawing.
+     * @param {Object} params - The parameters for drawing.
+     * @returns {DocumentFragment}
+     */
+    draw(context, store, params) {
+        let fragment = document.createDocumentFragment();
+
+        let slot = document.createElement("slot");
+
+        fragment.appendChild(slot);
+
+        return fragment;
+    }
 }

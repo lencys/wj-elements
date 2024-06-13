@@ -104,7 +104,7 @@ export default class Routerx extends WJElement {
             children.push(this.parseElement(childElement));
         });
 
-        if (children.length > 0 && element.tagName === "WJ-ROUTE") {
+        if (children.length > 0 && element.tagName === "WJE-ROUTE") {
             obj.children = children;
         } else {
             obj.root = children;

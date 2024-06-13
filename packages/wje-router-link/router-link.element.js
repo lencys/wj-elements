@@ -22,7 +22,6 @@ export default class RouterLink extends WJElement {
      */
     constructor() {
         super();
-
         this.unbindRouterLinks = bindRouterLinks(this, { selector: false });
     }
 

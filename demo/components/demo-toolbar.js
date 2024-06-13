@@ -11,6 +11,7 @@ template.innerHTML = `<h1>Toolbar</h1>
       --wje-icon-size: 10px;
     }
   </style> 
+  
   <!-- BASIC -->
 
   <h2>Basic</h2>
@@ -97,10 +98,6 @@ export default class DemoToolbar extends WJElement {
       "params": {},
       "path": "/"
     });
-  }
-
-  beforeDraw() {
-    console.log("TRALALA")
   }
 
   afterDraw(context, store2, params) {

@@ -65,6 +65,7 @@ template.innerHTML = `
     </div>
     
     <div class="html-snippet"></div>
+    
     <!-- COLLAPSE -->
 
     <h2>Collapse</h2>
@@ -124,6 +125,14 @@ template.innerHTML = `
             }
           }
           
+          #custom[variant=nav] {
+            --wje-menu-shadow: none;
+          }
+          
+          #custom[variant=nav][collapse] {
+            --wje-menu-shadow: var(--wje-shadow-medium);
+          }
+          
           #custom wje-menu-item::part(native) {
             --wje-menu-item-padding-top: .75rem;
             --wje-menu-item-padding-bottom: .75rem;
@@ -175,6 +184,7 @@ template.innerHTML = `
             --wje-menu-border-width: 0 1px 0 0;
             --wje-menu-border-radius: 0;
             max-width: 240px; 
+            --wje-menu-shadow: none;
           }
           
           #custom-1 wje-menu-item::part(native) {
@@ -200,16 +210,9 @@ export default class DemoNav extends WJElement {
     const toggle = document.querySelector("#toggle");
     const menu = document.querySelector("#custom");
 
-    // console.log(expand, collapse, menu)
     toggle.addEventListener("wje-button:click", (e) => {
       menu.toggleAttribute("collapse");
-      // menu.refresh();
     });
-
-    // toggle.addEventListener("wje-button:click", (e) => {
-    //   console.log("expand");
-    //   menu.toggleAttribute("collapse");
-    // });
   }
 }
 
