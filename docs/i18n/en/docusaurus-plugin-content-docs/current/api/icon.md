@@ -31,9 +31,9 @@ import Basic from '@site/static/usage/v1/icon/basic/index.md';
 
 ## Style Outline / Filled
 
-import Style from '@site/static/usage/v1/icon/style/index.md';
+import Styles from '@site/static/usage/v1/icon/style/index.md';
 
-<Style />
+<Styles />
 
 ## Custom
 
@@ -41,15 +41,15 @@ import Custom from '@site/static/usage/v1/icon/custom/index.md';
 
 <Custom />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods/>
 
@@ -57,10 +57,10 @@ import Custom from '@site/static/usage/v1/icon/custom/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

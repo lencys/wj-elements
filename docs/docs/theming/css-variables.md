@@ -22,10 +22,10 @@ Premenné CSS možno v aplikácii nastaviť globálne v selektore `:root`. Môž
 /* Set variables for all modes */
 :root {
   /* Set the background of the entire app */
-  --wj-background-color: #ff3700;
+  --wje-background-color: #ff3700;
 
   /* Set the font family of the entire app */
-  --wj-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
+  --wje-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
 }
 ```
 
@@ -35,13 +35,13 @@ To set a CSS variable for a specific component, add the variable inside of its s
 
 ```css
 /* Nastaví farbu okrajov všetkých tlačidiel */
-wj-button {
-  --wj-button-border-color: #0af4fc;
+wje-button {
+  --wje-button-border-color: #0af4fc;
 }
 
 /* Nastaví farbu okrajov všetkých tlačidla s id 'custom' */
 #custom {
-    --wj-button-border-color: #0af4fc;
+    --wje-button-border-color: #0af4fc;
 }
 ```
 
@@ -51,19 +51,19 @@ CSS premenné je možné upraviť aj pomocou Javascript metódy [setProperty()](
 
 ```js
 const el = document.querySelector('#custom');
-el.style.setProperty('--wj-button-border-color', '#0af4fc');
+el.style.setProperty('--wje-button-border-color', '#0af4fc');
 ```
 
 ## Získanie hodnoty
 
 ### Použitím CSS
 
-Na získanie hodnoty premennej CSS použite funkciu [var() CSS function](https://developer.mozilla.org/en-US/docs/Web/CSS/var). Táto funkcia tiež umožňuje špecifikovať záložnú hodnotu. Napríklad v nasledujúcom príklade je vlastnosti `--wj-button-border-color` priradená hodnota premennej `--primary-light`. Ak premenná `--primary-light` nie je nastavená, ako náhradná hodnota sa použije `#0af4fc`.
+Na získanie hodnoty premennej CSS použite funkciu [var() CSS function](https://developer.mozilla.org/en-US/docs/Web/CSS/var). Táto funkcia tiež umožňuje špecifikovať záložnú hodnotu. Napríklad v nasledujúcom príklade je vlastnosti `--wje-button-border-color` priradená hodnota premennej `--primary-light`. Ak premenná `--primary-light` nie je nastavená, ako náhradná hodnota sa použije `#0af4fc`.
 
 
 ```css
 #custom {
-  --wj-button-border-color: var(--primary-light, #0af4fc);
+  --wje-button-border-color: var(--primary-light, #0af4fc);
 }
 ```
 

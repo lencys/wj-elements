@@ -21,13 +21,13 @@ The Elements colour palette consists of 7 preset colours that can be easily cust
 In most elements it is possible to set the color of the element using the `color` attribute and as its value it is necessary to choose the name of one of the colors from the color palette.
 
 ```html
-<wj-button>Default</wj-button>
-<wj-button color="primary">Primary</wj-button>
-<wj-button color="complete">Complete</wj-button>
-<wj-button color="success">Success</wj-button>
-<wj-button color="warning">Warning</wj-button>
-<wj-button color="danger">Danger</wj-button>
-<wj-button color="neutral">Neutral</wj-button>
+<wje-button>Default</wje-button>
+<wje-button color="primary">Primary</wje-button>
+<wje-button color="complete">Complete</wje-button>
+<wje-button color="success">Success</wje-button>
+<wje-button color="warning">Warning</wje-button>
+<wje-button color="danger">Danger</wje-button>
+<wje-button color="neutral">Neutral</wje-button>
 ```
 
 ## Adjusting the existing colour
@@ -36,7 +36,7 @@ Adjusting the value of one of the colors of the color palette is achieved by set
 
 ```css
 :root {
-  --wj-color-primary: #FFd945;
+  --wje-color-primary: #FFd945;
 }
 ```
 
@@ -48,29 +48,29 @@ To incorporate a new color into the color palette, start by creating its CSS var
 
 ```css
 :root {
-  --wj-color-coral: #FF7F50;
+  --wje-color-coral: #FF7F50;
 }
 ```
 
-Then create a new class that uses this CSS variable. The class must be written in the format `.wj-color-{COLOR}`, where `{COLOR}` is the name of the color you want to add:
+Then create a new class that uses this CSS variable. The class must be written in the format `.wje-color-{COLOR}`, where `{COLOR}` is the name of the color you want to add:
 
 ```css
-.wj-color-coral {
-  --wj-color-base: var(--wj-color-coral);
+.wje-color-coral {
+  --wje-color-base: var(--wje-color-coral);
 }
 ```
 
-After adding the class, the color can be used in any WebJET component that supports the `color` property. An example of using the color `coral` on a `wj-button` is shown below.
+After adding the class, the color can be used in any WebJET component that supports the `color` property. An example of using the color `coral` on a `wje-button` is shown below.
 
 ```html
-<wj-button color="coral">Coral</wj-button>
+<wje-button color="coral">Coral</wje-button>
 ```
 
 CSS variables defined in the root directory can also be used to style any element using CSS:
 
 ```css
 div {
-  background: var(--wj-color-coral);
+  background: var(--wje-color-coral);
 }
 ```
 

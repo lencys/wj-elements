@@ -58,7 +58,7 @@ The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_b
 Since we know that `ion-select` exposes a `placeholder` part for styling the text when there is no value selected, we can customize it in the following way:
 
 ```css
-ion-select::part(placeholder) {
+wj-select::part(placeholder) {
   color: blue;
   opacity: 1;
 }

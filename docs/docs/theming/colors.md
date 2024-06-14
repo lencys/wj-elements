@@ -21,13 +21,13 @@ Farebná paleta Elements sa skladá zo 7 predvolených farieb, ktoré si je mož
 Vo vačšine elementov je možné nastaviť farbu elementu pomocou atribútu `color` a ako jeho hodnotu je potrebné zvoliť názov niektorej z farieb z farebnej palety.
 
 ```html
-<wj-button>Default</wj-button>
-<wj-button color="primary">Primary</wj-button>
-<wj-button color="complete">Complete</wj-button>
-<wj-button color="success">Success</wj-button>
-<wj-button color="warning">Warning</wj-button>
-<wj-button color="danger">Danger</wj-button>
-<wj-button color="neutral">Neutral</wj-button>
+<wje-button>Default</wje-button>
+<wje-button color="primary">Primary</wje-button>
+<wje-button color="complete">Complete</wje-button>
+<wje-button color="success">Success</wje-button>
+<wje-button color="warning">Warning</wje-button>
+<wje-button color="danger">Danger</wje-button>
+<wje-button color="neutral">Neutral</wje-button>
 ```
 
 ## Upravenie existujúcej farby
@@ -36,7 +36,7 @@ Upravenie hodnoty niektorej z farieb farebnej palety dosiahnete nastavením CSS 
 
 ```css
 :root {
-  --wj-color-primary: #FFd945;
+  --wje-color-primary: #FFd945;
 }
 ```
 
@@ -48,29 +48,29 @@ Ak chcete začleniť novú farbu do farebnej palety, začnite vytvorením jej pr
 
 ```css
 :root {
-  --wj-color-coral: #FF7F50;
+  --wje-color-coral: #FF7F50;
 }
 ```
 
-Potom vytvorte novú triedu, ktorá použije túto premennú CSS. Trieda musí byť zapísaná vo formáte `.wj-color-{COLOR}`, kde `{COLOR}` je názov farby, ktorú chcete pridať:
+Potom vytvorte novú triedu, ktorá použije túto premennú CSS. Trieda musí byť zapísaná vo formáte `.wje-color-{COLOR}`, kde `{COLOR}` je názov farby, ktorú chcete pridať:
 
 ```css
-.wj-color-coral {
-  --wj-color-base: var(--wj-color-coral);
+.wje-color-coral {
+  --wje-color-base: var(--wje-color-coral);
 }
 ```
 
-Po pridaní triedy je možné farbu použiť v ľubovoľnej komponente WebJET, ktorá podporuje vlastnosť `color`. Príklad použitia farby `coral` na `wj-button` je uvedený nižšie.
+Po pridaní triedy je možné farbu použiť v ľubovoľnej komponente WebJET, ktorá podporuje vlastnosť `color`. Príklad použitia farby `coral` na `wje-button` je uvedený nižšie.
 
 ```html
-<wj-button color="coral">Coral</wj-button>
+<wje-button color="coral">Coral</wje-button>
 ```
 
 Premenné CSS definované v koreňovom adresári možno použiť aj na štylizáciu ľubovoľného elementu pomocou CSS:
 
 ```css
 div {
-  background: var(--wj-color-coral);
+  background: var(--wje-color-coral);
 }
 ```
 

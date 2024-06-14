@@ -22,10 +22,10 @@ CSS variables can be set globally in the `:root` selector in the application. Th
 /* Set variables for all modes */
 :root {
   /* Set the background of the entire app */
-  --wj-background-color: #ff3700;
+  --wje-background-color: #ff3700;
 
   /* Set the font family of the entire app */
-  --wj-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
+  --wje-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
 }
 ```
 
@@ -35,13 +35,13 @@ To set a CSS variable for a specific component, add the variable inside of its s
 
 ```css
 /* Sets the border color of all buttons */
-wj-button {
-  --wj-button-border-color: #0af4fc;
+wje-button {
+  --wje-button-border-color: #0af4fc;
 }
 
 /* Sets the border color of all buttons with id 'custom' */
 #custom {
-    --wj-button-border-color: #0af4fc;
+    --wje-button-border-color: #0af4fc;
 }
 ```
 
@@ -51,18 +51,18 @@ CSS variables can also be modified using the Javascript method [setProperty()](h
 
 ```js
 const el = document.querySelector('#custom');
-el.style.setProperty('--wj-button-border-color', '#0af4fc');
+el.style.setProperty('--wje-button-border-color', '#0af4fc');
 ```
 
 ## Getting value
 
 ### Using CSS
 
-Use the [var() CSS function](https://developer.mozilla.org/en-US/docs/Web/CSS/var) to get the value of the CSS variable. This function also allows you to specify a fallback value. For example, in the following example, the `--wj-button-border-color` property is assigned the value of the `--primary-light` variable. If the `--primary-light` variable is not set, `#0af4fc` is used as a placeholder.
+Use the [var() CSS function](https://developer.mozilla.org/en-US/docs/Web/CSS/var) to get the value of the CSS variable. This function also allows you to specify a fallback value. For example, in the following example, the `--wje-button-border-color` property is assigned the value of the `--primary-light` variable. If the `--primary-light` variable is not set, `#0af4fc` is used as a placeholder.
 
 ```css
 #custom {
-  --wj-button-border-color: var(--primary-light, #0af4fc);
+  --wje-button-border-color: var(--primary-light, #0af4fc);
 }
 ```
 

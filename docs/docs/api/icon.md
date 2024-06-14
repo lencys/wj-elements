@@ -30,9 +30,9 @@ import Basic from '@site/static/usage/v1/icon/basic/index.md';
 
 ## Štýl Outline / Filled
 
-import Style from '@site/static/usage/v1/icon/style/index.md';
+import Styles from '@site/static/usage/v1/icon/style/index.md';
 
-<Style />
+<Styles />
 
 ## Custom
 
