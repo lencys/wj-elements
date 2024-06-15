@@ -15,7 +15,7 @@
   padding-left: 0;
 
   label {
-    display: inline-flex;
+    display: flex;
     cursor: pointer;
     position: relative;
     padding-left: 1.5rem;
@@ -81,6 +81,30 @@
       opacity: 0.5;
       &:before {
         cursor: not-allowed!important;
+      }
+    }
+  }
+}
+
+:host([placement=end]) {
+  label {
+    padding-left: 0;
+    padding-right: 26px;
+
+    &:before {
+      right: 0;
+      left: auto;
+    }
+  }
+
+  input[type="checkbox"]:checked {
+    & + label {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        right: 0;
+        left: auto;
       }
     }
   }

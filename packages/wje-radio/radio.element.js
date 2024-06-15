@@ -51,7 +51,6 @@ export default class Radio extends WJElement {
         this.input.name = this.name + "-radio";
         this.input.checked = this.hasAttribute("checked");
         this.input.disabled = this.hasAttribute("disabled");
-        this.input.indeterminate = this.hasAttribute("indeterminate");
 
         let label = document.createElement("label");
         label.htmlFor = "radio";
