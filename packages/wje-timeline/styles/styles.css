@@ -4,9 +4,9 @@
 
 .vertical-line {
     position: absolute;
-    margin-left: 1.88rem;
+    margin-left: var(--wje-spacing-x-large);
     top: 0;
     bottom: 0;
     width: 1px;
-    background-color: lightgray;
+    background-color: var(--wje-color-info-3);
 }

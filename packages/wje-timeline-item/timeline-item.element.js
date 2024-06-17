@@ -20,7 +20,7 @@ export default class TimelineItem extends WJElement {
         const status = document.createElement('wje-status');
         const icon = document.createElement('wje-icon');
         status.setAttribute('slot', 'icon');
-        status.setAttribute('size', 'large');
+        status.setAttribute('size', 'medium');
         icon.setAttribute('size', 'medium');
         switch (type) {
             case 'active':
@@ -29,7 +29,7 @@ export default class TimelineItem extends WJElement {
                 break;
             case 'default':
             default:
-                status.setAttribute('color', 'contrast-reverse');
+                status.setAttribute('color', 'contrast');
                 break;
         }
 
@@ -62,25 +62,22 @@ export default class TimelineItem extends WJElement {
         const contentContainer = document.createElement('div');
         contentContainer.classList.add('content-container');
 
-        const dateTime = document.createElement('div');
-        dateTime.classList.add('date-time');
-        dateTime.textContent = this.getAttribute('datetime') || '';
+        const relativeTime = document.createElement('wje-relative-time');
+        relativeTime.setAttribute('date', this.getAttribute('datetime') || '');
 
         const event = document.createElement('h3');
         event.classList.add('event');
         event.textContent = this.getAttribute('event') || '';
 
-        const additionalContent = document.createElement("div");
-        additionalContent.classList.add("additional-content");
+        const card = document.createElement("wje-card");
 
         const slot = document.createElement('slot');
-        
 
-        contentContainer.appendChild(dateTime);
+        contentContainer.appendChild(relativeTime);
         contentContainer.appendChild(event);
         if(this.innerHTML) {
-            additionalContent.appendChild(slot);
-            contentContainer.appendChild(additionalContent);
+            card.appendChild(slot);
+            contentContainer.appendChild(card);
         }
 
         native.appendChild(statusElement);

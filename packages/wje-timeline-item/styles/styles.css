@@ -5,55 +5,51 @@
 
 .native-timeline-item {
     display: flex;
-    align-items: flex-start;
     position: relative;
-    padding: 16px 12px 16px 20px;
-    gap: 12px;
+    padding: var(--wje-spacing-large);
+    gap: var(--wje-spacing-medium);
+}
+
+.native-timeline-item:hover {
+    background-color: #f0f8ff;
+    border-color: #aaa;
 }
 
 .icon-container {
-    width: fixed 18px;
-    height: fixed 18px;
-    padding: 4px 0px 0px 0px;
-    gap: 4px;
-    border-radius: 100px 0px 0px 0px;
-    opacity: 0px;
-
+    position: absolute;
+    display: flex;
+    width: var(--wje-size-small); 
+    height: var(--wje-size-small); 
+    padding: var(--wje-spacing-2x-small);
+    border-radius: var(--wje-border-radius-circle); 
+    opacity: 0;
 }
 
 .content-container {
-    width: fill 864px;
-    height: hug 42px;
-    gap: 8px;
+    height: fit-content;
+    gap: var(--wje-spacing-small);
 }
 
 .date-time {
-    font-size: 0.75rem;
-    line-height: 17px;
-    size: 12px;
-    font-weight: 400;
+    font-size: var(--wje-font-size-small);
+    line-height: var(--wje-line-height-denser);
+    font-weight: var(--wje-font-weight-normal);
 }
 
 .event {
     margin: 0;
-    font-size: 1.2em;
-    font-weight: 700;
-    size: 14px;
-    line-height: 21px;
-    letter-spacing: -0.08px;
+    font-size: var(--wje-font-size-large);
+    font-weight: var(--wje-font-weight-bold);
+    line-height: var(--wje-line-height-dense);
+    letter-spacing: var(--wje-spacing-4x-small);
 }
 
 .additional-content {
-    font-size: 1rem;
+    font-size: var(--wje-font-size-medium);
     margin-top: 1rem;
 }
 
 wje-status {
     position: relative;
     z-index: 1;
-}
-
-wje-card {
-    border-color: #fff;
-    box-shadow: none;
 }
