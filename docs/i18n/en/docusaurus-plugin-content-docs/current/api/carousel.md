@@ -25,7 +25,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 A **Carousel** is an element that displays multiple items, such as images or news updates, in a rotating fashion.
 
-## Basic use
+## Basic usage
 
 import Basic from '@site/static/usage/v1/carousel/basic/index.md';
 

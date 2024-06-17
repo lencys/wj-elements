@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Color picker is an element that displays a color palette and allows users to select one of its colors. Displays the hex code of the selected color, which can be easily copied by the user.
 
-## Basic use
+## Basic usage
 
 import Basic from '@site/static/usage/v1/color-picker/basic/index.md';
 

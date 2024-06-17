@@ -22,7 +22,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 The **Select** element extends the capabilities of the standard HTML select element. Supports single or multiple selections by adding the `multiple` attribute.
 In addition, it offers features such as deletable selections and custom placeholder text. Visually, the component can display the selected options as chips and includes an input field and a drop-down list of options.
 
-## Basic use
+## Basic usage
 
 By default, the selection allows the user to select only one option. Including the `Icon` element will also display the selected icon next to the option.
 

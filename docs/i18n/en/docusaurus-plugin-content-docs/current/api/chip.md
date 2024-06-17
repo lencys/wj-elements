@@ -36,7 +36,7 @@ import SlotExample from '@site/static/usage/v1/chip/slots/index.md';
 
 ## Styling
 
-### Colour variants
+### Color variants
 
 import Colors from '@site/static/usage/v1/chip/theming/colors/index.md';
 

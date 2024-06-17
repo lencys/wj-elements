@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The **List** (List) component consists of multiple [Item](../item) elements and can contain text, buttons, toggles, icons, image thumbnails, and much more. Sheets generally contain items with the same content and group them into a larger whole.
 
-## Basic use
+## Basic usage
 
 import Basic from '@site/static/usage/v1/list/basic/index.md';
 

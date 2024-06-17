@@ -74,7 +74,7 @@ import Icons from '@site/static/usage/v1/button/icons/index.md';
 
 ## Editing styles
 
-### Button colours
+### Button colors
 
 The `color` property adjusts the background and border color of the button. Setting this value will change the button color to one of the colors in the preset color palette. By default, the buttons have a `primary` background.
 
@@ -82,7 +82,7 @@ import Colors from '@site/static/usage/v1/button/theming/colors/index.md';
 
 <Colors />
 
-### Colour of the button edges
+### Button edge color
 
 The `color` property can be combined with the `fill` property.
 

@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The Progress Bar element is a component designed to visualize progress. It offers the ability to create customizable circular or straight indicators with different configuration options.
 
-## Basic use
+## Basic usage
 
 To use the Progress Bar component, include it in the HTML with the required attributes. The progress attribute sets the percentage value of the progress in the progress bar.
 
@@ -76,7 +76,7 @@ import Images from '@site/static/usage/v1/progress-bar/image/index.md';
 
 <Images />
 
-## Colour variants of the progress bar
+## Color variants of the progress bar
 
 The `color` property modifies the color of the element. By default, the element has the color `dark`. Setting this value changes the element color to one of the colors of the preset color palette.
 

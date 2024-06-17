@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Badges are inline-block elements that are informative and usually appear near another element. They are used as a notification that there are other elements associated with the element and inform the user of their number.
 
-## Use
+## Basic usage
 
 To use the Badge component, include it in the HTML with the required attributes.
 
@@ -30,7 +30,7 @@ import Basic from '@site/static/usage/v1/badge/basic/index.md';
 
 ## Editing styles
 
-### Paints
+### Colors
 
 import Colors from '@site/static/usage/v1/badge/theming/colors/index.md';
 

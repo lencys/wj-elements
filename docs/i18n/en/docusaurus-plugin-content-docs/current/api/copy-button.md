@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The Copy button allows you to copy the desired content to the clipboard with one click. Supported elements are `input`, `textarea`, `wj-input`, `wj-label` and `a` element.
 
-## Basic use
+## Basic usage
 
 import Basic from '@site/static/usage/v1/copy-button/basic/index.md';
 

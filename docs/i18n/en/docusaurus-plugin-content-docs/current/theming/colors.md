@@ -1,5 +1,5 @@
 ---
-title: Paints
+title: Colors
 initialTab: Preview
 inlineHtmlPreviews: true
 ---
@@ -9,14 +9,14 @@ import NewColorGenerator from '@components/page/theming/NewColorGenerator';
 import CodeColor from '@components/page/theming/CodeColor';
 
 <head>
-  <title>Colours: customise your palette colours or create a new one</title>
+  <title>Colors: customize your palette colors or create a new one</title>
   <meta
     name="description"
     content="Farebná paleta Elements sa skladá zo 7 predvolených farieb, ktoré si je možné jednoducho upraviť. Paleta je navrhnutá tak aby spĺňala aktuálne trendy a zároveň zabezpečovala prístupnosť. Používatelia si môžu prispôsobiť jej farby pomocou CSS premenných, čo im umožňuje zmeniť predvolené farby alebo pridať vlastné."
   />
 </head>
 
-The Elements colour palette consists of 7 preset colours that can be easily customised. The palette is designed to meet current trends while ensuring accessibility. Users can customize its colors using CSS variables, allowing them to change the default colors or add their own.
+The Elements color palette consists of 7 preset colors that can be easily customized. The palette is designed to meet current trends while ensuring accessibility. Users can customize its colors using CSS variables, allowing them to change the default colors or add their own.
 
 In most elements it is possible to set the color of the element using the `color` attribute and as its value it is necessary to choose the name of one of the colors from the color palette.
 
@@ -30,7 +30,7 @@ In most elements it is possible to set the color of the element using the `color
 <wje-button color="neutral">Neutral</wje-button>
 ```
 
-## Adjusting the existing colour
+## Adjusting the existing color
 
 Adjusting the value of one of the colors of the color palette is achieved by setting the CSS property. For example, you would use the property below to adjust the primary color value to <CodeColor color="#FFd945">#FFd945</CodeColor>:
 
@@ -40,7 +40,7 @@ Adjusting the value of one of the colors of the color palette is achieved by set
 }
 ```
 
-## Adding a new colour
+## Adding a new color
 
 Color can be added for use throughout the application by setting the `color` property on the WebJET component or by styling with CSS.
 

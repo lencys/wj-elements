@@ -22,7 +22,7 @@ The FileUploadItem element represents an individual item (file) within the FileU
 
 For more information on using FileUploadItem, navigate to the documentation of the [FileUpload](../file-upload) element
 
-## Basic use
+## Basic usage
 
 import Basic from '@site/static/usage/v1/file-upload-item/basic/index.md';
 

@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The FileUpload component provides a universal file upload function for web applications. It supports customizable attributes such as allowed file types, part size or also maximum file size, along with drag-and-drop methods and traditional file selection.
 
-## Basic use
+## Basic usage
 
 import Basic from '@site/static/usage/v1/file-upload/basic/index.md';
 

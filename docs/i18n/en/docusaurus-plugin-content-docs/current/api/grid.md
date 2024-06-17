@@ -36,7 +36,7 @@ The Grid system is a flexible way to create responsive layouts by dividing the s
 
 The table below shows the default grid breakpoints.
 
-## Basic use
+## Basic usage
 
 By default, columns will take up equal width inside of a row for all devices and screen sizes.
 
@@ -44,7 +44,7 @@ import Basic from '@site/static/usage/v1/grid/basic/index.md';
 
 <Basic />
 
-## Column size: car
+## Column size: auto
 
 Setting `size` to `auto` adjusts the column to the width of its contents, and adjacent columns automatically adjust their width to fill the remaining space in the row.
 

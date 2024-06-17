@@ -22,7 +22,7 @@ The Element Toolbar is a flexible container designed to display a variety of con
 
 Part of the Toolbar is the [ToolbarActions](../toolbar-actions) element, which groups different actions in the form of buttons into a single unit.
 
-## Basic use
+## Basic usage
 
 import Basic from '@site/static/usage/v1/toolbar/basic/index.md';
 
