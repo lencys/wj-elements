@@ -33,6 +33,22 @@ template.innerHTML = `<h1>Progress bar</h1>
 
     <div class="html-snippet"></div>
 
+    <!-- LINECAP -->
+
+    <h2>Linecap</h2>
+    <div class="playground">      
+      <div class="content" style="flex-direction: column;">
+        <p>
+          <wje-progress-bar progress="60" linecap="round"></wje-progress-bar>
+        </p>
+        <p>
+          <wje-progress-bar progress="60" type="circle" radius="30" linecap="round"></wje-progress-bar>
+        </p>
+      </div>
+    </div>
+
+    <div class="html-snippet"></div>
+    
     <!-- LABEL -->
 
     <h2>Label</h2>
@@ -42,17 +58,6 @@ template.innerHTML = `<h1>Progress bar</h1>
           <wje-label slot="start">Slot Start</wje-label>
           <wje-label slot="end">Slot End</wje-label>
         </wje-progress-bar>
-      </div>
-    </div>
-
-    <div class="html-snippet"></div>
-
-    <!-- LINECAP -->
-
-    <h2>Linecap</h2>
-    <div class="playground">
-      <div class="content" style="flex-direction: column;">
-        <wje-progress-bar progress="80" stroke="12" linecap="round"></wje-progress-bar>
       </div>
     </div>
 
@@ -73,8 +78,13 @@ template.innerHTML = `<h1>Progress bar</h1>
 
     <h2>Stroke</h2>
     <div class="playground">
-      <div class="content">
-        <wje-progress-bar progress="60" radius="20" stroke="1"></wje-progress-bar>
+      <div class="content" style="flex-direction: column;">
+        <p>
+          <wje-progress-bar progress="60" stroke="1"></wje-progress-bar>
+        </p>
+        <p>
+          <wje-progress-bar progress="60" type="circle" radius="30" stroke="1"></wje-progress-bar>
+        </p>
       </div>
     </div>
 
@@ -111,30 +121,54 @@ template.innerHTML = `<h1>Progress bar</h1>
 
     <h2>Colors</h2>
     <div class="playground">
-      <div class="content">
+      <div class="content" style="flex-direction: column;">
         <p>
-          <wje-progress-bar progress="60" radius="20"></wje-progress-bar>
+          <wje-progress-bar progress="60"></wje-progress-bar>
         </p>
         <p>
-          <wje-progress-bar progress="60" radius="20" color="primary"></wje-progress-bar>
+          <wje-progress-bar progress="60" type="circle" radius="30"></wje-progress-bar>
+        </p>
+        <!-- PRIMARY -->
+        <p>
+          <wje-progress-bar progress="60" color="primary"></wje-progress-bar>
         </p>
         <p>
-          <wje-progress-bar progress="60" radius="20" color="complete"></wje-progress-bar>
+          <wje-progress-bar progress="60" color="primary" type="circle" radius="30"></wje-progress-bar>
+        </p>
+        <!-- SECONDARY -->
+        <p>
+          <wje-progress-bar progress="60" color="complete"></wje-progress-bar>
         </p>
         <p>
-          <wje-progress-bar progress="60" radius="20" color="success"></wje-progress-bar>
+          <wje-progress-bar progress="60" color="complete" type="circle" radius="30"></wje-progress-bar>
+        </p>
+        <!-- SUCCESS -->
+        <p>
+          <wje-progress-bar progress="60" color="success"></wje-progress-bar>
         </p>
         <p>
-          <wje-progress-bar progress="60" radius="20" color="warning"></wje-progress-bar>
+          <wje-progress-bar progress="60" color="success" type="circle" radius="30"></wje-progress-bar>
+        </p>
+        <!-- WARNING -->
+        <p>
+          <wje-progress-bar progress="60" color="warning"></wje-progress-bar>
         </p>
         <p>
-          <wje-progress-bar progress="60" radius="20" color="danger"></wje-progress-bar>
+          <wje-progress-bar progress="60" color="warning" type="circle" radius="30"></wje-progress-bar>
+        </p>
+        <!-- DANGER -->
+        <p>
+          <wje-progress-bar progress="60" color="danger"></wje-progress-bar>
         </p>
         <p>
-          <wje-progress-bar progress="60" radius="20" color="dark"></wje-progress-bar>
+          <wje-progress-bar progress="60" color="danger" type="circle" radius="30"></wje-progress-bar>
+        </p>
+        <!-- INFO -->
+        <p>
+          <wje-progress-bar progress="60" color="info"></wje-progress-bar>
         </p>
         <p>
-          <wje-progress-bar progress="60" radius="20" color="light"></wje-progress-bar>
+          <wje-progress-bar progress="60" color="info" type="circle" radius="30"></wje-progress-bar>
         </p>
       </div>
     </div>

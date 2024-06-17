@@ -53,7 +53,16 @@ export default class ProgressBar extends WJElement {
      * @returns {number} The value of the diameter.
      */
     get diameter() {
-        return this.radius * 2 + this.stroke;
+        return this.radius * 2;
+    }
+
+    /**
+     * Gets the diameter of the progress bar.
+     *
+     * @returns {number} The value of the diameter.
+     */
+    get containerSize() {
+        return this.diameter + 2 * this.stroke;
     }
 
     /**
@@ -142,32 +151,38 @@ export default class ProgressBar extends WJElement {
         let slotEnd = document.createElement("slot");
         slotEnd.setAttribute("name", "end");
 
-        let svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+        const svgNamespace = "http://www.w3.org/2000/svg";
+
+        let svg = document.createElementNS(svgNamespace,"svg");
 
         let background;
         let bar;
 
         if(this?.type === "circle") {
-            svg.setAttribute("width", this.diameter);
-            svg.setAttribute("height", this.diameter);
-            svg.setAttribute("viewBox", `0 0 ${this.diameter} ${this.diameter}`);
+            // console.log("CIRCLE", "RADIUS:", this.radius, "DIAMETER:", this.diameter, "CONTAINER SIZE:", this.containerSize, "STROKE:", this.stroke);
+            svg.setAttribute("width", this.containerSize);
+            svg.setAttribute("height", this.containerSize);
+            svg.setAttribute("viewBox", `0 0 ${this.containerSize} ${this.containerSize}`);
             svg.setAttribute("style", "transform: rotate(-90deg)");
 
-            background = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-            background.setAttribute("r", this.radius);
-            background.setAttribute("cx", xy);
-            background.setAttribute("cy", xy);
-            background.setAttribute("fill", "transparent");
+            background = document.createElementNS(svgNamespace, 'circle');
+            background.setAttribute('stroke', 'var(--wje-progress-bar-background-color)');
+            background.setAttribute('stroke-width', this.stroke);
+            background.setAttribute('fill', 'transparent');
+            background.setAttribute('r', this.radius);
+            background.setAttribute('cx', this.containerSize / 2);
+            background.setAttribute('cy', this.containerSize / 2);
 
-            bar = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-            bar.setAttribute("r", this.radius);
-            bar.setAttribute("cx", xy);
-            bar.setAttribute("cy", xy);
-            bar.setAttribute("fill", "transparent");
-            bar.setAttribute("stroke-dasharray", "0");
-            bar.setAttribute("stroke-dashoffset", "0");
+            bar = document.createElementNS(svgNamespace, 'circle');
+            bar.setAttribute('stroke', 'var(--wje-progress-bar-color)');
+            bar.setAttribute('stroke-width', this.stroke);
+            bar.setAttribute('fill', 'transparent');
+            bar.setAttribute('r', this.radius);
+            bar.setAttribute('cx', this.containerSize / 2);
+            bar.setAttribute('cy', this.containerSize / 2);
+            bar.setAttribute('stroke-linecap', this.linecap);
 
-            let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            let text = document.createElementNS(svgNamespace, "text");
             text.setAttribute("x", "50%");
             text.setAttribute("y", "50%");
             text.innerHTML = this.progress + "%";
@@ -178,27 +193,37 @@ export default class ProgressBar extends WJElement {
             svg.setAttribute("height", this.stroke);
             svg.setAttribute("preserveAspectRatio", "none");
 
-            background = document.createElementNS("http://www.w3.org/2000/svg", "line");
-            background.setAttribute("x1", 0);
-            background.setAttribute("y1", this.stroke / 2);
-            background.setAttribute("x2", "100%");
-            background.setAttribute("y2", this.stroke / 2);
+            background = document.createElementNS(svgNamespace, "rect");
+            background.setAttribute("x", 0);
+            background.setAttribute("y", 0);
+            background.setAttribute("width", "100%");
+            background.setAttribute("height", this.stroke);
+            if(this.linecap === "round") {
+                background.setAttribute("rx", this.stroke / 2);
+                background.setAttribute("ry", this.stroke / 2);
+            }
 
+            bar = document.createElementNS(svgNamespace, "rect");
+            bar.setAttribute("x", 0);
+            bar.setAttribute("y", 0);
+            bar.setAttribute("width", this.progress + "%");
+            bar.setAttribute("height", this.stroke);
+            bar.setAttribute("id", "bar");
 
-            bar = document.createElementNS("http://www.w3.org/2000/svg", "line");
-            bar.setAttribute("x1", 0);
-            bar.setAttribute("y1", this.stroke / 2);
-            bar.setAttribute("x2", this.progress + "%");
-            bar.setAttribute("y2", this.stroke / 2);
+            if(this.linecap === "round") {
+                bar.setAttribute("rx", this.stroke / 2);
+                bar.setAttribute("ry", this.stroke / 2);
+            }
+
         }
 
         // background.setAttribute("stroke", "#e0e0e0");
-        background.setAttribute("stroke-linecap", this.linecap);
-        background.setAttribute("stroke-width", this.stroke + "px");
+        // background.setAttribute("stroke-linecap", this.linecap);
+        // background.setAttribute("stroke-width", this.stroke + "px");
 
-        bar.setAttribute("stroke-linecap", this.linecap);
-        bar.setAttribute("stroke-width", this.stroke + "px");
-        bar.setAttribute("id", "bar");
+        // bar.setAttribute("stroke-linecap", this.linecap);
+        // bar.setAttribute("stroke-width", this.stroke + "px");
+
 
         svg.appendChild(background);
         svg.appendChild(bar);
@@ -223,10 +248,11 @@ export default class ProgressBar extends WJElement {
      */
     afterDraw(context, store, params) {
         if(this.type === "circle") {
-            this.background.setAttribute("stroke-dasharray", this.getCircleDashoffset(100) + "px");
-            this.background.setAttribute("stroke-dashoffset", "0px");
-            this.bar.setAttribute("stroke-dasharray", this.getCircleDasharray(this.radius) + "px");
-            this.bar.setAttribute("stroke-dashoffset", this.getCircleDashoffset(params.progress, this.radius) + "px");
+            this.setCircleProgress(this.progress)
+            // this.background.setAttribute("stroke-dasharray", this.getCircleDashoffset(100) + "px");
+            // this.background.setAttribute("stroke-dashoffset", "0px");
+            // this.bar.setAttribute("stroke-dasharray", this.getCircleDasharray(this.radius) + "px");
+            // this.bar.setAttribute("stroke-dashoffset", this.getCircleDashoffset(params.progress, this.radius) + "px");
         }
     }
 
@@ -249,5 +275,15 @@ export default class ProgressBar extends WJElement {
      */
     getCircleDashoffset(progress = 0, radius) {
         return this.getCircleDasharray(radius) * ((100 - progress)/100);
+    }
+
+    setCircleProgress(percent) {
+        const progress = this.bar;
+        const radius = progress.r.baseVal.value;
+        const circumference = 2 * Math.PI * radius;
+
+        progress.style.strokeDasharray = `${circumference}`;
+        const offset = circumference - (percent / 100) * circumference;
+        progress.style.strokeDashoffset = offset;
     }
 }
