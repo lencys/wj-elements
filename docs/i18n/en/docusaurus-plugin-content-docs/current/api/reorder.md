@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Reorder is a component that allows dragging an item to change its order within a group of items. It must be used within the reorder group to provide a visual drag and drop interface.
 
-## Basic use
+## Basic usage
 
 import Basic from '@site/static/usage/v1/reorder/basic/index.md';
 

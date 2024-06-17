@@ -322,7 +322,7 @@
                 {
                     "name": "--wj-avatar-background-color",
                     "annotation": "prop",
-                    "docs": "Avatar background colour"
+                    "docs": "Avatar background color"
                 },
                 {
                     "name": "--wj-avatar-border-color",
@@ -902,7 +902,7 @@
             "methods": [],
             "events": [
                 {
-                    "event": "wje-button:click",
+                    "event": "click",
                     "detail": "void",
                     "bubbles": true,
                     "complexType": {
@@ -912,11 +912,11 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Emitted when the button is clicked.",
+                    "docs": "The wje-button:click event is fired when the button is clicked.",
                     "docsTags": []
                 },
                 {
-                    "event": "wje-button:reset",
+                    "event": "reset",
                     "detail": "void",
                     "bubbles": true,
                     "complexType": {
@@ -926,11 +926,11 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": " Dispatched when the button with type 'reset' is clicked, resetting the associated form.",
+                    "docs": "The wje-button:reset event is fired when a button of type 'reset' is clicked to reset the associated form.",
                     "docsTags": []
                 },
                 {
-                    "event": "wje-button:submit",
+                    "event": "submit",
                     "detail": "void",
                     "bubbles": true,
                     "complexType": {
@@ -940,11 +940,11 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Dispatched when the button with type 'submit' is clicked, triggering a form submission.",
+                    "docs": "The wje-button:submit event is fired when a button of type 'submit' is clicked to trigger a form submission.",
                     "docsTags": []
                 },
                 {
-                    "event": "wje-button:toggle",
+                    "event": "toggle",
                     "detail": "void",
                     "bubbles": true,
                     "complexType": {
@@ -954,7 +954,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": " Dispatched when the button with a toggle slot is clicked, toggling between states.",
+                    "docs": "The wje-button:toggle event is fired when the button with the 'toggle' slot is clicked, to switch state.",
                     "docsTags": []
                 }
             ],
@@ -1162,7 +1162,7 @@
                 {
                     "name": "--wj-color-contrast",
                     "annotation": "prop",
-                    "docs": "Defines the colour of the card text"
+                    "docs": "Defines the color of the card text"
                 }
             ],
             "slots": [],
@@ -1809,7 +1809,7 @@
                 {
                     "name": "--wj-backdrop",
                     "annotation": "prop",
-                    "docs": "Background (backdrop) colour"
+                    "docs": "Background (backdrop) color"
                 },
                 {
                     "name": "--wj-backdrop-opacity",
@@ -1819,7 +1819,7 @@
                 {
                     "name": "--wj-dialog-border-color",
                     "annotation": "prop",
-                    "docs": "The colour of the edges of the dialog box"
+                    "docs": "The color of the edges of the dialog box"
                 },
                 {
                     "name": "--wj-dialog-border-radius",
@@ -3490,7 +3490,7 @@
             "methods": [],
             "events": [
                 {
-                    "event": "Clear",
+                    "event": "clear",
                     "detail": "wj-input:clear",
                     "bubbles": true,
                     "complexType": {
@@ -3505,11 +3505,11 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Called when the `Clear` button is clicked.",
+                    "docs": "The `wj-input:clear` event is fired when the `Clear` clear button is clicked.",
                     "docsTags": []
                 },
                 {
-                    "event": "Input",
+                    "event": "input",
                     "detail": "wj-input:input",
                     "bubbles": true,
                     "complexType": {
@@ -3525,7 +3525,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "The `wj-input:input` event is fired whenever the user changes the input value. This usually happens every time a key is pressed while the user is typing.",
+                    "docs": "The `wj-input:input` event is fired whenever the user changes the value of the input. This usually happens every time a key is pressed while the user is typing.",
                     "docsTags": []
                 }
             ],
@@ -3544,7 +3544,7 @@
                 {
                     "name": "--wj-input-border-color-focus",
                     "annotation": "prop",
-                    "docs": "Input edge colour at focuse"
+                    "docs": "Input edge color at focus"
                 },
                 {
                     "name": "--wj-input-border-radius",
@@ -3564,7 +3564,7 @@
                 {
                     "name": "--wj-input-color-invalid",
                     "annotation": "prop",
-                    "docs": "Input error message colour"
+                    "docs": "Input error message color"
                 },
                 {
                     "name": "--wj-input-font-family",
@@ -3661,7 +3661,7 @@
                 {
                     "name": "--wj-border-color",
                     "annotation": "prop",
-                    "docs": "Colour of element edges"
+                    "docs": "Color of element edges"
                 },
                 {
                     "name": "--wj-border-style",
@@ -3676,12 +3676,12 @@
                 {
                     "name": "--wj-item-background",
                     "annotation": "prop",
-                    "docs": "Background colour of the element"
+                    "docs": "Background color of the element"
                 },
                 {
                     "name": "--wj-item-background-hover",
                     "annotation": "prop",
-                    "docs": "Background colour of the element when pointing with the mouse"
+                    "docs": "Background color of the element when pointing with the mouse"
                 },
                 {
                     "name": "--wj-item-border-radius",
@@ -3691,7 +3691,7 @@
                 {
                     "name": "--wj-item-color",
                     "annotation": "prop",
-                    "docs": "Text colour"
+                    "docs": "Text color"
                 },
                 {
                     "name": "--wj-item-inner-border-width",
@@ -3875,7 +3875,7 @@
                 {
                     "name": "--wj-aside-border-color",
                     "annotation": "prop",
-                    "docs": "Colour of element edges"
+                    "docs": "Color of element edges"
                 },
                 {
                     "name": "--wj-aside-border-width",
@@ -4052,7 +4052,7 @@
                 {
                     "name": "--wj-list-background",
                     "annotation": "prop",
-                    "docs": "Background colour of the element"
+                    "docs": "Background color of the element"
                 },
                 {
                     "name": "--wj-list-border-radius",
@@ -4323,7 +4323,7 @@
                 {
                     "name": "--wj-menu-border-color",
                     "annotation": "prop",
-                    "docs": "Colour of element edges"
+                    "docs": "Color of element edges"
                 },
                 {
                     "name": "--wj-menu-border-radius",
@@ -4541,12 +4541,12 @@
                 {
                     "name": "--wj-menu-background",
                     "annotation": "prop",
-                    "docs": "Background colour of the element"
+                    "docs": "Background color of the element"
                 },
                 {
                     "name": "--wj-menu-border-color",
                     "annotation": "prop",
-                    "docs": "Colour of element edges"
+                    "docs": "Color of element edges"
                 },
                 {
                     "name": "--wj-menu-border-radius",
@@ -4793,7 +4793,7 @@
                 {
                     "name": "--wj-progress-bar-color",
                     "annotation": "prop",
-                    "docs": "Defines the colour of the progress bar"
+                    "docs": "Defines the color of the progress bar"
                 },
                 {
                     "name": "--wj-progress-bar-text-size",
@@ -5503,12 +5503,12 @@
                 {
                     "name": "--wj-select-background-color",
                     "annotation": "prop",
-                    "docs": "Background colour of the element"
+                    "docs": "Background color of the element"
                 },
                 {
                     "name": "--wj-select-border-color",
                     "annotation": "prop",
-                    "docs": "Colour of element edges"
+                    "docs": "Color of element edges"
                 },
                 {
                     "name": "--wj-select-border-radius",
@@ -5528,7 +5528,7 @@
                 {
                     "name": "--wj-select-color",
                     "annotation": "prop",
-                    "docs": "Element colour"
+                    "docs": "Element color"
                 },
                 {
                     "name": "--wj-select-line-height",
@@ -5538,7 +5538,7 @@
                 {
                     "name": "--wj-select-options-border-color",
                     "annotation": "prop",
-                    "docs": "The colour of the drop-down window edges"
+                    "docs": "The color of the drop-down window edges"
                 },
                 {
                     "name": "--wj-select-options-border-style",
@@ -5895,7 +5895,7 @@
                 {
                     "name": "--wj-slider-color",
                     "annotation": "prop",
-                    "docs": "Defines the colour of the slider."
+                    "docs": "Defines the color of the slider."
                 },
                 {
                     "name": "--wj-slider-thumb-color",
@@ -6521,10 +6521,10 @@
                 },
                 {
                     "name": "resize",
-                    "type": "\"car\"",
+                    "type": "\"auto\"",
                     "complexType": {
-                        "original": "\"car\"",
-                        "resolved": "\"car\"",
+                        "original": "\"auto\"",
+                        "resolved": "\"auto\"",
                         "references": {}
                     },
                     "mutable": false,
@@ -6935,7 +6935,7 @@
                 {
                     "name": "--color",
                     "annotation": "prop",
-                    "docs": "Text colour of the title"
+                    "docs": "Text color of the title"
                 }
             ],
             "slots": [],

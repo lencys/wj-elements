@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The **Card** element is a flexible and expandable card format container. It allows you to display a wide range of content and consists of a [CardHeader](../card-header) and a [CardContent](../card-content) header.
 
-## Basic use
+## Basic usage
 
 import Basic from '@site/static/usage/v1/card/basic/index.md';
 
@@ -48,7 +48,7 @@ import List from '@site/static/usage/v1/card/list/index.md';
 
 ## Editing styles
 
-### Preset colour variants of the element Card
+### Preset color variants of the element Card
 
 The `color` property adjusts the background and border color of the card. Setting this value will change the button color to one of the colors in the preset color palette.  By default, the element has a `primary` background.
 

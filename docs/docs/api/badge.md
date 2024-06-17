@@ -19,7 +19,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Badge sú inline-block elementy, ktoré majú informatívny charakter a zvyčajne sa zobrazujú v blízkosti iného elementu. Používajú sa ako upozornenie, že k elementu sú priradené ďalšie elementy, a informujú používateľa o ich počte.
 
-## Použitie
+## Základné použitie
 
 Ak chcete použiť komponent Badge, zahrňte ho do HTML s požadovanými atribútmi.
 

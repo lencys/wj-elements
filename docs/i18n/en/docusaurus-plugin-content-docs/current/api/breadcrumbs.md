@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Breadcrumbs is a component that displays the path a user has taken within an application or site. This element displays a hierarchical page layout in which each segment of the [**Breadcrumb**](../breadcrumb) path is a hyperlink, allowing a quick return to previous levels. Breadcrumbs may contain an icon.
 
-## Basic use
+## Basic usage
 
 import Basic from '@site/static/usage/v1/breadcrumbs/basic/index.md';
 

@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The Toast component provides an unobtrusive way of displaying short notifications to the user. They are designed to appear and disappear seamlessly, ensuring that important information reaches users without being intrusive.
 
-## Basic use
+## Basic usage
 
 import Basic from '@site/static/usage/v1/toast/inline/basic/index.md';
 

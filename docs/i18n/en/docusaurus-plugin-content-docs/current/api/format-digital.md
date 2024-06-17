@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The FormatDigital component is designed to format numeric values into a human-readable digital format with respect to various unit prefixes such as kilo, mega, giga, etc. It offers options to customize units, display style of units and supports localization.
 
-## Basic use
+## Basic usage
 
 import Basic from '@site/static/usage/v1/format-digital/basic/index.md';
 

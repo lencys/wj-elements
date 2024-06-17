@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Element Slider is an interactive slider component that allows users to select a value from a range of values in a convenient way. It features a handle that can be moved, making it ideal for those scenarios that require the user to provide numeric input or adjust some setting such as volume.
 
-## Basic use
+## Basic usage
 
 By default, the selection allows the user to select only one option. Including the `Icon` element will also display the selected icon next to the option.
 

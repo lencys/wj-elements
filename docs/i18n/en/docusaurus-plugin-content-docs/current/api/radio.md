@@ -20,7 +20,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The radio element is a modified version of the standard HTML radio element, enhanced with styles to achieve a more visually consistent user interface across devices. It works similarly to a standard radio button and allows users to select one from a set of options. It is used inside the [radio group](../radio-group) element to add alignment and group them together.
 
-## Basic use
+## Basic usage
 
 import Basic from '@site/static/usage/v1/radio/basic/index.md';
 
