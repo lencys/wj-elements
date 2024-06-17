@@ -902,7 +902,7 @@
             "methods": [],
             "events": [
                 {
-                    "event": "wje-button:click",
+                    "event": "click",
                     "detail": "void",
                     "bubbles": true,
                     "complexType": {
@@ -912,11 +912,11 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Emitted when the button is clicked.",
+                    "docs": "Event wje-button:click sa vyvolá po kliknutí na tlačidlo.",
                     "docsTags": []
                 },
                 {
-                    "event": "wje-button:reset",
+                    "event": "reset",
                     "detail": "void",
                     "bubbles": true,
                     "complexType": {
@@ -926,11 +926,11 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": " Dispatched when the button with type 'reset' is clicked, resetting the associated form.",
+                    "docs": "Event wje-button:reset sa vyvolá po kliknutí na tlačidlo typu 'reset' pri vyresetovaní súvisiaceho formulára.",
                     "docsTags": []
                 },
                 {
-                    "event": "wje-button:submit",
+                    "event": "submit",
                     "detail": "void",
                     "bubbles": true,
                     "complexType": {
@@ -940,11 +940,11 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Dispatched when the button with type 'submit' is clicked, triggering a form submission.",
+                    "docs": "Event wje-button:submit sa vyvolá po kliknutí na tlačidlo typu 'submit' pri spustení odoslania formulára.",
                     "docsTags": []
                 },
                 {
-                    "event": "wje-button:toggle",
+                    "event": "toggle",
                     "detail": "void",
                     "bubbles": true,
                     "complexType": {
@@ -954,7 +954,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": " Dispatched when the button with a toggle slot is clicked, toggling between states.",
+                    "docs": "Event wje-button:toggle sa vyvolá po kliknutí na tlačidlo s 'toggle' slotom, pri prepínaní stavu.",
                     "docsTags": []
                 }
             ],
@@ -3490,7 +3490,7 @@
             "methods": [],
             "events": [
                 {
-                    "event": "Clear",
+                    "event": "clear",
                     "detail": "wj-input:clear",
                     "bubbles": true,
                     "complexType": {
@@ -3505,11 +3505,11 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Vyvolaný po kliknutí na tlačidlo vyčistenia `Clear`.",
+                    "docs": "Event `wj-input:clear` sa vyvolá po kliknutí na tlačidlo vyčistenia `Clear`.",
                     "docsTags": []
                 },
                 {
-                    "event": "Input",
+                    "event": "input",
                     "detail": "wj-input:input",
                     "bubbles": true,
                     "complexType": {
@@ -3525,7 +3525,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Udalosť `wj-input:input` je vyvolaná vždy, keď používateľ zmení hodnotu vstupu. To sa zvyčajne deje pri každom stlačení klávesy, keď používateľ píše.",
+                    "docs": "Event `wj-input:input` je vyvolaná vždy, keď používateľ zmení hodnotu vstupu. To sa zvyčajne deje pri každom stlačení klávesy, keď používateľ píše.",
                     "docsTags": []
                 }
             ],

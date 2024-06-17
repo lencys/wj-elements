@@ -902,7 +902,7 @@
             "methods": [],
             "events": [
                 {
-                    "event": "wje-button:click",
+                    "event": "click",
                     "detail": "void",
                     "bubbles": true,
                     "complexType": {
@@ -912,11 +912,11 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Emitted when the button is clicked.",
+                    "docs": "The wje-button:click event is fired when the button is clicked.",
                     "docsTags": []
                 },
                 {
-                    "event": "wje-button:reset",
+                    "event": "reset",
                     "detail": "void",
                     "bubbles": true,
                     "complexType": {
@@ -926,11 +926,11 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": " Dispatched when the button with type 'reset' is clicked, resetting the associated form.",
+                    "docs": "The wje-button:reset event is fired when a button of type 'reset' is clicked to reset the associated form.",
                     "docsTags": []
                 },
                 {
-                    "event": "wje-button:submit",
+                    "event": "submit",
                     "detail": "void",
                     "bubbles": true,
                     "complexType": {
@@ -940,11 +940,11 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Dispatched when the button with type 'submit' is clicked, triggering a form submission.",
+                    "docs": "The wje-button:submit event is fired when a button of type 'submit' is clicked to trigger a form submission.",
                     "docsTags": []
                 },
                 {
-                    "event": "wje-button:toggle",
+                    "event": "toggle",
                     "detail": "void",
                     "bubbles": true,
                     "complexType": {
@@ -954,7 +954,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": " Dispatched when the button with a toggle slot is clicked, toggling between states.",
+                    "docs": "The wje-button:toggle event is fired when the button with the 'toggle' slot is clicked, to switch state.",
                     "docsTags": []
                 }
             ],
@@ -3490,7 +3490,7 @@
             "methods": [],
             "events": [
                 {
-                    "event": "Clear",
+                    "event": "clear",
                     "detail": "wj-input:clear",
                     "bubbles": true,
                     "complexType": {
@@ -3505,11 +3505,11 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "Called when the `Clear` button is clicked.",
+                    "docs": "The `wj-input:clear` event is fired when the `Clear` clear button is clicked.",
                     "docsTags": []
                 },
                 {
-                    "event": "Input",
+                    "event": "input",
                     "detail": "wj-input:input",
                     "bubbles": true,
                     "complexType": {
@@ -3525,7 +3525,7 @@
                     },
                     "cancelable": true,
                     "composed": true,
-                    "docs": "The `wj-input:input` event is fired whenever the user changes the input value. This usually happens every time a key is pressed while the user is typing.",
+                    "docs": "The `wj-input:input` event is fired whenever the user changes the value of the input. This usually happens every time a key is pressed while the user is typing.",
                     "docsTags": []
                 }
             ],
