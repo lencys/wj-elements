@@ -31,8 +31,7 @@
 }
 
 .arrow-icon {
-    margin-top: var(--wje-spacing-medium);
-    /* margin-bottom: var(--wje-spacing-large); */
+    margin-top: var(--wje-stepper-margin);
 }
 
 .step {
