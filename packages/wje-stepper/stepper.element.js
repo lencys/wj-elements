@@ -32,7 +32,7 @@ export default class Stepper extends WJElement {
 
         const steps = Array.from(this.children);
         this.steps = steps.map((step, index) => {
-            if (step.classList.contains("step")) {
+            if (step.nodeName === 'WJE-STEP') {
                 const stepHeader = document.createElement('div');
                 stepHeader.className = 'step-header';
     

@@ -9,16 +9,16 @@ template.innerHTML = `
     <div class="playground">
         <div class="content">
             <wje-stepper>
-                <div class="step">
+                <wje-step>
                     Content 1
-                </div>
-                <div class="step" label="disabled" disabled>
+                </wje-step>
+                <wje-step label="disabled" disabled>
                     Content 2 is disabled to click on
-                </div>
-                <div class="step" label="krok 3">
+                </wje-step>
+                <wje-step label="krok 3">
                     <wje-checkbox id="test" disabled>Disabled</wje-checkbox>
                     <wje-checkbox checked="">Custom label for step header</wje-checkbox>
-                </div>
+                </wje-step>
             </wje-stepper>
         </div>
     </div>

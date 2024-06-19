@@ -392,6 +392,9 @@
   /* Status */
   --wje-status-size: var(--wje-size-small);
 
+  /*Stepper*/
+  --wje-stepper-margin: 1.25rem;
+
   /* Tab */
   --wje-tab-font-family: var(--wje-font-family-secondary);
   --wje-tab-font-size: var(--wje-font-size-x-small);

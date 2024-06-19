@@ -83,6 +83,7 @@ import { default as Select } from "./wje-select/select.js";
 import { default as Slider } from "./wje-slider/slider.js";
 import { default as SplitView } from "./wje-split-view/split-view.js";
 import { default as Status } from "./wje-status/status.js";
+import { default as Step } from "./wje-step/step.js";
 import { default as Stepper} from "./wje-stepper/stepper.js";
 import { default as Tab } from "./wje-tab/tab.js";
 import { default as TabGroup } from "./wje-tab-group/tab-group.js";
@@ -171,6 +172,7 @@ export { WJElement, defaultStoreActions, store, event, bindRouterLinks, withRout
   Slider,
   SplitView,
   Status,
+  Step,
   Stepper,
   Tab,
   TabGroup,
