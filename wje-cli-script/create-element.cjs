@@ -49,6 +49,58 @@ rl.question('Does element have a service? (yes/no) ', (answer) => {
 
 
 const main = async () => {
+    let { elementKebeb, elementName } = createElementInPackage();
+    addToViteConfig(elementKebeb);
+    addPackageToIndex(elementName, elementKebeb)
+    createDemoFile(elementName, elementKebeb);
+
+    rl.close();
+}
+
+
+function createDemoFile(elementName, elementKebeb) {
+    const demoName = 'Demo' + elementName;
+    const demoKebeb = 'demo-' + elementKebeb;
+
+    const demoPath = path.resolve(__dirname, `../demo/components/${demoKebeb}.js`);
+
+    if (fs.existsSync(demoPath)) {
+        console.error('Demo file already exists');
+        rl.close();
+        process.exit(1);
+    }
+
+    const demoContent = `
+import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "./snippet/code-snippet-builder.js";
+
+const template = document.createElement('template');
+
+template.innerHTML = \`...
+<div class="html-snippet"></div>\`
+
+export default class ${demoName} extends WJElement {
+    constructor() {
+        super(template);
+    }
+
+    afterDraw(context, store2, params) {
+        const codeSnippet = new CodeSnippet();
+        codeSnippet.generateSnippet(template, this.context);
+    }
+}
+
+let __esModule = 'true';
+export { __esModule };
+
+customElements.get("${demoKebeb}") || window.customElements.define("${demoKebeb}", ${demoName});
+    `;
+
+    fs.writeFileSync(demoPath, demoContent);
+    console.log(`Demo file created successfully`);
+}
+
+function createElementInPackage() {
     let elementName = process.argv[2];
     let elementKebeb = elementName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
@@ -176,15 +228,94 @@ const main = async () => {
     }
 
     console.log(`Element ${elementName} created successfully`);
-
-    rl.close();
-
-
+    return { elementKebeb, elementName };
 }
 
+function addToViteConfig(elementKebeb) {
+    const viteConfigPath = path.resolve(__dirname, '../vite.config.js');
+    const viteConfig = fs.readFileSync(viteConfigPath, 'utf8');
+    const lines = viteConfig.split('\n');
+    let entryIndex = lines.findIndex(line => line.includes('entry: {'));
+    if (entryIndex === -1) {
+        console.error('Entry point not found in vite.config.js');
+        rl.close();
+        process.exit(1);
+    }
+
+    // is this element already in vite.config.js
+    if (lines.some(line => line.includes(`wje-${elementKebeb}`))) {
+        console.error('Element already in vite.config.js');
+        rl.close();
+        process.exit(1);
+    }
+
+    const entryLine = lines[entryIndex];
+    const entryEndLineIndex = lines.findIndex((line, index) => index > entryIndex && line.includes('}'));
+    const newEntry = `"${elementKebeb}": "packages/wje-${elementKebeb}/${elementKebeb}.js",`;
+
+
+    console.log(`Adding element to vite.config.js`, entryIndex, entryEndLineIndex);
+
+    //  alphabetically sort for the new entry and insert it to the array lines
+    const newEntryIndex = lines.findIndex((line, index) => {
+        if (index > entryIndex && index < entryEndLineIndex) {
+            if (line < newEntry) {
+                return true;
+            }
+        }
+
+        return false;
+    });
+
+
+    console.log('newEntryIndex', newEntryIndex, newEntry);
+    lines.splice(newEntryIndex, 0, newEntry);
 
 
 
+    fs.writeFileSync(viteConfigPath, lines.join('\n'));
+
+
+    console.log(`Element added to vite.config.js`);
+}
+
+function addPackageToIndex(elementName, elementKebeb) {
+
+    // add to packages/index.js
+    const packagesIndexPath = path.resolve(__dirname, '../packages/index.js');
+    const packagesIndex = fs.readFileSync(packagesIndexPath, 'utf8');
+    const packagesLines = packagesIndex.split('\n');
+    const importIndex = packagesLines.findIndex(line => line.includes('import {'));
+
+    if (packagesLines.some(line => line.includes(`import { default as ${elementName} } from "./wje-${elementKebeb}/${elementKebeb}.js";`))) {
+        console.error('Element already in packages/index.js');
+        rl.close();
+        process.exit(1);
+    }
+
+    const newImport = `import { default as ${elementName} } from "./wje-${elementKebeb}/${elementKebeb}.js";`;
+    const newExport = `  ${elementName},`;
+
+    packagesLines.splice(importIndex + 1, 0, newImport);
+
+    const exportIndex = packagesLines.findIndex(line => line.includes('export {'));
+    const exportEndIndex = packagesLines.findIndex((line, index) => index > exportIndex && line.includes('}'));
+    const newExportIndex = packagesLines.findIndex((line, index) => {
+        if (index > exportIndex && index < exportEndIndex) {
+            if (line.trim() < newExport) {
+                return true;
+            }
+        }
+
+        return false;
+    });
+
+    packagesLines.splice(newExportIndex, 0, newExport);
+
+    fs.writeFileSync(packagesIndexPath, packagesLines.join('\n'));
+
+    console.log(`Element added to packages/index.js`);
+}
 
 
 
