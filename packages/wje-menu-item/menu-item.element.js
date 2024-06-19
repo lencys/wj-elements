@@ -262,7 +262,7 @@ export default class MenuItem extends WJElement {
             if (this.collapse || this.variant === "CONTEXT" && this.hasSubmenu) {
                 if (this.hasAttribute("manual") || this.variant === "NAV" && this.collapse) return;
 
-                this.submenuActivated(e);
+                this.activateSubmenu(e);
 
                 e.stopPropagation();
 
@@ -272,32 +272,14 @@ export default class MenuItem extends WJElement {
         });
 
         // Event na zrusenie zobrazenia submenu ked sa klikne mimo
-        event.addListener(this, "mouseleave", null, (e) => {
-            if (this.collapse || this.variant === "CONTEXT" && this.hasSubmenu) {
-                if (e.relatedTarget && this.contains(e.relatedTarget) || this.variant === "NAV" && !this.collapse) {
-                    return;
-                }
-
-                this.submenuActivated(e);
-                this.hideSubmenu();
-            }
-        });
+        event.addListener(this, "mouseleave", null, this.shouldHideSubmenu);
 
         // Event na zrusenie zobrazenia submenu ked sa klikne mimo
-        event.addListener(this, "focusout", null, (e) => {
-            if (this.collapse || this.variant === "CONTEXT" && this.hasSubmenu) {
-                if (e.relatedTarget && this.contains(e.relatedTarget) || this.variant === "NAV" && !this.collapse) {
-                    return;
-                }
-
-                this.submenuActivated(e);
-                this.hideSubmenu();
-            }
-        });
+        event.addListener(this, "focusout", null, this.shouldHideSubmenu);
 
         event.addListener(this, "click", null, (e) => {
             if (!this.collapse && this.variant === "NAV" && this.hasSubmenu) {
-                this.submenuActivated(e);
+                this.submenuToggle(e);
                 this.hideSubmenu();
                 e.stopPropagation();
             } else {
@@ -308,6 +290,18 @@ export default class MenuItem extends WJElement {
             }
         });
     }
+
+    shouldHideSubmenu = (e) => {
+        if (this.collapse || this.variant === "CONTEXT" && this.hasSubmenu) {
+            if (e.relatedTarget && this.contains(e.relatedTarget) || this.variant === "NAV" && !this.collapse) {
+                return;
+            }
+
+            this.deactivateSubmenu();
+            this.hideSubmenu();
+        }
+    }
+
 
     /**
      * Creates a tooltip for the MenuItem when it is collapsed.
@@ -383,10 +377,14 @@ export default class MenuItem extends WJElement {
         }
     }
 
+
     /**
-     * Activates or deactivates the submenu of the MenuItem.
+     * Toggles the active state of the submenu element.
+     * If the submenu is not active, it sets the "active" attribute.
+     * If the submenu is already active, it removes the "active" attribute.
+     * @param {Event} e - The event object.
      */
-    submenuActivated(e) {
+    submenuToggle(e) {
         if (this.hasSubmenu) {
             let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
             if (!submenuElements.hasAttribute("active")) {
@@ -394,6 +392,30 @@ export default class MenuItem extends WJElement {
             } else {
                 if (this === e.target)
                     submenuElements.removeAttribute("active");
+            }
+        }
+    }
+
+    /**
+     * Deactivates the submenu by removing the "active" attribute.
+     */
+    deactivateSubmenu() {
+        if (this.hasSubmenu) {
+            let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
+            if (submenuElements.hasAttribute("active")) {
+                submenuElements.removeAttribute("active");
+            }
+        }
+    }
+
+    /**
+     * Activates the submenu of the menu item.
+     */
+    activateSubmenu() {
+        if (this.hasSubmenu) {
+            let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
+            if (!submenuElements.hasAttribute("active")) {
+                submenuElements.setAttribute("active", "");
             }
         }
     }
