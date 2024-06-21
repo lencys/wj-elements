@@ -294,7 +294,17 @@ export default class Button extends WJElement {
         }
 
         native.appendChild(span);
-        fragment.appendChild(native);
+
+        if(this.hasAttribute("tooltip")) {
+            let tooltip = document.createElement("wje-tooltip");
+            tooltip.setAttribute("content", this.getAttribute("tooltip"));
+            tooltip.setAttribute("placement", this.getAttribute("tooltip-placement") || "top");
+            tooltip.appendChild(native);
+
+            fragment.appendChild(tooltip);
+        } else {
+            fragment.appendChild(native);
+        }
 
         return fragment;
     }

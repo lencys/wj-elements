@@ -135,7 +135,7 @@ export default class ProgressBar extends WJElement {
         let fragment = document.createDocumentFragment();
 
         if(params.color)
-            this.classList.add("wje-color-" + params.color, "wje-color");
+            this.classList.add("wje-color");
 
         let element = document.createElement("div");
         element.classList.add("progress");
@@ -217,14 +217,6 @@ export default class ProgressBar extends WJElement {
 
         }
 
-        // background.setAttribute("stroke", "#e0e0e0");
-        // background.setAttribute("stroke-linecap", this.linecap);
-        // background.setAttribute("stroke-width", this.stroke + "px");
-
-        // bar.setAttribute("stroke-linecap", this.linecap);
-        // bar.setAttribute("stroke-width", this.stroke + "px");
-
-
         svg.appendChild(background);
         svg.appendChild(bar);
 
@@ -248,11 +240,7 @@ export default class ProgressBar extends WJElement {
      */
     afterDraw(context, store, params) {
         if(this.type === "circle") {
-            this.setCircleProgress(this.progress)
-            // this.background.setAttribute("stroke-dasharray", this.getCircleDashoffset(100) + "px");
-            // this.background.setAttribute("stroke-dashoffset", "0px");
-            // this.bar.setAttribute("stroke-dasharray", this.getCircleDasharray(this.radius) + "px");
-            // this.bar.setAttribute("stroke-dashoffset", this.getCircleDashoffset(params.progress, this.radius) + "px");
+            this.setCircleProgress(this.progress);
         }
     }
 

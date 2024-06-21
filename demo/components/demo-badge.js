@@ -54,7 +54,7 @@ template.innerHTML = `<style>
         <wje-badge color="warning">80</wje-badge>
         <wje-badge color="danger">70</wje-badge>
         <wje-badge color="info">1000</wje-badge>
-        <wje-badge color="menu">1000</wje-badge>
+        <wje-badge color="default">1000</wje-badge>
       </div>
     </div>
     <div class="html-snippet"></div>

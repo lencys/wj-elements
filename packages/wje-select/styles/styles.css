@@ -15,6 +15,7 @@
   --wje-select-line-height: 20px;
   --wje-select-color: var(--wje-color);
   --wje-select-border-radius: var(--wje-border-radius-medium);
+
   width: 100%;
   display: block;
   [slot=arrow] {
@@ -167,4 +168,9 @@ wje-button {
   --wje-padding-end: .25rem;
   --wje-padding-bottom: .25rem;
   --wje-button-margin-inline: 0 .25rem;
+}
+
+::slotted(wje-input) {
+  --wje-input-border-radius: 0;
+  --wje-input-border-width: 0 0 1px 0;
 }

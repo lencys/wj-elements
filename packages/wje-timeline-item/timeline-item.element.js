@@ -77,6 +77,7 @@ export default class TimelineItem extends WJElement {
         let slotStatus = document.createElement('wje-icon')
         slotStatus.setAttribute('name', 'circle-dot');
         slotStatus.setAttribute('filled', '');
+        slotStatus.setAttribute('part', 'default-icon');
 
         // if status slot is present
         if(this.querySelector('[slot="status"]')) {

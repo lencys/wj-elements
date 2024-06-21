@@ -4,6 +4,10 @@
     display: block;
 }
 
+.native-timeline-item > wje-icon {
+    color: var(--wje-color-contrast-5) !important;
+}
+
 .timeline-items {
     display: flex;
     flex-direction: column;
@@ -67,7 +71,7 @@ wje-status {
     z-index: 1;
 }
 
-::slotted(wje-card) {
-    --wje-card-shadow: none;
-    background: var(--wje-color-contrast-0);
+wje-relative-time {
+    display: block;
+    margin-bottom: var(--wje-spacing-2x-small);
 }

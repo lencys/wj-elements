@@ -45,6 +45,20 @@ template.innerHTML = `
 
     <div class="html-snippet"></div>
     
+    <!-- PLACEMENT -->
+
+    <h2>Placement</h2>
+    <div class="playground">
+      <div class="content" style="display: block;">
+        <wje-radio-group value="dog">
+          <wje-radio value="cat" placement="end">Cat</wje-radio>
+          <wje-radio value="dog" placement="end" checked>Dog</wje-radio>
+        </wje-radio-group>
+      </div>
+    </div>
+
+    <div class="html-snippet"></div>
+    
     <!-- INLINE -->
 
     <h2>Inline</h2>

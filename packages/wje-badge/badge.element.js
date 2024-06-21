@@ -55,8 +55,11 @@ export default class Badge extends WJElement {
         native.setAttribute('part', 'native');
         native.classList.add('native-badge');
 
-        if(this.color)
+        // Add color
+        if (this.hasAttribute("color"))
             native.classList.add("wje-color-" + this.color, "wje-color");
+        else
+            native.classList.add("wje-color-default", "wje-color");
 
         let slot = document.createElement("slot");
 

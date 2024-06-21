@@ -153,15 +153,6 @@ export default class Checkbox extends WJElement {
     }
 
     /**
-     * Handles the input event.
-     * @param {Event} e - The event.
-     */
-    // inputEvent = (e) => {
-    //     this.checked = this.input.checked;
-    //     event.dispatchCustomEvent(this, "wje-checkbox:change");
-    // }
-
-    /**
      * Removes the event listener when the checkbox is disconnected.
      */
     disconnectedCallback() {

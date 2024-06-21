@@ -53,7 +53,7 @@ template.innerHTML = `<h1>Chip</h1>
         <wje-chip color="warning">Warning</wje-chip>
         <wje-chip color="danger">Danger</wje-chip>
         <wje-chip color="info">Info</wje-chip>
-        <wje-chip color="menu">Menu</wje-chip>
+        <wje-chip color="default">Menu</wje-chip>
       </div>
     </div>
 

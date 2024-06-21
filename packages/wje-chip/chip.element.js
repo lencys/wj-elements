@@ -34,8 +34,11 @@ export default class Chip extends WJElement {
         active.setAttribute("name", "check");
         active.classList.add("check");
 
-        if(this.color)
+        // Add color
+        if (this.hasAttribute("color"))
             native.classList.add("wje-color-" + this.color, "wje-color");
+        else
+            native.classList.add("wje-color-default", "wje-color");
 
         if(this.disabled)
             this.classList.add("wje-disabled");

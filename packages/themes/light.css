@@ -226,7 +226,7 @@
   --wje-avatar-size: var(--wje-size-x-large);
   --wje-avatar-font-size: var(--wje-font-size-x-small);
   --wje-avatar-font-weight: var(--wje-font-weight-normal);
-  --wje-avatar-color: inherit;
+  --wje-avatar-color: var(--wje-color-contrast-11);
   --wje-avatar-background-color: var(--wje-color-contrast-3);
   --wje-avatar-border-radius: var(--wje-border-radius-circle);
   --wje-avatar-border-color: transparent;
@@ -246,11 +246,12 @@
   --wje-button-border-style: solid;
   --wje-button-border-color: var(--wje-color-contrast-1);
   --wje-button-margin-inline: 0;
-  --wje-button-outline: none;
+  --wje-button-outline-width: 0.5rem;
 
   /* Card */
   --wje-card-border-radius: var(--wje-border-radius-large);
   --wje-card-border-color: transparent;
+  --wje-card-shadow: var(--wje-shadow-x-large);
 
   /* Card - Header */
   --wje-card-header-padding: 1rem 1rem 0.5rem;

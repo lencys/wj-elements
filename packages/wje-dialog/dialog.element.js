@@ -116,8 +116,7 @@ export default class Dialog extends WJElement {
 
     afterClose() {}
 
-    onOpen = (e) => {
-        console.log("open dialog 111");
+    onOpen = () => {
         Promise.resolve(this.beforeOpen(this)).then((res) => {
             this.dialog.showModal();  // Now open the dialog
 
@@ -127,7 +126,7 @@ export default class Dialog extends WJElement {
         });
     }
 
-    onClose = (e) => {
+    onClose = () => {
         Promise.resolve(this.beforeClose(this)).then((res) => {
             this.dialog.close(); // Now close the dialog
 

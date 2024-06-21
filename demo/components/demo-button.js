@@ -4,7 +4,7 @@ import CodeSnippet from "./snippet/code-snippet-builder.js";
 const template = document.createElement('template');
 template.innerHTML = `<style>
     wje-button {
-      margin: .25rem;
+      margin: .5rem;
     }
 
     pre {
@@ -31,7 +31,7 @@ template.innerHTML = `<style>
   <h1>Button</h1>
   <div class="container">
     
-    <!--  BASIC-->
+    <!-- BASIC -->
 
     <h2>Basic</h2>
     <div class="playground">
@@ -43,7 +43,18 @@ template.innerHTML = `<style>
 
     <div class="html-snippet"></div>
     
-     <!--  EVENTS -->
+    <!-- TOOLTIP -->
+
+    <h2>Tooltip</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-button tooltip="Button tooltip" tooltip-placement="left">Default</wje-button>
+      </div>
+    </div>
+
+    <div class="html-snippet"></div>
+    
+     <!-- EVENTS -->
 
     <h2>Events</h2>
     <div class="playground">
@@ -57,7 +68,7 @@ template.innerHTML = `<style>
     <div class="html-snippet"></div>
     
     
-    <!--  BUTTON IN FORM-->
+    <!-- BUTTON IN FORM -->
     <h2>Form button</h2>
     <div class="playground">
       <div class="content">
@@ -77,7 +88,7 @@ template.innerHTML = `<style>
 
     <div class="html-snippet"></div>
     
-     <!--  TOGGLE-->
+     <!-- TOGGLE -->
 
     <h2>Toggle</h2>
     <div class="playground">
@@ -96,7 +107,7 @@ template.innerHTML = `<style>
 
     <div class="html-snippet"></div>
 
-    <!--  SHAPE -->
+    <!-- SHAPE -->
 
     <h2>Shape</h2>
     <div class="playground">
@@ -109,7 +120,7 @@ template.innerHTML = `<style>
 
     <div class="html-snippet"></div>
 
-    <!--  FILL -->
+    <!-- FILL -->
 
     <h2>Fill</h2>
     <div class="playground">
@@ -123,7 +134,7 @@ template.innerHTML = `<style>
 
     <div class="html-snippet"></div>
 
-    <!--  SIZE -->
+    <!-- SIZE -->
 
     <h2>Size</h2>
     <div class="playground">
@@ -165,7 +176,7 @@ template.innerHTML = `<style>
 
     <div class="html-snippet"></div>
 
-    <!--  ICONS -->
+    <!-- ICONS -->
 
     <h2>Icons</h2>
     <div class="playground">

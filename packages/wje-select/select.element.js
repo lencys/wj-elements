@@ -174,6 +174,9 @@ export default class Select extends WJElement {
 
         let slot = document.createElement("slot");
 
+        let slotFind = document.createElement("slot");
+        slotFind.setAttribute("name", "find");
+
         let clear = document.createElement("wje-button");
         clear.setAttribute("fill", "link")
         clear.setAttribute("part", "clear");
@@ -208,6 +211,7 @@ export default class Select extends WJElement {
 
         inputWrapper.appendChild(arrow);
 
+        optionsWrapper.appendChild(slotFind);
         optionsWrapper.appendChild(slot);
 
         wrapper.appendChild(inputWrapper);
@@ -292,7 +296,7 @@ export default class Select extends WJElement {
     }
 
     /**
-     * Returns all the options.
+     * Returns all the options as HTML.
      *
      * @returns {NodeList} The options.
      */
@@ -301,7 +305,7 @@ export default class Select extends WJElement {
     }
 
     /**
-     * Returns the selected options.
+     * Returns the selected options as HTML.
      *
      * @returns {NodeList} The selected options.
      */

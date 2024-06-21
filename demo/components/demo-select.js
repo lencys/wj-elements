@@ -42,6 +42,20 @@ template.innerHTML = `
 
     <div class="html-snippet"></div>
     
+    <!-- FIND -->
+
+    <h2>Options</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
+          <wje-input variant="standard" placeholder="Vyhladaj" slot="find"></wje-input>
+          <wje-options url="/api/options" item-value="tralala" item-text="label"></wje-options>
+        </wje-select>
+      </div>
+    </div>
+
+    <div class="html-snippet"></div>
+    
     <!-- DEFAULT -->
 
     <h2>Default</h2>

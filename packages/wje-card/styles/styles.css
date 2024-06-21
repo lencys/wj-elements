@@ -9,7 +9,7 @@
 .native-card {
   background-color: transparent;
   margin: 0;
-  box-shadow: var(--wje-shadow-x-large);
+  box-shadow: var(--wje-card-shadow);
   border-color: var(--wje-border-color);
   border-style: var(--wje-border-style);
   border-width: var(--wje-border-width);
