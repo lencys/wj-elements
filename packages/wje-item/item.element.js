@@ -45,7 +45,7 @@ export default class Item extends WJElement {
 		return `<${TagType} class="item-native" part="native">
 			<slot name="start"></slot>
 			<div class="item-inner">
-					<div class="input-wrapper">
+					<div class="input-wrapper" part="inner">
 							<slot></slot>
 					</div>
 					<slot name="end"></slot>
