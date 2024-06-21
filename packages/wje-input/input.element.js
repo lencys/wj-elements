@@ -225,7 +225,7 @@ export default class Input extends WJElement {
         let wrapper = document.createElement("div");
         wrapper.classList.add("wrapper");
 
-        native.appendChild(wrapper);
+
 
         let inputWrapper = document.createElement("div");
         inputWrapper.classList.add("input-wrapper");
@@ -277,12 +277,14 @@ export default class Input extends WJElement {
         if (hasSlotStart) {
             start = document.createElement("slot");
             start.setAttribute("name", "start");
+            start.setAttribute("part", "start");
         }
 
         let end = null;
         if (hasSlotEnd) {
             end = document.createElement("slot");
             end.setAttribute("name", "end");
+            end.setAttribute("part", "end");
         }
 
         if (hasSlotStart) {
@@ -299,6 +301,8 @@ export default class Input extends WJElement {
 
         inputWrapper.appendChild(input);
         wrapper.appendChild(inputWrapper);
+
+        native.appendChild(wrapper);
 
         if (this.hasAttribute("clearable")) {
             this.clear = document.createElement("wje-button");
