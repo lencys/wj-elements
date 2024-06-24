@@ -122,6 +122,21 @@ export default class SlidingContainer extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
+        let closeButton = document.createElement("wje-button");
+        closeButton.style.position = "absolute";
+        closeButton.style.top = "0";
+        closeButton.style.right = "0";
+        closeButton.style.zIndex = "1000";
+
+        let icon = document.createElement("wje-icon");
+        icon.setAttribute("slot", "icon-only");
+        icon.setAttribute("name", "x");
+        closeButton.appendChild(icon);
+
+        closeButton.addEventListener("click", () => {
+            this.close();
+        });
+
         this.style.position = "relative";
         this.style.height = "100%";
 
@@ -132,6 +147,7 @@ export default class SlidingContainer extends WJElement {
         native.style.position = "absolute";
         native.style.width = this.maxWidth;
         native.style.height = "100%"
+        native.appendChild(closeButton);
 
         native.classList.add("native-sliding-container");
         native.setAttribute("part", "sliding-container");
