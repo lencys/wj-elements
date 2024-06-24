@@ -136,6 +136,7 @@
   padding-top: var(--wje-padding-top);
   padding-bottom: var(--wje-padding-bottom);
   padding-inline: var(--wje-padding-start) var(--wje-padding-end);
+  white-space: nowrap;
 }
 
 .native-button:hover {
@@ -270,7 +271,8 @@
 */
 
 .wje-button-link {
-  border-width: 1px;
+  border-width: var(--wje-button-border-width);
+  border-radius: var(--wje-button-border-radius);
   border-color: transparent;
   background-color: transparent;
 }
