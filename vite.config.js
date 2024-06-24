@@ -35,6 +35,7 @@ export default defineConfig({
         outDir: './dist',
         lib: {
             entry: {
+
                 "master": "./packages/index.js",
                 "styles": "./packages/styles/styles.css",
                 "light": "./packages/themes/light.css",
@@ -107,6 +108,7 @@ export default defineConfig({
                 "reorder-dropzone": "./packages/wje-reorder-dropzone/reorder-dropzone.js",
                 "reorder-handle": "./packages/wje-reorder-handle/reorder-handle.js",
                 "reorder-item": "./packages/wje-reorder-item/reorder-item.js",
+                "sliding-container": "packages/wje-sliding-container/sliding-container.js",
                 "route": "./packages/wje-route/route.js",
                 "routerx": "./packages/wje-router/router.js",
                 "router-link": "./packages/wje-router-link/router-link.js",
@@ -131,7 +133,7 @@ export default defineConfig({
             name: 'WjElements',
             fileName: (format, name) => {
                 console.log("Format:", format, "Name:", name);
-                if(name === 'localize')
+                if (name === 'localize')
                     return name + '.js';
                 return 'wje-' + name + '.js';
             },

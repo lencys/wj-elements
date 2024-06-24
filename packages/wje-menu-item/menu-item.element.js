@@ -291,6 +291,11 @@ export default class MenuItem extends WJElement {
         });
     }
 
+    /**
+     * Checks if the submenu should be hidden based on the event.
+     *
+     * @param {Event} e - The event object.
+     */
     shouldHideSubmenu = (e) => {
         if (this.collapse || this.variant === "CONTEXT" && this.hasSubmenu) {
             if (e.relatedTarget && this.contains(e.relatedTarget) || this.variant === "NAV" && !this.collapse) {

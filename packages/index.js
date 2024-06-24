@@ -2,6 +2,7 @@
 // import "./themes/dark.scss";
 // import "./styles/styles.css";
 import { default as WJElement } from "./wje-element/element.js";
+import { default as SlidingContainer } from "../experimental-packages/wje-sliding-container/sliding-container.js";
 import { event } from "./utils/event.js";
 import { defaultStoreActions, store } from "./wje-store/store.js";
 
@@ -56,7 +57,7 @@ import { default as Item } from "./wje-item/item.js";
 import { default as Label } from "./wje-label/label.js";
 import { default as List } from "./wje-list/list.js";
 import { default as Main } from "./wje-main/main.js";
-import { default as Masonry} from "./wje-masonry/masonry.js";
+import { default as Masonry } from "./wje-masonry/masonry.js";
 import { default as Menu } from "./wje-menu/menu.js";
 import { default as MenuButton } from "./wje-menu-button/menu-button.js";
 import { default as MenuItem } from "./wje-menu-item/menu-item.js";
@@ -65,14 +66,14 @@ import { default as Option } from "./wje-option/option.js";
 import { default as Options } from "./wje-options/options.js";
 import { default as Popup } from "./wje-popup/popup.js";
 import { default as ProgressBar } from "./wje-progress-bar/progress-bar.js";
-import { default as QrCode } from "./wje-qr-code/qr-code.js"; 
+import { default as QrCode } from "./wje-qr-code/qr-code.js";
 import { default as Radio } from "./wje-radio/radio.js";
 import { default as RadioGroup } from "./wje-radio-group/radio-group.js";
 import { default as Rate } from "./wje-rate/rate.js";
 import { default as RelativeTime } from "./wje-relative-time/relative-time.js";
 import { default as Reorder } from "./wje-reorder/reorder.js";
 import { default as ReorderDropzone } from "./wje-reorder-dropzone/reorder-dropzone.js";
-import { default as ReorderHandle} from "./wje-reorder-handle/reorder-handle.js";
+import { default as ReorderHandle } from "./wje-reorder-handle/reorder-handle.js";
 import { default as ReorderItem } from "./wje-reorder-item/reorder-item.js";
 import { default as Route } from "./wje-route/route.js";
 import { default as Routerx } from "./wje-router/router.js";
@@ -84,7 +85,7 @@ import { default as Slider } from "./wje-slider/slider.js";
 import { default as SplitView } from "./wje-split-view/split-view.js";
 import { default as Status } from "./wje-status/status.js";
 import { default as Step } from "./wje-step/step.js";
-import { default as Stepper} from "./wje-stepper/stepper.js";
+import { default as Stepper } from "./wje-stepper/stepper.js";
 import { default as Tab } from "./wje-tab/tab.js";
 import { default as TabGroup } from "./wje-tab-group/tab-group.js";
 import { default as TabPanel } from "./wje-tab-panel/tab-panel.js";
@@ -99,7 +100,8 @@ import { default as ToolbarAction } from "./wje-toolbar-action/toolbar-action.js
 import { default as Tooltip } from "./wje-tooltip/tooltip.js";
 import { default as VisuallyHidden } from "./wje-visually-hidden/visually-hidden.js";
 
-export { WJElement, defaultStoreActions, store, event, bindRouterLinks, withRouterLinks, fetchAndParseCSS, Localizer,
+export {
+  WJElement, defaultStoreActions, store, event, bindRouterLinks, withRouterLinks, fetchAndParseCSS, Localizer,
   Accordion,
   AccordionItem,
   Animation,
@@ -163,6 +165,7 @@ export { WJElement, defaultStoreActions, store, event, bindRouterLinks, withRout
   ReorderDropzone,
   ReorderHandle,
   ReorderItem,
+  SlidingContainer,
   Route,
   Routerx,
   RouterLink,
