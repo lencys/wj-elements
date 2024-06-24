@@ -16,7 +16,7 @@ template.innerHTML = `<style>
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
-        <p style="overflow: hidden; height: 50px;">
+        <p style="height: 50px;">
           <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible id="custom-dropdown-basic">
             <wje-button size="large" slot="trigger" stop-propagation="true" caret>Large</wje-button>
             <wje-menu variant="context">
