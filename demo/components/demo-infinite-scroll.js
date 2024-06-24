@@ -1,5 +1,6 @@
 import WJElement from "../../dist/wje-element.js";
 import CodeSnippet from "./snippet/code-snippet-builder.js";
+import { event } from "../../packages/index.js";
 
 const template = document.createElement('template');
 
@@ -28,7 +29,7 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
 
     <div class="html-snippet"></div>
     
-    <!-- CUSTOM DATA -->
+    <!-- CUSTOM DATA - FOREACH -->
 
     <h3>Custom Data</h3>
     <div class="playground">
@@ -60,7 +61,6 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
               </wje-tooltip>
             
           </wje-list>
-<!--          <wje-icon name="arrow-bar-to-down" size="large" slot="ending"></wje-icon>-->
         </wje-infinite-scroll>
       </div>
     </div>
@@ -113,12 +113,11 @@ export default class DemoInfinteScroll extends WJElement {
 
     infiniteScroll.setCustomData = async () => {
       infiniteScroll.infiniteScrollTemplate = `<wje-item">
-          <wje-label>
-            <h4>{{fullName}}</h4>
-            <p>{{jobTitle}}</p>
-          </wje-label>
-        </wje-item>
-      `;
+        <wje-label>
+          <h4>{{title}}</h4>
+          <p>{{description}}</p>
+        </wje-label>
+      </wje-item>`;
 
       return {
         "page": 0,
@@ -126,32 +125,59 @@ export default class DemoInfinteScroll extends WJElement {
         "totalPages": 1,
         "data": [
           {
+            "id": "1",
+            "title": "Lorem ipsum dolor sit amet",
             "description": "Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.",
-            "jobTitle": "Congo",
-            "fullName": "Petr Rahman",
-            "image": "https://loremflickr.com/640/480/city?lock=4569138139758592",
-            "id": "1"
+            "time": "2024-06-24T10:00:00Z"
+          },{
+            "id": "2",
+            "title": "Lorem ipsum dolor sit amet",
+            "description": "Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.",
+            "time": "2024-06-23T12:00:00Z"
+          }, {
+            "id": "3",
+            "title": "Lorem ipsum dolor sit amet",
+            "description": "Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.",
+            "time": "2024-06-24T14:00:00Z"
           }
         ]
       };
+    }
+
+    infiniteScroll.customForeach = (data) => {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      let addedTodayHeader = false;
+      let addedOlderHeader = false;
+
+      data.forEach((item) => {
+        let itemDate = new Date(item.time);
+        itemDate.setHours(0, 0, 0, 0);
+
+        if (itemDate.getTime() === today.getTime() && !addedTodayHeader) {
+          let todayHeader = document.createElement('h5');
+          todayHeader.textContent = "Dnes";
+          infiniteScroll.placementObj.insertAdjacentElement("beforeend", todayHeader);
+          addedTodayHeader = true;
+        }
+
+        if (itemDate.getTime() !== today.getTime() && !addedOlderHeader) {
+          let olderHeader = document.createElement('h5');
+          olderHeader.textContent = "Staršie";
+          infiniteScroll.placementObj.insertAdjacentElement("beforeend", olderHeader);
+          addedOlderHeader = true;
+        }
+
+        let element = infiniteScroll.dataToHtml(item);
+        infiniteScroll.placementObj.insertAdjacentElement("beforeend", element);
+      });
     }
   }
 
   afterDraw() {
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(template, this.context);
-    // const basicEl = this.querySelector("#basic");
-    // basic.addEventListener("wje-infinite-scroll:click-item", (e) => {
-    //   console.log("wje-infinite-scroll:click-item", e.detail)
-    // });
-    //
-    // basicEl.addEventListener("wje-infinite-scroll:complete", (e) => {
-    //   // console.log("wje-infinite-scroll:complete", e.detail);
-    // });
-    //
-    // basicEl.addEventListener("wje-infinite-scroll:load", (e) => {
-    //   // console.log("wje-infinite-scroll:load", e.detail)
-    // });
   }
 }
 

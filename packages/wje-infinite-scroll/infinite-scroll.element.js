@@ -264,8 +264,9 @@ export default class InfiniteScroll extends WJElement {
     async loadPages (page){
         this.showLoader();
         try {
-            if (this.hasMorePages(page) || typeof this.setCustomData === "function") {
+            if (this.hasMorePages(page)) {
                 let response;
+                this.parser = new DOMParser();
 
                 if (typeof this.setCustomData === "function") {
                     response = await this.setCustomData(page);
@@ -276,27 +277,17 @@ export default class InfiniteScroll extends WJElement {
                 this.totalPages = response.totalPages;
                 this.currentPage = page;
 
-                const parser = new DOMParser();
-
-                let placement = this;
+                this.placementObj = this;
 
                 // if there is a "container" attribute, find the element
                 if(this.hasAttribute("placement"))
-                    placement = this.querySelector(this.placement);
+                    this.placementObj = this.querySelector(this.placement);
 
                 event.dispatchCustomEvent(this, "wje-infinite-scroll:load", response);
 
                 this.response = response;
 
-                response[this.objectName].forEach((item) => {
-                    const interpolateItem = this.infiniteScrollTemplate.interpolate(item);
-                    const doc = parser.parseFromString(interpolateItem, 'text/html');
-                    const element = doc.activeElement.firstElementChild;
-
-                    event.addListener(element, "click", "wje-infinite-scroll:click-item", null);
-
-                    placement.insertAdjacentElement("beforeend", element);
-                });
+                this.customForeach(response[this.objectName]);
 
                 this.isLoading.push(page);
             } else {
@@ -309,4 +300,25 @@ export default class InfiniteScroll extends WJElement {
             this.hideLoader();
         }
     };
+
+    /**
+     * Sets the custom data.
+     *
+     */
+    dataToHtml = (item) => {
+        let interpolateItem = this.infiniteScrollTemplate.interpolate(item);
+        let doc = this.parser.parseFromString(interpolateItem, 'text/html');
+        let element = doc.activeElement.firstElementChild;
+
+        return element;
+    }
+
+    customForeach = (data) => {
+        data.forEach((item) => {
+            let element = this.dataToHtml(item);
+            event.addListener(element, "click", "wje-infinite-scroll:click-item", null);
+
+            this.placementObj.insertAdjacentElement("beforeend", element);
+        });
+    }
 }
