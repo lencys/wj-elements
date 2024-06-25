@@ -1,0 +1,9 @@
+
+:host 
+    {
+        display: block;
+        overflow: hidden;
+        display: table;
+        /* make css property for width height position  and if it is on top lef bottom right  */
+    }
+    
