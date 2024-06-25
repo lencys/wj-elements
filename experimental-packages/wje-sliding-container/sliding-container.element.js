@@ -120,6 +120,41 @@ export default class SlidingContainer extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
+        this.style.position = "relative";
+        this.style.height = "100%";
+
+        this.transparentDiv = document.createElement("div");
+        this.transparentDiv.classList.add("sliding-container-transparent");
+
+        let native = document.createElement("div");
+        native.style.position = "absolute";
+        native.style.width = this.maxWidth;
+        native.style.height = "100%"
+
+        native.classList.add("native-sliding-container");
+        native.setAttribute("part", "sliding-container");
+
+        if (this.direction === "right") {
+            native.style.right = 0;
+        } else {
+            native.style.left = 0;
+        }
+
+        let slot = document.createElement("slot");
+
+        native.appendChild(this.getCloseButton());
+        native.appendChild(slot);
+        fragment.appendChild(this.transparentDiv);
+        fragment.appendChild(native);
+
+        return fragment;
+    }
+
+    /**
+     * Creates and returns a close button element.
+     * @returns {HTMLElement} The close button element.
+     */
+    getCloseButton() {
         let closeButton = document.createElement("wje-button");
         closeButton.setAttribute("part", "close-button");
         closeButton.style.position = "absolute";
@@ -136,34 +171,7 @@ export default class SlidingContainer extends WJElement {
             this.close();
         });
 
-        this.style.position = "relative";
-        this.style.height = "100%";
-
-        this.transparentDiv = document.createElement("div");
-        this.transparentDiv.classList.add("sliding-container-transparent");
-
-        let native = document.createElement("div");
-        native.style.position = "absolute";
-        native.style.width = this.maxWidth;
-        native.style.height = "100%"
-        native.appendChild(closeButton);
-
-        native.classList.add("native-sliding-container");
-        native.setAttribute("part", "sliding-container");
-
-        if (this.direction === "right") {
-            native.style.right = 0;
-        } else {
-            native.style.left = 0;
-        }
-
-        let slot = document.createElement("slot");
-
-        native.appendChild(slot);
-        fragment.appendChild(this.transparentDiv);
-        fragment.appendChild(native);
-
-        return fragment;
+        return closeButton;
     }
 
     /**
