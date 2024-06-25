@@ -79,7 +79,7 @@ export default class SlidingContainer extends WJElement {
     }
 
     get screenBreakPoint() {
-        return this.getAttribute("screen-break-point") ?? 768;
+        return this.getAttribute("screen-break-point");
     }
 
     set screenBreakPoint(value) {
@@ -192,7 +192,7 @@ export default class SlidingContainer extends WJElement {
         document.addEventListener(this.trigger, this.triggerEvent);
 
         // if document width is on small screen set variant to over
-        if (window.innerWidth < this.screenBreakPoint) {
+        if (this.screenBreakPoint && (window.innerWidth < this.screenBreakPoint)) {
             this.variant = "over";
         }
 
