@@ -1,7 +1,5 @@
-import { default as WJElement, event } from "../../packages/wje-element/element.js";
+import { default as WJElement } from "../../packages/wje-element/element.js";
 import styles from "./styles/styles.css?inline";
-import { fetchAndParseCSS } from "../../packages/utils/animations.js";
-import animations from 'animate.css?inline';
 
 /**
  * @summary SlidingContainer is a custom web component that extends WJElement.
@@ -11,7 +9,9 @@ import animations from 'animate.css?inline';
  * @extends WJElement
  * 
  * @csspart - Styles the element.
- *  
+ * 
+ * @slot - The default slot for the SlidingContainer.
+ * 
  * @tag wje-sliding-container
  * 
  * @example
@@ -28,7 +28,6 @@ export default class SlidingContainer extends WJElement {
 
         this._isOpen = false;
         this._lastCaller = null;
-        this._state = "closed";
         window[`SlidingContainer${this.id}`] = this;
     }
 
@@ -123,6 +122,7 @@ export default class SlidingContainer extends WJElement {
         let fragment = document.createDocumentFragment();
 
         let closeButton = document.createElement("wje-button");
+        closeButton.setAttribute("part", "close-button");
         closeButton.style.position = "absolute";
         closeButton.style.top = "0";
         closeButton.style.right = "0";
@@ -171,7 +171,6 @@ export default class SlidingContainer extends WJElement {
      * Executes before drawing the element.
      */
     beforeDraw() {
-        console.log('PREKRESLUJEM')
         document.removeEventListener(this.trigger, this.triggerEvent);
     }
 
@@ -299,7 +298,6 @@ export default class SlidingContainer extends WJElement {
             this.animation.reverse();
         }
 
-
         return new Promise((resolve, reject) => {
             this.animation.onfinish = () => {
                 resolve();
@@ -316,7 +314,6 @@ export default class SlidingContainer extends WJElement {
             Promise.resolve(!this._isOpen ? this.doAnimateTransition() : () => { }).then(() => {
                 Promise.resolve(this.afterOpen()).then(() => {
                     this._isOpen = true;
-                    this._state = "open";
                 });
             })
         });
@@ -332,7 +329,6 @@ export default class SlidingContainer extends WJElement {
             Promise.resolve(this._isOpen ? this.doAnimateTransition() : () => { }).then(() => {
                 Promise.resolve(this.afterClose()).then(() => {
                     this._isOpen = false;
-                    this._state = "closed";
                 });
             })
         });
