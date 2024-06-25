@@ -28,7 +28,6 @@ export default class SlidingContainer extends WJElement {
 
         this._isOpen = false;
         this._lastCaller = null;
-        window[`SlidingContainer${this.id}`] = this;
     }
 
     set maxWidth(value) {
@@ -233,11 +232,11 @@ export default class SlidingContainer extends WJElement {
      */
     triggerEvent = (e) => {
         if (this._lastCaller && this._lastCaller !== e.target) {
-            console.log("refreshing children");
+            // same oppener event but different caller so just refresh inner content
             this.open()
 
         } else {
-            console.log("same caller -> toggle");
+            // came caller so toggle 
             this.toggle();
         }
 
@@ -328,6 +327,13 @@ export default class SlidingContainer extends WJElement {
         await Promise.resolve(this.beforeClose()).then(() => {
             Promise.resolve(this._isOpen ? this.doAnimateTransition() : () => { }).then(() => {
                 Promise.resolve(this.afterClose()).then(() => {
+
+                    if(this.removeChildAfterClose){
+                        this.childNodes.forEach(child => {
+                            child.remove();
+                        })
+                    }
+
                     this._isOpen = false;
                 });
             })
