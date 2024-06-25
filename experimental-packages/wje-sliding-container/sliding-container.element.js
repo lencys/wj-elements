@@ -12,6 +12,15 @@ import styles from "./styles/styles.css?inline";
  * 
  * @slot - The default slot for the SlidingContainer.
  * 
+ * @property {string} maxWidth - The maximum width of the SlidingContainer.
+ * @property {string} maxHeight - The maximum height of the SlidingContainer.
+ * @property {string} trigger - The trigger for the SlidingContainer.
+ * @property {string} direction - The direction of the SlidingContainer.
+ * @property {string} variant - The variant of the SlidingContainer.
+ * @property {string} screenBreakPoint - The screen break point of the SlidingContainer.
+ * @property {boolean} removeChildAfterClose - Removes the child after the SlidingContainer is closed.
+ * 
+ * 
  * @tag wje-sliding-container
  * 
  * @example
