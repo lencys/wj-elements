@@ -19,12 +19,25 @@ import styles from "./styles/styles.css?inline";
  * @property {string} variant - The variant of the SlidingContainer.
  * @property {string} screenBreakPoint - The screen break point of the SlidingContainer.
  * @property {boolean} removeChildAfterClose - Removes the child after the SlidingContainer is closed.
- * 
+ * @property {string} animationDuration - The duration of the animation.
+ * @property {string} animationEasing - The easing of the animation.
+ * @property {boolean} hasOpacity - Sets the opacity of the SlidingContainer.
  * 
  * @tag wje-sliding-container
  * 
  * @example
- * <wje-sliding-container></wje-sliding-container>
+ * <wje-sliding-container trigger="test-resize-container-event-right" id="left-in-place" direction="left" max-width="100px" max-height="100%">
+ *    <wje-card>
+ *       <wje-card-header>
+ *        <wje-card-subtitle>CONTENT Subtitle</wje-card-subtitle>
+ *       <wje-card-title>CONTENT Title</wje-card-title>
+ *      </wje-card-header>
+ *     <wje-card-content>
+ *        CONTENT Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ *    </wje-card-content>
+ * </wje-card>
+ * </wje-sliding-container>
+ * 
  */
 export default class SlidingContainer extends WJElement {
     /**
@@ -95,10 +108,30 @@ export default class SlidingContainer extends WJElement {
         this.setAttribute("screen-break-point", value);
     }
 
+    get animationDuration() {
+        return this.getAttribute("animation-duration") ?? "500";
+    }
+
+    set animationDuration(value) {
+        this.setAttribute("animation-duration", value);
+    }
+
+    get animationEasing() {
+        return this.getAttribute("animation-easing") ?? "linear";
+    }
+
+    set animationEasing(value) {
+        this.setAttribute("animation-easing", value);
+    }
+
+    get hasOpacity() {
+        return this.hasAttribute("has-opacity") ?? false;
+    }
+
     className = "SlidingContainer";
 
     static get observedAttributes() {
-        return ["max-width", "max-height", "trigger", "direction", "variant", "screen-break-point", "remove-child-after-close"];
+        return ["max-width", "max-height", "trigger", "direction", "variant", "screen-break-point", "remove-child-after-close", "animation-duration", "animation-easing", "has-opacity"];
     }
 
     /**
@@ -138,6 +171,10 @@ export default class SlidingContainer extends WJElement {
         let native = document.createElement("div");
         native.style.position = "absolute";
         native.style.width = this.maxWidth;
+        if(this.hasOpacity){
+            native.style.opacity = 0;
+        }
+        
         native.style.height = "100%"
 
         native.classList.add("native-sliding-container");
@@ -155,6 +192,8 @@ export default class SlidingContainer extends WJElement {
         native.appendChild(slot);
         fragment.appendChild(this.transparentDiv);
         fragment.appendChild(native);
+
+        this.nativeElement = native;
 
         return fragment;
     }
@@ -289,29 +328,45 @@ export default class SlidingContainer extends WJElement {
             delay: 0,
             endDelay: 0,
             fill: "both",
-            duration: 500,
+            duration: +this.animationDuration,
             iterationStart: 0,
             iterations: 1,
             direction: "normal",
-            easing: "linear"
+            easing: this.animationEasing
         }
 
         if (!this._isOpen) {
             if (this.animation) {
                 this.animation.reverse();
+                this.hasOpacity && this.nativeAnimation.reverse();
+
                 return;
             }
             this.animation = this.transparentDiv.animate([
                 {
                     width: 0,
+                    opacity: 0
                 },
                 {
                     width: this.maxWidth,
+                    opacity: +this.containerOpacity
                 }
 
             ], options);
+
+            if(this.hasOpacity){
+                this.nativeAnimation = this.nativeElement.animate([
+                    {
+                        opacity: 0
+                    },
+                    {
+                        opacity: 1
+                    }
+                ], options);
+            }
         } else {
             this.animation.reverse();
+            this.hasOpacity && this.nativeAnimation.reverse();
         }
 
         return new Promise((resolve, reject) => {
