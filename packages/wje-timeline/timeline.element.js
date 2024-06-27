@@ -60,6 +60,7 @@ export default class Timeline extends WJElement {
         native.classList.add('native-timeline');
 
         const verticalLine = document.createElement('div');
+        verticalLine.setAttribute('part', 'vertical-line');
         verticalLine.classList.add('vertical-line');
 
         const slot = document.createElement('slot');
