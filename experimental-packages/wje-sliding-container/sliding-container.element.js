@@ -247,6 +247,16 @@ export default class SlidingContainer extends WJElement {
         this.checkForVariant(this.variant);
     }
 
+    getParentElement() {
+        let parentElement = this.parentElement;
+
+        if (!parentElement) {
+            parentElement = this.getRootNode().host;
+        }
+
+        return parentElement;
+    }
+
     /**
      * Checks for a specific variant and applies corresponding styles.
      *
@@ -255,16 +265,16 @@ export default class SlidingContainer extends WJElement {
     checkForVariant(variant) {
         if (variant === "over") {
             this.style.position = "fixed";
-            let computentStyleOfParent = window.getComputedStyle(this.parentElement);
-            let parentElementBoundingbox = this.parentElement.getBoundingClientRect();
+            let computentStyleOfParent = window.getComputedStyle(this.getParentElement());
+            let parentElementBoundingbox = this.getParentElement().getBoundingClientRect();
             let heightOfParrentElement = parseFloat(computentStyleOfParent.height);
             let widthOfParrentElement = parseFloat(computentStyleOfParent.width);
             let topOfParrentElement = parseFloat(computentStyleOfParent.top);
 
             this.style.height = heightOfParrentElement + "px";
             this.style.top = topOfParrentElement + "px";
-            let isFirstChildInContainer = this.parentElement.firstElementChild === this;
-            let isLastChildInContainer = this.parentElement.lastElementChild === this;
+            let isFirstChildInContainer = (this.getParentElement().firstElementChild === this || this.getParentElement().shadowRoot?.firstElementChild === this);
+            let isLastChildInContainer = (this.getParentElement().lastElementChild === this || this.getParentElement().shadowRoot?.lastElementChild === this);
 
             if (isFirstChildInContainer) {
                 if (this.direction === "right") {
