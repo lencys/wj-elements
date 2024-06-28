@@ -1,4 +1,4 @@
-import { default as WJElement, event } from "../wje-element/element.js";
+import { default as WJElement, WjElementUtils, event } from "../wje-element/element.js";
 import { copyNode, copyText } from "./service/service.js";
 
 import styles from "./styles/styles.css?inline";
@@ -94,15 +94,20 @@ export default class CopyButton extends WJElement {
         tooltip.setAttribute("offset", "5");
         tooltip.setAttribute("content", this.label || "Copy");
 
-        let icon = document.createElement("wje-icon");
-        icon.setAttribute("name", "clipboard");
+        if(WjElementUtils.hasSlot(this)) {
+            let slot = document.createElement("slot");
+            tooltip.appendChild(slot);
+        } else {
+            let icon = document.createElement("wje-icon");
+            icon.setAttribute("name", "clipboard");
 
-        tooltip.appendChild(icon);
+            tooltip.appendChild(icon);
+            this.icon = icon;
+        }
 
         fragment.appendChild(tooltip);
 
         this.tooltip = tooltip;
-        this.icon = icon;
 
         return fragment;
     }
@@ -115,7 +120,7 @@ export default class CopyButton extends WJElement {
         event.addListener(this,"focus", null, this.focused);
         event.addListener(this,"blur", null, this.blurred);
 
-        event.addListener(this,"wje:copy-button", null, this.copied);
+        event.addListener(this,"wje-copy-button:click", null, this.copied);
     }
 
     /**
@@ -160,16 +165,22 @@ export default class CopyButton extends WJElement {
 
     /**
      * Handles the copied event.
+     * You can override this method to customize the behavior when the text is copied.
      * @param {Event} e - The event object.
      */
     copied = (e) => {
-        this.icon.setAttribute("color", "success");
-        this.icon.setAttribute("name", "check");
+        if(this.hasOwnProperty('icon')) {
+            this.icon.setAttribute("color", "success");
+            this.icon.setAttribute("name", "check");
+        }
         this.tooltip.setAttribute("content", this.labelSuccess || "Copied");
 
         setTimeout(() => {
-            this.icon.removeAttribute("color");
-            this.icon.setAttribute("name", "clipboard");
+            console.log("TIMEOUT", this.hasOwnProperty('icon'));
+            if(this.hasOwnProperty('icon')) {
+                this.icon.removeAttribute("color");
+                this.icon.setAttribute("name", "clipboard");
+            }
             this.tooltip.setAttribute("content", this.label || "Copy");
         }, this.timeout);
     }
@@ -188,7 +199,7 @@ export default class CopyButton extends WJElement {
 
         if (text) {
           await copyText(text);
-          event.dispatchCustomEvent(this, "wje:copy-button");
+          event.dispatchCustomEvent(this, "wje-copy-button:click");
         } else if (id) {
             const root = "getRootNode" in Element.prototype ? button.getRootNode() : button.ownerDocument
             if (!(root instanceof Document || ("ShadowRoot" in window && root instanceof ShadowRoot)))
@@ -197,7 +208,7 @@ export default class CopyButton extends WJElement {
             const node = root.getElementById(id);
             if (node) {
               await this.copyTarget(node);
-              event.dispatchCustomEvent(this, "wje:copy-button");
+              event.dispatchCustomEvent(this, "wje-copy-button:click");
           }
         }
     }
