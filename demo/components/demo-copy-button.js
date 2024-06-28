@@ -16,6 +16,19 @@ template.innerHTML = `<h1>Copy Button</h1>
 
       <div class="html-snippet"></div>
       
+      <!-- CUSTOM BUTTON -->
+  
+      <h2>Button</h2>
+      <div class="playground">
+        <div class="content">
+          <wje-copy-button value="I am copy - Value">
+            <wje-button slot>Copy</wje-button>
+          </wje-copy-button>
+        </div>
+      </div>
+
+      <div class="html-snippet"></div>
+      
       <!-- CUSTOM LABEL -->
   
       <h2>Custom label</h2>
