@@ -56,6 +56,10 @@ export default class TabGroup extends WJElement {
 
         // skontrolujeme ci sa nachadza v paneloch
         if(this.getPanelAllName().includes(activeTabName)) {
+            // window.addEventListener('hashchange', (e) => {
+            //     this.setActiveTab(activeTabName);
+            // });
+
             window.addEventListener('load', (e) => {
                 this.setActiveTab(activeTabName);
             });
@@ -112,7 +116,7 @@ export default class TabGroup extends WJElement {
 
         this.setActiveTab(activeTabName);
 
-        this.addEventListener("wje:tab-change", (e) => {
+        this.addEventListener("wje-tab:change", (e) => {
             if(e.detail.context.hasAttribute("disabled"))
                 return false;
 

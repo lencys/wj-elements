@@ -90,6 +90,6 @@ export default class Tab extends WJElement {
      * Sets up the event listeners after the component is drawn.
      */
     afterDraw() {
-        event.addListener(this, "click", "wje:tab-change");
+        event.addListener(this, "click", "wje-tab:change");
     }
 }

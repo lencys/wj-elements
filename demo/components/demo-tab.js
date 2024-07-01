@@ -35,6 +35,30 @@ template.innerHTML = `<style>
 
     <div class="html-snippet"></div>
     
+    <!-- OPEN TAB -->
+
+    <h2>Open tab</h2>
+    <div class="playground">
+      <div class="content">
+        <p><wje-button href="#open-custom">Open custom</wje-button></p>
+        <wje-card>
+          <wje-tab-group variant="top" id="custom">
+            <wje-tab slot="nav" panel="open-general" active>General <wje-badge color="primary">3</wje-badge></wje-tab>
+            <wje-tab slot="nav" panel="open-custom">Custom</wje-tab>
+            <wje-tab slot="nav" panel="open-advanced">Advanced</wje-tab>
+            <wje-tab slot="nav" panel="open-disabled" disabled>Disabled</wje-tab>
+          
+            <wje-tab-panel name="open-general">This is the <b>general</b> tab panel.</wje-tab-panel>
+            <wje-tab-panel name="open-custom">This is the <b>custom</b> tab panel.</wje-tab-panel>
+            <wje-tab-panel name="open-advanced">This is the <b>advanced</b> tab panel.</wje-tab-panel>
+            <wje-tab-panel name="open-disabled">This is a disabled tab panel.</wje-tab-panel>
+          </wje-tab-group>
+        </wje-card>
+      </div>
+    </div>
+
+    <div class="html-snippet"></div>
+    
     <!-- START -->
 
     <h2>Start</h2>
@@ -110,7 +134,16 @@ export default class DemoTab extends WJElement {
     super(template);
   }
 
-  afterDraw() {
+  afterDraw(context, store, params) {
+    window.addEventListener('hashchange', (e) => {
+      let activeTabName = location.hash.replace("#", "");
+      let tab = context.querySelector('#custom');
+
+      if(tab.getPanelAllName().includes(activeTabName)) {
+        tab.setActiveTab(activeTabName);
+      }
+    });
+
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(template, this.context);
   }
