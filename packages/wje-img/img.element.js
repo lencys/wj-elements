@@ -55,7 +55,7 @@ export default class Img extends WJElement {
 
         let native = document.createElement("img");
         native.setAttribute("part", "native");
-        native.setAttribute("src", "./assets/img/image-loader.gif");
+        native.setAttribute("src", this.loader || "./assets/img/image-loader.gif");
         native.setAttribute("alt", this.alt || "");
         native.classList.add("lazy-loaded-image", "lazy");
 
