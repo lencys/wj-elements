@@ -19,15 +19,15 @@ template.innerHTML = `<style>
       <div class="content">
         <wje-card>
           <wje-tab-group variant="top">
-            <wje-tab slot="nav" panel="general">General <wje-badge color="primary">3</wje-badge></wje-tab>
-            <wje-tab slot="nav" panel="custom" active>Custom</wje-tab>
-            <wje-tab slot="nav" panel="advanced">Advanced</wje-tab>
-            <wje-tab slot="nav" panel="disabled" disabled>Disabled</wje-tab>
+            <wje-tab slot="nav" panel="basic-general">General <wje-badge color="primary">3</wje-badge></wje-tab>
+            <wje-tab slot="nav" panel="basic-custom" active>Custom</wje-tab>
+            <wje-tab slot="nav" panel="basic-advanced">Advanced</wje-tab>
+            <wje-tab slot="nav" panel="basic-disabled" disabled>Disabled</wje-tab>
           
-            <wje-tab-panel name="general">This is the <b>general</b> tab panel.</wje-tab-panel>
-            <wje-tab-panel name="custom">This is the <b>custom</b> tab panel.</wje-tab-panel>
-            <wje-tab-panel name="advanced">This is the <b>advanced</b> tab panel.</wje-tab-panel>
-            <wje-tab-panel name="disabled">This is a disabled tab panel.</wje-tab-panel>
+            <wje-tab-panel name="basic-general">This is the <b>general</b> tab panel.</wje-tab-panel>
+            <wje-tab-panel name="basic-custom">This is the <b>custom</b> tab panel.</wje-tab-panel>
+            <wje-tab-panel name="basic-advanced">This is the <b>advanced</b> tab panel.</wje-tab-panel>
+            <wje-tab-panel name="basic-disabled">This is a disabled tab panel.</wje-tab-panel>
           </wje-tab-group>
         </wje-card>
       </div>
@@ -42,15 +42,15 @@ template.innerHTML = `<style>
       <div class="content">
         <wje-card>
           <wje-tab-group variant="start">
-            <wje-tab slot="nav" panel="general">General</wje-tab>
-            <wje-tab slot="nav" panel="custom" active>Custom</wje-tab>
-            <wje-tab slot="nav" panel="advanced">Advanced</wje-tab>
-            <wje-tab slot="nav" panel="disabled" disabled>Disabled</wje-tab>
+            <wje-tab slot="nav" panel="start-general">General</wje-tab>
+            <wje-tab slot="nav" panel="start-custom" active>Custom</wje-tab>
+            <wje-tab slot="nav" panel="start-advanced">Advanced</wje-tab>
+            <wje-tab slot="nav" panel="start-disabled" disabled>Disabled</wje-tab>
           
-            <wje-tab-panel name="general">This is the general tab panel.</wje-tab-panel>
-            <wje-tab-panel name="custom">This is the custom tab panel.</wje-tab-panel>
-            <wje-tab-panel name="advanced">This is the advanced tab panel.</wje-tab-panel>
-            <wje-tab-panel name="disabled">This is a disabled tab panel.</wje-tab-panel>
+            <wje-tab-panel name="start-general">This is the general tab panel.</wje-tab-panel>
+            <wje-tab-panel name="start-custom">This is the custom tab panel.</wje-tab-panel>
+            <wje-tab-panel name="start-advanced">This is the advanced tab panel.</wje-tab-panel>
+            <wje-tab-panel name="start-disabled">This is a disabled tab panel.</wje-tab-panel>
           </wje-tab-group>
         </wje-card>
       </div>
@@ -65,15 +65,15 @@ template.innerHTML = `<style>
       <div class="content">
         <wje-card>
           <wje-tab-group variant="end">
-            <wje-tab slot="nav" panel="general">General</wje-tab>
-            <wje-tab slot="nav" panel="custom" active>Custom</wje-tab>
-            <wje-tab slot="nav" panel="advanced">Advanced</wje-tab>
-            <wje-tab slot="nav" panel="disabled" disabled>Disabled</wje-tab>
+            <wje-tab slot="nav" panel="end-general">General</wje-tab>
+            <wje-tab slot="nav" panel="end-custom" active>Custom</wje-tab>
+            <wje-tab slot="nav" panel="end-advanced">Advanced</wje-tab>
+            <wje-tab slot="nav" panel="end-disabled" disabled>Disabled</wje-tab>
           
-            <wje-tab-panel name="general">This is the general tab panel.</wje-tab-panel>
-            <wje-tab-panel name="custom">This is the custom tab panel.</wje-tab-panel>
-            <wje-tab-panel name="advanced">This is the advanced tab panel.</wje-tab-panel>
-            <wje-tab-panel name="disabled">This is a disabled tab panel.</wje-tab-panel>
+            <wje-tab-panel name="end-general">This is the general tab panel.</wje-tab-panel>
+            <wje-tab-panel name="end-custom">This is the custom tab panel.</wje-tab-panel>
+            <wje-tab-panel name="end-advanced">This is the advanced tab panel.</wje-tab-panel>
+            <wje-tab-panel name="end-disabled">This is a disabled tab panel.</wje-tab-panel>
           </wje-tab-group>
         </wje-card>
       </div>
@@ -88,15 +88,15 @@ template.innerHTML = `<style>
       <div class="content">
         <wje-card>
           <wje-tab-group variant="bottom">
-            <wje-tab slot="nav" panel="general">General</wje-tab>
-            <wje-tab slot="nav" panel="custom" active>Custom</wje-tab>
-            <wje-tab slot="nav" panel="advanced">Advanced</wje-tab>
-            <wje-tab slot="nav" panel="disabled" disabled>Disabled</wje-tab>
+            <wje-tab slot="nav" panel="bottom-general">General</wje-tab>
+            <wje-tab slot="nav" panel="bottom-custom" active>Custom</wje-tab>
+            <wje-tab slot="nav" panel="bottom-advanced">Advanced</wje-tab>
+            <wje-tab slot="nav" panel="bottom-disabled" disabled>Disabled</wje-tab>
           
-            <wje-tab-panel name="general">This is the general tab panel.</wje-tab-panel>
-            <wje-tab-panel name="custom">This is the custom tab panel.</wje-tab-panel>
-            <wje-tab-panel name="advanced">This is the advanced tab panel.</wje-tab-panel>
-            <wje-tab-panel name="disabled">This is a disabled tab panel.</wje-tab-panel>
+            <wje-tab-panel name="bottom-general">This is the general tab panel.</wje-tab-panel>
+            <wje-tab-panel name="bottom-custom">This is the custom tab panel.</wje-tab-panel>
+            <wje-tab-panel name="bottom-advanced">This is the advanced tab panel.</wje-tab-panel>
+            <wje-tab-panel name="bottom-disabled">This is a disabled tab panel.</wje-tab-panel>
           </wje-tab-group>
         </wje-card>
       </div>

@@ -47,6 +47,22 @@ export default class TabGroup extends WJElement {
     }
 
     /**
+     * Sets up the event listeners before the component is drawn.
+     * This method is called before the component is drawn.
+     * It is used to set up event listeners.
+     */
+    beforeDraw() {
+        let activeTabName = location.hash.replace("#", "");
+
+        // skontrolujeme ci sa nachadza v paneloch
+        if(this.getPanelAllName().includes(activeTabName)) {
+            window.addEventListener('load', (e) => {
+                this.setActiveTab(activeTabName);
+            });
+        }
+    }
+
+    /**
      * Draws the component.
      *
      * @param {Object} context - The context for drawing.
@@ -154,5 +170,14 @@ export default class TabGroup extends WJElement {
      */
     getPanelAll() {
         return Array.from(this.querySelectorAll("wje-tab-panel"));
+    }
+
+    /**
+     * Returns the names of all tabs.
+     *
+     * @returns {Array<string>} An array of all tab names.
+     */
+    getPanelAllName() {
+        return this.getPanelAll().map((el) => el.getAttribute("name"));
     }
 }
