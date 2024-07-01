@@ -128,6 +128,14 @@ export default class SlidingContainer extends WJElement {
         return this.hasAttribute("has-opacity") ?? false;
     }
 
+    get addToHeight() {
+        return this.getAttribute("add-to-height") ?? "0";
+    }
+
+    set addToHeight(value) {
+        this.setAttribute("add-to-height", value);
+    }
+
     className = "SlidingContainer";
 
     static get observedAttributes() {
@@ -165,6 +173,9 @@ export default class SlidingContainer extends WJElement {
         this.style.position = "relative";
         this.style.height = "100%";
 
+        this.wrapperDiv = document.createElement("div");
+        this.wrapperDiv.classList.add("sliding-container-wrapper");
+
         this.transparentDiv = document.createElement("div");
         this.transparentDiv.classList.add("sliding-container-transparent");
 
@@ -190,8 +201,10 @@ export default class SlidingContainer extends WJElement {
 
         native.appendChild(this.getCloseButton());
         native.appendChild(slot);
-        fragment.appendChild(this.transparentDiv);
-        fragment.appendChild(native);
+
+        this.wrapperDiv.appendChild(this.transparentDiv);
+        this.wrapperDiv.appendChild(native);
+        fragment.appendChild(this.wrapperDiv);
 
         this.nativeElement = native;
 
@@ -271,7 +284,8 @@ export default class SlidingContainer extends WJElement {
             let widthOfParrentElement = parseFloat(computentStyleOfParent.width);
             let topOfParrentElement = parseFloat(computentStyleOfParent.top);
 
-            this.style.height = heightOfParrentElement + "px";
+            this.style.height = heightOfParrentElement + +this.addToHeight + "px";
+            this.wrapperDiv.style.height = heightOfParrentElement + +this.addToHeight + "px";
             this.style.top = topOfParrentElement + "px";
             let isFirstChildInContainer = (this.getParentElement().firstElementChild === this || this.getParentElement().shadowRoot?.firstElementChild === this);
             let isLastChildInContainer = (this.getParentElement().lastElementChild === this || this.getParentElement().shadowRoot?.lastElementChild === this);
@@ -355,11 +369,9 @@ export default class SlidingContainer extends WJElement {
             this.animation = this.transparentDiv.animate([
                 {
                     width: 0,
-                    opacity: 0
                 },
                 {
                     width: this.maxWidth,
-                    opacity: +this.containerOpacity
                 }
 
             ], options);
