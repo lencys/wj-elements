@@ -4,6 +4,10 @@ import Popup from "../wje-popup/popup.js";
 import Icon from "../wje-icon/icon.js";
 import Label from "../wje-label/label.js";
 import Chip from "../wje-chip/chip.js";
+import Input from "../wje-input/input.js";
+import Option from "../wje-option/option.js";
+import Options from "../wje-options/options.js";
+
 import styles from "./styles/styles.css?inline";
 
 /**
@@ -53,7 +57,10 @@ export default class Select extends WJElement {
         "wje-popup": Popup,
         "wje-icon": Icon,
         "wje-label": Label,
-        "wje-chip": Chip
+        "wje-chip": Chip,
+        "wje-input": Input,
+        "wje-option": Option,
+        "wje-options": Options
     }
 
     /**
@@ -167,15 +174,15 @@ export default class Select extends WJElement {
         chips.classList.add("chips");
         chips.innerText = this.placeholder || "";
 
-        // obalovac pre option
+        // obalovac pre option a find
         let optionsWrapper = document.createElement("div");
-        optionsWrapper.classList.add("option-wrapper");
+        optionsWrapper.classList.add("options-wrapper");
         optionsWrapper.style.setProperty("height", this.maxHeight || "auto");
 
-        let slot = document.createElement("slot");
+        let list = document.createElement("div");
+        list.classList.add("list");
 
-        let slotFind = document.createElement("slot");
-        slotFind.setAttribute("name", "find");
+        let slot = document.createElement("slot");
 
         let clear = document.createElement("wje-button");
         clear.setAttribute("fill", "link")
@@ -211,8 +218,20 @@ export default class Select extends WJElement {
 
         inputWrapper.appendChild(arrow);
 
-        optionsWrapper.appendChild(slotFind);
-        optionsWrapper.appendChild(slot);
+        list.appendChild(slot);
+
+        if(this.hasAttribute("find")) {
+            let find = document.createElement("wje-input");
+            find.setAttribute("variant", "standard");
+            find.setAttribute("placeholder", "Hľadať");
+            find.classList.add("find");
+
+            optionsWrapper.appendChild(find);
+
+            this.findEl = find;
+        }
+
+        optionsWrapper.appendChild(list);
 
         wrapper.appendChild(inputWrapper);
 
@@ -231,6 +250,7 @@ export default class Select extends WJElement {
         this.optionsWrapper = optionsWrapper;
         this.chips = chips;
         this.clear = clear;
+        this.list = list;
 
         fragment.appendChild(native);
 
@@ -268,10 +288,23 @@ export default class Select extends WJElement {
 
         this.selections();
 
-        this.optionsWrapper.addEventListener("wje:options-load", (e) => {
-            this.optionsWrapper.scrollTo(0, 0);
+        this.list.addEventListener("wje-options:load", (e) => {
+            this.list.scrollTo(0, 0);
         });
 
+        // skontrolujeme ci ma select atribut find
+        if(this.hasAttribute("find") && this.findEl instanceof HTMLElement) {
+            event.addListener(this.findEl, "keyup", "",(e) => {
+                let value = e.target.value.trim().toLowerCase();
+
+                this.getAllOptions().forEach((option) => {
+                    if(option.textContent.trim().toLowerCase().includes(value))
+                        option.style.display = "block";
+                    else
+                        option.style.display = "none";
+                });
+            });
+        }
     }
 
     /**

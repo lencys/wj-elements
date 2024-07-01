@@ -33,12 +33,12 @@
       border-color: var(--wje-select-border-color);
       border-radius: var(--wje-select-border-radius);
       padding-inline: .5rem;
-      padding-top: 0.25rem;
-      padding-bottom: 0.25rem;
+      padding-top: 0.125rem;
+      padding-bottom: 0.125rem;
     }
     .input-wrapper {
       padding: 0;
-      min-height: 25px;
+      min-height: 28px;
       margin-top: -4px;
     }
     &.focused {
@@ -91,12 +91,17 @@
   line-height: var(--wje-select-line-height);
   appearance: none;
   padding: 2px .5rem;
-  font-size: 14px;
+  font-size: 14px !important;
   font-weight: normal;
   vertical-align: middle;
 }
 
 input {
+  color: var(--wje-select-color);
+  line-height: var(--wje-select-line-height);
+  font-size: 14px !important;
+  font-weight: 400;
+  letter-spacing: .01em;
   border: medium;
   height: 25px;
   min-height: 25px;
@@ -105,6 +110,7 @@ input {
   box-shadow: none;
   width: 100%;
   outline: 0;
+  font-size: 14px !important;
 }
 
 ::placeholder {
@@ -121,14 +127,27 @@ input {
   }
 }
 
-.option-wrapper {
+.options-wrapper {
   border-width: var(--wje-select-options-border-width);
   border-style: var(--wje-select-options-border-style);
   border-color: var(--wje-select-options-border-color);
   border-radius: 0 0 var(--wje-select-border-radius) var(--wje-select-border-radius);
   margin-top: -1px;
   background: var(--wje-select-background);
+}
+
+.find {
+  --wje-input-border-radius: 0;
+  --wje-input-border-width: 0 0 1px 0;
+}
+
+.list {
   overflow: auto;
+  height: 100%;
+}
+
+.options-wrapper:has(.find) .list {
+  height: calc(100% - 32px - .5rem);
 }
 
 :host([multiple]) input {
@@ -168,9 +187,4 @@ wje-button {
   --wje-padding-end: .25rem;
   --wje-padding-bottom: .25rem;
   --wje-button-margin-inline: 0 .25rem;
-}
-
-::slotted(wje-input) {
-  --wje-input-border-radius: 0;
-  --wje-input-border-width: 0 0 1px 0;
 }

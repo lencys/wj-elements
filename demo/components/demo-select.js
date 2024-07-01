@@ -44,11 +44,22 @@ template.innerHTML = `
     
     <!-- FIND -->
 
-    <h2>Options</h2>
+    <h2>Find</h2>
     <div class="playground">
-      <div class="content">
-        <wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
-          <wje-input variant="standard" placeholder="Vyhladaj" slot="find"></wje-input>
+      <div class="content" style="gap: .5rem;">
+        <wje-select placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple clearable>
+          <wje-options url="/api/options" item-value="tralala" item-text="label"></wje-options>
+        </wje-select>
+        
+        <wje-select placeholder="Select options" variant="standard" max-height="200px" find clearable>
+          <wje-options url="/api/options" item-value="tralala" item-text="label"></wje-options>
+        </wje-select>
+        
+        <wje-select label="Label" placeholder="Select options" max-options="1" max-height="200px" find multiple clearable>
+          <wje-options url="/api/options" item-value="tralala" item-text="label"></wje-options>
+        </wje-select>
+        
+        <wje-select label="Label" placeholder="Select options" max-height="200px" find clearable>
           <wje-options url="/api/options" item-value="tralala" item-text="label"></wje-options>
         </wje-select>
       </div>
@@ -61,7 +72,7 @@ template.innerHTML = `
     <h2>Default</h2>
     <div class="playground">
       <div class="content">
-        <wje-select label="Label test" placeholder="Select option">
+        <wje-select label="Label" placeholder="Select option">
           <wje-option value="option-1">Option 1</wje-option>
           <wje-option value="option-2">
             Option 2
