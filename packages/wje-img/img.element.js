@@ -53,13 +53,14 @@ export default class Img extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-        let img = document.createElement("img");
-        img.setAttribute("src", "./assets/img/image-loader.gif");
-        img.classList.add("lazy-loaded-image", "lazy");
-        img.setAttribute("alt", this.alt || "");
+        let native = document.createElement("img");
+        native.setAttribute("part", "native");
+        native.setAttribute("src", "./assets/img/image-loader.gif");
+        native.setAttribute("alt", this.alt || "");
+        native.classList.add("lazy-loaded-image", "lazy");
 
-        this.img = img;
-        fragment.appendChild(img);
+        this.native = native;
+        fragment.appendChild(native);
 
         return fragment;
     }
@@ -78,6 +79,6 @@ export default class Img extends WJElement {
             });
         });
 
-        lazyImageObserver.observe(this.img);
+        lazyImageObserver.observe(this.native);
     }
 }
