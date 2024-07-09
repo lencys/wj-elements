@@ -181,7 +181,7 @@ export default class SlidingContainer extends WJElement {
 
         let native = document.createElement("div");
         native.style.position = "absolute";
-        native.style.width = this.maxWidth;
+        native.style.width = 0;
         if(this.hasOpacity){
             native.style.opacity = 0;
         }
@@ -199,9 +199,18 @@ export default class SlidingContainer extends WJElement {
 
         let slot = document.createElement("slot");
 
-        native.appendChild(this.getCloseButton());
-        native.appendChild(slot);
 
+        const nativeInner = document.createElement("div");
+        nativeInner.classList.add("native-sliding-container-inner");
+        nativeInner.style.height = "100%";
+        nativeInner.style.position = "absolute";
+        nativeInner.style.width = this.maxWidth;
+
+        nativeInner.appendChild(slot);
+        nativeInner.appendChild(this.getCloseButton());
+
+
+        native.appendChild(nativeInner);
         this.wrapperDiv.appendChild(this.transparentDiv);
         this.wrapperDiv.appendChild(native);
         fragment.appendChild(this.wrapperDiv);
@@ -362,7 +371,7 @@ export default class SlidingContainer extends WJElement {
         if (!this._isOpen) {
             if (this.animation) {
                 this.animation.reverse();
-                this.hasOpacity && this.nativeAnimation.reverse();
+                this.nativeAnimation.reverse();
 
                 return;
             }
@@ -376,19 +385,19 @@ export default class SlidingContainer extends WJElement {
 
             ], options);
 
-            if(this.hasOpacity){
-                this.nativeAnimation = this.nativeElement.animate([
-                    {
-                        opacity: 0
-                    },
-                    {
-                        opacity: 1
-                    }
-                ], options);
-            }
+            this.nativeAnimation = this.nativeElement.animate([
+                {
+                    ...(this.hasOpacity? {opacity: 0} : {}),
+                    width: 0
+                },
+                {
+                    ...(this.hasOpacity? {opacity: 1} : {}),
+                    width: this.maxWidth
+                }
+            ], options);
         } else {
             this.animation.reverse();
-            this.hasOpacity && this.nativeAnimation.reverse();
+            this.nativeAnimation.reverse();
         }
 
         return new Promise((resolve, reject) => {
