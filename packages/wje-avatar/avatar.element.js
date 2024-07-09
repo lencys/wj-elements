@@ -112,8 +112,4 @@ export default class Avatar extends WJElement {
     isImage(){
         return this.getElementsByTagName("wje-img").length > 0;
     }
-
-    dispatchEvent(event) {
-        return false;
-    }
 }
