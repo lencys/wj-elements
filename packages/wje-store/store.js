@@ -165,6 +165,10 @@ class Store {
 
     createObjectReducer(stateValueName){
         return (state = {},action)=>{
+            if(Array.isArray(action.payload)){
+                console.error(`Nemôžete pridať do objektu hodnotu, ktorá je pole. Skontrolujte si či definovanie stavu vyzerá takto: "store.define(${stateValueName}, {})"`);
+            }
+
             switch (action.type) {
                 case `${stateValueName}/ADD`:
                     return {
@@ -185,6 +189,14 @@ class Store {
 
     createArrayReducer(stateValueName, key){
         return (state = [],action)=>{
+            if(Array.isArray(action.payload) && action.payload.length == 0){
+                console.warn(`Nemá zmysel pridávať prázdne pole do pola`)
+            }
+
+            if(!Array.isArray(action.payload) && (action.type != defaultStoreActions.updateAction(stateValueName).type || action.type != defaultStoreActions.deleteAction(stateValueName).type)){
+                console.error(`Nemôžete pridať do poľa hodnotu, ktorá nie je pole. Skontrolujte si či definovanie stavu vyzerá takto: "store.define(${stateValueName}, [])"`)
+            }
+
             switch (action.type) {
                 case `${stateValueName}/ADD`:
                     if(Array.isArray(action.payload)){
