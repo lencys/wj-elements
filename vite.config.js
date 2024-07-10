@@ -35,7 +35,7 @@ export default defineConfig({
         outDir: './dist',
         lib: {
             entry: {
-
+"orgchart-item": "packages/wje-orgchart-item/orgchart-item.js",
                 "master": "./packages/index.js",
                 "styles": "./packages/styles/styles.css",
                 "light": "./packages/themes/light.css",
@@ -83,7 +83,6 @@ export default defineConfig({
                 "img": "./packages/wje-img/img.js",
                 "img-comparer": "./packages/wje-img-comparer/img-comparer.js",
                 "infinite-scroll": "./packages/wje-infinite-scroll/infinite-scroll.js",
-                "inline-edit": "./packages/wje-inline-edit/inline-edit.js",
                 "input": "./packages/wje-input/input.js",
                 "input-file": "./packages/wje-input-file/input-file.js",
                 "item": "./packages/wje-item/item.js",
@@ -97,6 +96,8 @@ export default defineConfig({
                 "menu-label": "./packages/wje-menu-label/menu-label.js",
                 "option": "./packages/wje-option/option.js",
                 "options": "./packages/wje-options/options.js",
+                "orgchart": "packages/wje-orgchart/orgchart.js",
+                "orgchartItem": "packages/wje-orgchart-item/orgchart-item.js",
                 "popup": "./packages/wje-popup/popup.js",
                 "progress-bar": "./packages/wje-progress-bar/progress-bar.js",
                 "qr-code": "./packages/wje-qr-code/qr-code.js",
@@ -108,7 +109,6 @@ export default defineConfig({
                 "reorder-dropzone": "./packages/wje-reorder-dropzone/reorder-dropzone.js",
                 "reorder-handle": "./packages/wje-reorder-handle/reorder-handle.js",
                 "reorder-item": "./packages/wje-reorder-item/reorder-item.js",
-                "sliding-container": "./experimental-packages/wje-sliding-container/sliding-container.js",
                 "route": "./packages/wje-route/route.js",
                 "routerx": "./packages/wje-router/router.js",
                 "router-link": "./packages/wje-router-link/router-link.js",
@@ -116,6 +116,7 @@ export default defineConfig({
                 "row": "./packages/wje-row/row.js",
                 "select": "./packages/wje-select/select.js",
                 "slider": "./packages/wje-slider/slider.js",
+                "sliding-container": "./experimental-packages/wje-sliding-container/sliding-container.js",
                 "split-view": "./packages/wje-split-view/split-view.js",
                 "status": "./packages/wje-status/status.js",
                 "tab": "./packages/wje-tab/tab.js",

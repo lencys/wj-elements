@@ -91,12 +91,7 @@ export default class Accordion extends WJElement {
     }
 
     afterDraw() {
-        this.addEventListener("wje-accordion-item:close", (e) => {
-            console.log("wje-accordion-item:close", e.detail);
-        });
-
         this.addEventListener("wje-accordion-item:open", (e) => {
-            console.log("wje-accordion-item:open", e.detail);
             if(!this.multiple)
                 this.collapseAll(e.detail.context);
         });
@@ -108,6 +103,7 @@ export default class Accordion extends WJElement {
                 accordion.collapse();
         });
     }
+
     getAccordions() {
         return Array.from(this.querySelectorAll(':scope > wje-accordion-item'));
     }

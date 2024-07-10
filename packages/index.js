@@ -2,7 +2,6 @@
 // import "./themes/dark.scss";
 // import "./styles/styles.css";
 import { default as WJElement } from "./wje-element/element.js";
-import { default as SlidingContainer } from "../experimental-packages/wje-sliding-container/sliding-container.js";
 import { event } from "./utils/event.js";
 import { defaultStoreActions, store } from "./wje-store/store.js";
 
@@ -50,7 +49,6 @@ import { default as IconPicker } from "./wje-icon-picker/icon-picker.js";
 import { default as Img } from "./wje-img/img.js";
 import { default as ImgComparer } from "./wje-img-comparer/img-comparer.js";
 import { default as InfiniteScroll } from "./wje-infinite-scroll/infinite-scroll.js";
-import { default as InlineEdit } from "./wje-inline-edit/inline-edit.js";
 import { default as Input } from "./wje-input/input.js";
 import { default as InputFile } from "./wje-input-file/input-file.js";
 import { default as Item } from "./wje-item/item.js";
@@ -64,6 +62,8 @@ import { default as MenuItem } from "./wje-menu-item/menu-item.js";
 import { default as MenuLabel } from "./wje-menu-label/menu-label.js";
 import { default as Option } from "./wje-option/option.js";
 import { default as Options } from "./wje-options/options.js";
+import { default as Orgchart } from "./wje-orgchart/orgchart.js";
+import { default as OrgchartItem } from "./wje-orgchart-item/orgchart-item.js";
 import { default as Popup } from "./wje-popup/popup.js";
 import { default as ProgressBar } from "./wje-progress-bar/progress-bar.js";
 import { default as QrCode } from "./wje-qr-code/qr-code.js";
@@ -99,6 +99,8 @@ import { default as Toolbar } from "./wje-toolbar/toolbar.js";
 import { default as ToolbarAction } from "./wje-toolbar-action/toolbar-action.js";
 import { default as Tooltip } from "./wje-tooltip/tooltip.js";
 import { default as VisuallyHidden } from "./wje-visually-hidden/visually-hidden.js";
+
+import { default as SlidingContainer } from "../experimental-packages/wje-sliding-container/sliding-container.js";
 
 export {
   WJElement, defaultStoreActions, store, event, bindRouterLinks, withRouterLinks, fetchAndParseCSS, Localizer,
@@ -140,7 +142,6 @@ export {
   Img,
   ImgComparer,
   InfiniteScroll,
-  InlineEdit,
   Input,
   InputFile,
   Item,
@@ -154,6 +155,8 @@ export {
   MenuLabel,
   Option,
   Options,
+  Orgchart,
+  OrgchartItem,
   Popup,
   ProgressBar,
   QrCode,
@@ -165,7 +168,6 @@ export {
   ReorderDropzone,
   ReorderHandle,
   ReorderItem,
-  SlidingContainer,
   Route,
   Routerx,
   RouterLink,
@@ -189,5 +191,7 @@ export {
   Toolbar,
   ToolbarAction,
   Tooltip,
-  VisuallyHidden
+  VisuallyHidden,
+
+  SlidingContainer
 };

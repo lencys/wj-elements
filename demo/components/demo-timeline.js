@@ -9,7 +9,7 @@ template.innerHTML = `
     <div class="playground">
         <div class="content">
             <wje-timeline>
-                <wje-timeline-item datetime="2024-06-19T00:00:00+00:00" event="Event 1" active></wje-timeline-item>
+                <wje-timeline-item datetime="2024-06-19T00:00:00+00:00" event="Event 1" active><p style="margin: 0"><b>Nieco sem napisem</b></p></wje-timeline-item>
                 <wje-timeline-item datetime="2024-01-01T00:00:00+00:00" event="Event 2">
                     <wje-status slot="status" size="medium" color="success">
                         <wje-icon size="small" name="check"></wje-icon>

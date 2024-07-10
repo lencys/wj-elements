@@ -1,0 +1,458 @@
+#orgChartView {
+    margin: 10px
+}
+
+div#UpToManager,
+div.manager_undefined,
+div.manager_true {
+    border: solid #dcdee0 2px;
+    border-radius: 10px !important;
+}
+
+div#UpToManager,
+.topPerson .nestedPerson div.manager_undefined,
+.topPerson .nestedPerson div.manager_true {
+    cursor: pointer;
+}
+
+.topPerson div.manager_undefined,
+.topPerson div.manager_true {
+    cursor: default;
+}
+
+span.link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+body, table {
+    font-size: 16px;
+    color: #1D252C;
+}
+
+thead th {
+    font-size: 20px;
+}
+
+thead td {
+    font-size: 12px;
+    font-style: italic;
+}
+
+.suppressPointerEvents * {
+    pointer-events: none;
+}
+
+#UpToManager {
+    width: 500px;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: #f3f3f4;
+    min-height: 20px;
+}
+
+/*#UpToManager.survived_false {*/
+/*    background-color: red;*/
+/*}*/
+
+
+.manager {
+    margin: -10px;
+    padding-top: 10px;
+    height: 35px;
+}
+
+/* OrgChart CSS Base: Reference https://www.cssscript.com/responsive-hierarchical-organization-chart-pure-css/ */
+ol.organizational-chart,
+ol.organizational-chart ol,
+ol.organizational-chart li,
+ol.organizational-chart li > div {
+  position: relative;
+}
+
+ol.organizational-chart,
+ol.organizational-chart ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ol.organizational-chart {
+    text-align: center;
+}
+
+ol.organizational-chart ol {
+    padding-top: 1em;
+}
+
+/* the connector line */
+ol.organizational-chart ol:before,
+ol.organizational-chart ol:after,
+ol.organizational-chart li:before,
+ol.organizational-chart li:after,
+ol.organizational-chart > li > div:before,
+ol.organizational-chart > li > div:after {
+    /* all connectors */
+    background-color: #b7a6aa;
+    content: "";
+    position: absolute;
+}
+
+ol.organizational-chart ol > li {
+    padding: 1em 0 0 1em;
+}
+
+ol.organizational-chart > li ol:before {
+    height: 1.2em;
+    left: 50%;
+    top: 0;
+    width: 3px;
+}
+
+ol.organizational-chart > li ol:after {
+    /* horizontal connector */
+    height: 3px;
+    left: 3px;
+    top: 1em;
+    width: 50%;
+}
+
+ol.organizational-chart > li ol > li:not(:last-of-type):before {
+    height: 3px;
+    left: 0;
+    top: 2em;
+    width: 1em;
+}
+
+ol.organizational-chart > li ol > li:not(:last-of-type):after {
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 3px;
+}
+
+ol.organizational-chart > li ol > li:last-of-type:before {
+    height: 3px;
+    left: 0;
+    top: 2em;
+    width: 1em;
+}
+
+ol.organizational-chart > li ol > li:last-of-type:after {
+    height: 2em;
+    left: 0;
+    top: 0;
+    width: 3px;
+}
+
+ol.organizational-chart li > div {
+    background-color: #fff;
+    border-radius: 3px;
+    min-height: 2em;
+    padding: 0.5em;
+}
+
+/*** PRIMARY ***/
+ol.organizational-chart > li > div {
+
+    background-color: #8dccad;
+    margin-right: 1em;
+}
+
+
+ol.organizational-chart > li > div + div {
+    margin-top: 1em;
+}
+
+ol.organizational-chart > li > div + div:after {
+    right: -1em;
+    top: -1em;
+    width: 3px;
+}
+
+/*** SECONDARY ***/
+ol.organizational-chart > li > ol:before {
+    /* descender */
+    left: inherit;
+}
+
+ol.organizational-chart > li > ol:after {
+    /* horizontal connector */
+    left: 0;
+}
+
+
+ol.organizational-chart > li > ol > li > div {
+    background-color: #f3f3f4;
+}
+
+/* topPerson ol.organizational-chart */
+/*ol.organizational-chart > li.topPerson > div.survived_false {*/
+/*    background-color: red;*/
+/*}*/
+/*
+        ol.organizational-chart > li.topPerson > ol > li > div.survived_false,
+        ol.organizational-chart > li.topPerson > ol > li > ol > li > div.survived_false,
+        ol.organizational-chart > li.topPerson > ol > li > ol > li > ol > li > div.survived_false,
+        ol.organizational-chart > li.topPerson > ol > li > ol > li > ol > li > ol > li > div.survived_false {
+            background-color: red;
+        }
+
+  */
+/* topPerson ol.organizational-chart */
+ol.organizational-chart > li > div.contractor_true,
+ol.organizational-chart > li > ol > li > div.contractor_true,
+ol.organizational-chart > li > ol > li > ol > li > div.contractor_true,
+ol.organizational-chart > li > ol > li > ol > li > ol > li > div.contractor_true,
+ol.organizational-chart > li > ol > li > ol > li > ol > li > ol > li > div.contractor_true {
+    background-color: #c2c2c2;
+}
+
+/*** TERTIARY ***/
+ol.organizational-chart > li > ol > li > ol > li > div {
+    background-color: #f3f3f4;
+}
+
+/*** QUATERNARY ***/
+ol.organizational-chart > li > ol > li > ol > li > ol > li > div {
+    background-color: #f3f3f4;
+}
+
+/*** QUINARY ***/
+ol.organizational-chart > li > ol > li > ol > li > ol > li > ol > li > div {
+    background-color: #f3f3f4;
+}
+
+
+/* OrgChart CSS Response Screen: Reference https://www.cssscript.com/responsive-hierarchical-organization-chart-pure-css/ */
+
+@media only screen and (max-width: 64em) {
+    .largePhoto {
+        width: 100px !important;
+        height: 100px !important;
+    }
+}
+
+@media only screen and (min-width: 64em) {
+    ol.organizational-chart {
+        margin-left: -1em;
+        margin-right: -1em;
+    }
+
+    ol.organizational-chart li div.topPersonDiv {
+        width: 500px;
+    }
+
+    #UpToManager {
+        width: 500px;
+    }
+
+    /* PRIMARY */
+    ol.organizational-chart > li > div {
+        display: inline-block;
+        float: none;
+        margin: 0 1em 1em 1em;
+        vertical-align: bottom;
+    }
+
+    ol.organizational-chart > li > div:only-of-type {
+        margin-bottom: 0;
+    }
+
+    ol.organizational-chart > li > div:before,
+    ol.organizational-chart > li > div:after {
+        bottom: -1em !important;
+        top: inherit !important;
+    }
+
+    ol.organizational-chart > li > div:before {
+        /* right side horizontal connector */
+        height: 1em !important;
+        left: 50% !important;
+        width: 3px !important;
+    }
+
+    ol.organizational-chart > li > div:only-of-type:after {
+        display: none;
+    }
+
+    ol.organizational-chart > li > div:first-of-type:not(:only-of-type):after,
+    ol.organizational-chart > li > div:last-of-type:not(:only-of-type):after {
+        bottom: -1em;
+        height: 3px;
+        width: calc(50% + 1em + 3px);
+    }
+
+    ol.organizational-chart > li > div:first-of-type:not(:only-of-type):after {
+        left: calc(50% + 3px);
+    }
+
+    ol.organizational-chart > li > div:last-of-type:not(:only-of-type):after {
+        left: calc(-1em - 3px);
+    }
+
+    ol.organizational-chart > li > div + div:not(:last-of-type):after {
+        height: 3px;
+        left: -2em;
+        width: calc(100% + 4em);
+    }
+
+    /* SECONDARY */
+    ol.organizational-chart > li > ol {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    ol.organizational-chart > li > ol:before,
+    ol.organizational-chart > li > ol > li:before {
+        height: 1em !important;
+        left: 50% !important;
+        top: 0 !important;
+        width: 3px !important;
+    }
+
+    ol.organizational-chart > li > ol:after {
+        display: none;
+    }
+
+    ol.organizational-chart > li > ol > li {
+        flex-grow: 1;
+        padding-left: 1em;
+        padding-right: 1em;
+        padding-top: 1em;
+    }
+
+    ol.organizational-chart > li > ol > li:only-of-type {
+        padding-top: 0;
+    }
+
+    ol.organizational-chart > li > ol > li:only-of-type:before,
+    ol.organizational-chart > li > ol > li:only-of-type:after {
+        display: none;
+    }
+
+    ol.organizational-chart > li > ol > li:first-of-type:not(:only-of-type):after,
+    ol.organizational-chart > li > ol > li:last-of-type:not(:only-of-type):after {
+        height: 3px;
+        top: 0;
+        width: 50%;
+    }
+
+    ol.organizational-chart > li > ol > li:first-of-type:not(:only-of-type):after {
+        left: 50%;
+    }
+
+    ol.organizational-chart > li > ol > li:last-of-type:not(:only-of-type):after {
+        left: 0;
+    }
+
+    ol.organizational-chart > li > ol > li + li:not(:last-of-type):after {
+        height: 3px;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+}
+
+ol.level_3,
+ol.level_4,
+ol.level_5 {
+    display: none;
+}
+
+.center {
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.largePhoto {
+    margin: 1em 0 1em 2em;
+}
+
+
+.orgChartViewContainer {
+    position: absolute;
+    left: 20px;
+    top: 110px;
+    height: 600px;
+    margin-top: -50px;
+    overflow: hidden;
+}
+
+
+ol.organizational-chart li div.topPersonDiv {
+    padding: 2px;
+    margin: 0;
+}
+
+
+.organizational-chart {
+    margin-top: 150px;
+}
+
+#orgChartView {
+    top: 85px;
+    position: relative;
+}
+
+#searchArea {
+    margin-top: 0;
+}
+
+.jobTitle,
+ol.organizational-chart li div.nestedPersonDiv .jobTitle {
+    font-size: 12px;
+    font-style: italic;
+    font-weight: normal;
+}
+
+div.nestedSearchDiv {
+    padding: 2px;
+    min-height: 53px;
+    margin: 10px;
+    width: 400px;
+    background-color: white;
+    cursor: pointer;
+}
+
+ol.organizational-chart li div.nestedPersonDiv {
+    padding: 2px;
+    min-height: 53px;
+}
+
+.smallPhoto {
+    float: left;
+    border-radius: 50px;
+    margin: 2px;
+}
+
+#searchArea {
+    position: absolute;
+    margin: 0 20px;
+    background-color: #d881fe;
+    z-index: 2;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+#detailView {
+    font-size: 90%;
+    width: 90%;
+
+}
+
+#detailView table {
+    font-size: 90%;
+
+
+}
+
+#detailView .largePhoto {
+    height: 100px;
+    width: 100px;
+}
+    

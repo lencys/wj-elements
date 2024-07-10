@@ -63,13 +63,23 @@ export default class AccordionItem extends WJElement {
         native.setAttribute("part", "native");
         native.classList.add("native-accordion-item");
 
-        let headline = document.createElement("slot");
-        headline.setAttribute("name", "headline");
-        headline.setAttribute("id", "headline");
+        let headline = document.createElement("div");
+        headline.setAttribute("part", "headline");
+        headline.classList.add("headline");
+
+        let headlineDescription = document.createElement("slot");
+        headlineDescription.setAttribute("part", "description");
+        headlineDescription.setAttribute("name", "description");
+
+        let slotHeadline = document.createElement("slot");
+        slotHeadline.setAttribute("name", "headline");
 
         let toggle = document.createElement("slot");
+        toggle.setAttribute("part", "toggle");
         toggle.setAttribute("name", "toggle");
-        toggle.setAttribute("id", "toggle");
+
+        let mark = document.createElement("wje-icon");
+        mark.setAttribute("name", "chevron-down");
 
         let content = document.createElement("div");
         content.setAttribute("id", "content");
@@ -77,7 +87,13 @@ export default class AccordionItem extends WJElement {
         let slot = document.createElement("slot");
         slot.setAttribute("name", "content");
 
-        content.appendChild(slot); // Append the slot to the content div.
+        toggle.appendChild(mark);
+
+        headline.appendChild(slotHeadline);
+        headline.appendChild(toggle);
+        headline.appendChild(headlineDescription);
+
+        content.appendChild(slot);
 
         native.appendChild(headline);
         native.appendChild(content);
@@ -99,28 +115,16 @@ export default class AccordionItem extends WJElement {
 
         this.headline.addEventListener("click", () => {
             if(this.classList.contains("collapsed")) {
-                this.collapse();
                 event.dispatchCustomEvent(this, "wje-accordion-item:open");
-            } else {
+                this.toggle.style.setProperty("--wje-accordion-marker-rotate", '180deg');
                 this.expand();
+            } else {
                 event.dispatchCustomEvent(this, "wje-accordion-item:close");
+                this.toggle.style.setProperty("--wje-accordion-marker-rotate", '0deg');
+                this.collapse();
             }
         });
     }
-
-    // afterDraw(context, store, params) {
-    //     this.summary.style.setProperty("--wje-accordion-marker", `url(${svgIcon})`);
-    //     this.summary.style.setProperty("--wje-accordion-marker-rotate", '180deg');
-    //
-    //     this.native.addEventListener("toggle", (e) => {
-    //         e.stopPropagation();
-    //         if (this.native.open) {
-    //             event.dispatchCustomEvent(this, "wje-accordion-item:open");
-    //         } else {
-    //             event.dispatchCustomEvent(this, "wje-accordion-item:close");
-    //         }
-    //     });
-    // }
 
     collapse = () => {
         this.classList.remove("expanded");
