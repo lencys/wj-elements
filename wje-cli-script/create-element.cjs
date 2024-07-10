@@ -188,8 +188,6 @@ function createElementInPackage() {
             return fragment;
         }
     }
-    
-    customElements.define("wje-${elementKebeb}", ${elementName});
     `;
 
     const styleContent = `:host 
