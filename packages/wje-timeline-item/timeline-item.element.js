@@ -1,4 +1,5 @@
-import { default as WJElement, WjElementUtils } from "../wje-element/element.js";
+import { default as WJElement } from "../wje-element/element.js";
+import { formatDate } from "../utils/date.js";
 import styles from "./styles/styles.css?inline";
 
 /**
@@ -43,6 +44,7 @@ export default class TimelineItem extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = "open";
+        this.setAttribute("relative-time", "");
     }
 
     /**
@@ -63,8 +65,22 @@ export default class TimelineItem extends WJElement {
         let contentContainer = document.createElement('div');
         contentContainer.classList.add('content-container');
 
-        let relativeTime = document.createElement('wje-relative-time');
-        relativeTime.setAttribute('date', this.getAttribute('datetime') || '');
+        // let time;
+        //
+        // if(this.hasAttribute('relative-time')) {
+            let tooltip = document.createElement('wje-tooltip');
+            tooltip.setAttribute('text', this.getAttribute('tooltip') || '');
+            tooltip.setAttribute('position', 'top');
+            tooltip.setAttribute('content', formatDate(this.datetime, 'dd.MM.yyyy HH:mm'));
+
+            let relativeTime = document.createElement('wje-relative-time');
+            relativeTime.setAttribute('date', this.datetime || '');
+            relativeTime.setAttribute('format', this.getAttribute('format') || '');
+
+            tooltip.appendChild(relativeTime);
+
+            // time = tooltip;
+        // }
 
         let event = document.createElement('h3');
         event.classList.add('event');
@@ -85,7 +101,7 @@ export default class TimelineItem extends WJElement {
             slotStatus.setAttribute('name', 'status');
         }
 
-        contentContainer.appendChild(relativeTime);
+        contentContainer.appendChild(tooltip);
         contentContainer.appendChild(event);
 
         contentContainer.appendChild(slot);
