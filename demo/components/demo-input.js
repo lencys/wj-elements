@@ -129,7 +129,7 @@ template.innerHTML = `<h1>Input</h1>
           
           .example wje-button {
             --wje-button-border-width: 0 !important;
-            --wje-button-border-radius: 0 !important;
+            --wje-button-border-radius: var(--wje-border-radius-large) !important;
             --wje-color-base: #000000 !important;
             margin: 0;
           }
