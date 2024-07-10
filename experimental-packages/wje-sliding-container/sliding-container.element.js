@@ -454,10 +454,10 @@ export default class SlidingContainer extends WJElement {
      * @returns {Promise<void>} A promise that resolves when the container is opened.
      */
     async open(event) {
-        await Promise.resolve(this.beforeOpen(event)).then(() => {
-            Promise.resolve(
+        await Promise.resolve(this.beforeOpen(event)).then(async () => {
+            await Promise.resolve(
                 !this._isOpen
-                    ? () => {
+                    ? (() => {
                         this.dispatchEvent(
                             new CustomEvent("wje-sliding-container:open", {
                                 bubbles: true,
@@ -466,10 +466,10 @@ export default class SlidingContainer extends WJElement {
                         );
 
                         this.doAnimateTransition();
-                    }
+                    })()
                     : () => { }
-            ).then(() => {
-                Promise.resolve(this.afterOpen(event)).then(() => {
+            ).then(async () => {
+                await Promise.resolve(this.afterOpen(event)).then(() => {
                     this._isOpen = true;
                 });
             });
@@ -482,10 +482,10 @@ export default class SlidingContainer extends WJElement {
      * @returns {Promise<void>} A promise that resolves when the container is closed.
      */
     async close(event) {
-        await Promise.resolve(this.beforeClose(event)).then(() => {
-            Promise.resolve(
+        await Promise.resolve(this.beforeClose(event)).then(async () => {
+            await Promise.resolve(
                 this._isOpen
-                    ? () => {
+                    ? (() => {
                         this.dispatchEvent(
                             new CustomEvent("wje-sliding-container:close", {
                                 bubbles: true,
@@ -494,10 +494,10 @@ export default class SlidingContainer extends WJElement {
                         );
 
                         this.doAnimateTransition();
-                    }
+                    })()
                     : () => { }
-            ).then(() => {
-                Promise.resolve(this.afterClose(event)).then(() => {
+            ).then(async () => {
+                await Promise.resolve(this.afterClose(event)).then(() => {
                     if (this.removeChildAfterClose) {
                         this.childNodes.forEach((child) => {
                             child.remove();
