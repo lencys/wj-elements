@@ -41,4 +41,3 @@ Use CDN and include compiled CSS and JS files of WebJET Elements in your project
 ```html
 <wj-button>Button</wj-button>
 ```
-

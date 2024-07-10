@@ -138,6 +138,10 @@ export default class SlidingContainer extends WJElement {
 
     className = "SlidingContainer";
 
+    /**
+     * Returns the observed attributes for the component.
+     * @returns {string[]}
+     */
     static get observedAttributes() {
         return ["max-width", "max-height", "trigger", "direction", "variant", "screen-break-point", "remove-child-after-close", "animation-duration", "animation-easing", "has-opacity"];
     }
@@ -456,5 +460,3 @@ export default class SlidingContainer extends WJElement {
         }
     }
 }
-
-customElements.define("wje-sliding-container", SlidingContainer);

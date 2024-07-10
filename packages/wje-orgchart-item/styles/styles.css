@@ -1,0 +1,10 @@
+.orgchart-item {
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--wje-color-contrast-3);
+    border-radius: var(--wje-border-radius-large);
+    padding: .5rem;
+    p {
+        margin: 0;
+    }
+}
