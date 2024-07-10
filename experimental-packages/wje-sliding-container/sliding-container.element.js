@@ -181,7 +181,7 @@ export default class SlidingContainer extends WJElement {
 
         let native = document.createElement("div");
         native.style.position = "absolute";
-        native.style.width = this.maxWidth;
+        native.style.width = 0;
         if(this.hasOpacity){
             native.style.opacity = 0;
         }
@@ -199,9 +199,18 @@ export default class SlidingContainer extends WJElement {
 
         let slot = document.createElement("slot");
 
-        native.appendChild(this.getCloseButton());
-        native.appendChild(slot);
 
+        const nativeInner = document.createElement("div");
+        nativeInner.classList.add("native-sliding-container-inner");
+        nativeInner.style.height = "100%";
+        nativeInner.style.position = "absolute";
+        nativeInner.style.width = this.maxWidth;
+
+        nativeInner.appendChild(slot);
+        nativeInner.appendChild(this.getCloseButton());
+
+
+        native.appendChild(nativeInner);
         this.wrapperDiv.appendChild(this.transparentDiv);
         this.wrapperDiv.appendChild(native);
         fragment.appendChild(this.wrapperDiv);
@@ -311,37 +320,37 @@ export default class SlidingContainer extends WJElement {
      * @param {Event} e - The event object.
      */
     triggerEvent = (e) => {
-        if (this._lastCaller && this._lastCaller !== e.target) {
+        if (this._lastCaller && this._lastCaller !== e.composedPath()[0]) {
             // same oppener event but different caller so just refresh inner content
-            this.open()
+            this.open(e)
 
         } else {
             // came caller so toggle 
-            this.toggle();
+            this.toggle(e);
         }
 
-        this._lastCaller = e.target;
+        this._lastCaller = e.composedPath()[0];
     }
 
     /**
      * Executes before the element is opened.
      */
-    beforeOpen() { }
+    beforeOpen(event) { }
 
     /**
      * Callback function called after the element is opened.
      */
-    afterOpen() { }
+    afterOpen(event) { }
 
     /**
      * Executes before closing the element.
      */
-    beforeClose() { }
+    beforeClose(event) { }
 
     /**
      * Callback function that is called after the container is closed.
      */
-    afterClose() { }
+    afterClose(event) { }
 
     /**
      * Animates the transition of the element's width from 0 to the maximum width or vice versa.
@@ -362,7 +371,7 @@ export default class SlidingContainer extends WJElement {
         if (!this._isOpen) {
             if (this.animation) {
                 this.animation.reverse();
-                this.hasOpacity && this.nativeAnimation.reverse();
+                this.nativeAnimation.reverse();
 
                 return;
             }
@@ -376,19 +385,19 @@ export default class SlidingContainer extends WJElement {
 
             ], options);
 
-            if(this.hasOpacity){
-                this.nativeAnimation = this.nativeElement.animate([
-                    {
-                        opacity: 0
-                    },
-                    {
-                        opacity: 1
-                    }
-                ], options);
-            }
+            this.nativeAnimation = this.nativeElement.animate([
+                {
+                    ...(this.hasOpacity? {opacity: 0} : {}),
+                    width: 0
+                },
+                {
+                    ...(this.hasOpacity? {opacity: 1} : {}),
+                    width: this.maxWidth
+                }
+            ], options);
         } else {
             this.animation.reverse();
-            this.hasOpacity && this.nativeAnimation.reverse();
+            this.nativeAnimation.reverse();
         }
 
         return new Promise((resolve, reject) => {
@@ -402,10 +411,10 @@ export default class SlidingContainer extends WJElement {
      * Opens the container with an animation.
      * @returns {Promise<void>} A promise that resolves when the container is opened.
      */
-    async open() {
-        await Promise.resolve(this.beforeOpen()).then(() => {
+    async open(event) {
+        await Promise.resolve(this.beforeOpen(event)).then(() => {
             Promise.resolve(!this._isOpen ? this.doAnimateTransition() : () => { }).then(() => {
-                Promise.resolve(this.afterOpen()).then(() => {
+                Promise.resolve(this.afterOpen(event)).then(() => {
                     this._isOpen = true;
                 });
             })
@@ -417,10 +426,10 @@ export default class SlidingContainer extends WJElement {
      * 
      * @returns {Promise<void>} A promise that resolves when the container is closed.
      */
-    async close() {
-        await Promise.resolve(this.beforeClose()).then(() => {
+    async close(event) {
+        await Promise.resolve(this.beforeClose(event)).then(() => {
             Promise.resolve(this._isOpen ? this.doAnimateTransition() : () => { }).then(() => {
-                Promise.resolve(this.afterClose()).then(() => {
+                Promise.resolve(this.afterClose(event)).then(() => {
 
                     if(this.removeChildAfterClose){
                         this.childNodes.forEach(child => {
@@ -439,11 +448,11 @@ export default class SlidingContainer extends WJElement {
      * If the element is open, it will be closed. If it is closed, it will be opened.
      * @returns {Promise<void>} A promise that resolves when the toggle operation is complete.
      */
-    async toggle() {
+    async toggle(event) {
         if (this._isOpen) {
-            await this.close();
+            await this.close(event);
         } else {
-            await this.open();
+            await this.open(event);
         }
     }
 }
