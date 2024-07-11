@@ -126,81 +126,80 @@ export default class Dropdown extends WJElement {
         if (this.hasAttribute("collapsible")) {
             event.addListener(Array.from(this.querySelectorAll("wje-menu-item")), "click", "wje-menu-item:click", this.onClose);
         }
-    }
 
-    /**
-     * @summary Returns the content to be displayed before showing the dropdown.
-     * @returns {any} The content to be displayed.
-     */
-    beforeShow() {
-        return this.content;
-    }
-
-    /**
-     * This method is called after the dropdown is shown.
-     */
-    afterShow() { }
-
-    /**
-     * @summary Toggles the dropdown element between active and inactive states.
-     * Calls the `onOpen` method if the element is currently inactive,
-     * and calls the `onClose` method if the element is currently active.
-     *
-     * @param {Event} e - The event object.
-     */
-    toggleCallback = (e) => {
-        if (this.classList.contains("active")) {
-            this.onClose(e);
-        } else {
-            this.onOpen(e);
+        /**
+         * @summary Returns the content to be displayed before showing the dropdown.
+         * @returns {any} The content to be displayed.
+         */
+        beforeShow() {
+            return this.content;
         }
-    };
 
-    /**
-     * @summary Open the popup
-     * @param e
-     */
-    onOpen = async (e) => {
-        e.stopPropagation();
+        /**
+         * This method is called after the dropdown is shown.
+         */
+        afterShow() { }
 
-        this.classList.add("active");
-        Promise.resolve(this.beforeShow(this))
-            .then((res) => {
-                if (!this.classList.contains("active")) {
-                    throw new Error(
-                        "beforeShow method returned false or not string"
-                    );
-                }
+        /**
+         * @summary Toggles the dropdown element between active and inactive states.
+         * Calls the `onOpen` method if the element is currently inactive,
+         * and calls the `onClose` method if the element is currently active.
+         *
+         * @param {Event} e - The event object.
+         */
+        toggleCallback = (e) => {
+            if (this.classList.contains("active")) {
+                this.onClose(e);
+            } else {
+                this.onOpen(e);
+            }
+        };
 
-                this.popup.show(); // Show tooltip
+        /**
+         * @summary Open the popup
+         * @param e
+         */
+        onOpen = async (e) => {
+            e.stopPropagation();
 
-                event.dispatchCustomEvent(this, "wje-dropdown:open", {
-                    bubbles: true,
-                    detail: { target: this },
+            this.classList.add("active");
+            Promise.resolve(this.beforeShow(this))
+                .then((res) => {
+                    if (!this.classList.contains("active")) {
+                        throw new Error(
+                            "beforeShow method returned false or not string"
+                        );
+                    }
+
+                    this.popup.show(); // Show tooltip
+
+                    event.dispatchCustomEvent(this, "wje-dropdown:open", {
+                        bubbles: true,
+                        detail: { target: this },
+                    });
+
+                    Promise.resolve(this.afterShow(this));
+                })
+                .catch((error) => {
+                    // ak je nejaka chyba tak to len zatvorime
+                    this.classList.remove("active");
+                    this.popup.hide();
                 });
+        };
 
-                Promise.resolve(this.afterShow(this));
-            })
-            .catch((error) => {
-                // ak je nejaka chyba tak to len zatvorime
-                this.classList.remove("active");
-                this.popup.hide();
+        /**
+         * @summary Close the popup
+         * @param e
+         */
+        onClose = async (e) => {
+            e.stopPropagation();
+
+            this.classList.remove("active");
+            this.popup.hide(); // Now close the popup
+
+            event.dispatchCustomEvent(this, "wje-dropdown:close", {
+                bubbles: true,
+                detail: { target: this },
             });
-    };
-
-    /**
-     * @summary Close the popup
-     * @param e
-     */
-    onClose = async (e) => {
-        e.stopPropagation();
-
-        this.classList.remove("active");
-        this.popup.hide(); // Now close the popup
-
-        event.dispatchCustomEvent(this, "wje-dropdown:close", {
-            bubbles: true,
-            detail: { target: this },
-        });
-    };
-}
+        };
+    }

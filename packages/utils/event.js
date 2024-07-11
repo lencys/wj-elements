@@ -91,14 +91,24 @@ class Event {
             element.addEventListener(originalEvent, listener, options);
         } else {
             // in case we want to add the same listener multiple times trigger a warning for a better debugging
-            // console.warn("Listener already exists", element, originalEvent, listener);
+            console.warn("Listener already exists", element, originalEvent, listener);
         }
+    }
+
+    /**
+     * Performs a deep equality check between two objects.
+     *
+     * @param {any} x - The first object to compare.
+     * @param {any} y - The second object to compare.
+     * @returns {boolean} - Returns `true` if the objects are deeply equal, `false` otherwise.
+     */
+    deepEqual(x, y) {
+        return x && y && typeof x === 'object' && typeof x === typeof y ? Object.keys(x).length === Object.keys(y).length && Object.keys(x).every(key => this.deepEqual(x[key], y[key])) : x === y;
     }
 
     listenerExists(element, event, listener) {
         let record = this.findRecordByElement(element);
-
-        return record.listeners[event].some((e) => JSON.stringify(e) === JSON.stringify(listener));
+        return record.listeners[event].some((e) => this.deepEqual(e, listener));
     }
 
     removeListener(element, originalEvent, event, listener, options) {
