@@ -82,6 +82,7 @@ export default class AccordionItem extends WJElement {
         mark.setAttribute("name", "chevron-down");
 
         let content = document.createElement("div");
+        content.setAttribute("part", "content");
         content.setAttribute("id", "content");
 
         let slot = document.createElement("slot");
