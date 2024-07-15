@@ -1,4 +1,4 @@
-# WJ Elements
+# WJ Elements 
 WebJET Elements is a modern set of user interface tools harnessing the power of web components designed to simplify web application development. It provides a collection of encapsulated and reusable elements that can greatly increase the efficiency and maintainability of web development projects. They offer easy integration with React and Vue.
 
 Include WebJET Elements in your project using [CDN](#inštalácia-s-cdn) or install it using [npm](#inštalácia-s-npm).
