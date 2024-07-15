@@ -31,6 +31,12 @@ export default class Popup extends WJElement {
     constructor() {
         super();
         this._manual = false;
+        this._stageList = {
+            IDLE: "IDLE",
+            PROCESSING: "PROCESSING",
+        }
+
+        this._stage = this._stageList.IDLE;
     }
 
     /**
@@ -67,41 +73,22 @@ export default class Popup extends WJElement {
     }
 
     /**
-     * Returns the list of attributes to observe for changes.
-     *
-     * @static
-     * @returns {Array<string>}
-     */
-    static get observedAttributes() {
-        return ["active"];
-    }
-
-    /**
      * Sets up the attributes for the component.
      */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
-    /**
-     * Called when an attribute changes.
-     *
-     * @param {string} name - The name of the attribute.
-     * @param {string} old - The old value of the attribute.
-     * @param {string} newName - The new value of the attribute.
-     */
-    attributeChangedCallback(name, old, newName) {
-        if (name === "active") {
-            if (this.hasAttribute(name)) {
-                this.show();
-            } else {
-                this.hide();
-            }
-        }
+    afterDisconnect() {
+        event.removeElement(this.anchorEl)
+        document.removeEventListener("click", this.clickHandler, { capture: true });
+        this.cleanup?.();
     }
 
     beforeDraw(context, store, params) {
-        document.removeEventListener("click", this.clickHandler);
+        this._stage = this._stageList.PROCESSING;
+        document.removeEventListener("click", this.clickHandler, { capture: true });
+        this.cleanup?.();
     }
 
     /**
@@ -142,6 +129,8 @@ export default class Popup extends WJElement {
 
     afterDraw(context, store, params) {
         this.setAnchor();
+
+        this._stage = this._stageList.IDLE;
     }
 
     /**
@@ -164,6 +153,7 @@ export default class Popup extends WJElement {
             }, { stopPropagation: true });
         }
 
+        document.removeEventListener("click", this.clickHandler, { capture: true });
         document.addEventListener("click", this.clickHandler, { capture: true });
     }
 
@@ -277,6 +267,7 @@ export default class Popup extends WJElement {
 
         this.native.classList.add("popup-active");
 
+        this.cleanup?.()
         this.cleanup = autoUpdate(this.anchorEl, this.native, () => {
             this.reposition();
         });
@@ -293,9 +284,12 @@ export default class Popup extends WJElement {
     hide() {
         event.dispatchCustomEvent(this, "wje-popup:hide");
         this.native.classList.remove("popup-active");
-        this.removeAttribute("active");
-        this.cleanup;
+
+        this.cleanup?.();
         this.cleanup = undefined;
+
+        if (this.hasAttribute("active"))
+            this.removeAttribute("active")
     }
 
     /**
@@ -303,12 +297,5 @@ export default class Popup extends WJElement {
      */
     onHide() {
         this.removeAttribute("active");
-    }
-
-    /**
-     * Adds event listeners after the component is drawn.
-     */
-    disconnectedCallback() {
-        event.removeElement(this.anchorEl)
     }
 }

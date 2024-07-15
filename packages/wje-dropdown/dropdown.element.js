@@ -64,6 +64,11 @@ export default class Dropdown extends WJElement {
         this.isShadowRoot = "open";
     }
 
+    beforeDraw() {
+        this.popup?.remove()
+        this.popup = null;
+    }
+
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
