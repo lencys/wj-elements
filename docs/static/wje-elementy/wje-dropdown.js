@@ -6,7 +6,7 @@ import { P as m } from "./popup.element-BFIsYEbU.js";
 class p extends h {
   constructor() {
     super();
-    s(this, "depandencies", {
+    s(this, "dependencies", {
       "wje-popup": m
     });
     s(this, "className", "Dropdown");

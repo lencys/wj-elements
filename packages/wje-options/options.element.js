@@ -24,7 +24,7 @@ export default class Options extends WJElement {
         super();
     }
 
-    depandencies = {
+    dependencies = {
         "wje-option": Option
     }
 

@@ -44,7 +44,7 @@ export default class FileUploadItem extends WJElement {
    * Dependencies
    * @type {Object}
    */
-  depandencies = {
+  dependencies = {
     "wje-format-digital": FormatDigital,
     "wje-button": Button,
     "wje-slider": Slider,

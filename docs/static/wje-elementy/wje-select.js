@@ -17,7 +17,7 @@ class v extends E {
    */
   constructor() {
     super();
-    u(this, "depandencies", {
+    u(this, "dependencies", {
       "wje-button": x,
       "wje-popup": O,
       "wje-icon": y,

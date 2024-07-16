@@ -15,7 +15,7 @@ class d extends u {
     /**
      * Dependencies of the Option component.
      */
-    o(this, "depandencies", {
+    o(this, "dependencies", {
       "wje-icon": g
     });
     o(this, "className", "Option");

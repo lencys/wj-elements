@@ -11,7 +11,7 @@ class r extends d {
    */
   constructor() {
     super();
-    a(this, "depandencies", {
+    a(this, "dependencies", {
       "wje-option": h
     });
     a(this, "className", "Options");

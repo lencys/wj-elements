@@ -41,9 +41,9 @@ export default class IconPicker extends WJElement {
     /**
      * Dependencies of the IconPicker component.
      *
-     * @property {Object} depandencies
+     * @property {Object} dependencies
      */
-    depandencies = {
+    dependencies = {
         "wje-input": Input,
         "wje-infinite-scroll": InfiniteScroll,
         "wje-tooltip": Tooltip,

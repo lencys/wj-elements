@@ -52,7 +52,7 @@ export default class Select extends WJElement {
         this.counterEl = null;
     }
 
-    depandencies = {
+    dependencies = {
         "wje-button": Button,
         "wje-popup": Popup,
         "wje-icon": Icon,

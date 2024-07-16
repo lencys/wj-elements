@@ -20,7 +20,7 @@ class g extends v {
      * Dependencies
      * @type {Object}
      */
-    m(this, "depandencies", {
+    m(this, "dependencies", {
       "wje-format-digital": E,
       "wje-button": z,
       "wje-slider": A,
