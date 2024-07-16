@@ -101,6 +101,7 @@ export default class AccordionItem extends WJElement {
 
         fragment.appendChild(native);
 
+
         this.headline = headline;
         this.toggle = toggle;
 
