@@ -25,10 +25,10 @@
   ],
   "module": "./dist/wje-master.js",
   "scripts": {
-    "dev": "vite --force",
-    "build": "vite build",
-    "preview": "vite preview",
-    "watch": "vite build --watch",
+    "dev": "vite --mode development",
+    "build": "vite build --mode production",
+    "preview": "vite preview --mode production",
+    "watch": "vite build --watch --mode development",
     "analyze": "cem analyze",
     "create-element": "node wje-cli-script/create-element.cjs"
   },
