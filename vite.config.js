@@ -1,12 +1,23 @@
 import { defineConfig } from 'vite';
+import dotenv from 'dotenv';
 import path from 'path';
-
 // import { terser } from 'rollup-plugin-terser';
 // import javascriptObfuscator from 'vite-plugin-javascript-obfuscator';
 
 /** @type {import('vite').UserConfig} */
 export default defineConfig(({ mode }) => {
+
+    dotenv.config({ path: path.resolve(__dirname, `.env.${mode}`) });
+
     return {
+        // port to 5199
+        server: {
+            port: 5199,
+        },
+        define: {
+            'process.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL || 'http://localhost:3000'),
+            'process.env.VITE_ASSETS_URL': JSON.stringify(process.env.VITE_ASSETS_URL || 'http://localhost:3000/assets'),
+        },
         base: '/',
         css: {
             preprocessorOptions: {
