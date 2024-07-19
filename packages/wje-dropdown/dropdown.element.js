@@ -198,8 +198,6 @@ export default class Dropdown extends WJElement {
      * @param e
      */
     onClose = async (e) => {
-        e.stopPropagation();
-
         this.classList.remove("active");
         this.popup.hide(); // Now close the popup
 

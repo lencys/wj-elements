@@ -124,11 +124,9 @@ export const getName = (iconName) => {
 };
 
 const getNamedUrl = (iconName, filled = false) => {
-  const path = `/assets/img/icons/${filled ? "filled" : "outline"}/${iconName}.svg`;
+  const path = `${filled ? "filled" : "outline"}/${iconName}.svg`;
 
-  let parsedUrl = new URL(import.meta.url);
-  let pathName = parsedUrl.pathname;
+  let url = new URL(process.env.VITE_API_URL + process.env.VITE_ASSETS_URL + path);
 
-  let folderPath = pathName.substring(0, pathName.lastIndexOf('/'));
-  return new URL(parsedUrl.origin + folderPath + path).href;
+  return url.href;
 };
