@@ -154,6 +154,7 @@ export default class Dropdown extends WJElement {
      * @param {Event} e - The event object.
      */
     toggleCallback = (e) => {
+        e.stopPropagation();
         if (this.classList.contains("active")) {
             this.onClose(e);
         } else {

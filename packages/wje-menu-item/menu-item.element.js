@@ -304,12 +304,11 @@ export default class MenuItem extends WJElement {
                 break;
             case "CONTEXT":
                 let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
-                if (submenuElements.hasAttribute("active")) {
+                if (submenuElements?.hasAttribute("active")) {
                     this.shouldHideSubmenu(e);
                 } else {
                     this.activateSubmenu(e);
                     this.showSubmenu(e);
-
                 }
 
                 break;
