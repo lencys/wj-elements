@@ -13,6 +13,12 @@ export default defineConfig(({ mode }) => {
         // port to 5199
         server: {
             port: 5199,
+            watch: {
+                paths: ['dist/**/*'],
+                ignored: ['!**/dist/**'],
+                usePolling: true, // Enable polling
+                interval: 100 // Polling interval in milliseconds
+            }
         },
         ...(mode === 'development' ? {
             define: {

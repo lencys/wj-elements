@@ -258,37 +258,62 @@ export default class MenuItem extends WJElement {
 
 
         // Event na zobrazenie submenu
-        event.addListener(this, "mouseenter", null, (e) => {
-            if (this.collapse || this.variant === "CONTEXT" && this.hasSubmenu) {
-                if (this.hasAttribute("manual") || this.variant === "NAV" && this.collapse) return;
-
-                this.activateSubmenu(e);
-
-                e.stopPropagation();
-
-                this.showSubmenu();
-                // this.focus();
-            }
-        });
-
+        event.addListener(this, "mouseenter", null, this.mouseenterHandler);
         // Event na zrusenie zobrazenia submenu ked sa klikne mimo
         event.addListener(this, "mouseleave", null, this.shouldHideSubmenu);
-
         // Event na zrusenie zobrazenia submenu ked sa klikne mimo
         event.addListener(this, "focusout", null, this.shouldHideSubmenu);
+        event.addListener(this, "click", null, this.clickHandler);
+    }
 
-        event.addListener(this, "click", null, (e) => {
-            if (!this.collapse && this.variant === "NAV" && this.hasSubmenu) {
-                this.submenuToggle(e);
-                this.hideSubmenu();
-                e.stopPropagation();
-            } else {
-                event.dispatchCustomEvent(this, "wje-menu-item:click");
-                event.dispatchCustomEvent(this, this.dialog, {
-                    bubbles: true
-                });
-            }
-        });
+    afterDisconnect() {
+        event.removeListener(this, "mousemove", null, this.dispatchMove);
+        event.removeListener(this, "wje-popup:reposition", null, this.dispatchReposition);
+        event.removeListener(this, "mouseenter", null, this.mouseenterHandler);
+        event.removeListener(this, "mouseleave", null, this.shouldHideSubmenu);
+        event.removeListener(this, "focusout", null, this.shouldHideSubmenu);
+        event.removeListener(this, "click", null, this.clickHandler);
+    }
+
+    mouseenterHandler = (e) => {
+        if (this.collapse || this.variant === "CONTEXT" && this.hasSubmenu) {
+            if (this.hasAttribute("manual") || this.variant === "NAV" && this.collapse) return;
+
+            this.activateSubmenu(e);
+
+            e.stopPropagation();
+
+            this.showSubmenu();
+            // this.focus();
+        }
+    }
+
+    clickHandler = (e) => {
+        switch (this.variant) {
+            case "NAV":
+                if (!this.collapse && this.hasSubmenu) {
+                    this.submenuToggle(e);
+                    this.hideSubmenu();
+                    e.stopPropagation();
+                } else {
+                    event.dispatchCustomEvent(this, "wje-menu-item:click");
+                    event.dispatchCustomEvent(this, this.dialog, {
+                        bubbles: true
+                    });
+                }
+                break;
+            case "CONTEXT":
+                let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
+                if (submenuElements.hasAttribute("active")) {
+                    this.shouldHideSubmenu(e);
+                } else {
+                    this.activateSubmenu(e);
+                    this.showSubmenu(e);
+
+                }
+
+                break;
+        }
     }
 
     /**
@@ -364,7 +389,7 @@ export default class MenuItem extends WJElement {
     showSubmenu() {
         this.tabIndex = -1;
         if (this.hasSubmenu) {
-            this.popup.setAttribute("active", "");
+            this.popup?.setAttribute("active", "");
             this.classList.add("expanded-submenu");
             this.native.classList.add("expanded-submenu");
         }
@@ -376,7 +401,7 @@ export default class MenuItem extends WJElement {
     hideSubmenu() {
         this.tabIndex = 0;
         if (this.hasSubmenu) {
-            this.popup.removeAttribute("active");
+            this.popup?.removeAttribute("active");
             this.classList.remove("expanded-submenu");
             this.native.classList.remove("expanded-submenu");
         }
