@@ -14,10 +14,12 @@ export default defineConfig(({ mode }) => {
         server: {
             port: 5199,
         },
-        define: {
-            'process.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL || 'http://localhost:3000'),
-            'process.env.VITE_ASSETS_URL': JSON.stringify(process.env.VITE_ASSETS_URL || 'http://localhost:3000/assets'),
-        },
+        ...(mode === 'development' ? {
+            define: {
+                'process.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL || 'http://localhost:3000'),
+                'process.env.VITE_ASSETS_URL': JSON.stringify(process.env.VITE_ASSETS_URL || 'http://localhost:3000/assets'),
+            },
+        } : {}),
         base: '/',
         css: {
             preprocessorOptions: {
