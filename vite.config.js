@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
     return {
         // port to 5199
         server: {
-            port: 5199,
+            port: 5174,
             watch: {
                 paths: ['dist/**/*'],
                 ignored: ['!**/dist/**'],
@@ -154,7 +154,6 @@ export default defineConfig(({ mode }) => {
                 },
                 name: 'WjElements',
                 fileName: (format, name) => {
-                    console.log("Format:", format, "Name:", name);
                     if (name === 'localize')
                         return name + '.js';
                     return 'wje-' + name + '.js';
