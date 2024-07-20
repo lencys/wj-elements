@@ -29,6 +29,15 @@ export class LocalizerDefault {
     return langMap ? langMap[key] || key : key;
   }
 
+  translatePlural(key, count = 0, type = "cardinal") {
+    const plural = new Intl.PluralRules(this.lang, { type: type });
+
+    if(count != undefined)
+      key += "." + plural.select(count);
+
+    return this.translate(key);
+  }
+
   // Formátovanie čísla podľa aktuálneho jazyka
   formatNumber(number, options) {
     return new Intl.NumberFormat(this.currentLang, options).format(number);
