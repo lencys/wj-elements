@@ -263,6 +263,7 @@ export default class Button extends WJElement {
         }
 
         let span = document.createElement("span");
+        span.setAttribute("part", "inner");
         span.classList.add("button-inner");
 
         let slot = document.createElement("slot");
