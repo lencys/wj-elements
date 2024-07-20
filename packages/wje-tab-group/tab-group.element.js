@@ -112,7 +112,7 @@ export default class TabGroup extends WJElement {
      */
     afterDraw() {
         let activeTab = this.getActiveTab();
-        let activeTabName = (activeTab) ? activeTab[0].name : this.getTabAll()[0].panel;
+        let activeTabName = (activeTab) ? activeTab[0].panel : this.getTabAll()[0].panel;
 
         this.setActiveTab(activeTabName);
 
@@ -154,8 +154,8 @@ export default class TabGroup extends WJElement {
      * @returns {Element|null} The active tab, or null if no tab is active.
      */
     getActiveTab() {
-        let activeTabs = Array.from(this.context.querySelectorAll('[active]'));
-        return activeTabs.length > 0 ? activeTabs[0] : null;
+        let activeTabs = Array.from(this.querySelectorAll('wje-tab[active]'));
+        return activeTabs.length > 0 ? activeTabs : null;
     }
 
     /**
