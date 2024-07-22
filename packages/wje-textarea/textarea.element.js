@@ -35,31 +35,6 @@ export default class Textarea extends WJElement {
      */
     constructor() {
         super();
-
-        this._checked = false;
-    }
-
-    /**
-     * Sets the checked state of the textarea.
-     *
-     * @param {boolean} value - The checked state.
-     */
-    set checked(value) {
-        this._checked = value;
-
-        if(value)
-            this.setAttribute("checked", "");
-        else
-            this.removeAttribute("checked");
-    }
-
-    /**
-     * Returns the checked state of the textarea.
-     *
-     * @returns {boolean} The checked state.
-     */
-    get checked() {
-        return this._checked;
     }
 
     className = "Textarea";
@@ -81,7 +56,7 @@ export default class Textarea extends WJElement {
      * @returns {Array<string>}
      */
     static get observedAttributes() {
-        return ["checked"];
+        return [];
     }
 
     /**
@@ -123,7 +98,7 @@ export default class Textarea extends WJElement {
         input.id = "textarea";
         input.name = this.name;
         input.disabled = this.hasAttribute("disabled");
-        input.innerText = this.innerText;
+        input.innerText = this.innerHTML;
         input.classList.add("form-control");
         input.setAttribute("part", "input");
         input.setAttribute("rows", this.rows || 3);

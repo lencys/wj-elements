@@ -40,6 +40,17 @@ template.innerHTML = `
 
     <div class="html-snippet"></div>
     
+    <!-- BASIC - INNER TEXT -->
+
+    <h2>Basic</h2>
+    <div class="playground" style="display: block;">
+      <div class="content" style="display: block;">
+        <wje-textarea label="Label" name="dog" rows="4">Lorem ipsum dolor sit amet</wje-textarea>
+      </div>
+    </div>
+
+    <div class="html-snippet"></div>
+    
     <!-- STANDARD -->
 
     <h2>Standard</h2>
