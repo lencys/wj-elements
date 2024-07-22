@@ -16,7 +16,7 @@
     cursor: pointer;
     position: relative;
     padding-left: calc(var(--wje-checkbox-size) + .5rem);
-    min-width: var(--wje-checkbox-size);
+    /*min-width: var(--wje-checkbox-size);*/
     min-height: var(--wje-checkbox-size);
     margin-bottom: 0;
     &:before {
