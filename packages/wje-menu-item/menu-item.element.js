@@ -303,12 +303,19 @@ export default class MenuItem extends WJElement {
                 }
                 break;
             case "CONTEXT":
-                let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
-                if (submenuElements?.hasAttribute("active")) {
-                    this.shouldHideSubmenu(e);
+                if (!this.collapse && this.hasSubmenu) {
+                    let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
+                    if (submenuElements?.hasAttribute("active")) {
+                        this.shouldHideSubmenu(e);
+                    } else {
+                        this.activateSubmenu(e);
+                        this.showSubmenu(e);
+                    }
                 } else {
-                    this.activateSubmenu(e);
-                    this.showSubmenu(e);
+                    event.dispatchCustomEvent(this, "wje-menu-item:click");
+                    event.dispatchCustomEvent(this, this.dialog, {
+                        bubbles: true
+                    });
                 }
 
                 break;
