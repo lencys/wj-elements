@@ -60,7 +60,7 @@ template.innerHTML = `<h1>Input</h1>
 
     <div class="html-snippet"></div>
     
-    <!-- INPUT -->
+    <!-- STANDARD -->
 
     <h2>Standard</h2>
     <div class="playground">

@@ -88,7 +88,6 @@
       }
     }
     &.standard {
-      background-color: var(--wje-input-background-color);
       font-family: var(--wje-input-font-family);
       position: relative;
       border-radius: var(--wje-input-border-radius);
@@ -103,12 +102,13 @@
         }
       }
       input {
+        background-color: var(--wje-input-background-color);
         display: block;
         min-height: 32px;
         padding-inline: .5rem;
         padding-top: 0;
         padding-bottom: 0;
-        background: none;
+        /*background: none;*/
         box-shadow: none;
         width: 100%;
         box-sizing: border-box;
