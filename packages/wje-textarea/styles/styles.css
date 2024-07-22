@@ -90,7 +90,6 @@
     }
   }
   &.standard {
-    background-color: var(--wje-textarea-background-color);
     font-family: var(--wje-textarea-font-family);
     position: relative;
     border-radius: var(--wje-textarea-border-radius);
@@ -103,6 +102,7 @@
       }
     }
     textarea {
+      background-color: var(--wje-textarea-background-color);
       display: block;
       min-height: 32px;
       background: none;
