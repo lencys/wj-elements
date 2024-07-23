@@ -9,6 +9,9 @@ export const sk = {
   "wj.file.upload.button": "Vybrať súbor",
   "wj.file.upload.uploaded": "Nahraných: ",
   "wj.file.upload.from": "z",
+  "wj.stepper.button.next": "Ďalej",
+  "wj.stepper.button.previous": "Späť",
+  "wj.stepper.step": "Krok",
 };
 
 Localizer.registerTranslation(sk);

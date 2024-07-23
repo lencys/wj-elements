@@ -1,11 +1,29 @@
-import { default as WJElement } from "../wje-element/element.js";
+import { default as WJElement, event } from "../wje-element/element.js";
+import { Localizer } from "../utils/localize.js";
+
 import styles from "./styles/styles.css?inline";
+import { he } from "@faker-js/faker";
 
 export default class Stepper extends WJElement {
     constructor() {
         super();
         this.currentStep = 0;
-        this.completedSteps = [];
+
+        this.localizer = new Localizer(this);
+    }
+
+    get active() {
+        if(this.hasAttribute('active'))
+            return this.getAttribute('active');
+
+        return "primary";
+    }
+
+    get done() {
+        if(this.hasAttribute('done'))
+            return this.getAttribute('done');
+
+        return "success";
     }
 
     className = "Stepper";
@@ -21,52 +39,59 @@ export default class Stepper extends WJElement {
     draw() {
         let fragment = document.createDocumentFragment();
 
-        const stepperContainer = document.createElement('div');
-        stepperContainer.className = 'stepper-container';
+        const native = document.createElement('div');
+        native.setAttribute('part', 'native');
+        native.className = 'native-stepper';
 
-        const stepHeaders = document.createElement('div');
-        stepHeaders.className = 'step-headers';
+        const header = document.createElement('div');
+        header.setAttribute('part', 'header');
+        header.className = 'header';
 
-        const stepsContent = document.createElement('div');
-        stepsContent.className = 'steps-content';
+        const content = document.createElement('div');
+        content.setAttribute('part', 'content');
+        content.className = 'content';
 
         const steps = Array.from(this.children);
+
         this.steps = steps.map((step, index) => {
             if (step.nodeName === 'WJE-STEP') {
-                const stepHeader = document.createElement('div');
-                stepHeader.className = 'step-header';
-    
+                const nav = document.createElement('div');
+                nav.className = 'step-header';
+                nav.addEventListener('click', () => this.goToStep(index));
+
                 const badge = document.createElement('wje-badge');
-                badge.className = 'step-badge';
                 badge.setAttribute('label', (index + 1).toString());
-                badge.innerHTML = '12';
-                
-                const headerLabel = document.createElement('span');
-                headerLabel.innerText = step.getAttribute('label') || `Step ${index + 1}`;
-    
-                if (index === this.currentStep) {
-                    stepHeader.classList.add('active');
-                    badge.setAttribute('color', 'primary');
+                badge.className = 'step-badge';
+                badge.innerHTML = index + 1;
+
+                const label = document.createElement('span');
+                label.innerText = step.getAttribute('label') || `${this.localizer.translate("wj.stepper.step")} ${index + 1}`; // default label
+
+                // set active step
+                if (index === this.currentStep || step.hasAttribute('active')) {
+                    this.setStepActive(nav, badge);
                 }
 
-                if (!step.hasAttribute('disabled')){
-                    stepHeader.addEventListener('click', () => this.gotoStep(index));
-                    stepHeader.classList.add("pointer");
-                } 
-    
-                stepHeader.appendChild(badge);
-                stepHeader.appendChild(headerLabel);
-    
-                stepHeaders.appendChild(stepHeader);
-    
+                if (step.hasAttribute('disabled')) {
+                    nav.setAttribute('disabled', '');
+                } else {
+                    nav.classList.add("pointer");
+                }
+
+                nav.appendChild(badge);
+                nav.appendChild(label);
+
+                header.appendChild(nav);
+
                 if (index < steps.length - 1) {
                     const arrowIcon = document.createElement('wje-icon');
                     arrowIcon.setAttribute('name', 'chevron-right');
                     arrowIcon.classList.add('arrow-icon');
                     arrowIcon.setAttribute('size', 'small');
-                    stepHeaders.appendChild(arrowIcon);
+
+                    header.appendChild(arrowIcon);
                 }
-    
+
                 step.classList.add('step');
                 if (index !== this.currentStep) {
                     step.style.display = 'none';
@@ -75,84 +100,107 @@ export default class Stepper extends WJElement {
             }
         });
 
-        this.steps.forEach(step => stepsContent.appendChild(step));
+        let slot = document.createElement('slot');
 
         const navButtons = document.createElement('div');
         navButtons.className = 'nav-buttons';
 
         const prevButton = document.createElement('wje-button');
-        prevButton.setAttribute('label', 'Previous');
+        prevButton.setAttribute('label', this.localizer.translate("wj.stepper.button.previous"));
         prevButton.disabled = this.currentStep === 0;
-        prevButton.addEventListener('click', () => this.navigate(-1));
         prevButton.innerHTML = 'Prev';
 
         const nextButton = document.createElement('wje-button');
-        nextButton.setAttribute('label', 'Next');
+        nextButton.setAttribute('label', this.localizer.translate("wj.stepper.button.next"));
         nextButton.disabled = this.currentStep === this.steps.length - 1;
-        nextButton.addEventListener('click', () => this.navigate(1));
         nextButton.innerHTML = 'Next';
 
         navButtons.appendChild(prevButton);
         navButtons.appendChild(nextButton);
 
-        stepperContainer.appendChild(stepHeaders);
-        stepperContainer.appendChild(stepsContent);
-        stepperContainer.appendChild(navButtons);
+        content.appendChild(slot);
 
-        fragment.appendChild(stepperContainer);
+        native.appendChild(header);
+        native.appendChild(content);
+        native.appendChild(navButtons);
+
+        fragment.appendChild(native);
+
+        this.header = header;
+        this.headerSteps = header.querySelectorAll('.step-header');
+        this.prev = prevButton;
+        this.next = nextButton;
 
         return fragment;
     }
 
-    navigate(direction) {
-        this.gotoStep(this.currentStep + direction);
+    afterDraw() {
+        event.addListener(this.prev, 'click', '', () => this.navigate(-1));
+        event.addListener(this.next, 'click', '', () => this.navigate(1));
     }
 
-    gotoStep(stepIndex) {
+    navigate(direction) {
+        this.goToStep(this.currentStep + direction, direction);
+    }
+
+    goToStep(stepIndex, direction) {
         if (stepIndex >= 0 && stepIndex < this.steps.length) {
-            if (stepIndex > this.currentStep) {
-                this.completedSteps[this.currentStep] = true;
-            }
 
-            this.steps[this.currentStep].style.display = 'none';
-            this.steps[stepIndex].style.display = 'block';
+            if(this.headerSteps[stepIndex].hasAttribute('disabled'))
+                stepIndex = stepIndex + direction;
 
-            const headers = this.shadowRoot.querySelectorAll('.step-header');
-            headers[this.currentStep].classList.remove('active');
-            headers[this.currentStep].classList.add('done');
-            headers[stepIndex].classList.add('active');
+            this.headerSteps.forEach((step, index) => {
+                let badge = step.querySelector('wje-badge');
 
-            const badges = this.shadowRoot.querySelectorAll('wje-badge');
-            
-            badges[this.currentStep].shadowRoot.querySelector("div").classList.remove("wje-color-primary");
+                this.setStepDefault(step, badge, index);
+                if (index < stepIndex)
+                    this.setStepDone(step, badge);
+            });
+
+            this.setStepActive(this.headerSteps[stepIndex], null, stepIndex);
+
             this.currentStep = stepIndex;
-            badges[this.currentStep].shadowRoot.querySelector("div").classList.add("wje-color-primary");
-            
-            const buttons = this.shadowRoot.querySelectorAll('wje-button');
-            buttons[0].disabled = this.currentStep === 0;
-            buttons[1].disabled = this.currentStep === this.steps.length - 1;
 
-            this.updateBadges();
+            this.prev.disabled = this.currentStep === 0;
+            this.next.disabled = this.currentStep === this.steps.length - 1;
         }
     }
 
-    updateBadges() {
-        const headers = this.shadowRoot.querySelectorAll('.step-header');
-        headers.forEach((header, index) => {
-            const badge = header.querySelector('wje-badge');
-            if (this.completedSteps[index]) {
-                if (!badge.querySelector('wje-status')) {
-                    badge.innerHTML = '';
-                    const checkIcon = document.createElement('wje-icon');
-                    checkIcon.setAttribute('name', 'check');
-                    checkIcon.setAttribute('color', 'success');
-                    checkIcon.setAttribute('size', 'medium');
-                    badge.shadowRoot.querySelector("div").classList.add("wje-color-success");
-                    badge.appendChild(checkIcon);
-                }
-            } else {
-                badge.innerHTML = '12';
-            }
-        });
+    setStepDefault(nav, badge = null, stepIndex) {
+        nav.removeAttribute('active');
+        nav.removeAttribute('done');
+
+        if (!badge) {
+            badge = nav.querySelector('wje-badge');
+        }
+        badge.innerHTML = stepIndex + 1;
+        badge.removeAttribute('color');
+    }
+
+    setStepActive(nav, badge = null, stepIndex = null) {
+        nav.setAttribute('active', '');
+
+        if (!badge) {
+            badge = nav.querySelector('wje-badge');
+        }
+        badge.innerHTML = stepIndex + 1;
+        badge.setAttribute('color', this.active);
+    }
+
+    setStepDone(nav, badge = null) {
+        nav.setAttribute('done', '');
+
+        const checkIcon = document.createElement('wje-icon');
+        checkIcon.setAttribute('name', 'check');
+        checkIcon.setAttribute('color', this.done);
+        checkIcon.setAttribute('size', 'medium');
+
+        if (!badge) {
+            badge = nav.querySelector('wje-badge');
+        }
+
+        badge.setAttribute('color', this.done);
+        badge.innerHTML = '';
+        badge.appendChild(checkIcon);
     }
 }

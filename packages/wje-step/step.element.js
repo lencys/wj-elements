@@ -20,10 +20,13 @@ export default class Step extends WJElement {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement('div');
+        native.className = 'step-native';
+        native.setAttribute('part', 'native');
         
         const slot = document.createElement('slot');
 
-        native.appendChild(slot)
+        native.appendChild(slot);
+
         fragment.appendChild(native);
 
         return fragment;
