@@ -35,6 +35,14 @@ export default class Badge extends WJElement {
     }
 
     /**
+     * Getter for the observed attributes.
+     * @return {Array} An array containing the name of the observed attribute.
+     */
+    static get observedAttributes() {
+        return ['color'];
+    }
+
+    /**
      * Setup attributes
      */
     setupAttributes() {

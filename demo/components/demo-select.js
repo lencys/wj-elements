@@ -105,6 +105,25 @@ template.innerHTML = `
 
     <div class="html-snippet"></div>
     
+    <!-- STANDARD -->
+
+    <h2>Standard</h2>
+    <div class="playground" style="background: #ccc;">
+      <div class="content">
+        <wje-select label="Label test" placeholder="Select option" variant="standard">
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2">
+            Option 2
+            <wje-icon name="heart" slot="end"></wje-icon>
+          </wje-option>
+          <wje-option value="option-3" selected>Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+        </wje-select>
+      </div>
+    </div>
+
+    <div class="html-snippet"></div>
+    
     <!-- CLEARABLE -->
 
     <h2>Clearable</h2>

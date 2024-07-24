@@ -1,9 +1,9 @@
-.stepper-container {
+.container {
     display: flex;
     flex-direction: column;
 }
 
-.step-headers {
+.header {
     display: flex;
     justify-content: space-between;
     margin-bottom: var(--wje-spacing-medium);
@@ -22,11 +22,11 @@
     cursor: pointer;
 }
 
-.active {
+[active] {
     color: var(--wje-color-contrast-11);
 }
 
-.steps-content {
+.content {
     margin-bottom: var(--wje-spacing-medium);
 }
 
@@ -39,7 +39,7 @@
     text-align: center;
 }
 
-.done {
+[done] {
     color: var(--wje-color-contrast-11);
 }
 
