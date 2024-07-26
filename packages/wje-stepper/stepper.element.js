@@ -13,14 +13,14 @@ export default class Stepper extends WJElement {
     }
 
     get active() {
-        if(this.hasAttribute('active'))
+        if (this.hasAttribute('active'))
             return this.getAttribute('active');
 
         return "primary";
     }
 
     get done() {
-        if(this.hasAttribute('done'))
+        if (this.hasAttribute('done'))
             return this.getAttribute('done');
 
         return "success";
@@ -146,7 +146,7 @@ export default class Stepper extends WJElement {
     goToStep(stepIndex, direction) {
         if (stepIndex >= 0 && stepIndex < this.steps.length) {
 
-            if(this.headerSteps[stepIndex].hasAttribute('disabled'))
+            if (this.headerSteps[stepIndex].hasAttribute('disabled'))
                 stepIndex = stepIndex + direction;
 
             this.headerSteps.forEach((step, index) => {
@@ -158,6 +158,7 @@ export default class Stepper extends WJElement {
             });
 
             this.setStepActive(this.headerSteps[stepIndex], null, stepIndex);
+            this.setContentActive(stepIndex);
 
             this.currentStep = stepIndex;
 
@@ -185,6 +186,16 @@ export default class Stepper extends WJElement {
         }
         badge.innerHTML = stepIndex + 1;
         badge.setAttribute('color', this.active);
+    }
+
+    setContentActive(stepIndex) {
+        this.steps?.forEach((step, index) => {
+            if (index === stepIndex) {
+                step.style.display = 'block';
+            } else {
+                step.style.display = 'none';
+            }
+        });
     }
 
     setStepDone(nav, badge = null) {
