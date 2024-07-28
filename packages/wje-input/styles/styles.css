@@ -232,7 +232,7 @@ input {
   border-width: var(--wje-input-border-width);
   border-style: var(--wje-input-border-style);
   border-color: var(--wje-input-border-color);
-  font-family: var(--wjinput-font-family);
+  font-family: var(--wje-input-font-family);
   color: var(--wje-input-color);
   appearance: none;
   outline: 0;

@@ -14,7 +14,6 @@ template.innerHTML = `<h1>Card</h1>
           <wje-card-header>
             <wje-card-subtitle>Subtitle</wje-card-subtitle>
             <wje-card-title>Title</wje-card-title>
-
           </wje-card-header>
           <wje-card-content>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.

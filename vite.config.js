@@ -56,7 +56,6 @@ export default defineConfig(({ mode }) => {
             outDir: './dist',
             lib: {
                 entry: {
-                    "orgchart-item": "packages/wje-orgchart-item/orgchart-item.js",
                     "master": "./packages/index.js",
                     "styles": "./packages/styles/styles.css",
                     "light": "./packages/themes/light.css",
@@ -118,7 +117,8 @@ export default defineConfig(({ mode }) => {
                     "option": "./packages/wje-option/option.js",
                     "options": "./packages/wje-options/options.js",
                     "orgchart": "packages/wje-orgchart/orgchart.js",
-                    "orgchartItem": "packages/wje-orgchart-item/orgchart-item.js",
+                    "orgchart-group": "packages/wje-orgchart-group/orgchart-group.js",
+                    "orgchart-item": "packages/wje-orgchart-item/orgchart-item.js",
                     "popup": "./packages/wje-popup/popup.js",
                     "progress-bar": "./packages/wje-progress-bar/progress-bar.js",
                     "qr-code": "./packages/wje-qr-code/qr-code.js",

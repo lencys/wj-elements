@@ -45,7 +45,13 @@ import { default as WJElement, event } from "../wje-element/element.js";
         setupAttributes() {
             this.isShadowRoot = "open";
         }
-    
+
+        beforeDraw() {
+            if (this.parentElement && this.parentElement.tagName === 'WJE-ORGCHART-GROUP') {
+                this.classList.add('parent-group');
+            }
+        }
+
         /**
          * Draws the component.
          *
@@ -61,9 +67,17 @@ import { default as WJElement, event } from "../wje-element/element.js";
             native.setAttribute("part", "native");
             native.classList.add("orgchart-item");
 
+            let card = document.createElement("wje-card");
+
             let slot = document.createElement("slot");
 
-            native.appendChild(slot);
+            let child = document.createElement("slot");
+            child.setAttribute("name", "child");
+
+            card.appendChild(slot);
+
+            native.appendChild(card);
+            native.appendChild(child);
     
             fragment.appendChild(native);
     

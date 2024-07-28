@@ -102,9 +102,9 @@ export default class Dialog extends WJElement {
     }
 
     afterDraw(context, store, params) {
-        this.button = document.querySelector(`[dialog=${params.trigger}]`);
+        // this.button = document.querySelector(`[dialog=${params.trigger}]`);
         if(params.trigger) {
-            event.addListener(this.button, params.trigger, null, this.onOpen);
+            event.addListener(document, params.trigger, null, this.onOpen);
         }
     }
 

@@ -64,6 +64,7 @@ import { default as MenuLabel } from "./wje-menu-label/menu-label.js";
 import { default as Option } from "./wje-option/option.js";
 import { default as Options } from "./wje-options/options.js";
 import { default as Orgchart } from "./wje-orgchart/orgchart.js";
+import { default as OrgchartGroup } from "./wje-orgchart-group/orgchart-group.js";
 import { default as OrgchartItem } from "./wje-orgchart-item/orgchart-item.js";
 import { default as Popup } from "./wje-popup/popup.js";
 import { default as ProgressBar } from "./wje-progress-bar/progress-bar.js";
@@ -157,6 +158,7 @@ export {
   Option,
   Options,
   Orgchart,
+  OrgchartGroup,
   OrgchartItem,
   Popup,
   ProgressBar,
