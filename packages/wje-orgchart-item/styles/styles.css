@@ -17,11 +17,51 @@
             &::part(native) {
                 border-radius: var(--wje-orgchart-border-radius) !important;
                 box-sizing: border-box;
+                overflow: visible;
+                padding-block: .125rem;
             }
+        }
+    }
+
+    .expander {
+        position: absolute;
+        left: calc(50% + 1px / 2);
+        border: 1px solid var(--wje-border-color);
+        border-radius: 50%;
+        width: 12px;
+        height: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--wje-color-contrast-0);
+        font-size: 8px;
+        line-height: 1;
+        box-sizing: border-box;
+        transform: translate(-50%, 6px);
+        padding-bottom: 1px;
+        cursor: pointer;
+        z-index: 999;
+        bottom: 0;
+        &.collapse {
+            content: "+";
+            wje-orgchart {
+                display: none;
+            }
+        }
+        &:hover {
+            background: var(--wje-color-contrast-1);
         }
     }
 }
 
+:host(.collapse) {
+    .expander {
+        content: "+";
+    }
+    slot[name=child] {
+        display: none;
+    }
+}
 /* ak nie je parent-group */
 :host(:not(.parent-group)) {
     text-align: center;

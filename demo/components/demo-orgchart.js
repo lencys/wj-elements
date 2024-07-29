@@ -73,8 +73,10 @@ template.innerHTML = `<h1>Orgchart</h1>
                         <wje-orgchart-item>
                           B3-1
                           <wje-orgchart slot="child">
-                            <wje-orgchart-item>B3-1-1</wje-orgchart-item>
-                            <wje-orgchart-item>B3-1-2</wje-orgchart-item>
+                            <wje-orgchart-group>
+                              <wje-orgchart-item>B3-1-1</wje-orgchart-item>
+                              <wje-orgchart-item>B3-1-2</wje-orgchart-item>
+                            </wje-orgchart-group>
                           </wje-orgchart>
                         </wje-orgchart-item>
                         <wje-orgchart-item>B3-2</wje-orgchart-item>

@@ -1,85 +1,90 @@
 import { default as WJElement, event } from "../wje-element/element.js";
-    import styles from "./styles/styles.css?inline";
-    import * as service from "./service/service.js";
-    
+import styles from "./styles/styles.css?inline";
+
+/**
+ * @summary Orgchart is a custom web component that extends WJElement.
+ * @documentation https://elements.webjet.sk/components/Orgchart
+ * @status stable
+ *
+ * @extends WJElement
+ *
+ * @csspart - Styles the element.
+ *
+ * @tag wje-orgchart
+ *
+ * @example
+ * <wje-orgchart></wje-orgchart>
+ */
+export default class Orgchart extends WJElement {
     /**
-     * @summary Orgchart is a custom web component that extends WJElement.
-     * @documentation https://elements.webjet.sk/components/Orgchart
-     * @status stable
-     *  
-     * @extends WJElement
-     * 
-     * @csspart - Styles the element.
-     *  
-     * @tag wje-orgchart
-     * 
-     * @example
-     * <wje-orgchart></wje-orgchart>
+     * Creates an instance of Orgchart.
+     *
+     * @constructor
      */
-    export default class Orgchart extends WJElement {
-        /**
-         * Creates an instance of Orgchart.
-         *
-         * @constructor
-         */
-        constructor() {
-            super();
-        }
+    constructor() {
+        super();
+    }
 
-        className = "Orgchart";
+    className = "Orgchart";
 
 
-        /**
-         * Returns the CSS styles for the component.
-         *
-         * @static
-         * @returns {CSSStyleSheet}
-         */
-        static get cssStyleSheet() {
-            return styles;
-        }
+    /**
+     * Returns the CSS styles for the component.
+     *
+     * @static
+     * @returns {CSSStyleSheet}
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-        /**
-         * Sets up the attributes for the component.
-         */
-        setupAttributes() {
-            this.isShadowRoot = "open";
-        }
+    /**
+     * Sets up the attributes for the component.
+     */
+    setupAttributes() {
+        this.isShadowRoot = "open";
+    }
 
-        /**
-         * Draws the component.
-         *
-         * @param {Object} context - The context for drawing.
-         * @param {Object} store - The store for drawing.
-         * @param {Object} params - The parameters for drawing.
-         * @returns {DocumentFragment}
-         */
-        draw(context, store, params) {
-            let fragment = document.createDocumentFragment();
+    /**
+     * Draws the component.
+     *
+     * @param {Object} context - The context for drawing.
+     * @param {Object} store - The store for drawing.
+     * @param {Object} params - The parameters for drawing.
+     * @returns {DocumentFragment}
+     */
+    draw(context, store, params) {
+        let fragment = document.createDocumentFragment();
 
-            let native = document.createElement("div");
-            native.setAttribute("part", "native");
-            native.classList.add("native-orgchart");
+        let native = document.createElement("div");
+        native.setAttribute("part", "native");
+        native.classList.add("native-orgchart");
 
-            let slot = document.createElement("slot");
+        let slot = document.createElement("slot");
 
-            native.appendChild(slot);
+        // let expander = document.createElement("div");
+        // expander.setAttribute("part", "expander");
+        // expander.classList.add("expander");
+        // expander.innerHTML = "-";
 
-            fragment.appendChild(native);
+        native.appendChild(slot);
+        // native.appendChild(expander);
 
-            this.native = native;
+        fragment.appendChild(native);
 
-            return fragment;
-        }
+        this.native = native;
 
-        /**
-         * After Draws the component.
-         *
-         * @param {Object} context - The context for drawing.
-         * @param {Object} store - The store for drawing.
-         * @param {Object} params - The parameters for drawing.
-         * @returns {DocumentFragment}
-         */
-        afterDraw(context, store, params) {
-        }
+        return fragment;
+    }
+
+    /**
+     * After Draws the component.
+     *
+     * @param {Object} context - The context for drawing.
+     * @param {Object} store - The store for drawing.
+     * @param {Object} params - The parameters for drawing.
+     * @returns {DocumentFragment}
+     */
+    afterDraw(context, store, params) {
+    }
 }

@@ -70,16 +70,12 @@ export default class OrgchartGroup extends WJElement {
 
         let slot = document.createElement("slot");
 
-        // let child = document.createElement("slot");
-        // child.setAttribute("name", "child");
-
         items.appendChild(slot);
 
         card.appendChild(title);
         card.appendChild(items);
 
         native.appendChild(card);
-        // native.appendChild(child);
 
         fragment.appendChild(native);
 
