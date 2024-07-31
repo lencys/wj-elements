@@ -162,9 +162,13 @@ export default defineConfig(({ mode }) => {
                 publicDir: false,
             },
         },
+        optimizeDeps: {
+            include: ['slick-router'],
+        },
         resolve: {
             alias: {
-                'wje-master': path.resolve(__dirname, './dist/wje-master.js')
+                'wje-master': path.resolve(__dirname, './dist/wje-master.js'),
+                './middlewares/router-links.js': 'slick-router/middlewares/router-links.js'
             },
         },
         // plugins: [

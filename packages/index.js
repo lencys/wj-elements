@@ -5,7 +5,8 @@ import { default as WJElement } from "./wje-element/element.js";
 import { event } from "./utils/event.js";
 import { defaultStoreActions, store } from "./wje-store/store.js";
 
-import { bindRouterLinks, withRouterLinks } from './wje-router/plugins/slick-router/middlewares/router-links.js';
+import { bindRouterLinks } from 'slick-router/middlewares/router-links.js'
+
 import { fetchAndParseCSS } from "./utils/animations.js";
 import { Localizer } from "./utils/localize.js";
 import { formatDate } from "./utils/date.js";
@@ -104,7 +105,7 @@ import { default as VisuallyHidden } from "./wje-visually-hidden/visually-hidden
 import { default as SlidingContainer } from "../experimental-packages/wje-sliding-container/sliding-container.js";
 
 export {
-  WJElement, defaultStoreActions, store, event, bindRouterLinks, withRouterLinks, fetchAndParseCSS, Localizer, formatDate,
+  WJElement, defaultStoreActions, store, event, bindRouterLinks, fetchAndParseCSS, Localizer, formatDate,
   Accordion,
   AccordionItem,
   Animation,

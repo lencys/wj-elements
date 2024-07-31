@@ -1,5 +1,5 @@
 import { default as WJElement, WjElementUtils, event } from "../wje-element/element.js";
-import { bindRouterLinks } from "../wje-router/plugins/slick-router/middlewares/router-links.js";
+import { bindRouterLinks } from 'slick-router/middlewares/router-links.js'
 import styles from "./styles/styles.css?inline";
 
 /**
@@ -48,7 +48,7 @@ export default class MenuItem extends WJElement {
     constructor() {
         super();
 
-        bindRouterLinks(this, { selector: false })
+        this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: false })
 
         this._collapsible = false;
     }
@@ -461,6 +461,8 @@ export default class MenuItem extends WJElement {
      */
     beforeDisconnect() {
         this.context.innerHTML = "";
+        this.unbindRouterLinks();
+
     }
 
     getTextFromElement(element) {

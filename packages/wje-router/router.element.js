@@ -1,8 +1,6 @@
 import { default as WJElement, WjElementUtils } from "../wje-element/element.js";
-import { interceptLinks, Router } from './plugins/slick-router/slick-router.js';
-import { paramValue, wc } from './plugins/slick-router/middlewares/wc.js';
-import { routerLinks } from './plugins/slick-router/middlewares/router-links.js';
-import { events } from './plugins/slick-router/middlewares/events.js';
+import { Router, interceptLinks, fromParam, fromQuery, fromValue, getRouteEl } from 'slick-router';
+import { events } from 'slick-router/middlewares/events.js';
 
 /**
  * `Routerx` is a custom web component that represents a router in a routing system.
@@ -65,8 +63,6 @@ export default class Routerx extends WJElement {
 
         this.router.map(routes);
         this.router.use(this.setBreadcrumb);
-        this.router.use(wc);
-        this.router.use(routerLinks);
         this.router.use(events);
         this.router.use(this.resetScrollPosition);
         this.router.listen();

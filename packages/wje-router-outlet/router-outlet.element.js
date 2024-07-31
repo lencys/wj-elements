@@ -1,4 +1,4 @@
-import { AnimatedOutlet } from '../wje-router/plugins/slick-router/components/animated-outlet.js';
+import { AnimatedOutlet } from 'slick-router/components/animated-outlet.js';
 
 /**
  * `Route` is a custom web component that represents a route in a routing system.

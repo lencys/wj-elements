@@ -1,5 +1,5 @@
 import { default as WJElement } from "../wje-element/element.js";
-import { bindRouterLinks } from "../wje-router/plugins/slick-router/middlewares/router-links.js";
+import { bindRouterLinks } from 'slick-router/middlewares/router-links.js'
 import styles from "./styles/styles.css?inline";
 
 /**
@@ -22,7 +22,7 @@ export default class RouterLink extends WJElement {
      */
     constructor() {
         super();
-        this.unbindRouterLinks = bindRouterLinks(this, { selector: false });
+        this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: false });
     }
 
     className = "RouterLink";
