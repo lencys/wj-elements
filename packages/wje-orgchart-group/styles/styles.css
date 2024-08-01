@@ -1,7 +1,4 @@
 :host {
-    --wje-orgchart-group-width: auto;
-    --wje-orgchart-group-border-radius: var(--wje-border-radius-large);
-    --wje-orgchart-group-height-line: 10px;
     text-align: center;
     list-style-type: none;
     position: relative;
@@ -26,7 +23,7 @@
 
     wje-card::part(native) {
         box-sizing: border-box;
-        padding: .25rem 0;
+        padding: var(--wje-orgchart-group-padding);
     }
 
     wje-card h4 {

@@ -13,8 +13,8 @@ template.innerHTML = `<h1>Orgchart</h1>
       <div class="content" style="width: auto;">
         <wje-orgchart>
           <wje-orgchart-item>
-          Parent
-          <wje-orgchart slot="child">
+            Parent
+            <wje-orgchart slot="child">
             <wje-orgchart-item>
               Child
               <wje-orgchart slot="child">
@@ -36,7 +36,7 @@ template.innerHTML = `<h1>Orgchart</h1>
               </wje-orgchart>
             </wje-orgchart-item>
           </wje-orgchart>
-        </wje-orgchart-item>
+          </wje-orgchart-item>
         </wje-orgchart>
       </div>
     </div>

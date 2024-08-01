@@ -63,9 +63,11 @@ export default class OrgchartGroup extends WJElement {
         let card = document.createElement("wje-card");
 
         let title = document.createElement("h4");
+        title.setAttribute("part", "title")
         title.innerHTML = this.getAttribute("title") || "";
 
         let items = document.createElement("div");
+        items.setAttribute("part", "items");
         items.classList.add("items");
 
         let slot = document.createElement("slot");

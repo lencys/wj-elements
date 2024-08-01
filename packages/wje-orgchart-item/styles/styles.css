@@ -1,7 +1,4 @@
 :host {
-    --wje-orgchart-item-width: 75px;
-    --wje-orgchart-item-border-radius: var(--wje-border-radius-large);
-    --wje-orgchart-item-height-line: 10px;
     width: var(--wje-orgchart-item-width);
     box-sizing: border-box;
 
@@ -28,8 +25,8 @@
         left: calc(50% + 1px / 2);
         border: 1px solid var(--wje-border-color);
         border-radius: 50%;
-        width: 12px;
-        height: 12px;
+        width: var(--wje-orgchart-item-expander-size);
+        height: var(--wje-orgchart-item-expander-size);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -70,6 +67,7 @@
     padding: var(--wje-orgchart-item-height-line) 0 0 0;
     transition: all 0.5s;
     width: auto;
+    box-sizing: border-box;
 
     &::before, &::after {
         content: '';
@@ -78,7 +76,7 @@
         right: 50%;
         border-top: 1px solid var(--wje-border-color);
         width: 50%;
-        height: var(--wje-orgchart-item-height-line);
+        height: calc(var(--wje-orgchart-item-height-line) - 1px);
     }
 
     &::after {
@@ -94,18 +92,17 @@
 
 :host(:hover){
     wje-card::part(native) {
-        background: var(--wje-color-contrast-3);
-        /*color: #000;*/
+        background: var(--wje-orgchart-item-hover-background);
+        border: var(--wje-orgchart-item-hover-border);
     }
 }
 
 :host(.highlight){
     wje-card::part(native) {
-        background: var(--wje-color-complete-2);
-        /*color: #000;*/
+        background: var(--wje-orgchart-item-highlight-background);
+        border: var(--wje-orgchart-item-highlight-border);
     }
 }
-
 
 :host(:only-child)::after, :host(:only-child)::before {
     display: none;

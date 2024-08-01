@@ -78,7 +78,7 @@ export default class OrgchartItem extends WJElement {
         expander.innerHTML = "-";
 
         card.appendChild(slot);
-        if(this.children.length > 0) card.appendChild(expander);
+        if(this.children.length > 0 && Array.from(this.children).some(el => el.tagName === "WJE-ORGCHART")) card.appendChild(expander); // if the orgchart item has children and
 
         native.appendChild(card);
         native.appendChild(child);

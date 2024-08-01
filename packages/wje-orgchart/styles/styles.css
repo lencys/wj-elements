@@ -3,15 +3,12 @@
 * {margin: 0; padding: 0;}
 
 :host {
-    --wje-orgchart-height-line: 10px;
-    --wje-orgchart-border-radius: var(--wje-border-radius-large);
-
     position: relative;
     .native-orgchart {
         padding-top: var(--wje-orgchart-height-line);
         display: flex;
-        /*column-gap: .5rem;*/
     }
+
     &::before {
         content: '';
         position: absolute;
@@ -21,29 +18,5 @@
         width: 0;
         height: var(--wje-orgchart-height-line);
     }
-
-    /*.expander {*/
-    /*    content: "+";*/
-    /*    position: absolute;*/
-    /*    top: -.5px;*/
-    /*    left: calc(50% + 1px / 2);*/
-    /*    border: 1px solid var(--wje-border-color);*/
-    /*    border-radius: 50%;*/
-    /*    width: 12px;*/
-    /*    height: 12px;*/
-    /*    display: flex;*/
-    /*    align-items: center;*/
-    /*    justify-content: center;*/
-    /*    background: var(--wje-color-contrast-0);*/
-    /*    font-size: 8px;*/
-    /*    line-height: 1; !* Nastavenie line-height na 1 *!*/
-    /*    box-sizing: border-box;*/
-    /*    transform: translate(-50%, -50%);*/
-    /*    padding-bottom: 1px;*/
-    /*    cursor: pointer;*/
-    /*    &:hover {*/
-    /*        background: red;*/
-    /*    }*/
-    /*}*/
 }
 

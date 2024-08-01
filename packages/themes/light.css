@@ -387,6 +387,26 @@
   --wje-option-padding-bottom: var(--wje-spacing-x-small);
   --wje-option-highlighted: var(--wje-color-contrast-3);
 
+  /* Orgchart */
+  --wje-orgchart-height-line: 10px;
+  --wje-orgchart-border-radius: var(--wje-border-radius-large);
+
+  /* Orgchart - Item */
+  --wje-orgchart-item-width: 75px;
+  --wje-orgchart-item-border-radius: var(--wje-border-radius-large);
+  --wje-orgchart-item-height-line: 10px;
+  --wje-orgchart-item-highlight-background: var(--wje-color-complete-2);
+  --wje-orgchart-item-hover-background: var(--wje-color-contrast-3);
+  --wje-orgchart-item-highlight-border: 1px solid blue;
+  --wje-orgchart-item-hover-border: 1px solid red;
+  --wje-orgchart-item-expander-size: 0.75rem;
+
+  /* Orgchart - Group */
+  --wje-orgchart-group-width: auto;
+  --wje-orgchart-group-border-radius: var(--wje-border-radius-large);
+  --wje-orgchart-group-height-line: 10px;
+  --wje-orgchart-group-padding: .25rem 0;
+
   /* Rate */
   --wje-rate-gap: .25rem;
 
