@@ -98,30 +98,30 @@ template.innerHTML = `<h1>Orgchart</h1>
     <h2>Line</h2>
     <div class="playground">
       <div class="content" style="width: auto;">
-        <wje-orgchart>
+        <wje-orgchart id="line">
           <wje-orgchart-item>
-          Parent
-          <wje-orgchart slot="child">
-            <wje-orgchart-item>
-              Child
-              <wje-orgchart slot="child">
-                <wje-orgchart-item>
-                  A
-                  <wje-orgchart slot="child">
-                    <wje-orgchart-group title="Team">
-                      <wje-orgchart-item>A1</wje-orgchart-item>
-                      <wje-orgchart-item>A2</wje-orgchart-item>
-                      <wje-orgchart-item>A3</wje-orgchart-item>
-                      <wje-orgchart-item>A4</wje-orgchart-item>
-                      <wje-orgchart-item>A5</wje-orgchart-item>
-                      <wje-orgchart-item>A6</wje-orgchart-item>
-                    </wje-orgchart-group>
-                  </wje-orgchart>
-                </wje-orgchart-item>
-              </wje-orgchart>
-            </wje-orgchart-item>
-          </wje-orgchart>
-        </wje-orgchart-item>
+            Parent
+            <wje-orgchart slot="child">
+              <wje-orgchart-item>
+                Child
+                <wje-orgchart slot="child">
+                  <wje-orgchart-item>
+                    A
+                    <wje-orgchart slot="child">
+                      <wje-orgchart-group title="Team">
+                        <wje-orgchart-item>A1</wje-orgchart-item>
+                        <wje-orgchart-item>A2</wje-orgchart-item>
+                        <wje-orgchart-item>A3</wje-orgchart-item>
+                        <wje-orgchart-item>A4</wje-orgchart-item>
+                        <wje-orgchart-item>A5</wje-orgchart-item>
+                        <wje-orgchart-item>A6</wje-orgchart-item>
+                      </wje-orgchart-group>
+                    </wje-orgchart>
+                  </wje-orgchart-item>
+                </wje-orgchart>
+              </wje-orgchart-item>
+            </wje-orgchart>
+          </wje-orgchart-item>
         </wje-orgchart>
       </div>
     </div>
@@ -239,6 +239,9 @@ export default class DemoOrgchart extends WJElement {
   }
 
   afterDraw(context, store2, params) {
+    document.querySelector('#line wje-orgchart-group').addEventListener('wje-orgchart-group:click', (e) => {
+      console.log("wje-orgchart-group", e.detail);
+    });
     // const codeSnippet = new CodeSnippet();
     const orgchartContainer = document.querySelector('.orgchart-container');
     const orgchart = document.querySelector('.orgchart');

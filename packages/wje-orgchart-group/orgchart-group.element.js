@@ -81,6 +81,23 @@ export default class OrgchartGroup extends WJElement {
 
         fragment.appendChild(native);
 
+        this.card = card;
+
         return fragment;
+    }
+
+    /**
+     * After Draws the component.
+     *
+     * @param {Object} context - The context for drawing.
+     * @param {Object} store - The store for drawing.
+     * @param {Object} params - The parameters for drawing.
+     * @returns {DocumentFragment}
+     */
+    afterDraw(context, store, params) {
+        this.card.addEventListener("click", (e) => {
+            e.stopPropagation();
+            event.dispatchCustomEvent(this.card, "wje-orgchart-group:click", { target: this });
+        });
     }
 }

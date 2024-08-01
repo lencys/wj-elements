@@ -1,5 +1,3 @@
-
-
 * {margin: 0; padding: 0;}
 
 :host {
@@ -7,6 +5,7 @@
     .native-orgchart {
         padding-top: var(--wje-orgchart-height-line);
         display: flex;
+        justify-content: center;
     }
 
     &::before {
