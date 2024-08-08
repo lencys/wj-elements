@@ -193,7 +193,7 @@ class Store {
                 console.warn(`Nemá zmysel pridávať prázdne pole do pola`)
             }
 
-            if (!Array.isArray(action.payload) && action.type != defaultStoreActions.updateAction(stateValueName).type && action.type != defaultStoreActions.deleteAction(stateValueName).type) {
+            if (!Array.isArray(action.payload) && action.type != defaultStoreActions.updateAction(stateValueName).type && action.type != defaultStoreActions.deleteAction(stateValueName).type && action.type != defaultStoreActions.updateAction(stateValueName).type) {
                 console.error(`Nemôžete pridať do poľa hodnotu, ktorá nie je pole. Skontrolujte si či definovanie stavu vyzerá takto: "store.define(${stateValueName}, [])"`)
             }
 

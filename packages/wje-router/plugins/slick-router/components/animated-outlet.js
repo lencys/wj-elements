@@ -144,13 +144,11 @@ function runTransition(el, name, type, cb) {
 
 export class GenericCSS extends AnimationHook {
   beforeEnter(outlet, el) {
-    el.style.display = 'none'
     const name = outlet.getAttribute('animation') || 'outlet'
     el.classList.add(`${name}-enter`)
   }
 
   enter(outlet, el) {
-    el.style.display = 'block'
     const name = outlet.getAttribute('animation') || 'outlet'
     runTransition(el, name, 'enter')
   }
