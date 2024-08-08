@@ -6,11 +6,11 @@ class Store {
     _reducer;
     events;
     status;
-    
+
     constructor(params = {}) {
         this._isPause = false;
         this._state = {};
-        this._reducer = function rootReducer(state = {}, action){
+        this._reducer = function rootReducer(state = {}, action) {
             return {}
         };
 
@@ -21,7 +21,7 @@ class Store {
         // Attach our PubSub module as an `events` element
         this.events = new PubSub();
 
-        if(params?.hasOwnProperty('reducer')) {
+        if (params?.hasOwnProperty('reducer')) {
             this._reducer = params.reducer;
         }
 
@@ -40,11 +40,11 @@ class Store {
     dispatch(action) {
         // Create a console group which will contain the logs from our Proxy etc
         // console.groupCollapsed(`ACTION: ${action.type}`);
-        
+
         // Let anything that's watching the status know that we're dispatching an action
         this.status = 'action';
 
-        let newState =  this._reducer(this._state, action);
+        let newState = this._reducer(this._state, action);
 
         this.status = 'mutation';
         // Merge the old and new together to create a new state and set it
@@ -56,31 +56,31 @@ class Store {
         return true;
     }
 
-    getState(){
+    getState() {
         return JSON.parse(JSON.stringify(this._state))
     }
 
-    subscribe(eventName, callbackFn)  {
+    subscribe(eventName, callbackFn) {
         return this.events.subscribe(eventName, callbackFn)
     }
 
-    unsubscribe(eventName)  {
+    unsubscribe(eventName) {
         delete this.events[eventName];
     }
 
-    pause(){
+    pause() {
         this._isPause = true;
 
         return this;
     }
 
-    play(val){
+    play(val) {
         this._isPause = false;
 
         return this;
     }
 
-    mergeReducers(stateValueName, newReducer){
+    mergeReducers(stateValueName, newReducer) {
         let reducerCopy = this._reducer;
         this._reducer = (state, newState) => {
             let preState = reducerCopy(state, newState);
@@ -94,7 +94,7 @@ class Store {
 
     makeEveryArrayEntryAsStoreState(storeKey, array = [], identificator = 'id') {
         array.forEach((entry) => {
-            if(this.getState().hasOwnProperty(`${storeKey}-${entry[identificator]}`)){
+            if (this.getState().hasOwnProperty(`${storeKey}-${entry[identificator]}`)) {
                 this.dispatch(defaultStoreActions.updateAction(`${storeKey}-${entry[identificator]}`)(entry))
             } else {
                 this.define(`${storeKey}-${entry.id || entry.source || entry[identificator]}`, entry, null, identificator);
@@ -106,19 +106,19 @@ class Store {
         // });
     }
 
-    define(stateValueName, defaultValue, reducer, key = "id"){
-        if(this._state.hasOwnProperty(stateValueName)){
+    define(stateValueName, defaultValue, reducer, key = "id") {
+        if (this._state.hasOwnProperty(stateValueName)) {
             console.warn(`STATE už obsahuje premennú ${stateValueName},ktorú sa pokúšate pridať`)
             return
         }
 
-        if(reducer instanceof Function){
+        if (reducer instanceof Function) {
             this.mergeReducers(stateValueName, reducer)
         } else {
-            if(defaultValue instanceof Array){
-                this.mergeReducers(stateValueName, this.createArrayReducer(stateValueName, key) )
+            if (defaultValue instanceof Array) {
+                this.mergeReducers(stateValueName, this.createArrayReducer(stateValueName, key))
             } else {
-                this.mergeReducers(stateValueName, this.createObjectReducer(stateValueName, key) )
+                this.mergeReducers(stateValueName, this.createObjectReducer(stateValueName, key))
             }
         }
 
@@ -128,13 +128,13 @@ class Store {
         })
     }
 
-    refreshProxy(state){
+    refreshProxy(state) {
         // Set our state to be a Proxy. We are setting the default state by
         // checking the params and defaulting to an empty object if no default
         // state is passed in
         this._state = new Proxy((state || {}), {
             set: (state, key, value) => {
-                if(JSON.stringify(state[key]) === JSON.stringify(value)){
+                if (JSON.stringify(state[key]) === JSON.stringify(value)) {
                     return true
                 }
 
@@ -147,11 +147,11 @@ class Store {
 
                 // TODO vieme to rozšíríť a subscripe sa len na zmenu určitej časti statu
                 // Publish the change event for the components that are listening
-                if(!this._isPause)
+                if (!this._isPause)
                     this.events.publish(key, this._state, oldState);
 
                 // Give the user a little telling off if they set a value directly
-                if(this.status !== 'mutation') {
+                if (this.status !== 'mutation') {
                     console.warn(`You should use a mutation to set ${key}`);
                 }
 
@@ -163,9 +163,9 @@ class Store {
         });
     }
 
-    createObjectReducer(stateValueName){
-        return (state = {},action)=>{
-            if(Array.isArray(action.payload)){
+    createObjectReducer(stateValueName) {
+        return (state = {}, action) => {
+            if (Array.isArray(action.payload)) {
                 console.error(`Nemôžete pridať do objektu hodnotu, ktorá je pole. Skontrolujte si či definovanie stavu vyzerá takto: "store.define(${stateValueName}, {})"`);
             }
 
@@ -187,19 +187,19 @@ class Store {
         }
     }
 
-    createArrayReducer(stateValueName, key){
-        return (state = [],action)=>{
-            if(Array.isArray(action.payload) && action.payload.length == 0){
+    createArrayReducer(stateValueName, key) {
+        return (state = [], action) => {
+            if (Array.isArray(action.payload) && action.payload.length == 0) {
                 console.warn(`Nemá zmysel pridávať prázdne pole do pola`)
             }
 
-            if(!Array.isArray(action.payload) && (action.type != defaultStoreActions.updateAction(stateValueName).type || action.type != defaultStoreActions.deleteAction(stateValueName).type)){
+            if (!Array.isArray(action.payload) && action.type != defaultStoreActions.updateAction(stateValueName).type && action.type != defaultStoreActions.deleteAction(stateValueName).type) {
                 console.error(`Nemôžete pridať do poľa hodnotu, ktorá nie je pole. Skontrolujte si či definovanie stavu vyzerá takto: "store.define(${stateValueName}, [])"`)
             }
 
             switch (action.type) {
                 case `${stateValueName}/ADD`:
-                    if(Array.isArray(action.payload)){
+                    if (Array.isArray(action.payload)) {
                         return [
                             ...state,
                             ...action.payload
@@ -216,23 +216,23 @@ class Store {
                         ...action.payload
                     ]
                 case `${stateValueName}/UPDATE`:
-                    
-                    if(state.some(obj => obj[key] == action.payload[key])){
+
+                    if (state.some(obj => obj[key] == action.payload[key])) {
                         return [
                             ...state.map(obj => {
-                            if(obj[key] == action.payload[key]){
-                                return action.payload
-                            }
-                            return obj
-                        })];
-                    }else{
+                                if (obj[key] == action.payload[key]) {
+                                    return action.payload
+                                }
+                                return obj
+                            })];
+                    } else {
                         return [...state,
-                            action.payload
-                            ];
+                        action.payload
+                        ];
                     }
                 case `${stateValueName}/DELETE`:
                     return [
-                        ...state.filter(obj => (obj.hasOwnProperty(key) && (obj[key] != action.payload[key])) ||  (!obj.hasOwnProperty(key) && obj != action.payload))
+                        ...state.filter(obj => (obj.hasOwnProperty(key) && (obj[key] != action.payload[key])) || (!obj.hasOwnProperty(key) && obj != action.payload))
                     ]
 
                 case `${stateValueName}/LOAD`:

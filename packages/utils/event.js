@@ -91,7 +91,7 @@ class Event {
             element.addEventListener(originalEvent, listener, options);
         } else {
             // in case we want to add the same listener multiple times trigger a warning for a better debugging
-            console.warn("Listener already exists", element, originalEvent, listener);
+            // console.warn("Listener already exists", element, originalEvent, listener);
         }
     }
 

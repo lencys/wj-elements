@@ -1,29 +1,29 @@
 export class AnimationHook {
-  constructor (options = {}) {
+  constructor(options = {}) {
     this.options = options
   }
 
-  getOption (outlet, name) {
+  getOption(outlet, name) {
     return outlet.hasAttribute(name) ? outlet.getAttribute(name) : this.options[name]
   }
 
-  hasOption (outlet, name) {
+  hasOption(outlet, name) {
     return outlet.hasAttribute(name) || this.options[name]
   }
 
-  runParallel (outlet) {
+  runParallel(outlet) {
     return this.hasOption(outlet, 'parallel')
   }
 
-  beforeEnter (outlet, el) {
+  beforeEnter(outlet, el) {
 
   }
 
-  enter (outlet, el) {
+  enter(outlet, el) {
 
   }
 
-  leave (outlet, el, done) {
+  leave(outlet, el, done) {
     done()
   }
 }
@@ -39,7 +39,7 @@ var transitionEndEvent = 'transitionend'
 var animationProp = 'animation'
 var animationEndEvent = 'animationend'
 
-function nextFrame (fn) {
+function nextFrame(fn) {
   window.scrollTo(0, 0);
   raf(function () {
     window.scrollTo(0, 0);
@@ -47,7 +47,7 @@ function nextFrame (fn) {
   })
 }
 
-function whenTransitionEnds (
+function whenTransitionEnds(
   el,
   cb
 ) {
@@ -77,7 +77,7 @@ function whenTransitionEnds (
   el.addEventListener(event, onEnd)
 }
 
-function getTransitionInfo (el) {
+function getTransitionInfo(el) {
   var styles = window.getComputedStyle(el)
   // JSDOM may return undefined for transition properties
   var transitionDelays = (styles[transitionProp + 'Delay'] || '').split(', ')
@@ -110,7 +110,7 @@ function getTransitionInfo (el) {
   }
 }
 
-function getTimeout (delays, durations) {
+function getTimeout(delays, durations) {
   /* istanbul ignore next */
   while (delays.length < durations.length) {
     delays = delays.concat(delays)
@@ -125,13 +125,13 @@ function getTimeout (delays, durations) {
 // in a locale-dependent way, using a comma instead of a dot.
 // If comma is not replaced with a dot, the input will be rounded down (i.e. acting
 // as a floor function) causing unexpected behaviors
-function toMs (s) {
+function toMs(s) {
   return Number(s.slice(0, -1).replace(',', '.')) * 1000
 }
 
-function runTransition (el, name, type, cb) {
+function runTransition(el, name, type, cb) {
   el.classList.add(`${name}-${type}-active`)
-  nextFrame(function () { 
+  nextFrame(function () {
     window.scrollTo(0, 0)
     el.classList.remove(`${name}-${type}`)
     el.classList.add(`${name}-${type}-to`)
@@ -143,17 +143,19 @@ function runTransition (el, name, type, cb) {
 }
 
 export class GenericCSS extends AnimationHook {
-  beforeEnter (outlet, el) {
+  beforeEnter(outlet, el) {
+    el.style.display = 'none'
     const name = outlet.getAttribute('animation') || 'outlet'
     el.classList.add(`${name}-enter`)
   }
 
-  enter (outlet, el) {
+  enter(outlet, el) {
+    el.style.display = 'block'
     const name = outlet.getAttribute('animation') || 'outlet'
     runTransition(el, name, 'enter')
   }
 
-  leave (outlet, el, done) {
+  leave(outlet, el, done) {
     const name = outlet.getAttribute('animation') || 'outlet'
     el.classList.add(`${name}-leave`)
     el.style.display = 'none'
@@ -162,35 +164,35 @@ export class GenericCSS extends AnimationHook {
 }
 
 export class AnimateCSS extends AnimationHook {
-  beforeEnter (outlet, el) {
-    
+  beforeEnter(outlet, el) {
+
     const enter = this.getOption(outlet, 'enter')
     if (enter) {
       el.style.display = 'none'
     }
   }
 
-  enter (outlet, el) {
+  enter(outlet, el) {
     const enter = this.getOption(outlet, 'enter')
     if (!enter) return
     el.style.display = 'block'
-    el.classList.add('animated', enter)
+    el.classList.add('animate__animated', enter)
     el.addEventListener(
       'animationend',
       () => {
-        el.classList.remove('animated', enter)
+        el.classList.remove('animate__animated', enter)
       },
       { once: true }
     )
   }
 
-  leave (outlet, el, done) {
+  leave(outlet, el, done) {
     const leave = this.getOption(outlet, 'leave')
     if (!leave) {
       done()
       return
     }
-    el.classList.add('animated', leave)
+    el.classList.add('animate__animated', leave)
     el.addEventListener(
       'animationend',
       done,
@@ -202,20 +204,21 @@ export class AnimateCSS extends AnimationHook {
 const animationRegistry = {}
 let defaultHook
 
-export function registerAnimation (name, AnimationHookClass, options = {}) {
+export function registerAnimation(name, AnimationHookClass, options = {}) {
   animationRegistry[name] = new AnimationHookClass(options)
 }
 
-export function setDefaultAnimation (AnimationHookClass, options = {}) {
+export function setDefaultAnimation(AnimationHookClass, options = {}) {
   defaultHook = new AnimationHookClass(options)
 }
 
-function getAnimationHook (name) {
+function getAnimationHook(name) {
   return animationRegistry[name] || defaultHook || (defaultHook = new GenericCSS())
 }
 
 export class AnimatedOutlet extends HTMLElement {
-  appendChild (el) {
+  appendChild(el) {
+    debugger
     if (!this.hasAttribute('animation')) {
       super.appendChild(el)
       return
@@ -233,7 +236,8 @@ export class AnimatedOutlet extends HTMLElement {
     }
   }
 
-  removeChild (el) {
+  removeChild(el) {
+    debugger
     if (!this.hasAttribute('animation')) {
       super.removeChild(el)
       return

@@ -33,7 +33,7 @@ class CodeSnippet extends HTMLElement {
 
             preElement.appendChild(copyButton);
 
-            targetParts[index].appendChild(preElement);
+            targetParts[index]?.appendChild?.(preElement);
         });
     }
 
@@ -51,9 +51,9 @@ class CodeSnippet extends HTMLElement {
 
     formatHTML(htmlString) {
         const formattedHTML = htmlString
-            .replace(/>\s*</g, '>\n<') 
-            .replace(/\s*[\r\n]+\s*/g, '\n') 
-            .replace(/^\s+|\s+$/g, '') 
+            .replace(/>\s*</g, '>\n<')
+            .replace(/\s*[\r\n]+\s*/g, '\n')
+            .replace(/^\s+|\s+$/g, '')
             .split('\n')
             .map((line, index, arr) => {
                 let indentSize = 0;
@@ -113,7 +113,7 @@ class CodeSnippet extends HTMLElement {
             maxWidth: "100%",
             fontSize: "1em",
             lineHeight: "1.7rem",
-            position: "relative" 
+            position: "relative"
         };
     }
 

@@ -10,6 +10,7 @@ export const en = {
   "wj.file.upload.uploaded": "Uploaded: ",
   "wj.file.upload.from": "from",
   "wj.stepper.button.next": "Next",
+  "wj.stepper.button.finish": "Finish",
   "wj.stepper.button.previous": "Previous",
   "wj.stepper.step": "Step",
 };
