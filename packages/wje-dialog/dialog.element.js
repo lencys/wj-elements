@@ -64,7 +64,7 @@ export default class Dialog extends WJElement {
         let header = document.createElement("div");
         header.setAttribute("part", "header");
         header.classList.add("dialog-header");
-        if(this.hasAttribute("headline"))
+        if (this.hasAttribute("headline"))
             header.innerHTML = `<span part="headline">${this.headline}</span>`;
         header.appendChild(close);
 
@@ -103,35 +103,35 @@ export default class Dialog extends WJElement {
 
     afterDraw(context, store, params) {
         // this.button = document.querySelector(`[dialog=${params.trigger}]`);
-        if(params.trigger) {
+        if (params.trigger) {
             event.addListener(document, params.trigger, null, this.onOpen);
         }
     }
 
-    beforeOpen() {}
+    beforeOpen() { }
 
-    afterOpen() {}
+    afterOpen() { }
 
-    beforeClose() {}
+    beforeClose() { }
 
-    afterClose() {}
+    afterClose() { }
 
-    onOpen = () => {
-        Promise.resolve(this.beforeOpen(this)).then((res) => {
+    onOpen = (e) => {
+        Promise.resolve(this.beforeOpen(this, e)).then((res) => {
             this.dialog.showModal();  // Now open the dialog
 
-            if(this.dialog.open) {
-                Promise.resolve(this.afterOpen(this));
+            if (this.dialog.open) {
+                Promise.resolve(this.afterOpen(this, e));
             }
         });
     }
 
-    onClose = () => {
-        Promise.resolve(this.beforeClose(this)).then((res) => {
+    onClose = (e) => {
+        Promise.resolve(this.beforeClose(this, e)).then((res) => {
             this.dialog.close(); // Now close the dialog
 
-            if(this.dialog.open) {
-                Promise.resolve(this.afterClose(this));
+            if (this.dialog.open) {
+                Promise.resolve(this.afterClose(this, e));
             }
         });
     }
