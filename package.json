@@ -1,7 +1,7 @@
 {
   "name": "wj-elements",
   "description": "WebJET Elements is a modern set of user interface tools harnessing the power of web components designed to simplify web application development.",
-  "version": "0.1.79",
+  "version": "0.1.76",
   "homepage": "https://github.com/lencys/wj-elements",
   "author": "Lukáš Ondrejček <lukas.ondrejcek@gmail.com>",
   "license": "MIT",
@@ -35,9 +35,6 @@
   "exports": {
     ".": {
       "import": "./dist/wje-master.js"
-    },
-    "./*.js": {
-      "import": "./dist/*.js"
     }
   },
   "browserslist": [
@@ -55,7 +52,6 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.9.3",
     "custom-element-jet-brains-integration": "^1.4.4",
-    "dotenv": "^16.4.5",
     "javascript-obfuscator": "^4.1.0",
     "miragejs": "^0.1.48",
     "rollup-plugin-terser": "^7.0.2",
