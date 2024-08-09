@@ -10,8 +10,8 @@ import { fetchAndParseCSS } from "./utils/animations.js";
 import { Localizer } from "./utils/localize.js";
 import { WjePermissionsApi } from "./utils/permissions-api.js";
 import { formatDate } from "./utils/date.js";
-import { sk } from "./translations/sk.js";
-import { en } from "./translations/en.js";
+import { sk } from "./translations/sk-SK.js";
+import { en } from "./translations/en-GB.js";
 
 import { default as Accordion } from "./wje-accordion/accordion.js";
 import { default as AccordionItem } from "./wje-accordion-item/accordion-item.js";

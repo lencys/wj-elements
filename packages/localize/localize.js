@@ -4,7 +4,7 @@ export class LocalizerDefault {
   constructor(element) {
     this.element = element;
 
-    this.lang = this.element.lang || document.documentElement.lang || 'sk';
+    this.lang = this.element.lang || document.documentElement.lang || 'sk-SK';
     this.dir = this.element.dir || document.documentElement.dir || 'ltr';
 
     this.setLanguage();
@@ -32,7 +32,7 @@ export class LocalizerDefault {
   translatePlural(key, count = 0, type = "cardinal") {
     const plural = new Intl.PluralRules(this.lang, { type: type });
 
-    if(count != undefined)
+    if (count != undefined)
       key += "." + plural.select(count);
 
     return this.translate(key);
