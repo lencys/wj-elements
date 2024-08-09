@@ -62,6 +62,7 @@
     "terser": "^5.29.2",
     "vite": "^5.1.2",
     "vite-plugin-javascript-obfuscator": "^3.1.0",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "animate.css": "^4.1.1"
   }
 }
