@@ -145,6 +145,11 @@ export default class Stepper extends WJElement {
 
     goToStep(stepIndex, direction) {
         if (stepIndex >= 0 && stepIndex < this.steps.length) {
+            if (direction > 0) {
+                this.dispatchEvent(new CustomEvent('stepper:next', { detail: { stepIndex }, bubbles: true, composed: true }));
+            } else {
+                this.dispatchEvent(new CustomEvent('stepper:prev', { detail: { stepIndex }, bubbles: true, composed: true }));
+            }
 
             if (this.headerSteps[stepIndex].hasAttribute('disabled'))
                 stepIndex = stepIndex + direction;
@@ -163,7 +168,21 @@ export default class Stepper extends WJElement {
             this.currentStep = stepIndex;
 
             this.prev.disabled = this.currentStep === 0;
-            this.next.disabled = this.currentStep === this.steps.length - 1;
+            if (this.currentStep === this.steps.length - 1) {
+                this.next.innerHTML = this.localizer.translate("wj.stepper.button.finish");
+                this.next.setAttribute('color', 'primary');
+                this.next.refresh()
+
+
+            } else {
+                this.next.innerHTML = this.localizer.translate("wj.stepper.button.next");
+                this.next.removeAttribute('color');
+                this.next.refresh()
+
+            }
+
+        } else if (stepIndex === this.steps.length) {
+            this.dispatchEvent(new CustomEvent('stepper:finish', { detail: { stepIndex }, bubbles: true, composed: true }));
         }
     }
 

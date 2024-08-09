@@ -297,9 +297,7 @@ export default class MenuItem extends WJElement {
                     e.stopPropagation();
                 } else {
                     event.dispatchCustomEvent(this, "wje-menu-item:click");
-                    event.dispatchCustomEvent(this, this.dialog, {
-                        bubbles: true
-                    });
+                    event.dispatchCustomEvent(this, this.dialog);
                 }
                 break;
             case "CONTEXT":
@@ -313,9 +311,7 @@ export default class MenuItem extends WJElement {
                     }
                 } else {
                     event.dispatchCustomEvent(this, "wje-menu-item:click");
-                    event.dispatchCustomEvent(this, this.dialog, {
-                        bubbles: true
-                    });
+                    event.dispatchCustomEvent(this, this.dialog);
                 }
 
                 break;
