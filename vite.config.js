@@ -140,6 +140,8 @@ export default defineConfig(({ mode }) => {
                     "sliding-container": "./experimental-packages/wje-sliding-container/sliding-container.js",
                     "split-view": "./packages/wje-split-view/split-view.js",
                     "status": "./packages/wje-status/status.js",
+                    "step": "./packages/wje-step/step.js",
+                    "stepper": "./packages/wje-stepper/stepper.js",
                     "tab": "./packages/wje-tab/tab.js",
                     "tab-group": "./packages/wje-tab-group/tab-group.js",
                     "tab-panel": "./packages/wje-tab-panel/tab-panel.js",
