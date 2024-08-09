@@ -216,7 +216,6 @@ function getAnimationHook(name) {
 
 export class AnimatedOutlet extends HTMLElement {
   appendChild(el) {
-    debugger
     if (!this.hasAttribute('animation')) {
       super.appendChild(el)
       return
@@ -235,7 +234,6 @@ export class AnimatedOutlet extends HTMLElement {
   }
 
   removeChild(el) {
-    debugger
     if (!this.hasAttribute('animation')) {
       super.removeChild(el)
       return
