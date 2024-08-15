@@ -149,6 +149,12 @@
   /* Divider */
   --wje-divider-border-color: var(--wje-border-color);
 
+  /* Item */
+  --wje-item-color: var(--wje-color);
+  --wje-item-border-color: var(--wje-border-color);
+  --wje-item-background: transparent;
+  --wje-item-background-hover: var(--wje-color-contrast-3);
+
   /* List */
   --wje-list-background: var(--wje-background);
 
