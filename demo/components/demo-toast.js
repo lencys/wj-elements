@@ -22,8 +22,8 @@ template.innerHTML = `<h1>Toast</h1>
 
         <!-- BAR -->
 
-<!--        <wje-toast duration="5000" position="top" type="success" design="bar"></wje-toast>-->
-<!--        <wje-toast duration="5000" position="bottom" type="danger" design="bar"></wje-toast>-->
+        <wje-toast duration="5000" position="top" type="success" design="bar"></wje-toast>
+        <wje-toast duration="5000" position="bottom" type="danger" design="bar"></wje-toast>
 
         <!-- FLIP -->
 
@@ -34,10 +34,10 @@ template.innerHTML = `<h1>Toast</h1>
 
         <!-- CIRCLE -->
 
-        <wje-toast duration="5000" position="top-left" type="success" design="circle"></wje-toast>
-        <wje-toast duration="5000" position="top-right" type="warning" design="circle"></wje-toast>
-        <wje-toast duration="5000" position="bottom-left" type="danger" design="circle"></wje-toast>
-        <wje-toast duration="5000" position="bottom-right" type="info" design="circle"></wje-toast>
+<!--        <wje-toast duration="5000" position="top-left" type="success" design="circle"></wje-toast>-->
+<!--        <wje-toast duration="5000" position="top-right" type="warning" design="circle"></wje-toast>-->
+<!--        <wje-toast duration="5000" position="bottom-left" type="danger" design="circle"></wje-toast>-->
+<!--        <wje-toast duration="5000" position="bottom-right" type="info" design="circle"></wje-toast>-->
 
         <script>
           let toast = document.querySelector('wje-toast');
