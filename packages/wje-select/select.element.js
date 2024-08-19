@@ -288,7 +288,8 @@ export default class Select extends WJElement {
                 this.labelElement.classList.remove("fade")
         });
 
-        this.addEventListener("wje:option-change", this.optionChange);
+        this.addEventListener("wje-option:change", this.optionChange);
+
         this.clear.addEventListener("wje-button:click", (e) => {
             this.getAllOptions().forEach((option) => {
                 option.selected = false;
@@ -339,6 +340,8 @@ export default class Select extends WJElement {
         e.target.selected = !e.target.hasAttribute("selected");
 
         this.selections(e.target);
+
+        event.dispatchCustomEvent(this, "wje-select:change");
     }
 
     /**

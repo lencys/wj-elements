@@ -84,7 +84,7 @@
 
 .input-wrapper {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto 1fr auto auto auto;
   align-items: center;
   background-color: var(--wje-select-background);
   min-height: 28px;
