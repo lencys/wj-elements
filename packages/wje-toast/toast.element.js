@@ -1,5 +1,6 @@
 import { default as WJElement, WjElementUtils } from "../wje-element/element.js";
 import { simple, bar, flip, circle } from "./service/service.js";
+
 import styles from "./styles/styles.css?inline";
 
 /**

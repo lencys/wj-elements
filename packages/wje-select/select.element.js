@@ -157,7 +157,11 @@ export default class Select extends WJElement {
 
         // obalovac pre input
         let inputWrapper = document.createElement("div");
+        inputWrapper.setAttribute("part", "input-wrapper");
         inputWrapper.classList.add("input-wrapper");
+
+        let slotStart = document.createElement("div");
+        slotStart.classList.add("slot-start");
 
         let input = document.createElement("input");
         input.setAttribute("type", "text");
@@ -165,6 +169,9 @@ export default class Select extends WJElement {
         input.setAttribute("autocomplete", "off");
         input.setAttribute("readonly", "");
         input.setAttribute("placeholder", this.placeholder || "");
+
+        let slotEnd = document.createElement("div");
+        slotEnd.classList.add("slot-end");
 
         let arrow = document.createElement("wje-icon");
         arrow.setAttribute("name", "chevron-down");
@@ -176,6 +183,7 @@ export default class Select extends WJElement {
 
         // obalovac pre option a find
         let optionsWrapper = document.createElement("div");
+        optionsWrapper.setAttribute("part", "options-wrapper");
         optionsWrapper.classList.add("options-wrapper");
         optionsWrapper.style.setProperty("height", this.maxHeight || "auto");
 
@@ -209,6 +217,7 @@ export default class Select extends WJElement {
             wrapper.appendChild(label);
         }
 
+        inputWrapper.appendChild(slotStart);
         inputWrapper.appendChild(input);
         if(this.hasAttribute("multiple"))
             inputWrapper.appendChild(chips);
@@ -216,6 +225,7 @@ export default class Select extends WJElement {
         if(this.hasAttribute("clearable"))
             inputWrapper.appendChild(clear);
 
+        inputWrapper.appendChild(slotEnd);
         inputWrapper.appendChild(arrow);
 
         list.appendChild(slot);
@@ -246,6 +256,8 @@ export default class Select extends WJElement {
         this.native = native;
         this.popup = popup;
         this.labelElement = label;
+        this.slotStart = slotStart;
+        this.slotEnd = slotEnd;
         this.input = input;
         this.optionsWrapper = optionsWrapper;
         this.chips = chips;
@@ -276,13 +288,15 @@ export default class Select extends WJElement {
                 this.labelElement.classList.remove("fade")
         });
 
-        this.addEventListener("wje:option-change", this.optionChange);
+        this.addEventListener("wje-option:change", this.optionChange);
+
         this.clear.addEventListener("wje-button:click", (e) => {
             this.getAllOptions().forEach((option) => {
                 option.selected = false;
                 option.removeAttribute("selected");
             });
             this.selections();
+
             e.stopPropagation();
         });
 
@@ -326,6 +340,8 @@ export default class Select extends WJElement {
         e.target.selected = !e.target.hasAttribute("selected");
 
         this.selections(e.target);
+
+        event.dispatchCustomEvent(this, "wje-select:change");
     }
 
     /**
@@ -392,6 +408,20 @@ export default class Select extends WJElement {
             let value = option?.textContent.trim() || "";
             this.value = value;
             this.input.value = value;
+
+            if(option && option instanceof HTMLElement) {
+                this.slotStart.innerHTML = "";
+
+                if(option?.querySelector('[slot=start]')) {
+                    this.slotStart.appendChild(option?.querySelector('[slot=start]').cloneNode(true));
+                }
+
+                this.slotEnd.innerHTML = "";
+
+                if(option?.querySelector('[slot=end]')) {
+                    this.slotEnd.appendChild(option?.querySelector('[slot=end]').cloneNode(true));
+                }
+            }
         }
     }
 

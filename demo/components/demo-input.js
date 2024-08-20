@@ -114,6 +114,53 @@ template.innerHTML = `<h1>Input</h1>
 
     <div class="html-snippet"></div>
     
+    <!-- SELECT -->
+
+    <h2>Select</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-input variant="standard" label="Default input" class="example-select">
+          <wje-select variant="standard" placeholder="Select option" slot="start">
+            <wje-option value="option-1">
+              Option 1
+              <wje-icon name="sausage" slot="start"></wje-icon>
+            </wje-option>
+            <wje-option value="option-2">
+              Option 2
+              <wje-icon name="heart" slot="start"></wje-icon>
+            </wje-option>
+            <wje-option value="option-3" selected>
+              Option 3
+              <wje-icon name="star" slot="start"></wje-icon>
+            </wje-option>
+            <wje-option value="option-4">
+              Option 4
+              <wje-icon name="mushroom" slot="start"></wje-icon>
+            </wje-option>
+          </wje-select>
+        </wje-input>
+        <style>
+          .example-select {
+            --wje-input-slot-padding-inline: 0 !important;
+          }
+          
+          .example-select wje-select {
+            --wje-select-border-width: 0 !important;
+            --wje-select-border-radius: var(--wje-border-radius-large) !important;
+            &::part(input-wrapper) {
+              min-height: 26px;
+            }
+            &::part(options-wrapper) {
+              width: 100%;
+              margin-left: -1px;
+            }
+          }
+        </style>
+      </div>
+    </div>
+
+    <div class="html-snippet"></div>
+    
     <!-- SEARCH -->
 
     <h2>Search</h2>
@@ -235,7 +282,16 @@ export default class DemoInput extends WJElement {
 
     this.context.querySelector('#test-form').addEventListener('reset', (e) => {
       console.log('klikol som form reset', e)
-    })
+    });
+
+    // Ak chceme select v inpute
+    this.context.querySelector('.example-select wje-select').addEventListener('wje-popup:show', (e) => {
+      this.context.querySelector('.example-select').classList.add('options-show');
+    });
+
+    this.context.querySelector('.example-select wje-select').addEventListener('wje-popup:hide', (e) => {
+      this.context.querySelector('.example-select').classList.remove('options-show');
+    });
   }
 }
 

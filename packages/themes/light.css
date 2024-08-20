@@ -340,6 +340,27 @@
   --wje-img-compare-position: 50%;
   --wje-img-compare-clip-path: inset(0 calc(100% - var(--wje-img-compare-position)) 0 0);
 
+  /* Item */
+  --wje-item-color: var(--wje-color);
+  --wje-item-border-width: 0 0 1px 0;
+  --wje-item-border-style: solid;
+  --wje-item-border-color: var(--wje-border-color);
+  --wje-item-border-radius: 0;
+  --wje-item-background: transparent;
+  --wje-item-background-hover: var(--wje-color-contrast-3);
+  --wje-item-padding-top: 0px;
+  --wje-item-padding-bottom: 0px;
+  --wje-item-padding-end: 0px;
+  --wje-item-padding-start: 0px;
+  --wje-item-inner-border-width: 0 0 1px 0;
+  --wje-item-inner-padding-top: 0px;
+  --wje-item-inner-padding-bottom: 0px;
+  --wje-item-inner-padding-start: 0px;
+  --wje-item-inner-padding-end: 0px;
+  --wje-item-inner-box-shadow: none;
+  --wje-item-min-height: 40px;
+  --wje-item-transition: var(--wje-transition-fast);
+
   /* List */
   --wje-list-inset-padding: 1rem;
   --wje-list-border-radius: var(--wje-border-radius-medium);

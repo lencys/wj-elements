@@ -13,6 +13,7 @@
     border-style: var(--wje-textarea-border-style);
     border-color: var(--wje-textarea-border-color);
     border-radius: var(--wje-textarea-border-radius);
+    box-sizing: border-box;
   }
   textarea {
     font-family: var(--wje-textarea-font-family);

@@ -27,6 +27,7 @@
     .input-wrapper {
       width: 100%;
       position: relative;
+      box-sizing: border-box;
     }
     &.default {
       background-color: var(--wje-input-background-color);
@@ -212,6 +213,17 @@
   border-style: var(--wje-input-border-style);
   border-color: var(--wje-input-border-color);
   padding-inline: var(--wje-input-slot-padding-inline);
+}
+
+/*
+    .options-show is a class that is added to the host element when the select options are shown
+ */
+:host(.options-show) ::slotted([slot="start"]) {
+  border-bottom-left-radius: 0 !important;
+}
+
+:host(.options-show) ::slotted([slot="end"]) {
+  border-bottom-right-radius: 0 !important;
 }
 
 slot[name="start"], slot[name="end"] {

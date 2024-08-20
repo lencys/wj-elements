@@ -16,7 +16,7 @@ import styles from "./styles/styles.css?inline";
  * @slot - The default slot for the option.
  * @slot end - The slot for the end of the option.
  *
- * @fires wje:option-change - Event fired when the option is clicked.
+ * @fires wje-option:change - Event fired when the option is clicked.
  *
  * @tag wje-option
  */
@@ -133,6 +133,6 @@ export default class Option extends WJElement {
      * Adds event listeners after the component is drawn.
      */
     afterDraw() {
-        event.addListener(this, "click", "wje:option-change");
+        event.addListener(this, "click", "wje-option:change");
     }
 }
