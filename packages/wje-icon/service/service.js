@@ -126,7 +126,7 @@ export const getName = (iconName) => {
 const getNamedUrl = (iconName, filled = false) => {
   const path = `${filled ? "filled" : "outline"}/${iconName}.svg`;
 
-  let url = new URL(process.env.VITE_API_URL + process.env.VITE_ASSETS_URL + path);
+  let url = new URL(process.env.VITE_ICON_ASSETS_URL + path);
 
   return url.href;
 };
