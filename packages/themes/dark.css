@@ -175,6 +175,10 @@
   /* Option */
   --wje-option-highlighted: var(--wje-color-contrast-3);
 
+  /* Rate */
+  --wje-rate-color: var(--wje-color-contrast-11);
+  --wje-rate-selected-color: var(--wje-color-danger-6);
+
   /* Tab */
   --wje-tab-color-active: var(--wje-color-primary-11);
   --wje-tab-color-hover: var(--wje-color-primary-1);

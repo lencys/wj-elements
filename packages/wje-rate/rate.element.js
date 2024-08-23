@@ -9,9 +9,15 @@ import styles from "./styles/styles.css?inline";
  *
  * @extends {WJElement}
  *
+ * @attribute {number} precision - The precision of the rating component.
+ * @attribute {number} max - The maximum value of the rating component.
+ * @attribute {Array<string>} icons - The icons of the rating component.
+ *
  * @part native - The native part of the rating component.
  *
  * @cssprop [--wje-rate-gap=.25rem;] - The gap of the rating component.
+ * @cssprop [--wje-rate-color=var(--wje-color-contrast-11)] - The color of the rating component.
+ * @cssprop [--wje-rate-selected-color=var(--wje-color-danger-9)] - The selected color of the rating component.
  *
  * @tag wje-rate
  */

@@ -56,8 +56,15 @@ template.innerHTML = `
     <h3>Value</h3>
     <div class="playground">
       <div class="content">
-        <wje-rate value="3" icons="['heart', 'heart', 'heart', 'heart', 'heart']" selected="filled"></wje-rate>
+        <wje-rate value="3" icons="['heart', 'heart', 'heart', 'heart', 'heart']" selected="filled" id="custom-example"></wje-rate>
       </div>
+      <style>
+        #custom-example {
+          --wje-rate-color: green;
+          --wje-rate-selected-color: blue;
+          /*--wje-icon-color: #f00;*/
+        }
+      </style>
     </div>
 
     <div class="html-snippet"></div>

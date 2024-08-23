@@ -3,8 +3,8 @@
 */
 
 :host {
-  --wje-rate-gap: .25rem;
   display: flex;
+  color: var(--wje-rate-color);
 }
 
 :host([readonly]) .wje-rate-icon {
@@ -23,7 +23,7 @@
 }
 
 .selected {
-  color: var(--wje-color-danger-9);
+  color: var(--wje-rate-selected-color);
 }
 
 :host(:not([readonly])) .wje-rate-icon:hover {
@@ -31,7 +31,7 @@
 }
 
 wje-icon:first-child {
-  color: var(--wje-color);
+  color: var(--wje-rate-color);
 }
 
 wje-icon:last-child {
