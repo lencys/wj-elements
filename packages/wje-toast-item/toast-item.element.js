@@ -1,5 +1,4 @@
 import { default as WJElement, WjElementUtils } from "../wje-element/element.js";
-// import { simple, bar, flip, circle } from "./service/service.js";
 
 import styles from "./styles/styles.css?inline";
 
@@ -13,7 +12,7 @@ import styles from "./styles/styles.css?inline";
  *
  * @tag wje-toast
  */
-export default class Toast extends WJElement {
+export default class ToastItem extends WJElement {
     /**
      * Toast constructor
      * @constructor
@@ -49,7 +48,7 @@ export default class Toast extends WJElement {
      * Class name
      * @type {string}
      */
-    className = "Toast";
+    className = "ToastItem";
 
     /**
      * Get CSS stylesheet

@@ -251,7 +251,8 @@ export default class WJElement extends HTMLElement {
 	}
 
 	async refresh() {
-		this.refreshUpdatePromise()
+		this.beforeDisconnect?.();
+		this.refreshUpdatePromise();
 		if (this.drawingStatus != 'AFTER') {
 			this.afterDisconnect?.();
 			await this.initWjElement(true);

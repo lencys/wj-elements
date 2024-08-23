@@ -40,12 +40,23 @@ template.innerHTML = `
 
     <div class="html-snippet"></div>
     
+    <!-- FILLED -->
+
+    <h3>Filled</h3>
+    <div class="playground">
+      <div class="content">
+        <wje-rate max="5" filled selected="filled"></wje-rate>
+      </div>
+    </div>
+
+    <div class="html-snippet"></div>
+    
     <!-- VALUE -->
 
     <h3>Value</h3>
     <div class="playground">
       <div class="content">
-        <wje-rate value="3" icons="['heart', 'heart', 'heart', 'heart', 'heart']"></wje-rate>
+        <wje-rate value="3" icons="['heart', 'heart', 'heart', 'heart', 'heart']" selected="filled"></wje-rate>
       </div>
     </div>
 
@@ -56,7 +67,7 @@ template.innerHTML = `
     <h3>Precision</h3>
     <div class="playground">
       <div class="content">
-        <wje-rate value="3.5" max="5" precision="0.1"></wje-rate>
+        <wje-rate value="3.5" max="5" precision="0.5" selected="filled"></wje-rate>
       </div>
     </div>
 
