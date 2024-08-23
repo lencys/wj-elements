@@ -7,6 +7,10 @@
   display: flex;
 }
 
+:host([readonly]) .wje-rate-icon {
+    cursor: default;
+}
+
 .native-rate {
   position: relative;
   display: flex;
@@ -26,11 +30,11 @@
   transform: scale(1.2);
 }
 
-.half wje-icon:first-child {
+wje-icon:first-child {
   color: var(--wje-color);
 }
 
-.half wje-icon:last-child {
+wje-icon:last-child {
   color: currentColor;
   position: absolute;
   top: 0;
