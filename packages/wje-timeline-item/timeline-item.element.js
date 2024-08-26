@@ -11,6 +11,7 @@ import styles from "./styles/styles.css?inline";
  * @extends {WJElement}
  *
  * @part native - The native part of the timeline item.
+ * @part content-container - The content container part of the timeline item.
  *
  * @slot - Slot for the content of the timeline item.
  * @slot status - Slot for the status of the timeline item.
@@ -66,22 +67,16 @@ export default class TimelineItem extends WJElement {
         contentContainer.setAttribute("part", "content-container");
         contentContainer.classList.add('content-container');
 
-        // let time;
-        //
-        // if(this.hasAttribute('relative-time')) {
-            let tooltip = document.createElement('wje-tooltip');
-            tooltip.setAttribute('text', this.getAttribute('tooltip') || '');
-            tooltip.setAttribute('position', 'top');
-            tooltip.setAttribute('content', formatDate(this.datetime, 'dd.MM.yyyy HH:mm'));
+        let tooltip = document.createElement('wje-tooltip');
+        tooltip.setAttribute('text', this.getAttribute('tooltip') || '');
+        tooltip.setAttribute('position', 'top');
+        tooltip.setAttribute('content', formatDate(this.datetime, 'dd.MM.yyyy HH:mm'));
 
-            let relativeTime = document.createElement('wje-relative-time');
-            relativeTime.setAttribute('date', this.datetime || '');
-            relativeTime.setAttribute('format', this.getAttribute('format') || '');
+        let relativeTime = document.createElement('wje-relative-time');
+        relativeTime.setAttribute('date', this.datetime || '');
+        relativeTime.setAttribute('format', this.getAttribute('format') || '');
 
-            tooltip.appendChild(relativeTime);
-
-            // time = tooltip;
-        // }
+        tooltip.appendChild(relativeTime);
 
         let event = document.createElement('h3');
         event.classList.add('event');
