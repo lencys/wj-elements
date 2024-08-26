@@ -28,6 +28,7 @@ export default class Chip extends WJElement {
         let remove = document.createElement("wje-button");
         remove.setAttribute("part", "remove");
         remove.setAttribute("fill", "link");
+        remove.setAttribute("color", this.color || "default");
         remove.innerHTML = `<wje-icon name="x"></wje-icon>`;
 
         let active = document.createElement("wje-icon");
