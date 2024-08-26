@@ -63,6 +63,7 @@ export default class TimelineItem extends WJElement {
         native.classList.add("native-timeline-item");
 
         let contentContainer = document.createElement('div');
+        contentContainer.setAttribute("part", "content-container");
         contentContainer.classList.add('content-container');
 
         // let time;
