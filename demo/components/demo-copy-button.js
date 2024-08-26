@@ -1,5 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 template.innerHTML = `<h1>Copy Button</h1>
@@ -13,8 +13,6 @@ template.innerHTML = `<h1>Copy Button</h1>
           <wje-copy-button value="I am copy - Value"></wje-copy-button>
         </div>
       </div>
-
-      <div class="html-snippet"></div>
       
       <!-- CUSTOM BUTTON -->
   
@@ -26,8 +24,6 @@ template.innerHTML = `<h1>Copy Button</h1>
           </wje-copy-button>
         </div>
       </div>
-
-      <div class="html-snippet"></div>
       
       <!-- CUSTOM LABEL -->
   
@@ -37,8 +33,6 @@ template.innerHTML = `<h1>Copy Button</h1>
           <wje-copy-button value="I am copy - Value" label="Kopírovať" label-success="Skopírované"></wje-copy-button>
         </div>
       </div>
-
-      <div class="html-snippet"></div>
       
       <!-- ELEMENT -->
   
@@ -49,8 +43,6 @@ template.innerHTML = `<h1>Copy Button</h1>
           <wje-copy-button for="copy"></wje-copy-button>
         </div>
       </div>
-
-      <div class="html-snippet"></div>
       
       <!-- INPUT -->
   
@@ -61,12 +53,10 @@ template.innerHTML = `<h1>Copy Button</h1>
           <wje-copy-button for="copy-input"></wje-copy-button>
         </div>
       </div>
-
-      <div class="html-snippet"></div>
       
       <!-- WJ INPUT -->
   
-      <h2>WJ Input</h2>
+      <h2>WJE Input</h2>
       <div class="playground">
         <div class="content">
           <wje-input label="Label" id="copy-wje-input" value="I am copy - WJ Input">
@@ -74,8 +64,6 @@ template.innerHTML = `<h1>Copy Button</h1>
           </wje-input>
         </div>
       </div>
-
-      <div class="html-snippet"></div>
       
       <!-- HYPERLINK -->
   
@@ -86,8 +74,6 @@ template.innerHTML = `<h1>Copy Button</h1>
           <wje-copy-button for="copy-href"></wje-copy-button>
         </div>
       </div>
-
-      <div class="html-snippet"></div>
     </div>`;
 
 export default class DemoCopyButton extends WJElement {

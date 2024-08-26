@@ -1,32 +1,10 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
 template.innerHTML = `
-<style>
-    pre {
-      overflow-x: auto;
-      word-wrap: break-word;
-      white-space: pre-wrap;
-      padding: 10px;
-      border: 1px solid hsla(240, 6%, 90%, 1);
-      border-radius: 4px;
-      background: #f9f9f9;
-      max-width: 100%;
-      font-size: 1em;
-      line-height: 1.7rem;
-      position: relative;
-    }
-
-    code {
-      font-family: monospace;
-      padding: 2px 4px;
-      background: #f9f9f9;
-      border-radius: 4px;
-    }
-  </style>
-<h1>Radio</h1>
+  <h1>Radio</h1>
   <div class="container">
     
     <!-- BASIC -->
@@ -43,8 +21,6 @@ template.innerHTML = `
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-    
     <!-- PLACEMENT -->
 
     <h2>Placement</h2>
@@ -56,8 +32,6 @@ template.innerHTML = `
         </wje-radio-group>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- INLINE -->
 
@@ -76,8 +50,6 @@ template.innerHTML = `
         </wje-radio-group>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- COLORS -->
 
@@ -94,23 +66,7 @@ template.innerHTML = `
           <wje-radio value="neutral" color="neutral">Neutral</wje-radio>
         </wje-radio-group>
       </div>
-    </div>
-
-    <div class="html-snippet"></div>
-
-    <h3>Javascript</h3>
-    <pre>
-      <code>
-        inputEvent = (e) => {
-          this.checked = e.target.checked;
-        }
-
-        disconnectedCallback() {
-          event.removeElement(this);
-        }
-      </code>
-    </pre>
-    
+    </div>    
   </div>`;
 
 export default class DemoRadio extends WJElement {

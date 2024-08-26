@@ -1,5 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -14,8 +14,6 @@ template.innerHTML = `<h1>Icons</h1>
         <wje-icon name="check" size="4x-large"></wje-icon>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- STROKE -->
 
@@ -30,8 +28,6 @@ template.innerHTML = `<h1>Icons</h1>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-    
     <!-- SIZE -->
 
     <h2>Size</h2>
@@ -49,8 +45,6 @@ template.innerHTML = `<h1>Icons</h1>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-    
     <!-- COLOR -->
     
     <h2>Color</h2>
@@ -66,8 +60,6 @@ template.innerHTML = `<h1>Icons</h1>
         <wje-icon name="check" size="x-large" color="menu"></wje-icon>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
 
     <!-- STYLE -->
 
@@ -86,8 +78,6 @@ template.innerHTML = `<h1>Icons</h1>
         </style>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- CUSTOM -->
 
@@ -107,8 +97,6 @@ template.innerHTML = `<h1>Icons</h1>
         </style>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoIcons extends WJElement {

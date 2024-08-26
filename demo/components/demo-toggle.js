@@ -1,5 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -28,8 +28,6 @@ template.innerHTML = `<h1>Toggle</h1>
         </wje-item>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- PLACEMENT -->
 
@@ -49,8 +47,6 @@ template.innerHTML = `<h1>Toggle</h1>
         </style>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
 
     <!-- COLORS -->
 
@@ -81,8 +77,6 @@ template.innerHTML = `<h1>Toggle</h1>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-
     <!--  CUSTOM-->
 
     <h3>Custom</h3>
@@ -106,8 +100,6 @@ template.innerHTML = `<h1>Toggle</h1>
         </wje-toggle>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoToggle extends WJElement {

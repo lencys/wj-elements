@@ -1,5 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -33,8 +33,6 @@ template.innerHTML = `<h1>Toolbar</h1>
     </div>
   </div>
 
-  <div class="html-snippet"></div>
-  
   <!--  DYNAMIC BRADCRUMB -->
 
   <h2>Dynamic Breadcrumb</h2>
@@ -54,8 +52,6 @@ template.innerHTML = `<h1>Toolbar</h1>
     </div>
   </div>
 
-  <div class="html-snippet"></div>
-  
   <!--  DYNAMIC ACTION -->
 
   <h2>Dynamic Action</h2>
@@ -80,8 +76,6 @@ template.innerHTML = `<h1>Toolbar</h1>
       </wje-toolbar>
     </div>
   </div>
-
-  <div class="html-snippet"></div>
 </div>`;
 
 export default class DemoToolbar extends WJElement {

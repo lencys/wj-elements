@@ -1,32 +1,10 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+  import WJElement from "../../dist/wje-element.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
 template.innerHTML = `
-<style>
-    pre {
-      overflow-x: auto;
-      word-wrap: break-word;
-      white-space: pre-wrap;
-      padding: 10px;
-      border: 1px solid hsla(240, 6%, 90%, 1);
-      border-radius: 4px;
-      background: #f9f9f9;
-      max-width: 100%;
-      font-size: 1em;
-      line-height: 1.7rem;
-      position: relative;
-    }
-
-    code {
-      font-family: monospace;
-      padding: 2px 4px;
-      background: #f9f9f9;
-      border-radius: 4px;
-    }
-  </style>
-<h1>File upload</h1>
+  <h1>File upload</h1>
   <div class="container">
     
     <!-- BASIC -->
@@ -40,8 +18,6 @@ template.innerHTML = `
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-    
     <!-- ICON -->
 
     <h2>Icon</h2>
@@ -53,67 +29,6 @@ template.innerHTML = `
         </wje-file-upload>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
-
-    <h3>Javascript</h3>
-    <pre>
-      <code>
-        handleDrop = (event) => {
-          const fileList = event.dataTransfer.files;
-
-          this.resetFormState();
-
-          this.uploadFiles(fileList);
-        }
-      </code>
-    </pre>
-    <pre>
-      <code>
-        handleInputChange = (event) => {
-          this.resetFormState();
-
-          try {
-            this.handleSubmit(event);
-          } catch (err) {
-            return;
-          }
-        }
-      </code>
-    </pre>
-    <pre>
-      <code>
-        uploadFiles(files) {
-          if (files.length === 0) {
-            return;
-          }
-
-          Array.from(files).forEach(file => {
-            this.assertFilesValid(file);
-            let preview;
-
-            let reader = new FileReader();
-            reader.onload = (e) => {
-              preview = this.createPreview(file, reader)
-              this.fileList.appendChild(preview);
-              uploadFile(file, this.chunkSize, preview);
-            }
-
-            reader.readAsDataURL(file);
-          });
-        }
-      </code>
-    </pre>
-    <pre>
-      <code>
-        createThumbnail(file, reader) {
-          let img = document.createElement("img");
-          img.setAttribute("src", reader.result);
-
-          return img;
-        }
-      </code>
-    </pre>
   </div>`;
 
 export default class DemoFileUpload extends WJElement {

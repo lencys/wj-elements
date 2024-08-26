@@ -1,60 +1,60 @@
 
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
 template.innerHTML = /*html */`
-<style>
-          .content {
-            display: block; 
-            width: 100%; 
-            margin: auto 3rem;
-          }
-          
-          .content wje-header, .content wje-footer {
-            background-color: #B3C0D1;
-            color: #333;
-            text-align: center;
-            line-height: 60px;
-          }
-          
-          .content wje-aside {
-            background-color: #D3DCE6;
-            color: #333;
-            text-align: center;
-            line-height: 200px;
-            min-width: 60px;
-          }
-          
-          .content wje-main {
-            background-color: #E9EEF3;
-            color: #333;
-            text-align: center;
-          }
-          
-          /* Margin na spodok prveho containeru */
-          .content > wje-container {
-            margin-bottom: 40px;
-          }
-          
-          .content wje-container:nth-child(5) wje-aside,
-          .content wje-container:nth-child(6) wje-aside {
-            line-height: 260px;
-          }
-          
-          .content wje-container:nth-child(7) wje-aside {
-            line-height: 320px;
-          }
-
-          wje-card::part(native) {
-            height: 100%;
-          }
-
-          wje-aside {
-            display: flex;flex-direction: column;
-          }
-        </style>
+    <style>
+      .content {
+        display: block; 
+        width: 100%; 
+        margin: auto 3rem;
+      }
+      
+      .content wje-header, .content wje-footer {
+        background-color: #B3C0D1;
+        color: #333;
+        text-align: center;
+        line-height: 60px;
+      }
+      
+      .content wje-aside {
+        background-color: #D3DCE6;
+        color: #333;
+        text-align: center;
+        line-height: 200px;
+        min-width: 60px;
+      }
+      
+      .content wje-main {
+        background-color: #E9EEF3;
+        color: #333;
+        text-align: center;
+      }
+      
+      /* Margin na spodok prveho containeru */
+      .content > wje-container {
+        margin-bottom: 40px;
+      }
+      
+      .content wje-container:nth-child(5) wje-aside,
+      .content wje-container:nth-child(6) wje-aside {
+        line-height: 260px;
+      }
+      
+      .content wje-container:nth-child(7) wje-aside {
+        line-height: 320px;
+      }
+    
+      wje-card::part(native) {
+        height: 100%;
+      }
+    
+      wje-aside {
+        display: flex;flex-direction: column;
+      }
+    </style>
 
 <div class="container">
     <h2>Default</h2>
@@ -129,7 +129,7 @@ template.innerHTML = /*html */`
             </wje-container>
         </div>
     </div>
-    <div class="html-snippet"></div>`;
+`;
 
 export default class DemoSlidingContainer extends WJElement {
     constructor() {

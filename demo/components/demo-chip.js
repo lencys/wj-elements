@@ -1,9 +1,10 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
-template.innerHTML = `<h1>Chip</h1>
+template.innerHTML = `
+  <h1>Chip</h1>
   <div class="container">
 
     <!--  BASIC-->
@@ -16,8 +17,6 @@ template.innerHTML = `<h1>Chip</h1>
         <wje-chip disabled>Disabled</wje-chip>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
 
     <!--  SLOTTING -->
 
@@ -39,8 +38,6 @@ template.innerHTML = `<h1>Chip</h1>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-
     <!-- COLORS -->
 
     <h2>Colors</h2>
@@ -57,7 +54,20 @@ template.innerHTML = `<h1>Chip</h1>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
+    <!-- COLORS WITH REMOVABLE -->
+
+    <h2>Colors with remove button</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-chip color="primary" removable>Remove Chip</wje-chip>
+        <wje-chip color="complete" removable>Remove Chip</wje-chip>
+        <wje-chip color="success" removable>Remove Chip</wje-chip>
+        <wje-chip color="warning" removable>Remove Chip</wje-chip>
+        <wje-chip color="danger" removable>Remove Chip</wje-chip>
+        <wje-chip color="info" removable>Remove Chip</wje-chip>
+        <wje-chip color="default" removable>Remove Chip</wje-chip>
+      </div>
+    </div>
     
     <!-- COLORS -->
 
@@ -74,8 +84,6 @@ template.innerHTML = `<h1>Chip</h1>
         <wje-chip id="custom">Default</wje-chip>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoChip extends WJElement {
