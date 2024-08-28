@@ -1,5 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -10,45 +10,38 @@ template.innerHTML = `<h1>Toast</h1>
 
     <h2>Basic</h2>
     <div class="playground">
-      <div class="content">
-        <wje-button id="open-toast">Run</wje-button>
+      <div class="content" style="width: 200px;">
+        <wje-select id="position" label="Position" value="top" variant="standard">
+          <wje-option value="top" selected>Top</wje-option>
+          <wje-option value="bottom">Bottom</wje-option>
+          <wje-option value="top-start">Top Start</wje-option>
+          <wje-option value="top-end">Top End</wje-option>
+          <wje-option value="bottom-start">Bottom Start</wje-option>
+          <wje-option value="bottom-end">Bottom End</wje-option>
+        </wje-select>
+        
+        <wje-select id="type" label="Type" value="success" variant="standard">
+          <wje-option value="contrast" selected>Contrast</wje-option>
+          <wje-option value="primary">Primary</wje-option>
+          <wje-option value="complete">Complete</wje-option>
+          <wje-option value="success">Success</wje-option>
+          <wje-option value="warning">Warning</wje-option>
+          <wje-option value="danger">Danger</wje-option>
+          <wje-option value="info">Info</wje-option>
+        </wje-select>
 
-        <!-- SIMPLE -->
-
-<!--        <wje-toast duration="5000" position="top-left" type="success" design="simple"></wje-toast>-->
-<!--        <wje-toast duration="5000" position="top-right" type="warning" design="simple"></wje-toast>-->
-<!--        <wje-toast duration="5000" position="bottom-left" type="danger" design="simple"></wje-toast>-->
-<!--        <wje-toast duration="5000" position="bottom-right" type="info" design="simple"></wje-toast>-->
-
-        <!-- BAR -->
-
-        <wje-toast duration="5000" position="top" type="success" design="bar"></wje-toast>
-        <wje-toast duration="5000" position="bottom" type="danger" design="bar"></wje-toast>
-
-        <!-- FLIP -->
-
-<!--        <wje-toast duration="5000" position="top-left" type="success" design="flip"></wje-toast>-->
-<!--        <wje-toast duration="5000" position="top-right" type="warning" design="flip"></wje-toast>-->
-<!--        <wje-toast duration="5000" position="bottom-left" type="danger" design="flip"></wje-toast>-->
-<!--        <wje-toast duration="5000" position="bottom-right" type="info" design="flip"></wje-toast>-->
-
-        <!-- CIRCLE -->
-
-<!--        <wje-toast duration="5000" position="top-left" type="success" design="circle"></wje-toast>-->
-<!--        <wje-toast duration="5000" position="top-right" type="warning" design="circle"></wje-toast>-->
-<!--        <wje-toast duration="5000" position="bottom-left" type="danger" design="circle"></wje-toast>-->
-<!--        <wje-toast duration="5000" position="bottom-right" type="info" design="circle"></wje-toast>-->
-
-        <script>
-          let toast = document.querySelector('wje-toast');
-          toast.addEventListener('didDismiss', () => {
-            toast.isOpen = false;
-          });
-        </script>
+        <wje-toast duration="15000" title="Title" position="top" type="contrast" close>
+          <wje-avatar label="Petr Rahman" slot="avatar" size="2x-large">
+            <wje-img src="/assets/img/avatar.svg"></wje-img>
+          </wje-avatar>
+          <div>Lorem ipsum dolor sit amet</div>
+        </wje-toast>
+        
+        <wje-toast duration="15000" title="Title" position="bottom" type="contrast">
+          <div>Lorem ipsum dolor sit amet</div>
+        </wje-toast>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoToast extends WJElement {
@@ -57,6 +50,19 @@ export default class DemoToast extends WJElement {
   }
 
   afterDraw() {
+    // Toast element
+    const toast = this.context.querySelector('wje-toast');
+
+    // Set the toast attributes position
+    this.context.querySelector("#position").addEventListener("wje-select:change", (e) => {
+      toast.setAttribute("position", e.detail.context.selected[0].value);
+    });
+
+    // Set the toast attributes type
+    this.context.querySelector("#type").addEventListener("wje-select:change", (e) => {
+      toast.setAttribute("type", e.detail.context.selected[0].value);
+    });
+
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(template, this.context);
   }

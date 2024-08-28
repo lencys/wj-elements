@@ -1,12 +1,15 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
 template.innerHTML = `
     <h1>Reorder</h1>
     <div class="container">
-        <h2>Default</h2>
+    
+        <!-- BASIC -->
+        
+        <h2>Basic</h2>
         <div class="playground">
             <div class="content">
                 <wje-reorder>
@@ -18,8 +21,8 @@ template.innerHTML = `
             </div>
         </div>
 
-        <div class="html-snippet"></div>
-
+        <!-- ITEMS WITH HANDLE -->
+        
         <h2>Items With Handle</h2>
         <div class="playground">
             <div class="content">
@@ -44,8 +47,7 @@ template.innerHTML = `
             </div>
         </div>
 
-        <div class="html-snippet"></div>
-        
+        <!-- DISABLED -->
         
         <h2>Disabled</h2>
         <div class="playground">
@@ -58,8 +60,6 @@ template.innerHTML = `
                 </wje-reorder>
             </div>
         </div>
-
-        <div class="html-snippet"></div>
     </div>
 `;
 

@@ -46,7 +46,7 @@ export default class Icon extends WJElement {
      * @returns {Array<string>}
      */
     static get observedAttributes() {
-        return ["name"];
+        return ["name", "filled"];
     }
 
     /**

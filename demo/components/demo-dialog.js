@@ -1,15 +1,15 @@
 import WJElement from "../../dist/wje-element.js";
 import { event } from "../../packages/utils/event.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
-template.innerHTML = `<style>
+template.innerHTML = `
+  <style>
     .content {
       display: block;
     }
   </style>
-  
   <h1>Dialog</h1>
   <div class="container">
 
@@ -29,8 +29,6 @@ template.innerHTML = `<style>
         </wje-dialog>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- ELEMENT -->
 
@@ -48,8 +46,6 @@ template.innerHTML = `<style>
         </wje-dialog>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
 
     <!--  PLACEMENT-->
 
@@ -103,8 +99,6 @@ template.innerHTML = `<style>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-
     <!-- SIZE -->
 
     <h2>Size</h2>
@@ -136,8 +130,6 @@ template.innerHTML = `<style>
         </wje-dialog>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoDialog extends WJElement {

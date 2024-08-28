@@ -1,6 +1,22 @@
 import { default as WJElement } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
+/**
+ * `Reorder` is a custom web component that represents a reorder.
+ * It extends from `WJElement`.
+ * @summary This element represents a reorder.
+ * @documentation https://elements.webjet.sk/components/reorder
+ * @status stable
+ *
+ * @extends {WJElement}
+ *
+ * @csspart native - The native part of the reorder.
+ *
+ * @slot - The default slot for the reorder.
+ *
+ * @tag wje-reorder
+ */
+
 export default class Reorder extends WJElement {
   /**
    * Creates an instance of Select.

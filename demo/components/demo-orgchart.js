@@ -1,5 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
-// import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement("template");
 
@@ -181,9 +181,6 @@ template.innerHTML = `<h1>Orgchart</h1>
               </div>
           </div>
           <div class="controls">
-<!--              <input type="text" id="searchInput" placeholder="Search by ID">-->
-<!--              <wje-button id="search">Search</wje-button>-->
-              
               <wje-input variant="standard" id="search-input">
                 <wje-button variant="link" slot="end" id="search"><wje-icon name="search"></wje-icon></wje-button>
               </wje-input>
@@ -230,7 +227,6 @@ template.innerHTML = `<h1>Orgchart</h1>
           </style>
       </div>
     </div>
-<!--    <div class="html-snippet"></div>-->
   </div>`;
 
 export default class DemoOrgchart extends WJElement {
@@ -239,6 +235,9 @@ export default class DemoOrgchart extends WJElement {
   }
 
   afterDraw(context, store2, params) {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, this.context);
+
     document.querySelector('#line wje-orgchart-group').addEventListener('wje-orgchart-group:click', (e) => {
       console.log("wje-orgchart-group", e.detail);
     });

@@ -1,5 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -21,8 +21,6 @@ template.innerHTML = `<h1>Masonry</h1>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-    
     <!-- MAXCOLWIDTH -->
 
     <h2>Max col width</h2>
@@ -39,8 +37,6 @@ template.innerHTML = `<h1>Masonry</h1>
         </wje-masonry>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- GAP -->
 
@@ -63,8 +59,8 @@ template.innerHTML = `<h1>Masonry</h1>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-
+    <!-- JAVASCRIPT -->
+    
     <h3>Javascript</h3>
     <pre>
       <code>
