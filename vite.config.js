@@ -22,7 +22,8 @@ export default defineConfig(({ mode }) => {
         },
         ...(mode === 'development' ? {
             define: {
-                'process.env.VITE_ICON_ASSETS_URL': JSON.stringify(process.env.VITE_ICON_ASSETS_URL || 'http://localhost:3000')
+                'process.env.VITE_ICON_ASSETS_URL': JSON.stringify(process.env.VITE_ICON_ASSETS_URL || 'http://localhost:3000'),
+                'process.env.VITE_URL': JSON.stringify(process.env.VITE_URL || 'http://localhost:3000')
             },
         } : {}),
         base: '/',

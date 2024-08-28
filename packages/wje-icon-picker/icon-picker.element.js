@@ -119,7 +119,7 @@ export default class IconPicker extends WJElement {
      * Prepares the component before drawing.
      */
     async beforeDraw() {
-        this.tags =  Object.values(await this.getTags());
+        this.tags = Object.values(await this.getTags());
         this.category = this.getCategory(this.tags);
     }
 
@@ -327,12 +327,6 @@ export default class IconPicker extends WJElement {
      * @returns {string} The URL of the tags.
      */
     getTagsUrl = (path) => {
-        // const path = `/assets/img/icons/svg/${iconName}.svg`;
-
-        let parsedUrl = new URL(import.meta.url);
-        let pathName = parsedUrl.pathname;
-
-        let folderPath = pathName.substring(0, pathName.lastIndexOf('/'));
-        return new URL(parsedUrl.origin + folderPath + path).href;
+        return new URL(process.env.VITE_URL + path).href;
     };
 }
