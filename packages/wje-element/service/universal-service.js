@@ -1,7 +1,7 @@
 export class UniversalService {
 	constructor(props = {}) {
 		this._store = props.store
-		this.premenna= null
+		this.premenna = null
 	}
 
 	findByKey = (attrName, key, keyValue) => {
@@ -34,17 +34,17 @@ export class UniversalService {
 		this._store.dispatch(action(data))
 	};
 
-	_save(url, data, action, dispatchMethod, method){
+	_save(url, data, action, dispatchMethod, method) {
 		let promise = fetch(url, {
 			method: method,
 			body: JSON.stringify(data),
-			cache: 'no-cache',
+			// cache: 'no-cache',
 			headers: {
 				'Content-Type': 'application/json'
-			},
-			referrerPolicy: 'same-origin',
+			}
+			// referrerPolicy: 'same-origin',
 		}).then((response) => {
-			if(response.ok){
+			if (response.ok) {
 				return response.json();
 			} else {
 				return response.json();
@@ -54,21 +54,21 @@ export class UniversalService {
 		return this.dispatch(promise, dispatchMethod, action);
 	}
 
-	_get(url, action, dispatchMethod){
+	_get(url, action, dispatchMethod) {
 		let promise = fetch(url, {
 			method: 'GET',
-			cache: 'no-cache',
+			// cache: 'no-cache',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			referrerPolicy: 'same-origin',
+			// referrerPolicy: 'same-origin',
 		}).then(async (response) => {
 			let text;
 			try {
 				let text = await response.text(); // Parse it as text
 				const data = JSON.parse(text); // Try to parse it as JSON
 				return data
-			} catch(err) {
+			} catch (err) {
 				return text
 			}
 
@@ -82,7 +82,7 @@ export class UniversalService {
 		return this.dispatch(promise, dispatchMethod, action);
 	}
 
-	put(url, data, action, dispatchMethod = true){
+	put(url, data, action, dispatchMethod = true) {
 		return this._save(url, data, action, dispatchMethod, "PUT");
 	}
 
@@ -90,7 +90,7 @@ export class UniversalService {
 		return this._save(url, data, action, dispatchMethod, "POST");
 	}
 
-	delete(url, data, action, dispatchMethod = true) { 
+	delete(url, data, action, dispatchMethod = true) {
 		return this._save(url, data, action, dispatchMethod, "DELETE");
 	}
 
@@ -98,12 +98,12 @@ export class UniversalService {
 		return this._get(url, action, dispatchMethod);
 	}
 
-	dispatch(promise, dispatchMethod, action){
-		if(dispatchMethod){
-			return promise.then((data)=>{
+	dispatch(promise, dispatchMethod, action) {
+		if (dispatchMethod) {
+			return promise.then((data) => {
 				this._store.dispatch(action(data.data));
 				return data;
-			}).catch(error =>{
+			}).catch(error => {
 				console.error(error)
 			});
 		}
@@ -111,26 +111,26 @@ export class UniversalService {
 		return promise;
 	}
 
-	loadPromise = (url, action, method='GET', data, permissionCallBack = ()=>{}) =>{
+	loadPromise = (url, action, method = 'GET', data, permissionCallBack = () => { }) => {
 		return fetch(url, {
-			method:method,
+			method: method,
 			body: data,
-			cache: 'no-cache',
+			// cache: 'no-cache',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			async: true,
-			referrerPolicy: 'same-origin',
-		}).then( (response,e)=>{
+			// referrerPolicy: 'same-origin',
+		}).then((response, e) => {
 			let permissions = response.headers.get('permissions')?.split(',')
 			permissionCallBack(permissions)
 
-			if(response.ok){
+			if (response.ok) {
 				return response.json();
 			} else {
-				 throw response.json()
+				throw response.json()
 			}
-		}).then((data)=>{
+		}).then((data) => {
 			this._store.dispatch(action(data));
 			return data
 		});
@@ -138,14 +138,14 @@ export class UniversalService {
 
 	loadOnePromise = (url, action) => {
 		return fetch(url, {
-			cache: 'no-cache',
+			// cache: 'no-cache',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			referrerPolicy: 'same-origin',
-		}).then((data)=>{
+			// referrerPolicy: 'same-origin',
+		}).then((data) => {
 			data = data.json()
-			if(action){
+			if (action) {
 				this._store.dispatch(action(data))
 			}
 			return data

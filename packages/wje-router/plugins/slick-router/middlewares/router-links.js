@@ -29,7 +29,7 @@ const delegate = function (el, eventName, selector, listener, context) {
   return handler
 }
 
-function isModifiedEvent (event) {
+function isModifiedEvent(event) {
   return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey)
 }
 
@@ -49,8 +49,8 @@ const camelize = (str) => {
   return result
 }
 
-function mutationHandler (mutations, observer) {
-  
+function mutationHandler(mutations, observer) {
+
   mutations.forEach(function (mutation) {
     if (mutation.type === 'attributes') {
       const attr = mutation.attributeName
@@ -70,7 +70,7 @@ function mutationHandler (mutations, observer) {
 
 const elementsObserverConfig = { childList: true, subtree: true, attributes: true }
 
-function getAttributeValues (el, prefix, result) {
+function getAttributeValues(el, prefix, result) {
   const attributes = el.attributes
 
   for (let i = 0; i < attributes.length; i++) {
@@ -83,13 +83,13 @@ function getAttributeValues (el, prefix, result) {
   return result
 }
 
-function getDefaults (ownerEl, routeName, propName, routeEl, options) {
+function getDefaults(ownerEl, routeName, propName, routeEl, options) {
   let result = options[propName]
   if (typeof result === 'function') result = result.call(ownerEl, routeName, routeEl)
   return result || {}
 }
 
-function getRouteProp (ownerEl, routeName, routeEl, propName, attrPrefix) {
+function getRouteProp(ownerEl, routeName, routeEl, propName, attrPrefix) {
   const options = ownerEl[routerLinksData].options
   const defaults = getDefaults(ownerEl, routeName, propName, routeEl, options)
   const rootEl = routeEl.closest(options.selector || '[routerlinks]')
@@ -99,7 +99,7 @@ function getRouteProp (ownerEl, routeName, routeEl, propName, attrPrefix) {
   return getAttributeValues(routeEl, attrPrefix, defaults)
 }
 
-function updateActiveClass (el, routeName, params, query) {
+function updateActiveClass(el, routeName, params, query) {
   const activeClass = el.hasAttribute('active-class') ? el.getAttribute('active-class') : 'active'
   if (activeClass) {
     const isActive = router.isActive(routeName, params, query, el.hasAttribute('exact'))
@@ -107,7 +107,7 @@ function updateActiveClass (el, routeName, params, query) {
   }
 }
 
-function updateLink (el, ownerEl) {
+function updateLink(el, ownerEl) {
   const routeName = el.getAttribute('route')
   if (!routeName) return
   const params = getRouteProp(ownerEl, routeName, el, 'params', 'param-')
@@ -124,8 +124,8 @@ function updateLink (el, ownerEl) {
   }
 }
 
-function createLinks (ownerEl, rootEl) {
-  
+function createLinks(ownerEl, rootEl) {
+
   const routeEls = rootEl.querySelectorAll('[route]')
 
   routeEls.forEach(el => {
@@ -133,7 +133,7 @@ function createLinks (ownerEl, rootEl) {
   })
 }
 
-function linkClickHandler (e) {
+function linkClickHandler(e) {
   if (e.button !== 0 || isModifiedEvent(e)) return
   e.preventDefault()
   const el = e.selectorTarget
@@ -145,7 +145,7 @@ function linkClickHandler (e) {
   router[method](routeName, params, query)
 }
 
-export function bindRouterLinks (ownerEl, options = {}) {
+export function bindRouterLinks(ownerEl, options = {}) {
   const { selector = '[routerlinks]' } = options
   const rootEls = selector ? ownerEl.querySelectorAll(selector) : [ownerEl]
   const observer = new MutationObserver(mutationHandler)
@@ -167,7 +167,7 @@ export function bindRouterLinks (ownerEl, options = {}) {
 
 const createClass = (ctor, options = {}) => {
   return class extends ctor {
-    connectedCallback () {
+    connectedCallback() {
       super.connectedCallback && super.connectedCallback()
       const renderWait = this.updateComplete || resolved
       renderWait.then(() => {
@@ -176,7 +176,7 @@ const createClass = (ctor, options = {}) => {
       })
     }
 
-    disconnectedCallback () {
+    disconnectedCallback() {
       super.disconnectedCallback && super.disconnectedCallback()
       if (this[unbindRouterLinks]) {
         this[unbindRouterLinks]()
@@ -197,7 +197,7 @@ export const withRouterLinks = (optionsOrCtorOrDescriptor, options) => {
     return {
       kind,
       elements,
-      finisher (ctor) {
+      finisher(ctor) {
         return createClass(ctor, options)
       }
     }
@@ -208,13 +208,12 @@ export const withRouterLinks = (optionsOrCtorOrDescriptor, options) => {
   }
 }
 
-function create (instance) {
-  
+function create(instance) {
   router = instance
 }
 
-function done () {
-  
+function done() {
+
   linkContainers.forEach(ownerEl => {
     const data = ownerEl[routerLinksData]
     data.rootEls.forEach(el => {
