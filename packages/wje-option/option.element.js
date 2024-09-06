@@ -133,6 +133,17 @@ export default class Option extends WJElement {
      * Adds event listeners after the component is drawn.
      */
     afterDraw() {
-        event.addListener(this, "click", "wje-option:change");
+        event.addListener(this, "click", null, (e, b, c) => {
+            if (this.hasAttribute('disabled')) return;
+
+            this.dispatchEvent(new CustomEvent("wje-option:change", {
+                bubbles: true,
+                composed: true,
+                detail: {
+                    value: this.value,
+                    text: this.text
+                }
+            }));
+        });
     }
 }
