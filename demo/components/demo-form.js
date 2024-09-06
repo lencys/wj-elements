@@ -84,6 +84,13 @@ export default class DemoForm extends WJElement {
         this.context.querySelector('#test-form').addEventListener('reset', (e) => {
             console.log('klikol som form reset', e)
         });
+
+        const randomInput = document.createElement('wje-input');
+        randomInput.setAttribute('name', 'random')
+        randomInput.setAttribute('label', 'Random input')
+
+        randomInput.value = 'nenene'
+        form.append(randomInput)
     }
 }
 

@@ -534,7 +534,7 @@ export default class Select extends WJElement {
             }
         } else {
             let value = option?.textContent.trim() || "";
-            this.value = value;
+            this.value = this.selectedOptions?.map(el => el.value)?.at(0)
             this.input.value = value;
 
             if (option && option instanceof HTMLElement) {

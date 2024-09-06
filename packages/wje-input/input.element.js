@@ -1,4 +1,4 @@
-import {default as WJElement, event} from "../wje-element/element.js";
+import { default as WJElement, event } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**
@@ -54,6 +54,9 @@ export default class Input extends WJElement {
 
         if (this.input)
             this.input.value = value;
+
+        this.pristine = false;
+        this._value = value;
     }
 
     /**
@@ -61,7 +64,7 @@ export default class Input extends WJElement {
      * @returns {string} The value of the attribute.
      */
     get value() {
-        return this.input?.value || "";
+        return this.input?.value ?? this._value ?? "";
     }
 
     /**
@@ -198,7 +201,11 @@ export default class Input extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = "open";
-        this.value = this.defaultValue;
+        // if some value was set via value setter then dont use default value 
+        if (this.pristine) {
+            this.value = this.defaultValue;
+            this.pristine = false;
+        }
     }
 
     /**
@@ -261,7 +268,7 @@ export default class Input extends WJElement {
             errorSlot = document.createElement("slot");
             errorSlot.setAttribute("name", "error");
 
-            if(this.hasAttribute('error-inline')){
+            if (this.hasAttribute('error-inline')) {
                 // inline version of error message
                 native.appendChild(errorSlot);
             } else {
@@ -419,7 +426,7 @@ export default class Input extends WJElement {
             const slot = this.querySelector("[slot='error']");
             let errorMessage = slot.querySelector("[error-message]");
 
-            if(!errorMessage){
+            if (!errorMessage) {
                 const error = document.createElement("div");
                 error.setAttribute("error-message", "");
                 slot.appendChild(error);
@@ -457,7 +464,7 @@ export default class Input extends WJElement {
                         errorMessage = this.hasAttribute(attr) ? this.getAttribute(attr) : this.input.validationMessage;
 
                     this.internals.setValidity(
-                        {[this.validationError]: true},
+                        { [this.validationError]: true },
                         errorMessage
                     );
                 }

@@ -43,7 +43,6 @@ export default class Checkbox extends WJElement {
      * @param {string} value - The value to set.
      */
     set value(value) {
-        debugger
         this.internals.setFormValue(value);
 
         if (this.input)
@@ -55,7 +54,6 @@ export default class Checkbox extends WJElement {
      * @returns {string} The value of the attribute.
      */
     get value() {
-        debugger
         return this.input?.value || "";
     }
 
