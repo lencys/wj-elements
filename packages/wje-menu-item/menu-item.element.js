@@ -266,7 +266,7 @@ export default class MenuItem extends WJElement {
         event.addListener(this, "click", null, this.clickHandler);
     }
 
-    afterDisconnect() {
+    beforeDisconnect() {
         event.removeListener(this, "mousemove", null, this.dispatchMove);
         event.removeListener(this, "wje-popup:reposition", null, this.dispatchReposition);
         event.removeListener(this, "mouseenter", null, this.mouseenterHandler);

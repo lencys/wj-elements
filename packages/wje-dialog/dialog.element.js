@@ -108,6 +108,12 @@ export default class Dialog extends WJElement {
         }
     }
 
+    beforeDisconnect() {
+        if (this.params?.trigger) {
+            event.removeListener(document, this.params?.trigger, null, this.onOpen);
+        }
+    }
+
     beforeOpen() { }
 
     afterOpen() { }

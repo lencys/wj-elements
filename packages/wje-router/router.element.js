@@ -89,7 +89,7 @@ export default class Routerx extends WJElement {
             const attributeValue = attributes[i].value;
 
             if (attributeName === 'component' && attributeValue.indexOf(".js") > -1) {
-                obj.component = () => import(attributeValue); // lazy loading component
+                obj.component = () => import(/*vite-ignore*/attributeValue); // lazy loading component
             } else {
                 if (attributeName !== 'shadow') {
                     const camelCase = attributeName.replace(/-([a-z])/g, (g) => g[1].toUpperCase());

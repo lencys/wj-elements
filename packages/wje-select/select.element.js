@@ -50,6 +50,7 @@ export default class Select extends WJElement {
 
         this._selected = [];
         this.counterEl = null;
+        this.internals = this.attachInternals();
     }
 
     dependencies = {
@@ -62,6 +63,126 @@ export default class Select extends WJElement {
         "wje-option": Option,
         "wje-options": Options
     }
+
+    /**
+     * Setter for the value attribute.
+     * @param {string} value - The value to set.
+     */
+    set value(value) {
+        this.internals.setFormValue(JSON.stringify(value));
+    }
+
+    /**
+     * Getter for the value attribute.
+     * @returns {string} The value of the attribute.
+     */
+    get value() {
+        return this.selected;
+    }
+
+
+    /**
+         * Getter for the customErrorDisplay attribute.
+         * @returns {boolean} Whether the attribute is present.
+         */
+    get customErrorDisplay() {
+        return this.hasAttribute('custom-error-display');
+    }
+
+    /**
+     * Getter for the validateOnChange attribute.
+     * @returns {boolean} Whether the attribute is present.
+     */
+    get validateOnChange() {
+        return this.hasAttribute('validate-on-change');
+    }
+
+    /**
+     * Getter for the invalid attribute.
+     * @returns {boolean} Whether the attribute is present.
+     */
+    get invalid() {
+        return this.hasAttribute('invalid');
+    }
+
+    /**
+     * Setter for the invalid attribute.
+     * @param {boolean} isInvalid - Whether the input is invalid.
+     */
+    set invalid(isInvalid) {
+        isInvalid ? this.setAttribute('invalid', '') : this.removeAttribute('invalid');
+    }
+
+    /**
+     * Getter for the form attribute.
+     * @returns {HTMLFormElement} The form the input is associated with.
+     */
+    get form() {
+        return this.internals.form;
+    }
+
+    /**
+     * Getter for the name attribute.
+     * @returns {string} The name of the input.
+     */
+    get name() {
+        return this.getAttribute('name');
+    }
+
+    /**
+     * Getter for the type attribute.
+     * @returns {string} The type of the input.
+     */
+    get type() {
+        return this.localName;
+    }
+
+    /**
+     * Getter for the validity attribute.
+     * @returns {ValidityState} The validity state of the input.
+     */
+    get validity() {
+        return this.internals.validity;
+    }
+
+    /**
+     * Getter for the validationMessage attribute.
+     * @returns {string} The validation message of the input.
+     */
+    get validationMessage() {
+        return this.internals.validationMessage;
+    }
+
+    /**
+     * Getter for the willValidate attribute.
+     * @returns {boolean} Whether the input will be validated.
+     */
+    get willValidate() {
+        return this.internals.willValidate;
+    }
+
+    /**
+     * @summary Getter for the defaultValue attribute.
+     * This method retrieves the 'value' attribute of the custom input element.
+     * The 'value' attribute represents the default value of the input element.
+     * If the 'value' attribute is not set, it returns an empty string.
+     * @returns {string} The default value of the input element.
+     */
+    get defaultValue() {
+        return this.getAttribute('value') ?? '';
+    }
+
+    /**
+     * @summary Setter for the defaultValue attribute.
+     * This method sets the 'value' attribute of the custom input element to the provided value.
+     * The 'value' attribute represents the default value of the input element.
+     * @param {string} value - The value to set as the default value.
+     */
+    set defaultValue(value) {
+        this.setAttribute('value', value);
+    }
+
+
 
     /**
      * Sets the selected value.
@@ -120,6 +241,13 @@ export default class Select extends WJElement {
     static get observedAttributes() {
         return ["active", "value"];
     }
+
+    /**
+     * Whether the input is associated with a form.
+     * @type {boolean}
+     */
+    static formAssociated = true;
+
 
     /**
      * Sets up the attributes for the component.
@@ -207,11 +335,11 @@ export default class Select extends WJElement {
         popup.setAttribute("manual", "");
         popup.setAttribute("size", "");
 
-        if(this.hasAttribute("disabled"))
+        if (this.hasAttribute("disabled"))
             popup.setAttribute("disabled", "");
 
-        if(this.variant === "standard") {
-            if(this.hasAttribute("label"))
+        if (this.variant === "standard") {
+            if (this.hasAttribute("label"))
                 native.appendChild(label);
         } else {
             wrapper.appendChild(label);
@@ -219,10 +347,10 @@ export default class Select extends WJElement {
 
         inputWrapper.appendChild(slotStart);
         inputWrapper.appendChild(input);
-        if(this.hasAttribute("multiple"))
+        if (this.hasAttribute("multiple"))
             inputWrapper.appendChild(chips);
 
-        if(this.hasAttribute("clearable"))
+        if (this.hasAttribute("clearable"))
             inputWrapper.appendChild(clear);
 
         inputWrapper.appendChild(slotEnd);
@@ -230,7 +358,7 @@ export default class Select extends WJElement {
 
         list.appendChild(slot);
 
-        if(this.hasAttribute("find")) {
+        if (this.hasAttribute("find")) {
             let find = document.createElement("wje-input");
             find.setAttribute("variant", "standard");
             find.setAttribute("placeholder", "Hľadať");
@@ -248,7 +376,7 @@ export default class Select extends WJElement {
         popup.appendChild(wrapper);
         popup.appendChild(optionsWrapper);
 
-        if(this.trigger === "click")
+        if (this.trigger === "click")
             popup.setAttribute("manual", "");
 
         native.appendChild(popup);
@@ -284,7 +412,7 @@ export default class Select extends WJElement {
 
         this.input.addEventListener("blur", (e) => {
             this.native.classList.remove("focused");
-            if(!e.target.value)
+            if (!e.target.value)
                 this.labelElement.classList.remove("fade")
         });
 
@@ -307,12 +435,12 @@ export default class Select extends WJElement {
         });
 
         // skontrolujeme ci ma select atribut find
-        if(this.hasAttribute("find") && this.findEl instanceof HTMLElement) {
-            event.addListener(this.findEl, "keyup", "",(e) => {
+        if (this.hasAttribute("find") && this.findEl instanceof HTMLElement) {
+            event.addListener(this.findEl, "keyup", "", (e) => {
                 let value = e.target.value.trim().toLowerCase();
 
                 this.getAllOptions().forEach((option) => {
-                    if(option.textContent.trim().toLowerCase().includes(value))
+                    if (option.textContent.trim().toLowerCase().includes(value))
                         option.style.display = "block";
                     else
                         option.style.display = "none";
@@ -329,7 +457,7 @@ export default class Select extends WJElement {
     optionChange = (e) => {
         let allOptions = this.getAllOptions();
 
-        if(!this.hasAttribute("multiple")) {
+        if (!this.hasAttribute("multiple")) {
             allOptions.forEach((option) => {
                 option.selected = false;
                 option.removeAttribute("selected");
@@ -391,16 +519,16 @@ export default class Select extends WJElement {
      */
     selectionChanged(option = null, length = 0) {
         if (this.hasAttribute("multiple")) {
-            this.value = this.selectedOptions.map(el => el).reverse();
+            this.value = this.selectedOptions.map(el => el.value).reverse();
 
             if (this.placeholder && length === 0) {
                 this.chips.innerHTML = this.placeholder;
                 this.input.value = '';
             } else {
-                if(this.counterEl instanceof HTMLElement || length > +this.maxOptions) {
+                if (this.counterEl instanceof HTMLElement || length > +this.maxOptions) {
                     this.counter();
                 } else {
-                    if(option != null)
+                    if (option != null)
                         this.chips.appendChild(this.getChip(option));
                 }
             }
@@ -409,16 +537,16 @@ export default class Select extends WJElement {
             this.value = value;
             this.input.value = value;
 
-            if(option && option instanceof HTMLElement) {
+            if (option && option instanceof HTMLElement) {
                 this.slotStart.innerHTML = "";
 
-                if(option?.querySelector('[slot=start]')) {
+                if (option?.querySelector('[slot=start]')) {
                     this.slotStart.appendChild(option?.querySelector('[slot=start]').cloneNode(true));
                 }
 
                 this.slotEnd.innerHTML = "";
 
-                if(option?.querySelector('[slot=end]')) {
+                if (option?.querySelector('[slot=end]')) {
                     this.slotEnd.appendChild(option?.querySelector('[slot=end]').cloneNode(true));
                 }
             }
@@ -435,12 +563,12 @@ export default class Select extends WJElement {
 
         this.selectedOptions = Array.isArray(options) ? options : Array.from(options);
 
-        if(this.selectedOptions.length >= +this.maxOptions) {
+        if (this.selectedOptions.length >= +this.maxOptions) {
             this.counterEl = null;
         }
 
         this.chips.innerHTML = "";
-        if(this.selectedOptions.length > 0) {
+        if (this.selectedOptions.length > 0) {
             this.selectedOptions.forEach((option, index) => {
                 this.selectionChanged(option, ++index);
             });
@@ -461,7 +589,7 @@ export default class Select extends WJElement {
         }
 
         // ak counter nie je, tak ho vytvorime
-        if(!this.counterEl) {
+        if (!this.counterEl) {
             this.counterEl = document.createElement("span");
             this.counterEl.classList.add("counter");
 
@@ -504,5 +632,79 @@ export default class Select extends WJElement {
         e.target.parentNode.removeChild(e.target);
 
         this.selections(null, 0);
+    }
+
+
+
+
+
+
+    /**
+     * @summary Callback function that is called when the custom element is associated with a form.
+     * This function adds an event listener to the form's submit event, which validates the input and propagates the validation.
+     * @param {HTMLFormElement} form - The form the custom element is associated with.
+     */
+    formAssociatedCallback(form) {
+        form.addEventListener('submit', () => {
+            // this.validateInput();
+            // this.propagateValidation();
+        });
+    }
+
+    /**
+     * The formResetCallback method is a built-in lifecycle callback that gets called when a form gets reset.
+     * This method is responsible for resetting the value of the custom input element to its default value.
+     * It also resets the form value and validity state in the form internals.
+     *
+     * @method
+     */
+    formResetCallback() {
+        // Set the value of the custom input element to its default value
+        this.value = this.defaultValue;
+        // Reset the form value in the form internals to the default value
+        this.internals.setFormValue(this.defaultValue);
+        // Reset the validity state in the form internals
+        this.internals.setValidity({});
+    }
+
+    /**
+     * The formStateRestoreCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is restored.
+     * This method is responsible for restoring the value of the custom input element to its saved state.
+     * It also restores the form value and validity state in the form internals to their saved states.
+     *
+     * @param {Object} state - The saved state of the custom input element.
+     * @method
+     */
+    formStateRestoreCallback(state) {
+        // Set the value of the custom input element to its saved value
+        this.value = state.value;
+        // Restore the form value in the form internals to the saved value
+        this.internals.setFormValue(state.value);
+        // Restore the validity state in the form internals to the saved state
+        this.internals.setValidity({});
+    }
+
+    /**
+     * The formStateSaveCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is saved.
+     * This method is responsible for saving the value of the custom input element.
+     *
+     * @returns {Object} The saved state of the custom input element.
+     * @method
+     */
+    formStateSaveCallback() {
+        return {
+            value: this.value
+        };
+    }
+
+    /**
+     * The formDisabledCallback method is a built-in lifecycle callback that gets called when the disabled state of a form-associated custom element changes.
+     * This method is not implemented yet.
+     *
+     * @param {boolean} disabled - The new disabled state of the custom input element.
+     * @method
+     */
+    formDisabledCallback(disabled) {
+        console.warn('formDisabledCallback not implemented yet')
     }
 }
