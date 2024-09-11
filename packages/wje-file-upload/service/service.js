@@ -49,9 +49,9 @@ function fileType() {
 
 export function getFileTypeIcon(type) {
   let searchType;
-  if( type.toLowerCase() !== 'folder' ) {
+  if (type.toLowerCase() !== 'folder') {
     fileType().forEach((i) => {
-      if( i.type.includes(type.toLowerCase()) ) {
+      if (i.type.includes(type.toLowerCase())) {
         searchType = i.name;
       }
     });
@@ -137,6 +137,78 @@ export function uploadFile(file, chunkSize, preview) {
   }
 
   readAndUploadChunk(start, Math.min(start + chunkSize, file.size));
+}
+
+export function upload(url, chunkSize = 1024 * 1024) {
+  return (file, preview) => uploadFileInChunks(url, chunkSize, file, preview);
+}
+
+
+export async function uploadFileInChunks(url, chunkSize = 1024 * 1024, file, preview) {
+  let offset = 0;
+  const totalChunks = Math.ceil(file.size / chunkSize);
+  const partResponses = [];
+
+  while (offset < file.size) {
+    const chunk = file.slice(offset, offset + chunkSize);
+
+    // Creating a custom ReadableStream to track progress of the current chunk
+    const stream = new ReadableStream({
+      start(controller) {
+        const reader = chunk.stream().getReader();
+        let uploadedBytes = 0;
+
+        reader.read().then(function process({ done, value }) {
+          if (done) {
+            controller.close();
+            return;
+          }
+
+          // Track progress
+          uploadedBytes += value.byteLength;
+          const percentComplete = ((offset + uploadedBytes) / file.size) * 100;
+          console.log(`Upload Progress: ${percentComplete.toFixed(2)}%`);
+          preview.setAttribute("uploaded", offset + uploadedBytes);
+
+          // Enqueue chunk data into the stream
+          controller.enqueue(value);
+
+          // Read the next chunk
+          return reader.read().then(process);
+        });
+      }
+    });
+
+    const formData = new FormData();
+    formData.append('file', new Blob([stream])); // Send the current stream (chunk)
+    formData.append('chunkIndex', Math.floor(offset / chunkSize)); // Send chunk index
+    formData.append('totalChunks', totalChunks); // Send total chunks
+
+    try {
+      // Send the current chunk via Fetch
+      const response = await fetch(url, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to upload chunk ${Math.floor(offset / chunkSize) + 1}: ${response.statusText}`);
+      }
+
+      console.log(`Chunk ${Math.floor(offset / chunkSize) + 1}/${totalChunks} uploaded successfully.`);
+      partResponses.push(response);
+
+    } catch (error) {
+      console.error('Error uploading chunk:', error);
+      break;
+    }
+
+    // Move to the next chunk
+    offset += chunkSize;
+  }
+
+  console.log('File upload complete!');
+  return partResponses.at(-1).json();
 }
 
 

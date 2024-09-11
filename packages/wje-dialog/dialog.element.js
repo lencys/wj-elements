@@ -44,10 +44,16 @@ export default class Dialog extends WJElement {
 
         this.classList.add("fade", this.placement, params.size);
 
-        let slot = document.createElement("slot");
         let dialog = document.createElement("dialog");
         dialog.classList.add("modal-dialog");
 
+        fragment.appendChild(dialog);
+
+        this.dialog = dialog;
+        return fragment;
+    }
+
+    htmlDialogBody(dialog) {
         let icon = document.createElement("wje-icon");
         icon.setAttribute("name", "x");
         icon.setAttribute("slot", "icon-only");
@@ -55,9 +61,8 @@ export default class Dialog extends WJElement {
         let close = document.createElement("wje-button");
         close.setAttribute("fill", "link");
         close.setAttribute("size", "small");
-        close.classList.add("close");
-        close.addEventListener("click", () => {
-            this.close();
+        close.addEventListener("click", (e) => {
+            this.close(e);
         });
         close.appendChild(icon);
 
@@ -65,17 +70,25 @@ export default class Dialog extends WJElement {
         header.setAttribute("part", "header");
         header.classList.add("dialog-header");
         if (this.hasAttribute("headline"))
-            header.innerHTML = `<span part="headline">${this.headline}</span>`;
-        header.appendChild(close);
+            header.innerHTML = `<span part="headline">${this.getAttribute('headline')}</span>`;
 
         let slotHeader = document.createElement("slot");
         slotHeader.setAttribute("name", "header");
-        header.appendChild(slotHeader);
+
+        const headerActions = document.createElement("div");
+        headerActions.classList.add("header-actions");
+        headerActions.setAttribute("part", "header-actions");
+        headerActions.appendChild(slotHeader);
+
+        header.appendChild(headerActions);
+        header.appendChild(close);
+
+        let contentSlot = document.createElement("slot");
 
         let body = document.createElement("div");
         body.setAttribute("part", "body");
         body.classList.add("dialog-content");
-        body.appendChild(slot);
+        body.appendChild(contentSlot);
 
         let footer = document.createElement("div");
         footer.setAttribute("part", "footer");
@@ -90,15 +103,11 @@ export default class Dialog extends WJElement {
         dialog.appendChild(header);
         dialog.appendChild(body);
         dialog.appendChild(footer);
-
-        fragment.appendChild(dialog);
-
-        this.dialog = dialog;
-        return fragment;
     }
 
-    close() {
-        this.onClose();
+
+    close(e) {
+        this.onClose(e);
     }
 
     afterDraw(context, store, params) {
@@ -106,12 +115,16 @@ export default class Dialog extends WJElement {
         if (params.trigger) {
             event.addListener(document, params.trigger, null, this.onOpen);
         }
+
+        this.dialog.addEventListener("close", this.onClose);
     }
 
     beforeDisconnect() {
         if (this.params?.trigger) {
             event.removeListener(document, this.params?.trigger, null, this.onOpen);
         }
+
+        this.dialog.removeEventListener("close", this.onClose);
     }
 
     beforeOpen() { }
@@ -123,7 +136,11 @@ export default class Dialog extends WJElement {
     afterClose() { }
 
     onOpen = (e) => {
+        this.dialog.innerHTML = "";
+
         Promise.resolve(this.beforeOpen(this, e)).then((res) => {
+            this.htmlDialogBody(this.dialog)
+
             this.dialog.showModal();  // Now open the dialog
 
             if (this.dialog.open) {

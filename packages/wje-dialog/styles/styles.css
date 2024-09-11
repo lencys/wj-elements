@@ -3,8 +3,17 @@
 */
 
 :host {
+  --wje-dialog-header-actions-gap: 0.5rem;
+  
   .close {
     margin-left: auto;
+  }
+
+  .header-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: var(--wje-dialog-header-actions-gap);
   }
 
   .modal-content {

@@ -82,11 +82,11 @@ export default class FileUploadItem extends WJElement {
    */
   attributeChangedCallback(name, old, newName) {
 
-    if(name === "uploaded" && this.drawingStatus === "AFTER") {
+    if (name === "uploaded" && this.drawingStatus === "AFTER") {
       this.uploadedEl.setAttribute("value", this.uploaded);
 
-      let progress = (+this.uploaded/+this.size) * 100 || 0;
-      this.sliderEl.setAttribute("value", Math.round(progress, 0));
+      let progress = (+this.uploaded / +this.size) * 100 || 0;
+      this.sliderEl.value = Math.round(progress, 0);
     }
   }
 

@@ -1,6 +1,6 @@
 import { default as WJElement, event } from "../wje-element/element.js";
 import { Localizer } from "../utils/localize.js";
-import { getFileTypeIcon, isValidFileType, uploadFile } from "./service/service.js";
+import { getFileTypeIcon, isValidFileType, upload } from "./service/service.js";
 import Button from "../wje-button/button.js";
 import styles from "./styles/styles.css?inline";
 
@@ -31,6 +31,7 @@ export default class FileUpload extends WJElement {
   constructor() {
     super();
     this.localizer = new Localizer(this);
+    this._uploadedFiles = [];
   }
 
   /**
@@ -89,8 +90,35 @@ export default class FileUpload extends WJElement {
    */
   get maxFileSize() {
     const fileSize = this.getAttribute("max-file-size");
-    return this.hasAttribute("max-file-size") ? fileSize * 1024 * 1024: 1024 * 1024;
+    return this.hasAttribute("max-file-size") ? fileSize * 1024 * 1024 : 1024 * 1024;
   }
+
+  /**
+   * Sets the upload URL for the file upload element.
+   *
+   * @param {string} value - The URL to set as the upload URL.
+   */
+  set uploadUrl(value) {
+    this.setAttribute("upload-url", value);
+  }
+
+  /**
+   * Retrieves the upload URL for the file upload element.
+   * 
+   * @returns {string} The upload URL.
+   */
+  get uploadUrl() {
+    return this.getAttribute("upload-url") ?? "/upload";
+  }
+
+  set uploadedFiles(value) {
+    this._uploadedFiles = value;
+  }
+
+  get uploadedFiles() {
+    return this._uploadedFiles;
+  }
+
 
   className = "FileUpload";
 
@@ -115,6 +143,10 @@ export default class FileUpload extends WJElement {
    */
   setupAttributes() {
     this.isShadowRoot = "open";
+  }
+
+  beforeDraw() {
+    this.uploadFunction = upload(this.uploadUrl, this.chunkSize)
   }
 
   /**
@@ -273,7 +305,10 @@ export default class FileUpload extends WJElement {
       reader.onload = (e) => {
         preview = this.createPreview(file, reader)
         this.fileList.appendChild(preview);
-        uploadFile(file, this.chunkSize, preview);
+        // uploadFile(file, this.chunkSize, preview);
+        this.uploadFunction(file, preview).then((res) => {
+          this.uploadedFiles.push(res);
+        });
       }
 
       reader.readAsDataURL(file);
@@ -287,7 +322,7 @@ export default class FileUpload extends WJElement {
    * @returns {HTMLElement} The created preview.
    */
   createPreview(file, reader) {
-    let preview  = document.createElement("wje-file-upload-item");
+    let preview = document.createElement("wje-file-upload-item");
     preview.setAttribute("name", file.name);
     preview.setAttribute("size", file.size);
     preview.setAttribute("uploaded", "0");

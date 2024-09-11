@@ -1,5 +1,5 @@
-import {default as WJElement, WjElementUtils, event} from "../wje-element/element.js";
-import {bool} from "../utils/utils.js";
+import { default as WJElement, WjElementUtils, event } from "../wje-element/element.js";
+import { bool } from "../utils/utils.js";
 import Icon from "../wje-icon/icon.js";
 
 import styles from "./styles/styles.css?inline";
@@ -296,7 +296,7 @@ export default class Button extends WJElement {
 
         native.appendChild(span);
 
-        if(this.hasAttribute("tooltip")) {
+        if (this.hasAttribute("tooltip")) {
             let tooltip = document.createElement("wje-tooltip");
             tooltip.setAttribute("content", this.getAttribute("tooltip"));
             tooltip.setAttribute("placement", this.getAttribute("tooltip-placement") || "top");
@@ -332,7 +332,7 @@ export default class Button extends WJElement {
         }
 
         if (this.hasToggle)
-            event.addListener(this, "click", "wje-button:toggle", this.toggleStates, {stopPropagation: this.stopPropagation});
+            event.addListener(this, "click", "wje-button:toggle", this.toggleStates, { stopPropagation: this.stopPropagation });
 
         if (this.type === "submit") {
             event.addListener(this, "click", "wje-button:submit", () => {
@@ -359,9 +359,7 @@ export default class Button extends WJElement {
      * @param {Event} e - The event
      */
     eventDialogOpen = (e) => {
-        event.dispatchCustomEvent(this, this.dialog, {
-            bubbles: true
-        });
+        event.dispatchCustomEvent(this, this.dialog);
     }
 
     /**
