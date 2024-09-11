@@ -139,6 +139,7 @@ export default class Options extends WJElement {
             const infiniteScroll = document.createElement('wje-infinite-scroll');
             infiniteScroll.setAttribute('placement', 'wje-list');
             infiniteScroll.setAttribute('height', '100%');
+            infiniteScroll.setAttribute('object-name', this.optionArrayPath);
             infiniteScroll.append(list);
 
             infiniteScroll.dataToHtml = this.htmlItem;
