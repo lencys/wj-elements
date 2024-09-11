@@ -54,13 +54,14 @@ export class UniversalService {
 		return this.dispatch(promise, dispatchMethod, action);
 	}
 
-	_get(url, action, dispatchMethod) {
+	_get(url, action, dispatchMethod, signal) {
 		let promise = fetch(url, {
 			method: 'GET',
 			// cache: 'no-cache',
 			headers: {
 				'Content-Type': 'application/json'
 			},
+			...(signal ? { signal } : {})
 			// referrerPolicy: 'same-origin',
 		}).then(async (response) => {
 			let text;
@@ -94,7 +95,7 @@ export class UniversalService {
 		return this._save(url, data, action, dispatchMethod, "DELETE");
 	}
 
-	get(url, action, dispatchMethod = true) {
+	get(url, action, dispatchMethod = true, signal) {
 		return this._get(url, action, dispatchMethod);
 	}
 

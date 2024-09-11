@@ -59,6 +59,15 @@ export default class Textarea extends WJElement {
         return [];
     }
 
+    set placeholder(value) {
+        this.setAttribute("placeholder", value);
+    }
+
+    get placeholder() {
+        return this.getAttribute("placeholder");
+    }
+
+
     /**
      * Sets up the attributes for the component.
      */
@@ -81,7 +90,7 @@ export default class Textarea extends WJElement {
         native.classList.add("native-textarea", this.variant || "default");
         native.setAttribute("part", "native")
 
-        if(this.hasAttribute("invalid"))
+        if (this.hasAttribute("invalid"))
             native.classList.add("has-error");
 
         let wrapper = document.createElement("div");
@@ -99,16 +108,17 @@ export default class Textarea extends WJElement {
         input.name = this.name;
         input.disabled = this.hasAttribute("disabled");
         input.innerText = this.innerHTML;
+        input.placeholder = this.placeholder || "";
         input.classList.add("form-control");
         input.setAttribute("part", "input");
         input.setAttribute("rows", this.rows || 3);
         input.setAttribute("spellcheck", false);
 
-        if(this.resize === "auto")
+        if (this.resize === "auto")
             input.addEventListener("input", this.setTextareaHeight);
 
-        if(this.variant === "standard") {
-            if(this.label)
+        if (this.variant === "standard") {
+            if (this.label)
                 native.appendChild(label);
         } else {
             inputWrapper.appendChild(label);
@@ -122,7 +132,7 @@ export default class Textarea extends WJElement {
 
         fragment.appendChild(native);
 
-        if(this.hasAttribute("counter")) {
+        if (this.hasAttribute("counter")) {
             input.maxLength = this.maxLength || 1000;
             input.addEventListener("input", this.counter);
 
@@ -159,7 +169,7 @@ export default class Textarea extends WJElement {
 
         this.input.addEventListener("blur", (e) => {
             this.native.classList.remove("focused");
-            if(!e.target.value)
+            if (!e.target.value)
                 this.labelElement.classList.remove("fade")
         });
     }
@@ -175,7 +185,7 @@ export default class Textarea extends WJElement {
      * Sets the height of the textarea.
      */
     setTextareaHeight = () => {
-        if(this.getAttribute("resize") === "auto") {
+        if (this.getAttribute("resize") === "auto") {
             this.input.style.height = 'auto';
             this.input.style.height = this.input.scrollHeight + "px";
         }

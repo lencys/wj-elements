@@ -1,10 +1,10 @@
-import {faker} from '@faker-js/faker';
-import {createServer, Model, Factory} from 'miragejs';
+import { faker } from '@faker-js/faker';
+import { createServer, Model, Factory } from 'miragejs';
 
 
 export const serverPromise = makeServer();
 
- function makeServer() {
+function makeServer() {
     return new Promise((resolve, reject) => {
         try {
             let server = createServer({
@@ -16,7 +16,7 @@ export const serverPromise = makeServer();
                 factories: {
                     user: Factory.extend({
                         image(i) {
-                            return faker.image.urlLoremFlickr({category: 'city'});
+                            return faker.image.urlLoremFlickr({ category: 'city' });
                         },
                         fullName(i) {
                             return faker.location.city()
@@ -66,13 +66,47 @@ export const serverPromise = makeServer();
 
                     this.get("/api/options", function (schema, request) {
                         server.db.options.remove(); // musime najprv precistit
-                        server.createList("option", 10);
+                        server.createList("option", 100);
+
+                        //request.queryParams = {page: '0', size: '10'}
+                        const page = +request.queryParams.page;
+                        const size = +request.queryParams.size;
 
                         let data = schema.options.all();
-                        let options = this.serialize(data).options;
+                        let paginatedOptions = !(isNaN(page) && isNaN(size)) ? data.slice(page * size, (page + 1) * size) : data;
+                        let options = this.serialize(paginatedOptions).options;
 
-                        return options;
+                        let totalPages = Math.ceil(data.length / size);
+                        return {
+                            page: page,
+                            size: size,
+                            totalPages: totalPages,
+                            data: options,
+                        }
                     });
+
+                    this.get("/api/options/:search", function (schema, request) {
+                        server.db.options.remove(); // musime najprv precistit
+                        server.createList("option", 100);
+
+                        //request.queryParams = {page: '0', size: '10'}
+                        const page = +request.queryParams.page;
+                        const size = +request.queryParams.size;
+
+                        let search = request.params.search;
+                        let data = schema.options.where(option => option.text.includes(search));
+                        let paginatedOptions = data.slice(page * size, (page + 1) * size);
+                        let options = this.serialize(paginatedOptions).options;
+
+                        let totalPages = Math.ceil(data.length / size);
+                        return {
+                            page: page,
+                            size: size,
+                            totalPages: totalPages,
+                            data: options,
+                        }
+                    });
+
 
                     this.post('/upload', (schema, request) => {
                         let headers = request.requestHeaders;
@@ -85,11 +119,11 @@ export const serverPromise = makeServer();
                         // Napríklad by ste mohli ukladať pokrok v nejakej internej štruktúre
                         // Ak je to posledný chunk, odošlite správu o dokončení
                         if (end >= totalSize - 1) {
-                            return new Response(200, {}, {message: 'Upload complete'});
+                            return new Response(200, {}, { message: 'Upload complete' });
                         } else {
                             // Možno by ste chceli vrátiť percentuálny pokrok
                             const progress = (end / totalSize) * 100;
-                            return new Response(200, {}, {progress: progress, message: 'Chunk received'});
+                            return new Response(200, {}, { progress: progress, message: 'Chunk received' });
                         }
                     });
 

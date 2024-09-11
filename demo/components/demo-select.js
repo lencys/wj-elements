@@ -24,7 +24,7 @@ template.innerHTML = `
     <div class="playground">
       <div class="content" style="gap: .5rem;">
         <wje-select placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple clearable>
-          <wje-options url="/api/options" item-value="tralala" item-text="label"></wje-options>
+          <wje-options lazy url="/api/options" item-value="tralala" item-text="label"></wje-options>
         </wje-select>
         
         <wje-select placeholder="Select options" variant="standard" max-height="200px" find clearable>

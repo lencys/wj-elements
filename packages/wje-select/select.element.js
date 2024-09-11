@@ -437,14 +437,21 @@ export default class Select extends WJElement {
         // skontrolujeme ci ma select atribut find
         if (this.hasAttribute("find") && this.findEl instanceof HTMLElement) {
             event.addListener(this.findEl, "keyup", "", (e) => {
-                let value = e.target.value.trim().toLowerCase();
+                // contains wj-options element with options
+                const optionsElement = this.querySelector("wje-options");
+                if (optionsElement && optionsElement.hasAttribute("lazy")) {
+                    // pass search value to wj-options element and infinite scroll will handle the rest
+                    optionsElement.setAttribute("search", e.target.value);
+                } else {
+                    let value = e.target.value.trim().toLowerCase();
 
-                this.getAllOptions().forEach((option) => {
-                    if (option.textContent.trim().toLowerCase().includes(value))
-                        option.style.display = "block";
-                    else
-                        option.style.display = "none";
-                });
+                    this.getAllOptions().forEach((option) => {
+                        if (option.textContent.trim().toLowerCase().includes(value))
+                            option.style.display = "block";
+                        else
+                            option.style.display = "none";
+                    });
+                }
             });
         }
     }
