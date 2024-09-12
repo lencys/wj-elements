@@ -104,9 +104,9 @@ export default class Options extends WJElement {
     /**
      * Lifecycle method, called whenever an observed property changes
      */
-    attributeChangedCallback(name, old, newName) {
+    attributeChangedCallback(name, oldValue, newValue) {
         // remove all loaded options 
-        if (this.infiniteScroll) {
+        if (this.infiniteScroll && name === "search" && oldValue !== newValue) {
             this.infiniteScroll.placementObj.innerHTML = "";
             this.infiniteScroll.totalPages = 0
             this.infiniteScroll.refresh();
@@ -187,8 +187,17 @@ export default class Options extends WJElement {
      */
     htmlItem = (item) => {
         let option = document.createElement("wje-option");
-        option.setAttribute("value", item[this.itemValue] || item.value); // ak je itemValue, tak ho pouzije, inak sa pouzije standardne properties value
-        option.innerText = item[this.itemText] || item.text; // ak je itemText, tak ho pouzije, inak sa pouzije standardne properties text
+
+        if (item[this.itemValue] == null) {
+            console.warn(`The item ${JSON.stringify(item)} does not have the property ${this.itemValue}`);
+        }
+
+        if (item[this.itemText] == null) {
+            console.warn(`The item ${JSON.stringify(item)} does not have the property ${this.itemText}`);
+        }
+
+        option.setAttribute("value", item[this.itemValue] ?? '');
+        option.innerText = item[this.itemText] ?? '';
         return option;
     }
 

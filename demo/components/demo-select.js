@@ -18,13 +18,24 @@ template.innerHTML = `
       </div>
     </div>
 
+    <!-- LAZY OPTIONS -->
+
+    <h2>Lazy options</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
+          <wje-options lazy url="/api/options" item-value="tralala" item-text="label"></wje-options>
+        </wje-select>
+      </div>
+    </div>
+
     <!-- FIND -->
 
     <h2>Find</h2>
     <div class="playground">
       <div class="content" style="gap: .5rem;">
         <wje-select placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple clearable>
-          <wje-options lazy url="/api/options" item-value="tralala" item-text="label"></wje-options>
+          <wje-options url="/api/options" item-value="tralala" item-text="label"></wje-options>
         </wje-select>
         
         <wje-select placeholder="Select options" variant="standard" max-height="200px" find clearable>
@@ -37,6 +48,29 @@ template.innerHTML = `
         
         <wje-select label="Label" placeholder="Select options" max-height="200px" find clearable>
           <wje-options url="/api/options" item-value="tralala" item-text="label"></wje-options>
+        </wje-select>
+      </div>
+    </div>
+
+    <!-- LAZY FIND -->
+
+    <h2>Lazy find</h2>
+    <div class="playground">
+      <div class="content" style="gap: .5rem;">
+        <wje-select placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple clearable>
+          <wje-options lazy url="/api/options" item-value="value" item-text="text" lazy-load-size="6" option-array-path="data"></wje-options>
+        </wje-select>
+        
+        <wje-select placeholder="Select options" variant="standard" max-height="200px" find clearable>
+          <wje-options lazy url="/api/options" item-value="tralala" item-text="label"></wje-options>
+        </wje-select>
+        
+        <wje-select label="Label" placeholder="Select options" max-options="1" max-height="200px" find multiple clearable>
+          <wje-options lazy url="/api/options" item-value="tralala" item-text="label"></wje-options>
+        </wje-select>
+        
+        <wje-select label="Label" placeholder="Select options" max-height="200px" find clearable>
+          <wje-options lazy url="/api/options" item-value="tralala" item-text="label"></wje-options>
         </wje-select>
       </div>
     </div>

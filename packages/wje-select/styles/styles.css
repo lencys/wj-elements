@@ -16,6 +16,9 @@
   --wje-select-color: var(--wje-color);
   --wje-select-border-radius: var(--wje-border-radius-medium);
 
+  --wje-select-margin-bottom: .5rem;
+  margin-bottom: var(--wje-select-margin-bottom);
+
   width: 100%;
   display: block;
   [slot=arrow] {
