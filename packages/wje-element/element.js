@@ -351,14 +351,14 @@ export default class WJElement extends HTMLElement {
 		let attrs = this.getAttributeNames();
 		attrs.forEach((name) => {
 			const sanitizedName = this.sanitizeName(name);
-			if (this[sanitizedName] == undefined) {
-				Object.defineProperty(this, sanitizedName, {
-					set: (value) => this.setAttribute(name, value),
-					get: (_) => {
-						return this.getAttribute(name);
-					},
-				});
-			}
+
+			const protoFunc = Object.getOwnPropertyDescriptors(this.__proto__)[sanitizedName];
+			const func = Object.getOwnPropertyDescriptors(this)[sanitizedName];
+
+			Object.defineProperty(this, sanitizedName, {
+				set: protoFunc?.set ?? func?.set ?? ((value) => this.setAttribute(name, value)),
+				get: protoFunc?.get ?? func?.get ?? (() => this.getAttribute(name))
+			});
 		});
 	}
 

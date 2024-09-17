@@ -25,6 +25,9 @@ export default class Options extends WJElement {
      */
     constructor() {
         super();
+
+        this._loadedOptions = [];
+
     }
 
     dependencies = {
@@ -101,12 +104,17 @@ export default class Options extends WJElement {
         this.setAttribute("lazy", value);
     }
 
+    get options() {
+        return this._loadedOptions?.flat();
+    }
+
     /**
      * Lifecycle method, called whenever an observed property changes
      */
     attributeChangedCallback(name, oldValue, newValue) {
         // remove all loaded options 
         if (this.infiniteScroll && name === "search" && oldValue !== newValue) {
+            this._loadedOptions = [];
             this.infiniteScroll.placementObj.innerHTML = "";
             this.infiniteScroll.totalPages = 0
             this.infiniteScroll.refresh();
@@ -147,7 +155,10 @@ export default class Options extends WJElement {
             infiniteScroll.setCustomData = async (page, signal) => {
                 let res = await this.service.get(`${this.url}${this.search ? `/${this.search}` : ''}?page=${page}&size=${this.lazyLoadSize}`, null, false, signal);
 
-                return res;
+                const filteredOptions = this.filterOutDrawnOptions(res);
+                this._loadedOptions.push(...this.processData(filteredOptions))
+
+                return filteredOptions;
             }
 
             this.contains(infiniteScroll) || this.appendChild(infiniteScroll);
@@ -155,7 +166,12 @@ export default class Options extends WJElement {
             this.infiniteScroll = infiniteScroll;
         } else {
             this.response = await this.getPages();
-            this.append(...this.processData(this.response).map(this.htmlItem))
+            let optionsData = this.filterOutDrawnOptions(this.response);
+            optionsData = this.processData(optionsData);
+
+            this._loadedOptions.push(...optionsData);
+
+            this.append(...optionsData.map(this.htmlItem))
         }
 
         fragment.appendChild(slot);
@@ -170,13 +186,36 @@ export default class Options extends WJElement {
      * @returns {any} - The options based on the option array path.
      */
     processData(data) {
-        const splittedOptionArrayPath = this.optionArrayPath?.split(".");
+        const splittedOptionArrayPath = this.optionArrayPath ? this.optionArrayPath?.split(".") : null;
         let options = data;
+
         splittedOptionArrayPath?.forEach((path) => {
             options = options[path];
         });
 
-        return options;
+        return options ?? [];
+    }
+
+    /**
+     * Filters out drawn options from the response.
+     * 
+     * @param {any} response - The response to filter.
+     * @returns {any} - The filtered response.
+     */
+    filterOutDrawnOptions(response) {
+        const splittedOptionArrayPath = this.optionArrayPath ? this.optionArrayPath?.split(".") : [];
+        let filteredResponse = structuredClone(response);
+
+        const recursiveUpdate = (object, pathToProperty) => {
+            if (pathToProperty.length > 1) {
+                recursiveUpdate(object[pathToProperty[0]], pathToProperty.slice(1));
+            } else {
+                object[pathToProperty[0]] = object[pathToProperty[0]].filter(option => !this._loadedOptions.some(loadedOption => loadedOption[this.itemValue] === option[this.itemValue]));
+            }
+        }
+
+        recursiveUpdate(filteredResponse, splittedOptionArrayPath);
+        return filteredResponse;
     }
 
     /**
@@ -198,6 +237,7 @@ export default class Options extends WJElement {
 
         option.setAttribute("value", item[this.itemValue] ?? '');
         option.innerText = item[this.itemText] ?? '';
+
         return option;
     }
 
@@ -215,5 +255,39 @@ export default class Options extends WJElement {
         }
         const data = await response.json();
         return data;
+    }
+
+    /**
+     * Finds the selected option data based on the given selected option values.
+     *
+     * @param {Array} selectedOptionValues - The array of selected option values.
+     * @returns {Array} - The array of option data that matches the selected option values.
+     */
+    findSelectedOptionData(selectedOptionValues = []) {
+        return this.options.filter(option => selectedOptionValues.includes(option[this.itemValue]));
+    }
+
+    /**
+     * Adds an option to the element.
+     * 
+     * @param {Object} optionData - The data of the option to be added.
+     */
+    addOption(optionData) {
+        if (this._loadedOptions.some(option => option[this.itemValue] === optionData[this.itemValue])) {
+            return;
+        }
+
+        this.appendChild(this.htmlItem(optionData));
+        this._loadedOptions.push(optionData);
+    }
+
+    /**
+     * Adds options to the element.
+     * 
+     * @param {Array} optionsData - The array of option data to be added.
+     * @param {boolean} [silent=false] - Whether to suppress events triggered by adding options.
+     */
+    addOptions(optionsData = [], silent = false) {
+        Array.isArray(optionsData) ? optionsData?.forEach(optionData => this.addOption(optionData, silent)) : this.addOption(optionsData, silent);
     }
 }

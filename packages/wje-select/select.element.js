@@ -428,7 +428,7 @@ export default class Select extends WJElement {
             e.stopPropagation();
         });
 
-        this.selections();
+        this.selections(true);
 
         this.list.addEventListener("wje-options:load", (e) => {
             this.list.scrollTo(0, 0);
@@ -474,9 +474,7 @@ export default class Select extends WJElement {
 
         e.target.selected = !e.target.hasAttribute("selected");
 
-        this.selections(e.target);
-
-        event.dispatchCustomEvent(this, "wje-select:change");
+        this.selections();
     }
 
     /**
@@ -558,6 +556,7 @@ export default class Select extends WJElement {
                 }
             }
         }
+
     }
 
     /**
@@ -565,7 +564,7 @@ export default class Select extends WJElement {
      *
      * @param {Element} option - The option to select.
      */
-    selections(option) {
+    selections(silence = false) {
         let options = this.getSelectedOptions();
 
         this.selectedOptions = Array.isArray(options) ? options : Array.from(options);
@@ -582,6 +581,10 @@ export default class Select extends WJElement {
         } else {
             this.selectionChanged();
         }
+
+        if (silence) return;
+        event.dispatchCustomEvent(this, "wje-select:change");
+
     }
 
     /**
@@ -638,13 +641,107 @@ export default class Select extends WJElement {
         option.removeAttribute("selected");
         e.target.parentNode.removeChild(e.target);
 
-        this.selections(null, 0);
+        this.selections();
     }
 
+    /**
+     * Generates an HTML option element based on the provided item and mapping.
+     * 
+     * @param {Object} item - The item to generate the option for.
+     * @param {Object} [map] - The mapping object that specifies the properties of the item to use for the option's value and text.
+     * @param {string} [map.value="value"] - The property of the item to use for the option's value.
+     * @param {string} [map.text="text"] - The property of the item to use for the option's text.
+     * @returns {HTMLElement} The generated HTML option element.
+     */
+    htmlOption(item, map = { value: "value", text: "text" }) {
+        let option = document.createElement("wje-option");
 
+        if (item[map.value] == null) {
+            console.warn(`The item ${JSON.stringify(item)} does not have the property ${map.value}`);
+        }
 
+        if (item[map.text] == null) {
+            console.warn(`The item ${JSON.stringify(item)} does not have the property ${map.text}`);
+        }
 
+        option.setAttribute("value", item[map.value] ?? '');
+        option.innerText = item[map.text] ?? '';
+        return option;
+    }
 
+    /**
+     * Adds an option to the select element.
+     * 
+     * @param {any} optionData - The data for the option to be added.
+     * @param {boolean} [silent=false] - Whether to suppress any events triggered by the addition of the option.
+     * @param {object} [map={ value: "value", text: "text" }] - The mapping object specifying the properties of the option data to be used for the value and text of the option.
+     */
+    addOption(optionData, silent = false, map = { value: "value", text: "text" }) {
+        if (!optionData) return;
+
+        const optionsElement = this.querySelector("wje-options");
+        if (optionsElement) {
+            optionsElement.addOption(optionData, silent, map);
+            return;
+        }
+
+        let option = this.htmlOption(optionData, map);
+        this.appendChild(option);
+    }
+
+    /**
+     * Adds options to the select element.
+     * 
+     * @param {Array|Object} optionsData - The options data to be added. Can be an array of objects or a single object.
+     * @param {boolean} [silent=false] - Indicates whether to trigger events when adding options. Default is false.
+     * @param {Object} [map] - The mapping object that specifies the properties of the options data object. Default is { value: "value", text: "text" }.
+     */
+    addOptions(optionsData, silent = false, map = { value: "value", text: "text" }) {
+        if (!Array.isArray(optionsData)) {
+            this.addOption(optionsData, silent, map);
+        } else {
+            const optionsElement = this.querySelector("wje-options");
+            if (optionsElement) {
+                optionsElement.addOptions(optionsData, silent, map);
+                return;
+            }
+
+            optionsData.forEach((item) => {
+                this.addOption(item, silent, map);
+            });
+        }
+    }
+
+    /**
+     * Selects an option with the specified value.
+     * 
+     * @param {string} value - The value of the option to be selected.
+     * @param {boolean} [silent=false] - Whether to suppress firing events.
+     */
+    selectOption(value, silent = false) {
+        if (!value) return;
+
+        let option = this.querySelector(`wje-option[value="${value}"]`);
+        if (option) {
+            option.selected = true;
+        }
+    }
+
+    /**
+     * Selects one or multiple options in the select element.
+     *
+     * @param {Array|any} values - The value(s) of the option(s) to be selected.
+     * @param {boolean} [silent=false] - Whether to trigger the change event or not.
+     */
+    selectOptions(values, silent = false) {
+        if (!Array.isArray(values)) {
+            this.selectOption(values, silent);
+        } else {
+            values.forEach((value) => {
+                this.selectOption(value, silent);
+            });
+        }
+    }
 
     /**
      * @summary Callback function that is called when the custom element is associated with a form.

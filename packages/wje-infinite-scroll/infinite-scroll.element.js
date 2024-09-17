@@ -288,7 +288,7 @@ export default class InfiniteScroll extends WJElement {
                     response = await this.getPages(page);
                 }
 
-                this.totalPages = response.totalPages;
+                this.totalPages = response?.totalPages;
                 this.currentPage = page;
 
                 this.placementObj = this;
@@ -309,7 +309,7 @@ export default class InfiniteScroll extends WJElement {
                 this.endingEl.classList.add("show");
             }
         } catch (error) {
-            console.log(error.message);
+            console.log(error);
         } finally {
             this.hideLoader();
         }
