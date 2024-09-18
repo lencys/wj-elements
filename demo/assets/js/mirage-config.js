@@ -36,13 +36,14 @@ function makeServer() {
                             return faker.location.country();
                         },
                         label(i) {
-                            return faker.location.state();
+                            return faker.location.country();
                         }
                     }),
                 },
 
                 seeds(server) {
                     server.createList("user", 0);
+                    server.createList("option", 100);
                 },
 
                 routes() {
@@ -65,10 +66,6 @@ function makeServer() {
                     });
 
                     this.get("/api/options", function (schema, request) {
-                        server.db.options.remove(); // musime najprv precistit
-                        server.createList("option", 100);
-
-                        //request.queryParams = {page: '0', size: '10'}
                         const page = +request.queryParams.page;
                         const size = +request.queryParams.size;
 
@@ -86,15 +83,12 @@ function makeServer() {
                     });
 
                     this.get("/api/options/:search", function (schema, request) {
-                        server.db.options.remove(); // musime najprv precistit
-                        server.createList("option", 100);
-
-                        //request.queryParams = {page: '0', size: '10'}
                         const page = +request.queryParams.page;
                         const size = +request.queryParams.size;
 
                         let search = request.params.search;
-                        let data = schema.options.where(option => option.text.includes(search));
+                        let data = schema.options.where(option => option.text.toLowerCase().includes(search.toLowerCase()));
+
                         let paginatedOptions = data.slice(page * size, (page + 1) * size);
                         let options = this.serialize(paginatedOptions).options;
 
