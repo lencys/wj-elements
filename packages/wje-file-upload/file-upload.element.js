@@ -146,7 +146,7 @@ export default class FileUpload extends WJElement {
   }
 
   beforeDraw() {
-    this.uploadFunction = upload(this.uploadUrl, this.chunkSize)
+    this.uploadFunction = upload(this.uploadUrl, this.chunkSize, true)
   }
 
   /**

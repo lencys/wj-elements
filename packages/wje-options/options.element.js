@@ -210,7 +210,7 @@ export default class Options extends WJElement {
             if (pathToProperty.length > 1) {
                 recursiveUpdate(object[pathToProperty[0]], pathToProperty.slice(1));
             } else {
-                object[pathToProperty[0]] = object[pathToProperty[0]].filter(option => !this._loadedOptions.some(loadedOption => loadedOption[this.itemValue] === option[this.itemValue]));
+                object[pathToProperty[0]] = object[pathToProperty[0]]?.filter(option => !this._loadedOptions.some(loadedOption => loadedOption[this.itemValue] === option[this.itemValue])) ?? [];
             }
         }
 

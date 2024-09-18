@@ -139,7 +139,10 @@ export function uploadFile(file, chunkSize, preview) {
   readAndUploadChunk(start, Math.min(start + chunkSize, file.size));
 }
 
-export function upload(url, chunkSize = 1024 * 1024) {
+export function upload(url, chunkSize = 1024 * 1024, wholeFile = false) {
+  if (wholeFile) {
+    return (file, preview) => uploadWholeFile(url, file, preview);
+  }
   return (file, preview) => uploadFileInChunks(url, chunkSize, file, preview);
 }
 
@@ -209,6 +212,27 @@ export async function uploadFileInChunks(url, chunkSize = 1024 * 1024, file, pre
 
   console.log('File upload complete!');
   return partResponses.at(-1).json();
+}
+
+export function uploadWholeFile(url, file, preview) {
+  const formData = new FormData();
+  formData.append('file', file);
+
+  //use fetch 
+  return fetch(url, {
+    method: 'POST',
+    body: formData
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      preview.setAttribute("uploaded", file.size);
+      return data;
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+
 }
 
 
