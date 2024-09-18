@@ -352,7 +352,7 @@ export default class WJElement extends HTMLElement {
 		attrs.forEach((name) => {
 			const sanitizedName = this.sanitizeName(name);
 
-			if (sanitizedName in HTMLElement.prototype) return;
+			if (sanitizedName in this) return;
 
 			const protoFunc = Object.getOwnPropertyDescriptors(this.__proto__)[sanitizedName];
 			const func = Object.getOwnPropertyDescriptors(this)[sanitizedName];
