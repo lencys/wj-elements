@@ -343,6 +343,27 @@ export default class WJElement extends HTMLElement {
 		return [parts.shift(), ...parts.map((n) => n[0].toUpperCase() + n.slice(1))].join('');
 	}
 
+	checkGetterSetter(obj, property) {
+		let descriptor = Object.getOwnPropertyDescriptor(obj, property);
+
+		// Check if the descriptor is found on the object itself
+		if (descriptor) {
+			return {
+				hasGetter: typeof descriptor.get === 'function' ? descriptor.get : null,
+				hasSetter: typeof descriptor.set === 'function' ? descriptor.set : null
+			};
+		}
+
+		// Otherwise, check the prototype chain
+		let proto = Object.getPrototypeOf(obj);
+		if (proto) {
+			return this.checkGetterSetter(proto, property);
+		}
+
+		// If the property doesn't exist at all
+		return { hasGetter: null, hasSetter: null };
+	}
+
 	/**
 	 * Creates one property on this class for every
 	 * HTML property defined on the element
@@ -352,14 +373,11 @@ export default class WJElement extends HTMLElement {
 		attrs.forEach((name) => {
 			const sanitizedName = this.sanitizeName(name);
 
-			if (sanitizedName in this) return;
-
-			const protoFunc = Object.getOwnPropertyDescriptors(this.__proto__)[sanitizedName];
-			const func = Object.getOwnPropertyDescriptors(this)[sanitizedName];
+			const { hasGetter, hasSetter } = this.checkGetterSetter(this, sanitizedName);
 
 			Object.defineProperty(this, sanitizedName, {
-				set: protoFunc?.set ?? func?.set ?? ((value) => this.setAttribute(name, value)),
-				get: protoFunc?.get ?? func?.get ?? (() => this.getAttribute(name))
+				set: hasSetter ?? ((value) => this.setAttribute(name, value)),
+				get: hasGetter ?? (() => this.getAttribute(name))
 			});
 		});
 	}
