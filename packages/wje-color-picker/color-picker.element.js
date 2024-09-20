@@ -229,7 +229,7 @@ export default class ColorPicker extends WJElement {
     }
 
     createSwatches(node) {
-        if(this.swatches.length === 0) return;
+        if (this.swatches.length === 0) return;
 
         let swatches = document.createElement("div");
         swatches.classList.add("swatches");
@@ -259,14 +259,14 @@ export default class ColorPicker extends WJElement {
         this.init = false;
         // ak sa otvori popup tak si odchytime event a nastavime potrebne parametre
         this.addEventListener("wje-popup:show", (e) => {
-            if(!this.init) {
+            if (!this.init) {
                 window.setTimeout(() => {
 
                     this.colorAreaDimension = this.dimension();
                     this.markerPosition = this.setMarkerPositionByColor(this.input.value);
                     this.setMarkerPosition(this.markerPosition.x, this.markerPosition.y);
 
-                    if(this.input.value != "")
+                    if (this.input.value != "")
                         this.alphaSlider.value = 100;
 
                     this.setColor();
@@ -286,7 +286,7 @@ export default class ColorPicker extends WJElement {
         }
     }
 
-    disconnectedCallback() {
+    beforeDisconnect() {
         this.init = false;
     }
 
@@ -364,13 +364,13 @@ export default class ColorPicker extends WJElement {
     setColor = (color = null, type = "") => {
         let currentColor = color;
 
-        if(currentColor === null && type === "") {
+        if (currentColor === null && type === "") {
             currentColor = tinycolor(this.input.value);
             this.colorArea.style.setProperty("--wje-color-picker-area", currentColor.toHexString());
         }
 
         // SET: marker - HEX8
-        if(type === "marker") {
+        if (type === "marker") {
             this.alphaSlider.value = 100;
             this.alphaSlider.style.setProperty("--wje-color-picker-value", currentColor.toHexString());
             this.colorPreview.style.setProperty("--wje-color-picker-value", currentColor.toHex8String());
@@ -379,7 +379,7 @@ export default class ColorPicker extends WJElement {
         }
 
         // SET: hue - HEX
-        if(type === "hue") {
+        if (type === "hue") {
             let markerColorByPosition = this.setColorAtPosition(this.markerPosition.x, this.markerPosition.y, this.alphaSlider.value);
 
             currentColor = tinycolor(this.getHSVA(this.hueSlider.value, this.alphaSlider.value));
@@ -392,7 +392,7 @@ export default class ColorPicker extends WJElement {
         }
 
         // SET: alpha - HEX8
-        if(type === "alpha") {
+        if (type === "alpha") {
             currentColor = tinycolor(this.input.value);
             let hsv = currentColor.toHsv();
             hsv.a = this.alphaSlider.value / 100;
@@ -403,7 +403,7 @@ export default class ColorPicker extends WJElement {
         }
 
         // SET: swatch - HEX
-        if(type === "swatch") {
+        if (type === "swatch") {
             this.colorPreview.style.setProperty("--wje-color-picker-value", currentColor.toHex8String());
             this.marker.style.setProperty("--wje-color-picker-value", currentColor.toHexString());
             this.alphaSlider.style.setProperty("--wje-color-picker-value", currentColor.toHexString());

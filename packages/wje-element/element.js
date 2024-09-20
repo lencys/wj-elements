@@ -28,6 +28,21 @@ export default class WJElement extends HTMLElement {
 		this.functionStack = [];
 		this.scheludedRefresh = false;
 		this._dependencies = {};
+
+		this._controller = new AbortController();
+
+		this.drawingStatuses = {
+			ATTACHED: 1,
+			BEGINING: 2,
+			START: 3,
+			DRAWING: 4,
+			DONE: 5,
+			DISCONNECTED: 6
+		}
+
+		this._signalList = [
+			this._controller
+		];
 	}
 
 	get permission() {
@@ -141,6 +156,7 @@ export default class WJElement extends HTMLElement {
 	}
 
 	async connectedCallback() {
+		this.drawingStatus = this.drawingStatuses.ATTACHED;
 
 		// RHR toto sa tiež týka slick routeru pretože on začal routovanie ešte pred vykreslením wjelementu
 		this.finisPromise = (resolve) => {
@@ -153,55 +169,30 @@ export default class WJElement extends HTMLElement {
 
 
 		await this.initWjElement(true);
-		// TODO experiment�lne posielanie funkcii cez custom attributy
-		// Object.defineProperty(this._attributes, sanitizedName, {
-		//     set: (value) => this.setAttribute(name, value),
-		//     get: _ => {
-		//         return this.getAttribute(name)
-		//     }
-		// })
 	}
 
 	initWjElement = async (force = false) => {
-		this.functionStack = [];
+		const controller = new AbortController();
+		this._signalList.push(controller);
 
-		const processId = Date.now();
-		this.functionStack.push(processId);
+
+		this.drawingStatus = this.drawingStatuses.BEGINING
 
 		this.setupAttributes?.();
 		if (this.isShadowRoot) {
 			!this.shadowRoot && this.attachShadow({ mode: this.shadowType || 'open' });
 		}
 
-		// if (this.constructor.CSS) {
-		//     let stylesToAdopt = this.constructor.CSS()
-		//     if (Array.isArray(stylesToAdopt)) {
-		//
-		//         await Promise.all(stylesToAdopt.map(path => {
-		//             return WjImport.call(this, path)
-		//         })).then()
-		//
-		//     } else {
-		//         WjImport.call(this, stylesToAdopt)
-		//     }
-		// }
-
 		this.setUpAccessors();
 
-		this.drawingStatus = 'BEGINING';
 
-		this.display(force, processId);
+		this.drawingStatus = this.drawingStatuses.START;
+		this.display(force, controller.signal);
 
 		const sheet = new CSSStyleSheet();
 		sheet.replaceSync(this.constructor.cssStyleSheet);
 
 		this.context.adoptedStyleSheets = [sheet];
-
-		// RHR - zatial zakomentované pokiaľ by to pokazilo niečo iné
-		// for (let i = 0; i < this.childNodes.length; i++) {
-		//     let child = this.childNodes[i];
-		//     this.append(child);
-		// }
 	};
 
 	setupAttributes() {
@@ -229,11 +220,11 @@ export default class WJElement extends HTMLElement {
 		this.beforeDisconnect?.();
 
 		if (this.isAttached) this.context.innerHTML = '';
-
-		this.drawingStatus = 'DISCONNECTED';
 		this.isAttached = false;
 
 		this.afterDisconnect?.();
+
+		this.drawingStatus = this.drawingStatuses.DISCONNECTED
 	}
 
 	/**
@@ -241,7 +232,8 @@ export default class WJElement extends HTMLElement {
 	 */
 	attributeChangedCallback(name, old, newName) {
 		if (!this.isAttached && old !== newName) {
-			this.scheludedRefresh = true;
+			// this.scheludedRefresh = true;
+			this.refresh()
 			return;
 		}
 
@@ -251,13 +243,13 @@ export default class WJElement extends HTMLElement {
 	}
 
 	async refresh() {
-		this.beforeDisconnect?.();
-		this.refreshUpdatePromise();
-		if (this.drawingStatus != 'AFTER') {
+		this._signalList.forEach(signal => signal.abort());
+
+		if (this.drawingStatus && this.drawingStatus >= this.drawingStatuses.START) {
+			this.beforeDisconnect?.();
+			this.refreshUpdatePromise();
 			this.afterDisconnect?.();
-			await this.initWjElement(true);
-		} else {
-			this.unregister?.();
+
 			await this.initWjElement(true);
 		}
 	}
@@ -269,18 +261,7 @@ export default class WJElement extends HTMLElement {
 		return null;
 	}
 
-	display(force = false, processId) {
-		if (this.isProcessingFlow(processId)) return;
-
-		// gather slotted elements and save then to variable
-		// let allSlotedElements = this.context.querySelectorAll('slot');
-		// let slotedElements = [...allSlotedElements].map((el) => {
-		// 	return {
-		// 		name: el.name,
-		// 		elements: [...el.assignedElements()],
-		// 	};
-		// });
-
+	display(force = false, signal) {
 		if (force) {
 			[...this.context.childNodes].forEach(this.context.removeChild.bind(this.context));
 			this.isAttached = false;
@@ -288,33 +269,22 @@ export default class WJElement extends HTMLElement {
 
 		this.context.append(this.template.content.cloneNode(true));
 
-		// // restore slotted elements
-		// slotedElements.forEach((slot) => {
-		// 	let slotted = this.context.querySelector(`slot[name="${slot.name}"]`);
-		// 	slot.elements.forEach((el) => {
-		// 	});
-		// });
-
 		if (this.isPermissionCheck || this.isShow) {
 			if (WjePermissionsApi.isPermissionFulfilled.bind(this)(this.permission)) {
-				this._resolveRender(processId);
+				this.drawingStatus = this.drawingStatuses.DRAWING;
+				this._resolveRender(signal);
 			} else {
 				this.remove();
 			}
 		} else {
-			this._resolveRender(processId);
+			this._resolveRender(signal);
 		}
 
-		// TODO experiment�lne posielanie funkcii cez custom attributy
-		// this.context.querySelectorAll(`[event-click]`).forEach(el=>{
-		//     el.addEventListener('click', this[el.getAttribute('event-click')])
-		// })
 	}
 
-	async render(processId) {
+	async render(signal) {
 		this.drawingStatus = 'DRAWING';
 
-		if (this.isProcessingFlow(processId)) return;
 		await Promise.resolve(this.draw(this.context, this.store, WjElementUtils.getAttributes(this))).then((res) => {
 			let rend = res || '';
 			let element;
@@ -330,7 +300,6 @@ export default class WJElement extends HTMLElement {
 			let rendered = element;
 			// this.isAttached = true;
 
-			if (this.isProcessingFlow(processId)) return;
 			this.context.appendChild(rendered);
 		});
 	}
@@ -382,53 +351,36 @@ export default class WJElement extends HTMLElement {
 		});
 	}
 
-	isProcessingFlow(processId) {
-		return !this.functionStack.find((d) => d == processId)
-	}
-
-	_resolveRender(processId) {
-		if (this.isProcessingFlow(processId)) return;
-
+	async _resolveRender(signal) {
 		this.params = WjElementUtils.getAttributes(this);
 
-		Promise.resolve(this.beforeDraw(this.context, this.store, WjElementUtils.getAttributes(this))).then((res) => {
-			this.drawingStatus = 'BEFORE';
+		new Promise(async (resolve, reject) => {
+			if (signal.aborted) {
+				reject("already Aborted      " + this.drawingStatus);
+			}
 
-			Promise.resolve(this.render(processId)).then((res) => {
-				if (this.isProcessingFlow(processId)) return;
-
-				Promise.resolve(this.afterDraw?.(this.context, this.store, WjElementUtils.getAttributes(this))).then(
-					(a, b, c) => {
-						this.drawingStatus = 'AFTER';
-
-						// RHR toto je bicykel pre slickRouter  pretože routovanie nieje vykonané pokiaľ sa nezavolá updateComplete promise,
-						// toto bude treba rozšíriť aby sme lepšie vedeli kontrolovať vykreslovanie elementov, a flow hookov.
-						this.finisPromise();
-
-						this.rendering = false;
-						this.isAttached = true;
-
-						this.removeClassAfterConnect && this.classList.remove(...this.removeClassAfterConnect);
-
-						// this.observer?.disconnect()
-						// const config = {
-						//     attributes: true,
-						//     childList: false,
-						//     subtree: false,
-						//     characterData: false,
-						//     characterDataOldValue: false,
-						// };
-						//
-						// this.observer = new MutationObserver(()=>{this.refresh()});
-						// this.observer.observe(this, config);
-
-						if (this.scheludedRefresh) {
-							this.refresh();
-							this.scheludedRefresh = false;
-						}
-					}
-				);
+			signal.addEventListener('abort', () => {
+				reject("Aborted   " + this.drawingStatus);
 			});
+
+			await Promise.resolve(this.beforeDraw(this.context, this.store, WjElementUtils.getAttributes(this)))
+			await Promise.resolve(this.render(signal))
+			await Promise.resolve(this.afterDraw?.(this.context, this.store, WjElementUtils.getAttributes(this)))
+
+
+			// RHR toto je bicykel pre slickRouter  pretože routovanie nieje vykonané pokiaľ sa nezavolá updateComplete promise,
+			// toto bude treba rozšíriť aby sme lepšie vedeli kontrolovať vykreslovanie elementov, a flow hookov.
+			this.finisPromise();
+
+			this.rendering = false;
+			this.isAttached = true;
+
+			this.removeClassAfterConnect && this.classList.remove(...this.removeClassAfterConnect);
+			this.drawingStatus = this.drawingStatuses.DONE;
+
+			resolve();
+		}).catch((e) => {
+			console.log(e);
 		});
 	}
 }

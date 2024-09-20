@@ -69,7 +69,11 @@ export default class Select extends WJElement {
      * @param {string} value - The value to set.
      */
     set value(value) {
-        this.internals.setFormValue(JSON.stringify(value));
+        if (Array.isArray(value)) {
+            this.internals.setFormValue(JSON.stringify(value));
+        } else {
+            this.internals.setFormValue(value);
+        }
     }
 
     /**
@@ -79,7 +83,6 @@ export default class Select extends WJElement {
     get value() {
         return this.selected;
     }
-
 
     /**
          * Getter for the customErrorDisplay attribute.
@@ -749,7 +752,7 @@ export default class Select extends WJElement {
      * @param {HTMLFormElement} form - The form the custom element is associated with.
      */
     formAssociatedCallback(form) {
-        form.addEventListener('submit', () => {
+        form?.addEventListener('submit', () => {
             // this.validateInput();
             // this.propagateValidation();
         });

@@ -279,7 +279,7 @@ export default class IconPicker extends WJElement {
     /**
      * Called when the component is disconnected.
      */
-    disconnectedCallback() {
+    beforeDisconnect() {
         this.init = false;
     }
 

@@ -111,7 +111,6 @@ export default class Dialog extends WJElement {
     }
 
     afterDraw(context, store, params) {
-        // this.button = document.querySelector(`[dialog=${params.trigger}]`);
         if (params.trigger) {
             event.addListener(document, params.trigger, null, this.onOpen);
         }
@@ -157,10 +156,5 @@ export default class Dialog extends WJElement {
                 Promise.resolve(this.afterClose(this, e));
             }
         });
-    }
-
-    disconnectedCallback() {
-        event.removeElement(this.button);
-        event.removeElement(this.dialog);
     }
 }

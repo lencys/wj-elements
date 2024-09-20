@@ -177,7 +177,7 @@ export default class Textarea extends WJElement {
     /**
      * Disconnects the component.
      */
-    disconnectedCallback() {
+    beforeDisconnect() {
         this.resizeObserver.unobserve(this.input);
     }
 

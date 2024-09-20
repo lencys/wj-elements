@@ -285,7 +285,7 @@ export default class Checkbox extends WJElement {
     /**
      * Removes the event listener when the checkbox is disconnected.
      */
-    disconnectedCallback() {
+    beforeDisconnect() {
         event.removeElement(this.input);
     }
 
@@ -295,7 +295,7 @@ export default class Checkbox extends WJElement {
      * @param {HTMLFormElement} form - The form the custom element is associated with.
      */
     formAssociatedCallback(form) {
-        form.addEventListener('submit', () => {
+        form?.addEventListener('submit', () => {
             // this.validateInput();
             // this.propagateValidation();
         });

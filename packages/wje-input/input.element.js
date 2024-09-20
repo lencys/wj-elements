@@ -505,7 +505,7 @@ export default class Input extends WJElement {
      * @param {HTMLFormElement} form - The form the custom element is associated with.
      */
     formAssociatedCallback(form) {
-        form.addEventListener('submit', () => {
+        form?.addEventListener('submit', () => {
             this.validateInput();
             this.propagateValidation();
         });

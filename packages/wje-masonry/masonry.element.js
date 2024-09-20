@@ -38,7 +38,7 @@ export default class Masonry extends WJElement {
      * Setter for the maxColWidth property.
      * @param {number} value - The maximum column width.
      */
-    set maxColWidth (value) {
+    set maxColWidth(value) {
         this.setAttribute("max-col-width", value);
     }
 
@@ -46,7 +46,7 @@ export default class Masonry extends WJElement {
      * Getter for the maxColWidth property.
      * @returns {number} The maximum column width.
      */
-    get maxColWidth () {
+    get maxColWidth() {
         return this.hasAttribute("max-col-width") ? +this.getAttribute("max-col-width") : +DEFAULT_MAX_COL_WIDTH;
     }
 
@@ -54,7 +54,7 @@ export default class Masonry extends WJElement {
      * Setter for the cols property.
      * @param {number} value - The number of columns.
      */
-    set cols (value) {
+    set cols(value) {
         this.hasAttribute("cols") ? this.setAttribute("cols", value) : "auto";
     }
 
@@ -62,7 +62,7 @@ export default class Masonry extends WJElement {
      * Getter for the cols property.
      * @returns {number} The number of columns.
      */
-    get cols () {
+    get cols() {
         return getNumberAttribute(this, "cols", "auto");
     }
 
@@ -70,7 +70,7 @@ export default class Masonry extends WJElement {
      * Setter for the gap property.
      * @param {number} value - The gap between columns.
      */
-    set gap (value) {
+    set gap(value) {
         this.setAttribute("gap", value);
     }
 
@@ -78,7 +78,7 @@ export default class Masonry extends WJElement {
      * Getter for the gap property.
      * @returns {number} The gap between columns.
      */
-    get gap () {
+    get gap() {
         return getNumberAttribute(this, "gap", "24");
     }
 
@@ -86,7 +86,7 @@ export default class Masonry extends WJElement {
      * Setter for the debounce property.
      * @param {number} value - The debounce time.
      */
-    set debounce (value) {
+    set debounce(value) {
         this.setAttribute("debounce", value);
     }
 
@@ -94,7 +94,7 @@ export default class Masonry extends WJElement {
      * Getter for the debounce property.
      * @returns {number} The debounce time.
      */
-    get debounce () {
+    get debounce() {
         return getNumberAttribute(this, "debounce", DEFAULT_DEBOUNCE_MS);
     }
 
@@ -124,7 +124,7 @@ export default class Masonry extends WJElement {
      * Getter for the observedAttributes property.
      * @returns {Array} An array of the observed attributes.
      */
-    static get observedAttributes () {
+    static get observedAttributes() {
         return ["max-col-width", "gap", "cols"];
     }
 
@@ -147,7 +147,7 @@ export default class Masonry extends WJElement {
     /**
      * Callback for when the element is disconnected.
      */
-    disconnectedCallback() {
+    beforeDisconnect() {
         this.unsetSlot.removeEventListener("slotchange", this.onSlotChange)
         window.removeEventListener("resize", this.onResize)
         if (this.ro != null) {
@@ -233,7 +233,7 @@ export default class Masonry extends WJElement {
      * Renders the columns.
      * @param {number} colCount - The number of columns to render.
      */
-    renderCols (colCount) {
+    renderCols(colCount) {
         const columns = this.columns;
 
         if (columns.length === colCount) {
@@ -264,7 +264,7 @@ export default class Masonry extends WJElement {
      * Schedules a layout.
      * @param {number} ms - The number of milliseconds to wait before laying out.
      */
-    scheduleLayout (ms = this.debounce) {
+    scheduleLayout(ms = this.debounce) {
         debounce(this.layout, ms, this.debounceId);
     }
 
