@@ -60,6 +60,14 @@ export default class Options extends WJElement {
         return this.hasAttribute("option-array-path");
     }
 
+    get dropdownHeight() {
+        return this.getAttribute("dropdown-height") || "100%";
+    }
+
+    set dropdownHeight(value) {
+        this.setAttribute("dropdown-height", value);
+    }
+
     set itemValue(value) {
         this.setAttribute("item-value", value);
     }
@@ -146,7 +154,7 @@ export default class Options extends WJElement {
 
             const infiniteScroll = document.createElement('wje-infinite-scroll');
             infiniteScroll.setAttribute('placement', 'wje-list');
-            infiniteScroll.setAttribute('height', '100%');
+            infiniteScroll.setAttribute('height', this.dropdownHeight);
             infiniteScroll.setAttribute('object-name', this.optionArrayPath);
             infiniteScroll.append(list);
 

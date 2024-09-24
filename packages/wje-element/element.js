@@ -23,13 +23,7 @@ export default class WJElement extends HTMLElement {
 		this.definedependencies();
 
 		this.rendering = false;
-		this.runtimeTimeout = null;
-		this.count = 0;
-		this.functionStack = [];
-		this.scheludedRefresh = false;
 		this._dependencies = {};
-
-		this._controller = new AbortController();
 
 		this.drawingStatuses = {
 			ATTACHED: 1,
@@ -39,10 +33,6 @@ export default class WJElement extends HTMLElement {
 			DONE: 5,
 			DISCONNECTED: 6
 		}
-
-		this._signalList = [
-			this._controller
-		];
 	}
 
 	get permission() {
@@ -133,6 +123,7 @@ export default class WJElement extends HTMLElement {
 
 	static define(name, elementConstructor = this, options = {}) {
 		const definedElement = customElements.get(name);
+
 		if (!definedElement) {
 			customElements.define(name, elementConstructor, options);
 			return;
@@ -167,32 +158,30 @@ export default class WJElement extends HTMLElement {
 		};
 		this.refreshUpdatePromise();
 
-
-		await this.initWjElement(true);
+		this.renderPromise = this.initWjElement(true)
 	}
 
 	initWjElement = async (force = false) => {
-		const controller = new AbortController();
-		this._signalList.push(controller);
+		return new Promise(async (resolve, reject) => {
+			this.drawingStatus = this.drawingStatuses.BEGINING
 
+			this.setupAttributes?.();
+			if (this.isShadowRoot) {
+				!this.shadowRoot && this.attachShadow({ mode: this.shadowType || 'open' });
+			}
 
-		this.drawingStatus = this.drawingStatuses.BEGINING
+			this.setUpAccessors();
 
-		this.setupAttributes?.();
-		if (this.isShadowRoot) {
-			!this.shadowRoot && this.attachShadow({ mode: this.shadowType || 'open' });
-		}
+			this.drawingStatus = this.drawingStatuses.START;
+			await this.display(force);
 
-		this.setUpAccessors();
+			const sheet = new CSSStyleSheet();
+			sheet.replaceSync(this.constructor.cssStyleSheet);
 
+			this.context.adoptedStyleSheets = [sheet];
 
-		this.drawingStatus = this.drawingStatuses.START;
-		this.display(force, controller.signal);
-
-		const sheet = new CSSStyleSheet();
-		sheet.replaceSync(this.constructor.cssStyleSheet);
-
-		this.context.adoptedStyleSheets = [sheet];
+			resolve();
+		})
 	};
 
 	setupAttributes() {
@@ -227,30 +216,37 @@ export default class WJElement extends HTMLElement {
 		this.drawingStatus = this.drawingStatuses.DISCONNECTED
 	}
 
+	async enqueueUpdate() {
+		try {
+			await this.renderPromise
+		} catch (e) {
+			Promise.reject(e);
+		}
+		const result = this.refresh();
+
+		if (result != null) {
+			await result;
+		}
+
+		this.renderPromise = null;
+	}
+
 	/**
 	 * Lifecycle method, called whenever an observed property changes
 	 */
 	attributeChangedCallback(name, old, newName) {
-		if (!this.isAttached && old !== newName) {
-			// this.scheludedRefresh = true;
-			this.refresh()
-			return;
-		}
-
 		if (old !== newName) {
-			this.refresh();
+			this.renderPromise = this.enqueueUpdate();
 		}
 	}
 
 	async refresh() {
-		this._signalList.forEach(signal => signal.abort());
-
 		if (this.drawingStatus && this.drawingStatus >= this.drawingStatuses.START) {
 			this.beforeDisconnect?.();
 			this.refreshUpdatePromise();
 			this.afterDisconnect?.();
 
-			await this.initWjElement(true);
+			return this.initWjElement(true);
 		}
 	}
 
@@ -272,36 +268,38 @@ export default class WJElement extends HTMLElement {
 		if (this.isPermissionCheck || this.isShow) {
 			if (WjePermissionsApi.isPermissionFulfilled.bind(this)(this.permission)) {
 				this.drawingStatus = this.drawingStatuses.DRAWING;
-				this._resolveRender(signal);
+				return this._resolveRender(signal);
 			} else {
 				this.remove();
 			}
 		} else {
-			this._resolveRender(signal);
+			return this._resolveRender(signal);
 		}
-
 	}
 
-	async render(signal) {
+	async render() {
 		this.drawingStatus = 'DRAWING';
 
-		await Promise.resolve(this.draw(this.context, this.store, WjElementUtils.getAttributes(this))).then((res) => {
-			let rend = res || '';
-			let element;
+		let _draw = this.draw(this.context, this.store, WjElementUtils.getAttributes(this))
 
-			if (rend instanceof HTMLElement || rend instanceof DocumentFragment) {
-				element = rend;
-			} else {
-				let template = document.createElement('template');
-				template.innerHTML = rend;
-				element = template.content.cloneNode(true);
-			}
+		if (_draw instanceof Promise) {
+			_draw = await _draw;
+		}
 
-			let rendered = element;
-			// this.isAttached = true;
+		let rend = _draw;
+		let element;
 
-			this.context.appendChild(rendered);
-		});
+		if (rend instanceof HTMLElement || rend instanceof DocumentFragment) {
+			element = rend;
+		} else {
+			let template = document.createElement('template');
+			template.innerHTML = rend;
+			element = template.content.cloneNode(true);
+		}
+
+		let rendered = element;
+
+		this.context.appendChild(rendered);
 	}
 
 	/**
@@ -354,19 +352,20 @@ export default class WJElement extends HTMLElement {
 	async _resolveRender(signal) {
 		this.params = WjElementUtils.getAttributes(this);
 
-		new Promise(async (resolve, reject) => {
-			if (signal.aborted) {
-				reject("already Aborted      " + this.drawingStatus);
+		return new Promise(async (resolve, reject) => {
+			const __beforeDraw = this.beforeDraw(this.context, this.store, WjElementUtils.getAttributes(this));
+
+			if (__beforeDraw instanceof Promise) {
+				await __beforeDraw;
 			}
 
-			signal.addEventListener('abort', () => {
-				reject("Aborted   " + this.drawingStatus);
-			});
+			await this.render();
 
-			await Promise.resolve(this.beforeDraw(this.context, this.store, WjElementUtils.getAttributes(this)))
-			await Promise.resolve(this.render(signal))
-			await Promise.resolve(this.afterDraw?.(this.context, this.store, WjElementUtils.getAttributes(this)))
+			const __afterDraw = this.afterDraw?.(this.context, this.store, WjElementUtils.getAttributes(this));
 
+			if (__afterDraw instanceof Promise) {
+				await __afterDraw;
+			}
 
 			// RHR toto je bicykel pre slickRouter  pretože routovanie nieje vykonané pokiaľ sa nezavolá updateComplete promise,
 			// toto bude treba rozšíriť aby sme lepšie vedeli kontrolovať vykreslovanie elementov, a flow hookov.

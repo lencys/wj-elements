@@ -14,9 +14,10 @@ template.innerHTML = `
       <div class="content" style="display: block;">
         <wje-radio-group value="dog">
           <wje-radio value="cat">Cat</wje-radio>
-          <wje-radio value="dog">Dog</wje-radio>
           <wje-radio value="elephant" disabled="">Elephant</wje-radio>
           <wje-radio indeterminate value="rabbit" >Rabbit</wje-radio>
+          <wje-radio value="dog">Dog</wje-radio>
+
         </wje-radio-group>
       </div>
     </div>
@@ -28,6 +29,8 @@ template.innerHTML = `
       <div class="content" style="display: block;">
         <wje-radio-group value="dog">
           <wje-radio value="cat" placement="end">Cat</wje-radio>
+          <wje-radio value="elephant" disabled="" placement="end">Elephant</wje-radio>
+          <wje-radio indeterminate value="rabbit"  placement="end">Rabbit</wje-radio>
           <wje-radio value="dog" placement="end" checked>Dog</wje-radio>
         </wje-radio-group>
       </div>
