@@ -52,9 +52,9 @@ template.innerHTML = `
       </div>
     </div>
 
-    <!-- LAZY FIND -->
+    <!-- AUTOCOMPLETE -->
 
-    <h2>Lazy find</h2>
+    <h2>Autocomplete</h2>
     <div class="playground">
       <div class="content" style="gap: .5rem;">
         <wje-select placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple clearable>
