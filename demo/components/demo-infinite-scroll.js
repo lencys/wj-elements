@@ -47,16 +47,14 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
       <div class="content">
         <wje-infinite-scroll url="/api/users" placement="wje-list" size="6">
           <wje-list>
-          <wje-tooltip content="{{fullName}}" iterate>
-            <wje-item >
-              
+            <wje-tooltip content="{{fullName}}" iterate>
+              <wje-item>
                 <wje-label>
                   <h4>{{fullName}}</h4>
                   <p>{{jobTitle}}</p>
                 </wje-label>
-                </wje-item>
-              </wje-tooltip>
-            
+              </wje-item>
+            </wje-tooltip>
           </wje-list>
         </wje-infinite-scroll>
       </div>
