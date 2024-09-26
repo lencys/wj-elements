@@ -4,7 +4,7 @@ export class LocalizerDefault {
   constructor(element) {
     this.element = element;
 
-    this.lang = this.element.lang || document.documentElement.lang || 'sk-SK';
+    this.lang = this.element.lang || document.documentElement.lang || 'en-gb';
     this.dir = this.element.dir || document.documentElement.dir || 'ltr';
 
     this.setLanguage();
@@ -29,6 +29,7 @@ export class LocalizerDefault {
     return langMap ? langMap[key] || key : key;
   }
 
+  // Vyhľadávanie prekladu podľa kľúča a typu čísla
   translatePlural(key, count = 0, type = "cardinal") {
     const plural = new Intl.PluralRules(this.lang, { type: type });
 
@@ -54,12 +55,17 @@ export class LocalizerDefault {
 }
 
 export function registerTranslation(...translation) {
-  translation.map(t => {
+  translation.forEach(t => {
+    if (!t.code) {
+      console.error("Translation object is missing 'code' property:", t);
+      return;
+    }
+
     const code = t.code.toLowerCase();
-    if (translations.has(code)) {
-      translations.set(code, { ...translations.get(code), ...t });
+    if (window.translations.has(code)) {
+      window.translations.set(code, { ...window.translations.get(code), ...t });
     } else {
-      translations.set(code, t);
+      window.translations.set(code, t);
     }
   });
 }

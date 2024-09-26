@@ -10,8 +10,8 @@ import { fetchAndParseCSS } from "./utils/animations.js";
 import { Localizer } from "./utils/localize.js";
 import { WjePermissionsApi } from "./utils/permissions-api.js";
 import { formatDate } from "./utils/date.js";
-import { sk } from "./translations/sk-SK.js";
-import { en } from "./translations/en-GB.js";
+import { skSk } from "./translations/sk-SK.js";
+import { enGb } from "./translations/en-GB.js";
 
 import { default as Accordion } from "./wje-accordion/accordion.js";
 import { default as AccordionItem } from "./wje-accordion-item/accordion-item.js";
@@ -54,6 +54,7 @@ import { default as InfiniteScroll } from "./wje-infinite-scroll/infinite-scroll
 import { default as Input } from "./wje-input/input.js";
 import { default as InputFile } from "./wje-input-file/input-file.js";
 import { default as Item } from "./wje-item/item.js";
+import { default as Kanban } from "./wje-kanban/kanban.js";
 import { default as Label } from "./wje-label/label.js";
 import { default as List } from "./wje-list/list.js";
 import { default as Main } from "./wje-main/main.js";
@@ -97,6 +98,7 @@ import { default as Thumbnail } from "./wje-thumbnail/thumbnail.js";
 import { default as Timeline } from "./wje-timeline/timeline.js";
 import { default as TimelineItem } from "./wje-timeline-item/timeline-item.js";
 import { default as Toast } from "./wje-toast/toast.js";
+import { default as ToastItem } from "./wje-toast-item/toast-item.js";
 import { default as Toggle } from "./wje-toggle/toggle.js";
 import { default as Toolbar } from "./wje-toolbar/toolbar.js";
 import { default as ToolbarAction } from "./wje-toolbar-action/toolbar-action.js";
@@ -148,6 +150,7 @@ export {
   Input,
   InputFile,
   Item,
+  Kanban,
   Label,
   List,
   Main,
@@ -191,6 +194,7 @@ export {
   Timeline,
   TimelineItem,
   Toast,
+  ToastItem,
   Toggle,
   Toolbar,
   ToolbarAction,
