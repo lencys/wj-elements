@@ -20,7 +20,7 @@ export default class WJElement extends HTMLElement {
 
 		// definujeme vsetky zavislosti.
 		// Do zavislosti patria len komponenty, ktore su zavisle od ktoreho je zavisly tento komponent
-		this.definedependencies();
+		this.defineDependencies();
 
 		this.rendering = false;
 		this._dependencies = {};
@@ -130,9 +130,9 @@ export default class WJElement extends HTMLElement {
 		}
 	}
 
-	definedependencies() {
+	defineDependencies() {
 		if (this.dependencies)
-			Object.entries(dependencies).forEach((name, component) => WJElement.define(name, component))
+			Object.entries(this.dependencies).forEach((name, component) => WJElement.define(name, component))
 	}
 
 	beforeDraw() { }
