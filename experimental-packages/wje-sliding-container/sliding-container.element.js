@@ -339,9 +339,7 @@ export default class SlidingContainer extends WJElement {
                         widthOfParrentElement +
                         "px";
                 }
-            }
-
-            if (isLastChildInContainer) {
+            } else if (isLastChildInContainer) {
                 this.style.right =
                     window.innerWidth -
                     (parentElementBoundingbox.left +
