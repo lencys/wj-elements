@@ -1,7 +1,7 @@
 import { Localizer } from "../utils/localize.js";
 
-export const en = {
-  code: 'en-GB',
+export const enGb = {
+  code: 'en-gb',
   name: 'English',
   dir: 'ltr',
 
@@ -15,4 +15,4 @@ export const en = {
   "wj.stepper.step": "Step",
 };
 
-Localizer.registerTranslation(en);
+Localizer.registerTranslation(enGb);

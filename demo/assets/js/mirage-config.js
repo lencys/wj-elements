@@ -10,6 +10,7 @@ function makeServer() {
             let server = createServer({
                 models: {
                     user: Model,
+                    applicant: Model,
                     option: Model,
                 },
 
@@ -26,6 +27,27 @@ function makeServer() {
                         },
                         description(i) {
                             return faker.lorem.sentence()
+                        }
+                    }),
+                    applicant: Factory.extend({
+                        user(i) {
+                            return {
+                                id: faker.number.int(99),
+                                fullName: faker.person.fullName(),
+                                image: faker.image.avatar(),
+                                title: faker.person.jobTitle(),
+                                years: faker.number.int(99),
+                                address: faker.location.city()
+                            }
+                        },
+                        status(i) {
+                            return {
+                                id: faker.number.int(99),
+                                name: faker.helpers.arrayElement(['Nový/á', 'Preverený/á telefonátom', 'Naplánované prvé kolo pohovoru', 'Naplánované druhé kolo pohovoru', 'Ponuka', 'Zamietnuté', 'Iné'])
+                            }
+                        },
+                        sendCV(i) {
+                            return faker.date.recent()
                         }
                     }),
                     option: Factory.extend({
@@ -63,6 +85,16 @@ function makeServer() {
                             totalPages: 10,
                             data: users,
                         }
+                    });
+
+                    this.get("/api/applicants", function (schema, request) {
+                        server.db.applicants.remove(); // musime najprv precistit
+                        server.createList("applicant", 10);
+
+                        let data = schema.applicants.all();
+                        let applicants = this.serialize(data).applicants;
+
+                        return applicants;
                     });
 
                     this.get("/api/options", function (schema, request) {

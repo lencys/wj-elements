@@ -1,0 +1,456 @@
+import { default as WJElement, WjElementUtils, event } from "../wje-element/element.js";
+import styles from "./styles/styles.css?inline";
+import { he } from "@faker-js/faker";
+
+/**
+ * `Kanban` is a custom web component that represents a Kanban board with draggable columns and cards.
+ * It extends from `WJElement`.
+ *
+ * @extends {WJElement}
+ */
+export default class Kanban extends WJElement {
+    constructor(options = {}) {
+        super();
+        this.totalPages = 0;
+        this.isLoading = [];
+        this._response = {};
+        this.iterate = null;
+        this._infiniteScrollTemplate = null;
+        this.isDragging = false;
+        this.selectedCards = []; // Array to hold selected cards
+
+
+    }
+
+    set infiniteScrollTemplate(value) {
+        this._infiniteScrollTemplate = value;
+    }
+
+    get infiniteScrollTemplate() {
+        return this._infiniteScrollTemplate;
+    }
+
+    set response(value) {
+        this._response = value;
+    }
+
+    get response() {
+        return this._response;
+    }
+
+    set objectName(value) {
+        this.setAttribute("object-name", value);
+    }
+
+    get objectName() {
+        return this.getAttribute("object-name") || "data";
+    }
+
+    set poolName(value) {
+        this.setAttribute("pool-name", value);
+    }
+
+    get poolName() {
+        return this.getAttribute("pool-name") || "status";
+    }
+
+    className = "Kanban";
+
+    /**
+     * Returns the CSS styles for the component.
+     *
+     * @static
+     * @returns {CSSStyleSheet}
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
+
+    /**
+     * Returns the list of attributes to observe for changes.
+     *
+     * @static
+     * @returns {Array<string>}
+     */
+    static get observedAttributes() {
+        return [];
+    }
+
+    /**
+     * Sets up the attributes for the component.
+     */
+    setupAttributes() {
+        this.isShadowRoot = "open";
+    }
+
+    /**
+     * Prepares the component before drawing.
+     *
+     * @param {Object} context - The context for drawing.
+     * @param {Object} store - The store for drawing.
+     * @param {Object} params - The parameters for drawing.
+     */
+    async beforeDraw(context, store, params) {
+        this.iterate = this.querySelector("[iterate]");
+        this.infiniteScrollTemplate = this.iterate?.outerHTML;
+        this.iterate?.remove(); // remove template
+
+        this.setAttribute("style", "height: " + this.height);
+
+        this.response = await this.getPages();
+    }
+
+    /**
+     * Draws the component.
+     *
+     * @param {Object} context - The context for drawing.
+     * @param {Object} store - The store for drawing.
+     * @param {Object} params - The parameters for drawing.
+     * @returns {DocumentFragment}
+     */
+    draw(context, store, params) {
+        let fragment = document.createDocumentFragment();
+
+        let native = document.createElement("div");
+        native.classList.add("native");
+        native.setAttribute("part", "native-infinite-scroll");
+
+        let pools = this.getPool(this.response, this.poolName);
+
+        console.log('Pools:', pools);
+
+        // Add pools to the native element
+        for (const statusName in pools) {
+            if (pools.hasOwnProperty(statusName)) {
+
+                let pool = this.htmlPool(statusName, pools[statusName].length);
+                console.log("POOL", pool);
+                native.appendChild(pool);
+                const items = pools[statusName];
+
+                for (const item of items) {
+                    let card = this.htmlCard(item);
+                    pool.querySelector('.pool-content').appendChild(card);
+                }
+            }
+        }
+
+        fragment.appendChild(native);
+
+        return fragment;
+    }
+
+    /**
+     * Called after the component has been drawn.
+     */
+    async afterDraw() {
+        this.UI = {
+            elBoard: this.shadowRoot.getElementById('board'),
+            elTotalCardCount: this.shadowRoot.getElementById('totalCards'),
+            elCardPlaceholder: null,
+        };
+
+        this.setupDragAndDropEvents();
+        this.setupSelectAllCardsEvent();
+        this.setupMenuItemClickEvents();
+    }
+
+    // ----------------------------------------
+    // Setup methods for event listeners
+    // ----------------------------------------
+
+    setupDragAndDropEvents() {
+        this.live('dragstart', '.pool .card', (e) => {
+            this.isDragging = true;
+            e.dataTransfer.clearData();
+            e.dataTransfer.setData('text/plain', e.target.dataset.id);
+            e.dataTransfer.dropEffect = "move";
+            const rect = e.target.getBoundingClientRect();
+            this.draggedElementWidth = rect.width;
+            this.draggedElementHeight = rect.height;
+            e.target.style.opacity = '0.5';
+        });
+
+        this.live('dragend', '.pool .card', (e) => {
+            e.target.style.opacity = '';
+            if (this.UI.elCardPlaceholder) {
+                this.UI.elCardPlaceholder.remove();
+            }
+            this.UI.elCardPlaceholder = null;
+            this.isDragging = false;
+        });
+
+        this.live('dragover', '.pool, .pool .card, .pool .card-placeholder', (e) => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = "move";
+
+            if (e.target.classList.contains('pool')) {
+                e.target.appendChild(this.getCardPlaceholder());
+            } else if (e.target.classList.contains('card')) {
+                e.target.parentNode.insertBefore(this.getCardPlaceholder(), e.target);
+            }
+        });
+
+        this.live('drop', '.pool, .pool .card-placeholder', (e) => {
+            e.preventDefault();
+            if (!this.isDragging) return;
+
+            const todo_id = +e.dataTransfer.getData('text');
+            const card = this.shadowRoot.querySelector('.card[data-id="' + todo_id + '"]');
+
+            if (e.target.classList.contains('pool')) {
+                e.target.querySelector('.pool-content').appendChild(card);
+            } else if (e.target.classList.contains('card-placeholder')) {
+                e.target.parentNode.replaceChild(card, e.target);
+            }
+
+            window.setTimeout(this.updateColumnItemCount, 100);
+        });
+    }
+
+    setupSelectAllCardsEvent() {
+        // Event listener for selecting all cards in a pool
+        this.live('wje-toggle:change', '.select-all-cards', (e) => {
+            const pool = e.target.closest('.pool');
+            this.updateSelectedCards(pool, e.target.checked);
+        });
+
+        // Event listener for selecting individual cards
+        this.live('wje-toggle:change', '.select-card', (e) => {
+            const card = e.target.closest('.card');
+            this.setSelectedCards(e.target.checked, card);
+
+            if(this.selectedCards.length === 0) {
+                e.target.closest('.pool').querySelector('.select-all-cards').checked = false;
+            }
+
+            this.setSelectedItems();
+        });
+    }
+
+    setupMenuItemClickEvents() {
+        this.context.querySelectorAll('wje-menu-item').forEach(menuItem => {
+            menuItem.removeEventListener('wje-menu-item:click', this.menuItemClickHandler);
+        });
+
+        this.context.querySelectorAll('wje-menu-item').forEach(menuItem => {
+            menuItem.addEventListener('wje-menu-item:click', this.menuItemClickHandler);
+        });
+    }
+
+    menuItemClickHandler = (e) => {
+        const action = e.target.dataset.action;
+        const pool = e.target.closest('.pool');
+
+        this.handlePoolAction(action, pool);
+    }
+
+    updateSelectedCards(pool, isChecked) {
+        const cards = pool.querySelectorAll('.pool-content .card');
+
+        cards.forEach(card => {
+            const checkbox = card.querySelector('wje-checkbox');
+            if (checkbox) {
+                checkbox.checked = isChecked;
+            }
+
+            this.setSelectedCards(isChecked, card);
+        });
+
+        this.setSelectedItems();
+    }
+
+    updateColumnItemCount = () => {
+        const pools = this.shadowRoot.querySelectorAll('.pool');
+
+        pools.forEach(pool => {
+            const itemCount = pool.querySelectorAll('.pool-content .card').length;
+            let itemCountDisplay = pool.querySelector('.item-count');
+
+            console.log("Before:", itemCountDisplay.innerHTML);
+            itemCountDisplay.innerHTML = itemCount;
+            console.log("After:", itemCountDisplay.innerHTML);
+        });
+    }
+
+    handlePoolAction(action, pool) {
+        switch(action) {
+            case 'move-left':
+                this.movePool(pool, 'left');
+                break;
+            case 'move-right':
+                this.movePool(pool, 'right');
+                break;
+            case 'rename-pool':
+                this.renamePool(pool);
+                break;
+            default:
+                console.log(`Neznáma akcia: ${action}`);
+        }
+    }
+
+    movePool(pool, direction) {
+        const parent = pool.parentElement;
+
+        // Najprv odstránime všetky event listenery z aktuálnych stĺpcov (pools)
+        // Array.from(parent.children).forEach(removeEventListeners);
+
+        if (direction === 'left' && pool.previousElementSibling) {
+            // Presunieme pool doľava
+            parent.insertBefore(pool, pool.previousElementSibling);
+        } else if (direction === 'right' && pool.nextElementSibling) {
+            // Presunieme pool doprava
+            parent.insertBefore(pool.nextElementSibling, pool);
+        }
+
+        // Po presune stĺpcov (pools) musíme znova pripojiť event listenery
+        // this.setupMenuItemClickEvents();
+    }
+
+    renamePool(pool) {
+        const newName = prompt("Zadajte nový názov pre stĺpec:");
+        if (newName) {
+            const header = pool.querySelector('.pool-header h4');
+            header.innerHTML = `${newName} (<span class="item-count">0</span> položiek)`;
+            this.updateColumnItemCount(); // Aktualizovať počet položiek po premenovaní
+        }
+    }
+
+    getCardPlaceholder() {
+        if (!this.UI.elCardPlaceholder) {
+            this.UI.elCardPlaceholder = document.createElement('div');
+            this.UI.elCardPlaceholder.className = "card-placeholder";
+
+            this.UI.elCardPlaceholder.style.width = this.draggedElementWidth + 'px';
+            this.UI.elCardPlaceholder.style.height = this.draggedElementHeight + 'px';
+        } else {
+            this.UI.elCardPlaceholder.style.width = this.draggedElementWidth + 'px';
+            this.UI.elCardPlaceholder.style.height = this.draggedElementHeight + 'px';
+        }
+        return this.UI.elCardPlaceholder;
+    }
+
+    live(eventType, selector, callback) {
+        const attachListener = (root) => {
+            root.addEventListener(eventType, function (e) {
+                if (e.target.matches(selector)) {
+                    callback.call(e.target, e);
+                }
+            }, false);
+        };
+
+        const traverseAndAttach = (root) => {
+            attachListener(root);
+
+            root.querySelectorAll('*').forEach(function(node) {
+                if (node.shadowRoot) {
+                    traverseAndAttach(node.shadowRoot);
+                }
+            });
+        };
+
+        traverseAndAttach(this.shadowRoot || this); // Start from the Shadow DOM if it exists
+    }
+
+    setSelectedCards(isChecked, card) {
+        if (isChecked) {
+            if (!this.selectedCards.includes(card)) {
+                this.selectedCards.push(card);
+            }
+        } else {
+            this.selectedCards = this.selectedCards.filter(selectedCard => selectedCard !== card);
+        }
+    }
+    setSelectedItems() {
+        const selectedIds = this.selectedCards.map(card => card.getAttribute('data-id'));
+        this.selectedItems = this.response.filter(item => selectedIds.includes(item.id));
+    }
+
+    async getPages(page = 0) {
+        let hasParams = this.url.includes('?');
+        const response = await fetch(`${this.url}${hasParams ? '&' : '?'}page=${page}&size=${this.size}${this?.queryParams}`);
+        if (!response.ok) {
+            throw new Error(`An error occurred: ${response.status}`);
+        }
+        return await response.json();
+    }
+
+    getPool = (data, poolName) => {
+        return data.reduce((acc, item) => {
+            const statusName = item.status.name;
+            if (!acc[statusName]) {
+                acc[statusName] = [];
+            }
+            acc[statusName].push(item);
+            return acc;
+        }, {});
+    }
+
+    htmlPool = (title, countItems) => {
+        let poolHtml = document.createElement("div");
+        poolHtml.classList.add("pool");
+
+        let header = document.createElement("div");
+        header.classList.add("pool-header");
+
+        let checkbox = document.createElement("wje-checkbox");
+        checkbox.setAttribute('type', 'checkbox');
+        checkbox.classList.add('select-all-cards');
+        checkbox.title = 'Select all cards';
+
+        let h4 = document.createElement("h4");
+        h4.textContent = title;
+
+        let badge = document.createElement("wje-badge");
+        badge.setAttribute('color', 'danger');
+        badge.classList.add('item-count');
+        badge.textContent = countItems;
+
+        let dropdown = document.createElement("wje-dropdown");
+        dropdown.setAttribute('placement', 'bottom-start');
+        dropdown.setAttribute('offset', '5');
+        dropdown.setAttribute('collapsible', '');
+        dropdown.innerHTML = `
+            <wje-button fill="link" slot="trigger" size="small" round>
+                <wje-icon name="dots-vertical"></wje-icon>
+            </wje-button>
+            <wje-menu active>
+                <wje-menu-item data-action="rename-pool">
+                    <wj-label>Zmeniť názov</wj-label>
+                </wje-menu-item>
+                <wje-menu-item data-action="move-left">
+                    <wj-label>Posunúť doľava</wj-label>
+                </wje-menu-item>
+                <wje-menu-item data-action="move-right">
+                    <wj-label>Posunúť doprava</wj-label>
+                </wje-menu-item>
+            </wje-menu>
+        `;
+
+        header.appendChild(checkbox);
+        header.appendChild(h4);
+        header.appendChild(badge);
+        header.appendChild(dropdown);
+
+        let content = document.createElement("div");
+        content.classList.add("pool-content");
+
+        poolHtml.appendChild(header);
+        poolHtml.appendChild(content);
+
+        return poolHtml;
+    }
+
+    htmlCard = (item) => {
+        let card = document.createElement("div");
+        card.classList.add("card");
+        card.draggable = true;
+        card.setAttribute("data-id", item.id);
+        card.innerHTML = `
+            <wje-checkbox type="checkbox" class="select-card" title="Select card"></wje-checkbox>
+            <div>Lorem ipsum dolor ${item.id}</div>
+        `;
+
+        return card;
+    }
+}

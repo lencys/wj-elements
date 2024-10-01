@@ -149,6 +149,13 @@
   /* Divider */
   --wje-divider-border-color: var(--wje-border-color);
 
+  /* Input */
+  --wje-input-background-color: var(--wje-background);
+  --wje-input-color: var(--wje-color);
+  --wje-input-color-invalid: var(--wje-color-danger);
+  --wje-input-border-color: var(--wje-border-color);
+  --wje-input-border-color-focus: var(--wje-color-primary);
+
   /* Item */
   --wje-item-color: var(--wje-color);
   --wje-item-border-color: var(--wje-border-color);

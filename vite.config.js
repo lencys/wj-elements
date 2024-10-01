@@ -10,14 +10,13 @@ export default defineConfig(({ mode }) => {
     dotenv.config({ path: path.resolve(__dirname, `.env.${mode}`) });
 
     return {
-        // port to 5199
         server: {
             port: 5174,
             watch: {
                 paths: ['dist/**/*'],
-                ignored: ['!**/dist/**'],
-                usePolling: true, // Enable polling
-                interval: 100 // Polling interval in milliseconds
+                ignored: ['node_modules', 'dist', 'public'],
+                usePolling: true,
+                interval: 1000
             }
         },
         ...(mode === 'development' ? {
@@ -36,22 +35,8 @@ export default defineConfig(({ mode }) => {
         },
         build: {
             assetsInlineLimit: 0,
-            minify: false,// 'terser',
-            // rollupOptions: {
-            //     plugins: [
-            //         terser({
-            //             compress: {
-            //                 drop_console: true, // Odstráň konzolové výpisy
-            //                 drop_debugger: true, // Odstráň debugger statements
-            //             },
-            //             format: {
-            //                 comments: false, // Odstráň komentáre
-            //             },
-            //             mangle: true,
-            //         })
-            //     ]
-            // },
-            sourcemap: false, //mode === 'production', // Enable source maps in production build
+            minify: false,
+            sourcemap: false,
             cssCodeSplit: true,
             outDir: './dist',
             lib: {
@@ -106,6 +91,7 @@ export default defineConfig(({ mode }) => {
                     "input": "./packages/wje-input/input.js",
                     "input-file": "./packages/wje-input-file/input-file.js",
                     "item": "./packages/wje-item/item.js",
+                    "kanban": "./packages/wje-kanban/kanban.js",
                     "label": "./packages/wje-label/label.js",
                     "list": "./packages/wje-list/list.js",
                     "main": "./packages/wje-main/main.js",
@@ -168,19 +154,7 @@ export default defineConfig(({ mode }) => {
             alias: {
                 'wje-master': path.resolve(__dirname, './dist/wje-master.js')
             },
-        },
-        // plugins: [
-        //     javascriptObfuscator({
-        //         compact: true,
-        //         controlFlowFlattening: true,
-        //         controlFlowFlatteningThreshold: 0.75,
-        //         numbersToExpressions: true,
-        //         simplify: true,
-        //         stringArrayShuffling: true,
-        //         splitStrings: true,
-        //         stringArrayThreshold: 0.75
-        //     }),
-        // ],
+        }
     }
 });
 

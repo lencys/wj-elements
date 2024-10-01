@@ -1,7 +1,7 @@
 import { Localizer } from "../utils/localize.js";
 
-export const sk = {
-  code: 'sk-SK',
+export const skSk = {
+  code: 'sk-sk',
   name: 'Slovak',
   dir: 'ltr',
 
@@ -15,4 +15,4 @@ export const sk = {
   "wj.stepper.step": "Krok",
 };
 
-Localizer.registerTranslation(sk);
+Localizer.registerTranslation(skSk);

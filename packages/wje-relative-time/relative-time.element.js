@@ -122,7 +122,9 @@ export default class RelativeTime extends WJElement {
      * @returns {boolean} True if the string is an ISO date, false otherwise.
      */
     isISODate(str) {
-        let regex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\+\d{2}:\d{2}|Z)$/;
-        return regex.test(str);
+        // let regex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\+\d{2}:\d{2}|Z)$/;
+        // return regex.test(str);
+        const date = new Date(str);
+        return !isNaN(date.getTime());
     }
 }

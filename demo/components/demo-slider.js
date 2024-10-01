@@ -4,6 +4,12 @@ import CodeSnippet from "../assets/js/code-snippet-builder.js";
 const template = document.createElement('template');
 
 template.innerHTML = `
+  <style>
+    .content {
+      display: block;
+    }
+  </style>
+  
   <h1>Slider</h1>
   <div class="container">
 

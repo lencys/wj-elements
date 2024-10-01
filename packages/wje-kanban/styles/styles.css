@@ -1,0 +1,78 @@
+/*
+[ Wj kanban ]
+*/
+
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.native {
+  height: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 300px;
+  overflow-x: auto;
+  gap: 1rem;
+}
+
+.pool {
+  display: inline-block;
+  width: 300px;
+  flex: 0 0 300px;
+  vertical-align: top;
+  overflow: auto;
+  padding: 8px;
+  border-radius: 8px;
+  margin-right: 15px;
+}
+
+h4 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+.card {
+  border-radius: 5px;
+  background: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  padding: 8px 10px;
+  color: #000
+}
+
+.card:hover {
+  opacity: 0.5;
+}
+
+.dragging {
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  transform: rotate(-2deg);
+  opacity: 0.5;
+  position: relative;
+  z-index: 1000;
+}
+
+.card-placeholder {
+  display: block;
+  height: 34px;
+  border: 1px dashed #ddd;
+  margin: 3px 0;
+  border-radius: 5px;
+}
+
+.pool-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: .25rem;
+  gap: 0 .25rem;
+  wje-checkbox {
+    margin: 0;
+  }
+  wje-badge {
+    margin-inline-start: auto;
+  }
+}

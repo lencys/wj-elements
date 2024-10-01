@@ -340,6 +340,20 @@
   --wje-img-compare-position: 50%;
   --wje-img-compare-clip-path: inset(0 calc(100% - var(--wje-img-compare-position)) 0 0);
 
+  /* Input */
+  --wje-input-font-family: var(--wje-font-family);
+  --wje-input-background-color: var(--wje-background);
+  --wje-input-color: var(--wje-color);
+  --wje-input-color-invalid: var(--wje-color-danger);
+  --wje-input-border-color: var(--wje-border-color);
+  --wje-input-border-color-focus: var(--wje-color-primary);
+  --wje-input-border-width: 1px;
+  --wje-input-border-style: solid;
+  --wje-input-border-radius: 4px;
+  --wje-input-margin-bottom: .5rem;
+  --wje-input-line-height: 20px;
+  --wje-input-slot-padding-inline: .5rem;
+
   /* Item */
   --wje-item-color: var(--wje-color);
   --wje-item-border-width: 0 0 1px 0;
