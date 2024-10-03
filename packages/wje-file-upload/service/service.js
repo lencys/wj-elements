@@ -225,9 +225,11 @@ export function uploadWholeFile(url, file, preview) {
   })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       preview.setAttribute("uploaded", file.size);
-      return data;
+      return {
+        data,
+        file
+      };
     })
     .catch(error => {
       console.error('Error:', error);

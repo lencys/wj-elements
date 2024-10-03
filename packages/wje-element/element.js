@@ -204,6 +204,13 @@ export default class WJElement extends HTMLElement {
 	}
 
 	beforeDisconnect() { }
+	afterDisconnect() { }
+
+
+	/**
+	 * Cleans up the component.
+	 */
+	componentCleanup() { }
 
 	disconnectedCallback() {
 		this.beforeDisconnect?.();
@@ -214,6 +221,8 @@ export default class WJElement extends HTMLElement {
 		this.afterDisconnect?.();
 
 		this.drawingStatus = this.drawingStatuses.DISCONNECTED
+
+		this.componentCleanup();
 	}
 
 	async enqueueUpdate() {
@@ -278,7 +287,7 @@ export default class WJElement extends HTMLElement {
 	}
 
 	async render() {
-		this.drawingStatus = 'DRAWING';
+		this.drawingStatus = this.drawingStatuses.DRAWING;
 
 		let _draw = this.draw(this.context, this.store, WjElementUtils.getAttributes(this))
 

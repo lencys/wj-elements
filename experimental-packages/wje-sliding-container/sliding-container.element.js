@@ -339,9 +339,7 @@ export default class SlidingContainer extends WJElement {
                         widthOfParrentElement +
                         "px";
                 }
-            }
-
-            if (isLastChildInContainer) {
+            } else if (isLastChildInContainer) {
                 this.style.right =
                     window.innerWidth -
                     (parentElementBoundingbox.left +
@@ -455,24 +453,28 @@ export default class SlidingContainer extends WJElement {
      */
     async open(event) {
         await Promise.resolve(this.beforeOpen(event)).then(async () => {
-            await Promise.resolve(
-                !this._isOpen
-                    ? (() => {
-                        this.dispatchEvent(
-                            new CustomEvent("wje-sliding-container:open", {
-                                bubbles: true,
-                                composed: true,
-                            })
-                        );
 
-                        this.doAnimateTransition();
-                    })()
-                    : () => { }
-            ).then(async () => {
+            if (!this._isOpen) {
+                this.dispatchEvent(
+                    new CustomEvent("wje-sliding-container:beforeOpen", {
+                        bubbles: true,
+                        composed: true,
+                    })
+                );
+
+                await this.doAnimateTransition();
+
                 await Promise.resolve(this.afterOpen(event)).then(() => {
                     this._isOpen = true;
+
+                    this.dispatchEvent(
+                        new CustomEvent("wje-sliding-container:open", {
+                            bubbles: true,
+                            composed: true,
+                        })
+                    );
                 });
-            });
+            }
         });
     }
 
@@ -483,20 +485,17 @@ export default class SlidingContainer extends WJElement {
      */
     async close(event) {
         await Promise.resolve(this.beforeClose(event)).then(async () => {
-            await Promise.resolve(
-                this._isOpen
-                    ? (() => {
-                        this.dispatchEvent(
-                            new CustomEvent("wje-sliding-container:close", {
-                                bubbles: true,
-                                composed: true,
-                            })
-                        );
 
-                        this.doAnimateTransition();
-                    })()
-                    : () => { }
-            ).then(async () => {
+            if (this._isOpen) {
+                this.dispatchEvent(
+                    new CustomEvent("wje-sliding-container:beforeClose", {
+                        bubbles: true,
+                        composed: true,
+                    })
+                );
+
+                await this.doAnimateTransition();
+
                 await Promise.resolve(this.afterClose(event)).then(() => {
                     if (this.removeChildAfterClose) {
                         this.childNodes.forEach((child) => {
@@ -505,8 +504,15 @@ export default class SlidingContainer extends WJElement {
                     }
 
                     this._isOpen = false;
+
+                    this.dispatchEvent(
+                        new CustomEvent("wje-sliding-container:close", {
+                            bubbles: true,
+                            composed: true,
+                        })
+                    );
                 });
-            });
+            }
         });
     }
 

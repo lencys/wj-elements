@@ -41,25 +41,29 @@ export default class Chip extends WJElement {
         else
             native.classList.add("wje-color-default", "wje-color");
 
-        if(this.disabled)
+        if (this.disabled)
             this.classList.add("wje-disabled");
 
-        if(this.outline)
+        if (this.outline)
             this.classList.add("wje-outline");
 
         native.appendChild(slot);
         native.appendChild(active);
 
-        if(this.hasAttribute("removable"))
+        if (this.hasAttribute("removable"))
             native.appendChild(remove);
 
         fragment.appendChild(native);
 
-        this.remove = remove;
+        this.removeElement = remove;
         return fragment;
     }
 
     afterDraw() {
-        event.addListener(this.remove, "click", "wje:chip-remove", null, { stopPropagation: true });
+        event.addListener(this.removeElement, "click", "wje:chip-remove", null, { stopPropagation: true });
+    }
+
+    beforeDisconnect() {
+        event.removeListener(this.removeElement, "click", "wje:chip-remove");
     }
 }
