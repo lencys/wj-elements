@@ -1,4 +1,4 @@
-import { default as WJElement, WjElementUtils } from "../wje-element/element.js";
+import { default as WJElement, event } from "../wje-element/element.js";
 // import { simple, bar, flip, circle } from "./service/service.js";
 
 import styles from "./styles/styles.css?inline";
@@ -20,6 +20,24 @@ export default class Toast extends WJElement {
      */
     constructor() {
         super();
+
+        this.toastStack = Object.assign(document.createElement('div'), { className: 'wje-toast-stack' });
+    }
+
+    set title(value) {
+        this.setAttribute("title", value);
+    }
+
+    get title() {
+        return this.getAttribute("title");
+    }
+
+    set open(value) {
+        this.setAttribute("open", value);
+    }
+
+    get open() {
+        return this.getAttribute("open");
     }
 
     set duration(value) {
@@ -30,21 +48,32 @@ export default class Toast extends WJElement {
         return +this.getAttribute("duration");
     }
 
-    set position(value) {
-        this.setAttribute("position", value);
+    set closable(value) {
+        if(value)
+            this.setAttribute("closable", value);
     }
 
-    get position() {
-        return this.getAttribute("position");
+    get closable() {
+        return this.getAttribute("closable");
     }
 
-    set type(value) {
-        this.setAttribute("type", value);
+    set color(value) {
+        this.setAttribute("color", value);
     }
 
-    get type() {
-        return this.getAttribute("type");
+    get color() {
+        return this.getAttribute("color");
     }
+
+    set countdown(value) {
+        if(value)
+            this.setAttribute("countdown", value);
+    }
+
+    get countdown() {
+        return this.hasAttribute("countdown");
+    }
+
     /**
      * Class name
      * @type {string}
@@ -67,7 +96,22 @@ export default class Toast extends WJElement {
      * @returns {Array<string>}
      */
     static get observedAttributes() {
-        return ["position", "type", "duration"];
+        return ["open", "color", "duration"];
+    }
+
+    /**
+     * Called when an attribute changes.
+     *
+     * @param {string} name - The name of the attribute.
+     * @param {string} old - The old value of the attribute.
+     * @param {string} newName - The new value of the attribute.
+     */
+    attributeChangedCallback(name, old, newName) {
+        // if(this.open) {
+        //     this.show();
+        // } else {
+        //     this.hide();
+        // }
     }
 
     /**
@@ -104,44 +148,145 @@ export default class Toast extends WJElement {
 
         let closeBtn = document.createElement("wje-button");
         closeBtn.setAttribute("fill", "link");
-        closeBtn.setAttribute("color", this.type);
+        closeBtn.setAttribute("color", this.color);
         closeBtn.setAttribute('size', 'small');
         closeBtn.classList.add("close");
 
+        let countdownEl = document.createElement("div");
+        countdownEl.classList.add("countdown");
+
+        let countdownBar = document.createElement("div");
+        countdownBar.classList.add("countdown-bar");
+
         closeBtn.appendChild(icon);
+        countdownEl.appendChild(countdownBar);
 
         native.appendChild(avatarSlot);
         native.appendChild(content);
 
-        if(this.hasAttribute('close'))
+        if(this.hasAttribute('closable'))
             native.appendChild(closeBtn);
+
+        if(this.hasAttribute('countdown'))
+            native.appendChild(countdownEl);
 
         fragment.appendChild(native);
 
         this.closeBtn = closeBtn;
+        this.countdownBar = countdownBar;
 
         return fragment;
     }
 
     afterDraw() {
-        this.closeBtn.addEventListener('wje-button:click', this.removeToast);
+        this.closeBtn.addEventListener('wje-button:click', this.hide);
+        this.addEventListener('mouseenter', this.pause);
+        this.addEventListener('mouseleave', this.resume);
+
+        if(this.hasAttribute('countdown')) {
+            const startWidth = '100%';
+            const endWidth = '0';
+
+            this.countdownAnimation = this.countdownBar.animate([{ width: startWidth }, { width: endWidth }], {
+                duration: this.duration,
+                easing: 'linear'
+            });
+        }
 
         if (this.duration > 0) {
-            this.timeout = setTimeout(() => {
-                this.removeToast();
-            }, this.duration);
+            this.remainingTime = this.duration;
+            this.startTimer();
         }
     }
 
     beforeDisconnect() {
-        this.closeBtn.removeEventListener('wje-button:click', this.removeToast);
+        this.closeBtn.removeEventListener('wje-button:click', this.hide);
+        this.removeEventListener('wje-toast:after-hide', this.removeChildAndStack);
+        this.removeEventListener('mouseenter', this.pause);
+        this.removeEventListener('mouseleave', this.resume);
 
-        clearTimeout(this.timeout);
+        clearTimeout(this.timeoutID);
     }
 
-    removeToast = () => {
-        clearTimeout(this.timeout);
-
-        this.remove();
+    startTimer() {
+        this.startTime = Date.now();
+        if (this.timeoutID) {
+            clearTimeout(this.timeoutID);
+        }
+        this.timeoutID = window.setTimeout(() => {
+            this.hide();
+        }, this.remainingTime);
     }
+
+    stopTimer() {
+        if (this.timeoutID) {
+            window.clearTimeout(this.timeoutID);
+        }
+        const elapsedTime = Date.now() - this.startTime;
+        this.remainingTime -= elapsedTime;
+    }
+
+    resumeTimer() {
+        if (this.remainingTime > 0) {
+            this.startTimer();
+        }
+    }
+
+    show = async () => {
+        if (this.open) {
+            return undefined;
+        }
+
+        this.open = true;
+        event.dispatchCustomEvent(this, 'wje-toast:after-show');
+    }
+
+    hide = async () => {
+        if (!this.open) {
+            return undefined;
+        }
+
+        this.open = false;
+        event.dispatchCustomEvent(this, 'wje-toast:after-hide');
+    }
+
+    pause = async () => {
+        this.countdownAnimation?.pause();
+        this.stopTimer();
+    }
+
+    resume = async () => {
+        this.countdownAnimation?.play();
+        this.resumeTimer();
+    }
+
+    removeChildAndStack() {
+        this.toastStack.removeChild(this);
+
+        if (this.toastStack.querySelector('wje-toast') === null) {
+            this.toastStack.remove();
+        }
+    }
+
+    start = () => {
+        return new Promise(resolve => {
+
+            let stack = document.body.querySelector('.wje-toast-stack');
+            if (stack) {
+                this.toastStack = stack;
+            }
+
+            if (this.toastStack.parentElement === null) {
+                document.body.append(this.toastStack);
+            }
+
+            this.toastStack.appendChild(this);
+
+            this.show();
+
+            this.addEventListener('wje-toast:after-hide', this.removeChildAndStack);
+        });
+    }
+
+
 }

@@ -4,42 +4,61 @@ import CodeSnippet from "../assets/js/code-snippet-builder.js";
 const template = document.createElement('template');
 
 template.innerHTML = `<h1>Toast</h1>
+  <style>
+    .wje-toast-stack {
+      top: 0;
+      inset-inline-end: 0;
+      &.top-start {
+        top: 0;
+        inset-inline-start: 0;
+      }
+      &.top-center {
+        margin: 0 auto;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      &.bottom-start {
+        bottom: 0;
+        inset-inline-start: 0;
+      }
+      &.bottom-end {
+        bottom: 0;
+        inset-inline-end: 0;
+      }
+      &.bottom-center {
+        margin: 0 auto;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+      }
+    }
+  </style>
   <div class="container">
 
-    <!-- TOAST -->
+    <!-- BASIC -->
 
     <h2>Basic</h2>
     <div class="playground">
       <div class="content" style="width: 200px;">
-        <wje-select id="position" label="Position" value="top" variant="standard">
-          <wje-option value="top" selected>Top</wje-option>
-          <wje-option value="bottom">Bottom</wje-option>
-          <wje-option value="top-start">Top Start</wje-option>
-          <wje-option value="top-end">Top End</wje-option>
-          <wje-option value="bottom-start">Bottom Start</wje-option>
-          <wje-option value="bottom-end">Bottom End</wje-option>
-        </wje-select>
-        
-        <wje-select id="type" label="Type" value="success" variant="standard">
-          <wje-option value="contrast" selected>Contrast</wje-option>
-          <wje-option value="primary">Primary</wje-option>
-          <wje-option value="complete">Complete</wje-option>
-          <wje-option value="success">Success</wje-option>
-          <wje-option value="warning">Warning</wje-option>
-          <wje-option value="danger">Danger</wje-option>
-          <wje-option value="info">Info</wje-option>
-        </wje-select>
+        <wje-button color="primary" id="toast">Get toast</wje-button>
+        <wje-button color="primary" id="toast-countdown">Get toast with countdown</wje-button>
+        <wje-button color="primary" id="toast-without-closable">Without closable</wje-button>
+      </div>
+    </div>
+    
+    <!-- COLOR -->
 
-        <wje-toast duration="15000" title="Title" position="top" type="contrast" close>
-          <wje-avatar label="Petr Rahman" slot="avatar" size="2x-large">
-            <wje-img src="/assets/img/avatar.svg"></wje-img>
-          </wje-avatar>
-          <div>Lorem ipsum dolor sit amet</div>
-        </wje-toast>
-        
-        <wje-toast duration="15000" title="Title" position="bottom" type="contrast">
-          <div>Lorem ipsum dolor sit amet</div>
-        </wje-toast>
+    <h2>Color</h2>
+    <div class="playground">
+      <div class="content color">
+        <wje-button color="primary">Primary</wje-button>
+        <wje-button color="complete">Complete</wje-button>
+        <wje-button color="success"">Success</wje-button>
+        <wje-button color="warning"">Warning</wje-button>
+        <wje-button color="danger"">Danger</wje-button>
+        <wje-button color="info"">Info</wje-button>
+        <wje-button color="contrast"">Contrast</wje-button>
       </div>
     </div>
   </div>`;
@@ -47,24 +66,47 @@ template.innerHTML = `<h1>Toast</h1>
 export default class DemoToast extends WJElement {
   constructor() {
     super(template);
+
+    this.count = 0;
   }
 
   afterDraw() {
-    // Toast element
-    const toast = this.context.querySelector('wje-toast');
-
-    // Set the toast attributes position
-    this.context.querySelector("#position").addEventListener("wje-select:change", (e) => {
-      toast.setAttribute("position", e.detail.context.selected[0].value);
+    this.context.querySelector('#toast').addEventListener('wje-button:click', (e) => {
+      this.notify(`Notify body ${this.count++}`);
     });
 
-    // Set the toast attributes type
-    this.context.querySelector("#type").addEventListener("wje-select:change", (e) => {
-      toast.setAttribute("type", e.detail.context.selected[0].value);
+    this.context.querySelector('#toast-countdown').addEventListener('wje-button:click', (e) => {
+      this.notify(`Notify body ${this.count++}`, true);
     });
 
-    const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, this.context);
+    this.context.querySelector('#toast-without-closable').addEventListener('wje-button:click', (e) => {
+      this.notify(`Notify body ${this.count++}`, true, false);
+    });
+
+    this.context.querySelectorAll('.color wje-button').forEach((el) => {
+      el.addEventListener('wje-button:click', (e) => {
+        this.notify(`Notify body ${this.count++}`, true, true, el.getAttribute('color'));
+      });
+    });
+  }
+
+  notify(message, countdown = false, closable = true, color='primary', src='/assets/img/avatar.svg', duration='10000') {
+    const toast = Object.assign(document.createElement('wje-toast'), {
+      color: color,
+      title: 'Notification',
+      closable: closable,
+      duration: duration,
+      countdown: countdown,
+      innerHTML: `
+          <wje-avatar slot="avatar">
+            <wje-img src="${src}"></wje-img>
+          </wje-avatar>
+          ${message}
+        `
+    });
+
+    document.body.append(toast);
+    return toast.start();
   }
 }
 
