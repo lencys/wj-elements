@@ -206,6 +206,7 @@ export default class WJElement extends HTMLElement {
 	beforeDisconnect() { }
 	afterDisconnect() { }
 
+	beforeRedraw() { }
 
 	/**
 	 * Cleans up the component.
@@ -251,6 +252,7 @@ export default class WJElement extends HTMLElement {
 
 	async refresh() {
 		if (this.drawingStatus && this.drawingStatus >= this.drawingStatuses.START) {
+			this.beforeRedraw?.();
 			this.beforeDisconnect?.();
 			this.refreshUpdatePromise();
 			this.afterDisconnect?.();
