@@ -27,7 +27,7 @@
 
   .content {
     font-size: var(--wje-font-size-small);
-    .title {
+    .headline {
       font-size: var(--wje-font-size);
       font-weight: var(--wje-font-weight-bold);
     }

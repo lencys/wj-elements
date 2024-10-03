@@ -93,7 +93,7 @@ export default class DemoToast extends WJElement {
   notify(message, countdown = false, closable = true, color='primary', src='/assets/img/avatar.svg', duration='10000') {
     const toast = Object.assign(document.createElement('wje-toast'), {
       color: color,
-      title: 'Notification',
+      headline: 'Notification',
       closable: closable,
       duration: duration,
       countdown: countdown,

@@ -12,7 +12,6 @@ import styles from "./styles/styles.css?inline";
  * @csspart input - The input part.
  * @csspart clear - The clear part.
  *
- *
  * @slot start - Slot for content at the start of the input.
  * @slot end - Slot for content at the end of the input.
  *

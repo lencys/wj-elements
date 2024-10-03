@@ -1,5 +1,4 @@
 import { default as WJElement, event } from "../wje-element/element.js";
-// import { simple, bar, flip, circle } from "./service/service.js";
 
 import styles from "./styles/styles.css?inline";
 
@@ -11,7 +10,20 @@ import styles from "./styles/styles.css?inline";
  *
  * @extends {WJElement}
  *
- * @tag wje-toast
+ * @csspart native - The native part
+ *
+ * @prop {string} headline - The headline of the toast.
+ * @prop {boolean} open - The open state of the toast.
+ * @prop {number} duration - The duration of the toast.
+ * @prop {boolean} closable - The closable state of the toast.
+ * @prop {string} color - The color of the toast.
+ * @prop {boolean} countdown - The countdown state of the toast.
+ *
+ * @slot - The content of the toast.
+ * @slot avatar - The avatar of the toast.
+ *
+ * @fires wje-toast:after-show - Fired after the toast is shown.
+ * @fires wje-toast:after-hide - Fired after the toast is hidden.
  */
 export default class Toast extends WJElement {
     /**
@@ -24,12 +36,12 @@ export default class Toast extends WJElement {
         this.toastStack = Object.assign(document.createElement('div'), { className: 'wje-toast-stack' });
     }
 
-    set title(value) {
-        this.setAttribute("title", value);
+    set headline(value) {
+        this.setAttribute("headline", value);
     }
 
-    get title() {
-        return this.getAttribute("title");
+    get headline() {
+        return this.getAttribute("headline");
     }
 
     set open(value) {
@@ -141,7 +153,7 @@ export default class Toast extends WJElement {
 
         let content = document.createElement("div");
         content.classList.add("content");
-        content.innerHTML = `<div class="title">${this.title}</div><div class="message"><slot></slot></div>`;
+        content.innerHTML = `<div class="headline">${this.headline}</div><div class="message"><slot></slot></div>`;
 
         let icon = document.createElement("wje-icon");
         icon.setAttribute("name", "x");
@@ -178,6 +190,12 @@ export default class Toast extends WJElement {
         return fragment;
     }
 
+    /**
+     * After draw method
+     * @param {Object} context - The context
+     * @param {Object} store - The store
+     * @param {Object} params - The parameters
+     */
     afterDraw() {
         this.closeBtn.addEventListener('wje-button:click', this.hide);
         this.addEventListener('mouseenter', this.pause);
@@ -199,6 +217,11 @@ export default class Toast extends WJElement {
         }
     }
 
+    /**
+     * Before disconnect method
+     *
+     * This method is called before the element is disconnected from the document.
+     */
     beforeDisconnect() {
         this.closeBtn.removeEventListener('wje-button:click', this.hide);
         this.removeEventListener('wje-toast:after-hide', this.removeChildAndStack);
@@ -208,6 +231,14 @@ export default class Toast extends WJElement {
         clearTimeout(this.timeoutID);
     }
 
+    /**
+     * Starts the timer.
+     *
+     * This method sets the `startTime` property to the current time and sets
+     * the `timeoutID` property to the ID of the timeout. The method also
+     * dispatches the `wje-toast:after-hide` custom event when the timeout
+     * expires.
+     */
     startTimer() {
         this.startTime = Date.now();
         if (this.timeoutID) {
@@ -218,6 +249,12 @@ export default class Toast extends WJElement {
         }, this.remainingTime);
     }
 
+    /**
+     * Stops the timer.
+     *
+     * This method clears the timeout and calculates the remaining time.
+     * The method is called when the toast notification is paused.
+     */
     stopTimer() {
         if (this.timeoutID) {
             window.clearTimeout(this.timeoutID);
@@ -226,13 +263,26 @@ export default class Toast extends WJElement {
         this.remainingTime -= elapsedTime;
     }
 
+    /**
+     * Resumes the timer.
+     *
+     * This method resumes the timer if the remaining time is greater
+     * than zero. The method is called when the toast notification is resumed.
+     */
     resumeTimer() {
         if (this.remainingTime > 0) {
             this.startTimer();
         }
     }
 
-    show = async () => {
+    /**
+     * Asynchronously shows the toast notification.
+     *
+     * This method sets the `open` property to `true` and dispatches the
+     * `wje-toast:after-show` custom event. If the toast is already open,
+     * the method returns `undefined`.
+     */
+    show = () => {
         if (this.open) {
             return undefined;
         }
@@ -241,7 +291,14 @@ export default class Toast extends WJElement {
         event.dispatchCustomEvent(this, 'wje-toast:after-show');
     }
 
-    hide = async () => {
+    /**
+     * Asynchronously hides the toast notification.
+     *
+     * This method sets the `open` property to `false` and dispatches the
+     * `wje-toast:after-hide` custom event. If the toast is already hidden,
+     * the method returns `undefined`.
+     */
+    hide = () => {
         if (!this.open) {
             return undefined;
         }
@@ -250,16 +307,29 @@ export default class Toast extends WJElement {
         event.dispatchCustomEvent(this, 'wje-toast:after-hide');
     }
 
+    /**
+     * Pauses the countdown animation and stops the timer.
+     */
     pause = async () => {
         this.countdownAnimation?.pause();
         this.stopTimer();
     }
 
+    /**
+     * Resumes the countdown animation and resumes the timer.
+     */
     resume = async () => {
         this.countdownAnimation?.play();
         this.resumeTimer();
     }
 
+    /**
+     * Removes the toast notification and the toast stack.
+     *
+     * This method removes the toast notification from the toast stack and
+     * removes the toast stack from the document body if the toast stack is
+     * empty.
+     */
     removeChildAndStack() {
         this.toastStack.removeChild(this);
 
@@ -268,6 +338,15 @@ export default class Toast extends WJElement {
         }
     }
 
+    /**
+     * Asynchronously starts the toast notification.
+     *
+     * This method appends the toast notification to the document body and
+     * shows the toast notification. The method returns a promise that
+     * resolves when the toast notification is shown.
+     *
+     * @returns {Promise<unknown>}
+     */
     start = () => {
         return new Promise(resolve => {
 
