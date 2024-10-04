@@ -16,6 +16,7 @@
                 box-sizing: border-box;
                 overflow: visible;
                 padding-block: .125rem;
+                background: var(--wje-orgchart-item-background);
             }
         }
     }
@@ -87,6 +88,13 @@
 
     wje-card::part(native) {
         box-sizing: border-box;
+    }
+}
+
+:host([boss]){
+    wje-card::part(native) {
+        background: var(--wje-orgchart-item-boss-background);
+        border: var(--wje-orgchart-item-boss-border);
     }
 }
 

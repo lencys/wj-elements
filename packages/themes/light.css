@@ -430,10 +430,16 @@
   --wje-orgchart-item-width: 75px;
   --wje-orgchart-item-border-radius: var(--wje-border-radius-large);
   --wje-orgchart-item-height-line: 10px;
+  --wje-orgchart-item-background: var(--wje-color-contrast-0);
+
   --wje-orgchart-item-highlight-background: var(--wje-color-complete-2);
+  --wje-orgchart-item-boss-background: var(--wje-color-complete-2);
   --wje-orgchart-item-hover-background: var(--wje-color-contrast-3);
-  --wje-orgchart-item-highlight-border: 1px solid blue;
-  --wje-orgchart-item-hover-border: 1px solid red;
+
+  --wje-orgchart-item-highlight-border: 1px solid var(--wje-color-complete-3);
+  --wje-orgchart-item-boss-border: 1px solid var(--wje-border-color);
+  --wje-orgchart-item-hover-border: 1px solid var(--wje-color-danger-3);
+
   --wje-orgchart-item-expander-size: .75rem;
 
   /* Orgchart - Group */
