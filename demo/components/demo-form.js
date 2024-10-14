@@ -40,6 +40,16 @@ template.innerHTML = `<h1>form</h1>
 
             <wje-checkbox name="isPosible">Default primary indeterminate</wje-checkbox>
 
+            <wje-radio-group value="dog" name="animal" label="Animal">
+              <wje-radio value="cat">Cat</wje-radio>
+              <wje-radio value="elephant" disabled="">Elephant</wje-radio>
+              <wje-radio indeterminate value="rabbit" >Rabbit</wje-radio>
+              <wje-radio value="dog">Dog</wje-radio>
+
+            </wje-radio-group>
+
+            <wje-textarea name="textArea" placeholder="textarea">aaaaaaaaa</wje-textarea>
+
           <wje-button type="reset">Reset</wje-button>
           <wje-button type="submit" color="primary">Submit</wje-button>
         </form>
@@ -48,50 +58,52 @@ template.innerHTML = `<h1>form</h1>
   </div>`;
 
 export default class DemoForm extends WJElement {
-    constructor() {
-        super(template);
-    }
+  constructor() {
+    super(template);
+  }
 
-    afterDraw() {
-        const codeSnippet = new CodeSnippet();
-        codeSnippet.generateSnippet(template, this.context);
+  afterDraw() {
+    document.querySelector(`[name="animal"]`).value = 'rabbit'
 
-        this.addEventListener('wje-icon-picker:select', (e) => {
-            e.target.closest("wje-input").value = e.detail.name;
-            e.target.onClose();
-        });
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, this.context);
 
-        let form = this.context.querySelector('#test-form');
-        form.addEventListener('submit', (e) => {
-            e.preventDefault()
+    this.addEventListener('wje-icon-picker:select', (e) => {
+      e.target.closest("wje-input").value = e.detail.name;
+      e.target.onClose();
+    });
 
-            const formData = new FormData(form);
-            let data = {
-            };
+    let form = this.context.querySelector('#test-form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault()
 
-            for (let [key, value] of formData.entries()) {
-                try {
-                    data[key] = JSON.parse(value)
-                } catch (e) {
-                    data[key] = value;
-                }
-            }
+      const formData = new FormData(form);
+      let data = {
+      };
 
-            console.log(data);
+      for (let [key, value] of formData.entries()) {
+        try {
+          data[key] = JSON.parse(value)
+        } catch (e) {
+          data[key] = value;
+        }
+      }
 
-        })
+      console.log(data);
 
-        this.context.querySelector('#test-form').addEventListener('reset', (e) => {
-            console.log('klikol som form reset', e)
-        });
+    })
 
-        const randomInput = document.createElement('wje-input');
-        randomInput.setAttribute('name', 'random')
-        randomInput.setAttribute('label', 'Random input')
+    this.context.querySelector('#test-form').addEventListener('reset', (e) => {
+      console.log('klikol som form reset', e)
+    });
 
-        randomInput.value = 'nenene'
-        form.append(randomInput)
-    }
+    const randomInput = document.createElement('wje-input');
+    randomInput.setAttribute('name', 'random')
+    randomInput.setAttribute('label', 'Random input')
+
+    randomInput.value = 'nenene'
+    form.append(randomInput)
+  }
 }
 
 let __esModule = 'true';

@@ -203,9 +203,19 @@ export default class WJElement extends HTMLElement {
 		});
 	}
 
+	/**
+	 * This method is called before the element is disconnected from the DOM.
+	 */
 	beforeDisconnect() { }
+
+	/**
+	 * This method is called after the element is disconnected from the DOM.
+	 */
 	afterDisconnect() { }
 
+	/**
+	 * This method is called before the element is redrawn.
+	 */
 	beforeRedraw() { }
 
 	/**
@@ -226,6 +236,12 @@ export default class WJElement extends HTMLElement {
 		this.componentCleanup();
 	}
 
+	// internal method
+	/**
+	 * Enqueues an update for the element.
+	 * 
+	 * @returns {Promise} A promise that resolves when the update is complete.
+	 */
 	async enqueueUpdate() {
 		try {
 			await this.renderPromise
@@ -250,6 +266,12 @@ export default class WJElement extends HTMLElement {
 		}
 	}
 
+	/**
+	 * Refreshes the element.
+	 * Re-renders the element and updates the shadow DOM.
+	 * 
+	 * @returns {Promise<void>} A promise that resolves when the element has been refreshed.
+	 */
 	async refresh() {
 		if (this.drawingStatus && this.drawingStatus >= this.drawingStatuses.START) {
 			this.beforeRedraw?.();
@@ -268,7 +290,13 @@ export default class WJElement extends HTMLElement {
 		return null;
 	}
 
-	display(force = false, signal) {
+	/**
+	 * Displays the element.
+	 * 
+	 * @param {boolean} [force=false] - Indicates whether to force the display of the element.
+	 * @returns {Promise} - A promise that resolves when the element is rendered.
+	 */
+	display(force = false) {
 		if (force) {
 			[...this.context.childNodes].forEach(this.context.removeChild.bind(this.context));
 			this.isAttached = false;
@@ -279,15 +307,19 @@ export default class WJElement extends HTMLElement {
 		if (this.isPermissionCheck || this.isShow) {
 			if (WjePermissionsApi.isPermissionFulfilled.bind(this)(this.permission)) {
 				this.drawingStatus = this.drawingStatuses.DRAWING;
-				return this._resolveRender(signal);
+				return this._resolveRender();
 			} else {
 				this.remove();
 			}
 		} else {
-			return this._resolveRender(signal);
+			return this._resolveRender();
 		}
 	}
 
+	/**
+	 * Renders the element.
+	 * @returns {Promise<void>} A promise that resolves when the rendering is complete.
+	 */
 	async render() {
 		this.drawingStatus = this.drawingStatuses.DRAWING;
 
@@ -321,6 +353,16 @@ export default class WJElement extends HTMLElement {
 		return [parts.shift(), ...parts.map((n) => n[0].toUpperCase() + n.slice(1))].join('');
 	}
 
+	/**
+	 * Checks if an object has a getter and/or setter for a given property.
+	 * 
+	 * @param {Object} obj - The object to check.
+	 * @param {string} property - The property to check for getter and/or setter.
+	 * @returns {Object} - An object containing information about the getter and/or setter.
+	 *                    - If the getter exists, it will be assigned to the `hasGetter` property.
+	 *                    - If the setter exists, it will be assigned to the `hasSetter` property.
+	 *                    - If neither getter nor setter exists, both `hasGetter` and `hasSetter` will be `null`.
+	 */
 	checkGetterSetter(obj, property) {
 		let descriptor = Object.getOwnPropertyDescriptor(obj, property);
 
@@ -360,7 +402,12 @@ export default class WJElement extends HTMLElement {
 		});
 	}
 
-	async _resolveRender(signal) {
+	/**
+	 * Resolves the rendering of the element.
+	 * 
+	 * @returns {Promise<void>} A promise that resolves when the rendering is complete.
+	 */
+	async _resolveRender() {
 		this.params = WjElementUtils.getAttributes(this);
 
 		return new Promise(async (resolve, reject) => {

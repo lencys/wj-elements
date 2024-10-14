@@ -42,6 +42,21 @@ export default class Input extends WJElement {
         this.invalid = false;
         this.pristine = true;
         this.internals = this.attachInternals();
+
+        // Create a mutation observer instance to watch for changes in attributes
+        this.observer = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
+                if (mutation.type === 'attributes') {
+                    const attributeName = mutation.attributeName;
+                    const oldValue = mutation.oldValue;
+                    const newValue = this.getAttribute(attributeName);
+
+                    console.log(`Attribute ${attributeName} changed from ${oldValue} to ${newValue}`);
+                }
+            });
+
+            this.refresh();
+        });
     }
 
     /**
@@ -186,7 +201,8 @@ export default class Input extends WJElement {
      * @returns {Array} The attributes to observe for changes.
      */
     static get observedAttributes() {
-        return ["value"];
+        // observe any change in all attributes
+        return
     }
 
     /**
@@ -205,6 +221,11 @@ export default class Input extends WJElement {
             this.value = this.defaultValue;
             this.pristine = false;
         }
+    }
+
+
+    beforeDraw() {
+        this.observer.disconnect();
     }
 
     /**
@@ -249,7 +270,7 @@ export default class Input extends WJElement {
         input.setAttribute("value", this.value || "");
         input.classList.add("form-control");
 
-        const attributes = ["placeholder", "multiple", "disabled", "readonly", "maxlength", "max", "min"];
+        const attributes = Array.from(this.attributes).map(attr => attr.name);
 
         attributes.forEach(attr => {
             if (this.hasAttribute(attr)) {
@@ -341,23 +362,6 @@ export default class Input extends WJElement {
      * Runs after the input is drawn.
      */
     afterDraw() {
-        [
-            'type',
-            'value',
-            'placeholder',
-            'required',
-            'min',
-            'max',
-            'minLength',
-            'maxLength',
-            'pattern'
-        ].forEach((attr) => {
-            const attrValue = attr === 'required' ? this.hasAttribute(attr) : this.getAttribute(attr);
-            if (attrValue !== null && attrValue !== undefined) {
-                this.input[attr] = attrValue;
-            }
-        });
-
         this.input.addEventListener("focus", (e) => {
             this.labelElement.classList.add("fade");
             this.native.classList.add("focused");
@@ -411,6 +415,15 @@ export default class Input extends WJElement {
         }
 
         this.validateInput();
+
+        this.observer.observe(this, {
+            attributes: true, // Watch for attribute changes
+            attributeOldValue: true // Keep track of the old value of attributes
+        });
+    }
+
+    componentCleanup() {
+        this.observer.disconnect();
     }
 
     /**
