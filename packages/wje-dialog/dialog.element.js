@@ -25,6 +25,15 @@ export default class Dialog extends WJElement {
         return this.hasAttribute("async");
     }
 
+    set closeHidden(value) {
+        if(value)
+            this.setAttribute("close-hidden", "");
+    }
+
+    get closeHidden() {
+        return !!this.hasAttribute("close-hidden");
+    }
+
     className = "Dialog";
 
     static get cssStyleSheet() {
@@ -61,6 +70,7 @@ export default class Dialog extends WJElement {
         let close = document.createElement("wje-button");
         close.setAttribute("fill", "link");
         close.setAttribute("size", "small");
+        close.setAttribute('part', 'close');
         close.addEventListener("click", (e) => {
             this.close(e);
         });
@@ -81,7 +91,8 @@ export default class Dialog extends WJElement {
         headerActions.appendChild(slotHeader);
 
         header.appendChild(headerActions);
-        header.appendChild(close);
+        if(!this.closeHidden)
+            header.appendChild(close);
 
         let contentSlot = document.createElement("slot");
 
