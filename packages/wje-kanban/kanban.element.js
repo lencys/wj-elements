@@ -1,6 +1,5 @@
 import { default as WJElement, WjElementUtils, event } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
-import { he } from "@faker-js/faker";
 
 /**
  * `Kanban` is a custom web component that represents a Kanban board with draggable columns and cards.
@@ -18,8 +17,6 @@ export default class Kanban extends WJElement {
         this._infiniteScrollTemplate = null;
         this.isDragging = false;
         this.selectedCards = []; // Array to hold selected cards
-
-
     }
 
     set infiniteScrollTemplate(value) {
@@ -128,10 +125,7 @@ export default class Kanban extends WJElement {
                 native.appendChild(pool);
                 const items = pools[statusName];
 
-                for (const item of items) {
-                    let card = this.htmlCard(item);
-                    pool.querySelector('.pool-content').appendChild(card);
-                }
+                this.customForeach(pool, items);
             }
         }
 
@@ -153,6 +147,13 @@ export default class Kanban extends WJElement {
         this.setupDragAndDropEvents();
         this.setupSelectAllCardsEvent();
         this.setupMenuItemClickEvents();
+    }
+
+    customForeach = (pool, items) => {
+        for (const item of items) {
+            let card = this.htmlCard(item);
+            pool.querySelector('.pool-content').appendChild(card);
+        }
     }
 
     // ----------------------------------------
@@ -304,7 +305,7 @@ export default class Kanban extends WJElement {
         }
 
         // Po presune stĺpcov (pools) musíme znova pripojiť event listenery
-        // this.setupMenuItemClickEvents();
+        this.setupMenuItemClickEvents();
     }
 
     renamePool(pool) {
@@ -448,7 +449,7 @@ export default class Kanban extends WJElement {
         card.setAttribute("data-id", item.id);
         card.innerHTML = `
             <wje-checkbox type="checkbox" class="select-card" title="Select card"></wje-checkbox>
-            <div>Lorem ipsum dolor ${item.id}</div>
+            <div>${item.body}</div>
         `;
 
         return card;

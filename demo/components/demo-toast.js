@@ -40,11 +40,11 @@ template.innerHTML = `<h1>Toast</h1>
 
     <h2>Basic</h2>
     <div class="playground">
-      <div class="content" style="width: 200px;">
-        <wje-button color="primary" id="toast">Get toast</wje-button>
-        <wje-button color="primary" id="toast-countdown">Get toast with countdown</wje-button>
-        <wje-button color="primary" id="toast-without-closable">Without closable</wje-button>
-        <wje-button color="primary" id="toast-without-avatar">Without avatar</wje-button>
+      <div class="content">
+        <wje-button id="toast">Get toast</wje-button>
+        <wje-button id="toast-countdown">Get toast with countdown</wje-button>
+        <wje-button id="toast-without-closable">Without closable</wje-button>
+        <wje-button id="toast-without-avatar">Without avatar</wje-button>
       </div>
     </div>
     
