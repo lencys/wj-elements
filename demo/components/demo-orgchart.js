@@ -12,7 +12,7 @@ template.innerHTML = `<h1>Orgchart</h1>
     <div class="playground">
       <div class="content" style="width: auto;">
         <wje-orgchart>
-          <wje-orgchart-item>
+          <wje-orgchart-item boss>
             Parent
             <wje-orgchart slot="child">
             <wje-orgchart-item>

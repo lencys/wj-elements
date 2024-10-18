@@ -46,6 +46,9 @@ function makeServer() {
                                 name: faker.helpers.arrayElement(['Nový/á', 'Preverený/á telefonátom', 'Naplánované prvé kolo pohovoru', 'Naplánované druhé kolo pohovoru', 'Ponuka', 'Zamietnuté', 'Iné'])
                             }
                         },
+                        body(i) {
+                            return faker.lorem.sentence()
+                        },
                         sendCV(i) {
                             return faker.date.recent()
                         }

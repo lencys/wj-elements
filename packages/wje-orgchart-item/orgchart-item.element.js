@@ -9,6 +9,13 @@ import styles from "./styles/styles.css?inline";
  * @extends WJElement
  *
  * @csspart - Styles the element.
+ * @csspart native - Styles the native element.
+ * @csspart expander - Styles the expander element.
+ *
+ * @prop {boolean} boss - The boss of the orgchart item.
+ *
+ * @slot - The default slot for the orgchart item.
+ * @slot child - The child slot for the orgchart item.
  *
  * @tag wje-orgchart-item
  *
@@ -23,6 +30,15 @@ export default class OrgchartItem extends WJElement {
      */
     constructor() {
         super();
+    }
+
+    set boss (value) {
+        if(value)
+            this.setAttribute('boss', value);
+    }
+
+    get boss () {
+        return this.hasAttribute('boss');
     }
 
     className = "OrgchartItem";

@@ -11,47 +11,55 @@ template.innerHTML = `<h1>Kanban</h1>
 
     <h3>Basic</h3>
     <div class="playground">
-      <div class="content" style="width: 100%; height: 600px; display: block;">
-        <wje-kanban url="/api/applicants" placement="wje-list" id="basic"></wje-kanban>
+      <div class="content" style="width: 100%; height: 350px; display: block;">
+        <wje-kanban url="/api/applicants" id="basic"></wje-kanban>
       </div>
     </div>
     
-    <!-- CUSTOM DATA -->
-<!--              <wje-list>-->
-<!--            <wje-item iterate>-->
-<!--              <wje-label>-->
-<!--                <h4>{{fullName}}</h4>-->
-<!--                <p>{{jobTitle}}erjwjhr</p>-->
-<!--              </wje-label>-->
-<!--            </wje-item>-->
-<!--          </wje-list>-->
-<!--    <h3>Custom Data</h3>-->
-<!--    <div class="playground">-->
-<!--      <div class="content">-->
-<!--        <wje-infinite-scroll placement="wje-list" id="custom-data">-->
-<!--          <wje-list></wje-list>-->
-<!--        </wje-infinite-scroll>-->
-<!--      </div>-->
-<!--    </div>-->
+    <!-- CUSTOM -->
+
+    <h3>Basic</h3>
+    <div class="playground">
+      <div class="content" style="width: 100%; height: 350px; display: block;">
+        <wje-kanban url="/api/applicants" id="custom"></wje-kanban>
+      </div>
+    </div>
   </div>`;
 
-export default class DemoInfinteScroll extends WJElement {
+export default class DemoKanban extends WJElement {
   constructor() {
     super(template);
   }
 
-  beforeDraw() {
-
-
-  }
-
   afterDraw() {
+    const customKanban = this.context.querySelector('#custom');
+
+    customKanban.customForeach = (pool, items) => {
+      for (const item of items) {
+        let card = this.htmlCard(item);
+        pool.querySelector('.pool-content').appendChild(card);
+      }
+    }
+
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(template, this.context);
+  }
+
+  htmlCard(item) {
+
+    let card = document.createElement("div");
+    card.classList.add("card");
+    card.draggable = true;
+    card.setAttribute("data-id", item.id);
+    card.innerHTML = `
+        <div>${item.id} - ${item.body}</div>
+    `;
+
+    return card;
   }
 }
 
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-infinite-scroll") || window.customElements.define("demo-infinite-scroll", DemoInfinteScroll);
+customElements.get("demo-kanban") || window.customElements.define("demo-kanban", DemoKanban);

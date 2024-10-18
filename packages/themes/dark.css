@@ -182,6 +182,17 @@
   /* Option */
   --wje-option-highlighted: var(--wje-color-contrast-3);
 
+    /* Orgchart - Item */
+  --wje-orgchart-item-background: var(--wje-color-contrast-0);
+
+  --wje-orgchart-item-highlight-background: var(--wje-color-complete-2);
+  --wje-orgchart-item-boss-background: var(--wje-color-complete-2);
+  --wje-orgchart-item-hover-background: var(--wje-color-contrast-3);
+
+  --wje-orgchart-item-highlight-border: 1px solid var(--wje-color-complete-3);
+  --wje-orgchart-item-boss-border: 1px solid var(--wje-border-color);
+  --wje-orgchart-item-hover-border: 1px solid var(--wje-color-danger-3);
+
   /* Rate */
   --wje-rate-color: var(--wje-color-contrast-11);
   --wje-rate-selected-color: var(--wje-color-danger-6);

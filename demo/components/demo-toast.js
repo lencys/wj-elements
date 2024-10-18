@@ -40,10 +40,11 @@ template.innerHTML = `<h1>Toast</h1>
 
     <h2>Basic</h2>
     <div class="playground">
-      <div class="content" style="width: 200px;">
-        <wje-button color="primary" id="toast">Get toast</wje-button>
-        <wje-button color="primary" id="toast-countdown">Get toast with countdown</wje-button>
-        <wje-button color="primary" id="toast-without-closable">Without closable</wje-button>
+      <div class="content">
+        <wje-button id="toast">Get toast</wje-button>
+        <wje-button id="toast-countdown">Get toast with countdown</wje-button>
+        <wje-button id="toast-without-closable">Without closable</wje-button>
+        <wje-button id="toast-without-avatar">Without avatar</wje-button>
       </div>
     </div>
     
@@ -83,6 +84,10 @@ export default class DemoToast extends WJElement {
       this.notify(`Notify body ${this.count++}`, true, false);
     });
 
+    this.context.querySelector('#toast-without-avatar').addEventListener('wje-button:click', (e) => {
+      this.notify(`Notify body ${this.count++}`, true, true, 'primary', '');
+    });
+
     this.context.querySelectorAll('.color wje-button').forEach((el) => {
       el.addEventListener('wje-button:click', (e) => {
         this.notify(`Notify body ${this.count++}`, true, true, el.getAttribute('color'));
@@ -97,10 +102,11 @@ export default class DemoToast extends WJElement {
       closable: closable,
       duration: duration,
       countdown: countdown,
-      innerHTML: `
+      innerHTML: `${src && `
           <wje-avatar slot="avatar">
             <wje-img src="${src}"></wje-img>
           </wje-avatar>
+        `}
           ${message}
         `
     });

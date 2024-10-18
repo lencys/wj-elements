@@ -174,6 +174,7 @@ export default class FileUpload extends WJElement {
 
         let label = document.createElement("div");
         label.classList.add("file-label");
+        label.setAttribute("part", "file-label");
 
         let button = document.createElement("wje-button");
         button.innerText = this.label || this.localizer.translate("wj.file.upload.button");
