@@ -327,6 +327,6 @@ export default class IconPicker extends WJElement {
      * @returns {string} The URL of the tags.
      */
     getTagsUrl = (path) => {
-        return new URL(process.env.VITE_URL + path).href;
+        return new URL(process.env.VITE_ICON_ASSETS_URL + path).href;
     };
 }
