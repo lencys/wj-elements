@@ -1,4 +1,6 @@
-import { default as WJElement, WjElementUtils, event } from "../wje-element/element.js";
+import { default as WJElement } from "../wje-element/element.js";
+import Checkbox from "../wje-checkbox/checkbox.js";
+import MenuItem from "../wje-menu-item/menu-item.js";
 import styles from "./styles/styles.css?inline";
 
 /**
@@ -6,51 +8,90 @@ import styles from "./styles/styles.css?inline";
  * It extends from `WJElement`.
  *
  * @extends {WJElement}
+ *
+ * @csspart - Styles the element.
+ * @csspart native - Styles the native
+ * @csspart pool - Styles the pool
+ *
+ * @tag wje-kanban
+ *
+ * @example
+ * <wje-kanban></wje-kanban>
  */
 export default class Kanban extends WJElement {
-    constructor(options = {}) {
+    /**
+     * Creates an instance of Kanban.
+     * @constructor
+     */
+    constructor() {
         super();
-        this.totalPages = 0;
-        this.isLoading = [];
-        this._response = {};
-        this.iterate = null;
-        this._infiniteScrollTemplate = null;
-        this.isDragging = false;
+        this.totalPages = 0; // Total number of pages
+        this.isLoading = []; // Array to hold loading status of each page
+        this._response = {}; // Response from the API
+        this.isDragging = false; // Flag to indicate if an element is being dragged
         this.selectedCards = []; // Array to hold selected cards
     }
 
-    set infiniteScrollTemplate(value) {
-        this._infiniteScrollTemplate = value;
+    /**
+     * Dependencies of the Option component.
+     */
+    dependencies = {
+        "wje-checkbox": Checkbox,
+        "wje-menu-item": MenuItem
     }
 
-    get infiniteScrollTemplate() {
-        return this._infiniteScrollTemplate;
-    }
-
+    /**
+     * Sets the URL for fetching data.
+     * @param value {string}
+     */
     set response(value) {
         this._response = value;
     }
 
+    /**
+     * Gets the URL for fetching data.
+     * @returns {*|{}|{}}
+     */
     get response() {
         return this._response;
     }
 
-    set objectName(value) {
-        this.setAttribute("object-name", value);
+    // /**
+    //  * Sets the URL for fetching data.
+    //  * @param value {string}
+    //  */
+    // set poolName(value) {
+    //     this.setAttribute("pool-name", value);
+    // }
+    //
+    // /**
+    //  * Gets the URL for fetching data.
+    //  * @returns {string|string}
+    //  */
+    // get poolName() {
+    //     return this.getAttribute("pool-name") || "status";
+    // }
+
+    /**
+     * Sets the URL for fetching data.
+     * @param value {array}
+     */
+    set selectedItems(value) {
+        this._selectedItems = value;
     }
 
-    get objectName() {
-        return this.getAttribute("object-name") || "data";
+    /**
+     * Gets the URL for fetching data.
+     * @returns {Array}
+     */
+    get selectedItems() {
+        return this._selectedItems;
     }
 
-    set poolName(value) {
-        this.setAttribute("pool-name", value);
-    }
-
-    get poolName() {
-        return this.getAttribute("pool-name") || "status";
-    }
-
+    /**
+     * Sets the URL for fetching data.
+     * @type {string}
+     */
     className = "Kanban";
 
     /**
@@ -88,12 +129,6 @@ export default class Kanban extends WJElement {
      * @param {Object} params - The parameters for drawing.
      */
     async beforeDraw(context, store, params) {
-        this.iterate = this.querySelector("[iterate]");
-        this.infiniteScrollTemplate = this.iterate?.outerHTML;
-        this.iterate?.remove(); // remove template
-
-        this.setAttribute("style", "height: " + this.height);
-
         this.response = await this.getPages();
     }
 
@@ -114,14 +149,12 @@ export default class Kanban extends WJElement {
 
         let pools = this.getPool(this.response, this.poolName);
 
-        console.log('Pools:', pools);
-
         // Add pools to the native element
         for (const statusName in pools) {
             if (pools.hasOwnProperty(statusName)) {
 
                 let pool = this.htmlPool(statusName, pools[statusName].length);
-                console.log("POOL", pool);
+
                 native.appendChild(pool);
                 const items = pools[statusName];
 
@@ -149,6 +182,11 @@ export default class Kanban extends WJElement {
         this.setupMenuItemClickEvents();
     }
 
+    /**
+     * Called after the component has been drawn.
+     * @param pool
+     * @param items
+     */
     customForeach = (pool, items) => {
         for (const item of items) {
             let card = this.htmlCard(item);
@@ -156,20 +194,21 @@ export default class Kanban extends WJElement {
         }
     }
 
-    // ----------------------------------------
-    // Setup methods for event listeners
-    // ----------------------------------------
-
+    /**
+     * Sets up the drag and drop events for the component.
+     */
     setupDragAndDropEvents() {
         this.live('dragstart', '.pool .card', (e) => {
             this.isDragging = true;
             e.dataTransfer.clearData();
             e.dataTransfer.setData('text/plain', e.target.dataset.id);
             e.dataTransfer.dropEffect = "move";
+            e.target.style.opacity = '0.5';
+
             const rect = e.target.getBoundingClientRect();
+
             this.draggedElementWidth = rect.width;
             this.draggedElementHeight = rect.height;
-            e.target.style.opacity = '0.5';
         });
 
         this.live('dragend', '.pool .card', (e) => {
@@ -209,6 +248,9 @@ export default class Kanban extends WJElement {
         });
     }
 
+    /**
+     * Sets up the select all cards event for the component.
+     */
     setupSelectAllCardsEvent() {
         // Event listener for selecting all cards in a pool
         this.live('wje-toggle:change', '.select-all-cards', (e) => {
@@ -229,6 +271,9 @@ export default class Kanban extends WJElement {
         });
     }
 
+    /**
+     * Sets up the menu item click events for the component.
+     */
     setupMenuItemClickEvents() {
         this.context.querySelectorAll('wje-menu-item').forEach(menuItem => {
             menuItem.removeEventListener('wje-menu-item:click', this.menuItemClickHandler);
@@ -239,6 +284,10 @@ export default class Kanban extends WJElement {
         });
     }
 
+    /**
+     * Handles the menu item click event.
+     * @param e
+     */
     menuItemClickHandler = (e) => {
         const action = e.target.dataset.action;
         const pool = e.target.closest('.pool');
@@ -246,6 +295,11 @@ export default class Kanban extends WJElement {
         this.handlePoolAction(action, pool);
     }
 
+    /**
+     * Updates the selected cards in the pool.
+     * @param pool {HTMLElement}
+     * @param isChecked {boolean}
+     */
     updateSelectedCards(pool, isChecked) {
         const cards = pool.querySelectorAll('.pool-content .card');
 
@@ -261,6 +315,9 @@ export default class Kanban extends WJElement {
         this.setSelectedItems();
     }
 
+    /**
+     * Updates the column item count.
+     */
     updateColumnItemCount = () => {
         const pools = this.shadowRoot.querySelectorAll('.pool');
 
@@ -268,12 +325,15 @@ export default class Kanban extends WJElement {
             const itemCount = pool.querySelectorAll('.pool-content .card').length;
             let itemCountDisplay = pool.querySelector('.item-count');
 
-            console.log("Before:", itemCountDisplay.innerHTML);
             itemCountDisplay.innerHTML = itemCount;
-            console.log("After:", itemCountDisplay.innerHTML);
         });
     }
 
+    /**
+     * Handles the pool action.
+     * @param action {string}
+     * @param pool {HTMLElement}
+     */
     handlePoolAction(action, pool) {
         switch(action) {
             case 'move-left':
@@ -290,6 +350,11 @@ export default class Kanban extends WJElement {
         }
     }
 
+    /**
+     * Moves the pool in the specified direction.
+     * @param pool {HTMLElement}
+     * @param direction {string}
+     */
     movePool(pool, direction) {
         const parent = pool.parentElement;
 
@@ -308,6 +373,10 @@ export default class Kanban extends WJElement {
         this.setupMenuItemClickEvents();
     }
 
+    /**
+     * Renames the pool.
+     * @param pool {HTMLElement}
+     */
     renamePool(pool) {
         const newName = prompt("Zadajte nový názov pre stĺpec:");
         if (newName) {
@@ -317,6 +386,10 @@ export default class Kanban extends WJElement {
         }
     }
 
+    /**
+     * Gets the card placeholder.
+     * @returns {null|*}
+     */
     getCardPlaceholder() {
         if (!this.UI.elCardPlaceholder) {
             this.UI.elCardPlaceholder = document.createElement('div');
@@ -331,6 +404,12 @@ export default class Kanban extends WJElement {
         return this.UI.elCardPlaceholder;
     }
 
+    /**
+     * Adds a live event listener to the component.
+     * @param eventType {string}
+     * @param selector {string}
+     * @param callback {function}
+     */
     live(eventType, selector, callback) {
         const attachListener = (root) => {
             root.addEventListener(eventType, function (e) {
@@ -353,6 +432,11 @@ export default class Kanban extends WJElement {
         traverseAndAttach(this.shadowRoot || this); // Start from the Shadow DOM if it exists
     }
 
+    /**
+     * Sets the selected cards.
+     * @param isChecked {boolean}
+     * @param card {HTMLElement}
+     */
     setSelectedCards(isChecked, card) {
         if (isChecked) {
             if (!this.selectedCards.includes(card)) {
@@ -362,11 +446,20 @@ export default class Kanban extends WJElement {
             this.selectedCards = this.selectedCards.filter(selectedCard => selectedCard !== card);
         }
     }
+
+    /**
+     * Sets the selected items.
+     */
     setSelectedItems() {
         const selectedIds = this.selectedCards.map(card => card.getAttribute('data-id'));
         this.selectedItems = this.response.filter(item => selectedIds.includes(item.id));
     }
 
+    /**
+     * Fetches the pages.
+     * @param page
+     * @returns {Promise<any>}
+     */
     async getPages(page = 0) {
         let hasParams = this.url.includes('?');
         const response = await fetch(`${this.url}${hasParams ? '&' : '?'}page=${page}&size=${this.size}${this?.queryParams}`);
@@ -376,6 +469,12 @@ export default class Kanban extends WJElement {
         return await response.json();
     }
 
+    /**
+     * Gets the pool.
+     * @param data {Array}
+     * @param poolName {string}
+     * @returns {*}
+     */
     getPool = (data, poolName) => {
         return data.reduce((acc, item) => {
             const statusName = item.status.name;
@@ -387,6 +486,12 @@ export default class Kanban extends WJElement {
         }, {});
     }
 
+    /**
+     * Returns the HTML for the pool.
+     * @param title {string}
+     * @param countItems {number}
+     * @returns {Element}
+     */
     htmlPool = (title, countItems) => {
         let poolHtml = document.createElement("div");
         poolHtml.classList.add("pool");
@@ -442,6 +547,11 @@ export default class Kanban extends WJElement {
         return poolHtml;
     }
 
+    /**
+     * Returns the HTML for the card.
+     * @param item {Object}
+     * @returns {Element}
+     */
     htmlCard = (item) => {
         let card = document.createElement("div");
         card.classList.add("card");
@@ -453,5 +563,9 @@ export default class Kanban extends WJElement {
         `;
 
         return card;
+    }
+
+    dispatchEvent(event) {
+        return false;
     }
 }
