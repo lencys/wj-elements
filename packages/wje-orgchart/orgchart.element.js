@@ -1,4 +1,4 @@
-import { default as WJElement, event } from "../wje-element/element.js";
+import { default as WJElement } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**
@@ -62,29 +62,12 @@ export default class Orgchart extends WJElement {
 
         let slot = document.createElement("slot");
 
-        // let expander = document.createElement("div");
-        // expander.setAttribute("part", "expander");
-        // expander.classList.add("expander");
-        // expander.innerHTML = "-";
-
         native.appendChild(slot);
-        // native.appendChild(expander);
 
         fragment.appendChild(native);
 
         this.native = native;
 
         return fragment;
-    }
-
-    /**
-     * After Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
-     * @returns {DocumentFragment}
-     */
-    afterDraw(context, store, params) {
     }
 }

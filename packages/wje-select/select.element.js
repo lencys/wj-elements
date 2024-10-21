@@ -85,9 +85,9 @@ export default class Select extends WJElement {
     }
 
     /**
-         * Getter for the customErrorDisplay attribute.
-         * @returns {boolean} Whether the attribute is present.
-         */
+     * Getter for the customErrorDisplay attribute.
+     * @returns {boolean} Whether the attribute is present.
+     */
     get customErrorDisplay() {
         return this.hasAttribute('custom-error-display');
     }

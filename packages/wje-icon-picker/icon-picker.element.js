@@ -35,7 +35,7 @@ export default class IconPicker extends WJElement {
      */
     constructor() {
         super();
-        this.size = 48;
+        this.size = 60;
     }
 
     /**
@@ -120,7 +120,6 @@ export default class IconPicker extends WJElement {
      */
     async beforeDraw() {
         this.tags = Object.values(await this.getTags());
-        this.category = this.getCategory(this.tags);
     }
 
     /**
@@ -155,7 +154,7 @@ export default class IconPicker extends WJElement {
 
         let infiniteScroll = new InfiniteScroll();
 
-        infiniteScroll.setAttribute("url", this.getTagsUrl('/assets/tags.json'));
+        infiniteScroll.setAttribute("url", this.getTagsUrl('../../tags.json'));
         infiniteScroll.setAttribute("placement", ".icon-items");
         infiniteScroll.setAttribute("size", this.size);
         infiniteScroll.setAttribute("height", "223px");
@@ -177,6 +176,7 @@ export default class IconPicker extends WJElement {
         popup.setAttribute("placement", this.placement || "bottom-start");
         popup.setAttribute("offset", this.offset);
         popup.setAttribute("manual", "");
+
         popup.appendChild(anchor);
         popup.appendChild(picker);
 
@@ -190,6 +190,8 @@ export default class IconPicker extends WJElement {
         this.picker = picker;
         this.infiniteScroll = infiniteScroll;
 
+        this.setupInfiniteScroll();
+
         return fragment;
     }
 
@@ -197,7 +199,6 @@ export default class IconPicker extends WJElement {
      * Called after the component has been drawn.
      */
     afterDraw() {
-        this.setupInfiniteScroll();
         this.addEventListener("wje-popup:show", (e) => {
             this.initial();
         });
@@ -245,13 +246,12 @@ export default class IconPicker extends WJElement {
         this.infiniteScroll.setCustomData = (page = 0) => {
 
             let data = Object.values(this.tags);
-            let result = {
+            return {
                 data: data.slice(page * this.size, page * this.size + this.size),
                 page: page,
                 size: this.size,
                 totalPages: Math.round(data.length / this.size)
             }
-            return result;
         };
     }
 
@@ -272,7 +272,7 @@ export default class IconPicker extends WJElement {
      * @returns {Promise<Array>} The tags.
      */
     async getTags() {
-        const response = await fetch(this.getTagsUrl('/assets/tags.json'));
+        const response = await fetch(this.getTagsUrl('../../tags.json'));
         return response.json();
     }
 
@@ -292,18 +292,16 @@ export default class IconPicker extends WJElement {
         this.infiniteScroll.unScrollEvent(); // unbind scroll event
         this.infiniteScroll.setCustomData = (page = 0) => {
             let data = this.tags.filter(i => i.tags.includes(e.detail.value));
-            let result = {
+            return {
                 data: data,
                 page: page,
                 size: this.size,
                 totalPages: Math.round(data.length / this.size)
-            }
-
-            return result;
+            };
         };
 
         this.clearIconsContainer(); // clear icons container
-        this.infiniteScroll.loadPages(); // load only
+        this.infiniteScroll.loadPages(0); // load only
     }
 
     /**

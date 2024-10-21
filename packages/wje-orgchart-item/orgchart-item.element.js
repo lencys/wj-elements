@@ -32,10 +32,20 @@ export default class OrgchartItem extends WJElement {
         super();
     }
 
+    /**
+     * Sets the boss of the orgchart item.
+     * @param value
+     */
+
     set boss (value) {
         if(value)
             this.setAttribute('boss', value);
     }
+
+    /**
+     * Gets the boss of the orgchart item.
+     * @returns {boolean}
+     */
 
     get boss () {
         return this.hasAttribute('boss');
@@ -126,6 +136,10 @@ export default class OrgchartItem extends WJElement {
         this.classList.toggle("collapse");
         // change the expander icon
         this.classList.contains('collapse') ? e.target.innerHTML = "+" : e.target.innerHTML = "-";
+    }
+
+    dispatchEvent(event) {
+        return false;
     }
 }
     
