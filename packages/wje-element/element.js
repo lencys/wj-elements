@@ -175,10 +175,12 @@ export default class WJElement extends HTMLElement {
 			this.drawingStatus = this.drawingStatuses.START;
 			await this.display(force);
 
-			const sheet = new CSSStyleSheet();
-			sheet.replaceSync(this.constructor.cssStyleSheet);
+			if(typeof this.constructor.cssStyleSheet === 'string' && this.constructor.cssStyleSheet) {
+				const sheet = new CSSStyleSheet();
+				sheet.replaceSync(this.constructor.cssStyleSheet);
 
-			this.context.adoptedStyleSheets = [sheet];
+				this.context.adoptedStyleSheets = [sheet];
+			}
 
 			resolve();
 		})
