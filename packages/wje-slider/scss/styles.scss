@@ -140,30 +140,30 @@ input[type="range"] {
   }
 
   &[color="primary"] {
-    @include color(var(--wje-color-primary), var(--wje-color-primary), var(--wje-color-contrast-2));
+    @include color(var(--wje-color-primary-9), var(--wje-color-primary-9), var(--wje-color-contrast-4));
   }
 
   &[color="success"] {
-    @include color(var(--wje-color-success), var(--wje-color-success), var(--wje-color-contrast-2));
+    @include color(var(--wje-color-success-9), var(--wje-color-success-9), var(--wje-color-contrast-4));
   }
 
   &[color="complete"] {
-    @include color(var(--wje-color-complete), var(--wje-color-complete), var(--wje-color-contrast-2));
+    @include color(var(--wje-color-complete-9), var(--wje-color-complete-9), var(--wje-color-contrast-4));
   }
 
   &[color="danger"] {
-    @include color(var(--wje-color-danger), var(--wje-color-danger), var(--wje-color-contrast-2));
+    @include color(var(--wje-color-danger), var(--wje-color-danger-9), var(--wje-color-contrast-4));
   }
 
   &[color="warning"] {
-    @include color(var(--wje-color-warning), var(--wje-color-warning), var(--wje-color-contrast-2));
+    @include color(var(--wje-color-warning-9), var(--wje-color-warning-9), var(--wje-color-contrast-4));
   }
 
   &[color="dark"] {
-    @include color(var(--wje-color-contrast-10), var(--wje-color-contrast-10), var(--wje-color-contrast-6));
+    @include color(var(--wje-color-contrast-11), var(--wje-color-contrast-11), var(--wje-color-contrast-4));
   }
 
-  @include color(var(--wje-color-primary), var(--wje-color-primary), var(--wje-color-contrast-2));
+  @include color(var(--wje-color-primary-9), var(--wje-color-primary-9), var(--wje-color-contrast-4));
 }
 
 datalist {
