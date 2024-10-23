@@ -55,11 +55,11 @@
 .file-progress { grid-area: progress; }
 
 wje-icon {
-    margin-right: .25rem;
+    /*margin-right: .25rem;*/
 }
 
 wje-img {
-    margin-right: .25rem;
+    /*margin-right: .25rem;*/
 }
 
 .file-info > span {
@@ -73,19 +73,22 @@ wje-slider {
     margin-top: .5rem;
 }
 
-::part(slider) {
-    &::-webkit-slider-thumb {
-        visibility: hidden;
-    }
-
-    &::-moz-range-thumb {
-        visibility: hidden;
-    }
-
-    &::-ms-thumb {
-        visibility: hidden;
-    }
+wje-slider::part(slider) {
+    color: yellow;
 }
+
+wje-slider::part(slider)::-webkit-slider-thumb {
+    visibility: hidden;
+}
+
+wje-slider::part(slider)::-moz-range-thumb {
+    visibility: hidden;
+}
+
+wje-slider::part(slider)::-ms-thumb {
+    visibility: hidden;
+}
+
 
 wje-img {
     width: 50px;

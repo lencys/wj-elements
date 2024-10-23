@@ -114,6 +114,7 @@ export default class FileUploadItem extends WJElement {
     slot.setAttribute("name", "img");
 
     let image = document.createElement("div");
+    image.setAttribute("part", "image");
     image.classList.add("image");
 
     let name = document.createElement("span");
