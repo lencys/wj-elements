@@ -141,7 +141,7 @@ export default class FileUploadItem extends WJElement {
     size.setAttribute("value", this.size || 0);
     size.innerHTML = `<span slot="start">&nbsp;${this.localizer.translate("wj.file.upload.from")} </span>`;
 
-    let slider = document.createElement("wje-slider");
+    let slider = document.createElement("wje-progress-bar");
     slider.classList.add("file-progress");
     slider.setAttribute("id", "id-" + this.lastModified);
     slider.setAttribute("value", this.progress || 0);

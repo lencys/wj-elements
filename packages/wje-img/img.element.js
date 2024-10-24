@@ -23,6 +23,16 @@ export default class Img extends WJElement {
         super();
     }
 
+    set loader(value) {
+        if (value) {
+            this.setAttribute("loader", value);
+        }
+    }
+
+    get loader() {
+        return this.getAttribute("loader");
+    }
+
     className = "Img";
 
     /**
