@@ -9,6 +9,7 @@ import styles from "./styles/styles.css?inline";
  * @extends WJElement
  *
  * @csspart native - The native part.
+ * @csspart wrapper - The wrapper part.
  * @csspart input - The input part.
  * @csspart clear - The clear part.
  *
@@ -252,9 +253,8 @@ export default class Input extends WJElement {
         let wrapper = document.createElement("div");
         wrapper.classList.add("wrapper");
 
-
-
         let inputWrapper = document.createElement("div");
+        inputWrapper.setAttribute("part", "wrapper");
         inputWrapper.classList.add("input-wrapper");
 
         // Label
@@ -578,5 +578,9 @@ export default class Input extends WJElement {
      */
     formDisabledCallback(disabled) {
         console.warn('formDisabledCallback not implemented yet')
+    }
+
+    dispatchEvent(event) {
+        return false;
     }
 }
