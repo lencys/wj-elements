@@ -2,7 +2,7 @@ export class WjElementUtils {
     constructor() {}
 
     /**
-     *
+     * This function creates an element
      * @param element : HTMLElement
      * @param object : Object
      */
@@ -12,11 +12,11 @@ export class WjElementUtils {
         })
     }
 
-    /** @function getAttributes
-     * @description Vráti všetky atributy elementu v poli
+    /**
+     * This function gets the attributes from an element
+     * @param el (string | HTMLElement)
      * @return (array)
      */
-
     static getAttributes(el) {
         if (typeof el === "string")
             el = document.querySelector(el);
@@ -36,6 +36,11 @@ export class WjElementUtils {
             }, {})
     }
 
+    /**
+     * This function gets the events from an element
+     * @param el
+     * @returns {Map<any, any>}
+     */
     static getEvents(el) {
         if (typeof el === "string")
             el = document.querySelector(el);
@@ -49,6 +54,11 @@ export class WjElementUtils {
             },new Map());
     }
 
+    /**
+     * This function converts an object to a string
+     * @param object
+     * @returns {string}
+     */
     static attributesToString( object){
         return Object.entries(object).map(([key,value]) =>{
             return `${key}="${value}"`
@@ -56,7 +66,7 @@ export class WjElementUtils {
     }
 
     /**
-     * @function hasSlot
+     * This function checks if the slot exists
      * @param el
      * @param slotName
      * @returns {boolean}
@@ -67,6 +77,12 @@ export class WjElementUtils {
         return el.querySelectorAll(selector).length > 0 ? true : false;
     }
 
+    /**
+     * This function checks if the slot has content
+     * @param el
+     * @param slotName
+     * @returns {boolean}
+     */
     static hasSlotContent(el, slotName = null) {
         let slotElement = el.querySelector(`slot`);
         if (slotName) {
@@ -81,6 +97,11 @@ export class WjElementUtils {
         return false;
     }
 
+    /**
+     * This function converts a string to a boolean
+     * @param string
+     * @returns {boolean}
+     */
     static stringToBoolean(string) {
         return !["false", "0", 0].includes(string)
     }
