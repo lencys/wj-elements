@@ -21,8 +21,12 @@
   border-radius: var(--wje-border-radius-large);
   position: relative;
 
-  slot[name="avatar"]::slotted(wje-avatar) {
+  &.has-media slot[name="media"] {
+    flex: 0 0 1.5rem;
+    width: 1.5rem;
+    display: flex;
     margin-right: .5rem;
+    justify-content: center;
   }
 
   .content {
@@ -55,6 +59,10 @@
   top: 1rem;
   left: auto;
   right: auto;
+}
+
+:host::part(icon) {
+  margin-right: .5rem;
 }
 
 @keyframes slideDown {

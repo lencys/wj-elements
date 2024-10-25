@@ -55,10 +55,30 @@ export class WjElementUtils {
         }).join(' ')
     }
 
+    /**
+     * @function hasSlot
+     * @param el
+     * @param slotName
+     * @returns {boolean}
+     */
     static hasSlot(el, slotName = null) {
         let selector = slotName ? `[slot="${slotName}"]` : "[slot]";
 
         return el.querySelectorAll(selector).length > 0 ? true : false;
+    }
+
+    static hasSlotContent(el, slotName = null) {
+        let slotElement = el.querySelector(`slot`);
+        if (slotName) {
+            slotElement = el.querySelector(`slot[name="${slotName}"]`);
+        }
+
+        if (slotElement) {
+            const assignedElements = slotElement.assignedElements();
+            return assignedElements.length > 0;
+        }
+
+        return false;
     }
 
     static stringToBoolean(string) {

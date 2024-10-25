@@ -1,4 +1,4 @@
-import { default as WJElement, event } from "../wje-element/element.js";
+import { default as WJElement, WjElementUtils, event } from "../wje-element/element.js";
 
 import styles from "./styles/styles.css?inline";
 
@@ -20,7 +20,7 @@ import styles from "./styles/styles.css?inline";
  * @prop {boolean} countdown - The countdown state of the toast.
  *
  * @slot - The content of the toast.
- * @slot avatar - The avatar of the toast.
+ * @slot media - The media of the toast.
  *
  * @fires wje-toast:after-show - Fired after the toast is shown.
  * @fires wje-toast:after-hide - Fired after the toast is hidden.
@@ -36,54 +36,118 @@ export default class Toast extends WJElement {
         this.toastStack = Object.assign(document.createElement('div'), { className: 'wje-toast-stack' });
     }
 
+    /**
+     * Set headline
+     * @param value
+     */
     set headline(value) {
         this.setAttribute("headline", value);
     }
 
+    /**
+     * Get headline
+     * @returns {string}
+     */
     get headline() {
         return this.getAttribute("headline");
     }
 
+    /**
+     * Set open
+     * @param value
+     */
     set open(value) {
         this.setAttribute("open", value);
     }
 
+    /**
+     * Get open
+     * @returns {string}
+     */
     get open() {
         return this.getAttribute("open");
     }
 
+    /**
+     * Set duration
+     * @param value
+     */
     set duration(value) {
         this.setAttribute("duration", value);
     }
 
+    /**
+     * Get duration
+     * @returns {number}
+     */
     get duration() {
         return +this.getAttribute("duration");
     }
 
+    /**
+     * Set closable
+     * @param value
+     */
     set closable(value) {
         if(value)
             this.setAttribute("closable", value);
     }
 
+    /**
+     * Get closable
+     * @returns {string}
+     */
     get closable() {
         return this.getAttribute("closable");
     }
 
+    /**
+     * Set color
+     * @param value
+     */
     set color(value) {
         this.setAttribute("color", value);
     }
 
+    /**
+     * Get color
+     * @returns {string}
+     */
     get color() {
         return this.getAttribute("color");
     }
 
+    /**
+     * Set countdown
+     * @param value
+     */
     set countdown(value) {
         if(value)
             this.setAttribute("countdown", value);
     }
 
+    /**
+     * Get countdown
+     * @returns {boolean}
+     */
     get countdown() {
         return this.hasAttribute("countdown");
+    }
+
+    /**
+     * Set icon
+     * @param value
+     */
+    set icon(value) {
+        this.setAttribute("icon", value);
+    }
+
+    /**
+     * Get icon
+     * @returns {string}
+     */
+    get icon() {
+        return this.getAttribute("icon");
     }
 
     /**
@@ -107,9 +171,9 @@ export default class Toast extends WJElement {
      * @static
      * @returns {Array<string>}
      */
-    static get observedAttributes() {
-        return ["open", "color", "duration"];
-    }
+    // static get observedAttributes() {
+    //     return ["open", "color", "duration"];
+    // }
 
     /**
      * Called when an attribute changes.
@@ -119,11 +183,6 @@ export default class Toast extends WJElement {
      * @param {string} newName - The new value of the attribute.
      */
     attributeChangedCallback(name, old, newName) {
-        // if(this.open) {
-        //     this.show();
-        // } else {
-        //     this.hide();
-        // }
     }
 
     /**
@@ -147,16 +206,23 @@ export default class Toast extends WJElement {
         native.setAttribute('part', 'native');
         native.classList.add("native-toast");
 
-        let avatarSlot = document.createElement("slot");
-        avatarSlot.setAttribute('name', 'avatar');
-        avatarSlot.classList.add("avatar");
+        let mediaSlot = document.createElement("slot");
+        mediaSlot.setAttribute('name', 'media');
+        mediaSlot.classList.add("media");
+        mediaSlot.addEventListener('slotchange', () => {
+            if (WjElementUtils.hasSlotContent(this.context, 'media')) {
+                mediaSlot.parentElement.classList.add('has-media');
+            } else {
+                mediaSlot.parentElement.classList.remove('has-media');
+            }
+        });
 
         let content = document.createElement("div");
         content.classList.add("content");
         content.innerHTML = `<div class="headline">${this.headline}</div><div class="message"><slot></slot></div>`;
 
-        let icon = document.createElement("wje-icon");
-        icon.setAttribute("name", "x");
+        let iconX = document.createElement("wje-icon");
+        iconX.setAttribute("name", "x");
 
         let closeBtn = document.createElement("wje-button");
         closeBtn.setAttribute("fill", "link");
@@ -170,10 +236,20 @@ export default class Toast extends WJElement {
         let countdownBar = document.createElement("div");
         countdownBar.classList.add("countdown-bar");
 
-        closeBtn.appendChild(icon);
+        closeBtn.appendChild(iconX);
         countdownEl.appendChild(countdownBar);
 
-        native.appendChild(avatarSlot);
+        if(this.hasAttribute('icon') && this.icon) {
+            let icon = document.createElement("wje-icon");
+            icon.setAttribute("name", this.icon);
+            icon.setAttribute('color', this.color);
+            icon.setAttribute('slot', 'media');
+            icon.setAttribute('part', 'icon');
+
+            this.appendChild(icon);
+        }
+
+        native.appendChild(mediaSlot);
         native.appendChild(content);
 
         if(this.hasAttribute('closable'))
@@ -359,7 +435,7 @@ export default class Toast extends WJElement {
                 document.body.append(this.toastStack);
             }
 
-            this.toastStack.appendChild(this);
+            this.toastStack.append(this);
 
             this.show();
 

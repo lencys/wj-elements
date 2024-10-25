@@ -45,6 +45,8 @@ template.innerHTML = `<h1>Toast</h1>
         <wje-button id="toast-countdown">Get toast with countdown</wje-button>
         <wje-button id="toast-without-closable">Without closable</wje-button>
         <wje-button id="toast-without-avatar">Without avatar</wje-button>
+        <wje-button id="toast-with-icon">With icon</wje-button>
+        <wje-button id="toast-text">Text</wje-button>
       </div>
     </div>
     
@@ -85,7 +87,15 @@ export default class DemoToast extends WJElement {
     });
 
     this.context.querySelector('#toast-without-avatar').addEventListener('wje-button:click', (e) => {
-      this.notify(`Notify body ${this.count++}`, true, true, 'primary', '');
+      this.notify(`Notify body ${this.count++}`, true, false, 'primary', '');
+    });
+
+    this.context.querySelector('#toast-with-icon').addEventListener('wje-button:click', (e) => {
+      this.notify(`Notify body ${this.count++}`, false, false, 'primary', '','bell-z');
+    });
+
+    this.context.querySelector('#toast-text').addEventListener('wje-button:click', (e) => {
+      this.notify(`Vestibulum accumsan iaculis enim sit amet placerat. In tempor accumsan ex. Integer facilisis varius mauris hendrerit tristique. `, true, true, 'primary', '','bell-z');
     });
 
     this.context.querySelectorAll('.color wje-button').forEach((el) => {
@@ -95,23 +105,27 @@ export default class DemoToast extends WJElement {
     });
   }
 
-  notify(message, countdown = false, closable = true, color='primary', src='/assets/img/avatar.svg', duration='10000') {
-    const toast = Object.assign(document.createElement('wje-toast'), {
+  notify(message, countdown = false, closable = true, color='primary', src='/assets/img/avatar.svg', icon = null, duration='1000000', ) {
+    let property = {
       color: color,
       headline: 'Notification',
       closable: closable,
       duration: duration,
       countdown: countdown,
       innerHTML: `${src && `
-          <wje-avatar slot="avatar">
+          <wje-avatar slot="media">
             <wje-img src="${src}"></wje-img>
           </wje-avatar>
         `}
           ${message}
         `
-    });
+    }
 
-    document.body.append(toast);
+    if(icon)
+      property.icon = icon;
+
+    const toast = Object.assign(document.createElement('wje-toast'), property);
+
     return toast.start();
   }
 }
