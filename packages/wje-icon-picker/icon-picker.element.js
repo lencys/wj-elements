@@ -13,6 +13,8 @@ import styles from "./styles/styles.css?inline";
  *
  * @extends {WJElement}
  *
+ * @property {string} icon - The icon to set.
+ *
  * @part native - The native part
  * @part anchor - The anchor part
  * @part picker - The picker part
@@ -86,6 +88,14 @@ export default class IconPicker extends WJElement {
         return this._swatches;
     }
 
+    set icon(value) {
+        this.setAttribute("icon", value);
+    }
+
+    get icon() {
+        return this.getAttribute("icon");
+    }
+
     className = "IconPicker";
 
     /**
@@ -140,6 +150,13 @@ export default class IconPicker extends WJElement {
         let anchor = document.createElement("div");
         anchor.setAttribute("slot", "anchor");
         anchor.classList.add("anchor");
+
+        if(this.hasAttribute("icon") && this.icon) {
+            let icon = document.createElement("wje-icon");
+            icon.setAttribute("name", this.icon);
+
+            anchor.appendChild(icon);
+        }
 
         // PICKER
         let picker = document.createElement("div");
@@ -210,7 +227,6 @@ export default class IconPicker extends WJElement {
             this.infiniteScroll.scrollEvent(); // bind scroll event
             this.infiniteScroll.loadPages(0); // load first page
         });
-
 
         this.addEventListener("wje-infinite-scroll:click-item", (e) => {
             const icon = e.detail.context.querySelector("wje-icon");
