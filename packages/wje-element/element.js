@@ -97,7 +97,7 @@ export default class WJElement extends HTMLElement {
 	 */
 
 	/**
-	 * @return {ArrayActions, ObjectActions}
+	 * @typedef {Object} StoreActions
 	 */
 	get defaultStoreActions() {
 		return defaultStoreActions;
