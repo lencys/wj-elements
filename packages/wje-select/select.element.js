@@ -728,6 +728,8 @@ export default class Select extends WJElement {
         if (option) {
             option.selected = true;
         }
+
+        this.selections(silent)
     }
 
     /**

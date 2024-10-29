@@ -215,14 +215,20 @@ export default class Options extends WJElement {
         let filteredResponse = structuredClone(response);
 
         const recursiveUpdate = (object, pathToProperty) => {
-            if (pathToProperty.length > 1) {
-                recursiveUpdate(object[pathToProperty[0]], pathToProperty.slice(1));
-            } else {
-                object[pathToProperty[0]] = object[pathToProperty[0]]?.filter(option => !this._loadedOptions.some(loadedOption => loadedOption[this.itemValue] === option[this.itemValue])) ?? [];
+            if (pathToProperty.length === 0) {
+                return object.filter(option => !this._loadedOptions.some(loadedOption => loadedOption[this.itemValue] === option[this.itemValue]));
             }
+
+            if (pathToProperty.length > 1) {
+                object[pathToProperty[0]] = recursiveUpdate(object[pathToProperty[0]], pathToProperty.slice(1));
+                return object;
+            }
+
+            object[pathToProperty[0]] = object[pathToProperty[0]]?.filter(option => !this._loadedOptions.some(loadedOption => loadedOption[this.itemValue] === option[this.itemValue])) ?? [];
+            return object;
         }
 
-        recursiveUpdate(filteredResponse, splittedOptionArrayPath);
+        filteredResponse = recursiveUpdate(filteredResponse, splittedOptionArrayPath);
         return filteredResponse;
     }
 
