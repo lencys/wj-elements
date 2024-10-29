@@ -8,18 +8,20 @@
 
 .native-file-upload {
     width: 100%;
+    position: relative;
+    border: 1px dashed var(--wje-border-color);
+    border-radius: var(--wje-border-radius-medium);
 }
 
 .file-label {
     background: var(--wje-color-contrast-0);
-    border: 1px dashed var(--wje-border-color);
-    border-radius: var(--wje-border-radius-medium);
     align-items: center;
     justify-content: center;
     display: flex;
     padding: 1rem;
     margin-bottom: .5rem;
     flex-direction: column;
+    position: relative;
 }
 
 .file-preview {

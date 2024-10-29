@@ -16,9 +16,9 @@
     "image size actions"
     "progress progress progress";
     padding: .5rem;
-    border-width: 1px;
-    border-style: solid;
-    border-color: var(--wje-border-color);
+    border-width: var(--wje-file-upload-item-border-width);
+    border-style: var(--wje-file-upload-item-border-style);
+    border-color: var(--wje-file-upload-item-border-color);
     border-radius: var(--wje-border-radius-medium);
 }
 
@@ -54,14 +54,6 @@
 
 .file-progress { grid-area: progress; }
 
-wje-icon {
-    /*margin-right: .25rem;*/
-}
-
-wje-img {
-    /*margin-right: .25rem;*/
-}
-
 .file-info > span {
     white-space: nowrap;
     overflow: hidden;
@@ -88,7 +80,6 @@ wje-slider::part(slider)::-moz-range-thumb {
 wje-slider::part(slider)::-ms-thumb {
     visibility: hidden;
 }
-
 
 wje-img {
     width: 50px;

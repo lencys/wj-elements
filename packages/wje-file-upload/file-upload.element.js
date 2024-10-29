@@ -173,6 +173,7 @@ export default class FileUpload extends WJElement {
         native.setAttribute("part", "native");
 
         let label = document.createElement("div");
+        label.setAttribute("part", "label");
         label.classList.add("file-label");
         label.setAttribute("part", "file-label");
 
@@ -191,7 +192,9 @@ export default class FileUpload extends WJElement {
 
         this.fileInput = fileInput;
 
-        let fileList = document.createElement("div");
+        let fileList = document.createElement("slot");
+        fileList.setAttribute("name", "item");
+        fileList.setAttribute("part", "items");
         fileList.classList.add("file-list");
 
         label.appendChild(slot);
@@ -343,7 +346,7 @@ export default class FileUpload extends WJElement {
                 this.onUploadStarted?.(file);
 
                 preview = this.createPreview(file, reader)
-                this.fileList.appendChild(preview);
+                this.appendChild(preview);
 
                 this.uploadFunction(file, preview).then((res) => {
                     this.dispatchEvent(new CustomEvent("file-upload:upladed-file-complete", { detail: res, bubbles: true, composed: true }));
@@ -366,6 +369,7 @@ export default class FileUpload extends WJElement {
      */
     createPreview(file, reader) {
         let preview = document.createElement("wje-file-upload-item");
+        preview.setAttribute("slot", "item");
         preview.setAttribute("name", file.name);
         preview.setAttribute("size", file.size);
         preview.setAttribute("uploaded", "0");

@@ -149,6 +149,11 @@
   /* Divider */
   --wje-divider-border-color: var(--wje-border-color);
 
+  /* File Upload - Item */
+  --wje-file-upload-item-border-width: 1px;
+  --wje-file-upload-item-border-style: solid;
+  --wje-file-upload-item-border-color: var(--wje-border-color);
+
   /* Input */
   --wje-input-background-color: var(--wje-background);
   --wje-input-color: var(--wje-color);
@@ -182,7 +187,7 @@
   /* Option */
   --wje-option-highlighted: var(--wje-color-contrast-3);
 
-    /* Orgchart - Item */
+  /* Orgchart - Item */
   --wje-orgchart-item-background: var(--wje-color-contrast-0);
 
   --wje-orgchart-item-highlight-background: var(--wje-color-complete-2);

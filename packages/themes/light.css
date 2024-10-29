@@ -322,6 +322,11 @@
   --wje-divider-border-color: var(--wje-border-color);
   --wje-divider-spacing: 0;
 
+  /* File Upload - Item */
+  --wje-file-upload-item-border-width: 1px;
+  --wje-file-upload-item-border-style: solid;
+  --wje-file-upload-item-border-color: var(--wje-border-color);
+
   /* Icon */
   --wje-icon-stroke: 2;
   --wje-icon-size: var(--wje-size);
