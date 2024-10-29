@@ -63,6 +63,9 @@ export default class WJElement extends HTMLElement {
 		return this.getAttribute('shadow') || 'open';
 	}
 
+	/**
+	 * @return {HTMLElement|ShadowRoot}
+	 */
 	get context() {
 		if (this.isShadowRoot) {
 			return this.shadowRoot;
@@ -75,34 +78,32 @@ export default class WJElement extends HTMLElement {
 		return store;
 	}
 
-	// addAction,
-	// deleteAction,
-	// loadAction,
-	// updateAction,
-	// addManyAction
-
 	/**
 	 * @typedef {Object} ArrayActions
-	 * @property {function} addAction - Indicates whether the Courage component is present.
-	 * @property {function} deleteAction - Indicates whether the Power component is present.
-	 * @property {function} loadAction - Indicates whether the Wisdom component is present.
-	 * @property {function} updateAction - Indicates whether the Wisdom component is present.
+	 * @property {function} addAction - Adds an item to the array.
+	 * @property {function} deleteAction - Deletes an item from the array.
+	 * @property {function} loadAction - Loads an array.
+	 * @property {function} updateAction - Updates an item in the array.
+	 * @property {function} addManyAction - Adds many items to the array.
 	 */
 
 	/**
 	 * @typedef {Object} ObjectActions
-	 * @property {function} addAction - Indicates whether the Courage component is present.
-	 * @property {function} deleteAction - Indicates whether the Power component is present.
-	 * @property {function} updateAction - Indicates whether the Wisdom component is present.
+	 * @property {function} addAction - Replace old object with new object
+	 * @property {function} deleteAction - Delete item based on key
+	 * @property {function} updateAction - Update item based on key
 	 */
 
 	/**
-	 * @typedef {Object} StoreActions
+	 * @return {(ArrayActions | ObjectActions)}
 	 */
 	get defaultStoreActions() {
 		return defaultStoreActions;
 	}
 
+	/**
+	 * @return {Array<String>}
+	 */
 	get removeClassAfterConnect() {
 		return this.getAttribute('remove-class-after-connect')?.split(' ');
 	}
@@ -115,12 +116,22 @@ export default class WJElement extends HTMLElement {
 		this._dependencies = value;
 	};
 
+	/**
+	 * @param {HTMLTemplateElement} pTemplate
+	 * @param {HTMLTemplateElement | null} template
+	 * @return {HTMLTemplateElement}
+	 */
 	static processTemplates = (pTemplate, template) => {
 		const newTemplate = document.createElement('template');
 		newTemplate.innerHTML = [template.innerHTML, pTemplate?.innerHTML || ''].join('');
 		return newTemplate;
 	};
 
+	/**
+	 * @param {String} name
+	 * @param {WJElement} elementConstructor
+	 * @param {Object} options
+	 */
 	static define(name, elementConstructor = this, options = {}) {
 		const definedElement = customElements.get(name);
 
@@ -135,9 +146,21 @@ export default class WJElement extends HTMLElement {
 			Object.entries(this.dependencies).forEach((name, component) => WJElement.define(name, component))
 	}
 
-	beforeDraw() { }
 
-	afterDraw() { }
+	/**
+	 * @param {HTMLElement} context
+	 * @param {Object} store
+	 * @param {Object} attributes
+	 * 
+	 */
+	beforeDraw(context, store, attributes) { }
+
+	/**
+	 * @param {HTMLElement} context
+	 * @param {Object} store
+	 * @param {Object} attributes
+	 */
+	afterDraw(context, store, attributes) { }
 
 	refreshUpdatePromise() {
 		this.updateComplete = new Promise((resolve, reject) => {
@@ -175,12 +198,10 @@ export default class WJElement extends HTMLElement {
 			this.drawingStatus = this.drawingStatuses.START;
 			await this.display(force);
 
-			if(typeof this.constructor.cssStyleSheet === 'string' && this.constructor.cssStyleSheet) {
-				const sheet = new CSSStyleSheet();
-				sheet.replaceSync(this.constructor.cssStyleSheet);
+			const sheet = new CSSStyleSheet();
+			sheet.replaceSync(this.constructor.cssStyleSheet);
 
-				this.context.adoptedStyleSheets = [sheet];
-			}
+			this.context.adoptedStyleSheets = [sheet];
 
 			resolve();
 		})
@@ -205,19 +226,8 @@ export default class WJElement extends HTMLElement {
 		});
 	}
 
-	/**
-	 * This method is called before the element is disconnected from the DOM.
-	 */
 	beforeDisconnect() { }
-
-	/**
-	 * This method is called after the element is disconnected from the DOM.
-	 */
 	afterDisconnect() { }
-
-	/**
-	 * This method is called before the element is redrawn.
-	 */
 	beforeRedraw() { }
 
 	/**
@@ -238,12 +248,6 @@ export default class WJElement extends HTMLElement {
 		this.componentCleanup();
 	}
 
-	// internal method
-	/**
-	 * Enqueues an update for the element.
-	 * 
-	 * @returns {Promise} A promise that resolves when the update is complete.
-	 */
 	async enqueueUpdate() {
 		try {
 			await this.renderPromise
@@ -269,10 +273,8 @@ export default class WJElement extends HTMLElement {
 	}
 
 	/**
-	 * Refreshes the element.
-	 * Re-renders the element and updates the shadow DOM.
-	 * 
-	 * @returns {Promise<void>} A promise that resolves when the element has been refreshed.
+	 * Refreshes the component.
+	 * @return {Promise<void>}
 	 */
 	async refresh() {
 		if (this.drawingStatus && this.drawingStatus >= this.drawingStatuses.START) {
@@ -286,19 +288,17 @@ export default class WJElement extends HTMLElement {
 	}
 
 	/**
-	 * To be implemented by the child class
+	 * @param {HTMLElement} context
+	 * @param {Object} store
+	 * @param {Object} attributes
+	 * @return {Promise<DocumentFragment|HTMLElement|String> | DocumentFragment|HTMLElement|String}
+	 * @
 	 */
 	draw(context, store, params) {
 		return null;
 	}
 
-	/**
-	 * Displays the element.
-	 * 
-	 * @param {boolean} [force=false] - Indicates whether to force the display of the element.
-	 * @returns {Promise} - A promise that resolves when the element is rendered.
-	 */
-	display(force = false) {
+	display(force = false, signal) {
 		if (force) {
 			[...this.context.childNodes].forEach(this.context.removeChild.bind(this.context));
 			this.isAttached = false;
@@ -309,19 +309,15 @@ export default class WJElement extends HTMLElement {
 		if (this.isPermissionCheck || this.isShow) {
 			if (WjePermissionsApi.isPermissionFulfilled.bind(this)(this.permission)) {
 				this.drawingStatus = this.drawingStatuses.DRAWING;
-				return this._resolveRender();
+				return this._resolveRender(signal);
 			} else {
 				this.remove();
 			}
 		} else {
-			return this._resolveRender();
+			return this._resolveRender(signal);
 		}
 	}
 
-	/**
-	 * Renders the element.
-	 * @returns {Promise<void>} A promise that resolves when the rendering is complete.
-	 */
 	async render() {
 		this.drawingStatus = this.drawingStatuses.DRAWING;
 
@@ -355,16 +351,6 @@ export default class WJElement extends HTMLElement {
 		return [parts.shift(), ...parts.map((n) => n[0].toUpperCase() + n.slice(1))].join('');
 	}
 
-	/**
-	 * Checks if an object has a getter and/or setter for a given property.
-	 * 
-	 * @param {Object} obj - The object to check.
-	 * @param {string} property - The property to check for getter and/or setter.
-	 * @returns {Object} - An object containing information about the getter and/or setter.
-	 *                    - If the getter exists, it will be assigned to the `hasGetter` property.
-	 *                    - If the setter exists, it will be assigned to the `hasSetter` property.
-	 *                    - If neither getter nor setter exists, both `hasGetter` and `hasSetter` will be `null`.
-	 */
 	checkGetterSetter(obj, property) {
 		let descriptor = Object.getOwnPropertyDescriptor(obj, property);
 
@@ -404,12 +390,7 @@ export default class WJElement extends HTMLElement {
 		});
 	}
 
-	/**
-	 * Resolves the rendering of the element.
-	 * 
-	 * @returns {Promise<void>} A promise that resolves when the rendering is complete.
-	 */
-	async _resolveRender() {
+	async _resolveRender(signal) {
 		this.params = WjElementUtils.getAttributes(this);
 
 		return new Promise(async (resolve, reject) => {
