@@ -26,6 +26,7 @@ export default class WJElement extends HTMLElement {
 		this._dependencies = {};
 
 		this.drawingStatuses = {
+			CREATED: 0,
 			ATTACHED: 1,
 			BEGINING: 2,
 			START: 3,
@@ -33,6 +34,8 @@ export default class WJElement extends HTMLElement {
 			DONE: 5,
 			DISCONNECTED: 6
 		}
+
+		this.drawingStatus = this.drawingStatuses.CREATED;
 	}
 
 	get permission() {
@@ -248,10 +251,17 @@ export default class WJElement extends HTMLElement {
 		this.componentCleanup();
 	}
 
+	/**
+	 * Enqueues an update to the component.
+	 * @return {Promise<void>}
+	 */
 	async enqueueUpdate() {
 		try {
-			await this.renderPromise
+			if (this.renderPromise && this.renderPromise instanceof Promise) {
+				await this.renderPromise;
+			}
 		} catch (e) {
+			console.error("An error occurred:", e);
 			Promise.reject(e);
 		}
 		const result = this.refresh();
