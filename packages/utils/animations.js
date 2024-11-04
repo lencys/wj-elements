@@ -63,7 +63,7 @@ export async function fetchAndParseCSS(css) {
     }
     animations = parseCSS(css);
 
-    return animations;
+    return await animations;
   } catch (error) {
     console.error('Error:', error);
   }

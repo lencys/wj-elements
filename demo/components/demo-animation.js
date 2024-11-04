@@ -18,6 +18,7 @@ template.innerHTML = `
             <wje-img src="/assets/img/avatar.svg"></wje-img>
           </wje-avatar>
         </wje-animation>
+        
         <div style="margin-top: 1rem">
           <wje-button id="stop">Stop</wje-button>
           <wje-button id="play">Play</wje-button>
@@ -38,8 +39,7 @@ export default class DemoAnimation extends WJElement {
   }
 
   async afterDraw() {
-    const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, this.context);
+
     // let keyframes = await fetchAndParseCSS();
     const animationElement = this.querySelector('wje-animation');
     const select = this.querySelector('wje-select');
@@ -54,9 +54,9 @@ export default class DemoAnimation extends WJElement {
     });
 
     select.addEventListener('wje:option-change', (e) => {
+      console.log("wje:option-change", e.detail.context.value);
       animationElement.setAttribute('name', e.detail.context.value);
     });
-
 
     this.querySelector('#stop').addEventListener('click', (e) => {
       animationElement.cancel();
@@ -65,7 +65,6 @@ export default class DemoAnimation extends WJElement {
     this.querySelector('#play').addEventListener('click', (e) => {
       animationElement.play();
     });
-    // breadcrumb.cssStyleSheet
   }
 }
 

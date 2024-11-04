@@ -26,6 +26,150 @@ export default class Animation extends WJElement {
     }
 
     /**
+     * Setter for the name attribute.
+     * @param value
+     */
+    set name(value) {
+        this.setAttribute("name", value);
+    }
+
+    /**
+     * Getter for the name attribute.
+     * @returns {string}
+     */
+    get name() {
+        return this.getAttribute("name");
+    }
+
+    /**
+     * Setter for the name attribute.
+     * @param value
+     */
+    set duration(value) {
+        this.setAttribute("duration", value);
+    }
+
+    /**
+     * Getter for the name attribute.
+     * @returns {number}
+     */
+    get duration() {
+        return +this.getAttribute("duration") || 1000;
+    }
+
+    /**
+     * Setter for the name attribute.
+     * @param value
+     */
+    set delay(value) {
+        this.setAttribute("delay", value);
+    }
+
+    /**
+     * Getter for the name attribute.
+     * @returns {number}
+     */
+    get delay() {
+        return +this.getAttribute("delay") || 0;
+    }
+
+    /**
+     * Setter for the name attribute.
+     * @param value
+     */
+    set endDelay(value) {
+        this.setAttribute("endDelay", value);
+    }
+
+    /**
+     * Getter for the name attribute.
+     * @returns {number}
+     */
+    get endDelay() {
+        return +this.getAttribute("endDelay") || 0;
+    }
+
+    /**
+     * Setter for the name attribute.
+     * @param value
+     */
+    set fill(value) {
+        this.setAttribute("fill", value);
+    }
+
+    /**
+     * Getter for the name attribute.
+     * @returns {string}
+     */
+    get fill() {
+        return this.getAttribute("fill") || 'auto';
+    }
+
+    /**
+     * Setter for the name attribute.
+     * @param value
+     */
+    set iterations(value) {
+        this.setAttribute("iterations", value);
+    }
+
+    /**
+     * Getter for the name attribute.
+     * @returns {string|number}
+     */
+    get iterations() {
+        return this.getAttribute("iterations") || Infinity;
+    }
+
+    /**
+     * Setter for the name attribute.
+     * @param value
+     */
+    set iterationStart(value) {
+        this.setAttribute("iterationStart", value);
+    }
+
+    /**
+     * Getter for the name attribute.
+     * @returns {number}
+     */
+    get iterationStart() {
+        return +this.getAttribute("iterationStart") || 0;
+    }
+
+    /**
+     * Setter for the name attribute.
+     * @param value
+     */
+    set direction(value) {
+        this.setAttribute("direction", value);
+    }
+
+    /**
+     * Getter for the name attribute.
+     * @returns {string}
+     */
+    get direction() {
+        return this.getAttribute("direction") || 'normal';
+    }
+
+    /**
+     * Setter for the name attribute.
+     * @param value
+     */
+    set easing(value) {
+        this.setAttribute("easing", value);
+    }
+
+    /**
+     * Getter for the name attribute.
+     * @returns {string}
+     */
+    get easing() {
+        return this.getAttribute("easing") || 'linear';
+    }
+
+    /**
      * Setter for the animations property.
      * @param {Array} value - The new value for the animations property.
      */
@@ -34,8 +178,8 @@ export default class Animation extends WJElement {
     }
 
     /**
-     * Getter for the animations property.
-     * @return {Array} The current value of the animations property.
+     * Getter for the animations' property.
+     * @return {Array} The current value of the animations' property.
      */
     get animations() {
         return this._animations;
@@ -60,7 +204,7 @@ export default class Animation extends WJElement {
      * @return {Array} An array containing the name of the observed attribute.
      */
     static get observedAttributes() {
-        return ["name"];
+        return [];
     }
 
     /**
@@ -100,18 +244,28 @@ export default class Animation extends WJElement {
         const element = this.slotEl.assignedElements()[0];
         this.animations = await this.getAnimationsArray();
         const selected = this.animations.find(k => k.name === this.name);
-
-        this.animation = element?.animate(selected.keyframes , {
-            delay: +this.delay || 0,
-            endDelay: +this.endDelay || 0,
-            fill: this.fill || 'auto',
-            duration: +this.duration || 1000,
-            iterationStart: +this.iterationStart || 0,
-            iterations: this.iterations || Infinity,
-            direction: this.direction || 'normal',
-            easing: this.easing || 'linear'
+        console.log("SELECTED:", element, selected, {
+            delay: +this.delay,
+            endDelay: +this.endDelay,
+            fill: this.fill,
+            duration: +this.duration,
+            iterationStart: +this.iterationStart,
+            iterations: this.iterations,
+            direction: this.direction,
+            easing: this.easing
         });
 
+        this.animation = element?.animate(selected.keyframes , {
+            delay: +this.delay,
+            endDelay: +this.endDelay,
+            fill: this.fill,
+            duration: +this.duration,
+            iterationStart: +this.iterationStart,
+            iterations: this.iterations,
+            direction: this.direction,
+            easing: this.easing
+        });
+        console.log("ANIMATION:", this.animation);
         if (this.animation)
             this.animation.play();
     }
@@ -121,7 +275,7 @@ export default class Animation extends WJElement {
      * @return {Array} The animations array.
      */
     async getAnimationsArray() {
-        return fetchAndParseCSS(animations);
+        return await fetchAndParseCSS(animations);
     }
 
     /**
@@ -146,8 +300,11 @@ export default class Animation extends WJElement {
      * Method to cancel the current animation.
      */
     cancel() {
-        if (this.animation) {
+        console.log("CANCELING ANIMATION", this.animation);
+        if (this.animation && typeof this.animation.cancel === 'function') {
             this.animation.cancel();
+        } else {
+            console.warn('Animation nie je inicializovaná alebo cancel nie je dostupný');
         }
     }
 }
