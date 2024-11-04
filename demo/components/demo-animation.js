@@ -1,5 +1,4 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -53,9 +52,8 @@ export default class DemoAnimation extends WJElement {
       select.appendChild(option);
     });
 
-    select.addEventListener('wje:option-change', (e) => {
-      console.log("wje:option-change", e.detail.context.value);
-      animationElement.setAttribute('name', e.detail.context.value);
+    select.addEventListener('wje-option:change', (e) => {
+      animationElement.setAttribute('name', e.detail.value);
     });
 
     this.querySelector('#stop').addEventListener('click', (e) => {

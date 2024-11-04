@@ -204,7 +204,7 @@ export default class Animation extends WJElement {
      * @return {Array} An array containing the name of the observed attribute.
      */
     static get observedAttributes() {
-        return [];
+        return ['name'];
     }
 
     /**
@@ -221,7 +221,7 @@ export default class Animation extends WJElement {
      * @param {Object} params - The parameters for drawing the element.
      * @return {Object} The document fragment containing the drawn element.
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let slot = document.createElement("slot");
@@ -244,16 +244,6 @@ export default class Animation extends WJElement {
         const element = this.slotEl.assignedElements()[0];
         this.animations = await this.getAnimationsArray();
         const selected = this.animations.find(k => k.name === this.name);
-        console.log("SELECTED:", element, selected, {
-            delay: +this.delay,
-            endDelay: +this.endDelay,
-            fill: this.fill,
-            duration: +this.duration,
-            iterationStart: +this.iterationStart,
-            iterations: this.iterations,
-            direction: this.direction,
-            easing: this.easing
-        });
 
         this.animation = element?.animate(selected.keyframes , {
             delay: +this.delay,
@@ -265,7 +255,6 @@ export default class Animation extends WJElement {
             direction: this.direction,
             easing: this.easing
         });
-        console.log("ANIMATION:", this.animation);
         if (this.animation)
             this.animation.play();
     }
@@ -300,11 +289,10 @@ export default class Animation extends WJElement {
      * Method to cancel the current animation.
      */
     cancel() {
-        console.log("CANCELING ANIMATION", this.animation);
         if (this.animation && typeof this.animation.cancel === 'function') {
             this.animation.cancel();
         } else {
-            console.warn('Animation nie je inicializovaná alebo cancel nie je dostupný');
+            console.warn('Animation is not initialized or cancel is not available');
         }
     }
 }
