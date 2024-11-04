@@ -6,6 +6,10 @@ class Event {
         self = this;
     }
 
+    /**
+     * Dispatch event to the element
+     * @param e
+     */
     #dispatch(e) {
         let element = this;
         let record = self.findRecordByElement(element);
@@ -23,6 +27,12 @@ class Event {
         });
     }
 
+    /**
+     * Dispatch custom event
+     * @param element
+     * @param event
+     * @param detail
+     */
     dispatchCustomEvent(element, event, detail) {
         element.dispatchEvent(
             new CustomEvent(event, {
@@ -53,6 +63,14 @@ class Event {
         return false;
     }
 
+    /**
+     * Add listener to the element
+     * @param element
+     * @param originalEvent
+     * @param event
+     * @param listener
+     * @param options
+     */
     addListener(element, originalEvent, event, listener, options) {
         if (!element)
             return;
@@ -65,6 +83,14 @@ class Event {
         });
     }
 
+    /**
+     * Write record to the storage
+     * @param element
+     * @param originalEvent
+     * @param event
+     * @param listener
+     * @param options
+     */
     writeRecord(element, originalEvent, event, listener, options) {
         let record = this.findRecordByElement(element);
 
@@ -111,11 +137,26 @@ class Event {
         return x && y && typeof x === 'object' && typeof x === typeof y ? Object.keys(x).length === Object.keys(y).length && Object.keys(x).every(key => this.deepEqual(x[key], y[key])) : x === y;
     }
 
+    /**
+     * Check if the listener already exists
+     * @param element
+     * @param event
+     * @param listener
+     * @returns {*}
+     */
     listenerExists(element, event, listener) {
         let record = this.findRecordByElement(element);
         return record.listeners[event].some((e) => this.deepEqual(e, listener));
     }
 
+    /**
+     * Remove listener from the element
+     * @param element
+     * @param originalEvent
+     * @param event
+     * @param listener
+     * @param options
+     */
     removeListener(element, originalEvent, event, listener, options) {
         let record = this.findRecordByElement(element);
 
@@ -136,10 +177,13 @@ class Event {
         element.removeEventListener(originalEvent, listener, options);
     }
 
+    /**
+     * Remove all listeners from the element
+     * @param element
+     */
     removeElement(element) {
         this.customEventStorage = this.customEventStorage.filter((e) => {
-            if (e.element !== element)
-                return e;
+            return e.element !== element;
         });
     }
 
