@@ -33,7 +33,7 @@ export class LocalizerDefault {
   translatePlural(key, count = 0, type = "cardinal") {
     const plural = new Intl.PluralRules(this.lang, { type: type });
 
-    if (count != undefined)
+    if (count !== undefined)
       key += "." + plural.select(count);
 
     return this.translate(key);
@@ -49,8 +49,9 @@ export class LocalizerDefault {
     return new Intl.DateTimeFormat(this.currentLang).format(new Date(date));
   }
 
-  relativeTime(value = 0, unit, options = { numeric: "auto" }) {
-    return new Intl.RelativeTimeFormat(this.currentLang, options).format(value, unit);
+  relativeTime(lang, value = 0, unit = "day", options = { numeric: "auto" }) {
+    lang = lang || this.currentLang;
+    return new Intl.RelativeTimeFormat(lang, options).format(value, unit);
   }
 }
 

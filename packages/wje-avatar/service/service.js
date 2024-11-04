@@ -1,6 +1,6 @@
 export function getHsl(text, s = 40, l = 65) {
-  let str = text,
-    hash = 0;
+  let str = text;
+    let hash = 0;
 
   for (let i = 0; i < str?.length; i++) {
     hash = str.charCodeAt(i) + ((hash << 5) - hash);

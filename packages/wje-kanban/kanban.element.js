@@ -56,22 +56,6 @@ export default class Kanban extends WJElement {
         return this._response;
     }
 
-    // /**
-    //  * Sets the URL for fetching data.
-    //  * @param value {string}
-    //  */
-    // set poolName(value) {
-    //     this.setAttribute("pool-name", value);
-    // }
-    //
-    // /**
-    //  * Gets the URL for fetching data.
-    //  * @returns {string|string}
-    //  */
-    // get poolName() {
-    //     return this.getAttribute("pool-name") || "status";
-    // }
-
     /**
      * Sets the URL for fetching data.
      * @param value {array}
@@ -140,7 +124,7 @@ export default class Kanban extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");
@@ -169,6 +153,9 @@ export default class Kanban extends WJElement {
 
     /**
      * Called after the component has been drawn.
+     * @params {Object} context - The context
+     * @params {Object} store - The store
+     * @params {Object} params - The parameters
      */
     async afterDraw() {
         this.UI = {
@@ -412,7 +399,7 @@ export default class Kanban extends WJElement {
      */
     live(eventType, selector, callback) {
         const attachListener = (root) => {
-            root.addEventListener(eventType, function (e) {
+            root.addEventListener(eventType, (e) => {
                 if (e.target.matches(selector)) {
                     callback.call(e.target, e);
                 }
@@ -422,7 +409,7 @@ export default class Kanban extends WJElement {
         const traverseAndAttach = (root) => {
             attachListener(root);
 
-            root.querySelectorAll('*').forEach(function(node) {
+            root.querySelectorAll('*').forEach((node) => {
                 if (node.shadowRoot) {
                     traverseAndAttach(node.shadowRoot);
                 }

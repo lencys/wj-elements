@@ -87,7 +87,7 @@ export default class CopyButton extends WJElement {
      * @param {Object} params - The parameters to use.
      * @returns {DocumentFragment} The created document fragment.
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let tooltip = document.createElement("wje-tooltip");
@@ -113,7 +113,7 @@ export default class CopyButton extends WJElement {
     }
 
     /**
-     * Sets up the event listeners after the CopyButton is drawn.
+     * Adds event listeners for the click, focus, and blur events.
      */
     afterDraw() {
         event.addListener(this,"click", null, this.clicked);

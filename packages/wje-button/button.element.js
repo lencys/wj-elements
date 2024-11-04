@@ -53,6 +53,70 @@ export default class Button extends WJElement {
     }
 
     /**
+     * Properties of the element
+     * @param value
+     */
+    set color(value) {
+        this.setAttribute("color", value || "default");
+    }
+
+    /**
+     * Get color
+     * @returns {string|string}
+     */
+    get color() {
+        return this.getAttribute("color") || "default";
+    }
+
+    /**
+     * Set variant
+     * @param value
+     */
+    set caret(value) {
+        this.setAttribute("caret", value);
+    }
+
+    /**
+     * Get variant
+     * @returns {boolean}
+     */
+    get caret() {
+        return this.hasAttribute("caret");
+    }
+
+    /**
+     * Set variant
+     * @param value
+     */
+    set tooltip(value) {
+        this.setAttribute("tooltip", value);
+    }
+
+    /**
+     * Get variant
+     * @returns {boolean}
+     */
+    get tooltip() {
+        return this.hasAttribute("tooltip");
+    }
+
+    /**
+     * Set variant
+     * @param value
+     */
+    set dialog(value) {
+        this.setAttribute("dialog", value);
+    }
+
+    /**
+     * Get variant
+     * @returns {string|object}
+     */
+    get dialog() {
+        return this.getAttribute("dialog");
+    }
+
+    /**
      * Set active state
      * @param {boolean} value - The value to set
      */
@@ -202,7 +266,7 @@ export default class Button extends WJElement {
      * @param {Object} params - The parameters
      * @returns {Object} fragment - The document fragment
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement(this.hasAttribute('href') ? 'a' : 'button');
@@ -240,16 +304,12 @@ export default class Button extends WJElement {
         if (this.size)
             native.classList.add("wje-button-" + this.size);
 
-        if (this.hasAttribute("color"))
-            native.classList.add("wje-color-" + this.color, "wje-color");
-        else
-            native.classList.add("wje-color-default", "wje-color");
-
         if (this.querySelectorAll('[slot=caret]').length < 1 && this.hasAttribute("caret") || this.hasAttribute("only-caret")) {
             let i = document.createElement("wje-icon");
             i.style.setProperty("--wje-icon-size", "14px");
             i.setAttribute("slot", "caret");
             i.setAttribute("name", "chevron-down");
+            i.setAttribute("part", "caret");
 
             this.appendChild(i);
         }
@@ -261,6 +321,8 @@ export default class Button extends WJElement {
 
             this.appendChild(i);
         }
+
+        native.classList.add("wje-color-" + this.color, "wje-color");
 
         let span = document.createElement("span");
         span.setAttribute("part", "inner");
@@ -296,7 +358,7 @@ export default class Button extends WJElement {
 
         native.appendChild(span);
 
-        if (this.hasAttribute("tooltip")) {
+        if (this.tooltip) {
             let tooltip = document.createElement("wje-tooltip");
             tooltip.setAttribute("content", this.getAttribute("tooltip"));
             tooltip.setAttribute("placement", this.getAttribute("tooltip-placement") || "top");
@@ -312,6 +374,9 @@ export default class Button extends WJElement {
 
     /**
      * After draw method
+     * @param {Object} context - The context
+     * @param {Object} store - The store
+     * @param {Object} params - The parameters
      */
     afterDraw() {
         // nastavenie toggle podla atributu, ak nie je nastaveny, tak sa zobrazi vzdy prvy element

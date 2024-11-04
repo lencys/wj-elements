@@ -152,7 +152,7 @@ export default class Slider extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("div");
@@ -211,6 +211,9 @@ export default class Slider extends WJElement {
 
     /**
      * Sets up the event listeners after the component is drawn.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         this.setHandlePosition();

@@ -73,7 +73,7 @@ export default class Toolbar extends withRouterLinks( WJElement) {
      * @param {Object} params - The parameters
      * @returns {Object} Document fragment
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");

@@ -63,7 +63,7 @@ export default class MenuButton extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let slot = document.createElement("slot");
@@ -76,6 +76,9 @@ export default class MenuButton extends WJElement {
     /**
      * Refreshes the component after drawing.
      * Adds a click event listener that toggles the "open" class on the content element.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         event.addListener(this, "click", null, (e) => {

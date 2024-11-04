@@ -169,7 +169,7 @@ export default class Masonry extends WJElement {
      * @param {Object} params - The parameters to use.
      * @returns {DocumentFragment} The drawn element.
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");

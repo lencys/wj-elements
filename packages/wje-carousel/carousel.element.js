@@ -60,7 +60,7 @@ export default class Carousel extends WJElement {
         this.cloneFirstAndLastItems();
     }
 
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");

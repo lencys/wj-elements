@@ -1,6 +1,4 @@
 export class WjElementUtils {
-    constructor() {}
-
     /**
      * This function creates an element
      * @param element : HTMLElement
@@ -24,7 +22,7 @@ export class WjElementUtils {
         return Array.from(el.attributes)
             .filter(a => !a.name.startsWith("@"))
             .map(a => [a.name.split("-").map((s, i) => {
-                if (i != 0) {
+                if (i !== 0) {
                     return s.charAt(0).toUpperCase() + s.slice(1);
                 } else {
                     return s;
@@ -99,10 +97,13 @@ export class WjElementUtils {
 
     /**
      * This function converts a string to a boolean
-     * @param string
+     * @param value
      * @returns {boolean}
      */
-    static stringToBoolean(string) {
-        return !["false", "0", 0].includes(string)
+    static stringToBoolean(value) {
+        if(typeof value === 'boolean')
+            return value;
+
+        return !["false", "0", 0].includes(value)
     }
 }

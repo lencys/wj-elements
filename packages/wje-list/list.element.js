@@ -55,7 +55,7 @@ export default class List extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("slot");
@@ -66,6 +66,9 @@ export default class List extends WJElement {
 
     /**
      * Called after the component has been drawn.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         this.classList.toggle("wje-lines-" + this.lines, this.hasAttribute("lines"));

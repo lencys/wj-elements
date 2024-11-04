@@ -203,7 +203,7 @@ export default class Input extends WJElement {
      */
     static get observedAttributes() {
         // observe any change in all attributes
-        return
+        
     }
 
     /**
@@ -236,7 +236,7 @@ export default class Input extends WJElement {
      * @param {Object} params - The parameters to use.
      * @returns {DocumentFragment} The drawn input.
      */
-    draw(context, store, params) {
+    draw() {
         let hasSlotStart = this.hasSlot(this, "start");
         let hasSlotEnd = this.hasSlot(this, "end");
         let hasSlotError = this.hasSlot(this, "error");
@@ -360,6 +360,9 @@ export default class Input extends WJElement {
 
     /**
      * Runs after the input is drawn.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         this.input.addEventListener("focus", (e) => {

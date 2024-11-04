@@ -104,7 +104,7 @@ export default class FileUploadItem extends WJElement {
    * @param {Object} params - The parameters for the component.
    * @returns {DocumentFragment} The fragment containing the component.
    */
-  draw(context, store, params) {
+  draw() {
     let fragment = document.createDocumentFragment();
 
     let native = document.createElement("div");
@@ -170,6 +170,9 @@ export default class FileUploadItem extends WJElement {
 
   /**
    * Called after the component has been drawn.
+   * @params {Object} context - The context of the component.
+   * @params {Object} store - The store of the component.
+   * @params {Object} params - The parameters for the component.
    */
   afterDraw() {
     this.button.addEventListener("wje-button:click", this.onDelete);

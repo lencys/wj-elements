@@ -36,7 +36,7 @@ export default class Radio extends WJElement {
         this.isShadowRoot = "open";
     }
 
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");

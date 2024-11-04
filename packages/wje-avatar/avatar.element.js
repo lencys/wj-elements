@@ -61,33 +61,28 @@ export default class Avatar extends WJElement {
      * @param {object} params - The parameters
      * @returns {object} fragment - The document fragment
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("div");
         element.setAttribute("part", "native");
         element.classList.add("native-avatar");
 
-        // if(this.size)
-        //     this.classList.add("wje-avatar-" + this.size);
+        let slot = document.createElement("slot");
 
-        // if(this.isImage()) {
-            let slot = document.createElement("slot");
+        element.appendChild(slot);
 
-            element.appendChild(slot);
-        // } else {
-            if(this.hasAttribute("initials")) {
-                let initials = getInitials(this.label);
+        if(this.hasAttribute("initials")) {
+            let initials = getInitials(this.label);
 
-                this.setAttribute("style", `--wje-avatar-background-color: ${getHsl(initials)}`);
-                element.innerText = initials;
-            } else {
-                let slotIcon = document.createElement("slot");
-                slotIcon.setAttribute("name", "icon");
+            this.setAttribute("style", `--wje-avatar-background-color: ${getHsl(initials)}`);
+            element.innerText = initials;
+        } else {
+            let slotIcon = document.createElement("slot");
+            slotIcon.setAttribute("name", "icon");
 
-                element.appendChild(slotIcon);
-            }
-        // }
+            element.appendChild(slotIcon);
+        }
 
         let status = document.createElement("slot");
         status.setAttribute("name", "status");

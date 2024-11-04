@@ -1,4 +1,4 @@
-var self;
+var self; // eslint-disable-line no-var
 
 class Event {
     constructor() {
@@ -11,7 +11,7 @@ class Event {
         let record = self.findRecordByElement(element);
         let listeners = record.listeners[e.type];
 
-        listeners.forEach((listener, i) => {
+        listeners.forEach((listener) => {
             self.dispatchCustomEvent(element, listener.event, {
                 originalEvent: e?.type || null,
                 context: element,
@@ -36,11 +36,16 @@ class Event {
         );
     }
 
+    /**
+     * Find record by element
+     * @param element
+     * @returns {*|boolean}
+     */
     findRecordByElement(element) {
-        for (var index = 0, length = this.customEventStorage.length; index < length; index++) {
-            var record = this.customEventStorage[index];
+        for (let index = 0, length = this.customEventStorage.length; index < length; index++) {
+            let record = this.customEventStorage[index];
 
-            if (element == record.element) {
+            if (element === record.element) {
                 return record;
             }
         }
@@ -115,7 +120,7 @@ class Event {
         let record = this.findRecordByElement(element);
 
         if (record && originalEvent in record.listeners) {
-            var index = record.listeners[originalEvent].indexOf(listener);
+            let index = record.listeners[originalEvent].indexOf(listener);
 
             if (~index) {
                 record.listeners[originalEvent].splice(index, 1);

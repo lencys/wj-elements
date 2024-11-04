@@ -267,7 +267,7 @@ export default class Select extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         this.classList.add("wje-placement", "wje-" + this.placement || "wje-start");
@@ -402,12 +402,11 @@ export default class Select extends WJElement {
 
     /**
      * Sets up the event listeners after the component is drawn.
-     *
      * @param {Object} context - The context for drawing.
      * @param {Object} store - The store for drawing.
      * @param {Object} params - The parameters for drawing.
      */
-    afterDraw(context, store, params) {
+    afterDraw() {
         this.input.addEventListener("focus", (e) => {
             this.labelElement.classList.add("fade");
             this.native.classList.add("focused");

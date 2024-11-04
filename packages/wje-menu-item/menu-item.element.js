@@ -134,7 +134,7 @@ export default class MenuItem extends WJElement {
     /**
      * Removes the active attribute from the menu before drawing the MenuItem.
      */
-    beforeDraw(context, store, params) {
+    beforeDraw() {
         this.querySelector("wje-menu")?.removeAttribute("active");
     }
 
@@ -146,7 +146,7 @@ export default class MenuItem extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment} The fragment to be appended to the MenuItem.
      */
-    draw(context, store, params) {
+    draw() {
         this.hasSubmenu = WjElementUtils.hasSlot(this, "submenu");
 
         let fragment = document.createDocumentFragment();
@@ -251,6 +251,9 @@ export default class MenuItem extends WJElement {
 
     /**
      * Adds event listeners after drawing the MenuItem.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters
      */
     afterDraw() {
         this.addEventListener("mousemove", this.dispatchMove);

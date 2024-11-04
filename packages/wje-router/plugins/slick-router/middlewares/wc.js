@@ -5,7 +5,7 @@ let router, rootOutlet, rootOutletEl
 
 function parseNumber (value) {
   const n = parseFloat(value)
-  const isNumeric = value == n // eslint-disable-line eqeqeq
+  const isNumeric = value == n  
   return isNumeric ? n : value
 }
 

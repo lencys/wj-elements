@@ -110,7 +110,7 @@ export default class Toggle extends WJElement {
      * @param {Object} params - The parameters
      * @returns {Object} Document fragment
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("div")
@@ -158,6 +158,12 @@ export default class Toggle extends WJElement {
         return fragment;
     }
 
+    /**
+     * @summary After draw method
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
+     */
     afterDraw() {
         if (!this.disabled) {
             this.input.addEventListener("input", (e) => {

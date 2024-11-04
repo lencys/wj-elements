@@ -45,6 +45,9 @@ export default class Routerx extends WJElement {
 
     /**
      * Sets up the router after the component is drawn.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         const htmlString = this.outerHTML;
@@ -116,7 +119,6 @@ export default class Routerx extends WJElement {
 
     /**
      * Sets the breadcrumb for the transition.
-     *
      * @param {Object} transition - The transition.
      */
     setBreadcrumb = (transition) => {

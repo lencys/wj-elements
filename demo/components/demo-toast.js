@@ -105,7 +105,7 @@ export default class DemoToast extends WJElement {
     });
   }
 
-  notify(message, countdown = false, closable = true, color='primary', src='/assets/img/avatar.svg', icon = null, duration='1000000', ) {
+  notify(message, countdown = false, closable = true, color='primary', src='/assets/img/avatar.svg', icon = null, duration='3000000', ) {
     let property = {
       color: color,
       headline: 'Notification',

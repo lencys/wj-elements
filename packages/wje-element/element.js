@@ -140,7 +140,7 @@ export default class WJElement extends HTMLElement {
 
 		if (!definedElement) {
 			customElements.define(name, elementConstructor, options);
-			return;
+			
 		}
 	}
 

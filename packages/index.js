@@ -1,6 +1,3 @@
-// import "./themes/light.scss";
-// import "./themes/dark.scss";
-// import "./styles/styles.css";
 import { default as WJElement } from "./wje-element/element.js";
 import { event } from "./utils/event.js";
 import { defaultStoreActions, store } from "./wje-store/store.js";
@@ -98,7 +95,6 @@ import { default as Thumbnail } from "./wje-thumbnail/thumbnail.js";
 import { default as Timeline } from "./wje-timeline/timeline.js";
 import { default as TimelineItem } from "./wje-timeline-item/timeline-item.js";
 import { default as Toast } from "./wje-toast/toast.js";
-import { default as ToastItem } from "./wje-toast-item/toast-item.js";
 import { default as Toggle } from "./wje-toggle/toggle.js";
 import { default as Toolbar } from "./wje-toolbar/toolbar.js";
 import { default as ToolbarAction } from "./wje-toolbar-action/toolbar-action.js";
@@ -194,7 +190,6 @@ export {
   Timeline,
   TimelineItem,
   Toast,
-  ToastItem,
   Toggle,
   Toolbar,
   ToolbarAction,

@@ -63,7 +63,7 @@ export default class Divider extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment} The created document fragment.
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");

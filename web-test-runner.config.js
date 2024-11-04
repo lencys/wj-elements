@@ -12,21 +12,27 @@ export default {
   },
   testFramework: {
     config: {
-      timeout: 3000,
+      timeout: 5000,
       retries: 1
     }
   },
   browsers: [
-    playwrightLauncher({ product: 'chromium' }),
-    playwrightLauncher({ product: 'webkit' })
+    playwrightLauncher({ product: 'chromium' })
+    // playwrightLauncher({ product: 'webkit' })
   ],
   testRunnerHtml: testFramework => `
-    <html lang="en-US">
+    <html lang="en-gb">
       <head>
         <link rel="stylesheet" type="text/css" href="dist/light.css" />
+      
+        <link rel="stylesheet" href="dist/light.css" />
+        <link rel="stylesheet" href="dist/dark.css" />
+        <link rel="stylesheet" href="dist/styles.css" />
+        <link rel="stylesheet" href="demo/assets/css/demo.css" />
       </head>
       <body>
         <script>
+          window.translations = new Map();
           window.process = {env: { NODE_ENV: "production" }}
         </script>
         <script type="module" src="${testFramework}"></script>

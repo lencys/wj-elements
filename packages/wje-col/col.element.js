@@ -20,7 +20,7 @@ export default class Col extends WJElement {
     beforeDraw(context, store, params) {
     }
 
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("slot");

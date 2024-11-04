@@ -81,7 +81,7 @@ export default class ImgComparer extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");
@@ -124,7 +124,6 @@ export default class ImgComparer extends WJElement {
 
     /**
      * Handles the drag event.
-     *
      * @param {Event} e - The event.
      */
     handleDrag = (e) => {
@@ -143,7 +142,6 @@ export default class ImgComparer extends WJElement {
 
     /**
      * Clamps a number between a minimum and maximum value.
-     *
      * @param {number} num - The number to clamp.
      * @param {number} min - The minimum value.
      * @param {number} max - The maximum value.

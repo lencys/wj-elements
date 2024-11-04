@@ -57,15 +57,18 @@ export default class Toast extends WJElement {
      * @param value
      */
     set open(value) {
-        this.setAttribute("open", value);
+        this.removeAttribute("open");
+
+        if(WjElementUtils.stringToBoolean(value))
+            this.setAttribute("open", value);
     }
 
     /**
      * Get open
-     * @returns {string}
+     * @returns {boolean}
      */
     get open() {
-        return this.getAttribute("open");
+        return this.hasAttribute("open");
     }
 
     /**
@@ -89,16 +92,15 @@ export default class Toast extends WJElement {
      * @param value
      */
     set closable(value) {
-        if(value)
-            this.setAttribute("closable", value);
+        this.setAttribute("closable", value || "");
     }
 
     /**
      * Get closable
-     * @returns {string}
+     * @returns {boolean}
      */
     get closable() {
-        return this.getAttribute("closable");
+        return this.hasAttribute("closable");
     }
 
     /**
@@ -199,7 +201,7 @@ export default class Toast extends WJElement {
      * @param {Object} params - The parameters
      * @returns {Object} Document fragment
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");
@@ -252,7 +254,7 @@ export default class Toast extends WJElement {
         native.appendChild(mediaSlot);
         native.appendChild(content);
 
-        if(this.hasAttribute('closable'))
+        if(this.closable)
             native.appendChild(closeBtn);
 
         if(this.hasAttribute('countdown'))
@@ -365,6 +367,12 @@ export default class Toast extends WJElement {
 
         this.open = true;
         event.dispatchCustomEvent(this, 'wje-toast:after-show');
+
+        // Spustenie časovača na automatické skrytie po uplynutí `duration`
+        // if (this.duration > 0) {
+        //     this.remainingTime = this.duration;
+        //     this.startTimer();
+        // }
     }
 
     /**

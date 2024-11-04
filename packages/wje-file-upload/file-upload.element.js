@@ -165,7 +165,7 @@ export default class FileUpload extends WJElement {
      * @param {Object} params - The parameters for the component.
      * @returns {DocumentFragment} The fragment containing the component.
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");
@@ -215,6 +215,9 @@ export default class FileUpload extends WJElement {
 
     /**
      * Method to perform actions after the component is drawn.
+     * @params {Object} context - The context to draw in.
+     * @params {Object} store - The store to use.
+     * @params {Object} params - The parameters to use.
      */
     afterDraw() {
         this.button.addEventListener("click", () => {
@@ -298,7 +301,7 @@ export default class FileUpload extends WJElement {
         try {
             this.handleSubmit(event);
         } catch (err) {
-            return;
+            
         }
     }
 

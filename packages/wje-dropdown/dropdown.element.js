@@ -60,16 +60,29 @@ export default class Dropdown extends WJElement {
         }
     };
 
+    /**
+     * Sets up the attributes for the dropdown.
+     */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
+    /**
+     * Removes the popup element.
+     */
     beforeDraw() {
         this.popup?.remove()
         this.popup = null;
     }
 
-    draw(context, store, params) {
+    /**
+     * Draws the dropdown element.
+     * @params {Object} context - The context to draw in.
+     * @params {Object} store - The store to use.
+     * @params {Object} params - The parameters to use.
+     * @returns {DocumentFragment}
+     */
+    draw() {
         let fragment = document.createDocumentFragment();
 
         this.classList.add(
@@ -116,6 +129,9 @@ export default class Dropdown extends WJElement {
         event.removeListener(this.anchorSlot, "click", null, this.toggleCallback, { capture: true });
     }
 
+    /**
+     * Adds event listeners for the mouseenter and mouseleave events.
+     */
     afterDraw() {
         event.addListener(this, "wje-popup:hide", null, () => {
             this.classList.remove("active");

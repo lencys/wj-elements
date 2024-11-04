@@ -234,7 +234,7 @@ export default class Checkbox extends WJElement {
      * @param {object} params - The parameters.
      * @returns {DocumentFragment} The created fragment.
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");

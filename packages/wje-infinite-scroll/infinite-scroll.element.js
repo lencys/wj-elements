@@ -65,22 +65,42 @@ export default class InfiniteScroll extends WJElement {
         };
     }
 
+    /**
+     * Dependencies of the InfiniteScroll component.
+     * @param value
+     */
     set infiniteScrollTemplate(value) {
         this._infiniteScrollTemplate = value;
     }
 
+    /**
+     * Getter for the infiniteScrollTemplate property.
+     * @returns {null}
+     */
     get infiniteScrollTemplate() {
         return this._infiniteScrollTemplate;
     }
 
+    /**
+     * Dependencies of the InfiniteScroll component.
+     * @param value
+     */
     set response(value) {
         this._response = value;
     }
 
+    /**
+     * Getter for the response property.
+     * @returns {*|{}}
+     */
     get response() {
         return this._response;
     }
 
+    /**
+     * Dependencies of the InfiniteScroll component.
+     * @param value
+     */
     set objectName(value) {
         this.setAttribute("object-name", value);
     }
@@ -125,7 +145,7 @@ export default class InfiniteScroll extends WJElement {
      * @param {Object} store - The store for drawing.
      * @param {Object} params - The parameters for drawing.
      */
-    beforeDraw(context, store, params) {
+    beforeDraw() {
         this.iterate = this.querySelector("[iterate]");
         this.infiniteScrollTemplate = this.iterate?.outerHTML;
         this.iterate?.remove(); // remove template
@@ -149,7 +169,7 @@ export default class InfiniteScroll extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");
@@ -189,6 +209,9 @@ export default class InfiniteScroll extends WJElement {
 
     /**
      * Called after the component has been drawn.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     async afterDraw() {
         this.queryParams = this.queryParams || '';

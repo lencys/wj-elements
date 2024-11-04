@@ -7,6 +7,10 @@
   z-index: 9999;
   width: 300px;
   margin: .5rem 0;
+  display: none;
+}
+
+:host([open]) {
   display: block;
 }
 
@@ -122,14 +126,6 @@
   color: var(--wje-color-contrast-9);
   border-color: var(--wje-color-contrast-3);
 }
-
-
-
-
-
-
-
-
 
 /*PRIMARY*/
 :host([color=primary]) .countdown-bar {

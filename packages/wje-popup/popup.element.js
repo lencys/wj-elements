@@ -120,7 +120,7 @@ export default class Popup extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let slotAnchor = document.createElement("slot");
@@ -148,7 +148,13 @@ export default class Popup extends WJElement {
         return fragment;
     }
 
-    afterDraw(context, store, params) {
+    /**
+     * After Draws the component.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
+     */
+    afterDraw() {
         this.setAnchor();
 
         if (this.hasAttribute("active"))

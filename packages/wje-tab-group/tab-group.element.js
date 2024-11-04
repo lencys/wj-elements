@@ -109,6 +109,9 @@ export default class TabGroup extends WJElement {
 
     /**
      * Sets up the event listeners after the component is drawn.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         let activeTab = this.getActiveTab();

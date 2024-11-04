@@ -1,4 +1,4 @@
-import { default as WJElement, WjElementUtils } from "../wje-element/element.js";
+import { default as WJElement } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**
@@ -57,22 +57,13 @@ export default class Thumbnail extends WJElement {
     }
 
     /**
-     * Before draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
-     */
-    beforeDraw(context, store, params) {
-    }
-
-    /**
      * Draw method
      * @param {Object} context - The context
      * @param {Object} store - The store
      * @param {Object} params - The parameters
      * @returns {Object} Document fragment
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("slot");

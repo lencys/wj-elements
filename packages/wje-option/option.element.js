@@ -101,7 +101,7 @@ export default class Option extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("div");
@@ -131,6 +131,9 @@ export default class Option extends WJElement {
 
     /**
      * Adds event listeners after the component is drawn.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         event.addListener(this, "click", null, (e, b, c) => {

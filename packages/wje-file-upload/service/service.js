@@ -115,9 +115,8 @@ export function uploadFile(file, chunkSize, preview) {
       };
 
       xhr.onload = () => {
-        if (xhr.status == 200 || xhr.status == 201) {
+        if (xhr.status === 200 || xhr.status === 201) {
           progressArray[chunkIndex] = 100; // Táto časť je kompletná
-          // this.updateOverallProgress(progressArray, file.lastModified);
 
           // Odoslanie ďalšej časti
           start += chunkSize;

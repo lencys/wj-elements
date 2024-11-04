@@ -60,7 +60,7 @@ export default class ButtonGroup extends WJElement {
      * @param {Object} params - The parameters
      * @returns {Object} fragment - The document fragment
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("div");
@@ -82,7 +82,7 @@ export default class ButtonGroup extends WJElement {
      * @param {Object} store - The store
      * @param {Object} params - The parameters
      */
-    afterDraw(context, store, params) {
+    afterDraw() {
         const slottedElements = [...this.slotElement.assignedElements({ flatten: true })];
 
         slottedElements.forEach(el => {

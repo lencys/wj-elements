@@ -927,7 +927,7 @@ function clickable (e, el) {
   // email links
   if (href.indexOf('mailto:') === 0) return
   // don't intercept javascript links
-  /* eslint-disable no-script-url */
+   
   if (href.indexOf('javascript:') === 0) return
   /* eslint-enable no-script-url */
 

@@ -148,7 +148,7 @@ export default class RadioGroup extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");
@@ -175,6 +175,9 @@ export default class RadioGroup extends WJElement {
     /**
      * Adds event listeners after the component is drawn.
      * Handles the selection of radio buttons.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         this.checkRadio(this.value);

@@ -93,7 +93,7 @@ export default class DemoQrCode extends WJElement {
             { selector: '[changeForegroundAlpha]', eventType: 'wje-input:input', attribute: 'foregroundAlpha' },
             { selector: '[colorSelectBackground]', eventType: 'wje-color-picker:select', attribute: 'background' },
             { selector: '[changeBackgroundAlpha]', eventType: 'wje-input:input', attribute: 'backgroundAlpha' },
-            { selector: '[levelSelect]', eventType: 'wje:option-change', attribute: 'level' }
+            { selector: '[levelSelect]', eventType: 'wje-option:change', attribute: 'level' }
         ];
 
         elements.forEach(({ selector, eventType, attribute }) => {

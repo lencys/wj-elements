@@ -21,7 +21,7 @@ export default class CarouselItem extends WJElement {
         this.isShadowRoot = "open";
     }
 
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");

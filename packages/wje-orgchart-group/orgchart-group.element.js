@@ -53,7 +53,7 @@ export default class OrgchartGroup extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");
@@ -94,7 +94,7 @@ export default class OrgchartGroup extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    afterDraw(context, store, params) {
+    afterDraw() {
         this.card.addEventListener("click", (e) => {
             e.stopPropagation();
             event.dispatchCustomEvent(this.card, "wje-orgchart-group:click", { target: this });

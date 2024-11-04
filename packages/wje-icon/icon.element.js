@@ -84,6 +84,9 @@ export default class Icon extends WJElement {
 
     /**
      * Called after the component has been drawn.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         let lazyImageObserver = new IntersectionObserver((entries, observer) => {
