@@ -161,9 +161,6 @@ export default class Breadcrumb extends WJElement {
             console.log("TOTO NASTANE?:", this.drawCollapsedIndicator());
             fragment.appendChild(this.drawCollapsedIndicator());
 
-            // removneme collapsed z host element
-            // this.classList.remove("collapsed");
-
             // skryjeme native element
             native.classList.add("hidden");
             console.log("THIS:", this);
@@ -256,8 +253,8 @@ export default class Breadcrumb extends WJElement {
         event.addListener( button,"click", null, (e) => {
             this.native.classList.remove("hidden");
             button.remove();
-            this.parentElement.querySelectorAll("wje-breadcrumb").forEach((e) => {
-                e.classList.remove("collapsed");
+            this.parentElement.querySelectorAll("wje-breadcrumb").forEach((el) => {
+                el.classList.remove("collapsed");
             });
             e.stopPropagation();
         });
