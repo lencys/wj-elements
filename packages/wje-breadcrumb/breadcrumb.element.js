@@ -21,7 +21,19 @@ export default class Breadcrumb extends WJElement {
 
         this._showSeparator = true;
         this._collapsedVariant = this.parentElement?.collapsedVariant || "BUTTON";
+        this.showCollapsedIndicator = false;
     }
+
+    // set showCollapsedIndicator(value) {
+    //     // this.removeAttribute("show-collapsed-indicator");
+    //
+    //     if(WjElementUtils.stringToBoolean(value))
+    //         this.setAttribute("show-collapsed-indicator", value);
+    // }
+    //
+    // get showCollapsedIndicator() {
+    //     return this.hasAttribute("show-collapsed-indicator");
+    // }
 
     /**
      * Get show separator flag
@@ -87,8 +99,9 @@ export default class Breadcrumb extends WJElement {
      * @returns {boolean} false - Always returns false
      */
     attributeChangedCallback(name, oldValue, newValue) {
+        console.log("ATTRIBUTECHANGEDCALLBACK:", name, oldValue, newValue, this.showCollapsedIndicator);
         if (name === "collapsed") {
-            if(WjElementUtils.stringToBoolean(newValue))
+            if(WjElementUtils.stringToBoolean(newValue) && !this.hasAttribute('show-collapsed-indicator'))
                 this.classList.add("collapsed");
         } else if (name === "show-collapsed-indicator") {
             if(WjElementUtils.stringToBoolean(newValue)){
@@ -141,23 +154,25 @@ export default class Breadcrumb extends WJElement {
         native.appendChild(end);
 
         fragment.appendChild(native);
+        console.log("DRAW:", WjElementUtils.stringToBoolean(this.showCollapsedIndicator), this.collapsedVariant);
 
-        if(this.showCollapsedIndicator) {
+        if(WjElementUtils.stringToBoolean(this.showCollapsedIndicator)) {
             // pridame button za native element
+            console.log("TOTO NASTANE?:", this.drawCollapsedIndicator());
             fragment.appendChild(this.drawCollapsedIndicator());
 
             // removneme collapsed z host element
-            this.classList.remove("collapsed");
+            // this.classList.remove("collapsed");
 
             // skryjeme native element
             native.classList.add("hidden");
+            console.log("THIS:", this);
         }
 
         if(this.showSeparator) {
             let separator = document.createElement("span");
             separator.classList.add("separator");
             separator.setAttribute("part", "separator");
-
 
             if(WjElementUtils.hasSlot(this, "separator")) {
                 let slotSeparator = document.createElement("slot");
@@ -172,6 +187,7 @@ export default class Breadcrumb extends WJElement {
         }
 
         this.native = native;
+        console.log("NATIVE:", this.native);
         return fragment;
     }
 
