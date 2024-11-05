@@ -90,7 +90,7 @@ export function isValidFileType(file, acceptedFileTypes) {
 }
 
 export function uploadFile(file, chunkSize, preview) {
-  let start = 0;
+  let offset = 0;
   const progressArray = new Array(Math.ceil(file.size / chunkSize)).fill(0);
 
   const readAndUploadChunk = (start, end) => {
@@ -135,7 +135,7 @@ export function uploadFile(file, chunkSize, preview) {
     reader.readAsArrayBuffer(chunk);
   }
 
-  readAndUploadChunk(start, Math.min(start + chunkSize, file.size));
+  readAndUploadChunk(offset, Math.min(offset + chunkSize, file.size));
 }
 
 export function upload(url, chunkSize = 1024 * 1024, wholeFile = false) {
@@ -233,8 +233,4 @@ export function uploadWholeFile(url, file, preview) {
     .catch(error => {
       console.error('Error:', error);
     });
-
 }
-
-
-

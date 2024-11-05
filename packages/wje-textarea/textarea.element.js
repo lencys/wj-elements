@@ -74,7 +74,10 @@ export default class Textarea extends WJElement {
      * @param {boolean} isInvalid - Whether the input is invalid.
      */
     set invalid(isInvalid) {
-        isInvalid ? this.setAttribute('invalid', '') : this.removeAttribute('invalid');
+        if (isInvalid)
+            this.setAttribute('invalid', '')
+        else
+            this.removeAttribute('invalid');
     }
 
     /**

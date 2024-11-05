@@ -38,7 +38,7 @@ export default class InfiniteScroll extends WJElement {
         this.iterate = null;
         this._infiniteScrollTemplate = null;
         this._abortController = new AbortController();
-        this._signal;
+        this._signal = this._abortController.signal;
 
         /**
          * Interpolates a string with the given parameters.
@@ -55,7 +55,7 @@ export default class InfiniteScroll extends WJElement {
                     let cleanKey = key.replace('{{', '').replace('}}', '');
                     let val = '';
                     cleanKey.split('.').forEach(k => {
-                        val = (val == '') ? params[k] : val[k];
+                        val = (val === '') ? params[k] : val[k];
                     });
 
                     template = template.replace(key, val);

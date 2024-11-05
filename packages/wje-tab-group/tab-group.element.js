@@ -121,7 +121,7 @@ export default class TabGroup extends WJElement {
 
         this.addEventListener("wje-tab:change", (e) => {
             if(e.detail.context.hasAttribute("disabled"))
-                return false;
+                return;
 
             this.setActiveTab(e.detail.context.panel);
         });

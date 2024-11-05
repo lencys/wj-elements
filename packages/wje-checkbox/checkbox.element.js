@@ -74,19 +74,22 @@ export default class Checkbox extends WJElement {
     }
 
     /**
+     * Setter for the invalid attribute.
+     * @param {boolean} isInvalid - Whether the input is invalid.
+     */
+    set invalid(isInvalid) {
+        if (isInvalid)
+            this.setAttribute('invalid', '');
+        else
+            this.removeAttribute('invalid');
+    }
+
+    /**
      * Getter for the invalid attribute.
      * @returns {boolean} Whether the attribute is present.
      */
     get invalid() {
         return this.hasAttribute('invalid');
-    }
-
-    /**
-     * Setter for the invalid attribute.
-     * @param {boolean} isInvalid - Whether the input is invalid.
-     */
-    set invalid(isInvalid) {
-        isInvalid ? this.setAttribute('invalid', '') : this.removeAttribute('invalid');
     }
 
     /**
@@ -160,7 +163,7 @@ export default class Checkbox extends WJElement {
 
     /**
      * @summary Set checked attribute
-     * @returns {boolean} true if the toggle is checked, false otherwise
+     * @param {boolean} value - true if the toggle is checked, false otherwise
      */
     set disabled(value) {
         if (value)
@@ -178,8 +181,8 @@ export default class Checkbox extends WJElement {
     }
 
     /**
-    * @summary Set checked attribute
-    * @returns {boolean} true if the toggle is checked, false otherwise
+     * @summary Set checked attribute
+     * @param {boolean} value - true if the toggle is checked, false otherwise
     */
     set checked(value) {
         if (value)
