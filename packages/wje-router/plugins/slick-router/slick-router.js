@@ -36,8 +36,6 @@ function invariant (condition, format, ...args) {
   }
 }
 
-/* eslint-disable standard/no-callback-literal */
-
 function functionDsl (callback) {
   let ancestors = [];
   const matches = {};

@@ -55,7 +55,10 @@ export default class Masonry extends WJElement {
      * @param {number} value - The number of columns.
      */
     set cols(value) {
-        this.hasAttribute("cols") ? this.setAttribute("cols", value) : "auto";
+        if(this.hasAttribute("cols"))
+            this.setAttribute("cols", value);
+        else
+            this.setAttribute("cols", "auto");
     }
 
     /**
@@ -150,7 +153,7 @@ export default class Masonry extends WJElement {
     beforeDisconnect() {
         this.unsetSlot.removeEventListener("slotchange", this.onSlotChange)
         window.removeEventListener("resize", this.onResize)
-        if (this.ro != null) {
+        if (this.ro !== null && this.ro !== undefined) {
             this.ro.unobserve(this)
         }
     }
@@ -221,9 +224,8 @@ export default class Masonry extends WJElement {
      * @param {Array} entries - The entries to use.
      */
     onResize = (entries) => {
-        const { width } = entries != null && Array.isArray(entries) && entries.length > 0 ? entries[0].contentRect : { width: this.offsetWidth };
+        const { width } = entries !== null && entries !== undefined && Array.isArray(entries) && entries.length > 0 ? entries[0].contentRect : { width: this.offsetWidth };
         const colCount = getColCount(width, this.cols, this.maxColWidth);
-
         if (colCount !== this.columns.length) {
             this.scheduleLayout();
         }
@@ -238,10 +240,6 @@ export default class Masonry extends WJElement {
 
         if (columns.length === colCount) {
             return;
-        }
-
-        for (const column of columns) {
-            column.parentNode && column.parentNode.removeChild(column);
         }
 
         for (let i = 0; i < colCount; i++) {
@@ -272,7 +270,7 @@ export default class Masonry extends WJElement {
      * Lays out the element.
      */
     layout = () => {
-        if (this.currentRequestAnimationFrameCallback != null) {
+        if (this.currentRequestAnimationFrameCallback !== null && this.currentRequestAnimationFrameCallback !== undefined) {
             window.cancelAnimationFrame(this.currentRequestAnimationFrameCallback);
         }
 

@@ -111,7 +111,10 @@ export default class Input extends WJElement {
      * @param {boolean} isInvalid - Whether the input is invalid.
      */
     set invalid(isInvalid) {
-        isInvalid ? this.setAttribute('invalid', '') : this.removeAttribute('invalid');
+        if(isInvalid)
+            this.setAttribute('invalid', '')
+        else
+            this.removeAttribute('invalid');
     }
 
     /**
@@ -583,7 +586,7 @@ export default class Input extends WJElement {
         console.warn('formDisabledCallback not implemented yet')
     }
 
-    dispatchEvent(event) {
+    dispatchEvent(e) {
         return false;
     }
 }

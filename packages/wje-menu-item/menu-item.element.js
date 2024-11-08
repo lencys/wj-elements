@@ -180,7 +180,10 @@ export default class MenuItem extends WJElement {
         checkedIcon.classList.add("check-icon");
         checkedIcon.innerHTML = `<wje-icon name="check"></wje-icon>`;
 
-        (this.hasAttribute("checked")) ? checkedIcon.classList.add("checked") : checkedIcon.classList.remove("checked");
+        if(this.hasAttribute("checked"))
+            checkedIcon.classList.add("checked")
+        else
+            checkedIcon.classList.remove("checked");
 
         // SLOT - Start
         let start = document.createElement("slot");
@@ -207,7 +210,10 @@ export default class MenuItem extends WJElement {
         submenuIcon.classList.add("submenu-icon", submenuIconClass);
         submenuIcon.innerHTML = (this.collapse) ? `<wje-icon name="chevron-down"></wje-icon>` : `<wje-icon name="chevron-right"></wje-icon>`;
 
-        this.hasSubmenu ? native.classList.add("has-submenu") : native.classList.remove("has-submenu");
+        if(this.hasSubmenu)
+            native.classList.add("has-submenu")
+        else
+            native.classList.remove("has-submenu");
 
         native.appendChild(checkedIcon);
         native.appendChild(start);

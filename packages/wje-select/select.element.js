@@ -113,7 +113,10 @@ export default class Select extends WJElement {
      * @param {boolean} isInvalid - Whether the input is invalid.
      */
     set invalid(isInvalid) {
-        isInvalid ? this.setAttribute('invalid', '') : this.removeAttribute('invalid');
+        if(isInvalid)
+            this.setAttribute('invalid', '')
+        else
+            this.removeAttribute('invalid');
     }
 
     /**
@@ -503,7 +506,7 @@ export default class Select extends WJElement {
      * @param {Element} option - The option to get.
      * @returns {Array} The selected options.
      */
-    getSelected(option) {
+    getSelected() {
         let selectedOptions = this.getSelectedOptions();
 
         selectedOptions = Array.isArray(selectedOptions) ? selectedOptions : Array.from(selectedOptions);
@@ -535,7 +538,7 @@ export default class Select extends WJElement {
                 if (this.counterEl instanceof HTMLElement || length > +this.maxOptions) {
                     this.counter();
                 } else {
-                    if (option != null)
+                    if (option !== null)
                         this.chips.appendChild(this.getChip(option));
                 }
             }
@@ -658,11 +661,11 @@ export default class Select extends WJElement {
     htmlOption(item, map = { value: "value", text: "text" }) {
         let option = document.createElement("wje-option");
 
-        if (item[map.value] == null) {
+        if (item[map.value] === null) {
             console.warn(`The item ${JSON.stringify(item)} does not have the property ${map.value}`);
         }
 
-        if (item[map.text] == null) {
+        if (item[map.text] === null) {
             console.warn(`The item ${JSON.stringify(item)} does not have the property ${map.text}`);
         }
 

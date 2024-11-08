@@ -95,8 +95,7 @@ export default class FileUpload extends WJElement {
     }
 
     /**
-     * Sets the upload URL for the file upload element.
-     *
+     * Setter for label attribute.
      * @param {string} value - The URL to set as the upload URL.
      */
     set uploadUrl(value) {
@@ -104,30 +103,60 @@ export default class FileUpload extends WJElement {
     }
 
     /**
-     * Retrieves the upload URL for the file upload element.
-     * 
+     * Gets the upload URL for the file upload element.
      * @returns {string} The upload URL.
      */
     get uploadUrl() {
         return this.getAttribute("upload-url") ?? "/upload";
     }
 
+    /**
+     * Sets the autoProcessFiles attribute.
+     * @param value
+     */
     set autoProcessFiles(value) {
         this.setAttribute("auto-process-files", value);
     }
 
+    /**
+     * Gets the autoProcessFiles attribute.
+     * @returns {any|boolean}
+     */
     get autoProcessFiles() {
         return JSON.parse(this.getAttribute("auto-process-files")) ?? true;
     }
 
+    /**
+     * Sets the uploaded files.
+     * @param value
+     */
     set uploadedFiles(value) {
         this._uploadedFiles = value;
     }
 
+    /**
+     * Return the uploaded files.
+     * @returns {[]}
+     */
     get uploadedFiles() {
         return this._uploadedFiles;
     }
 
+    /**
+     * Sets the to-chunk attribute.
+     * @param value
+     */
+    set toChunk(value) {
+        this.setAttribute("to-chunk", value);
+    }
+
+    /**
+     * Gets the to-chunk attribute.
+     * @returns {boolean}
+     */
+    get toChunk() {
+        return this.hasAttribute("to-chunk");
+    }
 
     className = "FileUpload";
 
@@ -155,7 +184,8 @@ export default class FileUpload extends WJElement {
     }
 
     beforeDraw() {
-        this.uploadFunction = upload(this.uploadUrl, this.chunkSize, true)
+        console.log("beforeDraw", this.toChunk, !this.toChunk);
+        this.uploadFunction = upload(this.uploadUrl, this.chunkSize, !this.toChunk);
     }
 
     /**
@@ -305,6 +335,10 @@ export default class FileUpload extends WJElement {
         }
     }
 
+    /**
+     * Method to add files to the queue.
+     * @param files
+     */
     addFilesToQueue(files) {
         this._queuedFiles = [...files];
 
@@ -338,6 +372,11 @@ export default class FileUpload extends WJElement {
         });
     }
 
+    /**
+     * Method to create an upload promise.
+     * @param file
+     * @returns {Promise<unknown>}
+     */
     createUploadPromise = (file) => {
         return new Promise((resolve, reject) => {
             this.assertFilesValid(file);

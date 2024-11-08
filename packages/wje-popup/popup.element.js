@@ -217,6 +217,7 @@ export default class Popup extends WJElement {
         const middleware = [];
 
         this.offsetCalc = +this.offset || 0;
+
         if (this.slotArrow instanceof HTMLSlotElement) {
             this.arrow = this.slotArrow.assignedElements({ flatten: true })[0];
 
@@ -255,7 +256,6 @@ export default class Popup extends WJElement {
             strategy: 'fixed',
             middleware: middleware,
         }).then(({ x, y, middlewareData, placement, strategy }) => {
-
             this.native.style.setProperty("--wje-popup-left", x + "px");
             this.native.style.setProperty("--wje-popup-top", y + "px");
 
@@ -271,11 +271,11 @@ export default class Popup extends WJElement {
 
                 if (middlewareData.arrow) {
                     const { width, height } = this.native.getBoundingClientRect();
-                    const { x, y } = middlewareData.arrow;
+                    let { osX = x,  osY = y } = middlewareData.arrow;
 
                     Object.assign(this.arrow.style, {
-                        left: x != null ? `${width / 2 - this.arrow.offsetWidth / 2}px` : "",
-                        top: y != null ? `${height / 2 - this.arrow.offsetHeight / 2}px` : "",
+                        left: osX !== null && osX !== undefined ? `${width / 2 - this.arrow.offsetWidth / 2}px` : "",
+                        top: osY !== null && osY !== undefined ? `${height / 2 - this.arrow.offsetHeight / 2}px` : "",
                         [staticSide]: `${- this.arrow.offsetHeight / 2}px`,
                     });
                 }
@@ -295,7 +295,9 @@ export default class Popup extends WJElement {
      * Sets up auto update for repositioning.
      */
     show(dispatchEvent = true) {
-        dispatchEvent && event.dispatchCustomEvent(this, "wje-popup:show");
+        if (dispatchEvent) {
+            event.dispatchCustomEvent(this, "wje-popup:show");
+        }
 
         this.native.classList.add("popup-active");
 
@@ -314,7 +316,10 @@ export default class Popup extends WJElement {
      * Cleans up the auto update for repositioning.
      */
     hide(dispatchEvent = true) {
-        dispatchEvent && event.dispatchCustomEvent(this, "wje-popup:hide");
+        if (dispatchEvent) {
+            event.dispatchCustomEvent(this, "wje-popup:hide");
+        }
+
         this.native.classList.remove("popup-active");
 
         this.cleanup?.();

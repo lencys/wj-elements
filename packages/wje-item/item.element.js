@@ -90,8 +90,6 @@ export default class Item extends WJElement {
 		this.isShadowRoot = 'open';
 	}
 
-	beforeDraw() {}
-
 	/**
 	 * Draws the component.
 	 * @param {Object} context - The context for drawing.

@@ -228,6 +228,10 @@ export default class ColorPicker extends WJElement {
         return fragment;
     }
 
+    /**
+     * Sets the hue.
+     * @param node
+     */
     createSwatches(node) {
         if (this.swatches.length === 0) return;
 
@@ -266,7 +270,7 @@ export default class ColorPicker extends WJElement {
                     this.markerPosition = this.setMarkerPositionByColor(this.input.value);
                     this.setMarkerPosition(this.markerPosition.x, this.markerPosition.y);
 
-                    if (this.input.value != "")
+                    if (this.input.value !== "")
                         this.alphaSlider.value = 100;
 
                     this.setColor();
@@ -309,11 +313,11 @@ export default class ColorPicker extends WJElement {
 
     /**
      * Moves the marker to the given position.
-     * @param event
+     * @param e
      */
-    moveMarker = (event) => {
+    moveMarker = (e) => {
         this.colorAreaDimension = this.dimension();
-        const pointer = this.getPointerPosition(event);
+        const pointer = this.getPointerPosition(e);
 
         let x = pointer.pageX - this.colorAreaDimension.x;
         let y = pointer.pageY - this.colorAreaDimension.y;
@@ -322,10 +326,15 @@ export default class ColorPicker extends WJElement {
         this.setMarkerPosition(x, y);
     }
 
-    getPointerPosition(event) {
+    /**
+     * Sets the hue.
+     * @param e
+     * @returns {{pageY: (*|number), pageX: (*|number)}}
+     */
+    getPointerPosition(e) {
         return {
-            pageX: event.changedTouches ? event.changedTouches[0].pageX : event.clientX,
-            pageY: event.changedTouches ? event.changedTouches[0].pageY : event.clientY
+            pageX: e.changedTouches ? e.changedTouches[0].pageX : e.clientX,
+            pageY: e.changedTouches ? e.changedTouches[0].pageY : e.clientY
         };
     }
 
@@ -422,8 +431,6 @@ export default class ColorPicker extends WJElement {
             hsv.a = this.alphaSlider.value / 100;
             currentColor = tinycolor(hsv);
             this.colorPreview.style.setProperty("--wje-color-picker-value", currentColor.toHex8String());
-
-            // this.input.value = currentColor.toHex8String();
         }
 
         // SET: swatch - HEX

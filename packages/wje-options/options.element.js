@@ -140,7 +140,7 @@ export default class Options extends WJElement {
      * Prepares the component before drawing.
      * Fetches the pages and creates the options elements.
      */
-    async beforeDraw() {
+    beforeDraw() {
         event.dispatchCustomEvent(this, "wje-options:load", {}); // nepomohlo to, v ff stale je scroll hore
     }
 
@@ -177,7 +177,7 @@ export default class Options extends WJElement {
                 return filteredOptions;
             }
 
-            this.contains(infiniteScroll) || this.appendChild(infiniteScroll);
+            // this.contains(infiniteScroll) || this.appendChild(infiniteScroll);
 
             this.infiniteScroll = infiniteScroll;
         } else {
@@ -249,11 +249,11 @@ export default class Options extends WJElement {
     htmlItem = (item) => {
         let option = document.createElement("wje-option");
 
-        if (item[this.itemValue] == null) {
+        if (item[this.itemValue] === null || item[this.itemValue] === undefined) {
             console.warn(`The item ${JSON.stringify(item)} does not have the property ${this.itemValue}`);
         }
 
-        if (item[this.itemText] == null) {
+        if (item[this.itemText] === null || item[this.itemText] === undefined) {
             console.warn(`The item ${JSON.stringify(item)} does not have the property ${this.itemText}`);
         }
 
@@ -310,6 +310,9 @@ export default class Options extends WJElement {
      * @param {boolean} [silent=false] - Whether to suppress events triggered by adding options.
      */
     addOptions(optionsData = [], silent = false) {
-        Array.isArray(optionsData) ? optionsData?.forEach(optionData => this.addOption(optionData, silent)) : this.addOption(optionsData, silent);
+        if(Array.isArray(optionsData))
+            optionsData?.forEach(od => this.addOption(od, silent));
+        else
+            this.addOption(optionsData, silent);
     }
 }

@@ -296,8 +296,8 @@ export default class Rate extends WJElement {
     onMouseMove = (e) => {
         e.preventDefault();
 
-        let newValue = this.getValueFromXPosition(e.clientX);
-        if(newValue != this.hoverValue) {
+        let newValue = +this.getValueFromXPosition(e.clientX);
+        if(newValue !== +this.hoverValue) {
             this.hoverValue = newValue;
             this.changeRate();
         }

@@ -4,50 +4,126 @@ import '../wje-icon/icon.element.js';
 
 import styles from "./styles/styles.css?inline";
 
+/**
+ * `Dialog` is a custom web component that represents a dialog.
+ * @summary This element represents a dialog.
+ * @documentation https://elements.webjet.sk/components/dialog
+ * @status stable
+ *
+ * @extends {WJElement}
+ *
+ * @slot header - Slot for the header content.
+ * @slot body - Slot for the body content.
+ * @slot footer - Slot for the footer content.
+ *
+ * @csspart dialog - The dialog wrapper.
+ * @csspart header - The header of the dialog.
+ * @csspart body - The body of the dialog.
+ * @csspart footer - The footer of the dialog.
+ * @csspart close - The close button of the dialog.
+ *
+ * @cssproperty [--wje-dialog-background=var(--wje-background-color)] - The background of the dialog.
+ * @cssproperty [--wje-dialog-color=var(--wje-text-color)] - The text color of the dialog.
+ * @cssproperty [--wje-dialog-padding=1rem] - The padding of the dialog.
+ * @cssproperty [--wje-dialog-border-radius=0.5rem] - The border radius of the dialog.
+ * @cssproperty [--wje-dialog-box-shadow=0 2px 10px rgba(0, 0, 0, 0.1)] - The box shadow of the dialog.
+ *
+ * @tag wje-dialog
+ */
 export default class Dialog extends WJElement {
+    /**
+     * @constructor
+     */
     constructor() {
         super();
     }
 
+    /**
+     * Sets the headline of the dialog.
+     * @param value
+     */
     set placement(value) {
         this.setAttribute("placement", value);
     }
 
+    /**
+     * Gets the headline of the dialog.
+     * @returns {string|string}
+     */
     get placement() {
         return this.getAttribute("placement") || "slide-up";
     }
 
+    /**
+     * Sets the headline of the dialog.
+     * @param value
+     */
     set async(value) {
         this.setAttribute("async", "");
     }
 
+    /**
+     * Gets the headline of the dialog.
+     * @returns {boolean}
+     */
     get async() {
         return this.hasAttribute("async");
     }
 
+    /**
+     * Sets the headline of the dialog.
+     * @param value
+     */
     set closeHidden(value) {
         if(value)
             this.setAttribute("close-hidden", "");
     }
 
+    /**
+     * Gets the headline of the dialog.
+     * @returns {boolean}
+     */
     get closeHidden() {
         return !!this.hasAttribute("close-hidden");
     }
 
+    /**
+     * Sets the headline of the dialog.
+     * @type {string}
+     */
     className = "Dialog";
 
+    /**
+     * Returns the CSS styles for the component.
+     * @returns {*}
+     */
     static get cssStyleSheet() {
         return styles;
     }
 
+    /**
+     * Returns the list of attributes to observe for changes.
+     * @returns {*[]}
+     */
     static get observedAttributes() {
         return [];
     }
 
+    /**
+     * Sets up the attributes for the component.
+     */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
+    /**
+     * Draws the component.
+     *
+     * @param {Object} context - The context for drawing.
+     * @param {Object} store - The store for drawing.
+     * @param {Object} params - The parameters for drawing.
+     * @returns {DocumentFragment}
+     */
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
@@ -62,6 +138,10 @@ export default class Dialog extends WJElement {
         return fragment;
     }
 
+    /**
+     * Creates the dialog body.
+     * @param dialog
+     */
     htmlDialogBody(dialog) {
         let icon = document.createElement("wje-icon");
         icon.setAttribute("name", "x");
@@ -116,11 +196,22 @@ export default class Dialog extends WJElement {
         dialog.appendChild(footer);
     }
 
-
+    /**
+     * Closes the dialog.
+     * @param e
+     */
     close(e) {
         this.onClose(e);
     }
 
+    /**
+     * Draws the component
+     *
+     * @param {Object} context - The context for drawing.
+     * @param {Object} store - The store for drawing.
+     * @param {Object} params - The parameters for drawing.
+     * @returns {DocumentFragment}
+     */
     afterDraw(context, store, params) {
         if (params.trigger) {
             event.addListener(document, params.trigger, null, this.onOpen);
@@ -129,6 +220,9 @@ export default class Dialog extends WJElement {
         this.dialog.addEventListener("close", this.onClose);
     }
 
+    /**
+     * Before the component is disconnected.
+     */
     beforeDisconnect() {
         if (this.params?.trigger) {
             event.removeListener(document, this.params?.trigger, null, this.onOpen);
@@ -137,14 +231,38 @@ export default class Dialog extends WJElement {
         this.dialog.removeEventListener("close", this.onClose);
     }
 
-    beforeOpen() { }
+    /**
+     * Before the dialog opens.
+     */
+    beforeOpen() {
+        // Hook for extending behavior before the dialog opens
+    }
 
-    afterOpen() { }
+    /**
+     * After the dialog opens.
+     */
+    afterOpen() {
+        // Hook for extending behavior after the dialog opens
+    }
 
-    beforeClose() { }
+    /**
+     * Before the dialog closes.
+     */
+    beforeClose() {
+        // Hook for extending behavior before the dialog closes
+    }
 
-    afterClose() { }
+    /**
+     * After the dialog closes.
+     */
+    afterClose() {
+        // Hook for extending behavior after the dialog closes
+    }
 
+    /**
+     * Opens the dialog.
+     * @param e
+     */
     onOpen = (e) => {
         this.dialog.innerHTML = "";
 
@@ -159,6 +277,10 @@ export default class Dialog extends WJElement {
         });
     }
 
+    /**
+     * Closes the dialog.
+     * @param e
+     */
     onClose = (e) => {
         Promise.resolve(this.beforeClose(this, e)).then((res) => {
             this.dialog.close(); // Now close the dialog

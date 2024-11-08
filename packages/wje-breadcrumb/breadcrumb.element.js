@@ -99,7 +99,6 @@ export default class Breadcrumb extends WJElement {
      * @returns {boolean} false - Always returns false
      */
     attributeChangedCallback(name, oldValue, newValue) {
-        console.log("ATTRIBUTECHANGEDCALLBACK:", name, oldValue, newValue, this.showCollapsedIndicator);
         if (name === "collapsed") {
             if(WjElementUtils.stringToBoolean(newValue) && !this.hasAttribute('show-collapsed-indicator'))
                 this.classList.add("collapsed");
@@ -154,16 +153,13 @@ export default class Breadcrumb extends WJElement {
         native.appendChild(end);
 
         fragment.appendChild(native);
-        console.log("DRAW:", WjElementUtils.stringToBoolean(this.showCollapsedIndicator), this.collapsedVariant);
 
         if(WjElementUtils.stringToBoolean(this.showCollapsedIndicator)) {
             // pridame button za native element
-            console.log("TOTO NASTANE?:", this.drawCollapsedIndicator());
             fragment.appendChild(this.drawCollapsedIndicator());
 
             // skryjeme native element
             native.classList.add("hidden");
-            console.log("THIS:", this);
         }
 
         if(this.showSeparator) {
@@ -184,7 +180,7 @@ export default class Breadcrumb extends WJElement {
         }
 
         this.native = native;
-        console.log("NATIVE:", this.native);
+
         return fragment;
     }
 

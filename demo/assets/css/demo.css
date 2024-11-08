@@ -68,7 +68,9 @@ body {
   transition: opacity 0.5s;
 }
 .fade-enter {
-  display: none;
+  /*display: none;*/
+  height: 0;
+  overflow: hidden;
 }
 
 .fade-enter, .fade-leave-to {

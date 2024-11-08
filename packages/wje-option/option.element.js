@@ -39,16 +39,17 @@ export default class Option extends WJElement {
 
     /**
      * Sets the selected attribute of the option.
-     *
      * @param {boolean} value - The value to set.
      */
     set selected(value) {
-        value ? this.setAttribute("selected", "") : this.removeAttribute("selected");
+        if(value)
+            this.setAttribute("selected", "")
+        else
+            this.removeAttribute("selected");
     }
 
     /**
      * Sets the value attribute of the option.
-     *
      * @param {string} value - The value to set.
      */
     set value(value) {

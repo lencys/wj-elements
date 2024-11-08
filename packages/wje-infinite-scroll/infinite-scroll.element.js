@@ -39,30 +39,6 @@ export default class InfiniteScroll extends WJElement {
         this._infiniteScrollTemplate = null;
         this._abortController = new AbortController();
         this._signal = this._abortController.signal;
-
-        /**
-         * Interpolates a string with the given parameters.
-         *
-         * @param {Object} params - The parameters for interpolation.
-         * @returns {string} The interpolated string.
-         */
-        String.prototype.interpolate = function (params) {
-            let template = this;
-            let keys = template.match(/\{{.*?\}}/g);
-
-            if (keys) {
-                for (let key of keys) {
-                    let cleanKey = key.replace('{{', '').replace('}}', '');
-                    let val = '';
-                    cleanKey.split('.').forEach(k => {
-                        val = (val === '') ? params[k] : val[k];
-                    });
-
-                    template = template.replace(key, val);
-                }
-            }
-            return template;
-        };
     }
 
     /**
@@ -343,7 +319,7 @@ export default class InfiniteScroll extends WJElement {
      *
      */
     dataToHtml = (item) => {
-        let interpolateItem = this.infiniteScrollTemplate.interpolate(item);
+        let interpolateItem = this.interpolate(this.infiniteScrollTemplate, item);
         let doc = this.parser.parseFromString(interpolateItem, 'text/html');
         let element = doc.activeElement.firstElementChild;
 
@@ -358,4 +334,27 @@ export default class InfiniteScroll extends WJElement {
             this.placementObj.insertAdjacentElement("beforeend", element);
         });
     }
+
+    /**
+     * Interpolates the string.
+     * @param template
+     * @param {Object} params - The parameters for interpolation.
+     * @returns {string} The interpolated string.
+     */
+    interpolate = (template, params) => {
+        let keys = template.match(/\{{.*?\}}/g);
+
+        if (keys) {
+            for (let key of keys) {
+                let cleanKey = key.replace('{{', '').replace('}}', '');
+                let val = '';
+                cleanKey.split('.').forEach(k => {
+                    val = (val === '') ? params[k] : val[k];
+                });
+
+                template = template.replace(key, val);
+            }
+        }
+        return template;
+    };
 }

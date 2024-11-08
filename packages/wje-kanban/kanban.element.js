@@ -5,18 +5,18 @@ import styles from "./styles/styles.css?inline";
 
 /**
  * `Kanban` is a custom web component that represents a Kanban board with draggable columns and cards.
- * It extends from `WJElement`.
+ * @summary This element represents a Kanban board.
+ * @documentation https://elements.webjet.sk/components/kanban
+ * @status stable
  *
  * @extends {WJElement}
  *
- * @csspart - Styles the element.
- * @csspart native - Styles the native
- * @csspart pool - Styles the pool
+ * @slot - The default slot for the Kanban board.
+ *
+ * @csspart native - Styles the native part of the Kanban board.
+ * @csspart pool - Styles the pool of the Kanban board.
  *
  * @tag wje-kanban
- *
- * @example
- * <wje-kanban></wje-kanban>
  */
 export default class Kanban extends WJElement {
     /**
@@ -153,12 +153,9 @@ export default class Kanban extends WJElement {
 
     /**
      * Called after the component has been drawn.
-     * @params {Object} context - The context
-     * @params {Object} store - The store
-     * @params {Object} params - The parameters
      */
-    async afterDraw() {
-        this.UI = {
+    afterDraw() {
+        this.ui = {
             elBoard: this.shadowRoot.getElementById('board'),
             elTotalCardCount: this.shadowRoot.getElementById('totalCards'),
             elCardPlaceholder: null,
@@ -200,10 +197,10 @@ export default class Kanban extends WJElement {
 
         this.live('dragend', '.pool .card', (e) => {
             e.target.style.opacity = '';
-            if (this.UI.elCardPlaceholder) {
-                this.UI.elCardPlaceholder.remove();
+            if (this.ui.elCardPlaceholder) {
+                this.ui.elCardPlaceholder.remove();
             }
-            this.UI.elCardPlaceholder = null;
+            this.ui.elCardPlaceholder = null;
             this.isDragging = false;
         });
 
@@ -378,17 +375,17 @@ export default class Kanban extends WJElement {
      * @returns {null|*}
      */
     getCardPlaceholder() {
-        if (!this.UI.elCardPlaceholder) {
-            this.UI.elCardPlaceholder = document.createElement('div');
-            this.UI.elCardPlaceholder.className = "card-placeholder";
+        if (!this.ui.elCardPlaceholder) {
+            this.ui.elCardPlaceholder = document.createElement('div');
+            this.ui.elCardPlaceholder.className = "card-placeholder";
 
-            this.UI.elCardPlaceholder.style.width = this.draggedElementWidth + 'px';
-            this.UI.elCardPlaceholder.style.height = this.draggedElementHeight + 'px';
+            this.ui.elCardPlaceholder.style.width = this.draggedElementWidth + 'px';
+            this.ui.elCardPlaceholder.style.height = this.draggedElementHeight + 'px';
         } else {
-            this.UI.elCardPlaceholder.style.width = this.draggedElementWidth + 'px';
-            this.UI.elCardPlaceholder.style.height = this.draggedElementHeight + 'px';
+            this.ui.elCardPlaceholder.style.width = this.draggedElementWidth + 'px';
+            this.ui.elCardPlaceholder.style.height = this.draggedElementHeight + 'px';
         }
-        return this.UI.elCardPlaceholder;
+        return this.ui.elCardPlaceholder;
     }
 
     /**

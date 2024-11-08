@@ -10,6 +10,7 @@ export default class Stepper extends WJElement {
         this.currentStep = 0;
 
         this.localizer = new Localizer(this);
+        this.steps = [];
     }
 
     get active() {
@@ -60,7 +61,7 @@ export default class Stepper extends WJElement {
 
         const steps = Array.from(this.children);
 
-        this.steps = steps.map((step, index) => {
+        steps.forEach((step, index) => {
             if (step.nodeName === 'WJE-STEP') {
                 const nav = document.createElement('div');
                 nav.className = 'step-header';
@@ -103,7 +104,8 @@ export default class Stepper extends WJElement {
                 if (index !== this.currentStep) {
                     step.style.display = 'none';
                 }
-                return step;
+
+                this.steps.push(step);
             }
         });
 
@@ -214,7 +216,7 @@ export default class Stepper extends WJElement {
      * @param badge
      * @param stepIndex
      */
-    setStepDefault(nav, badge = null, stepIndex) {
+    setStepDefault(nav, badge = null, stepIndex = 0) {
         nav.removeAttribute('active');
         nav.removeAttribute('done');
 

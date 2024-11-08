@@ -40,6 +40,14 @@ export default class SplitView extends WJElement {
         super();
     }
 
+    set initial(value) {
+        this.setAttribute("initial", value);
+    }
+
+    get initial() {
+        return +this.getAttribute("initial") || 50;
+    }
+
     className = "SplitView";
 
     /**
@@ -134,7 +142,7 @@ export default class SplitView extends WJElement {
      */
     handleDrag = (e) => {
         if(this.hasAttribute("disabled"))
-            return false;
+            return;
 
         drag(this, {
             onMove: (x, y) => {
@@ -154,7 +162,9 @@ export default class SplitView extends WJElement {
      */
     detectSize() {
         const { width, height } = this.getBoundingClientRect();
+        console.log(this, this.getBoundingClientRect())
         this.size = this.hasAttribute("vertical") ? height : width;
+        console.log("detectSize:", this.hasAttribute("vertical"), this.size)
     }
 
     /**

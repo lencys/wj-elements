@@ -41,7 +41,8 @@ class Event {
                     event: self
                 },
                 bubbles: true,
-                composed: true
+                composed: true,
+                cancelable: true
             })
         );
     }

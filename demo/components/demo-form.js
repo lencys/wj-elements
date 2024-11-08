@@ -24,7 +24,7 @@ template.innerHTML = `<h1>form</h1>
           }
         </style>
 
-        <form name="test-form" id="test-form">
+        <form name="test-form" id="test-form" method="GET">
            <wje-input name="default" label="Default input"></wje-input>
            <wje-input name="icon" variant="standard" label="Default input" class="example-icon" clearable>
                 <wje-icon-picker slot="start"></wje-icon-picker>
@@ -75,7 +75,9 @@ export default class DemoForm extends WJElement {
 
     let form = this.context.querySelector('#test-form');
     form.addEventListener('submit', (e) => {
-      e.preventDefault()
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
 
       const formData = new FormData(form);
       let data = {
@@ -90,10 +92,9 @@ export default class DemoForm extends WJElement {
       }
 
       console.log(data);
-
     })
 
-    this.context.querySelector('#test-form').addEventListener('reset', (e) => {
+    form.addEventListener('reset', (e) => {
       console.log('klikol som form reset', e)
     });
 

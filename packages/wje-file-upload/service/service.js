@@ -1,3 +1,7 @@
+/**
+ * Get the icon name for a file type
+ * @returns {[{name: string, type: string[]},{name: string, type: string[]},{name: string, type: string[]},{name: string, type: string[]},{name: string, type: string[]},null,null,null,null,null,null]}
+ */
 function fileType() {
   return [
     {
@@ -47,6 +51,11 @@ function fileType() {
   ];
 }
 
+/**
+ * Get the icon name for a file type
+ * @param type
+ * @returns {string}
+ */
 export function getFileTypeIcon(type) {
   let searchType;
   if (type.toLowerCase() !== 'folder') {
@@ -62,6 +71,12 @@ export function getFileTypeIcon(type) {
   return searchType;
 }
 
+/**
+ * Get the file extension from the file name or path
+ * @param file
+ * @param acceptedFileTypes
+ * @returns {boolean}
+ */
 export function isValidFileType(file, acceptedFileTypes) {
   // Get the base MIME type
   const baseMimeType = file.type.split('/')[0];
@@ -89,6 +104,12 @@ export function isValidFileType(file, acceptedFileTypes) {
   return false;
 }
 
+/**
+ * Upload a file to the server using XMLHttpRequest in chunks
+ * @param file
+ * @param chunkSize
+ * @param preview
+ */
 export function uploadFile(file, chunkSize, preview) {
   let offset = 0;
   const progressArray = new Array(Math.ceil(file.size / chunkSize)).fill(0);
@@ -100,7 +121,7 @@ export function uploadFile(file, chunkSize, preview) {
 
     reader.onload = (e) => {
       const xhr = new XMLHttpRequest();
-
+      console.log("uploadFile function:", start, end, file.size);
       xhr.open("POST", "/upload", true);
       xhr.setRequestHeader('Content-Range', `${start}-${end}/${file.size}`);
 
@@ -138,15 +159,29 @@ export function uploadFile(file, chunkSize, preview) {
   readAndUploadChunk(offset, Math.min(offset + chunkSize, file.size));
 }
 
+/**
+ * Upload a file to the server using Fetch API and FormData
+ * @param url
+ * @param chunkSize
+ * @param wholeFile
+ * @returns {function(*, *): Promise<{file: *, data: *} | void>}
+ */
 export function upload(url, chunkSize = 1024 * 1024, wholeFile = false) {
   if (wholeFile) {
     return (file, preview) => uploadWholeFile(url, file, preview);
   }
-  return (file, preview) => uploadFileInChunks(url, chunkSize, file, preview);
+  return (file, preview) => uploadFileInChunks(url, file, preview, chunkSize);
 }
 
-
-export async function uploadFileInChunks(url, chunkSize = 1024 * 1024, file, preview) {
+/**
+ * Upload a file to the server using Fetch API and FormData in chunks
+ * @param url
+ * @param file
+ * @param preview
+ * @param chunkSize
+ * @returns {Promise<*>}
+ */
+export async function uploadFileInChunks(url, file, preview, chunkSize = 1024 * 1024) {
   let offset = 0;
   const totalChunks = Math.ceil(file.size / chunkSize);
   const partResponses = [];
@@ -163,7 +198,7 @@ export async function uploadFileInChunks(url, chunkSize = 1024 * 1024, file, pre
         reader.read().then(function process({ done, value }) {
           if (done) {
             controller.close();
-            return;
+            return Promise.resolve();
           }
 
           // Track progress
@@ -213,6 +248,13 @@ export async function uploadFileInChunks(url, chunkSize = 1024 * 1024, file, pre
   return partResponses.at(-1).json();
 }
 
+/**
+ * Upload a whole file to the server using Fetch API and FormData
+ * @param url
+ * @param file
+ * @param preview
+ * @returns {Promise<{file: *, data: *} | void>}
+ */
 export function uploadWholeFile(url, file, preview) {
   const formData = new FormData();
   formData.append('file', file);

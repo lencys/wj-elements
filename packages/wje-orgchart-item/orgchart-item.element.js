@@ -134,11 +134,13 @@ export default class OrgchartItem extends WJElement {
      */
     toggleChildren = (e) => {
         this.classList.toggle("collapse");
-        // change the expander icon
-        this.classList.contains('collapse') ? e.target.innerHTML = "+" : e.target.innerHTML = "-";
+        if(this.classList.contains('collapse'))
+            e.target.innerHTML = "+";
+        else
+            e.target.innerHTML = "-";
     }
 
-    dispatchEvent(event) {
+    dispatchEvent(e) {
         return false;
     }
 }

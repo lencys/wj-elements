@@ -3,6 +3,11 @@ const requests = new Map();
 
 let parser;
 
+/**
+ * Gets the source URL for the icon
+ * @param src
+ * @returns {null|string}
+ */
 export const getSrc = (src) => {
   if (isStr(src)) {
     src = src.trim();
@@ -13,14 +18,39 @@ export const getSrc = (src) => {
   return null;
 };
 
+/**
+ * Checks if the string is a valid source
+ * @param str
+ * @returns {boolean}
+ */
 export const isSrc = (str) => str.length > 0 && /(\/|\.)/.test(str);
 
+/**
+ * Checks if the URL is an SVG data URL
+ * @param url
+ * @returns {*}
+ */
 export const isSvgDataUrl = (url) => url.startsWith('data:image/svg+xml');
 
+/**
+ * Checks if the URL is an encoded data URL
+ * @param url
+ * @returns {boolean}
+ */
 export const isEncodedDataUrl = (url) => url.indexOf(';utf8,') !== -1;
 
+/**
+ * Checks if the value is a string type
+ * @param val
+ * @returns {boolean}
+ */
 export const isStr = (val) => typeof val === 'string';
 
+/**
+ * Validates the SVG content
+ * @param svgContent
+ * @returns {string}
+ */
 export const validateContent = (svgContent) => {
   const div = document.createElement('div');
   div.innerHTML = svgContent;
@@ -36,12 +66,20 @@ export const validateContent = (svgContent) => {
   return '';
 };
 
+/**
+ * Validates the SVG content
+ * @param elm
+ * @returns {boolean}
+ */
 export const isValid = (elm) => {
+  // Only element nodes
   if (elm.nodeType === 1) {
+    // Check for script elements
     if (elm.nodeName.toLowerCase() === 'script') {
       return false;
     }
 
+    // Check for on* attributes
     for (let i = 0; i < elm.attributes.length; i++) {
       const name = elm.attributes[i].name;
       if (isStr(name) && name.toLowerCase().indexOf('on') === 0) {
@@ -49,6 +87,7 @@ export const isValid = (elm) => {
       }
     }
 
+    // Check for child nodes
     for (let i = 0; i < elm.childNodes.length; i++) {
       if (!isValid(elm.childNodes[i])) {
         return false;
@@ -58,6 +97,12 @@ export const isValid = (elm) => {
   return true;
 };
 
+/**
+ * Gets the SVG content from the URL
+ * @param url
+ * @param sanitize
+ * @returns {Promise<void>|any}
+ */
 export const getSvgContent = (url, sanitize) => {
   let req = requests.get(url);
   if (!req) {
@@ -82,7 +127,7 @@ export const getSvgContent = (url, sanitize) => {
               iconContent.set(url, svgContent || '');
             });
           }
-          iconContent.set(url, '');
+          return iconContent.set(url, '');
         });
         requests.set(url, req);
       }
@@ -94,6 +139,11 @@ export const getSvgContent = (url, sanitize) => {
   return req;
 };
 
+/**
+ * Gets the URL for the icon element
+ * @param i
+ * @returns {null|string}
+ */
 export const getUrl = (i) => {
   let url = getSrc(i.src);
   if (url) {
@@ -109,8 +159,12 @@ export const getUrl = (i) => {
   return null;
 };
 
+/**
+ * Gets the icon name
+ * @param iconName
+ * @returns {*|null}
+ */
 export const getName = (iconName) => {
-
   if (!isStr(iconName) || iconName.trim() === '') {
     return null;
   }
@@ -123,6 +177,12 @@ export const getName = (iconName) => {
   return iconName;
 };
 
+/**
+ * Gets the named URL for the icon
+ * @param iconName
+ * @param filled
+ * @returns {string}
+ */
 const getNamedUrl = (iconName, filled = false) => {
   const path = `${filled ? "filled" : "outline"}/${iconName}.svg`;
 

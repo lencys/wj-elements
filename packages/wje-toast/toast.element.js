@@ -177,15 +177,15 @@ export default class Toast extends WJElement {
     //     return ["open", "color", "duration"];
     // }
 
-    /**
-     * Called when an attribute changes.
-     *
-     * @param {string} name - The name of the attribute.
-     * @param {string} old - The old value of the attribute.
-     * @param {string} newName - The new value of the attribute.
-     */
-    attributeChangedCallback(name, old, newName) {
-    }
+    // /**
+    //  * Called when an attribute changes.
+    //  *
+    //  * @param {string} name - The name of the attribute.
+    //  * @param {string} old - The old value of the attribute.
+    //  * @param {string} newName - The new value of the attribute.
+    //  */
+    // attributeChangedCallback(name, old, newName) {
+    // }
 
     /**
      * Setup attributes
@@ -362,17 +362,11 @@ export default class Toast extends WJElement {
      */
     show = () => {
         if (this.open) {
-            return undefined;
+            return;
         }
 
         this.open = true;
         event.dispatchCustomEvent(this, 'wje-toast:after-show');
-
-        // Spustenie časovača na automatické skrytie po uplynutí `duration`
-        // if (this.duration > 0) {
-        //     this.remainingTime = this.duration;
-        //     this.startTimer();
-        // }
     }
 
     /**
@@ -384,7 +378,7 @@ export default class Toast extends WJElement {
      */
     hide = () => {
         if (!this.open) {
-            return undefined;
+            return;
         }
 
         this.open = false;
@@ -394,7 +388,7 @@ export default class Toast extends WJElement {
     /**
      * Pauses the countdown animation and stops the timer.
      */
-    pause = async () => {
+    pause = () => {
         this.countdownAnimation?.pause();
         this.stopTimer();
     }
@@ -402,7 +396,7 @@ export default class Toast extends WJElement {
     /**
      * Resumes the countdown animation and resumes the timer.
      */
-    resume = async () => {
+    resume = () => {
         this.countdownAnimation?.play();
         this.resumeTimer();
     }

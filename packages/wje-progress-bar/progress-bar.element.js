@@ -129,7 +129,7 @@ export default class ProgressBar extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw() {
+    draw(context, store, params) {
         let xy = (this.radius + this.stroke/2);
 
         let fragment = document.createDocumentFragment();
@@ -261,7 +261,7 @@ export default class ProgressBar extends WJElement {
      * @param {number} radius - The radius of the circle.
      * @returns {number} The dashoffset value.
      */
-    getCircleDashoffset(progress = 0, radius) {
+    getCircleDashoffset(progress = 0, radius = 70) {
         return this.getCircleDasharray(radius) * ((100 - progress)/100);
     }
 
