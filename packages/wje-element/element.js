@@ -8,6 +8,11 @@ const template = document.createElement('template');
 template.innerHTML = ``;
 
 export default class WJElement extends HTMLElement {
+	/**
+	 * Initializes a new instance of the WJElement class.
+	 *
+	 * @param {HTMLTemplateElement} [componentTemplate] - The template to use for this component.
+	 */
 	constructor(componentTemplate) {
 		super();
 
@@ -38,36 +43,73 @@ export default class WJElement extends HTMLElement {
 		this.drawingStatus = this.drawingStatuses.CREATED;
 	}
 
+	/**
+	 * Gets the value of the 'permission-check' attribute.
+	 *
+	 * @return {string|null} The value of the 'permission-check' attribute or null if not set.
+	 */
 	get permission() {
 		return this.getAttribute('permission-check');
 	}
 
-	get isPermissionCheck() {
-		return this.hasAttribute('permission-check');
-	}
-
+	/**
+	 * Sets the 'permission-check' attribute.
+	 *
+	 * @param {string} shadow - The value to set for the 'permission-check' attribute.
+	 */
 	set isPermissionCheck(shadow) {
 		return this.setAttribute('permission-check', 'permission-check');
 	}
 
+	/**
+	 * Checks if the 'permission-check' attribute is present.
+	 *
+	 * @return {boolean} True if the 'permission-check' attribute is present.
+	 */
+	get isPermissionCheck() {
+		return this.hasAttribute('permission-check');
+	}
+
+	/**
+	 * Checks if the 'show' attribute is present.
+	 *
+	 * @return {boolean} True if the 'show' attribute is present.
+	 */
 	get isShow() {
 		return this.hasAttribute('show');
 	}
 
+	/**
+	 * Sets the 'shadow' attribute.
+	 *
+	 * @param {string} shadow - The value to set for the 'shadow' attribute.
+	 */
+	set isShadowRoot(value) {
+		return this.setAttribute('shadow', value);
+	}
+
+	/**
+	 * Checks if the 'shadow' attribute is present.
+	 *
+	 * @return {boolean} True if the 'shadow' attribute is present.
+	 */
 	get isShadowRoot() {
 		return this.hasAttribute('shadow');
 	}
 
-	set isShadowRoot(shadow) {
-		return this.setAttribute('shadow', shadow);
-	}
-
+	/**
+	 * Gets the value of the 'shadow' attribute or 'open' if not set.
+	 *
+	 * @return {string} The value of the 'shadow' attribute or 'open'.
+	 */
 	get shadowType() {
 		return this.getAttribute('shadow') || 'open';
 	}
 
 	/**
-	 * @return {HTMLElement|ShadowRoot}
+	 * Gets the rendering context, either the shadow root or the component itself.
+	 *
+	 * @return {HTMLElement|ShadowRoot} The rendering context.
 	 */
 	get context() {
 		if (this.isShadowRoot) {
@@ -77,6 +119,11 @@ export default class WJElement extends HTMLElement {
 		}
 	}
 
+	/**
+	 * Gets the store instance.
+	 *
+	 * @return {Object} The store instance.
+	 */
 	get store() {
 		return store;
 	}
@@ -98,42 +145,60 @@ export default class WJElement extends HTMLElement {
 	 */
 
 	/**
-	 * @return {(ArrayActions | ObjectActions)}
+	 * Gets the default store actions.
+	 *
+	 * @return {ArrayActions|ObjectActions} The default store actions.
 	 */
 	get defaultStoreActions() {
 		return defaultStoreActions;
 	}
 
 	/**
-	 * @return {Array<String>}
+	 * Gets the classes to be removed after the component is connected.
+	 *
+	 * @return {Array<string>} An array of class names to remove.
 	 */
 	get removeClassAfterConnect() {
 		return this.getAttribute('remove-class-after-connect')?.split(' ');
 	}
 
-	get dependencies() {
-		return this._dependencies;
-	}
-
+	/**
+	 * Sets the component dependencies.
+	 *
+	 * @param {Object} value - The dependencies to set.
+	 */
 	set dependencies(value) {
 		this._dependencies = value;
 	};
 
 	/**
-	 * @param {HTMLTemplateElement} pTemplate
-	 * @param {HTMLTemplateElement | null} template
-	 * @return {HTMLTemplateElement}
+	 * Gets the component dependencies.
+	 *
+	 * @return {Object} The dependencies.
 	 */
-	static processTemplates = (pTemplate, template) => {
+	get dependencies() {
+		return this._dependencies;
+	}
+
+	/**
+	 * Processes and combines two templates into one.
+	 *
+	 * @param {HTMLTemplateElement} pTemplate - The primary template.
+	 * @param {HTMLTemplateElement|null} inputTemplate - The secondary template.
+	 * @return {HTMLTemplateElement} The combined template.
+	 */
+	static processTemplates = (pTemplate, inputTemplate) => {
 		const newTemplate = document.createElement('template');
-		newTemplate.innerHTML = [template.innerHTML, pTemplate?.innerHTML || ''].join('');
+		newTemplate.innerHTML = [inputTemplate.innerHTML, pTemplate?.innerHTML || ''].join('');
 		return newTemplate;
 	};
 
 	/**
-	 * @param {String} name
-	 * @param {WJElement} elementConstructor
-	 * @param {Object} options
+	 * Defines a custom element if not already defined.
+	 *
+	 * @param {string} name - The name of the custom element.
+	 * @param {WJElement} [elementConstructor=this] - The element constructor.
+	 * @param {Object} [options={}] - Additional options for defining the element.
 	 */
 	static define(name, elementConstructor = this, options = {}) {
 		const definedElement = customElements.get(name);
@@ -144,6 +209,9 @@ export default class WJElement extends HTMLElement {
 		}
 	}
 
+	/**
+	 * Defines component dependencies by registering custom elements.
+	 */
 	defineDependencies() {
 		if (this.dependencies)
 			Object.entries(this.dependencies).forEach((name, component) => WJElement.define(name, component))
@@ -151,20 +219,30 @@ export default class WJElement extends HTMLElement {
 
 
 	/**
-	 * @param {HTMLElement} context
-	 * @param {Object} store
-	 * @param {Object} attributes
-	 * 
+	 * Hook for extending behavior before drawing the component.
+	 *
+	 * @param {HTMLElement} context - The rendering context.
+	 * @param {Object} store - The store instance.
+	 * @param {Object} attributes - The component attributes.
 	 */
-	beforeDraw(context, store, attributes) { }
+	beforeDraw(context, appStore, attributes) {
+		// Hook for extending behavior before drawing
+	}
 
 	/**
-	 * @param {HTMLElement} context
-	 * @param {Object} store
-	 * @param {Object} attributes
+	 * Hook for extending behavior after drawing the component.
+	 *
+	 * @param {HTMLElement} context - The rendering context.
+	 * @param {Object} store - The store instance.
+	 * @param {Object} attributes - The component attributes.
 	 */
-	afterDraw(context, store, attributes) { }
+	afterDraw(context, appStore, attributes) {
+		// Hook for extending behavior after drawing
+	}
 
+	/**
+	 * Refreshes the update promise for rendering lifecycle management.
+	 */
 	refreshUpdatePromise() {
 		this.updateComplete = new Promise((resolve, reject) => {
 			this.finisPromise = resolve;
@@ -172,7 +250,10 @@ export default class WJElement extends HTMLElement {
 		});
 	}
 
-	async connectedCallback() {
+	/**
+	 * Lifecycle method invoked when the component is connected to the DOM.
+	 */
+	connectedCallback() {
 		this.drawingStatus = this.drawingStatuses.ATTACHED;
 
 		// RHR toto sa tiež týka slick routeru pretože on začal routovanie ešte pred vykreslením wjelementu
@@ -187,13 +268,20 @@ export default class WJElement extends HTMLElement {
 		this.renderPromise = this.initWjElement(true)
 	}
 
-	initWjElement = async (force = false) => {
+	/**
+	 * Initializes the component, setting up attributes and rendering.
+	 *
+	 * @param {boolean} [force=false] - Whether to force initialization.
+	 * @return {Promise<void>} A promise that resolves when initialization is complete.
+	 */
+	initWjElement = (force = false) => {
 		return new Promise(async (resolve, reject) => {
 			this.drawingStatus = this.drawingStatuses.BEGINING
 
 			this.setupAttributes?.();
 			if (this.isShadowRoot) {
-				!this.shadowRoot && this.attachShadow({ mode: this.shadowType || 'open' });
+				if (!this.shadowRoot)
+					this.attachShadow({ mode: this.shadowType || 'open' });
 			}
 
 			this.setUpAccessors();
@@ -210,11 +298,14 @@ export default class WJElement extends HTMLElement {
 		})
 	};
 
+	/**
+	 * Sets up attributes and event listeners for the component.
+	 */
 	setupAttributes() {
 		// Keď neaký element si zadefinuje funkciu "setupAttributes" tak sa obsah tejto funkcie nezavolá
 
 		let allEvents = WjElementUtils.getEvents(this);
-		let events = allEvents.forEach((customEvent, domEvent) => {
+		allEvents.forEach((customEvent, domEvent) => {
 			this.addEventListener(domEvent, (e) => {
 				this.getRootNode().host[customEvent]?.()
 
@@ -229,15 +320,37 @@ export default class WJElement extends HTMLElement {
 		});
 	}
 
-	beforeDisconnect() { }
-	afterDisconnect() { }
-	beforeRedraw() { }
+	/**
+	 * Hook for extending behavior before disconnecting the component.
+	 */
+	beforeDisconnect() {
+		// Hook for extending behavior before disconnecting
+	}
 
 	/**
-	 * Cleans up the component.
+	 * Hook for extending behavior after disconnecting the component.
 	 */
-	componentCleanup() { }
+	afterDisconnect() {
+		// Hook for extending behavior after disconnecting
+	}
 
+	/**
+	 * Hook for extending behavior before redrawing the component.
+	 */
+	beforeRedraw() {
+		// Hook for extending behavior before redrawing
+	}
+
+	/**
+	 * Cleans up resources and event listeners for the component.
+	 */
+	componentCleanup() {
+		// Hook for cleaning up the component
+	}
+
+	/**
+	 * Lifecycle method invoked when the component is disconnected from the DOM.
+	 */
 	disconnectedCallback() {
 		this.beforeDisconnect?.();
 
@@ -253,7 +366,8 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Enqueues an update to the component.
-	 * @return {Promise<void>}
+	 *
+	 * @return {Promise<void>} A promise that resolves when the update is complete.
 	 */
 	async enqueueUpdate() {
 		try {
@@ -266,7 +380,7 @@ export default class WJElement extends HTMLElement {
 		}
 		const result = this.refresh();
 
-		if (result != null) {
+		if (result !== null) {
 			await result;
 		}
 
@@ -274,7 +388,11 @@ export default class WJElement extends HTMLElement {
 	}
 
 	/**
-	 * Lifecycle method, called whenever an observed property changes
+	 * Lifecycle method invoked when an observed attribute changes.
+	 *
+	 * @param {string} name - The attribute name.
+	 * @param {string} old - The old value of the attribute.
+	 * @param {string} newName - The new value of the attribute.
 	 */
 	attributeChangedCallback(name, old, newName) {
 		if (old !== newName) {
@@ -284,9 +402,10 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Refreshes the component.
-	 * @return {Promise<void>}
+	 *
+	 * @return {Promise<void>} A promise that resolves when the refresh is complete.
 	 */
-	async refresh() {
+	refresh() {
 		if (this.drawingStatus && this.drawingStatus >= this.drawingStatuses.START) {
 			this.beforeRedraw?.();
 			this.beforeDisconnect?.();
@@ -295,20 +414,29 @@ export default class WJElement extends HTMLElement {
 
 			return this.initWjElement(true);
 		}
+
+		return Promise.resolve();
 	}
 
 	/**
-	 * @param {HTMLElement} context
-	 * @param {Object} store
-	 * @param {Object} attributes
-	 * @return {Promise<DocumentFragment|HTMLElement|String> | DocumentFragment|HTMLElement|String}
-	 * @
+	 * Draws the component's content.
+	 *
+	 * @param {HTMLElement} context - The rendering context.
+	 * @param {Object} appStore - The store instance.
+	 * @param {Object} params - Parameters for drawing.
+	 * @return {DocumentFragment|HTMLElement|string|null} The rendered content.
 	 */
-	draw(context, store, params) {
+	draw(context, appStore, params) {
 		return null;
 	}
 
-	display(force = false, signal) {
+	/**
+	 * Displays the component's content, optionally forcing a re-render.
+	 *
+	 * @param {boolean} [force=false] - Whether to force a re-render.
+	 * @return {Promise<void>} A promise that resolves when the display is complete.
+	 */
+	display(force = false) {
 		if (force) {
 			[...this.context.childNodes].forEach(this.context.removeChild.bind(this.context));
 			this.isAttached = false;
@@ -319,15 +447,19 @@ export default class WJElement extends HTMLElement {
 		if (this.isPermissionCheck || this.isShow) {
 			if (WjePermissionsApi.isPermissionFulfilled.bind(this)(this.permission)) {
 				this.drawingStatus = this.drawingStatuses.DRAWING;
-				return this._resolveRender(signal);
+				return this._resolveRender();
 			} else {
 				this.remove();
+				return Promise.resolve();
 			}
 		} else {
-			return this._resolveRender(signal);
+			return this._resolveRender();
 		}
 	}
 
+	/**
+	 * Renders the component's content.
+	 */
 	async render() {
 		this.drawingStatus = this.drawingStatuses.DRAWING;
 
@@ -343,9 +475,9 @@ export default class WJElement extends HTMLElement {
 		if (rend instanceof HTMLElement || rend instanceof DocumentFragment) {
 			element = rend;
 		} else {
-			let template = document.createElement('template');
-			template.innerHTML = rend;
-			element = template.content.cloneNode(true);
+			let inputTemplate = document.createElement('template');
+			inputTemplate.innerHTML = rend;
+			element = inputTemplate.content.cloneNode(true);
 		}
 
 		let rendered = element;
@@ -354,13 +486,23 @@ export default class WJElement extends HTMLElement {
 	}
 
 	/**
-	 * Turns a string split with "-" into camel case notation
+	 * Converts a hyphenated string to camelCase.
+	 *
+	 * @param {string} name - The string to sanitize.
+	 * @return {string} The camelCase version of the string.
 	 */
 	sanitizeName(name) {
 		let parts = name.split('-');
 		return [parts.shift(), ...parts.map((n) => n[0].toUpperCase() + n.slice(1))].join('');
 	}
 
+	/**
+	 * Checks if an object property has a getter or setter.
+	 *
+	 * @param {Object} obj - The object to check.
+	 * @param {string} property - The property name.
+	 * @return {Object} An object containing references to the getter and setter, if they exist.
+	 */
 	checkGetterSetter(obj, property) {
 		let descriptor = Object.getOwnPropertyDescriptor(obj, property);
 
@@ -383,8 +525,7 @@ export default class WJElement extends HTMLElement {
 	}
 
 	/**
-	 * Creates one property on this class for every
-	 * HTML property defined on the element
+	 * Sets up property accessors for the component's attributes.
 	 */
 	setUpAccessors() {
 		let attrs = this.getAttributeNames();
@@ -400,7 +541,13 @@ export default class WJElement extends HTMLElement {
 		});
 	}
 
-	async _resolveRender(signal) {
+	/**
+	 * Resolves the rendering process of the component.
+	 *
+	 * @return {Promise<void>} A promise that resolves when rendering is complete.
+	 * @private
+	 */
+	_resolveRender() {
 		this.params = WjElementUtils.getAttributes(this);
 
 		return new Promise(async (resolve, reject) => {
@@ -425,7 +572,9 @@ export default class WJElement extends HTMLElement {
 			this.rendering = false;
 			this.isAttached = true;
 
-			this.removeClassAfterConnect && this.classList.remove(...this.removeClassAfterConnect);
+			if(this.removeClassAfterConnect)
+				this.classList.remove(...this.removeClassAfterConnect);
+
 			this.drawingStatus = this.drawingStatuses.DONE;
 
 			resolve();

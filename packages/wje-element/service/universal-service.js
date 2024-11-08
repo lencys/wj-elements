@@ -1,30 +1,29 @@
 export class UniversalService {
 	constructor(props = {}) {
 		this._store = props.store
-		this.premenna = null
 	}
 
 	findByKey = (attrName, key, keyValue) => {
 		if (this._store.getState()[attrName] instanceof Array) {
-			let find = this._store.getState()[attrName].find((item) => item[key] == keyValue);
-			return find;
+			return this._store.getState()[attrName].find((item) => item[key] === keyValue);
 		} else {
 			console.warn(` Attribute ${attrName} is not array`);
+			return null;
 		}
-	};
+	}
 
 	findById = (attrName, id) => {
 		if (this._store.getState()[attrName] instanceof Array) {
-			let find = this._store.getState()[attrName].find((item) => item.id == id);
-			return find;
+			return this._store.getState()[attrName].find((item) => item.id === id);
 		} else {
 			console.warn(` Attribute ${attrName} is not array`);
+			return null;
 		}
-	};
+	}
 
 	findAttributeValue = (attrName) => {
 		return this._store.getState()[attrName];
-	};
+	}
 
 	update = (data, action) => {
 		this._store.dispatch(action(data))
@@ -38,11 +37,9 @@ export class UniversalService {
 		let promise = fetch(url, {
 			method: method,
 			body: JSON.stringify(data),
-			// cache: 'no-cache',
 			headers: {
 				'Content-Type': 'application/json'
 			}
-			// referrerPolicy: 'same-origin',
 		}).then((response) => {
 			if (response.ok) {
 				return response.json();
@@ -57,27 +54,19 @@ export class UniversalService {
 	_get(url, action, dispatchMethod, signal) {
 		let promise = fetch(url, {
 			method: 'GET',
-			// cache: 'no-cache',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			...(signal ? { signal } : {})
-			// referrerPolicy: 'same-origin',
 		}).then(async (response) => {
-			let text;
+			let responseText;
 			try {
-				let text = await response.text(); // Parse it as text
-				const data = JSON.parse(text); // Try to parse it as JSON
-				return data
+				responseText = await response.text();
+				return JSON.parse(responseText);
 			} catch (err) {
-				return text
+				console.error(err);
+				return responseText
 			}
-
-			// if(response.ok){
-			// 	return response.json();
-			// } else {
-			// 	throw new Error(`HTTP Response Code: ${response?.status}`)
-			// }
 		});
 
 		return this.dispatch(promise, dispatchMethod, action);
@@ -95,7 +84,7 @@ export class UniversalService {
 		return this._save(url, data, action, dispatchMethod, "DELETE");
 	}
 
-	get(url, action, dispatchMethod = true, signal) {
+	get(url, action, dispatchMethod = true) {
 		return this._get(url, action, dispatchMethod);
 	}
 
@@ -108,20 +97,19 @@ export class UniversalService {
 				console.error(error)
 			});
 		}
-
 		return promise;
 	}
 
-	loadPromise = (url, action, method = 'GET', data, permissionCallBack = () => { }) => {
+	loadPromise = (url, action, method = 'GET', data = '', permissionCallBack = () => { //
+		// No empty function
+	}) => {
 		return fetch(url, {
 			method: method,
 			body: data,
-			// cache: 'no-cache',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			async: true,
-			// referrerPolicy: 'same-origin',
 		}).then((response, e) => {
 			let permissions = response.headers.get('permissions')?.split(',')
 			permissionCallBack(permissions)
@@ -131,34 +119,23 @@ export class UniversalService {
 			} else {
 				throw response.json()
 			}
-		}).then((data) => {
-			this._store.dispatch(action(data));
-			return data
+		}).then((responseData) => {
+			this._store.dispatch(action(responseData));
+			return responseData;
 		});
 	}
 
 	loadOnePromise = (url, action) => {
 		return fetch(url, {
-			// cache: 'no-cache',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			// referrerPolicy: 'same-origin',
-		}).then((data) => {
-			data = data.json()
+		}).then((response) => {
+			const responseData = response.json()
 			if (action) {
-				this._store.dispatch(action(data))
+				this._store.dispatch(action(responseData));
 			}
-			return data
+			return responseData;
 		})
-	};
-
-	load = (url, async = false) => {
-		return $.ajax({
-			method: "GET",
-			url: url,
-			async: async,
-			dataType: 'json',
-		});
 	}
 }

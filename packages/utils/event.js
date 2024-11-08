@@ -164,7 +164,7 @@ class Event {
         if (record && originalEvent in record.listeners) {
             let index = record.listeners[originalEvent].indexOf(listener);
 
-            if (~index) {
+            if (index !== -1) {
                 record.listeners[originalEvent].splice(index, 1);
             }
 
