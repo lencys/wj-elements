@@ -370,7 +370,9 @@ export default class SlidingContainer extends WJElement {
     /**
      * Executes before the element is opened.
      */
-    beforeOpen(event) { }
+    beforeOpen(event) {
+        // Hook for extending classes
+    }
 
     /**
      * Callback function called after the element is opened.

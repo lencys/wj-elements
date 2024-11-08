@@ -4,7 +4,6 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 import globals from "globals";
-import pluginJs from "@eslint/js";
 
 
 export default [
@@ -18,7 +17,7 @@ export default [
         myCustomGlobal: "readonly"
       }
     },
-    ignores: ['.cache', 'dist', 'demo', 'node_modules', '**/plugins/**/*.js', '**/*.test.js'],
+    ignores: ['.cache', 'demo', 'dist', 'docs', 'experimental-packages', 'node_modules', '**/plugins/**/*.js', '**/*.test.js'],
     rules: {
       'no-template-curly-in-string': 'error',
       'array-callback-return': 'error',
@@ -93,26 +92,6 @@ export default [
           ]
         }
       ],
-      // 'import/extensions': [
-      //   'error',
-      //   'always',
-      //   {
-      //     ignorePackages: true,
-      //     pattern: {
-      //       js: 'always',
-      //       ts: 'never'
-      //     }
-      //   }
-      // ],
-      // 'import/no-duplicates': 'warn',
-      // 'sort-imports-es6-autofix/sort-imports-es6': [
-      //   2,
-      //   {
-      //     ignoreCase: true,
-      //     ignoreMemberSort: false,
-      //     memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single']
-      //   }
-      // ],
       'wc/guard-super-call': 'off'
     }
   }
