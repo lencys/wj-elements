@@ -1,11 +1,10 @@
+:host {
+    display: block;
+    z-index: 1000;
+    /* make css property for width height position  and if it is on top lef bottom right  */
+}
 
-:host 
-    {
-        display: block;
-        /* make css property for width height position  and if it is on top lef bottom right  */
-    }
-
-.sliding-container-wrapper{
+.sliding-container-wrapper {
     height: 100%;
     position: relative;
     overflow: hidden;
@@ -14,4 +13,3 @@
 .native-sliding-container {
     overflow: auto;
 }
-
