@@ -50,6 +50,31 @@ export default class SlidingContainer extends WJElement {
 
         this._isOpen = false;
         this._lastCaller = null;
+
+        this._resizeObserver = new ResizeObserver((entries) => {
+            for (let entry of entries) {
+                if (entry.contentBoxSize) {
+                    if (this.drawingStatus < 3) return;
+
+                    if (this.screenBreakPoint && window.innerWidth <= this.screenBreakPoint) {
+                        if (this.variant !== "over") {
+                            this.variant = "over";
+                        } else {
+                            this.checkForVariant(this.variant);
+                        }
+                    } else {
+                        if (this.variant !== "in-place") {
+                            this.variant = "in-place";
+                        } else {
+                            this.checkForVariant(this.variant);
+                        }
+
+                    }
+                }
+            }
+        });
+
+        this._resizeObserver.observe(document.documentElement);
     }
 
     set maxWidth(value) {
@@ -187,18 +212,30 @@ export default class SlidingContainer extends WJElement {
 
         this.style.position = "relative";
         this.style.height = "100%";
+        this.style.right = "unset";
+        this.style.left = "unset";
 
         this.wrapperDiv = document.createElement("div");
         this.wrapperDiv.classList.add("sliding-container-wrapper");
 
         this.transparentDiv = document.createElement("div");
         this.transparentDiv.classList.add("sliding-container-transparent");
+        if (this._isOpen) {
+            this.transparentDiv.style.width = this.maxWidth;
+        }
 
         let native = document.createElement("div");
         native.style.position = "absolute";
         native.style.width = 0;
         if (this.hasOpacity) {
             native.style.opacity = 0;
+        }
+
+        if (this._isOpen) {
+            native.style.width = this.maxWidth;
+            if (this.hasOpacity) {
+                native.style.opacity = 1;
+            }
         }
 
         native.style.height = "100%";
@@ -261,6 +298,8 @@ export default class SlidingContainer extends WJElement {
      * Executes before drawing the element.
      */
     beforeDraw() {
+        this.animation?.cancel();
+        this.nativeAnimation?.cancel();
         document.removeEventListener(this.trigger, this.triggerEvent);
     }
 
@@ -271,18 +310,16 @@ export default class SlidingContainer extends WJElement {
      * Calls the checkForVariant method with the current variant.
      * @returns {Promise<void>} A promise that resolves after the actions are completed.
      */
-    async afterDraw() {
+    afterDraw() {
         document.addEventListener(this.trigger, this.triggerEvent);
 
         // if document width is on small screen set variant to over
-        if (
-            this.screenBreakPoint &&
-            window.innerWidth < this.screenBreakPoint
-        ) {
+        if (this.screenBreakPoint && window.innerWidth <= this.screenBreakPoint) {
             this.variant = "over";
         }
 
         this.checkForVariant(this.variant);
+
     }
 
     getParentElement() {
@@ -311,9 +348,7 @@ export default class SlidingContainer extends WJElement {
             let heightOfParrentElement = parseFloat(
                 computentStyleOfParent.height
             );
-            let widthOfParrentElement = parseFloat(
-                computentStyleOfParent.width
-            );
+
             let topOfParrentElement = parseFloat(computentStyleOfParent.top);
 
             this.style.height =
@@ -321,30 +356,27 @@ export default class SlidingContainer extends WJElement {
             this.wrapperDiv.style.height =
                 heightOfParrentElement + +this.addToHeight + "px";
             this.style.top = topOfParrentElement + "px";
-            let isFirstChildInContainer =
-                this.getParentElement().firstElementChild === this ||
-                this.getParentElement().shadowRoot?.firstElementChild === this;
-            let isLastChildInContainer =
-                this.getParentElement().lastElementChild === this ||
-                this.getParentElement().shadowRoot?.lastElementChild === this;
 
-            if (isFirstChildInContainer) {
-                if (this.direction === "right") {
-                    this.style.left = parentElementBoundingbox.left + "px";
+            const leftSibling = this.previousElementSibling;
+            const rightSibling = this.nextElementSibling;
+            const leftSiblingBoundingbox = leftSibling?.getBoundingClientRect();
+            const rightSiblingBoundingbox = rightSibling?.getBoundingClientRect();
+
+            if (this.direction === "right") {
+                // attach to left sibling
+                if (leftSiblingBoundingbox) {
+                    this.style.left = leftSiblingBoundingbox.left + leftSiblingBoundingbox.width + "px";
                 } else {
-                    this.style.right =
-                        window.innerWidth -
-                        (parentElementBoundingbox.left +
-                            parentElementBoundingbox.width) +
-                        widthOfParrentElement +
-                        "px";
+                    this.style.left = parentElementBoundingbox.left + "px";
                 }
-            } else if (isLastChildInContainer) {
-                this.style.right =
-                    window.innerWidth -
-                    (parentElementBoundingbox.left +
-                        parentElementBoundingbox.width) +
-                    "px";
+
+            } else {
+                // attach to right sibling
+                if (rightSiblingBoundingbox) {
+                    this.style.right = window.innerWidth - rightSiblingBoundingbox.left + "px";
+                } else {
+                    this.style.right = window.innerWidth - (parentElementBoundingbox.left + parentElementBoundingbox.width) + "px";
+                }
             }
         }
     }
@@ -355,13 +387,13 @@ export default class SlidingContainer extends WJElement {
      * If the target element is the same as the last caller, it toggles the state by calling the `toggle` method.
      * @param {Event} e - The event object.
      */
-    triggerEvent = (e) => {
+    triggerEvent = async (e) => {
         if (this._lastCaller && this._lastCaller !== e.composedPath()[0]) {
             // same oppener event but different caller so just refresh inner content
-            this.open(e);
+            await this.open(e);
         } else {
             // came caller so toggle
-            this.toggle(e);
+            await this.toggle(e);
         }
 
         this._lastCaller = e.composedPath()[0];
@@ -371,33 +403,39 @@ export default class SlidingContainer extends WJElement {
      * Executes before the element is opened.
      */
     beforeOpen(event) {
-        // Hook for extending classes
+        // Hook for extending behavior before the dialog opens
     }
 
     /**
      * Callback function called after the element is opened.
      */
-    afterOpen(event) { }
+    afterOpen(event) {
+        // Hook for extending behavior before the dialog opens
+    }
 
     /**
      * Executes before closing the element.
      */
-    beforeClose(event) { }
+    beforeClose(event) {
+        // Hook for extending behavior before the dialog opens
+    }
 
     /**
      * Callback function that is called after the container is closed.
      */
-    afterClose(event) { }
+    afterClose(event) {
+        // Hook for extending behavior before the dialog opens
+    }
 
     /**
      * Animates the transition of the element's width from 0 to the maximum width or vice versa.
-     * @returns {Promise<void>} A promise that resolves when the animation finishes.
+     * @returns {Promise<void>} A promise that resolves when the animation is complete.
      */
     doAnimateTransition() {
         const options = {
             delay: 0,
             endDelay: 0,
-            fill: "both",
+            fill: "forwards",
             duration: +this.animationDuration,
             iterationStart: 0,
             iterations: 1,
@@ -405,45 +443,84 @@ export default class SlidingContainer extends WJElement {
             easing: this.animationEasing,
         };
 
+        if (this.animation && this.animation?.effect?.target !== this.transparentDiv) {
+            this.animation.cancel();
+            this.animation = null;
+        }
+
+        if (this.nativeAnimation && this.nativeAnimation?.effect?.target !== this.nativeElement) {
+            this.nativeAnimation.cancel();
+            this.nativeAnimation = null;
+        }
+
         if (!this._isOpen) {
-            if (this.animation) {
+            if (this.animation && this.nativeAnimation) {
                 this.animation.reverse();
                 this.nativeAnimation.reverse();
+            } else {
+                this.animation = this.transparentDiv.animate(
+                    [
+                        {
+                            width: 0,
+                        },
+                        {
+                            width: this.maxWidth,
+                        },
+                    ],
+                    options
+                );
 
-                return;
+                this.nativeAnimation = this.nativeElement.animate(
+                    [
+                        {
+                            ...(this.hasOpacity ? { opacity: 0 } : {}),
+                            width: 0,
+                        },
+                        {
+                            ...(this.hasOpacity ? { opacity: 1 } : {}),
+                            width: this.maxWidth,
+                        },
+                    ],
+                    options
+                );
             }
-            this.animation = this.transparentDiv.animate(
-                [
-                    {
-                        width: 0,
-                    },
-                    {
-                        width: this.maxWidth,
-                    },
-                ],
-                options
-            );
-
-            this.nativeAnimation = this.nativeElement.animate(
-                [
-                    {
-                        ...(this.hasOpacity ? { opacity: 0 } : {}),
-                        width: 0,
-                    },
-                    {
-                        ...(this.hasOpacity ? { opacity: 1 } : {}),
-                        width: this.maxWidth,
-                    },
-                ],
-                options
-            );
         } else {
-            this.animation.reverse();
-            this.nativeAnimation.reverse();
+            if (this.animation && this.nativeAnimation) {
+                this.animation.reverse();
+                this.nativeAnimation.reverse();
+            } else {
+                this.animation = this.transparentDiv.animate(
+                    [
+                        {
+                            width: this.maxWidth,
+                        },
+                        {
+                            width: 0,
+                        },
+                    ],
+                    options
+                );
+
+                this.nativeAnimation = this.nativeElement.animate(
+                    [
+                        {
+                            ...(this.hasOpacity ? { opacity: 1 } : {}),
+                            width: this.maxWidth,
+                        },
+                        {
+                            ...(this.hasOpacity ? { opacity: 0 } : {}),
+                            width: 0,
+                        },
+
+                    ],
+                    options
+                );
+            }
         }
 
         return new Promise((resolve, reject) => {
             this.animation.onfinish = () => {
+                this._isOpen = !this._isOpen;
                 resolve();
             };
         });
@@ -467,7 +544,6 @@ export default class SlidingContainer extends WJElement {
                 await this.doAnimateTransition();
 
                 await Promise.resolve(this.afterOpen(event)).then(() => {
-                    this._isOpen = true;
 
                     this.dispatchEvent(
                         new CustomEvent("wje-sliding-container:open", {
@@ -505,7 +581,6 @@ export default class SlidingContainer extends WJElement {
                         });
                     }
 
-                    this._isOpen = false;
 
                     this.dispatchEvent(
                         new CustomEvent("wje-sliding-container:close", {
@@ -529,5 +604,10 @@ export default class SlidingContainer extends WJElement {
         } else {
             await this.open(event);
         }
+    }
+
+    componentCleanup() {
+        this._resizeObserver.disconnect();
+        this._resizeObserver = null;
     }
 }

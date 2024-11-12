@@ -67,7 +67,7 @@ template.innerHTML = /*html */`
                     <wje-container>
                         <wje-main>
                             <div style="display: flex; justify-content: center; align-items: center; height: 100%">
-                                <wje-sliding-container trigger="test-resize-container-event-a" id="left-in-place" direction="right" max-width="100px" max-height="100%">
+                                <wje-sliding-container trigger="test-resize-container-event-a" id="left-in-place" direction="right" max-width="100px" max-height="100%" screen-break-point="1600">
                                     <wje-card>
                                         <wje-card-header>
                                             <wje-card-subtitle>CONTENT Subtitle</wje-card-subtitle>
@@ -106,7 +106,7 @@ template.innerHTML = /*html */`
                         </wje-main>
                         <wje-aside width="200px">
                             <div style="display:flex;">
-                                <wje-sliding-container trigger="test-resize-container-event-left" id="right-in-place" variant="over" direction="left" max-width="100px" max-height="100%" has-opacity animation-easing="ease-in-out" animation-duration="200">
+                                <wje-sliding-container trigger="test-resize-container-event-left" id="right-in-place" variant="over" direction="left" max-width="100px" max-height="100%" has-opacity animation-easing="ease-in-out" animation-duration="200"  screen-break-point="1600">
                                     <wje-card>
                                         <wje-card-header>
                                             <wje-card-subtitle>ASIDE Subtitle</wje-card-subtitle>
