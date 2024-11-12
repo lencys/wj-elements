@@ -30,6 +30,16 @@ export default class WJElement extends HTMLElement {
 		this.rendering = false;
 		this._dependencies = {};
 
+		/**
+		 * @typedef {CREATED | ATTACHED | BEGINING | START | DRAWING | DONE | DISCONNECTED} DrawingStatus
+		 * @property {number} CREATED - The component has been created.
+		 * @property {number} ATTACHED - The component has been attached to the DOM.
+		 * @property {number} BEGINING - The component is beginning to draw.
+		 * @property {number} START - The component has started drawing.
+		 * @property {number} DRAWING - The component is drawing.
+		 * @property {number} DONE - The component has finished drawing.
+		 * @property {number} DISCONNECTED - The component has been disconnected from the DOM.
+		 */
 		this.drawingStatuses = {
 			CREATED: 0,
 			ATTACHED: 1,
@@ -205,7 +215,7 @@ export default class WJElement extends HTMLElement {
 
 		if (!definedElement) {
 			customElements.define(name, elementConstructor, options);
-			
+
 		}
 	}
 
@@ -572,7 +582,7 @@ export default class WJElement extends HTMLElement {
 			this.rendering = false;
 			this.isAttached = true;
 
-			if(this.removeClassAfterConnect)
+			if (this.removeClassAfterConnect)
 				this.classList.remove(...this.removeClassAfterConnect);
 
 			this.drawingStatus = this.drawingStatuses.DONE;

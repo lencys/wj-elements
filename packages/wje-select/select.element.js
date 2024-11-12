@@ -113,7 +113,7 @@ export default class Select extends WJElement {
      * @param {boolean} isInvalid - Whether the input is invalid.
      */
     set invalid(isInvalid) {
-        if(isInvalid)
+        if (isInvalid)
             this.setAttribute('invalid', '')
         else
             this.removeAttribute('invalid');
@@ -578,7 +578,10 @@ export default class Select extends WJElement {
             this.counterEl = null;
         }
 
-        this.chips.innerHTML = "";
+        if (this.chips) {
+            this.chips.innerHTML = "";
+        }
+
         if (this.selectedOptions.length > 0) {
             this.selectedOptions.forEach((option, index) => {
                 this.selectionChanged(option, ++index);
@@ -731,7 +734,8 @@ export default class Select extends WJElement {
             option.selected = true;
         }
 
-        this.selections(silent)
+        if (this.drawingStatus >= this.drawingStatuses.DONE)
+            this.selections(silent)
     }
 
     /**

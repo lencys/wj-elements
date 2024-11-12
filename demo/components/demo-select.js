@@ -15,6 +15,8 @@ template.innerHTML = `
         <wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
           <wje-options url="/api/options" item-value="value"item-text="text"></wje-options>
         </wje-select>
+
+        <div id="placeholder"></div>
       </div>
     </div>
 
@@ -195,6 +197,30 @@ export default class DemoSelect extends WJElement {
     lazySelect.addOptions([{ text: "aaaa", value: "aeee" }, { text: "bbbb", value: "beee" }, { text: "cccc", value: "ceee" }, { text: "dddd", value: "deee" }, { text: "eeee", value: "eeee" }, { text: "ffff", value: "feee" }, { text: "gggg", value: "geee" }, { text: "hhhh", value: "heee" }, { text: "iiii", value: "ieee" }, { text: "jjjj", value: "jeee" }, { text: "kkkk", value: "keee" }, { text: "llll", value: "leee" }, { text: "mmmm", value: "meee" }, { text: "nnnn", value: "neee" }, { text: "oooo", value: "oeee" }, { text: "pppp", value: "peee" }, { text: "qqqq", value: "qeee" }, { text: "rrrr", value: "reee" }, { text: "ssss", value: "seee" }, { text: "tttt", value: "teee" }, { text: "uuuu", value: "ueee" }, { text: "vvvv", value: "veee" }, { text: "wwww", value: "weee" }, { text: "xxxx", value: "xeee" }, { text: "yyyy", value: "yeee" }, { text: "zzzz", value: "zeee" }]);
     lazySelect.selectOptions(["aeee", "beee"], false)
     lazySelect.value = ["aeee", "beee"];
+
+    // <wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
+    //       <wje-options url="/api/options" item-value="value"item-text="text"></wje-options>
+    //     </wje-select>
+
+    const select = document.createElement('wje-select');
+    select.setAttribute('placeholder', 'Select options');
+    select.setAttribute('variant', 'standard');
+    select.setAttribute('max-height', '200px');
+    select.setAttribute('multiple', '');
+    select.setAttribute('clearable', '');
+
+    const options = document.querySelector('wje-options');
+    options.setAttribute('url', '/api/options');
+    options.setAttribute('item-value', 'value');
+    options.setAttribute('item-text', 'text');
+
+    select.addOptions([{ text: "aaaa", value: "aeee" }, { text: "bbbb", value: "beee" }, { text: "cccc", value: "ceee" }, { text: "dddd", value: "deee" }, { text: "eeee", value: "eeee" }, { text: "ffff", value: "feee" }, { text: "gggg", value: "geee" }, { text: "hhhh", value: "heee" }, { text: "iiii", value: "ieee" }, { text: "jjjj", value: "jeee" }, { text: "kkkk", value: "keee" }, { text: "llll", value: "leee" }, { text: "mmmm", value: "meee" }, { text: "nnnn", value: "neee" }, { text: "oooo", value: "oeee" }, { text: "pppp", value: "peee" }, { text: "qqqq", value: "qeee" }, { text: "rrrr", value: "reee" }, { text: "ssss", value: "seee" }, { text: "tttt", value: "teee" }, { text: "uuuu", value: "ueee" }, { text: "vvvv", value: "veee" }, { text: "wwww", value: "weee" }, { text: "xxxx", value: "xeee" }, { text: "yyyy", value: "yeee" }, { text: "zzzz", value: "zeee" }]);
+    select.selectOptions(["aeee", "beee"], false)
+    select.value = ["aeee", "beee"];
+
+    select.appendChild(options);
+
+    this.querySelector('#placeholder').appendChild(select);
 
   }
 }
