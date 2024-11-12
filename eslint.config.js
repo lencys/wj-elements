@@ -1,4 +1,7 @@
-import globals from "globals";
+import globals from 'globals';
+import wc from 'eslint-plugin-wc';
+import sortImports from 'eslint-plugin-sort-imports-es6-autofix';
+
 
 export default [
   {
@@ -11,7 +14,11 @@ export default [
         myCustomGlobal: "readonly"
       }
     },
-    ignores: ['.cache', 'demo', 'dist', 'docs', 'experimental-packages', 'node_modules', '**/plugins/**/*.js', '**/*.test.js'],
+    ignores: ['.cache', 'demo', 'dist', 'docs', 'experimental-packages', 'node_modules', '**/plugins/**/*.js', '**/*.test.js', '**/element.js'],
+    plugins: {
+      wc,
+      'sort-imports-es6-autofix': sortImports
+    },
     rules: {
       'no-template-curly-in-string': 'error',
       'array-callback-return': 'error',
@@ -86,7 +93,36 @@ export default [
           ]
         }
       ],
-      'wc/guard-super-call': 'off'
+      'wc/guard-super-call': 'error',
+      'wc/no-constructor-attributes': 'error',
+      'wc/no-invalid-element-name': 'error',
+      'wc/no-self-class': 'error',
+      'wc/attach-shadow-constructor': 'warn',
+      'wc/no-child-traversal-in-attributechangedcallback': 'warn',
+      'wc/no-child-traversal-in-connectedcallback': 'warn',
+      'wc/no-closed-shadow-root': 'warn',
+      'wc/no-constructor-params': 'warn',
+      'wc/no-customized-built-in-elements': 'warn',
+      'wc/no-invalid-extends': 'warn',
+      'wc/no-typos': 'warn',
+      'wc/require-listener-teardown': 'warn',
+      'wc/define-tag-after-class-definition': 'warn',
+      'wc/expose-class-on-global': 'warn',
+      'wc/file-name-matches-element': 'warn',
+      'wc/guard-define-call': 'warn',
+      'wc/max-elements-per-file': 'warn',
+      'wc/no-constructor': 'warn',
+      'wc/no-exports-with-element': 'warn',
+      'wc/no-method-prefixed-with-on': 'warn',
+      'wc/tag-name-matches-class': 'warn',
+      'sort-imports-es6-autofix/sort-imports-es6': [
+        2,
+        {
+          "ignoreCase": true,
+          "ignoreMemberSort": false,
+          "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+        }
+      ]
     }
   }
 ];
