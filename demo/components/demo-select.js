@@ -13,7 +13,7 @@ template.innerHTML = `
     <div class="playground">
       <div class="content">
         <wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
-          <wje-options url="/api/options" item-value="value"item-text="text"></wje-options>
+          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>
         </wje-select>
 
         <div class="content" id="placeholder"></div>
@@ -25,7 +25,7 @@ template.innerHTML = `
     <h2>Lazy options</h2>
     <div class="playground">
       <div class="content">
-        <wje-select id="jozko" placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
+        <wje-select id="lazy-update" placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
           <wje-options lazy url="/api/options" item-value="value" item-text="text"  lazy-load-size="6" option-array-path="data"></wje-options>
         </wje-select>
       </div>
@@ -37,19 +37,19 @@ template.innerHTML = `
     <div class="playground">
       <div class="content" style="gap: .5rem;">
         <wje-select placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple clearable>
-          <wje-options url="/api/options" item-value="value"item-text="text"></wje-options>
+          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>
         </wje-select>
         
         <wje-select placeholder="Select options" variant="standard" max-height="200px" find clearable>
-          <wje-options url="/api/options" item-value="value"item-text="text"></wje-options>
+          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>
         </wje-select>
         
         <wje-select label="Label" placeholder="Select options" max-options="1" max-height="200px" find multiple clearable>
-          <wje-options url="/api/options" item-value="value"item-text="text"></wje-options>
+          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>
         </wje-select>
         
         <wje-select label="Label" placeholder="Select options" max-height="200px" find clearable>
-          <wje-options url="/api/options" item-value="value"item-text="text"></wje-options>
+          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>
         </wje-select>
       </div>
     </div>
@@ -192,11 +192,11 @@ export default class DemoSelect extends WJElement {
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(template, this.context);
 
-    const lazySelect = document.querySelector('#jozko');
+    const lazySelect = document.querySelector('#lazy-update');
 
-    lazySelect.addOptions([{ text: "aaaa", value: "aeee" }, { text: "bbbb", value: "beee" }, { text: "cccc", value: "ceee" }, { text: "dddd", value: "deee" }, { text: "eeee", value: "eeee" }, { text: "ffff", value: "feee" }, { text: "gggg", value: "geee" }, { text: "hhhh", value: "heee" }, { text: "iiii", value: "ieee" }, { text: "jjjj", value: "jeee" }, { text: "kkkk", value: "keee" }, { text: "llll", value: "leee" }, { text: "mmmm", value: "meee" }, { text: "nnnn", value: "neee" }, { text: "oooo", value: "oeee" }, { text: "pppp", value: "peee" }, { text: "qqqq", value: "qeee" }, { text: "rrrr", value: "reee" }, { text: "ssss", value: "seee" }, { text: "tttt", value: "teee" }, { text: "uuuu", value: "ueee" }, { text: "vvvv", value: "veee" }, { text: "wwww", value: "weee" }, { text: "xxxx", value: "xeee" }, { text: "yyyy", value: "yeee" }, { text: "zzzz", value: "zeee" }]);
-    lazySelect.selectOptions(["aeee", "beee"], false)
-    lazySelect.value = ["aeee", "beee"];
+    lazySelect.addOptions([{ text: "aaaa", value: "aeee" }]);
+    lazySelect.selectOptions(["aeee"], false)
+    lazySelect.value = ["aeee"];
 
     // <wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
     //       <wje-options url="/api/options" item-value="value"item-text="text"></wje-options>
@@ -214,6 +214,7 @@ export default class DemoSelect extends WJElement {
     options.setAttribute('url', '/api/options');
     options.setAttribute('item-value', 'value');
     options.setAttribute('item-text', 'text');
+    options.setAttribute("option-array-path", "data")
 
     select.addOptions([{ text: "aaaa", value: "aeee" }, { text: "bbbb", value: "beee" }, { text: "cccc", value: "ceee" }, { text: "dddd", value: "deee" }, { text: "eeee", value: "eeee" }, { text: "ffff", value: "feee" }, { text: "gggg", value: "geee" }, { text: "hhhh", value: "heee" }, { text: "iiii", value: "ieee" }, { text: "jjjj", value: "jeee" }, { text: "kkkk", value: "keee" }, { text: "llll", value: "leee" }, { text: "mmmm", value: "meee" }, { text: "nnnn", value: "neee" }, { text: "oooo", value: "oeee" }, { text: "pppp", value: "peee" }, { text: "qqqq", value: "qeee" }, { text: "rrrr", value: "reee" }, { text: "ssss", value: "seee" }, { text: "tttt", value: "teee" }, { text: "uuuu", value: "ueee" }, { text: "vvvv", value: "veee" }, { text: "wwww", value: "weee" }, { text: "xxxx", value: "xeee" }, { text: "yyyy", value: "yeee" }, { text: "zzzz", value: "zeee" }]);
     select.selectOptions(["aeee", "beee"], false)
