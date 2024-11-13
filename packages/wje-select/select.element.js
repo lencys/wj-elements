@@ -734,7 +734,7 @@ export default class Select extends WJElement {
             option.selected = true;
         }
 
-        if (this.drawingStatus >= this.drawingStatuses.DONE)
+        if (this.drawingStatus > this.drawingStatuses.START)
             this.selections(silent)
     }
 

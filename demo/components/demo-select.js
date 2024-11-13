@@ -16,7 +16,7 @@ template.innerHTML = `
           <wje-options url="/api/options" item-value="value"item-text="text"></wje-options>
         </wje-select>
 
-        <div id="placeholder"></div>
+        <div class="content" id="placeholder"></div>
       </div>
     </div>
 
@@ -206,6 +206,7 @@ export default class DemoSelect extends WJElement {
     select.setAttribute('placeholder', 'Select options');
     select.setAttribute('variant', 'standard');
     select.setAttribute('max-height', '200px');
+    select.setAttribute('max-options', '1');
     select.setAttribute('multiple', '');
     select.setAttribute('clearable', '');
 
