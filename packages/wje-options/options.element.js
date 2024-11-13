@@ -27,7 +27,6 @@ export default class Options extends WJElement {
         super();
 
         this._loadedOptions = [];
-
     }
 
     dependencies = {
@@ -53,7 +52,7 @@ export default class Options extends WJElement {
     }
 
     get optionArrayPath() {
-        return this.getAttribute("option-array-path") ?? "data";
+        return this.getAttribute("option-array-path");
     }
 
     get hasOptionArrayPath() {
@@ -113,7 +112,15 @@ export default class Options extends WJElement {
     }
 
     get options() {
-        return this._loadedOptions?.flat();
+        return this.loadedOptions?.flat();
+    }
+
+    get loadedOptions() {
+        return this._loadedOptions
+    }
+
+    set loadedOption(loadedOptions) {
+        this._loadedOptions = loadedOptions
     }
 
     /**
@@ -122,7 +129,7 @@ export default class Options extends WJElement {
     attributeChangedCallback(name, oldValue, newValue) {
         // remove all loaded options 
         if (this.infiniteScroll && name === "search" && oldValue !== newValue) {
-            this._loadedOptions = [];
+            this.loadedOptions = [];
             this.infiniteScroll.placementObj.innerHTML = "";
             this.infiniteScroll.totalPages = 0
             this.infiniteScroll.refresh();
@@ -170,14 +177,15 @@ export default class Options extends WJElement {
 
             infiniteScroll.setCustomData = async (page, signal) => {
                 let res = await this.service.get(`${this.url}${this.search ? `/${this.search}` : ''}?page=${page}&size=${this.lazyLoadSize}`, null, false, signal);
-
                 const filteredOptions = this.filterOutDrawnOptions(res);
-                this._loadedOptions.push(...this.processData(filteredOptions))
+                this.loadedOptions.push(...this.processData(filteredOptions))
 
                 return filteredOptions;
             }
 
-            // this.contains(infiniteScroll) || this.appendChild(infiniteScroll);
+            if (!this.contains(infiniteScroll)) {
+                this.appendChild(infiniteScroll);
+            }
 
             this.infiniteScroll = infiniteScroll;
         } else {
@@ -185,7 +193,7 @@ export default class Options extends WJElement {
             let optionsData = this.filterOutDrawnOptions(this.response);
             optionsData = this.processData(optionsData);
 
-            this._loadedOptions.push(...optionsData);
+            this.loadedOptions.push(...optionsData);
 
             this.append(...optionsData.map(this.htmlItem))
         }
@@ -215,29 +223,35 @@ export default class Options extends WJElement {
     /**
      * Filters out drawn options from the response.
      * 
-     * @param {any} response - The response to filter.
-     * @returns {any} - The filtered response.
+     * @param {Object | null} response - The response to filter.
+     * @returns {Object} - The filtered response.
      */
     filterOutDrawnOptions(response) {
         const splittedOptionArrayPath = this.optionArrayPath ? this.optionArrayPath?.split(".") : [];
         let filteredResponse = structuredClone(response);
 
-        const recursiveUpdate = (object, pathToProperty) => {
-            if (pathToProperty.length === 0) {
-                return object.filter(option => !this._loadedOptions.some(loadedOption => loadedOption[this.itemValue] === option[this.itemValue]));
-            }
+        filteredResponse = this.recursiveUpdate(filteredResponse, splittedOptionArrayPath);
+        return filteredResponse;
+    }
 
-            if (pathToProperty.length > 1) {
-                object[pathToProperty[0]] = recursiveUpdate(object[pathToProperty[0]], pathToProperty.slice(1));
-                return object;
-            }
-
-            object[pathToProperty[0]] = object[pathToProperty[0]]?.filter(option => !this._loadedOptions.some(loadedOption => loadedOption[this.itemValue] === option[this.itemValue])) ?? [];
-            return object;
+    /**
+     * 
+     * @param {Object | Array | null} object 
+     * @param {Array<string> | null} pathToProperty 
+     * @returns  {Object | Array | null}
+     */
+    recursiveUpdate = (object, pathToProperty) => {
+        if (pathToProperty.length === 0) {
+            return object.filter(option => !this.loadedOptions.some(loadedOption => loadedOption[this.itemValue] === option[this.itemValue]));
         }
 
-        filteredResponse = recursiveUpdate(filteredResponse, splittedOptionArrayPath);
-        return filteredResponse;
+        const [currentPath, ...remainingPath] = pathToProperty;
+        if (remainingPath.length > 0) {
+            object[currentPath] = this.recursiveUpdate(object[currentPath], remainingPath);
+        } else {
+            object[currentPath] = object[currentPath]?.filter(option => !this.loadedOptions.some(loadedOption => loadedOption[this.itemValue] === option[this.itemValue])) ?? [];
+        }
+        return object;
     }
 
     /**
@@ -295,12 +309,12 @@ export default class Options extends WJElement {
      * @param {Object} optionData - The data of the option to be added.
      */
     addOption(optionData) {
-        if (this._loadedOptions.some(option => option[this.itemValue] === optionData[this.itemValue])) {
+        if (this.loadedOptions.some(option => option[this.itemValue] === optionData[this.itemValue])) {
             return;
         }
 
-        this.appendChild(this.htmlItem(optionData));
-        this._loadedOptions.push(optionData);
+        this.prepend(this.htmlItem(optionData));
+        this.loadedOptions.push(optionData);
     }
 
     /**
@@ -310,7 +324,7 @@ export default class Options extends WJElement {
      * @param {boolean} [silent=false] - Whether to suppress events triggered by adding options.
      */
     addOptions(optionsData = [], silent = false) {
-        if(Array.isArray(optionsData))
+        if (Array.isArray(optionsData))
             optionsData?.forEach(od => this.addOption(od, silent));
         else
             this.addOption(optionsData, silent);

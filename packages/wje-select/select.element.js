@@ -273,7 +273,7 @@ export default class Select extends WJElement {
     draw() {
         let fragment = document.createDocumentFragment();
 
-        this.classList.add("wje-placement", "wje-" + this.placement || "wje-start");
+        this.classList.add("wje-placement", this.placement ? "wje-" + this.placement : "wje-start");
 
         // zakladny obalovac
         let native = document.createElement("div");

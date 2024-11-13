@@ -456,7 +456,6 @@ export default class WJElement extends HTMLElement {
 
 		if (this.isPermissionCheck || this.isShow) {
 			if (WjePermissionsApi.isPermissionFulfilled.bind(this)(this.permission)) {
-				this.drawingStatus = this.drawingStatuses.DRAWING;
 				return this._resolveRender();
 			} else {
 				this.remove();
