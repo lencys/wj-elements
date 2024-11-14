@@ -1,8 +1,7 @@
-import { default as WJElement, event } from "../wje-element/element.js";
-import { Localizer } from "../utils/localize.js";
 
+import { Localizer } from "../utils/localize.js";
+import { default as WJElement, event } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
-import { he } from "@faker-js/faker";
 
 export default class Stepper extends WJElement {
     constructor() {

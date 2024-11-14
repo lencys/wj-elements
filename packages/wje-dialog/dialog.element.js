@@ -1,7 +1,7 @@
-import { default as WJElement, event } from "../wje-element/element.js";
 import '../wje-button/button.element.js';
 import '../wje-icon/icon.element.js';
 
+import { default as WJElement, event } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**

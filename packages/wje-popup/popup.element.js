@@ -1,5 +1,6 @@
+import { arrow, autoUpdate, computePosition, flip, offset, size } from '@floating-ui/dom';
+
 import { default as WJElement, event } from "../wje-element/element.js";
-import { computePosition, autoUpdate, offset, flip, arrow, size } from '@floating-ui/dom';
 import styles from "./styles/styles.css?inline";
 
 /**

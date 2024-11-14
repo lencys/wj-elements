@@ -1,8 +1,8 @@
 import { default as WJElement, event } from "../wje-element/element.js";
 import InfiniteScroll from "../wje-infinite-scroll/infinite-scroll.js";
 import Input from "../wje-input/input.js";
-import Tooltip from "../wje-tooltip/tooltip.js";
 import Popup from "../wje-popup/popup.js";
+import Tooltip from "../wje-tooltip/tooltip.js";
 import styles from "./styles/styles.css?inline";
 
 /**

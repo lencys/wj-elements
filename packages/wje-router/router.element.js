@@ -1,7 +1,8 @@
-import { default as WJElement, WjElementUtils } from "../wje-element/element.js";
-import { Router, interceptLinks, fromParam, fromQuery, fromValue, getRouteEl } from 'slick-router';
+import {interceptLinks, Router } from 'slick-router';
 //import {Router as CoreRouter, interceptLinks} from 'slick-router/core.js';
 import { events } from 'slick-router/middlewares/events.js';
+
+import { default as WJElement } from "../wje-element/element.js";
 
 /**
  * `Routerx` is a custom web component that represents a router in a routing system.

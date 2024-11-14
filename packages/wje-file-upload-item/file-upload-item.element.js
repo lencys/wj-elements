@@ -1,9 +1,9 @@
-import { default as WJElement, event } from "../wje-element/element.js";
 import { Localizer } from "../utils/localize.js";
-import FormatDigital from "../wje-format-digital/format-digital.js";
 import Button from "../wje-button/button.js";
-import Slider from "../wje-slider/slider.js";
+import { default as WJElement } from "../wje-element/element.js";
+import FormatDigital from "../wje-format-digital/format-digital.js";
 import Icon from "../wje-icon/icon.js";
+import Slider from "../wje-slider/slider.js";
 import styles from "./styles/styles.css?inline";
 
 /**

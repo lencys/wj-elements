@@ -1,5 +1,5 @@
-import { default as WJElement } from "../wje-element/element.js";
 import { Localizer } from "../utils/localize.js";
+import { default as WJElement } from "../wje-element/element.js";
 
 /**
  * `RelativeTime` is a custom web component that represents a relative time component.

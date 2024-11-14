@@ -1,4 +1,4 @@
-import { default as WJElement, WjElementUtils } from "../wje-element/element.js";
+import { default as WJElement } from "../wje-element/element.js";
 import { getHsl, getInitials } from "./service/service.js";
 import styles from "./styles/styles.css?inline";
 

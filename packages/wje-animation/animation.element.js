@@ -1,7 +1,8 @@
-import { default as WJElement } from "../wje-element/element.js";
-import { fetchAndParseCSS } from "../utils/animations.js";
-import styles from "../styles/styles.css?inline";
 import animations from 'animate.css?inline';
+
+import styles from "../styles/styles.css?inline";
+import { fetchAndParseCSS } from "../utils/animations.js";
+import { default as WJElement } from "../wje-element/element.js";
 
 /**
  * @summary This class represents an Animation element, extending the WJElement class.

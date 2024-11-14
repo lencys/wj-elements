@@ -1,6 +1,6 @@
-import { default as WJElement, event } from "../wje-element/element.js";
 import tinycolor from "tinycolor2";
 
+import { default as WJElement, event } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**

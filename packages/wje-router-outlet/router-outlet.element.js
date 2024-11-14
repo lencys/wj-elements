@@ -1,7 +1,5 @@
-import { AnimatedOutlet,
-    GenericCSS,
-    setDefaultAnimation,
-    AnimationHook } from 'slick-router/components/animated-outlet.js';
+import { AnimatedOutlet,    GenericCSS,
+    setDefaultAnimation } from 'slick-router/components/animated-outlet.js';
 
 setDefaultAnimation(GenericCSS)
 

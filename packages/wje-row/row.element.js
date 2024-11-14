@@ -1,4 +1,4 @@
-import { default as WJElement, WjElementUtils } from "../wje-element/element.js";
+import { default as WJElement } from "../wje-element/element.js";
 import styles from "./scss/styles.scss?inline";
 
 /**

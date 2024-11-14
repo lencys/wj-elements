@@ -1,6 +1,8 @@
-import globals from 'globals';
+
+import simpleImportSort from "eslint-plugin-simple-import-sort";
+import unusedImports from "eslint-plugin-unused-imports";
 import wc from 'eslint-plugin-wc';
-import sortImports from 'eslint-plugin-sort-imports-es6-autofix';
+import globals from 'globals';
 
 
 export default [
@@ -11,13 +13,18 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.node,
-        myCustomGlobal: "readonly"
+      }
+    },
+    settings: {
+      "wc": {
+        "elementBaseClasses": ["WJElement"] // Recognize `WJElement` as a Custom Element base class
       }
     },
     ignores: ['.cache', 'demo', 'dist', 'docs', 'experimental-packages', 'node_modules', '**/plugins/**/*.js', '**/*.test.js', '**/element.js'],
     plugins: {
       wc,
-      'sort-imports-es6-autofix': sortImports
+      "simple-import-sort": simpleImportSort,
+      "unused-imports": unusedImports,
     },
     rules: {
       'no-template-curly-in-string': 'error',
@@ -96,7 +103,7 @@ export default [
       'wc/guard-super-call': 'error',
       'wc/no-constructor-attributes': 'error',
       'wc/no-invalid-element-name': 'error',
-      'wc/no-self-class': 'error',
+      'wc/no-self-class': 'warn',
       'wc/attach-shadow-constructor': 'warn',
       'wc/no-child-traversal-in-attributechangedcallback': 'warn',
       'wc/no-child-traversal-in-connectedcallback': 'warn',
@@ -106,8 +113,8 @@ export default [
       'wc/no-invalid-extends': 'warn',
       'wc/no-typos': 'warn',
       'wc/require-listener-teardown': 'warn',
-      'wc/define-tag-after-class-definition': 'warn',
-      'wc/expose-class-on-global': 'warn',
+      'wc/define-tag-after-class-definition': 'off',
+      'wc/expose-class-on-global': 'off',
       'wc/file-name-matches-element': 'warn',
       'wc/guard-define-call': 'warn',
       'wc/max-elements-per-file': 'warn',
@@ -115,13 +122,18 @@ export default [
       'wc/no-exports-with-element': 'warn',
       'wc/no-method-prefixed-with-on': 'warn',
       'wc/tag-name-matches-class': 'warn',
-      'sort-imports-es6-autofix/sort-imports-es6': [
-        2,
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "off",
+      "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
+      "unused-imports/no-unused-imports": "error",
+      "unused-imports/no-unused-vars": [
+        "warn",
         {
-          "ignoreCase": true,
-          "ignoreMemberSort": false,
-          "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
-        }
+          "vars": "all",
+          "varsIgnorePattern": "^_",
+          "args": "after-used",
+          "argsIgnorePattern": "^_",
+        },
       ]
     }
   }

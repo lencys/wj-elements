@@ -1,5 +1,4 @@
 import { default as WJElement, event } from "../wje-element/element.js";
-
 import styles from "./styles/styles.css?inline";
 
 export default class Radio extends WJElement {

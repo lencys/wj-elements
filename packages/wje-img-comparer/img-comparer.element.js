@@ -1,6 +1,6 @@
 import { default as WJElement } from "../wje-element/element.js";
-import { drag } from "./service/service.js";
 import Icon from "../wje-icon/icon.js";
+import { drag } from "./service/service.js";
 import styles from "./styles/styles.css?inline";
 
 /**

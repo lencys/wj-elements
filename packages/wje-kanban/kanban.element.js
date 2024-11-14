@@ -1,5 +1,5 @@
-import { default as WJElement } from "../wje-element/element.js";
 import Checkbox from "../wje-checkbox/checkbox.js";
+import { default as WJElement } from "../wje-element/element.js";
 import MenuItem from "../wje-menu-item/menu-item.js";
 import styles from "./styles/styles.css?inline";
 

@@ -1,4 +1,4 @@
-import { default as WJElement, event, WjElementUtils } from "../wje-element/element.js";
+import { default as WJElement, event } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**
@@ -182,7 +182,7 @@ export default class Tooltip extends WJElement {
             this.popup.show(); // Show tooltip
 
             Promise.resolve(this.afterShow(this));
-        }).catch((error) => {
+        }).catch(() => {
             // ak je nejaka chyba tak to len zatvorime
             this.classList.remove("active");
             this.popup.hide();

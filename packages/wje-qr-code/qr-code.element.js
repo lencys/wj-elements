@@ -1,6 +1,7 @@
+import QRious from "qrious";
+
 import WJElement from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
-import QRious from "qrious";
 
 export default class QrCode extends WJElement {
   constructor() {

@@ -1,5 +1,6 @@
-import { default as WJElement } from "../wje-element/element.js";
 import { bindRouterLinks } from 'slick-router/middlewares/router-links.js'
+
+import { default as WJElement } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**

@@ -1,5 +1,5 @@
-import PubSub from "./pubsub.js?v=@@version@@";
 import { defaultStoreActions } from "./default-store-actions.js?v=@@version@@";
+import PubSub from "./pubsub.js?v=@@version@@";
 
 class Store {
     _state;

@@ -1,9 +1,9 @@
-import { default as WJElement, WjElementUtils, event } from "../wje-element/element.js";
-import { bool } from "../utils/utils.js";
-import Icon from "../wje-icon/icon.js";
-
-import styles from "./styles/styles.css?inline";
 import { bindRouterLinks } from 'slick-router/middlewares/router-links.js'
+
+import { bool } from "../utils/utils.js";
+import { default as WJElement, event,WjElementUtils } from "../wje-element/element.js";
+import Icon from "../wje-icon/icon.js";
+import styles from "./styles/styles.css?inline";
 
 /**
  * @summary This class represents an Button element, extending the WJElement class.

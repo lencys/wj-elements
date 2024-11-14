@@ -1,4 +1,4 @@
-import { default as WJElement, event } from "../wje-element/element.js";
+import { default as WJElement } from "../wje-element/element.js";
 import Radio from "../wje-radio/radio.js";
 import styles from "./styles/styles.css?inline";
 

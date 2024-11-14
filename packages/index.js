@@ -1,16 +1,11 @@
-import { default as WJElement } from "./wje-element/element.js";
-import { event } from "./utils/event.js";
-import { defaultStoreActions, store } from "./wje-store/store.js";
-
 import { bindRouterLinks } from 'slick-router/middlewares/router-links.js'
 
+import { default as SlidingContainer } from "../experimental-packages/wje-sliding-container/sliding-container.js";
 import { fetchAndParseCSS } from "./utils/animations.js";
+import { formatDate } from "./utils/date.js";
+import { event } from "./utils/event.js";
 import { Localizer } from "./utils/localize.js";
 import { WjePermissionsApi } from "./utils/permissions-api.js";
-import { formatDate } from "./utils/date.js";
-import { skSk } from "./translations/sk-SK.js";
-import { enGb } from "./translations/en-GB.js";
-
 import { default as Accordion } from "./wje-accordion/accordion.js";
 import { default as AccordionItem } from "./wje-accordion-item/accordion-item.js";
 import { default as Animation } from "./wje-animation/animation.js";
@@ -38,6 +33,7 @@ import { default as CopyButton } from "./wje-copy-button/copy-button.js";
 import { default as Dialog } from "./wje-dialog/dialog.js";
 import { default as Divider } from "./wje-divider/divider.js";
 import { default as Dropdown } from "./wje-dropdown/dropdown.js";
+import { default as WJElement } from "./wje-element/element.js";
 import { default as FileUpload } from "./wje-file-upload/file-upload.js";
 import { default as FileUploadItem } from "./wje-file-upload-item/file-upload-item.js";
 import { default as Footer } from "./wje-footer/footer.js";
@@ -88,6 +84,7 @@ import { default as SplitView } from "./wje-split-view/split-view.js";
 import { default as Status } from "./wje-status/status.js";
 import { default as Step } from "./wje-step/step.js";
 import { default as Stepper } from "./wje-stepper/stepper.js";
+import { defaultStoreActions, store } from "./wje-store/store.js";
 import { default as Tab } from "./wje-tab/tab.js";
 import { default as TabGroup } from "./wje-tab-group/tab-group.js";
 import { default as TabPanel } from "./wje-tab-panel/tab-panel.js";
@@ -101,8 +98,6 @@ import { default as Toolbar } from "./wje-toolbar/toolbar.js";
 import { default as ToolbarAction } from "./wje-toolbar-action/toolbar-action.js";
 import { default as Tooltip } from "./wje-tooltip/tooltip.js";
 import { default as VisuallyHidden } from "./wje-visually-hidden/visually-hidden.js";
-
-import { default as SlidingContainer } from "../experimental-packages/wje-sliding-container/sliding-container.js";
 
 export {
   WJElement, defaultStoreActions, store, event, bindRouterLinks, fetchAndParseCSS, Localizer, formatDate, WjePermissionsApi,

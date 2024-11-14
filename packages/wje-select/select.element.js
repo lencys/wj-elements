@@ -1,13 +1,12 @@
-import { default as WJElement, event } from "../wje-element/element.js";
 import Button from "../wje-button/button.js";
-import Popup from "../wje-popup/popup.js";
-import Icon from "../wje-icon/icon.js";
-import Label from "../wje-label/label.js";
 import Chip from "../wje-chip/chip.js";
+import { default as WJElement, event } from "../wje-element/element.js";
+import Icon from "../wje-icon/icon.js";
 import Input from "../wje-input/input.js";
+import Label from "../wje-label/label.js";
 import Option from "../wje-option/option.js";
 import Options from "../wje-options/options.js";
-
+import Popup from "../wje-popup/popup.js";
 import styles from "./styles/styles.css?inline";
 
 /**

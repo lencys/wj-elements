@@ -1,5 +1,5 @@
-import { default as WJElement } from "../wje-element/element.js";
 import { Localizer } from "../utils/localize.js";
+import { default as WJElement } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 export default class FormatDigital extends WJElement {

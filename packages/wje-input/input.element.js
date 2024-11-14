@@ -45,19 +45,21 @@ export default class Input extends WJElement {
         this.internals = this.attachInternals();
 
         // Create a mutation observer instance to watch for changes in attributes
-        this.observer = new MutationObserver(mutations => {
-            mutations.forEach(mutation => {
-                if (mutation.type === 'attributes') {
-                    const attributeName = mutation.attributeName;
-                    const oldValue = mutation.oldValue;
-                    const newValue = this.getAttribute(attributeName);
+        this.observer = new MutationObserver(this.observeFunction);
+    }
 
-                    console.log(`Attribute ${attributeName} changed from ${oldValue} to ${newValue}`);
-                }
-            });
+    observeFunction = mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.type === 'attributes') {
+                const attributeName = mutation.attributeName;
+                const oldValue = mutation.oldValue;
+                const newValue = this.getAttribute(attributeName);
 
-            this.refresh();
+                console.log(`Attribute ${attributeName} changed from ${oldValue} to ${newValue}`);
+            }
         });
+
+        this.refresh();
     }
 
     /**
@@ -111,7 +113,7 @@ export default class Input extends WJElement {
      * @param {boolean} isInvalid - Whether the input is invalid.
      */
     set invalid(isInvalid) {
-        if(isInvalid)
+        if (isInvalid)
             this.setAttribute('invalid', '')
         else
             this.removeAttribute('invalid');
@@ -206,7 +208,7 @@ export default class Input extends WJElement {
      */
     static get observedAttributes() {
         // observe any change in all attributes
-        
+
     }
 
     /**

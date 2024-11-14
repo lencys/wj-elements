@@ -1,4 +1,4 @@
-import { default as WJElement, event } from "../wje-element/element.js";
+import { default as WJElement } from "../wje-element/element.js";
 import { COL_COUNT_CSS_VAR_NAME, debounce, DEFAULT_DEBOUNCE_MS, DEFAULT_MAX_COL_WIDTH, ELEMENT_NODE_TYPE, findSmallestColIndex, GAP_CSS_VAR_NAME, getColCount, getNumberAttribute } from "./service/service.js";
 import styles from "./styles/styles.css?inline";
 
