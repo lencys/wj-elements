@@ -48,8 +48,6 @@ export default class MenuItem extends WJElement {
     constructor() {
         super();
 
-        this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: false })
-
         this._collapsible = false;
     }
 
@@ -262,6 +260,8 @@ export default class MenuItem extends WJElement {
      * @params {Object} params - The parameters
      */
     afterDraw() {
+        this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: false })
+
         this.addEventListener("mousemove", this.dispatchMove);
         this.addEventListener("wje-popup:reposition", this.dispatchReposition);
 
@@ -273,15 +273,6 @@ export default class MenuItem extends WJElement {
         // Event na zrusenie zobrazenia submenu ked sa klikne mimo
         event.addListener(this, "focusout", null, this.shouldHideSubmenu);
         event.addListener(this, "click", null, this.clickHandler);
-    }
-
-    beforeDisconnect() {
-        event.removeListener(this, "mousemove", null, this.dispatchMove);
-        event.removeListener(this, "wje-popup:reposition", null, this.dispatchReposition);
-        event.removeListener(this, "mouseenter", null, this.mouseenterHandler);
-        event.removeListener(this, "mouseleave", null, this.shouldHideSubmenu);
-        event.removeListener(this, "focusout", null, this.shouldHideSubmenu);
-        event.removeListener(this, "click", null, this.clickHandler);
     }
 
     mouseenterHandler = (e) => {
@@ -465,9 +456,15 @@ export default class MenuItem extends WJElement {
      * Clears the innerHTML of the context before disconnecting the MenuItem.
      */
     beforeDisconnect() {
-        this.context.innerHTML = "";
-        this.unbindRouterLinks();
+        event.removeListener(this, "mousemove", null, this.dispatchMove);
+        event.removeListener(this, "wje-popup:reposition", null, this.dispatchReposition);
+        event.removeListener(this, "mouseenter", null, this.mouseenterHandler);
+        event.removeListener(this, "mouseleave", null, this.shouldHideSubmenu);
+        event.removeListener(this, "focusout", null, this.shouldHideSubmenu);
+        event.removeListener(this, "click", null, this.clickHandler);
 
+        this.context.innerHTML = "";
+        this.unbindRouterLinks?.();
     }
 
     getTextFromElement(element) {

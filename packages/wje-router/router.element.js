@@ -1,5 +1,6 @@
 import { default as WJElement, WjElementUtils } from "../wje-element/element.js";
 import { Router, interceptLinks, fromParam, fromQuery, fromValue, getRouteEl } from 'slick-router';
+//import {Router as CoreRouter, interceptLinks} from 'slick-router/core.js';
 import { events } from 'slick-router/middlewares/events.js';
 
 /**
@@ -47,7 +48,7 @@ export default class Routerx extends WJElement {
      * @params {Object} store - The store for drawing.
      * @params {Object} params - The parameters for drawing.
      */
-    afterDraw() {
+    beforeDraw() {
         const htmlString = this.outerHTML;
 
         const parser = new DOMParser();

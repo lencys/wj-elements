@@ -40,9 +40,6 @@
     ".": {
       "import": "./dist/wje-master.js"
     },
-    "./*.js": {
-      "import": "./dist/*.js"
-    },
     "./*": {
       "import": "./dist/*"
     },
