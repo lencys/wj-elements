@@ -3,6 +3,7 @@ import { bool } from "../utils/utils.js";
 import Icon from "../wje-icon/icon.js";
 
 import styles from "./styles/styles.css?inline";
+import { bindRouterLinks } from 'slick-router/middlewares/router-links.js'
 
 /**
  * @summary This class represents an Button element, extending the WJElement class.
@@ -379,6 +380,10 @@ export default class Button extends WJElement {
      * @param {Object} params - The parameters
      */
     afterDraw() {
+        if(this.hasAttribute("route")){
+            this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: false });
+        }
+
         // nastavenie toggle podla atributu, ak nie je nastaveny, tak sa zobrazi vzdy prvy element
         if (this.hasToggle) {
             if (this.toggle === "off") {
@@ -418,6 +423,7 @@ export default class Button extends WJElement {
      */
     beforeDisconnect() {
         this.removeEventListener("click", this.eventDialogOpen);
+        this.unbindRouterLinks?.();
     }
 
     /**
