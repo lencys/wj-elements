@@ -230,7 +230,7 @@ export default class Textarea extends WJElement {
 
         if (this.hasAttribute("counter")) {
             input.maxLength = this.maxLength || 1000;
-            input.addEventListener("input", this.counter);
+            input.addEventListener("input", this.counterFn);
 
             let counter = document.createElement("div");
             counter.classList.add("counter");
@@ -295,7 +295,7 @@ export default class Textarea extends WJElement {
      *
      * @param {Event} e - The event object.
      */
-    counter = (e) => {
+    counterFn = (e) => {
         this.counterElement.innerText = e.target.value.length + "/" + this.input.maxLength;
     }
 
