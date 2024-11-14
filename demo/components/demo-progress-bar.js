@@ -133,15 +133,18 @@ export default class DemoProgressBar extends WJElement {
     const totalTime = 20000; // Celkový čas v milisekundách (20s)
     const intervalTime = totalTime / 100; // Časový interval pre každé číslo
 
-    const interval = setInterval(() => {
+    this.interval = setInterval(() => {
       currentNumber++;
 
       this.querySelector(".example").setAttribute("progress", currentNumber);
       if (currentNumber >= 100) {
-        clearInterval(interval);
+        clearInterval(this.interval);
       }
     }, intervalTime);
+  }
 
+  beforeDisconnect() {
+    clearInterval(this.interval);
   }
 }
 
