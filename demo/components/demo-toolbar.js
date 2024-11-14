@@ -83,10 +83,10 @@ export default class DemoToolbar extends WJElement {
     super(template);
   }
 
-  beforeRouteEnter(transition) {
+  afterRouteEnter(transition) {
     this.objs = transition.breadcrumbs;
 
-    this.objs.unshift({
+    this.objs?.unshift({
       "name": "home",
       "text": '<wje-icon slot="start" name="home"></wje-icon>',
       "params": {},
@@ -99,7 +99,7 @@ export default class DemoToolbar extends WJElement {
     codeSnippet.generateSnippet(template, this.context);
 
     const breadcrumbs = this.querySelector("#custom-dynamic");
-    this.objs.forEach((obj) => {
+    this.objs?.forEach((obj) => {
       let breadcrumb = document.createElement("wje-breadcrumb");
       breadcrumb.setAttribute("route", obj.name);
       breadcrumb.innerHTML = `${obj.text}<wje-icon slot="separator" name="minus" size="small" class="custom"></wje-icon>`;

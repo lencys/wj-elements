@@ -22,7 +22,6 @@ export default class RouterLink extends WJElement {
      */
     constructor() {
         super();
-        this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: false });
     }
 
     className = "RouterLink";
@@ -72,10 +71,14 @@ export default class RouterLink extends WJElement {
         return fragment;
     }
 
+    afterDraw(context, appStore, attributes) {
+        this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: false });
+    }
+
     /**
      * Cleans up before the component is disconnected.
      */
     beforeDisconnect() {
-        this.unbindRouterLinks();
+        this.unbindRouterLinks?.();
     }
 }
