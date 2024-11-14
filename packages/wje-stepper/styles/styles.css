@@ -5,7 +5,7 @@
 
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: var(--wje-stepper-justify);
     margin-bottom: var(--wje-spacing-medium);
 }
 
@@ -14,7 +14,7 @@
     padding: var(--wje-spacing-medium);
     gap: var(--wje-spacing-x-small);
     color: var(--wje-color-contrast-5);
-    flex-grow: 1;
+    flex-grow: var(--wje-stepper-grow);
     text-align: center;
 }
 

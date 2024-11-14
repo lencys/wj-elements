@@ -43,7 +43,7 @@ export default class PubSub {
      * @returns {array} The callbacks for this event, or an empty array if no event exits
      * @memberof PubSub
      */
-    publish(event, newData = {},oldData ) {
+    publish(event, newData = {}, oldData = {}) {
         let self = this;
         
         // There's no event to publish to, so bail out
@@ -52,6 +52,6 @@ export default class PubSub {
         }
         
         // Get each subscription and call its callback with the passed data
-        return self.events[event].map(callback => callback(newData,oldData));
+        return self.events[event].map(callback => callback(newData, oldData));
     }
 }

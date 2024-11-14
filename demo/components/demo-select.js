@@ -1,31 +1,9 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
 template.innerHTML = `
-<style>
-    pre {
-      overflow-x: auto;
-      word-wrap: break-word;
-      white-space: pre-wrap;
-      padding: 10px;
-      border: 1px solid hsla(240, 6%, 90%, 1);
-      border-radius: 4px;
-      background: #f9f9f9;
-      max-width: 100%;
-      font-size: 1em;
-      line-height: 1.7rem;
-      position: relative;
-    }
-
-    code {
-      font-family: monospace;
-      padding: 2px 4px;
-      background: #f9f9f9;
-      border-radius: 4px;
-    }
-  </style>
   <h1>Select</h1>
   <div class="container">
     
@@ -35,37 +13,69 @@ template.innerHTML = `
     <div class="playground">
       <div class="content">
         <wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
-          <wje-options url="/api/options" item-value="tralala" item-text="label"></wje-options>
+          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>
+        </wje-select>
+
+        <div class="content" id="placeholder"></div>
+      </div>
+    </div>
+
+    <!-- LAZY OPTIONS -->
+
+    <h2>Lazy options</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-select id="lazy-update" placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
+          <wje-options lazy url="/api/options" item-value="value" item-text="text"  lazy-load-size="6" option-array-path="data"></wje-options>
         </wje-select>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-    
     <!-- FIND -->
 
     <h2>Find</h2>
     <div class="playground">
       <div class="content" style="gap: .5rem;">
         <wje-select placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple clearable>
-          <wje-options url="/api/options" item-value="tralala" item-text="label"></wje-options>
+          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>
         </wje-select>
         
         <wje-select placeholder="Select options" variant="standard" max-height="200px" find clearable>
-          <wje-options url="/api/options" item-value="tralala" item-text="label"></wje-options>
+          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>
         </wje-select>
         
         <wje-select label="Label" placeholder="Select options" max-options="1" max-height="200px" find multiple clearable>
-          <wje-options url="/api/options" item-value="tralala" item-text="label"></wje-options>
+          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>
         </wje-select>
         
         <wje-select label="Label" placeholder="Select options" max-height="200px" find clearable>
-          <wje-options url="/api/options" item-value="tralala" item-text="label"></wje-options>
+          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>
         </wje-select>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
+    <!-- AUTOCOMPLETE -->
+
+    <h2>Autocomplete</h2>
+    <div class="playground">
+      <div class="content" style="gap: .5rem;">
+        <wje-select placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple clearable>
+          <wje-options lazy url="/api/options" item-value="value" item-text="text" lazy-load-size="6" option-array-path="data"></wje-options>
+        </wje-select>
+        
+        <wje-select placeholder="Select options" variant="standard" max-height="200px" find clearable>
+          <wje-options lazy url="/api/options" item-value="value"item-text="text"  lazy-load-size="6" option-array-path="data"></wje-options>
+        </wje-select>
+        
+        <wje-select label="Label" placeholder="Select options" max-options="1" max-height="200px" find multiple clearable>
+          <wje-options lazy url="/api/options" item-value="value"item-text="text"  lazy-load-size="6" option-array-path="data"></wje-options>
+        </wje-select>
+        
+        <wje-select label="Label" placeholder="Select options" max-height="200px" find clearable>
+          <wje-options lazy url="/api/options" item-value="value"item-text="text"  lazy-load-size="6" option-array-path="data"></wje-options>
+        </wje-select>
+      </div>
+    </div>
     
     <!-- DEFAULT -->
 
@@ -83,8 +93,6 @@ template.innerHTML = `
         </wje-select>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- STANDARD -->
 
@@ -102,8 +110,6 @@ template.innerHTML = `
         </wje-select>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- STANDARD -->
 
@@ -121,8 +127,6 @@ template.innerHTML = `
         </wje-select>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- CLEARABLE -->
 
@@ -137,8 +141,6 @@ template.innerHTML = `
         </wje-select>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!--  DISABLED-->
 
@@ -160,8 +162,6 @@ template.innerHTML = `
         </wje-select>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- MULTIPLE -->
 
@@ -181,138 +181,6 @@ template.innerHTML = `
         </wje-select>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
-
-    <h3>Javascript</h3>
-    <pre>
-      <code>
-        optionChange = (e) => {
-          let allOptions = this.getAllOptions();
-
-          if(!this.hasAttribute("multiple")) {
-              allOptions.forEach((option) => {
-                  option.selected = false;
-                  option.removeAttribute("selected");
-              });
-              this.popup.removeAttribute("active");
-          }
-
-          e.target.selected = !e.target.hasAttribute("selected");
-
-          this.selections(e.target);
-        }
-      </code>
-    </pre>
-    <pre>
-      <code>
-        getAllOptions() {
-          return this.querySelectorAll("wje-option");
-        }
-      </code>
-    </pre>
-    <pre>
-      <code>
-        getSelectedOptions() {
-          return this.querySelectorAll("wje-option[selected]");
-        }
-      </code>
-    </pre>
-    <pre>
-      <code>
-        getSelected(option) {
-          let selectedOptions = this.getSelectedOptions();
-
-          selectedOptions = Array.isArray(selectedOptions) ? selectedOptions : Array.from(selectedOptions);
-
-          selectedOptions = selectedOptions.map((option) => {
-              return {
-                  value: option.value,
-                  text: option.textContent.trim()
-              };
-          });
-
-          return selectedOptions;
-        }
-      </code>
-    </pre>
-    <pre>
-      <code>
-        selectionChanged(option = null, length = 0) {
-          if (this.hasAttribute("multiple")) {
-              this.value = this.selectedOptions.map(el => el).reverse();
-
-              if (this.placeholder && length === 0) {
-                  this.chips.innerHTML = this.placeholder;
-                  this.input.value = '';
-              } else {
-                  if(this.counterEl instanceof HTMLElement || length > +this.maxOptions) {
-                      this.counter();
-                  } else {
-                      if(option != null)
-                          this.chips.appendChild(this.getChip(option));
-                  }
-              }
-          } else {
-              let value = option?.textContent.trim() || "";
-              this.value = value;
-              this.input.value = value;
-          }
-        }
-      </code>
-    </pre>
-    <pre>
-      <code>
-        selections(option) {
-          let options = this.getSelectedOptions();
-
-          this.selectedOptions = Array.isArray(options) ? options : Array.from(options);
-
-          if(this.selectedOptions.length >= +this.maxOptions) {
-              this.counterEl = null;
-          }
-
-          this.chips.innerHTML = "";
-          if(this.selectedOptions.length > 0) {
-              this.selectedOptions.forEach((option, index) => {
-                  this.selectionChanged(option, ++index);
-              });
-          } else {
-              this.selectionChanged();
-          }
-        }
-      </code>
-    </pre>
-    <pre>
-      <code>
-        getChip(option) {
-          let chip = document.createElement("wje-chip");
-          chip.setAttribute("removable", "");
-          chip.addEventListener("wje:chip-remove", this.removeChip);
-          chip.option = option;
-
-          let label = document.createElement("wje-label");
-          label.innerText = option.textContent.trim();
-
-          chip.appendChild(label);
-
-          return chip;
-        }
-      </code>
-    </pre>
-    <pre>
-      <code>
-        removeChip = (e) => {
-          let option = e.target.option;
-          option.selected = false;
-          option.removeAttribute("selected");
-          e.target.parentNode.removeChild(e.target);
-
-          this.selections(null, 0);
-        }
-      </code>
-    </pre>
-    
   </div>`;
 
 export default class DemoSelect extends WJElement {
@@ -323,6 +191,39 @@ export default class DemoSelect extends WJElement {
   afterDraw() {
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(template, this.context);
+
+    const lazySelect = document.querySelector('#lazy-update');
+
+    lazySelect.addOptions([{ text: "aaaa", value: "aeee" }]);
+    lazySelect.selectOptions(["aeee"], false)
+    lazySelect.value = ["aeee"];
+
+    // <wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
+    //       <wje-options url="/api/options" item-value="value"item-text="text"></wje-options>
+    //     </wje-select>
+
+    const select = document.createElement('wje-select');
+    select.setAttribute('placeholder', 'Select options');
+    select.setAttribute('variant', 'standard');
+    select.setAttribute('max-height', '200px');
+    select.setAttribute('max-options', '1');
+    select.setAttribute('multiple', '');
+    select.setAttribute('clearable', '');
+
+    const options = document.querySelector('wje-options');
+    options.setAttribute('url', '/api/options');
+    options.setAttribute('item-value', 'value');
+    options.setAttribute('item-text', 'text');
+    options.setAttribute("option-array-path", "data")
+
+    select.addOptions([{ text: "aaaa", value: "aeee" }, { text: "bbbb", value: "beee" }, { text: "cccc", value: "ceee" }, { text: "dddd", value: "deee" }, { text: "eeee", value: "eeee" }, { text: "ffff", value: "feee" }, { text: "gggg", value: "geee" }, { text: "hhhh", value: "heee" }, { text: "iiii", value: "ieee" }, { text: "jjjj", value: "jeee" }, { text: "kkkk", value: "keee" }, { text: "llll", value: "leee" }, { text: "mmmm", value: "meee" }, { text: "nnnn", value: "neee" }, { text: "oooo", value: "oeee" }, { text: "pppp", value: "peee" }, { text: "qqqq", value: "qeee" }, { text: "rrrr", value: "reee" }, { text: "ssss", value: "seee" }, { text: "tttt", value: "teee" }, { text: "uuuu", value: "ueee" }, { text: "vvvv", value: "veee" }, { text: "wwww", value: "weee" }, { text: "xxxx", value: "xeee" }, { text: "yyyy", value: "yeee" }, { text: "zzzz", value: "zeee" }]);
+    select.selectOptions(["aeee", "beee"], false)
+    select.value = ["aeee", "beee"];
+
+    select.appendChild(options);
+
+    this.querySelector('#placeholder').appendChild(select);
+
   }
 }
 

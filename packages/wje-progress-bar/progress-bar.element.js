@@ -238,7 +238,7 @@ export default class ProgressBar extends WJElement {
     /**
      * Adds event listeners after the component is drawn.
      */
-    afterDraw(context, store, params) {
+    afterDraw() {
         if(this.type === "circle") {
             this.setCircleProgress(this.progress);
         }
@@ -261,10 +261,14 @@ export default class ProgressBar extends WJElement {
      * @param {number} radius - The radius of the circle.
      * @returns {number} The dashoffset value.
      */
-    getCircleDashoffset(progress = 0, radius) {
+    getCircleDashoffset(progress = 0, radius = 70) {
         return this.getCircleDasharray(radius) * ((100 - progress)/100);
     }
 
+    /**
+     * Sets the progress of the circle.
+     * @param percent
+     */
     setCircleProgress(percent) {
         const progress = this.bar;
         const radius = progress.r.baseVal.value;

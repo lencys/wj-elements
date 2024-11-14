@@ -1,33 +1,8 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
-template.innerHTML = `<style>
-    wje-button {
-      margin: .5rem;
-    }
-
-    pre {
-      overflow-x: auto;
-      word-wrap: break-word;
-      white-space: pre-wrap;
-      padding: 10px;
-      border: 1px solid hsla(240, 6%, 90%, 1);
-      border-radius: 4px;
-      background: #f9f9f9;
-      max-width: 100%;
-      font-size: 1em;
-      line-height: 1.7rem;
-      position: relative;
-    }
-
-    code {
-      font-family: monospace;
-      padding: 2px 4px;
-      background: #f9f9f9;
-      border-radius: 4px;
-    }
-  </style>
+template.innerHTML = `
   <h1>Button</h1>
   <div class="container">
     
@@ -40,8 +15,6 @@ template.innerHTML = `<style>
         <wje-button disabled>Disabled</wje-button>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- TOOLTIP -->
 
@@ -51,10 +24,8 @@ template.innerHTML = `<style>
         <wje-button tooltip="Button tooltip" tooltip-placement="left">Default</wje-button>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
-     <!-- EVENTS -->
+    <!-- EVENTS -->
 
     <h2>Events</h2>
     <div class="playground">
@@ -64,31 +35,25 @@ template.innerHTML = `<style>
         <wje-button type="submit" id="text-submit">Submit</wje-button>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
-    
     
     <!-- BUTTON IN FORM -->
+    
     <h2>Form button</h2>
     <div class="playground">
       <div class="content">
         <form name="test-form" id="test-form">
-           <wje-input name="default" label="Default input"></wje-input>
-            <wje-input name="withPlaceholder" label="Input with placeholder" placeholder="Enter company name" required ><span slot="error" style="width: 500px;display: block;color: #0af4fc;"><icon></icon><span ></span></span></wje-input>
-            <wje-input name="withPlaceholderErrorInline" label="Input with placeholder error inline" placeholder="Enter company name" required   error-inline><span slot="error"><icon></icon><span ></span></span></wje-input>
-            <wje-input name="withValue" label="Input with value" value="Mlynské Nivy 71"></wje-input>
-            <wje-input name="readonly" label="Readonly input" value="Bratislava" readonly></wje-input>
-            <wje-input name="disabled" label="Disabled input" value="84103" disabled></wje-input>
-            <wje-input name="defaultNumber" label="Default input" type="number" minlength="5" message="Toto je moja hlaska" required validate-on-change custom-error-display ></wje-input>
+          <wje-input name="default" label="Default input"></wje-input>
+          <wje-input name="withValue" label="Input with value" value="Mlynské Nivy 71"></wje-input>
+          <wje-input name="readonly" label="Readonly input" value="Bratislava" readonly></wje-input>
+          <wje-input name="disabled" label="Disabled input" value="84103" disabled></wje-input>
+          <wje-input name="defaultNumber" label="Default input" type="number" minlength="5" message="Toto je moja hlaska" required validate-on-change custom-error-display ></wje-input>
           <wje-button type="reset">Reset</wje-button>
           <wje-button type="submit" color="primary">Submit</wje-button>
         </form>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-    
-     <!-- TOGGLE -->
+    <!-- TOGGLE -->
 
     <h2>Toggle</h2>
     <div class="playground">
@@ -105,8 +70,6 @@ template.innerHTML = `<style>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-
     <!-- SHAPE -->
 
     <h2>Shape</h2>
@@ -117,8 +80,6 @@ template.innerHTML = `<style>
         <wje-button circle><wje-icon name="clock" slot="icon-only"></wje-icon></wje-button>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
 
     <!-- FILL -->
 
@@ -132,8 +93,6 @@ template.innerHTML = `<style>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-
     <!-- SIZE -->
 
     <h2>Size</h2>
@@ -144,8 +103,6 @@ template.innerHTML = `<style>
         <wje-button size="large">Large</wje-button>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- SIZE - CIRCLE -->
 
@@ -158,7 +115,7 @@ template.innerHTML = `<style>
       </div>
     </div>
     
-     <!-- CARET -->
+    <!-- CARET -->
 
     <h2>Caret</h2>
     <div class="playground">
@@ -174,8 +131,6 @@ template.innerHTML = `<style>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-
     <!-- ICONS -->
 
     <h2>Icons</h2>
@@ -189,11 +144,9 @@ template.innerHTML = `<style>
           Right Icon
           <wje-icon slot="end" name="star"></wje-icon>
         </wje-button>
-        
         <wje-button>
           <wje-icon slot="icon-only" name="star"></wje-icon>
         </wje-button>
-
         <wje-button fill="outline">
           <wje-icon slot="start" name="star"></wje-icon>
           Left Icon
@@ -207,8 +160,6 @@ template.innerHTML = `<style>
         </wje-button>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- LINK -->
 
@@ -218,8 +169,6 @@ template.innerHTML = `<style>
         <wje-button fill="link">Link</wje-button>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
 
     <!-- COLORS -->
 
@@ -232,13 +181,9 @@ template.innerHTML = `<style>
         <wje-button color="success">Success</wje-button>
         <wje-button color="warning">Warning</wje-button>
         <wje-button color="danger">Danger</wje-button>
-        <wje-button color="neutral">Neutral</wje-button>
-        
-        <wje-button fill="outline">Default</wje-button>
+        <wje-button color="info">Info</wje-button>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
 
     <!-- COLORS - OUTLINE -->
 
@@ -251,11 +196,24 @@ template.innerHTML = `<style>
         <wje-button color="success" fill="outline">Success</wje-button>
         <wje-button color="warning" fill="outline">Warning</wje-button>
         <wje-button color="danger" fill="outline">Danger</wje-button>
-        <wje-button color="neutral" fill="outline">Neutral</wje-button>
+        <wje-button color="info" fill="outline">Info</wje-button>
       </div>
     </div>
+    
+    <!-- COLORS - LINK -->
 
-    <div class="html-snippet"></div>
+    <h2>Colors link</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-button fill="link">Default</wje-button>
+        <wje-button color="primary" fill="link">Primary</wje-button>
+        <wje-button color="complete" fill="link">Complete</wje-button>
+        <wje-button color="success" fill="link">Success</wje-button>
+        <wje-button color="warning" fill="link">Warning</wje-button>
+        <wje-button color="danger" fill="link">Danger</wje-button>
+        <wje-button color="info" fill="link">Info</wje-button>
+      </div>
+    </div>
 
     <!-- CUSTOM CSS Attributes -->
 
@@ -276,7 +234,6 @@ template.innerHTML = `<style>
               --wje-padding-bottom: 1rem;
             }
           }
-          
           #custom:hover {
             &::part(native) {
               background-color: #0af4fc;
@@ -286,47 +243,6 @@ template.innerHTML = `<style>
         </style>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
-
-    <!-- <div class="html-snippet"></div> -->
-
-    <h3>Javascript</h3>
-        
-    <pre>
-      <code>
-        eventDialogOpen = (e) => {
-          console.log("open dialog");
-          event.dispatchCustomEvent(this, this.dialog, {
-              bubbles: true
-          });
-        }
-      </code>
-    </pre>
-
-    <pre>
-      <code>
-        toggleStates = () => {
-          const nodes = this.slotToggle.assignedNodes().filter(node => node.nodeType === Node.ELEMENT_NODE);
-
-          nodes.forEach(node => {
-              if (node.classList.contains('show')) {
-                  node.classList.remove('show');
-              } else {
-                  node.classList.add('show');
-              }
-          });
-        }
-      </code>
-    </pre>
-
-    <pre>
-      <code>
-        beforeDisconnect() {
-          this.removeEventListener("click", this.eventDialogOpen);
-        }
-      </code>
-    </pre>
   </div>`;
 
 export default class DemoButton extends WJElement {

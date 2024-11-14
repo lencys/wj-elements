@@ -52,7 +52,7 @@ export default class Panel extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("slot");
@@ -79,13 +79,13 @@ export default class Panel extends WJElement {
         const shouldCollapse = maxItems !== undefined && breadcrumbs.length > maxItems && itemsBeforeCollapse + itemsAfterCollapse <= maxItems;
 
         if (shouldCollapse) {
-            breadcrumbs.forEach((breadcrumb, index) => {
+            breadcrumbs.forEach((b, index) => {
                 if (index === itemsBeforeCollapse) {
-                    breadcrumb.setAttribute("show-collapsed-indicator", true);
+                    b.setAttribute("show-collapsed-indicator", true);
                 }
 
                 if (index >= itemsBeforeCollapse && index < breadcrumbs.length - itemsAfterCollapse) {
-                    breadcrumb.setAttribute("collapsed", true);
+                    b.setAttribute("collapsed", true);
                 }
             });
         }

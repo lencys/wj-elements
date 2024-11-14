@@ -4,7 +4,7 @@ export class LocalizerDefault {
   constructor(element) {
     this.element = element;
 
-    this.lang = this.element.lang || document.documentElement.lang || 'sk';
+    this.lang = this.element.lang || document.documentElement.lang || 'en-gb';
     this.dir = this.element.dir || document.documentElement.dir || 'ltr';
 
     this.setLanguage();
@@ -29,10 +29,11 @@ export class LocalizerDefault {
     return langMap ? langMap[key] || key : key;
   }
 
+  // Vyhľadávanie prekladu podľa kľúča a typu čísla
   translatePlural(key, count = 0, type = "cardinal") {
     const plural = new Intl.PluralRules(this.lang, { type: type });
 
-    if(count != undefined)
+    if (count !== undefined)
       key += "." + plural.select(count);
 
     return this.translate(key);
@@ -48,18 +49,24 @@ export class LocalizerDefault {
     return new Intl.DateTimeFormat(this.currentLang).format(new Date(date));
   }
 
-  relativeTime(value = 0, unit, options = { numeric: "auto" }) {
-    return new Intl.RelativeTimeFormat(this.currentLang, options).format(value, unit);
+  relativeTime(lang, value = 0, unit = "day", options = { numeric: "auto" }) {
+    lang = lang || this.currentLang;
+    return new Intl.RelativeTimeFormat(lang, options).format(value, unit);
   }
 }
 
 export function registerTranslation(...translation) {
-  translation.map(t => {
+  translation.forEach(t => {
+    if (!t.code) {
+      console.error("Translation object is missing 'code' property:", t);
+      return;
+    }
+
     const code = t.code.toLowerCase();
-    if (translations.has(code)) {
-      translations.set(code, { ...translations.get(code), ...t });
+    if (window.translations.has(code)) {
+      window.translations.set(code, { ...window.translations.get(code), ...t });
     } else {
-      translations.set(code, t);
+      window.translations.set(code, t);
     }
   });
 }

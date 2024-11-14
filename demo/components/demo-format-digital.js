@@ -1,5 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -23,49 +23,44 @@ template.innerHTML = `<h1>Format byte</h1>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-    
     <!-- BYTES -->
 
     <h2>Formatting display</h2>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content" style="display: block;">
-        <wje-format-digital value="9900"></wje-format-digital><br/>
-        short<wje-format-digital value="9900" unit-display="short"></wje-format-digital><br/>
-        narrow<wje-format-digital value="9900" unit-display="narrow"></wje-format-digital><br/>
-        long<wje-format-digital value="9900" unit-display="long"></wje-format-digital>
+        <wje-format-digital value="9900"></wje-format-digital>
+        <b>short</b>
+        <wje-format-digital value="9900" unit-display="short"></wje-format-digital>
+        <b>narrow</b>
+        <wje-format-digital value="9900" unit-display="narrow"></wje-format-digital>
+        <b>long</b>
+        <wje-format-digital value="9900" unit-display="long"></wje-format-digital>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-    
     <!-- BYTES -->
 
     <h2>Formatting Bytes</h2>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content" style="display: block;">
-        <wje-format-digital value="99"></wje-format-digital><br/>
-        <wje-format-digital value="9900"></wje-format-digital><br/>
-        <wje-format-digital value="9900000"></wje-format-digital><br/>
+        <wje-format-digital value="99"></wje-format-digital>
+        <wje-format-digital value="9900"></wje-format-digital>
+        <wje-format-digital value="9900000"></wje-format-digital>
         <wje-format-digital value="9900000000"></wje-format-digital>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-    
     <!-- BIT -->
 
     <h2>Formatting Bits</h2>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content" style="display: block;">
-        <wje-format-digital value="99" unit="bit"></wje-format-digital><br/>
-        <wje-format-digital value="9900" unit="bit"></wje-format-digital><br/>
-        <wje-format-digital value="9900000" unit="bit"></wje-format-digital><br/>
+        <wje-format-digital value="99" unit="bit"></wje-format-digital>
+        <wje-format-digital value="9900" unit="bit"></wje-format-digital>
+        <wje-format-digital value="9900000" unit="bit"></wje-format-digital>
         <wje-format-digital value="9900000000" unit="bit"></wje-format-digital>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- SLOTS -->
 
@@ -76,9 +71,6 @@ template.innerHTML = `<h1>Format byte</h1>
         <wje-format-digital value="9900000"><span slot="start">&nbsp;z </span></wje-format-digital>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
-    
   </div>`;
 
 export default class DemoFormatDigital extends WJElement {

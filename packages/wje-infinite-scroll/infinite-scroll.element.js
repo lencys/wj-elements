@@ -37,54 +37,52 @@ export default class InfiniteScroll extends WJElement {
         this._response = {};
         this.iterate = null;
         this._infiniteScrollTemplate = null;
-
-        /**
-         * Interpolates a string with the given parameters.
-         *
-         * @param {Object} params - The parameters for interpolation.
-         * @returns {string} The interpolated string.
-         */
-        String.prototype.interpolate = function(params) {
-            let template = this;
-            let keys = template.match(/\{{.*?\}}/g);
-
-            if(keys) {
-                for (let key of keys) {
-                    let cleanKey = key.replace('{{', '').replace('}}', '');
-                    let val = '';
-                    cleanKey.split('.').forEach(k => {
-                        val = (val == '') ?  params[k] : val[k];
-                    });
-
-                    template = template.replace(key, val);
-                }
-            }
-            return template;
-        };
+        this._abortController = new AbortController();
+        this._signal = this._abortController.signal;
     }
 
+    /**
+     * Dependencies of the InfiniteScroll component.
+     * @param value
+     */
     set infiniteScrollTemplate(value) {
         this._infiniteScrollTemplate = value;
     }
 
+    /**
+     * Getter for the infiniteScrollTemplate property.
+     * @returns {null}
+     */
     get infiniteScrollTemplate() {
         return this._infiniteScrollTemplate;
     }
 
+    /**
+     * Dependencies of the InfiniteScroll component.
+     * @param value
+     */
     set response(value) {
         this._response = value;
     }
 
+    /**
+     * Getter for the response property.
+     * @returns {*|{}}
+     */
     get response() {
         return this._response;
     }
 
+    /**
+     * Dependencies of the InfiniteScroll component.
+     * @param value
+     */
     set objectName(value) {
         this.setAttribute("object-name", value);
     }
 
     get objectName() {
-        return this.getAttribute("object-name") || "data";
+        return this.getAttribute("object-name") ?? "data";
     }
 
     className = "InfiniteScroll";
@@ -123,12 +121,20 @@ export default class InfiniteScroll extends WJElement {
      * @param {Object} store - The store for drawing.
      * @param {Object} params - The parameters for drawing.
      */
-    beforeDraw(context, store, params) {
+    beforeDraw() {
         this.iterate = this.querySelector("[iterate]");
         this.infiniteScrollTemplate = this.iterate?.outerHTML;
         this.iterate?.remove(); // remove template
 
         this.setAttribute("style", "height: " + this.height);
+
+
+        // if this._loading is not fulfilled then cancel the promise
+        if (this._signal) {
+            this._abortController.abort();
+            this._abortController = new AbortController();
+            this._signal = this._abortController.signal;
+        }
     }
 
     /**
@@ -139,7 +145,7 @@ export default class InfiniteScroll extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");
@@ -151,7 +157,7 @@ export default class InfiniteScroll extends WJElement {
         let ending = document.createElement("slot");
         ending.setAttribute("name", "ending");
 
-        if(WjElementUtils.hasSlot(this, "loader")) {
+        if (WjElementUtils.hasSlot(this, "loader")) {
             let loading = document.createElement("div");
             loading.classList.add("loading");
 
@@ -179,6 +185,9 @@ export default class InfiniteScroll extends WJElement {
 
     /**
      * Called after the component has been drawn.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     async afterDraw() {
         this.queryParams = this.queryParams || '';
@@ -186,7 +195,8 @@ export default class InfiniteScroll extends WJElement {
         this.currentPage = 0;
 
         this.scrollEvent();
-        await this.loadPages(this.currentPage);
+        this._loading = this.loadPages(this.currentPage);
+        await this._loading;
     }
 
     /**
@@ -208,12 +218,12 @@ export default class InfiniteScroll extends WJElement {
      *
      * @param {Event} e - The event.
      */
-    onScroll = (e)=> {
+    onScroll = (e) => {
         const { scrollTop, scrollHeight, clientHeight } = e.target;
 
         if (scrollTop + clientHeight >= scrollHeight - 300 && this.currentPage <= this.totalPages && this.isLoading.includes(this.currentPage)) {
             this.currentPage++;
-            this.loadPages(this.currentPage);
+            this._loading = this.loadPages(this.currentPage);
         }
     }
 
@@ -223,9 +233,12 @@ export default class InfiniteScroll extends WJElement {
      * @param {number} page - The page number.
      * @returns {Promise<Object>} The response from the server.
      */
-    async getPages(page){
+    async getPages(page) {
         let hasParams = this.url.includes('?');
-        const response = await fetch(`${this.url}${hasParams ? '&' : '?'}page=${page}&size=${this.size}${this?.queryParams}`);
+        const response = await fetch(`${this.url}${hasParams ? '&' : '?'}page=${page}&size=${this.size}${this?.queryParams}`, {
+            signal: this._signal
+        });
+
         if (!response.ok) {
             throw new Error(`An error occurred: ${response.status}`);
         }
@@ -235,14 +248,14 @@ export default class InfiniteScroll extends WJElement {
     /**
      * Hides the loader.
      */
-    hideLoader(){
+    hideLoader() {
         this?.loadingEl?.classList.remove('show');
     }
 
     /**
      * Shows the loader.
      */
-    showLoader(){
+    showLoader() {
         this?.loadingEl?.classList.add('show');
     }
 
@@ -252,7 +265,7 @@ export default class InfiniteScroll extends WJElement {
      * @param {number} page - The page number.
      * @returns {boolean} Whether there are more pages to load.
      */
-    hasMorePages(page){
+    hasMorePages(page) {
         return this.totalPages === 0 || page < this.totalPages;
     }
 
@@ -261,7 +274,7 @@ export default class InfiniteScroll extends WJElement {
      *
      * @param {number} page - The page number.
      */
-    async loadPages (page){
+    async loadPages(page) {
         this.showLoader();
         try {
             if (this.hasMorePages(page)) {
@@ -269,25 +282,25 @@ export default class InfiniteScroll extends WJElement {
                 this.parser = new DOMParser();
 
                 if (typeof this.setCustomData === "function") {
-                    response = await this.setCustomData(page);
+                    response = await this.setCustomData(page, this._signal);
                 } else {
                     response = await this.getPages(page);
                 }
 
-                this.totalPages = response.totalPages;
+                this.totalPages = response?.totalPages;
                 this.currentPage = page;
 
                 this.placementObj = this;
 
                 // if there is a "container" attribute, find the element
-                if(this.hasAttribute("placement"))
+                if (this.hasAttribute("placement"))
                     this.placementObj = this.querySelector(this.placement);
 
                 event.dispatchCustomEvent(this, "wje-infinite-scroll:load", response);
 
                 this.response = response;
 
-                this.customForeach(response[this.objectName]);
+                this.customForeach(this.objectName ? response[this.objectName] : response);
 
                 this.isLoading.push(page);
             } else {
@@ -295,7 +308,7 @@ export default class InfiniteScroll extends WJElement {
                 this.endingEl.classList.add("show");
             }
         } catch (error) {
-            console.log(error.message);
+            console.log(error);
         } finally {
             this.hideLoader();
         }
@@ -306,7 +319,7 @@ export default class InfiniteScroll extends WJElement {
      *
      */
     dataToHtml = (item) => {
-        let interpolateItem = this.infiniteScrollTemplate.interpolate(item);
+        let interpolateItem = this.interpolate(this.infiniteScrollTemplate, item);
         let doc = this.parser.parseFromString(interpolateItem, 'text/html');
         let element = doc.activeElement.firstElementChild;
 
@@ -321,4 +334,27 @@ export default class InfiniteScroll extends WJElement {
             this.placementObj.insertAdjacentElement("beforeend", element);
         });
     }
+
+    /**
+     * Interpolates the string.
+     * @param template
+     * @param {Object} params - The parameters for interpolation.
+     * @returns {string} The interpolated string.
+     */
+    interpolate = (template, params) => {
+        let keys = template.match(/\{{.*?\}}/g);
+
+        if (keys) {
+            for (let key of keys) {
+                let cleanKey = key.replace('{{', '').replace('}}', '');
+                let val = '';
+                cleanKey.split('.').forEach(k => {
+                    val = (val === '') ? params[k] : val[k];
+                });
+
+                template = template.replace(key, val);
+            }
+        }
+        return template;
+    };
 }

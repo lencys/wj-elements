@@ -152,7 +152,7 @@ export default class Slider extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("div");
@@ -211,6 +211,9 @@ export default class Slider extends WJElement {
 
     /**
      * Sets up the event listeners after the component is drawn.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         this.setHandlePosition();
@@ -252,14 +255,14 @@ export default class Slider extends WJElement {
      * Sets the handle position of the slider.
      */
     setHandlePosition = () => {
-        this.input.style.backgroundSize = this.getPercentage(this.input.value, this.input.min, this.input.max) + '% 100%';
+        this.input.style.backgroundSize = this.getPercentage(this.input.min, this.input.max, this.input.value) + '% 100%';
     }
 
     /**
      * Sets the bubble of the slider.
      */
     setBubble = () => {
-        let newValue = this.getPercentage(this.input.value, this.input.min, this.input.max);
+        let newValue = this.getPercentage(this.input.min, this.input.max, this.input.value);
         this.output.style.left = `calc(${newValue}% + (${8 - newValue * 0.15}px) - ${this.output.offsetWidth/2}px)`;
         this.output.innerHTML = this.input.value;
     }
@@ -272,7 +275,7 @@ export default class Slider extends WJElement {
      * @param {number} max - The maximum value of the slider.
      * @returns {number} The percentage of the slider value.
      */
-    getPercentage(value = 0, min, max) {
+    getPercentage(min, max, value = 0) {
         return Number((value - min) * 100 / (max - min)) || 0;
     }
 }

@@ -134,7 +134,7 @@ export default class MenuItem extends WJElement {
     /**
      * Removes the active attribute from the menu before drawing the MenuItem.
      */
-    beforeDraw(context, store, params) {
+    beforeDraw() {
         this.querySelector("wje-menu")?.removeAttribute("active");
     }
 
@@ -146,7 +146,7 @@ export default class MenuItem extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment} The fragment to be appended to the MenuItem.
      */
-    draw(context, store, params) {
+    draw() {
         this.hasSubmenu = WjElementUtils.hasSlot(this, "submenu");
 
         let fragment = document.createDocumentFragment();
@@ -180,7 +180,10 @@ export default class MenuItem extends WJElement {
         checkedIcon.classList.add("check-icon");
         checkedIcon.innerHTML = `<wje-icon name="check"></wje-icon>`;
 
-        (this.hasAttribute("checked")) ? checkedIcon.classList.add("checked") : checkedIcon.classList.remove("checked");
+        if(this.hasAttribute("checked"))
+            checkedIcon.classList.add("checked")
+        else
+            checkedIcon.classList.remove("checked");
 
         // SLOT - Start
         let start = document.createElement("slot");
@@ -207,7 +210,10 @@ export default class MenuItem extends WJElement {
         submenuIcon.classList.add("submenu-icon", submenuIconClass);
         submenuIcon.innerHTML = (this.collapse) ? `<wje-icon name="chevron-down"></wje-icon>` : `<wje-icon name="chevron-right"></wje-icon>`;
 
-        this.hasSubmenu ? native.classList.add("has-submenu") : native.classList.remove("has-submenu");
+        if(this.hasSubmenu)
+            native.classList.add("has-submenu")
+        else
+            native.classList.remove("has-submenu");
 
         native.appendChild(checkedIcon);
         native.appendChild(start);
@@ -251,6 +257,9 @@ export default class MenuItem extends WJElement {
 
     /**
      * Adds event listeners after drawing the MenuItem.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters
      */
     afterDraw() {
         this.addEventListener("mousemove", this.dispatchMove);
@@ -266,7 +275,7 @@ export default class MenuItem extends WJElement {
         event.addListener(this, "click", null, this.clickHandler);
     }
 
-    afterDisconnect() {
+    beforeDisconnect() {
         event.removeListener(this, "mousemove", null, this.dispatchMove);
         event.removeListener(this, "wje-popup:reposition", null, this.dispatchReposition);
         event.removeListener(this, "mouseenter", null, this.mouseenterHandler);
@@ -297,9 +306,7 @@ export default class MenuItem extends WJElement {
                     e.stopPropagation();
                 } else {
                     event.dispatchCustomEvent(this, "wje-menu-item:click");
-                    event.dispatchCustomEvent(this, this.dialog, {
-                        bubbles: true
-                    });
+                    event.dispatchCustomEvent(this, this.dialog);
                 }
                 break;
             case "CONTEXT":
@@ -313,9 +320,7 @@ export default class MenuItem extends WJElement {
                     }
                 } else {
                     event.dispatchCustomEvent(this, "wje-menu-item:click");
-                    event.dispatchCustomEvent(this, this.dialog, {
-                        bubbles: true
-                    });
+                    event.dispatchCustomEvent(this, this.dialog);
                 }
 
                 break;

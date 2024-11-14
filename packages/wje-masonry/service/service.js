@@ -1,7 +1,5 @@
 export const DEFAULT_MAX_COL_WIDTH = 500
-export const DEFAULT_COLS = "auto"
 export const DEFAULT_DEBOUNCE_MS = 300
-export const DEFAULT_GAP_PX = 24
 
 export const COL_COUNT_CSS_VAR_NAME = `--wje-masonry-layout-col-count`
 export const GAP_CSS_VAR_NAME = `--wje-masonry-layout-gap`
@@ -15,6 +13,7 @@ const DEBOUNCE_MAP = new Map()
  * @param $elem
  * @param name
  * @param defaultValue
+ * @returns {string|number}
  */
 export function getNumberAttribute($elem, name, defaultValue) {
   const value = parseFloat($elem.getAttribute(name) || "")
@@ -38,9 +37,9 @@ export function getColCount(totalWidth, cols, maxColWidth) {
  * @param id
  */
 export function debounce(cb, ms, id) {
-  const existingTimeout = DEBOUNCE_MAP.get(id)
-  if (existingTimeout != null) window.clearTimeout(existingTimeout)
-  DEBOUNCE_MAP.set(id, window.setTimeout(cb, ms))
+  const existingTimeout = DEBOUNCE_MAP.get(id);
+  if (existingTimeout !== null && existingTimeout !== undefined) window.clearTimeout(existingTimeout)
+  DEBOUNCE_MAP.set(id, window.setTimeout(cb, ms));
 }
 
 /**

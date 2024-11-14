@@ -56,7 +56,7 @@ export default class Badge extends WJElement {
      * @param {Object} params - The parameters
      * @returns {Object} fragment - The document fragment
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement('div');

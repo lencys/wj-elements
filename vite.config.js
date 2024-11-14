@@ -10,20 +10,19 @@ export default defineConfig(({ mode }) => {
     dotenv.config({ path: path.resolve(__dirname, `.env.${mode}`) });
 
     return {
-        // port to 5199
         server: {
             port: 5174,
             watch: {
                 paths: ['dist/**/*'],
-                ignored: ['!**/dist/**'],
-                usePolling: true, // Enable polling
-                interval: 100 // Polling interval in milliseconds
+                ignored: ['node_modules', 'dist', 'public'],
+                usePolling: true,
+                interval: 1000
             }
         },
         ...(mode === 'development' ? {
             define: {
-                'process.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL || 'http://localhost:3000'),
-                'process.env.VITE_ASSETS_URL': JSON.stringify(process.env.VITE_ASSETS_URL || 'http://localhost:3000/assets'),
+                'process.env.VITE_ICON_ASSETS_URL': JSON.stringify(process.env.VITE_ICON_ASSETS_URL || 'http://localhost:3000'),
+                'process.env.VITE_URL': JSON.stringify(process.env.VITE_URL || 'http://localhost:3000')
             },
         } : {}),
         base: '/',
@@ -36,27 +35,12 @@ export default defineConfig(({ mode }) => {
         },
         build: {
             assetsInlineLimit: 0,
-            minify: false,// 'terser',
-            // rollupOptions: {
-            //     plugins: [
-            //         terser({
-            //             compress: {
-            //                 drop_console: true, // Odstráň konzolové výpisy
-            //                 drop_debugger: true, // Odstráň debugger statements
-            //             },
-            //             format: {
-            //                 comments: false, // Odstráň komentáre
-            //             },
-            //             mangle: true,
-            //         })
-            //     ]
-            // },
-            sourcemap: false, //mode === 'production', // Enable source maps in production build
+            minify: false,
+            sourcemap: false,
             cssCodeSplit: true,
             outDir: './dist',
             lib: {
                 entry: {
-                    "orgchart-item": "packages/wje-orgchart-item/orgchart-item.js",
                     "master": "./packages/index.js",
                     "styles": "./packages/styles/styles.css",
                     "light": "./packages/themes/light.css",
@@ -107,6 +91,7 @@ export default defineConfig(({ mode }) => {
                     "input": "./packages/wje-input/input.js",
                     "input-file": "./packages/wje-input-file/input-file.js",
                     "item": "./packages/wje-item/item.js",
+                    "kanban": "./packages/wje-kanban/kanban.js",
                     "label": "./packages/wje-label/label.js",
                     "list": "./packages/wje-list/list.js",
                     "main": "./packages/wje-main/main.js",
@@ -118,7 +103,8 @@ export default defineConfig(({ mode }) => {
                     "option": "./packages/wje-option/option.js",
                     "options": "./packages/wje-options/options.js",
                     "orgchart": "packages/wje-orgchart/orgchart.js",
-                    "orgchartItem": "packages/wje-orgchart-item/orgchart-item.js",
+                    "orgchart-group": "packages/wje-orgchart-group/orgchart-group.js",
+                    "orgchart-item": "packages/wje-orgchart-item/orgchart-item.js",
                     "popup": "./packages/wje-popup/popup.js",
                     "progress-bar": "./packages/wje-progress-bar/progress-bar.js",
                     "qr-code": "./packages/wje-qr-code/qr-code.js",
@@ -140,6 +126,8 @@ export default defineConfig(({ mode }) => {
                     "sliding-container": "./experimental-packages/wje-sliding-container/sliding-container.js",
                     "split-view": "./packages/wje-split-view/split-view.js",
                     "status": "./packages/wje-status/status.js",
+                    "step": "./packages/wje-step/step.js",
+                    "stepper": "./packages/wje-stepper/stepper.js",
                     "tab": "./packages/wje-tab/tab.js",
                     "tab-group": "./packages/wje-tab-group/tab-group.js",
                     "tab-panel": "./packages/wje-tab-panel/tab-panel.js",
@@ -170,19 +158,7 @@ export default defineConfig(({ mode }) => {
                 'wje-master': path.resolve(__dirname, './dist/wje-master.js'),
                 './middlewares/router-links.js': 'slick-router/middlewares/router-links.js'
             },
-        },
-        // plugins: [
-        //     javascriptObfuscator({
-        //         compact: true,
-        //         controlFlowFlattening: true,
-        //         controlFlowFlatteningThreshold: 0.75,
-        //         numbersToExpressions: true,
-        //         simplify: true,
-        //         stringArrayShuffling: true,
-        //         splitStrings: true,
-        //         stringArrayThreshold: 0.75
-        //     }),
-        // ],
+        }
     }
 });
 

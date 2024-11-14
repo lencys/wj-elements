@@ -1,5 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -19,8 +19,6 @@ template.innerHTML = `<h1>Input</h1>
         <wje-input label="Default input" type="number" minlength="5" message="Toto je moja hlaska" required validate-on-change custom-error-display ></wje-input>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- INPUT -->
 
@@ -57,8 +55,6 @@ template.innerHTML = `<h1>Input</h1>
         </wje-grid>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- STANDARD -->
 
@@ -73,8 +69,6 @@ template.innerHTML = `<h1>Input</h1>
         <wje-input variant="standard" label="Default input" type="number" minlength="5" message="Toto je moja hlaska" required validate-on-change custom-error-display ></wje-input>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
 
     <!-- INPUT -->
 
@@ -112,8 +106,51 @@ template.innerHTML = `<h1>Input</h1>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-    
+    <!-- SELECT -->
+
+    <h2>Select</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-input variant="standard" label="Default input" class="example-select">
+          <wje-select variant="standard" placeholder="Select option" slot="start">
+            <wje-option value="option-1">
+              Option 1
+              <wje-icon name="sausage" slot="start"></wje-icon>
+            </wje-option>
+            <wje-option value="option-2">
+              Option 2
+              <wje-icon name="heart" slot="start"></wje-icon>
+            </wje-option>
+            <wje-option value="option-3" selected>
+              Option 3
+              <wje-icon name="star" slot="start"></wje-icon>
+            </wje-option>
+            <wje-option value="option-4">
+              Option 4
+              <wje-icon name="mushroom" slot="start"></wje-icon>
+            </wje-option>
+          </wje-select>
+        </wje-input>
+        <style>
+          .example-select {
+            --wje-input-slot-padding-inline: 0 !important;
+          }
+          
+          .example-select wje-select {
+            --wje-select-border-width: 0 !important;
+            --wje-select-border-radius: var(--wje-border-radius-large) !important;
+            &::part(input-wrapper) {
+              min-height: 26px;
+            }
+            &::part(options-wrapper) {
+              width: 100%;
+              margin-left: -1px;
+            }
+          }
+        </style>
+      </div>
+    </div>
+
     <!-- SEARCH -->
 
     <h2>Search</h2>
@@ -136,8 +173,6 @@ template.innerHTML = `<h1>Input</h1>
         </style>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- PICKERS -->
 
@@ -166,8 +201,6 @@ template.innerHTML = `<h1>Input</h1>
         </style>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- CLEARABLE -->
 
@@ -177,11 +210,9 @@ template.innerHTML = `<h1>Input</h1>
         <wje-input variant="standard" label="Default input" class="example" clearable></wje-input>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
+    <!--  VALIDATION IN FORM-->
     
-        <!--  VALIDATION IN FORM-->
     <h2>Validation in form</h2>
     <div class="playground">
       <div class="content">
@@ -198,8 +229,6 @@ template.innerHTML = `<h1>Input</h1>
         </form>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoInput extends WJElement {
@@ -235,7 +264,16 @@ export default class DemoInput extends WJElement {
 
     this.context.querySelector('#test-form').addEventListener('reset', (e) => {
       console.log('klikol som form reset', e)
-    })
+    });
+
+    // Ak chceme select v inpute
+    this.context.querySelector('.example-select wje-select').addEventListener('wje-popup:show', (e) => {
+      this.context.querySelector('.example-select').classList.add('options-show');
+    });
+
+    this.context.querySelector('.example-select wje-select').addEventListener('wje-popup:hide', (e) => {
+      this.context.querySelector('.example-select').classList.remove('options-show');
+    });
   }
 }
 

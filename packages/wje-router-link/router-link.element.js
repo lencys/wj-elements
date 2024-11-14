@@ -57,13 +57,12 @@ export default class RouterLink extends WJElement {
 
     /**
      * Draws the component.
-     *
      * @param {Object} context - The context for drawing.
      * @param {Object} store - The store for drawing.
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("slot");

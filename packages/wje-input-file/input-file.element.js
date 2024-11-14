@@ -74,7 +74,7 @@ export default class InputFile extends WJElement {
      * @param {Object} params - The parameters
      * @returns {Object} Document fragment
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         // Wrapper
@@ -118,6 +118,9 @@ export default class InputFile extends WJElement {
 
     /**
      * @summary After draw method
+     * @params {Object} context - The context
+     * @params {Object} store - The store
+     * @params {Object} params - The parameters
      */
     afterDraw() {
         this.input.addEventListener('click', () => {

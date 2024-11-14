@@ -1,5 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -22,8 +22,6 @@ template.innerHTML = `<style>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-    
     <!-- SLOTS -->
 
     <h2>Slots</h2>
@@ -36,8 +34,6 @@ template.innerHTML = `<style>
         </wje-status>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- SIZE -->
 
@@ -55,8 +51,6 @@ template.innerHTML = `<style>
         </wje-status>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
 
     <!-- TYPES -->
     
@@ -245,8 +239,6 @@ template.innerHTML = `<style>
         </wje-status>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoStatus extends WJElement {

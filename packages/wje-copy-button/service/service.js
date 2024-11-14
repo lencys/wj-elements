@@ -1,3 +1,8 @@
+/**
+ * Create a node with the text content
+ * @param text
+ * @returns {Element}
+ */
 function createNode(text) {
     const node = document.createElement("pre")
     node.style.width = "1px"
@@ -8,13 +13,18 @@ function createNode(text) {
     return node
 }
 
+/**
+ * Copy the node to the clipboard
+ * @param node
+ * @returns {Promise<never>|Promise<void>}
+ */
 export function copyNode(node) {
     if ("clipboard" in navigator) {
       return navigator.clipboard.writeText(node.textContent || "")
     }
 
-    const selection = getSelection()
-    if (selection == null) {
+    const selection = getSelection(); // Firefox return null
+    if (selection === null) {
       return Promise.reject(new Error())
     }
 
@@ -29,6 +39,11 @@ export function copyNode(node) {
     return Promise.resolve()
 }
 
+/**
+ * Copy the text to the clipboard
+ * @param text
+ * @returns {Promise<never>|Promise<void>}
+ */
 export function copyText(text) {
     if ("clipboard" in navigator) {
       return navigator.clipboard.writeText(text)

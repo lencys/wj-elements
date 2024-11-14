@@ -16,6 +16,9 @@
   --wje-select-color: var(--wje-color);
   --wje-select-border-radius: var(--wje-border-radius-medium);
 
+  --wje-select-margin-bottom: .5rem;
+  margin-bottom: var(--wje-select-margin-bottom);
+
   width: 100%;
   display: block;
   [slot=arrow] {
@@ -84,7 +87,7 @@
 
 .input-wrapper {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: auto 1fr auto auto auto;
   align-items: center;
   background-color: var(--wje-select-background);
   min-height: 28px;
@@ -133,8 +136,10 @@ input {
   border-style: var(--wje-select-options-border-style);
   border-color: var(--wje-select-options-border-color);
   border-radius: 0 0 var(--wje-select-border-radius) var(--wje-select-border-radius);
-  margin-top: -1px;
+  margin-top: calc(0px - var(--wje-select-border-width));
   background: var(--wje-select-background);
+  overflow: hidden;
+
 }
 
 .find {
@@ -188,4 +193,10 @@ wje-button {
   --wje-padding-end: .25rem;
   --wje-padding-bottom: .25rem;
   --wje-button-margin-inline: 0 .25rem;
+}
+
+.slot-start, .slot-end {
+  &:not(:empty) {
+    margin-right: .5rem;
+  }
 }

@@ -21,7 +21,7 @@ export default class Grid extends WJElement {
         this.isShadowRoot = "open";
     }
 
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("slot");

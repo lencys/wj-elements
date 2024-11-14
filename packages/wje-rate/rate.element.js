@@ -9,9 +9,15 @@ import styles from "./styles/styles.css?inline";
  *
  * @extends {WJElement}
  *
+ * @attribute {number} precision - The precision of the rating component.
+ * @attribute {number} max - The maximum value of the rating component.
+ * @attribute {Array<string>} icons - The icons of the rating component.
+ *
  * @part native - The native part of the rating component.
  *
  * @cssprop [--wje-rate-gap=.25rem;] - The gap of the rating component.
+ * @cssprop [--wje-rate-color=var(--wje-color-contrast-11)] - The color of the rating component.
+ * @cssprop [--wje-rate-selected-color=var(--wje-color-danger-9)] - The selected color of the rating component.
  *
  * @tag wje-rate
  */
@@ -147,7 +153,7 @@ export default class Rate extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");
@@ -176,6 +182,9 @@ export default class Rate extends WJElement {
 
     /**
      * Adds event listeners after the component is drawn.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         if(this.hasAttribute('disabled') || this.hasAttribute('readonly')) {
@@ -202,13 +211,10 @@ export default class Rate extends WJElement {
         div.classList.add("wje-rate-icon");
 
         let icon = this.getIcons(i);
+        let clone = icon.cloneNode(true);
 
         div.appendChild(icon);
-
-        if(this.value > i  && this.value < i + 1) {
-            let clone = icon.cloneNode(true);
-            div.appendChild(clone);
-        }
+        div.appendChild(clone);
 
         return div;
     }
@@ -220,27 +226,41 @@ export default class Rate extends WJElement {
         const icons = this.native.children;
         const rateValue = this.value !== this.hoverValue && this.hoverValue !== 0 && this.hoverValue !== undefined ? this.hoverValue : this.value;
 
-        for(let i = 0; i < icons.length; i++) {
-            icons[i].classList.remove("selected", "hovered");
+        for (let i = 0; i < icons.length; i++) {
+            const icon = icons[i];
+            const firstIcon = icon.querySelector("wje-icon:first-child");
+            const lastIcon = icon.querySelector("wje-icon:last-child");
 
-            if(icons[i].children.length > 1) {
-                icons[i].classList.remove("half");
-                icons[i].querySelector("wje-icon:first-child").removeAttribute("style");
-                icons[i].querySelector("wje-icon:last-child").remove();
+            const isSelected = i < rateValue;
+            const isPartial = rateValue > i && rateValue < i + 1;
+
+            if (isSelected) {
+                icon.classList.add("selected");
+                if (this.hasAttribute('selected') && this.getAttribute('selected') === 'filled') {
+                    lastIcon.setAttribute("filled", "");
+                }
+            } else {
+                icon.classList.remove("selected");
+                lastIcon.removeAttribute("filled");
             }
 
-            if (i < rateValue) {
-                icons[i].classList.add("selected");
-            }
-            if (rateValue > i  && rateValue < i + 1 && icons[i].children.length === 1) {
-                let clone = icons[i].querySelector("wje-icon").cloneNode(true);
-                icons[i].appendChild(clone);
-                let percent = (rateValue - i) * 100;
+            if (isPartial) {
+                const percent = ((rateValue - i) * 100).toFixed(2);
+                icon.classList.add("half");
 
-                icons[i].classList.add("half");
-                icons[i].querySelector("wje-icon:first-child").style.clipPath = `inset(0 0 0 ${percent}%)`;
-                icons[i].querySelector("wje-icon:last-child").style.clipPath = `inset(0 ${percent}% 0 0)`;
+                firstIcon.style.clipPath = `inset(0 0 0 ${percent}%)`;
+                lastIcon.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+
+                lastIcon.removeAttribute('hidden');
+            } else {
+                icon.classList.remove("half");
+                firstIcon.style.clipPath = ``;
+                lastIcon.style.clipPath = ``;
+                lastIcon.setAttribute('hidden', '');
             }
+
+            icon.setAttribute("data-index", i);
+            icon.setAttribute("data-rate", rateValue);
         }
     }
 
@@ -276,8 +296,8 @@ export default class Rate extends WJElement {
     onMouseMove = (e) => {
         e.preventDefault();
 
-        let newValue = this.getValueFromXPosition(e.clientX);
-        if(newValue != this.hoverValue) {
+        let newValue = +this.getValueFromXPosition(e.clientX);
+        if(newValue !== +this.hoverValue) {
             this.hoverValue = newValue;
             this.changeRate();
         }
@@ -339,6 +359,10 @@ export default class Rate extends WJElement {
     getIcons(index) {
         let icon = document.createElement("wje-icon");
         icon.setAttribute("name", this.max ? this.icons[0] : this.icons[index]);
+
+        if(this.hasAttribute('filled'))
+            icon.setAttribute('filled', '');
+
         return icon;
     }
 

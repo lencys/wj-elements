@@ -1,6 +1,22 @@
 import { default as WJElement } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
+/**
+ * `Reorder` is a custom web component that represents a reorder.
+ * It extends from `WJElement`.
+ * @summary This element represents a reorder.
+ * @documentation https://elements.webjet.sk/components/reorder
+ * @status stable
+ *
+ * @extends {WJElement}
+ *
+ * @csspart native - The native part of the reorder.
+ *
+ * @slot - The default slot for the reorder.
+ *
+ * @tag wje-reorder
+ */
+
 export default class Reorder extends WJElement {
   /**
    * Creates an instance of Select.
@@ -47,7 +63,14 @@ export default class Reorder extends WJElement {
     this.isShadowRoot = "open";
   }
 
-  draw(context, store, params) {
+  /**
+   * Draws the component.
+   * @param {Object} context - The context for drawing.
+   * @param {Object} store - The store for drawing.
+   * @param {Object} params - The parameters for drawing.
+   * @returns {DocumentFragment}
+   */
+  draw() {
     const fragment = document.createDocumentFragment();
 
     const container = document.createElement("div");
@@ -66,7 +89,13 @@ export default class Reorder extends WJElement {
     return fragment;
   }
 
-  afterDraw(context, store, params) {
+  /**
+   * Adds event listeners after the component is drawn.
+   * @param context
+   * @param store
+   * @param params
+   */
+  afterDraw() {
     const items = this.querySelectorAll("wje-reorder-item");
     const dropZones = this.querySelectorAll("wje-reorder-dropzone");
     this.container.classList.add(this.hasAttribute('reverse') ? "reversed" : "basic");
@@ -90,15 +119,20 @@ export default class Reorder extends WJElement {
     }
   }
 
+  /**
+   * Attaches event listeners to the element.
+   * @param element
+   */
   attachEventListeners(element) {
     element.addEventListener("mousedown", this.onMouseDown.bind(this), false);
     element.addEventListener("touchstart", this.onTouchStart.bind(this), false);
     element.addEventListener("dragstart", this.onDragStart.bind(this), false);
   }
 
-  /*Initialization of dragging
-  **********************************************************************************/
-
+  /**
+   * Handles the mouse down event.
+   * @param e
+   */
   onMouseDown(e) {
     this.startDragging(e.clientX, e.clientY, e.currentTarget);
     document.addEventListener("mousemove", this.onMouseMove.bind(this), false);
@@ -106,6 +140,10 @@ export default class Reorder extends WJElement {
     document.body.style.userSelect = "none"; 
   }
 
+  /**
+   * Handles the touch start event.
+   * @param e
+   */
   onTouchStart(e) {
     const touch = e.touches[0];
     this.startDragging(touch.clientX, touch.clientY, e.currentTarget);
@@ -114,6 +152,12 @@ export default class Reorder extends WJElement {
     document.body.style.userSelect = "none"; 
   }
 
+  /**
+   * Starts dragging the element.
+   * @param clientX
+   * @param clientY
+   * @param target
+   */
   startDragging(clientX, clientY, target) {
     if (this.hasAttribute("disabled")) {
       return;
@@ -136,9 +180,10 @@ export default class Reorder extends WJElement {
     this.originalParent = this.dragEl.parentNode;
   }
 
-  /*Initialization of movement
-  **********************************************************************************/
-
+  /**
+   * Handles the mouse move event.
+   * @param e
+   */
   onMouseMove(e) {
     if (!this.isDragging) return;
     this.moveElement(e.pageX, e.pageY);
@@ -149,12 +194,21 @@ export default class Reorder extends WJElement {
     }
   }
 
+  /**
+   * Handles the touch move event.
+   * @param e
+   */
   onTouchMove(e) {
     if (!this.isDragging) return;
     const touch = e.touches[0];
     this.moveElement(touch.pageX, touch.pageY);
   }
 
+  /**
+   * Moves the element.
+   * @param pageX
+   * @param pageY
+   */
   moveElement(pageX, pageY) {
     const scrollX = window.scrollX || document.documentElement.scrollLeft;
     const scrollY = window.scrollY || document.documentElement.scrollTop;
@@ -185,9 +239,9 @@ export default class Reorder extends WJElement {
     });
   }
 
-  /*End of dragging
-  **********************************************************************************/
-
+  /**
+   * Handles the mouse up event.
+   */
   onMouseUp() {
     this.stopDragging();
     document.removeEventListener("mousemove", this.onMouseMove.bind(this), false);
@@ -203,12 +257,18 @@ export default class Reorder extends WJElement {
     }
   }
 
+  /**
+   * Handles the touch end event.
+   */
   onTouchEnd() {
     this.stopDragging();
     document.removeEventListener("touchmove", this.onTouchMove.bind(this), false);
     document.removeEventListener("touchend", this.onTouchEnd.bind(this), false);
   }
 
+  /**
+   * Stops dragging the element.
+   */
   stopDragging() {
     if (!this.isDragging) return;
 
@@ -233,13 +293,17 @@ export default class Reorder extends WJElement {
     document.body.style.userSelect = ""; 
   }
 
+  /**
+   * Handles the drag start event.
+   * @param e
+   */
   onDragStart(e) {
     e.preventDefault();
   }
 
-  /*Helpers
-  **********************************************************************************/
-
+  /**
+   * Creates a clone of the element.
+   */
   createClone() {
     this.cloneEl = this.dragEl.cloneNode(true);
     this.cloneEl.style.position = "absolute";
@@ -249,6 +313,11 @@ export default class Reorder extends WJElement {
     document.body.appendChild(this.cloneEl);
   }
 
+  /**
+   * Checks if the dragged element is moving down.
+   * @param droppedElement
+   * @returns {boolean}
+   */
   isMovingDown(droppedElement) {
     const parent = droppedElement.parentNode;
     const dragIndex = Array.from(parent.children).indexOf(this.dragEl);
@@ -257,6 +326,12 @@ export default class Reorder extends WJElement {
     return dragIndex < dropIndex;
   }
 
+  /**
+   * Dispatches the change event.
+   * @param from
+   * @param to
+   * @param order
+   */
   dispatchChange(from, to, order) {
     console.log("FROM:", from);
     console.log("TO:", to);

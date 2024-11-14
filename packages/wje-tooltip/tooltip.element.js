@@ -76,7 +76,7 @@ export default class Tooltip extends WJElement {
      * @param {Object} params - The parameters
      * @returns {Object} Document fragment
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let popup = document.createElement("wje-popup");
@@ -127,6 +127,9 @@ export default class Tooltip extends WJElement {
 
     /**
      * @summary After draw method
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         let anchorEl = this.mySlot.assignedElements()[0];
@@ -155,7 +158,9 @@ export default class Tooltip extends WJElement {
         return this.native.innerHTML;
     }
 
-    afterShow() { }
+    afterShow() {
+        return true;
+    }
 
     /**
      * @summary Show tooltip

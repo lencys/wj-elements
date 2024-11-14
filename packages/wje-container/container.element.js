@@ -62,7 +62,7 @@ export default class Container extends WJElement {
      * @param {Object} params - The parameters to use.
      * @returns {DocumentFragment} The created document fragment.
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         if(this.indent)

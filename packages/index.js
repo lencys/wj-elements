@@ -1,6 +1,3 @@
-// import "./themes/light.scss";
-// import "./themes/dark.scss";
-// import "./styles/styles.css";
 import { default as WJElement } from "./wje-element/element.js";
 import { event } from "./utils/event.js";
 import { defaultStoreActions, store } from "./wje-store/store.js";
@@ -9,9 +6,10 @@ import { bindRouterLinks } from 'slick-router/middlewares/router-links.js'
 
 import { fetchAndParseCSS } from "./utils/animations.js";
 import { Localizer } from "./utils/localize.js";
+import { WjePermissionsApi } from "./utils/permissions-api.js";
 import { formatDate } from "./utils/date.js";
-import { sk } from "./translations/sk.js";
-import { en } from "./translations/en.js";
+import { skSk } from "./translations/sk-SK.js";
+import { enGb } from "./translations/en-GB.js";
 
 import { default as Accordion } from "./wje-accordion/accordion.js";
 import { default as AccordionItem } from "./wje-accordion-item/accordion-item.js";
@@ -54,6 +52,7 @@ import { default as InfiniteScroll } from "./wje-infinite-scroll/infinite-scroll
 import { default as Input } from "./wje-input/input.js";
 import { default as InputFile } from "./wje-input-file/input-file.js";
 import { default as Item } from "./wje-item/item.js";
+import { default as Kanban } from "./wje-kanban/kanban.js";
 import { default as Label } from "./wje-label/label.js";
 import { default as List } from "./wje-list/list.js";
 import { default as Main } from "./wje-main/main.js";
@@ -65,6 +64,7 @@ import { default as MenuLabel } from "./wje-menu-label/menu-label.js";
 import { default as Option } from "./wje-option/option.js";
 import { default as Options } from "./wje-options/options.js";
 import { default as Orgchart } from "./wje-orgchart/orgchart.js";
+import { default as OrgchartGroup } from "./wje-orgchart-group/orgchart-group.js";
 import { default as OrgchartItem } from "./wje-orgchart-item/orgchart-item.js";
 import { default as Popup } from "./wje-popup/popup.js";
 import { default as ProgressBar } from "./wje-progress-bar/progress-bar.js";
@@ -105,7 +105,7 @@ import { default as VisuallyHidden } from "./wje-visually-hidden/visually-hidden
 import { default as SlidingContainer } from "../experimental-packages/wje-sliding-container/sliding-container.js";
 
 export {
-  WJElement, defaultStoreActions, store, event, bindRouterLinks, fetchAndParseCSS, Localizer, formatDate,
+  WJElement, defaultStoreActions, store, event, bindRouterLinks, fetchAndParseCSS, Localizer, formatDate, WjePermissionsApi,
   Accordion,
   AccordionItem,
   Animation,
@@ -147,6 +147,7 @@ export {
   Input,
   InputFile,
   Item,
+  Kanban,
   Label,
   List,
   Main,
@@ -158,6 +159,7 @@ export {
   Option,
   Options,
   Orgchart,
+  OrgchartGroup,
   OrgchartItem,
   Popup,
   ProgressBar,

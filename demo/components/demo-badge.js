@@ -1,11 +1,10 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
 template.innerHTML = `<style>
     .content {
-      /*display: block;*/
       flex-direction: column;
       gap: .5rem;
     }
@@ -22,7 +21,6 @@ template.innerHTML = `<style>
         <wje-badge>8</wje-badge>
       </div>
     </div>
-    <div class="html-snippet"></div>
     
     <!-- LIST -->
 
@@ -41,7 +39,6 @@ template.innerHTML = `<style>
         </wje-list>
       </div>
     </div>
-    <div class="html-snippet"></div>
 
     <!-- COLORS -->
 
@@ -57,8 +54,7 @@ template.innerHTML = `<style>
         <wje-badge color="default">1000</wje-badge>
       </div>
     </div>
-    <div class="html-snippet"></div>
-    
+
     <!--  BACUSTOMSIC-->
 
     <h2>Custom</h2>
@@ -78,7 +74,6 @@ template.innerHTML = `<style>
        </style>
       </div>
     </div>
-    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoBadge extends WJElement {

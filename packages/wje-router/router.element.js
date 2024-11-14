@@ -43,6 +43,9 @@ export default class Routerx extends WJElement {
 
     /**
      * Sets up the router after the component is drawn.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         const htmlString = this.outerHTML;
@@ -56,7 +59,7 @@ export default class Routerx extends WJElement {
         this.router = new Router({
             outlet: this.outlet || "wje-router-outlet",
             log: false,
-            logError: false,
+            logError: true,
             root: this.root || "/",
             pushState: true,
         });
@@ -85,10 +88,11 @@ export default class Routerx extends WJElement {
             const attributeValue = attributes[i].value;
 
             if (attributeName === 'component' && attributeValue.indexOf(".js") > -1) {
-                obj.component = () => import(/* @vite-ignore */ attributeValue); // lazy loading component
+                obj.component = () => import(/*vite-ignore*/attributeValue); // lazy loading component
             } else {
                 if (attributeName !== 'shadow') {
-                    obj[attributeName] = attributeValue;
+                    const camelCase = attributeName.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+                    obj[camelCase] = attributeValue;
                 }
             }
         }
@@ -111,7 +115,6 @@ export default class Routerx extends WJElement {
 
     /**
      * Sets the breadcrumb for the transition.
-     *
      * @param {Object} transition - The transition.
      */
     setBreadcrumb = (transition) => {
@@ -130,6 +133,10 @@ export default class Routerx extends WJElement {
 
         transition.breadcrumbs = breadcrumb;
     }
+
+    setRouteParamsToStore(transition) {
+        this.store.dispatch(this.defaultStoreActions.addAction('params')(transition.params));
+    };
 
     /**
      * Resets the scroll position.

@@ -50,7 +50,6 @@ export default class Dropdown extends WJElement {
 
     /**
      * Callback function to handle other dropdowns being opened. Close the dropdown if it is not the target and collapse is enabled.
-     *
      * @param {Event} e - The event object.
      */
     otherDropdownOpennedCallback = (e) => {
@@ -60,16 +59,29 @@ export default class Dropdown extends WJElement {
         }
     };
 
+    /**
+     * Sets up the attributes for the dropdown.
+     */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
+    /**
+     * Removes the popup element.
+     */
     beforeDraw() {
         this.popup?.remove()
         this.popup = null;
     }
 
-    draw(context, store, params) {
+    /**
+     * Draws the dropdown element.
+     * @params {Object} context - The context to draw in.
+     * @params {Object} store - The store to use.
+     * @params {Object} params - The parameters to use.
+     * @returns {DocumentFragment}
+     */
+    draw() {
         let fragment = document.createDocumentFragment();
 
         this.classList.add(
@@ -116,12 +128,15 @@ export default class Dropdown extends WJElement {
         event.removeListener(this.anchorSlot, "click", null, this.toggleCallback, { capture: true });
     }
 
+    /**
+     * Adds event listeners for the mouseenter and mouseleave events.
+     */
     afterDraw() {
         event.addListener(this, "wje-popup:hide", null, () => {
             this.classList.remove("active");
         });
 
-        if (this.trigger != "click") {
+        if (this.trigger !== "click") {
             event.addListener(this, "mouseenter", null, this.onOpen);
             event.addListener(this, "mouseleave", null, this.onClose);
         } else {
@@ -144,7 +159,9 @@ export default class Dropdown extends WJElement {
     /**
      * This method is called after the dropdown is shown.
      */
-    afterShow() { }
+    afterShow() {
+        // Do nothing
+    }
 
     /**
      * @summary Toggles the dropdown element between active and inactive states.
@@ -166,7 +183,7 @@ export default class Dropdown extends WJElement {
      * @summary Open the popup
      * @param e
      */
-    onOpen = async (e) => {
+    onOpen = (e) => {
         e.stopPropagation();
 
         this.classList.add("active");
@@ -198,7 +215,7 @@ export default class Dropdown extends WJElement {
      * @summary Close the popup
      * @param e
      */
-    onClose = async (e) => {
+    onClose = (e) => {
 
         this.classList.remove("active");
         this.popup.hide(); // Now close the popup

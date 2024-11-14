@@ -1,4 +1,4 @@
-import {default as WJElement, event} from "../wje-element/element.js";
+import { default as WJElement, event } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**
@@ -9,9 +9,9 @@ import styles from "./styles/styles.css?inline";
  * @extends WJElement
  *
  * @csspart native - The native part.
+ * @csspart wrapper - The wrapper part.
  * @csspart input - The input part.
  * @csspart clear - The clear part.
- *
  *
  * @slot start - Slot for content at the start of the input.
  * @slot end - Slot for content at the end of the input.
@@ -43,6 +43,21 @@ export default class Input extends WJElement {
         this.invalid = false;
         this.pristine = true;
         this.internals = this.attachInternals();
+
+        // Create a mutation observer instance to watch for changes in attributes
+        this.observer = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
+                if (mutation.type === 'attributes') {
+                    const attributeName = mutation.attributeName;
+                    const oldValue = mutation.oldValue;
+                    const newValue = this.getAttribute(attributeName);
+
+                    console.log(`Attribute ${attributeName} changed from ${oldValue} to ${newValue}`);
+                }
+            });
+
+            this.refresh();
+        });
     }
 
     /**
@@ -54,6 +69,9 @@ export default class Input extends WJElement {
 
         if (this.input)
             this.input.value = value;
+
+        this.pristine = false;
+        this._value = value;
     }
 
     /**
@@ -61,7 +79,7 @@ export default class Input extends WJElement {
      * @returns {string} The value of the attribute.
      */
     get value() {
-        return this.input?.value || "";
+        return this.input?.value ?? this._value ?? "";
     }
 
     /**
@@ -93,7 +111,10 @@ export default class Input extends WJElement {
      * @param {boolean} isInvalid - Whether the input is invalid.
      */
     set invalid(isInvalid) {
-        isInvalid ? this.setAttribute('invalid', '') : this.removeAttribute('invalid');
+        if(isInvalid)
+            this.setAttribute('invalid', '')
+        else
+            this.removeAttribute('invalid');
     }
 
     /**
@@ -184,7 +205,8 @@ export default class Input extends WJElement {
      * @returns {Array} The attributes to observe for changes.
      */
     static get observedAttributes() {
-        return ["value"];
+        // observe any change in all attributes
+        
     }
 
     /**
@@ -198,7 +220,16 @@ export default class Input extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = "open";
-        this.value = this.defaultValue;
+        // if some value was set via value setter then dont use default value 
+        if (this.pristine) {
+            this.value = this.defaultValue;
+            this.pristine = false;
+        }
+    }
+
+
+    beforeDraw() {
+        this.observer.disconnect();
     }
 
     /**
@@ -208,7 +239,7 @@ export default class Input extends WJElement {
      * @param {Object} params - The parameters to use.
      * @returns {DocumentFragment} The drawn input.
      */
-    draw(context, store, params) {
+    draw() {
         let hasSlotStart = this.hasSlot(this, "start");
         let hasSlotEnd = this.hasSlot(this, "end");
         let hasSlotError = this.hasSlot(this, "error");
@@ -225,9 +256,8 @@ export default class Input extends WJElement {
         let wrapper = document.createElement("div");
         wrapper.classList.add("wrapper");
 
-
-
         let inputWrapper = document.createElement("div");
+        inputWrapper.setAttribute("part", "wrapper");
         inputWrapper.classList.add("input-wrapper");
 
         // Label
@@ -243,7 +273,7 @@ export default class Input extends WJElement {
         input.setAttribute("value", this.value || "");
         input.classList.add("form-control");
 
-        const attributes = ["placeholder", "multiple", "disabled", "readonly", "maxlength", "max", "min"];
+        const attributes = Array.from(this.attributes).map(attr => attr.name);
 
         attributes.forEach(attr => {
             if (this.hasAttribute(attr)) {
@@ -261,7 +291,7 @@ export default class Input extends WJElement {
             errorSlot = document.createElement("slot");
             errorSlot.setAttribute("name", "error");
 
-            if(this.hasAttribute('error-inline')){
+            if (this.hasAttribute('error-inline')) {
                 // inline version of error message
                 native.appendChild(errorSlot);
             } else {
@@ -333,25 +363,11 @@ export default class Input extends WJElement {
 
     /**
      * Runs after the input is drawn.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
-        [
-            'type',
-            'value',
-            'placeholder',
-            'required',
-            'min',
-            'max',
-            'minLength',
-            'maxLength',
-            'pattern'
-        ].forEach((attr) => {
-            const attrValue = attr === 'required' ? this.hasAttribute(attr) : this.getAttribute(attr);
-            if (attrValue !== null && attrValue !== undefined) {
-                this.input[attr] = attrValue;
-            }
-        });
-
         this.input.addEventListener("focus", (e) => {
             this.labelElement.classList.add("fade");
             this.native.classList.add("focused");
@@ -405,6 +421,15 @@ export default class Input extends WJElement {
         }
 
         this.validateInput();
+
+        this.observer.observe(this, {
+            attributes: true, // Watch for attribute changes
+            attributeOldValue: true // Keep track of the old value of attributes
+        });
+    }
+
+    componentCleanup() {
+        this.observer.disconnect();
     }
 
     /**
@@ -419,7 +444,7 @@ export default class Input extends WJElement {
             const slot = this.querySelector("[slot='error']");
             let errorMessage = slot.querySelector("[error-message]");
 
-            if(!errorMessage){
+            if (!errorMessage) {
                 const error = document.createElement("div");
                 error.setAttribute("error-message", "");
                 slot.appendChild(error);
@@ -457,7 +482,7 @@ export default class Input extends WJElement {
                         errorMessage = this.hasAttribute(attr) ? this.getAttribute(attr) : this.input.validationMessage;
 
                     this.internals.setValidity(
-                        {[this.validationError]: true},
+                        { [this.validationError]: true },
                         errorMessage
                     );
                 }
@@ -498,7 +523,7 @@ export default class Input extends WJElement {
      * @param {HTMLFormElement} form - The form the custom element is associated with.
      */
     formAssociatedCallback(form) {
-        form.addEventListener('submit', () => {
+        form?.addEventListener('submit', () => {
             this.validateInput();
             this.propagateValidation();
         });
@@ -559,5 +584,9 @@ export default class Input extends WJElement {
      */
     formDisabledCallback(disabled) {
         console.warn('formDisabledCallback not implemented yet')
+    }
+
+    dispatchEvent(e) {
+        return false;
     }
 }

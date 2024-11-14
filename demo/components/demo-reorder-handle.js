@@ -1,5 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement("template");
 
@@ -53,8 +53,6 @@ template.innerHTML = `
             </div>
         </div>
 
-        <div class="html-snippet"></div>
-        
         <!-- PARENT -->
         
         <h2>Parent</h2>
@@ -101,8 +99,6 @@ template.innerHTML = `
             </div>
         </div>
 
-        <div class="html-snippet"></div>
-
         <!-- NO DEFINED DROPZONE -->
         
         <h2>No defined dropzone (menu usage)</h2>
@@ -125,8 +121,6 @@ template.innerHTML = `
                 </wje-menu>
             </div>
         </div>
-
-        <div class="html-snippet"></div>
     </div>
 `;
 

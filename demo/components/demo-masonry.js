@@ -1,5 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -21,8 +21,6 @@ template.innerHTML = `<h1>Masonry</h1>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-    
     <!-- MAXCOLWIDTH -->
 
     <h2>Max col width</h2>
@@ -39,8 +37,6 @@ template.innerHTML = `<h1>Masonry</h1>
         </wje-masonry>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- GAP -->
 
@@ -62,93 +58,6 @@ template.innerHTML = `<h1>Masonry</h1>
         </style>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
-
-    <h3>Javascript</h3>
-    <pre>
-      <code>
-        onSlotChange = () => {
-          const $unsetElements = (this.unsetSlot.assignedNodes() || []).filter(node => node.nodeType === ELEMENT_NODE_TYPE);
-          if ($unsetElements.length > 0) {
-              this.layout();
-          }
-        }
-
-        onResize = (entries) => {
-            const { width } = entries != null && Array.isArray(entries) && entries.length > 0 ? entries[0].contentRect : { width: this.offsetWidth };
-            const colCount = getColCount(width, this.cols, this.maxColWidth);
-
-            if (colCount !== this.columns.length) {
-                this.scheduleLayout();
-            }
-        }
-
-        renderCols (colCount) {
-            const columns = this.columns;
-
-            if (columns.length === colCount) {
-                return;
-            }
-
-            for (const column of columns) {
-                column.parentNode && column.parentNode.removeChild(column);
-            }
-
-            for (let i = 0; i < colCount; i++) {
-                const column = document.createElement("div");
-                column.classList.add('column');
-
-                const slot = document.createElement("slot");
-                slot.setAttribute('name', i);
-
-                column.appendChild(slot);
-
-                this.context.appendChild(column);
-            }
-
-            this.style.setProperty(COL_COUNT_CSS_VAR_NAME, colCount);
-        }
-        
-        scheduleLayout (ms = this.debounce) {
-            debounce(this.layout, ms, this.debounceId);
-        }
-
-        layout = () => {
-            if (this.currentRequestAnimationFrameCallback != null) {
-                window.cancelAnimationFrame(this.currentRequestAnimationFrameCallback);
-            }
-
-            this.currentRequestAnimationFrameCallback = requestAnimationFrame(() => {
-                const gap = this.gap;
-                const $elements = Array.from(this.children).filter(node => node.nodeType === ELEMENT_NODE_TYPE);
-                const colCount = getColCount(this.offsetWidth, this.cols, this.maxColWidth);
-                const colHeights = Array(colCount).fill(0);
-                const writes = [];
-
-                for (const elem of $elements) {
-                    const height = elem.getBoundingClientRect().height;
-                    let smallestColIndex = findSmallestColIndex(colHeights);
-
-                    colHeights[smallestColIndex] += height + +gap;
-
-                    const newSlot = smallestColIndex;
-
-                    if (elem.slot !== newSlot) {
-                        writes.push(() => (elem.slot = newSlot));
-                    }
-                }
-
-                for (const write of writes) {
-                    write();
-                }
-
-                this.renderCols(colCount);
-            });
-        }
-      </code>
-    </pre>
-
   </div>
 <style>
   .example div {

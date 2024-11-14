@@ -1,7 +1,7 @@
 import { Localizer } from "../utils/localize.js";
 
-export const en = {
-  code: 'en',
+export const enGb = {
+  code: 'en-gb',
   name: 'English',
   dir: 'ltr',
 
@@ -10,8 +10,9 @@ export const en = {
   "wj.file.upload.uploaded": "Uploaded: ",
   "wj.file.upload.from": "from",
   "wj.stepper.button.next": "Next",
+  "wj.stepper.button.finish": "Finish",
   "wj.stepper.button.previous": "Previous",
   "wj.stepper.step": "Step",
 };
 
-Localizer.registerTranslation(en);
+Localizer.registerTranslation(enGb);

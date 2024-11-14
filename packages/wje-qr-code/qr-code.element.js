@@ -30,7 +30,7 @@ export default class QrCode extends WJElement {
     ];
   }
 
-  draw(context, store, params) {
+  draw() {
     let fragment = document.createDocumentFragment();
 
     let wrapper = document.createElement("div");
@@ -55,7 +55,7 @@ export default class QrCode extends WJElement {
     return fragment;
   }
 
-  afterDraw(context, store, params) {
+  afterDraw() {
     const canvas = this.shadowRoot.querySelector("canvas");
     const qrOptions = {};
 

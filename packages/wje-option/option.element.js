@@ -16,7 +16,7 @@ import styles from "./styles/styles.css?inline";
  * @slot - The default slot for the option.
  * @slot end - The slot for the end of the option.
  *
- * @fires wje:option-change - Event fired when the option is clicked.
+ * @fires wje-option:change - Event fired when the option is clicked.
  *
  * @tag wje-option
  */
@@ -39,16 +39,17 @@ export default class Option extends WJElement {
 
     /**
      * Sets the selected attribute of the option.
-     *
      * @param {boolean} value - The value to set.
      */
     set selected(value) {
-        return value ? this.setAttribute("selected", "") : this.removeAttribute("selected");
+        if(value)
+            this.setAttribute("selected", "")
+        else
+            this.removeAttribute("selected");
     }
 
     /**
      * Sets the value attribute of the option.
-     *
      * @param {string} value - The value to set.
      */
     set value(value) {
@@ -101,7 +102,7 @@ export default class Option extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("div");
@@ -131,8 +132,22 @@ export default class Option extends WJElement {
 
     /**
      * Adds event listeners after the component is drawn.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
-        event.addListener(this, "click", "wje:option-change");
+        event.addListener(this, "click", null, (e, b, c) => {
+            if (this.hasAttribute('disabled')) return;
+
+            this.dispatchEvent(new CustomEvent("wje-option:change", {
+                bubbles: true,
+                composed: true,
+                detail: {
+                    value: this.value,
+                    text: this.text
+                }
+            }));
+        });
     }
 }

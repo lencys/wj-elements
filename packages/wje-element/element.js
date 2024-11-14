@@ -8,6 +8,11 @@ const template = document.createElement('template');
 template.innerHTML = ``;
 
 export default class WJElement extends HTMLElement {
+	/**
+	 * Initializes a new instance of the WJElement class.
+	 *
+	 * @param {HTMLTemplateElement} [componentTemplate] - The template to use for this component.
+	 */
 	constructor(componentTemplate) {
 		super();
 
@@ -20,44 +25,102 @@ export default class WJElement extends HTMLElement {
 
 		// definujeme vsetky zavislosti.
 		// Do zavislosti patria len komponenty, ktore su zavisle od ktoreho je zavisly tento komponent
-		this.definedependencies();
+		this.defineDependencies();
 
 		this.rendering = false;
-		this.runtimeTimeout = null;
-		this.count = 0;
-		this.functionStack = [];
-		this.scheludedRefresh = false;
 		this._dependencies = {};
+
+		/**
+		 * @typedef {CREATED | ATTACHED | BEGINING | START | DRAWING | DONE | DISCONNECTED} DrawingStatus
+		 * @property {number} CREATED - The component has been created.
+		 * @property {number} ATTACHED - The component has been attached to the DOM.
+		 * @property {number} BEGINING - The component is beginning to draw.
+		 * @property {number} START - The component has started drawing.
+		 * @property {number} DRAWING - The component is drawing.
+		 * @property {number} DONE - The component has finished drawing.
+		 * @property {number} DISCONNECTED - The component has been disconnected from the DOM.
+		 */
+		this.drawingStatuses = {
+			CREATED: 0,
+			ATTACHED: 1,
+			BEGINING: 2,
+			START: 3,
+			DRAWING: 4,
+			DONE: 5,
+			DISCONNECTED: 6
+		}
+
+		this.drawingStatus = this.drawingStatuses.CREATED;
 	}
 
+	/**
+	 * Gets the value of the 'permission-check' attribute.
+	 *
+	 * @return {string|null} The value of the 'permission-check' attribute or null if not set.
+	 */
 	get permission() {
 		return this.getAttribute('permission-check');
 	}
 
-	get isPermissionCheck() {
-		return this.hasAttribute('permission-check');
-	}
-
+	/**
+	 * Sets the 'permission-check' attribute.
+	 *
+	 * @param {string} shadow - The value to set for the 'permission-check' attribute.
+	 */
 	set isPermissionCheck(shadow) {
 		return this.setAttribute('permission-check', 'permission-check');
 	}
 
+	/**
+	 * Checks if the 'permission-check' attribute is present.
+	 *
+	 * @return {boolean} True if the 'permission-check' attribute is present.
+	 */
+	get isPermissionCheck() {
+		return this.hasAttribute('permission-check');
+	}
+
+	/**
+	 * Checks if the 'show' attribute is present.
+	 *
+	 * @return {boolean} True if the 'show' attribute is present.
+	 */
 	get isShow() {
 		return this.hasAttribute('show');
 	}
 
+	/**
+	 * Sets the 'shadow' attribute.
+	 *
+	 * @param {string} shadow - The value to set for the 'shadow' attribute.
+	 */
+	set isShadowRoot(value) {
+		return this.setAttribute('shadow', value);
+	}
+
+	/**
+	 * Checks if the 'shadow' attribute is present.
+	 *
+	 * @return {boolean} True if the 'shadow' attribute is present.
+	 */
 	get isShadowRoot() {
 		return this.hasAttribute('shadow');
 	}
 
-	set isShadowRoot(shadow) {
-		return this.setAttribute('shadow', shadow);
-	}
-
+	/**
+	 * Gets the value of the 'shadow' attribute or 'open' if not set.
+	 *
+	 * @return {string} The value of the 'shadow' attribute or 'open'.
+	 */
 	get shadowType() {
 		return this.getAttribute('shadow') || 'open';
 	}
 
+	/**
+	 * Gets the rendering context, either the shadow root or the component itself.
+	 *
+	 * @return {HTMLElement|ShadowRoot} The rendering context.
+	 */
 	get context() {
 		if (this.isShadowRoot) {
 			return this.shadowRoot;
@@ -66,73 +129,130 @@ export default class WJElement extends HTMLElement {
 		}
 	}
 
+	/**
+	 * Gets the store instance.
+	 *
+	 * @return {Object} The store instance.
+	 */
 	get store() {
 		return store;
 	}
 
-	// addAction,
-	// deleteAction,
-	// loadAction,
-	// updateAction,
-	// addManyAction
-
 	/**
 	 * @typedef {Object} ArrayActions
-	 * @property {function} addAction - Indicates whether the Courage component is present.
-	 * @property {function} deleteAction - Indicates whether the Power component is present.
-	 * @property {function} loadAction - Indicates whether the Wisdom component is present.
-	 * @property {function} updateAction - Indicates whether the Wisdom component is present.
+	 * @property {function} addAction - Adds an item to the array.
+	 * @property {function} deleteAction - Deletes an item from the array.
+	 * @property {function} loadAction - Loads an array.
+	 * @property {function} updateAction - Updates an item in the array.
+	 * @property {function} addManyAction - Adds many items to the array.
 	 */
 
 	/**
 	 * @typedef {Object} ObjectActions
-	 * @property {function} addAction - Indicates whether the Courage component is present.
-	 * @property {function} deleteAction - Indicates whether the Power component is present.
-	 * @property {function} updateAction - Indicates whether the Wisdom component is present.
+	 * @property {function} addAction - Replace old object with new object
+	 * @property {function} deleteAction - Delete item based on key
+	 * @property {function} updateAction - Update item based on key
 	 */
 
 	/**
-	 * @return {ArrayActions, ObjectActions}
+	 * Gets the default store actions.
+	 *
+	 * @return {ArrayActions|ObjectActions} The default store actions.
 	 */
 	get defaultStoreActions() {
 		return defaultStoreActions;
 	}
 
+	/**
+	 * Gets the classes to be removed after the component is connected.
+	 *
+	 * @return {Array<string>} An array of class names to remove.
+	 */
 	get removeClassAfterConnect() {
 		return this.getAttribute('remove-class-after-connect')?.split(' ');
 	}
 
-	get dependencies() {
-		return this._dependencies;
-	}
-
+	/**
+	 * Sets the component dependencies.
+	 *
+	 * @param {Object} value - The dependencies to set.
+	 */
 	set dependencies(value) {
 		this._dependencies = value;
 	};
 
-	static processTemplates = (pTemplate, template) => {
+	/**
+	 * Gets the component dependencies.
+	 *
+	 * @return {Object} The dependencies.
+	 */
+	get dependencies() {
+		return this._dependencies;
+	}
+
+	/**
+	 * Processes and combines two templates into one.
+	 *
+	 * @param {HTMLTemplateElement} pTemplate - The primary template.
+	 * @param {HTMLTemplateElement|null} inputTemplate - The secondary template.
+	 * @return {HTMLTemplateElement} The combined template.
+	 */
+	static processTemplates = (pTemplate, inputTemplate) => {
 		const newTemplate = document.createElement('template');
-		newTemplate.innerHTML = [template.innerHTML, pTemplate?.innerHTML || ''].join('');
+		newTemplate.innerHTML = [inputTemplate.innerHTML, pTemplate?.innerHTML || ''].join('');
 		return newTemplate;
 	};
 
+	/**
+	 * Defines a custom element if not already defined.
+	 *
+	 * @param {string} name - The name of the custom element.
+	 * @param {WJElement} [elementConstructor=this] - The element constructor.
+	 * @param {Object} [options={}] - Additional options for defining the element.
+	 */
 	static define(name, elementConstructor = this, options = {}) {
 		const definedElement = customElements.get(name);
+
 		if (!definedElement) {
 			customElements.define(name, elementConstructor, options);
-			return;
+
 		}
 	}
 
-	definedependencies() {
+	/**
+	 * Defines component dependencies by registering custom elements.
+	 */
+	defineDependencies() {
 		if (this.dependencies)
-			Object.entries(dependencies).forEach((name, component) => WJElement.define(name, component))
+			Object.entries(this.dependencies).forEach((name, component) => WJElement.define(name, component))
 	}
 
-	beforeDraw() { }
 
-	afterDraw() { }
+	/**
+	 * Hook for extending behavior before drawing the component.
+	 *
+	 * @param {HTMLElement} context - The rendering context.
+	 * @param {Object} store - The store instance.
+	 * @param {Object} attributes - The component attributes.
+	 */
+	beforeDraw(context, appStore, attributes) {
+		// Hook for extending behavior before drawing
+	}
 
+	/**
+	 * Hook for extending behavior after drawing the component.
+	 *
+	 * @param {HTMLElement} context - The rendering context.
+	 * @param {Object} store - The store instance.
+	 * @param {Object} attributes - The component attributes.
+	 */
+	afterDraw(context, appStore, attributes) {
+		// Hook for extending behavior after drawing
+	}
+
+	/**
+	 * Refreshes the update promise for rendering lifecycle management.
+	 */
 	refreshUpdatePromise() {
 		this.updateComplete = new Promise((resolve, reject) => {
 			this.finisPromise = resolve;
@@ -140,7 +260,11 @@ export default class WJElement extends HTMLElement {
 		});
 	}
 
-	async connectedCallback() {
+	/**
+	 * Lifecycle method invoked when the component is connected to the DOM.
+	 */
+	connectedCallback() {
+		this.drawingStatus = this.drawingStatuses.ATTACHED;
 
 		// RHR toto sa tiež týka slick routeru pretože on začal routovanie ešte pred vykreslením wjelementu
 		this.finisPromise = (resolve) => {
@@ -151,64 +275,47 @@ export default class WJElement extends HTMLElement {
 		};
 		this.refreshUpdatePromise();
 
-
-		await this.initWjElement(true);
-		// TODO experiment�lne posielanie funkcii cez custom attributy
-		// Object.defineProperty(this._attributes, sanitizedName, {
-		//     set: (value) => this.setAttribute(name, value),
-		//     get: _ => {
-		//         return this.getAttribute(name)
-		//     }
-		// })
+		this.renderPromise = this.initWjElement(true)
 	}
 
-	initWjElement = async (force = false) => {
-		this.functionStack = [];
+	/**
+	 * Initializes the component, setting up attributes and rendering.
+	 *
+	 * @param {boolean} [force=false] - Whether to force initialization.
+	 * @return {Promise<void>} A promise that resolves when initialization is complete.
+	 */
+	initWjElement = (force = false) => {
+		return new Promise(async (resolve, reject) => {
+			this.drawingStatus = this.drawingStatuses.BEGINING
 
-		const processId = Date.now();
-		this.functionStack.push(processId);
+			this.setupAttributes?.();
+			if (this.isShadowRoot) {
+				if (!this.shadowRoot)
+					this.attachShadow({ mode: this.shadowType || 'open' });
+			}
 
-		this.setupAttributes?.();
-		if (this.isShadowRoot) {
-			!this.shadowRoot && this.attachShadow({ mode: this.shadowType || 'open' });
-		}
+			this.setUpAccessors();
 
-		// if (this.constructor.CSS) {
-		//     let stylesToAdopt = this.constructor.CSS()
-		//     if (Array.isArray(stylesToAdopt)) {
-		//
-		//         await Promise.all(stylesToAdopt.map(path => {
-		//             return WjImport.call(this, path)
-		//         })).then()
-		//
-		//     } else {
-		//         WjImport.call(this, stylesToAdopt)
-		//     }
-		// }
+			this.drawingStatus = this.drawingStatuses.START;
+			await this.display(force);
 
-		this.setUpAccessors();
+			const sheet = new CSSStyleSheet();
+			sheet.replaceSync(this.constructor.cssStyleSheet);
 
-		this.drawingStatus = 'BEGINING';
+			this.context.adoptedStyleSheets = [sheet];
 
-		this.display(force, processId);
-
-		const sheet = new CSSStyleSheet();
-		sheet.replaceSync(this.constructor.cssStyleSheet);
-
-		this.context.adoptedStyleSheets = [sheet];
-
-		// RHR - zatial zakomentované pokiaľ by to pokazilo niečo iné
-		// for (let i = 0; i < this.childNodes.length; i++) {
-		//     let child = this.childNodes[i];
-		//     this.append(child);
-		// }
+			resolve();
+		})
 	};
 
+	/**
+	 * Sets up attributes and event listeners for the component.
+	 */
 	setupAttributes() {
 		// Keď neaký element si zadefinuje funkciu "setupAttributes" tak sa obsah tejto funkcie nezavolá
 
 		let allEvents = WjElementUtils.getEvents(this);
-		let events = allEvents.forEach((customEvent, domEvent) => {
+		allEvents.forEach((customEvent, domEvent) => {
 			this.addEventListener(domEvent, (e) => {
 				this.getRootNode().host[customEvent]?.()
 
@@ -223,63 +330,123 @@ export default class WJElement extends HTMLElement {
 		});
 	}
 
-	beforeDisconnect() { }
+	/**
+	 * Hook for extending behavior before disconnecting the component.
+	 */
+	beforeDisconnect() {
+		// Hook for extending behavior before disconnecting
+	}
 
+	/**
+	 * Hook for extending behavior after disconnecting the component.
+	 */
+	afterDisconnect() {
+		// Hook for extending behavior after disconnecting
+	}
+
+	/**
+	 * Hook for extending behavior before redrawing the component.
+	 */
+	beforeRedraw() {
+		// Hook for extending behavior before redrawing
+	}
+
+	/**
+	 * Cleans up resources and event listeners for the component.
+	 */
+	componentCleanup() {
+		// Hook for cleaning up the component
+	}
+
+	/**
+	 * Lifecycle method invoked when the component is disconnected from the DOM.
+	 */
 	disconnectedCallback() {
 		this.beforeDisconnect?.();
 
 		if (this.isAttached) this.context.innerHTML = '';
-
-		this.drawingStatus = 'DISCONNECTED';
 		this.isAttached = false;
 
 		this.afterDisconnect?.();
+
+		this.drawingStatus = this.drawingStatuses.DISCONNECTED
+
+		this.componentCleanup();
 	}
 
 	/**
-	 * Lifecycle method, called whenever an observed property changes
+	 * Enqueues an update to the component.
+	 *
+	 * @return {Promise<void>} A promise that resolves when the update is complete.
+	 */
+	async enqueueUpdate() {
+		try {
+			if (this.renderPromise && this.renderPromise instanceof Promise) {
+				await this.renderPromise;
+			}
+		} catch (e) {
+			console.error("An error occurred:", e);
+			Promise.reject(e);
+		}
+		const result = this.refresh();
+
+		if (result !== null) {
+			await result;
+		}
+
+		this.renderPromise = null;
+	}
+
+	/**
+	 * Lifecycle method invoked when an observed attribute changes.
+	 *
+	 * @param {string} name - The attribute name.
+	 * @param {string} old - The old value of the attribute.
+	 * @param {string} newName - The new value of the attribute.
 	 */
 	attributeChangedCallback(name, old, newName) {
-		if (!this.isAttached && old !== newName) {
-			this.scheludedRefresh = true;
-			return;
-		}
-
 		if (old !== newName) {
-			this.refresh();
-		}
-	}
-
-	async refresh() {
-		this.refreshUpdatePromise()
-		if (this.drawingStatus != 'AFTER') {
-			this.afterDisconnect?.();
-			await this.initWjElement(true);
-		} else {
-			this.unregister?.();
-			await this.initWjElement(true);
+			this.renderPromise = this.enqueueUpdate();
 		}
 	}
 
 	/**
-	 * To be implemented by the child class
+	 * Refreshes the component.
+	 *
+	 * @return {Promise<void>} A promise that resolves when the refresh is complete.
 	 */
-	draw(context, store, params) {
+	refresh() {
+		if (this.drawingStatus && this.drawingStatus >= this.drawingStatuses.START) {
+			this.beforeRedraw?.();
+			this.beforeDisconnect?.();
+			this.refreshUpdatePromise();
+			this.afterDisconnect?.();
+
+			return this.initWjElement(true);
+		}
+
+		return Promise.resolve();
+	}
+
+	/**
+	 * Draws the component's content.
+	 *
+	 * @param {HTMLElement} context - The rendering context.
+	 * @param {Object} appStore - The store instance.
+	 * @param {Object} params - Parameters for drawing.
+	 * @return {DocumentFragment|HTMLElement|string|null} The rendered content.
+	 */
+	draw(context, appStore, params) {
 		return null;
 	}
 
-	display(force = false, processId) {
-		if (this.isProcessingFlow(processId)) return;
-
-		// gather slotted elements and save then to variable
-		// let allSlotedElements = this.context.querySelectorAll('slot');
-		// let slotedElements = [...allSlotedElements].map((el) => {
-		// 	return {
-		// 		name: el.name,
-		// 		elements: [...el.assignedElements()],
-		// 	};
-		// });
-
+	/**
+	 * Displays the component's content, optionally forcing a re-render.
+	 *
+	 * @param {boolean} [force=false] - Whether to force a re-render.
+	 * @return {Promise<void>} A promise that resolves when the display is complete.
+	 */
+	display(force = false) {
 		if (force) {
 			[...this.context.childNodes].forEach(this.context.removeChild.bind(this.context));
 			this.isAttached = false;
@@ -287,55 +454,51 @@ export default class WJElement extends HTMLElement {
 
 		this.context.append(this.template.content.cloneNode(true));
 
-		// // restore slotted elements
-		// slotedElements.forEach((slot) => {
-		// 	let slotted = this.context.querySelector(`slot[name="${slot.name}"]`);
-		// 	slot.elements.forEach((el) => {
-		// 	});
-		// });
-
 		if (this.isPermissionCheck || this.isShow) {
 			if (WjePermissionsApi.isPermissionFulfilled.bind(this)(this.permission)) {
-				this._resolveRender(processId);
+				return this._resolveRender();
 			} else {
 				this.remove();
+				return Promise.resolve();
 			}
 		} else {
-			this._resolveRender(processId);
+			return this._resolveRender();
 		}
-
-		// TODO experiment�lne posielanie funkcii cez custom attributy
-		// this.context.querySelectorAll(`[event-click]`).forEach(el=>{
-		//     el.addEventListener('click', this[el.getAttribute('event-click')])
-		// })
-	}
-
-	async render(processId) {
-		this.drawingStatus = 'DRAWING';
-
-		if (this.isProcessingFlow(processId)) return;
-		await Promise.resolve(this.draw(this.context, this.store, WjElementUtils.getAttributes(this))).then((res) => {
-			let rend = res || '';
-			let element;
-
-			if (rend instanceof HTMLElement || rend instanceof DocumentFragment) {
-				element = rend;
-			} else {
-				let template = document.createElement('template');
-				template.innerHTML = rend;
-				element = template.content.cloneNode(true);
-			}
-
-			let rendered = element;
-			// this.isAttached = true;
-
-			if (this.isProcessingFlow(processId)) return;
-			this.context.appendChild(rendered);
-		});
 	}
 
 	/**
-	 * Turns a string split with "-" into camel case notation
+	 * Renders the component's content.
+	 */
+	async render() {
+		this.drawingStatus = this.drawingStatuses.DRAWING;
+
+		let _draw = this.draw(this.context, this.store, WjElementUtils.getAttributes(this))
+
+		if (_draw instanceof Promise) {
+			_draw = await _draw;
+		}
+
+		let rend = _draw;
+		let element;
+
+		if (rend instanceof HTMLElement || rend instanceof DocumentFragment) {
+			element = rend;
+		} else {
+			let inputTemplate = document.createElement('template');
+			inputTemplate.innerHTML = rend;
+			element = inputTemplate.content.cloneNode(true);
+		}
+
+		let rendered = element;
+
+		this.context.appendChild(rendered);
+	}
+
+	/**
+	 * Converts a hyphenated string to camelCase.
+	 *
+	 * @param {string} name - The string to sanitize.
+	 * @return {string} The camelCase version of the string.
 	 */
 	sanitizeName(name) {
 		let parts = name.split('-');
@@ -343,71 +506,89 @@ export default class WJElement extends HTMLElement {
 	}
 
 	/**
-	 * Creates one property on this class for every
-	 * HTML property defined on the element
+	 * Checks if an object property has a getter or setter.
+	 *
+	 * @param {Object} obj - The object to check.
+	 * @param {string} property - The property name.
+	 * @return {Object} An object containing references to the getter and setter, if they exist.
+	 */
+	checkGetterSetter(obj, property) {
+		let descriptor = Object.getOwnPropertyDescriptor(obj, property);
+
+		// Check if the descriptor is found on the object itself
+		if (descriptor) {
+			return {
+				hasGetter: typeof descriptor.get === 'function' ? descriptor.get : null,
+				hasSetter: typeof descriptor.set === 'function' ? descriptor.set : null
+			};
+		}
+
+		// Otherwise, check the prototype chain
+		let proto = Object.getPrototypeOf(obj);
+		if (proto) {
+			return this.checkGetterSetter(proto, property);
+		}
+
+		// If the property doesn't exist at all
+		return { hasGetter: null, hasSetter: null };
+	}
+
+	/**
+	 * Sets up property accessors for the component's attributes.
 	 */
 	setUpAccessors() {
 		let attrs = this.getAttributeNames();
 		attrs.forEach((name) => {
 			const sanitizedName = this.sanitizeName(name);
-			if (this[sanitizedName] == undefined) {
-				Object.defineProperty(this, sanitizedName, {
-					set: (value) => this.setAttribute(name, value),
-					get: (_) => {
-						return this.getAttribute(name);
-					},
-				});
-			}
+
+			const { hasGetter, hasSetter } = this.checkGetterSetter(this, sanitizedName);
+
+			Object.defineProperty(this, sanitizedName, {
+				set: hasSetter ?? ((value) => this.setAttribute(name, value)),
+				get: hasGetter ?? (() => this.getAttribute(name))
+			});
 		});
 	}
 
-	isProcessingFlow(processId) {
-		return !this.functionStack.find((d) => d == processId)
-	}
-
-	_resolveRender(processId) {
-		if (this.isProcessingFlow(processId)) return;
-
+	/**
+	 * Resolves the rendering process of the component.
+	 *
+	 * @return {Promise<void>} A promise that resolves when rendering is complete.
+	 * @private
+	 */
+	_resolveRender() {
 		this.params = WjElementUtils.getAttributes(this);
 
-		Promise.resolve(this.beforeDraw(this.context, this.store, WjElementUtils.getAttributes(this))).then((res) => {
-			this.drawingStatus = 'BEFORE';
+		return new Promise(async (resolve, reject) => {
+			const __beforeDraw = this.beforeDraw(this.context, this.store, WjElementUtils.getAttributes(this));
 
-			Promise.resolve(this.render(processId)).then((res) => {
-				if (this.isProcessingFlow(processId)) return;
+			if (__beforeDraw instanceof Promise) {
+				await __beforeDraw;
+			}
 
-				Promise.resolve(this.afterDraw?.(this.context, this.store, WjElementUtils.getAttributes(this))).then(
-					(a, b, c) => {
-						this.drawingStatus = 'AFTER';
+			await this.render();
 
-						// RHR toto je bicykel pre slickRouter  pretože routovanie nieje vykonané pokiaľ sa nezavolá updateComplete promise,
-						// toto bude treba rozšíriť aby sme lepšie vedeli kontrolovať vykreslovanie elementov, a flow hookov.
-						this.finisPromise();
+			const __afterDraw = this.afterDraw?.(this.context, this.store, WjElementUtils.getAttributes(this));
 
-						this.rendering = false;
-						this.isAttached = true;
+			if (__afterDraw instanceof Promise) {
+				await __afterDraw;
+			}
 
-						this.removeClassAfterConnect && this.classList.remove(...this.removeClassAfterConnect);
+			// RHR toto je bicykel pre slickRouter  pretože routovanie nieje vykonané pokiaľ sa nezavolá updateComplete promise,
+			// toto bude treba rozšíriť aby sme lepšie vedeli kontrolovať vykreslovanie elementov, a flow hookov.
+			this.finisPromise();
 
-						// this.observer?.disconnect()
-						// const config = {
-						//     attributes: true,
-						//     childList: false,
-						//     subtree: false,
-						//     characterData: false,
-						//     characterDataOldValue: false,
-						// };
-						//
-						// this.observer = new MutationObserver(()=>{this.refresh()});
-						// this.observer.observe(this, config);
+			this.rendering = false;
+			this.isAttached = true;
 
-						if (this.scheludedRefresh) {
-							this.refresh();
-							this.scheludedRefresh = false;
-						}
-					}
-				);
-			});
+			if (this.removeClassAfterConnect)
+				this.classList.remove(...this.removeClassAfterConnect);
+
+			this.drawingStatus = this.drawingStatuses.DONE;
+
+			resolve();
+		}).catch((e) => {
+			console.log(e);
 		});
 	}
 }

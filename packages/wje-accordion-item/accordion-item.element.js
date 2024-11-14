@@ -56,7 +56,7 @@ export default class AccordionItem extends WJElement {
      * @param {Object} params - The parameters for drawing the element.
      * @return {Object} The document fragment containing the drawn element.
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");
@@ -100,7 +100,6 @@ export default class AccordionItem extends WJElement {
         native.appendChild(content);
 
         fragment.appendChild(native);
-
 
         this.headline = headline;
         this.toggle = toggle;

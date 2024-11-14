@@ -16,6 +16,13 @@
   }
 }
 
+:host([disabled]){
+  background-color: lightgray;
+  opacity: .3;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .native-option {
   display: flex;
   align-items: center;

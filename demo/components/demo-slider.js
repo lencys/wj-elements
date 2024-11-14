@@ -1,30 +1,10 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
-template.innerHTML = `<style>
-
-pre {
-      overflow-x: auto;
-      word-wrap: break-word;
-      white-space: pre-wrap;
-      padding: 10px;
-      border: 1px solid hsla(240, 6%, 90%, 1);
-      border-radius: 4px;
-      background: #f9f9f9;
-      max-width: 100%;
-      font-size: 1em;
-      line-height: 1.7rem;
-      position: relative;
-    }
-
-    code {
-      font-family: monospace;
-      padding: 2px 4px;
-      background: #f9f9f9;
-      border-radius: 4px;
-    }
+template.innerHTML = `
+  <style>
     .content {
       display: block;
     }
@@ -33,7 +13,7 @@ pre {
   <h1>Slider</h1>
   <div class="container">
 
-    <!--  BASIC-->
+    <!-- BASIC -->
 
     <h2>Basic</h2>
     <div class="playground">
@@ -42,9 +22,7 @@ pre {
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-
-    <!--  BUBBLE-->
+    <!-- BUBBLE -->
 
     <h2>Bubble</h2>
     <div class="playground">
@@ -53,9 +31,7 @@ pre {
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-
-    <!--  MIN-MAX-->
+    <!-- MIN-MAX -->
 
     <h2>Label</h2>
     <div class="playground">
@@ -65,8 +41,6 @@ pre {
         </wje-slider>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
 
     <!-- ICONS -->
 
@@ -85,9 +59,7 @@ pre {
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-
-    <!--  COLORS-->
+    <!-- COLORS -->
 
     <h2>Colors</h2>
     <div class="playground">
@@ -119,24 +91,6 @@ pre {
         </wje-grid>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
-
-    <h3>Javascript</h3>
-    <pre>
-      <code>
-        setHandlePosition = () => {
-          this.input.style.backgroundSize = this.getPercentage(this.input.value, this.input.min, this.input.max) + '% 100%';
-        }
-      </code>
-    </pre>
-    <pre>
-      <code>
-        getPercentage(value = 0, min, max) {
-          return Number((value - min) * 100 / (max - min)) || 0;
-        }
-      </code>
-    </pre>
   </div>`;
 
 export default class DemoSlider extends WJElement {

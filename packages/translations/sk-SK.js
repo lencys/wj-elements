@@ -1,7 +1,7 @@
 import { Localizer } from "../utils/localize.js";
 
-export const sk = {
-  code: 'sk',
+export const skSk = {
+  code: 'sk-sk',
   name: 'Slovak',
   dir: 'ltr',
 
@@ -10,8 +10,9 @@ export const sk = {
   "wj.file.upload.uploaded": "Nahraných: ",
   "wj.file.upload.from": "z",
   "wj.stepper.button.next": "Ďalej",
+  "wj.stepper.button.finish": "Dokončiť",
   "wj.stepper.button.previous": "Späť",
   "wj.stepper.step": "Krok",
 };
 
-Localizer.registerTranslation(sk);
+Localizer.registerTranslation(skSk);

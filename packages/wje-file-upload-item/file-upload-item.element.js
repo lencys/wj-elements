@@ -82,11 +82,11 @@ export default class FileUploadItem extends WJElement {
    */
   attributeChangedCallback(name, old, newName) {
 
-    if(name === "uploaded" && this.drawingStatus === "AFTER") {
+    if (name === "uploaded" && this.drawingStatus === "AFTER") {
       this.uploadedEl.setAttribute("value", this.uploaded);
 
-      let progress = (+this.uploaded/+this.size) * 100 || 0;
-      this.sliderEl.setAttribute("value", Math.round(progress, 0));
+      let progress = (+this.uploaded / +this.size) * 100 || 0;
+      this.sliderEl.value = Math.round(progress, 0);
     }
   }
 
@@ -104,7 +104,7 @@ export default class FileUploadItem extends WJElement {
    * @param {Object} params - The parameters for the component.
    * @returns {DocumentFragment} The fragment containing the component.
    */
-  draw(context, store, params) {
+  draw() {
     let fragment = document.createDocumentFragment();
 
     let native = document.createElement("div");
@@ -114,6 +114,7 @@ export default class FileUploadItem extends WJElement {
     slot.setAttribute("name", "img");
 
     let image = document.createElement("div");
+    image.setAttribute("part", "image");
     image.classList.add("image");
 
     let name = document.createElement("span");
@@ -140,7 +141,7 @@ export default class FileUploadItem extends WJElement {
     size.setAttribute("value", this.size || 0);
     size.innerHTML = `<span slot="start">&nbsp;${this.localizer.translate("wj.file.upload.from")} </span>`;
 
-    let slider = document.createElement("wje-slider");
+    let slider = document.createElement("wje-progress-bar");
     slider.classList.add("file-progress");
     slider.setAttribute("id", "id-" + this.lastModified);
     slider.setAttribute("value", this.progress || 0);
@@ -169,6 +170,9 @@ export default class FileUploadItem extends WJElement {
 
   /**
    * Called after the component has been drawn.
+   * @params {Object} context - The context of the component.
+   * @params {Object} store - The store of the component.
+   * @params {Object} params - The parameters for the component.
    */
   afterDraw() {
     this.button.addEventListener("wje-button:click", this.onDelete);

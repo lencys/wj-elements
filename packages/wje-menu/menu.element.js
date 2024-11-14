@@ -76,7 +76,7 @@ export default class Menu extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         this.classList.remove("wje-menu-collapse");
@@ -98,6 +98,9 @@ export default class Menu extends WJElement {
 
     /**
      * Refreshes the component after drawing.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters
      */
     afterDraw() {
         Array.from(this.children).forEach((child) => {

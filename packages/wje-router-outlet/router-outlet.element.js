@@ -1,4 +1,9 @@
-import { AnimatedOutlet } from 'slick-router/components/animated-outlet.js';
+import { AnimatedOutlet,
+    GenericCSS,
+    setDefaultAnimation,
+    AnimationHook } from 'slick-router/components/animated-outlet.js';
+
+setDefaultAnimation(GenericCSS)
 
 /**
  * `Route` is a custom web component that represents a route in a routing system.

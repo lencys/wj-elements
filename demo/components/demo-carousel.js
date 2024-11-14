@@ -1,32 +1,9 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
 template.innerHTML = `
-  <style>
-    pre {
-      overflow-x: auto;
-      word-wrap: break-word;
-      white-space: pre-wrap;
-      padding: 10px;
-      border: 1px solid hsla(240, 6%, 90%, 1);
-      border-radius: 4px;
-      background: #f9f9f9;
-      max-width: 100%;
-      font-size: 1em;
-      line-height: 1.7rem;
-      position: relative;
-    }
-
-    code {
-      font-family: monospace;
-      padding: 2px 4px;
-      background: #f9f9f9;
-      border-radius: 4px;
-    }
-  </style>
-
   <h1>Carousel</h1>
   <div class="container">
     
@@ -52,8 +29,6 @@ template.innerHTML = `
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-    
     <!-- NO LOOP -->
 
     <h2>No Loop</h2>
@@ -75,8 +50,6 @@ template.innerHTML = `
         </wje-carousel>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- DIALOG -->
 
@@ -102,8 +75,6 @@ template.innerHTML = `
         </wje-dialog>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- PAGINATION -->
     
@@ -127,8 +98,6 @@ template.innerHTML = `
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-    
     <!-- THUMBNAIL -->
 
     <h2>Thumbnail</h2>
@@ -151,8 +120,6 @@ template.innerHTML = `
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-    
     <!-- SPACING -->
     
     <h2>Spacing</h2>
@@ -180,8 +147,6 @@ template.innerHTML = `
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-    
     <!-- SPLIT -->
     
     <h2>Split</h2>
@@ -228,38 +193,6 @@ template.innerHTML = `
         </style>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
-
-    <h3>Javascript</h3>
-
-    <pre>
-      <code>
-      nextSlide() {
-        this.goToSlide(this.activeSlide + this.slidePerPage);
-      }
-
-      previousSlide() {
-          this.goToSlide(this.activeSlide - this.slidePerPage);
-      }
-
-      getSlides() {
-          return Array.from(this.querySelectorAll("wje-carousel-item:not(.clone)"));
-      }
-
-      getSlidesWithClones() {
-          return Array.from(this.querySelectorAll("wje-carousel-item"));
-      }
-
-      canGoNext() {
-          return this.querySelector(".native-carousel").scrollLeft < this.querySelector(".native-carousel").scrollWidth;
-      }
-
-      canGoPrevious() {
-          return this.querySelector(".native-carousel").scrollLeft > 0;
-      }
-      </code>
-    </pre>
   </div>`;
 
 export default class DemoCarousel extends WJElement {

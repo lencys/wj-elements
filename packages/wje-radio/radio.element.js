@@ -12,7 +12,7 @@ export default class Radio extends WJElement {
     set checked(value) {
         this._checked = value;
 
-        if(value)
+        if (value)
             this.setAttribute("checked", "");
         else
             this.removeAttribute("checked");
@@ -36,13 +36,13 @@ export default class Radio extends WJElement {
         this.isShadowRoot = "open";
     }
 
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");
         native.classList.add("native-radio");
 
-        if(this.color)
+        if (this.color)
             native.classList.add(this.color);
 
         this.input = document.createElement("input");
@@ -75,7 +75,7 @@ export default class Radio extends WJElement {
         this.checked = e.target.checked;
     }
 
-    disconnectedCallback() {
+    beforeDisconnect() {
         event.removeElement(this);
     }
 }

@@ -10,6 +10,7 @@ export default class Stepper extends WJElement {
         this.currentStep = 0;
 
         this.localizer = new Localizer(this);
+        this.steps = [];
     }
 
     get active() {
@@ -36,6 +37,13 @@ export default class Stepper extends WJElement {
         this.isShadowRoot = "open";
     }
 
+    /**
+     * Draws the component.
+     * @param {Object} context - The context for drawing.
+     * @param {Object} store - The store for drawing.
+     * @param {Object} params - The parameters for drawing.
+     * @returns {DocumentFragment}
+     */
     draw() {
         let fragment = document.createDocumentFragment();
 
@@ -53,7 +61,7 @@ export default class Stepper extends WJElement {
 
         const steps = Array.from(this.children);
 
-        this.steps = steps.map((step, index) => {
+        steps.forEach((step, index) => {
             if (step.nodeName === 'WJE-STEP') {
                 const nav = document.createElement('div');
                 nav.className = 'step-header';
@@ -96,7 +104,8 @@ export default class Stepper extends WJElement {
                 if (index !== this.currentStep) {
                     step.style.display = 'none';
                 }
-                return step;
+
+                this.steps.push(step);
             }
         });
 
@@ -134,20 +143,40 @@ export default class Stepper extends WJElement {
         return fragment;
     }
 
+    /**
+     * Sets up the attributes for the component.
+     * @param {Object} context - The context for drawing.
+     * @param {Object} store - The store for drawing.
+     * @param {Object} params - The parameters for drawing.
+     */
     afterDraw() {
         event.addListener(this.prev, 'click', '', () => this.navigate(-1));
         event.addListener(this.next, 'click', '', () => this.navigate(1));
     }
 
+    /**
+     * Navigates to the next or previous step
+     * @param direction
+     */
     navigate(direction) {
         this.goToStep(this.currentStep + direction, direction);
     }
 
+    /**
+     * Go to the specified step
+     * @param stepIndex
+     * @param direction
+     */
     goToStep(stepIndex, direction) {
         if (stepIndex >= 0 && stepIndex < this.steps.length) {
+            if (direction > 0) {
+                this.dispatchEvent(new CustomEvent('stepper:next', { detail: { stepIndex }, bubbles: true, composed: true }));
+            } else {
+                this.dispatchEvent(new CustomEvent('stepper:prev', { detail: { stepIndex }, bubbles: true, composed: true }));
+            }
 
             if (this.headerSteps[stepIndex].hasAttribute('disabled'))
-                stepIndex = stepIndex + direction;
+                stepIndex += direction;
 
             this.headerSteps.forEach((step, index) => {
                 let badge = step.querySelector('wje-badge');
@@ -163,11 +192,31 @@ export default class Stepper extends WJElement {
             this.currentStep = stepIndex;
 
             this.prev.disabled = this.currentStep === 0;
-            this.next.disabled = this.currentStep === this.steps.length - 1;
+            if (this.currentStep === this.steps.length - 1) {
+                this.next.innerHTML = this.localizer.translate("wj.stepper.button.finish");
+                this.next.setAttribute('color', 'primary');
+                this.next.refresh()
+
+
+            } else {
+                this.next.innerHTML = this.localizer.translate("wj.stepper.button.next");
+                this.next.removeAttribute('color');
+                this.next.refresh()
+
+            }
+
+        } else if (stepIndex === this.steps.length) {
+            this.dispatchEvent(new CustomEvent('stepper:finish', { detail: { stepIndex }, bubbles: true, composed: true }));
         }
     }
 
-    setStepDefault(nav, badge = null, stepIndex) {
+    /**
+     * Sets the step to the default state
+     * @param nav
+     * @param badge
+     * @param stepIndex
+     */
+    setStepDefault(nav, badge = null, stepIndex = 0) {
         nav.removeAttribute('active');
         nav.removeAttribute('done');
 
@@ -178,6 +227,12 @@ export default class Stepper extends WJElement {
         badge.removeAttribute('color');
     }
 
+    /**
+     * Sets the step to the active state
+     * @param nav
+     * @param badge
+     * @param stepIndex
+     */
     setStepActive(nav, badge = null, stepIndex = null) {
         nav.setAttribute('active', '');
 
@@ -188,6 +243,10 @@ export default class Stepper extends WJElement {
         badge.setAttribute('color', this.active);
     }
 
+    /**
+     * Sets the content to the active state
+     * @param stepIndex
+     */
     setContentActive(stepIndex) {
         this.steps?.forEach((step, index) => {
             if (index === stepIndex) {
@@ -198,6 +257,11 @@ export default class Stepper extends WJElement {
         });
     }
 
+    /**
+     * Sets the step to the done state
+     * @param nav
+     * @param badge
+     */
     setStepDone(nav, badge = null) {
         nav.setAttribute('done', '');
 

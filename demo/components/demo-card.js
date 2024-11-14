@@ -1,9 +1,10 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
-template.innerHTML = `<h1>Card</h1>
+template.innerHTML = `
+  <h1>Card</h1>
   <div class="container">
     <!--  BASIC-->
 
@@ -14,7 +15,6 @@ template.innerHTML = `<h1>Card</h1>
           <wje-card-header>
             <wje-card-subtitle>Subtitle</wje-card-subtitle>
             <wje-card-title>Title</wje-card-title>
-
           </wje-card-header>
           <wje-card-content>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -22,8 +22,6 @@ template.innerHTML = `<h1>Card</h1>
         </wje-card>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
 
     <!-- SEPARATOR -->
 
@@ -49,8 +47,6 @@ template.innerHTML = `<h1>Card</h1>
         </wje-card>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- SEPARATOR -->
 
@@ -92,8 +88,6 @@ template.innerHTML = `<h1>Card</h1>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-
     <!--  IMAGE-->
 
     <h2>Image</h2>
@@ -114,8 +108,6 @@ template.innerHTML = `<h1>Card</h1>
         </wje-card>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
 
     <!-- LIST CARD -->
 
@@ -173,8 +165,6 @@ template.innerHTML = `<h1>Card</h1>
         </wje-card>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
 
     <!--COLORS-->
 
@@ -244,8 +234,6 @@ template.innerHTML = `<h1>Card</h1>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-
     <!--  Custom CSS-->
 
     <h2>CSS Custom Vlastnosti</h2>
@@ -273,7 +261,6 @@ template.innerHTML = `<h1>Card</h1>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoCard extends WJElement {

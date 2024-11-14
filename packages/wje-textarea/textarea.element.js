@@ -35,6 +35,97 @@ export default class Textarea extends WJElement {
      */
     constructor() {
         super();
+
+        this.internals = this.attachInternals();
+    }
+
+    /**
+     * Setter for the value attribute.
+     * @param {string} value - The value to set.
+     */
+    set value(value) {
+        this.internals.setFormValue(value);
+
+        if (this.input)
+            this.input.value = value;
+
+        this.pristine = false;
+        this._value = value;
+    }
+
+    /**
+     * Getter for the value attribute.
+     * @returns {string} The value of the attribute.
+     */
+    get value() {
+        return this.input?.value ?? this._value ?? "";
+    }
+
+    /**
+     * Getter for the invalid attribute.
+     * @returns {boolean} Whether the attribute is present.
+     */
+    get invalid() {
+        return this.hasAttribute('invalid');
+    }
+
+    /**
+     * Setter for the invalid attribute.
+     * @param {boolean} isInvalid - Whether the input is invalid.
+     */
+    set invalid(isInvalid) {
+        if (isInvalid)
+            this.setAttribute('invalid', '')
+        else
+            this.removeAttribute('invalid');
+    }
+
+    /**
+     * Getter for the form attribute.
+     * @returns {HTMLFormElement} The form the input is associated with.
+     */
+    get form() {
+        return this.internals.form;
+    }
+
+    /**
+     * Getter for the name attribute.
+     * @returns {string} The name of the input.
+     */
+    get name() {
+        return this.getAttribute('name');
+    }
+
+    /**
+     * Getter for the type attribute.
+     * @returns {string} The type of the input.
+     */
+    get type() {
+        return this.localName;
+    }
+
+    /**
+     * Getter for the validity attribute.
+     * @returns {ValidityState} The validity state of the input.
+     */
+    get validity() {
+        return this.internals.validity;
+    }
+
+    /**
+     * Getter for the validationMessage attribute.
+     * @returns {string} The validation message of the input.
+     */
+    get validationMessage() {
+        return this.internals.validationMessage;
+    }
+
+    /**
+     * Getter for the willValidate attribute.
+     * @returns {boolean} Whether the input will be validated.
+     */
+    get willValidate() {
+        return this.internals.willValidate;
     }
 
     className = "Textarea";
@@ -50,6 +141,12 @@ export default class Textarea extends WJElement {
     }
 
     /**
+     * Whether the input is associated with a form.
+     * @type {boolean}
+     */
+    static formAssociated = true;
+
+    /**
      * Returns the list of attributes to observe for changes.
      *
      * @static
@@ -57,6 +154,14 @@ export default class Textarea extends WJElement {
      */
     static get observedAttributes() {
         return [];
+    }
+
+    set placeholder(value) {
+        this.setAttribute("placeholder", value);
+    }
+
+    get placeholder() {
+        return this.getAttribute("placeholder");
     }
 
     /**
@@ -74,14 +179,14 @@ export default class Textarea extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement("div");
         native.classList.add("native-textarea", this.variant || "default");
         native.setAttribute("part", "native")
 
-        if(this.hasAttribute("invalid"))
+        if (this.hasAttribute("invalid"))
             native.classList.add("has-error");
 
         let wrapper = document.createElement("div");
@@ -99,16 +204,17 @@ export default class Textarea extends WJElement {
         input.name = this.name;
         input.disabled = this.hasAttribute("disabled");
         input.innerText = this.innerHTML;
+        input.placeholder = this.placeholder || "";
         input.classList.add("form-control");
         input.setAttribute("part", "input");
         input.setAttribute("rows", this.rows || 3);
         input.setAttribute("spellcheck", false);
 
-        if(this.resize === "auto")
+        if (this.resize === "auto")
             input.addEventListener("input", this.setTextareaHeight);
 
-        if(this.variant === "standard") {
-            if(this.label)
+        if (this.variant === "standard") {
+            if (this.label)
                 native.appendChild(label);
         } else {
             inputWrapper.appendChild(label);
@@ -122,7 +228,7 @@ export default class Textarea extends WJElement {
 
         fragment.appendChild(native);
 
-        if(this.hasAttribute("counter")) {
+        if (this.hasAttribute("counter")) {
             input.maxLength = this.maxLength || 1000;
             input.addEventListener("input", this.counter);
 
@@ -143,6 +249,9 @@ export default class Textarea extends WJElement {
 
     /**
      * Sets up the event listeners after the component is drawn.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         this.resizeObserver = new ResizeObserver(() => this.setTextareaHeight);
@@ -159,7 +268,7 @@ export default class Textarea extends WJElement {
 
         this.input.addEventListener("blur", (e) => {
             this.native.classList.remove("focused");
-            if(!e.target.value)
+            if (!e.target.value)
                 this.labelElement.classList.remove("fade")
         });
     }
@@ -167,7 +276,7 @@ export default class Textarea extends WJElement {
     /**
      * Disconnects the component.
      */
-    disconnectedCallback() {
+    beforeDisconnect() {
         this.resizeObserver.unobserve(this.input);
     }
 
@@ -175,7 +284,7 @@ export default class Textarea extends WJElement {
      * Sets the height of the textarea.
      */
     setTextareaHeight = () => {
-        if(this.getAttribute("resize") === "auto") {
+        if (this.getAttribute("resize") === "auto") {
             this.input.style.height = 'auto';
             this.input.style.height = this.input.scrollHeight + "px";
         }
@@ -188,5 +297,73 @@ export default class Textarea extends WJElement {
      */
     counter = (e) => {
         this.counterElement.innerText = e.target.value.length + "/" + this.input.maxLength;
+    }
+
+
+
+    /**
+     * @summary Callback function that is called when the custom element is associated with a form.
+     * This function adds an event listener to the form's submit event, which validates the input and propagates the validation.
+     * @param {HTMLFormElement} form - The form the custom element is associated with.
+     */
+    formAssociatedCallback(form) {
+        this.internals.setFormValue(this.value);
+    }
+
+    /**
+     * The formResetCallback method is a built-in lifecycle callback that gets called when a form gets reset.
+     * This method is responsible for resetting the value of the custom input element to its default value.
+     * It also resets the form value and validity state in the form internals.
+     *
+     * @method
+     */
+    formResetCallback() {
+        // Set the value of the custom input element to its default value
+        this.value = this.defaultValue;
+        // Reset the form value in the form internals to the default value
+        this.internals.setFormValue(this.defaultValue);
+        // Reset the validity state in the form internals
+        this.internals.setValidity({});
+    }
+
+    /**
+     * The formStateRestoreCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is restored.
+     * This method is responsible for restoring the value of the custom input element to its saved state.
+     * It also restores the form value and validity state in the form internals to their saved states.
+     *
+     * @param {Object} state - The saved state of the custom input element.
+     * @method
+     */
+    formStateRestoreCallback(state) {
+        // Set the value of the custom input element to its saved value
+        this.value = state.value;
+        // Restore the form value in the form internals to the saved value
+        this.internals.setFormValue(state.value);
+        // Restore the validity state in the form internals to the saved state
+        this.internals.setValidity({});
+    }
+
+    /**
+     * The formStateSaveCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is saved.
+     * This method is responsible for saving the value of the custom input element.
+     *
+     * @returns {Object} The saved state of the custom input element.
+     * @method
+     */
+    formStateSaveCallback() {
+        return {
+            value: this.value
+        };
+    }
+
+    /**
+     * The formDisabledCallback method is a built-in lifecycle callback that gets called when the disabled state of a form-associated custom element changes.
+     * This method is not implemented yet.
+     *
+     * @param {boolean} disabled - The new disabled state of the custom input element.
+     * @method
+     */
+    formDisabledCallback(disabled) {
+        console.warn('formDisabledCallback not implemented yet')
     }
 }

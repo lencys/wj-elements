@@ -70,7 +70,7 @@ export default class Tab extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let slot = document.createElement("slot");
@@ -88,6 +88,9 @@ export default class Tab extends WJElement {
 
     /**
      * Sets up the event listeners after the component is drawn.
+     * @params {Object} context - The context for drawing.
+     * @params {Object} store - The store for drawing.
+     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         event.addListener(this, "click", "wje-tab:change");

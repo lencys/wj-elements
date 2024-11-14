@@ -54,7 +54,7 @@ export default class Card extends WJElement {
      * @param {Object} params - The parameters
      * @returns {Object} fragment - The document fragment
      */
-    draw(context, store, params) {
+    draw(context,store,params) {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement('div');

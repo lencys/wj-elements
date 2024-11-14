@@ -50,7 +50,7 @@ export default class CardContent extends WJElement {
      * @param {Object} params - The parameters
      * @returns {Object} fragment - The document fragment
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("slot");

@@ -25,24 +25,44 @@ export default class RelativeTime extends WJElement {
     }
 
     /**
-     * Gets the ISO date of the relative time component.
-     *
-     * @returns {string} The ISO date.
+     * Sets the date of the relative time component
+     * @param value
      */
-    get dateISO() {
-        let date = new Date();
-        let inputDate = this.getAttribute("date");
+    set date(value) {
+        this.setAttribute("date", value);
+    }
 
-        if(this.hasAttribute("date")) {
-            if(this.isISODate(inputDate)) {
-                inputDate = inputDate;
-            } else {
-                inputDate = +inputDate * 1000;
-            }
+    /**
+     * Gets the date of the relative time component
+     * @returns {string}
+     */
+    get date() {
+        return this.getAttribute("date");
+    }
+
+    /**
+     * Sets the object date of the relative time component
+     * @param value
+     */
+    set objectDate(value) {
+        this.setAttribute("object-date", value);
+    }
+
+    /**
+     * Gets the object date of the relative time component
+     * @returns {Date}
+     */
+    get objectDate() {
+        let date = new Date();
+        let inputDate = this.date;
+
+        if(!!inputDate && inputDate !== "") {
+            inputDate = (this.isISODate(inputDate)) ? inputDate : +inputDate * 1000;
 
             date = new Date(inputDate);
         }
-        return date.toISOString();
+
+        return date;
     }
 
     className = "RelativeTime";
@@ -54,7 +74,7 @@ export default class RelativeTime extends WJElement {
      * @returns {Array<string>}
      */
     static get observedAttributes() {
-        return [""];
+        return [];
     }
 
     /**
@@ -72,13 +92,13 @@ export default class RelativeTime extends WJElement {
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("div");
         element.setAttribute("part", "native");
         element.classList.add("native-relative-time");
-        element.innerText = this.getRelativeTimeString(this.dateISO);
+        element.innerText = this.getRelativeTimeString();
 
         fragment.appendChild(element)
 
@@ -92,9 +112,12 @@ export default class RelativeTime extends WJElement {
      * @param {string} lang - The language.
      * @returns {string} The relative time string.
      */
-    getRelativeTimeString(date, lang = navigator.language) {
-        let dateObj = new Date(date);
-        const timeMs = dateObj.getTime();
+    getRelativeTimeString(lang = navigator.language) {
+        if(this.objectDate.toString() === "Invalid Date" || this.objectDate.toString() === "NaN") {
+            return "";
+        }
+
+        const timeMs = this.objectDate.getTime();
 
         const deltaSeconds = Math.round((timeMs - Date.now()) / 1000);
 
@@ -112,7 +135,7 @@ export default class RelativeTime extends WJElement {
         const unitIndex = cutoffs.findIndex(cutoff => cutoff > Math.abs(deltaSeconds));
         const divisor = unitIndex ? cutoffs[unitIndex - 1] : 1;
 
-        return this.localizer.relativeTime(Math.floor(deltaSeconds / divisor), units[unitIndex],{ numeric: "auto" });
+        return this.localizer.relativeTime(this.getAttribute("lang"), Math.floor(deltaSeconds / divisor), units[unitIndex],{ numeric: "auto" });
     }
 
     /**
@@ -122,7 +145,7 @@ export default class RelativeTime extends WJElement {
      * @returns {boolean} True if the string is an ISO date, false otherwise.
      */
     isISODate(str) {
-        let regex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\+\d{2}:\d{2}|Z)$/;
-        return regex.test(str);
+        const date = new Date(str);
+        return !isNaN(date.getTime());
     }
 }

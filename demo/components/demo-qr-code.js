@@ -1,5 +1,5 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
@@ -9,16 +9,7 @@ template.innerHTML = `
         <h2>Basic</h2>
         <div class="playground">
             <div class="content">
-                <wje-qr-code 
-                    value="https://www.mcdonalds.sk/"
-                    size="200"
-                    padding="25"
-                    foregroung="black"
-                    foregroundAlpha="1"
-                    background="white"
-                    backgroundAlpha="1"
-                    level="L"
-                >
+                <wje-qr-code value="https://www.mcdonalds.sk/" size="200" padding="25" foregroung="black" foregroundAlpha="1" background="white" backgroundAlpha="1" level="L">
                     <h3 slot="top">
                         Name on top of QR code
                     </h3>
@@ -27,12 +18,9 @@ template.innerHTML = `
                     </h3>
                 </wje-qr-code>
 
-                <wje-input changeValue label="Change value" type="text" value="https://www.mcdonalds.sk/">
-                </wje-input>
-                <wje-input changeSize label="Change size" type="text" value="200">
-                </wje-input>
-                <wje-input changePadding label="Change padding" type="text" value="25">
-                </wje-input>
+                <wje-input changeValue label="Change value" type="text" value="https://www.mcdonalds.sk/"></wje-input>
+                <wje-input changeSize label="Change size" type="text" value="200"></wje-input>
+                <wje-input changePadding label="Change padding" type="text" value="25"></wje-input>
                 <div style="display: flex; flex-direction: row;">
                     <wje-input label="Foreground color" class="example-color" clearable>
                         <wje-color-picker slot="start" colorSelectForeground></wje-color-picker>
@@ -55,8 +43,6 @@ template.innerHTML = `
                 </wje-select>
             </div>
         </div>
-
-        <div class="html-snippet"></div>
     </div>
 `;
 
@@ -107,7 +93,7 @@ export default class DemoQrCode extends WJElement {
             { selector: '[changeForegroundAlpha]', eventType: 'wje-input:input', attribute: 'foregroundAlpha' },
             { selector: '[colorSelectBackground]', eventType: 'wje-color-picker:select', attribute: 'background' },
             { selector: '[changeBackgroundAlpha]', eventType: 'wje-input:input', attribute: 'backgroundAlpha' },
-            { selector: '[levelSelect]', eventType: 'wje:option-change', attribute: 'level' }
+            { selector: '[levelSelect]', eventType: 'wje-option:change', attribute: 'level' }
         ];
 
         elements.forEach(({ selector, eventType, attribute }) => {

@@ -43,24 +43,13 @@ export default class Row extends WJElement {
     }
 
     /**
-     * Executes before the component is drawn.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
-     */
-    beforeDraw(context, store, params) {
-    }
-
-    /**
      * Draws the component.
-     *
      * @param {Object} context - The context for drawing.
      * @param {Object} store - The store for drawing.
      * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         if(this.hasAttribute("wrap"))

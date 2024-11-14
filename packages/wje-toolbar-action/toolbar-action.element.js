@@ -62,7 +62,7 @@ export default class ToolbarAction extends WJElement {
      * @param {Object} params - The parameters
      * @returns {Object} Document fragment
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let maxItems = +this.maxItems || 0;

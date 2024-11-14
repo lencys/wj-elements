@@ -58,14 +58,11 @@ export default class Accordion extends WJElement {
     }
 
     beforeDraw() {
-        console.log("beforeDraw", this.getAccordions());
 
         this.getAccordions().forEach((accordion, index) => {
             // this.hasAttribute("disabled")
             //     accordion.setAttribute("disabled", "");
-            console.log(accordion,index, +this.getAttribute("index"));
-            if(this.hasAttribute("index") && +this.getAttribute("index") === index) {
-                console.log("index", +this.getAttribute("index") +" !== "+ index);
+            if (this.hasAttribute("index") && +this.getAttribute("index") === index) {
                 accordion.classList.add("expanded");
             }
         });
@@ -92,14 +89,14 @@ export default class Accordion extends WJElement {
 
     afterDraw() {
         this.addEventListener("wje-accordion-item:open", (e) => {
-            if(!this.multiple)
+            if (!this.multiple)
                 this.collapseAll(e.detail.context);
         });
     }
 
     collapseAll(exception) {
         this.getAccordions().forEach((accordion) => {
-            if(accordion !== exception)
+            if (accordion !== exception)
                 accordion.collapse();
         });
     }

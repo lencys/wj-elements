@@ -60,7 +60,7 @@ export default class VisuallyHidden extends WJElement {
      * @param {Object} params - The parameters
      * @returns {Object} Document fragment
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let slot = document.createElement("slot");

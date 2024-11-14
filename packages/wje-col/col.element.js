@@ -17,10 +17,15 @@ export default class Col extends WJElement {
         this.isShadowRoot = "open";
     }
 
-    beforeDraw(context, store, params) {
-    }
-
-    draw(context, store, params) {
+    /**
+     * Draws the component.
+     *
+     * @param {Object} context - The context for drawing.
+     * @param {Object} store - The store for drawing.
+     * @param {Object} params - The parameters for drawing.
+     * @returns {DocumentFragment}
+     */
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let element = document.createElement("slot");

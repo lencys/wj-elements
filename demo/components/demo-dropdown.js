@@ -1,9 +1,10 @@
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from "../assets/js/code-snippet-builder.js";
 
 const template = document.createElement('template');
 
-template.innerHTML = `<style>
+template.innerHTML = `
+  <style>
     wje-button [slot=caret] {
       margin-inline: .5rem 0;
     }
@@ -42,8 +43,6 @@ template.innerHTML = `<style>
       </div>
     </div>
 
-    <div class="html-snippet"></div>
-    
     <!-- OPEN DIALOG -->
 
     <h2>Open Dialog</h2>
@@ -81,8 +80,6 @@ template.innerHTML = `<style>
         </wje-dialog>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- HOVER -->
 
@@ -105,8 +102,6 @@ template.innerHTML = `<style>
           </style>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- TOOLTIP -->
 
@@ -125,8 +120,6 @@ template.innerHTML = `<style>
         </wje-tooltip>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
     
     <!-- INNER AVATAR -->
 
@@ -157,8 +150,6 @@ template.innerHTML = `<style>
         </style>
       </div>
     </div>
-
-    <div class="html-snippet"></div>
   </div>`;
 
 export default class DemoDropdown extends WJElement {
