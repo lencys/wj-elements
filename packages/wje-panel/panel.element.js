@@ -6,18 +6,15 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a panel.
  * @documentation https://elements.webjet.sk/components/panel
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @slot - The default slot for the panel.
- *
  * @tag wje-panel
  */
 export default class Panel extends WJElement {
+
     /**
      * Creates an instance of Panel.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -29,7 +26,6 @@ export default class Panel extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -45,11 +41,7 @@ export default class Panel extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the panel.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -93,7 +85,6 @@ export default class Panel extends WJElement {
 
     /**
      * Returns all the breadcrumb elements in the panel.
-     *
      * @returns {Array<Element>} The breadcrumb elements.
      */
     getBreadcrumbs() {

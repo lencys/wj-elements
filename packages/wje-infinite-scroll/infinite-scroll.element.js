@@ -7,29 +7,21 @@ import styles from "./styles/styles.css?inline";
  * @summary This element allows users to scroll through a potentially infinite amount of content.
  * @documentation https://elements.webjet.sk/components/infinite-scroll
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @csspart loader - The loader part of the infinite scroll.
- *
  * @slot - The default slot for the infinite scroll.
- *
- * @cssproperty [--wje-infinite-scroll-width=100%] - The width of the infinite scroll.
- * @cssproperty [--wje-infinite-scroll-height=300px] - The height of the infinite scroll.
- *
- * @fires wje-infinite-scroll:click-item - Event fired when an item is clicked.
- *
+ * @cssproperty [--wje-infinite-scroll-width=100%] - Sets the width of the infinite scroll container. his property determines how wide the infinite scroll area will be relative to its parent element. Accepts any valid CSS width value, such as percentages (`%`), pixels (`px`), or viewport units (`vw`). The default value is `100%`, which makes it span the full width of its container.
+ * @cssproperty [--wje-infinite-scroll-height=300px] - Defines the height of the infinite scroll container. This property specifies how tall the infinite scroll area should be. Accepts any valid CSS height value, such as pixels (`px`), percentages (`%`), or viewport units (`vh`). The default value is `300px`, providing a fixed height suitable for most use cases.
+ * //@fires wje-infinite-scroll:click-item - Event fired when an item is clicked.
  * @tag wje-infinite-scroll
  */
 
 export default class InfiniteScroll extends WJElement {
+
     /**
      * Creates an instance of InfiniteScroll.
-     *
-     * @constructor
-     * @param {Object} options - The options for the InfiniteScroll.
      */
-    constructor(options = {}) {
+    constructor() {
         super();
 
         this.totalPages = 0;
@@ -89,7 +81,6 @@ export default class InfiniteScroll extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -99,7 +90,6 @@ export default class InfiniteScroll extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -116,10 +106,6 @@ export default class InfiniteScroll extends WJElement {
 
     /**
      * Prepares the component before drawing.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
      */
     beforeDraw() {
         this.iterate = this.querySelector("[iterate]");
@@ -138,11 +124,7 @@ export default class InfiniteScroll extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component and returns a document fragment.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -185,9 +167,6 @@ export default class InfiniteScroll extends WJElement {
 
     /**
      * Called after the component has been drawn.
-     * @params {Object} context - The context for drawing.
-     * @params {Object} store - The store for drawing.
-     * @params {Object} params - The parameters for drawing.
      */
     async afterDraw() {
         this.queryParams = this.queryParams || '';
@@ -215,8 +194,7 @@ export default class InfiniteScroll extends WJElement {
 
     /**
      * Handles the scroll event.
-     *
-     * @param {Event} e - The event.
+     * @param {Event} e The event.
      */
     onScroll = (e) => {
         const { scrollTop, scrollHeight, clientHeight } = e.target;
@@ -229,9 +207,8 @@ export default class InfiniteScroll extends WJElement {
 
     /**
      * Fetches the pages from the server.
-     *
-     * @param {number} page - The page number.
-     * @returns {Promise<Object>} The response from the server.
+     * @param {number} page The page number.
+     * @returns {Promise<object>} The response from the server.
      */
     async getPages(page) {
         let hasParams = this.url.includes('?');
@@ -261,8 +238,7 @@ export default class InfiniteScroll extends WJElement {
 
     /**
      * Checks if there are more pages to load.
-     *
-     * @param {number} page - The page number.
+     * @param {number} page The page number.
      * @returns {boolean} Whether there are more pages to load.
      */
     hasMorePages(page) {
@@ -271,8 +247,7 @@ export default class InfiniteScroll extends WJElement {
 
     /**
      * Loads the pages.
-     *
-     * @param {number} page - The page number.
+     * @param {number} page The page number.
      */
     async loadPages(page) {
         this.showLoader();
@@ -338,7 +313,7 @@ export default class InfiniteScroll extends WJElement {
     /**
      * Interpolates the string.
      * @param template
-     * @param {Object} params - The parameters for interpolation.
+     * @param {object} params The parameters for interpolation.
      * @returns {string} The interpolated string.
      */
     interpolate = (template, params) => {

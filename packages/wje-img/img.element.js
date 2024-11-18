@@ -5,19 +5,16 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents an image. `Img` is a custom web component that represents an image. It extends from `WJElement`.
  * @documentation https://elements.webjet.sk/components/img
  * @status stable
- *
- * @extends {WJElement}
- *
- * @cssprop --img-width - The width of the image
- * @cssprop --img-height - The height of the image
- *
+ * @augments {WJElement}
+ * @cssproperty --img-width - The width of the image
+ * @cssproperty --img-height - The height of the image
  * @tag wje-img
  */
 export default class Img extends WJElement {
+
     /**
      * Creates an instance of Img.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -37,7 +34,6 @@ export default class Img extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -53,11 +49,7 @@ export default class Img extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the image.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -77,9 +69,6 @@ export default class Img extends WJElement {
 
     /**
      * Called after the component has been drawn.
-     * @params {Object} context - The context for drawing.
-     * @params {Object} store - The store for drawing.
-     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         let lazyImageObserver = new IntersectionObserver((entries, observer) => {

@@ -1,5 +1,5 @@
 /**
- * Create a node with the text content
+ * Create a node with the text content.
  * @param text
  * @returns {Element}
  */
@@ -14,7 +14,7 @@ function createNode(text) {
 }
 
 /**
- * Copy the node to the clipboard
+ * Copy the node to the clipboard.
  * @param node
  * @returns {Promise<never>|Promise<void>}
  */
@@ -40,7 +40,7 @@ export function copyNode(node) {
 }
 
 /**
- * Copy the text to the clipboard
+ * Copy the text to the clipboard.
  * @param text
  * @returns {Promise<never>|Promise<void>}
  */

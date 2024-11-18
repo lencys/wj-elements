@@ -1,7 +1,6 @@
+import { default as WJElement, event } from "../wje-element/element.js";
 import '../wje-button/button.element.js';
 import '../wje-icon/icon.element.js';
-
-import { default as WJElement, event } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**
@@ -9,30 +8,27 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a dialog.
  * @documentation https://elements.webjet.sk/components/dialog
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @slot header - Slot for the header content.
  * @slot body - Slot for the body content.
  * @slot footer - Slot for the footer content.
- *
  * @csspart dialog - The dialog wrapper.
  * @csspart header - The header of the dialog.
  * @csspart body - The body of the dialog.
  * @csspart footer - The footer of the dialog.
  * @csspart close - The close button of the dialog.
- *
- * @cssproperty [--wje-dialog-background=var(--wje-background-color)] - The background of the dialog.
- * @cssproperty [--wje-dialog-color=var(--wje-text-color)] - The text color of the dialog.
- * @cssproperty [--wje-dialog-padding=1rem] - The padding of the dialog.
- * @cssproperty [--wje-dialog-border-radius=0.5rem] - The border radius of the dialog.
- * @cssproperty [--wje-dialog-box-shadow=0 2px 10px rgba(0, 0, 0, 0.1)] - The box shadow of the dialog.
- *
+ * @cssproperty [--wje-dialog-background=var(--wje-background-color)] - Specifies the background color of the dialog.
+ * @cssproperty [--wje-dialog-color=var(--wje-text-color)] - Defines the text color within the dialog.
+ * @cssproperty [--wje-dialog-padding=1rem] - Controls the padding inside the dialog.
+ * @cssproperty [--wje-dialog-border-radius=0.5rem] - Sets the border radius for the dialog's corners.
+ * @cssproperty [--wje-dialog-box-shadow=0 2px 10px rgba(0, 0, 0, 0.1)] - Applies a shadow effect to the dialog.
  * @tag wje-dialog
  */
+
 export default class Dialog extends WJElement {
+
     /**
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -118,10 +114,9 @@ export default class Dialog extends WJElement {
 
     /**
      * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * @param {object} context The context for drawing.
+     * @param {object} store The store for drawing.
+     * @param {object} params The parameters for drawing.
      * @returns {DocumentFragment}
      */
     draw(context, store, params) {
@@ -205,12 +200,10 @@ export default class Dialog extends WJElement {
     }
 
     /**
-     * Draws the component
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
-     * @returns {DocumentFragment}
+     * Draws the component after it has been drawn.
+     * @param {object} context The context for drawing.
+     * @param {object} store The store for drawing.
+     * @param {object} params The parameters for drawing.
      */
     afterDraw(context, store, params) {
         if (params.trigger) {
@@ -279,7 +272,7 @@ export default class Dialog extends WJElement {
 
     /**
      * Closes the dialog.
-     * @param e
+     * @param {object} e
      */
     onClose = (e) => {
         Promise.resolve(this.beforeClose(this, e)).then((res) => {

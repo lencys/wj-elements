@@ -5,14 +5,12 @@ import styles from "./styles/styles.css?inline";
  * @summary This class represents an Accordion Item element, extending the WJElement class.
  * @documentation https://elements.webjet.sk/components/accordion-item
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @slot - The accordion item main content.
- *
  * @tag wje-accordion
  */
 export default class AccordionItem extends WJElement {
+
     /**
      * Constructor for the AccordionItem class.
      */
@@ -28,7 +26,7 @@ export default class AccordionItem extends WJElement {
 
     /**
      * Getter for the CSS stylesheet.
-     * @return {Object} The styles for the Accordion Item element.
+     * @returns {object} The styles for the Accordion Item element.
      */
     static get cssStyleSheet() {
         return styles;
@@ -36,7 +34,7 @@ export default class AccordionItem extends WJElement {
 
     /**
      * Getter for the observed attributes.
-     * @return {Array} An array containing the name of the observed attribute.
+     * @returns {Array} An array containing the name of the observed attribute.
      */
     static get observedAttributes() {
         return [];
@@ -50,11 +48,8 @@ export default class AccordionItem extends WJElement {
     }
 
     /**
-     * Method to draw the Accordion Item element.
-     * @param {Object} context - The context in which the element is drawn.
-     * @param {Object} store - The store containing the state of the element.
-     * @param {Object} params - The parameters for drawing the element.
-     * @return {Object} The document fragment containing the drawn element.
+     * Method to draw the Accordion Item element. This method returns a document fragment containing the drawn element.
+     * @returns {object} The document fragment containing the drawn element.
      */
     draw() {
         let fragment = document.createDocumentFragment();
@@ -127,11 +122,17 @@ export default class AccordionItem extends WJElement {
         });
     }
 
+    /**
+     * Method to handle the attribute changes.
+     */
     collapse = () => {
         this.classList.remove("expanded");
         this.classList.add("collapsed");
     }
 
+    /**
+     * Method to handle the attribute changes.
+     */
     expand = () => {
         this.classList.remove("collapsed");
         this.classList.add("expanded");

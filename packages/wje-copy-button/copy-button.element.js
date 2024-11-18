@@ -10,24 +10,18 @@ import styles from "./styles/styles.css?inline";
  * The CopyButton also supports keyboard interaction, copying the text when the space or enter key is pressed.
  * @documentation https://elements.webjet.sk/components/copy-button
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @attr {string} for - The id of the element to copy content from.
  * @attr {string} value - The text to be copied.
- *
  * @csspart button - Styles the button element.
- *
  * @slot - This is a default/unnamed slot.
- *
  * @cssproperty --text-color - Controls the color of the text.
  * @cssproperty --background-color - Controls the background color of the button.
- *
- * @fires wje:copy-button - Dispatched when the button is clicked and the text is copied.
- *
+ * //@fires wje:copy-button - Dispatched when the button is clicked and the text is copied.
  * @tag wje-copy-button
  */
 export default class CopyButton extends WJElement {
+
     /**
      * Constructor for the CopyButton class.
      * Initializes the timeout property.
@@ -40,7 +34,7 @@ export default class CopyButton extends WJElement {
 
     /**
      * Setter for the value property.
-     * @param {string} value - The value to be set.
+     * @param {string} value The value to be set.
      */
     set value(value) {
         this.setAttribute("value", value)
@@ -80,10 +74,7 @@ export default class CopyButton extends WJElement {
     }
 
     /**
-     * Draws the ColorPicker.
-     * @param {Object} context - The context to draw in.
-     * @param {Object} store - The store to use.
-     * @param {Object} params - The parameters to use.
+     * Draws the ColorPicker element.
      * @returns {DocumentFragment} The created document fragment.
      */
     draw() {
@@ -124,7 +115,7 @@ export default class CopyButton extends WJElement {
 
     /**
      * Handles the click event.
-     * @param {Event} e - The event object.
+     * @param {Event} e The event object.
      */
     clicked = (e) => {
         const button = e.currentTarget
@@ -135,7 +126,7 @@ export default class CopyButton extends WJElement {
 
     /**
      * Handles the keydown event.
-     * @param {Event} e - The event object.
+     * @param {Event} e The event object.
      */
     keydown = (e) => {
         if (e.key === " " || e.key === "Enter") {
@@ -148,7 +139,7 @@ export default class CopyButton extends WJElement {
 
     /**
      * Handles the focus event.
-     * @param {Event} e - The event object.
+     * @param {Event} e The event object.
      */
     focused = (e) => {
         e.currentTarget.addEventListener("keydown", this.keydown)
@@ -156,7 +147,7 @@ export default class CopyButton extends WJElement {
 
     /**
      * Handles the blur event.
-     * @param {Event} e - The event object.
+     * @param {Event} e The event object.
      */
     blurred = (e) => {
         e.currentTarget.removeEventListener("keydown", this.keydown)
@@ -165,7 +156,7 @@ export default class CopyButton extends WJElement {
     /**
      * Handles the copied event.
      * You can override this method to customize the behavior when the text is copied.
-     * @param {Event} e - The event object.
+     * @param {Event} e The event object.
      */
     copied = (e) => {
         if(this.hasOwnProperty('icon')) {
@@ -186,7 +177,7 @@ export default class CopyButton extends WJElement {
 
     /**
      * Copies the specified text or node.
-     * @param {HTMLElement} button - The button element.
+     * @param {HTMLElement} button The button element.
      */
     async copy(button) {
         const id = this.getAttribute("for");
@@ -214,7 +205,7 @@ export default class CopyButton extends WJElement {
 
     /**
      * Copies the target content.
-     * @param {HTMLElement} content - The content to be copied.
+     * @param {HTMLElement} content The content to be copied.
      * @returns {Promise} A promise that resolves when the content is copied.
      */
     copyTarget(content) {

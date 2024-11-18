@@ -9,16 +9,14 @@ import { default as WJElement } from "../wje-element/element.js";
  * @summary This element represents a router in a routing system.
  * @documentation https://elements.webjet.sk/components/router
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @tag wje-router
  */
 export default class Routerx extends WJElement {
+
     /**
      * Creates an instance of Routerx.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -28,7 +26,6 @@ export default class Routerx extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -45,9 +42,6 @@ export default class Routerx extends WJElement {
 
     /**
      * Sets up the router after the component is drawn.
-     * @params {Object} context - The context for drawing.
-     * @params {Object} store - The store for drawing.
-     * @params {Object} params - The parameters for drawing.
      */
     beforeDraw() {
         const htmlString = this.outerHTML;
@@ -77,9 +71,8 @@ export default class Routerx extends WJElement {
 
     /**
      * Parses an element and returns an object representation.
-     *
-     * @param {Element} element - The element to parse.
-     * @returns {Object} The object representation of the element.
+     * @param {Element} element The element to parse.
+     * @returns {object} The object representation of the element.
      */
     parseElement(element) {
         const obj = {};
@@ -90,7 +83,8 @@ export default class Routerx extends WJElement {
             const attributeValue = attributes[i].value;
 
             if (attributeName === 'component' && attributeValue.indexOf(".js") > -1) {
-                obj.component = () => import(/*vite-ignore*/attributeValue); // lazy loading component
+                // eslint-disable-next-line jsdoc/no-bad-blocks
+                obj.component = () => import(/* @vite-ignore */  attributeValue);
             } else {
                 if (attributeName !== 'shadow') {
                     const camelCase = attributeName.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
@@ -117,7 +111,7 @@ export default class Routerx extends WJElement {
 
     /**
      * Sets the breadcrumb for the transition.
-     * @param {Object} transition - The transition.
+     * @param {object} transition The transition object.
      */
     setBreadcrumb = (transition) => {
         let breadcrumb = [
@@ -136,14 +130,9 @@ export default class Routerx extends WJElement {
         transition.breadcrumbs = breadcrumb;
     }
 
-    setRouteParamsToStore(transition) {
-        this.store.dispatch(this.defaultStoreActions.addAction('params')(transition.params));
-    };
-
     /**
      * Resets the scroll position.
-     *
-     * @param {Object} transition - The transition.
+     * @param {object} transition The transition object.
      */
     resetScrollPosition = (transition) => {
         window.scrollTo(0, 0);

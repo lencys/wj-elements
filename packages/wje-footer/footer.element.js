@@ -5,19 +5,16 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a footer. `Footer` is a custom web component that represents a footer.
  * @documentation https://elements.webjet.sk/components/footer
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @slot default - Default slot for the footer content
- *
- * @cssprop --primary-color - The primary color of the footer
+ * @cssproperty --primary-color - The primary color of the footer
  */
 
 export default class Footer extends WJElement {
+
     /**
      * Creates an instance of Footer.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -27,7 +24,6 @@ export default class Footer extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -37,7 +33,6 @@ export default class Footer extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -54,10 +49,6 @@ export default class Footer extends WJElement {
 
     /**
      * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
     draw() {

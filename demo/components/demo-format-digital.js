@@ -11,10 +11,10 @@ template.innerHTML = `<h1>Format byte</h1>
     <h2>Basic</h2>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content" style="justify-content: start;">
-        <wje-input type="number" variant="standard" placeholder="Typing number" value="1000000"></wje-input>
+        <wje-input type="number" variant="standard" placeholder="Typing number" value="1000000" id="format-digital-input"></wje-input>
         <wje-format-digital value="1000000" class="example"></wje-format-digital>
         <style>
-          wje-input {
+          #format-digital-input {
             width: 200px;
             margin-inline: 0 .5rem;
             --wje-input-margin-bottom: 0;
@@ -79,12 +79,12 @@ export default class DemoFormatDigital extends WJElement {
   }
 
   afterDraw() {
-    const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, this.context);
-
-    this.addEventListener('wje-input:input', (e) => {
+    this.querySelector('#format-digital-input').addEventListener('wje-input:input', (e) => {
       document.querySelector('.example').setAttribute('value', e.detail.value);
     });
+
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, this.context);
   }
 }
 

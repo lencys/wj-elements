@@ -2,20 +2,11 @@ import { default as WJElement } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**
- * CardTitle class that extends WJElement.
- * @class
- * @extends WJElement
- */
-
-/**
  * @summary CardTitle class that extends WJElement.
  * @documentation https://elements.webjet.sk/components/card-title
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @slot - The card title main content.
- *
  * @cssproperty [--wje-card-title-font-size=24px] - Font size of the component;
  * @cssproperty [--wje-card-title-font-weight=500] - Font weight of the component;
  * @cssproperty [--wje-card-title-margin=0] - Margin of the component;
@@ -23,8 +14,9 @@ import styles from "./styles/styles.css?inline";
  * @cssproperty [--wje-card-title-line-height=1.2] - Line height of the component;
  */
 export default class CardTitle extends WJElement {
+
     /**
-     * CardTitle constructor.
+     * CardTitle constructor method.
      */
     constructor() {
         super();
@@ -38,7 +30,7 @@ export default class CardTitle extends WJElement {
 
     /**
      * Getter for the CSS stylesheet.
-     * @returns {Object} The styles object.
+     * @returns {object} The styles object.
      * @static
      */
     static get cssStyleSheet() {
@@ -62,10 +54,7 @@ export default class CardTitle extends WJElement {
     }
 
     /**
-     * Draws the CardTitle.
-     * @param {Object} context - The context to draw in.
-     * @param {Object} store - The store to use.
-     * @param {Object} params - The parameters to use.
+     * Draws the CardTitle element.
      * @returns {DocumentFragment} The created document fragment.
      */
     draw() {

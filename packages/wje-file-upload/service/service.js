@@ -1,6 +1,17 @@
 /**
- * Get the icon name for a file type
- * @returns {[{name: string, type: string[]},{name: string, type: string[]},{name: string, type: string[]},{name: string, type: string[]},{name: string, type: string[]},null,null,null,null,null,null]}
+ * Returns a list of file type categories and their corresponding icon names.
+ * @returns {Array<object>} An array of objects representing file type categories.
+ * Each object contains the following properties:
+ * - `type` {Array&lt;string>} A list of file extensions associated with the category.
+ * - `name` {string} The name of the icon representing the category.
+ * @example
+ * const types = fileType();
+ * console.log(types);
+ * // [
+ * //   { type: ["jpg", "jpeg", "png", "gif", "bpm", "tiff", "svg"], name: "photo" },
+ * //   { type: ["zip", "rar", "cab", "jar", "tar", "gzip", "uue", "bz2", "scorm", "war"], name: "file-type-zip" },
+ * //   ...
+ * // ]
  */
 function fileType() {
   return [
@@ -52,9 +63,12 @@ function fileType() {
 }
 
 /**
- * Get the icon name for a file type
- * @param type
- * @returns {string}
+ * Retrieves the icon name for a given file type.
+ * @param {string} type The file type or category (e.g., "pdf", "image", "folder").
+ * @returns {string} The name of the icon associated with the file type.
+ * @example
+ * getFileTypeIcon('pdf'); // Returns the icon name for PDF files.
+ * getFileTypeIcon('folder'); // Returns 'folder'.
  */
 export function getFileTypeIcon(type) {
   let searchType;
@@ -72,10 +86,19 @@ export function getFileTypeIcon(type) {
 }
 
 /**
- * Get the file extension from the file name or path
- * @param file
- * @param acceptedFileTypes
- * @returns {boolean}
+ * Checks if a given file matches any of the accepted file types.
+ * @param {File} file The file to validate.
+ * @param {string|string[]} acceptedFileTypes A comma-separated string or an array of accepted MIME types or file extensions.
+ * @returns {boolean} Returns `true` if the file type is valid, otherwise `false`.
+ * @throws {Error} Throws an error if `acceptedFileTypes` is empty.
+ * @example
+ * const file = new File([""], "example.png", { type: "image/png" });
+ * const isValid = isValidFileType(file, "image/*,application/pdf");
+ * console.log(isValid); // true
+ * @example
+ * const file = new File([""], "example.txt", { type: "text/plain" });
+ * const isValid = isValidFileType(file, ["text/plain", "application/json"]);
+ * console.log(isValid); // true
  */
 export function isValidFileType(file, acceptedFileTypes) {
   // Get the base MIME type
@@ -105,10 +128,10 @@ export function isValidFileType(file, acceptedFileTypes) {
 }
 
 /**
- * Upload a file to the server using XMLHttpRequest in chunks
- * @param file
- * @param chunkSize
- * @param preview
+ * Uploads a file in chunks using `XMLHttpRequest`, allowing for progress tracking.
+ * @param {File} file The file to be uploaded.
+ * @param {number} chunkSize The size of each chunk in bytes.
+ * @param {HTMLElement} preview The element used to display upload progress.
  */
 export function uploadFile(file, chunkSize, preview) {
   let offset = 0;
@@ -160,11 +183,19 @@ export function uploadFile(file, chunkSize, preview) {
 }
 
 /**
- * Upload a file to the server using Fetch API and FormData
- * @param url
- * @param chunkSize
- * @param wholeFile
- * @returns {function(*, *): Promise<{file: *, data: *} | void>}
+ * Returns a function for uploading files either in chunks or as a whole file, based on the provided options.
+ * @param {string} url The URL to which the file will be uploaded.
+ * @param {number} [chunkSize] The size of each chunk in bytes when uploading in chunks (default is 1MB).
+ * @param {boolean} [wholeFile] Whether to upload the file as a whole. If `true`, the entire file is uploaded at once.
+ * @returns {Function} A function that takes a file and a preview element as arguments and uploads the file.
+ * @example
+ * // Upload a file in chunks
+ * const uploadInChunks = upload('/upload', 1024 * 512); // 512KB chunks
+ * uploadInChunks(file, previewElement);
+ * @example
+ * // Upload a whole file
+ * const uploadWhole = upload('/upload', undefined, true);
+ * uploadWhole(file, previewElement);
  */
 export function upload(url, chunkSize = 1024 * 1024, wholeFile = false) {
   if (wholeFile) {
@@ -174,12 +205,13 @@ export function upload(url, chunkSize = 1024 * 1024, wholeFile = false) {
 }
 
 /**
- * Upload a file to the server using Fetch API and FormData in chunks
- * @param url
- * @param file
- * @param preview
- * @param chunkSize
- * @returns {Promise<*>}
+ * Uploads a file in chunks to a specified URL, allowing for progress tracking and resuming in case of errors.
+ * @param {string} url The URL to which the file chunks will be uploaded.
+ * @param {File} file The file to be uploaded in chunks.
+ * @param {HTMLElement} preview The element used to display upload progress.
+ * @param {number} [chunkSize] The size of each chunk in bytes (default is 1MB).
+ * @returns {Promise<object>} Resolves with the response of the last chunk uploaded, parsed as JSON.
+ * @throws {Error} - Throws an error if a chunk fails to upload.
  */
 export async function uploadFileInChunks(url, file, preview, chunkSize = 1024 * 1024) {
   let offset = 0;
@@ -249,11 +281,12 @@ export async function uploadFileInChunks(url, file, preview, chunkSize = 1024 * 
 }
 
 /**
- * Upload a whole file to the server using Fetch API and FormData
- * @param url
- * @param file
- * @param preview
- * @returns {Promise<{file: *, data: *} | void>}
+ * Uploads a file to a specified URL using a `POST` request and updates the preview element with the uploaded file size.
+ * @param {string} url The URL to which the file will be uploaded.
+ * @param {File} file The file to be uploaded.
+ * @param {HTMLElement} preview The element that displays the upload preview. It will be updated with the file size.
+ * @returns {Promise<{data: object, file: File}>} - A promise that resolves with the server response and the uploaded file.
+ * @throws {Error} - Logs an error to the console if the request fails.
  */
 export function uploadWholeFile(url, file, preview) {
   const formData = new FormData();

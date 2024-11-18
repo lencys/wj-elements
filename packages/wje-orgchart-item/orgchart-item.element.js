@@ -5,28 +5,20 @@ import styles from "./styles/styles.css?inline";
  * @summary OrgchartItem is a custom web component that extends WJElement.
  * @documentation https://elements.webjet.sk/components/OrgchartItem
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @csspart - Styles the element.
  * @csspart native - Styles the native element.
  * @csspart expander - Styles the expander element.
- *
- * @prop {boolean} boss - The boss of the orgchart item.
- *
+ * @attr {boolean} boss - The boss of the orgchart item (default: false).
  * @slot - The default slot for the orgchart item.
  * @slot child - The child slot for the orgchart item.
- *
  * @tag wje-orgchart-item
- *
- * @example
- * <wje-orgchart-item></wje-orgchart-item>
  */
 export default class OrgchartItem extends WJElement {
+
     /**
      * Creates an instance of OrgchartItem.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -55,7 +47,6 @@ export default class OrgchartItem extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -77,11 +68,7 @@ export default class OrgchartItem extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the org chart item.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -117,12 +104,7 @@ export default class OrgchartItem extends WJElement {
     }
 
     /**
-     * After Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
-     * @returns {DocumentFragment}
+     * After Draws the component for the org chart item.
      */
     afterDraw() {
         this.expander.addEventListener("click", this.toggleChildren);
@@ -130,7 +112,7 @@ export default class OrgchartItem extends WJElement {
 
     /**
      * Toggles the children of the orgchart item.
-     * @param e - The event object.
+     * @param e The event object.
      */
     toggleChildren = (e) => {
         this.classList.toggle("collapse");

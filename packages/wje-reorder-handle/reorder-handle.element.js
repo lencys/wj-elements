@@ -1,19 +1,45 @@
 import { default as WJElement } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
+/**
+ * `ReorderHandle` is a custom web component that represents a reorder handle.
+ * @summary This element represents a reorder handle.
+ * @documentation https://elements.webjet.sk/components/reorder-handle
+ * @status stable
+ * @augments WJElement
+ * @csspart native - The native part of the reorder handle.
+ * @slot - The default slot for the reorder handle.
+ * @tag wje-reorder-handle
+ */
 export default class ReorderHandle extends WJElement {
+
+    /**
+     * Creates an instance of ReorderHandle.
+     */
     constructor() {
         super();
         this.addEventListener('mousedown', this.startDrag.bind(this));
         this.addEventListener('touchstart', this.startTouchDrag.bind(this));
     }
 
+    /**
+     * The class name for the component.
+     * @type {string}
+     */
     className = "ReorderHandle";
 
+    /**
+     * Returns the CSS styles for the component.
+     * @returns {*}
+     */
     static get cssStyleSheet() {
         return styles;
     }
 
+    /**
+     * Returns the list of attributes to observe for changes.
+     * @returns {string[]}
+     */
     static get observedAttributes() {
         return ['dropzone', 'parent'];
     }
@@ -22,6 +48,10 @@ export default class ReorderHandle extends WJElement {
         this.isShadowRoot = "open";
     }
 
+    /**
+     * Draws the component.
+     * @returns {DocumentFragment}
+     */
     draw() {
         const fragment = document.createDocumentFragment();
 
@@ -38,23 +68,39 @@ export default class ReorderHandle extends WJElement {
         return fragment;
     }
 
+    /**
+     * Draws the component after it is connected to the DOM.
+     */
     afterDraw() {
         if (this.hasAttribute('disabled')) {
             this.style.opacity = ".3";
         }
     }
 
+    /**
+     * Handles the attribute changes.
+     * @param {DragEvent} event
+     */
     startDrag(event) {
         if (this.hasAttribute('disabled') || this.hasAttribute('locked')) return;
         this.startDragAction(event.clientX, event.clientY);
     }
 
+    /**
+     * Handles the touch start event.
+     * @param {TouchEvent} event
+     */
     startTouchDrag(event) {
         if (this.hasAttribute('disabled') || this.hasAttribute('locked')) return;
         const touch = event.touches[0];
         this.startDragAction(touch.clientX, touch.clientY);
     }
 
+    /**
+     * Initiates the drag-and-drop action for a sortable element.
+     * @param {number} clientX The x-coordinate of the mouse pointer at the start of the drag action.
+     * @param {number} clientY The y-coordinate of the mouse pointer at the start of the drag action.
+     */
     startDragAction(clientX, clientY) {
         let draggable;
         if (this.hasAttribute('parent')) {
@@ -141,6 +187,11 @@ export default class ReorderHandle extends WJElement {
         initialContainer.insertBefore(placeholder, draggable);
     }
 
+    /**
+     * Retrieves the dropzone associated with the given element.
+     * @param {HTMLElement} element The element from which to search for the closest dropzone.
+     * @returns {HTMLElement|null} - The closest dropzone element matching the `dropzone` attribute, or the parent element if no dropzone is found.
+     */
     getDropzone(element) {
         const dropzoneAttr = this.getAttribute('dropzone');
         if (dropzoneAttr) {
@@ -150,6 +201,12 @@ export default class ReorderHandle extends WJElement {
         return element.parentElement;
     }
 
+    /**
+     * Retrieves the closest dropzone element at the specified coordinates.
+     * @param {number} clientX The x-coordinate relative to the viewport.
+     * @param {number} clientY The y-coordinate relative to the viewport.
+     * @returns {HTMLElement|null} - The closest dropzone element matching the `dropzone` attribute, or `null` if none is found.
+     */
     getClosestDropzone(clientX, clientY) {
         const elements = this.getElementsFromPointAll(clientX, clientY);
         for (const element of elements) {
@@ -160,7 +217,14 @@ export default class ReorderHandle extends WJElement {
         return null;
     }
 
-    // Rekurzívne prechádza všetky shadow roots bez opakovania elementov
+    /**
+     * Retrieves all elements at the specified coordinates, including those within shadow DOMs.
+     * @param {number} x The x-coordinate relative to the viewport.
+     * @param {number} y The y-coordinate relative to the viewport.
+     * @param {Document|ShadowRoot} [root] The root context in which to search. Defaults to the main document.
+     * @param {Set<Node>} [visited] A set of already visited nodes to avoid infinite recursion in nested shadow DOMs.
+     * @returns {HTMLElement[]} An array of all elements found at the specified coordinates, including shadow DOM elements.
+     */
     getElementsFromPointAll(x, y, root = document, visited = new Set()) {
         if (visited.has(root)) return [];
         visited.add(root);
@@ -177,6 +241,10 @@ export default class ReorderHandle extends WJElement {
         return allElements;
     }
 
+    /**
+     * Re-indexes the items in the container.
+     * @param container
+     */
     reIndexItems(container) {
         const items = Array.from(container.children);
         let index = 0;

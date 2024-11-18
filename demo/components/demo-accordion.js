@@ -86,14 +86,14 @@ template.innerHTML = `
           
         <style>
           [slot=headline] {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            gap: .5rem;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              width: 100%;
+              gap: .5rem;
           }
           wje-dropdown {
-            margin-left: auto;
+              margin-left: auto;
           }
         </style>
       </div>

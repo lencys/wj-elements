@@ -3,10 +3,10 @@ import { default as WJElement } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 export default class FormatDigital extends WJElement {
+
     /**
      * Creates an instance of FormatDigital.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -15,7 +15,6 @@ export default class FormatDigital extends WJElement {
 
     /**
      * Returns the unit of the digital format.
-     *
      * @returns {string}
      */
     get unit() {
@@ -26,7 +25,6 @@ export default class FormatDigital extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -36,7 +34,6 @@ export default class FormatDigital extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -71,11 +68,7 @@ export default class FormatDigital extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component and returns a document fragment.
      * @returns {DocumentFragment}
      */
     draw() {

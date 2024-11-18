@@ -11,7 +11,7 @@ template.innerHTML = `<h1>Input</h1>
     <h2>Default</h2>
     <div class="playground">
       <div class="content">
-        <wje-input label="Default input"></wje-input>
+        <wje-input label="Default input" id="nieco"></wje-input>
         <wje-input label="Input with placeholder" placeholder="Enter company name"></wje-input>
         <wje-input label="Input with value" value="Mlynské Nivy 71"></wje-input>
         <wje-input label="Readonly input" value="Bratislava" readonly></wje-input>
@@ -249,6 +249,20 @@ export default class DemoInput extends WJElement {
       e.target.closest("wje-input").value = e.detail.hex8;
       // e.target.onClose();
     });
+
+
+
+
+
+
+    this.querySelector('#nieco').addEventListener('wje-input:focus', (e) => {
+      console.log('IIIIIIIIIIIIIIIIIIIIIIIII', e);
+    });
+
+
+
+
+
 
     let form = this.context.querySelector('#test-form');
     form.addEventListener('submit', (e) => {

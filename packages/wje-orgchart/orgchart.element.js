@@ -5,21 +5,16 @@ import styles from "./styles/styles.css?inline";
  * @summary Orgchart is a custom web component that extends WJElement.
  * @documentation https://elements.webjet.sk/components/Orgchart
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @csspart - Styles the element.
- *
  * @tag wje-orgchart
- *
  * @example
- * <wje-orgchart></wje-orgchart>
  */
 export default class Orgchart extends WJElement {
+
     /**
      * Creates an instance of Orgchart.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -30,7 +25,6 @@ export default class Orgchart extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -46,11 +40,7 @@ export default class Orgchart extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the org chart.
      * @returns {DocumentFragment}
      */
     draw() {

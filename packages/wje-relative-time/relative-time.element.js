@@ -6,18 +6,16 @@ import { default as WJElement } from "../wje-element/element.js";
  * @summary This element represents a relative time component.
  * @documentation https://elements.webjet.sk/components/relative-time
  * @status stable
- *
- * @extends {WJElement}
- *
- * @part native - The native part of the relative time component.
- *
+ * @augments WJElement
+ * @csspart native - The native part of the relative time component.
  * @tag wje-relative-time
  */
+
 export default class RelativeTime extends WJElement {
+
     /**
      * Creates an instance of RelativeTime.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -25,7 +23,7 @@ export default class RelativeTime extends WJElement {
     }
 
     /**
-     * Sets the date of the relative time component
+     * Sets the date of the relative time component.
      * @param value
      */
     set date(value) {
@@ -33,7 +31,7 @@ export default class RelativeTime extends WJElement {
     }
 
     /**
-     * Gets the date of the relative time component
+     * Gets the date of the relative time component.
      * @returns {string}
      */
     get date() {
@@ -41,7 +39,7 @@ export default class RelativeTime extends WJElement {
     }
 
     /**
-     * Sets the object date of the relative time component
+     * Sets the object date of the relative time component.
      * @param value
      */
     set objectDate(value) {
@@ -49,7 +47,7 @@ export default class RelativeTime extends WJElement {
     }
 
     /**
-     * Gets the object date of the relative time component
+     * Gets the object date of the relative time component.
      * @returns {Date}
      */
     get objectDate() {
@@ -65,11 +63,14 @@ export default class RelativeTime extends WJElement {
         return date;
     }
 
+    /**
+     * Sets the lang of the relative time component.
+     * @type {string}
+     */
     className = "RelativeTime";
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -85,11 +86,7 @@ export default class RelativeTime extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the relative time.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -107,10 +104,6 @@ export default class RelativeTime extends WJElement {
 
     /**
      * Returns the relative time string for the given date.
-     *
-     * @param {string} date - The date.
-     * @param {string} lang - The language.
-     * @returns {string} The relative time string.
      */
     getRelativeTimeString(lang = navigator.language) {
         if(this.objectDate.toString() === "Invalid Date" || this.objectDate.toString() === "NaN") {
@@ -140,8 +133,7 @@ export default class RelativeTime extends WJElement {
 
     /**
      * Checks if the given string is an ISO date.
-     *
-     * @param {string} str - The string to check.
+     * @param {string} str The string to check.
      * @returns {boolean} True if the string is an ISO date, false otherwise.
      */
     isISODate(str) {

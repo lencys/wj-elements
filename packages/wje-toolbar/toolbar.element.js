@@ -7,51 +7,47 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a toolbar.
  * @documentation https://elements.webjet.sk/components/toolbar
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @csspart native - The native toolbar wrapper.
- *
  * @slot start - The start slot for the toolbar.
  * @slot end - The end slot for the toolbar.
- *
- * @cssproperty [--wje-toolbar-background=var(--wje-background)] - The background of the toolbar.
- * @cssproperty [--wje-toolbar-height=auto] - The height of the toolbar.
- * @cssproperty [--wje-toolbar-min-height=70px] - The min height of the toolbar.
- * @cssproperty [--wje-toolbar-padding-top=1rem] - The padding top of the toolbar.
- * @cssproperty [--wje-toolbar-padding-bottom=1rem] - The padding bottom of the toolbar.
- * @cssproperty [--wje-toolbar-padding-inline=1.5rem] - The padding inline of the toolbar.
- * @cssproperty [--wje-toolbar-border-color=var(--wje-border-color)] - The border color of the toolbar.
- * @cssproperty [--wje-toolbar-top=0] - The top of the toolbar.
- *
+ * @cssproperty [--wje-toolbar-background=var(--wje-background)] - Specifies the background color of the toolbar. Accepts any valid CSS color value, such as `hex`, `rgb`, or `CSS variable`.
+ * @cssproperty [--wje-toolbar-height=auto] - Defines the height of the toolbar. If set to `auto`, the height adjusts based on the content.
+ * @cssproperty [--wje-toolbar-min-height=70px] - Sets the minimum height of the toolbar. Ensures the toolbar maintains a consistent minimum size.
+ * @cssproperty [--wje-toolbar-padding-top=1rem] - Specifies the padding at the top of the toolbar. Accepts any valid CSS length unit.
+ * @cssproperty [--wje-toolbar-padding-bottom=1rem] - Specifies the padding at the bottom of the toolbar. Helps create spacing between the content and the bottom edge.
+ * @cssproperty [--wje-toolbar-padding-inline=1.5rem] - Defines the horizontal padding (left and right) of the toolbar. Creates consistent spacing on both sides.
+ * @cssproperty [--wje-toolbar-border-color=var(--wje-border-color)] - Sets the color of the toolbar's border. Accepts any valid CSS color value.
+ * @cssproperty [--wje-toolbar-top=0] - Specifies the vertical position of the toolbar relative to its container. Useful for fixed or sticky toolbars.
  * @tag wje-toolbar
  */
+
 export default class Toolbar extends WJElement {
+
     /**
-     * @constructor
-     * @summary Toolbar constructor
+     * Creates an instance of Toolbar.
      */
     constructor() {
         super();
     }
 
     /**
-     * @summary Class name
+     * The class name for the component.
      * @type {string}
      */
     className = "Toolbar";
 
     /**
-     * @summary Get CSS stylesheet
+     * Returns the CSS stylesheet for the component.
      * @static
-     * @returns {Object} styles
+     * @returns {CSSStyleSheet} The CSS stylesheet
      */
     static get cssStyleSheet() {
         return styles;
     }
 
     /**
-     * @summary Get observed attributes
+     * Returns the list of observed attributes.
      * @static
      * @returns {Array} An empty array
      */
@@ -60,18 +56,15 @@ export default class Toolbar extends WJElement {
     }
 
     /**
-     * @summary Setup attributes
+     * Sets up the attributes for the component.
      */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
     /**
-     * @summary Draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
-     * @returns {Object} Document fragment
+     * Draws the component for the toolbar.
+     * @returns {object} Document fragment
      */
     draw() {
         let fragment = document.createDocumentFragment();

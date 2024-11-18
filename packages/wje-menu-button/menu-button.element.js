@@ -6,21 +6,17 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a menu button.
  * @documentation https://elements.webjet.sk/components/menu-button
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @slot - The default slot for the menu button.
- *
- * @fires click - Event fired when the menu button is clicked.
- *
+ * // @fires click - Event fired when the menu button is clicked.
  * @tag wje-menu-button
  */
 
 export default class MenuButton extends WJElement {
+
     /**
      * Creates an instance of MenuButton.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -30,7 +26,6 @@ export default class MenuButton extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -40,7 +35,6 @@ export default class MenuButton extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -56,11 +50,7 @@ export default class MenuButton extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the menu button.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -74,11 +64,7 @@ export default class MenuButton extends WJElement {
     }
 
     /**
-     * Refreshes the component after drawing.
-     * Adds a click event listener that toggles the "open" class on the content element.
-     * @params {Object} context - The context for drawing.
-     * @params {Object} store - The store for drawing.
-     * @params {Object} params - The parameters for drawing.
+     * Refreshes the component after drawing. Adds a click event listener that toggles the "open" class on the content element.
      */
     afterDraw() {
         event.addListener(this, "click", null, (e) => {

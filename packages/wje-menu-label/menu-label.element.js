@@ -6,30 +6,25 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a menu label.
  * @documentation https://elements.webjet.sk/components/menu-label
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @csspart native - The native part of the menu label.
- *
  * @slot - The default slot for the menu label.
- *
- * @cssprop [--wje-menu-label-font-size=.75rem] - The font size of the menu label.
- * @cssprop [--wje-menu-label-weight=600] - The font weight of the menu label.
- * @cssprop [--wje-letter-spacing=.025rem] - The letter spacing of the menu label.
- * @cssprop [--wje-menu-label-color=var(--wje-color-contrast-6)] - The color of the menu label.
- * @cssprop [--wje-padding-top=0] - The top padding of the menu label.
- * @cssprop [--wje-padding-bottom=0] - The bottom padding of the menu label.
- * @cssprop [--wje-padding-start=1.5rem] - The start padding of the menu label.
- * @cssprop [--wje-padding-end=1.5rem] - The end padding of the menu label.
- *
+ * @cssproperty [--wje-menu-label-font-size=.75rem] - Sets the font size of the menu label. Accepts any valid CSS length unit (e.g., `rem`, `px`, `em`).
+ * @cssproperty [--wje-menu-label-weight=600] - Specifies the font weight of the menu label. Accepts values such as `normal`, `bold`, or numeric values (e.g., `400`, `600`).
+ * @cssproperty [--wje-letter-spacing=.025rem] - Defines the spacing between letters in the menu label. Accepts any valid CSS length unit. Default value ensures slight spacing for improved readability.
+ * @cssproperty [--wje-menu-label-color=var(--wje-color-contrast-6)] - Specifies the text color of the menu label. Accepts any valid CSS color value, including variables and named colors.
+ * @cssproperty [--wje-padding-top=0] - Sets the top padding of the menu label. Accepts any valid CSS length value to control spacing above the label.
+ * @cssproperty [--wje-padding-bottom=0] - Sets the bottom padding of the menu label. Accepts any valid CSS length value to control spacing below the label.
+ * @cssproperty [--wje-padding-start=1.5rem] - Specifies the left padding of the menu label in left-to-right (LTR) layouts. In right-to-left (RTL) layouts, this becomes the right padding. Accepts any valid CSS length value.
+ * @cssproperty [--wje-padding-end=1.5rem] - Specifies the right padding of the menu label in left-to-right (LTR) layouts. In right-to-left (RTL) layouts, this becomes the left padding. Accepts any valid CSS length value.
  * @tag wje-menu-label
  */
 
 export default class MenuLabel extends WJElement {
+
     /**
      * Creates an instance of MenuLabel.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -41,7 +36,6 @@ export default class MenuLabel extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -51,7 +45,6 @@ export default class MenuLabel extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -67,11 +60,7 @@ export default class MenuLabel extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the menu label.
      * @returns {DocumentFragment}
      */
     draw() {

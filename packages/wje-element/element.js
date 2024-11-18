@@ -1,3 +1,4 @@
+ 
 import { UniversalService } from './service/universal-service.js';
 import { defaultStoreActions, store } from '../wje-store/store.js';
 import { WjePermissionsApi } from '../utils/permissions-api.js';
@@ -8,11 +9,12 @@ const template = document.createElement('template');
 template.innerHTML = ``;
 
 export default class WJElement extends HTMLElement {
+
 	/**
 	 * Initializes a new instance of the WJElement class.
-	 *
-	 * @param {HTMLTemplateElement} [componentTemplate] - The template to use for this component.
+	 * @param [componentTemplate] The template to use for this component.
 	 */
+	 
 	constructor(componentTemplate) {
 		super();
 
@@ -55,8 +57,7 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Gets the value of the 'permission-check' attribute.
-	 *
-	 * @return {string|null} The value of the 'permission-check' attribute or null if not set.
+	 * @returns The value of the 'permission-check' attribute or null if not set.
 	 */
 	get permission() {
 		return this.getAttribute('permission-check');
@@ -64,8 +65,7 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Sets the 'permission-check' attribute.
-	 *
-	 * @param {string} shadow - The value to set for the 'permission-check' attribute.
+	 * @param shadow The value to set for the 'permission-check' attribute.
 	 */
 	set isPermissionCheck(shadow) {
 		return this.setAttribute('permission-check', 'permission-check');
@@ -73,8 +73,7 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Checks if the 'permission-check' attribute is present.
-	 *
-	 * @return {boolean} True if the 'permission-check' attribute is present.
+	 * @returns True if the 'permission-check' attribute is present.
 	 */
 	get isPermissionCheck() {
 		return this.hasAttribute('permission-check');
@@ -82,8 +81,7 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Checks if the 'show' attribute is present.
-	 *
-	 * @return {boolean} True if the 'show' attribute is present.
+	 * @returns True if the 'show' attribute is present.
 	 */
 	get isShow() {
 		return this.hasAttribute('show');
@@ -91,8 +89,7 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Sets the 'shadow' attribute.
-	 *
-	 * @param {string} shadow - The value to set for the 'shadow' attribute.
+	 * @param value The value to set for the 'shadow' attribute.
 	 */
 	set isShadowRoot(value) {
 		return this.setAttribute('shadow', value);
@@ -100,8 +97,7 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Checks if the 'shadow' attribute is present.
-	 *
-	 * @return {boolean} True if the 'shadow' attribute is present.
+	 * @returns True if the 'shadow' attribute is present.
 	 */
 	get isShadowRoot() {
 		return this.hasAttribute('shadow');
@@ -109,8 +105,7 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Gets the value of the 'shadow' attribute or 'open' if not set.
-	 *
-	 * @return {string} The value of the 'shadow' attribute or 'open'.
+	 * @returns The value of the 'shadow' attribute or 'open'.
 	 */
 	get shadowType() {
 		return this.getAttribute('shadow') || 'open';
@@ -118,8 +113,7 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Gets the rendering context, either the shadow root or the component itself.
-	 *
-	 * @return {HTMLElement|ShadowRoot} The rendering context.
+	 * @returns The rendering context.
 	 */
 	get context() {
 		if (this.isShadowRoot) {
@@ -131,33 +125,31 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Gets the store instance.
-	 *
-	 * @return {Object} The store instance.
+	 * @returns The store instance.
 	 */
 	get store() {
 		return store;
 	}
 
 	/**
-	 * @typedef {Object} ArrayActions
-	 * @property {function} addAction - Adds an item to the array.
-	 * @property {function} deleteAction - Deletes an item from the array.
-	 * @property {function} loadAction - Loads an array.
-	 * @property {function} updateAction - Updates an item in the array.
-	 * @property {function} addManyAction - Adds many items to the array.
+	 * @typedef {object} ArrayActions
+	 * @property {Function} addAction - Adds an item to the array.
+	 * @property {Function} deleteAction - Deletes an item from the array.
+	 * @property {Function} loadAction - Loads an array.
+	 * @property {Function} updateAction - Updates an item in the array.
+	 * @property {Function} addManyAction - Adds many items to the array.
 	 */
 
 	/**
-	 * @typedef {Object} ObjectActions
-	 * @property {function} addAction - Replace old object with new object
-	 * @property {function} deleteAction - Delete item based on key
-	 * @property {function} updateAction - Update item based on key
+	 * @typedef {object} ObjectActions
+	 * @property {Function} addAction - Replace old object with new object
+	 * @property {Function} deleteAction - Delete item based on key
+	 * @property {Function} updateAction - Update item based on key
 	 */
 
 	/**
 	 * Gets the default store actions.
-	 *
-	 * @return {ArrayActions|ObjectActions} The default store actions.
+	 * @returns The default store actions for arrays and objects.
 	 */
 	get defaultStoreActions() {
 		return defaultStoreActions;
@@ -165,8 +157,7 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Gets the classes to be removed after the component is connected.
-	 *
-	 * @return {Array<string>} An array of class names to remove.
+	 * @returns An array of class names to remove.
 	 */
 	get removeClassAfterConnect() {
 		return this.getAttribute('remove-class-after-connect')?.split(' ');
@@ -174,8 +165,7 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Sets the component dependencies.
-	 *
-	 * @param {Object} value - The dependencies to set.
+	 * @param value The dependencies to set.
 	 */
 	set dependencies(value) {
 		this._dependencies = value;
@@ -183,8 +173,7 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Gets the component dependencies.
-	 *
-	 * @return {Object} The dependencies.
+	 * @returns The component dependencies.
 	 */
 	get dependencies() {
 		return this._dependencies;
@@ -192,10 +181,9 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Processes and combines two templates into one.
-	 *
-	 * @param {HTMLTemplateElement} pTemplate - The primary template.
-	 * @param {HTMLTemplateElement|null} inputTemplate - The secondary template.
-	 * @return {HTMLTemplateElement} The combined template.
+	 * @param pTemplate The primary template.
+	 * @param inputTemplate The secondary template.
+	 * @returns The combined template.
 	 */
 	static processTemplates = (pTemplate, inputTemplate) => {
 		const newTemplate = document.createElement('template');
@@ -205,10 +193,9 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Defines a custom element if not already defined.
-	 *
-	 * @param {string} name - The name of the custom element.
-	 * @param {WJElement} [elementConstructor=this] - The element constructor.
-	 * @param {Object} [options={}] - Additional options for defining the element.
+	 * @param name The name of the custom element.
+	 * @param [elementConstructor] The constructor for the custom element.
+	 * @param [options] Additional options for defining the element.
 	 */
 	static define(name, elementConstructor = this, options = {}) {
 		const definedElement = customElements.get(name);
@@ -230,23 +217,43 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Hook for extending behavior before drawing the component.
-	 *
-	 * @param {HTMLElement} context - The rendering context.
-	 * @param {Object} store - The store instance.
-	 * @param {Object} attributes - The component attributes.
+	 * @param context The rendering context, usually the element's shadow root or main DOM element.
+	 * @param appStore The global application store for managing state.
+	 * @param params Additional parameters or attributes for rendering the component.
 	 */
-	beforeDraw(context, appStore, attributes) {
+	beforeDraw(context, appStore, params) {
 		// Hook for extending behavior before drawing
 	}
 
 	/**
-	 * Hook for extending behavior after drawing the component.
-	 *
-	 * @param {HTMLElement} context - The rendering context.
-	 * @param {Object} store - The store instance.
-	 * @param {Object} attributes - The component attributes.
+	 * Renders the component within the provided context.
+	 * @param context The rendering context, usually the element's shadow root or main DOM element.
+	 * @param appStore The global application store for managing state.
+	 * @param params Additional parameters or attributes for rendering the component.
+	 * @returns This implementation does not render anything and returns `null`.
+	 * @description
+	 * The `draw` method is responsible for rendering the component's content.
+	 * Override this method in subclasses to define custom rendering logic.
+	 * @example
+	 * class MyComponent extends WJElement {
+	 *   draw(context, appStore, params) {
+	 *     const div = document.createElement('div');
+	 *     div.textContent = 'Hello, world!';
+	 *     context.appendChild(div);
+	 *   }
+	 * }
 	 */
-	afterDraw(context, appStore, attributes) {
+	draw(context, appStore, params) {
+		return null;
+	}
+
+	/**
+	 * Hook for extending behavior after drawing the component.
+	 * @param context The rendering context, usually the element's shadow root or main DOM element.
+	 * @param appStore The global application store for managing state.
+	 * @param params Additional parameters or attributes for rendering the component.
+	 */
+	afterDraw(context, appStore, params) {
 		// Hook for extending behavior after drawing
 	}
 
@@ -280,9 +287,8 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Initializes the component, setting up attributes and rendering.
-	 *
-	 * @param {boolean} [force=false] - Whether to force initialization.
-	 * @return {Promise<void>} A promise that resolves when initialization is complete.
+	 * @param [force] Whether to force initialization.
+	 * @returns A promise that resolves when initialization is complete.
 	 */
 	initWjElement = (force = false) => {
 		return new Promise(async (resolve, reject) => {
@@ -376,8 +382,7 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Enqueues an update to the component.
-	 *
-	 * @return {Promise<void>} A promise that resolves when the update is complete.
+	 * @returns A promise that resolves when the update is complete.
 	 */
 	async enqueueUpdate() {
 		try {
@@ -399,10 +404,9 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Lifecycle method invoked when an observed attribute changes.
-	 *
-	 * @param {string} name - The attribute name.
-	 * @param {string} old - The old value of the attribute.
-	 * @param {string} newName - The new value of the attribute.
+	 * @param name The name of the attribute that changed.
+	 * @param old The old value of the attribute.
+	 * @param newName The new value of the attribute.
 	 */
 	attributeChangedCallback(name, old, newName) {
 		if (old !== newName) {
@@ -412,8 +416,7 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Refreshes the component.
-	 *
-	 * @return {Promise<void>} A promise that resolves when the refresh is complete.
+	 * @returns A promise that resolves when the refresh is complete.
 	 */
 	refresh() {
 		if (this.drawingStatus && this.drawingStatus >= this.drawingStatuses.START) {
@@ -429,12 +432,22 @@ export default class WJElement extends HTMLElement {
 	}
 
 	/**
-	 * Draws the component's content.
-	 *
-	 * @param {HTMLElement} context - The rendering context.
-	 * @param {Object} appStore - The store instance.
-	 * @param {Object} params - Parameters for drawing.
-	 * @return {DocumentFragment|HTMLElement|string|null} The rendered content.
+	 * Renders the component within the provided context.
+	 * @param context The rendering context, usually the element's shadow root or main DOM element.
+	 * @param appStore The global application store for managing state.
+	 * @param params Additional parameters or attributes for rendering the component.
+	 * @returns This implementation does not render anything and returns `null`.
+	 * @description
+	 * The `draw` method is responsible for rendering the component's content.
+	 * Override this method in subclasses to define custom rendering logic.
+	 * @example
+	 * class MyComponent extends WJElement {
+	 *   draw(context, appStore, params) {
+	 *     const div = document.createElement('div');
+	 *     div.textContent = 'Hello, world!';
+	 *     context.appendChild(div);
+	 *   }
+	 * }
 	 */
 	draw(context, appStore, params) {
 		return null;
@@ -442,9 +455,8 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Displays the component's content, optionally forcing a re-render.
-	 *
-	 * @param {boolean} [force=false] - Whether to force a re-render.
-	 * @return {Promise<void>} A promise that resolves when the display is complete.
+	 * @param [force] Whether to force a re-render.
+	 * @returns A promise that resolves when the display is complete.
 	 */
 	display(force = false) {
 		if (force) {
@@ -496,9 +508,8 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Converts a hyphenated string to camelCase.
-	 *
-	 * @param {string} name - The string to sanitize.
-	 * @return {string} The camelCase version of the string.
+	 * @param name The string to sanitize.
+	 * @returns The camelCase version of the string.
 	 */
 	sanitizeName(name) {
 		let parts = name.split('-');
@@ -507,10 +518,9 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Checks if an object property has a getter or setter.
-	 *
-	 * @param {Object} obj - The object to check.
-	 * @param {string} property - The property name.
-	 * @return {Object} An object containing references to the getter and setter, if they exist.
+	 * @param obj The object to check.
+	 * @param property The property name.
+	 * @returns An object containing references to the getter and setter, if they exist.
 	 */
 	checkGetterSetter(obj, property) {
 		let descriptor = Object.getOwnPropertyDescriptor(obj, property);
@@ -552,8 +562,7 @@ export default class WJElement extends HTMLElement {
 
 	/**
 	 * Resolves the rendering process of the component.
-	 *
-	 * @return {Promise<void>} A promise that resolves when rendering is complete.
+	 * @returns A promise that resolves when rendering is complete.
 	 * @private
 	 */
 	_resolveRender() {
@@ -581,8 +590,9 @@ export default class WJElement extends HTMLElement {
 			this.rendering = false;
 			this.isAttached = true;
 
-			if (this.removeClassAfterConnect)
+			if(this.removeClassAfterConnect) {
 				this.classList.remove(...this.removeClassAfterConnect);
+			}
 
 			this.drawingStatus = this.drawingStatuses.DONE;
 

@@ -9,21 +9,17 @@ import styles from "./styles/styles.css?inline";
  * It extends from WJElement and provides functionalities for file upload.
  * @documentation https://elements.webjet.sk/components/file-upload
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @slot - This is a default/unnamed slot.
- *
- * @part native - The native file upload part.
- * @part file-list - The file list part.
- * @part button - The upload button part.
- *
+ * @csspart native - The native file upload part.
+ * @csspart file-list - The file list part.
+ * @csspart button - The upload button part.
  * @event change - Fires when the file input changes.
  * @event drop - Fires when a file is dropped into the component.
- *
  * @tag wje-file-upload
  */
 export default class FileUpload extends WJElement {
+
     /**
      * Constructor for FileUpload.
      * Initializes a new instance of the Localizer.
@@ -36,8 +32,8 @@ export default class FileUpload extends WJElement {
     }
 
     /**
-     * Dependencies
-     * @type {Object}
+     * Dependencies for the FileUpload component.
+     * @type {object}
      */
     dependencies = {
         "wje-button": Button,
@@ -45,7 +41,7 @@ export default class FileUpload extends WJElement {
 
     /**
      * Setter for acceptedTypes attribute.
-     * @param {string} value - The accepted file types.
+     * @param {string} value The accepted file types for upload.
      */
     set acceptedTypes(value) {
         this.setAttribute("accepted-types", value);
@@ -53,7 +49,7 @@ export default class FileUpload extends WJElement {
 
     /**
      * Getter for acceptedTypes attribute.
-     * @returns {string} The accepted file types.
+     * @returns {string} The accepted file types for upload.
      */
     get acceptedTypes() {
         const accepted = this.getAttribute("accepted-types");
@@ -62,7 +58,7 @@ export default class FileUpload extends WJElement {
 
     /**
      * Setter for chunkSize attribute.
-     * @param {number} value - The chunk size for file upload.
+     * @param {number} value The chunk size for file upload.
      */
     set chunkSize(value) {
         this.setAttribute("chunk-size", value)
@@ -79,7 +75,7 @@ export default class FileUpload extends WJElement {
 
     /**
      * Setter for maxFileSize attribute.
-     * @param {number} value - The maximum file size for upload.
+     * @param {number} value The maximum file size for upload.
      */
     set maxFileSize(value) {
         this.setAttribute("max-file-size", value)
@@ -96,7 +92,7 @@ export default class FileUpload extends WJElement {
 
     /**
      * Setter for label attribute.
-     * @param {string} value - The URL to set as the upload URL.
+     * @param {string} value The URL to set as the upload URL.
      */
     set uploadUrl(value) {
         this.setAttribute("upload-url", value);
@@ -104,7 +100,7 @@ export default class FileUpload extends WJElement {
 
     /**
      * Gets the upload URL for the file upload element.
-     * @returns {string} The upload URL.
+     * @returns {string} The upload URL for the file upload element.
      */
     get uploadUrl() {
         return this.getAttribute("upload-url") ?? "/upload";
@@ -189,10 +185,7 @@ export default class FileUpload extends WJElement {
     }
 
     /**
-     * Method to draw the component.
-     * @param {Object} context - The context of the component.
-     * @param {Object} store - The store of the component.
-     * @param {Object} params - The parameters for the component.
+     * Method to draw the component on the screen.
      * @returns {DocumentFragment} The fragment containing the component.
      */
     draw() {
@@ -245,9 +238,6 @@ export default class FileUpload extends WJElement {
 
     /**
      * Method to perform actions after the component is drawn.
-     * @params {Object} context - The context to draw in.
-     * @params {Object} store - The store to use.
-     * @params {Object} params - The parameters to use.
      */
     afterDraw() {
         this.button.addEventListener("click", () => {
@@ -298,7 +288,7 @@ export default class FileUpload extends WJElement {
 
     /**
      * Method to handle form submission.
-     * @param {Event} event - The form submission event.
+     * @param {Event} event The form submission event.
      */
     handleSubmit(event) {
         event.preventDefault();
@@ -311,7 +301,7 @@ export default class FileUpload extends WJElement {
 
     /**
      * Method to handle file drop event.
-     * @param {Event} event - The file drop event.
+     * @param {Event} event The file drop event object.
      */
     handleDrop = (event) => {
         const fileList = event.dataTransfer.files;
@@ -323,7 +313,7 @@ export default class FileUpload extends WJElement {
 
     /**
      * Method to handle file input change event.
-     * @param {Event} event - The file input change event.
+     * @param {Event} event The file input change event object.
      */
     handleInputChange = (event) => {
         this.resetFormState();
@@ -352,7 +342,6 @@ export default class FileUpload extends WJElement {
 
     /**
      * Method to upload files.
-     * @param {FileList} files - The files to be uploaded.
      */
     uploadFiles() {
         if (this._queuedFiles.length === 0) {
@@ -405,8 +394,8 @@ export default class FileUpload extends WJElement {
 
     /**
      * Method to create a preview for the file.
-     * @param {File} file - The file for which the preview is to be created.
-     * @param {FileReader} reader - The FileReader instance to read the file.
+     * @param {File} file The file for which the preview is to be created.
+     * @param {FileReader} reader The FileReader instance to read the file.
      * @returns {HTMLElement} The created preview.
      */
     createPreview(file, reader) {
@@ -423,8 +412,8 @@ export default class FileUpload extends WJElement {
 
     /**
      * Method to create a thumbnail for the file.
-     * @param {File} file - The file for which the thumbnail is to be created.
-     * @param {FileReader} reader - The FileReader instance to read the file.
+     * @param {File} file The file for which the thumbnail is to be created.
+     * @param {FileReader} reader The FileReader instance to read the file.
      * @returns {HTMLElement} The created thumbnail.
      */
     createThumbnail(file, reader) {
@@ -436,7 +425,7 @@ export default class FileUpload extends WJElement {
 
     /**
      * Method to validate the files.
-     * @param {File} file - The file to be validated.
+     * @param {File} file The file to be validated.
      * TODO: alowed types a size limit by malo byt cez attributy
      */
     assertFilesValid(file) {
@@ -452,20 +441,9 @@ export default class FileUpload extends WJElement {
     }
 
     /**
-     * Method to update the status message.
-     * @param {string} text - The status message.
-     */
-    updateStatusMessage(text) {
-        // this.statusMessage.textContent = text;
-    }
-
-    /**
      * Method to reset the form state.
      */
     resetFormState() {
         this.fileList.textContent = '';
-
-        // submitButton.disabled = true;
-        this.updateStatusMessage(`🤷‍♂ Nothing's uploaded`)
     }
 }

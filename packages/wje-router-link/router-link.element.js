@@ -8,18 +8,15 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a router link in a routing system.
  * @documentation https://elements.webjet.sk/components/router-link
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @slot - The default slot for the router link.
- *
  * @tag wje-router-link
  */
 export default class RouterLink extends WJElement {
+
     /**
      * Creates an instance of RouterLink.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -29,7 +26,6 @@ export default class RouterLink extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -39,7 +35,6 @@ export default class RouterLink extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -56,10 +51,7 @@ export default class RouterLink extends WJElement {
     }
 
     /**
-     * Draws the component.
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the router link.
      * @returns {DocumentFragment}
      */
     draw() {

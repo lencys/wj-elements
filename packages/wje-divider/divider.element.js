@@ -6,20 +6,17 @@ import styles from "./styles/styles.css?inline";
  * It provides a simple divider line that can be used to separate content.
  * @documentation https://elements.webjet.sk/components/divider
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @slot - This is a default/unnamed slot.
- *
  * @cssproperty [--wje-border-width=1px] - The size of the border.
- * @cssproperty [--wje-divider-border-color=var(--wje-border-color)] - The color of the divider border.
- * @cssproperty [--wje-divider-border-width=var(--wje-border-width, 1px)] - The width of the divider border.
+ * @cssproperty [--wje-divider-border-color=var(--wje-border-color)] - The color of the divider borderline.
+ * @cssproperty [--wje-divider-border-width=var(--wje-border-width, 1px)] - The width of the divider borderline.
  * @cssproperty [--wje-divider-spacing=0] - The spacing for the divider.
- *
  * @tag wje-divider
- * @tagname wje-divider
+ * @tag wje-divider
  */
 export default class Divider extends WJElement {
+
     /**
      * Constructor for the Divider class.
      */
@@ -58,9 +55,6 @@ export default class Divider extends WJElement {
 
     /**
      * Draws the Divider.
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment} The created document fragment.
      */
     draw() {

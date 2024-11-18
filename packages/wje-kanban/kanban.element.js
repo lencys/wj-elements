@@ -8,20 +8,17 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a Kanban board.
  * @documentation https://elements.webjet.sk/components/kanban
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @slot - The default slot for the Kanban board.
- *
  * @csspart native - Styles the native part of the Kanban board.
  * @csspart pool - Styles the pool of the Kanban board.
- *
  * @tag wje-kanban
  */
 export default class Kanban extends WJElement {
+
     /**
      * Creates an instance of Kanban.
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -80,7 +77,6 @@ export default class Kanban extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -90,7 +86,6 @@ export default class Kanban extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -107,21 +102,16 @@ export default class Kanban extends WJElement {
 
     /**
      * Prepares the component before drawing.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * @param {object} context The context for drawing.
+     * @param {object} store The store for drawing.
+     * @param {object} params The parameters for drawing.
      */
     async beforeDraw(context, store, params) {
         this.response = await this.getPages();
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component after it has been prepared.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -167,9 +157,9 @@ export default class Kanban extends WJElement {
     }
 
     /**
-     * Called after the component has been drawn.
-     * @param pool
-     * @param items
+     * Iterates over a list of items, generates an HTML card for each, and appends it to the specified pool's content area.
+     * @param {HTMLElement} pool The container element where the cards will be appended. It should contain an element with the class `.pool-content`.
+     * @param {Array} items An array of items used to generate HTML cards.
      */
     customForeach = (pool, items) => {
         for (const item of items) {

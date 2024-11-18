@@ -244,6 +244,11 @@ export default class DemoButtonGroup extends WJElement {
   constructor() {
     super(template);
   }
+
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, this.context);
+  }
 }
 
 let __esModule = 'true';

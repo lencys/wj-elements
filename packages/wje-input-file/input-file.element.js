@@ -6,53 +6,56 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a file input.
  * @documentation https://elements.webjet.sk/components/input-file
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @csspart native - The native file input wrapper.
  * @csspart input - The text input.
- * @csspart file-input - The file input.
- *
- * @fires wje-input-file:change - Event fired when the file input changes.
- *
+ * @csspart file-input - The file input element.
+ * // @fires wje-input-file:change - Event fired when the file input changes.
  * @tag wje-input-file
  */
 export default class InputFile extends WJElement {
+
     /**
-     * @constructor
-     * @summary InputFile constructor
-     * @param {Object} options - The options
+     * Constructor for the InputFile class.
      */
-    constructor(options = {}) {
+    constructor() {
         super();
         this._value = "";
     }
 
+    /**
+     * @summary Sets the value of the input file.
+     * @param {string} value The value to set for the input file.
+     */
     set value(value) {
         this._value = value;
     }
 
+    /**
+     * Gets the value of the input file.
+     * @returns {string}
+     */
     get value() {
         return this._value;
     }
 
     /**
-     * @summary Class name
+     * The class name for the InputFile class.
      * @type {string}
      */
     className = "Input";
 
     /**
-     * @summary Get CSS stylesheet
+     * Returns the CSS stylesheet.
      * @static
-     * @returns {Object} styles
+     * @returns {object} styles
      */
     static get cssStyleSheet() {
         return styles;
     }
 
     /**
-     * @summary Get observed attributes
+     * Returns the observed attributes.
      * @static
      * @returns {Array} An empty array
      */
@@ -61,18 +64,15 @@ export default class InputFile extends WJElement {
     }
 
     /**
-     * @summary Setup attributes
+     * Sets up the attributes for the component.
      */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
     /**
-     * @summary Draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
-     * @returns {Object} Document fragment
+     * Draws the component.
+     * @returns {object} Document fragment
      */
     draw() {
         let fragment = document.createDocumentFragment();
@@ -117,10 +117,7 @@ export default class InputFile extends WJElement {
     }
 
     /**
-     * @summary After draw method
-     * @params {Object} context - The context
-     * @params {Object} store - The store
-     * @params {Object} params - The parameters
+     * After draw method for the InputFile class.
      */
     afterDraw() {
         this.input.addEventListener('click', () => {

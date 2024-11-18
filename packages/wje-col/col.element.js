@@ -1,6 +1,13 @@
 import { default as WJElement } from "../wje-element/element.js";
 import styles from "./scss/styles.scss?inline";
 
+/**
+ * @summary Col class that extends WJElement.
+ * @documentation https://elements.webjet.sk/components/col
+ * @status stable
+ * @augments WJElement
+ * @slot - The col main content.
+ */
 export default class Col extends WJElement {
     constructor() {
         super();
@@ -17,11 +24,7 @@ export default class Col extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component element.
      * @returns {DocumentFragment}
      */
     draw() {

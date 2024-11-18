@@ -7,19 +7,16 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a group of radio buttons.
  * @documentation https://elements.webjet.sk/components/radio-group
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @slot - The default slot for the radio group.
- *
  * @tag wje-radio-group
  */
 
 export default class RadioGroup extends WJElement {
+
     /**
      * Creates an instance of RadioGroup.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -31,7 +28,6 @@ export default class RadioGroup extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -46,9 +42,9 @@ export default class RadioGroup extends WJElement {
     static formAssociated = true;
 
     /**
-   * Setter for the value attribute.
-   * @param {string} value - The value to set.
-   */
+     * Setter for the value attribute.
+     * @param {string} value The value to set.
+     */
     set value(value) {
         if (this.checkRadio(value)) {
             this.setAttribute("value", value);
@@ -127,7 +123,7 @@ export default class RadioGroup extends WJElement {
      * @summary Setter for the defaultValue attribute.
      * This method sets the 'value' attribute of the custom input element to the provided value.
      * The 'value' attribute represents the default value of the input element.
-     * @param {string} value - The value to set as the default value.
+     * @param {string} value The value to set as the default value.
      */
     set defaultValue(value) {
         this.setAttribute('value', value);
@@ -141,11 +137,7 @@ export default class RadioGroup extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the radio group.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -173,11 +165,7 @@ export default class RadioGroup extends WJElement {
     }
 
     /**
-     * Adds event listeners after the component is drawn.
-     * Handles the selection of radio buttons.
-     * @params {Object} context - The context for drawing.
-     * @params {Object} store - The store for drawing.
-     * @params {Object} params - The parameters for drawing.
+     * Adds event listeners after the component is drawn. Handles the selection of radio buttons.
      */
     afterDraw() {
         this.checkRadio(this.value);
@@ -191,8 +179,7 @@ export default class RadioGroup extends WJElement {
 
     /**
      * Returns the radio button with the given value.
-     *
-     * @param {string} value - The value of the radio button.
+     * @param {string} value The value of the radio button.
      * @returns {Radio} The radio button.
      */
     getRadioByValue(value) {
@@ -226,32 +213,18 @@ export default class RadioGroup extends WJElement {
     }
 
     /**
-     * Returns all the elements in the radio group.
-     *
-     * @returns {Array<Element>} The elements.
+     * Retrieves all direct child elements of the current element.
+     * @returns {HTMLElement[]} An array of child elements.
      */
     getAllElements() {
         return Array.from(this.children);
     }
 
     /**
-     * @summary Callback function that is called when the custom element is associated with a form.
-     * This function adds an event listener to the form's submit event, which validates the input and propagates the validation.
-     * @param {HTMLFormElement} form - The form the custom element is associated with.
-     */
-    formAssociatedCallback(form) {
-        // form?.addEventListener('submit', () => {
-        //     // this.validateInput();
-        //     // this.propagateValidation();
-        // });
-    }
-
-    /**
      * The formResetCallback method is a built-in lifecycle callback that gets called when a form gets reset.
      * This method is responsible for resetting the value of the custom input element to its default value.
      * It also resets the form value and validity state in the form internals.
-     *
-     * @method
+     * @function
      */
     formResetCallback() {
         // Set the value of the custom input element to its default value
@@ -266,9 +239,8 @@ export default class RadioGroup extends WJElement {
      * The formStateRestoreCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is restored.
      * This method is responsible for restoring the value of the custom input element to its saved state.
      * It also restores the form value and validity state in the form internals to their saved states.
-     *
-     * @param {Object} state - The saved state of the custom input element.
-     * @method
+     * @param {object} state The saved state of the custom input element.
+     * @function
      */
     formStateRestoreCallback(state) {
         // Set the value of the custom input element to its saved value
@@ -282,9 +254,8 @@ export default class RadioGroup extends WJElement {
     /**
      * The formStateSaveCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is saved.
      * This method is responsible for saving the value of the custom input element.
-     *
-     * @returns {Object} The saved state of the custom input element.
-     * @method
+     * @returns {object} The saved state of the custom input element.
+     * @function
      */
     formStateSaveCallback() {
         return {
@@ -295,9 +266,8 @@ export default class RadioGroup extends WJElement {
     /**
      * The formDisabledCallback method is a built-in lifecycle callback that gets called when the disabled state of a form-associated custom element changes.
      * This method is not implemented yet.
-     *
-     * @param {boolean} disabled - The new disabled state of the custom input element.
-     * @method
+     * @param {boolean} disabled The new disabled state of the custom input element.
+     * @function
      */
     formDisabledCallback(disabled) {
         console.warn('formDisabledCallback not implemented yet')

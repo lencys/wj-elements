@@ -2,33 +2,32 @@ import { default as WJElement } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**
- * @summary This class represents an Badge element, extending the WJElement class.
+ * @summary This class represents Badge element, extending the WJElement class.
  * @documentation https://elements.webjet.sk/components/avatar
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @slot - The badge main content.
  */
 export default class Badge extends WJElement {
+
     /**
-     * Badge constructor
-     * @constructor
+     * Badge constructor method.
+     * @class
      */
     constructor() {
         super();
     }
 
     /**
-     * Class name
+     * Class name for the Badge element
      * @type {string}
      */
     className = "Badge";
 
     /**
-     * Get CSS stylesheet
+     * Get CSS stylesheet.
      * @static
-     * @returns {Object} styles - The CSS styles
+     * @returns {object} styles - The CSS styles
      */
     static get cssStyleSheet() {
         return styles;
@@ -36,25 +35,22 @@ export default class Badge extends WJElement {
 
     /**
      * Getter for the observed attributes.
-     * @return {Array} An array containing the name of the observed attribute.
+     * @returns {Array} An array containing the name of the observed attribute.
      */
     static get observedAttributes() {
         return ['color'];
     }
 
     /**
-     * Setup attributes
+     * Setup attributes for the Badge element.
      */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
     /**
-     * Draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
-     * @returns {Object} fragment - The document fragment
+     * Draw method for the Badge element.
+     * @returns {object} fragment - The document fragment
      */
     draw() {
         let fragment = document.createDocumentFragment();

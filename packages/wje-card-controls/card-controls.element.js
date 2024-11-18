@@ -2,54 +2,49 @@ import { default as WJElement } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**
- * @summary This class represents an Card Controls element, extending the WJElement class.
+ * @summary This class represents Card Controls element, extending the WJElement class.
  * @documentation https://elements.webjet.sk/components/card-controls
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @slot - The card controls main content.
- *
  * @cssproperty [--wje-card-controls-font-size=11px] - Font size of the component;
  * @cssproperty [--wje-card-controls-font-family=--wje-font-family-secondary] - Font family of the component;
  */
 export default class CardControls extends WJElement {
+
     /**
-     * CardControls constructor
-     * @constructor
+     * CardControls constructor method.
+     * @class
      */
     constructor() {
         super();
     }
 
     /**
-     * Class name
+     * Class name for the CardControls element.
      * @type {string}
      */
     className = "CardControls";
 
     /**
-     * Get CSS stylesheet
+     * Get CSS stylesheet for the CardControls element.
      * @static
-     * @returns {Object} styles - The CSS styles
+     * @returns {object} styles - The CSS styles
      */
     static get cssStyleSheet() {
         return styles;
     }
 
     /**
-     * Setup attributes
+     * Setup attributes for the CardControls element.
      */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
     /**
-     * Draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
-     * @returns {Object} fragment - The document fragment
+     * Draw method for the CardControls element.
+     * @returns {object} fragment - The document fragment
      */
     draw() {
         let fragment = document.createDocumentFragment();

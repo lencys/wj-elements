@@ -10,18 +10,15 @@ import Option from "../wje-option/option.js";
  * @summary This element represents a set of options.
  * @documentation https://elements.webjet.sk/components/options
  * @status stable
- *
- * @extends {WJElement}
- *
- * @fires wje-options:load - Event fired when the options are loaded.
- *
+ * @augments {WJElement}
+ * // @fires wje-options:load - Event fired when the options are loaded.
  * @tag wje-options
  */
 export default class Options extends WJElement {
+
     /**
      * Creates an instance of Options.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -39,7 +36,6 @@ export default class Options extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -47,70 +43,138 @@ export default class Options extends WJElement {
         return ['search'];
     }
 
+    /**
+     * Sets the option array path attribute.
+     * @param {string} value The value to set for the option array path.
+     */
     set optionArrayPath(value) {
         this.setAttribute("option-array-path", value);
     }
 
+    /**
+     * Gets the option array path attribute.
+     * @returns {string} The value of the option array path attribute or "data" if not set.
+     */
     get optionArrayPath() {
         return this.getAttribute("option-array-path");
     }
 
+    /**
+     * Checks if the option array path attribute is present.
+     * @returns {boolean} True if the option array path attribute is present, false otherwise.
+     */
     get hasOptionArrayPath() {
         return this.hasAttribute("option-array-path");
     }
 
+    /**
+     * Gets the dropdown height attribute.
+     * @returns {string} The value of the dropdown height attribute or "100%" if not set.
+     */
     get dropdownHeight() {
         return this.getAttribute("dropdown-height") || "100%";
     }
 
+    /**
+     * Sets the dropdown height attribute.
+     * @param {string} value The value to set for the dropdown height.
+     */
     set dropdownHeight(value) {
         this.setAttribute("dropdown-height", value);
     }
 
+    /**
+     * Sets the item value attribute.
+     * @param {string} value The value to set for the item value.
+     */
     set itemValue(value) {
         this.setAttribute("item-value", value);
     }
 
+    /**
+     * Gets the item value attribute.
+     * @returns {string} The value of the item value attribute or "value" if not set.
+     */
     get itemValue() {
         return this.getAttribute("item-value") || "value";
     }
 
+    /**
+     * Sets the item text attribute.
+     * @param {string} value The value to set for the item text.
+     */
     set itemText(value) {
         this.setAttribute("item-text", value);
     }
 
+    /**
+     * Gets the item text attribute.
+     * @returns {string} The value of the item text attribute or "text" if not set.
+     */
     get itemText() {
         return this.getAttribute("item-text") || "text";
     }
 
+    /**
+     * Gets the lazy load size attribute.
+     * @returns {number} The value of the lazy load size attribute or 10 if not set.
+     */
     get lazyLoadSize() {
         return this.getAttribute("lazy-load-size") || 10;
     }
 
+    /**
+     * Sets the lazy load size attribute.
+     * @param {number} value The value to set for the lazy load size.
+     */
     set lazyLoadSize(value) {
         this.setAttribute("lazy-load-size", value);
     }
 
+    /**
+     * Sets the search attribute.
+     * @param {string} value The value to set for the search.
+     */
     set search(value) {
         this.setAttribute("search", value);
     }
 
+    /**
+     * Gets the search attribute.
+     * @returns {string} The value of the search attribute.
+     */
     get search() {
         return this.getAttribute("search");
     }
 
+    /**
+     * Checks if the search attribute is present.
+     * @returns {boolean} True if the search attribute is present, false otherwise.
+     */
     get hasSearch() {
         return this.hasAttribute("search");
     }
 
+    /**
+     * Checks if the lazy attribute is present.
+     * @returns {boolean} True if the lazy attribute is present, false otherwise.
+     */
     get lazy() {
         return this.hasAttribute("lazy");
     }
 
+    /**
+     * Sets the lazy attribute.
+     * @param {boolean} value The value to set for the lazy attribute.
+     */
     set lazy(value) {
         this.setAttribute("lazy", value);
     }
 
+    /**
+     * Gets the loaded options.
+     * @returns {Array} The loaded options.
+     */
     get options() {
         return this.loadedOptions?.flat();
     }
@@ -124,10 +188,9 @@ export default class Options extends WJElement {
     }
 
     /**
-     * Lifecycle method, called whenever an observed property changes
+     * Lifecycle method, called whenever an observed property changes.
      */
     attributeChangedCallback(name, oldValue, newValue) {
-        // remove all loaded options 
         if (this.infiniteScroll && name === "search" && oldValue !== newValue) {
             this.loadedOptions = [];
             this.infiniteScroll.placementObj.innerHTML = "";
@@ -153,10 +216,6 @@ export default class Options extends WJElement {
 
     /**
      * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
     async draw() {
@@ -205,8 +264,7 @@ export default class Options extends WJElement {
 
     /**
      * Processes the given data and returns the options based on the option array path.
-     * 
-     * @param {any} data - The data to be processed.
+     * @param {any} data The data to be processed.
      * @returns {any} - The options based on the option array path.
      */
     processData(data) {
@@ -222,9 +280,8 @@ export default class Options extends WJElement {
 
     /**
      * Filters out drawn options from the response.
-     * 
-     * @param {Object | null} response - The response to filter.
-     * @returns {Object} - The filtered response.
+     * @param {object | null} response The response to filter.
+     * @returns {object} The filtered response.
      */
     filterOutDrawnOptions(response) {
         const splittedOptionArrayPath = this.optionArrayPath ? this.optionArrayPath?.split(".") : [];
@@ -235,10 +292,10 @@ export default class Options extends WJElement {
     }
 
     /**
-     * 
-     * @param {Object | Array | null} object 
-     * @param {Array<string> | null} pathToProperty 
-     * @returns  {Object | Array | null}
+     * Recursively updates the object based on the provided path to the property.
+     * @param {object | Array | null} object
+     * @param {Array<string> | null} pathToProperty
+     * @returns {object | Array | null}
      */
     recursiveUpdate = (object, pathToProperty) => {
         if (pathToProperty.length === 0) {
@@ -256,8 +313,7 @@ export default class Options extends WJElement {
 
     /**
      * Generates an HTML option element based on the provided item.
-     * 
-     * @param {Object} item - The item to generate the option element for.
+     * @param {object} item The item to generate the option element for.
      * @returns {HTMLElement} The generated option element.
      */
     htmlItem = (item) => {
@@ -279,9 +335,8 @@ export default class Options extends WJElement {
 
     /**
      * Fetches the pages from the provided URL.
-     *
-     * @param {number} page - The page number to fetch.
-     * @returns {Promise<Object>} The fetched data.
+     * @param {number} page The page number to fetch.
+     * @returns {Promise<object>} The fetched data.
      * @throws Will throw an error if the response is not ok.
      */
     async getPages(page) {
@@ -289,14 +344,12 @@ export default class Options extends WJElement {
         if (!response.ok) {
             throw new Error(`An error occurred: ${response.status}`);
         }
-        const data = await response.json();
-        return data;
+        return await response.json();
     }
 
     /**
      * Finds the selected option data based on the given selected option values.
-     *
-     * @param {Array} selectedOptionValues - The array of selected option values.
+     * @param {Array} selectedOptionValues The array of selected option values.
      * @returns {Array} - The array of option data that matches the selected option values.
      */
     findSelectedOptionData(selectedOptionValues = []) {
@@ -305,8 +358,7 @@ export default class Options extends WJElement {
 
     /**
      * Adds an option to the element.
-     * 
-     * @param {Object} optionData - The data of the option to be added.
+     * @param {object} optionData The data of the option to be added.
      */
     addOption(optionData) {
         if (this.loadedOptions.some(option => option[this.itemValue] === optionData[this.itemValue])) {
@@ -319,9 +371,8 @@ export default class Options extends WJElement {
 
     /**
      * Adds options to the element.
-     * 
-     * @param {Array} optionsData - The array of option data to be added.
-     * @param {boolean} [silent=false] - Whether to suppress events triggered by adding options.
+     * @param {Array} optionsData The array of option data to be added.
+     * @param {boolean} [silent] Whether to suppress events triggered by adding options.
      */
     addOptions(optionsData = [], silent = false) {
         if (Array.isArray(optionsData))

@@ -6,51 +6,65 @@ import Popup from "../wje-popup/popup.element.js";
  * @summary This element represents a dropdown menu.
  * @documentation https://elements.webjet.sk/components/dropdown
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @csspart native - The native part of the dropdown.
- *
  * @slot trigger - The slot for the trigger of the dropdown.
  * @slot - The default slot for the dropdown.
- *
- * @fires wje-dropdown:open - Event fired when the dropdown is opened.
- * @fires wje-dropdown:close - Event fired when the dropdown is closed.
- *
+ * // @fires wje-dropdown:open - Event fired when the dropdown is opened.
+ * // @fires wje-dropdown:close - Event fired when the dropdown is closed.
  * @tag wje-dropdown
- *
- * */
+ */
 export default class Dropdown extends WJElement {
+
     /**
      * Creates an instance of Dropdown.
-     *
-     * @constructor
-     * */
+     * @class
+     */
     constructor() {
         super();
     }
 
+    /**
+     * The placement of the dropdown.
+     * @type {{"wje-popup": Popup}}
+     */
     dependencies = {
         "wje-popup": Popup
     }
 
+    /**
+     * Sets the placement of the dropdown.
+     * @param value
+     */
     set trigger(value) {
         this.setAttribute("trigger", value);
     }
 
+    /**
+     * Gets the placement of the dropdown.
+     * @returns {string|string}
+     */
     get trigger() {
         return this.getAttribute("trigger") || "click";
     }
 
+    /**
+     * Sets the placement of the dropdown.
+     * @type {string}
+     */
     className = "Dropdown";
 
+    /**
+     * Getter for the CSS stylesheet.
+     * @returns {string[]}
+     */
     static get observedAttributes() {
         return ["active"];
     }
 
     /**
      * Callback function to handle other dropdowns being opened. Close the dropdown if it is not the target and collapse is enabled.
-     * @param {Event} e - The event object.
+     * @param {Event} e The event object.
      */
     otherDropdownOpennedCallback = (e) => {
         if (e.detail.detail.target !== this) {
@@ -75,10 +89,7 @@ export default class Dropdown extends WJElement {
     }
 
     /**
-     * Draws the dropdown element.
-     * @params {Object} context - The context to draw in.
-     * @params {Object} store - The store to use.
-     * @params {Object} params - The parameters to use.
+     * Draws the dropdown element and returns the created document fragment.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -122,6 +133,9 @@ export default class Dropdown extends WJElement {
         return fragment;
     }
 
+    /**
+     * Adds event listeners for the mouseenter and mouseleave events.
+     */
     afterDisconnect() {
         event.removeListener(this, "mouseenter", null, this.onOpen);
         event.removeListener(this, "mouseleave", null, this.onClose);
@@ -167,8 +181,7 @@ export default class Dropdown extends WJElement {
      * @summary Toggles the dropdown element between active and inactive states.
      * Calls the `onOpen` method if the element is currently inactive,
      * and calls the `onClose` method if the element is currently active.
-     *
-     * @param {Event} e - The event object.
+     * @param {Event} e The event object.
      */
     toggleCallback = (e) => {
         e.stopPropagation();
@@ -180,8 +193,8 @@ export default class Dropdown extends WJElement {
     };
 
     /**
-     * @summary Open the popup
-     * @param e
+     * Open the popup element.
+     * @param {object} e
      */
     onOpen = (e) => {
         e.stopPropagation();
@@ -212,8 +225,8 @@ export default class Dropdown extends WJElement {
     };
 
     /**
-     * @summary Close the popup
-     * @param e
+     * Close the popup element.
+     * @param {object} e
      */
     onClose = (e) => {
 

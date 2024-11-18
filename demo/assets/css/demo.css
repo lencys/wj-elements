@@ -38,8 +38,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  margin-bottom: 3rem;
+  border-radius: var(--wje-border-radius-large);
+  margin-bottom: 1rem;
   padding: 2rem 0;
   background: transparent;
 
@@ -169,4 +169,101 @@ wje-header .logo {
   #logo-dark {
     display: block;
   }
+}
+
+/**
+ * Code snippet styling
+ */
+
+pre {
+  /*overflow-x: auto;*/
+  /*word-wrap: break-word;*/
+  /*white-space: pre-wrap;*/
+  /*padding: 10px;*/
+  /*border: 1px solid var(--wje-border-color);*/
+  /*border-radius: var(--wje-border-radius-large);*/
+  /*background: var(--wje-color-contrast-0);*/
+  /*max-width: 100%;*/
+  /*font-size: 1em;*/
+  /*line-height: 1.2rem;*/
+  /*position: relative;*/
+}
+
+.html-snippet {
+  margin-bottom: 3rem;
+}
+.snippet {
+  font-family: monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-x: auto;
+  color: #0f0f0f;
+  border: 1px solid var(--wje-border-color);
+  border-radius: var(--wje-border-radius-large);
+  padding: 1rem;
+  position: relative;
+  &:hover {
+    .copy-button {
+      opacity: .3;
+    }
+    .copy-button:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+pre {
+
+  margin: 0;
+}
+
+code {
+  font-family: inherit;
+  white-space: pre-wrap;
+  background: transparent;
+  color: #abb2be;
+  padding: 5px 0;
+  &:hover {
+    color: #abb2be;
+  }
+}
+
+.snippet {
+  .symbol { color: #9c238c; }
+  .tag { color: #9c238c; }
+  .attribute { color: #806c33; }
+  .attribute-empty { color: #806c33; }
+  .value { color: #b32f24; }
+  .text { color: #0f0f0f; }
+  .comment { color: #32721d; }
+  .style-content { color: #806c33; }
+}
+
+:host,
+.wje-theme-dark,
+.dark {
+  .snippet {
+    .symbol { color: #abb2be; }
+    .tag { color: #dd6e76; }
+    .attribute { color: #d09b6c; }
+    .attribute-empty { color: #d09b6c; }
+    .value { color: #9ac280; }
+    .text { color: #abb2be; }
+    .comment { color: #5c636f; }
+    .style-content { color: #d09b6c; }
+  }
+}
+
+.copy-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px 10px;
+  background-color: #bb11d9;
+  color: #fff;
+  border: none;
+  border-radius: var(--wje-border-radius-medium);
+  cursor: pointer;
+  opacity: 0; /* Initial opacity */
+  /*transition: opacity 0.3s ease-in-out; !* Smooth transition effect *!*/
 }

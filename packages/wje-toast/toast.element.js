@@ -1,4 +1,4 @@
-import { default as WJElement, event,WjElementUtils } from "../wje-element/element.js";
+import { default as WJElement, WjElementUtils, event } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**
@@ -6,28 +6,24 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a toast notification.
  * @documentation https://elements.webjet.sk/components/toast
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @csspart native - The native part
- *
- * @prop {string} headline - The headline of the toast.
- * @prop {boolean} open - The open state of the toast.
- * @prop {number} duration - The duration of the toast.
- * @prop {boolean} closable - The closable state of the toast.
- * @prop {string} color - The color of the toast.
- * @prop {boolean} countdown - The countdown state of the toast.
- *
+ * @cssproperty {string} headline - Specifies the headline text of the toast. Represents the main title or heading displayed in the toast.
+ * @cssproperty {boolean} open - Indicates whether the toast is currently open (visible). A value of `true` shows the toast, while `false` hides it.
+ * @cssproperty {number} duration - Determines the duration (in milliseconds) for which the toast is displayed. After this time, the toast will automatically close unless it is manually closed.
+ * @cssproperty {boolean} closable - Specifies whether the toast can be manually closed by the user. If `true`, the toast will include a close button or mechanism.
+ * @cssproperty {string} color - Defines the color of the toast. Accepts any valid CSS color value such as `hex`, `RGB`, or named colors.
+ * @cssproperty {boolean} countdown - Indicates whether a countdown is displayed in the toast. When `true`, a visual countdown timer is shown to indicate the remaining time before the toast closes.
  * @slot - The content of the toast.
  * @slot media - The media of the toast.
- *
- * @fires wje-toast:after-show - Fired after the toast is shown.
- * @fires wje-toast:after-hide - Fired after the toast is hidden.
+ * // @fires wje-toast:after-show - Fired after the toast is shown.
+ * // @fires wje-toast:after-hide - Fired after the toast is hidden.
  */
+
 export default class Toast extends WJElement {
+
     /**
-     * Toast constructor
-     * @constructor
+     * Creates an instance of Toast.
      */
     constructor() {
         super();
@@ -36,7 +32,7 @@ export default class Toast extends WJElement {
     }
 
     /**
-     * Set headline
+     * Set headline value of the toast.
      * @param value
      */
     set headline(value) {
@@ -44,7 +40,7 @@ export default class Toast extends WJElement {
     }
 
     /**
-     * Get headline
+     * Get headline value of the toast.
      * @returns {string}
      */
     get headline() {
@@ -52,7 +48,7 @@ export default class Toast extends WJElement {
     }
 
     /**
-     * Set open
+     * Set open value of the toast.
      * @param value
      */
     set open(value) {
@@ -63,7 +59,7 @@ export default class Toast extends WJElement {
     }
 
     /**
-     * Get open
+     * Get open value of the toast.
      * @returns {boolean}
      */
     get open() {
@@ -71,7 +67,7 @@ export default class Toast extends WJElement {
     }
 
     /**
-     * Set duration
+     * Set duration value of the toast.
      * @param value
      */
     set duration(value) {
@@ -79,7 +75,7 @@ export default class Toast extends WJElement {
     }
 
     /**
-     * Get duration
+     * Get duration value of the toast.
      * @returns {number}
      */
     get duration() {
@@ -87,7 +83,7 @@ export default class Toast extends WJElement {
     }
 
     /**
-     * Set closable
+     * Set closable value of the toast.
      * @param value
      */
     set closable(value) {
@@ -95,7 +91,7 @@ export default class Toast extends WJElement {
     }
 
     /**
-     * Get closable
+     * Get closable value of the toast.
      * @returns {boolean}
      */
     get closable() {
@@ -103,7 +99,7 @@ export default class Toast extends WJElement {
     }
 
     /**
-     * Set color
+     * Set color value of the toast.
      * @param value
      */
     set color(value) {
@@ -111,7 +107,7 @@ export default class Toast extends WJElement {
     }
 
     /**
-     * Get color
+     * Get color value of the toast.
      * @returns {string}
      */
     get color() {
@@ -119,7 +115,7 @@ export default class Toast extends WJElement {
     }
 
     /**
-     * Set countdown
+     * Set countdown value of the toast.
      * @param value
      */
     set countdown(value) {
@@ -128,7 +124,7 @@ export default class Toast extends WJElement {
     }
 
     /**
-     * Get countdown
+     * Get countdown value of the toast.
      * @returns {boolean}
      */
     get countdown() {
@@ -136,7 +132,7 @@ export default class Toast extends WJElement {
     }
 
     /**
-     * Set icon
+     * Set icon value of the toast.
      * @param value
      */
     set icon(value) {
@@ -144,7 +140,7 @@ export default class Toast extends WJElement {
     }
 
     /**
-     * Get icon
+     * Get icon value of the toast.
      * @returns {string}
      */
     get icon() {
@@ -152,53 +148,30 @@ export default class Toast extends WJElement {
     }
 
     /**
-     * Class name
+     * The class name for the component.
      * @type {string}
      */
     className = "Toast";
 
     /**
-     * Get CSS stylesheet
+     * Returns the CSS stylesheet for the component.
      * @static
-     * @returns {Object} styles
+     * @returns {CSSStyleSheet} The CSS stylesheet
      */
     static get cssStyleSheet() {
         return styles;
     }
 
     /**
-     * Returns the list of attributes to observe for changes.
-     *
-     * @static
-     * @returns {Array<string>}
-     */
-    // static get observedAttributes() {
-    //     return ["open", "color", "duration"];
-    // }
-
-    // /**
-    //  * Called when an attribute changes.
-    //  *
-    //  * @param {string} name - The name of the attribute.
-    //  * @param {string} old - The old value of the attribute.
-    //  * @param {string} newName - The new value of the attribute.
-    //  */
-    // attributeChangedCallback(name, old, newName) {
-    // }
-
-    /**
-     * Setup attributes
+     * Setup attributes for the Button element.
      */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
     /**
-     * Draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
-     * @returns {Object} Document fragment
+     * Draw method for the toast notification.
+     * @returns {object} Document fragment
      */
     draw() {
         let fragment = document.createDocumentFragment();
@@ -268,10 +241,7 @@ export default class Toast extends WJElement {
     }
 
     /**
-     * After draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
+     * After draw method for the toast notification.
      */
     afterDraw() {
         this.closeBtn.addEventListener('wje-button:click', this.hide);
@@ -296,7 +266,6 @@ export default class Toast extends WJElement {
 
     /**
      * Before disconnect method
-     *
      * This method is called before the element is disconnected from the document.
      */
     beforeDisconnect() {
@@ -310,7 +279,6 @@ export default class Toast extends WJElement {
 
     /**
      * Starts the timer.
-     *
      * This method sets the `startTime` property to the current time and sets
      * the `timeoutID` property to the ID of the timeout. The method also
      * dispatches the `wje-toast:after-hide` custom event when the timeout
@@ -328,7 +296,6 @@ export default class Toast extends WJElement {
 
     /**
      * Stops the timer.
-     *
      * This method clears the timeout and calculates the remaining time.
      * The method is called when the toast notification is paused.
      */
@@ -342,7 +309,6 @@ export default class Toast extends WJElement {
 
     /**
      * Resumes the timer.
-     *
      * This method resumes the timer if the remaining time is greater
      * than zero. The method is called when the toast notification is resumed.
      */
@@ -354,7 +320,6 @@ export default class Toast extends WJElement {
 
     /**
      * Asynchronously shows the toast notification.
-     *
      * This method sets the `open` property to `true` and dispatches the
      * `wje-toast:after-show` custom event. If the toast is already open,
      * the method returns `undefined`.
@@ -370,7 +335,6 @@ export default class Toast extends WJElement {
 
     /**
      * Asynchronously hides the toast notification.
-     *
      * This method sets the `open` property to `false` and dispatches the
      * `wje-toast:after-hide` custom event. If the toast is already hidden,
      * the method returns `undefined`.
@@ -417,11 +381,9 @@ export default class Toast extends WJElement {
 
     /**
      * Asynchronously starts the toast notification.
-     *
      * This method appends the toast notification to the document body and
      * shows the toast notification. The method returns a promise that
      * resolves when the toast notification is shown.
-     *
      * @returns {Promise<unknown>}
      */
     start = () => {
@@ -443,6 +405,4 @@ export default class Toast extends WJElement {
             this.addEventListener('wje-toast:after-hide', this.removeChildAndStack);
         });
     }
-
-
 }

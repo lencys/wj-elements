@@ -1,12 +1,29 @@
 import { defaultStoreActions } from "./default-store-actions.js?v=@@version@@";
 import PubSub from "./pubsub.js?v=@@version@@";
 
+/**
+ * @summary A reactive state management system with support for reducers, events, and state immutability.
+ * @description The `Store` class provides a centralized way to manage application state with actions, reducers, and event subscriptions. It supports handling both object and array state, with flexibility for custom reducers.
+ * @example
+ * const store = new Store({
+ *   reducer: (state, action) => { ... },
+ *   state: { user: { id: 1, name: 'John' } }
+ * });
+ * store.subscribe('user', (newState, oldState) => console.log('User changed:', newState));
+ * store.dispatch({ type: 'user/UPDATE', payload: { name: 'Jane' } });
+ */
 class Store {
     _state;
     _reducer;
     events;
     status;
 
+    /**
+     * Initializes the store with optional reducer and state.
+     * @param {object} [params] Configuration for the store.
+     * @param {Function} [params.reducer] Initial reducer function for handling state updates.
+     * @param {object} [params.state] Initial state of the store.
+     */
     constructor(params = {}) {
         this._isPause = false;
         this._state = {};
@@ -29,13 +46,13 @@ class Store {
     }
 
     /**
-     * A dispatcher for actions that looks in the actions 
-     * collection and runs the action if it can find it
-     *
-     * @param {string} actionKey
-     * @param {mixed} payload
-     * @returns {boolean}
-     * @memberof Store
+     * Dispatches an action to update the state by invoking the reducer function.
+     * @param {object} action The action object containing the type and any associated payload.
+     * @param {string} action.type The type of the action being dispatched.
+     * @returns {boolean} Returns `true` after the state has been successfully updated.
+     * @example
+     * const action = { type: 'INCREMENT', payload: { amount: 1 } };
+     * store.dispatch(action);
      */
     dispatch(action) {
         // Create a console group which will contain the logs from our Proxy etc
@@ -56,30 +73,76 @@ class Store {
         return true;
     }
 
+    /**
+     * Retrieves a deep copy of the current state to ensure immutability.
+     * @returns {object} A deep copy of the current state.
+     * @example
+     * const currentState = store.getState();
+     * console.log(currentState);
+     */
     getState() {
         return JSON.parse(JSON.stringify(this._state))
     }
 
+    /**
+     * Subscribes to a specific event with a provided callback function.
+     * @param {string} eventName The name of the event to subscribe to.
+     * @param {Function} callbackFn The function to execute when the event is triggered.
+     * @returns {Function} - A function to unsubscribe from the event.
+     * @example
+     * const unsubscribe = store.subscribe('stateChange', (newState) => {
+     *   console.log('State changed:', newState);
+     * });
+     * // Later, to unsubscribe
+     * unsubscribe();
+     */
     subscribe(eventName, callbackFn) {
         return this.events.subscribe(eventName, callbackFn)
     }
 
+    /**
+     * Unsubscribes from a specific event by removing all associated listeners.
+     * @param {string} eventName The name of the event to unsubscribe from.
+     * @returns {void}
+     * @example
+     * store.unsubscribe('stateChange');
+     */
     unsubscribe(eventName) {
         delete this.events[eventName];
     }
 
+    /**
+     * Pauses event handling or other operations.
+     * @returns {this} Returns the current instance for method chaining.
+     * @example
+     * store.pause().doSomething();
+     */
     pause() {
         this._isPause = true;
-
         return this;
     }
 
+    /**
+     * Resumes event handling or other operations.
+     * @param {*} [val] Optional value to pass while resuming.
+     * @returns {this} Returns the current instance for method chaining.
+     * @example
+     * store.play().doSomething();
+     */
     play(val) {
         this._isPause = false;
-
         return this;
     }
 
+    /**
+     * Merges a new reducer function into the existing reducer for a specific state property.
+     * @param {string} stateValueName The key in the state object that the new reducer will manage.
+     * @param {Function} newReducer The reducer function to handle updates for the specified state property.
+     * @returns {void}
+     * @example
+     * const newReducer = (newState, currentState) => ({ ...currentState, ...newState });
+     * store.mergeReducers('user', newReducer);
+     */
     mergeReducers(stateValueName, newReducer) {
         let reducerCopy = this._reducer;
         this._reducer = (state, newState) => {
@@ -91,6 +154,16 @@ class Store {
         }
     }
 
+    /**
+     * Synchronizes each entry in an array with the store by defining or updating state entries.
+     * @param {string} storeKey The key prefix used for defining or updating store entries.
+     * @param {Array<object>} [array] The array of entries to be synchronized with the store.
+     * @param {string} [identificator] The property name used as a unique identifier for each entry.
+     * @returns {void}
+     * @example
+     * const data = [{ id: 1, name: 'Item 1' }, { id: 2, name: 'Item 2' }];
+     * store.makeEveryArrayEntryAsStoreState('items', data, 'id');
+     */
     makeEveryArrayEntryAsStoreState(storeKey, array = [], identificator = 'id') {
         array.forEach((entry) => {
             if (this.getState().hasOwnProperty(`${storeKey}-${entry[identificator]}`)) {
@@ -101,6 +174,20 @@ class Store {
         });
     }
 
+    /**
+     * Defines a new state variable and associates it with a reducer.
+     * @param {string} stateValueName The name of the state variable to define.
+     * @param {*} defaultValue The initial value of the state variable.
+     * @param {Function|null} [reducer] An optional reducer function to manage updates for the state variable.
+     * @param {string} [key] The key used to identify individual entries if the state value is an array or object.
+     * @returns {void}
+     * @example
+     * // Define a new state with a custom reducer
+     * store.define('user', { id: 1, name: 'John Doe' }, (newState, currentState) => ({ ...currentState, ...newState }));
+     * @example
+     * // Define a new state with default array reducer
+     * store.define('items', [], null, 'itemId');
+     */
     define(stateValueName, defaultValue, reducer, key = "id") {
         if (this._state.hasOwnProperty(stateValueName)) {
             console.warn(`STATE už obsahuje premennú ${stateValueName},ktorú sa pokúšate pridať`)
@@ -123,6 +210,13 @@ class Store {
         })
     }
 
+    /**
+     * Refreshes the state by wrapping it in a Proxy to track changes and notify subscribers.
+     * @param {object} newState The new state object to be set. Defaults to an empty object if not provided.
+     * @returns {void}
+     * @example
+     * store.refreshProxy({ user: { id: 1, name: 'John Doe' } });
+     */
     refreshProxy(newState) {
         // Set our state to be a Proxy. We are setting the default state by
         // checking the params and defaulting to an empty object if no default
@@ -158,6 +252,15 @@ class Store {
         });
     }
 
+    /**
+     * Creates a reducer function to manage an object state.
+     * @param {string} stateValueName The name of the state property this reducer manages.
+     * @returns {Function} A reducer function that handles `ADD`, `UPDATE`, and `DELETE` actions for the specified state property.
+     * @throws {Error} If the payload is an array, an error is logged since the reducer is designed for object state management.
+     * @example
+     * const userReducer = store.createObjectReducer('user');
+     * const newState = userReducer({ type: 'user/ADD', payload: { id: 1, name: 'John Doe' } });
+     */
     createObjectReducer(stateValueName) {
         return (action, state = {}) => {
             if (Array.isArray(action.payload)) {
@@ -188,6 +291,16 @@ class Store {
         }
     }
 
+    /**
+     * Creates a reducer function to manage an array state.
+     * @param {string} stateValueName The name of the state property this reducer manages.
+     * @param {string} key The unique key used to identify items in the array for updates and deletions.
+     * @returns {Function} A reducer function that handles `ADD`, `ADD_MANY`, `UPDATE`, `DELETE`, and `LOAD` actions for the specified state property.
+     * @throws {Error} If `action.payload` is not an array when required.
+     * @example
+     * const itemsReducer = store.createArrayReducer('items', 'id');
+     * const newState = itemsReducer({ type: 'items/ADD', payload: { id: 1, name: 'Item 1' } });
+     */
     createArrayReducer(stateValueName, key) {
         return (action, state = []) => {
             if (Array.isArray(action.payload) && action.payload.length === 0) {

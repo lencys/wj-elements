@@ -6,39 +6,36 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a visually hidden element.
  * @documentation https://elements.webjet.sk/components/visually-hidden
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @slot - The default slot for the visually hidden element.
- *
  * @tag wje-visually-hidden
  */
 export default class VisuallyHidden extends WJElement {
+
     /**
-     * @constructor
-     * @summary VisuallyHidden constructor
+     * Creates an instance of VisuallyHidden.
      */
     constructor() {
         super();
     }
 
     /**
-     * @summary Class name
+     * The class name for the component.
      * @type {string}
      */
     className = "VisuallyHidden";
 
     /**
-     * @summary Get CSS stylesheet
+     * Returns the CSS stylesheet for the component.
      * @static
-     * @returns {Object} styles
+     * @returns {CSSStyleSheet} The CSS stylesheet
      */
     static get cssStyleSheet() {
         return styles;
     }
 
     /**
-     * @summary Get observed attributes
+     * Returns the list of observed attributes.
      * @static
      * @returns {Array} An empty array
      */
@@ -47,18 +44,15 @@ export default class VisuallyHidden extends WJElement {
     }
 
     /**
-     * @summary Setup attributes
+     * Sets up the attributes for the component.
      */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
     /**
-     * @summary Draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
-     * @returns {Object} Document fragment
+     * Draws the component for the visually hidden element.
+     * @returns {object} Document fragment
      */
     draw() {
         let fragment = document.createDocumentFragment();

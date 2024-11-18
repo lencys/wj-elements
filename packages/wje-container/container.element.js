@@ -7,18 +7,15 @@ import styles from "./styles/styles.css?inline";
  * The indentation is applied as a CSS variable (`--wje-container-indent`) which can be used in the styles of child elements or components.
  * @documentation https://elements.webjet.sk/components/card-header
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @slot - The slot for adding child elements or components.
- *
  * @cssproperty [--wje-container-indent] - The indentation of the container.
- *
  * @tag wje-container
  */
 export default class Container extends WJElement {
+
     /**
-     * Container constructor.
+     * Container constructor method.
      */
     constructor() {
         super();
@@ -32,7 +29,7 @@ export default class Container extends WJElement {
 
     /**
      * Getter for the CSS stylesheet.
-     * @returns {Object} The styles object.
+     * @returns {object} The styles object.
      * @static
      */
     static get cssStyleSheet() {
@@ -56,10 +53,7 @@ export default class Container extends WJElement {
     }
 
     /**
-     * Draws the Container.
-     * @param {Object} context - The context to draw in.
-     * @param {Object} store - The store to use.
-     * @param {Object} params - The parameters to use.
+     * Draws the Container element.
      * @returns {DocumentFragment} The created document fragment.
      */
     draw() {

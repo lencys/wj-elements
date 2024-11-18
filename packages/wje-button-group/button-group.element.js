@@ -4,61 +4,56 @@ import styles from "./styles/styles.css?inline";
 /**
  * @summary ButtonGroup class
  * @class
- * @extends WJElement
- *
+ * @augments WJElement
  * @csspart native - The component's native wrapper.
- *
  * @slot - The button group main content.
- *
- * @part native - The component's native wrapper.
+ * @csspart native - The component's native wrapper.
  */
 
 export default class ButtonGroup extends WJElement {
+
     /**
-     * ButtonGroup constructor
-     * @constructor
+     * ButtonGroup constructor method.
+     * @class
      */
     constructor() {
         super();
     }
 
     /**
-     * Class name
+     * Class name for the ButtonGroup element
      * @type {string}
      */
     className = "ButtonGroup";
 
     /**
-     * Get CSS stylesheet
+     * Get CSS stylesheet for the ButtonGroup element.
      * @static
-     * @returns {Object} styles - The CSS styles
+     * @returns {object} styles - The CSS styles
      */
     static get cssStyleSheet() {
         return styles;
     }
 
     /**
-     * Get observed attributes
+     * Get observed attributes for the ButtonGroup element.
      * @static
-     * @returns {Array<string>} observedAttributes - The observed attributes
+     * @returns {Array<string>} observedAttributes - The observed attributes array
      */
     static get observedAttributes() {
         return [];
     }
 
     /**
-     * Setup attributes
+     * Setup attributes for the ButtonGroup element.
      */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
     /**
-     * Draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
-     * @returns {Object} fragment - The document fragment
+     * Draw method for the ButtonGroup element.
+     * @returns {object} fragment - The document fragment
      */
     draw() {
         let fragment = document.createDocumentFragment();
@@ -77,10 +72,7 @@ export default class ButtonGroup extends WJElement {
     }
 
     /**
-     * After draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
+     * After draw method for the ButtonGroup element.
      */
     afterDraw() {
         const slottedElements = [...this.slotElement.assignedElements({ flatten: true })];
@@ -98,9 +90,9 @@ export default class ButtonGroup extends WJElement {
     }
 
     /**
-     * Find button method
-     * @param {Object} el - The element
-     * @returns {Object} button - The button
+     * Find button method to find the button element.
+     * @param {object} el The element
+     * @returns {object} button - The button element
      */
     findButton(el) {
         const selector = 'wje-button';

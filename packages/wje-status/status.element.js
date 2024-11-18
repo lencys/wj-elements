@@ -2,51 +2,51 @@ import { default as WJElement } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**
- * @summary This class represents an Status element, extending the WJElement class.
+ * @summary This class represents Status element, extending the WJElement class.
  * @documentation https://elements.webjet.sk/components/status
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @slot - The status main content.
+ * @slot start - The status start content.
+ * @slot end - The status end content.
+ * @csspart native - The native part of the status.
+ * @csspart bullet - The bullet part of the status.
+ * @tag wje-status
  */
 export default class Status extends WJElement {
+
     /**
-     * Badge constructor
-     * @constructor
+     * Creates an instance of Status.
      */
     constructor() {
         super();
     }
 
     /**
-     * Class name
+     * The class name for the component.
      * @type {string}
      */
     className = "Status";
 
     /**
-     * Get CSS stylesheet
+     * Returns the CSS stylesheet for the component.
      * @static
-     * @returns {Object} styles - The CSS styles
+     * @returns {CSSStyleSheet} The CSS stylesheet
      */
     static get cssStyleSheet() {
         return styles;
     }
 
     /**
-     * Setup attributes
+     * Sets up the attributes for the component.
      */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
     /**
-     * Draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
-     * @returns {Object} fragment - The document fragment
+     * Draws the component for the status.
+     * @returns {object} fragment - The document fragment
      */
     draw() {
         let fragment = document.createDocumentFragment();

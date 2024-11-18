@@ -5,16 +5,14 @@ import styles from "./styles/styles.css?inline";
  * @summary This class represents an Breadcrumb element, extending the WJElement class.
  * @documentation https://elements.webjet.sk/components/breadcrumb
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @slot - The breadcrumb main content.
- *
  * @csspart native - The component's native wrapper.
  */
 export default class Breadcrumb extends WJElement {
+
     /**
-     * Breadcrumb constructor
+     * Breadcrumb constructor method.
      */
     constructor() {
         super();
@@ -24,19 +22,8 @@ export default class Breadcrumb extends WJElement {
         this.showCollapsedIndicator = false;
     }
 
-    // set showCollapsedIndicator(value) {
-    //     // this.removeAttribute("show-collapsed-indicator");
-    //
-    //     if(WjElementUtils.stringToBoolean(value))
-    //         this.setAttribute("show-collapsed-indicator", value);
-    // }
-    //
-    // get showCollapsedIndicator() {
-    //     return this.hasAttribute("show-collapsed-indicator");
-    // }
-
     /**
-     * Get show separator flag
+     * Get show separator flag.
      * @returns {boolean} showSeparator - The show separator flag
      */
     get showSeparator() {
@@ -44,58 +31,55 @@ export default class Breadcrumb extends WJElement {
     }
 
     /**
-     * Set show separator flag
-     * @param {boolean} value - The value to set
+     * Set show separator flag.
+     * @param {boolean} value The value to set
      */
     set showSeparator(value) {
         this._showSeparator = value;
     }
 
     /**
-     * Get collapsed variant
-     * @returns {string} collapsedVariant - The collapsed variant
+     * Get collapsed variant.
+     * @returns {string} The collapsed variant value in uppercase.
      */
     get collapsedVariant() {
         return this._collapsedVariant.toUpperCase();
     }
 
     /**
-     * Set collapsed variant
-     * @param {string} value - The value to set
+     * Set collapsed variant.
+     * @param {string} value The value to set
      */
     set collapsedVariant(value) {
         this._collapsedVariant = value || this.parentElement.collapsedVariant;
     }
 
     /**
-     * Class name
+     * Class name for the Breadcrumb element.
      * @type {string}
      */
     className = "Breadcrumb";
 
     /**
-     * Get CSS stylesheet
+     * Get CSS stylesheet for the Breadcrumb element.
      * @static
-     * @returns {Object} styles - The CSS styles
+     * @returns {object} styles - The CSS styles
      */
     static get cssStyleSheet() {
         return styles;
     }
 
     /**
-     * Get observed attributes
+     * Get observed attributes for the Breadcrumb element.
      * @static
-     * @returns {Array<string>} observedAttributes - The observed attributes
+     * @returns {Array<string>} - The observed attributes array for the Breadcrumb element.
      */
     static get observedAttributes() {
         return ["show-collapsed-indicator", "collapsed", "last"];
     }
 
     /**
-     * Attribute changed callback
-     * @param {string} name - The attribute name
-     * @param {string} oldValue - The old value
-     * @param {string} newValue - The new value
+     * Attribute changed callback method.
      * @returns {boolean} false - Always returns false
      */
     attributeChangedCallback(name, oldValue, newValue) {
@@ -117,18 +101,15 @@ export default class Breadcrumb extends WJElement {
     }
 
     /**
-     * Setup attributes
+     * Setup attributes for the Breadcrumb element.
      */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
     /**
-     * Draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
-     * @returns {Object} fragment - The document fragment
+     * Draw method for the Breadcrumb element.
+     * @returns {object} fragment - The document fragment
      */
     draw() {
         let fragment = document.createDocumentFragment();
@@ -185,8 +166,8 @@ export default class Breadcrumb extends WJElement {
     }
 
     /**
-     * Draw collapsed indicator
-     * @returns {Object} collapsedIndicator - The collapsed indicator
+     * Draw collapsed indicator method.
+     * @returns {object} - The collapsed indicator element.
      */
     drawCollapsedIndicator(){
         let collapsedIndicator = null;
@@ -201,8 +182,8 @@ export default class Breadcrumb extends WJElement {
     }
 
     /**
-     * Collapse dropdown
-     * @returns {Object} dropdown - The dropdown
+     * Collapse dropdown button.
+     * @returns {object} dropdown - The dropdown button.
      */
     collapseDropdown(){
         let dropdown = document.createElement("wje-dropdown");
@@ -237,8 +218,8 @@ export default class Breadcrumb extends WJElement {
     }
 
     /**
-     * Collapse button
-     * @returns {Object} button - The button
+     * Collapse button method.
+     * @returns {object} - The button element.
      */
     collapseButton(){
         let button = document.createElement("button");

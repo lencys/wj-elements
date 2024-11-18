@@ -8,26 +8,21 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a popup.
  * @documentation https://elements.webjet.sk/components/popup
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @csspart native - The native part of the popup.
- *
  * @slot anchor - The slot for the anchor of the popup.
  * @slot arrow - The slot for the arrow of the popup.
  * @slot - The default slot for the popup.
- *
- * @fires wje-popup:reposition - Event fired when the popup is repositioned.
- * @fires wje-popup:show - Event fired when the popup is shown.
- * @fires wje-popup:hide - Event fired when the popup is hidden.
- *
+ * // @fires wje-popup:reposition - Event fired when the popup is repositioned.
+ * // @fires wje-popup:show - Event fired when the popup is shown.
+ * // @fires wje-popup:hide - Event fired when the popup is hidden.
  * @tag wje-popup
  */
 export default class Popup extends WJElement {
+
     /**
      * Creates an instance of Popup.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -36,8 +31,7 @@ export default class Popup extends WJElement {
 
     /**
      * Sets the manual property of the popup.
-     *
-     * @param {boolean} value - The value to set.
+     * @param {boolean} value The value to set.
      */
     set manual(value) {
         this._manual = value;
@@ -45,7 +39,6 @@ export default class Popup extends WJElement {
 
     /**
      * Gets the manual property of the popup.
-     *
      * @returns {boolean} The value of the manual property.
      */
     get manual() {
@@ -59,7 +52,6 @@ export default class Popup extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -70,7 +62,6 @@ export default class Popup extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -87,10 +78,6 @@ export default class Popup extends WJElement {
 
     /**
      * Called when an attribute changes.
-     *
-     * @param {string} name - The name of the attribute.
-     * @param {string} old - The old value of the attribute.
-     * @param {string} newName - The new value of the attribute.
      */
     attributeChangedCallback(name, old, newName) {
         if (name === "active") {
@@ -114,11 +101,7 @@ export default class Popup extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the popup.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -151,9 +134,6 @@ export default class Popup extends WJElement {
 
     /**
      * After Draws the component.
-     * @params {Object} context - The context for drawing.
-     * @params {Object} store - The store for drawing.
-     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         this.setAnchor();

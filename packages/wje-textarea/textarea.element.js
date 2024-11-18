@@ -6,32 +6,29 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a textarea input.
  * @documentation https://elements.webjet.sk/components/textarea
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments WJElement
  * @csspart native - The native textarea wrapper.
  * @csspart input - The textarea input.
- *
- * @cssproperty [--wje-textarea-font-family=var(--wje-font-family)] - The font family of the textarea.
- * @cssproperty [--wje-textarea-background-color=var(--wje-background)] - The background color of the textarea.
- * @cssproperty [--wje-textarea-color=var(--wje-color)] - The color of the textarea.
- * @cssproperty [--wje-textarea-color-invalid=var(--wje-color-danger)] - The color of the textarea when invalid.
- * @cssproperty [--wje-textarea-border-width=1px] - The border width of the textarea.
- * @cssproperty [--wje-textarea-border-style=solid] - The border style of the textarea.
- * @cssproperty [--wje-textarea-border-color=var(--wje-border-color)] - The border color of the textarea.
- * @cssproperty [--wje-textarea-border-color-focus=var(--wje-color-primary)] - The border color of the textarea when focused.
- * @cssproperty [--wje-textarea-border-radius=4px] - The border radius of the textarea.
- * @cssproperty [--wje-textarea-margin-bottom=.5rem] - The margin bottom of the textarea.
- * @cssproperty [--wje-textarea-line-height=20px] - The line height of the textarea.
- * @cssproperty [--wje-textarea-padding=0.5rem] - The padding of the textarea.
- *
+ * @cssproperty [--wje-textarea-font-family=var(--wje-font-family)] - Specifies the font family used for the textarea. Accepts any valid CSS font-family value.
+ * @cssproperty [--wje-textarea-background-color=var(--wje-background)] - Sets the background color of the textarea. Accepts any valid CSS color value.
+ * @cssproperty [--wje-textarea-color=var(--wje-color)] - Defines the text color within the textarea. Accepts any valid CSS color value.
+ * @cssproperty [--wje-textarea-color-invalid=var(--wje-color-danger)] - Changes the text color of the textarea when it is invalid. Useful for highlighting validation errors.
+ * @cssproperty [--wje-textarea-border-width=1px] - Specifies the width of the textarea's border. Accepts any valid CSS length unit.
+ * @cssproperty [--wje-textarea-border-style=solid] - Sets the style of the textarea's border. Accepts standard CSS border styles such as `solid`, `dashed`, or `dotted`.
+ * @cssproperty [--wje-textarea-border-color=var(--wje-border-color)] - Defines the border color of the textarea. Accepts any valid CSS color value.
+ * @cssproperty [--wje-textarea-border-color-focus=var(--wje-color-primary)] - Specifies the border color of the textarea when it is focused. Enhances the user experience by providing visual feedback.
+ * @cssproperty [--wje-textarea-border-radius=4px] - Determines the border radius of the textarea, defining how rounded its corners are. Accepts any valid CSS length unit.
+ * @cssproperty [--wje-textarea-margin-bottom=.5rem] - Sets the bottom margin of the textarea. Ensures spacing between the textarea and other elements.
+ * @cssproperty [--wje-textarea-line-height=20px] - Specifies the line height of the text within the textarea. Helps control the vertical spacing of the text.
+ * @cssproperty [--wje-textarea-padding=0.5rem] - Defines the padding inside the textarea. Controls the spacing between the content and the border.
  * @tag wje-textarea
  */
+
 export default class Textarea extends WJElement {
+
     /**
      * Creates an instance of Textarea.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -41,7 +38,7 @@ export default class Textarea extends WJElement {
 
     /**
      * Setter for the value attribute.
-     * @param {string} value - The value to set.
+     * @param {string} value The value to set.
      */
     set value(value) {
         this.internals.setFormValue(value);
@@ -71,7 +68,7 @@ export default class Textarea extends WJElement {
 
     /**
      * Setter for the invalid attribute.
-     * @param {boolean} isInvalid - Whether the input is invalid.
+     * @param {boolean} isInvalid Whether the input is invalid.
      */
     set invalid(isInvalid) {
         if (isInvalid)
@@ -132,9 +129,8 @@ export default class Textarea extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
-     * @returns {CSSStyleSheet}
+     * @returns {CSSStyleSheet} The CSS stylesheet
      */
     static get cssStyleSheet() {
         return styles;
@@ -148,7 +144,6 @@ export default class Textarea extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -172,11 +167,7 @@ export default class Textarea extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the textarea.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -249,9 +240,6 @@ export default class Textarea extends WJElement {
 
     /**
      * Sets up the event listeners after the component is drawn.
-     * @params {Object} context - The context for drawing.
-     * @params {Object} store - The store for drawing.
-     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         this.resizeObserver = new ResizeObserver(() => this.setTextareaHeight);
@@ -292,19 +280,16 @@ export default class Textarea extends WJElement {
 
     /**
      * Updates the counter for the textarea.
-     *
-     * @param {Event} e - The event object.
+     * @param {Event} e The event object.
      */
     counterFn = (e) => {
         this.counterElement.innerText = e.target.value.length + "/" + this.input.maxLength;
     }
 
-
-
     /**
      * @summary Callback function that is called when the custom element is associated with a form.
      * This function adds an event listener to the form's submit event, which validates the input and propagates the validation.
-     * @param {HTMLFormElement} form - The form the custom element is associated with.
+     * @param {HTMLFormElement} form The form the custom element is associated with.
      */
     formAssociatedCallback(form) {
         this.internals.setFormValue(this.value);
@@ -314,8 +299,7 @@ export default class Textarea extends WJElement {
      * The formResetCallback method is a built-in lifecycle callback that gets called when a form gets reset.
      * This method is responsible for resetting the value of the custom input element to its default value.
      * It also resets the form value and validity state in the form internals.
-     *
-     * @method
+     * @function
      */
     formResetCallback() {
         // Set the value of the custom input element to its default value
@@ -330,9 +314,8 @@ export default class Textarea extends WJElement {
      * The formStateRestoreCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is restored.
      * This method is responsible for restoring the value of the custom input element to its saved state.
      * It also restores the form value and validity state in the form internals to their saved states.
-     *
-     * @param {Object} state - The saved state of the custom input element.
-     * @method
+     * @param {object} state The saved state of the custom input element.
+     * @function
      */
     formStateRestoreCallback(state) {
         // Set the value of the custom input element to its saved value
@@ -346,9 +329,8 @@ export default class Textarea extends WJElement {
     /**
      * The formStateSaveCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is saved.
      * This method is responsible for saving the value of the custom input element.
-     *
-     * @returns {Object} The saved state of the custom input element.
-     * @method
+     * @returns {object} The saved state of the custom input element.
+     * @function
      */
     formStateSaveCallback() {
         return {
@@ -359,9 +341,8 @@ export default class Textarea extends WJElement {
     /**
      * The formDisabledCallback method is a built-in lifecycle callback that gets called when the disabled state of a form-associated custom element changes.
      * This method is not implemented yet.
-     *
-     * @param {boolean} disabled - The new disabled state of the custom input element.
-     * @method
+     * @param {boolean} disabled The new disabled state of the custom input element.
+     * @function
      */
     formDisabledCallback(disabled) {
         console.warn('formDisabledCallback not implemented yet')

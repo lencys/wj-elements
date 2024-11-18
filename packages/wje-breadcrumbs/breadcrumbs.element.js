@@ -5,15 +5,14 @@ import styles from "./styles/styles.css?inline";
  * @summary Breadcrumbs class.
  * @documentation https://elements.webjet.sk/components/breadcrumbs
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @slot - The breadcrumb main content.
  */
 export default class Breadcrumbs extends WJElement {
+    
     /**
-     * Breadcrumbs constructor
-     * @constructor
+     * Breadcrumbs constructor method.
+     * @class
      */
     constructor() {
         super();
@@ -26,33 +25,30 @@ export default class Breadcrumbs extends WJElement {
     }
 
     /**
-     * Class name
+     * Class name for the Breadcrumbs element.
      * @type {string}
      */
     className = "Breadcrumbs";
 
     /**
-     * Get CSS stylesheet
+     * Get CSS stylesheet for the Breadcrumbs element.
      * @static
-     * @returns {Object} styles - The CSS styles
+     * @returns {object} styles - The CSS styles
      */
     static get cssStyleSheet() {
         return styles;
     }
 
     /**
-     * Setup attributes
+     * Setup attributes for the Breadcrumbs element.
      */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
     /**
-     * Draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
-     * @returns {Object} fragment - The document fragment
+     * Draw method for the Breadcrumbs element.
+     * @returns {object} fragment - The document fragment
      */
     draw() {
         let fragment = document.createDocumentFragment();
@@ -65,7 +61,7 @@ export default class Breadcrumbs extends WJElement {
     }
 
     /**
-     * After draw method
+     * After draw method for the Breadcrumbs element.
      */
     afterDraw() {
         let maxItems = +this.maxItems || 0;
@@ -97,8 +93,8 @@ export default class Breadcrumbs extends WJElement {
     }
 
     /**
-     * Get breadcrumbs
-     * @returns {Array} breadcrumbs - The breadcrumbs
+     * Get breadcrumbs method.
+     * @returns {Array} - The breadcrumbs array
      */
     getBreadcrumbs() {
         return Array.from(this.querySelectorAll('wje-breadcrumb')) || [];

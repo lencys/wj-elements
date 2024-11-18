@@ -6,22 +6,18 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a group of tabs.
  * @documentation https://elements.webjet.sk/components/tab-group
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments WJElement
  * @slot - The default slot for the tab group.
  * @slot nav - Slot for the navigation of the tab group.
- *
- * @cssproperty [--wje-tab-group-padding=1rem] - The padding of the tab group.
- *
+ * @cssproperty [--wje-tab-group-padding=1rem] - Specifies the padding inside the tab group. This property defines the space between the content of the tab group and its outer boundary. Accepts any valid CSS length unit (e.g., `px`, `rem`, `em`, `%`).
  * @tag wje-tab-group
  */
 
 export default class TabGroup extends WJElement {
+
     /**
      * Creates an instance of TabGroup.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -31,7 +27,6 @@ export default class TabGroup extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -68,10 +63,9 @@ export default class TabGroup extends WJElement {
 
     /**
      * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * @param {object} context The context for drawing.
+     * @param {object} store The store for drawing.
+     * @param {object} params The parameters for drawing.
      * @returns {DocumentFragment}
      */
     draw(context, store, params) {
@@ -109,9 +103,6 @@ export default class TabGroup extends WJElement {
 
     /**
      * Sets up the event listeners after the component is drawn.
-     * @params {Object} context - The context for drawing.
-     * @params {Object} store - The store for drawing.
-     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         let activeTab = this.getActiveTab();
@@ -142,8 +133,7 @@ export default class TabGroup extends WJElement {
 
     /**
      * Sets the active tab and panel.
-     *
-     * @param {string} tab - The name of the tab to set as active.
+     * @param {string} tab The name of the tab to set as active.
      */
     setActiveTab(tab) {
         this.removeActiveTab();
@@ -153,7 +143,6 @@ export default class TabGroup extends WJElement {
 
     /**
      * Returns the currently active tab.
-     *
      * @returns {Element|null} The active tab, or null if no tab is active.
      */
     getActiveTab() {
@@ -163,7 +152,6 @@ export default class TabGroup extends WJElement {
 
     /**
      * Returns all tabs.
-     *
      * @returns {Array<Element>} An array of all tabs.
      */
     getTabAll() {
@@ -172,7 +160,6 @@ export default class TabGroup extends WJElement {
 
     /**
      * Returns all panels.
-     *
      * @returns {Array<Element>} An array of all panels.
      */
     getPanelAll() {
@@ -181,7 +168,6 @@ export default class TabGroup extends WJElement {
 
     /**
      * Returns the names of all tabs.
-     *
      * @returns {Array<string>} An array of all tab names.
      */
     getPanelAllName() {

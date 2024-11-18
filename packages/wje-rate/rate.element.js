@@ -6,26 +6,22 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a rating component.
  * @documentation https://elements.webjet.sk/components/rate
  * @status stable
- *
- * @extends {WJElement}
- *
- * @attribute {number} precision - The precision of the rating component.
- * @attribute {number} max - The maximum value of the rating component.
- * @attribute {Array<string>} icons - The icons of the rating component.
- *
- * @part native - The native part of the rating component.
- *
- * @cssprop [--wje-rate-gap=.25rem;] - The gap of the rating component.
- * @cssprop [--wje-rate-color=var(--wje-color-contrast-11)] - The color of the rating component.
- * @cssprop [--wje-rate-selected-color=var(--wje-color-danger-9)] - The selected color of the rating component.
- *
+ * @augments {WJElement}
+ * @attr {number} precision - The precision of the rating component.
+ * @attr {number} max - The maximum value of the rating component.
+ * @attr {Array<string>} icons - The icons of the rating component.
+ * @csspart native - The native part of the rating component.
+ * @cssproperty [--wje-rate-gap=.25rem] - Defines the spacing (gap) between individual items in the rating component. Accepts any valid CSS length unit (e.g., `px`, `rem`, `em`) to adjust the distance between rating elements.
+ * @cssproperty [--wje-rate-color=var(--wje-color-contrast-11)] - Specifies the default color of the rating items. Accepts any valid CSS color value, including named colors, hex values, RGB, or CSS variables.
+ * @cssproperty [--wje-rate-selected-color=var(--wje-color-danger-9)] - Sets the color for selected or highlighted rating items. This property helps visually distinguish selected ratings. Accepts any valid CSS color value.
  * @tag wje-rate
  */
+
 export default class Rate extends WJElement {
+
     /**
      * Creates an instance of Rate.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -33,8 +29,7 @@ export default class Rate extends WJElement {
 
     /**
      * Sets the precision of the rating component.
-     *
-     * @param {number} value - The value to set.
+     * @param {number} value The value to set.
      */
     set precision(value) {
         this.setAttribute("precision", value);
@@ -42,7 +37,6 @@ export default class Rate extends WJElement {
 
     /**
      * Gets the precision of the rating component.
-     *
      * @returns {number} The value of the precision.
      */
     get precision() {
@@ -51,8 +45,7 @@ export default class Rate extends WJElement {
 
     /**
      * Sets the maximum value of the rating component.
-     *
-     * @param {number} value - The value to set.
+     * @param {number} value The value to set.
      */
     set max(value) {
         this.setAttribute("max", value);
@@ -60,7 +53,6 @@ export default class Rate extends WJElement {
 
     /**
      * Gets the maximum value of the rating component.
-     *
      * @returns {number} The value of the maximum value.
      */
     get max() {
@@ -69,8 +61,7 @@ export default class Rate extends WJElement {
 
     /**
      * Sets the icons of the rating component.
-     *
-     * @param {Array<string>} value - The value to set.
+     * @param {Array<string>} value The value to set.
      */
     set icons(value) {
         return value;
@@ -78,7 +69,6 @@ export default class Rate extends WJElement {
 
     /**
      * Gets the icons of the rating component.
-     *
      * @returns {Array<string>} The value of the icons.
      */
     get icons() {
@@ -87,8 +77,7 @@ export default class Rate extends WJElement {
 
     /**
      * Sets the value of the rating component.
-     *
-     * @param {number} value - The value to set.
+     * @param {number} value The value to set.
      */
     set value(value) {
         this.setAttribute("value", value);
@@ -96,18 +85,20 @@ export default class Rate extends WJElement {
 
     /**
      * Gets the value of the rating component.
-     *
-     * @returns {number} The value of the value.
+     * @returns {number} The value of the rating component.
      */
     get value() {
         return this.hasAttribute("value") ? +this.getAttribute("value") : 0;
     }
 
+    /**
+     * Sets the hover value of the rating component.
+     * @type {string}
+     */
     className = "Rate";
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -117,7 +108,6 @@ export default class Rate extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -127,10 +117,9 @@ export default class Rate extends WJElement {
 
     /**
      * Called when an attribute changes.
-     *
-     * @param {string} name - The name of the attribute.
-     * @param {string} old - The old value of the attribute.
-     * @param {string} newName - The new value of the attribute.
+     * @param {string} name The name of the attribute that changed.
+     * @param {string} old The old value of the attribute.
+     * @param {string} newName The new value of the attribute.
      */
     attributeChangedCallback(name, old, newName) {
         if(name === "is-hover") {
@@ -146,11 +135,7 @@ export default class Rate extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the rating component.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -182,9 +167,6 @@ export default class Rate extends WJElement {
 
     /**
      * Adds event listeners after the component is drawn.
-     * @params {Object} context - The context for drawing.
-     * @params {Object} store - The store for drawing.
-     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         if(this.hasAttribute('disabled') || this.hasAttribute('readonly')) {
@@ -202,8 +184,7 @@ export default class Rate extends WJElement {
 
     /**
      * Creates the icons for the rating component.
-     *
-     * @param {number} i - The index of the icon.
+     * @param {number} i The index of the icon.
      * @returns {Element} The icon element.
      */
     createIcons(i) {
@@ -266,8 +247,7 @@ export default class Rate extends WJElement {
 
     /**
      * Event handler for the mouse enter event.
-     *
-     * @param {Event} e - The event.
+     * @param {Event} e The event.
      */
     onMouseEnter = (e) => {
         e.preventDefault();
@@ -278,8 +258,7 @@ export default class Rate extends WJElement {
 
     /**
      * Event handler for the mouse leave event.
-     *
-     * @param {Event} e - The event.
+     * @param {Event} e The event.
      */
     onMouseLeave = (e) => {
         e.preventDefault();
@@ -290,8 +269,7 @@ export default class Rate extends WJElement {
 
     /**
      * Event handler for the mouse move event.
-     *
-     * @param {Event} e - The event.
+     * @param {Event} e The event.
      */
     onMouseMove = (e) => {
         e.preventDefault();
@@ -305,8 +283,7 @@ export default class Rate extends WJElement {
 
     /**
      * Event handler for the touch start event.
-     *
-     * @param {Event} e - The event.
+     * @param {Event} e The event.
      */
     onTouchStart = (e) => {
         e.preventDefault();
@@ -317,8 +294,7 @@ export default class Rate extends WJElement {
 
     /**
      * Event handler for the touch end event.
-     *
-     * @param {Event} e - The event.
+     * @param {Event} e The event.
      */
     onTouchEnd = (e) => {
         e.preventDefault();
@@ -329,8 +305,7 @@ export default class Rate extends WJElement {
 
     /**
      * Event handler for the touch move event.
-     *
-     * @param {Event} e - The event.
+     * @param {Event} e The event.
      */
     onTouchMove = (e) => {
         e.preventDefault();
@@ -341,8 +316,7 @@ export default class Rate extends WJElement {
 
     /**
      * Event handler for the click event.
-     *
-     * @param {Event} e - The event.
+     * @param {Event} e The event.
      */
     onClick = (e) => {
         e.preventDefault();
@@ -352,8 +326,7 @@ export default class Rate extends WJElement {
 
     /**
      * Returns the icons for the rating component.
-     *
-     * @param {number} index - The index of the icon.
+     * @param {number} index The index of the icon.
      * @returns {Element} The icon element.
      */
     getIcons(index) {
@@ -368,9 +341,8 @@ export default class Rate extends WJElement {
 
     /**
      * Returns the value from the x position.
-     *
-     * @param {number} coordinate - The x coordinate.
-     * @returns {number} The value.
+     * @param {number} coordinate The x coordinate.
+     * @returns {number} The value from the x position.
      */
     getValueFromXPosition(coordinate) {
         const { left, right, width } = this.native.getBoundingClientRect();
@@ -380,11 +352,14 @@ export default class Rate extends WJElement {
     }
 
     /**
-     * Rounds a number to the given precision.
-     *
-     * @param {number} numberToRound - The number to round.
-     * @param {number} precision - The precision.
-     * @returns {number} The rounded number.
+     * Rounds a given number to the nearest specified precision.
+     * @param {number} numberToRound The number to be rounded.
+     * @param {number} [precision] The precision to which the number should be rounded.
+     * @returns {number} - The rounded number.
+     * @example
+     * roundToPrecision(2.3); // Returns 2.5
+     * roundToPrecision(2.3, 0.1); // Returns 2.3
+     * roundToPrecision(2.6, 1); // Returns 3
      */
     roundToPrecision(numberToRound, precision = 0.5) {
         const multiplier = 1 / precision;

@@ -5,14 +5,17 @@ import styles from "./styles/styles.css?inline";
  * @summary This class represents an Accordion element, extending the WJElement class.
  * @documentation https://elements.webjet.sk/components/accordion
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
+ * @attr {boolean} multiple - The multiple attribute for the accordion.
+ * @attr {number} index - The index attribute for the accordion.
+ * @attr {boolean} disabled - The disabled attribute for the accordion.
+ * @attr {boolean} expanded - The expanded attribute for the accordion.
  * @slot - The accordion main content.
- *
+ * //@fires [wje-accordion-item:open] The event fired when the accordion item is opened.
  * @tag wje-accordion
  */
 export default class Accordion extends WJElement {
+
     /**
      * Constructor for the Accordion class.
      */
@@ -20,12 +23,42 @@ export default class Accordion extends WJElement {
         super();
     }
 
+    /**
+     * Sets the `multiple` attribute on the element.
+     * If `true`, the `multiple` attribute is added.
+     * If `false`, the `multiple` attribute is removed.
+     * @param {boolean} value A boolean value indicating whether the element should support multiple selections.
+     */
     set multiple(value) {
-        this.setAttribute("multiple", "");
+        if (value) {
+            this.setAttribute("multiple", "");
+        } else {
+            this.removeAttribute("multiple");
+        }
     }
 
+    /**
+     * Determines whether the element has the `multiple` attribute.
+     * @returns {boolean} `true` if the `multiple` attribute is present, otherwise `false`.
+     */
     get multiple() {
         return this.hasAttribute("multiple");
+    }
+
+    /**
+     * Sets the value of the `index` attribute.
+     * @param {number|string} value The value to set for the `index` attribute.
+     */
+    set index(value) {
+        this.setAttribute("index", value);
+    }
+
+    /**
+     * Retrieves the value of the `index` attribute as a number.
+     * @returns {number} The numerical value of the `index` attribute, or `0` if the attribute is not set.
+     */
+    get index() {
+        return +this.getAttribute("index") || 0;
     }
 
     /**
@@ -36,7 +69,7 @@ export default class Accordion extends WJElement {
 
     /**
      * Getter for the CSS stylesheet.
-     * @return {Object} The styles for the Accordion element.
+     * @returns {object} The styles for the Accordion element.
      */
     static get cssStyleSheet() {
         return styles;
@@ -44,7 +77,7 @@ export default class Accordion extends WJElement {
 
     /**
      * Getter for the observed attributes.
-     * @return {Array} An array containing the name of the observed attribute.
+     * @returns {Array} An array containing the name of the observed attribute.
      */
     static get observedAttributes() {
         return [];
@@ -57,12 +90,12 @@ export default class Accordion extends WJElement {
         this.isShadowRoot = "open";
     }
 
+    /**
+     * Method to run before the element is drawn.
+     */
     beforeDraw() {
-
         this.getAccordions().forEach((accordion, index) => {
-            // this.hasAttribute("disabled")
-            //     accordion.setAttribute("disabled", "");
-            if (this.hasAttribute("index") && +this.getAttribute("index") === index) {
+            if (this.index && +this.index === index) {
                 accordion.classList.add("expanded");
             }
         });
@@ -70,12 +103,9 @@ export default class Accordion extends WJElement {
 
     /**
      * Method to draw the Accordion element.
-     * @param {Object} context - The context in which the element is drawn.
-     * @param {Object} store - The store containing the state of the element.
-     * @param {Object} params - The parameters for drawing the element.
-     * @return {Object} The document fragment containing the drawn element.
+     * @returns {object} The document fragment containing the drawn element.
      */
-    draw(context, store, params) {
+    draw() {
         let fragment = document.createDocumentFragment();
 
         let slot = document.createElement("slot");
@@ -87,6 +117,9 @@ export default class Accordion extends WJElement {
         return fragment;
     }
 
+    /**
+     * Method to run after the element is drawn.
+     */
     afterDraw() {
         this.addEventListener("wje-accordion-item:open", (e) => {
             if (!this.multiple)
@@ -94,6 +127,10 @@ export default class Accordion extends WJElement {
         });
     }
 
+    /**
+     * Method to run after the element is drawn.
+     * @param exception
+     */
     collapseAll(exception) {
         this.getAccordions().forEach((accordion) => {
             if (accordion !== exception)
@@ -101,6 +138,10 @@ export default class Accordion extends WJElement {
         });
     }
 
+    /**
+     * Method to get the accordions.
+     * @returns {Array} An array containing the accordions.
+     */
     getAccordions() {
         return Array.from(this.querySelectorAll(':scope > wje-accordion-item'));
     }

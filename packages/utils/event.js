@@ -7,7 +7,7 @@ class Event {
     }
 
     /**
-     * Dispatch event to the element
+     * Dispatch event to the element and trigger the listener.
      * @param e
      */
     #dispatch(e) {
@@ -28,7 +28,7 @@ class Event {
     }
 
     /**
-     * Dispatch custom event
+     * Dispatch custom event to the element with the specified event name and detail.
      * @param element
      * @param event
      * @param detail
@@ -48,10 +48,11 @@ class Event {
     }
 
     /**
-     * Find record by element
+     * Find record by element in the storage.
      * @param element
-     * @returns {*|boolean}
+     * @returns {*}
      */
+
     findRecordByElement(element) {
         for (let index = 0, length = this.customEventStorage.length; index < length; index++) {
             let record = this.customEventStorage[index];
@@ -65,7 +66,7 @@ class Event {
     }
 
     /**
-     * Add listener to the element
+     * Add listener to the element. If the element is an array, the listener will be added to all elements in the array.
      * @param element
      * @param originalEvent
      * @param event
@@ -85,7 +86,7 @@ class Event {
     }
 
     /**
-     * Write record to the storage
+     * Write record to the storage.
      * @param element
      * @param originalEvent
      * @param event
@@ -129,21 +130,20 @@ class Event {
 
     /**
      * Performs a deep equality check between two objects.
-     *
-     * @param {any} x - The first object to compare.
-     * @param {any} y - The second object to compare.
-     * @returns {boolean} - Returns `true` if the objects are deeply equal, `false` otherwise.
+     * @param x The first object to compare.
+     * @param y The second object to compare.
+     * @returns - Returns `true` if the objects are deeply equal, `false` otherwise.
      */
     deepEqual(x, y) {
         return x && y && typeof x === 'object' && typeof x === typeof y ? Object.keys(x).length === Object.keys(y).length && Object.keys(x).every(key => this.deepEqual(x[key], y[key])) : x === y;
     }
 
     /**
-     * Check if the listener already exists
+     * Check if the listener already exists on the element.
      * @param element
      * @param event
      * @param listener
-     * @returns {*}
+     * @returns
      */
     listenerExists(element, event, listener) {
         let record = this.findRecordByElement(element);
@@ -151,7 +151,7 @@ class Event {
     }
 
     /**
-     * Remove listener from the element
+     * Remove listener from the element and delete the listener from the custom event storage.
      * @param element
      * @param originalEvent
      * @param event
@@ -179,8 +179,8 @@ class Event {
     }
 
     /**
-     * Remove all listeners from the element
-     * @param element
+     * Remove all event listeners from the specified element and delete the element from the custom event storage.
+     * @param {HTMLElement} element The element from which all listeners will be removed.
      */
     removeElement(element) {
         this.customEventStorage = this.customEventStorage.filter((e) => {

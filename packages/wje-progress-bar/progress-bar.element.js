@@ -6,24 +6,20 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a progress bar.
  * @documentation https://elements.webjet.sk/components/progress-bar
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @slot - The default slot for the progress bar.
  * @slot start - The start slot of the progress bar.
  * @slot end - The end slot of the progress bar.
- *
- * @cssprop [--wje-progress-bar-color=var(--wje-color-contrast-6)]- The color of the progress bar.
- * @cssprop [--wje-progress-bar-text-size=.75rem] - The size of the text in the progress bar.
- * @cssprop [--wje-progress-bar-text-color=var(--wje-color)] - The color of the text in the progress bar.
- *
+ * @cssproperty [--wje-progress-bar-color=var(--wje-color-contrast-6)] - Sets the color of the progress bar. This property controls the fill color of the progress indicator. Accepts any valid CSS color value, such as named colors (`red`), hex values (`#ff0000`), or CSS variables.
+ * @cssproperty [--wje-progress-bar-text-size=.75rem] - Defines the font size of the text displayed within the progress bar. Accepts any valid CSS length unit (e.g., `rem`, `px`, `em`) to control text size relative to the bar's design.
+ * @cssproperty [--wje-progress-bar-text-color=var(--wje-color)] - Specifies the color of the text displayed within the progress bar. Accepts any valid CSS color value to ensure contrast and readability against the progress bar's background.
  * @tag wje-progress-bar
  */
 export default class ProgressBar extends WJElement {
+
     /**
      * Creates an instance of ProgressBar.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -31,8 +27,7 @@ export default class ProgressBar extends WJElement {
 
     /**
      * Sets the radius of the progress bar.
-     *
-     * @param {number} value - The value to set.
+     * @param {number} value The value to set.
      */
     set radius(value) {
         this.setAttribute("radius", value);
@@ -40,7 +35,6 @@ export default class ProgressBar extends WJElement {
 
     /**
      * Gets the radius of the progress bar.
-     *
      * @returns {number} The value of the radius.
      */
     get radius() {
@@ -49,7 +43,6 @@ export default class ProgressBar extends WJElement {
 
     /**
      * Gets the diameter of the progress bar.
-     *
      * @returns {number} The value of the diameter.
      */
     get diameter() {
@@ -58,7 +51,6 @@ export default class ProgressBar extends WJElement {
 
     /**
      * Gets the diameter of the progress bar.
-     *
      * @returns {number} The value of the diameter.
      */
     get containerSize() {
@@ -67,8 +59,7 @@ export default class ProgressBar extends WJElement {
 
     /**
      * Sets the stroke of the progress bar.
-     *
-     * @param {number} value - The value to set.
+     * @param {number} value The value to set.
      */
     set stroke(value) {
         this.setAttribute("stroke", value);
@@ -76,7 +67,6 @@ export default class ProgressBar extends WJElement {
 
     /**
      * Gets the stroke of the progress bar.
-     *
      * @returns {number} The value of the stroke.
      */
     get stroke() {
@@ -85,7 +75,6 @@ export default class ProgressBar extends WJElement {
 
     /**
      * Gets the linecap of the progress bar.
-     *
      * @returns {string} The value of the linecap.
      */
     get linecap() {
@@ -96,7 +85,6 @@ export default class ProgressBar extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -106,7 +94,6 @@ export default class ProgressBar extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -123,10 +110,9 @@ export default class ProgressBar extends WJElement {
 
     /**
      * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * @param {object} context The context for drawing.
+     * @param {object} store The store for drawing.
+     * @param {object} params The parameters for drawing.
      * @returns {DocumentFragment}
      */
     draw(context, store, params) {
@@ -214,7 +200,6 @@ export default class ProgressBar extends WJElement {
                 bar.setAttribute("rx", this.stroke / 2);
                 bar.setAttribute("ry", this.stroke / 2);
             }
-
         }
 
         svg.appendChild(background);
@@ -246,8 +231,7 @@ export default class ProgressBar extends WJElement {
 
     /**
      * Returns the dasharray for a circle with the given radius.
-     *
-     * @param {number} radius - The radius of the circle.
+     * @param {number} radius The radius of the circle in pixels.
      * @returns {number} The dasharray value.
      */
     getCircleDasharray(radius = 70) {
@@ -256,9 +240,8 @@ export default class ProgressBar extends WJElement {
 
     /**
      * Returns the dashoffset for a circle with the given progress and radius.
-     *
-     * @param {number} progress - The progress of the circle.
-     * @param {number} radius - The radius of the circle.
+     * @param {number} progress The progress of the circle in percentage.
+     * @param {number} radius The radius of the circle in pixels.
      * @returns {number} The dashoffset value.
      */
     getCircleDashoffset(progress = 0, radius = 70) {

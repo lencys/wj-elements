@@ -6,33 +6,26 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a tab panel.
  * @documentation https://elements.webjet.sk/components/tab-panel
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @slot - The default slot for the tab panel.
- *
  * @tag wje-tab-panel
  */
 export default class TabPanel extends WJElement {
+
     /**
      * Creates an instance of TabPanel.
-     *
-     * @constructor
      */
     constructor() {
         super();
     }
 
     /**
-     * Returns the class name of the tab panel.
-     *
-     * @returns {string} The class name of the tab panel.
+     * The class name for the component.
      */
     className = "TabPanel";
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -48,11 +41,7 @@ export default class TabPanel extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the tab panel.
      * @returns {DocumentFragment}
      */
     draw() {

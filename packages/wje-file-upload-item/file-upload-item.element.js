@@ -12,28 +12,22 @@ import styles from "./styles/styles.css?inline";
  * It extends from `WJElement` and uses the `Localizer` utility for localization.
  * @documentation https://elements.webjet.sk/components/file-upload
  * @status stable
- *
- * @extends WJElement
- *
- * @cssprop --primary-color - The primary color of the file upload item
- *
- * @part button - The delete button part
- * @part image - The image part
- * @part name - The name part
- * @part size - The size part
- *
+ * @augments WJElement
+ * @csspart button - The delete button part
+ * @csspart image - The image part
+ * @csspart name - The name part
+ * @csspart size - The size part
  * @slot img - Slot for the image
  * @slot action - Slot for the action buttons
- *
- * @fires wje-button:click - Dispatches when the delete button is clicked
- *
+ * @cssproperty --primary-color - The primary color of the file upload item.
+ * //@fires wje-button:click - Dispatches when the delete button is clicked
  * @tag wje-file-upload
  */
 export default class FileUploadItem extends WJElement {
+
   /**
    * Creates an instance of FileUploadItem.
-   *
-   * @constructor
+   * @class
    */
   constructor() {
     super();
@@ -41,8 +35,8 @@ export default class FileUploadItem extends WJElement {
   }
 
   /**
-   * Dependencies
-   * @type {Object}
+   * Dependencies for the component.
+   * @type {object}
    */
   dependencies = {
     "wje-format-digital": FormatDigital,
@@ -55,7 +49,6 @@ export default class FileUploadItem extends WJElement {
 
   /**
    * Returns the CSS styles for the component.
-   *
    * @static
    * @returns {CSSStyleSheet}
    */
@@ -65,7 +58,6 @@ export default class FileUploadItem extends WJElement {
 
   /**
    * Returns the list of attributes to observe for changes.
-   *
    * @static
    * @returns {Array<string>}
    */
@@ -75,13 +67,11 @@ export default class FileUploadItem extends WJElement {
 
   /**
    * Called when an observed attribute has been added, removed, updated, or replaced.
-   *
-   * @param {string} name - The name of the attribute.
-   * @param {string} old - The old value of the attribute.
-   * @param {string} newName - The new value of the attribute.
+   * @param {string} name The name of the attribute that has changed.
+   * @param {string} old The old value of the attribute.
+   * @param {string} newName The new value of the attribute.
    */
   attributeChangedCallback(name, old, newName) {
-
     if (name === "uploaded" && this.drawingStatus === "AFTER") {
       this.uploadedEl.setAttribute("value", this.uploaded);
 
@@ -98,10 +88,7 @@ export default class FileUploadItem extends WJElement {
   }
 
   /**
-   * Method to draw the component.
-   * @param {Object} context - The context of the component.
-   * @param {Object} store - The store of the component.
-   * @param {Object} params - The parameters for the component.
+   * Method to draw the component on the screen.
    * @returns {DocumentFragment} The fragment containing the component.
    */
   draw() {
@@ -170,9 +157,6 @@ export default class FileUploadItem extends WJElement {
 
   /**
    * Called after the component has been drawn.
-   * @params {Object} context - The context of the component.
-   * @params {Object} store - The store of the component.
-   * @params {Object} params - The parameters for the component.
    */
   afterDraw() {
     this.button.addEventListener("wje-button:click", this.onDelete);

@@ -7,15 +7,12 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a timeline item.
  * @documentation https://elements.webjet.sk/components/timeline-item
  * @status stable
- *
- * @extends {WJElement}
- *
- * @part native - The native part of the timeline item.
- * @part content-container - The content container part of the timeline item.
- *
+ * @augments {WJElement}
+ * @csspart native - The native part of the timeline item.
+ * @csspart content-container - The content container part of the timeline item.
+ * @csspart default-icon - The default icon part of the timeline item.
  * @slot - Slot for the content of the timeline item.
  * @slot status - Slot for the status of the timeline item.
- *
  * @tag wje-timeline-item
  */
 export default class TimelineItem extends WJElement {
@@ -25,14 +22,12 @@ export default class TimelineItem extends WJElement {
 
     /**
      * Returns the class name of the tab.
-     *
      * @returns {string} The class name of the tab.
      */
     className = "TimelineItem";
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -49,11 +44,7 @@ export default class TimelineItem extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the timeline item.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -99,7 +90,6 @@ export default class TimelineItem extends WJElement {
 
         contentContainer.appendChild(tooltip);
         contentContainer.appendChild(event);
-
         contentContainer.appendChild(slot);
 
         native.appendChild(slotStatus);

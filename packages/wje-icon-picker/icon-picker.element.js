@@ -10,30 +10,25 @@ import styles from "./styles/styles.css?inline";
  * It extends from `WJElement` and uses the `InfiniteScroll`, `Input`, and `Tooltip` components.
  * @documentation https://elements.webjet.sk/components/icon-picker
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @property {string} icon - The icon to set.
- *
- * @part native - The native part
- * @part anchor - The anchor part
- * @part picker - The picker part
- * @part input - The input part
- *
+ * @csspart native - The native part
+ * @csspart anchor - The anchor part
+ * @csspart picker - The picker part
+ * @csspart input - The input part
  * @cssproperty [--wje-icon-picker-radius=var(--wje-border-radius-small)] - The border radius of the icon picker
- * @cssproperty [--wje-icon-picker-icon-size=1.5rem] - The size of the icon picker
- * @cssproperty [--wje-icon-picker-border-width=1px] - The border width of the icon picker
- * @cssproperty [--wje-icon-picker-border-style=solid] - The border style of the icon picker
- * @cssproperty [--wje-icon-picker-border-color=var(--wje-border-color)] - The border color of the icon picker
- * @cssproperty [--wje-icon-picker-padding=.25rem .5rem] - The padding of the icon picker
- *
+ * @cssproperty [--wje-icon-picker-icon-size=1.5rem] - The size of the icon picker. This property defines the width and height of the icon displayed in the icon picker. Accepts any valid CSS length unit (e.g., `px`, `rem`, `em`, `%`).
+ * @cssproperty [--wje-icon-picker-border-width=1px] - The border width of the icon picker. This property defines the width of the border of the icon picker. Accepts any valid CSS length unit (e.g., `px`, `rem`, `em`, `%`).
+ * @cssproperty [--wje-icon-picker-border-style=solid] - The border style of the icon picker. This property defines the style of the border of the icon picker. Accepts any valid CSS border style (e.g., `solid`, `dotted`, `dashed`).
+ * @cssproperty [--wje-icon-picker-border-color=var(--wje-border-color)] - The border color of the icon picker. This property defines the color of the border of the icon picker. Accepts any valid CSS color value (e.g., `#000`, `rgb(0,0,0)`, `rgba(0,0,0,0)`).
+ * @cssproperty [--wje-icon-picker-padding=.25rem .5rem] - The padding of the icon picker. This property defines the padding of the icon picker. Accepts any valid CSS length unit (e.g., `px`, `rem`, `em`, `%`).
  * @tag wje-icon-picker
  */
 export default class IconPicker extends WJElement {
+
     /**
      * Creates an instance of IconPicker.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -42,8 +37,7 @@ export default class IconPicker extends WJElement {
 
     /**
      * Dependencies of the IconPicker component.
-     *
-     * @property {Object} dependencies
+     * @property {object} dependencies
      */
     dependencies = {
         "wje-input": Input,
@@ -54,8 +48,7 @@ export default class IconPicker extends WJElement {
 
     /**
      * Setter for the markerPosition property.
-     *
-     * @param {any} value - The value to set.
+     * @param {any} value The value to set.
      */
     set markerPosition(value) {
         this._markerPosition = value;
@@ -63,7 +56,6 @@ export default class IconPicker extends WJElement {
 
     /**
      * Getter for the markerPosition property.
-     *
      * @returns {any} The value of the markerPosition property.
      */
     get markerPosition() {
@@ -72,8 +64,7 @@ export default class IconPicker extends WJElement {
 
     /**
      * Setter for the swatches property.
-     *
-     * @param {any} value - The value to set.
+     * @param {any} value The value to set.
      */
     set swatches(value) {
         this.setAttribute("swatches", value.split(","));
@@ -81,7 +72,6 @@ export default class IconPicker extends WJElement {
 
     /**
      * Getter for the swatches property.
-     *
      * @returns {any} The value of the swatches property.
      */
     get swatches() {
@@ -100,7 +90,6 @@ export default class IconPicker extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -110,7 +99,6 @@ export default class IconPicker extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -134,10 +122,6 @@ export default class IconPicker extends WJElement {
 
     /**
      * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -214,9 +198,6 @@ export default class IconPicker extends WJElement {
 
     /**
      * Called after the component has been drawn.
-     * @params {Object} context - The context for drawing.
-     * @params {Object} store - The store for drawing.
-     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         this.addEventListener("wje-popup:show", (e) => {
@@ -276,8 +257,7 @@ export default class IconPicker extends WJElement {
 
     /**
      * Gets the category of the tags.
-     *
-     * @param {Array} tags - The tags to get the category of.
+     * @param {Array} tags The tags to get the category of.
      * @returns {Array} The category of the tags.
      */
     getCategory(tags) {
@@ -287,8 +267,7 @@ export default class IconPicker extends WJElement {
 
     /**
      * Gets the tags.
-     *
-     * @returns {Promise<Array>} The tags.
+     * @returns {Promise<Array>} The tags of the component.
      */
     async getTags() {
         const response = await fetch(this.getTagsUrl('../../tags.json'));
@@ -304,8 +283,7 @@ export default class IconPicker extends WJElement {
 
     /**
      * Event handler for searching icons.
-     *
-     * @param {Event} e - The event.
+     * @param {Event} e The event.
      */
     searchIcon = (e) => {
         this.infiniteScroll.unScrollEvent(); // unbind scroll event
@@ -339,9 +317,8 @@ export default class IconPicker extends WJElement {
 
     /**
      * Gets the URL of the tags.
-     *
-     * @param {string} path - The path to get the URL of.
-     * @returns {string} The URL of the tags.
+     * @param {string} path The path to get the URL of.
+     * @returns {string} The URL of the tags path.
      */
     getTagsUrl = (path) => {
         return new URL(process.env.VITE_ICON_ASSETS_URL + path).href;

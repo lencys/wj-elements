@@ -141,6 +141,7 @@ export default class DemoProgressBar extends WJElement {
         clearInterval(this.interval);
       }
     }, intervalTime);
+
   }
 
   beforeDisconnect() {

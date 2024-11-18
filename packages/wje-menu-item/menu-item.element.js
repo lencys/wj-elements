@@ -8,43 +8,39 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a menu item.
  * @documentation https://elements.webjet.sk/components/menu-item
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @csspart native - The native part of the menu item.
  * @csspart submenu - The submenu part of the menu item.
- *
  * @slot - The default slot for the menu item.
  * @slot start - The slot for the start of the menu item.
  * @slot end - The slot for the end of the menu item.
  * @slot submenu - The slot for the submenu of the menu item.
- *
- * @cssproperty [--wje-menu-item-color=var(--wje-color)] - The color of the menu item.
- * @cssproperty [--wje-menu-item-background=transparent] - The background of the menu item.
- * @cssproperty [--wje-menu-item-color-hover=var(--wje-color-contrast-8)] - The color of the menu item when hovered.
- * @cssproperty [--wje-menu-item-background-hover=var(--wje-border-color)] - The background of the menu item when hovered.
- * @cssproperty [--wje-menu-item-color-focus=var(--wje-color-contrast-8)] - The color of the menu item when focused.
- * @cssproperty [--wje-menu-item-background-focus=var(--wje-border-color)] - The background of the menu item when focused.
- * @cssproperty [--wje-menu-item-color-active=var(--wje-color-contrast-8)] - The color of the menu item when active.
- * @cssproperty [--wje-menu-item-background-active=var(--wje-border-color)] - The background of the menu item when active.
- * @cssproperty [--wje-menu-item-padding-top=.5rem] - The padding top of the menu item.
- * @cssproperty [--wje-menu-item-padding-bottom=.5rem] - The padding bottom of the menu item.
- * @cssproperty [--wje-menu-item-line-height=1.8rem] - The line height of the menu item.
- * @cssproperty [--wje-menu-submenu-offset=0] - The offset of the submenu.
- * @cssproperty [--wje-menu-item-icon-visibility=hidden] - The visibility of the icon.
- * @cssproperty [--wje-menu-item-safe-triangle-cursor-x] - The x-coordinate of the cursor for the safe triangle.
- * @cssproperty [--wje-menu-item-safe-triangle-cursor-y] - The y-coordinate of the cursor for the safe triangle.
- * @cssproperty [--wje-menu-item-safe-triangle-submenu-start-x] - The x-coordinate of the start of the submenu for the safe triangle.
- * @cssproperty [--wje-menu-item-safe-triangle-submenu-start-y] - The y-coordinate of the start of the submenu for the safe triangle.
- * @cssproperty [--wje-menu-item-safe-triangle-submenu-end-x] - The x-coordinate of the end of the submenu for the safe triangle.
- * @cssproperty [--wje-menu-item-safe-triangle-submenu-end-y] - The y-coordinate of the end of the submenu for the safe triangle.
- *
+ * @cssproperty [--wje-menu-item-color=var(--wje-color)] - Sets the text color of a menu item. Accepts any valid CSS color value.
+ * @cssproperty [--wje-menu-item-background=transparent] - Defines the background color of a menu item. Default is `transparent`. Accepts any valid CSS color value.
+ * @cssproperty [--wje-menu-item-color-hover=var(--wje-color-contrast-8)] - Specifies the text color of a menu item when hovered. Accepts any valid CSS color value.
+ * @cssproperty [--wje-menu-item-background-hover=var(--wje-border-color)] - Sets the background color of a menu item when hovered. Accepts any valid CSS color value.
+ * @cssproperty [--wje-menu-item-color-focus=var(--wje-color-contrast-8)] - Defines the text color of a menu item when focused. Accepts any valid CSS color value.
+ * @cssproperty [--wje-menu-item-background-focus=var(--wje-border-color)] - Specifies the background color of a menu item when focused. Accepts any valid CSS color value.
+ * @cssproperty [--wje-menu-item-color-active=var(--wje-color-contrast-8)] - Sets the text color of a menu item when active. Accepts any valid CSS color value.
+ * @cssproperty [--wje-menu-item-background-active=var(--wje-border-color)] - Specifies the background color of a menu item when active. Accepts any valid CSS color value.
+ * @cssproperty [--wje-menu-item-padding-top=.5rem] - Specifies the top padding inside a menu item. Accepts any valid CSS length value (e.g., `px`, `rem`).
+ * @cssproperty [--wje-menu-item-padding-bottom=.5rem] - Specifies the bottom padding inside a menu item. Accepts any valid CSS length value (e.g., `px`, `rem`).
+ * @cssproperty [--wje-menu-item-line-height=1.8rem] - Sets the line height for the text within a menu item. Accepts any valid CSS length value.
+ * @cssproperty [--wje-menu-submenu-offset=0] - Determines the horizontal offset of a submenu relative to its parent. Accepts any valid CSS length value.
+ * @cssproperty [--wje-menu-item-icon-visibility=hidden] - Controls the visibility of the icon in a menu item. Accepts `visible`, `hidden`, or `collapse`.
+ * @cssproperty [--wje-menu-item-safe-triangle-cursor-x] - Specifies the x-coordinate of the cursor for the safe triangle area. Used for managing hover or focus transitions between menu items and submenus.
+ * @cssproperty [--wje-menu-item-safe-triangle-cursor-y] - Specifies the y-coordinate of the cursor for the safe triangle area.
+ * @cssproperty [--wje-menu-item-safe-triangle-submenu-start-x] - Defines the x-coordinate where the submenu's safe triangle starts. Helps prevent accidental submenu closing when navigating.
+ * @cssproperty [--wje-menu-item-safe-triangle-submenu-start-y] - Defines the y-coordinate where the submenu's safe triangle starts.
+ * @cssproperty [--wje-menu-item-safe-triangle-submenu-end-x] - Specifies the x-coordinate where the submenu's safe triangle ends.
+ * @cssproperty [--wje-menu-item-safe-triangle-submenu-end-y] - Specifies the y-coordinate where the submenu's safe triangle ends.
  * @tag wje-menu-item
  */
 export default class MenuItem extends WJElement {
+
     /**
      * Constructor for MenuItem class.
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -138,11 +134,7 @@ export default class MenuItem extends WJElement {
     }
 
     /**
-     * Draws the MenuItem element.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the MenuItem element and sets the variant and collapse attributes.
      * @returns {DocumentFragment} The fragment to be appended to the MenuItem.
      */
     draw() {
@@ -256,9 +248,6 @@ export default class MenuItem extends WJElement {
 
     /**
      * Adds event listeners after drawing the MenuItem.
-     * @params {Object} context - The context for drawing.
-     * @params {Object} store - The store for drawing.
-     * @params {Object} params - The parameters
      */
     afterDraw() {
         this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: false })
@@ -289,6 +278,10 @@ export default class MenuItem extends WJElement {
         }
     }
 
+    /**
+     * Handles the click event on the MenuItem.
+     * @param {object} e
+     */
     clickHandler = (e) => {
         switch (this.variant) {
             case "NAV":
@@ -321,8 +314,7 @@ export default class MenuItem extends WJElement {
 
     /**
      * Checks if the submenu should be hidden based on the event.
-     *
-     * @param {Event} e - The event object.
+     * @param {Event} e The event object.
      */
     shouldHideSubmenu = (e) => {
         if (this.collapse || this.variant === "CONTEXT" && this.hasSubmenu) {
@@ -338,7 +330,7 @@ export default class MenuItem extends WJElement {
 
     /**
      * Creates a tooltip for the MenuItem when it is collapsed.
-     * @param {HTMLElement} native - The native MenuItem element.
+     * @param {HTMLElement} native The native MenuItem element.
      * @returns {HTMLElement} The tooltip element.
      */
     collapseItem(native) {
@@ -415,7 +407,7 @@ export default class MenuItem extends WJElement {
      * Toggles the active state of the submenu element.
      * If the submenu is not active, it sets the "active" attribute.
      * If the submenu is already active, it removes the "active" attribute.
-     * @param {Event} e - The event object.
+     * @param {Event} e The event object.
      */
     submenuToggle(e) {
         if (this.hasSubmenu) {
@@ -454,7 +446,7 @@ export default class MenuItem extends WJElement {
     }
 
     /**
-     * Clears the innerHTML of the context before disconnecting the MenuItem.
+     * Gets the text from the element and returns it.
      */
     beforeDisconnect() {
         event.removeListener(this, "mousemove", null, this.dispatchMove);
@@ -468,6 +460,11 @@ export default class MenuItem extends WJElement {
         this.unbindRouterLinks?.();
     }
 
+    /**
+     * Extracts and returns the concatenated text content from all text nodes within the specified element.
+     * @param {HTMLElement} element The HTML element from which to extract text content.
+     * @returns {string} The concatenated and trimmed text content from the element's text nodes.
+     */
     getTextFromElement(element) {
         let text = '';
         for (let node of element.childNodes) {

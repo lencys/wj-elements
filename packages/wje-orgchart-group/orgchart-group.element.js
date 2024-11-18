@@ -5,38 +5,35 @@ import styles from "./styles/styles.css?inline";
  * @summary OrgchartItem is a custom web component that extends WJElement.
  * @documentation https://elements.webjet.sk/components/OrgchartItem
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @csspart - Styles the element.
- *
  * @tag wje-orgchart-item
- *
  * @example
- * <wje-orgchart-item></wje-orgchart-item>
  */
 export default class OrgchartGroup extends WJElement {
+
     /**
      * Creates an instance of OrgchartGroup.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
     }
 
+    /**
+     * The class name for the component.
+     * @type {string}
+     */
     className = "OrgchartGroup";
 
-
-        /**
-         * Returns the CSS styles for the component.
-         *
-         * @static
-         * @returns {CSSStyleSheet}
-         */
-        static get cssStyleSheet() {
-            return styles;
-        }
+    /**
+     * Returns the CSS styles for the component.
+     * @static
+     * @returns {CSSStyleSheet}
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
     /**
      * Sets up the attributes for the component.
@@ -46,11 +43,7 @@ export default class OrgchartGroup extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the org chart group.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -87,12 +80,7 @@ export default class OrgchartGroup extends WJElement {
     }
 
     /**
-     * After Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
-     * @returns {DocumentFragment}
+     * After Draws the component for the org chart group.
      */
     afterDraw() {
         this.card.addEventListener("click", (e) => {

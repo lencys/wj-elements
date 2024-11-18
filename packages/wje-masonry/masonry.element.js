@@ -8,20 +8,16 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a masonry layout.
  * @documentation https://elements.webjet.sk/components/masonry
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @csspart native - The native part of the masonry layout.
  * @csspart column - The individual columns in the masonry layout.
- *
  * @slot - The default slot for the masonry layout.
- *
- * @cssprop [--wje-masonry-gap=1rem] - The gap between items in the masonry layout.
- * @cssprop [--wje-masonry-layout-col-count=1] - The count column in the masonry layout.
- *
+ * @cssproperty [--wje-masonry-gap=1rem] - The gap between items in the masonry layout. Accepts any valid CSS length. Default is 1rem.
+ * @cssproperty [--wje-masonry-layout-col-count=1] - The count column in the masonry layout. Accepts any valid CSS length.
  * @tag wje-masonry
  */
 export default class Masonry extends WJElement {
+
     /**
      * Constructor for the Masonry class.
      */
@@ -36,7 +32,7 @@ export default class Masonry extends WJElement {
 
     /**
      * Setter for the maxColWidth property.
-     * @param {number} value - The maximum column width.
+     * @param {number} value The maximum column width.
      */
     set maxColWidth(value) {
         this.setAttribute("max-col-width", value);
@@ -52,7 +48,7 @@ export default class Masonry extends WJElement {
 
     /**
      * Setter for the cols property.
-     * @param {number} value - The number of columns.
+     * @param {number} value The number of columns.
      */
     set cols(value) {
         if(this.hasAttribute("cols"))
@@ -71,7 +67,7 @@ export default class Masonry extends WJElement {
 
     /**
      * Setter for the gap property.
-     * @param {number} value - The gap between columns.
+     * @param {number} value The gap between columns.
      */
     set gap(value) {
         this.setAttribute("gap", value);
@@ -87,7 +83,7 @@ export default class Masonry extends WJElement {
 
     /**
      * Setter for the debounce property.
-     * @param {number} value - The debounce time.
+     * @param {number} value The debounce time.
      */
     set debounce(value) {
         this.setAttribute("debounce", value);
@@ -117,7 +113,8 @@ export default class Masonry extends WJElement {
 
     /**
      * Getter for the cssStyleSheet property.
-     * @returns {CSSStyleSheet} The CSS style sheet.
+     * @static
+     * @returns {CSSStyleSheet} The CSS style sheet for the masonry layout.
      */
     static get cssStyleSheet() {
         return styles;
@@ -133,9 +130,6 @@ export default class Masonry extends WJElement {
 
     /**
      * Callback for when an attribute changes.
-     * @param {string} name - The name of the attribute.
-     * @param {string} old - The old value of the attribute.
-     * @param {string} newName - The new value of the attribute.
      */
     attributeChangedCallback(name, old, newName) {
         switch (name) {
@@ -166,10 +160,7 @@ export default class Masonry extends WJElement {
     }
 
     /**
-     * Draws the element.
-     * @param {CanvasRenderingContext2D} context - The context to draw on.
-     * @param {Object} store - The store to use.
-     * @param {Object} params - The parameters to use.
+     * Draws the element for the masonry layout.
      * @returns {DocumentFragment} The drawn element.
      */
     draw() {
@@ -221,7 +212,7 @@ export default class Masonry extends WJElement {
 
     /**
      * Called when the window resizes.
-     * @param {Array} entries - The entries to use.
+     * @param {Array} entries The entries to use.
      */
     onResize = (entries) => {
         const { width } = entries !== null && entries !== undefined && Array.isArray(entries) && entries.length > 0 ? entries[0].contentRect : { width: this.offsetWidth };
@@ -233,7 +224,7 @@ export default class Masonry extends WJElement {
 
     /**
      * Renders the columns.
-     * @param {number} colCount - The number of columns to render.
+     * @param {number} colCount The number of columns to render.
      */
     renderCols(colCount) {
         const columns = this.columns;
@@ -260,7 +251,7 @@ export default class Masonry extends WJElement {
 
     /**
      * Schedules a layout.
-     * @param {number} ms - The number of milliseconds to wait before laying out.
+     * @param {number} ms The number of milliseconds to wait before laying out.
      */
     scheduleLayout(ms = this.debounce) {
         debounce(this.layout, ms, this.debounceId);

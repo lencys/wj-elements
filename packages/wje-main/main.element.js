@@ -7,19 +7,16 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a main section.
  * @documentation https://elements.webjet.sk/components/main
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @slot - The default slot for the main section.
- *
  * @tag wje-main
  */
 
 export default class Main extends WJElement {
+
     /**
      * Creates an instance of Main.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -29,7 +26,6 @@ export default class Main extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -39,7 +35,6 @@ export default class Main extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -55,11 +50,7 @@ export default class Main extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the main section.
      * @returns {DocumentFragment}
      */
     draw() {

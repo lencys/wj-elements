@@ -6,28 +6,28 @@ import styles from "./scss/styles.scss?inline";
  * @summary This element represents a row in a layout system.
  * @documentation https://elements.webjet.sk/components/row
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments WJElement
  * @slot - The default slot for the row.
- *
  * @tag wje-row
  */
 export default class Row extends WJElement {
+
     /**
      * Creates an instance of Row.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
     }
 
+    /**
+     * The class name for the component.
+     * @type {string}
+     */
     className = "Row";
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -43,10 +43,7 @@ export default class Row extends WJElement {
     }
 
     /**
-     * Draws the component.
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the row.
      * @returns {DocumentFragment}
      */
     draw() {

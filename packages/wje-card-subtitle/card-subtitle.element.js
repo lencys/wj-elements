@@ -5,18 +5,16 @@ import styles from "./styles/styles.css?inline";
  * @summary CardSubtitle class that extends WJElement.
  * @documentation https://elements.webjet.sk/components/card-subtitle
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @slot - The card subtitle main content.
- *
  * @cssproperty [--wje-card-subtitle-font-size=11px] - Font size of the component;
  * @cssproperty [--wje-card-subtitle-font-family=var(--wje-font-family-secondary)] - Font family of the component;
  * @cssproperty [--wje-card-subtitle-padding=0] - Padding of the component;
  */
 export default class CardSubtitle extends WJElement {
+
     /**
-     * CardSubtitle constructor.
+     * CardSubtitle constructor method.
      */
     constructor() {
         super();
@@ -30,7 +28,7 @@ export default class CardSubtitle extends WJElement {
 
     /**
      * Getter for the CSS stylesheet.
-     * @returns {Object} The styles object.
+     * @returns {object} The styles object.
      * @static
      */
     static get cssStyleSheet() {
@@ -54,10 +52,7 @@ export default class CardSubtitle extends WJElement {
     }
 
     /**
-     * Draws the CardSubtitle.
-     * @param {Object} context - The context to draw in.
-     * @param {Object} store - The store to use.
-     * @param {Object} params - The parameters to use.
+     * Draws the CardSubtitle element.
      * @returns {DocumentFragment} The created document fragment.
      */
     draw() {

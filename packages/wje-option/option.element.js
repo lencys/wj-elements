@@ -7,24 +7,19 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents an option.
  * @documentation https://elements.webjet.sk/components/option
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @csspart native - The native part of the option.
- *
  * @slot start - The slot for the start of the option.
  * @slot - The default slot for the option.
  * @slot end - The slot for the end of the option.
- *
- * @fires wje-option:change - Event fired when the option is clicked.
- *
+ * // @fires wje-option:change - Event fired when the option is clicked.
  * @tag wje-option
  */
 export default class Option extends WJElement {
+
     /**
      * Creates an instance of Option.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -39,7 +34,7 @@ export default class Option extends WJElement {
 
     /**
      * Sets the selected attribute of the option.
-     * @param {boolean} value - The value to set.
+     * @param {boolean} value The value to set.
      */
     set selected(value) {
         if(value)
@@ -50,7 +45,7 @@ export default class Option extends WJElement {
 
     /**
      * Sets the value attribute of the option.
-     * @param {string} value - The value to set.
+     * @param {string} value The value to set.
      */
     set value(value) {
         this.setAttribute("value", value);
@@ -58,8 +53,7 @@ export default class Option extends WJElement {
 
     /**
      * Sets the text content of the option.
-     *
-     * @param {string} value - The text to set.
+     * @param {string} value The text to set.
      */
     set text(value) {
         this.innerText = value;
@@ -69,7 +63,6 @@ export default class Option extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -79,7 +72,6 @@ export default class Option extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -95,11 +87,7 @@ export default class Option extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the option.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -132,9 +120,6 @@ export default class Option extends WJElement {
 
     /**
      * Adds event listeners after the component is drawn.
-     * @params {Object} context - The context for drawing.
-     * @params {Object} store - The store for drawing.
-     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         event.addListener(this, "click", null, (e, b, c) => {

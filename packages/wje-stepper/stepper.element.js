@@ -3,6 +3,20 @@ import { Localizer } from "../utils/localize.js";
 import { default as WJElement, event } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
+/**
+ * `Stepper` is a custom web component that represents a stepper.
+ * @summary This element represents a stepper.
+ * @documentation https://elements.webjet.sk/components/stepper
+ * @status stable
+ * @augments WJElement
+ * @slot - The default slot for the stepper.
+ * @attr {string} active - The active color for the stepper.
+ * @attr {string} done - The done color for the stepper.
+ * @csspart native - The native part of the stepper.
+ * @csspart header - The header part of the stepper.
+ * @csspart content - The content part of the stepper.
+ * @tag wje-stepper
+ */
 export default class Stepper extends WJElement {
     constructor() {
         super();
@@ -37,10 +51,7 @@ export default class Stepper extends WJElement {
     }
 
     /**
-     * Draws the component.
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the stepper.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -144,9 +155,6 @@ export default class Stepper extends WJElement {
 
     /**
      * Sets up the attributes for the component.
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
      */
     afterDraw() {
         event.addListener(this.prev, 'click', '', () => this.navigate(-1));
@@ -154,17 +162,21 @@ export default class Stepper extends WJElement {
     }
 
     /**
-     * Navigates to the next or previous step
-     * @param direction
+     * Navigates to a different step in a multi-step process based on the provided direction.
+     * @param {number} direction The navigation direction.
+     * Use a positive value to move forward or a negative value to move backward.
      */
     navigate(direction) {
         this.goToStep(this.currentStep + direction, direction);
     }
 
     /**
-     * Go to the specified step
-     * @param stepIndex
-     * @param direction
+     * Navigates to a specific step in a multi-step process and updates the stepper UI accordingly.
+     * @param {number} stepIndex The index of the step to navigate to.
+     * @param {number} direction The navigation direction. A positive value indicates forward navigation, and a negative value indicates backward navigation.
+     * //@fires stepper:next Dispatched when navigating to the next step.
+     * //@fires stepper:prev Dispatched when navigating to the previous step.
+     * //@fires stepper:finish Dispatched when the final step is completed.
      */
     goToStep(stepIndex, direction) {
         if (stepIndex >= 0 && stepIndex < this.steps.length) {
@@ -210,10 +222,11 @@ export default class Stepper extends WJElement {
     }
 
     /**
-     * Sets the step to the default state
-     * @param nav
-     * @param badge
-     * @param stepIndex
+     * Resets a step to its default state by clearing its active and done attributes.
+     * Updates the step's badge to show its index and removes any color styling.
+     * @param {HTMLElement} nav The navigation element representing the step.
+     * @param {HTMLElement|null} [badge] The badge element within the step. If not provided, it will be selected from the `nav` element.
+     * @param {number} [stepIndex] The index of the step, used to set the badge content.
      */
     setStepDefault(nav, badge = null, stepIndex = 0) {
         nav.removeAttribute('active');
@@ -227,10 +240,10 @@ export default class Stepper extends WJElement {
     }
 
     /**
-     * Sets the step to the active state
-     * @param nav
-     * @param badge
-     * @param stepIndex
+     * Sets a step as active by adding the `active` attribute and updating the step's badge.
+     * @param {HTMLElement} nav The navigation element representing the step to activate.
+     * @param {HTMLElement|null} [badge] The badge element within the step. If not provided, it will be selected from the `nav` element.
+     * @param {number|null} [stepIndex] The index of the step, used to set the badge content. Defaults to `null` if not provided.
      */
     setStepActive(nav, badge = null, stepIndex = null) {
         nav.setAttribute('active', '');
@@ -243,8 +256,8 @@ export default class Stepper extends WJElement {
     }
 
     /**
-     * Sets the content to the active state
-     * @param stepIndex
+     * Activates the content of a specific step by displaying it and hiding all others.
+     * @param {number} stepIndex The index of the step whose content should be displayed.
      */
     setContentActive(stepIndex) {
         this.steps?.forEach((step, index) => {
@@ -257,9 +270,9 @@ export default class Stepper extends WJElement {
     }
 
     /**
-     * Sets the step to the done state
-     * @param nav
-     * @param badge
+     * Marks a step as completed by setting the `done` attribute and updating its badge with a check icon.
+     * @param {HTMLElement} nav The navigation element representing the completed step.
+     * @param {HTMLElement|null} [badge] The badge element within the step. If not provided, it will be selected from the `nav` element.
      */
     setStepDone(nav, badge = null) {
         nav.setAttribute('done', '');

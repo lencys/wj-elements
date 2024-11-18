@@ -5,33 +5,22 @@ import styles from "./styles/styles.css?inline";
  * @summary This method dispatches a custom event named "wje-checkbox:change".
  * It is triggered when the input event is fired, which happens when the state of the checkbox changes.
  * The event is dispatched on the current instance of the Checkbox class.
- *
  * @documentation https://elements.webjet.sk/components/checkbox
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @slot - The checkbox main content.
- *
- * @part native - The component's native wrapper.
- *
- * --wje-button-border-radius: var(--wje-border-radius-medium);
- *   --wje-button-border-width: 1px;
- *   --wje-button-border-style: solid;
- *   --wje-button-border-color: var(--wje-color-contrast-1);
- *   --wje-button-margin-inline: 0;
- *
+ * @csspart native - The component's native wrapper.
  * @cssproperty [--wje-checkbox-border-radius=--wje-border-radius-medium] - Border radius of the component;
  * @cssproperty [--wje-checkbox-border-width=1px] - Border width of the component;
  * @cssproperty [--wje-checkbox-border-style=solid] - Border style of the component;
  * @cssproperty [--wje-checkbox-border-color=--wje-color-contrast-1] - Border color of the component;
  * @cssproperty [--wje-checkbox-margin-inline=0] - Margin inline of the component;
- *
- * @fires wje-checkbox:change - Dispatched when the checkbox state changes.
+ * //@fires wje-checkbox:change - Dispatched when the checkbox state changes;
  */
 export default class Checkbox extends WJElement {
+
     /**
-     * Checkbox constructor.
+     * Checkbox constructor method.
      */
     constructor() {
         super();
@@ -40,7 +29,7 @@ export default class Checkbox extends WJElement {
 
     /**
      * Setter for the value attribute.
-     * @param {string} value - The value to set.
+     * @param {string} value The value to set.
      */
     set value(value) {
         this.internals.setFormValue(value);
@@ -58,9 +47,9 @@ export default class Checkbox extends WJElement {
     }
 
     /**
-         * Getter for the customErrorDisplay attribute.
-         * @returns {boolean} Whether the attribute is present.
-         */
+     * Getter for the customErrorDisplay attribute.
+     * @returns {boolean} Whether the attribute is present.
+     */
     get customErrorDisplay() {
         return this.hasAttribute('custom-error-display');
     }
@@ -75,7 +64,7 @@ export default class Checkbox extends WJElement {
 
     /**
      * Setter for the invalid attribute.
-     * @param {boolean} isInvalid - Whether the input is invalid.
+     * @param {boolean} isInvalid Whether the input is invalid.
      */
     set invalid(isInvalid) {
         if (isInvalid)
@@ -141,7 +130,7 @@ export default class Checkbox extends WJElement {
     }
 
     /**
-     * @summary Getter for the defaultValue attribute.
+     * Getter for the defaultValue attribute.
      * This method retrieves the 'value' attribute of the custom input element.
      * The 'value' attribute represents the default value of the input element.
      * If the 'value' attribute is not set, it returns an empty string.
@@ -152,18 +141,18 @@ export default class Checkbox extends WJElement {
     }
 
     /**
-     * @summary Setter for the defaultValue attribute.
+     * Setter for the defaultValue attribute.
      * This method sets the 'value' attribute of the custom input element to the provided value.
      * The 'value' attribute represents the default value of the input element.
-     * @param {string} value - The value to set as the default value.
+     * @param {string} value The value to set as the default value.
      */
     set defaultValue(value) {
         this.setAttribute('value', value);
     }
 
     /**
-     * @summary Set checked attribute
-     * @param {boolean} value - true if the toggle is checked, false otherwise
+     * Set checked attribute.
+     * @param {boolean} value true if the toggle is checked, false otherwise
      */
     set disabled(value) {
         if (value)
@@ -173,7 +162,7 @@ export default class Checkbox extends WJElement {
     }
 
     /**
-     * @summary Get disabled attribute
+     * Get disabled attribute value.
      * @returns {boolean} true if the toggle is disabled, false otherwise
      */
     get disabled() {
@@ -181,9 +170,9 @@ export default class Checkbox extends WJElement {
     }
 
     /**
-     * @summary Set checked attribute
-     * @param {boolean} value - true if the toggle is checked, false otherwise
-    */
+     * Set checked attribute.
+     * @param {boolean} value true if the toggle is checked, false otherwise
+     */
     set checked(value) {
         if (value)
             this.setAttribute("checked", "");
@@ -192,7 +181,7 @@ export default class Checkbox extends WJElement {
     }
 
     /**
-     * @summary Get checked attribute
+     * Get checked attribute.
      * @returns {boolean} true if the toggle is checked, false otherwise
      */
     get checked() {
@@ -200,7 +189,7 @@ export default class Checkbox extends WJElement {
     }
 
     /**
-     * The class name.
+     * The class name for the Checkbox.
      */
     className = "Checkbox";
 
@@ -231,10 +220,7 @@ export default class Checkbox extends WJElement {
     }
 
     /**
-     * Draws the checkbox.
-     * @param {object} context - The context.
-     * @param {object} store - The store.
-     * @param {object} params - The parameters.
+     * Draws the checkbox element.
      * @returns {DocumentFragment} The created fragment.
      */
     draw() {
@@ -295,7 +281,7 @@ export default class Checkbox extends WJElement {
     /**
      * @summary Callback function that is called when the custom element is associated with a form.
      * This function adds an event listener to the form's submit event, which validates the input and propagates the validation.
-     * @param {HTMLFormElement} form - The form the custom element is associated with.
+     * @param {HTMLFormElement} form The form the custom element is associated with.
      */
     formAssociatedCallback(form) {
         form?.addEventListener('submit', () => {
@@ -308,8 +294,7 @@ export default class Checkbox extends WJElement {
      * The formResetCallback method is a built-in lifecycle callback that gets called when a form gets reset.
      * This method is responsible for resetting the value of the custom input element to its default value.
      * It also resets the form value and validity state in the form internals.
-     *
-     * @method
+     * @function
      */
     formResetCallback() {
         // Set the value of the custom input element to its default value
@@ -324,9 +309,8 @@ export default class Checkbox extends WJElement {
      * The formStateRestoreCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is restored.
      * This method is responsible for restoring the value of the custom input element to its saved state.
      * It also restores the form value and validity state in the form internals to their saved states.
-     *
-     * @param {Object} state - The saved state of the custom input element.
-     * @method
+     * @param {object} state The saved state of the custom input element.
+     * @function
      */
     formStateRestoreCallback(state) {
         // Set the value of the custom input element to its saved value
@@ -340,9 +324,8 @@ export default class Checkbox extends WJElement {
     /**
      * The formStateSaveCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is saved.
      * This method is responsible for saving the value of the custom input element.
-     *
-     * @returns {Object} The saved state of the custom input element.
-     * @method
+     * @returns {object} The saved state of the custom input element.
+     * @function
      */
     formStateSaveCallback() {
         return {
@@ -353,9 +336,8 @@ export default class Checkbox extends WJElement {
     /**
      * The formDisabledCallback method is a built-in lifecycle callback that gets called when the disabled state of a form-associated custom element changes.
      * This method is not implemented yet.
-     *
-     * @param {boolean} disabled - The new disabled state of the custom input element.
-     * @method
+     * @param {boolean} disabled The new disabled state of the custom input element.
+     * @function
      */
     formDisabledCallback(disabled) {
         console.warn('formDisabledCallback not implemented yet')

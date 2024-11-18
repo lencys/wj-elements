@@ -5,50 +5,45 @@ import styles from "./styles/styles.css?inline";
  * @summary This class represents an Card Content element, extending the WJElement class.
  * @documentation https://elements.webjet.sk/components/card-content
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @slot - The card content main content.
- *
  * @cssproperty [--wje-card-padding=0] - Padding of the component;
  */
 export default class CardContent extends WJElement {
+    
     /**
-     * CardContent constructor
-     * @constructor
+     * CardContent constructor method.
+     * @class
      */
     constructor() {
         super();
     }
 
     /**
-     * Class name
+     * Class name for the CardContent element.
      * @type {string}
      */
     className = "CardContent";
 
     /**
-     * Get CSS stylesheet
+     * Get CSS stylesheet for the CardContent element.
      * @static
-     * @returns {Object} styles - The CSS styles
+     * @returns {object} styles - The CSS styles for the CardContent element.
      */
     static get cssStyleSheet() {
         return styles;
     }
 
     /**
-     * Setup attributes
+     * Setup attributes for the CardContent element.
      */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
     /**
-     * Draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
-     * @returns {Object} fragment - The document fragment
+     * Draw method for the CardContent element.
+     * @returns {object} fragment - The document fragment containing the drawn element.
      */
     draw() {
         let fragment = document.createDocumentFragment();

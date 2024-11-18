@@ -3,45 +3,39 @@ import styles from "./styles/styles.css?inline";
 
 /**
  * `Item` is a custom web component that represents an item.
- *
  * @summary This element represents an item.
  * @documentation https://elements.webjet.sk/components/item
  * @status stable
- *
- * @extends {WJElement}
- *
- * @part native - The native part
- * @part inner - The inner part
- *
+ * @augments {WJElement}
+ * @csspart native - The native part
+ * @csspart inner - The inner part
  * @slot start - The start slot
  * @slot end - The end slot
  * @slot error - The error slot
  * @slot helper - The helper slot
- *
- * @cssproperty [--wje-item-background=var(--wje-background)] - The background of the item
- * @cssproperty [--wje-item-color=var(--wje-color)] - The color of the item
- * @cssproperty [--wje-item-padding-start=var(--wje-padding)] - The padding of the item
- * @cssproperty [--wje-item-padding-end=var(--wje-padding)] - The padding of the item
- * @cssproperty [--wje-item-padding-top=var(--wje-padding)] - The padding of the item
- * @cssproperty [--wje-item-padding-bottom=var(--wje-padding)] - The padding of the item
- * @cssproperty [--wje-item-inner-padding-start=var(--wje-padding)] - The padding of the item
- * @cssproperty [--wje-item-inner-padding-end=var(--wje-padding)] - The padding of the item
- * @cssproperty [--wje-item-inner-padding-top=var(--wje-padding)] - The padding of the item
- * @cssproperty [--wje-item-inner-padding-bottom=var(--wje-padding)] - The padding of the item
- * @cssproperty [--wje-item-border-radius=var(--wje-border-radius)] - The border radius of the item
- * @cssproperty [--wje-item-border-width=var(--wje-border-width)] - The border width of the item
- * @cssproperty [--wje-item-border-style=var(--wje-border-style)] - The border style of the item
- * @cssproperty [--wje-item-border-color=var(--wje-border-color)] - The border color of the item
- * @cssproperty [--wje-item-min-height=var(--wje-min-height)] - The min height of the item
- * @cssproperty [--wje-item-transition=var(--wje-transition)] - The transition of the item
- * @cssproperty [--wje-item-inner-box-shadow=var(--wje-box-shadow)] - The box shadow of the item
- *
+ * @cssproperty [--wje-item-background=var(--wje-background)] - Sets the background color of the item. Accepts any valid CSS color value.
+ * @cssproperty [--wje-item-color=var(--wje-color)] - Defines the text color for the item. Accepts any valid CSS color value.
+ * @cssproperty [--wje-item-padding-start=var(--wje-padding)] - Specifies the left padding of the item. Accepts any valid CSS length.
+ * @cssproperty [--wje-item-padding-end=var(--wje-padding)] - Specifies the right padding of the item. Accepts any valid CSS length.
+ * @cssproperty [--wje-item-padding-top=var(--wje-padding)] - Specifies the top padding of the item. Accepts any valid CSS length.
+ * @cssproperty [--wje-item-padding-bottom=var(--wje-padding)] - Specifies the bottom padding of the item. Accepts any valid CSS length.
+ * @cssproperty [--wje-item-inner-padding-start=var(--wje-padding)] - Specifies the left inner padding of the item. Accepts any valid CSS length.
+ * @cssproperty [--wje-item-inner-padding-end=var(--wje-padding)] - Specifies the right inner padding of the item. Accepts any valid CSS length.
+ * @cssproperty [--wje-item-inner-padding-top=var(--wje-padding)] - Specifies the top inner padding of the item. Accepts any valid CSS length.
+ * @cssproperty [--wje-item-inner-padding-bottom=var(--wje-padding)] - Specifies the bottom inner padding of the item. Accepts any valid CSS length.
+ * @cssproperty [--wje-item-border-radius=var(--wje-border-radius)] - Defines the border radius, providing rounded corners for the item.
+ * @cssproperty [--wje-item-border-width=var(--wje-border-width)] - Sets the border width of the item. Accepts any valid CSS length.
+ * @cssproperty [--wje-item-border-style=var(--wje-border-style)] - Specifies the style of the border, such as `solid`, `dashed`, or `dotted`.
+ * @cssproperty [--wje-item-border-color=var(--wje-border-color)] - Defines the color of the item's border. Accepts any valid CSS color value.
+ * @cssproperty [--wje-item-min-height=var(--wje-min-height)] - Sets the minimum height of the item to ensure consistent layout.
+ * @cssproperty [--wje-item-transition=var(--wje-transition)] - Specifies the transition effects for the item, such as for hover or focus states.
+ * @cssproperty [--wje-item-inner-box-shadow=var(--wje-box-shadow)] - Adds a shadow effect inside the item for a 3D appearance.
  * @tag wje-item
  */
 export default class Item extends WJElement {
+
 	/**
-	 * @constructor
-	 * @summary Item constructor
+	 * Item constructor for the class.
 	 */
 	constructor() {
 		super();
@@ -68,32 +62,29 @@ export default class Item extends WJElement {
 	}
 
 	/**
-	 * @summary Class name
+	 * Returns the CSS styles for the component.
 	 * @type {string}
 	 */
 	className = "Item";
 
 	/**
-	 * @summary Get CSS stylesheet
+	 * Returns the CSS styles for the component.
 	 * @static
-	 * @returns {Object} styles
+	 * @returns {object} styles
 	 */
 	static get cssStyleSheet() {
 		return styles;
 	}
 
 	/**
-	 * @summary Setup attributes
+	 * Sets up the attributes for the component.
 	 */
 	setupAttributes() {
 		this.isShadowRoot = 'open';
 	}
 
 	/**
-	 * Draws the component.
-	 * @param {Object} context - The context for drawing.
-	 * @param {Object} store - The store for drawing.
-	 * @param {Object} params - The parameters for drawing.
+	 * Draws the component for the item.
 	 * @returns {DocumentFragment}
 	 */
 	draw() {
@@ -102,7 +93,7 @@ export default class Item extends WJElement {
 		if(this.hostContext('wje-list', this)) {
 			this.classList.add('wje-item-list');
 		}
-		//  ${WjElementUtils.attributesToString(WjElementUtils.getAttributes(this))}
+
 		return `<${TagType} class="item-native" part="native">
 			<slot name="start"></slot>
 			<div class="item-inner">
@@ -120,10 +111,10 @@ export default class Item extends WJElement {
 	}
 
 	/**
-	 * Returns the list of attributes to observe for changes.
-	 * @param selector
-	 * @param el
-	 * @returns {boolean}
+	 * Determines if the given element or any of its ancestors matches the specified selector.
+	 * @param {string} selector The CSS selector to match against the element's ancestors.
+	 * @param {HTMLElement} el The element from which to start the search.
+	 * @returns {boolean} - Returns `true` if the element or one of its ancestors matches the selector; otherwise, `false`.
 	 */
 	hostContext = (selector, el) => {
 		return el.closest(selector) !== null;

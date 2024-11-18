@@ -1,12 +1,12 @@
-import Button from "../wje-button/button.js";
-import Chip from "../wje-chip/chip.js";
 import { default as WJElement, event } from "../wje-element/element.js";
+import Button from "../wje-button/button.js";
+import Popup from "../wje-popup/popup.js";
 import Icon from "../wje-icon/icon.js";
-import Input from "../wje-input/input.js";
 import Label from "../wje-label/label.js";
+import Chip from "../wje-chip/chip.js";
+import Input from "../wje-input/input.js";
 import Option from "../wje-option/option.js";
 import Options from "../wje-options/options.js";
-import Popup from "../wje-popup/popup.js";
 import styles from "./styles/styles.css?inline";
 
 /**
@@ -14,35 +14,30 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a select input.
  * @documentation https://elements.webjet.sk/components/select
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @slot - The default slot for the select.
  * @slot anchor - The slot for the anchor.
  * @slot arrow - The slot for the arrow.
- *
  * @csspart native - The native select wrapper.
  * @csspart input - The input field.
  * @csspart clear - The clear button.
- *
- * @cssprop [--wje-select-border-width=1px;] - The border width of the select component.
- * @cssprop [--wje-select-border-style=solid;] - The border style of the select component.
- * @cssprop [--wje-select-border-color=var(--wje-border-color);] - The border color of the select component.
- * @cssprop [--wje-select-options-border-width=1px;] - The border width of the select options.
- * @cssprop [--wje-select-options-border-style=var(--wje-border-style);] - The border style of the select options.
- * @cssprop [--wje-select-options-border-color=var(--wje-border-color);] - The border color of the select options.
- * @cssprop [--wje-select-background=var(--wje-background);] - The background of the select component.
- * @cssprop [--wje-select-line-height=20px;] - The line height of the select component.
- * @cssprop [--wje-select-color=var(--wje-color);] - The color of the select component.
- * @cssprop [--wje-select-border-radius=var(--wje-border-radius-medium);] - The border radius of the select component.
- *
+ * @cssproperty [--wje-select-border-width=1px] - Specifies the width of the border around the select component. Accepts any valid CSS length unit (e.g., `px`, `rem`, `em`).
+ * @cssproperty [--wje-select-border-style=solid] - Defines the style of the border for the select component. Accepts standard CSS border styles, such as `solid`, `dashed`, or `dotted`.
+ * @cssproperty [--wje-select-border-color=var(--wje-border-color)] - Sets the color of the border for the select component. Accepts any valid CSS color value, including color variables, named colors, and hex values.
+ * @cssproperty [--wje-select-options-border-width=1px] - Specifies the width of the border for the select options dropdown. Accepts any valid CSS length unit.
+ * @cssproperty [--wje-select-options-border-style=var(--wje-border-style)] - Defines the border style for the select options dropdown. Inherits from a defined CSS variable for consistency.
+ * @cssproperty [--wje-select-options-border-color=var(--wje-border-color)] - Sets the border color for the select options dropdown. Accepts any valid CSS color value.
+ * @cssproperty [--wje-select-background=var(--wje-background)] - Specifies the background color of the select component. Accepts any valid CSS color value.
+ * @cssproperty [--wje-select-line-height=20px] - Defines the line height for the text within the select component. Accepts any valid CSS length value, ensuring consistent vertical alignment.
+ * @cssproperty [--wje-select-color=var(--wje-color)] - Sets the text color for the select component. Accepts any valid CSS color value.
+ * @cssproperty [--wje-select-border-radius=var(--wje-border-radius-medium)] - Specifies the border radius for the select component.Determines the roundness of the corners and accepts any valid CSS length unit or variable.
  * @tag wje-select
  */
+
 export default class Select extends WJElement {
+
     /**
      * Creates an instance of Select.
-     *
-     * @constructor
      */
     constructor() {
         super();
@@ -65,7 +60,7 @@ export default class Select extends WJElement {
 
     /**
      * Setter for the value attribute.
-     * @param {string} value - The value to set.
+     * @param {string} value The value to set.
      */
     set value(value) {
         if (Array.isArray(value)) {
@@ -109,7 +104,7 @@ export default class Select extends WJElement {
 
     /**
      * Setter for the invalid attribute.
-     * @param {boolean} isInvalid - Whether the input is invalid.
+     * @param {boolean} isInvalid Whether the input is invalid.
      */
     set invalid(isInvalid) {
         if (isInvalid)
@@ -181,7 +176,7 @@ export default class Select extends WJElement {
      * @summary Setter for the defaultValue attribute.
      * This method sets the 'value' attribute of the custom input element to the provided value.
      * The 'value' attribute represents the default value of the input element.
-     * @param {string} value - The value to set as the default value.
+     * @param {string} value The value to set as the default value.
      */
     set defaultValue(value) {
         this.setAttribute('value', value);
@@ -190,9 +185,8 @@ export default class Select extends WJElement {
 
 
     /**
-     * Sets the selected value.
-     *
-     * @param {Array} value - The selected value.
+     * Sets the label value.
+     * @param {Array} value The selected value to set.
      */
     set selected(value) {
         this._selected = value;
@@ -209,8 +203,7 @@ export default class Select extends WJElement {
 
     /**
      * Sets the trigger value.
-     *
-     * @param {string} value - The trigger value.
+     * @param {string} value The trigger value to set.
      */
     set trigger(value) {
         this.setAttribute("trigger", value);
@@ -218,7 +211,6 @@ export default class Select extends WJElement {
 
     /**
      * Returns the trigger value.
-     *
      * @returns {string} The trigger value.
      */
     get trigger() {
@@ -229,7 +221,6 @@ export default class Select extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -239,7 +230,6 @@ export default class Select extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -262,11 +252,7 @@ export default class Select extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the select.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -404,9 +390,6 @@ export default class Select extends WJElement {
 
     /**
      * Sets up the event listeners after the component is drawn.
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
      */
     afterDraw() {
         this.input.addEventListener("focus", (e) => {
@@ -462,8 +445,7 @@ export default class Select extends WJElement {
 
     /**
      * Handles the option change event.
-     *
-     * @param {Event} e - The event.
+     * @param {Event} e The event.
      */
     optionChange = (e) => {
         let allOptions = this.getAllOptions();
@@ -483,8 +465,7 @@ export default class Select extends WJElement {
 
     /**
      * Returns all the options as HTML.
-     *
-     * @returns {NodeList} The options.
+     * @returns {NodeList} The options as HTML.
      */
     getAllOptions() {
         return this.querySelectorAll("wje-option");
@@ -492,8 +473,7 @@ export default class Select extends WJElement {
 
     /**
      * Returns the selected options as HTML.
-     *
-     * @returns {NodeList} The selected options.
+     * @returns {NodeList} The selected options as HTML.
      */
     getSelectedOptions() {
         return this.querySelectorAll("wje-option[selected]");
@@ -501,8 +481,6 @@ export default class Select extends WJElement {
 
     /**
      * Returns the selected options.
-     *
-     * @param {Element} option - The option to get.
      * @returns {Array} The selected options.
      */
     getSelected() {
@@ -522,9 +500,8 @@ export default class Select extends WJElement {
 
     /**
      * Handles the selection change.
-     *
-     * @param {Element} option - The option that changed.
-     * @param {number} length - The length of the selected options.
+     * @param {Element} option The option that changed.
+     * @param {number} length The length of the selected options.
      */
     selectionChanged(option = null, length = 0) {
         if (this.hasAttribute("multiple")) {
@@ -564,9 +541,21 @@ export default class Select extends WJElement {
     }
 
     /**
-     * Handles the selections.
-     *
-     * @param {Element} option - The option to select.
+     * Updates the selected options and their corresponding chips.
+     * @param {boolean} [silence] Determines whether to suppress the "wje-select:change" event.
+     * @returns {void}
+     * @description
+     * This method fetches the currently selected options and updates the `selectedOptions` array.
+     * It clears and rebuilds the chips representing the selected items in the UI.
+     * If the number of selected options reaches the maximum allowed (`maxOptions`), it stops updating the counter.
+     * Optionally, it dispatches a custom event when the selection changes unless `silence` is set to `true`.
+     * //@fires wje-select:change - Dispatched when the selection changes, unless `silence` is `true`.
+     * @example
+     * // Call the method and allow event dispatch
+     * selections();
+     * @example
+     * // Call the method without dispatching the event
+     * selections(true);
      */
     selections(silence = false) {
         let options = this.getSelectedOptions();
@@ -595,7 +584,9 @@ export default class Select extends WJElement {
     }
 
     /**
-     * Handles the counter.
+     * Manages the display of a counter element to indicate the number of items exceeding the maximum allowed options.
+     * - If the number of selected items equals the maximum allowed, the counter element is removed.
+     * - If the counter element doesn't exist and the number of items exceeds the maximum, it is created and updated.
      */
     counter() {
         // zmazanie counter (span)
@@ -619,8 +610,7 @@ export default class Select extends WJElement {
 
     /**
      * Returns a chip element.
-     *
-     * @param {Element} option - The option to get the chip for.
+     * @param {Element} option The option to get the chip for.
      * @returns {Element} The chip element.
      */
     getChip(option) {
@@ -639,8 +629,7 @@ export default class Select extends WJElement {
 
     /**
      * Handles the chip remove event.
-     *
-     * @param {Event} e - The event.
+     * @param {Event} e The event.
      */
     removeChip = (e) => {
         let option = e.target.option;
@@ -653,11 +642,10 @@ export default class Select extends WJElement {
 
     /**
      * Generates an HTML option element based on the provided item and mapping.
-     * 
-     * @param {Object} item - The item to generate the option for.
-     * @param {Object} [map] - The mapping object that specifies the properties of the item to use for the option's value and text.
-     * @param {string} [map.value="value"] - The property of the item to use for the option's value.
-     * @param {string} [map.text="text"] - The property of the item to use for the option's text.
+     * @param {object} item The item to generate the option for.
+     * @param {object} [map] The mapping object that specifies the properties of the item to use for the option's value and text.
+     * @param {string} [map.value] The property of the item to use for the option's value.
+     * @param {string} [map.text] The property of the item to use for the option's text.
      * @returns {HTMLElement} The generated HTML option element.
      */
     htmlOption(item, map = { value: "value", text: "text" }) {
@@ -678,10 +666,9 @@ export default class Select extends WJElement {
 
     /**
      * Adds an option to the select element.
-     * 
-     * @param {any} optionData - The data for the option to be added.
-     * @param {boolean} [silent=false] - Whether to suppress any events triggered by the addition of the option.
-     * @param {object} [map={ value: "value", text: "text" }] - The mapping object specifying the properties of the option data to be used for the value and text of the option.
+     * @param {any} optionData The data for the option to be added.
+     * @param {boolean} [silent] Whether to suppress any events triggered by the addition of the option.
+     * @param {object} [map] The mapping object specifying the properties of the option data to be used for the value and text of the option.
      */
     addOption(optionData, silent = false, map = { value: "value", text: "text" }) {
         if (!optionData) return;
@@ -698,10 +685,9 @@ export default class Select extends WJElement {
 
     /**
      * Adds options to the select element.
-     * 
-     * @param {Array|Object} optionsData - The options data to be added. Can be an array of objects or a single object.
-     * @param {boolean} [silent=false] - Indicates whether to trigger events when adding options. Default is false.
-     * @param {Object} [map] - The mapping object that specifies the properties of the options data object. Default is { value: "value", text: "text" }.
+     * @param {Array | object} optionsData The options data to be added. Can be an array of objects or a single object.
+     * @param {boolean} [silent] Indicates whether to trigger events when adding options. Default is false.
+     * @param {object} [map] The mapping object that specifies the properties of the options data object. Default is { value: "value", text: "text" }.
      */
     addOptions(optionsData, silent = false, map = { value: "value", text: "text" }) {
         if (!Array.isArray(optionsData)) {
@@ -721,9 +707,8 @@ export default class Select extends WJElement {
 
     /**
      * Selects an option with the specified value.
-     * 
-     * @param {string} value - The value of the option to be selected.
-     * @param {boolean} [silent=false] - Whether to suppress firing events.
+     * @param {string} value The value of the option to be selected.
+     * @param {boolean} [silent] Whether to suppress firing events.
      */
     selectOption(value, silent = false) {
         if (!value) return;
@@ -739,9 +724,8 @@ export default class Select extends WJElement {
 
     /**
      * Selects one or multiple options in the select element.
-     *
-     * @param {Array|any} values - The value(s) of the option(s) to be selected.
-     * @param {boolean} [silent=false] - Whether to trigger the change event or not.
+     * @param {Array|any} values The value(s) of the option(s) to be selected.
+     * @param {boolean} [silent] Whether to trigger the change event or not.
      */
     selectOptions(values, silent = false) {
         if (!Array.isArray(values)) {
@@ -756,7 +740,7 @@ export default class Select extends WJElement {
     /**
      * @summary Callback function that is called when the custom element is associated with a form.
      * This function adds an event listener to the form's submit event, which validates the input and propagates the validation.
-     * @param {HTMLFormElement} form - The form the custom element is associated with.
+     * @param {HTMLFormElement} form The form the custom element is associated with.
      */
     formAssociatedCallback(form) {
         form?.addEventListener('submit', () => {
@@ -769,8 +753,7 @@ export default class Select extends WJElement {
      * The formResetCallback method is a built-in lifecycle callback that gets called when a form gets reset.
      * This method is responsible for resetting the value of the custom input element to its default value.
      * It also resets the form value and validity state in the form internals.
-     *
-     * @method
+     * @function
      */
     formResetCallback() {
         // Set the value of the custom input element to its default value
@@ -785,9 +768,8 @@ export default class Select extends WJElement {
      * The formStateRestoreCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is restored.
      * This method is responsible for restoring the value of the custom input element to its saved state.
      * It also restores the form value and validity state in the form internals to their saved states.
-     *
-     * @param {Object} state - The saved state of the custom input element.
-     * @method
+     * @param {object} state The saved state of the custom input element.
+     * @function
      */
     formStateRestoreCallback(state) {
         // Set the value of the custom input element to its saved value
@@ -801,9 +783,8 @@ export default class Select extends WJElement {
     /**
      * The formStateSaveCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is saved.
      * This method is responsible for saving the value of the custom input element.
-     *
-     * @returns {Object} The saved state of the custom input element.
-     * @method
+     * @returns {object} The saved state of the custom input element.
+     * @function
      */
     formStateSaveCallback() {
         return {
@@ -814,9 +795,8 @@ export default class Select extends WJElement {
     /**
      * The formDisabledCallback method is a built-in lifecycle callback that gets called when the disabled state of a form-associated custom element changes.
      * This method is not implemented yet.
-     *
-     * @param {boolean} disabled - The new disabled state of the custom input element.
-     * @method
+     * @param {boolean} disabled The new disabled state of the custom input element.
+     * @function
      */
     formDisabledCallback(disabled) {
         console.warn('formDisabledCallback not implemented yet')

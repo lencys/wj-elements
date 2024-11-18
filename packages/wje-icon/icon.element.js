@@ -6,32 +6,31 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents an icon. `IconElement` is a custom web component that represents an icon.
  * @documentation https://elements.webjet.sk/components/icon
  * @status stable
- *
- * @extends WJElement
- *
- * @part svg - The SVG part of the icon
- *
- * @cssproperty [--wje-icon-size=1rem] - The size of the icon
- * @cssproperty [--wje-icon-width=var(--wje-icon-size, 100%)] - The width of the icon
- * @cssproperty [--wje-icon-height=var(--wje-icon-size, 100%)] - The height of the icon
- *
+ * @augments WJElement
+ * @csspart svg - The SVG part of the icon
+ * @cssproperty [--wje-icon-size=1rem] - The size of the icon element
+ * @cssproperty [--wje-icon-width=var(--wje-icon-size, 100%)] - The width of the icon element
+ * @cssproperty [--wje-icon-height=var(--wje-icon-size, 100%)] - The height of the icon element
  * @tag wje-icon
  */
 export default class Icon extends WJElement {
+
     /**
      * Creates an instance of IconElement.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
     }
 
+    /**
+     * Sets the name of the icon.
+     * @type {string}
+     */
     className = "Icon";
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -41,7 +40,6 @@ export default class Icon extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -58,10 +56,9 @@ export default class Icon extends WJElement {
 
     /**
      * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * @param {object} context The context for drawing.
+     * @param {object} store The store for drawing.
+     * @param {object} params The parameters for drawing.
      * @returns {DocumentFragment}
      */
     draw(context, store, params) {
@@ -84,9 +81,6 @@ export default class Icon extends WJElement {
 
     /**
      * Called after the component has been drawn.
-     * @params {Object} context - The context for drawing.
-     * @params {Object} store - The store for drawing.
-     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         let lazyImageObserver = new IntersectionObserver((entries, observer) => {

@@ -8,16 +8,13 @@ import { default as WJElement } from "../wje-element/element.js";
  * @summary This class represents an Animation element, extending the WJElement class.
  * @documentation https://elements.webjet.sk/components/animation
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @slot - The animation main content.
- *
  * @cssproperty --size - The size of the avatar.
- *
  * @tag wje-animation
  */
 export default class Animation extends WJElement {
+
     /**
      * Constructor for the Animation class.
      */
@@ -172,7 +169,7 @@ export default class Animation extends WJElement {
 
     /**
      * Setter for the animations property.
-     * @param {Array} value - The new value for the animations property.
+     * @param {Array} value The new value for the animations property.
      */
     set animations(value) {
         this._animations = value;
@@ -180,7 +177,7 @@ export default class Animation extends WJElement {
 
     /**
      * Getter for the animations' property.
-     * @return {Array} The current value of the animations' property.
+     * @returns {Array} The current value of the animations' property.
      */
     get animations() {
         return this._animations;
@@ -194,7 +191,7 @@ export default class Animation extends WJElement {
 
     /**
      * Getter for the CSS stylesheet.
-     * @return {Object} The styles for the Animation element.
+     * @returns {object} The styles for the Animation element.
      */
     static get cssStyleSheet() {
         return styles;
@@ -202,7 +199,7 @@ export default class Animation extends WJElement {
 
     /**
      * Getter for the observed attributes.
-     * @return {Array} An array containing the name of the observed attribute.
+     * @returns {Array} An array containing the name of the observed attribute.
      */
     static get observedAttributes() {
         return ['name'];
@@ -217,10 +214,7 @@ export default class Animation extends WJElement {
 
     /**
      * Method to draw the Animation element.
-     * @param {Object} context - The context in which the element is drawn.
-     * @param {Object} store - The store containing the state of the element.
-     * @param {Object} params - The parameters for drawing the element.
-     * @return {Object} The document fragment containing the drawn element.
+     * @returns {object} The document fragment containing the drawn element.
      */
     draw() {
         let fragment = document.createDocumentFragment();
@@ -262,7 +256,7 @@ export default class Animation extends WJElement {
 
     /**
      * Method to fetch and parse the animations array from a CSS file.
-     * @return {Array} The animations array.
+     * @returns {Array} An array of animation definitions parsed from the CSS file.
      */
     async getAnimationsArray() {
         return await fetchAndParseCSS(animations);

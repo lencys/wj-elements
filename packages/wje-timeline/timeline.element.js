@@ -2,36 +2,34 @@ import { default as WJElement } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
 /**
- * Timeline component.
+ * `Timeline` is a custom web component that represents a timeline.
  * @summary This element represents a timeline.
  * @documentation https://elements.webjet.sk/components/timeline
  * @status stable
- *
- * @extends {WJElement}
- *
- * @part native - The native part of the rating component.
- *
+ * @augments WJElement
  * @slot - Slot for the timeline items.
- *
+ * @csspart native - The native part of the rating component.
+ * @csspart vertical-line - The vertical line part of the rating component.
  * @tag wje-timeline
  */
 export default class Timeline extends WJElement {
+
+    /**
+     * Creates an instance of Timeline.
+     */
     constructor() {
         super();
     }
 
     /**
-     * Returns the class name of the tab.
-     *
-     * @returns {string} The class name of the tab.
+     * The class name for the component.
      */
     className = "Timeline";
 
     /**
-     * Returns the CSS styles for the component.
-     *
+     * Returns the CSS stylesheet for the component.
      * @static
-     * @returns {CSSStyleSheet}
+     * @returns {CSSStyleSheet} The CSS stylesheet
      */
     static get cssStyleSheet() {
         return styles;
@@ -45,11 +43,7 @@ export default class Timeline extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the timeline.
      * @returns {DocumentFragment}
      */
     draw() {

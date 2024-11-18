@@ -6,33 +6,28 @@ import styles from "./scss/styles.scss?inline";
  * @summary This element represents a slider input.
  * @documentation https://elements.webjet.sk/components/slider
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments WJElement
  * @slot label - Slot for the label of the slider.
  * @slot start - Slot for the start value of the slider.
  * @slot end - Slot for the end value of the slider.
- *
  * @csspart native - The native slider wrapper.
  * @csspart slider - The slider input.
- *
- * @cssproperty [--wje-slider-thumb-color=#000000] - The color of the slider thumb.
- * @cssproperty [--wje-slider-thumb-shadow=none] - The shadow of the slider thumb.
- * @cssproperty [--wje-slider-thumb-shadow-active=none] - The shadow of the active slider thumb.
- * @cssproperty [--wje-slider-track-color=#000000] - The color of the slider track.
- * @cssproperty [--wje-slider-track-height=.25rem] - The height of the slider track.
- *
- * @event wje:slider-init - Dispatched when the slider is initialized.
- * @event wje:slider-move - Dispatched when the slider value is changed.
- * @event wje:slider-change - Dispatched when the slider value is changed and the change is committed.
- *
+ * @cssproperty [--wje-slider-thumb-color=#000000] - Defines the color of the slider thumb. Accepts any valid CSS color value, such as hex, RGB, or named colors.
+ * @cssproperty [--wje-slider-thumb-shadow=none] - Specifies the box shadow of the slider thumb in its default state. Accepts any valid CSS box-shadow value.
+ * @cssproperty [--wje-slider-thumb-shadow-active=none] - Sets the box shadow of the slider thumb when it is active (e.g., during dragging). Accepts any valid CSS box-shadow value.
+ * @cssproperty [--wje-slider-track-color=#000000] - Specifies the color of the slider track. Accepts any valid CSS color value.
+ * @cssproperty [--wje-slider-track-height=.25rem] - Defines the height of the slider track. Accepts any valid CSS length unit, such as `px`, `rem`, or `em`.
+ * // @fires wje-slider:init - Dispatched when the slider is initialized.
+ * // @fires wje-slider:move - Dispatched when the slider value is changed.
+ * // @fires wje-slider:change - Dispatched when the slider value is changed and the change is committed.
  * @tag wje-slider
  */
+
 export default class Slider extends WJElement {
+
     /**
      * Creates an instance of Slider.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super()
@@ -40,8 +35,7 @@ export default class Slider extends WJElement {
 
     /**
      * Sets the value of the slider.
-     *
-     * @param {number} value - The value to set.
+     * @param {number} value The value to set.
      */
     set value(value) {
         this.setAttribute("value", value);
@@ -54,8 +48,7 @@ export default class Slider extends WJElement {
 
     /**
      * Returns the value of the slider.
-     *
-     * @returns {number} The value of the slider.
+     * @returns {number} The value of the slider input.
      */
     get value() {
         return this.getAttribute("value") || 0;
@@ -63,8 +56,7 @@ export default class Slider extends WJElement {
 
     /**
      * Sets the minimum value of the slider.
-     *
-     * @param {number} value - The minimum value to set.
+     * @param {number} value The minimum value to set.
      */
     set min(value) {
         this.setAttribute("min", value);
@@ -72,7 +64,6 @@ export default class Slider extends WJElement {
 
     /**
      * Returns the minimum value of the slider.
-     *
      * @returns {number} The minimum value of the slider.
      */
     get min() {
@@ -81,8 +72,7 @@ export default class Slider extends WJElement {
 
     /**
      * Sets the maximum value of the slider.
-     *
-     * @param {number} value - The maximum value to set.
+     * @param {number} value The maximum value to set.
      */
     set max(value) {
         this.setAttribute("max", value);
@@ -90,7 +80,6 @@ export default class Slider extends WJElement {
 
     /**
      * Returns the maximum value of the slider.
-     *
      * @returns {number} The maximum value of the slider.
      */
     get max() {
@@ -99,8 +88,7 @@ export default class Slider extends WJElement {
 
     /**
      * Sets the step value of the slider.
-     *
-     * @param {number} value - The step value to set.
+     * @param {number} value The step value to set.
      */
     set step(value) {
         this.setAttribute("step", value);
@@ -108,7 +96,6 @@ export default class Slider extends WJElement {
 
     /**
      * Returns the step value of the slider.
-     *
      * @returns {number} The step value of the slider.
      */
     get step() {
@@ -119,7 +106,6 @@ export default class Slider extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -129,7 +115,6 @@ export default class Slider extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -145,11 +130,7 @@ export default class Slider extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the slider.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -211,9 +192,6 @@ export default class Slider extends WJElement {
 
     /**
      * Sets up the event listeners after the component is drawn.
-     * @params {Object} context - The context for drawing.
-     * @params {Object} store - The store for drawing.
-     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         this.setHandlePosition();
@@ -268,12 +246,11 @@ export default class Slider extends WJElement {
     }
 
     /**
-     * Returns the percentage of the slider value.
-     *
-     * @param {number} value - The value of the slider.
-     * @param {number} min - The minimum value of the slider.
-     * @param {number} max - The maximum value of the slider.
-     * @returns {number} The percentage of the slider value.
+     * Calculates the percentage of a value within a given range.
+     * @param {number} min The minimum value of the range.
+     * @param {number} max The maximum value of the range.
+     * @param {number} [value] The current value within the range. Defaults to 0 if not provided.
+     * @returns {number} The calculated percentage as a number between 0 and 100. Returns 0 if the range is invalid.
      */
     getPercentage(min, max, value = 0) {
         return Number((value - min) * 100 / (max - min)) || 0;

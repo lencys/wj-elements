@@ -7,22 +7,18 @@ import styles from "./styles/styles.scss?inline";
  * @summary This element represents a list.
  * @documentation https://elements.webjet.sk/components/list
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @slot - The default slot for the list.
- *
- * @cssprop [--wje-list-inset-padding=1rem] - The padding of the list when it is inset.
- * @cssprop [--wje-list-border-radius=8px] - The border radius of the list.
- * @cssprop [--wje-list-background=var(--wje-background)] - The background of the list.
- *
+ * @cssproperty [--wje-list-inset-padding=1rem] - The padding of the list when it is inset.
+ * @cssproperty [--wje-list-border-radius=8px] - The border radius of the list. Accepts any valid CSS length.
+ * @cssproperty [--wje-list-background=var(--wje-background)] - The background of the list. Accepts any valid CSS color value.
  * @tag wje-list
  */
 export default class List extends WJElement {
+
     /**
      * Creates an instance of List.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -32,7 +28,6 @@ export default class List extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -48,11 +43,7 @@ export default class List extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Returns the list of attributes to observe for changes.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -66,9 +57,6 @@ export default class List extends WJElement {
 
     /**
      * Called after the component has been drawn.
-     * @params {Object} context - The context for drawing.
-     * @params {Object} store - The store for drawing.
-     * @params {Object} params - The parameters for drawing.
      */
     afterDraw() {
         this.classList.toggle("wje-lines-" + this.lines, this.hasAttribute("lines"));

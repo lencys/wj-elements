@@ -6,13 +6,9 @@ import styles from "./styles/styles.css?inline";
  * @summary This class represents an Avatar element, extending the WJElement class.
  * @documentation https://elements.webjet.sk/components/avatar
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @slot - The avatar main content.
- *
  * @csspart native - The component's native wrapper.
- *
  * @cssproperty --wje-avatar-width;
  * @cssproperty --wje-avatar-height;
  * @cssproperty --wje-avatar-font-size;
@@ -23,24 +19,24 @@ import styles from "./styles/styles.css?inline";
  * @cssproperty --wje-avatar-border-color;
  * @cssproperty --wje-avatar-border-width;
  * @cssproperty --wje-avatar-border-style;
- *
  * @tag wje-avatar
  */
 export default class Avatar extends WJElement {
+
     /**
-     * Avatar class constructor
+     * Avatar class constructor.
      */
     constructor() {
         super();
     }
 
     /**
-     * Class name
+     * Class name for the Avatar element.
      */
     className = "Avatar";
 
     /**
-     * Getter for cssStyleSheet
+     * Getter for cssStyleSheet.
      * @returns {string} styles
      */
     static get cssStyleSheet() {
@@ -48,17 +44,14 @@ export default class Avatar extends WJElement {
     }
 
     /**
-     * Method to setup attributes
+     * Method to setup attributes.
      */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
     /**
-     * Method to draw the avatar
-     * @param {object} context - The context
-     * @param {object} store - The store
-     * @param {object} params - The parameters
+     * Method to draw the avatar element and return a document fragment.
      * @returns {object} fragment - The document fragment
      */
     draw() {
@@ -101,7 +94,7 @@ export default class Avatar extends WJElement {
     }
 
     /**
-     * Method to check if the avatar is an image
+     * Method to check if the avatar is an image.
      * @returns {boolean} - True if the avatar is an image, false otherwise
      */
     isImage(){

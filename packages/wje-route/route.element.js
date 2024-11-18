@@ -5,17 +5,14 @@ import { default as WJElement } from "../wje-element/element.js";
  * @summary This element represents a route in a routing system.
  * @documentation https://elements.webjet.sk/components/route
  * @status stable
- *
- * @class Route
- * @extends {WJElement}
- *
+ * @augments WJElement
  * @tag wje-route
  */
 export default class Route extends WJElement {
+
     /**
      * Creates an instance of Route.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -25,7 +22,6 @@ export default class Route extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -41,11 +37,7 @@ export default class Route extends WJElement {
     }
 
     /**
-     * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
+     * Draws the component for the route.
      * @returns {DocumentFragment}
      */
     draw() {

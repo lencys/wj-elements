@@ -8,21 +8,21 @@ setDefaultAnimation(GenericCSS)
  * @summary This element represents a route in a routing system.
  * @documentation https://elements.webjet.sk/components/route
  * @status stable
- *
- * @class RouterOutlet
- * @extends {WJElement}
- *
+ * @augments AnimatedOutlet
  * @tag wje-router-outlet
  */
 export default class RouterOutlet extends AnimatedOutlet {
+
     /**
      * Creates an instance of Route.
-     *
-     * @constructor
      */
     constructor() {
         super();
     }
 
+    /**
+     * The class name for the component.
+     * @type {string}
+     */
     className = "RouterOutlet";
 }

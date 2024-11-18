@@ -5,43 +5,39 @@ import styles from "./styles/styles.css?inline";
  * @summary Thumbnail class
  * @documentation https://elements.webjet.sk/components/thumbnail
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @slot thumbnail-slot - The slot for the thumbnail content.
- *
- * @cssproperty [--wje-thumbnail-width=48px] - The width of the thumbnail.
- * @cssproperty [--wje-thumbnail-height=48px] - The height of the thumbnail.
- * @cssproperty [--wje-thumbnail-border-radius=var(--wje-border-radius-medium)] - The border radius of the thumbnail.
- *
+ * @cssproperty [--wje-thumbnail-width=48px] - Defines the width of the thumbnail. Accepts any valid CSS length unit such as `px`, `rem`, or `%`.
+ * @cssproperty [--wje-thumbnail-height=48px] - Specifies the height of the thumbnail. Accepts any valid CSS length unit.
+ * @cssproperty [--wje-thumbnail-border-radius=var(--wje-border-radius-medium)] - Sets the border radius of the thumbnail, determining how rounded its corners appear. Accepts any valid CSS length unit or CSS variable.
  * @tag thumbnail-element
  */
+
 export default class Thumbnail extends WJElement {
+
     /**
-     * Thumbnail constructor
-     * @constructor
+     * Creates an instance of Thumbnail.
      */
     constructor() {
         super();
     }
 
     /**
-     * Class name
-     * @type {string}
+     * The class name for the component
      */
     className = "Thumbnail";
 
     /**
-     * Get CSS stylesheet
+     * Returns the CSS stylesheet for the component.
      * @static
-     * @returns {Object} styles
+     * @returns {CSSStyleSheet} The CSS stylesheet
      */
     static get cssStyleSheet() {
         return styles;
     }
 
     /**
-     * Get observed attributes
+     * Returns the list of observed attributes.
      * @static
      * @returns {Array} An empty array
      */
@@ -50,18 +46,15 @@ export default class Thumbnail extends WJElement {
     }
 
     /**
-     * Setup attributes
+     * Sets up the attributes for the component.
      */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
     /**
-     * Draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
-     * @returns {Object} Document fragment
+     * Draws the component for the thumbnail.
+     * @returns {object} Document fragment
      */
     draw() {
         let fragment = document.createDocumentFragment();

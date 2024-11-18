@@ -7,25 +7,19 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a label.
  * @documentation https://elements.webjet.sk/components/label
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @csspart label - The label part of the component.
- *
  * @slot - The default slot for the label.
- *
- * @cssprop [--wje-label-color=black] - The color of the label.
- * @cssprop [--wje-label-font-size=16px] - The font size of the label.
- *
- * @fires wje-label:change - Event fired when the label is changed.
- *
+ * @cssproperty [--wje-label-color=black] - Defines the text color of the label. This property determines the color of the label's text. Accepts any valid CSS color value (e.g., named colors like `black`, `red`, or values like `#000000`, `rgb(0, 0, 0)`).
+ * @cssproperty [--wje-label-font-size=16px] - Specifies the font size of the label. This property sets the size of the label's text. Accepts any valid CSS length unit (e.g., `px`, `em`, `rem`). The default value is `16px`, which provides optimal readability in most designs.
+ * // @fires wje-label:change - Event fired when the label is changed.
  * @tag wje-label
  */
 export default class Label extends WJElement {
+
     /**
      * Creates an instance of Label.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -35,7 +29,6 @@ export default class Label extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -45,7 +38,6 @@ export default class Label extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -62,10 +54,6 @@ export default class Label extends WJElement {
 
     /**
      * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
     draw() {

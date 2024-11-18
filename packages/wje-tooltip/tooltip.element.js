@@ -6,31 +6,34 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a tooltip.
  * @documentation https://elements.webjet.sk/components/tooltip
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @csspart native - The native tooltip wrapper.
- *
  * @slot arrow - The arrow slot for the tooltip.
  * @slot anchor - The anchor slot for the tooltip.
- *
- * @cssproperty [--wje-tooltip=arror-color=var(--wje-color-contrast-11)] - The arrow color of the tooltip.
- *
+ * @cssproperty [--wje-tooltip-arrow-color=var(--wje-color-contrast-11)] - Specifies the color of the tooltip's arrow. This property determines the visual color of the arrow that points to the element the tooltip is attached to. Accepts any valid CSS color value such as `hex`, `rgb`, or `CSS variable`.
  * @tag wje-tooltip
  */
 export default class Tooltip extends WJElement {
+
     /**
-     * @constructor
-     * @summary Tooltip constructor
+     * Creates an instance of Tooltip.
      */
     constructor() {
         super();
     }
 
+    /**
+     * Set active attribute for the tooltip element.
+     * @param value
+     */
     set content(value) {
         this.setAttribute("content", value);
     }
 
+    /**
+     * Get active attribute for the tooltip element.
+     * @returns {string}
+     */
     get content() {
         if (this.hasAttribute('content'))
             return this.getAttribute('content');
@@ -39,22 +42,22 @@ export default class Tooltip extends WJElement {
     }
 
     /**
-     * @summary Class name
+     * The class name for the component.
      * @type {string}
      */
     className = "Tooltip";
 
     /**
-     * @summary Get CSS stylesheet
+     * Returns the CSS stylesheet for the component.
      * @static
-     * @returns {Object} styles
+     * @returns {CSSStyleSheet} The CSS stylesheet
      */
     static get cssStyleSheet() {
         return styles;
     }
 
     /**
-     * @summary Get observed attributes
+     * Returns the list of observed attributes.
      * @static
      * @returns {Array} An array of observed attributes
      */
@@ -63,18 +66,15 @@ export default class Tooltip extends WJElement {
     }
 
     /**
-     * @summary Setup attributes
+     * Sets up the attributes for the component.
      */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
     /**
-     * @summary Draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
-     * @returns {Object} Document fragment
+     * Draws the component for the tooltip.
+     * @returns {object} Document fragment
      */
     draw() {
         let fragment = document.createDocumentFragment();
@@ -126,10 +126,7 @@ export default class Tooltip extends WJElement {
     }
 
     /**
-     * @summary After draw method
-     * @params {Object} context - The context for drawing.
-     * @params {Object} store - The store for drawing.
-     * @params {Object} params - The parameters for drawing.
+     * Draws the component for the tooltip.
      */
     afterDraw() {
         let anchorEl = this.mySlot.assignedElements()[0];
@@ -163,7 +160,9 @@ export default class Tooltip extends WJElement {
     }
 
     /**
-     * @summary Show tooltip
+     * Handles the logic for showing the component's popup or tooltip.
+     * Adds the `active` class, invokes lifecycle hooks, and manages the popup visibility.
+     * @throws {Error} If the `beforeShow` method returns a non-string value or `false`.
      */
     onShow = () => {
         this.classList.add("active");
@@ -190,13 +189,20 @@ export default class Tooltip extends WJElement {
     }
 
     /**
-     * @summary Hide tooltip
+     * Hides the component's popup or tooltip.
+     * Removes the `active` class from the component and hides the popup element.
      */
     onHide = () => {
         this.classList.remove("active");
         this.popup.hide();
     }
 
+    /**
+     * Validates if the specified selector exists within the provided element.
+     * Logs an error if the selector is not found and returns the found element or `null`.
+     * @param {HTMLElement} anchorEl The root element to search within.
+     * @returns {HTMLElement|null} The first element matching the selector, or `null` if not found.
+     */
     checkSelector(anchorEl) {
         const newAnchorEl = anchorEl.querySelector(this.selector);
         if (newAnchorEl === null) {

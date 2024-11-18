@@ -1,11 +1,12 @@
-
-import simpleImportSort from "eslint-plugin-simple-import-sort";
-import unusedImports from "eslint-plugin-unused-imports";
-import wc from 'eslint-plugin-wc';
 import globals from 'globals';
-
+import { default as wc } from 'eslint-plugin-wc';
+import { default as importPlugin } from 'eslint-plugin-import';
+import jsdoc from 'eslint-plugin-jsdoc';
 
 export default [
+  jsdoc.configs['flat/contents-typescript-error'],
+  jsdoc.configs['flat/logical-typescript-error'],
+  jsdoc.configs['flat/stylistic-typescript-error'],
   {
     languageOptions: {
       ecmaVersion: "latest",
@@ -13,29 +14,51 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.node,
+        myCustomGlobal: "readonly"
       }
+    },
+    plugins: {
+      'wc': wc,
+      'import': importPlugin
     },
     settings: {
-      "wc": {
-        "elementBaseClasses": ["WJElement"] // Recognize `WJElement` as a Custom Element base class
+      'wc': {
+        'elementBaseClasses': ['WJElement'] // Recognize `LitElement` as a Custom Element base class
       }
     },
-    ignores: ['.cache', 'demo', 'dist', 'docs', 'experimental-packages', 'node_modules', '**/plugins/**/*.js', '**/*.test.js', '**/element.js'],
-    plugins: {
-      wc,
-      "simple-import-sort": simpleImportSort,
-      "unused-imports": unusedImports,
-    },
+    ignores: [
+      '.cache',
+      'demo',
+      'dist',
+      'docs',
+      'experimental-packages',
+      'node_modules',
+      '**/plugins/*.js',
+      '**/plugins/**/*.js',
+      '**/*.test.js'
+    ],
     rules: {
-      'no-template-curly-in-string': 'error',
       'array-callback-return': 'error',
       'comma-dangle': 'off',
       'consistent-return': 'error',
       curly: 'off',
       'default-param-last': 'error',
       eqeqeq: 'error',
-      'lit-a11y/click-events-have-key-events': 'off',
+      'func-names': ['warn', 'never'],
+      'import/no-duplicates': 'warn',
+      'jsdoc/require-hyphen-before-param-description': ["error", "never"],
+      'jsdoc/no-types': 'off',
+      'jsdoc/check-tag-names': ['error', {
+        definedTags: ['documentation', 'status', 'summary', 'extends', 'dependency', 'slot', 'csspart', 'tag', 'cssproperty', 'fires', 'attr']
+      }],
+      'jsdoc/valid-types': ['error', {
+        allowEmptyNamepaths: true
+      }],
+      'jsdoc/text-escaping': 'off',
+      'no-array-constructor': 'error',
+      'no-bitwise': 'error',
       'no-constructor-return': 'error',
+      'no-else-return': 'off',
       'no-empty-function': 'warn',
       'no-eval': 'error',
       'no-extend-native': 'error',
@@ -47,44 +70,13 @@ export default [
       'no-invalid-this': 'error',
       'no-labels': 'error',
       'no-lone-blocks': 'error',
+      'no-multi-assign': 'warn',
       'no-new': 'error',
       'no-new-func': 'error',
+      'no-new-object': 'error',
       'no-new-wrappers': 'error',
       'no-octal-escape': 'error',
       'no-proto': 'error',
-      'no-return-assign': 'warn',
-      'no-script-url': 'error',
-      'no-self-compare': 'warn',
-      'no-sequences': 'warn',
-      'no-throw-literal': 'error',
-      'no-unmodified-loop-condition': 'error',
-      'no-unused-expressions': 'warn',
-      'no-useless-call': 'error',
-      'no-useless-concat': 'error',
-      'no-useless-return': 'warn',
-      'prefer-promise-reject-errors': 'error',
-      radix: 'off',
-      'require-await': 'error',
-      'wrap-iife': ['warn', 'inside'],
-      'no-shadow': 'error',
-      'no-array-constructor': 'error',
-      'no-bitwise': 'error',
-      'no-multi-assign': 'warn',
-      'no-new-object': 'error',
-      'no-useless-computed-key': 'warn',
-      'no-useless-rename': 'warn',
-      'no-var': 'error',
-      'prefer-const': 'off',
-      'prefer-numeric-literals': 'warn',
-      'prefer-object-spread': 'warn',
-      'prefer-rest-params': 'warn',
-      'prefer-spread': 'warn',
-      'prefer-template': 'off',
-      'no-else-return': 'off',
-      'func-names': ['warn', 'never'],
-      'one-var': ['warn', 'never'],
-      'operator-assignment': 'warn',
-      'prefer-arrow-callback': 'warn',
       'no-restricted-imports': [
         'warn',
         {
@@ -100,41 +92,56 @@ export default [
           ]
         }
       ],
-      'wc/guard-super-call': 'error',
-      'wc/no-constructor-attributes': 'error',
-      'wc/no-invalid-element-name': 'error',
-      'wc/no-self-class': 'warn',
+      'no-return-assign': 'warn',
+      'no-script-url': 'error',
+      'no-self-compare': 'warn',
+      'no-sequences': 'warn',
+      'no-shadow': 'error',
+      'no-template-curly-in-string': 'error',
+      'no-throw-literal': 'error',
+      'no-unmodified-loop-condition': 'error',
+      'no-unused-expressions': 'warn',
+      'no-useless-call': 'error',
+      'no-useless-computed-key': 'warn',
+      'no-useless-concat': 'error',
+      'no-useless-rename': 'warn',
+      'no-useless-return': 'warn',
+      'no-var': 'error',
+      'one-var': ['warn', 'never'],
+      'operator-assignment': 'warn',
+      'prefer-arrow-callback': 'warn',
+      'prefer-const': 'off',
+      'prefer-numeric-literals': 'warn',
+      'prefer-object-spread': 'warn',
+      'prefer-promise-reject-errors': 'error',
+      'prefer-rest-params': 'warn',
+      'prefer-spread': 'warn',
+      'prefer-template': 'off',
+      radix: 'off',
+      'require-await': 'error',
       'wc/attach-shadow-constructor': 'warn',
+      'wc/define-tag-after-class-definition': 'off',
+      'wc/expose-class-on-global': 'off',
+      'wc/file-name-matches-element': 'off',
+      'wc/guard-define-call': 'off',
+      'wc/guard-super-call': 'error',
+      'wc/max-elements-per-file': 'warn',
       'wc/no-child-traversal-in-attributechangedcallback': 'warn',
       'wc/no-child-traversal-in-connectedcallback': 'warn',
       'wc/no-closed-shadow-root': 'warn',
+      'wc/no-constructor': 'off',
+      'wc/no-constructor-attributes': 'error',
       'wc/no-constructor-params': 'warn',
       'wc/no-customized-built-in-elements': 'warn',
+      'wc/no-exports-with-element': 'off',
+      'wc/no-invalid-element-name': 'error',
       'wc/no-invalid-extends': 'warn',
+      'wc/no-method-prefixed-with-on': 'warn',
+      'wc/no-self-class': 'off',
       'wc/no-typos': 'warn',
       'wc/require-listener-teardown': 'warn',
-      'wc/define-tag-after-class-definition': 'off',
-      'wc/expose-class-on-global': 'off',
-      'wc/file-name-matches-element': 'warn',
-      'wc/guard-define-call': 'warn',
-      'wc/max-elements-per-file': 'warn',
-      'wc/no-constructor': 'warn',
-      'wc/no-exports-with-element': 'warn',
-      'wc/no-method-prefixed-with-on': 'warn',
       'wc/tag-name-matches-class': 'warn',
-      "simple-import-sort/imports": "error",
-      "simple-import-sort/exports": "off",
-      "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
-      "unused-imports/no-unused-imports": "error",
-      "unused-imports/no-unused-vars": [
-        "warn",
-        {
-          "vars": "all",
-          "varsIgnorePattern": "^_",
-          "args": "after-used",
-          "argsIgnorePattern": "^_",
-        },
-      ]
+      'wrap-iife': ['warn', 'inside']
     }
   }
 ];

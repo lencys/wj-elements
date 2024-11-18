@@ -1,47 +1,101 @@
-import { default as WJElement } from "../wje-element/element.js";
+import { default as WJElement, event } from "../wje-element/element.js";
 import styles from "./styles/styles.css?inline";
 
+/**
+ * @summary Carousel class that extends WJElement.
+ * @documentation https://elements.webjet.sk/components/carousel
+ * @status stable
+ * @augments WJElement
+ * @slot - The carousel main content.
+ * @cssproperty [--wje-carousel-size=100%] - Size of the carousel component;
+ */
 export default class Carousel extends WJElement {
+
+    /**
+     * Carousel constructor method.
+     */
     constructor() {
         super();
 
         this.slidePerPage = 1;
     }
 
+    /**
+     * Active slide attribute.
+     * @param value
+     */
     set activeSlide(value) {
         this.setAttribute("active-slide", value);
     }
 
+    /**
+     * Active slide attribute.
+     * @returns {number|number}
+     */
     get activeSlide() {
         return +this.getAttribute("active-slide") || 0;
     }
 
+    /**
+     * Pagination attribute.
+     * @returns {boolean}
+     */
     get pagination() {
         return this.hasAttribute("pagination");
     }
 
+    /**
+     * Navigation attribute.
+     * @returns {boolean}
+     */
     get navigation() {
         return this.hasAttribute("navigation");
     }
 
+    /**
+     * Thumbnails attribute.
+     * @returns {boolean}
+     */
     get thumbnails() {
         return this.hasAttribute("thumbnails");
     }
 
+    /**
+     * Loop attribute.
+     * @returns {boolean}
+     */
     get loop() {
         return this.hasAttribute("loop");
     }
 
+    /**
+     * Class name for the Carousel.
+     * @type {string}
+     */
     className = "Carousel";
 
+    /**
+     * Getter for the CSS stylesheet.
+     * @returns {*}
+     */
     static get cssStyleSheet() {
         return styles;
     }
 
+    /**
+     * Getter for the observed attributes.
+     * @returns {string[]}
+     */
     static get observedAttributes() {
         return ["active-slide"];
     }
 
+    /**
+     * Sets up the attributes for the Carousel.
+     * @param name
+     * @param old
+     * @param newName
+     */
     attributeChangedCallback(name, old, newName) {
         if (name === "active-slide") {
             if(this.pagination)
@@ -52,14 +106,24 @@ export default class Carousel extends WJElement {
         }
     }
 
+    /**
+     * Sets up the attributes for the Carousel.
+     */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
-    beforeDraw(context, store, params) {
+    /**
+     * Before draw method for the Carousel.
+     */
+    beforeDraw() {
         this.cloneFirstAndLastItems();
     }
 
+    /**
+     * Draw method for the Carousel.
+     * @returns {DocumentFragment}
+     */
     draw() {
         let fragment = document.createDocumentFragment();
 
@@ -95,6 +159,9 @@ export default class Carousel extends WJElement {
         return fragment;
     }
 
+    /**
+     * After draw method for the Carousel.
+     */
     afterDraw() {
         this.setIntersectionObserver();
         this.getSlidesWithClones().forEach((slide, i) => {
@@ -124,6 +191,9 @@ export default class Carousel extends WJElement {
         });
     }
 
+    /**
+     * Sets up the IntersectionObserver for the Carousel.
+     */
     setIntersectionObserver() {
         this.intersectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -141,6 +211,12 @@ export default class Carousel extends WJElement {
         });
     }
 
+    /**
+     * Goes to the slide.
+     * @param index
+     * @param behavior
+     * @param next
+     */
     goToSlide(index, behavior = "smooth", next = true) {
         const slides = this.getSlides();
         const slideWithClones = this.getSlidesWithClones();
@@ -178,6 +254,9 @@ export default class Carousel extends WJElement {
         }
     }
 
+    /**
+     * Clones the first and last items.
+     */
     cloneFirstAndLastItems() {
         const items = this.getSlides();
 
@@ -198,6 +277,9 @@ export default class Carousel extends WJElement {
         }
     }
 
+    /**
+     * Goes to the next slide.
+     */
     removeActiveSlide() {
         this.getSlidesWithClones().forEach((slide, i) => {
             slide.classList.remove("active");
@@ -216,6 +298,9 @@ export default class Carousel extends WJElement {
         }
     }
 
+    /**
+     * Goes to the next slide.
+     */
     changePagination() {
         if(this.pagination) {
             this.removeActiveSlide();
@@ -227,6 +312,9 @@ export default class Carousel extends WJElement {
         }
     }
 
+    /**
+     * Goes to the next slide.
+     */
     changeThumbnails() {
         if(this.thumbnails) {
             this.removeActiveSlide();
@@ -238,6 +326,10 @@ export default class Carousel extends WJElement {
         }
     }
 
+    /**
+     * Goes to the next slide.
+     * @returns {Element}
+     */
     createNextButton() {
         const nextButton = document.createElement("wje-button");
         nextButton.classList.add("next");
@@ -251,6 +343,10 @@ export default class Carousel extends WJElement {
         return nextButton;
     }
 
+    /**
+     * Goes to the next slide.
+     * @returns {Element}
+     */
     createPreviousButton() {
         const previousButton = document.createElement("wje-button");
         previousButton.classList.add("prev");
@@ -264,6 +360,10 @@ export default class Carousel extends WJElement {
         return previousButton;
     }
 
+    /**
+     * Goes to the next slide.
+     * @returns {Element}
+     */
     createPagination() {
         const pagination = document.createElement("div");
         pagination.classList.add("pagination");
@@ -283,6 +383,10 @@ export default class Carousel extends WJElement {
         return pagination;
     }
 
+    /**
+     * Goes to the next slide.
+     * @returns {Element}
+     */
     createThumbnails() {
         const thumbnails = document.createElement("div");
         thumbnails.classList.add("thumbnails");
@@ -302,26 +406,48 @@ export default class Carousel extends WJElement {
         return thumbnails;
     }
 
+    /**
+     * Goes to the next slide.
+     */
     nextSlide() {
         this.goToSlide(this.activeSlide + this.slidePerPage);
     }
 
+    /**
+     * Goes to the previous slide.
+     */
     previousSlide() {
         this.goToSlide(this.activeSlide - this.slidePerPage);
     }
 
+    /**
+     * Goes to the slide.
+     * @returns {Array}
+     */
     getSlides() {
         return Array.from(this.querySelectorAll("wje-carousel-item:not(.clone)"));
     }
 
+    /**
+     * Goes to the slide.
+     * @returns {Array}
+     */
     getSlidesWithClones() {
         return Array.from(this.querySelectorAll("wje-carousel-item"));
     }
 
+    /**
+     * Goes to the slide.
+     * @returns {boolean}
+     */
     canGoNext() {
         return this.querySelector(".native-carousel").scrollLeft < this.querySelector(".native-carousel").scrollWidth;
     }
 
+    /**
+     * Goes to the slide.
+     * @returns {boolean}
+     */
     canGoPrevious() {
         return this.querySelector(".native-carousel").scrollLeft > 0;
     }

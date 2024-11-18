@@ -6,41 +6,37 @@ import styles from "./styles/styles.css?inline";
  * @summary This element represents a toolbar action.
  * @documentation https://elements.webjet.sk/components/toolbar-action
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @csspart native - The native toolbar action wrapper.
- *
  * @slot - The default slot for the toolbar action.
- *
  * @tag wje-toolbar-action
  */
 export default class ToolbarAction extends WJElement {
+
     /**
-     * @constructor
-     * @summary ToolbarAction constructor
+     * Creates an instance of ToolbarAction.
      */
     constructor() {
         super();
     }
 
     /**
-     * @summary Class name
+     * The class name for the component.
      * @type {string}
      */
     className = "ToolbarAction";
 
     /**
-     * @summary Get CSS stylesheet
+     * Returns the CSS stylesheet for the component.
      * @static
-     * @returns {Object} styles
+     * @returns {CSSStyleSheet} The CSS stylesheet
      */
     static get cssStyleSheet() {
         return styles;
     }
 
     /**
-     * @summary Get observed attributes
+     * Returns the list of observed attributes.
      * @static
      * @returns {Array} An empty array
      */
@@ -49,18 +45,15 @@ export default class ToolbarAction extends WJElement {
     }
 
     /**
-     * @summary Setup attributes
+     * Sets up the attributes for the component.
      */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
     /**
-     * @summary Draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
-     * @returns {Object} Document fragment
+     * Draws the component for the toolbar action.
+     * @returns {object} Document fragment
      */
     draw() {
         let fragment = document.createDocumentFragment();
@@ -87,7 +80,7 @@ export default class ToolbarAction extends WJElement {
     }
 
     /**
-     * @summary Get actions
+     * Returns the actions for the toolbar action.
      * @returns {Array} An array of wje-button elements
      */
     getActions() {

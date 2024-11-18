@@ -8,28 +8,23 @@ import styles from "./styles/styles.css?inline";
  * It extends from `WJElement` and uses the `Icon` component.
  * @documentation https://elements.webjet.sk/components/img-comparer
  * @status stable
- *
- * @extends {WJElement}
- *
+ * @augments {WJElement}
  * @slot before - The before image slot.
  * @slot after - The after image slot.
- *
- * @part divider - The divider part.
- *
- * @cssproperty [--wje-img-compare-divider-area=12px] - The area of the divider.;
- * @cssproperty [=-wje-img-compare-divider-background=white] - The background of the divider.;
- * @cssproperty [--wje-img-compare-divider-size=2px] - The size of the divider.;
- * @cssproperty [--wje-img-compare-divider-left=50%] - The left position of the divider.;
- * @cssproperty [--wje-img-compare-position=50%] - The position of the divider.;
- * @cssproperty [--wje-img-compare-clip-path=inset(0 calc(100% - var(--wje-img-compare-position)) 0 0)] - The clip path of the divider.;
- *
+ * @csspart divider - The divider part.
+ * @cssproperty [--wje-img-compare-divider-area=12px] - The area of the divider. This is the size of the divider. Accepts any valid CSS size.
+ * @cssproperty [--wje-img-compare-divider-background=white] - Sets the background color of the divider in the image comparison component. Accepts any valid CSS color value (e.g., `red`, `#ff0000`, `rgba(255, 255, 255, 0.5)`). The default value is `white`, which ensures high contrast in most designs.
+ * @cssproperty [--wje-img-compare-divider-size=2px] - The size of the divider. This is the thickness of the divider. Accepts any valid CSS size.
+ * @cssproperty [--wje-img-compare-divider-left=50%] - The left position of the divider. This is the initial position of the divider.
+ * @cssproperty [--wje-img-compare-position=50%] - The position of the divider. This is the position of the divider.
+ * @cssproperty [--wje-img-compare-clip-path=inset(0 calc(100% - var(--wje-img-compare-position)) 0 0)] - The clip path of the divider. This is the clip path of the divider.
  * @tag wje-img-comparer
  */
 export default class ImgComparer extends WJElement {
+
     /**
      * Creates an instance of ImgComparer.
-     *
-     * @constructor
+     * @class
      */
     constructor() {
         super();
@@ -37,8 +32,7 @@ export default class ImgComparer extends WJElement {
 
     /**
      * Dependencies of the ImgComparer component.
-     *
-     * @property {Object} dependencies
+     * @property {object} dependencies
      */
     dependencies = {
         "wje-icon": Icon
@@ -48,7 +42,6 @@ export default class ImgComparer extends WJElement {
 
     /**
      * Returns the CSS styles for the component.
-     *
      * @static
      * @returns {CSSStyleSheet}
      */
@@ -58,7 +51,6 @@ export default class ImgComparer extends WJElement {
 
     /**
      * Returns the list of attributes to observe for changes.
-     *
      * @static
      * @returns {Array<string>}
      */
@@ -75,10 +67,6 @@ export default class ImgComparer extends WJElement {
 
     /**
      * Draws the component.
-     *
-     * @param {Object} context - The context for drawing.
-     * @param {Object} store - The store for drawing.
-     * @param {Object} params - The parameters for drawing.
      * @returns {DocumentFragment}
      */
     draw() {
@@ -124,7 +112,7 @@ export default class ImgComparer extends WJElement {
 
     /**
      * Handles the drag event.
-     * @param {Event} e - The event.
+     * @param {Event} e The event.
      */
     handleDrag = (e) => {
         const { width } = this.native.getBoundingClientRect();
@@ -142,9 +130,9 @@ export default class ImgComparer extends WJElement {
 
     /**
      * Clamps a number between a minimum and maximum value.
-     * @param {number} num - The number to clamp.
-     * @param {number} min - The minimum value.
-     * @param {number} max - The maximum value.
+     * @param {number} num The number to clamp.
+     * @param {number} min The minimum value.
+     * @param {number} max The maximum value.
      * @returns {number} The clamped number.
      */
     clamp = (num, min, max) => Math.min(Math.max(num, min), max);

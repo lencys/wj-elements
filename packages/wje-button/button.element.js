@@ -6,24 +6,18 @@ import Icon from "../wje-icon/icon.js";
 import styles from "./styles/styles.css?inline";
 
 /**
- * @summary This class represents an Button element, extending the WJElement class.
+ * @summary This class represents Button element, extending the WJElement class.
  * @documentation https://elements.webjet.sk/components/button
  * @status stable
- *
- * @extends WJElement
- *
- *
+ * @augments WJElement
  * @dependency wje-icon
- *
  * @slot - The button main content.
  * @slot icon - The button icon.
  * @slot caret - The button caret.
  * @slot start - The button start slot.
  * @slot end - The button end slot.
  * @slot toggle - The button toggle slot.
- *
- * @part native - The component's native wrapper.
- *
+ * @csspart native - The component's native wrapper.
  * @cssproperty [--wje-button-background-color=transparent] - Background color of the component;
  * @cssproperty [--wje-button-border-color=--wje-color-contrast-4] - Border color of the component;
  * @cssproperty [--wje-button-color=--wje-color-contrast-11] - Color of the component;
@@ -35,9 +29,10 @@ import styles from "./styles/styles.css?inline";
  */
 
 export default class Button extends WJElement {
+
     /**
-     * Button constructor
-     * @constructor
+     * Button constructor method.
+     * @class
      */
     constructor() {
         super();
@@ -46,15 +41,15 @@ export default class Button extends WJElement {
     }
 
     /**
-     * Dependencies
-     * @type {Object}
+     * Dependencies of the Button element.
+     * @type {object}
      */
     dependencies = {
         "wje-icon": Icon
     }
 
     /**
-     * Properties of the element
+     * Properties of the element Button.
      * @param value
      */
     set color(value) {
@@ -62,7 +57,7 @@ export default class Button extends WJElement {
     }
 
     /**
-     * Get color
+     * Get color of the Button element.
      * @returns {string|string}
      */
     get color() {
@@ -70,7 +65,7 @@ export default class Button extends WJElement {
     }
 
     /**
-     * Set variant
+     * Set variant of the Button element.
      * @param value
      */
     set caret(value) {
@@ -78,7 +73,7 @@ export default class Button extends WJElement {
     }
 
     /**
-     * Get variant
+     * Get variant of the Button element.
      * @returns {boolean}
      */
     get caret() {
@@ -86,7 +81,7 @@ export default class Button extends WJElement {
     }
 
     /**
-     * Set variant
+     * Set variant of the Button element.
      * @param value
      */
     set tooltip(value) {
@@ -94,7 +89,7 @@ export default class Button extends WJElement {
     }
 
     /**
-     * Get variant
+     * Get variant of the Button element.
      * @returns {boolean}
      */
     get tooltip() {
@@ -102,7 +97,7 @@ export default class Button extends WJElement {
     }
 
     /**
-     * Set variant
+     * Set variant of the Button element.
      * @param value
      */
     set dialog(value) {
@@ -110,7 +105,7 @@ export default class Button extends WJElement {
     }
 
     /**
-     * Get variant
+     * Get variant of the Button element.
      * @returns {string|object}
      */
     get dialog() {
@@ -118,15 +113,15 @@ export default class Button extends WJElement {
     }
 
     /**
-     * Set active state
-     * @param {boolean} value - The value to set
+     * Set active state of the Button element.
+     * @param {boolean} value The value to set
      */
     set active(value) {
         this.setAttribute("active", "");
     }
 
     /**
-     * Get active state
+     * Get active state of the Button element.
      * @returns {boolean} active - The active state
      */
     get active() {
@@ -134,8 +129,8 @@ export default class Button extends WJElement {
     }
 
     /**
-     * Set disabled state
-     * @param {boolean} value - The value to set
+     * Set disabled state of the Button element.
+     * @param {boolean} value The value to set
      */
     set disabled(value) {
         if (value)
@@ -145,7 +140,7 @@ export default class Button extends WJElement {
     }
 
     /**
-     * Get disabled state
+     * Get disabled state of the Button element.
      * @returns {boolean} disabled - The disabled state
      */
     get disabled() {
@@ -153,72 +148,72 @@ export default class Button extends WJElement {
     }
 
     /**
-     * Set fill
-     * @param {string} value - The value to set
+     * Set fill of the Button element.
+     * @param {string} value The value to set
      */
     set fill(value) {
         this.setAttribute("fill", value);
     }
 
     /**
-     * Get fill
-     * @returns {string} fill - The fill
+     * Get fill of the Button element.
+     * @returns {string} fill - The fill value
      */
     get fill() {
         return this.getAttribute("fill") || "solid";
     }
 
     /**
-     * Set outline
-     * @param {boolean} value - The value to set
+     * Set outline state of the Button element.
+     * @param {boolean} value The value to set
      */
     set outline(value) {
         this.setAttribute("outline", "");
     }
 
     /**
-     * Get outline
-     * @returns {boolean} outline - The outline
+     * Get outline state of the Button element.
+     * @returns {boolean} outline - The outline state
      */
     get outline() {
         return this.hasAttribute("outline");
     }
 
     /**
-     * Set stop propagation
-     * @param {boolean} value - The value to set
+     * Set stop propagation state of the Button element.
+     * @param {boolean} value The value to set
      */
     set stopPropagation(value) {
         this.setAttribute("stop-propagation", bool(value));
     }
 
     /**
-     * Get stop propagation
-     * @returns {boolean} stopPropagation - The stop propagation
+     * Get stop propagation state of the Button element.
+     * @returns {boolean} stopPropagation - The stop propagation state
      */
     get stopPropagation() {
         return bool(this.getAttribute("stop-propagation"));
     }
 
     /**
-     * Class name
+     * Class name for the Button element
      * @type {string}
      */
     className = "Button";
 
     /**
-     * Get CSS stylesheet
+     * Get CSS stylesheet for the Button element.
      * @static
-     * @returns {Object} styles - The CSS styles
+     * @returns {CSSStyleSheet} styles - The CSS stylesheet for the Button element.
      */
     static get cssStyleSheet() {
         return styles;
     }
 
     /**
-     * Get observed attributes
+     * Get observed attributes for the Button element.
      * @static
-     * @returns {Array<string>} observedAttributes - The observed attributes
+     * @returns {Array<string>} observedAttributes - The observed attributes array for the Button element.
      */
     static get observedAttributes() {
         return ['disabled'];
@@ -234,7 +229,7 @@ export default class Button extends WJElement {
     /**
      * @summary Callback function that is called when the custom element is associated with a form.
      * This function sets the internal `_form` property to the associated form.
-     * @param {HTMLFormElement} form - The form the custom element is associated with.
+     * @param {HTMLFormElement} form The form the custom element is associated with.
      */
     formAssociatedCallback(form) {
         this._form = form;
@@ -243,7 +238,7 @@ export default class Button extends WJElement {
     /**
      * @summary Callback function that is called when the form-associated state of the custom element changes.
      * This function updates the 'disabled' attribute of the element based on the new state.
-     * @param {boolean} disabled - The new form-associated state.
+     * @param {boolean} disabled The new form-associated state.
      */
     formDisabledCallback(disabled) {
         if (disabled) {
@@ -254,18 +249,15 @@ export default class Button extends WJElement {
     }
 
     /**
-     * Setup attributes
+     * Setup attributes for the Button element.
      */
     setupAttributes() {
         this.isShadowRoot = "open";
     }
 
     /**
-     * Draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
-     * @returns {Object} fragment - The document fragment
+     * Draw method for the Button element.
+     * @returns {object} fragment - The document fragment containing the drawn element.
      */
     draw() {
         let fragment = document.createDocumentFragment();
@@ -374,10 +366,7 @@ export default class Button extends WJElement {
     }
 
     /**
-     * After draw method
-     * @param {Object} context - The context
-     * @param {Object} store - The store
-     * @param {Object} params - The parameters
+     * After draw method for the Button element.
      */
     afterDraw() {
         if(this.hasAttribute("route")){
@@ -419,7 +408,7 @@ export default class Button extends WJElement {
     }
 
     /**
-     * Before disconnect method
+     * Before disconnect method for the Button element.
      */
     beforeDisconnect() {
         this.removeEventListener("click", this.eventDialogOpen);
@@ -427,15 +416,15 @@ export default class Button extends WJElement {
     }
 
     /**
-     * Event dialog open method
-     * @param {Event} e - The event
+     * Event dialog open method for the Button element.
+     * @param {Event} e The event object
      */
     eventDialogOpen = (e) => {
         event.dispatchCustomEvent(this, this.dialog);
     }
 
     /**
-     * Toggle states method
+     * Toggle states method for the Button element.
      */
     toggleStates = () => {
         const nodes = this.slotToggle.assignedNodes().filter(node => node.nodeType === Node.ELEMENT_NODE);

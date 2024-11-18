@@ -9,34 +9,34 @@ import styles from "./styles/styles.css?inline";
  * The color picker allows users to select a color by moving a marker on the color area, adjusting the hue and alpha sliders, or clicking on a color swatch.
  * @documentation https://elements.webjet.sk/components/color-picker
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @slot - The card header main content.
- *
- * @part anchor - The anchor part of the color picker.
- * @part picker - The main part of the color picker.
- * @part marker - The marker part of the color picker.
- * @part color-area - The color area part of the color picker.
- * @part hue - The hue slider part of the color picker.
- * @part alpha - The alpha slider part of the color picker.
- * @part color-preview - The color preview part of the color picker.
- * @part input - The input part of the color picker.
- *
- * @cssproperty [--wje-color-picker-area] - The color of the color area.
- * @cssproperty [--wje-color-picker-value] - The value of the color picker.
+ * @csspart anchor - The anchor part of the color picker.
+ * @csspart picker - The main part of the color picker.
+ * @csspart marker - The marker part of the color picker.
+ * @csspart color-area - The color area part of the color picker.
+ * @csspart hue - The hue slider part of the color picker.
+ * @csspart alpha - The alpha slider part of the color picker.
+ * @csspart color-preview - The color preview part of the color picker.
+ * @csspart input - The input part of the color picker.
+ * @cssproperty [--wje-color-picker-area] - The color of the color area background.
+ * @cssproperty [--wje-color-picker-value] - The value of the color picker input.
+ * @cssproperty [--wje-color-picker-swatch] - The color of the color swatch button.
+ * @cssproperty [--wje-color-picker-size] - The color of the color marker.
+ * @cssproperty [--wje-color-picker-radius] - The color of the color anchor.
  */
 
 export default class ColorPicker extends WJElement {
+
     /**
-     * ColorPicker constructor.
+     * ColorPicker constructor method.
      */
     constructor() {
         super();
 
         /**
          * The position of the color marker.
-         * @type {Object}
+         * @type {object}
          * @private
          */
         this._markerPosition = {
@@ -66,7 +66,7 @@ export default class ColorPicker extends WJElement {
 
     /**
      * Setter for the marker position.
-     * @param {Object} value - The new marker position.
+     * @param {object} value The new marker position.
      */
     set markerPosition(value) {
         this._markerPosition = value;
@@ -74,7 +74,7 @@ export default class ColorPicker extends WJElement {
 
     /**
      * Getter for the marker position.
-     * @returns {Object} The current marker position.
+     * @returns {object} The current marker position.
      */
     get markerPosition() {
         return this._markerPosition;
@@ -82,7 +82,7 @@ export default class ColorPicker extends WJElement {
 
     /**
      * Setter for the color swatches.
-     * @param {string} value - The new color swatches.
+     * @param {string} value The new color swatches.
      */
     set swatches(value) {
         this.setAttribute("swatches", value.split(","));
@@ -100,7 +100,7 @@ export default class ColorPicker extends WJElement {
 
     /**
      * Getter for the CSS stylesheet.
-     * @returns {Object} The styles object.
+     * @returns {object} The styles object.
      * @static
      */
     static get cssStyleSheet() {
@@ -124,10 +124,7 @@ export default class ColorPicker extends WJElement {
     }
 
     /**
-     * Draws the ColorPicker.
-     * @param {Object} context - The context to draw in.
-     * @param {Object} store - The store to use.
-     * @param {Object} params - The parameters to use.
+     * Draws the ColorPicker element.
      * @returns {DocumentFragment} The created document fragment.
      */
     draw() {
@@ -255,9 +252,6 @@ export default class ColorPicker extends WJElement {
 
     /**
      * Sets up the event listeners for the ColorPicker.
-     * @param {Object} context - The context to use.
-     * @param {Object} store - The store to use.
-     * @param {Object} params - The parameters to use.
      */
     afterDraw() {
         this.init = false;
@@ -390,9 +384,9 @@ export default class ColorPicker extends WJElement {
     }
 
     /**
-     * Sets the color.
-     * @param color
-     * @param type
+     * Updates the color picker's current color and its associated UI elements.
+     * @param {tinycolor.Instance|null} [color] The color value to set. If null, the current value from the input field is used.
+     * @param {string} [type] The type of action determining which UI element to update. Possible values: "marker", "hue", "alpha", "swatch".
      */
     setColor = (color = null, type = "") => {
         let currentColor = color;
@@ -464,7 +458,7 @@ export default class ColorPicker extends WJElement {
 
     /**
      * Sets the hue.
-     * @param e
+     * @param {object} e The event object.
      */
     setAlpha = (e) => {
         this.alphaSlider.value = e.detail.value;
@@ -473,11 +467,12 @@ export default class ColorPicker extends WJElement {
     }
 
     /**
-     * Sets the hue.
-     * @param hue
-     * @param alpha
-     * @returns {`hsva(${string}, 100%, 100%, ${number})`}
+     * Converts hue and alpha values into an HSVA color string.
+     * @param {number} hue The hue value, typically between 0 and 360.
+     * @param {number} alpha The alpha value, typically between 0 and 100, representing the opacity percentage.
+     * @returns {string} - The HSVA color string in the format `hsva(h, 100%, 100%, a)`.
      */
+    getH
     getHSVA = (hue, alpha) => {
         return `hsva(${hue}, 100%, 100%, ${alpha / 100})`;
     }

@@ -4,11 +4,10 @@ export default class PubSub {
     }
 
     /**
-     * Either create a new event instance for passed `event` name
-     * or push a new callback into the existing collection
-     *
-     * @param {string} event
-     * @param {function} callback
+     * Either create a new event instance for passed `event` name.
+     * or push a new callback into the existing collection.
+     * @param {string} event The event name to subscribe to
+     * @param {Function} callback The callback function to subscribe to the event
      * @returns {number} A count of callbacks for this event
      * @memberof PubSub
      */
@@ -35,12 +34,11 @@ export default class PubSub {
     }
 
     /**
-     * If the passed event has callbacks attached to it, loop through each one
-     * and call it
-     *
-     * @param {string} event
-     * @param {object} [data={}]
-     * @returns {array} The callbacks for this event, or an empty array if no event exits
+     * If the passed event has callbacks attached to it, loop through each one and call it.
+     * @param {string} event The name of the event to publish
+     * @param {object} [newData] The data to pass to the callbacks
+     * @param {object} [oldData] The data to pass to the callbacks
+     * @returns {Array} The callbacks for this event, or an empty array if no event exits
      * @memberof PubSub
      */
     publish(event, newData = {}, oldData = {}) {

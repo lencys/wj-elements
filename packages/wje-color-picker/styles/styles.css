@@ -2,12 +2,6 @@
 [ Wj Color Picker ]
 */
 
-:host {
-  --wje-color-picker-value: #ff0000;
-  --wje-color-picker-size: 1rem;
-  --wje-color-picker-radius: 4px;
-}
-
 .anchor {
   width: var(--wje-color-picker-size);
   height: var(--wje-color-picker-size);
@@ -114,7 +108,7 @@
     background-size: 8px 8px;
   }
   &:after {
-    background: var(--wje-color-picker-value);
+    background: var(--wje-color-picker-value, transparent);
   }
 }
 
@@ -135,7 +129,7 @@ wje-input::part(input) {
 }
 
 .swatch {
-  background: var(--wje-color-picker-swatch);
+  background: var(--wje-color-picker-swatch, transparent);
   position: relative;
   width: 20px;
   height: 20px;
@@ -156,6 +150,6 @@ wje-input::part(input) {
   margin: -6px 0 0 -6px;
   border: 1px solid #fff;
   border-radius: 50%;
-  background-color: var(--wje-color-picker-value);
+  background-color: var(--wje-color-picker-value, transparent);
   cursor: pointer;
 }
