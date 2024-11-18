@@ -116,11 +116,11 @@ export default class ProgressBar extends WJElement {
      * @returns {DocumentFragment}
      */
     draw(context, store, params) {
-        let xy = (this.radius + this.stroke/2);
+        let xy = (this.radius + this.stroke / 2);
 
         let fragment = document.createDocumentFragment();
 
-        if(params.color)
+        if (params.color)
             this.classList.add("wje-color");
 
         let element = document.createElement("div");
@@ -139,12 +139,12 @@ export default class ProgressBar extends WJElement {
 
         const svgNamespace = "http://www.w3.org/2000/svg";
 
-        let svg = document.createElementNS(svgNamespace,"svg");
+        let svg = document.createElementNS(svgNamespace, "svg");
 
         let background;
         let bar;
 
-        if(this?.type === "circle") {
+        if (this?.type === "circle") {
             // console.log("CIRCLE", "RADIUS:", this.radius, "DIAMETER:", this.diameter, "CONTAINER SIZE:", this.containerSize, "STROKE:", this.stroke);
             svg.setAttribute("width", this.containerSize);
             svg.setAttribute("height", this.containerSize);
@@ -171,7 +171,7 @@ export default class ProgressBar extends WJElement {
             let text = document.createElementNS(svgNamespace, "text");
             text.setAttribute("x", "50%");
             text.setAttribute("y", "50%");
-            text.innerHTML = this.progress + "%";
+            text.innerHTML = this.progress ?? 0 + "%";
 
             svg.appendChild(text);
         } else {
@@ -184,7 +184,7 @@ export default class ProgressBar extends WJElement {
             background.setAttribute("y", 0);
             background.setAttribute("width", "100%");
             background.setAttribute("height", this.stroke);
-            if(this.linecap === "round") {
+            if (this.linecap === "round") {
                 background.setAttribute("rx", this.stroke / 2);
                 background.setAttribute("ry", this.stroke / 2);
             }
@@ -192,11 +192,11 @@ export default class ProgressBar extends WJElement {
             bar = document.createElementNS(svgNamespace, "rect");
             bar.setAttribute("x", 0);
             bar.setAttribute("y", 0);
-            bar.setAttribute("width", this.progress + "%");
+            bar.setAttribute("width", this.progress ?? 0 + "%");
             bar.setAttribute("height", this.stroke);
             bar.setAttribute("id", "bar");
 
-            if(this.linecap === "round") {
+            if (this.linecap === "round") {
                 bar.setAttribute("rx", this.stroke / 2);
                 bar.setAttribute("ry", this.stroke / 2);
             }
@@ -224,7 +224,7 @@ export default class ProgressBar extends WJElement {
      * Adds event listeners after the component is drawn.
      */
     afterDraw() {
-        if(this.type === "circle") {
+        if (this.type === "circle") {
             this.setCircleProgress(this.progress);
         }
     }
@@ -245,7 +245,7 @@ export default class ProgressBar extends WJElement {
      * @returns {number} The dashoffset value.
      */
     getCircleDashoffset(progress = 0, radius = 70) {
-        return this.getCircleDasharray(radius) * ((100 - progress)/100);
+        return this.getCircleDasharray(radius) * ((100 - progress) / 100);
     }
 
     /**
