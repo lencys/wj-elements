@@ -294,18 +294,21 @@ export default class Options extends WJElement {
     return filteredResponse;
   }
 
-  /**
-   * Recursively updates the object based on the provided path to the property.
-   * @param {object | Array | null} object
-   * @param {Array<string> | null} pathToProperty
-   * @returns {object | Array | null}
-   */
-  recursiveUpdate = (object, pathToProperty) => {
-    if (pathToProperty.length === 0) {
-      return object.filter(
-        (option) => !this.loadedOptions.some((loadedOption) => loadedOption[this.itemValue] === option[this.itemValue])
-      );
-    }
+    /**
+     * Recursively updates the object based on the provided path to the property.
+     * @param {object | Array | null} object
+     * @param {Array<string> | null} pathToProperty
+     * @returns {object | Array | null}
+     */
+    recursiveUpdate = (object, pathToProperty) => {
+        if (pathToProperty.length === 0) {
+            if (Array.isArray(object)) {
+                return object.filter(option => !this.loadedOptions.some(loadedOption => loadedOption[this.itemValue] === option[this.itemValue]));
+            } else {
+                console.error('Expected an array but got:', object, pathToProperty);
+                return [];
+            }
+        }
 
     const [currentPath, ...remainingPath] = pathToProperty;
     if (remainingPath.length > 0) {
