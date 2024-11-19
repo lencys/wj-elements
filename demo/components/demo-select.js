@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -194,9 +194,9 @@ export default class DemoSelect extends WJElement {
 
     const lazySelect = document.querySelector('#lazy-update');
 
-    lazySelect.addOptions([{ text: "aaaa", value: "aeee" }]);
-    lazySelect.selectOptions(["aeee"], false)
-    lazySelect.value = ["aeee"];
+    lazySelect.addOptions([{ text: 'aaaa', value: 'aeee' }]);
+    lazySelect.selectOptions(['aeee'], false);
+    lazySelect.value = ['aeee'];
 
     // <wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
     //       <wje-options url="/api/options" item-value="value"item-text="text"></wje-options>
@@ -214,20 +214,46 @@ export default class DemoSelect extends WJElement {
     options.setAttribute('url', '/api/options');
     options.setAttribute('item-value', 'value');
     options.setAttribute('item-text', 'text');
-    options.setAttribute("option-array-path", "data")
+    options.setAttribute('option-array-path', 'data');
 
-    select.addOptions([{ text: "aaaa", value: "aeee" }, { text: "bbbb", value: "beee" }, { text: "cccc", value: "ceee" }, { text: "dddd", value: "deee" }, { text: "eeee", value: "eeee" }, { text: "ffff", value: "feee" }, { text: "gggg", value: "geee" }, { text: "hhhh", value: "heee" }, { text: "iiii", value: "ieee" }, { text: "jjjj", value: "jeee" }, { text: "kkkk", value: "keee" }, { text: "llll", value: "leee" }, { text: "mmmm", value: "meee" }, { text: "nnnn", value: "neee" }, { text: "oooo", value: "oeee" }, { text: "pppp", value: "peee" }, { text: "qqqq", value: "qeee" }, { text: "rrrr", value: "reee" }, { text: "ssss", value: "seee" }, { text: "tttt", value: "teee" }, { text: "uuuu", value: "ueee" }, { text: "vvvv", value: "veee" }, { text: "wwww", value: "weee" }, { text: "xxxx", value: "xeee" }, { text: "yyyy", value: "yeee" }, { text: "zzzz", value: "zeee" }]);
-    select.selectOptions(["aeee", "beee"], false)
-    select.value = ["aeee", "beee"];
+    select.addOptions([
+      { text: 'aaaa', value: 'aeee' },
+      { text: 'bbbb', value: 'beee' },
+      { text: 'cccc', value: 'ceee' },
+      { text: 'dddd', value: 'deee' },
+      { text: 'eeee', value: 'eeee' },
+      { text: 'ffff', value: 'feee' },
+      { text: 'gggg', value: 'geee' },
+      { text: 'hhhh', value: 'heee' },
+      { text: 'iiii', value: 'ieee' },
+      { text: 'jjjj', value: 'jeee' },
+      { text: 'kkkk', value: 'keee' },
+      { text: 'llll', value: 'leee' },
+      { text: 'mmmm', value: 'meee' },
+      { text: 'nnnn', value: 'neee' },
+      { text: 'oooo', value: 'oeee' },
+      { text: 'pppp', value: 'peee' },
+      { text: 'qqqq', value: 'qeee' },
+      { text: 'rrrr', value: 'reee' },
+      { text: 'ssss', value: 'seee' },
+      { text: 'tttt', value: 'teee' },
+      { text: 'uuuu', value: 'ueee' },
+      { text: 'vvvv', value: 'veee' },
+      { text: 'wwww', value: 'weee' },
+      { text: 'xxxx', value: 'xeee' },
+      { text: 'yyyy', value: 'yeee' },
+      { text: 'zzzz', value: 'zeee' },
+    ]);
+    select.selectOptions(['aeee', 'beee'], false);
+    select.value = ['aeee', 'beee'];
 
     select.appendChild(options);
 
     this.querySelector('#placeholder').appendChild(select);
-
   }
 }
 
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-select") || window.customElements.define("demo-select", DemoSelect);
+customElements.get('demo-select') || window.customElements.define('demo-select', DemoSelect);

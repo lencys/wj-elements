@@ -43,7 +43,9 @@ docs-demo {
   line-height: 21px;
   padding-top: 2px;
 
-  transition: 200ms background-color ease, 200ms color ease;
+  transition:
+    200ms background-color ease,
+    200ms color ease;
 }
 
 .docs-demo-mode-toggle button:focus,
@@ -65,7 +67,9 @@ docs-demo {
   background-size: contain;
   background-repeat: no-repeat;
 
-  box-shadow: 0px 2px 8px rgba(2, 8, 20, 0.1), 0px 8px 16px rgba(2, 8, 20, 0.08);
+  box-shadow:
+    0px 2px 8px rgba(2, 8, 20, 0.1),
+    0px 8px 16px rgba(2, 8, 20, 0.08);
 
   width: var(--device-width);
   height: var(--device-height);

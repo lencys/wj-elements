@@ -1,170 +1,176 @@
 import { faker } from '@faker-js/faker';
 import { createServer, Model, Factory } from 'miragejs';
 
-
 export const serverPromise = makeServer();
 
 function makeServer() {
-    return new Promise((resolve, reject) => {
-        try {
-            let server = createServer({
-                models: {
-                    user: Model,
-                    applicant: Model,
-                    option: Model,
-                },
+  return new Promise((resolve, reject) => {
+    try {
+      let server = createServer({
+        models: {
+          user: Model,
+          applicant: Model,
+          option: Model,
+        },
 
-                factories: {
-                    user: Factory.extend({
-                        image(i) {
-                            return faker.image.urlLoremFlickr({ category: 'city' });
-                        },
-                        fullName(i) {
-                            return faker.location.city()
-                        },
-                        jobTitle(i) {
-                            return faker.location.country()
-                        },
-                        description(i) {
-                            return faker.lorem.sentence()
-                        }
-                    }),
-                    applicant: Factory.extend({
-                        user(i) {
-                            return {
-                                id: faker.number.int(99),
-                                fullName: faker.person.fullName(),
-                                image: faker.image.avatar(),
-                                title: faker.person.jobTitle(),
-                                years: faker.number.int(99),
-                                address: faker.location.city()
-                            }
-                        },
-                        status(i) {
-                            return {
-                                id: faker.number.int(99),
-                                name: faker.helpers.arrayElement(['Nový/á', 'Preverený/á telefonátom', 'Naplánované prvé kolo pohovoru', 'Naplánované druhé kolo pohovoru', 'Ponuka', 'Zamietnuté', 'Iné'])
-                            }
-                        },
-                        body(i) {
-                            return faker.lorem.sentence()
-                        },
-                        sendCV(i) {
-                            return faker.date.recent()
-                        }
-                    }),
-                    option: Factory.extend({
-                        value(i) {
-                            return faker.string.uuid();
-                        },
-                        text(i) {
-                            return faker.location.country();
-                        },
-                        label(i) {
-                            return faker.location.country();
-                        }
-                    }),
-                },
+        factories: {
+          user: Factory.extend({
+            image(i) {
+              return faker.image.urlLoremFlickr({ category: 'city' });
+            },
+            fullName(i) {
+              return faker.location.city();
+            },
+            jobTitle(i) {
+              return faker.location.country();
+            },
+            description(i) {
+              return faker.lorem.sentence();
+            },
+          }),
+          applicant: Factory.extend({
+            user(i) {
+              return {
+                id: faker.number.int(99),
+                fullName: faker.person.fullName(),
+                image: faker.image.avatar(),
+                title: faker.person.jobTitle(),
+                years: faker.number.int(99),
+                address: faker.location.city(),
+              };
+            },
+            status(i) {
+              return {
+                id: faker.number.int(99),
+                name: faker.helpers.arrayElement([
+                  'Nový/á',
+                  'Preverený/á telefonátom',
+                  'Naplánované prvé kolo pohovoru',
+                  'Naplánované druhé kolo pohovoru',
+                  'Ponuka',
+                  'Zamietnuté',
+                  'Iné',
+                ]),
+              };
+            },
+            body(i) {
+              return faker.lorem.sentence();
+            },
+            sendCV(i) {
+              return faker.date.recent();
+            },
+          }),
+          option: Factory.extend({
+            value(i) {
+              return faker.string.uuid();
+            },
+            text(i) {
+              return faker.location.country();
+            },
+            label(i) {
+              return faker.location.country();
+            },
+          }),
+        },
 
-                seeds(server) {
-                    server.createList("user", 0);
-                    server.createList("option", 100);
-                },
+        seeds(server) {
+          server.createList('user', 0);
+          server.createList('option', 100);
+        },
 
-                routes() {
-                    this.get("/api/users", function (schema, request) {
-                        const page = +request.queryParams.page;
-                        const size = +request.queryParams.size;
+        routes() {
+          this.get('/api/users', function (schema, request) {
+            const page = +request.queryParams.page;
+            const size = +request.queryParams.size;
 
-                        server.db.users.remove(); // musime najprv precistit
-                        server.createList("user", size);
+            server.db.users.remove(); // musime najprv precistit
+            server.createList('user', size);
 
-                        let data = schema.users.all();
-                        let users = this.serialize(data).users;
+            let data = schema.users.all();
+            let users = this.serialize(data).users;
 
-                        return {
-                            page: page,
-                            size: size,
-                            totalPages: 10,
-                            data: users,
-                        }
-                    });
+            return {
+              page: page,
+              size: size,
+              totalPages: 10,
+              data: users,
+            };
+          });
 
-                    this.get("/api/applicants", function (schema, request) {
-                        server.db.applicants.remove(); // musime najprv precistit
-                        server.createList("applicant", 10);
+          this.get('/api/applicants', function (schema, request) {
+            server.db.applicants.remove(); // musime najprv precistit
+            server.createList('applicant', 10);
 
-                        let data = schema.applicants.all();
-                        let applicants = this.serialize(data).applicants;
+            let data = schema.applicants.all();
+            let applicants = this.serialize(data).applicants;
 
-                        return applicants;
-                    });
+            return applicants;
+          });
 
-                    this.get("/api/options", function (schema, request) {
-                        const page = +request.queryParams.page;
-                        const size = +request.queryParams.size;
+          this.get('/api/options', function (schema, request) {
+            const page = +request.queryParams.page;
+            const size = +request.queryParams.size;
 
-                        let data = schema.options.all();
-                        let paginatedOptions = !(isNaN(page) && isNaN(size)) ? data.slice(page * size, (page + 1) * size) : data;
-                        let options = this.serialize(paginatedOptions).options;
+            let data = schema.options.all();
+            let paginatedOptions = !(isNaN(page) && isNaN(size)) ? data.slice(page * size, (page + 1) * size) : data;
+            let options = this.serialize(paginatedOptions).options;
 
-                        let totalPages = Math.ceil(data.length / size);
-                        return {
-                            page: page,
-                            size: size,
-                            totalPages: totalPages,
-                            data: options,
-                        }
-                    });
+            let totalPages = Math.ceil(data.length / size);
+            return {
+              page: page,
+              size: size,
+              totalPages: totalPages,
+              data: options,
+            };
+          });
 
-                    this.get("/api/options/:search", function (schema, request) {
-                        const page = +request.queryParams.page;
-                        const size = +request.queryParams.size;
+          this.get('/api/options/:search', function (schema, request) {
+            const page = +request.queryParams.page;
+            const size = +request.queryParams.size;
 
-                        let search = request.params.search;
-                        let data = schema.options.where(option => option.text.toLowerCase().includes(search.toLowerCase()));
+            let search = request.params.search;
+            let data = schema.options.where((option) => option.text.toLowerCase().includes(search.toLowerCase()));
 
-                        let paginatedOptions = data.slice(page * size, (page + 1) * size);
-                        let options = this.serialize(paginatedOptions).options;
+            let paginatedOptions = data.slice(page * size, (page + 1) * size);
+            let options = this.serialize(paginatedOptions).options;
 
-                        let totalPages = Math.ceil(data.length / size);
-                        return {
-                            page: page,
-                            size: size,
-                            totalPages: totalPages,
-                            data: options,
-                        }
-                    });
+            let totalPages = Math.ceil(data.length / size);
+            return {
+              page: page,
+              size: size,
+              totalPages: totalPages,
+              data: options,
+            };
+          });
 
+          this.post('/upload', (schema, request) => {
+            let headers = request.requestHeaders;
+            let contentRange = headers['Content-Range'];
+            let [chunkRange, totalSize] = contentRange.split('/');
+            let [start, end] = chunkRange.split('-').map(Number);
+            totalSize = Number(totalSize);
 
-                    this.post('/upload', (schema, request) => {
-                        let headers = request.requestHeaders;
-                        let contentRange = headers['Content-Range'];
-                        let [chunkRange, totalSize] = contentRange.split('/');
-                        let [start, end] = chunkRange.split('-').map(Number);
-                        totalSize = Number(totalSize);
+            // Tu môžete simulovať aktualizáciu stavu nahrávania na serveri
+            // Napríklad by ste mohli ukladať pokrok v nejakej internej štruktúre
+            // Ak je to posledný chunk, odošlite správu o dokončení
+            if (end >= totalSize - 1) {
+              return new Response(200, {}, { message: 'Upload complete' });
+            } else {
+              // Možno by ste chceli vrátiť percentuálny pokrok
+              const progress = (end / totalSize) * 100;
+              return new Response(200, {}, { progress: progress, message: 'Chunk received' });
+            }
+          });
 
-                        // Tu môžete simulovať aktualizáciu stavu nahrávania na serveri
-                        // Napríklad by ste mohli ukladať pokrok v nejakej internej štruktúre
-                        // Ak je to posledný chunk, odošlite správu o dokončení
-                        if (end >= totalSize - 1) {
-                            return new Response(200, {}, { message: 'Upload complete' });
-                        } else {
-                            // Možno by ste chceli vrátiť percentuálny pokrok
-                            const progress = (end / totalSize) * 100;
-                            return new Response(200, {}, { progress: progress, message: 'Chunk received' });
-                        }
-                    });
+          this.passthrough();
+          this.passthrough('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+        },
+        logging: true,
+      });
 
-                    this.passthrough();
-                    this.passthrough('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
-                },
-                logging: true
-            });
-
-            resolve(server);
-        } catch (error) {
-            reject(error);
-        }
-    })
+      resolve(server);
+    } catch (error) {
+      reject(error);
+    }
+  });
 }

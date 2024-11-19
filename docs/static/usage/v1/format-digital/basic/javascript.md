@@ -4,7 +4,7 @@
 <style>
   wje-input {
     width: 200px;
-    margin-inline: 0 .5rem;
+    margin-inline: 0 0.5rem;
     --wje-input-margin-bottom: 0;
   }
 </style>

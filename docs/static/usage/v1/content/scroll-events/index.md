@@ -9,7 +9,7 @@ import react from './react.md';
   code={{
     javascript,
     react,
-    vue
+    vue,
   }}
   src="usage/v1/content/scroll-events/demo.html"
   includeIonContent={false}

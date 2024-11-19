@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -136,12 +136,11 @@ export default class DemoProgressBar extends WJElement {
     this.interval = setInterval(() => {
       currentNumber++;
 
-      this.querySelector(".example").setAttribute("progress", currentNumber);
+      this.querySelector('.example').setAttribute('progress', currentNumber);
       if (currentNumber >= 100) {
         clearInterval(this.interval);
       }
     }, intervalTime);
-
   }
 
   beforeDisconnect() {
@@ -152,4 +151,4 @@ export default class DemoProgressBar extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-progress-bar") || window.customElements.define("demo-progress-bar", DemoProgressBar);
+customElements.get('demo-progress-bar') || window.customElements.define('demo-progress-bar', DemoProgressBar);

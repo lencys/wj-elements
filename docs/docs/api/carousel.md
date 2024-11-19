@@ -1,6 +1,7 @@
 ---
-title: "Carousel"
+title: 'Carousel'
 ---
+
 import Props from '@ionic-internal/component-api/v1/carousel/props.md';
 
 import Events from '@ionic-internal/component-api/v1/carousel/events.md';
@@ -15,7 +16,10 @@ import Slots from '@ionic-internal/component-api/v1/carousel/slots.md';
 
 <head>
   <title>Card | Kontajner formátu karty</title>
-  <meta name="description" content="Element Card je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky Card Header, hlavnej časti Card Content a pätičky CardFooter." />
+  <meta
+    name="description"
+    content="Element Card je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky Card Header, hlavnej časti Card Content a pätičky CardFooter."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -64,7 +68,7 @@ import Split from '@site/static/usage/v1/carousel/split/index.md';
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

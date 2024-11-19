@@ -1,6 +1,7 @@
 ---
-title: "Col"
+title: 'Col'
 ---
+
 import Props from '@ionic-internal/component-api/v1/col/props.md';
 import Events from '@ionic-internal/component-api/v1/col/events.md';
 import Methods from '@ionic-internal/component-api/v1/col/methods.md';
@@ -10,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/col/slots.md';
 
 <head>
   <title>Col | Horizontálne rozmiestnenie obsahu na základe veľkosti obrazovky.</title>
-  <meta name="description" content="Komponent Col je základným stavebným prvkom [Gridu](./grid) a umožňuje horizontálne rozmiestniť obsah a upraviť jeho usporiadanie na základe veľkosti obrazovky." />
+  <meta
+    name="description"
+    content="Komponent Col je základným stavebným prvkom [Gridu](./grid) a umožňuje horizontálne rozmiestniť obsah a upraviť jeho usporiadanie na základe veľkosti obrazovky."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -35,7 +39,7 @@ Pre viac informácií o použití **Col** sa presuňte do dokumentácie systému
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

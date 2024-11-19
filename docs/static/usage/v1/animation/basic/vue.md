@@ -1,6 +1,6 @@
 ```html
 <template>
-    <wje-animation name="heartBeat">
+  <wje-animation name="heartBeat">
     <wje-avatar>
       <wje-img src="/assets/img/avatar.svg"></wje-img>
     </wje-avatar>
@@ -12,11 +12,11 @@
 </template>
 
 <script lang="ts">
-  import { Animation, Avatar, Image, Button} from '@elements/vue';
+  import { Animation, Avatar, Image, Button } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { Animation, Avatar, Image, Button},
+    components: { Animation, Avatar, Image, Button },
   });
 </script>
 ```

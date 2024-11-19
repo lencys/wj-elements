@@ -1,5 +1,5 @@
 ```html
- <wje-breadcrumbs>
+<wje-breadcrumbs>
   <wje-breadcrumb href="/home">
     Home
     <wje-icon slot="separator" name="slash"></wje-icon>

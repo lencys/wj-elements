@@ -1,8 +1,8 @@
 var n = Object.defineProperty;
-var a = (s, e, t) => e in s ? n(s, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : s[e] = t;
-var l = (s, e, t) => (a(s, typeof e != "symbol" ? e + "" : e, t), t);
-import d from "./wje-element.js";
-const u = ":host{display:block;width:100%}";
+var a = (s, e, t) => (e in s ? n(s, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (s[e] = t));
+var l = (s, e, t) => (a(s, typeof e != 'symbol' ? e + '' : e, t), t);
+import d from './wje-element.js';
+const u = ':host{display:block;width:100%}';
 class c extends d {
   /**
    * Constructor for the Accordion class.
@@ -13,13 +13,13 @@ class c extends d {
      * The class name for the Accordion element.
      * @type {string}
      */
-    l(this, "className", "Accordion");
+    l(this, 'className', 'Accordion');
   }
   set multiple(t) {
-    this.setAttribute("multiple", "");
+    this.setAttribute('multiple', '');
   }
   get multiple() {
-    return this.hasAttribute("multiple");
+    return this.hasAttribute('multiple');
   }
   /**
    * Getter for the CSS stylesheet.
@@ -39,12 +39,16 @@ class c extends d {
    * Method to setup attributes for the Accordion element.
    */
   setupAttributes() {
-    this.isShadowRoot = "open";
+    this.isShadowRoot = 'open';
   }
   beforeDraw() {
-    console.log("beforeDraw", this.getAccordions()), this.getAccordions().forEach((t, o) => {
-      console.log(t, o, +this.getAttribute("index")), this.hasAttribute("index") && +this.getAttribute("index") === o && (console.log("index", +this.getAttribute("index") + " !== " + o), t.classList.add("expanded"));
-    });
+    console.log('beforeDraw', this.getAccordions()),
+      this.getAccordions().forEach((t, o) => {
+        console.log(t, o, +this.getAttribute('index')),
+          this.hasAttribute('index') &&
+            +this.getAttribute('index') === o &&
+            (console.log('index', +this.getAttribute('index') + ' !== ' + o), t.classList.add('expanded'));
+      });
   }
   /**
    * Method to draw the Accordion element.
@@ -54,15 +58,17 @@ class c extends d {
    * @return {Object} The document fragment containing the drawn element.
    */
   draw(t, o, h) {
-    let i = document.createDocumentFragment(), r = document.createElement("slot");
-    return i.appendChild(r), this.slotEl = r, i;
+    let i = document.createDocumentFragment(),
+      r = document.createElement('slot');
+    return i.appendChild(r), (this.slotEl = r), i;
   }
   afterDraw() {
-    this.addEventListener("wje-accordion-item:close", (t) => {
-      console.log("wje-accordion-item:close", t.detail);
-    }), this.addEventListener("wje-accordion-item:open", (t) => {
-      console.log("wje-accordion-item:open", t.detail), this.multiple || this.collapseAll(t.detail.context);
-    });
+    this.addEventListener('wje-accordion-item:close', (t) => {
+      console.log('wje-accordion-item:close', t.detail);
+    }),
+      this.addEventListener('wje-accordion-item:open', (t) => {
+        console.log('wje-accordion-item:open', t.detail), this.multiple || this.collapseAll(t.detail.context);
+      });
   }
   collapseAll(t) {
     this.getAccordions().forEach((o) => {
@@ -70,10 +76,8 @@ class c extends d {
     });
   }
   getAccordions() {
-    return Array.from(this.querySelectorAll(":scope > wje-accordion-item"));
+    return Array.from(this.querySelectorAll(':scope > wje-accordion-item'));
   }
 }
-c.define("wje-accordion", c);
-export {
-  c as default
-};
+c.define('wje-accordion', c);
+export { c as default };

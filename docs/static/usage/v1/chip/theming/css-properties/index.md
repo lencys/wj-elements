@@ -17,7 +17,7 @@ import vue from './vue.md';
         'src/main.tsx': react_main_tsx,
       },
     },
-    vue
+    vue,
   }}
   src="usage/v1/chip/theming/css-properties/demo.html"
 />

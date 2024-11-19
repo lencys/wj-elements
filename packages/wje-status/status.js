@@ -1,6 +1,5 @@
-import Status from "./status.element.js";
+import Status from './status.element.js';
 
 export default Status;
 
-Status.define("wje-status", Status);
-
+Status.define('wje-status', Status);

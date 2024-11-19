@@ -31,8 +31,12 @@ function Example() {
       <span>Offset všetkých stĺpcov o 6 pre breakpoint xs, offset o 4 pre md, offset o 2 pre lg a vyššie</span>
       <wje-grid>
         <wje-row wrap>
-          <wje-col offset="6" offset-md="4" offset-lg="2">1</wje-col>
-          <wje-col offset="6" offset-md="4" offset-lg="2">2</wje-col>
+          <wje-col offset="6" offset-md="4" offset-lg="2">
+            1
+          </wje-col>
+          <wje-col offset="6" offset-md="4" offset-lg="2">
+            2
+          </wje-col>
         </wje-row>
       </wje-grid>
     </>

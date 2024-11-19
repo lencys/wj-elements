@@ -36,7 +36,6 @@ This directory contains the source files for generating the individual framework
 | `package.json`   | Project specific dependencies to create an example with Vite. |
 | `vite.config.js` | Vite configuration file.                                      |
 
-
 ## Dotfiles
 
 Dotfiles must be saved without the dot otherwise they will not be fetched correctly. However, when creating the StackBlitz project the dot can be used.

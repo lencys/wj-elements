@@ -1,6 +1,6 @@
-import WJElement from "../../dist/wje-element.js";
+import WJElement from '../../dist/wje-element.js';
 
-const template = document.createElement("template");
+const template = document.createElement('template');
 
 template.innerHTML = `
 
@@ -25,12 +25,12 @@ template.innerHTML = `
 `;
 
 export default class DemoStepper extends WJElement {
-    constructor() {
-        super(template);
-    }
+  constructor() {
+    super(template);
+  }
 }
 
 let __esModule = 'true';
-export {__esModule};
+export { __esModule };
 
-customElements.get("demo-stepper") || window.customElements.define("demo-stepper", DemoStepper);
+customElements.get('demo-stepper') || window.customElements.define('demo-stepper', DemoStepper);

@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/list/slots.md';
 
 <head>
   <title>List | List of items display component</title>
-  <meta name="description" content="Komponent List (Zoznam) sa skladá z viacerých elementov [Item](item) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Listy vo všeobecnosti obsahujú položky s rovnakým obsahom a zoskupujú ich do väčšieho celku." />
+  <meta
+    name="description"
+    content="Komponent List (Zoznam) sa skladá z viacerých elementov [Item](item) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Listy vo všeobecnosti obsahujú položky s rovnakým obsahom a zoskupujú ich do väčšieho celku."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -54,7 +57,7 @@ import Lines from '@site/static/usage/v1/list/lines/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

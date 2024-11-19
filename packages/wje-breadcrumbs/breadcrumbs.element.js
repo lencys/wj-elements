@@ -1,5 +1,5 @@
-import { default as WJElement } from "../wje-element/element.js";
-import styles from "./styles/styles.css?inline";
+import { default as WJElement } from '../wje-element/element.js';
+import styles from './styles/styles.css?inline';
 
 /**
  * @summary Breadcrumbs class.
@@ -9,94 +9,93 @@ import styles from "./styles/styles.css?inline";
  * @slot - The breadcrumb main content.
  */
 export default class Breadcrumbs extends WJElement {
-    
-    /**
-     * Breadcrumbs constructor method.
-     * @class
-     */
-    constructor() {
-        super();
-
-        /**
-         * Last breadcrumb flag
-         * @type {boolean}
-         */
-        this.last = false;
-    }
+  /**
+   * Breadcrumbs constructor method.
+   * @class
+   */
+  constructor() {
+    super();
 
     /**
-     * Class name for the Breadcrumbs element.
-     * @type {string}
+     * Last breadcrumb flag
+     * @type {boolean}
      */
-    className = "Breadcrumbs";
+    this.last = false;
+  }
 
-    /**
-     * Get CSS stylesheet for the Breadcrumbs element.
-     * @static
-     * @returns {object} styles - The CSS styles
-     */
-    static get cssStyleSheet() {
-        return styles;
-    }
+  /**
+   * Class name for the Breadcrumbs element.
+   * @type {string}
+   */
+  className = 'Breadcrumbs';
 
-    /**
-     * Setup attributes for the Breadcrumbs element.
-     */
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
+  /**
+   * Get CSS stylesheet for the Breadcrumbs element.
+   * @static
+   * @returns {object} styles - The CSS styles
+   */
+  static get cssStyleSheet() {
+    return styles;
+  }
 
-    /**
-     * Draw method for the Breadcrumbs element.
-     * @returns {object} fragment - The document fragment
-     */
-    draw() {
-        let fragment = document.createDocumentFragment();
+  /**
+   * Setup attributes for the Breadcrumbs element.
+   */
+  setupAttributes() {
+    this.isShadowRoot = 'open';
+  }
 
-        let element = document.createElement("slot");
+  /**
+   * Draw method for the Breadcrumbs element.
+   * @returns {object} fragment - The document fragment
+   */
+  draw() {
+    let fragment = document.createDocumentFragment();
 
-        fragment.appendChild(element);
+    let element = document.createElement('slot');
 
-        return fragment;
-    }
+    fragment.appendChild(element);
 
-    /**
-     * After draw method for the Breadcrumbs element.
-     */
-    afterDraw() {
-        let maxItems = +this.maxItems || 0;
-        let itemsBeforeCollapse = +this.itemsBeforeCollapse || 1;
-        let itemsAfterCollapse = +this.itemsAfterCollapse || 1;
+    return fragment;
+  }
 
-        let breadcrumbs = this.getBreadcrumbs();
+  /**
+   * After draw method for the Breadcrumbs element.
+   */
+  afterDraw() {
+    let maxItems = +this.maxItems || 0;
+    let itemsBeforeCollapse = +this.itemsBeforeCollapse || 1;
+    let itemsAfterCollapse = +this.itemsAfterCollapse || 1;
 
-        if(breadcrumbs.length === 0)
-            return;
+    let breadcrumbs = this.getBreadcrumbs();
 
-        let breadcrumb = breadcrumbs.findLast(e => e);
+    if (breadcrumbs.length === 0) return;
 
-        breadcrumb.setAttribute("last", true);
+    let breadcrumb = breadcrumbs.findLast((e) => e);
 
-        const shouldCollapse = maxItems !== undefined && breadcrumbs.length > maxItems && itemsBeforeCollapse + itemsAfterCollapse <= maxItems;
+    breadcrumb.setAttribute('last', true);
 
-        if (shouldCollapse) {
-            breadcrumbs.forEach((b, index) => {
-                if (index === itemsBeforeCollapse) {
-                    b.setAttribute("show-collapsed-indicator", true);
-                }
+    const shouldCollapse =
+      maxItems !== undefined && breadcrumbs.length > maxItems && itemsBeforeCollapse + itemsAfterCollapse <= maxItems;
 
-                if (index >= itemsBeforeCollapse && index < breadcrumbs.length - itemsAfterCollapse) {
-                    b.setAttribute("collapsed", true);
-                }
-            });
+    if (shouldCollapse) {
+      breadcrumbs.forEach((b, index) => {
+        if (index === itemsBeforeCollapse) {
+          b.setAttribute('show-collapsed-indicator', true);
         }
-    }
 
-    /**
-     * Get breadcrumbs method.
-     * @returns {Array} - The breadcrumbs array
-     */
-    getBreadcrumbs() {
-        return Array.from(this.querySelectorAll('wje-breadcrumb')) || [];
+        if (index >= itemsBeforeCollapse && index < breadcrumbs.length - itemsAfterCollapse) {
+          b.setAttribute('collapsed', true);
+        }
+      });
     }
+  }
+
+  /**
+   * Get breadcrumbs method.
+   * @returns {Array} - The breadcrumbs array
+   */
+  getBreadcrumbs() {
+    return Array.from(this.querySelectorAll('wje-breadcrumb')) || [];
+  }
 }

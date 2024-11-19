@@ -1,5 +1,5 @@
 ---
-title: "FileUpload Item"
+title: 'FileUpload Item'
 ---
 
 import Props from '@ionic-internal/component-api/v1/file-upload-item/props.md';
@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/file-upload-item/slots.md';
 
 <head>
   <title>FileUploadItem | Položka (súbor) v rámci FileUpload komponentu</title>
-  <meta name="description" content="Element FileUploadItem predstavuje individuálnu položku (súbor) v rámci FileUpload komponentu. Zobrazuje podrobnosti, ako je názov súboru, veľkosť, priebeh nahrávania, a poskytuje akcie, ako je vymazanie súboru. Tento komponent je určený na použitie v kontexte FileUpload komponentu." />
+  <meta
+    name="description"
+    content="Element FileUploadItem predstavuje individuálnu položku (súbor) v rámci FileUpload komponentu. Zobrazuje podrobnosti, ako je názov súboru, veľkosť, priebeh nahrávania, a poskytuje akcie, ako je vymazanie súboru. Tento komponent je určený na použitie v kontexte FileUpload komponentu."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -21,7 +24,6 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 Element FileUploadItem predstavuje individuálnu položku (súbor) v rámci FileUpload komponentu. Zobrazuje podrobnosti, ako je názov súboru, veľkosť, priebeh nahrávania, a poskytuje akcie, ako je vymazanie súboru. Tento komponent je určený na použitie v kontexte FileUpload komponentu.
 
 Pre viac informácií o použití FileUploadItem sa presuňte do dokumentácie elementu [FileUpload](../file-upload)
-
 
 ## Základné použitie
 
@@ -45,7 +47,7 @@ import Icon from '@site/static/usage/v1/file-upload-item/image/index.md';
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

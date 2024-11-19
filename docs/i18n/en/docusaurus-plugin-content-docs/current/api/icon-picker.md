@@ -39,7 +39,7 @@ import Basic from '@site/static/usage/v1/icon-picker/basic/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

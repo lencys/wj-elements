@@ -9,7 +9,7 @@
   font-size: 14px;
   letter-spacing: -0.006em;
   margin: 0;
-  padding: .5rem .75rem;
+  padding: 0.5rem 0.75rem;
   text-align: center;
   cursor: pointer;
   white-space: nowrap;
@@ -56,7 +56,7 @@
 }
 
 :host([disabled]) {
-  opacity: .5;
+  opacity: 0.5;
   border: 0;
   pointer-events: none;
   cursor: not-allowed;
@@ -83,11 +83,11 @@
 
 wje-button {
   --wje-button-border-radius: 50%;
-  --wje-button-margin-inline: .25rem -.5rem;
-  --wje-padding-top: .15rem;
-  --wje-padding-start: .15rem;
-  --wje-padding-end: .15rem;
-  --wje-padding-bottom: .15rem;
+  --wje-button-margin-inline: 0.25rem -0.5rem;
+  --wje-padding-top: 0.15rem;
+  --wje-padding-start: 0.15rem;
+  --wje-padding-end: 0.15rem;
+  --wje-padding-bottom: 0.15rem;
 }
 
 /*BG - TEXT*/

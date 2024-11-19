@@ -1,6 +1,6 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
-import { event } from "../../packages/index.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
+import { event } from '../../packages/index.js';
 
 const template = document.createElement('template');
 
@@ -100,8 +100,7 @@ export default class DemoInfinteScroll extends WJElement {
   }
 
   beforeDraw() {
-
-    const infiniteScroll = this.querySelector("#custom-data");
+    const infiniteScroll = this.querySelector('#custom-data');
 
     infiniteScroll.setCustomData = async () => {
       infiniteScroll.infiniteScrollTemplate = `<wje-item">
@@ -112,29 +111,31 @@ export default class DemoInfinteScroll extends WJElement {
       </wje-item>`;
 
       return {
-        "page": 0,
-        "size": 1,
-        "totalPages": 1,
-        "data": [
+        page: 0,
+        size: 1,
+        totalPages: 1,
+        data: [
           {
-            "id": "1",
-            "title": "Lorem ipsum dolor sit amet",
-            "description": "Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.",
-            "time": "2024-06-24T10:00:00Z"
-          },{
-            "id": "2",
-            "title": "Lorem ipsum dolor sit amet",
-            "description": "Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.",
-            "time": "2024-06-23T12:00:00Z"
-          }, {
-            "id": "3",
-            "title": "Lorem ipsum dolor sit amet",
-            "description": "Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.",
-            "time": "2024-06-24T14:00:00Z"
-          }
-        ]
+            id: '1',
+            title: 'Lorem ipsum dolor sit amet',
+            description: 'Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.',
+            time: '2024-06-24T10:00:00Z',
+          },
+          {
+            id: '2',
+            title: 'Lorem ipsum dolor sit amet',
+            description: 'Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.',
+            time: '2024-06-23T12:00:00Z',
+          },
+          {
+            id: '3',
+            title: 'Lorem ipsum dolor sit amet',
+            description: 'Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.',
+            time: '2024-06-24T14:00:00Z',
+          },
+        ],
       };
-    }
+    };
 
     infiniteScroll.customForeach = (data) => {
       const today = new Date();
@@ -149,22 +150,22 @@ export default class DemoInfinteScroll extends WJElement {
 
         if (itemDate.getTime() === today.getTime() && !addedTodayHeader) {
           let todayHeader = document.createElement('h5');
-          todayHeader.textContent = "Dnes";
-          infiniteScroll.placementObj.insertAdjacentElement("beforeend", todayHeader);
+          todayHeader.textContent = 'Dnes';
+          infiniteScroll.placementObj.insertAdjacentElement('beforeend', todayHeader);
           addedTodayHeader = true;
         }
 
         if (itemDate.getTime() !== today.getTime() && !addedOlderHeader) {
           let olderHeader = document.createElement('h5');
-          olderHeader.textContent = "Staršie";
-          infiniteScroll.placementObj.insertAdjacentElement("beforeend", olderHeader);
+          olderHeader.textContent = 'Staršie';
+          infiniteScroll.placementObj.insertAdjacentElement('beforeend', olderHeader);
           addedOlderHeader = true;
         }
 
         let element = infiniteScroll.dataToHtml(item);
-        infiniteScroll.placementObj.insertAdjacentElement("beforeend", element);
+        infiniteScroll.placementObj.insertAdjacentElement('beforeend', element);
       });
-    }
+    };
   }
 
   afterDraw() {
@@ -176,4 +177,4 @@ export default class DemoInfinteScroll extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-infinite-scroll") || window.customElements.define("demo-infinite-scroll", DemoInfinteScroll);
+customElements.get('demo-infinite-scroll') || window.customElements.define('demo-infinite-scroll', DemoInfinteScroll);

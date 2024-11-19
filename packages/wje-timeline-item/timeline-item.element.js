@@ -1,6 +1,6 @@
-import { formatDate } from "../utils/date.js";
-import { default as WJElement } from "../wje-element/element.js";
-import styles from "./styles/styles.css?inline";
+import { formatDate } from '../utils/date.js';
+import { default as WJElement } from '../wje-element/element.js';
+import styles from './styles/styles.css?inline';
 
 /**
  * The TimelineItem component.
@@ -16,87 +16,87 @@ import styles from "./styles/styles.css?inline";
  * @tag wje-timeline-item
  */
 export default class TimelineItem extends WJElement {
-    constructor() {
-        super();
+  constructor() {
+    super();
+  }
+
+  /**
+   * Returns the class name of the tab.
+   * @returns {string} The class name of the tab.
+   */
+  className = 'TimelineItem';
+
+  /**
+   * Returns the CSS styles for the component.
+   * @static
+   * @returns {CSSStyleSheet}
+   */
+  static get cssStyleSheet() {
+    return styles;
+  }
+
+  /**
+   * Sets up the attributes for the component.
+   */
+  setupAttributes() {
+    this.isShadowRoot = 'open';
+    this.setAttribute('relative-time', '');
+  }
+
+  /**
+   * Draws the component for the timeline item.
+   * @returns {DocumentFragment}
+   */
+  draw() {
+    let fragment = document.createDocumentFragment();
+
+    let native = document.createElement('div');
+    native.setAttribute('part', 'native');
+    native.classList.add('native-timeline-item');
+
+    let contentContainer = document.createElement('div');
+    contentContainer.setAttribute('part', 'content-container');
+    contentContainer.classList.add('content-container');
+
+    let tooltip = document.createElement('wje-tooltip');
+    tooltip.setAttribute('text', this.getAttribute('tooltip') || '');
+    tooltip.setAttribute('position', 'top');
+    tooltip.setAttribute('content', formatDate(this.datetime, 'dd.MM.yyyy HH:mm'));
+
+    let relativeTime = document.createElement('wje-relative-time');
+    relativeTime.setAttribute('date', this.datetime || '');
+    relativeTime.setAttribute('format', this.getAttribute('format') || '');
+
+    tooltip.appendChild(relativeTime);
+
+    let event = document.createElement('h3');
+    event.classList.add('event');
+    event.textContent = this.getAttribute('event') || '';
+
+    // additional text content
+    let slot = document.createElement('slot');
+
+    // status slot
+    let slotStatus = document.createElement('wje-icon');
+    slotStatus.setAttribute('name', 'circle-dot');
+    slotStatus.setAttribute('filled', '');
+    slotStatus.setAttribute('part', 'default-icon');
+
+    // if status slot is present
+    if (this.querySelector('[slot="status"]')) {
+      slotStatus = document.createElement('slot');
+      slotStatus.setAttribute('name', 'status');
     }
 
-    /**
-     * Returns the class name of the tab.
-     * @returns {string} The class name of the tab.
-     */
-    className = "TimelineItem";
+    contentContainer.appendChild(tooltip);
+    contentContainer.appendChild(event);
+    contentContainer.appendChild(slot);
 
-    /**
-     * Returns the CSS styles for the component.
-     * @static
-     * @returns {CSSStyleSheet}
-     */
-    static get cssStyleSheet() {
-        return styles;
-    }
+    native.appendChild(slotStatus);
+    native.appendChild(contentContainer);
 
-    /**
-     * Sets up the attributes for the component.
-     */
-    setupAttributes() {
-        this.isShadowRoot = "open";
-        this.setAttribute("relative-time", "");
-    }
+    fragment.appendChild(native);
 
-    /**
-     * Draws the component for the timeline item.
-     * @returns {DocumentFragment}
-     */
-    draw() {
-        let fragment = document.createDocumentFragment();
-
-        let native = document.createElement('div');
-        native.setAttribute("part", "native");
-        native.classList.add("native-timeline-item");
-
-        let contentContainer = document.createElement('div');
-        contentContainer.setAttribute("part", "content-container");
-        contentContainer.classList.add('content-container');
-
-        let tooltip = document.createElement('wje-tooltip');
-        tooltip.setAttribute('text', this.getAttribute('tooltip') || '');
-        tooltip.setAttribute('position', 'top');
-        tooltip.setAttribute('content', formatDate(this.datetime, 'dd.MM.yyyy HH:mm'));
-
-        let relativeTime = document.createElement('wje-relative-time');
-        relativeTime.setAttribute('date', this.datetime || '');
-        relativeTime.setAttribute('format', this.getAttribute('format') || '');
-
-        tooltip.appendChild(relativeTime);
-
-        let event = document.createElement('h3');
-        event.classList.add('event');
-        event.textContent = this.getAttribute('event') || '';
-
-        // additional text content
-        let slot = document.createElement('slot');
-
-        // status slot
-        let slotStatus = document.createElement('wje-icon')
-        slotStatus.setAttribute('name', 'circle-dot');
-        slotStatus.setAttribute('filled', '');
-        slotStatus.setAttribute('part', 'default-icon');
-
-        // if status slot is present
-        if(this.querySelector('[slot="status"]')) {
-            slotStatus = document.createElement('slot');
-            slotStatus.setAttribute('name', 'status');
-        }
-
-        contentContainer.appendChild(tooltip);
-        contentContainer.appendChild(event);
-        contentContainer.appendChild(slot);
-
-        native.appendChild(slotStatus);
-        native.appendChild(contentContainer);
-
-        fragment.appendChild(native);
-
-        return fragment;
-    }
+    return fragment;
+  }
 }

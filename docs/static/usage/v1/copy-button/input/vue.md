@@ -1,6 +1,6 @@
 ```html
 <template>
-  <input id="copy-input" value="I am copy - Input">
+  <input id="copy-input" value="I am copy - Input" />
   <wje-copy-button for="copy-input"></wje-copy-button>
 </template>
 

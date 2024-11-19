@@ -8,7 +8,7 @@
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { IconPicker }
+    components: { IconPicker },
   });
 </script>
 ```

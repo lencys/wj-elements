@@ -4,7 +4,7 @@ import { Thumbnail, Item, Label } from '@elements/react';
 function Example() {
   return (
     <>
-     <wje-item>
+      <wje-item>
         <wje-thumbnail slot="start">
           <img alt="Silhouette of mountains" src="../../../../img/demos/thumbnail.svg" />
         </wje-thumbnail>

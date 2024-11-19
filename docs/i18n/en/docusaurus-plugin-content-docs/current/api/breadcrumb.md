@@ -11,8 +11,11 @@ import Slots from '@ionic-internal/component-api/v1/breadcrumb/slots.md';
 
 <head>
   <title>Breadcrumbs | Navigation Route Segment</title>
-  <meta name="description" content="Breadcrumbs je komponent, ktorý zobrazuje cestu, po ktorej používateľ prešiel v rámci aplikácie alebo webu. Tento element zobrazuje hierarchické usporiadanie stránok, v ktorom každý segment cesty 
-  Breadcrumb je hyperlink, umožňujúci rýchly návrat na predchádzajúce úrovne. Breadcrumbs môže obsahovať ikonu." />
+  <meta
+    name="description"
+    content="Breadcrumbs je komponent, ktorý zobrazuje cestu, po ktorej používateľ prešiel v rámci aplikácie alebo webu. Tento element zobrazuje hierarchické usporiadanie stránok, v ktorom každý segment cesty 
+  Breadcrumb je hyperlink, umožňujúci rýchly návrat na predchádzajúce úrovne. Breadcrumbs môže obsahovať ikonu."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -37,7 +40,7 @@ For more information on using Breadcrumbs, navigate to the [**Breadcrumbs**](../
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

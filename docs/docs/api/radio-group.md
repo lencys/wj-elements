@@ -1,6 +1,7 @@
 ---
-title: "RadioGroup"
+title: 'RadioGroup'
 ---
+
 import Props from '@ionic-internal/component-api/v1/radio-group/props.md';
 import Events from '@ionic-internal/component-api/v1/radio-group/events.md';
 import Methods from '@ionic-internal/component-api/v1/radio-group/methods.md';
@@ -30,7 +31,7 @@ Umožňuje používateľom vybrať jednu možnosť zo súboru možností, pričo
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

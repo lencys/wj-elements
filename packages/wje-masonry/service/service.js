@@ -1,12 +1,12 @@
-export const DEFAULT_MAX_COL_WIDTH = 500
-export const DEFAULT_DEBOUNCE_MS = 300
+export const DEFAULT_MAX_COL_WIDTH = 500;
+export const DEFAULT_DEBOUNCE_MS = 300;
 
-export const COL_COUNT_CSS_VAR_NAME = `--wje-masonry-layout-col-count`
-export const GAP_CSS_VAR_NAME = `--wje-masonry-layout-gap`
+export const COL_COUNT_CSS_VAR_NAME = `--wje-masonry-layout-col-count`;
+export const GAP_CSS_VAR_NAME = `--wje-masonry-layout-gap`;
 
-export const ELEMENT_NODE_TYPE = 1
+export const ELEMENT_NODE_TYPE = 1;
 
-const DEBOUNCE_MAP = new Map()
+const DEBOUNCE_MAP = new Map();
 
 /**
  * Returns a number attribute from an element.
@@ -16,8 +16,8 @@ const DEBOUNCE_MAP = new Map()
  * @returns {string|number}
  */
 export function getNumberAttribute($elem, name, defaultValue) {
-  const value = parseFloat($elem.getAttribute(name) || "")
-  return isNaN(value) ? defaultValue : value
+  const value = parseFloat($elem.getAttribute(name) || '');
+  return isNaN(value) ? defaultValue : value;
 }
 
 /**
@@ -27,7 +27,7 @@ export function getNumberAttribute($elem, name, defaultValue) {
  * @param maxColWidth
  */
 export function getColCount(totalWidth, cols, maxColWidth) {
-  return isNaN(cols) ? Math.max(1, Math.ceil(totalWidth / maxColWidth)) : cols
+  return isNaN(cols) ? Math.max(1, Math.ceil(totalWidth / maxColWidth)) : cols;
 }
 
 /**
@@ -38,7 +38,7 @@ export function getColCount(totalWidth, cols, maxColWidth) {
  */
 export function debounce(cb, ms, id) {
   const existingTimeout = DEBOUNCE_MAP.get(id);
-  if (existingTimeout !== null && existingTimeout !== undefined) window.clearTimeout(existingTimeout)
+  if (existingTimeout !== null && existingTimeout !== undefined) window.clearTimeout(existingTimeout);
   DEBOUNCE_MAP.set(id, window.setTimeout(cb, ms));
 }
 
@@ -52,10 +52,10 @@ export function findSmallestColIndex(colHeights) {
 
   colHeights.forEach((height, i) => {
     if (height < smallestHeight) {
-      smallestHeight = height
-      smallestIndex = i
+      smallestHeight = height;
+      smallestIndex = i;
     }
-  })
+  });
 
-  return smallestIndex
+  return smallestIndex;
 }

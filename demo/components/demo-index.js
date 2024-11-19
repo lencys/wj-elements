@@ -1,19 +1,19 @@
-import WJElement from "../../dist/wje-element.js";
+import WJElement from '../../dist/wje-element.js';
 
 class Application extends WJElement {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    draw() {
-        let fragment = document.createDocumentFragment();
+  draw() {
+    let fragment = document.createDocumentFragment();
 
-        let element = document.createElement("slot");
+    let element = document.createElement('slot');
 
-        fragment.appendChild(element);
+    fragment.appendChild(element);
 
-        return fragment;
-    }
+    return fragment;
+  }
 }
 
-customElements.define('wje-application', Application)
+customElements.define('wje-application', Application);

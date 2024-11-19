@@ -1,5 +1,5 @@
-import { default as WJElement, WjElementUtils } from "../wje-element/element.js";
-import styles from "./styles/styles.css?inline";
+import { default as WJElement, WjElementUtils } from '../wje-element/element.js';
+import styles from './styles/styles.css?inline';
 
 /**
  * `ReorderItem` is a custom web component that represents a reorder item.
@@ -13,7 +13,6 @@ import styles from "./styles/styles.css?inline";
  * @tag wje-reorder-item
  */
 export default class ReorderItem extends WJElement {
-
   /**
    * Creates an instance of ReorderItem.
    */
@@ -25,7 +24,7 @@ export default class ReorderItem extends WJElement {
    * The class name for the component.
    * @type {string}
    */
-  className = "ReorderItem";
+  className = 'ReorderItem';
 
   /**
    * Returns the CSS stylesheet for the component.
@@ -39,7 +38,7 @@ export default class ReorderItem extends WJElement {
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = "open";
+    this.isShadowRoot = 'open';
   }
 
   /**
@@ -49,23 +48,23 @@ export default class ReorderItem extends WJElement {
   draw() {
     let fragment = document.createDocumentFragment();
 
-    let wrapper = document.createElement("div");
-    wrapper.classList.add("item");
-    wrapper.setAttribute("part", "native-reorder-item");
+    let wrapper = document.createElement('div');
+    wrapper.classList.add('item');
+    wrapper.setAttribute('part', 'native-reorder-item');
 
-    let element = document.createElement("slot");
-    element.classList.add("name");
+    let element = document.createElement('slot');
+    element.classList.add('name');
 
-    if(WjElementUtils.hasSlot(this, "handle")) {
-        const handle = document.createElement("slot");
-        handle.classList.add("handle");
-        handle.setAttribute("name", "handle");
-        handle.setAttribute("part", "handle-part");
+    if (WjElementUtils.hasSlot(this, 'handle')) {
+      const handle = document.createElement('slot');
+      handle.classList.add('handle');
+      handle.setAttribute('name', 'handle');
+      handle.setAttribute('part', 'handle-part');
 
-        wrapper.classList.add("item-w-handle");
-        wrapper.appendChild(handle);
+      wrapper.classList.add('item-w-handle');
+      wrapper.appendChild(handle);
     } else {
-      element.setAttribute("draggable", "true");
+      element.setAttribute('draggable', 'true');
     }
 
     wrapper.appendChild(element);

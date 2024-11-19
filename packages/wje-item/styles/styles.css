@@ -3,108 +3,109 @@
 */
 
 :host {
-    display: block;
-    position: relative;
-    align-items: center;
-    justify-content: space-between;
-    outline: none;
-    color: var(--wje-item-color);
-    text-align: initial;
-    text-decoration: none;
-    overflow: hidden;
-    box-sizing: border-box;
-    width: 100%;
+  display: block;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  outline: none;
+  color: var(--wje-item-color);
+  text-align: initial;
+  text-decoration: none;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .item-native {
-    border-radius: var(--wje-item-border-radius);
-    padding-top: var(--wje-item-padding-top);
-    padding-bottom: var(--wje-item-padding-bottom);
-    padding-inline: var(--wje-item-padding-start) var(--wje-item-padding-end);
+  border-radius: var(--wje-item-border-radius);
+  padding-top: var(--wje-item-padding-top);
+  padding-bottom: var(--wje-item-padding-bottom);
+  padding-inline: var(--wje-item-padding-start) var(--wje-item-padding-end);
+  margin: 0;
+  display: flex;
+  position: relative;
+  align-items: inherit;
+  justify-content: inherit;
+  width: 100%;
+  min-height: var(--wje-item-min-height);
+  transition: var(--wje-item-transition);
+  outline: none;
+  background: var(--wje-item-background);
+  overflow: inherit;
+  box-sizing: border-box;
+  z-index: 1;
+  text-decoration: none;
+  color: var(--wje-item-color);
+
+  .item-inner {
     margin: 0;
+    padding: var(--wje-item-inner-padding-top) var(--wje-item-inner-padding-end) var(--wje-item-inner-padding-bottom)
+      var(--wje-item-inner-padding-start);
+
     display: flex;
     position: relative;
+
+    flex: 1 1 0;
+    flex-direction: inherit;
     align-items: inherit;
-    justify-content: inherit;
-    width: 100%;
-    min-height: var(--wje-item-min-height);
-    transition: var(--wje-item-transition);
-    outline: none;
-    background: var(--wje-item-background);
+    align-self: stretch;
+
+    min-height: inherit;
+
+    border-width: var(--wje-item-border-width);
+    border-style: var(--wje-item-border-style);
+    border-color: var(--wje-item-border-color);
+
+    box-shadow: var(--wje-item-inner-box-shadow);
     overflow: inherit;
     box-sizing: border-box;
-    z-index: 1;
-    text-decoration: none;
-    color: var(--wje-item-color);
 
-    .item-inner {
-        margin: 0;
-        padding: var(--wje-item-inner-padding-top) var(--wje-item-inner-padding-end) var(--wje-item-inner-padding-bottom) var(--wje-item-inner-padding-start);
-
-        display: flex;
-        position: relative;
-
-        flex: 1 1 0;
-        flex-direction: inherit;
-        align-items: inherit;
-        align-self: stretch;
-
-        min-height: inherit;
-
-        border-width: var(--wje-item-border-width);
-        border-style: var(--wje-item-border-style);
-        border-color: var(--wje-item-border-color);
-
-        box-shadow: var(--wje-item-inner-box-shadow);
-        overflow: inherit;
-        box-sizing: border-box;
-
-        .input-wrapper {
-            display: flex;
-            flex: 1 1 0;
-            flex-direction: inherit;
-            align-items: inherit;
-            align-self: stretch;
-            text-overflow: ellipsis;
-            overflow: inherit;
-            box-sizing: border-box;
-        }
+    .input-wrapper {
+      display: flex;
+      flex: 1 1 0;
+      flex-direction: inherit;
+      align-items: inherit;
+      align-self: stretch;
+      text-overflow: ellipsis;
+      overflow: inherit;
+      box-sizing: border-box;
     }
+  }
 
-    .item-bottom {
-        padding: 0 var(--wje-item-inner-padding-end) 0 var(--wje-item-padding-start);
-        display: flex;
-        justify-content: space-between;
-    }
+  .item-bottom {
+    padding: 0 var(--wje-item-inner-padding-end) 0 var(--wje-item-padding-start);
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 @media (any-hover: hover) {
-    :host(:hover) .item-native {
-        color: var(--wje-item-color);
+  :host(:hover) .item-native {
+    color: var(--wje-item-color);
 
-        :after {
-            transition: var(--wje-item-transition);
-            z-index: -1;
-            inset: 0;
-            position: absolute;
-            content: "";
-            background: var(--wje-item-background-hover);
-            opacity: 0.7;
-        }
+    :after {
+      transition: var(--wje-item-transition);
+      z-index: -1;
+      inset: 0;
+      position: absolute;
+      content: '';
+      background: var(--wje-item-background-hover);
+      opacity: 0.7;
     }
+  }
 }
 
 button,
 a {
-    cursor: pointer;
-    user-select: none;
-    -webkit-user-drag: none;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-::slotted([slot="start"]) {
-    margin-inline: 0 1rem;
+::slotted([slot='start']) {
+  margin-inline: 0 1rem;
 }
 
-::slotted(wje-label:not([slot="end"])) {
-    flex: 1 1 0;
+::slotted(wje-label:not([slot='end'])) {
+  flex: 1 1 0;
 }

@@ -26,12 +26,12 @@
       border-style: var(--wje-input-border-style);
       border-color: var(--wje-input-border-color);
       padding-inline: 0;
-      padding-top: .25rem;
-      padding-bottom: .25rem;
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
       transition: background-color 0.2s ease;
       cursor: text;
       .input-wrapper {
-        margin-inline: .5rem;
+        margin-inline: 0.5rem;
       }
       &.focused {
         border-color: var(--wje-input-border-color-focus) !important;
@@ -64,13 +64,13 @@
           letter-spacing: normal;
         }
       }
-      ::slotted([slot="start"]) {
+      ::slotted([slot='start']) {
         border-left: none;
         border-top: none;
         border-bottom: none;
       }
 
-      ::slotted([slot="end"]) {
+      ::slotted([slot='end']) {
         border-right: none;
         border-top: none;
         border-bottom: none;
@@ -94,7 +94,7 @@
         background-color: var(--wje-input-background-color);
         display: block;
         min-height: 32px;
-        padding-inline: .5rem;
+        padding-inline: 0.5rem;
         padding-top: 0;
         padding-bottom: 0;
         /*background: none;*/
@@ -119,22 +119,22 @@
           visibility: visible;
         }
       }
-      ::slotted([slot="start"]) {
+      ::slotted([slot='start']) {
         border-right: none;
         border-radius: var(--wje-input-border-radius) 0 0 var(--wje-input-border-radius);
       }
 
-      ::slotted([slot="end"]) {
+      ::slotted([slot='end']) {
         border-left: none;
         border-radius: 0 var(--wje-input-border-radius) var(--wje-input-border-radius) 0;
       }
 
-      &.has-start input{
+      &.has-start input {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
 
-      &.has-end input{
+      &.has-end input {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }
@@ -158,16 +158,16 @@
   position: absolute;
   right: 0;
   top: 3px;
-  --wje-padding-top: .25rem;
-  --wje-padding-start: .25rem;
-  --wje-padding-end: .25rem;
-  --wje-padding-bottom: .25rem;
-  --wje-button-margin-inline: 0 .25rem;
+  --wje-padding-top: 0.25rem;
+  --wje-padding-start: 0.25rem;
+  --wje-padding-end: 0.25rem;
+  --wje-padding-bottom: 0.25rem;
+  --wje-button-margin-inline: 0 0.25rem;
 }
 
 :host([required]) .input-wrapper::after {
   color: var(--wje-input-color-invalid);
-  content: "*";
+  content: '*';
   font-family: var(--wje-force-mac-font-family);
   font-size: 20px;
   position: absolute;
@@ -194,7 +194,8 @@
   }
 }
 
-::slotted([slot="start"]), ::slotted([slot="end"]) {
+::slotted([slot='start']),
+::slotted([slot='end']) {
   display: flex;
   align-items: center;
   border-width: var(--wje-input-border-width);
@@ -206,24 +207,25 @@
 /*
     .options-show is a class that is added to the host element when the select options are shown
  */
-:host(.options-show) ::slotted([slot="start"]) {
+:host(.options-show) ::slotted([slot='start']) {
   border-bottom-left-radius: 0 !important;
 }
 
-:host(.options-show) ::slotted([slot="end"]) {
+:host(.options-show) ::slotted([slot='end']) {
   border-bottom-right-radius: 0 !important;
 }
 
-slot[name="start"], slot[name="end"] {
+slot[name='start'],
+slot[name='end'] {
   display: flex;
 }
 
-slot[name="error"] {
+slot[name='error'] {
   display: none;
-  margin-inline: .5rem;
+  margin-inline: 0.5rem;
 }
 
-:host([invalid]) slot[name="error"] {
+:host([invalid]) slot[name='error'] {
   display: block;
 }
 
@@ -236,7 +238,7 @@ input {
   color: var(--wje-input-color);
   appearance: none;
   outline: 0;
-  padding: .25rem .5rem;
+  padding: 0.25rem 0.5rem;
   line-height: var(--wje-input-line-height);
   font-size: 14px;
   font-weight: normal;
@@ -252,7 +254,7 @@ input {
   min-width: auto;
   border-radius: 50px;
   background: black;
-  padding: .25rem .5rem;
+  padding: 0.25rem 0.5rem;
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);

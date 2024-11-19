@@ -1,8 +1,8 @@
 var p = Object.defineProperty;
-var c = (o, e, t) => e in o ? p(o, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : o[e] = t;
-var a = (o, e, t) => (c(o, typeof e != "symbol" ? e + "" : e, t), t);
-import d, { event as u } from "./wje-element.js";
-import h from "./wje-option.js";
+var c = (o, e, t) => (e in o ? p(o, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (o[e] = t));
+var a = (o, e, t) => (c(o, typeof e != 'symbol' ? e + '' : e, t), t);
+import d, { event as u } from './wje-element.js';
+import h from './wje-option.js';
 class r extends d {
   /**
    * Creates an instance of Options.
@@ -11,10 +11,10 @@ class r extends d {
    */
   constructor() {
     super();
-    a(this, "dependencies", {
-      "wje-option": h
+    a(this, 'dependencies', {
+      'wje-option': h,
     });
-    a(this, "className", "Options");
+    a(this, 'className', 'Options');
   }
   /**
    * Returns the list of attributes to observe for changes.
@@ -29,7 +29,7 @@ class r extends d {
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = "open";
+    this.isShadowRoot = 'open';
   }
   /**
    * Prepares the component before drawing.
@@ -39,9 +39,13 @@ class r extends d {
     this.response = await this.getPages();
     let t = document.createDocumentFragment();
     this.response.forEach((s, i) => {
-      let n = document.createElement("wje-option");
-      n.setAttribute("value", s[this.itemValue] || s.value), n.innerText = s[this.itemText] || s.text, t.appendChild(n);
-    }), this.parentElement.appendChild(t), u.dispatchCustomEvent(this, "wje-options:load", {});
+      let n = document.createElement('wje-option');
+      n.setAttribute('value', s[this.itemValue] || s.value),
+        (n.innerText = s[this.itemText] || s.text),
+        t.appendChild(n);
+    }),
+      this.parentElement.appendChild(t),
+      u.dispatchCustomEvent(this, 'wje-options:load', {});
   }
   /**
    * Fetches the pages from the provided URL.
@@ -52,12 +56,9 @@ class r extends d {
    */
   async getPages(t) {
     const s = await fetch(this.url);
-    if (!s.ok)
-      throw new Error(`An error occurred: ${s.status}`);
+    if (!s.ok) throw new Error(`An error occurred: ${s.status}`);
     return await s.json();
   }
 }
-r.define("wje-options", r);
-export {
-  r as default
-};
+r.define('wje-options', r);
+export { r as default };

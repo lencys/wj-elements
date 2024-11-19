@@ -16,11 +16,11 @@
 </template>
 
 <script lang="ts">
-    import { QrCode } from '@elements/vue';
-    import { defineComponent } from 'vue';
+  import { QrCode } from '@elements/vue';
+  import { defineComponent } from 'vue';
 
-    export default defineComponent({
-      components: { QrCode },
-    });
+  export default defineComponent({
+    components: { QrCode },
+  });
 </script>
 ```

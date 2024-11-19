@@ -27,8 +27,8 @@
   }
 }
 
-:host([resize="auto"]) textarea,
-:host([resize="none"]) textarea {
+:host([resize='auto']) textarea,
+:host([resize='none']) textarea {
   resize: none;
 }
 
@@ -71,20 +71,20 @@
       cursor: text;
       transition: opacity 0.2s ease;
       line-height: var(--wje-textarea-line-height);
-      padding-top: .25rem;
+      padding-top: 0.25rem;
       &.fade {
         opacity: 0.5;
         font-size: 12px;
         letter-spacing: normal;
       }
     }
-    ::slotted([slot="start"]) {
+    ::slotted([slot='start']) {
       border-left: none;
       border-top: none;
       border-bottom: none;
     }
 
-    ::slotted([slot="end"]) {
+    ::slotted([slot='end']) {
       border-right: none;
       border-top: none;
       border-bottom: none;
@@ -119,22 +119,22 @@
       transition: opacity 0.2s ease;
       line-height: var(--wje-textarea-line-height);
     }
-    ::slotted([slot="start"]) {
+    ::slotted([slot='start']) {
       border-right: none;
       border-radius: var(--wje-textarea-border-radius) 0 0 var(--wje-textarea-border-radius);
     }
 
-    ::slotted([slot="end"]) {
+    ::slotted([slot='end']) {
       border-left: none;
       border-radius: 0 var(--wje-textarea-border-radius) var(--wje-textarea-border-radius) 0;
     }
 
-    &.has-start textarea{
+    &.has-start textarea {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
 
-    &.has-end textarea{
+    &.has-end textarea {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }

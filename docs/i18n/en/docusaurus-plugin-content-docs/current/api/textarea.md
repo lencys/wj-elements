@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/textarea/slots.md';
 
 <head>
   <title>Textarea | Textarea element extended with new functions</title>
-  <meta name="description" content="Textarea rozširuje možnosti štandardného HTML textarea elementu. Pridáva štýly pre dosiahnutie vizuálne konzistentného používateľského rozhrania a ponúka nové funkcie." />
+  <meta
+    name="description"
+    content="Textarea rozširuje možnosti štandardného HTML textarea elementu. Pridáva štýly pre dosiahnutie vizuálne konzistentného používateľského rozhrania a ponúka nové funkcie."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -76,7 +79,7 @@ import Disabled from '@site/static/usage/v1/textarea/disabled/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

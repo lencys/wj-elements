@@ -1,4 +1,4 @@
-import WJElement from "../../dist/wje-element.js";
+import WJElement from '../../dist/wje-element.js';
 
 const template = document.createElement('template');
 
@@ -38,16 +38,15 @@ export default class DemoAnimation extends WJElement {
   }
 
   async afterDraw() {
-
     // let keyframes = await fetchAndParseCSS();
     const animationElement = this.querySelector('wje-animation');
     const select = this.querySelector('wje-select');
     let keyframes = await this.querySelector('wje-animation').getAnimationsArray();
-    keyframes.map(obj => {
+    keyframes.map((obj) => {
       const option = Object.assign(document.createElement('wje-option'), {
         text: obj.name,
         value: obj.name,
-        label: obj.name
+        label: obj.name,
       });
       select.appendChild(option);
     });
@@ -69,4 +68,4 @@ export default class DemoAnimation extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-animation") || window.customElements.define("demo-animation", DemoAnimation);
+customElements.get('demo-animation') || window.customElements.define('demo-animation', DemoAnimation);

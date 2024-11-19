@@ -3,97 +3,99 @@
 */
 
 :host {
-    width: 100%;
+  width: 100%;
 }
 
 .native-file-upload {
-    width: 100%;
-    position: relative;
-    border: 1px dashed var(--wje-border-color);
-    border-radius: var(--wje-border-radius-medium);
+  width: 100%;
+  position: relative;
+  border: 1px dashed var(--wje-border-color);
+  border-radius: var(--wje-border-radius-medium);
 }
 
 .file-label {
-    background: var(--wje-color-contrast-0);
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    padding: 1rem;
-    margin-bottom: .5rem;
-    flex-direction: column;
-    position: relative;
+  background: var(--wje-color-contrast-0);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  flex-direction: column;
+  position: relative;
 }
 
 .file-preview {
-    display: grid;
-    grid-template-columns: auto 1fr 1fr;
-    grid-template-rows: auto auto auto;
-    gap: 0 0;
-    grid-template-areas:
-    "image name name"
-    "image size size"
-    "progress progress progress";
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 0 0;
+  grid-template-areas:
+    'image name name'
+    'image size size'
+    'progress progress progress';
 }
 
 .file-image {
-    grid-area: image;
-    align-items: center;
-    display: flex;
+  grid-area: image;
+  align-items: center;
+  display: flex;
 }
 
 .file-name {
-    grid-area: name;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  grid-area: name;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .file-size {
-    grid-area: size;
-    display: flex;
+  grid-area: size;
+  display: flex;
 }
 
-.file-progress { grid-area: progress; }
+.file-progress {
+  grid-area: progress;
+}
 
 wje-icon {
-    margin-right: .25rem;
+  margin-right: 0.25rem;
 }
 
 wje-img {
-    margin-right: .25rem;
+  margin-right: 0.25rem;
 }
 
 .file-info > span {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 wje-slider {
-    flex-basis: 100%;
-    margin-top: .5rem;
+  flex-basis: 100%;
+  margin-top: 0.5rem;
 }
 
 ::part(slider) {
-    &::-webkit-slider-thumb {
-        visibility: hidden;
-    }
+  &::-webkit-slider-thumb {
+    visibility: hidden;
+  }
 
-    &::-moz-range-thumb {
-        visibility: hidden;
-    }
+  &::-moz-range-thumb {
+    visibility: hidden;
+  }
 
-    &::-ms-thumb {
-        visibility: hidden;
-    }
+  &::-ms-thumb {
+    visibility: hidden;
+  }
 }
 
 wje-img {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    padding: .25rem;
-    border: 1px solid var(--wje-border-color);
-    border-radius: var(--wje-border-radius-medium);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
+  border: 1px solid var(--wje-border-color);
+  border-radius: var(--wje-border-radius-medium);
 }

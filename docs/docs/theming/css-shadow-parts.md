@@ -30,6 +30,7 @@ Pri použití Web komponentov so Shadow DOM, nie je možné zacieliť vnútorné
   <button class="button-native" part="native"></button>
 </wj-button>
 ```
+
 Element button vo vnútri `#shadow-root` je zapúzdrený a preto CSS selektor nižšie nebude fungovať.
 
 ```css
@@ -49,7 +50,7 @@ wj-button::part(native) {
 }
 ```
 
-Viac informácii o tom ako 
+Viac informácii o tom ako
 
 ### How ::part works
 
@@ -70,8 +71,6 @@ wj-select::part(placeholder) {
 
 All exposed parts for an Ionic Framework component can be found under the CSS Shadow Parts heading on its API page. To view all components and their API pages, see the [Component documentation](../components.md).
 
-
-
 ## Limitácie
 
 ### Kompatibilita s prehliadačmi
@@ -81,9 +80,11 @@ Shadow Parts CSS fungujú v najnovších verziách všetkých významných prehl
 ### Podpora prehliadačom prefixovaných pseudoelementov
 
 <p>
-  <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix" target="_blank" rel="noopener noreferrer">Vendorom prefixované</a>{' '}
-  pseudoelementy nie sú v súčasnosti podporované. Preto napríklad `::-webkit-scrollbar`
-  pseudoelement v príklade nižšie nebude funkčný.
+  <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix" target="_blank" rel="noopener noreferrer">
+    Vendorom prefixované
+  </a>{' '}
+  pseudoelementy nie sú v súčasnosti podporované. Preto napríklad `::-webkit-scrollbar` pseudoelement v príklade nižšie
+  nebude funkčný.
 </p>
 
 ```css
@@ -97,7 +98,7 @@ See <a href="https://github.com/w3c/csswg-drafts/issues/4530" target="_blank" re
 
 ### Štrukturálne pseudotriedy
 
-Väčšina pseudotried je podporovaná pomocou častí, avšak  <a href="https://www.w3.org/TR/selectors-4/#structural-pseudos" target="_blank" rel="noopener noreferrer">štrukturálne pseudotriedy</a> nie sú podporované. Príklad štrukturálnych pseudotried, ktoré nefungujú, je uvedený nižšie.
+Väčšina pseudotried je podporovaná pomocou častí, avšak <a href="https://www.w3.org/TR/selectors-4/#structural-pseudos" target="_blank" rel="noopener noreferrer">štrukturálne pseudotriedy</a> nie sú podporované. Príklad štrukturálnych pseudotried, ktoré nefungujú, je uvedený nižšie.
 
 ```css
 /* Nie je podporovaný */

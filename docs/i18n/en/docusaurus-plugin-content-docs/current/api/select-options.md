@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/select-options/slots.md';
 
 <head>
   <title>Options | individual options within the Select component</title>
-  <meta name="description" content="Element Options je určený na použití vo vnútri elementu [Select](./select) a slúži na zobrazovanie dynamicky generovaného zoznamu možností, ktorý sa asynchrónne načíta zo zadanej URL adresy." />
+  <meta
+    name="description"
+    content="Element Options je určený na použití vo vnútri elementu [Select](./select) a slúži na zobrazovanie dynamicky generovaného zoznamu možností, ktorý sa asynchrónne načíta zo zadanej URL adresy."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -34,7 +37,7 @@ For more information on using Options, navigate to the [**Select**](../select) e
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

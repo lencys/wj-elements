@@ -7,11 +7,7 @@
       "addWords": true
     }
   ],
-  "ignoreRegExpList": [
-    "/(```+)[\\s\\S]+?\\1/g",
-    "`([^`]*)`",
-    "/:[a-zA-Z0-9-_\\+]+:/g"
-  ],
+  "ignoreRegExpList": ["/(```+)[\\s\\S]+?\\1/g", "`([^`]*)`", "/:[a-zA-Z0-9-_\\+]+:/g"],
   "ignorePaths": [
     "docs/cli",
     "docs/native",
@@ -20,7 +16,5 @@
     "versioned_docs/**/native",
     "node_modules"
   ],
-  "flagWords": [
-    "hte"
-  ]
+  "flagWords": ["hte"]
 }

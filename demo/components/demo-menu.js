@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -118,23 +118,22 @@ export default class DemoMenu extends WJElement {
   }
 
   openModalFn() {
-    debugger
+    debugger;
   }
 
   afterDraw() {
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(template, this.context);
 
-    this.querySelectorAll('wje-menu-item').forEach(item => {
+    this.querySelectorAll('wje-menu-item').forEach((item) => {
       item.addEventListener('wje-menu-item:click', () => {
         console.log('click menu item');
       });
     });
-
   }
 }
 
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-menu") || window.customElements.define("demo-menu", DemoMenu);
+customElements.get('demo-menu') || window.customElements.define('demo-menu', DemoMenu);

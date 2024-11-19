@@ -1,6 +1,7 @@
 ---
-title: "Grid"
+title: 'Grid'
 ---
+
 import Props from '@ionic-internal/component-api/v1/grid/props.md';
 import Events from '@ionic-internal/component-api/v1/grid/events.md';
 import Methods from '@ionic-internal/component-api/v1/grid/methods.md';
@@ -10,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/grid/slots.md';
 
 <head>
   <title>Grid | Flexibilný spôsob vytvárania responzívnych layoutov</title>
-  <meta name="description" content="Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí(layoutov) rozdelením obrazovky na mriežku riadkov (rows) a stĺpcov (columns). Grid je založený na rozložení s 12 stĺpcami, podobne ako mnohé iné populárne grid systémy." />
+  <meta
+    name="description"
+    content="Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí(layoutov) rozdelením obrazovky na mriežku riadkov (rows) a stĺpcov (columns). Grid je založený na rozložení s 12 stĺpcami, podobne ako mnohé iné populárne grid systémy."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -25,7 +29,7 @@ Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí(layou
 
 **Nesting** : Vývojári môžu vkladať viacero elementov wj-grid do seba a vytvárať tak zložitejšie rozvrhnutia. To umožňuje väčšiu flexibilitu pri usporiadaní obsahu.
 
-**Breakpointy**: Systém mriežky Grid podporuje rôzne body zlomu pre rôzne veľkosti obrazoviek, ako sú telefóny, tablety a stolové počítače. 
+**Breakpointy**: Systém mriežky Grid podporuje rôzne body zlomu pre rôzne veľkosti obrazoviek, ako sú telefóny, tablety a stolové počítače.
 
 **Odsadené stĺpce (Offset)**: Vývojári môžu stĺpce odsadiť a vytvoriť tak vizuálne rozdiely v rozložení. To je užitočné pri vytváraní návrhov s rozloženým alebo asymetrickým usporiadaním.
 
@@ -34,8 +38,6 @@ Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí(layou
 ## Predvolené Breakpointy
 
 V tabuľke nižšie nájdete predvolené breakpointy gridu.
-
-
 
 ## Základné použitie
 
@@ -47,12 +49,11 @@ import Basic from '@site/static/usage/v1/grid/basic/index.md';
 
 ## Veľkosť stĺpcov: auto
 
-Nastavením `size` na `auto` sa  stĺpec prispôsobuje šírke svojho obsahu a susedné stĺpce automaticky upravia svoju šírku tak, aby vyplnili zostávajúce miesto v riadku.
+Nastavením `size` na `auto` sa stĺpec prispôsobuje šírke svojho obsahu a susedné stĺpce automaticky upravia svoju šírku tak, aby vyplnili zostávajúce miesto v riadku.
 
 import SizeAuto from '@site/static/usage/v1/grid/size-auto/index.md';
 
 <SizeAuto />
-
 
 ## Špecifická veľkosť stĺpcov
 
@@ -65,7 +66,6 @@ import Size from '@site/static/usage/v1/grid/size/index.md';
 ## Responzívna veľkosť stĺpcov
 
 Atribút `size` je možné nastaviť aj špecifickým breakpointom pridaním jeho prefixu. V tomto prípade sa veľkosť stĺpca upraví až po dosiahnutí nastaveného breakpointu.
-
 
 import SizeResponsive from '@site/static/usage/v1/grid/size-responsive/index.md';
 
@@ -135,7 +135,7 @@ import HorizontalAlignment from '@site/static/usage/v1/grid/horizontal-alignment
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

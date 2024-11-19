@@ -51,7 +51,7 @@ import Custom from '@site/static/usage/v1/icon/custom/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

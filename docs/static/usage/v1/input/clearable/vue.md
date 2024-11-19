@@ -3,7 +3,6 @@
   <wje-input variant="standard" label="Default input" class="example" clearable></wje-input>
 </template>
 
-
 <script lang="ts">
   import { Input } from '@elements/vue';
   import { defineComponent } from 'vue';

@@ -1,6 +1,5 @@
-import Dropdown from "./dropdown.element.js";
+import Dropdown from './dropdown.element.js';
 
 export default Dropdown;
 
-Dropdown.define("wje-dropdown", Dropdown);
-
+Dropdown.define('wje-dropdown', Dropdown);

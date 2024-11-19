@@ -11,7 +11,7 @@ const isV3 = /^\/docs\/v3\//;
 const renderer = new marked.Renderer();
 renderer.heading = heading;
 renderer.code = code;
-renderer.link = function(href: string | null, title: string | null, text: string) {
+renderer.link = function (href: string | null, title: string | null, text: string) {
   const { baseUrl } = this.options;
 
   if (baseUrl !== undefined && href !== null) {

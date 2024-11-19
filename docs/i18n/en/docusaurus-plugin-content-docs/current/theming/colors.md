@@ -36,7 +36,7 @@ Adjusting the value of one of the colors of the color palette is achieved by set
 
 ```css
 :root {
-  --wje-color-primary: #FFd945;
+  --wje-color-primary: #ffd945;
 }
 ```
 
@@ -48,7 +48,7 @@ To incorporate a new color into the color palette, start by creating its CSS var
 
 ```css
 :root {
-  --wje-color-coral: #FF7F50;
+  --wje-color-coral: #ff7f50;
 }
 ```
 

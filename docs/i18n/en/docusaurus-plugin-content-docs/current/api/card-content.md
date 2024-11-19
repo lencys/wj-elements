@@ -36,7 +36,7 @@ For more information on using Card Content, navigate to the [**Card**](../card) 
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

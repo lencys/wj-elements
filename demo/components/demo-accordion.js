@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -136,4 +136,4 @@ export default class DemoAccordion extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-accordion") || window.customElements.define("demo-accordion", DemoAccordion);
+customElements.get('demo-accordion') || window.customElements.define('demo-accordion', DemoAccordion);

@@ -1,6 +1,7 @@
 ---
-title: "Header"
+title: 'Header'
 ---
+
 import Props from '@ionic-internal/component-api/v1/header/props.md';
 import Events from '@ionic-internal/component-api/v1/header/events.md';
 import Methods from '@ionic-internal/component-api/v1/header/methods.md';
@@ -10,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/header/slots.md';
 
 <head>
   <title>Header | Element určený na tvorbu layoutov</title>
-  <meta name="description" content="Header je súčasťou elementov určených na tvorbu layoutov a zobrazuje sa v hornej časti. Používa sa väčšinou na zobrazenie navigácie, loga a pod." />
+  <meta
+    name="description"
+    content="Header je súčasťou elementov určených na tvorbu layoutov a zobrazuje sa v hornej časti. Používa sa väčšinou na zobrazenie navigácie, loga a pod."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -35,7 +39,7 @@ Pre informácie o použití **Header** elementu sa presuňte do dokumentácie [*
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

@@ -3,7 +3,7 @@ import React from 'react';
 import { CopyButton } from '@elements/react';
 
 function Example() {
-  return
+  return;
   <wje-carousel pagination loop navigation>
     <wje-carousel-item>
       <wje-img src="https://picsum.photos/500/375?i=1"></wje-img>

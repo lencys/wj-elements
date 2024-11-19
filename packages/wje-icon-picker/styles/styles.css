@@ -8,7 +8,7 @@
   --wje-icon-picker-border-width: 1px;
   --wje-icon-picker-border-style: solid;
   --wje-icon-picker-border-color: var(--wje-border-color);
-  --wje-icon-picker-padding: .25rem;
+  --wje-icon-picker-padding: 0.25rem;
   padding: 0 1rem;
 }
 
@@ -26,7 +26,9 @@
 .picker {
   width: 320px;
   height: 271px;
-  box-shadow: 0 0 5px rgba(0,0,0,.05), 0 5px 20px rgba(0,0,0,.1);
+  box-shadow:
+    0 0 5px rgba(0, 0, 0, 0.05),
+    0 5px 20px rgba(0, 0, 0, 0.1);
   border-radius: var(--wje-icon-picker-radius);
   border-width: var(--wje-icon-picker-border-width);
   border-style: var(--wje-icon-picker-border-style);
@@ -39,8 +41,8 @@
 .icon-items {
   --icon-min-width: 2rem;
   display: grid;
-  grid-gap: .5rem;
-  grid-template-columns: repeat(auto-fit,minmax(var(--icon-min-width),1fr));
+  grid-gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(var(--icon-min-width), 1fr));
 }
 
 .icon-item {
@@ -50,13 +52,13 @@
   justify-content: center;
   text-align: center;
   color: inherit;
-  padding: .25rem;
+  padding: 0.25rem;
   min-height: var(--wje-icon-picker-icon-size);
   min-width: var(--wje-icon-picker-icon-size);
   text-decoration: none;
 
   &:hover {
-    border-radius: .25rem;
+    border-radius: 0.25rem;
     background: var(--wje-border-color);
   }
 }

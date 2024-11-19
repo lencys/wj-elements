@@ -43,7 +43,7 @@
   //#endregion
 
   scroll-behavior: smooth;
-  --docsearch-primary-color: var(--ifm-link-color)!important;
+  --docsearch-primary-color: var(--ifm-link-color) !important;
 }
 
 html[data-theme='light'] {
@@ -91,8 +91,7 @@ html[data-theme='dark'] {
   --ifm-menu-link-sublist-icon-filter: invert(100%);
   --wj-box-shadow-large: var(--token-primary-bg-c);
   --wj-card-background: var(--ifm-menu-color-background-active);
-  --docsearch-modal-background: var(--token-primary-bg-c)!important;
-
+  --docsearch-modal-background: var(--token-primary-bg-c) !important;
 }
 
 html {
@@ -138,7 +137,7 @@ figure {
   margin: 0;
 }
 
-figure>* {
+figure > * {
   display: block;
   margin: 0 auto;
 }
@@ -178,7 +177,6 @@ iframe {
   }
 }
 
-
 .cordova-ee-card {
   max-width: 100%;
 }
@@ -206,7 +204,7 @@ docs-cards {
     color: #fff;
     border-radius: 50%;
     background: rgb(63, 94, 251);
-    background: linear-gradient(90deg, #3A0087ee 0%, #AE40FDee 100%);
+    background: linear-gradient(90deg, #3a0087ee 0%, #ae40fdee 100%);
   }
 
   wj-icon svg {
@@ -217,18 +215,15 @@ docs-cards {
     --wj-color-base: var(--token-secondary-bg-c);
     box-shadow: var(--wj-box-shadow-large) 0 4px 16px;
     background-color: var(--wj-card-background);
-
   }
   wj-card:hover {
-   
     filter: brightness(110%);
-
   }
   wj-card-title {
     color: var(--markdown-text-intro-c);
   }
   wj-card-content p {
-    font-size: 0.75rem!important;
+    font-size: 0.75rem !important;
     color: var(--markdown-text-intro-c);
   }
   wj-card-content p {
@@ -237,24 +232,26 @@ docs-cards {
 }
 ul.table-of-contents {
   a.table-of-contents__link--active {
-  color: var(--ifm-link-color) !important;
+    color: var(--ifm-link-color) !important;
   }
   a.table-of-contents__link:hover {
     color: var(--ifm-link-color) !important;
   }
 }
-.DocSearch-Search-Icon, .DocSearch-Reset {
-  color: var(--docsearch-text-color)!important;
+.DocSearch-Search-Icon,
+.DocSearch-Reset {
+  color: var(--docsearch-text-color) !important;
 }
-.DocSearch-Logo svg path, .DocSearch-Logo svg rect {
+.DocSearch-Logo svg path,
+.DocSearch-Logo svg rect {
   fill: var(--ifm-link-color);
-
 }
 table {
   width: 100%;
   table-layout: fixed;
 }
-table tr th:nth-child(1), table tr td:nth-child(1) {
+table tr th:nth-child(1),
+table tr td:nth-child(1) {
   width: 30%;
 }
 
@@ -265,5 +262,5 @@ table tr th:nth-child(1), table tr td:nth-child(1) {
 
 .DocSearch-Footer {
   align-items: center;
-  background: transparent!important;
+  background: transparent !important;
 }

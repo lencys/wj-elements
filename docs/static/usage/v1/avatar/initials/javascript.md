@@ -1,3 +1,3 @@
 ```html
-  <wje-avatar label="Lukáš Ondrejček" initials></wje-avatar>
+<wje-avatar label="Lukáš Ondrejček" initials></wje-avatar>
 ```

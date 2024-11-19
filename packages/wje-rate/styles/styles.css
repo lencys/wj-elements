@@ -8,7 +8,7 @@
 }
 
 :host([readonly]) .wje-rate-icon {
-    cursor: default;
+  cursor: default;
 }
 
 .native-rate {
@@ -43,6 +43,5 @@ wje-icon:last-child {
 
 :host([disabled]) .native-rate {
   pointer-events: none;
-  opacity: .5;
+  opacity: 0.5;
 }
-

@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/label/slots.md';
 
 <head>
   <title>Label | Element for adding descriptive text content to components</title>
-  <meta name="description" content="Label je element, ktorý sa používa na pridávanie popisného textového obsahu do komponentov. Label sa môže použiť napríklad vo vnútri elementov Item, Card alebo tiež v elemente Badge a ďalších." />
+  <meta
+    name="description"
+    content="Label je element, ktorý sa používa na pridávanie popisného textového obsahu do komponentov. Label sa môže použiť napríklad vo vnútri elementov Item, Card alebo tiež v elemente Badge a ďalších."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -32,7 +35,7 @@ The position of the label inside the element can be inline, fixed, stacked or fl
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

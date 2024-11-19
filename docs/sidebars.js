@@ -34,7 +34,7 @@ module.exports = {
         'theming/dark-mode',
         'theming/animations',
       ],
-    }
+    },
   ],
 
   api: [
@@ -84,7 +84,14 @@ module.exports = {
       type: 'category',
       label: 'Card',
       collapsed: false,
-      items: ['api/card', 'api/card-content', 'api/card-controls', 'api/card-header', 'api/card-subtitle', 'api/card-title'],
+      items: [
+        'api/card',
+        'api/card-content',
+        'api/card-controls',
+        'api/card-header',
+        'api/card-subtitle',
+        'api/card-title',
+      ],
     },
     {
       type: 'category',
@@ -138,13 +145,13 @@ module.exports = {
       type: 'category',
       label: 'FileUpload',
       collapsed: false,
-      items: [ 'api/file-upload', 'api/file-upload-item'],
+      items: ['api/file-upload', 'api/file-upload-item'],
     },
     {
       type: 'category',
       label: 'FormatDigital',
       collapsed: false,
-      items: [ 'api/format-digital'],
+      items: ['api/format-digital'],
     },
     {
       type: 'category',
@@ -162,19 +169,19 @@ module.exports = {
       type: 'category',
       label: 'Icon picker',
       collapsed: false,
-      items: ['api/icon-picker']
+      items: ['api/icon-picker'],
     },
     {
       type: 'category',
       label: 'Image',
       collapsed: false,
-      items: ['api/img']
+      items: ['api/img'],
     },
     {
       type: 'category',
       label: 'Image Comparer',
       collapsed: false,
-      items: ['api/img-comparer']
+      items: ['api/img-comparer'],
     },
     {
       type: 'category',
@@ -186,19 +193,19 @@ module.exports = {
       type: 'category',
       label: 'Item',
       collapsed: false,
-      items: [ 'api/item'],
+      items: ['api/item'],
     },
     {
       type: 'category',
       label: 'Label',
       collapsed: false,
-      items: [ 'api/label'],
+      items: ['api/label'],
     },
     {
       type: 'category',
       label: 'Layout',
       collapsed: false,
-      items: ['api/layout', 'api/aside', 'api/main', 'api/container','api/footer', 'api/header'],
+      items: ['api/layout', 'api/aside', 'api/main', 'api/container', 'api/footer', 'api/header'],
     },
     {
       type: 'category',
@@ -236,7 +243,7 @@ module.exports = {
       collapsed: false,
       items: ['api/radio', 'api/radio-group'],
     },
-        {
+    {
       type: 'category',
       label: 'RelativeTime',
       collapsed: false,
@@ -276,13 +283,13 @@ module.exports = {
       type: 'category',
       label: 'Tabs',
       collapsed: false,
-      items: ['api/tab-group', 'api/tab', 'api/tab-panel' ],
+      items: ['api/tab-group', 'api/tab', 'api/tab-panel'],
     },
     {
       type: 'category',
       label: 'Textarea',
       collapsed: false,
-      items: ['api/textarea' ],
+      items: ['api/textarea'],
     },
     {
       type: 'category',
@@ -316,4 +323,3 @@ module.exports = {
     },
   ],
 };
-

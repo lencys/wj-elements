@@ -1,5 +1,3 @@
-
-
 .colorPalette {
   display: block;
   padding-top: 20px;
@@ -8,19 +6,18 @@
   /** primary **/
 
   .color {
-    padding: .6rem;
+    padding: 0.6rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     border-radius: 4px;
-    --wj-color-primary: #7252D3;
-    --wj-color-complete: #0072EC;
-    --wj-color-success: #19AD79;
-    --wj-color-warning: #FFd945;
-    --wj-color-danger: #D83C31;
-    --wj-color-info: #3B4752;
+    --wj-color-primary: #7252d3;
+    --wj-color-complete: #0072ec;
+    --wj-color-success: #19ad79;
+    --wj-color-warning: #ffd945;
+    --wj-color-danger: #d83c31;
+    --wj-color-info: #3b4752;
     --wj-color-menu: #2b303b;
-
   }
 }

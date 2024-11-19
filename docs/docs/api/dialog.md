@@ -1,6 +1,7 @@
 ---
-title: "Dialog"
+title: 'Dialog'
 ---
+
 import Props from '@ionic-internal/component-api/v1/dialog/props.md';
 import Events from '@ionic-internal/component-api/v1/dialog/events.md';
 import Methods from '@ionic-internal/component-api/v1/dialog/methods.md';
@@ -10,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/dialog/slots.md';
 
 <head>
   <title>Dialog | Dialógové okno s prispôsobiteľným obsahom</title>
-  <meta name="description" content="Element Dialog zobrazuje dialógové okno s prispôsobiteľným obsahom. Je možné ho využiť napríklad na jednoduché zobrazenie informácie používateľovi alebo tiež vyžiadať jeho potvrdenie alebo zrušenie ním vykonanej akcie." />
+  <meta
+    name="description"
+    content="Element Dialog zobrazuje dialógové okno s prispôsobiteľným obsahom. Je možné ho využiť napríklad na jednoduché zobrazenie informácie používateľovi alebo tiež vyžiadať jeho potvrdenie alebo zrušenie ním vykonanej akcie."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -30,7 +34,7 @@ import Basic from '@site/static/usage/v1/dialog/basic/index.md';
 
 ### Placement (Umiestnenie)
 
-Vlastnosť `placement` určuje umiestnenie dialógového okna na obrazovke. Predvolená je hodnota slide-up. Ďalšie možnosti sú `"stick-up"`, `"fill-in"`, `"slide-left"`, `"slide-right"`. 
+Vlastnosť `placement` určuje umiestnenie dialógového okna na obrazovke. Predvolená je hodnota slide-up. Ďalšie možnosti sú `"stick-up"`, `"fill-in"`, `"slide-left"`, `"slide-right"`.
 
 import Placement from '@site/static/usage/v1/dialog/placement/index.md';
 
@@ -38,8 +42,7 @@ import Placement from '@site/static/usage/v1/dialog/placement/index.md';
 
 ### Size (Veľkosť)
 
-Vlastnosť `size` upravuje veľkosť dialógového okna na obrazovke. Predvolená je veľkosť `"small"`. Ďalšie možnosti sú `"medium"`, `"large"` a `"ex-large"`. 
-
+Vlastnosť `size` upravuje veľkosť dialógového okna na obrazovke. Predvolená je veľkosť `"small"`. Ďalšie možnosti sú `"medium"`, `"large"` a `"ex-large"`.
 
 ## Atribúty a Vlastnosti
 
@@ -51,7 +54,7 @@ Vlastnosť `size` upravuje veľkosť dialógového okna na obrazovke. Predvolen�
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

@@ -1,191 +1,191 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-gb">
-<head>
-  <meta charset="UTF-8" />
-  <title>WJ ELements</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script type="module" src="./demo/assets/js/server.js" async></script>
+  <head>
+    <meta charset="UTF-8" />
+    <title>WJ ELements</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="module" src="./demo/assets/js/server.js" async></script>
 
-  <script type="module" src="./demo/assets/js/demo.js"></script>
-  <script type="module" src="./demo/assets/translations/ru.js"></script>
+    <script type="module" src="./demo/assets/js/demo.js"></script>
+    <script type="module" src="./demo/assets/translations/ru.js"></script>
 
-  <link rel="stylesheet" href="./dist/light.css" />
-  <link rel="stylesheet" href="./dist/dark.css" />
-  <link rel="stylesheet" href="./dist/styles.css" />
-  <link rel="stylesheet" href="./demo/assets/css/demo.css" />
-  <style>
-    body {
-      backface-visibility: hidden;
-    }
+    <link rel="stylesheet" href="./dist/light.css" />
+    <link rel="stylesheet" href="./dist/dark.css" />
+    <link rel="stylesheet" href="./dist/styles.css" />
+    <link rel="stylesheet" href="./demo/assets/css/demo.css" />
+    <style>
+      body {
+        backface-visibility: hidden;
+      }
 
-    :not(:defined) {
-      visibility: hidden;
-    }
-  </style>
-</head>
-<body>
-  <wje-router outlet="wje-router-outlet">
-    <wje-route name="accordion" component="/demo/components/demo-accordion.js"></wje-route>
-    <wje-route name="animation" component="/demo/components/demo-animation.js"></wje-route>
-    <wje-route name="avatar" component="/demo/components/demo-avatar.js"></wje-route>
-    <wje-route name="badge" component="/demo/components/demo-badge.js"></wje-route>
-    <wje-route name="breadcrumb" component="/demo/components/demo-breadcrumb.js"></wje-route>
-    <wje-route name="button" component="/demo/components/demo-button.js"></wje-route>
-    <wje-route name="button-group" component="/demo/components/demo-button-group.js"></wje-route>
-    <wje-route name="card" component="/demo/components/demo-card.js"></wje-route>
-    <wje-route name="carousel" component="/demo/components/demo-carousel.js"></wje-route>
-    <wje-route name="checkbox" component="/demo/components/demo-checkbox.js"></wje-route>
-    <wje-route name="chip" component="/demo/components/demo-chip.js"></wje-route>
-    <wje-route name="color-picker" component="/demo/components/demo-color-picker.js"></wje-route>
-    <wje-route name="copy-button" component="/demo/components/demo-copy-button.js"></wje-route>
-    <wje-route name="dialog" component="/demo/components/demo-dialog.js"></wje-route>
-    <wje-route name="dropdown" component="/demo/components/demo-dropdown.js"></wje-route>
-    <wje-route name="file-upload" component="/demo/components/demo-file-upload.js"></wje-route>
-    <wje-route name="file-upload-item" component="/demo/components/demo-file-upload-item.js"></wje-route>
-    <wje-route name="form" component="/demo/components/demo-form.js"></wje-route>
-    <wje-route name="format-digital" component="/demo/components/demo-format-digital.js"></wje-route>
-    <wje-route name="grid" component="/demo/components/demo-grid.js"></wje-route>
-    <wje-route name="icons" component="/demo/components/demo-icons.js"></wje-route>
-    <wje-route name="icon-picker" component="/demo/components/demo-icon-picker.js"></wje-route>
-    <wje-route name="img" component="/demo/components/demo-img.js"></wje-route>
-    <wje-route name="img-comparer" component="/demo/components/demo-img-comparer.js"></wje-route>
-    <wje-route name="infinite-scroll" component="/demo/components/demo-infinite-scroll.js"></wje-route>
-    <wje-route name="input" component="/demo/components/demo-input.js"></wje-route>
-    <wje-route name="input-file" component="/demo/components/demo-input-file.js"></wje-route>
-    <wje-route name="item" component="/demo/components/demo-item.js"></wje-route>
-    <wje-route name="kanban" component="/demo/components/demo-kanban.js"></wje-route>
-    <wje-route name="layout" component="/demo/components/demo-layout.js"></wje-route>
-    <wje-route name="list" component="/demo/components/demo-list.js"></wje-route>
-    <wje-route name="masonry" component="/demo/components/demo-masonry.js"></wje-route>
-    <wje-route name="menu" component="/demo/components/demo-menu.js"></wje-route>
-    <wje-route name="nav" component="/demo/components/demo-nav.js"></wje-route>
-    <wje-route name="qr" component="/demo/components/demo-qr-code.js"></wje-route>
-    <wje-route name="radio" component="/demo/components/demo-radio.js"></wje-route>
-    <wje-route name="rate" component="/demo/components/demo-rate.js"></wje-route>
-    <wje-route name="relative-time" component="/demo/components/demo-relative-time.js"></wje-route>
-    <wje-route name="reorder" component="/demo/components/demo-reorder.js"></wje-route>
-    <wje-route name="reorder-handle" component="/demo/components/demo-reorder-handle.js"></wje-route>
-    <wje-route name="orgchart" component="/demo/components/demo-orgchart.js"></wje-route>
-    <wje-route name="popup" component="/demo/components/demo-popup.js"></wje-route>
-    <wje-route name="progress-bar" component="/demo/components/demo-progress-bar.js"></wje-route>
-    <wje-route name="select" component="/demo/components/demo-select.js"></wje-route>
-    <wje-route name="slider" component="/demo/components/demo-slider.js"></wje-route>
-    <wje-route name="sliding-container" component="/demo/components/demo-sliding-container.js"></wje-route>
-    <wje-route name="split-view" component="/demo/components/demo-split-view.js"></wje-route>
-    <wje-route name="status" component="/demo/components/demo-status.js"></wje-route>
-    <wje-route name="stepper" component="/demo/components/demo-stepper.js"></wje-route>
-    <wje-route name="tab" component="/demo/components/demo-tab.js"></wje-route>
-    <wje-route name="table" component="/demo/components/demo-table.js"></wje-route>
-    <wje-route name="textarea" component="/demo/components/demo-textarea.js"></wje-route>
-    <wje-route name="thumbnail" component="/demo/components/demo-thumbnail.js"></wje-route>
-    <wje-route name="timeline" component="/demo/components/demo-timeline.js"></wje-route>
-    <wje-route name="toast" component="/demo/components/demo-toast.js"></wje-route>
-    <wje-route name="toggle" component="/demo/components/demo-toggle.js"></wje-route>
-    <wje-route name="tooltip" component="/demo/components/demo-tooltip.js"></wje-route>
-    <wje-route name="a" component="" breadcrumb="Ačko">
-      <wje-route name="b" component="" breadcrumb="Béčko">
-        <wje-route name="toolbar" component="/demo/components/demo-toolbar.js" breadcrumb="Toolbar"></wje-route>
+      :not(:defined) {
+        visibility: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <wje-router outlet="wje-router-outlet">
+      <wje-route name="accordion" component="/demo/components/demo-accordion.js"></wje-route>
+      <wje-route name="animation" component="/demo/components/demo-animation.js"></wje-route>
+      <wje-route name="avatar" component="/demo/components/demo-avatar.js"></wje-route>
+      <wje-route name="badge" component="/demo/components/demo-badge.js"></wje-route>
+      <wje-route name="breadcrumb" component="/demo/components/demo-breadcrumb.js"></wje-route>
+      <wje-route name="button" component="/demo/components/demo-button.js"></wje-route>
+      <wje-route name="button-group" component="/demo/components/demo-button-group.js"></wje-route>
+      <wje-route name="card" component="/demo/components/demo-card.js"></wje-route>
+      <wje-route name="carousel" component="/demo/components/demo-carousel.js"></wje-route>
+      <wje-route name="checkbox" component="/demo/components/demo-checkbox.js"></wje-route>
+      <wje-route name="chip" component="/demo/components/demo-chip.js"></wje-route>
+      <wje-route name="color-picker" component="/demo/components/demo-color-picker.js"></wje-route>
+      <wje-route name="copy-button" component="/demo/components/demo-copy-button.js"></wje-route>
+      <wje-route name="dialog" component="/demo/components/demo-dialog.js"></wje-route>
+      <wje-route name="dropdown" component="/demo/components/demo-dropdown.js"></wje-route>
+      <wje-route name="file-upload" component="/demo/components/demo-file-upload.js"></wje-route>
+      <wje-route name="file-upload-item" component="/demo/components/demo-file-upload-item.js"></wje-route>
+      <wje-route name="form" component="/demo/components/demo-form.js"></wje-route>
+      <wje-route name="format-digital" component="/demo/components/demo-format-digital.js"></wje-route>
+      <wje-route name="grid" component="/demo/components/demo-grid.js"></wje-route>
+      <wje-route name="icons" component="/demo/components/demo-icons.js"></wje-route>
+      <wje-route name="icon-picker" component="/demo/components/demo-icon-picker.js"></wje-route>
+      <wje-route name="img" component="/demo/components/demo-img.js"></wje-route>
+      <wje-route name="img-comparer" component="/demo/components/demo-img-comparer.js"></wje-route>
+      <wje-route name="infinite-scroll" component="/demo/components/demo-infinite-scroll.js"></wje-route>
+      <wje-route name="input" component="/demo/components/demo-input.js"></wje-route>
+      <wje-route name="input-file" component="/demo/components/demo-input-file.js"></wje-route>
+      <wje-route name="item" component="/demo/components/demo-item.js"></wje-route>
+      <wje-route name="kanban" component="/demo/components/demo-kanban.js"></wje-route>
+      <wje-route name="layout" component="/demo/components/demo-layout.js"></wje-route>
+      <wje-route name="list" component="/demo/components/demo-list.js"></wje-route>
+      <wje-route name="masonry" component="/demo/components/demo-masonry.js"></wje-route>
+      <wje-route name="menu" component="/demo/components/demo-menu.js"></wje-route>
+      <wje-route name="nav" component="/demo/components/demo-nav.js"></wje-route>
+      <wje-route name="qr" component="/demo/components/demo-qr-code.js"></wje-route>
+      <wje-route name="radio" component="/demo/components/demo-radio.js"></wje-route>
+      <wje-route name="rate" component="/demo/components/demo-rate.js"></wje-route>
+      <wje-route name="relative-time" component="/demo/components/demo-relative-time.js"></wje-route>
+      <wje-route name="reorder" component="/demo/components/demo-reorder.js"></wje-route>
+      <wje-route name="reorder-handle" component="/demo/components/demo-reorder-handle.js"></wje-route>
+      <wje-route name="orgchart" component="/demo/components/demo-orgchart.js"></wje-route>
+      <wje-route name="popup" component="/demo/components/demo-popup.js"></wje-route>
+      <wje-route name="progress-bar" component="/demo/components/demo-progress-bar.js"></wje-route>
+      <wje-route name="select" component="/demo/components/demo-select.js"></wje-route>
+      <wje-route name="slider" component="/demo/components/demo-slider.js"></wje-route>
+      <wje-route name="sliding-container" component="/demo/components/demo-sliding-container.js"></wje-route>
+      <wje-route name="split-view" component="/demo/components/demo-split-view.js"></wje-route>
+      <wje-route name="status" component="/demo/components/demo-status.js"></wje-route>
+      <wje-route name="stepper" component="/demo/components/demo-stepper.js"></wje-route>
+      <wje-route name="tab" component="/demo/components/demo-tab.js"></wje-route>
+      <wje-route name="table" component="/demo/components/demo-table.js"></wje-route>
+      <wje-route name="textarea" component="/demo/components/demo-textarea.js"></wje-route>
+      <wje-route name="thumbnail" component="/demo/components/demo-thumbnail.js"></wje-route>
+      <wje-route name="timeline" component="/demo/components/demo-timeline.js"></wje-route>
+      <wje-route name="toast" component="/demo/components/demo-toast.js"></wje-route>
+      <wje-route name="toggle" component="/demo/components/demo-toggle.js"></wje-route>
+      <wje-route name="tooltip" component="/demo/components/demo-tooltip.js"></wje-route>
+      <wje-route name="a" component="" breadcrumb="Ačko">
+        <wje-route name="b" component="" breadcrumb="Béčko">
+          <wje-route name="toolbar" component="/demo/components/demo-toolbar.js" breadcrumb="Toolbar"></wje-route>
+        </wje-route>
       </wje-route>
-    </wje-route>
-  </wje-router>
+    </wje-router>
 
-  <wje-container vertical id="app">
-    <wje-header sticky>
-      <wje-img src="./demo/assets/img/logo-light.png" id="logo-light" alt="WJ Elements" class="logo"></wje-img>
-      <wje-img src="./demo/assets/img/logo-dark.png" id="logo-dark" alt="WJ Elements" class="logo"></wje-img>
-      <wje-menu-button id="open" content-id="sidebar">
-        <wje-button variant="link" stop-propagation="false"><wje-icon name="menu"></wje-icon></wje-button>
-      </wje-menu-button>
-
-      <wje-button fill="link" toggle="on" class="dark-light-mode">
-        <wje-icon name="sun" slot="toggle" state="on"></wje-icon>
-        <wje-icon name="moon" slot="toggle" state="off"></wje-icon>
-      </wje-button>
-    </wje-header>
-    <wje-container>
-      <wje-aside id="sidebar" width="240px" top="60px" variant="top-start" fixed>
-        <wje-menu-button id="close" content-id="sidebar">
-          <wje-button variant="link" stop-propagation="false"><wje-icon name="x"></wje-icon></wje-button>
+    <wje-container vertical id="app">
+      <wje-header sticky>
+        <wje-img src="./demo/assets/img/logo-light.png" id="logo-light" alt="WJ Elements" class="logo"></wje-img>
+        <wje-img src="./demo/assets/img/logo-dark.png" id="logo-dark" alt="WJ Elements" class="logo"></wje-img>
+        <wje-menu-button id="open" content-id="sidebar">
+          <wje-button variant="link" stop-propagation="false"><wje-icon name="menu"></wje-icon></wje-button>
         </wje-menu-button>
-        <wje-menu id="navigation" variant="nav" active>
-          <wje-menu-item route="accordion">Accordion</wje-menu-item>
-          <wje-menu-item route="animation">Animation</wje-menu-item>
-          <wje-menu-item route="avatar">Avatar</wje-menu-item>
-          <wje-menu-item route="badge">Badge</wje-menu-item>
-          <wje-menu-item route="breadcrumb">Breadcrumb</wje-menu-item>
-          <wje-menu-item route="button">Button</wje-menu-item>
-          <wje-menu-item route="button-group">Button group</wje-menu-item>
-          <wje-menu-item route="card">Card</wje-menu-item>
-          <wje-menu-item route="carousel">Carousel</wje-menu-item>
-          <wje-menu-item route="checkbox">Checkbox</wje-menu-item>
-          <wje-menu-item route="chip">Chip</wje-menu-item>
-          <wje-menu-item route="color-picker">Color picker</wje-menu-item>
-          <wje-menu-item route="copy-button">Copy button</wje-menu-item>
-          <wje-menu-item route="dialog">Dialog</wje-menu-item>
-          <wje-menu-item route="dropdown">Dropdown</wje-menu-item>
-          <wje-menu-item route="file-upload">File upload</wje-menu-item>
-          <wje-menu-item route="file-upload-item">File upload item</wje-menu-item>
-          <wje-menu-item route="form">Form</wje-menu-item>
-          <wje-menu-item route="format-digital">Format digital</wje-menu-item>
-          <wje-menu-item route="grid">Grid</wje-menu-item>
-          <wje-menu-item route="icons">Icon</wje-menu-item>
-          <wje-menu-item route="icon-picker">Icon Picker</wje-menu-item>
-          <wje-menu-item route="img">Image</wje-menu-item>
-          <wje-menu-item route="img-comparer">Image comparer</wje-menu-item>
-          <wje-menu-item route="infinite-scroll">Infinite scroll</wje-menu-item>
-          <wje-menu-item route="input">Input</wje-menu-item>
-          <wje-menu-item route="input-file">Input file</wje-menu-item>
-          <wje-menu-item route="item">Item</wje-menu-item>
-          <wje-menu-item route="kanban">Kanban</wje-menu-item>
-          <wje-menu-item route="layout">Layout</wje-menu-item>
-          <wje-menu-item route="list">List</wje-menu-item>
-          <wje-menu-item route="masonry">Masonry</wje-menu-item>
-          <wje-menu-item route="menu">Menu</wje-menu-item>
-          <wje-menu-item route="nav">Nav</wje-menu-item>
-          <wje-menu-item route="qr">QR</wje-menu-item>
-          <wje-menu-item route="radio">Radio</wje-menu-item>
-          <wje-menu-item route="rate">Rate</wje-menu-item>
-          <wje-menu-item route="relative-time">Relative time</wje-menu-item>
-          <wje-menu-item route="reorder">Reorder</wje-menu-item>
-          <wje-menu-item route="reorder-handle">Reorder handle</wje-menu-item>
-          <wje-menu-item route="orgchart">Orgchart</wje-menu-item>
-          <wje-menu-item route="progress-bar">Progress bar</wje-menu-item>
-          <wje-menu-item route="select">Select</wje-menu-item>
-          <wje-menu-item route="slider">Slider</wje-menu-item>
-          <wje-menu-item route="sliding-container">Sliding container: EXP.</wje-menu-item>
-          <wje-menu-item route="split-view">Split view</wje-menu-item>
-          <wje-menu-item route="status">Status</wje-menu-item>
-          <wje-menu-item route="stepper">Stepper</wje-menu-item>
-          <wje-menu-item route="tab">Tab</wje-menu-item>
-          <wje-menu-item route="table">!Table</wje-menu-item>
-          <wje-menu-item route="textarea">Textarea</wje-menu-item>
-          <wje-menu-item route="thumbnail">Thumbnail</wje-menu-item>
-          <wje-menu-item route="timeline">Timeline</wje-menu-item>
-          <wje-menu-item route="toast">Toast</wje-menu-item>
-          <wje-menu-item route="toggle">Toggle</wje-menu-item>
-          <wje-menu-item route="tooltip">Tooltip</wje-menu-item>
-          <wje-menu-item route="/a/b/toolbar">Toolbar</wje-menu-item>
-        </wje-menu>
-      </wje-aside>
-      <wje-container indent="240px" vertical>
-        <wje-toolbar sticky style="--wje-toolbar-top: 60px;">
-          <wje-breadcrumbs slot="start">
-            <wje-breadcrumb href="/home"><wje-icon slot="start" name="home"></wje-icon></wje-breadcrumb>
-            <wje-breadcrumb href="/photography">Photography</wje-breadcrumb>
-            <wje-breadcrumb href="/cameras">Cameras</wje-breadcrumb>
-            <wje-breadcrumb href="/film">Film</wje-breadcrumb>
-            <wje-breadcrumb href="/35mm">35 mm</wje-breadcrumb>
-          </wje-breadcrumbs>
-          <wje-toolbar-action slot="end">
-            <wje-button>Create</wje-button>
-            <wje-button>Delete</wje-button>
-          </wje-toolbar-action>
-        </wje-toolbar>
-        <wje-main>
-          <wje-router-outlet animation="fade"></wje-router-outlet>
-        </wje-main>
+
+        <wje-button fill="link" toggle="on" class="dark-light-mode">
+          <wje-icon name="sun" slot="toggle" state="on"></wje-icon>
+          <wje-icon name="moon" slot="toggle" state="off"></wje-icon>
+        </wje-button>
+      </wje-header>
+      <wje-container>
+        <wje-aside id="sidebar" width="240px" top="60px" variant="top-start" fixed>
+          <wje-menu-button id="close" content-id="sidebar">
+            <wje-button variant="link" stop-propagation="false"><wje-icon name="x"></wje-icon></wje-button>
+          </wje-menu-button>
+          <wje-menu id="navigation" variant="nav" active>
+            <wje-menu-item route="accordion">Accordion</wje-menu-item>
+            <wje-menu-item route="animation">Animation</wje-menu-item>
+            <wje-menu-item route="avatar">Avatar</wje-menu-item>
+            <wje-menu-item route="badge">Badge</wje-menu-item>
+            <wje-menu-item route="breadcrumb">Breadcrumb</wje-menu-item>
+            <wje-menu-item route="button">Button</wje-menu-item>
+            <wje-menu-item route="button-group">Button group</wje-menu-item>
+            <wje-menu-item route="card">Card</wje-menu-item>
+            <wje-menu-item route="carousel">Carousel</wje-menu-item>
+            <wje-menu-item route="checkbox">Checkbox</wje-menu-item>
+            <wje-menu-item route="chip">Chip</wje-menu-item>
+            <wje-menu-item route="color-picker">Color picker</wje-menu-item>
+            <wje-menu-item route="copy-button">Copy button</wje-menu-item>
+            <wje-menu-item route="dialog">Dialog</wje-menu-item>
+            <wje-menu-item route="dropdown">Dropdown</wje-menu-item>
+            <wje-menu-item route="file-upload">File upload</wje-menu-item>
+            <wje-menu-item route="file-upload-item">File upload item</wje-menu-item>
+            <wje-menu-item route="form">Form</wje-menu-item>
+            <wje-menu-item route="format-digital">Format digital</wje-menu-item>
+            <wje-menu-item route="grid">Grid</wje-menu-item>
+            <wje-menu-item route="icons">Icon</wje-menu-item>
+            <wje-menu-item route="icon-picker">Icon Picker</wje-menu-item>
+            <wje-menu-item route="img">Image</wje-menu-item>
+            <wje-menu-item route="img-comparer">Image comparer</wje-menu-item>
+            <wje-menu-item route="infinite-scroll">Infinite scroll</wje-menu-item>
+            <wje-menu-item route="input">Input</wje-menu-item>
+            <wje-menu-item route="input-file">Input file</wje-menu-item>
+            <wje-menu-item route="item">Item</wje-menu-item>
+            <wje-menu-item route="kanban">Kanban</wje-menu-item>
+            <wje-menu-item route="layout">Layout</wje-menu-item>
+            <wje-menu-item route="list">List</wje-menu-item>
+            <wje-menu-item route="masonry">Masonry</wje-menu-item>
+            <wje-menu-item route="menu">Menu</wje-menu-item>
+            <wje-menu-item route="nav">Nav</wje-menu-item>
+            <wje-menu-item route="qr">QR</wje-menu-item>
+            <wje-menu-item route="radio">Radio</wje-menu-item>
+            <wje-menu-item route="rate">Rate</wje-menu-item>
+            <wje-menu-item route="relative-time">Relative time</wje-menu-item>
+            <wje-menu-item route="reorder">Reorder</wje-menu-item>
+            <wje-menu-item route="reorder-handle">Reorder handle</wje-menu-item>
+            <wje-menu-item route="orgchart">Orgchart</wje-menu-item>
+            <wje-menu-item route="progress-bar">Progress bar</wje-menu-item>
+            <wje-menu-item route="select">Select</wje-menu-item>
+            <wje-menu-item route="slider">Slider</wje-menu-item>
+            <wje-menu-item route="sliding-container">Sliding container: EXP.</wje-menu-item>
+            <wje-menu-item route="split-view">Split view</wje-menu-item>
+            <wje-menu-item route="status">Status</wje-menu-item>
+            <wje-menu-item route="stepper">Stepper</wje-menu-item>
+            <wje-menu-item route="tab">Tab</wje-menu-item>
+            <wje-menu-item route="table">!Table</wje-menu-item>
+            <wje-menu-item route="textarea">Textarea</wje-menu-item>
+            <wje-menu-item route="thumbnail">Thumbnail</wje-menu-item>
+            <wje-menu-item route="timeline">Timeline</wje-menu-item>
+            <wje-menu-item route="toast">Toast</wje-menu-item>
+            <wje-menu-item route="toggle">Toggle</wje-menu-item>
+            <wje-menu-item route="tooltip">Tooltip</wje-menu-item>
+            <wje-menu-item route="/a/b/toolbar">Toolbar</wje-menu-item>
+          </wje-menu>
+        </wje-aside>
+        <wje-container indent="240px" vertical>
+          <wje-toolbar sticky style="--wje-toolbar-top: 60px;">
+            <wje-breadcrumbs slot="start">
+              <wje-breadcrumb href="/home"><wje-icon slot="start" name="home"></wje-icon></wje-breadcrumb>
+              <wje-breadcrumb href="/photography">Photography</wje-breadcrumb>
+              <wje-breadcrumb href="/cameras">Cameras</wje-breadcrumb>
+              <wje-breadcrumb href="/film">Film</wje-breadcrumb>
+              <wje-breadcrumb href="/35mm">35 mm</wje-breadcrumb>
+            </wje-breadcrumbs>
+            <wje-toolbar-action slot="end">
+              <wje-button>Create</wje-button>
+              <wje-button>Delete</wje-button>
+            </wje-toolbar-action>
+          </wje-toolbar>
+          <wje-main>
+            <wje-router-outlet animation="fade"></wje-router-outlet>
+          </wje-main>
+        </wje-container>
       </wje-container>
     </wje-container>
-  </wje-container>
-</body>
+  </body>
 </html>

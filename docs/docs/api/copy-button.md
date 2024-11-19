@@ -1,6 +1,7 @@
 ---
-title: "Copy button"
+title: 'Copy button'
 ---
+
 import Props from '@ionic-internal/component-api/v1/copy-button/props.md';
 import Events from '@ionic-internal/component-api/v1/copy-button/events.md';
 import Methods from '@ionic-internal/component-api/v1/copy-button/methods.md';
@@ -10,14 +11,17 @@ import Slots from '@ionic-internal/component-api/v1/copy-button/slots.md';
 
 <head>
   <title>Copy button | Skopírovanie do clipboardu na jeden klik</title>
-  <meta name="description" content="Copy button umožňuje jedným kliknutím skopírovať obsah do clipboardu. Podporované sú `input`, `textarea`, `wj-input`, `wj-label` a `a` element. " />
+  <meta
+    name="description"
+    content="Copy button umožňuje jedným kliknutím skopírovať obsah do clipboardu. Podporované sú `input`, `textarea`, `wj-input`, `wj-label` a `a` element. "
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Copy button umožňuje jedným kliknutím skopírovať želaný obsah do clipboardu. Podporované sú `input`, `textarea`, `wj-input`, `wj-label` a `a` element. 
+Copy button umožňuje jedným kliknutím skopírovať želaný obsah do clipboardu. Podporované sú `input`, `textarea`, `wj-input`, `wj-label` a `a` element.
 
 ## Základné použitie
 
@@ -67,7 +71,7 @@ import Hyperlink from '@site/static/usage/v1/copy-button/hyperlink/index.md';
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

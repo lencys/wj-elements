@@ -6,7 +6,7 @@
   position: relative;
   z-index: 9999;
   width: 300px;
-  margin: .5rem 0;
+  margin: 0.5rem 0;
   display: none;
 }
 
@@ -25,11 +25,11 @@
   border-radius: var(--wje-border-radius-large);
   position: relative;
 
-  &.has-media slot[name="media"] {
+  &.has-media slot[name='media'] {
     flex: 0 0 1.5rem;
     width: 1.5rem;
     display: flex;
-    margin-right: .5rem;
+    margin-right: 0.5rem;
     justify-content: center;
   }
 
@@ -58,15 +58,15 @@
   }
 }
 
-:host([position=top]) {
-  animation: slideDown .3s ease-out forwards;
+:host([position='top']) {
+  animation: slideDown 0.3s ease-out forwards;
   top: 1rem;
   left: auto;
   right: auto;
 }
 
 :host::part(icon) {
-  margin-right: .5rem;
+  margin-right: 0.5rem;
 }
 
 @keyframes slideDown {
@@ -79,85 +79,85 @@
 }
 
 /*PRIMARY*/
-:host([color=primary]) .native-toast {
+:host([color='primary']) .native-toast {
   background-color: var(--wje-color-primary-1);
   color: var(--wje-color-primary-9);
   border-color: var(--wje-color-primary-3);
 }
 
 /*COMPLETE*/
-:host([color=complete]) .native-toast {
+:host([color='complete']) .native-toast {
   background-color: var(--wje-color-complete-1);
   color: var(--wje-color-complete-9);
   border-color: var(--wje-color-complete-3);
 }
 
 /*SUCCESS*/
-:host([color=success]) .native-toast {
+:host([color='success']) .native-toast {
   background-color: var(--wje-color-success-1);
   color: var(--wje-color-success-9);
   border-color: var(--wje-color-success-3);
 }
 
 /*WARNING*/
-:host([color=warning]) .native-toast{
+:host([color='warning']) .native-toast {
   background-color: var(--wje-color-warning-1);
   color: var(--wje-color-warning-11);
   border-color: var(--wje-color-warning-3);
 }
 
 /*DANGER*/
-:host([color=danger]) .native-toast {
+:host([color='danger']) .native-toast {
   background-color: var(--wje-color-danger-1);
   color: var(--wje-color-danger-9);
   border-color: var(--wje-color-danger-3);
 }
 
 /*INFO*/
-:host([color=info]) .native-toast {
+:host([color='info']) .native-toast {
   background-color: var(--wje-color-info-1);
   color: var(--wje-color-info-11);
   border-color: var(--wje-color-info-4);
 }
 
 /*CONTRAST*/
-:host([color=contrast]) .native-toast {
+:host([color='contrast']) .native-toast {
   background-color: var(--wje-color-contrast-2);
   color: var(--wje-color-contrast-9);
   border-color: var(--wje-color-contrast-3);
 }
 
 /*PRIMARY*/
-:host([color=primary]) .countdown-bar {
+:host([color='primary']) .countdown-bar {
   background-color: var(--wje-color-primary-9);
 }
 
 /*COMPLETE*/
-:host([color=complete]) .countdown-bar {
+:host([color='complete']) .countdown-bar {
   background-color: var(--wje-color-complete-9);
 }
 
 /*SUCCESS*/
-:host([color=success]) .countdown-bar {
+:host([color='success']) .countdown-bar {
   background-color: var(--wje-color-success-9);
 }
 
 /*WARNING*/
-:host([color=warning]) .countdown-bar{
+:host([color='warning']) .countdown-bar {
   background-color: var(--wje-color-warning-9);
 }
 
 /*DANGER*/
-:host([color=danger]) .countdown-bar {
+:host([color='danger']) .countdown-bar {
   background-color: var(--wje-color-danger-9);
 }
 
 /*INFO*/
-:host([color=info]) .countdown-bar {
+:host([color='info']) .countdown-bar {
   background-color: var(--wje-color-info-9);
 }
 
 /*CONTRAST*/
-:host([color=contrast]) .countdown-bar {
+:host([color='contrast']) .countdown-bar {
   background-color: var(--wje-color-contrast-9);
 }

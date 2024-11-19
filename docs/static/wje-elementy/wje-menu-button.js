@@ -1,8 +1,8 @@
 var l = Object.defineProperty;
-var i = (n, t, e) => t in n ? l(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
-var o = (n, t, e) => (i(n, typeof t != "symbol" ? t + "" : t, e), e);
-import u, { event as c } from "./wje-element.js";
-const d = ":host{display:inline-flex}@media (min-width: 768px){:host{display:none}}";
+var i = (n, t, e) => (t in n ? l(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : (n[t] = e));
+var o = (n, t, e) => (i(n, typeof t != 'symbol' ? t + '' : t, e), e);
+import u, { event as c } from './wje-element.js';
+const d = ':host{display:inline-flex}@media (min-width: 768px){:host{display:none}}';
 class r extends u {
   /**
    * Creates an instance of MenuButton.
@@ -11,7 +11,7 @@ class r extends u {
    */
   constructor() {
     super();
-    o(this, "className", "MenuButton");
+    o(this, 'className', 'MenuButton');
   }
   /**
    * Returns the CSS styles for the component.
@@ -35,7 +35,7 @@ class r extends u {
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = "open";
+    this.isShadowRoot = 'open';
   }
   /**
    * Draws the component.
@@ -46,7 +46,8 @@ class r extends u {
    * @returns {DocumentFragment}
    */
   draw(e, m, p) {
-    let s = document.createDocumentFragment(), a = document.createElement("slot");
+    let s = document.createDocumentFragment(),
+      a = document.createElement('slot');
     return s.appendChild(a), s;
   }
   /**
@@ -54,12 +55,10 @@ class r extends u {
    * Adds a click event listener that toggles the "open" class on the content element.
    */
   afterDraw() {
-    c.addListener(this, "click", null, (e) => {
-      document.querySelector(`#${this.contentId}`).classList.toggle("open");
+    c.addListener(this, 'click', null, (e) => {
+      document.querySelector(`#${this.contentId}`).classList.toggle('open');
     });
   }
 }
-r.define("wje-menu-button", r);
-export {
-  r as default
-};
+r.define('wje-menu-button', r);
+export { r as default };

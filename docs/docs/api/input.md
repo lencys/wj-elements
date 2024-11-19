@@ -1,6 +1,7 @@
 ---
-title: "Input"
+title: 'Input'
 ---
+
 import Props from '@ionic-internal/component-api/v1/input/props.md';
 import Events from '@ionic-internal/component-api/v1/input/events.md';
 import Methods from '@ionic-internal/component-api/v1/input/methods.md';
@@ -10,15 +11,17 @@ import Slots from '@ionic-internal/component-api/v1/input/slots.md';
 
 <head>
   <title>Input: Rozšírenie štandardného Input elementu</title>
-  <meta name="description" content="Input element rozširuje možnosti štandardného HTML inputu pokročilými funkciami a možnosťami prispôsobenia. " />
+  <meta
+    name="description"
+    content="Input element rozširuje možnosti štandardného HTML inputu pokročilými funkciami a možnosťami prispôsobenia. "
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="scoped" />
 
-Input element rozširuje možnosti štandardného HTML inputu pokročilými funkciami a možnosťami prispôsobenia. 
-
+Input element rozširuje možnosti štandardného HTML inputu pokročilými funkciami a možnosťami prispôsobenia.
 
 ## Základné použitie
 
@@ -26,7 +29,8 @@ import Basic from '@site/static/usage/v1/input/basic/index.md';
 
 <div className="xxlarge">
 
-  <Basic />
+{' '}
+<Basic />
 
 </div>
 
@@ -88,7 +92,7 @@ import Clearable from '@site/static/usage/v1/input/clearable/index.md';
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

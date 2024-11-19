@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/tab-panel/slots.md';
 
 <head>
   <title>TabPanel | Content container for Tab element</title>
-  <meta name="description" content="Komponent TabPanel je podriadeným komponentom TabGroup a slúži ako kontajner obsahu záložky. Používa sa v kombinácii s elementom Tab." />
+  <meta
+    name="description"
+    content="Komponent TabPanel je podriadeným komponentom TabGroup a slúži ako kontajner obsahu záložky. Používa sa v kombinácii s elementom Tab."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -32,7 +35,7 @@ For examples of using the `Tab` component, go to the [TabGroup](tab-group.md) do
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

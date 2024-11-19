@@ -1,6 +1,6 @@
 :host {
   /*--reorder-background-color: var(--wje-color-contrast-0);*/
-  --reorder-item-spacing: .5rem;
+  --reorder-item-spacing: 0.5rem;
 }
 
 .item {
@@ -15,7 +15,9 @@
   border-radius: var(--wje-border-radius-small);
   background-color: var(--reorder-background-color);
   cursor: grab;
-  transition: top 0.3s ease, left 0.3s ease;
+  transition:
+    top 0.3s ease,
+    left 0.3s ease;
 }
 
 .item-w-handle {
@@ -23,7 +25,7 @@
 }
 
 .item-w-handle:active {
-  opacity: .3;
+  opacity: 0.3;
 }
 
 .item:active:not(.item-w-handle):not(.moving) {

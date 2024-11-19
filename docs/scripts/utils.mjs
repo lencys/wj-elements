@@ -1,4 +1,4 @@
-import {unified} from 'unified';
+import { unified } from 'unified';
 import markdown from 'remark-parse';
 import html from 'remark-html';
 
@@ -77,11 +77,4 @@ function getHeadTag({ title: metaTitle, description: metaDescription } = {}) {
 </head>`;
 }
 
-export {
-  gitBranchSVG,
-  renderMarkdown,
-  renderReference,
-  renderOptions,
-  renderList,
-  getHeadTag,
-};
+export { gitBranchSVG, renderMarkdown, renderReference, renderOptions, renderList, getHeadTag };

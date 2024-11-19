@@ -1,6 +1,7 @@
 ---
-title: "TabPanel"
+title: 'TabPanel'
 ---
+
 import Props from '@ionic-internal/component-api/v1/tab-panel/props.md';
 import Events from '@ionic-internal/component-api/v1/tab-panel/events.md';
 import Methods from '@ionic-internal/component-api/v1/tab-panel/methods.md';
@@ -10,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/tab-panel/slots.md';
 
 <head>
   <title>TabPanel | Kontajner obsahu pre Tab element</title>
-  <meta name="description" content="Komponent TabPanel je podriadeným komponentom TabGroup a slúži ako kontajner obsahu záložky. Používa sa v kombinácii s elementom Tab." />
+  <meta
+    name="description"
+    content="Komponent TabPanel je podriadeným komponentom TabGroup a slúži ako kontajner obsahu záložky. Používa sa v kombinácii s elementom Tab."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -31,7 +35,7 @@ Pre príklady použitia komponentu `Tab` prejdite na dokumentáciu [TabGroup](ta
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

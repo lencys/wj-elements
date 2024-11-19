@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -91,11 +91,18 @@ export default class DemoToast extends WJElement {
     });
 
     this.context.querySelector('#toast-with-icon').addEventListener('wje-button:click', (e) => {
-      this.notify(`Notify body ${this.count++}`, false, false, 'primary', '','bell-z');
+      this.notify(`Notify body ${this.count++}`, false, false, 'primary', '', 'bell-z');
     });
 
     this.context.querySelector('#toast-text').addEventListener('wje-button:click', (e) => {
-      this.notify(`Vestibulum accumsan iaculis enim sit amet placerat. In tempor accumsan ex. Integer facilisis varius mauris hendrerit tristique. `, true, true, 'primary', '','bell-z');
+      this.notify(
+        `Vestibulum accumsan iaculis enim sit amet placerat. In tempor accumsan ex. Integer facilisis varius mauris hendrerit tristique. `,
+        true,
+        true,
+        'primary',
+        '',
+        'bell-z'
+      );
     });
 
     this.context.querySelectorAll('.color wje-button').forEach((el) => {
@@ -105,24 +112,34 @@ export default class DemoToast extends WJElement {
     });
   }
 
-  notify(message, countdown = false, closable = true, color='primary', src='/assets/img/avatar.svg', icon = null, duration='3000', ) {
+  notify(
+    message,
+    countdown = false,
+    closable = true,
+    color = 'primary',
+    src = '/assets/img/avatar.svg',
+    icon = null,
+    duration = '3000'
+  ) {
     let property = {
       color: color,
       headline: 'Notification',
       closable: closable,
       duration: duration,
       countdown: countdown,
-      innerHTML: `${src && `
+      innerHTML: `${
+        src &&
+        `
           <wje-avatar slot="media">
             <wje-img src="${src}"></wje-img>
           </wje-avatar>
-        `}
-          ${message}
         `
-    }
+      }
+          ${message}
+        `,
+    };
 
-    if(icon)
-      property.icon = icon;
+    if (icon) property.icon = icon;
 
     const toast = Object.assign(document.createElement('wje-toast'), property);
 
@@ -133,4 +150,4 @@ export default class DemoToast extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-toast") || window.customElements.define("demo-toast", DemoToast);
+customElements.get('demo-toast') || window.customElements.define('demo-toast', DemoToast);

@@ -4,7 +4,10 @@ title: Environment configuration
 
 <head>
   <title>Environment Configuration | Node & NPM Environment for WebJET App Setup</title>
-  <meta name="description" content="To get started with Ionic Framework, the only requirement is a Node & npm environment. Learn what environment setup is required for your Ionic apps." />
+  <meta
+    name="description"
+    content="To get started with Ionic Framework, the only requirement is a Node & npm environment. Learn what environment setup is required for your Ionic apps."
+  />
 </head>
 
 The basic requirement to start working with WebJET Elements is an environment with Node and NPM installed.

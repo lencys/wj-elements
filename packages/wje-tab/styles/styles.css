@@ -34,7 +34,7 @@
     }
 
     &:after {
-      content: " ";
+      content: ' ';
       display: none;
       block-size: 0.15rem;
       writing-mode: var(--wje-tab-writing-mode);

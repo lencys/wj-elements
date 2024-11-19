@@ -1,6 +1,7 @@
-```html
+````html
 <wje-split-view initial="250">
-    <div slot="start">Start</div>
-    <div slot="end">End</div>
+  <div slot="start">Start</div>
+  <div slot="end">End</div>
 </wje-split-view>
-        ```
+```
+````

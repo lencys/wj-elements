@@ -1,6 +1,5 @@
-import Routerx from "./router.element.js";
+import Routerx from './router.element.js';
 
 export default Routerx;
 
-Routerx.define("wje-router", Routerx);
-
+Routerx.define('wje-router', Routerx);

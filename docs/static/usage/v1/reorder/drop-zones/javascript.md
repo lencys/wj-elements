@@ -14,6 +14,4 @@
     <wje-reorder-item>test item 4</wje-reorder-item>
   </wje-reorder-dropzone>
 </wje-reorder>
-
 ```
-

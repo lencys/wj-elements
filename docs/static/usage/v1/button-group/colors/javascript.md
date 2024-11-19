@@ -1,5 +1,5 @@
 ```html
- <p>
+<p>
   <wje-button-group>
     <wje-button>Default</wje-button>
     <wje-button>Default</wje-button>

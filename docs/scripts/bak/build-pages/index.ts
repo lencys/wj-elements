@@ -11,9 +11,8 @@ import CLI from './page-types/cli';
 import Native from './page-types/native';
 import Static, { ToStaticPageOptions, toPage as toStaticPage } from './page-types/static';
 
-const tasks = new Listr(
-  // { renderer: 'verbose' }
-);
+const tasks = new Listr();
+// { renderer: 'verbose' }
 tasks.add(Static);
 tasks.add(API);
 tasks.add(CLI);
@@ -23,7 +22,7 @@ export default tasks;
 let listrStatus: any = null;
 
 if (!module.parent) {
-  tasks.run().catch(err => {
+  tasks.run().catch((err) => {
     console.error(err);
     process.exit(1);
   });
@@ -48,12 +47,7 @@ export const buildPages = async (getter: PageGetter, status?: any) => {
   listrStatus.output = 'Parsing Markdown';
   const pages = await getter();
   listrStatus.output = 'Optimizing';
-  return Promise.all(
-    pages
-      .map(patchBody)
-      .map(updatePageHtmlToHypertext)
-      .map(writePage)
-  );
+  return Promise.all(pages.map(patchBody).map(updatePageHtmlToHypertext).map(writePage));
 };
 
 export const buildStaticPage = async (path: string, options: ToStaticPageOptions = {}) => {
@@ -83,7 +77,7 @@ const patchBody = (page: Page): Page => {
 
   const headings = Array.from(body.querySelectorAll('h2'), (heading: any) => ({
     text: heading.textContent.trim(),
-    href: `#${heading.getAttribute('id')}`
+    href: `#${heading.getAttribute('id')}`,
   }));
 
   // remove /docs/ and language tag
@@ -105,7 +99,7 @@ const patchBody = (page: Page): Page => {
     ...page,
     body: body.innerHTML,
     headings,
-    pageClass
+    pageClass,
   };
 };
 
@@ -122,7 +116,7 @@ export const updatePageHtmlToHypertext = (page: Page) => {
   }
   if (page.usage) {
     const hypertextUsage: { [key: string]: any } = {};
-    Object.keys(page.usage).forEach(key => {
+    Object.keys(page.usage).forEach((key) => {
       const usageContent = page.usage[key];
       hypertextUsage[key] = convertHtmlToHypertextData(usageContent);
     });
@@ -136,7 +130,7 @@ const writePage = (page: Page): Promise<any> => {
     listrStatus.output = 'Writing Pages';
   }
   return fs.outputJson(toFilePath(page.path), page, {
-    spaces: 2
+    spaces: 2,
   });
 };
 

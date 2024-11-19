@@ -1,6 +1,7 @@
 ---
-title: "Layout"
+title: 'Layout'
 ---
+
 import Props from '@ionic-internal/component-api/v1/layout/props.md';
 import Events from '@ionic-internal/component-api/v1/layout/events.md';
 import Methods from '@ionic-internal/component-api/v1/layout/methods.md';
@@ -10,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/layout/slots.md';
 
 <head>
   <title>Layout | Element umožňujúci jednoducho zostaviť layout stránky</title>
-  <meta name="description" content="Layout v Elements sa skladá z troch komponentov Header, Aside a Footer. Pomocou nich je možné jednoducho zostaviť základné rozvrhnutie webstránky." />
+  <meta
+    name="description"
+    content="Layout v Elements sa skladá z troch komponentov Header, Aside a Footer. Pomocou nich je možné jednoducho zostaviť základné rozvrhnutie webstránky."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -39,7 +43,7 @@ import Basic from '@site/static/usage/v1/layout/basic/index.md';
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

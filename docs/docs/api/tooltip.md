@@ -1,6 +1,7 @@
 ---
-title: "Tooltip"
+title: 'Tooltip'
 ---
+
 import Props from '@ionic-internal/component-api/v1/tooltip/props.md';
 import Events from '@ionic-internal/component-api/v1/tooltip/events.md';
 import Methods from '@ionic-internal/component-api/v1/tooltip/methods.md';
@@ -9,8 +10,11 @@ import CustomProps from '@ionic-internal/component-api/v1/tooltip/custom-props.m
 import Slots from '@ionic-internal/component-api/v1/tooltip/slots.md';
 
 <head>
-  <title>Tooltip |  Vyskakovacia nápoveda pri nájazde myšou</title>
-  <meta name="description" content="Element Tooltip slúži na zobrazovanie vyskakovacej nápovedy pri nájazde myšou a je ho možné pripojiť k rôznym elementom webovej stránky. Je ľahko prispôsobiteľný pomocou atribútov pre obsah a umiestnenie." />
+  <title>Tooltip | Vyskakovacia nápoveda pri nájazde myšou</title>
+  <meta
+    name="description"
+    content="Element Tooltip slúži na zobrazovanie vyskakovacej nápovedy pri nájazde myšou a je ho možné pripojiť k rôznym elementom webovej stránky. Je ľahko prispôsobiteľný pomocou atribútov pre obsah a umiestnenie."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -35,7 +39,7 @@ import Basic from '@site/static/usage/v1/tooltip/basic/index.md';
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

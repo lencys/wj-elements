@@ -1,6 +1,6 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
-import { event } from "../../packages/index.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
+import { event } from '../../packages/index.js';
 
 const template = document.createElement('template');
 
@@ -39,18 +39,17 @@ export default class DemoKanban extends WJElement {
         let card = this.htmlCard(item);
         pool.querySelector('.pool-content').appendChild(card);
       }
-    }
+    };
 
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(template, this.context);
   }
 
   htmlCard(item) {
-
-    let card = document.createElement("div");
-    card.classList.add("card");
+    let card = document.createElement('div');
+    card.classList.add('card');
     card.draggable = true;
-    card.setAttribute("data-id", item.id);
+    card.setAttribute('data-id', item.id);
     card.innerHTML = `
         <div>${item.id} - ${item.body}</div>
     `;
@@ -62,4 +61,4 @@ export default class DemoKanban extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-kanban") || window.customElements.define("demo-kanban", DemoKanban);
+customElements.get('demo-kanban') || window.customElements.define('demo-kanban', DemoKanban);

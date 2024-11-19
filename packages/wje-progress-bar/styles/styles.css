@@ -2,32 +2,32 @@
 [ WJ Progress bar ]
 */
 
-:host([color="primary"]) {
+:host([color='primary']) {
   --wje-progress-bar-background-color: var(--wje-color-primary-2);
   --wje-progress-bar-color: var(--wje-color-primary-9);
 }
 
-:host([color="complete"]) {
+:host([color='complete']) {
   --wje-progress-bar-background-color: var(--wje-color-complete-2);
   --wje-progress-bar-color: var(--wje-color-complete-9);
 }
 
-:host([color="success"]) {
+:host([color='success']) {
   --wje-progress-bar-background-color: var(--wje-color-success-2);
   --wje-progress-bar-color: var(--wje-color-success-9);
 }
 
-:host([color="warning"]) {
+:host([color='warning']) {
   --wje-progress-bar-background-color: var(--wje-color-warning-2);
   --wje-progress-bar-color: var(--wje-color-warning-9);
 }
 
-:host([color="danger"]) {
+:host([color='danger']) {
   --wje-progress-bar-background-color: var(--wje-color-danger-2);
   --wje-progress-bar-color: var(--wje-color-danger-9);
 }
 
-:host([color="info"]) {
+:host([color='info']) {
   --wje-progress-bar-background-color: var(--wje-color-info-2);
   --wje-progress-bar-color: var(--wje-color-info-9);
 }
@@ -43,7 +43,7 @@
 :host {
   --wje-progress-bar-background-color: var(--wje-color-contrast-2);
   --wje-progress-bar-color: var(--wje-color-contrast-6);
-  --wje-progress-bar-text-size: .75rem;
+  --wje-progress-bar-text-size: 0.75rem;
   --wje-progress-bar-text-color: var(--wje-color);
   /*--wje-progress-bar-stroke: var(--wje-color-contrast-3);*/
   fill: var(--wje-progress-bar-background-color);
@@ -63,7 +63,7 @@
     justify-content: center;
   }
   #bar {
-    fill: var(--wje-progress-bar-color) ;
+    fill: var(--wje-progress-bar-color);
   }
 
   text {
@@ -81,10 +81,10 @@
   fill: var(--wje-progress-bar-color);
 }
 
-::slotted([slot="start"]) {
+::slotted([slot='start']) {
   margin-inline: 0 1rem;
 }
 
-::slotted([slot="end"]) {
+::slotted([slot='end']) {
   margin-inline: 1rem 0;
 }

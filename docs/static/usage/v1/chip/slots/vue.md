@@ -19,7 +19,7 @@
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { Chip, Avatar, Label, Icon }
+    components: { Chip, Avatar, Label, Icon },
   });
 </script>
 ```

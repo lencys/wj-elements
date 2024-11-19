@@ -1,6 +1,7 @@
 ---
-title: "Badge"
+title: 'Badge'
 ---
+
 import Props from '@ionic-internal/component-api/v1/badge/props.md';
 import Events from '@ionic-internal/component-api/v1/badge/events.md';
 import Methods from '@ionic-internal/component-api/v1/badge/methods.md';
@@ -10,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/badge/slots.md';
 
 <head>
   <title>Badge | Odznaky</title>
-  <meta name="description" content="Badge sú inline-block elementy, ktoré majú informatívny charakter a zvyčajne sa zobrazujú v blízkosti iného elementu. Používajú sa ako upozornenie, že k elementu sú priradené ďalšie elementy, a informujú používateľa o ich počte." />
+  <meta
+    name="description"
+    content="Badge sú inline-block elementy, ktoré majú informatívny charakter a zvyčajne sa zobrazujú v blízkosti iného elementu. Používajú sa ako upozornenie, že k elementu sú priradené ďalšie elementy, a informujú používateľa o ich počte."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -27,7 +31,6 @@ import Basic from '@site/static/usage/v1/badge/basic/index.md';
 
 <Basic />
 
-
 ## Úprava štýlov
 
 ### Farby
@@ -35,7 +38,6 @@ import Basic from '@site/static/usage/v1/badge/basic/index.md';
 import Colors from '@site/static/usage/v1/badge/theming/colors/index.md';
 
 <Colors />
-
 
 ## Atribúty a Vlastnosti
 
@@ -47,7 +49,7 @@ import Colors from '@site/static/usage/v1/badge/theming/colors/index.md';
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

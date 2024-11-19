@@ -1,5 +1,5 @@
-import { default as WJElement } from "../wje-element/element.js";
-import styles from "./styles/styles.css?inline";
+import { default as WJElement } from '../wje-element/element.js';
+import styles from './styles/styles.css?inline';
 
 /**
  * `Reorder` is a custom web component that represents a reorder.
@@ -15,7 +15,6 @@ import styles from "./styles/styles.css?inline";
  */
 
 export default class Reorder extends WJElement {
-
   /**
    * Creates an instance of Select.
    * @class
@@ -28,14 +27,14 @@ export default class Reorder extends WJElement {
     this.isDragging = false;
     this.offsetX = 0;
     this.offsetY = 0;
-    this.cloneEl = null; 
+    this.cloneEl = null;
   }
 
   /**
    * The class name for the component.
    * @type {string}
    */
-  className = "Select";
+  className = 'Select';
 
   /**
    * Returns the CSS styles for the component.
@@ -59,7 +58,7 @@ export default class Reorder extends WJElement {
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = "open";
+    this.isShadowRoot = 'open';
   }
 
   /**
@@ -69,12 +68,12 @@ export default class Reorder extends WJElement {
   draw() {
     const fragment = document.createDocumentFragment();
 
-    const container = document.createElement("div");
-    container.classList.add("container");
-    container.setAttribute("part", "native");
+    const container = document.createElement('div');
+    container.classList.add('container');
+    container.setAttribute('part', 'native');
 
-    const slot = document.createElement("slot");
-    slot.classList.add("reorder-items");
+    const slot = document.createElement('slot');
+    slot.classList.add('reorder-items');
 
     container.appendChild(slot);
 
@@ -89,20 +88,20 @@ export default class Reorder extends WJElement {
    * Adds event listeners after the component is drawn.
    */
   afterDraw() {
-    const items = this.querySelectorAll("wje-reorder-item");
-    const dropZones = this.querySelectorAll("wje-reorder-dropzone");
-    this.container.classList.add(this.hasAttribute('reverse') ? "reversed" : "basic");
+    const items = this.querySelectorAll('wje-reorder-item');
+    const dropZones = this.querySelectorAll('wje-reorder-dropzone');
+    this.container.classList.add(this.hasAttribute('reverse') ? 'reversed' : 'basic');
 
     if (dropZones) {
       dropZones.forEach((dropZone) => {
-        this.container.classList.remove("container");
-        this.container.classList.add("container-w-dropzones");
+        this.container.classList.remove('container');
+        this.container.classList.add('container-w-dropzones');
       });
     }
 
     if (items) {
       items.forEach((item) => {
-        const handles = item.querySelectorAll("[slot=handle]");
+        const handles = item.querySelectorAll('[slot=handle]');
         const draggableElement = handles.length > 0 ? handles : [item];
 
         draggableElement.forEach((element) => {
@@ -117,9 +116,9 @@ export default class Reorder extends WJElement {
    * @param element
    */
   attachEventListeners(element) {
-    element.addEventListener("mousedown", this.mouseDown.bind(this), false);
-    element.addEventListener("touchstart", this.touchStart.bind(this), false);
-    element.addEventListener("dragstart", this.dragStart.bind(this), false);
+    element.addEventListener('mousedown', this.mouseDown.bind(this), false);
+    element.addEventListener('touchstart', this.touchStart.bind(this), false);
+    element.addEventListener('dragstart', this.dragStart.bind(this), false);
   }
 
   /**
@@ -128,9 +127,9 @@ export default class Reorder extends WJElement {
    */
   mouseDown(e) {
     this.startDragging(e.clientX, e.clientY, e.currentTarget);
-    document.addEventListener("mousemove", this.mouseMove.bind(this), false);
-    document.addEventListener("mouseup", this.mouseUp.bind(this), false);
-    document.body.style.userSelect = "none"; 
+    document.addEventListener('mousemove', this.mouseMove.bind(this), false);
+    document.addEventListener('mouseup', this.mouseUp.bind(this), false);
+    document.body.style.userSelect = 'none';
   }
 
   /**
@@ -140,9 +139,9 @@ export default class Reorder extends WJElement {
   touchStart(e) {
     const touch = e.touches[0];
     this.startDragging(touch.clientX, touch.clientY, e.currentTarget);
-    document.addEventListener("touchmove", this.touchMove.bind(this), false);
-    document.addEventListener("touchend", this.touchEnd.bind(this), false);
-    document.body.style.userSelect = "none"; 
+    document.addEventListener('touchmove', this.touchMove.bind(this), false);
+    document.addEventListener('touchend', this.touchEnd.bind(this), false);
+    document.body.style.userSelect = 'none';
   }
 
   /**
@@ -152,22 +151,22 @@ export default class Reorder extends WJElement {
    * @param {HTMLElement} target The target element where the drag event originated.
    */
   startDragging(clientX, clientY, target) {
-    if (this.hasAttribute("disabled")) {
+    if (this.hasAttribute('disabled')) {
       return;
     }
 
     this.isDragging = true;
-    this.dragEl = target.closest("wje-reorder-item");
+    this.dragEl = target.closest('wje-reorder-item');
 
     this.createClone();
 
-    this.dragEl.style.opacity = "0.3";
+    this.dragEl.style.opacity = '0.3';
 
     const rect = this.dragEl.getBoundingClientRect();
     this.offsetX = clientX - rect.left;
     this.offsetY = clientY - rect.top;
 
-    this.dragEl.classList.add("dragging");
+    this.dragEl.classList.add('dragging');
 
     this.originalIndex = [...this.dragEl.parentNode.children].indexOf(this.dragEl);
     this.originalParent = this.dragEl.parentNode;
@@ -183,7 +182,7 @@ export default class Reorder extends WJElement {
 
     if (this.cloneEl) {
       this.cloneEl.style.left = `${e.pageX - this.offsetX}px`;
-      this.cloneEl.style.top = `${e.pageY -  this.offsetY}px`;
+      this.cloneEl.style.top = `${e.pageY - this.offsetY}px`;
     }
   }
 
@@ -212,23 +211,23 @@ export default class Reorder extends WJElement {
     this.dragEl.style.top = `${adjustedPageY}px`;
 
     if (this.cloneEl) {
-        this.cloneEl.style.left = `${adjustedPageX}px`;
-        this.cloneEl.style.top = `${adjustedPageY}px`;
+      this.cloneEl.style.left = `${adjustedPageX}px`;
+      this.cloneEl.style.top = `${adjustedPageY}px`;
     }
 
-    const items = this.querySelectorAll("wje-reorder-item");
-    items.forEach(item => {
-        if (item === this.dragEl) return;
+    const items = this.querySelectorAll('wje-reorder-item');
+    items.forEach((item) => {
+      if (item === this.dragEl) return;
 
-        const boundingBox = item.getBoundingClientRect();
-        const mouseY = adjustedPageY - boundingBox.top;
-        const mouseYPercent = (mouseY / boundingBox.height) * 100;
+      const boundingBox = item.getBoundingClientRect();
+      const mouseY = adjustedPageY - boundingBox.top;
+      const mouseYPercent = (mouseY / boundingBox.height) * 100;
 
-        if (mouseYPercent > 30 && this.isMovingDown(item)) {
-            item.parentNode.insertBefore(this.dragEl, item.nextSibling);
-        } else if (mouseYPercent < 30 && !this.isMovingDown(item)) {
-            item.parentNode.insertBefore(this.dragEl, item);
-        }
+      if (mouseYPercent > 30 && this.isMovingDown(item)) {
+        item.parentNode.insertBefore(this.dragEl, item.nextSibling);
+      } else if (mouseYPercent < 30 && !this.isMovingDown(item)) {
+        item.parentNode.insertBefore(this.dragEl, item);
+      }
     });
   }
 
@@ -237,8 +236,8 @@ export default class Reorder extends WJElement {
    */
   mouseUp() {
     this.stopDragging();
-    document.removeEventListener("mousemove", this.mouseMove.bind(this), false);
-    document.removeEventListener("mouseup", this.mouseUp.bind(this), false);
+    document.removeEventListener('mousemove', this.mouseMove.bind(this), false);
+    document.removeEventListener('mouseup', this.mouseUp.bind(this), false);
 
     if (this.cloneEl) {
       this.cloneEl.remove();
@@ -246,7 +245,7 @@ export default class Reorder extends WJElement {
     }
 
     if (this.dragEl) {
-      this.dragEl.style.opacity = "1";
+      this.dragEl.style.opacity = '1';
     }
   }
 
@@ -255,8 +254,8 @@ export default class Reorder extends WJElement {
    */
   touchEnd() {
     this.stopDragging();
-    document.removeEventListener("touchmove", this.touchMove.bind(this), false);
-    document.removeEventListener("touchend", this.touchEnd.bind(this), false);
+    document.removeEventListener('touchmove', this.touchMove.bind(this), false);
+    document.removeEventListener('touchend', this.touchEnd.bind(this), false);
   }
 
   /**
@@ -266,16 +265,16 @@ export default class Reorder extends WJElement {
     if (!this.isDragging) return;
 
     this.isDragging = false;
-    this.dragEl.classList.remove("dragging");
-    this.dragEl.style.left = "";
-    this.dragEl.style.top = "";
+    this.dragEl.classList.remove('dragging');
+    this.dragEl.style.left = '';
+    this.dragEl.style.top = '';
 
     const parent = this.dragEl.parentNode;
     const newIndex = Array.from(parent.children).indexOf(this.dragEl);
 
     const newOrder = Array.from(parent.children).map((el) => {
       const clonedNode = el.cloneNode(true);
-      const handle = clonedNode.querySelector(".handle");
+      const handle = clonedNode.querySelector('.handle');
       if (handle) {
         handle.remove();
       }
@@ -283,7 +282,7 @@ export default class Reorder extends WJElement {
     });
 
     this.dispatchChange(this.originalIndex, newIndex, newOrder);
-    document.body.style.userSelect = ""; 
+    document.body.style.userSelect = '';
   }
 
   /**
@@ -299,9 +298,9 @@ export default class Reorder extends WJElement {
    */
   createClone() {
     this.cloneEl = this.dragEl.cloneNode(true);
-    this.cloneEl.style.position = "absolute";
-    this.cloneEl.style.pointerEvents = "none";
-    this.cloneEl.style.visibility = "visible";
+    this.cloneEl.style.position = 'absolute';
+    this.cloneEl.style.pointerEvents = 'none';
+    this.cloneEl.style.visibility = 'visible';
 
     document.body.appendChild(this.cloneEl);
   }
@@ -329,7 +328,7 @@ export default class Reorder extends WJElement {
    */
   dispatchChange(from, to, order) {
     this.dispatchEvent(
-      new CustomEvent("wje-reorder:change", {
+      new CustomEvent('wje-reorder:change', {
         detail: { from, to, order },
       })
     );

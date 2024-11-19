@@ -1,6 +1,7 @@
 ---
-title: "Button"
+title: 'Button'
 ---
+
 import Props from '@ionic-internal/component-api/v1/button/props.md';
 import Events from '@ionic-internal/component-api/v1/button/events.md';
 import Methods from '@ionic-internal/component-api/v1/button/methods.md';
@@ -10,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/button/slots.md';
 
 <head>
   <title>Button | Tlačidlo</title>
-  <meta name="description" content="Tlačidlá sú klikateľný element, ktorý umožnuje zobraziť text, ikonu, prípadne oboje. Tlačidlá si je možné jednoducho prispôsobiť použitím rôznych atribútov a CSS vlastností." />
+  <meta
+    name="description"
+    content="Tlačidlá sú klikateľný element, ktorý umožnuje zobraziť text, ikonu, prípadne oboje. Tlačidlá si je možné jednoducho prispôsobiť použitím rôznych atribútov a CSS vlastností."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -45,20 +49,17 @@ import Shape from '@site/static/usage/v1/button/shape/index.md';
 
 <Shape />
 
-
 ## Výplň tlačidla
 
-Vlastnosť `Fill` určuje výplň pozadia a okraja tlačidla. V predvolenom nastavení majú tlačidlá jednoliate pozadie `solid`. Ďalšie možnosti sú `link` a `outline`. 
+Vlastnosť `Fill` určuje výplň pozadia a okraja tlačidla. V predvolenom nastavení majú tlačidlá jednoliate pozadie `solid`. Ďalšie možnosti sú `link` a `outline`.
 
 import Fill from '@site/static/usage/v1/button/fill/index.md';
 
 <Fill />
 
-
 ## Veľkosť tlačidla
 
 Vlastnosť `size` určuje veľkosť tlačidla. Nastavením tejto vlastnosti sa zmení vnútorné odsadenie tlačidla.
-
 
 import Size from '@site/static/usage/v1/button/size/index.md';
 
@@ -69,8 +70,6 @@ import Size from '@site/static/usage/v1/button/size/index.md';
 V tlačidlách je možné zobraziť aj ikony vložením elementu `wj-icon`. Ich umiestnenie v rámci tlačidla upravíte pomocou atribútu slot a vlastnosti `start` alebo `end`. Ak tlačidlo neobsahuje žiaden text a skladá sa len z ikony, použite vlastnosť `icon-only`.
 
 Viac informácií o ikonách nájdete na stránke **[Ikony](https://www.notion.so/Icon-d49ef040cef84b13b8dd3721d84d5397?pvs=21).**
-
-
 
 import Icons from '@site/static/usage/v1/button/icons/index.md';
 
@@ -110,7 +109,7 @@ import Custom from '@site/static/usage/v1/button/theming/css-properties/index.md
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

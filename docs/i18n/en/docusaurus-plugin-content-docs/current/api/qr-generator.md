@@ -10,8 +10,11 @@ import CustomProps from '@ionic-internal/component-api/v1/qr-code/custom-props.m
 import Slots from '@ionic-internal/component-api/v1/qr-code/slots.md';
 
 <head>
-    <title>QR Code | QR Code</title>
-    <meta name="description" content="Kód pozostávajúci z poľa čiernych a bielych štvorcov, ktorý sa zvyčajne používa na ukladanie adries URL alebo iných informácií na čítanie fotoaparátom na smartfóne. Tieto qr kódy si je možné jednoducho prispôsobiť použitím rôznych atribútov."></meta>
+  <title>QR Code | QR Code</title>
+  <meta
+    name="description"
+    content="Kód pozostávajúci z poľa čiernych a bielych štvorcov, ktorý sa zvyčajne používa na ukladanie adries URL alebo iných informácií na čítanie fotoaparátom na smartfóne. Tieto qr kódy si je možné jednoducho prispôsobiť použitím rôznych atribútov."
+  ></meta>
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -38,7 +41,7 @@ import Basic from '@site/static/usage/v1/qr-code/basic/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/button/slots.md';
 
 <head>
   <title>Button | Button</title>
-  <meta name="description" content="Tlačidlá sú klikateľný element, ktorý umožnuje zobraziť text, ikonu, prípadne oboje. Tlačidlá si je možné jednoducho prispôsobiť použitím rôznych atribútov a CSS vlastností." />
+  <meta
+    name="description"
+    content="Tlačidlá sú klikateľný element, ktorý umožnuje zobraziť text, ikonu, prípadne oboje. Tlačidlá si je možné jednoducho prispôsobiť použitím rôznych atribútov a CSS vlastností."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -106,7 +109,7 @@ import Custom from '@site/static/usage/v1/button/theming/css-properties/index.md
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

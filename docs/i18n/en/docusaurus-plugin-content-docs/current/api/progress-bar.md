@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/progress-bar/slots.md';
 
 <head>
   <title>Progress Bar | Progress visualization component</title>
-  <meta name="description" content="Progress Bar element je komponent navrhnutý na vizualizáciu priebehu. Ponúka možnosť vytvárať prispôsobiteľné kruhové alebo rovné ukazovatele s rôznymi možnosťami konfigurácie." />
+  <meta
+    name="description"
+    content="Progress Bar element je komponent navrhnutý na vizualizáciu priebehu. Ponúka možnosť vytvárať prispôsobiteľné kruhové alebo rovné ukazovatele s rôznymi možnosťami konfigurácie."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -94,7 +97,7 @@ import Colors from '@site/static/usage/v1/progress-bar/colors/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

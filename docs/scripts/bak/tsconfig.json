@@ -3,9 +3,7 @@
     "allowUnreachableCode": false,
     "declaration": false,
     "esModuleInterop": true,
-    "lib": [
-      "es2017"
-    ],
+    "lib": ["es2017"],
     "moduleResolution": "node",
     "module": "commonjs",
     "outDir": "build",
@@ -14,7 +12,5 @@
     "strict": true,
     "target": "es2017"
   },
-  "include": [
-    "**/*.ts"
-  ]
+  "include": ["**/*.ts"]
 }

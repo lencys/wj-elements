@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 template.innerHTML = `
@@ -254,4 +254,4 @@ export default class DemoButtonGroup extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-button-group") || window.customElements.define("demo-button-group", DemoButtonGroup);
+customElements.get('demo-button-group') || window.customElements.define('demo-button-group', DemoButtonGroup);

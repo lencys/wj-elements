@@ -1,5 +1,5 @@
-import Timeline from "./timeline.element.js";
+import Timeline from './timeline.element.js';
 
 export default Timeline;
 
-Timeline.define("wje-timeline", Timeline);
+Timeline.define('wje-timeline', Timeline);

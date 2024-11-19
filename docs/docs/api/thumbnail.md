@@ -1,6 +1,7 @@
 ---
-title: "Thumbnail"
+title: 'Thumbnail'
 ---
+
 import Props from '@ionic-internal/component-api/v1/thumbnail/props.md';
 import Events from '@ionic-internal/component-api/v1/thumbnail/events.md';
 import Methods from '@ionic-internal/component-api/v1/thumbnail/methods.md';
@@ -10,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/thumbnail/slots.md';
 
 <head>
   <title>Thumbnail | Komponent pre zobrazenie náhľadov obrázkov</title>
-  <meta name="description" content="Thumbnail uľahčuje zobrazenie väčších obrázkov alebo iných médií zobrazením ich menšieho náhľadu. Je ho možné použiť samostatne ale aj v iných elementoch." />
+  <meta
+    name="description"
+    content="Thumbnail uľahčuje zobrazenie väčších obrázkov alebo iných médií zobrazením ich menšieho náhľadu. Je ho možné použiť samostatne ale aj v iných elementoch."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -49,7 +53,7 @@ import CSSProps from '@site/static/usage/v1/thumbnail/theming/css-properties/ind
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

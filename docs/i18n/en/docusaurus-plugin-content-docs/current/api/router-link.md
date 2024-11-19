@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/router-link/slots.md';
 
 <head>
   <title>Router Link | Router Navigation Component</title>
-  <meta name="description" content="Router link komponenta slúži ako prispôsobiteľný link navrhnutý na použitie v navigácii naprieč aplikáciou." />
+  <meta
+    name="description"
+    content="Router link komponenta slúži ako prispôsobiteľný link navrhnutý na použitie v navigácii naprieč aplikáciou."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -34,7 +37,7 @@ For more information on using Router Link, go to the [**Router**](../router) pag
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

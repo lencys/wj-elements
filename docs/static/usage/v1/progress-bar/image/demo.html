@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,25 +6,33 @@
     <title>ProgressBar</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
-      <script type="module" src="../../../../wje-elementy/wje-master.js"></script>
-      <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
+    <script type="module" src="../../../../wje-elementy/wje-master.js"></script>
+    <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
     <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
     <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
   </head>
 
-  <body>    
+  <body>
     <div class="container">
-      <div class="content" style="flex-direction: column;">
-        <wje-progress-bar progress="60" radius="20" stroke="3" color="danger" type="circle" shadow="open" class="wje-color-danger wje-color">
+      <div class="content" style="flex-direction: column">
+        <wje-progress-bar
+          progress="60"
+          radius="20"
+          stroke="3"
+          color="danger"
+          type="circle"
+          shadow="open"
+          class="wje-color-danger wje-color"
+        >
           <wje-thumbnail circle>
-            <img alt="Silhouette of mountains" src="../../../../img/demos/thumbnail.svg">
+            <img alt="Silhouette of mountains" src="../../../../img/demos/thumbnail.svg" />
           </wje-thumbnail>
           <style>
-          wje-thumbnail {
+            wje-thumbnail {
               --wje-border-radius: 50%;
               --wje-thumbnail-width: 38px;
               --wje-thumbnail-height: 38px;
-          }
+            }
           </style>
         </wje-progress-bar>
       </div>

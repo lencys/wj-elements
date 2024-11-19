@@ -7,28 +7,10 @@ build:
   script:
     - NODE_VERSION=$(cat ./.nvmrc)
     - VERSION_LENGTH=${#NODE_VERSION}
-    -
-      (
-      if [ $VERSION_LENGTH -gt 0 ];
-      then
-      echo "changing node version to $NODE_VERSION";
-      nvm install;
-      nvm use;
-      node -v;
-      whereis node;
-      node -v;
-      npm -v;
-      fi;
-      echo "build app";
-      npm install;
-      npm run build;
-      cd docs;
-      npm install;
-      npm run build:production;
-      cd -;
-      echo "deploy";
-      /usr/local/bin/wj-rsync.sh webjet2b.srv.iway.local docs/build /www/tomcat_au20/webapps/elements_webjet_sk/ tomcat_au20 tomcat_au20;
-      )
+    - ( if [ $VERSION_LENGTH -gt 0 ]; then echo "changing node version to $NODE_VERSION"; nvm install; nvm use; node -v;
+      whereis node; node -v; npm -v; fi; echo "build app"; npm install; npm run build; cd docs; npm install; npm run
+      build:production; cd -; echo "deploy"; /usr/local/bin/wj-rsync.sh webjet2b.srv.iway.local docs/build
+      /www/tomcat_au20/webapps/elements_webjet_sk/ tomcat_au20 tomcat_au20; )
 
   artifacts:
     paths:

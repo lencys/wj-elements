@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/tab/slots.md';
 
 <head>
   <title>Tab | Tab navigation button</title>
-  <meta name="description" content="Komponent Tab je podriadeným komponentom TabGroup a slúži ako tlačidlo navigácie založenej na záložkách. Používa sa v kombinácii s elementom TabPanel." />
+  <meta
+    name="description"
+    content="Komponent Tab je podriadeným komponentom TabGroup a slúži ako tlačidlo navigácie založenej na záložkách. Používa sa v kombinácii s elementom TabPanel."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -34,7 +37,7 @@ For examples of using the `Tab` component, go to the documentation [**TabGroup**
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

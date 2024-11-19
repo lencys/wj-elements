@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -63,13 +63,13 @@ export default class DemoForm extends WJElement {
   }
 
   afterDraw() {
-    document.querySelector(`[name="animal"]`).value = 'rabbit'
+    document.querySelector(`[name="animal"]`).value = 'rabbit';
 
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(template, this.context);
 
     this.addEventListener('wje-icon-picker:select', (e) => {
-      e.target.closest("wje-input").value = e.detail.name;
+      e.target.closest('wje-input').value = e.detail.name;
       e.target.onClose();
     });
 
@@ -80,34 +80,33 @@ export default class DemoForm extends WJElement {
       e.stopImmediatePropagation();
 
       const formData = new FormData(form);
-      let data = {
-      };
+      let data = {};
 
       for (let [key, value] of formData.entries()) {
         try {
-          data[key] = JSON.parse(value)
+          data[key] = JSON.parse(value);
         } catch (e) {
           data[key] = value;
         }
       }
 
       console.log(data);
-    })
+    });
 
     form.addEventListener('reset', (e) => {
-      console.log('klikol som form reset', e)
+      console.log('klikol som form reset', e);
     });
 
     const randomInput = document.createElement('wje-input');
-    randomInput.setAttribute('name', 'random')
-    randomInput.setAttribute('label', 'Random input')
+    randomInput.setAttribute('name', 'random');
+    randomInput.setAttribute('label', 'Random input');
 
-    randomInput.value = 'nenene'
-    form.append(randomInput)
+    randomInput.value = 'nenene';
+    form.append(randomInput);
   }
 }
 
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-form") || window.customElements.define("demo-form", DemoForm);
+customElements.get('demo-form') || window.customElements.define('demo-form', DemoForm);

@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/input/slots.md';
 
 <head>
   <title>Input: extension of the standard Input element</title>
-  <meta name="description" content="Input element rozširuje možnosti štandardného HTML inputu pokročilými funkciami a možnosťami prispôsobenia. " />
+  <meta
+    name="description"
+    content="Input element rozširuje možnosti štandardného HTML inputu pokročilými funkciami a možnosťami prispôsobenia. "
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -26,7 +29,8 @@ import Basic from '@site/static/usage/v1/input/basic/index.md';
 
 <div className="xxlarge">
 
-  <Basic />
+{' '}
+<Basic />
 
 </div>
 
@@ -88,7 +92,7 @@ import Clearable from '@site/static/usage/v1/input/clearable/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

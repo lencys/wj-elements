@@ -1,6 +1,5 @@
-import RelativeTime from "./relative-time.element.js";
+import RelativeTime from './relative-time.element.js';
 
 export default RelativeTime;
 
-RelativeTime.define("wje-relative-time", RelativeTime);
-
+RelativeTime.define('wje-relative-time', RelativeTime);

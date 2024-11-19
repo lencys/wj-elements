@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/item/slots.md';
 
 <head>
   <title>Item | Blocks List element with diverse content</title>
-  <meta name="description" content="Komponenty Item sú bloky, ktoré môžu obsahovať rôzne typy obsahu vrátane textu, ikon, avatarov, obrázkov, inputov a iných štandardných alebo custom elementov. Item elementy sa zvyčajne nachádzajú vo vnútri List elementov." />
+  <meta
+    name="description"
+    content="Komponenty Item sú bloky, ktoré môžu obsahovať rôzne typy obsahu vrátane textu, ikon, avatarov, obrázkov, inputov a iných štandardných alebo custom elementov. Item elementy sa zvyčajne nachádzajú vo vnútri List elementov."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -60,7 +63,7 @@ import Icons from '@site/static/usage/v1/item/icons/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

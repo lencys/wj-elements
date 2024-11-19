@@ -212,5 +212,5 @@ module.exports = {
     ],
   ],
   customFields: {},
-  themes: []
+  themes: [],
 };

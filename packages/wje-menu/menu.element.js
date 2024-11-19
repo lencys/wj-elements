@@ -1,5 +1,5 @@
-import { default as WJElement } from "../wje-element/element.js";
-import styles from "./styles/styles.css?inline";
+import { default as WJElement } from '../wje-element/element.js';
+import styles from './styles/styles.css?inline';
 
 /**
  * `Menu` is a custom web component that represents a menu.
@@ -25,80 +25,77 @@ import styles from "./styles/styles.css?inline";
  * @tag wje-menu
  */
 export default class Menu extends WJElement {
+  /**
+   * Creates an instance of Menu.
+   * @class
+   */
+  constructor() {
+    super();
+  }
 
-    /**
-     * Creates an instance of Menu.
-     * @class
-     */
-    constructor() {
-        super();
-    }
+  className = 'Menu';
 
-    className = "Menu";
+  /**
+   * Returns the CSS styles for the component.
+   * @static
+   * @returns {CSSStyleSheet}
+   */
+  static get cssStyleSheet() {
+    return styles;
+  }
 
-    /**
-     * Returns the CSS styles for the component.
-     * @static
-     * @returns {CSSStyleSheet}
-     */
-    static get cssStyleSheet() {
-        return styles;
-    }
+  /**
+   * Returns the list of attributes to observe for changes.
+   * @static
+   * @returns {Array<string>}
+   */
+  static get observedAttributes() {
+    return ['active', 'collapse'];
+  }
 
-    /**
-     * Returns the list of attributes to observe for changes.
-     * @static
-     * @returns {Array<string>}
-     */
-    static get observedAttributes() {
-        return ["active", "collapse"];
-    }
+  /**
+   * Sets up the attributes for the component.
+   */
+  setupAttributes() {
+    this.isShadowRoot = 'open';
+  }
 
-    /**
-     * Sets up the attributes for the component.
-     */
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
+  /**
+   * Draws the component for the menu.
+   * @returns {DocumentFragment}
+   */
+  draw() {
+    let fragment = document.createDocumentFragment();
 
-    /**
-     * Draws the component for the menu.
-     * @returns {DocumentFragment}
-     */
-    draw() {
-        let fragment = document.createDocumentFragment();
+    this.classList.remove('wje-menu-collapse');
 
-        this.classList.remove("wje-menu-collapse");
+    if (this.hasAttribute('collapse')) this.classList.add('wje-menu-collapse');
 
-        if (this.hasAttribute("collapse"))
-            this.classList.add("wje-menu-collapse");
+    let native = document.createElement('div');
+    native.setAttribute('part', 'native');
+    native.classList.add('native-menu');
 
-        let native = document.createElement("div");
-        native.setAttribute("part", "native");
-        native.classList.add("native-menu");
+    let slot = document.createElement('slot');
 
-        let slot = document.createElement("slot");
+    native.appendChild(slot);
+    fragment.appendChild(native);
 
-        native.appendChild(slot);
-        fragment.appendChild(native);
+    return fragment;
+  }
 
-        return fragment;
-    }
+  /**
+   * Refreshes the component after drawing.
+   */
+  afterDraw() {
+    Array.from(this.children).forEach((child) => {
+      if (child.tagName.includes('-')) child.refresh();
+    });
+  }
 
-    /**
-     * Refreshes the component after drawing.
-     */
-    afterDraw() {
-        Array.from(this.children).forEach((child) => {
-            if (child.tagName.includes('-'))
-                child.refresh();
-        });
-    }
-
-    /**
-     * Cleans up the component before disconnecting.
-     */
-    beforeDisconnect() {
-        this.context.innerHTML = "";
-    }
+  /**
+   * Cleans up the component before disconnecting.
+   */
+  beforeDisconnect() {
+    this.context.innerHTML = '';
+  }
 }

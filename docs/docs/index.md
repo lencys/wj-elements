@@ -9,21 +9,25 @@ import DocsCards from '@components/global/DocsCards';
 
 <head>
 
-  <title>Moderná sada nástrojov používateľského rozhrania založená na web komponentoch</title>
-  <meta
-    name="description"
-    content="WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania založená na web komponentoch, ktorá je určená na zjednodušenie vývoja webových aplikácií."
-  />
-  <link rel="canonical" href="https://elements.webjet.sk/" />
-  <link rel="alternate" href="https://elements.webjet.sk/" hreflang="x-default" />
-  <link rel="alternate" href="https://elements.webjet.sk/" hreflang="en" />
-  <meta property="og:url" content="https://elements.webjet.sk/" />
-    <style>{`
+{' '}
+<title>Moderná sada nástrojov používateľského rozhrania založená na web komponentoch</title>
+<meta
+  name="description"
+  content="WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania založená na web komponentoch, ktorá je určená na zjednodušenie vývoja webových aplikácií."
+/>
+<link rel="canonical" href="https://elements.webjet.sk/" />
+<link rel="alternate" href="https://elements.webjet.sk/" hreflang="x-default" />
+<link rel="alternate" href="https://elements.webjet.sk/" hreflang="en" />
+<meta property="og:url" content="https://elements.webjet.sk/" />
+<style>{`
     docs-cards > a{
       display: flex;
     }
   `}</style>
-  <script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@dddb1c19734498c5b2a17f2e6ed605d0cd40d02e/wj-master.js"></script>
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@dddb1c19734498c5b2a17f2e6ed605d0cd40d02e/wj-master.js"
+></script>
 
 </head>
 
@@ -32,61 +36,64 @@ Ponúkajú jednoduchú integráciu s React a Vue.
 
 Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/install.md).
 
-<br/>
+<br />
 <intro-end />
 
 <DocsCards>
 
- <a href="intro/install">
-    <wj-card>
-      <wj-card-header>
-          <wj-icon name="world-download" size="large"></wj-icon>
-          <wj-card-title>Sprievodca inštaláciou</wj-card-title>
-      </wj-card-header>
-      <wj-card-content>
-      <p>Podrobný sprievodca inštaláciou WebJET elementov.</p>
-      </wj-card-content>
-    </wj-card>
-  </a>
-
- <a href="components">
+{' '}
+<a href="intro/install">
   <wj-card>
     <wj-card-header>
-        <wj-icon name="layout-dashboard" size="large"></wj-icon>
-        <wj-card-title href="intro/cli">Elementy</wj-card-title>
+      <wj-icon name="world-download" size="large"></wj-icon>
+      <wj-card-title>Sprievodca inštaláciou</wj-card-title>
     </wj-card-header>
     <wj-card-content>
-    <p>Nazrite do knižnice dostupných WebJET elementov.</p>
+      <p>Podrobný sprievodca inštaláciou WebJET elementov.</p>
     </wj-card-content>
   </wj-card>
 </a>
 
- <a href="api/layout">
+{' '}
+<a href="components">
+  <wj-card>
+    <wj-card-header>
+      <wj-icon name="layout-dashboard" size="large"></wj-icon>
+      <wj-card-title href="intro/cli">Elementy</wj-card-title>
+    </wj-card-header>
+    <wj-card-content>
+      <p>Nazrite do knižnice dostupných WebJET elementov.</p>
+    </wj-card-content>
+  </wj-card>
+</a>
+
+{' '}
+<a href="api/layout">
   <wj-card>
     <wj-card-header>
       <wj-icon name="layout" size="large"></wj-icon>
       <wj-card-title>Layout</wj-card-title>
     </wj-card-header>
     <wj-card-content>
-    <p>Zistite ako si vytvoriť rozloženie stránok podľa vašich potrieb.</p>
+      <p>Zistite ako si vytvoriť rozloženie stránok podľa vašich potrieb.</p>
     </wj-card-content>
   </wj-card>
 </a>
 
- <a href="theming/basics">
+{' '}
+<a href="theming/basics">
   <wj-card>
     <wj-card-header>
-        <wj-icon name="brush" size="large"></wj-icon>
-        <wj-card-title>Úprava štýlov</wj-card-title>
+      <wj-icon name="brush" size="large"></wj-icon>
+      <wj-card-title>Úprava štýlov</wj-card-title>
     </wj-card-header>
     <wj-card-content>
-    <p>Naučte sa ako si jednoducho prispôsobiť vizuál Elements.</p>
+      <p>Naučte sa ako si jednoducho prispôsobiť vizuál Elements.</p>
     </wj-card-content>
   </wj-card>
 </a>
 
 </DocsCards>
-
 
 ## Prehľad
 
@@ -95,9 +102,11 @@ WebJET Elements je pokročilá platforma na vytváranie a nasadzovanie modernýc
 Kľúčové vlastnosti rámca WebJET Elements Framework:
 
 ### Komplexná sada nástrojov používateľského rozhrania
+
 WebJET Elements obsahuje širokú škálu ovládacích prvkov a komponentov používateľského rozhrania, ktoré sú optimalizované pre webové rozhrania. Tieto komponenty pokrývajú rôzne funkcie a sú navrhnuté tak, aby sa dali ľahko integrovať do akejkoľvek webovej aplikácie.
 
 ### Integrácia s populárnymi frameworkami
+
 Framework podporuje bezproblémovú integráciu s modernými webovými technológiami React a Vue, čím zabezpečuje kompatibilitu a flexibilitu pri vývoji.
 
 ### Stabilný a nezávislý
@@ -105,14 +114,16 @@ Framework podporuje bezproblémovú integráciu s modernými webovými technoló
 WebJET Elements je postavený na spoľahlivých štandardizovaných webových technológiách W3C a využíva moderné webové rozhrania API, ako sú Custom Elements a Shadow DOM. Vďaka tomu majú komponenty stabilné rozhranie API a nie sú závislé od rozmaru dodávateľa platformy či knižníc tretích strán.
 
 ### Využívanie Shadow DOM
+
 WebJET Elements využíva Shadow DOM a zabezpečuje zapuzdrenie štýlu a správania svojich komponentov, čím podporuje čistejšiu a lepšie udržiavateľnú kódovú základňu.
 
 ### Prispôsobenie a flexibilita
+
 Framework ponúka rozsiahle možnosti prispôsobenia prostredníctvom vlastných vlastností CSS, slotov a shadow parts, čo umožňuje vývojárom prispôsobiť komponenty konkrétnym potrebám.
 
 ### Optimalizovaný pre výkon
-Optimalizovaný pre výkon, framework zabezpečuje, že komponenty sú nielen funkčné, ale aj efektívne, čo prispieva k plynulejšiemu používateľskému zážitku.
 
+Optimalizovaný pre výkon, framework zabezpečuje, že komponenty sú nielen funkčné, ale aj efektívne, čo prispieva k plynulejšiemu používateľskému zážitku.
 
 **V dokumentácii WebJET Elements nájdete podrobné príklady, ktoré vám pomôžu rýchlo a efektívne vytvárať výnimočné webové aplikácie.**
 

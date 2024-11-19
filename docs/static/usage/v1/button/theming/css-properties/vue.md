@@ -19,8 +19,8 @@
     --wje-button-border-radius: 0;
     --wje-color-contrast: #0af4fc;
     --wje-padding-top: 1rem;
-    --wje-padding-start: .7rem;
-    --wje-padding-end: .7rem;
+    --wje-padding-start: 0.7rem;
+    --wje-padding-end: 0.7rem;
     --wje-padding-bottom: 1rem;
   }
 </style>

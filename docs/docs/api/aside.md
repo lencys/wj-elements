@@ -1,5 +1,5 @@
 ---
-title: "Aside"
+title: 'Aside'
 ---
 
 import Props from '@ionic-internal/component-api/v1/aside/props.md';
@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/aside/slots.md';
 
 <head>
   <title>Layout: Aside element</title>
-  <meta name="description" content="Aside je prvok na tvorbu layoutov a zobrazuje sa vedľa elementu Main. Používa sa väčšinou na zobrazenie doplnkových informácií k hlavnému obsahu, prípadne navigácie." />
+  <meta
+    name="description"
+    content="Aside je prvok na tvorbu layoutov a zobrazuje sa vedľa elementu Main. Používa sa väčšinou na zobrazenie doplnkových informácií k hlavnému obsahu, prípadne navigácie."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -36,7 +39,7 @@ Pre informácie o použítí **Aside** elementu sa presuňte do dokumentácie [*
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

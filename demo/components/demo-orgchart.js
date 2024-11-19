@@ -1,7 +1,7 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
-const template = document.createElement("template");
+const template = document.createElement('template');
 
 template.innerHTML = `<h1>Orgchart</h1>
   <div class="container">
@@ -239,7 +239,7 @@ export default class DemoOrgchart extends WJElement {
     codeSnippet.generateSnippet(template, this.context);
 
     document.querySelector('#line wje-orgchart-group').addEventListener('wje-orgchart-group:click', (e) => {
-      console.log("wje-orgchart-group", e.detail);
+      console.log('wje-orgchart-group', e.detail);
     });
     // const codeSnippet = new CodeSnippet();
     const orgchartContainer = document.querySelector('.orgchart-container');
@@ -259,7 +259,7 @@ export default class DemoOrgchart extends WJElement {
 
     const isCursorOnCard = (event) => {
       const path = event.composedPath();
-      return path.some(element => element.nodeName === 'WJE-CARD');
+      return path.some((element) => element.nodeName === 'WJE-CARD');
     };
 
     const onMousedown = (e) => {
@@ -336,8 +336,8 @@ export default class DemoOrgchart extends WJElement {
       const containerRect = orgchartContainer.getBoundingClientRect();
       const orgchartRect = orgchart.getBoundingClientRect();
 
-      const offsetX = (containerRect.width / 2) - (nodeRect.width / 2);
-      const offsetY = (containerRect.height / 2) - (nodeRect.height / 2);
+      const offsetX = containerRect.width / 2 - nodeRect.width / 2;
+      const offsetY = containerRect.height / 2 - nodeRect.height / 2;
       const newLeft = containerRect.left - nodeRect.left + offsetX + (orgchartRect.left - containerRect.left);
       const newTop = containerRect.top - nodeRect.top + offsetY + (orgchartRect.top - containerRect.top);
 
@@ -363,8 +363,7 @@ export default class DemoOrgchart extends WJElement {
   }
 }
 
-let __esModule = "true";
+let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-orgchart") || window.customElements.define("demo-orgchart", DemoOrgchart);
-    
+customElements.get('demo-orgchart') || window.customElements.define('demo-orgchart', DemoOrgchart);

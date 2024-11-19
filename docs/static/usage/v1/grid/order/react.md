@@ -5,7 +5,9 @@ import { Col, Grid, Row } from '@elements/react';
 function Example() {
   return (
     <>
-      <span>Zmeníme poradie stĺpcov pomocou <strong>order</strong> z 3 2 1 na 1 2 3</span>
+      <span>
+        Zmeníme poradie stĺpcov pomocou <strong>order</strong> z 3 2 1 na 1 2 3
+      </span>
       <wje-grid>
         <wje-row>
           <wje-col order="3">3</wje-col>

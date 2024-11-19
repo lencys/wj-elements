@@ -1,6 +1,6 @@
-import { default as WJElement, event } from "../wje-element/element.js";
-import Icon from "../wje-icon/icon.js";
-import styles from "./styles/styles.css?inline";
+import { default as WJElement, event } from '../wje-element/element.js';
+import Icon from '../wje-icon/icon.js';
+import styles from './styles/styles.css?inline';
 
 /**
  * `Option` is a custom web component that represents an option.
@@ -16,123 +16,122 @@ import styles from "./styles/styles.css?inline";
  * @tag wje-option
  */
 export default class Option extends WJElement {
+  /**
+   * Creates an instance of Option.
+   * @class
+   */
+  constructor() {
+    super();
+  }
 
-    /**
-     * Creates an instance of Option.
-     * @class
-     */
-    constructor() {
-        super();
-    }
+  /**
+   * Dependencies of the Option component.
+   */
+  dependencies = {
+    'wje-icon': Icon,
+  };
 
-    /**
-     * Dependencies of the Option component.
-     */
-    dependencies = {
-        "wje-icon": Icon
-    }
+  /**
+   * Sets the selected attribute of the option.
+   * @param {boolean} value The value to set.
+   */
+  set selected(value) {
+    if (value) this.setAttribute('selected', '');
+    else this.removeAttribute('selected');
+  }
 
-    /**
-     * Sets the selected attribute of the option.
-     * @param {boolean} value The value to set.
-     */
-    set selected(value) {
-        if(value)
-            this.setAttribute("selected", "")
-        else
-            this.removeAttribute("selected");
-    }
+  /**
+   * Sets the value attribute of the option.
+   * @param {string} value The value to set.
+   */
+  set value(value) {
+    this.setAttribute('value', value);
+  }
 
-    /**
-     * Sets the value attribute of the option.
-     * @param {string} value The value to set.
-     */
-    set value(value) {
-        this.setAttribute("value", value);
-    }
+  /**
+   * Sets the text content of the option.
+   * @param {string} value The text to set.
+   */
+  set text(value) {
+    this.innerText = value;
+  }
 
-    /**
-     * Sets the text content of the option.
-     * @param {string} value The text to set.
-     */
-    set text(value) {
-        this.innerText = value;
-    }
+  className = 'Option';
 
-    className = "Option";
+  /**
+   * Returns the CSS styles for the component.
+   * @static
+   * @returns {CSSStyleSheet}
+   */
+  static get cssStyleSheet() {
+    return styles;
+  }
 
-    /**
-     * Returns the CSS styles for the component.
-     * @static
-     * @returns {CSSStyleSheet}
-     */
-    static get cssStyleSheet() {
-        return styles;
-    }
+  /**
+   * Returns the list of attributes to observe for changes.
+   * @static
+   * @returns {Array<string>}
+   */
+  static get observedAttributes() {
+    return [];
+  }
 
-    /**
-     * Returns the list of attributes to observe for changes.
-     * @static
-     * @returns {Array<string>}
-     */
-    static get observedAttributes() {
-        return [];
-    }
+  /**
+   * Sets up the attributes for the component.
+   */
+  setupAttributes() {
+    this.isShadowRoot = 'open';
+  }
 
-    /**
-     * Sets up the attributes for the component.
-     */
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
+  /**
+   * Draws the component for the option.
+   * @returns {DocumentFragment}
+   */
+  draw() {
+    let fragment = document.createDocumentFragment();
 
-    /**
-     * Draws the component for the option.
-     * @returns {DocumentFragment}
-     */
-    draw() {
-        let fragment = document.createDocumentFragment();
+    let element = document.createElement('div');
+    element.classList.add('native-option');
+    element.setAttribute('part', 'native');
 
-        let element = document.createElement("div");
-        element.classList.add("native-option");
-        element.setAttribute("part", "native");
+    let icon = document.createElement('wje-icon');
+    icon.setAttribute('name', 'check');
 
-        let icon = document.createElement("wje-icon");
-        icon.setAttribute("name", "check");
+    let start = document.createElement('slot');
+    start.setAttribute('name', 'start');
 
-        let start = document.createElement("slot");
-        start.setAttribute("name", "start");
+    let slot = document.createElement('slot');
 
-        let slot = document.createElement("slot");
+    let end = document.createElement('slot');
+    end.setAttribute('name', 'end');
 
-        let end = document.createElement("slot");
-        end.setAttribute("name", "end");
+    element.appendChild(icon);
+    element.appendChild(start);
+    element.appendChild(slot);
+    element.appendChild(end);
 
-        element.appendChild(icon);
-        element.appendChild(start);
-        element.appendChild(slot);
-        element.appendChild(end);
+    fragment.appendChild(element);
 
-        fragment.appendChild(element);
+    return fragment;
+  }
 
-        return fragment;
-    }
+  /**
+   * Adds event listeners after the component is drawn.
+   */
+  afterDraw() {
+    event.addListener(this, 'click', null, (e, b, c) => {
+      if (this.hasAttribute('disabled')) return;
 
-    /**
-     * Adds event listeners after the component is drawn.
-     */
-    afterDraw() {
-        event.addListener(this, "click", null, (e, b, c) => {
-            if (this.hasAttribute('disabled')) return;
-
-            this.dispatchEvent(new CustomEvent("wje-option:change", {
-                bubbles: true,
-                composed: true,
-                detail: {
-                    value: this.value,
-                    text: this.text
-                }
-            }));
-        });
-    }
+      this.dispatchEvent(
+        new CustomEvent('wje-option:change', {
+          bubbles: true,
+          composed: true,
+          detail: {
+            value: this.value,
+            text: this.text,
+          },
+        })
+      );
+    });
+  }
 }

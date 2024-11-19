@@ -1,5 +1,5 @@
-import { default as WJElement } from "../wje-element/element.js";
-import styles from "./styles/styles.css?inline";
+import { default as WJElement } from '../wje-element/element.js';
+import styles from './styles/styles.css?inline';
 
 /**
  * `Item` is a custom web component that represents an item.
@@ -33,68 +33,67 @@ import styles from "./styles/styles.css?inline";
  * @tag wje-item
  */
 export default class Item extends WJElement {
+  /**
+   * Item constructor for the class.
+   */
+  constructor() {
+    super();
 
-	/**
-	 * Item constructor for the class.
-	 */
-	constructor() {
-		super();
+    this.labelColorStyles = {};
+    this.itemStyles = new Map();
+    this.inheritedAriaAttributes = {};
+    this.multipleInputs = false;
+    this.focusable = true;
+    this.button = false;
+    this.detailIcon = ``; // TODO icon
+    this.disabled = false;
+    this.counter = false;
+    this.routerDirection = 'forward';
+    this.type = 'button';
+  }
 
-		this.labelColorStyles = {};
-		this.itemStyles = new Map();
-		this.inheritedAriaAttributes = {};
-		this.multipleInputs = false;
-		this.focusable = true;
-		this.button = false;
-		this.detailIcon = ``; // TODO icon
-		this.disabled = false;
-		this.counter = false;
-		this.routerDirection = 'forward';
-		this.type = 'button';
-	}
+  /**
+   * Returns the CSS styles for the component.
+   * @returns {boolean}
+   */
+  isClickable() {
+    return this.hasAttribute('href') || this.button;
+  }
 
-	/**
-	 * Returns the CSS styles for the component.
-	 * @returns {boolean}
-	 */
-	isClickable() {
-		return this.hasAttribute('href') || this.button;
-	}
+  /**
+   * Returns the CSS styles for the component.
+   * @type {string}
+   */
+  className = 'Item';
 
-	/**
-	 * Returns the CSS styles for the component.
-	 * @type {string}
-	 */
-	className = "Item";
+  /**
+   * Returns the CSS styles for the component.
+   * @static
+   * @returns {object} styles
+   */
+  static get cssStyleSheet() {
+    return styles;
+  }
 
-	/**
-	 * Returns the CSS styles for the component.
-	 * @static
-	 * @returns {object} styles
-	 */
-	static get cssStyleSheet() {
-		return styles;
-	}
+  /**
+   * Sets up the attributes for the component.
+   */
+  setupAttributes() {
+    this.isShadowRoot = 'open';
+  }
 
-	/**
-	 * Sets up the attributes for the component.
-	 */
-	setupAttributes() {
-		this.isShadowRoot = 'open';
-	}
+  /**
+   * Draws the component for the item.
+   * @returns {DocumentFragment}
+   */
+  draw() {
+    const TagType = this.isClickable() ? (this.hasAttribute('href') === undefined ? 'button' : 'a') : 'div';
 
-	/**
-	 * Draws the component for the item.
-	 * @returns {DocumentFragment}
-	 */
-	draw() {
-		const TagType = this.isClickable() ? this.hasAttribute('href') === undefined ? 'button' : 'a' : 'div';
+    if (this.hostContext('wje-list', this)) {
+      this.classList.add('wje-item-list');
+    }
 
-		if(this.hostContext('wje-list', this)) {
-			this.classList.add('wje-item-list');
-		}
-
-		return `<${TagType} class="item-native" part="native">
+    return `<${TagType} class="item-native" part="native">
 			<slot name="start"></slot>
 			<div class="item-inner">
 					<div class="input-wrapper" part="inner">
@@ -108,15 +107,15 @@ export default class Item extends WJElement {
 				<slot name="error"></slot>
 				<slot name="helper"></slot>
 		</div>`;
-	}
+  }
 
-	/**
-	 * Determines if the given element or any of its ancestors matches the specified selector.
-	 * @param {string} selector The CSS selector to match against the element's ancestors.
-	 * @param {HTMLElement} el The element from which to start the search.
-	 * @returns {boolean} - Returns `true` if the element or one of its ancestors matches the selector; otherwise, `false`.
-	 */
-	hostContext = (selector, el) => {
-		return el.closest(selector) !== null;
-	}
+  /**
+   * Determines if the given element or any of its ancestors matches the specified selector.
+   * @param {string} selector The CSS selector to match against the element's ancestors.
+   * @param {HTMLElement} el The element from which to start the search.
+   * @returns {boolean} - Returns `true` if the element or one of its ancestors matches the selector; otherwise, `false`.
+   */
+  hostContext = (selector, el) => {
+    return el.closest(selector) !== null;
+  };
 }

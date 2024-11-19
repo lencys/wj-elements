@@ -13,4 +13,4 @@ import { ExampleComponent } from './example.component';
   declarations: [AppComponent, ExampleComponent],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

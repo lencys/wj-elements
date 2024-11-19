@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/thumbnail/slots.md';
 
 <head>
   <title>Thumbnail | Image thumbnail component</title>
-  <meta name="description" content="Thumbnail uľahčuje zobrazenie väčších obrázkov alebo iných médií zobrazením ich menšieho náhľadu. Je ho možné použiť samostatne ale aj v iných elementoch." />
+  <meta
+    name="description"
+    content="Thumbnail uľahčuje zobrazenie väčších obrázkov alebo iných médií zobrazením ich menšieho náhľadu. Je ho možné použiť samostatne ale aj v iných elementoch."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -50,7 +53,7 @@ import CSSProps from '@site/static/usage/v1/thumbnail/theming/css-properties/ind
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

@@ -1,10 +1,9 @@
-
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
-template.innerHTML = /*html */`
+template.innerHTML = /*html */ `
     <style>
       .content {
         display: block; 
@@ -132,17 +131,18 @@ template.innerHTML = /*html */`
 `;
 
 export default class DemoSlidingContainer extends WJElement {
-    constructor() {
-        super(template);
-    }
+  constructor() {
+    super(template);
+  }
 
-    afterDraw(context, store2, params) {
-        const codeSnippet = new CodeSnippet();
-        codeSnippet.generateSnippet(template, this.context);
-    }
+  afterDraw(context, store2, params) {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, this.context);
+  }
 }
 
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-sliding-container") || window.customElements.define("demo-sliding-container", DemoSlidingContainer);
+customElements.get('demo-sliding-container') ||
+  window.customElements.define('demo-sliding-container', DemoSlidingContainer);

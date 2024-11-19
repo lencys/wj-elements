@@ -1,8 +1,9 @@
 var l = Object.defineProperty;
-var i = (e, t, o) => t in e ? l(e, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : e[t] = o;
-var n = (e, t, o) => (i(e, typeof t != "symbol" ? t + "" : t, o), o);
-import a from "./wje-element.js";
-const c = ":host{--wje-card-controls-font-size: 11px;--wje-card-controls-font-family: var(--wje-font-family-secondary);font-family:var(--wje-card-controls-font-family);text-transform:uppercase;display:inline-block;letter-spacing:.06em;font-size:var(--wje-card-controls-font-size);font-weight:500;margin:0;padding:0;line-height:normal;overflow:hidden;text-overflow:ellipsis;filter:alpha(opacity=40);transition:opacity .3s ease;position:absolute;right:1rem;top:.5rem}";
+var i = (e, t, o) => (t in e ? l(e, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : (e[t] = o));
+var n = (e, t, o) => (i(e, typeof t != 'symbol' ? t + '' : t, o), o);
+import a from './wje-element.js';
+const c =
+  ':host{--wje-card-controls-font-size: 11px;--wje-card-controls-font-family: var(--wje-font-family-secondary);font-family:var(--wje-card-controls-font-family);text-transform:uppercase;display:inline-block;letter-spacing:.06em;font-size:var(--wje-card-controls-font-size);font-weight:500;margin:0;padding:0;line-height:normal;overflow:hidden;text-overflow:ellipsis;filter:alpha(opacity=40);transition:opacity .3s ease;position:absolute;right:1rem;top:.5rem}';
 class d extends a {
   /**
    * CardControls constructor
@@ -14,7 +15,7 @@ class d extends a {
      * Class name
      * @type {string}
      */
-    n(this, "className", "CardControls");
+    n(this, 'className', 'CardControls');
   }
   /**
    * Get CSS stylesheet
@@ -28,7 +29,7 @@ class d extends a {
    * Setup attributes
    */
   setupAttributes() {
-    this.isShadowRoot = "open";
+    this.isShadowRoot = 'open';
   }
   /**
    * Draw method
@@ -38,11 +39,10 @@ class d extends a {
    * @returns {Object} fragment - The document fragment
    */
   draw(o, m, f) {
-    let r = document.createDocumentFragment(), s = document.createElement("slot");
+    let r = document.createDocumentFragment(),
+      s = document.createElement('slot');
     return r.appendChild(s), r;
   }
 }
-a.define("wje-card-controls", d);
-export {
-  d as default
-};
+a.define('wje-card-controls', d);
+export { d as default };

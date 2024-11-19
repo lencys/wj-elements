@@ -1,7 +1,6 @@
-import { AnimatedOutlet,    GenericCSS,
-    setDefaultAnimation } from 'slick-router/components/animated-outlet.js';
+import { AnimatedOutlet, GenericCSS, setDefaultAnimation } from 'slick-router/components/animated-outlet.js';
 
-setDefaultAnimation(GenericCSS)
+setDefaultAnimation(GenericCSS);
 
 /**
  * `Route` is a custom web component that represents a route in a routing system.
@@ -12,17 +11,16 @@ setDefaultAnimation(GenericCSS)
  * @tag wje-router-outlet
  */
 export default class RouterOutlet extends AnimatedOutlet {
+  /**
+   * Creates an instance of Route.
+   */
+  constructor() {
+    super();
+  }
 
-    /**
-     * Creates an instance of Route.
-     */
-    constructor() {
-        super();
-    }
-
-    /**
-     * The class name for the component.
-     * @type {string}
-     */
-    className = "RouterOutlet";
+  /**
+   * The class name for the component.
+   * @type {string}
+   */
+  className = 'RouterOutlet';
 }

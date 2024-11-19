@@ -1,8 +1,9 @@
 var n = Object.defineProperty;
-var u = (r, e, t) => e in r ? n(r, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : r[e] = t;
-var i = (r, e, t) => (u(r, typeof e != "symbol" ? e + "" : e, t), t);
-import l from "./wje-element.js";
-const m = ":host{--wje-thumbnail-width: 48px;--wje-thumbnail-height: 48px;--wje-thumbnail-border-radius: var(--wje-border-radius-medium)}:host{width:var(--wje-thumbnail-width);height:var(--wje-thumbnail-height);display:block;border-radius:var(--wje-border-radius)}:host([circle]) ::slotted(img){border-radius:50%}::slotted(wje-img),::slotted(img){border-radius:var(--wje-thumbnail-border-radius);width:100%;height:100%;object-fit:cover;overflow:hidden}";
+var u = (r, e, t) => (e in r ? n(r, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (r[e] = t));
+var i = (r, e, t) => (u(r, typeof e != 'symbol' ? e + '' : e, t), t);
+import l from './wje-element.js';
+const m =
+  ':host{--wje-thumbnail-width: 48px;--wje-thumbnail-height: 48px;--wje-thumbnail-border-radius: var(--wje-border-radius-medium)}:host{width:var(--wje-thumbnail-width);height:var(--wje-thumbnail-height);display:block;border-radius:var(--wje-border-radius)}:host([circle]) ::slotted(img){border-radius:50%}::slotted(wje-img),::slotted(img){border-radius:var(--wje-thumbnail-border-radius);width:100%;height:100%;object-fit:cover;overflow:hidden}';
 class s extends l {
   /**
    * Thumbnail constructor
@@ -14,7 +15,7 @@ class s extends l {
      * Class name
      * @type {string}
      */
-    i(this, "className", "Thumbnail");
+    i(this, 'className', 'Thumbnail');
   }
   /**
    * Get CSS stylesheet
@@ -36,7 +37,7 @@ class s extends l {
    * Setup attributes
    */
   setupAttributes() {
-    this.isShadowRoot = "open";
+    this.isShadowRoot = 'open';
   }
   /**
    * Before draw method
@@ -44,8 +45,7 @@ class s extends l {
    * @param {Object} store - The store
    * @param {Object} params - The parameters
    */
-  beforeDraw(t, o, d) {
-  }
+  beforeDraw(t, o, d) {}
   /**
    * Draw method
    * @param {Object} context - The context
@@ -54,11 +54,10 @@ class s extends l {
    * @returns {Object} Document fragment
    */
   draw(t, o, d) {
-    let a = document.createDocumentFragment(), h = document.createElement("slot");
+    let a = document.createDocumentFragment(),
+      h = document.createElement('slot');
     return a.appendChild(h), a;
   }
 }
-s.define("wje-thumbnail", s);
-export {
-  s as default
-};
+s.define('wje-thumbnail', s);
+export { s as default };

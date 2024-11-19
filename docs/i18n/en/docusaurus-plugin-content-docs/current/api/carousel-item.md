@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/card-title/slots.md';
 
 <head>
   <title>Card Title | Showing card title</title>
-  <meta name="description" content="Element Card Title je komponent navrhnutý na použitie v rámci elementu Card Header a zobrazuje názov karty, čím používateľovi umožňuje rýchlo identifikovať jej predmet alebo obsah." />
+  <meta
+    name="description"
+    content="Element Card Title je komponent navrhnutý na použitie v rámci elementu Card Header a zobrazuje názov karty, čím používateľovi umožňuje rýchlo identifikovať jej predmet alebo obsah."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -34,7 +37,7 @@ For more information on using Card Title, navigate to the [**Card**](../card) el
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

@@ -1,6 +1,5 @@
-import Header from "./header.element.js";
+import Header from './header.element.js';
 
 export default Header;
 
-Header.define("wje-header", Header);
-
+Header.define('wje-header', Header);

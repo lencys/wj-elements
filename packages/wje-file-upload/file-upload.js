@@ -1,6 +1,5 @@
-import FileUpload from "./file-upload.element.js";
+import FileUpload from './file-upload.element.js';
 
 export default FileUpload;
 
-FileUpload.define("wje-file-upload", FileUpload);
-
+FileUpload.define('wje-file-upload', FileUpload);

@@ -7,13 +7,16 @@
 .wje-theme-light,
 .light {
   * {
-    box-sizing: border-box!important;
+    box-sizing: border-box !important;
   }
   color-scheme: light;
 
-  --wje-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  --wje-font-family-secondary: "Montserrat", -apple-system, BlinkMacSystemFont,  "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell","Fira Sans", "Droid Sans", "Helvetica Neue",sans-serif;
-  --wje-force-mac-font-family: -apple-system, BlinkMacSystemFont,"Inter UI",  "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell","Fira Sans", "Droid Sans", "Helvetica Neue",sans-serif;
+  --wje-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji';
+  --wje-font-family-secondary: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --wje-force-mac-font-family: -apple-system, BlinkMacSystemFont, 'Inter UI', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 
   /* Line Heights */
   --wje-line-height-denser: 1.2;
@@ -23,29 +26,29 @@
   --wje-line-height-looser: 1.8;
 
   /* Font Sizes (rem) */
-  --wje-font-size-2x-small: 0.5rem;    /* 8px */
-  --wje-font-size-x-small: 0.625rem;   /* 10px */
-  --wje-font-size-small: 0.75rem;      /* 12px */
-  --wje-font-size: 0.875rem;           /* 14px */
-  --wje-font-size-medium: 1rem;        /* 16px */
-  --wje-font-size-large: 1.25rem;      /* 20px */
-  --wje-font-size-x-large: 1.5rem;     /* 24px */
-  --wje-font-size-2x-large: 2.25rem;   /* 36px */
-  --wje-font-size-3x-large: 3rem;      /* 48px */
-  --wje-font-size-4x-large: 4.5rem;    /* 72px */
+  --wje-font-size-2x-small: 0.5rem; /* 8px */
+  --wje-font-size-x-small: 0.625rem; /* 10px */
+  --wje-font-size-small: 0.75rem; /* 12px */
+  --wje-font-size: 0.875rem; /* 14px */
+  --wje-font-size-medium: 1rem; /* 16px */
+  --wje-font-size-large: 1.25rem; /* 20px */
+  --wje-font-size-x-large: 1.5rem; /* 24px */
+  --wje-font-size-2x-large: 2.25rem; /* 36px */
+  --wje-font-size-3x-large: 3rem; /* 48px */
+  --wje-font-size-4x-large: 4.5rem; /* 72px */
 
   /* Spacing (Padding/Margin) */
-  --wje-spacing-4x-small: 0.125rem;    /* 2px */
-  --wje-spacing-3x-small: 0.25rem;     /* 4px */
-  --wje-spacing-2x-small: 0.375rem;    /* 6px */
-  --wje-spacing-x-small: 0.5rem;       /* 8px */
-  --wje-spacing-small: 0.75rem;        /* 12px */
-  --wje-spacing-medium: 1rem;          /* 16px */
-  --wje-spacing-large: 1.5rem;         /* 24px */
-  --wje-spacing-x-large: 2rem;         /* 32px */
-  --wje-spacing-2x-large: 2.5rem;      /* 40px */
-  --wje-spacing-3x-large: 3rem;        /* 48px */
-  --wje-spacing-4x-large: 4.5rem;      /* 72px */
+  --wje-spacing-4x-small: 0.125rem; /* 2px */
+  --wje-spacing-3x-small: 0.25rem; /* 4px */
+  --wje-spacing-2x-small: 0.375rem; /* 6px */
+  --wje-spacing-x-small: 0.5rem; /* 8px */
+  --wje-spacing-small: 0.75rem; /* 12px */
+  --wje-spacing-medium: 1rem; /* 16px */
+  --wje-spacing-large: 1.5rem; /* 24px */
+  --wje-spacing-x-large: 2rem; /* 32px */
+  --wje-spacing-2x-large: 2.5rem; /* 40px */
+  --wje-spacing-3x-large: 3rem; /* 48px */
+  --wje-spacing-4x-large: 4.5rem; /* 72px */
 
   /* Font Weights */
   --wje-font-weight-light: 300;
@@ -55,12 +58,12 @@
   --wje-font-weight-bold: 700;
 
   /* Border Radius */
-  --wje-border-radius-small: 0.125rem;  /* 2px */
-  --wje-border-radius-medium: 0.25rem;  /* 4px */
-  --wje-border-radius-large: 0.5rem;    /* 8px */
-  --wje-border-radius-x-large: 1rem;    /* 16px */
-  --wje-border-radius-circle: 50%;      /* Circle */
-  --wje-border-radius-pill: 50rem;      /* Pill */
+  --wje-border-radius-small: 0.125rem; /* 2px */
+  --wje-border-radius-medium: 0.25rem; /* 4px */
+  --wje-border-radius-large: 0.5rem; /* 8px */
+  --wje-border-radius-x-large: 1rem; /* 16px */
+  --wje-border-radius-circle: 50%; /* Circle */
+  --wje-border-radius-pill: 50rem; /* Pill */
 
   /* Shadows */
   --wje-shadow-small: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -82,25 +85,25 @@
   --wje-transition-slow: 0.6s ease-in-out;
 
   /* Size */
-  --wje-size-4x-small: 0.125rem;        /* 2px */
-  --wje-size-3x-small: 0.25rem;         /* 4px */
-  --wje-size-2x-small: 0.5rem;          /* 8px */
-  --wje-size-x-small: 0.625rem;         /* 10px */
-  --wje-size-small: 0.75rem;            /* 12px */
-  --wje-size-medium: 0.875rem;          /* 14px */
-  --wje-size: 1rem;                     /* 16px */
-  --wje-size-large:	1.25rem;            /* 20px */
-  --wje-size-x-large: 1.5rem;           /* 24px */
-  --wje-size-2x-large: 2.25rem;         /* 36px */
-  --wje-size-3x-large: 3rem;            /* 48px */
-  --wje-size-4x-large: 4.5rem;          /* 72px */
-  --wje-size-5x-large: 9rem;            /* 144px */
+  --wje-size-4x-small: 0.125rem; /* 2px */
+  --wje-size-3x-small: 0.25rem; /* 4px */
+  --wje-size-2x-small: 0.5rem; /* 8px */
+  --wje-size-x-small: 0.625rem; /* 10px */
+  --wje-size-small: 0.75rem; /* 12px */
+  --wje-size-medium: 0.875rem; /* 14px */
+  --wje-size: 1rem; /* 16px */
+  --wje-size-large: 1.25rem; /* 20px */
+  --wje-size-x-large: 1.5rem; /* 24px */
+  --wje-size-2x-large: 2.25rem; /* 36px */
+  --wje-size-3x-large: 3rem; /* 48px */
+  --wje-size-4x-large: 4.5rem; /* 72px */
+  --wje-size-5x-large: 9rem; /* 144px */
 
   --wje-border-width: 1px;
   --wje-border-style: solid;
 
   --wje-backdrop: rgb(0, 0, 0);
-  --wje-backdrop-opacity: .3;
+  --wje-backdrop-opacity: 0.3;
 
   /* Colors */
   --wje-color: hsl(0, 0%, 29%);
@@ -295,7 +298,7 @@
   --wje-color-picker-radius: 4px;
 
   /* Checkbox */
-  --wje-checkbox-interminate: url("data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiAgd2lkdGg9IjI0IiAgaGVpZ2h0PSIyNCIgIHZpZXdCb3g9IjAgMCAyNCAyNCIgIGZpbGw9Im5vbmUiICBzdHJva2U9ImN1cnJlbnRDb2xvciIgIHN0cm9rZS13aWR0aD0iMiIgIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgIHN0cm9rZS1saW5lam9pbj0icm91bmQiICBjbGFzcz0iaWNvbiBpY29uLXRhYmxlciBpY29ucy10YWJsZXItb3V0bGluZSBpY29uLXRhYmxlci1taW51cyI+PHBhdGggc3Ryb2tlPSJub25lIiBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTUgMTJsMTQgMCIgLz48L3N2Zz4=");
+  --wje-checkbox-interminate: url('data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiAgd2lkdGg9IjI0IiAgaGVpZ2h0PSIyNCIgIHZpZXdCb3g9IjAgMCAyNCAyNCIgIGZpbGw9Im5vbmUiICBzdHJva2U9ImN1cnJlbnRDb2xvciIgIHN0cm9rZS13aWR0aD0iMiIgIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgIHN0cm9rZS1saW5lam9pbj0icm91bmQiICBjbGFzcz0iaWNvbiBpY29uLXRhYmxlciBpY29ucy10YWJsZXItb3V0bGluZSBpY29uLXRhYmxlci1taW51cyI+PHBhdGggc3Ryb2tlPSJub25lIiBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTUgMTJsMTQgMCIgLz48L3N2Zz4=');
   --wje-checkbox-checkmark: url('data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiAgd2lkdGg9IjI0IiAgaGVpZ2h0PSIyNCIgIHZpZXdCb3g9IjAgMCAyNCAyNCIgIGZpbGw9Im5vbmUiICBzdHJva2U9ImN1cnJlbnRDb2xvciIgIHN0cm9rZS13aWR0aD0iMiIgIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgIHN0cm9rZS1saW5lam9pbj0icm91bmQiICBjbGFzcz0iaWNvbiBpY29uLXRhYmxlciBpY29ucy10YWJsZXItb3V0bGluZSBpY29uLXRhYmxlci1jaGVjayI+PHBhdGggc3Ryb2tlPSJub25lIiBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTUgMTJsNSA1bDEwIC0xMCIgLz48L3N2Zz4=');
   --wje-checkbox-margin-top: 0;
   --wje-checkbox-margin-bottom: var(--wje-spacing-x-small);
@@ -362,9 +365,9 @@
   --wje-input-border-width: 1px;
   --wje-input-border-style: solid;
   --wje-input-border-radius: 4px;
-  --wje-input-margin-bottom: .5rem;
+  --wje-input-margin-bottom: 0.5rem;
   --wje-input-line-height: 20px;
-  --wje-input-slot-padding-inline: .5rem;
+  --wje-input-slot-padding-inline: 0.5rem;
 
   /* Item */
   --wje-item-color: var(--wje-color);
@@ -452,16 +455,16 @@
   --wje-orgchart-item-boss-border: 1px solid var(--wje-border-color);
   --wje-orgchart-item-hover-border: 1px solid var(--wje-color-danger-3);
 
-  --wje-orgchart-item-expander-size: .75rem;
+  --wje-orgchart-item-expander-size: 0.75rem;
 
   /* Orgchart - Group */
   --wje-orgchart-group-width: auto;
   --wje-orgchart-group-border-radius: var(--wje-border-radius-large);
   --wje-orgchart-group-height-line: 10px;
-  --wje-orgchart-group-padding: .25rem 0;
+  --wje-orgchart-group-padding: 0.25rem 0;
 
   /* Rate */
-  --wje-rate-gap: .25rem;
+  --wje-rate-gap: 0.25rem;
   --wje-rate-color: var(--wje-color-contrast-11);
   --wje-rate-selected-color: var(--wje-color-danger-9);
 

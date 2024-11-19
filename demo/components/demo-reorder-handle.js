@@ -1,7 +1,7 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
-const template = document.createElement("template");
+const template = document.createElement('template');
 
 template.innerHTML = `
     <h1>Reorder Handle</h1>
@@ -125,23 +125,23 @@ template.innerHTML = `
 `;
 
 export default class DemoReorderHandle extends WJElement {
-    constructor() {
-        super(template);
-    }
+  constructor() {
+    super(template);
+  }
 
-    afterDraw() {
-        const codeSnippet = new CodeSnippet();
-        codeSnippet.generateSnippet(template, this.context);
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, this.context);
 
-        this.querySelector("#remove-locked").addEventListener("wje-button:click", (e) => {
-            this.querySelectorAll("#parent wje-reorder-handle").forEach((item) => {
-                e.target.value === "on" ? item.removeAttribute("locked") : item.setAttribute("locked", "");
-            });
-        });
-    }
+    this.querySelector('#remove-locked').addEventListener('wje-button:click', (e) => {
+      this.querySelectorAll('#parent wje-reorder-handle').forEach((item) => {
+        e.target.value === 'on' ? item.removeAttribute('locked') : item.setAttribute('locked', '');
+      });
+    });
+  }
 }
 
-let __esModule = "true";
+let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-reorder-handle") || window.customElements.define("demo-reorder-handle", DemoReorderHandle);
+customElements.get('demo-reorder-handle') || window.customElements.define('demo-reorder-handle', DemoReorderHandle);

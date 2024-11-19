@@ -21,7 +21,7 @@ export function getHsl(text, s = 40, l = 65) {
   let hash = 0;
 
   for (let i = 0; i < str?.length; i++) {
-    hash = str.charCodeAt(i) + (hash * 31);
+    hash = str.charCodeAt(i) + hash * 31;
   }
 
   let h = hash % 360;
@@ -50,7 +50,7 @@ export function getHsl(text, s = 40, l = 65) {
  * getInitials('John Michael Doe', 2);
  */
 export function getInitials(string, length = 2) {
-  let names = string.split(" ");
+  let names = string.split(' ');
   let initials = names[0].substring(0, 1).toUpperCase();
 
   if (names.length > 1 && length > 1) {

@@ -5,7 +5,10 @@ sidebar_label: Installation
 
 <head>
   <title>How to get WebJET Elements for your project</title>
-  <meta name="description" content="Zahrňte WebJET Elements do svojho projektu pomocou CDN alebo ho nainštalujte pomocou npm." />
+  <meta
+    name="description"
+    content="Zahrňte WebJET Elements do svojho projektu pomocou CDN alebo ho nainštalujte pomocou npm."
+  />
 </head>
 
 Include WebJET Elements in your project using **CDN** or install it using **npm**.
@@ -33,6 +36,12 @@ $ npm uninstall wj-elements
 Use CDN and include compiled CSS and JS files of WebJET Elements in your project.
 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@dddb1c19734498c5b2a17f2e6ed605d0cd40d02e/wj-master.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/style.css" />
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@dddb1c19734498c5b2a17f2e6ed605d0cd40d02e/wj-master.js"
+></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/style.css"
+/>
 ```

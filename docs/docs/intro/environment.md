@@ -4,11 +4,13 @@ title: Konfigurácia prostredia
 
 <head>
   <title>Konfigurácia prostredia | Node & NPM Environment for WebJET App Setup</title>
-  <meta name="description" content="To get started with Ionic Framework, the only requirement is a Node & npm environment. Learn what environment setup is required for your Ionic apps." />
+  <meta
+    name="description"
+    content="To get started with Ionic Framework, the only requirement is a Node & npm environment. Learn what environment setup is required for your Ionic apps."
+  />
 </head>
 
-
-Základnou požiadavkou na začatie práce s WebJET Elements je prostredie s nainštalovaným Node a NPM. 
+Základnou požiadavkou na začatie práce s WebJET Elements je prostredie s nainštalovaným Node a NPM.
 
 Okrem toho je nevyhnutný editor kódu. Najpopulárnejšie sú zdarma dostupný [Visual Studio Code](https://code.visualstudio.com/) alebo spoplatnený [WebStorm](https://www.jetbrains.com/webstorm/).
 
@@ -32,4 +34,3 @@ $ npm --version
 ## Odporúčania
 
 Za zváženie stojí aj použitie version control systému [GIT](https://git-scm.com/) pri vyvoji aplikácie.
-

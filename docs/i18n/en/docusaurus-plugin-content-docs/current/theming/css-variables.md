@@ -41,7 +41,7 @@ wje-button {
 
 /* Sets the border color of all buttons with id 'custom' */
 #custom {
-    --wje-button-border-color: #0af4fc;
+  --wje-button-border-color: #0af4fc;
 }
 ```
 

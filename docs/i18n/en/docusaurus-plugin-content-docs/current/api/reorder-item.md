@@ -10,8 +10,11 @@ import CustomProps from '@ionic-internal/component-api/v1/reorder-item/custom-pr
 import Slots from '@ionic-internal/component-api/v1/reorder-item/slots.md';
 
 <head>
-    <title>Reorder Item</title>
-    <meta name="description" content="Reorder Item je komponent, ktorému je možné ťahaním zmeniť pozíciu v rámci skupiny položiek"></meta>
+  <title>Reorder Item</title>
+  <meta
+    name="description"
+    content="Reorder Item je komponent, ktorému je možné ťahaním zmeniť pozíciu v rámci skupiny položiek"
+  ></meta>
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -36,7 +39,7 @@ For more information on using Reorder Items, navigate to the [**Reorder**](../re
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

@@ -1,6 +1,7 @@
 ---
-title: "Progress bar"
+title: 'Progress bar'
 ---
+
 import Props from '@ionic-internal/component-api/v1/progress-bar/props.md';
 import Events from '@ionic-internal/component-api/v1/progress-bar/events.md';
 import Methods from '@ionic-internal/component-api/v1/progress-bar/methods.md';
@@ -10,14 +11,17 @@ import Slots from '@ionic-internal/component-api/v1/progress-bar/slots.md';
 
 <head>
   <title>Progress Bar | Komponent na vizualizáciu priebehu</title>
-  <meta name="description" content="Progress Bar element je komponent navrhnutý na vizualizáciu priebehu. Ponúka možnosť vytvárať prispôsobiteľné kruhové alebo rovné ukazovatele s rôznymi možnosťami konfigurácie." />
+  <meta
+    name="description"
+    content="Progress Bar element je komponent navrhnutý na vizualizáciu priebehu. Ponúka možnosť vytvárať prispôsobiteľné kruhové alebo rovné ukazovatele s rôznymi možnosťami konfigurácie."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Progress Bar element je komponent navrhnutý na vizualizáciu priebehu. Ponúka možnosť vytvárať prispôsobiteľné kruhové alebo rovné ukazovatele s rôznymi možnosťami konfigurácie. 
+Progress Bar element je komponent navrhnutý na vizualizáciu priebehu. Ponúka možnosť vytvárať prispôsobiteľné kruhové alebo rovné ukazovatele s rôznymi možnosťami konfigurácie.
 
 ## Základné použitie
 
@@ -29,8 +33,7 @@ import Basic from '@site/static/usage/v1/progress-bar/basic/index.md';
 
 ## Type
 
-Podporované sú dva typy progress barov. Pridaním vlastnosti `type` s hodnotou `“circle”` zobrazíte progress bar s okrúhlym dizajnom. 
-
+Podporované sú dva typy progress barov. Pridaním vlastnosti `type` s hodnotou `“circle”` zobrazíte progress bar s okrúhlym dizajnom.
 
 import Type from '@site/static/usage/v1/progress-bar/type/index.md';
 
@@ -38,7 +41,7 @@ import Type from '@site/static/usage/v1/progress-bar/type/index.md';
 
 ## Label
 
-Pre zobrazenie popisiek pri progress bare je potrebné vložiť do jeho vnútra `Label` element a definovať  mu pozíciu pridaním atribútu `slot` s hodnotou `"start"` alebo `"end"`. 
+Pre zobrazenie popisiek pri progress bare je potrebné vložiť do jeho vnútra `Label` element a definovať mu pozíciu pridaním atribútu `slot` s hodnotou `"start"` alebo `"end"`.
 
 import Label from '@site/static/usage/v1/progress-bar/label/index.md';
 
@@ -52,7 +55,6 @@ import Linecap from '@site/static/usage/v1/progress-bar/linecap/index.md';
 
 <Linecap />
 
-
 ## Radius
 
 Atribút radius určí priemer okrúhleho progress baru.
@@ -65,11 +67,9 @@ import Radius from '@site/static/usage/v1/progress-bar/radius/index.md';
 
 Atribút stroke definuje šírku progress baru v pixeloch.
 
-
 import Stroke from '@site/static/usage/v1/progress-bar/stroke/index.md';
 
 <Stroke />
-
 
 ## Progress bar s obrázkom
 
@@ -97,7 +97,7 @@ import Colors from '@site/static/usage/v1/progress-bar/colors/index.md';
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

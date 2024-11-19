@@ -3,9 +3,9 @@
 */
 
 :host {
-    display: block;
-    flex: 1;
-    flex-basis: auto;
-    padding: 1.5rem;
-    box-sizing: border-box;
+  display: block;
+  flex: 1;
+  flex-basis: auto;
+  padding: 1.5rem;
+  box-sizing: border-box;
 }

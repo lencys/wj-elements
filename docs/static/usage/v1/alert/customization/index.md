@@ -17,7 +17,7 @@ import react_main_css from './react/main_css.md';
         'src/main.css': react_main_css,
       },
     },
-    vue
+    vue,
   }}
   src="usage/v1/alert/customization/demo.html"
 />

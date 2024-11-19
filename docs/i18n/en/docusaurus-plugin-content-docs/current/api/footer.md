@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/footer/slots.md';
 
 <head>
   <title>Footer | Element for creating layouts</title>
-  <meta name="description" content="Footer je súčasťou elementov určených na tvorbu layoutov a zobrazuje sa v spodnej časti obrazovky. Používa sa väčšinou na zobrazenie dodatočných informácií." />
+  <meta
+    name="description"
+    content="Footer je súčasťou elementov určených na tvorbu layoutov a zobrazuje sa v spodnej časti obrazovky. Používa sa väčšinou na zobrazenie dodatočných informácií."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -36,7 +39,7 @@ For information on using the **Footer** element, navigate to the [**Layout**](..
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

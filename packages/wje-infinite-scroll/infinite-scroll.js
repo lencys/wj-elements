@@ -1,6 +1,5 @@
-import InfiniteScroll from "./infinite-scroll.element.js";
+import InfiniteScroll from './infinite-scroll.element.js';
 
 export default InfiniteScroll;
 
-InfiniteScroll.define("wje-infinite-scroll", InfiniteScroll);
-
+InfiniteScroll.define('wje-infinite-scroll', InfiniteScroll);

@@ -132,11 +132,11 @@ describe('<wje-toast>', () => {
   describe('toast variants', () => {
     const variants = ['primary', 'success', 'neutral', 'warning', 'danger'];
 
-    variants.forEach(variant => {
+    variants.forEach((variant) => {
       it(`adapts to the variant: ${variant}`, async () => {
         const toast = await fixture(html`<wje-toast variant="${variant}" open>Test toast</wje-toast>`);
         const toastContainer = getToastContainer(toast);
-        console.log("VARIANT:", toast, toast.getAttribute('variant') === variant);
+        console.log('VARIANT:', toast, toast.getAttribute('variant') === variant);
         expect(toast.getAttribute('variant') === variant).to.be.true;
       });
     });

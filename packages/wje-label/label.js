@@ -1,6 +1,5 @@
-import Label from "./label.element.js";
+import Label from './label.element.js';
 
 export default Label;
 
-Label.define("wje-label", Label);
-
+Label.define('wje-label', Label);

@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/header/slots.md';
 
 <head>
   <title>Header | Element for creating layouts</title>
-  <meta name="description" content="Header je súčasťou elementov určených na tvorbu layoutov a zobrazuje sa v hornej časti. Používa sa väčšinou na zobrazenie navigácie, loga a pod." />
+  <meta
+    name="description"
+    content="Header je súčasťou elementov určených na tvorbu layoutov a zobrazuje sa v hornej časti. Používa sa väčšinou na zobrazenie navigácie, loga a pod."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -36,7 +39,7 @@ For information on using the **Header** element, navigate to the [**Layout**](..
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

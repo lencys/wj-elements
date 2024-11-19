@@ -1,6 +1,7 @@
 ---
-title: "Card"
+title: 'Card'
 ---
+
 import Props from '@ionic-internal/component-api/v1/card/props.md';
 import Events from '@ionic-internal/component-api/v1/card/events.md';
 import Methods from '@ionic-internal/component-api/v1/card/methods.md';
@@ -10,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/card/slots.md';
 
 <head>
   <title>Card | Kontajner formátu karty</title>
-  <meta name="description" content="Element Card je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky Card Header, hlavnej časti Card Content a pätičky CardFooter." />
+  <meta
+    name="description"
+    content="Element Card je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky Card Header, hlavnej časti Card Content a pätičky CardFooter."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -49,12 +53,11 @@ import List from '@site/static/usage/v1/card/list/index.md';
 
 ### Prednastavené farebné varianty elementu Card
 
-Vlastnosť `color` upravuje farbu pozadia a okraja karty. Nastavením tejto hodnoty sa farba tlačidla zmení na jednu z farieb prednastavenej farebnej palety.  V predvolenom nastavení má element pozadie `primary`. 
+Vlastnosť `color` upravuje farbu pozadia a okraja karty. Nastavením tejto hodnoty sa farba tlačidla zmení na jednu z farieb prednastavenej farebnej palety. V predvolenom nastavení má element pozadie `primary`.
 
 import Colors from '@site/static/usage/v1/card/theming/colors/index.md';
 
 <Colors />
-
 
 ### CSS Custom Vlastnosti
 
@@ -68,9 +71,7 @@ import CssProperties from '@site/static/usage/v1/card/theming/css-properties/ind
     <wj-card-subtitle>Subtitle</wj-card-subtitle>
     <wj-card-title>Title</wj-card-title>
   </wj-card-header>
-  <wj-card-content>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  </wj-card-content>
+  <wj-card-content> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </wj-card-content>
 </wj-card>
 <style>
   #custom {
@@ -80,8 +81,8 @@ import CssProperties from '@site/static/usage/v1/card/theming/css-properties/ind
     --wj-color-contrast: #f0f;
     --wj-card-border-color: #000;
     --wj-border-size: 2px;
-    --background-color: #000!important;
-    --wj-font-size: .8rem;
+    --background-color: #000 !important;
+    --wj-font-size: 0.8rem;
     --wj-border-radius: 0;
   }
 </style>
@@ -97,7 +98,7 @@ import CssProperties from '@site/static/usage/v1/card/theming/css-properties/ind
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

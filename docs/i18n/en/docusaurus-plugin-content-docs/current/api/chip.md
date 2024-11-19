@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/chip/slots.md';
 
 <head>
   <title>Chip | Small universal visual block</title>
-  <meta name="description" content="Komponent Chip je univerzálny element, ktorý predstavuje malý vizuálny blok obsahujúci rôzne ďalšie elementy, ako napríklad avatary, text a ikony. Ponúka možnosti prispôsobenia farieb, stavov a ďalšie." />
+  <meta
+    name="description"
+    content="Komponent Chip je univerzálny element, ktorý predstavuje malý vizuálny blok obsahujúci rôzne ďalšie elementy, ako napríklad avatary, text a ikony. Ponúka možnosti prispôsobenia farieb, stavov a ďalšie."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -58,7 +61,7 @@ import CSSProps from '@site/static/usage/v1/chip/theming/css-properties/index.md
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

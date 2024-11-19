@@ -136,7 +136,9 @@
   font-size: 13px;
 
   pointer-events: none;
-  transition: 160ms height, 160ms opacity;
+  transition:
+    160ms height,
+    160ms opacity;
 }
 
 .colorSubmenuItem + .colorSubmenuItem {

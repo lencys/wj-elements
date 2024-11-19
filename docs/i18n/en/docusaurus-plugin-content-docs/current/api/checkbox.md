@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/checkbox/slots.md';
 
 <head>
   <title>Checkbox | WebJET Element for selecting multiple options</title>
-  <meta name="description" content="Checkbox, alebo tiež začiarkavacie políčko, je element, ktorý umožňuje používateľom vybrať jednu alebo viac možností z množiny. Kliknutím na checkbox zmeníte jeho stav na `true` alebo `false`." />
+  <meta
+    name="description"
+    content="Checkbox, alebo tiež začiarkavacie políčko, je element, ktorý umožňuje používateľom vybrať jednu alebo viac možností z množiny. Kliknutím na checkbox zmeníte jeho stav na `true` alebo `false`."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -52,7 +55,7 @@ import Variant from '@site/static/usage/v1/checkbox/variant/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

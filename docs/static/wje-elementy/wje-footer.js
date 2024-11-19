@@ -1,8 +1,8 @@
 var c = Object.defineProperty;
-var i = (t, e, o) => e in t ? c(t, e, { enumerable: !0, configurable: !0, writable: !0, value: o }) : t[e] = o;
-var s = (t, e, o) => (i(t, typeof e != "symbol" ? e + "" : e, o), o);
-import l from "./wje-element.js";
-const d = ":host{--wje-footer-height: 60px;padding:0 20px;flex-shrink:0;height:var(--wje-footer-height);display:block}";
+var i = (t, e, o) => (e in t ? c(t, e, { enumerable: !0, configurable: !0, writable: !0, value: o }) : (t[e] = o));
+var s = (t, e, o) => (i(t, typeof e != 'symbol' ? e + '' : e, o), o);
+import l from './wje-element.js';
+const d = ':host{--wje-footer-height: 60px;padding:0 20px;flex-shrink:0;height:var(--wje-footer-height);display:block}';
 class n extends l {
   /**
    * Creates an instance of Footer.
@@ -11,7 +11,7 @@ class n extends l {
    */
   constructor() {
     super();
-    s(this, "className", "Footer");
+    s(this, 'className', 'Footer');
   }
   /**
    * Returns the CSS styles for the component.
@@ -35,7 +35,7 @@ class n extends l {
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = "open";
+    this.isShadowRoot = 'open';
   }
   /**
    * Draws the component.
@@ -46,11 +46,10 @@ class n extends l {
    * @returns {DocumentFragment}
    */
   draw(o, h, m) {
-    let r = document.createDocumentFragment(), a = document.createElement("slot");
+    let r = document.createDocumentFragment(),
+      a = document.createElement('slot');
     return r.appendChild(a), r;
   }
 }
-n.define("wje-footer", n);
-export {
-  n as default
-};
+n.define('wje-footer', n);
+export { n as default };

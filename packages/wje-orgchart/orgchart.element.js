@@ -1,5 +1,5 @@
-import { default as WJElement } from "../wje-element/element.js";
-import styles from "./styles/styles.css?inline";
+import { default as WJElement } from '../wje-element/element.js';
+import styles from './styles/styles.css?inline';
 
 /**
  * @summary Orgchart is a custom web component that extends WJElement.
@@ -11,53 +11,51 @@ import styles from "./styles/styles.css?inline";
  * @example
  */
 export default class Orgchart extends WJElement {
+  /**
+   * Creates an instance of Orgchart.
+   * @class
+   */
+  constructor() {
+    super();
+  }
 
-    /**
-     * Creates an instance of Orgchart.
-     * @class
-     */
-    constructor() {
-        super();
-    }
+  className = 'Orgchart';
 
-    className = "Orgchart";
+  /**
+   * Returns the CSS styles for the component.
+   * @static
+   * @returns {CSSStyleSheet}
+   */
+  static get cssStyleSheet() {
+    return styles;
+  }
 
+  /**
+   * Sets up the attributes for the component.
+   */
+  setupAttributes() {
+    this.isShadowRoot = 'open';
+  }
 
-    /**
-     * Returns the CSS styles for the component.
-     * @static
-     * @returns {CSSStyleSheet}
-     */
-    static get cssStyleSheet() {
-        return styles;
-    }
+  /**
+   * Draws the component for the org chart.
+   * @returns {DocumentFragment}
+   */
+  draw() {
+    let fragment = document.createDocumentFragment();
 
-    /**
-     * Sets up the attributes for the component.
-     */
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
+    let native = document.createElement('div');
+    native.setAttribute('part', 'native');
+    native.classList.add('native-orgchart');
 
-    /**
-     * Draws the component for the org chart.
-     * @returns {DocumentFragment}
-     */
-    draw() {
-        let fragment = document.createDocumentFragment();
+    let slot = document.createElement('slot');
 
-        let native = document.createElement("div");
-        native.setAttribute("part", "native");
-        native.classList.add("native-orgchart");
+    native.appendChild(slot);
 
-        let slot = document.createElement("slot");
+    fragment.appendChild(native);
 
-        native.appendChild(slot);
+    this.native = native;
 
-        fragment.appendChild(native);
-
-        this.native = native;
-
-        return fragment;
-    }
+    return fragment;
+  }
 }

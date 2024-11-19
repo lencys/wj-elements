@@ -36,7 +36,7 @@ Upravenie hodnoty niektorej z farieb farebnej palety dosiahnete nastavením CSS 
 
 ```css
 :root {
-  --wje-color-primary: #FFd945;
+  --wje-color-primary: #ffd945;
 }
 ```
 
@@ -48,7 +48,7 @@ Ak chcete začleniť novú farbu do farebnej palety, začnite vytvorením jej pr
 
 ```css
 :root {
-  --wje-color-coral: #FF7F50;
+  --wje-color-coral: #ff7f50;
 }
 ```
 

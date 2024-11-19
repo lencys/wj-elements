@@ -1,5 +1,5 @@
-import { default as WJElement } from "../wje-element/element.js";
-import styles from "./styles/styles.css?inline";
+import { default as WJElement } from '../wje-element/element.js';
+import styles from './styles/styles.css?inline';
 
 /**
  * `VisuallyHidden` is a custom web component that represents a visually hidden element.
@@ -11,56 +11,55 @@ import styles from "./styles/styles.css?inline";
  * @tag wje-visually-hidden
  */
 export default class VisuallyHidden extends WJElement {
+  /**
+   * Creates an instance of VisuallyHidden.
+   */
+  constructor() {
+    super();
+  }
 
-    /**
-     * Creates an instance of VisuallyHidden.
-     */
-    constructor() {
-        super();
-    }
+  /**
+   * The class name for the component.
+   * @type {string}
+   */
+  className = 'VisuallyHidden';
 
-    /**
-     * The class name for the component.
-     * @type {string}
-     */
-    className = "VisuallyHidden";
+  /**
+   * Returns the CSS stylesheet for the component.
+   * @static
+   * @returns {CSSStyleSheet} The CSS stylesheet
+   */
+  static get cssStyleSheet() {
+    return styles;
+  }
 
-    /**
-     * Returns the CSS stylesheet for the component.
-     * @static
-     * @returns {CSSStyleSheet} The CSS stylesheet
-     */
-    static get cssStyleSheet() {
-        return styles;
-    }
+  /**
+   * Returns the list of observed attributes.
+   * @static
+   * @returns {Array} An empty array
+   */
+  static get observedAttributes() {
+    return [];
+  }
 
-    /**
-     * Returns the list of observed attributes.
-     * @static
-     * @returns {Array} An empty array
-     */
-    static get observedAttributes() {
-        return [];
-    }
+  /**
+   * Sets up the attributes for the component.
+   */
+  setupAttributes() {
+    this.isShadowRoot = 'open';
+  }
 
-    /**
-     * Sets up the attributes for the component.
-     */
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
+  /**
+   * Draws the component for the visually hidden element.
+   * @returns {object} Document fragment
+   */
+  draw() {
+    let fragment = document.createDocumentFragment();
 
-    /**
-     * Draws the component for the visually hidden element.
-     * @returns {object} Document fragment
-     */
-    draw() {
-        let fragment = document.createDocumentFragment();
+    let slot = document.createElement('slot');
 
-        let slot = document.createElement("slot");
+    fragment.appendChild(slot);
 
-        fragment.appendChild(slot);
-
-        return fragment;
-    }
+    return fragment;
+  }
 }

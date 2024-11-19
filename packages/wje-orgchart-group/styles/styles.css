@@ -1,66 +1,68 @@
 :host {
-    text-align: center;
-    list-style-type: none;
-    position: relative;
-    padding: var(--wje-orgchart-group-height-line) 0 0 0;
-    transition: all 0.5s;
+  text-align: center;
+  list-style-type: none;
+  position: relative;
+  padding: var(--wje-orgchart-group-height-line) 0 0 0;
+  transition: all 0.5s;
 
-    &::before, &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 50%;
-        border-top: 1px solid var(--wje-border-color);
-        width: 50%;
-        height: var(--wje-orgchart-group-height-line);
-    }
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    border-top: 1px solid var(--wje-border-color);
+    width: 50%;
+    height: var(--wje-orgchart-group-height-line);
+  }
 
-    &::after {
-        right: auto;
-        left: 50%;
-        border-left: 1px solid var(--wje-border-color);
-    }
+  &::after {
+    right: auto;
+    left: 50%;
+    border-left: 1px solid var(--wje-border-color);
+  }
 
-    wje-card::part(native) {
-        box-sizing: border-box;
-        padding: var(--wje-orgchart-group-padding);
-    }
+  wje-card::part(native) {
+    box-sizing: border-box;
+    padding: var(--wje-orgchart-group-padding);
+  }
 
-    wje-card h4 {
-        margin: 0;
-    }
-    wje-card .items {
-        display: flex;
-    }
+  wje-card h4 {
+    margin: 0;
+  }
+  wje-card .items {
+    display: flex;
+  }
 
-    .orgchart-group {
-        display: flex;
-        flex-direction: column;
-        wje-card {
-            margin: 0 auto;
-            width: var(--wje-orgchart-group-width);
-        }
+  .orgchart-group {
+    display: flex;
+    flex-direction: column;
+    wje-card {
+      margin: 0 auto;
+      width: var(--wje-orgchart-group-width);
     }
+  }
 }
 
-:host(:only-child)::after, :host(:only-child)::before {
-    display: none;
+:host(:only-child)::after,
+:host(:only-child)::before {
+  display: none;
 }
 
 :host(:only-child) {
-    padding-top: 0;
+  padding-top: 0;
 }
 
 :host(:first-child)::before,
 :host(:last-child)::after {
-    border: 0 none;
+  border: 0 none;
 }
 
 :host(:last-child)::before {
-    border-right: 1px solid var(--wje-border-color);
-    border-radius: 0 var(--wje-orgchart-group-border-radius) 0 0;
+  border-right: 1px solid var(--wje-border-color);
+  border-radius: 0 var(--wje-orgchart-group-border-radius) 0 0;
 }
 
 :host(:first-child)::after {
-    border-radius: var(--wje-orgchart-group-border-radius) 0 0 0;
+  border-radius: var(--wje-orgchart-group-border-radius) 0 0 0;
 }

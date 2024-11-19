@@ -16,49 +16,49 @@
 function fileType() {
   return [
     {
-      "type": ["jpg", "jpeg", "png", "gif", "bpm", "tiff", "svg"],
-      "name": "photo"
+      type: ['jpg', 'jpeg', 'png', 'gif', 'bpm', 'tiff', 'svg'],
+      name: 'photo',
     },
     {
-      "type": ["zip", "rar", "cab", "jar", "tar", "gzip", "uue", "bz2", "scorm", "war"],
-      "name": "file-type-zip"
+      type: ['zip', 'rar', 'cab', 'jar', 'tar', 'gzip', 'uue', 'bz2', 'scorm', 'war'],
+      name: 'file-type-zip',
     },
     {
-      "type": ["mov", "mp4", "avi", "flv"],
-      "name": "video"
+      type: ['mov', 'mp4', 'avi', 'flv'],
+      name: 'video',
     },
     {
-      "type": ["m4a", "mp3", "wav"],
-      "name": "audio"
+      type: ['m4a', 'mp3', 'wav'],
+      name: 'audio',
     },
     {
-      "type": ["html", "html"],
-      "name": "file-type-html"
+      type: ['html', 'html'],
+      name: 'file-type-html',
     },
     {
-      "type": ["css"],
-      "name": "code"
+      type: ['css'],
+      name: 'code',
     },
     {
-      "type": ["txt"],
-      "name": "file-type-txt"
+      type: ['txt'],
+      name: 'file-type-txt',
     },
     {
-      "type": ["doc", "docx"],
-      "name": "file-type-doc"
+      type: ['doc', 'docx'],
+      name: 'file-type-doc',
     },
     {
-      "type": ["xls", "xlsx"],
-      "name": "file-type-xls"
+      type: ['xls', 'xlsx'],
+      name: 'file-type-xls',
     },
     {
-      "type": ["pdf"],
-      "name": "file-type-pdf"
+      type: ['pdf'],
+      name: 'file-type-pdf',
     },
     {
-      "type": ["ppt", "pptx", "odp"],
-      "name": "file-type-ppt"
-    }
+      type: ['ppt', 'pptx', 'odp'],
+      name: 'file-type-ppt',
+    },
   ];
 }
 
@@ -107,13 +107,13 @@ export function isValidFileType(file, acceptedFileTypes) {
   let acceptedTypes = Array.isArray(acceptedFileTypes) ? acceptedFileTypes : acceptedFileTypes.split(',');
   // If acceptedFileTypes is empty, throw an error
   if (acceptedTypes.length === 0) {
-    throw new Error("acceptedFileTypes is empty");
+    throw new Error('acceptedFileTypes is empty');
   }
 
   // Iterate over acceptedFileTypes
   for (let type of acceptedTypes) {
     // ak type na image/* a file je napriklad image/png tak vratime true
-    if (type.includes(baseMimeType + "/*")) {
+    if (type.includes(baseMimeType + '/*')) {
       return true;
     }
 
@@ -144,8 +144,8 @@ export function uploadFile(file, chunkSize, preview) {
 
     reader.onload = (e) => {
       const xhr = new XMLHttpRequest();
-      console.log("uploadFile function:", start, end, file.size);
-      xhr.open("POST", "/upload", true);
+      console.log('uploadFile function:', start, end, file.size);
+      xhr.open('POST', '/upload', true);
       xhr.setRequestHeader('Content-Range', `${start}-${end}/${file.size}`);
 
       xhr.upload.onprogress = (event) => {
@@ -165,10 +165,10 @@ export function uploadFile(file, chunkSize, preview) {
           // Odoslanie ďalšej časti
           start += chunkSize;
           if (start < file.size) {
-            preview.setAttribute("uploaded", start);
+            preview.setAttribute('uploaded', start);
             readAndUploadChunk(start, Math.min(start + chunkSize, file.size));
           } else {
-            preview.setAttribute("uploaded", start);
+            preview.setAttribute('uploaded', start);
           }
         } else {
           console.error('Error during upload: ', xhr.statusText);
@@ -177,7 +177,7 @@ export function uploadFile(file, chunkSize, preview) {
       xhr.send(e.target.result);
     };
     reader.readAsArrayBuffer(chunk);
-  }
+  };
 
   readAndUploadChunk(offset, Math.min(offset + chunkSize, file.size));
 }
@@ -237,7 +237,7 @@ export async function uploadFileInChunks(url, file, preview, chunkSize = 1024 * 
           uploadedBytes += value.byteLength;
           const percentComplete = ((offset + uploadedBytes) / file.size) * 100;
           console.log(`Upload Progress: ${percentComplete.toFixed(2)}%`);
-          preview.setAttribute("uploaded", offset + uploadedBytes);
+          preview.setAttribute('uploaded', offset + uploadedBytes);
 
           // Enqueue chunk data into the stream
           controller.enqueue(value);
@@ -245,7 +245,7 @@ export async function uploadFileInChunks(url, file, preview, chunkSize = 1024 * 
           // Read the next chunk
           return reader.read().then(process);
         });
-      }
+      },
     });
 
     const formData = new FormData();
@@ -266,7 +266,6 @@ export async function uploadFileInChunks(url, file, preview, chunkSize = 1024 * 
 
       console.log(`Chunk ${Math.floor(offset / chunkSize) + 1}/${totalChunks} uploaded successfully.`);
       partResponses.push(response);
-
     } catch (error) {
       console.error('Error uploading chunk:', error);
       break;
@@ -292,20 +291,20 @@ export function uploadWholeFile(url, file, preview) {
   const formData = new FormData();
   formData.append('file', file);
 
-  //use fetch 
+  //use fetch
   return fetch(url, {
     method: 'POST',
-    body: formData
+    body: formData,
   })
-    .then(response => response.json())
-    .then(data => {
-      preview.setAttribute("uploaded", file.size);
+    .then((response) => response.json())
+    .then((data) => {
+      preview.setAttribute('uploaded', file.size);
       return {
         data,
-        file
+        file,
       };
     })
-    .catch(error => {
+    .catch((error) => {
       console.error('Error:', error);
     });
 }

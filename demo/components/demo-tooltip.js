@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -86,19 +86,21 @@ export default class DemoTooltip extends WJElement {
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(template, this.context);
 
-    this.querySelector("#events").beforeShow = async (e) => {
-      const response = await fetch("/demo/assets/test.json");
+    this.querySelector('#events').beforeShow = async (e) => {
+      const response = await fetch('/demo/assets/test.json');
       const data = await response.json();
-      const result = data.map((item) => {
-        return `<div>${item.name}</div>`;
-      }).join('');
+      const result = data
+        .map((item) => {
+          return `<div>${item.name}</div>`;
+        })
+        .join('');
 
       return result;
-    }
+    };
   }
 }
 
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-tooltip") || window.customElements.define("demo-tooltip", DemoTooltip);
+customElements.get('demo-tooltip') || window.customElements.define('demo-tooltip', DemoTooltip);

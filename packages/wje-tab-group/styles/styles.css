@@ -9,7 +9,6 @@
   --wje-tab-bottom: 0;
 }
 .native-tab-group {
-
   display: flex;
   flex-direction: column;
 
@@ -37,7 +36,7 @@
 }
 
 /*TOP*/
-:host([variant=top]) {
+:host([variant='top']) {
   --wje-tab-top: auto !important;
   --wje-tab-writing-mode: horizontal-tb;
   .native-tab-group {
@@ -49,7 +48,7 @@
 }
 
 /*START*/
-:host([variant=start]){
+:host([variant='start']) {
   --wje-tab-start: auto !important;
   --wje-tab-writing-mode: vertical-rl;
   .native-tab-group {
@@ -62,7 +61,7 @@
 }
 
 /*END*/
-:host([variant=end]){
+:host([variant='end']) {
   --wje-tab-writing-mode: vertical-rl;
   .native-tab-group {
     flex-direction: row-reverse;
@@ -74,7 +73,7 @@
 }
 
 /*BOTTOM*/
-:host([variant=bottom]) {
+:host([variant='bottom']) {
   --wje-tab-bottom: auto !important;
   --wje-tab-writing-mode: horizontal-tb;
   .native-tab-group {

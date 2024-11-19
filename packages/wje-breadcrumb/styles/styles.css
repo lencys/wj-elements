@@ -18,7 +18,7 @@
   width: 100%;
   outline: none;
   background: inherit;
-  padding: .25rem .75rem;
+  padding: 0.25rem 0.75rem;
   color: var(--wje-breadcrumb-a);
   text-decoration: none;
   &.hidden {
@@ -33,7 +33,7 @@
 }
 
 button {
-  margin-inline: .75rem;
+  margin-inline: 0.75rem;
   border: 0 solid transparent;
   border-radius: 3px;
   background-color: transparent;
@@ -48,10 +48,10 @@ button {
   align-items: center;
 }
 
-::slotted([slot="start"]) {
-  margin-inline: 0 .5rem;
+::slotted([slot='start']) {
+  margin-inline: 0 0.5rem;
 }
 
-::slotted([slot="end"]) {
-  margin-inline: .5rem 0;
+::slotted([slot='end']) {
+  margin-inline: 0.5rem 0;
 }

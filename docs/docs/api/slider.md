@@ -1,6 +1,7 @@
 ---
-title: "Slider"
+title: 'Slider'
 ---
+
 import Props from '@ionic-internal/component-api/v1/slider/props.md';
 import Events from '@ionic-internal/component-api/v1/slider/events.md';
 import Methods from '@ionic-internal/component-api/v1/slider/methods.md';
@@ -10,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/slider/slots.md';
 
 <head>
   <title>Slider | Element rozširuje možnosti štandardného HTML select elementu.</title>
-  <meta name="description" content="Slider je interaktívny komponent posuvníka, ktorý umožňuje používateľom praktickým spôsobom vybrať hodnotu z rozsahu hodnôt." />
+  <meta
+    name="description"
+    content="Slider je interaktívny komponent posuvníka, ktorý umožňuje používateľom praktickým spôsobom vybrať hodnotu z rozsahu hodnôt."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -63,7 +67,7 @@ import Colors from '@site/static/usage/v1/slider/colors/index.md';
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

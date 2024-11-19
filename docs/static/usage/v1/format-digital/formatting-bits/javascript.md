@@ -1,6 +1,6 @@
 ```html
-  <wje-format-digital value="99" unit="bit"></wje-format-digital><br/>
-  <wje-format-digital value="9900" unit="bit"></wje-format-digital><br/>
-  <wje-format-digital value="9900000" unit="bit"></wje-format-digital><br/>
-  <wje-format-digital value="9900000000" unit="bit"></wje-format-digital>
+<wje-format-digital value="99" unit="bit"></wje-format-digital><br />
+<wje-format-digital value="9900" unit="bit"></wje-format-digital><br />
+<wje-format-digital value="9900000" unit="bit"></wje-format-digital><br />
+<wje-format-digital value="9900000000" unit="bit"></wje-format-digital>
 ```

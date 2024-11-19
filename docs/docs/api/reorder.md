@@ -1,5 +1,5 @@
 ---
-title: "Reorder"
+title: 'Reorder'
 ---
 
 import Props from '@ionic-internal/component-api/v1/reorder/props.md';
@@ -10,8 +10,11 @@ import CustomProps from '@ionic-internal/component-api/v1/reorder/custom-props.m
 import Slots from '@ionic-internal/component-api/v1/reorder/slots.md';
 
 <head>
-    <title>Reorder</title>
-    <meta name="description" content="Reorder je komponent, ktorý umožňuje ťahaním položky zmeniť jej poradie v rámci skupiny položiek. Musí sa použiť v rámci skupiny na zmenu poradia, aby sa zabezpečilo vizuálne rozhranie drag and drop."></meta>
+  <title>Reorder</title>
+  <meta
+    name="description"
+    content="Reorder je komponent, ktorý umožňuje ťahaním položky zmeniť jej poradie v rámci skupiny položiek. Musí sa použiť v rámci skupiny na zmenu poradia, aby sa zabezpečilo vizuálne rozhranie drag and drop."
+  ></meta>
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -60,7 +63,7 @@ import DropZones from '@site/static/usage/v1/reorder/drop-zones/index.md';
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

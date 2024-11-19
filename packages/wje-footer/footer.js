@@ -1,6 +1,5 @@
-import Footer from "./footer.element.js";
+import Footer from './footer.element.js';
 
 export default Footer;
 
-Footer.define("wje-footer", Footer);
-
+Footer.define('wje-footer', Footer);

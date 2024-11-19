@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -204,4 +204,4 @@ export default class DemoItem extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-item") || window.customElements.define("demo-item", DemoItem);
+customElements.get('demo-item') || window.customElements.define('demo-item', DemoItem);

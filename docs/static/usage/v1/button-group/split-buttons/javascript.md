@@ -1,5 +1,5 @@
 ```html
- <wje-button-group>
+<wje-button-group>
   <wje-button variant="primary">Save</wje-button>
   <wje-dropdown placement="bottom-end" offset="5">
     <wje-button slot="trigger" variant="primary" caret>

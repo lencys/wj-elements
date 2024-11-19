@@ -17,7 +17,7 @@ import vue from './vue.md';
         'src/main.css': react_main_css,
       },
     },
-    vue
+    vue,
   }}
   src="usage/v1/content/theming/css-shadow-parts/demo.html"
   includeIonContent={false}

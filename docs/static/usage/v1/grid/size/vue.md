@@ -35,7 +35,7 @@
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { Col, Grid, Row  },
+    components: { Col, Grid, Row },
   });
 </script>
 ```

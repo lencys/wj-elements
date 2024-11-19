@@ -15,12 +15,12 @@
     align-items: center;
     cursor: pointer;
     position: relative;
-    padding-left: calc(var(--wje-checkbox-size) + .5rem);
+    padding-left: calc(var(--wje-checkbox-size) + 0.5rem);
     /*min-width: var(--wje-checkbox-size);*/
     min-height: var(--wje-checkbox-size);
     margin-bottom: 0;
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       width: var(--wje-checkbox-size);
       height: var(--wje-checkbox-size);
@@ -46,7 +46,7 @@
     }
   }
 
-  input[type="checkbox"] {
+  input[type='checkbox'] {
     position: absolute;
     margin: 0;
     z-index: -1;
@@ -56,7 +56,7 @@
     display: none;
     & + label {
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         left: 0;
         border-right: 0 solid transparent;
@@ -68,15 +68,15 @@
     }
   }
 
-  input[type="checkbox"]:checked + label::after {
-    content: "";
+  input[type='checkbox']:checked + label::after {
+    content: '';
     mask-image: var(--wje-checkbox-checkmark);
     mask-size: var(--wje-checkbox-size);
     background-color: var(--wje-color-primary-9);
   }
 
   /* Disabled */
-  input[type="checkbox"][disabled] {
+  input[type='checkbox'][disabled] {
     & + label {
       cursor: not-allowed !important;
       color: var(--wje-color-contrast-8);
@@ -91,7 +91,7 @@
     }
   }
 
-  input[type="checkbox"]:checked[disabled] {
+  input[type='checkbox']:checked[disabled] {
     & + label {
       cursor: not-allowed !important;
       color: var(--wje-color-contrast-8);
@@ -107,10 +107,10 @@
   }
 
   /* Indeterminate */
-  input[type="checkbox"]:not(:checked):indeterminate {
+  input[type='checkbox']:not(:checked):indeterminate {
     & + label {
       &:after {
-        content: "";
+        content: '';
         mask-image: var(--wje-checkbox-interminate);
         mask-size: var(--wje-checkbox-size);
         background-color: var(--wje-color-primary-9);
@@ -119,7 +119,7 @@
   }
 }
 
-:host([variant=circle]) {
+:host([variant='circle']) {
   label {
     &:after {
       border-radius: 99px;
@@ -131,7 +131,7 @@
   }
 }
 
-:host([placement=end]) {
+:host([placement='end']) {
   label {
     padding-left: 0;
     padding-right: 26px;
@@ -142,7 +142,7 @@
     }
   }
 
-  input[type="checkbox"]:checked {
+  input[type='checkbox']:checked {
     & + label {
       position: relative;
 
@@ -157,67 +157,73 @@
 
 /*Colors*/
 
-:host([color=primary]) {
-  input[type="checkbox"]:checked + label::after,
-  input[type="checkbox"]:indeterminate + label:after {
+:host([color='primary']) {
+  input[type='checkbox']:checked + label::after,
+  input[type='checkbox']:indeterminate + label:after {
     background-color: var(--wje-color-contrast-0);
   }
-  :is(input[type="checkbox"]:checked + label)::before, :is(input[type="checkbox"]:indeterminate + label)::before {
+  :is(input[type='checkbox']:checked + label)::before,
+  :is(input[type='checkbox']:indeterminate + label)::before {
     border-color: var(--wje-color-primary-9);
     background-color: var(--wje-color-primary-9);
   }
 }
 
-:host([color=complete]) {
-  input[type="checkbox"]:checked + label::after,
-  input[type="checkbox"]:indeterminate + label:after  {
+:host([color='complete']) {
+  input[type='checkbox']:checked + label::after,
+  input[type='checkbox']:indeterminate + label:after {
     background-color: var(--wje-color-contrast-0);
   }
-  :is(input[type="checkbox"]:checked + label)::before, :is(input[type="checkbox"]:indeterminate + label)::before {
+  :is(input[type='checkbox']:checked + label)::before,
+  :is(input[type='checkbox']:indeterminate + label)::before {
     border-color: var(--wje-color-complete-9);
     background-color: var(--wje-color-complete-9);
   }
 }
 
-:host([color=success]) {
-  input[type="checkbox"]:checked + label::after,
-  input[type="checkbox"]:indeterminate + label:after  {
+:host([color='success']) {
+  input[type='checkbox']:checked + label::after,
+  input[type='checkbox']:indeterminate + label:after {
     background-color: var(--wje-color-contrast-0);
   }
-  :is(input[type="checkbox"]:checked + label)::before, :is(input[type="checkbox"]:indeterminate + label)::before {
+  :is(input[type='checkbox']:checked + label)::before,
+  :is(input[type='checkbox']:indeterminate + label)::before {
     border-color: var(--wje-color-success-9);
     background-color: var(--wje-color-success-9);
   }
 }
 
-:host([color=warning]) {
-  input[type="checkbox"]:checked + label::after,
-  input[type="checkbox"]:indeterminate + label:after  {
+:host([color='warning']) {
+  input[type='checkbox']:checked + label::after,
+  input[type='checkbox']:indeterminate + label:after {
     background-color: var(--wje-color-contrast-0);
   }
-  :is(input[type="checkbox"]:checked + label)::before, :is(input[type="checkbox"]:indeterminate + label)::before {
+  :is(input[type='checkbox']:checked + label)::before,
+  :is(input[type='checkbox']:indeterminate + label)::before {
     border-color: var(--wje-color-warning-9);
     background-color: var(--wje-color-warning-9);
   }
 }
 
-:host([color=danger]) {
-  input[type="checkbox"]:checked + label::after,
-  input[type="checkbox"]:indeterminate + label:after  {
+:host([color='danger']) {
+  input[type='checkbox']:checked + label::after,
+  input[type='checkbox']:indeterminate + label:after {
     background-color: var(--wje-color-contrast-0);
   }
-  :is(input[type="checkbox"]:checked + label)::before, :is(input[type="checkbox"]:indeterminate + label)::before {
+  :is(input[type='checkbox']:checked + label)::before,
+  :is(input[type='checkbox']:indeterminate + label)::before {
     border-color: var(--wje-color-danger-9);
     background-color: var(--wje-color-danger-9);
   }
 }
 
-:host([color=info]) {
-  input[type="checkbox"]:checked + label::after,
-  input[type="checkbox"]:indeterminate + label:after  {
+:host([color='info']) {
+  input[type='checkbox']:checked + label::after,
+  input[type='checkbox']:indeterminate + label:after {
     background-color: var(--wje-color-contrast-0);
   }
-  :is(input[type="checkbox"]:checked + label)::before, :is(input[type="checkbox"]:indeterminate + label)::before {
+  :is(input[type='checkbox']:checked + label)::before,
+  :is(input[type='checkbox']:indeterminate + label)::before {
     border-color: var(--wje-color-info-9);
     background-color: var(--wje-color-info-9);
   }

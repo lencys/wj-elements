@@ -3,7 +3,7 @@ title: Základy prispôsobenia
 sidebar_label: Základy
 ---
 
-[//]: # (import ColorPalette from '@components/page/theming/ColorPalette';)
+[//]: # "import ColorPalette from '@components/page/theming/ColorPalette';"
 
 <head>
   <title>Základy prispôsobenia | Základné definície úprav farieb a šablón</title>
@@ -13,7 +13,7 @@ sidebar_label: Základy
   />
 </head>
 
-Elements Framework ponúka rozsiahle možnosti prispôsobenia štýlov predovšetkým prostredníctvom premenných CSS. Vďaka tomu môžete ľahko zmeniť vzhľad aplikácie podľa vašich potrieb. Komponenty Elements používajú premenné CSS pre väčšinu štýlov, vďaka čomu je možné jednoducho upravovať ich predvolené hodnoty. Tieto premenné môžete prepísať vo svojom globálnom súbore štýlov. Okrem toho podporuje SASS, čo umožňuje pokročilejšie možnosti štylizácie a tematizácie. Pomocou premenných SASS a mixinov, ktoré poskytuje Elements, môžete vytvárať vlastné šablóny, upravovať rozloženia a definovať vlastné farebné schémy. 
+Elements Framework ponúka rozsiahle možnosti prispôsobenia štýlov predovšetkým prostredníctvom premenných CSS. Vďaka tomu môžete ľahko zmeniť vzhľad aplikácie podľa vašich potrieb. Komponenty Elements používajú premenné CSS pre väčšinu štýlov, vďaka čomu je možné jednoducho upravovať ich predvolené hodnoty. Tieto premenné môžete prepísať vo svojom globálnom súbore štýlov. Okrem toho podporuje SASS, čo umožňuje pokročilejšie možnosti štylizácie a tematizácie. Pomocou premenných SASS a mixinov, ktoré poskytuje Elements, môžete vytvárať vlastné šablóny, upravovať rozloženia a definovať vlastné farebné schémy.
 
 ## Farby
 

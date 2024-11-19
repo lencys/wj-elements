@@ -1,6 +1,7 @@
 ---
-title: "ButtonGroup"
+title: 'ButtonGroup'
 ---
+
 import Props from '@ionic-internal/component-api/v1/button-group/props.md';
 import Events from '@ionic-internal/component-api/v1/button-group/events.md';
 import Methods from '@ionic-internal/component-api/v1/button-group/methods.md';
@@ -8,10 +9,12 @@ import Parts from '@ionic-internal/component-api/v1/button-group/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/button-group/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/button-group/slots.md';
 
-
 <head>
   <title>ButtonGroup: Element pre zoskupovanie tlačidiel</title>
-  <meta name="description" content="ButtonGroup slúži na zoskupovanie elementov Button, ktoré budú po vložení do vnútra elementu automaticky naštýlované a usporiadané." />
+  <meta
+    name="description"
+    content="ButtonGroup slúži na zoskupovanie elementov Button, ktoré budú po vložení do vnútra elementu automaticky naštýlované a usporiadané."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -22,7 +25,7 @@ ButtonGroup slúži na zoskupovanie elementov [Button](../button) a [Dropdown](.
 
 ## Základné použitie
 
-Pridajte element `wj-button-group` do HTML s požadovanými atribútmi a do jeho vnútra zahrniete želané Button alebo Dropdown elementy. 
+Pridajte element `wj-button-group` do HTML s požadovanými atribútmi a do jeho vnútra zahrniete želané Button alebo Dropdown elementy.
 
 import Basic from '@site/static/usage/v1/button-group/basic/index.md';
 
@@ -86,7 +89,7 @@ import ColorsOutline from '@site/static/usage/v1/button-group/colors-outline/ind
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

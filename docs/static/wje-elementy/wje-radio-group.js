@@ -1,9 +1,9 @@
 var c = Object.defineProperty;
-var u = (i, t, e) => t in i ? c(i, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : i[t] = e;
-var n = (i, t, e) => (u(i, typeof t != "symbol" ? t + "" : t, e), e);
-import h from "./wje-element.js";
-import r from "./wje-radio.js";
-const m = ".wje-inline{display:flex;flex-direction:row;flex-wrap:wrap;gap:.5rem}";
+var u = (i, t, e) => (t in i ? c(i, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : (i[t] = e));
+var n = (i, t, e) => (u(i, typeof t != 'symbol' ? t + '' : t, e), e);
+import h from './wje-element.js';
+import r from './wje-radio.js';
+const m = '.wje-inline{display:flex;flex-direction:row;flex-wrap:wrap;gap:.5rem}';
 class l extends h {
   /**
    * Creates an instance of RadioGroup.
@@ -12,7 +12,7 @@ class l extends h {
    */
   constructor() {
     super();
-    n(this, "className", "RadioGroup");
+    n(this, 'className', 'RadioGroup');
   }
   /**
    * Returns the CSS styles for the component.
@@ -36,7 +36,7 @@ class l extends h {
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = "open";
+    this.isShadowRoot = 'open';
   }
   /**
    * Draws the component.
@@ -47,9 +47,10 @@ class l extends h {
    * @returns {DocumentFragment}
    */
   draw(e, s, p) {
-    let o = document.createDocumentFragment(), a = document.createElement("div");
-    a.classList.add("native-radio-group", this.hasAttribute("inline") ? "wje-inline" : "ddd");
-    let d = document.createElement("slot");
+    let o = document.createDocumentFragment(),
+      a = document.createElement('div');
+    a.classList.add('native-radio-group', this.hasAttribute('inline') ? 'wje-inline' : 'ddd');
+    let d = document.createElement('slot');
     return a.appendChild(d), o.appendChild(a), o;
   }
   /**
@@ -57,9 +58,10 @@ class l extends h {
    * Handles the selection of radio buttons.
    */
   afterDraw() {
-    this.value && this.setRadioToChekced(this.getRadioByValue(this.value)), this.addEventListener("wje-radio:input", (e) => {
-      this.removeCheck(), this.setRadioToChekced(e.detail.context);
-    });
+    this.value && this.setRadioToChekced(this.getRadioByValue(this.value)),
+      this.addEventListener('wje-radio:input', (e) => {
+        this.removeCheck(), this.setRadioToChekced(e.detail.context);
+      });
   }
   /**
    * Returns the radio button with the given value.
@@ -84,7 +86,7 @@ class l extends h {
    * @param {Radio} radio - The radio button to check.
    */
   setRadioToChekced(e) {
-    e instanceof r && (this.setAttribute("value", e.value), e.checked = !0);
+    e instanceof r && (this.setAttribute('value', e.value), (e.checked = !0));
   }
   /**
    * Returns all the elements in the radio group.
@@ -95,7 +97,5 @@ class l extends h {
     return Array.from(this.childNodes);
   }
 }
-l.define("wje-radio-group", l);
-export {
-  l as default
-};
+l.define('wje-radio-group', l);
+export { l as default };

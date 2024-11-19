@@ -1,6 +1,7 @@
 ---
-title: "ToolbarActions"
+title: 'ToolbarActions'
 ---
+
 import Props from '@ionic-internal/component-api/v1/toolbar-actions/props.md';
 import Events from '@ionic-internal/component-api/v1/toolbar-actions/events.md';
 import Methods from '@ionic-internal/component-api/v1/toolbar-actions/methods.md';
@@ -9,8 +10,11 @@ import CustomProps from '@ionic-internal/component-api/v1/toolbar-actions/custom
 import Slots from '@ionic-internal/component-api/v1/toolbar-actions/slots.md';
 
 <head>
-  <title>ToolbarActions |  Obaľovací kontajner pre tlačidlá vložené do elementu Toolbar</title>
-  <meta name="description" content="Element ToolbarActions slúži ako obaľovací kontajner pre tlačidlá vložené do elementu Toolbar a zoskupuje tak rôzne akcie toolbaru do jedného celku." />
+  <title>ToolbarActions | Obaľovací kontajner pre tlačidlá vložené do elementu Toolbar</title>
+  <meta
+    name="description"
+    content="Element ToolbarActions slúži ako obaľovací kontajner pre tlačidlá vložené do elementu Toolbar a zoskupuje tak rôzne akcie toolbaru do jedného celku."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -33,7 +37,7 @@ Pre viac informácií o použití ToolbarActions prejdite do dokumentácie eleme
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

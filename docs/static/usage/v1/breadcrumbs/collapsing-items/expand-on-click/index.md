@@ -9,7 +9,7 @@ import vue from './vue.md';
   code={{
     javascript,
     react,
-    vue
+    vue,
   }}
   src="usage/v1/breadcrumbs/collapsing-items/expand-on-click/demo.html"
 />

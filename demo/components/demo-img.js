@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -19,27 +19,27 @@ template.innerHTML = `
 `;
 
 function generateSnippets(externalJsContent) {
-    const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, document, externalJsContent);
+  const codeSnippet = new CodeSnippet();
+  codeSnippet.generateSnippet(template, document, externalJsContent);
 }
 
 export default class DemoImg extends WJElement {
-    constructor() {
-        super(template);
-    }
+  constructor() {
+    super(template);
+  }
 
-    afterDraw() {
-        const externalJsContent = `
+  afterDraw() {
+    const externalJsContent = `
             afterDraw() {
                 const codeSnippet = new CodeSnippet();
                 codeSnippet.generateSnippet(template, this.context);
             }
         `;
-        generateSnippets(externalJsContent || null);
-    }
+    generateSnippets(externalJsContent || null);
+  }
 }
 
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-img") || window.customElements.define("demo-img", DemoImg);
+customElements.get('demo-img') || window.customElements.define('demo-img', DemoImg);

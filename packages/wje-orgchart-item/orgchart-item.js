@@ -1,6 +1,5 @@
-import OrgchartItem from "./orgchart-item.element.js";
-    
+import OrgchartItem from './orgchart-item.element.js';
+
 export default OrgchartItem;
 
-OrgchartItem.define("wje-orgchart-item", OrgchartItem);
-    
+OrgchartItem.define('wje-orgchart-item', OrgchartItem);

@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/row/slots.md';
 
 <head>
   <title>Row | Horizontal container for Grid system</title>
-  <meta name="description" content="Row (Riadok) je základným prvkom responzívneho Grid systému. Slúži ako kontajner na usporiadanie a horizontálne zarovnanie stĺpcov v rámci väčších layoutov." />
+  <meta
+    name="description"
+    content="Row (Riadok) je základným prvkom responzívneho Grid systému. Slúži ako kontajner na usporiadanie a horizontálne zarovnanie stĺpcov v rámci väčších layoutov."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -36,7 +39,7 @@ For more information on using **Row**, navigate to the [**Grid**](../grid) syste
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

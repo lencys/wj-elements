@@ -31,7 +31,7 @@ Allows users to select one option from a set of options, ensuring that only one 
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

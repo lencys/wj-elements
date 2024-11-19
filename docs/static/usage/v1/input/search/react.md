@@ -11,7 +11,7 @@ function Example() {
         .example {
           --wje-input-slot-padding-inline: 0 !important;
         }
-        
+
         .example wje-button {
           --wje-button-border-radius: 0 !important;
           --wje-color-base: #000000 !important;

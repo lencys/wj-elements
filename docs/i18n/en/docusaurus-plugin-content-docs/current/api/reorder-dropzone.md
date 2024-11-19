@@ -10,8 +10,11 @@ import CustomProps from '@ionic-internal/component-api/v1/reorder-dropzone/custo
 import Slots from '@ionic-internal/component-api/v1/reorder-dropzone/slots.md';
 
 <head>
-    <title>Reorder Dropzone</title>
-    <meta name="description" content="Reorder Dropzóna je oblasť kde je možné umiestniť Reorder Item v rámci skupiny položiek."></meta>
+  <title>Reorder Dropzone</title>
+  <meta
+    name="description"
+    content="Reorder Dropzóna je oblasť kde je možné umiestniť Reorder Item v rámci skupiny položiek."
+  ></meta>
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -36,7 +39,7 @@ For more information on using Reorder Dropzones, navigate to the [**Reorder**](.
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

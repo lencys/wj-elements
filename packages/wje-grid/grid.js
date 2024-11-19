@@ -1,6 +1,5 @@
-import Grid from "./grid.element.js";
+import Grid from './grid.element.js';
 
 export default Grid;
 
-Grid.define("wje-grid", Grid);
-
+Grid.define('wje-grid', Grid);

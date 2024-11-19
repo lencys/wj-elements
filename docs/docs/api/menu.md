@@ -1,6 +1,7 @@
 ---
-title: "Menu"
+title: 'Menu'
 ---
+
 import Props from '@ionic-internal/component-api/v1/menu/props.md';
 import Events from '@ionic-internal/component-api/v1/menu/events.md';
 import Methods from '@ionic-internal/component-api/v1/menu/methods.md';
@@ -10,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/menu/slots.md';
 
 <head>
   <title>Menu | Element pre zobrazenie menu</title>
-  <meta name="description" content="Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo." />
+  <meta
+    name="description"
+    content="Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -29,7 +33,6 @@ import BasicUsage from '@site/static/usage/v1/menu/basic/index.md';
 
 </div>
 
-
 ## Inset
 
 import Inset from '@site/static/usage/v1/menu/inset/index.md';
@@ -39,7 +42,6 @@ import Inset from '@site/static/usage/v1/menu/inset/index.md';
 <Inset />
 
 </div>
-
 
 ## Atribúty a Vlastnosti
 
@@ -51,7 +53,7 @@ import Inset from '@site/static/usage/v1/menu/inset/index.md';
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

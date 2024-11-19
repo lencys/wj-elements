@@ -16,9 +16,9 @@
   }
 }
 
-:host([disabled]){
+:host([disabled]) {
   background-color: lightgray;
-  opacity: .3;
+  opacity: 0.3;
   pointer-events: none;
   cursor: not-allowed;
 }
@@ -34,16 +34,16 @@
   background-color: var(--wje-option-highlighted);
 }
 
-::slotted([slot="start"]) {
+::slotted([slot='start']) {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  margin-inline-end: .5rem;
+  margin-inline-end: 0.5rem;
 }
 
-::slotted([slot="end"]) {
+::slotted([slot='end']) {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  margin-inline: auto .5rem;
+  margin-inline: auto 0.5rem;
 }

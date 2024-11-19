@@ -1,6 +1,6 @@
-import WJElement from "../../dist/wje-element.js";
-import { event } from "../../packages/utils/event.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import { event } from '../../packages/utils/event.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -158,36 +158,36 @@ export default class DemoDialog extends WJElement {
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(template, this.context);
 
-    this.querySelectorAll("wje-button").forEach((button) => {
-      if (button.classList.contains("close")) {
-        button.addEventListener("wje-button:click", (e) => {
+    this.querySelectorAll('wje-button').forEach((button) => {
+      if (button.classList.contains('close')) {
+        button.addEventListener('wje-button:click', (e) => {
           e.target.closest(`wje-dialog`).close();
         });
       }
     });
 
-    document.getElementById('save').addEventListener("wje-button:click", (e) => {
-      console.log("Save clicked");
+    document.getElementById('save').addEventListener('wje-button:click', (e) => {
+      console.log('Save clicked');
     });
 
     // ukazka ako sa da zmenit content dialogu pred zobrazenim
     // po kliku na button dispatchneme custom event
     // na dialogu staci vytvorit async funkciu beforeShow v nej budeme editovat obsah dialogu
     // taketo funkcie mozu byt beforeShow, afterShow, beforeHide, afterHide
-    let customButton = this.querySelector("#open-modal-button");
+    let customButton = this.querySelector('#open-modal-button');
 
-    customButton.addEventListener("click", function (e) {
-      event.dispatchCustomEvent(this, this.getAttribute("dialog"));
+    customButton.addEventListener('click', function (e) {
+      event.dispatchCustomEvent(this, this.getAttribute('dialog'));
     });
 
-    this.querySelector("[trigger=open-modal-div]").beforeOpen = async (element) => {
+    this.querySelector('[trigger=open-modal-div]').beforeOpen = async (element) => {
       const date = new Date().toLocaleString();
-      element.innerHTML = "Changed content" + date;
-    }
+      element.innerHTML = 'Changed content' + date;
+    };
   }
 }
 
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-dialog") || window.customElements.define("demo-dialog", DemoDialog);
+customElements.get('demo-dialog') || window.customElements.define('demo-dialog', DemoDialog);

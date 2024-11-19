@@ -1,6 +1,7 @@
 ---
-title: "Card Subtitle"
+title: 'Card Subtitle'
 ---
+
 import Props from '@ionic-internal/component-api/v1/card-subtitle/props.md';
 import Events from '@ionic-internal/component-api/v1/card-subtitle/events.md';
 import Methods from '@ionic-internal/component-api/v1/card-subtitle/methods.md';
@@ -10,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/card-subtitle/slots.md';
 
 <head>
   <title>Card Subtitle | Doplnkový alebo sekundárny text Card</title>
-  <meta name="description" content="Element Card subtitle je komponent navrhnutý na použitie v rámci elementu Card Header na zobrazenie doplnkového alebo sekundárneho textu, čím používateľovi poskytuje dodatočný kontext alebo informácie súvisiace s hlavným obsahom karty." />
+  <meta
+    name="description"
+    content="Element Card subtitle je komponent navrhnutý na použitie v rámci elementu Card Header na zobrazenie doplnkového alebo sekundárneho textu, čím používateľovi poskytuje dodatočný kontext alebo informácie súvisiace s hlavným obsahom karty."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -33,7 +37,7 @@ Pre viac informácií o použití Card Subtitle sa presuňte do dokumentácie el
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

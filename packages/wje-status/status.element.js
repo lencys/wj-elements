@@ -1,5 +1,5 @@
-import { default as WJElement } from "../wje-element/element.js";
-import styles from "./styles/styles.css?inline";
+import { default as WJElement } from '../wje-element/element.js';
+import styles from './styles/styles.css?inline';
 
 /**
  * @summary This class represents Status element, extending the WJElement class.
@@ -14,67 +14,66 @@ import styles from "./styles/styles.css?inline";
  * @tag wje-status
  */
 export default class Status extends WJElement {
+  /**
+   * Creates an instance of Status.
+   */
+  constructor() {
+    super();
+  }
 
-    /**
-     * Creates an instance of Status.
-     */
-    constructor() {
-        super();
-    }
+  /**
+   * The class name for the component.
+   * @type {string}
+   */
+  className = 'Status';
 
-    /**
-     * The class name for the component.
-     * @type {string}
-     */
-    className = "Status";
+  /**
+   * Returns the CSS stylesheet for the component.
+   * @static
+   * @returns {CSSStyleSheet} The CSS stylesheet
+   */
+  static get cssStyleSheet() {
+    return styles;
+  }
 
-    /**
-     * Returns the CSS stylesheet for the component.
-     * @static
-     * @returns {CSSStyleSheet} The CSS stylesheet
-     */
-    static get cssStyleSheet() {
-        return styles;
-    }
+  /**
+   * Sets up the attributes for the component.
+   */
+  setupAttributes() {
+    this.isShadowRoot = 'open';
+  }
 
-    /**
-     * Sets up the attributes for the component.
-     */
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
+  /**
+   * Draws the component for the status.
+   * @returns {object} fragment - The document fragment
+   */
+  draw() {
+    let fragment = document.createDocumentFragment();
 
-    /**
-     * Draws the component for the status.
-     * @returns {object} fragment - The document fragment
-     */
-    draw() {
-        let fragment = document.createDocumentFragment();
+    let native = document.createElement('div');
+    native.setAttribute('part', 'native');
+    native.classList.add('native-status');
 
-        let native = document.createElement('div');
-        native.setAttribute('part', 'native');
-        native.classList.add('native-status');
+    let bullet = document.createElement('div');
+    bullet.setAttribute('part', 'bullet');
+    bullet.classList.add('bullet');
 
-        let bullet = document.createElement('div');
-        bullet.setAttribute('part', 'bullet');
-        bullet.classList.add('bullet');
+    let slot = document.createElement('slot');
 
-        let slot = document.createElement("slot");
+    let start = document.createElement('slot');
+    start.setAttribute('name', 'start');
 
-        let start = document.createElement("slot");
-        start.setAttribute("name", "start");
+    let end = document.createElement('slot');
+    end.setAttribute('name', 'end');
 
-        let end = document.createElement("slot");
-        end.setAttribute("name", "end");
+    bullet.appendChild(slot);
 
-        bullet.appendChild(slot);
+    native.appendChild(start);
+    native.appendChild(bullet);
+    native.appendChild(end);
 
-        native.appendChild(start);
-        native.appendChild(bullet);
-        native.appendChild(end);
+    fragment.appendChild(native);
 
-        fragment.appendChild(native);
-
-        return fragment;
-    }
+    return fragment;
+  }
 }

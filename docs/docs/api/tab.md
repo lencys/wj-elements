@@ -1,6 +1,7 @@
 ---
-title: "Tab"
+title: 'Tab'
 ---
+
 import Props from '@ionic-internal/component-api/v1/tab/props.md';
 import Events from '@ionic-internal/component-api/v1/tab/events.md';
 import Methods from '@ionic-internal/component-api/v1/tab/methods.md';
@@ -9,8 +10,11 @@ import CustomProps from '@ionic-internal/component-api/v1/tab/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/tab/slots.md';
 
 <head>
-  <title>Tab |  Tlačidlo záložkovej navigácie</title>
-  <meta name="description" content="Komponent Tab je podriadeným komponentom TabGroup a slúži ako tlačidlo navigácie založenej na záložkách. Používa sa v kombinácii s elementom TabPanel." />
+  <title>Tab | Tlačidlo záložkovej navigácie</title>
+  <meta
+    name="description"
+    content="Komponent Tab je podriadeným komponentom TabGroup a slúži ako tlačidlo navigácie založenej na záložkách. Používa sa v kombinácii s elementom TabPanel."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -33,7 +37,7 @@ Pre príklady použitia komponentu `Tab` prejdite na dokumentáciu [**TabGroup**
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

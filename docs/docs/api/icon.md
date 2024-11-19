@@ -1,6 +1,7 @@
 ---
 title: 'Icon'
 ---
+
 import Props from '@ionic-internal/component-api/v1/icon/props.md';
 import Events from '@ionic-internal/component-api/v1/icon/events.md';
 import Methods from '@ionic-internal/component-api/v1/icon/methods.md';
@@ -50,7 +51,7 @@ import Custom from '@site/static/usage/v1/icon/custom/index.md';
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

@@ -7,7 +7,9 @@ import './main.css';
 function Example() {
   return (
     <>
-      <span>Stĺpec 1 má <strong>size</strong> nastavenú na <strong>"auto"</strong></span>
+      <span>
+        Stĺpec 1 má <strong>size</strong> nastavenú na <strong>"auto"</strong>
+      </span>
       <wje-grid>
         <wje-row>
           <wje-col size="auto">1</wje-col>
@@ -16,7 +18,9 @@ function Example() {
         </wje-row>
       </wje-grid>
 
-      <span>Stĺpec 3 obsahuje text a má <strong>size "auto"</strong></span>
+      <span>
+        Stĺpec 3 obsahuje text a má <strong>size "auto"</strong>
+      </span>
       <wje-grid>
         <wje-row>
           <wje-col>1</wje-col>
@@ -28,7 +32,9 @@ function Example() {
         </wje-row>
       </wje-grid>
 
-      <span>Stĺpec 2 má <strong>size</strong> <strong>"auto"</strong> a definovanú šírku</span>
+      <span>
+        Stĺpec 2 má <strong>size</strong> <strong>"auto"</strong> a definovanú šírku
+      </span>
       <wje-grid>
         <wje-row>
           <wje-col>1</wje-col>

@@ -1,5 +1,5 @@
 ---
-title: "Router Link"
+title: 'Router Link'
 ---
 
 import Props from '@ionic-internal/component-api/v1/router-link/props.md';
@@ -11,14 +11,17 @@ import Slots from '@ionic-internal/component-api/v1/router-link/slots.md';
 
 <head>
   <title>Router Link | Komponent na router navigáciu</title>
-  <meta name="description" content="Router link komponenta slúži ako prispôsobiteľný link navrhnutý na použitie v navigácii naprieč aplikáciou." />
+  <meta
+    name="description"
+    content="Router link komponenta slúži ako prispôsobiteľný link navrhnutý na použitie v navigácii naprieč aplikáciou."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Router link komponenta slúži ako prispôsobiteľný link navrhnutý na použitie v navigácii naprieč aplikáciou. 
+Router link komponenta slúži ako prispôsobiteľný link navrhnutý na použitie v navigácii naprieč aplikáciou.
 
 :::note
 Pre viac informácií o použití Router Link prejdite na stránku [**Router**](../router) v dokumentácii.
@@ -34,7 +37,7 @@ Pre viac informácií o použití Router Link prejdite na stránku [**Router**](
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

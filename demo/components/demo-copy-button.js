@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 template.innerHTML = `<h1>Copy Button</h1>
@@ -90,4 +90,4 @@ export default class DemoCopyButton extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-copy-button") || window.customElements.define("demo-copy-button", DemoCopyButton);
+customElements.get('demo-copy-button') || window.customElements.define('demo-copy-button', DemoCopyButton);

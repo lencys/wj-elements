@@ -21,7 +21,7 @@
     <wje-button>
       <wje-icon slot="icon-only" name="align-left"></wje-icon>
     </wje-button>
-    </wje-tooltip>
+  </wje-tooltip>
   <wje-tooltip content="Align center">
     <wje-button>
       <wje-icon slot="icon-only" name="align-center"></wje-icon>

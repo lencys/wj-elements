@@ -1,9 +1,9 @@
 var a = Object.defineProperty;
-var c = (e, t, s) => t in e ? a(e, t, { enumerable: !0, configurable: !0, writable: !0, value: s }) : e[t] = s;
-var n = (e, t, s) => (c(e, typeof t != "symbol" ? t + "" : t, s), s);
-import u from "./wje-element.js";
-import { b as l } from "./router-links-FtZbFUto.js";
-const d = ":host{display:block;background:transparent!important}:host(.active){cursor:pointer;font-weight:700}";
+var c = (e, t, s) => (t in e ? a(e, t, { enumerable: !0, configurable: !0, writable: !0, value: s }) : (e[t] = s));
+var n = (e, t, s) => (c(e, typeof t != 'symbol' ? t + '' : t, s), s);
+import u from './wje-element.js';
+import { b as l } from './router-links-FtZbFUto.js';
+const d = ':host{display:block;background:transparent!important}:host(.active){cursor:pointer;font-weight:700}';
 class o extends u {
   /**
    * Creates an instance of RouterLink.
@@ -12,7 +12,7 @@ class o extends u {
    */
   constructor() {
     super();
-    n(this, "className", "RouterLink");
+    n(this, 'className', 'RouterLink');
     this.unbindRouterLinks = l(this, { selector: !1 });
   }
   /**
@@ -37,7 +37,7 @@ class o extends u {
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = "open", this.setAttribute("active-class", "active");
+    (this.isShadowRoot = 'open'), this.setAttribute('active-class', 'active');
   }
   /**
    * Draws the component.
@@ -48,7 +48,8 @@ class o extends u {
    * @returns {DocumentFragment}
    */
   draw(s, m, p) {
-    let r = document.createDocumentFragment(), i = document.createElement("slot");
+    let r = document.createDocumentFragment(),
+      i = document.createElement('slot');
     return r.appendChild(i), r;
   }
   /**
@@ -58,7 +59,5 @@ class o extends u {
     this.unbindRouterLinks();
   }
 }
-o.define("wje-router-link", o);
-export {
-  o as default
-};
+o.define('wje-router-link', o);
+export { o as default };

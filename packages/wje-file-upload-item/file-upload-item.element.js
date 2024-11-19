@@ -1,10 +1,10 @@
-import { Localizer } from "../utils/localize.js";
-import Button from "../wje-button/button.js";
-import { default as WJElement } from "../wje-element/element.js";
-import FormatDigital from "../wje-format-digital/format-digital.js";
-import Icon from "../wje-icon/icon.js";
-import Slider from "../wje-slider/slider.js";
-import styles from "./styles/styles.css?inline";
+import { Localizer } from '../utils/localize.js';
+import Button from '../wje-button/button.js';
+import { default as WJElement } from '../wje-element/element.js';
+import FormatDigital from '../wje-format-digital/format-digital.js';
+import Icon from '../wje-icon/icon.js';
+import Slider from '../wje-slider/slider.js';
+import styles from './styles/styles.css?inline';
 
 /**
  * @summary This element allows users to upload files.
@@ -24,7 +24,6 @@ import styles from "./styles/styles.css?inline";
  * @tag wje-file-upload
  */
 export default class FileUploadItem extends WJElement {
-
   /**
    * Creates an instance of FileUploadItem.
    * @class
@@ -39,13 +38,13 @@ export default class FileUploadItem extends WJElement {
    * @type {object}
    */
   dependencies = {
-    "wje-format-digital": FormatDigital,
-    "wje-button": Button,
-    "wje-slider": Slider,
-    "wje-icon": Icon
-  }
+    'wje-format-digital': FormatDigital,
+    'wje-button': Button,
+    'wje-slider': Slider,
+    'wje-icon': Icon,
+  };
 
-  className = "FileUploadItem";
+  className = 'FileUploadItem';
 
   /**
    * Returns the CSS styles for the component.
@@ -62,7 +61,7 @@ export default class FileUploadItem extends WJElement {
    * @returns {Array<string>}
    */
   static get observedAttributes() {
-    return ["uploaded"];
+    return ['uploaded'];
   }
 
   /**
@@ -72,8 +71,8 @@ export default class FileUploadItem extends WJElement {
    * @param {string} newName The new value of the attribute.
    */
   attributeChangedCallback(name, old, newName) {
-    if (name === "uploaded" && this.drawingStatus === "AFTER") {
-      this.uploadedEl.setAttribute("value", this.uploaded);
+    if (name === 'uploaded' && this.drawingStatus === 'AFTER') {
+      this.uploadedEl.setAttribute('value', this.uploaded);
 
       let progress = (+this.uploaded / +this.size) * 100 || 0;
       this.sliderEl.value = Math.round(progress, 0);
@@ -84,7 +83,7 @@ export default class FileUploadItem extends WJElement {
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = "open";
+    this.isShadowRoot = 'open';
   }
 
   /**
@@ -94,45 +93,45 @@ export default class FileUploadItem extends WJElement {
   draw() {
     let fragment = document.createDocumentFragment();
 
-    let native = document.createElement("div");
-    native.classList.add("native-file-upload-item");
+    let native = document.createElement('div');
+    native.classList.add('native-file-upload-item');
 
-    let slot = document.createElement("slot");
-    slot.setAttribute("name", "img");
+    let slot = document.createElement('slot');
+    slot.setAttribute('name', 'img');
 
-    let image = document.createElement("div");
-    image.setAttribute("part", "image");
-    image.classList.add("image");
+    let image = document.createElement('div');
+    image.setAttribute('part', 'image');
+    image.classList.add('image');
 
-    let name = document.createElement("span");
-    name.classList.add("name");
+    let name = document.createElement('span');
+    name.classList.add('name');
     name.innerText = this.name;
 
-    let actions = document.createElement("slot");
-    actions.classList.add("actions");
-    actions.setAttribute("name", "action");
+    let actions = document.createElement('slot');
+    actions.classList.add('actions');
+    actions.setAttribute('name', 'action');
 
-    let button = document.createElement("wje-button");
-    button.setAttribute("fill", "link");
-    button.setAttribute("size", "small");
+    let button = document.createElement('wje-button');
+    button.setAttribute('fill', 'link');
+    button.setAttribute('size', 'small');
     button.innerHTML = `<wje-icon name="x" size="small"></wje-icon>`;
 
-    let sizeWrapper = document.createElement("span");
-    sizeWrapper.classList.add("size");
+    let sizeWrapper = document.createElement('span');
+    sizeWrapper.classList.add('size');
 
-    let uploaded = document.createElement("wje-format-digital");
-    uploaded.setAttribute("value", this.uploaded || 0);
-    uploaded.innerHTML = `<span slot="start">${this.localizer.translate("wj.file.upload.uploaded")}</span>`;
+    let uploaded = document.createElement('wje-format-digital');
+    uploaded.setAttribute('value', this.uploaded || 0);
+    uploaded.innerHTML = `<span slot="start">${this.localizer.translate('wj.file.upload.uploaded')}</span>`;
 
-    let size = document.createElement("wje-format-digital");
-    size.setAttribute("value", this.size || 0);
-    size.innerHTML = `<span slot="start">&nbsp;${this.localizer.translate("wj.file.upload.from")} </span>`;
+    let size = document.createElement('wje-format-digital');
+    size.setAttribute('value', this.size || 0);
+    size.innerHTML = `<span slot="start">&nbsp;${this.localizer.translate('wj.file.upload.from')} </span>`;
 
-    let slider = document.createElement("wje-progress-bar");
-    slider.classList.add("file-progress");
-    slider.setAttribute("id", "id-" + this.lastModified);
-    slider.setAttribute("value", this.progress || 0);
-    slider.setAttribute("color", "success");
+    let slider = document.createElement('wje-progress-bar');
+    slider.classList.add('file-progress');
+    slider.setAttribute('id', 'id-' + this.lastModified);
+    slider.setAttribute('value', this.progress || 0);
+    slider.setAttribute('color', 'success');
 
     image.appendChild(slot);
     actions.appendChild(button);
@@ -159,7 +158,7 @@ export default class FileUploadItem extends WJElement {
    * Called after the component has been drawn.
    */
   afterDraw() {
-    this.button.addEventListener("wje-button:click", this.onDelete);
+    this.button.addEventListener('wje-button:click', this.onDelete);
   }
 
   /**
@@ -167,5 +166,5 @@ export default class FileUploadItem extends WJElement {
    */
   onDelete = () => {
     this.remove();
-  }
+  };
 }

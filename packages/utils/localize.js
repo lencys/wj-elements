@@ -1,4 +1,4 @@
-import { LocalizerDefault, registerTranslation } from "../localize/localize.js";
+import { LocalizerDefault, registerTranslation } from '../localize/localize.js';
 
 export class Localizer extends LocalizerDefault {
   constructor(element) {
@@ -8,4 +8,3 @@ export class Localizer extends LocalizerDefault {
     registerTranslation(...translation);
   }
 }
-

@@ -1,5 +1,5 @@
-import { default as WJElement } from "../wje-element/element.js";
-import styles from "./styles/styles.css?inline";
+import { default as WJElement } from '../wje-element/element.js';
+import styles from './styles/styles.css?inline';
 
 /**
  * @summary Thumbnail class
@@ -14,55 +14,54 @@ import styles from "./styles/styles.css?inline";
  */
 
 export default class Thumbnail extends WJElement {
+  /**
+   * Creates an instance of Thumbnail.
+   */
+  constructor() {
+    super();
+  }
 
-    /**
-     * Creates an instance of Thumbnail.
-     */
-    constructor() {
-        super();
-    }
+  /**
+   * The class name for the component
+   */
+  className = 'Thumbnail';
 
-    /**
-     * The class name for the component
-     */
-    className = "Thumbnail";
+  /**
+   * Returns the CSS stylesheet for the component.
+   * @static
+   * @returns {CSSStyleSheet} The CSS stylesheet
+   */
+  static get cssStyleSheet() {
+    return styles;
+  }
 
-    /**
-     * Returns the CSS stylesheet for the component.
-     * @static
-     * @returns {CSSStyleSheet} The CSS stylesheet
-     */
-    static get cssStyleSheet() {
-        return styles;
-    }
+  /**
+   * Returns the list of observed attributes.
+   * @static
+   * @returns {Array} An empty array
+   */
+  static get observedAttributes() {
+    return [];
+  }
 
-    /**
-     * Returns the list of observed attributes.
-     * @static
-     * @returns {Array} An empty array
-     */
-    static get observedAttributes() {
-        return [];
-    }
+  /**
+   * Sets up the attributes for the component.
+   */
+  setupAttributes() {
+    this.isShadowRoot = 'open';
+  }
 
-    /**
-     * Sets up the attributes for the component.
-     */
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
+  /**
+   * Draws the component for the thumbnail.
+   * @returns {object} Document fragment
+   */
+  draw() {
+    let fragment = document.createDocumentFragment();
 
-    /**
-     * Draws the component for the thumbnail.
-     * @returns {object} Document fragment
-     */
-    draw() {
-        let fragment = document.createDocumentFragment();
+    let element = document.createElement('slot');
 
-        let element = document.createElement("slot");
+    fragment.appendChild(element);
 
-        fragment.appendChild(element);
-
-        return fragment;
-    }
+    return fragment;
+  }
 }

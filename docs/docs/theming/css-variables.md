@@ -41,7 +41,7 @@ wje-button {
 
 /* Nastaví farbu okrajov všetkých tlačidla s id 'custom' */
 #custom {
-    --wje-button-border-color: #0af4fc;
+  --wje-button-border-color: #0af4fc;
 }
 ```
 
@@ -59,7 +59,6 @@ el.style.setProperty('--wje-button-border-color', '#0af4fc');
 ### Použitím CSS
 
 Na získanie hodnoty premennej CSS použite funkciu [var() CSS function](https://developer.mozilla.org/en-US/docs/Web/CSS/var). Táto funkcia tiež umožňuje špecifikovať záložnú hodnotu. Napríklad v nasledujúcom príklade je vlastnosti `--wje-button-border-color` priradená hodnota premennej `--primary-light`. Ak premenná `--primary-light` nie je nastavená, ako náhradná hodnota sa použije `#0af4fc`.
-
 
 ```css
 #custom {

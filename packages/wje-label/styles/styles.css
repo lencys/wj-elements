@@ -42,7 +42,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  box-sizing :border-box;
+  box-sizing: border-box;
 }
 
 :host(.wje-color) {

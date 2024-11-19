@@ -20,13 +20,12 @@ const convertElementToHypertextData = (node: any): any => {
     data.push(tag);
 
     if (node.attributes.length > 0) {
-      const attrs: { [key: string]: any; } = {};
+      const attrs: { [key: string]: any } = {};
       for (let j = 0; j < node.attributes.length; j++) {
         const attr = node.attributes.item(j);
         attrs[attr.nodeName] = attr.nodeValue;
       }
       data.push(attrs);
-
     } else {
       data.push(null);
     }
@@ -36,7 +35,6 @@ const convertElementToHypertextData = (node: any): any => {
     }
 
     return data;
-
   } else if (node.nodeType === 3) {
     return node.textContent;
   }

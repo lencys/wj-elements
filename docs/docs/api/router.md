@@ -1,6 +1,7 @@
 ---
-title: "Router"
+title: 'Router'
 ---
+
 import Props from '@ionic-internal/component-api/v1/router/props.md';
 import Events from '@ionic-internal/component-api/v1/router/events.md';
 import Methods from '@ionic-internal/component-api/v1/router/methods.md';
@@ -10,14 +11,17 @@ import Slots from '@ionic-internal/component-api/v1/router/slots.md';
 
 <head>
   <title>Router | Router Komponent navigácie v rámci webových aplikácií</title>
-  <meta name="description" content="Komponent Router je nástroj určený na navigáciu v rámci webových aplikácií. Táto komponenta podporuje komplexné navigačné scenáre a lazy-load, čím zvyšuje výkon aplikácie a používateľský zážitok." />
+  <meta
+    name="description"
+    content="Komponent Router je nástroj určený na navigáciu v rámci webových aplikácií. Táto komponenta podporuje komplexné navigačné scenáre a lazy-load, čím zvyšuje výkon aplikácie a používateľský zážitok."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponent Router je nástroj určený na navigáciu v rámci webových aplikácií. Táto komponenta podporuje komplexné navigačné scenáre a lazy-load, čím zvyšuje výkon aplikácie a používateľský zážitok. Na to využíva ďalšie komponenty: [Router Link](router-link.md), [Router Outlet](router-outlet.md) a [Route](route.md). 
+Komponent Router je nástroj určený na navigáciu v rámci webových aplikácií. Táto komponenta podporuje komplexné navigačné scenáre a lazy-load, čím zvyšuje výkon aplikácie a používateľský zážitok. Na to využíva ďalšie komponenty: [Router Link](router-link.md), [Router Outlet](router-outlet.md) a [Route](route.md).
 
 Navyše sa bezproblémovo integruje s komponentmi WebJET Elements, čím umožňuje jednoduchú implementáciu navigácie vo vašom projekte.
 
@@ -97,7 +101,7 @@ interface RouterCustomEvent extends CustomEvent {
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

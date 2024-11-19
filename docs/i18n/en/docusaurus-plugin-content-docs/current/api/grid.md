@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/grid/slots.md';
 
 <head>
   <title>Grid | Flexible way to create responsive layouts</title>
-  <meta name="description" content="Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí(layoutov) rozdelením obrazovky na mriežku riadkov (rows) a stĺpcov (columns). Grid je založený na rozložení s 12 stĺpcami, podobne ako mnohé iné populárne grid systémy." />
+  <meta
+    name="description"
+    content="Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí(layoutov) rozdelením obrazovky na mriežku riadkov (rows) a stĺpcov (columns). Grid je založený na rozložení s 12 stĺpcami, podobne ako mnohé iné populárne grid systémy."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -132,7 +135,7 @@ import HorizontalAlignment from '@site/static/usage/v1/grid/horizontal-alignment
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

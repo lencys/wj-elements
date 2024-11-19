@@ -1,6 +1,6 @@
-import { default as WJElement, event } from "../wje-element/element.js";
+import { default as WJElement, event } from '../wje-element/element.js';
 
-import styles from "./styles/styles.css?inline";
+import styles from './styles/styles.css?inline';
 
 /**
  * @summary This class represents CarouselItem element, extending the WJElement class.
@@ -19,67 +19,66 @@ import styles from "./styles/styles.css?inline";
  * @cssproperty [--wje-carousel-item-margin-inline=0] - Margin inline of the component;
  */
 export default class CarouselItem extends WJElement {
+  /**
+   * CarouselItem constructor method.
+   */
+  constructor() {
+    super();
+  }
 
-    /**
-     * CarouselItem constructor method.
-     */
-    constructor() {
-        super();
-    }
+  /**
+   * Class name for the CarouselItem element.
+   * @type {string}
+   */
+  className = 'CarouselItem';
 
-    /**
-     * Class name for the CarouselItem element.
-     * @type {string}
-     */
-    className = "CarouselItem";
+  /**
+   * Getter for the CSS stylesheet.
+   * @returns {*}
+   */
+  static get cssStyleSheet() {
+    return styles;
+  }
 
-    /**
-     * Getter for the CSS stylesheet.
-     * @returns {*}
-     */
-    static get cssStyleSheet() {
-        return styles;
-    }
+  /**
+   * Getter for the observed attributes.
+   * @returns {*[]}
+   */
+  static get observedAttributes() {
+    return [];
+  }
 
-    /**
-     * Getter for the observed attributes.
-     * @returns {*[]}
-     */
-    static get observedAttributes() {
-        return [];
-    }
+  /**
+   * Sets up the attributes for the CarouselItem.
+   */
+  setupAttributes() {
+    this.isShadowRoot = 'open';
+  }
 
-    /**
-     * Sets up the attributes for the CarouselItem.
-     */
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
+  /**
+   * Draws the CarouselItem element.
+   * @returns {DocumentFragment}
+   */
+  draw() {
+    let fragment = document.createDocumentFragment();
 
-    /**
-     * Draws the CarouselItem element.
-     * @returns {DocumentFragment}
-     */
-    draw() {
-        let fragment = document.createDocumentFragment();
+    let native = document.createElement('div');
+    native.classList.add('native-carousel-item');
+    native.setAttribute('part', 'native');
 
-        let native = document.createElement("div");
-        native.classList.add("native-carousel-item");
-        native.setAttribute("part", "native");
+    let slot = document.createElement('slot');
 
-        let slot = document.createElement("slot");
+    native.appendChild(slot);
 
-        native.appendChild(slot);
+    fragment.appendChild(native);
 
-        fragment.appendChild(native);
+    return fragment;
+  }
 
-        return fragment;
-    }
-
-    /**
-     * After draw event for the CarouselItem element.
-     */
-    afterDraw() {
-        event.addListener(this, "click", "wje-carousel-item:click");
-    }
+  /**
+   * After draw event for the CarouselItem element.
+   */
+  afterDraw() {
+    event.addListener(this, 'click', 'wje-carousel-item:click');
+  }
 }

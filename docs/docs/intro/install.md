@@ -3,17 +3,19 @@ title: Inštalácia WebJET Elements
 sidebar_label: Inštalácia
 ---
 
-
 <head>
   <title>Ako získať WebJET Elements pre svoj projekt</title>
-  <meta name="description" content="Zahrňte WebJET Elements do svojho projektu pomocou CDN alebo ho nainštalujte pomocou npm." />
+  <meta
+    name="description"
+    content="Zahrňte WebJET Elements do svojho projektu pomocou CDN alebo ho nainštalujte pomocou npm."
+  />
 </head>
 
 Zahrňte WebJET Elements do svojho projektu pomocou **CDN** alebo ho nainštalujte pomocou **npm**.
 
-## Inštalácia s npm 
+## Inštalácia s npm
 
-Pomocou správcu balíkov npm môžete do takmer každého projektu vložiť zdrojové súbory aplikácie Elements. 
+Pomocou správcu balíkov npm môžete do takmer každého projektu vložiť zdrojové súbory aplikácie Elements.
 
 Pred pokračovaním sa uistite, že máte v počítači nainštalovaný Node.js. Ak chcete nastaviť prostredie pre Elements, pozrite si [tieto pokyny](environment.md).
 
@@ -34,6 +36,12 @@ $ npm uninstall wj-elements
 Použite CDN a zahrňte do svojho projektu skompilované CSS a JS súbory WebJET Elements.
 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@dddb1c19734498c5b2a17f2e6ed605d0cd40d02e/wj-master.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/style.css" />
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@dddb1c19734498c5b2a17f2e6ed605d0cd40d02e/wj-master.js"
+></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/lencys/wj-elements@e5cdd8566b4acaad5c11040bfbb4e09e170074c9/style.css"
+/>
 ```

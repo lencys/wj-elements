@@ -1,5 +1,5 @@
-import Step from "./step.element.js";
+import Step from './step.element.js';
 
 export default Step;
 
-Step.define("wje-step", Step);
+Step.define('wje-step', Step);

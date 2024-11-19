@@ -21,7 +21,7 @@ function Example() {
             .custom {
               --wje-icon-size: 10px;
             }
-          </style>     
+          </style>
         </wje-breadcrumbs>
         <wje-toolbar-action slot="end">
           <wje-button>Create</wje-button>

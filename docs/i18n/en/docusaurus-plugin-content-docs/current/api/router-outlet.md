@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/router-outlet/slots.md';
 
 <head>
   <title>Router | Router The navigation component within web applications</title>
-  <meta name="description" content="Komponent Router je nástroj určený na navigáciu v rámci webových aplikácií. Táto komponenta podporuje komplexné navigačné scenáre a lazy-load, čím zvyšuje výkon aplikácie a používateľský zážitok." />
+  <meta
+    name="description"
+    content="Komponent Router je nástroj určený na navigáciu v rámci webových aplikácií. Táto komponenta podporuje komplexné navigačné scenáre a lazy-load, čím zvyšuje výkon aplikácie a používateľský zážitok."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -24,8 +27,8 @@ The Router Outlet component manages the insertion and removal of various page co
 
 Routes rendered in a Router Outlet have access to specific Ionic events that are wired up to animations
 
-| Event Name         | Trigger                                                                            |
-| ------------------ | ---------------------------------------------------------------------------------- |
+| Event Name         | Trigger                                                            |
+| ------------------ | ------------------------------------------------------------------ |
 | `ionViewWillEnter` | Fired when the component routing to is about to animate into view. |
 | `ionViewDidEnter`  | Fired when the component routing to has finished animating.        |
 | `ionViewWillLeave` | Fired when the component routing from is about to animate.         |
@@ -45,7 +48,7 @@ For handling Router Guards, the older `ionViewCanEnter` and `ionViewCanLeave` ha
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

@@ -4,5 +4,14 @@
 <wje-input variant="standard" label="Input with value" value="Mlynské Nivy 71"></wje-input>
 <wje-input variant="standard" label="Readonly input" value="Bratislava" readonly></wje-input>
 <wje-input variant="standard" label="Disabled input" value="84103" disabled></wje-input>
-<wje-input variant="standard" label="Default input" type="number" minlength="5" message="Toto je moja hlaska" required validate-on-change custom-error-display ></wje-input>
+<wje-input
+  variant="standard"
+  label="Default input"
+  type="number"
+  minlength="5"
+  message="Toto je moja hlaska"
+  required
+  validate-on-change
+  custom-error-display
+></wje-input>
 ```

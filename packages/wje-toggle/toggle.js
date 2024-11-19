@@ -1,6 +1,5 @@
-import Toggle from "./toggle.element.js";
+import Toggle from './toggle.element.js';
 
 export default Toggle;
 
-Toggle.define("wje-toggle", Toggle);
-
+Toggle.define('wje-toggle', Toggle);

@@ -1,4 +1,4 @@
-import WJElement from "../../dist/wje-element.js";
+import WJElement from '../../dist/wje-element.js';
 
 export default class DemoTable extends WJElement {
   constructor() {
@@ -47,4 +47,4 @@ export default class DemoTable extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-table") || window.customElements.define("demo-table", DemoTable);
+customElements.get('demo-table') || window.customElements.define('demo-table', DemoTable);

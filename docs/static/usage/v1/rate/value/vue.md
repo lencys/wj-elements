@@ -1,6 +1,9 @@
 ```html
 <template>
-  <wje-rate value="3" icons="['heart-filled', 'heart-filled', 'heart-filled', 'heart-filled', 'heart-filled']"></wje-rate>
+  <wje-rate
+    value="3"
+    icons="['heart-filled', 'heart-filled', 'heart-filled', 'heart-filled', 'heart-filled']"
+  ></wje-rate>
 </template>
 
 <script lang="ts">

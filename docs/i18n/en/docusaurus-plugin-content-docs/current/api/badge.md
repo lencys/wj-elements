@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/badge/slots.md';
 
 <head>
   <title>Badge | Badges</title>
-  <meta name="description" content="Badge sú inline-block elementy, ktoré majú informatívny charakter a zvyčajne sa zobrazujú v blízkosti iného elementu. Používajú sa ako upozornenie, že k elementu sú priradené ďalšie elementy, a informujú používateľa o ich počte." />
+  <meta
+    name="description"
+    content="Badge sú inline-block elementy, ktoré majú informatívny charakter a zvyčajne sa zobrazujú v blízkosti iného elementu. Používajú sa ako upozornenie, že k elementu sú priradené ďalšie elementy, a informujú používateľa o ich počte."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -46,7 +49,7 @@ import Colors from '@site/static/usage/v1/badge/theming/colors/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

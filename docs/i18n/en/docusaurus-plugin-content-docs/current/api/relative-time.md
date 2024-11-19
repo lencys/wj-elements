@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/relative-time/slots.md';
 
 <head>
   <title>Reorder | ion-reorder: Drag and Drop Icon to Reorder Items</title>
-  <meta name="description" content="Ion-reorder is the anchor used to drag and drop the items inside of the ion-reorder-group. Read to learn more about custom reorder icons and items." />
+  <meta
+    name="description"
+    content="Ion-reorder is the anchor used to drag and drop the items inside of the ion-reorder-group. Read to learn more about custom reorder icons and items."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -36,7 +39,7 @@ import Basic from '@site/static/usage/v1/relative-time/basic/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

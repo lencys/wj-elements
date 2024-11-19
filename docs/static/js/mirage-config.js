@@ -1,14 +1,11 @@
 // import { faker } from '@faker-js/faker';
 // import { createServer, Model, Factory } from 'miragejs';
 
-
-import  { createServer, Model, Factory } from 'https://cdn.jsdelivr.net/npm/miragejs@0.1.48/+esm'
+import { createServer, Model, Factory } from 'https://cdn.jsdelivr.net/npm/miragejs@0.1.48/+esm';
 import { faker } from 'https://esm.sh/@faker-js/faker';
-
 
 export function makeServer({ environment = 'development' } = {}) {
   let server = createServer({
-
     models: {
       user: Model,
       option: Model,
@@ -20,14 +17,14 @@ export function makeServer({ environment = 'development' } = {}) {
           return faker.image.urlLoremFlickr({ category: 'city' });
         },
         fullName(i) {
-          return faker.location.city()
+          return faker.location.city();
         },
         jobTitle(i) {
-          return faker.location.country()
+          return faker.location.country();
         },
         description(i) {
-          return faker.lorem.sentence()
-        }
+          return faker.lorem.sentence();
+        },
       }),
       option: Factory.extend({
         value(i) {
@@ -38,21 +35,21 @@ export function makeServer({ environment = 'development' } = {}) {
         },
         label(i) {
           return faker.location.state();
-        }
+        },
       }),
     },
 
     seeds(server) {
-      server.createList("user", 0);
+      server.createList('user', 0);
     },
 
     routes() {
-      this.get("/api/users", function(schema, request) {
+      this.get('/api/users', function (schema, request) {
         const page = +request.queryParams.page;
         const size = +request.queryParams.size;
 
         server.db.users.remove(); // musime najprv precistit
-        server.createList("user", size);
+        server.createList('user', size);
 
         let data = schema.users.all();
         let users = this.serialize(data).users;
@@ -62,12 +59,12 @@ export function makeServer({ environment = 'development' } = {}) {
           size: size,
           totalPages: 10,
           data: users,
-        }
+        };
       });
 
-      this.get("/api/options", function(schema, request) {
+      this.get('/api/options', function (schema, request) {
         server.db.users.remove(); // musime najprv precistit
-        server.createList("option", 10);
+        server.createList('option', 10);
 
         let data = schema.options.all();
         let options = this.serialize(data).options;
@@ -98,7 +95,7 @@ export function makeServer({ environment = 'development' } = {}) {
       this.passthrough('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
     },
     // logging: false
-  })
+  });
 
   return server;
 }

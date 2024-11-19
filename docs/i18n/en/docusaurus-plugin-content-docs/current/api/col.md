@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/col/slots.md';
 
 <head>
   <title>Col | Horizontal placement of content based on screen size.</title>
-  <meta name="description" content="Komponent Col je základným stavebným prvkom [Gridu](./grid) a umožňuje horizontálne rozmiestniť obsah a upraviť jeho usporiadanie na základe veľkosti obrazovky." />
+  <meta
+    name="description"
+    content="Komponent Col je základným stavebným prvkom [Gridu](./grid) a umožňuje horizontálne rozmiestniť obsah a upraviť jeho usporiadanie na základe veľkosti obrazovky."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -36,7 +39,7 @@ For more information on using **Col**, navigate to the system documentation [**G
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

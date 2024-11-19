@@ -1,6 +1,5 @@
-import Dialog from "./dialog.element.js";
+import Dialog from './dialog.element.js';
 
 export default Dialog;
 
-Dialog.define("wje-dialog", Dialog);
-
+Dialog.define('wje-dialog', Dialog);

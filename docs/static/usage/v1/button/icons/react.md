@@ -12,21 +12,21 @@ function Example() {
         Right Icon
         <wje-icon slot="end" name="star"></wje-icon>
     </wje-button>
-    
+
     <wje-button>
       <wje-icon slot="icon-only" name="star"></wje-icon>
     </wje-button>
-    
+
     <wje-button fill="outline">
         <wje-icon slot="start" name="star"></wje-icon>
         Left Icon
     </wje-button>
-    
+
     <wje-button fill="outline">
         Right Icon
         <wje-icon slot="end" name="star"></wje-icon>
     </wje-button>
-    
+
     <wje-button fill="outline">
       <wje-icon slot="icon-only" name="star"></wje-icon>
     </wje-button>

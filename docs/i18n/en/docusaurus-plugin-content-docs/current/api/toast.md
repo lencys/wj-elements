@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/toast/slots.md';
 
 <head>
   <title>Toast | An unobtrusive way to display short notifications</title>
-  <meta name="description" content="Komponent toast poskytuje nenápadný spôsob zobrazovania krátkych oznámení používateľovi." />
+  <meta
+    name="description"
+    content="Komponent toast poskytuje nenápadný spôsob zobrazovania krátkych oznámení používateľovi."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -36,7 +39,7 @@ import Basic from '@site/static/usage/v1/toast/inline/basic/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

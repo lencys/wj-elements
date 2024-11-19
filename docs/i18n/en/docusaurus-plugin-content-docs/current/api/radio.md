@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/radio/slots.md';
 
 <head>
   <title>Radio component | Improved version of standard HTML radio element</title>
-  <meta name="description" content="Radio element je upravená verzia štandardného HTML radio elementu, rozšírená o štýly pre dosiahnutie vizuálne konzistentnejšieho používateľského rozhrania." />
+  <meta
+    name="description"
+    content="Radio element je upravená verzia štandardného HTML radio elementu, rozšírená o štýly pre dosiahnutie vizuálne konzistentnejšieho používateľského rozhrania."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -54,7 +57,7 @@ import Color from '@site/static/usage/v1/radio/color/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/main/slots.md';
 
 <head>
   <title>Main | Element for creating layouts</title>
-  <meta name="description" content="Main je prvok na tvorbu layoutov a zobrazuje sa vedľa [Aside](./aside) elementu. Používa sa väčšinou na zobrazenie hlavného obsahu." />
+  <meta
+    name="description"
+    content="Main je prvok na tvorbu layoutov a zobrazuje sa vedľa [Aside](./aside) elementu. Používa sa väčšinou na zobrazenie hlavného obsahu."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -36,7 +39,7 @@ For information on using the **Main** element, navigate to the [**Layout**](../l
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

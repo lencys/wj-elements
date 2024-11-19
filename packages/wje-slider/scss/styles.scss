@@ -56,7 +56,7 @@
 }
 
 :host {
-  --wje-slider-track-height: .25rem;
+  --wje-slider-track-height: 0.25rem;
   position: relative;
   display: flex;
   align-items: center;
@@ -81,7 +81,7 @@
   }
 }
 
-input[type="range"] {
+input[type='range'] {
   -webkit-appearance: none;
   width: 100%;
   height: var(--wje-slider-track-height);
@@ -95,7 +95,7 @@ input[type="range"] {
     width: 18px;
     border-radius: 50%;
     cursor: ew-resize;
-    transition: background .3s ease-in-out;
+    transition: background 0.3s ease-in-out;
   }
 
   &::-moz-range-thumb {
@@ -104,7 +104,7 @@ input[type="range"] {
     width: 18px;
     border-radius: 50%;
     cursor: pointer;
-    transition: background .3s ease-in-out;
+    transition: background 0.3s ease-in-out;
     border: 0;
   }
 
@@ -114,11 +114,11 @@ input[type="range"] {
     width: 18px;
     border-radius: 50%;
     cursor: ew-resize;
-    transition: background .3s ease-in-out;
+    transition: background 0.3s ease-in-out;
   }
 
   /* Input Track */
-  &::-webkit-slider-runnable-track  {
+  &::-webkit-slider-runnable-track {
     -webkit-appearance: none;
     box-shadow: none;
     border: none;
@@ -139,27 +139,27 @@ input[type="range"] {
     background: transparent;
   }
 
-  &[color="primary"] {
+  &[color='primary'] {
     @include color(var(--wje-color-primary-9), var(--wje-color-primary-9), var(--wje-color-contrast-4));
   }
 
-  &[color="success"] {
+  &[color='success'] {
     @include color(var(--wje-color-success-9), var(--wje-color-success-9), var(--wje-color-contrast-4));
   }
 
-  &[color="complete"] {
+  &[color='complete'] {
     @include color(var(--wje-color-complete-9), var(--wje-color-complete-9), var(--wje-color-contrast-4));
   }
 
-  &[color="danger"] {
+  &[color='danger'] {
     @include color(var(--wje-color-danger), var(--wje-color-danger-9), var(--wje-color-contrast-4));
   }
 
-  &[color="warning"] {
+  &[color='warning'] {
     @include color(var(--wje-color-warning-9), var(--wje-color-warning-9), var(--wje-color-contrast-4));
   }
 
-  &[color="dark"] {
+  &[color='dark'] {
     @include color(var(--wje-color-contrast-11), var(--wje-color-contrast-11), var(--wje-color-contrast-4));
   }
 
@@ -194,16 +194,15 @@ output {
   border-radius: 4px;
 }
 
-
-::slotted([slot="label"]) {
+::slotted([slot='label']) {
   margin-inline: 0 1rem;
   font-size: var(--wje-font-size);
 }
 
-::slotted([slot="start"]) {
+::slotted([slot='start']) {
   margin-inline: 0 1rem;
 }
 
-::slotted([slot="end"]) {
+::slotted([slot='end']) {
   margin-inline: 1rem 0;
 }

@@ -1,6 +1,7 @@
 ```html
 <template>
-  <wje-toggle id="custom-toggle" checked>Default Toggle
+  <wje-toggle id="custom-toggle" checked
+    >Default Toggle
     <style>
       #custom-toggle {
         --wje-toggle-color-base: #ff0000;

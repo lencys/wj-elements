@@ -30,11 +30,10 @@ export class LocalizerDefault {
   }
 
   // Vyhľadávanie prekladu podľa kľúča a typu čísla
-  translatePlural(key, count = 0, type = "cardinal") {
+  translatePlural(key, count = 0, type = 'cardinal') {
     const plural = new Intl.PluralRules(this.lang, { type: type });
 
-    if (count !== undefined)
-      key += "." + plural.select(count);
+    if (count !== undefined) key += '.' + plural.select(count);
 
     return this.translate(key);
   }
@@ -49,14 +48,14 @@ export class LocalizerDefault {
     return new Intl.DateTimeFormat(this.currentLang).format(new Date(date));
   }
 
-  relativeTime(lang, value = 0, unit = "day", options = { numeric: "auto" }) {
+  relativeTime(lang, value = 0, unit = 'day', options = { numeric: 'auto' }) {
     lang = lang || this.currentLang;
     return new Intl.RelativeTimeFormat(lang, options).format(value, unit);
   }
 }
 
 export function registerTranslation(...translation) {
-  translation.forEach(t => {
+  translation.forEach((t) => {
     if (!t.code) {
       console.error("Translation object is missing 'code' property:", t);
       return;

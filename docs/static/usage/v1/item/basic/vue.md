@@ -6,15 +6,15 @@
 
   <wje-item>
     <wje-label>
-      Multi-line text that should ellipsis when it is too long to fit on
-      one line. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Multi-line text that should ellipsis when it is too long to fit on one line. Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit.
     </wje-label>
   </wje-item>
 
   <wje-item>
     <wje-label class="wje-text-wrap">
-      Multi-line text that should wrap when it is too long to fit on one
-      line. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Multi-line text that should wrap when it is too long to fit on one line. Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit.
     </wje-label>
   </wje-item>
 

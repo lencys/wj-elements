@@ -1,6 +1,5 @@
-import ToolbarAction from "./toolbar-action.element.js";
+import ToolbarAction from './toolbar-action.element.js';
 
 export default ToolbarAction;
 
-ToolbarAction.define("wje-toolbar-action", ToolbarAction);
-
+ToolbarAction.define('wje-toolbar-action', ToolbarAction);

@@ -61,7 +61,7 @@ function TabsComponent(props: Props): JSX.Element {
   const defaultValue =
     defaultValueProp === null
       ? defaultValueProp
-      : defaultValueProp ?? children.find((child) => child.props.default)?.props.value ?? children[0]?.props.value;
+      : (defaultValueProp ?? children.find((child) => child.props.default)?.props.value ?? children[0]?.props.value);
   if (defaultValue !== null && !values.some((a) => a.value === defaultValue)) {
     throw new Error(
       `Docusaurus error: The <Tabs> has a defaultValue "${defaultValue}" but none of its children has the corresponding value. Available values are: ${values

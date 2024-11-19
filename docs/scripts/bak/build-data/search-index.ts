@@ -8,17 +8,13 @@ const INDEX_PATH = resolve(__dirname, '../../src/components/search/data/index.js
 export default {
   title: 'Build search index',
   task: () => buildIndex(PAGES_PATH),
-  skip: () => true
+  skip: () => true,
 };
 
 const buildIndex = async (dir: any) => {
   const paths = await getPaths(dir);
   const records = await Promise.all(paths.map(toRecord));
-  return outputJson(
-    INDEX_PATH,
-    records,
-    { spaces: 2 }
-  );
+  return outputJson(INDEX_PATH, records, { spaces: 2 });
 };
 
 const toRecord = async (path: any) => {
@@ -27,14 +23,14 @@ const toRecord = async (path: any) => {
   return {
     title,
     href,
-    type: 'page'
+    type: 'page',
   };
 };
 
 const getPaths = (cwd: any) => {
   return glob('**/*.json', {
     absolute: true,
-    cwd
+    cwd,
   });
 };
 

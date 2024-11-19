@@ -1,7 +1,7 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
-const template = document.createElement("template");
+const template = document.createElement('template');
 
 template.innerHTML = `
   <h1>Timeline</h1>
@@ -53,4 +53,4 @@ export default class DemoTimeline extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-timeline") || window.customElements.define("demo-timeline", DemoTimeline);
+customElements.get('demo-timeline') || window.customElements.define('demo-timeline', DemoTimeline);

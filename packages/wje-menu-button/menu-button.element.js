@@ -1,5 +1,5 @@
-import { default as WJElement, event } from "../wje-element/element.js";
-import styles from "./styles/styles.css?inline";
+import { default as WJElement, event } from '../wje-element/element.js';
+import styles from './styles/styles.css?inline';
 
 /**
  * `MenuButton` is a custom web component that represents a menu button.
@@ -13,62 +13,61 @@ import styles from "./styles/styles.css?inline";
  */
 
 export default class MenuButton extends WJElement {
+  /**
+   * Creates an instance of MenuButton.
+   * @class
+   */
+  constructor() {
+    super();
+  }
 
-    /**
-     * Creates an instance of MenuButton.
-     * @class
-     */
-    constructor() {
-        super();
-    }
+  className = 'MenuButton';
 
-    className = "MenuButton";
+  /**
+   * Returns the CSS styles for the component.
+   * @static
+   * @returns {CSSStyleSheet}
+   */
+  static get cssStyleSheet() {
+    return styles;
+  }
 
-    /**
-     * Returns the CSS styles for the component.
-     * @static
-     * @returns {CSSStyleSheet}
-     */
-    static get cssStyleSheet() {
-        return styles;
-    }
+  /**
+   * Returns the list of attributes to observe for changes.
+   * @static
+   * @returns {Array<string>}
+   */
+  static get observedAttributes() {
+    return [];
+  }
 
-    /**
-     * Returns the list of attributes to observe for changes.
-     * @static
-     * @returns {Array<string>}
-     */
-    static get observedAttributes() {
-        return [];
-    }
+  /**
+   * Sets up the attributes for the component.
+   */
+  setupAttributes() {
+    this.isShadowRoot = 'open';
+  }
 
-    /**
-     * Sets up the attributes for the component.
-     */
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
+  /**
+   * Draws the component for the menu button.
+   * @returns {DocumentFragment}
+   */
+  draw() {
+    let fragment = document.createDocumentFragment();
 
-    /**
-     * Draws the component for the menu button.
-     * @returns {DocumentFragment}
-     */
-    draw() {
-        let fragment = document.createDocumentFragment();
+    let slot = document.createElement('slot');
 
-        let slot = document.createElement("slot");
+    fragment.appendChild(slot);
 
-        fragment.appendChild(slot);
+    return fragment;
+  }
 
-        return fragment;
-    }
-
-    /**
-     * Refreshes the component after drawing. Adds a click event listener that toggles the "open" class on the content element.
-     */
-    afterDraw() {
-        event.addListener(this, "click", null, (e) => {
-            document.querySelector(`#${this.contentId}`).classList.toggle("open");
-        });
-    }
+  /**
+   * Refreshes the component after drawing. Adds a click event listener that toggles the "open" class on the content element.
+   */
+  afterDraw() {
+    event.addListener(this, 'click', null, (e) => {
+      document.querySelector(`#${this.contentId}`).classList.toggle('open');
+    });
+  }
 }

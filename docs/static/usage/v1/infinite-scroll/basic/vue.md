@@ -14,25 +14,25 @@
 
 <script lang="ts">
   import {
-   InfiniteScroll,
-   InfiniteScrollContent,
-   List,
-   Item,
-   Avatar,
-   Img,
-   Label,
-   InfiniteScrollCustomEvent,
+    InfiniteScroll,
+    InfiniteScrollContent,
+    List,
+    Item,
+    Avatar,
+    Img,
+    Label,
+    InfiniteScrollCustomEvent,
   } from '@elements/vue';
   import { defineComponent, reactive } from 'vue';
 
   export default defineComponent({
     components: {
-     InfiniteScroll,
-     List,
-     Item,
-     Avatar,
-     Img,
-     Label,
+      InfiniteScroll,
+      List,
+      Item,
+      Avatar,
+      Img,
+      Label,
     },
     setup() {
       return { ionInfinite, items };

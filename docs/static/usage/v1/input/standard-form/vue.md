@@ -6,7 +6,16 @@
         <wje-input variant="standard" label="Project name"></wje-input>
       </wje-col>
       <wje-col size="6">
-        <wje-input variant="standard" label="Project code" placeholder="6 digit code" minlength="6" maxlength="6" message="Toto je moja hlaska" validate-on-change custom-error-display></wje-input>
+        <wje-input
+          variant="standard"
+          label="Project code"
+          placeholder="6 digit code"
+          minlength="6"
+          maxlength="6"
+          message="Toto je moja hlaska"
+          validate-on-change
+          custom-error-display
+        ></wje-input>
       </wje-col>
     </wje-row>
     <wje-row>
@@ -30,9 +39,8 @@
   </wje-grid>
 </template>
 
-
 <script lang="ts">
-  import {Input, Grid, Row, Col} from '@elements/vue';
+  import { Input, Grid, Row, Col } from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({

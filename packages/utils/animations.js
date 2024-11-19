@@ -28,7 +28,7 @@ function parseKeyframes(frames) {
     // Preformátovanie vlastností na požadovaný formát
     let keyframeObject = {
       offset: offset,
-      ...properties
+      ...properties,
     };
 
     keyframes.push(keyframeObject);
@@ -42,8 +42,8 @@ function parseKeyframes(frames) {
 
 function parseProperties(propertiesString) {
   const properties = {};
-  propertiesString.split(';').forEach(property => {
-    const [key, value] = property.split(':').map(part => part.trim());
+  propertiesString.split(';').forEach((property) => {
+    const [key, value] = property.split(':').map((part) => part.trim());
     if (key && value) {
       // Mapovanie názvov vlastností na požadované kľúčové slová
       if (key === 'animation-timing-function') {
@@ -58,7 +58,7 @@ function parseProperties(propertiesString) {
 
 export async function fetchAndParseCSS(css) {
   try {
-    if(animations.length > 0) {
+    if (animations.length > 0) {
       return animations;
     }
     animations = parseCSS(css);

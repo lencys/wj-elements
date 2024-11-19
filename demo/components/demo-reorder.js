@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -64,17 +64,17 @@ template.innerHTML = `
 `;
 
 export default class DemoReorder extends WJElement {
-    constructor() {
-        super(template);
-    }
+  constructor() {
+    super(template);
+  }
 
-    afterDraw() {
-        const codeSnippet = new CodeSnippet();
-        codeSnippet.generateSnippet(template, this.context);
-    }
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, this.context);
+  }
 }
 
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-reorder") || window.customElements.define("demo-reorder", DemoReorder);
+customElements.get('demo-reorder') || window.customElements.define('demo-reorder', DemoReorder);

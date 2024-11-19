@@ -19,7 +19,7 @@ function Example() {
       </wje-card-header>
       <wje-card-content>Content</wje-card-content>
     </wje-card>
-    
+
     <wje-card color="success">
       <wje-card-header>
         <wje-card-subtitle>Success</wje-card-subtitle>
@@ -27,7 +27,7 @@ function Example() {
       </wje-card-header>
       <wje-card-content> Content </wje-card-content>
     </wje-card>
-    
+
     <wje-card color="warning">
       <wje-card-header>
         <wje-card-subtitle>Warning</wje-card-subtitle>
@@ -35,7 +35,7 @@ function Example() {
       </wje-card-header>
       <wje-card-content> Content </wje-card-content>
     </wje-card>
-    
+
     <wje-card color="danger">
       <wje-card-header>
         <wje-card-subtitle>Danger</wje-card-subtitle>
@@ -43,7 +43,7 @@ function Example() {
       </wje-card-header>
       <wje-card-content> Content </wje-card-content>
     </wje-card>
-    
+
     <wje-card color="info">
       <wje-card-header>
         <wje-card-subtitle>Info</wje-card-subtitle>
@@ -51,7 +51,7 @@ function Example() {
       </wje-card-header>
       <wje-card-content> Content </wje-card-content>
     </wje-card>
-    
+
     <wje-card color="menu">
       <wje-card-header>
         <wje-card-subtitle>Menu</wje-card-subtitle>

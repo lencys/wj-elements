@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -111,10 +111,10 @@ export default class DemoToggle extends WJElement {
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(template, this.context);
 
-    let defaultInput = this.querySelector("#default");
+    let defaultInput = this.querySelector('#default');
 
-    this.querySelector("#default").addEventListener("wje-toggle:input", (e) => {
-      console.log("Default Toggle: ", e.target.checked);
+    this.querySelector('#default').addEventListener('wje-toggle:input', (e) => {
+      console.log('Default Toggle: ', e.target.checked);
     });
   }
 }
@@ -122,4 +122,4 @@ export default class DemoToggle extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-toggle") || window.customElements.define("demo-toggle", DemoToggle);
+customElements.get('demo-toggle') || window.customElements.define('demo-toggle', DemoToggle);

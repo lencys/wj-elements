@@ -1,6 +1,7 @@
 ---
-title: "TabGroup"
+title: 'TabGroup'
 ---
+
 import Props from '@ionic-internal/component-api/v1/tab-group/props.md';
 import Events from '@ionic-internal/component-api/v1/tab-group/events.md';
 import Methods from '@ionic-internal/component-api/v1/tab-group/methods.md';
@@ -10,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/tab-group/slots.md';
 
 <head>
   <title>TabGroup | Navigácia založená na záložkách</title>
-  <meta name="description" content="TabGroup zobrazuje navigáciu založenú na záložkách, ktorá umožňuje používateľom prepínať sa a zobrazovať rôzne časti obsahu aplikácie bez potreby prechádzať na inú stránku." />
+  <meta
+    name="description"
+    content="TabGroup zobrazuje navigáciu založenú na záložkách, ktorá umožňuje používateľom prepínať sa a zobrazovať rôzne časti obsahu aplikácie bez potreby prechádzať na inú stránku."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -60,7 +64,7 @@ import Bottom from '@site/static/usage/v1/tab-group/bottom/index.md';
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

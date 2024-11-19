@@ -13,8 +13,8 @@
 }
 
 :host(.wje-separator):after {
-  content: "";
+  content: '';
   height: 1px;
   background: rgba(0, 0, 0, 0.08);
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }

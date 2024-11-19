@@ -9,22 +9,22 @@ export default [
   jsdoc.configs['flat/stylistic-typescript-error'],
   {
     languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
+      ecmaVersion: 'latest',
+      sourceType: 'module',
       globals: {
         ...globals.browser,
         ...globals.node,
-        myCustomGlobal: "readonly"
-      }
+        myCustomGlobal: 'readonly',
+      },
     },
     plugins: {
-      'wc': wc,
-      'import': importPlugin
+      wc: wc,
+      import: importPlugin,
     },
     settings: {
-      'wc': {
-        'elementBaseClasses': ['WJElement'] // Recognize `LitElement` as a Custom Element base class
-      }
+      wc: {
+        elementBaseClasses: ['WJElement'], // Recognize `LitElement` as a Custom Element base class
+      },
     },
     ignores: [
       '.cache',
@@ -35,7 +35,7 @@ export default [
       'node_modules',
       '**/plugins/*.js',
       '**/plugins/**/*.js',
-      '**/*.test.js'
+      '**/*.test.js',
     ],
     rules: {
       'array-callback-return': 'error',
@@ -46,15 +46,30 @@ export default [
       eqeqeq: 'error',
       'func-names': ['warn', 'never'],
       'import/no-duplicates': 'warn',
-      'jsdoc/require-hyphen-before-param-description': ["error", "never"],
+      'jsdoc/check-tag-names': [
+        'error',
+        {
+          definedTags: [
+            'documentation',
+            'status',
+            'summary',
+            'extends',
+            'dependency',
+            'slot',
+            'csspart',
+            'tag',
+            'cssproperty',
+            'fires',
+            'attr',
+          ],
+          enableFixer: false,
+        },
+      ],
+      'jsdoc/lines-before-block': 'off',
       'jsdoc/no-types': 'off',
-      'jsdoc/check-tag-names': ['error', {
-        definedTags: ['documentation', 'status', 'summary', 'extends', 'dependency', 'slot', 'csspart', 'tag', 'cssproperty', 'fires', 'attr']
-      }],
-      'jsdoc/valid-types': ['error', {
-        allowEmptyNamepaths: true
-      }],
+      'jsdoc/require-hyphen-before-param-description': ['error', 'never'],
       'jsdoc/text-escaping': 'off',
+      'jsdoc/valid-types': 'off',
       'no-array-constructor': 'error',
       'no-bitwise': 'error',
       'no-constructor-return': 'error',
@@ -83,14 +98,14 @@ export default [
           paths: [
             {
               name: '.',
-              message: 'Usage of local index imports is not allowed.'
+              message: 'Usage of local index imports is not allowed.',
             },
             {
               name: './index',
-              message: 'Import from the source file instead.'
-            }
-          ]
-        }
+              message: 'Import from the source file instead.',
+            },
+          ],
+        },
       ],
       'no-return-assign': 'warn',
       'no-script-url': 'error',
@@ -141,7 +156,7 @@ export default [
       'wc/no-typos': 'warn',
       'wc/require-listener-teardown': 'warn',
       'wc/tag-name-matches-class': 'warn',
-      'wrap-iife': ['warn', 'inside']
-    }
-  }
+      'wrap-iife': ['warn', 'inside'],
+    },
+  },
 ];

@@ -1,6 +1,7 @@
 ---
-title: "Radio"
+title: 'Radio'
 ---
+
 import Props from '@ionic-internal/component-api/v1/radio/props.md';
 import Events from '@ionic-internal/component-api/v1/radio/events.md';
 import Methods from '@ionic-internal/component-api/v1/radio/methods.md';
@@ -10,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/radio/slots.md';
 
 <head>
   <title>Radio komponent | Vylepšená verzia štandardného HTML radio elementu</title>
-  <meta name="description" content="Radio element je upravená verzia štandardného HTML radio elementu, rozšírená o štýly pre dosiahnutie vizuálne konzistentnejšieho používateľského rozhrania." />
+  <meta
+    name="description"
+    content="Radio element je upravená verzia štandardného HTML radio elementu, rozšírená o štýly pre dosiahnutie vizuálne konzistentnejšieho používateľského rozhrania."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -33,7 +37,6 @@ import Inline from '@site/static/usage/v1/radio/inline/index.md';
 
 <Inline />
 
-
 ## Úprava štýlov
 
 ### color
@@ -54,7 +57,7 @@ import Color from '@site/static/usage/v1/radio/color/index.md';
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

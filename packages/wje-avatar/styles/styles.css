@@ -34,70 +34,70 @@
   border-style: var(--wje-avatar-border-style);
 }
 
-:host([size="small"]) {
+:host([size='small']) {
   --wje-avatar-size: var(--wje-size-small); /* 12px */
   --wje-avatar-font-size: var(--wje-font-size-2x-small);
 }
 
-:host([size="medium"]) {
+:host([size='medium']) {
   --wje-avatar-size: var(--wje-size-medium); /* 14px */
   --wje-avatar-font-size: var(--wje-font-size-2x-small);
 }
 
-:host([size="normal"]) {
+:host([size='normal']) {
   --wje-avatar-size: var(--wje-size); /* 14px */
 }
 
-:host([size="large"]) {
+:host([size='large']) {
   --wje-avatar-size: var(--wje-size-large); /* 20px */
 }
 
-:host([size="x-large"]) {
+:host([size='x-large']) {
   --wje-avatar-size: var(--wje-size-x-large); /* 24px */
 }
 
-:host([size="2x-large"]) {
+:host([size='2x-large']) {
   --wje-avatar-size: var(--wje-size-2x-large); /* 36px */
   --wje-avatar-font-size: var(--wje-font-size-small);
 }
 
-:host([size="3x-large"]) {
+:host([size='3x-large']) {
   --wje-avatar-size: var(--wje-size-3x-large); /* 48px */
   --wje-avatar-font-size: var(--wje-font-size-medium);
 }
 
-:host([size="4x-large"]) {
+:host([size='4x-large']) {
   --wje-avatar-size: var(--wje-size-4x-large); /* 72px */
   --wje-avatar-font-size: var(--wje-font-size-x-large);
 }
 
-:host([size="5x-large"]) {
+:host([size='5x-large']) {
   --wje-avatar-size: var(--wje-size-5x-large); /* 144px */
   --wje-avatar-font-size: var(--wje-font-size-3x-large);
 }
 
 /* Status Placement */
-:host slot[name=status] {
+:host slot[name='status'] {
   display: block;
   position: absolute;
 }
 
-:host([status-placement=top-start]) slot[name=status] {
+:host([status-placement='top-start']) slot[name='status'] {
   top: -4px;
   left: -4px;
 }
 
-:host([status-placement=top-end]) slot[name=status] {
+:host([status-placement='top-end']) slot[name='status'] {
   top: -4px;
   right: -4px;
 }
 
-:host([status-placement=bottom-start]) slot[name=status] {
+:host([status-placement='bottom-start']) slot[name='status'] {
   bottom: -4px;
   left: -4px;
 }
 
-:host([status-placement=bottom-end]) slot[name=status] {
+:host([status-placement='bottom-end']) slot[name='status'] {
   bottom: -4px;
   right: -4px;
 }

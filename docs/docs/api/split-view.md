@@ -1,6 +1,7 @@
 ---
-title: "SplitView"
+title: 'SplitView'
 ---
+
 import Props from '@ionic-internal/component-api/v1/split-view/props.md';
 import Events from '@ionic-internal/component-api/v1/split-view/events.md';
 import Methods from '@ionic-internal/component-api/v1/split-view/methods.md';
@@ -10,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/split-view/slots.md';
 
 <head>
   <title>SplitView | jednotlivé voliteľné možnosti v rámci komponentu Select</title>
-  <meta name="description" content="Element Option predstavuje jednotlivé voliteľné možnosti v rámci komponentu Select. Je obdobný štandardnému elementu HTML select a umožňuje používateľom vykonať jeden alebo viacero výberov na základe konfigurácie komponentu Select." />
+  <meta
+    name="description"
+    content="Element Option predstavuje jednotlivé voliteľné možnosti v rámci komponentu Select. Je obdobný štandardnému elementu HTML select a umožňuje používateľom vykonať jeden alebo viacero výberov na základe konfigurácie komponentu Select."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -73,7 +77,7 @@ import Custom from '@site/static/usage/v1/split-view/custom/index.md';
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

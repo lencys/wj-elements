@@ -11,7 +11,8 @@
   border-width: 1px;
 }
 
-.wje-before, .wje-after {
+.wje-before,
+.wje-after {
   display: block;
 }
 
@@ -44,7 +45,7 @@
   left: var(--wje-img-compare-divider-left);
   &:after {
     display: flex;
-    content: "";
+    content: '';
     position: absolute;
     height: 100%;
     left: calc(var(--wje-img-compare-divider-area) / -2 + var(--wje-img-compare-divider-size) / 2);
@@ -53,7 +54,7 @@
   wje-icon {
     position: absolute;
     background-color: white;
-    padding: .5rem;
+    padding: 0.5rem;
     color: var(--wje-color-dark);
     border-radius: var(--wje-border-radius-circle);
     box-shadow: rgba(82, 63, 105, 0.2) 0 0 30px 10px;

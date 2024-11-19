@@ -1,6 +1,5 @@
-import Orgchart from "./orgchart.element.js";
-    
-    export default Orgchart;
-    
-    Orgchart.define("wje-orgchart", Orgchart);
-    
+import Orgchart from './orgchart.element.js';
+
+export default Orgchart;
+
+Orgchart.define('wje-orgchart', Orgchart);

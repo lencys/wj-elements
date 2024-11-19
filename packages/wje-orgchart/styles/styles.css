@@ -1,21 +1,23 @@
-* {margin: 0; padding: 0;}
-
-:host {
-    position: relative;
-    .native-orgchart {
-        padding-top: var(--wje-orgchart-height-line);
-        display: flex;
-        justify-content: center;
-    }
-
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 50%;
-        border-left: 1px solid var(--wje-border-color);
-        width: 0;
-        height: var(--wje-orgchart-height-line);
-    }
+* {
+  margin: 0;
+  padding: 0;
 }
 
+:host {
+  position: relative;
+  .native-orgchart {
+    padding-top: var(--wje-orgchart-height-line);
+    display: flex;
+    justify-content: center;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 1px solid var(--wje-border-color);
+    width: 0;
+    height: var(--wje-orgchart-height-line);
+  }
+}

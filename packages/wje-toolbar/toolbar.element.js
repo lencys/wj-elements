@@ -1,6 +1,6 @@
-import { default as WJElement } from "../wje-element/element.js";
+import { default as WJElement } from '../wje-element/element.js';
 // import { withRouterLinks } from '../wje-router/plugins/slick-router/middlewares/router-links.js';
-import styles from "./styles/styles.css?inline";
+import styles from './styles/styles.css?inline';
 
 /**
  * `Toolbar` is a custom web component that represents a toolbar.
@@ -23,67 +23,65 @@ import styles from "./styles/styles.css?inline";
  */
 
 export default class Toolbar extends WJElement {
+  /**
+   * Creates an instance of Toolbar.
+   */
+  constructor() {
+    super();
+  }
 
-    /**
-     * Creates an instance of Toolbar.
-     */
-    constructor() {
-        super();
-    }
+  /**
+   * The class name for the component.
+   * @type {string}
+   */
+  className = 'Toolbar';
 
-    /**
-     * The class name for the component.
-     * @type {string}
-     */
-    className = "Toolbar";
+  /**
+   * Returns the CSS stylesheet for the component.
+   * @static
+   * @returns {CSSStyleSheet} The CSS stylesheet
+   */
+  static get cssStyleSheet() {
+    return styles;
+  }
 
-    /**
-     * Returns the CSS stylesheet for the component.
-     * @static
-     * @returns {CSSStyleSheet} The CSS stylesheet
-     */
-    static get cssStyleSheet() {
-        return styles;
-    }
+  /**
+   * Returns the list of observed attributes.
+   * @static
+   * @returns {Array} An empty array
+   */
+  static get observedAttributes() {
+    return [];
+  }
 
-    /**
-     * Returns the list of observed attributes.
-     * @static
-     * @returns {Array} An empty array
-     */
-    static get observedAttributes() {
-        return [];
-    }
+  /**
+   * Sets up the attributes for the component.
+   */
+  setupAttributes() {
+    this.isShadowRoot = 'open';
+  }
 
-    /**
-     * Sets up the attributes for the component.
-     */
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
+  /**
+   * Draws the component for the toolbar.
+   * @returns {object} Document fragment
+   */
+  draw() {
+    let fragment = document.createDocumentFragment();
 
-    /**
-     * Draws the component for the toolbar.
-     * @returns {object} Document fragment
-     */
-    draw() {
-        let fragment = document.createDocumentFragment();
+    let native = document.createElement('div');
+    native.setAttribute('part', 'native');
+    native.classList.add('native-toolbar');
 
-        let native = document.createElement("div");
-        native.setAttribute("part", "native");
-        native.classList.add("native-toolbar");
+    let start = document.createElement('slot');
+    start.setAttribute('name', 'start');
 
-        let start = document.createElement("slot");
-        start.setAttribute("name", "start");
+    let end = document.createElement('slot');
+    end.setAttribute('name', 'end');
 
+    native.appendChild(start);
+    native.appendChild(end);
+    fragment.appendChild(native);
 
-        let end = document.createElement("slot");
-        end.setAttribute("name", "end");
-
-        native.appendChild(start);
-        native.appendChild(end);
-        fragment.appendChild(native);
-
-        return fragment;
-    }
+    return fragment;
+  }
 }

@@ -1,32 +1,45 @@
 var h = Object.defineProperty;
-var w = (o, e, t) => e in o ? h(o, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : o[e] = t;
-var n = (o, e, t) => (w(o, typeof e != "symbol" ? e + "" : e, t), t);
-import s, { event as d } from "./wje-element.js";
-const p = ":host{--wje-chip-border-radius: 100px;--wje-chip-background: var(--wje-color-contrast-2);--wje-chip-color: var(--wje-color-contrast-6);--wje-chip-margin: 0;margin:var(--wje-chip-margin)}:host(.wje-color-primary){--wje-chip-background: var(--wje-color-primary)}:host(.wje-color-complete){--wje-chip-background: var(--wje-color-complete)}:host(.wje-color-success){--wje-chip-background: var(--wje-color-success)}:host(.wje-color-warning){--wje-chip-background: var(--wje-color-warning)}:host(.wje-color-danger){--wje-chip-background: var(--wje-color-danger)}:host(.wje-color-info){--wje-chip-background: var(--wje-color-info)}:host(.wje-color-menu){--wje-chip-background: var(--wje-color-menu)}:host(.wje-color-primary){--wje-chip-color: var(--wje-color-white)}:host(.wje-color-complete){--wje-chip-color: var(--wje-color-white)}:host(.wje-color-success){--wje-chip-color: var(--wje-color-white)}:host(.wje-color-warning){--wje-chip-color: var(--wje-color)}:host(.wje-color-danger){--wje-chip-color: var(--wje-color-white)}:host(.wje-color-info){--wje-chip-color: var(--wje-color-white)}:host(.wje-color-menu){--wje-chip-color: var(--wje-color-white) !important}.native-chip{display:inline-flex;justify-content:center;align-items:center;font-size:14px;letter-spacing:-.006em;margin:0;padding:.5rem .75rem;text-align:center;cursor:pointer;white-space:nowrap;background:var(--wje-chip-background);color:var(--wje-chip-color);text-shadow:none;box-shadow:none;border:0 none;line-height:14px;min-height:28px;height:28px;width:100%;max-width:fit-content;min-width:28px;position:relative;transition:width .15s cubic-bezier(.4,0,.2,1);border-radius:var(--wje-chip-border-radius);overflow:hidden;vertical-align:middle;box-sizing:border-box}:host(.focus){box-shadow:none}:host(:hover:not(.wje-active)) .native-chip{background:var(--wje-color-contrast-3);color:var(--wje-color)}:host(.wje-active) .native-chip{border:1px solid var(--wje-color-primary-11)}:host(:focus,:active:focus,.wje-active:focus){outline:none!important}.check{display:none}:host([active]) .check{display:block;margin-inline:4px 0}:host([disabled]){opacity:.5;border:0;pointer-events:none;cursor:not-allowed}::slotted(wje-avatar){width:22px;height:22px}::slotted(wje-avatar:first-child){margin-inline:-8px 8px;margin-top:-4px;margin-bottom:-4px}:host .native-chip{background-color:var(--wje-chip-background, #fff);color:var(--wje-chip-color)}::slotted(wje-icon:first-child){margin:-4px 8px -4px -4px}::slotted(wje-icon:last-child){margin:-4px -4px -4px 8px}wje-button{--wje-button-border-radius: 50%;--wje-button-margin-inline: .25rem -.5rem;--wje-padding-top: .15rem;--wje-padding-start: .15rem;--wje-padding-end: .15rem;--wje-padding-bottom: .15rem}";
+var w = (o, e, t) => (e in o ? h(o, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (o[e] = t));
+var n = (o, e, t) => (w(o, typeof e != 'symbol' ? e + '' : e, t), t);
+import s, { event as d } from './wje-element.js';
+const p =
+  ':host{--wje-chip-border-radius: 100px;--wje-chip-background: var(--wje-color-contrast-2);--wje-chip-color: var(--wje-color-contrast-6);--wje-chip-margin: 0;margin:var(--wje-chip-margin)}:host(.wje-color-primary){--wje-chip-background: var(--wje-color-primary)}:host(.wje-color-complete){--wje-chip-background: var(--wje-color-complete)}:host(.wje-color-success){--wje-chip-background: var(--wje-color-success)}:host(.wje-color-warning){--wje-chip-background: var(--wje-color-warning)}:host(.wje-color-danger){--wje-chip-background: var(--wje-color-danger)}:host(.wje-color-info){--wje-chip-background: var(--wje-color-info)}:host(.wje-color-menu){--wje-chip-background: var(--wje-color-menu)}:host(.wje-color-primary){--wje-chip-color: var(--wje-color-white)}:host(.wje-color-complete){--wje-chip-color: var(--wje-color-white)}:host(.wje-color-success){--wje-chip-color: var(--wje-color-white)}:host(.wje-color-warning){--wje-chip-color: var(--wje-color)}:host(.wje-color-danger){--wje-chip-color: var(--wje-color-white)}:host(.wje-color-info){--wje-chip-color: var(--wje-color-white)}:host(.wje-color-menu){--wje-chip-color: var(--wje-color-white) !important}.native-chip{display:inline-flex;justify-content:center;align-items:center;font-size:14px;letter-spacing:-.006em;margin:0;padding:.5rem .75rem;text-align:center;cursor:pointer;white-space:nowrap;background:var(--wje-chip-background);color:var(--wje-chip-color);text-shadow:none;box-shadow:none;border:0 none;line-height:14px;min-height:28px;height:28px;width:100%;max-width:fit-content;min-width:28px;position:relative;transition:width .15s cubic-bezier(.4,0,.2,1);border-radius:var(--wje-chip-border-radius);overflow:hidden;vertical-align:middle;box-sizing:border-box}:host(.focus){box-shadow:none}:host(:hover:not(.wje-active)) .native-chip{background:var(--wje-color-contrast-3);color:var(--wje-color)}:host(.wje-active) .native-chip{border:1px solid var(--wje-color-primary-11)}:host(:focus,:active:focus,.wje-active:focus){outline:none!important}.check{display:none}:host([active]) .check{display:block;margin-inline:4px 0}:host([disabled]){opacity:.5;border:0;pointer-events:none;cursor:not-allowed}::slotted(wje-avatar){width:22px;height:22px}::slotted(wje-avatar:first-child){margin-inline:-8px 8px;margin-top:-4px;margin-bottom:-4px}:host .native-chip{background-color:var(--wje-chip-background, #fff);color:var(--wje-chip-color)}::slotted(wje-icon:first-child){margin:-4px 8px -4px -4px}::slotted(wje-icon:last-child){margin:-4px -4px -4px 8px}wje-button{--wje-button-border-radius: 50%;--wje-button-margin-inline: .25rem -.5rem;--wje-padding-top: .15rem;--wje-padding-start: .15rem;--wje-padding-end: .15rem;--wje-padding-bottom: .15rem}';
 class j extends s {
   constructor() {
     super();
-    n(this, "className", "Chip");
+    n(this, 'className', 'Chip');
   }
   static get cssStyleSheet() {
     return p;
   }
   setupAttributes() {
-    this.isShadowRoot = "open";
+    this.isShadowRoot = 'open';
   }
   draw(t, m, u) {
-    let a = document.createDocumentFragment(), r = document.createElement("div");
-    r.classList.add("native-chip");
-    let l = document.createElement("slot"), i = document.createElement("wje-button");
-    i.setAttribute("part", "remove"), i.setAttribute("fill", "link"), i.innerHTML = '<wje-icon name="x"></wje-icon>';
-    let c = document.createElement("wje-icon");
-    return c.setAttribute("name", "check"), c.classList.add("check"), this.color && this.classList.add("wje-color-" + this.color, "wje-color"), this.disabled && this.classList.add("wje-disabled"), this.outline && this.classList.add("wje-outline"), r.appendChild(l), r.appendChild(c), this.hasAttribute("removable") && r.appendChild(i), a.appendChild(r), this.remove = i, a;
+    let a = document.createDocumentFragment(),
+      r = document.createElement('div');
+    r.classList.add('native-chip');
+    let l = document.createElement('slot'),
+      i = document.createElement('wje-button');
+    i.setAttribute('part', 'remove'), i.setAttribute('fill', 'link'), (i.innerHTML = '<wje-icon name="x"></wje-icon>');
+    let c = document.createElement('wje-icon');
+    return (
+      c.setAttribute('name', 'check'),
+      c.classList.add('check'),
+      this.color && this.classList.add('wje-color-' + this.color, 'wje-color'),
+      this.disabled && this.classList.add('wje-disabled'),
+      this.outline && this.classList.add('wje-outline'),
+      r.appendChild(l),
+      r.appendChild(c),
+      this.hasAttribute('removable') && r.appendChild(i),
+      a.appendChild(r),
+      (this.remove = i),
+      a
+    );
   }
   afterDraw() {
-    d.addListener(this.remove, "click", "wje:chip-remove", null, { stopPropagation: !0 });
+    d.addListener(this.remove, 'click', 'wje:chip-remove', null, { stopPropagation: !0 });
   }
 }
-s.define("wje-chip", j);
-export {
-  j as default
-};
+s.define('wje-chip', j);
+export { j as default };

@@ -1,6 +1,7 @@
 ---
-title: "Textarea"
+title: 'Textarea'
 ---
+
 import Props from '@ionic-internal/component-api/v1/textarea/props.md';
 import Events from '@ionic-internal/component-api/v1/textarea/events.md';
 import Methods from '@ionic-internal/component-api/v1/textarea/methods.md';
@@ -9,8 +10,11 @@ import CustomProps from '@ionic-internal/component-api/v1/textarea/custom-props.
 import Slots from '@ionic-internal/component-api/v1/textarea/slots.md';
 
 <head>
-  <title>Textarea  |  Element textarea rozšírený o nové funkcie</title>
-  <meta name="description" content="Textarea rozširuje možnosti štandardného HTML textarea elementu. Pridáva štýly pre dosiahnutie vizuálne konzistentného používateľského rozhrania a ponúka nové funkcie." />
+  <title>Textarea | Element textarea rozšírený o nové funkcie</title>
+  <meta
+    name="description"
+    content="Textarea rozširuje možnosti štandardného HTML textarea elementu. Pridáva štýly pre dosiahnutie vizuálne konzistentného používateľského rozhrania a ponúka nové funkcie."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -18,7 +22,6 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 <EncapsulationPill type="scoped" />
 
 Textarea rozširuje možnosti štandardného HTML `textarea` elementu. Pridáva štýly pre dosiahnutie vizuálne konzistentného používateľského rozhrania a ponúka funkcie ako napríklad auto-height - prispôsobenie výšky elementu vloženému textu, alebo tiež počítadlo vložených znakov.
-
 
 ## Základné použitie
 
@@ -43,7 +46,8 @@ import Counter from '@site/static/usage/v1/textarea/counter/index.md';
 <Counter />
 
 ## Resize (none)
-Vlastnosť `resize` určuje správanie zmeny veľkosti elementu. Ak je nastavená na hodnotu `none`, veľkosť poľa zostane fixná. 
+
+Vlastnosť `resize` určuje správanie zmeny veľkosti elementu. Ak je nastavená na hodnotu `none`, veľkosť poľa zostane fixná.
 
 import Resize from '@site/static/usage/v1/textarea/resize/index.md';
 
@@ -75,7 +79,7 @@ import Disabled from '@site/static/usage/v1/textarea/disabled/index.md';
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

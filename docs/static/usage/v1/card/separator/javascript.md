@@ -21,8 +21,6 @@
       </wje-button>
     </wje-card-controls>
   </wje-card-header>
-  <wje-card-content>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  </wje-card-content>
+  <wje-card-content> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </wje-card-content>
 </wje-card>
 ```

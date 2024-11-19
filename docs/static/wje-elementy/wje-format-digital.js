@@ -1,9 +1,9 @@
 var d = Object.defineProperty;
-var h = (i, t, e) => t in i ? d(i, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : i[t] = e;
-var m = (i, t, e) => (h(i, typeof t != "symbol" ? t + "" : t, e), e);
-import p from "./wje-element.js";
-import { L as f } from "./localize-7fxVJArK.js";
-const g = ".native-format-digital{white-space:nowrap}";
+var h = (i, t, e) => (t in i ? d(i, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : (i[t] = e));
+var m = (i, t, e) => (h(i, typeof t != 'symbol' ? t + '' : t, e), e);
+import p from './wje-element.js';
+import { L as f } from './localize-7fxVJArK.js';
+const g = '.native-format-digital{white-space:nowrap}';
 class c extends p {
   /**
    * Creates an instance of FormatDigital.
@@ -12,7 +12,7 @@ class c extends p {
    */
   constructor() {
     super();
-    m(this, "className", "FormatDigital");
+    m(this, 'className', 'FormatDigital');
     this.localizer = new f(this);
   }
   /**
@@ -21,7 +21,7 @@ class c extends p {
    * @returns {string}
    */
   get unit() {
-    return this.hasAttribute("unit") ? this.getAttribute("unit") : "byte";
+    return this.hasAttribute('unit') ? this.getAttribute('unit') : 'byte';
   }
   /**
    * Returns the CSS styles for the component.
@@ -39,25 +39,29 @@ class c extends p {
    * @returns {Array<string>}
    */
   static get observedAttributes() {
-    return ["value"];
+    return ['value'];
   }
   /**
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = "open";
+    this.isShadowRoot = 'open';
   }
   /**
    * Prepares the component before drawing.
    */
   beforeDraw() {
-    if (this.value < 0)
-      return;
-    const e = ["", "kilo", "mega", "giga", "tera"], o = ["", "kilo", "mega", "giga", "tera", "peta"], n = this.unit === "bit" ? e : o, r = Math.max(0, Math.min(Math.floor(Math.log10(this.value) / 3), n.length - 1)), a = n[r] + this.unit, s = parseFloat((this.value / Math.pow(1e3, r)).toPrecision(3));
+    if (this.value < 0) return;
+    const e = ['', 'kilo', 'mega', 'giga', 'tera'],
+      o = ['', 'kilo', 'mega', 'giga', 'tera', 'peta'],
+      n = this.unit === 'bit' ? e : o,
+      r = Math.max(0, Math.min(Math.floor(Math.log10(this.value) / 3), n.length - 1)),
+      a = n[r] + this.unit,
+      s = parseFloat((this.value / Math.pow(1e3, r)).toPrecision(3));
     this.formattedValue = this.localizer.formatNumber(s, {
-      style: "unit",
+      style: 'unit',
       unit: a,
-      unitDisplay: this.unitDisplay || "short"
+      unitDisplay: this.unitDisplay || 'short',
     });
   }
   /**
@@ -69,17 +73,16 @@ class c extends p {
    * @returns {DocumentFragment}
    */
   draw(e, o, n) {
-    let r = document.createDocumentFragment(), a = document.createElement("div");
-    a.setAttribute("part", "native"), a.classList.add("native-format-digital");
-    let s = document.createElement("span");
-    s.setAttribute("part", "formatted"), s.innerText = this.formattedValue;
-    let l = document.createElement("slot");
-    l.setAttribute("name", "start");
-    let u = document.createElement("slot");
-    return u.setAttribute("name", "end"), a.appendChild(l), a.appendChild(s), a.appendChild(u), r.appendChild(a), r;
+    let r = document.createDocumentFragment(),
+      a = document.createElement('div');
+    a.setAttribute('part', 'native'), a.classList.add('native-format-digital');
+    let s = document.createElement('span');
+    s.setAttribute('part', 'formatted'), (s.innerText = this.formattedValue);
+    let l = document.createElement('slot');
+    l.setAttribute('name', 'start');
+    let u = document.createElement('slot');
+    return u.setAttribute('name', 'end'), a.appendChild(l), a.appendChild(s), a.appendChild(u), r.appendChild(a), r;
   }
 }
-c.define("wje-format-digital", c);
-export {
-  c as default
-};
+c.define('wje-format-digital', c);
+export { c as default };

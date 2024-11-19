@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -13,23 +13,23 @@
   </head>
   <body>
     <div class="container">
-      <div class="content" style="display: block;max-width: 60%;margin: auto;">
+      <div class="content" style="display: block; max-width: 60%; margin: auto">
         <wje-container vertical>
           <wje-header>Header</wje-header>
           <wje-main>Main</wje-main>
         </wje-container>
-        
+
         <wje-container vertical>
           <wje-header>Header</wje-header>
           <wje-main>Main</wje-main>
           <wje-footer>Footer</wje-footer>
         </wje-container>
-        
+
         <wje-container>
           <wje-aside width="200px">Aside</wje-aside>
           <wje-main>Main</wje-main>
         </wje-container>
-        
+
         <wje-container vertical>
           <wje-header>Header</wje-header>
           <wje-container>
@@ -37,7 +37,7 @@
             <wje-main>Main</wje-main>
           </wje-container>
         </wje-container>
-        
+
         <wje-container vertical>
           <wje-header>Header</wje-header>
           <wje-container>
@@ -48,7 +48,7 @@
             </wje-container>
           </wje-container>
         </wje-container>
-        
+
         <wje-container>
           <wje-aside width="200px">Aside</wje-aside>
           <wje-container vertical>
@@ -56,7 +56,7 @@
             <wje-main>Main</wje-main>
           </wje-container>
         </wje-container>
-        
+
         <wje-container>
           <wje-aside width="200px">Aside</wje-aside>
           <wje-container vertical>
@@ -71,43 +71,44 @@
         </wje-container>
         <style>
           .content {
-            display: block; 
-            width: 100%; 
+            display: block;
+            width: 100%;
             margin: auto 3rem;
           }
-          
-          .content wje-header, .content wje-footer {
-            background-color: #B3C0D1;
+
+          .content wje-header,
+          .content wje-footer {
+            background-color: #b3c0d1;
             color: #333;
             text-align: center;
             line-height: 60px;
           }
-          
+
           .content wje-aside {
-            background-color: #D3DCE6;
+            background-color: #d3dce6;
             color: #333;
             text-align: center;
             line-height: 200px;
             width: 60px;
-            display: block!important;
+            display: block !important;
           }
-          
+
           .content wje-main {
-            background-color: #E9EEF3;
+            background-color: #e9eef3;
             color: #333;
             text-align: center;
           }
-          
+
           /* Margin na spodok prveho containeru */
           .content > wje-container {
             margin-bottom: 40px;
           }
-          
+
           .content wje-container:nth-child(5) wje-aside,
           .content wje-container:nth-child(6) wje-aside {
             line-height: 260px;
           }
-          
+
           .content wje-container:nth-child(7) wje-aside {
             line-height: 320px;
           }

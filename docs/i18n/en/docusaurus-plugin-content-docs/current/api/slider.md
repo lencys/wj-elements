@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/slider/slots.md';
 
 <head>
   <title>Slider | Element extends the capabilities of the standard HTML select element.</title>
-  <meta name="description" content="Slider je interaktívny komponent posuvníka, ktorý umožňuje používateľom praktickým spôsobom vybrať hodnotu z rozsahu hodnôt." />
+  <meta
+    name="description"
+    content="Slider je interaktívny komponent posuvníka, ktorý umožňuje používateľom praktickým spôsobom vybrať hodnotu z rozsahu hodnôt."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -64,7 +67,7 @@ import Colors from '@site/static/usage/v1/slider/colors/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

@@ -1,6 +1,5 @@
-import Masonry from "./masonry.element.js";
+import Masonry from './masonry.element.js';
 
 export default Masonry;
 
-Masonry.define("wje-masonry", Masonry);
-
+Masonry.define('wje-masonry', Masonry);

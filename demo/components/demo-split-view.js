@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -123,4 +123,4 @@ export default class DemoSplitView extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-split-view") || window.customElements.define("demo-split-view", DemoSplitView);
+customElements.get('demo-split-view') || window.customElements.define('demo-split-view', DemoSplitView);

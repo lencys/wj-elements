@@ -1,4 +1,4 @@
-@import "./breakpoints.scss";
+@import './breakpoints.scss';
 
 // Grid system
 //
@@ -10,8 +10,8 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: calc(var(--#{$variable-prefix}gutter-y) * -1); // stylelint-disable-line function-disallowed-list
-  margin-right: calc(var(--#{$variable-prefix}gutter-x) * -.5); // stylelint-disable-line function-disallowed-list
-  margin-left: calc(var(--#{$variable-prefix}gutter-x) * -.5); // stylelint-disable-line function-disallowed-list
+  margin-right: calc(var(--#{$variable-prefix}gutter-x) * -0.5); // stylelint-disable-line function-disallowed-list
+  margin-left: calc(var(--#{$variable-prefix}gutter-x) * -0.5); // stylelint-disable-line function-disallowed-list
 }
 
 @mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {

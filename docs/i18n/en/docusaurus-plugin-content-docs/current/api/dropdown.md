@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/dropdown/slots.md';
 
 <head>
   <title>Dropdown | WebJET Element to display the context menu</title>
-  <meta name="description" content="Dropdown element slúži na zobrazenie kontextového menu po kliknutí. Menu möže obsahovať aj ikony." />
+  <meta
+    name="description"
+    content="Dropdown element slúži na zobrazenie kontextového menu po kliknutí. Menu möže obsahovať aj ikony."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -26,7 +29,7 @@ Dropdown element is used to display the context menu after clicking the button. 
 
 import Basic from '@site/static/usage/v1/dropdown/basic/index.md';
 
-<Basic/>
+<Basic />
 
 </div>
 
@@ -40,7 +43,7 @@ import Basic from '@site/static/usage/v1/dropdown/basic/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

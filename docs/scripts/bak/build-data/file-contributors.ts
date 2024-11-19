@@ -6,10 +6,7 @@ import url from 'url';
 
 dotenv.config();
 
-const OUTPUT_PATH = resolve(
-  __dirname,
-  '../data/github-commits.json'
-);
+const OUTPUT_PATH = resolve(__dirname, '../data/github-commits.json');
 
 export default {
   title: 'Getting a list of past commits',
@@ -18,7 +15,7 @@ export default {
     if (Object.keys(History).length > 0) {
       outputJson(OUTPUT_PATH, History, { spaces: 2 });
     }
-  }
+  },
 };
 
 const getAllGHCommits = async (task: any, page = 1) => {
@@ -31,27 +28,30 @@ const getAllGHCommits = async (task: any, page = 1) => {
         pathname: 'repos/ionic-team/ionic-docs/commits',
         query: {
           per_page: 100,
-          page
-        }
-      }), {
+          page,
+        },
+      }),
+      {
         headers: {
-          'Authorization': process.env.GITHUB_TOKEN !== undefined ? `token ${process.env.GITHUB_TOKEN}` : ''
-        }
+          Authorization: process.env.GITHUB_TOKEN !== undefined ? `token ${process.env.GITHUB_TOKEN}` : '',
+        },
       }
     );
 
-    let commits = await request.json().then(list => list.reduce((obj: any, commit: any) => {
-      obj[commit.sha] = {
-        id: commit.author.login,
-        avatar: commit.author.avatar_url,
-        time: commit.commit.committer.date
-      };
-      return obj;
-    }, {}));
+    let commits = await request.json().then((list) =>
+      list.reduce((obj: any, commit: any) => {
+        obj[commit.sha] = {
+          id: commit.author.login,
+          avatar: commit.author.avatar_url,
+          time: commit.commit.committer.date,
+        };
+        return obj;
+      }, {})
+    );
 
     // recursively get more commits if there are more to get, limit 2k
     if (Object.keys(commits).length === 100 && page < 20) {
-      commits = { ...commits, ...await getAllGHCommits(task, page + 1) };
+      commits = { ...commits, ...(await getAllGHCommits(task, page + 1)) };
     }
 
     return commits;

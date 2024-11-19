@@ -1,5 +1,5 @@
-import { default as WJElement } from "../wje-element/element.js";
-import styles from "./styles/styles.css?inline";
+import { default as WJElement } from '../wje-element/element.js';
+import styles from './styles/styles.css?inline';
 
 /**
  * @summary CardTitle class that extends WJElement.
@@ -14,56 +14,55 @@ import styles from "./styles/styles.css?inline";
  * @cssproperty [--wje-card-title-line-height=1.2] - Line height of the component;
  */
 export default class CardTitle extends WJElement {
+  /**
+   * CardTitle constructor method.
+   */
+  constructor() {
+    super();
+  }
 
-    /**
-     * CardTitle constructor method.
-     */
-    constructor() {
-        super();
-    }
+  /**
+   * Class name for the CardTitle.
+   * @type {string}
+   */
+  className = 'CardTitle';
 
-    /**
-     * Class name for the CardTitle.
-     * @type {string}
-     */
-    className = "CardTitle";
+  /**
+   * Getter for the CSS stylesheet.
+   * @returns {object} The styles object.
+   * @static
+   */
+  static get cssStyleSheet() {
+    return styles;
+  }
 
-    /**
-     * Getter for the CSS stylesheet.
-     * @returns {object} The styles object.
-     * @static
-     */
-    static get cssStyleSheet() {
-        return styles;
-    }
+  /**
+   * Getter for the observed attributes.
+   * @returns {Array} An empty array.
+   * @static
+   */
+  static get observedAttributes() {
+    return [];
+  }
 
-    /**
-     * Getter for the observed attributes.
-     * @returns {Array} An empty array.
-     * @static
-     */
-    static get observedAttributes() {
-        return [];
-    }
+  /**
+   * Sets up the attributes for the CardTitle.
+   */
+  setupAttributes() {
+    this.isShadowRoot = 'open';
+  }
 
-    /**
-     * Sets up the attributes for the CardTitle.
-     */
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
+  /**
+   * Draws the CardTitle element.
+   * @returns {DocumentFragment} The created document fragment.
+   */
+  draw() {
+    let fragment = document.createDocumentFragment();
 
-    /**
-     * Draws the CardTitle element.
-     * @returns {DocumentFragment} The created document fragment.
-     */
-    draw() {
-        let fragment = document.createDocumentFragment();
+    let element = document.createElement('slot');
 
-        let element = document.createElement("slot");
+    fragment.appendChild(element);
 
-        fragment.appendChild(element);
-
-        return fragment;
-    }
+    return fragment;
+  }
 }

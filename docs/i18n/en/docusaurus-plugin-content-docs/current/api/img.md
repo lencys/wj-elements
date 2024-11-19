@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/image/slots.md';
 
 <head>
   <title>Image Element | Image Display Element</title>
-  <meta name="description" content="Element Image pridáva obrázkom funkciu lazyload a počas načítavania zobrazuje zástupnú ikonu (placeholder) v podobe animovaného obrázka." />
+  <meta
+    name="description"
+    content="Element Image pridáva obrázkom funkciu lazyload a počas načítavania zobrazuje zástupnú ikonu (placeholder) v podobe animovaného obrázka."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -36,7 +39,7 @@ import Basic from '@site/static/usage/v1/img/basic/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

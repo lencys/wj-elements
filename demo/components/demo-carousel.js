@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -215,19 +215,19 @@ export default class DemoCarousel extends WJElement {
         <wje-img src="https://picsum.photos/500/375?i=4"></wje-img>
       </wje-carousel-item>
     </wje-carousel>`;
-  }
+  };
   afterDraw() {
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(template, this.context);
 
-    this.querySelectorAll("wje-carousel-item").forEach((carousel) => {
-      carousel.addEventListener("wje-carousel-item:click", (event) => {
-        console.log("Clicked", event.target);
+    this.querySelectorAll('wje-carousel-item').forEach((carousel) => {
+      carousel.addEventListener('wje-carousel-item:click', (event) => {
+        console.log('Clicked', event.target);
       });
     });
 
-    this.querySelector("wje-dialog").addEventListener("wje-dialog:opened", (e) => {
-      e.target.querySelector("wje-carousel").goToSlide(0, "auto");
+    this.querySelector('wje-dialog').addEventListener('wje-dialog:opened', (e) => {
+      e.target.querySelector('wje-carousel').goToSlide(0, 'auto');
     });
   }
 }
@@ -235,4 +235,4 @@ export default class DemoCarousel extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-carousel") || window.customElements.define("demo-carousel", DemoCarousel);
+customElements.get('demo-carousel') || window.customElements.define('demo-carousel', DemoCarousel);

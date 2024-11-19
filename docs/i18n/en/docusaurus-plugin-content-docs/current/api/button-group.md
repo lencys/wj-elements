@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/button-group/slots.md';
 
 <head>
   <title>ButtonGroup: element for grouping buttons</title>
-  <meta name="description" content="ButtonGroup slúži na zoskupovanie elementov Button, ktoré budú po vložení do vnútra elementu automaticky naštýlované a usporiadané." />
+  <meta
+    name="description"
+    content="ButtonGroup slúži na zoskupovanie elementov Button, ktoré budú po vložení do vnútra elementu automaticky naštýlované a usporiadané."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -86,7 +89,7 @@ import ColorsOutline from '@site/static/usage/v1/button-group/colors-outline/ind
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/toolbar-actions/slots.md';
 
 <head>
   <title>ToolbarActions | Wrapper for buttons inserted into the Toolbar element</title>
-  <meta name="description" content="Element ToolbarActions slúži ako obaľovací kontajner pre tlačidlá vložené do elementu Toolbar a zoskupuje tak rôzne akcie toolbaru do jedného celku." />
+  <meta
+    name="description"
+    content="Element ToolbarActions slúži ako obaľovací kontajner pre tlačidlá vložené do elementu Toolbar a zoskupuje tak rôzne akcie toolbaru do jedného celku."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -34,7 +37,7 @@ For more information on using ToolbarActions, go to the [**Toolbar**](../toolbar
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

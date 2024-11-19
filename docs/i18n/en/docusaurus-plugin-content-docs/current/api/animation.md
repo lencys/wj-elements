@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/animation/slots.md';
 
 <head>
   <title>Animation: integrating animations into web applications</title>
-  <meta name="description" content="Element Animation ponúka integráciu animácií do webových aplikácií čím umožňuje vytváranie pútavých používateľských rozhraní. Poskytuje možnosti prispôsobenia v podobe oneskorenia, trvania alebo napríklad tiež počtu opakovaní animácií. " />
+  <meta
+    name="description"
+    content="Element Animation ponúka integráciu animácií do webových aplikácií čím umožňuje vytváranie pútavých používateľských rozhraní. Poskytuje možnosti prispôsobenia v podobe oneskorenia, trvania alebo napríklad tiež počtu opakovaní animácií. "
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -36,7 +39,7 @@ import Basic from '@site/static/usage/v1/animation/basic/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

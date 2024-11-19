@@ -3,7 +3,7 @@
   /*background: var(--wje-background);*/
 }
 
-html{
+html {
   color: var(--wje-color);
 }
 
@@ -23,9 +23,9 @@ body {
 }
 
 @media (max-width: 768px) {
-    .container {
-        max-width: 100%;
-    }
+  .container {
+    max-width: 100%;
+  }
 }
 
 .playground {
@@ -42,7 +42,6 @@ body {
   margin-bottom: 1rem;
   padding: 2rem 0;
   background: transparent;
-
 }
 
 .content {
@@ -73,7 +72,8 @@ body {
   overflow: hidden;
 }
 
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 
@@ -85,7 +85,8 @@ body {
   transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
-.slide-fade-enter, .slide-fade-leave-to {
+.slide-fade-enter,
+.slide-fade-leave-to {
   transform: translateX(100px);
   opacity: 0;
 }
@@ -129,15 +130,15 @@ router-outlet > * {
 }
 
 wje-menu-button#close {
-    margin: 1rem 0 0 1rem;
+  margin: 1rem 0 0 1rem;
 }
 
 wje-button {
-  margin: .25rem;
+  margin: 0.25rem;
 }
 
 wje-chip {
-  margin: .25rem;
+  margin: 0.25rem;
 }
 
 wje-header::part(native) {
@@ -161,8 +162,7 @@ wje-header .logo {
   display: none;
 }
 
-
-.wje-theme-dark{
+.wje-theme-dark {
   #logo-light {
     display: none;
   }
@@ -204,7 +204,7 @@ pre {
   position: relative;
   &:hover {
     .copy-button {
-      opacity: .3;
+      opacity: 0.3;
     }
     .copy-button:hover {
       opacity: 0.8;
@@ -213,7 +213,6 @@ pre {
 }
 
 pre {
-
   margin: 0;
 }
 
@@ -229,28 +228,60 @@ code {
 }
 
 .snippet {
-  .symbol { color: #9c238c; }
-  .tag { color: #9c238c; }
-  .attribute { color: #806c33; }
-  .attribute-empty { color: #806c33; }
-  .value { color: #b32f24; }
-  .text { color: #0f0f0f; }
-  .comment { color: #32721d; }
-  .style-content { color: #806c33; }
+  .symbol {
+    color: #9c238c;
+  }
+  .tag {
+    color: #9c238c;
+  }
+  .attribute {
+    color: #806c33;
+  }
+  .attribute-empty {
+    color: #806c33;
+  }
+  .value {
+    color: #b32f24;
+  }
+  .text {
+    color: #0f0f0f;
+  }
+  .comment {
+    color: #32721d;
+  }
+  .style-content {
+    color: #806c33;
+  }
 }
 
 :host,
 .wje-theme-dark,
 .dark {
   .snippet {
-    .symbol { color: #abb2be; }
-    .tag { color: #dd6e76; }
-    .attribute { color: #d09b6c; }
-    .attribute-empty { color: #d09b6c; }
-    .value { color: #9ac280; }
-    .text { color: #abb2be; }
-    .comment { color: #5c636f; }
-    .style-content { color: #d09b6c; }
+    .symbol {
+      color: #abb2be;
+    }
+    .tag {
+      color: #dd6e76;
+    }
+    .attribute {
+      color: #d09b6c;
+    }
+    .attribute-empty {
+      color: #d09b6c;
+    }
+    .value {
+      color: #9ac280;
+    }
+    .text {
+      color: #abb2be;
+    }
+    .comment {
+      color: #5c636f;
+    }
+    .style-content {
+      color: #d09b6c;
+    }
   }
 }
 

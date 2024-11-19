@@ -8,40 +8,28 @@
     <wje-list>
       <wje-item>
         <wje-thumbnail slot="start">
-          <img
-            alt="Silhouette of mountains"
-            src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
-          />
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
         </wje-thumbnail>
         <wje-label>Item</wje-label>
       </wje-item>
 
       <wje-item>
         <wje-thumbnail slot="start">
-          <img
-            alt="Silhouette of mountains"
-            src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
-          />
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
         </wje-thumbnail>
         <wje-label>Item</wje-label>
       </wje-item>
 
       <wje-item>
         <wje-thumbnail slot="start">
-          <img
-            alt="Silhouette of mountains"
-            src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
-          />
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
         </wje-thumbnail>
         <wje-label>Item</wje-label>
       </wje-item>
 
       <wje-item lines="none">
         <wje-thumbnail slot="start">
-          <img
-            alt="Silhouette of mountains"
-            src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
-          />
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
         </wje-thumbnail>
         <wje-label>Item</wje-label>
       </wje-item>

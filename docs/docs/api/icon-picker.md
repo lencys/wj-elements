@@ -1,6 +1,7 @@
 ---
 title: 'Icon Picker'
 ---
+
 import Props from '@ionic-internal/component-api/v1/icon-picker/props.md';
 import Events from '@ionic-internal/component-api/v1/icon-picker/events.md';
 import Methods from '@ionic-internal/component-api/v1/icon-picker/methods.md';
@@ -38,7 +39,7 @@ import Basic from '@site/static/usage/v1/icon-picker/basic/index.md';
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

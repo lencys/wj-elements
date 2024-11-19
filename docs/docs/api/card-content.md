@@ -1,6 +1,7 @@
 ---
-title: "Card Content"
+title: 'Card Content'
 ---
+
 import Props from '@ionic-internal/component-api/v1/card-content/props.md';
 import Events from '@ionic-internal/component-api/v1/card-content/events.md';
 import Methods from '@ionic-internal/component-api/v1/card-content/methods.md';
@@ -35,7 +36,7 @@ Pre viac informácií o použití Card Content sa presuňte do dokumentácie ele
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

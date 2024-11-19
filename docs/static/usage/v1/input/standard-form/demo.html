@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -13,14 +13,23 @@
   </head>
   <body>
     <div class="container">
-      <div class="content" style="min-width: 60%;margin: auto;">
+      <div class="content" style="min-width: 60%; margin: auto">
         <wje-grid>
           <wje-row class="gx-2">
             <wje-col size="6">
               <wje-input variant="standard" label="Project name"></wje-input>
             </wje-col>
             <wje-col size="6">
-              <wje-input variant="standard" label="Project code" placeholder="6 digit code" minlength="6" maxlength="6" message="Toto je moja hlaska" validate-on-change custom-error-display></wje-input>
+              <wje-input
+                variant="standard"
+                label="Project code"
+                placeholder="6 digit code"
+                minlength="6"
+                maxlength="6"
+                message="Toto je moja hlaska"
+                validate-on-change
+                custom-error-display
+              ></wje-input>
             </wje-col>
           </wje-row>
           <wje-row>

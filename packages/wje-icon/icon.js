@@ -1,6 +1,5 @@
-import Icon from "./icon.element.js";
+import Icon from './icon.element.js';
 
 export default Icon;
 
-Icon.define("wje-icon", Icon);
-
+Icon.define('wje-icon', Icon);

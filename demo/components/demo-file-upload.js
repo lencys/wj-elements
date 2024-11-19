@@ -1,5 +1,5 @@
-  import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -45,4 +45,4 @@ export default class DemoFileUpload extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-file-upload") || window.customElements.define("demo-file-upload", DemoFileUpload);
+customElements.get('demo-file-upload') || window.customElements.define('demo-file-upload', DemoFileUpload);

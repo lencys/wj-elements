@@ -38,12 +38,12 @@
   box-shadow: none;
 }
 
-:host([variant=context]) {
+:host([variant='context']) {
   display: block !important;
   margin-left: var(--wje-menu-submenu-offset);
 }
 
-:host([variant=megamenu]) .native-menu {
+:host([variant='megamenu']) .native-menu {
   flex-direction: row;
   align-items: end;
   flex-wrap: nowrap;
@@ -53,5 +53,5 @@
 }
 
 :host([active]) {
-  display: flex  !important;
+  display: flex !important;
 }

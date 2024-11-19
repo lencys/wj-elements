@@ -9,19 +9,19 @@
   color: var(--wje-tooltip-color);
   background-color: var(--wje-tooltip-background);
   font-weight: var(--wje-tooltip-font-weight);
-  font-size:  var(--wje-tooltip-font-size);
+  font-size: var(--wje-tooltip-font-size);
   border-radius: var(--wje-tooltip-border-radius);
   line-height: var(--wje-tooltip-line-height);
   box-sizing: border-box;
   box-shadow: var(--wje-tooltip-shadow);
 }
 
-::slotted([slot="start"]) {
-  margin: 0 .3rem 0 0;
+::slotted([slot='start']) {
+  margin: 0 0.3rem 0 0;
 }
 
-::slotted([slot="end"]) {
-  margin: 0 0 0 .3rem;
+::slotted([slot='end']) {
+  margin: 0 0 0 0.3rem;
 }
 
 .arrow {

@@ -1,3 +1,3 @@
 ```html
-  <wje-rate max="5"></wje-rate>
+<wje-rate max="5"></wje-rate>
 ```

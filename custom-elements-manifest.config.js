@@ -31,7 +31,7 @@ export default {
       name: 'package-data',
       packageLinkPhase({ customElementsManifest }) {
         customElementsManifest.package = { name, description, version, author, homepage, license };
-      }
+      },
     },
     {
       name: 'custom-tags',
@@ -39,12 +39,12 @@ export default {
         switch (node.kind) {
           case ts.SyntaxKind.ClassDeclaration: {
             const className = node.name.getText();
-            const classDoc = moduleDoc?.declarations?.find(declaration => declaration.name === className);
+            const classDoc = moduleDoc?.declarations?.find((declaration) => declaration.name === className);
             const customTags = ['dependency', 'documentation', 'since', 'status', 'title'];
             let customComments = '/**';
             console.log('node.jsDoc', customComments);
-            node.jsDoc?.forEach(jsDoc => {
-              jsDoc?.tags?.forEach(tag => {
+            node.jsDoc?.forEach((jsDoc) => {
+              jsDoc?.tags?.forEach((tag) => {
                 const tagName = tag.tagName.getText();
 
                 if (customTags.includes(tagName)) {
@@ -58,7 +58,7 @@ export default {
 
             const parsed = parse(`${customComments}\n */`);
             console.log('parsed', parsed[0]?.tags);
-            parsed[0]?.tags?.forEach(t => {
+            parsed[0]?.tags?.forEach((t) => {
               switch (t.tag) {
                 case 'dependency':
                   if (!Array.isArray(classDoc['dependencies'])) {
@@ -80,13 +80,13 @@ export default {
                   classDoc[t.tag].push({
                     name: t.name,
                     description: t.description,
-                    type: t.type || undefined
+                    type: t.type || undefined,
                   });
               }
             });
           }
         }
-      }
+      },
     },
     {
       name: 'tag-names',
@@ -94,7 +94,7 @@ export default {
         switch (node.kind) {
           case ts.SyntaxKind.ClassDeclaration: {
             const className = node.name.getText();
-            const classDoc = moduleDoc?.declarations?.find(declaration => declaration.name === className);
+            const classDoc = moduleDoc?.declarations?.find((declaration) => declaration.name === className);
 
             const importPath = moduleDoc.path;
 
@@ -111,7 +111,7 @@ export default {
             classDoc.customElement = true;
           }
         }
-      }
+      },
     },
     customElementJetBrainsPlugin({
       outdir: './dist',
@@ -120,9 +120,9 @@ export default {
       referencesTemplate: (name, tag) => {
         return {
           name: 'documentation',
-          url: `https://elements.webjet.sk/components/${tag.replace('', '')}`
+          url: `https://elements.webjet.sk/components/${tag.replace('', '')}`,
         };
-      }
-    })
-  ]
-}
+      },
+    }),
+  ],
+};

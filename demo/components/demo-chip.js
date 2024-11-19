@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -100,4 +100,4 @@ export default class DemoChip extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-chip") || window.customElements.define("demo-chip", DemoChip);
+customElements.get('demo-chip') || window.customElements.define('demo-chip', DemoChip);

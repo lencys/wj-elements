@@ -605,13 +605,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/8.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/8.jpg"
     },
-    "directs": [
-      "bella.moreno",
-      "carl.morris",
-      "mike.daniels",
-      "charles.andrews",
-      "brandie.bowman"
-    ]
+    "directs": ["bella.moreno", "carl.morris", "mike.daniels", "charles.andrews", "brandie.bowman"]
   },
   "leslie.george": {
     "id": "leslie.george",
@@ -2565,11 +2559,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/20.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/20.jpg"
     },
-    "directs": [
-      "don.oliver",
-      "rachel.steward",
-      "terry.ward"
-    ]
+    "directs": ["don.oliver", "rachel.steward", "terry.ward"]
   },
   "lisa.powell": {
     "id": "lisa.powell",
@@ -2614,9 +2604,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/29.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/29.jpg"
     },
-    "directs": [
-      "brandy.crawford"
-    ]
+    "directs": ["brandy.crawford"]
   },
   "irma.hamilton": {
     "id": "irma.hamilton",
@@ -2661,11 +2649,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/92.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/92.jpg"
     },
-    "directs": [
-      "bonnie.steeves",
-      "vincent.carlson",
-      "cameron.fields"
-    ]
+    "directs": ["bonnie.steeves", "vincent.carlson", "cameron.fields"]
   },
   "sean.long": {
     "id": "sean.long",
@@ -3194,9 +3178,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/47.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/47.jpg"
     },
-    "directs": [
-      "jennie.bates"
-    ]
+    "directs": ["jennie.bates"]
   },
   "zachary.bell": {
     "id": "zachary.bell",
@@ -3285,10 +3267,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/7.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/7.jpg"
     },
-    "directs": [
-      "erin.crawford",
-      "neil.montgomery"
-    ]
+    "directs": ["erin.crawford", "neil.montgomery"]
   },
   "krin.burns": {
     "id": "krin.burns",
@@ -4382,12 +4361,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/66.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/66.jpg"
     },
-    "directs": [
-      "louise.ray",
-      "alexa.russell",
-      "sally.stewart",
-      "beatrice.dean"
-    ]
+    "directs": ["louise.ray", "alexa.russell", "sally.stewart", "beatrice.dean"]
   },
   "bella.moreno": {
     "id": "bella.moreno",
@@ -4432,9 +4406,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/1.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/1.jpg"
     },
-    "directs": [
-      "ramon.hudson"
-    ]
+    "directs": ["ramon.hudson"]
   },
   "catherine.gomez": {
     "id": "catherine.gomez",
@@ -4567,11 +4539,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/97.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/97.jpg"
     },
-    "directs": [
-      "austin.curtis",
-      "gene.herrera",
-      "dustin.arnold"
-    ]
+    "directs": ["austin.curtis", "gene.herrera", "dustin.arnold"]
   },
   "bob.hart": {
     "id": "bob.hart",
@@ -5161,10 +5129,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/32.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/32.jpg"
     },
-    "directs": [
-      "anita.murphy",
-      "dwight.baker"
-    ]
+    "directs": ["anita.murphy", "dwight.baker"]
   },
   "eli.lucas": {
     "id": "eli.lucas",
@@ -5298,13 +5263,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/8.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/8.jpg"
     },
-    "directs": [
-      "morris.smith",
-      "bobby.knight",
-      "florence.palmer",
-      "mark.curtis",
-      "susan.meyer"
-    ]
+    "directs": ["morris.smith", "bobby.knight", "florence.palmer", "mark.curtis", "susan.meyer"]
   },
   "evelyn.simmons": {
     "id": "evelyn.simmons",
@@ -5393,11 +5352,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/12.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/12.jpg"
     },
-    "directs": [
-      "yvonne.kim",
-      "jeffery.allen",
-      "arlene.stevens"
-    ]
+    "directs": ["yvonne.kim", "jeffery.allen", "arlene.stevens"]
   },
   "claire.duncan": {
     "id": "claire.duncan",
@@ -5633,9 +5588,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/55.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/55.jpg"
     },
-    "directs": [
-      "darryl.castro"
-    ]
+    "directs": ["darryl.castro"]
   },
   "wesley.bates": {
     "id": "wesley.bates",
@@ -5724,12 +5677,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/80.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/80.jpg"
     },
-    "directs": [
-      "anthony.lynch",
-      "alma.schmidt",
-      "stacey.castro",
-      "savannah.frazier"
-    ]
+    "directs": ["anthony.lynch", "alma.schmidt", "stacey.castro", "savannah.frazier"]
   },
   "tristan.bowman": {
     "id": "tristan.bowman",
@@ -5818,10 +5766,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/1.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/1.jpg"
     },
-    "directs": [
-      "nicholas.fowler",
-      "gertrude.phillips"
-    ]
+    "directs": ["nicholas.fowler", "gertrude.phillips"]
   },
   "ben.lane": {
     "id": "ben.lane",
@@ -6582,9 +6527,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/42.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/42.jpg"
     },
-    "directs": [
-      "zachary.bell"
-    ]
+    "directs": ["zachary.bell"]
   },
   "june.ramos": {
     "id": "june.ramos",
@@ -7385,12 +7328,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/10.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/10.jpg"
     },
-    "directs": [
-      "eduardo.black",
-      "lois.ramirez",
-      "armando.elliott",
-      "marc.miller"
-    ]
+    "directs": ["eduardo.black", "lois.ramirez", "armando.elliott", "marc.miller"]
   },
   "kaylee.morris": {
     "id": "kaylee.morris",
@@ -7996,13 +7934,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/2.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/2.jpg"
     },
-    "directs": [
-      "lisa.powell",
-      "terrance.long",
-      "kristen.bailey",
-      "adrian.bell",
-      "jerome.hunt"
-    ]
+    "directs": ["lisa.powell", "terrance.long", "kristen.bailey", "adrian.bell", "jerome.hunt"]
   },
   "brayden.black": {
     "id": "brayden.black",
@@ -8355,10 +8287,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/40.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/40.jpg"
     },
-    "directs": [
-      "randy.harper",
-      "deanna.howell"
-    ]
+    "directs": ["randy.harper", "deanna.howell"]
   },
   "joanne.gardner": {
     "id": "joanne.gardner",
@@ -8403,13 +8332,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/70.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/70.jpg"
     },
-    "directs": [
-      "june.ramos",
-      "christopher.fernandez",
-      "shane.riley",
-      "ivan.hale",
-      "julie.clark"
-    ]
+    "directs": ["june.ramos", "christopher.fernandez", "shane.riley", "ivan.hale", "julie.clark"]
   },
   "jared.lawrence": {
     "id": "jared.lawrence",
@@ -9545,14 +9468,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/62.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/62.jpg"
     },
-    "directs": [
-      "catherine.gomez",
-      "brooklyn.shelton",
-      "carl.ray",
-      "dan.reid",
-      "paul.ferguson",
-      "dana.peters"
-    ]
+    "directs": ["catherine.gomez", "brooklyn.shelton", "carl.ray", "dan.reid", "paul.ferguson", "dana.peters"]
   },
   "stacy.scott": {
     "id": "stacy.scott",
@@ -9729,13 +9645,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/57.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/57.jpg"
     },
-    "directs": [
-      "irma.hamilton",
-      "katie.ray",
-      "kaylee.chambers",
-      "bessie.richardson",
-      "enrique.hoffman"
-    ]
+    "directs": ["irma.hamilton", "katie.ray", "kaylee.chambers", "bessie.richardson", "enrique.hoffman"]
   },
   "darryl.castro": {
     "id": "darryl.castro",
@@ -10044,11 +9954,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/8.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/8.jpg"
     },
-    "directs": [
-      "david.lambert",
-      "marian.gonzales",
-      "perry.morales"
-    ]
+    "directs": ["david.lambert", "marian.gonzales", "perry.morales"]
   },
   "dean.arnold": {
     "id": "dean.arnold",
@@ -10578,12 +10484,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/67.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/67.jpg"
     },
-    "directs": [
-      "jamie.parker",
-      "bernice.sanders",
-      "kaylee.morris",
-      "terrence.weaver"
-    ]
+    "directs": ["jamie.parker", "bernice.sanders", "kaylee.morris", "terrence.weaver"]
   },
   "charlie.armstrong": {
     "id": "charlie.armstrong",
@@ -11218,11 +11119,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/65.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/65.jpg"
     },
-    "directs": [
-      "ella.garrett",
-      "marie.silva",
-      "wade.rose"
-    ]
+    "directs": ["ella.garrett", "marie.silva", "wade.rose"]
   },
   "georgia.rodriquez": {
     "id": "georgia.rodriquez",
@@ -11267,12 +11164,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/93.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/93.jpg"
     },
-    "directs": [
-      "pat.james",
-      "earl.montgomery",
-      "shane.garrett",
-      "carole.pena"
-    ]
+    "directs": ["pat.james", "earl.montgomery", "shane.garrett", "carole.pena"]
   },
   "david.lambert": {
     "id": "david.lambert",
@@ -11788,12 +11680,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/62.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/62.jpg"
     },
-    "directs": [
-      "marian.wallace",
-      "hugh.morrison",
-      "jane.barnett",
-      "sarah.ward"
-    ]
+    "directs": ["marian.wallace", "hugh.morrison", "jane.barnett", "sarah.ward"]
   },
   "lorraine.dunn": {
     "id": "lorraine.dunn",
@@ -12274,10 +12161,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/69.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/69.jpg"
     },
-    "directs": [
-      "chris.castillo",
-      "jose.banks"
-    ]
+    "directs": ["chris.castillo", "jose.banks"]
   },
   "samantha.gutierrez": {
     "id": "samantha.gutierrez",
@@ -12410,13 +12294,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/1.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/1.jpg"
     },
-    "directs": [
-      "daisy.woods",
-      "claudia.hernandez",
-      "irma.murray",
-      "raymond.ruiz",
-      "charlie.thomas"
-    ]
+    "directs": ["daisy.woods", "claudia.hernandez", "irma.murray", "raymond.ruiz", "charlie.thomas"]
   },
   "clayton.gilbert": {
     "id": "clayton.gilbert",
@@ -12594,13 +12472,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/69.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/69.jpg"
     },
-    "directs": [
-      "roger.day",
-      "armando.brown",
-      "mike.rogers",
-      "leon.harrison",
-      "willie.woods"
-    ]
+    "directs": ["roger.day", "armando.brown", "mike.rogers", "leon.harrison", "willie.woods"]
   },
   "rodney.foster": {
     "id": "rodney.foster",
@@ -12645,11 +12517,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/52.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/52.jpg"
     },
-    "directs": [
-      "mario.johnson",
-      "bessie.banks",
-      "robin.hayes"
-    ]
+    "directs": ["mario.johnson", "bessie.banks", "robin.hayes"]
   },
   "cody.rice": {
     "id": "cody.rice",
@@ -12826,10 +12694,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/77.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/77.jpg"
     },
-    "directs": [
-      "tanya.graves",
-      "salvador.lambert"
-    ]
+    "directs": ["tanya.graves", "salvador.lambert"]
   },
   "edith.hart": {
     "id": "edith.hart",
@@ -12874,13 +12739,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/4.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/4.jpg"
     },
-    "directs": [
-      "ruby.watkins",
-      "scarlett.black",
-      "isabella.hunter",
-      "darlene.stone",
-      "ted.hawkins"
-    ]
+    "directs": ["ruby.watkins", "scarlett.black", "isabella.hunter", "darlene.stone", "ted.hawkins"]
   },
   "alexis.murphy": {
     "id": "alexis.murphy",
@@ -13013,10 +12872,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/56.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/56.jpg"
     },
-    "directs": [
-      "cassandra.holland",
-      "terry.dunn"
-    ]
+    "directs": ["cassandra.holland", "terry.dunn"]
   },
   "ann.daniels": {
     "id": "ann.daniels",
@@ -13238,12 +13094,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/60.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/60.jpg"
     },
-    "directs": [
-      "elizabeth.jacobs",
-      "roger.parker",
-      "edith.hart",
-      "jerome.morris"
-    ]
+    "directs": ["elizabeth.jacobs", "roger.parker", "edith.hart", "jerome.morris"]
   },
   "bill.hanson": {
     "id": "bill.hanson",
@@ -13377,13 +13228,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/43.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/43.jpg"
     },
-    "directs": [
-      "henry.silva",
-      "terri.turner",
-      "jimmie.douglas",
-      "marsha.mitchell",
-      "billie.washington"
-    ]
+    "directs": ["henry.silva", "terri.turner", "jimmie.douglas", "marsha.mitchell", "billie.washington"]
   },
   "marshall.mcdonalid": {
     "id": "marshall.mcdonalid",
@@ -13780,12 +13625,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/33.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/33.jpg"
     },
-    "directs": [
-      "keith.ramirez",
-      "bob.garrett",
-      "ben.alvarez",
-      "dawn.chavez"
-    ]
+    "directs": ["keith.ramirez", "bob.garrett", "ben.alvarez", "dawn.chavez"]
   },
   "pat.james": {
     "id": "pat.james",
@@ -14140,14 +13980,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/85.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/85.jpg"
     },
-    "directs": [
-      "delores.olson",
-      "hugh.bishop",
-      "roberta.dunn",
-      "jamie.soto",
-      "felicia.nguyen",
-      "shelly.gregory"
-    ]
+    "directs": ["delores.olson", "hugh.bishop", "roberta.dunn", "jamie.soto", "felicia.nguyen", "shelly.gregory"]
   },
   "jesus.baker": {
     "id": "jesus.baker",
@@ -14597,14 +14430,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/96.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/96.jpg"
     },
-    "directs": [
-      "harry.price",
-      "charlie.clark",
-      "heidi.byrd",
-      "erica.webb",
-      "morris.gordon",
-      "tracy.perkins"
-    ]
+    "directs": ["harry.price", "charlie.clark", "heidi.byrd", "erica.webb", "morris.gordon", "tracy.perkins"]
   },
   "earl.ray": {
     "id": "earl.ray",
@@ -14746,13 +14572,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/17.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/17.jpg"
     },
-    "directs": [
-      "claude.campbell",
-      "yolanda.hicks",
-      "april.mckinney",
-      "leslie.george",
-      "noah.kim"
-    ]
+    "directs": ["claude.campbell", "yolanda.hicks", "april.mckinney", "leslie.george", "noah.kim"]
   },
   "kristen.bailey": {
     "id": "kristen.bailey",
@@ -15026,9 +14846,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/45.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/45.jpg"
     },
-    "directs": [
-      "brad.elliott"
-    ]
+    "directs": ["brad.elliott"]
   },
   "don.oliver": {
     "id": "don.oliver",
@@ -15073,9 +14891,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/37.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/37.jpg"
     },
-    "directs": [
-      "jacob.lawson"
-    ]
+    "directs": ["jacob.lawson"]
   },
   "ana.clark": {
     "id": "ana.clark",
@@ -15121,11 +14937,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/5.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/5.jpg"
     },
-    "directs": [
-      "frank.gibson",
-      "eva.peck",
-      "johnny.gibson"
-    ]
+    "directs": ["frank.gibson", "eva.peck", "johnny.gibson"]
   },
   "christina.johnston": {
     "id": "christina.johnston",
@@ -15170,10 +14982,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/66.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/66.jpg"
     },
-    "directs": [
-      "sophia.spencer",
-      "elsie.garrett"
-    ]
+    "directs": ["sophia.spencer", "elsie.garrett"]
   },
   "terrance.clark": {
     "id": "terrance.clark",
@@ -15893,9 +15702,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/63.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/63.jpg"
     },
-    "directs": [
-      "gordon.mitchell"
-    ]
+    "directs": ["gordon.mitchell"]
   },
   "tomothy.fuller": {
     "id": "tomothy.fuller",
@@ -16072,10 +15879,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/70.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/70.jpg"
     },
-    "directs": [
-      "dwayne.pearson",
-      "reginald.larson"
-    ]
+    "directs": ["dwayne.pearson", "reginald.larson"]
   },
   "tara.dixon": {
     "id": "tara.dixon",
@@ -17154,13 +16958,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/76.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/76.jpg"
     },
-    "directs": [
-      "marjorie.kuhn",
-      "lawrence.king",
-      "harvey.cook",
-      "christian.shaw",
-      "cameron.morales"
-    ]
+    "directs": ["marjorie.kuhn", "lawrence.king", "harvey.cook", "christian.shaw", "cameron.morales"]
   },
   "april.mckinney": {
     "id": "april.mckinney",
@@ -17293,9 +17091,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/43.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/43.jpg"
     },
-    "directs": [
-      "roger.kennedy"
-    ]
+    "directs": ["roger.kennedy"]
   },
   "johnni.rivera": {
     "id": "johnni.rivera",
@@ -18044,12 +17840,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/14.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/14.jpg"
     },
-    "directs": [
-      "linda.olson",
-      "yolanda.murray",
-      "lisa.palmer",
-      "kirk.watkins"
-    ]
+    "directs": ["linda.olson", "yolanda.murray", "lisa.palmer", "kirk.watkins"]
   },
   "keith.bowman": {
     "id": "keith.bowman",
@@ -18226,13 +18017,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/34.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/34.jpg"
     },
-    "directs": [
-      "franklin.pierce",
-      "mabel.thompson",
-      "ana.stevens",
-      "ashley.hicks",
-      "grace.morris"
-    ]
+    "directs": ["franklin.pierce", "mabel.thompson", "ana.stevens", "ashley.hicks", "grace.morris"]
   },
   "kenneth.soto": {
     "id": "kenneth.soto",
@@ -18556,10 +18341,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/87.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/87.jpg"
     },
-    "directs": [
-      "teresa.arnold",
-      "tamara.jackson"
-    ]
+    "directs": ["teresa.arnold", "tamara.jackson"]
   },
   "lisa.rodriguez": {
     "id": "lisa.rodriguez",
@@ -19440,13 +19222,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/33.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/33.jpg"
     },
-    "directs": [
-      "jared.lawrence",
-      "edith.horton",
-      "taylor.sanchez",
-      "caleb.baker",
-      "ronnie.watts"
-    ]
+    "directs": ["jared.lawrence", "edith.horton", "taylor.sanchez", "caleb.baker", "ronnie.watts"]
   },
   "caleb.fernandez": {
     "id": "caleb.fernandez",
@@ -19931,10 +19707,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/82.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/82.jpg"
     },
-    "directs": [
-      "frances.chavez",
-      "andrea.byrd"
-    ]
+    "directs": ["frances.chavez", "andrea.byrd"]
   },
   "lewis.bishop": {
     "id": "lewis.bishop",
@@ -20023,9 +19796,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/92.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/92.jpg"
     },
-    "directs": [
-      "ashley.fernandez"
-    ]
+    "directs": ["ashley.fernandez"]
   },
   "julian.diaz": {
     "id": "julian.diaz",
@@ -20334,11 +20105,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/41.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/41.jpg"
     },
-    "directs": [
-      "jimmie.allen",
-      "everett.kelly",
-      "melissa.castillo"
-    ]
+    "directs": ["jimmie.allen", "everett.kelly", "melissa.castillo"]
   },
   "beverley.beck": {
     "id": "beverley.beck",
@@ -21591,13 +21358,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/76.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/76.jpg"
     },
-    "directs": [
-      "joy.mendoza",
-      "crystal.king",
-      "brent.wallace",
-      "stephanie.jimenez",
-      "kelly.freeman"
-    ]
+    "directs": ["joy.mendoza", "crystal.king", "brent.wallace", "stephanie.jimenez", "kelly.freeman"]
   },
   "christy.graves": {
     "id": "christy.graves",
@@ -22548,9 +22309,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/36.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/36.jpg"
     },
-    "directs": [
-      "suzanne.wallace"
-    ]
+    "directs": ["suzanne.wallace"]
   },
   "ted.hawkins": {
     "id": "ted.hawkins",
@@ -22859,10 +22618,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/80.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/80.jpg"
     },
-    "directs": [
-      "diana.perkins",
-      "wilma.diaz"
-    ]
+    "directs": ["diana.perkins", "wilma.diaz"]
   },
   "nevaeh.ford": {
     "id": "nevaeh.ford",
@@ -22907,10 +22663,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/14.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/14.jpg"
     },
-    "directs": [
-      "claudia.howell",
-      "alma.holmes"
-    ]
+    "directs": ["claudia.howell", "alma.holmes"]
   },
   "roger.shelton": {
     "id": "roger.shelton",
@@ -23087,10 +22840,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/44.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/44.jpg"
     },
-    "directs": [
-      "katherine.terry",
-      "joe.brooks"
-    ]
+    "directs": ["katherine.terry", "joe.brooks"]
   },
   "peter.peck": {
     "id": "peter.peck",
@@ -23502,9 +23252,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/59.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/59.jpg"
     },
-    "directs": [
-      "russell.jordan"
-    ]
+    "directs": ["russell.jordan"]
   },
   "derek.carter": {
     "id": "derek.carter",
@@ -23681,10 +23429,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/24.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/24.jpg"
     },
-    "directs": [
-      "claudia.byrd",
-      "penny.carr"
-    ]
+    "directs": ["claudia.byrd", "penny.carr"]
   },
   "carl.steeves": {
     "id": "carl.steeves",
@@ -23959,11 +23704,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/56.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/56.jpg"
     },
-    "directs": [
-      "ben.jackson",
-      "eli.riley",
-      "janice.graves"
-    ]
+    "directs": ["ben.jackson", "eli.riley", "janice.graves"]
   },
   "glenda.mckinney": {
     "id": "glenda.mckinney",
@@ -24096,10 +23837,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/80.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/80.jpg"
     },
-    "directs": [
-      "pat.welch",
-      "nina.wilson"
-    ]
+    "directs": ["pat.welch", "nina.wilson"]
   },
   "stephanie.jimenez": {
     "id": "stephanie.jimenez",
@@ -24144,9 +23882,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/2.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/2.jpg"
     },
-    "directs": [
-      "wanda.gordon"
-    ]
+    "directs": ["wanda.gordon"]
   },
   "morris.gordon": {
     "id": "morris.gordon",
@@ -25247,11 +24983,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/55.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/55.jpg"
     },
-    "directs": [
-      "marion.jones",
-      "kathryn.griffin",
-      "lorraine.morgan"
-    ]
+    "directs": ["marion.jones", "kathryn.griffin", "lorraine.morgan"]
   },
   "beth.perry": {
     "id": "beth.perry",
@@ -25472,11 +25204,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/99.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/99.jpg"
     },
-    "directs": [
-      "byron.watkins",
-      "caleb.fernandez",
-      "dave.hamilton"
-    ]
+    "directs": ["byron.watkins", "caleb.fernandez", "dave.hamilton"]
   },
   "ivan.hale": {
     "id": "ivan.hale",
@@ -25565,11 +25293,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/54.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/54.jpg"
     },
-    "directs": [
-      "arnold.harrison",
-      "mario.fernandez",
-      "juan.hughes"
-    ]
+    "directs": ["arnold.harrison", "mario.fernandez", "juan.hughes"]
   },
   "kent.simmmons": {
     "id": "kent.simmmons",
@@ -26240,14 +25964,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/49.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/49.jpg"
     },
-    "directs": [
-      "adrian.ford",
-      "shawn.fuller",
-      "carl.steeves",
-      "jack.edwards",
-      "clara.alvarez",
-      "tina.beck"
-    ]
+    "directs": ["adrian.ford", "shawn.fuller", "carl.steeves", "jack.edwards", "clara.alvarez", "tina.beck"]
   },
   "gordon.shaw": {
     "id": "gordon.shaw",
@@ -26612,11 +26329,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/74.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/74.jpg"
     },
-    "directs": [
-      "liam.west",
-      "penny.mitchelle",
-      "louella.beck"
-    ]
+    "directs": ["liam.west", "penny.mitchelle", "louella.beck"]
   },
   "tina.beck": {
     "id": "tina.beck",
@@ -26978,11 +26691,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/96.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/96.jpg"
     },
-    "directs": [
-      "terry.douglas",
-      "raymond.walters",
-      "aubrey.mason"
-    ]
+    "directs": ["terry.douglas", "raymond.walters", "aubrey.mason"]
   },
   "vernon.alvarez": {
     "id": "vernon.alvarez",
@@ -27071,12 +26780,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/27.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/27.jpg"
     },
-    "directs": [
-      "kirk.frazier",
-      "doris.kelly",
-      "terrance.clark",
-      "nevaeh.ford"
-    ]
+    "directs": ["kirk.frazier", "doris.kelly", "terrance.clark", "nevaeh.ford"]
   },
   "billie.washington": {
     "id": "billie.washington",
@@ -27385,10 +27089,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/74.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/74.jpg"
     },
-    "directs": [
-      "evelyn.lee",
-      "colleen.rhodes"
-    ]
+    "directs": ["evelyn.lee", "colleen.rhodes"]
   },
   "emily.bennett": {
     "id": "emily.bennett",
@@ -27609,11 +27310,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/25.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/25.jpg"
     },
-    "directs": [
-      "sean.long",
-      "ann.daniels",
-      "leona.graham"
-    ]
+    "directs": ["sean.long", "ann.daniels", "leona.graham"]
   },
   "anita.jacobs": {
     "id": "anita.jacobs",
@@ -27658,11 +27355,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/59.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/59.jpg"
     },
-    "directs": [
-      "rodney.foster",
-      "juanita.brewer",
-      "eric.steeves"
-    ]
+    "directs": ["rodney.foster", "juanita.brewer", "eric.steeves"]
   },
   "christine.mendoza": {
     "id": "christine.mendoza",
@@ -28103,9 +27796,7 @@
       "medium": "https://randomuser.me/api/portraits/med/men/14.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/men/14.jpg"
     },
-    "directs": [
-      "robert.weaver"
-    ]
+    "directs": ["robert.weaver"]
   },
   "delores.gordon": {
     "id": "delores.gordon",
@@ -28150,13 +27841,7 @@
       "medium": "https://randomuser.me/api/portraits/med/women/87.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/87.jpg"
     },
-    "directs": [
-      "violet.jones",
-      "brandie.hawkins",
-      "constance.fernandez",
-      "keith.bowman",
-      "daisy.warren"
-    ]
+    "directs": ["violet.jones", "brandie.hawkins", "constance.fernandez", "keith.bowman", "daisy.warren"]
   },
   "gordon.hamilton": {
     "id": "gordon.hamilton",

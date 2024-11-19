@@ -1,6 +1,7 @@
 ---
-title: "Avatar"
+title: 'Avatar'
 ---
+
 import Props from '@ionic-internal/component-api/v1/avatar/props.md';
 import Events from '@ionic-internal/component-api/v1/avatar/events.md';
 import Methods from '@ionic-internal/component-api/v1/avatar/methods.md';
@@ -10,14 +11,17 @@ import Slots from '@ionic-internal/component-api/v1/avatar/slots.md';
 
 <head>
   <title>Avatar: Avatar Component</title>
-  <meta name="description" content="Element avatar slúži na vizuálnu prezentáciu používateľa alebo subjektu. Používa sa zvyčajne ako obaľovač a poskytuje praktický spôsob zobrazovania profilových obrázkov, ikon, alebo, ak tie nie sú posktytné, iniciálok.  Podporuje rôzne konfigurácie vrátane veľkosti, zoskupenia viacerých avatarov alebo zobrazenie dropdownu po kliknutí či tooltipu pri ukázaní myšou." />
+  <meta
+    name="description"
+    content="Element avatar slúži na vizuálnu prezentáciu používateľa alebo subjektu. Používa sa zvyčajne ako obaľovač a poskytuje praktický spôsob zobrazovania profilových obrázkov, ikon, alebo, ak tie nie sú posktytné, iniciálok.  Podporuje rôzne konfigurácie vrátane veľkosti, zoskupenia viacerých avatarov alebo zobrazenie dropdownu po kliknutí či tooltipu pri ukázaní myšou."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element avatar slúži na vizuálnu prezentáciu používateľa alebo subjektu. Používa sa zvyčajne ako obaľovač a poskytuje praktický spôsob zobrazovania profilových obrázkov, ikon, alebo, ak tie nie sú poskytnuté, iniciálok.  Podporuje rôzne konfigurácie vrátane veľkosti, zoskupenia viacerých avatarov alebo zobrazenie dropdownu po kliknutí či tooltipu pri ukázaní myšou.
+Element avatar slúži na vizuálnu prezentáciu používateľa alebo subjektu. Používa sa zvyčajne ako obaľovač a poskytuje praktický spôsob zobrazovania profilových obrázkov, ikon, alebo, ak tie nie sú poskytnuté, iniciálok. Podporuje rôzne konfigurácie vrátane veľkosti, zoskupenia viacerých avatarov alebo zobrazenie dropdownu po kliknutí či tooltipu pri ukázaní myšou.
 
 ## Základné použitie
 
@@ -91,7 +95,7 @@ import CSSProps from '@site/static/usage/v1/avatar/theming/css-properties/index.
 
 ## Metódy
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 
@@ -104,4 +108,3 @@ import CSSProps from '@site/static/usage/v1/avatar/theming/css-properties/index.
 ## Sloty
 
 <Slots />
-

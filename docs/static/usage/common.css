@@ -1,11 +1,11 @@
 @font-face {
-  font-family: "Roboto";
-  src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "Roboto";
-  src: url("../fonts/Roboto-Medium.ttf") format("truetype");
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Medium.ttf') format('truetype');
   font-weight: 450 500;
 }
 
@@ -195,7 +195,6 @@
 /*    --ion-toolbar-background: var(--ion-color-step-150);*/
 /*    --ion-toolbar-border-color: var(--ion-color-step-250);*/
 /*  }*/
-
 
 /*  !**/
 /*   * Material Design Dark Theme*/

@@ -16,26 +16,26 @@
   --wje-select-color: var(--wje-color);
   --wje-select-border-radius: var(--wje-border-radius-medium);
 
-  --wje-select-margin-bottom: .5rem;
+  --wje-select-margin-bottom: 0.5rem;
   margin-bottom: var(--wje-select-margin-bottom);
 
   width: 100%;
   display: block;
-  [slot=arrow] {
+  [slot='arrow'] {
     transform: rotate(0deg);
-    transition: all .2s ease-in;
+    transition: all 0.2s ease-in;
   }
 }
 
 .native-select {
-  &.default{
+  &.default {
     .wrapper {
       display: block;
       border-width: var(--wje-select-border-width);
       border-style: var(--wje-select-border-style);
       border-color: var(--wje-select-border-color);
       border-radius: var(--wje-select-border-radius);
-      padding-inline: .5rem;
+      padding-inline: 0.5rem;
       padding-top: 0.125rem;
       padding-bottom: 0.125rem;
     }
@@ -94,7 +94,7 @@
   color: var(--wje-select-color);
   line-height: var(--wje-select-line-height);
   appearance: none;
-  padding: 2px .5rem;
+  padding: 2px 0.5rem;
   font-size: 14px !important;
   font-weight: normal;
   vertical-align: middle;
@@ -105,7 +105,7 @@ input {
   line-height: var(--wje-select-line-height);
   font-size: 14px !important;
   font-weight: 400;
-  letter-spacing: .01em;
+  letter-spacing: 0.01em;
   border: medium;
   height: 25px;
   min-height: 25px;
@@ -125,9 +125,9 @@ input {
   .wrapper {
     border-radius: var(--wje-select-border-radius) var(--wje-select-border-radius) 0 0;
   }
-  [slot=arrow] {
+  [slot='arrow'] {
     transform: rotate(180deg);
-    transition: all .2s ease-in;
+    transition: all 0.2s ease-in;
   }
 }
 
@@ -139,7 +139,6 @@ input {
   margin-top: calc(0px - var(--wje-select-border-width));
   background: var(--wje-select-background);
   overflow: hidden;
-
 }
 
 .find {
@@ -153,7 +152,7 @@ input {
 }
 
 .options-wrapper:has(.find) .list {
-  height: calc(100% - 32px - .5rem);
+  height: calc(100% - 32px - 0.5rem);
 }
 
 :host([multiple]) input {
@@ -173,30 +172,31 @@ input {
   flex-wrap: wrap;
 }
 
-:host([disabled]) .input-wrapper{
+:host([disabled]) .input-wrapper {
   opacity: 0.5;
   pointer-events: none;
   cursor: not-allowed;
 }
 
 .counter {
-  padding-inline: .5rem;
+  padding-inline: 0.5rem;
 }
 
 wje-chip {
-  --wje-chip-margin: 0 .25rem 0 0;
+  --wje-chip-margin: 0 0.25rem 0 0;
 }
 
 wje-button {
-  --wje-padding-top: .25rem;
-  --wje-padding-start: .25rem;
-  --wje-padding-end: .25rem;
-  --wje-padding-bottom: .25rem;
-  --wje-button-margin-inline: 0 .25rem;
+  --wje-padding-top: 0.25rem;
+  --wje-padding-start: 0.25rem;
+  --wje-padding-end: 0.25rem;
+  --wje-padding-bottom: 0.25rem;
+  --wje-button-margin-inline: 0 0.25rem;
 }
 
-.slot-start, .slot-end {
+.slot-start,
+.slot-end {
   &:not(:empty) {
-    margin-right: .5rem;
+    margin-right: 0.5rem;
   }
 }

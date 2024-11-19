@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -47,64 +47,65 @@ template.innerHTML = `
 `;
 
 export default class DemoQrCode extends WJElement {
-    constructor() {
-        super(template);
-    }
+  constructor() {
+    super(template);
+  }
 
-    afterDraw() {
-        const codeSnippet = new CodeSnippet();
-        codeSnippet.generateSnippet(template, this.context);
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(template, this.context);
 
-        const qr = document.querySelector('wje-qr-code');
-        const colors = ["black", "blue", "red", "green", "orange", "white"];
-        const levels = ["L", "M", "Q", "H"];
+    const qr = document.querySelector('wje-qr-code');
+    const colors = ['black', 'blue', 'red', 'green', 'orange', 'white'];
+    const levels = ['L', 'M', 'Q', 'H'];
 
-        function populateOptions(selectElement, options) {
-            options.forEach(option => {
-                const optionElement = Object.assign(document.createElement('wje-option'), {
-                    text: option,
-                    value: option,
-                    label: option
-                });
-                selectElement.appendChild(optionElement);
-            });
-        }
-
-        function handleInputOrSelectChange(selector, eventType, attribute) {
-            const element = document.querySelector(selector);
-            element.addEventListener(eventType, (e) => {
-                qr.setAttribute(attribute, e.detail.context ? e.detail.context.value : e.detail.hex8 ? e.detail.hex8 : e.detail.value);
-            });
-        }
-
-        const colorSelectF = document.querySelector('[colorSelectForeground]');
-        const colorSelectB = document.querySelector('[colorSelectBackground]');
-        const levelSelect = document.querySelector('[levelSelect]');
-
-        populateOptions(colorSelectF, colors);
-        populateOptions(colorSelectB, colors);
-        populateOptions(levelSelect, levels);
-
-        const elements = [
-            { selector: '[changeValue]', eventType: 'wje-input:input', attribute: 'value' },
-            { selector: '[changeSize]', eventType: 'wje-input:input', attribute: 'size' },
-            { selector: '[changePadding]', eventType: 'wje-input:input', attribute: 'padding' },
-            { selector: '[colorSelectForeground]', eventType: 'wje-color-picker:select', attribute: 'foreground' },
-            { selector: '[changeForegroundAlpha]', eventType: 'wje-input:input', attribute: 'foregroundAlpha' },
-            { selector: '[colorSelectBackground]', eventType: 'wje-color-picker:select', attribute: 'background' },
-            { selector: '[changeBackgroundAlpha]', eventType: 'wje-input:input', attribute: 'backgroundAlpha' },
-            { selector: '[levelSelect]', eventType: 'wje-option:change', attribute: 'level' }
-        ];
-
-        elements.forEach(({ selector, eventType, attribute }) => {
-            handleInputOrSelectChange(selector, eventType, attribute);
+    function populateOptions(selectElement, options) {
+      options.forEach((option) => {
+        const optionElement = Object.assign(document.createElement('wje-option'), {
+          text: option,
+          value: option,
+          label: option,
         });
+        selectElement.appendChild(optionElement);
+      });
     }
 
+    function handleInputOrSelectChange(selector, eventType, attribute) {
+      const element = document.querySelector(selector);
+      element.addEventListener(eventType, (e) => {
+        qr.setAttribute(
+          attribute,
+          e.detail.context ? e.detail.context.value : e.detail.hex8 ? e.detail.hex8 : e.detail.value
+        );
+      });
+    }
 
+    const colorSelectF = document.querySelector('[colorSelectForeground]');
+    const colorSelectB = document.querySelector('[colorSelectBackground]');
+    const levelSelect = document.querySelector('[levelSelect]');
+
+    populateOptions(colorSelectF, colors);
+    populateOptions(colorSelectB, colors);
+    populateOptions(levelSelect, levels);
+
+    const elements = [
+      { selector: '[changeValue]', eventType: 'wje-input:input', attribute: 'value' },
+      { selector: '[changeSize]', eventType: 'wje-input:input', attribute: 'size' },
+      { selector: '[changePadding]', eventType: 'wje-input:input', attribute: 'padding' },
+      { selector: '[colorSelectForeground]', eventType: 'wje-color-picker:select', attribute: 'foreground' },
+      { selector: '[changeForegroundAlpha]', eventType: 'wje-input:input', attribute: 'foregroundAlpha' },
+      { selector: '[colorSelectBackground]', eventType: 'wje-color-picker:select', attribute: 'background' },
+      { selector: '[changeBackgroundAlpha]', eventType: 'wje-input:input', attribute: 'backgroundAlpha' },
+      { selector: '[levelSelect]', eventType: 'wje-option:change', attribute: 'level' },
+    ];
+
+    elements.forEach(({ selector, eventType, attribute }) => {
+      handleInputOrSelectChange(selector, eventType, attribute);
+    });
+  }
 }
 
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-qr-code") || window.customElements.define("demo-qr-code", DemoQrCode);
+customElements.get('demo-qr-code') || window.customElements.define('demo-qr-code', DemoQrCode);

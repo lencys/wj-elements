@@ -46,7 +46,7 @@
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { Breadcrumb, Breadcrumbs, Icon, Label }
+    components: { Breadcrumb, Breadcrumbs, Icon, Label },
   });
 </script>
 ```

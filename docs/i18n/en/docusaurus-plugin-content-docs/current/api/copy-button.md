@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/copy-button/slots.md';
 
 <head>
   <title>Copy button | Copy to clipboard in one click</title>
-  <meta name="description" content="Copy button umožňuje jedným kliknutím skopírovať obsah do clipboardu. Podporované sú `input`, `textarea`, `wj-input`, `wj-label` a `a` element. " />
+  <meta
+    name="description"
+    content="Copy button umožňuje jedným kliknutím skopírovať obsah do clipboardu. Podporované sú `input`, `textarea`, `wj-input`, `wj-label` a `a` element. "
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -68,7 +71,7 @@ import Hyperlink from '@site/static/usage/v1/copy-button/hyperlink/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

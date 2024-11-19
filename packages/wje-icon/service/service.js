@@ -100,7 +100,7 @@ export const validateContent = (svgContent) => {
  * @example
  * const validElement = document.createElement('div');
  * isValid(validElement); // Returns true
- * 
+ *
  * const scriptElement = document.createElement('script');
  * isValid(scriptElement); // Returns false
  *
@@ -213,7 +213,7 @@ export const getUrl = (i) => {
   url = getName(i.name);
 
   if (url) {
-    return getNamedUrl(url, i.hasAttribute("filled"));
+    return getNamedUrl(url, i.hasAttribute('filled'));
   }
 
   return null;
@@ -262,7 +262,7 @@ export const getName = (iconName) => {
  * console.log(outlineUrl); // 'https://example.com/outline/settings.svg'
  */
 const getNamedUrl = (iconName, filled = false) => {
-  const path = `${filled ? "filled" : "outline"}/${iconName}.svg`;
+  const path = `${filled ? 'filled' : 'outline'}/${iconName}.svg`;
 
   let url = new URL(process.env.VITE_ICON_ASSETS_URL + path);
 

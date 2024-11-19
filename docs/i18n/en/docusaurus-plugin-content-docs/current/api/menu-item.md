@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/menu-item/slots.md';
 
 <head>
   <title>MenuItem | Element to display items in the Menu item</title>
-  <meta name="description" content="MenuItem element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo." />
+  <meta
+    name="description"
+    content="MenuItem element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -36,7 +39,7 @@ For examples of using MenuItem, go to the [**Menu**](../menu) element documentat
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

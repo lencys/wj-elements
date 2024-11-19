@@ -45,7 +45,7 @@ export default function ColorGenerator(props) {
           {'\n'}
           {steppedColors.map((color, i) => (
             <>
-              {'\t'}--wj-color-step-{(i + 1)}: <CodeColor color={color}>{color}</CodeColor>;{'\n'}
+              {'\t'}--wj-color-step-{i + 1}: <CodeColor color={color}>{color}</CodeColor>;{'\n'}
             </>
           ))}
           {'}'}

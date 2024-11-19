@@ -2,7 +2,6 @@
 title: Animácie
 ---
 
-
 <head>
   <title>WebJet Elements šablóny | Zmena predvolených tém a farieb pozadia aplikácie</title>
   <meta

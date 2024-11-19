@@ -4,7 +4,7 @@ import { Avatar, Image } from '@elements/react';
 function Example() {
   return (
     <>
-     <wje-avatar id="custom" label="Lukáš Ondrejček" initials></wje-avatar>
+      <wje-avatar id="custom" label="Lukáš Ondrejček" initials></wje-avatar>
     </>
   );
 }

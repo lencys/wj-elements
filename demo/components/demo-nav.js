@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -201,11 +201,11 @@ export default class DemoNav extends WJElement {
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(template, this.context);
 
-    const toggle = document.querySelector("#toggle");
-    const menu = document.querySelector("#custom");
+    const toggle = document.querySelector('#toggle');
+    const menu = document.querySelector('#custom');
 
-    toggle.addEventListener("wje-button:click", (e) => {
-      menu.toggleAttribute("collapse");
+    toggle.addEventListener('wje-button:click', (e) => {
+      menu.toggleAttribute('collapse');
     });
   }
 }
@@ -213,4 +213,4 @@ export default class DemoNav extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-nav") || window.customElements.define("demo-nav", DemoNav);
+customElements.get('demo-nav') || window.customElements.define('demo-nav', DemoNav);

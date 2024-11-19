@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -162,17 +162,17 @@ export default class DemoDropdown extends WJElement {
     codeSnippet.generateSnippet(template, this.context);
 
     // Simulácia oneskorenia načítania dát
-    this.querySelector("#custom-dropdown-basic").beforeShow = () => {
+    this.querySelector('#custom-dropdown-basic').beforeShow = () => {
       return new Promise((resolve) => {
         setTimeout(() => {
-          resolve("Dáta načítané");
-        }, 1000);  // Simuluje 1 sekundové oneskorenie
+          resolve('Dáta načítané');
+        }, 1000); // Simuluje 1 sekundové oneskorenie
       });
-    }
+    };
   }
 }
 
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-dropdown") || window.customElements.define("demo-dropdown", DemoDropdown);
+customElements.get('demo-dropdown') || window.customElements.define('demo-dropdown', DemoDropdown);

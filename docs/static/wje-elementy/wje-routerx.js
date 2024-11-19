@@ -1,37 +1,50 @@
 var ot = Object.defineProperty;
-var at = (r, t, e) => t in r ? ot(r, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[t] = e;
-var A = (r, t, e) => (at(r, typeof t != "symbol" ? t + "" : t, e), e);
-import ct from "./wje-element.js";
-import { r as ut } from "./router-links-FtZbFUto.js";
-var J = "/";
+var at = (r, t, e) => (t in r ? ot(r, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : (r[t] = e));
+var A = (r, t, e) => (at(r, typeof t != 'symbol' ? t + '' : t, e), e);
+import ct from './wje-element.js';
+import { r as ut } from './router-links-FtZbFUto.js';
+var J = '/';
 function ht(r, t, e, n) {
   for (var i = 0, s = n; s < e.length; ) {
-    if (e[s] === "\\") {
+    if (e[s] === '\\') {
       s += 2;
       continue;
     }
-    if (e[s] === t && (i--, i === 0))
-      return s + 1;
+    if (e[s] === t && (i--, i === 0)) return s + 1;
     e[s] === r && i++, s++;
   }
   return -1;
 }
 function lt(r, t) {
   t === void 0 && (t = {});
-  for (var e, n, i = [], s = (e = t.delimiter, e ?? J), c = (n = t.whitelist, n ?? void 0), o = 0, u = 0, a = "", h = !1; o < r.length; ) {
-    var g = "", m = "", f = "";
-    if (r[o] === "\\") {
-      o++, a += r[o++], h = !0;
+  for (
+    var e,
+      n,
+      i = [],
+      s = ((e = t.delimiter), e ?? J),
+      c = ((n = t.whitelist), n ?? void 0),
+      o = 0,
+      u = 0,
+      a = '',
+      h = !1;
+    o < r.length;
+
+  ) {
+    var g = '',
+      m = '',
+      f = '';
+    if (r[o] === '\\') {
+      o++, (a += r[o++]), (h = !0);
       continue;
     }
-    if (r[o] === ":") {
+    if (r[o] === ':') {
       for (; ++o < r.length; ) {
         var d = r.charCodeAt(o);
         if (
           // `0-9`
-          d >= 48 && d <= 57 || // `A-Z`
-          d >= 65 && d <= 90 || // `a-z`
-          d >= 97 && d <= 122 || // `_`
+          (d >= 48 && d <= 57) || // `A-Z`
+          (d >= 65 && d <= 90) || // `a-z`
+          (d >= 97 && d <= 122) || // `_`
           d === 95
         ) {
           m += r[o];
@@ -41,160 +54,204 @@ function lt(r, t) {
       }
       m || o--;
     }
-    if (r[o] === "(") {
-      var w = ht("(", ")", r, o);
+    if (r[o] === '(') {
+      var w = ht('(', ')', r, o);
       if (w > -1) {
-        if (f = r.slice(o + 1, w - 1), o = w, f[0] === "?")
-          throw new TypeError("Path pattern must be a capturing group");
+        if (((f = r.slice(o + 1, w - 1)), (o = w), f[0] === '?'))
+          throw new TypeError('Path pattern must be a capturing group');
         if (/\((?=[^?])/.test(f)) {
-          var p = f.replace(/\((?=[^?])/, "(?:");
-          throw new TypeError("Capturing groups are not allowed in pattern, use a non-capturing group: (" + p + ")");
+          var p = f.replace(/\((?=[^?])/, '(?:');
+          throw new TypeError('Capturing groups are not allowed in pattern, use a non-capturing group: (' + p + ')');
         }
       }
     }
-    if (m === "" && f === "") {
-      a += r[o++], h = !1;
+    if (m === '' && f === '') {
+      (a += r[o++]), (h = !1);
       continue;
     }
     if (a.length && !h) {
-      var y = a[a.length - 1], l = c ? c.indexOf(y) > -1 : !0;
-      l && (g = y, a = a.slice(0, -1));
+      var y = a[a.length - 1],
+        l = c ? c.indexOf(y) > -1 : !0;
+      l && ((g = y), (a = a.slice(0, -1)));
     }
-    a.length && (i.push(a), a = "");
-    var v = r[o] === "+" || r[o] === "*", E = r[o] === "?" || r[o] === "*", b = g || s;
-    (v || E) && o++, i.push({
-      name: m || u++,
-      prefix: g,
-      delimiter: b,
-      optional: E,
-      repeat: v,
-      pattern: f || "[^" + R(b === s ? b : b + s) + "]+?"
-    });
+    a.length && (i.push(a), (a = ''));
+    var v = r[o] === '+' || r[o] === '*',
+      E = r[o] === '?' || r[o] === '*',
+      b = g || s;
+    (v || E) && o++,
+      i.push({
+        name: m || u++,
+        prefix: g,
+        delimiter: b,
+        optional: E,
+        repeat: v,
+        pattern: f || '[^' + R(b === s ? b : b + s) + ']+?',
+      });
   }
   return a.length && i.push(a), i;
 }
 function R(r) {
-  return r.replace(/([.+*?=^!:${}()[\]|/\\])/g, "\\$1");
+  return r.replace(/([.+*?=^!:${}()[\]|/\\])/g, '\\$1');
 }
 function Z(r) {
-  return r && r.sensitive ? "" : "i";
+  return r && r.sensitive ? '' : 'i';
 }
 function ft(r, t) {
-  if (!t)
-    return r;
+  if (!t) return r;
   var e = r.source.match(/\((?!\?)/g);
   if (e)
     for (var n = 0; n < e.length; n++)
       t.push({
         name: n,
-        prefix: "",
-        delimiter: "",
+        prefix: '',
+        delimiter: '',
         optional: !1,
         repeat: !1,
-        pattern: ""
+        pattern: '',
       });
   return r;
 }
 function pt(r, t, e) {
-  var n = r.map(function(i) {
+  var n = r.map(function (i) {
     return G(i, t, e).source;
   });
-  return new RegExp("(?:" + n.join("|") + ")", Z(e));
+  return new RegExp('(?:' + n.join('|') + ')', Z(e));
 }
 function dt(r, t, e) {
   return mt(lt(r, e), t, e);
 }
 function mt(r, t, e) {
   e === void 0 && (e = {});
-  for (var n = e.strict, i = e.start, s = i === void 0 ? !0 : i, c = e.end, o = c === void 0 ? !0 : c, u = e.delimiter, a = u === void 0 ? J : u, h = e.encode, g = h === void 0 ? function(E) {
-    return E;
-  } : h, m = (typeof e.endsWith == "string" ? e.endsWith.split("") : e.endsWith || []).map(R).concat("$").join("|"), f = s ? "^" : "", d = 0, w = r; d < w.length; d++) {
+  for (
+    var n = e.strict,
+      i = e.start,
+      s = i === void 0 ? !0 : i,
+      c = e.end,
+      o = c === void 0 ? !0 : c,
+      u = e.delimiter,
+      a = u === void 0 ? J : u,
+      h = e.encode,
+      g =
+        h === void 0
+          ? function (E) {
+              return E;
+            }
+          : h,
+      m = (typeof e.endsWith == 'string' ? e.endsWith.split('') : e.endsWith || []).map(R).concat('$').join('|'),
+      f = s ? '^' : '',
+      d = 0,
+      w = r;
+    d < w.length;
+    d++
+  ) {
     var p = w[d];
-    if (typeof p == "string")
-      f += R(g(p));
+    if (typeof p == 'string') f += R(g(p));
     else {
-      var y = p.repeat ? "(?:" + p.pattern + ")(?:" + R(p.delimiter) + "(?:" + p.pattern + "))*" : p.pattern;
-      t && t.push(p), p.optional ? p.prefix ? f += "(?:" + R(p.prefix) + "(" + y + "))?" : f += "(" + y + ")?" : f += R(p.prefix) + "(" + y + ")";
+      var y = p.repeat ? '(?:' + p.pattern + ')(?:' + R(p.delimiter) + '(?:' + p.pattern + '))*' : p.pattern;
+      t && t.push(p),
+        p.optional
+          ? p.prefix
+            ? (f += '(?:' + R(p.prefix) + '(' + y + '))?')
+            : (f += '(' + y + ')?')
+          : (f += R(p.prefix) + '(' + y + ')');
     }
   }
-  if (o)
-    n || (f += "(?:" + R(a) + ")?"), f += m === "$" ? "$" : "(?=" + m + ")";
+  if (o) n || (f += '(?:' + R(a) + ')?'), (f += m === '$' ? '$' : '(?=' + m + ')');
   else {
-    var l = r[r.length - 1], v = typeof l == "string" ? l[l.length - 1] === a : (
-      // tslint:disable-next-line
-      l === void 0
-    );
-    n || (f += "(?:" + R(a) + "(?=" + m + "))?"), v || (f += "(?=" + R(a) + "|" + m + ")");
+    var l = r[r.length - 1],
+      v =
+        typeof l == 'string'
+          ? l[l.length - 1] === a
+          : // tslint:disable-next-line
+            l === void 0;
+    n || (f += '(?:' + R(a) + '(?=' + m + '))?'), v || (f += '(?=' + R(a) + '|' + m + ')');
   }
   return new RegExp(f, Z(e));
 }
 function G(r, t, e) {
   return r instanceof RegExp ? ft(r, t) : Array.isArray(r) ? pt(r, t, e) : dt(r, t, e);
 }
-const gt = (r, t, e) => (r[t] = e, r), vt = Array.isArray, O = Object.keys, L = (r) => r && (vt(r) ? r.slice(0) : C({}, r)), F = (r, t) => t.reduce((e, n) => r[n] === void 0 ? e : gt(e, n, r[n]), {}), H = (r, t) => {
-  const e = O(r);
-  return e.length === O(t).length && e.every((n) => t[n] === r[n]);
-}, C = Object.assign;
+const gt = (r, t, e) => ((r[t] = e), r),
+  vt = Array.isArray,
+  O = Object.keys,
+  L = (r) => r && (vt(r) ? r.slice(0) : C({}, r)),
+  F = (r, t) => t.reduce((e, n) => (r[n] === void 0 ? e : gt(e, n, r[n])), {}),
+  H = (r, t) => {
+    const e = O(r);
+    return e.length === O(t).length && e.every((n) => t[n] === r[n]);
+  },
+  C = Object.assign;
 function q(r, t, ...e) {
   if (!r) {
     let n = 0;
-    throw new Error(
-      "Invariant Violation: " + t.replace(/%s/g, () => e[n++])
-    );
+    throw new Error('Invariant Violation: ' + t.replace(/%s/g, () => e[n++]));
   }
 }
 function wt(r) {
   let t = [];
-  const e = {}, n = {};
-  r(function(u, a, h) {
+  const e = {},
+    n = {};
+  r(function (u, a, h) {
     let g;
-    if (q(!n[u], 'Route names must be unique, but route "%s" is declared multiple times', u), n[u] = !0, arguments.length === 1 && (a = {}), arguments.length === 2 && typeof a == "function" && (h = a, a = {}), typeof a.path != "string") {
-      const m = u.split(".");
+    if (
+      (q(!n[u], 'Route names must be unique, but route "%s" is declared multiple times', u),
+      (n[u] = !0),
+      arguments.length === 1 && (a = {}),
+      arguments.length === 2 && typeof a == 'function' && ((h = a), (a = {})),
+      typeof a.path != 'string')
+    ) {
+      const m = u.split('.');
       a.path = m[m.length - 1];
     }
-    h && (t = t.concat(u), h(), g = i(), t.splice(-1)), s({
-      name: u,
-      path: a.path,
-      routes: g || [],
-      options: a
-    });
+    h && ((t = t.concat(u)), h(), (g = i()), t.splice(-1)),
+      s({
+        name: u,
+        path: a.path,
+        routes: g || [],
+        options: a,
+      });
   });
   function i() {
     return e[c()] || [];
   }
   function s(o) {
     const u = c();
-    e[u] = e[u] || [], e[u].push(o);
+    (e[u] = e[u] || []), e[u].push(o);
   }
   function c() {
-    return t.join(".");
+    return t.join('.');
   }
   return i();
 }
 function X(r) {
   const t = [];
-  return r.forEach(({ name: e, children: n, ...i }) => {
-    if (typeof i.path != "string") {
-      const s = e.split(".");
-      i.path = s[s.length - 1];
-    }
-    t.push(
-      {
+  return (
+    r.forEach(({ name: e, children: n, ...i }) => {
+      if (typeof i.path != 'string') {
+        const s = e.split('.');
+        i.path = s[s.length - 1];
+      }
+      t.push({
         name: e,
         path: i.path,
         options: i,
-        routes: n ? X(n) : []
-      }
-    );
-  }), t;
+        routes: n ? X(n) : [],
+      });
+    }),
+    t
+  );
 }
-const yt = /:([a-zA-Z_$][a-zA-Z0-9_$?]*[?+*]?)/g, Et = /[+*?]$/g, Y = /\?(.+)/, D = {};
+const yt = /:([a-zA-Z_$][a-zA-Z0-9_$?]*[?+*]?)/g,
+  Et = /[+*?]$/g,
+  Y = /\?(.+)/,
+  D = {};
 function tt(r) {
   if (!(r in D)) {
-    const t = [], e = G(r, t);
+    const t = [],
+      e = G(r, t);
     D[r] = {
       matcher: e,
-      paramNames: t.map((n) => n.name)
+      paramNames: t.map((n) => n.name),
     };
   }
   return D[r];
@@ -203,30 +260,32 @@ function bt(r) {
   return tt(r).paramNames;
 }
 function Rt(r, t) {
-  const e = tt(r), n = e.matcher, i = e.paramNames, s = t.match(n);
-  if (!s)
-    return null;
+  const e = tt(r),
+    n = e.matcher,
+    i = e.paramNames,
+    s = t.match(n);
+  if (!s) return null;
   const c = {};
-  return i.forEach(function(o, u) {
-    c[o] = s[u + 1] && decodeURIComponent(s[u + 1]);
-  }), c;
+  return (
+    i.forEach(function (o, u) {
+      c[o] = s[u + 1] && decodeURIComponent(s[u + 1]);
+    }),
+    c
+  );
 }
 function Tt(r, t) {
-  return t = t || {}, r.replace(yt, function(e, n) {
-    const i = n.replace(Et, ""), s = n.slice(-1);
-    if (s === "?" || s === "*") {
-      if (t[i] == null)
-        return "";
-    } else
-      q(
-        t[i] != null,
-        "Missing '%s' parameter for path '%s'",
-        i,
-        r
-      );
-    let c = encodeURIComponent(t[i]);
-    return (s === "*" || s === "+") && (c = c.replaceAll("%2F", "/")), c;
-  });
+  return (
+    (t = t || {}),
+    r.replace(yt, function (e, n) {
+      const i = n.replace(Et, ''),
+        s = n.slice(-1);
+      if (s === '?' || s === '*') {
+        if (t[i] == null) return '';
+      } else q(t[i] != null, "Missing '%s' parameter for path '%s'", i, r);
+      let c = encodeURIComponent(t[i]);
+      return (s === '*' || s === '+') && (c = c.replaceAll('%2F', '/')), c;
+    })
+  );
 }
 function Lt(r, t) {
   const e = t.match(Y);
@@ -234,10 +293,10 @@ function Lt(r, t) {
 }
 function Ct(r, t, e) {
   const n = r.stringify(e, { indices: !1 });
-  return n ? et(t) + "?" + n : t;
+  return n ? et(t) + '?' + n : t;
 }
 function et(r) {
-  return r.replace(Y, "");
+  return r.replace(Y, '');
 }
 function rt(r, t, e) {
   return r.addEventListener(t, e), e;
@@ -247,18 +306,21 @@ function nt(r, t, e) {
 }
 class $t {
   constructor() {
-    this.handlers = [], this.checkUrl = this.checkUrl.bind(this), this.location = window.location, this.history = window.history;
+    (this.handlers = []),
+      (this.checkUrl = this.checkUrl.bind(this)),
+      (this.location = window.location),
+      (this.history = window.history);
   }
   // Set up all inheritable **Backbone.History** properties and methods.
   // Are we at the app root?
   atRoot() {
-    return this.location.pathname.replace(/[^\/]$/, "$&/") === this.root;
+    return this.location.pathname.replace(/[^\/]$/, '$&/') === this.root;
   }
   // Gets the true hash value. Cannot use location.hash directly due to bug
   // in Firefox where location.hash will always be decoded.
   getHash() {
     const t = this.location.href.match(/#(.*)$/);
-    return t ? t[1] : "";
+    return t ? t[1] : '';
   }
   // Get the cross-browser normalized URL fragment, either from the URL,
   // the hash, or the override.
@@ -266,31 +328,42 @@ class $t {
     if (t == null)
       if (this._hasPushState || !this._wantsHashChange || e) {
         t = decodeURI(this.location.pathname + this.location.search);
-        const n = this.root.replace(Ut, "");
+        const n = this.root.replace(Ut, '');
         t.indexOf(n) || (t = t.slice(n.length));
-      } else
-        t = this.getHash();
-    return t.replace(B, "");
+      } else t = this.getHash();
+    return t.replace(B, '');
   }
   // Start the hash change handling, returning `true` if the current URL matches
   // an existing route, and `false` otherwise.
   start(t = {}) {
-    this.started = !0, this.options = C({ root: "/" }, t), this.location = this.options.location || this.location, this.history = this.options.history || this.history, this.root = this.options.root, this._wantsHashChange = this.options.hashChange !== !1, this._wantsPushState = !!this.options.pushState, this._hasPushState = this._wantsPushState;
+    (this.started = !0),
+      (this.options = C({ root: '/' }, t)),
+      (this.location = this.options.location || this.location),
+      (this.history = this.options.history || this.history),
+      (this.root = this.options.root),
+      (this._wantsHashChange = this.options.hashChange !== !1),
+      (this._wantsPushState = !!this.options.pushState),
+      (this._hasPushState = this._wantsPushState);
     const e = this.getFragment();
-    this.root = `/${this.root}/`.replace(St, "/"), rt(window, this._hasPushState ? "popstate" : "hashchange", this.checkUrl), this.fragment = e;
+    (this.root = `/${this.root}/`.replace(St, '/')),
+      rt(window, this._hasPushState ? 'popstate' : 'hashchange', this.checkUrl),
+      (this.fragment = e);
     const n = this.location;
     if (this._wantsHashChange && this._wantsPushState) {
       if (!this._hasPushState && !this.atRoot())
-        return this.fragment = this.getFragment(null, !0), this.location.replace(`${this.root}#${this.fragment}`), !0;
-      this._hasPushState && this.atRoot() && n.hash && (this.fragment = this.getHash().replace(B, ""), this.history.replaceState({}, document.title, this.root + this.fragment));
+        return (this.fragment = this.getFragment(null, !0)), this.location.replace(`${this.root}#${this.fragment}`), !0;
+      this._hasPushState &&
+        this.atRoot() &&
+        n.hash &&
+        ((this.fragment = this.getHash().replace(B, '')),
+        this.history.replaceState({}, document.title, this.root + this.fragment));
     }
-    if (!this.options.silent)
-      return this.loadUrl();
+    if (!this.options.silent) return this.loadUrl();
   }
   // Disable Backbone.history, perhaps temporarily. Not useful in a real app,
   // but possibly useful for unit testing Routers.
   stop() {
-    nt(window, this._hasPushState ? "popstate" : "hashchange", this.checkUrl), this.started = !1;
+    nt(window, this._hasPushState ? 'popstate' : 'hashchange', this.checkUrl), (this.started = !1);
   }
   // Add a route to be tested when the fragment changes. Routes added later
   // may override previous routes.
@@ -300,18 +373,19 @@ class $t {
   // Checks the current URL to see if it has changed, and if it has,
   // calls `loadUrl`.
   checkUrl() {
-    if (this.getFragment() === this.fragment)
-      return !1;
+    if (this.getFragment() === this.fragment) return !1;
     this.loadUrl();
   }
   // Attempt to load the current URL fragment. If a route succeeds with a
   // match, returns `true`. If no defined routes matches the fragment,
   // returns `false`.
   loadUrl(t) {
-    return t = this.fragment = this.getFragment(t), this.handlers.some((e) => {
-      if (e.route.test(t))
-        return e.callback(t), !0;
-    });
+    return (
+      (t = this.fragment = this.getFragment(t)),
+      this.handlers.some((e) => {
+        if (e.route.test(t)) return e.callback(t), !0;
+      })
+    );
   }
   // Save a fragment into the hash history, or replace the URL state if the
   // 'replace' option is passed. You are responsible for properly URL-encoding
@@ -321,29 +395,24 @@ class $t {
   // route callback be fired (not usually desirable), or `replace: true`, if
   // you wish to modify the current URL without adding an entry to the history.
   update(t, e) {
-    if (!this.started)
-      return !1;
+    if (!this.started) return !1;
     (!e || e === !0) && (e = { trigger: !!e });
-    let n = this.root + (t = this.getFragment(t || ""));
-    if (t = t.replace(xt, ""), this.fragment !== t) {
-      if (this.fragment = t, t === "" && n !== "/" && (n = n.slice(0, -1)), this._hasPushState)
-        this.history[e.replace ? "replaceState" : "pushState"]({}, document.title, n);
-      else if (this._wantsHashChange)
-        this._updateHash(this.location, t, e.replace);
-      else
-        return this.location.assign(n);
-      if (e.trigger)
-        return this.loadUrl(t);
+    let n = this.root + (t = this.getFragment(t || ''));
+    if (((t = t.replace(xt, '')), this.fragment !== t)) {
+      if (((this.fragment = t), t === '' && n !== '/' && (n = n.slice(0, -1)), this._hasPushState))
+        this.history[e.replace ? 'replaceState' : 'pushState']({}, document.title, n);
+      else if (this._wantsHashChange) this._updateHash(this.location, t, e.replace);
+      else return this.location.assign(n);
+      if (e.trigger) return this.loadUrl(t);
     }
   }
   // Update the hash location, either replacing the current entry, or adding
   // a new one to the browser history.
   _updateHash(t, e, n) {
     if (n) {
-      const i = t.href.replace(/(javascript:|#).*$/, "");
+      const i = t.href.replace(/(javascript:|#).*$/, '');
       t.replace(`${i}#${e}`);
-    } else
-      t.hash = `#${e}`;
+    } else t.hash = `#${e}`;
   }
   // add some features to History
   // a generic callback for any changes
@@ -352,20 +421,29 @@ class $t {
   }
   // checks if the browser has pushstate support
   hasPushState() {
-    if (!this.started)
-      throw new Error("only available after LocationBar.start()");
+    if (!this.started) throw new Error('only available after LocationBar.start()');
     return this._hasPushState;
   }
 }
-const B = /^[#\/]|\s+$/g, St = /^\/+|\/+$/g, Ut = /\/$/, xt = /#.*$/;
+const B = /^[#\/]|\s+$/g,
+  St = /^\/+|\/+$/g,
+  Ut = /\/$/,
+  xt = /#.*$/;
 class Pt {
   constructor(t = {}) {
-    this.path = t.path || "", this.options = C({
-      pushState: !1,
-      root: "/"
-    }, t), this.locationBar = new $t(), this.locationBar.onChange((e) => {
-      this.handleURL(`/${e || ""}`);
-    }), this.locationBar.start(t);
+    (this.path = t.path || ''),
+      (this.options = C(
+        {
+          pushState: !1,
+          root: '/',
+        },
+        t
+      )),
+      (this.locationBar = new $t()),
+      this.locationBar.onChange((e) => {
+        this.handleURL(`/${e || ''}`);
+      }),
+      this.locationBar.start(t);
   }
   /**
    * Get the current URL
@@ -378,14 +456,14 @@ class Pt {
    * back to the router. Add a new entry in browser's history.
    */
   setURL(t, e = {}) {
-    this.path !== t && (this.path = t, this.locationBar.update(t, C({ trigger: !0 }, e)));
+    this.path !== t && ((this.path = t), this.locationBar.update(t, C({ trigger: !0 }, e)));
   }
   /**
    * Set the current URL without triggering any events
    * back to the router. Replace the latest entry in broser's history.
    */
   replaceURL(t, e = {}) {
-    this.path !== t && (this.path = t, this.locationBar.update(t, C({ trigger: !0, replace: !0 }, e)));
+    this.path !== t && ((this.path = t), this.locationBar.update(t, C({ trigger: !0, replace: !0 }, e)));
   }
   /**
    * Setup a URL change handler
@@ -401,9 +479,8 @@ class Pt {
   formatURL(t) {
     if (this.locationBar.hasPushState()) {
       let e = this.options.root;
-      return t !== "" && (e = e.replace(/\/$/, "")), e + t;
-    } else
-      return t[0] === "/" && (t = t.substr(1)), `#${t}`;
+      return t !== '' && (e = e.replace(/\/$/, '')), e + t;
+    } else return t[0] === '/' && (t = t.substr(1)), `#${t}`;
   }
   /**
    * When we use pushState with a custom root option,
@@ -414,7 +491,9 @@ class Pt {
    * - this method is public so that we could dispatch URLs without root in router
    */
   removeRoot(t) {
-    return this.options.pushState && this.options.root && this.options.root !== "/" ? t.replace(this.options.root, "") : t;
+    return this.options.pushState && this.options.root && this.options.root !== '/'
+      ? t.replace(this.options.root, '')
+      : t;
   }
   /**
    * Stop listening to URL changes and link clicks
@@ -432,18 +511,18 @@ class Pt {
       @private
      */
   handleURL(t) {
-    this.path = t, this.changeCallback && this.changeCallback(t);
+    (this.path = t), this.changeCallback && this.changeCallback(t);
   }
 }
 class _t {
   constructor({ path: t }) {
-    this.path = t || "";
+    this.path = t || '';
   }
   getURL() {
     return this.path;
   }
   setURL(t, e) {
-    this.path !== t && (this.path = t, this.handleURL(this.getURL(), e));
+    this.path !== t && ((this.path = t), this.handleURL(this.getURL(), e));
   }
   replaceURL(t, e) {
     this.path !== t && this.setURL(t, e);
@@ -452,7 +531,7 @@ class _t {
     this.changeCallback = t;
   }
   handleURL(t, e = {}) {
-    this.path = t, e = C({ trigger: !0 }, e), this.changeCallback && e.trigger && this.changeCallback(t);
+    (this.path = t), (e = C({ trigger: !0 }, e)), this.changeCallback && e.trigger && this.changeCallback(t);
   }
   removeRoot(t) {
     return t;
@@ -461,7 +540,8 @@ class _t {
     return t;
   }
 }
-const I = "TransitionRedirected", P = "TransitionCancelled";
+const I = 'TransitionRedirected',
+  P = 'TransitionCancelled';
 function W(r, t, e) {
   r.middleware.forEach((n) => {
     n.error && n.error(t, e);
@@ -469,50 +549,77 @@ function W(r, t, e) {
 }
 function k(r) {
   r = r || {};
-  const t = r.router, e = t.log, n = t.logError, i = r.path, s = r.match, c = s.routes, o = s.params, u = s.pathname, a = s.query, h = r.id, g = Date.now();
-  e("---"), e("Transition #" + h, "to", i), e("Transition #" + h, "routes:", c.map((l) => l.name)), e("Transition #" + h, "params:", o), e("Transition #" + h, "query:", a);
+  const t = r.router,
+    e = t.log,
+    n = t.logError,
+    i = r.path,
+    s = r.match,
+    c = s.routes,
+    o = s.params,
+    u = s.pathname,
+    a = s.query,
+    h = r.id,
+    g = Date.now();
+  e('---'),
+    e('Transition #' + h, 'to', i),
+    e(
+      'Transition #' + h,
+      'routes:',
+      c.map((l) => l.name)
+    ),
+    e('Transition #' + h, 'params:', o),
+    e('Transition #' + h, 'query:', a);
   let m, f;
-  const d = new Promise(function(l, v) {
-    m = l, f = v;
+  const d = new Promise(function (l, v) {
+    (m = l), (f = v);
   });
-  d.then(function() {
-    e("Transition #" + h, "completed in", Date.now() - g + "ms");
-  }).catch(function(l) {
-    l.type !== I && l.type !== P && (e("Transition #" + h, "FAILED"), n(l));
+  d.then(function () {
+    e('Transition #' + h, 'completed in', Date.now() - g + 'ms');
+  }).catch(function (l) {
+    l.type !== I && l.type !== P && (e('Transition #' + h, 'FAILED'), n(l));
   });
   let w = !1;
   const p = {
     id: h,
     prev: {
       routes: L(t.state.routes) || [],
-      path: t.state.path || "",
-      pathname: t.state.pathname || "",
+      path: t.state.path || '',
+      pathname: t.state.pathname || '',
       params: L(t.state.params) || {},
-      query: L(t.state.query) || {}
+      query: L(t.state.query) || {},
     },
     routes: L(c),
     path: i,
     pathname: u,
     params: L(o),
     query: L(a),
-    redirectTo: function(...l) {
+    redirectTo: function (...l) {
       return t.transitionTo(...l);
     },
-    retry: function() {
+    retry: function () {
       return t.transitionTo(i);
     },
-    cancel: function(l) {
-      t.state.activeTransition === p && (p.isCancelled || (t.state.activeTransition = null, p.isCancelled = !0, w = !0, l || (l = new Error(P), l.type = P), l.type === P && e("Transition #" + h, "cancelled"), l.type === I && e("Transition #" + h, "redirected"), t.middleware.forEach((v) => {
-        v.cancel && v.cancel(p, l);
-      }), f(l)));
+    cancel: function (l) {
+      t.state.activeTransition === p &&
+        (p.isCancelled ||
+          ((t.state.activeTransition = null),
+          (p.isCancelled = !0),
+          (w = !0),
+          l || ((l = new Error(P)), (l.type = P)),
+          l.type === P && e('Transition #' + h, 'cancelled'),
+          l.type === I && e('Transition #' + h, 'redirected'),
+          t.middleware.forEach((v) => {
+            v.cancel && v.cancel(p, l);
+          }),
+          f(l)));
     },
-    followRedirects: function() {
-      return d.catch(function(l) {
+    followRedirects: function () {
+      return d.catch(function (l) {
         return t.state.activeTransition ? t.state.activeTransition.followRedirects() : Promise.reject(l);
       });
     },
     then: d.then.bind(d),
-    catch: d.catch.bind(d)
+    catch: d.catch.bind(d),
   };
   t.middleware.forEach((l) => {
     l.before && l.before(p);
@@ -521,38 +628,46 @@ function k(r) {
     let E, b;
     if (!w)
       if (l < t.middleware.length) {
-        E = t.middleware[l], b = E.name || "anonymous", e("Transition #" + h, "resolving middleware:", b);
+        (E = t.middleware[l]), (b = E.name || 'anonymous'), e('Transition #' + h, 'resolving middleware:', b);
         let S;
         try {
-          S = E.resolve ? E.resolve(p, v) : v, q(p !== S, "Middleware %s returned a transition which resulted in a deadlock", b);
+          (S = E.resolve ? E.resolve(p, v) : v),
+            q(p !== S, 'Middleware %s returned a transition which resulted in a deadlock', b);
         } catch (T) {
-          return t.state.activeTransition = null, W(t, p, T), f(T);
+          return (t.state.activeTransition = null), W(t, p, T), f(T);
         }
-        Promise.resolve(S).then(function(T) {
-          y(l + 1, T);
-        }).catch(function(T) {
-          e("Transition #" + h, "resolving middleware:", b, "FAILED"), t.state.activeTransition = null, W(t, p, T), f(T);
-        });
+        Promise.resolve(S)
+          .then(function (T) {
+            y(l + 1, T);
+          })
+          .catch(function (T) {
+            e('Transition #' + h, 'resolving middleware:', b, 'FAILED'),
+              (t.state.activeTransition = null),
+              W(t, p, T),
+              f(T);
+          });
       } else
-        t.state = {
+        (t.state = {
           activeTransition: null,
           routes: c,
           path: i,
           pathname: u,
           params: o,
-          query: a
-        }, t.middleware.forEach((S) => {
-          S.done && S.done(p);
-        }), m();
+          query: a,
+        }),
+          t.middleware.forEach((S) => {
+            S.done && S.done(p);
+          }),
+          m();
   }
   return r.noop ? m() : Promise.resolve().then(() => y(0)), r.noop && (p.noop = !0), p;
 }
 function At(r, t) {
-  const e = It(r, "click", function(n, i) {
+  const e = It(r, 'click', function (n, i) {
     qt(n, i) && t(n, i);
   });
-  return function() {
-    Nt(r, "click", e);
+  return function () {
+    Nt(r, 'click', e);
   };
 }
 function Ot(r) {
@@ -560,15 +675,14 @@ function Ot(r) {
   r = { parentNode: r };
   const t = document;
   for (; (r = r.parentNode) && r !== document; ) {
-    if (((e = r.tagName) == null ? void 0 : e.toLowerCase()) === "a")
-      return r;
-    if (r === t)
-      return;
+    if (((e = r.tagName) == null ? void 0 : e.toLowerCase()) === 'a') return r;
+    if (r === t) return;
   }
 }
 function It(r, t, e) {
-  return rt(r, t, function(n) {
-    const i = n.target || n.srcElement, s = Ot(i);
+  return rt(r, t, function (n) {
+    const i = n.target || n.srcElement,
+      s = Ot(i);
     s && e(n, s);
   });
 }
@@ -576,37 +690,61 @@ function Nt(r, t, e) {
   nt(r, t, e);
 }
 function qt(r, t) {
-  if (Dt(r) !== 1 || r.metaKey || r.ctrlKey || r.shiftKey || r.defaultPrevented || t.target || t.getAttribute("data-bypass") !== null)
+  if (
+    Dt(r) !== 1 ||
+    r.metaKey ||
+    r.ctrlKey ||
+    r.shiftKey ||
+    r.defaultPrevented ||
+    t.target ||
+    t.getAttribute('data-bypass') !== null
+  )
     return;
-  const e = t.getAttribute("href");
-  if (!(!e || e.length === 0) && e[0] !== "#" && !(e.indexOf("http://") === 0 || e.indexOf("https://") === 0) && e.indexOf("mailto:") !== 0 && e.indexOf("javascript:") !== 0)
+  const e = t.getAttribute('href');
+  if (
+    !(!e || e.length === 0) &&
+    e[0] !== '#' &&
+    !(e.indexOf('http://') === 0 || e.indexOf('https://') === 0) &&
+    e.indexOf('mailto:') !== 0 &&
+    e.indexOf('javascript:') !== 0
+  )
     return !0;
 }
 function Dt(r) {
-  return r = r || window.event, r.which === null ? r.button : r.which;
+  return (r = r || window.event), r.which === null ? r.button : r.which;
 }
 function Q(r, t, e) {
-  e !== !0 && (r[t] = typeof e == "function" ? e : () => {
-  });
+  e !== !0 && (r[t] = typeof e == 'function' ? e : () => {});
 }
 var Mt = {
   parse(r) {
-    return r.split("&").reduce((t, e) => {
-      const n = e.split("=");
-      return t[n[0]] = decodeURIComponent(n[1]), t;
+    return r.split('&').reduce((t, e) => {
+      const n = e.split('=');
+      return (t[n[0]] = decodeURIComponent(n[1])), t;
     }, {});
   },
   stringify(r) {
-    return Object.keys(r).reduce((t, e) => (r[e] !== void 0 && t.push(e + "=" + encodeURIComponent(r[e])), t), []).join("&");
-  }
+    return Object.keys(r)
+      .reduce((t, e) => (r[e] !== void 0 && t.push(e + '=' + encodeURIComponent(r[e])), t), [])
+      .join('&');
+  },
 };
 class jt {
   constructor(t = {}) {
-    this.nextId = 1, this.state = {}, this.middleware = [], this.options = C({
-      location: "browser",
-      logError: !0,
-      qs: Mt
-    }, t), Q(this, "log", this.options.log), Q(this, "logError", this.options.logError), t.routes && this.map(t.routes);
+    (this.nextId = 1),
+      (this.state = {}),
+      (this.middleware = []),
+      (this.options = C(
+        {
+          location: 'browser',
+          logError: !0,
+          qs: Mt,
+        },
+        t
+      )),
+      Q(this, 'log', this.options.log),
+      Q(this, 'logError', this.options.logError),
+      t.routes && this.map(t.routes);
   }
   /**
    * Add a middleware
@@ -615,8 +753,12 @@ class jt {
    * @api public
    */
   use(t, e = {}) {
-    const n = typeof t == "function" ? { resolve: t } : t;
-    return typeof e.at == "number" ? this.middleware.splice(e.at, 0, n) : this.middleware.push(n), n.create && n.create(this), this;
+    const n = typeof t == 'function' ? { resolve: t } : t;
+    return (
+      typeof e.at == 'number' ? this.middleware.splice(e.at, 0, n) : this.middleware.push(n),
+      n.create && n.create(this),
+      this
+    );
   }
   /**
    * Add the route map
@@ -626,35 +768,45 @@ class jt {
    */
   map(t) {
     this.routes = Array.isArray(t) ? X(t) : wt(t);
-    const e = this.matchers = [], n = {}, i = {};
+    const e = (this.matchers = []),
+      n = {},
+      i = {};
     s({ routes: this.routes }, [], (c) => {
-      let o = c.reduce((a, h) => (
-        // reset if there's a leading slash, otherwise concat
-        // and keep resetting the trailing slash
-        (h.path[0] === "/" ? h.path : `${a}/${h.path}`).replace(/\/$/, "")
-      ), "");
-      o === "" && (o = "/");
+      let o = c.reduce(
+        (a, h) =>
+          // reset if there's a leading slash, otherwise concat
+          // and keep resetting the trailing slash
+          (h.path[0] === '/' ? h.path : `${a}/${h.path}`).replace(/\/$/, ''),
+        ''
+      );
+      o === '' && (o = '/');
       const u = c[c.length - 1];
       if (u.options.abstract) {
         i[o] = u.name;
         return;
       }
-      if (u.path === "") {
+      if (u.path === '') {
         let a;
         e.some((h) => {
-          if (h.path === o)
-            return a = h, !0;
-        }), a ? a.routes = c : i[o] && e.push({
-          routes: c,
-          name: i[o],
-          path: o
-        });
+          if (h.path === o) return (a = h), !0;
+        }),
+          a
+            ? (a.routes = c)
+            : i[o] &&
+              e.push({
+                routes: c,
+                name: i[o],
+                path: o,
+              });
       }
-      if (e.push({
-        routes: c,
-        name: u.name,
-        path: o
-      }), n[o] && u.path !== "")
+      if (
+        (e.push({
+          routes: c,
+          name: u.name,
+          path: o,
+        }),
+        n[o] && u.path !== '')
+      )
         throw new Error(`Routes ${n[o]} and ${u.name} have the same url path '${o}'`);
       n[o] = u.name;
     });
@@ -673,11 +825,14 @@ class jt {
    * @api public
    */
   listen(t) {
-    const e = this.location = this.createLocation(t || "");
-    return e.onChange((n) => {
-      const i = this.state.path;
-      this.dispatch(n).catch((s) => (s && s.type === P && this.location.replaceURL(i, { trigger: !1 }), s));
-    }), this.dispatch(e.getURL());
+    const e = (this.location = this.createLocation(t || ''));
+    return (
+      e.onChange((n) => {
+        const i = this.state.path;
+        this.dispatch(n).catch((s) => (s && s.type === P && this.location.replaceURL(i, { trigger: !1 }), s));
+      }),
+      this.dispatch(e.getURL())
+    );
   }
   /**
    * Transition to a different route. Passe in url or a route name followed by params and query
@@ -689,7 +844,7 @@ class jt {
    * @api public
    */
   transitionTo(t, e, n) {
-    return this.state.activeTransition ? this.replaceWith(t, e, n) : this.doTransition("setURL", t, e, n);
+    return this.state.activeTransition ? this.replaceWith(t, e, n) : this.doTransition('setURL', t, e, n);
   }
   /**
    * Like transitionTo, but doesn't leave an entry in the browser's history,
@@ -702,7 +857,7 @@ class jt {
    * @api public
    */
   replaceWith(t, e, n) {
-    return this.doTransition("replaceURL", t, e, n);
+    return this.doTransition('replaceURL', t, e, n);
   }
   /**
    * Create an href
@@ -714,11 +869,15 @@ class jt {
    * @api public
    */
   generate(t, e, n) {
-    q(this.location, "call .listen() before using .generate()");
+    q(this.location, 'call .listen() before using .generate()');
     let i;
-    if (n = n || {}, this.matchers.forEach((c) => {
-      c.name === t && (i = c);
-    }), !i)
+    if (
+      ((n = n || {}),
+      this.matchers.forEach((c) => {
+        c.name === t && (i = c);
+      }),
+      !i)
+    )
       throw new Error(`No route is named ${t}`);
     const s = Ct(this.options.qs, Tt(i.path, e), n);
     return this.location.formatURL(s);
@@ -728,9 +887,12 @@ class jt {
    * @api public
    */
   destroy() {
-    this.location && this.location.destroy && this.location.destroy(), this.state.activeTransition && this.state.activeTransition.cancel(), this.state = {}, this.middleware.forEach((t) => {
-      t.destroy && t.destroy(this);
-    });
+    this.location && this.location.destroy && this.location.destroy(),
+      this.state.activeTransition && this.state.activeTransition.cancel(),
+      (this.state = {}),
+      this.middleware.forEach((t) => {
+        t.destroy && t.destroy(this);
+      });
   }
   /**
    * Check if the given route/params/query combo is active
@@ -742,9 +904,11 @@ class jt {
    * @api public
    */
   isActive(t, e, n, i) {
-    const s = this.state.routes || [], c = this.state.params, o = this.state.query;
+    const s = this.state.routes || [],
+      c = this.state.params,
+      o = this.state.query;
     let u = s.some((a) => a.name === t) && (!i || s[s.length - 1].name === t);
-    return u = u && (!e || O(e).every((a) => c[a] === e[a])), u = u && (!n || O(n).every((a) => o[a] === n[a])), u;
+    return (u = u && (!e || O(e).every((a) => c[a] === e[a]))), (u = u && (!n || O(n).every((a) => o[a] === n[a]))), u;
   }
   /**
    * @api private
@@ -752,9 +916,14 @@ class jt {
   doTransition(t, e, n, i) {
     const s = this.location.getURL();
     let c = e;
-    c[0] !== "/" && (c = this.generate(e, n, i), c = c.replace(/^#/, "/")), this.options.pushState && (c = this.location.removeRoot(c));
+    c[0] !== '/' && ((c = this.generate(e, n, i)), (c = c.replace(/^#/, '/'))),
+      this.options.pushState && (c = this.location.removeRoot(c));
     const o = this.dispatch(c);
-    return o.catch((u) => (u && u.type === P && this.location.replaceURL(s, { trigger: !1 }), u)), this.location[t](c, { trigger: !1 }), o;
+    return (
+      o.catch((u) => (u && u.type === P && this.location.replaceURL(s, { trigger: !1 }), u)),
+      this.location[t](c, { trigger: !1 }),
+      o
+    );
   }
   /**
    * Match the path against the routes
@@ -764,34 +933,40 @@ class jt {
    * @api private
    */
   match(t) {
-    t = (t || "").replace(/\/$/, "") || "/";
-    let e, n = [];
-    const i = et(t), s = this.options.qs;
-    return this.matchers.some((o) => {
-      if (e = Rt(o.path, i), e)
-        return n = o.routes, !0;
-    }), {
-      routes: n.map(c),
-      params: e || {},
-      pathname: i,
-      query: Lt(s, t) || {}
-    };
+    t = (t || '').replace(/\/$/, '') || '/';
+    let e,
+      n = [];
+    const i = et(t),
+      s = this.options.qs;
+    return (
+      this.matchers.some((o) => {
+        if (((e = Rt(o.path, i)), e)) return (n = o.routes), !0;
+      }),
+      {
+        routes: n.map(c),
+        params: e || {},
+        pathname: i,
+        query: Lt(s, t) || {},
+      }
+    );
     function c(o) {
       return {
         name: o.name,
         path: o.path,
         params: F(e, bt(o.path)),
-        options: L(o.options)
+        options: L(o.options),
       };
     }
   }
   dispatch(t) {
-    const e = this.match(t), n = e.query, i = e.pathname, s = this.state.activeTransition;
-    if (s && s.pathname === i && H(s.query, n))
-      return s;
+    const e = this.match(t),
+      n = e.query,
+      i = e.pathname,
+      s = this.state.activeTransition;
+    if (s && s.pathname === i && H(s.query, n)) return s;
     if (s) {
       const o = new Error(I);
-      o.type = I, o.nextPath = t, s.cancel(o);
+      (o.type = I), (o.nextPath = t), s.cancel(o);
     }
     if (!s && this.state.pathname === i && H(this.state.query, n))
       return k({
@@ -799,15 +974,15 @@ class jt {
         path: t,
         match: e,
         noop: !0,
-        router: this
+        router: this,
       });
     const c = k({
       id: this.nextId++,
       path: t,
       match: e,
-      router: this
+      router: this,
     });
-    return this.state.activeTransition = c, c;
+    return (this.state.activeTransition = c), c;
   }
   /**
    * Create the default location.
@@ -819,13 +994,10 @@ class jt {
    */
   createLocation(t) {
     const e = this.options.location;
-    if (typeof e != "string")
-      return e;
-    if (e === "browser")
-      return new Pt(F(this.options, ["pushState", "root"]));
-    if (e === "memory")
-      return new _t({ path: t });
-    throw new Error("Location can be `browser`, `memory` or a custom implementation");
+    if (typeof e != 'string') return e;
+    if (e === 'browser') return new Pt(F(this.options, ['pushState', 'root']));
+    if (e === 'memory') return new _t({ path: t });
+    throw new Error('Location can be `browser`, `memory` or a custom implementation');
   }
   log(...t) {
     console.info(...t);
@@ -835,76 +1007,77 @@ class jt {
   }
 }
 function Ft(r, t, e) {
-  !t.hasAttribute("download") && !t.hasAttribute("data-phone-number") && (r.preventDefault(), e.transitionTo(e.location.removeRoot(t.getAttribute("href"))));
+  !t.hasAttribute('download') &&
+    !t.hasAttribute('data-phone-number') &&
+    (r.preventDefault(), e.transitionTo(e.location.removeRoot(t.getAttribute('href'))));
 }
 function Ht(r, t = document, e = Ft) {
   return At(t, (n, i) => e(n, i, r));
 }
 const Bt = Promise.resolve();
-let $ = /* @__PURE__ */ Object.create(null), M = /* @__PURE__ */ Object.create(null), j, U, x;
+let $ = /* @__PURE__ */ Object.create(null),
+  M = /* @__PURE__ */ Object.create(null),
+  j,
+  U,
+  x;
 function Wt(r) {
   const t = parseFloat(r);
   return r == t ? t : r;
 }
 class kt {
   constructor(t, e) {
-    this.key = t, this.format = e;
+    (this.key = t), (this.format = e);
   }
   value(t) {
     let e = this.getValue(t);
     if (e !== void 0) {
       const n = this.format;
-      n === "number" ? e = Wt(e) : typeof n == "function" && (e = n(e));
+      n === 'number' ? (e = Wt(e)) : typeof n == 'function' && (e = n(e));
     }
     return e;
   }
 }
 function Qt(r) {
-  j = r, U = r.options.outlet;
+  (j = r), (U = r.options.outlet);
 }
 function Vt() {
-  j = null, $ = /* @__PURE__ */ Object.create(null), M = /* @__PURE__ */ Object.create(null), x = null;
+  (j = null), ($ = /* @__PURE__ */ Object.create(null)), (M = /* @__PURE__ */ Object.create(null)), (x = null);
 }
 function Kt(r, t) {
   const e = Object.keys(r);
   return e.length === Object.keys(t).length && e.every((n) => t[n] === r[n]);
 }
 function zt(r) {
-  return (r.shadowRoot || r).querySelector(r.constructor.outlet || "wje-router-outlet");
+  return (r.shadowRoot || r).querySelector(r.constructor.outlet || 'wje-router-outlet');
 }
 function Jt() {
-  if (x)
-    return x;
-  if (!U)
-    return document.body;
-  if (x = typeof U == "string" ? document.querySelector(U) : U, !x)
+  if (x) return x;
+  if (!U) return document.body;
+  if (((x = typeof U == 'string' ? document.querySelector(U) : U), !x))
     throw new Error(`slick-router(wc): Invalid outlet option ${U}`);
   return x;
 }
 function Zt(r, t) {
   let e = r.routes[t];
   for (; e; ) {
-    if (e.options.component)
-      return $[e.name];
+    if (e.options.component) return $[e.name];
     e = r.routes[--t];
   }
 }
 function Gt(r, t) {
   let e, n, i;
   const s = Math.max(r.length, t.length);
-  for (e = 0; e < s && (n = r[e], i = t[e], !(!(n && i) || n.name !== i.name || !Kt(n.params, i.params))); e++)
-    ;
+  for (e = 0; e < s && ((n = r[e]), (i = t[e]), !(!(n && i) || n.name !== i.name || !Kt(n.params, i.params))); e++);
   return e;
 }
 async function N(r, t, e, n) {
   for (let i = 0; i < t.length; i++) {
     let s;
-    const { route: c, el: o } = t[i], u = c.options[`${e}${n}`];
-    if (typeof u == "function" && (s = await u(r), s === !1 && r.cancel()), r.isCancelled)
-      break;
+    const { route: c, el: o } = t[i],
+      u = c.options[`${e}${n}`];
+    if ((typeof u == 'function' && ((s = await u(r)), s === !1 && r.cancel()), r.isCancelled)) break;
     const a = o && o[`${e}Route${n}`];
-    if (typeof a == "function" && (s = await a.call(o, r), s === !1 && r.cancel()), r.isCancelled)
-      break;
+    if ((typeof a == 'function' && ((s = await a.call(o, r)), s === !1 && r.cancel()), r.isCancelled)) break;
   }
 }
 function Xt(r) {
@@ -913,31 +1086,50 @@ function Xt(r) {
 async function Yt(r) {
   const t = [];
   for (const e of r) {
-    let n = e.options.reuse ? $[e.name] : void 0, i = e.options.component;
-    !n && i && (typeof i == "function" && !(i.prototype instanceof HTMLElement) && (i = M[e.name] || (M[e.name] = Xt(await i(e)))), n = typeof i == "string" ? document.createElement(i) : new i(), $[e.name] = n, n.$router = j), t.push({ el: n, route: e });
+    let n = e.options.reuse ? $[e.name] : void 0,
+      i = e.options.component;
+    !n &&
+      i &&
+      (typeof i == 'function' &&
+        !(i.prototype instanceof HTMLElement) &&
+        (i = M[e.name] || (M[e.name] = Xt(await i(e)))),
+      (n = typeof i == 'string' ? document.createElement(i) : new i()),
+      ($[e.name] = n),
+      (n.$router = j)),
+      t.push({ el: n, route: e });
   }
   return t;
 }
 function V(r, t, e) {
-  e && Object.keys(e).forEach((n) => {
-    const i = e[n];
-    t[n] = i instanceof kt ? i.value(r) : i;
-  });
+  e &&
+    Object.keys(e).forEach((n) => {
+      const i = e[n];
+      t[n] = i instanceof kt ? i.value(r) : i;
+    });
 }
-const it = /* @__PURE__ */ new WeakSet(), K = /* @__PURE__ */ new WeakMap();
+const it = /* @__PURE__ */ new WeakSet(),
+  K = /* @__PURE__ */ new WeakMap();
 async function te(r, t, e) {
-  const { path: n, pathname: i, routes: s, params: c, query: o } = r, u = { path: n, pathname: i, routes: s, params: c, query: o };
+  const { path: n, pathname: i, routes: s, params: c, query: o } = r,
+    u = { path: n, pathname: i, routes: s, params: c, query: o };
   for (let a = 0; a < e; a++) {
-    const h = r.routes[a], g = $[h.name];
-    g && (g.$route = u, V(r, g, h.options.properties));
+    const h = r.routes[a],
+      g = $[h.name];
+    g && ((g.$route = u), V(r, g, h.options.properties));
   }
   for (let a = 0; a < t.length; a++) {
     const { el: h, route: g } = t[a];
     if (h) {
-      const m = Zt(r, e + a - 1), f = m ? zt(m) : Jt();
+      const m = Zt(r, e + a - 1),
+        f = m ? zt(m) : Jt();
       if (f) {
         const d = K.get(f) || f.firstElementChild;
-        d && (f.removeChild(d), it.add(d)), h.$route = u, V(r, h, g.options.properties), f.appendChild(h), K.set(f, h), await (h.updateComplete || Bt);
+        d && (f.removeChild(d), it.add(d)),
+          (h.$route = u),
+          V(r, h, g.options.properties),
+          f.appendChild(h),
+          K.set(f, h),
+          await (h.updateComplete || Bt);
       }
     }
   }
@@ -946,49 +1138,52 @@ function ee(r, t) {
   let e;
   for (let n = t.length - 1; n >= 0; n--) {
     const { route: i, el: s } = t[n];
-    r.some(({ route: c }) => c.name === i.name) || (s && (!e && !it.has(s) && s.remove(), e = !0), $[i.name] = void 0);
+    r.some(({ route: c }) => c.name === i.name) ||
+      (s && (!e && !it.has(s) && s.remove(), (e = !0)), ($[i.name] = void 0));
   }
 }
 async function re(r) {
-  const t = r.prev.routes, e = Gt(t, r.routes), n = [];
+  const t = r.prev.routes,
+    e = Gt(t, r.routes),
+    n = [];
   for (let s = t.length - 1; s >= e; s--) {
     const c = t[s];
     n.push({ el: $[c.name], route: c });
   }
-  if (await N(r, n, "before", "Leave"), r.isCancelled)
-    return;
+  if ((await N(r, n, 'before', 'Leave'), r.isCancelled)) return;
   const i = await Yt(r.routes.slice(e));
-  await N(r, i, "before", "Enter"), !r.isCancelled && (await te(r, i, e), ee(i, n), r.activated = i, r.deactivated = n);
+  await N(r, i, 'before', 'Enter'),
+    !r.isCancelled && (await te(r, i, e), ee(i, n), (r.activated = i), (r.deactivated = n));
 }
 function ne(r) {
-  N(r, r.deactivated, "after", "Leave"), N(r, r.activated, "after", "Enter");
+  N(r, r.deactivated, 'after', 'Leave'), N(r, r.activated, 'after', 'Enter');
 }
 const ie = {
   create: Qt,
   destroy: Vt,
   resolve: re,
-  done: ne
+  done: ne,
 };
 let st;
 function _(r, t) {
   window.dispatchEvent(new CustomEvent(`${st}${r}`, { detail: t }));
 }
 const se = {
-  create: function(r) {
-    st = r.options.eventPrefix || "router-";
+  create: function (r) {
+    st = r.options.eventPrefix || 'router-';
   },
-  before: function(r) {
-    _("before:transition", { transition: r });
+  before: function (r) {
+    _('before:transition', { transition: r });
   },
-  done: function(r) {
-    _("transition", { transition: r });
+  done: function (r) {
+    _('transition', { transition: r });
   },
-  cancel: function(r, t) {
-    t.type !== "TransitionRedirected" && _("abort", { transition: r, error: t });
+  cancel: function (r, t) {
+    t.type !== 'TransitionRedirected' && _('abort', { transition: r, error: t });
   },
-  error: function(r, t) {
-    _("abort", { transition: r, error: t }), _("error", { transition: r, error: t });
-  }
+  error: function (r, t) {
+    _('abort', { transition: r, error: t }), _('error', { transition: r, error: t });
+  },
 };
 class z extends ct {
   /**
@@ -998,23 +1193,30 @@ class z extends ct {
    */
   constructor() {
     super();
-    A(this, "className", "Routerx");
+    A(this, 'className', 'Routerx');
     /**
      * Sets the breadcrumb for the transition.
      *
      * @param {Object} transition - The transition.
      */
-    A(this, "setBreadcrumb", (e) => {
+    A(this, 'setBreadcrumb', (e) => {
       let n = [
-        ...e.routes.filter((i) => "breadcrumb" in i.options).map((i, s) => {
-          var c, o;
-          return {
-            name: i.options.breadcrumbPath || i.name,
-            text: i.options.breadcrumb instanceof Function ? (o = (c = i.options).breadcrumb) == null ? void 0 : o.call(c, e) : i.options.breadcrumb,
-            params: { ...i.params, ...e.params },
-            path: this.router.generate(i.name, { ...i.params, ...e.params })
-          };
-        })
+        ...e.routes
+          .filter((i) => 'breadcrumb' in i.options)
+          .map((i, s) => {
+            var c, o;
+            return {
+              name: i.options.breadcrumbPath || i.name,
+              text:
+                i.options.breadcrumb instanceof Function
+                  ? (o = (c = i.options).breadcrumb) == null
+                    ? void 0
+                    : o.call(c, e)
+                  : i.options.breadcrumb,
+              params: { ...i.params, ...e.params },
+              path: this.router.generate(i.name, { ...i.params, ...e.params }),
+            };
+          }),
       ];
       e.breadcrumbs = n;
     });
@@ -1023,7 +1225,7 @@ class z extends ct {
      *
      * @param {Object} transition - The transition.
      */
-    A(this, "resetScrollPosition", (e) => {
+    A(this, 'resetScrollPosition', (e) => {
       window.scrollTo(0, 0);
     });
   }
@@ -1040,20 +1242,30 @@ class z extends ct {
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = "open";
+    this.isShadowRoot = 'open';
   }
   /**
    * Sets up the router after the component is drawn.
    */
   afterDraw() {
-    const e = this.outerHTML, s = new DOMParser().parseFromString(e, "text/html").querySelector("wje-router"), c = this.parseElement(s).root;
-    this.router = new jt({
-      outlet: this.outlet || "wje-router-outlet",
+    const e = this.outerHTML,
+      s = new DOMParser().parseFromString(e, 'text/html').querySelector('wje-router'),
+      c = this.parseElement(s).root;
+    (this.router = new jt({
+      outlet: this.outlet || 'wje-router-outlet',
       log: !1,
       logError: !1,
-      root: this.root || "/",
-      pushState: !0
-    }), this.router.map(c), this.router.use(this.setBreadcrumb), this.router.use(ie), this.router.use(ut), this.router.use(se), this.router.use(this.resetScrollPosition), this.router.listen(), this.unbindIntercept = Ht(this.router);
+      root: this.root || '/',
+      pushState: !0,
+    })),
+      this.router.map(c),
+      this.router.use(this.setBreadcrumb),
+      this.router.use(ie),
+      this.router.use(ut),
+      this.router.use(se),
+      this.router.use(this.resetScrollPosition),
+      this.router.listen(),
+      (this.unbindIntercept = Ht(this.router));
   }
   /**
    * Parses an element and returns an object representation.
@@ -1062,18 +1274,27 @@ class z extends ct {
    * @returns {Object} The object representation of the element.
    */
   parseElement(e) {
-    const n = {}, i = e.attributes;
+    const n = {},
+      i = e.attributes;
     for (let o = 0; o < i.length; o++) {
-      const u = i[o].name, a = i[o].value;
-      u === "component" && a.indexOf(".js") > -1 ? n.component = () => import(
-        /* @vite-ignore */
-        a
-      ) : u !== "shadow" && (n[u] = a);
+      const u = i[o].name,
+        a = i[o].value;
+      u === 'component' && a.indexOf('.js') > -1
+        ? (n.component = () =>
+            import(
+              /* @vite-ignore */
+              a
+            ))
+        : u !== 'shadow' && (n[u] = a);
     }
     const s = [];
-    return Array.from(e.children).forEach((o) => {
-      s.push(this.parseElement(o));
-    }), s.length > 0 && e.tagName === "WJ-ROUTE" ? n.children = s : n.root = s, n;
+    return (
+      Array.from(e.children).forEach((o) => {
+        s.push(this.parseElement(o));
+      }),
+      s.length > 0 && e.tagName === 'WJ-ROUTE' ? (n.children = s) : (n.root = s),
+      n
+    );
   }
   /**
    * Cleans up before the component is disconnected.
@@ -1082,7 +1303,5 @@ class z extends ct {
     this.unbindIntercept(), this.router.destroy();
   }
 }
-z.define("wje-router", z);
-export {
-  z as default
-};
+z.define('wje-router', z);
+export { z as default };

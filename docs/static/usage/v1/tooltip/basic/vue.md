@@ -1,6 +1,6 @@
 ```html
 <template>
-  <wje-tooltip content="Som najkrajsi tooltip hore"  offset="2">
+  <wje-tooltip content="Som najkrajsi tooltip hore" offset="2">
     <wje-button size="large">Top</wje-button>
   </wje-tooltip>
 

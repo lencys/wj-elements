@@ -1,0 +1,9 @@
+.cache
+.vite
+dist
+docs
+experimental-packages
+node_modules
+package.json
+package-lock.json
+

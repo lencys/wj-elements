@@ -13,15 +13,15 @@ export function formatDate(input, format) {
   }
 
   const map = {
-    'yyyy': date.getFullYear(),
-    'MM': String(date.getMonth() + 1).padStart(2, '0'), // Mesiace sú indexované od 0
-    'dd': String(date.getDate()).padStart(2, '0'),
-    'HH': String(date.getHours()).padStart(2, '0'),
-    'mm': String(date.getMinutes()).padStart(2, '0'),
-    'ss': String(date.getSeconds()).padStart(2, '0'),
-    'MMMM': date.toLocaleString('en-US', { month: 'long' }), // Full month name
-    'MMM': date.toLocaleString('en-US', { month: 'short' })  // Short month name
+    yyyy: date.getFullYear(),
+    MM: String(date.getMonth() + 1).padStart(2, '0'), // Mesiace sú indexované od 0
+    dd: String(date.getDate()).padStart(2, '0'),
+    HH: String(date.getHours()).padStart(2, '0'),
+    mm: String(date.getMinutes()).padStart(2, '0'),
+    ss: String(date.getSeconds()).padStart(2, '0'),
+    MMMM: date.toLocaleString('en-US', { month: 'long' }), // Full month name
+    MMM: date.toLocaleString('en-US', { month: 'short' }), // Short month name
   };
 
-  return format.replace(/yyyy|MM|dd|HH|mm|ss|MMMM|MMM/g, matched => map[matched]);
+  return format.replace(/yyyy|MM|dd|HH|mm|ss|MMMM|MMM/g, (matched) => map[matched]);
 }

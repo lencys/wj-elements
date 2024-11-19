@@ -1,6 +1,6 @@
-import { default as WJElement } from "../wje-element/element.js";
-import { getHsl, getInitials } from "./service/service.js";
-import styles from "./styles/styles.css?inline";
+import { default as WJElement } from '../wje-element/element.js';
+import { getHsl, getInitials } from './service/service.js';
+import styles from './styles/styles.css?inline';
 
 /**
  * @summary This class represents an Avatar element, extending the WJElement class.
@@ -22,82 +22,81 @@ import styles from "./styles/styles.css?inline";
  * @tag wje-avatar
  */
 export default class Avatar extends WJElement {
+  /**
+   * Avatar class constructor.
+   */
+  constructor() {
+    super();
+  }
 
-    /**
-     * Avatar class constructor.
-     */
-    constructor() {
-        super();
+  /**
+   * Class name for the Avatar element.
+   */
+  className = 'Avatar';
+
+  /**
+   * Getter for cssStyleSheet.
+   * @returns {string} styles
+   */
+  static get cssStyleSheet() {
+    return styles;
+  }
+
+  /**
+   * Method to setup attributes.
+   */
+  setupAttributes() {
+    this.isShadowRoot = 'open';
+  }
+
+  /**
+   * Method to draw the avatar element and return a document fragment.
+   * @returns {object} fragment - The document fragment
+   */
+  draw() {
+    let fragment = document.createDocumentFragment();
+
+    let element = document.createElement('div');
+    element.setAttribute('part', 'native');
+    element.classList.add('native-avatar');
+
+    let slot = document.createElement('slot');
+
+    element.appendChild(slot);
+
+    if (this.hasAttribute('initials')) {
+      let initials = getInitials(this.label);
+
+      this.setAttribute('style', `--wje-avatar-background-color: ${getHsl(initials)}`);
+      element.innerText = initials;
+    } else {
+      let slotIcon = document.createElement('slot');
+      slotIcon.setAttribute('name', 'icon');
+
+      element.appendChild(slotIcon);
     }
 
-    /**
-     * Class name for the Avatar element.
-     */
-    className = "Avatar";
+    let status = document.createElement('slot');
+    status.setAttribute('name', 'status');
+    status.setAttribute('part', 'status');
 
-    /**
-     * Getter for cssStyleSheet.
-     * @returns {string} styles
-     */
-    static get cssStyleSheet() {
-        return styles;
-    }
+    let secondary = document.createElement('slot');
+    secondary.setAttribute('name', 'secondary');
+    secondary.setAttribute('part', 'secondary');
 
-    /**
-     * Method to setup attributes.
-     */
-    setupAttributes() {
-        this.isShadowRoot = "open";
-    }
+    element.appendChild(status);
+    element.appendChild(secondary);
 
-    /**
-     * Method to draw the avatar element and return a document fragment.
-     * @returns {object} fragment - The document fragment
-     */
-    draw() {
-        let fragment = document.createDocumentFragment();
+    fragment.appendChild(element);
 
-        let element = document.createElement("div");
-        element.setAttribute("part", "native");
-        element.classList.add("native-avatar");
+    return fragment;
+  }
 
-        let slot = document.createElement("slot");
-
-        element.appendChild(slot);
-
-        if(this.hasAttribute("initials")) {
-            let initials = getInitials(this.label);
-
-            this.setAttribute("style", `--wje-avatar-background-color: ${getHsl(initials)}`);
-            element.innerText = initials;
-        } else {
-            let slotIcon = document.createElement("slot");
-            slotIcon.setAttribute("name", "icon");
-
-            element.appendChild(slotIcon);
-        }
-
-        let status = document.createElement("slot");
-        status.setAttribute("name", "status");
-        status.setAttribute("part", "status");
-
-        let secondary = document.createElement("slot");
-        secondary.setAttribute("name", "secondary");
-        secondary.setAttribute("part", "secondary");
-
-        element.appendChild(status);
-        element.appendChild(secondary);
-
-        fragment.appendChild(element)
-
-        return fragment;
-    }
-
-    /**
-     * Method to check if the avatar is an image.
-     * @returns {boolean} - True if the avatar is an image, false otherwise
-     */
-    isImage(){
-        return this.getElementsByTagName("wje-img").length > 0;
-    }
+  /**
+   * Method to check if the avatar is an image.
+   * @returns {boolean} - True if the avatar is an image, false otherwise
+   */
+  isImage() {
+    return this.getElementsByTagName('wje-img').length > 0;
+  }
 }

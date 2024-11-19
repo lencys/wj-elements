@@ -7,11 +7,11 @@
 </wje-reorder>
 
 <script lang="ts">
-    import { Reorder } from '@elements/vue';
-    import { defineComponent } from 'vue';
+  import { Reorder } from '@elements/vue';
+  import { defineComponent } from 'vue';
 
-    export default defineComponent({
-        components: { Reorder },
-    });
+  export default defineComponent({
+    components: { Reorder },
+  });
 </script>
 ```

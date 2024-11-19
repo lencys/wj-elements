@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/tab-group/slots.md';
 
 <head>
   <title>TabGroup | Tab-based navigation</title>
-  <meta name="description" content="TabGroup zobrazuje navigáciu založenú na záložkách, ktorá umožňuje používateľom prepínať sa a zobrazovať rôzne časti obsahu aplikácie bez potreby prechádzať na inú stránku." />
+  <meta
+    name="description"
+    content="TabGroup zobrazuje navigáciu založenú na záložkách, ktorá umožňuje používateľom prepínať sa a zobrazovať rôzne časti obsahu aplikácie bez potreby prechádzať na inú stránku."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -61,7 +64,7 @@ import Bottom from '@site/static/usage/v1/tab-group/bottom/index.md';
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

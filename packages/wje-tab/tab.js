@@ -1,6 +1,5 @@
-import Tab from "./tab.element.js";
+import Tab from './tab.element.js';
 
 export default Tab;
 
-Tab.define("wje-tab", Tab);
-
+Tab.define('wje-tab', Tab);

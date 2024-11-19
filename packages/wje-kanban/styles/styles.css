@@ -41,7 +41,7 @@ h4 {
   border: 1px solid #ddd;
   margin-bottom: 5px;
   padding: 8px 10px;
-  color: #000
+  color: #000;
 }
 
 .card:hover {
@@ -49,7 +49,7 @@ h4 {
 }
 
 .dragging {
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   transform: rotate(-2deg);
   opacity: 0.5;
   position: relative;
@@ -67,8 +67,8 @@ h4 {
 .pool-header {
   display: flex;
   align-items: center;
-  margin-bottom: .25rem;
-  gap: 0 .25rem;
+  margin-bottom: 0.25rem;
+  gap: 0 0.25rem;
   wje-checkbox {
     margin: 0;
   }

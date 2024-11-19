@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -126,10 +126,10 @@ export default class DemoTab extends WJElement {
 
   afterDraw(context, store, params) {
     window.addEventListener('hashchange', (e) => {
-      let activeTabName = location.hash.replace("#", "");
+      let activeTabName = location.hash.replace('#', '');
       let tab = context.querySelector('#custom');
 
-      if(tab.getPanelAllName().includes(activeTabName)) {
+      if (tab.getPanelAllName().includes(activeTabName)) {
         tab.setActiveTab(activeTabName);
       }
     });
@@ -142,4 +142,4 @@ export default class DemoTab extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-tab") || window.customElements.define("demo-tab", DemoTab);
+customElements.get('demo-tab') || window.customElements.define('demo-tab', DemoTab);

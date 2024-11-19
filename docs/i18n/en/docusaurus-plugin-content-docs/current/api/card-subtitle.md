@@ -11,7 +11,10 @@ import Slots from '@ionic-internal/component-api/v1/card-subtitle/slots.md';
 
 <head>
   <title>Card Subtitle | Supplementary or secondary text Card</title>
-  <meta name="description" content="Element Card subtitle je komponent navrhnutý na použitie v rámci elementu Card Header na zobrazenie doplnkového alebo sekundárneho textu, čím používateľovi poskytuje dodatočný kontext alebo informácie súvisiace s hlavným obsahom karty." />
+  <meta
+    name="description"
+    content="Element Card subtitle je komponent navrhnutý na použitie v rámci elementu Card Header na zobrazenie doplnkového alebo sekundárneho textu, čím používateľovi poskytuje dodatočný kontext alebo informácie súvisiace s hlavným obsahom karty."
+  />
 </head>
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
@@ -34,7 +37,7 @@ For more information on using Card Subtitle, navigate to the [**Card**](../card)
 
 ## Methods
 
-<Methods/>
+<Methods />
 
 ## CSS Shadow Parts
 

@@ -1,5 +1,5 @@
-import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "../assets/js/code-snippet-builder.js";
+import WJElement from '../../dist/wje-element.js';
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
@@ -87,10 +87,10 @@ export default class DemoToolbar extends WJElement {
     this.objs = transition.breadcrumbs;
 
     this.objs?.unshift({
-      "name": "home",
-      "text": '<wje-icon slot="start" name="home"></wje-icon>',
-      "params": {},
-      "path": "/"
+      name: 'home',
+      text: '<wje-icon slot="start" name="home"></wje-icon>',
+      params: {},
+      path: '/',
     });
   }
 
@@ -98,10 +98,10 @@ export default class DemoToolbar extends WJElement {
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(template, this.context);
 
-    const breadcrumbs = this.querySelector("#custom-dynamic");
+    const breadcrumbs = this.querySelector('#custom-dynamic');
     this.objs?.forEach((obj) => {
-      let breadcrumb = document.createElement("wje-breadcrumb");
-      breadcrumb.setAttribute("route", obj.name);
+      let breadcrumb = document.createElement('wje-breadcrumb');
+      breadcrumb.setAttribute('route', obj.name);
       breadcrumb.innerHTML = `${obj.text}<wje-icon slot="separator" name="minus" size="small" class="custom"></wje-icon>`;
 
       breadcrumbs.appendChild(breadcrumb);
@@ -113,4 +113,4 @@ export default class DemoToolbar extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("demo-toolbar") || window.customElements.define("demo-toolbar", DemoToolbar);
+customElements.get('demo-toolbar') || window.customElements.define('demo-toolbar', DemoToolbar);
