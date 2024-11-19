@@ -12,10 +12,10 @@ export default class WJElement extends HTMLElement {
    * Initializes a new instance of the WJElement class.
    */
 
-  constructor() {
+  constructor(customTemplate) {
     super();
 
-    this.template = template;
+    this.template = customTemplate || template;
 
     this.isAttached = false;
     this.service = new UniversalService({
@@ -52,36 +52,63 @@ export default class WJElement extends HTMLElement {
     this.drawingStatus = this.drawingStatuses.CREATED;
   }
 
+// static getKeys() {
+//   let key = [];
+//   if (this.hasAttribute('permission')) {
+//     key = this.permission.split(',');
+//   }
+//
+//   return key;
+// }
+
+  /**
+   * Sets the value of the 'permission' attribute.
+   * @param {string[]} value The value to set for the 'permission' attribute.
+   */
+  set permission(value) {
+    this.setAttribute('permission', value.join(','));
+  }
+
   /**
    * Gets the value of the 'permission-check' attribute.
-   * @returns The value of the 'permission-check' attribute or null if not set.
+   * @returns {string[]} The value of the 'permission' attribute.
    */
   get permission() {
-    return this.getAttribute('permission-check');
+    return this.getAttribute('permission')?.split(',') || [];
   }
 
   /**
    * Sets the 'permission-check' attribute.
-   * @param value The value to set for the 'permission-check' attribute.
+   * @param {boolean} value The value to set for the 'permission-check' attribute.
    */
   set isPermissionCheck(value) {
-    return this.setAttribute('permission-check', 'permission-check');
+    if(value)
+      this.setAttribute('permission-check', '');
+    else
+      this.removeAttribute('permission-check');
   }
 
   /**
    * Checks if the 'permission-check' attribute is present.
-   * @returns True if the 'permission-check' attribute is present.
+   * @returns {boolean} True if the 'permission-check' attribute is present.
    */
   get isPermissionCheck() {
     return this.hasAttribute('permission-check');
   }
 
+  set hide(value) {
+    if(value)
+      this.setAttribute('hide', '');
+    else
+      this.removeAttribute('hide');
+  }
+
   /**
    * Checks if the 'show' attribute is present.
-   * @returns True if the 'show' attribute is present.
+   * @returns {boolean} True if the 'show' attribute is present.
    */
-  get isShow() {
-    return this.hasAttribute('show');
+  get hide() {
+    return this.hasAttribute('hide');
   }
 
   /**
@@ -460,16 +487,12 @@ export default class WJElement extends HTMLElement {
 
     this.context.append(this.template.content.cloneNode(true));
 
-    if (this.isPermissionCheck || this.isShow) {
-      if (WjePermissionsApi.isPermissionFulfilled.bind(this)(this.permission)) {
-        return this._resolveRender();
-      } else {
-        this.remove();
-        return Promise.resolve();
-      }
-    } else {
-      return this._resolveRender();
+    if (this.hide || (this.isPermissionCheck && !WjePermissionsApi.isPermissionFulfilled(this.permission))) {
+      this.remove();
+      return Promise.resolve();
     }
+
+    return this._resolveRender();
   }
 
   /**

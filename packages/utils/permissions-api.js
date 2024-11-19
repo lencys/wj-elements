@@ -1,6 +1,8 @@
 export class WjePermissionsApi {
+  static _permissionKey = 'permissions';
+
   constructor() {
-    this._permissionKey = 'permissions';
+
   }
 
   /**
@@ -24,7 +26,7 @@ export class WjePermissionsApi {
    * @param value
    */
   static set permissions(value) {
-    window.localStorage.setItem(WjePermissionsApi.permissionKey, value);
+    window.localStorage.setItem(WjePermissionsApi.permissionKey, JSON.stringify(value) );
   }
 
   /**
@@ -32,7 +34,7 @@ export class WjePermissionsApi {
    * @returns {string[]}
    */
   static get permissions() {
-    return window.localStorage.getItem(WjePermissionsApi.permissionKey) || [];
+    return JSON.parse(window.localStorage.getItem(WjePermissionsApi.permissionKey)) || [];
   }
 
   /**
@@ -45,35 +47,10 @@ export class WjePermissionsApi {
   }
 
   /**
-   * Returns the keys for the permission check.
-   * @returns {string[]}
-   */
-  static getKeys() {
-    let key = [];
-    if (this.hasAttribute('permission-check')) {
-      key = this.getAttribute('permission-check').split(',');
-    }
-
-    return key;
-  }
-
-  /**
-   * Checks if the component should be shown.
-   * @returns {boolean}
-   */
-  static shouldShow() {
-    return this.hasAttribute('show') && JSON.parse(this.getAttribute('show'));
-  }
-
-  /**
    * Checks if the permission is fulfilled.
    * @returns {boolean}
    */
-  static isPermissionFulfilled() {
-    return (
-      WjePermissionsApi.getKeys
-        .bind(this)()
-        .some((perm) => WjePermissionsApi.permissions.includes(perm)) || WjePermissionsApi.shouldShow.bind(this)()
-    );
+  static isPermissionFulfilled(permissions) {
+    return permissions.some((perm) => WjePermissionsApi.permissions.includes(perm));
   }
 }
