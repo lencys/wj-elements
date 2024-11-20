@@ -150,13 +150,22 @@ template.innerHTML = `
   </div>`;
 
 export default class DemoDialog extends WJElement {
-  constructor() {
-    super(template);
+   constructor() {
+    super();
+  }
+
+  /**
+   * Returns the template for the component.
+   * @static
+   * @returns {HTMLElement} The template element
+   */
+  static get customTemplate() {
+    return template;
   }
 
   afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, this.context);
+    codeSnippet.generateSnippet(this.context);
 
     this.querySelectorAll('wje-button').forEach((button) => {
       if (button.classList.contains('close')) {

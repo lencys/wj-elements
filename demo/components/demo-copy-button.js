@@ -77,13 +77,22 @@ template.innerHTML = `<h1>Copy Button</h1>
     </div>`;
 
 export default class DemoCopyButton extends WJElement {
-  constructor() {
-    super(template);
+   constructor() {
+    super();
+  }
+
+  /**
+   * Returns the template for the component.
+   * @static
+   * @returns {HTMLElement} The template element
+   */
+  static get customTemplate() {
+    return template;
   }
 
   afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, this.context);
+    codeSnippet.generateSnippet(this.context);
   }
 }
 

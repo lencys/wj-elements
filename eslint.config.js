@@ -69,7 +69,7 @@ export default [
       'jsdoc/no-types': 'off',
       'jsdoc/require-hyphen-before-param-description': ['error', 'never'],
       'jsdoc/text-escaping': 'off',
-      'jsdoc/valid-types': 'off',
+      'jsdoc/valid-types': 'error',
       'no-array-constructor': 'error',
       'no-bitwise': 'error',
       'no-constructor-return': 'error',

@@ -196,8 +196,17 @@ template.innerHTML = `
   </div>`;
 
 export default class DemoCarousel extends WJElement {
-  constructor() {
-    super(template);
+   constructor() {
+    super();
+  }
+
+  /**
+   * Returns the template for the component.
+   * @static
+   * @returns {HTMLElement} The template element
+   */
+  static get customTemplate() {
+    return template;
   }
 
   fetchCarousel = () => {
@@ -218,7 +227,7 @@ export default class DemoCarousel extends WJElement {
   };
   afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, this.context);
+    codeSnippet.generateSnippet(this.context);
 
     this.querySelectorAll('wje-carousel-item').forEach((carousel) => {
       carousel.addEventListener('wje-carousel-item:click', (event) => {

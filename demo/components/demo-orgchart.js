@@ -230,13 +230,22 @@ template.innerHTML = `<h1>Orgchart</h1>
   </div>`;
 
 export default class DemoOrgchart extends WJElement {
-  constructor() {
-    super(template);
+   constructor() {
+    super();
+  }
+
+  /**
+   * Returns the template for the component.
+   * @static
+   * @returns {HTMLElement} The template element
+   */
+  static get customTemplate() {
+    return template;
   }
 
   afterDraw(context, store2, params) {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, this.context);
+    codeSnippet.generateSnippet(this.context);
 
     document.querySelector('#line wje-orgchart-group').addEventListener('wje-orgchart-group:click', (e) => {
       console.log('wje-orgchart-group', e.detail);

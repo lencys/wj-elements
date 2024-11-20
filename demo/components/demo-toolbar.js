@@ -79,8 +79,17 @@ template.innerHTML = `<h1>Toolbar</h1>
 </div>`;
 
 export default class DemoToolbar extends WJElement {
-  constructor() {
-    super(template);
+   constructor() {
+    super();
+  }
+
+  /**
+   * Returns the template for the component.
+   * @static
+   * @returns {HTMLElement} The template element
+   */
+  static get customTemplate() {
+    return template;
   }
 
   afterRouteEnter(transition) {
@@ -96,7 +105,7 @@ export default class DemoToolbar extends WJElement {
 
   afterDraw(context, store2, params) {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, this.context);
+    codeSnippet.generateSnippet(this.context);
 
     const breadcrumbs = this.querySelector('#custom-dynamic');
     this.objs?.forEach((obj) => {

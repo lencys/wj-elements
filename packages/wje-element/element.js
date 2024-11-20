@@ -12,10 +12,8 @@ export default class WJElement extends HTMLElement {
    * Initializes a new instance of the WJElement class.
    */
 
-  constructor(customTemplate) {
+  constructor() {
     super();
-
-    this.template = customTemplate || template;
 
     this.isAttached = false;
     this.service = new UniversalService({
@@ -51,15 +49,6 @@ export default class WJElement extends HTMLElement {
 
     this.drawingStatus = this.drawingStatuses.CREATED;
   }
-
-// static getKeys() {
-//   let key = [];
-//   if (this.hasAttribute('permission')) {
-//     key = this.permission.split(',');
-//   }
-//
-//   return key;
-// }
 
   /**
    * Sets the value of the 'permission' attribute.
@@ -121,7 +110,7 @@ export default class WJElement extends HTMLElement {
 
   /**
    * Checks if the 'shadow' attribute is present.
-   * @returns True if the 'shadow' attribute is present.
+   * @returns {boolean} True if the 'shadow' attribute is present.
    */
   get isShadowRoot() {
     return this.hasAttribute('shadow');
@@ -129,7 +118,7 @@ export default class WJElement extends HTMLElement {
 
   /**
    * Gets the value of the 'shadow' attribute or 'open' if not set.
-   * @returns The value of the 'shadow' attribute or 'open'.
+   * @returns {string} The value of the 'shadow' attribute or 'open'.
    */
   get shadowType() {
     return this.getAttribute('shadow') || 'open';
@@ -149,7 +138,7 @@ export default class WJElement extends HTMLElement {
 
   /**
    * Gets the store instance.
-   * @returns The store instance.
+   * @returns {object} The store instance.
    */
   get store() {
     return store;
@@ -337,6 +326,9 @@ export default class WJElement extends HTMLElement {
 
   /**
    * Sets up attributes and event listeners for the component.
+   * This method retrieves all custom events defined for the component
+   * and adds event listeners for each of them. When an event is triggered,
+   * it calls the corresponding method on the host element.
    */
   setupAttributes() {
     // Keď neaký element si zadefinuje funkciu "setupAttributes" tak sa obsah tejto funkcie nezavolá
@@ -345,14 +337,6 @@ export default class WJElement extends HTMLElement {
     allEvents.forEach((customEvent, domEvent) => {
       this.addEventListener(domEvent, (e) => {
         this.getRootNode().host[customEvent]?.();
-
-        // this.dispatchEvent(new CustomEvent(`${customEvent}`, {
-        //     detail: {
-        //         originalEvent: e,
-        //         context: this
-        //     },
-        //     bubbles: true
-        // }));
       });
     });
   }
@@ -436,8 +420,16 @@ export default class WJElement extends HTMLElement {
   }
 
   /**
-   * Refreshes the component.
-   * @returns A promise that resolves when the refresh is complete.
+   * Refreshes the component by reinitializing it if it is in a drawing state.
+   * This method checks if the component's drawing status is at least in the START state.
+   * If so, it performs the following steps:
+   * 1. Calls the `beforeRedraw` hook if defined.
+   * 2. Calls the `beforeDisconnect` hook if defined.
+   * 3. Refreshes the update promise to manage the rendering lifecycle.
+   * 4. Calls the `afterDisconnect` hook if defined.
+   * 5. Reinitializes the component by calling `initWjElement` with `true` to force initialization.
+   * If the component is not in a drawing state, it simply returns a resolved promise.
+   * @returns {Promise<void>} A promise that resolves when the refresh is complete.
    */
   refresh() {
     if (this.drawingStatus && this.drawingStatus >= this.drawingStatuses.START) {
@@ -480,6 +472,8 @@ export default class WJElement extends HTMLElement {
    * @returns A promise that resolves when the display is complete.
    */
   display(force = false) {
+    this.template = this.constructor.customTemplate || document.createElement('template');
+
     if (force) {
       [...this.context.childNodes].forEach(this.context.removeChild.bind(this.context));
       this.isAttached = false;
@@ -524,9 +518,15 @@ export default class WJElement extends HTMLElement {
   }
 
   /**
-   * Converts a hyphenated string to camelCase.
-   * @param name The string to sanitize.
-   * @returns The camelCase version of the string.
+   * Sanitizes a given name by converting it from kebab-case to camelCase.
+   * @param {string} name The name in kebab-case format (e.g., "example-name").
+   * @returns {string} The sanitized name in camelCase format (e.g., "exampleName").
+   * @example
+   * // Returns 'exampleName'
+   * sanitizeName('example-name');
+   * @example
+   * // Returns 'myCustomComponent'
+   * sanitizeName('my-custom-component');
    */
   sanitizeName(name) {
     let parts = name.split('-');
@@ -534,10 +534,23 @@ export default class WJElement extends HTMLElement {
   }
 
   /**
-   * Checks if an object property has a getter or setter.
-   * @param obj The object to check.
-   * @param property The property name.
-   * @returns An object containing references to the getter and setter, if they exist.
+   * Checks if a property on an object has a getter or setter method defined.
+   * @param {object} obj The object on which the property is defined.
+   * @param {string} property The name of the property to check.
+   * @returns {object} An object indicating the presence of getter and setter methods.
+   * @property {Function|null} hasGetter The getter function if it exists, otherwise `null`.
+   * @property {Function|null} hasSetter The setter function if it exists, otherwise `null`.
+   * @example
+   * const obj = {
+   *   get name() { return 'value'; },
+   *   set name(val) { console.log(val); }
+   * };
+   * // Returns { hasGetter: [Function: get name], hasSetter: [Function: set name] }
+   * checkGetterSetter(obj, 'name');
+   * @example
+   * const obj = { prop: 42 };
+   * // Returns { hasGetter: null, hasSetter: null }
+   * checkGetterSetter(obj, 'prop');
    */
   checkGetterSetter(obj, property) {
     let descriptor = Object.getOwnPropertyDescriptor(obj, property);

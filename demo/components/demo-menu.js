@@ -113,8 +113,17 @@ template.innerHTML = `
   </div>`;
 
 export default class DemoMenu extends WJElement {
-  constructor() {
-    super(template);
+   constructor() {
+    super();
+  }
+
+  /**
+   * Returns the template for the component.
+   * @static
+   * @returns {HTMLElement} The template element
+   */
+  static get customTemplate() {
+    return template;
   }
 
   openModalFn() {
@@ -123,7 +132,7 @@ export default class DemoMenu extends WJElement {
 
   afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, this.context);
+    codeSnippet.generateSnippet(this.context);
 
     this.querySelectorAll('wje-menu-item').forEach((item) => {
       item.addEventListener('wje-menu-item:click', () => {
