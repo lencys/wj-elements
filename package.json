@@ -35,7 +35,7 @@
     "test:watch": "web-test-runner --watch --group default",
     "lint": "eslint packages --max-warnings 0",
     "lint:fix": "eslint packages --max-warnings 0 --fix",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write ./packages"
   },
   "exports": {
     ".": {
