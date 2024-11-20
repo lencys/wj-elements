@@ -41,7 +41,7 @@ export default class DemoPermissions extends WJElement {
   }
 
   afterDraw() {
-    const codeSnippet = new CodeSnippet();Uprava zobrazenia html snippetu
+    const codeSnippet = new CodeSnippet();
 
     codeSnippet.generateSnippet(this.context, this.myTemplate);
   }
