@@ -25,8 +25,8 @@ template.innerHTML = `<h1>form</h1>
         </style>
 
         <form name="test-form" id="test-form" method="GET">
-           <wje-input name="default" label="Default input"></wje-input>
-           <wje-input name="icon" variant="standard" label="Default input" class="example-icon" clearable>
+           <wje-input name="default" label="Default input" required></wje-input>
+           <wje-input name="icon" variant="standard" label="Default input" class="example-icon" clearable required>
                 <wje-icon-picker slot="start"></wje-icon-picker>
             </wje-input>
 
@@ -48,7 +48,7 @@ template.innerHTML = `<h1>form</h1>
 
             </wje-radio-group>
 
-            <wje-textarea name="textArea" placeholder="textarea">aaaaaaaaa</wje-textarea>
+            <wje-textarea label="aaaaaa" name="textArea" placeholder="textarea" required>aaaaaaaaa</wje-textarea>
 
           <wje-button type="reset">Reset</wje-button>
           <wje-button type="submit" color="primary">Submit</wje-button>
