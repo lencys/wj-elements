@@ -1,10 +1,6 @@
 export class WjePermissionsApi {
   static _permissionKey = 'permissions';
 
-  constructor() {
-
-  }
-
   /**
    * Sets the permission key.
    * @param value

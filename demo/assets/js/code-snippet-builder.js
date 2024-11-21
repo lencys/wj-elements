@@ -2,11 +2,10 @@ class CodeSnippet {
   /**
    * Generates and inserts HTML code snippets for each `.playground` element in the provided demo document.
    * It creates a code snippet with syntax highlighting and a copy button for easier code reuse.
-   * @param {string} elementTemplate The template string representing the custom element.
    * @param {Document} elementDemoDocument The demo document containing `.playground` elements.
-   * @param {string} [externalJsContent] Optional external JavaScript content to include in the snippets.
+   * @param {string} elementTemplate The template string representing the custom element.
    */
-  generateSnippet(elementTemplate, elementDemoDocument, externalJsContent = '') {
+  generateSnippet(elementDemoDocument, elementTemplate = "") {
     const playgrounds = elementDemoDocument.querySelectorAll('.playground');
 
     playgrounds.forEach((pg, index) => {
@@ -21,8 +20,10 @@ class CodeSnippet {
       const content = contentPart.innerHTML.trim();
       let highlightedContent;
 
+      let template = elementTemplate ? elementTemplate.trim() : content;
+
       // Uistite sa, že formátovanie a zvýraznenie funguje správne
-      const formattedHTML = this.formatHTML(content);
+      const formattedHTML = this.formatHTML(template);
       highlightedContent = this.highlightHTML(this.escapeHTML(formattedHTML));
 
       // Vytvorte <pre> a <code> elementy pre snippet

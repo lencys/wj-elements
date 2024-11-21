@@ -74,8 +74,17 @@ template.innerHTML = `<h1>Format byte</h1>
   </div>`;
 
 export default class DemoFormatDigital extends WJElement {
-  constructor() {
-    super(template);
+   constructor() {
+    super();
+  }
+
+  /**
+   * Returns the template for the component.
+   * @static
+   * @returns {HTMLElement} The template element
+   */
+  static get customTemplate() {
+    return template;
   }
 
   afterDraw() {
@@ -84,7 +93,7 @@ export default class DemoFormatDigital extends WJElement {
     });
 
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, this.context);
+    codeSnippet.generateSnippet(this.context);
   }
 }
 

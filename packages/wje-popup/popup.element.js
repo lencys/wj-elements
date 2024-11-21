@@ -13,9 +13,9 @@ import styles from './styles/styles.css?inline';
  * @slot anchor - The slot for the anchor of the popup.
  * @slot arrow - The slot for the arrow of the popup.
  * @slot - The default slot for the popup.
- * @fires wje-popup:reposition - Event fired when the popup is repositioned.
- * @fires wje-popup:show - Event fired when the popup is shown.
- * @fires wje-popup:hide - Event fired when the popup is hidden.
+ * // @fires wje-popup:reposition - Event fired when the popup is repositioned.
+ * // @fires wje-popup:show - Event fired when the popup is shown.
+ * // @fires wje-popup:hide - Event fired when the popup is hidden.
  * @tag wje-popup
  */
 export default class Popup extends WJElement {

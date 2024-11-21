@@ -4,15 +4,14 @@ import CodeSnippet from '../assets/js/code-snippet-builder.js';
 const template = document.createElement('template');
 
 template.innerHTML = `
-  <h1>Accordion</h1>
+  <h1>Permissions</h1>
   <div class="container">
 
     <!-- BASIC -->
 
     <h3>Basic</h3>
-    <div class="playground" style="background-color: rgba(0,0,0,.08);">
-      <div class="content" style="flex-direction: column;">
-        <p></p>
+    <div class="playground">
+      <div class="content">
         <wje-button hide>Hide</wje-button>
         <wje-button permission="test">No permission Check</wje-button>
         <wje-button permission="test" permission-check>Premission Check test</wje-button>
@@ -23,14 +22,28 @@ template.innerHTML = `
 
 export default class DemoPermissions extends WJElement {
   constructor() {
-    super(template);
+    super();
 
     WjePermissionsApi.permissions = ['test'];
   }
 
+  /**
+   * Returns the template for the component.
+   * @static
+   * @returns {HTMLElement} The template element
+   */
+  static get customTemplate() {
+    return template;
+  }
+
+  beforeDraw() {
+    this.myTemplate = this.template.content.querySelector('.content').innerHTML;
+  }
+
   afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, this.context);
+
+    codeSnippet.generateSnippet(this.context, this.myTemplate);
   }
 }
 

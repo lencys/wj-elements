@@ -78,13 +78,22 @@ template.innerHTML = `
   </div>`;
 
 export default class DemoTooltip extends WJElement {
-  constructor() {
-    super(template);
+   constructor() {
+    super();
+  }
+
+  /**
+   * Returns the template for the component.
+   * @static
+   * @returns {HTMLElement} The template element
+   */
+  static get customTemplate() {
+    return template;
   }
 
   async afterDraw() {
     const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(template, this.context);
+    codeSnippet.generateSnippet(this.context);
 
     this.querySelector('#events').beforeShow = async (e) => {
       const response = await fetch('/demo/assets/test.json');
