@@ -51,7 +51,7 @@ export default class Popup extends WJElement {
   /**
    * Returns the CSS styles for the component.
    * @static
-   * @returns {CSSStyleSheet}
+   * @returns {CSSStyleSheet} The CSS styles for the component.
    */
   static get cssStyleSheet() {
     return styles;
@@ -102,6 +102,7 @@ export default class Popup extends WJElement {
    * @returns {DocumentFragment}
    */
   draw() {
+
     let fragment = document.createDocumentFragment();
 
     let slotAnchor = document.createElement('slot');

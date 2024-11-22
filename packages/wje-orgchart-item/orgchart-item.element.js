@@ -6,12 +6,12 @@ import styles from './styles/styles.css?inline';
  * @documentation https://elements.webjet.sk/components/OrgchartItem
  * @status stable
  * @augments WJElement
+ * @attribute {boolean} boss - The boss of the orgchart item (default: false).
+ * @slot - The default slot for the orgchart item.
+ * @slot child - The child slot for the orgchart item.
  * @csspart - Styles the element.
  * @csspart native - Styles the native element.
  * @csspart expander - Styles the expander element.
- * @attr {boolean} boss - The boss of the orgchart item (default: false).
- * @slot - The default slot for the orgchart item.
- * @slot child - The child slot for the orgchart item.
  * @tag wje-orgchart-item
  */
 export default class OrgchartItem extends WJElement {

@@ -16,8 +16,7 @@ export default {
     },
   },
   browsers: [
-    playwrightLauncher({ product: 'chromium' }),
-    // playwrightLauncher({ product: 'webkit' })
+    playwrightLauncher({ product: 'chromium' })
   ],
   testRunnerHtml: (testFramework) => `
     <html lang="en-gb">

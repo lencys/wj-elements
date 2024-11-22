@@ -8,9 +8,9 @@ import styles from './styles/styles.css?inline';
  * @documentation https://elements.webjet.sk/components/stepper
  * @status stable
  * @augments WJElement
+ * @attribute {string} active - The active color for the stepper.
+ * @attribute {string} done - The done color for the stepper.
  * @slot - The default slot for the stepper.
- * @attr {string} active - The active color for the stepper.
- * @attr {string} done - The done color for the stepper.
  * @csspart native - The native part of the stepper.
  * @csspart header - The header part of the stepper.
  * @csspart content - The content part of the stepper.

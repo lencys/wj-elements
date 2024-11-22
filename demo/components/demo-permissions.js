@@ -12,10 +12,10 @@ template.innerHTML = `
     <h3>Basic</h3>
     <div class="playground">
       <div class="content">
-        <wje-button hide>Hide</wje-button>
+        <wje-button no-show>No Show</wje-button>
         <wje-button permission="test">No permission Check</wje-button>
         <wje-button permission="test" permission-check>Premission Check test</wje-button>
-        <wje-button permission="test" permission-check hide>Premission Check test Hide</wje-button>
+        <wje-button permission="test" permission-check no-show>Premission Check test No Show</wje-button>
       </div>
     </div>
   </div>`;

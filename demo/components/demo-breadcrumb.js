@@ -13,10 +13,10 @@ template.innerHTML = `
     <div class="playground">
       <div class="content">
         <wje-breadcrumbs>
-          <wje-breadcrumb href="/house">Home</wje-breadcrumb>
-          <wje-breadcrumb href="/electronics">Electronics</wje-breadcrumb>
-          <wje-breadcrumb href="/cameras">Cameras</wje-breadcrumb>
-          <wje-breadcrumb href="/film">Film</wje-breadcrumb>
+          <wje-breadcrumb>Home</wje-breadcrumb>
+          <wje-breadcrumb>Electronics</wje-breadcrumb>
+          <wje-breadcrumb>Cameras</wje-breadcrumb>
+          <wje-breadcrumb>Film</wje-breadcrumb>
         </wje-breadcrumbs>
       </div>
     </div>
@@ -28,19 +28,19 @@ template.innerHTML = `
       <div class="content">
         <p>Ikony na začiatku</p>
         <wje-breadcrumbs>
-          <wje-breadcrumb href="/house">
+          <wje-breadcrumb>
             <wje-icon slot="start" name="home"></wje-icon>
             Home
           </wje-breadcrumb>
-          <wje-breadcrumb href="/electronics">
+          <wje-breadcrumb>
             <wje-icon slot="start" name="bolt"></wje-icon>
             Electronics
           </wje-breadcrumb>
-          <wje-breadcrumb href="/cameras">
+          <wje-breadcrumb>
             <wje-icon slot="start" name="camera"></wje-icon>
             Cameras
           </wje-breadcrumb>
-          <wje-breadcrumb href="/film">
+          <wje-breadcrumb>
             <wje-icon slot="start" name="video"></wje-icon>
             Film
           </wje-breadcrumb>
@@ -48,19 +48,19 @@ template.innerHTML = `
         
         <p>Ikony na konci</p>
         <wje-breadcrumbs>
-          <wje-breadcrumb href="/house">
+          <wje-breadcrumb>
             Home
             <wje-icon slot="end" name="home"></wje-icon>
           </wje-breadcrumb>
-          <wje-breadcrumb href="/electronics">
+          <wje-breadcrumb>
             Electronics
             <wje-icon slot="end" name="bolt"></wje-icon>
           </wje-breadcrumb>
-          <wje-breadcrumb href="/cameras">
+          <wje-breadcrumb>
             Cameras
             <wje-icon slot="end" name="camera"></wje-icon>
           </wje-breadcrumb>
-          <wje-breadcrumb href="/film">
+          <wje-breadcrumb>
             Film
             <wje-icon slot="end" name="video"></wje-icon>
           </wje-breadcrumb>
@@ -74,19 +74,19 @@ template.innerHTML = `
     <div class="playground">
       <div class="content">
         <wje-breadcrumbs>
-          <wje-breadcrumb href="/home">
+          <wje-breadcrumb>
             Home
             <wje-icon slot="separator" name="slash"></wje-icon>
           </wje-breadcrumb>
-          <wje-breadcrumb href="/electronics">
+          <wje-breadcrumb>
             Electronics
             <wje-icon slot="separator" name="slash"></wje-icon>
           </wje-breadcrumb>
-          <wje-breadcrumb href="/cameras">
+          <wje-breadcrumb>
             Cameras
             <wje-icon slot="separator" name="slash"></wje-icon>
           </wje-breadcrumb>
-          <wje-breadcrumb href="/film">
+          <wje-breadcrumb>
             Film
             <wje-icon slot="separator" name="slash"></wje-icon>
           </wje-breadcrumb>
@@ -100,15 +100,15 @@ template.innerHTML = `
     <div class="playground">
       <div class="content">
         <wje-breadcrumbs max-items="4" items-before-collapse="2">
-          <wje-breadcrumb href="/home">Home</wje-breadcrumb>
-          <wje-breadcrumb href="/electronics">Electronics</wje-breadcrumb>
-          <wje-breadcrumb href="/photography">Photography</wje-breadcrumb>
-          <wje-breadcrumb href="/cameras">Cameras</wje-breadcrumb>
-          <wje-breadcrumb href="/film">Film</wje-breadcrumb>
-          <wje-breadcrumb href="/35mm">35 mm</wje-breadcrumb>
-          <wje-breadcrumb href="/a">A</wje-breadcrumb>
-          <wje-breadcrumb href="/b">B</wje-breadcrumb>
-          <wje-breadcrumb href="/c">C</wje-breadcrumb>
+          <wje-breadcrumb>Home</wje-breadcrumb>
+          <wje-breadcrumb>Electronics</wje-breadcrumb>
+          <wje-breadcrumb>Photography</wje-breadcrumb>
+          <wje-breadcrumb>Cameras</wje-breadcrumb>
+          <wje-breadcrumb>Film</wje-breadcrumb>
+          <wje-breadcrumb>35 mm</wje-breadcrumb>
+          <wje-breadcrumb>A</wje-breadcrumb>
+          <wje-breadcrumb>B</wje-breadcrumb>
+          <wje-breadcrumb>C</wje-breadcrumb>
         </wje-breadcrumbs>
       </div>
     </div>
@@ -119,15 +119,15 @@ template.innerHTML = `
     <div class="playground">
       <div class="content">
         <wje-breadcrumbs max-items="4" items-before-collapse="2" collapsed-variant="dropdown">
-          <wje-breadcrumb href="/home">Home</wje-breadcrumb>
-          <wje-breadcrumb href="/electronics">Electronics</wje-breadcrumb>
-          <wje-breadcrumb href="/photography">Photography</wje-breadcrumb>
-          <wje-breadcrumb href="/cameras">Cameras</wje-breadcrumb>
-          <wje-breadcrumb href="/film">Film</wje-breadcrumb>
-          <wje-breadcrumb href="/35mm">35 mm</wje-breadcrumb>
-          <wje-breadcrumb href="/a">A</wje-breadcrumb>
-          <wje-breadcrumb href="/b">B</wje-breadcrumb>
-          <wje-breadcrumb href="/c">C</wje-breadcrumb>
+          <wje-breadcrumb>Home</wje-breadcrumb>
+          <wje-breadcrumb>Electronics</wje-breadcrumb>
+          <wje-breadcrumb>Photography</wje-breadcrumb>
+          <wje-breadcrumb>Cameras</wje-breadcrumb>
+          <wje-breadcrumb>Film</wje-breadcrumb>
+          <wje-breadcrumb>35 mm</wje-breadcrumb>
+          <wje-breadcrumb>A</wje-breadcrumb>
+          <wje-breadcrumb>B</wje-breadcrumb>
+          <wje-breadcrumb>C</wje-breadcrumb>
         </wje-breadcrumbs>
       </div>
     </div>

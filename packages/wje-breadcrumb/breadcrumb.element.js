@@ -2,12 +2,19 @@ import { default as WJElement, event, WjElementUtils } from '../wje-element/elem
 import styles from './styles/styles.css?inline';
 
 /**
- * @summary This class represents an Breadcrumb element, extending the WJElement class.
+ * @summary This class represents a Breadcrumb element, extending the WJElement class. It provides a navigational aid in user interfaces, displaying the current location within a hierarchy.
  * @documentation https://elements.webjet.sk/components/breadcrumb
  * @status stable
  * @augments WJElement
- * @slot - The breadcrumb main content.
- * @csspart native - The component's native wrapper.
+ * @slot - The main content of the breadcrumb.
+ * @slot start - Slot for content at the start of the breadcrumb.
+ * @slot end - Slot for content at the end of the breadcrumb.
+ * @slot separator - Slot for a custom separator between breadcrumb items.
+ * @csspart native - The native wrapper of the breadcrumb component.
+ * @csspart separator - The separator between breadcrumb items.
+ * @cssproperty [--wje-breadcrumb-a=var(--wje-color-contrast-8)] - The color of the breadcrumb text.
+ * @cssproperty [--wje-breadcrumb-a-hover=var(--wje-color-contrast-6)] - The color of the breadcrumb separator line.
+ * @tag wje-breadcrumb
  */
 export default class Breadcrumb extends WJElement {
   /**

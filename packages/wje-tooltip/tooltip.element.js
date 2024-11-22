@@ -7,9 +7,10 @@ import styles from './styles/styles.css?inline';
  * @documentation https://elements.webjet.sk/components/tooltip
  * @status stable
  * @augments {WJElement}
- * @csspart native - The native tooltip wrapper.
+ * @attribute {string} content - The content of the tooltip element. Accepts any valid string value.
  * @slot arrow - The arrow slot for the tooltip.
  * @slot anchor - The anchor slot for the tooltip.
+ * @csspart native - The native tooltip wrapper.
  * @cssproperty [--wje-tooltip-arrow-color=var(--wje-color-contrast-11)] - Specifies the color of the tooltip's arrow. This property determines the visual color of the arrow that points to the element the tooltip is attached to. Accepts any valid CSS color value such as `hex`, `rgb`, or `CSS variable`.
  * @tag wje-tooltip
  */

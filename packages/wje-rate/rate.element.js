@@ -7,9 +7,9 @@ import styles from './styles/styles.css?inline';
  * @documentation https://elements.webjet.sk/components/rate
  * @status stable
  * @augments {WJElement}
- * @attr {number} precision - The precision of the rating component.
- * @attr {number} max - The maximum value of the rating component.
- * @attr {Array<string>} icons - The icons of the rating component.
+ * @attribute {number} precision - The precision of the rating component.
+ * @attribute {number} max - The maximum value of the rating component.
+ * @attribute {Array<string>} icons - The icons of the rating component.
  * @csspart native - The native part of the rating component.
  * @cssproperty [--wje-rate-gap=.25rem] - Defines the spacing (gap) between individual items in the rating component. Accepts any valid CSS length unit (e.g., `px`, `rem`, `em`) to adjust the distance between rating elements.
  * @cssproperty [--wje-rate-color=var(--wje-color-contrast-11)] - Specifies the default color of the rating items. Accepts any valid CSS color value, including named colors, hex values, RGB, or CSS variables.

@@ -11,10 +11,10 @@ import styles from './styles/styles.css?inline';
  * @documentation https://elements.webjet.sk/components/copy-button
  * @status stable
  * @augments WJElement
- * @attr {string} for - The id of the element to copy content from.
- * @attr {string} value - The text to be copied.
- * @csspart button - Styles the button element.
+ * @attribute {string} for - The id of the element to copy content from.
+ * @attribute {string} value - The text to be copied.
  * @slot - This is a default/unnamed slot.
+ * @csspart button - Styles the button element.
  * @cssproperty --text-color - Controls the color of the text.
  * @cssproperty --background-color - Controls the background color of the button.
  * //@fires wje:copy-button - Dispatched when the button is clicked and the text is copied.

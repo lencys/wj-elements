@@ -6,10 +6,10 @@ import styles from './styles/styles.css?inline';
  * @documentation https://elements.webjet.sk/components/accordion
  * @status stable
  * @augments WJElement
- * @attr {boolean} multiple - The multiple attribute for the accordion.
- * @attr {number} index - The index attribute for the accordion.
- * @attr {boolean} disabled - The disabled attribute for the accordion.
- * @attr {boolean} expanded - The expanded attribute for the accordion.
+ * @attribute {boolean} multiple - The multiple attribute for the accordion.
+ * @attribute {number} index - The index attribute for the accordion.
+ * @attribute {boolean} disabled - The disabled attribute for the accordion.
+ * @attribute {boolean} expanded - The expanded attribute for the accordion.
  * @slot - The accordion main content.
  * //@fires [wje-accordion-item:open] The event fired when the accordion item is opened.
  * @tag wje-accordion

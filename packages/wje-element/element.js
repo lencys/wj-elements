@@ -85,19 +85,19 @@ export default class WJElement extends HTMLElement {
     return this.hasAttribute('permission-check');
   }
 
-  set hide(value) {
+  set noShow(value) {
     if(value)
-      this.setAttribute('hide', '');
+      this.setAttribute('no-show', '');
     else
-      this.removeAttribute('hide');
+      this.removeAttribute('no-show');
   }
 
   /**
    * Checks if the 'show' attribute is present.
    * @returns {boolean} True if the 'show' attribute is present.
    */
-  get hide() {
-    return this.hasAttribute('hide');
+  get noShow() {
+    return this.hasAttribute('no-show');
   }
 
   /**
@@ -481,7 +481,7 @@ export default class WJElement extends HTMLElement {
 
     this.context.append(this.template.content.cloneNode(true));
 
-    if (this.hide || (this.isPermissionCheck && !WjePermissionsApi.isPermissionFulfilled(this.permission))) {
+    if (this.noShow || (this.isPermissionCheck && !WjePermissionsApi.isPermissionFulfilled(this.permission))) {
       this.remove();
       return Promise.resolve();
     }

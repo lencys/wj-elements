@@ -35,7 +35,9 @@
     "test:watch": "web-test-runner --watch --group default",
     "lint": "eslint packages --max-warnings 0",
     "lint:fix": "eslint packages --max-warnings 0 --fix",
-    "prettier": "prettier --write ./packages"
+    "prettier": "prettier --write ./packages",
+    "test:badge": "web-test-runner --files packages/wje-badge/badge.test.js",
+    "test:breadcrumbs": "web-test-runner --files packages/wje-breadcrumbs/breadcrumbs.test.js"
   },
   "exports": {
     ".": {
@@ -65,6 +67,7 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.9.3",
     "@eslint/js": "^9.13.0",
+    "@open-wc/semantic-dom-diff": "^0.20.1",
     "@open-wc/testing": "^3.2.0",
     "@web/test-runner": "^0.19.0",
     "@web/test-runner-commands": "^0.9.0",

@@ -60,7 +60,7 @@ export default [
             'tag',
             'cssproperty',
             'fires',
-            'attr',
+            'attribute',
           ],
           enableFixer: false,
         },
