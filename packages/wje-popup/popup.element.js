@@ -248,7 +248,8 @@ export default class Popup extends WJElement {
 
         if (middlewareData.arrow) {
           const { width, height } = this.native.getBoundingClientRect();
-          let { osX = x, osY = y } = middlewareData.arrow;
+          let osX = middlewareData.arrow.x;
+          let osY = middlewareData.arrow.y;
 
           Object.assign(this.arrow.style, {
             left: osX !== null && osX !== undefined ? `${width / 2 - this.arrow.offsetWidth / 2}px` : '',
