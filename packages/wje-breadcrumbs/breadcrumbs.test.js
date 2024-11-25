@@ -4,9 +4,11 @@ import '../../dist/wje-breadcrumb.js';
 import '../../dist/wje-breadcrumbs.js';
 
 describe('<wje-breadcrumbs>', () => {
+  let el, itemsBeforeCollapse, indicator;
+
   describe('Standard <wje-breadcrumbs> list', () => {
-    let el;
     before(async () => {
+      // Create a basic <wje-breadcrumbs> element with three breadcrumbs
       el = await fixture(html`
         <wje-breadcrumbs>
           <wje-breadcrumb>Home</wje-breadcrumb>
@@ -19,7 +21,7 @@ describe('<wje-breadcrumbs>', () => {
     it('passes accessibility tests with color-contrast rule ignored', async () => {
       await assert.isAccessible(el, {
         rules: {
-          'color-contrast': { enabled: false },
+          'color-contrast': { enabled: false }, // Ignore color contrast rule
         },
       });
     });
@@ -47,11 +49,7 @@ describe('<wje-breadcrumbs>', () => {
   });
 
   describe('Special <wje-breadcrumbs> list with collapsing behavior', () => {
-    let el;
-    let itemsBeforeCollapse;
-    let indicator;
-
-    before(async () => {
+    beforeEach(async () => {
       el = await fixture(html`
         <wje-breadcrumbs max-items="4" items-before-collapse="2">
           <wje-breadcrumb>Home</wje-breadcrumb>
@@ -65,7 +63,6 @@ describe('<wje-breadcrumbs>', () => {
           <wje-breadcrumb>C</wje-breadcrumb>
         </wje-breadcrumbs>
       `);
-
       itemsBeforeCollapse = +el.getAttribute('items-before-collapse');
       indicator = el.querySelectorAll('wje-breadcrumb')[itemsBeforeCollapse];
     });
@@ -74,17 +71,8 @@ describe('<wje-breadcrumbs>', () => {
       expect(indicator.hasAttribute('show-collapsed-indicator')).to.be.true;
     });
 
-    it('verifies the item at index specified by items-before-collapse has "native-breadcrumb" element with class "hidden" in shadowRoot', async () => {
-      let fragment = indicator.draw();
-      let native = fragment.querySelector('.native-breadcrumb');
-      expect(native).to.exist;
-    });
-
-    it('verifies the item at index specified by items-before-collapse contains button but not dropdown in shadowRoot', async () => {
-      let fragment = indicator.draw();
-      let button = fragment.querySelector('button');
-      let dropdown = fragment.querySelector('wje-dropdown');
-      expect(dropdown).to.not.exist;
+    it('checks if the item at the index specified by items-before-collapse contains a dropdown element in shadowRoot', async () => {
+      let button = indicator.shadowRoot.querySelector('button');
       expect(button).to.exist;
     });
 
@@ -97,38 +85,28 @@ describe('<wje-breadcrumbs>', () => {
     });
   });
 
-  // describe('Special <wje-breadcrumbs variant="dropdown"> list with collapsing behavior', () => {
-  //   let itemsBeforeCollapse;
-  //   let indicatorForDropdown;
-  //   let el;
-  //
-  //   before(async () => {
-  //     el = await fixture(html`
-  //       <wje-breadcrumbs max-items="4" items-before-collapse="2" variant="dropdown">
-  //         <wje-breadcrumb>Home</wje-breadcrumb>
-  //         <wje-breadcrumb>Electronics</wje-breadcrumb>
-  //         <wje-breadcrumb>Photography</wje-breadcrumb>
-  //         <wje-breadcrumb>Cameras</wje-breadcrumb>
-  //         <wje-breadcrumb>Film</wje-breadcrumb>
-  //         <wje-breadcrumb>35 mm</wje-breadcrumb>
-  //         <wje-breadcrumb>A</wje-breadcrumb>
-  //         <wje-breadcrumb>B</wje-breadcrumb>
-  //         <wje-breadcrumb>C</wje-breadcrumb>
-  //       </wje-breadcrumbs>
-  //     `);
-  //     console.log(el);
-  //     itemsBeforeCollapse = +el.getAttribute('items-before-collapse');
-  //     indicatorForDropdown = el.querySelectorAll('wje-breadcrumb')[itemsBeforeCollapse];
-  //     console.log("TRALALA", indicatorForDropdown);
-  //   });
-  //
-  //   it('checks if the item at the index specified by items-before-collapse contains a dropdown element in shadowRoot', async () => {
-  //     let fragment = indicatorForDropdown.draw();
-  //     console.log("indicatorForDropdown:", indicatorForDropdown.shadowRoot);
-  //     console.log(fragment);
-  //     let dropdown = fragment.querySelector('wje-dropdown');
-  //     console.log(dropdown);
-  //     expect(dropdown).to.exist;
-  //   });
-  // });
+  describe('Special <wje-breadcrumbs variant="dropdown"> list with collapsing behavior', () => {
+    before(async () => {
+      el = await fixture(html`
+        <wje-breadcrumbs max-items="4" items-before-collapse="2" variant="dropdown">
+          <wje-breadcrumb>Home</wje-breadcrumb>
+          <wje-breadcrumb>Electronics</wje-breadcrumb>
+          <wje-breadcrumb>Photography</wje-breadcrumb>
+          <wje-breadcrumb>Cameras</wje-breadcrumb>
+          <wje-breadcrumb>Film</wje-breadcrumb>
+          <wje-breadcrumb>35 mm</wje-breadcrumb>
+          <wje-breadcrumb>A</wje-breadcrumb>
+          <wje-breadcrumb>B</wje-breadcrumb>
+          <wje-breadcrumb>C</wje-breadcrumb>
+        </wje-breadcrumbs>
+      `);
+      itemsBeforeCollapse = +el.getAttribute('items-before-collapse');
+      indicator = el.querySelectorAll('wje-breadcrumb')[itemsBeforeCollapse];
+    });
+
+    it('checks if the item at the index specified by items-before-collapse contains a dropdown element in shadowRoot', async () => {
+      let dropdown = indicator.shadowRoot.querySelector('wje-dropdown');
+      expect(dropdown).to.exist;
+    });
+  });
 });

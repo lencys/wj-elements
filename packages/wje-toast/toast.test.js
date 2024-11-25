@@ -22,7 +22,7 @@ const expectToastToBeVisible = (toast) => {
 const expectToastToBeInvisible = (toast) => {
   const toastContainer = getToastContainer(toast);
   const style = window.getComputedStyle(toast);
-  console.log(toast);
+
   expect(style.display).to.equal('none');
 };
 
@@ -83,20 +83,6 @@ describe('<wje-toast>', () => {
       const closeButton = toast.shadowRoot?.querySelector('wje-button.close');
       expect(closeButton).to.exist;
     });
-
-    // it('clicking the close button closes the toast', async () => {
-    //   const toast = await fixture(html`<wje-toast open closable>Test toast</wje-toast>`);
-    //   const closeButton = toast.shadowRoot?.querySelector('wje-button.close');
-    //   console.log("CLOSE BUTTON:", closeButton, expect(closeButton).to.exist);
-    //   // expect(closeButton).to.exist;
-    //
-    //   const hideEventPromise = oneEvent(toast, 'wje-toast:after-hide');
-    //   closeButton.click();
-    //   await hideEventPromise;
-    //   console.log("TOAST:", "4");
-    //
-    //   expectToastToBeInvisible(toast);
-    // });
   });
 
   describe('timer controlled closing', () => {
@@ -136,7 +122,7 @@ describe('<wje-toast>', () => {
       it(`adapts to the variant: ${variant}`, async () => {
         const toast = await fixture(html`<wje-toast variant="${variant}" open>Test toast</wje-toast>`);
         const toastContainer = getToastContainer(toast);
-        console.log('VARIANT:', toast, toast.getAttribute('variant') === variant);
+
         expect(toast.getAttribute('variant') === variant).to.be.true;
       });
     });

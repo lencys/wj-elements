@@ -7,7 +7,7 @@ export default {
   files: 'packages/**/*.test.js', // "default" group
   concurrentBrowsers: 3,
   nodeResolve: {
-    exportConditions: ['production', 'default'],
+    exportConditions: ['default'],
   },
   testFramework: {
     config: {

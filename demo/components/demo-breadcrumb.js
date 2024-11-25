@@ -118,7 +118,7 @@ template.innerHTML = `
     <h2>Max Items</h2>
     <div class="playground">
       <div class="content">
-        <wje-breadcrumbs max-items="4" items-before-collapse="2" collapsed-variant="dropdown">
+        <wje-breadcrumbs max-items="4" items-before-collapse="2" variant="dropdown">
           <wje-breadcrumb>Home</wje-breadcrumb>
           <wje-breadcrumb>Electronics</wje-breadcrumb>
           <wje-breadcrumb>Photography</wje-breadcrumb>

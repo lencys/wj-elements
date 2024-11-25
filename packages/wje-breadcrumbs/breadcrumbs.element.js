@@ -41,6 +41,22 @@ export default class Breadcrumbs extends WJElement {
   }
 
   /**
+   * Set variant attribute for the Breadcrumbs element.
+   * @param value
+   */
+  set variant(value) {
+    this.setAttribute('variant', value);
+  }
+
+  /**
+   * Get variant attribute for the Breadcrumbs element.
+   * @returns {string}
+   */
+  get variant() {
+    return this.getAttribute('variant') || 'button';
+  }
+
+  /**
    * Get items before collapse attribute.
    * @param {string} value
    */
@@ -53,7 +69,7 @@ export default class Breadcrumbs extends WJElement {
    * @returns {number}
    */
   get maxItems() {
-    return +this.getAttribute('max-items');
+    return +this.getAttribute('max-items' || 0);
   }
 
   /**
@@ -69,7 +85,7 @@ export default class Breadcrumbs extends WJElement {
    * @returns {number}
    */
   get itemsBeforeCollapse() {
-    return +this.getAttribute('items-before-collapse');
+    return +this.getAttribute('items-before-collapse') || 1;
   }
 
   /**
@@ -85,7 +101,7 @@ export default class Breadcrumbs extends WJElement {
    * @returns {number}
    */
   get itemsAfterCollapse() {
-    return +this.getAttribute('items-after-collapse');
+    return +this.getAttribute('items-after-collapse') || 1;
   }
 
   /**
@@ -101,6 +117,15 @@ export default class Breadcrumbs extends WJElement {
    */
   static get cssStyleSheet() {
     return styles;
+  }
+
+  /**
+   * Get observed attributes for the Breadcrumb element.
+   * @static
+   * @returns {Array<string>} - The observed attributes array for the Breadcrumb element.
+   */
+  static get observedAttributes() {
+    return [];
   }
 
   /**

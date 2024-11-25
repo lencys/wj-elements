@@ -24,7 +24,6 @@ export default class Breadcrumb extends WJElement {
     super();
 
     this._showSeparator = true;
-    this._collapsedVariant = this.parentElement?.collapsedVariant || 'BUTTON';
     this.showCollapsedIndicator = false;
   }
 
@@ -45,19 +44,20 @@ export default class Breadcrumb extends WJElement {
   }
 
   /**
-   * Get collapsed variant.
-   * @returns {string} The collapsed variant value in uppercase.
-   */
-  get collapsedVariant() {
-    return this._collapsedVariant.toUpperCase();
-  }
-
-  /**
    * Set collapsed variant.
    * @param {string} value The value to set
    */
   set collapsedVariant(value) {
-    this._collapsedVariant = value || this.parentElement.collapsedVariant;
+    this._collapsedVariant = value;
+  }
+
+  /**
+   * Get collapsed variant.
+   * @returns {string} The collapsed variant value in uppercase.
+   */
+  get collapsedVariant() {
+    let variant = this.parentElement.variant || this._collapsedVariant
+    return variant.toUpperCase();
   }
 
   /**
@@ -139,7 +139,6 @@ export default class Breadcrumb extends WJElement {
     native.appendChild(end);
 
     fragment.appendChild(native);
-
     if (WjElementUtils.stringToBoolean(this.showCollapsedIndicator)) {
       // pridame button za native element
       fragment.appendChild(this.drawCollapsedIndicator());
