@@ -9,6 +9,7 @@ import styles from './styles/styles.css?inline';
  * @augments WJElement
  * @csspart native - The native textarea wrapper.
  * @csspart input - The textarea input.
+ * @csspart wrapper - The textarea wrapper.
  * @cssproperty [--wje-textarea-font-family=var(--wje-font-family)] - Specifies the font family used for the textarea. Accepts any valid CSS font-family value.
  * @cssproperty [--wje-textarea-background-color=var(--wje-background)] - Sets the background color of the textarea. Accepts any valid CSS color value.
  * @cssproperty [--wje-textarea-color=var(--wje-color)] - Defines the text color within the textarea. Accepts any valid CSS color value.
@@ -203,6 +204,7 @@ export default class Textarea extends WJElement {
         if (this.hasAttribute('invalid')) native.classList.add('has-error');
 
         let wrapper = document.createElement('div');
+        wrapper.setAttribute('part', 'wrapper');
         wrapper.classList.add('wrapper');
 
         let inputWrapper = document.createElement('div');
