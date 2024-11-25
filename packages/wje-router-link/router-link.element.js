@@ -13,64 +13,64 @@ import styles from './styles/styles.css?inline';
  * @tag wje-router-link
  */
 export default class RouterLink extends WJElement {
-  /**
-   * Creates an instance of RouterLink.
-   * @class
-   */
-  constructor() {
-    super();
-  }
+    /**
+     * Creates an instance of RouterLink.
+     * @class
+     */
+    constructor() {
+        super();
+    }
 
-  className = 'RouterLink';
+    className = 'RouterLink';
 
-  /**
-   * Returns the CSS styles for the component.
-   * @static
-   * @returns {CSSStyleSheet}
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
+    /**
+     * Returns the CSS styles for the component.
+     * @static
+     * @returns {CSSStyleSheet}
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-  /**
-   * Returns the list of attributes to observe for changes.
-   * @static
-   * @returns {Array<string>}
-   */
-  static get observedAttributes() {
-    return [];
-  }
+    /**
+     * Returns the list of attributes to observe for changes.
+     * @static
+     * @returns {Array<string>}
+     */
+    static get observedAttributes() {
+        return [];
+    }
 
-  /**
-   * Sets up the attributes for the component.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-    this.setAttribute('active-class', 'active');
-  }
+    /**
+     * Sets up the attributes for the component.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+        this.setAttribute('active-class', 'active');
+    }
 
-  /**
-   * Draws the component for the router link.
-   * @returns {DocumentFragment}
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
+    /**
+     * Draws the component for the router link.
+     * @returns {DocumentFragment}
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
 
-    let element = document.createElement('slot');
+        let element = document.createElement('slot');
 
-    fragment.appendChild(element);
+        fragment.appendChild(element);
 
-    return fragment;
-  }
+        return fragment;
+    }
 
-  afterDraw(context, appStore, attributes) {
-    this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: false });
-  }
+    afterDraw(context, appStore, attributes) {
+        this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: false });
+    }
 
-  /**
-   * Cleans up before the component is disconnected.
-   */
-  beforeDisconnect() {
-    this.unbindRouterLinks?.();
-  }
+    /**
+     * Cleans up before the component is disconnected.
+     */
+    beforeDisconnect() {
+        this.unbindRouterLinks?.();
+    }
 }

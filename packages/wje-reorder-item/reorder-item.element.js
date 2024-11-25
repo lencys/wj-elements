@@ -13,64 +13,64 @@ import styles from './styles/styles.css?inline';
  * @tag wje-reorder-item
  */
 export default class ReorderItem extends WJElement {
-  /**
-   * Creates an instance of ReorderItem.
-   */
-  constructor() {
-    super();
-  }
-
-  /**
-   * The class name for the component.
-   * @type {string}
-   */
-  className = 'ReorderItem';
-
-  /**
-   * Returns the CSS stylesheet for the component.
-   * @returns {CSSStyleSheet} The CSS stylesheet.
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
-
-  /**
-   * Sets up the attributes for the component.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
-
-  /**
-   * Returns the list of observed attributes.
-   * @returns {DocumentFragment}
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
-
-    let wrapper = document.createElement('div');
-    wrapper.classList.add('item');
-    wrapper.setAttribute('part', 'native-reorder-item');
-
-    let element = document.createElement('slot');
-    element.classList.add('name');
-
-    if (WjElementUtils.hasSlot(this, 'handle')) {
-      const handle = document.createElement('slot');
-      handle.classList.add('handle');
-      handle.setAttribute('name', 'handle');
-      handle.setAttribute('part', 'handle-part');
-
-      wrapper.classList.add('item-w-handle');
-      wrapper.appendChild(handle);
-    } else {
-      element.setAttribute('draggable', 'true');
+    /**
+     * Creates an instance of ReorderItem.
+     */
+    constructor() {
+        super();
     }
 
-    wrapper.appendChild(element);
+    /**
+     * The class name for the component.
+     * @type {string}
+     */
+    className = 'ReorderItem';
 
-    fragment.appendChild(wrapper);
+    /**
+     * Returns the CSS stylesheet for the component.
+     * @returns {CSSStyleSheet} The CSS stylesheet.
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-    return fragment;
-  }
+    /**
+     * Sets up the attributes for the component.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
+
+    /**
+     * Returns the list of observed attributes.
+     * @returns {DocumentFragment}
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
+
+        let wrapper = document.createElement('div');
+        wrapper.classList.add('item');
+        wrapper.setAttribute('part', 'native-reorder-item');
+
+        let element = document.createElement('slot');
+        element.classList.add('name');
+
+        if (WjElementUtils.hasSlot(this, 'handle')) {
+            const handle = document.createElement('slot');
+            handle.classList.add('handle');
+            handle.setAttribute('name', 'handle');
+            handle.setAttribute('part', 'handle-part');
+
+            wrapper.classList.add('item-w-handle');
+            wrapper.appendChild(handle);
+        } else {
+            element.setAttribute('draggable', 'true');
+        }
+
+        wrapper.appendChild(element);
+
+        fragment.appendChild(wrapper);
+
+        return fragment;
+    }
 }

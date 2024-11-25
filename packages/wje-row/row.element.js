@@ -11,49 +11,49 @@ import styles from './scss/styles.scss?inline';
  * @tag wje-row
  */
 export default class Row extends WJElement {
-  /**
-   * Creates an instance of Row.
-   * @class
-   */
-  constructor() {
-    super();
-  }
+    /**
+     * Creates an instance of Row.
+     * @class
+     */
+    constructor() {
+        super();
+    }
 
-  /**
-   * The class name for the component.
-   * @type {string}
-   */
-  className = 'Row';
+    /**
+     * The class name for the component.
+     * @type {string}
+     */
+    className = 'Row';
 
-  /**
-   * Returns the CSS styles for the component.
-   * @static
-   * @returns {CSSStyleSheet}
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
+    /**
+     * Returns the CSS styles for the component.
+     * @static
+     * @returns {CSSStyleSheet}
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-  /**
-   * Sets up the attributes for the component.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
+    /**
+     * Sets up the attributes for the component.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
 
-  /**
-   * Draws the component for the row.
-   * @returns {DocumentFragment}
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
+    /**
+     * Draws the component for the row.
+     * @returns {DocumentFragment}
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
 
-    if (this.hasAttribute('wrap')) this.classList.add('wje-wrap');
+        if (this.hasAttribute('wrap')) this.classList.add('wje-wrap');
 
-    let element = document.createElement('slot');
+        let element = document.createElement('slot');
 
-    fragment.appendChild(element);
+        fragment.appendChild(element);
 
-    return fragment;
-  }
+        return fragment;
+    }
 }

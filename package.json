@@ -37,7 +37,8 @@
     "lint:fix": "eslint packages --max-warnings 0 --fix",
     "prettier": "prettier --write ./packages",
     "test:badge": "web-test-runner --files packages/wje-badge/badge.test.js",
-    "test:breadcrumbs": "web-test-runner --files packages/wje-breadcrumbs/breadcrumbs.test.js"
+    "test:breadcrumbs": "web-test-runner --files packages/wje-breadcrumbs/breadcrumbs.test.js",
+    "test:toast": "web-test-runner --files packages/wje-toast/toast.test.js"
   },
   "exports": {
     ".": {

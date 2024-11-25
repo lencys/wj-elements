@@ -3,38 +3,38 @@
 */
 
 :host {
-  overflow-x: auto;
-  width: var(--wje-infinite-scroll-width);
-  height: var(--wje-infinite-scroll-height);
-  display: block;
+    overflow-x: auto;
+    width: var(--wje-infinite-scroll-width);
+    height: var(--wje-infinite-scroll-height);
+    display: block;
 }
 
 .native {
-  /*position: relative;*/
+    /*position: relative;*/
 }
 
 .loading {
-  position: sticky;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  background-color: var(--wje-infinite-scroll-loading-bg);
-  &.show {
-    display: flex;
-  }
+    position: sticky;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background-color: var(--wje-infinite-scroll-loading-bg);
+    &.show {
+        display: flex;
+    }
 }
 
 [name='ending'] {
-  display: none;
-  margin-top: 1rem;
-  text-align: center;
+    display: none;
+    margin-top: 1rem;
+    text-align: center;
 }
 
 [name='ending'].show {
-  display: block;
+    display: block;
 }

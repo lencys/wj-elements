@@ -3,12 +3,12 @@
 */
 
 :host {
-  display: none;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 1rem;
+    display: none;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 1rem;
 }
 
 :host([active]) {
-  display: block;
+    display: block;
 }

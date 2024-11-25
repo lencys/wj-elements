@@ -3,55 +3,55 @@
 */
 
 .native-badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-shadow: none;
-  font-family: var(--wje-font-family);
-  font-size: var(--wje-font-size-x-small);
-  line-height: 1;
-  padding: 0;
-  padding-block: 0;
-  padding-inline: var(--wje-spacing-2x-small);
-  border-radius: var(--wje-badge-border-radius);
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
-  height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: none;
+    font-family: var(--wje-font-family);
+    font-size: var(--wje-font-size-x-small);
+    line-height: 1;
+    padding: 0;
+    padding-block: 0;
+    padding-inline: var(--wje-spacing-2x-small);
+    border-radius: var(--wje-badge-border-radius);
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    height: 18px;
 }
 
 .wje-color-primary {
-  background-color: var(--wje-color-primary-2);
-  color: var(--wje-color-primary-9);
+    background-color: var(--wje-color-primary-2);
+    color: var(--wje-color-primary-9);
 }
 
 .wje-color-complete {
-  background-color: var(--wje-color-complete-2);
-  color: var(--wje-color-complete-9);
+    background-color: var(--wje-color-complete-2);
+    color: var(--wje-color-complete-9);
 }
 
 .wje-color-success {
-  background-color: var(--wje-color-success-2);
-  color: var(--wje-color-success-9);
+    background-color: var(--wje-color-success-2);
+    color: var(--wje-color-success-9);
 }
 
 .wje-color-warning {
-  background-color: var(--wje-color-warning-2);
-  color: var(--wje-color-warning-11);
+    background-color: var(--wje-color-warning-2);
+    color: var(--wje-color-warning-11);
 }
 
 .wje-color-danger {
-  background-color: var(--wje-color-danger-2);
-  color: var(--wje-color-danger-9);
+    background-color: var(--wje-color-danger-2);
+    color: var(--wje-color-danger-9);
 }
 
 .wje-color-info {
-  background-color: var(--wje-color-contrast-0);
-  color: var(--wje-color-info-11);
-  border-color: var(--wje-color-contrast-2);
+    background-color: var(--wje-color-contrast-0);
+    color: var(--wje-color-info-11);
+    border-color: var(--wje-color-contrast-2);
 }
 
 .wje-color-default {
-  background-color: var(--wje-color-contrast-3);
-  color: var(--wje-color-contrast-11);
+    background-color: var(--wje-color-contrast-3);
+    color: var(--wje-color-contrast-11);
 }

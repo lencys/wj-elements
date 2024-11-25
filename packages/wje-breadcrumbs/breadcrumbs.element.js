@@ -26,161 +26,164 @@ import styles from './styles/styles.css?inline';
  */
 
 export default class Breadcrumbs extends WJElement {
-  /**
-   * Breadcrumbs constructor method.
-   * @class
-   */
-  constructor() {
-    super();
+    /**
+     * Breadcrumbs constructor method.
+     * @class
+     */
+    constructor() {
+        super();
+
+        /**
+         * Last breadcrumb flag
+         * @type {boolean}
+         */
+        this.last = false;
+    }
 
     /**
-     * Last breadcrumb flag
-     * @type {boolean}
+     * Set variant attribute for the Breadcrumbs element.
+     * @param value
      */
-    this.last = false;
-  }
-
-  /**
-   * Set variant attribute for the Breadcrumbs element.
-   * @param value
-   */
-  set variant(value) {
-    this.setAttribute('variant', value);
-  }
-
-  /**
-   * Get variant attribute for the Breadcrumbs element.
-   * @returns {string}
-   */
-  get variant() {
-    return this.getAttribute('variant') || 'button';
-  }
-
-  /**
-   * Get items before collapse attribute.
-   * @param {string} value
-   */
-  set maxItems(value) {
-    this.setAttribute('max-items', value || 0);
-  }
-
-  /**
-   * Get items before collapse attribute.
-   * @returns {number}
-   */
-  get maxItems() {
-    return +this.getAttribute('max-items' || 0);
-  }
-
-  /**
-   * Get items before collapse attribute.
-   * @param value
-   */
-  set itemsBeforeCollapse(value) {
-    this.setAttribute('items-before-collapse', value || 1);
-  }
-
-  /**
-   * Get items before collapse attribute.
-   * @returns {number}
-   */
-  get itemsBeforeCollapse() {
-    return +this.getAttribute('items-before-collapse') || 1;
-  }
-
-  /**
-   * Get items after collapse attribute.
-   * @param value
-   */
-  set itemsAfterCollapse(value) {
-    this.setAttribute('items-after-collapse', value || 1);
-  }
-
-  /**
-   * Get items after collapse attribute.
-   * @returns {number}
-   */
-  get itemsAfterCollapse() {
-    return +this.getAttribute('items-after-collapse') || 1;
-  }
-
-  /**
-   * Class name for the Breadcrumbs element.
-   * @type {string}
-   */
-  className = 'Breadcrumbs';
-
-  /**
-   * Get CSS stylesheet for the Breadcrumbs element.
-   * @static
-   * @returns {object} styles - The CSS styles
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
-
-  /**
-   * Get observed attributes for the Breadcrumb element.
-   * @static
-   * @returns {Array<string>} - The observed attributes array for the Breadcrumb element.
-   */
-  static get observedAttributes() {
-    return [];
-  }
-
-  /**
-   * Setup attributes for the Breadcrumbs element.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
-
-  /**
-   * Draw method for the Breadcrumbs element.
-   * @returns {object} fragment - The document fragment
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
-
-    let element = document.createElement('slot');
-
-    fragment.appendChild(element);
-
-    return fragment;
-  }
-
-  /**
-   * After draw method for the Breadcrumbs element.
-   */
-  afterDraw() {
-    let breadcrumbs = this.getBreadcrumbs();
-
-    if (breadcrumbs.length === 0) return;
-
-    let breadcrumb = breadcrumbs.findLast((e) => e);
-
-    breadcrumb.setAttribute('last', true);
-
-    const shouldCollapse = this.maxItems !== undefined && breadcrumbs.length > this.maxItems && this.itemsBeforeCollapse + this.itemsAfterCollapse <= this.maxItems;
-
-    if (shouldCollapse) {
-      breadcrumbs.forEach((b, index) => {
-        if (index === this.itemsBeforeCollapse) {
-          b.setAttribute('show-collapsed-indicator', true);
-        }
-
-        if (index >= this.itemsBeforeCollapse && index < breadcrumbs.length - this.itemsAfterCollapse) {
-          b.setAttribute('collapsed', true);
-        }
-      });
+    set variant(value) {
+        this.setAttribute('variant', value);
     }
-  }
 
-  /**
-   * Get breadcrumbs method.
-   * @returns {Array} - The breadcrumbs array
-   */
-  getBreadcrumbs() {
-    return Array.from(this.querySelectorAll('wje-breadcrumb')) || [];
-  }
+    /**
+     * Get variant attribute for the Breadcrumbs element.
+     * @returns {string}
+     */
+    get variant() {
+        return this.getAttribute('variant') || 'button';
+    }
+
+    /**
+     * Get items before collapse attribute.
+     * @param {string} value
+     */
+    set maxItems(value) {
+        this.setAttribute('max-items', value || 0);
+    }
+
+    /**
+     * Get items before collapse attribute.
+     * @returns {number}
+     */
+    get maxItems() {
+        return +this.getAttribute('max-items' || 0);
+    }
+
+    /**
+     * Get items before collapse attribute.
+     * @param value
+     */
+    set itemsBeforeCollapse(value) {
+        this.setAttribute('items-before-collapse', value || 1);
+    }
+
+    /**
+     * Get items before collapse attribute.
+     * @returns {number}
+     */
+    get itemsBeforeCollapse() {
+        return +this.getAttribute('items-before-collapse') || 1;
+    }
+
+    /**
+     * Get items after collapse attribute.
+     * @param value
+     */
+    set itemsAfterCollapse(value) {
+        this.setAttribute('items-after-collapse', value || 1);
+    }
+
+    /**
+     * Get items after collapse attribute.
+     * @returns {number}
+     */
+    get itemsAfterCollapse() {
+        return +this.getAttribute('items-after-collapse') || 1;
+    }
+
+    /**
+     * Class name for the Breadcrumbs element.
+     * @type {string}
+     */
+    className = 'Breadcrumbs';
+
+    /**
+     * Get CSS stylesheet for the Breadcrumbs element.
+     * @static
+     * @returns {object} styles - The CSS styles
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
+
+    /**
+     * Get observed attributes for the Breadcrumb element.
+     * @static
+     * @returns {Array<string>} - The observed attributes array for the Breadcrumb element.
+     */
+    static get observedAttributes() {
+        return [];
+    }
+
+    /**
+     * Setup attributes for the Breadcrumbs element.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
+
+    /**
+     * Draw method for the Breadcrumbs element.
+     * @returns {object} fragment - The document fragment
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
+
+        let element = document.createElement('slot');
+
+        fragment.appendChild(element);
+
+        return fragment;
+    }
+
+    /**
+     * After draw method for the Breadcrumbs element.
+     */
+    afterDraw() {
+        let breadcrumbs = this.getBreadcrumbs();
+
+        if (breadcrumbs.length === 0) return;
+
+        let breadcrumb = breadcrumbs.findLast((e) => e);
+
+        breadcrumb.setAttribute('last', true);
+
+        const shouldCollapse =
+            this.maxItems !== undefined &&
+            breadcrumbs.length > this.maxItems &&
+            this.itemsBeforeCollapse + this.itemsAfterCollapse <= this.maxItems;
+
+        if (shouldCollapse) {
+            breadcrumbs.forEach((b, index) => {
+                if (index === this.itemsBeforeCollapse) {
+                    b.setAttribute('show-collapsed-indicator', true);
+                }
+
+                if (index >= this.itemsBeforeCollapse && index < breadcrumbs.length - this.itemsAfterCollapse) {
+                    b.setAttribute('collapsed', true);
+                }
+            });
+        }
+    }
+
+    /**
+     * Get breadcrumbs method.
+     * @returns {Array} - The breadcrumbs array
+     */
+    getBreadcrumbs() {
+        return Array.from(this.querySelectorAll('wje-breadcrumb')) || [];
+    }
 }

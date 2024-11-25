@@ -3,9 +3,9 @@
 */
 
 :host {
-  --wje-footer-height: 60px;
-  padding: 0 20px;
-  flex-shrink: 0;
-  height: var(--wje-footer-height);
-  display: block;
+    --wje-footer-height: 60px;
+    padding: 0 20px;
+    flex-shrink: 0;
+    height: var(--wje-footer-height);
+    display: block;
 }

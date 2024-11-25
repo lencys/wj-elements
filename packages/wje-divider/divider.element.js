@@ -16,55 +16,55 @@ import styles from './styles/styles.css?inline';
  * @tag wje-divider
  */
 export default class Divider extends WJElement {
-  /**
-   * Constructor for the Divider class.
-   */
-  constructor() {
-    super();
-  }
+    /**
+     * Constructor for the Divider class.
+     */
+    constructor() {
+        super();
+    }
 
-  /**
-   * The class name for the Divider class.
-   * @type {string}
-   */
-  className = 'Divider';
+    /**
+     * The class name for the Divider class.
+     * @type {string}
+     */
+    className = 'Divider';
 
-  /**
-   * Getter for the CSS stylesheet.
-   * @returns {string} The CSS stylesheet.
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
+    /**
+     * Getter for the CSS stylesheet.
+     * @returns {string} The CSS stylesheet.
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-  /**
-   * Getter for the observed attributes.
-   * @returns {Array} An empty array as there are no observed attributes.
-   */
-  static get observedAttributes() {
-    return [];
-  }
+    /**
+     * Getter for the observed attributes.
+     * @returns {Array} An empty array as there are no observed attributes.
+     */
+    static get observedAttributes() {
+        return [];
+    }
 
-  /**
-   * Sets up the attributes for the Divider.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
+    /**
+     * Sets up the attributes for the Divider.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
 
-  /**
-   * Draws the Divider.
-   * @returns {DocumentFragment} The created document fragment.
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
+    /**
+     * Draws the Divider.
+     * @returns {DocumentFragment} The created document fragment.
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
 
-    let native = document.createElement('div');
-    let slot = document.createElement('slot');
+        let native = document.createElement('div');
+        let slot = document.createElement('slot');
 
-    native.appendChild(slot);
-    fragment.appendChild(native);
+        native.appendChild(slot);
+        fragment.appendChild(native);
 
-    return fragment;
-  }
+        return fragment;
+    }
 }

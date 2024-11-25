@@ -1,36 +1,36 @@
 .container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  flex-direction: var(--flex-direction);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    flex-direction: var(--flex-direction);
 }
 
 .container-w-dropzones {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
 }
 
 .reversed {
-  --flex-direction: column-reverse;
+    --flex-direction: column-reverse;
 }
 
 .basic {
-  --flex-direction: column;
+    --flex-direction: column;
 }
 
 .dragging {
-  position: absolute;
-  pointer-events: none;
-  z-index: 1000;
+    position: absolute;
+    pointer-events: none;
+    z-index: 1000;
 }
 
 .reorder-item {
-  transition:
-    top 0.3s ease,
-    left 0.3s ease;
+    transition:
+        top 0.3s ease,
+        left 0.3s ease;
 }

@@ -3,161 +3,161 @@
 */
 
 :host {
-  position: relative;
-  z-index: 9999;
-  width: 300px;
-  margin: 0.5rem 0;
-  display: none;
+    position: relative;
+    z-index: 9999;
+    width: 300px;
+    margin: 0.5rem 0;
+    display: none;
 }
 
 :host([open]) {
-  display: block;
+    display: block;
 }
 
 .native-toast {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  overflow: hidden;
-  margin: 0;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: var(--wje-border-radius-large);
-  position: relative;
-
-  &.has-media slot[name='media'] {
-    flex: 0 0 1.5rem;
-    width: 1.5rem;
     display: flex;
-    margin-right: 0.5rem;
-    justify-content: center;
-  }
+    align-items: center;
+    padding: 1rem;
+    overflow: hidden;
+    margin: 0;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: var(--wje-border-radius-large);
+    position: relative;
 
-  .content {
-    font-size: var(--wje-font-size-small);
-    .headline {
-      font-size: var(--wje-font-size);
-      font-weight: var(--wje-font-weight-bold);
+    &.has-media slot[name='media'] {
+        flex: 0 0 1.5rem;
+        width: 1.5rem;
+        display: flex;
+        margin-right: 0.5rem;
+        justify-content: center;
     }
-  }
 
-  wje-button {
-    --wje-button-margin-inline: auto 0;
-    margin-left: auto !important;
-  }
-
-  .countdown {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 4px;
-    .countdown-bar {
-      height: 100%;
+    .content {
+        font-size: var(--wje-font-size-small);
+        .headline {
+            font-size: var(--wje-font-size);
+            font-weight: var(--wje-font-weight-bold);
+        }
     }
-  }
+
+    wje-button {
+        --wje-button-margin-inline: auto 0;
+        margin-left: auto !important;
+    }
+
+    .countdown {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 4px;
+        .countdown-bar {
+            height: 100%;
+        }
+    }
 }
 
 :host([position='top']) {
-  animation: slideDown 0.3s ease-out forwards;
-  top: 1rem;
-  left: auto;
-  right: auto;
+    animation: slideDown 0.3s ease-out forwards;
+    top: 1rem;
+    left: auto;
+    right: auto;
 }
 
 :host::part(icon) {
-  margin-right: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 @keyframes slideDown {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 /*PRIMARY*/
 :host([color='primary']) .native-toast {
-  background-color: var(--wje-color-primary-1);
-  color: var(--wje-color-primary-9);
-  border-color: var(--wje-color-primary-3);
+    background-color: var(--wje-color-primary-1);
+    color: var(--wje-color-primary-9);
+    border-color: var(--wje-color-primary-3);
 }
 
 /*COMPLETE*/
 :host([color='complete']) .native-toast {
-  background-color: var(--wje-color-complete-1);
-  color: var(--wje-color-complete-9);
-  border-color: var(--wje-color-complete-3);
+    background-color: var(--wje-color-complete-1);
+    color: var(--wje-color-complete-9);
+    border-color: var(--wje-color-complete-3);
 }
 
 /*SUCCESS*/
 :host([color='success']) .native-toast {
-  background-color: var(--wje-color-success-1);
-  color: var(--wje-color-success-9);
-  border-color: var(--wje-color-success-3);
+    background-color: var(--wje-color-success-1);
+    color: var(--wje-color-success-9);
+    border-color: var(--wje-color-success-3);
 }
 
 /*WARNING*/
 :host([color='warning']) .native-toast {
-  background-color: var(--wje-color-warning-1);
-  color: var(--wje-color-warning-11);
-  border-color: var(--wje-color-warning-3);
+    background-color: var(--wje-color-warning-1);
+    color: var(--wje-color-warning-11);
+    border-color: var(--wje-color-warning-3);
 }
 
 /*DANGER*/
 :host([color='danger']) .native-toast {
-  background-color: var(--wje-color-danger-1);
-  color: var(--wje-color-danger-9);
-  border-color: var(--wje-color-danger-3);
+    background-color: var(--wje-color-danger-1);
+    color: var(--wje-color-danger-9);
+    border-color: var(--wje-color-danger-3);
 }
 
 /*INFO*/
 :host([color='info']) .native-toast {
-  background-color: var(--wje-color-info-1);
-  color: var(--wje-color-info-11);
-  border-color: var(--wje-color-info-4);
+    background-color: var(--wje-color-info-1);
+    color: var(--wje-color-info-11);
+    border-color: var(--wje-color-info-4);
 }
 
 /*CONTRAST*/
 :host([color='contrast']) .native-toast {
-  background-color: var(--wje-color-contrast-2);
-  color: var(--wje-color-contrast-9);
-  border-color: var(--wje-color-contrast-3);
+    background-color: var(--wje-color-contrast-2);
+    color: var(--wje-color-contrast-9);
+    border-color: var(--wje-color-contrast-3);
 }
 
 /*PRIMARY*/
 :host([color='primary']) .countdown-bar {
-  background-color: var(--wje-color-primary-9);
+    background-color: var(--wje-color-primary-9);
 }
 
 /*COMPLETE*/
 :host([color='complete']) .countdown-bar {
-  background-color: var(--wje-color-complete-9);
+    background-color: var(--wje-color-complete-9);
 }
 
 /*SUCCESS*/
 :host([color='success']) .countdown-bar {
-  background-color: var(--wje-color-success-9);
+    background-color: var(--wje-color-success-9);
 }
 
 /*WARNING*/
 :host([color='warning']) .countdown-bar {
-  background-color: var(--wje-color-warning-9);
+    background-color: var(--wje-color-warning-9);
 }
 
 /*DANGER*/
 :host([color='danger']) .countdown-bar {
-  background-color: var(--wje-color-danger-9);
+    background-color: var(--wje-color-danger-9);
 }
 
 /*INFO*/
 :host([color='info']) .countdown-bar {
-  background-color: var(--wje-color-info-9);
+    background-color: var(--wje-color-info-9);
 }
 
 /*CONTRAST*/
 :host([color='contrast']) .countdown-bar {
-  background-color: var(--wje-color-contrast-9);
+    background-color: var(--wje-color-contrast-9);
 }

@@ -16,8 +16,8 @@ const DEBOUNCE_MAP = new Map();
  * @returns {string|number}
  */
 export function getNumberAttribute($elem, name, defaultValue) {
-  const value = parseFloat($elem.getAttribute(name) || '');
-  return isNaN(value) ? defaultValue : value;
+    const value = parseFloat($elem.getAttribute(name) || '');
+    return isNaN(value) ? defaultValue : value;
 }
 
 /**
@@ -27,7 +27,7 @@ export function getNumberAttribute($elem, name, defaultValue) {
  * @param maxColWidth
  */
 export function getColCount(totalWidth, cols, maxColWidth) {
-  return isNaN(cols) ? Math.max(1, Math.ceil(totalWidth / maxColWidth)) : cols;
+    return isNaN(cols) ? Math.max(1, Math.ceil(totalWidth / maxColWidth)) : cols;
 }
 
 /**
@@ -37,9 +37,9 @@ export function getColCount(totalWidth, cols, maxColWidth) {
  * @param id
  */
 export function debounce(cb, ms, id) {
-  const existingTimeout = DEBOUNCE_MAP.get(id);
-  if (existingTimeout !== null && existingTimeout !== undefined) window.clearTimeout(existingTimeout);
-  DEBOUNCE_MAP.set(id, window.setTimeout(cb, ms));
+    const existingTimeout = DEBOUNCE_MAP.get(id);
+    if (existingTimeout !== null && existingTimeout !== undefined) window.clearTimeout(existingTimeout);
+    DEBOUNCE_MAP.set(id, window.setTimeout(cb, ms));
 }
 
 /**
@@ -47,15 +47,15 @@ export function debounce(cb, ms, id) {
  * @param colHeights
  */
 export function findSmallestColIndex(colHeights) {
-  let smallestIndex = 0;
-  let smallestHeight = Infinity;
+    let smallestIndex = 0;
+    let smallestHeight = Infinity;
 
-  colHeights.forEach((height, i) => {
-    if (height < smallestHeight) {
-      smallestHeight = height;
-      smallestIndex = i;
-    }
-  });
+    colHeights.forEach((height, i) => {
+        if (height < smallestHeight) {
+            smallestHeight = height;
+            smallestIndex = i;
+        }
+    });
 
-  return smallestIndex;
+    return smallestIndex;
 }

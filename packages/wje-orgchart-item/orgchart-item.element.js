@@ -15,111 +15,111 @@ import styles from './styles/styles.css?inline';
  * @tag wje-orgchart-item
  */
 export default class OrgchartItem extends WJElement {
-  /**
-   * Creates an instance of OrgchartItem.
-   * @class
-   */
-  constructor() {
-    super();
-  }
-
-  /**
-   * Sets the boss of the orgchart item.
-   * @param value
-   */
-
-  set boss(value) {
-    if (value) this.setAttribute('boss', value);
-  }
-
-  /**
-   * Gets the boss of the orgchart item.
-   * @returns {boolean}
-   */
-
-  get boss() {
-    return this.hasAttribute('boss');
-  }
-
-  className = 'OrgchartItem';
-
-  /**
-   * Returns the CSS styles for the component.
-   * @static
-   * @returns {CSSStyleSheet}
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
-
-  /**
-   * Sets up the attributes for the component.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
-
-  beforeDraw() {
-    if (this.parentElement && this.parentElement.tagName === 'WJE-ORGCHART-GROUP') {
-      this.classList.add('parent-group');
+    /**
+     * Creates an instance of OrgchartItem.
+     * @class
+     */
+    constructor() {
+        super();
     }
-  }
 
-  /**
-   * Draws the component for the org chart item.
-   * @returns {DocumentFragment}
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
+    /**
+     * Sets the boss of the orgchart item.
+     * @param value
+     */
 
-    let native = document.createElement('div');
-    native.setAttribute('part', 'native');
-    native.classList.add('orgchart-item');
+    set boss(value) {
+        if (value) this.setAttribute('boss', value);
+    }
 
-    let card = document.createElement('wje-card');
+    /**
+     * Gets the boss of the orgchart item.
+     * @returns {boolean}
+     */
 
-    let slot = document.createElement('slot');
+    get boss() {
+        return this.hasAttribute('boss');
+    }
 
-    let child = document.createElement('slot');
-    child.setAttribute('name', 'child');
+    className = 'OrgchartItem';
 
-    let expander = document.createElement('div');
-    expander.setAttribute('part', 'expander');
-    expander.classList.add('expander');
-    expander.innerHTML = '-';
+    /**
+     * Returns the CSS styles for the component.
+     * @static
+     * @returns {CSSStyleSheet}
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-    card.appendChild(slot);
-    if (this.children.length > 0 && Array.from(this.children).some((el) => el.tagName === 'WJE-ORGCHART'))
-      card.appendChild(expander); // if the orgchart item has children and
+    /**
+     * Sets up the attributes for the component.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
 
-    native.appendChild(card);
-    native.appendChild(child);
+    beforeDraw() {
+        if (this.parentElement && this.parentElement.tagName === 'WJE-ORGCHART-GROUP') {
+            this.classList.add('parent-group');
+        }
+    }
 
-    fragment.appendChild(native);
+    /**
+     * Draws the component for the org chart item.
+     * @returns {DocumentFragment}
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
 
-    this.expander = expander;
+        let native = document.createElement('div');
+        native.setAttribute('part', 'native');
+        native.classList.add('orgchart-item');
 
-    return fragment;
-  }
+        let card = document.createElement('wje-card');
 
-  /**
-   * After Draws the component for the org chart item.
-   */
-  afterDraw() {
-    this.expander.addEventListener('click', this.toggleChildren);
-  }
+        let slot = document.createElement('slot');
 
-  /**
-   * Toggles the children of the orgchart item.
-   * @param e The event object.
-   */
-  toggleChildren = (e) => {
-    this.classList.toggle('collapse');
-    if (this.classList.contains('collapse')) e.target.innerHTML = '+';
-    else e.target.innerHTML = '-';
-  };
+        let child = document.createElement('slot');
+        child.setAttribute('name', 'child');
 
-  dispatchEvent(e) {
-    return false;
-  }
+        let expander = document.createElement('div');
+        expander.setAttribute('part', 'expander');
+        expander.classList.add('expander');
+        expander.innerHTML = '-';
+
+        card.appendChild(slot);
+        if (this.children.length > 0 && Array.from(this.children).some((el) => el.tagName === 'WJE-ORGCHART'))
+            card.appendChild(expander); // if the orgchart item has children and
+
+        native.appendChild(card);
+        native.appendChild(child);
+
+        fragment.appendChild(native);
+
+        this.expander = expander;
+
+        return fragment;
+    }
+
+    /**
+     * After Draws the component for the org chart item.
+     */
+    afterDraw() {
+        this.expander.addEventListener('click', this.toggleChildren);
+    }
+
+    /**
+     * Toggles the children of the orgchart item.
+     * @param e The event object.
+     */
+    toggleChildren = (e) => {
+        this.classList.toggle('collapse');
+        if (this.classList.contains('collapse')) e.target.innerHTML = '+';
+        else e.target.innerHTML = '-';
+    };
+
+    dispatchEvent(e) {
+        return false;
+    }
 }

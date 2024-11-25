@@ -21,57 +21,57 @@ import styles from './styles/styles.css?inline';
  */
 
 export default class MenuLabel extends WJElement {
-  /**
-   * Creates an instance of MenuLabel.
-   * @class
-   */
-  constructor() {
-    super();
+    /**
+     * Creates an instance of MenuLabel.
+     * @class
+     */
+    constructor() {
+        super();
 
-    this.hasSubmenu = WjElementUtils.hasSlot(this, 'submenu');
-  }
+        this.hasSubmenu = WjElementUtils.hasSlot(this, 'submenu');
+    }
 
-  className = 'MenuLabel';
+    className = 'MenuLabel';
 
-  /**
-   * Returns the CSS styles for the component.
-   * @static
-   * @returns {CSSStyleSheet}
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
+    /**
+     * Returns the CSS styles for the component.
+     * @static
+     * @returns {CSSStyleSheet}
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-  /**
-   * Returns the list of attributes to observe for changes.
-   * @static
-   * @returns {Array<string>}
-   */
-  static get observedAttributes() {
-    return [];
-  }
+    /**
+     * Returns the list of attributes to observe for changes.
+     * @static
+     * @returns {Array<string>}
+     */
+    static get observedAttributes() {
+        return [];
+    }
 
-  /**
-   * Sets up the attributes for the component.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
+    /**
+     * Sets up the attributes for the component.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
 
-  /**
-   * Draws the component for the menu label.
-   * @returns {DocumentFragment}
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
+    /**
+     * Draws the component for the menu label.
+     * @returns {DocumentFragment}
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
 
-    // SLOT
-    let slot = document.createElement('slot');
-    slot.setAttribute('part', 'native');
-    slot.classList.add('native-menu-label');
+        // SLOT
+        let slot = document.createElement('slot');
+        slot.setAttribute('part', 'native');
+        slot.classList.add('native-menu-label');
 
-    fragment.appendChild(slot);
+        fragment.appendChild(slot);
 
-    return fragment;
-  }
+        return fragment;
+    }
 }

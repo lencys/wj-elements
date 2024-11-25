@@ -17,16 +17,16 @@
  * getHsl('test', 50, 70);
  */
 export function getHsl(text, s = 40, l = 65) {
-  let str = text;
-  let hash = 0;
+    let str = text;
+    let hash = 0;
 
-  for (let i = 0; i < str?.length; i++) {
-    hash = str.charCodeAt(i) + hash * 31;
-  }
+    for (let i = 0; i < str?.length; i++) {
+        hash = str.charCodeAt(i) + hash * 31;
+    }
 
-  let h = hash % 360;
+    let h = hash % 360;
 
-  return `hsl(${h}, ${s}%, ${l}%)`;
+    return `hsl(${h}, ${s}%, ${l}%)`;
 }
 
 /**
@@ -50,11 +50,11 @@ export function getHsl(text, s = 40, l = 65) {
  * getInitials('John Michael Doe', 2);
  */
 export function getInitials(string, length = 2) {
-  let names = string.split(' ');
-  let initials = names[0].substring(0, 1).toUpperCase();
+    let names = string.split(' ');
+    let initials = names[0].substring(0, 1).toUpperCase();
 
-  if (names.length > 1 && length > 1) {
-    initials += names[names.length - 1].substring(0, 1).toUpperCase();
-  }
-  return initials;
+    if (names.length > 1 && length > 1) {
+        initials += names[names.length - 1].substring(0, 1).toUpperCase();
+    }
+    return initials;
 }

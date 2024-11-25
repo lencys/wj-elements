@@ -3,171 +3,171 @@
 */
 
 .anchor {
-  width: var(--wje-color-picker-size);
-  height: var(--wje-color-picker-size);
-  background: var(--wje-color-picker-value);
+    width: var(--wje-color-picker-size);
+    height: var(--wje-color-picker-size);
+    background: var(--wje-color-picker-value);
 }
 
 .picker {
-  width: 200px;
-  min-height: 90px;
-  box-shadow:
-    0 0 5px rgba(0, 0, 0, 0.05),
-    0 5px 20px rgba(0, 0, 0, 0.1);
-  border-radius: var(--wje-border-radius-small);
-  border-width: 1px;
-  border-style: var(--wje-border-style);
-  border-color: var(--wje-border-color);
-  background: var(--wje-background);
+    width: 200px;
+    min-height: 90px;
+    box-shadow:
+        0 0 5px rgba(0, 0, 0, 0.05),
+        0 5px 20px rgba(0, 0, 0, 0.1);
+    border-radius: var(--wje-border-radius-small);
+    border-width: 1px;
+    border-style: var(--wje-border-style);
+    border-color: var(--wje-border-color);
+    background: var(--wje-background);
 }
 
 .color-area {
-  display: block;
-  position: relative;
-  height: 100px;
-  color: var(--wje-color-picker-area);
-  background-image: linear-gradient(rgba(0, 0, 0, 0), #000), linear-gradient(90deg, #fff, currentColor);
-  cursor: crosshair;
-  border-radius: var(--wje-color-picker-radius) var(--wje-color-picker-radius) 0 0;
-  border-bottom: 1px solid var(--wje-border-color);
+    display: block;
+    position: relative;
+    height: 100px;
+    color: var(--wje-color-picker-area);
+    background-image: linear-gradient(rgba(0, 0, 0, 0), #000), linear-gradient(90deg, #fff, currentColor);
+    cursor: crosshair;
+    border-radius: var(--wje-color-picker-radius) var(--wje-color-picker-radius) 0 0;
+    border-bottom: 1px solid var(--wje-border-color);
 }
 
 .wrapper {
-  display: inline-table;
-  width: calc(100% - 2rem);
-  margin: 1rem;
+    display: inline-table;
+    width: calc(100% - 2rem);
+    margin: 1rem;
 }
 
 .hue {
-  border-radius: 0.25rem;
-  background-image: linear-gradient(
-    to right,
-    rgb(255, 0, 0) 0%,
-    rgb(255, 255, 0) 17%,
-    rgb(0, 255, 0) 33%,
-    rgb(0, 255, 255) 50%,
-    rgb(0, 0, 255) 67%,
-    rgb(255, 0, 255) 83%,
-    rgb(255, 0, 0) 100%
-  );
-  width: 100%;
-  height: 8px;
-  margin: 0.75rem 0 1rem;
+    border-radius: 0.25rem;
+    background-image: linear-gradient(
+        to right,
+        rgb(255, 0, 0) 0%,
+        rgb(255, 255, 0) 17%,
+        rgb(0, 255, 0) 33%,
+        rgb(0, 255, 255) 50%,
+        rgb(0, 0, 255) 67%,
+        rgb(255, 0, 255) 83%,
+        rgb(255, 0, 0) 100%
+    );
+    width: 100%;
+    height: 8px;
+    margin: 0.75rem 0 1rem;
 }
 
 .hue::part(slider) {
-  --wje-slider-color: transparent;
-  --wje-slider-thumb-color: white;
-  --wje-slider-thumb-shadow: 0 0 0 1px var(--wje-border-color);
-  --wje-slider-thumb-shadow-active: var(--wje-slider-thumb-shadow);
-  --wje-slider-track-color: transparent;
+    --wje-slider-color: transparent;
+    --wje-slider-thumb-color: white;
+    --wje-slider-thumb-shadow: 0 0 0 1px var(--wje-border-color);
+    --wje-slider-thumb-shadow-active: var(--wje-slider-thumb-shadow);
+    --wje-slider-track-color: transparent;
 }
 
 .alpha-wrapper {
-  border-radius: 0.25rem;
-  width: 100%;
-  height: 8px;
-  margin: 0.75rem 0 1rem;
-  background-image: repeating-linear-gradient(45deg, #aaa 25%, transparent 25%, transparent 75%, #aaa 75%, #aaa),
-    repeating-linear-gradient(45deg, #aaa 25%, #fff 25%, #fff 75%, #aaa 75%, #aaa);
-  background-position:
-    0 0,
-    4px 4px;
-  background-size: 8px 8px;
+    border-radius: 0.25rem;
+    width: 100%;
+    height: 8px;
+    margin: 0.75rem 0 1rem;
+    background-image: repeating-linear-gradient(45deg, #aaa 25%, transparent 25%, transparent 75%, #aaa 75%, #aaa),
+        repeating-linear-gradient(45deg, #aaa 25%, #fff 25%, #fff 75%, #aaa 75%, #aaa);
+    background-position:
+        0 0,
+        4px 4px;
+    background-size: 8px 8px;
 }
 
 .alpha {
-  color: var(--wje-color-picker-value);
-  display: block;
-  height: 100%;
-  width: 100%;
-  border-radius: inherit;
-  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0), currentColor);
+    color: var(--wje-color-picker-value);
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0), currentColor);
 }
 
 .alpha::part(slider) {
-  --wje-slider-color: transparent;
-  --wje-slider-thumb-color: white;
-  --wje-slider-thumb-shadow: 0 0 0 1px var(--wje-border-color);
-  --wje-slider-thumb-shadow-active: var(--wje-slider-thumb-shadow);
-  --wje-slider-track-color: transparent;
-  --wje-slider-track-height: 8px;
+    --wje-slider-color: transparent;
+    --wje-slider-thumb-color: white;
+    --wje-slider-thumb-shadow: 0 0 0 1px var(--wje-border-color);
+    --wje-slider-thumb-shadow-active: var(--wje-slider-thumb-shadow);
+    --wje-slider-track-color: transparent;
+    --wje-slider-track-height: 8px;
 }
 
 .input-wrapper {
-  display: grid;
-  align-items: center;
-  grid-template-columns: 1fr auto;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr auto;
 }
 
 .color-preview {
-  width: 30px !important;
-  height: 30px !important;
-  border-radius: 50%;
-  position: relative;
-  margin-right: 1rem;
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    top: 0;
-    border: 1px solid #fff;
+    width: 30px !important;
+    height: 30px !important;
     border-radius: 50%;
-  }
-  &:before {
-    background-image: repeating-linear-gradient(45deg, #aaa 25%, transparent 25%, transparent 75%, #aaa 75%, #aaa),
-      repeating-linear-gradient(45deg, #aaa 25%, #fff 25%, #fff 75%, #aaa 75%, #aaa);
-    background-position:
-      0 0,
-      4px 4px;
-    background-size: 8px 8px;
-  }
-  &:after {
-    background: var(--wje-color-picker-value, transparent);
-  }
+    position: relative;
+    margin-right: 1rem;
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        border: 1px solid #fff;
+        border-radius: 50%;
+    }
+    &:before {
+        background-image: repeating-linear-gradient(45deg, #aaa 25%, transparent 25%, transparent 75%, #aaa 75%, #aaa),
+            repeating-linear-gradient(45deg, #aaa 25%, #fff 25%, #fff 75%, #aaa 75%, #aaa);
+        background-position:
+            0 0,
+            4px 4px;
+        background-size: 8px 8px;
+    }
+    &:after {
+        background: var(--wje-color-picker-value, transparent);
+    }
 }
 
 wje-input {
-  --wje-input-border-radius: 1rem;
-  --wje-input-margin-bottom: 0;
+    --wje-input-border-radius: 1rem;
+    --wje-input-margin-bottom: 0;
 }
 
 wje-input::part(input) {
-  text-align: center;
+    text-align: center;
 }
 
 .swatches {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .swatch {
-  background: var(--wje-color-picker-swatch, transparent);
-  position: relative;
-  width: 20px;
-  height: 20px;
-  margin: 0 4px 6px 4px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  color: inherit;
-  white-space: nowrap;
-  overflow: hidden;
-  cursor: pointer;
+    background: var(--wje-color-picker-swatch, transparent);
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin: 0 4px 6px 4px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    color: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .marker {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  margin: -6px 0 0 -6px;
-  border: 1px solid #fff;
-  border-radius: 50%;
-  background-color: var(--wje-color-picker-value, transparent);
-  cursor: pointer;
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    margin: -6px 0 0 -6px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background-color: var(--wje-color-picker-value, transparent);
+    cursor: pointer;
 }

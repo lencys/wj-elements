@@ -3,7 +3,7 @@
 */
 
 :host {
-  .native-toolbar-action {
-    display: flex;
-  }
+    .native-toolbar-action {
+        display: flex;
+    }
 }

@@ -3,18 +3,18 @@
 */
 
 :host {
-  display: inline-block;
-  .native-button-group {
-    display: flex;
-    flex-wrap: nowrap;
-    line-height: 1;
-  }
+    display: inline-block;
+    .native-button-group {
+        display: flex;
+        flex-wrap: nowrap;
+        line-height: 1;
+    }
 
-  slot {
-    display: contents;
-  }
+    slot {
+        display: contents;
+    }
 }
 
 ::slotted(wje-button) {
-  margin: 0 !important;
+    margin: 0 !important;
 }

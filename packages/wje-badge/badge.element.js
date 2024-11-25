@@ -14,75 +14,75 @@ import styles from './styles/styles.css?inline';
  */
 
 export default class Badge extends WJElement {
-  /**
-   * Creates an instance of Badge.
-   * Represents a custom Badge element.
-   * @class
-   */
-  constructor() {
-    super();
-  }
-
-  /**
-   * The class name for the Badge element.
-   * @type {string} The class name for the Badge element.
-   */
-  className = 'Badge';
-
-  /**
-   * Retrieves the CSS stylesheet for the Badge element.
-   * @static
-   * @returns {CSSStyleSheet} The CSS styles associated with the Badge.
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
-
-  /**
-   * Specifies the attributes to observe for changes.
-   * @static
-   * @returns {Array<string>} An array containing the names of attributes to observe.
-   * @example
-   * static get observedAttributes() {
-   *   return ['color'];
-   * }
-   */
-  static get observedAttributes() {
-    return ['color'];
-  }
-
-  /**
-   * Configures initial attributes for the Badge element.
-   * @returns {void} Nothing is returned.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
-
-  /**
-   * Creates the DOM structure for the Badge element.
-   * @returns {DocumentFragment} A document fragment containing the Badge's structure.
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
-
-    let native = document.createElement('div');
-    native.setAttribute('part', 'native');
-    native.classList.add('native-badge');
-
-    // Add color classes based on the `color` attribute
-    if (this.hasAttribute('color')) {
-      native.classList.add(`wje-color-${this.color}`, 'wje-color');
-    } else {
-      native.classList.add('wje-color-default', 'wje-color');
+    /**
+     * Creates an instance of Badge.
+     * Represents a custom Badge element.
+     * @class
+     */
+    constructor() {
+        super();
     }
 
-    let slot = document.createElement('slot');
+    /**
+     * The class name for the Badge element.
+     * @type {string} The class name for the Badge element.
+     */
+    className = 'Badge';
 
-    native.appendChild(slot);
+    /**
+     * Retrieves the CSS stylesheet for the Badge element.
+     * @static
+     * @returns {CSSStyleSheet} The CSS styles associated with the Badge.
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-    fragment.appendChild(native);
+    /**
+     * Specifies the attributes to observe for changes.
+     * @static
+     * @returns {Array<string>} An array containing the names of attributes to observe.
+     * @example
+     * static get observedAttributes() {
+     *   return ['color'];
+     * }
+     */
+    static get observedAttributes() {
+        return ['color'];
+    }
 
-    return fragment;
-  }
+    /**
+     * Configures initial attributes for the Badge element.
+     * @returns {void} Nothing is returned.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
+
+    /**
+     * Creates the DOM structure for the Badge element.
+     * @returns {DocumentFragment} A document fragment containing the Badge's structure.
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
+
+        let native = document.createElement('div');
+        native.setAttribute('part', 'native');
+        native.classList.add('native-badge');
+
+        // Add color classes based on the `color` attribute
+        if (this.hasAttribute('color')) {
+            native.classList.add(`wje-color-${this.color}`, 'wje-color');
+        } else {
+            native.classList.add('wje-color-default', 'wje-color');
+        }
+
+        let slot = document.createElement('slot');
+
+        native.appendChild(slot);
+
+        fragment.appendChild(native);
+
+        return fragment;
+    }
 }

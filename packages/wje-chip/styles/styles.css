@@ -3,163 +3,163 @@
 */
 
 .native-chip {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-  letter-spacing: -0.006em;
-  margin: 0;
-  padding: 0.5rem 0.75rem;
-  text-align: center;
-  cursor: pointer;
-  white-space: nowrap;
-  text-shadow: none;
-  box-shadow: none;
-  border: 0 none;
-  line-height: 14px;
-  min-height: 28px;
-  height: 28px;
-  width: 100%;
-  max-width: fit-content;
-  min-width: 28px;
-  position: relative;
-  transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: var(--wje-border-radius-pill);
-  overflow: hidden;
-  vertical-align: middle;
-  box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    letter-spacing: -0.006em;
+    margin: 0;
+    padding: 0.5rem 0.75rem;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    text-shadow: none;
+    box-shadow: none;
+    border: 0 none;
+    line-height: 14px;
+    min-height: 28px;
+    height: 28px;
+    width: 100%;
+    max-width: fit-content;
+    min-width: 28px;
+    position: relative;
+    transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: var(--wje-border-radius-pill);
+    overflow: hidden;
+    vertical-align: middle;
+    box-sizing: border-box;
 }
 
 :host(.focus) {
-  box-shadow: none;
+    box-shadow: none;
 }
 
 :host(.wje-active) .native-chip {
-  border: 1px solid var(--wje-color-primary-11);
-  background-color: var(--wje-color-contrast-3);
-  color: var(--wje-color);
+    border: 1px solid var(--wje-color-primary-11);
+    background-color: var(--wje-color-contrast-3);
+    color: var(--wje-color);
 }
 
 :host(:focus, :active:focus, .wje-active:focus) {
-  outline: none !important;
+    outline: none !important;
 }
 
 .check {
-  display: none;
+    display: none;
 }
 
 :host([active]) {
-  .check {
-    display: block;
-    margin-inline: 4px 0;
-  }
+    .check {
+        display: block;
+        margin-inline: 4px 0;
+    }
 }
 
 :host([disabled]) {
-  opacity: 0.5;
-  border: 0;
-  pointer-events: none;
-  cursor: not-allowed;
+    opacity: 0.5;
+    border: 0;
+    pointer-events: none;
+    cursor: not-allowed;
 }
 
 ::slotted(wje-avatar) {
-  width: 22px;
-  height: 22px;
+    width: 22px;
+    height: 22px;
 }
 
 ::slotted(wje-avatar:first-child) {
-  margin-inline: -8px 8px;
-  margin-top: -4px;
-  margin-bottom: -4px;
+    margin-inline: -8px 8px;
+    margin-top: -4px;
+    margin-bottom: -4px;
 }
 
 ::slotted(wje-icon:first-child) {
-  margin: -4px 8px -4px -4px;
+    margin: -4px 8px -4px -4px;
 }
 
 ::slotted(wje-icon:last-child) {
-  margin: -4px -4px -4px 8px;
+    margin: -4px -4px -4px 8px;
 }
 
 wje-button {
-  --wje-button-border-radius: 50%;
-  --wje-button-margin-inline: 0.25rem -0.5rem;
-  --wje-padding-top: 0.15rem;
-  --wje-padding-start: 0.15rem;
-  --wje-padding-end: 0.15rem;
-  --wje-padding-bottom: 0.15rem;
+    --wje-button-border-radius: 50%;
+    --wje-button-margin-inline: 0.25rem -0.5rem;
+    --wje-padding-top: 0.15rem;
+    --wje-padding-start: 0.15rem;
+    --wje-padding-end: 0.15rem;
+    --wje-padding-bottom: 0.15rem;
 }
 
 /*BG - TEXT*/
 .native-chip.wje-color-primary {
-  background-color: var(--wje-color-primary-1);
-  color: var(--wje-color-primary-9);
+    background-color: var(--wje-color-primary-1);
+    color: var(--wje-color-primary-9);
 }
 
 .native-chip.wje-color-complete {
-  background-color: var(--wje-color-complete-1);
-  color: var(--wje-color-complete-9);
+    background-color: var(--wje-color-complete-1);
+    color: var(--wje-color-complete-9);
 }
 
 .native-chip.wje-color-success {
-  background-color: var(--wje-color-success-1);
-  color: var(--wje-color-success-9);
+    background-color: var(--wje-color-success-1);
+    color: var(--wje-color-success-9);
 }
 
 .native-chip.wje-color-warning {
-  background-color: var(--wje-color-warning-2);
-  color: var(--wje-color-warning-11);
+    background-color: var(--wje-color-warning-2);
+    color: var(--wje-color-warning-11);
 }
 
 .native-chip.wje-color-danger {
-  background-color: var(--wje-color-danger-1);
-  color: var(--wje-color-danger-9);
+    background-color: var(--wje-color-danger-1);
+    color: var(--wje-color-danger-9);
 }
 
 .native-chip.wje-color-info {
-  background-color: var(--wje-color-info-1);
-  color: var(--wje-color-info-9);
+    background-color: var(--wje-color-info-1);
+    color: var(--wje-color-info-9);
 }
 
 .native-chip.wje-color-default {
-  background-color: var(--wje-color-contrast-3);
-  color: var(--wje-color-contrast-11);
+    background-color: var(--wje-color-contrast-3);
+    color: var(--wje-color-contrast-11);
 }
 
 /*HOVER*/
 @media (any-hover: hover) {
-  .native-chip.wje-color-primary:hover {
-    background-color: var(--wje-color-primary-4);
-    color: var(--wje-color-primary-10);
-  }
+    .native-chip.wje-color-primary:hover {
+        background-color: var(--wje-color-primary-4);
+        color: var(--wje-color-primary-10);
+    }
 
-  .native-chip.wje-color-complete:hover {
-    background-color: var(--wje-color-complete-4);
-    color: var(--wje-color-complete-10);
-  }
+    .native-chip.wje-color-complete:hover {
+        background-color: var(--wje-color-complete-4);
+        color: var(--wje-color-complete-10);
+    }
 
-  .native-chip.wje-color-success:hover {
-    background-color: var(--wje-color-success-4);
-    color: var(--wje-color-success-10);
-  }
+    .native-chip.wje-color-success:hover {
+        background-color: var(--wje-color-success-4);
+        color: var(--wje-color-success-10);
+    }
 
-  .native-chip.wje-color-warning:hover {
-    background-color: var(--wje-color-warning-4);
-    color: var(--wje-color-warning-11);
-  }
+    .native-chip.wje-color-warning:hover {
+        background-color: var(--wje-color-warning-4);
+        color: var(--wje-color-warning-11);
+    }
 
-  .native-chip.wje-color-danger:hover {
-    background-color: var(--wje-color-danger-4);
-    color: var(--wje-color-danger-10);
-  }
+    .native-chip.wje-color-danger:hover {
+        background-color: var(--wje-color-danger-4);
+        color: var(--wje-color-danger-10);
+    }
 
-  .native-chip.wje-color-info:hover {
-    background-color: var(--wje-color-info-4);
-    color: var(--wje-color-info-10);
-  }
+    .native-chip.wje-color-info:hover {
+        background-color: var(--wje-color-info-4);
+        color: var(--wje-color-info-10);
+    }
 
-  .native-chip.wje-color-default:hover {
-    background-color: var(--wje-color-contrast-4);
-    color: var(--wje-color-contrast-11);
-  }
+    .native-chip.wje-color-default:hover {
+        background-color: var(--wje-color-contrast-4);
+        color: var(--wje-color-contrast-11);
+    }
 }

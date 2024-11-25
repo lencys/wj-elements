@@ -6,50 +6,50 @@
 */
 
 :host {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 :host(.wje-wrap) {
-  flex-wrap: wrap !important;
+    flex-wrap: wrap !important;
 }
 
 // Row
 
 @if $enable-grid-classes {
-  :host {
-    @include make-row();
-  }
+    :host {
+        @include make-row();
+    }
 }
 
 @if $enable-grid-classes {
-  @include make-grid-columns();
+    @include make-grid-columns();
 }
 
 :host(.wje-justify-content-center) {
-  justify-content: center !important;
+    justify-content: center !important;
 }
 
 :host(.wje-justify-content-end) {
-  justify-content: flex-end !important;
+    justify-content: flex-end !important;
 }
 
 :host(.wje-justify-content-between) {
-  justify-content: space-between !important;
+    justify-content: space-between !important;
 }
 
 :host(.wje-justify-content-around) {
-  justify-content: space-around !important;
+    justify-content: space-around !important;
 }
 
 :host(.wje-align-items-start) {
-  align-items: baseline !important;
+    align-items: baseline !important;
 }
 
 :host(.wje-align-items-center) {
-  align-items: center !important;
+    align-items: center !important;
 }
 
 :host(.wje-align-items-end) {
-  align-items: flex-end !important;
+    align-items: flex-end !important;
 }

@@ -15,50 +15,50 @@ import styles from './styles/styles.scss?inline';
  * @tag wje-list
  */
 export default class List extends WJElement {
-  /**
-   * Creates an instance of List.
-   * @class
-   */
-  constructor() {
-    super();
-  }
+    /**
+     * Creates an instance of List.
+     * @class
+     */
+    constructor() {
+        super();
+    }
 
-  className = 'List';
+    className = 'List';
 
-  /**
-   * Returns the CSS styles for the component.
-   * @static
-   * @returns {CSSStyleSheet}
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
+    /**
+     * Returns the CSS styles for the component.
+     * @static
+     * @returns {CSSStyleSheet}
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-  /**
-   * Sets up the attributes for the component.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
+    /**
+     * Sets up the attributes for the component.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
 
-  /**
-   * Returns the list of attributes to observe for changes.
-   * @returns {DocumentFragment}
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
+    /**
+     * Returns the list of attributes to observe for changes.
+     * @returns {DocumentFragment}
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
 
-    let element = document.createElement('slot');
-    fragment.appendChild(element);
+        let element = document.createElement('slot');
+        fragment.appendChild(element);
 
-    return fragment;
-  }
+        return fragment;
+    }
 
-  /**
-   * Called after the component has been drawn.
-   */
-  afterDraw() {
-    this.classList.toggle('wje-lines-' + this.lines, this.hasAttribute('lines'));
-    this.classList.toggle('wje-inset', this.hasAttribute('inset'));
-  }
+    /**
+     * Called after the component has been drawn.
+     */
+    afterDraw() {
+        this.classList.toggle('wje-lines-' + this.lines, this.hasAttribute('lines'));
+        this.classList.toggle('wje-inset', this.hasAttribute('inset'));
+    }
 }

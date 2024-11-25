@@ -13,57 +13,57 @@ import styles from './styles/styles.css?inline';
  * @tag wje-container
  */
 export default class Container extends WJElement {
-  /**
-   * Container constructor method.
-   */
-  constructor() {
-    super();
-  }
+    /**
+     * Container constructor method.
+     */
+    constructor() {
+        super();
+    }
 
-  /**
-   * Class name for the Container.
-   * @type {string}
-   */
-  className = 'Container';
+    /**
+     * Class name for the Container.
+     * @type {string}
+     */
+    className = 'Container';
 
-  /**
-   * Getter for the CSS stylesheet.
-   * @returns {object} The styles object.
-   * @static
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
+    /**
+     * Getter for the CSS stylesheet.
+     * @returns {object} The styles object.
+     * @static
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-  /**
-   * Getter for the observed attributes.
-   * @returns {Array} An empty array.
-   * @static
-   */
-  static get observedAttributes() {
-    return [];
-  }
+    /**
+     * Getter for the observed attributes.
+     * @returns {Array} An empty array.
+     * @static
+     */
+    static get observedAttributes() {
+        return [];
+    }
 
-  /**
-   * Sets up the attributes for the Container.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
+    /**
+     * Sets up the attributes for the Container.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
 
-  /**
-   * Draws the Container element.
-   * @returns {DocumentFragment} The created document fragment.
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
+    /**
+     * Draws the Container element.
+     * @returns {DocumentFragment} The created document fragment.
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
 
-    if (this.indent) this.style.setProperty('--wje-container-indent', this.indent);
+        if (this.indent) this.style.setProperty('--wje-container-indent', this.indent);
 
-    let element = document.createElement('slot');
+        let element = document.createElement('slot');
 
-    fragment.appendChild(element);
+        fragment.appendChild(element);
 
-    return fragment;
-  }
+        return fragment;
+    }
 }

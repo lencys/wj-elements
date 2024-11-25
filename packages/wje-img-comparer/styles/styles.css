@@ -3,61 +3,61 @@
 */
 
 :host {
-  display: inline-block;
-  position: relative;
-  width: 100%;
-  border-color: var(--wje-border-color);
-  border-style: solid;
-  border-width: 1px;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    border-color: var(--wje-border-color);
+    border-style: solid;
+    border-width: 1px;
 }
 
 .wje-before,
 .wje-after {
-  display: block;
+    display: block;
 }
 
 .wje-after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  clip-path: var(--wje-img-compare-clip-path);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    clip-path: var(--wje-img-compare-clip-path);
 }
 
 .native-split-view {
-  max-width: 100%;
-  max-height: 100%;
-  overflow: hidden;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
 }
 
 .wje-divider {
-  display: flex;
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-  background-color: var(--wje-img-compare-divider-background);
-  height: 100%;
-  width: var(--wje-img-compare-divider-size);
-  cursor: col-resize;
-  top: 0;
-  left: var(--wje-img-compare-divider-left);
-  &:after {
     display: flex;
-    content: '';
     position: absolute;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    background-color: var(--wje-img-compare-divider-background);
     height: 100%;
-    left: calc(var(--wje-img-compare-divider-area) / -2 + var(--wje-img-compare-divider-size) / 2);
-    width: var(---wje-img-compare-divider-area);
-  }
-  wje-icon {
-    position: absolute;
-    background-color: white;
-    padding: 0.5rem;
-    color: var(--wje-color-dark);
-    border-radius: var(--wje-border-radius-circle);
-    box-shadow: rgba(82, 63, 105, 0.2) 0 0 30px 10px;
-    background: var(--wje-color-white) !important;
-  }
+    width: var(--wje-img-compare-divider-size);
+    cursor: col-resize;
+    top: 0;
+    left: var(--wje-img-compare-divider-left);
+    &:after {
+        display: flex;
+        content: '';
+        position: absolute;
+        height: 100%;
+        left: calc(var(--wje-img-compare-divider-area) / -2 + var(--wje-img-compare-divider-size) / 2);
+        width: var(---wje-img-compare-divider-area);
+    }
+    wje-icon {
+        position: absolute;
+        background-color: white;
+        padding: 0.5rem;
+        color: var(--wje-color-dark);
+        border-radius: var(--wje-border-radius-circle);
+        box-shadow: rgba(82, 63, 105, 0.2) 0 0 30px 10px;
+        background: var(--wje-color-white) !important;
+    }
 }

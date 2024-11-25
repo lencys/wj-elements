@@ -13,53 +13,53 @@ import styles from './scss/styles.scss?inline';
  * @tag wje-form
  */
 export default class Form extends WJElement {
-  /**
-   * Constructor for the Form class.
-   */
-  constructor() {
-    super();
-  }
+    /**
+     * Constructor for the Form class.
+     */
+    constructor() {
+        super();
+    }
 
-  /**
-   * The class name for the Form class.
-   * @type {string}
-   */
-  className = 'Form';
+    /**
+     * The class name for the Form class.
+     * @type {string}
+     */
+    className = 'Form';
 
-  /**
-   * Getter for the CSS stylesheet.
-   * @returns {*}
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
+    /**
+     * Getter for the CSS stylesheet.
+     * @returns {*}
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-  /**
-   * Getter for the observed attributes.
-   * @returns {*[]}
-   */
-  static get observedAttributes() {
-    return [];
-  }
+    /**
+     * Getter for the observed attributes.
+     * @returns {*[]}
+     */
+    static get observedAttributes() {
+        return [];
+    }
 
-  /**
-   * Sets up the attributes for the Form.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
+    /**
+     * Sets up the attributes for the Form.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
 
-  /**
-   * Draws the Form.
-   * @returns {DocumentFragment}
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
+    /**
+     * Draws the Form.
+     * @returns {DocumentFragment}
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
 
-    let element = document.createElement('slot');
+        let element = document.createElement('slot');
 
-    fragment.appendChild(element);
+        fragment.appendChild(element);
 
-    return fragment;
-  }
+        return fragment;
+    }
 }

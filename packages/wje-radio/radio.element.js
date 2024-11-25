@@ -16,117 +16,117 @@ import styles from './styles/styles.css?inline';
  */
 
 export default class Radio extends WJElement {
-  /**
-   * Creates an instance of Radio.
-   */
-  constructor() {
-    super();
+    /**
+     * Creates an instance of Radio.
+     */
+    constructor() {
+        super();
 
-    this._checked = false;
-  }
-
-  /**
-   * Sets the name of the radio button.
-   * @param value
-   */
-  set checked(value) {
-    this._checked = value;
-
-    if (value) this.setAttribute('checked', '');
-    else this.removeAttribute('checked');
-  }
-
-  /**
-   * Gets the checked property of the radio button.
-   * @returns {boolean}
-   */
-  get checked() {
-    return this._checked;
-  }
-
-  /**
-   * Sets the color of the radio button.
-   * @type {string}
-   */
-  className = 'Radio';
-
-  /**
-   * Returns the CSS styles for the component.
-   * @returns {CSSStyleSheet}
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
-
-  /**
-   * Returns the list of attributes to observe for changes.
-   * @static
-   * @returns {Array<string>}
-   */
-  static get observedAttributes() {
-    return ['checked'];
-  }
-
-  /**
-   * Sets up the attributes for the component.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
-
-  /**
-   * Draws the radio button.
-   * @returns {DocumentFragment}
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
-
-    let native = document.createElement('div');
-    native.classList.add('native-radio');
-
-    if (this.color) native.classList.add(this.color);
-
-    this.input = document.createElement('input');
-    this.input.type = 'radio';
-    this.input.id = 'radio';
-    this.input.name = this.name + '-radio';
-    this.input.checked = this.hasAttribute('checked');
-    this.input.disabled = this.hasAttribute('disabled');
-
-    let label = document.createElement('label');
-    label.htmlFor = 'radio';
-    label.innerHTML = '<slot></slot>';
-
-    native.appendChild(this.input);
-    native.appendChild(label);
-
-    fragment.appendChild(native);
-
-    return fragment;
-  }
-
-  /**
-   * Sets up the event listeners for the component.
-   */
-  afterDraw() {
-    if (!this.hasAttribute('disabled')) {
-      event.addListener(this, 'click', 'wje-radio:change');
-      event.addListener(this, 'click', 'wje-radio:input');
+        this._checked = false;
     }
-  }
 
-  /**
-   * Called when an attribute changes.
-   * @param {object} e
-   */
-  inputEvent = (e) => {
-    this.checked = e.target.checked;
-  };
+    /**
+     * Sets the name of the radio button.
+     * @param value
+     */
+    set checked(value) {
+        this._checked = value;
 
-  /**
-   * Toggles the radio button.
-   */
-  beforeDisconnect() {
-    event.removeElement(this);
-  }
+        if (value) this.setAttribute('checked', '');
+        else this.removeAttribute('checked');
+    }
+
+    /**
+     * Gets the checked property of the radio button.
+     * @returns {boolean}
+     */
+    get checked() {
+        return this._checked;
+    }
+
+    /**
+     * Sets the color of the radio button.
+     * @type {string}
+     */
+    className = 'Radio';
+
+    /**
+     * Returns the CSS styles for the component.
+     * @returns {CSSStyleSheet}
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
+
+    /**
+     * Returns the list of attributes to observe for changes.
+     * @static
+     * @returns {Array<string>}
+     */
+    static get observedAttributes() {
+        return ['checked'];
+    }
+
+    /**
+     * Sets up the attributes for the component.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
+
+    /**
+     * Draws the radio button.
+     * @returns {DocumentFragment}
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
+
+        let native = document.createElement('div');
+        native.classList.add('native-radio');
+
+        if (this.color) native.classList.add(this.color);
+
+        this.input = document.createElement('input');
+        this.input.type = 'radio';
+        this.input.id = 'radio';
+        this.input.name = this.name + '-radio';
+        this.input.checked = this.hasAttribute('checked');
+        this.input.disabled = this.hasAttribute('disabled');
+
+        let label = document.createElement('label');
+        label.htmlFor = 'radio';
+        label.innerHTML = '<slot></slot>';
+
+        native.appendChild(this.input);
+        native.appendChild(label);
+
+        fragment.appendChild(native);
+
+        return fragment;
+    }
+
+    /**
+     * Sets up the event listeners for the component.
+     */
+    afterDraw() {
+        if (!this.hasAttribute('disabled')) {
+            event.addListener(this, 'click', 'wje-radio:change');
+            event.addListener(this, 'click', 'wje-radio:input');
+        }
+    }
+
+    /**
+     * Called when an attribute changes.
+     * @param {object} e
+     */
+    inputEvent = (e) => {
+        this.checked = e.target.checked;
+    };
+
+    /**
+     * Toggles the radio button.
+     */
+    beforeDisconnect() {
+        event.removeElement(this);
+    }
 }

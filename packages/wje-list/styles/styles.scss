@@ -3,23 +3,23 @@
 */
 
 :host {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 
-  display: block;
+    display: block;
 
-  contain: content;
-  list-style-type: none;
+    contain: content;
+    list-style-type: none;
 }
 
 :host(.wje-inset) {
-  background: var(--wje-list-background);
-  transform: translateZ(0);
-  overflow: hidden;
-  padding: var(--wje-list-inset-padding);
-  border-radius: var(--wje-list-border-radius);
+    background: var(--wje-list-background);
+    transform: translateZ(0);
+    overflow: hidden;
+    padding: var(--wje-list-inset-padding);
+    border-radius: var(--wje-list-border-radius);
 }
 
 :host(.wje-lines-none) ::slotted(wje-item) {
-  --wje-border-width: 0 !important;
+    --wje-border-width: 0 !important;
 }

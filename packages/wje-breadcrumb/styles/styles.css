@@ -3,55 +3,55 @@
 */
 
 :host {
-  display: flex;
-  flex: 0 0 auto;
-  align-items: center;
-  line-height: 1.5;
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    line-height: 1.5;
 }
 
 :host(.collapsed) {
-  display: none;
+    display: none;
 }
 .native-breadcrumb {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  outline: none;
-  background: inherit;
-  padding: 0.25rem 0.75rem;
-  color: var(--wje-breadcrumb-a);
-  text-decoration: none;
-  &.hidden {
-    display: none;
-  }
-  &.active {
-    font-weight: bold;
-  }
-  &:hover {
-    color: var(--wje-breadcrumb-a-hover);
-  }
+    display: flex;
+    align-items: center;
+    width: 100%;
+    outline: none;
+    background: inherit;
+    padding: 0.25rem 0.75rem;
+    color: var(--wje-breadcrumb-a);
+    text-decoration: none;
+    &.hidden {
+        display: none;
+    }
+    &.active {
+        font-weight: bold;
+    }
+    &:hover {
+        color: var(--wje-breadcrumb-a-hover);
+    }
 }
 
 button {
-  margin-inline: 0.75rem;
-  border: 0 solid transparent;
-  border-radius: 3px;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+    margin-inline: 0.75rem;
+    border: 0 solid transparent;
+    border-radius: 3px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .separator {
-  display: inline-flex;
-  align-items: center;
+    display: inline-flex;
+    align-items: center;
 }
 
 ::slotted([slot='start']) {
-  margin-inline: 0 0.5rem;
+    margin-inline: 0 0.5rem;
 }
 
 ::slotted([slot='end']) {
-  margin-inline: 0.5rem 0;
+    margin-inline: 0.5rem 0;
 }

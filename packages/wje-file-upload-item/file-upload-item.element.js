@@ -24,147 +24,147 @@ import styles from './styles/styles.css?inline';
  * @tag wje-file-upload
  */
 export default class FileUploadItem extends WJElement {
-  /**
-   * Creates an instance of FileUploadItem.
-   * @class
-   */
-  constructor() {
-    super();
-    this.localizer = new Localizer(this);
-  }
-
-  /**
-   * Dependencies for the component.
-   * @type {object}
-   */
-  dependencies = {
-    'wje-format-digital': FormatDigital,
-    'wje-button': Button,
-    'wje-slider': Slider,
-    'wje-icon': Icon,
-  };
-
-  className = 'FileUploadItem';
-
-  /**
-   * Returns the CSS styles for the component.
-   * @static
-   * @returns {CSSStyleSheet}
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
-
-  /**
-   * Returns the list of attributes to observe for changes.
-   * @static
-   * @returns {Array<string>}
-   */
-  static get observedAttributes() {
-    return ['uploaded'];
-  }
-
-  /**
-   * Called when an observed attribute has been added, removed, updated, or replaced.
-   * @param {string} name The name of the attribute that has changed.
-   * @param {string} old The old value of the attribute.
-   * @param {string} newName The new value of the attribute.
-   */
-  attributeChangedCallback(name, old, newName) {
-    if (name === 'uploaded' && this.drawingStatus === 'AFTER') {
-      this.uploadedEl.setAttribute('value', this.uploaded);
-
-      let progress = (+this.uploaded / +this.size) * 100 || 0;
-      this.sliderEl.value = Math.round(progress, 0);
+    /**
+     * Creates an instance of FileUploadItem.
+     * @class
+     */
+    constructor() {
+        super();
+        this.localizer = new Localizer(this);
     }
-  }
 
-  /**
-   * Sets up the attributes for the component.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
+    /**
+     * Dependencies for the component.
+     * @type {object}
+     */
+    dependencies = {
+        'wje-format-digital': FormatDigital,
+        'wje-button': Button,
+        'wje-slider': Slider,
+        'wje-icon': Icon,
+    };
 
-  /**
-   * Method to draw the component on the screen.
-   * @returns {DocumentFragment} The fragment containing the component.
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
+    className = 'FileUploadItem';
 
-    let native = document.createElement('div');
-    native.classList.add('native-file-upload-item');
+    /**
+     * Returns the CSS styles for the component.
+     * @static
+     * @returns {CSSStyleSheet}
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-    let slot = document.createElement('slot');
-    slot.setAttribute('name', 'img');
+    /**
+     * Returns the list of attributes to observe for changes.
+     * @static
+     * @returns {Array<string>}
+     */
+    static get observedAttributes() {
+        return ['uploaded'];
+    }
 
-    let image = document.createElement('div');
-    image.setAttribute('part', 'image');
-    image.classList.add('image');
+    /**
+     * Called when an observed attribute has been added, removed, updated, or replaced.
+     * @param {string} name The name of the attribute that has changed.
+     * @param {string} old The old value of the attribute.
+     * @param {string} newName The new value of the attribute.
+     */
+    attributeChangedCallback(name, old, newName) {
+        if (name === 'uploaded' && this.drawingStatus === 'AFTER') {
+            this.uploadedEl.setAttribute('value', this.uploaded);
 
-    let name = document.createElement('span');
-    name.classList.add('name');
-    name.innerText = this.name;
+            let progress = (+this.uploaded / +this.size) * 100 || 0;
+            this.sliderEl.value = Math.round(progress, 0);
+        }
+    }
 
-    let actions = document.createElement('slot');
-    actions.classList.add('actions');
-    actions.setAttribute('name', 'action');
+    /**
+     * Sets up the attributes for the component.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
 
-    let button = document.createElement('wje-button');
-    button.setAttribute('fill', 'link');
-    button.setAttribute('size', 'small');
-    button.innerHTML = `<wje-icon name="x" size="small"></wje-icon>`;
+    /**
+     * Method to draw the component on the screen.
+     * @returns {DocumentFragment} The fragment containing the component.
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
 
-    let sizeWrapper = document.createElement('span');
-    sizeWrapper.classList.add('size');
+        let native = document.createElement('div');
+        native.classList.add('native-file-upload-item');
 
-    let uploaded = document.createElement('wje-format-digital');
-    uploaded.setAttribute('value', this.uploaded || 0);
-    uploaded.innerHTML = `<span slot="start">${this.localizer.translate('wj.file.upload.uploaded')}</span>`;
+        let slot = document.createElement('slot');
+        slot.setAttribute('name', 'img');
 
-    let size = document.createElement('wje-format-digital');
-    size.setAttribute('value', this.size || 0);
-    size.innerHTML = `<span slot="start">&nbsp;${this.localizer.translate('wj.file.upload.from')} </span>`;
+        let image = document.createElement('div');
+        image.setAttribute('part', 'image');
+        image.classList.add('image');
 
-    let slider = document.createElement('wje-progress-bar');
-    slider.classList.add('file-progress');
-    slider.setAttribute('id', 'id-' + this.lastModified);
-    slider.setAttribute('value', this.progress || 0);
-    slider.setAttribute('color', 'success');
+        let name = document.createElement('span');
+        name.classList.add('name');
+        name.innerText = this.name;
 
-    image.appendChild(slot);
-    actions.appendChild(button);
+        let actions = document.createElement('slot');
+        actions.classList.add('actions');
+        actions.setAttribute('name', 'action');
 
-    sizeWrapper.appendChild(uploaded);
-    sizeWrapper.appendChild(size);
+        let button = document.createElement('wje-button');
+        button.setAttribute('fill', 'link');
+        button.setAttribute('size', 'small');
+        button.innerHTML = `<wje-icon name="x" size="small"></wje-icon>`;
 
-    native.appendChild(image);
-    native.appendChild(name);
-    native.appendChild(sizeWrapper);
-    native.appendChild(actions);
-    native.appendChild(slider);
+        let sizeWrapper = document.createElement('span');
+        sizeWrapper.classList.add('size');
 
-    fragment.appendChild(native);
+        let uploaded = document.createElement('wje-format-digital');
+        uploaded.setAttribute('value', this.uploaded || 0);
+        uploaded.innerHTML = `<span slot="start">${this.localizer.translate('wj.file.upload.uploaded')}</span>`;
 
-    this.button = button;
-    this.uploadedEl = uploaded;
-    this.sliderEl = slider;
+        let size = document.createElement('wje-format-digital');
+        size.setAttribute('value', this.size || 0);
+        size.innerHTML = `<span slot="start">&nbsp;${this.localizer.translate('wj.file.upload.from')} </span>`;
 
-    return fragment;
-  }
+        let slider = document.createElement('wje-progress-bar');
+        slider.classList.add('file-progress');
+        slider.setAttribute('id', 'id-' + this.lastModified);
+        slider.setAttribute('value', this.progress || 0);
+        slider.setAttribute('color', 'success');
 
-  /**
-   * Called after the component has been drawn.
-   */
-  afterDraw() {
-    this.button.addEventListener('wje-button:click', this.onDelete);
-  }
+        image.appendChild(slot);
+        actions.appendChild(button);
 
-  /**
-   * Handles the delete action.
-   */
-  onDelete = () => {
-    this.remove();
-  };
+        sizeWrapper.appendChild(uploaded);
+        sizeWrapper.appendChild(size);
+
+        native.appendChild(image);
+        native.appendChild(name);
+        native.appendChild(sizeWrapper);
+        native.appendChild(actions);
+        native.appendChild(slider);
+
+        fragment.appendChild(native);
+
+        this.button = button;
+        this.uploadedEl = uploaded;
+        this.sliderEl = slider;
+
+        return fragment;
+    }
+
+    /**
+     * Called after the component has been drawn.
+     */
+    afterDraw() {
+        this.button.addEventListener('wje-button:click', this.onDelete);
+    }
+
+    /**
+     * Handles the delete action.
+     */
+    onDelete = () => {
+        this.remove();
+    };
 }

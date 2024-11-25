@@ -6,8 +6,8 @@
 */
 
 :host {
-  width: 100%;
-  flex-grow: 0;
+    width: 100%;
+    flex-grow: 0;
 }
 
 /*
@@ -15,18 +15,18 @@
 */
 
 wje-row {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 // Row
 
 @if $enable-grid-classes {
-  wje-row {
-    @include make-row();
-  }
+    wje-row {
+        @include make-row();
+    }
 }
 
 @if $enable-grid-classes {
-  @include make-grid-columns();
+    @include make-grid-columns();
 }

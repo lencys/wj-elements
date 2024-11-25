@@ -13,51 +13,51 @@ import styles from './styles/styles.css?inline';
  */
 
 export default class Main extends WJElement {
-  /**
-   * Creates an instance of Main.
-   * @class
-   */
-  constructor() {
-    super();
-  }
+    /**
+     * Creates an instance of Main.
+     * @class
+     */
+    constructor() {
+        super();
+    }
 
-  className = 'Main';
+    className = 'Main';
 
-  /**
-   * Returns the CSS styles for the component.
-   * @static
-   * @returns {CSSStyleSheet}
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
+    /**
+     * Returns the CSS styles for the component.
+     * @static
+     * @returns {CSSStyleSheet}
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-  /**
-   * Returns the list of attributes to observe for changes.
-   * @static
-   * @returns {Array<string>}
-   */
-  static get observedAttributes() {
-    return [];
-  }
+    /**
+     * Returns the list of attributes to observe for changes.
+     * @static
+     * @returns {Array<string>}
+     */
+    static get observedAttributes() {
+        return [];
+    }
 
-  /**
-   * Sets up the attributes for the component.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
+    /**
+     * Sets up the attributes for the component.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
 
-  /**
-   * Draws the component for the main section.
-   * @returns {DocumentFragment}
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
+    /**
+     * Draws the component for the main section.
+     * @returns {DocumentFragment}
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
 
-    let element = document.createElement('slot');
-    fragment.appendChild(element);
+        let element = document.createElement('slot');
+        fragment.appendChild(element);
 
-    return fragment;
-  }
+        return fragment;
+    }
 }

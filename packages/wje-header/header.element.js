@@ -17,57 +17,57 @@ import styles from './styles/styles.css?inline';
  * @tag wje-header
  */
 export default class Header extends WJElement {
-  /**
-   * Creates an instance of Header.
-   * @class
-   */
-  constructor() {
-    super();
-  }
+    /**
+     * Creates an instance of Header.
+     * @class
+     */
+    constructor() {
+        super();
+    }
 
-  className = 'Header';
+    className = 'Header';
 
-  /**
-   * Returns the CSS styles for the component.
-   * @static
-   * @returns {CSSStyleSheet}
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
+    /**
+     * Returns the CSS styles for the component.
+     * @static
+     * @returns {CSSStyleSheet}
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-  /**
-   * Returns the list of attributes to observe for changes.
-   * @static
-   * @returns {Array<string>}
-   */
-  static get observedAttributes() {
-    return [];
-  }
+    /**
+     * Returns the list of attributes to observe for changes.
+     * @static
+     * @returns {Array<string>}
+     */
+    static get observedAttributes() {
+        return [];
+    }
 
-  /**
-   * Sets up the attributes for the component.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
+    /**
+     * Sets up the attributes for the component.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
 
-  /**
-   * Draws the component.
-   * @returns {DocumentFragment}
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
+    /**
+     * Draws the component.
+     * @returns {DocumentFragment}
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
 
-    let element = document.createElement('header');
-    element.classList.add('native-header');
-    element.setAttribute('part', 'native');
+        let element = document.createElement('header');
+        element.classList.add('native-header');
+        element.setAttribute('part', 'native');
 
-    let slot = document.createElement('slot');
+        let slot = document.createElement('slot');
 
-    element.appendChild(slot);
-    fragment.appendChild(element);
+        element.appendChild(slot);
+        fragment.appendChild(element);
 
-    return fragment;
-  }
+        return fragment;
+    }
 }

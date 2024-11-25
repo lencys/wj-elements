@@ -1,12 +1,12 @@
 .native-timeline {
-  position: relative;
+    position: relative;
 }
 
 .vertical-line {
-  position: absolute;
-  margin-left: calc(var(--wje-spacing-x-large) + 1px);
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background-color: var(--wje-color-info-3);
+    position: absolute;
+    margin-left: calc(var(--wje-spacing-x-large) + 1px);
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: var(--wje-color-info-3);
 }

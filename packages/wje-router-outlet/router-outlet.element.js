@@ -11,16 +11,16 @@ setDefaultAnimation(GenericCSS);
  * @tag wje-router-outlet
  */
 export default class RouterOutlet extends AnimatedOutlet {
-  /**
-   * Creates an instance of Route.
-   */
-  constructor() {
-    super();
-  }
+    /**
+     * Creates an instance of Route.
+     */
+    constructor() {
+        super();
+    }
 
-  /**
-   * The class name for the component.
-   * @type {string}
-   */
-  className = 'RouterOutlet';
+    /**
+     * The class name for the component.
+     * @type {string}
+     */
+    className = 'RouterOutlet';
 }

@@ -27,135 +27,135 @@ import styles from './styles/styles.css?inline';
  */
 
 export default class SplitView extends WJElement {
-  /**
-   * Creates an instance of SplitView.
-   * @class
-   */
-  constructor() {
-    super();
-  }
-
-  set initial(value) {
-    this.setAttribute('initial', value);
-  }
-
-  get initial() {
-    return +this.getAttribute('initial') || 50;
-  }
-
-  className = 'SplitView';
-
-  /**
-   * Returns the CSS styles for the component.
-   * @static
-   * @returns {CSSStyleSheet}
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
-
-  /**
-   * Returns the list of attributes to observe for changes.
-   * @static
-   * @returns {Array<string>}
-   */
-  static get observedAttributes() {
-    return [];
-  }
-
-  /**
-   * Sets up the attributes for the component.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
-
-  /**
-   * Draws the component for the split view.
-   * @returns {DocumentFragment}
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
-
-    let native = document.createElement('div');
-    native.classList.add('native-split-view');
-
-    let start = document.createElement('slot');
-    start.setAttribute('name', 'start');
-
-    let end = document.createElement('slot');
-    end.setAttribute('name', 'end');
-
-    let divider = document.createElement('slot');
-    divider.setAttribute('name', 'divider');
-
-    let dividerElement = document.createElement('div');
-    dividerElement.classList.add('wje-divider');
-    dividerElement.setAttribute('part', 'divider');
-    dividerElement.appendChild(divider);
-    dividerElement.addEventListener('mousedown', this.handleDrag, false);
-
-    native.appendChild(start);
-    native.appendChild(dividerElement);
-    native.appendChild(end);
-
-    fragment.appendChild(native);
-
-    return fragment;
-  }
-
-  /**
-   * Sets up the event listeners after the component is drawn.
-   */
-  afterDraw() {
-    this.detectSize();
-
-    if (this.min) this.style.setProperty('--wje-split-view-min', this.pixelsToPercentage(this.min) + '%');
-
-    if (this.max) this.style.setProperty('--wje-split-view-max', 100 - this.pixelsToPercentage(this.max) + '%');
-
-    if (this.initial) {
-      this.style.setProperty('--wje-split-view-calc-a', this.pixelsToPercentage(this.initial) + '%');
-      this.style.setProperty('--wje-split-view-calc-b', 100 - this.pixelsToPercentage(this.initial) + '%');
+    /**
+     * Creates an instance of SplitView.
+     * @class
+     */
+    constructor() {
+        super();
     }
 
-    this.resizeObserver = new ResizeObserver((entries) => this.handleResize(entries));
-  }
+    set initial(value) {
+        this.setAttribute('initial', value);
+    }
 
-  /**
-   * Handles the drag event.
-   * @param {Event} e The event object.
-   */
-  handleDrag = (e) => {
-    if (this.hasAttribute('disabled')) return;
+    get initial() {
+        return +this.getAttribute('initial') || 50;
+    }
 
-    drag(this, {
-      onMove: (x, y) => {
-        let newPositionInPixels = this.hasAttribute('vertical') ? y : x;
-        let sizeA = this.pixelsToPercentage(newPositionInPixels);
-        let sizeB = 100 - this.pixelsToPercentage(newPositionInPixels);
+    className = 'SplitView';
 
-        this.style.setProperty('--wje-split-view-calc-a', sizeA + '%');
-        this.style.setProperty('--wje-split-view-calc-b', sizeB + '%');
-      },
-      initialEvent: e,
-    });
-  };
+    /**
+     * Returns the CSS styles for the component.
+     * @static
+     * @returns {CSSStyleSheet}
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-  /**
-   * Detects the size of the split view.
-   */
-  detectSize() {
-    const { width, height } = this.getBoundingClientRect();
-    this.size = this.hasAttribute('vertical') ? height : width;
-  }
+    /**
+     * Returns the list of attributes to observe for changes.
+     * @static
+     * @returns {Array<string>}
+     */
+    static get observedAttributes() {
+        return [];
+    }
 
-  /**
-   * Converts pixels to a percentage.
-   * @param {number} value The pixel value.
-   * @returns {number} The percentage value.
-   */
-  pixelsToPercentage(value) {
-    return (value / this.size) * 100;
-  }
+    /**
+     * Sets up the attributes for the component.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
+
+    /**
+     * Draws the component for the split view.
+     * @returns {DocumentFragment}
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
+
+        let native = document.createElement('div');
+        native.classList.add('native-split-view');
+
+        let start = document.createElement('slot');
+        start.setAttribute('name', 'start');
+
+        let end = document.createElement('slot');
+        end.setAttribute('name', 'end');
+
+        let divider = document.createElement('slot');
+        divider.setAttribute('name', 'divider');
+
+        let dividerElement = document.createElement('div');
+        dividerElement.classList.add('wje-divider');
+        dividerElement.setAttribute('part', 'divider');
+        dividerElement.appendChild(divider);
+        dividerElement.addEventListener('mousedown', this.handleDrag, false);
+
+        native.appendChild(start);
+        native.appendChild(dividerElement);
+        native.appendChild(end);
+
+        fragment.appendChild(native);
+
+        return fragment;
+    }
+
+    /**
+     * Sets up the event listeners after the component is drawn.
+     */
+    afterDraw() {
+        this.detectSize();
+
+        if (this.min) this.style.setProperty('--wje-split-view-min', this.pixelsToPercentage(this.min) + '%');
+
+        if (this.max) this.style.setProperty('--wje-split-view-max', 100 - this.pixelsToPercentage(this.max) + '%');
+
+        if (this.initial) {
+            this.style.setProperty('--wje-split-view-calc-a', this.pixelsToPercentage(this.initial) + '%');
+            this.style.setProperty('--wje-split-view-calc-b', 100 - this.pixelsToPercentage(this.initial) + '%');
+        }
+
+        this.resizeObserver = new ResizeObserver((entries) => this.handleResize(entries));
+    }
+
+    /**
+     * Handles the drag event.
+     * @param {Event} e The event object.
+     */
+    handleDrag = (e) => {
+        if (this.hasAttribute('disabled')) return;
+
+        drag(this, {
+            onMove: (x, y) => {
+                let newPositionInPixels = this.hasAttribute('vertical') ? y : x;
+                let sizeA = this.pixelsToPercentage(newPositionInPixels);
+                let sizeB = 100 - this.pixelsToPercentage(newPositionInPixels);
+
+                this.style.setProperty('--wje-split-view-calc-a', sizeA + '%');
+                this.style.setProperty('--wje-split-view-calc-b', sizeB + '%');
+            },
+            initialEvent: e,
+        });
+    };
+
+    /**
+     * Detects the size of the split view.
+     */
+    detectSize() {
+        const { width, height } = this.getBoundingClientRect();
+        this.size = this.hasAttribute('vertical') ? height : width;
+    }
+
+    /**
+     * Converts pixels to a percentage.
+     * @param {number} value The pixel value.
+     * @returns {number} The percentage value.
+     */
+    pixelsToPercentage(value) {
+        return (value / this.size) * 100;
+    }
 }

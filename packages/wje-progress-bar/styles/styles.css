@@ -3,33 +3,33 @@
 */
 
 :host([color='primary']) {
-  --wje-progress-bar-background-color: var(--wje-color-primary-2);
-  --wje-progress-bar-color: var(--wje-color-primary-9);
+    --wje-progress-bar-background-color: var(--wje-color-primary-2);
+    --wje-progress-bar-color: var(--wje-color-primary-9);
 }
 
 :host([color='complete']) {
-  --wje-progress-bar-background-color: var(--wje-color-complete-2);
-  --wje-progress-bar-color: var(--wje-color-complete-9);
+    --wje-progress-bar-background-color: var(--wje-color-complete-2);
+    --wje-progress-bar-color: var(--wje-color-complete-9);
 }
 
 :host([color='success']) {
-  --wje-progress-bar-background-color: var(--wje-color-success-2);
-  --wje-progress-bar-color: var(--wje-color-success-9);
+    --wje-progress-bar-background-color: var(--wje-color-success-2);
+    --wje-progress-bar-color: var(--wje-color-success-9);
 }
 
 :host([color='warning']) {
-  --wje-progress-bar-background-color: var(--wje-color-warning-2);
-  --wje-progress-bar-color: var(--wje-color-warning-9);
+    --wje-progress-bar-background-color: var(--wje-color-warning-2);
+    --wje-progress-bar-color: var(--wje-color-warning-9);
 }
 
 :host([color='danger']) {
-  --wje-progress-bar-background-color: var(--wje-color-danger-2);
-  --wje-progress-bar-color: var(--wje-color-danger-9);
+    --wje-progress-bar-background-color: var(--wje-color-danger-2);
+    --wje-progress-bar-color: var(--wje-color-danger-9);
 }
 
 :host([color='info']) {
-  --wje-progress-bar-background-color: var(--wje-color-info-2);
-  --wje-progress-bar-color: var(--wje-color-info-9);
+    --wje-progress-bar-background-color: var(--wje-color-info-2);
+    --wje-progress-bar-color: var(--wje-color-info-9);
 }
 
 /*:host(.wje-color-dark) {*/
@@ -41,50 +41,50 @@
 /*}*/
 
 :host {
-  --wje-progress-bar-background-color: var(--wje-color-contrast-2);
-  --wje-progress-bar-color: var(--wje-color-contrast-6);
-  --wje-progress-bar-text-size: 0.75rem;
-  --wje-progress-bar-text-color: var(--wje-color);
-  /*--wje-progress-bar-stroke: var(--wje-color-contrast-3);*/
-  fill: var(--wje-progress-bar-background-color);
-  .progress {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
+    --wje-progress-bar-background-color: var(--wje-color-contrast-2);
+    --wje-progress-bar-color: var(--wje-color-contrast-6);
+    --wje-progress-bar-text-size: 0.75rem;
+    --wje-progress-bar-text-color: var(--wje-color);
+    /*--wje-progress-bar-stroke: var(--wje-color-contrast-3);*/
+    fill: var(--wje-progress-bar-background-color);
+    .progress {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
 
-  .slot-wrapper {
-    display: flex;
-    position: absolute;
-    top: 0;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-  }
-  #bar {
-    fill: var(--wje-progress-bar-color);
-  }
+    .slot-wrapper {
+        display: flex;
+        position: absolute;
+        top: 0;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+    }
+    #bar {
+        fill: var(--wje-progress-bar-color);
+    }
 
-  text {
-    transform: rotate(90deg);
-    transform-origin: center;
-    text-anchor: middle;
-    dominant-baseline: middle;
-    font-size: var(--wje-progress-bar-text-size);
-    fill: var(--wje-progress-bar-text-color);
-    stroke: var(--wje-progress-bar-text-color);
-  }
+    text {
+        transform: rotate(90deg);
+        transform-origin: center;
+        text-anchor: middle;
+        dominant-baseline: middle;
+        font-size: var(--wje-progress-bar-text-size);
+        fill: var(--wje-progress-bar-text-color);
+        stroke: var(--wje-progress-bar-text-color);
+    }
 }
 
 :host(.wje-color) #bar {
-  fill: var(--wje-progress-bar-color);
+    fill: var(--wje-progress-bar-color);
 }
 
 ::slotted([slot='start']) {
-  margin-inline: 0 1rem;
+    margin-inline: 0 1rem;
 }
 
 ::slotted([slot='end']) {
-  margin-inline: 1rem 0;
+    margin-inline: 1rem 0;
 }

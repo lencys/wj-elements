@@ -11,55 +11,55 @@ import styles from './scss/styles.scss?inline';
  * @slot - The slot for adding child elements or components.
  */
 export default class Grid extends WJElement {
-  /**
-   * Constructor for the Grid class.
-   */
-  constructor() {
-    super();
-  }
+    /**
+     * Constructor for the Grid class.
+     */
+    constructor() {
+        super();
+    }
 
-  /**
-   * The class name for the Grid class.
-   * @type {string}
-   */
-  className = 'Grid';
+    /**
+     * The class name for the Grid class.
+     * @type {string}
+     */
+    className = 'Grid';
 
-  /**
-   * Getter for the CSS stylesheet.
-   * @returns {*}
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
+    /**
+     * Getter for the CSS stylesheet.
+     * @returns {*}
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-  /**
-   * Getter for the observed attributes.
-   * @returns {*[]}
-   */
-  static get observedAttributes() {
-    return [];
-  }
+    /**
+     * Getter for the observed attributes.
+     * @returns {*[]}
+     */
+    static get observedAttributes() {
+        return [];
+    }
 
-  /**
-   * Sets up the attributes for the Grid.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
+    /**
+     * Sets up the attributes for the Grid.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
 
-  /**
-   * Draws the Grid element.
-   * @returns {DocumentFragment}
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
+    /**
+     * Draws the Grid element.
+     * @returns {DocumentFragment}
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
 
-    let element = document.createElement('slot');
+        let element = document.createElement('slot');
 
-    if (this.color) this.classList.add('wje-color-' + this.color, 'wje-color');
+        if (this.color) this.classList.add('wje-color-' + this.color, 'wje-color');
 
-    fragment.appendChild(element);
+        fragment.appendChild(element);
 
-    return fragment;
-  }
+        return fragment;
+    }
 }

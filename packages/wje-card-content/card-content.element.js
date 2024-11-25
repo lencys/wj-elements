@@ -10,46 +10,46 @@ import styles from './styles/styles.css?inline';
  * @cssproperty [--wje-card-padding=0] - Padding of the component;
  */
 export default class CardContent extends WJElement {
-  /**
-   * CardContent constructor method.
-   * @class
-   */
-  constructor() {
-    super();
-  }
+    /**
+     * CardContent constructor method.
+     * @class
+     */
+    constructor() {
+        super();
+    }
 
-  /**
-   * Class name for the CardContent element.
-   * @type {string}
-   */
-  className = 'CardContent';
+    /**
+     * Class name for the CardContent element.
+     * @type {string}
+     */
+    className = 'CardContent';
 
-  /**
-   * Get CSS stylesheet for the CardContent element.
-   * @static
-   * @returns {object} styles - The CSS styles for the CardContent element.
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
+    /**
+     * Get CSS stylesheet for the CardContent element.
+     * @static
+     * @returns {object} styles - The CSS styles for the CardContent element.
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-  /**
-   * Setup attributes for the CardContent element.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
+    /**
+     * Setup attributes for the CardContent element.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
 
-  /**
-   * Draw method for the CardContent element.
-   * @returns {object} fragment - The document fragment containing the drawn element.
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
+    /**
+     * Draw method for the CardContent element.
+     * @returns {object} fragment - The document fragment containing the drawn element.
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
 
-    let element = document.createElement('slot');
-    fragment.appendChild(element);
+        let element = document.createElement('slot');
+        fragment.appendChild(element);
 
-    return fragment;
-  }
+        return fragment;
+    }
 }

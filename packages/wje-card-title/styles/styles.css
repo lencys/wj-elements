@@ -3,11 +3,11 @@
 */
 
 :host {
-  font-size: var(--wje-card-title-font-size);
-  font-weight: var(--wje-card-title-font-weight);
-  margin: var(--wje-card-title-margin);
-  padding: var(--wje-card-title-padding);
-  line-height: var(--wje-card-title-line-height);
-  display: block;
-  position: relative;
+    font-size: var(--wje-card-title-font-size);
+    font-weight: var(--wje-card-title-font-weight);
+    margin: var(--wje-card-title-margin);
+    padding: var(--wje-card-title-padding);
+    line-height: var(--wje-card-title-line-height);
+    display: block;
+    position: relative;
 }

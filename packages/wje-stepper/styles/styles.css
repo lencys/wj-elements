@@ -1,49 +1,49 @@
 .container {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
-  display: flex;
-  justify-content: var(--wje-stepper-justify);
-  margin-bottom: var(--wje-spacing-medium);
+    display: flex;
+    justify-content: var(--wje-stepper-justify);
+    margin-bottom: var(--wje-spacing-medium);
 }
 
 .step-header {
-  display: flex;
-  padding: var(--wje-spacing-medium);
-  gap: var(--wje-spacing-x-small);
-  color: var(--wje-color-contrast-5);
-  flex-grow: var(--wje-stepper-grow);
-  text-align: center;
+    display: flex;
+    padding: var(--wje-spacing-medium);
+    gap: var(--wje-spacing-x-small);
+    color: var(--wje-color-contrast-5);
+    flex-grow: var(--wje-stepper-grow);
+    text-align: center;
 }
 
 .pointer {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 [active] {
-  color: var(--wje-color-contrast-11);
+    color: var(--wje-color-contrast-11);
 }
 
 .content {
-  margin-bottom: var(--wje-spacing-medium);
+    margin-bottom: var(--wje-spacing-medium);
 }
 
 .arrow-icon {
-  margin-top: var(--wje-stepper-margin);
+    margin-top: var(--wje-stepper-margin);
 }
 
 .step {
-  padding: var(--wje-spacing-medium);
-  text-align: center;
+    padding: var(--wje-spacing-medium);
+    text-align: center;
 }
 
 [done] {
-  color: var(--wje-color-contrast-11);
+    color: var(--wje-color-contrast-11);
 }
 
 .nav-buttons {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }

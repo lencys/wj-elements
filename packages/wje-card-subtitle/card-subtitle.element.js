@@ -12,54 +12,54 @@ import styles from './styles/styles.css?inline';
  * @cssproperty [--wje-card-subtitle-padding=0] - Padding of the component;
  */
 export default class CardSubtitle extends WJElement {
-  /**
-   * CardSubtitle constructor method.
-   */
-  constructor() {
-    super();
-  }
+    /**
+     * CardSubtitle constructor method.
+     */
+    constructor() {
+        super();
+    }
 
-  /**
-   * Class name for the CardSubtitle.
-   * @type {string}
-   */
-  className = 'CardTitle';
+    /**
+     * Class name for the CardSubtitle.
+     * @type {string}
+     */
+    className = 'CardTitle';
 
-  /**
-   * Getter for the CSS stylesheet.
-   * @returns {object} The styles object.
-   * @static
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
+    /**
+     * Getter for the CSS stylesheet.
+     * @returns {object} The styles object.
+     * @static
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-  /**
-   * Getter for the observed attributes.
-   * @returns {Array} An empty array.
-   * @static
-   */
-  static get observedAttributes() {
-    return [];
-  }
+    /**
+     * Getter for the observed attributes.
+     * @returns {Array} An empty array.
+     * @static
+     */
+    static get observedAttributes() {
+        return [];
+    }
 
-  /**
-   * Sets up the attributes for the CardSubtitle.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
+    /**
+     * Sets up the attributes for the CardSubtitle.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
 
-  /**
-   * Draws the CardSubtitle element.
-   * @returns {DocumentFragment} The created document fragment.
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
+    /**
+     * Draws the CardSubtitle element.
+     * @returns {DocumentFragment} The created document fragment.
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
 
-    let element = document.createElement('slot');
-    fragment.appendChild(element);
+        let element = document.createElement('slot');
+        fragment.appendChild(element);
 
-    return fragment;
-  }
+        return fragment;
+    }
 }

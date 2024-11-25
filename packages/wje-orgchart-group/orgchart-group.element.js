@@ -11,80 +11,80 @@ import styles from './styles/styles.css?inline';
  * @example
  */
 export default class OrgchartGroup extends WJElement {
-  /**
-   * Creates an instance of OrgchartGroup.
-   * @class
-   */
-  constructor() {
-    super();
-  }
+    /**
+     * Creates an instance of OrgchartGroup.
+     * @class
+     */
+    constructor() {
+        super();
+    }
 
-  /**
-   * The class name for the component.
-   * @type {string}
-   */
-  className = 'OrgchartGroup';
+    /**
+     * The class name for the component.
+     * @type {string}
+     */
+    className = 'OrgchartGroup';
 
-  /**
-   * Returns the CSS styles for the component.
-   * @static
-   * @returns {CSSStyleSheet}
-   */
-  static get cssStyleSheet() {
-    return styles;
-  }
+    /**
+     * Returns the CSS styles for the component.
+     * @static
+     * @returns {CSSStyleSheet}
+     */
+    static get cssStyleSheet() {
+        return styles;
+    }
 
-  /**
-   * Sets up the attributes for the component.
-   */
-  setupAttributes() {
-    this.isShadowRoot = 'open';
-  }
+    /**
+     * Sets up the attributes for the component.
+     */
+    setupAttributes() {
+        this.isShadowRoot = 'open';
+    }
 
-  /**
-   * Draws the component for the org chart group.
-   * @returns {DocumentFragment}
-   */
-  draw() {
-    let fragment = document.createDocumentFragment();
+    /**
+     * Draws the component for the org chart group.
+     * @returns {DocumentFragment}
+     */
+    draw() {
+        let fragment = document.createDocumentFragment();
 
-    let native = document.createElement('div');
-    native.setAttribute('part', 'native');
-    native.classList.add('orgchart-group');
+        let native = document.createElement('div');
+        native.setAttribute('part', 'native');
+        native.classList.add('orgchart-group');
 
-    let card = document.createElement('wje-card');
+        let card = document.createElement('wje-card');
 
-    let title = document.createElement('h4');
-    title.setAttribute('part', 'title');
-    title.innerHTML = this.getAttribute('title') || '';
+        let title = document.createElement('h4');
+        title.setAttribute('part', 'title');
+        title.innerHTML = this.getAttribute('title') || '';
 
-    let items = document.createElement('div');
-    items.setAttribute('part', 'items');
-    items.classList.add('items');
+        let items = document.createElement('div');
+        items.setAttribute('part', 'items');
+        items.classList.add('items');
 
-    let slot = document.createElement('slot');
+        let slot = document.createElement('slot');
 
-    items.appendChild(slot);
+        items.appendChild(slot);
 
-    card.appendChild(title);
-    card.appendChild(items);
+        card.appendChild(title);
+        card.appendChild(items);
 
-    native.appendChild(card);
+        native.appendChild(card);
 
-    fragment.appendChild(native);
+        fragment.appendChild(native);
 
-    this.card = card;
+        this.card = card;
 
-    return fragment;
-  }
+        return fragment;
+    }
 
-  /**
-   * After Draws the component for the org chart group.
-   */
-  afterDraw() {
-    this.card.addEventListener('click', (e) => {
-      e.stopPropagation();
-      event.dispatchCustomEvent(this.card, 'wje-orgchart-group:click', { target: this });
-    });
-  }
+    /**
+     * After Draws the component for the org chart group.
+     */
+    afterDraw() {
+        this.card.addEventListener('click', (e) => {
+            e.stopPropagation();
+            event.dispatchCustomEvent(this.card, 'wje-orgchart-group:click', { target: this });
+        });
+    }
 }

@@ -3,20 +3,20 @@
 */
 
 :host {
-  width: var(--wje-thumbnail-width);
-  height: var(--wje-thumbnail-height);
-  display: block;
-  border-radius: var(--wje-border-radius);
+    width: var(--wje-thumbnail-width);
+    height: var(--wje-thumbnail-height);
+    display: block;
+    border-radius: var(--wje-border-radius);
 }
 
 :host([circle]) ::slotted(img) {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 ::slotted(wje-img),
 ::slotted(img) {
-  border-radius: var(--wje-thumbnail-border-radius);
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  overflow: hidden;
+    border-radius: var(--wje-thumbnail-border-radius);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
 }

@@ -3,104 +3,104 @@
 */
 
 .native-status {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .bullet {
-  width: var(--wje-status-size);
-  height: var(--wje-status-size);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
-  border-radius: var(--wje-border-radius-circle);
+    width: var(--wje-status-size);
+    height: var(--wje-status-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: var(--wje-border-radius-circle);
 }
 
 :host ::slotted([slot='start']) {
-  margin-right: var(--wje-spacing-x-small);
+    margin-right: var(--wje-spacing-x-small);
 }
 
 :host ::slotted([slot='end']) {
-  margin-left: var(--wje-spacing-x-small);
+    margin-left: var(--wje-spacing-x-small);
 }
 
 /* Size */
 :host([size='small']) {
-  --wje-status-size: var(--wje-size-small);
+    --wje-status-size: var(--wje-size-small);
 }
 
 :host([size='medium']) {
-  --wje-status-size: var(--wje-size);
+    --wje-status-size: var(--wje-size);
 }
 
 :host([size='large']) {
-  --wje-status-size: var(--wje-size-large);
+    --wje-status-size: var(--wje-size-large);
 }
 
 /* Color */
 :host([color='primary']) .bullet {
-  background-color: var(--wje-color-primary-9);
-  color: var(--wje-color-contrast-0);
+    background-color: var(--wje-color-primary-9);
+    color: var(--wje-color-contrast-0);
 }
 
 :host([color='complete']) .bullet {
-  background-color: var(--wje-color-complete-9);
-  color: var(--wje-color-contrast-0);
+    background-color: var(--wje-color-complete-9);
+    color: var(--wje-color-contrast-0);
 }
 
 :host([color='success']) .bullet {
-  background-color: var(--wje-color-success-9);
-  color: var(--wje-color-contrast-0);
+    background-color: var(--wje-color-success-9);
+    color: var(--wje-color-contrast-0);
 }
 
 :host([color='warning']) .bullet {
-  background-color: var(--wje-color-warning-9);
-  color: var(--wje-color-contrast-11);
+    background-color: var(--wje-color-warning-9);
+    color: var(--wje-color-contrast-11);
 }
 
 :host([color='danger']) .bullet {
-  background-color: var(--wje-color-danger-9);
-  color: var(--wje-color-contrast-0);
+    background-color: var(--wje-color-danger-9);
+    color: var(--wje-color-contrast-0);
 }
 
 :host([color='contrast']) .bullet {
-  background-color: var(--wje-color-contrast-2);
-  color: var(--wje-color-contrast-11);
+    background-color: var(--wje-color-contrast-2);
+    color: var(--wje-color-contrast-11);
 }
 
 :host([color='contrast-reverse']) .bullet {
-  background-color: var(--wje-color-contrast-11);
-  color: var(--wje-color-contrast-0);
+    background-color: var(--wje-color-contrast-11);
+    color: var(--wje-color-contrast-0);
 }
 
 /* Border */
 :host([border='primary']) .bullet {
-  border-color: var(--wje-color-primary-9);
+    border-color: var(--wje-color-primary-9);
 }
 
 :host([border='complete']) .bullet {
-  border-color: var(--wje-color-complete-9);
+    border-color: var(--wje-color-complete-9);
 }
 
 :host([border='success']) .bullet {
-  border-color: var(--wje-color-success-9);
+    border-color: var(--wje-color-success-9);
 }
 
 :host([border='warning']) .bullet {
-  border-color: var(--wje-color-warning-9);
+    border-color: var(--wje-color-warning-9);
 }
 
 :host([border='danger']) .bullet {
-  border-color: var(--wje-color-danger-9);
+    border-color: var(--wje-color-danger-9);
 }
 
 :host([border='contrast']) .bullet {
-  border-color: var(--wje-color-contrast-2);
+    border-color: var(--wje-color-contrast-2);
 }
 
 :host([border='contrast-reverse']) .bullet {
-  border-color: var(--wje-color-contrast-11);
+    border-color: var(--wje-color-contrast-11);
 }
