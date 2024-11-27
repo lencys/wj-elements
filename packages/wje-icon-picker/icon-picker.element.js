@@ -77,10 +77,18 @@ export default class IconPicker extends WJElement {
         return this._swatches;
     }
 
+    /**
+     * Setter for the value property.
+     * @param value
+     */
     set icon(value) {
         this.setAttribute('icon', value);
     }
 
+    /**
+     * Getter for the value property.
+     * @returns {string}
+     */
     get icon() {
         return this.getAttribute('icon');
     }
@@ -221,6 +229,7 @@ export default class IconPicker extends WJElement {
             object.icon = iconElement;
 
             this.value = object;
+            this.icon = object.name;
 
             this.anchor.innerHTML = '';
             this.anchor.appendChild(iconElement);
