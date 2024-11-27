@@ -1,7 +1,8 @@
 import '../../dist/wje-element.js';
 import { expect, fixture, html } from '@open-wc/testing';
-import sinon from 'sinon';
 import '../../dist/wje-relative-time.js';
+import '../translations/en-GB.js';
+import '../translations/sk-SK.js';
 
 describe('RelativeTime Component', () => {
     it('should pass accessibility tests', async () => {
@@ -26,7 +27,6 @@ describe('RelativeTime Component', () => {
     it('shows human readable form if appropriate and numeric property is auto', async () => {
         const el = await fixture(html`<wje-relative-time date="2022-09-01T00:00:00Z"></wje-relative-time>`);
         const timeText = el.getRelativeTimeString();
-        console.log('TEST 1:', timeText);
         // Očakáva, že text je v čitateľnom formáte obsahujúcom číslice a jednotky času, napr. "3 years ago"
         expect(timeText).to.match(/\d+ (seconds?|minutes?|hours?|days?|weeks?|months?|years?) ago/);
     });
@@ -47,8 +47,7 @@ describe('RelativeTime Component', () => {
             html`<wje-relative-time date="2022-09-01T00:00:00Z" lang="sk-sk"></wje-relative-time>`
         );
         const timeText = el.getRelativeTimeString('sk-sk');
-        console.log('TEST:', 'is formatted according to the requested locale', timeText, el);
-        expect(timeText).to.include('pred'); // Napríklad francúzske slovo pre "about"
+        expect(timeText).to.include('pred'); // Napríklad slovenské slovo pre "about"
     });
 
     it('keeps the component in sync if requested', async () => {
