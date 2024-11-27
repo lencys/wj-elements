@@ -14,6 +14,7 @@ template.innerHTML = `
         border-color: var(--wje-border-color); 
         border-style: solid;
         border-width: 1px;
+        display: block; /* Must be block */
       }
     </style>
         
@@ -98,11 +99,13 @@ template.innerHTML = `
             --wje-split-view-divider-size: 1px !important;
           }
           #custom wje-icon {
+            display: flex;
             position: absolute;
             background-color: mediumvioletred;
-            padding: .5rem 0.25rem;
+            padding: .2rem 0.25rem;
             color: white;
             border-radius: 4px;
+            height: 20px;
           }
         </style>  
       </div>
