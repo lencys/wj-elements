@@ -342,6 +342,14 @@
     --wje-icon-size: var(--wje-size);
     --wje-icon-color: currentColor;
 
+    /* Icon Picker */
+    --wje-icon-picker-radius: var(--wje-border-radius-small);
+    --wje-icon-picker-icon-size: 1.5rem;
+    --wje-icon-picker-border-width: 1px;
+    --wje-icon-picker-border-style: solid;
+    --wje-icon-picker-border-color: var(--wje-border-color);
+    --wje-icon-picker-padding: 0.25rem;
+
     /* Infinite Scroll */
     --wje-infinite-scroll-width: 100%;
     --wje-infinite-scroll-height: 300px;

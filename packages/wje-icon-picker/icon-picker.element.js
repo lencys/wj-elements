@@ -6,24 +6,28 @@ import Tooltip from '../wje-tooltip/tooltip.js';
 import styles from './styles/styles.css?inline';
 
 /**
- * @summary This element allows users to pick an icon. `IconPicker` is a custom web component that represents an icon picker.
- * It extends from `WJElement` and uses the `InfiniteScroll`, `Input`, and `Tooltip` components.
+ * @summary This element allows users to pick an icon from a set of available options.
+ * `IconPicker` is a custom web component that represents an interactive icon picker. It features
+ * search functionality, infinite scrolling, and popup-based selection. The component is highly customizable
+ * and integrates seamlessly with other `WJElement` components.
  * @documentation https://elements.webjet.sk/components/icon-picker
  * @status stable
  * @augments {WJElement}
- * @property {string} icon - The icon to set.
- * @csspart native - The native part
- * @csspart anchor - The anchor part
- * @csspart picker - The picker part
- * @csspart input - The input part
- * @cssproperty [--wje-icon-picker-radius=var(--wje-border-radius-small)] - The border radius of the icon picker
- * @cssproperty [--wje-icon-picker-icon-size=1.5rem] - The size of the icon picker. This property defines the width and height of the icon displayed in the icon picker. Accepts any valid CSS length unit (e.g., `px`, `rem`, `em`, `%`).
- * @cssproperty [--wje-icon-picker-border-width=1px] - The border width of the icon picker. This property defines the width of the border of the icon picker. Accepts any valid CSS length unit (e.g., `px`, `rem`, `em`, `%`).
- * @cssproperty [--wje-icon-picker-border-style=solid] - The border style of the icon picker. This property defines the style of the border of the icon picker. Accepts any valid CSS border style (e.g., `solid`, `dotted`, `dashed`).
- * @cssproperty [--wje-icon-picker-border-color=var(--wje-border-color)] - The border color of the icon picker. This property defines the color of the border of the icon picker. Accepts any valid CSS color value (e.g., `#000`, `rgb(0,0,0)`, `rgba(0,0,0,0)`).
- * @cssproperty [--wje-icon-picker-padding=.25rem .5rem] - The padding of the icon picker. This property defines the padding of the icon picker. Accepts any valid CSS length unit (e.g., `px`, `rem`, `em`, `%`).
+ * @attribute {string} icon - The selected icon's name.
+ * @attribute {number} size - The number of icons displayed per page in infinite scroll. Default is 60.
+ * @csspart native - The native part of the component.
+ * @csspart anchor - The part representing the anchor button displaying the selected icon.
+ * @csspart picker - The picker part containing the search and icon selection interface.
+ * @csspart input - The input part for searching icons.
+ * @cssproperty [--wje-color-picker-value=#ff0000] - The default color value.
+ * @cssproperty [--wje-color-picker-area=transparent] - The background color of the color picker area.
+ * @cssproperty [--wje-color-picker-swatch=transparent] - The background color of the swatch picker.
+ * @cssproperty [--wje-color-picker-size=1rem] - The size of the icons in the picker.
+ * @cssproperty [--wje-color-picker-radius=4px] - The border radius of the picker.
  * @tag wje-icon-picker
  */
+
+
 export default class IconPicker extends WJElement {
     /**
      * Creates an instance of IconPicker.
@@ -31,7 +35,6 @@ export default class IconPicker extends WJElement {
      */
     constructor() {
         super();
-        this.size = 60;
     }
 
     /**
@@ -49,32 +52,16 @@ export default class IconPicker extends WJElement {
      * Setter for the markerPosition property.
      * @param {any} value The value to set.
      */
-    set markerPosition(value) {
-        this._markerPosition = value;
+    set size(value) {
+        this.setAttribute('size', value);
     }
 
     /**
      * Getter for the markerPosition property.
-     * @returns {any} The value of the markerPosition property.
+     * @returns {any} size The value of the markerPosition property.
      */
-    get markerPosition() {
-        return this._markerPosition;
-    }
-
-    /**
-     * Setter for the swatches property.
-     * @param {any} value The value to set.
-     */
-    set swatches(value) {
-        this.setAttribute('swatches', value.split(','));
-    }
-
-    /**
-     * Getter for the swatches property.
-     * @returns {any} The value of the swatches property.
-     */
-    get swatches() {
-        return this._swatches;
+    get size() {
+        return this.getAttribute('size') || 60;
     }
 
     /**
