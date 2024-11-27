@@ -68,9 +68,18 @@ template.innerHTML = `<h1>Toast</h1>
 
 export default class DemoToast extends WJElement {
   constructor() {
-    super(template);
+    super();
 
     this.count = 0;
+  }
+
+  /**
+   * Returns the template for the component.
+   * @static
+   * @returns {HTMLElement} The template element
+   */
+  static get customTemplate() {
+    return template;
   }
 
   afterDraw() {
