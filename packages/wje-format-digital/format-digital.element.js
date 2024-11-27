@@ -13,11 +13,59 @@ export default class FormatDigital extends WJElement {
     }
 
     /**
+     * Sets the value of the digital format.
+     * @param value
+     */
+    set value(value) {
+        this.setAttribute('value', value);
+    }
+
+    /**
+     * Returns the value of the digital format.
+     * @returns {number}
+     */
+    get value() {
+        return +this.getAttribute('value');
+    }
+
+    /**
+     * Sets the unit of the digital format.
+     * @param value
+     */
+    set unit(value) {
+        this.removeAttribute('unit');
+
+        if (value) {
+            this.setAttribute('unit', value);
+        }
+    }
+
+    /**
      * Returns the unit of the digital format.
      * @returns {string}
      */
     get unit() {
         return this.hasAttribute('unit') ? this.getAttribute('unit') : 'byte';
+    }
+
+    /**
+     * Sets the unit display of the digital format.
+     * @param value
+     */
+    set unitDisplay(value) {
+        this.removeAttribute('unit-display');
+
+        if (value) {
+            this.setAttribute('unit-display', value);
+        }
+    }
+
+    /**
+     * Returns the unit display of the digital format.
+     * @returns {string|string}
+     */
+    get unitDisplay() {
+        return this.hasAttribute('unit-display') ? this.getAttribute('unit-display') : 'short';
     }
 
     className = 'FormatDigital';
@@ -37,7 +85,7 @@ export default class FormatDigital extends WJElement {
      * @returns {Array<string>}
      */
     static get observedAttributes() {
-        return ['value'];
+        return ['value', 'unit-display'];
     }
 
     /**
@@ -55,7 +103,7 @@ export default class FormatDigital extends WJElement {
         const bitPrefixes = ['', 'kilo', 'mega', 'giga', 'tera'];
         const bytePrefixes = ['', 'kilo', 'mega', 'giga', 'tera', 'peta'];
         const prefix = this.unit === 'bit' ? bitPrefixes : bytePrefixes;
-        const index = Math.max(0, Math.min(Math.floor(Math.log10(this.value) / 3), prefix.length - 1));
+        const index = Math.max(0, Math.min(Math.floor(Math.log10(this.value) / 3), prefix.length - 1)) || 0;
         const unit = prefix[index] + this.unit;
         const value = parseFloat((this.value / Math.pow(1000, index)).toPrecision(3));
 

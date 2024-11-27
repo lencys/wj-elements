@@ -27,6 +27,10 @@ export default {
         <link rel="stylesheet" href="dist/dark.css" />
         <link rel="stylesheet" href="dist/styles.css" />
         <link rel="stylesheet" href="demo/assets/css/demo.css" />
+        
+        <script>
+          window.translations = new Map();
+        </script>
       </head>
       <body>
         <script>

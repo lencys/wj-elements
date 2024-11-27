@@ -88,9 +88,9 @@ export default class DemoFormatDigital extends WJElement {
   }
 
   afterDraw() {
-    this.querySelector('#format-digital-input').addEventListener('wje-input:input', (e) => {
-      document.querySelector('.example').setAttribute('value', e.detail.value);
-    });
+    // this.querySelector('#format-digital-input').addEventListener('wje-input:input', (e) => {
+    //   document.querySelector('.example').setAttribute('value', e.detail.value);
+    // });
 
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(this.context);
