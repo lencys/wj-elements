@@ -181,7 +181,7 @@ export default class Options extends WJElement {
         return this._loadedOptions;
     }
 
-    set loadedOption(loadedOptions) {
+    set loadedOptions(loadedOptions) {
         this._loadedOptions = loadedOptions;
     }
 
