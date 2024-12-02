@@ -35,7 +35,7 @@ export default class Animation extends WJElement {
      * @returns {string}
      */
     get name() {
-        return this.getAttribute('name');
+        return this.getAttribute('name') || 'heartBeat';
     }
 
     /**

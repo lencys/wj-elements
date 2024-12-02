@@ -27,7 +27,6 @@ import styles from './styles/styles.css?inline';
  * @tag wje-icon-picker
  */
 
-
 export default class IconPicker extends WJElement {
     /**
      * Creates an instance of IconPicker.
@@ -35,6 +34,8 @@ export default class IconPicker extends WJElement {
      */
     constructor() {
         super();
+
+        this.trie = new Trie();
     }
 
     /**
@@ -112,6 +113,11 @@ export default class IconPicker extends WJElement {
      */
     async beforeDraw() {
         this.tags = Object.values(await this.getTags());
+
+        this.index = this.tags.map((item) => ({
+            ...item,
+            searchText: `${item.name.toLowerCase()} ${item.tags.join(' ').toLowerCase()}`
+        }));
     }
 
     /**
@@ -276,24 +282,33 @@ export default class IconPicker extends WJElement {
     }
 
     /**
-     * Event handler for searching icons.
-     * @param {Event} e The event.
+     * Searches icons based on user input.
+     * This method handles the input event and filters the available icons based on the provided search string.
+     * The filtering is performed on an index that combines icon names and their tags.
+     * The results are then adjusted for infinite scrolling.
+     * @param {Event} e The input event (e.g., `wje-input:input`) containing the search query details.
      */
     searchIcon = (e) => {
-        this.infiniteScroll.unScrollEvent(); // unbind scroll event
+        const query = e.detail.value.toLowerCase();
+
+        const results = this.index.filter((item) =>
+          item.searchText.includes(query)
+        );
+
+        this.infiniteScroll.unScrollEvent();
         this.infiniteScroll.setCustomData = (page = 0) => {
-            let data = this.tags.filter((i) => i.tags.includes(e.detail.value));
+            const data = results.slice(page * this.size, page * this.size + this.size);
             return {
                 data: data,
                 page: page,
                 size: this.size,
-                totalPages: Math.round(data.length / this.size),
+                totalPages: Math.ceil(results.length / this.size),
             };
         };
 
-        this.clearIconsContainer(); // clear icons container
-        this.infiniteScroll.loadPages(0); // load only
-    };
+        this.clearIconsContainer();
+        this.infiniteScroll.loadPages(0);
+    }
 
     /**
      * Clears the icons container.

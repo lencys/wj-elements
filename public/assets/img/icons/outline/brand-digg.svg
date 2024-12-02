@@ -1,8 +1,3 @@
-<!--
-category: Brand
-version: "2.18"
-unicode: "fa73"
--->
 <svg
   xmlns="http://www.w3.org/2000/svg"
   width="24"
@@ -13,7 +8,9 @@ unicode: "fa73"
   stroke-width="2"
   stroke-linecap="round"
   stroke-linejoin="round"
+  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-digg"
 >
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <path d="M6 15h-3v-4h3" />
   <path d="M15 15h-3v-4h3" />
   <path d="M9 15v-4" />
