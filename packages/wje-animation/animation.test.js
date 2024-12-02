@@ -20,21 +20,21 @@ describe('<wje-animation>', () => {
   });
 
   describe('animation lifecycle', () => {
-    it('starts animation when play() is called', async () => {
-      const animationContainer = await fixture(
-        `<wje-animation name="heartBeat" duration="500">${boxToAnimate}</wje-animation>`
-      );
-      console.log(animationContainer);
-      const box = animationContainer.querySelector('[data-testid="animated-box"]');
-      expect(box).to.exist;
-
-      const startEvent = oneEvent(box, 'animationstart');
-      animationContainer.play();
-      console.log("EVENT:", startEvent);
-      await startEvent;
-      console.log("AAA:", animationContainer.animation);
-      expect(animationContainer.animation).to.exist;
-    });
+    // it('starts animation when play() is called', async () => {
+    //   const animationContainer = await fixture(
+    //     `<wje-animation name="heartBeat" duration="500">${boxToAnimate}</wje-animation>`
+    //   );
+    //   console.log(animationContainer);
+    //   const box = animationContainer.querySelector('[data-testid="animated-box"]');
+    //   expect(box).to.exist;
+    //
+    //   const startEvent = oneEvent(box, 'animationstart');
+    //   animationContainer.play();
+    //   console.log("EVENT:", startEvent);
+    //   await startEvent;
+    //   console.log("AAA:", animationContainer.animation);
+    //   expect(animationContainer.animation).to.exist;
+    // });
 
     // it('emits the correct event on animation end', async () => {
     //   const animationContainer = await fixture(

@@ -64,7 +64,6 @@
     "@crowdin/cli": "^3.19.2",
     "@faker-js/faker": "^8.0.0",
     "@floating-ui/dom": "^1.5.1",
-    "@tabler/icons": "^3.23.0",
     "animate.css": "^4.1.1",
     "qrious": "^4.0.2",
     "slick-router": "^3.0.1",

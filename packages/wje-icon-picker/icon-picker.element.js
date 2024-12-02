@@ -34,8 +34,6 @@ export default class IconPicker extends WJElement {
      */
     constructor() {
         super();
-
-        this.trie = new Trie();
     }
 
     /**
