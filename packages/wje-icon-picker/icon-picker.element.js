@@ -112,7 +112,9 @@ export default class IconPicker extends WJElement {
     async beforeDraw() {
         this.tags = Object.values(await this.getTags());
 
-        this.index = this.tags.map((item) => ({
+        this.transformedObjects = this.convertObject(this.tags);
+
+        this.index = this.transformedObjects.map((item) => ({
             ...item,
             searchText: `${item.name.toLowerCase()} ${item.tags.join(' ').toLowerCase()}`
         }));
@@ -157,13 +159,7 @@ export default class IconPicker extends WJElement {
         infiniteScroll.setAttribute('placement', '.icon-items');
         infiniteScroll.setAttribute('size', this.size);
         infiniteScroll.setAttribute('height', '223px');
-        infiniteScroll.innerHTML = `<div class="icon-items">
-            <div class="icon-item" iterate>
-                <wje-tooltip content="{{name}}">
-                    <wje-icon name="{{name}}" size="large"></wje-icon>
-                </wje-tooltip>
-            </div>
-        </div>`;
+        infiniteScroll.innerHTML = '<div class="icon-items"></div>';
 
         // APPEND
         picker.appendChild(input);
@@ -198,12 +194,12 @@ export default class IconPicker extends WJElement {
      * Called after the component has been drawn.
      */
     afterDraw() {
-        this.addEventListener('wje-popup:show', (e) => {
+        this.addEventListener('wje-popup:show', () => {
             this.initial();
         });
 
         // udalost po vymazani inputu
-        this.addEventListener('wje-input:clear', (e) => {
+        this.addEventListener('wje-input:clear', () => {
             this.setupInfiniteScroll(); // reset infinite scroll
             this.clearIconsContainer(); // clear icons container
             this.infiniteScroll.scrollEvent(); // bind scroll event
@@ -211,21 +207,25 @@ export default class IconPicker extends WJElement {
         });
 
         this.addEventListener('wje-infinite-scroll:click-item', (e) => {
-            const icon = e.detail.context.querySelector('wje-icon');
-            const name = icon.getAttribute('name');
-            const object = this.tags.find((i) => i.name === name);
+            let icon = e.detail.context.querySelector('wje-icon');
+            let name = icon.getAttribute('name');
+            let stylesType = icon.hasAttribute('filled') ? 'filled' : 'outline';
+            let uniqueObject = this.transformedObjects.find((i) => i.name === name && Object.keys(i.styles)[0] === stylesType);
+
             const iconElement = document.createElement('wje-icon');
             iconElement.setAttribute('name', name);
+            if(uniqueObject.styles.hasOwnProperty('filled'))
+                iconElement.setAttribute('filled', '');
 
-            object.icon = iconElement;
+            uniqueObject.icon = iconElement;
 
-            this.value = object;
-            this.icon = object.name;
+            this.value = uniqueObject;
+            this.icon = uniqueObject.name;
 
             this.anchor.innerHTML = '';
             this.anchor.appendChild(iconElement);
 
-            event.dispatchCustomEvent(this, 'wje-icon-picker:select', object); // odpalenie custom eventu
+            event.dispatchCustomEvent(this, 'wje-icon-picker:select', uniqueObject); // odpalenie custom eventu
         });
 
         this.init = false;
@@ -239,16 +239,109 @@ export default class IconPicker extends WJElement {
     }
 
     /**
+     * Converts an object of tags into a transformed array of objects, separating `filled` and `outline` styles.
+     * The function processes an input object containing tags, extracts its values,
+     * and for each tag that has both `filled` and `outline` styles, splits them into
+     * two separate objects. Tags without `filled` styles remain unchanged.
+     * @param {object} tags The input object containing tags as properties. Each property is an object with a `styles` key.
+     * @param {object} tags[].styles The styles object containing `filled` and/or `outline` styles.
+     * @param {object} [tags[].styles.outline] The outline style object, if present.
+     * @param {object} [tags[].styles.filled] The filled style object, if present.
+     * @returns {Array<object>} An array of transformed objects. Objects with both `filled` and `outline` styles are split into separate objects, each containing only one style.
+     * @example
+     * const tags = {
+     *     hourglass: {
+     *         styles: {
+     *             outline: { ... },
+     *             filled: { ... },
+     *         }
+     *     },
+     *     clock: {
+     *         styles: {
+     *             outline: { ... },
+     *         }
+     *     }
+     * };
+     * const result = convertObject(tags);
+     * console.log(result);
+     * // [
+     * //   { styles: { outline: { ... } } },
+     * //   { styles: { filled: { ... } } },
+     * //   { styles: { outline: { ... } } }
+     * // ]
+     */
+    convertObject = (tags= {}) => {
+        let originalObjects = Object.values(tags);
+        let transformedObjects = [];
+        for (let i = 0; i < originalObjects.length; i++) {
+            const obj = originalObjects[i];
+            if (obj.styles.filled) {
+                transformedObjects.push(
+                  { ...obj, styles: { outline: obj.styles.outline } },
+                  { ...obj, styles: { filled: obj.styles.filled } }
+                );
+            } else {
+                transformedObjects.push(obj);
+            }
+        }
+
+        return transformedObjects;
+    };
+
+    /**
+     * Converts an icon data object into an HTML element structure.
+     * This function creates a styled HTML element that represents an icon with a tooltip.
+     * The tooltip displays the name of the icon, and the icon itself is styled based on
+     * whether it uses the `filled` style.
+     * @param {object} data The icon data object.
+     * @returns {HTMLElement} A `div` element containing the icon wrapped in a `wje-tooltip`. The tooltip displays the icon name, and the `wje-icon` element represents the icon with attributes set according to the data.
+     * @example
+     * const iconData = {
+     *     name: "hourglass",
+     *     styles: {
+     *         filled: { ... }
+     *     }
+     * };
+     * const htmlElement = dataToHtml(iconData);
+     * document.body.appendChild(htmlElement);
+     *
+     * // The resulting structure:
+     * // <div class="icon-item">
+     * //   <wje-tooltip content="hourglass">
+     * //     <wje-icon name="hourglass" size="large" filled></wje-icon>
+     * //   </wje-tooltip>
+     * // </div>
+     */
+    dataToHtml = (data) => {
+        let iconItem = document.createElement('div');
+        iconItem.classList.add('icon-item');
+
+        let tooltip = document.createElement('wje-tooltip');
+        tooltip.setAttribute('content', data.name);
+
+        let icon = document.createElement('wje-icon');
+        icon.setAttribute('name', data.name);
+        icon.setAttribute('size', 'large');
+        if(data.styles.hasOwnProperty('filled'))
+            icon.setAttribute('filled', '');
+
+        tooltip.appendChild(icon);
+        iconItem.appendChild(tooltip);
+
+        return iconItem;
+    }
+
+    /**
      * Sets up the infinite scroll for the component.
      */
     setupInfiniteScroll() {
+        this.infiniteScroll.dataToHtml = this.dataToHtml;
         this.infiniteScroll.setCustomData = (page = 0) => {
-            let data = Object.values(this.tags);
             return {
-                data: data.slice(page * this.size, page * this.size + this.size),
+                data: this.transformedObjects.slice(page * this.size, page * this.size + this.size),
                 page: page,
                 size: this.size,
-                totalPages: Math.round(data.length / this.size),
+                totalPages: Math.round(this.transformedObjects.length / this.size),
             };
         };
     }
@@ -259,8 +352,7 @@ export default class IconPicker extends WJElement {
      * @returns {Array} The category of the tags.
      */
     getCategory(tags) {
-        let category = [...new Set(tags.map((obj) => obj.category))];
-        return category;
+        return [...new Set(tags.map((obj) => obj.category))];
     }
 
     /**
