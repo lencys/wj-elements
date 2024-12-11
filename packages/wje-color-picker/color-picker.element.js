@@ -1,5 +1,4 @@
 import tinycolor from 'tinycolor2';
-
 import { default as WJElement, event } from '../wje-element/element.js';
 import styles from './styles/styles.css?inline';
 
@@ -158,7 +157,7 @@ export default class ColorPicker extends WJElement {
         hueSlider.setAttribute('min', '0');
         hueSlider.setAttribute('max', '360');
         hueSlider.classList.add('hue');
-        hueSlider.addEventListener('wje:slider-move', this.setHue);
+        hueSlider.addEventListener('wje-slider:move', this.setHue);
 
         let alphaWrapper = document.createElement('div');
         alphaWrapper.classList.add('alpha-wrapper');
@@ -168,7 +167,7 @@ export default class ColorPicker extends WJElement {
         alphaSlider.setAttribute('max', '100');
         alphaSlider.setAttribute('value', '50');
         alphaSlider.classList.add('alpha');
-        alphaSlider.addEventListener('wje:slider-move', this.setAlpha);
+        alphaSlider.addEventListener('wje-slider:move', this.setAlpha);
 
         let inputWrapper = document.createElement('div');
         inputWrapper.classList.add('input-wrapper');
@@ -459,6 +458,16 @@ export default class ColorPicker extends WJElement {
 
     /**
      * Sets the hue.
+     * @param {object} e The event object.
+     */
+    setHue = (e) => {
+        this.hueSlider.value = e.detail.value;
+
+        this.setColor(null, "hue");
+    }
+
+    /**
+     * Sets the alpha.
      * @param {object} e The event object.
      */
     setAlpha = (e) => {
