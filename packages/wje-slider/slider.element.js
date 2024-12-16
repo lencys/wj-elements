@@ -2,25 +2,9 @@ import { default as WJElement, event } from '../wje-element/element.js';
 import styles from './scss/styles.scss?inline';
 
 /**
- * `Slider` is a custom web component that represents a slider input.
- * @summary This element represents a slider input.
- * @documentation https://elements.webjet.sk/components/slider
- * @status stable
- * @augments WJElement
- * @slot label - Slot for the label of the slider.
- * @slot start - Slot for the start value of the slider.
- * @slot end - Slot for the end value of the slider.
- * @csspart native - The native slider wrapper.
- * @csspart slider - The slider input.
- * @cssproperty [--wje-slider-thumb-color=#000000] - Defines the color of the slider thumb. Accepts any valid CSS color value, such as hex, RGB, or named colors.
- * @cssproperty [--wje-slider-thumb-shadow=none] - Specifies the box shadow of the slider thumb in its default state. Accepts any valid CSS box-shadow value.
- * @cssproperty [--wje-slider-thumb-shadow-active=none] - Sets the box shadow of the slider thumb when it is active (e.g., during dragging). Accepts any valid CSS box-shadow value.
- * @cssproperty [--wje-slider-track-color=#000000] - Specifies the color of the slider track. Accepts any valid CSS color value.
- * @cssproperty [--wje-slider-track-height=.25rem] - Defines the height of the slider track. Accepts any valid CSS length unit, such as `px`, `rem`, or `em`.
- * // @fires wje-slider:init - Dispatched when the slider is initialized.
- * // @fires wje-slider:move - Dispatched when the slider value is changed.
- * // @fires wje-slider:change - Dispatched when the slider value is changed and the change is committed.
- * @tag wje-slider
+ * Represents a slider component that extends the WJElement class.
+ * This slider supports features such as min, max, step values, bubble display, and event handling.
+ * It offers both getter and setter methods for its attributes and dynamically handles rendering and updates.
  */
 
 export default class Slider extends WJElement {
@@ -189,8 +173,14 @@ export default class Slider extends WJElement {
         return fragment;
     }
 
+
     /**
-     * Sets up the event listeners after the component is drawn.
+     * Handles the post-rendering logic for a custom slider component. This method performs the following tasks:
+     * - Sets the position of the handle.
+     * - Displays a bubble indicator with the current value, if the slider has a "bubble" attribute.
+     * - Dispatches initialization, movement, and change custom events for the slider input element.
+     * - Updates the bubble position and value dynamically on input changes.
+     * @returns {void} This method does not return a value.
      */
     afterDraw() {
         this.setHandlePosition();
@@ -236,8 +226,20 @@ export default class Slider extends WJElement {
             this.getPercentage(this.input.min, this.input.max, this.input.value) + '% 100%';
     };
 
+
     /**
-     * Sets the bubble of the slider.
+     * Updates the position and content of a bubble element based on the input value.
+     *
+     * This function calculates the position of the bubble using the percentage representation
+     * of the input's current value relative to its minimum and maximum bounds. It then adjusts
+     * the bubble's left position dynamically for aesthetic purposes and updates its displayed
+     * content to reflect the current input value.
+     *
+     * The function relies on the following elements:
+     * - `this.input`: Represents the input element with properties `min`, `max`, and `value`.
+     * - `this.output`: Represents the bubble element to be positioned and updated.
+     *
+     * The left positioning of the bubble ensures precise alignment with the input value indicator.
      */
     setBubble = () => {
         let newValue = this.getPercentage(this.input.min, this.input.max, this.input.value);
