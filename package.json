@@ -40,6 +40,7 @@
     "test:badge": "web-test-runner --files packages/wje-badge/badge.test.js",
     "test:breadcrumbs": "web-test-runner --files packages/wje-breadcrumbs/breadcrumbs.test.js",
     "test:button": "web-test-runner --files packages/wje-button/button.test.js",
+    "test:color-picker": "web-test-runner --files packages/wje-color-picker/color-picker.test.js",
     "test:format-digital": "web-test-runner --files packages/wje-format-digital/format-digital.test.js",
     "test:relative-time": "web-test-runner --files packages/wje-relative-time/relative-time.test.js",
     "test:toast": "web-test-runner --files packages/wje-toast/toast.test.js"
@@ -91,7 +92,7 @@
     "playwright": "^1.48.1",
     "prettier": "^3.3.3",
     "rollup-plugin-terser": "^7.0.2",
-    "sass": "^1.80.6",
+    "sass": "^1.83.0",
     "sinon": "^19.0.2",
     "terser": "^5.29.2",
     "vite": "^5.4.11",

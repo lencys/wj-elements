@@ -1,0 +1,176 @@
+:host {
+    --wje-slider-track-height: 0.25rem;
+    --wje-slider-color: var(--wje-color-primary-9); /* Predvolená farba */
+    --wje-slider-thumb-color: var(--wje-color-primary-9); /* Farba tiahla */
+    --wje-slider-thumb-border: none; /* Predvolene žiadny border */
+    --wje-slider-thumb-shadow: none; /* Tieň vo výchozom stave */
+    --wje-slider-thumb-shadow-active: color-mix(in hsl, var(--wje-color-contrast-4) 60%, white) 0 0 0 7px;
+    --wje-slider-track-color: var(--wje-color-contrast-4); /* Farba tracku */
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+}
+
+.native-slider {
+    display: flex;
+    position: relative;
+    flex-grow: 1;
+    align-items: center;
+    height: inherit;
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex: 1 1 0%;
+    width: 100%;
+    height: var(--height);
+    contain: size layout style;
+    cursor: grab;
+    touch-action: pan-y;
+}
+
+input[type='range'] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: var(--wje-slider-track-height);
+    margin: 0;
+    border-radius: 5px;
+    background-size: 70% 100%;
+    background-repeat: no-repeat;
+    background-color: var(--wje-slider-track-color);
+    background-image: linear-gradient(var(--wje-slider-color), var(--wje-slider-color));
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    border: var(--wje-slider-thumb-border); /* Nastaviteľný border (predvolený: none) */
+    background: var(--wje-slider-thumb-color); /* Farba tiahla */
+    box-shadow: var(--wje-slider-thumb-shadow); /* Tieň vo výchozom stave */
+    cursor: ew-resize;
+    transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+
+input[type='range']::-moz-range-thumb {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    border: var(--wje-slider-thumb-border); /* Nastaviteľný border (predvolený: none) */
+    background: var(--wje-slider-thumb-color); /* Farba tiahla */
+    box-shadow: var(--wje-slider-thumb-shadow); /* Tieň vo výchozom stave */
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+
+input[type='range']::-ms-thumb {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    border: var(--wje-slider-thumb-border); /* Nastaviteľný border (predvolený: none) */
+    background: var(--wje-slider-thumb-color); /* Farba tiahla */
+    box-shadow: var(--wje-slider-thumb-shadow); /* Tieň vo výchozom stave */
+    cursor: ew-resize;
+    transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+
+input[type='range']::-webkit-slider-thumb:active,
+input[type='range']::-moz-range-thumb:active,
+input[type='range']::-ms-thumb:active {
+    box-shadow: var(--wje-slider-thumb-shadow-active); /* Tieň pri aktívnom stave */
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+}
+
+input[type='range']::-moz-range-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+}
+
+input[type='range']::-ms-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+}
+
+input[type='range'][color='primary'] {
+    --wje-slider-color: var(--wje-color-primary-9);
+    --wje-slider-thumb-color: var(--wje-color-primary-9);
+}
+
+input[type='range'][color='success'] {
+    --wje-slider-color: var(--wje-color-success-9);
+    --wje-slider-thumb-color: var(--wje-color-success-9);
+}
+
+input[type='range'][color='complete'] {
+    --wje-slider-color: var(--wje-color-complete-9);
+    --wje-slider-thumb-color: var(--wje-color-complete-9);
+}
+
+input[type='range'][color='danger'] {
+    --wje-slider-color: var(--wje-color-danger-9);
+    --wje-slider-thumb-color: var(--wje-color-danger-9);
+}
+
+input[type='range'][color='warning'] {
+    --wje-slider-color: var(--wje-color-warning-9);
+    --wje-slider-thumb-color: var(--wje-color-warning-9);
+}
+
+input[type='range'][color='dark'] {
+    --wje-slider-color: var(--wje-color-contrast-11);
+    --wje-slider-thumb-color: var(--wje-color-contrast-11);
+}
+
+datalist {
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+    overflow: hidden;
+    margin-top: 16px;
+
+    option::before {
+        content: '';
+        display: block;
+        width: 0;
+        height: auto;
+        padding-left: 3px;
+        text-indent: 0;
+    }
+}
+
+output {
+    position: absolute;
+    background: var(--wje-color-contrast-11);
+    color: var(--wje-color-contrast-0);
+    top: -46px;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+::slotted([slot='label']) {
+    margin-inline: 0 0.5rem;
+    font-size: var(--wje-font-size);
+}
+
+::slotted([slot='start']) {
+    margin-inline: 0rem 0.75rem;
+}
+
+::slotted([slot='end']) {
+    margin-inline: 0.75rem 0rem;
+}

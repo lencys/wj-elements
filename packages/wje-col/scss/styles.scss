@@ -1,5 +1,7 @@
-@import '../../scss/var.scss';
-@import './grid.scss';
+@use '../../scss/var.scss' as var;
+@use './breakpoints.scss' as breakpoints;
+@use './grid.scss' as grid;
+@use "sass:map";
 
 /*
 [ WJ Col ]
@@ -15,16 +17,16 @@
     margin-top: var(--wje-gutter-y);
 }
 
-@if $enable-grid-classes {
-    @include make-grid-columns();
+@if var.$enable-grid-classes {
+    @include grid.make-grid-columns();
 }
 
 // Order
 
-@each $breakpoint in map-keys($grid-breakpoints) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+@each $breakpoint in map.keys(var.$grid-breakpoints) {
+    $infix: breakpoints.breakpoint-infix($breakpoint, var.$grid-breakpoints);
     //@debug "divider offset: #{$infix}";
-    @each $key, $utility in $utilities {
-        @include generate-utility($utility, $infix);
+    @each $key, $utility in var.$utilities {
+        @include grid.generate-utility($utility, $infix);
     }
 }

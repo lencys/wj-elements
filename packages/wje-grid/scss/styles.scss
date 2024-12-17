@@ -1,5 +1,5 @@
-@import '../../scss/var.scss';
-@import './grid.scss';
+@use '../../scss/var.scss' as var;
+@use './grid.scss' as grid;
 
 /*
 [ Grid ]
@@ -21,12 +21,12 @@ wje-row {
 
 // Row
 
-@if $enable-grid-classes {
+@if var.$enable-grid-classes {
     wje-row {
-        @include make-row();
+        @include grid.make-row();
     }
 }
 
-@if $enable-grid-classes {
-    @include make-grid-columns();
+@if var.$enable-grid-classes {
+    @include grid.make-grid-columns();
 }

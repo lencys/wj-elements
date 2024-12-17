@@ -16,24 +16,26 @@ $grid-breakpoints: (
 );
 
 $utilities: () !default;
-$utilities: map-merge(
-    (
-        'order': (
-            responsive: true,
-            property: order,
-            values: (
-                first: -1,
-                0: 0,
-                1: 1,
-                2: 2,
-                3: 3,
-                4: 4,
-                5: 5,
-                last: 6,
-            ),
-        ),
-    ),
-    $utilities
+@use "sass:map";
+
+$utilities: map.merge(
+  $utilities,
+  (
+    'order': (
+      responsive: true,
+      property: order,
+      values: (
+        'first': -1,
+        0: 0,
+        1: 1,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        'last': 6
+      )
+    )
+  )
 );
 
 $spacer: 1rem !default;
