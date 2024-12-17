@@ -1,5 +1,5 @@
 import { default as WJElement, event } from '../wje-element/element.js';
-import styles from './scss/styles.scss?inline';
+import styles from './styles/styles.css?inline';
 
 /**
  * Represents a slider component that extends the WJElement class.
