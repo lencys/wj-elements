@@ -77,6 +77,7 @@ export default class OrgchartItem extends WJElement {
         native.classList.add('orgchart-item');
 
         let card = document.createElement('wje-card');
+        card.setAttribute('part', 'card');
 
         let slot = document.createElement('slot');
 
