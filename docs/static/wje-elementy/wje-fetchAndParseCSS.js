@@ -1,46 +1,59 @@
-let o = [];
-function i(n) {
-  const t = /@keyframes\s+([\w-]+)\s*{([\s\S]+?})\s*}/g;
-  let r,
-    e = [];
-  for (; (r = t.exec(n)) !== null; ) {
-    let s = r[1],
-      a = r[2].trim(),
-      f = l(a);
-    e.push({ name: s, keyframes: f });
+let animations = [];
+function parseCSS(css) {
+  const keyframesRegex = /@keyframes\s+([\w-]+)\s*{([\s\S]+?})\s*}/g;
+  let match;
+  let localAnimations = [];
+  while ((match = keyframesRegex.exec(css)) !== null) {
+    let name = match[1];
+    let frames = match[2].trim();
+    let keyframes = parseKeyframes(frames);
+    localAnimations.push({ name, keyframes });
   }
-  return e;
+  return localAnimations;
 }
-function l(n) {
-  const t = /([\d%]+)\s*{([\s\S]+?)}/g;
-  let r,
-    e = [];
-  for (; (r = t.exec(n)) !== null; ) {
-    let s = parseFloat(r[1]) / 100,
-      a = c(r[2]),
-      f = {
-        offset: s,
-        ...a,
-      };
-    e.push(f);
+function parseKeyframes(frames) {
+  const frameRegex = /([\d%]+)\s*{([\s\S]+?)}/g;
+  let match;
+  let keyframes = [];
+  while ((match = frameRegex.exec(frames)) !== null) {
+    let offset = parseFloat(match[1]) / 100;
+    let properties = parseProperties(match[2]);
+    let keyframeObject = {
+      offset,
+      ...properties
+    };
+    keyframes.push(keyframeObject);
   }
-  return e.sort((s, a) => s.offset - a.offset), e;
+  keyframes.sort((a, b) => a.offset - b.offset);
+  return keyframes;
 }
-function c(n) {
-  const t = {};
-  return (
-    n.split(';').forEach((r) => {
-      const [e, s] = r.split(':').map((a) => a.trim());
-      e && s && (e === 'animation-timing-function' ? (t.easing = s) : (t[e] = s));
-    }),
-    t
-  );
+function parseProperties(propertiesString) {
+  const properties = {};
+  propertiesString.split(";").forEach((property) => {
+    const [key, value] = property.split(":").map((part) => part.trim());
+    if (key && value) {
+      if (key === "animation-timing-function") {
+        properties["easing"] = value;
+      } else {
+        properties[key] = value;
+      }
+    }
+  });
+  return properties;
 }
-async function m(n) {
+async function fetchAndParseCSS(css) {
   try {
-    return o.length > 0 || (o = i(n)), o;
-  } catch (t) {
-    console.error('Error:', t);
+    if (animations.length > 0) {
+      return animations;
+    }
+    animations = parseCSS(css);
+    return await animations;
+  } catch (error) {
+    console.error("Error:", error);
+    return null;
   }
 }
-export { o as animations, m as fetchAndParseCSS };
+export {
+  animations,
+  fetchAndParseCSS
+};

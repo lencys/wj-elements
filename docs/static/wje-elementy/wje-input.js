@@ -1,64 +1,81 @@
-var j = Object.defineProperty;
-var y = (n, a, t) => (a in n ? j(n, a, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (n[a] = t));
-var b = (n, a, t) => (y(n, typeof a != 'symbol' ? a + '' : a, t), t);
-import x, { event as w } from './wje-element.js';
-const A =
-  ':host{--wje-input-font-family: var(--wje-font-family);--wje-input-background-color: var(--wje-background);--wje-input-color: var(--wje-color);--wje-input-color-invalid: var(--wje-color-danger);--wje-input-border-color: var(--wje-border-color);--wje-input-border-color-focus: var(--wje-color-primary);--wje-input-border-width: 1px;--wje-input-border-style: solid;--wje-input-border-radius: 4px;--wje-input-margin-bottom: .5rem;--wje-input-line-height: 20px;--wje-input-slot-padding-inline: .5rem;width:100%;margin-bottom:var(--wje-input-margin-bottom);display:block}:host .wrapper{display:flex;width:100%}:host .native-input .input-wrapper{width:100%;position:relative}:host .native-input.default{background-color:var(--wje-input-background-color);font-family:var(--wje-input-font-family);position:relative;border-radius:var(--wje-input-border-radius);border-width:var(--wje-input-border-width);border-style:var(--wje-input-border-style);border-color:var(--wje-input-border-color);padding-inline:0;padding-top:.25rem;padding-bottom:.25rem;transition:background-color .2s ease;cursor:text}:host .native-input.default .input-wrapper{margin-inline:.5rem}:host .native-input.default.focused{border-color:var(--wje-input-border-color-focus)!important}:host .native-input.default.focused label{opacity:.67;font-size:12px;letter-spacing:normal}:host .native-input.default input{border:none;height:25px;min-height:25px;padding:0;margin-top:-4px;background:none;box-shadow:none;width:100%}:host .native-input.default label{margin:0;display:block;opacity:1;cursor:text;transition:opacity .2s ease;line-height:var(--wje-input-line-height)}:host .native-input.default label.fade{opacity:.5;font-size:12px;letter-spacing:normal}:host .native-input.default ::slotted([slot="start"]){border-left:none;border-top:none;border-bottom:none}:host .native-input.default ::slotted([slot="end"]){border-right:none;border-top:none;border-bottom:none}:host .native-input.standard{background-color:var(--wje-input-background-color);font-family:var(--wje-input-font-family);position:relative;border-radius:var(--wje-input-border-radius);padding-inline:0;padding-top:0;padding-bottom:0;transition:background-color .2s ease;cursor:text}:host .native-input.standard.focused input{border-color:var(--wje-input-border-color-focus)!important}:host .native-input.standard input{display:block;min-height:32px;padding-inline:.5rem;padding-top:0;padding-bottom:0;background:none;box-shadow:none;width:100%;box-sizing:border-box;border-radius:var(--wje-input-border-radius);border-width:var(--wje-input-border-width);border-style:var(--wje-input-border-style);border-color:var(--wje-input-border-color)}:host .native-input.standard label{margin:0;display:inline-block;opacity:1;cursor:text;transition:opacity .2s ease;line-height:var(--wje-input-line-height)}:host .native-input.standard .input-wrapper:hover .clear{visibility:visible}:host .native-input.standard ::slotted([slot="start"]){border-right:none;border-radius:var(--wje-input-border-radius) 0 0 var(--wje-input-border-radius)}:host .native-input.standard ::slotted([slot="end"]){border-left:none;border-radius:0 var(--wje-input-border-radius) var(--wje-input-border-radius) 0}:host .native-input.standard.has-start input{border-top-left-radius:0;border-bottom-left-radius:0}:host .native-input.standard.has-end input{border-top-right-radius:0;border-bottom-right-radius:0}:host .native-input.standard .error-message{position:static;background:transparent;padding:.25rem 0;left:auto;transform:none;color:var(--wje-input-color-invalid);font-size:12px;line-height:normal}.clear{visibility:hidden;position:absolute;right:0;top:3px;--wje-padding-top: .25rem;--wje-padding-start: .25rem;--wje-padding-end: .25rem;--wje-padding-bottom: .25rem;--wje-button-margin-inline: 0 .25rem}:host([required]) .input-wrapper:after{color:var(--wje-input-color-invalid);content:"*";font-family:var(--wje-force-mac-font-family);font-size:20px;position:absolute;right:10px;top:2px}:host([required]) .standard .input-wrapper:after{top:0}:host([invalid]) .error-message{display:block}:host([invalid]) .default label{opacity:1!important;color:var(--wje-input-color-invalid)!important;animation-name:shake;animation-duration:.4s;animation-iteration-count:1}::slotted([slot="start"]),::slotted([slot="end"]){display:flex;align-items:center;border-width:var(--wje-input-border-width);border-style:var(--wje-input-border-style);border-color:var(--wje-input-border-color);padding-inline:var(--wje-input-slot-padding-inline)}slot[name=start],slot[name=end]{display:flex}input{background-color:var(--wje-input-background-color);border-width:var(--wje-input-border-width);border-style:var(--wje-input-border-style);border-color:var(--wje-input-border-color);font-family:var(--wjinput-font-family);color:var(--wje-input-color);-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:0;padding:.25rem .5rem;line-height:var(--wje-input-line-height);font-size:14px;font-weight:400;vertical-align:middle;min-height:32px}.error-message{display:none;position:absolute;width:auto;max-width:100%;min-width:auto;border-radius:50px;background:#000;padding:.25rem .5rem;top:0;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:12px;line-height:normal}@keyframes shake{8%,41%{transform:translate(-4px)}25%,58%{transform:translate(4px)}75%{transform:translate(-2px)}92%{transform:translate(2px)}0%,to{transform:translate(0)}}';
-class m extends x {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement, { event } from "./wje-element.js";
+const styles = "/*\n[ WJ Input ]\n*/\n\n:host {\n    width: 100%;\n    margin-bottom: var(--wje-input-margin-bottom);\n    display: block;\n\n    .wrapper {\n        display: flex;\n        width: 100%;\n        flex-direction: column;\n    }\n    .native-input {\n        .input-wrapper {\n            flex-wrap: wrap;\n            display: flex;\n            width: 100%;\n            position: relative;\n            box-sizing: border-box;\n\n            label {\n                width: 100%;\n            }\n        }\n        &.default {\n            background-color: var(--wje-input-background-color);\n            font-family: var(--wje-input-font-family);\n            position: relative;\n            border-radius: var(--wje-input-border-radius);\n            border-width: var(--wje-input-border-width);\n            border-style: var(--wje-input-border-style);\n            border-color: var(--wje-input-border-color);\n            padding-inline: 0;\n            padding-top: 0.25rem;\n            padding-bottom: 0.25rem;\n            transition: background-color 0.2s ease;\n            cursor: text;\n            .input-wrapper {\n                padding-inline: 0.5rem;\n            }\n            &.focused {\n                border-color: var(--wje-input-border-color-focus) !important;\n                label {\n                    opacity: 0.67;\n                    font-size: 12px;\n                    letter-spacing: normal;\n                }\n            }\n            input {\n                border: none;\n                height: 25px;\n                min-height: 25px;\n                padding: 0;\n                margin-top: -4px;\n                background: none;\n                box-shadow: none;\n                width: 100%;\n            }\n            label {\n                margin: 0;\n                display: block;\n                opacity: 1;\n                cursor: text;\n                transition: opacity 0.2s ease;\n                line-height: var(--wje-input-line-height);\n                &.fade {\n                    opacity: 0.5;\n                    font-size: 12px;\n                    letter-spacing: normal;\n                }\n            }\n            ::slotted([slot='start']) {\n                border-left: none;\n                border-top: none;\n                border-bottom: none;\n            }\n\n            ::slotted([slot='end']) {\n                border-right: none;\n                border-top: none;\n                border-bottom: none;\n            }\n        }\n        &.standard {\n            font-family: var(--wje-input-font-family);\n            position: relative;\n            border-radius: var(--wje-input-border-radius);\n            padding-inline: 0;\n            padding-top: 0;\n            padding-bottom: 0;\n            transition: background-color 0.2s ease;\n            cursor: text;\n            &.focused {\n                input {\n                    border-color: var(--wje-input-border-color-focus) !important;\n                }\n            }\n            input {\n                background-color: var(--wje-input-background-color);\n                display: block;\n                min-height: 32px;\n                padding-inline: 0.5rem;\n                padding-top: 0;\n                padding-bottom: 0;\n                /*background: none;*/\n                box-shadow: none;\n                width: 100%;\n                box-sizing: border-box;\n                border-radius: var(--wje-input-border-radius);\n                border-width: var(--wje-input-border-width);\n                border-style: var(--wje-input-border-style);\n                border-color: var(--wje-input-border-color);\n            }\n            label {\n                margin: 0;\n                display: inline-block;\n                opacity: 1;\n                cursor: text;\n                transition: opacity 0.2s ease;\n                line-height: var(--wje-input-line-height);\n            }\n            .input-wrapper {\n                flex-wrap: nowrap;\n                &:hover .clear {\n                    visibility: visible;\n                }\n            }\n            ::slotted([slot='start']) {\n                border-right: none;\n                border-radius: var(--wje-input-border-radius) 0 0 var(--wje-input-border-radius);\n            }\n\n            ::slotted([slot='end']) {\n                border-left: none;\n                border-radius: 0 var(--wje-input-border-radius) var(--wje-input-border-radius) 0;\n            }\n\n            &.has-start input {\n                border-top-left-radius: 0;\n                border-bottom-left-radius: 0;\n            }\n\n            &.has-end input {\n                border-top-right-radius: 0;\n                border-bottom-right-radius: 0;\n            }\n            .error-message {\n                position: static;\n\n                background: transparent;\n                padding: 0.25rem 0;\n                left: auto;\n                transform: none;\n                color: var(--wje-input-color-invalid);\n                font-size: 12px;\n                line-height: normal;\n            }\n        }\n    }\n}\n\n.clear {\n    visibility: hidden;\n    position: absolute;\n    right: 0;\n    top: 3px;\n    --wje-padding-top: 0.25rem;\n    --wje-padding-start: 0.25rem;\n    --wje-padding-end: 0.25rem;\n    --wje-padding-bottom: 0.25rem;\n    --wje-button-margin-inline: 0 0.25rem;\n}\n\n:host([required]) .input-wrapper::after {\n    color: var(--wje-input-color-invalid);\n    content: '*';\n    font-family: var(--wje-force-mac-font-family);\n    font-size: 20px;\n    position: absolute;\n    right: 0;\n    top: 0;\n}\n\n:host([required]) .standard .input-wrapper::after {\n    top: 0;\n}\n\n:host([invalid]) {\n    .error-message {\n        display: block;\n    }\n    .default {\n        label {\n            opacity: 1 !important;\n            color: var(--wje-input-color-invalid) !important;\n            animation-name: shake;\n            animation-duration: 0.4s;\n            animation-iteration-count: 1;\n        }\n    }\n}\n\n::slotted([slot='start']),\n::slotted([slot='end']) {\n    display: flex;\n    align-items: center;\n    border-width: var(--wje-input-border-width);\n    border-style: var(--wje-input-border-style);\n    border-color: var(--wje-input-border-color);\n    padding-inline: var(--wje-input-slot-padding-inline);\n}\n\n/*\n    .options-show is a class that is added to the host element when the select options are shown\n */\n:host(.options-show) ::slotted([slot='start']) {\n    border-bottom-left-radius: 0 !important;\n}\n\n:host(.options-show) ::slotted([slot='end']) {\n    border-bottom-right-radius: 0 !important;\n}\n\nslot[name='start'],\nslot[name='end'] {\n    display: flex;\n}\n\nslot[name='error'] {\n    display: none;\n    margin-inline: 0.5rem;\n}\n\n:host([invalid]) slot[name='error'] {\n    display: block;\n}\n\ninput {\n    background-color: var(--wje-input-background-color);\n    border-width: var(--wje-input-border-width);\n    border-style: var(--wje-input-border-style);\n    border-color: var(--wje-input-border-color);\n    font-family: var(--wje-input-font-family);\n    color: var(--wje-input-color);\n    appearance: none;\n    outline: 0;\n    padding: 0.25rem 0.5rem;\n    line-height: var(--wje-input-line-height);\n    font-size: 14px;\n    font-weight: normal;\n    vertical-align: middle;\n    min-height: 32px;\n}\n\n.error-message {\n    display: none;\n    position: absolute;\n    max-width: 100%;\n    min-width: auto;\n    border-radius: 50px;\n    background: black;\n    padding: 0.25rem 0.5rem;\n    top: 0;\n    left: 50%;\n    transform: translate(-50%, -75%);\n    color: white;\n    font-size: 12px;\n    width: max-content;\n    line-height: normal;\n}\n\n@keyframes shake {\n    8%,\n    41% {\n        transform: translateX(-4px);\n    }\n    25%,\n    58% {\n        transform: translateX(4px);\n    }\n    75% {\n        transform: translateX(-2px);\n    }\n    92% {\n        transform: translateX(2px);\n    }\n    0%,\n    100% {\n        transform: translateX(0);\n    }\n}\n";
+class Input extends WJElement {
   /**
-   * Constructor for the Input class.
-   * @param {Object} options - The options for the Input class.
+   * Creates an instance of Input.
    */
-  constructor(t = {}) {
+  constructor() {
     super();
+    __publicField(this, "observeFunction", (mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === "attributes") {
+          const attributeName = mutation.attributeName;
+          const oldValue = mutation.oldValue;
+          const newValue = this.getAttribute(attributeName);
+          console.log(`Attribute ${attributeName} changed from ${oldValue} to ${newValue}`);
+        }
+      });
+      this.refresh();
+    });
     /**
-     * The class name of the input.
+     * The class name of the input element.
      * @type {string}
      */
-    b(this, 'className', 'Input');
-    (this.invalid = !1), (this.pristine = !0), (this.internals = this.attachInternals());
+    __publicField(this, "className", "Input");
+    this.invalid = false;
+    this.pristine = true;
+    this.internals = this.attachInternals();
+    this.observer = new MutationObserver(this.observeFunction);
   }
   /**
    * Setter for the value attribute.
-   * @param {string} value - The value to set.
+   * @param {string} value The value to set.
    */
-  set value(t) {
-    this.setAttribute('value', t);
+  set value(value) {
+    this.internals.setFormValue(value);
+    if (this.input) this.input.value = value;
+    this.pristine = false;
+    this._value = value;
   }
   /**
    * Getter for the value attribute.
    * @returns {string} The value of the attribute.
    */
   get value() {
-    return this.getAttribute('value') || '';
+    var _a;
+    return ((_a = this.input) == null ? void 0 : _a.value) ?? this._value ?? "";
   }
   /**
    * Getter for the customErrorDisplay attribute.
    * @returns {boolean} Whether the attribute is present.
    */
   get customErrorDisplay() {
-    return this.hasAttribute('custom-error-display');
+    return this.hasAttribute("custom-error-display");
   }
   /**
    * Getter for the validateOnChange attribute.
    * @returns {boolean} Whether the attribute is present.
    */
   get validateOnChange() {
-    return this.hasAttribute('validate-on-change');
+    return this.hasAttribute("validate-on-change");
   }
   /**
    * Getter for the invalid attribute.
    * @returns {boolean} Whether the attribute is present.
    */
   get invalid() {
-    return this.hasAttribute('invalid');
+    return this.hasAttribute("invalid");
   }
   /**
    * Setter for the invalid attribute.
-   * @param {boolean} isInvalid - Whether the input is invalid.
+   * @param {boolean} isInvalid Whether the input is invalid.
    */
-  set invalid(t) {
-    t && this.customErrorDisplay ? this.setAttribute('invalid', '') : this.removeAttribute('invalid');
+  set invalid(isInvalid) {
+    if (isInvalid) this.setAttribute("invalid", "");
+    else this.removeAttribute("invalid");
   }
   /**
    * Getter for the form attribute.
@@ -69,14 +86,14 @@ class m extends x {
   }
   /**
    * Getter for the name attribute.
-   * @returns {string} The name of the input.
+   * @returns {string} The name of the input element.
    */
   get name() {
-    return this.getAttribute('name');
+    return this.getAttribute("name");
   }
   /**
    * Getter for the type attribute.
-   * @returns {string} The type of the input.
+   * @returns {string} The type of the input element.
    */
   get type() {
     return this.localName;
@@ -90,7 +107,7 @@ class m extends x {
   }
   /**
    * Getter for the validationMessage attribute.
-   * @returns {string} The validation message of the input.
+   * @returns {string} The validation message of the input element.
    */
   get validationMessage() {
     return this.internals.validationMessage;
@@ -103,178 +120,332 @@ class m extends x {
     return this.internals.willValidate;
   }
   /**
-   * Checks the validity of the input.
-   * @returns {boolean} Whether the input is valid.
+   * @summary Getter for the defaultValue attribute.
+   * This method retrieves the 'value' attribute of the custom input element.
+   * The 'value' attribute represents the default value of the input element.
+   * If the 'value' attribute is not set, it returns an empty string.
+   * @returns {string} The default value of the input element.
    */
-  checkValidity() {
-    return this.internals.checkValidity();
+  get defaultValue() {
+    return this.getAttribute("value") ?? "";
   }
   /**
-   * Reports the validity of the input.
-   * @returns {boolean} Whether the input is valid.
+   * @summary Setter for the defaultValue attribute.
+   * This method sets the 'value' attribute of the custom input element to the provided value.
+   * The 'value' attribute represents the default value of the input element.
+   * @param {string} value The value to set as the default value.
    */
-  reportValidity() {
-    return this.internals.reportValidity();
+  set defaultValue(value) {
+    this.setAttribute("value", value);
   }
   /**
    * Getter for the cssStyleSheet attribute.
-   * @returns {CSSStyleSheet} The CSS style sheet of the input.
+   * @returns {CSSStyleSheet} The CSS style sheet of the input element.
    */
   static get cssStyleSheet() {
-    return A;
+    return styles;
   }
   /**
-   * Getter for the observedAttributes attribute.
+   * Getter for the observedAttributes attribute of the input element.
    * @returns {Array} The attributes to observe for changes.
    */
   static get observedAttributes() {
-    return ['value'];
+    return [];
   }
   /**
    * Sets up the attributes for the input.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
+    if (this.pristine) {
+      this.value = this.defaultValue;
+      this.pristine = false;
+    }
+  }
+  beforeDraw() {
+    this.observer.disconnect();
   }
   /**
-   * Draws the input.
-   * @param {CanvasRenderingContext2D} context - The context to draw on.
-   * @param {Object} store - The store to use.
-   * @param {Object} params - The parameters to use.
+   * Draws the input element.
    * @returns {DocumentFragment} The drawn input.
    */
-  draw(t, e, s) {
-    let o = this.hasSlot(this, 'start'),
-      v = this.hasSlot(this, 'end'),
-      f = document.createDocumentFragment(),
-      r = document.createElement('div');
-    r.setAttribute('part', 'native'),
-      r.classList.add('native-input', this.variant || 'default'),
-      this.hasAttribute('invalid') && r.classList.add('has-error');
-    let l = document.createElement('div');
-    l.classList.add('wrapper');
-    let d = document.createElement('div');
-    d.classList.add('input-wrapper');
-    let u = document.createElement('label');
-    (u.innerText = this.label), this.value && !this.hasAttribute('error') && u.classList.add('fade');
-    let i = document.createElement('input');
-    i.setAttribute('type', 'text'),
-      i.setAttribute('part', 'input'),
-      i.setAttribute('value', this.value || ''),
-      i.classList.add('form-control'),
-      this.hasAttribute('placeholder') && i.setAttribute('placeholder', this.placeholder),
-      this.hasAttribute('multiple') && i.setAttribute('multiple', this.multiple),
-      this.hasAttribute('disabled') && i.setAttribute('disabled', ''),
-      this.hasAttribute('readonly') && i.setAttribute('readonly', ''),
-      this.hasAttribute('maxlength') && i.setAttribute('maxlength', this.maxlength),
-      this.hasAttribute('max') && i.setAttribute('max', this.max),
-      this.hasAttribute('min') && i.setAttribute('min', this.min);
-    let p = document.createElement('div');
-    p.classList.add('error-message');
-    let h = null;
-    o && ((h = document.createElement('slot')), h.setAttribute('name', 'start'));
-    let c = null;
-    if (
-      (v && ((c = document.createElement('slot')), c.setAttribute('name', 'end')),
-      o && (l.appendChild(h), r.classList.add('has-start')),
-      this.variant === 'standard' ? this.label && r.appendChild(u) : d.appendChild(u),
-      d.appendChild(i),
-      l.appendChild(d),
-      r.appendChild(l),
-      this.hasAttribute('clearable'))
-    ) {
-      (this.clear = document.createElement('wje-button')),
-        this.clear.classList.add('clear'),
-        this.clear.setAttribute('fill', 'link'),
-        this.clear.setAttribute('part', 'clear');
-      let g = document.createElement('wje-icon');
-      g.setAttribute('name', 'x'), this.clear.appendChild(g), d.appendChild(this.clear);
+  draw() {
+    let hasSlotStart = this.hasSlot(this, "start");
+    let hasSlotEnd = this.hasSlot(this, "end");
+    let hasSlotError = this.hasSlot(this, "error");
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    native.setAttribute("part", "native");
+    native.classList.add("native-input", this.variant || "default");
+    if (this.hasAttribute("invalid")) native.classList.add("has-error");
+    let wrapper = document.createElement("div");
+    wrapper.classList.add("wrapper");
+    let inputWrapper = document.createElement("div");
+    inputWrapper.setAttribute("part", "wrapper");
+    inputWrapper.classList.add("input-wrapper");
+    let label = document.createElement("label");
+    label.innerText = this.label;
+    if (this.value && !this.hasAttribute("error")) label.classList.add("fade");
+    let input = document.createElement("input");
+    input.setAttribute("type", "text");
+    input.setAttribute("part", "input");
+    input.setAttribute("value", this.value || "");
+    input.classList.add("form-control");
+    const attributes = Array.from(this.attributes).map((attr) => attr.name);
+    attributes.forEach((attr) => {
+      if (this.hasAttribute(attr)) {
+        input.setAttribute(attr, this[attr] || "");
+      }
+    });
+    let error = document.createElement("div");
+    error.classList.add("error-message");
+    error.setAttribute("part", "error");
+    let errorSlot = null;
+    if (hasSlotError) {
+      errorSlot = document.createElement("slot");
+      errorSlot.setAttribute("name", "error");
+      if (this.hasAttribute("error-inline")) {
+        native.appendChild(errorSlot);
+      } else {
+        error.appendChild(errorSlot);
+        wrapper.appendChild(error);
+      }
+    } else {
+      wrapper.appendChild(error);
     }
-    return (
-      v && (l.appendChild(c), r.classList.add('has-end')),
-      r.appendChild(p),
-      f.appendChild(r),
-      (this.native = r),
-      (this.labelElement = u),
-      (this.input = i),
-      (this.errorMessage = p),
-      f
-    );
+    let start = null;
+    if (hasSlotStart) {
+      start = document.createElement("slot");
+      start.setAttribute("name", "start");
+      start.setAttribute("part", "start");
+    }
+    let end = null;
+    if (hasSlotEnd) {
+      end = document.createElement("slot");
+      end.setAttribute("name", "end");
+      end.setAttribute("part", "end");
+    }
+    if (hasSlotStart) {
+      inputWrapper.appendChild(start);
+      native.classList.add("has-start");
+    }
+    if (this.variant === "standard") {
+      if (this.label) native.appendChild(label);
+    } else {
+      inputWrapper.appendChild(label);
+    }
+    inputWrapper.appendChild(input);
+    wrapper.appendChild(inputWrapper);
+    native.appendChild(wrapper);
+    if (this.hasAttribute("clearable")) {
+      this.clear = document.createElement("wje-button");
+      this.clear.classList.add("clear");
+      this.clear.setAttribute("fill", "link");
+      this.clear.setAttribute("part", "clear");
+      let clearIcon = document.createElement("wje-icon");
+      clearIcon.setAttribute("name", "x");
+      this.clear.appendChild(clearIcon);
+      inputWrapper.appendChild(this.clear);
+    }
+    if (hasSlotEnd) {
+      inputWrapper.appendChild(end);
+      native.classList.add("has-end");
+    }
+    fragment.appendChild(native);
+    this.native = native;
+    this.labelElement = label;
+    this.input = input;
+    this.errorMessage = error;
+    return fragment;
   }
   /**
-   * Runs after the input is drawn.
+   * Runs after the input is drawn to the DOM.
    */
   afterDraw() {
-    ['type', 'value', 'placeholder', 'required', 'min', 'max', 'minLength', 'maxLength', 'pattern'].forEach((t) => {
-      const e = t === 'required' ? this.hasAttribute(t) : this.getAttribute(t);
-      e != null && (this.input[t] = e);
-    }),
-      this.input.addEventListener('focus', (t) => {
-        this.labelElement.classList.add('fade'), this.native.classList.add('focused');
-      }),
-      this.input.addEventListener('blur', (t) => {
-        this.native.classList.remove('focused'), t.target.value || this.labelElement.classList.remove('fade');
-      }),
-      this.input.addEventListener('input', (t) => {
-        this.validateOnChange && (this.pristine = !1),
-          this.input.classList.remove('pristine'),
-          this.labelElement.classList.add('fade');
-        const e = new t.constructor(t.type, t);
-        this.dispatchEvent(e),
-          this.validateInput(),
-          w.dispatchCustomEvent(this, 'wje-input:input', {
-            value: this.input.value,
-          });
-      }),
-      this.addEventListener('invalid', (t) => {
-        (this.invalid = !0),
-          (this.pristine = !1),
-          (this.errorMessage.textContent = this.internals.validationMessage),
-          this.customErrorDisplay && t.preventDefault();
-      }),
-      this.addEventListener('focus', () => this.input.focus()),
-      this.clear &&
-        this.clear.addEventListener('wje-button:click', (t) => {
-          (this.input.value = ''), w.dispatchCustomEvent(this.clear, 'wje-input:clear');
-        });
+    this.input.addEventListener("focus", (e) => {
+      this.labelElement.classList.add("fade");
+      this.native.classList.add("focused");
+    });
+    this.input.addEventListener("blur", (e) => {
+      this.native.classList.remove("focused");
+      if (!e.target.value) this.labelElement.classList.remove("fade");
+    });
+    this.input.addEventListener("input", (e) => {
+      this.validateInput();
+      if (this.validateOnChange) {
+        this.pristine = false;
+        this.propagateValidation();
+      }
+      this.input.classList.remove("pristine");
+      this.labelElement.classList.add("fade");
+      const clone = new e.constructor(e.type, e);
+      this.dispatchEvent(clone);
+      event.dispatchCustomEvent(this, "wje-input:input", {
+        value: this.input.value
+      });
+      this.value = this.input.value;
+    });
+    this.addEventListener("invalid", (e) => {
+      this.invalid = true;
+      this.pristine = false;
+      this.showInvalidMessage();
+      if (this.customErrorDisplay) {
+        e.preventDefault();
+      }
+    });
+    this.addEventListener("focus", () => this.input.focus());
+    if (this.clear) {
+      this.clear.addEventListener("wje-button:click", (e) => {
+        this.input.value = "";
+        event.dispatchCustomEvent(this.clear, "wje-input:clear");
+      });
+    }
+    this.validateInput();
+    if (this.hasAttribute("invalid")) {
+      this.showInvalidMessage();
+    }
+    this.observer.observe(this, {
+      attributes: true,
+      // Watch for attribute changes
+      attributeOldValue: true
+      // Keep track of the old value of attributes
+    });
+  }
+  componentCleanup() {
+    this.observer.disconnect();
   }
   /**
-   * Validates the input.
+   * @summary Displays the validation message for the input.
+   * If the input has a slot named 'error', it sets the text content of the element with attribute 'error-message' inside the slot to the validation message.
+   * If the input does not have an 'error' slot, it sets the text content of the errorMessage property to the validation message.
+   */
+  showInvalidMessage() {
+    let hasSlotError = this.hasSlot(this, "error");
+    if (hasSlotError) {
+      const slot = this.querySelector("[slot='error']");
+      let errorMessage = slot.querySelector("[error-message]");
+      if (!errorMessage) {
+        const error = document.createElement("div");
+        error.setAttribute("error-message", "");
+        slot.appendChild(error);
+        errorMessage = error;
+      }
+      errorMessage.textContent = this.internals.validationMessage;
+    } else {
+      this.errorMessage.textContent = this.internals.validationMessage;
+    }
+  }
+  /**
+   * @summary Validates the input.
+   * This method checks the validity state of the input. If the input is not valid, it iterates over the validity state object.
+   * For each invalid state, it constructs an attribute name and checks if the input has this attribute.
+   * If the input has the attribute, it sets the validation error to the state and the error message to the attribute value.
+   * If the input does not have the attribute, it sets the error message to the default validation message of the input.
+   * It then sets the validity in the form internals to an object with the validation error as key and true as value, and the error message.
+   * If the input is valid, it sets the validity in the form internals to an empty object.
    */
   validateInput() {
-    const t = this.input.validity;
-    if (((this.invalid = !1), t.valid))
-      this.internals.setValidity({}),
-        (this.pristine = !1),
-        (this.errorMessage.textContent = this.input.validationMessage);
-    else
-      for (let e in t) {
-        const s = `message-${e.toString()}`;
-        if (t[e]) {
-          (this.validationError = e.toString()), (this.invalid = !this.pristine && !t.valid);
-          let o = this.message;
-          this.hasAttribute('message') ||
-            (o = this.hasAttribute(s) ? this.getAttribute(s) : this.input.validationMessage),
-            this.internals.setValidity({ [this.validationError]: !0 }, o),
-            this.invalid && this.customErrorDisplay && this.dispatchEvent(new Event('invalid'));
+    const validState = this.input.validity;
+    if (!validState.valid) {
+      for (let state in validState) {
+        const attr = `message-${state.toString()}`;
+        if (validState[state]) {
+          this.validationError = state.toString();
+          let errorMessage = this.message;
+          if (!this.hasAttribute("message"))
+            errorMessage = this.hasAttribute(attr) ? this.getAttribute(attr) : this.input.validationMessage;
+          this.internals.setValidity({ [this.validationError]: true }, errorMessage);
         }
       }
+    } else {
+      this.internals.setValidity({});
+    }
+  }
+  /**
+   * @summary Propagates the validation state of the input.
+   * This method sets the 'invalid' property of the input based on its 'pristine' state and its internal validity state.
+   * If the input is invalid and the 'customErrorDisplay' property is true, it dispatches an 'invalid' event.
+   */
+  propagateValidation() {
+    this.invalid = !this.pristine && !this.internals.validity.valid;
+    if (this.invalid && this.customErrorDisplay) {
+      this.dispatchEvent(new Event("invalid"));
+    }
   }
   /**
    * Checks whether the input has a slot.
-   * @param {HTMLElement} el - The element to check.
-   * @param {string} slotName - The name of the slot to check for.
+   * @param {HTMLElement} el The element to check.
+   * @param {string} slotName The name of the slot to check for.
    * @returns {boolean} Whether the input has the slot.
    */
-  hasSlot(t, e = null) {
-    let s = e ? `[slot="${e}"]` : '[slot]';
-    return t.querySelectorAll(s).length > 0;
+  hasSlot(el, slotName = null) {
+    let selector = slotName ? `[slot="${slotName}"]` : "[slot]";
+    return el.querySelectorAll(selector).length > 0 ? true : false;
   }
+  /**
+   * @summary Callback function that is called when the custom element is associated with a form.
+   * This function adds an event listener to the form's submit event, which validates the input and propagates the validation.
+   * @param {HTMLFormElement} form The form the custom element is associated with.
+   */
+  formAssociatedCallback(form) {
+    form == null ? void 0 : form.addEventListener("submit", () => {
+      this.validateInput();
+      this.propagateValidation();
+    });
+  }
+  /**
+   * The formResetCallback method is a built-in lifecycle callback that gets called when a form gets reset.
+   * This method is responsible for resetting the value of the custom input element to its default value.
+   * It also resets the form value and validity state in the form internals.
+   * @function
+   */
+  formResetCallback() {
+    this.value = this.defaultValue;
+    this.internals.setFormValue(this.defaultValue);
+    this.internals.setValidity({});
+  }
+  /**
+   * The formStateRestoreCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is restored.
+   * This method is responsible for restoring the value of the custom input element to its saved state.
+   * It also restores the form value and validity state in the form internals to their saved states.
+   * @param {object} state The saved state of the custom input element.
+   * @function
+   */
+  formStateRestoreCallback(state) {
+    this.value = state.value;
+    this.internals.setFormValue(state.value);
+    this.internals.setValidity({});
+  }
+  /**
+   * The formStateSaveCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is saved.
+   * This method is responsible for saving the value of the custom input element.
+   * @returns {object} The saved state of the custom input element.
+   * @function
+   */
+  formStateSaveCallback() {
+    return {
+      value: this.value
+    };
+  }
+  /**
+   * The formDisabledCallback method is a built-in lifecycle callback that gets called when the disabled state of a form-associated custom element changes.
+   * This method is not implemented yet.
+   * @param {boolean} disabled The new disabled state of the custom input element.
+   * @function
+   */
+  formDisabledCallback(disabled) {
+    console.warn("formDisabledCallback not implemented yet");
+  }
+  // dispatchEvent(e) {
+  //     return false;
+  // }
 }
 /**
  * Whether the input is associated with a form.
  * @type {boolean}
  */
-b(m, 'formAssociated', !0);
-m.define('wje-input', m);
-export { m as default };
+__publicField(Input, "formAssociated", true);
+Input.define("wje-input", Input);
+export {
+  Input as default
+};

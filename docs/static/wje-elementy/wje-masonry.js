@@ -1,175 +1,187 @@
-var p = Object.defineProperty;
-var b = (o, s, t) => (s in o ? p(o, s, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (o[s] = t));
-var r = (o, s, t) => (b(o, typeof s != 'symbol' ? s + '' : s, t), t);
-import w from './wje-element.js';
-const A = 500,
-  C = 300,
-  x = '--wje-masonry-layout-col-count',
-  v = '--wje-masonry-layout-gap',
-  d = 1,
-  m = /* @__PURE__ */ new Map();
-function c(o, s, t) {
-  const e = parseFloat(o.getAttribute(s) || '');
-  return isNaN(e) ? t : e;
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const DEFAULT_MAX_COL_WIDTH = 500;
+const DEFAULT_DEBOUNCE_MS = 300;
+const COL_COUNT_CSS_VAR_NAME = `--wje-masonry-layout-col-count`;
+const GAP_CSS_VAR_NAME = `--wje-masonry-layout-gap`;
+const ELEMENT_NODE_TYPE = 1;
+const DEBOUNCE_MAP = /* @__PURE__ */ new Map();
+function getNumberAttribute($elem, name, defaultValue) {
+  const value = parseFloat($elem.getAttribute(name) || "");
+  return isNaN(value) ? defaultValue : value;
 }
-function g(o, s, t) {
-  return isNaN(s) ? Math.max(1, Math.ceil(o / t)) : s;
+function getColCount(totalWidth, cols, maxColWidth) {
+  return isNaN(cols) ? Math.max(1, Math.ceil(totalWidth / maxColWidth)) : cols;
 }
-function E(o, s, t) {
-  const e = m.get(t);
-  e != null && window.clearTimeout(e), m.set(t, window.setTimeout(o, s));
+function debounce(cb, ms, id) {
+  const existingTimeout = DEBOUNCE_MAP.get(id);
+  if (existingTimeout !== null && existingTimeout !== void 0) window.clearTimeout(existingTimeout);
+  DEBOUNCE_MAP.set(id, window.setTimeout(cb, ms));
 }
-function S(o) {
-  let s = 0,
-    t = 1 / 0;
-  return (
-    o.forEach((e, n) => {
-      e < t && ((t = e), (s = n));
-    }),
-    s
-  );
+function findSmallestColIndex(colHeights) {
+  let smallestIndex = 0;
+  let smallestHeight = Infinity;
+  colHeights.forEach((height, i) => {
+    if (height < smallestHeight) {
+      smallestHeight = height;
+      smallestIndex = i;
+    }
+  });
+  return smallestIndex;
 }
-const N =
-  ':host{display:flex;align-items:flex-start;justify-content:stretch;width:100%}.column{max-width:calc((100% / var(--wje-masonry-layout-col-count, 1) - ((var(--wje-masonry-layout-gap, 1rem) * (var(--wje-masonry-layout-col-count, 1) - 1) / var(--wje-masonry-layout-col-count, 1)))));width:100%;flex:1;display:flex;flex-direction:column}.column:not(:last-child){margin-inline-end:var(--wje-masonry-layout-gap, 1rem)}.column ::slotted(*){margin-block-end:var(--wje-masonry-layout-gap, 1rem);box-sizing:border-box;width:100%}#unset-items{opacity:0;position:absolute;pointer-events:none}';
-class f extends w {
+const styles = "/*\n[ WJ Masonry ]\n*/\n\n:host {\n    display: flex;\n    align-items: flex-start;\n    justify-content: stretch;\n    width: 100%;\n}\n\n.column {\n    max-width: calc(\n        (\n            100% / var(--wje-masonry-layout-col-count, 1) -\n                (\n                    (\n                        var(--wje-masonry-layout-gap, 1rem) * (var(--wje-masonry-layout-col-count, 1) - 1) /\n                            var(--wje-masonry-layout-col-count, 1)\n                    )\n                )\n        )\n    );\n    width: 100%;\n    flex: 1;\n    display: flex;\n    flex-direction: column;\n}\n\n.column:not(:last-child) {\n    margin-inline-end: var(--wje-masonry-layout-gap, 1rem);\n}\n\n.column ::slotted(*) {\n    margin-block-end: var(--wje-masonry-layout-gap, 1rem);\n    box-sizing: border-box;\n    width: 100%;\n}\n\n/* Hide the items that has not yet found the correct slot */\n#unset-items {\n    opacity: 0;\n    position: absolute;\n    pointer-events: none;\n}\n";
+class Masonry extends WJElement {
   /**
    * Constructor for the Masonry class.
    */
   constructor() {
     super();
-    r(this, 'debounceId', `layout_${Math.random()}`);
-    r(this, 'ro');
-    r(this, 'className', 'Masonry');
+    __publicField(this, "debounceId", `layout_${Math.random()}`);
+    __publicField(this, "ro");
+    __publicField(this, "className", "Masonry");
     /**
      * Called when the slot changes.
      */
-    r(this, 'onSlotChange', () => {
-      (this.unsetSlot.assignedNodes() || []).filter((e) => e.nodeType === d).length > 0 && this.layout();
+    __publicField(this, "onSlotChange", () => {
+      const $unsetElements = (this.unsetSlot.assignedNodes() || []).filter(
+        (node) => node.nodeType === ELEMENT_NODE_TYPE
+      );
+      if ($unsetElements.length > 0) {
+        this.layout();
+      }
     });
     /**
      * Called when the window resizes.
-     * @param {Array} entries - The entries to use.
+     * @param {Array} entries The entries to use.
      */
-    r(this, 'onResize', (t) => {
-      const { width: e } =
-        t != null && Array.isArray(t) && t.length > 0 ? t[0].contentRect : { width: this.offsetWidth };
-      g(e, this.cols, this.maxColWidth) !== this.columns.length && this.scheduleLayout();
+    __publicField(this, "onResize", (entries) => {
+      const { width } = entries !== null && entries !== void 0 && Array.isArray(entries) && entries.length > 0 ? entries[0].contentRect : { width: this.offsetWidth };
+      const colCount = getColCount(width, this.cols, this.maxColWidth);
+      if (colCount !== this.columns.length) {
+        this.scheduleLayout();
+      }
     });
     /**
      * Lays out the element.
      */
-    r(this, 'layout', () => {
-      this.currentRequestAnimationFrameCallback != null &&
-        window.cancelAnimationFrame(this.currentRequestAnimationFrameCallback),
-        (this.currentRequestAnimationFrameCallback = requestAnimationFrame(() => {
-          const t = this.gap,
-            e = Array.from(this.children).filter((l) => l.nodeType === d),
-            n = g(this.offsetWidth, this.cols, this.maxColWidth),
-            a = Array(n).fill(0),
-            i = [];
-          for (const l of e) {
-            const y = l.getBoundingClientRect().height;
-            let u = S(a);
-            a[u] += y + +t;
-            const h = u;
-            l.slot !== h && i.push(() => (l.slot = h));
+    __publicField(this, "layout", () => {
+      if (this.currentRequestAnimationFrameCallback !== null && this.currentRequestAnimationFrameCallback !== void 0) {
+        window.cancelAnimationFrame(this.currentRequestAnimationFrameCallback);
+      }
+      this.currentRequestAnimationFrameCallback = requestAnimationFrame(() => {
+        const gap = this.gap;
+        const $elements = Array.from(this.children).filter((node) => node.nodeType === ELEMENT_NODE_TYPE);
+        const colCount = getColCount(this.offsetWidth, this.cols, this.maxColWidth);
+        const colHeights = Array(colCount).fill(0);
+        const writes = [];
+        for (const elem of $elements) {
+          const height = elem.getBoundingClientRect().height;
+          let smallestColIndex = findSmallestColIndex(colHeights);
+          colHeights[smallestColIndex] += height + +gap;
+          const newSlot = smallestColIndex;
+          if (elem.slot !== newSlot) {
+            writes.push(() => elem.slot = newSlot);
           }
-          for (const l of i) l();
-          this.renderCols(n);
-        }));
+        }
+        for (const write of writes) {
+          write();
+        }
+        this.renderCols(colCount);
+      });
     });
-    (this.debounceId = `layout_${Math.random()}`),
-      (this.ro = void 0),
-      (this.currentRequestAnimationFrameCallback = void 0),
-      (this.unsetSlot = void 0);
+    this.debounceId = `layout_${Math.random()}`;
+    this.ro = void 0;
+    this.currentRequestAnimationFrameCallback = void 0;
+    this.unsetSlot = void 0;
   }
   /**
    * Setter for the maxColWidth property.
-   * @param {number} value - The maximum column width.
+   * @param {number} value The maximum column width.
    */
-  set maxColWidth(t) {
-    this.setAttribute('max-col-width', t);
+  set maxColWidth(value) {
+    this.setAttribute("max-col-width", value);
   }
   /**
    * Getter for the maxColWidth property.
    * @returns {number} The maximum column width.
    */
   get maxColWidth() {
-    return this.hasAttribute('max-col-width') ? +this.getAttribute('max-col-width') : +A;
+    return this.hasAttribute("max-col-width") ? +this.getAttribute("max-col-width") : +DEFAULT_MAX_COL_WIDTH;
   }
   /**
    * Setter for the cols property.
-   * @param {number} value - The number of columns.
+   * @param {number} value The number of columns.
    */
-  set cols(t) {
-    this.hasAttribute('cols') && this.setAttribute('cols', t);
+  set cols(value) {
+    if (this.hasAttribute("cols")) this.setAttribute("cols", value);
+    else this.setAttribute("cols", "auto");
   }
   /**
    * Getter for the cols property.
    * @returns {number} The number of columns.
    */
   get cols() {
-    return c(this, 'cols', 'auto');
+    return getNumberAttribute(this, "cols", "auto");
   }
   /**
    * Setter for the gap property.
-   * @param {number} value - The gap between columns.
+   * @param {number} value The gap between columns.
    */
-  set gap(t) {
-    this.setAttribute('gap', t);
+  set gap(value) {
+    this.setAttribute("gap", value);
   }
   /**
    * Getter for the gap property.
    * @returns {number} The gap between columns.
    */
   get gap() {
-    return c(this, 'gap', '24');
+    return getNumberAttribute(this, "gap", "24");
   }
   /**
    * Setter for the debounce property.
-   * @param {number} value - The debounce time.
+   * @param {number} value The debounce time.
    */
-  set debounce(t) {
-    this.setAttribute('debounce', t);
+  set debounce(value) {
+    this.setAttribute("debounce", value);
   }
   /**
    * Getter for the debounce property.
    * @returns {number} The debounce time.
    */
   get debounce() {
-    return c(this, 'debounce', C);
+    return getNumberAttribute(this, "debounce", DEFAULT_DEBOUNCE_MS);
   }
   /**
    * Getter for the columns property.
    * @returns {Array} An array of all the columns.
    */
   get columns() {
-    return Array.from(this.shadowRoot.querySelectorAll('.column'));
+    return Array.from(this.shadowRoot.querySelectorAll(`.column`));
   }
   /**
    * Getter for the cssStyleSheet property.
-   * @returns {CSSStyleSheet} The CSS style sheet.
+   * @static
+   * @returns {CSSStyleSheet} The CSS style sheet for the masonry layout.
    */
   static get cssStyleSheet() {
-    return N;
+    return styles;
   }
   /**
    * Getter for the observedAttributes property.
    * @returns {Array} An array of the observed attributes.
    */
   static get observedAttributes() {
-    return ['max-col-width', 'gap', 'cols'];
+    return ["max-col-width", "gap", "cols"];
   }
   /**
    * Callback for when an attribute changes.
-   * @param {string} name - The name of the attribute.
-   * @param {string} old - The old value of the attribute.
-   * @param {string} newName - The new value of the attribute.
    */
-  attributeChangedCallback(t, e, n) {
-    switch (t) {
-      case 'gap':
-        this.style.setProperty(v, `${this.gap}px`);
+  attributeChangedCallback(name, old, newName) {
+    switch (name) {
+      case "gap":
+        this.style.setProperty(GAP_CSS_VAR_NAME, `${this.gap}px`);
         break;
     }
     this.scheduleLayout();
@@ -177,67 +189,79 @@ class f extends w {
   /**
    * Callback for when the element is disconnected.
    */
-  disconnectedCallback() {
-    this.unsetSlot.removeEventListener('slotchange', this.onSlotChange),
-      window.removeEventListener('resize', this.onResize),
-      this.ro != null && this.ro.unobserve(this);
+  beforeDisconnect() {
+    this.unsetSlot.removeEventListener("slotchange", this.onSlotChange);
+    window.removeEventListener("resize", this.onResize);
+    if (this.ro !== null && this.ro !== void 0) {
+      this.ro.unobserve(this);
+    }
   }
   /**
    * Sets up the attributes for the element.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Draws the element.
-   * @param {CanvasRenderingContext2D} context - The context to draw on.
-   * @param {Object} store - The store to use.
-   * @param {Object} params - The parameters to use.
+   * Draws the element for the masonry layout.
    * @returns {DocumentFragment} The drawn element.
    */
-  draw(t, e, n) {
-    let a = document.createDocumentFragment(),
-      i = document.createElement('div');
-    i.setAttribute('id', 'unset-items'), i.setAttribute('part', 'native');
-    let l = document.createElement('slot');
-    return i.appendChild(l), (this.unsetSlot = l), (this.native = i), a.appendChild(i), a;
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    native.setAttribute("id", "unset-items");
+    native.setAttribute("part", "native");
+    let unsetSlot = document.createElement("slot");
+    native.appendChild(unsetSlot);
+    this.unsetSlot = unsetSlot;
+    this.native = native;
+    fragment.appendChild(native);
+    return fragment;
   }
   /**
    * Called after the element is drawn.
    */
   afterDraw() {
-    this.onSlotChange(),
-      this.onResize(),
-      this.layout(),
-      this.unsetSlot.addEventListener('slotchange', this.onSlotChange),
-      'ResizeObserver' in window
-        ? ((this.ro = new ResizeObserver(this.onResize)), this.ro.observe(this))
-        : window.addEventListener('resize', this.onResize);
-  }
-  /**
-   * Renders the columns.
-   * @param {number} colCount - The number of columns to render.
-   */
-  renderCols(t) {
-    const e = this.columns;
-    if (e.length !== t) {
-      for (const n of e) n.parentNode && n.parentNode.removeChild(n);
-      for (let n = 0; n < t; n++) {
-        const a = document.createElement('div');
-        a.classList.add('column'), a.setAttribute('part', `column column-${n}`);
-        const i = document.createElement('slot');
-        i.setAttribute('name', n), a.appendChild(i), this.context.appendChild(a);
-      }
-      this.style.setProperty(x, t);
+    this.onSlotChange();
+    this.onResize();
+    this.layout();
+    this.unsetSlot.addEventListener("slotchange", this.onSlotChange);
+    if ("ResizeObserver" in window) {
+      this.ro = new ResizeObserver(this.onResize);
+      this.ro.observe(this);
+    } else {
+      window.addEventListener("resize", this.onResize);
     }
   }
   /**
-   * Schedules a layout.
-   * @param {number} ms - The number of milliseconds to wait before laying out.
+   * Renders the columns.
+   * @param {number} colCount The number of columns to render.
    */
-  scheduleLayout(t = this.debounce) {
-    E(this.layout, t, this.debounceId);
+  renderCols(colCount) {
+    const columns = this.columns;
+    if (columns.length === colCount) {
+      return;
+    }
+    for (let i = 0; i < colCount; i++) {
+      const column = document.createElement("div");
+      column.classList.add("column");
+      column.setAttribute("part", `column column-${i}`);
+      const slot = document.createElement("slot");
+      slot.setAttribute("name", i);
+      column.appendChild(slot);
+      this.context.appendChild(column);
+    }
+    this.style.setProperty(COL_COUNT_CSS_VAR_NAME, colCount);
+  }
+  /**
+   * Schedules a layout.
+   * @param {number} ms The number of milliseconds to wait before laying out.
+   */
+  scheduleLayout(ms = this.debounce) {
+    debounce(this.layout, ms, this.debounceId);
   }
 }
-f.define('wje-masonry', f);
-export { f as default };
+Masonry.define("wje-masonry", Masonry);
+export {
+  Masonry as default
+};

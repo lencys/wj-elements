@@ -1,1042 +1,1128 @@
-var z = Object.defineProperty;
-var B = (t, r, e) => (r in t ? z(t, r, { enumerable: !0, configurable: !0, writable: !0, value: e }) : (t[r] = e));
-var v = (t, r, e) => (B(t, typeof r != 'symbol' ? r + '' : r, e), e);
-import D, { event as G } from './wje-element.js';
-function S(t) {
-  '@babel/helpers - typeof';
-  return (
-    (S =
-      typeof Symbol == 'function' && typeof Symbol.iterator == 'symbol'
-        ? function (r) {
-            return typeof r;
-          }
-        : function (r) {
-            return r && typeof Symbol == 'function' && r.constructor === Symbol && r !== Symbol.prototype
-              ? 'symbol'
-              : typeof r;
-          }),
-    S(t)
-  );
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement, { event } from "./wje-element.js";
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(obj2) {
+    return typeof obj2;
+  } : function(obj2) {
+    return obj2 && "function" == typeof Symbol && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+  }, _typeof(obj);
 }
-var O = /^\s+/,
-  $ = /\s+$/;
-function s(t, r) {
-  if (((t = t || ''), (r = r || {}), t instanceof s)) return t;
-  if (!(this instanceof s)) return new s(t, r);
-  var e = V(t);
-  (this._originalInput = t),
-    (this._r = e.r),
-    (this._g = e.g),
-    (this._b = e.b),
-    (this._a = e.a),
-    (this._roundA = Math.round(100 * this._a) / 100),
-    (this._format = r.format || e.format),
-    (this._gradientType = r.gradientType),
-    this._r < 1 && (this._r = Math.round(this._r)),
-    this._g < 1 && (this._g = Math.round(this._g)),
-    this._b < 1 && (this._b = Math.round(this._b)),
-    (this._ok = e.ok);
+var trimLeft = /^\s+/;
+var trimRight = /\s+$/;
+function tinycolor(color, opts) {
+  color = color ? color : "";
+  opts = opts || {};
+  if (color instanceof tinycolor) {
+    return color;
+  }
+  if (!(this instanceof tinycolor)) {
+    return new tinycolor(color, opts);
+  }
+  var rgb = inputToRGB(color);
+  this._originalInput = color, this._r = rgb.r, this._g = rgb.g, this._b = rgb.b, this._a = rgb.a, this._roundA = Math.round(100 * this._a) / 100, this._format = opts.format || rgb.format;
+  this._gradientType = opts.gradientType;
+  if (this._r < 1) this._r = Math.round(this._r);
+  if (this._g < 1) this._g = Math.round(this._g);
+  if (this._b < 1) this._b = Math.round(this._b);
+  this._ok = rgb.ok;
 }
-s.prototype = {
-  isDark: function () {
+tinycolor.prototype = {
+  isDark: function isDark() {
     return this.getBrightness() < 128;
   },
-  isLight: function () {
+  isLight: function isLight() {
     return !this.isDark();
   },
-  isValid: function () {
+  isValid: function isValid() {
     return this._ok;
   },
-  getOriginalInput: function () {
+  getOriginalInput: function getOriginalInput() {
     return this._originalInput;
   },
-  getFormat: function () {
+  getFormat: function getFormat() {
     return this._format;
   },
-  getAlpha: function () {
+  getAlpha: function getAlpha() {
     return this._a;
   },
-  getBrightness: function () {
-    var r = this.toRgb();
-    return (r.r * 299 + r.g * 587 + r.b * 114) / 1e3;
+  getBrightness: function getBrightness() {
+    var rgb = this.toRgb();
+    return (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1e3;
   },
-  getLuminance: function () {
-    var r = this.toRgb(),
-      e,
-      i,
-      a,
-      n,
-      o,
-      h;
-    return (
-      (e = r.r / 255),
-      (i = r.g / 255),
-      (a = r.b / 255),
-      e <= 0.03928 ? (n = e / 12.92) : (n = Math.pow((e + 0.055) / 1.055, 2.4)),
-      i <= 0.03928 ? (o = i / 12.92) : (o = Math.pow((i + 0.055) / 1.055, 2.4)),
-      a <= 0.03928 ? (h = a / 12.92) : (h = Math.pow((a + 0.055) / 1.055, 2.4)),
-      0.2126 * n + 0.7152 * o + 0.0722 * h
-    );
+  getLuminance: function getLuminance() {
+    var rgb = this.toRgb();
+    var RsRGB, GsRGB, BsRGB, R, G, B;
+    RsRGB = rgb.r / 255;
+    GsRGB = rgb.g / 255;
+    BsRGB = rgb.b / 255;
+    if (RsRGB <= 0.03928) R = RsRGB / 12.92;
+    else R = Math.pow((RsRGB + 0.055) / 1.055, 2.4);
+    if (GsRGB <= 0.03928) G = GsRGB / 12.92;
+    else G = Math.pow((GsRGB + 0.055) / 1.055, 2.4);
+    if (BsRGB <= 0.03928) B = BsRGB / 12.92;
+    else B = Math.pow((BsRGB + 0.055) / 1.055, 2.4);
+    return 0.2126 * R + 0.7152 * G + 0.0722 * B;
   },
-  setAlpha: function (r) {
-    return (this._a = I(r)), (this._roundA = Math.round(100 * this._a) / 100), this;
+  setAlpha: function setAlpha(value) {
+    this._a = boundAlpha(value);
+    this._roundA = Math.round(100 * this._a) / 100;
+    return this;
   },
-  toHsv: function () {
-    var r = R(this._r, this._g, this._b);
+  toHsv: function toHsv() {
+    var hsv = rgbToHsv(this._r, this._g, this._b);
     return {
-      h: r.h * 360,
-      s: r.s,
-      v: r.v,
-      a: this._a,
+      h: hsv.h * 360,
+      s: hsv.s,
+      v: hsv.v,
+      a: this._a
     };
   },
-  toHsvString: function () {
-    var r = R(this._r, this._g, this._b),
-      e = Math.round(r.h * 360),
-      i = Math.round(r.s * 100),
-      a = Math.round(r.v * 100);
-    return this._a == 1
-      ? 'hsv(' + e + ', ' + i + '%, ' + a + '%)'
-      : 'hsva(' + e + ', ' + i + '%, ' + a + '%, ' + this._roundA + ')';
+  toHsvString: function toHsvString() {
+    var hsv = rgbToHsv(this._r, this._g, this._b);
+    var h = Math.round(hsv.h * 360), s = Math.round(hsv.s * 100), v = Math.round(hsv.v * 100);
+    return this._a == 1 ? "hsv(" + h + ", " + s + "%, " + v + "%)" : "hsva(" + h + ", " + s + "%, " + v + "%, " + this._roundA + ")";
   },
-  toHsl: function () {
-    var r = C(this._r, this._g, this._b);
+  toHsl: function toHsl() {
+    var hsl = rgbToHsl(this._r, this._g, this._b);
     return {
-      h: r.h * 360,
-      s: r.s,
-      l: r.l,
-      a: this._a,
+      h: hsl.h * 360,
+      s: hsl.s,
+      l: hsl.l,
+      a: this._a
     };
   },
-  toHslString: function () {
-    var r = C(this._r, this._g, this._b),
-      e = Math.round(r.h * 360),
-      i = Math.round(r.s * 100),
-      a = Math.round(r.l * 100);
-    return this._a == 1
-      ? 'hsl(' + e + ', ' + i + '%, ' + a + '%)'
-      : 'hsla(' + e + ', ' + i + '%, ' + a + '%, ' + this._roundA + ')';
+  toHslString: function toHslString() {
+    var hsl = rgbToHsl(this._r, this._g, this._b);
+    var h = Math.round(hsl.h * 360), s = Math.round(hsl.s * 100), l = Math.round(hsl.l * 100);
+    return this._a == 1 ? "hsl(" + h + ", " + s + "%, " + l + "%)" : "hsla(" + h + ", " + s + "%, " + l + "%, " + this._roundA + ")";
   },
-  toHex: function (r) {
-    return E(this._r, this._g, this._b, r);
+  toHex: function toHex(allow3Char) {
+    return rgbToHex(this._r, this._g, this._b, allow3Char);
   },
-  toHexString: function (r) {
-    return '#' + this.toHex(r);
+  toHexString: function toHexString(allow3Char) {
+    return "#" + this.toHex(allow3Char);
   },
-  toHex8: function (r) {
-    return W(this._r, this._g, this._b, this._a, r);
+  toHex8: function toHex8(allow4Char) {
+    return rgbaToHex(this._r, this._g, this._b, this._a, allow4Char);
   },
-  toHex8String: function (r) {
-    return '#' + this.toHex8(r);
+  toHex8String: function toHex8String(allow4Char) {
+    return "#" + this.toHex8(allow4Char);
   },
-  toRgb: function () {
+  toRgb: function toRgb() {
     return {
       r: Math.round(this._r),
       g: Math.round(this._g),
       b: Math.round(this._b),
-      a: this._a,
+      a: this._a
     };
   },
-  toRgbString: function () {
-    return this._a == 1
-      ? 'rgb(' + Math.round(this._r) + ', ' + Math.round(this._g) + ', ' + Math.round(this._b) + ')'
-      : 'rgba(' +
-          Math.round(this._r) +
-          ', ' +
-          Math.round(this._g) +
-          ', ' +
-          Math.round(this._b) +
-          ', ' +
-          this._roundA +
-          ')';
+  toRgbString: function toRgbString() {
+    return this._a == 1 ? "rgb(" + Math.round(this._r) + ", " + Math.round(this._g) + ", " + Math.round(this._b) + ")" : "rgba(" + Math.round(this._r) + ", " + Math.round(this._g) + ", " + Math.round(this._b) + ", " + this._roundA + ")";
   },
-  toPercentageRgb: function () {
+  toPercentageRgb: function toPercentageRgb() {
     return {
-      r: Math.round(u(this._r, 255) * 100) + '%',
-      g: Math.round(u(this._g, 255) * 100) + '%',
-      b: Math.round(u(this._b, 255) * 100) + '%',
-      a: this._a,
+      r: Math.round(bound01(this._r, 255) * 100) + "%",
+      g: Math.round(bound01(this._g, 255) * 100) + "%",
+      b: Math.round(bound01(this._b, 255) * 100) + "%",
+      a: this._a
     };
   },
-  toPercentageRgbString: function () {
-    return this._a == 1
-      ? 'rgb(' +
-          Math.round(u(this._r, 255) * 100) +
-          '%, ' +
-          Math.round(u(this._g, 255) * 100) +
-          '%, ' +
-          Math.round(u(this._b, 255) * 100) +
-          '%)'
-      : 'rgba(' +
-          Math.round(u(this._r, 255) * 100) +
-          '%, ' +
-          Math.round(u(this._g, 255) * 100) +
-          '%, ' +
-          Math.round(u(this._b, 255) * 100) +
-          '%, ' +
-          this._roundA +
-          ')';
+  toPercentageRgbString: function toPercentageRgbString() {
+    return this._a == 1 ? "rgb(" + Math.round(bound01(this._r, 255) * 100) + "%, " + Math.round(bound01(this._g, 255) * 100) + "%, " + Math.round(bound01(this._b, 255) * 100) + "%)" : "rgba(" + Math.round(bound01(this._r, 255) * 100) + "%, " + Math.round(bound01(this._g, 255) * 100) + "%, " + Math.round(bound01(this._b, 255) * 100) + "%, " + this._roundA + ")";
   },
-  toName: function () {
-    return this._a === 0 ? 'transparent' : this._a < 1 ? !1 : se[E(this._r, this._g, this._b, !0)] || !1;
-  },
-  toFilter: function (r) {
-    var e = '#' + T(this._r, this._g, this._b, this._a),
-      i = e,
-      a = this._gradientType ? 'GradientType = 1, ' : '';
-    if (r) {
-      var n = s(r);
-      i = '#' + T(n._r, n._g, n._b, n._a);
+  toName: function toName() {
+    if (this._a === 0) {
+      return "transparent";
     }
-    return 'progid:DXImageTransform.Microsoft.gradient(' + a + 'startColorstr=' + e + ',endColorstr=' + i + ')';
+    if (this._a < 1) {
+      return false;
+    }
+    return hexNames[rgbToHex(this._r, this._g, this._b, true)] || false;
   },
-  toString: function (r) {
-    var e = !!r;
-    r = r || this._format;
-    var i = !1,
-      a = this._a < 1 && this._a >= 0,
-      n = !e && a && (r === 'hex' || r === 'hex6' || r === 'hex3' || r === 'hex4' || r === 'hex8' || r === 'name');
-    return n
-      ? r === 'name' && this._a === 0
-        ? this.toName()
-        : this.toRgbString()
-      : (r === 'rgb' && (i = this.toRgbString()),
-        r === 'prgb' && (i = this.toPercentageRgbString()),
-        (r === 'hex' || r === 'hex6') && (i = this.toHexString()),
-        r === 'hex3' && (i = this.toHexString(!0)),
-        r === 'hex4' && (i = this.toHex8String(!0)),
-        r === 'hex8' && (i = this.toHex8String()),
-        r === 'name' && (i = this.toName()),
-        r === 'hsl' && (i = this.toHslString()),
-        r === 'hsv' && (i = this.toHsvString()),
-        i || this.toHexString());
+  toFilter: function toFilter(secondColor) {
+    var hex8String = "#" + rgbaToArgbHex(this._r, this._g, this._b, this._a);
+    var secondHex8String = hex8String;
+    var gradientType = this._gradientType ? "GradientType = 1, " : "";
+    if (secondColor) {
+      var s = tinycolor(secondColor);
+      secondHex8String = "#" + rgbaToArgbHex(s._r, s._g, s._b, s._a);
+    }
+    return "progid:DXImageTransform.Microsoft.gradient(" + gradientType + "startColorstr=" + hex8String + ",endColorstr=" + secondHex8String + ")";
   },
-  clone: function () {
-    return s(this.toString());
+  toString: function toString(format) {
+    var formatSet = !!format;
+    format = format || this._format;
+    var formattedString = false;
+    var hasAlpha = this._a < 1 && this._a >= 0;
+    var needsAlphaFormat = !formatSet && hasAlpha && (format === "hex" || format === "hex6" || format === "hex3" || format === "hex4" || format === "hex8" || format === "name");
+    if (needsAlphaFormat) {
+      if (format === "name" && this._a === 0) {
+        return this.toName();
+      }
+      return this.toRgbString();
+    }
+    if (format === "rgb") {
+      formattedString = this.toRgbString();
+    }
+    if (format === "prgb") {
+      formattedString = this.toPercentageRgbString();
+    }
+    if (format === "hex" || format === "hex6") {
+      formattedString = this.toHexString();
+    }
+    if (format === "hex3") {
+      formattedString = this.toHexString(true);
+    }
+    if (format === "hex4") {
+      formattedString = this.toHex8String(true);
+    }
+    if (format === "hex8") {
+      formattedString = this.toHex8String();
+    }
+    if (format === "name") {
+      formattedString = this.toName();
+    }
+    if (format === "hsl") {
+      formattedString = this.toHslString();
+    }
+    if (format === "hsv") {
+      formattedString = this.toHsvString();
+    }
+    return formattedString || this.toHexString();
   },
-  _applyModification: function (r, e) {
-    var i = r.apply(null, [this].concat([].slice.call(e)));
-    return (this._r = i._r), (this._g = i._g), (this._b = i._b), this.setAlpha(i._a), this;
+  clone: function clone() {
+    return tinycolor(this.toString());
   },
-  lighten: function () {
-    return this._applyModification(K, arguments);
+  _applyModification: function _applyModification(fn, args) {
+    var color = fn.apply(null, [this].concat([].slice.call(args)));
+    this._r = color._r;
+    this._g = color._g;
+    this._b = color._b;
+    this.setAlpha(color._a);
+    return this;
   },
-  brighten: function () {
-    return this._applyModification(Q, arguments);
+  lighten: function lighten() {
+    return this._applyModification(_lighten, arguments);
   },
-  darken: function () {
-    return this._applyModification(ee, arguments);
+  brighten: function brighten() {
+    return this._applyModification(_brighten, arguments);
   },
-  desaturate: function () {
-    return this._applyModification(Y, arguments);
+  darken: function darken() {
+    return this._applyModification(_darken, arguments);
   },
-  saturate: function () {
-    return this._applyModification(J, arguments);
+  desaturate: function desaturate() {
+    return this._applyModification(_desaturate, arguments);
   },
-  greyscale: function () {
-    return this._applyModification(Z, arguments);
+  saturate: function saturate() {
+    return this._applyModification(_saturate, arguments);
   },
-  spin: function () {
-    return this._applyModification(te, arguments);
+  greyscale: function greyscale() {
+    return this._applyModification(_greyscale, arguments);
   },
-  _applyCombination: function (r, e) {
-    return r.apply(null, [this].concat([].slice.call(e)));
+  spin: function spin() {
+    return this._applyModification(_spin, arguments);
   },
-  analogous: function () {
-    return this._applyCombination(ae, arguments);
+  _applyCombination: function _applyCombination(fn, args) {
+    return fn.apply(null, [this].concat([].slice.call(args)));
   },
-  complement: function () {
-    return this._applyCombination(re, arguments);
+  analogous: function analogous() {
+    return this._applyCombination(_analogous, arguments);
   },
-  monochromatic: function () {
-    return this._applyCombination(ne, arguments);
+  complement: function complement() {
+    return this._applyCombination(_complement, arguments);
   },
-  splitcomplement: function () {
-    return this._applyCombination(ie, arguments);
+  monochromatic: function monochromatic() {
+    return this._applyCombination(_monochromatic, arguments);
+  },
+  splitcomplement: function splitcomplement() {
+    return this._applyCombination(_splitcomplement, arguments);
   },
   // Disabled until https://github.com/bgrins/TinyColor/issues/254
   // polyad: function (number) {
   //   return this._applyCombination(polyad, [number]);
   // },
-  triad: function () {
-    return this._applyCombination(F, [3]);
+  triad: function triad() {
+    return this._applyCombination(polyad, [3]);
   },
-  tetrad: function () {
-    return this._applyCombination(F, [4]);
-  },
-};
-s.fromRatio = function (t, r) {
-  if (S(t) == 'object') {
-    var e = {};
-    for (var i in t) t.hasOwnProperty(i) && (i === 'a' ? (e[i] = t[i]) : (e[i] = y(t[i])));
-    t = e;
+  tetrad: function tetrad() {
+    return this._applyCombination(polyad, [4]);
   }
-  return s(t, r);
 };
-function V(t) {
-  var r = {
-      r: 0,
-      g: 0,
-      b: 0,
-    },
-    e = 1,
-    i = null,
-    a = null,
-    n = null,
-    o = !1,
-    h = !1;
-  return (
-    typeof t == 'string' && (t = ue(t)),
-    S(t) == 'object' &&
-      (m(t.r) && m(t.g) && m(t.b)
-        ? ((r = q(t.r, t.g, t.b)), (o = !0), (h = String(t.r).substr(-1) === '%' ? 'prgb' : 'rgb'))
-        : m(t.h) && m(t.s) && m(t.v)
-          ? ((i = y(t.s)), (a = y(t.v)), (r = X(t.h, i, a)), (o = !0), (h = 'hsv'))
-          : m(t.h) && m(t.s) && m(t.l) && ((i = y(t.s)), (n = y(t.l)), (r = U(t.h, i, n)), (o = !0), (h = 'hsl')),
-      t.hasOwnProperty('a') && (e = t.a)),
-    (e = I(e)),
-    {
-      ok: o,
-      format: t.format || h,
-      r: Math.min(255, Math.max(r.r, 0)),
-      g: Math.min(255, Math.max(r.g, 0)),
-      b: Math.min(255, Math.max(r.b, 0)),
-      a: e,
+tinycolor.fromRatio = function(color, opts) {
+  if (_typeof(color) == "object") {
+    var newColor = {};
+    for (var i in color) {
+      if (color.hasOwnProperty(i)) {
+        if (i === "a") {
+          newColor[i] = color[i];
+        } else {
+          newColor[i] = convertToPercentage(color[i]);
+        }
+      }
     }
-  );
-}
-function q(t, r, e) {
+    color = newColor;
+  }
+  return tinycolor(color, opts);
+};
+function inputToRGB(color) {
+  var rgb = {
+    r: 0,
+    g: 0,
+    b: 0
+  };
+  var a = 1;
+  var s = null;
+  var v = null;
+  var l = null;
+  var ok = false;
+  var format = false;
+  if (typeof color == "string") {
+    color = stringInputToObject(color);
+  }
+  if (_typeof(color) == "object") {
+    if (isValidCSSUnit(color.r) && isValidCSSUnit(color.g) && isValidCSSUnit(color.b)) {
+      rgb = rgbToRgb(color.r, color.g, color.b);
+      ok = true;
+      format = String(color.r).substr(-1) === "%" ? "prgb" : "rgb";
+    } else if (isValidCSSUnit(color.h) && isValidCSSUnit(color.s) && isValidCSSUnit(color.v)) {
+      s = convertToPercentage(color.s);
+      v = convertToPercentage(color.v);
+      rgb = hsvToRgb(color.h, s, v);
+      ok = true;
+      format = "hsv";
+    } else if (isValidCSSUnit(color.h) && isValidCSSUnit(color.s) && isValidCSSUnit(color.l)) {
+      s = convertToPercentage(color.s);
+      l = convertToPercentage(color.l);
+      rgb = hslToRgb(color.h, s, l);
+      ok = true;
+      format = "hsl";
+    }
+    if (color.hasOwnProperty("a")) {
+      a = color.a;
+    }
+  }
+  a = boundAlpha(a);
   return {
-    r: u(t, 255) * 255,
-    g: u(r, 255) * 255,
-    b: u(e, 255) * 255,
+    ok,
+    format: color.format || format,
+    r: Math.min(255, Math.max(rgb.r, 0)),
+    g: Math.min(255, Math.max(rgb.g, 0)),
+    b: Math.min(255, Math.max(rgb.b, 0)),
+    a
   };
 }
-function C(t, r, e) {
-  (t = u(t, 255)), (r = u(r, 255)), (e = u(e, 255));
-  var i = Math.max(t, r, e),
-    a = Math.min(t, r, e),
-    n,
-    o,
-    h = (i + a) / 2;
-  if (i == a) n = o = 0;
-  else {
-    var l = i - a;
-    switch (((o = h > 0.5 ? l / (2 - i - a) : l / (i + a)), i)) {
-      case t:
-        n = (r - e) / l + (r < e ? 6 : 0);
-        break;
+function rgbToRgb(r, g, b) {
+  return {
+    r: bound01(r, 255) * 255,
+    g: bound01(g, 255) * 255,
+    b: bound01(b, 255) * 255
+  };
+}
+function rgbToHsl(r, g, b) {
+  r = bound01(r, 255);
+  g = bound01(g, 255);
+  b = bound01(b, 255);
+  var max = Math.max(r, g, b), min = Math.min(r, g, b);
+  var h, s, l = (max + min) / 2;
+  if (max == min) {
+    h = s = 0;
+  } else {
+    var d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
       case r:
-        n = (e - t) / l + 2;
+        h = (g - b) / d + (g < b ? 6 : 0);
         break;
-      case e:
-        n = (t - r) / l + 4;
+      case g:
+        h = (b - r) / d + 2;
+        break;
+      case b:
+        h = (r - g) / d + 4;
         break;
     }
-    n /= 6;
+    h /= 6;
   }
   return {
-    h: n,
-    s: o,
-    l: h,
+    h,
+    s,
+    l
   };
 }
-function U(t, r, e) {
-  var i, a, n;
-  (t = u(t, 360)), (r = u(r, 100)), (e = u(e, 100));
-  function o(c, p, d) {
-    return (
-      d < 0 && (d += 1),
-      d > 1 && (d -= 1),
-      d < 1 / 6 ? c + (p - c) * 6 * d : d < 1 / 2 ? p : d < 2 / 3 ? c + (p - c) * (2 / 3 - d) * 6 : c
-    );
+function hslToRgb(h, s, l) {
+  var r, g, b;
+  h = bound01(h, 360);
+  s = bound01(s, 100);
+  l = bound01(l, 100);
+  function hue2rgb(p2, q2, t) {
+    if (t < 0) t += 1;
+    if (t > 1) t -= 1;
+    if (t < 1 / 6) return p2 + (q2 - p2) * 6 * t;
+    if (t < 1 / 2) return q2;
+    if (t < 2 / 3) return p2 + (q2 - p2) * (2 / 3 - t) * 6;
+    return p2;
   }
-  if (r === 0) i = a = n = e;
-  else {
-    var h = e < 0.5 ? e * (1 + r) : e + r - e * r,
-      l = 2 * e - h;
-    (i = o(l, h, t + 1 / 3)), (a = o(l, h, t)), (n = o(l, h, t - 1 / 3));
+  if (s === 0) {
+    r = g = b = l;
+  } else {
+    var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    var p = 2 * l - q;
+    r = hue2rgb(p, q, h + 1 / 3);
+    g = hue2rgb(p, q, h);
+    b = hue2rgb(p, q, h - 1 / 3);
   }
   return {
-    r: i * 255,
-    g: a * 255,
-    b: n * 255,
+    r: r * 255,
+    g: g * 255,
+    b: b * 255
   };
 }
-function R(t, r, e) {
-  (t = u(t, 255)), (r = u(r, 255)), (e = u(e, 255));
-  var i = Math.max(t, r, e),
-    a = Math.min(t, r, e),
-    n,
-    o,
-    h = i,
-    l = i - a;
-  if (((o = i === 0 ? 0 : l / i), i == a)) n = 0;
-  else {
-    switch (i) {
-      case t:
-        n = (r - e) / l + (r < e ? 6 : 0);
-        break;
+function rgbToHsv(r, g, b) {
+  r = bound01(r, 255);
+  g = bound01(g, 255);
+  b = bound01(b, 255);
+  var max = Math.max(r, g, b), min = Math.min(r, g, b);
+  var h, s, v = max;
+  var d = max - min;
+  s = max === 0 ? 0 : d / max;
+  if (max == min) {
+    h = 0;
+  } else {
+    switch (max) {
       case r:
-        n = (e - t) / l + 2;
+        h = (g - b) / d + (g < b ? 6 : 0);
         break;
-      case e:
-        n = (t - r) / l + 4;
+      case g:
+        h = (b - r) / d + 2;
+        break;
+      case b:
+        h = (r - g) / d + 4;
         break;
     }
-    n /= 6;
+    h /= 6;
   }
   return {
-    h: n,
-    s: o,
-    v: h,
+    h,
+    s,
+    v
   };
 }
-function X(t, r, e) {
-  (t = u(t, 360) * 6), (r = u(r, 100)), (e = u(e, 100));
-  var i = Math.floor(t),
-    a = t - i,
-    n = e * (1 - r),
-    o = e * (1 - a * r),
-    h = e * (1 - (1 - a) * r),
-    l = i % 6,
-    c = [e, o, n, n, h, e][l],
-    p = [h, e, e, o, n, n][l],
-    d = [n, n, h, e, e, o][l];
+function hsvToRgb(h, s, v) {
+  h = bound01(h, 360) * 6;
+  s = bound01(s, 100);
+  v = bound01(v, 100);
+  var i = Math.floor(h), f = h - i, p = v * (1 - s), q = v * (1 - f * s), t = v * (1 - (1 - f) * s), mod = i % 6, r = [v, q, p, p, t, v][mod], g = [t, v, v, q, p, p][mod], b = [p, p, t, v, v, q][mod];
   return {
-    r: c * 255,
-    g: p * 255,
-    b: d * 255,
+    r: r * 255,
+    g: g * 255,
+    b: b * 255
   };
 }
-function E(t, r, e, i) {
-  var a = [b(Math.round(t).toString(16)), b(Math.round(r).toString(16)), b(Math.round(e).toString(16))];
-  return i && a[0].charAt(0) == a[0].charAt(1) && a[1].charAt(0) == a[1].charAt(1) && a[2].charAt(0) == a[2].charAt(1)
-    ? a[0].charAt(0) + a[1].charAt(0) + a[2].charAt(0)
-    : a.join('');
+function rgbToHex(r, g, b, allow3Char) {
+  var hex = [pad2(Math.round(r).toString(16)), pad2(Math.round(g).toString(16)), pad2(Math.round(b).toString(16))];
+  if (allow3Char && hex[0].charAt(0) == hex[0].charAt(1) && hex[1].charAt(0) == hex[1].charAt(1) && hex[2].charAt(0) == hex[2].charAt(1)) {
+    return hex[0].charAt(0) + hex[1].charAt(0) + hex[2].charAt(0);
+  }
+  return hex.join("");
 }
-function W(t, r, e, i, a) {
-  var n = [b(Math.round(t).toString(16)), b(Math.round(r).toString(16)), b(Math.round(e).toString(16)), b(N(i))];
-  return a &&
-    n[0].charAt(0) == n[0].charAt(1) &&
-    n[1].charAt(0) == n[1].charAt(1) &&
-    n[2].charAt(0) == n[2].charAt(1) &&
-    n[3].charAt(0) == n[3].charAt(1)
-    ? n[0].charAt(0) + n[1].charAt(0) + n[2].charAt(0) + n[3].charAt(0)
-    : n.join('');
+function rgbaToHex(r, g, b, a, allow4Char) {
+  var hex = [pad2(Math.round(r).toString(16)), pad2(Math.round(g).toString(16)), pad2(Math.round(b).toString(16)), pad2(convertDecimalToHex(a))];
+  if (allow4Char && hex[0].charAt(0) == hex[0].charAt(1) && hex[1].charAt(0) == hex[1].charAt(1) && hex[2].charAt(0) == hex[2].charAt(1) && hex[3].charAt(0) == hex[3].charAt(1)) {
+    return hex[0].charAt(0) + hex[1].charAt(0) + hex[2].charAt(0) + hex[3].charAt(0);
+  }
+  return hex.join("");
 }
-function T(t, r, e, i) {
-  var a = [b(N(i)), b(Math.round(t).toString(16)), b(Math.round(r).toString(16)), b(Math.round(e).toString(16))];
-  return a.join('');
+function rgbaToArgbHex(r, g, b, a) {
+  var hex = [pad2(convertDecimalToHex(a)), pad2(Math.round(r).toString(16)), pad2(Math.round(g).toString(16)), pad2(Math.round(b).toString(16))];
+  return hex.join("");
 }
-s.equals = function (t, r) {
-  return !t || !r ? !1 : s(t).toRgbString() == s(r).toRgbString();
+tinycolor.equals = function(color1, color2) {
+  if (!color1 || !color2) return false;
+  return tinycolor(color1).toRgbString() == tinycolor(color2).toRgbString();
 };
-s.random = function () {
-  return s.fromRatio({
+tinycolor.random = function() {
+  return tinycolor.fromRatio({
     r: Math.random(),
     g: Math.random(),
-    b: Math.random(),
+    b: Math.random()
   });
 };
-function Y(t, r) {
-  r = r === 0 ? 0 : r || 10;
-  var e = s(t).toHsl();
-  return (e.s -= r / 100), (e.s = M(e.s)), s(e);
+function _desaturate(color, amount) {
+  amount = amount === 0 ? 0 : amount || 10;
+  var hsl = tinycolor(color).toHsl();
+  hsl.s -= amount / 100;
+  hsl.s = clamp01(hsl.s);
+  return tinycolor(hsl);
 }
-function J(t, r) {
-  r = r === 0 ? 0 : r || 10;
-  var e = s(t).toHsl();
-  return (e.s += r / 100), (e.s = M(e.s)), s(e);
+function _saturate(color, amount) {
+  amount = amount === 0 ? 0 : amount || 10;
+  var hsl = tinycolor(color).toHsl();
+  hsl.s += amount / 100;
+  hsl.s = clamp01(hsl.s);
+  return tinycolor(hsl);
 }
-function Z(t) {
-  return s(t).desaturate(100);
+function _greyscale(color) {
+  return tinycolor(color).desaturate(100);
 }
-function K(t, r) {
-  r = r === 0 ? 0 : r || 10;
-  var e = s(t).toHsl();
-  return (e.l += r / 100), (e.l = M(e.l)), s(e);
+function _lighten(color, amount) {
+  amount = amount === 0 ? 0 : amount || 10;
+  var hsl = tinycolor(color).toHsl();
+  hsl.l += amount / 100;
+  hsl.l = clamp01(hsl.l);
+  return tinycolor(hsl);
 }
-function Q(t, r) {
-  r = r === 0 ? 0 : r || 10;
-  var e = s(t).toRgb();
-  return (
-    (e.r = Math.max(0, Math.min(255, e.r - Math.round(255 * -(r / 100))))),
-    (e.g = Math.max(0, Math.min(255, e.g - Math.round(255 * -(r / 100))))),
-    (e.b = Math.max(0, Math.min(255, e.b - Math.round(255 * -(r / 100))))),
-    s(e)
-  );
+function _brighten(color, amount) {
+  amount = amount === 0 ? 0 : amount || 10;
+  var rgb = tinycolor(color).toRgb();
+  rgb.r = Math.max(0, Math.min(255, rgb.r - Math.round(255 * -(amount / 100))));
+  rgb.g = Math.max(0, Math.min(255, rgb.g - Math.round(255 * -(amount / 100))));
+  rgb.b = Math.max(0, Math.min(255, rgb.b - Math.round(255 * -(amount / 100))));
+  return tinycolor(rgb);
 }
-function ee(t, r) {
-  r = r === 0 ? 0 : r || 10;
-  var e = s(t).toHsl();
-  return (e.l -= r / 100), (e.l = M(e.l)), s(e);
+function _darken(color, amount) {
+  amount = amount === 0 ? 0 : amount || 10;
+  var hsl = tinycolor(color).toHsl();
+  hsl.l -= amount / 100;
+  hsl.l = clamp01(hsl.l);
+  return tinycolor(hsl);
 }
-function te(t, r) {
-  var e = s(t).toHsl(),
-    i = (e.h + r) % 360;
-  return (e.h = i < 0 ? 360 + i : i), s(e);
+function _spin(color, amount) {
+  var hsl = tinycolor(color).toHsl();
+  var hue = (hsl.h + amount) % 360;
+  hsl.h = hue < 0 ? 360 + hue : hue;
+  return tinycolor(hsl);
 }
-function re(t) {
-  var r = s(t).toHsl();
-  return (r.h = (r.h + 180) % 360), s(r);
+function _complement(color) {
+  var hsl = tinycolor(color).toHsl();
+  hsl.h = (hsl.h + 180) % 360;
+  return tinycolor(hsl);
 }
-function F(t, r) {
-  if (isNaN(r) || r <= 0) throw new Error('Argument to polyad must be a positive number');
-  for (var e = s(t).toHsl(), i = [s(t)], a = 360 / r, n = 1; n < r; n++)
-    i.push(
-      s({
-        h: (e.h + n * a) % 360,
-        s: e.s,
-        l: e.l,
-      })
-    );
-  return i;
+function polyad(color, number) {
+  if (isNaN(number) || number <= 0) {
+    throw new Error("Argument to polyad must be a positive number");
+  }
+  var hsl = tinycolor(color).toHsl();
+  var result = [tinycolor(color)];
+  var step = 360 / number;
+  for (var i = 1; i < number; i++) {
+    result.push(tinycolor({
+      h: (hsl.h + i * step) % 360,
+      s: hsl.s,
+      l: hsl.l
+    }));
+  }
+  return result;
 }
-function ie(t) {
-  var r = s(t).toHsl(),
-    e = r.h;
-  return [
-    s(t),
-    s({
-      h: (e + 72) % 360,
-      s: r.s,
-      l: r.l,
-    }),
-    s({
-      h: (e + 216) % 360,
-      s: r.s,
-      l: r.l,
-    }),
-  ];
+function _splitcomplement(color) {
+  var hsl = tinycolor(color).toHsl();
+  var h = hsl.h;
+  return [tinycolor(color), tinycolor({
+    h: (h + 72) % 360,
+    s: hsl.s,
+    l: hsl.l
+  }), tinycolor({
+    h: (h + 216) % 360,
+    s: hsl.s,
+    l: hsl.l
+  })];
 }
-function ae(t, r, e) {
-  (r = r || 6), (e = e || 30);
-  var i = s(t).toHsl(),
-    a = 360 / e,
-    n = [s(t)];
-  for (i.h = (i.h - ((a * r) >> 1) + 720) % 360; --r; ) (i.h = (i.h + a) % 360), n.push(s(i));
-  return n;
+function _analogous(color, results, slices) {
+  results = results || 6;
+  slices = slices || 30;
+  var hsl = tinycolor(color).toHsl();
+  var part = 360 / slices;
+  var ret = [tinycolor(color)];
+  for (hsl.h = (hsl.h - (part * results >> 1) + 720) % 360; --results; ) {
+    hsl.h = (hsl.h + part) % 360;
+    ret.push(tinycolor(hsl));
+  }
+  return ret;
 }
-function ne(t, r) {
-  r = r || 6;
-  for (var e = s(t).toHsv(), i = e.h, a = e.s, n = e.v, o = [], h = 1 / r; r--; )
-    o.push(
-      s({
-        h: i,
-        s: a,
-        v: n,
-      })
-    ),
-      (n = (n + h) % 1);
-  return o;
+function _monochromatic(color, results) {
+  results = results || 6;
+  var hsv = tinycolor(color).toHsv();
+  var h = hsv.h, s = hsv.s, v = hsv.v;
+  var ret = [];
+  var modification = 1 / results;
+  while (results--) {
+    ret.push(tinycolor({
+      h,
+      s,
+      v
+    }));
+    v = (v + modification) % 1;
+  }
+  return ret;
 }
-s.mix = function (t, r, e) {
-  e = e === 0 ? 0 : e || 50;
-  var i = s(t).toRgb(),
-    a = s(r).toRgb(),
-    n = e / 100,
-    o = {
-      r: (a.r - i.r) * n + i.r,
-      g: (a.g - i.g) * n + i.g,
-      b: (a.b - i.b) * n + i.b,
-      a: (a.a - i.a) * n + i.a,
-    };
-  return s(o);
+tinycolor.mix = function(color1, color2, amount) {
+  amount = amount === 0 ? 0 : amount || 50;
+  var rgb1 = tinycolor(color1).toRgb();
+  var rgb2 = tinycolor(color2).toRgb();
+  var p = amount / 100;
+  var rgba = {
+    r: (rgb2.r - rgb1.r) * p + rgb1.r,
+    g: (rgb2.g - rgb1.g) * p + rgb1.g,
+    b: (rgb2.b - rgb1.b) * p + rgb1.b,
+    a: (rgb2.a - rgb1.a) * p + rgb1.a
+  };
+  return tinycolor(rgba);
 };
-s.readability = function (t, r) {
-  var e = s(t),
-    i = s(r);
-  return (Math.max(e.getLuminance(), i.getLuminance()) + 0.05) / (Math.min(e.getLuminance(), i.getLuminance()) + 0.05);
+tinycolor.readability = function(color1, color2) {
+  var c1 = tinycolor(color1);
+  var c2 = tinycolor(color2);
+  return (Math.max(c1.getLuminance(), c2.getLuminance()) + 0.05) / (Math.min(c1.getLuminance(), c2.getLuminance()) + 0.05);
 };
-s.isReadable = function (t, r, e) {
-  var i = s.readability(t, r),
-    a,
-    n;
-  switch (((n = !1), (a = de(e)), a.level + a.size)) {
-    case 'AAsmall':
-    case 'AAAlarge':
-      n = i >= 4.5;
+tinycolor.isReadable = function(color1, color2, wcag2) {
+  var readability = tinycolor.readability(color1, color2);
+  var wcag2Parms, out;
+  out = false;
+  wcag2Parms = validateWCAG2Parms(wcag2);
+  switch (wcag2Parms.level + wcag2Parms.size) {
+    case "AAsmall":
+    case "AAAlarge":
+      out = readability >= 4.5;
       break;
-    case 'AAlarge':
-      n = i >= 3;
+    case "AAlarge":
+      out = readability >= 3;
       break;
-    case 'AAAsmall':
-      n = i >= 7;
+    case "AAAsmall":
+      out = readability >= 7;
       break;
   }
+  return out;
+};
+tinycolor.mostReadable = function(baseColor, colorList, args) {
+  var bestColor = null;
+  var bestScore = 0;
+  var readability;
+  var includeFallbackColors, level, size;
+  args = args || {};
+  includeFallbackColors = args.includeFallbackColors;
+  level = args.level;
+  size = args.size;
+  for (var i = 0; i < colorList.length; i++) {
+    readability = tinycolor.readability(baseColor, colorList[i]);
+    if (readability > bestScore) {
+      bestScore = readability;
+      bestColor = tinycolor(colorList[i]);
+    }
+  }
+  if (tinycolor.isReadable(baseColor, bestColor, {
+    level,
+    size
+  }) || !includeFallbackColors) {
+    return bestColor;
+  } else {
+    args.includeFallbackColors = false;
+    return tinycolor.mostReadable(baseColor, ["#fff", "#000"], args);
+  }
+};
+var names = tinycolor.names = {
+  aliceblue: "f0f8ff",
+  antiquewhite: "faebd7",
+  aqua: "0ff",
+  aquamarine: "7fffd4",
+  azure: "f0ffff",
+  beige: "f5f5dc",
+  bisque: "ffe4c4",
+  black: "000",
+  blanchedalmond: "ffebcd",
+  blue: "00f",
+  blueviolet: "8a2be2",
+  brown: "a52a2a",
+  burlywood: "deb887",
+  burntsienna: "ea7e5d",
+  cadetblue: "5f9ea0",
+  chartreuse: "7fff00",
+  chocolate: "d2691e",
+  coral: "ff7f50",
+  cornflowerblue: "6495ed",
+  cornsilk: "fff8dc",
+  crimson: "dc143c",
+  cyan: "0ff",
+  darkblue: "00008b",
+  darkcyan: "008b8b",
+  darkgoldenrod: "b8860b",
+  darkgray: "a9a9a9",
+  darkgreen: "006400",
+  darkgrey: "a9a9a9",
+  darkkhaki: "bdb76b",
+  darkmagenta: "8b008b",
+  darkolivegreen: "556b2f",
+  darkorange: "ff8c00",
+  darkorchid: "9932cc",
+  darkred: "8b0000",
+  darksalmon: "e9967a",
+  darkseagreen: "8fbc8f",
+  darkslateblue: "483d8b",
+  darkslategray: "2f4f4f",
+  darkslategrey: "2f4f4f",
+  darkturquoise: "00ced1",
+  darkviolet: "9400d3",
+  deeppink: "ff1493",
+  deepskyblue: "00bfff",
+  dimgray: "696969",
+  dimgrey: "696969",
+  dodgerblue: "1e90ff",
+  firebrick: "b22222",
+  floralwhite: "fffaf0",
+  forestgreen: "228b22",
+  fuchsia: "f0f",
+  gainsboro: "dcdcdc",
+  ghostwhite: "f8f8ff",
+  gold: "ffd700",
+  goldenrod: "daa520",
+  gray: "808080",
+  green: "008000",
+  greenyellow: "adff2f",
+  grey: "808080",
+  honeydew: "f0fff0",
+  hotpink: "ff69b4",
+  indianred: "cd5c5c",
+  indigo: "4b0082",
+  ivory: "fffff0",
+  khaki: "f0e68c",
+  lavender: "e6e6fa",
+  lavenderblush: "fff0f5",
+  lawngreen: "7cfc00",
+  lemonchiffon: "fffacd",
+  lightblue: "add8e6",
+  lightcoral: "f08080",
+  lightcyan: "e0ffff",
+  lightgoldenrodyellow: "fafad2",
+  lightgray: "d3d3d3",
+  lightgreen: "90ee90",
+  lightgrey: "d3d3d3",
+  lightpink: "ffb6c1",
+  lightsalmon: "ffa07a",
+  lightseagreen: "20b2aa",
+  lightskyblue: "87cefa",
+  lightslategray: "789",
+  lightslategrey: "789",
+  lightsteelblue: "b0c4de",
+  lightyellow: "ffffe0",
+  lime: "0f0",
+  limegreen: "32cd32",
+  linen: "faf0e6",
+  magenta: "f0f",
+  maroon: "800000",
+  mediumaquamarine: "66cdaa",
+  mediumblue: "0000cd",
+  mediumorchid: "ba55d3",
+  mediumpurple: "9370db",
+  mediumseagreen: "3cb371",
+  mediumslateblue: "7b68ee",
+  mediumspringgreen: "00fa9a",
+  mediumturquoise: "48d1cc",
+  mediumvioletred: "c71585",
+  midnightblue: "191970",
+  mintcream: "f5fffa",
+  mistyrose: "ffe4e1",
+  moccasin: "ffe4b5",
+  navajowhite: "ffdead",
+  navy: "000080",
+  oldlace: "fdf5e6",
+  olive: "808000",
+  olivedrab: "6b8e23",
+  orange: "ffa500",
+  orangered: "ff4500",
+  orchid: "da70d6",
+  palegoldenrod: "eee8aa",
+  palegreen: "98fb98",
+  paleturquoise: "afeeee",
+  palevioletred: "db7093",
+  papayawhip: "ffefd5",
+  peachpuff: "ffdab9",
+  peru: "cd853f",
+  pink: "ffc0cb",
+  plum: "dda0dd",
+  powderblue: "b0e0e6",
+  purple: "800080",
+  rebeccapurple: "663399",
+  red: "f00",
+  rosybrown: "bc8f8f",
+  royalblue: "4169e1",
+  saddlebrown: "8b4513",
+  salmon: "fa8072",
+  sandybrown: "f4a460",
+  seagreen: "2e8b57",
+  seashell: "fff5ee",
+  sienna: "a0522d",
+  silver: "c0c0c0",
+  skyblue: "87ceeb",
+  slateblue: "6a5acd",
+  slategray: "708090",
+  slategrey: "708090",
+  snow: "fffafa",
+  springgreen: "00ff7f",
+  steelblue: "4682b4",
+  tan: "d2b48c",
+  teal: "008080",
+  thistle: "d8bfd8",
+  tomato: "ff6347",
+  turquoise: "40e0d0",
+  violet: "ee82ee",
+  wheat: "f5deb3",
+  white: "fff",
+  whitesmoke: "f5f5f5",
+  yellow: "ff0",
+  yellowgreen: "9acd32"
+};
+var hexNames = tinycolor.hexNames = flip(names);
+function flip(o) {
+  var flipped = {};
+  for (var i in o) {
+    if (o.hasOwnProperty(i)) {
+      flipped[o[i]] = i;
+    }
+  }
+  return flipped;
+}
+function boundAlpha(a) {
+  a = parseFloat(a);
+  if (isNaN(a) || a < 0 || a > 1) {
+    a = 1;
+  }
+  return a;
+}
+function bound01(n, max) {
+  if (isOnePointZero(n)) n = "100%";
+  var processPercent = isPercentage(n);
+  n = Math.min(max, Math.max(0, parseFloat(n)));
+  if (processPercent) {
+    n = parseInt(n * max, 10) / 100;
+  }
+  if (Math.abs(n - max) < 1e-6) {
+    return 1;
+  }
+  return n % max / parseFloat(max);
+}
+function clamp01(val) {
+  return Math.min(1, Math.max(0, val));
+}
+function parseIntFromHex(val) {
+  return parseInt(val, 16);
+}
+function isOnePointZero(n) {
+  return typeof n == "string" && n.indexOf(".") != -1 && parseFloat(n) === 1;
+}
+function isPercentage(n) {
+  return typeof n === "string" && n.indexOf("%") != -1;
+}
+function pad2(c) {
+  return c.length == 1 ? "0" + c : "" + c;
+}
+function convertToPercentage(n) {
+  if (n <= 1) {
+    n = n * 100 + "%";
+  }
   return n;
-};
-s.mostReadable = function (t, r, e) {
-  var i = null,
-    a = 0,
-    n,
-    o,
-    h,
-    l;
-  (e = e || {}), (o = e.includeFallbackColors), (h = e.level), (l = e.size);
-  for (var c = 0; c < r.length; c++) (n = s.readability(t, r[c])), n > a && ((a = n), (i = s(r[c])));
-  return s.isReadable(t, i, {
-    level: h,
-    size: l,
-  }) || !o
-    ? i
-    : ((e.includeFallbackColors = !1), s.mostReadable(t, ['#fff', '#000'], e));
-};
-var j = (s.names = {
-    aliceblue: 'f0f8ff',
-    antiquewhite: 'faebd7',
-    aqua: '0ff',
-    aquamarine: '7fffd4',
-    azure: 'f0ffff',
-    beige: 'f5f5dc',
-    bisque: 'ffe4c4',
-    black: '000',
-    blanchedalmond: 'ffebcd',
-    blue: '00f',
-    blueviolet: '8a2be2',
-    brown: 'a52a2a',
-    burlywood: 'deb887',
-    burntsienna: 'ea7e5d',
-    cadetblue: '5f9ea0',
-    chartreuse: '7fff00',
-    chocolate: 'd2691e',
-    coral: 'ff7f50',
-    cornflowerblue: '6495ed',
-    cornsilk: 'fff8dc',
-    crimson: 'dc143c',
-    cyan: '0ff',
-    darkblue: '00008b',
-    darkcyan: '008b8b',
-    darkgoldenrod: 'b8860b',
-    darkgray: 'a9a9a9',
-    darkgreen: '006400',
-    darkgrey: 'a9a9a9',
-    darkkhaki: 'bdb76b',
-    darkmagenta: '8b008b',
-    darkolivegreen: '556b2f',
-    darkorange: 'ff8c00',
-    darkorchid: '9932cc',
-    darkred: '8b0000',
-    darksalmon: 'e9967a',
-    darkseagreen: '8fbc8f',
-    darkslateblue: '483d8b',
-    darkslategray: '2f4f4f',
-    darkslategrey: '2f4f4f',
-    darkturquoise: '00ced1',
-    darkviolet: '9400d3',
-    deeppink: 'ff1493',
-    deepskyblue: '00bfff',
-    dimgray: '696969',
-    dimgrey: '696969',
-    dodgerblue: '1e90ff',
-    firebrick: 'b22222',
-    floralwhite: 'fffaf0',
-    forestgreen: '228b22',
-    fuchsia: 'f0f',
-    gainsboro: 'dcdcdc',
-    ghostwhite: 'f8f8ff',
-    gold: 'ffd700',
-    goldenrod: 'daa520',
-    gray: '808080',
-    green: '008000',
-    greenyellow: 'adff2f',
-    grey: '808080',
-    honeydew: 'f0fff0',
-    hotpink: 'ff69b4',
-    indianred: 'cd5c5c',
-    indigo: '4b0082',
-    ivory: 'fffff0',
-    khaki: 'f0e68c',
-    lavender: 'e6e6fa',
-    lavenderblush: 'fff0f5',
-    lawngreen: '7cfc00',
-    lemonchiffon: 'fffacd',
-    lightblue: 'add8e6',
-    lightcoral: 'f08080',
-    lightcyan: 'e0ffff',
-    lightgoldenrodyellow: 'fafad2',
-    lightgray: 'd3d3d3',
-    lightgreen: '90ee90',
-    lightgrey: 'd3d3d3',
-    lightpink: 'ffb6c1',
-    lightsalmon: 'ffa07a',
-    lightseagreen: '20b2aa',
-    lightskyblue: '87cefa',
-    lightslategray: '789',
-    lightslategrey: '789',
-    lightsteelblue: 'b0c4de',
-    lightyellow: 'ffffe0',
-    lime: '0f0',
-    limegreen: '32cd32',
-    linen: 'faf0e6',
-    magenta: 'f0f',
-    maroon: '800000',
-    mediumaquamarine: '66cdaa',
-    mediumblue: '0000cd',
-    mediumorchid: 'ba55d3',
-    mediumpurple: '9370db',
-    mediumseagreen: '3cb371',
-    mediumslateblue: '7b68ee',
-    mediumspringgreen: '00fa9a',
-    mediumturquoise: '48d1cc',
-    mediumvioletred: 'c71585',
-    midnightblue: '191970',
-    mintcream: 'f5fffa',
-    mistyrose: 'ffe4e1',
-    moccasin: 'ffe4b5',
-    navajowhite: 'ffdead',
-    navy: '000080',
-    oldlace: 'fdf5e6',
-    olive: '808000',
-    olivedrab: '6b8e23',
-    orange: 'ffa500',
-    orangered: 'ff4500',
-    orchid: 'da70d6',
-    palegoldenrod: 'eee8aa',
-    palegreen: '98fb98',
-    paleturquoise: 'afeeee',
-    palevioletred: 'db7093',
-    papayawhip: 'ffefd5',
-    peachpuff: 'ffdab9',
-    peru: 'cd853f',
-    pink: 'ffc0cb',
-    plum: 'dda0dd',
-    powderblue: 'b0e0e6',
-    purple: '800080',
-    rebeccapurple: '663399',
-    red: 'f00',
-    rosybrown: 'bc8f8f',
-    royalblue: '4169e1',
-    saddlebrown: '8b4513',
-    salmon: 'fa8072',
-    sandybrown: 'f4a460',
-    seagreen: '2e8b57',
-    seashell: 'fff5ee',
-    sienna: 'a0522d',
-    silver: 'c0c0c0',
-    skyblue: '87ceeb',
-    slateblue: '6a5acd',
-    slategray: '708090',
-    slategrey: '708090',
-    snow: 'fffafa',
-    springgreen: '00ff7f',
-    steelblue: '4682b4',
-    tan: 'd2b48c',
-    teal: '008080',
-    thistle: 'd8bfd8',
-    tomato: 'ff6347',
-    turquoise: '40e0d0',
-    violet: 'ee82ee',
-    wheat: 'f5deb3',
-    white: 'fff',
-    whitesmoke: 'f5f5f5',
-    yellow: 'ff0',
-    yellowgreen: '9acd32',
-  }),
-  se = (s.hexNames = oe(j));
-function oe(t) {
-  var r = {};
-  for (var e in t) t.hasOwnProperty(e) && (r[t[e]] = e);
-  return r;
 }
-function I(t) {
-  return (t = parseFloat(t)), (isNaN(t) || t < 0 || t > 1) && (t = 1), t;
+function convertDecimalToHex(d) {
+  return Math.round(parseFloat(d) * 255).toString(16);
 }
-function u(t, r) {
-  he(t) && (t = '100%');
-  var e = le(t);
-  return (
-    (t = Math.min(r, Math.max(0, parseFloat(t)))),
-    e && (t = parseInt(t * r, 10) / 100),
-    Math.abs(t - r) < 1e-6 ? 1 : (t % r) / parseFloat(r)
-  );
+function convertHexToDecimal(h) {
+  return parseIntFromHex(h) / 255;
 }
-function M(t) {
-  return Math.min(1, Math.max(0, t));
-}
-function f(t) {
-  return parseInt(t, 16);
-}
-function he(t) {
-  return typeof t == 'string' && t.indexOf('.') != -1 && parseFloat(t) === 1;
-}
-function le(t) {
-  return typeof t == 'string' && t.indexOf('%') != -1;
-}
-function b(t) {
-  return t.length == 1 ? '0' + t : '' + t;
-}
-function y(t) {
-  return t <= 1 && (t = t * 100 + '%'), t;
-}
-function N(t) {
-  return Math.round(parseFloat(t) * 255).toString(16);
-}
-function L(t) {
-  return f(t) / 255;
-}
-var g = (function () {
-  var t = '[-\\+]?\\d+%?',
-    r = '[-\\+]?\\d*\\.\\d+%?',
-    e = '(?:' + r + ')|(?:' + t + ')',
-    i = '[\\s|\\(]+(' + e + ')[,|\\s]+(' + e + ')[,|\\s]+(' + e + ')\\s*\\)?',
-    a = '[\\s|\\(]+(' + e + ')[,|\\s]+(' + e + ')[,|\\s]+(' + e + ')[,|\\s]+(' + e + ')\\s*\\)?';
+var matchers = function() {
+  var CSS_INTEGER = "[-\\+]?\\d+%?";
+  var CSS_NUMBER = "[-\\+]?\\d*\\.\\d+%?";
+  var CSS_UNIT = "(?:" + CSS_NUMBER + ")|(?:" + CSS_INTEGER + ")";
+  var PERMISSIVE_MATCH3 = "[\\s|\\(]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")\\s*\\)?";
+  var PERMISSIVE_MATCH4 = "[\\s|\\(]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")\\s*\\)?";
   return {
-    CSS_UNIT: new RegExp(e),
-    rgb: new RegExp('rgb' + i),
-    rgba: new RegExp('rgba' + a),
-    hsl: new RegExp('hsl' + i),
-    hsla: new RegExp('hsla' + a),
-    hsv: new RegExp('hsv' + i),
-    hsva: new RegExp('hsva' + a),
+    CSS_UNIT: new RegExp(CSS_UNIT),
+    rgb: new RegExp("rgb" + PERMISSIVE_MATCH3),
+    rgba: new RegExp("rgba" + PERMISSIVE_MATCH4),
+    hsl: new RegExp("hsl" + PERMISSIVE_MATCH3),
+    hsla: new RegExp("hsla" + PERMISSIVE_MATCH4),
+    hsv: new RegExp("hsv" + PERMISSIVE_MATCH3),
+    hsva: new RegExp("hsva" + PERMISSIVE_MATCH4),
     hex3: /^#?([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/,
     hex6: /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/,
     hex4: /^#?([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/,
-    hex8: /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/,
+    hex8: /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/
   };
-})();
-function m(t) {
-  return !!g.CSS_UNIT.exec(t);
+}();
+function isValidCSSUnit(color) {
+  return !!matchers.CSS_UNIT.exec(color);
 }
-function ue(t) {
-  t = t.replace(O, '').replace($, '').toLowerCase();
-  var r = !1;
-  if (j[t]) (t = j[t]), (r = !0);
-  else if (t == 'transparent')
+function stringInputToObject(color) {
+  color = color.replace(trimLeft, "").replace(trimRight, "").toLowerCase();
+  var named = false;
+  if (names[color]) {
+    color = names[color];
+    named = true;
+  } else if (color == "transparent") {
     return {
       r: 0,
       g: 0,
       b: 0,
       a: 0,
-      format: 'name',
+      format: "name"
     };
-  var e;
-  return (e = g.rgb.exec(t))
-    ? {
-        r: e[1],
-        g: e[2],
-        b: e[3],
-      }
-    : (e = g.rgba.exec(t))
-      ? {
-          r: e[1],
-          g: e[2],
-          b: e[3],
-          a: e[4],
-        }
-      : (e = g.hsl.exec(t))
-        ? {
-            h: e[1],
-            s: e[2],
-            l: e[3],
-          }
-        : (e = g.hsla.exec(t))
-          ? {
-              h: e[1],
-              s: e[2],
-              l: e[3],
-              a: e[4],
-            }
-          : (e = g.hsv.exec(t))
-            ? {
-                h: e[1],
-                s: e[2],
-                v: e[3],
-              }
-            : (e = g.hsva.exec(t))
-              ? {
-                  h: e[1],
-                  s: e[2],
-                  v: e[3],
-                  a: e[4],
-                }
-              : (e = g.hex8.exec(t))
-                ? {
-                    r: f(e[1]),
-                    g: f(e[2]),
-                    b: f(e[3]),
-                    a: L(e[4]),
-                    format: r ? 'name' : 'hex8',
-                  }
-                : (e = g.hex6.exec(t))
-                  ? {
-                      r: f(e[1]),
-                      g: f(e[2]),
-                      b: f(e[3]),
-                      format: r ? 'name' : 'hex',
-                    }
-                  : (e = g.hex4.exec(t))
-                    ? {
-                        r: f(e[1] + '' + e[1]),
-                        g: f(e[2] + '' + e[2]),
-                        b: f(e[3] + '' + e[3]),
-                        a: L(e[4] + '' + e[4]),
-                        format: r ? 'name' : 'hex8',
-                      }
-                    : (e = g.hex3.exec(t))
-                      ? {
-                          r: f(e[1] + '' + e[1]),
-                          g: f(e[2] + '' + e[2]),
-                          b: f(e[3] + '' + e[3]),
-                          format: r ? 'name' : 'hex',
-                        }
-                      : !1;
+  }
+  var match;
+  if (match = matchers.rgb.exec(color)) {
+    return {
+      r: match[1],
+      g: match[2],
+      b: match[3]
+    };
+  }
+  if (match = matchers.rgba.exec(color)) {
+    return {
+      r: match[1],
+      g: match[2],
+      b: match[3],
+      a: match[4]
+    };
+  }
+  if (match = matchers.hsl.exec(color)) {
+    return {
+      h: match[1],
+      s: match[2],
+      l: match[3]
+    };
+  }
+  if (match = matchers.hsla.exec(color)) {
+    return {
+      h: match[1],
+      s: match[2],
+      l: match[3],
+      a: match[4]
+    };
+  }
+  if (match = matchers.hsv.exec(color)) {
+    return {
+      h: match[1],
+      s: match[2],
+      v: match[3]
+    };
+  }
+  if (match = matchers.hsva.exec(color)) {
+    return {
+      h: match[1],
+      s: match[2],
+      v: match[3],
+      a: match[4]
+    };
+  }
+  if (match = matchers.hex8.exec(color)) {
+    return {
+      r: parseIntFromHex(match[1]),
+      g: parseIntFromHex(match[2]),
+      b: parseIntFromHex(match[3]),
+      a: convertHexToDecimal(match[4]),
+      format: named ? "name" : "hex8"
+    };
+  }
+  if (match = matchers.hex6.exec(color)) {
+    return {
+      r: parseIntFromHex(match[1]),
+      g: parseIntFromHex(match[2]),
+      b: parseIntFromHex(match[3]),
+      format: named ? "name" : "hex"
+    };
+  }
+  if (match = matchers.hex4.exec(color)) {
+    return {
+      r: parseIntFromHex(match[1] + "" + match[1]),
+      g: parseIntFromHex(match[2] + "" + match[2]),
+      b: parseIntFromHex(match[3] + "" + match[3]),
+      a: convertHexToDecimal(match[4] + "" + match[4]),
+      format: named ? "name" : "hex8"
+    };
+  }
+  if (match = matchers.hex3.exec(color)) {
+    return {
+      r: parseIntFromHex(match[1] + "" + match[1]),
+      g: parseIntFromHex(match[2] + "" + match[2]),
+      b: parseIntFromHex(match[3] + "" + match[3]),
+      format: named ? "name" : "hex"
+    };
+  }
+  return false;
 }
-function de(t) {
-  var r, e;
-  return (
-    (t = t || {
-      level: 'AA',
-      size: 'small',
-    }),
-    (r = (t.level || 'AA').toUpperCase()),
-    (e = (t.size || 'small').toLowerCase()),
-    r !== 'AA' && r !== 'AAA' && (r = 'AA'),
-    e !== 'small' && e !== 'large' && (e = 'small'),
-    {
-      level: r,
-      size: e,
-    }
-  );
+function validateWCAG2Parms(parms) {
+  var level, size;
+  parms = parms || {
+    level: "AA",
+    size: "small"
+  };
+  level = (parms.level || "AA").toUpperCase();
+  size = (parms.size || "small").toLowerCase();
+  if (level !== "AA" && level !== "AAA") {
+    level = "AA";
+  }
+  if (size !== "small" && size !== "large") {
+    size = "small";
+  }
+  return {
+    level,
+    size
+  };
 }
-const ce =
-  ':host{--wje-color-picker-value: #ff0000;--wje-color-picker-size: 1rem;--wje-color-picker-radius: 4px}.anchor{width:var(--wje-color-picker-size);height:var(--wje-color-picker-size);background:var(--wje-color-picker-value)}.picker{width:200px;min-height:90px;box-shadow:0 0 5px #0000000d,0 5px 20px #0000001a;border-radius:var(--wje-border-radius-small);border-width:1px;border-style:var(--wje-border-style);border-color:var(--wje-border-color);background:var(--wje-background)}.color-area{display:block;position:relative;height:100px;color:var(--wje-color-picker-area);background-image:linear-gradient(#0000,#000),linear-gradient(90deg,#fff,currentColor);cursor:crosshair;border-radius:var(--wje-color-picker-radius) var(--wje-color-picker-radius) 0 0;border-bottom:1px solid var(--wje-border-color)}.wrapper{display:inline-table;width:calc(100% - 2rem);margin:1rem}.hue{border-radius:.25rem;background-image:linear-gradient(to right,red,#ff0 17%,#0f0 33%,#0ff,#00f 67%,#f0f 83%,red);width:100%;height:8px;margin:.75rem 0 1rem}.hue::part(slider){--wje-slider-color: transparent;--wje-slider-thumb-color: white;--wje-slider-thumb-shadow: 0 0 0 1px var(--wje-border-color);--wje-slider-thumb-shadow-active: var(--wje-slider-thumb-shadow);--wje-slider-track-color: transparent}.alpha-wrapper{border-radius:.25rem;width:100%;height:8px;margin:.75rem 0 1rem;background-image:repeating-linear-gradient(45deg,#aaa 25%,transparent 25%,transparent 75%,#aaa 75%,#aaa),repeating-linear-gradient(45deg,#aaa 25%,#fff 25%,#fff 75%,#aaa 75%,#aaa);background-position:0 0,4px 4px;background-size:8px 8px}.alpha{color:var(--wje-color-picker-value);display:block;height:100%;width:100%;border-radius:inherit;background-image:linear-gradient(90deg,rgba(0,0,0,0),currentColor)}.alpha::part(slider){--wje-slider-color: transparent;--wje-slider-thumb-color: white;--wje-slider-thumb-shadow: 0 0 0 1px var(--wje-border-color);--wje-slider-thumb-shadow-active: var(--wje-slider-thumb-shadow);--wje-slider-track-color: transparent;--wje-slider-track-height: 8px}.input-wrapper{display:grid;align-items:center;grid-template-columns:1fr auto}.color-preview{width:30px!important;height:30px!important;border-radius:50%;position:relative;margin-right:1rem}.color-preview:before,.color-preview:after{content:"";position:absolute;height:100%;width:100%;left:0;top:0;border:1px solid #fff;border-radius:50%}.color-preview:before{background-image:repeating-linear-gradient(45deg,#aaa 25%,transparent 25%,transparent 75%,#aaa 75%,#aaa),repeating-linear-gradient(45deg,#aaa 25%,#fff 25%,#fff 75%,#aaa 75%,#aaa);background-position:0 0,4px 4px;background-size:8px 8px}.color-preview:after{background:var(--wje-color-picker-value)}wje-input{--wje-input-border-radius: 1rem;--wje-input-margin-bottom: 0}wje-input::part(input){text-align:center}.swatches{margin-top:1rem;display:flex;justify-content:center;flex-wrap:wrap}.swatch{background:var(--wje-color-picker-swatch);position:relative;width:20px;height:20px;margin:0 4px 6px;padding:0;border:0;border-radius:50%;color:inherit;white-space:nowrap;overflow:hidden;cursor:pointer}.marker{position:absolute;width:12px;height:12px;margin:-6px 0 0 -6px;border:1px solid #fff;border-radius:50%;background-color:var(--wje-color-picker-value);cursor:pointer}';
-class fe extends D {
+const styles = "/*\n[ Wj Color Picker ]\n*/\n\n.anchor {\n    width: var(--wje-color-picker-size);\n    height: var(--wje-color-picker-size);\n    background: var(--wje-color-picker-value);\n}\n\n.picker {\n    width: 200px;\n    min-height: 90px;\n    box-shadow:\n        0 0 5px rgba(0, 0, 0, 0.05),\n        0 5px 20px rgba(0, 0, 0, 0.1);\n    border-radius: var(--wje-border-radius-small);\n    border-width: 1px;\n    border-style: var(--wje-border-style);\n    border-color: var(--wje-border-color);\n    background: var(--wje-background);\n}\n\n.color-area {\n    display: block;\n    position: relative;\n    height: 100px;\n    color: var(--wje-color-picker-area);\n    background-image: linear-gradient(rgba(0, 0, 0, 0), #000), linear-gradient(90deg, #fff, currentColor);\n    cursor: crosshair;\n    border-radius: var(--wje-color-picker-radius) var(--wje-color-picker-radius) 0 0;\n    border-bottom: 1px solid var(--wje-border-color);\n}\n\n.wrapper {\n    display: inline-table;\n    width: calc(100% - 2rem);\n    margin: 1rem;\n}\n\n.hue {\n    border-radius: 0.25rem;\n    background-image: linear-gradient(\n        to right,\n        rgb(255, 0, 0) 0%,\n        rgb(255, 255, 0) 17%,\n        rgb(0, 255, 0) 33%,\n        rgb(0, 255, 255) 50%,\n        rgb(0, 0, 255) 67%,\n        rgb(255, 0, 255) 83%,\n        rgb(255, 0, 0) 100%\n    );\n    width: 100%;\n    height: 8px;\n    margin: 0.75rem 0 1rem;\n}\n\n.hue::part(slider) {\n    --wje-slider-color: transparent;\n    --wje-slider-thumb-color: white;\n    --wje-slider-thumb-shadow: 0 0 0 1px var(--wje-border-color);\n    --wje-slider-thumb-shadow-active: var(--wje-slider-thumb-shadow);\n    --wje-slider-track-color: transparent;\n}\n\n.alpha-wrapper {\n    border-radius: 0.25rem;\n    width: 100%;\n    height: 8px;\n    margin: 0.75rem 0 1rem;\n    background-image: repeating-linear-gradient(45deg, #aaa 25%, transparent 25%, transparent 75%, #aaa 75%, #aaa),\n        repeating-linear-gradient(45deg, #aaa 25%, #fff 25%, #fff 75%, #aaa 75%, #aaa);\n    background-position:\n        0 0,\n        4px 4px;\n    background-size: 8px 8px;\n}\n\n.alpha {\n    color: var(--wje-color-picker-value);\n    display: block;\n    height: 100%;\n    width: 100%;\n    border-radius: inherit;\n    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0), currentColor);\n}\n\n.alpha::part(slider) {\n    --wje-slider-color: transparent;\n    --wje-slider-thumb-color: white;\n    --wje-slider-thumb-shadow: 0 0 0 1px var(--wje-border-color);\n    --wje-slider-thumb-shadow-active: var(--wje-slider-thumb-shadow);\n    --wje-slider-track-color: transparent;\n    --wje-slider-track-height: 8px;\n}\n\n.input-wrapper {\n    display: grid;\n    align-items: center;\n    grid-template-columns: 1fr auto;\n}\n\n.color-preview {\n    width: 30px !important;\n    height: 30px !important;\n    border-radius: 50%;\n    position: relative;\n    margin-right: 1rem;\n    &:before,\n    &:after {\n        content: '';\n        position: absolute;\n        height: 100%;\n        width: 100%;\n        left: 0;\n        top: 0;\n        border: 1px solid #fff;\n        border-radius: 50%;\n    }\n    &:before {\n        background-image: repeating-linear-gradient(45deg, #aaa 25%, transparent 25%, transparent 75%, #aaa 75%, #aaa),\n            repeating-linear-gradient(45deg, #aaa 25%, #fff 25%, #fff 75%, #aaa 75%, #aaa);\n        background-position:\n            0 0,\n            4px 4px;\n        background-size: 8px 8px;\n    }\n    &:after {\n        background: var(--wje-color-picker-value, transparent);\n    }\n}\n\nwje-input {\n    --wje-input-border-radius: 1rem;\n    --wje-input-margin-bottom: 0;\n}\n\nwje-input::part(input) {\n    text-align: center;\n}\n\n.swatches {\n    margin-top: 1rem;\n    display: flex;\n    justify-content: center;\n    flex-wrap: wrap;\n}\n\n.swatch {\n    background: var(--wje-color-picker-swatch, transparent);\n    position: relative;\n    width: 20px;\n    height: 20px;\n    margin: 0 4px 6px 4px;\n    padding: 0;\n    border: 0;\n    border-radius: 50%;\n    color: inherit;\n    white-space: nowrap;\n    overflow: hidden;\n    cursor: pointer;\n}\n\n.marker {\n    position: absolute;\n    width: 12px;\n    height: 12px;\n    margin: -6px 0 0 -6px;\n    border: 1px solid #fff;\n    border-radius: 50%;\n    background-color: var(--wje-color-picker-value, transparent);\n    cursor: pointer;\n}\n";
+class ColorPicker extends WJElement {
   /**
-   * ColorPicker constructor.
+   * ColorPicker constructor method.
    */
   constructor() {
     super();
-    v(this, 'className', 'ColorPicker');
-    v(this, 'moveMarker', (e) => {
+    __publicField(this, "className", "ColorPicker");
+    /**
+     * Moves the marker to the given position.
+     * @param e
+     */
+    __publicField(this, "moveMarker", (e) => {
       this.colorAreaDimension = this.dimension();
-      const i = this.getPointerPosition(e);
-      let a = i.pageX - this.colorAreaDimension.x,
-        n = i.pageY - this.colorAreaDimension.y;
-      this.setColor(this.setColorAtPosition(a, n), 'marker'), this.setMarkerPosition(a, n);
+      const pointer = this.getPointerPosition(e);
+      let x = pointer.pageX - this.colorAreaDimension.x;
+      let y = pointer.pageY - this.colorAreaDimension.y;
+      this.setColor(this.setColorAtPosition(x, y), "marker");
+      this.setMarkerPosition(x, y);
     });
-    /*
-     * @desc nanstavenie pozicie markera podla farby
+    /**
+     * Sets the marker position by color.
      * @param color
      * @returns {{x: number, y: number}}
      */
-    v(this, 'setMarkerPositionByColor', (e = 'red') => {
-      let i = s(e).toHsv();
+    __publicField(this, "setMarkerPositionByColor", (color = "red") => {
+      let hsva = tinycolor(color).toHsv();
       return {
-        x: this.colorAreaDimension.width * i.s,
-        y: this.colorAreaDimension.height - this.colorAreaDimension.height * i.v,
+        x: this.colorAreaDimension.width * hsva.s,
+        y: this.colorAreaDimension.height - this.colorAreaDimension.height * hsva.v
       };
     });
-    /*
-     * Set css variable color value
+    /**
+     * Updates the color picker's current color and its associated UI elements.
+     * @param {tinycolor.Instance|null} [color] The color value to set. If null, the current value from the input field is used.
+     * @param {string} [type] The type of action determining which UI element to update. Possible values: "marker", "hue", "alpha", "swatch".
      */
-    v(this, 'setColor', (e = null, i = '') => {
-      let a = e;
-      if (
-        (a === null &&
-          i === '' &&
-          ((a = s(this.input.value)), this.colorArea.style.setProperty('--wje-color-picker-area', a.toHexString())),
-        i === 'marker' &&
-          ((this.alphaSlider.value = 100),
-          this.alphaSlider.style.setProperty('--wje-color-picker-value', a.toHexString()),
-          this.colorPreview.style.setProperty('--wje-color-picker-value', a.toHex8String()),
-          this.picker.style.setProperty('--wje-color-picker-value', a.toHexString()),
-          this.marker.style.setProperty('--wje-color-picker-value', a.toHex8String())),
-        i === 'hue')
-      ) {
-        let n = this.setColorAtPosition(this.markerPosition.x, this.markerPosition.y, this.alphaSlider.value);
-        (a = s(this.getHSVA(this.hueSlider.value, this.alphaSlider.value))),
-          this.colorPreview.style.setProperty('--wje-color-picker-value', n.toHex8String()),
-          this.marker.style.setProperty('--wje-color-picker-value', n.toHexString()),
-          this.alphaSlider.style.setProperty('--wje-color-picker-value', a.toHexString()),
-          this.colorArea.style.setProperty('--wje-color-picker-area', a.toHexString()),
-          (this.input.value = n.toHex8String());
+    __publicField(this, "setColor", (color = null, type = "") => {
+      let currentColor = color;
+      if (currentColor === null && type === "") {
+        currentColor = tinycolor(this.input.value);
+        this.colorArea.style.setProperty("--wje-color-picker-area", currentColor.toHexString());
       }
-      if (i === 'alpha') {
-        a = s(this.input.value);
-        let n = a.toHsv();
-        (n.a = this.alphaSlider.value / 100),
-          (a = s(n)),
-          this.colorPreview.style.setProperty('--wje-color-picker-value', a.toHex8String());
+      if (type === "marker") {
+        this.alphaSlider.value = 100;
+        this.alphaSlider.style.setProperty("--wje-color-picker-value", currentColor.toHexString());
+        this.colorPreview.style.setProperty("--wje-color-picker-value", currentColor.toHex8String());
+        this.picker.style.setProperty("--wje-color-picker-value", currentColor.toHexString());
+        this.marker.style.setProperty("--wje-color-picker-value", currentColor.toHex8String());
       }
-      i === 'swatch' &&
-        (this.colorPreview.style.setProperty('--wje-color-picker-value', a.toHex8String()),
-        this.marker.style.setProperty('--wje-color-picker-value', a.toHexString()),
-        this.alphaSlider.style.setProperty('--wje-color-picker-value', a.toHexString()),
-        this.colorArea.style.setProperty('--wje-color-picker-area', a.toHex8String()),
-        (this.markerPosition = this.setMarkerPositionByColor(a.toHex8String())),
-        this.setMarkerPosition(this.markerPosition.x, this.markerPosition.y)),
-        (this.input.value = a.toHex8String()),
-        this.anchor.style.setProperty('--wje-color-picker-value', a.toHexString()),
-        (this.value = {
-          hex8: a.toHex8String(),
-          hex: a.toHexString(),
-          rgb: a.toRgbString(),
-          rgba: a.toRgbString(),
-          hsl: a.toHslString(),
-          hsla: a.toHslString(),
-          hsv: a.toHsvString(),
-          hsva: a.toHsvString(),
-          name: a.toName(),
-          format: a.getFormat(),
-        }),
-        G.dispatchCustomEvent(this, 'wje-color-picker:select', this.value);
+      if (type === "hue") {
+        let markerColorByPosition = this.setColorAtPosition(
+          this.markerPosition.x,
+          this.markerPosition.y,
+          this.alphaSlider.value
+        );
+        currentColor = tinycolor(this.getHSVA(this.hueSlider.value, this.alphaSlider.value));
+        this.colorPreview.style.setProperty("--wje-color-picker-value", markerColorByPosition.toHex8String());
+        this.marker.style.setProperty("--wje-color-picker-value", markerColorByPosition.toHexString());
+        this.alphaSlider.style.setProperty("--wje-color-picker-value", currentColor.toHexString());
+        this.colorArea.style.setProperty("--wje-color-picker-area", currentColor.toHexString());
+        this.input.value = markerColorByPosition.toHex8String();
+      }
+      if (type === "alpha") {
+        currentColor = tinycolor(this.input.value);
+        let hsv = currentColor.toHsv();
+        hsv.a = this.alphaSlider.value / 100;
+        currentColor = tinycolor(hsv);
+        this.colorPreview.style.setProperty("--wje-color-picker-value", currentColor.toHex8String());
+      }
+      if (type === "swatch") {
+        this.colorPreview.style.setProperty("--wje-color-picker-value", currentColor.toHex8String());
+        this.marker.style.setProperty("--wje-color-picker-value", currentColor.toHexString());
+        this.alphaSlider.style.setProperty("--wje-color-picker-value", currentColor.toHexString());
+        this.colorArea.style.setProperty("--wje-color-picker-area", currentColor.toHex8String());
+        this.markerPosition = this.setMarkerPositionByColor(currentColor.toHex8String());
+        this.setMarkerPosition(this.markerPosition.x, this.markerPosition.y);
+      }
+      this.input.value = currentColor.toHex8String();
+      this.anchor.style.setProperty("--wje-color-picker-value", currentColor.toHexString());
+      this.value = {
+        hex8: currentColor.toHex8String(),
+        hex: currentColor.toHexString(),
+        rgb: currentColor.toRgbString(),
+        rgba: currentColor.toRgbString(),
+        hsl: currentColor.toHslString(),
+        hsla: currentColor.toHslString(),
+        hsv: currentColor.toHsvString(),
+        hsva: currentColor.toHsvString(),
+        name: currentColor.toName(),
+        format: currentColor.getFormat()
+      };
+      event.dispatchCustomEvent(this, "wje-color-picker:select", this.value);
     });
-    /*
-     * Set hue sliders
+    /**
+     * Sets the hue.
+     * @param {object} e The event object.
      */
-    v(this, 'setHue', (e) => {
-      (this.hueSlider.value = e.detail.value), this.setColor(null, 'hue');
+    __publicField(this, "setHue", (e) => {
+      this.hueSlider.value = e.detail.value;
+      this.setColor(null, "hue");
     });
-    /*
-     * Set alpha sliders
+    /**
+     * Sets the alpha.
+     * @param {object} e The event object.
      */
-    v(this, 'setAlpha', (e) => {
-      (this.alphaSlider.value = e.detail.value), this.setColor(null, 'alpha');
+    __publicField(this, "setAlpha", (e) => {
+      this.alphaSlider.value = e.detail.value;
+      this.setColor(null, "alpha");
     });
-    /*
-     * Get HSVA color order by hue and alpha
+    /**
+     * Converts hue and alpha values into an HSVA color string.
+     * @param {number} hue The hue value, typically between 0 and 360.
+     * @param {number} alpha The alpha value, typically between 0 and 100, representing the opacity percentage.
+     * @returns {string} - The HSVA color string in the format `hsva(h, 100%, 100%, a)`.
      */
-    v(this, 'getHSVA', (e, i) => `hsva(${e}, 100%, 100%, ${i / 100})`);
-    (this._markerPosition = {
-      markerX: '0',
-      markerY: '0',
-    }),
-      (this._swatches = [
-        '#264653',
-        '#2a9d8f',
-        '#e9c46a',
-        'rgb(244,162,97)',
-        '#e76f51',
-        '#d62828',
-        'navy',
-        '#07b',
-        '#0096c7',
-        '#00b4d880',
-        'rgba(0,119,182,0.8)',
-      ]);
+    __publicField(this, "getH");
+    __publicField(this, "getHSVA", (hue, alpha) => {
+      return `hsva(${hue}, 100%, 100%, ${alpha / 100})`;
+    });
+    this._markerPosition = {
+      markerX: "0",
+      markerY: "0"
+    };
+    this._swatches = [
+      "#264653",
+      "#2a9d8f",
+      "#e9c46a",
+      "rgb(244,162,97)",
+      "#e76f51",
+      "#d62828",
+      "navy",
+      "#07b",
+      "#0096c7",
+      "#00b4d880",
+      "rgba(0,119,182,0.8)"
+    ];
   }
   /**
    * Setter for the marker position.
-   * @param {Object} value - The new marker position.
+   * @param {object} value The new marker position.
    */
-  set markerPosition(e) {
-    this._markerPosition = e;
+  set markerPosition(value) {
+    this._markerPosition = value;
   }
   /**
    * Getter for the marker position.
-   * @returns {Object} The current marker position.
+   * @returns {object} The current marker position.
    */
   get markerPosition() {
     return this._markerPosition;
   }
   /**
    * Setter for the color swatches.
-   * @param {string} value - The new color swatches.
+   * @param {string} value The new color swatches.
    */
-  set swatches(e) {
-    this.setAttribute('swatches', e.split(','));
+  set swatches(value) {
+    this.setAttribute("swatches", value.split(","));
   }
   /**
    * Getter for the color swatches.
@@ -1047,11 +1133,11 @@ class fe extends D {
   }
   /**
    * Getter for the CSS stylesheet.
-   * @returns {Object} The styles object.
+   * @returns {object} The styles object.
    * @static
    */
   static get cssStyleSheet() {
-    return ce;
+    return styles;
   }
   /**
    * Getter for the observed attributes.
@@ -1065,161 +1151,188 @@ class fe extends D {
    * Sets up the attributes for the ColorPicker.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Draws the ColorPicker.
-   * @param {Object} context - The context to draw in.
-   * @param {Object} store - The store to use.
-   * @param {Object} params - The parameters to use.
+   * Draws the ColorPicker element.
    * @returns {DocumentFragment} The created document fragment.
    */
-  draw(e, i, a) {
-    let n = document.createDocumentFragment(),
-      o = document.createElement('div');
-    o.classList.add('native-color-picker');
-    let h = document.createElement('div');
-    h.setAttribute('slot', 'anchor'), h.setAttribute('part', 'anchor'), h.classList.add('anchor');
-    let l = document.createElement('div');
-    l.classList.add('picker');
-    let c = document.createElement('div');
-    c.classList.add('marker');
-    let p = document.createElement('div');
-    p.classList.add('color-area'), p.addEventListener('click', this.moveMarker);
-    let d = document.createElement('div');
-    d.classList.add('wrapper');
-    let x = document.createElement('wje-slider');
-    x.setAttribute('min', '0'),
-      x.setAttribute('max', '360'),
-      x.classList.add('hue'),
-      x.addEventListener('wje:slider-move', this.setHue);
-    let H = document.createElement('div');
-    H.classList.add('alpha-wrapper');
-    let w = document.createElement('wje-slider');
-    w.setAttribute('min', '0'),
-      w.setAttribute('max', '100'),
-      w.setAttribute('value', '50'),
-      w.classList.add('alpha'),
-      w.addEventListener('wje:slider-move', this.setAlpha);
-    let A = document.createElement('div');
-    A.classList.add('input-wrapper');
-    let P = document.createElement('div');
-    P.classList.add('color-preview');
-    let _ = document.createElement('wje-input');
-    _.classList.add('input'),
-      _.setAttribute('variant', 'standard'),
-      (_.value = '#ff0000'),
-      p.appendChild(c),
-      H.appendChild(w),
-      A.appendChild(P),
-      A.appendChild(_),
-      d.appendChild(x),
-      d.appendChild(H),
-      d.appendChild(A),
-      l.appendChild(p),
-      l.appendChild(d),
-      this.createSwatches(d);
-    let k = document.createElement('wje-popup');
-    return (
-      k.setAttribute('placement', this.placement || 'bottom-start'),
-      k.setAttribute('offset', this.offset),
-      k.setAttribute('manual', ''),
-      k.appendChild(h),
-      k.appendChild(l),
-      o.appendChild(k),
-      n.appendChild(o),
-      (this.popup = k),
-      (this.anchor = h),
-      (this.picker = l),
-      (this.marker = c),
-      (this.colorArea = p),
-      (this.hueSlider = x),
-      (this.alphaSlider = w),
-      (this.colorPreview = P),
-      (this.input = _),
-      n
-    );
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    native.classList.add("native-color-picker");
+    let anchor = document.createElement("div");
+    anchor.setAttribute("slot", "anchor");
+    anchor.setAttribute("part", "anchor");
+    anchor.classList.add("anchor");
+    let picker = document.createElement("div");
+    picker.classList.add("picker");
+    let marker = document.createElement("div");
+    marker.classList.add("marker");
+    let colorArea = document.createElement("div");
+    colorArea.classList.add("color-area");
+    colorArea.addEventListener("click", this.moveMarker);
+    let wrapper = document.createElement("div");
+    wrapper.classList.add("wrapper");
+    let hueSlider = document.createElement("wje-slider");
+    hueSlider.setAttribute("min", "0");
+    hueSlider.setAttribute("max", "360");
+    hueSlider.classList.add("hue");
+    hueSlider.addEventListener("wje-slider:move", this.setHue);
+    let alphaWrapper = document.createElement("div");
+    alphaWrapper.classList.add("alpha-wrapper");
+    let alphaSlider = document.createElement("wje-slider");
+    alphaSlider.setAttribute("min", "0");
+    alphaSlider.setAttribute("max", "100");
+    alphaSlider.setAttribute("value", "50");
+    alphaSlider.classList.add("alpha");
+    alphaSlider.addEventListener("wje-slider:move", this.setAlpha);
+    let inputWrapper = document.createElement("div");
+    inputWrapper.classList.add("input-wrapper");
+    let colorPreview = document.createElement("div");
+    colorPreview.classList.add("color-preview");
+    let input = document.createElement("wje-input");
+    input.classList.add("input");
+    input.setAttribute("variant", "standard");
+    input.value = "#ff0000";
+    colorArea.appendChild(marker);
+    alphaWrapper.appendChild(alphaSlider);
+    inputWrapper.appendChild(colorPreview);
+    inputWrapper.appendChild(input);
+    wrapper.appendChild(hueSlider);
+    wrapper.appendChild(alphaWrapper);
+    wrapper.appendChild(inputWrapper);
+    picker.appendChild(colorArea);
+    picker.appendChild(wrapper);
+    this.createSwatches(wrapper);
+    let popup = document.createElement("wje-popup");
+    popup.setAttribute("placement", this.placement || "bottom-start");
+    popup.setAttribute("offset", this.offset);
+    popup.setAttribute("manual", "");
+    popup.appendChild(anchor);
+    popup.appendChild(picker);
+    native.appendChild(popup);
+    fragment.appendChild(native);
+    this.popup = popup;
+    this.anchor = anchor;
+    this.picker = picker;
+    this.marker = marker;
+    this.colorArea = colorArea;
+    this.hueSlider = hueSlider;
+    this.alphaSlider = alphaSlider;
+    this.colorPreview = colorPreview;
+    this.input = input;
+    return fragment;
   }
-  createSwatches(e) {
+  /**
+   * Sets the hue.
+   * @param node
+   */
+  createSwatches(node) {
     if (this.swatches.length === 0) return;
-    let i = document.createElement('div');
-    i.classList.add('swatches'),
-      this.swatches.forEach((a) => {
-        let n = document.createElement('button');
-        n.classList.add('swatch'),
-          n.style.setProperty('--wje-color-picker-swatch', a),
-          n.addEventListener('click', (o) => {
-            this.setSliders(a), this.setColor(s(a), 'swatch');
-          }),
-          i.appendChild(n);
-      }),
-      e.appendChild(i);
-  }
-  setSliders(e) {
-    let i = s(e).toHsv();
-    (this.hueSlider.value = i.h), (this.alphaSlider.value = i.a * 100);
-  }
-  afterDraw() {
-    (this.init = !1),
-      this.addEventListener('wje-popup:show', (e) => {
-        this.init ||
-          (window.setTimeout(() => {
-            (this.colorAreaDimension = this.dimension()),
-              (this.markerPosition = this.setMarkerPositionByColor(this.input.value)),
-              this.setMarkerPosition(this.markerPosition.x, this.markerPosition.y),
-              this.input.value != '' && (this.alphaSlider.value = 100),
-              this.setColor();
-          }, 0),
-          (this.init = !0));
+    let swatches = document.createElement("div");
+    swatches.classList.add("swatches");
+    this.swatches.forEach((swatch) => {
+      let button = document.createElement("button");
+      button.classList.add("swatch");
+      button.style.setProperty("--wje-color-picker-swatch", swatch);
+      button.addEventListener("click", (e) => {
+        this.setSliders(swatch);
+        this.setColor(tinycolor(swatch), "swatch");
       });
+      swatches.appendChild(button);
+    });
+    node.appendChild(swatches);
   }
+  /**
+   * Sets up the event listeners for the ColorPicker.
+   */
+  afterDraw() {
+    this.init = false;
+    this.addEventListener("wje-popup:show", (e) => {
+      if (!this.init) {
+        window.setTimeout(() => {
+          this.colorAreaDimension = this.dimension();
+          this.markerPosition = this.setMarkerPositionByColor(this.input.value);
+          this.setMarkerPosition(this.markerPosition.x, this.markerPosition.y);
+          if (this.input.value !== "") this.alphaSlider.value = 100;
+          this.setColor();
+        }, 0);
+        this.init = true;
+      }
+    });
+  }
+  /**
+   * Sets the sliders to the given color.
+   * @param color
+   */
+  setSliders(color) {
+    let hsva = tinycolor(color).toHsv();
+    this.hueSlider.value = hsva.h;
+    this.alphaSlider.value = hsva.a * 100;
+  }
+  /**
+   * Gets the dimensions of the color area.
+   * @returns {{width: *, x: *, y: *, height: *}}
+   */
   dimension() {
     return {
       width: this.colorArea.offsetWidth,
       height: this.colorArea.offsetHeight,
       x: this.colorArea.offsetLeft,
-      y: this.colorArea.offsetTop,
+      y: this.colorArea.offsetTop
     };
   }
-  disconnectedCallback() {
-    this.init = !1;
+  /**
+   * Disconnects the ColorPicker.
+   */
+  beforeDisconnect() {
+    this.init = false;
   }
+  /**
+   * Sets the hue.
+   * @param e
+   * @returns {{pageY: (*|number), pageX: (*|number)}}
+   */
   getPointerPosition(e) {
     return {
       pageX: e.changedTouches ? e.changedTouches[0].pageX : e.clientX,
-      pageY: e.changedTouches ? e.changedTouches[0].pageY : e.clientY,
+      pageY: e.changedTouches ? e.changedTouches[0].pageY : e.clientY
     };
   }
-  /*
-   * Nastavi poziu markera
+  /**
+   * Sets the position of the marker.
    * @param x
    * @param y
    */
-  setMarkerPosition(e, i) {
-    (e = e < 0 ? 0 : e > this.colorAreaDimension.width ? this.colorAreaDimension.width : e),
-      (i = i < 0 ? 0 : i > this.colorAreaDimension.height ? this.colorAreaDimension.height : i),
-      (this.markerPosition = {
-        x: e,
-        y: i,
-      }),
-      (this.marker.style.left = `${e}px`),
-      (this.marker.style.top = `${i}px`);
+  setMarkerPosition(x, y) {
+    x = x < 0 ? 0 : x > this.colorAreaDimension.width ? this.colorAreaDimension.width : x;
+    y = y < 0 ? 0 : y > this.colorAreaDimension.height ? this.colorAreaDimension.height : y;
+    this.markerPosition = {
+      x,
+      y
+    };
+    this.marker.style.left = `${x}px`;
+    this.marker.style.top = `${y}px`;
   }
-  /*
-   * nastavenie farby podla pozicie markera
+  /**
+   * Sets the color at the given position.
    * @param x
    * @param y
-   * @returns {tinycolor}
+   * @param alpha
+   * @returns {*|tinycolor}
    */
-  setColorAtPosition(e, i, a = 100) {
-    const n = {
+  setColorAtPosition(x, y, alpha = 100) {
+    const hsva = {
       h: this.hueSlider.value * 1,
-      s: (e / this.colorAreaDimension.width) * 100,
-      v: 100 - (i / this.colorAreaDimension.height) * 100,
-      a: a / 100,
+      s: x / this.colorAreaDimension.width * 100,
+      v: 100 - y / this.colorAreaDimension.height * 100,
+      a: alpha / 100
     };
-    return s(n);
+    return tinycolor(hsva);
   }
 }
-D.define('wje-color-picker', fe);
-export { fe as default };
+WJElement.define("wje-color-picker", ColorPicker);
+export {
+  ColorPicker as default
+};

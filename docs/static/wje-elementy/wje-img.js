@@ -1,65 +1,71 @@
-var l = Object.defineProperty;
-var d = (r, e, t) => (e in r ? l(r, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (r[e] = t));
-var o = (r, e, t) => (d(r, typeof e != 'symbol' ? e + '' : e, t), t);
-import n from './wje-element.js';
-const h =
-  'img{display:block;width:var(--wje-img-width, 100%);height:var(--wje-img-height, auto);max-width:100%;object-fit:inherit;border-radius:var(--wje-img-border-radius, 0)}';
-class m extends n {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ WJ Img ]\n*/\n\nimg {\n    display: block;\n    width: var(--wje-img-width, 100%);\n    height: var(--wje-img-height, auto);\n    max-width: 100%;\n    object-fit: inherit;\n    border-radius: var(--wje-img-border-radius, 0);\n}\n";
+class Img extends WJElement {
   /**
    * Creates an instance of Img.
-   *
-   * @constructor
+   * @class
    */
   constructor() {
     super();
-    o(this, 'className', 'Img');
+    __publicField(this, "className", "Img");
+  }
+  set loader(value) {
+    if (value) {
+      this.setAttribute("loader", value);
+    }
+  }
+  get loader() {
+    return this.getAttribute("loader");
   }
   /**
    * Returns the CSS styles for the component.
-   *
    * @static
    * @returns {CSSStyleSheet}
    */
   static get cssStyleSheet() {
-    return h;
+    return styles;
   }
   /**
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Draws the component.
-   *
-   * @param {Object} context - The context for drawing.
-   * @param {Object} store - The store for drawing.
-   * @param {Object} params - The parameters for drawing.
+   * Draws the component for the image.
    * @returns {DocumentFragment}
    */
-  draw(t, c, g) {
-    let a = document.createDocumentFragment(),
-      s = document.createElement('img');
-    return (
-      s.setAttribute('src', './assets/img/image-loader.gif'),
-      s.classList.add('lazy-loaded-image', 'lazy'),
-      s.setAttribute('alt', this.alt || ''),
-      (this.img = s),
-      a.appendChild(s),
-      a
-    );
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("img");
+    native.setAttribute("part", "native");
+    native.setAttribute("src", this.loader || "./assets/img/image-loader.gif");
+    native.setAttribute("alt", this.alt || "");
+    native.classList.add("lazy-loaded-image", "lazy");
+    this.native = native;
+    fragment.appendChild(native);
+    return fragment;
   }
   /**
    * Called after the component has been drawn.
    */
-  afterDraw(t, c, g) {
-    let a = new IntersectionObserver((s, u) => {
-      s.forEach((i) => {
-        i.isIntersecting && ((i.target.src = this.src), this.classList.remove('lazy'), a.unobserve(i.target));
+  afterDraw() {
+    let lazyImageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.src = this.src;
+          this.classList.remove("lazy");
+          lazyImageObserver.unobserve(entry.target);
+        }
       });
     });
-    a.observe(this.img);
+    lazyImageObserver.observe(this.native);
   }
 }
-m.define('wje-img', m);
-export { m as default };
+Img.define("wje-img", Img);
+export {
+  Img as default
+};

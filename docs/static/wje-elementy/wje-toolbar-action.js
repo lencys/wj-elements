@@ -1,31 +1,30 @@
-var d = Object.defineProperty;
-var m = (e, t, o) => (t in e ? d(e, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : (e[t] = o));
-var r = (e, t, o) => (m(e, typeof t != 'symbol' ? t + '' : t, o), o);
-import u from './wje-element.js';
-const p = ':host .native-toolbar-action{display:flex}';
-class l extends u {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ WJ Toolbar Action ]\n*/\n\n:host {\n    .native-toolbar-action {\n        display: flex;\n    }\n}\n";
+class ToolbarAction extends WJElement {
   /**
-   * @constructor
-   * @summary ToolbarAction constructor
+   * Creates an instance of ToolbarAction.
    */
   constructor() {
     super();
     /**
-     * @summary Class name
+     * The class name for the component.
      * @type {string}
      */
-    r(this, 'className', 'ToolbarAction');
+    __publicField(this, "className", "ToolbarAction");
   }
   /**
-   * @summary Get CSS stylesheet
+   * Returns the CSS stylesheet for the component.
    * @static
-   * @returns {Object} styles
+   * @returns {CSSStyleSheet} The CSS stylesheet
    */
   static get cssStyleSheet() {
-    return p;
+    return styles;
   }
   /**
-   * @summary Get observed attributes
+   * Returns the list of observed attributes.
    * @static
    * @returns {Array} An empty array
    */
@@ -33,40 +32,40 @@ class l extends u {
     return [];
   }
   /**
-   * @summary Setup attributes
+   * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * @summary Draw method
-   * @param {Object} context - The context
-   * @param {Object} store - The store
-   * @param {Object} params - The parameters
-   * @returns {Object} Document fragment
+   * Draws the component for the toolbar action.
+   * @returns {object} Document fragment
    */
-  draw(o, h, b) {
-    let a = document.createDocumentFragment(),
-      n = +this.maxItems || 0,
-      c = this.getActions(),
-      i = document.createElement('slot'),
-      s = document.createElement('div');
-    return (
-      s.setAttribute('part', 'native'),
-      s.classList.add('native-toolbar-action'),
-      n !== 0 && c.length > n && (s = document.createElement('wje-dropdown')),
-      s.appendChild(i),
-      a.appendChild(s),
-      a
-    );
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let maxItems = +this.maxItems || 0;
+    let actions = this.getActions();
+    let slot = document.createElement("slot");
+    let element = document.createElement("div");
+    element.setAttribute("part", "native");
+    element.classList.add("native-toolbar-action");
+    const shouldCollapse = maxItems !== 0 && actions.length > maxItems;
+    if (shouldCollapse) {
+      element = document.createElement("wje-dropdown");
+    }
+    element.appendChild(slot);
+    fragment.appendChild(element);
+    return fragment;
   }
   /**
-   * @summary Get actions
+   * Returns the actions for the toolbar action.
    * @returns {Array} An array of wje-button elements
    */
   getActions() {
-    return Array.from(this.querySelectorAll('wje-button'));
+    return Array.from(this.querySelectorAll("wje-button"));
   }
 }
-l.define('wje-toolbar-action', l);
-export { l as default };
+ToolbarAction.define("wje-toolbar-action", ToolbarAction);
+export {
+  ToolbarAction as default
+};

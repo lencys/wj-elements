@@ -1,33 +1,30 @@
-var s = Object.defineProperty;
-var b = (e, t, o) => (t in e ? s(e, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : (e[t] = o));
-var d = (e, t, o) => (b(e, typeof t != 'symbol' ? t + '' : t, o), o);
-import p from './wje-element.js';
-import { w as c } from './router-links-FtZbFUto.js';
-const m =
-  ':host{--wje-toolbar-background: var(--wje-background);--wje-toolbar-height: auto;--wje-toolbar-min-height: 70px;--wje-toolbar-padding-top: 1rem;--wje-toolbar-padding-bottom: 1rem;--wje-toolbar-padding-inline: 1.5rem;--wje-toolbar-border-color: var(--wje-border-color);--wje-toolbar-top: 0;width:100%;height:var(--wje-toolbar-height)}.native-toolbar{background-color:var(--wje-toolbar-background);display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-start;border-bottom:1px solid var(--wje-toolbar-border-color);padding-inline:var(--wje-toolbar-padding-inline);padding-top:var(--wje-toolbar-padding-top);padding-bottom:var(--wje-toolbar-padding-bottom);box-shadow:0 10px 30px #523f690d}::slotted{grid-column:span 4}::slotted([slot="start"]){margin-right:auto}:host([sticky]){position:sticky;top:var(--wje-toolbar-top);z-index:99}';
-class l extends c(p) {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ WJ Toolbar ]\n*/\n\n:host {\n    --wje-toolbar-background: var(--wje-background);\n    --wje-toolbar-height: auto;\n    --wje-toolbar-min-height: 70px;\n    --wje-toolbar-padding-top: 1rem;\n    --wje-toolbar-padding-bottom: 1rem;\n    --wje-toolbar-padding-inline: 1.5rem;\n    --wje-toolbar-border-color: var(--wje-border-color);\n    --wje-toolbar-top: 0;\n    width: 100%;\n    height: var(--wje-toolbar-height);\n}\n\n.native-toolbar {\n    background-color: var(--wje-toolbar-background);\n    display: flex;\n    align-items: center;\n    flex-wrap: wrap;\n    justify-content: flex-start;\n    border-bottom: 1px solid var(--wje-toolbar-border-color);\n    padding-inline: var(--wje-toolbar-padding-inline);\n    padding-top: var(--wje-toolbar-padding-top);\n    padding-bottom: var(--wje-toolbar-padding-bottom);\n    box-shadow: 0 10px 30px 0 rgba(82, 63, 105, 0.05);\n}\n\n::slotted {\n    grid-column: span 4;\n}\n\n::slotted([slot='start']) {\n    margin-right: auto;\n}\n\n:host([sticky]) {\n    position: sticky;\n    top: var(--wje-toolbar-top);\n    z-index: 99;\n}\n";
+class Toolbar extends WJElement {
   /**
-   * @constructor
-   * @summary Toolbar constructor
+   * Creates an instance of Toolbar.
    */
   constructor() {
     super();
     /**
-     * @summary Class name
+     * The class name for the component.
      * @type {string}
      */
-    d(this, 'className', 'Toolbar');
+    __publicField(this, "className", "Toolbar");
   }
   /**
-   * @summary Get CSS stylesheet
+   * Returns the CSS stylesheet for the component.
    * @static
-   * @returns {Object} styles
+   * @returns {CSSStyleSheet} The CSS stylesheet
    */
   static get cssStyleSheet() {
-    return m;
+    return styles;
   }
   /**
-   * @summary Get observed attributes
+   * Returns the list of observed attributes.
    * @static
    * @returns {Array} An empty array
    */
@@ -35,27 +32,31 @@ class l extends c(p) {
     return [];
   }
   /**
-   * @summary Setup attributes
+   * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * @summary Draw method
-   * @param {Object} context - The context
-   * @param {Object} store - The store
-   * @param {Object} params - The parameters
-   * @returns {Object} Document fragment
+   * Draws the component for the toolbar.
+   * @returns {object} Document fragment
    */
-  draw(o, u, w) {
-    let a = document.createDocumentFragment(),
-      r = document.createElement('div');
-    r.setAttribute('part', 'native'), r.classList.add('native-toolbar');
-    let n = document.createElement('slot');
-    n.setAttribute('name', 'start');
-    let i = document.createElement('slot');
-    return i.setAttribute('name', 'end'), r.appendChild(n), r.appendChild(i), a.appendChild(r), a;
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    native.setAttribute("part", "native");
+    native.classList.add("native-toolbar");
+    let start = document.createElement("slot");
+    start.setAttribute("name", "start");
+    let end = document.createElement("slot");
+    end.setAttribute("name", "end");
+    native.appendChild(start);
+    native.appendChild(end);
+    fragment.appendChild(native);
+    return fragment;
   }
 }
-l.define('wje-toolbar', l);
-export { l as default };
+Toolbar.define("wje-toolbar", Toolbar);
+export {
+  Toolbar as default
+};

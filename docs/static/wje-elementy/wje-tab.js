@@ -1,59 +1,58 @@
-var s = Object.defineProperty;
-var l = (e, t, a) => (t in e ? s(e, t, { enumerable: !0, configurable: !0, writable: !0, value: a }) : (e[t] = a));
-var n = (e, t, a) => (l(e, typeof t != 'symbol' ? t + '' : t, a), a);
-import d, { event as c } from './wje-element.js';
-const b =
-  ':host{--wje-font-size: 10px;--wje-tab-text-transfrom: uppercase;--wje-tab-font-weight: 500;--wje-tab-letter-spacing: .06em;--wje-tab-padding-inline: 1rem;--wje-tab-padding-top: .75rem;--wje-tab-padding-bottom: .75rem;--wje-tab-color-active: var(--wje-color-primary-11);--wje-tab-color-hover: var(--wje-color-primary-1);display:block;position:relative}:host a{display:block;align-items:center;white-space:nowrap;font-family:var(--wje-font-family-secondary);font-size:var(--wje-font-size);letter-spacing:var(--wje-tab-letter-spacing);text-transform:var(--wje-tab-text-transfrom);font-weight:var(--wje-tab-font-weight);text-decoration:none;padding-inline:var(--wje-tab-padding-inline);padding-top:var(--wje-tab-padding-top);padding-bottom:var(--wje-tab-padding-bottom);color:var(--wje-color)}:host a>svg{inline-size:1.5em;pointer-events:none}:host a:hover{background:var(--wje-tab-color-hover)}:host a:hover:after{display:block}:host a:after{content:" ";display:none;block-size:.15rem;writing-mode:var(--wje-tab-writing-mode);background:var(--wje-tab-color-active);position:absolute;bottom:var(--wje-tab-bottom);left:var(--wje-tab-start);right:var(--wje-tab-end);top:var(--wje-tab-top)}:host([disabled]) a{opacity:.5;cursor:not-allowed;background:inherit}:host([disabled]) a:after{display:none}:host([active]) a:after{display:block}';
-class i extends d {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement, { event } from "./wje-element.js";
+const styles = "/*\n[ WJ Tab ]\n*/\n\n:host {\n    display: block;\n    position: relative;\n    .native-tab {\n        display: flex;\n        align-items: center;\n        white-space: nowrap;\n        font-family: var(--wje-tab-font-family);\n        font-size: var(--wje-tab-font-size);\n        letter-spacing: var(--wje-tab-letter-spacing);\n        text-transform: var(--wje-tab-text-transfrom);\n        font-weight: var(--wje-tab-font-weight);\n        text-decoration: none;\n        padding-inline: var(--wje-tab-padding-inline);\n        padding-top: var(--wje-tab-padding-top);\n        padding-bottom: var(--wje-tab-padding-bottom);\n        border-radius: var(--wje-tab-border-radius);\n        color: var(--wje-color);\n        line-height: var(--wje-tab-line-height);\n        & > svg {\n            inline-size: 1.5em;\n            pointer-events: none;\n        }\n\n        &:hover {\n            background: var(--wje-tab-color-hover);\n            &:after {\n                display: block;\n            }\n        }\n\n        &:after {\n            content: ' ';\n            display: none;\n            block-size: 0.15rem;\n            writing-mode: var(--wje-tab-writing-mode);\n            background: var(--wje-tab-color-active);\n            position: absolute;\n            bottom: var(--wje-tab-bottom);\n            left: var(--wje-tab-start);\n            right: var(--wje-tab-end);\n            top: var(--wje-tab-top);\n        }\n    }\n}\n\n:host([disabled]) a {\n    opacity: 0.5;\n    cursor: not-allowed;\n    background: inherit;\n    &:after {\n        display: none;\n    }\n}\n\n:host([active]) a:after {\n    display: block;\n}\n";
+class Tab extends WJElement {
   /**
    * Creates an instance of Tab.
-   *
-   * @constructor
    */
   constructor() {
     super();
     /**
-     * Returns the class name of the tab.
-     *
-     * @returns {string} The class name of the tab.
+     * The class name for the component.
      */
-    n(this, 'className', 'Tab');
-    this.last = !1;
+    __publicField(this, "className", "Tab");
+    this.last = false;
   }
   /**
    * Returns the CSS styles for the component.
-   *
    * @static
    * @returns {CSSStyleSheet}
    */
   static get cssStyleSheet() {
-    return b;
+    return styles;
   }
   /**
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Draws the component.
-   *
-   * @param {Object} context - The context for drawing.
-   * @param {Object} store - The store for drawing.
-   * @param {Object} params - The parameters for drawing.
+   * Draws the component for the tab.
    * @returns {DocumentFragment}
    */
-  draw(a, p, w) {
-    let r = document.createDocumentFragment(),
-      o = document.createElement('a');
-    return o.setAttribute('href', '#' + this.panel), (o.innerHTML = this.innerHTML), r.appendChild(o), r;
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let slot = document.createElement("slot");
+    let a = document.createElement("a");
+    a.setAttribute("href", "#" + this.panel);
+    a.setAttribute("part", "native");
+    a.classList.add("native-tab");
+    a.appendChild(slot);
+    fragment.appendChild(a);
+    return fragment;
   }
   /**
-   * Sets up the event listeners after the component is drawn.
+   * Sets up event listeners after the component is rendered.
+   * // @fires wje-tab:change - Dispatched when the component is clicked, indicating a tab change.
    */
   afterDraw() {
-    c.addListener(this, 'click', 'wje:tab-change');
+    event.addListener(this, "click", "wje-tab:change");
   }
 }
-i.define('wje-tab', i);
-export { i as default };
+Tab.define("wje-tab", Tab);
+export {
+  Tab as default
+};

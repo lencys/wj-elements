@@ -1,12 +1,11 @@
-var l = Object.defineProperty;
-var o = (e, t, a) => (t in e ? l(e, t, { enumerable: !0, configurable: !0, writable: !0, value: a }) : (e[t] = a));
-var s = (e, t, a) => (o(e, typeof t != 'symbol' ? t + '' : t, a), a);
-import i from './wje-element.js';
-const d =
-  ':host{--wje-card-subtitle-font-size: 11px;--wje-card-subtitle-font-family: var(--wje-font-family-secondary);--wje-card-subtitle-padding: 0;transition:opacity .3s ease;font-family:var(--wje-card-subtitle-font-family);font-size:var(--wje-card-subtitle-font-size);text-transform:uppercase;display:inline-block;letter-spacing:.06em;font-weight:500;margin:0;padding:var(--wje-card-subtitle-padding);line-height:normal;overflow:hidden;text-overflow:ellipsis;filter:alpha(opacity=40)}';
-class c extends i {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ WJ Card - Subtitle ]\n*/\n\n:host {\n    transition: opacity 0.3s ease;\n    font-family: var(--wje-card-subtitle-font-family);\n    font-size: var(--wje-card-subtitle-font-size);\n    text-transform: uppercase;\n    display: inline-block;\n    letter-spacing: 0.06em;\n    font-weight: 500;\n    margin: 0;\n    padding: var(--wje-card-subtitle-padding);\n    line-height: normal;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    filter: alpha(opacity=40);\n}\n";
+class CardSubtitle extends WJElement {
   /**
-   * CardSubtitle constructor.
+   * CardSubtitle constructor method.
    */
   constructor() {
     super();
@@ -14,15 +13,15 @@ class c extends i {
      * Class name for the CardSubtitle.
      * @type {string}
      */
-    s(this, 'className', 'CardTitle');
+    __publicField(this, "className", "CardTitle");
   }
   /**
    * Getter for the CSS stylesheet.
-   * @returns {Object} The styles object.
+   * @returns {object} The styles object.
    * @static
    */
   static get cssStyleSheet() {
-    return d;
+    return styles;
   }
   /**
    * Getter for the observed attributes.
@@ -36,20 +35,20 @@ class c extends i {
    * Sets up the attributes for the CardSubtitle.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Draws the CardSubtitle.
-   * @param {Object} context - The context to draw in.
-   * @param {Object} store - The store to use.
-   * @param {Object} params - The parameters to use.
+   * Draws the CardSubtitle element.
    * @returns {DocumentFragment} The created document fragment.
    */
-  draw(a, u, f) {
-    let r = document.createDocumentFragment(),
-      n = document.createElement('slot');
-    return r.appendChild(n), r;
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-i.define('wje-card-subtitle', c);
-export { c as default };
+WJElement.define("wje-card-subtitle", CardSubtitle);
+export {
+  CardSubtitle as default
+};

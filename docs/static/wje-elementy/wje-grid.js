@@ -1,28 +1,53 @@
-var w = Object.defineProperty;
-var u = (g, e, t) => (e in g ? w(g, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (g[e] = t));
-var x = (g, e, t) => (u(g, typeof e != 'symbol' ? e + '' : e, t), t);
-import j from './wje-element.js';
-const y =
-  ':host{width:100%;flex-grow:0}wje-row{display:flex;flex-wrap:wrap}wje-row{--wje-gutter-x: 1.5rem;--wje-gutter-y: 0;display:flex;flex-wrap:wrap;margin-top:calc(var(--wje-gutter-y) * -1);margin-right:calc(var(--wje-gutter-x) * -.5);margin-left:calc(var(--wje-gutter-x) * -.5)}.g-0,.gx-0{--wje-gutter-x: 0}.g-0,.gy-0{--wje-gutter-y: 0}.g-1,.gx-1{--wje-gutter-x: .25rem}.g-1,.gy-1{--wje-gutter-y: .25rem}.g-2,.gx-2{--wje-gutter-x: .5rem}.g-2,.gy-2{--wje-gutter-y: .5rem}.g-3,.gx-3{--wje-gutter-x: 1rem}.g-3,.gy-3{--wje-gutter-y: 1rem}.g-4,.gx-4{--wje-gutter-x: 1.5rem}.g-4,.gy-4{--wje-gutter-y: 1.5rem}.g-5,.gx-5{--wje-gutter-x: 3rem}.g-5,.gy-5{--wje-gutter-y: 3rem}@media (min-width: 576px){.g-sm-0,.gx-sm-0{--wje-gutter-x: 0}.g-sm-0,.gy-sm-0{--wje-gutter-y: 0}.g-sm-1,.gx-sm-1{--wje-gutter-x: .25rem}.g-sm-1,.gy-sm-1{--wje-gutter-y: .25rem}.g-sm-2,.gx-sm-2{--wje-gutter-x: .5rem}.g-sm-2,.gy-sm-2{--wje-gutter-y: .5rem}.g-sm-3,.gx-sm-3{--wje-gutter-x: 1rem}.g-sm-3,.gy-sm-3{--wje-gutter-y: 1rem}.g-sm-4,.gx-sm-4{--wje-gutter-x: 1.5rem}.g-sm-4,.gy-sm-4{--wje-gutter-y: 1.5rem}.g-sm-5,.gx-sm-5{--wje-gutter-x: 3rem}.g-sm-5,.gy-sm-5{--wje-gutter-y: 3rem}}@media (min-width: 768px){.g-md-0,.gx-md-0{--wje-gutter-x: 0}.g-md-0,.gy-md-0{--wje-gutter-y: 0}.g-md-1,.gx-md-1{--wje-gutter-x: .25rem}.g-md-1,.gy-md-1{--wje-gutter-y: .25rem}.g-md-2,.gx-md-2{--wje-gutter-x: .5rem}.g-md-2,.gy-md-2{--wje-gutter-y: .5rem}.g-md-3,.gx-md-3{--wje-gutter-x: 1rem}.g-md-3,.gy-md-3{--wje-gutter-y: 1rem}.g-md-4,.gx-md-4{--wje-gutter-x: 1.5rem}.g-md-4,.gy-md-4{--wje-gutter-y: 1.5rem}.g-md-5,.gx-md-5{--wje-gutter-x: 3rem}.g-md-5,.gy-md-5{--wje-gutter-y: 3rem}}@media (min-width: 992px){.g-lg-0,.gx-lg-0{--wje-gutter-x: 0}.g-lg-0,.gy-lg-0{--wje-gutter-y: 0}.g-lg-1,.gx-lg-1{--wje-gutter-x: .25rem}.g-lg-1,.gy-lg-1{--wje-gutter-y: .25rem}.g-lg-2,.gx-lg-2{--wje-gutter-x: .5rem}.g-lg-2,.gy-lg-2{--wje-gutter-y: .5rem}.g-lg-3,.gx-lg-3{--wje-gutter-x: 1rem}.g-lg-3,.gy-lg-3{--wje-gutter-y: 1rem}.g-lg-4,.gx-lg-4{--wje-gutter-x: 1.5rem}.g-lg-4,.gy-lg-4{--wje-gutter-y: 1.5rem}.g-lg-5,.gx-lg-5{--wje-gutter-x: 3rem}.g-lg-5,.gy-lg-5{--wje-gutter-y: 3rem}}@media (min-width: 1200px){.g-xl-0,.gx-xl-0{--wje-gutter-x: 0}.g-xl-0,.gy-xl-0{--wje-gutter-y: 0}.g-xl-1,.gx-xl-1{--wje-gutter-x: .25rem}.g-xl-1,.gy-xl-1{--wje-gutter-y: .25rem}.g-xl-2,.gx-xl-2{--wje-gutter-x: .5rem}.g-xl-2,.gy-xl-2{--wje-gutter-y: .5rem}.g-xl-3,.gx-xl-3{--wje-gutter-x: 1rem}.g-xl-3,.gy-xl-3{--wje-gutter-y: 1rem}.g-xl-4,.gx-xl-4{--wje-gutter-x: 1.5rem}.g-xl-4,.gy-xl-4{--wje-gutter-y: 1.5rem}.g-xl-5,.gx-xl-5{--wje-gutter-x: 3rem}.g-xl-5,.gy-xl-5{--wje-gutter-y: 3rem}}@media (min-width: 1400px){.g-xxl-0,.gx-xxl-0{--wje-gutter-x: 0}.g-xxl-0,.gy-xxl-0{--wje-gutter-y: 0}.g-xxl-1,.gx-xxl-1{--wje-gutter-x: .25rem}.g-xxl-1,.gy-xxl-1{--wje-gutter-y: .25rem}.g-xxl-2,.gx-xxl-2{--wje-gutter-x: .5rem}.g-xxl-2,.gy-xxl-2{--wje-gutter-y: .5rem}.g-xxl-3,.gx-xxl-3{--wje-gutter-x: 1rem}.g-xxl-3,.gy-xxl-3{--wje-gutter-y: 1rem}.g-xxl-4,.gx-xxl-4{--wje-gutter-x: 1.5rem}.g-xxl-4,.gy-xxl-4{--wje-gutter-y: 1.5rem}.g-xxl-5,.gx-xxl-5{--wje-gutter-x: 3rem}.g-xxl-5,.gy-xxl-5{--wje-gutter-y: 3rem}}';
-class m extends j {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ Grid ]\n*/\n:host {\n  width: 100%;\n  flex-grow: 0;\n}\n\n/*\n[ Row ]\n*/\nwje-row {\n  display: flex;\n  flex-wrap: wrap;\n}\n\nwje-row {\n  --wje-gutter-x: 1.5rem;\n  --wje-gutter-y: 0;\n  display: flex;\n  flex-wrap: wrap;\n  margin-top: calc(var(--wje-gutter-y) * -1);\n  margin-right: calc(var(--wje-gutter-x) * -0.5);\n  margin-left: calc(var(--wje-gutter-x) * -0.5);\n}\n\n.g-0,\n.gx-0 {\n  --wje-gutter-x: 0;\n}\n\n.g-0,\n.gy-0 {\n  --wje-gutter-y: 0;\n}\n\n.g-1,\n.gx-1 {\n  --wje-gutter-x: 0.25rem;\n}\n\n.g-1,\n.gy-1 {\n  --wje-gutter-y: 0.25rem;\n}\n\n.g-2,\n.gx-2 {\n  --wje-gutter-x: 0.5rem;\n}\n\n.g-2,\n.gy-2 {\n  --wje-gutter-y: 0.5rem;\n}\n\n.g-3,\n.gx-3 {\n  --wje-gutter-x: 1rem;\n}\n\n.g-3,\n.gy-3 {\n  --wje-gutter-y: 1rem;\n}\n\n.g-4,\n.gx-4 {\n  --wje-gutter-x: 1.5rem;\n}\n\n.g-4,\n.gy-4 {\n  --wje-gutter-y: 1.5rem;\n}\n\n.g-5,\n.gx-5 {\n  --wje-gutter-x: 3rem;\n}\n\n.g-5,\n.gy-5 {\n  --wje-gutter-y: 3rem;\n}\n\n@media (min-width: 576px) {\n  .g-sm-0,\n  .gx-sm-0 {\n    --wje-gutter-x: 0;\n  }\n  .g-sm-0,\n  .gy-sm-0 {\n    --wje-gutter-y: 0;\n  }\n  .g-sm-1,\n  .gx-sm-1 {\n    --wje-gutter-x: 0.25rem;\n  }\n  .g-sm-1,\n  .gy-sm-1 {\n    --wje-gutter-y: 0.25rem;\n  }\n  .g-sm-2,\n  .gx-sm-2 {\n    --wje-gutter-x: 0.5rem;\n  }\n  .g-sm-2,\n  .gy-sm-2 {\n    --wje-gutter-y: 0.5rem;\n  }\n  .g-sm-3,\n  .gx-sm-3 {\n    --wje-gutter-x: 1rem;\n  }\n  .g-sm-3,\n  .gy-sm-3 {\n    --wje-gutter-y: 1rem;\n  }\n  .g-sm-4,\n  .gx-sm-4 {\n    --wje-gutter-x: 1.5rem;\n  }\n  .g-sm-4,\n  .gy-sm-4 {\n    --wje-gutter-y: 1.5rem;\n  }\n  .g-sm-5,\n  .gx-sm-5 {\n    --wje-gutter-x: 3rem;\n  }\n  .g-sm-5,\n  .gy-sm-5 {\n    --wje-gutter-y: 3rem;\n  }\n}\n@media (min-width: 768px) {\n  .g-md-0,\n  .gx-md-0 {\n    --wje-gutter-x: 0;\n  }\n  .g-md-0,\n  .gy-md-0 {\n    --wje-gutter-y: 0;\n  }\n  .g-md-1,\n  .gx-md-1 {\n    --wje-gutter-x: 0.25rem;\n  }\n  .g-md-1,\n  .gy-md-1 {\n    --wje-gutter-y: 0.25rem;\n  }\n  .g-md-2,\n  .gx-md-2 {\n    --wje-gutter-x: 0.5rem;\n  }\n  .g-md-2,\n  .gy-md-2 {\n    --wje-gutter-y: 0.5rem;\n  }\n  .g-md-3,\n  .gx-md-3 {\n    --wje-gutter-x: 1rem;\n  }\n  .g-md-3,\n  .gy-md-3 {\n    --wje-gutter-y: 1rem;\n  }\n  .g-md-4,\n  .gx-md-4 {\n    --wje-gutter-x: 1.5rem;\n  }\n  .g-md-4,\n  .gy-md-4 {\n    --wje-gutter-y: 1.5rem;\n  }\n  .g-md-5,\n  .gx-md-5 {\n    --wje-gutter-x: 3rem;\n  }\n  .g-md-5,\n  .gy-md-5 {\n    --wje-gutter-y: 3rem;\n  }\n}\n@media (min-width: 992px) {\n  .g-lg-0,\n  .gx-lg-0 {\n    --wje-gutter-x: 0;\n  }\n  .g-lg-0,\n  .gy-lg-0 {\n    --wje-gutter-y: 0;\n  }\n  .g-lg-1,\n  .gx-lg-1 {\n    --wje-gutter-x: 0.25rem;\n  }\n  .g-lg-1,\n  .gy-lg-1 {\n    --wje-gutter-y: 0.25rem;\n  }\n  .g-lg-2,\n  .gx-lg-2 {\n    --wje-gutter-x: 0.5rem;\n  }\n  .g-lg-2,\n  .gy-lg-2 {\n    --wje-gutter-y: 0.5rem;\n  }\n  .g-lg-3,\n  .gx-lg-3 {\n    --wje-gutter-x: 1rem;\n  }\n  .g-lg-3,\n  .gy-lg-3 {\n    --wje-gutter-y: 1rem;\n  }\n  .g-lg-4,\n  .gx-lg-4 {\n    --wje-gutter-x: 1.5rem;\n  }\n  .g-lg-4,\n  .gy-lg-4 {\n    --wje-gutter-y: 1.5rem;\n  }\n  .g-lg-5,\n  .gx-lg-5 {\n    --wje-gutter-x: 3rem;\n  }\n  .g-lg-5,\n  .gy-lg-5 {\n    --wje-gutter-y: 3rem;\n  }\n}\n@media (min-width: 1200px) {\n  .g-xl-0,\n  .gx-xl-0 {\n    --wje-gutter-x: 0;\n  }\n  .g-xl-0,\n  .gy-xl-0 {\n    --wje-gutter-y: 0;\n  }\n  .g-xl-1,\n  .gx-xl-1 {\n    --wje-gutter-x: 0.25rem;\n  }\n  .g-xl-1,\n  .gy-xl-1 {\n    --wje-gutter-y: 0.25rem;\n  }\n  .g-xl-2,\n  .gx-xl-2 {\n    --wje-gutter-x: 0.5rem;\n  }\n  .g-xl-2,\n  .gy-xl-2 {\n    --wje-gutter-y: 0.5rem;\n  }\n  .g-xl-3,\n  .gx-xl-3 {\n    --wje-gutter-x: 1rem;\n  }\n  .g-xl-3,\n  .gy-xl-3 {\n    --wje-gutter-y: 1rem;\n  }\n  .g-xl-4,\n  .gx-xl-4 {\n    --wje-gutter-x: 1.5rem;\n  }\n  .g-xl-4,\n  .gy-xl-4 {\n    --wje-gutter-y: 1.5rem;\n  }\n  .g-xl-5,\n  .gx-xl-5 {\n    --wje-gutter-x: 3rem;\n  }\n  .g-xl-5,\n  .gy-xl-5 {\n    --wje-gutter-y: 3rem;\n  }\n}\n@media (min-width: 1400px) {\n  .g-xxl-0,\n  .gx-xxl-0 {\n    --wje-gutter-x: 0;\n  }\n  .g-xxl-0,\n  .gy-xxl-0 {\n    --wje-gutter-y: 0;\n  }\n  .g-xxl-1,\n  .gx-xxl-1 {\n    --wje-gutter-x: 0.25rem;\n  }\n  .g-xxl-1,\n  .gy-xxl-1 {\n    --wje-gutter-y: 0.25rem;\n  }\n  .g-xxl-2,\n  .gx-xxl-2 {\n    --wje-gutter-x: 0.5rem;\n  }\n  .g-xxl-2,\n  .gy-xxl-2 {\n    --wje-gutter-y: 0.5rem;\n  }\n  .g-xxl-3,\n  .gx-xxl-3 {\n    --wje-gutter-x: 1rem;\n  }\n  .g-xxl-3,\n  .gy-xxl-3 {\n    --wje-gutter-y: 1rem;\n  }\n  .g-xxl-4,\n  .gx-xxl-4 {\n    --wje-gutter-x: 1.5rem;\n  }\n  .g-xxl-4,\n  .gy-xxl-4 {\n    --wje-gutter-y: 1.5rem;\n  }\n  .g-xxl-5,\n  .gx-xxl-5 {\n    --wje-gutter-x: 3rem;\n  }\n  .g-xxl-5,\n  .gy-xxl-5 {\n    --wje-gutter-y: 3rem;\n  }\n}";
+class Grid extends WJElement {
+  /**
+   * Constructor for the Grid class.
+   */
   constructor() {
     super();
-    x(this, 'className', 'Grid');
+    /**
+     * The class name for the Grid class.
+     * @type {string}
+     */
+    __publicField(this, "className", "Grid");
   }
+  /**
+   * Getter for the CSS stylesheet.
+   * @returns {*}
+   */
   static get cssStyleSheet() {
-    return y;
+    return styles;
   }
+  /**
+   * Getter for the observed attributes.
+   * @returns {*[]}
+   */
   static get observedAttributes() {
     return [];
   }
+  /**
+   * Sets up the attributes for the Grid.
+   */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
-  draw(t, s, d) {
-    let r = document.createDocumentFragment(),
-      l = document.createElement('slot');
-    return this.color && this.classList.add('wje-color-' + this.color, 'wje-color'), r.appendChild(l), r;
+  /**
+   * Draws the Grid element.
+   * @returns {DocumentFragment}
+   */
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    if (this.color) this.classList.add("wje-color-" + this.color, "wje-color");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-m.define('wje-grid', m);
-export { m as default };
+Grid.define("wje-grid", Grid);
+export {
+  Grid as default
+};

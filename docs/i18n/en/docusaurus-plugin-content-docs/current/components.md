@@ -9,12 +9,13 @@ import DocsCards from '@components/global/DocsCards';
 <head>
 
 {' '}
+
 <title>UI Components | Application building blocks</title>
 <meta
   name="description"
   content=" WebJET Elements obsahuje širokú škálu komponentov, ktoré sú optimalizované pre webové rozhrania. Tieto komponenty pokrývajú rôzne funkcie a sú navrhnuté tak, aby sa dali ľahko integrovať do akejkoľvek webovej aplikácie."
 />
-<style>{`
+<style>{ `
     :root {
       --doc-item-container-width: 60rem;
     }
@@ -28,6 +29,7 @@ import DocsCards from '@components/global/DocsCards';
 `}</style>
 
 {' '}
+
 <script
   type="module"
   src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@dddb1c19734498c5b2a17f2e6ed605d0cd40d02e/wj-master.js"
@@ -73,8 +75,7 @@ WebJET Elements includes a wide range of components that are optimized for web i
     </wj-card-header>
     <wj-card-content>
       <p>
-        Badge serves as a notification that there are other elements associated with an element and informs the user of
-        their number.
+        Badge serves as a notification that there are other elements associated with an element and informs the user of their number.
       </p>
     </wj-card-content>
   </wj-card>
@@ -99,7 +100,10 @@ WebJET Elements includes a wide range of components that are optimized for web i
       <wj-card-title>Button</wj-card-title>
     </wj-card-header>
     <wj-card-content>
-      <p>Button is a clickable element for invoking actions that allows you to display text, an icon, or both. </p>
+      <p>
+        A Button is a clickable element for invoking actions that allows you to display text, an icon, or
+        both.{' '}
+      </p>
     </wj-card-content>
   </wj-card>
 </a>
@@ -136,8 +140,8 @@ WebJET Elements includes a wide range of components that are optimized for web i
     </wj-card-header>
     <wj-card-content>
       <p>
-        A chip is a universal element that is a small visual block containing various other elements such as avatars,
-        text and icons.
+        A chip is a versatile element that is a small visual block containing various other elements such as
+        as avatars, text and icons.
       </p>
     </wj-card-content>
   </wj-card>
@@ -245,7 +249,9 @@ WebJET Elements includes a wide range of components that are optimized for web i
       <wj-card-title>Grid</wj-card-title>
     </wj-card-header>
     <wj-card-content>
-      <p>The Grid system is a flexible way to create responsive layouts by dividing the screen into a grid.</p>
+      <p>
+        The Grid system is a flexible way to create responsive layouts by dividing the screen into a grid.
+      </p>
     </wj-card-content>
   </wj-card>
 </a>
@@ -257,7 +263,10 @@ WebJET Elements includes a wide range of components that are optimized for web i
       <wj-card-title>Infinite Scroll</wj-card-title>
     </wj-card-header>
     <wj-card-content>
-      <p>Infinite Scroll allows you to implement dynamic data loading as users scroll through more content.</p>
+      <p>
+        Infinite Scroll allows you to implement dynamic data loading as users scroll through larger amounts of
+        content.
+      </p>
     </wj-card-content>
   </wj-card>
 </a>
@@ -269,10 +278,7 @@ WebJET Elements includes a wide range of components that are optimized for web i
       <wj-card-title>Input</wj-card-title>
     </wj-card-header>
     <wj-card-content>
-      <p>
-        The Input element extends the capabilities of the standard HTML input with advanced features and customization
-        options.
-      </p>
+      <p>The Input element extends the capabilities of the standard HTML input with advanced features and customization options.</p>
     </wj-card-content>
   </wj-card>
 </a>
@@ -286,7 +292,7 @@ WebJET Elements includes a wide range of components that are optimized for web i
     <wj-card-content>
       <p>
         Item components are blocks that can contain various types of content including text, icons, avatars, images, and
-        more.
+        much more.
       </p>
     </wj-card-content>
   </wj-card>
@@ -300,8 +306,8 @@ WebJET Elements includes a wide range of components that are optimized for web i
     </wj-card-header>
     <wj-card-content>
       <p>
-        The List component consists of multiple Item elements and can contain text, buttons, icons, image thumbnails,
-        and much more.
+        The List component consists of multiple Item elements and can contain text, buttons, icons, image thumbnails, and
+        much more.
       </p>
     </wj-card-content>
   </wj-card>
@@ -315,8 +321,8 @@ WebJET Elements includes a wide range of components that are optimized for web i
     </wj-card-header>
     <wj-card-content>
       <p>
-        The menu element is used to display the navigation. It is hidden by default and is called up, for example, by
-        clicking a button.
+        The menu element is used to display the navigation. It is hidden by default and is invoked, for example, by clicking the
+        button.
       </p>
     </wj-card-content>
   </wj-card>
@@ -330,8 +336,8 @@ WebJET Elements includes a wide range of components that are optimized for web i
     </wj-card-header>
     <wj-card-content>
       <p>
-        The menu element is used to display the navigation. It is hidden by default and is called up, for example, by
-        clicking a button.
+        The menu element is used to display the navigation. It is hidden by default and is invoked, for example, by clicking the
+        button.
       </p>
     </wj-card-content>
   </wj-card>
@@ -393,8 +399,8 @@ WebJET Elements includes a wide range of components that are optimized for web i
     </wj-card-header>
     <wj-card-content>
       <p>
-        Split view is a component that allows you to create a split view with two or more sections and scroll to adjust
-        their size.
+        Split view is a component that allows you to create a split view with two or more sections and scroll
+        to adjust their size.
       </p>
     </wj-card-content>
   </wj-card>
@@ -408,8 +414,8 @@ WebJET Elements includes a wide range of components that are optimized for web i
     </wj-card-header>
     <wj-card-content>
       <p>
-        Tab Group displays a tabbed navigation that allows you to view different parts of the application without having
-        to navigate to another page.
+        Tab Group displays a tabbed navigation that allows you to view different parts of the application without having to navigate
+        to another page.
       </p>
     </wj-card-content>
   </wj-card>
@@ -459,8 +465,8 @@ WebJET Elements includes a wide range of components that are optimized for web i
     </wj-card-header>
     <wj-card-content>
       <p>
-        A toolbar is designed to display various content in an organized manner, and is usually used at the top of a
-        page.
+        A toolbar is designed to display a variety of content in an organized manner, and is typically used at the top of
+        pages.
       </p>
     </wj-card-content>
   </wj-card>

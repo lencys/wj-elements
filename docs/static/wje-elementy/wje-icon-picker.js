@@ -1,117 +1,196 @@
-var w = Object.defineProperty;
-var g = (l, o, e) => (o in l ? w(l, o, { enumerable: !0, configurable: !0, writable: !0, value: e }) : (l[o] = e));
-var p = (l, o, e) => (g(l, typeof o != 'symbol' ? o + '' : o, e), e);
-import b, { event as j } from './wje-element.js';
-import u from './wje-infinite-scroll.js';
-import v from './wje-input.js';
-import f from './wje-tooltip.js';
-import './wje-popup.js';
-import { P as k } from './popup.element-BFIsYEbU.js';
-const x =
-  ':host{--wje-icon-picker-radius: var(--wje-border-radius-small);--wje-icon-picker-icon-size: 1.5rem;--wje-icon-picker-border-width: 1px;--wje-icon-picker-border-style: solid;--wje-icon-picker-border-color: var(--wje-border-color);--wje-icon-picker-padding: .25rem;padding:0 1rem}.anchor{width:var(--wje-icon-picker-icon-size);height:var(--wje-icon-picker-icon-size);padding:var(--wje-icon-picker-padding);border-width:var(--wje-icon-picker-border-width);border-style:var(--wje-icon-picker-border-style);border-color:var(--wje-icon-picker-border-color);box-sizing:border-box;border-radius:var(--wje-icon-picker-radius)}.picker{width:320px;height:271px;box-shadow:0 0 5px #0000000d,0 5px 20px #0000001a;border-radius:var(--wje-icon-picker-radius);border-width:var(--wje-icon-picker-border-width);border-style:var(--wje-icon-picker-border-style);border-color:var(--wje-icon-picker-border-color);overflow:auto;padding:1rem;background:var(--wje-background)}.icon-items{--icon-min-width: 2rem;display:grid;grid-gap:.5rem;grid-template-columns:repeat(auto-fit,minmax(var(--icon-min-width),1fr))}.icon-item{box-sizing:border-box;display:flex;align-items:center;justify-content:center;text-align:center;color:inherit;padding:.25rem;min-height:var(--wje-icon-picker-icon-size);min-width:var(--wje-icon-picker-icon-size);text-decoration:none}.icon-item:hover{border-radius:.25rem;background:var(--wje-border-color)}.wje-size{--wje-icon-size: 24px !important}icon-item svg{width:var(--wje-icon-picker-icon-size);height:var(--wje-icon-picker-icon-size)}wje-input{--wje-input-border-radius: 4px;--wje-input-margin-bottom: 0}wje-infinite-scroll{margin-top:1rem}wje-select{--wje-select-border-width: 0 0 1px 0 !important;--wje-select-border-radius: 0 !important;margin-bottom:1rem}.anchor wje-icon{--wje-icon-size: 100% !important}';
-class m extends b {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement, { event } from "./wje-element.js";
+import "./wje-infinite-scroll.js";
+import Input from "./wje-input.js";
+import "./wje-popup.js";
+import Tooltip from "./wje-tooltip.js";
+import { I as InfiniteScroll } from "./infinite-scroll.element-XVJukzjy.js";
+import { P as Popup } from "./popup.element-4DNn6DjX.js";
+const styles = "/*\n[ Wj Icon Picker ]\n*/\n\n:host {\n    padding: 0 1rem;\n}\n\n.anchor {\n    width: var(--wje-icon-picker-icon-size);\n    height: var(--wje-icon-picker-icon-size);\n    padding: var(--wje-icon-picker-padding);\n    border-width: var(--wje-icon-picker-border-width);\n    border-style: var(--wje-icon-picker-border-style);\n    border-color: var(--wje-icon-picker-border-color);\n    box-sizing: border-box;\n    border-radius: var(--wje-icon-picker-radius);\n}\n\n.picker {\n    width: 320px;\n    height: 271px;\n    box-shadow:\n        0 0 5px rgba(0, 0, 0, 0.05),\n        0 5px 20px rgba(0, 0, 0, 0.1);\n    border-radius: var(--wje-icon-picker-radius);\n    border-width: var(--wje-icon-picker-border-width);\n    border-style: var(--wje-icon-picker-border-style);\n    border-color: var(--wje-icon-picker-border-color);\n    overflow: auto;\n    padding: 1rem;\n    background: var(--wje-background);\n}\n\n.icon-items {\n    --icon-min-width: 2rem;\n    display: grid;\n    grid-gap: 0.5rem;\n    grid-template-columns: repeat(auto-fit, minmax(var(--icon-min-width), 1fr));\n}\n\n.icon-item {\n    box-sizing: border-box;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n    color: inherit;\n    padding: 0.25rem;\n    min-height: var(--wje-icon-picker-icon-size);\n    min-width: var(--wje-icon-picker-icon-size);\n    text-decoration: none;\n\n    &:hover {\n        border-radius: 0.25rem;\n        background: var(--wje-border-color);\n    }\n}\n\n.wje-size {\n    --wje-icon-size: 24px !important;\n}\n\nicon-item svg {\n    width: var(--wje-icon-picker-icon-size);\n    height: var(--wje-icon-picker-icon-size);\n}\n\nwje-input {\n    --wje-input-border-radius: 4px;\n    --wje-input-margin-bottom: 0;\n}\n\nwje-infinite-scroll {\n    margin-top: 1rem;\n}\n\nwje-select {\n    --wje-select-border-width: 0 0 1px 0 !important;\n    --wje-select-border-radius: 0 !important;\n    margin-bottom: 1rem;\n}\n\n.anchor wje-icon {\n    --wje-icon-size: 100% !important;\n}\n";
+class IconPicker extends WJElement {
   /**
    * Creates an instance of IconPicker.
-   *
-   * @constructor
+   * @class
    */
   constructor() {
     super();
     /**
      * Dependencies of the IconPicker component.
-     *
-     * @property {Object} dependencies
+     * @property {object} dependencies
      */
-    p(this, 'dependencies', {
-      'wje-input': v,
-      'wje-infinite-scroll': u,
-      'wje-tooltip': f,
-      'wje-popup': k,
+    __publicField(this, "dependencies", {
+      "wje-input": Input,
+      "wje-infinite-scroll": InfiniteScroll,
+      "wje-tooltip": Tooltip,
+      "wje-popup": Popup
     });
-    p(this, 'className', 'IconPicker');
+    __publicField(this, "className", "IconPicker");
     /**
-     * Event handler for searching icons.
-     *
-     * @param {Event} e - The event.
+     * Converts an object of tags into a transformed array of objects, separating `filled` and `outline` styles.
+     * The function processes an input object containing tags, extracts its values,
+     * and for each tag that has both `filled` and `outline` styles, splits them into
+     * two separate objects. Tags without `filled` styles remain unchanged.
+     * @param {object} tags The input object containing tags as properties. Each property is an object with a `styles` key.
+     * @param {object} tags[].styles The styles object containing `filled` and/or `outline` styles.
+     * @param {object} [tags[].styles.outline] The outline style object, if present.
+     * @param {object} [tags[].styles.filled] The filled style object, if present.
+     * @returns {Array<object>} An array of transformed objects. Objects with both `filled` and `outline` styles are split into separate objects, each containing only one style.
+     * @example
+     * const tags = {
+     *     hourglass: {
+     *         styles: {
+     *             outline: { ... },
+     *             filled: { ... },
+     *         }
+     *     },
+     *     clock: {
+     *         styles: {
+     *             outline: { ... },
+     *         }
+     *     }
+     * };
+     * const result = convertObject(tags);
+     * console.log(result);
+     * // [
+     * //   { styles: { outline: { ... } } },
+     * //   { styles: { filled: { ... } } },
+     * //   { styles: { outline: { ... } } }
+     * // ]
      */
-    p(this, 'searchIcon', (e) => {
-      this.infiniteScroll.unScrollEvent(),
-        (this.infiniteScroll.setCustomData = (i = 0) => {
-          let t = this.tags.filter((n) => n.tags.includes(e.detail.value));
-          return {
-            data: t,
-            page: i,
-            size: this.size,
-            totalPages: Math.round(t.length / this.size),
-          };
-        }),
-        this.clearIconsContainer(),
-        this.infiniteScroll.loadPages();
+    __publicField(this, "convertObject", (tags = {}) => {
+      let originalObjects = Object.values(tags);
+      let transformedObjects = [];
+      for (let i = 0; i < originalObjects.length; i++) {
+        const obj = originalObjects[i];
+        if (obj.styles.filled) {
+          transformedObjects.push(
+            { ...obj, styles: { outline: obj.styles.outline } },
+            { ...obj, styles: { filled: obj.styles.filled } }
+          );
+        } else {
+          transformedObjects.push(obj);
+        }
+      }
+      return transformedObjects;
+    });
+    /**
+     * Converts an icon data object into an HTML element structure.
+     * This function creates a styled HTML element that represents an icon with a tooltip.
+     * The tooltip displays the name of the icon, and the icon itself is styled based on
+     * whether it uses the `filled` style.
+     * @param {object} data The icon data object.
+     * @returns {HTMLElement} A `div` element containing the icon wrapped in a `wje-tooltip`. The tooltip displays the icon name, and the `wje-icon` element represents the icon with attributes set according to the data.
+     * @example
+     * const iconData = {
+     *     name: "hourglass",
+     *     styles: {
+     *         filled: { ... }
+     *     }
+     * };
+     * const htmlElement = dataToHtml(iconData);
+     * document.body.appendChild(htmlElement);
+     *
+     * // The resulting structure:
+     * // <div class="icon-item">
+     * //   <wje-tooltip content="hourglass">
+     * //     <wje-icon name="hourglass" size="large" filled></wje-icon>
+     * //   </wje-tooltip>
+     * // </div>
+     */
+    __publicField(this, "dataToHtml", (data) => {
+      let iconItem = document.createElement("div");
+      iconItem.classList.add("icon-item");
+      let tooltip = document.createElement("wje-tooltip");
+      tooltip.setAttribute("content", data.name);
+      let icon = document.createElement("wje-icon");
+      icon.setAttribute("name", data.name);
+      icon.setAttribute("size", "large");
+      if (data.styles.hasOwnProperty("filled"))
+        icon.setAttribute("filled", "");
+      tooltip.appendChild(icon);
+      iconItem.appendChild(tooltip);
+      return iconItem;
+    });
+    /**
+     * Searches icons based on user input.
+     * This method handles the input event and filters the available icons based on the provided search string.
+     * The filtering is performed on an index that combines icon names and their tags.
+     * The results are then adjusted for infinite scrolling.
+     * @param {Event} e The input event (e.g., `wje-input:input`) containing the search query details.
+     */
+    __publicField(this, "searchIcon", (e) => {
+      const query = e.detail.value.toLowerCase();
+      const results = this.index.filter(
+        (item) => item.searchText.includes(query)
+      );
+      this.infiniteScroll.unScrollEvent();
+      this.infiniteScroll.setCustomData = (page = 0) => {
+        const data = results.slice(page * this.size, page * this.size + this.size);
+        return {
+          data,
+          page,
+          size: this.size,
+          totalPages: Math.ceil(results.length / this.size)
+        };
+      };
+      this.clearIconsContainer();
+      this.infiniteScroll.loadPages(0);
     });
     /**
      * Closes the component.
      */
-    p(this, 'onClose', () => {
-      this.popup.onHide();
+    __publicField(this, "onClose", () => {
+      this.popup.handleHide();
     });
     /**
      * Gets the URL of the tags.
-     *
-     * @param {string} path - The path to get the URL of.
-     * @returns {string} The URL of the tags.
+     * @param {string} path The path to get the URL of.
+     * @returns {string} The URL of the tags path.
      */
-    p(this, 'getTagsUrl', (e) => {
-      let i = new URL(import.meta.url),
-        t = i.pathname,
-        r = t.substring(0, t.lastIndexOf('/'));
-      return new URL(i.origin + r + e).href;
+    __publicField(this, "getTagsUrl", (path) => {
+      return new URL(process.env.VITE_ICON_ASSETS_URL + path).href;
     });
-    this.size = 48;
   }
   /**
    * Setter for the markerPosition property.
-   *
-   * @param {any} value - The value to set.
+   * @param {any} value The value to set.
    */
-  set markerPosition(e) {
-    this._markerPosition = e;
+  set size(value) {
+    this.setAttribute("size", value);
   }
   /**
    * Getter for the markerPosition property.
-   *
-   * @returns {any} The value of the markerPosition property.
+   * @returns {any} size The value of the markerPosition property.
    */
-  get markerPosition() {
-    return this._markerPosition;
+  get size() {
+    return this.getAttribute("size") || 60;
   }
   /**
-   * Setter for the swatches property.
-   *
-   * @param {any} value - The value to set.
+   * Setter for the value property.
+   * @param value
    */
-  set swatches(e) {
-    this.setAttribute('swatches', e.split(','));
+  set icon(value) {
+    this.setAttribute("icon", value);
   }
   /**
-   * Getter for the swatches property.
-   *
-   * @returns {any} The value of the swatches property.
+   * Getter for the value property.
+   * @returns {string}
    */
-  get swatches() {
-    return this._swatches;
+  get icon() {
+    return this.getAttribute("icon");
   }
   /**
    * Returns the CSS styles for the component.
-   *
    * @static
    * @returns {CSSStyleSheet}
    */
   static get cssStyleSheet() {
-    return x;
+    return styles;
   }
   /**
    * Returns the list of attributes to observe for changes.
-   *
    * @static
    * @returns {Array<string>}
    */
@@ -122,93 +201,97 @@ class m extends b {
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
    * Prepares the component before drawing.
    */
   async beforeDraw() {
-    (this.tags = Object.values(await this.getTags())), (this.category = this.getCategory(this.tags));
+    this.tags = Object.values(await this.getTags());
+    this.transformedObjects = this.convertObject(this.tags);
+    this.index = this.transformedObjects.map((item) => ({
+      ...item,
+      searchText: `${item.name.toLowerCase()} ${item.tags.join(" ").toLowerCase()}`
+    }));
   }
   /**
    * Draws the component.
-   *
-   * @param {Object} context - The context for drawing.
-   * @param {Object} store - The store for drawing.
-   * @param {Object} params - The parameters for drawing.
    * @returns {DocumentFragment}
    */
-  draw(e, i, t) {
-    let r = document.createDocumentFragment(),
-      n = document.createElement('div');
-    n.classList.add('native-color-picker');
-    let d = document.createElement('div');
-    d.setAttribute('slot', 'anchor'), d.classList.add('anchor');
-    let h = document.createElement('div');
-    h.classList.add('picker');
-    let s = document.createElement('wje-input');
-    s.classList.add('input'),
-      s.setAttribute('variant', 'standard'),
-      s.setAttribute('placeholder', 'type to filter...'),
-      s.setAttribute('clearable', ''),
-      s.addEventListener('wje-input:input', this.searchIcon);
-    let a = new u();
-    a.setAttribute('url', this.getTagsUrl('/assets/tags.json')),
-      a.setAttribute('placement', '.icon-items'),
-      a.setAttribute('size', this.size),
-      a.setAttribute('height', '223px'),
-      (a.innerHTML = `<div class="icon-items">
-            <div class="icon-item" iterate>
-                <wje-tooltip content="{{name}}">
-                    <wje-icon name="{{name}}" size="large"></wje-icon>
-                </wje-tooltip>
-            </div>
-        </div>`),
-      h.appendChild(s),
-      h.appendChild(a);
-    let c = document.createElement('wje-popup');
-    return (
-      c.setAttribute('placement', this.placement || 'bottom-start'),
-      c.setAttribute('offset', this.offset),
-      c.setAttribute('manual', ''),
-      c.appendChild(d),
-      c.appendChild(h),
-      n.appendChild(c),
-      r.appendChild(n),
-      (this.popup = c),
-      (this.input = s),
-      (this.anchor = d),
-      (this.picker = h),
-      (this.infiniteScroll = a),
-      r
-    );
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    native.classList.add("native-color-picker");
+    let anchor = document.createElement("div");
+    anchor.setAttribute("slot", "anchor");
+    anchor.classList.add("anchor");
+    if (this.hasAttribute("icon") && this.icon) {
+      let icon = document.createElement("wje-icon");
+      icon.setAttribute("name", this.icon);
+      anchor.appendChild(icon);
+    }
+    let picker = document.createElement("div");
+    picker.classList.add("picker");
+    let input = document.createElement("wje-input");
+    input.classList.add("input");
+    input.setAttribute("variant", "standard");
+    input.setAttribute("placeholder", "type to filter...");
+    input.setAttribute("clearable", "");
+    input.addEventListener("wje-input:input", this.searchIcon);
+    let infiniteScroll = new InfiniteScroll();
+    infiniteScroll.setAttribute("url", this.getTagsUrl("../../tags.json"));
+    infiniteScroll.setAttribute("placement", ".icon-items");
+    infiniteScroll.setAttribute("size", this.size);
+    infiniteScroll.setAttribute("height", "223px");
+    infiniteScroll.innerHTML = '<div class="icon-items"></div>';
+    picker.appendChild(input);
+    picker.appendChild(infiniteScroll);
+    let popup = document.createElement("wje-popup");
+    popup.setAttribute("placement", this.placement || "bottom-start");
+    popup.setAttribute("offset", this.offset);
+    popup.setAttribute("manual", "");
+    popup.appendChild(anchor);
+    popup.appendChild(picker);
+    native.appendChild(popup);
+    fragment.appendChild(native);
+    this.popup = popup;
+    this.input = input;
+    this.anchor = anchor;
+    this.picker = picker;
+    this.infiniteScroll = infiniteScroll;
+    this.setupInfiniteScroll();
+    return fragment;
   }
   /**
    * Called after the component has been drawn.
    */
   afterDraw() {
-    this.setupInfiniteScroll(),
-      this.addEventListener('wje-popup:show', (e) => {
-        this.initial();
-      }),
-      this.addEventListener('wje-input:clear', (e) => {
-        this.setupInfiniteScroll(),
-          this.clearIconsContainer(),
-          this.infiniteScroll.scrollEvent(),
-          this.infiniteScroll.loadPages(0);
-      }),
-      this.addEventListener('wje-infinite-scroll:click-item', (e) => {
-        const t = e.detail.context.querySelector('wje-icon').getAttribute('name'),
-          r = this.tags.find((d) => d.name === t),
-          n = document.createElement('wje-icon');
-        n.setAttribute('name', t),
-          (r.icon = n),
-          (this.value = r),
-          (this.anchor.innerHTML = ''),
-          this.anchor.appendChild(n),
-          j.dispatchCustomEvent(this, 'wje-icon-picker:select', r);
-      }),
-      (this.init = !1);
+    this.addEventListener("wje-popup:show", () => {
+      this.initial();
+    });
+    this.addEventListener("wje-input:clear", () => {
+      this.setupInfiniteScroll();
+      this.clearIconsContainer();
+      this.infiniteScroll.scrollEvent();
+      this.infiniteScroll.loadPages(0);
+    });
+    this.addEventListener("wje-infinite-scroll:click-item", (e) => {
+      let icon = e.detail.context.querySelector("wje-icon");
+      let name = icon.getAttribute("name");
+      let stylesType = icon.hasAttribute("filled") ? "filled" : "outline";
+      let uniqueObject = this.transformedObjects.find((i) => i.name === name && Object.keys(i.styles)[0] === stylesType);
+      const iconElement = document.createElement("wje-icon");
+      iconElement.setAttribute("name", name);
+      if (uniqueObject.styles.hasOwnProperty("filled"))
+        iconElement.setAttribute("filled", "");
+      uniqueObject.icon = iconElement;
+      this.value = uniqueObject;
+      this.icon = uniqueObject.name;
+      this.anchor.innerHTML = "";
+      this.anchor.appendChild(iconElement);
+      event.dispatchCustomEvent(this, "wje-icon-picker:select", uniqueObject);
+    });
+    this.init = false;
   }
   /**
    * Initializes the component.
@@ -220,45 +303,46 @@ class m extends b {
    * Sets up the infinite scroll for the component.
    */
   setupInfiniteScroll() {
-    this.infiniteScroll.setCustomData = (e = 0) => {
-      let i = Object.values(this.tags);
+    this.infiniteScroll.dataToHtml = this.dataToHtml;
+    this.infiniteScroll.setCustomData = (page = 0) => {
       return {
-        data: i.slice(e * this.size, e * this.size + this.size),
-        page: e,
+        data: this.transformedObjects.slice(page * this.size, page * this.size + this.size),
+        page,
         size: this.size,
-        totalPages: Math.round(i.length / this.size),
+        totalPages: Math.round(this.transformedObjects.length / this.size)
       };
     };
   }
   /**
    * Gets the category of the tags.
-   *
-   * @param {Array} tags - The tags to get the category of.
+   * @param {Array} tags The tags to get the category of.
    * @returns {Array} The category of the tags.
    */
-  getCategory(e) {
-    return [...new Set(e.map((t) => t.category))];
+  getCategory(tags) {
+    return [...new Set(tags.map((obj) => obj.category))];
   }
   /**
    * Gets the tags.
-   *
-   * @returns {Promise<Array>} The tags.
+   * @returns {Promise<Array>} The tags of the component.
    */
   async getTags() {
-    return (await fetch(this.getTagsUrl('/assets/tags.json'))).json();
+    const response = await fetch(this.getTagsUrl("../../tags.json"));
+    return response.json();
   }
   /**
    * Called when the component is disconnected.
    */
-  disconnectedCallback() {
-    this.init = !1;
+  beforeDisconnect() {
+    this.init = false;
   }
   /**
    * Clears the icons container.
    */
   clearIconsContainer() {
-    this.context.querySelector('.icon-items').innerHTML = '';
+    this.context.querySelector(".icon-items").innerHTML = "";
   }
 }
-m.define('wje-icon-picker', m);
-export { m as default };
+IconPicker.define("wje-icon-picker", IconPicker);
+export {
+  IconPicker as default
+};

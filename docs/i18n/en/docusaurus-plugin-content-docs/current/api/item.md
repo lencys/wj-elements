@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Item components are blocks that can contain various types of content, including text, icons, avatars, images, inputs, and other standard or custom elements. Item elements are usually inside [List](../list) elements.
+Item components are blocks that can contain various types of content, including text, icons, avatars, images, inputs, and other standard or custom elements. Item elements are usually found inside [List](../list) elements.
 
 ## Basic usage
 

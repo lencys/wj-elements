@@ -1,12 +1,11 @@
-var d = Object.defineProperty;
-var s = (e, t, i) => (t in e ? d(e, t, { enumerable: !0, configurable: !0, writable: !0, value: i }) : (e[t] = i));
-var a = (e, t, i) => (s(e, typeof t != 'symbol' ? t + '' : t, i), i);
-import n from './wje-element.js';
-const o =
-  ':host{--wje-card-title-font-size: 24px;--wje-card-title-font-weight: 500;--wje-card-title-margin: 0;--wje-card-title-padding: 0;--wje-card-title-line-height: 1.2;font-size:var(--wje-card-title-font-size);font-weight:var(--wje-card-title-font-weight);margin:var(--wje-card-title-margin);padding:var(--wje-card-title-padding);line-height:var(--wje-card-title-line-height);display:block;position:relative}';
-class c extends n {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ WJ Card - Title ]\n*/\n\n:host {\n    font-size: var(--wje-card-title-font-size);\n    font-weight: var(--wje-card-title-font-weight);\n    margin: var(--wje-card-title-margin);\n    padding: var(--wje-card-title-padding);\n    line-height: var(--wje-card-title-line-height);\n    display: block;\n    position: relative;\n}\n";
+class CardTitle extends WJElement {
   /**
-   * CardTitle constructor.
+   * CardTitle constructor method.
    */
   constructor() {
     super();
@@ -14,15 +13,15 @@ class c extends n {
      * Class name for the CardTitle.
      * @type {string}
      */
-    a(this, 'className', 'CardTitle');
+    __publicField(this, "className", "CardTitle");
   }
   /**
    * Getter for the CSS stylesheet.
-   * @returns {Object} The styles object.
+   * @returns {object} The styles object.
    * @static
    */
   static get cssStyleSheet() {
-    return o;
+    return styles;
   }
   /**
    * Getter for the observed attributes.
@@ -36,20 +35,20 @@ class c extends n {
    * Sets up the attributes for the CardTitle.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Draws the CardTitle.
-   * @param {Object} context - The context to draw in.
-   * @param {Object} store - The store to use.
-   * @param {Object} params - The parameters to use.
+   * Draws the CardTitle element.
    * @returns {DocumentFragment} The created document fragment.
    */
-  draw(i, g, w) {
-    let r = document.createDocumentFragment(),
-      l = document.createElement('slot');
-    return r.appendChild(l), r;
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-n.define('wje-card-title', c);
-export { c as default };
+WJElement.define("wje-card-title", CardTitle);
+export {
+  CardTitle as default
+};

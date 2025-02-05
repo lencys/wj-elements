@@ -1,51 +1,45 @@
-var o = Object.defineProperty;
-var c = (t, e, a) => (e in t ? o(t, e, { enumerable: !0, configurable: !0, writable: !0, value: a }) : (t[e] = a));
-var n = (t, e, a) => (c(t, typeof e != 'symbol' ? e + '' : e, a), a);
-import m from './wje-element.js';
-const p = ':host{display:none;flex-wrap:wrap;align-items:center;padding:1rem}:host([active]){display:block}';
-class r extends m {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ WJ Tab Panel ]\n*/\n\n:host {\n    display: none;\n    flex-wrap: wrap;\n    align-items: center;\n    padding: 1rem;\n}\n\n:host([active]) {\n    display: block;\n}\n";
+class TabPanel extends WJElement {
   /**
    * Creates an instance of TabPanel.
-   *
-   * @constructor
    */
   constructor() {
     super();
     /**
-     * Returns the class name of the tab panel.
-     *
-     * @returns {string} The class name of the tab panel.
+     * The class name for the component.
      */
-    n(this, 'className', 'TabPanel');
+    __publicField(this, "className", "TabPanel");
   }
   /**
    * Returns the CSS styles for the component.
-   *
    * @static
    * @returns {CSSStyleSheet}
    */
   static get cssStyleSheet() {
-    return p;
+    return styles;
   }
   /**
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Draws the component.
-   *
-   * @param {Object} context - The context for drawing.
-   * @param {Object} store - The store for drawing.
-   * @param {Object} params - The parameters for drawing.
+   * Draws the component for the tab panel.
    * @returns {DocumentFragment}
    */
-  draw(a, d, i) {
-    let s = document.createDocumentFragment(),
-      l = document.createElement('slot');
-    return s.appendChild(l), s;
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-r.define('wje-tab-panel', r);
-export { r as default };
+TabPanel.define("wje-tab-panel", TabPanel);
+export {
+  TabPanel as default
+};

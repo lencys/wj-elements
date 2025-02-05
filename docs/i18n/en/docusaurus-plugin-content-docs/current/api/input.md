@@ -29,8 +29,7 @@ import Basic from '@site/static/usage/v1/input/basic/index.md';
 
 <div className="xxlarge">
 
-{' '}
-<Basic />
+{' '} <Basic />
 
 </div>
 

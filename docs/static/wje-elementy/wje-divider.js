@@ -1,10 +1,9 @@
-var l = Object.defineProperty;
-var n = (r, e, t) => (e in r ? l(r, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (r[e] = t));
-var o = (r, e, t) => (n(r, typeof e != 'symbol' ? e + '' : e, t), t);
-import c from './wje-element.js';
-const v =
-  ':host{--wje-border-size: 1px;--wje-divider-border-color: var(--wje-border-color);--wje-divider-border-width: var(--wje-border-size, 1px);--wje-divider-spacing: 0}:host(:not([vertical])){display:block;border-top:solid var(--wje-divider-border-width) var(--wje-divider-border-color);margin:var(--wje-divider-spacing) 0}:host([vertical]){display:inline-block;height:100%;border-left:solid var(--wje-divider-border-width) var(--wje-divider-border-color);margin:0 var(--wje-divider-spacing)}';
-class s extends c {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ WJ Divider ]\n*/\n\n:host(:not([vertical])) {\n    display: block;\n    border-top: var(--wje-divider-border-width) var(--wje-divider-border-style) var(--wje-divider-border-color);\n    margin: var(--wje-divider-spacing) 0;\n}\n\n:host([vertical]) {\n    display: inline-block;\n    height: 100%;\n    border-left: var(--wje-divider-border-width) var(--wje-divider-border-style) var(--wje-divider-border-color);\n    margin: 0 var(--wje-divider-spacing);\n}\n";
+class Divider extends WJElement {
   /**
    * Constructor for the Divider class.
    */
@@ -14,14 +13,14 @@ class s extends c {
      * The class name for the Divider class.
      * @type {string}
      */
-    o(this, 'className', 'Divider');
+    __publicField(this, "className", "Divider");
   }
   /**
    * Getter for the CSS stylesheet.
    * @returns {string} The CSS stylesheet.
    */
   static get cssStyleSheet() {
-    return v;
+    return styles;
   }
   /**
    * Getter for the observed attributes.
@@ -34,21 +33,22 @@ class s extends c {
    * Sets up the attributes for the Divider.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
    * Draws the Divider.
-   * @param {Object} context - The context for drawing.
-   * @param {Object} store - The store for drawing.
-   * @param {Object} params - The parameters for drawing.
    * @returns {DocumentFragment} The created document fragment.
    */
-  draw(t, p, w) {
-    let i = document.createDocumentFragment(),
-      d = document.createElement('div'),
-      a = document.createElement('slot');
-    return d.appendChild(a), i.appendChild(d), i;
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    let slot = document.createElement("slot");
+    native.appendChild(slot);
+    fragment.appendChild(native);
+    return fragment;
   }
 }
-s.define('wje-divider', s);
-export { s as default };
+Divider.define("wje-divider", Divider);
+export {
+  Divider as default
+};

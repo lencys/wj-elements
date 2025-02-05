@@ -1,74 +1,71 @@
-var s = Object.defineProperty;
-var d = (n, t, e) => (t in n ? s(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : (n[t] = e));
-var o = (n, t, e) => (d(n, typeof t != 'symbol' ? t + '' : t, e), e);
-import l from './wje-element.js';
-const u =
-  ':host{--wje-menu-background: var(--wje-background);--wje-menu-border-width: 1px;--wje-menu-border-style: solid;--wje-menu-border-color: var(--wje-border-color);--wje-menu-border-radius: var(--wje-border-radius-small);--wje-menu-padding-top: .5rem;--wje-menu-padding-bottom: .5rem;--wje-menu-padding-inline: 0;--wje-menu-margin-top: ;--wje-menu-margin-bottom: 0;--wje-menu-margin-inline: 0;--wje-menu-collapse-width: 65px;display:none;background:var(--wje-menu-background);position:relative;border-width:var(--wje-menu-border-width);border-style:var(--wje-menu-border-style);border-color:var(--wje-menu-border-color);z-index:var(--wje-menu-z-index, 8);border-radius:var(--wje-menu-border-radius);padding-top:var(--wje-menu-padding-top);padding-bottom:var(--wje-menu-padding-bottom);padding-inline:var(--wje-menu-padding-inline);margin-top:var(--wje-menu-margin-top);margin-bottom:var(--wje-menu-margin-bottom);margin-inline:var(--wje-menu-margin-inline);overflow:auto;overscroll-behavior:none}:host .native-menu{display:flex;flex-direction:column;width:100%}:host .native-menu ::slotted(wje-button){margin:0}:host(.wje-menu-collapse){width:var(--wje-menu-collapse-width)}:host([variant=context]){display:block!important;margin-left:var(--wje-menu-submenu-offset)}:host([variant=megamenu]) .native-menu{flex-direction:row;align-items:end;flex-wrap:nowrap}:host([variant=megamenu]) .native-menu .check-icon{display:none}:host([active]){display:flex!important}';
-class i extends l {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ Wj Menu ]\n*/\n\n:host {\n    display: none;\n    background: var(--wje-menu-background);\n    position: relative;\n    border-width: var(--wje-menu-border-width);\n    border-style: var(--wje-menu-border-style);\n    border-color: var(--wje-menu-border-color);\n    z-index: var(--wje-menu-z-index, 8);\n    box-shadow: var(--wje-menu-shadow);\n    border-radius: var(--wje-menu-border-radius);\n    padding-top: var(--wje-menu-padding-top);\n    padding-bottom: var(--wje-menu-padding-bottom);\n    padding-inline: var(--wje-menu-padding-inline);\n    margin-top: var(--wje-menu-margin-top);\n    margin-bottom: var(--wje-menu-margin-bottom);\n    margin-inline: var(--wje-menu-margin-inline);\n    overflow: auto;\n    overscroll-behavior: none;\n    .native-menu {\n        display: flex;\n        flex-direction: column;\n        width: 100%;\n        ::slotted(wje-button) {\n            margin: 0;\n        }\n    }\n}\n\n:host(.wje-menu-collapse) {\n    width: var(--wje-menu-collapse-width);\n}\n\n:host([collapse]) {\n    box-shadow: none;\n}\n\n:host([variant='context']) {\n    display: block !important;\n    margin-left: var(--wje-menu-submenu-offset);\n}\n\n:host([variant='megamenu']) .native-menu {\n    flex-direction: row;\n    align-items: end;\n    flex-wrap: nowrap;\n    .check-icon {\n        display: none;\n    }\n}\n\n:host([active]) {\n    display: flex !important;\n}\n";
+class Menu extends WJElement {
   /**
    * Creates an instance of Menu.
-   *
-   * @constructor
+   * @class
    */
   constructor() {
     super();
-    o(this, 'className', 'Menu');
+    __publicField(this, "className", "Menu");
   }
   /**
    * Returns the CSS styles for the component.
-   *
    * @static
    * @returns {CSSStyleSheet}
    */
   static get cssStyleSheet() {
-    return u;
+    return styles;
   }
   /**
    * Returns the list of attributes to observe for changes.
-   *
    * @static
    * @returns {Array<string>}
    */
   static get observedAttributes() {
-    return ['active', 'collapse'];
+    return ["active", "collapse"];
   }
   /**
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Draws the component.
-   *
-   * @param {Object} context - The context for drawing.
-   * @param {Object} store - The store for drawing.
-   * @param {Object} params - The parameters for drawing.
+   * Draws the component for the menu.
    * @returns {DocumentFragment}
    */
-  draw(e, c, w) {
-    let a = document.createDocumentFragment();
-    this.classList.remove('wje-menu-collapse'),
-      this.hasAttribute('collapse') && this.classList.add('wje-menu-collapse');
-    let r = document.createElement('div');
-    r.setAttribute('part', 'native'), r.classList.add('native-menu');
-    let m = document.createElement('slot');
-    return r.appendChild(m), a.appendChild(r), a;
+  draw() {
+    let fragment = document.createDocumentFragment();
+    this.classList.remove("wje-menu-collapse");
+    if (this.hasAttribute("collapse")) this.classList.add("wje-menu-collapse");
+    let native = document.createElement("div");
+    native.setAttribute("part", "native");
+    native.classList.add("native-menu");
+    let slot = document.createElement("slot");
+    native.appendChild(slot);
+    fragment.appendChild(native);
+    return fragment;
   }
   /**
    * Refreshes the component after drawing.
    */
   afterDraw() {
-    Array.from(this.children).forEach((e) => {
-      e.tagName.includes('-') && e.refresh();
+    Array.from(this.children).forEach((child) => {
+      if (child.tagName.includes("-")) child.refresh();
     });
   }
   /**
    * Cleans up the component before disconnecting.
    */
   beforeDisconnect() {
-    this.context.innerHTML = '';
+    this.context.innerHTML = "";
   }
 }
-i.define('wje-menu', i);
-export { i as default };
+Menu.define("wje-menu", Menu);
+export {
+  Menu as default
+};

@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/animation/slots.md';
   <title>Animation: Integrácia animácií do webových aplikácií</title>
   <meta
     name="description"
-    content="Element Animation ponúka integráciu animácií do webových aplikácií čím umožňuje vytváranie pútavých používateľských rozhraní. Poskytuje možnosti prispôsobenia v podobe oneskorenia, trvania alebo napríklad tiež počtu opakovaní animácií. "
+    content="Element Animation umožňuje jednoduchú integráciu animácií do webových aplikácií, čím prispieva k tvorbe pútavých a interaktívnych používateľských rozhraní. Ponúka široké možnosti prispôsobenia, vrátane nastavenia oneskorenia, trvania a počtu opakovaní animácií."
   />
 </head>
 
@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element Animation ponúka integráciu animácií do webových aplikácií čím zjednodušuje vytváranie pútavých používateľských rozhraní. Poskytuje možnosti prispôsobenia v podobe oneskorenia, trvania alebo napríklad tiež počtu opakovaní animácií.
+Element Animation umožňuje jednoduchú integráciu animácií do webových aplikácií, čím prispieva k tvorbe pútavých a interaktívnych používateľských rozhraní. Ponúka široké možnosti prispôsobenia, vrátane nastavenia oneskorenia, trvania a počtu opakovaní animácií.
 
 ## Základné použitie
 

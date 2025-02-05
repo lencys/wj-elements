@@ -202,7 +202,52 @@
           "required": true
         }
       ],
-      "methods": [],
+      "methods": [
+        {
+          "name": "play",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => <void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "play() => <void>",
+          "parameters": [],
+          "docs": "Starts the animation.",
+          "docsTags": []
+        },
+        {
+          "name": "cancel",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => <void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "cancel() => <void>",
+          "parameters": [],
+          "docs": "Cancels the animation.",
+          "docsTags": []
+        }
+      ],
       "events": [],
       "listeners": [],
       "styles": [],
@@ -378,9 +423,13 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["image"],
+      "dependencies": [
+        "image"
+      ],
       "dependencyGraph": {
-        "avatar": ["image"]
+        "avatar": [
+          "image"
+        ]
       }
     },
     {
@@ -555,10 +604,16 @@
           "docs": "References a `span` element containing a separator between breadcrumbs items."
         }
       ],
-      "dependents": ["breadcrumbs"],
-      "dependencies": ["icon"],
+      "dependents": [
+        "breadcrumbs"
+      ],
+      "dependencies": [
+        "icon"
+      ],
       "dependencyGraph": {
-        "breadcrumb": ["icon"]
+        "breadcrumb": [
+          "icon"
+        ]
       }
     },
     {
@@ -643,9 +698,13 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["breadcrumb"],
+      "dependencies": [
+        "breadcrumb"
+      ],
       "dependencyGraph": {
-        "breadcrumbs": ["breadcrumb"]
+        "breadcrumbs": [
+          "breadcrumb"
+        ]
       }
     },
     {
@@ -3614,9 +3673,13 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["Icon"],
+      "dependencies": [
+        "Icon"
+      ],
       "dependencyGraph": {
-        "ion-input": ["Icon"]
+        "ion-input": [
+          "Icon"
+        ]
       }
     },
     {
@@ -3753,9 +3816,13 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["Icon"],
+      "dependencies": [
+        "Icon"
+      ],
       "dependencyGraph": {
-        "Item": ["Icon"]
+        "Item": [
+          "Icon"
+        ]
       }
     },
     {
@@ -5541,11 +5608,22 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["popup", "option", "icon"],
+      "dependencies": [
+        "popup",
+        "option",
+        "icon"
+      ],
       "dependencyGraph": {
-        "select": ["popup", "icon"],
-        "popup": ["icon"],
-        "option": ["icon"]
+        "select": [
+          "popup",
+          "icon"
+        ],
+        "popup": [
+          "icon"
+        ],
+        "option": [
+          "icon"
+        ]
       }
     },
     {
@@ -7927,9 +8005,15 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["ion-icon", "ion-ripple-effect"],
+      "dependencies": [
+        "ion-icon",
+        "ion-ripple-effect"
+      ],
       "dependencyGraph": {
-        "ion-toast": ["ion-icon", "ion-ripple-effect"]
+        "ion-toast": [
+          "ion-icon",
+          "ion-ripple-effect"
+        ]
       }
     },
     {
@@ -8154,9 +8238,13 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["Icon"],
+      "dependencies": [
+        "Icon"
+      ],
       "dependencyGraph": {
-        "ion-toggle": ["Icon"]
+        "ion-toggle": [
+          "Icon"
+        ]
       }
     },
     {

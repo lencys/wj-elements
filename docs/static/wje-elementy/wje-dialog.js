@@ -1,99 +1,221 @@
-var u = Object.defineProperty;
-var f = (o, t, e) => (t in o ? u(o, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : (o[t] = e));
-var s = (o, t, e) => (f(o, typeof t != 'symbol' ? t + '' : t, e), e);
-import v, { event as p } from './wje-element.js';
-import './wje-icon.js';
-const x =
-  ':host{--wje-dialog-width: 600px;--wje-dialog-height: 600px;--wje-dialog-border-radius: var(--wje-border-radius-large);--wje-dialog-border-width: var(--wje-border-width);--wje-dialog-border-style: var(--wje-border-style);--wje-dialog-border-color: var(--wje-border-color);--wje-dialog-margin-top: auto;--wje-dialog-margin-start: auto;--wje-dialog-margin-end: auto;--wje-dialog-margin-bottom: auto;--wje-dialog-padding: 1rem;--wje-dialog-padding-inline: 1rem;--wje-dialog-padding-top: 1rem;--wje-dialog-padding-bottom: 1rem}:host .close{margin-left:auto}:host .modal-content{border-radius:3px;box-shadow:none}:host .dialog-header{position:relative;border-bottom:0;padding-inline:var(--wje-dialog-padding);padding-top:var(--wje-dialog-padding);padding-bottom:var(--wje-dialog-padding);display:flex;align-items:center}:host .dialog-header span{font-family:var(--wje-font-family-secondary);font-size:10.5px;text-transform:uppercase;display:inline-block;letter-spacing:.06em;font-weight:500;margin:0;padding:0;line-height:normal;overflow:hidden;text-overflow:ellipsis;filter:alpha(opacity=40)}:host .dialog-content{box-shadow:none;padding-inline:var(--wje-dialog-padding);white-space:normal;z-index:1}:host .dialog-footer{display:flex;justify-content:end;border-top:none;box-shadow:none;margin-top:0;padding-inline:var(--wje-dialog-padding-inline);padding-top:var(--wje-dialog-padding-top);padding-bottom:var(--wje-dialog-padding-bottom)}dialog::backdrop{opacity:var(--wje-backdrop-opacity);background-color:var(--wje-backdrop)}dialog:focus-visible{outline:none}:host(.separator) .dialog-header:after{content:"";height:1px;background:#00000014;left:var(--wje-dialog-padding);right:var(--wje-dialog-padding);position:absolute;bottom:0}:host dialog{box-sizing:border-box;transition:all .2s!important;width:var(--wje-dialog-width);height:var(--wje-dialog-height);box-shadow:0 .5rem 1rem #00000026;border-radius:var(--wje-dialog-border-radius);border-width:var(--wje-dialog-border-width);border-style:var(--wje-dialog-border-style);border-color:var(--wje-dialog-border-color);margin-top:var(--wje-dialog-margin-top);margin-bottom:var(--wje-dialog-margin-bottom);margin-inline:var(--wje-dialog-margin-start) var(--wje-dialog-margin-end);padding:0}:host(.stick-up){--wje-dialog-width: 300px !important;--wje-dialog-height: fit-content;--wje-dialog-border-radius: 0 0 8px 8px;--wje-dialog-border-width: 0 1px 1px 1px;--wje-dialog-margin-top: 0;--wje-dialog-translate-from: translateY(-110%);--wje-dialog-template-to: translateX(0)}:host(.slide-up){--wje-dialog-width: 300px !important;--wje-dialog-height: fit-content;--wje-dialog-border-radius: 8px;--wje-dialog-border-width: 1px;--wje-dialog-opacity-from: 0;--wje-dialog-translate-from: scale(.9);--wje-dialog-translate-to: scale(1)}:host(.fill-in){--wje-dialog-width: 100%;--wje-dialog-height: 100%;--wje-dialog-border-radius: 0 0 0 0 !important;--wje-dialog-border-width: 0;--wje-dialog-margin-top: 0;--wje-dialog-margin-start: 0;--wje-dialog-margin-end: 0;--wje-dialog-margin-bottom: 0;--wje-dialog-translate-from: scale(.95);--wje-dialog-translate-to: scale(1)}:host(.fill-in) dialog{min-width:var(--wje-dialog-width);min-height:var(--wje-dialog-height)}:host(.slide-left){--wje-dialog-width: 300px !important;--wje-dialog-height: 100% !important;--wje-dialog-border-radius: 0;--wje-dialog-border-width: 0 1px 0 0;--wje-dialog-margin-top: 0;--wje-dialog-margin-start: 0;--wje-dialog-margin-end: auto;--wje-dialog-margin-bottom: 0}:host(.slide-left) dialog{min-height:var(--wje-dialog-height);--wje-dialog-translate-from: translateX(-110%);--wje-dialog-template-to: translateX(0)}:host(.slide-right){--wje-dialog-width: 300px !important;--wje-dialog-height: 100% !important;--wje-dialog-border-radius: 0;--wje-dialog-border-width: 0 0 0 1px;--wje-dialog-margin-top: 0;--wje-dialog-margin-start: auto;--wje-dialog-margin-end: 0;--wje-dialog-margin-bottom: 0}:host(.slide-right) dialog{min-height:var(--wje-dialog-height);--wje-dialog-translate-from: translateX(110%);--wje-dialog-template-to: translateX(0)}:host(.small){--wje-dialog-width: 300px !important}:host(.medium){--wje-dialog-width: 500px !important}:host(.large){--wje-dialog-width: 600px !important}:host(.ex-large){--wje-dialog-width: 900px !important}dialog[open]{animation:show .5s ease normal}@keyframes show{0%{opacity:var(--wje-dialog-opacity-from, 1);transform:var(--wje-dialog-translate-from)}to{opacity:1;transform:var(--wje-dialog-translate-to)}}';
-class c extends v {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement, { event } from "./wje-element.js";
+import "./wje-icon.js";
+const styles = "/*\n[ WJ Dialog ]\n*/\n\n:host {\n    --wje-dialog-header-actions-gap: 0.5rem;\n\n    .close {\n        margin-left: auto;\n    }\n\n    .header-actions {\n        margin-left: auto;\n        display: flex;\n        align-items: center;\n        gap: var(--wje-dialog-header-actions-gap);\n    }\n\n    .modal-content {\n        border-radius: 3px;\n        box-shadow: none;\n    }\n\n    .dialog-header {\n        position: relative;\n        border-bottom: 0;\n        padding-inline: var(--wje-dialog-padding);\n        padding-top: var(--wje-dialog-padding);\n        padding-bottom: var(--wje-dialog-padding);\n        display: flex;\n        align-items: center;\n        span {\n            font-family: var(--wje-font-family-secondary);\n            font-size: 10.5px;\n            text-transform: uppercase;\n            display: inline-block;\n            letter-spacing: 0.06em;\n            font-weight: 500;\n            margin: 0;\n            padding: 0;\n            line-height: normal;\n            overflow: hidden;\n            text-overflow: ellipsis;\n            filter: alpha(opacity=40);\n        }\n    }\n\n    .dialog-content {\n        box-shadow: none;\n        padding-inline: var(--wje-dialog-padding);\n        white-space: normal;\n        z-index: 1;\n    }\n\n    .dialog-footer {\n        display: flex;\n        justify-content: end;\n        border-top: none;\n        box-shadow: none;\n        margin-top: 0;\n        padding-inline: var(--wje-dialog-padding-inline);\n        padding-top: var(--wje-dialog-padding-top);\n        padding-bottom: var(--wje-dialog-padding-bottom);\n    }\n}\n\ndialog::backdrop {\n    opacity: var(--wje-backdrop-opacity);\n    background-color: var(--wje-backdrop);\n}\n\ndialog:focus-visible {\n    outline: none;\n}\n\n:host(.separator) .dialog-header:after {\n    content: '';\n    height: 1px;\n    background: rgba(0, 0, 0, 0.08);\n    left: var(--wje-dialog-padding);\n    right: var(--wje-dialog-padding);\n    position: absolute;\n    bottom: 0;\n}\n\n:host {\n    dialog {\n        box-sizing: border-box;\n        transition: all 0.2s !important;\n        width: var(--wje-dialog-width);\n        height: var(--wje-dialog-height);\n        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);\n\n        border-radius: var(--wje-dialog-border-radius);\n        border-width: var(--wje-dialog-border-width);\n        border-style: var(--wje-dialog-border-style);\n        border-color: var(--wje-dialog-border-color);\n\n        margin-top: var(--wje-dialog-margin-top);\n\n        margin-bottom: var(--wje-dialog-margin-bottom);\n        margin-inline: var(--wje-dialog-margin-start) var(--wje-dialog-margin-end);\n\n        padding: 0;\n    }\n}\n\n/*Top*/\n:host(.stick-up) {\n    --wje-dialog-width: 300px !important;\n    --wje-dialog-height: fit-content;\n    --wje-dialog-border-radius: 0 0 8px 8px;\n    --wje-dialog-border-width: 0 1px 1px 1px;\n    --wje-dialog-margin-top: 0;\n    --wje-dialog-translate-from: translateY(-110%);\n    --wje-dialog-template-to: translateX(0);\n}\n\n/*Cenetered*/\n:host(.slide-up) {\n    --wje-dialog-width: 300px !important;\n    --wje-dialog-height: fit-content;\n    --wje-dialog-border-radius: 8px;\n    --wje-dialog-border-width: 1px;\n    --wje-dialog-opacity-from: 0;\n    --wje-dialog-translate-from: scale(0.9);\n    --wje-dialog-translate-to: scale(1);\n}\n\n/*Fullscreen*/\n:host(.fill-in) {\n    --wje-dialog-width: 100%;\n    --wje-dialog-height: 100%;\n    --wje-dialog-border-radius: 0 0 0 0 !important;\n    --wje-dialog-border-width: 0;\n    --wje-dialog-margin-top: 0;\n    --wje-dialog-margin-start: 0;\n    --wje-dialog-margin-end: 0;\n    --wje-dialog-margin-bottom: 0;\n    --wje-dialog-translate-from: scale(0.95);\n    --wje-dialog-translate-to: scale(1);\n    dialog {\n        min-width: var(--wje-dialog-width);\n        min-height: var(--wje-dialog-height);\n    }\n}\n\n/*Slide Left*/\n:host(.slide-left) {\n    --wje-dialog-width: 300px !important;\n    --wje-dialog-height: 100% !important;\n    --wje-dialog-border-radius: 0;\n    --wje-dialog-border-width: 0 1px 0 0;\n    --wje-dialog-margin-top: 0;\n    --wje-dialog-margin-start: 0;\n    --wje-dialog-margin-end: auto;\n    --wje-dialog-margin-bottom: 0;\n    dialog {\n        min-height: var(--wje-dialog-height);\n        --wje-dialog-translate-from: translateX(-110%);\n        --wje-dialog-template-to: translateX(0);\n    }\n}\n\n/*Slide Right*/\n:host(.slide-right) {\n    --wje-dialog-width: 300px !important;\n    --wje-dialog-height: 100% !important;\n    --wje-dialog-border-radius: 0;\n    --wje-dialog-border-width: 0 0 0 1px;\n    --wje-dialog-margin-top: 0;\n    --wje-dialog-margin-start: auto;\n    --wje-dialog-margin-end: 0;\n    --wje-dialog-margin-bottom: 0;\n    dialog {\n        min-height: var(--wje-dialog-height);\n        --wje-dialog-translate-from: translateX(110%);\n        --wje-dialog-template-to: translateX(0);\n    }\n}\n\n:host(.small) {\n    --wje-dialog-width: 300px !important;\n}\n\n:host(.medium) {\n    --wje-dialog-width: 500px !important;\n}\n\n:host(.large) {\n    --wje-dialog-width: 600px !important;\n}\n\n:host(.ex-large) {\n    --wje-dialog-width: 900px !important;\n}\n\ndialog[open] {\n    animation: show 0.5s ease normal;\n}\n\n@keyframes show {\n    from {\n        opacity: var(--wje-dialog-opacity-from, 1);\n        transform: var(--wje-dialog-translate-from);\n    }\n    to {\n        opacity: 1;\n        transform: var(--wje-dialog-translate-to);\n    }\n}\n";
+class Dialog extends WJElement {
+  /**
+   * @class
+   */
   constructor() {
     super();
-    s(this, 'className', 'Dialog');
-    s(this, 'onOpen', (e) => {
-      Promise.resolve(this.beforeOpen(this)).then((g) => {
-        this.dialog.showModal(), this.dialog.open && Promise.resolve(this.afterOpen(this));
+    /**
+     * Sets the headline of the dialog.
+     * @type {string}
+     */
+    __publicField(this, "className", "Dialog");
+    /**
+     * Opens the dialog.
+     * @param e
+     */
+    __publicField(this, "onOpen", (e) => {
+      this.dialog.innerHTML = "";
+      Promise.resolve(this.beforeOpen(this, e)).then((res) => {
+        this.htmlDialogBody(this.dialog);
+        this.dialog.showModal();
+        if (this.dialog.open) {
+          Promise.resolve(this.afterOpen(this, e));
+        }
       });
     });
-    s(this, 'onClose', (e) => {
-      Promise.resolve(this.beforeClose(this)).then((g) => {
-        this.dialog.close(), this.dialog.open && Promise.resolve(this.afterClose(this));
+    /**
+     * Closes the dialog.
+     * @param {object} e
+     */
+    __publicField(this, "onClose", (e) => {
+      Promise.resolve(this.beforeClose(this, e)).then((res) => {
+        this.dialog.close();
+        if (this.dialog.open) {
+          Promise.resolve(this.afterClose(this, e));
+        }
       });
     });
   }
-  set placement(e) {
-    this.setAttribute('placement', e);
+  /**
+   * Sets the headline of the dialog.
+   * @param value
+   */
+  set placement(value) {
+    this.setAttribute("placement", value);
   }
+  /**
+   * Gets the headline of the dialog.
+   * @returns {string|string}
+   */
   get placement() {
-    return this.getAttribute('placement') || 'slide-up';
+    return this.getAttribute("placement") || "slide-up";
   }
-  set async(e) {
-    this.setAttribute('async', '');
+  /**
+   * Sets the headline of the dialog.
+   * @param value
+   */
+  set async(value) {
+    this.setAttribute("async", "");
   }
+  /**
+   * Gets the headline of the dialog.
+   * @returns {boolean}
+   */
   get async() {
-    return this.hasAttribute('async');
+    return this.hasAttribute("async");
   }
+  /**
+   * Sets the headline of the dialog.
+   * @param value
+   */
+  set closeHidden(value) {
+    if (value) this.setAttribute("close-hidden", "");
+  }
+  /**
+   * Gets the headline of the dialog.
+   * @returns {boolean}
+   */
+  get closeHidden() {
+    return !!this.hasAttribute("close-hidden");
+  }
+  /**
+   * Returns the CSS styles for the component.
+   * @returns {*}
+   */
   static get cssStyleSheet() {
-    return x;
+    return styles;
   }
+  /**
+   * Returns the list of attributes to observe for changes.
+   * @returns {*[]}
+   */
   static get observedAttributes() {
     return [];
   }
+  /**
+   * Sets up the attributes for the component.
+   */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
-  draw(e, g, r) {
-    let w = document.createDocumentFragment();
-    this.classList.add('fade', this.placement, r.size);
-    let b = document.createElement('slot'),
-      a = document.createElement('dialog');
-    a.classList.add('modal-dialog');
-    let h = document.createElement('wje-icon');
-    h.setAttribute('name', 'x'), h.setAttribute('slot', 'icon-only');
-    let i = document.createElement('wje-button');
-    i.setAttribute('fill', 'link'),
-      i.setAttribute('size', 'small'),
-      i.classList.add('close'),
-      i.addEventListener('click', () => {
-        this.close();
-      }),
-      i.appendChild(h);
-    let d = document.createElement('div');
-    d.setAttribute('part', 'header'),
-      d.classList.add('dialog-header'),
-      this.hasAttribute('headline') && (d.innerHTML = `<span>${this.headline}</span>`),
-      d.appendChild(i);
-    let m = document.createElement('slot');
-    m.setAttribute('name', 'header'), d.appendChild(m);
-    let n = document.createElement('div');
-    n.setAttribute('part', 'body'), n.classList.add('dialog-content'), n.appendChild(b);
-    let l = document.createElement('div');
-    l.setAttribute('part', 'footer'), l.classList.add('dialog-footer'), (l.innerHTML = '');
-    let j = document.createElement('slot');
-    return (
-      j.setAttribute('name', 'footer'),
-      l.appendChild(j),
-      a.appendChild(d),
-      a.appendChild(n),
-      a.appendChild(l),
-      w.appendChild(a),
-      (this.dialog = a),
-      w
-    );
+  /**
+   * Draws the component.
+   * @param {object} context The context for drawing.
+   * @param {object} store The store for drawing.
+   * @param {object} params The parameters for drawing.
+   * @returns {DocumentFragment}
+   */
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    this.classList.add("fade", this.placement, params.size);
+    let dialog = document.createElement("dialog");
+    dialog.classList.add("modal-dialog");
+    fragment.appendChild(dialog);
+    this.dialog = dialog;
+    return fragment;
   }
-  close() {
-    this.onClose();
+  /**
+   * Creates the dialog body.
+   * @param dialog
+   */
+  htmlDialogBody(dialog) {
+    let icon = document.createElement("wje-icon");
+    icon.setAttribute("name", "x");
+    icon.setAttribute("slot", "icon-only");
+    let close = document.createElement("wje-button");
+    close.setAttribute("fill", "link");
+    close.setAttribute("size", "small");
+    close.setAttribute("part", "close");
+    close.addEventListener("click", (e) => {
+      this.close(e);
+    });
+    close.appendChild(icon);
+    let header = document.createElement("div");
+    header.setAttribute("part", "header");
+    header.classList.add("dialog-header");
+    if (this.hasAttribute("headline"))
+      header.innerHTML = `<span part="headline">${this.getAttribute("headline")}</span>`;
+    let slotHeader = document.createElement("slot");
+    slotHeader.setAttribute("name", "header");
+    const headerActions = document.createElement("div");
+    headerActions.classList.add("header-actions");
+    headerActions.setAttribute("part", "header-actions");
+    headerActions.appendChild(slotHeader);
+    header.appendChild(headerActions);
+    if (!this.closeHidden) header.appendChild(close);
+    let contentSlot = document.createElement("slot");
+    let body = document.createElement("div");
+    body.setAttribute("part", "body");
+    body.classList.add("dialog-content");
+    body.appendChild(contentSlot);
+    let footer = document.createElement("div");
+    footer.setAttribute("part", "footer");
+    footer.classList.add("dialog-footer");
+    footer.innerHTML = "";
+    let slotFooter = document.createElement("slot");
+    slotFooter.setAttribute("name", "footer");
+    footer.appendChild(slotFooter);
+    dialog.appendChild(header);
+    dialog.appendChild(body);
+    dialog.appendChild(footer);
   }
-  afterDraw(e, g, r) {
-    (this.button = document.querySelector(`[dialog=${r.trigger}]`)),
-      r.trigger && p.addListener(this.button, r.trigger, null, this.onOpen);
+  /**
+   * Closes the dialog.
+   * @param e
+   */
+  close(e) {
+    this.onClose(e);
   }
-  beforeOpen() {}
-  afterOpen() {}
-  beforeClose() {}
-  afterClose() {}
-  disconnectedCallback() {
-    p.removeElement(this.button), p.removeElement(this.dialog);
+  /**
+   * Draws the component after it has been drawn.
+   * @param {object} context The context for drawing.
+   * @param {object} store The store for drawing.
+   * @param {object} params The parameters for drawing.
+   */
+  afterDraw(context, store, params) {
+    if (params.trigger) {
+      event.addListener(document, params.trigger, null, this.onOpen);
+    }
+    this.dialog.addEventListener("close", this.onClose);
+  }
+  /**
+   * Before the component is disconnected.
+   */
+  beforeDisconnect() {
+    var _a, _b;
+    if ((_a = this.params) == null ? void 0 : _a.trigger) {
+      event.removeListener(document, (_b = this.params) == null ? void 0 : _b.trigger, null, this.onOpen);
+    }
+    this.dialog.removeEventListener("close", this.onClose);
+  }
+  /**
+   * Before the dialog opens.
+   */
+  beforeOpen() {
+  }
+  /**
+   * After the dialog opens.
+   */
+  afterOpen() {
+  }
+  /**
+   * Before the dialog closes.
+   */
+  beforeClose() {
+  }
+  /**
+   * After the dialog closes.
+   */
+  afterClose() {
   }
 }
-c.define('wje-dialog', c);
-export { c as default };
+Dialog.define("wje-dialog", Dialog);
+export {
+  Dialog as default
+};

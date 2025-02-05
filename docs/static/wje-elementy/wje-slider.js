@@ -1,246 +1,220 @@
-var v = Object.defineProperty;
-var p = (a, o, r) => (o in a ? v(a, o, { enumerable: !0, configurable: !0, writable: !0, value: r }) : (a[o] = r));
-var l = (a, o, r) => (p(a, typeof o != 'symbol' ? o + '' : o, r), r);
-import j from './wje-element.js';
-const g =
-  ':host{--wje-slider-track-height: .25rem;position:relative;display:flex;align-items:center;max-width:100%}:host .native-slider{display:flex;position:relative;flex-grow:1;align-items:center;height:inherit}:host .slider{display:flex;align-items:center;position:relative;flex:1 1 0%;width:100%;height:var(--height);contain:size layout style;cursor:grab;touch-action:pan-y}input[type=range]{-webkit-appearance:none;width:100%;height:var(--wje-slider-track-height);margin:0;border-radius:5px;background-size:70% 100%;background-repeat:no-repeat;--wje-slider-color: var(--wje-color-primary);--wje-slider-thumb-color: var(--wje-color-primary);--wje-slider-thumb-shadow: none;--wje-slider-thumb-shadow-active: color-mix(in hsl, var(--wje-color-contrast-2) 60%, white) 0 0 0 7px;--wje-slider-track-color: var(--wje-color-contrast-2);background-color:var(--wje-slider-track-color, var(--wje-color-contrast-2));background-image:linear-gradient(var(--wje-slider-color, var(--wje-color-primary)),var(--wje-slider-color, var(--wje-color-primary)))}input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;height:18px;width:18px;border-radius:50%;cursor:ew-resize;transition:background .3s ease-in-out}input[type=range]::-moz-range-thumb{-webkit-appearance:none;height:18px;width:18px;border-radius:50%;cursor:pointer;transition:background .3s ease-in-out;border:0}input[type=range]::-ms-thumb{-webkit-appearance:none;height:18px;width:18px;border-radius:50%;cursor:ew-resize;transition:background .3s ease-in-out}input[type=range]::-webkit-slider-runnable-track{-webkit-appearance:none;box-shadow:none;border:none;background:transparent}input[type=range]::-moz-range-track{-webkit-appearance:none;box-shadow:none;border:none;background:transparent}input[type=range]::-ms-track{-webkit-appearance:none;box-shadow:none;border:none;background:transparent}input[type=range][color=primary]{--wje-slider-color: var(--wje-color-primary);--wje-slider-thumb-color: var(--wje-color-primary);--wje-slider-thumb-shadow: none;--wje-slider-thumb-shadow-active: color-mix(in hsl, var(--wje-color-contrast-2) 60%, white) 0 0 0 7px;--wje-slider-track-color: var(--wje-color-contrast-2);background-color:var(--wje-slider-track-color, var(--wje-color-contrast-2));background-image:linear-gradient(var(--wje-slider-color, var(--wje-color-primary)),var(--wje-slider-color, var(--wje-color-primary)))}input[type=range][color=primary]::-webkit-slider-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-primary));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range][color=primary]::-moz-range-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-primary));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range][color=primary]::-ms-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-primary));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range][color=primary]::-webkit-slider-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-primary));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=primary]::-moz-range-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-primary));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=primary]::-ms-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-primary));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=primary]::-webkit-slider-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-primary));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=primary]::-moz-range-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-primary));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=primary]::-ms-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-primary));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=success]{--wje-slider-color: var(--wje-color-success);--wje-slider-thumb-color: var(--wje-color-success);--wje-slider-thumb-shadow: none;--wje-slider-thumb-shadow-active: color-mix(in hsl, var(--wje-color-contrast-2) 60%, white) 0 0 0 7px;--wje-slider-track-color: var(--wje-color-contrast-2);background-color:var(--wje-slider-track-color, var(--wje-color-contrast-2));background-image:linear-gradient(var(--wje-slider-color, var(--wje-color-success)),var(--wje-slider-color, var(--wje-color-success)))}input[type=range][color=success]::-webkit-slider-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-success));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range][color=success]::-moz-range-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-success));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range][color=success]::-ms-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-success));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range][color=success]::-webkit-slider-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-success));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=success]::-moz-range-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-success));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=success]::-ms-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-success));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=success]::-webkit-slider-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-success));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=success]::-moz-range-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-success));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=success]::-ms-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-success));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=complete]{--wje-slider-color: var(--wje-color-complete);--wje-slider-thumb-color: var(--wje-color-complete);--wje-slider-thumb-shadow: none;--wje-slider-thumb-shadow-active: color-mix(in hsl, var(--wje-color-contrast-2) 60%, white) 0 0 0 7px;--wje-slider-track-color: var(--wje-color-contrast-2);background-color:var(--wje-slider-track-color, var(--wje-color-contrast-2));background-image:linear-gradient(var(--wje-slider-color, var(--wje-color-complete)),var(--wje-slider-color, var(--wje-color-complete)))}input[type=range][color=complete]::-webkit-slider-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-complete));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range][color=complete]::-moz-range-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-complete));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range][color=complete]::-ms-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-complete));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range][color=complete]::-webkit-slider-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-complete));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=complete]::-moz-range-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-complete));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=complete]::-ms-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-complete));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=complete]::-webkit-slider-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-complete));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=complete]::-moz-range-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-complete));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=complete]::-ms-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-complete));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=danger]{--wje-slider-color: var(--wje-color-danger);--wje-slider-thumb-color: var(--wje-color-danger);--wje-slider-thumb-shadow: none;--wje-slider-thumb-shadow-active: color-mix(in hsl, var(--wje-color-contrast-2) 60%, white) 0 0 0 7px;--wje-slider-track-color: var(--wje-color-contrast-2);background-color:var(--wje-slider-track-color, var(--wje-color-contrast-2));background-image:linear-gradient(var(--wje-slider-color, var(--wje-color-danger)),var(--wje-slider-color, var(--wje-color-danger)))}input[type=range][color=danger]::-webkit-slider-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-danger));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range][color=danger]::-moz-range-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-danger));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range][color=danger]::-ms-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-danger));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range][color=danger]::-webkit-slider-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-danger));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=danger]::-moz-range-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-danger));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=danger]::-ms-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-danger));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=danger]::-webkit-slider-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-danger));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=danger]::-moz-range-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-danger));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=danger]::-ms-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-danger));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=warning]{--wje-slider-color: var(--wje-color-warning);--wje-slider-thumb-color: var(--wje-color-warning);--wje-slider-thumb-shadow: none;--wje-slider-thumb-shadow-active: color-mix(in hsl, var(--wje-color-contrast-2) 60%, white) 0 0 0 7px;--wje-slider-track-color: var(--wje-color-contrast-2);background-color:var(--wje-slider-track-color, var(--wje-color-contrast-2));background-image:linear-gradient(var(--wje-slider-color, var(--wje-color-warning)),var(--wje-slider-color, var(--wje-color-warning)))}input[type=range][color=warning]::-webkit-slider-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-warning));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range][color=warning]::-moz-range-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-warning));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range][color=warning]::-ms-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-warning));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range][color=warning]::-webkit-slider-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-warning));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=warning]::-moz-range-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-warning));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=warning]::-ms-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-warning));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=warning]::-webkit-slider-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-warning));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=warning]::-moz-range-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-warning));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=warning]::-ms-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-warning));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=dark]{--wje-slider-color: var(--wje-color-contrast-10);--wje-slider-thumb-color: var(--wje-color-contrast-10);--wje-slider-thumb-shadow: none;--wje-slider-thumb-shadow-active: color-mix(in hsl, var(--wje-color-contrast-6) 60%, white) 0 0 0 7px;--wje-slider-track-color: var(--wje-color-contrast-6);background-color:var(--wje-slider-track-color, var(--wje-color-contrast-6));background-image:linear-gradient(var(--wje-slider-color, var(--wje-color-contrast-10)),var(--wje-slider-color, var(--wje-color-contrast-10)))}input[type=range][color=dark]::-webkit-slider-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-contrast-10));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range][color=dark]::-moz-range-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-contrast-10));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range][color=dark]::-ms-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-contrast-10));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range][color=dark]::-webkit-slider-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-contrast-10));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=dark]::-moz-range-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-contrast-10));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=dark]::-ms-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-contrast-10));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=dark]::-webkit-slider-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-contrast-10));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=dark]::-moz-range-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-contrast-10));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range][color=dark]::-ms-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-contrast-10));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range]::-webkit-slider-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-primary));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range]::-moz-range-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-primary));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range]::-ms-thumb{background:var(--wje-slider-thumb-color, var(--wje-color-primary));box-shadow:var(--wje-slider-thumb-shadow)}input[type=range]::-webkit-slider-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-primary));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range]::-moz-range-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-primary));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range]::-ms-thumb:active{background:var(--wje-slider-thumb-color, var(--wje-color-primary));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range]::-webkit-slider-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-primary));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range]::-moz-range-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-primary));box-shadow:var(--wje-slider-thumb-shadow-active)}input[type=range]::-ms-thumb:hover{background:var(--wje-slider-thumb-color, var(--wje-color-primary));box-shadow:var(--wje-slider-thumb-shadow-active)}datalist{display:flex;justify-content:space-between;height:auto;overflow:hidden;margin-top:16px}datalist option:before{content:"";display:block;width:0;height:auto;padding-left:3px;text-indent:0}output{position:absolute;background:var(--wje-color-contrast-11);color:var(--wje-color-contrast-0);top:-46px;padding:4px 8px;border-radius:4px}::slotted([slot=label]){margin-inline:0 1rem;font-size:var(--wje-font-size)}::slotted([slot=start]){margin-inline:0 1rem}::slotted([slot=end]){margin-inline:1rem 0}';
-class b extends j {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement, { event } from "./wje-element.js";
+const styles = ":host {\n    --wje-slider-track-height: 0.25rem;\n    --wje-slider-color: var(--wje-color-primary-9); /* Predvolená farba */\n    --wje-slider-thumb-color: var(--wje-color-primary-9); /* Farba tiahla */\n    --wje-slider-thumb-border: none; /* Predvolene žiadny border */\n    --wje-slider-thumb-shadow: none; /* Tieň vo výchozom stave */\n    --wje-slider-thumb-shadow-active: color-mix(in hsl, var(--wje-color-contrast-4) 60%, white) 0 0 0 7px;\n    --wje-slider-track-color: var(--wje-color-contrast-4); /* Farba tracku */\n\n    position: relative;\n    display: flex;\n    align-items: center;\n    max-width: 100%;\n}\n\n.native-slider {\n    display: flex;\n    position: relative;\n    flex-grow: 1;\n    align-items: center;\n    height: inherit;\n}\n\n.slider {\n    display: flex;\n    align-items: center;\n    position: relative;\n    flex: 1 1 0%;\n    width: 100%;\n    height: var(--height);\n    contain: size layout style;\n    cursor: grab;\n    touch-action: pan-y;\n}\n\ninput[type='range'] {\n    -webkit-appearance: none;\n    width: 100%;\n    height: var(--wje-slider-track-height);\n    margin: 0;\n    border-radius: 5px;\n    background-size: 70% 100%;\n    background-repeat: no-repeat;\n    background-color: var(--wje-slider-track-color);\n    background-image: linear-gradient(var(--wje-slider-color), var(--wje-slider-color));\n}\n\ninput[type='range']::-webkit-slider-thumb {\n    -webkit-appearance: none;\n    height: 18px;\n    width: 18px;\n    border-radius: 50%;\n    border: var(--wje-slider-thumb-border); /* Nastaviteľný border (predvolený: none) */\n    background: var(--wje-slider-thumb-color); /* Farba tiahla */\n    box-shadow: var(--wje-slider-thumb-shadow); /* Tieň vo výchozom stave */\n    cursor: ew-resize;\n    transition: background 0.3s ease-in-out, border 0.3s ease-in-out;\n}\n\ninput[type='range']::-moz-range-thumb {\n    height: 18px;\n    width: 18px;\n    border-radius: 50%;\n    border: var(--wje-slider-thumb-border); /* Nastaviteľný border (predvolený: none) */\n    background: var(--wje-slider-thumb-color); /* Farba tiahla */\n    box-shadow: var(--wje-slider-thumb-shadow); /* Tieň vo výchozom stave */\n    cursor: pointer;\n    transition: background 0.3s ease-in-out, border 0.3s ease-in-out;\n}\n\ninput[type='range']::-ms-thumb {\n    height: 18px;\n    width: 18px;\n    border-radius: 50%;\n    border: var(--wje-slider-thumb-border); /* Nastaviteľný border (predvolený: none) */\n    background: var(--wje-slider-thumb-color); /* Farba tiahla */\n    box-shadow: var(--wje-slider-thumb-shadow); /* Tieň vo výchozom stave */\n    cursor: ew-resize;\n    transition: background 0.3s ease-in-out, border 0.3s ease-in-out;\n}\n\ninput[type='range']::-webkit-slider-thumb:active,\ninput[type='range']::-moz-range-thumb:active,\ninput[type='range']::-ms-thumb:active {\n    box-shadow: var(--wje-slider-thumb-shadow-active); /* Tieň pri aktívnom stave */\n}\n\ninput[type='range']::-webkit-slider-runnable-track {\n    -webkit-appearance: none;\n    box-shadow: none;\n    border: none;\n    background: transparent;\n}\n\ninput[type='range']::-moz-range-track {\n    -webkit-appearance: none;\n    box-shadow: none;\n    border: none;\n    background: transparent;\n}\n\ninput[type='range']::-ms-track {\n    -webkit-appearance: none;\n    box-shadow: none;\n    border: none;\n    background: transparent;\n}\n\ninput[type='range'][color='primary'] {\n    --wje-slider-color: var(--wje-color-primary-9);\n    --wje-slider-thumb-color: var(--wje-color-primary-9);\n}\n\ninput[type='range'][color='success'] {\n    --wje-slider-color: var(--wje-color-success-9);\n    --wje-slider-thumb-color: var(--wje-color-success-9);\n}\n\ninput[type='range'][color='complete'] {\n    --wje-slider-color: var(--wje-color-complete-9);\n    --wje-slider-thumb-color: var(--wje-color-complete-9);\n}\n\ninput[type='range'][color='danger'] {\n    --wje-slider-color: var(--wje-color-danger-9);\n    --wje-slider-thumb-color: var(--wje-color-danger-9);\n}\n\ninput[type='range'][color='warning'] {\n    --wje-slider-color: var(--wje-color-warning-9);\n    --wje-slider-thumb-color: var(--wje-color-warning-9);\n}\n\ninput[type='range'][color='dark'] {\n    --wje-slider-color: var(--wje-color-contrast-11);\n    --wje-slider-thumb-color: var(--wje-color-contrast-11);\n}\n\ndatalist {\n    display: flex;\n    justify-content: space-between;\n    height: auto;\n    overflow: hidden;\n    margin-top: 16px;\n\n    option::before {\n        content: '';\n        display: block;\n        width: 0;\n        height: auto;\n        padding-left: 3px;\n        text-indent: 0;\n    }\n}\n\noutput {\n    position: absolute;\n    background: var(--wje-color-contrast-11);\n    color: var(--wje-color-contrast-0);\n    top: -46px;\n    padding: 4px 8px;\n    border-radius: 4px;\n}\n\n::slotted([slot='label']) {\n    margin-inline: 0 0.5rem;\n    font-size: var(--wje-font-size);\n}\n\n::slotted([slot='start']) {\n    margin-inline: 0rem 0.75rem;\n}\n\n::slotted([slot='end']) {\n    margin-inline: 0.75rem 0rem;\n}";
+class Slider extends WJElement {
   /**
    * Creates an instance of Slider.
-   *
-   * @constructor
+   * @class
    */
   constructor() {
     super();
-    l(this, 'className', 'Slider');
+    __publicField(this, "className", "Slider");
     /**
      * Sets the handle position of the slider.
      */
-    l(this, 'setHandlePosition', () => {
-      this.input.style.backgroundSize = this.getPercentage(this.input.value, this.input.min, this.input.max) + '% 100%';
+    __publicField(this, "setHandlePosition", () => {
+      this.input.style.backgroundSize = this.getPercentage(this.input.min, this.input.max, this.input.value) + "% 100%";
     });
     /**
-     * Sets the bubble of the slider.
+     * Updates the position and content of a bubble element based on the input value.
+     *
+     * This function calculates the position of the bubble using the percentage representation
+     * of the input's current value relative to its minimum and maximum bounds. It then adjusts
+     * the bubble's left position dynamically for aesthetic purposes and updates its displayed
+     * content to reflect the current input value.
+     *
+     * The function relies on the following elements:
+     * - `this.input`: Represents the input element with properties `min`, `max`, and `value`.
+     * - `this.output`: Represents the bubble element to be positioned and updated.
+     *
+     * The left positioning of the bubble ensures precise alignment with the input value indicator.
      */
-    l(this, 'setBubble', () => {
-      let r = this.getPercentage(this.input.value, this.input.min, this.input.max);
-      (this.output.style.left = `calc(${r}% + (${8 - r * 0.15}px) - ${this.output.offsetWidth / 2}px)`),
-        (this.output.innerHTML = this.input.value);
+    __publicField(this, "setBubble", () => {
+      let newValue = this.getPercentage(this.input.min, this.input.max, this.input.value);
+      this.output.style.left = `calc(${newValue}% + (${8 - newValue * 0.15}px) - ${this.output.offsetWidth / 2}px)`;
+      this.output.innerHTML = this.input.value;
     });
   }
   /**
    * Sets the value of the slider.
-   *
-   * @param {number} value - The value to set.
+   * @param {number} value The value to set.
    */
-  set value(r) {
-    this.setAttribute('value', r), this.input && ((this.input.value = r), this.setHandlePosition());
+  set value(value) {
+    this.setAttribute("value", value);
+    if (this.input) {
+      this.input.value = value;
+      this.setHandlePosition();
+    }
   }
   /**
    * Returns the value of the slider.
-   *
-   * @returns {number} The value of the slider.
+   * @returns {number} The value of the slider input.
    */
   get value() {
-    return this.getAttribute('value') || 0;
+    return this.getAttribute("value") || 0;
   }
   /**
    * Sets the minimum value of the slider.
-   *
-   * @param {number} value - The minimum value to set.
+   * @param {number} value The minimum value to set.
    */
-  set min(r) {
-    this.setAttribute('min', r);
+  set min(value) {
+    this.setAttribute("min", value);
   }
   /**
    * Returns the minimum value of the slider.
-   *
    * @returns {number} The minimum value of the slider.
    */
   get min() {
-    return this.getAttribute('min') || 0;
+    return this.getAttribute("min") || 0;
   }
   /**
    * Sets the maximum value of the slider.
-   *
-   * @param {number} value - The maximum value to set.
+   * @param {number} value The maximum value to set.
    */
-  set max(r) {
-    this.setAttribute('max', r);
+  set max(value) {
+    this.setAttribute("max", value);
   }
   /**
    * Returns the maximum value of the slider.
-   *
    * @returns {number} The maximum value of the slider.
    */
   get max() {
-    return this.getAttribute('max') || 100;
+    return this.getAttribute("max") || 100;
   }
   /**
    * Sets the step value of the slider.
-   *
-   * @param {number} value - The step value to set.
+   * @param {number} value The step value to set.
    */
-  set step(r) {
-    this.setAttribute('step', r);
+  set step(value) {
+    this.setAttribute("step", value);
   }
   /**
    * Returns the step value of the slider.
-   *
    * @returns {number} The step value of the slider.
    */
   get step() {
-    return this.getAttribute('step') || 1;
+    return this.getAttribute("step") || 1;
   }
   /**
    * Returns the CSS styles for the component.
-   *
    * @static
    * @returns {CSSStyleSheet}
    */
   static get cssStyleSheet() {
-    return g;
+    return styles;
   }
   /**
    * Returns the list of attributes to observe for changes.
-   *
    * @static
    * @returns {Array<string>}
    */
   static get observedAttributes() {
-    return ['max', 'value'];
+    return ["max"];
   }
   /**
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Draws the component.
-   *
-   * @param {Object} context - The context for drawing.
-   * @param {Object} store - The store for drawing.
-   * @param {Object} params - The parameters for drawing.
+   * Draws the component for the slider.
    * @returns {DocumentFragment}
    */
-  draw(r, c, n) {
-    let d = document.createDocumentFragment(),
-      t = document.createElement('div');
-    (t.className = 'native-slider'), t.setAttribute('part', 'native');
-    let s = document.createElement('div');
-    s.className = 'slider';
-    let u = document.createElement('slot');
-    u.name = 'label';
-    let w = document.createElement('slot');
-    w.name = 'start';
-    let h = document.createElement('slot');
-    h.name = 'end';
-    let i = document.createElement('output');
-    i.setAttribute('for', 'slider'), (i.id = 'output'), i.setAttribute('hidden', '');
-    let e = document.createElement('input');
-    return (
-      (e.type = 'range'),
-      (e.min = this.min),
-      (e.max = this.max),
-      (e.step = this.step),
-      (e.value = this.value),
-      (e.id = 'slider'),
-      (e.name = 'slider'),
-      (e.part = 'slider'),
-      e.setAttribute('autocomplete', 'off'),
-      e.setAttribute('color', this.color || ''),
-      e.addEventListener('input', (m) => {
-        this.setHandlePosition(m.target);
-      }),
-      s.appendChild(e),
-      this.hasAttribute('bubble') && s.appendChild(i),
-      t.appendChild(u),
-      t.appendChild(w),
-      t.appendChild(s),
-      t.appendChild(h),
-      d.appendChild(t),
-      (this.input = e),
-      (this.output = i),
-      d
-    );
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("div");
+    element.className = "native-slider";
+    element.setAttribute("part", "native");
+    let slider = document.createElement("div");
+    slider.className = "slider";
+    let label = document.createElement("slot");
+    label.name = "label";
+    let start = document.createElement("slot");
+    start.name = "start";
+    let end = document.createElement("slot");
+    end.name = "end";
+    let output = document.createElement("output");
+    output.setAttribute("for", "slider");
+    output.id = "output";
+    output.setAttribute("hidden", "");
+    let input = document.createElement("input");
+    input.type = "range";
+    input.min = this.min;
+    input.max = this.max;
+    input.step = this.step;
+    input.value = this.value;
+    input.id = "slider";
+    input.name = "slider";
+    input.part = "slider";
+    input.setAttribute("autocomplete", "off");
+    input.setAttribute("color", this.color || "");
+    input.addEventListener("input", null, (e) => {
+      this.setHandlePosition(e.target);
+    });
+    slider.appendChild(input);
+    if (this.hasAttribute("bubble")) {
+      slider.appendChild(output);
+    }
+    element.appendChild(label);
+    element.appendChild(start);
+    element.appendChild(slider);
+    element.appendChild(end);
+    fragment.appendChild(element);
+    this.input = input;
+    this.output = output;
+    return fragment;
   }
   /**
-   * Sets up the event listeners after the component is drawn.
+   * Handles the post-rendering logic for a custom slider component. This method performs the following tasks:
+   * - Sets the position of the handle.
+   * - Displays a bubble indicator with the current value, if the slider has a "bubble" attribute.
+   * - Dispatches initialization, movement, and change custom events for the slider input element.
+   * - Updates the bubble position and value dynamically on input changes.
+   * @returns {void} This method does not return a value.
    */
   afterDraw() {
-    this.setHandlePosition(),
-      this.hasAttribute('bubble') &&
-        ((this.output.innerHTML = this.input.value),
-        this.output.removeAttribute('hidden'),
-        setTimeout(this.setBubble, 50)),
-      this.dispatchInit(this.input.value),
-      this.input.addEventListener('input', (r) => {
-        (this.value = r.target.value), this.dispatchMove(this.value), this.hasAttribute('bubble') && this.setBubble();
-      }),
-      this.input.addEventListener('change', (r) => {
-        this.dispatchChange(r.target.value);
+    this.setHandlePosition();
+    if (this.hasAttribute("bubble")) {
+      this.output.innerHTML = this.input.value;
+      this.output.removeAttribute("hidden");
+      setTimeout(this.setBubble, 50);
+    }
+    event.dispatchCustomEvent(this.input, "wje-slider:init", {
+      value: this.input.value,
+      output: this.output
+    });
+    event.addListener(this.input, "input", null, (e) => {
+      this.value = e.target.value;
+      event.dispatchCustomEvent(this.input, "wje-slider:move", {
+        value: e.target.value,
+        output: this.output
       });
+      if (this.hasAttribute("bubble")) {
+        this.setBubble();
+      }
+    });
+    event.addListener(this.input, "change", null, (e) => {
+      event.dispatchCustomEvent(this.input, "wje-slider:change", {
+        value: e.target.value,
+        output: this.output
+      });
+    });
   }
   /**
-   * Dispatches the slider initialization event.
-   *
-   * @param {number} value - The value of the slider.
+   * Calculates the percentage of a value within a given range.
+   * @param {number} min The minimum value of the range.
+   * @param {number} max The maximum value of the range.
+   * @param {number} [value] The current value within the range. Defaults to 0 if not provided.
+   * @returns {number} The calculated percentage as a number between 0 and 100. Returns 0 if the range is invalid.
    */
-  dispatchInit(r) {
-    this.dispatchEvent(
-      new CustomEvent('wje:slider-init', {
-        bubbles: !0,
-        detail: {
-          value: r,
-          output: this.output,
-        },
-      })
-    );
-  }
-  /**
-   * Dispatches the slider move event.
-   *
-   * @param {number} value - The value of the slider.
-   */
-  dispatchMove(r) {
-    this.dispatchEvent(
-      new CustomEvent('wje:slider-move', {
-        bubbles: !0,
-        detail: {
-          value: r,
-          output: this.output,
-        },
-      })
-    );
-  }
-  /**
-   * Dispatches the slider change event.
-   *
-   * @param {number} value - The value of the slider.
-   */
-  dispatchChange(r) {
-    this.dispatchEvent(
-      new CustomEvent('wje:slider-change', {
-        bubbles: !0,
-        detail: {
-          value: r,
-          output: this.output,
-        },
-      })
-    );
-  }
-  /**
-   * Returns the percentage of the slider value.
-   *
-   * @param {number} value - The value of the slider.
-   * @param {number} min - The minimum value of the slider.
-   * @param {number} max - The maximum value of the slider.
-   * @returns {number} The percentage of the slider value.
-   */
-  getPercentage(r = 0, c, n) {
-    return Number(((r - c) * 100) / (n - c)) || 0;
+  getPercentage(min, max, value = 0) {
+    return Number((value - min) * 100 / (max - min)) || 0;
   }
 }
-b.define('wje-slider', b);
-export { b as default };
+Slider.define("wje-slider", Slider);
+export {
+  Slider as default
+};

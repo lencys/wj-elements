@@ -1,48 +1,55 @@
-var n = Object.defineProperty;
-var d = (r, o, e) => (o in r ? n(r, o, { enumerable: !0, configurable: !0, writable: !0, value: e }) : (r[o] = e));
-var t = (r, o, e) => (d(r, typeof o != 'symbol' ? o + '' : o, e), e);
-import l from './wje-element.js';
-const i =
-  ':host{--wje-card-margin-top: 0;--wje-card-margin-bottom: 1rem;--wje-card-margin-inline: 0;--wje-card-border-color: transparent}:host(.wje-color-primary){--wje-card-background: var(--wje-color-primary)}:host(.wje-color-complete){--wje-card-background: var(--wje-color-complete)}:host(.wje-color-success){--wje-card-background: var(--wje-color-success)}:host(.wje-color-warning){--wje-card-background: var(--wje-color-warning)}:host(.wje-color-danger){--wje-card-background: var(--wje-color-danger)}:host(.wje-color-info){--wje-card-background: var(--wje-color-info)}:host(.wje-color-menu){--wje-card-background: var(--wje-color-menu)}:host(.wje-color-primary){--wje-card-color: var(--wje-color-white)}:host(.wje-color-complete){--wje-card-color: var(--wje-color-white)}:host(.wje-color-success){--wje-card-color: var(--wje-color-white)}:host(.wje-color-warning){--wje-card-color: var(--wje-color)}:host(.wje-color-danger){--wje-card-color: var(--wje-color-white)}:host(.wje-color-info){--wje-card-color: var(--wje-color-white)}:host(.wje-color-menu){--wje-card-color: var(--wje-color-white) !important}:host{background-color:var(--wje-card-background);color:var(--wje-card-color)!important;margin-top:var(--wje-card-margin-top);margin-bottom:var(--wje-card-margin-bottom);margin-inline:var(--wje-card-margin-inline);box-shadow:var(--wje-box-shadow-large);border-color:var(--wje-border-color);border-style:var(--wje-border-style);border-width:var(--wje-border-size);border-radius:var(--wje-border-radius-medium);font-family:var(--wje-font-family);font-size:var(--wje-font-size);line-height:var(--wje-line-height);position:relative;width:100%;word-wrap:normal;display:flex;flex-direction:column;overflow:hidden;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}:host(.wje-color){background-color:var(--wje-card-background, #fff);color:var(--wje-card-color)}';
-class s extends l {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ WJ Card ]\n*/\n\n:host {\n    width: 100%;\n}\n\n.native-card {\n    background-color: transparent;\n    margin: 0;\n    box-shadow: var(--wje-card-shadow);\n    border-color: var(--wje-border-color);\n    border-style: var(--wje-border-style);\n    border-width: var(--wje-border-width);\n    border-radius: var(--wje-card-border-radius);\n    font-family: var(--wje-font-family);\n    font-size: var(--wje-font-size);\n    line-height: var(--wje-line-height-normal);\n    position: relative;\n    width: 100%;\n    word-wrap: normal;\n    display: flex;\n    flex-direction: column;\n    overflow: hidden;\n    -moz-osx-font-smoothing: grayscale;\n    -webkit-font-smoothing: antialiased;\n}\n\n/*BG - TEXT*/\n.native-card.wje-color-primary {\n    background: var(--wje-color-primary-9);\n    color: var(--wje-color-contrast-0);\n    border-color: var(--wje-color-primary-9);\n}\n\n.native-card.wje-color-complete {\n    background: var(--wje-color-complete-9);\n    color: var(--wje-color-contrast-0);\n    border-color: var(--wje-color-complete-9);\n}\n\n.native-card.wje-color-success {\n    background: var(--wje-color-success-9);\n    color: var(--wje-color-contrast-0);\n    border-color: var(--wje-color-success-9);\n}\n\n.native-card.wje-color-warning {\n    background: var(--wje-color-warning-9);\n    color: var(--wje-color);\n    border-color: var(--wje-color-warning-9);\n}\n\n.native-card.wje-color-danger {\n    background: var(--wje-color-danger-9);\n    color: var(--wje-color-contrast-0);\n    border-color: var(--wje-color-danger-9);\n}\n\n.native-card.wje-color-info {\n    background: var(--wje-color-info-9);\n    color: var(--wje-color-contrast-0);\n    border-color: var(--wje-color-info-9);\n}\n\n.native-card.wje-color-menu {\n    background: var(--wje-color-contrast-9);\n    color: var(--wje-color-contrast-0);\n    border-color: var(--wje-color-contrast-9);\n}\n";
+class Card extends WJElement {
   /**
-   * Card constructor
-   * @constructor
+   * Card constructor method.
+   * @class
    */
   constructor() {
     super();
     /**
-     * Class name
+     * Class name for the Card element.
      * @type {string}
      */
-    t(this, 'className', 'Card');
+    __publicField(this, "className", "Card");
   }
   /**
-   * Get CSS stylesheet
+   * Get CSS stylesheet for the Card element.
    * @static
-   * @returns {Object} styles - The CSS styles
+   * @returns {object} styles - The CSS styles
    */
   static get cssStyleSheet() {
-    return i;
+    return styles;
   }
   /**
-   * Setup attributes
+   * Setup attributes for the Card element.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Draw method
-   * @param {Object} context - The context
-   * @param {Object} store - The store
-   * @param {Object} params - The parameters
-   * @returns {Object} fragment - The document fragment
+   * Draw method for the Card element.
+   * @param {object} context The context object
+   * @param {object} store The store object
+   * @param {object} params The parameters
+   * @returns {object} fragment - The document fragment
    */
-  draw(e, j, a) {
-    let c = document.createDocumentFragment(),
-      w = document.createElement('slot');
-    return a.color && this.classList.add('wje-color-' + a.color, 'wje-color'), c.appendChild(w), c;
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    native.setAttribute("part", "native");
+    native.classList.add("native-card");
+    let slot = document.createElement("slot");
+    if (params.color) native.classList.add("wje-color-" + params.color);
+    native.appendChild(slot);
+    fragment.appendChild(native);
+    return fragment;
   }
 }
-l.define('wje-card', s);
-export { s as default };
+WJElement.define("wje-card", Card);
+export {
+  Card as default
+};

@@ -1,12 +1,11 @@
-var n = Object.defineProperty;
-var i = (t, e, r) => (e in t ? n(t, e, { enumerable: !0, configurable: !0, writable: !0, value: r }) : (t[e] = r));
-var s = (t, e, r) => (i(t, typeof e != 'symbol' ? e + '' : e, r), r);
-import d from './wje-element.js';
-const c =
-  ':host{--wje-card-header-padding: 1rem 1rem .5rem;background:transparent;border-radius:0;border-bottom:0;padding:var(--wje-card-header-padding);position:relative;display:flex;flex-direction:column}:host(.wje-separator):after{content:"";height:1px;background:#00000014;margin-top:.5rem}';
-class m extends d {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ WJ Card - Header ]\n*/\n\n:host {\n    background: transparent;\n    border-radius: 0;\n    border-bottom: 0;\n    padding: var(--wje-card-header-padding);\n    position: relative;\n    display: flex;\n    flex-direction: column;\n}\n\n:host(.wje-separator):after {\n    content: '';\n    height: 1px;\n    background: rgba(0, 0, 0, 0.08);\n    margin-top: 0.5rem;\n}\n";
+class CardHeader extends WJElement {
   /**
-   * CardHeader constructor.
+   * CardHeader constructor method.
    */
   constructor() {
     super();
@@ -14,34 +13,35 @@ class m extends d {
      * Class name for the CardHeader.
      * @type {string}
      */
-    s(this, 'className', 'CardHeader');
+    __publicField(this, "className", "CardHeader");
   }
   /**
    * Getter for the CSS stylesheet.
-   * @returns {Object} The styles object.
+   * @returns {object} The styles object.
    * @static
    */
   static get cssStyleSheet() {
-    return c;
+    return styles;
   }
   /**
    * Sets up the attributes for the CardHeader.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
    * Draws the CardHeader.
-   * @param {Object} context - The context to draw in.
-   * @param {Object} store - The store to use.
-   * @param {Object} params - The parameters to use.
    * @returns {DocumentFragment} The created document fragment.
    */
-  draw(r, p, l) {
-    let a = document.createDocumentFragment(),
-      o = document.createElement('slot');
-    return this.hasAttribute('separator') && this.classList.add('wje-separator'), a.appendChild(o), a;
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    if (this.hasAttribute("separator")) this.classList.add("wje-separator");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-d.define('wje-card-header', m);
-export { m as default };
+WJElement.define("wje-card-header", CardHeader);
+export {
+  CardHeader as default
+};

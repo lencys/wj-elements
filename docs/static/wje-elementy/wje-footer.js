@@ -1,30 +1,27 @@
-var c = Object.defineProperty;
-var i = (t, e, o) => (e in t ? c(t, e, { enumerable: !0, configurable: !0, writable: !0, value: o }) : (t[e] = o));
-var s = (t, e, o) => (i(t, typeof e != 'symbol' ? e + '' : e, o), o);
-import l from './wje-element.js';
-const d = ':host{--wje-footer-height: 60px;padding:0 20px;flex-shrink:0;height:var(--wje-footer-height);display:block}';
-class n extends l {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ Wj Footer ]\n*/\n\n:host {\n    --wje-footer-height: 60px;\n    padding: 0 20px;\n    flex-shrink: 0;\n    height: var(--wje-footer-height);\n    display: block;\n}\n";
+class Footer extends WJElement {
   /**
    * Creates an instance of Footer.
-   *
-   * @constructor
+   * @class
    */
   constructor() {
     super();
-    s(this, 'className', 'Footer');
+    __publicField(this, "className", "Footer");
   }
   /**
    * Returns the CSS styles for the component.
-   *
    * @static
    * @returns {CSSStyleSheet}
    */
   static get cssStyleSheet() {
-    return d;
+    return styles;
   }
   /**
    * Returns the list of attributes to observe for changes.
-   *
    * @static
    * @returns {Array<string>}
    */
@@ -35,21 +32,20 @@ class n extends l {
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
    * Draws the component.
-   *
-   * @param {Object} context - The context for drawing.
-   * @param {Object} store - The store for drawing.
-   * @param {Object} params - The parameters for drawing.
    * @returns {DocumentFragment}
    */
-  draw(o, h, m) {
-    let r = document.createDocumentFragment(),
-      a = document.createElement('slot');
-    return r.appendChild(a), r;
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-n.define('wje-footer', n);
-export { n as default };
+Footer.define("wje-footer", Footer);
+export {
+  Footer as default
+};

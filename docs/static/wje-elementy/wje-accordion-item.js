@@ -1,10 +1,9 @@
-var j = Object.defineProperty;
-var v = (e, o, r) => (o in e ? j(e, o, { enumerable: !0, configurable: !0, writable: !0, value: r }) : (e[o] = r));
-var n = (e, o, r) => (v(e, typeof o != 'symbol' ? o + '' : o, r), r);
-import p, { event as s } from './wje-element.js';
-const h =
-  ':host([color=primary]){--wje-accordion-background: var(--wje-color-primary-1);--wje-accordion-border: var(--wje-color-primary-1);--wje-accordion-background-hover: var(--wje-color-primary-2);--wje-accordion-border-hover: var(--wje-color-primary-2);--wje-accordion-background-expanded: transparent;--wje-accordion-border-expanded: var(--wje-color-primary-3);--wje-accordion-headline-color: var(--wje-color-contrast-11) !important;--wje-accordion-content-color: var(--wje-color-contrast-6)}:host([color=complete]){--wje-accordion-background: var(--wje-color-complete-1);--wje-accordion-border: var(--wje-color-complete-1);--wje-accordion-background-hover: var(--wje-color-complete-2);--wje-accordion-border-hover: var(--wje-color-complete-2);--wje-accordion-background-expanded: transparent;--wje-accordion-border-expanded: var(--wje-color-complete-3);--wje-accordion-headline-color: var(--wje-color-contrast-11) !important;--wje-accordion-content-color: var(--wje-color-contrast-6)}:host([color=success]){--wje-accordion-background: var(--wje-color-success-1);--wje-accordion-border: var(--wje-color-success-1);--wje-accordion-background-hover: var(--wje-color-success-2);--wje-accordion-border-hover: var(--wje-color-success-2);--wje-accordion-background-expanded: transparent;--wje-accordion-border-expanded: var(--wje-color-success-3);--wje-accordion-headline-color: var(--wje-color-contrast-11) !important;--wje-accordion-content-color: var(--wje-color-contrast-6)}:host([color=danger]){--wje-accordion-background: var(--wje-color-danger-1);--wje-accordion-border: var(--wje-color-danger-1);--wje-accordion-background-hover: var(--wje-color-danger-2);--wje-accordion-border-hover: var(--wje-color-danger-2);--wje-accordion-background-expanded: transparent;--wje-accordion-border-expanded: var(--wje-color-danger-3);--wje-accordion-headline-color: var(--wje-color-contrast-11) !important;--wje-accordion-content-color: var(--wje-color-contrast-6)}:host([color=warning]){--wje-accordion-background: var(--wje-color-warning-1);--wje-accordion-border: var(--wje-color-warning-1);--wje-accordion-background-hover: var(--wje-color-warning-2);--wje-accordion-border-hover: var(--wje-color-warning-2);--wje-accordion-background-expanded: transparent;--wje-accordion-border-expanded: var(--wje-color-warning-3);--wje-accordion-headline-color: var(--wje-color-contrast-11) !important;--wje-accordion-content-color: var(--wje-color-contrast-6)}:host([color=info]){--wje-accordion-background: var(--wje-color-info-1);--wje-accordion-border: var(--wje-color-info-1);--wje-accordion-background-hover: var(--wje-color-info-2);--wje-accordion-border-hover: var(--wje-color-info-2);--wje-accordion-background-expanded: transparent;--wje-accordion-border-expanded: var(--wje-color-info-3);--wje-accordion-headline-color: var(--wje-color-contrast-11) !important;--wje-accordion-content-color: var(--wje-color-contrast-6)}:host{display:block;margin-bottom:.5rem}.native-accordion-item{display:block;background-color:var(--wje-accordion-background);border-radius:var(--wje-border-radius-small);border-width:1px;border-style:solid;border-color:var(--wje-accordion-border);transition:background-color .2s ease-in-out}.native-accordion-item:hover{background-color:var(--wje-accordion-background-hover);border-color:var(--wje-accordion-border-hover)}:host(.expanded) .native-accordion-item{background-color:var(--wje-accordion-background-expanded);border-color:var(--wje-accordion-border-expanded)}#headline{display:block}#headline::slotted(span){display:block;text-transform:uppercase;font-size:var(--wje-font-size)!important;color:var(--wje-accordion-headline-color);line-height:normal!important;margin:0!important;padding:.75rem}#content{display:block;color:var(--wje-accordion-content-color);overflow:hidden;max-height:0;transition:max-height .2s ease-in-out}#content slot{display:block;margin:0 .75rem .75rem}:host(.expanded) #content{max-height:100vh}';
-class w extends p {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement, { event } from "./wje-element.js";
+const styles = "/*\n[ WJ Accordion Item ]\n*/\n\n:host {\n    --wje-accordion-background: var(--wje-color-contrast-0);\n    --wje-accordion-border: var(--wje-color-contrast-0);\n    --wje-accordion-border-radius: var(--wje-border-radius-large);\n    --wje-accordion-background-hover: var(--wje-color-contrast-1);\n    --wje-accordion-border-hover: var(--wje-color-contrast-2);\n    --wje-accordion-background-expanded: var(--wje-color-contrast-0);\n    --wje-accordion-border-expanded: var(--wje-color-contrast-0);\n    --wje-accordion-headline-color: var(--wje-color-contrast-11) !important;\n    --wje-accordion-content-color: var(--wje-color-contrast-6);\n}\n\n:host([color='primary']) {\n    --wje-accordion-background: var(--wje-color-primary-1);\n    --wje-accordion-border: var(--wje-color-primary-1);\n    --wje-accordion-background-hover: var(--wje-color-primary-2);\n    --wje-accordion-border-hover: var(--wje-color-primary-2);\n    --wje-accordion-background-expanded: transparent;\n    --wje-accordion-border-expanded: var(--wje-color-primary-3);\n    --wje-accordion-headline-color: var(--wje-color-contrast-11) !important;\n    --wje-accordion-content-color: var(--wje-color-contrast-6);\n}\n\n:host([color='complete']) {\n    --wje-accordion-background: var(--wje-color-complete-1);\n    --wje-accordion-border: var(--wje-color-complete-1);\n    --wje-accordion-background-hover: var(--wje-color-complete-2);\n    --wje-accordion-border-hover: var(--wje-color-complete-2);\n    --wje-accordion-background-expanded: transparent;\n    --wje-accordion-border-expanded: var(--wje-color-complete-3);\n    --wje-accordion-headline-color: var(--wje-color-contrast-11) !important;\n    --wje-accordion-content-color: var(--wje-color-contrast-6);\n}\n\n:host([color='success']) {\n    --wje-accordion-background: var(--wje-color-success-1);\n    --wje-accordion-border: var(--wje-color-success-1);\n    --wje-accordion-background-hover: var(--wje-color-success-2);\n    --wje-accordion-border-hover: var(--wje-color-success-2);\n    --wje-accordion-background-expanded: transparent;\n    --wje-accordion-border-expanded: var(--wje-color-success-3);\n    --wje-accordion-headline-color: var(--wje-color-contrast-11) !important;\n    --wje-accordion-content-color: var(--wje-color-contrast-6);\n}\n\n:host([color='danger']) {\n    --wje-accordion-background: var(--wje-color-danger-1);\n    --wje-accordion-border: var(--wje-color-danger-1);\n    --wje-accordion-background-hover: var(--wje-color-danger-2);\n    --wje-accordion-border-hover: var(--wje-color-danger-2);\n    --wje-accordion-background-expanded: transparent;\n    --wje-accordion-border-expanded: var(--wje-color-danger-3);\n    --wje-accordion-headline-color: var(--wje-color-contrast-11) !important;\n    --wje-accordion-content-color: var(--wje-color-contrast-6);\n}\n\n:host([color='warning']) {\n    --wje-accordion-background: var(--wje-color-warning-1);\n    --wje-accordion-border: var(--wje-color-warning-1);\n    --wje-accordion-background-hover: var(--wje-color-warning-2);\n    --wje-accordion-border-hover: var(--wje-color-warning-2);\n    --wje-accordion-background-expanded: transparent;\n    --wje-accordion-border-expanded: var(--wje-color-warning-3);\n    --wje-accordion-headline-color: var(--wje-color-contrast-11) !important;\n    --wje-accordion-content-color: var(--wje-color-contrast-6);\n}\n\n:host([color='info']) {\n    --wje-accordion-background: var(--wje-color-info-1);\n    --wje-accordion-border: var(--wje-color-info-1);\n    --wje-accordion-background-hover: var(--wje-color-info-2);\n    --wje-accordion-border-hover: var(--wje-color-info-2);\n    --wje-accordion-background-expanded: transparent;\n    --wje-accordion-border-expanded: var(--wje-color-info-3);\n    --wje-accordion-headline-color: var(--wje-color-contrast-11) !important;\n    --wje-accordion-content-color: var(--wje-color-contrast-6);\n}\n\n:host {\n    display: block;\n    margin-bottom: 0.5rem;\n}\n\n/*:host(.expanding) #content {*/\n/*    display: none;*/\n/*}*/\n\n/*:host(.collapsing) #content {*/\n/*    max-height: 0;*/\n/*}*/\n\n.native-accordion-item {\n    display: block;\n    background-color: var(--wje-accordion-background);\n    border-radius: var(--wje-accordion-border-radius);\n    border-width: 1px;\n    border-style: solid;\n    border-color: var(--wje-accordion-border);\n    transition: background-color 200ms ease-in-out;\n    &:hover {\n        background-color: var(--wje-accordion-background-hover);\n        border-color: var(--wje-accordion-border-hover);\n    }\n}\n\n:host(.expanded) .native-accordion-item {\n    background-color: var(--wje-accordion-background-expanded);\n    border-color: var(--wje-accordion-border-expanded);\n}\n\n.headline {\n    display: grid;\n    grid-template-columns: 1fr auto;\n    align-items: center;\n    font-size: var(--wje-font-size) !important;\n    color: var(--wje-accordion-headline-color);\n    line-height: normal !important;\n    margin: 0 !important;\n    padding: 0.75rem;\n}\n\n[name='description'] {\n    font-size: var(--wje-font-size-small);\n    color: var(--wje-color-contrast-6);\n}\n\nwje-icon {\n    margin-left: auto;\n    transform: rotate(var(--wje-accordion-marker-rotate, 0deg));\n}\n\n#content {\n    /*background: var(--wje-accordion-background);*/\n    display: block;\n    color: var(--wje-accordion-content-color);\n    overflow: hidden;\n    max-height: 0;\n    transition: max-height 250ms ease-in-out;\n}\n\n#content slot {\n    display: block;\n    margin: 0 0.75rem 0.75rem 0.75rem;\n}\n\n:host(.expanded) #content {\n    /*display: block;*/\n    /*padding: 0 .75rem .75rem .75rem;*/\n    max-height: 100vh;\n}\n";
+class AccordionItem extends WJElement {
   /**
    * Constructor for the AccordionItem class.
    */
@@ -14,37 +13,32 @@ class w extends p {
      * The class name for the Accordion Item element.
      * @type {string}
      */
-    n(this, 'className', 'AccordionItem');
-    // afterDraw(context, store, params) {
-    //     this.summary.style.setProperty("--wje-accordion-marker", `url(${svgIcon})`);
-    //     this.summary.style.setProperty("--wje-accordion-marker-rotate", '180deg');
-    //
-    //     this.native.addEventListener("toggle", (e) => {
-    //         e.stopPropagation();
-    //         if (this.native.open) {
-    //             event.dispatchCustomEvent(this, "wje-accordion-item:open");
-    //         } else {
-    //             event.dispatchCustomEvent(this, "wje-accordion-item:close");
-    //         }
-    //     });
-    // }
-    n(this, 'collapse', () => {
-      this.classList.remove('expanded'), this.classList.add('collapsed');
+    __publicField(this, "className", "AccordionItem");
+    /**
+     * Method to handle the attribute changes.
+     */
+    __publicField(this, "collapse", () => {
+      this.classList.remove("expanded");
+      this.classList.add("collapsed");
     });
-    n(this, 'expand', () => {
-      this.classList.remove('collapsed'), this.classList.add('expanded');
+    /**
+     * Method to handle the attribute changes.
+     */
+    __publicField(this, "expand", () => {
+      this.classList.remove("collapsed");
+      this.classList.add("expanded");
     });
   }
   /**
    * Getter for the CSS stylesheet.
-   * @return {Object} The styles for the Accordion Item element.
+   * @returns {object} The styles for the Accordion Item element.
    */
   static get cssStyleSheet() {
-    return h;
+    return styles;
   }
   /**
    * Getter for the observed attributes.
-   * @return {Array} An array containing the name of the observed attribute.
+   * @returns {Array} An array containing the name of the observed attribute.
    */
   static get observedAttributes() {
     return [];
@@ -53,48 +47,66 @@ class w extends p {
    * Method to setup attributes for the Accordion Item element.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Method to draw the Accordion Item element.
-   * @param {Object} context - The context in which the element is drawn.
-   * @param {Object} store - The store containing the state of the element.
-   * @param {Object} params - The parameters for drawing the element.
-   * @return {Object} The document fragment containing the drawn element.
+   * Method to draw the Accordion Item element. This method returns a document fragment containing the drawn element.
+   * @returns {object} The document fragment containing the drawn element.
    */
-  draw(r, b, m) {
-    let i = document.createDocumentFragment(),
-      c = document.createElement('div');
-    c.setAttribute('part', 'native'), c.classList.add('native-accordion-item');
-    let a = document.createElement('slot');
-    a.setAttribute('name', 'headline'), a.setAttribute('id', 'headline');
-    let t = document.createElement('slot');
-    t.setAttribute('name', 'toggle'), t.setAttribute('id', 'toggle');
-    let d = document.createElement('div');
-    d.setAttribute('id', 'content');
-    let l = document.createElement('slot');
-    return (
-      l.setAttribute('name', 'content'),
-      d.appendChild(l),
-      c.appendChild(a),
-      c.appendChild(d),
-      i.appendChild(c),
-      (this.headline = a),
-      (this.toggle = t),
-      i
-    );
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    native.setAttribute("part", "native");
+    native.classList.add("native-accordion-item");
+    let headline = document.createElement("div");
+    headline.setAttribute("part", "headline");
+    headline.classList.add("headline");
+    let headlineDescription = document.createElement("slot");
+    headlineDescription.setAttribute("part", "description");
+    headlineDescription.setAttribute("name", "description");
+    let slotHeadline = document.createElement("slot");
+    slotHeadline.setAttribute("name", "headline");
+    let toggle = document.createElement("slot");
+    toggle.setAttribute("part", "toggle");
+    toggle.setAttribute("name", "toggle");
+    let mark = document.createElement("wje-icon");
+    mark.setAttribute("name", "chevron-down");
+    let content = document.createElement("div");
+    content.setAttribute("part", "content");
+    content.setAttribute("id", "content");
+    let slot = document.createElement("slot");
+    slot.setAttribute("name", "content");
+    toggle.appendChild(mark);
+    headline.appendChild(slotHeadline);
+    headline.appendChild(toggle);
+    headline.appendChild(headlineDescription);
+    content.appendChild(slot);
+    native.appendChild(headline);
+    native.appendChild(content);
+    fragment.appendChild(native);
+    this.headline = headline;
+    this.toggle = toggle;
+    return fragment;
   }
   /**
    * Method to execute after the Accordion Item element is drawn.
    */
   afterDraw() {
-    this.classList.contains('expanded') || this.classList.add('collapsed'),
-      this.headline.addEventListener('click', () => {
-        this.classList.contains('collapsed')
-          ? (this.collapse(), s.dispatchCustomEvent(this, 'wje-accordion-item:open'))
-          : (this.expand(), s.dispatchCustomEvent(this, 'wje-accordion-item:close'));
-      });
+    if (!this.classList.contains("expanded")) this.classList.add("collapsed");
+    this.headline.addEventListener("click", () => {
+      if (this.classList.contains("collapsed")) {
+        event.dispatchCustomEvent(this, "wje-accordion-item:open");
+        this.toggle.style.setProperty("--wje-accordion-marker-rotate", "180deg");
+        this.expand();
+      } else {
+        event.dispatchCustomEvent(this, "wje-accordion-item:close");
+        this.toggle.style.setProperty("--wje-accordion-marker-rotate", "0deg");
+        this.collapse();
+      }
+    });
   }
 }
-w.define('wje-accordion-item', w);
-export { w as default };
+AccordionItem.define("wje-accordion-item", AccordionItem);
+export {
+  AccordionItem as default
+};

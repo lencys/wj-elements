@@ -1,10 +1,9 @@
-var a = Object.defineProperty;
-var h = (t, e, i) => (e in t ? a(t, e, { enumerable: !0, configurable: !0, writable: !0, value: i }) : (t[e] = i));
-var s = (t, e, i) => (h(t, typeof e != 'symbol' ? e + '' : e, i), i);
-import l from './wje-element.js';
-const n =
-  ':host{--wje-aside-width: "100px";--wje-aside-top: 0;--wje-aside-border-color: var(--wje-border-color);--wje-aside-border-width: 0 1px 0 0;--wje-aside-border-style: solid;box-sizing:border-box;flex-shrink:0;overflow:auto;border-color:var(--wje-aside-border-color);border-width:var(--wje-aside-border-width);border-style:var(--wje-aside-border-style)}:host(.open){display:block!important}@media (min-width: 768px){:host([fixed]){position:fixed;width:var(--wje-aside-width);top:var(--wje-aside-top);height:calc(100% - var(--wje-aside-top))}}@media (max-width: 768px){:host{display:none}:host([variant=top-start]){position:fixed;top:0;left:0;width:80%;height:100%;z-index:9999;background-color:#fff}}';
-class r extends l {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ WJ Aside ]\n*/\n\n:host {\n    --wje-aside-width: '100px';\n    --wje-aside-top: 0;\n    --wje-aside-border-color: var(--wje-border-color);\n    --wje-aside-border-width: 0 1px 0 0;\n    --wje-aside-border-style: solid;\n    box-sizing: border-box;\n    flex-shrink: 0;\n    overflow: auto;\n    border-color: var(--wje-aside-border-color);\n    border-width: var(--wje-aside-border-width);\n    border-style: var(--wje-aside-border-style);\n}\n\n:host(.open) {\n    display: block !important;\n}\n\n@media (min-width: 768px) {\n    :host([fixed]) {\n        position: fixed;\n        width: var(--wje-aside-width);\n        top: var(--wje-aside-top);\n        height: calc(100% - var(--wje-aside-top));\n    }\n}\n\n@media (max-width: 768px) {\n    :host {\n        display: none;\n    }\n\n    :host([variant='top-start']) {\n        position: fixed;\n        top: 0;\n        left: 0;\n        width: 80%;\n        height: 100%;\n        z-index: 9999;\n        background-color: #fff;\n    }\n}\n";
+class Aside extends WJElement {
   /**
    * Constructor for the Aside class.
    */
@@ -14,18 +13,18 @@ class r extends l {
      * The class name for the Aside element ddddd.
      * @type {string}
      */
-    s(this, 'className', 'Aside');
+    __publicField(this, "className", "Aside");
   }
   /**
    * Getter for the CSS stylesheet.
-   * @return {Object} The styles for the Aside element.
+   * @returns {object} The styles for the Aside element.
    */
   static get cssStyleSheet() {
-    return n;
+    return styles;
   }
   /**
    * Getter for the observed attributes.
-   * @return {Array} An empty array as there are no observed attributes.
+   * @returns {Array} An empty array as there are no observed attributes.
    */
   static get observedAttributes() {
     return [];
@@ -34,22 +33,22 @@ class r extends l {
    * Method to setup attributes for the Aside element.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
    * Method to draw the Aside element.
-   * @param {Object} context - The context in which the element is drawn.
-   * @param {Object} store - The store containing the state of the element.
-   * @param {Object} params - The parameters for drawing the element.
-   * @return {Object} The document fragment containing the drawn element.
+   * @returns {object} The document fragment containing the drawn element.
    */
-  draw(i, w, p) {
-    let o = document.createDocumentFragment();
-    this.width && this.style.setProperty('--wje-aside-width', this.width),
-      this.top && this.hasAttribute('fixed') && this.style.setProperty('--wje-aside-top', this.top);
-    let d = document.createElement('slot');
-    return o.appendChild(d), o;
+  draw() {
+    let fragment = document.createDocumentFragment();
+    if (this.width) this.style.setProperty("--wje-aside-width", this.width);
+    if (this.top && this.hasAttribute("fixed")) this.style.setProperty("--wje-aside-top", this.top);
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-r.define('wje-aside', r);
-export { r as default };
+Aside.define("wje-aside", Aside);
+export {
+  Aside as default
+};

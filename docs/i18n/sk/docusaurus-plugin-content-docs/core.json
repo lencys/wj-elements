@@ -55,7 +55,7 @@
           "default": "0",
           "values": [
             {
-              "type": "boolean"
+              "type": "number"
             }
           ],
           "optional": false,
@@ -180,6 +180,50 @@
           "required": false
         },
         {
+          "name": "iterations",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "iterations",
+          "reflectToAttr": false,
+          "docs": "Vlastnosť určujúca počet opakovaní animácie.",
+          "docsTags": [],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "iterationStart",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "iterationStart",
+          "reflectToAttr": false,
+          "docs": "Atribút iterationStart určuje bod, v ktorom by sa mala animácia začať, s hodnotou medzi 0 (začiatok) a 1 (koniec).",
+          "docsTags": [],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "name",
           "type": "\"auto\" | \"none\" | \"forwards\" | \"backwards\" | \"both\"",
           "complexType": {
@@ -202,7 +246,52 @@
           "required": true
         }
       ],
-      "methods": [],
+      "methods": [
+        {
+          "name": "play",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => <void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "play() => <void>",
+          "parameters": [],
+          "docs": "Starts the animation.",
+          "docsTags": []
+        },
+        {
+          "name": "cancel",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => <void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "cancel() => <void>",
+          "parameters": [],
+          "docs": "Cancels the animation.",
+          "docsTags": []
+        }
+      ],
       "events": [],
       "listeners": [],
       "styles": [],

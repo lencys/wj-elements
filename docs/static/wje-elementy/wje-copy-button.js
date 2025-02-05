@@ -1,111 +1,133 @@
-var h = Object.defineProperty;
-var m = (o, e, t) => (e in o ? h(o, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (o[e] = t));
-var r = (o, e, t) => (m(o, typeof e != 'symbol' ? e + '' : e, t), t);
-import f, { event as c } from './wje-element.js';
-import b from './wje-input.js';
-function y(o) {
-  const e = document.createElement('pre');
-  return (
-    (e.style.width = '1px'),
-    (e.style.height = '1px'),
-    (e.style.position = 'fixed'),
-    (e.style.top = '5px'),
-    (e.textContent = o),
-    e
-  );
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement, { WjElementUtils, event } from "./wje-element.js";
+import Input from "./wje-input.js";
+function createNode(text) {
+  const node = document.createElement("pre");
+  node.style.width = "1px";
+  node.style.height = "1px";
+  node.style.position = "fixed";
+  node.style.top = "5px";
+  node.textContent = text;
+  return node;
 }
-function p(o) {
-  if ('clipboard' in navigator) return navigator.clipboard.writeText(o.textContent || '');
-  const e = getSelection();
-  if (e == null) return Promise.reject(new Error());
-  e.removeAllRanges();
-  const t = document.createRange();
-  return t.selectNodeContents(o), e.addRange(t), e.removeAllRanges(), Promise.resolve();
+function copyNode(node) {
+  if ("clipboard" in navigator) {
+    return navigator.clipboard.writeText(node.textContent || "");
+  }
+  const selection = getSelection();
+  if (selection === null) {
+    return Promise.reject(new Error());
+  }
+  selection.removeAllRanges();
+  const range = document.createRange();
+  range.selectNodeContents(node);
+  selection.addRange(range);
+  selection.removeAllRanges();
+  return Promise.resolve();
 }
-function l(o) {
-  if ('clipboard' in navigator) return navigator.clipboard.writeText(o);
-  const e = document.body;
-  if (!e) return Promise.reject(new Error());
-  const t = y(o);
-  return e.appendChild(t), p(t), e.removeChild(t), Promise.resolve();
+function copyText(text) {
+  if ("clipboard" in navigator) {
+    return navigator.clipboard.writeText(text);
+  }
+  const body = document.body;
+  if (!body) {
+    return Promise.reject(new Error());
+  }
+  const node = createNode(text);
+  body.appendChild(node);
+  copyNode(node);
+  body.removeChild(node);
+  return Promise.resolve();
 }
-const g = ':host{cursor:pointer;padding:.5rem}';
-class d extends f {
+const styles = "/*\n[ Wj Copy Button ]\n*/\n\n:host {\n    cursor: pointer;\n    padding: 0.5rem;\n}\n";
+class CopyButton extends WJElement {
   /**
    * Constructor for the CopyButton class.
    * Initializes the timeout property.
    */
   constructor() {
     super();
-    r(this, 'className', 'CopyButton');
+    __publicField(this, "className", "CopyButton");
     /**
      * Handles the click event.
-     * @param {Event} e - The event object.
+     * @param {Event} e The event object.
      */
-    r(this, 'clicked', (t) => {
-      const i = t.currentTarget;
-      i instanceof HTMLElement && this.copy(i);
+    __publicField(this, "clicked", (e) => {
+      const button = e.currentTarget;
+      if (button instanceof HTMLElement) {
+        this.copy(button);
+      }
     });
     /**
      * Handles the keydown event.
-     * @param {Event} e - The event object.
+     * @param {Event} e The event object.
      */
-    r(this, 'keydown', (t) => {
-      if (t.key === ' ' || t.key === 'Enter') {
-        const i = t.currentTarget;
-        i instanceof HTMLElement && this.copy(i);
+    __publicField(this, "keydown", (e) => {
+      if (e.key === " " || e.key === "Enter") {
+        const button = e.currentTarget;
+        if (button instanceof HTMLElement) {
+          this.copy(button);
+        }
       }
     });
     /**
      * Handles the focus event.
-     * @param {Event} e - The event object.
+     * @param {Event} e The event object.
      */
-    r(this, 'focused', (t) => {
-      t.currentTarget.addEventListener('keydown', this.keydown);
+    __publicField(this, "focused", (e) => {
+      e.currentTarget.addEventListener("keydown", this.keydown);
     });
     /**
      * Handles the blur event.
-     * @param {Event} e - The event object.
+     * @param {Event} e The event object.
      */
-    r(this, 'blurred', (t) => {
-      t.currentTarget.removeEventListener('keydown', this.keydown);
+    __publicField(this, "blurred", (e) => {
+      e.currentTarget.removeEventListener("keydown", this.keydown);
     });
     /**
      * Handles the copied event.
-     * @param {Event} e - The event object.
+     * You can override this method to customize the behavior when the text is copied.
+     * @param {Event} e The event object.
      */
-    r(this, 'copied', (t) => {
-      this.icon.setAttribute('color', 'success'),
-        this.icon.setAttribute('name', 'check'),
-        this.tooltip.setAttribute('content', this.labelSuccess || 'Copied'),
-        setTimeout(() => {
-          this.icon.removeAttribute('color'),
-            this.icon.setAttribute('name', 'clipboard'),
-            this.tooltip.setAttribute('content', this.label || 'Copy');
-        }, this.timeout);
+    __publicField(this, "copied", (e) => {
+      if (this.hasOwnProperty("icon")) {
+        this.icon.setAttribute("color", "success");
+        this.icon.setAttribute("name", "check");
+      }
+      this.tooltip.setAttribute("content", this.labelSuccess || "Copied");
+      setTimeout(() => {
+        console.log("TIMEOUT", this.hasOwnProperty("icon"));
+        if (this.hasOwnProperty("icon")) {
+          this.icon.removeAttribute("color");
+          this.icon.setAttribute("name", "clipboard");
+        }
+        this.tooltip.setAttribute("content", this.label || "Copy");
+      }, this.timeout);
     });
     this.timeout = 1e3;
   }
   /**
    * Setter for the value property.
-   * @param {string} value - The value to be set.
+   * @param {string} value The value to be set.
    */
-  set value(t) {
-    this.setAttribute('value', t);
+  set value(value) {
+    this.setAttribute("value", value);
   }
   /**
    * Getter for the value property.
    * @returns {string} The value of the value property.
    */
   get value() {
-    return this.getAttribute('value') || '';
+    return this.getAttribute("value") || "";
   }
   /**
    * Getter for the cssStyleSheet property.
    * @returns {string} The CSS styles.
    */
   static get cssStyleSheet() {
-    return g;
+    return styles;
   }
   /**
    * Getter for the observedAttributes property.
@@ -118,62 +140,78 @@ class d extends f {
    * Sets up the attributes for the CopyButton.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Draws the ColorPicker.
-   * @param {Object} context - The context to draw in.
-   * @param {Object} store - The store to use.
-   * @param {Object} params - The parameters to use.
+   * Draws the ColorPicker element.
    * @returns {DocumentFragment} The created document fragment.
    */
-  draw(t, i, a) {
-    let s = document.createDocumentFragment(),
-      n = document.createElement('wje-tooltip');
-    n.setAttribute('offset', '5'), n.setAttribute('content', this.label || 'Copy');
-    let u = document.createElement('wje-icon');
-    return (
-      u.setAttribute('name', 'clipboard'), n.appendChild(u), s.appendChild(n), (this.tooltip = n), (this.icon = u), s
-    );
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let tooltip = document.createElement("wje-tooltip");
+    tooltip.setAttribute("offset", "5");
+    tooltip.setAttribute("content", this.label || "Copy");
+    if (WjElementUtils.hasSlot(this)) {
+      let slot = document.createElement("slot");
+      tooltip.appendChild(slot);
+    } else {
+      let icon = document.createElement("wje-icon");
+      icon.setAttribute("name", "clipboard");
+      tooltip.appendChild(icon);
+      this.icon = icon;
+    }
+    fragment.appendChild(tooltip);
+    this.tooltip = tooltip;
+    return fragment;
   }
   /**
-   * Sets up the event listeners after the CopyButton is drawn.
+   * Adds event listeners for the click, focus, and blur events.
    */
   afterDraw() {
-    c.addListener(this, 'click', null, this.clicked),
-      c.addListener(this, 'focus', null, this.focused),
-      c.addListener(this, 'blur', null, this.blurred),
-      c.addListener(this, 'wje:copy-button', null, this.copied);
+    event.addListener(this, "click", null, this.clicked);
+    event.addListener(this, "focus", null, this.focused);
+    event.addListener(this, "blur", null, this.blurred);
+    event.addListener(this, "wje-copy-button:click", null, this.copied);
   }
   /**
    * Copies the specified text or node.
-   * @param {HTMLElement} button - The button element.
+   * @param {HTMLElement} button The button element.
    */
-  async copy(t) {
-    const i = this.getAttribute('for'),
-      a = this.getAttribute('value');
-    if (t.getAttribute('aria-disabled') !== 'true') {
-      if (a) await l(a), c.dispatchCustomEvent(this, 'wje:copy-button');
-      else if (i) {
-        const s = 'getRootNode' in Element.prototype ? t.getRootNode() : t.ownerDocument;
-        if (!(s instanceof Document || ('ShadowRoot' in window && s instanceof ShadowRoot))) return;
-        const n = s.getElementById(i);
-        n && (await this.copyTarget(n), c.dispatchCustomEvent(this, 'wje:copy-button'));
+  async copy(button) {
+    const id = this.getAttribute("for");
+    const text = this.getAttribute("value");
+    if (button.getAttribute("aria-disabled") === "true") {
+      return;
+    }
+    if (text) {
+      await copyText(text);
+      event.dispatchCustomEvent(this, "wje-copy-button:click");
+    } else if (id) {
+      const root = "getRootNode" in Element.prototype ? button.getRootNode() : button.ownerDocument;
+      if (!(root instanceof Document || "ShadowRoot" in window && root instanceof ShadowRoot)) return;
+      const node = root.getElementById(id);
+      if (node) {
+        await this.copyTarget(node);
+        event.dispatchCustomEvent(this, "wje-copy-button:click");
       }
     }
   }
   /**
    * Copies the target content.
-   * @param {HTMLElement} content - The content to be copied.
+   * @param {HTMLElement} content The content to be copied.
    * @returns {Promise} A promise that resolves when the content is copied.
    */
-  copyTarget(t) {
-    return t instanceof HTMLInputElement || t instanceof HTMLTextAreaElement || t instanceof b
-      ? l(t.value)
-      : t instanceof HTMLAnchorElement && t.hasAttribute('href')
-        ? l(t.href)
-        : p(t);
+  copyTarget(content) {
+    if (content instanceof HTMLInputElement || content instanceof HTMLTextAreaElement || content instanceof Input) {
+      return copyText(content.value);
+    } else if (content instanceof HTMLAnchorElement && content.hasAttribute("href")) {
+      return copyText(content.href);
+    } else {
+      return copyNode(content);
+    }
   }
 }
-d.define('wje-copy-button', d);
-export { d as default };
+CopyButton.define("wje-copy-button", CopyButton);
+export {
+  CopyButton as default
+};

@@ -1,31 +1,27 @@
-var i = Object.defineProperty;
-var w = (e, o, t) => (o in e ? i(e, o, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (e[o] = t));
-var l = (e, o, t) => (w(e, typeof o != 'symbol' ? o + '' : o, t), t);
-import m from './wje-element.js';
-const h =
-  ':host(.wje-color-primary){--wje-color: var(--wje-color-primary) !important}:host(.wje-color-complete){--wje-color: var(--wje-color-complete) !important}:host(.wje-color-success){--wje-color-base: var(--wje-color-success) !important;--wje-color-contrast: var(--wje-color-contrast-0) !important}:host(.wje-color-warning){--wje-color-base: var(--wje-color-warning) !important;--wje-color-contrast: var(--wje-color-contrast-11) !important}:host(.wje-color-danger){--wje-color-base: var(--wje-color-danger) !important;--wje-color-contrast: var(--wje-color-contrast-0) !important}:host(.wje-color-info){--wje-color-base: var(--wje-color-info) !important;--wje-color-contrast: var(--wje-color-contrast-0) !important}:host(.wje-color-menu){--wje-color-base: var(--wje-color-menu) !important;--wje-color-contrast: var(--wje-color-contrast-0) !important}:host{--wje-color: initial;display:block;font-size:inherit;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;box-sizing:border-box}:host(.wje-color){color:current-color(base)}:host(.wje-text-wrap),:host([text-wrap]){white-space:normal!important}:host(.label-fixed){flex:0 0 100px;width:100px;min-width:100px;max-width:200px}:host(.label-stacked),:host(.label-floating){margin-bottom:0;align-self:stretch;width:auto;max-width:100%}:host(.label-no-animate.label-floating){transition:none}::slotted(*) h1,::slotted(*) h2,::slotted(*) h3,::slotted(*) h4,::slotted(*) h5,::slotted(*) h6{text-overflow:inherit;overflow:inherit}:host(.wje-color){color:var(--wje-color)}::slotted(*:first-child){margin-top:0!important}::slotted(*:last-child){margin-bottom:0!important}';
-class s extends m {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ WJ Label ]\n*/\n\n:host(.wje-color-primary) {\n    --wje-color: var(--wje-color-primary) !important;\n}\n\n:host(.wje-color-complete) {\n    --wje-color: var(--wje-color-complete) !important;\n}\n\n:host(.wje-color-success) {\n    --wje-color-base: var(--wje-color-success) !important;\n    --wje-color-contrast: var(--wje-color-contrast-0) !important;\n}\n\n:host(.wje-color-warning) {\n    --wje-color-base: var(--wje-color-warning) !important;\n    --wje-color-contrast: var(--wje-color-contrast-11) !important;\n}\n\n:host(.wje-color-danger) {\n    --wje-color-base: var(--wje-color-danger) !important;\n    --wje-color-contrast: var(--wje-color-contrast-0) !important;\n}\n\n:host(.wje-color-info) {\n    --wje-color-base: var(--wje-color-info) !important;\n    --wje-color-contrast: var(--wje-color-contrast-0) !important;\n}\n\n:host(.wje-color-menu) {\n    --wje-color-base: var(--wje-color-menu) !important;\n    --wje-color-contrast: var(--wje-color-contrast-0) !important;\n}\n\n:host {\n    --wje-color: initial;\n    display: block;\n    font-size: inherit;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    overflow: hidden;\n    box-sizing: border-box;\n}\n\n:host(.wje-color) {\n    color: current-color(base);\n}\n\n:host(.wje-text-wrap),\n:host([text-wrap]) {\n    white-space: normal !important;\n}\n\n/*Fixed Inputs*/\n\n:host(.label-fixed) {\n    flex: 0 0 100px;\n    width: 100px;\n    min-width: 100px;\n    max-width: 200px;\n}\n\n/*Stacked & Floating Inputs*/\n\n:host(.label-stacked),\n:host(.label-floating) {\n    margin-bottom: 0;\n    align-self: stretch;\n    width: auto;\n    max-width: 100%;\n}\n\n:host(.label-no-animate.label-floating) {\n    transition: none;\n}\n\n/*Headings*/\n\n::slotted(*) h1,\n::slotted(*) h2,\n::slotted(*) h3,\n::slotted(*) h4,\n::slotted(*) h5,\n::slotted(*) h6 {\n    text-overflow: inherit;\n    overflow: inherit;\n}\n\n:host(.wje-color) {\n    color: var(--wje-color);\n}\n\n::slotted(*:first-child) {\n    margin-top: 0 !important;\n}\n\n::slotted(*:last-child) {\n    margin-bottom: 0 !important;\n}\n";
+class Label extends WJElement {
   /**
    * Creates an instance of Label.
-   *
-   * @constructor
+   * @class
    */
   constructor() {
     super();
-    l(this, 'className', 'Label');
+    __publicField(this, "className", "Label");
   }
   /**
    * Returns the CSS styles for the component.
-   *
    * @static
    * @returns {CSSStyleSheet}
    */
   static get cssStyleSheet() {
-    return h;
+    return styles;
   }
   /**
    * Returns the list of attributes to observe for changes.
-   *
    * @static
    * @returns {Array<string>}
    */
@@ -36,30 +32,21 @@ class s extends m {
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
-  /**
-   * Prepares the component before drawing.
-   *
-   * @param {Object} context - The context for drawing.
-   * @param {Object} store - The store for drawing.
-   * @param {Object} params - The parameters for drawing.
-   */
-  beforeDraw(t, c, r) {}
   /**
    * Draws the component.
-   *
-   * @param {Object} context - The context for drawing.
-   * @param {Object} store - The store for drawing.
-   * @param {Object} params - The parameters for drawing.
    * @returns {DocumentFragment}
    */
-  draw(t, c, r) {
-    let a = document.createDocumentFragment();
-    this.color && this.classList.add('wje-color-' + r.color, 'wje-color');
-    let n = document.createElement('slot');
-    return a.appendChild(n), a;
+  draw() {
+    let fragment = document.createDocumentFragment();
+    if (this.color) this.classList.add("wje-color-" + params.color, "wje-color");
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-s.define('wje-label', s);
-export { s as default };
+Label.define("wje-label", Label);
+export {
+  Label as default
+};

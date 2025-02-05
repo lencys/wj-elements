@@ -1,62 +1,56 @@
-var p = Object.defineProperty;
-var m = (n, t, e) => (t in n ? p(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : (n[t] = e));
-var o = (n, t, e) => (m(n, typeof t != 'symbol' ? t + '' : t, e), e);
-import u, { event as h } from './wje-element.js';
-import g from './wje-icon.js';
-const b =
-  ':host{--wje-option-padding-top: .5rem;--wje-option-padding-bottom: .5rem;--wje-option-highlighted: var(--wje-color-contrast-3);display:block}:host wje-icon{visibility:hidden;margin-inline:.5rem}:host([selected]) wje-icon{visibility:visible}.native-option{display:flex;align-items:center;padding-top:var(--wje-option-padding-top);padding-bottom:var(--wje-option-padding-bottom)}.native-option:hover{background-color:var(--wje-option-highlighted)}::slotted([slot="start"]){flex:0 0 auto;display:flex;align-items:center;margin-inline-end:.5rem}::slotted([slot="end"]){flex:0 0 auto;display:flex;align-items:center;margin-inline:auto .5rem}';
-class d extends u {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement, { event } from "./wje-element.js";
+import Icon from "./wje-icon.js";
+const styles = "/*\n[ WJ Option ]\n*/\n\n:host {\n    display: block;\n    wje-icon {\n        visibility: hidden;\n        margin-inline: 0.5rem;\n    }\n}\n\n:host([selected]) {\n    wje-icon {\n        visibility: visible;\n    }\n}\n\n:host([disabled]) {\n    background-color: lightgray;\n    opacity: 0.3;\n    pointer-events: none;\n    cursor: not-allowed;\n}\n\n.native-option {\n    display: flex;\n    align-items: center;\n    padding-top: var(--wje-option-padding-top);\n    padding-bottom: var(--wje-option-padding-bottom);\n}\n\n.native-option:hover {\n    background-color: var(--wje-option-highlighted);\n}\n\n::slotted([slot='start']) {\n    flex: 0 0 auto;\n    display: flex;\n    align-items: center;\n    margin-inline-end: 0.5rem;\n}\n\n::slotted([slot='end']) {\n    flex: 0 0 auto;\n    display: flex;\n    align-items: center;\n    margin-inline: auto 0.5rem;\n}\n";
+class Option extends WJElement {
   /**
    * Creates an instance of Option.
-   *
-   * @constructor
+   * @class
    */
   constructor() {
     super();
     /**
      * Dependencies of the Option component.
      */
-    o(this, 'dependencies', {
-      'wje-icon': g,
+    __publicField(this, "dependencies", {
+      "wje-icon": Icon
     });
-    o(this, 'className', 'Option');
+    __publicField(this, "className", "Option");
   }
   /**
    * Sets the selected attribute of the option.
-   *
-   * @param {boolean} value - The value to set.
+   * @param {boolean} value The value to set.
    */
-  set selected(e) {
-    return e ? this.setAttribute('selected', '') : this.removeAttribute('selected');
+  set selected(value) {
+    if (value) this.setAttribute("selected", "");
+    else this.removeAttribute("selected");
   }
   /**
    * Sets the value attribute of the option.
-   *
-   * @param {string} value - The value to set.
+   * @param {string} value The value to set.
    */
-  set value(e) {
-    this.setAttribute('value', e);
+  set value(value) {
+    this.setAttribute("value", value);
   }
   /**
    * Sets the text content of the option.
-   *
-   * @param {string} value - The text to set.
+   * @param {string} value The text to set.
    */
-  set text(e) {
-    this.innerText = e;
+  set text(value) {
+    this.innerText = value;
   }
   /**
    * Returns the CSS styles for the component.
-   *
    * @static
    * @returns {CSSStyleSheet}
    */
   static get cssStyleSheet() {
-    return b;
+    return styles;
   }
   /**
    * Returns the list of attributes to observe for changes.
-   *
    * @static
    * @returns {Array<string>}
    */
@@ -67,42 +61,51 @@ class d extends u {
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Draws the component.
-   *
-   * @param {Object} context - The context for drawing.
-   * @param {Object} store - The store for drawing.
-   * @param {Object} params - The parameters for drawing.
+   * Draws the component for the option.
    * @returns {DocumentFragment}
    */
-  draw(e, v, w) {
-    let s = document.createDocumentFragment(),
-      i = document.createElement('div');
-    i.classList.add('native-option'), i.setAttribute('part', 'native');
-    let a = document.createElement('wje-icon');
-    a.setAttribute('name', 'check');
-    let r = document.createElement('slot');
-    r.setAttribute('name', 'start');
-    let c = document.createElement('slot'),
-      l = document.createElement('slot');
-    return (
-      l.setAttribute('name', 'end'),
-      i.appendChild(a),
-      i.appendChild(r),
-      i.appendChild(c),
-      i.appendChild(l),
-      s.appendChild(i),
-      s
-    );
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("div");
+    element.classList.add("native-option");
+    element.setAttribute("part", "native");
+    let icon = document.createElement("wje-icon");
+    icon.setAttribute("name", "check");
+    let start = document.createElement("slot");
+    start.setAttribute("name", "start");
+    let slot = document.createElement("slot");
+    let end = document.createElement("slot");
+    end.setAttribute("name", "end");
+    element.appendChild(icon);
+    element.appendChild(start);
+    element.appendChild(slot);
+    element.appendChild(end);
+    fragment.appendChild(element);
+    return fragment;
   }
   /**
    * Adds event listeners after the component is drawn.
    */
   afterDraw() {
-    h.addListener(this, 'click', 'wje:option-change');
+    event.addListener(this, "click", null, (e, b, c) => {
+      if (this.hasAttribute("disabled")) return;
+      this.dispatchEvent(
+        new CustomEvent("wje-option:change", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            value: this.value,
+            text: this.text
+          }
+        })
+      );
+    });
   }
 }
-d.define('wje-option', d);
-export { d as default };
+Option.define("wje-option", Option);
+export {
+  Option as default
+};

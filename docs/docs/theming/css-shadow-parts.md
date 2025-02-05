@@ -80,9 +80,8 @@ Shadow Parts CSS fungujú v najnovších verziách všetkých významných prehl
 ### Podpora prehliadačom prefixovaných pseudoelementov
 
 <p>
-  <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix" target="_blank" rel="noopener noreferrer">
-    Vendorom prefixované
-  </a>{' '}
+  <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix" target="_blank" rel="noopener noreferrer">Vendorom prefixované</a>
+{' '}
   pseudoelementy nie sú v súčasnosti podporované. Preto napríklad `::-webkit-scrollbar` pseudoelement v príklade nižšie
   nebude funkčný.
 </p>

@@ -1,48 +1,70 @@
-var l = Object.defineProperty;
-var n = (r, o, t) => (o in r ? l(r, o, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (r[o] = t));
-var a = (r, o, t) => (n(r, typeof o != 'symbol' ? o + '' : o, t), t);
-import w from './wje-element.js';
-const i =
-  ':host(.wje-color-primary){--wje-color-base: var(--wje-color-primary) !important;--wje-color-contrast: var(--wje-color-contrast-lowest) !important}:host(.wje-color-complete){--wje-color-base: var(--wje-color-complete) !important;--wje-color-contrast: var(--wje-color-contrast-lowest) !important}:host(.wje-color-success){--wje-color-base: var(--wje-color-success) !important;--wje-color-contrast: var(--wje-color-contrast-lowest) !important}:host(.wje-color-warning){--wje-color-base: var(--wje-color-warning) !important;--wje-color-contrast: var(--wje-color-contrast-high) !important}:host(.wje-color-danger){--wje-color-base: var(--wje-color-danger) !important;--wje-color-contrast: var(--wje-color-contrast-lowest) !important}:host(.wje-color-info){--wje-color-base: var(--wje-color-info) !important;--wje-color-contrast: var(--wje-color-contrast-lowest) !important}:host(.wje-color-menu){--wje-color-base: var(--wje-color-contrast-lower) !important;--wje-color-contrast: var(--wje-color-contrast-high) !important}:host{--wje-chip-border-radius: 100px;text-shadow:none;font-family:var(--wje-font-family);font-weight:600;background-color:var(--wje-color-contrast-low);font-size:11px;padding-left:6px;padding-right:6px;color:var(--wje-color-contrast-high);border-radius:10px}:host(.wje-color){background-color:var(--wje-color-base, red);color:var(--wje-color-contrast)}';
-class c extends w {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ WJ Badge ]\n*/\n\n.native-badge {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    text-shadow: none;\n    font-family: var(--wje-font-family);\n    font-size: var(--wje-font-size-x-small);\n    line-height: 1;\n    padding: 0;\n    padding-block: 0;\n    padding-inline: var(--wje-spacing-2x-small);\n    border-radius: var(--wje-badge-border-radius);\n    border-width: 1px;\n    border-style: solid;\n    border-color: transparent;\n    height: 18px;\n}\n\n.wje-color-primary {\n    background-color: var(--wje-color-primary-2);\n    color: var(--wje-color-primary-9);\n}\n\n.wje-color-complete {\n    background-color: var(--wje-color-complete-2);\n    color: var(--wje-color-complete-9);\n}\n\n.wje-color-success {\n    background-color: var(--wje-color-success-2);\n    color: var(--wje-color-success-9);\n}\n\n.wje-color-warning {\n    background-color: var(--wje-color-warning-2);\n    color: var(--wje-color-warning-11);\n}\n\n.wje-color-danger {\n    background-color: var(--wje-color-danger-2);\n    color: var(--wje-color-danger-9);\n}\n\n.wje-color-info {\n    background-color: var(--wje-color-contrast-0);\n    color: var(--wje-color-info-11);\n    border-color: var(--wje-color-contrast-2);\n}\n\n.wje-color-default {\n    background-color: var(--wje-color-contrast-3);\n    color: var(--wje-color-contrast-11);\n}\n";
+class Badge extends WJElement {
   /**
-   * Badge constructor
-   * @constructor
+   * Creates an instance of Badge.
+   * Represents a custom Badge element.
+   * @class
    */
   constructor() {
     super();
     /**
-     * Class name
-     * @type {string}
+     * The class name for the Badge element.
+     * @type {string} The class name for the Badge element.
      */
-    a(this, 'className', 'Badge');
+    __publicField(this, "className", "Badge");
   }
   /**
-   * Get CSS stylesheet
+   * Retrieves the CSS stylesheet for the Badge element.
    * @static
-   * @returns {Object} styles - The CSS styles
+   * @returns {CSSStyleSheet} The CSS styles associated with the Badge.
    */
   static get cssStyleSheet() {
-    return i;
+    return styles;
   }
   /**
-   * Setup attributes
+   * Specifies the attributes to observe for changes.
+   * @static
+   * @returns {Array<string>} An array containing the names of attributes to observe.
+   * @example
+   * static get observedAttributes() {
+   *   return ['color'];
+   * }
+   */
+  static get observedAttributes() {
+    return ["color"];
+  }
+  /**
+   * Configures initial attributes for the Badge element.
+   * @returns {void} Nothing is returned.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Draw method
-   * @param {Object} context - The context
-   * @param {Object} store - The store
-   * @param {Object} params - The parameters
-   * @returns {Object} fragment - The document fragment
+   * Creates the DOM structure for the Badge element.
+   * @returns {DocumentFragment} A document fragment containing the Badge's structure.
    */
-  draw(t, j, p) {
-    let e = document.createDocumentFragment(),
-      s = document.createElement('slot');
-    return this.color && this.classList.add('wje-color-' + this.color, 'wje-color'), e.appendChild(s), e;
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    native.setAttribute("part", "native");
+    native.classList.add("native-badge");
+    if (this.hasAttribute("color")) {
+      native.classList.add(`wje-color-${this.color}`, "wje-color");
+    } else {
+      native.classList.add("wje-color-default", "wje-color");
+    }
+    let slot = document.createElement("slot");
+    native.appendChild(slot);
+    fragment.appendChild(native);
+    return fragment;
   }
 }
-c.define('wje-badge', c);
-export { c as default };
+Badge.define("wje-badge", Badge);
+export {
+  Badge as default
+};

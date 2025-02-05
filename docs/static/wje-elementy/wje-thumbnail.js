@@ -1,32 +1,29 @@
-var n = Object.defineProperty;
-var u = (r, e, t) => (e in r ? n(r, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (r[e] = t));
-var i = (r, e, t) => (u(r, typeof e != 'symbol' ? e + '' : e, t), t);
-import l from './wje-element.js';
-const m =
-  ':host{--wje-thumbnail-width: 48px;--wje-thumbnail-height: 48px;--wje-thumbnail-border-radius: var(--wje-border-radius-medium)}:host{width:var(--wje-thumbnail-width);height:var(--wje-thumbnail-height);display:block;border-radius:var(--wje-border-radius)}:host([circle]) ::slotted(img){border-radius:50%}::slotted(wje-img),::slotted(img){border-radius:var(--wje-thumbnail-border-radius);width:100%;height:100%;object-fit:cover;overflow:hidden}';
-class s extends l {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ WJ Thumbnail ]\n*/\n\n:host {\n    width: var(--wje-thumbnail-width);\n    height: var(--wje-thumbnail-height);\n    display: block;\n    border-radius: var(--wje-border-radius);\n}\n\n:host([circle]) ::slotted(img) {\n    border-radius: 50%;\n}\n::slotted(wje-img),\n::slotted(img) {\n    border-radius: var(--wje-thumbnail-border-radius);\n    width: 100%;\n    height: 100%;\n    object-fit: cover;\n    overflow: hidden;\n}\n";
+class Thumbnail extends WJElement {
   /**
-   * Thumbnail constructor
-   * @constructor
+   * Creates an instance of Thumbnail.
    */
   constructor() {
     super();
     /**
-     * Class name
-     * @type {string}
+     * The class name for the component
      */
-    i(this, 'className', 'Thumbnail');
+    __publicField(this, "className", "Thumbnail");
   }
   /**
-   * Get CSS stylesheet
+   * Returns the CSS stylesheet for the component.
    * @static
-   * @returns {Object} styles
+   * @returns {CSSStyleSheet} The CSS stylesheet
    */
   static get cssStyleSheet() {
-    return m;
+    return styles;
   }
   /**
-   * Get observed attributes
+   * Returns the list of observed attributes.
    * @static
    * @returns {Array} An empty array
    */
@@ -34,30 +31,23 @@ class s extends l {
     return [];
   }
   /**
-   * Setup attributes
+   * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Before draw method
-   * @param {Object} context - The context
-   * @param {Object} store - The store
-   * @param {Object} params - The parameters
+   * Draws the component for the thumbnail.
+   * @returns {object} Document fragment
    */
-  beforeDraw(t, o, d) {}
-  /**
-   * Draw method
-   * @param {Object} context - The context
-   * @param {Object} store - The store
-   * @param {Object} params - The parameters
-   * @returns {Object} Document fragment
-   */
-  draw(t, o, d) {
-    let a = document.createDocumentFragment(),
-      h = document.createElement('slot');
-    return a.appendChild(h), a;
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-s.define('wje-thumbnail', s);
-export { s as default };
+Thumbnail.define("wje-thumbnail", Thumbnail);
+export {
+  Thumbnail as default
+};

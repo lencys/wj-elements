@@ -1,48 +1,47 @@
-var l = Object.defineProperty;
-var i = (e, t, o) => (t in e ? l(e, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : (e[t] = o));
-var n = (e, t, o) => (i(e, typeof t != 'symbol' ? t + '' : t, o), o);
-import a from './wje-element.js';
-const c =
-  ':host{--wje-card-controls-font-size: 11px;--wje-card-controls-font-family: var(--wje-font-family-secondary);font-family:var(--wje-card-controls-font-family);text-transform:uppercase;display:inline-block;letter-spacing:.06em;font-size:var(--wje-card-controls-font-size);font-weight:500;margin:0;padding:0;line-height:normal;overflow:hidden;text-overflow:ellipsis;filter:alpha(opacity=40);transition:opacity .3s ease;position:absolute;right:1rem;top:.5rem}';
-class d extends a {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ WJ Card - Controls ]\n*/\n\n:host {\n    font-family: var(--wje-card-controls-font-family);\n    text-transform: uppercase;\n    display: inline-block;\n    letter-spacing: 0.06em;\n    font-size: var(--wje-card-controls-font-size);\n    font-weight: 500;\n    margin: 0;\n    padding: 0;\n    line-height: normal;\n    /*overflow: hidden;*/\n    text-overflow: ellipsis;\n    filter: alpha(opacity=40);\n    transition: opacity 0.3s ease;\n    position: absolute;\n    right: 1rem;\n    top: 0.5rem;\n}\n";
+class CardControls extends WJElement {
   /**
-   * CardControls constructor
-   * @constructor
+   * CardControls constructor method.
+   * @class
    */
   constructor() {
     super();
     /**
-     * Class name
+     * Class name for the CardControls element.
      * @type {string}
      */
-    n(this, 'className', 'CardControls');
+    __publicField(this, "className", "CardControls");
   }
   /**
-   * Get CSS stylesheet
+   * Get CSS stylesheet for the CardControls element.
    * @static
-   * @returns {Object} styles - The CSS styles
+   * @returns {object} styles - The CSS styles
    */
   static get cssStyleSheet() {
-    return c;
+    return styles;
   }
   /**
-   * Setup attributes
+   * Setup attributes for the CardControls element.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Draw method
-   * @param {Object} context - The context
-   * @param {Object} store - The store
-   * @param {Object} params - The parameters
-   * @returns {Object} fragment - The document fragment
+   * Draw method for the CardControls element.
+   * @returns {object} fragment - The document fragment
    */
-  draw(o, m, f) {
-    let r = document.createDocumentFragment(),
-      s = document.createElement('slot');
-    return r.appendChild(s), r;
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-a.define('wje-card-controls', d);
-export { d as default };
+WJElement.define("wje-card-controls", CardControls);
+export {
+  CardControls as default
+};

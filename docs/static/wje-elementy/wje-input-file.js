@@ -1,40 +1,45 @@
-var b = Object.defineProperty;
-var h = (i, e, t) => (e in i ? b(i, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (i[e] = t));
-var u = (i, e, t) => (h(i, typeof e != 'symbol' ? e + '' : e, t), t);
-import m, { event as v } from './wje-element.js';
-const w =
-  ':host{--wje-input-font-family: var(--wje-font-family);--wje-input-background-color: var(--wje-background);--wje-input-color: var(--wje-color);--wje-input-color-invalid: var(--wje-color-danger);--wje-input-border-color: var(--wje-border-color);--wje-input-border-color-focus: var(--wje-color-primary);--wje-input-border-width: 1px;--wje-input-border-style: solid;--wje-input-border-radius: 4px;--wje-input-margin-bottom: .5rem;--wje-input-line-height: 20px;--wje-input-slot-padding-inline: .5rem;width:100%;margin-bottom:var(--wje-input-margin-bottom);display:block}:host .wrapper{display:flex;width:100%}:host .native-input .input-wrapper{width:100%;position:relative}:host .native-input.default{background-color:var(--wje-input-background-color);font-family:var(--wje-input-font-family);position:relative;border-radius:var(--wje-input-border-radius);border-width:var(--wje-input-border-width);border-style:var(--wje-input-border-style);border-color:var(--wje-input-border-color);padding-inline:0;padding-top:.25rem;padding-bottom:.25rem;transition:background-color .2s ease;cursor:text}:host .native-input.default .input-wrapper{margin-inline:.5rem}:host .native-input.default.focused{border-color:var(--wje-input-border-color-focus)!important}:host .native-input.default.focused label{opacity:.67;font-size:12px;letter-spacing:normal}:host .native-input.default input{border:none;height:25px;min-height:25px;padding:0;margin-top:-4px;background:none;box-shadow:none;width:100%}:host .native-input.default label{margin:0;display:block;opacity:1;cursor:text;transition:opacity .2s ease;line-height:var(--wje-input-line-height)}:host .native-input.default label.fade{opacity:.5;font-size:12px;letter-spacing:normal}:host .native-input.default ::slotted([slot="start"]){border-left:none;border-top:none;border-bottom:none}:host .native-input.default ::slotted([slot="end"]){border-right:none;border-top:none;border-bottom:none}:host .native-input.standard{background-color:var(--wje-input-background-color);font-family:var(--wje-input-font-family);position:relative;border-radius:var(--wje-input-border-radius);padding-inline:0;padding-top:0;padding-bottom:0;transition:background-color .2s ease;cursor:text}:host .native-input.standard.focused input{border-color:var(--wje-input-border-color-focus)!important}:host .native-input.standard input{display:block;min-height:32px;padding-inline:.5rem;padding-top:0;padding-bottom:0;background:none;box-shadow:none;width:100%;box-sizing:border-box;border-radius:var(--wje-input-border-radius);border-width:var(--wje-input-border-width);border-style:var(--wje-input-border-style);border-color:var(--wje-input-border-color)}:host .native-input.standard label{margin:0;display:inline-block;opacity:1;cursor:text;transition:opacity .2s ease;line-height:var(--wje-input-line-height)}:host .native-input.standard .input-wrapper:hover .clear{visibility:visible}:host .native-input.standard ::slotted([slot="start"]){border-right:none;border-radius:var(--wje-input-border-radius) 0 0 var(--wje-input-border-radius)}:host .native-input.standard ::slotted([slot="end"]){border-left:none;border-radius:0 var(--wje-input-border-radius) var(--wje-input-border-radius) 0}:host .native-input.standard.has-start input{border-top-left-radius:0;border-bottom-left-radius:0}:host .native-input.standard.has-end input{border-top-right-radius:0;border-bottom-right-radius:0}:host .native-input.standard .error-message{position:static;background:transparent;padding:.25rem 0;left:auto;transform:none;color:var(--wje-input-color-invalid);font-size:12px;line-height:normal}.clear{visibility:hidden;position:absolute;right:0;top:3px;--wje-padding-top: .25rem;--wje-padding-start: .25rem;--wje-padding-end: .25rem;--wje-padding-bottom: .25rem;--wje-button-margin-inline: 0 .25rem}:host([required]) .input-wrapper:after{color:var(--wje-input-color-invalid);content:"*";font-family:var(--wje-force-mac-font-family);font-size:20px;position:absolute;right:10px;top:2px}:host([required]) .standard .input-wrapper:after{top:0}:host([invalid]) .error-message{display:block}:host([invalid]) .default label{opacity:1!important;color:var(--wje-input-color-invalid)!important;animation-name:shake;animation-duration:.4s;animation-iteration-count:1}::slotted([slot="start"]),::slotted([slot="end"]){display:flex;align-items:center;border-width:var(--wje-input-border-width);border-style:var(--wje-input-border-style);border-color:var(--wje-input-border-color);padding-inline:var(--wje-input-slot-padding-inline)}slot[name=start],slot[name=end]{display:flex}input{background-color:var(--wje-input-background-color);border-width:var(--wje-input-border-width);border-style:var(--wje-input-border-style);border-color:var(--wje-input-border-color);font-family:var(--wje-input-font-family);color:var(--wje-input-color);-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:0;padding:.25rem .5rem;line-height:var(--wje-input-line-height);font-size:14px;font-weight:400;vertical-align:middle;min-height:32px}.error-message{display:none;position:absolute;width:auto;max-width:100%;min-width:auto;border-radius:50px;background:#000;padding:.25rem .5rem;top:0;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:12px;line-height:normal}@keyframes shake{8%,41%{transform:translate(-4px)}25%,58%{transform:translate(4px)}75%{transform:translate(-2px)}92%{transform:translate(2px)}0%,to{transform:translate(0)}}';
-class c extends m {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement, { event } from "./wje-element.js";
+const styles = "/*\n[ WJ Input File ]\n*/\n\n:host {\n    --wje-input-font-family: var(--wje-font-family);\n    --wje-input-background-color: var(--wje-background);\n    --wje-input-color: var(--wje-color);\n    --wje-input-color-invalid: var(--wje-color-danger);\n    --wje-input-border-color: var(--wje-border-color);\n    --wje-input-border-color-focus: var(--wje-color-primary);\n    --wje-input-border-width: 1px;\n    --wje-input-border-style: solid;\n    --wje-input-border-radius: 4px;\n    --wje-input-margin-bottom: 0.5rem;\n    --wje-input-line-height: 20px;\n    --wje-input-slot-padding-inline: 0.5rem;\n    width: 100%;\n    margin-bottom: var(--wje-input-margin-bottom);\n    display: block;\n\n    .wrapper {\n        display: flex;\n        width: 100%;\n    }\n    .native-input {\n        .input-wrapper {\n            width: 100%;\n            position: relative;\n        }\n        &.default {\n            background-color: var(--wje-input-background-color);\n            font-family: var(--wje-input-font-family);\n            position: relative;\n            border-radius: var(--wje-input-border-radius);\n            border-width: var(--wje-input-border-width);\n            border-style: var(--wje-input-border-style);\n            border-color: var(--wje-input-border-color);\n            padding-inline: 0;\n            padding-top: 0.25rem;\n            padding-bottom: 0.25rem;\n            transition: background-color 0.2s ease;\n            cursor: text;\n            .input-wrapper {\n                margin-inline: 0.5rem;\n            }\n            &.focused {\n                border-color: var(--wje-input-border-color-focus) !important;\n                label {\n                    opacity: 0.67;\n                    font-size: 12px;\n                    letter-spacing: normal;\n                }\n            }\n            input {\n                border: none;\n                height: 25px;\n                min-height: 25px;\n                padding: 0;\n                margin-top: -4px;\n                background: none;\n                box-shadow: none;\n                width: 100%;\n            }\n            label {\n                margin: 0;\n                display: block;\n                opacity: 1;\n                cursor: text;\n                transition: opacity 0.2s ease;\n                line-height: var(--wje-input-line-height);\n                &.fade {\n                    opacity: 0.5;\n                    font-size: 12px;\n                    letter-spacing: normal;\n                }\n            }\n            ::slotted([slot='start']) {\n                border-left: none;\n                border-top: none;\n                border-bottom: none;\n            }\n\n            ::slotted([slot='end']) {\n                border-right: none;\n                border-top: none;\n                border-bottom: none;\n            }\n        }\n        &.standard {\n            background-color: var(--wje-input-background-color);\n            font-family: var(--wje-input-font-family);\n            position: relative;\n            border-radius: var(--wje-input-border-radius);\n            padding-inline: 0;\n            padding-top: 0;\n            padding-bottom: 0;\n            transition: background-color 0.2s ease;\n            cursor: text;\n            &.focused {\n                input {\n                    border-color: var(--wje-input-border-color-focus) !important;\n                }\n            }\n            input {\n                display: block;\n                min-height: 32px;\n                padding-inline: 0.5rem;\n                padding-top: 0;\n                padding-bottom: 0;\n                background: none;\n                box-shadow: none;\n                width: 100%;\n                box-sizing: border-box;\n                border-radius: var(--wje-input-border-radius);\n                border-width: var(--wje-input-border-width);\n                border-style: var(--wje-input-border-style);\n                border-color: var(--wje-input-border-color);\n            }\n            label {\n                margin: 0;\n                display: inline-block;\n                opacity: 1;\n                cursor: text;\n                transition: opacity 0.2s ease;\n                line-height: var(--wje-input-line-height);\n            }\n            .input-wrapper {\n                &:hover .clear {\n                    visibility: visible;\n                }\n            }\n            ::slotted([slot='start']) {\n                border-right: none;\n                border-radius: var(--wje-input-border-radius) 0 0 var(--wje-input-border-radius);\n            }\n\n            ::slotted([slot='end']) {\n                border-left: none;\n                border-radius: 0 var(--wje-input-border-radius) var(--wje-input-border-radius) 0;\n            }\n\n            &.has-start input {\n                border-top-left-radius: 0;\n                border-bottom-left-radius: 0;\n            }\n\n            &.has-end input {\n                border-top-right-radius: 0;\n                border-bottom-right-radius: 0;\n            }\n            .error-message {\n                position: static;\n\n                background: transparent;\n                padding: 0.25rem 0;\n                left: auto;\n                transform: none;\n                color: var(--wje-input-color-invalid);\n                font-size: 12px;\n                line-height: normal;\n            }\n        }\n    }\n}\n\n.clear {\n    visibility: hidden;\n    position: absolute;\n    right: 0;\n    top: 3px;\n    --wje-padding-top: 0.25rem;\n    --wje-padding-start: 0.25rem;\n    --wje-padding-end: 0.25rem;\n    --wje-padding-bottom: 0.25rem;\n    --wje-button-margin-inline: 0 0.25rem;\n}\n\n:host([required]) .input-wrapper::after {\n    color: var(--wje-input-color-invalid);\n    content: '*';\n    font-family: var(--wje-force-mac-font-family);\n    font-size: 20px;\n    position: absolute;\n    right: 10px;\n    top: 2px;\n}\n\n:host([required]) .standard .input-wrapper::after {\n    top: 0;\n}\n\n:host([invalid]) {\n    .error-message {\n        display: block;\n    }\n    .default {\n        label {\n            opacity: 1 !important;\n            color: var(--wje-input-color-invalid) !important;\n            animation-name: shake;\n            animation-duration: 0.4s;\n            animation-iteration-count: 1;\n        }\n    }\n}\n\n::slotted([slot='start']),\n::slotted([slot='end']) {\n    display: flex;\n    align-items: center;\n    border-width: var(--wje-input-border-width);\n    border-style: var(--wje-input-border-style);\n    border-color: var(--wje-input-border-color);\n    padding-inline: var(--wje-input-slot-padding-inline);\n}\n\nslot[name='start'],\nslot[name='end'] {\n    display: flex;\n}\n\ninput {\n    background-color: var(--wje-input-background-color);\n    border-width: var(--wje-input-border-width);\n    border-style: var(--wje-input-border-style);\n    border-color: var(--wje-input-border-color);\n    font-family: var(--wje-input-font-family);\n    color: var(--wje-input-color);\n    appearance: none;\n    outline: 0;\n    padding: 0.25rem 0.5rem;\n    line-height: var(--wje-input-line-height);\n    font-size: 14px;\n    font-weight: normal;\n    vertical-align: middle;\n    min-height: 32px;\n}\n\n.error-message {\n    display: none;\n    position: absolute;\n    width: auto;\n    max-width: 100%;\n    min-width: auto;\n    border-radius: 50px;\n    background: black;\n    padding: 0.25rem 0.5rem;\n    top: 0;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    color: white;\n    font-size: 12px;\n    line-height: normal;\n}\n\n@keyframes shake {\n    8%,\n    41% {\n        transform: translateX(-4px);\n    }\n    25%,\n    58% {\n        transform: translateX(4px);\n    }\n    75% {\n        transform: translateX(-2px);\n    }\n    92% {\n        transform: translateX(2px);\n    }\n    0%,\n    100% {\n        transform: translateX(0);\n    }\n}\n";
+class InputFile extends WJElement {
   /**
-   * @constructor
-   * @summary InputFile constructor
-   * @param {Object} options - The options
+   * Constructor for the InputFile class.
    */
-  constructor(t = {}) {
+  constructor() {
     super();
     /**
-     * @summary Class name
+     * The class name for the InputFile class.
      * @type {string}
      */
-    u(this, 'className', 'Input');
-    this._value = '';
+    __publicField(this, "className", "Input");
+    this._value = "";
   }
-  set value(t) {
-    this._value = t;
+  /**
+   * @summary Sets the value of the input file.
+   * @param {string} value The value to set for the input file.
+   */
+  set value(value) {
+    this._value = value;
   }
+  /**
+   * Gets the value of the input file.
+   * @returns {string}
+   */
   get value() {
     return this._value;
   }
   /**
-   * @summary Get CSS stylesheet
+   * Returns the CSS stylesheet.
    * @static
-   * @returns {Object} styles
+   * @returns {object} styles
    */
   static get cssStyleSheet() {
-    return w;
+    return styles;
   }
   /**
-   * @summary Get observed attributes
+   * Returns the observed attributes.
    * @static
    * @returns {Array} An empty array
    */
@@ -42,62 +47,64 @@ class c extends m {
     return [];
   }
   /**
-   * @summary Setup attributes
+   * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * @summary Draw method
-   * @param {Object} context - The context
-   * @param {Object} store - The store
-   * @param {Object} params - The parameters
-   * @returns {Object} Document fragment
+   * Draws the component.
+   * @returns {object} Document fragment
    */
-  draw(t, a, s) {
-    let n = document.createDocumentFragment(),
-      o = document.createElement('div');
-    o.setAttribute('part', 'native'), o.classList.add('native-input-file', this.variant || 'default');
-    let d = document.createElement('input');
-    d.setAttribute('type', 'file'), d.setAttribute('multiple', ''), d.setAttribute('hidden', '');
-    let r = document.createElement('wje-input');
-    r.setAttribute('variant', 'standard'),
-      r.setAttribute('type', 'text'),
-      r.setAttribute('placeholder', 'Click to upload'),
-      r.setAttribute('readonly', '');
-    let l = document.createElement('span');
-    l.setAttribute('slot', 'start');
-    let p = document.createElement('wje-icon');
-    return (
-      p.setAttribute('slot', 'icon-only'),
-      p.setAttribute('name', 'cloud-upload'),
-      l.appendChild(p),
-      r.appendChild(l),
-      o.appendChild(r),
-      o.appendChild(d),
-      n.appendChild(o),
-      (this.native = o),
-      (this.input = r),
-      (this.fileInput = d),
-      n
-    );
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    native.setAttribute("part", "native");
+    native.classList.add("native-input-file", this.variant || "default");
+    let fileInput = document.createElement("input");
+    fileInput.setAttribute("type", "file");
+    fileInput.setAttribute("multiple", "");
+    fileInput.setAttribute("hidden", "");
+    let input = document.createElement("wje-input");
+    input.setAttribute("variant", "standard");
+    input.setAttribute("type", "text");
+    input.setAttribute("placeholder", "Click to upload");
+    input.setAttribute("readonly", "");
+    let span = document.createElement("span");
+    span.setAttribute("slot", "start");
+    let icon = document.createElement("wje-icon");
+    icon.setAttribute("slot", "icon-only");
+    icon.setAttribute("name", "cloud-upload");
+    span.appendChild(icon);
+    input.appendChild(span);
+    native.appendChild(input);
+    native.appendChild(fileInput);
+    fragment.appendChild(native);
+    this.native = native;
+    this.input = input;
+    this.fileInput = fileInput;
+    return fragment;
   }
   /**
-   * @summary After draw method
+   * After draw method for the InputFile class.
    */
   afterDraw() {
-    this.input.addEventListener('click', () => {
+    this.input.addEventListener("click", () => {
       this.fileInput.click();
-    }),
-      this.fileInput.addEventListener('change', (t) => {
-        let a = t.target.files,
-          s = [];
-        for (let n = 0; n < a.length; n++) s.push(a[n].name);
-        (this.input.value = s.join(', ')),
-          (this.value = a),
-          v.dispatchCustomEvent(this, 'wje-input-file:change', { files: a });
-      });
+    });
+    this.fileInput.addEventListener("change", (e) => {
+      let files = e.target.files;
+      let fileNames = [];
+      for (let i = 0; i < files.length; i++) {
+        fileNames.push(files[i].name);
+      }
+      this.input.value = fileNames.join(", ");
+      this.value = files;
+      event.dispatchCustomEvent(this, "wje-input-file:change", { files });
+    });
   }
 }
-c.define('wje-input-file', c);
-export { c as default };
+InputFile.define("wje-input-file", InputFile);
+export {
+  InputFile as default
+};

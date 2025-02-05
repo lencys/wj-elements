@@ -42,6 +42,17 @@ WebJET Elements obsahuje širokú škálu komponentov, ktoré sú optimalizovan�
 <!-- Todo: Linky -->
 
 <DocsCards>
+<a href="../api/accordion">
+    <wj-card className="Card-without-image" href="../api/accordion">
+        <wj-card-header>
+            <wj-icon name="triangle-inverted" size="large"></wj-icon>
+            <wj-card-title>Accordion</wj-card-title>
+        </wj-card-header>
+        <wj-card-content>
+          <p>Jednoduchá integrácia animácií do webových aplikácií.</p>
+        </wj-card-content>
+    </wj-card>
+  </a>
   <a href="../api/animation">
     <wj-card className="Card-without-image" href="../api/animation">
         <wj-card-header>

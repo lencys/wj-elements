@@ -1,85 +1,84 @@
-var u = Object.defineProperty;
-var f = (i, e, t) => (e in i ? u(i, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (i[e] = t));
-var l = (i, e, t) => (f(i, typeof e != 'symbol' ? e + '' : e, t), t);
-import h from './wje-element.js';
-import g from './wje-icon.js';
-function j(i, e) {
-  function t(o) {
-    const d = i.getBoundingClientRect(),
-      r = i.ownerDocument.defaultView,
-      n = d.left + r.pageXOffset,
-      m = d.top + r.pageYOffset,
-      c = o.pageX - n,
-      p = o.pageY - m;
-    e != null && e.onMove && e.onMove(c, p);
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+import Icon from "./wje-icon.js";
+function drag(container, options) {
+  function move(pointerEvent) {
+    const dims = container.getBoundingClientRect();
+    const defaultView = container.ownerDocument.defaultView;
+    const offsetX = dims.left + defaultView.pageXOffset;
+    const offsetY = dims.top + defaultView.pageYOffset;
+    const x = pointerEvent.pageX - offsetX;
+    const y = pointerEvent.pageY - offsetY;
+    if (options == null ? void 0 : options.onMove) {
+      options.onMove(x, y);
+    }
   }
-  function a() {
-    document.removeEventListener('pointermove', t),
-      document.removeEventListener('pointerup', a),
-      e != null && e.onStop && e.onStop();
+  function stop() {
+    document.removeEventListener("pointermove", move);
+    document.removeEventListener("pointerup", stop);
+    if (options == null ? void 0 : options.onStop) {
+      options.onStop();
+    }
   }
-  document.addEventListener('pointermove', t, { passive: !0 }),
-    document.addEventListener('pointerup', a),
-    (e == null ? void 0 : e.initialEvent) instanceof PointerEvent && t(e.initialEvent);
+  document.addEventListener("pointermove", move, { passive: true });
+  document.addEventListener("pointerup", stop);
+  if ((options == null ? void 0 : options.initialEvent) instanceof PointerEvent) {
+    move(options.initialEvent);
+  }
 }
-const b =
-  ':host{--wje-img-compare-divider-area: 12px;--wje-img-compare-divider-background: white;--wje-img-compare-divider-size: 2px;--wje-img-compare-divider-left: 50%;--wje-img-compare-position: 50%;--wje-img-compare-clip-path: inset(0 calc(100% - var(--wje-img-compare-position)) 0 0);---wje-img-compare-divider-area: auto;display:inline-block;position:relative;width:100%;border-color:var(--wje-border-color);border-style:solid;border-width:1px}.wje-before,.wje-after{display:block}.wje-after{position:absolute;top:0;left:0;height:100%;width:100%;clip-path:var(--wje-img-compare-clip-path)}.native-split-view{max-width:100%;max-height:100%;overflow:hidden}.wje-divider{display:flex;position:absolute;align-items:center;justify-content:center;z-index:1;background-color:var(--wje-img-compare-divider-background);height:100%;width:var(--wje-img-compare-divider-size);cursor:col-resize;top:0;left:var(--wje-img-compare-divider-left)}.wje-divider:after{display:flex;content:"";position:absolute;height:100%;left:calc(var(--wje-img-compare-divider-area) / -2 + var(--wje-img-compare-divider-size) / 2);width:var(---wje-img-compare-divider-area)}.wje-divider wje-icon{position:absolute;background-color:#fff;padding:.5rem;color:var(--wje-color-dark);border-radius:var(--wje-border-radius-circle);box-shadow:#523f6933 0 0 30px 10px;background:var(--wje-color-white)!important}';
-class w extends h {
+const styles = "/*\n[ WJ Image Compare ]\n*/\n\n:host {\n    display: inline-block;\n    position: relative;\n    width: 100%;\n    border-color: var(--wje-border-color);\n    border-style: solid;\n    border-width: 1px;\n}\n\n.wje-before,\n.wje-after {\n    display: block;\n}\n\n.wje-after {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 100%;\n    width: 100%;\n    clip-path: var(--wje-img-compare-clip-path);\n}\n\n.native-split-view {\n    max-width: 100%;\n    max-height: 100%;\n    overflow: hidden;\n}\n\n.wje-divider {\n    display: flex;\n    position: absolute;\n    align-items: center;\n    justify-content: center;\n    z-index: 1;\n    background-color: var(--wje-img-compare-divider-background);\n    height: 100%;\n    width: var(--wje-img-compare-divider-size);\n    cursor: col-resize;\n    top: 0;\n    left: var(--wje-img-compare-divider-left);\n    &:after {\n        display: flex;\n        content: '';\n        position: absolute;\n        height: 100%;\n        left: calc(var(--wje-img-compare-divider-area) / -2 + var(--wje-img-compare-divider-size) / 2);\n        width: var(---wje-img-compare-divider-area);\n    }\n    wje-icon {\n        position: absolute;\n        background-color: white;\n        padding: 0.5rem;\n        color: var(--wje-color-dark);\n        border-radius: var(--wje-border-radius-circle);\n        box-shadow: rgba(82, 63, 105, 0.2) 0 0 30px 10px;\n        background: var(--wje-color-white) !important;\n    }\n}\n";
+class ImgComparer extends WJElement {
   /**
    * Creates an instance of ImgComparer.
-   *
-   * @constructor
+   * @class
    */
   constructor() {
     super();
     /**
      * Dependencies of the ImgComparer component.
-     *
-     * @property {Object} dependencies
+     * @property {object} dependencies
      */
-    l(this, 'dependencies', {
-      'wje-icon': g,
+    __publicField(this, "dependencies", {
+      "wje-icon": Icon
     });
-    l(this, 'className', 'ImgComparer');
+    __publicField(this, "className", "ImgComparer");
     /**
      * Handles the drag event.
-     *
-     * @param {Event} e - The event.
+     * @param {Event} e The event.
      */
-    l(this, 'handleDrag', (t) => {
-      const { width: a } = this.native.getBoundingClientRect();
-      j(this, {
-        onMove: (o) => {
-          let d = (o / a) * 100;
-          (this.position = parseFloat(this.clamp(d, 0, 100).toFixed(2))),
-            this.native.style.setProperty('--wje-img-compare-divider-left', this.position + '%'),
-            this.native.style.setProperty('--wje-img-compare-clip-path', `inset(0 ${100 - this.position}% 0 0)`);
+    __publicField(this, "handleDrag", (e) => {
+      const { width } = this.native.getBoundingClientRect();
+      drag(this, {
+        onMove: (x) => {
+          let value = x / width * 100;
+          this.position = parseFloat(this.clamp(value, 0, 100).toFixed(2));
+          this.native.style.setProperty("--wje-img-compare-divider-left", this.position + "%");
+          this.native.style.setProperty("--wje-img-compare-clip-path", `inset(0 ${100 - this.position}% 0 0)`);
         },
-        initialEvent: t,
+        initialEvent: e
       });
     });
     /**
      * Clamps a number between a minimum and maximum value.
-     *
-     * @param {number} num - The number to clamp.
-     * @param {number} min - The minimum value.
-     * @param {number} max - The maximum value.
+     * @param {number} num The number to clamp.
+     * @param {number} min The minimum value.
+     * @param {number} max The maximum value.
      * @returns {number} The clamped number.
      */
-    l(this, 'clamp', (t, a, o) => Math.min(Math.max(t, a), o));
+    __publicField(this, "clamp", (num, min, max) => Math.min(Math.max(num, min), max));
   }
   /**
    * Returns the CSS styles for the component.
-   *
    * @static
    * @returns {CSSStyleSheet}
    */
   static get cssStyleSheet() {
-    return b;
+    return styles;
   }
   /**
    * Returns the list of attributes to observe for changes.
-   *
    * @static
    * @returns {Array<string>}
    */
@@ -90,46 +89,42 @@ class w extends h {
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
    * Draws the component.
-   *
-   * @param {Object} context - The context for drawing.
-   * @param {Object} store - The store for drawing.
-   * @param {Object} params - The parameters for drawing.
    * @returns {DocumentFragment}
    */
-  draw(t, a, o) {
-    let d = document.createDocumentFragment(),
-      r = document.createElement('div');
-    r.classList.add('native-split-view');
-    let n = document.createElement('div');
-    n.classList.add('wje-before');
-    let m = document.createElement('slot');
-    m.setAttribute('name', 'before');
-    let c = document.createElement('div');
-    c.classList.add('wje-after');
-    let p = document.createElement('slot');
-    p.setAttribute('name', 'after');
-    let v = document.createElement('wje-icon');
-    v.setAttribute('name', 'arrow-bar-both');
-    let s = document.createElement('div');
-    return (
-      s.classList.add('wje-divider'),
-      s.setAttribute('part', 'divider'),
-      s.addEventListener('mousedown', this.handleDrag, !1),
-      n.appendChild(m),
-      c.appendChild(p),
-      s.appendChild(v),
-      r.appendChild(n),
-      r.appendChild(c),
-      r.appendChild(s),
-      d.appendChild(r),
-      (this.native = r),
-      d
-    );
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    native.classList.add("native-split-view");
+    let beforeElement = document.createElement("div");
+    beforeElement.classList.add("wje-before");
+    let before = document.createElement("slot");
+    before.setAttribute("name", "before");
+    let afterElement = document.createElement("div");
+    afterElement.classList.add("wje-after");
+    let after = document.createElement("slot");
+    after.setAttribute("name", "after");
+    let icon = document.createElement("wje-icon");
+    icon.setAttribute("name", "arrow-bar-both");
+    let dividerElement = document.createElement("div");
+    dividerElement.classList.add("wje-divider");
+    dividerElement.setAttribute("part", "divider");
+    dividerElement.addEventListener("mousedown", this.handleDrag, false);
+    beforeElement.appendChild(before);
+    afterElement.appendChild(after);
+    dividerElement.appendChild(icon);
+    native.appendChild(beforeElement);
+    native.appendChild(afterElement);
+    native.appendChild(dividerElement);
+    fragment.appendChild(native);
+    this.native = native;
+    return fragment;
   }
 }
-w.define('wje-img-comparer', w);
-export { w as default };
+ImgComparer.define("wje-img-comparer", ImgComparer);
+export {
+  ImgComparer as default
+};

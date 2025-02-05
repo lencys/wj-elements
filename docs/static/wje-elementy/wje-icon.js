@@ -1,138 +1,190 @@
-var f = Object.defineProperty;
-var u = (e, t, r) => (t in e ? f(e, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : (e[t] = r));
-var l = (e, t, r) => (u(e, typeof t != 'symbol' ? t + '' : t, r), r);
-import g from './wje-element.js';
-const n = /* @__PURE__ */ new Map(),
-  h = /* @__PURE__ */ new Map();
-let a;
-const m = (e) => (c(e) && ((e = e.trim()), j(e)) ? e : null),
-  j = (e) => e.length > 0 && /(\/|\.)/.test(e),
-  v = (e) => e.startsWith('data:image/svg+xml'),
-  p = (e) => e.indexOf(';utf8,') !== -1,
-  c = (e) => typeof e == 'string',
-  z = (e) => {
-    const t = document.createElement('div');
-    t.innerHTML = e;
-    const r = t.firstElementChild;
-    return r && r.nodeName.toLowerCase() === 'svg' && (r.getAttribute('class'), w(r)) ? t.innerHTML : '';
-  },
-  w = (e) => {
-    if (e.nodeType === 1) {
-      if (e.nodeName.toLowerCase() === 'script') return !1;
-      for (let t = 0; t < e.attributes.length; t++) {
-        const r = e.attributes[t].name;
-        if (c(r) && r.toLowerCase().indexOf('on') === 0) return !1;
-      }
-      for (let t = 0; t < e.childNodes.length; t++) if (!w(e.childNodes[t])) return !1;
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const iconContent = /* @__PURE__ */ new Map();
+const requests = /* @__PURE__ */ new Map();
+let parser;
+const getSrc = (src) => {
+  if (isStr(src)) {
+    src = src.trim();
+    if (isSrc(src)) {
+      return src;
     }
-    return !0;
-  },
-  b = (e, t) => {
-    let r = h.get(e);
-    if (!r)
-      if (typeof fetch < 'u' && typeof document < 'u')
-        if (v(e) && p(e)) {
-          a || (a = new DOMParser());
-          const o = a.parseFromString(e, 'text/html').querySelector('svg');
-          return o && n.set(e, o.outerHTML), Promise.resolve();
-        } else
-          (r = fetch(e).then((s) => {
-            if (s.ok)
-              return s.text().then((o) => {
-                o && t !== !1 && (o = z(o)), n.set(e, o || '');
-              });
-            n.set(e, '');
-          })),
-            h.set(e, r);
-      else return n.set(e, ''), Promise.resolve();
-    return r;
-  },
-  y = (e) => {
-    let t = m(e.src);
-    return t || ((t = L(e.name)), t ? x(t, e.hasAttribute('filled')) : null);
-  },
-  L = (e) => (!c(e) || e.trim() === '' || e.replace(/[a-z]|-|\d/gi, '') !== '' ? null : e),
-  x = (e, t = !1) => {
-    const r = `/assets/img/icons/${t ? 'filled' : 'outline'}/${e}.svg`;
-    let s = new URL(import.meta.url),
-      o = s.pathname,
-      i = o.substring(0, o.lastIndexOf('/'));
-    return new URL(s.origin + i + r).href;
-  },
-  S =
-    ':host(.wje-color-primary){--wje-icon-color: var(--wje-color-primary)}:host(.wje-color-complete){--wje-icon-color: var(--wje-color-complete)}:host(.wje-color-success){--wje-icon-color: var(--wje-color-success)}:host(.wje-color-warning){--wje-icon-color: var(--wje-color-warning)}:host(.wje-color-danger){--wje-icon-color: var(--wje-color-danger)}:host(.wje-color-info){--wje-icon-color: var(--wje-color-info)}:host{--wje-icon-size: 1rem;--wje-icon-width: var(--wje-icon-size, 100%);--wje-icon-height: var(--wje-icon-size, 100%);//background: transparent !important;display:inline-block;width:var(--wje-icon-width);height:var(--wje-icon-height);contain:strict;fill:currentColor;box-sizing:content-box!important}.icon-inner,svg{display:block;width:var(--wje-icon-width);height:var(--wje-icon-height)}:host(.wje-size-small){--wje-icon-size: 18px}:host(.wje-size-large){--wje-icon-size: 32px}:host(.wje-size){font-size:var(--wje-icon-size)}:host(.wje-color){color:var(--wje-icon-color)!important}';
-class d extends g {
+  }
+  return null;
+};
+const isSrc = (str) => str.length > 0 && /(\/|\.)/.test(str);
+const isSvgDataUrl = (url) => url.startsWith("data:image/svg+xml");
+const isEncodedDataUrl = (url) => url.indexOf(";utf8,") !== -1;
+const isStr = (val) => typeof val === "string";
+const validateContent = (svgContent) => {
+  const div = document.createElement("div");
+  div.innerHTML = svgContent;
+  const svgElm = div.firstElementChild;
+  if (svgElm && svgElm.nodeName.toLowerCase() === "svg") {
+    svgElm.getAttribute("class") || "";
+    if (isValid(svgElm)) {
+      return div.innerHTML;
+    }
+  }
+  return "";
+};
+const isValid = (elm) => {
+  if (elm.nodeType === 1) {
+    if (elm.nodeName.toLowerCase() === "script") {
+      return false;
+    }
+    for (let i = 0; i < elm.attributes.length; i++) {
+      const name = elm.attributes[i].name;
+      if (isStr(name) && name.toLowerCase().indexOf("on") === 0) {
+        return false;
+      }
+    }
+    for (let i = 0; i < elm.childNodes.length; i++) {
+      if (!isValid(elm.childNodes[i])) {
+        return false;
+      }
+    }
+  }
+  return true;
+};
+const getSvgContent = (url, sanitize) => {
+  let req = requests.get(url);
+  if (!req) {
+    if (typeof fetch !== "undefined" && typeof document !== "undefined") {
+      if (isSvgDataUrl(url) && isEncodedDataUrl(url)) {
+        if (!parser) {
+          parser = new DOMParser();
+        }
+        const doc = parser.parseFromString(url, "text/html");
+        const svg = doc.querySelector("svg");
+        if (svg) {
+          iconContent.set(url, svg.outerHTML);
+        }
+        return Promise.resolve();
+      } else {
+        req = fetch(url).then((rsp) => {
+          if (rsp.ok) {
+            return rsp.text().then((svgContent) => {
+              if (svgContent && sanitize !== false) {
+                svgContent = validateContent(svgContent);
+              }
+              iconContent.set(url, svgContent || "");
+            });
+          }
+          return iconContent.set(url, "");
+        });
+        requests.set(url, req);
+      }
+    } else {
+      iconContent.set(url, "");
+      return Promise.resolve();
+    }
+  }
+  return req;
+};
+const getUrl = (i) => {
+  let url = getSrc(i.src);
+  if (url) {
+    return url;
+  }
+  url = getName(i.name);
+  if (url) {
+    return getNamedUrl(url, i.hasAttribute("filled"));
+  }
+  return null;
+};
+const getName = (iconName) => {
+  if (!isStr(iconName) || iconName.trim() === "") {
+    return null;
+  }
+  const invalidChars = iconName.replace(/[a-z]|-|\d/gi, "");
+  if (invalidChars !== "") {
+    return null;
+  }
+  return iconName;
+};
+const getNamedUrl = (iconName, filled = false) => {
+  const path = `${filled ? "filled" : "outline"}/${iconName}.svg`;
+  let url = new URL(process.env.VITE_ICON_ASSETS_URL + path);
+  return url.href;
+};
+const styles = "/*\n[ WJ Icon ]\n*/\n\n:host {\n    width: var(--wje-icon-size);\n    height: var(--wje-icon-size);\n    display: block;\n}\n\n.native-icon {\n    display: flex;\n    align-items: center;\n}\n\nsvg {\n    width: 100%;\n    height: 100%;\n    stroke-width: var(--wje-icon-stroke);\n    color: var(--wje-icon-color);\n}\n\n/*STROKE*/\n:host([stroke='1']) {\n    --wje-icon-stroke: 1;\n}\n\n:host([stroke='1.25']) {\n    --wje-icon-stroke: 1.25;\n}\n\n:host([stroke='1.5']) {\n    --wje-icon-stroke: 1.5;\n}\n\n:host([stroke='1.75']) {\n    --wje-icon-stroke: 1.75;\n}\n\n:host([stroke='2']) {\n    --wje-icon-stroke: 2;\n}\n\n/*SIZE*/\n:host([size='2x-small']) {\n    --wje-icon-size: var(--wje-size-2x-small);\n}\n\n:host([size='x-small']) {\n    --wje-icon-size: var(--wje-size-x-small);\n}\n\n:host([size='small']) {\n    --wje-icon-size: var(--wje-size-small);\n}\n\n:host([size='medium']) {\n    --wje-icon-size: var(--wje-size-medium);\n}\n\n:host([size='large']) {\n    --wje-icon-size: var(--wje-size-large);\n}\n\n:host([size='x-large']) {\n    --wje-icon-size: var(--wje-size-x-large);\n}\n\n:host([size='2x-large']) {\n    --wje-icon-size: var(--wje-size-2x-large);\n}\n\n:host([size='3x-large']) {\n    --wje-icon-size: var(--wje-size-3x-large);\n}\n\n:host([size='4x-large']) {\n    --wje-icon-size: var(--wje-size-4x-large);\n}\n\n/*COLOR*/\n:host([color='primary']) .native-icon {\n    color: var(--wje-color-primary-9);\n}\n\n:host([color='complete']) .native-icon {\n    color: var(--wje-color-complete-9);\n}\n\n:host([color='success']) .native-icon {\n    color: var(--wje-color-success-9);\n}\n\n:host([color='warning']) .native-icon {\n    color: var(--wje-color-warning-9);\n}\n\n:host([color='danger']) .native-icon {\n    color: var(--wje-color-danger-9);\n}\n\n:host([color='info']) .native-icon {\n    color: var(--wje-color-info-9);\n}\n\n:host([color='menu']) .native-icon {\n    color: var(--wje-color-contrast-9);\n}\n";
+class Icon extends WJElement {
   /**
    * Creates an instance of IconElement.
-   *
-   * @constructor
+   * @class
    */
   constructor() {
     super();
-    l(this, 'className', 'Icon');
+    /**
+     * Sets the name of the icon.
+     * @type {string}
+     */
+    __publicField(this, "className", "Icon");
   }
   /**
    * Returns the CSS styles for the component.
-   *
    * @static
    * @returns {CSSStyleSheet}
    */
   static get cssStyleSheet() {
-    return S;
+    return styles;
   }
   /**
    * Returns the list of attributes to observe for changes.
-   *
    * @static
    * @returns {Array<string>}
    */
   static get observedAttributes() {
-    return ['name'];
+    return ["name", "filled"];
   }
   /**
    * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
    * Draws the component.
-   *
-   * @param {Object} context - The context for drawing.
-   * @param {Object} store - The store for drawing.
-   * @param {Object} params - The parameters for drawing.
+   * @param {object} context The context for drawing.
+   * @param {object} store The store for drawing.
+   * @param {object} params The parameters for drawing.
    * @returns {DocumentFragment}
    */
-  draw(r, s, o) {
-    let i = document.createDocumentFragment();
-    return (
-      this.classList.add('lazy-loaded-image', 'lazy'),
-      (this.element = document.createElement('div')),
-      this.element.classList.add('icon-inner'),
-      (this.url = y(this)),
-      this.classList.add('wje-size'),
-      this.color && this.classList.add('wje-color-' + this.color, 'wje-color'),
-      this.size && this.classList.add('wje-size-' + this.size),
-      i.appendChild(this.element),
-      i
-    );
+  draw(context, store, params) {
+    let fragment = document.createDocumentFragment();
+    this.classList.add("lazy-loaded-image", "lazy");
+    let native = document.createElement("div");
+    native.setAttribute("part", "native");
+    native.classList.add("native-icon");
+    this.url = getUrl(this);
+    fragment.appendChild(native);
+    this.native = native;
+    return fragment;
   }
   /**
    * Called after the component has been drawn.
    */
   afterDraw() {
-    let r = new IntersectionObserver((s, o) => {
-      s.forEach((i) => {
-        i.isIntersecting &&
-          (b(this.url).then((C) => {
-            (this.element.innerHTML = n.get(this.url)), this.element.querySelector('svg').setAttribute('part', 'svg');
-          }),
-          this.classList.remove('lazy'),
-          r.unobserve(i.target));
+    let lazyImageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          getSvgContent(this.url).then((svgContent) => {
+            var _a;
+            this.native.innerHTML = iconContent == null ? void 0 : iconContent.get(this.url);
+            (_a = this.native.querySelector("svg")) == null ? void 0 : _a.setAttribute("part", "svg");
+          });
+          this.classList.remove("lazy");
+          lazyImageObserver.unobserve(entry.target);
+        }
       });
     });
-    r.observe(this.element);
+    lazyImageObserver.observe(this.native);
   }
 }
-d.define('wje-icon', d);
-export { d as default };
+Icon.define("wje-icon", Icon);
+export {
+  Icon as default
+};

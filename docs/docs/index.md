@@ -42,17 +42,17 @@ Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/install
 <DocsCards>
 
 {' '}
-<a href="intro/install">
-  <wj-card>
-    <wj-card-header>
-      <wj-icon name="world-download" size="large"></wj-icon>
-      <wj-card-title>Sprievodca inštaláciou</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
-      <p>Podrobný sprievodca inštaláciou WebJET elementov.</p>
-    </wj-card-content>
-  </wj-card>
-</a>
+<a href="intro/install">   
+  <wj-card>   
+    <wj-card-header>   
+      <wj-icon name="world-download" size="large"></wj-icon>   
+      <wj-card-title>Sprievodca inštaláciou</wj-card-title>   
+    </wj-card-header>   
+    <wj-card-content>   
+      <p>Podrobný sprievodca inštaláciou WebJET elementov.</p>   
+    </wj-card-content>   
+  </wj-card>   
+</a>   
 
 {' '}
 <a href="components">

@@ -1,111 +1,333 @@
-var c = Object.defineProperty;
-var m = (i, t, e) => (t in i ? c(i, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : (i[t] = e));
-var p = (i, t, e) => (m(i, typeof t != 'symbol' ? t + '' : t, e), e);
-import f from './wje-element.js';
-const l = (i, t, e) => {
-    i.classList.add('pgn-simple'), (t.innerHTML = '<div>' + e.message + '</div>'), e.showClose && t.appendChild(a());
-  },
-  b = (i, t, e) => {
-    i.classList.add('pgn-flip'), (t.innerHTML = '<span>' + e.message + '</span>'), e.showClose && t.appendChild(a());
-  },
-  g = (i, t, e) => {
-    i.classList.add('pgn-circle');
-    let r = '',
-      n = '';
-    e.title && (r = `<p><b>${e.title}</b></p>`),
-      e.message && (n = `<p>${e.message}</p>`),
-      (t.innerHTML = `<wje-avatar>
-      <img alt="Silhouette of a person's head" src="/assets/img/avatar.svg" />
-    </wje-avatar>
-    <div>
-      ${r + n}
-  </div>`),
-      e.showClose && t.appendChild(a());
-  },
-  w = (i, t, e) => {
-    i.classList.add('pgn-bar'),
-      t.classList.add('alert-' + e.type),
-      (t.innerHTML = '<div>' + e.message + '</div>'),
-      e.showClose && t.appendChild(a());
-  },
-  a = () => {
-    let i = document.createElement('wje-icon');
-    i.setAttribute('name', 'x'), i.setAttribute('slot', 'icon-only');
-    let t = document.createElement('wje-button');
-    return (
-      t.setAttribute('fill', 'link'), t.setAttribute('size', 'small'), t.classList.add('close'), t.appendChild(i), t
-    );
-  },
-  h =
-    ':host{position:fixed;z-index:999}:host([data-position$="-left"]){left:0}:host([data-position$="-right"]){right:0}:host([data-position^="top-"]){top:0}:host([data-position^="bottom-"]){bottom:0}:host([data-position="top"]){top:0;left:0;right:0}:host([data-position="bottom"]){bottom:0;left:0;right:0}.pgn{position:relative;margin:10px}.pgn .alert{margin:0 0 4px}.pgn-simple .alert{padding-top:13px;padding-bottom:13px;max-width:500px;animation:fadeIn .3s cubic-bezier(.05,.74,.27,.99) forwards;-webkit-animation:fadeIn .3s cubic-bezier(.05,.74,.27,.99) forwards;max-height:250px;overflow:hidden}.pgn-bar{overflow:hidden;margin:0}.pgn-bar .alert{border-radius:0;padding-top:13px;padding-bottom:13px;max-height:91px}:host([data-position="top"]) .pgn-bar .alert{animation:slideInFromTop .5s cubic-bezier(.05,.74,.27,.99) forwards;-webkit-animation:slideInFromTop .5s cubic-bezier(.05,.74,.27,.99) forwards;transform-origin:top left;-webkit-transform-origin:top left}:host([data-position="bottom"]) .pgn-bar .alert{animation:slideInFromBottom .5s cubic-bezier(.05,.74,.27,.99) forwards;-webkit-animation:slideInFromBottom .5s cubic-bezier(.05,.74,.27,.99) forwards;transform-origin:bottom left;-webkit-transform-origin:bottom left}.pgn-bar .alert span{opacity:0;animation:fadeIn .3s cubic-bezier(.05,.74,.27,.99) forwards;-webkit-animation:fadeIn .3s cubic-bezier(.05,.74,.27,.99) forwards}@keyframes slideInFromTop{0%{transform:translateY(-100%)}to{transform:translateY(0)}}@-webkit-keyframes slideInFromTop{0%{-webkit-transform:translateY(-100%)}to{-webkit-transform:translateY(0)}}@keyframes slideInFromBottom{0%{transform:translateY(100%)}to{transform:translateY(0)}}@-webkit-keyframes slideInFromBottom{0%{-webkit-transform:translateY(100%)}to{-webkit-transform:translateY(0)}}.pgn-circle .alert{margin-bottom:10px;border-radius:300px;animation:fadeInCircle .3s ease forwards,resizeCircle .3s .4s cubic-bezier(.25,.25,.4,1.6) forwards;-webkit-animation:fadeInCircle .3s ease forwards,resizeCircle .3s .4s cubic-bezier(.25,.25,.4,1.6) forwards;height:48px;overflow:hidden;padding:6px 55px 6px 6px;-webkit-transform:translateZ(0);position:relative;display:flex}:host[data-position$=-right] .pgn-circle .alert{float:right}:host[data-position$=-left] .pgn-circle .alert{float:left}:host[data-position^=bottom-] .pgn-circle .alert{margin-bottom:20px}wje-avatar:first-child{margin-right:8px}.pgn-circle .alert .close{margin-top:-12px;position:absolute;right:18px;top:50%;opacity:0;animation:fadeIn .3s .5s ease forwards;-webkit-animation:fadeIn .3s .5s ease forwards}.pgn-circle .alert p{margin:0}.pgn-circle .alert>div{display:flex;flex-direction:column;justify-content:center}.pgn-circle .alert>div>div{display:table-cell;vertical-align:middle}@keyframes fadeInCircle{0%{opacity:0;width:60px}to{opacity:1;width:60px}}@-webkit-keyframes fadeInCircle{0%{opacity:0;width:60px}to{opacity:1;width:60px}}@keyframes resizeCircle{0%{width:60px}to{width:300px}}@-webkit-keyframes resizeCircle{0%{width:60px}to{width:300px}}:host[data-position^=bottom-] .pgn-flip .alert{-webkit-transform-origin:50% 100%;transform-origin:50% 100%}.pgn-flip .alert{-webkit-transform-origin:50% 0%;transform-origin:50% 0%;-webkit-animation-name:flipInX;animation-name:flipInX;-webkit-animation-duration:.8s;animation-duration:.8s;border-radius:0;padding:25px 35px;max-width:500px;max-height:250px;overflow:hidden}@-webkit-keyframes flipInX{0%{-webkit-transform:perspective(400px) rotate3d(1,0,0,-90deg);-webkit-transition-timing-function:ease-in}40%{-webkit-transform:perspective(400px) rotate3d(1,0,0,20deg);-webkit-transition-timing-function:ease-out}60%{-webkit-transform:perspective(400px) rotate3d(1,0,0,-10deg);-webkit-transition-timing-function:ease-in;opacity:1}80%{-webkit-transform:perspective(400px) rotate3d(1,0,0,5deg);-webkit-transition-timing-function:ease-out}to{-webkit-transform:perspective(400px)}}@keyframes flipInX{0%{-webkit-transform:perspective(400px) rotate3d(1,0,0,-90deg);transform:perspective(400px) rotateX(-90deg);-webkit-transition-timing-function:ease-in;transition-timing-function:ease-in}40%{-webkit-transform:perspective(400px) rotate3d(1,0,0,20deg);transform:perspective(400px) rotateX(20deg);-webkit-transition-timing-function:ease-out;transition-timing-function:ease-out}60%{-webkit-transform:perspective(400px) rotate3d(1,0,0,-10deg);transform:perspective(400px) rotateX(-10deg);-webkit-transition-timing-function:ease-in;transition-timing-function:ease-in;opacity:1}80%{-webkit-transform:perspective(400px) rotate3d(1,0,0,5deg);transform:perspective(400px) rotateX(5deg);-webkit-transition-timing-function:ease-out;transition-timing-function:ease-out}to{-webkit-transform:perspective(400px);transform:perspective(400px)}}@keyframes fadeIn{0%{opacity:0}to{opacity:1}}@-webkit-keyframes fadeIn{0%{opacity:0}to{opacity:1}}:host([data-position="top"]){top:60px;left:0}:host([data-position="bottom"]){left:0}:host([data-position$="-left"]){left:0;right:auto}:host([data-position^="top-"]){bottom:auto}:host{z-index:999}@media (max-width: 979px){body .pgn-wrapper[data-position=top],body .pgn-wrapper[data-position=bottom]{left:0!important}}@media (max-width: 767px){body .pgn-wrapper[data-position$=-left],body .pgn-wrapper[data-position$=-right]{left:10px!important;right:10px!important}body .pgn-wrapper[data-position$=-right] .alert,body .pgn-wrapper[data-position$=-left] .alert{max-width:100%;width:100%}}.alert{background-image:none;box-shadow:none;text-shadow:none;padding:9px 19px 9px 15px;border-radius:3px;font-size:13px;border-width:0;transition:all .2s linear 0s;display:flex;align-items:center}.alert.bordered{border-width:1px}.alert .link{color:#ce8f22;font-weight:700}.alert .alert-heading{color:#ce8f22!important;margin-bottom:5px;font-weight:600}.alert .btn-small{position:relative;top:-3.5px}.alert .button-set .btn{position:relative;top:8px}.alert-danger,.alert-error,.alert-danger.btn,.alert-error.btn{background-color:var(--wje-color-primary-2)!important;color:var(--wje-color-primary-11)!important;border-color:var(--wje-color-primary-9)!important}.alert-danger .close,.alert-error .close,.alert-danger.btn .close,.alert-error.btn .close{background-position:-95px -10px!important}.alert-warning{background-color:var(--wje-color-warning-2)!important;color:var(--wje-color-warning-11)!important;border-color:var(--wje-color-warning-9)!important}.alert-info{background-color:var(--wje-color-complete-2)!important;color:var(--wje-color-complete-11)!important;border-color:var(--wje-color-complete-9)!important}.alert-info .close{background-position:-67px -10px!important}.alert-success,.alert-success.btn{background-color:var(--wje-color-success-2)!important;color:var(--wje-color-success-11)!important;border-color:var(--wje-color-success-9)!important}.alert-success .close,.alert-success.btn .close{background-position:-38px -10px!important}.alert-default{background-color:var(--wje-color-contrast-2)!important;color:var(--wje-color-contrast-11)!important;border-color:var(--wje-color-contrast-9)!important}.alert-default .close{background-position:-67px -10px!important}';
-class d extends f {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement, { WjElementUtils, event } from "./wje-element.js";
+const styles = "/*\n[ WJ Toast ]\n*/\n\n:host {\n    position: relative;\n    z-index: 9999;\n    width: 300px;\n    margin: 0.5rem 0;\n    display: none;\n}\n\n:host([open]) {\n    display: block;\n}\n\n.native-toast {\n    display: flex;\n    align-items: center;\n    padding: 1rem;\n    overflow: hidden;\n    margin: 0;\n    border-width: 1px;\n    border-style: solid;\n    border-radius: var(--wje-border-radius-large);\n    position: relative;\n\n    &.has-media slot[name='media'] {\n        flex: 0 0 1.5rem;\n        width: 1.5rem;\n        display: flex;\n        margin-right: 0.5rem;\n        justify-content: center;\n    }\n\n    .content {\n        font-size: var(--wje-font-size-small);\n        .headline {\n            font-size: var(--wje-font-size);\n            font-weight: var(--wje-font-weight-bold);\n        }\n    }\n\n    wje-button {\n        --wje-button-margin-inline: auto 0;\n        margin-left: auto !important;\n    }\n\n    .countdown {\n        position: absolute;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        height: 4px;\n        .countdown-bar {\n            height: 100%;\n        }\n    }\n}\n\n:host([position='top']) {\n    animation: slideDown 0.3s ease-out forwards;\n    top: 1rem;\n    left: auto;\n    right: auto;\n}\n\n:host::part(icon) {\n    margin-right: 0.5rem;\n}\n\n@keyframes slideDown {\n    0% {\n        transform: translateY(-100%);\n    }\n    100% {\n        transform: translateY(0);\n    }\n}\n\n/*PRIMARY*/\n:host([color='primary']) .native-toast {\n    background-color: var(--wje-color-primary-1);\n    color: var(--wje-color-primary-9);\n    border-color: var(--wje-color-primary-3);\n}\n\n/*COMPLETE*/\n:host([color='complete']) .native-toast {\n    background-color: var(--wje-color-complete-1);\n    color: var(--wje-color-complete-9);\n    border-color: var(--wje-color-complete-3);\n}\n\n/*SUCCESS*/\n:host([color='success']) .native-toast {\n    background-color: var(--wje-color-success-1);\n    color: var(--wje-color-success-9);\n    border-color: var(--wje-color-success-3);\n}\n\n/*WARNING*/\n:host([color='warning']) .native-toast {\n    background-color: var(--wje-color-warning-1);\n    color: var(--wje-color-warning-11);\n    border-color: var(--wje-color-warning-3);\n}\n\n/*DANGER*/\n:host([color='danger']) .native-toast {\n    background-color: var(--wje-color-danger-1);\n    color: var(--wje-color-danger-9);\n    border-color: var(--wje-color-danger-3);\n}\n\n/*INFO*/\n:host([color='info']) .native-toast {\n    background-color: var(--wje-color-info-1);\n    color: var(--wje-color-info-11);\n    border-color: var(--wje-color-info-4);\n}\n\n/*CONTRAST*/\n:host([color='contrast']) .native-toast {\n    background-color: var(--wje-color-contrast-2);\n    color: var(--wje-color-contrast-9);\n    border-color: var(--wje-color-contrast-3);\n}\n\n/*PRIMARY*/\n:host([color='primary']) .countdown-bar {\n    background-color: var(--wje-color-primary-9);\n}\n\n/*COMPLETE*/\n:host([color='complete']) .countdown-bar {\n    background-color: var(--wje-color-complete-9);\n}\n\n/*SUCCESS*/\n:host([color='success']) .countdown-bar {\n    background-color: var(--wje-color-success-9);\n}\n\n/*WARNING*/\n:host([color='warning']) .countdown-bar {\n    background-color: var(--wje-color-warning-9);\n}\n\n/*DANGER*/\n:host([color='danger']) .countdown-bar {\n    background-color: var(--wje-color-danger-9);\n}\n\n/*INFO*/\n:host([color='info']) .countdown-bar {\n    background-color: var(--wje-color-info-9);\n}\n\n/*CONTRAST*/\n:host([color='contrast']) .countdown-bar {\n    background-color: var(--wje-color-contrast-9);\n}\n";
+class Toast extends WJElement {
   /**
-   * Toast constructor
-   * @constructor
+   * Creates an instance of Toast.
    */
   constructor() {
     super();
     /**
-     * Class name
+     * The class name for the component.
      * @type {string}
      */
-    p(this, 'className', 'Toast');
+    __publicField(this, "className", "Toast");
+    /**
+     * Asynchronously shows the toast notification.
+     * This method sets the `open` property to `true` and dispatches the
+     * `wje-toast:after-show` custom event. If the toast is already open,
+     * the method returns `undefined`.
+     */
+    __publicField(this, "show", () => {
+      if (this.open) {
+        return;
+      }
+      this.open = true;
+      event.dispatchCustomEvent(this, "wje-toast:after-show");
+    });
+    /**
+     * Asynchronously hides the toast notification.
+     * This method sets the `open` property to `false` and dispatches the
+     * `wje-toast:after-hide` custom event. If the toast is already hidden,
+     * the method returns `undefined`.
+     */
+    __publicField(this, "hide", () => {
+      if (!this.open) {
+        return;
+      }
+      this.open = false;
+      event.dispatchCustomEvent(this, "wje-toast:after-hide");
+    });
+    /**
+     * Pauses the countdown animation and stops the timer.
+     */
+    __publicField(this, "pause", () => {
+      var _a;
+      (_a = this.countdownAnimation) == null ? void 0 : _a.pause();
+      this.stopTimer();
+    });
+    /**
+     * Resumes the countdown animation and resumes the timer.
+     */
+    __publicField(this, "resume", () => {
+      var _a;
+      (_a = this.countdownAnimation) == null ? void 0 : _a.play();
+      this.resumeTimer();
+    });
+    /**
+     * Asynchronously starts the toast notification.
+     * This method appends the toast notification to the document body and
+     * shows the toast notification. The method returns a promise that
+     * resolves when the toast notification is shown.
+     * @returns {Promise<unknown>}
+     */
+    __publicField(this, "start", () => {
+      return new Promise((resolve) => {
+        let stack = document.body.querySelector(".wje-toast-stack");
+        if (stack) {
+          this.toastStack = stack;
+        }
+        if (this.toastStack.parentElement === null) {
+          document.body.append(this.toastStack);
+        }
+        this.toastStack.append(this);
+        this.show();
+        this.addEventListener("wje-toast:after-hide", this.removeChildAndStack);
+      });
+    });
+    this.toastStack = Object.assign(document.createElement("div"), { className: "wje-toast-stack" });
   }
   /**
-   * Get CSS stylesheet
+   * Set headline value of the toast.
+   * @param value
+   */
+  set headline(value) {
+    this.setAttribute("headline", value);
+  }
+  /**
+   * Get headline value of the toast.
+   * @returns {string}
+   */
+  get headline() {
+    return this.getAttribute("headline");
+  }
+  /**
+   * Set open value of the toast.
+   * @param value
+   */
+  set open(value) {
+    this.removeAttribute("open");
+    if (WjElementUtils.stringToBoolean(value)) this.setAttribute("open", value);
+  }
+  /**
+   * Get open value of the toast.
+   * @returns {boolean}
+   */
+  get open() {
+    return this.hasAttribute("open");
+  }
+  /**
+   * Set duration value of the toast.
+   * @param value
+   */
+  set duration(value) {
+    this.setAttribute("duration", value);
+  }
+  /**
+   * Get duration value of the toast.
+   * @returns {number}
+   */
+  get duration() {
+    return +this.getAttribute("duration");
+  }
+  /**
+   * Set closable value of the toast.
+   * @param value
+   */
+  set closable(value) {
+    this.setAttribute("closable", value || "");
+  }
+  /**
+   * Get closable value of the toast.
+   * @returns {boolean}
+   */
+  get closable() {
+    return this.hasAttribute("closable");
+  }
+  /**
+   * Set color value of the toast.
+   * @param value
+   */
+  set color(value) {
+    this.setAttribute("color", value);
+  }
+  /**
+   * Get color value of the toast.
+   * @returns {string}
+   */
+  get color() {
+    return this.getAttribute("color");
+  }
+  /**
+   * Set countdown value of the toast.
+   * @param value
+   */
+  set countdown(value) {
+    if (value) this.setAttribute("countdown", value);
+  }
+  /**
+   * Get countdown value of the toast.
+   * @returns {boolean}
+   */
+  get countdown() {
+    return this.hasAttribute("countdown");
+  }
+  /**
+   * Set icon value of the toast.
+   * @param value
+   */
+  set icon(value) {
+    this.setAttribute("icon", value);
+  }
+  /**
+   * Get icon value of the toast.
+   * @returns {string}
+   */
+  get icon() {
+    return this.getAttribute("icon");
+  }
+  /**
+   * Returns the CSS stylesheet for the component.
    * @static
-   * @returns {Object} styles
+   * @returns {CSSStyleSheet} The CSS stylesheet
    */
   static get cssStyleSheet() {
-    return h;
+    return styles;
   }
   /**
-   * Setup attributes
+   * Setup attributes for the Button element.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Draw method
-   * @param {Object} context - The context
-   * @param {Object} store - The store
-   * @param {Object} params - The parameters
-   * @returns {Object} Document fragment
+   * Draw method for the toast notification.
+   * @returns {object} Document fragment
    */
-  draw(e, r, n) {
-    let s = document.createDocumentFragment(),
-      o = {
-        message: 'Záznam bol úspešne uložený.',
-        position: this.position,
-        showClose: !0,
-        style: this.design || 'simple',
-        timeout: this.duration || 4e3,
-        type: this.type || 'success',
-        title: this.title || 'John Doe',
-      };
-    return (
-      (this.container = document.querySelector('body')),
-      (this.notification = document.createElement('div')),
-      this.notification.classList.add('pgn', 'push-on-sidebar-open'),
-      this.classList.add('pgn-wrapper'),
-      this.setAttribute('data-position', o.position),
-      (this.alert = document.createElement('div')),
-      this.alert.classList.add('alert'),
-      this.alert.classList.add('alert-' + o.type),
-      o.style == 'bar'
-        ? w(this.notification, this.alert, o)
-        : o.style == 'flip'
-          ? b(this.notification, this.alert, o)
-          : o.style == 'circle'
-            ? g(this.notification, this.alert, o)
-            : o.style == 'simple'
-              ? l(this.notification, this.alert, o)
-              : l(this.notification, this.alert, o),
-      this.notification.appendChild(this.alert),
-      s.appendChild(this.notification),
-      s
-    );
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    native.setAttribute("part", "native");
+    native.classList.add("native-toast");
+    let mediaSlot = document.createElement("slot");
+    mediaSlot.setAttribute("name", "media");
+    mediaSlot.classList.add("media");
+    mediaSlot.addEventListener("slotchange", () => {
+      if (WjElementUtils.hasSlotContent(this.context, "media")) {
+        mediaSlot.parentElement.classList.add("has-media");
+      } else {
+        mediaSlot.parentElement.classList.remove("has-media");
+      }
+    });
+    let content = document.createElement("div");
+    content.classList.add("content");
+    content.innerHTML = `<div class="headline">${this.headline}</div><div class="message"><slot></slot></div>`;
+    let iconX = document.createElement("wje-icon");
+    iconX.setAttribute("name", "x");
+    let closeBtn = document.createElement("wje-button");
+    closeBtn.setAttribute("fill", "link");
+    closeBtn.setAttribute("color", this.color);
+    closeBtn.setAttribute("size", "small");
+    closeBtn.classList.add("close");
+    let countdownEl = document.createElement("div");
+    countdownEl.classList.add("countdown");
+    let countdownBar = document.createElement("div");
+    countdownBar.classList.add("countdown-bar");
+    closeBtn.appendChild(iconX);
+    countdownEl.appendChild(countdownBar);
+    if (this.hasAttribute("icon") && this.icon) {
+      let icon = document.createElement("wje-icon");
+      icon.setAttribute("name", this.icon);
+      icon.setAttribute("color", this.color);
+      icon.setAttribute("slot", "media");
+      icon.setAttribute("part", "icon");
+      this.appendChild(icon);
+    }
+    native.appendChild(mediaSlot);
+    native.appendChild(content);
+    if (this.closable) native.appendChild(closeBtn);
+    if (this.hasAttribute("countdown")) native.appendChild(countdownEl);
+    fragment.appendChild(native);
+    this.closeBtn = closeBtn;
+    this.countdownBar = countdownBar;
+    return fragment;
+  }
+  /**
+   * After draw method for the toast notification.
+   */
+  afterDraw() {
+    this.closeBtn.addEventListener("wje-button:click", this.hide);
+    this.addEventListener("mouseenter", this.pause);
+    this.addEventListener("mouseleave", this.resume);
+    if (this.hasAttribute("countdown")) {
+      const startWidth = "100%";
+      const endWidth = "0";
+      this.countdownAnimation = this.countdownBar.animate([{ width: startWidth }, { width: endWidth }], {
+        duration: this.duration,
+        easing: "linear"
+      });
+    }
+    if (this.duration > 0) {
+      this.remainingTime = this.duration;
+      this.startTimer();
+    }
+  }
+  /**
+   * Before disconnect method
+   * This method is called before the element is disconnected from the document.
+   */
+  beforeDisconnect() {
+    this.closeBtn.removeEventListener("wje-button:click", this.hide);
+    this.removeEventListener("wje-toast:after-hide", this.removeChildAndStack);
+    this.removeEventListener("mouseenter", this.pause);
+    this.removeEventListener("mouseleave", this.resume);
+    clearTimeout(this.timeoutID);
+  }
+  /**
+   * Starts the timer.
+   * This method sets the `startTime` property to the current time and sets
+   * the `timeoutID` property to the ID of the timeout. The method also
+   * dispatches the `wje-toast:after-hide` custom event when the timeout
+   * expires.
+   */
+  startTimer() {
+    this.startTime = Date.now();
+    if (this.timeoutID) {
+      clearTimeout(this.timeoutID);
+    }
+    this.timeoutID = window.setTimeout(() => {
+      this.hide();
+    }, this.remainingTime);
+  }
+  /**
+   * Stops the timer.
+   * This method clears the timeout and calculates the remaining time.
+   * The method is called when the toast notification is paused.
+   */
+  stopTimer() {
+    if (this.timeoutID) {
+      window.clearTimeout(this.timeoutID);
+    }
+    const elapsedTime = Date.now() - this.startTime;
+    this.remainingTime -= elapsedTime;
+  }
+  /**
+   * Resumes the timer.
+   * This method resumes the timer if the remaining time is greater
+   * than zero. The method is called when the toast notification is resumed.
+   */
+  resumeTimer() {
+    if (this.remainingTime > 0) {
+      this.startTimer();
+    }
+  }
+  /**
+   * Removes the toast notification and the toast stack.
+   *
+   * This method removes the toast notification from the toast stack and
+   * removes the toast stack from the document body if the toast stack is
+   * empty.
+   */
+  removeChildAndStack() {
+    this.toastStack.removeChild(this);
+    if (this.toastStack.querySelector("wje-toast") === null) {
+      this.toastStack.remove();
+    }
   }
 }
-d.define('wje-toast', d);
-export { d as default };
+Toast.define("wje-toast", Toast);
+export {
+  Toast as default
+};

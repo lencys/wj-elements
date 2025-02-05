@@ -13,6 +13,7 @@ import CustomProps from '@ionic-internal/component-api/v1/route/custom-props.md'
 import Slots from '@ionic-internal/component-api/v1/route/slots.md';
 
 {' '}
+
 <title>Route | API Route Component for WebJET Elements</title>
 <meta
   name="description"

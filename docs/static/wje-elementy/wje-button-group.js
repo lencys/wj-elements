@@ -1,90 +1,84 @@
-var d = Object.defineProperty;
-var p = (o, e, t) => (e in o ? d(o, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (o[e] = t));
-var i = (o, e, t) => (p(o, typeof e != 'symbol' ? e + '' : e, t), t);
-import u from './wje-element.js';
-const g =
-  ':host{display:inline-block}:host .native-button-group{display:flex;flex-wrap:nowrap;line-height:1}:host slot{display:contents}::slotted(wje-button){margin:0!important}';
-class m extends u {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ WJ Button Group ]\n*/\n\n:host {\n    display: inline-block;\n    .native-button-group {\n        display: flex;\n        flex-wrap: nowrap;\n        line-height: 1;\n    }\n\n    slot {\n        display: contents;\n    }\n}\n\n::slotted(wje-button) {\n    margin: 0 !important;\n}\n";
+class ButtonGroup extends WJElement {
   /**
-   * ButtonGroup constructor
-   * @constructor
+   * ButtonGroup constructor method.
+   * @class
    */
   constructor() {
     super();
     /**
-     * Class name
+     * Class name for the ButtonGroup element
      * @type {string}
      */
-    i(this, 'className', 'ButtonGroup');
+    __publicField(this, "className", "ButtonGroup");
   }
   /**
-   * Get CSS stylesheet
+   * Get CSS stylesheet for the ButtonGroup element.
    * @static
-   * @returns {Object} styles - The CSS styles
+   * @returns {object} styles - The CSS styles
    */
   static get cssStyleSheet() {
-    return g;
+    return styles;
   }
   /**
-   * Get observed attributes
+   * Get observed attributes for the ButtonGroup element.
    * @static
-   * @returns {Array<string>} observedAttributes - The observed attributes
+   * @returns {Array<string>} observedAttributes - The observed attributes array
    */
   static get observedAttributes() {
     return [];
   }
   /**
-   * Setup attributes
+   * Setup attributes for the ButtonGroup element.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Draw method
-   * @param {Object} context - The context
-   * @param {Object} store - The store
-   * @param {Object} params - The parameters
-   * @returns {Object} fragment - The document fragment
+   * Draw method for the ButtonGroup element.
+   * @returns {object} fragment - The document fragment
    */
-  draw(t, l, c) {
-    let s = document.createDocumentFragment(),
-      n = document.createElement('div');
-    return (
-      n.classList.add('native-button-group'),
-      n.setAttribute('part', 'native'),
-      (this.slotElement = document.createElement('slot')),
-      n.appendChild(this.slotElement),
-      s.appendChild(n),
-      s
-    );
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("div");
+    element.classList.add("native-button-group");
+    element.setAttribute("part", "native");
+    this.slotElement = document.createElement("slot");
+    element.appendChild(this.slotElement);
+    fragment.appendChild(element);
+    return fragment;
   }
   /**
-   * After draw method
-   * @param {Object} context - The context
-   * @param {Object} store - The store
-   * @param {Object} params - The parameters
+   * After draw method for the ButtonGroup element.
    */
-  afterDraw(t, l, c) {
-    const s = [...this.slotElement.assignedElements({ flatten: !0 })];
-    s.forEach((n) => {
-      let a = s.indexOf(n),
-        r = this.findButton(n);
-      r &&
-        (r.classList.add('wje-button-group-button'),
-        r.classList.toggle('wje-button-group-first', a === 0),
-        r.classList.toggle('wje-button-group-inner', a > 0 && a < s.length - 1),
-        r.classList.toggle('wje-button-group-last', a === s.length - 1));
+  afterDraw() {
+    const slottedElements = [...this.slotElement.assignedElements({ flatten: true })];
+    slottedElements.forEach((el) => {
+      let index = slottedElements.indexOf(el);
+      let button = this.findButton(el);
+      if (button) {
+        button.classList.add("wje-button-group-button");
+        button.classList.toggle("wje-button-group-first", index === 0);
+        button.classList.toggle("wje-button-group-inner", index > 0 && index < slottedElements.length - 1);
+        button.classList.toggle("wje-button-group-last", index === slottedElements.length - 1);
+      }
     });
   }
   /**
-   * Find button method
-   * @param {Object} el - The element
-   * @returns {Object} button - The button
+   * Find button method to find the button element.
+   * @param {object} el The element
+   * @returns {object} button - The button element
    */
-  findButton(t) {
-    const l = 'wje-button';
-    return t.closest(l) ?? t.querySelector(l);
+  findButton(el) {
+    const selector = "wje-button";
+    return el.closest(selector) ?? el.querySelector(selector);
   }
 }
-u.define('wje-button-group', m);
-export { m as default };
+WJElement.define("wje-button-group", ButtonGroup);
+export {
+  ButtonGroup as default
+};

@@ -1,117 +1,165 @@
-var c = Object.defineProperty;
-var u = (r, e, t) => (e in r ? c(r, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (r[e] = t));
-var i = (r, e, t) => (u(r, typeof e != 'symbol' ? e + '' : e, t), t);
-import m, { event as l } from './wje-element.js';
-const w =
-  ':host{--wje-tooltip-arrow-color: var(--wje-color-contrast-11)}.native-tooltip{display:block;padding:.5rem;color:var(--wje-color-contrast-0);background-color:var(--wje-color-contrast-11);font-weight:400;font-size:.75rem!important;border-radius:var(--wje-border-radius-small);line-height:1;box-sizing:border-box;box-shadow:var(--wje-box-shadow-medium)}.arrow{position:absolute;width:10px;height:10px;background:var(--wje-tooltip-arrow-color);transform:rotate(45deg)}';
-class p extends m {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement, { event } from "./wje-element.js";
+const styles = "/*\n[ WJ Tooltip ]\n*/\n\n.native-tooltip {\n    display: flex;\n    align-items: center;\n    padding: var(--wje-tooltip-spacing);\n    color: var(--wje-tooltip-color);\n    background-color: var(--wje-tooltip-background);\n    font-weight: var(--wje-tooltip-font-weight);\n    font-size: var(--wje-tooltip-font-size);\n    border-radius: var(--wje-tooltip-border-radius);\n    line-height: var(--wje-tooltip-line-height);\n    box-sizing: border-box;\n    box-shadow: var(--wje-tooltip-shadow);\n}\n\n::slotted([slot='start']) {\n    margin: 0 0.3rem 0 0;\n}\n\n::slotted([slot='end']) {\n    margin: 0 0 0 0.3rem;\n}\n\n.arrow {\n    position: absolute;\n    width: 10px;\n    height: 10px;\n    background: var(--wje-tooltip-arrow-color);\n    transform: rotate(45deg);\n}\n";
+class Tooltip extends WJElement {
   /**
-   * @constructor
-   * @summary Tooltip constructor
+   * Creates an instance of Tooltip.
    */
   constructor() {
     super();
     /**
-     * @summary Class name
+     * The class name for the component.
      * @type {string}
      */
-    i(this, 'className', 'Tooltip');
+    __publicField(this, "className", "Tooltip");
     /**
-     * @summary Show tooltip
+     * Handles the logic for showing the component's popup or tooltip.
+     * Adds the `active` class, invokes lifecycle hooks, and manages the popup visibility.
+     * @throws {Error} If the `beforeShow` method returns a non-string value or `false`.
      */
-    i(this, 'onShow', () => {
-      Promise.resolve(this.beforeShow(this))
-        .then((t) => {
-          if (!t && typeof t != 'string') throw new Error('beforeShow method returned false or not string');
-          (this.native.innerHTML = t), this.popup.show(), Promise.resolve(this.afterShow(this));
-        })
-        .catch((t) => {
-          this.popup.hide();
-        });
+    __publicField(this, "onShow", () => {
+      var _a;
+      this.classList.add("active");
+      if ((_a = this.querySelector("wje-dropdown")) == null ? void 0 : _a.classList.contains("active")) {
+        return;
+      }
+      Promise.resolve(this.beforeShow(this)).then((res) => {
+        if (!this.classList.contains("active") || !res || typeof res !== "string") {
+          throw new Error("beforeShow method returned false or not string");
+        }
+        this.native.innerHTML = res;
+        this.popup.show();
+        Promise.resolve(this.afterShow(this));
+      }).catch(() => {
+        this.classList.remove("active");
+        this.popup.hide();
+      });
     });
     /**
-     * @summary Hide tooltip
+     * Hides the component's popup or tooltip.
+     * Removes the `active` class from the component and hides the popup element.
      */
-    i(this, 'onHide', () => {
+    __publicField(this, "onHide", () => {
+      this.classList.remove("active");
       this.popup.hide();
     });
   }
-  set content(t) {
-    this.setAttribute('content', t);
-  }
-  get content() {
-    return this.hasAttribute('content') ? this.getAttribute('content') : '';
+  /**
+   * Set active attribute for the tooltip element.
+   * @param value
+   */
+  set content(value) {
+    this.setAttribute("content", value);
   }
   /**
-   * @summary Get CSS stylesheet
+   * Get active attribute for the tooltip element.
+   * @returns {string}
+   */
+  get content() {
+    if (this.hasAttribute("content")) return this.getAttribute("content");
+    return "";
+  }
+  /**
+   * Returns the CSS stylesheet for the component.
    * @static
-   * @returns {Object} styles
+   * @returns {CSSStyleSheet} The CSS stylesheet
    */
   static get cssStyleSheet() {
-    return w;
+    return styles;
   }
   /**
-   * @summary Get observed attributes
+   * Returns the list of observed attributes.
    * @static
    * @returns {Array} An array of observed attributes
    */
   static get observedAttributes() {
-    return ['active'];
+    return ["active"];
   }
   /**
-   * @summary Setup attributes
+   * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * @summary Draw method
-   * @param {Object} context - The context
-   * @param {Object} store - The store
-   * @param {Object} params - The parameters
-   * @returns {Object} Document fragment
+   * Draws the component for the tooltip.
+   * @returns {object} Document fragment
    */
-  draw(t, h, b) {
-    let d = document.createDocumentFragment(),
-      o = document.createElement('wje-popup');
-    o.setAttribute('placement', this.placement || 'top'), o.setAttribute('offset', this.offset || '0');
-    let n = document.createElement('slot');
-    n.setAttribute('slot', 'anchor');
-    let a = document.createElement('div');
-    a.classList.add('arrow'), a.setAttribute('slot', 'arrow');
-    let s = document.createElement('div');
-    return (
-      s.setAttribute('part', 'native'),
-      s.classList.add('native-tooltip'),
-      (s.innerHTML = this.content),
-      o.appendChild(n),
-      o.appendChild(a),
-      o.appendChild(s),
-      (this.mySlot = n),
-      (this.popup = o),
-      (this.native = s),
-      d.appendChild(o),
-      d
-    );
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let popup = document.createElement("wje-popup");
+    popup.setAttribute("placement", this.placement || "top");
+    popup.setAttribute("offset", this.offset || "0");
+    let slot = document.createElement("slot");
+    slot.setAttribute("slot", "anchor");
+    let arrow = document.createElement("div");
+    arrow.classList.add("arrow");
+    arrow.setAttribute("slot", "arrow");
+    let start = document.createElement("slot");
+    start.setAttribute("name", "start");
+    let end = document.createElement("slot");
+    end.setAttribute("name", "end");
+    let content = document.createElement("div");
+    content.innerHTML = this.content;
+    let native = document.createElement("div");
+    native.setAttribute("part", "native");
+    native.classList.add("native-tooltip");
+    native.appendChild(start);
+    native.appendChild(content);
+    native.appendChild(end);
+    popup.appendChild(slot);
+    popup.appendChild(arrow);
+    popup.appendChild(native);
+    this.mySlot = slot;
+    this.popup = popup;
+    this.native = native;
+    fragment.appendChild(popup);
+    return fragment;
   }
   /**
-   * @summary After draw method
+   * Draws the component for the tooltip.
    */
   afterDraw() {
-    let t = this.mySlot.assignedElements()[0];
-    t && (l.addListener(t, 'mouseenter', null, this.onShow), l.addListener(t, 'mouseleave', null, this.onHide));
+    let anchorEl = this.mySlot.assignedElements()[0];
+    if (this.selector) {
+      anchorEl = this.checkSelector(anchorEl);
+    }
+    if (!anchorEl) return;
+    event.addListener(anchorEl, "mouseenter", null, this.onShow);
+    event.addListener(anchorEl, "mouseleave", null, this.onHide);
+    event.addListener(this, "wje-dropdown:open", null, this.onHide);
+    event.addListener(this, "wje-dropdown:close", null, this.onShow);
   }
-  dispatch(t) {
-    return new Promise((h) => {
-      l.dispatchCustomEvent(this, t, {
-        resolve: h,
+  dispatch(customEvent) {
+    return new Promise((resolve) => {
+      event.dispatchCustomEvent(this, customEvent, {
+        resolve
       });
     });
   }
   beforeShow() {
-    return this.content;
+    return this.native.innerHTML;
   }
-  afterShow() {}
+  afterShow() {
+    return true;
+  }
+  /**
+   * Validates if the specified selector exists within the provided element.
+   * Logs an error if the selector is not found and returns the found element or `null`.
+   * @param {HTMLElement} anchorEl The root element to search within.
+   * @returns {HTMLElement|null} The first element matching the selector, or `null` if not found.
+   */
+  checkSelector(anchorEl) {
+    const newAnchorEl = anchorEl.querySelector(this.selector);
+    if (newAnchorEl === null) {
+      console.error("Selector not found:", this.selector);
+    }
+    return newAnchorEl;
+  }
 }
-p.define('wje-tooltip', p);
-export { p as default };
+Tooltip.define("wje-tooltip", Tooltip);
+export {
+  Tooltip as default
+};

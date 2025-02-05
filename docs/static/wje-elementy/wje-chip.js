@@ -1,45 +1,75 @@
-var h = Object.defineProperty;
-var w = (o, e, t) => (e in o ? h(o, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : (o[e] = t));
-var n = (o, e, t) => (w(o, typeof e != 'symbol' ? e + '' : e, t), t);
-import s, { event as d } from './wje-element.js';
-const p =
-  ':host{--wje-chip-border-radius: 100px;--wje-chip-background: var(--wje-color-contrast-2);--wje-chip-color: var(--wje-color-contrast-6);--wje-chip-margin: 0;margin:var(--wje-chip-margin)}:host(.wje-color-primary){--wje-chip-background: var(--wje-color-primary)}:host(.wje-color-complete){--wje-chip-background: var(--wje-color-complete)}:host(.wje-color-success){--wje-chip-background: var(--wje-color-success)}:host(.wje-color-warning){--wje-chip-background: var(--wje-color-warning)}:host(.wje-color-danger){--wje-chip-background: var(--wje-color-danger)}:host(.wje-color-info){--wje-chip-background: var(--wje-color-info)}:host(.wje-color-menu){--wje-chip-background: var(--wje-color-menu)}:host(.wje-color-primary){--wje-chip-color: var(--wje-color-white)}:host(.wje-color-complete){--wje-chip-color: var(--wje-color-white)}:host(.wje-color-success){--wje-chip-color: var(--wje-color-white)}:host(.wje-color-warning){--wje-chip-color: var(--wje-color)}:host(.wje-color-danger){--wje-chip-color: var(--wje-color-white)}:host(.wje-color-info){--wje-chip-color: var(--wje-color-white)}:host(.wje-color-menu){--wje-chip-color: var(--wje-color-white) !important}.native-chip{display:inline-flex;justify-content:center;align-items:center;font-size:14px;letter-spacing:-.006em;margin:0;padding:.5rem .75rem;text-align:center;cursor:pointer;white-space:nowrap;background:var(--wje-chip-background);color:var(--wje-chip-color);text-shadow:none;box-shadow:none;border:0 none;line-height:14px;min-height:28px;height:28px;width:100%;max-width:fit-content;min-width:28px;position:relative;transition:width .15s cubic-bezier(.4,0,.2,1);border-radius:var(--wje-chip-border-radius);overflow:hidden;vertical-align:middle;box-sizing:border-box}:host(.focus){box-shadow:none}:host(:hover:not(.wje-active)) .native-chip{background:var(--wje-color-contrast-3);color:var(--wje-color)}:host(.wje-active) .native-chip{border:1px solid var(--wje-color-primary-11)}:host(:focus,:active:focus,.wje-active:focus){outline:none!important}.check{display:none}:host([active]) .check{display:block;margin-inline:4px 0}:host([disabled]){opacity:.5;border:0;pointer-events:none;cursor:not-allowed}::slotted(wje-avatar){width:22px;height:22px}::slotted(wje-avatar:first-child){margin-inline:-8px 8px;margin-top:-4px;margin-bottom:-4px}:host .native-chip{background-color:var(--wje-chip-background, #fff);color:var(--wje-chip-color)}::slotted(wje-icon:first-child){margin:-4px 8px -4px -4px}::slotted(wje-icon:last-child){margin:-4px -4px -4px 8px}wje-button{--wje-button-border-radius: 50%;--wje-button-margin-inline: .25rem -.5rem;--wje-padding-top: .15rem;--wje-padding-start: .15rem;--wje-padding-end: .15rem;--wje-padding-bottom: .15rem}';
-class j extends s {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement, { event } from "./wje-element.js";
+const styles = "/*\n[ WJ Chip ]\n*/\n\n.native-chip {\n    display: inline-flex;\n    justify-content: center;\n    align-items: center;\n    font-size: 14px;\n    letter-spacing: -0.006em;\n    margin: 0;\n    padding: 0.5rem 0.75rem;\n    text-align: center;\n    cursor: pointer;\n    white-space: nowrap;\n    text-shadow: none;\n    box-shadow: none;\n    border: 0 none;\n    line-height: 14px;\n    min-height: 28px;\n    height: 28px;\n    width: 100%;\n    max-width: fit-content;\n    min-width: 28px;\n    position: relative;\n    transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1);\n    border-radius: var(--wje-border-radius-pill);\n    overflow: hidden;\n    vertical-align: middle;\n    box-sizing: border-box;\n}\n\n:host(.focus) {\n    box-shadow: none;\n}\n\n:host(.wje-active) .native-chip {\n    border: 1px solid var(--wje-color-primary-11);\n    background-color: var(--wje-color-contrast-3);\n    color: var(--wje-color);\n}\n\n:host(:focus, :active:focus, .wje-active:focus) {\n    outline: none !important;\n}\n\n.check {\n    display: none;\n}\n\n:host([active]) {\n    .check {\n        display: block;\n        margin-inline: 4px 0;\n    }\n}\n\n:host([disabled]) {\n    opacity: 0.5;\n    border: 0;\n    pointer-events: none;\n    cursor: not-allowed;\n}\n\n::slotted(wje-avatar) {\n    width: 22px;\n    height: 22px;\n}\n\n::slotted(wje-avatar:first-child) {\n    margin-inline: -8px 8px;\n    margin-top: -4px;\n    margin-bottom: -4px;\n}\n\n::slotted(wje-icon:first-child) {\n    margin: -4px 8px -4px -4px;\n}\n\n::slotted(wje-icon:last-child) {\n    margin: -4px -4px -4px 8px;\n}\n\nwje-button {\n    --wje-button-border-radius: 50%;\n    --wje-button-margin-inline: 0.25rem -0.5rem;\n    --wje-padding-top: 0.15rem;\n    --wje-padding-start: 0.15rem;\n    --wje-padding-end: 0.15rem;\n    --wje-padding-bottom: 0.15rem;\n}\n\n/*BG - TEXT*/\n.native-chip.wje-color-primary {\n    background-color: var(--wje-color-primary-1);\n    color: var(--wje-color-primary-9);\n}\n\n.native-chip.wje-color-complete {\n    background-color: var(--wje-color-complete-1);\n    color: var(--wje-color-complete-9);\n}\n\n.native-chip.wje-color-success {\n    background-color: var(--wje-color-success-1);\n    color: var(--wje-color-success-9);\n}\n\n.native-chip.wje-color-warning {\n    background-color: var(--wje-color-warning-2);\n    color: var(--wje-color-warning-11);\n}\n\n.native-chip.wje-color-danger {\n    background-color: var(--wje-color-danger-1);\n    color: var(--wje-color-danger-9);\n}\n\n.native-chip.wje-color-info {\n    background-color: var(--wje-color-info-1);\n    color: var(--wje-color-info-9);\n}\n\n.native-chip.wje-color-default {\n    background-color: var(--wje-color-contrast-3);\n    color: var(--wje-color-contrast-11);\n}\n\n/*HOVER*/\n@media (any-hover: hover) {\n    .native-chip.wje-color-primary:hover {\n        background-color: var(--wje-color-primary-4);\n        color: var(--wje-color-primary-10);\n    }\n\n    .native-chip.wje-color-complete:hover {\n        background-color: var(--wje-color-complete-4);\n        color: var(--wje-color-complete-10);\n    }\n\n    .native-chip.wje-color-success:hover {\n        background-color: var(--wje-color-success-4);\n        color: var(--wje-color-success-10);\n    }\n\n    .native-chip.wje-color-warning:hover {\n        background-color: var(--wje-color-warning-4);\n        color: var(--wje-color-warning-11);\n    }\n\n    .native-chip.wje-color-danger:hover {\n        background-color: var(--wje-color-danger-4);\n        color: var(--wje-color-danger-10);\n    }\n\n    .native-chip.wje-color-info:hover {\n        background-color: var(--wje-color-info-4);\n        color: var(--wje-color-info-10);\n    }\n\n    .native-chip.wje-color-default:hover {\n        background-color: var(--wje-color-contrast-4);\n        color: var(--wje-color-contrast-11);\n    }\n}\n";
+class Chip extends WJElement {
+  /**
+   * Chip constructor method.
+   */
   constructor() {
     super();
-    n(this, 'className', 'Chip');
+    /**
+     * Class name for the Chip element.
+     * @type {string}
+     */
+    __publicField(this, "className", "Chip");
   }
+  /**
+   * Getter for the CSS stylesheet.
+   * @returns {*}
+   */
   static get cssStyleSheet() {
-    return p;
+    return styles;
   }
+  /**
+   * Getter for the observed attributes.
+   */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
-  draw(t, m, u) {
-    let a = document.createDocumentFragment(),
-      r = document.createElement('div');
-    r.classList.add('native-chip');
-    let l = document.createElement('slot'),
-      i = document.createElement('wje-button');
-    i.setAttribute('part', 'remove'), i.setAttribute('fill', 'link'), (i.innerHTML = '<wje-icon name="x"></wje-icon>');
-    let c = document.createElement('wje-icon');
-    return (
-      c.setAttribute('name', 'check'),
-      c.classList.add('check'),
-      this.color && this.classList.add('wje-color-' + this.color, 'wje-color'),
-      this.disabled && this.classList.add('wje-disabled'),
-      this.outline && this.classList.add('wje-outline'),
-      r.appendChild(l),
-      r.appendChild(c),
-      this.hasAttribute('removable') && r.appendChild(i),
-      a.appendChild(r),
-      (this.remove = i),
-      a
-    );
+  /**
+   * Draws the Chip element.
+   * @returns {DocumentFragment}
+   */
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let native = document.createElement("div");
+    native.classList.add("native-chip");
+    let slot = document.createElement("slot");
+    let remove = document.createElement("wje-button");
+    remove.setAttribute("part", "remove");
+    remove.setAttribute("fill", "link");
+    remove.setAttribute("color", this.color || "default");
+    remove.innerHTML = `<wje-icon name="x"></wje-icon>`;
+    let active = document.createElement("wje-icon");
+    active.setAttribute("name", "check");
+    active.classList.add("check");
+    if (this.hasAttribute("color")) native.classList.add("wje-color-" + this.color, "wje-color");
+    else native.classList.add("wje-color-default", "wje-color");
+    if (this.disabled) this.classList.add("wje-disabled");
+    if (this.outline) this.classList.add("wje-outline");
+    native.appendChild(slot);
+    native.appendChild(active);
+    if (this.hasAttribute("removable")) native.appendChild(remove);
+    fragment.appendChild(native);
+    this.removeElement = remove;
+    return fragment;
   }
+  /**
+   * Getter for the observed attributes.
+   */
   afterDraw() {
-    d.addListener(this.remove, 'click', 'wje:chip-remove', null, { stopPropagation: !0 });
+    event.addListener(this.removeElement, "click", "wje:chip-remove", null, { stopPropagation: true });
+  }
+  /**
+   * Before disconnect event for the Chip element.
+   */
+  beforeDisconnect() {
+    event.removeListener(this.removeElement, "click", "wje:chip-remove");
   }
 }
-s.define('wje-chip', j);
-export { j as default };
+WJElement.define("wje-chip", Chip);
+export {
+  Chip as default
+};

@@ -1,48 +1,47 @@
-var s = Object.defineProperty;
-var i = (e, t, o) => (t in e ? s(e, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : (e[t] = o));
-var a = (e, t, o) => (i(e, typeof t != 'symbol' ? t + '' : t, o), o);
-import r from './wje-element.js';
-const p =
-  ':host{--wje-card-padding: 0 1rem 1rem;display:block;padding:var(--wje-card-padding)}:host.no-padding .row{margin-left:0;margin-right:0}:host.no-bottom-padding{padding-bottom:0}:host.no-top-padding{padding-top:0}:host .title{margin-top:0}:host.scrollable{margin-bottom:20px}:host h3{line-height:34px;font-size:26px}';
-class m extends r {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ WJ Card - Content ]\n*/\n\n:host {\n    display: block;\n    padding: var(--wje-card-content-padding);\n    &.no-padding {\n        .row {\n            margin-left: 0;\n            margin-right: 0;\n        }\n    }\n    &.no-bottom-padding {\n        padding-bottom: 0;\n    }\n    &.no-top-padding {\n        padding-top: 0;\n    }\n    .title {\n        margin-top: 0;\n    }\n    &.scrollable {\n        margin-bottom: 20px;\n    }\n    h3 {\n        line-height: 34px;\n        font-size: 26px;\n    }\n}\n";
+class CardContent extends WJElement {
   /**
-   * CardContent constructor
-   * @constructor
+   * CardContent constructor method.
+   * @class
    */
   constructor() {
     super();
     /**
-     * Class name
+     * Class name for the CardContent element.
      * @type {string}
      */
-    a(this, 'className', 'CardContent');
+    __publicField(this, "className", "CardContent");
   }
   /**
-   * Get CSS stylesheet
+   * Get CSS stylesheet for the CardContent element.
    * @static
-   * @returns {Object} styles - The CSS styles
+   * @returns {object} styles - The CSS styles for the CardContent element.
    */
   static get cssStyleSheet() {
-    return p;
+    return styles;
   }
   /**
-   * Setup attributes
+   * Setup attributes for the CardContent element.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * Draw method
-   * @param {Object} context - The context
-   * @param {Object} store - The store
-   * @param {Object} params - The parameters
-   * @returns {Object} fragment - The document fragment
+   * Draw method for the CardContent element.
+   * @returns {object} fragment - The document fragment containing the drawn element.
    */
-  draw(o, l, c) {
-    let n = document.createDocumentFragment(),
-      d = document.createElement('slot');
-    return n.appendChild(d), n;
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let element = document.createElement("slot");
+    fragment.appendChild(element);
+    return fragment;
   }
 }
-r.define('wje-card-content', m);
-export { m as default };
+WJElement.define("wje-card-content", CardContent);
+export {
+  CardContent as default
+};

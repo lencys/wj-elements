@@ -1,32 +1,30 @@
-var a = Object.defineProperty;
-var p = (e, t, n) => (t in e ? a(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : (e[t] = n));
-var i = (e, t, n) => (p(e, typeof t != 'symbol' ? t + '' : t, n), n);
-import d from './wje-element.js';
-const l =
-  ':host(:not(:focus-within)){position:absolute!important;width:1px!important;height:1px!important;clip:rect(0 0 0 0)!important;clip-path:inset(50%)!important;border:none!important;overflow:hidden!important;white-space:nowrap!important;padding:0!important}';
-class r extends d {
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+import WJElement from "./wje-element.js";
+const styles = "/*\n[ WJ Visually Hidden ]\n*/\n\n:host(:not(:focus-within)) {\n    position: absolute !important;\n    width: 1px !important;\n    height: 1px !important;\n    clip: rect(0 0 0 0) !important;\n    clip-path: inset(50%) !important;\n    border: none !important;\n    overflow: hidden !important;\n    white-space: nowrap !important;\n    padding: 0 !important;\n}\n";
+class VisuallyHidden extends WJElement {
   /**
-   * @constructor
-   * @summary VisuallyHidden constructor
+   * Creates an instance of VisuallyHidden.
    */
   constructor() {
     super();
     /**
-     * @summary Class name
+     * The class name for the component.
      * @type {string}
      */
-    i(this, 'className', 'VisuallyHidden');
+    __publicField(this, "className", "VisuallyHidden");
   }
   /**
-   * @summary Get CSS stylesheet
+   * Returns the CSS stylesheet for the component.
    * @static
-   * @returns {Object} styles
+   * @returns {CSSStyleSheet} The CSS stylesheet
    */
   static get cssStyleSheet() {
-    return l;
+    return styles;
   }
   /**
-   * @summary Get observed attributes
+   * Returns the list of observed attributes.
    * @static
    * @returns {Array} An empty array
    */
@@ -34,23 +32,23 @@ class r extends d {
     return [];
   }
   /**
-   * @summary Setup attributes
+   * Sets up the attributes for the component.
    */
   setupAttributes() {
-    this.isShadowRoot = 'open';
+    this.isShadowRoot = "open";
   }
   /**
-   * @summary Draw method
-   * @param {Object} context - The context
-   * @param {Object} store - The store
-   * @param {Object} params - The parameters
-   * @returns {Object} Document fragment
+   * Draws the component for the visually hidden element.
+   * @returns {object} Document fragment
    */
-  draw(n, m, c) {
-    let o = document.createDocumentFragment(),
-      s = document.createElement('slot');
-    return o.appendChild(s), o;
+  draw() {
+    let fragment = document.createDocumentFragment();
+    let slot = document.createElement("slot");
+    fragment.appendChild(slot);
+    return fragment;
   }
 }
-r.define('wje-visually-hidden', r);
-export { r as default };
+VisuallyHidden.define("wje-visually-hidden", VisuallyHidden);
+export {
+  VisuallyHidden as default
+};
