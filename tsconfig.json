@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "allowJs": true,
+        "outDir": "types",
+        "skipLibCheck": true
+    },
+    "include": [
+        "packages/**/*",
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}

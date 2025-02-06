@@ -1,4 +1,4 @@
-export let animations = [];
+let animations = [];
 
 function parseCSS(css) {
     const keyframesRegex = /@keyframes\s+([\w-]+)\s*{([\s\S]+?})\s*}/g;
@@ -69,3 +69,5 @@ export async function fetchAndParseCSS(css) {
         return null;
     }
 }
+
+export { animations };

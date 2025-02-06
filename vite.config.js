@@ -1,8 +1,10 @@
 import { defineConfig } from 'vite';
 import dotenv from 'dotenv';
 import path from 'path';
-// import { terser } from 'rollup-plugin-terser';
 // import javascriptObfuscator from 'vite-plugin-javascript-obfuscator';
+import dts from 'vite-plugin-dts'
+
+
 
 /** @type {import('vite').UserConfig} */
 export default defineConfig(({ mode }) => {
@@ -20,13 +22,13 @@ export default defineConfig(({ mode }) => {
     },
     ...(mode === 'development'
       ? {
-          define: {
-            'process.env.VITE_ICON_ASSETS_URL': JSON.stringify(
-              process.env.VITE_ICON_ASSETS_URL || 'http://localhost:3000'
-            ),
-            'process.env.VITE_URL': JSON.stringify(process.env.VITE_URL || 'http://localhost:3000'),
-          },
-        }
+        define: {
+          'process.env.VITE_ICON_ASSETS_URL': JSON.stringify(
+            process.env.VITE_ICON_ASSETS_URL || 'http://localhost:3000'
+          ),
+          'process.env.VITE_URL': JSON.stringify(process.env.VITE_URL || 'http://localhost:3000'),
+        },
+      }
       : {}),
     base: '/',
     css: {
@@ -36,6 +38,13 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
+    plugins: [
+      dts({
+        //insertTypesEntry: true,
+        //outputDir: "dist/types",  // Moves them into the final build
+
+      })
+    ],
     build: {
       assetsInlineLimit: 0,
       minify: false,

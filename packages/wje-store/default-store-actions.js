@@ -43,12 +43,10 @@ const loadAction = (stateValueName) => {
     };
 };
 
-const defaultStoreActions = {
+export {
     addAction,
     deleteAction,
     loadAction,
     updateAction,
     addManyAction,
 };
-
-export { defaultStoreActions };

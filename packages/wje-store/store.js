@@ -1,5 +1,5 @@
-import { defaultStoreActions } from './default-store-actions.js?v=@@version@@';
-import PubSub from './pubsub.js?v=@@version@@';
+import * as defaultStoreActions from './default-store-actions.js';
+import PubSub from './pubsub.js';
 
 /**
  * @summary A reactive state management system with support for reducers, events, and state immutability.
