@@ -7,6 +7,178 @@
   },
   "components": [
     {
+      "filePath": "src/components/accordion/accordion.tsx",
+      "encapsulation": "shadow",
+      "tag": "accordion",
+      "docs": "",
+      "docsTags": [
+        {
+          "name": "virtualProp",
+          "text": "{\"ios\" | \"md\"} mode - The mode determines which platform styles to use."
+        },
+        {
+          "name": "slot",
+          "text": "header - Content is placed at the top and is used to\nexpand or collapse the accordion item."
+        },
+        {
+          "name": "slot",
+          "text": "content - Content is placed below the header and is\nshown or hidden based on expanded state."
+        },
+        {
+          "name": "part",
+          "text": "header - The wrapper element for the header slot."
+        },
+        {
+          "name": "part",
+          "text": "content - The wrapper element for the content slot."
+        },
+        {
+          "name": "part",
+          "text": "expanded - The expanded element. Can be used in combination\nwith the `header` and `content` parts (i.e. `::part(header expanded)`)."
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "multiple",
+          "type": "boolean",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "multiple",
+          "reflectToAttr": false,
+          "docs": "Atribút, ktorý určuje, či je možné rozbaliť viac sekcií súčasne.",
+          "docsTags": [],
+          "default": "0",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "index",
+          "type": "number",
+          "complexType": {
+            "original": "index",
+            "resolved": "index",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "index",
+          "reflectToAttr": false,
+          "docs": "Atribút, ktorý nastavuje počiatočný index rozšírenej sekcie.",
+          "docsTags": [],
+          "default": "1000",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "collapseAll",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(exception: HTMLElement) => Promise<void>",
+            "parameters": [
+              {
+                "name": "exception",
+                "type": "HTMLElement",
+                "docs": "The accordion item to exclude from collapsing."
+              }
+            ],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "HTMLElement": {
+                "location": "global",
+                "id": "global::HTMLElement"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "(exception: HTMLElement) => Promise<void>",
+          "parameters": [
+            {
+              "name": "exception",
+              "type": "HTMLElement",
+              "docs": "The accordion item to exclude from collapsing."
+            }
+          ],
+          "docs": "Collapses all accordion items except the one specified as the exception.",
+          "docsTags": []
+        },
+        {
+          "name": "getAccordions",
+          "returns": {
+            "type": "Accordion[]",
+            "docs": "Vracia pole komponentov Accordion-item."
+          },
+          "complexType": {
+            "signature": "() => Accordion[]",
+            "parameters": [],
+            "references": {
+              "Accordion": {
+                "location": "import",
+                "path": "./accordion-interface",
+                "id": "src/components/accordion/accordion-interface.ts::Accordion"
+              }
+            },
+            "return": "Accordion[]"
+          },
+          "signature": "getAccordions() => Accordion[]",
+          "parameters": [],
+          "docs": "Vyhľadanie všetkých komponentov Accordion v rámci skupiny.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "wje-accordion-item:open",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emituje sa pri otvorení položky akordeónu.",
+          "docsTags": [
+            {
+              "name": "príklad",
+              "text": "document.querySelector('wje-accordion').addEventListener('wje-accordion-item:open', (e) => { console.log('Accordion item opened:', e.detail); });"
+            }
+          ]
+        }
+      ],
+      "listeners": [
+        {
+          "event": "wje-accordion-item:open",
+          "target": "document",
+          "capture": false,
+          "passive": true
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
       "filePath": "src/components/animation/animation.tsx",
       "encapsulation": "shadow",
       "tag": "animation",

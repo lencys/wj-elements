@@ -6,27 +6,27 @@
                 <wje-icon name="check" size="medium"></wje-icon>
             </wje-status>
             Headline
-            <wje-dropdown label="Start" placement="bottom-start" offset="5" <span class="attribute-empty">collapsible id="custom-dropdown-basic">
+            <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible id="custom-dropdown-basic">
                 <wje-button fill="link" slot="trigger">
-                  <wje-icon name="dots-vertical"></wje-icon>
+                    <wje-icon name="dots-vertical"></wje-icon>
                 </wje-button>
                 <wje-menu variant="context">
-                  <wje-menu-item>
-                    <wje-icon name="plane" slot="start"></wje-icon>
-                    <wje-label>Menu item</wje-label>
-                  </wje-menu-item>
-                  <wje-menu-item>
-                    <wje-icon name="book" slot="start"></wje-icon>
-                    <wje-label>Menu item</wje-label>
-                  </wje-menu-item>
-                  <wje-menu-item>
-                    <wje-icon name="music" slot="start"></wje-icon>
-                    <wje-label>Menu item</wje-label>
-                  </wje-menu-item>
-                  <wje-menu-item>
-                    <wje-icon name="video" slot="start"></wje-icon>
-                    <wje-label>Menu item</wje-label>
-                  </wje-menu-item>
+                    <wje-menu-item>
+                        <wje-icon name="plane" slot="start"></wje-icon>
+                        <wje-label>Menu item</wje-label>
+                    </wje-menu-item>
+                    <wje-menu-item>
+                        <wje-icon name="book" slot="start"></wje-icon>
+                        <wje-label>Menu item</wje-label>
+                    </wje-menu-item>
+                    <wje-menu-item>
+                        <wje-icon name="music" slot="start"></wje-icon>
+                        <wje-label>Menu item</wje-label>
+                    </wje-menu-item>
+                    <wje-menu-item>
+                        <wje-icon name="video" slot="start"></wje-icon>
+                        <wje-label>Menu item</wje-label>
+                    </wje-menu-item>
                 </wje-menu>
             </wje-dropdown>
         </div>
