@@ -44,6 +44,17 @@ WebJET Elements includes a wide range of components that are optimized for web i
 <!-- Todo: Linky -->
 
 <DocsCards>
+<a href="../api/accordion">
+    <wj-card className="Card-without-image" href="../api/accordion">
+        <wj-card-header>
+            <wj-icon name="triangle-inverted" size="large"></wj-icon>
+            <wj-card-title>Accordion</wj-card-title>
+        </wj-card-header>
+        <wj-card-content>
+          <p>Easy integration of animations into web applications.</p>
+        </wj-card-content>
+    </wj-card>
+  </a>
   <a href="../api/animation">
     <wj-card className="Card-without-image" href="../api/animation">
         <wj-card-header>
@@ -51,7 +62,7 @@ WebJET Elements includes a wide range of components that are optimized for web i
             <wj-card-title>Animation</wj-card-title>
         </wj-card-header>
         <wj-card-content>
-          <p>Easily integrate animations into web applications.</p>
+          <p>Easy integration of animations into web applications.</p>
         </wj-card-content>
     </wj-card>
   </a>

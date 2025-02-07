@@ -147,6 +147,24 @@ template.innerHTML = `
         </wje-dialog>
       </div>
     </div>
+
+	<!-- REGISTER BLOCKING EVENT -->
+
+    <h2>Register blocking event</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-button dialog="open-modal-blocking-event">Open</wje-button>
+        <wje-dialog trigger="open-modal-blocking-event" headline="Title">
+          <h4>Lorem ipsum dolor sit amet</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
+          <div slot="footer">
+            <wje-button class="close">Zatvoriť</wje-button>
+            <wje-button id="save-blocking-event" color="primary">Potvrdiť</wje-button>
+          </div>
+        </wje-dialog>
+      </div>
+    </div>
+	
   </div>`;
 
 export default class DemoDialog extends WJElement {
@@ -193,7 +211,23 @@ export default class DemoDialog extends WJElement {
       const date = new Date().toLocaleString();
       element.innerHTML = 'Changed content' + date;
     };
+
+	// ukazka ako sa da zaregistrovat blocking event s datami
+	let data = {
+		id: 1,
+		name: 'John Doe'
+	}
+	document.querySelector('[trigger="open-modal-blocking-event"]').registerBlockingEvent(document.querySelector("#save-blocking-event"), () => this.save(data));
   }
+
+  save(data) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log('✅ Saved with data:', data);
+            resolve(data);
+        }, 1000);
+    });
+}
 }
 
 let __esModule = 'true';

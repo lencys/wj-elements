@@ -15,7 +15,6 @@ import { IconHtml, IconTs, IconVue, IconDefault, IconCss, IconDots } from './ico
 
 import { useScrollPositionBlocker } from '@docusaurus/theme-common/internal';
 import useIsBrowser from '@docusaurus/useIsBrowser';
-
 const ControlButton = forwardRef(
   (
     {

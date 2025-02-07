@@ -80,9 +80,9 @@ Shadow Parts CSS works in the latest versions of all major browsers. However, ol
 ### Support for browser-prefixed pseudoelements
 
 <p>
-  <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix" target="_blank" rel="noopener noreferrer"></a>
-    <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix" target="_blank" rel="noopener noreferrer"> Vendor-prefixed</a>{' '}
-  pseudoelements are not currently supported. Therefore, for example, the `::-webkit-scrollbar` pseudoelement in the example below
+  <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix" target="_blank" rel="noopener noreferrer">Vendor-prefixed</a>
+{' '}
+  pseudo-elements are not currently supported. Therefore, for example, the `::-webkit-scrollbar` pseudoelement in the example below
   will not work.
 </p>
 
