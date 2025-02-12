@@ -30,7 +30,7 @@ export default class Dialog extends WJElement {
      * @class
      */
     constructor() {
-        super();		
+        super();
     }
 
     /**
@@ -281,39 +281,38 @@ export default class Dialog extends WJElement {
         });
     };
 
-	/**
-	 * Registers an event listener on the provided button that triggers a blocking UI element
-	 * and executes a given promise when the button is clicked.
-	 *
-	 * @param {HTMLElement} button - The button element to attach the event listener to.
-	 * @param {Function} promise - A function that returns a promise to be executed when the button is clicked.
-	 */
-	registerBlockingEvent(button, promise) {
-		button.addEventListener('wje-button:click', async (e) => {
-			console.log('Button clicked');
-			
-			let blockingElement = document.createElement('div');
-			blockingElement.classList.add('blocking-element');
+    /**
+     * Registers an event listener on the provided button that triggers a blocking UI element
+     * and executes a given promise when the button is clicked.
+     * @param {HTMLElement} button The button element to attach the event listener to.
+     * @param {Function} promise A function that returns a promise to be executed when the button is clicked.
+     */
+    registerBlockingEvent(button, promise) {
+        button.addEventListener('wje-button:click', async (e) => {
+            console.log('Button clicked');
 
-			let icon = document.createElement('wje-icon');
-			icon.setAttribute('name', 'loader-2');
-			icon.setAttribute('size', '2x-large');
+            let blockingElement = document.createElement('div');
+            blockingElement.classList.add('blocking-element');
 
-			blockingElement.appendChild(icon);
+            let icon = document.createElement('wje-icon');
+            icon.setAttribute('name', 'loader-2');
+            icon.setAttribute('size', '2x-large');
 
-			let scrollOffset = this.dialog.scrollTop;
-			blockingElement.style.top = `${scrollOffset}px`;
-			blockingElement.style.bottom = `-${scrollOffset}px`;
+            blockingElement.appendChild(icon);
 
-			this.dialog.appendChild(blockingElement);
+            let scrollOffset = this.dialog.scrollTop;
+            blockingElement.style.top = `${scrollOffset}px`;
+            blockingElement.style.bottom = `-${scrollOffset}px`;
 
-			await promise().then((res) => {
-				this.close();
-				blockingElement.remove();
-			}).catch((err) => {
-				console.error(err);
-				blockingElement.remove();
-			});
-		});
-	}
+            this.dialog.appendChild(blockingElement);
+
+            await promise().then((res) => {
+                this.close();
+                blockingElement.remove();
+            }).catch((err) => {
+                console.error(err);
+                blockingElement.remove();
+            });
+        });
+    }
 }

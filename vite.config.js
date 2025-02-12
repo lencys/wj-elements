@@ -1,10 +1,7 @@
 import { defineConfig } from 'vite';
 import dotenv from 'dotenv';
 import path from 'path';
-// import javascriptObfuscator from 'vite-plugin-javascript-obfuscator';
 import dts from 'vite-plugin-dts'
-
-
 
 /** @type {import('vite').UserConfig} */
 export default defineConfig(({ mode }) => {
@@ -39,11 +36,7 @@ export default defineConfig(({ mode }) => {
       },
     },
     plugins: [
-      dts({
-        //insertTypesEntry: true,
-        //outputDir: "dist/types",  // Moves them into the final build
-
-      })
+      dts()
     ],
     build: {
       assetsInlineLimit: 0,

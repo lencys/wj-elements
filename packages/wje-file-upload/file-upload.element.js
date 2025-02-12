@@ -13,9 +13,15 @@ import styles from './styles/styles.css?inline';
  * @slot - This is a default/unnamed slot.
  * @csspart native - The native file upload part.
  * @csspart file-list - The file list part.
- * @csspart button - The upload button part.
+ * @csspart upload-button - The label part.
  * @event change - Fires when the file input changes.
  * @event drop - Fires when a file is dropped into the component.
+ * @attribute {string} accepted-types - The accepted file types for upload.
+ * @attribute {number} chunk-size - The chunk size for file upload.
+ * @attribute {number} max-file-size - The maximum file size for upload.
+ * @attribute {string} upload-url - The URL to set as the upload URL.
+ * @attribute {boolean} auto-process-files - The auto process files attribute.
+ * @attribute {boolean} no-upload-button - The no upload button attribute.
  * @tag wje-file-upload
  */
 export default class FileUpload extends WJElement {
@@ -122,6 +128,22 @@ export default class FileUpload extends WJElement {
     }
 
     /**
+     * Sets the noUploadButton attribute.
+     * @param value
+     */
+    set noUploadButton(value) {
+        this.setAttribute('no-upload-button', value);
+    }
+
+    /**
+     * Gets the noUploadButton attribute.
+     * @returns {boolean}
+     */
+    get noUploadButton() {
+        return this.hasAttribute('no-upload-button');
+    }
+
+    /**
      * Sets the uploaded files.
      * @param value
      */
@@ -199,28 +221,28 @@ export default class FileUpload extends WJElement {
         label.classList.add('file-label');
         label.setAttribute('part', 'file-label');
 
-        let button = document.createElement('wje-button');
-        button.innerText = this.label || this.localizer.translate('wj.file.upload.button');
+        let fileList = document.createElement('slot');
+        fileList.setAttribute('name', 'item');
+        fileList.setAttribute('part', 'items');
+        fileList.classList.add('file-list');
 
         let slot = document.createElement('slot');
+        label.appendChild(slot);
 
         let fileInput = document.createElement('input');
         fileInput.setAttribute('type', 'file');
         fileInput.setAttribute('multiple', '');
         fileInput.setAttribute('style', 'display:none;');
 
-        button.appendChild(slot);
-        button.appendChild(fileInput);
+        if (!this.noUploadButton) {
+            let button = document.createElement('wje-button');
+            button.innerText = this.label || this.localizer.translate('wj.file.upload.button');
+            button.setAttribute('part', 'upload-button');
 
-        this.fileInput = fileInput;
+            label.appendChild(button);
 
-        let fileList = document.createElement('slot');
-        fileList.setAttribute('name', 'item');
-        fileList.setAttribute('part', 'items');
-        fileList.classList.add('file-list');
-
-        label.appendChild(slot);
-        label.appendChild(button);
+            this.button = button;
+        }
 
         native.appendChild(fileInput);
         native.appendChild(label);
@@ -230,7 +252,7 @@ export default class FileUpload extends WJElement {
 
         this.native = native;
         this.fileList = fileList;
-        this.button = button;
+        this.fileInput = fileInput;
 
         return fragment;
     }
@@ -239,7 +261,7 @@ export default class FileUpload extends WJElement {
      * Method to perform actions after the component is drawn.
      */
     afterDraw() {
-        this.button.addEventListener('click', () => {
+        this.button?.addEventListener('click', () => {
             this.fileInput.click();
         });
 
@@ -318,7 +340,7 @@ export default class FileUpload extends WJElement {
 
         try {
             this.handleSubmit(event);
-        } catch (err) {}
+        } catch (err) { }
     };
 
     /**
