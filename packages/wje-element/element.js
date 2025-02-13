@@ -98,17 +98,21 @@ export default class WJElement extends HTMLElement {
 
     /**
      * Sets the 'shadow' attribute.
-     * @param value The value to set for the 'shadow' attribute.
+     * @param {string} value The value to set for the 'shadow' attribute.
      */
     set isShadowRoot(value) {
         return this.setAttribute('shadow', value);
+    }
+
+    get isShadowRoot() {
+        return this.getAttribute('shadow');
     }
 
     /**
      * Checks if the 'shadow' attribute is present.
      * @returns {boolean} True if the 'shadow' attribute is present.
      */
-    get isShadowRoot() {
+    get hasShadowRoot() {
         return this.hasAttribute('shadow');
     }
 
@@ -125,7 +129,7 @@ export default class WJElement extends HTMLElement {
      * @returns The rendering context.
      */
     get context() {
-        if (this.isShadowRoot) {
+        if (this.hasShadowRoot) {
             return this.shadowRoot;
         } else {
             return this;
@@ -302,7 +306,7 @@ export default class WJElement extends HTMLElement {
             this.drawingStatus = this.drawingStatuses.BEGINING;
 
             this.setupAttributes?.();
-            if (this.isShadowRoot) {
+            if (this.hasShadowRoot) {
                 if (!this.shadowRoot) this.attachShadow({ mode: this.shadowType || 'open' });
             }
 

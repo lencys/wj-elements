@@ -1,203 +1,100 @@
-import { bindRouterLinks } from 'slick-router/middlewares/router-links.js';
+export { bindRouterLinks } from 'slick-router/middlewares/router-links.js';
 
-import { default as SlidingContainer } from '../experimental-packages/wje-sliding-container/sliding-container.js';
-import { fetchAndParseCSS } from './utils/animations.js';
-import { formatDate } from './utils/date.js';
-import { event } from './utils/event.js';
-import { Localizer } from './utils/localize.js';
-import { WjePermissionsApi } from './utils/permissions-api.js';
-import { default as Accordion } from './wje-accordion/accordion.js';
-import { default as AccordionItem } from './wje-accordion-item/accordion-item.js';
-import { default as Animation } from './wje-animation/animation.js';
-import { default as Aside } from './wje-aside/aside.js';
-import { default as Avatar } from './wje-avatar/avatar.js';
-import { default as Badge } from './wje-badge/badge.js';
-import { default as Breadcrumb } from './wje-breadcrumb/breadcrumb.js';
-import { default as Breadcrumbs } from './wje-breadcrumbs/breadcrumbs.js';
-import { default as Button } from './wje-button/button.js';
-import { default as ButtonGroup } from './wje-button-group/button-group.js';
-import { default as Card } from './wje-card/card.js';
-import { default as CardContent } from './wje-card-content/card-content.js';
-import { default as CardControls } from './wje-card-controls/card-controls.js';
-import { default as CardHeader } from './wje-card-header/card-header.js';
-import { default as CardSubtitle } from './wje-card-subtitle/card-subtitle.js';
-import { default as CardTitle } from './wje-card-title/card-title.js';
-import { default as Carousel } from './wje-carousel/carousel.js';
-import { default as CarouselItem } from './wje-carousel-item/carousel-item.js';
-import { default as Checkbox } from './wje-checkbox/checkbox.js';
-import { default as Chip } from './wje-chip/chip.js';
-import { default as Col } from './wje-col/col.js';
-import { default as ColorPicker } from './wje-color-picker/color-picker.js';
-import { default as Container } from './wje-container/container.js';
-import { default as CopyButton } from './wje-copy-button/copy-button.js';
-import { default as Dialog } from './wje-dialog/dialog.js';
-import { default as Divider } from './wje-divider/divider.js';
-import { default as Dropdown } from './wje-dropdown/dropdown.js';
-import { default as WJElement } from './wje-element/element.js';
-import { default as FileUpload } from './wje-file-upload/file-upload.js';
-import { default as FileUploadItem } from './wje-file-upload-item/file-upload-item.js';
-import { default as Footer } from './wje-footer/footer.js';
-import { default as FormatDigital } from './wje-format-digital/format-digital.js';
-import { default as Grid } from './wje-grid/grid.js';
-import { default as Header } from './wje-header/header.js';
-import { default as Icon } from './wje-icon/icon.js';
-import { default as IconPicker } from './wje-icon-picker/icon-picker.js';
-import { default as Img } from './wje-img/img.js';
-import { default as ImgComparer } from './wje-img-comparer/img-comparer.js';
-import { default as InfiniteScroll } from './wje-infinite-scroll/infinite-scroll.js';
-import { default as Input } from './wje-input/input.js';
-import { default as InputFile } from './wje-input-file/input-file.js';
-import { default as Item } from './wje-item/item.js';
-import { default as Kanban } from './wje-kanban/kanban.js';
-import { default as Label } from './wje-label/label.js';
-import { default as List } from './wje-list/list.js';
-import { default as Main } from './wje-main/main.js';
-import { default as Masonry } from './wje-masonry/masonry.js';
-import { default as Menu } from './wje-menu/menu.js';
-import { default as MenuButton } from './wje-menu-button/menu-button.js';
-import { default as MenuItem } from './wje-menu-item/menu-item.js';
-import { default as MenuLabel } from './wje-menu-label/menu-label.js';
-import { default as Option } from './wje-option/option.js';
-import { default as Options } from './wje-options/options.js';
-import { default as Orgchart } from './wje-orgchart/orgchart.js';
-import { default as OrgchartGroup } from './wje-orgchart-group/orgchart-group.js';
-import { default as OrgchartItem } from './wje-orgchart-item/orgchart-item.js';
-import { default as Popup } from './wje-popup/popup.js';
-import { default as ProgressBar } from './wje-progress-bar/progress-bar.js';
-import { default as QrCode } from './wje-qr-code/qr-code.js';
-import { default as Radio } from './wje-radio/radio.js';
-import { default as RadioGroup } from './wje-radio-group/radio-group.js';
-import { default as Rate } from './wje-rate/rate.js';
-import { default as RelativeTime } from './wje-relative-time/relative-time.js';
-import { default as Reorder } from './wje-reorder/reorder.js';
-import { default as ReorderDropzone } from './wje-reorder-dropzone/reorder-dropzone.js';
-import { default as ReorderHandle } from './wje-reorder-handle/reorder-handle.js';
-import { default as ReorderItem } from './wje-reorder-item/reorder-item.js';
-import { default as Route } from './wje-route/route.js';
-import { default as Routerx } from './wje-router/router.js';
-import { default as RouterLink } from './wje-router-link/router-link.js';
-import { default as RouterOutlet } from './wje-router-outlet/router-outlet.js';
-import { default as Row } from './wje-row/row.js';
-import { default as Select } from './wje-select/select.js';
-import { default as Slider } from './wje-slider/slider.js';
-import { default as SplitView } from './wje-split-view/split-view.js';
-import { default as Status } from './wje-status/status.js';
-import { default as Step } from './wje-step/step.js';
-import { default as Stepper } from './wje-stepper/stepper.js';
-import { defaultStoreActions, store } from './wje-store/store.js';
-import { default as Tab } from './wje-tab/tab.js';
-import { default as TabGroup } from './wje-tab-group/tab-group.js';
-import { default as TabPanel } from './wje-tab-panel/tab-panel.js';
-import { default as Textarea } from './wje-textarea/textarea.js';
-import { default as Thumbnail } from './wje-thumbnail/thumbnail.js';
-import { default as Timeline } from './wje-timeline/timeline.js';
-import { default as TimelineItem } from './wje-timeline-item/timeline-item.js';
-import { default as Toast } from './wje-toast/toast.js';
-import { default as Toggle } from './wje-toggle/toggle.js';
-import { default as Toolbar } from './wje-toolbar/toolbar.js';
-import { default as ToolbarAction } from './wje-toolbar-action/toolbar-action.js';
-import { default as Tooltip } from './wje-tooltip/tooltip.js';
-import { default as VisuallyHidden } from './wje-visually-hidden/visually-hidden.js';
-
-export {
-    WJElement,
-    defaultStoreActions,
-    store,
-    event,
-    bindRouterLinks,
-    fetchAndParseCSS,
-    Localizer,
-    formatDate,
-    WjePermissionsApi,
-    Accordion,
-    AccordionItem,
-    Animation,
-    Aside,
-    Avatar,
-    Badge,
-    Breadcrumb,
-    Breadcrumbs,
-    Button,
-    ButtonGroup,
-    Card,
-    CardContent,
-    CardControls,
-    CardHeader,
-    CardSubtitle,
-    CardTitle,
-    Carousel,
-    CarouselItem,
-    Checkbox,
-    Chip,
-    Col,
-    ColorPicker,
-    Container,
-    CopyButton,
-    Dialog,
-    Divider,
-    Dropdown,
-    FileUpload,
-    FileUploadItem,
-    Footer,
-    FormatDigital,
-    Grid,
-    Header,
-    Icon,
-    IconPicker,
-    Img,
-    ImgComparer,
-    InfiniteScroll,
-    Input,
-    InputFile,
-    Item,
-    Kanban,
-    Label,
-    List,
-    Main,
-    Masonry,
-    Menu,
-    MenuButton,
-    MenuItem,
-    MenuLabel,
-    Option,
-    Options,
-    Orgchart,
-    OrgchartGroup,
-    OrgchartItem,
-    Popup,
-    ProgressBar,
-    QrCode,
-    Radio,
-    RadioGroup,
-    Rate,
-    RelativeTime,
-    Reorder,
-    ReorderDropzone,
-    ReorderHandle,
-    ReorderItem,
-    Route,
-    Routerx,
-    RouterLink,
-    RouterOutlet,
-    Row,
-    Select,
-    Slider,
-    SplitView,
-    Status,
-    Step,
-    Stepper,
-    Tab,
-    TabGroup,
-    TabPanel,
-    Textarea,
-    Thumbnail,
-    Timeline,
-    TimelineItem,
-    Toast,
-    Toggle,
-    Toolbar,
-    ToolbarAction,
-    Tooltip,
-    VisuallyHidden,
-    SlidingContainer,
-};
+export { default as SlidingContainer } from '../experimental-packages/wje-sliding-container/sliding-container.js';
+export { fetchAndParseCSS } from './utils/animations.js';
+export { formatDate } from './utils/date.js';
+export { event } from './utils/event.js';
+export { Localizer } from './utils/localize.js';
+export { WjePermissionsApi } from './utils/permissions-api.js';
+export { default as Accordion } from './wje-accordion/accordion.js';
+export { default as AccordionItem } from './wje-accordion-item/accordion-item.js';
+export { default as Animation } from './wje-animation/animation.js';
+export { default as Aside } from './wje-aside/aside.js';
+export { default as Avatar } from './wje-avatar/avatar.js';
+export { default as Badge } from './wje-badge/badge.js';
+export { default as Breadcrumb } from './wje-breadcrumb/breadcrumb.js';
+export { default as Breadcrumbs } from './wje-breadcrumbs/breadcrumbs.js';
+export { default as Button } from './wje-button/button.js';
+export { default as ButtonGroup } from './wje-button-group/button-group.js';
+export { default as Card } from './wje-card/card.js';
+export { default as CardContent } from './wje-card-content/card-content.js';
+export { default as CardControls } from './wje-card-controls/card-controls.js';
+export { default as CardHeader } from './wje-card-header/card-header.js';
+export { default as CardSubtitle } from './wje-card-subtitle/card-subtitle.js';
+export { default as CardTitle } from './wje-card-title/card-title.js';
+export { default as Carousel } from './wje-carousel/carousel.js';
+export { default as CarouselItem } from './wje-carousel-item/carousel-item.js';
+export { default as Checkbox } from './wje-checkbox/checkbox.js';
+export { default as Chip } from './wje-chip/chip.js';
+export { default as Col } from './wje-col/col.js';
+export { default as ColorPicker } from './wje-color-picker/color-picker.js';
+export { default as Container } from './wje-container/container.js';
+export { default as CopyButton } from './wje-copy-button/copy-button.js';
+export { default as Dialog } from './wje-dialog/dialog.js';
+export { default as Divider } from './wje-divider/divider.js';
+export { default as Dropdown } from './wje-dropdown/dropdown.js';
+export { default as WJElement } from './wje-element/element.js';
+export { default as FileUpload } from './wje-file-upload/file-upload.js';
+export { default as FileUploadItem } from './wje-file-upload-item/file-upload-item.js';
+export { default as Footer } from './wje-footer/footer.js';
+export { default as FormatDigital } from './wje-format-digital/format-digital.js';
+export { default as Grid } from './wje-grid/grid.js';
+export { default as Header } from './wje-header/header.js';
+export { default as Icon } from './wje-icon/icon.js';
+export { default as IconPicker } from './wje-icon-picker/icon-picker.js';
+export { default as Img } from './wje-img/img.js';
+export { default as ImgComparer } from './wje-img-comparer/img-comparer.js';
+export { default as InfiniteScroll } from './wje-infinite-scroll/infinite-scroll.js';
+export { default as Input } from './wje-input/input.js';
+export { default as InputFile } from './wje-input-file/input-file.js';
+export { default as Item } from './wje-item/item.js';
+export { default as Kanban } from './wje-kanban/kanban.js';
+export { default as Label } from './wje-label/label.js';
+export { default as List } from './wje-list/list.js';
+export { default as Main } from './wje-main/main.js';
+export { default as Masonry } from './wje-masonry/masonry.js';
+export { default as Menu } from './wje-menu/menu.js';
+export { default as MenuButton } from './wje-menu-button/menu-button.js';
+export { default as MenuItem } from './wje-menu-item/menu-item.js';
+export { default as MenuLabel } from './wje-menu-label/menu-label.js';
+export { default as Option } from './wje-option/option.js';
+export { default as Options } from './wje-options/options.js';
+export { default as Orgchart } from './wje-orgchart/orgchart.js';
+export { default as OrgchartGroup } from './wje-orgchart-group/orgchart-group.js';
+export { default as OrgchartItem } from './wje-orgchart-item/orgchart-item.js';
+export { default as Popup } from './wje-popup/popup.js';
+export { default as ProgressBar } from './wje-progress-bar/progress-bar.js';
+export { default as QrCode } from './wje-qr-code/qr-code.js';
+export { default as Radio } from './wje-radio/radio.js';
+export { default as RadioGroup } from './wje-radio-group/radio-group.js';
+export { default as Rate } from './wje-rate/rate.js';
+export { default as RelativeTime } from './wje-relative-time/relative-time.js';
+export { default as Reorder } from './wje-reorder/reorder.js';
+export { default as ReorderDropzone } from './wje-reorder-dropzone/reorder-dropzone.js';
+export { default as ReorderHandle } from './wje-reorder-handle/reorder-handle.js';
+export { default as ReorderItem } from './wje-reorder-item/reorder-item.js';
+export { default as Route } from './wje-route/route.js';
+export { default as Routerx } from './wje-router/router.js';
+export { default as RouterLink } from './wje-router-link/router-link.js';
+export { default as RouterOutlet } from './wje-router-outlet/router-outlet.js';
+export { default as Row } from './wje-row/row.js';
+export { default as Select } from './wje-select/select.js';
+export { default as Slider } from './wje-slider/slider.js';
+export { default as SplitView } from './wje-split-view/split-view.js';
+export { default as Status } from './wje-status/status.js';
+export { default as Step } from './wje-step/step.js';
+export { default as Stepper } from './wje-stepper/stepper.js';
+export { defaultStoreActions, store } from './wje-store/store.js';
+export { default as Tab } from './wje-tab/tab.js';
+export { default as TabGroup } from './wje-tab-group/tab-group.js';
+export { default as TabPanel } from './wje-tab-panel/tab-panel.js';
+export { default as Textarea } from './wje-textarea/textarea.js';
+export { default as Thumbnail } from './wje-thumbnail/thumbnail.js';
+export { default as Timeline } from './wje-timeline/timeline.js';
+export { default as TimelineItem } from './wje-timeline-item/timeline-item.js';
+export { default as Toast } from './wje-toast/toast.js';
+export { default as Toggle } from './wje-toggle/toggle.js';
+export { default as Toolbar } from './wje-toolbar/toolbar.js';
+export { default as ToolbarAction } from './wje-toolbar-action/toolbar-action.js';
+export { default as Tooltip } from './wje-tooltip/tooltip.js';
+export { default as VisuallyHidden } from './wje-visually-hidden/visually-hidden.js';

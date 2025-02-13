@@ -1,7 +1,7 @@
 {
   "name": "wj-elements",
   "description": "WebJET Elements is a modern set of user interface tools harnessing the power of web components designed to simplify web application development.",
-  "version": "0.1.130",
+  "version": "0.1.134",
   "homepage": "https://github.com/lencys/wj-elements",
   "author": "Lukáš Ondrejček <lukas.ondrejcek@gmail.com>",
   "license": "MIT",
@@ -21,10 +21,13 @@
   "web-types": "dist/web-types.json",
   "types": "dist/packages/index.d.ts",
   "module": "dist/wje-master.js",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css",
+    "./dist/**/*.js"
+  ],
   "private": false,
   "files": [
-    "./dist"
+    "dist"
   ],
   "scripts": {
     "dev": "vite --mode development",
@@ -56,9 +59,9 @@
     "./*": {
       "import": "./dist/*"
     },
-    "./*.css": {
-      "import": "./dist/*.css"
-    }
+    "./style.css": "./dist/styles.css",
+    "./light.css": "./dist/light.css",
+    "./dark.css": "./dist/dark.css"
   },
   "browserslist": [
     "last 2 versions",
