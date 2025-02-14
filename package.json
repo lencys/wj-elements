@@ -37,7 +37,7 @@
     "analyze": "cem analyze",
     "create-element": "node wje-cli-script/create-element.cjs",
     "copy-dist": "node wje-cli-script/copy-dist.cjs",
-    "build:copy-dist": "npm run build && npm run copy-dist -- /Users/rastislavhrompa/Desktop/Interway-MFE/root/node_modules/wj-elements/dist",
+    "build:copy-dist": "npm run build && npm run copy-dist -- /Users/rastislavhrompa/Desktop/Interway-MFE/root/node_modules/wj-elements",
     "test": "web-test-runner --group default",
     "test:watch": "web-test-runner --watch --group default",
     "lint": "eslint packages --max-warnings 0",
