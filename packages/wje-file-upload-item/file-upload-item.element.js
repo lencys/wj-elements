@@ -33,6 +33,14 @@ export default class FileUploadItem extends WJElement {
         this.localizer = new Localizer(this);
     }
 
+    set size(value) {
+        this.setAttribute('size', value);
+    }
+
+    get size() {
+        return this.getAttribute('size');
+    }
+
     /**
      * Dependencies for the component.
      * @type {object}
@@ -67,15 +75,19 @@ export default class FileUploadItem extends WJElement {
     /**
      * Called when an observed attribute has been added, removed, updated, or replaced.
      * @param {string} name The name of the attribute that has changed.
-     * @param {string} old The old value of the attribute.
-     * @param {string} newName The new value of the attribute.
+     * @param {string} oldValue The old value of the attribute.
+     * @param {string} newValue The new value of the attribute.
      */
-    attributeChangedCallback(name, old, newName) {
-        if (name === 'uploaded' && this.drawingStatus === 'AFTER') {
-            this.uploadedEl.setAttribute('value', this.uploaded);
+    attributeChangedCallback(name, oldValue, newValue) {
+        console.log('attributeChangedCallback', name, oldValue, newValue, this.drawingStatus);
+        if (name === 'uploaded') {
+            console.log('uploaded 1:', +newValue, +this.size, (+newValue / +this.size) * 100 || 0);
+            // this.uploadedEl.setAttribute('value', this.uploaded);
 
-            let progress = (+this.uploaded / +this.size) * 100 || 0;
-            this.sliderEl.value = Math.round(progress, 0);
+            let progress = ((+newValue / +this.size) * 100) || 0;
+
+            console.log('progress 2:', progress);
+            this.sliderEl.setAttribute("progress", Math.round(progress, 0));
         }
     }
 
@@ -130,7 +142,7 @@ export default class FileUploadItem extends WJElement {
         let slider = document.createElement('wje-progress-bar');
         slider.classList.add('file-progress');
         slider.setAttribute('id', 'id-' + this.lastModified);
-        slider.setAttribute('value', this.progress || 0);
+        slider.setAttribute('progress', this.progress);
         slider.setAttribute('color', 'success');
 
         image.appendChild(slot);

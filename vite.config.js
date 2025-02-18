@@ -41,7 +41,7 @@ export default defineConfig(({ mode }) => {
     build: {
       assetsInlineLimit: 0,
       minify: false,
-      sourcemap: false,
+      sourcemap: true,
       cssCodeSplit: true,
       outDir: './dist',
       lib: {
@@ -143,6 +143,8 @@ export default defineConfig(({ mode }) => {
           toolbar: './packages/wje-toolbar/toolbar.js',
           'toolbar-action': './packages/wje-toolbar-action/toolbar-action.js',
           tooltip: './packages/wje-tooltip/tooltip.js',
+          'tree': './packages/wje-tree/tree.js',
+          'tree-item': './packages/wje-tree-item/tree-item.js',
           'visually-hidden': './packages/wje-visually-hidden/visually-hidden.js',
         },
         name: 'WjElements',

@@ -5,6 +5,8 @@ export { fetchAndParseCSS } from './utils/animations.js';
 export { formatDate } from './utils/date.js';
 export { event } from './utils/event.js';
 export { Localizer } from './utils/localize.js';
+export { skSk } from "./translations/sk-sk.js";
+export { enGb } from "./translations/en-gb.js";
 export { WjePermissionsApi } from './utils/permissions-api.js';
 export { default as Accordion } from './wje-accordion/accordion.js';
 export { default as AccordionItem } from './wje-accordion-item/accordion-item.js';
