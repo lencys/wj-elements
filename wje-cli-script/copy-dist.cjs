@@ -34,17 +34,21 @@ async function copyDist(dest) {
     if (fs.existsSync(dest)) {
         const shouldRemove = await confirm(`Do you want to remove the content of the destination folder '${dest}'?`);
         if (shouldRemove) {
-            console.log(`Removing content of '${dest}'...`);
-            fs.rmSync(dest, { recursive: true, force: true });
-            fs.mkdirSync(dest, { recursive: true });
+            console.log(`Removing content of '${dest + "/dist"}'...`);
+            fs.rmSync(dest + "/dist", { recursive: true, force: true });
+            fs.mkdirSync(dest + "/dist", { recursive: true });
         }
     } else {
-        console.log(`Creating destination folder '${dest}'...`);
-        fs.mkdirSync(dest, { recursive: true });
+        console.log(`Creating destination folder '${dest + "/dist"}'...`);
+        fs.mkdirSync(dest + "/dist", { recursive: true });
     }
 
-    console.log(`Copying '${src}' to '${dest}'...`);
-    fs.cpSync(src, dest, { recursive: true });
+    console.log(`Copying '${src}' to '${dest + "/dist"}'...`);
+    fs.cpSync(src, dest + "/dist", { recursive: true });
+
+    // copy package.json
+    console.log(`Copying 'package.json' to '${dest}'...`);
+    fs.copyFileSync(path.resolve(__dirname, '../package.json'), path.resolve(dest, 'package.json'));
 
     console.log('Copy completed.');
 }
