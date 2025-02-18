@@ -268,7 +268,7 @@ class Store {
         return (action, state = {}) => {
             if (Array.isArray(action.payload)) {
                 console.error(
-                    `Nemôžete pridať do objektu hodnotu, ktorá je pole. Skontrolujte si či definovanie stavu vyzerá takto: "store.define(${stateValueName}, {})"`
+                    `Nemôžete pridať do objektu ${stateValueName} hodnotu, ktorá je pole.`
                 );
             }
 
@@ -310,19 +310,15 @@ class Store {
      */
     createArrayReducer(stateValueName, key) {
         return (action, state = []) => {
-            if (Array.isArray(action.payload) && action.payload.length === 0) {
-                console.warn(`Nemá zmysel pridávať prázdne pole do pola`);
-            }
 
-            if (
-                !Array.isArray(action.payload) &&
-                action.type !== defaultStoreActions.updateAction(stateValueName).type &&
-                action.type !== defaultStoreActions.deleteAction(stateValueName).type &&
-                action.type !== defaultStoreActions.updateAction(stateValueName).type
-            ) {
-                console.error(
-                    `Nemôžete pridať do poľa hodnotu, ktorá nie je pole. Skontrolujte si či definovanie stavu vyzerá takto: "store.define(${stateValueName}, [])"`
-                );
+            if (action.actionType === "LOAD") {
+                if (!Array.isArray(action.payload)) {
+                    console.error(
+                        `Snažíte sa použiť "LOAD" akciu na pole, ale payload nie je pole.`
+                    );
+
+                    return [...state];
+                }
             }
 
             switch (action.type) {
@@ -348,6 +344,17 @@ class Store {
                         return [...state, action.payload];
                     }
                 case `${stateValueName}/DELETE`:
+                    if (Array.isArray(action.payload)) {
+                        return [
+                            ...state.filter(
+                                (obj) =>
+                                    !action.payload.some((item) => (obj.hasOwnProperty(key) && obj[key] !== item[key]) ||
+                                        (!obj.hasOwnProperty(key) && obj !== item))
+
+                            ),
+                        ]
+                    }
+
                     return [
                         ...state.filter(
                             (obj) =>

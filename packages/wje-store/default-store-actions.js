@@ -3,6 +3,7 @@ const addAction = (stateValueName) => {
         return {
             type: `${stateValueName}/ADD`,
             payload: payload2,
+            actionType: 'ADD',
         };
     };
 };
@@ -12,6 +13,7 @@ const addManyAction = (stateValueName) => {
         return {
             type: `${stateValueName}/ADD_MANY`,
             payload: payload2,
+            actionType: 'ADD_MANY',
         };
     };
 };
@@ -21,6 +23,7 @@ const updateAction = (stateValueName) => {
         return {
             type: `${stateValueName}/UPDATE`,
             payload: payload2,
+            actionType: 'UPDATE',
         };
     };
 };
@@ -30,6 +33,7 @@ const deleteAction = (stateValueName) => {
         return {
             type: `${stateValueName}/DELETE`,
             payload: payload2,
+            actionType: 'DELETE',
         };
     };
 };
@@ -39,6 +43,7 @@ const loadAction = (stateValueName) => {
         return {
             type: `${stateValueName}/LOAD`,
             payload: payload2,
+            actionType: 'LOAD',
         };
     };
 };
