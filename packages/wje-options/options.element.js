@@ -153,6 +153,18 @@ export default class Options extends WJElement {
         return this.hasAttribute('search');
     }
 
+    get searchToQueryParams() {
+        return this.getAttribute('search-to-query-params');
+    }
+
+    set searchToQueryParams(value) {
+        this.setAttribute('search-to-query-params', value);
+    }
+
+    get hasSearchToQueryParams() {
+        return this.hasAttribute('search-to-query-params');
+    }
+
     /**
      * Checks if the lazy attribute is present.
      * @returns {boolean} True if the lazy attribute is present, false otherwise.
@@ -208,7 +220,7 @@ export default class Options extends WJElement {
      * Prepares the component before drawing.
      * Fetches the pages and creates the options elements.
      */
-    beforeDraw() {
+    afterDraw() {
         event.dispatchCustomEvent(this, 'wje-options:load', {}); // nepomohlo to, v ff stale je scroll hore
     }
 
@@ -233,8 +245,13 @@ export default class Options extends WJElement {
             infiniteScroll.dataToHtml = this.htmlItem;
 
             infiniteScroll.setCustomData = async (page, signal) => {
-                let res = await this.service.get(
-                    `${this.url}${this.search ? `/${this.search}` : ''}?page=${page}&size=${this.lazyLoadSize}`,
+                let processedUrl = `${this.url}${this.search ? `/${this.search}` : ''}?page=${page}&size=${this.lazyLoadSize}`
+
+                if (this.hasSearchToQueryParams) {
+                    processedUrl = `${this.url}?page=${page}&size=${this.lazyLoadSize}${this.search ? `&search=${this.search}` : ''}`;
+                }
+
+                let res = await this.service.get(processedUrl,
                     null,
                     false,
                     signal
