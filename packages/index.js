@@ -99,4 +99,6 @@ export { default as Toggle } from './wje-toggle/toggle.js';
 export { default as Toolbar } from './wje-toolbar/toolbar.js';
 export { default as ToolbarAction } from './wje-toolbar-action/toolbar-action.js';
 export { default as Tooltip } from './wje-tooltip/tooltip.js';
+export { default as Tree } from './wje-tree/tree.js';
+export { default as TreeItem } from './wje-tree-item/tree-item.js';
 export { default as VisuallyHidden } from './wje-visually-hidden/visually-hidden.js';
