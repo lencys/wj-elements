@@ -266,7 +266,7 @@ class Store {
      */
     createObjectReducer(stateValueName) {
         return (action, state = {}) => {
-            if (Array.isArray(action.payload)) {
+            if (Array.isArray(action.payload) && (action.type === `${stateValueName}/ADD` || action.type === `${stateValueName}/UPDATE`)) {
                 console.error(
                     `Nemôžete pridať do objektu ${stateValueName} hodnotu, ktorá je pole.`
                 );
@@ -274,7 +274,7 @@ class Store {
 
             const actionType = action.type.split('/')[1];
 
-            if (['ADD', 'UPDATE', 'DELETE'].includes(actionType)) {
+            if (!['ADD', 'UPDATE', 'DELETE'].includes(actionType)) {
                 console.error(
                     `Nemôžete použiť akciu ${actionType} na objekt. Správne akcie pre objekt sú: ADD, UPDATE, DELETE`
                 );
@@ -311,7 +311,7 @@ class Store {
     createArrayReducer(stateValueName, key) {
         return (action, state = []) => {
 
-            if (action.actionType === "LOAD") {
+            if (action.actionType === "LOAD" && action.type?.includes(stateValueName)) {
                 if (!Array.isArray(action.payload)) {
                     console.error(
                         `Snažíte sa použiť "LOAD" akciu na pole, ale payload nie je pole.`

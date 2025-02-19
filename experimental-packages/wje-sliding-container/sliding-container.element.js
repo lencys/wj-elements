@@ -5,13 +5,9 @@ import styles from './styles/styles.css?inline';
  * @summary SlidingContainer is a custom web component that extends WJElement.
  * @documentation https://elements.webjet.sk/components/SlidingContainer
  * @status stable
- *
- * @extends WJElement
- *
+ * @augments WJElement
  * @csspart - Styles the element.
- *
  * @slot - The default slot for the SlidingContainer.
- *
  * @property {string} maxWidth - The maximum width of the SlidingContainer.
  * @property {string} maxHeight - The maximum height of the SlidingContainer.
  * @property {string} trigger - The trigger for the SlidingContainer.
@@ -22,9 +18,7 @@ import styles from './styles/styles.css?inline';
  * @property {string} animationDuration - The duration of the animation.
  * @property {string} animationEasing - The easing of the animation.
  * @property {boolean} hasOpacity - Sets the opacity of the SlidingContainer.
- *
  * @tag wje-sliding-container
- *
  * @example
  * <wje-sliding-container trigger="test-resize-container-event-right" id="left-in-place" direction="left" max-width="100px" max-height="100%">
  *    <wje-card>
@@ -37,13 +31,11 @@ import styles from './styles/styles.css?inline';
  *    </wje-card-content>
  * </wje-card>
  * </wje-sliding-container>
- *
  */
 export default class SlidingContainer extends WJElement {
   /**
    * Creates an instance of SlidingContainer.
-   *
-   * @constructor
+   * @class
    */
   constructor() {
     super();
@@ -183,7 +175,6 @@ export default class SlidingContainer extends WJElement {
 
   /**
    * Returns the CSS styles for the component.
-   *
    * @static
    * @returns {CSSStyleSheet}
    */
@@ -200,10 +191,9 @@ export default class SlidingContainer extends WJElement {
 
   /**
    * Draws the component.
-   *
-   * @param {Object} context - The context for drawing.
-   * @param {Object} store - The store for drawing.
-   * @param {Object} params - The parameters for drawing.
+   * @param {object} context The context for drawing.
+   * @param {object} store The store for drawing.
+   * @param {object} params The parameters for drawing.
    * @returns {DocumentFragment}
    */
   draw(context, store, params) {
@@ -332,8 +322,7 @@ export default class SlidingContainer extends WJElement {
 
   /**
    * Checks for a specific variant and applies corresponding styles.
-   *
-   * @param {string} variant - The variant to check for.
+   * @param {string} variant The variant to check for.
    */
   checkForVariant(variant) {
     if (variant === 'over') {
@@ -376,7 +365,7 @@ export default class SlidingContainer extends WJElement {
    * Triggers the event based on the target element.
    * If the target element is different from the last caller, it refreshes the children by calling the `open` method.
    * If the target element is the same as the last caller, it toggles the state by calling the `toggle` method.
-   * @param {Event} e - The event object.
+   * @param {Event} e The event object.
    */
   triggerEvent = async (e) => {
     if (this._lastCaller && this._lastCaller !== e.composedPath()[0]) {
@@ -546,7 +535,6 @@ export default class SlidingContainer extends WJElement {
 
   /**
    * Closes the animation container.
-   *
    * @returns {Promise<void>} A promise that resolves when the container is closed.
    */
   async close(event) {
@@ -593,7 +581,7 @@ export default class SlidingContainer extends WJElement {
   }
 
   componentCleanup() {
-    this._resizeObserver.disconnect();
+    this._resizeObserver?.disconnect();
     this._resizeObserver = null;
   }
 }
