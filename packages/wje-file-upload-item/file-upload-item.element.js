@@ -79,14 +79,11 @@ export default class FileUploadItem extends WJElement {
      * @param {string} newValue The new value of the attribute.
      */
     attributeChangedCallback(name, oldValue, newValue) {
-        console.log('attributeChangedCallback', name, oldValue, newValue, this.drawingStatus);
         if (name === 'uploaded') {
-            console.log('uploaded 1:', +newValue, +this.size, (+newValue / +this.size) * 100 || 0);
-            // this.uploadedEl.setAttribute('value', this.uploaded);
+            this.uploadedEl.setAttribute('value', this.uploaded);
 
             let progress = ((+newValue / +this.size) * 100) || 0;
 
-            console.log('progress 2:', progress);
             this.sliderEl.setAttribute("progress", Math.round(progress, 0));
         }
     }
