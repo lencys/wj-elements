@@ -41,6 +41,15 @@ export default class Img extends WJElement {
     }
 
     /**
+     * Returns the list of attributes to observe for changes.
+     * @static
+     * @returns {Array<string>}
+     */
+    static get observedAttributes() {
+        return ['src'];
+    }
+
+    /**
      * Sets up the attributes for the component.
      */
     setupAttributes() {
