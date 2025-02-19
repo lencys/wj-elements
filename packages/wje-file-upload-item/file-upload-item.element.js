@@ -79,7 +79,7 @@ export default class FileUploadItem extends WJElement {
      * @param {string} newValue The new value of the attribute.
      */
     attributeChangedCallback(name, oldValue, newValue) {
-        if (name === 'uploaded' && oldValue !== newValue) {
+        if (name === 'uploaded' && oldValue !== newValue && this.uploadedEl) {
             this.uploadedEl.setAttribute('value', newValue);
 
             let progress = ((+newValue / +this.size) * 100) || 0;
