@@ -3,22 +3,8 @@ import styles from './styles/styles.css?inline';
 
 
 /**
- * `Tree` is a custom web component that represents a toast notification.
- * @summary This element represents a toast notification.
- * @documentation https://elements.webjet.sk/components/toast
- * @status stable
- * @augments {WJElement}
- * @csspart native - The native part
- * @cssproperty {string} headline - Specifies the headline text of the toast. Represents the main title or heading displayed in the toast.
- * @cssproperty {boolean} open - Indicates whether the toast is currently open (visible). A value of `true` shows the toast, while `false` hides it.
- * @cssproperty {number} duration - Determines the duration (in milliseconds) for which the toast is displayed. After this time, the toast will automatically close unless it is manually closed.
- * @cssproperty {boolean} closable - Specifies whether the toast can be manually closed by the user. If `true`, the toast will include a close button or mechanism.
- * @cssproperty {string} color - Defines the color of the toast. Accepts any valid CSS color value such as `hex`, `RGB`, or named colors.
- * @cssproperty {boolean} countdown - Indicates whether a countdown is displayed in the toast. When `true`, a visual countdown timer is shown to indicate the remaining time before the toast closes.
- * @slot - The content of the toast.
- * @slot media - The media of the toast.
- * // @fires wje-toast:after-show - Fired after the toast is shown.
- * // @fires wje-toast:after-hide - Fired after the toast is hidden.
+ * Represents a custom Tree component that extends the functionality of WJElement.
+ * This component is used to create a hierarchical tree structure with selectable items.
  */
 
 export default class Tree extends WJElement {
@@ -90,6 +76,58 @@ export default class Tree extends WJElement {
         return fragment;
     }
 
+    /**
+     * Called after the draw process of the component is completed.
+     * Typically used to add event listeners or perform operations
+     * that are dependent on the component's drawn state.
+     * @returns {void} This method does not return a value.
+     */
+    afterDraw() {
+        this.addEventListener('click', this.handleClick);
+    }
+
+    /**
+     * Handles the click event triggered by the user interaction.
+     * Identifies the closest tree item element to the event target and sets it
+     * as the selected item. Ensures that only one item is selected at a time, resetting
+     * the selection state for all other items.
+     * @param {Event} e The click event object.
+     */
+    handleClick = (e) => {
+        let selectedItem = e.target.closest('wje-tree-item');
+        console.log('HANDLE CLICK', this.selection);
+        if (this.selection === 'single') {
+            if (selectedItem) {
+                for (let item of this.getAllItems()) {
+                    item.selected = item === selectedItem;
+                }
+            }
+        } else if (this.selection === 'multiple') {
+            let childrens = selectedItem.getChildrenItems();
+            selectedItem.selected = !selectedItem.selected;
+
+            for(let item of childrens) {
+                item.selected = !item.selected;
+            }
+
+            console.log('multiple selection', childrens);
+        }
+    }
+
+    /**
+     * Retrieves all items that match the selector 'wje-tree-item' within the current context.
+     * @returns {Array<Element>} An array of all matching DOM elements.
+     */
+    getAllItems() {
+        return [...this.querySelectorAll('wje-tree-item')];
+    }
+
+    /**
+     * Retrieves and appends an expand/collapse icon to a given item based on the provided status.
+     * @param {HTMLElement} item The DOM element to which the icon will be appended.
+     * @param {string} status The status indicating which icon to retrieve (e.g., "expand" or "collapse").
+     * @returns {void} This method does not return a value. If the icon matching the given status is not found, a warning is logged.
+     */
     getExpandCollapseIcon(item, status) {
         let icon = this.querySelector(`[slot="${status}"]`);
         if (!icon) {
@@ -98,17 +136,7 @@ export default class Tree extends WJElement {
         }
 
         let iconClone = icon.cloneNode(true);
-        console.log("CLONE:", iconClone);
         item.appendChild(iconClone);
         // return this.querySelector('.expand-collapse-icon');
-    }
-
-
-
-    /**
-     * After draw method for the toast notification.
-     */
-    afterDraw() {
-
     }
 }

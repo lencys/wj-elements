@@ -1,0 +1,8 @@
+/*
+[ WJ Tree ]
+*/
+
+:host {
+    position: relative;
+    --indent: var(--wje-spacing-large);
+}

@@ -1,0 +1,64 @@
+/*
+[ WJ Tree Item ]
+*/
+
+:host {
+    .native-tree-item {
+        position: relative;
+        display: flex;
+        align-items: stretch;
+        flex-direction: column;
+
+        .item {
+            display: flex;
+            align-items: center;
+            .toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-sizing: content-box;
+                width: var(--wje-tree-item-indent);
+                height: var(--wje-tree-item-indent);
+                flex-shrink: 0;
+            }
+            wje-checkbox {
+                margin: 0;
+            }
+            slot {
+                display: flex;
+                align-items: center;
+            }
+            slot:not([name])::slotted(wje-icon) {
+                margin-right: var(--wje-spacing-2x-small);
+            }
+        }
+        .children {
+            margin-left: var(--wje-tree-item-indent);
+            display: none;
+            &.open {
+                display: block;
+
+                ::before {
+                    content: "";
+                    position: absolute;
+                    top: var(--wje-tree-item-indent);
+                    bottom: 5px;
+                    left: calc(var(--wje-tree-item-indent) / 2);
+                    border-inline-end: var(--wje-tree-item-indent-guid-width) solid var(--wje-border-color);
+                    z-index: 1;
+                }
+            }
+        }
+    }
+
+    .native-tree-item.expanded .item slot[name="expand"], .native-tree-item:not(.expanded) slot[name="collapse"] {
+        display: none;
+    }
+
+}
+
+:host([selected]) {
+    .item {
+        color: red;
+    }
+}

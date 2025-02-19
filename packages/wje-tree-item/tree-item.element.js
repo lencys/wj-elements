@@ -30,6 +30,17 @@ export default class TreeItem extends WJElement {
         this._selection = 'single';
     }
 
+    set selected(value) {
+        this.removeAttribute('selected');
+
+        if(value)
+            this.setAttribute('selected', '');
+    }
+
+    get selected() {
+        return this.hasAttribute('selected');
+    }
+
     set selection(value) {
         this._selection = value || 'single';
     }
@@ -86,6 +97,8 @@ export default class TreeItem extends WJElement {
         button.classList.add('toggle');
 
         let checkbox = document.createElement('wje-checkbox');
+        if(this.selected)
+            checkbox.setAttribute('checked', '');
 
         let label = document.createElement('slot');
 
@@ -139,6 +152,7 @@ export default class TreeItem extends WJElement {
         this.native = native;
         this.button = button;
         this.childrenElement = children;
+        this.childrenSlot = slot;
 
         return fragment;
     }
@@ -148,7 +162,8 @@ export default class TreeItem extends WJElement {
         this.checkbox.addEventListener('wje-toggle:change', (e) => {
 
             console.log("CHECKBOX CHANGED", e);
-            e.stopPropagation();
+            this.selected = e.detail.checked;
+            // e.stopPropagation();
         });
     }
 
@@ -168,5 +183,16 @@ export default class TreeItem extends WJElement {
         this.childrenElement.classList.toggle('open');
         this.native.classList.toggle('expanded');
         console.log("SOM TU 2");
+    }
+
+    getChildrenItems(options = {}) {
+        const includeDisabled = options.includeDisabled ?? true; // Ak nie je zadané, predvolená hodnota je true
+
+        if (!this.childrenSlot) {
+            return []; // Ak `childrenSlot` neexistuje, vráti prázdne pole
+        }
+
+        return [...this.childrenSlot.assignedElements({ flatten: true })]
+          .filter(item => item.tagName === 'WJE-TREE-ITEM' && (includeDisabled || !item.disabled));
     }
 }
