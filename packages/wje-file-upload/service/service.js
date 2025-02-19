@@ -252,6 +252,7 @@ export async function uploadFileInChunks(url, file, preview, chunkSize = 1024 * 
         formData.append('file', new Blob([stream])); // Send the current stream (chunk)
         formData.append('chunkIndex', Math.floor(offset / chunkSize)); // Send chunk index
         formData.append('totalChunks', totalChunks); // Send total chunks
+		formData.append('fileName', file.name); // Send file name
 
         try {
             // Send the current chunk via Fetch
