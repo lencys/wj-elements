@@ -527,4 +527,8 @@
     --wje-tooltip-shadow: var(--wje-shadow-medium);
     --wje-tooltip-spacing: var(--wje-spacing-x-small);
     --wje-tooltip-border-radius: var(--wje-border-radius-medium);
+
+    /* Tree */
+    --wje-tree-item-indent: 1.3rem;
+    --wje-tree-item-indent-guid-width: 0px;
 }
