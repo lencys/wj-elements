@@ -276,7 +276,12 @@ export async function uploadFileInChunks(url, file, preview, chunkSize = 1024 * 
     }
 
     console.log('File upload complete!');
-    return partResponses.at(-1).json();
+    const response = await partResponses.at(-1).json();
+
+    return {
+        data: response,
+        file,
+    }
 }
 
 /**

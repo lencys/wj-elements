@@ -696,6 +696,7 @@ export default class Select extends WJElement {
         if (!value) return;
 
         let option = this.querySelector(`wje-option[value="${value}"]`);
+
         if (option) {
             option.selected = true;
         }
