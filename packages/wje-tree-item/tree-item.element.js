@@ -28,6 +28,7 @@ export default class TreeItem extends WJElement {
         super();
 
         this._selection = 'single';
+        this._indeterminate = false;
     }
 
     set selected(value) {
@@ -47,6 +48,17 @@ export default class TreeItem extends WJElement {
 
     get selection() {
         return this._selection;
+    }
+
+    set indeterminate(value) {
+        if(value)
+            this.setAttribute('indeterminate', '');
+        else
+            this.removeAttribute('indeterminate');
+    }
+
+    get indeterminate() {
+        return this.hasAttribute('indeterminate');
     }
 
     /**
@@ -77,6 +89,39 @@ export default class TreeItem extends WJElement {
     }
 
     /**
+     * Returns the list of attributes to observe for changes.
+     * @static
+     * @returns {Array<string>}
+     */
+    static get observedAttributes() {
+        return ['selected', 'indeterminate'];
+    }
+
+    /**
+     * Called when an observed attribute has been added, removed, updated, or replaced.
+     * @param {string} name The name of the attribute that has changed.
+     * @param {string} oldValue The old value of the attribute.
+     * @param {string} newValue The new value of the attribute.
+     */
+    attributeChangedCallback(name, oldValue, newValue) {
+        console.log('attributeChangedCallback', name, oldValue, newValue);
+        if (name === 'selected' || name === 'indeterminate') {
+            this.checkbox.removeAttribute('indeterminate');
+
+            if (this.selected && !this.indeterminate) {
+                this.checkbox.setAttribute('checked', '');
+            } else {
+                this.checkbox.removeAttribute('checked');
+            }
+
+            if (this.indeterminate && !this.selected)
+                this.checkbox.setAttribute('indeterminate', '');
+        }
+
+
+    }
+
+    /**
      * Draw method for the toast notification.
      * @returns {object} Document fragment
      */
@@ -85,7 +130,7 @@ export default class TreeItem extends WJElement {
 
         let native = document.createElement('div');
         native.setAttribute('part', 'native');
-        native.classList.add('native-tree-item');
+        native.classList.add('native-tree-item', this.selection === 'multiple' ? 'multiple' : 'single');
 
         let item = document.createElement('div');
         item.classList.add('item');
@@ -100,7 +145,10 @@ export default class TreeItem extends WJElement {
         if(this.selected)
             checkbox.setAttribute('checked', '');
 
-        let label = document.createElement('slot');
+        let label = document.createElement('div');
+        label.classList.add('content');
+
+        let slotElement = document.createElement('slot');
 
         let children = document.createElement('div');
         children.classList.add('children');
@@ -109,7 +157,8 @@ export default class TreeItem extends WJElement {
         slot.setAttribute('name', 'children');
         children.appendChild(slot);
 
-        // item.appendChild(indent);
+        item.appendChild(indent);
+
         if(this.querySelectorAll(':scope > wje-tree-item').length > 0) {
             if(this.querySelectorAll('[slot="expand"]').length < 1) {
                 let expandIcon = document.createElement('wje-icon');
@@ -141,6 +190,8 @@ export default class TreeItem extends WJElement {
 
         if(this.selection === 'multiple')
             item.appendChild(checkbox);
+
+        label.appendChild(slotElement);
         item.appendChild(label);
 
         native.appendChild(item);
@@ -159,12 +210,6 @@ export default class TreeItem extends WJElement {
 
     afterDraw() {
         this.button.addEventListener('click', this.toggleChildren.bind(this));
-        this.checkbox.addEventListener('wje-toggle:change', (e) => {
-
-            console.log("CHECKBOX CHANGED", e);
-            this.selected = e.detail.checked;
-            // e.stopPropagation();
-        });
     }
 
     isNestedItem() {
@@ -173,16 +218,12 @@ export default class TreeItem extends WJElement {
     }
 
     isTreeItem(node) {
-        console.log(node, node instanceof Element, node.className === 'TreeItem');
-        // return true;
         return node instanceof Element && node.className === 'TreeItem';
     }
 
     toggleChildren() {
-        console.log("SOM TU 1");
         this.childrenElement.classList.toggle('open');
         this.native.classList.toggle('expanded');
-        console.log("SOM TU 2");
     }
 
     getChildrenItems(options = {}) {
@@ -193,6 +234,13 @@ export default class TreeItem extends WJElement {
         }
 
         return [...this.childrenSlot.assignedElements({ flatten: true })]
-          .filter(item => item.tagName === 'WJE-TREE-ITEM' && (includeDisabled || !item.disabled));
+          .filter(item => this.isTreeItem(item) && (includeDisabled || !item.disabled));
+    }
+
+    getAllChildrenFlat(options = {}) {
+        const directChildren = this.getChildrenItems(options);
+        return directChildren.flatMap(child =>
+          [child, ...child.getAllChildrenFlat(options)]
+        );
     }
 }

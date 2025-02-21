@@ -4,5 +4,6 @@
 
 :host {
     position: relative;
-    --indent: var(--wje-spacing-large);
+    width: 100%;
+    font-size: 0;
 }

@@ -8,11 +8,37 @@
         display: flex;
         align-items: stretch;
         flex-direction: column;
-
+        &.multiple {
+            .item {
+                border-radius: 0 !important;
+            }
+        }
         .item {
             display: flex;
             align-items: center;
+
+            /*--toggle-width: var(--wje-tree-item-indent);*/
+            /*--spacer-col: var(--wje-tree-item-indent);*/
+
+            /*display: grid;*/
+            /*grid-template-columns: var(--spacer-col) var(--wje-tree-item-indent) 1fr;*/
+            /*grid-template-areas: "indent toggle content";*/
+
+            padding-inline: var(--wje-spacing-3x-small);
+            padding-block: var(--wje-spacing-3x-small);
+            border-radius: var(--wje-tree-item-border-radius);
+            /*padding-left: var(--wje-tree-item-indent);*/
+            &:hover {
+                background-color: var(--wje-color-contrast-1);
+            }
+            .indent {
+                /*grid-area: indent;*/
+                display: block;
+                /*width: var(--wje-tree-item-indent);*/
+                width: 1em;
+            }
             .toggle {
+                font-size: var(--wje-font-size-medium);
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -20,20 +46,27 @@
                 width: var(--wje-tree-item-indent);
                 height: var(--wje-tree-item-indent);
                 flex-shrink: 0;
+                /*grid-area: toggle;*/
             }
             wje-checkbox {
+                font-size: var(--wje-font-size-medium);
                 margin: 0;
             }
+            .content {
+                font-size: var(--wje-font-size-medium);
+                grid-area: content;
+            }
             slot {
-                display: flex;
-                align-items: center;
+                display: block;
+                /*align-items: center;*/
+                /*grid-area: content;*/
             }
             slot:not([name])::slotted(wje-icon) {
                 margin-right: var(--wje-spacing-2x-small);
             }
         }
         .children {
-            margin-left: var(--wje-tree-item-indent);
+            font-size: calc(1em + var(--wje-tree-item-indent, var(--wje-spacing-medium)));
             display: none;
             &.open {
                 display: block;
@@ -54,11 +87,10 @@
     .native-tree-item.expanded .item slot[name="expand"], .native-tree-item:not(.expanded) slot[name="collapse"] {
         display: none;
     }
-
 }
 
 :host([selected]) {
     .item {
-        color: red;
+        background-color: var(--wje-color-contrast-2);
     }
 }

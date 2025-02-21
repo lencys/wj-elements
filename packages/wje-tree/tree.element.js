@@ -16,11 +16,11 @@ export default class Tree extends WJElement {
     }
 
     set selection(value) {
-        this.setAttribute('selection', value || 'single');
+        this.setAttribute('selection', value);
     }
 
     get selection() {
-        return this.getAttribute('selection');
+        return this.getAttribute('selection') || 'single';
     }
 
     /**
@@ -95,7 +95,10 @@ export default class Tree extends WJElement {
      */
     handleClick = (e) => {
         let selectedItem = e.target.closest('wje-tree-item');
-        console.log('HANDLE CLICK', this.selection);
+        let isClickButton = e.composedPath().some((el) => el?.classList?.contains('toggle'));
+        if(isClickButton)
+            return;
+
         if (this.selection === 'single') {
             if (selectedItem) {
                 for (let item of this.getAllItems()) {
@@ -103,14 +106,15 @@ export default class Tree extends WJElement {
                 }
             }
         } else if (this.selection === 'multiple') {
-            let childrens = selectedItem.getChildrenItems();
-            selectedItem.selected = !selectedItem.selected;
+            let children = selectedItem.getAllChildrenFlat();
+            let selectedItemStatus = !selectedItem.selected;
+            selectedItem.selected = selectedItemStatus;
 
-            for(let item of childrens) {
-                item.selected = !item.selected;
-            }
+            this.updateCheckboxState(selectedItem);
 
-            console.log('multiple selection', childrens);
+            // for(let item of children) {
+            //     item.selected = selectedItemStatus;
+            // }
         }
     }
 
@@ -137,6 +141,53 @@ export default class Tree extends WJElement {
 
         let iconClone = icon.cloneNode(true);
         item.appendChild(iconClone);
-        // return this.querySelector('.expand-collapse-icon');
+    }
+
+
+
+
+
+
+
+
+
+    updateCheckboxState(changedItem, isInitialSync = false) {
+        this.isInitialSync = isInitialSync;
+        this.propagateStateDownwards(changedItem);
+        this.propagateStateUpwards(changedItem);
+    }
+
+    updateParentState(item) {
+        const children = item.getChildrenItems({ includeDisabled: false });
+
+        if (children.length) {
+            const areAllChildrenChecked = children.every(child => child.selected);
+            const areAllChildrenUnchecked = children.every(child => !child.selected && !child.indeterminate);
+
+            item.selected = areAllChildrenChecked;
+            item.indeterminate = !areAllChildrenChecked && !areAllChildrenUnchecked;
+        }
+    }
+
+    propagateStateUpwards(item) {
+        const parent = item.parentElement?.closest('wje-tree-item');
+
+        if (parent) {
+            this.updateParentState(parent);
+            this.propagateStateUpwards(parent);
+        }
+    }
+
+    propagateStateDownwards(item) {
+        const isChecked = item.selected;
+
+        item.getChildrenItems().forEach(child => {
+            child.selected = this.isInitialSync ? (isChecked || child.selected) : (!child.disabled && isChecked);
+            this.propagateStateDownwards(child);
+        });
+
+        if (this.isInitialSync) {
+            this.updateParentState(item);
+        }
     }
 }
