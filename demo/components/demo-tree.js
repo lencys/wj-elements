@@ -8,16 +8,16 @@ template.innerHTML = `
   <h1>Tree</h1>
   <div class="container">
     
-    <!-- MULITIPLE -->
+    <!-- BASIC -->
 
-    <h2>Multiple</h2>
+    <h2>Basic</h2>
     <div class="playground" style="display: block;">
-      <div class="content" style="justify-content: start;">
-        <wje-tree selection="multiple">
-          <wje-tree-item>
+      <div class="content" style="justify-content: start; width: 240px;">
+        <wje-tree>
+          <wje-tree-item expanded>
             Deciduous
             <wje-tree-item>Birch</wje-tree-item>
-            <wje-tree-item>
+            <wje-tree-item expanded>
               Maple
               <wje-tree-item>Field maple</wje-tree-item>
               <wje-tree-item>Red maple</wje-tree-item>
@@ -41,12 +41,12 @@ template.innerHTML = `
       </div>
     </div>
     
-    <!-- BASIC -->
+    <!-- MULITIPLE -->
 
-    <h2>Basic</h2>
+    <h2>Multiple</h2>
     <div class="playground" style="display: block;">
-      <div class="content" style="justify-content: start;">
-        <wje-tree>
+      <div class="content" style="justify-content: start; width: 240px;">
+        <wje-tree selection="multiple">
           <wje-tree-item>
             Deciduous
             <wje-tree-item>Birch</wje-tree-item>
@@ -78,7 +78,7 @@ template.innerHTML = `
 
     <h2>Indent</h2>
     <div class="playground" style="display: block;">
-      <div class="content" style="justify-content: start;">
+      <div class="content" style="justify-content: start; width: 240px;">
         <wje-tree class="example-indent">
           <wje-tree-item>
             Deciduous
@@ -116,7 +116,7 @@ template.innerHTML = `
 
     <h2>Button</h2>
     <div class="playground" style="display: block;">
-      <div class="content" style="justify-content: start;">
+      <div class="content" style="justify-content: start; width: 240px;">
         <wje-tree>
           <wje-icon name="plus" slot="expand"></wje-icon>
           <wje-icon name="minus" slot="collapse"></wje-icon>
@@ -151,7 +151,7 @@ template.innerHTML = `
 
     <h2>Icons</h2>
     <div class="playground" style="display: block;">
-      <div class="content" style="justify-content: start;">
+      <div class="content" style="justify-content: start; width: 240px;">
         <wje-tree>
           <wje-tree-item>
             <wje-icon name="folder" filled></wje-icon>

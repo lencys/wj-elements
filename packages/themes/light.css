@@ -529,6 +529,7 @@
     --wje-tooltip-border-radius: var(--wje-border-radius-medium);
 
     /* Tree */
-    --wje-tree-item-indent: 1.3rem;
+    --wje-tree-item-indent: var(--wje-spacing-large);
     --wje-tree-item-indent-guid-width: 0px;
+    --wje-tree-item-border-radius: var(--wje-border-radius-medium);
 }

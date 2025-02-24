@@ -162,12 +162,26 @@ export default class Tree extends WJElement {
 
         if (children.length) {
             const areAllChildrenChecked = children.every(child => child.selected);
-            const areAllChildrenUnchecked = children.every(child => !child.selected && !child.indeterminate);
+            const areSomeChildrenChecked = children.some(child => child.selected);
+            const areSomeChildrenIndeterminate = children.some(child => child.indeterminate);
 
+            // 🌟 Ak všetky deti sú checked, rodič je checked
             item.selected = areAllChildrenChecked;
-            item.indeterminate = !areAllChildrenChecked && !areAllChildrenUnchecked;
+
+            // 🌟 Ak aspoň jedno dieťa je indeterminate alebo checked, rodič je indeterminate
+            item.indeterminate = areSomeChildrenIndeterminate || (areSomeChildrenChecked && !areAllChildrenChecked);
+        } else {
+            // Ak položka nemá deti, nemôže byť indeterminate
+            item.indeterminate = false;
+        }
+
+        // 🔁 Propagácia hore do nadradeného prvku
+        const parent = item.parentElement?.closest('wje-tree-item');
+        if (parent) {
+            this.updateParentState(parent);
         }
     }
+
 
     propagateStateUpwards(item) {
         const parent = item.parentElement?.closest('wje-tree-item');

@@ -31,6 +31,18 @@ export default class TreeItem extends WJElement {
         this._indeterminate = false;
     }
 
+    set exoanded(value) {
+        if (value) {
+            this.setAttribute('expanded', '');
+        } else {
+            this.removeAttribute('expanded');
+        }
+    }
+
+    get expanded() {
+        return this.hasAttribute('expanded');
+    }
+
     set selected(value) {
         this.removeAttribute('selected');
 
@@ -51,10 +63,10 @@ export default class TreeItem extends WJElement {
     }
 
     set indeterminate(value) {
+        this.removeAttribute('indeterminate');
+
         if(value)
             this.setAttribute('indeterminate', '');
-        else
-            this.removeAttribute('indeterminate');
     }
 
     get indeterminate() {
@@ -104,21 +116,43 @@ export default class TreeItem extends WJElement {
      * @param {string} newValue The new value of the attribute.
      */
     attributeChangedCallback(name, oldValue, newValue) {
-        console.log('attributeChangedCallback', name, oldValue, newValue);
-        if (name === 'selected' || name === 'indeterminate') {
-            this.checkbox.removeAttribute('indeterminate');
 
-            if (this.selected && !this.indeterminate) {
+
+        if (name === 'selected') {
+            console.log('==============================');
+            console.log('attributeChangedCallback', name, this);
+            console.log(name);
+            console.log('selected', this.selected);
+            console.log('indeterminate', this.indeterminate);
+
+            this.checkbox.removeAttribute('indeterminate');
+            if (this.selected) {
                 this.checkbox.setAttribute('checked', '');
             } else {
                 this.checkbox.removeAttribute('checked');
             }
 
-            if (this.indeterminate && !this.selected)
-                this.checkbox.setAttribute('indeterminate', '');
+            // if (this.indeterminate)
+                // this.checkbox.setAttribute('indeterminate', '');
         }
 
+        if (name === 'indeterminate' && !this.selected) {
+            console.log('==============================');
+            console.log('attributeChangedCallback', name, this);
+            console.log(name);
+            console.log('selected', this.selected);
+            console.log('indeterminate', this.indeterminate);
 
+            this.checkbox.removeAttribute('indeterminate');
+            // if (this.selected && !this.indeterminate) {
+            //     this.checkbox.setAttribute('checked', '');
+            // } else {
+                this.checkbox.removeAttribute('checked');
+            // }
+
+            if (this.indeterminate)
+                this.checkbox.setAttribute('indeterminate', '');
+        }
     }
 
     /**
@@ -209,6 +243,9 @@ export default class TreeItem extends WJElement {
     }
 
     afterDraw() {
+        if(this.expanded)
+            this.toggleChildren();
+
         this.button.addEventListener('click', this.toggleChildren.bind(this));
     }
 
