@@ -73,10 +73,12 @@ export default class FileUploadItem extends WJElement {
     }
 
     /**
-     * Called when an observed attribute has been added, removed, updated, or replaced.
-     * @param {string} name The name of the attribute that has changed.
-     * @param {string} oldValue The old value of the attribute.
-     * @param {string} newValue The new value of the attribute.
+     * Handles updates to the attributes of a custom element whenever one of the observed attributes is changed.
+     * Updates the related elements based on the changed attribute and its new value.
+     * @param {string} name The name of the attribute being changed.
+     * @param {string | null} oldValue The previous value of the attribute before the change, or null if the attribute was not previously set.
+     * @param {string | null} newValue The new value of the attribute after the change, or null if the attribute is being removed.
+     * @returns {void} Does not return a value.
      */
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'uploaded' && oldValue !== newValue && this.uploadedEl) {
