@@ -528,7 +528,7 @@
     --wje-tooltip-spacing: var(--wje-spacing-x-small);
     --wje-tooltip-border-radius: var(--wje-border-radius-medium);
 
-    /* Tree */
+    /* Tree - Item */
     --wje-tree-item-indent: var(--wje-spacing-large);
     --wje-tree-item-indent-guid-width: 0px;
     --wje-tree-item-border-radius: var(--wje-border-radius-medium);

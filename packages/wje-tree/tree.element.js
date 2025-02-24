@@ -1,10 +1,16 @@
-import { default as WJElement, WjElementUtils, event } from '../wje-element/element.js';
-import styles from './styles/styles.css?inline';
-
+import { default as WJElement } from "../wje-element/element.js";
+import styles from "./styles/styles.css?inline";
 
 /**
- * Represents a custom Tree component that extends the functionality of WJElement.
- * This component is used to create a hierarchical tree structure with selectable items.
+ * `Tree` is a custom web component that represents a hierarchical tree structure.
+ * It extends from `WJElement`.
+ * @summary This element visually represents a tree structure, supporting single or multiple selection modes and hierarchy management.
+ * @documentation https://elements.webjet.sk/components/tree
+ * @status stable
+ * @augments {WJElement}
+ * @csspart native - The native container part of the tree.
+ * @slot - The default slot to place `wje-tree-item` child components.
+ * @tag wje-tree
  */
 
 export default class Tree extends WJElement {
@@ -15,10 +21,19 @@ export default class Tree extends WJElement {
         super();
     }
 
+    /**
+     * Sets the selection attribute for the element.
+     * @param {string} value The value to set as the selection attribute.
+     */
     set selection(value) {
         this.setAttribute('selection', value);
     }
 
+    /**
+     * Gets the current selection mode for the element.
+     * If no selection is explicitly set, it defaults to 'single'.
+     * @returns {string} The current selection mode, either set by the element's attribute or the default value 'single'.
+     */
     get selection() {
         return this.getAttribute('selection') || 'single';
     }
@@ -45,7 +60,13 @@ export default class Tree extends WJElement {
         this.isShadowRoot = 'open';
     }
 
-    beforeDraw(context, appStoreObj, params) {
+    /**
+     * A method called before the drawing or rendering process of tree items.
+     * It iterates through all `wje-tree-item` elements, updating their selection state
+     * and managing their expand/collapse icons accordingly.
+     * @returns {void} This method does not return a value.
+     */
+    beforeDraw() {
         const items = this.querySelectorAll('wje-tree-item');
         items?.forEach(item => {
             item.selection = this.selection;
@@ -106,15 +127,10 @@ export default class Tree extends WJElement {
                 }
             }
         } else if (this.selection === 'multiple') {
-            let children = selectedItem.getAllChildrenFlat();
-            let selectedItemStatus = !selectedItem.selected;
-            selectedItem.selected = selectedItemStatus;
+            // let children = selectedItem.getAllChildrenFlat();
+            selectedItem.selected = !selectedItem.selected;
 
             this.updateCheckboxState(selectedItem);
-
-            // for(let item of children) {
-            //     item.selected = selectedItemStatus;
-            // }
         }
     }
 
@@ -144,19 +160,28 @@ export default class Tree extends WJElement {
     }
 
 
-
-
-
-
-
-
-
+    /**
+     * Updates the state of a checkbox, syncing the state both upwards to parent elements
+     * and downwards to child elements as necessary.
+     * @param {object} changedItem The specific item whose checkbox state has changed.
+     * @param {boolean} [isInitialSync] Indicates whether the state update is part of the initial synchronization process.
+     * @returns {void} This method does not return a value.
+     */
     updateCheckboxState(changedItem, isInitialSync = false) {
         this.isInitialSync = isInitialSync;
         this.propagateStateDownwards(changedItem);
         this.propagateStateUpwards(changedItem);
     }
 
+    /**
+     * Updates the state of the parent item based on the state of its child items.
+     * Recursively propagates changes up to all parent items to reflect the selection
+     * or indeterminate state accurately.
+     * @param {object} item The current tree item whose parent state needs to be updated.
+     * It is expected to have properties `selected`, `indeterminate`,
+     * and a method `getChildrenItems({ includeDisabled: boolean })`.
+     * @returns {void} This method does not return a value.
+     */
     updateParentState(item) {
         const children = item.getChildrenItems({ includeDisabled: false });
 
@@ -165,24 +190,24 @@ export default class Tree extends WJElement {
             const areSomeChildrenChecked = children.some(child => child.selected);
             const areSomeChildrenIndeterminate = children.some(child => child.indeterminate);
 
-            // 🌟 Ak všetky deti sú checked, rodič je checked
             item.selected = areAllChildrenChecked;
-
-            // 🌟 Ak aspoň jedno dieťa je indeterminate alebo checked, rodič je indeterminate
             item.indeterminate = areSomeChildrenIndeterminate || (areSomeChildrenChecked && !areAllChildrenChecked);
         } else {
-            // Ak položka nemá deti, nemôže byť indeterminate
             item.indeterminate = false;
         }
 
-        // 🔁 Propagácia hore do nadradeného prvku
         const parent = item.parentElement?.closest('wje-tree-item');
         if (parent) {
             this.updateParentState(parent);
         }
     }
 
-
+    /**
+     * Propagates the state changes of an item upwards through its ancestors in the hierarchy.
+     * Calls the `updateParentState` method for each parent element until no parent exists.
+     * @param {HTMLElement} item The current item whose state to propagate to its parent.
+     * @returns {void} This method does not return a value.
+     */
     propagateStateUpwards(item) {
         const parent = item.parentElement?.closest('wje-tree-item');
 
@@ -192,6 +217,13 @@ export default class Tree extends WJElement {
         }
     }
 
+    /**
+     * Propagates the selected state of an item to its children recursively. Depending on the `isInitialSync` flag,
+     * it also determines how the state should be applied to the child items and updates the parent state if needed.
+     * @param {object} item The item whose state is being propagated to its child items. The item must have properties
+     * such as `selected` and methods like `getChildrenItems` to retrieve its child elements.
+     * @returns {void} This method does not return a value.
+     */
     propagateStateDownwards(item) {
         const isChecked = item.selected;
 

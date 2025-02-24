@@ -57,9 +57,8 @@
                 grid-area: content;
             }
             slot {
-                display: block;
-                /*align-items: center;*/
-                /*grid-area: content;*/
+                display: flex;
+                align-items: center;
             }
             slot:not([name])::slotted(wje-icon) {
                 margin-right: var(--wje-spacing-2x-small);
@@ -76,7 +75,7 @@
                     position: absolute;
                     top: var(--wje-tree-item-indent);
                     bottom: 5px;
-                    left: calc(var(--wje-tree-item-indent) / 2);
+                    left: calc(1em - (var(--wje-spacing-3x-small) * 2) - (var(--wje-tree-item-indent-guid-width) / 2));
                     border-inline-end: var(--wje-tree-item-indent-guid-width) solid var(--wje-border-color);
                     z-index: 1;
                 }
