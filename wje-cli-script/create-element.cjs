@@ -78,12 +78,21 @@ template.innerHTML = \`...
 
 export default class ${demoName} extends WJElement {
     constructor() {
-        super(template);
+        super();
+    }
+    
+    /**
+     * Returns the template for the component.
+     * @static
+     * @returns {HTMLElement} The template element
+     */
+    static get customTemplate() {
+        return template;
     }
 
     afterDraw(context, store2, params) {
         const codeSnippet = new CodeSnippet();
-        codeSnippet.generateSnippet(template, this.context);
+        codeSnippet.generateSnippet(this.context);
     }
 }
 
@@ -130,21 +139,15 @@ function createElementInPackage() {
      * @summary ${elementName} is a custom web component that extends WJElement.
      * @documentation https://elements.webjet.sk/components/${elementName}
      * @status stable
-     *  
      * @extends WJElement
-     * 
      * @csspart - Styles the element.
-     *  
      * @tag wje-${elementKebeb}
-     * 
      * @example
      * <wje-${elementKebeb}></wje-${elementKebeb}>
      */
     export default class ${elementName} extends WJElement {
         /**
          * Creates an instance of ${elementName}.
-         *
-         * @constructor
          */
         constructor() {
             super();
@@ -175,14 +178,10 @@ function createElementInPackage() {
         }
     
         /**
-         * Draws the component.
-         *
-         * @param {Object} context - The context for drawing.
-         * @param {Object} store - The store for drawing.
-         * @param {Object} params - The parameters for drawing.
-         * @returns {DocumentFragment}
+         * Creates a document fragment, appends a new slot element to it, and returns the fragment.
+         * @returns {DocumentFragment} A document fragment containing a slot element.
          */
-        draw(context, store, params) {
+        draw() {
             let fragment = document.createDocumentFragment();
     
             let element = document.createElement("slot");
@@ -278,11 +277,11 @@ function addPackageToIndex(elementName, elementKebeb) {
   const packagesIndexPath = path.resolve(__dirname, '../packages/index.js');
   const packagesIndex = fs.readFileSync(packagesIndexPath, 'utf8');
   const packagesLines = packagesIndex.split('\n');
-  const importIndex = packagesLines.findIndex((line) => line.includes('import {'));
+  const importIndex = packagesLines.findIndex((line) => line.includes('export {'));
 
   if (
     packagesLines.some((line) =>
-      line.includes(`import { default as ${elementName} } from "./wje-${elementKebeb}/${elementKebeb}.js";`)
+      line.includes(`export { default as ${elementName} } from "./wje-${elementKebeb}/${elementKebeb}.js";`)
     )
   ) {
     console.error('Element already in packages/index.js');
@@ -290,7 +289,7 @@ function addPackageToIndex(elementName, elementKebeb) {
     process.exit(1);
   }
 
-  const newImport = `import { default as ${elementName} } from "./wje-${elementKebeb}/${elementKebeb}.js";`;
+  const newImport = `export { default as ${elementName} } from "./wje-${elementKebeb}/${elementKebeb}.js";`;
   const newExport = `  ${elementName},`;
 
   packagesLines.splice(importIndex + 1, 0, newImport);
