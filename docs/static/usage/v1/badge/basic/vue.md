@@ -1,23 +1,15 @@
 ```html
 <template>
-  <wje-list>
-    <wje-item>
-      <wje-badge slot="start">11</wje-badge>
-      <wje-label>Badge in start slot</wje-label>
-    </wje-item>
-    <wje-item>
-      <wje-badge slot="end">22</wje-badge>
-      <wje-label>Badge in end slot</wje-label>
-    </wje-item>
-  </wje-list>
+    <wje-badge>11</wje-badge>
+    <wje-badge>8</wje-badge>
 </template>
 
 <script lang="ts">
-  import { Badge, Item, Label, List } from '@elements/vue';
+  import Badge from '@elements/vue';
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { Badge, Item, Label, List },
+    components: Badge,
   });
 </script>
 ```

@@ -51,7 +51,6 @@
         Menu,
         MenuItem,
         Icon,
-        Status
     },
   });
 </script>

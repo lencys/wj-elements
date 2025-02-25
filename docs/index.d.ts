@@ -5,6 +5,8 @@ declare module '*.module.scss' {
 
 declare module '@theme/*';
 
+declare module 'wj-elements';
+
 declare module '@components/*';
 
 declare module '@docusaurus/*';

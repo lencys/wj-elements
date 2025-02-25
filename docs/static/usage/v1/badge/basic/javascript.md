@@ -1,12 +1,4 @@
 ```html
-<wje-list>
-  <wje-item>
-    <wje-badge slot="start">11</wje-badge>
-    <wje-label>Badge in start slot</wje-label>
-  </wje-item>
-  <wje-item>
-    <wje-badge slot="end">22</wje-badge>
-    <wje-label>Badge in end slot</wje-label>
-  </wje-item>
-</wje-list>
+<wje-badge>11</wje-badge>
+<wje-badge>8</wje-badge>
 ```

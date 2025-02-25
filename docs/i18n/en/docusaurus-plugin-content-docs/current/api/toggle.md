@@ -34,7 +34,8 @@ import Basic from '@site/static/usage/v1/toggle/basic/index.md';
 import Colors from '@site/static/usage/v1/toggle/colors/index.md';
 
 <div className="large">
-  <Colors /></div>
+  <Colors />
+</div>
 
 ## Attributes and Properties
 

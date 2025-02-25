@@ -31,15 +31,23 @@ import Basic from '@site/static/usage/v1/avatar/basic/index.md';
 
 ## Avatar size
 
-The `size` property determines the size of the avatar. Setting this property will change the internal offset of the button.
+The `size` property determines the size of the avatar.
 
 import Size from '@site/static/usage/v1/avatar/size/index.md';
 
 <Size />
 
+## Avatar size with initials
+
+The `size` property determines the size of the avatar. By adding the `initials` and `label` properties, the avatar displays the initials of the selected value of the `label` property.
+
+import SizeInitials from '@site/static/usage/v1/avatar/size-initials/index.md';
+
+<SizeInitials />
+
 ## Avatar with icon
 
-Nesting the `wj-icon` element will display the selected icon inside the avatar.
+Nesting the `wje-icon` element will display the selected icon inside the avatar.
 
 import Icon from '@site/static/usage/v1/avatar/icon/index.md';
 
@@ -53,9 +61,20 @@ import Initials from '@site/static/usage/v1/avatar/initials/index.md';
 
 <Initials />
 
+## Avatar with status
+
+By nesting the `wje-status` element with the icon, the Status element will appear on the sides of the Avatar.
+By adding the `status-placement` attribute, the position of the Status element can be specified.
+
+For more information on using Status, navigate to the [Status] element documentation(/docs/api/status). // TODO: link
+
+import Status from '@site/static/usage/v1/avatar/status/index.md';
+
+<Status />
+
 ## Avatar with dropdown
 
-Adding the `wj-dropdown` element will display a menu when the avatar is clicked. In this case, you need to add a `trigger` slot with value `hover` to the avatar element.
+Adding the `wje-dropdown` element will display a menu when the avatar is clicked. In this case, you need to add a `trigger` slot with value `hover` to the avatar element.
 
 import Dropdown from '@site/static/usage/v1/avatar/dropdown/index.md';
 
@@ -67,7 +86,7 @@ import Dropdown from '@site/static/usage/v1/avatar/dropdown/index.md';
 
 ## Avatar with tooltip
 
-Adding the `wj-dropdown` element will display a menu when the avatar is clicked.
+Adding the `wje-dropdown` element will display a menu when the avatar is clicked.
 
 import Tooltip from '@site/static/usage/v1/avatar/tooltip/index.md';
 

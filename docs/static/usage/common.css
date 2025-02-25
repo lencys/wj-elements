@@ -250,6 +250,10 @@ body {
   justify-content: center;
 
   height: 100%;
+
+  .content {
+    max-width: 80%;
+  }
 }
 
 :root {

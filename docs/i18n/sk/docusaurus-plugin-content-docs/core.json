@@ -185,28 +185,8 @@
       "docs": "",
       "docsTags": [
         {
-          "name": "virtualProp",
-          "text": "{\"ios\" | \"md\"} mode - The mode determines which platform styles to use."
-        },
-        {
-          "name": "slot",
-          "text": "header - Content is placed at the top and is used to\nexpand or collapse the accordion item."
-        },
-        {
           "name": "slot",
           "text": "content - Content is placed below the header and is\nshown or hidden based on expanded state."
-        },
-        {
-          "name": "part",
-          "text": "header - The wrapper element for the header slot."
-        },
-        {
-          "name": "part",
-          "text": "content - The wrapper element for the content slot."
-        },
-        {
-          "name": "part",
-          "text": "expanded - The expanded element. Can be used in combination\nwith the `header` and `content` parts (i.e. `::part(header expanded)`)."
         }
       ],
       "usage": {},
@@ -546,7 +526,7 @@
         },
         {
           "name": "size",
-          "type": "\"large\" | \"small\" | \"undefined\"",
+          "type": "\"medium\" | \"normal\" | \"large\" | \"small\" | \"x-large\" | \"2x-large\" | \"3x-large\" | \"4x-large\" | \"5x-large\" | \"undefined\"",
           "complexType": {
             "original": "boolean",
             "resolved": "boolean",
@@ -555,16 +535,83 @@
           "mutable": false,
           "attr": "size",
           "reflectToAttr": false,
-          "docs": "Nastavte na `small` pre avatara s menším priemerom a na `large` pre avatara s väčším priemerom. V predvolenom nastavení je veľkosť nenastavená.",
+          "docs": "Vyberte jednu z podporovaných hodnôt na nastavenie veľkosti avatara. V predvolenom nastavení je veľkosť nenastavená.",
           "docsTags": [],
           "default": "false",
           "values": [
+            {
+              "value": "medium",
+              "type": "string"
+            },
+            {
+              "value": "normal",
+              "type": "string"
+            },
             {
               "value": "large",
               "type": "string"
             },
             {
               "value": "small",
+              "type": "string"
+            },
+            {
+              "value": "x-large",
+              "type": "string"
+            },
+            {
+              "value": "2x-large",
+              "type": "string"
+            },
+            {
+              "value": "3x-large",
+              "type": "string"
+            },
+            {
+              "value": "4x-large",
+              "type": "string"
+            },
+            {
+              "value": "5x-large",
+              "type": "string"
+            },
+            {
+              "value": "undefined",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "status-placement",
+          "type": "\"top-start\" | \"top-end\"\" |  \"bottom-start\\\" | \\\"bottom-end\\\" | \"undefined\"",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "status-placement",
+          "reflectToAttr": false,
+          "docs": "Nastavte na jednu z podporovaných hodnôt, aby sa stav umiestnil na rohy avatara. V predvolenom nastavení je veľkosť nenastavená.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "value": "top-start",
+              "type": "string"
+            },
+            {
+              "value": "top-end",
+              "type": "string"
+            },
+            {
+              "value": "bottom-start",
+              "type": "string"
+            },
+            {
+              "value": "bottom-end",
               "type": "string"
             },
             {
@@ -583,55 +630,72 @@
         {
           "name": "--wj-avatar-background-color",
           "annotation": "prop",
-          "docs": "Farba pozadia avatara"
+          "docs": "Avatar background colour"
         },
         {
           "name": "--wj-avatar-border-color",
           "annotation": "prop",
-          "docs": "Farba okraja avatara"
+          "docs": "Avatar border colour"
         },
         {
           "name": "--wj-avatar-border-radius",
           "annotation": "prop",
-          "docs": "Zaoblenie okraja avatara"
+          "docs": "Rounding of the edge of the avatar"
         },
         {
           "name": "--wj-avatar-border-style",
           "annotation": "prop",
-          "docs": "Štýl okraja avatara"
+          "docs": "Avatar border style"
         },
         {
           "name": "--wj-avatar-border-width",
           "annotation": "prop",
-          "docs": "Šírka okraja"
+          "docs": "Edge width"
         },
         {
           "name": "--wj-avatar-color",
           "annotation": "prop",
-          "docs": "Farba textu"
+          "docs": "Text colour"
         },
         {
           "name": "--wj-avatar-font-size",
           "annotation": "prop",
-          "docs": "Veľkosť písma"
+          "docs": "Font size"
         },
         {
           "name": "--wj-avatar-font-weight",
           "annotation": "prop",
-          "docs": "Hrúbka písma"
+          "docs": "Font thickness"
         },
         {
           "name": "--wj-avatar-height",
           "annotation": "prop",
-          "docs": "Výška avatara"
+          "docs": "Height of avatar"
         },
         {
           "name": "--wj-avatar-width",
           "annotation": "prop",
-          "docs": "Šírka avatara"
+          "docs": "Width of avatar"
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Hlavný obsah avatara."
+        },
+        {
+          "name": "icon",
+          "docs": "Slot pre ikonu, ktorá sa má zobraziť v rámci avatara."
+        },
+        {
+          "name": "status",
+          "docs": "Slot pre indikátor stavu."
+        },
+        {
+          "name": "secondary",
+          "docs": "Slot pre sekundárny obsah alebo dodatočné informácie."
+        }
+      ],
       "parts": [
         {
           "name": "native",
@@ -778,7 +842,7 @@
           "mutable": false,
           "attr": "href",
           "reflectToAttr": false,
-          "docs": "Obsahuje adresu URL alebo fragment adresy URL, na ktorú hypertextový odkaz odkazuje.",
+          "docs": "Contains the URL or URL fragment to which the hyperlink points.",
           "docsTags": [],
           "values": [
             {
@@ -795,31 +859,56 @@
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--wje-breadcrumb-a",
+          "annotation": "prop",
+          "docs": "The color of the breadcrumb link"
+        },
+        {
+          "name": "--wje-breadcrumb-a-hover",
+          "annotation": "prop",
+          "docs": "The color of the breadcrumb link when hovered"
+        }
+      ],
       "slots": [
         {
+          "name": "",
+          "docs": "The main content of the breadcrumb element."
+        },
+        {
           "name": "end",
-          "docs": "Obsah sa umiestni vpravo v LTR a vľavo v RTL."
+          "docs": "The content is placed on the right in the LTR and on the left in the RTL."
         },
         {
           "name": "separator",
-          "docs": "Slot na prispôsobenie oddeľovača medzi položkami breadcrumbs. Ak nie je zadaný, predvolene sa používa ikona `\"chevron-right\"`."
+          "docs": "Slot to customize the separator between breadcrumbs items. If not specified, the `\"chevron-right\"` icon is used by default."
         },
         {
           "name": "start",
-          "docs": "Obsah je umiestnený vľavo v LTR a vpravo v RTL."
+          "docs": "The content is placed on the left in the LTR and on the right in the RTL."
         }
       ],
       "parts": [
         {
+          "name": "native",
+          "docs": "References the `a` element inside the breadcrumb."
+        },
+        {
           "name": "separator",
-          "docs": "Odkazuje na `span` element obsahujúci oddeľovač medzi položkami breadcrumbs."
+          "docs": "References a `span` element containing a separator between breadcrumbs items."
         }
       ],
-      "dependents": ["breadcrumbs"],
-      "dependencies": ["icon"],
+      "dependents": [
+        "breadcrumbs"
+      ],
+      "dependencies": [
+        "icon"
+      ],
       "dependencyGraph": {
-        "breadcrumb": ["icon"]
+        "breadcrumb": [
+          "icon"
+        ]
       }
     },
     {
@@ -841,7 +930,7 @@
           "mutable": false,
           "attr": "itemsAfterCollapse",
           "reflectToAttr": false,
-          "docs": "Určuje hodnotu maximálneho počtu zobrazených položiek po zbalení",
+          "docs": "Specifies the value of the maximum number of items displayed after packing",
           "docsTags": [],
           "default": "0",
           "values": [
@@ -863,7 +952,7 @@
           "mutable": false,
           "attr": "itemsBeforeCollapse",
           "reflectToAttr": false,
-          "docs": "Určuje hodnotu maximálneho počtu zobrazených položiek pred zbalení",
+          "docs": "Specifies the value of the maximum number of items displayed before packing",
           "docsTags": [],
           "default": "0",
           "values": [
@@ -885,7 +974,7 @@
           "mutable": false,
           "attr": "maxItems",
           "reflectToAttr": false,
-          "docs": "Určuje hodnotu maximálneho počtu zobrazených položiek v navigácii Breadcrumbs",
+          "docs": "Specifies the value of the maximum number of items displayed in the Breadcrumbs navigation",
           "docsTags": [],
           "default": "0",
           "values": [
@@ -901,12 +990,21 @@
       "events": [],
       "listeners": [],
       "styles": [],
-      "slots": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The main content of the breadcrumbs element."
+        }
+      ],
       "parts": [],
       "dependents": [],
-      "dependencies": ["breadcrumb"],
+      "dependencies": [
+        "breadcrumb"
+      ],
       "dependencyGraph": {
-        "breadcrumbs": ["breadcrumb"]
+        "breadcrumbs": [
+          "breadcrumb"
+        ]
       }
     },
     {

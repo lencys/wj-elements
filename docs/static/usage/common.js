@@ -1,3 +1,4 @@
+
 /**
  * Wait for the initial HTML document to be
  * loaded and parsed before adding the message
@@ -12,6 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
    * the demos loaded in iframes can match the
    * docs website theme.
    */
+
   window.addEventListener('message', (ev) => {
     const { data } = ev;
 

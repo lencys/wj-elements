@@ -46,6 +46,12 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Accordion',
+      collapsed: false,
+      items: ['api/accordion'],
+    },
+    {
+      type: 'category',
       label: 'Animation',
       collapsed: false,
       items: ['api/animation'],
@@ -233,12 +239,6 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'QR Code',
-      collapsed: false,
-      items: ['api/qr-generator'],
-    },
-    {
-      type: 'category',
       label: 'Radio',
       collapsed: false,
       items: ['api/radio', 'api/radio-group'],
@@ -253,7 +253,7 @@ module.exports = {
       type: 'category',
       label: 'Reorder',
       collapsed: false,
-      items: ['api/reorder', 'api/reorder-item', 'api/reorder-dropzone'],
+      items: [ 'api/reorder-item'],
     },
     {
       type: 'category',

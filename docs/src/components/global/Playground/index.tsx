@@ -13,6 +13,8 @@ import TabItem from '@theme/TabItem';
 
 import { IconHtml, IconTs, IconVue, IconDefault, IconCss, IconDots } from './icons';
 
+import 'wj-elements'
+
 import { useScrollPositionBlocker } from '@docusaurus/theme-common/internal';
 import useIsBrowser from '@docusaurus/useIsBrowser';
 const ControlButton = forwardRef(
