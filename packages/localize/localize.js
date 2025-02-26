@@ -25,9 +25,7 @@ export class LocalizerDefault {
 
     // Vyhľadávanie prekladu podľa kľúča
     translate(key) {
-        console.log("TRANSLATE:",this.element.lang, this.lang, this.currentLang, key);
         const langMap = this.languages.get(this.currentLang);
-        console.log("LANG MAP:", langMap);
         return langMap ? langMap[key] || key : key;
     }
 
