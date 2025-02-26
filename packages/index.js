@@ -1,3 +1,4 @@
+import { default as LevelIndicator } from "./wje-level-indicator/level-indicator.js";
 export { bindRouterLinks } from 'slick-router/middlewares/router-links.js';
 
 export { default as SlidingContainer } from '../experimental-packages/wje-sliding-container/sliding-container.js';
@@ -52,6 +53,7 @@ export { default as InputFile } from './wje-input-file/input-file.js';
 export { default as Item } from './wje-item/item.js';
 export { default as Kanban } from './wje-kanban/kanban.js';
 export { default as Label } from './wje-label/label.js';
+export { default as LevelIndicator } from "./wje-level-indicator/level-indicator.js";
 export { default as List } from './wje-list/list.js';
 export { default as Main } from './wje-main/main.js';
 export { default as Masonry } from './wje-masonry/masonry.js';

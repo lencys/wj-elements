@@ -1,0 +1,26 @@
+:host {
+    display: block;
+    .native-level-indicator {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: var(--wje-level-indicator-height);
+        align-items: center;
+        width: var(--wje-level-indicator-width);
+    }
+    .reverse {
+        flex-direction: column;
+    }
+    .bar {
+        width: 100%;
+        height: var(--wje-level-indicator-height);
+        background: var(--wje-level-indicator-color);
+        border-radius: var(--wje-level-indicator-border-radius);
+        opacity: var(--wje-level-indicator-opacity);
+        transition: opacity 0.3s;
+    }
+    .bar.active {
+        opacity: 1;
+        background: var(--wje-level-indicator-color-active);
+    }
+}
+    

@@ -170,6 +170,10 @@
     --wje-item-background: transparent;
     --wje-item-background-hover: var(--wje-color-contrast-3);
 
+    /* Level - Indicator */
+    --wje-level-indicator-color: var(--wje-color-contrast-4);
+    --wje-level-indicator-color-active: var(--wje-color-contrast-6);
+
     /* List */
     --wje-list-background: var(--wje-background);
 

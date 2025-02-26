@@ -398,6 +398,18 @@
     --wje-item-min-height: 40px;
     --wje-item-transition: var(--wje-transition-fast);
 
+    /* Level - Indicator */
+    --wje-level-indicator-color: var(--wje-color-contrast-3);
+    --wje-level-indicator-color-active: var(--wje-color-contrast-9);
+    --wje-level-indicator-opacity: 0.5;
+    --wje-level-indicator-gap: var(--wje-size-4x-small);
+    --wje-level-indicator-width: var(--wje-size-medium);
+    --wje-level-indicator-height: var(--wje-size-4x-small);
+    --wje-level-indicator-border-radius: var(--wje-border-radius-large);
+    --wje-level-indicator-color-high: var(--wje-color-success-9);
+    --wje-level-indicator-color-medium: var(--wje-color-warning-9);
+    --wje-level-indicator-color-low: var(--wje-color-danger-9);
+
     /* List */
     --wje-list-inset-padding: 1rem;
     --wje-list-border-radius: var(--wje-border-radius-medium);

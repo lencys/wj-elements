@@ -98,6 +98,7 @@ export default defineConfig(({ mode }) => {
           item: './packages/wje-item/item.js',
           kanban: './packages/wje-kanban/kanban.js',
           label: './packages/wje-label/label.js',
+          "level-indicator": "packages/wje-level-indicator/level-indicator.js",
           list: './packages/wje-list/list.js',
           main: './packages/wje-main/main.js',
           masonry: './packages/wje-masonry/masonry.js',
