@@ -321,5 +321,11 @@ module.exports = {
       collapsed: false,
       items: ['api/toolbar', 'api/toolbar-actions'],
     },
+	{
+		type: 'category',
+		label: 'Tree',
+		collapsed: false,
+		items: ['api/tree', 'api/tree-item'],
+	  }
   ],
 };

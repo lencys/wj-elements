@@ -8828,6 +8828,26 @@
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/tree-item/tree-item.tsx",
+      "encapsulation": "shadow",
+      "tag": "tree-item",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
+      "optional": true,
+      "required": false,
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     }
   ],
   "typeLibrary": {
