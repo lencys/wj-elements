@@ -6,6 +6,7 @@ export class LocalizerDefault {
 
         this.lang = this.element.lang || document.documentElement.lang || 'en-gb';
         this.dir = this.element.dir || document.documentElement.dir || 'ltr';
+        this.currentLang = 'en-gb';
 
         this.setLanguage();
     }
@@ -16,7 +17,7 @@ export class LocalizerDefault {
 
     // Nastavenie aktuálneho jazyka
     setLanguage() {
-        if (this.languages.has(this.lang)) {
+        if (this.languages?.has(this.lang)) {
             this.currentLang = this.lang;
         } else {
             console.error(`Language "${this.lang}" not loaded.`);
@@ -25,7 +26,8 @@ export class LocalizerDefault {
 
     // Vyhľadávanie prekladu podľa kľúča
     translate(key) {
-        const langMap = this.languages.get(this.currentLang);
+        const langMap = this.languages?.get(this.currentLang);
+        if (!langMap) return key;
         return langMap ? langMap[key] || key : key;
     }
 

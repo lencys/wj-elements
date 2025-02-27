@@ -331,13 +331,14 @@ export default class Textarea extends WJElement {
 
     componentCleanup() {
         this.observer.disconnect();
+        this.resizeObserver?.unobserve(this.input);
     }
 
     /**
      * Disconnects the component.
      */
     beforeDisconnect() {
-        this.resizeObserver.unobserve(this.input);
+        this.resizeObserver?.unobserve(this.input);
     }
 
     /**
