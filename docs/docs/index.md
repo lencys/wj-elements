@@ -24,10 +24,10 @@ import DocsCards from '@components/global/DocsCards';
       display: flex;
     }
   `}</style>
-<script
-  type="module"
-  src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@dddb1c19734498c5b2a17f2e6ed605d0cd40d02e/wj-master.js"
-></script>
+
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.138/dist/wje-master.min.js"></script>
+
 
 </head>
 

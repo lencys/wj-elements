@@ -31,6 +31,12 @@ import Basic from '@site/static/usage/v1/badge/basic/index.md';
 
 <Basic />
 
+## List
+
+import List from '@site/static/usage/v1/badge/list/index.md';
+
+<List />
+
 ## Editing styles
 
 ### Colors

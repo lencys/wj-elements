@@ -30,6 +30,18 @@ import Basic from '@site/static/usage/v1/accordion/basic/index.md';
 
 <Basic />
 
+## Farby
+
+import Colors from '@site/static/usage/v1/accordion/colors/index.md';
+
+<Colors />
+
+## Multiple
+
+import Multiple from '@site/static/usage/v1/accordion/multiple/index.md';
+
+<Multiple />
+
 ## Atribúty a Vlastnosti
 
 <Props />

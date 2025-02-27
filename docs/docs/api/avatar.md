@@ -31,15 +31,23 @@ import Basic from '@site/static/usage/v1/avatar/basic/index.md';
 
 ## Veľkosť Avatara
 
-Vlastnosť `size` určuje veľkosť avatara. Nastavením tejto vlastnosti sa zmení vnútorné odsadenie tlačidla.
+Vlastnosť `size` určuje veľkosť avatara.
 
 import Size from '@site/static/usage/v1/avatar/size/index.md';
 
 <Size />
 
+## Veľkosť Avatara s iniciálmi 
+
+Vlastnosť `size` určuje veľkosť avatara. Pridaním vlastností `initials` a `label` avatar zobrazí iniciály zvolenej hodnoty vlastnosti `label`.
+
+import SizeInitials from '@site/static/usage/v1/avatar/size-initials/index.md';
+
+<SizeInitials />
+
 ## Avatar s ikonou
 
-Vnorením elementu `wj-icon` sa vo vnútri avataru zobrazí zvolená ikona.
+Vnorením elementu `wje-icon` sa vo vnútri avatara zobrazí zvolená ikona.
 
 import Icon from '@site/static/usage/v1/avatar/icon/index.md';
 
@@ -53,9 +61,20 @@ import Initials from '@site/static/usage/v1/avatar/initials/index.md';
 
 <Initials />
 
+## Avatar so statusom
+
+Vnorením elementu `wje-status` s ikonou, sa po stranách Avatara zobrazí element Status.
+Pridaním atribútu `status-placement` je možné určiť pozíciu elementu Status.
+
+Pre viac informácií o použítí Status sa presuňte do dokumentácie elementu [Status](/docs/api/status). // TODO: link
+
+import Status from '@site/static/usage/v1/avatar/status/index.md';
+
+<Status />
+
 ## Avatar s dropdownom
 
-Pridaním elementu `wj-dropdown` sa po kliknutí na avatar zobrazí menu. V tomto prípade je nutné do elementu avatar pridať slot `trigger` s hodnotou `hover`.
+Pridaním elementu `wje-dropdown` sa po kliknutí na avatar zobrazí menu. V tomto prípade je nutné do elementu avatar pridať slot `trigger` s hodnotou `hover`.
 
 import Dropdown from '@site/static/usage/v1/avatar/dropdown/index.md';
 
@@ -67,7 +86,7 @@ import Dropdown from '@site/static/usage/v1/avatar/dropdown/index.md';
 
 ## Avatar s tooltipom
 
-Pridaním elementu `wj-dropdown` sa po kliknutí na avatar zobrazí menu.
+Pridaním elementu `wje-dropdown` sa po kliknutí na avatar zobrazí menu.
 
 import Tooltip from '@site/static/usage/v1/avatar/tooltip/index.md';
 

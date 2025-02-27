@@ -185,28 +185,8 @@
       "docs": "",
       "docsTags": [
         {
-          "name": "virtualProp",
-          "text": "{ \"ios\". | \"md\"} mode - The mode determines which platform styles to use."
-        },
-        {
-          "name": "slot",
-          "text": "header - Content is placed at the top and is used to\nexpand or collapse the accordion item."
-        },
-        {
           "name": "slot",
           "text": "content - Content is placed below the header and is\nshown or hidden based on expanded state."
-        },
-        {
-          "name": "part",
-          "text": "header - The wrapper element for the header slot."
-        },
-        {
-          "name": "part",
-          "text": "content - The wrapper element for the content slot."
-        },
-        {
-          "name": "part",
-          "text": "expanded - The expanded element. Can be used in combination\nwith the `header` and `content` parts (i.e. `::part(header expanded)`)."
         }
       ],
       "usage": {},
@@ -222,7 +202,7 @@
           "mutable": false,
           "attr": "delay",
           "reflectToAttr": false,
-          "docs": "A property specifying the delay before the animation starts in milliseconds.",
+          "docs": "Property specifying the delay before the animation starts in milliseconds.",
           "docsTags": [],
           "default": "0",
           "values": [
@@ -239,7 +219,7 @@
           "mutable": false,
           "attr": "direction",
           "reflectToAttr": false,
-          "docs": "Animation direction property",
+          "docs": "A property that determines the direction of the hohoho animation.",
           "docsTags": [],
           "default": "normal",
           "values": [
@@ -546,7 +526,7 @@
         },
         {
           "name": "size",
-          "type": "\"large\" | \"small\" | \"undefined\"",
+          "type": "\"medium\" | \"normal\" | \"large\" | \"small\" | \"x-large\" | \"2x-large\" | \"3x-large\" | \"4x-large\" | \"5x-large\" | \"undefined\"",
           "complexType": {
             "original": "boolean",
             "resolved": "boolean",
@@ -555,16 +535,83 @@
           "mutable": false,
           "attr": "size",
           "reflectToAttr": false,
-          "docs": "Set to `small` for a smaller avatar and to `large` for a larger avatar. By default, the size is unset.",
+          "docs": "Select one of the supported values to set the avatar size. By default, the size is unset.",
           "docsTags": [],
           "default": "false",
           "values": [
+            {
+              "value": "medium",
+              "type": "string"
+            },
+            {
+              "value": "normal",
+              "type": "string"
+            },
             {
               "value": "large",
               "type": "string"
             },
             {
               "value": "small",
+              "type": "string"
+            },
+            {
+              "value": "x-large",
+              "type": "string"
+            },
+            {
+              "value": "2x-large",
+              "type": "string"
+            },
+            {
+              "value": "3x-large",
+              "type": "string"
+            },
+            {
+              "value": "4x-large",
+              "type": "string"
+            },
+            {
+              "value": "5x-large",
+              "type": "string"
+            },
+            {
+              "value": "undefined",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "status-placement",
+          "type": "\"top-start\" | \"top-end\"\" | \"bottom-start\" | \"bottom-end\" | \"undefined\"",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "status-placement",
+          "reflectToAttr": false,
+          "docs": "Set to one of the supported values to place the status on the corners of the avatar. By default, the size is unset.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "value": "top-start",
+              "type": "string"
+            },
+            {
+              "value": "top-end",
+              "type": "string"
+            },
+            {
+              "value": "bottom-start",
+              "type": "string"
+            },
+            {
+              "value": "bottom-end",
               "type": "string"
             },
             {
@@ -631,7 +678,24 @@
           "docs": "Width of avatar"
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The main content of the avatar."
+        },
+        {
+          "name": "icon",
+          "docs": "Slot for the icon to be displayed within the avatar."
+        },
+        {
+          "name": "status",
+          "docs": "Slot for status indicator."
+        },
+        {
+          "name": "secondary",
+          "docs": "Slot for secondary content or additional information."
+        }
+      ],
       "parts": [
         {
           "name": "native",
@@ -673,7 +737,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": false,
-          "docs": "The color to use from your application's color palette. The default options are: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"warning\"`, `\"complete\"`, `\"info\"`, and `\"menu\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
+          "docs": "The color to use from your application's color palette. The default options are: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"warning\"`, `\"complete\"`, `\"info\"`, and `\"menu\"`.\nFor more information about colors, visit [Customization Basics](/theming/basics).",
           "docsTags": [],
           "values": [
             {
@@ -799,8 +863,23 @@
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--wje-breadcrumb-a",
+          "annotation": "prop",
+          "docs": "The color of the breadcrumb link"
+        },
+        {
+          "name": "--wje-breadcrumb-a-hover",
+          "annotation": "prop",
+          "docs": "The color of the breadcrumb link when hovered"
+        }
+      ],
       "slots": [
+        {
+          "name": "",
+          "docs": "The main content of the breadcrumb element."
+        },
         {
           "name": "end",
           "docs": "The content is placed on the right in the LTR and on the left in the RTL."
@@ -815,6 +894,10 @@
         }
       ],
       "parts": [
+        {
+          "name": "native",
+          "docs": "References the `a` element inside the breadcrumb."
+        },
         {
           "name": "separator",
           "docs": "References a `span` element containing a separator between breadcrumbs items."
@@ -911,7 +994,12 @@
       "events": [],
       "listeners": [],
       "styles": [],
-      "slots": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The main content of the breadcrumbs element."
+        }
+      ],
       "parts": [],
       "dependents": [],
       "dependencies": [
@@ -4861,6 +4949,24 @@
       "dependencyGraph": {}
     },
     {
+      "filePath": "src/components/qr-code/qr-code.tsx",
+      "encapsulation": "shadow",
+      "tag": "qr-code",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
       "filePath": "src/components/progress-bar/progress-bar.tsx",
       "encapsulation": "shadow",
       "tag": "progress-bar",
@@ -5387,6 +5493,42 @@
           "required": false
         }
       ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/reorder/reorder.tsx",
+      "encapsulation": "shadow",
+      "tag": "reorder",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/reorder-item/reorder-item.tsx",
+      "encapsulation": "shadow",
+      "tag": "reorder-item",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
       "methods": [],
       "events": [],
       "listeners": [],
@@ -8279,7 +8421,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": false,
-          "docs": "The color to use from your application's color palette. The default options are: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, and `\"dark\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
+          "docs": "The color to use from your application's color palette. The default options are `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, and `\"dark\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
           "docsTags": [],
           "values": [
             {
@@ -8380,7 +8522,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Invoked when the state of the element changes.",
+          "docs": "Called when the element state changes.",
           "docsTags": []
         }
       ],
@@ -8704,6 +8846,26 @@
       "filePath": "src/components/toolbar-action/toolbar-action.tsx",
       "encapsulation": "shadow",
       "tag": "toolbar-actions",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
+      "optional": true,
+      "required": false,
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/tree-item/tree-item.tsx",
+      "encapsulation": "shadow",
+      "tag": "tree-item",
       "docs": "",
       "docsTags": [],
       "usage": {},

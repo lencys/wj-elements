@@ -6,41 +6,29 @@
     <title>Accordion</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@7/dist/ionic/ionic.esm.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@7/css/ionic.bundle.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.134/dist/wje-master.min.js"></script>
   </head>
-
   <body>
-    <ion-app>
-      <ion-content>
-        <div class="container">
-          <ion-accordion-group multiple="true">
-            <ion-accordion value="first">
-              <ion-item slot="header" color="light">
-                <ion-label>First Accordion</ion-label>
-              </ion-item>
-              <div class="ion-padding" slot="content">First Content</div>
-            </ion-accordion>
-            <ion-accordion value="second">
-              <ion-item slot="header" color="light">
-                <ion-label>Second Accordion</ion-label>
-              </ion-item>
-              <div class="ion-padding" slot="content">Second Content</div>
-            </ion-accordion>
-            <ion-accordion value="third">
-              <ion-item slot="header" color="light">
-                <ion-label>Third Accordion</ion-label>
-              </ion-item>
-              <div class="ion-padding" slot="content">Third Content</div>
-            </ion-accordion>
-          </ion-accordion-group>
-        </div>
-      </ion-content>
-    </ion-app>
-
-    <script>
-      const accordionGroup = document.querySelector('ion-accordion-group');
-      accordionGroup.value = ['first', 'third'];
-    </script>
+    <div class="container">
+      <div class="content">
+        <wje-accordion multiple index="3">
+          <wje-accordion-item color="info" class="collapsed">
+            <span slot="headline">Headline</span>
+            <div slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In bibendum urna quis velit consequat, et malesuada dolor tempus.</div>
+          </wje-accordion-item>
+          <wje-accordion-item color="info" class="collapsed">
+            <span slot="headline">Headline</span>
+            <div slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In bibendum urna quis velit consequat, et malesuada dolor tempus.</div>
+          </wje-accordion-item>
+          <wje-accordion-item color="info" class="collapsed">
+            <span slot="headline">Headline</span>
+            <div slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In bibendum urna quis velit consequat, et malesuada dolor tempus.</div>
+          </wje-accordion-item>
+        </wje-accordion>
+      </div>
+    </div>
   </body>
 </html>

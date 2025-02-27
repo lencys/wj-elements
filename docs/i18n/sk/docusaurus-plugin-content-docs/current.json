@@ -242,5 +242,13 @@
   "sidebar.api.category.Reorder": {
     "message": "Reorder",
     "description": "The label for category Reorder in sidebar api"
+  },
+  "sidebar.api.category.Accordion": {
+    "message": "Accordion",
+    "description": "The label for category Accordion in sidebar api"
+  },
+  "sidebar.api.category.Tree": {
+    "message": "Tree",
+    "description": "The label for category Tree in sidebar api"
   }
 }

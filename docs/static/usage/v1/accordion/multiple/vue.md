@@ -1,25 +1,19 @@
 ```html
 <template>
-  <ion-accordion-group :multiple="true" :value="['first', 'third']">
-    <ion-accordion value="first">
-      <ion-item slot="header" color="light">
-        <ion-label>First Accordion</ion-label>
-      </ion-item>
-      <div class="ion-padding" slot="content">First Content</div>
-    </ion-accordion>
-    <ion-accordion value="second">
-      <ion-item slot="header" color="light">
-        <ion-label>Second Accordion</ion-label>
-      </ion-item>
-      <div class="ion-padding" slot="content">Second Content</div>
-    </ion-accordion>
-    <ion-accordion value="third">
-      <ion-item slot="header" color="light">
-        <ion-label>Third Accordion</ion-label>
-      </ion-item>
-      <div class="ion-padding" slot="content">Third Content</div>
-    </ion-accordion>
-  </ion-accordion-group>
+    <wje-accordion multiple index="3">
+        <wje-accordion-item color="info" class="collapsed">
+            <span slot="headline">Headline</span>
+            <div slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In bibendum urna quis velit consequat, et malesuada dolor tempus.</div>
+        </wje-accordion-item>
+        <wje-accordion-item color="info" class="collapsed">
+            <span slot="headline">Headline</span>
+            <div slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In bibendum urna quis velit consequat, et malesuada dolor tempus.</div>
+        </wje-accordion-item>
+        <wje-accordion-item color="info" class="collapsed">
+            <span slot="headline">Headline</span>
+            <div slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In bibendum urna quis velit consequat, et malesuada dolor tempus.</div>
+        </wje-accordion-item>
+    </wje-accordion>
 </template>
 
 <script lang="ts">
@@ -28,10 +22,8 @@
 
   export default defineComponent({
     components: {
-      IonAccordion,
-      IonAccordionGroup,
-      IonItem,
-      IonLabel,
+        Accordion,
+        AccordionItem
     },
   });
 </script>
