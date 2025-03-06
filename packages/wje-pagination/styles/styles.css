@@ -1,0 +1,32 @@
+:host {
+    .native-pagination {
+        display: flex;
+        align-items: center;
+
+        .info {
+            font-size: var(--wje-font-size-small);
+        }
+
+        .pages {
+            display: flex;
+
+            .dots {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-inline: 0.25rem;
+                width: 32px;
+                &::before {
+                    content: '...';
+                }
+            }
+            wje-button {
+                width: 32px;
+                margin-inline: 0.25rem;
+                &[disabled] {
+                    cursor: default;
+                }
+            }
+        }
+    }
+}

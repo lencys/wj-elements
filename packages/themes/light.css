@@ -15,8 +15,8 @@
         'Apple Color Emoji', 'Segoe UI Emoji';
     --wje-font-family-secondary: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    --wje-force-mac-font-family: -apple-system, BlinkMacSystemFont, 'Inter UI', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-        'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    --wje-force-mac-font-family: -apple-system, BlinkMacSystemFont, 'Inter UI', 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 
     /* Line Heights */
     --wje-line-height-denser: 1.2;

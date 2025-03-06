@@ -22,214 +22,6 @@
         visibility: hidden;
       }
     </style>
-    <script>
-      // class LevelIndicator extends HTMLElement {
-      //   static get observedAttributes() {
-      //     return ["level"];
-      //   }
-      //
-      //   constructor() {
-      //     super();
-      //     this.attachShadow({ mode: "open" });
-      //     this.render();
-      //   }
-      //
-      //   attributeChangedCallback() {
-      //     this.render();
-      //   }
-      //
-      //   render() {
-      //     const level = Math.min(3, Math.max(0, parseInt(this.getAttribute("level") || "1", 10)));
-      //     const levels = ["20%", "50%", "80%"];
-      //
-      //     this.shadowRoot.innerHTML = `
-      //       <style>
-      //         .native {
-      //           display: flex;
-      //           flex-direction: column-reverse;
-      //           gap: 4px;
-      //           align-items: center;
-      //           width: 40px;
-      //         }
-      //         .bar {
-      //           width: 40px;
-      //           height: 6px;
-      //           background: orange;
-      //           border-radius: 4px;
-      //           opacity: 0.3;
-      //           transition: opacity 0.3s;
-      //         }
-      //         .bar:nth-child(-n + ${level}) {
-      //           opacity: 1;
-      //         }
-      //       </style>
-      //       <div class="native">
-      //         <div class="bar" style="width: ${levels[0]};"></div>
-      //         <div class="bar" style="width: ${levels[1]};"></div>
-      //         <div class="bar" style="width: ${levels[2]};"></div>
-      //       </div>
-      //     `;
-      //   }
-      // }
-
-    <!--  customElements.define("level-indicator", LevelIndicator);-->
-    </script>
-
-<!--    <script>-->
-<!--      class BatteryIndicator extends HTMLElement {-->
-<!--        static get observedAttributes() {-->
-<!--          return ["charge"];-->
-<!--        }-->
-
-<!--        constructor() {-->
-<!--          super();-->
-<!--          this.attachShadow({ mode: "open" });-->
-<!--          this.render();-->
-<!--        }-->
-
-<!--        attributeChangedCallback() {-->
-<!--          this.render();-->
-<!--        }-->
-
-<!--        render() {-->
-<!--          const charge = Math.min(3, Math.max(0, parseInt(this.getAttribute("charge") || "1", 10)));-->
-<!--          const colors = ["red", "orange", "green"];-->
-
-<!--          this.shadowRoot.innerHTML = `-->
-<!--      <style>-->
-<!--        :host {-->
-<!--          display: inline-flex;-->
-<!--          flex-direction: column;-->
-<!--          gap: 4px;-->
-<!--          align-items: center;-->
-<!--        }-->
-<!--        .native {-->
-<!--          display: flex;-->
-<!--          flex-direction: column;-->
-<!--          gap: 4px;-->
-<!--          align-items: center;-->
-<!--        }-->
-<!--        .bar {-->
-<!--          width: 40px;-->
-<!--          height: 6px;-->
-<!--          background: gray;-->
-<!--          border-radius: 4px;-->
-<!--          opacity: 0.3;-->
-<!--          transition: opacity 0.3s;-->
-<!--        }-->
-<!--        .bar:nth-child(-n + ${charge}) {-->
-<!--          opacity: 1;-->
-<!--          background: ${colors[charge - 1]};-->
-<!--        }-->
-<!--      </style>-->
-<!--      <div class="bar"></div>-->
-<!--      <div class="bar"></div>-->
-<!--      <div class="bar"></div>-->
-<!--    `;-->
-<!--        }-->
-<!--      }-->
-
-<!--      customElements.define("battery-indicator", BatteryIndicator);-->
-<!--    </script>-->
-
-<!--    <script>-->
-<!--      class SkillBar extends HTMLElement {-->
-<!--        static get observedAttributes() {-->
-<!--          return ["value"];-->
-<!--        }-->
-
-<!--        constructor() {-->
-<!--          super();-->
-<!--          this.attachShadow({ mode: "open" });-->
-<!--          this.render();-->
-<!--        }-->
-
-<!--        attributeChangedCallback() {-->
-<!--          this.render();-->
-<!--        }-->
-
-<!--        render() {-->
-<!--          const value = Math.min(3, Math.max(0, parseInt(this.getAttribute("value") || "1", 10)));-->
-
-<!--          this.shadowRoot.innerHTML = `-->
-<!--            <style>-->
-<!--              :host {-->
-<!--                display: inline-flex;-->
-<!--                flex-direction: column;-->
-<!--                gap: 4px;-->
-<!--                align-items: flex-start;-->
-<!--              }-->
-<!--              .bar {-->
-<!--                width: 40px;-->
-<!--                height: 6px;-->
-<!--                background: var(&#45;&#45;skill-color, blue);-->
-<!--                border-radius: 4px;-->
-<!--                opacity: 0.3;-->
-<!--              }-->
-<!--              .bar:nth-child(-n + ${value}) {-->
-<!--                opacity: 1;-->
-<!--              }-->
-<!--            </style>-->
-<!--            <div class="bar"></div>-->
-<!--            <div class="bar"></div>-->
-<!--            <div class="bar"></div>-->
-<!--          `;-->
-<!--        }-->
-<!--      }-->
-
-<!--      customElements.define("skill-bar", SkillBar);-->
-<!--    </script>-->
-
-<!--    <script>-->
-<!--      class DynamicBarIndicator extends HTMLElement {-->
-<!--        static get observedAttributes() {-->
-<!--          return ["bars", "value"];-->
-<!--        }-->
-
-<!--        constructor() {-->
-<!--          super();-->
-<!--          this.attachShadow({ mode: "open" });-->
-<!--          this.render();-->
-<!--        }-->
-
-<!--        attributeChangedCallback() {-->
-<!--          this.render();-->
-<!--        }-->
-
-<!--        render() {-->
-<!--          const bars = Math.max(1, parseInt(this.getAttribute("bars") || "3", 10));-->
-<!--          const value = Math.min(bars, Math.max(0, parseInt(this.getAttribute("value") || "1", 10)));-->
-
-<!--          let barsHtml = "";-->
-<!--          for (let i = 0; i < bars; i++) {-->
-<!--            const opacity = i < value ? 1 : 0.3;-->
-<!--            barsHtml += `<div class="bar" style="opacity: ${opacity};"></div>`;-->
-<!--          }-->
-
-<!--          this.shadowRoot.innerHTML = `-->
-<!--      <style>-->
-<!--        :host {-->
-<!--          display: inline-flex;-->
-<!--          flex-direction: column;-->
-<!--          gap: 4px;-->
-<!--          align-items: flex-start;-->
-<!--        }-->
-<!--        .bar {-->
-<!--          width: var(&#45;&#45;bar-width, 40px);-->
-<!--          height: var(&#45;&#45;bar-height, 6px);-->
-<!--          background: var(&#45;&#45;bar-color, orange);-->
-<!--          border-radius: var(&#45;&#45;bar-radius, 4px);-->
-<!--          transition: opacity 0.3s;-->
-<!--        }-->
-<!--      </style>-->
-<!--      ${barsHtml}-->
-<!--    `;-->
-<!--        }-->
-<!--      }-->
-
-<!--      customElements.define("dynamic-bar-indicator", DynamicBarIndicator);-->
-<!--    </script>-->
-
   </head>
   <body>
     <wje-router outlet="wje-router-outlet">
@@ -269,13 +61,14 @@
       <wje-route name="menu" component="/demo/components/demo-menu.js"></wje-route>
       <wje-route name="nav" component="/demo/components/demo-nav.js"></wje-route>
       <wje-route name="qr" component="/demo/components/demo-qr-code.js"></wje-route>
-      <wje-route name="permissions" component="/demo/components/demo-permissions.js"></wje-route>
       <wje-route name="radio" component="/demo/components/demo-radio.js"></wje-route>
       <wje-route name="rate" component="/demo/components/demo-rate.js"></wje-route>
       <wje-route name="relative-time" component="/demo/components/demo-relative-time.js"></wje-route>
       <wje-route name="reorder" component="/demo/components/demo-reorder.js"></wje-route>
       <wje-route name="reorder-handle" component="/demo/components/demo-reorder-handle.js"></wje-route>
       <wje-route name="orgchart" component="/demo/components/demo-orgchart.js"></wje-route>
+      <wje-route name="pagination" component="/demo/components/demo-pagination.js"></wje-route>
+      <wje-route name="permissions" component="/demo/components/demo-permissions.js"></wje-route>
       <wje-route name="popup" component="/demo/components/demo-popup.js"></wje-route>
       <wje-route name="progress-bar" component="/demo/components/demo-progress-bar.js"></wje-route>
       <wje-route name="select" component="/demo/components/demo-select.js"></wje-route>
@@ -354,15 +147,16 @@
             <wje-menu-item route="masonry">Masonry</wje-menu-item>
             <wje-menu-item route="menu">Menu</wje-menu-item>
             <wje-menu-item route="nav">Nav</wje-menu-item>
+            <wje-menu-item route="orgchart">Orgchart</wje-menu-item>
+            <wje-menu-item route="pagination">Pagination</wje-menu-item>
+            <wje-menu-item route="permissions">Permissions</wje-menu-item>
+            <wje-menu-item route="progress-bar">Progress bar</wje-menu-item>
             <wje-menu-item route="qr">QR</wje-menu-item>
             <wje-menu-item route="radio">Radio</wje-menu-item>
             <wje-menu-item route="rate">Rate</wje-menu-item>
             <wje-menu-item route="relative-time">Relative time</wje-menu-item>
             <wje-menu-item route="reorder">Reorder</wje-menu-item>
             <wje-menu-item route="reorder-handle">Reorder handle</wje-menu-item>
-            <wje-menu-item route="orgchart">Orgchart</wje-menu-item>
-            <wje-menu-item route="permissions">Permissions</wje-menu-item>
-            <wje-menu-item route="progress-bar">Progress bar</wje-menu-item>
             <wje-menu-item route="select">Select</wje-menu-item>
             <wje-menu-item route="slider">Slider</wje-menu-item>
             <wje-menu-item route="sliding-container">Sliding container: EXP.</wje-menu-item>
