@@ -361,156 +361,119 @@ export default class DemoOrgchart extends WJElement {
       orgchart.style.top = `${newTop}px`;
     };
 
-    const orgData = {"company":{"id":"9bd82468-59b5-4bee-9b67-8e546608ed4f","name":"Interway z wishu","companies":[],"departments":[{"id":"66c482eb-179c-4d46-8ea2-cbc2200add8d","name":"Vedenie spolocnosti","departments":[{"id":"2f89186c-0a24-4f7f-b904-fb5a0a033bea","name":"Department1","departments":[],"users":[{"id":"15e9cacc-59fe-4562-9f33-512b3711bc6c","fullName":"ING. Super Visor IDK.","supervisor":true,"position":null,"type":"USER"},{"id":"d65677a9-3acd-46f4-8ab4-c733846761cb","fullName":"MGR. Jozef MAK","supervisor":false,"position":null,"type":"USER"},{"id":"97fb4583-fe9e-4e36-9b4a-e2f526e67253","fullName":"MGR. Jozef MAK","supervisor":false,"position":null,"type":"USER"},{"id":"3922e39b-4cf3-4489-a8db-56fbeccda522","fullName":"MGR. Jozef MAK","supervisor":false,"position":null,"type":"USER"},{"id":"b046ab0e-16e4-45e3-a44e-36a4416a1b03","fullName":"MGR. Jozef MAK","supervisor":false,"position":null,"type":"USER"}],"type":"DEPARTMENT"},{"id":"9af85f54-6526-474d-94d6-6321e9025dd9","name":"Department2","departments":[],"users":[{"id":"aed5a3be-2831-4300-a486-c3fdf8945e76","fullName":"Bc. Jerguš Lapin","supervisor":false,"position":null,"type":"USER"},{"id":"21a40d60-5215-4443-bb97-ae100a95804c","fullName":"Ing. Jerguš Lapin","supervisor":false,"position":null,"type":"USER"},{"id":"8831d396-3364-4d9f-9b10-52ece6abf5cb","fullName":"Ing. Jerguš Lapin","supervisor":false,"position":null,"type":"USER"},{"id":"c325496b-0289-4392-bd71-1661310fd2b8","fullName":"Ing. Jerguš Lapin","supervisor":false,"position":null,"type":"USER"},{"id":"ed62733f-d491-4fa6-9d7d-ea45b5f50844","fullName":"Bc. Jerguš Lapin","supervisor":false,"position":null,"type":"USER"},{"id":"4d4bcdd7-c8ea-45a3-bbba-0bfa355c9eca","fullName":"Bc. Adam Šangala","supervisor":false,"position":null,"type":"USER"},{"id":"450032ec-df68-4f2b-8bea-a9a5452a7971","fullName":"Bc. Adam Šangala","supervisor":false,"position":null,"type":"USER"},{"id":"b831fd89-bd0a-44c7-b679-ae18857d4594","fullName":"Bc. Adam Šangala","supervisor":false,"position":null,"type":"USER"},{"id":"627b89b1-4e83-49df-a2b6-b18e372f4046","fullName":"ING. Super Visor++ IDK.","supervisor":true,"position":null,"type":"USER"}],"type":"DEPARTMENT"},{"id":"d2e6538d-edcf-43a0-84a1-12a4d89df0d9","name":"Department3","departments":[{"id":"de3a6eeb-4887-47be-a07b-8a0cbf8222c5","name":"Department3.1","departments":[],"users":[{"id":"19cfa2e3-e38e-49e3-a03e-55effd29e4b4","fullName":"Anča Zmija","supervisor":false,"position":null,"type":"USER"},{"id":"fd4b1d49-9a88-48c1-807d-e9ffcfac03d2","fullName":"MSc. Veducko Kapacita","supervisor":true,"position":null,"type":"USER"},{"id":"d25b66de-ba55-464a-9248-a22ab10373ff","fullName":"Anča Užovka","supervisor":false,"position":null,"type":"USER"}],"type":"DEPARTMENT"}],"users":[{"id":"1140a5a5-8d8c-4a4e-9704-4d3ea981809c","fullName":"MSc. René Mládenec","supervisor":false,"position":null,"type":"USER"},{"id":"bb4045a8-c7af-419e-9fda-9fdaa4c44169","fullName":"MSc. René Mládenec","supervisor":false,"position":null,"type":"USER"},{"id":"17bc9dd9-1c46-4cd0-ac56-c9ec2661c6c1","fullName":"ING. Super++ Visor++ IDK.","supervisor":true,"position":null,"type":"USER"}],"type":"DEPARTMENT"}],"users":[{"id":"7fdef90d-e753-40af-ba70-c7befa2272ba","fullName":"ING. Big Boss IDK.","supervisor":true,"position":null,"type":"USER"}],"type":"DEPARTMENT"}],"type":"COMPANY"}}
-    // {
-    //   "company": {
-    //     "id": "9bd82468-59b5-4bee-9b67-8e546608ed4f", "name": "Interway z wishu", "companies": [], "departments": [{
-    //       "id": "66c482eb-179c-4d46-8ea2-cbc2200add8d",
-    //       "name": "Vedenie spolocnosti",
-    //       "departments": [
-    //         {
-    //           "id": "2f89186c-0a24-4f7f-b904-fb5a0a033bea",
-    //           "name": "Department1",
-    //           "departments": [],
-    //           "users": [
-    //             {
-    //               "id": "b046ab0e-16e4-45e3-a44e-36a4416a1b03",
-    //               "fullName": "MGR. Jozef Mak I",
-    //               "position": null,
-    //               "type": "USER",
-    //               "supervisor": false
-    //             }, {
-    //               "id": "d65677a9-3acd-46f4-8ab4-c733846761cb",
-    //               "fullName": "MGR. Jozef Mak II",
-    //               "position": null,
-    //               "type": "USER",
-    //               "supervisor": false
-    //             }, {
-    //               "id": "97fb4583-fe9e-4e36-9b4a-e2f526e67253",
-    //               "fullName": "MGR. Jozef Mak III",
-    //               "position": null,
-    //               "type": "USER",
-    //               "supervisor": false
-    //             }, {
-    //               "id": "3922e39b-4cf3-4489-a8db-56fbeccda522",
-    //               "fullName": "MGR. Jozef MAK IV",
-    //               "position": null,
-    //               "type": "USER",
-    //               "supervisor": true
-    //             }
-    //           ],
-    //           "type": "DEPARTMENT"
-    //         }, {
-    //           "id": "9af85f54-6526-474d-94d6-6321e9025dd9",
-    //           "name": "Department2",
-    //           "departments": [],
-    //           "users": [
-    //             {
-    //               "id": "aed5a3be-2831-4300-a486-c3fdf8945e76",
-    //               "fullName": "Bc. Jerguš Lapin",
-    //               "position": null,
-    //               "type": "USER",
-    //               "supervisor": true
-    //             }, {
-    //               "id": "21a40d60-5215-4443-bb97-ae100a95804c",
-    //               "fullName": "Ing. Jerguš Lapin",
-    //               "position": null,
-    //               "type": "USER",
-    //               "supervisor": false
-    //             }, {
-    //               "id": "8831d396-3364-4d9f-9b10-52ece6abf5cb",
-    //               "fullName": "Ing. Jerguš Lapin",
-    //               "position": null,
-    //               "type": "USER",
-    //               "supervisor": false
-    //             }, {
-    //               "id": "c325496b-0289-4392-bd71-1661310fd2b8",
-    //               "fullName": "Ing. Jerguš Lapin",
-    //               "position": null,
-    //               "type": "USER",
-    //               "supervisor": false
-    //             }, {
-    //               "id": "ed62733f-d491-4fa6-9d7d-ea45b5f50844",
-    //               "fullName": "Bc. Jerguš Lapin",
-    //               "position": null,
-    //               "type": "USER",
-    //               "supervisor": false
-    //             }, {
-    //               "id": "4d4bcdd7-c8ea-45a3-bbba-0bfa355c9eca",
-    //               "fullName": "Bc. Adam Šangala",
-    //               "position": null,
-    //               "type": "USER",
-    //               "supervisor": false
-    //             }, {
-    //               "id": "450032ec-df68-4f2b-8bea-a9a5452a7971",
-    //               "fullName": "Bc. Adam Šangala",
-    //               "position": null,
-    //               "type": "USER",
-    //               "supervisor": false
-    //             }, {
-    //               "id": "b831fd89-bd0a-44c7-b679-ae18857d4594",
-    //               "fullName": "Bc. Adam Šangala",
-    //               "position": null,
-    //               "type": "USER",
-    //               "supervisor": false
-    //             }
-    //           ],
-    //           "type": "DEPARTMENT"
-    //         }, {
-    //           "id": "d2e6538d-edcf-43a0-84a1-12a4d89df0d9",
-    //           "name": "Department3",
-    //           "departments": [{
-    //             "id": "de3a6eeb-4887-47be-a07b-8a0cbf8222c5",
-    //             "name": "Department3.1",
-    //             "departments": [],
-    //             "users": [
-    //               {
-    //                 "id": "19cfa2e3-e38e-49e3-a03e-55effd29e4b4",
-    //                 "fullName": "Anča Zmija",
-    //                 "position": null,
-    //                 "type": "USER",
-    //                 "supervisor": true
-    //               }, {
-    //                 "id": "d25b66de-ba55-464a-9248-a22ab10373ff",
-    //                 "fullName": "Anča Užovka",
-    //                 "position": null,
-    //                 "type": "USER",
-    //                 "supervisor": false
-    //               }
-    //             ],
-    //             "type": "DEPARTMENT"
-    //           }],
-    //           "users": [
-    //             {
-    //               "id": "1140a5a5-8d8c-4a4e-9704-4d3ea981809c",
-    //               "fullName": "Lukas Ondrejcek",
-    //               "position": null,
-    //               "type": "USER",
-    //               "supervisor": true
-    //             }, {
-    //               "id": "bb4045a8-c7af-419e-9fda-9fdaa4c44169",
-    //               "fullName": "MSc. René Mládenec",
-    //               "position": null,
-    //               "type": "USER",
-    //               "supervisor": false
-    //             }
-    //           ],
-    //           "type": "DEPARTMENT"
-    //         }
-    //       ],
-    //       "users": [
-    //         {
-    //           "id": "7fdef90d-e753-40af-ba70-c7befa2272ba",
-    //           "fullName": "ING. Big Boss IDK.",
-    //           "position": null,
-    //           "type": "USER",
-    //           "supervisor": true
-    //         }
-    //       ],
-    //       "type": "DEPARTMENT"
-    //     }], "type": "COMPANY"
-    //   }
-    // };
+    const orgData = {
+      "company": {
+        "id": "9bd82468-59b5-4bee-9b67-8e546608ed4f", "name": "Interway z wishu", "companies": [], "departments": [{
+          "id": "66c482eb-179c-4d46-8ea2-cbc2200add8d",
+          "name": "Vedenie spolocnosti",
+          "departments": [{
+            "id": "2f89186c-0a24-4f7f-b904-fb5a0a033bea",
+            "name": "Department1",
+            "departments": [],
+            "users": [{
+              "id": "15e9cacc-59fe-4562-9f33-512b3711bc6c",
+              "fullName": "ING. Super Visor IDK.",
+              "supervisor": true,
+              "position": null,
+              "type": "USER"
+            }, {
+              "id": "d65677a9-3acd-46f4-8ab4-c733846761cb",
+              "fullName": "MGR. Jozef MAK",
+              "supervisor": false,
+              "position": null,
+              "type": "USER"
+            }, {
+              "id": "b046ab0e-16e4-45e3-a44e-36a4416a1b03",
+              "fullName": "MGR. Jozef MAK",
+              "supervisor": false,
+              "position": null,
+              "type": "USER"
+            }],
+            "type": "DEPARTMENT"
+          }, {
+            "id": "9af85f54-6526-474d-94d6-6321e9025dd9",
+            "name": "Department2",
+            "departments": [],
+            "users": [{
+              "id": "aed5a3be-2831-4300-a486-c3fdf8945e76",
+              "fullName": "Bc. Jerguš Lapin",
+              "supervisor": false,
+              "position": null,
+              "type": "USER"
+            }, {
+              "id": "4d4bcdd7-c8ea-45a3-bbba-0bfa355c9eca",
+              "fullName": "Bc. Adam Šangala",
+              "supervisor": false,
+              "position": null,
+              "type": "USER"
+            }, {
+              "id": "627b89b1-4e83-49df-a2b6-b18e372f4046",
+              "fullName": "ING. Super Visor++ IDK.",
+              "supervisor": true,
+              "position": null,
+              "type": "USER"
+            }],
+            "type": "DEPARTMENT"
+          }, {
+            "id": "d2e6538d-edcf-43a0-84a1-12a4d89df0d9",
+            "name": "Department3",
+            "departments": [{
+              "id": "de3a6eeb-4887-47be-a07b-8a0cbf8222c5",
+              "name": "Department3.1",
+              "departments": [],
+              "users": [{
+                "id": "19cfa2e3-e38e-49e3-a03e-55effd29e4b4",
+                "fullName": "Anča Zmija",
+                "supervisor": false,
+                "position": null,
+                "type": "USER"
+              }, {
+                "id": "fd4b1d49-9a88-48c1-807d-e9ffcfac03d2",
+                "fullName": "MSc. Veducko Kapacita",
+                "supervisor": true,
+                "position": null,
+                "type": "USER"
+              }, {
+                "id": "d25b66de-ba55-464a-9248-a22ab10373ff",
+                "fullName": "Anča Užovka",
+                "supervisor": false,
+                "position": null,
+                "type": "USER"
+              }],
+              "type": "DEPARTMENT"
+            }],
+            "users": [{
+              "id": "1140a5a5-8d8c-4a4e-9704-4d3ea981809c",
+              "fullName": "MSc. René Mládenec",
+              "supervisor": false,
+              "position": null,
+              "type": "USER"
+            }, {
+              "id": "bb4045a8-c7af-419e-9fda-9fdaa4c44169",
+              "fullName": "MSc. René Mládenec",
+              "supervisor": false,
+              "position": null,
+              "type": "USER"
+            }, {
+              "id": "17bc9dd9-1c46-4cd0-ac56-c9ec2661c6c1",
+              "fullName": "ING. Super++ Visor++ IDK.",
+              "supervisor": true,
+              "position": null,
+              "type": "USER"
+            }],
+            "type": "DEPARTMENT"
+          }],
+          "users": [{
+            "id": "7fdef90d-e753-40af-ba70-c7befa2272ba",
+            "fullName": "ING. Big Boss IDK.",
+            "supervisor": true,
+            "position": null,
+            "type": "USER"
+          }],
+          "type": "DEPARTMENT"
+        }], "type": "COMPANY"
+      }
+    }
 
     const generateOrgChartHTML = (entity) => {
       if (!entity) return null;

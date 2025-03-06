@@ -194,7 +194,7 @@ export default class Checkbox extends WJElement {
     }
 
     static get observedAttributes() {
-        return ['checked', 'disabled', 'value'];
+        return ['checked', 'disabled', 'value', 'indeterminate'];
     }
 
     /**

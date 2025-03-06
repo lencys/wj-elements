@@ -69,12 +69,22 @@ function createDemoFile(elementName, elementKebeb) {
 
   const demoContent = `
 import WJElement from "../../dist/wje-element.js";
-import CodeSnippet from "./snippet/code-snippet-builder.js";
+import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
-template.innerHTML = \`...
-<div class="html-snippet"></div>\`
+template.innerHTML = \`<h1>${demoName}</h1>
+  <div class="container">
+    
+    <!-- BASIC -->
+
+    <h2>Basic</h2>
+    <div class="playground">
+      <div class="content" style="width: auto;">
+        // Your demo code here
+      </div>
+    </div>
+  </div>\`
 
 export default class ${demoName} extends WJElement {
     constructor() {
@@ -99,8 +109,7 @@ export default class ${demoName} extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get("${demoKebeb}") || window.customElements.define("${demoKebeb}", ${demoName});
-    `;
+customElements.get("${demoKebeb}") || window.customElements.define("${demoKebeb}", ${demoName});`;
 
   fs.writeFileSync(demoPath, demoContent);
   console.log(`Demo file created successfully`);
@@ -290,7 +299,7 @@ function addPackageToIndex(elementName, elementKebeb) {
   }
 
   const newImport = `export { default as ${elementName} } from "./wje-${elementKebeb}/${elementKebeb}.js";`;
-  const newExport = `  ${elementName},`;
+  // const newExport = `  ${elementName},`;
 
   packagesLines.splice(importIndex + 1, 0, newImport);
 

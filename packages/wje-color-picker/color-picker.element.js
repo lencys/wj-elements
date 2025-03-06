@@ -463,8 +463,8 @@ export default class ColorPicker extends WJElement {
     setHue = (e) => {
         this.hueSlider.value = e.detail.value;
 
-        this.setColor(null, "hue");
-    }
+        this.setColor(null, 'hue');
+    };
 
     /**
      * Sets the alpha.

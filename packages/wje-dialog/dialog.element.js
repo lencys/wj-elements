@@ -306,13 +306,15 @@ export default class Dialog extends WJElement {
 
             this.dialog.appendChild(blockingElement);
 
-            await promise().then((res) => {
-                this.close();
-                blockingElement.remove();
-            }).catch((err) => {
-                console.error(err);
-                blockingElement.remove();
-            });
+            await promise()
+                .then((res) => {
+                    this.close();
+                    blockingElement.remove();
+                })
+                .catch((err) => {
+                    console.error(err);
+                    blockingElement.remove();
+                });
         });
     }
 }

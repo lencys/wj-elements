@@ -173,7 +173,6 @@ export default class Slider extends WJElement {
         return fragment;
     }
 
-
     /**
      * Handles the post-rendering logic for a custom slider component. This method performs the following tasks:
      * - Sets the position of the handle.
@@ -225,7 +224,6 @@ export default class Slider extends WJElement {
         this.input.style.backgroundSize =
             this.getPercentage(this.input.min, this.input.max, this.input.value) + '% 100%';
     };
-
 
     /**
      * Updates the position and content of a bubble element based on the input value.

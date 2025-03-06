@@ -116,7 +116,7 @@ export default class IconPicker extends WJElement {
 
         this.index = this.transformedObjects.map((item) => ({
             ...item,
-            searchText: `${item.name.toLowerCase()} ${item.tags.join(' ').toLowerCase()}`
+            searchText: `${item.name.toLowerCase()} ${item.tags.join(' ').toLowerCase()}`,
         }));
     }
 
@@ -210,12 +210,13 @@ export default class IconPicker extends WJElement {
             let icon = e.detail.context.querySelector('wje-icon');
             let name = icon.getAttribute('name');
             let stylesType = icon.hasAttribute('filled') ? 'filled' : 'outline';
-            let uniqueObject = this.transformedObjects.find((i) => i.name === name && Object.keys(i.styles)[0] === stylesType);
+            let uniqueObject = this.transformedObjects.find(
+                (i) => i.name === name && Object.keys(i.styles)[0] === stylesType
+            );
 
             const iconElement = document.createElement('wje-icon');
             iconElement.setAttribute('name', name);
-            if(uniqueObject.styles.hasOwnProperty('filled'))
-                iconElement.setAttribute('filled', '');
+            if (uniqueObject.styles.hasOwnProperty('filled')) iconElement.setAttribute('filled', '');
 
             uniqueObject.icon = iconElement;
 
@@ -270,15 +271,15 @@ export default class IconPicker extends WJElement {
      * //   { styles: { outline: { ... } } }
      * // ]
      */
-    convertObject = (tags= {}) => {
+    convertObject = (tags = {}) => {
         let originalObjects = Object.values(tags);
         let transformedObjects = [];
         for (let i = 0; i < originalObjects.length; i++) {
             const obj = originalObjects[i];
             if (obj.styles.filled) {
                 transformedObjects.push(
-                  { ...obj, styles: { outline: obj.styles.outline } },
-                  { ...obj, styles: { filled: obj.styles.filled } }
+                    { ...obj, styles: { outline: obj.styles.outline } },
+                    { ...obj, styles: { filled: obj.styles.filled } }
                 );
             } else {
                 transformedObjects.push(obj);
@@ -322,14 +323,13 @@ export default class IconPicker extends WJElement {
         let icon = document.createElement('wje-icon');
         icon.setAttribute('name', data.name);
         icon.setAttribute('size', 'large');
-        if(data.styles.hasOwnProperty('filled'))
-            icon.setAttribute('filled', '');
+        if (data.styles.hasOwnProperty('filled')) icon.setAttribute('filled', '');
 
         tooltip.appendChild(icon);
         iconItem.appendChild(tooltip);
 
         return iconItem;
-    }
+    };
 
     /**
      * Sets up the infinite scroll for the component.
@@ -381,9 +381,7 @@ export default class IconPicker extends WJElement {
     searchIcon = (e) => {
         const query = e.detail.value.toLowerCase();
 
-        const results = this.index.filter((item) =>
-          item.searchText.includes(query)
-        );
+        const results = this.index.filter((item) => item.searchText.includes(query));
 
         this.infiniteScroll.unScrollEvent();
         this.infiniteScroll.setCustomData = (page = 0) => {
@@ -398,7 +396,7 @@ export default class IconPicker extends WJElement {
 
         this.clearIconsContainer();
         this.infiniteScroll.loadPages(0);
-    }
+    };
 
     /**
      * Clears the icons container.

@@ -54,7 +54,9 @@ input[type='range']::-webkit-slider-thumb {
     background: var(--wje-slider-thumb-color); /* Farba tiahla */
     box-shadow: var(--wje-slider-thumb-shadow); /* Tieň vo výchozom stave */
     cursor: ew-resize;
-    transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+    transition:
+        background 0.3s ease-in-out,
+        border 0.3s ease-in-out;
 }
 
 input[type='range']::-moz-range-thumb {
@@ -65,7 +67,9 @@ input[type='range']::-moz-range-thumb {
     background: var(--wje-slider-thumb-color); /* Farba tiahla */
     box-shadow: var(--wje-slider-thumb-shadow); /* Tieň vo výchozom stave */
     cursor: pointer;
-    transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+    transition:
+        background 0.3s ease-in-out,
+        border 0.3s ease-in-out;
 }
 
 input[type='range']::-ms-thumb {
@@ -76,7 +80,9 @@ input[type='range']::-ms-thumb {
     background: var(--wje-slider-thumb-color); /* Farba tiahla */
     box-shadow: var(--wje-slider-thumb-shadow); /* Tieň vo výchozom stave */
     cursor: ew-resize;
-    transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+    transition:
+        background 0.3s ease-in-out,
+        border 0.3s ease-in-out;
 }
 
 input[type='range']::-webkit-slider-thumb:active,

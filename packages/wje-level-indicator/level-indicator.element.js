@@ -1,5 +1,5 @@
-import { default as WJElement, event } from "../wje-element/element.js";
-    import styles from "./styles/styles.css?inline";
+import { default as WJElement, event } from '../wje-element/element.js';
+import styles from './styles/styles.css?inline';
 
 /**
  * @summary LevelIndicator is a custom web component that extends WJElement.
@@ -36,7 +36,7 @@ export default class LevelIndicator extends WJElement {
      * @returns {number} The normalized level value, which is an integer between 0 and 3.
      */
     get level() {
-        return Math.min(this.bars, Math.max(0, parseInt(this.getAttribute("level") || "1", 10)));
+        return Math.min(this.bars, Math.max(0, parseInt(this.getAttribute('level') || '1', 10)));
     }
 
     /**
@@ -53,7 +53,7 @@ export default class LevelIndicator extends WJElement {
      * @returns {number} The parsed integer value of the "bars" attribute or the default value of 3, constrained to a minimum of 1.
      */
     get bars() {
-        return Math.max(1, parseInt(this.getAttribute("bars") || "3", 10));
+        return Math.max(1, parseInt(this.getAttribute('bars') || '3', 10));
     }
 
     /**
@@ -64,8 +64,7 @@ export default class LevelIndicator extends WJElement {
     set colorize(value) {
         this.removeAttribute('colorize');
 
-        if(value)
-            this.setAttribute('colorize', '');
+        if (value) this.setAttribute('colorize', '');
     }
 
     /**
@@ -73,7 +72,7 @@ export default class LevelIndicator extends WJElement {
      * @returns {boolean} Returns true if the "colorize" attribute is present, otherwise false.
      */
     get colorize() {
-        return this.hasAttribute("colorize");
+        return this.hasAttribute('colorize');
     }
 
     /**
@@ -84,8 +83,7 @@ export default class LevelIndicator extends WJElement {
     set reverse(value) {
         this.removeAttribute('reverse');
 
-        if(value)
-            this.setAttribute('reverse', '');
+        if (value) this.setAttribute('reverse', '');
     }
 
     /**
@@ -93,10 +91,10 @@ export default class LevelIndicator extends WJElement {
      * @returns {boolean} Returns true if the "reverse" attribute is set; otherwise, returns false.
      */
     get reverse() {
-        return this.hasAttribute("reverse");
+        return this.hasAttribute('reverse');
     }
 
-    className = "LevelIndicator";
+    className = 'LevelIndicator';
 
     /**
      * Returns the CSS styles for the component.
@@ -111,7 +109,7 @@ export default class LevelIndicator extends WJElement {
      * Sets up the attributes for the component.
      */
     setupAttributes() {
-        this.isShadowRoot = "open";
+        this.isShadowRoot = 'open';
     }
 
     /**
@@ -121,13 +119,12 @@ export default class LevelIndicator extends WJElement {
     draw() {
         let fragment = document.createDocumentFragment();
 
-        let native = document.createElement("div");
-        native.classList.add("native-level-indicator");
-        if(this.reverse)
-            native.classList.add("reverse");
+        let native = document.createElement('div');
+        native.classList.add('native-level-indicator');
+        if (this.reverse) native.classList.add('reverse');
 
-        let defaultBar = document.createElement("div");
-        defaultBar.classList.add("bar");
+        let defaultBar = document.createElement('div');
+        defaultBar.classList.add('bar');
 
         this.barsArray = [];
 
@@ -156,7 +153,10 @@ export default class LevelIndicator extends WJElement {
         this.updateBars(this.level, this.barsArray);
 
         if (this.colorize)
-            this.native.style.setProperty('--wje-level-indicator-color-active', `var(${this.getColor(this.level, this.barsArray.length)})`);
+            this.native.style.setProperty(
+                '--wje-level-indicator-color-active',
+                `var(${this.getColor(this.level, this.barsArray.length)})`
+            );
     }
 
     /**
@@ -167,7 +167,7 @@ export default class LevelIndicator extends WJElement {
      */
     updateBars(level, bars) {
         bars.forEach((bar, index) => {
-            bar.classList.toggle("active", index < level);
+            bar.classList.toggle('active', index < level);
         });
     }
 
@@ -180,9 +180,9 @@ export default class LevelIndicator extends WJElement {
 
     getColor(level, bars) {
         const thresholds = [
-            "--wje-level-indicator-color-low",
-            "--wje-level-indicator-color-medium",
-            "--wje-level-indicator-color-high",   // 67% - 100% (tretia tretina)
+            '--wje-level-indicator-color-low',
+            '--wje-level-indicator-color-medium',
+            '--wje-level-indicator-color-high', // 67% - 100% (tretia tretina)
         ];
 
         const index = Math.min(2, Math.floor((level - 1) / (bars / 3)));

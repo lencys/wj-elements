@@ -71,7 +71,7 @@
                 display: block;
 
                 ::before {
-                    content: "";
+                    content: '';
                     position: absolute;
                     top: var(--wje-tree-item-indent);
                     bottom: 5px;
@@ -83,7 +83,8 @@
         }
     }
 
-    .native-tree-item.expanded .item slot[name="expand"], .native-tree-item:not(.expanded) slot[name="collapse"] {
+    .native-tree-item.expanded .item slot[name='expand'],
+    .native-tree-item:not(.expanded) slot[name='collapse'] {
         display: none;
     }
 }

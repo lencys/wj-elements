@@ -237,9 +237,9 @@ export default class Animation extends WJElement {
 
         const element = this.slotEl.assignedElements()[0];
         this.animations = await this.getAnimationsArray();
-        const selected = this.animations.find((k) => k.name === this.name);
-
-        this.animation = element?.animate(selected.keyframes, {
+        const selected = await this.animations.find((k) => k.name === this.name);
+        console.log('SELECTED:', selected, element);
+        this.animation = element?.animate(selected?.keyframes, {
             delay: +this.delay,
             endDelay: +this.endDelay,
             fill: this.fill,
@@ -287,5 +287,7 @@ export default class Animation extends WJElement {
         } else {
             console.warn('Animation is not initialized or cancel is not available');
         }
+
+        console.log('ANIMATION CANCELLED', this.animation.playState);
     }
 }

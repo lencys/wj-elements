@@ -152,7 +152,7 @@ export default class SplitView extends WJElement {
      */
     detectSize() {
         const { width, height } = this.getBoundingClientRect();
-        console.log("VERTICAL:", this.hasAttribute('vertical'), this.getBoundingClientRect(), this);
+        console.log('VERTICAL:', this.hasAttribute('vertical'), this.getBoundingClientRect(), this);
         console.log('width', width);
         console.log('height', height);
         this.size = this.hasAttribute('vertical') ? height : width;

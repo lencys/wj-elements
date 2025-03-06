@@ -7,7 +7,7 @@ template.innerHTML = `
   <h1>Chip</h1>
   <div class="container">
 
-    <!--  BASIC-->
+    <!-- BASIC -->
 
     <h2>Basic</h2>
     <div class="playground">
@@ -15,6 +15,39 @@ template.innerHTML = `
         <wje-chip>Default</wje-chip>
         <wje-chip active>Default</wje-chip>
         <wje-chip disabled>Disabled</wje-chip>
+      </div>
+    </div>
+    
+    <!-- BASIC -->
+
+    <h2>Basic</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-chip>
+          Default
+          <wje-level-indicator level="2" slot="end"></wje-level-indicator>
+<!--          <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible id="custom-dropdown-basic">-->
+<!--            <wje-icon name="dots-vertical" slot="trigger"></wje-icon>-->
+<!--            <wje-menu variant="context">-->
+<!--              <wje-menu-item>-->
+<!--                <wje-icon name="plane" slot="start"></wje-icon>-->
+<!--                <wje-label>Menu item</wje-label>-->
+<!--              </wje-menu-item>-->
+<!--              <wje-menu-item>-->
+<!--                <wje-icon name="book" slot="start"></wje-icon>-->
+<!--                <wje-label>Menu item</wje-label>-->
+<!--              </wje-menu-item>-->
+<!--              <wje-menu-item>-->
+<!--                <wje-icon name="music" slot="start"></wje-icon>-->
+<!--                <wje-label>Menu item</wje-label>-->
+<!--              </wje-menu-item>-->
+<!--              <wje-menu-item>-->
+<!--                <wje-icon name="video" slot="start"></wje-icon>-->
+<!--                <wje-label>Menu item</wje-label>-->
+<!--              </wje-menu-item>-->
+<!--            </wje-menu>-->
+<!--          </wje-dropdown>-->
+        </wje-chip>
       </div>
     </div>
 

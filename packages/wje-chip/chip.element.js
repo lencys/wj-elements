@@ -1,4 +1,4 @@
-import { default as WJElement, event } from '../wje-element/element.js';
+import { default as WJElement, event, WjElementUtils } from '../wje-element/element.js';
 import styles from './styles/styles.css?inline';
 
 /**
@@ -53,6 +53,9 @@ export default class Chip extends WJElement {
 
         let slot = document.createElement('slot');
 
+        let slotEnd = document.createElement('slot');
+        slotEnd.setAttribute('name', 'end');
+
         let remove = document.createElement('wje-button');
         remove.setAttribute('part', 'remove');
         remove.setAttribute('fill', 'link');
@@ -72,6 +75,7 @@ export default class Chip extends WJElement {
         if (this.outline) this.classList.add('wje-outline');
 
         native.appendChild(slot);
+        native.appendChild(slotEnd);
         native.appendChild(active);
 
         if (this.hasAttribute('removable')) native.appendChild(remove);
@@ -79,6 +83,8 @@ export default class Chip extends WJElement {
         fragment.appendChild(native);
 
         this.removeElement = remove;
+        this.slotEnd = slotEnd;
+
         return fragment;
     }
 
@@ -86,6 +92,8 @@ export default class Chip extends WJElement {
      * Getter for the observed attributes.
      */
     afterDraw() {
+        if (WjElementUtils.hasSlotContent(this.context, 'end')) this.slotEnd.classList.add('has-content');
+
         event.addListener(this.removeElement, 'click', 'wje:chip-remove', null, { stopPropagation: true });
     }
 

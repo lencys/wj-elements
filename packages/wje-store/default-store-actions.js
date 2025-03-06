@@ -48,10 +48,4 @@ const loadAction = (stateValueName) => {
     };
 };
 
-export {
-    addAction,
-    deleteAction,
-    loadAction,
-    updateAction,
-    addManyAction,
-};
+export { addAction, deleteAction, loadAction, updateAction, addManyAction };

@@ -1,6 +1,6 @@
 @use '../../scss/var.scss' as var;
 @use './breakpoints.scss' as breakpoints;
-@use "sass:map";
+@use 'sass:map';
 
 // Grid system
 //
@@ -12,11 +12,17 @@
     display: flex;
     flex-wrap: nowrap;
     margin-top: calc(var(--#{var.$variable-prefix}gutter-y) * -1); // stylelint-disable-line function-disallowed-list
-    margin-right: calc(var(--#{var.$variable-prefix}gutter-x) * -0.5); // stylelint-disable-line function-disallowed-list
+    margin-right: calc(
+        var(--#{var.$variable-prefix}gutter-x) * -0.5
+    ); // stylelint-disable-line function-disallowed-list
     margin-left: calc(var(--#{var.$variable-prefix}gutter-x) * -0.5); // stylelint-disable-line function-disallowed-list
 }
 
-@mixin make-grid-columns($columns: var.$grid-columns, $gutter: var.$grid-gutter-width, $breakpoints: var.$grid-breakpoints) {
+@mixin make-grid-columns(
+    $columns: var.$grid-columns,
+    $gutter: var.$grid-gutter-width,
+    $breakpoints: var.$grid-breakpoints
+) {
     @each $breakpoint in map.keys($breakpoints) {
         $infix: breakpoints.breakpoint-infix($breakpoint, $breakpoints);
 

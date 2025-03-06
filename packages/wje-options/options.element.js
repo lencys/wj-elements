@@ -245,17 +245,13 @@ export default class Options extends WJElement {
             infiniteScroll.dataToHtml = this.htmlItem;
 
             infiniteScroll.setCustomData = async (page, signal) => {
-                let processedUrl = `${this.url}${this.search ? `/${this.search}` : ''}?page=${page}&size=${this.lazyLoadSize}`
+                let processedUrl = `${this.url}${this.search ? `/${this.search}` : ''}?page=${page}&size=${this.lazyLoadSize}`;
 
                 if (this.hasSearchToQueryParams) {
                     processedUrl = `${this.url}?page=${page}&size=${this.lazyLoadSize}${this.search ? `&search=${this.search}` : ''}`;
                 }
 
-                let res = await this.service.get(processedUrl,
-                    null,
-                    false,
-                    signal
-                );
+                let res = await this.service.get(processedUrl, null, false, signal);
                 const filteredOptions = this.filterOutDrawnOptions(res);
                 this.loadedOptions.push(...this.processData(filteredOptions));
 

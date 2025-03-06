@@ -266,10 +266,11 @@ class Store {
      */
     createObjectReducer(stateValueName) {
         return (action, state = {}) => {
-            if (Array.isArray(action.payload) && (action.type === `${stateValueName}/ADD` || action.type === `${stateValueName}/UPDATE`)) {
-                console.error(
-                    `Nemôžete pridať do objektu ${stateValueName} hodnotu, ktorá je pole.`
-                );
+            if (
+                Array.isArray(action.payload) &&
+                (action.type === `${stateValueName}/ADD` || action.type === `${stateValueName}/UPDATE`)
+            ) {
+                console.error(`Nemôžete pridať do objektu ${stateValueName} hodnotu, ktorá je pole.`);
             }
 
             const actionType = action.type.split('/')[1];
@@ -310,12 +311,9 @@ class Store {
      */
     createArrayReducer(stateValueName, key) {
         return (action, state = []) => {
-
-            if (action.actionType === "LOAD" && action.type?.includes(stateValueName)) {
+            if (action.actionType === 'LOAD' && action.type?.includes(stateValueName)) {
                 if (!Array.isArray(action.payload)) {
-                    console.error(
-                        `Snažíte sa použiť "LOAD" akciu na pole, ale payload nie je pole.`
-                    );
+                    console.error(`Snažíte sa použiť "LOAD" akciu na pole, ale payload nie je pole.`);
 
                     return [...state];
                 }
@@ -348,11 +346,13 @@ class Store {
                         return [
                             ...state.filter(
                                 (obj) =>
-                                    !action.payload.some((item) => (obj.hasOwnProperty(key) && obj[key] !== item[key]) ||
-                                        (!obj.hasOwnProperty(key) && obj !== item))
-
+                                    !action.payload.some(
+                                        (item) =>
+                                            (obj.hasOwnProperty(key) && obj[key] !== item[key]) ||
+                                            (!obj.hasOwnProperty(key) && obj !== item)
+                                    )
                             ),
-                        ]
+                        ];
                     }
 
                     return [

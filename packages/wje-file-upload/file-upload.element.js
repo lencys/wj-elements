@@ -340,7 +340,7 @@ export default class FileUpload extends WJElement {
 
         try {
             this.handleSubmit(event);
-        } catch (err) { }
+        } catch (err) {}
     };
 
     /**

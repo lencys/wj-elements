@@ -299,7 +299,7 @@ export default class InfiniteScroll extends WJElement {
         let interpolateItem = this.interpolate(this.infiniteScrollTemplate, item);
         let doc = this.parser.parseFromString(interpolateItem, 'text/html');
         let element = doc.activeElement.firstElementChild;
-        console.log("IS Element:", element);
+        console.log('IS Element:', element);
         return element;
     };
 

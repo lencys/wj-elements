@@ -1,5 +1,5 @@
-import { default as WJElement } from "../wje-element/element.js";
-import styles from "./styles/styles.css?inline";
+import { default as WJElement } from '../wje-element/element.js';
+import styles from './styles/styles.css?inline';
 
 /**
  * `Tree` is a custom web component that represents a hierarchical tree structure.
@@ -68,12 +68,11 @@ export default class Tree extends WJElement {
      */
     beforeDraw() {
         const items = this.querySelectorAll('wje-tree-item');
-        items?.forEach(item => {
+        items?.forEach((item) => {
             item.selection = this.selection;
 
-            this.getExpandCollapseIcon(item,'expand');
-            this.getExpandCollapseIcon(item,'collapse');
-
+            this.getExpandCollapseIcon(item, 'expand');
+            this.getExpandCollapseIcon(item, 'collapse');
         });
     }
 
@@ -117,8 +116,7 @@ export default class Tree extends WJElement {
     handleClick = (e) => {
         let selectedItem = e.target.closest('wje-tree-item');
         let isClickButton = e.composedPath().some((el) => el?.classList?.contains('toggle'));
-        if(isClickButton)
-            return;
+        if (isClickButton) return;
 
         if (this.selection === 'single') {
             if (selectedItem) {
@@ -132,7 +130,7 @@ export default class Tree extends WJElement {
 
             this.updateCheckboxState(selectedItem);
         }
-    }
+    };
 
     /**
      * Retrieves all items that match the selector 'wje-tree-item' within the current context.
@@ -158,7 +156,6 @@ export default class Tree extends WJElement {
         let iconClone = icon.cloneNode(true);
         item.appendChild(iconClone);
     }
-
 
     /**
      * Updates the state of a checkbox, syncing the state both upwards to parent elements
@@ -186,9 +183,9 @@ export default class Tree extends WJElement {
         const children = item.getChildrenItems({ includeDisabled: false });
 
         if (children.length) {
-            const areAllChildrenChecked = children.every(child => child.selected);
-            const areSomeChildrenChecked = children.some(child => child.selected);
-            const areSomeChildrenIndeterminate = children.some(child => child.indeterminate);
+            const areAllChildrenChecked = children.every((child) => child.selected);
+            const areSomeChildrenChecked = children.some((child) => child.selected);
+            const areSomeChildrenIndeterminate = children.some((child) => child.indeterminate);
 
             item.selected = areAllChildrenChecked;
             item.indeterminate = areSomeChildrenIndeterminate || (areSomeChildrenChecked && !areAllChildrenChecked);
@@ -227,8 +224,8 @@ export default class Tree extends WJElement {
     propagateStateDownwards(item) {
         const isChecked = item.selected;
 
-        item.getChildrenItems().forEach(child => {
-            child.selected = this.isInitialSync ? (isChecked || child.selected) : (!child.disabled && isChecked);
+        item.getChildrenItems().forEach((child) => {
+            child.selected = this.isInitialSync ? isChecked || child.selected : !child.disabled && isChecked;
             this.propagateStateDownwards(child);
         });
 

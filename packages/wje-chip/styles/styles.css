@@ -81,6 +81,11 @@
     margin: -4px -4px -4px 8px;
 }
 
+slot[name='end'].has-content {
+    display: block;
+    margin-inline-start: 8px;
+}
+
 wje-button {
     --wje-button-border-radius: 50%;
     --wje-button-margin-inline: 0.25rem -0.5rem;

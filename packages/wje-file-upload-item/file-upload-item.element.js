@@ -84,9 +84,9 @@ export default class FileUploadItem extends WJElement {
         if (name === 'uploaded' && oldValue !== newValue && this.uploadedEl) {
             this.uploadedEl.setAttribute('value', newValue);
 
-            let progress = ((+newValue / +this.size) * 100) || 0;
+            let progress = (+newValue / +this.size) * 100 || 0;
 
-            this.sliderEl.setAttribute("progress", Math.round(progress, 0));
+            this.sliderEl.setAttribute('progress', Math.round(progress, 0));
         }
     }
 

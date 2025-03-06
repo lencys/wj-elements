@@ -59,8 +59,7 @@ export default class TreeItem extends WJElement {
     set selected(value) {
         this.removeAttribute('selected');
 
-        if(value)
-            this.setAttribute('selected', '');
+        if (value) this.setAttribute('selected', '');
     }
 
     /**
@@ -99,8 +98,7 @@ export default class TreeItem extends WJElement {
     set indeterminate(value) {
         this.removeAttribute('indeterminate');
 
-        if(value)
-            this.setAttribute('indeterminate', '');
+        if (value) this.setAttribute('indeterminate', '');
     }
 
     /**
@@ -164,8 +162,7 @@ export default class TreeItem extends WJElement {
             this.checkbox.removeAttribute('indeterminate');
             this.checkbox.removeAttribute('checked');
 
-            if (this.indeterminate)
-                this.checkbox.setAttribute('indeterminate', '');
+            if (this.indeterminate) this.checkbox.setAttribute('indeterminate', '');
         }
     }
 
@@ -175,10 +172,9 @@ export default class TreeItem extends WJElement {
      * @returns {void} No return value.
      */
     beforeDraw() {
-        if (this.isNestedItem())
-            this.slot = 'children';
+        if (this.isNestedItem()) this.slot = 'children';
     }
-    
+
     /**
      * Creates and returns a document fragment representing the structure of a tree item component.
      * The method constructs the DOM elements including the native container, indentation, toggle button,
@@ -204,8 +200,7 @@ export default class TreeItem extends WJElement {
         button.classList.add('toggle');
 
         let checkbox = document.createElement('wje-checkbox');
-        if(this.selected)
-            checkbox.setAttribute('checked', '');
+        if (this.selected) checkbox.setAttribute('checked', '');
 
         let label = document.createElement('div');
         label.classList.add('content');
@@ -221,8 +216,8 @@ export default class TreeItem extends WJElement {
 
         item.appendChild(indent);
 
-        if(this.querySelectorAll(':scope > wje-tree-item').length > 0) {
-            if(this.querySelectorAll('[slot="expand"]').length < 1) {
+        if (this.querySelectorAll(':scope > wje-tree-item').length > 0) {
+            if (this.querySelectorAll('[slot="expand"]').length < 1) {
                 let expandIcon = document.createElement('wje-icon');
                 expandIcon.setAttribute('name', 'chevron-right');
                 expandIcon.setAttribute('slot', 'expand');
@@ -230,7 +225,7 @@ export default class TreeItem extends WJElement {
                 this.appendChild(expandIcon);
             }
 
-            if(this.querySelectorAll('[slot="collapse"]').length < 1) {
+            if (this.querySelectorAll('[slot="collapse"]').length < 1) {
                 let collapseIcon = document.createElement('wje-icon');
                 collapseIcon.setAttribute('name', 'chevron-down');
                 collapseIcon.setAttribute('slot', 'collapse');
@@ -250,8 +245,7 @@ export default class TreeItem extends WJElement {
 
         item.appendChild(button);
 
-        if(this.selection === 'multiple')
-            item.appendChild(checkbox);
+        if (this.selection === 'multiple') item.appendChild(checkbox);
 
         label.appendChild(slotElement);
         item.appendChild(label);
@@ -277,8 +271,7 @@ export default class TreeItem extends WJElement {
      * @returns {void} Does not return a value.
      */
     afterDraw() {
-        if(this.expanded)
-            this.toggleChildren();
+        if (this.expanded) this.toggleChildren();
 
         this.button.addEventListener('click', this.toggleChildren.bind(this));
     }
@@ -326,8 +319,9 @@ export default class TreeItem extends WJElement {
             return []; // Ak `childrenSlot` neexistuje, vráti prázdne pole
         }
 
-        return [...this.childrenSlot.assignedElements({ flatten: true })]
-          .filter(item => this.isTreeItem(item) && (includeDisabled || !item.disabled));
+        return [...this.childrenSlot.assignedElements({ flatten: true })].filter(
+            (item) => this.isTreeItem(item) && (includeDisabled || !item.disabled)
+        );
     }
 
     /**
@@ -337,8 +331,6 @@ export default class TreeItem extends WJElement {
      */
     getAllChildrenFlat(options = {}) {
         const directChildren = this.getChildrenItems(options);
-        return directChildren.flatMap(child =>
-          [child, ...child.getAllChildrenFlat(options)]
-        );
+        return directChildren.flatMap((child) => [child, ...child.getAllChildrenFlat(options)]);
     }
 }

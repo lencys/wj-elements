@@ -35,7 +35,7 @@
     "preview": "vite preview --mode production",
     "watch": "vite build --watch --mode development",
     "analyze": "cem analyze",
-    "create-element": "node wje-cli-script/create-element.cjs",
+    "create-element": "node wje-cli-script/create-element.cjs paginationys",
     "copy-dist": "node wje-cli-script/copy-dist.cjs",
     "build:copy-dist": "npm run build && npm run copy-dist -- /Users/rastislavhrompa/Desktop/Interway-MFE/root/node_modules/wj-elements",
     "test": "web-test-runner --group default",
