@@ -1,17 +1,17 @@
 import { Localizer } from '../utils/localize.js';
 import { default as WJElement, event } from '../wje-element/element.js';
 import { paginate } from './service/service.js';
+import Icon from '../wje-icon/icon.js';
+import Button from '../wje-button/button.js';
 import styles from './styles/styles.css?inline';
 
 /**
- * @summary Pagination is a custom web component that extends WJElement.
- * @documentation https://elements.webjet.sk/components/Pagination
+ * @summary This class represents the Pagination component for navigating through paginated content and dynamically updating navigation elements based on attributes like the number of items, page size, etc. Extends the WJElement class.
+ * @documentation https://elements.webjet.sk/components/pagination
  * @status stable
  * @augments WJElement
- * @csspart - Styles the element.
- * @tag wje-pagination
- * @example
- * <wje-pagination></wje-pagination>
+ * @dependency wje-icon, wje-button
+ * @csspart native - The wrapper element for the pagination component.
  */
 export default class Pagination extends WJElement {
     /**
@@ -81,6 +81,7 @@ export default class Pagination extends WJElement {
      * @param {number} value The new total number of items to set.
      */
     set totalItems(value) {
+        // console.log('totalItems nastavené na:', value);
         this.setAttribute('total-items', value);
     }
 
@@ -89,6 +90,7 @@ export default class Pagination extends WJElement {
      * @returns {number} The total number of items. Defaults to 0 if the attribute is not set or is invalid.
      */
     get totalItems() {
+        // console.log("SOM V TOTAL ITEMS:", this, this.getAttribute('total-items'));
         return +this.getAttribute('total-items') || 0;
     }
 
@@ -142,7 +144,8 @@ export default class Pagination extends WJElement {
      * @param {object} value The value to set the pagination object. The pagination details are computed internally.
      */
     set paginateObj(value) {
-        this._paginateObj = paginate(this.totalItems, this.page + 1, this.pageSize, this.maxPages);
+        // console.log('paginateObj nastavené na:', value);
+        this._paginateObj = value;
     }
 
     /**
@@ -195,6 +198,15 @@ export default class Pagination extends WJElement {
         return this.hasAttribute('show-info');
     }
 
+    /**
+     * Dependencies of the Button element.
+     * @type {object}
+     */
+    dependencies = {
+        'wje-icon': Icon,
+        'wje-button': Button,
+    };
+
     className = 'Pagination';
 
     /**
@@ -221,8 +233,8 @@ export default class Pagination extends WJElement {
         this.isShadowRoot = 'open';
     }
 
-    beforeDraw() {
-        this.paginateObj = paginate(this.totalItems, this.page + 1, this.pageSize, this.maxPages);
+    async beforeDraw() {
+        this.paginateObj = await paginate(this.totalItems, this.page + 1, this.pageSize, this.maxPages)
     }
 
     /**
@@ -233,6 +245,7 @@ export default class Pagination extends WJElement {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement('div');
+        native.setAttribute('part', 'native');
         native.classList.add('native-pagination');
 
         native.append(this.htmlPagination());
@@ -248,6 +261,7 @@ export default class Pagination extends WJElement {
      * @returns {DocumentFragment} A document fragment containing the pagination controls.
      */
     htmlPagination() {
+        // console.log("SOM PAGINATE OBJ:",this.paginateObj);
         let fragment = document.createDocumentFragment();
 
         let info = document.createElement('div');
@@ -259,11 +273,11 @@ export default class Pagination extends WJElement {
 
         const button = document.createElement('wje-button');
         button.setAttribute('fill', 'link');
-        button.disabled = this.page === 0;
         if (this.round) button.setAttribute('round', '');
 
         // First button
         let firstButton = button.cloneNode(true);
+        firstButton.title = this.localizer.translate('wj.pagination.first');
         firstButton.innerHTML = `<wje-icon name="chevron-left-pipe" slot="icon-only"></wje-icon>`;
         firstButton.addEventListener('wje-button:click', (e) => this.pageClickAction(e, 0));
 
@@ -271,17 +285,21 @@ export default class Pagination extends WJElement {
         const prevButton = button.cloneNode(true);
         prevButton.title = this.localizer.translate('wj.pagination.prev');
         prevButton.innerHTML = `<wje-icon name="chevron-left" slot="icon-only"></wje-icon>`;
+        if(this.page === 0)
+            prevButton.disabled = true;
         prevButton.addEventListener('wje-button:click', (e) => this.pageClickAction(e, this.page - 1));
 
         // Next button
         const nextButton = button.cloneNode(true);
         nextButton.title = this.localizer.translate('wj.pagination.next');
         nextButton.innerHTML = `<wje-icon name="chevron-right" slot="icon-only"></wje-icon>`;
-        nextButton.disabled = this.paginateObj.endIndex + 1 >= this.totalItems;
+        if(this.paginateObj.endIndex + 1 >= this.totalItems)
+            nextButton.disabled = true;
         nextButton.addEventListener('wje-button:click', (e) => this.pageClickAction(e, this.page + 1));
 
         // Last button
         let lastButton = button.cloneNode(true);
+        lastButton.title = this.localizer.translate('wj.pagination.last');
         lastButton.innerHTML = `<wje-icon name="chevron-right-pipe" slot="icon-only"></wje-icon>`;
         lastButton.disabled = this.paginateObj.endIndex + 1 >= this.totalItems;
         lastButton.addEventListener('wje-button:click', (e) =>

@@ -1,11 +1,10 @@
-// import { esbuildPlugin } from '@web/dev-server-esbuild';
-// import { globbySync } from 'globby';
 import { playwrightLauncher } from '@web/test-runner-playwright';
 
 export default {
   rootDir: '.',
   files: 'packages/**/*.test.js', // "default" group
-  concurrentBrowsers: 3,
+  concurrentBrowsers: 1,
+  concurrentTestFiles: 1,
   nodeResolve: {
     exportConditions: ['default'],
   },
