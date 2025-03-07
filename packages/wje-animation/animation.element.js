@@ -1,8 +1,7 @@
-import animations from 'animate.css?inline';
-
-import styles from '../styles/styles.css?inline';
 import { fetchAndParseCSS } from '../utils/animations.js';
 import { default as WJElement } from '../wje-element/element.js';
+import styles from '../styles/styles.css?inline';
+import animations from 'animate.css?inline';
 
 /**
  * @summary This class represents an Animation element, extending the WJElement class.
@@ -238,7 +237,7 @@ export default class Animation extends WJElement {
         const element = this.slotEl.assignedElements()[0];
         this.animations = await this.getAnimationsArray();
         const selected = await this.animations.find((k) => k.name === this.name);
-        console.log('SELECTED:', selected, element);
+
         this.animation = element?.animate(selected?.keyframes, {
             delay: +this.delay,
             endDelay: +this.endDelay,
@@ -287,7 +286,5 @@ export default class Animation extends WJElement {
         } else {
             console.warn('Animation is not initialized or cancel is not available');
         }
-
-        console.log('ANIMATION CANCELLED', this.animation.playState);
     }
 }
