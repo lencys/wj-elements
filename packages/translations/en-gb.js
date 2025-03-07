@@ -14,8 +14,10 @@ export const enGb = {
     'wj.stepper.button.previous': 'Previous',
     'wj.stepper.step': 'Step',
     'wj.pagination.of': 'of',
+    'wj.pagination.first': 'First page',
     'wj.pagination.prev': 'Previous',
     'wj.pagination.next': 'Next',
+    'wj.pagination.last': 'Last page',
 };
 
 Localizer.registerTranslation(enGb);
