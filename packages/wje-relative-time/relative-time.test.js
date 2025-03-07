@@ -1,8 +1,8 @@
 import '../../dist/wje-element.js';
 import { expect, fixture, html } from '@open-wc/testing';
 import '../../dist/wje-relative-time.js';
-import '../translations/en-GB.js';
-import '../translations/sk-SK.js';
+import '../translations/en-gb.js';
+import '../translations/sk-sk.js';
 
 describe('RelativeTime Component', () => {
     it('should pass accessibility tests', async () => {
