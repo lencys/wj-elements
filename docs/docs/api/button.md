@@ -31,15 +31,30 @@ import Basic from '@site/static/usage/v1/button/basic/index.md';
 
 <Basic />
 
-## Toggle
+## Tooltip
 
-<!-- Vlastnosť `toggle` umožňuje priradiť tlačidlu dva rôzne stavy a kliknutím medzi nimi prepínať. Nastavením jej hodnoty sa tlačidlu priradí predvolený stav. <br/>Musí obsahovať dva podradené elementy so `slot` s hodnotou `toggle`a tiež vlastnosť `state`, ktorou tlačidlu určíte dostupné hodnoty stavu. -->
+Vlastnosť `tooltip` umožňuje zobraziť textový popis tlačidla po prejdení myšou. Pre zobrazenie textu je potrebné pridať tlačidlu atribút `tooltip` s textovým obsahom.
+Doplnením atribútu `tooltip-placement` je možné určiť pozíciu zobrazenia textu.
+
+import Tooltip from '@site/static/usage/v1/button/tooltip/index.md';
+
+<Tooltip />
+
+## Toggle
 
 Vlastnosť `toggle` umožňuje priradiť tlačidlu dva rôzne stavy a kliknutím medzi nimi prepínať. Nastavením hodnoty sa tlačidlu priradí predvolený stav. <br/>Pre nastavenie dostupných stavov je potrebné pridať tlačidlu dva podradené elementy so slotom s hodnotou `toggle`a tiež s vlastnosťou `state`, ktorá tlačidlu určí samotnú hodnotu stavu.
 
 import Toggle from '@site/static/usage/v1/button/toggle/index.md';
 
 <Toggle />
+
+## Caret
+
+Vlastnosť `caret` umožňuje zobraziť šípku na tlačidle. Pre zobrazenie šípky je potrebné pridať tlačidlu atribút `caret`.
+
+import Caret from '@site/static/usage/v1/button/caret/index.md';
+
+<Caret />
 
 ## Tvar tlačidla
 
@@ -48,6 +63,14 @@ Vlastnosť `round` umožňuje upraviť tvar tlačidla. V predvolenom nastavení 
 import Shape from '@site/static/usage/v1/button/shape/index.md';
 
 <Shape />
+
+## Tlačidlo formulára
+
+Vlastnosti `submit` a `reset` umožňujú použiť tlačidlo na odoslanie alebo resetovanie formulára. Tlačidlo s vlastnosťou `submit` odošle formulár, ktorý je s ním prepojený. Tlačidlo s vlastnosťou `reset` obnoví všetky hodnoty formulára.
+
+import FormButton from '@site/static/usage/v1/button/form-button/index.md';
+
+<FormButton />
 
 ## Výplň tlačidla
 

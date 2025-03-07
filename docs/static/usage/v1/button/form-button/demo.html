@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Button</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script
+        type="module"
+        src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.138/dist/wje-master.min.js"
+    ></script>
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.138/dist/styles.min.css"
+    />
+    <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content" style="display: flex; align-items: center; gap: 0.25rem">
+        <form name="test-form" id="test-form">
+          <wje-input name="default" label="Default input"></wje-input>
+          <wje-input name="withValue" label="Input with value" value="Mlynské Nivy 71"></wje-input>
+          <wje-input name="readonly" label="Readonly input" value="Bratislava" readonly></wje-input>
+          <wje-input name="disabled" label="Disabled input" value="84103" disabled></wje-input>
+          <wje-input name="defaultNumber" label="Default input" type="number" minlength="5" message="Toto je moja hlaska" required validate-on-change custom-error-display ></wje-input>
+          <wje-button type="reset">Reset</wje-button>
+          <wje-button type="submit" color="primary">Submit</wje-button>
+        </form>
+      </div>
+    </div>
+    <script>
+      let form = document.querySelector('#test-form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (e.target.checkValidity()) {
+          let formDate = new FormData(e.target);
+          for (var pair of formDate.entries()) {
+            console.log(pair[0] + ', ' + pair[1]);
+          }
+          console.log('klikol som form submit', e);
+        }
+      });
+
+      form.addEventListener('reset', (e) => {
+        console.log('klikol som form reset', e);
+      });
+    </script>
+  </body>
+</html>

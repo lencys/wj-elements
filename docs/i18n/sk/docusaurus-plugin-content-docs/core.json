@@ -1055,6 +1055,28 @@
           "required": false
         },
         {
+          "name": "caret",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "caret",
+          "reflectToAttr": false,
+          "docs": "Ak `true`, v tlačidle sa zobrazí priestor pre ikonu `caret`",
+          "docsTags": [],
+          "default": "'false'",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "color",
           "type": "\"danger\" |  \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
           "complexType": {
@@ -1103,6 +1125,12 @@
             },
             {
               "type": "undefined"
+            }
+          ],
+          "parts": [
+            {
+              "name": "native",
+              "docs": "Odkazuje na natívny HTML element tlačidla alebo kotvy, ktorý obaľuje všetky podradené elementy."
             }
           ],
           "optional": true,
@@ -1242,6 +1270,66 @@
           ],
           "optional": false,
           "required": false
+        },
+        {
+          "name": "tooltip",
+          "type": "any",
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "tooltip",
+          "reflectToAttr": false,
+          "docs": "Umožní pridať text, ktory sa zobrazí pri prejdení myšou ponad tlačidlo.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "tooltip-placement",
+          "type": "any",
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "tooltip-placement",
+          "reflectToAttr": false,
+          "docs": "Určuje pozíciu textu v atribúte  \"tooltip\". Predvolené je umiestnenie  \"top\"",
+          "docsTags": [],
+          "default": "top",
+          "values": [
+            {
+              "value": "bottom",
+              "type": "string"
+            },
+            {
+              "value": "end",
+              "type": "string"
+            },
+            {
+              "value": "start",
+              "type": "string"
+            },
+            {
+              "value": "top",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false
         }
       ],
       "methods": [],
@@ -1306,7 +1394,7 @@
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-color-base",
+          "name": "--wje-button-background-color",
           "annotation": "prop",
           "docs": "Farba pozadia tlačidla"
         },
@@ -1331,35 +1419,19 @@
           "docs": "Šírka okrajov tlačidla"
         },
         {
-          "name": "--wj-color-contrast",
+          "name": "--wje-button-color",
           "annotation": "prop",
           "docs": "Farba textu tlačidla"
-        },
-        {
-          "name": "--wj-padding-bottom",
-          "annotation": "prop",
-          "docs": "Spodné vnútorné odsadenie tlačidla"
-        },
-        {
-          "name": "--wj-padding-end",
-          "annotation": "prop",
-          "docs": "Pravé vnútorné odsadenie, ak je smer LTR, a ľavé vnútorné odsadenie, ak je smer RTL tlačidla"
-        },
-        {
-          "name": "--wj-padding-start",
-          "annotation": "prop",
-          "docs": "Ľavé vnútorné odsadenie, ak je smer LTR, a pravé vnútorné odsadenie, ak je smer RTL tlačidla"
-        },
-        {
-          "name": "--wj-padding-top",
-          "annotation": "prop",
-          "docs": "Horné vnútorné odsadenie tlačidla"
         }
       ],
       "slots": [
         {
           "name": "",
           "docs": "Obsah sa umiestni medzi named sloty."
+        },
+        {
+          "name": "caret",
+          "docs": "Obsah sa umiestni do vpravo od textu tlačidla v LTR a vľavo v RTL."
         },
         {
           "name": "end",
@@ -1381,8 +1453,14 @@
         }
       ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "wje-icon"
+      ],
+      "dependencyGraph": {
+        "breadcrumbs": [
+          "wje-icon"
+        ]
+      }
     },
     {
       "filePath": "src/components/button-group/button-group.tsx",

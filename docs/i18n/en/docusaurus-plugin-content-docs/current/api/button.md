@@ -31,15 +31,30 @@ import Basic from '@site/static/usage/v1/button/basic/index.md';
 
 <Basic />
 
-## Toggle
+## Tooltip
 
-<!-- Vlastnosť `toggle` umožňuje priradiť tlačidlu dva rôzne stavy a kliknutím medzi nimi prepínať. Nastavením jej hodnoty sa tlačidlu priradí predvolený stav. <br/>Musí obsahovať dva podradené elementy so `slot` s hodnotou `toggle`a tiež vlastnosť `state`, ktorou tlačidlu určíte dostupné hodnoty stavu. -->
+The `tooltip` property allows you to display a text description of the button when the mouse is moved over it. To display the text, you need to add a `tooltip` attribute to the button with the text content.
+By adding the `tooltip-placement` attribute it is possible to specify the position of the text display.
+
+import Tooltip from '@site/static/usage/v1/button/tooltip/index.md';
+
+<Tooltip />
+
+## Toggle
 
 The `toggle` property allows you to assign two different states to a button and toggle between them with a click. Setting the value assigns a default state to the button. <br/>To set the available states, you need to add two child elements to the button with a `toggle` value slot and also with a `state` property, which determines the actual state value of the button.
 
 import Toggle from '@site/static/usage/v1/button/toggle/index.md';
 
 <Toggle />
+
+## Caret
+
+The `caret` property allows you to display an arrow on the button. To display the arrow, you need to add the `caret` attribute to the button.
+
+import Caret from '@site/static/usage/v1/button/caret/index.md';
+
+<Caret />
 
 ## The shape of the button
 
@@ -48,6 +63,14 @@ The `round` property allows you to adjust the shape of the button. By default, t
 import Shape from '@site/static/usage/v1/button/shape/index.md';
 
 <Shape />
+
+## Form button
+
+The `submit` and `reset` properties allow you to use the button to submit or reset the form. A button with the `submit` property sends the form that is linked to it. A button with the `reset` property will reset all form values.
+
+import FormButton from '@site/static/usage/v1/button/form-button/index.md';
+
+<FormButton />
 
 ## Button filling
 

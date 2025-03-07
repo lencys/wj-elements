@@ -219,7 +219,7 @@
           "mutable": false,
           "attr": "direction",
           "reflectToAttr": false,
-          "docs": "A property that determines the direction of the hohoho animation.",
+          "docs": "Animation direction property",
           "docsTags": [],
           "default": "normal",
           "values": [
@@ -1059,6 +1059,28 @@
           "required": false
         },
         {
+          "name": "caret",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "caret",
+          "reflectToAttr": false,
+          "docs": "If `true`, a space for the `caret` icon appears in the button",
+          "docsTags": [],
+          "default": "'false'",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "color",
           "type": "\"danger.\" | \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
           "complexType": {
@@ -1109,11 +1131,17 @@
               "type": "undefined"
             }
           ],
+          "parts": [
+            {
+              "name": "native",
+              "docs": "Refers to the native HTML element of the button or anchor that wraps all child elements."
+            }
+          ],
           "optional": true,
           "required": false
         },
         {
-          "name": "dialogue",
+          "name": "dialog",
           "type": "string",
           "complexType": {
             "original": "string",
@@ -1121,7 +1149,7 @@
             "references": {}
           },
           "mutable": false,
-          "attr": "dialogue",
+          "attr": "dialog",
           "reflectToAttr": true,
           "docs": "Associates a button with a specific event. When the button is clicked, the named event is triggered, allowing you to implement actions such as opening a dialog box or executing a custom event. See the dialog component for more information.",
           "docsTags": [],
@@ -1246,6 +1274,66 @@
           ],
           "optional": false,
           "required": false
+        },
+        {
+          "name": "tooltip",
+          "type": "any",
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "tooltip",
+          "reflectToAttr": false,
+          "docs": "Allows you to add text that will be displayed when the mouse hovers over the button.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "tooltip-placement",
+          "type": "any",
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "tooltip-placement",
+          "reflectToAttr": false,
+          "docs": "Specifies the position of the text in the \"tooltip\" attribute. The default position is \"top\"",
+          "docsTags": [],
+          "default": "top",
+          "values": [
+            {
+              "value": "bottom",
+              "type": "string"
+            },
+            {
+              "value": "end",
+              "type": "string"
+            },
+            {
+              "value": "start",
+              "type": "string"
+            },
+            {
+              "value": "top",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false
         }
       ],
       "methods": [],
@@ -1310,7 +1398,7 @@
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-color-base",
+          "name": "--wje-button-background-color",
           "annotation": "prop",
           "docs": "Button background colour"
         },
@@ -1335,35 +1423,19 @@
           "docs": "Width of the button edges"
         },
         {
-          "name": "--wj-color-contrast",
+          "name": "--wje-button-color",
           "annotation": "prop",
           "docs": "Button text colour"
-        },
-        {
-          "name": "--wj-padding-bottom",
-          "annotation": "prop",
-          "docs": "Bottom inner indent button"
-        },
-        {
-          "name": "--wj-padding-end",
-          "annotation": "prop",
-          "docs": "Right internal offset if the direction is LTR, and left internal offset if the direction is RTL button"
-        },
-        {
-          "name": "--wj-padding-start",
-          "annotation": "prop",
-          "docs": "Left internal offset if the direction is LTR, and right internal offset if the direction is RTL button"
-        },
-        {
-          "name": "--wj-padding-top",
-          "annotation": "prop",
-          "docs": "Upper internal offset button"
         }
       ],
       "slots": [
         {
           "name": "",
           "docs": "The contents are placed between the named slots."
+        },
+        {
+          "name": "caret",
+          "docs": "The content is placed to the right of the button text in LTR and to the left in RTL."
         },
         {
           "name": "end",
@@ -1385,8 +1457,14 @@
         }
       ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "wje-icon"
+      ],
+      "dependencyGraph": {
+        "breadcrumbs": [
+          "wje-icon"
+        ]
+      }
     },
     {
       "filePath": "src/components/button-group/button-group.tsx",
@@ -2101,7 +2179,7 @@
     {
       "filePath": "src/components/dialog/dialog.tsx",
       "encapsulation": "shadow",
-      "tag": "dialogue",
+      "tag": "dialog",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -2193,7 +2271,7 @@
         {
           "name": "--wj-dialog-margin-bottom",
           "annotation": "prop",
-          "docs": "Bottom outer indent of the dialogue window"
+          "docs": "Bottom outer indent of the dialog window"
         },
         {
           "name": "--wj-dialog-margin-end",

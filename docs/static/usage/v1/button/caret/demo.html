@@ -20,14 +20,15 @@
   </head>
   <body>
     <div class="container">
-      <div class="content" style="display: flex; align-items: center; gap: 0.25rem">
-        <wje-button size="small">Small</wje-button>
-        <wje-button size="default">Default</wje-button>
-        <wje-button size="large">Large</wje-button>
-        <div style="min-width: 10%"></div>
-        <wje-button size="small"><wje-icon slot="start" name="star"></wje-icon>Small</wje-button>
-        <wje-button><wje-icon slot="start" name="star"></wje-icon>Default</wje-button>
-        <wje-button size="large"><wje-icon slot="start" name="star"></wje-icon>Large</wje-button>
+      <div class="content">
+        <wje-button color="default" fill="outline" size="small" caret>Small</wje-button>
+        <wje-button color="default" fill="outline" caret id="caret">Default</wje-button>
+        <wje-button color="default" fill="outline" size="large" caret>Large</wje-button>
+        <style>
+          wje-button [slot=caret] {
+            margin-inline: .5rem 0;
+          }
+        </style>
       </div>
     </div>
   </body>
