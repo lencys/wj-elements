@@ -36,25 +36,29 @@ describe('Tree Item Component', () => {
   });
 
   it('should propagate state to child items', async () => {
+    const parent = await fixture('<wje-tree></wje-tree>');
     const el = await fixture('<wje-tree-item></wje-tree-item>');
     const child = await fixture('<wje-tree-item></wje-tree-item>');
+    parent.appendChild(el);
     el.appendChild(child);
     el.selected = true;
-    el.propagateStateDownwards(el);
+    parent.propagateStateDownwards(el);
     expect(child.selected).to.be.true;
   });
 
   it('should update parent state based on child items', async () => {
+    const parent = await fixture('<wje-tree></wje-tree>');
     const el = await fixture('<wje-tree-item></wje-tree-item>');
     const child1 = await fixture('<wje-tree-item></wje-tree-item>');
     const child2 = await fixture('<wje-tree-item></wje-tree-item>');
+    parent.appendChild(el);
     el.appendChild(child1);
     el.appendChild(child2);
     child1.selected = true;
-    el.updateParentState(el);
+    parent.updateParentState(el);
     expect(el.indeterminate).to.be.true;
     child2.selected = true;
-    el.updateParentState(el);
+    parent.updateParentState(el);
     expect(el.selected).to.be.true;
   });
 
