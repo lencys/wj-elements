@@ -15,13 +15,31 @@ template.innerHTML = `
             <wje-img src="/demo/assets/img/img.png" alt="Niekedy máme pocit, že chodíme v kruhoch..."></wje-img>
         </div>
     </div>
+    
+    <!-- FALLOUT -DELETE -->
+
+    <h3>Fallout - Delete</h3>
+    <div class="playground">
+        <div class="content">
+            <wje-img src="/demo/assets/img/img-error.png" alt="Niekedy máme pocit, že chodíme v kruhoch..." fallout="delete"></wje-img>
+        </div>
+    </div>
+    
+    <!-- FALLOUT - FCE -->
+
+    <h3>Fallout - Function</h3>
+    <div class="playground">
+        <div class="content">
+            <wje-img src="/demo/assets/img/img-error.png" alt="Niekedy máme pocit, že chodíme v kruhoch..." fallout="alert" id="img-example"></wje-img>
+            <script>
+                document.querySelector('#img-example').addAction('alert', () => {
+                    window.alert(1);
+                });
+            </script>
+        </div>
+    </div>
 </div>
 `;
-
-function generateSnippets(externalJsContent) {
-  const codeSnippet = new CodeSnippet();
-  codeSnippet.generateSnippet(template, document, externalJsContent);
-}
 
 export default class DemoImg extends WJElement {
    constructor() {
@@ -37,14 +55,15 @@ export default class DemoImg extends WJElement {
     return template;
   }
 
+  beforeDraw() {
+    this.querySelector('#img-example').addAction('alert', () => {
+      window.alert(1);
+    });
+  }
+
   afterDraw() {
-    const externalJsContent = `
-            afterDraw() {
-                const codeSnippet = new CodeSnippet();
-                codeSnippet.generateSnippet(this.context);
-            }
-        `;
-    generateSnippets(externalJsContent || null);
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(this.context);
   }
 }
 
