@@ -272,6 +272,10 @@ export default class WJElement extends HTMLElement {
      * Refreshes the update promise for rendering lifecycle management.
      */
     refreshUpdatePromise() {
+        if (this.updateComplete) {
+            this.rejectPromise('Update cancelled');
+        }
+
         this.updateComplete = new Promise((resolve, reject) => {
             this.finisPromise = resolve;
             this.rejectPromise = reject;
@@ -285,12 +289,6 @@ export default class WJElement extends HTMLElement {
         this.drawingStatus = this.drawingStatuses.ATTACHED;
 
         // RHR toto sa tiež týka slick routeru pretože on začal routovanie ešte pred vykreslením wjelementu
-        this.finisPromise = (resolve) => {
-            resolve();
-        };
-        this.rejectPromise = (reject) => {
-            reject();
-        };
         this.refreshUpdatePromise();
 
         this.renderPromise = this.initWjElement(true);
@@ -314,11 +312,6 @@ export default class WJElement extends HTMLElement {
 
             this.drawingStatus = this.drawingStatuses.START;
             await this.display(force);
-
-            const sheet = new CSSStyleSheet();
-            sheet.replaceSync(this.constructor.cssStyleSheet);
-
-            this.context.adoptedStyleSheets = [sheet];
 
             resolve();
         });
@@ -385,20 +378,26 @@ export default class WJElement extends HTMLElement {
         this.componentCleanup();
     }
 
-    /**
-     * Enqueues an update to the component.
-     * @returns A promise that resolves when the update is complete.
-     */
-    async enqueueUpdate() {
+
+    async processCurrentRenderPromise() {
         try {
-            if (this.renderPromise && this.renderPromise instanceof Promise) {
+            if (this.renderPromise && (this.renderPromise instanceof Promise || this.renderPromise?.constructor.name === "Promise")) {
                 await this.renderPromise;
             }
         } catch (e) {
             console.error('An error occurred:', e);
             Promise.reject(e);
         }
-        const result = this.refresh();
+    }
+
+    /**
+     * Enqueues an update to the component.
+     * @returns A promise that resolves when the update is complete.
+     */
+    async enqueueUpdate() {
+        await this.processCurrentRenderPromise();
+
+        const result = this._refresh();
 
         if (result !== null) {
             await result;
@@ -419,6 +418,10 @@ export default class WJElement extends HTMLElement {
         }
     }
 
+    refresh() {
+        this.renderPromise = this.enqueueUpdate();
+    }
+
     /**
      * Refreshes the component by reinitializing it if it is in a drawing state.
      * This method checks if the component's drawing status is at least in the START state.
@@ -431,7 +434,7 @@ export default class WJElement extends HTMLElement {
      * If the component is not in a drawing state, it simply returns a resolved promise.
      * @returns {Promise<void>} A promise that resolves when the refresh is complete.
      */
-    refresh() {
+    _refresh() {
         if (this.drawingStatus && this.drawingStatus >= this.drawingStatuses.START) {
             this.beforeRedraw?.();
             this.beforeDisconnect?.();
@@ -497,7 +500,7 @@ export default class WJElement extends HTMLElement {
 
         let _draw = this.draw(this.context, this.store, WjElementUtils.getAttributes(this));
 
-        if (_draw instanceof Promise) {
+        if (_draw instanceof Promise || _draw?.constructor.name === "Promise") {
             _draw = await _draw;
         }
 
@@ -601,15 +604,21 @@ export default class WJElement extends HTMLElement {
         return new Promise(async (resolve, reject) => {
             const __beforeDraw = this.beforeDraw(this.context, this.store, WjElementUtils.getAttributes(this));
 
-            if (__beforeDraw instanceof Promise) {
+            if (__beforeDraw instanceof Promise || __beforeDraw?.constructor.name === "Promise") {
                 await __beforeDraw;
             }
+
+            // APPEND CSS HERE
+            const sheet = new CSSStyleSheet();
+            sheet.replaceSync(this.constructor.cssStyleSheet);
+
+            this.context.adoptedStyleSheets = [sheet];
 
             await this.render();
 
             const __afterDraw = this.afterDraw?.(this.context, this.store, WjElementUtils.getAttributes(this));
 
-            if (__afterDraw instanceof Promise) {
+            if (__afterDraw instanceof Promise || __afterDraw?.constructor.name === "Promise") {
                 await __afterDraw;
             }
 
