@@ -31,6 +31,22 @@ export default class Img extends WJElement {
     }
 
     /**
+     * Sets the value of the `src` attribute for the element.
+     * @param {string} value The value to set for the `src` attribute.
+     */
+    set src(value) {
+        this.setAttribute('src', value);
+    }
+
+    /**
+     * Retrieves the value of the 'src' attribute from the element.
+     * @returns {string} The value of the 'src' attribute.
+     */
+    get src() {
+        return this.getAttribute('src');
+    }
+
+    /**
      * Sets the fallout property. Updates the `fallout` attribute if the value is a string;
      * otherwise, assigns the value to the `_fallout` property.
      * @param {string|*} value The value to set for the fallout property. If a string, it will update the `fallout` attribute; for other types, it will assign it to the `_fallout` property.

@@ -94,6 +94,15 @@ export default class Avatar extends WJElement {
     }
 
     /**
+     * Returns the list of attributes to observe for changes.
+     * @static
+     * @returns {Array<string>}
+     */
+    static get observedAttributes() {
+        return ['initials'];
+    }
+
+    /**
      * Method to setup attributes.
      */
     setupAttributes() {
