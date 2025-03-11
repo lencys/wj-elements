@@ -30,6 +30,57 @@ export default class Avatar extends WJElement {
     }
 
     /**
+     * Sets the value of the 'label' attribute for the element.
+     * @param {string} value The new value to be set for the 'label' attribute.
+     */
+    set label(value) {
+        this.setAttribute('label', value);
+    }
+
+    /**
+     * Retrieves the value of the 'label' attribute for the element.
+     * If the attribute is not set, it defaults to an empty string.
+     * @returns {string} The value of the 'label' attribute or an empty string if not defined.
+     */
+    get label() {
+        return this.getAttribute('label') || '';
+    }
+
+    /**
+     * Sets the value of initials for the element by updating
+     * the 'initials' attribute with the provided value.
+     * @param {string} value The value to be set as the initials.
+     */
+    set initials(value) {
+        this.setAttribute('initials', '');
+    }
+
+    /**
+     * Retrieves the value of the 'initials' attribute if it exists.
+     * @returns {boolean} Returns true if the 'initials' attribute is present, otherwise false.
+     */
+    get initials() {
+        return this.hasAttribute('initials') || false;
+    }
+
+    /**
+     * Sets the size attribute for the element.
+     * @param {string | number} value The value to set for the size attribute.
+     */
+    set size(value) {
+        this.setAttribute('size', value);
+    }
+
+    /**
+     * Retrieves the size attribute of the element. If the size attribute
+     * is not defined, it returns the default value 'medium'.
+     * @returns {string} The size value of the element or 'medium' if not specified.
+     */
+    get size() {
+        return this.getAttribute('size') || 'medium';
+    }
+
+    /**
      * Class name for the Avatar element.
      */
     className = 'Avatar';
@@ -64,7 +115,7 @@ export default class Avatar extends WJElement {
 
         element.appendChild(slot);
 
-        if (this.hasAttribute('initials')) {
+        if (this.initials) {
             let initials = getInitials(this.label);
 
             this.setAttribute('style', `--wje-avatar-background-color: ${getHsl(initials)}`);
