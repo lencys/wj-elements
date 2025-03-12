@@ -144,6 +144,10 @@ export default class Img extends WJElement {
         native.setAttribute('src', this.loader || './assets/img/image-loader.gif');
         native.setAttribute('alt', this.alt || '');
         native.classList.add('lazy-loaded-image', 'lazy');
+        native.addEventListener('error', (e) => {
+            let parent = this.parentElement;
+            if(parent.tagName === 'WJE-AVATAR') parent.initials = true;
+        });
 
         this.onerrorFunc(native);
 
@@ -167,7 +171,6 @@ export default class Img extends WJElement {
         let lazyImageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    // console.log("SRC INTERSECTING", this.src, entry.target);
                     entry.target.src = this.src;
                     this.classList.remove('lazy');
                     lazyImageObserver.unobserve(entry.target);
@@ -225,7 +228,6 @@ export default class Img extends WJElement {
      * @memberof Img
      */
     onerrorFunc = (img) => {
-        // console.log(img, this.fallout);
         if (!this.fallout) return;
         if (this.actions[this.fallout]) {
             img.onerror = this.actions[this.fallout];

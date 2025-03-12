@@ -25,6 +25,20 @@ template.innerHTML = `<h1>Avatar</h1>
       </div>
     </div>
     
+    <!-- ERROR -->
+
+    <h3>Error</h3>
+    <div class="playground">
+      <div class="content" style="display: flex; gap: .25rem;">
+        <wje-avatar label="Petr Rahman">
+          <wje-img src="/assets/img/avatar-1.svg"></wje-img>
+        </wje-avatar>
+        <wje-avatar label="Petr Rahman">
+          <wje-img src="/assets/img/avatar.svg"></wje-img>
+        </wje-avatar>
+      </div>
+    </div>
+    
     <!-- SIZE -->
 
     <h3>Size</h3>
