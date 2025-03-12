@@ -16,12 +16,21 @@ template.innerHTML = `
         </div>
     </div>
     
+    <!-- JS -->
+
+    <h3>Javascript</h3>
+    <div class="playground">
+        <div class="content" id="example-js">
+            
+        </div>
+    </div>
+    
     <!-- FALLOUT -DELETE -->
 
     <h3>Fallout - Delete</h3>
     <div class="playground">
         <div class="content">
-            <wje-img src="/demo/assets/img/img-error.png" alt="Niekedy máme pocit, že chodíme v kruhoch..." fallout="delete"></wje-img>
+            <wje-img src="/demo/assets/img/img-error-1.png" alt="Niekedy máme pocit, že chodíme v kruhoch..." fallout="delete"></wje-img>
         </div>
     </div>
     
@@ -30,12 +39,8 @@ template.innerHTML = `
     <h3>Fallout - Function</h3>
     <div class="playground">
         <div class="content">
-            <wje-img src="/demo/assets/img/img-error.png" alt="Niekedy máme pocit, že chodíme v kruhoch..." fallout="alert" id="img-example"></wje-img>
-            <script>
-                document.querySelector('#img-example').addAction('alert', () => {
-                    window.alert(1);
-                });
-            </script>
+            <wje-img src="/demo/assets/img/img-error-2.png" alt="Niekedy máme pocit, že chodíme v kruhoch..." fallout="log" id="img-example"></wje-img>
+          
         </div>
     </div>
 </div>
@@ -56,9 +61,18 @@ export default class DemoImg extends WJElement {
   }
 
   beforeDraw() {
-    this.querySelector('#img-example').addAction('alert', () => {
-      window.alert(1);
-    });
+    let img = document.createElement('wje-img');
+    img.src = '/demo/assets/img/img-error-3.png';
+    img.alt = "TEST"
+    img.fallout = 'log';
+    img.actions['log'] = () => {
+      console.error('MOJ Error log pre obrázok:', img.src);
+    }
+    this.querySelector('#example-js').appendChild(img);
+
+    this.querySelector('#img-example').actions['log'] = () => {
+      console.log('TADAAAAA log pre obrázok ddddddd:', this.src);
+    }
   }
 
   afterDraw() {

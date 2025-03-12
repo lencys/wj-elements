@@ -47,6 +47,22 @@ export default class Img extends WJElement {
     }
 
     /**
+     * Sets the value of the 'alt' attribute for the element.
+     * @param {string} value The new value to set for the 'alt' attribute.
+     */
+    set alt(value) {
+        this.setAttribute('alt', value);
+    }
+
+    /**
+     * Retrieves the value of the 'alt' attribute for the current element.
+     * @returns {string|null} The value of the 'alt' attribute, or null if the attribute is not set.
+     */
+    get alt() {
+        return this.getAttribute('alt');
+    }
+
+    /**
      * Sets the fallout property. Updates the `fallout` attribute if the value is a string;
      * otherwise, assigns the value to the `_fallout` property.
      * @param {string|*} value The value to set for the fallout property. If a string, it will update the `fallout` attribute; for other types, it will assign it to the `_fallout` property.
@@ -106,7 +122,7 @@ export default class Img extends WJElement {
      * @returns {Array<string>}
      */
     static get observedAttributes() {
-        return ['src'];
+        return [];
     }
 
     /**
@@ -129,7 +145,10 @@ export default class Img extends WJElement {
         native.setAttribute('alt', this.alt || '');
         native.classList.add('lazy-loaded-image', 'lazy');
 
+        this.onerrorFunc(native);
+
         this.native = native;
+
         fragment.appendChild(native);
 
         return fragment;
@@ -143,11 +162,12 @@ export default class Img extends WJElement {
      * @returns {void} Does not return a value.
      */
     afterDraw() {
-        this.onerrorFunc();
+
 
         let lazyImageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
+                    // console.log("SRC INTERSECTING", this.src, entry.target);
                     entry.target.src = this.src;
                     this.classList.remove('lazy');
                     lazyImageObserver.unobserve(entry.target);
@@ -204,10 +224,11 @@ export default class Img extends WJElement {
      * @function onerrorFunc
      * @memberof Img
      */
-    onerrorFunc = () => {
+    onerrorFunc = (img) => {
+        // console.log(img, this.fallout);
         if (!this.fallout) return;
         if (this.actions[this.fallout]) {
-            this.native.onerror = this.actions[this.fallout];
+            img.onerror = this.actions[this.fallout];
         } else {
             console.error('Unsupported value:', this.fallout);
         }

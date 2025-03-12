@@ -279,7 +279,9 @@ export default class WJElement extends HTMLElement {
         this.updateComplete = new Promise((resolve, reject) => {
             this.finisPromise = resolve;
             this.rejectPromise = reject;
-        });
+        }).catch((e) => {
+            // console.log(e);
+        })
     }
 
     /**
