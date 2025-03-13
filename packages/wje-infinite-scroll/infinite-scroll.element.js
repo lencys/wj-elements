@@ -104,7 +104,10 @@ export default class InfiniteScroll extends WJElement {
     }
 
     /**
-     * Prepares the component before drawing.
+     * Prepares the component for updates before it is drawn.
+     * This method handles the removal of templates for iteration, adjusts the height styling of the component,
+     * and manages abort signals for loading operations.
+     * @returns {void} No return value.
      */
     beforeDraw() {
         this.iterate = this.querySelector('[iterate]');
@@ -122,8 +125,9 @@ export default class InfiniteScroll extends WJElement {
     }
 
     /**
-     * Draws the component and returns a document fragment.
-     * @returns {DocumentFragment}
+     * Creates and returns a document fragment containing the structure for an infinite scroll component.
+     * The structure includes native elements, slots for customization, and optional loading content.
+     * @returns {DocumentFragment} The document fragment containing the component's DOM structure.
      */
     draw() {
         let fragment = document.createDocumentFragment();
@@ -175,22 +179,42 @@ export default class InfiniteScroll extends WJElement {
     }
 
     /**
-     * Adds the scroll event listener.
+     * Attaches a scroll event listener to the current object.
+     * The `scrollEvent` function binds the `onScroll` method to the 'scroll' event
+     * of the current object. This enables handling of scroll events for
+     * specific functionality such as updating UI elements, loading content dynamically,
+     * or tracking user interaction with scrollable content.
      */
     scrollEvent = () => {
         this.addEventListener('scroll', this.onScroll);
     };
 
     /**
-     * Removes the scroll event listener.
+     * A function that removes the scroll event listener from the current context.
+     * This function is used to unbind the `onScroll` event listener
+     * from the `scroll` event of the current object. It ensures that
+     * the scroll event no longer triggers the `onScroll` handler.
+     * @function
      */
     unScrollEvent = () => {
         this.removeEventListener('scroll', this.onScroll);
     };
 
     /**
-     * Handles the scroll event.
-     * @param {Event} e The event.
+     * A scroll event handler function that checks the scroll position and triggers loading additional content
+     * when the user scrolls near the bottom of the page.
+     * Properties accessed:
+     * - `scrollTop`: The number of pixels that the content of an element is scrolled vertically.
+     * - `scrollHeight`: The total height of the element's content.
+     * - `clientHeight`: The inner height of the element in pixels, including padding but excluding borders and scrollbars.
+     * Conditions:
+     * - Determines if the scroll position is within 300 pixels of the bottom of the element.
+     * - Verifies that the current page number is less than or equal to the total number of pages.
+     * - Checks if the current page is already in the loading state.
+     * Actions:
+     * - Increments the current page number when the conditions are met.
+     * - Initiates loading for the next page by calling the `loadPages` function.
+     * @param {Event} e The scroll event object.
      */
     onScroll = (e) => {
         const { scrollTop, scrollHeight, clientHeight } = e.target;
@@ -233,7 +257,9 @@ export default class InfiniteScroll extends WJElement {
     }
 
     /**
-     * Shows the loader.
+     * Displays the loader element by adding the 'show' class to its class list.
+     * This method is useful for indicating a loading or processing state in the UI.
+     * @returns {void} No return value.
      */
     showLoader() {
         this?.loadingEl?.classList.add('show');
@@ -292,17 +318,27 @@ export default class InfiniteScroll extends WJElement {
     }
 
     /**
-     * Sets the custom data.
-     *
+     * Converts a data item into an HTML element based on a template.
+     * This function takes a data item, interpolates it into a predefined template,
+     * parses the resulting HTML string, and returns the first child element of the parsed HTML content.
+     * @param {object} item The data object to interpolate into the HTML template.
+     * @returns {Element} The first child element generated from the interpolated HTML string.
      */
     dataToHtml = (item) => {
         let interpolateItem = this.interpolate(this.infiniteScrollTemplate, item);
         let doc = this.parser.parseFromString(interpolateItem, 'text/html');
         let element = doc.activeElement.firstElementChild;
-        console.log('IS Element:', element);
+
         return element;
     };
 
+    /**
+     * A custom implementation of the forEach method designed to iterate over an array of data,
+     * transform each item into an HTML element, and append the element to a specified placement object.
+     * Additionally, it adds an event listener to each generated element for handling click events.
+     * @param {Array} data An array of items to process. Each item is transformed into an HTML element
+     * and appended to the placement object specified in the context of `this`.
+     */
     customForeach = (data) => {
         data.forEach((item) => {
             let element = this.dataToHtml(item);
@@ -313,10 +349,13 @@ export default class InfiniteScroll extends WJElement {
     };
 
     /**
-     * Interpolates the string.
-     * @param template
-     * @param {object} params The parameters for interpolation.
-     * @returns {string} The interpolated string.
+     * Interpolates a string template with values from the provided parameters object.
+     * The template contains placeholders in the format `{{key}}` or `{{key.subkey}}`,
+     * which are replaced with the corresponding values from the `params` object.
+     * Placeholders support dot notation for accessing nested properties within the `params` object.
+     * @param {string} template The string template containing placeholders to be replaced.
+     * @param {object} params The object containing key-value pairs used for substitution in the template.
+     * @returns {string} A string with all placeholders replaced by their respective values from the `params` object.
      */
     interpolate = (template, params) => {
         let keys = template.match(/\{{.*?\}}/g);
