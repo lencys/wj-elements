@@ -200,7 +200,7 @@ export default class Animation extends WJElement {
      * @returns {Array} An array containing the name of the observed attribute.
      */
     static get observedAttributes() {
-        return ['name'];
+        return [];
     }
 
     /**
@@ -248,7 +248,8 @@ export default class Animation extends WJElement {
             direction: this.direction,
             easing: this.easing,
         });
-        if (this.animation) this.animation.play();
+
+        if (this.animation && this.animation.playState === 'idle') this.animation.play();
     }
 
     /**
@@ -260,7 +261,9 @@ export default class Animation extends WJElement {
     }
 
     /**
-     * Method to destroy the current animation.
+     * Terminates and cleans up the currently active animation if it exists.
+     * Calls the `cancel` method to stop the animation process.
+     * @returns {void} Does not return any value.
      */
     destroyAnimation() {
         if (this.animation) {
@@ -269,7 +272,8 @@ export default class Animation extends WJElement {
     }
 
     /**
-     * Method to play the current animation.
+     * Plays the currently assigned animation, if available.
+     * @returns {void} This method does not return any value.
      */
     play() {
         if (this.animation) {
@@ -278,7 +282,9 @@ export default class Animation extends WJElement {
     }
 
     /**
-     * Method to cancel the current animation.
+     * Cancels the current animation if it is initialized and has a cancel method.
+     * Logs a warning if the animation is not initialized or the cancel method is unavailable.
+     * @returns {void} Does not return a value.
      */
     cancel() {
         if (this.animation && typeof this.animation.cancel === 'function') {

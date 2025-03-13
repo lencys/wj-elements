@@ -50,8 +50,8 @@ export default class DemoAnimation extends WJElement {
     // let keyframes = await fetchAndParseCSS();
     const animationElement = this.querySelector('wje-animation');
     const select = this.querySelector('wje-select');
-    let keyframes = await this.querySelector('wje-animation').getAnimationsArray();
-    keyframes.map((obj) => {
+    let keyframes = await animationElement.getAnimationsArray();
+    keyframes.forEach((obj) => {
       const option = Object.assign(document.createElement('wje-option'), {
         text: obj.name,
         value: obj.name,
@@ -62,6 +62,7 @@ export default class DemoAnimation extends WJElement {
 
     select.addEventListener('wje-option:change', (e) => {
       animationElement.setAttribute('name', e.detail.value);
+      animationElement.refresh();
     });
 
     this.querySelector('#stop').addEventListener('click', (e) => {
