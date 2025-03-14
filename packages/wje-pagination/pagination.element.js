@@ -90,7 +90,7 @@ export default class Pagination extends WJElement {
      * @returns {number} The total number of items. Defaults to 0 if the attribute is not set or is invalid.
      */
     get totalItems() {
-        // console.log("SOM V TOTAL ITEMS:", this, this.getAttribute('total-items'));
+        console.log("SOM V TOTAL ITEMS:", this, this.getAttribute('total-items'));
         return +this.getAttribute('total-items') || 0;
     }
 
@@ -144,7 +144,6 @@ export default class Pagination extends WJElement {
      * @param {object} value The value to set the pagination object. The pagination details are computed internally.
      */
     set paginateObj(value) {
-        // console.log('paginateObj nastavené na:', value);
         this._paginateObj = value;
     }
 
@@ -223,7 +222,7 @@ export default class Pagination extends WJElement {
      * @returns {Array} The attributes to observe for changes.
      */
     static get observedAttributes() {
-        return ['page', 'totalItems'];
+        return ['page', 'total-items'];
     }
 
     /**

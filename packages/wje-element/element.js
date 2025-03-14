@@ -48,6 +48,8 @@ export default class WJElement extends HTMLElement {
         };
 
         this.drawingStatus = this.drawingStatuses.CREATED;
+
+        this.isInitializing = true;
     }
 
     /**
@@ -294,6 +296,7 @@ export default class WJElement extends HTMLElement {
         this.refreshUpdatePromise();
 
         this.renderPromise = this.initWjElement(true);
+        this.isInitializing = false;
     }
 
     /**
@@ -415,7 +418,8 @@ export default class WJElement extends HTMLElement {
      * @param newName The new value of the attribute.
      */
     attributeChangedCallback(name, old, newName) {
-        if (old !== newName) {
+        console.log('attributeChangedCallback', this.className, name, old, newName, !this.isInitializing);
+        if (old !== newName && !this.isInitializing) {
             this.renderPromise = this.enqueueUpdate();
         }
     }
