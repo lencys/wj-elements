@@ -223,7 +223,7 @@ export default class Pagination extends WJElement {
      * @returns {Array} The attributes to observe for changes.
      */
     static get observedAttributes() {
-        return ['page'];
+        return ['page', 'totalItems'];
     }
 
     /**
