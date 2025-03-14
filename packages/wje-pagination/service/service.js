@@ -22,20 +22,26 @@ export function paginate(totalItems, currentPage = 1, pageSize = 10, maxPages = 
 
     const pagesNearEnd = maxPages + 1; // Define how close to the end we switch back to 5 pages 4
 
-    if (currentPage <= pagesNearEnd) {
-        // If in the first 4 pages, show up to 5 pages
-        startPage = 1;
-        endPage = Math.min(pagesNearEnd + 1, totalPages); //5
-    } else if (currentPage > totalPages - pagesNearEnd + 1) {
-        // If within 4 pages from the end, show last 5 pages
-        startPage = Math.max(totalPages - pagesNearEnd, 1); //4
-        endPage = totalPages;
-    } else {
-        const halfPages = Math.floor(maxPages / 2);
+    const boundary = pagesNearEnd + 3;
 
-        // Otherwise, only show 3 pages (current, previous, next)
-        startPage = currentPage - halfPages;
-        endPage = maxPages % 2 === 1 ? currentPage + halfPages : currentPage + halfPages - 1;
+    if(totalPages > boundary) {
+        if (currentPage < pagesNearEnd) {
+            // If in the first 4 pages, show up to 5 pages
+            startPage = 1;
+            endPage = Math.min(pagesNearEnd + 1, totalPages); //5
+        } else if (currentPage >= totalPages - pagesNearEnd) {
+            // If within 4 pages from the end, show last 5 pages
+            startPage = Math.max(totalPages - pagesNearEnd, 1); //4
+            endPage = totalPages;
+        } else {
+            const halfPages = Math.floor(maxPages / 2);
+            // Otherwise, only show 3 pages (current, previous, next)
+            startPage = currentPage - halfPages + 1;
+            endPage = maxPages % 2 === 1 ? currentPage + halfPages + 1 : currentPage + halfPages - 1;
+        }
+    } else {
+        startPage = 1;
+        endPage = totalPages;
     }
 
     // Calculate start and end item indexes
@@ -47,14 +53,15 @@ export function paginate(totalItems, currentPage = 1, pageSize = 10, maxPages = 
 
     // Return object with all pager properties (preserving original format)
     return {
-        totalItems: totalItems,
+        boundary: boundary,
         currentPage: currentPage,
-        pageSize: pageSize,
-        totalPages: totalPages,
-        startPage: startPage,
-        endPage: endPage,
-        startIndex: startIndex,
         endIndex: endIndex,
+        endPage: endPage,
+        totalPages: totalPages,
         pages: pages,
+        pageSize: pageSize,
+        startIndex: startIndex,
+        startPage: startPage,
+        totalItems: totalItems,
     };
 }
