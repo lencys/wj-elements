@@ -122,7 +122,7 @@ export default class Img extends WJElement {
      * @returns {Array<string>}
      */
     static get observedAttributes() {
-        return [];
+        return ['src'];
     }
 
     /**
@@ -151,9 +151,9 @@ export default class Img extends WJElement {
 
         this.onerrorFunc(native);
 
-        this.native = native;
-
         fragment.appendChild(native);
+
+        this.native = native;
 
         return fragment;
     }
@@ -166,8 +166,6 @@ export default class Img extends WJElement {
      * @returns {void} Does not return a value.
      */
     afterDraw() {
-
-
         let lazyImageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
