@@ -81,7 +81,6 @@ export default class Pagination extends WJElement {
      * @param {number} value The new total number of items to set.
      */
     set totalItems(value) {
-        // console.log('totalItems nastavené na:', value);
         this.setAttribute('total-items', value);
     }
 
@@ -90,7 +89,6 @@ export default class Pagination extends WJElement {
      * @returns {number} The total number of items. Defaults to 0 if the attribute is not set or is invalid.
      */
     get totalItems() {
-        console.log("SOM V TOTAL ITEMS:", this, this.getAttribute('total-items'));
         return +this.getAttribute('total-items') || 0;
     }
 
@@ -233,7 +231,7 @@ export default class Pagination extends WJElement {
     }
 
     async beforeDraw() {
-        this.paginateObj = await paginate(this.totalItems, this.page + 1, this.pageSize, this.maxPages)
+        this.paginateObj = await paginate(this.totalItems, this.page, this.pageSize, this.maxPages)
     }
 
     /**
@@ -260,7 +258,6 @@ export default class Pagination extends WJElement {
      * @returns {DocumentFragment} A document fragment containing the pagination controls.
      */
     htmlPagination() {
-        // console.log("SOM PAGINATE OBJ:",this.paginateObj);
         let fragment = document.createDocumentFragment();
 
         let info = document.createElement('div');
@@ -378,9 +375,8 @@ export default class Pagination extends WJElement {
      */
     pageClickAction = (e, page) => {
         if (+page === this.page) return;
-
         this.page = page;
-        event.dispatchCustomEvent(this, 'wje-pagination:page-change', this.paginateObj);
+        event.dispatchCustomEvent(this, 'wje-pagination:page-change', {page: page});
     };
 }
 
