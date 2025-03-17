@@ -1474,16 +1474,25 @@
       "events": [],
       "listeners": [],
       "styles": [],
-      "slots": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Hlavný obsah ButtonGroup elementu."
+        }
+      ],
       "parts": [
         {
           "name": "native",
-          "docs": "Odkazuje na `<div>` element vo vnútri tlačidla"
+          "docs": "Odkazuje na `<div>` element vo vnútri ButtonGroup elementu."
         }
-      ],
+        ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": []
+      "dependencies": [
+        "wje-button"
+      ],
+      "dependencyGraph": [
+          "wje-button"
+      ]
     },
     {
       "filePath": "src/components/card/card.tsx",
@@ -1558,44 +1567,50 @@
       "listeners": [],
       "styles": [
         {
-          "name": "-—wj-card-border-color",
+          "name": "--wje-card-background",
+          "annotation": "prop",
+          "docs": "Definuje farbu pozadia karty."
+        },
+        {
+          "name": "--wje-card-border-color",
           "annotation": "prop",
           "docs": "Definuje farbu okraja karty."
         },
         {
-          "name": "--wj-card-margin-bottom",
+          "name": "--wje-card-margin-bottom",
           "annotation": "prop",
           "docs": "Definuje veľkosť medzery od dolného okraja karty"
         },
         {
-          "name": "--wj-card-margin-inline",
+          "name": "--wje-card-margin-inline",
           "annotation": "prop",
           "docs": "Definuje veľkosť medzery od pravého a ľavého okraja karty"
         },
         {
-          "name": "--wj-card-margin-top",
+          "name": "--wje-card-margin-top",
           "annotation": "prop",
           "docs": "Definuje veľkosť medzery od horného okraja karty"
-        },
-        {
-          "name": "--wj-color-base",
-          "annotation": "prop",
-          "docs": "Definuje farbu pozadia karty"
-        },
-        {
-          "name": "--wj-color-contrast",
-          "annotation": "prop",
-          "docs": "Definuje farbu textu karty"
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Hlavný obsah Card elementu."
+        }
+      ],
       "parts": [
         {
           "name": "native",
-          "docs": "The native HTML button, anchor, or div element that wraps all child elements."
+          "docs": "Odkazuje na `<div>` element vo vnútri Card elementu."
         }
       ],
-      "dependents": [],
+      "dependents": [
+        "card-content",
+        "card-header",
+        "card-subtitle",
+        "card-title",
+        "card-controls"
+      ],
       "dependencies": [],
       "dependencyGraph": {}
     },
@@ -1610,11 +1625,24 @@
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [],
-      "slots": [],
+      "styles": [
+        {
+          "name": "--wje-card-padding",
+          "annotation": "prop",
+          "docs": "Upravuje  vnútorné odsadenie elementu"
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Hlavný obsah Card Content elementu."
+        }
+      ],
       "parts": [],
       "dependents": [],
-      "dependencies": [],
+      "dependencies": [
+        "card"
+      ],
       "dependencyGraph": {}
     },
     {
@@ -1651,11 +1679,24 @@
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [],
-      "slots": [],
+      "styles": [
+        {
+          "name": "--wje-card-header-padding",
+          "annotation": "prop",
+          "docs": "Upravuje  vnútorné odsadenie elementu"
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Hlavný obsah Card Header elementu."
+        }
+      ],
       "parts": [],
       "dependents": [],
-      "dependencies": [],
+      "dependencies": [
+        "card"
+      ],
       "dependencyGraph": {}
     },
     {
@@ -1669,11 +1710,35 @@
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [],
-      "slots": [],
+      "styles": [
+        {
+          "name": "--wje-card-subtitle-padding",
+          "annotation": "prop",
+          "docs": "Upravuje  vnútorné odsadenie elementu."
+        },
+        {
+          "name": "--wje-card-subtitle-font-family",
+          "annotation": "prop",
+          "docs": "Definuje typ písma elementu."
+        },
+        {
+          "name": "--wje-card-subtitle-font-size",
+          "annotation": "prop",
+          "docs": "Definuje veľkosť písma elementu."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Hlavný obsah Card Subtitle elementu."
+        }
+      ],
       "parts": [],
       "dependents": [],
-      "dependencies": [],
+      "dependencies": [
+        "card",
+        "card-header"
+      ],
       "dependencyGraph": {}
     },
     {
@@ -1687,11 +1752,45 @@
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [],
-      "slots": [],
+      "styles": [
+        {
+          "name": "--wje-card-title-font-family",
+          "annotation": "prop",
+          "docs": "Definuje typ písma elementu."
+        },
+        {
+          "name": "--wje-card-title-font-size",
+          "annotation": "prop",
+          "docs": "Definuje veľkosť písma elementu."
+        },
+        {
+          "name": "--wje-card-title-font-weight",
+          "annotation": "prop",
+          "docs": "Definuje hrúbku písma elementu."
+        },
+        {
+          "name": "--wje-card-title-margin",
+          "annotation": "prop",
+          "docs": "Upravuje  vonkajšie odsadenie elementu."
+        },
+        {
+          "name": "--wje-card-title-padding",
+          "annotation": "prop",
+          "docs": "Upravuje  vnútorné odsadenie elementu."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Hlavný obsah Card Title elementu."
+        }
+      ],
       "parts": [],
       "dependents": [],
-      "dependencies": [],
+      "dependencies": [
+        "card",
+        "card-header"
+      ],
       "dependencyGraph": {}
     },
     {
@@ -1705,8 +1804,24 @@
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [],
-      "slots": [],
+      "styles": [
+        {
+          "name": "--wje-card-controls-font-family",
+          "annotation": "prop",
+          "docs": "Definuje typ písma elementu."
+        },
+        {
+          "name": "--wje-card-controls-font-size",
+          "annotation": "prop",
+          "docs": "Definuje veľkosť písma elementu."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Hlavný obsah Card Controls elementu."
+        }
+      ],
       "parts": [],
       "dependents": [],
       "dependencies": [],
@@ -1719,12 +1834,198 @@
       "docs": "",
       "docsTags": [],
       "usage": {},
-      "props": [],
-      "methods": [],
+      "props": [
+        {
+          "name": "activeSlide",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "active-slide",
+          "reflectToAttr": true,
+          "docs": "Aktívny slide karuselu.",
+          "docsTags": [],
+          "default": "0",
+          "values": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "pagination",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "pagination",
+          "reflectToAttr": false,
+          "docs": "Zobrazenie stránkovania karuselu.",
+          "docsTags": [],
+          "default": "false",
+          "values": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "navigation",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "navigation",
+          "reflectToAttr": false,
+          "docs": "Zobrazenie navigačných tlačidiel karuselu.",
+          "docsTags": [],
+          "default": "false",
+          "values": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "thumbnails",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "thumbnails",
+          "reflectToAttr": false,
+          "docs": "Zobrazenie náhľadov karuselu.",
+          "docsTags": [],
+          "default": "false",
+          "values": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "loop",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "loop",
+          "reflectToAttr": false,
+          "docs": "Nekonečné opakovanie karuselu.",
+          "docsTags": [],
+          "default": "false",
+          "values": [],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "goToSlide",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(index: number, behavior?: string, next?: boolean) => void",
+            "parameters": [
+              {
+                "name": "index",
+                "type": "number",
+                "docs": "Index slidu, na ktorý sa má prejsť."
+              },
+              {
+                "name": "behavior",
+                "type": "string",
+                "docs": "Správanie pri prechode (napr. 'smooth')."
+              },
+              {
+                "name": "next",
+                "type": "boolean",
+                "docs": "Určuje, či sa má prejsť na ďalší slide."
+              }
+            ],
+            "references": {},
+            "return": "void"
+          },
+          "signature": "(index: number, behavior?: string, next?: boolean) => void",
+          "parameters": [
+            {
+              "name": "index",
+              "type": "number",
+              "docs": "Index slidu, na ktorý sa má prejsť."
+            },
+            {
+              "name": "behavior",
+              "type": "string",
+              "docs": "Správanie pri prechode (napr. 'smooth')."
+            },
+            {
+              "name": "next",
+              "type": "boolean",
+              "docs": "Určuje, či sa má prejsť na ďalší slide."
+            }
+          ],
+          "docs": "Prejde na zadaný slide.",
+          "docsTags": []
+        },
+        {
+          "name": "nextSlide",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => void",
+            "parameters": [],
+            "references": {},
+            "return": "void"
+          },
+          "signature": "() => void",
+          "parameters": [],
+          "docs": "Prejde na ďalší slide.",
+          "docsTags": []
+        },
+        {
+          "name": "previousSlide",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => void",
+            "parameters": [],
+            "references": {},
+            "return": "void"
+          },
+          "signature": "() => void",
+          "parameters": [],
+          "docs": "Prejde na predchádzajúci slide.",
+          "docsTags": []
+        }
+      ],
       "events": [],
       "listeners": [],
-      "styles": [],
-      "slots": [],
+      "styles": [
+        {
+          "name": "--wje-carousel-size",
+          "annotation": "prop",
+          "docs": "Definuje veľkosť elementu."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Hlavný obsah karuselu."
+        }
+      ],
       "parts": [],
       "dependents": [],
       "dependencies": [],
@@ -1737,13 +2038,84 @@
       "docs": "",
       "docsTags": [],
       "usage": {},
-      "props": [],
+      "props": [
+        {
+          "name": "active",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "active",
+          "reflectToAttr": false,
+          "docs": "If `true`, the carousel item is active.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "index",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "index",
+          "reflectToAttr": false,
+          "docs": "The index of the carousel item.",
+          "docsTags": [],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
+      "styles": [
+        {
+          "name": "--background",
+          "annotation": "prop",
+          "docs": "Background of the carousel item"
+        },
+        {
+          "name": "--border-radius",
+          "annotation": "prop",
+          "docs": "Border radius of the carousel item"
+        },
+        {
+          "name": "--box-shadow",
+          "annotation": "prop",
+          "docs": "Box shadow of the carousel item"
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Default slot for the carousel item content."
+        }
+      ],
+      "parts": [
+        {
+          "name": "container",
+          "docs": "The element that wraps all child elements."
+        }
+      ],
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}

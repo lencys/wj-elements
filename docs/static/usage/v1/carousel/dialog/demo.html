@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Copy Button</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script type="module" src="../../../../wje-elementy/wje-master.js"></script>
+    <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content" style="margin: 0 auto; padding-top: 2rem">
+        <wje-button dialog="open-modal">Open</wje-button>
+        <wje-dialog trigger="open-modal" title="Title" size="large">
+          <wje-carousel pagination loop>
+            <wje-carousel-item>
+              <wje-img src="https://picsum.photos/500/375?i=1"></wje-img>
+            </wje-carousel-item>
+            <wje-carousel-item>
+              <wje-img src="https://picsum.photos/500/375?i=2"></wje-img>
+            </wje-carousel-item>
+            <wje-carousel-item>
+              <wje-img src="https://picsum.photos/500/375?i=3"></wje-img>
+            </wje-carousel-item>
+            <wje-carousel-item>
+              <wje-img src="https://picsum.photos/500/375?i=4"></wje-img>
+            </wje-carousel-item>
+          </wje-carousel>
+        </wje-dialog>
+      </div>
+    </div>
+  </body>
+</html>

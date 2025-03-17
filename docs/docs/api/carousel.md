@@ -40,6 +40,18 @@ import Pagination from '@site/static/usage/v1/carousel/pagination/index.md';
 
 <Pagination />
 
+## No loop
+
+import NoLoop from '@site/static/usage/v1/carousel/no-loop/index.md';
+
+<NoLoop />
+
+## Dialog
+
+import Dialog from '@site/static/usage/v1/carousel/dialog/index.md';
+
+<Dialog />
+
 ## Nahľadový obrázok
 
 import Thumbnail from '@site/static/usage/v1/carousel/thumbnail/index.md';

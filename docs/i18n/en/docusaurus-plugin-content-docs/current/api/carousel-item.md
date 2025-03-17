@@ -24,7 +24,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 The Carousel Item element is a component designed to be used within the [Carousel](../card-header) element.
 
 :::note Note
-For more information on using Card Title, navigate to the [**Card**](../card) element documentation
+For more information on using Card Title, navigate to the [**Carousel**] element documentation(../carousel)
 :::
 
 ## Attributes and Properties

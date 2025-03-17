@@ -1,6 +1,6 @@
 ```html
 <template>
-  <wje-button-group label="Example Button Group">
+    <wje-button-group>
     <wje-button>Button</wje-button>
     <wje-button>Button</wje-button>
     <wje-dropdown placement="bottom-end" offset="5">
