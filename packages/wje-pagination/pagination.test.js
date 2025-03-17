@@ -62,8 +62,7 @@ describe('Pagination Component', () => {
 
   it('should update pagination object when attributes change', async () => {
     const el = await fixture('<wje-pagination total-items="100" page="2" page-size="10" max-pages="5"></wje-pagination>');
-
-    expect(el.paginateObj).to.deep.equal(paginate(100, 3, 10, 5));
+    expect(el.paginateObj).to.deep.equal(paginate(100, 2, 10, 5));
   });
 
   it('should update paginateObj when totalItems changes', async () => {
@@ -109,7 +108,7 @@ describe('Pagination Component', () => {
 
     const event = await listener;
 
-    expect(event.detail.currentPage).to.equal(2);
+    expect(event.detail.page).to.equal(2);
   });
 
 });

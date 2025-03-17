@@ -40,7 +40,15 @@ template.innerHTML = `
     <div class="playground">
         <div class="content">
             <wje-img src="/demo/assets/img/img-error-2.png" alt="Niekedy máme pocit, že chodíme v kruhoch..." fallout="log" id="img-example"></wje-img>
-          
+        </div>
+    </div>
+    
+    <!-- OBSERVER -->
+
+    <h3>Observer</h3>
+    <div class="playground">
+        <div class="content">
+            <wje-img src="/demo/assets/img/img.png" alt="Niekedy máme pocit, že chodíme v kruhoch..." fallout="log" id="img-example"></wje-img>
         </div>
     </div>
 </div>
