@@ -24,7 +24,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 Element Carousel Item je komponent navrhnutý na použitie v rámci elementu [Carousel](../card-header).
 
 :::note Poznámka
-Pre viac informácií o použití Card Title sa presuňte do dokumentácie elementu [**Card**](../card)
+Pre viac informácií o použití Card Title sa presuňte do dokumentácie elementu [**Carousel**](../carousel)
 :::
 
 ## Atribúty a Vlastnosti

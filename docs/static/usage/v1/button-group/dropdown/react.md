@@ -3,7 +3,7 @@ import React from 'react';
 import { Button, ButtonGroup, Dropdown, Menu, MenuItem } from '@elements/react';
 function Example() {
   return (
-    <wje-button-group label="Example Button Group">
+    <wje-button-group>
       <wje-button>Button</wje-button>
       <wje-button>Button</wje-button>
       <wje-dropdown placement="bottom-end" offset="5">
