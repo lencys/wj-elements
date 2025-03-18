@@ -98,7 +98,7 @@ export default class Img extends WJElement {
      * @returns {string|null} The value of the 'loader' attribute if set, otherwise null.
      */
     get loader() {
-        return this.getAttribute('loader');
+        return this.getAttribute('loader') || './assets/img/image-loader.gif';
     }
 
     /**
@@ -141,12 +141,14 @@ export default class Img extends WJElement {
 
         let native = document.createElement('img');
         native.setAttribute('part', 'native');
-        native.setAttribute('src', this.loader || './assets/img/image-loader.gif');
+        native.setAttribute('src', this.loader);
         native.setAttribute('alt', this.alt || '');
         native.classList.add('lazy-loaded-image', 'lazy');
         native.addEventListener('error', (e) => {
-            let parent = this.parentElement;
-            if(parent.tagName === 'WJE-AVATAR') parent.initials = true;
+            const absoluteLoaderUrl = new URL(this.loader, window.location.origin).href;
+            if (e.target.src === absoluteLoaderUrl) return;
+
+            this.setAvatarInitials(true);
         });
 
         this.onerrorFunc(native);
@@ -171,6 +173,9 @@ export default class Img extends WJElement {
                 if (entry.isIntersecting) {
                     entry.target.src = this.src;
                     this.classList.remove('lazy');
+
+                    this.setAvatarInitials;
+
                     lazyImageObserver.unobserve(entry.target);
                 }
             });
@@ -179,6 +184,10 @@ export default class Img extends WJElement {
         lazyImageObserver.observe(this.native);
     }
 
+    setAvatarInitials = (value = false) =>{
+        let parent = this.parentElement;
+        if(parent.tagName === 'WJE-AVATAR') parent.initials = value;
+    }
     /**
      * Deletes the current image by calling the remove method.
      * This function is typically used to trigger the removal of an image element
