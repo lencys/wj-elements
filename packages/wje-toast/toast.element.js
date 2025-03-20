@@ -264,7 +264,7 @@ export default class Toast extends WJElement {
      * This method is called before the element is disconnected from the document.
      */
     beforeDisconnect() {
-        this.closeBtn.removeEventListener('wje-button:click', this.hide);
+        this.closeBtn?.removeEventListener('wje-button:click', this.hide);
         this.removeEventListener('wje-toast:after-hide', this.removeChildAndStack);
         this.removeEventListener('mouseenter', this.pause);
         this.removeEventListener('mouseleave', this.resume);
