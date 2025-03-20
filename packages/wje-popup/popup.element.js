@@ -62,9 +62,9 @@ export default class Popup extends WJElement {
      * @static
      * @returns {Array<string>}
      */
-    static get observedAttributes() {
-        return ['active'];
-    }
+    // static get observedAttributes() {
+    //     return ['active'];
+    // }
 
     /**
      * Sets up the attributes for the component.
@@ -73,27 +73,27 @@ export default class Popup extends WJElement {
         this.isShadowRoot = 'open';
     }
 
-    /**
-     * Called when an attribute changes.
-     */
-    attributeChangedCallback(name, old, newName) {
-        if (name === 'active') {
-            if (this.hasAttribute(name)) {
-                this.show();
-            } else {
-                this.hide();
-            }
-        }
-    }
+    // /**
+    //  * Called when an attribute changes.
+    //  */
+    // attributeChangedCallback(name, old, newName) {
+    //     // if (name === 'active') {
+    //     //     if (this.hasAttribute(name)) {
+    //     //         this.show();
+    //     //     } else {
+    //     //         this.hide();
+    //     //     }
+    //     // }
+
+    // }
 
     afterDisconnect() {
-        event.removeElement(this.anchorEl);
+        event.removeListener(this.anchorEl, 'click', this.manualCallback);
         document.removeEventListener('click', this.clickHandler, { capture: true });
         this.cleanup?.();
     }
 
     beforeDraw(context, store, params) {
-        document.removeEventListener('click', this.clickHandler, { capture: true });
         this.cleanup?.();
     }
 
@@ -136,7 +136,6 @@ export default class Popup extends WJElement {
         this.setAnchor();
 
         if (this.hasAttribute('active')) this.show(false);
-
         if (!this.hasAttribute('active')) this.hide(false);
     }
 
@@ -153,28 +152,22 @@ export default class Popup extends WJElement {
         }
 
         if (this.manual) {
-            event.addListener(
-                this.anchorEl,
-                'click',
-                null,
-                (e) => {
-                    if (this.hasAttribute('disabled')) return;
-
-                    this.showHide();
-                },
-                { stopPropagation: true }
-            );
+            event.addListener(this.anchorEl, 'click', null, this.manualCallback, { stopPropagation: true });
         }
-
-        document.removeEventListener('click', this.clickHandler, { capture: true });
-        document.addEventListener('click', this.clickHandler, { capture: true });
     }
+
+    manualCallback = (e) => {
+        if (this.hasAttribute('disabled')) return;
+
+        this.showHide();
+    }
+
 
     clickHandler = (e) => {
         let clickToHost = e.composedPath().some((el) => el === this);
 
         if (!clickToHost) {
-            if (this.hasAttribute('active')) this.removeAttribute('active');
+            if (this.hasAttribute('active')) this.hide(true);
         }
     };
 
@@ -183,9 +176,9 @@ export default class Popup extends WJElement {
      */
     showHide() {
         if (this.hasAttribute('active')) {
-            this.removeAttribute('active');
+            this.hide();
         } else {
-            this.setAttribute('active', '');
+            this.show();
         }
     }
 
@@ -276,14 +269,20 @@ export default class Popup extends WJElement {
             event.dispatchCustomEvent(this, 'wje-popup:show');
         }
 
-        this.native.classList.add('popup-active');
+        if (this.anchorEl && this.native) {
+            this.native?.classList?.add('popup-active');
 
-        this.cleanup?.();
-        this.cleanup = autoUpdate(this.anchorEl, this.native, () => {
-            this.reposition();
-        });
+            this.cleanup?.();
+            this.cleanup = autoUpdate(this.anchorEl, this.native, () => {
+                this.reposition();
+            });
 
-        if (!this.hasAttribute('active')) this.setAttribute('active', '');
+            document.addEventListener('click', this.clickHandler, { capture: true });
+        }
+
+        if (!this.hasAttribute('active')) {
+            this.setAttribute('active', '');
+        }
     }
 
     /**
@@ -296,12 +295,17 @@ export default class Popup extends WJElement {
             event.dispatchCustomEvent(this, 'wje-popup:hide');
         }
 
-        this.native.classList.remove('popup-active');
+        this.native?.classList?.remove('popup-active');
 
         this.cleanup?.();
         this.cleanup = undefined;
 
-        if (this.hasAttribute('active')) this.removeAttribute('active');
+        document.removeEventListener('click', this.clickHandler, { capture: true });
+
+        if (this.hasAttribute('active')) {
+
+            this.removeAttribute('active');
+        }
     }
 
     /**

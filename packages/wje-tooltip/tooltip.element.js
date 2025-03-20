@@ -141,6 +141,14 @@ export default class Tooltip extends WJElement {
         event.addListener(this, 'wje-dropdown:close', null, this.onShow);
     }
 
+
+    afterDisconnect() {
+        event.removeListener(this, 'wje-dropdown:open', null, this.onHide);
+        event.removeListener(this, 'wje-dropdown:close', null, this.onShow);
+        event.removeListener(this, 'mouseenter', null, this.onShow);
+        event.removeListener(this, 'mouseleave', null, this.onHide);
+    }
+
     dispatch(customEvent) {
         return new Promise((resolve) => {
             event.dispatchCustomEvent(this, customEvent, {
@@ -157,12 +165,18 @@ export default class Tooltip extends WJElement {
         return true;
     }
 
+    popupHideCallback = () => {
+        this.onHide();
+    }
+
     /**
      * Handles the logic for showing the component's popup or tooltip.
      * Adds the `active` class, invokes lifecycle hooks, and manages the popup visibility.
      * @throws {Error} If the `beforeShow` method returns a non-string value or `false`.
      */
     onShow = () => {
+        event.addListener(this, 'wje-popup:hide', null, this.popupHideCallback);
+
         this.classList.add('active');
 
         if (this.querySelector('wje-dropdown')?.classList.contains('active')) {
@@ -193,6 +207,8 @@ export default class Tooltip extends WJElement {
      * Removes the `active` class from the component and hides the popup element.
      */
     onHide = () => {
+        event.removeListener(this, 'wje-popup:hide', null, this.popupHideCallback);
+
         this.classList.remove('active');
         this.popup.hide();
     };

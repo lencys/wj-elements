@@ -1,7 +1,7 @@
 {
   "name": "wj-elements",
   "description": "WebJET Elements is a modern set of user interface tools harnessing the power of web components designed to simplify web application development.",
-  "version": "0.1.155",
+  "version": "0.1.156",
   "homepage": "https://github.com/lencys/wj-elements",
   "author": "Lukáš Ondrejček <lukas.ondrejcek@gmail.com>",
   "license": "MIT",
@@ -35,7 +35,7 @@
     "preview": "vite preview --mode production",
     "watch": "vite build --watch --mode development",
     "analyze": "cem analyze",
-    "create-element": "node wje-cli-script/create-element.cjs paginationys",
+    "create-element": "node wje-cli-script/create-element.cjs",
     "copy-dist": "node wje-cli-script/copy-dist.cjs",
     "build:copy-dist": "npm run build && npm run copy-dist -- /Users/rastislavhrompa/Desktop/Interway-MFE/root/node_modules/wj-elements",
     "test": "web-test-runner --group default",
@@ -44,17 +44,13 @@
     "lint:fix": "eslint packages --max-warnings 0 --fix",
     "prettier": "prettier --write ./packages",
     "test:animation": "web-test-runner --files packages/wje-animation/animation.test.js",
-    "test:avatar": "web-test-runner --files packages/wje-avatar/avatar.test.js",
     "test:badge": "web-test-runner --files packages/wje-badge/badge.test.js",
     "test:breadcrumbs": "web-test-runner --files packages/wje-breadcrumbs/breadcrumbs.test.js",
     "test:button": "web-test-runner --files packages/wje-button/button.test.js",
     "test:color-picker": "web-test-runner --files packages/wje-color-picker/color-picker.test.js",
     "test:format-digital": "web-test-runner --files packages/wje-format-digital/format-digital.test.js",
     "test:relative-time": "web-test-runner --files packages/wje-relative-time/relative-time.test.js",
-    "test:toast": "web-test-runner --files packages/wje-toast/toast.test.js",
-    "test:pagination": "web-test-runner --files packages/wje-pagination/pagination.test.js",
-    "test:tree": "web-test-runner --files packages/wje-tree/tree.test.js",
-    "test:tree-item": "web-test-runner --files packages/wje-tree-item/tree-item.test.js"
+    "test:toast": "web-test-runner --files packages/wje-toast/toast.test.js"
   },
   "exports": {
     ".": {
@@ -76,7 +72,6 @@
     "@crowdin/cli": "^3.19.2",
     "@faker-js/faker": "^8.0.0",
     "@floating-ui/dom": "^1.5.1",
-    "ajv": "^8.17.1",
     "animate.css": "^4.1.1",
     "qrious": "^4.0.2",
     "slick-router": "^3.0.1",
