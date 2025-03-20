@@ -148,7 +148,7 @@ export default class Dropdown extends WJElement {
                 detail: { target: this },
             });
         }
-    }
+    };
 
     /**
      * Adds event listeners for the mouseenter and mouseleave events.
@@ -236,12 +236,11 @@ export default class Dropdown extends WJElement {
 
     beforeClose = () => {
         // Do nothing
-    }
+    };
 
     afterClose = () => {
         // Do nothing
-    }
-
+    };
 
     onClose = (e) => {
         e.stopPropagation();

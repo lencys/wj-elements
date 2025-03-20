@@ -296,8 +296,8 @@ export default class WJElement extends HTMLElement {
      * Lifecycle method invoked when the component is connected to the DOM.
      */
     connectedCallback() {
-        this.originalDisplay = this.style.display;
-        this.style.display = 'none';
+        this.originalVisibility = this.style.visibility;
+        this.style.visibility = 'hidden';
 
         this.setupAttributes?.();
         this.setUpAccessors();
@@ -324,7 +324,6 @@ export default class WJElement extends HTMLElement {
                 if (!this.shadowRoot) this.attachShadow({ mode: this.shadowType || 'open' });
             }
             this.setUpAccessors();
-
 
             this.drawingStatus = this.drawingStatuses.START;
             await this.display(force);
@@ -399,7 +398,6 @@ export default class WJElement extends HTMLElement {
         this.drawingStatus = this.drawingStatuses.DISCONNECTED;
 
         this.componentCleanup();
-
     }
 
     /**
@@ -471,7 +469,7 @@ export default class WJElement extends HTMLElement {
                     this._pristine = false;
                     this.enqueueUpdate();
                 } else {
-                    this.style.display = this.originalDisplay;
+                    this.style.visibility = this.originalVisibility;
                 }
             }
         }

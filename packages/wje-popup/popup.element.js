@@ -160,8 +160,7 @@ export default class Popup extends WJElement {
         if (this.hasAttribute('disabled')) return;
 
         this.showHide();
-    }
-
+    };
 
     clickHandler = (e) => {
         let clickToHost = e.composedPath().some((el) => el === this);
@@ -303,7 +302,6 @@ export default class Popup extends WJElement {
         document.removeEventListener('click', this.clickHandler, { capture: true });
 
         if (this.hasAttribute('active')) {
-
             this.removeAttribute('active');
         }
     }

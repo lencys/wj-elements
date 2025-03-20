@@ -24,7 +24,7 @@ export function paginate(totalItems, currentPage = 1, pageSize = 10, maxPages = 
 
     const boundary = pagesNearEnd + 3;
 
-    if(totalPages > boundary) {
+    if (totalPages > boundary) {
         if (currentPage < pagesNearEnd) {
             // If in the first 4 pages, show up to 5 pages
             startPage = 1;

@@ -195,6 +195,25 @@ export default class Button extends WJElement {
         return bool(this.getAttribute('stop-propagation'));
     }
 
+    set customEvent(value) {
+        this.setAttribute('custom-event', value);
+    }
+
+    get customEvent() {
+        return this.getAttribute('custom-event');
+    }
+
+    get customEventParameters() {
+        const attributes = Array.from(this.attributes).filter((attr) => attr.name.startsWith('custom-event-'));
+
+        return attributes.reduce((acc, attr) => {
+            const key = attr.name.replace('custom-event-', '');
+            acc[key] = attr.value;
+
+            return acc;
+        }, {});
+    }
+
     /**
      * Class name for the Button element
      * @type {string}
@@ -361,6 +380,15 @@ export default class Button extends WJElement {
         return fragment;
     }
 
+    populateCustomEvent() {
+        let customEvent = this.customEvent;
+        let customEventParameters = this.customEventParameters;
+
+        this.dispatchEvent(
+            new CustomEvent(customEvent, { detail: customEventParameters, composed: true, bubbles: true })
+        );
+    }
+
     /**
      * After draw method for the Button element.
      */
@@ -378,6 +406,10 @@ export default class Button extends WJElement {
                 this.slotToggle.assignedNodes()[0].classList.add('show');
                 this.setAttribute('value', 'on');
             }
+        }
+
+        if (this.hasAttribute('custom-event')) {
+            event.addListener(this, 'click', null, this.populateCustomEvent);
         }
 
         if (this.hasAttribute('dialog')) {
@@ -409,6 +441,14 @@ export default class Button extends WJElement {
      * Before disconnect method for the Button element.
      */
     beforeDisconnect() {
+        // remove all events from the button
+        event.removeListener(this, 'click', null, this.eventDialogOpen);
+        event.removeListener(this, 'click', 'wje-button:click', null);
+        event.removeListener(this, 'click', 'wje-button:toggle', this.toggleStates);
+        event.removeListener(this, 'click', null, this.populateCustomEvent);
+        event.removeListener(this, 'click', 'wje-button:submit', null);
+        event.removeListener(this, 'click', 'wje-button:reset', null);
+
         this.removeEventListener('click', this.eventDialogOpen);
         this.unbindRouterLinks?.();
     }

@@ -31,7 +31,6 @@ export default [
       'demo',
       'dist',
       'docs',
-      'experimental-packages',
       'node_modules',
       '**/plugins/*.js',
       '**/plugins/**/*.js',
@@ -157,6 +156,14 @@ export default [
       'wc/require-listener-teardown': 'warn',
       'wc/tag-name-matches-class': 'warn',
       'wrap-iife': ['warn', 'inside'],
+      "no-multiple-empty-lines": [
+        "error",
+        {
+          "max": 1, // Maximum 1 empty line
+          "maxEOF": 0, // No empty lines at the end of the file
+          "maxBOF": 0 // No empty lines at the beginning of the file
+        }
+      ]
     },
   },
 ];

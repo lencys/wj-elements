@@ -141,7 +141,6 @@ export default class Tooltip extends WJElement {
         event.addListener(this, 'wje-dropdown:close', null, this.onShow);
     }
 
-
     afterDisconnect() {
         event.removeListener(this, 'wje-dropdown:open', null, this.onHide);
         event.removeListener(this, 'wje-dropdown:close', null, this.onShow);
@@ -167,7 +166,7 @@ export default class Tooltip extends WJElement {
 
     popupHideCallback = () => {
         this.onHide();
-    }
+    };
 
     /**
      * Handles the logic for showing the component's popup or tooltip.

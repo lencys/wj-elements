@@ -101,14 +101,12 @@ class Event {
             });
 
             recordListeners = this.customEventWeakMap.get(element);
-
         } else {
             recordListeners[originalEvent] = recordListeners[originalEvent] || [];
         }
 
         if (record) {
             record.listeners[originalEvent] = record.listeners[originalEvent] || [];
-
         } else {
             record = {
                 element: element,
@@ -149,7 +147,7 @@ class Event {
     deepEqual(x, y) {
         return x && y && typeof x === 'object' && typeof x === typeof y
             ? Object.keys(x).length === Object.keys(y).length &&
-            Object.keys(x).every((key) => this.deepEqual(x[key], y[key]))
+                  Object.keys(x).every((key) => this.deepEqual(x[key], y[key]))
             : x === y;
     }
 
