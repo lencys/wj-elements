@@ -37,7 +37,8 @@
     "analyze": "cem analyze",
     "create-element": "node wje-cli-script/create-element.cjs",
     "copy-dist": "node wje-cli-script/copy-dist.cjs",
-    "build:copy-dist": "npm run build && npm run copy-dist -- /Users/rastislavhrompa/Desktop/Interway-MFE/root/node_modules/wj-elements",
+    "build:copy-dist": "npm run build && npm run copy-dist -- /Users/rastislavhrompa/Desktop/Interway-MFE/parcels/node_modules/wj-elements",
+    "target:copy-dist": "npm run copy-dist -- /Users/rastislavhrompa/Desktop/Interway-MFE/root/node_modules/wj-elements",
     "test": "web-test-runner --group default",
     "test:watch": "web-test-runner --watch --group default",
     "lint": "eslint packages experimental-packages --max-warnings 0",
@@ -75,7 +76,8 @@
     "animate.css": "^4.1.1",
     "qrious": "^4.0.2",
     "slick-router": "^3.0.1",
-    "tinycolor2": "^1.6.0"
+    "tinycolor2": "^1.6.0",
+    "typescript": "^5.8.2"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.26.5",

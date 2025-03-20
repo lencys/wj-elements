@@ -219,7 +219,7 @@ template.innerHTML = `<h1>Input</h1>
         <form name="test-form" id="test-form">
            <wje-input name="default" label="Default input"></wje-input>
             <wje-input name="withPlaceholder" label="Input with placeholder" placeholder="Enter company name" required ><span slot="error" style="width: 500px;display: block;color: #0af4fc;"><icon></icon><span ></span></span></wje-input>
-            <wje-input name="withPlaceholderErrorInline" label="Input with placeholder error inline" placeholder="Enter company name" required   error-inline><span slot="error"><icon></icon><span ></span></span></wje-input>
+            <wje-input name="withPlaceholderErrorInline" label="Input with placeholder error inline" placeholder="Enter company name" required error-inline><span slot="error"><icon></icon><span ></span></span></wje-input>
             <wje-input name="withValue" label="Input with value" value="Mlynské Nivy 71"></wje-input>
             <wje-input name="readonly" label="Readonly input" value="Bratislava" readonly></wje-input>
             <wje-input name="disabled" label="Disabled input" value="84103" disabled></wje-input>
@@ -232,7 +232,7 @@ template.innerHTML = `<h1>Input</h1>
   </div>`;
 
 export default class DemoInput extends WJElement {
-   constructor() {
+  constructor() {
     super();
   }
 
@@ -268,7 +268,7 @@ export default class DemoInput extends WJElement {
       e.preventDefault();
       if (e.target.checkValidity()) {
         let formDate = new FormData(e.target);
-        for (var pair of formDate.entries()) {
+        for (let pair of formDate.entries()) {
           console.log(pair[0] + ', ' + pair[1]);
         }
         console.log('klikol som form submit', e);

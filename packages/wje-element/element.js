@@ -48,13 +48,18 @@ export default class WJElement extends HTMLElement {
 
         this.drawingStatus = this.drawingStatuses.CREATED;
 
-        this.refreshUpdatePromise();
-
         this._pristine = true;
         this._pristineCauseWeakMap = new WeakMap();
 
         this.isRendering = false;
         this.rafId = null;
+        this.originalVisibility = null;
+        this.params = {};
+
+        const { promise, resolve, reject } = Promise.withResolvers();
+        this.updateComplete = promise;
+        this.finisPromise = resolve;
+        this.rejectPromise = reject;
     }
 
     /**
@@ -276,35 +281,17 @@ export default class WJElement extends HTMLElement {
     }
 
     /**
-     * Refreshes the update promise for rendering lifecycle management.
-     */
-    refreshUpdatePromise() {
-        // TODO handle reject of promise when update is cancelled
-        // if (this.updateComplete) {
-        //     this.rejectPromise('Update cancelled');
-        // }
-
-        this.updateComplete = new Promise((resolve, reject) => {
-            this.finisPromise = resolve;
-            this.rejectPromise = reject;
-        }).catch((e) => {
-            // console.log(e);
-        });
-    }
-
-    /**
      * Lifecycle method invoked when the component is connected to the DOM.
      */
     connectedCallback() {
-        this.originalVisibility = this.style.visibility;
-        this.style.visibility = 'hidden';
-
-        this.setupAttributes?.();
-        this.setUpAccessors();
-
-        this.drawingStatus = this.drawingStatuses.ATTACHED;
-
         if (!this.isRendering) {
+            this.originalVisibility = this.originalVisibility ?? this.style.visibility;
+            this.style.visibility = 'hidden';
+
+            this.setupAttributes?.();
+            this.setUpAccessors();
+
+            this.drawingStatus = this.drawingStatuses.ATTACHED;
             this._pristine = false;
             this.enqueueUpdate();
         }
@@ -386,14 +373,18 @@ export default class WJElement extends HTMLElement {
      * Lifecycle method invoked when the component is disconnected from the DOM.
      */
     disconnectedCallback() {
-        this.stopRenderLoop();
+        if (this.isAttached) {
+            this.beforeDisconnect?.();
+            this.context.innerHTML = '';
+            this.afterDisconnect?.();
+            this.isAttached = false;
+            this.style.visibility = this.originalVisibility;
+            this.originalVisibility = null;
+        }
 
-        this.beforeDisconnect?.();
-
-        if (this.isAttached) this.context.innerHTML = '';
-        this.isAttached = false;
-
-        this.afterDisconnect?.();
+        if (this.isRendering) {
+            this.stopRenderLoop();
+        }
 
         this.drawingStatus = this.drawingStatuses.DISCONNECTED;
 
@@ -452,7 +443,6 @@ export default class WJElement extends HTMLElement {
             if (this.isAttached) {
                 this.beforeRedraw?.();
                 this.beforeDisconnect?.();
-                this.refreshUpdatePromise();
                 this.afterDisconnect?.();
             } else {
                 this.stopRenderLoop();
@@ -469,6 +459,7 @@ export default class WJElement extends HTMLElement {
                     this._pristine = false;
                     this.enqueueUpdate();
                 } else {
+                    this.finisPromise();
                     this.style.visibility = this.originalVisibility;
                 }
             }
@@ -657,8 +648,6 @@ export default class WJElement extends HTMLElement {
 
             // RHR toto je bicykel pre slickRouter  pretože routovanie nieje vykonané pokiaľ sa nezavolá updateComplete promise,
             // toto bude treba rozšíriť aby sme lepšie vedeli kontrolovať vykreslovanie elementov, a flow hookov.
-            this.finisPromise();
-
             this.rendering = false;
             this.isAttached = true;
 

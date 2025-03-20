@@ -52,8 +52,6 @@ export default class Input extends WJElement {
                 console.log(`Attribute ${attributeName} changed from ${oldValue} to ${newValue}`);
             }
         });
-
-        this.refresh();
     };
 
     /**
@@ -198,7 +196,7 @@ export default class Input extends WJElement {
      * @returns {Array} The attributes to observe for changes.
      */
     static get observedAttributes() {
-        return [];
+        return ['value', 'name', 'disabled', 'placeholder', 'label', 'message', 'error-inline'];
     }
 
     /**
