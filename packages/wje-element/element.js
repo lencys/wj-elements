@@ -56,10 +56,10 @@ export default class WJElement extends HTMLElement {
         this.originalVisibility = null;
         this.params = {};
 
-        const { promise, resolve, reject } = Promise.withResolvers();
-        this.updateComplete = promise;
-        this.finisPromise = resolve;
-        this.rejectPromise = reject;
+        this.updateComplete = new Promise((resolve, reject) => {
+            this.finisPromise = resolve;
+            this.rejectPromise = reject;
+        });
     }
 
     /**
