@@ -1,7 +1,7 @@
 {
   "name": "wj-elements",
   "description": "WebJET Elements is a modern set of user interface tools harnessing the power of web components designed to simplify web application development.",
-  "version": "0.1.159",
+  "version": "0.1.160",
   "homepage": "https://github.com/lencys/wj-elements",
   "author": "Lukáš Ondrejček <lukas.ondrejcek@gmail.com>",
   "license": "MIT",
@@ -38,7 +38,7 @@
     "create-element": "node wje-cli-script/create-element.cjs",
     "copy-dist": "node wje-cli-script/copy-dist.cjs",
     "build:copy-dist": "npm run build && npm run copy-dist -- /Users/rastislavhrompa/Desktop/Interway-MFE/parcels/node_modules/wj-elements",
-    "target:copy-dist": "npm run copy-dist -- /Users/rastislavhrompa/Desktop/Interway-MFE/root/node_modules/wj-elements",
+    "target:copy-dist": "npm run copy-dist -- /Users/rastislavhrompa/Desktop/Interway-MFE/parcels/node_modules/wj-elements",
     "test": "web-test-runner --group default",
     "test:watch": "web-test-runner --watch --group default",
     "lint": "eslint packages experimental-packages --max-warnings 0",

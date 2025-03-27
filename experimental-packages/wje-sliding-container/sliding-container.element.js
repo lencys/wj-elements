@@ -152,6 +152,10 @@ export default class SlidingContainer extends WJElement {
         this.setAttribute('add-to-height', value);
     }
 
+    get isOpen() {
+        return this._isOpen;
+    }
+
     className = 'SlidingContainer';
 
     /**

@@ -530,7 +530,7 @@ export default class WJElement extends HTMLElement {
 
         let _draw = this.draw(this.context, this.store, WjElementUtils.getAttributes(this));
 
-        if (_draw instanceof Promise) {
+        if (_draw instanceof Promise || _draw?.constructor.name === "Promise") {
             _draw = await _draw;
         }
 
@@ -634,7 +634,7 @@ export default class WJElement extends HTMLElement {
         return new Promise(async (resolve, reject) => {
             const __beforeDraw = this.beforeDraw(this.context, this.store, WjElementUtils.getAttributes(this));
 
-            if (__beforeDraw instanceof Promise) {
+            if (__beforeDraw instanceof Promise || __beforeDraw?.constructor.name === "Promise") {
                 await __beforeDraw;
             }
 
@@ -642,7 +642,7 @@ export default class WJElement extends HTMLElement {
 
             const __afterDraw = this.afterDraw?.(this.context, this.store, WjElementUtils.getAttributes(this));
 
-            if (__afterDraw instanceof Promise) {
+            if (__afterDraw instanceof Promise || __afterDraw?.constructor.name === "Promise") {
                 await __afterDraw;
             }
 

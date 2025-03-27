@@ -30,6 +30,10 @@ export default class InfiniteScroll extends WJElement {
         this._infiniteScrollTemplate = null;
         this._abortController = new AbortController();
         this._signal = this._abortController.signal;
+        this._dataToElementWeakMap = new WeakMap();
+        this._drawnItems = [];
+        this._loadedItems = [];
+        this._actualDrawnIndex = 0;
     }
 
     /**
@@ -110,9 +114,22 @@ export default class InfiniteScroll extends WJElement {
      * @returns {void} No return value.
      */
     beforeDraw() {
+        this._loadedItems = [];
+        this._drawnItems = [];
+        this._dataToElementWeakMap = new WeakMap();
+
         this.iterate = this.querySelector('[iterate]');
-        this.infiniteScrollTemplate = this.iterate?.outerHTML;
-        this.iterate?.remove(); // remove template
+
+        if (this.iterate) {
+            if (this.iterate.nodeName !== 'TEMPLATE') {
+                console.error('The iterate attribute must be a template element');
+                this.infiniteScrollTemplate = this.iterate?.outerHTML;
+            } else {
+                this.infiniteScrollTemplate = this.iterate?.innerHTML;
+            }
+
+            this.iterate?.remove(); // remove template
+        }
 
         this.setAttribute('style', 'height: ' + this.height);
 
@@ -302,8 +319,10 @@ export default class InfiniteScroll extends WJElement {
                 event.dispatchCustomEvent(this, 'wje-infinite-scroll:load', response);
 
                 this.response = response;
-
-                this.customForeach(this.objectName ? response[this.objectName] : response);
+                this._loadedItems = this.objectName ? response[this.objectName] : response;
+                const notDrawnItems = this._loadedItems.filter((item) => !this._drawnItems.some(this.compareFunction.bind(this, item)));
+                this.customForeach(notDrawnItems);
+                this._drawnItems.push(...notDrawnItems);
 
                 this.isLoading.push(page);
             } else {
@@ -316,6 +335,8 @@ export default class InfiniteScroll extends WJElement {
             this.hideLoader();
         }
     }
+
+    compareFunction = (i, item) => i.id === item.id
 
     /**
      * Converts a data item into an HTML element based on a template.
@@ -342,6 +363,8 @@ export default class InfiniteScroll extends WJElement {
     customForeach = (data) => {
         data.forEach((item) => {
             let element = this.dataToHtml(item);
+            this._dataToElementWeakMap.set(element, item);
+
             event.addListener(element, 'click', 'wje-infinite-scroll:click-item', null);
 
             this.placementObj.insertAdjacentElement('beforeend', element);
@@ -373,4 +396,28 @@ export default class InfiniteScroll extends WJElement {
         }
         return template;
     };
+
+    addItem(item, place = 'beforeend') {
+        let element = this.dataToHtml(item);
+        this._dataToElementWeakMap.set(element, item);
+        this.placementObj.insertAdjacentElement(place, element);
+
+        this._drawnItems.push(item);
+
+        // if drawnItems are more than page * size then add the page to isLoading
+        if (this._drawnItems.length > this.size * this.currentPage) {
+            this.totalPages += 1;
+        }
+    }
+
+    removeItem(item) {
+        let element = this._dataToElementWeakMap.get(item);
+        element.remove();
+        this._drawnItems = this._drawnItems.filter((i) => i !== item);
+        // if drawnItems are less than page * size then remove the page from isLoading
+        if (this._drawnItems.length < this.size * this.currentPage) {
+            this.isLoading = this.isLoading.filter((i) => i !== this.currentPage);
+            this.currentPage--;
+        }
+    }
 }
