@@ -240,7 +240,7 @@ class Store {
 
                 // TODO vieme to rozšíríť a subscripe sa len na zmenu určitej časti statu
                 // Publish the change event for the components that are listening
-                if (!this._isPause) this.events.publish(key, this._state, oldState);
+                if (!this._isPause) this.events.publish(key, this._state, state[key], oldState);
 
                 // Give the user a little telling off if they set a value directly
                 if (this.status !== 'mutation') {

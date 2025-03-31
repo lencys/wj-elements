@@ -19,13 +19,13 @@ function makeServer() {
               return faker.image.urlLoremFlickr({ category: 'city' });
             },
             fullName(i) {
-              return faker.location.city();
+              return faker.person.fullName();
             },
             jobTitle(i) {
-              return faker.location.country();
+              return faker.person.jobTitle();
             },
             description(i) {
-              return faker.lorem.sentence();
+              return faker.person.bio();
             },
           }),
           applicant: Factory.extend({
@@ -73,9 +73,9 @@ function makeServer() {
           }),
         },
 
-        seeds(server) {
-          server.createList('user', 0);
-          server.createList('option', 100);
+        seeds(x) {
+          x.createList('user', 100);
+          x.createList('option', 100);
         },
 
         routes() {
@@ -83,17 +83,16 @@ function makeServer() {
             const page = +request.queryParams.page;
             const size = +request.queryParams.size;
 
-            server.db.users.remove(); // musime najprv precistit
-            server.createList('user', size);
-
             let data = schema.users.all();
-            let users = this.serialize(data).users;
+            let paginatedOptions = !(isNaN(page) && isNaN(size)) ? data.slice(page * size, (page + 1) * size) : data;
+            let options = this.serialize(paginatedOptions).users;
 
+            let totalPages = Math.ceil(data.length / size);
             return {
               page: page,
               size: size,
-              totalPages: 10,
-              data: users,
+              totalPages: totalPages,
+              data: options,
             };
           });
 

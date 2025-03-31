@@ -68,52 +68,9 @@ export default class Stepper extends WJElement {
 
         const steps = Array.from(this.children);
 
-        steps.forEach((step, index) => {
+        steps?.forEach((step, index) => {
             if (step.nodeName === 'WJE-STEP') {
-                const nav = document.createElement('div');
-                nav.className = 'step-header';
-                nav.addEventListener('click', () => this.goToStep(index));
-
-                const badge = document.createElement('wje-badge');
-                badge.setAttribute('label', (index + 1).toString());
-                badge.className = 'step-badge';
-                badge.innerHTML = index + 1;
-
-                const label = document.createElement('span');
-                label.innerText =
-                    step.getAttribute('label') || `${this.localizer.translate('wj.stepper.step')} ${index + 1}`; // default label
-
-                // set active step
-                if (index === this.currentStep || step.hasAttribute('active')) {
-                    this.setStepActive(nav, badge);
-                }
-
-                if (step.hasAttribute('disabled')) {
-                    nav.setAttribute('disabled', '');
-                } else {
-                    nav.classList.add('pointer');
-                }
-
-                nav.appendChild(badge);
-                nav.appendChild(label);
-
-                header.appendChild(nav);
-
-                if (index < steps.length - 1) {
-                    const arrowIcon = document.createElement('wje-icon');
-                    arrowIcon.setAttribute('name', 'chevron-right');
-                    arrowIcon.classList.add('arrow-icon');
-                    arrowIcon.setAttribute('size', 'small');
-
-                    header.appendChild(arrowIcon);
-                }
-
-                step.classList.add('step');
-                if (index !== this.currentStep) {
-                    step.style.display = 'none';
-                }
-
-                this.steps.push(step);
+                this.processStep(index, step, header, steps);
             }
         });
 
@@ -127,13 +84,24 @@ export default class Stepper extends WJElement {
         prevButton.disabled = this.currentStep === 0;
         prevButton.innerHTML = 'Prev';
 
-        const nextButton = document.createElement('wje-button');
+        let nextButton = document.createElement('wje-button');
         nextButton.setAttribute('label', this.localizer.translate('wj.stepper.button.next'));
         nextButton.disabled = this.currentStep === this.steps.length - 1;
         nextButton.innerHTML = 'Next';
 
-        navButtons.appendChild(prevButton);
-        navButtons.appendChild(nextButton);
+        if (steps.length > 1) {
+            navButtons.appendChild(prevButton);
+            navButtons.appendChild(nextButton);
+        } else {
+            nextButton = document.createElement('wje-button');
+            nextButton.setAttribute('label', this.localizer.translate('wj.stepper.button.finish'));
+            nextButton.innerHTML = this.localizer.translate('wj.stepper.button.finish');
+            nextButton.setAttribute('color', 'primary');
+
+            prevButton.hidden = true;
+            navButtons.appendChild(prevButton);
+            navButtons.appendChild(nextButton);
+        }
 
         content.appendChild(slot);
 
@@ -151,10 +119,60 @@ export default class Stepper extends WJElement {
         return fragment;
     }
 
+    processStep(index, step, header, steps) {
+        const nav = document.createElement('div');
+        nav.className = 'step-header';
+        nav.addEventListener('click', () => this.goToStep(index));
+
+        const badge = document.createElement('wje-badge');
+        badge.setAttribute('label', (index + 1).toString());
+        badge.className = 'step-badge';
+        badge.innerHTML = index + 1;
+
+        const label = document.createElement('span');
+        label.innerText = step.getAttribute('label') || `${this.localizer.translate('wj.stepper.step')} ${index + 1}`; // default label
+
+        // set active step
+        if (index === this.currentStep || step.hasAttribute('active')) {
+            this.setStepActive(nav, badge);
+        }
+
+        if (step.hasAttribute('disabled')) {
+            nav.setAttribute('disabled', '');
+        } else {
+            nav.classList.add('pointer');
+        }
+
+        nav.appendChild(badge);
+        nav.appendChild(label);
+
+        header.appendChild(nav);
+
+        if (index < steps.length - 1) {
+            const arrowIcon = document.createElement('wje-icon');
+            arrowIcon.setAttribute('name', 'chevron-right');
+            arrowIcon.classList.add('arrow-icon');
+            arrowIcon.setAttribute('size', 'small');
+
+            header.appendChild(arrowIcon);
+        }
+
+        step.classList.add('step');
+        if (index !== this.currentStep) {
+            step.style.display = 'none';
+        }
+
+        this.steps.push(step);
+    }
+
     /**
      * Sets up the attributes for the component.
      */
     afterDraw() {
+        if (this.steps.length <= 1) {
+            this.prev.hidden = true;
+        }
+
         event.addListener(this.prev, 'click', '', () => this.navigate(-1));
         event.addListener(this.next, 'click', '', () => this.navigate(1));
     }
