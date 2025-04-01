@@ -26,7 +26,7 @@ import DocsCards from '@components/global/DocsCards';
   `}</style>
 
 
-<script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.138/dist/wje-master.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.160/dist/wje-master.min.js"></script>
 
 
 </head>

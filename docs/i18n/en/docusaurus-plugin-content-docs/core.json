@@ -2143,7 +2143,7 @@
           "mutable": true,
           "attr": "checked",
           "reflectToAttr": false,
-          "docs": "If `true`, the default state of the checkbox is changed to true",
+          "docs": "If `true`, the checkbox is activated.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -2156,10 +2156,10 @@
         },
         {
           "name": "color",
-          "type": "\"danger.\" | \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+          "type": "\"complete\" | \"danger\" | \"dark\" | \"primary\" | \"success\" | \"warning\" | string & Record<never, never> | undefined",
           "complexType": {
             "original": "Color",
-            "resolved": "\"danger.\" | \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+            "resolved": "\"complete\" | \"danger\" | \"dark\" | \"primary\" | \"success\" | \"warning\" | string & Record<never, never> | undefined",
             "references": {
               "Color": {
                 "location": "import",
@@ -2170,12 +2170,20 @@
           },
           "mutable": false,
           "attr": "color",
-          "reflectToAttr": true,
-          "docs": "Specifies the background color of the checkbox. The default options are `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information, go to: [theming](/theming/basics).",
+          "reflectToAttr": false,
+          "docs": "The color to use from your application's color palette. The default options are `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, and `\"dark\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
           "docsTags": [],
           "values": [
             {
+              "value": "complete",
+              "type": "string"
+            },
+            {
               "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "dark",
               "type": "string"
             },
             {
@@ -2183,15 +2191,7 @@
               "type": "string"
             },
             {
-              "value": "neutral",
-              "type": "string"
-            },
-            {
               "value": "success",
-              "type": "string"
-            },
-            {
-              "value": "complete",
               "type": "string"
             },
             {
@@ -2219,7 +2219,7 @@
           "mutable": false,
           "attr": "disabled",
           "reflectToAttr": false,
-          "docs": "If `true`, the checkbox cannot be interacted with",
+          "docs": "If `true`, the checkbox element cannot be interacted with.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -2231,44 +2231,21 @@
           "required": false
         },
         {
-          "name": "indeterminate",
-          "type": "boolean",
+          "name": "name",
+          "type": "string",
           "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "indeterminate",
-          "reflectToAttr": false,
-          "docs": "If `true`, displays a checkbox whose default state is neutral.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "Option",
-          "type": "\"circle\"",
-          "complexType": {
-            "original": "\"circle\"",
-            "resolved": "\"circle\"",
+            "original": "string",
+            "resolved": "string",
             "references": {}
           },
           "mutable": false,
-          "attr": "Option",
+          "attr": "name",
           "reflectToAttr": false,
-          "docs": "If `true`, the appearance of the checkbox is changed to round.",
+          "docs": "Defines a `name` attribute that is important, for example, when used in forms.",
           "docsTags": [],
-          "default": "undefined",
+          "default": "this.inputId",
           "values": [
             {
-              "value": "circle",
               "type": "string"
             }
           ],
@@ -2277,40 +2254,106 @@
         }
       ],
       "methods": [],
-      "events": [],
+      "events": [
+        {
+          "event": "change",
+          "detail": "CheckboxChangeEventDetail<any>",
+          "bubbles": true,
+          "complexType": {
+            "original": "CheckboxChangeEventDetail",
+            "resolved": "CheckboxChangeEventDetail<any>",
+            "references": {
+              "CheckboxChangeEventDetail": {
+                "location": "import",
+                "path": "./checkbox-interface",
+                "id": "src/components/checkbox/checkbox-interface.ts::CheckboxChangeEventDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Called when the element state changes.",
+          "docsTags": []
+        }
+      ],
       "listeners": [],
       "styles": [
         {
+          "name": "--wj-checkbox-border-radius",
+          "annotation": "prop",
+          "docs": "Border radius of the checkbox"
+        },
+        {
+          "name": "--wj-checkbox-color-base",
+          "annotation": "prop",
+          "docs": "Background of the checkbox handle"
+        },
+        {
+          "name": "--wj-checkbox-handle-border-radius",
+          "annotation": "prop",
+          "docs": "Background of the checkbox handle when checked"
+        },
+        {
+          "name": "--wj-checkbox-handle-color",
+          "annotation": "prop",
+          "docs": "Border radius of the checkbox handle"
+        },
+        {
+          "name": "--wj-checkbox-handle-height",
+          "annotation": "prop",
+          "docs": "Box shadow of the checkbox handle"
+        },
+        {
+          "name": "--wj-checkbox-handle-shadow",
+          "annotation": "prop",
+          "docs": "Height of the checkbox handle"
+        },
+        {
+          "name": "--wj-checkbox-handle-shadow-checked",
+          "annotation": "prop",
+          "docs": "Maximum height of the checkbox handle"
+        },
+        {
+          "name": "--wj-checkbox-handle-width",
+          "annotation": "prop",
+          "docs": "Horizontal spacing around the checkbox handle"
+        },
+        {
           "name": "--wj-checkbox-height",
           "annotation": "prop",
-          "docs": "Specifies the minimum height of the checkbox"
-        },
-        {
-          "name": "--wj-checkbox-margin-bottom",
-          "annotation": "prop",
-          "docs": "Size of the outer bottom edge"
-        },
-        {
-          "name": "--wj-checkbox-margin-inline",
-          "annotation": "prop",
-          "docs": "Size of outer edges left and right"
-        },
-        {
-          "name": "--wj-checkbox-margin-top",
-          "annotation": "prop",
-          "docs": "Size of the outer upper edge"
+          "docs": "Transition of the checkbox handle"
         },
         {
           "name": "--wj-checkbox-width",
           "annotation": "prop",
-          "docs": "Specifies the minimum width of the checkbox"
+          "docs": "Width of the checkbox handle"
         }
       ],
-      "slots": [],
-      "parts": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The default location of the element content."
+        }
+      ],
+      "parts": [
+        {
+          "name": "input",
+          "docs": "Refers to an `input` element of type checkbox"
+        },
+        {
+          "name": "checkbox",
+          "docs": "Refers to the inner `div` wrapping element"
+        }
+      ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "Icon"
+      ],
+      "dependencyGraph": {
+        "ion-checkbox": [
+          "Icon"
+        ]
+      }
     },
     {
       "filePath": "src/components/chip/chip.tsx",
