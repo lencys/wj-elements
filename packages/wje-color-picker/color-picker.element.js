@@ -150,6 +150,15 @@ export default class ColorPicker extends WJElement {
         colorArea.classList.add('color-area');
         colorArea.addEventListener('click', this.moveMarker);
 
+        colorArea.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            colorArea.addEventListener('mousemove', this.moveMarker);
+        });
+
+        colorArea.addEventListener('mouseup', () => {
+            colorArea.removeEventListener('mousemove', this.moveMarker);
+        });
+
         let wrapper = document.createElement('div');
         wrapper.classList.add('wrapper');
 

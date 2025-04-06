@@ -35,21 +35,19 @@ describe('<wje-animation>', () => {
         });
 
         it('respects delay and duration attributes', async () => {
-          const animationContainer = await fixture(
-            `<wje-animation name="fade-in" duration="2000" delay="1000">${boxToAnimate}</wje-animation>`
-          );
+            const animationContainer = await fixture(
+                `<wje-animation name="fade-in" duration="2000" delay="1000">${boxToAnimate}</wje-animation>`
+            );
 
-          expect(animationContainer.duration).to.equal(2000);
-          expect(animationContainer.delay).to.equal(1000);
+            expect(animationContainer.duration).to.equal(2000);
+            expect(animationContainer.delay).to.equal(1000);
         });
 
         it('uses default values for missing attributes', async () => {
-          const animationContainer = await fixture(
-            `<wje-animation>${boxToAnimate}</wje-animation>`
-          );
+            const animationContainer = await fixture(`<wje-animation>${boxToAnimate}</wje-animation>`);
 
-          expect(animationContainer.duration).to.equal(1000); // Default duration
-          expect(animationContainer.delay).to.equal(0); // Default delay
+            expect(animationContainer.duration).to.equal(1000); // Default duration
+            expect(animationContainer.delay).to.equal(0); // Default delay
         });
     });
 });

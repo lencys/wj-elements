@@ -27,7 +27,7 @@ export default class Img extends WJElement {
         this.actions = {
             delete: () => this.deleteImage(),
             log: () => console.error('Error log pre obrázok:', this.src),
-        }
+        };
     }
 
     /**
@@ -174,8 +174,6 @@ export default class Img extends WJElement {
                     entry.target.src = this.src;
                     this.classList.remove('lazy');
 
-                    this.setAvatarInitials;
-
                     lazyImageObserver.unobserve(entry.target);
                 }
             });
@@ -184,10 +182,10 @@ export default class Img extends WJElement {
         lazyImageObserver.observe(this.native);
     }
 
-    setAvatarInitials = (value = false) =>{
+    setAvatarInitials = (value = false) => {
         let parent = this.parentElement;
-        if(parent.tagName === 'WJE-AVATAR') parent.initials = value;
-    }
+        if (parent.tagName === 'WJE-AVATAR') parent.initials = value;
+    };
     /**
      * Deletes the current image by calling the remove method.
      * This function is typically used to trigger the removal of an image element
@@ -195,7 +193,7 @@ export default class Img extends WJElement {
      */
     deleteImage = () => {
         this.remove();
-    }
+    };
 
     /**
      * Adds a new action to the internal actions object.
@@ -224,7 +222,6 @@ export default class Img extends WJElement {
         }
     }
 
-
     /**
      * Handles error scenarios by checking the `fallout` property and performing
      * corresponding actions. If `fallout` is not defined, the function terminates
@@ -241,5 +238,5 @@ export default class Img extends WJElement {
         } else {
             console.error('Unsupported value:', this.fallout);
         }
-    }
+    };
 }

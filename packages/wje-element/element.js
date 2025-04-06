@@ -6,7 +6,6 @@ import { event } from '../utils/event.js';
 
 const template = document.createElement('template');
 template.innerHTML = ``;
-
 export default class WJElement extends HTMLElement {
     /**
      * Initializes a new instance of the WJElement class.
@@ -49,7 +48,18 @@ export default class WJElement extends HTMLElement {
 
         this.drawingStatus = this.drawingStatuses.CREATED;
 
-        this.isInitializing = true;
+        this._pristine = true;
+        this._pristineCauseWeakMap = new WeakMap();
+
+        this.isRendering = false;
+        this.rafId = null;
+        this.originalVisibility = null;
+        this.params = {};
+
+        this.updateComplete = new Promise((resolve, reject) => {
+            this.finisPromise = resolve;
+            this.rejectPromise = reject;
+        });
     }
 
     /**
@@ -271,32 +281,20 @@ export default class WJElement extends HTMLElement {
     }
 
     /**
-     * Refreshes the update promise for rendering lifecycle management.
-     */
-    refreshUpdatePromise() {
-        if (this.updateComplete) {
-            this.rejectPromise('Update cancelled');
-        }
-
-        this.updateComplete = new Promise((resolve, reject) => {
-            this.finisPromise = resolve;
-            this.rejectPromise = reject;
-        }).catch((e) => {
-            // console.log(e);
-        })
-    }
-
-    /**
      * Lifecycle method invoked when the component is connected to the DOM.
      */
     connectedCallback() {
-        this.drawingStatus = this.drawingStatuses.ATTACHED;
+        if (!this.isRendering) {
+            this.originalVisibility = this.originalVisibility ?? this.style.visibility;
+            this.style.visibility = 'hidden';
 
-        // RHR toto sa tiež týka slick routeru pretože on začal routovanie ešte pred vykreslením wjelementu
-        this.refreshUpdatePromise();
+            this.setupAttributes?.();
+            this.setUpAccessors();
 
-        this.renderPromise = this.initWjElement(true);
-        this.isInitializing = false;
+            this.drawingStatus = this.drawingStatuses.ATTACHED;
+            this._pristine = false;
+            this.enqueueUpdate();
+        }
     }
 
     /**
@@ -312,11 +310,15 @@ export default class WJElement extends HTMLElement {
             if (this.hasShadowRoot) {
                 if (!this.shadowRoot) this.attachShadow({ mode: this.shadowType || 'open' });
             }
-
             this.setUpAccessors();
 
             this.drawingStatus = this.drawingStatuses.START;
             await this.display(force);
+
+            const sheet = new CSSStyleSheet();
+            sheet.replaceSync(this.constructor.cssStyleSheet);
+
+            this.context.adoptedStyleSheets = [sheet];
 
             resolve();
         });
@@ -371,44 +373,32 @@ export default class WJElement extends HTMLElement {
      * Lifecycle method invoked when the component is disconnected from the DOM.
      */
     disconnectedCallback() {
-        this.beforeDisconnect?.();
+        if (this.isAttached) {
+            this.beforeDisconnect?.();
+            this.context.innerHTML = '';
+            this.afterDisconnect?.();
+            this.isAttached = false;
+            this.style.visibility = this.originalVisibility;
+            this.originalVisibility = null;
+        }
 
-        if (this.isAttached) this.context.innerHTML = '';
-        this.isAttached = false;
-
-        this.afterDisconnect?.();
+        if (this.isRendering) {
+            this.stopRenderLoop();
+        }
 
         this.drawingStatus = this.drawingStatuses.DISCONNECTED;
 
         this.componentCleanup();
     }
 
-
-    async processCurrentRenderPromise() {
-        try {
-            if (this.renderPromise && (this.renderPromise instanceof Promise || this.renderPromise?.constructor.name === "Promise")) {
-                await this.renderPromise;
-            }
-        } catch (e) {
-            console.error('An error occurred:', e);
-            Promise.reject(e);
-        }
-    }
-
     /**
-     * Enqueues an update to the component.
-     * @returns A promise that resolves when the update is complete.
+     * Enqueues an update for the component.
+     * This method processes the current render promise and then refreshes the component.
      */
-    async enqueueUpdate() {
-        await this.processCurrentRenderPromise();
-
-        const result = this._refresh();
-
-        if (result !== null) {
-            await result;
+    enqueueUpdate() {
+        if (!this.rafId) {
+            this.rafId = requestAnimationFrame(() => this._refresh());
         }
-
-        this.renderPromise = null;
     }
 
     /**
@@ -418,13 +408,15 @@ export default class WJElement extends HTMLElement {
      * @param newName The new value of the attribute.
      */
     attributeChangedCallback(name, old, newName) {
-        if (old !== newName && !this.isInitializing) {
-            this.renderPromise = this.enqueueUpdate();
+        if (old !== newName) {
+            this._pristine = false;
+            this.enqueueUpdate();
         }
     }
 
     refresh() {
-        this.renderPromise = this.enqueueUpdate();
+        this._pristine = false;
+        this.enqueueUpdate();
     }
 
     /**
@@ -437,19 +429,52 @@ export default class WJElement extends HTMLElement {
      * 4. Calls the `afterDisconnect` hook if defined.
      * 5. Reinitializes the component by calling `initWjElement` with `true` to force initialization.
      * If the component is not in a drawing state, it simply returns a resolved promise.
-     * @returns {Promise<void>} A promise that resolves when the refresh is complete.
      */
-    _refresh() {
-        if (this.drawingStatus && this.drawingStatus >= this.drawingStatuses.START) {
-            this.beforeRedraw?.();
-            this.beforeDisconnect?.();
-            this.refreshUpdatePromise();
-            this.afterDisconnect?.();
-
-            return this.initWjElement(true);
+    async _refresh() {
+        if (this.isRendering) {
+            this.rafId = requestAnimationFrame(() => this._refresh());
+            return; // Skip if async render is still processing
         }
 
-        return Promise.resolve();
+        if (!this._pristine) {
+            this._pristine = true;
+            this.isRendering = true;
+
+            if (this.isAttached) {
+                this.beforeRedraw?.();
+                this.beforeDisconnect?.();
+                this.afterDisconnect?.();
+            } else {
+                this.stopRenderLoop();
+            }
+
+            try {
+                await this.initWjElement(true);
+            } catch (error) {
+                console.error('Render error:', error);
+            } finally {
+                this.isRendering = false;
+
+                if (!this._pristine) {
+                    this._pristine = false;
+                    this.enqueueUpdate();
+                } else {
+                    this.finisPromise();
+                    this.style.visibility = this.originalVisibility;
+                }
+            }
+        }
+
+        if (this.isAttached && !this.isRendering) {
+            this.rafId = requestAnimationFrame(() => this._refresh());
+        }
+    }
+
+    stopRenderLoop() {
+        if (this.rafId) {
+            cancelAnimationFrame(this.rafId);
+            this.rafId = null;
+        }
     }
 
     /**
@@ -484,7 +509,7 @@ export default class WJElement extends HTMLElement {
 
         if (force) {
             [...this.context.childNodes].forEach(this.context.removeChild.bind(this.context));
-            this.isAttached = false;
+            //this.isAttached = false;
         }
 
         this.context.append(this.template.content.cloneNode(true));
@@ -613,12 +638,6 @@ export default class WJElement extends HTMLElement {
                 await __beforeDraw;
             }
 
-            // APPEND CSS HERE
-            const sheet = new CSSStyleSheet();
-            sheet.replaceSync(this.constructor.cssStyleSheet);
-
-            this.context.adoptedStyleSheets = [sheet];
-
             await this.render();
 
             const __afterDraw = this.afterDraw?.(this.context, this.store, WjElementUtils.getAttributes(this));
@@ -629,8 +648,6 @@ export default class WJElement extends HTMLElement {
 
             // RHR toto je bicykel pre slickRouter  pretože routovanie nieje vykonané pokiaľ sa nezavolá updateComplete promise,
             // toto bude treba rozšíriť aby sme lepšie vedeli kontrolovať vykreslovanie elementov, a flow hookov.
-            this.finisPromise();
-
             this.rendering = false;
             this.isAttached = true;
 

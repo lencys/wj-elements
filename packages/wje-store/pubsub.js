@@ -34,12 +34,13 @@ export default class PubSub {
     /**
      * If the passed event has callbacks attached to it, loop through each one and call it.
      * @param {string} event The name of the event to publish
-     * @param {object} [newData] The data to pass to the callbacks
-     * @param {object} [oldData] The data to pass to the callbacks
-     * @returns {Array} The callbacks for this event, or an empty array if no event exits
+     * @param {any} state The current state to pass to the callbacks
+     * @param {object} [newData] The new data to pass to the callbacks
+     * @param {object} [oldData] The old data to pass to the callbacks
+     * @returns {Array} The results of the callbacks for this event, or an empty array if no event exists
      * @memberof PubSub
      */
-    publish(event, newData = {}, oldData = {}) {
+    publish(event, state, newData = {}, oldData = {}) {
         let self = this;
 
         // There's no event to publish to, so bail out
@@ -48,6 +49,6 @@ export default class PubSub {
         }
 
         // Get each subscription and call its callback with the passed data
-        return self.events[event].map((callback) => callback(newData, oldData));
+        return self.events[event].map((callback) => callback(state, oldData, newData));
     }
 }

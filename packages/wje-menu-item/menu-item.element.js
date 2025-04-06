@@ -381,7 +381,7 @@ export default class MenuItem extends WJElement {
     showSubmenu() {
         this.tabIndex = -1;
         if (this.hasSubmenu) {
-            this.popup?.setAttribute('active', '');
+            this.popup?.show();
             this.classList.add('expanded-submenu');
             this.native.classList.add('expanded-submenu');
         }
@@ -393,7 +393,7 @@ export default class MenuItem extends WJElement {
     hideSubmenu() {
         this.tabIndex = 0;
         if (this.hasSubmenu) {
-            this.popup?.removeAttribute('active');
+            this.popup?.hide();
             this.classList.remove('expanded-submenu');
             this.native.classList.remove('expanded-submenu');
         }
@@ -444,14 +444,14 @@ export default class MenuItem extends WJElement {
      * Gets the text from the element and returns it.
      */
     beforeDisconnect() {
-        event.removeListener(this, 'mousemove', null, this.dispatchMove);
-        event.removeListener(this, 'wje-popup:reposition', null, this.dispatchReposition);
+        this.removeEventListener('mousemove', this.dispatchMove);
+        this.removeEventListener('wje-popup:reposition', this.dispatchReposition);
+
         event.removeListener(this, 'mouseenter', null, this.mouseenterHandler);
         event.removeListener(this, 'mouseleave', null, this.shouldHideSubmenu);
         event.removeListener(this, 'focusout', null, this.shouldHideSubmenu);
         event.removeListener(this, 'click', null, this.clickHandler);
 
-        this.context.innerHTML = '';
         this.unbindRouterLinks?.();
     }
 

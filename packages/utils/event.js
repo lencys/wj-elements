@@ -2,7 +2,7 @@ var self; // eslint-disable-line no-var
 
 class Event {
     constructor() {
-        this.customEventStorage = [];
+        this.customEventWeakMap = new WeakMap();
         self = this;
     }
 
@@ -12,8 +12,12 @@ class Event {
      */
     #dispatch(e) {
         let element = this;
-        let record = self.findRecordByElement(element);
-        let listeners = record.listeners[e.type];
+        // let record = self.findRecordByElement(element);
+        let record = self.customEventWeakMap.get(this);
+
+        if (!record) return;
+
+        let listeners = record[e.type];
 
         listeners.forEach((listener) => {
             self.dispatchCustomEvent(element, listener.event, {
@@ -22,7 +26,11 @@ class Event {
                 event: self,
             });
 
-            if (listener.options && listener.options.stopPropagation === true) e.stopPropagation();
+            if (listener.options && listener.options.stopPropagation === true) {
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                e.preventDefault();
+            }
         });
     }
 
@@ -53,15 +61,7 @@ class Event {
      */
 
     findRecordByElement(element) {
-        for (let index = 0, length = this.customEventStorage.length; index < length; index++) {
-            let record = this.customEventStorage[index];
-
-            if (element === record.element) {
-                return record;
-            }
-        }
-
-        return false;
+        return this.customEventWeakMap.get(element);
     }
 
     /**
@@ -91,20 +91,16 @@ class Event {
      * @param options
      */
     writeRecord(element, originalEvent, event, listener, options) {
-        let record = this.findRecordByElement(element);
+        let recordListeners = this.findRecordByElement(element);
 
-        if (record) {
-            record.listeners[originalEvent] = record.listeners[originalEvent] || [];
+        if (!recordListeners) {
+            this.customEventWeakMap.set(element, {
+                [originalEvent]: [],
+            });
+
+            recordListeners = this.findRecordByElement(element);
         } else {
-            record = {
-                element: element,
-                listeners: {},
-            };
-
-            // vytvorime object listeners pre kazdy original event zvlast
-            record.listeners[originalEvent] = [];
-
-            this.customEventStorage.push(record);
+            recordListeners[originalEvent] = recordListeners[originalEvent] || [];
         }
 
         listener = listener || this.#dispatch;
@@ -116,12 +112,14 @@ class Event {
 
         // skontrolujeme ci uz tento listener neexistuje
         if (!this.listenerExists(element, originalEvent, obj)) {
-            record.listeners[originalEvent].push(obj);
-
+            recordListeners[originalEvent].push(obj);
             element.addEventListener(originalEvent, listener, options);
+            obj.unbind = () => {
+                element.removeEventListener(originalEvent, listener, options);
+            };
         } else {
             // in case we want to add the same listener multiple times trigger a warning for a better debugging
-            // console.warn("Listener already exists", element, originalEvent, listener);
+            //console.info("Listener already exists", element, originalEvent);
         }
     }
 
@@ -134,7 +132,7 @@ class Event {
     deepEqual(x, y) {
         return x && y && typeof x === 'object' && typeof x === typeof y
             ? Object.keys(x).length === Object.keys(y).length &&
-                  Object.keys(x).every((key) => this.deepEqual(x[key], y[key]))
+            Object.keys(x).every((key) => this.deepEqual(x[key], y[key]))
             : x === y;
     }
 
@@ -147,7 +145,7 @@ class Event {
      */
     listenerExists(element, event, listener) {
         let record = this.findRecordByElement(element);
-        return record.listeners[event].some((e) => this.deepEqual(e, listener));
+        return record[event].some((e) => this.deepEqual(e, listener));
     }
 
     /**
@@ -159,23 +157,23 @@ class Event {
      * @param options
      */
     removeListener(element, originalEvent, event, listener, options) {
-        let record = this.findRecordByElement(element);
+        let records = this.findRecordByElement(element);
+        let listeners = records?.[originalEvent];
+        listener = listener || this.#dispatch;
 
-        if (record && originalEvent in record.listeners) {
-            let index = record.listeners[originalEvent].indexOf(listener);
+        if (listeners) {
+            let listenerOfWeakMap = listeners.find((e) => e.listener === listener);
 
-            if (index !== -1) {
-                record.listeners[originalEvent].splice(index, 1);
+            if (listenerOfWeakMap) {
+                listeners.splice(listeners.indexOf(listenerOfWeakMap), 1);
             }
 
-            if (!record.listeners[originalEvent].length) {
-                delete record.listeners[originalEvent];
+            if (!listeners.length) {
+                delete records[originalEvent];
             }
         }
 
-        listener = listener || this.#dispatch;
-
-        element.removeEventListener(originalEvent, listener, options);
+        element?.removeEventListener(originalEvent, listener, options);
     }
 
     /**
@@ -183,9 +181,19 @@ class Event {
      * @param {HTMLElement} element The element from which all listeners will be removed.
      */
     removeElement(element) {
-        this.customEventStorage = this.customEventStorage.filter((e) => {
-            return e.element !== element;
-        });
+        // remove all listeners from the element
+        let listeners = this.customEventWeakMap.get(element);
+        if (listeners) {
+            queueMicrotask(() => {
+                for (let event in listeners) {
+                    listeners[event].forEach((e) => {
+                        element.removeEventListener(event, e.listener, e.options);
+                    });
+                }
+
+                this.customEventWeakMap.delete(element);
+            });
+        }
     }
 
     // TODO

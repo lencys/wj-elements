@@ -35,6 +35,16 @@ template.innerHTML = `
         <wje-button type="submit" id="text-submit">Submit</wje-button>
       </div>
     </div>
+
+     <!-- CUSTOM EVENTS -->
+
+    <h2>Custom events</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-button id="custom-event-button" custom-event="single-spa-route" custom-event-userId="1" custom-event-departmentId="2">Trigger custom event</wje-button>
+        <wje-button id="custom-event-button-2" custom-event="single-spa-route" custom-event-route="user.detail">Trigger custom event</wje-button>
+      </div>
+    </div>
     
     <!-- BUTTON IN FORM -->
     
@@ -251,7 +261,7 @@ template.innerHTML = `
   </div>`;
 
 export default class DemoButton extends WJElement {
-   constructor() {
+  constructor() {
     super();
   }
 
@@ -283,7 +293,7 @@ export default class DemoButton extends WJElement {
       e.preventDefault();
       if (e.target.checkValidity()) {
         let formDate = new FormData(e.target);
-        for (var pair of formDate.entries()) {
+        for (let pair of formDate.entries()) {
           console.log(pair[0] + ', ' + pair[1]);
         }
         console.log('klikol som form submit', e);
@@ -292,6 +302,15 @@ export default class DemoButton extends WJElement {
 
     this.context.querySelector('#test-form').addEventListener('reset', (e) => {
       console.log('klikol som form reset', e);
+    });
+
+    this.context.querySelector('#custom-event-button').addEventListener('single-spa-route', (e) => {
+      console.log('klikol som custom event', e.detail);
+    });
+
+
+    this.context.querySelector('#custom-event-button-2').addEventListener('single-spa-route', (e) => {
+      console.log('klikol som custom event 22', e.detail);
     });
   }
 }

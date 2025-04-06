@@ -231,7 +231,7 @@ export default class Pagination extends WJElement {
     }
 
     async beforeDraw() {
-        this.paginateObj = await paginate(this.totalItems, this.page, this.pageSize, this.maxPages)
+        this.paginateObj = await paginate(this.totalItems, this.page, this.pageSize, this.maxPages);
     }
 
     /**
@@ -281,16 +281,14 @@ export default class Pagination extends WJElement {
         const prevButton = button.cloneNode(true);
         prevButton.title = this.localizer.translate('wj.pagination.prev');
         prevButton.innerHTML = `<wje-icon name="chevron-left" slot="icon-only"></wje-icon>`;
-        if(this.page === 0)
-            prevButton.disabled = true;
+        if (this.page === 0) prevButton.disabled = true;
         prevButton.addEventListener('wje-button:click', (e) => this.pageClickAction(e, this.page - 1));
 
         // Next button
         const nextButton = button.cloneNode(true);
         nextButton.title = this.localizer.translate('wj.pagination.next');
         nextButton.innerHTML = `<wje-icon name="chevron-right" slot="icon-only"></wje-icon>`;
-        if(this.page + 1 >= this.paginateObj.totalPages)
-            nextButton.disabled = true;
+        if (this.page + 1 >= this.paginateObj.totalPages) nextButton.disabled = true;
         nextButton.addEventListener('wje-button:click', (e) => this.pageClickAction(e, this.page + 1));
 
         // Last button
@@ -359,7 +357,10 @@ export default class Pagination extends WJElement {
             fragment.appendChild(newButton);
         });
 
-        if ((paginateObj.pages.length === this.maxPages || paginateObj.currentPage < this.maxPages + 1) && paginateObj.boundary < paginateObj.totalPages) {
+        if (
+            (paginateObj.pages.length === this.maxPages || paginateObj.currentPage < this.maxPages + 1) &&
+            paginateObj.boundary < paginateObj.totalPages
+        ) {
             fragment.appendChild(dots.cloneNode(true));
             fragment.appendChild(last);
         }
@@ -378,7 +379,7 @@ export default class Pagination extends WJElement {
     pageClickAction = (e, page) => {
         if (+page === this.page || this.page > this.paginateObj.totalPages) return;
         this.page = page;
-        event.dispatchCustomEvent(this, 'wje-pagination:page-change', {page: page});
+        event.dispatchCustomEvent(this, 'wje-pagination:page-change', { page: page });
     };
 }
 

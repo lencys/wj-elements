@@ -207,7 +207,7 @@ export default class Dialog extends WJElement {
             event.addListener(document, params.trigger, null, this.onOpen);
         }
 
-        this.dialog.addEventListener('close', this.onClose);
+        //this.dialog.addEventListener('close', this.onClose);
     }
 
     /**
@@ -218,7 +218,7 @@ export default class Dialog extends WJElement {
             event.removeListener(document, this.params?.trigger, null, this.onOpen);
         }
 
-        this.dialog.removeEventListener('close', this.onClose);
+        //this.dialog.removeEventListener('close', this.onClose);
     }
 
     /**
@@ -277,7 +277,7 @@ export default class Dialog extends WJElement {
         Promise.resolve(this.beforeClose(this, e)).then((res) => {
             this.dialog.close(); // Now close the dialog
 
-            if (this.dialog.open) {
+            if (!this.dialog.open) {
                 Promise.resolve(this.afterClose(this, e));
             }
         });

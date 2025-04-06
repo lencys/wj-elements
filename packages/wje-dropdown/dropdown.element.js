@@ -136,15 +136,25 @@ export default class Dropdown extends WJElement {
         event.removeListener(this, 'mouseenter', null, this.onOpen);
         event.removeListener(this, 'mouseleave', null, this.onClose);
         event.removeListener(this.anchorSlot, 'click', null, this.toggleCallback, { capture: true });
+        event.removeListener(this, 'wje-popup:hide', null, this.popupHideCallback);
     }
+
+    popupHideCallback = () => {
+        if (this.classList.contains('active')) {
+            this.classList.remove('active');
+
+            event.dispatchCustomEvent(this, 'wje-dropdown:close', {
+                bubbles: true,
+                detail: { target: this },
+            });
+        }
+    };
 
     /**
      * Adds event listeners for the mouseenter and mouseleave events.
      */
     afterDraw() {
-        event.addListener(this, 'wje-popup:hide', null, () => {
-            this.classList.remove('active');
-        });
+        event.addListener(this, 'wje-popup:hide', null, this.popupHideCallback);
 
         if (this.trigger !== 'click') {
             event.addListener(this, 'mouseenter', null, this.onOpen);
@@ -186,6 +196,7 @@ export default class Dropdown extends WJElement {
      */
     toggleCallback = (e) => {
         e.stopPropagation();
+
         if (this.classList.contains('active')) {
             this.onClose(e);
         } else {
@@ -207,7 +218,7 @@ export default class Dropdown extends WJElement {
                     throw new Error('beforeShow method returned false or not string');
                 }
 
-                this.popup.show(); // Show tooltip
+                this.popup.show(true); // Show tooltip
 
                 event.dispatchCustomEvent(this, 'wje-dropdown:open', {
                     bubbles: true,
@@ -219,21 +230,40 @@ export default class Dropdown extends WJElement {
             .catch((error) => {
                 // ak je nejaka chyba tak to len zatvorime
                 this.classList.remove('active');
-                this.popup.hide();
+                this.popup.hide(true);
             });
     };
 
-    /**
-     * Close the popup element.
-     * @param {object} e
-     */
-    onClose = (e) => {
-        this.classList.remove('active');
-        this.popup.hide(); // Now close the popup
+    beforeClose = () => {
+        // Do nothing
+    };
 
-        event.dispatchCustomEvent(this, 'wje-dropdown:close', {
-            bubbles: true,
-            detail: { target: this },
-        });
+    afterClose = () => {
+        // Do nothing
+    };
+
+    onClose = (e) => {
+        e.stopPropagation();
+
+        this.classList.remove('active');
+        Promise.resolve(this.beforeClose(this))
+            .then((res) => {
+                if (this.classList.contains('active')) {
+                    throw new Error('beforeShow method returned false or not string');
+                }
+
+                this.popup.hide(true); // Show tooltip
+
+                event.dispatchCustomEvent(this, 'wje-dropdown:close', {
+                    bubbles: true,
+                    detail: { target: this },
+                });
+
+                Promise.resolve(this.afterClose(this));
+            })
+            .catch((error) => {
+                this.classList.add('active');
+                this.popup.show(true);
+            });
     };
 }
