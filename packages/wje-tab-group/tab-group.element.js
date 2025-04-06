@@ -51,6 +51,7 @@ export default class TabGroup extends WJElement {
         // skontrolujeme ci sa nachadza v paneloch
         if (this.getPanelAllName().includes(activeTabName)) {
             // window.addEventListener('hashchange', (e) => {
+            //     console.log('hashchange');
             //     this.setActiveTab(activeTabName);
             // });
 
@@ -88,14 +89,45 @@ export default class TabGroup extends WJElement {
         let slotNav = document.createElement('slot');
         slotNav.setAttribute('name', 'nav');
 
-        header.appendChild(nav);
-        nav.appendChild(slotNav);
-        section.appendChild(slot);
+        let icon = document.createElement('wje-icon');
+        icon.setAttribute('name', 'dots');
 
-        native.appendChild(header);
-        native.appendChild(section);
+        let button = document.createElement('wje-button');
+        button.setAttribute('slot', 'trigger');
+        button.setAttribute('fill', 'link');
 
-        fragment.appendChild(native);
+        let menu = document.createElement('wje-menu');
+        menu.setAttribute('variant', 'context');
+
+        let slotMore = document.createElement('slot');
+        slotMore.setAttribute('name', 'more');
+
+        let moreDropdown = document.createElement('wje-dropdown');
+        moreDropdown.setAttribute('placement', 'bottom-end');
+        moreDropdown.setAttribute('collapsible', '');
+        moreDropdown.classList.add('more-tabs');
+
+        button.append(icon);
+
+        menu.append(slotMore);
+
+        moreDropdown.append(button);
+        moreDropdown.append(menu);
+
+        header.append(nav);
+
+        nav.append(slotNav);
+        nav.append(moreDropdown);
+
+        section.append(slot);
+
+        native.append(header);
+        native.append(section);
+
+        fragment.append(native);
+
+        this.nav = nav;
+        this.moreDropdown = moreDropdown;
 
         return fragment;
     }
@@ -111,9 +143,21 @@ export default class TabGroup extends WJElement {
 
         this.addEventListener('wje-tab:change', (e) => {
             if (e.detail.context.hasAttribute('disabled')) return;
-
+            console.log('tab change');
             this.setActiveTab(e.detail.context.panel);
         });
+
+        // this.checkOverflow = this.checkOverflow.bind(this);
+        // window.addEventListener('resize', this.checkOverflow);
+
+        // this.setupTabObserver();
+        // this.toggleMoreVisibility();
+
+        this.checkOverflow = this.checkOverflow.bind(this);
+
+        window.addEventListener('resize', this.checkOverflow);
+
+        requestAnimationFrame(() => this.checkOverflow());
     }
 
     /**
@@ -121,11 +165,11 @@ export default class TabGroup extends WJElement {
      */
     removeActiveTab() {
         this.getPanelAll().forEach((el) => {
-            el.removeAttribute('active');
+            el.classList.remove('active');
         });
 
         this.getTabAll().forEach((el) => {
-            el.removeAttribute('active');
+            el.classList.remove('active');
         });
     }
 
@@ -135,8 +179,11 @@ export default class TabGroup extends WJElement {
      */
     setActiveTab(tab) {
         this.removeActiveTab();
-        this.querySelector(`[panel="${tab}"]`).setAttribute('active', '');
-        this.querySelector(`[name="${tab}"]`).setAttribute('active', '');
+        const el = this.querySelector(`[panel="${tab}"]`)
+        el?.classList.add('active');
+        this.querySelector(`[name="${tab}"]`)?.classList.add('active');
+
+        this.dropdownActive(el);
     }
 
     /**
@@ -144,7 +191,7 @@ export default class TabGroup extends WJElement {
      * @returns {Element|null} The active tab, or null if no tab is active.
      */
     getActiveTab() {
-        let activeTabs = Array.from(this.querySelectorAll('wje-tab[active]'));
+        let activeTabs = Array.from(this.querySelectorAll('wje-tab.active'));
         return activeTabs.length > 0 ? activeTabs : null;
     }
 
@@ -170,5 +217,51 @@ export default class TabGroup extends WJElement {
      */
     getPanelAllName() {
         return this.getPanelAll().map((el) => el.getAttribute('name'));
+    }
+
+    toggleMoreVisibility() {
+        const hasTabsInMore = this.querySelector('wje-tab[slot="more"]');
+        this.moreDropdown.hidden = !hasTabsInMore;
+    }
+
+    checkOverflow() {
+        const nav = this.nav;
+        const moreBtn = this.moreDropdown;
+        const moreWidth = moreBtn.offsetWidth || 48; // fallback ak ešte nie je vykreslený
+
+        const tabs = Array.from(this.querySelectorAll('wje-tab'));
+
+        // Reset: presunieme všetky taby naspäť do nav slotu
+        tabs.forEach(tab => tab.setAttribute('slot', 'nav'));
+
+        // Vykreslíme nanovo, aby sa more button správne umiestnil
+        requestAnimationFrame(() => {
+            const navRight = nav.getBoundingClientRect().right;
+            let overflowStarted = false;
+
+            for (const tab of tabs) {
+                const tabRect = tab.getBoundingClientRect();
+
+                // Ak by pretekal vrátane rezervy na more, presunieme ho
+                const fits = tabRect.right + moreWidth <= navRight;
+
+                if (!fits || overflowStarted) {
+                    tab.setAttribute('slot', 'more');
+                    this.dropdownActive(tab);
+                    overflowStarted = true;
+                }
+            }
+
+            this.toggleMoreVisibility();
+        });
+    }
+
+    dropdownActive(el) {
+        if(el.classList.contains('active')) {
+            if(el.getAttribute('slot') === 'more')
+                this.moreDropdown.classList.add('dropdown-active');
+            else
+                this.moreDropdown.classList.remove('dropdown-active');
+        }
     }
 }

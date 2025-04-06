@@ -1,4 +1,5 @@
 import { default as WJElement, event } from '../wje-element/element.js';
+import { bindRouterLinks } from 'slick-router/middlewares/router-links.js';
 import styles from './styles/styles.css?inline';
 
 /**
@@ -30,6 +31,40 @@ export default class Tab extends WJElement {
          * @type {boolean}
          */
         this.last = false;
+        this._hasPanel = false;
+    }
+
+    /**
+     * Sets the panel attribute to the specified value.
+     * @param {string} value The value to set for the panel attribute.
+     */
+    set panel(value) {
+        this.setAttribute('panel', value);
+    }
+
+    /**
+     * Retrieves the value of the 'panel' attribute of the element.
+     * @returns {string|null} Returns the 'panel' attribute value if it exists; otherwise, returns null.
+     */
+    get panel() {
+        return this.getAttribute('panel') || null;
+    }
+
+    /**
+     * Sets the value of the 'route' attribute for the current object.
+     * @param {string} value The new value to set for the 'route' attribute.
+     */
+    set route(value) {
+        this.setAttribute('route', value);
+    }
+
+    /**
+     * Retrieves the value of the 'route' attribute.
+     * If the 'route' attribute is not set, it returns null.
+     * @returns {string|null} The value of the 'route' attribute or null if not set.
+     */
+    get route() {
+        return this.getAttribute('route') || null;
     }
 
     /**
@@ -51,6 +86,7 @@ export default class Tab extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.setAttribute('active-class', 'active');
     }
 
     /**
@@ -78,6 +114,14 @@ export default class Tab extends WJElement {
      * // @fires wje-tab:change - Dispatched when the component is clicked, indicating a tab change.
      */
     afterDraw() {
+        this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: false });
         event.addListener(this, 'click', 'wje-tab:change');
+    }
+
+    /**
+     * Cleans up before the component is disconnected.
+     */
+    beforeDisconnect() {
+        this.unbindRouterLinks?.();
     }
 }

@@ -7,6 +7,7 @@
     --wje-tab-start: 0;
     --wje-tab-end: 0;
     --wje-tab-bottom: 0;
+    width: 100%;
 }
 .native-tab-group {
     display: flex;
@@ -22,6 +23,7 @@
 
     & > nav {
         display: flex;
+        align-items: center;
     }
 }
 
@@ -81,5 +83,13 @@
     }
     nav {
         border-top: 1px solid var(--wje-border-color);
+    }
+}
+
+.dropdown-active {
+    wje-button{
+        &::part(native) {
+            color: var(--wje-color-primary-8);
+        }
     }
 }

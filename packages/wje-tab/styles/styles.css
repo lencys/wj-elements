@@ -2,7 +2,7 @@
 [ WJ Tab ]
 */
 
-:host {
+:host(:not([slot="more"])) {
     display: block;
     position: relative;
     .native-tab {
@@ -48,6 +48,49 @@
     }
 }
 
+:host([slot="more"]) {
+    --wje-menu-item-safe-triangle-cursor-x: 0;
+    --wje-menu-item-safe-triangle-cursor-y: 0;
+    --wje-menu-item-safe-triangle-submenu-start-x: 0;
+    --wje-menu-item-safe-triangle-submenu-start-y: 0;
+    --wje-menu-item-safe-triangle-submenu-end-x: 0;
+    --wje-menu-item-safe-triangle-submenu-end-y: 0;
+
+    display: block;
+    .native-tab {
+        background: var(--wje-menu-item-background);
+        position: relative;
+        display: block;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        color: var(--wje-menu-item-color);
+        padding-top: var(--wje-menu-item-padding-top);
+        padding-bottom: var(--wje-menu-item-padding-bottom);
+        padding-inline: var(--wje-spacing-large);
+        transition: var(--wje-transition-fast) fill;
+        user-select: none;
+        white-space: nowrap;
+        cursor: pointer;
+        text-decoration: none;
+
+        &:hover {
+            color: var(--wje-menu-item-color-hover);
+            background: var(--wje-menu-item-background-hover);
+        }
+
+        &:focus {
+            color: var(--wje-menu-item-color-focus);
+            background: var(--wje-menu-item-background-focus);
+        }
+
+        &:active {
+            color: var(--wje-menu-item-color-active);
+            background: var(--wje-menu-item-background-active);
+        }
+    }
+}
+
 :host([disabled]) a {
     opacity: 0.5;
     cursor: not-allowed;
@@ -57,6 +100,6 @@
     }
 }
 
-:host([active]) a:after {
+:host(:not([slot="more"]).active) a:after {
     display: block;
 }
