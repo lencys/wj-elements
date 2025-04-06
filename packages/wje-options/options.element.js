@@ -153,18 +153,47 @@ export default class Options extends WJElement {
         return this.hasAttribute('search');
     }
 
+    /**
+     * Retrieves the value of the 'search-to-query-params' attribute from the current instance.
+     * @returns {string | null} The value of the 'search-to-query-params' attribute, or null if the attribute is not set.
+     */
     get searchToQueryParams() {
         return this.getAttribute('search-to-query-params');
     }
 
+    /**
+     * Sets the value to define search-to-query params behavior.
+     * @param {string} value The value to be set for the search-to-query-params attribute.
+     */
     set searchToQueryParams(value) {
         this.setAttribute('search-to-query-params', value);
     }
 
+    /**
+     * Determines whether the 'search-to-query-params' attribute is present on the element.
+     * @returns {boolean} True if the 'search-to-query-params' attribute exists, otherwise false.
+     */
     get hasSearchToQueryParams() {
         return this.hasAttribute('search-to-query-params');
     }
 
+    /**
+     * Sets the value of the search parameter name attribute.
+     * @param {string} value The string value to set as the search parameter name.
+     */
+    set searchParamName(value) {
+        this.setAttribute('search-param-name', value);
+    }
+
+    /**
+     * Gets the search parameter name used in queries.
+     * Retrieves the value of the 'search-param-name' attribute.
+     * If the attribute is not set, it defaults to 'search'.
+     * @returns {string} The search parameter name used for queries.
+     */
+    get searchParamName() {
+        return this.getAttribute('search-param-name') || 'search';
+    }
     /**
      * Checks if the lazy attribute is present.
      * @returns {boolean} True if the lazy attribute is present, false otherwise.
@@ -248,7 +277,7 @@ export default class Options extends WJElement {
                 let processedUrl = `${this.url}${this.search ? `/${this.search}` : ''}?page=${page}&size=${this.lazyLoadSize}`;
 
                 if (this.hasSearchToQueryParams) {
-                    processedUrl = `${this.url}?page=${page}&size=${this.lazyLoadSize}${this.search ? `&search=${this.search}` : ''}`;
+                    processedUrl = `${this.url}?page=${page}&size=${this.lazyLoadSize}${this.search ? `&${this.searchParamName}=${this.search}` : ''}`;
                 }
 
                 let res = await this.service.get(processedUrl, null, false, signal);
