@@ -30,6 +30,15 @@ template.innerHTML = `
       </div>
     </div>
     
+    <!-- BASIC -->
+
+    <h2>Basic</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-button id="example-js-open">JS Open</wje-button>
+      </div>
+    </div>
+    
     <!-- CANCELABLE -->
 
     <h2>Cancelable</h2>
@@ -182,6 +191,17 @@ export default class DemoDialog extends WJElement {
   }
 
   afterDraw() {
+
+    this.querySelector('#example-js-open').addEventListener('click', (e) => {
+      let myDialog = document.createElement('wje-dialog');
+      myDialog.setAttribute('headline', 'Title');
+      myDialog.innerText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl. Pellentesque nec urna cursus, euismod nunc a, laoreet massa. Integer quis felis malesuada, faucibus mauris nec, aliquam velit. Donec iaculis nulla nunc, nec faucibus elit consectetur in. Vestibulum congue ultrices massa, eu feugiat nulla faucibus sed. Nulla eget consectetur magna. Fusce in erat eu leo mollis semper vel vitae velit. Integer maximus elementum sapien, at ultrices arcu fringilla et. Vestibulum volutpat quam id nisi faucibus lobortis.';
+
+      this.appendChild(myDialog);
+
+      myDialog.onOpen();
+    });
+
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(this.context);
 

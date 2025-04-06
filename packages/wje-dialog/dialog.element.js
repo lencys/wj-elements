@@ -254,7 +254,9 @@ export default class Dialog extends WJElement {
      * @param e
      */
     onOpen = (e) => {
-        this.dialog.innerHTML = '';
+        if (this.dialog) {
+            this.dialog.innerHTML = '';
+        }
 
         Promise.resolve(this.beforeOpen(this, e)).then((res) => {
             this.htmlDialogBody(this.dialog);
@@ -265,7 +267,7 @@ export default class Dialog extends WJElement {
                 Promise.resolve(this.afterOpen(this, e));
             }
         });
-    };
+    }
 
     /**
      * Closes the dialog.
