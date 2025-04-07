@@ -184,7 +184,7 @@ export default class Img extends WJElement {
 
     setAvatarInitials = (value = false) => {
         let parent = this.parentElement;
-        if (parent.tagName === 'WJE-AVATAR') parent.initials = value;
+        if (parent?.tagName === 'WJE-AVATAR') parent.initials = value;
     };
     /**
      * Deletes the current image by calling the remove method.
