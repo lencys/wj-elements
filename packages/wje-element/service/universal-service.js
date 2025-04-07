@@ -36,7 +36,7 @@ export class UniversalService {
     _request(url, data, action, dispatchMethod, method, signal) {
         let promise = fetch(url, {
             method: method,
-            body: JSON.stringify(data),
+            ...(data ? { body: JSON.stringify(data) } : {}),
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -64,8 +64,9 @@ export class UniversalService {
         return this._request(url, data, action, dispatchMethod, 'DELETE', signal);
     }
 
+    //url, action, dispatchMethod, signa
     get(url, action, dispatchMethod = true, signal = null) {
-        return this._request(url, action, dispatchMethod, 'GET', signal);
+        return this._request(url, null, action, dispatchMethod, 'GET', signal);
     }
 
     patch(url, data, action, dispatchMethod = true, signal = null) {
