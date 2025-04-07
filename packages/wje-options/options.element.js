@@ -21,6 +21,11 @@ export default class Options extends WJElement {
     constructor() {
         super();
 
+        /**
+         * Stores the loaded options.
+         * @type {Array}
+         * @private
+         */
         this._loadedOptions = [];
     }
 
@@ -38,7 +43,7 @@ export default class Options extends WJElement {
      * @returns {Array<string>}
      */
     static get observedAttributes() {
-        return ['search'];
+        return ['search', 'attached'];
     }
 
     /**
@@ -218,24 +223,20 @@ export default class Options extends WJElement {
         return this.loadedOptions?.flat();
     }
 
+    /**
+     * Gets the loaded options.
+     * @type {Array}
+     */
     get loadedOptions() {
         return this._loadedOptions;
     }
 
+    /**
+     * Sets the loaded options.
+     * @type {Array}
+     */
     set loadedOptions(loadedOptions) {
         this._loadedOptions = loadedOptions;
-    }
-
-    /**
-     * Lifecycle method, called whenever an observed property changes.
-     */
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (this.infiniteScroll && name === 'search' && oldValue !== newValue) {
-            this.loadedOptions = [];
-            this.infiniteScroll.placementObj.innerHTML = '';
-            this.infiniteScroll.totalPages = 0;
-            this.infiniteScroll.refresh();
-        }
     }
 
     /**
@@ -261,9 +262,19 @@ export default class Options extends WJElement {
         let fragment = document.createDocumentFragment();
 
         const slot = document.createElement('slot');
+        fragment.appendChild(slot);
 
         if (this.hasAttribute('lazy')) {
             const list = document.createElement('wje-list');
+
+            if (this.contains(this.infiniteScroll)) {
+                this.loadedOptions = [];
+                this.infiniteScroll.placementObj.innerHTML = '';
+                this.infiniteScroll.totalPages = 0;
+                this.infiniteScroll.refresh();
+
+                return fragment;
+            }
 
             const infiniteScroll = document.createElement('wje-infinite-scroll');
             infiniteScroll.setAttribute('placement', 'wje-list');
@@ -287,7 +298,7 @@ export default class Options extends WJElement {
                 return filteredOptions;
             };
 
-            if (!this.contains(infiniteScroll)) {
+            if (this.hasAttribute('attached') && !this.contains(this.infiniteScroll)) {
                 this.appendChild(infiniteScroll);
             }
 
@@ -301,8 +312,6 @@ export default class Options extends WJElement {
 
             this.append(...optionsData.map(this.htmlItem));
         }
-
-        fragment.appendChild(slot);
 
         return fragment;
     }

@@ -33,13 +33,14 @@ export class UniversalService {
         this._store.dispatch(action(data));
     };
 
-    _save(url, data, action, dispatchMethod, method) {
+    _request(url, data, action, dispatchMethod, method, signal) {
         let promise = fetch(url, {
             method: method,
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json',
             },
+            ...(signal ? { signal } : {}),
         }).then((response) => {
             if (response.ok) {
                 return response.json();
@@ -51,41 +52,24 @@ export class UniversalService {
         return this.dispatch(promise, dispatchMethod, action);
     }
 
-    _get(url, action, dispatchMethod, signal) {
-        let promise = fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            ...(signal ? { signal } : {}),
-        }).then(async (response) => {
-            let responseText;
-            try {
-                responseText = await response.text();
-                return JSON.parse(responseText);
-            } catch (err) {
-                console.error(err);
-                return responseText;
-            }
-        });
-
-        return this.dispatch(promise, dispatchMethod, action);
+    put(url, data, action, dispatchMethod = true, signal = null) {
+        return this._request(url, data, action, dispatchMethod, 'PUT', signal);
     }
 
-    put(url, data, action, dispatchMethod = true) {
-        return this._save(url, data, action, dispatchMethod, 'PUT');
+    post(url, data, action, dispatchMethod = true, signal = null) {
+        return this._request(url, data, action, dispatchMethod, 'POST', signal);
     }
 
-    post(url, data, action, dispatchMethod = true) {
-        return this._save(url, data, action, dispatchMethod, 'POST');
+    delete(url, data, action, dispatchMethod = true, signal = null) {
+        return this._request(url, data, action, dispatchMethod, 'DELETE', signal);
     }
 
-    delete(url, data, action, dispatchMethod = true) {
-        return this._save(url, data, action, dispatchMethod, 'DELETE');
+    get(url, action, dispatchMethod = true, signal = null) {
+        return this._request(url, action, dispatchMethod, 'GET', signal);
     }
 
-    get(url, action, dispatchMethod = true) {
-        return this._get(url, action, dispatchMethod);
+    patch(url, data, action, dispatchMethod = true, signal = null) {
+        return this._request(url, data, action, dispatchMethod, 'PATCH', signal);
     }
 
     dispatch(promise, dispatchMethod, action) {

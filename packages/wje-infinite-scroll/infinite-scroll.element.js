@@ -320,7 +320,9 @@ export default class InfiniteScroll extends WJElement {
 
                 this.response = response;
                 this._loadedItems = this.objectName ? response[this.objectName] : response;
-                const notDrawnItems = this._loadedItems.filter((item) => !this._drawnItems.some(this.compareFunction.bind(this, item)));
+                const notDrawnItems = this._loadedItems.filter(
+                    (item) => !this._drawnItems.some(this.compareFunction.bind(this, item))
+                );
                 this.customForeach(notDrawnItems);
                 this._drawnItems.push(...notDrawnItems);
 
@@ -336,7 +338,7 @@ export default class InfiniteScroll extends WJElement {
         }
     }
 
-    compareFunction = (i, item) => i.id === item.id
+    compareFunction = (i, item) => i.id === item.id;
 
     /**
      * Converts a data item into an HTML element based on a template.

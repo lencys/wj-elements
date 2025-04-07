@@ -21,6 +21,10 @@ import styles from './styles/styles.css?inline';
  * @csspart native - The native select wrapper.
  * @csspart input - The input field.
  * @csspart clear - The clear button.
+ * @property {Array} _selected - An array to store selected items.
+ * @property {HTMLElement|null} counterEl - A reference to the counter element, initially null.
+ * @property {ElementInternals} internals - The internal element API for managing state and attributes.
+ * @property {boolean} _wasOppened - Tracks whether the select element was previously opened, initially false.
  * @cssproperty [--wje-select-border-width=1px] - Specifies the width of the border around the select component. Accepts any valid CSS length unit (e.g., `px`, `rem`, `em`).
  * @cssproperty [--wje-select-border-style=solid] - Defines the style of the border for the select component. Accepts standard CSS border styles, such as `solid`, `dashed`, or `dotted`.
  * @cssproperty [--wje-select-border-color=var(--wje-border-color)] - Sets the color of the border for the select component. Accepts any valid CSS color value, including color variables, named colors, and hex values.
@@ -36,14 +40,109 @@ import styles from './styles/styles.css?inline';
 
 export default class Select extends WJElement {
     /**
-     * Creates an instance of Select.
+     * Constructor for the Select class.
+     * @class
+     * @description Initializes the Select component.
+     * This constructor sets up the initial state of the component, including selected items, counter element, and internal element API.
+     * It also tracks whether the select element was previously opened.
+     * @class
+     * @augments {WJElement}
+     * @memberof Select
      */
     constructor() {
         super();
 
+        /**
+         * @type {Array}
+         * @description An array to store selected items.
+         */
         this._selected = [];
+
+        /**
+         * @type {HTMLElement|null}
+         * @description A reference to the counter element, initially null.
+         * @private
+         */
         this.counterEl = null;
+
+        /**
+         * @type {ElementInternals}
+         * @description The internal element API for managing state and attributes.
+         * @private
+         * @readonly
+         * @constant
+         * @default {ElementInternals} this.attachInternals()
+         * @description Attaches the internals to the element.
+         */
         this.internals = this.attachInternals();
+
+        /**
+         * @type {boolean}
+         * @description Tracks whether the select element was previously opened, initially false.
+         * @private
+         * @default {boolean} false
+         */
+        this._wasOppened = false;
+
+        /**
+         * @type {HTMLElement|null}
+         * @description A reference to the native select element, initially null.
+         */
+        this.native = null;
+
+        /**
+         * @type {HTMLElement|null}
+         * @description A reference to the popup element, initially null.
+         */
+        this.popup = null;
+
+        /**
+         * @type {HTMLElement|null}
+         * @description A reference to the label element, initially null.
+         */
+        this.labelElement = null;
+
+        /**
+         * @type {HTMLElement|null}
+         * @description A reference to the slot start element, initially null.
+         */
+        this.slotStart = null;
+
+        /**
+         * @type {HTMLElement|null}
+         * @description A reference to the slot end element, initially null.
+         */
+        this.slotEnd = null;
+
+        /**
+         * @type {HTMLElement|null}
+         * @description A reference to the input element, initially null.
+         */
+        this.input = null;
+
+        /**
+         * @type {HTMLElement|null}
+         * @description A reference to the options wrapper element, initially null.
+         */
+        this.optionsWrapper = null;
+
+        /**
+         * @type {HTMLElement|null}
+         * @description A reference to the chips element, initially null.
+         */
+        this.chips = null;
+
+        /**
+         * @type {HTMLElement|null}
+         * @description A reference to the clear button element, initially null.
+         */
+        this.clear = null;
+
+        /**
+         * @type {HTMLElement|null}
+         * @description A reference to the list element, initially null.
+         */
+        this.list = null;
     }
 
     dependencies = {
@@ -349,12 +448,24 @@ export default class Select extends WJElement {
             this.findEl = find;
         }
 
+        if (this.hasAttribute('lazy')) {
+            event.addListener(popup, 'wje-popup:show', null, (e) => {
+                if (this._wasOppened) return;
+                this._wasOppened = true;
+
+                const optionsElement = this.querySelector('wje-options');
+                optionsElement.setAttribute('attached', '');
+            });
+        } else {
+            const optionsElement = this.querySelector('wje-options');
+            optionsElement?.setAttribute('attached', '');
+        }
+
         optionsWrapper.appendChild(list);
 
         wrapper.appendChild(inputWrapper);
-
-        popup.appendChild(wrapper);
         popup.appendChild(optionsWrapper);
+        popup.appendChild(wrapper);
 
         if (this.trigger === 'click') popup.setAttribute('manual', '');
 

@@ -25,7 +25,7 @@ template.innerHTML = `
     <h2>Lazy options</h2>
     <div class="playground">
       <div class="content">
-        <wje-select id="lazy-update" placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
+        <wje-select lazy id="lazy-update" placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
           <wje-options lazy url="/api/options" item-value="value" item-text="text"  lazy-load-size="6" option-array-path="data"></wje-options>
         </wje-select>
       </div>
@@ -59,19 +59,19 @@ template.innerHTML = `
     <h2>Autocomplete</h2>
     <div class="playground">
       <div class="content" style="gap: .5rem;">
-        <wje-select placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple clearable>
+        <wje-select lazy placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple clearable>
           <wje-options lazy url="/api/options" item-value="value" item-text="text" lazy-load-size="6" option-array-path="data"></wje-options>
         </wje-select>
         
-        <wje-select placeholder="Select options" variant="standard" max-height="200px" find clearable>
+        <wje-select lazy placeholder="Select options" variant="standard" max-height="200px" find clearable>
           <wje-options lazy url="/api/options" item-value="value"item-text="text"  lazy-load-size="6" option-array-path="data"></wje-options>
         </wje-select>
         
-        <wje-select label="Label" placeholder="Select options" max-options="1" max-height="200px" find multiple clearable>
+        <wje-select lazy label="Label" placeholder="Select options" max-options="1" max-height="200px" find multiple clearable>
           <wje-options lazy url="/api/options" item-value="value"item-text="text"  lazy-load-size="6" option-array-path="data"></wje-options>
         </wje-select>
         
-        <wje-select label="Label" placeholder="Select options" max-height="200px" find clearable>
+        <wje-select lazy label="Label" placeholder="Select options" max-height="200px" find clearable>
           <wje-options lazy url="/api/options" item-value="value"item-text="text"  lazy-load-size="6" option-array-path="data"></wje-options>
         </wje-select>
       </div>
@@ -184,7 +184,7 @@ template.innerHTML = `
   </div>`;
 
 export default class DemoSelect extends WJElement {
-   constructor() {
+  constructor() {
     super();
   }
 

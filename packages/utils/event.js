@@ -132,7 +132,7 @@ class Event {
     deepEqual(x, y) {
         return x && y && typeof x === 'object' && typeof x === typeof y
             ? Object.keys(x).length === Object.keys(y).length &&
-            Object.keys(x).every((key) => this.deepEqual(x[key], y[key]))
+                  Object.keys(x).every((key) => this.deepEqual(x[key], y[key]))
             : x === y;
     }
 
