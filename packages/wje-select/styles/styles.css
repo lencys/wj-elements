@@ -3,20 +3,6 @@
 */
 
 :host {
-    --wje-select-border-width: 1px;
-    --wje-select-border-style: solid;
-    --wje-select-border-color: var(--wje-border-color);
-
-    --wje-select-options-border-width: 1px;
-    --wje-select-options-border-style: var(--wje-border-style);
-    --wje-select-options-border-color: var(--wje-border-color);
-
-    --wje-select-background: var(--wje-background);
-    --wje-select-line-height: 20px;
-    --wje-select-color: var(--wje-color);
-    --wje-select-border-radius: var(--wje-border-radius-medium);
-
-    --wje-select-margin-bottom: 0.5rem;
     margin-bottom: var(--wje-select-margin-bottom);
 
     width: 100%;

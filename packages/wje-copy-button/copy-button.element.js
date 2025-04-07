@@ -165,7 +165,6 @@ export default class CopyButton extends WJElement {
         this.tooltip.setAttribute('content', this.labelSuccess || 'Copied');
 
         setTimeout(() => {
-            console.log('TIMEOUT', this.hasOwnProperty('icon'));
             if (this.hasOwnProperty('icon')) {
                 this.icon.removeAttribute('color');
                 this.icon.setAttribute('name', 'clipboard');

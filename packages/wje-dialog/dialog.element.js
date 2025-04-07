@@ -34,6 +34,23 @@ export default class Dialog extends WJElement {
     }
 
     /**
+     * Sets the value of the 'headline' attribute.
+     * @param {string} value The new value for the 'headline' attribute.
+     */
+    set headline(value) {
+        this.setAttribute('headline', value);
+    }
+
+    /**
+     * Retrieves the value of the "headline" attribute from the element.
+     * If the "headline" attribute is not present, returns an empty string.
+     * @returns {string} The headline attribute value or an empty string if not set.
+     */
+    get headline() {
+        return this.getAttribute('headline') || '';
+    }
+
+    /**
      * Sets the headline of the dialog.
      * @param value
      */
@@ -153,7 +170,7 @@ export default class Dialog extends WJElement {
         header.setAttribute('part', 'header');
         header.classList.add('dialog-header');
         if (this.hasAttribute('headline'))
-            header.innerHTML = `<span part="headline">${this.getAttribute('headline')}</span>`;
+            header.innerHTML = `<span part="headline">${this.headline}</span>`;
 
         let slotHeader = document.createElement('slot');
         slotHeader.setAttribute('name', 'header');
@@ -291,8 +308,6 @@ export default class Dialog extends WJElement {
      */
     registerBlockingEvent(button, promise) {
         button.addEventListener('wje-button:click', async (e) => {
-            console.log('Button clicked');
-
             let blockingElement = document.createElement('div');
             blockingElement.classList.add('blocking-element');
 

@@ -214,10 +214,6 @@ export default class Breadcrumb extends WJElement {
             <wje-menu-item>Test 2</wje-menu-item>
         </wje-menu>`;
 
-        this.parentElement.querySelectorAll('wje-breadcrumb').forEach((el) => {
-            // console.log(el);
-        });
-
         return dropdown;
     }
 
