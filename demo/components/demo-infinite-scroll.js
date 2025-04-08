@@ -14,12 +14,15 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
       <div class="content">
         <wje-infinite-scroll url="/api/users" placement="wje-list" id="basic">
           <wje-list>
-            <wje-item iterate>
-              <wje-label>
-                <h4>{{fullName}}</h4>
-                <p>{{jobTitle}}</p>
-              </wje-label>
-            </wje-item>
+            <template iterate>
+              <wje-item >
+                <wje-label>
+                  <h4>{{fullName}}</h4>
+                  <p>{{jobTitle}}</p>
+                </wje-label>
+              </wje-item>
+            </template>
+            
           </wje-list>
           <wje-icon name="arrow-bar-to-down" size="large" slot="ending"></wje-icon>
           <wje-icon name="loader" size="large" slot="loader"></wje-icon>
@@ -47,7 +50,8 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
       <div class="content">
         <wje-infinite-scroll url="/api/users" placement="wje-list" size="6">
           <wje-list>
-            <wje-tooltip content="{{fullName}}" iterate>
+          <template iterate>
+            <wje-tooltip content="{{fullName}}">
               <wje-item>
                 <wje-label>
                   <h4>{{fullName}}</h4>
@@ -55,6 +59,8 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
                 </wje-label>
               </wje-item>
             </wje-tooltip>
+          </template>
+            
           </wje-list>
         </wje-infinite-scroll>
       </div>
@@ -68,18 +74,20 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
         <wje-infinite-scroll url="/api/users" placement="wje-row" size="20" class="example" height="440px">
           <wje-grid>
             <wje-row wrap>
-              <wje-col size="6" iterate>
-                <wje-card>
-                  <wje-img src="{{image}}"></wje-img>
-                  <wje-card-header>
-                    <wje-card-subtitle>{{jobTitle}}</wje-card-subtitle>
-                    <wje-card-title>{{fullName}}</wje-card-title>
-                  </wje-card-header>
-                  <wje-card-content>
-                    <p>{{description}}</p>
-                  </wje-card-content>
-                </wje-card>
-              </wje-col>
+              <template iterate>
+                <wje-col size="6">
+                  <wje-card>
+                    <wje-img src="{{image}}"></wje-img>
+                    <wje-card-header>
+                      <wje-card-subtitle>{{jobTitle}}</wje-card-subtitle>
+                      <wje-card-title>{{fullName}}</wje-card-title>
+                    </wje-card-header>
+                    <wje-card-content>
+                      <p>{{description}}</p>
+                    </wje-card-content>
+                  </wje-card>
+                </wje-col>
+              </template>
             </wje-row>
           </wje-grid>
           <style>
@@ -95,7 +103,7 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
   </div>`;
 
 export default class DemoInfinteScroll extends WJElement {
-   constructor() {
+  constructor() {
     super();
   }
 
