@@ -8,6 +8,8 @@ import styles from './styles/styles.css?inline';
  * @documentation https://elements.webjet.sk/components/tab
  * @status stable
  * @augments {WJElement}
+ * @param {string} panel The name of the tab panel. This is used to identify the corresponding tab panel.
+ * @param {string} route The route to navigate to when the tab is clicked.
  * @cssproperty [--wje-tab-text-transform=uppercase] - The text transformation for the tab (e.g., uppercase, lowercase).
  * @cssproperty [--wje-tab-font-weight=500] - The font weight of the tab text.
  * @cssproperty [--wje-tab-letter-spacing=0.06em] - The letter spacing of the tab text.
