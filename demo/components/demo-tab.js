@@ -155,8 +155,12 @@ export default class DemoTab extends WJElement {
     return template;
   }
 
+  /**
+   * Retrieves the selector for the tab group outlet.
+   * @returns {string} The CSS selector for the tab group outlet element.
+   */
   static get outlet() {
-    return '#tab-group-outlet'
+    return '#tab-group-outlet';
   }
 
   afterDraw(context, store, params) {
