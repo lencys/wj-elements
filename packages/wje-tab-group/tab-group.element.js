@@ -22,6 +22,14 @@ export default class TabGroup extends WJElement {
         super();
     }
 
+    set type(value) {
+        this.setAttribute('type', value);
+    }
+
+    get type() {
+        return this.getAttribute('type') || 'panel';
+    }
+
     className = 'TabGroup';
 
     /**
@@ -132,7 +140,7 @@ export default class TabGroup extends WJElement {
      */
     afterDraw() {
         let activeTab = this.getActiveTab();
-        let activeTabName = activeTab ? activeTab[0].panel : this.getTabAll()[0].panel;
+        let activeTabName = activeTab ? activeTab[0][this.type] : this.getTabAll()[0][this.type];
 
         this.setActiveTab(activeTabName);
 
@@ -167,11 +175,15 @@ export default class TabGroup extends WJElement {
      */
     setActiveTab(tab) {
         this.removeActiveTab();
-        const el = this.querySelector(`[panel="${tab}"]`)
-        el?.classList.add('active');
-        this.querySelector(`[name="${tab}"]`)?.classList.add('active');
 
-        this.dropdownActive(el);
+        const el = this.querySelector(`[${this.type}="${tab}"]`)
+        el?.classList.add('active');
+
+        if(this.type === 'panel')
+            this.querySelector(`[name="${tab}"]`)?.classList.add('active');
+
+        if(el)
+            this.dropdownActive(el);
     }
 
     /**
