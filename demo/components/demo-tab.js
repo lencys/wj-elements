@@ -12,8 +12,6 @@ template.innerHTML = `<style>
   <h1>Tab</h1>
   <div class="container">
 
-
-    
     <!-- BASIC -->
 
     <h2>Basic</h2>
