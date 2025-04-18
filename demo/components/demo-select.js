@@ -219,7 +219,7 @@ export default class DemoSelect extends WJElement {
     select.setAttribute('multiple', '');
     select.setAttribute('clearable', '');
 
-    const options = document.querySelector('wje-options');
+    const options = document.createElement('wje-options');
     options.setAttribute('url', '/api/options');
     options.setAttribute('item-value', 'value');
     options.setAttribute('item-text', 'text');

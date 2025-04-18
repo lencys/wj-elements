@@ -396,7 +396,7 @@ export default class WJElement extends HTMLElement {
      * This method processes the current render promise and then refreshes the component.
      */
     enqueueUpdate() {
-        if (!this.rafId) {
+        if (!this.isRendering) {
             this.rafId = requestAnimationFrame(() => this._refresh());
         }
     }
@@ -468,10 +468,6 @@ export default class WJElement extends HTMLElement {
                     this.style.visibility = this.originalVisibility;
                 }
             }
-        }
-
-        if (this.isAttached && !this.isRendering) {
-            this.rafId = requestAnimationFrame(() => this._refresh());
         }
     }
 

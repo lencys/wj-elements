@@ -241,28 +241,28 @@ export default class Dialog extends WJElement {
     /**
      * Before the dialog opens.
      */
-    beforeOpen() {
+    beforeOpen(dialog, trigger) {
         // Hook for extending behavior before the dialog opens
     }
 
     /**
      * After the dialog opens.
      */
-    afterOpen() {
+    afterOpen(dialog, trigger) {
         // Hook for extending behavior after the dialog opens
     }
 
     /**
      * Before the dialog closes.
      */
-    beforeClose() {
+    beforeClose(dialog, trigger) {
         // Hook for extending behavior before the dialog closes
     }
 
     /**
      * After the dialog closes.
      */
-    afterClose() {
+    afterClose(dialog, trigger) {
         // Hook for extending behavior after the dialog closes
     }
 

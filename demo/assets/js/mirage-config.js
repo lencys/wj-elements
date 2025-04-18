@@ -128,7 +128,7 @@ function makeServer() {
             const size = +request.queryParams.size;
 
             let search = request.params.search;
-            let data = schema.options.where((option) => option.text.toLowerCase().includes(search.toLowerCase()));
+            let data = schema.options.where((option) => option.text.toLowerCase().includes(search.toLowerCase()) || option.label.toLowerCase().includes(search.toLowerCase()));
 
             let paginatedOptions = data.slice(page * size, (page + 1) * size);
             let options = this.serialize(paginatedOptions).options;

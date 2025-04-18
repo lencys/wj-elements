@@ -31,9 +31,7 @@ export default class Radio extends WJElement {
      */
     set checked(value) {
         this._checked = value;
-
-        if (value) this.setAttribute('checked', '');
-        else this.removeAttribute('checked');
+        this.toggleAttribute('checked', value);
     }
 
     /**
@@ -88,13 +86,13 @@ export default class Radio extends WJElement {
 
         this.input = document.createElement('input');
         this.input.type = 'radio';
-        this.input.id = 'radio';
-        this.input.name = this.name + '-radio';
+        this.input.id = this.value + '-radio';
+        this.input.name = this.value + '-radio';
         this.input.checked = this.hasAttribute('checked');
         this.input.disabled = this.hasAttribute('disabled');
 
         let label = document.createElement('label');
-        label.htmlFor = 'radio';
+        label.htmlFor = this.value + '-radio';
         label.innerHTML = '<slot></slot>';
 
         native.appendChild(this.input);
@@ -110,8 +108,8 @@ export default class Radio extends WJElement {
      */
     afterDraw() {
         if (!this.hasAttribute('disabled')) {
-            event.addListener(this, 'click', 'wje-radio:change');
-            event.addListener(this, 'click', 'wje-radio:input');
+            event.addListener(this, 'change', 'wje-radio:change');
+            event.addListener(this, 'input', 'wje-radio:input');
         }
     }
 

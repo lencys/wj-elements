@@ -275,10 +275,9 @@ export default class Checkbox extends WJElement {
      * @param {HTMLFormElement} form The form the custom element is associated with.
      */
     formAssociatedCallback(form) {
-        form?.addEventListener('submit', () => {
-            // this.validateInput();
-            // this.propagateValidation();
-        });
+        if (form) {
+            this.internals.setFormValue(this.value);
+        }
     }
 
     /**

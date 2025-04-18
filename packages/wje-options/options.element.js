@@ -15,18 +15,20 @@ import Option from '../wje-option/option.js';
  */
 export default class Options extends WJElement {
     /**
+     * Stores the loaded options.
+     * @type {Array}
+     * @private
+     */
+    #loadedOptions = [];
+
+    #drawPreloadedElements = []
+
+    /**
      * Creates an instance of Options.
      * @class
      */
     constructor() {
         super();
-
-        /**
-         * Stores the loaded options.
-         * @type {Array}
-         * @private
-         */
-        this._loadedOptions = [];
     }
 
     dependencies = {
@@ -228,7 +230,7 @@ export default class Options extends WJElement {
      * @type {Array}
      */
     get loadedOptions() {
-        return this._loadedOptions;
+        return this.#loadedOptions;
     }
 
     /**
@@ -236,7 +238,20 @@ export default class Options extends WJElement {
      * @type {Array}
      */
     set loadedOptions(loadedOptions) {
-        this._loadedOptions = loadedOptions;
+        this.#loadedOptions = loadedOptions;
+    }
+
+    /**
+     * Array of preloaded elements.
+     * @type {Array}
+     * @private
+     */
+    get drawPreloadedElements() {
+        return this.#drawPreloadedElements;
+    }
+
+    set drawPreloadedElements(elements) {
+        this.#drawPreloadedElements = elements;
     }
 
     /**
@@ -265,9 +280,9 @@ export default class Options extends WJElement {
         fragment.appendChild(slot);
 
         if (this.hasAttribute('lazy')) {
-            const list = document.createElement('wje-list');
 
             if (this.contains(this.infiniteScroll)) {
+                this.drawPreloadedElements.forEach((el) => { el.remove() });
                 this.loadedOptions = [];
                 this.infiniteScroll.placementObj.innerHTML = '';
                 this.infiniteScroll.totalPages = 0;
@@ -280,6 +295,8 @@ export default class Options extends WJElement {
             infiniteScroll.setAttribute('placement', 'wje-list');
             infiniteScroll.setAttribute('height', this.dropdownHeight);
             infiniteScroll.setAttribute('object-name', this.optionArrayPath);
+
+            const list = document.createElement('wje-list');
             infiniteScroll.append(list);
 
             infiniteScroll.dataToHtml = this.htmlItem;
@@ -298,11 +315,15 @@ export default class Options extends WJElement {
                 return filteredOptions;
             };
 
-            if (this.hasAttribute('attached') && !this.contains(this.infiniteScroll)) {
+            if (this.hasAttribute('attached')) {
                 this.appendChild(infiniteScroll);
+                this.drawPreloadedElements.forEach((el) => {
+                    list.appendChild(el);
+                })
             }
 
             this.infiniteScroll = infiniteScroll;
+
         } else {
             this.response = await this.getPages();
             let optionsData = this.filterOutDrawnOptions(this.response);
@@ -435,7 +456,9 @@ export default class Options extends WJElement {
             return;
         }
 
-        this.prepend(this.htmlItem(optionData));
+        const item = this.htmlItem(optionData);
+        this.#drawPreloadedElements.push(item);
+        this.prepend(item);
         this.loadedOptions.push(optionData);
     }
 

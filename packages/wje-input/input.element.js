@@ -125,14 +125,6 @@ export default class Input extends WJElement {
     }
 
     /**
-     * Getter for the type attribute.
-     * @returns {string} The type of the input element.
-     */
-    get type() {
-        return this.localName;
-    }
-
-    /**
      * Getter for the validity attribute.
      * @returns {ValidityState} The validity state of the input.
      */
@@ -503,10 +495,13 @@ export default class Input extends WJElement {
      * @param {HTMLFormElement} form The form the custom element is associated with.
      */
     formAssociatedCallback(form) {
-        form?.addEventListener('submit', () => {
-            this.validateInput();
-            this.propagateValidation();
-        });
+        if (form) {
+            this.internals.setFormValue(this.value);
+            form?.addEventListener('submit', () => {
+                this.validateInput();
+                this.propagateValidation();
+            });
+        }
     }
 
     /**

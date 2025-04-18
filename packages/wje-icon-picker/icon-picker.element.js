@@ -185,7 +185,16 @@ export default class IconPicker extends WJElement {
         this.picker = picker;
         this.infiniteScroll = infiniteScroll;
 
-        this.setupInfiniteScroll();
+        this.infiniteScroll.dataToHtml = this.dataToHtml;
+        this.infiniteScroll.compareFunction = (i, item) => i.name === item.name;
+        this.infiniteScroll.setCustomData = (page = 0) => {
+            return {
+                data: this.transformedObjects.slice(page * this.size, page * this.size + this.size),
+                page: page,
+                size: this.size,
+                totalPages: Math.round(this.transformedObjects.length / this.size),
+            };
+        };
 
         return fragment;
     }
@@ -200,7 +209,6 @@ export default class IconPicker extends WJElement {
 
         // udalost po vymazani inputu
         this.addEventListener('wje-input:clear', () => {
-            this.setupInfiniteScroll(); // reset infinite scroll
             this.clearIconsContainer(); // clear icons container
             this.infiniteScroll.scrollEvent(); // bind scroll event
             this.infiniteScroll.loadPages(0); // load first page
@@ -330,21 +338,6 @@ export default class IconPicker extends WJElement {
 
         return iconItem;
     };
-
-    /**
-     * Sets up the infinite scroll for the component.
-     */
-    setupInfiniteScroll() {
-        this.infiniteScroll.dataToHtml = this.dataToHtml;
-        this.infiniteScroll.setCustomData = (page = 0) => {
-            return {
-                data: this.transformedObjects.slice(page * this.size, page * this.size + this.size),
-                page: page,
-                size: this.size,
-                totalPages: Math.round(this.transformedObjects.length / this.size),
-            };
-        };
-    }
 
     /**
      * Gets the category of the tags.

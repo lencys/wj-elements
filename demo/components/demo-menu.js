@@ -113,7 +113,7 @@ template.innerHTML = `
   </div>`;
 
 export default class DemoMenu extends WJElement {
-   constructor() {
+  constructor() {
     super();
   }
 
@@ -127,7 +127,6 @@ export default class DemoMenu extends WJElement {
   }
 
   openModalFn() {
-    debugger;
   }
 
   afterDraw() {

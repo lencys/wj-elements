@@ -166,12 +166,9 @@ export default class RadioGroup extends WJElement {
      * Adds event listeners after the component is drawn. Handles the selection of radio buttons.
      */
     afterDraw() {
-        this.checkRadio(this.value);
-
+        console.log("BINDING GROUP")
         this.addEventListener('wje-radio:input', (e) => {
-            if (this.checkRadio(e.detail.context.value)) {
-                this.value = e.detail.context.value;
-            }
+            this.value = e.detail.context.value;
         });
     }
 
@@ -197,16 +194,17 @@ export default class RadioGroup extends WJElement {
      * Sets the given radio button to checked.
      */
     checkRadio(value) {
-        this.removeCheck();
+        let foundRadio = false
+        this.getAllElements().forEach((el) => {
+            if (el instanceof Radio) {
+                el.checked = el.value === value;
+                if (el.checked) {
+                    foundRadio = true
+                }
+            }
+        });
 
-        const radio = this.getRadioByValue(value);
-        if (radio) {
-            radio.checked = true;
-            return true;
-        }
-
-        console.error(`Radio with value ${value} not found`);
-        return false;
+        return foundRadio
     }
 
     /**
@@ -215,6 +213,17 @@ export default class RadioGroup extends WJElement {
      */
     getAllElements() {
         return Array.from(this.children);
+    }
+
+    /**
+     * @summary Callback function that is called when the custom element is associated with a form.
+     * This function adds an event listener to the form's submit event, which validates the input and propagates the validation.
+     * @param {HTMLFormElement} form The form the custom element is associated with.
+     */
+    formAssociatedCallback(form) {
+        if (form) {
+            this.internals.setFormValue(this.value);
+        }
     }
 
     /**

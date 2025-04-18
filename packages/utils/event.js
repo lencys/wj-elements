@@ -111,12 +111,16 @@ class Event {
         };
 
         // skontrolujeme ci uz tento listener neexistuje
-        if (!this.listenerExists(element, originalEvent, obj)) {
+        if (!this.isRecordExists(recordListeners[originalEvent], obj)) {
+            if (!this.listenerExists(recordListeners[originalEvent], obj)) {
+                element.addEventListener(originalEvent, listener, options);
+                obj.unbind = () => {
+                    element.removeEventListener(originalEvent, listener, options);
+                };
+            }
+
             recordListeners[originalEvent].push(obj);
-            element.addEventListener(originalEvent, listener, options);
-            obj.unbind = () => {
-                element.removeEventListener(originalEvent, listener, options);
-            };
+
         } else {
             // in case we want to add the same listener multiple times trigger a warning for a better debugging
             //console.info("Listener already exists", element, originalEvent);
@@ -132,20 +136,22 @@ class Event {
     deepEqual(x, y) {
         return x && y && typeof x === 'object' && typeof x === typeof y
             ? Object.keys(x).length === Object.keys(y).length &&
-                  Object.keys(x).every((key) => this.deepEqual(x[key], y[key]))
+            Object.keys(x).every((key) => this.deepEqual(x[key], y[key]))
             : x === y;
     }
 
     /**
      * Check if the listener already exists on the element.
-     * @param element
-     * @param event
-     * @param listener
+     * @param records
+     * @param eventObj
      * @returns
      */
-    listenerExists(element, event, listener) {
-        let record = this.findRecordByElement(element);
-        return record[event].some((e) => this.deepEqual(e, listener));
+    listenerExists(records, eventObj) {
+        return records.some((e) => e.listener === eventObj.listener);
+    }
+
+    isRecordExists(records, eventObj) {
+        return records.some((e) => this.deepEqual(e, eventObj))
     }
 
     /**
@@ -170,10 +176,9 @@ class Event {
 
             if (!listeners.length) {
                 delete records[originalEvent];
+                element?.removeEventListener(originalEvent, listener, options);
             }
         }
-
-        element?.removeEventListener(originalEvent, listener, options);
     }
 
     /**
@@ -188,6 +193,7 @@ class Event {
                 for (let event in listeners) {
                     listeners[event].forEach((e) => {
                         element.removeEventListener(event, e.listener, e.options);
+                        e.unbind();
                     });
                 }
 

@@ -162,7 +162,9 @@ export default class Select extends WJElement {
      */
     set value(value) {
         if (Array.isArray(value)) {
-            this.internals.setFormValue(JSON.stringify(value));
+            const formData = new FormData();
+            value.forEach(v => formData.append(this.name, v));
+            this.internals.setFormValue(formData);
         } else {
             this.internals.setFormValue(value);
         }
@@ -327,7 +329,7 @@ export default class Select extends WJElement {
      * @returns {Array<string>}
      */
     static get observedAttributes() {
-        return ['active', 'value'];
+        return ['active', 'value', 'disabled', 'multiple', 'label', 'placeholder', 'max-height', 'max-options', 'variant', 'placement'];
     }
 
     /**
@@ -454,6 +456,7 @@ export default class Select extends WJElement {
                 this._wasOppened = true;
 
                 const optionsElement = this.querySelector('wje-options');
+                optionsElement.setAttribute('lazy', '');
                 optionsElement.setAttribute('attached', '');
             });
         } else {
@@ -492,18 +495,18 @@ export default class Select extends WJElement {
      */
     afterDraw() {
         this.input.addEventListener('focus', (e) => {
-            this.labelElement.classList.add('fade');
+            this.labelElement?.classList.add('fade');
             this.native.classList.add('focused');
         });
 
         this.input.addEventListener('blur', (e) => {
             this.native.classList.remove('focused');
-            if (!e.target.value) this.labelElement.classList.remove('fade');
+            if (!e.target.value) this.labelElement?.classList.remove('fade');
         });
 
         this.addEventListener('wje-option:change', this.optionChange);
 
-        this.clear.addEventListener('wje-button:click', (e) => {
+        this.clear?.addEventListener('wje-button:click', (e) => {
             this.getAllOptions().forEach((option) => {
                 option.selected = false;
                 option.removeAttribute('selected');
@@ -544,6 +547,8 @@ export default class Select extends WJElement {
      * @param {Event} e The event.
      */
     optionChange = (e) => {
+        e.stopPropagation()
+        e.stopImmediatePropagation()
         let allOptions = this.getAllOptions();
 
         if (!this.hasAttribute('multiple')) {
@@ -551,7 +556,7 @@ export default class Select extends WJElement {
                 option.selected = false;
                 option.removeAttribute('selected');
             });
-            this.popup.removeAttribute('active');
+            this.popup.hide();
         }
 
         e.target.selected = !e.target.hasAttribute('selected');
@@ -607,10 +612,9 @@ export default class Select extends WJElement {
                 this.chips.innerHTML = this.placeholder;
                 this.input.value = '';
             } else {
+                if (option !== null) this.chips.appendChild(this.getChip(option));
                 if (this.counterEl instanceof HTMLElement || length > +this.maxOptions) {
                     this.counter();
-                } else {
-                    if (option !== null) this.chips.appendChild(this.getChip(option));
                 }
             }
         } else {
@@ -665,9 +669,8 @@ export default class Select extends WJElement {
         }
 
         if (this.selectedOptions.length > 0) {
-            this.selectedOptions.forEach((option, index) => {
-                this.selectionChanged(option, ++index);
-            });
+            this.selectionChanged(this.selectedOptions.at(0), this.selectedOptions.length);
+
         } else {
             this.selectionChanged();
         }
@@ -836,10 +839,9 @@ export default class Select extends WJElement {
      * @param {HTMLFormElement} form The form the custom element is associated with.
      */
     formAssociatedCallback(form) {
-        form?.addEventListener('submit', () => {
-            // this.validateInput();
-            // this.propagateValidation();
-        });
+        if (form) {
+            this.internals.setFormValue(this.value);
+        }
     }
 
     /**
@@ -893,5 +895,7 @@ export default class Select extends WJElement {
      */
     formDisabledCallback(disabled) {
         console.warn('formDisabledCallback not implemented yet');
+        this.native?.classList.toggle('disabled', disabled);
+        this.toggleAttribute('disabled', disabled);
     }
 }
