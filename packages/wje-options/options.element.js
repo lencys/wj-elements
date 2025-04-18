@@ -316,7 +316,6 @@ export default class Options extends WJElement {
             };
 
             event.addListener(infiniteScroll, 'wje-infinite-scroll:load', null, (e) => {
-                debugger
                 event.dispatchCustomEvent(this, 'wje-options:load', {});
             });
 

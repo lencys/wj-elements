@@ -527,7 +527,6 @@ export default class Select extends WJElement {
         this.selections(true);
 
         this.list.addEventListener('wje-options:load', (e) => {
-            console.log('load', this.selectedOptions);
             // todo select options from this.selectedOptions
             this.selectedOptions.forEach((option) => {
                 this.getAllOptions().forEach((el) => {
