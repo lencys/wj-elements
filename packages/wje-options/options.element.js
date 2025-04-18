@@ -266,7 +266,7 @@ export default class Options extends WJElement {
      * Fetches the pages and creates the options elements.
      */
     afterDraw() {
-        event.dispatchCustomEvent(this, 'wje-options:load', {}); // nepomohlo to, v ff stale je scroll hore
+        // event.dispatchCustomEvent(this, 'wje-options:load', {}); // nepomohlo to, v ff stale je scroll hore
     }
 
     /**
@@ -314,6 +314,11 @@ export default class Options extends WJElement {
 
                 return filteredOptions;
             };
+
+            event.addListener(infiniteScroll, 'wje-infinite-scroll:load', null, (e) => {
+                debugger
+                event.dispatchCustomEvent(this, 'wje-options:load', {});
+            });
 
             if (this.hasAttribute('attached')) {
                 this.appendChild(infiniteScroll);

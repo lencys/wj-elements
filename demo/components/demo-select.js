@@ -203,9 +203,9 @@ export default class DemoSelect extends WJElement {
 
     const lazySelect = document.querySelector('#lazy-update');
 
-    lazySelect.addOptions([{ text: 'aaaa', value: 'aeee' }]);
-    lazySelect.selectOptions(['aeee'], false);
-    lazySelect.value = ['aeee'];
+    lazySelect.addOptions([{ text: 'aeee', value: 'aeee' }, { text: 'beee', value: 'beee' }]);
+    lazySelect.selectOptions(['aeee', 'beee'], false);
+    // lazySelect.value = ['aeee','beee'];
 
     // <wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
     //       <wje-options url="/api/options" item-value="value"item-text="text"></wje-options>

@@ -143,6 +143,8 @@ export default class Select extends WJElement {
          * @description A reference to the list element, initially null.
          */
         this.list = null;
+
+        this.selectedOptions = []
     }
 
     dependencies = {
@@ -161,7 +163,7 @@ export default class Select extends WJElement {
      * @param {string} value The value to set.
      */
     set value(value) {
-        if (Array.isArray(value)) {
+        if (this.hasAttribute('multiple')) {
             const formData = new FormData();
             value.forEach(v => formData.append(this.name, v));
             this.internals.setFormValue(formData);
@@ -408,6 +410,7 @@ export default class Select extends WJElement {
         let clear = document.createElement('wje-button');
         clear.setAttribute('fill', 'link');
         clear.setAttribute('part', 'clear');
+        clear.setAttribute('stop-propagation', '');
 
         let clearIcon = document.createElement('wje-icon');
         clearIcon.setAttribute('name', 'x');
@@ -507,6 +510,10 @@ export default class Select extends WJElement {
         this.addEventListener('wje-option:change', this.optionChange);
 
         this.clear?.addEventListener('wje-button:click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            this.selectedOptions = [];
+
             this.getAllOptions().forEach((option) => {
                 option.selected = false;
                 option.removeAttribute('selected');
@@ -516,9 +523,21 @@ export default class Select extends WJElement {
             e.stopPropagation();
         });
 
+        this.selectedOptions = this.getSelectedOptions();
         this.selections(true);
 
         this.list.addEventListener('wje-options:load', (e) => {
+            console.log('load', this.selectedOptions);
+            // todo select options from this.selectedOptions
+            this.selectedOptions.forEach((option) => {
+                this.getAllOptions().forEach((el) => {
+                    if (el.value === option.value) {
+                        el.selected = true;
+                        el.setAttribute('selected', '');
+                    }
+                });
+            })
+
             this.list.scrollTo(0, 0);
         });
 
@@ -549,20 +568,45 @@ export default class Select extends WJElement {
     optionChange = (e) => {
         e.stopPropagation()
         e.stopImmediatePropagation()
+
         let allOptions = this.getAllOptions();
 
         if (!this.hasAttribute('multiple')) {
             allOptions.forEach((option) => {
-                option.selected = false;
-                option.removeAttribute('selected');
+                if (option.value === e.target.value) {
+                    this.processClickedOption(option);
+
+                } else {
+                    option.selected = false;
+                    option.removeAttribute('selected');
+                }
             });
             this.popup.hide();
+        } else {
+            this.processClickedOption(e.target, true);
         }
-
-        e.target.selected = !e.target.hasAttribute('selected');
 
         this.selections();
     };
+
+    processClickedOption = (option, multiple = false) => {
+        const isSelected = option.hasAttribute("selected")
+        option.selected = !isSelected;
+
+        if (isSelected) {
+            option.removeAttribute('selected');
+            this.filterOutOption(option);
+        } else {
+            option.setAttribute('selected', '');
+            this.selectedOptions = multiple ? [...this.selectedOptions, option] : [option];
+        }
+    }
+
+    filterOutOption = (option) => {
+        this.selectedOptions = this.selectedOptions.filter((sOption) => {
+            return sOption.value !== option.value;
+        });
+    }
 
     /**
      * Returns all the options as HTML.
@@ -577,7 +621,7 @@ export default class Select extends WJElement {
      * @returns {NodeList} The selected options as HTML.
      */
     getSelectedOptions() {
-        return this.querySelectorAll('wje-option[selected]');
+        return Array.from(this.querySelectorAll('wje-option[selected]'));
     }
 
     /**
@@ -585,18 +629,12 @@ export default class Select extends WJElement {
      * @returns {Array} The selected options.
      */
     getSelected() {
-        let selectedOptions = this.getSelectedOptions();
-
-        selectedOptions = Array.isArray(selectedOptions) ? selectedOptions : Array.from(selectedOptions);
-
-        selectedOptions = selectedOptions.map((option) => {
+        return this.selectedOptions.map((option) => {
             return {
                 value: option.value,
                 text: option.textContent.trim(),
             };
         });
-
-        return selectedOptions;
     }
 
     /**
@@ -656,10 +694,6 @@ export default class Select extends WJElement {
      * selections(true);
      */
     selections(silence = false) {
-        let options = this.getSelectedOptions();
-
-        this.selectedOptions = Array.isArray(options) ? options : Array.from(options);
-
         if (this.selectedOptions.length >= +this.maxOptions) {
             this.counterEl = null;
         }
@@ -728,11 +762,8 @@ export default class Select extends WJElement {
      * @param {Event} e The event.
      */
     removeChip = (e) => {
-        let option = e.target.option;
-        option.selected = false;
-        option.removeAttribute('selected');
         e.target.parentNode.removeChild(e.target);
-
+        this.processClickedOption(e.target.option, true);
         this.selections();
     };
 
@@ -812,7 +843,7 @@ export default class Select extends WJElement {
         let option = this.querySelector(`wje-option[value="${value}"]`);
 
         if (option) {
-            option.selected = true;
+            this.processClickedOption(option, this.hasAttribute('multiple'));
         }
 
         if (this.drawingStatus > this.drawingStatuses.START) this.selections(silent);

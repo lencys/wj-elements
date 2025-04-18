@@ -320,8 +320,6 @@ export default class InfiniteScroll extends WJElement {
                 // if there is a "container" attribute, find the element
                 if (this.hasAttribute('placement')) this.placementObj = this.querySelector(this.placement);
 
-                event.dispatchCustomEvent(this, 'wje-infinite-scroll:load', response);
-
                 this.response = response;
                 this.#loadedItems = this.objectName ? response[this.objectName] : response;
                 const notDrawnItems = this.#loadedItems.filter(
@@ -331,6 +329,8 @@ export default class InfiniteScroll extends WJElement {
                 this.#drawnItems.push(...notDrawnItems);
 
                 this.isLoading.push(page);
+
+                event.dispatchCustomEvent(this, 'wje-infinite-scroll:load', response);
             } else {
                 event.dispatchCustomEvent(this, 'wje-infinite-scroll:complete');
                 this.endingEl.classList.add('show');
