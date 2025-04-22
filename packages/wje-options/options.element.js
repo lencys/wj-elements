@@ -201,6 +201,23 @@ export default class Options extends WJElement {
     get searchParamName() {
         return this.getAttribute('search-param-name') || 'search';
     }
+
+    /**
+     * Sets the queryParams attribute on the element.
+     * @param {string} value The query parameters to set, represented as a string.
+     */
+    set queryParams(value) {
+        this.setAttribute('query-params', value);
+    }
+
+    /**
+     * Retrieves the value of the 'query-params' attribute.
+     * @returns {string | null} The value of the 'query-params' attribute, or null if the attribute is not set.
+     */
+    get queryParams() {
+        return this.getAttribute('query-params');
+    }
+
     /**
      * Checks if the lazy attribute is present.
      * @returns {boolean} True if the lazy attribute is present, false otherwise.
@@ -302,10 +319,10 @@ export default class Options extends WJElement {
             infiniteScroll.dataToHtml = this.htmlItem;
 
             infiniteScroll.setCustomData = async (page, signal) => {
-                let processedUrl = `${this.url}${this.search ? `/${this.search}` : ''}?page=${page}&size=${this.lazyLoadSize}`;
+                let processedUrl = `${this.url}${this.search ? `/${this.search}` : ''}?page=${page}&size=${this.lazyLoadSize}${this.queryParams ? `&${this.queryParams}` : ''}`;
 
                 if (this.hasSearchToQueryParams) {
-                    processedUrl = `${this.url}?page=${page}&size=${this.lazyLoadSize}${this.search ? `&${this.searchParamName}=${this.search}` : ''}`;
+                    processedUrl = `${this.url}?page=${page}&size=${this.lazyLoadSize}${this.queryParams ? `&${this.queryParams}` : ''}${this.search ? `&${this.searchParamName}=${this.search}` : ''}`;
                 }
 
                 let res = await this.service.get(processedUrl, null, false, signal);
