@@ -108,7 +108,7 @@ export default class Radio extends WJElement {
      */
     afterDraw() {
         if (!this.hasAttribute('disabled')) {
-            event.addListener(this, 'change', 'wje-radio:change');
+            event.addListener(this.input, 'change', 'wje-radio:change');
             event.addListener(this, 'input', 'wje-radio:input');
         }
     }

@@ -12,7 +12,7 @@ template.innerHTML = `
     <h2>Basic</h2>
     <div class="playground">
       <div class="content" style="display: block;">
-        <wje-radio-group value="dog">
+        <wje-radio-group value="dog" id="radio-group-animal">
           <wje-radio value="cat">Cat</wje-radio>
           <wje-radio value="elephant" disabled="">Elephant</wje-radio>
           <wje-radio indeterminate value="rabbit" >Rabbit</wje-radio>
@@ -73,7 +73,7 @@ template.innerHTML = `
   </div>`;
 
 export default class DemoRadio extends WJElement {
-   constructor() {
+  constructor() {
     super();
   }
 
@@ -89,6 +89,15 @@ export default class DemoRadio extends WJElement {
   afterDraw() {
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(this.context);
+
+    this.context.querySelector("#radio-group-animal").addEventListener('wje-radio:change', (e) => {
+      console.log('Radio group changed:', e.detail);
+    })
+
+    this.context.querySelector("#radio-group-animal").addEventListener('wje-radio:input', (e) => {
+      console.log('Radio group inputed:', e.detail);
+    })
+
   }
 }
 

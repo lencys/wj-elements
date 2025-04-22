@@ -166,7 +166,8 @@ export default class RadioGroup extends WJElement {
      * Adds event listeners after the component is drawn. Handles the selection of radio buttons.
      */
     afterDraw() {
-        console.log("BINDING GROUP")
+        this.checkRadio(this.value);
+
         this.addEventListener('wje-radio:input', (e) => {
             this.value = e.detail.context.value;
         });
