@@ -21,13 +21,14 @@ import DocsCards from '@components/global/DocsCards';
 <link rel="alternate" href="https://elements.webjet.sk/" hreflang="x-default" />
 <link rel="alternate" href="https://elements.webjet.sk/" hreflang="en" />
 <meta property="og:url" content="https://elements.webjet.sk/" />
-<style>{`
-    docs-cards > a{
-      display: flex;
-    }
-`}</style>
 
-<script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.160/dist/wje-master.min.js"></script>
+[//]: # "<style>{`"
+[//]: # "    docs-cards > a{"
+[//]: # "      display: flex;"
+[//]: # "    }"
+[//]: # "  `}</style>"
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.165/dist/wje-master.min.js"></script>
 
 </head>
 
@@ -36,29 +37,28 @@ They offer easy integration with React and Vue.
 
 Start creating your application [by installing WebJET elements](intro/install.md).
 
-<br />
 <intro-end />
 
 <DocsCards>
 
-{' '} <a href="intro/install">\ <wj-card>\ <wj-card-header>\ <wj-icon name="world-download" size="large"></wj-icon>\ <wj-card-title>Installation guide</wj-card-title>\ </wj-card-header>\ <wj-card-content><p>Detailed installation guide for WebJET elements.</p>   
-</wj-card-content>   
-</wj-card>   
+{' '} <a href="intro/install">\ <wje-card>\ <wje-card-header>\ <wje-icon name="world-download" size="large"></wje-icon>\ <wje-card-title>Installation guide</wje-card-title>\ </wje-card-header>\ <wje-card-content><p>Detailed installation guide for WebJET elements.</p>   
+</wje-card-content>   
+</wje-card>   
 </a>
 
-{' '} <a href="components"> <wj-card> <wj-card-header> <wj-icon name="layout-dashboard" size="large"></wj-icon> <wj-card-title href="intro/cli">Elements</wj-card-title> </wj-card-header> <wj-card-content><p>Take a look at the library of available WebJET elements.</p>
-</wj-card-content>
-</wj-card>
+{' '} <a href="components"> <wje-card> <wje-card-header> <wje-icon name="layout-dashboard" size="large"></wje-icon> <wje-card-title href="intro/cli">Elements</wje-card-title> </wje-card-header> <wje-card-content><p>Take a look at the library of available WebJET elements.</p>
+</wje-card-content>
+</wje-card>
 </a>
 
-{' '} <a href="api/layout"> <wj-card> <wj-card-header> <wj-icon name="layout" size="large"></wj-icon> <wj-card-title>Layout</wj-card-title> </wj-card-header> <wj-card-content><p>Find out how to create a page layout to suit your needs.</p>
-</wj-card-content>
-</wj-card>
+{' '} <a href="api/layout"> <wje-card> <wje-card-header> <wje-icon name="layout" size="large"></wje-icon> <wje-card-title>Layout</wje-card-title> </wje-card-header> <wje-card-content><p>Find out how to create a page layout to suit your needs.</p>
+</wje-card-content>
+</wje-card>
 </a>
 
-{' '} <a href="theming/basics"> <wj-card> <wj-card-header> <wj-icon name="brush" size="large"></wj-icon> <wj-card-title>Editing styles</wj-card-title> </wj-card-header> <wj-card-content><p>Learn how to easily customize your Elements visual.</p>
-</wj-card-content>
-</wj-card>
+{' '} <a href="theming/basics"> <wje-card> <wje-card-header> <wje-icon name="brush" size="large"></wje-icon> <wje-card-title>Editing styles</wje-card-title> </wje-card-header> <wje-card-content><p>Learn how to easily customize your Elements visual.</p>
+</wje-card-content>
+</wje-card>
 </a>
 
 </DocsCards>

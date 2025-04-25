@@ -25,13 +25,33 @@ Dropdown element slúži na zobrazenie kontextového menu po kliknutí na tlači
 
 ## Základné použitie
 
-<div className="xlarge">
-
 import Basic from '@site/static/usage/v1/dropdown/basic/index.md';
 
 <Basic />
 
-</div>
+## Dropdown s dialógom
+
+import OpenDialog from '@site/static/usage/v1/dropdown/open-dialog/index.md';
+
+<OpenDialog />
+
+## Zobrazenie na hover
+
+import Hover from '@site/static/usage/v1/dropdown/hover/index.md';
+
+<Hover />
+
+## Dropdown s tooltipom
+
+import Tooltip from '@site/static/usage/v1/dropdown/tooltip/index.md';
+
+<Tooltip />
+
+## Dropdown s avatarom
+
+import Avatar from '@site/static/usage/v1/dropdown/inner-avatar/index.md';
+
+<Avatar />
 
 ## Atribúty a Vlastnosti
 

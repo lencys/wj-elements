@@ -23,7 +23,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The Chip component is a universal element that is a small visual block containing various other elements such as avatars, text and icons. It offers options to customize colors, states and more.
 
-## Basic Usage
+## Basic use
 
 import Basic from '@site/static/usage/v1/chip/basic/index.md';
 

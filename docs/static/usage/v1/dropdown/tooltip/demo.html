@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropdown</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script type="module" src="../../../../wje-elementy/wje-master.js"></script>
+    <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content" style="flex-direction: column; justify-content: flex-start; margin-bottom: 30%">
+        <wje-tooltip id="custom-tooltip" content="Tooltip content" placement="right" selector=".my-selector">
+          <wje-dropdown id="custom-dropdown-tooltip" placement="right-start" offset="5" collapsible>
+            <wje-button slot="trigger" class="my-selector">CLICK</wje-button>
+            <wje-menu class="custom-menu" active>
+              <h5 style="margin: 0;">Petr Rahman</h5>
+              <p class="hint-text">Frontend Developer</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
+            </wje-menu>
+          </wje-dropdown>
+        </wje-tooltip>
+      </div>
+    </div>
+  </body>
+</html>

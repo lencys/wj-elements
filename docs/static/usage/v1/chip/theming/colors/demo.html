@@ -6,17 +6,26 @@
     <title>Chip</title>
     <link rel="stylesheet" href="../../../../common.css" />
     <script src="../../../../common.js"></script>
-    <script type="module" src="../../../../../wje-elementy/wje-master.js"></script>
     <link rel="stylesheet" href="../../../../../wje-elementy/light.css" />
     <link rel="stylesheet" href="../../../../../wje-elementy/dark.css" />
     <link rel="stylesheet" href="../../../../../wje-elementy/styles.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/wje-master.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/styles.min.css">
     <style>
-      .flex-items {
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        row-gap: 2rem;
+      }
+      .content {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
-        max-width: 440px;
+        max-width: 400px!important;
+        gap: 10px;
       }
     </style>
   </head>
@@ -32,6 +41,15 @@
         <wje-chip color="danger">Danger</wje-chip>
         <wje-chip color="info">Info</wje-chip>
         <wje-chip color="menu">Menu</wje-chip>
+      </div>
+      <div class="content">
+        <wje-chip color="primary" removable>Remove Chip</wje-chip>
+        <wje-chip color="complete" removable>Remove Chip</wje-chip>
+        <wje-chip color="success" removable>Remove Chip</wje-chip>
+        <wje-chip color="warning" removable>Remove Chip</wje-chip>
+        <wje-chip color="danger" removable>Remove Chip</wje-chip>
+        <wje-chip color="info" removable>Remove Chip</wje-chip>
+        <wje-chip color="default" removable>Remove Chip</wje-chip>
       </div>
     </div>
   </body>

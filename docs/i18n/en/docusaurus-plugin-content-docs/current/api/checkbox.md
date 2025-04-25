@@ -29,6 +29,18 @@ import Basic from '@site/static/usage/v1/checkbox/basic/index.md';
 
 <Basic />
 
+## Placement End
+
+import End from '@site/static/usage/v1/checkbox/end/index.md';
+
+<End />
+
+## Color
+
+import Color from '@site/static/usage/v1/checkbox/color/index.md';
+
+<Color />
+
 ## Indeterminate checkbox
 
 When the `indeterminate` attribute is added, a checkbox is displayed whose default state is neutral, i.e. neither `true` nor `false`.

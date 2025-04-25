@@ -1335,7 +1335,7 @@
       "methods": [],
       "events": [
         {
-          "event": "click",
+          "event": "wje-button:click",
           "detail": "void",
           "bubbles": true,
           "complexType": {
@@ -1349,7 +1349,7 @@
           "docsTags": []
         },
         {
-          "event": "reset",
+          "event": "wje-button:reset",
           "detail": "void",
           "bubbles": true,
           "complexType": {
@@ -1363,7 +1363,7 @@
           "docsTags": []
         },
         {
-          "event": "submit",
+          "event": "wje-button:submit",
           "detail": "void",
           "bubbles": true,
           "complexType": {
@@ -1377,7 +1377,7 @@
           "docsTags": []
         },
         {
-          "event": "toggle",
+          "event": "wje-button:toggle",
           "detail": "void",
           "bubbles": true,
           "complexType": {
@@ -2373,14 +2373,9 @@
     {
       "filePath": "src/components/chip/chip.tsx",
       "encapsulation": "shadow",
-      "tag": "chip",
+      "tag": "wje-chip",
       "docs": "",
-      "docsTags": [
-        {
-          "name": "virtualProp",
-          "text": "{\"ios\" | \"md\"} mode - The mode determines which platform styles to use."
-        }
-      ],
+      "docsTags": [],
       "usage": {},
       "props": [
         {
@@ -2394,7 +2389,7 @@
           "mutable": true,
           "attr": "active",
           "reflectToAttr": false,
-          "docs": "Ak `true`, zobrazí sa ikona `check`",
+          "docs": "Ak `true`, chip je aktívny a zobrazuje ikonu check.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -2407,55 +2402,17 @@
         },
         {
           "name": "color",
-          "type": "\"danger\" |  \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+          "type": "\"primary\" | \"complete\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"default\" | string",
           "complexType": {
-            "original": "Color",
-            "resolved": "\"danger\" |  \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
-            "references": {
-              "Color": {
-                "location": "import",
-                "path": "../../interface",
-                "id": "src/interface.d.ts::Color"
-              }
-            }
+            "original": "string",
+            "resolved": "string",
+            "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "color",
-          "reflectToAttr": true,
-          "docs": "Určuje farbu pozadia chip elementu. Predvolené možnosti sú `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
+          "reflectToAttr": false,
+          "docs": "Farba chipu. Predvolené možnosti zahŕňajú `primary`, `complete`, `success`, `warning`, `danger`, `info` a `default`.",
           "docsTags": [],
-          "values": [
-            {
-              "value": "danger",
-              "type": "string"
-            },
-            {
-              "value": "primary",
-              "type": "string"
-            },
-            {
-              "value": "neutral",
-              "type": "string"
-            },
-            {
-              "value": "success",
-              "type": "string"
-            },
-            {
-              "value": "complete",
-              "type": "string"
-            },
-            {
-              "value": "warning",
-              "type": "string"
-            },
-            {
-              "type": "string & Record<never, never>"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
           "optional": true,
           "required": false
         },
@@ -2467,10 +2424,32 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "disabled",
           "reflectToAttr": false,
-          "docs": "If `true`, používateľ nemôže s elementom interagovať.",
+          "docs": "Ak `true`, chip je deaktivovaný a nie je možné s ním interagovať.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "removable",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "removable",
+          "reflectToAttr": false,
+          "docs": "Ak `true`, chip je možné odstrániť kliknutím na tlačidlo odstránenia.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -2483,25 +2462,65 @@
         }
       ],
       "methods": [],
-      "events": [],
+      "events": [
+        {
+          "event": "wje:chip-remove",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitované pri odstránení chipu.",
+          "docsTags": []
+        }
+      ],
       "listeners": [],
       "styles": [
         {
-          "name": "--background",
+          "name": "--wje-chip-border-radius",
           "annotation": "prop",
-          "docs": "Pozadie elementu chip"
+          "docs": "Zaoblenie okrajov chipu."
         },
         {
-          "name": "--color",
+          "name": "--wje-chip-background-color",
           "annotation": "prop",
-          "docs": "Farba elementu chip"
+          "docs": "Farba pozadia chipu."
+        },
+        {
+          "name": "--wje-chip-color",
+          "annotation": "prop",
+          "docs": "Farba textu chipu."
+        },
+        {
+          "name": "--wje-chip-padding",
+          "annotation": "prop",
+          "docs": "Vnútorné odsadenie chipu."
         }
       ],
-      "slots": [],
-      "parts": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Hlavný obsah chipu."
+        },
+        {
+          "name": "end",
+          "docs": "Slot pre dodatočný obsah na konci chipu."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Odkazuje na natívny wrapper element chipu."
+        },
+        {
+          "name": "remove",
+          "docs": "Tlačidlo na odstránenie chipu."
+        }
+      ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": ["wje-icon", "wje-button"],
+      "dependencyGraph": {
+        "wje-chip": ["wje-icon", "wje-button"]
+      }
     },
     {
       "filePath": "src/components/color-picker/color-picker.tsx",
@@ -2512,14 +2531,52 @@
       "usage": {},
       "props": [],
       "methods": [],
-      "events": [],
+      "events": [
+        {
+          "name": "wje-color-picker:select",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitované pri výbere farby s hodnotou farby vo viacerých formátoch.",
+          "docsTags": []
+        }
+      ],
       "listeners": [],
       "styles": [],
-      "slots": [],
-      "parts": [],
+      "slots": [
+        {
+          "name": "anchor",
+          "docs": "Slot pre anchor element, ktorý zobrazuje dropdown výberu farby."
+        }
+      ],
+      "parts": [
+        {
+          "name": "anchor",
+          "docs": "Anchor element."
+        },
+        {
+          "name": "picker",
+          "docs": "Hlavný kontajner na výber farieb."
+        },
+        {
+          "name": "marker",
+          "docs": "Označovač výberu farby."
+        }
+      ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "wje-slider",
+        "wje-input",
+        "wje-popup"
+      ],
+      "dependencyGraph": {
+        "wje-color-picker": [
+          "wje-slider",
+          "wje-input",
+          "wje-popup"
+        ]
+      }
     },
     {
       "filePath": "src/components/copy-button/copy-button.tsx",
@@ -2597,13 +2654,73 @@
         }
       ],
       "methods": [],
-      "events": [],
+      "events": [
+        {
+          "event": "blur",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Event blur sa vyvolá keď element stratí focus.",
+          "docsTags": []
+        },
+        {
+          "event": "click",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Event click sa vyvolá po kliknutí na tlačidlo.",
+          "docsTags": []
+        },
+        {
+          "event": "focus",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Event focus sa vyvolá keď element získa focus.",
+          "docsTags": []
+        },
+        {
+          "event": "wje-copy-button:click",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Event wje-copy-button:click sa vyvolá po kliknutí na tlačidlo.",
+          "docsTags": []
+        }
+      ],
       "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [],
+      "dependencies": [
+        "wje-icon",
+        "wje-tooltip"
+      ],
       "dependencyGraph": {}
     },
     {
@@ -2611,151 +2728,586 @@
       "encapsulation": "shadow",
       "tag": "dialog",
       "docs": "",
-      "docsTags": [],
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "header - Obsah je umiestnený v hornej časti dialógu v sekcii hlavičky."
+        },
+        {
+          "name": "slot",
+          "text": "footer - Obsah je umiestnený v dolnej časti dialógu v sekcii pätičky."
+        },
+        {
+          "name": "part",
+          "text": "header - Obalový element pre sekciu hlavičky."
+        },
+        {
+          "name": "part",
+          "text": "body - Obalový element pre hlavný obsah."
+        },
+        {
+          "name": "part",
+          "text": "footer - Obalový element pre sekciu pätičky."
+        },
+        {
+          "name": "part",
+          "text": "close - Element tlačidla pre zatvorenie."
+        },
+        {
+          "name": "part",
+          "text": "headline - Element nadpisu."
+        },
+        {
+          "name": "part",
+          "text": "header-actions - Kontajner pre akcie v hlavičke."
+        }
+      ],
       "usage": {},
       "props": [
         {
-          "name": "placement",
-          "type": "\"slide-up\" |  \"slide-down\" | \"slide-left\" | \"slide-right\" | \"fill-in\" | string & Record<never, never> | undefined",
+          "name": "headline",
+          "type": "string",
           "complexType": {
             "original": "string",
-            "resolved": "\"slide-up\" |  \"slide-down\" | \"slide-left\" | \"slide-right\" | \"fill-in\" | string & Record<never, never> | undefined",
+            "resolved": "string",
             "references": {}
           },
-          "mutable": true,
+          "mutable": false,
+          "attr": "headline",
+          "reflectToAttr": false,
+          "docs": "Nastavuje nadpis dialógového okna.",
+          "docsTags": [],
+          "values": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "placement",
+          "type": "\"slide-up\" | \"stick-up\" | \"fill-in\" | \"slide-left\" | \"slide-right\"",
+          "complexType": {
+            "original": "\"slide-up\" | \"stick-up\" | \"fill-in\" | \"slide-left\" | \"slide-right\"",
+            "resolved": "\"fill-in\" | \"slide-left\" | \"slide-right\" | \"slide-up\" | \"stick-up\"",
+            "references": {}
+          },
+          "mutable": false,
           "attr": "placement",
           "reflectToAttr": false,
-          "docs": "Určuje umiestnenie dialógového okna na obrazovke. Medzi možné hodnoty patrí \"slide-up\" (posunúť hore), \"slide-down\" (posunúť dole) a ďalšie.",
+          "docs": "Nastavuje umiestnenie dialógového okna.",
           "docsTags": [],
-          "default": "slide-up",
+          "default": "\"slide-up\"",
           "values": [
-            {
-              "type": "string"
-            }
+            "\"slide-up\"",
+            "\"stick-up\"",
+            "\"fill-in\"",
+            "\"slide-left\"",
+            "\"slide-right\""
           ],
           "optional": false,
-          "required": true
+          "required": false
+        },
+        {
+          "name": "async",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "async",
+          "reflectToAttr": false,
+          "docs": "Ak je true, umožňuje načítanie dialógu asynchrónne.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            "true",
+            "false"
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "closeHidden",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "close-hidden",
+          "reflectToAttr": false,
+          "docs": "Ak je true, tlačidlo na zatvorenie bude skryté.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            "true",
+            "false"
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "trigger",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "trigger",
+          "reflectToAttr": false,
+          "docs": "Názov udalosti, ktorá spustí otvorenie dialógu.",
+          "docsTags": [],
+          "values": [],
+          "optional": true,
+          "required": false
         },
         {
           "name": "size",
-          "type": "\"small\" |  \"medium\" | \"large\" | \"ex-large\" | string & Record<never, never> | undefined",
+          "type": "\"small\" | \"medium\" | \"large\" | \"ex-large\"",
           "complexType": {
-            "original": "string",
-            "resolved": "\"small\" |  \"medium\" | \"large\" | \"ex-large\" | string & Record<never, never> | undefined",
+            "original": "\"small\" | \"medium\" | \"large\" | \"ex-large\"",
+            "resolved": "\"ex-large\" | \"large\" | \"medium\" | \"small\"",
             "references": {}
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "size",
           "reflectToAttr": false,
-          "docs": "Určuje veľkosť dialógového okna na obrazovke. Medzi možné hodnoty patrí \"small\" (malé), \"medium\" (stredné) a ďalšie.",
+          "docs": "Nastavuje veľkosť dialógového okna.",
           "docsTags": [],
-          "default": "small",
+          "default": "\"small\"",
           "values": [
-            {
-              "type": "string"
-            }
+            "\"small\"",
+            "\"medium\"",
+            "\"large\"",
+            "\"ex-large\""
           ],
-          "optional": false,
-          "required": true
+          "optional": true,
+          "required": false
         }
       ],
-      "methods": [],
+      "methods": [
+        {
+          "name": "onOpen",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(e?: Event) => void",
+            "parameters": [
+              {
+                "name": "e",
+                "type": "Event",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Event": {
+                "location": "global"
+              }
+            },
+            "return": "void"
+          },
+          "signature": "(e?: Event) => void",
+          "parameters": [
+            {
+              "name": "e",
+              "type": "Event",
+              "docs": ""
+            }
+          ],
+          "docs": "Otvorí dialógové okno.",
+          "docsTags": []
+        },
+        {
+          "name": "close",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(e?: Event) => void",
+            "parameters": [
+              {
+                "name": "e",
+                "type": "Event",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Event": {
+                "location": "global"
+              }
+            },
+            "return": "void"
+          },
+          "signature": "(e?: Event) => void",
+          "parameters": [
+            {
+              "name": "e",
+              "type": "Event",
+              "docs": ""
+            }
+          ],
+          "docs": "Zatvorí dialógové okno.",
+          "docsTags": []
+        },
+        {
+          "name": "beforeOpen",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
+            "parameters": [
+              {
+                "name": "dialog",
+                "type": "HTMLElement",
+                "docs": ""
+              },
+              {
+                "name": "trigger",
+                "type": "Event",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Promise": {
+                "location": "global"
+              },
+              "HTMLElement": {
+                "location": "global"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
+          "parameters": [
+            {
+              "name": "dialog",
+              "type": "HTMLElement",
+              "docs": ""
+            },
+            {
+              "name": "trigger",
+              "type": "Event",
+              "docs": ""
+            }
+          ],
+          "docs": "Volá sa pred otvorením dialógu. Môže byť prepísaná pre spustenie vlastnej logiky.",
+          "docsTags": []
+        },
+        {
+          "name": "afterOpen",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
+            "parameters": [
+              {
+                "name": "dialog",
+                "type": "HTMLElement",
+                "docs": ""
+              },
+              {
+                "name": "trigger",
+                "type": "Event",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Promise": {
+                "location": "global"
+              },
+              "HTMLElement": {
+                "location": "global"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
+          "parameters": [
+            {
+              "name": "dialog",
+              "type": "HTMLElement",
+              "docs": ""
+            },
+            {
+              "name": "trigger",
+              "type": "Event",
+              "docs": ""
+            }
+          ],
+          "docs": "Volá sa po otvorení dialógu. Môže byť prepísaná pre spustenie vlastnej logiky.",
+          "docsTags": []
+        },
+        {
+          "name": "beforeClose",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
+            "parameters": [
+              {
+                "name": "dialog",
+                "type": "HTMLElement",
+                "docs": ""
+              },
+              {
+                "name": "trigger",
+                "type": "Event",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Promise": {
+                "location": "global"
+              },
+              "HTMLElement": {
+                "location": "global"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
+          "parameters": [
+            {
+              "name": "dialog",
+              "type": "HTMLElement",
+              "docs": ""
+            },
+            {
+              "name": "trigger",
+              "type": "Event",
+              "docs": ""
+            }
+          ],
+          "docs": "Volá sa pred zatvorením dialógu. Môže byť prepísaná pre spustenie vlastnej logiky.",
+          "docsTags": []
+        },
+        {
+          "name": "afterClose",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
+            "parameters": [
+              {
+                "name": "dialog",
+                "type": "HTMLElement",
+                "docs": ""
+              },
+              {
+                "name": "trigger",
+                "type": "Event",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Promise": {
+                "location": "global"
+              },
+              "HTMLElement": {
+                "location": "global"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
+          "parameters": [
+            {
+              "name": "dialog",
+              "type": "HTMLElement",
+              "docs": ""
+            },
+            {
+              "name": "trigger",
+              "type": "Event",
+              "docs": ""
+            }
+          ],
+          "docs": "Volá sa po zatvorení dialógu. Môže byť prepísaná pre spustenie vlastnej logiky.",
+          "docsTags": []
+        },
+        {
+          "name": "registerBlockingEvent",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(button: HTMLElement, promise: Function) => void",
+            "parameters": [
+              {
+                "name": "button",
+                "type": "HTMLElement",
+                "docs": ""
+              },
+              {
+                "name": "promise",
+                "type": "Function",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "HTMLElement": {
+                "location": "global"
+              },
+              "Function": {
+                "location": "global"
+              }
+            },
+            "return": "void"
+          },
+          "signature": "(button: HTMLElement, promise: Function) => void",
+          "parameters": [
+            {
+              "name": "button",
+              "type": "HTMLElement",
+              "docs": ""
+            },
+            {
+              "name": "promise",
+              "type": "Function",
+              "docs": ""
+            }
+          ],
+          "docs": "Registruje event listener na poskytnutom tlačidle, ktorý spustí blokujúci UI element a vykoná zadaný promise po kliknutí na tlačidlo.",
+          "docsTags": []
+        }
+      ],
       "events": [],
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-backdrop",
+          "name": "--wje-dialog-width",
           "annotation": "prop",
-          "docs": "Farba pozadia (backdropu)"
+          "docs": "Šírka dialógového okna"
         },
         {
-          "name": "--wj-backdrop-opacity",
-          "annotation": "prop",
-          "docs": "Priehľadnosť pozadia (backdropu)"
-        },
-        {
-          "name": "--wj-dialog-border-color",
-          "annotation": "prop",
-          "docs": "Farba okrajov dialógového okna"
-        },
-        {
-          "name": "--wj-dialog-border-radius",
-          "annotation": "prop",
-          "docs": "Zaoblenie okrajov dialógového okna"
-        },
-        {
-          "name": "--wj-dialog-border-style",
-          "annotation": "prop",
-          "docs": "Štýl okrajov dialógového okna"
-        },
-        {
-          "name": "--wj-dialog-border-width",
-          "annotation": "prop",
-          "docs": "Hrúbka okrajov dialógového okna"
-        },
-        {
-          "name": "--wj-dialog-height",
+          "name": "--wje-dialog-height",
           "annotation": "prop",
           "docs": "Výška dialógového okna"
         },
         {
-          "name": "--wj-dialog-margin-bottom",
+          "name": "--wje-dialog-border-radius",
           "annotation": "prop",
-          "docs": "Spodné vonkajšie odsadenie dialógového okna"
+          "docs": "Zaoblenie okrajov dialógového okna"
         },
         {
-          "name": "--wj-dialog-margin-end",
+          "name": "--wje-dialog-border-width",
           "annotation": "prop",
-          "docs": "Ľavé vonkajšie odsadenie dialógového okna"
+          "docs": "Šírka okraja dialógového okna"
         },
         {
-          "name": "--wj-dialog-margin-start",
+          "name": "--wje-dialog-border-style",
           "annotation": "prop",
-          "docs": "Pravé vonkajšie odsadenie dialógového okna"
+          "docs": "Štýl okraja dialógového okna"
         },
         {
-          "name": "--wj-dialog-margin-top",
+          "name": "--wje-dialog-border-color",
           "annotation": "prop",
-          "docs": "Horné vonkajšie odsadenie dialógového okna"
+          "docs": "Farba okraja dialógového okna"
         },
         {
-          "name": "--wj-dialog-padding",
+          "name": "--wje-dialog-margin-top",
           "annotation": "prop",
-          "docs": "Vnútorné odsadenie dialógového okna"
+          "docs": "Horný okraj dialógového okna"
         },
         {
-          "name": "--wj-dialog-width",
+          "name": "--wje-dialog-margin-bottom",
           "annotation": "prop",
-          "docs": "Šírka dialógového okna"
+          "docs": "Spodný okraj dialógového okna"
+        },
+        {
+          "name": "--wje-dialog-margin-start",
+          "annotation": "prop",
+          "docs": "Ľavý okraj dialógového okna"
+        },
+        {
+          "name": "--wje-dialog-margin-end",
+          "annotation": "prop",
+          "docs": "Pravý okraj dialógového okna"
+        },
+        {
+          "name": "--wje-dialog-padding",
+          "annotation": "prop",
+          "docs": "Vnútorné odsadenie sekcií dialógu"
+        },
+        {
+          "name": "--wje-backdrop-opacity",
+          "annotation": "prop",
+          "docs": "Priehľadnosť pozadia pri otvorenom dialógu"
+        },
+        {
+          "name": "--wje-backdrop",
+          "annotation": "prop",
+          "docs": "Farba pozadia pri otvorenom dialógu"
+        },
+        {
+          "name": "--wje-dialog-header-actions-gap",
+          "annotation": "prop",
+          "docs": "Medzera medzi položkami akcie v hlavičke"
         }
       ],
       "slots": [
         {
+          "name": "",
+          "docs": "Hlavný obsah dialógového okna."
+        },
+        {
           "name": "header",
-          "docs": "Obsah sa umiestni v záhlaví dialógového okna."
+          "docs": "Obsah umiestnený v oblasti hlavičky dialógu."
         },
         {
           "name": "footer",
-          "docs": "Obsah sa umiestni v pätičke dialógového okna."
+          "docs": "Obsah umiestnený v oblasti pätičky dialógu."
         }
       ],
       "parts": [
         {
-          "name": "body",
-          "docs": "Odkazuje na hlavný obsah dialógového okna"
+          "name": "header",
+          "docs": "Sekcia hlavičky dialógu."
         },
         {
-          "name": "header",
-          "docs": "Odkazuje na záhlavie dialógového okna"
+          "name": "body",
+          "docs": "Hlavná oblasť obsahu dialógu."
         },
         {
           "name": "footer",
-          "docs": "Odkazuje na zápätí dialógového okna"
+          "docs": "Sekcia pätičky dialógu."
+        },
+        {
+          "name": "close",
+          "docs": "Element tlačidla pre zatvorenie dialógu."
+        },
+        {
+          "name": "headline",
+          "docs": "Element textu nadpisu."
+        },
+        {
+          "name": "header-actions",
+          "docs": "Kontajner pre akcie v hlavičke."
         }
       ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "wje-icon",
+        "wje-button"
+      ],
+      "dependencyGraph": {
+        "wje-dialog": ["wje-icon", "wje-button"]
+      }
     },
     {
       "filePath": "src/components/dropdown/dropdown.tsx",
@@ -2765,6 +3317,28 @@
       "docsTags": [],
       "usage": {},
       "props": [
+        {
+          "name": "placement",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "placement",
+          "reflectToAttr": false,
+          "docs": "Nastavuje umiestnenie rozbaľovacieho menu. Možnosti sú: \"start\", \"end\", \"top\", \"bottom\".",
+          "docsTags": [],
+          "default": "\"start\"",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
         {
           "name": "offset",
           "type": "number",
@@ -2788,17 +3362,39 @@
           "required": false
         },
         {
-          "name": "placement",
-          "type": "\"bottom\" |  \"bottom-end\" | \"bottom-start\" | \"left-bottom\" | \"left\" | \"left-top\" | \"right-bottom\" | \"right\" | \"right-top\" | \"top\" | \"top-end\" | \"top-start\" | string & Record<never, never> | undefined",
+          "name": "trigger",
+          "type": "string",
           "complexType": {
             "original": "string",
-            "resolved": "\"bottom\" |  \"bottom-end\" | \"bottom-start\" | \"left-bottom\" | \"left\" | \"left-top\" | \"right-bottom\" | \"right\" | \"right-top\" | \"top\" | \"top-end\" | \"top-start\" | string & Record<never, never> | undefined",
+            "resolved": "string",
             "references": {}
           },
-          "mutable": true,
-          "attr": "placement",
+          "mutable": false,
+          "attr": "trigger",
           "reflectToAttr": false,
-          "docs": "Určuje umiestnenie nápovedy po skopírovaní hodnoty.",
+          "docs": "Určuje spôsob aktivácie dropdownu. Hodnoty môžu byť \"click\" alebo \"hover\".",
+          "docsTags": [],
+          "default": "\"click\"",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "tooltip",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "tooltip",
+          "reflectToAttr": false,
+          "docs": "Text, ktorý sa zobrazí ako tooltip pri hover nad elementom.",
           "docsTags": [],
           "default": "undefined",
           "values": [
@@ -2806,15 +3402,192 @@
               "type": "string"
             }
           ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "collapsible",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "collapsible",
+          "reflectToAttr": false,
+          "docs": "Ak `true`, dropdown sa automaticky zavrie po kliknutí na položku menu.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
-          "required": true
+          "required": false
         }
       ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
+      "methods": [
+        {
+          "name": "beforeShow",
+          "returns": {
+            "type": "Promise<any>",
+            "complexType": {
+              "original": "Promise<any>",
+              "resolved": "Promise<any>",
+              "references": {}
+            }
+          },
+          "signature": "() => Promise<any>",
+          "parameters": [],
+          "docs": "Metóda vykonaná pred zobrazením dropdown menu.",
+          "docsTags": []
+        },
+        {
+          "name": "afterShow",
+          "returns": {
+            "type": "Promise<void>",
+            "complexType": {
+              "original": "Promise<void>",
+              "resolved": "Promise<void>",
+              "references": {}
+            }
+          },
+          "signature": "() => Promise<void>",
+          "parameters": [],
+          "docs": "Metóda vykonaná po zobrazení dropdown menu.",
+          "docsTags": []
+        },
+        {
+          "name": "beforeClose",
+          "returns": {
+            "type": "Promise<void>",
+            "complexType": {
+              "original": "Promise<void>",
+              "resolved": "Promise<void>",
+              "references": {}
+            }
+          },
+          "signature": "() => Promise<void>",
+          "parameters": [],
+          "docs": "Metóda vykonaná pred zatvorením dropdown menu.",
+          "docsTags": []
+        },
+        {
+          "name": "afterClose",
+          "returns": {
+            "type": "Promise<void>",
+            "complexType": {
+              "original": "Promise<void>",
+              "resolved": "Promise<void>",
+              "references": {}
+            }
+          },
+          "signature": "() => Promise<void>",
+          "parameters": [],
+          "docs": "Metóda vykonaná po zatvorení dropdown menu.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "wje-dropdown:open",
+          "detail": "{ target: HTMLElement }",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emituje sa pri otvorení dropdown menu.",
+          "docsTags": []
+        },
+        {
+          "event": "wje-dropdown:close",
+          "detail": "{ target: HTMLElement }",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emituje sa pri zatvorení dropdown menu.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "mouseenter",
+          "target": "host",
+          "capture": false,
+          "passive": true
+        },
+        {
+          "event": "mouseleave",
+          "target": "host",
+          "capture": false,
+          "passive": true
+        },
+        {
+          "event": "click",
+          "target": "anchorSlot",
+          "capture": true,
+          "passive": false
+        },
+        {
+          "event": "wje-popup:hide",
+          "target": "host",
+          "capture": false,
+          "passive": true
+        }
+      ],
+      "styles": [
+        {
+          "name": "--wj-dropdown-background",
+          "annotation": "prop",
+          "docs": "Farba pozadia dropdown menu"
+        },
+        {
+          "name": "--wj-dropdown-border-radius",
+          "annotation": "prop",
+          "docs": "Zaoblenie okrajov dropdown menu"
+        },
+        {
+          "name": "--wj-dropdown-border-width",
+          "annotation": "prop",
+          "docs": "Šírka okrajov dropdown menu"
+        },
+        {
+          "name": "--wj-dropdown-border-color",
+          "annotation": "prop",
+          "docs": "Farba okrajov dropdown menu"
+        },
+        {
+          "name": "--wj-dropdown-box-shadow",
+          "annotation": "prop",
+          "docs": "Tieň dropdown menu"
+        },
+        {
+          "name": "--wj-dropdown-width",
+          "annotation": "prop",
+          "docs": "Šírka dropdown menu"
+        },
+        {
+          "name": "--wj-dropdown-min-width",
+          "annotation": "prop",
+          "docs": "Minimálna šírka dropdown menu"
+        },
+        {
+          "name": "--wj-dropdown-max-width",
+          "annotation": "prop",
+          "docs": "Maximálna šírka dropdown menu"
+        }
+      ],
+      "slots": [
+        {
+          "name": "trigger",
+          "docs": "Element, ktorý slúži ako spúšťač pre zobrazenie dropdown menu."
+        },
+        {
+          "name": "",
+          "docs": "Obsah dropdown menu."
+        }
+      ],
       "parts": [
         {
           "name": "native",
@@ -2822,8 +3595,10 @@
         }
       ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": ["wje-popup", "wje-tooltip"],
+      "dependencyGraph": {
+        "wje-dropdown": ["wje-popup", "wje-tooltip"]
+      }
     },
     {
       "filePath": "src/components/grid/grid.tsx",

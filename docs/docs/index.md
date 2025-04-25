@@ -19,14 +19,19 @@ import DocsCards from '@components/global/DocsCards';
 <link rel="alternate" href="https://elements.webjet.sk/" hreflang="x-default" />
 <link rel="alternate" href="https://elements.webjet.sk/" hreflang="en" />
 <meta property="og:url" content="https://elements.webjet.sk/" />
-<style>{`
-    docs-cards > a{
-      display: flex;
-    }
-  `}</style>
+
+[//]: # (<style>{`)
+
+[//]: # (    docs-cards > a{)
+
+[//]: # (      display: flex;)
+
+[//]: # (    })
+
+[//]: # (  `}</style>)
 
 
-<script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.160/dist/wje-master.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.165/dist/wje-master.min.js"></script>
 
 
 </head>
@@ -36,61 +41,60 @@ Ponúkajú jednoduchú integráciu s React a Vue.
 
 Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/install.md).
 
-<br />
 <intro-end />
 
 <DocsCards>
 
 {' '}
 <a href="intro/install">   
-  <wj-card>   
-    <wj-card-header>   
-      <wj-icon name="world-download" size="large"></wj-icon>   
-      <wj-card-title>Sprievodca inštaláciou</wj-card-title>   
-    </wj-card-header>   
-    <wj-card-content>   
+  <wje-card>   
+    <wje-card-header>   
+      <wje-icon name="world-download" size="large"></wje-icon>   
+      <wje-card-title>Sprievodca inštaláciou</wje-card-title>   
+    </wje-card-header>   
+    <wje-card-content>   
       <p>Podrobný sprievodca inštaláciou WebJET elementov.</p>   
-    </wj-card-content>   
-  </wj-card>   
+    </wje-card-content>   
+  </wje-card>   
 </a>   
 
 {' '}
 <a href="components">
-  <wj-card>
-    <wj-card-header>
-      <wj-icon name="layout-dashboard" size="large"></wj-icon>
-      <wj-card-title href="intro/cli">Elementy</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card>
+    <wje-card-header>
+      <wje-icon name="layout-dashboard" size="large"></wje-icon>
+      <wje-card-title href="intro/cli">Elementy</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Nazrite do knižnice dostupných WebJET elementov.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 {' '}
 <a href="api/layout">
-  <wj-card>
-    <wj-card-header>
-      <wj-icon name="layout" size="large"></wj-icon>
-      <wj-card-title>Layout</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card>
+    <wje-card-header>
+      <wje-icon name="layout" size="large"></wje-icon>
+      <wje-card-title>Layout</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Zistite ako si vytvoriť rozloženie stránok podľa vašich potrieb.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 {' '}
 <a href="theming/basics">
-  <wj-card>
-    <wj-card-header>
-      <wj-icon name="brush" size="large"></wj-icon>
-      <wj-card-title>Úprava štýlov</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card>
+    <wje-card-header>
+      <wje-icon name="brush" size="large"></wje-icon>
+      <wje-card-title>Úprava štýlov</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Naučte sa ako si jednoducho prispôsobiť vizuál Elements.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 </DocsCards>

@@ -25,13 +25,33 @@ Dropdown element is used to display the context menu after clicking the button. 
 
 ## Basic usage
 
-<div className="xlarge">
-
 import Basic from '@site/static/usage/v1/dropdown/basic/index.md';
 
 <Basic />
 
-</div>
+## Dropdown with dialogue
+
+import OpenDialog from '@site/static/usage/v1/dropdown/open-dialog/index.md';
+
+<OpenDialog />
+
+## Display on hover
+
+import Hover from '@site/static/usage/v1/dropdown/hover/index.md';
+
+<Hover />
+
+## Dropdown with tooltip
+
+import Tooltip from '@site/static/usage/v1/dropdown/tooltip/index.md';
+
+<Tooltip />
+
+## Dropdown with avatar
+
+import Avatar from '@site/static/usage/v1/dropdown/inner-avatar/index.md';
+
+<Avatar />
 
 ## Attributes and Properties
 

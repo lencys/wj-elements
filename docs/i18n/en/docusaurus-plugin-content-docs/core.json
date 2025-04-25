@@ -1339,7 +1339,7 @@
       "methods": [],
       "events": [
         {
-          "event": "click",
+          "event": "wje-button:click",
           "detail": "void",
           "bubbles": true,
           "complexType": {
@@ -1353,7 +1353,7 @@
           "docsTags": []
         },
         {
-          "event": "reset",
+          "event": "wje-button:reset",
           "detail": "void",
           "bubbles": true,
           "complexType": {
@@ -1367,7 +1367,7 @@
           "docsTags": []
         },
         {
-          "event": "submit",
+          "event": "wje-button:submit",
           "detail": "void",
           "bubbles": true,
           "complexType": {
@@ -1381,7 +1381,7 @@
           "docsTags": []
         },
         {
-          "event": "toggle",
+          "event": "wje-button:toggle",
           "detail": "void",
           "bubbles": true,
           "complexType": {
@@ -2251,6 +2251,29 @@
           ],
           "optional": false,
           "required": false
+        },
+        {
+          "name": "placement",
+          "type": "any",
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "placement",
+          "reflectToAttr": false,
+          "docs": "Displays a checkbox after the description.",
+          "docsTags": [],
+          "default": "",
+          "values": [
+            {
+              "value": "end",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
         }
       ],
       "methods": [],
@@ -2358,14 +2381,9 @@
     {
       "filePath": "src/components/chip/chip.tsx",
       "encapsulation": "shadow",
-      "tag": "chip",
+      "tag": "wje-chip",
       "docs": "",
-      "docsTags": [
-        {
-          "name": "virtualProp",
-          "text": "{ \"ios\". | \"md\"} mode - The mode determines which platform styles to use."
-        }
-      ],
+      "docsTags": [],
       "usage": {},
       "props": [
         {
@@ -2379,7 +2397,7 @@
           "mutable": true,
           "attr": "active",
           "reflectToAttr": false,
-          "docs": "If `true`, the `check` icon is displayed",
+          "docs": "If `true`, the chip is active and displays a check icon.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -2392,55 +2410,17 @@
         },
         {
           "name": "color",
-          "type": "\"danger.\" | \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+          "type": "\"primary.\" | \"complete\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"default\" | string",
           "complexType": {
-            "original": "Color",
-            "resolved": "\"danger.\" | \"primary\" | \"success\" | \"neutral\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
-            "references": {
-              "Color": {
-                "location": "import",
-                "path": "../../interface",
-                "id": "src/interface.d.ts::Color"
-              }
-            }
+            "original": "string",
+            "resolved": "string",
+            "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "color",
-          "reflectToAttr": true,
-          "docs": "Specifies the background color of the chip element. The default options are `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information, go to: [theming](/theming/basics).",
+          "reflectToAttr": false,
+          "docs": "Chip colour. Default options include `primary`, `complete`, `success`, `warning`, `danger`, `info` and `default`.",
           "docsTags": [],
-          "values": [
-            {
-              "value": "danger",
-              "type": "string"
-            },
-            {
-              "value": "primary",
-              "type": "string"
-            },
-            {
-              "value": "neutral",
-              "type": "string"
-            },
-            {
-              "value": "success",
-              "type": "string"
-            },
-            {
-              "value": "complete",
-              "type": "string"
-            },
-            {
-              "value": "warning",
-              "type": "string"
-            },
-            {
-              "type": "String & Record<never, never>"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
           "optional": true,
           "required": false
         },
@@ -2452,10 +2432,32 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "disabled",
           "reflectToAttr": false,
-          "docs": "If `true`, the user cannot interact with the element.",
+          "docs": "If `true`, the chip is deactivated and cannot be interacted with.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "removable",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "removable",
+          "reflectToAttr": false,
+          "docs": "If `true`, the chip can be removed by clicking the remove button.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -2468,25 +2470,71 @@
         }
       ],
       "methods": [],
-      "events": [],
+      "events": [
+        {
+          "event": "wje:chip-remove",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Issued when the chip is removed.",
+          "docsTags": []
+        }
+      ],
       "listeners": [],
       "styles": [
         {
-          "name": "--background",
+          "name": "--wje-chip-border-radius",
           "annotation": "prop",
-          "docs": "Background element chip"
+          "docs": "Rounding the edges of the chip."
         },
         {
-          "name": "--color",
+          "name": "--wje-chip-background-color",
           "annotation": "prop",
-          "docs": "Element colour chip"
+          "docs": "Chip background colour."
+        },
+        {
+          "name": "--wje-chip-color",
+          "annotation": "prop",
+          "docs": "Chip text colour."
+        },
+        {
+          "name": "--wje-chip-padding",
+          "annotation": "prop",
+          "docs": "Internal chip offset."
         }
       ],
-      "slots": [],
-      "parts": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The main content of the chip."
+        },
+        {
+          "name": "end",
+          "docs": "Slot for additional content at the end of the chip."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Refers to the native wrapper element of the chip."
+        },
+        {
+          "name": "remove",
+          "docs": "Button to remove the chip."
+        }
+      ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "wje-icon",
+        "wje-button"
+      ],
+      "dependencyGraph": {
+        "wje-chip": [
+          "wje-icon",
+          "wje-button"
+        ]
+      }
     },
     {
       "filePath": "src/components/color-picker/color-picker.tsx",
@@ -2497,14 +2545,52 @@
       "usage": {},
       "props": [],
       "methods": [],
-      "events": [],
+      "events": [
+        {
+          "name": "wje-color-picker:select",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when selecting a color with a color value in multiple formats.",
+          "docsTags": []
+        }
+      ],
       "listeners": [],
       "styles": [],
-      "slots": [],
-      "parts": [],
+      "slots": [
+        {
+          "name": "anchor",
+          "docs": "A slot for the anchor element that displays the color selection dropdown."
+        }
+      ],
+      "parts": [
+        {
+          "name": "anchor",
+          "docs": "Anchor element."
+        },
+        {
+          "name": "picker",
+          "docs": "Main container for color selection."
+        },
+        {
+          "name": "marker",
+          "docs": "Colour selection marker."
+        }
+      ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "wje-slider",
+        "wje-input",
+        "wje-popup"
+      ],
+      "dependencyGraph": {
+        "wje-color-picker": [
+          "wje-slider",
+          "wje-input",
+          "wje-popup"
+        ]
+      }
     },
     {
       "filePath": "src/components/copy-button/copy-button.tsx",
@@ -2582,165 +2668,663 @@
         }
       ],
       "methods": [],
-      "events": [],
+      "events": [
+        {
+          "event": "blur",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Event blur is triggered when an element loses focus.",
+          "docsTags": []
+        },
+        {
+          "event": "click",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Event click is called when the button is clicked.",
+          "docsTags": []
+        },
+        {
+          "event": "focus",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Event focus is invoked when an element gains focus.",
+          "docsTags": []
+        },
+        {
+          "event": "wje-copy-button:click",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "The wje-copy-button:click event is fired when the button is clicked.",
+          "docsTags": []
+        }
+      ],
       "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [],
+      "dependencies": [
+        "wje-icon",
+        "wje-tooltip"
+      ],
       "dependencyGraph": {}
     },
     {
       "filePath": "src/components/dialog/dialog.tsx",
       "encapsulation": "shadow",
-      "tag": "dialog",
+      "tag": "dialogue",
       "docs": "",
-      "docsTags": [],
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "header - The content is placed at the top of the dialog in the header section."
+        },
+        {
+          "name": "slot",
+          "text": "footer - The content is located at the bottom of the dialog in the footer section."
+        },
+        {
+          "name": "part",
+          "text": "header - The wrapper element for the header section."
+        },
+        {
+          "name": "part",
+          "text": "body - Cover element for the main content."
+        },
+        {
+          "name": "part",
+          "text": "footer - Packaging element for the footer section."
+        },
+        {
+          "name": "part",
+          "text": "close - Button element for closing."
+        },
+        {
+          "name": "part",
+          "text": "headline - Headline element."
+        },
+        {
+          "name": "part",
+          "text": "header-actions - Container for actions in the header."
+        }
+      ],
       "usage": {},
       "props": [
         {
-          "name": "placement",
-          "type": "\"slide-up\" | \"slide-down\" | \"slide-left\" | \"slide-right\" | \"fill-in\" | string & Record<never, never> | undefined",
+          "name": "headline",
+          "type": "string",
           "complexType": {
             "original": "string",
-            "resolved": "\"slide-up\" | \"slide-down\" | \"slide-left\" | \"slide-right\" | \"fill-in\" | string & Record<never, never> | undefined",
+            "resolved": "string",
             "references": {}
           },
-          "mutable": true,
+          "mutable": false,
+          "attr": "headline",
+          "reflectToAttr": false,
+          "docs": "Sets the title of the dialog box.",
+          "docsTags": [],
+          "values": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "placement",
+          "type": "\"slide-up\" | \"stick-up\" | \"fill-in\" | \"slide-left\" | \"slide-right\"",
+          "complexType": {
+            "original": "\"slide-up\" | \"stick-up\" | \"fill-in\" | \"slide-left\" | \"slide-right\"",
+            "resolved": "\"fill-in\" | \"slide-left\" | \"slide-right\" | \"slide-up\" | \"stick-up\"",
+            "references": {}
+          },
+          "mutable": false,
           "attr": "placement",
           "reflectToAttr": false,
-          "docs": "Specifies the location of the dialog box on the screen. Possible values include \"slide-up\", \"slide-down\" and others.",
+          "docs": "Sets the location of the dialog box.",
           "docsTags": [],
-          "default": "slide-up",
+          "default": "\"slide-up\"",
           "values": [
-            {
-              "type": "string"
-            }
+            "\"slide-up\"",
+            "\"stick-up\"",
+            "\"fill-in\"",
+            "\"slide-left\"",
+            "\"slide-right\""
           ],
           "optional": false,
-          "required": true
+          "required": false
+        },
+        {
+          "name": "async",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "async",
+          "reflectToAttr": false,
+          "docs": "If true, allows the dialog to be loaded asynchronously.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            "true",
+            "false"
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "closeHidden",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "close-hidden",
+          "reflectToAttr": false,
+          "docs": "If true, the close button will be hidden.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            "true",
+            "false"
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "trigger",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "trigger",
+          "reflectToAttr": false,
+          "docs": "The name of the event that triggers the opening of the dialog.",
+          "docsTags": [],
+          "values": [],
+          "optional": true,
+          "required": false
         },
         {
           "name": "size",
-          "type": "\"small\" | \"medium\" | \"large\" | \"ex-large\" | string & Record<never, never> | undefined",
+          "type": "\"small\" | \"medium\" | \"large\" | \"ex-large\"",
           "complexType": {
-            "original": "string",
-            "resolved": "\"small\" | \"medium\" | \"large\" | \"ex-large\" | string & Record<never, never> | undefined",
+            "original": "\"small\" | \"medium\" | \"large\" | \"ex-large\"",
+            "resolved": "\"ex-large\" | \"large\" | \"medium\" | \"small\"",
             "references": {}
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "size",
           "reflectToAttr": false,
-          "docs": "Specifies the size of the dialog box on the screen. Possible values include \"small\", \"medium\" and others.",
+          "docs": "Sets the size of the dialog box.",
           "docsTags": [],
-          "default": "small",
+          "default": "\"small\"",
           "values": [
-            {
-              "type": "string"
-            }
+            "\"small\"",
+            "\"medium\"",
+            "\"large\"",
+            "\"ex-large\""
           ],
-          "optional": false,
-          "required": true
+          "optional": true,
+          "required": false
         }
       ],
-      "methods": [],
+      "methods": [
+        {
+          "name": "OnOpen",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(e?: Event) => void",
+            "parameters": [
+              {
+                "name": "e",
+                "type": "Event",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Event": {
+                "location": "global"
+              }
+            },
+            "return": "void"
+          },
+          "signature": "(e?: Event) => void",
+          "parameters": [
+            {
+              "name": "e",
+              "type": "Event",
+              "docs": ""
+            }
+          ],
+          "docs": "Opens a dialog box.",
+          "docsTags": []
+        },
+        {
+          "name": "close",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(e?: Event) => void",
+            "parameters": [
+              {
+                "name": "e",
+                "type": "Event",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Event": {
+                "location": "global"
+              }
+            },
+            "return": "void"
+          },
+          "signature": "(e?: Event) => void",
+          "parameters": [
+            {
+              "name": "e",
+              "type": "Event",
+              "docs": ""
+            }
+          ],
+          "docs": "Closes the dialog box.",
+          "docsTags": []
+        },
+        {
+          "name": "BeforeOpen",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
+            "parameters": [
+              {
+                "name": "dialog",
+                "type": "HTMLElement",
+                "docs": ""
+              },
+              {
+                "name": "trigger",
+                "type": "Event",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Promise": {
+                "location": "global"
+              },
+              "HTMLElement": {
+                "location": "global"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
+          "parameters": [
+            {
+              "name": "dialog",
+              "type": "HTMLElement",
+              "docs": ""
+            },
+            {
+              "name": "trigger",
+              "type": "Event",
+              "docs": ""
+            }
+          ],
+          "docs": "It is called before the dialogue is opened. Can be overridden to trigger custom logic.",
+          "docsTags": []
+        },
+        {
+          "name": "afterOpen",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
+            "parameters": [
+              {
+                "name": "dialog",
+                "type": "HTMLElement",
+                "docs": ""
+              },
+              {
+                "name": "trigger",
+                "type": "Event",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Promise": {
+                "location": "global"
+              },
+              "HTMLElement": {
+                "location": "global"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
+          "parameters": [
+            {
+              "name": "dialog",
+              "type": "HTMLElement",
+              "docs": ""
+            },
+            {
+              "name": "trigger",
+              "type": "Event",
+              "docs": ""
+            }
+          ],
+          "docs": "It calls for the opening of a dialogue. Can be overridden to run custom logic.",
+          "docsTags": []
+        },
+        {
+          "name": "beforeClose",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
+            "parameters": [
+              {
+                "name": "dialog",
+                "type": "HTMLElement",
+                "docs": ""
+              },
+              {
+                "name": "trigger",
+                "type": "Event",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Promise": {
+                "location": "global"
+              },
+              "HTMLElement": {
+                "location": "global"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
+          "parameters": [
+            {
+              "name": "dialog",
+              "type": "HTMLElement",
+              "docs": ""
+            },
+            {
+              "name": "trigger",
+              "type": "Event",
+              "docs": ""
+            }
+          ],
+          "docs": "It is called before the dialog is closed. Can be overridden to trigger custom logic.",
+          "docsTags": []
+        },
+        {
+          "name": "afterClose",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
+            "parameters": [
+              {
+                "name": "dialog",
+                "type": "HTMLElement",
+                "docs": ""
+              },
+              {
+                "name": "trigger",
+                "type": "Event",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Promise": {
+                "location": "global"
+              },
+              "HTMLElement": {
+                "location": "global"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
+          "parameters": [
+            {
+              "name": "dialog",
+              "type": "HTMLElement",
+              "docs": ""
+            },
+            {
+              "name": "trigger",
+              "type": "Event",
+              "docs": ""
+            }
+          ],
+          "docs": "It is called after the dialogue is closed. Can be overridden to trigger custom logic.",
+          "docsTags": []
+        },
+        {
+          "name": "registerBlockingEvent",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(button: HTMLElement, promise: Function) => void",
+            "parameters": [
+              {
+                "name": "button",
+                "type": "HTMLElement",
+                "docs": ""
+              },
+              {
+                "name": "promise",
+                "type": "Function",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "HTMLElement": {
+                "location": "global"
+              },
+              "Function": {
+                "location": "global"
+              }
+            },
+            "return": "void"
+          },
+          "signature": "(button: HTMLElement, promise: Function) => void",
+          "parameters": [
+            {
+              "name": "button",
+              "type": "HTMLElement",
+              "docs": ""
+            },
+            {
+              "name": "promise",
+              "type": "Function",
+              "docs": ""
+            }
+          ],
+          "docs": "Registers an event listener on the provided button, which triggers a blocking UI element and executes the specified promise when the button is clicked.",
+          "docsTags": []
+        }
+      ],
       "events": [],
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-backdrop",
+          "name": "--wje-dialog-width",
           "annotation": "prop",
-          "docs": "Background (backdrop) colour"
+          "docs": "Dialog window width"
         },
         {
-          "name": "--wj-backdrop-opacity",
-          "annotation": "prop",
-          "docs": "Backdrop transparency"
-        },
-        {
-          "name": "--wj-dialog-border-color",
-          "annotation": "prop",
-          "docs": "The colour of the edges of the dialog box"
-        },
-        {
-          "name": "--wj-dialog-border-radius",
-          "annotation": "prop",
-          "docs": "Rounding the edges of the dialog box"
-        },
-        {
-          "name": "--wj-dialog-border-style",
-          "annotation": "prop",
-          "docs": "Dialog box border style"
-        },
-        {
-          "name": "--wj-dialog-border-width",
-          "annotation": "prop",
-          "docs": "Dialog box border thickness"
-        },
-        {
-          "name": "--wj-dialog-height",
+          "name": "--wje-dialog-height",
           "annotation": "prop",
           "docs": "Height of the dialog box"
         },
         {
-          "name": "--wj-dialog-margin-bottom",
+          "name": "--wje-dialog-border-radius",
           "annotation": "prop",
-          "docs": "Bottom outer indent of the dialog window"
+          "docs": "Rounding the edges of the dialog box"
         },
         {
-          "name": "--wj-dialog-margin-end",
+          "name": "--wje-dialog-border-width",
           "annotation": "prop",
-          "docs": "Left outer indent of the dialog box"
+          "docs": "Dialog box border width"
         },
         {
-          "name": "--wj-dialog-margin-start",
+          "name": "--wje-dialog-border-style",
           "annotation": "prop",
-          "docs": "Right outer indent of the dialog box"
+          "docs": "Dialog box border style"
         },
         {
-          "name": "--wj-dialog-margin-top",
+          "name": "--wje-dialog-border-color",
           "annotation": "prop",
-          "docs": "Top outer indent of the dialog box"
+          "docs": "Dialog box border colour"
         },
         {
-          "name": "--wj-dialog-padding",
+          "name": "--wje-dialog-margin-top",
           "annotation": "prop",
-          "docs": "Internal dialog box indentation"
+          "docs": "Top edge of the dialog box"
         },
         {
-          "name": "--wj-dialog-width",
+          "name": "--wje-dialog-margin-bottom",
           "annotation": "prop",
-          "docs": "Dialog window width"
+          "docs": "Bottom edge of the dialog"
+        },
+        {
+          "name": "--wje-dialog-margin-start",
+          "annotation": "prop",
+          "docs": "Left edge of the dialog box"
+        },
+        {
+          "name": "--wje-dialog-margin-end",
+          "annotation": "prop",
+          "docs": "Right edge of the dialog box"
+        },
+        {
+          "name": "--wje-dialog-padding",
+          "annotation": "prop",
+          "docs": "Internal indentation of dialogue sections"
+        },
+        {
+          "name": "--wje-backdrop-opacity",
+          "annotation": "prop",
+          "docs": "Background transparency in open dialogue"
+        },
+        {
+          "name": "--wje-backdrop",
+          "annotation": "prop",
+          "docs": "Background colour in open dialogue"
+        },
+        {
+          "name": "--wje-dialog-header-actions-gap",
+          "annotation": "prop",
+          "docs": "Space between action items in the header"
         }
       ],
       "slots": [
         {
+          "name": "",
+          "docs": "The main content of the dialog box."
+        },
+        {
           "name": "header",
-          "docs": "The content is placed in the header of the dialog box."
+          "docs": "Content placed in the dialogue header area."
         },
         {
           "name": "footer",
-          "docs": "The content is placed in the footer of the dialog box."
+          "docs": "Content located in the dialogue footer area."
         }
       ],
       "parts": [
         {
-          "name": "bodies",
-          "docs": "Refers to the main content of the dialog"
+          "name": "header",
+          "docs": "Dialogue header section."
         },
         {
-          "name": "header",
-          "docs": "Refers to the header of the dialog box"
+          "name": "bodies",
+          "docs": "The main content area of the dialogue."
         },
         {
           "name": "footer",
-          "docs": "Refers to the footer of the dialog box"
+          "docs": "Dialogue footer section."
+        },
+        {
+          "name": "close",
+          "docs": "Button element to close the dialog."
+        },
+        {
+          "name": "headline",
+          "docs": "Heading text element."
+        },
+        {
+          "name": "header-actions",
+          "docs": "Container for header actions."
         }
       ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "wje-icon",
+        "wje-button"
+      ],
+      "dependencyGraph": {
+        "wje-dialog": [
+          "wje-icon",
+          "wje-button"
+        ]
+      }
     },
     {
       "filePath": "src/components/dropdown/dropdown.tsx",
@@ -2750,6 +3334,28 @@
       "docsTags": [],
       "usage": {},
       "props": [
+        {
+          "name": "placement",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "placement",
+          "reflectToAttr": false,
+          "docs": "Sets the location of the drop-down menu. The options are \"start\", \"end\", \"top\", \"bottom\".",
+          "docsTags": [],
+          "default": "\"start\"",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
         {
           "name": "offset",
           "type": "number",
@@ -2773,17 +3379,39 @@
           "required": false
         },
         {
-          "name": "placement",
-          "type": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left-bottom\" | \"left\" | \"left-top\" | \"right-bottom\" | \"right\" | \"right-top\" | \"top\" | \"top-end\" | \"top-start\" | string & Record<never, never> | undefined",
+          "name": "trigger",
+          "type": "string",
           "complexType": {
             "original": "string",
-            "resolved": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left-bottom\" | \"left\" | \"left-top\" | \"right-bottom\" | \"right\" | \"right-top\" | \"top\" | \"top-end\" | \"top-start\" | string & Record<never, never> | undefined",
+            "resolved": "string",
             "references": {}
           },
-          "mutable": true,
-          "attr": "placement",
+          "mutable": false,
+          "attr": "trigger",
           "reflectToAttr": false,
-          "docs": "Specifies the location of the hint after the value is copied.",
+          "docs": "Specifies how the dropdown is activated. The values can be \"click\" or \"hover\".",
+          "docsTags": [],
+          "default": "\"click\"",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "tooltip",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "tooltip",
+          "reflectToAttr": false,
+          "docs": "Text that appears as a tooltip when hovered over an element.",
           "docsTags": [],
           "default": "undefined",
           "values": [
@@ -2791,15 +3419,192 @@
               "type": "string"
             }
           ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "collapsible",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "collapsible",
+          "reflectToAttr": false,
+          "docs": "If `true`, the dropdown will automatically close when the menu item is clicked.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
-          "required": true
+          "required": false
         }
       ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
+      "methods": [
+        {
+          "name": "BeforeShow",
+          "returns": {
+            "type": "Promise<any>",
+            "complexType": {
+              "original": "Promise<any>",
+              "resolved": "Promise<any>",
+              "references": {}
+            }
+          },
+          "signature": "() => Promise<any>",
+          "parameters": [],
+          "docs": "Method executed before the dropdown menu is displayed.",
+          "docsTags": []
+        },
+        {
+          "name": "AfterShow",
+          "returns": {
+            "type": "Promise<void>",
+            "complexType": {
+              "original": "Promise<void>",
+              "resolved": "Promise<void>",
+              "references": {}
+            }
+          },
+          "signature": "() => Promise<void>",
+          "parameters": [],
+          "docs": "Method executed after the dropdown menu is displayed.",
+          "docsTags": []
+        },
+        {
+          "name": "beforeClose",
+          "returns": {
+            "type": "Promise<void>",
+            "complexType": {
+              "original": "Promise<void>",
+              "resolved": "Promise<void>",
+              "references": {}
+            }
+          },
+          "signature": "() => Promise<void>",
+          "parameters": [],
+          "docs": "Method executed before closing the dropdown menu.",
+          "docsTags": []
+        },
+        {
+          "name": "afterClose",
+          "returns": {
+            "type": "Promise<void>",
+            "complexType": {
+              "original": "Promise<void>",
+              "resolved": "Promise<void>",
+              "references": {}
+            }
+          },
+          "signature": "() => Promise<void>",
+          "parameters": [],
+          "docs": "Method executed after closing the dropdown menu.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "wje-dropdown:open",
+          "detail": "{ target: HTMLElement }",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "It is emitted when the dropdown menu is opened.",
+          "docsTags": []
+        },
+        {
+          "event": "wje-dropdown:close",
+          "detail": "{ target: HTMLElement }",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "It is emitted when the dropdown menu is closed.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "mouseenter",
+          "target": "host",
+          "capture": false,
+          "passive": true
+        },
+        {
+          "event": "mouseleave",
+          "target": "host",
+          "capture": false,
+          "passive": true
+        },
+        {
+          "event": "click",
+          "target": "AnchorSlot",
+          "capture": true,
+          "passive": false
+        },
+        {
+          "event": "wje-popup:hide",
+          "target": "host",
+          "capture": false,
+          "passive": true
+        }
+      ],
+      "styles": [
+        {
+          "name": "--wj-dropdown-background",
+          "annotation": "prop",
+          "docs": "Dropdown menu background colour"
+        },
+        {
+          "name": "--wj-dropdown-border-radius",
+          "annotation": "prop",
+          "docs": "Rounding the edges of the dropdown menu"
+        },
+        {
+          "name": "--wj-dropdown-border-width",
+          "annotation": "prop",
+          "docs": "Dropdown menu border width"
+        },
+        {
+          "name": "--wj-dropdown-border-color",
+          "annotation": "prop",
+          "docs": "Dropdown menu border colour"
+        },
+        {
+          "name": "--wj-dropdown-box-shadow",
+          "annotation": "prop",
+          "docs": "Shadow dropdown menu"
+        },
+        {
+          "name": "--wj-dropdown-width",
+          "annotation": "prop",
+          "docs": "Dropdown menu width"
+        },
+        {
+          "name": "--wj-dropdown-min-width",
+          "annotation": "prop",
+          "docs": "Minimum dropdown menu width"
+        },
+        {
+          "name": "--wj-dropdown-max-width",
+          "annotation": "prop",
+          "docs": "Maximum dropdown menu width"
+        }
+      ],
+      "slots": [
+        {
+          "name": "trigger",
+          "docs": "An element that serves as a trigger for displaying the dropdown menu."
+        },
+        {
+          "name": "",
+          "docs": "The contents of the dropdown menu."
+        }
+      ],
       "parts": [
         {
           "name": "native",
@@ -2807,8 +3612,16 @@
         }
       ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "wje-popup",
+        "wje-tooltip"
+      ],
+      "dependencyGraph": {
+        "wje-dropdown": [
+          "wje-popup",
+          "wje-tooltip"
+        ]
+      }
     },
     {
       "filePath": "src/components/grid/grid.tsx",
@@ -8914,7 +9727,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": false,
-          "docs": "The color to use from your application's color palette. The default options are `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, and `\"dark\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
+          "docs": "The color to use from your application's color palette. The default options are: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, and `\"dark\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
           "docsTags": [],
           "values": [
             {

@@ -25,14 +25,22 @@ Element Dialog zobrazuje dialógové okno s prispôsobiteľným obsahom. Je mož
 
 ## Základné použitie
 
-Na zobrazenie komponentu Dialog sa používa komponent Button s atribútom dialog.
-Pre viac informácii prejdite na stránku [Button](button.md).
+Jednou z možností ako zobraziť komponent 'Dialog' je použitie komponentu 'Button' s atribútom 'dialog'.
+Pre viac informácii o komponente 'Button' prejdite na stránku [Button](button.md).
 
 import Basic from '@site/static/usage/v1/dialog/basic/index.md';
 
 <Basic />
 
-### Placement (Umiestnenie)
+## Základné použitie s JavaScriptom
+
+Zobraziť komponent Dialog je možné aj použitím JavaScriptu. Na vytvorenie dialógového okna slúži metóda `onOpen()`, ktorá sa volá na elemente `wje-dialog`. Táto metóda zobrazuje dialógové okno a vracia jeho inštanciu. Na zatvorenie dialógového okna je potrebné zavolať metódu `onClose()` na jeho inštancii.
+
+import BasicJS from '@site/static/usage/v1/dialog/basicjs/index.md';
+
+<BasicJS />
+
+## Placement (Umiestnenie)
 
 Vlastnosť `placement` určuje umiestnenie dialógového okna na obrazovke. Predvolená je hodnota slide-up. Ďalšie možnosti sú `"stick-up"`, `"fill-in"`, `"slide-left"`, `"slide-right"`.
 
@@ -40,9 +48,29 @@ import Placement from '@site/static/usage/v1/dialog/placement/index.md';
 
 <Placement />
 
-### Size (Veľkosť)
+## Size (Veľkosť)
 
 Vlastnosť `size` upravuje veľkosť dialógového okna na obrazovke. Predvolená je veľkosť `"small"`. Ďalšie možnosti sú `"medium"`, `"large"` a `"ex-large"`.
+
+import Size from '@site/static/usage/v1/dialog/size/index.md';
+
+<Size />
+
+## Dynamická zmena obsahu
+
+Obsah elementu Dialog sa dá jednoducho meniť využitím custom eventu a jednou z metód `beforeShow`, `afterShow`, `beforeHide` alebo `afterHide`.
+
+import ContentChange from '@site/static/usage/v1/dialog/content-change/index.md';
+
+<ContentChange />
+
+## Registrovanie Blocking eventu
+
+Obsah elementu Dialog sa dá jednoducho meniť využitím custom eventu a jednou z metód `beforeShow`, `afterShow`, `beforeHide` alebo `afterHide`.
+
+import BlockingEvent from '@site/static/usage/v1/dialog/blocking-event/index.md';
+
+<BlockingEvent />
 
 ## Atribúty a Vlastnosti
 

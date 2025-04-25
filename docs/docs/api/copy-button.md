@@ -49,7 +49,7 @@ import Input from '@site/static/usage/v1/copy-button/input/index.md';
 
 <Input />
 
-## WJ Input
+## WJE-Input
 
 import WJInput from '@site/static/usage/v1/copy-button/wj-input/index.md';
 
