@@ -368,6 +368,7 @@ export default class Select extends WJElement {
 
         // label
         let label = document.createElement('wje-label');
+        label.setAttribute('part', 'label');
         label.innerText = this.label || '';
 
         // obalovac pre input
@@ -422,6 +423,7 @@ export default class Select extends WJElement {
         popup.setAttribute('placement', 'bottom-start');
         popup.setAttribute('manual', '');
         popup.setAttribute('size', '');
+        popup.setAttribute('part', 'popup');
 
         if (this.hasAttribute('disabled')) popup.setAttribute('disabled', '');
 
@@ -446,6 +448,7 @@ export default class Select extends WJElement {
             let find = document.createElement('wje-input');
             find.setAttribute('variant', 'standard');
             find.setAttribute('placeholder', 'Hľadať');
+            find.setAttribute('part', 'find');
             find.classList.add('find');
 
             optionsWrapper.appendChild(find);

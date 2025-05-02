@@ -328,6 +328,10 @@
     --wje-dialog-padding-inline: var(--wje-spacing-medium);
     --wje-dialog-padding-top: var(--wje-spacing-medium);
     --wje-dialog-padding-bottom: var(--wje-spacing-medium);
+    --wje-dialog-headline-font-size: 0.656rem;
+    --wje-dialog-headline-letter-spacing: 0.06em;
+    --wje-dialog-headline-font-weight: 500;
+    --wje-dialog-headline-text-transform: uppercase;
 
     /* Divider */
     --wje-divider-border-width: var(--wje-border-width, 1px);

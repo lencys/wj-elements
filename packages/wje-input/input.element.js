@@ -239,6 +239,7 @@ export default class Input extends WJElement {
 
         // Label
         let label = document.createElement('label');
+        label.setAttribute('part', 'label');
         label.innerText = this.label;
         if (this.value && !this.hasAttribute('error')) label.classList.add('fade');
 
