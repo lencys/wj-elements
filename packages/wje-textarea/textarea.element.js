@@ -211,6 +211,7 @@ export default class Textarea extends WJElement {
         inputWrapper.classList.add('input-wrapper');
 
         let label = document.createElement('label');
+        label.setAttribute('part', 'label');
         label.htmlFor = 'textarea';
         label.innerHTML = this.label || '';
 

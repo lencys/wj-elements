@@ -6,6 +6,9 @@
     width: 100%;
     margin-bottom: var(--wje-input-margin-bottom);
     display: block;
+    --wje-input-in-select-background: var(--wje-input-background-color, var(--wje-color-contrast-0));
+    --wje-input-in-select-border-width: var(--wje-input-border-width, 1px);
+    --wje-input-in-select-padding: var(--wje-input-padding, 2px 0.5rem);
 
     .wrapper {
         display: flex;
