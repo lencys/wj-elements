@@ -16,128 +16,132 @@ import styles from './styles/styles.css?inline';
  * @tag wje-option
  */
 export default class Option extends WJElement {
-    /**
-     * Creates an instance of Option.
-     * @class
-     */
-    constructor() {
-        super();
-    }
+	/**
+	 * Creates an instance of Option.
+	 * @class
+	 */
+	constructor() {
+		super();
+	}
 
-    /**
-     * Dependencies of the Option component.
-     */
-    dependencies = {
-        'wje-icon': Icon,
-    };
+	/**
+	 * Dependencies of the Option component.
+	 */
+	dependencies = {
+		'wje-icon': Icon,
+	};
 
-    /**
-     * Sets the selected attribute of the option.
-     * @param {boolean} value The value to set.
-     */
-    set selected(value) {
-        if (value) this.setAttribute('selected', '');
-        else this.removeAttribute('selected');
-    }
+	/**
+	 * Sets the selected attribute of the option.
+	 * @param {boolean} value The value to set.
+	 */
+	set selected(value) {
+		if (value) this.setAttribute('selected', '');
+		else this.removeAttribute('selected');
+	}
 
-    /**
-     * Sets the value attribute of the option.
-     * @param {string} value The value to set.
-     */
-    set value(value) {
-        this.setAttribute('value', value);
-    }
+	/**
+	 * Sets the value attribute of the option.
+	 * @param {string} value The value to set.
+	 */
+	set value(value) {
+		this.setAttribute('value', value);
+	}
 
-    /**
-     * Sets the text content of the option.
-     * @param {string} value The text to set.
-     */
-    set text(value) {
-        this.innerText = value;
-    }
+	get value() {
+		return this.getAttribute('value');
+	}
 
-    className = 'Option';
+	/**
+	 * Sets the text content of the option.
+	 * @param {string} value The text to set.
+	 */
+	set text(value) {
+		this.innerText = value;
+	}
 
-    /**
-     * Returns the CSS styles for the component.
-     * @static
-     * @returns {CSSStyleSheet}
-     */
-    static get cssStyleSheet() {
-        return styles;
-    }
+	className = 'Option';
 
-    /**
-     * Returns the list of attributes to observe for changes.
-     * @static
-     * @returns {Array<string>}
-     */
-    static get observedAttributes() {
-        return [];
-    }
+	/**
+	 * Returns the CSS styles for the component.
+	 * @static
+	 * @returns {CSSStyleSheet}
+	 */
+	static get cssStyleSheet() {
+		return styles;
+	}
 
-    /**
-     * Sets up the attributes for the component.
-     */
-    setupAttributes() {
-        this.isShadowRoot = 'open';
-    }
+	/**
+	 * Returns the list of attributes to observe for changes.
+	 * @static
+	 * @returns {Array<string>}
+	 */
+	static get observedAttributes() {
+		return [];
+	}
 
-    /**
-     * Draws the component for the option.
-     * @returns {DocumentFragment}
-     */
-    draw() {
-        let fragment = document.createDocumentFragment();
+	/**
+	 * Sets up the attributes for the component.
+	 */
+	setupAttributes() {
+		this.isShadowRoot = 'open';
+	}
 
-        let element = document.createElement('div');
-        element.classList.add('native-option');
-        element.setAttribute('part', 'native');
+	/**
+	 * Draws the component for the option.
+	 * @returns {DocumentFragment}
+	 */
+	draw() {
+		let fragment = document.createDocumentFragment();
 
-        let icon = document.createElement('wje-icon');
-        icon.setAttribute('name', 'check');
+		let element = document.createElement('div');
+		element.classList.add('native-option');
+		element.setAttribute('part', 'native');
 
-        let start = document.createElement('slot');
-        start.setAttribute('name', 'start');
+		let icon = document.createElement('wje-icon');
+		icon.setAttribute('name', 'check');
 
-        let slot = document.createElement('slot');
+		let start = document.createElement('slot');
+		start.setAttribute('name', 'start');
 
-        let end = document.createElement('slot');
-        end.setAttribute('name', 'end');
+		let slot = document.createElement('slot');
 
-        element.appendChild(icon);
-        element.appendChild(start);
-        element.appendChild(slot);
-        element.appendChild(end);
+		let end = document.createElement('slot');
+		end.setAttribute('name', 'end');
 
-        fragment.appendChild(element);
+		element.appendChild(icon);
+		element.appendChild(start);
+		element.appendChild(slot);
+		element.appendChild(end);
 
-        return fragment;
-    }
+		fragment.appendChild(element);
 
-    /**
-     * Adds event listeners after the component is drawn.
-     */
-    afterDraw() {
-        event.addListener(this, 'click', null, this.optionClickCallback);
-    }
+		return fragment;
+	}
 
-    beforeDisconnect() {
-        event.removeListener(this, 'click', null, this.optionClickCallback);
-    }
+	/**
+	 * Adds event listeners after the component is drawn.
+	 */
+	afterDraw() {
+		event.addListener(this, 'click', null, this.optionClickCallback);
+	}
 
-    optionClickCallback(e, b, c) {
-        if (this.hasAttribute('disabled')) return;
+	beforeDisconnect() {
+		event.removeListener(this, 'click', null, this.optionClickCallback);
+	}
 
-        this.dispatchEvent(
-            new CustomEvent('wje-option:change', {
-                bubbles: true,
-                composed: true,
-                detail: {
-                    value: this.value,
-                    text: this.text,
-                },
-            })
-        );
-    }
+	optionClickCallback(e, b, c) {
+		if (this.hasAttribute('disabled')) return;
+
+		this.dispatchEvent(
+			new CustomEvent('wje-option:change', {
+				bubbles: true,
+				composed: true,
+				detail: {
+					value: this.value,
+					text: this.text,
+				},
+			})
+		);
+	}
 }

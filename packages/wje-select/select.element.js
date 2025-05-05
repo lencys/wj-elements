@@ -580,7 +580,7 @@ export default class Select extends WJElement {
                     option.removeAttribute('selected');
                 }
             });
-            this.popup.hide();
+            this.popup.hide(false);
         } else {
             this.processClickedOption(e.target, true);
         }
@@ -650,7 +650,7 @@ export default class Select extends WJElement {
                 this.input.value = '';
             } else {
                 if (option !== null) this.chips.appendChild(this.getChip(option));
-                if (this.counterEl instanceof HTMLElement || length > +this.maxOptions) {
+                if (this.counterEl instanceof HTMLElement || !this.maxOptions || length > +this.maxOptions) {
                     this.counter();
                 }
             }

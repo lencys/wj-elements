@@ -47,7 +47,19 @@ template.innerHTML = `
 
     <h2>Open Dialog</h2>
     <div class="playground">
-      <div class="content">
+      <div class="content" style="position: relative;
+    border: none;
+    background-color: transparent;
+    font-size: var(--wje-font-size);
+    text-align: left;
+    overflow: hidden;
+    border-radius: 12px;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);">
+
         <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible>
           <wje-button size="large" slot="trigger" stop-propagation="true" caret>Large</wje-button>
           <wje-menu variant="context">
@@ -153,7 +165,7 @@ template.innerHTML = `
   </div>`;
 
 export default class DemoDropdown extends WJElement {
-   constructor() {
+  constructor() {
     super();
   }
 
