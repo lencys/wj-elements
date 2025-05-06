@@ -33,6 +33,14 @@ export default class FileUploadItem extends WJElement {
         this.localizer = new Localizer(this);
     }
 
+    set isUploaded(value) {
+        this.setAttribute('is-uploaded', '');
+    }
+
+    get isUploaded() {
+        return this.hasAttribute('is-uploaded');
+    }
+
     set size(value) {
         this.setAttribute('size', value);
     }
@@ -138,6 +146,9 @@ export default class FileUploadItem extends WJElement {
         size.setAttribute('value', this.size || 0);
         size.innerHTML = `<span slot="start">&nbsp;${this.localizer.translate('wj.file.upload.from')} </span>`;
 
+        let size2 = document.createElement('wje-format-digital');
+        size2.setAttribute('value', this.size || 0);
+
         let slider = document.createElement('wje-progress-bar');
         slider.classList.add('file-progress');
         slider.setAttribute('id', 'id-' + this.lastModified);
@@ -152,9 +163,16 @@ export default class FileUploadItem extends WJElement {
 
         native.appendChild(image);
         native.appendChild(name);
-        native.appendChild(sizeWrapper);
+
+        if (!this.isUploaded)
+            native.appendChild(sizeWrapper);
+        else
+            native.appendChild(size2);
+
         native.appendChild(actions);
-        native.appendChild(slider);
+
+        if (!this.isUploaded)
+            native.appendChild(slider);
 
         fragment.appendChild(native);
 
