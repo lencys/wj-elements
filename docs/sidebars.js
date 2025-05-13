@@ -137,6 +137,12 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Divider',
+      collapsed: false,
+      items: ['api/divider'],
+    },
+    {
+      type: 'category',
       label: 'Dropdown',
       collapsed: false,
       items: ['api/dropdown'],

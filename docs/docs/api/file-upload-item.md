@@ -37,6 +37,14 @@ import Icon from '@site/static/usage/v1/file-upload-item/image/index.md';
 
 <Icon />
 
+## Is uploaded
+
+Atribút `is-uploaded` zobrazí element v stave nahratého súboru.
+
+import IsUploaded from '@site/static/usage/v1/file-upload-item/isuploaded/index.md';
+
+<IsUploaded />
+
 ## Atribúty a Vlastnosti
 
 <Props />

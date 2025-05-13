@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropdown</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script type="module" src="../../../../wje-elementy/wje-master.js"></script>
+    <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content" style="flex-direction: column; justify-content: flex-start;display: flex;row-gap: 2rem;width: 400px;">
+        <wje-divider style="--wje-divider-spacing: 1rem;"></wje-divider>
+        <wje-menu active style="max-width: 200px;">
+          <wje-menu-item>
+            Menu item
+          </wje-menu-item>
+          <wje-menu-item>
+            Menu item
+            <wje-icon slot="end" name="heart"></wje-icon>
+          </wje-menu-item>
+          <wje-divider style="--wje-divider-spacing: .5rem;"></wje-divider>
+          <wje-menu-item>Menu item</wje-menu-item>
+          <wje-menu-item>Menu item</wje-menu-item>
+        </wje-menu>
+      </div>
+    </div>
+  </body>
+</html>

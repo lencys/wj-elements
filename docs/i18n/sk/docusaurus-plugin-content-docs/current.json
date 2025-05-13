@@ -250,5 +250,9 @@
   "sidebar.api.category.Tree": {
     "message": "Tree",
     "description": "The label for category Tree in sidebar api"
+  },
+  "sidebar.api.category.Divider": {
+    "message": "Divider",
+    "description": "The label for category Divider in sidebar api"
   }
 }

@@ -4,9 +4,4 @@ import javascript from './javascript.md';
 import react from './react.md';
 import vue from './vue.md';
 
-<Playground
-  version="7"
-  code={{ javascript, react, vue }}
-  src="usage/v1/grid/vertical-alignment/demo.html"
-  size="350px"
-/>
+<Playground version="1" code={{ javascript, react, vue }} src="usage/v1/file-upload-item/isuploaded/demo.html" />

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Animation</title>
+    <title>FileUpload</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.168/dist/wje-master.min.js"></script>
@@ -13,11 +13,13 @@
   </head>
   <body>
     <div class="container">
-      <div class="content">
-        <wje-file-upload max-file-size="10000" accepted-types="mp4" icon>
-          <wje-icon name="cloud-upload" style="--wje-icon-size: 4rem"></wje-icon>
-          <p>Drag and drop to upload</p>
-        </wje-file-upload>
+      <div class="content" style="width: 80%; display: flex; flex-direction: column; gap: 1rem">
+        <wje-file-upload-item name="lorem-ipsum.png" size="1000000" is-uploaded="">
+          <wje-img slot="img" src="https://picsum.photos/42/42?i=1"></wje-img>
+        </wje-file-upload-item>
+        <wje-file-upload-item name="lorem-ipsum.png" size="1000000" uploaded="500000" progress="50" lang="sk-sk" is-uploaded="">
+          <wje-icon slot="img" name="video" size="large"></wje-icon>
+        </wje-file-upload-item>
       </div>
     </div>
   </body>

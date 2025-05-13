@@ -8,5 +8,5 @@ import vue from './vue.md';
   version="7"
   code={{ javascript, react, vue }}
   src="usage/v1/grid/horizontal-alignment/demo.html"
-  size="200px"
+  size="350px"
 />

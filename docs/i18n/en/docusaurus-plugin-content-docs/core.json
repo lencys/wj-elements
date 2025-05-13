@@ -3272,6 +3272,26 @@
           "name": "--wje-dialog-header-actions-gap",
           "annotation": "prop",
           "docs": "Space between action items in the header"
+        },
+        {
+          "name": "--wje-dialog-headline-font-size",
+          "annotation": "prop",
+          "docs": "Font size of the heading"
+        },
+        {
+          "name": "--wje-dialog-headline-font-weight",
+          "annotation": "prop",
+          "docs": "Font thickness of the heading"
+        },
+        {
+          "name": "--wje-dialog-headline-letter-spacing",
+          "annotation": "prop",
+          "docs": "Space between the letters of the heading"
+        },
+        {
+          "name": "--wje-dialog-headline-text-transform",
+          "annotation": "prop",
+          "docs": "Headline text transformation"
         }
       ],
       "slots": [
@@ -3325,6 +3345,45 @@
           "wje-button"
         ]
       }
+    },
+    {
+      "filePath": "src/components/divider/divider.tsx",
+      "encapsulation": "shadow",
+      "tag": "divider",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [
+        {
+          "name": "--wje-divider-border-color",
+          "annotation": "prop",
+          "docs": "Defines the edge color of the element."
+        },
+        {
+          "name": "--wje-divider-border-width",
+          "annotation": "prop",
+          "docs": "Defines the border width of the element."
+        },
+        {
+          "name": "--wje-divider-spacing",
+          "annotation": "prop",
+          "docs": "Defines the size of the gap between the border and the content of the element."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The main content of the element."
+        }
+      ],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
       "filePath": "src/components/dropdown/dropdown.tsx",
@@ -4039,12 +4098,12 @@
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-gutter-x",
+          "name": "--wje-gutter-x",
           "annotation": "prop",
           "docs": "Specifies the size of the gap between columns in the horizontal direction"
         },
         {
-          "name": "--wj-gutter-y",
+          "name": "--wje-gutter-y",
           "annotation": "prop",
           "docs": "Specifies the size of the vertical space between columns"
         }
@@ -4059,109 +4118,556 @@
       "filePath": "src/components/file-upload/file-upload.tsx",
       "encapsulation": "shadow",
       "tag": "file-upload",
-      "docs": "",
+      "docs": "File uploader with drag & drop, preview and chunking support.",
       "docsTags": [],
       "usage": {},
       "props": [
         {
-          "name": "accepted-types",
-          "type": "number",
+          "name": "acceptedTypes",
+          "type": "string",
           "complexType": {
-            "original": "number",
-            "resolved": "number",
+            "original": "string",
+            "resolved": "string",
             "references": {}
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "accepted-types",
-          "reflectToAttr": false,
-          "docs": "Sets the accepted file types to upload.",
+          "reflectToAttr": true,
+          "docs": "A comma-separated string of accepted file types (e.g. 'image/*,.pdf,.doc').",
           "docsTags": [],
-          "default": "0",
+          "default": "\"\"",
           "values": [
             {
-              "type": "number"
+              "type": "string"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         },
         {
-          "name": "chunk-size",
+          "name": "chunkSize",
           "type": "number",
           "complexType": {
             "original": "number",
             "resolved": "number",
             "references": {}
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "chunk-size",
-          "reflectToAttr": false,
-          "docs": "Sets the fragment size for uploading large files in bytes.",
+          "reflectToAttr": true,
+          "docs": "The size in bytes of a portion of the file for uploading in chunks.",
           "docsTags": [],
-          "default": "1 MB",
+          "default": "1048576",
           "values": [
             {
               "type": "number"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         },
         {
-          "name": "max-file-size",
+          "name": "maxFileSize",
           "type": "number",
           "complexType": {
             "original": "number",
             "resolved": "number",
             "references": {}
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "max-file-size",
-          "reflectToAttr": false,
-          "docs": "Sets the maximum file size allowed for uploading in bytes.",
+          "reflectToAttr": true,
+          "docs": "Maximum allowed file size in MB.",
           "docsTags": [],
-          "default": "1 MB",
+          "default": "1",
           "values": [
             {
               "type": "number"
             }
           ],
-          "optional": false,
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "uploadUrl",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "upload-url",
+          "reflectToAttr": true,
+          "docs": "The URL of the server to which the files will be uploaded.",
+          "docsTags": [],
+          "default": "\"/upload\"",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "autoProcessFiles",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "auto-process-files",
+          "reflectToAttr": true,
+          "docs": "If `true`, the files will start uploading automatically when added.",
+          "docsTags": [],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "noUploadButton",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "no-upload-button",
+          "reflectToAttr": true,
+          "docs": "If `true`, the button to start recording is not displayed.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "toChunk",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "to-chunk",
+          "reflectToAttr": true,
+          "docs": "If `true`, the files will be uploaded in batches. If `false`, the file will be uploaded one at a time.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Text label for the record button. If not specified, the translation from the localization is used.",
+          "docsTags": [],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
           "required": false
         }
       ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
+      "methods": [
+        {
+          "name": "addFilesToQueue",
+          "returns": {
+            "type": "void",
+            "complexType": {
+              "original": "void",
+              "resolved": "void",
+              "references": {}
+            }
+          },
+          "signature": "(files: FileList) => void",
+          "parameters": [
+            {
+              "name": "files",
+              "type": "FileList",
+              "complexType": {
+                "original": "FileList",
+                "resolved": "FileList",
+                "references": {
+                  "FileList": {
+                    "location": "global"
+                  }
+                }
+              }
+            }
+          ],
+          "docs": "Adds files to the upload queue.",
+          "docsTags": []
+        },
+        {
+          "name": "uploadFiles",
+          "returns": {
+            "type": "void",
+            "complexType": {
+              "original": "void",
+              "resolved": "void",
+              "references": {}
+            }
+          },
+          "signature": "() => void",
+          "parameters": [],
+          "docs": "Starts uploading files from the queue.",
+          "docsTags": []
+        },
+        {
+          "name": "resetFormState",
+          "returns": {
+            "type": "void",
+            "complexType": {
+              "original": "void",
+              "resolved": "void",
+              "references": {}
+            }
+          },
+          "signature": "() => void",
+          "parameters": [],
+          "docs": "Resets the form state and removes the displayed file thumbnails.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "file-upload:upload-started",
+          "detail": "File",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Called when you start uploading a file.",
+          "docsTags": []
+        },
+        {
+          "event": "file-upload:uploaded-file-complete",
+          "detail": "{ data: any, file: File }",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Called after one file has been successfully uploaded.",
+          "docsTags": []
+        },
+        {
+          "event": "file-upload:files-added",
+          "detail": "FileList",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Called after adding files to the queue (via input or drag & drop).",
+          "docsTags": []
+        },
+        {
+          "event": "file-upload:all-files-uploaded",
+          "detail": "any[]",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Called after all files in the queue have been successfully uploaded.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "change",
+          "target": "this.fileInput",
+          "capture": false,
+          "passive": false,
+          "docs": "Tracks the change on the hidden input element for file selection."
+        },
+        {
+          "event": "drop",
+          "target": "this.native",
+          "capture": false,
+          "passive": false,
+          "docs": "Tracks the file drop event on an element."
+        },
+        {
+          "event": "dragenter",
+          "target": "this.native",
+          "capture": false,
+          "passive": false,
+          "docs": "Tracks the input event of the drawn files over the element."
+        },
+        {
+          "event": "dragover",
+          "target": "this.native",
+          "capture": false,
+          "passive": false,
+          "docs": "Tracks the file dragging event over the element."
+        },
+        {
+          "event": "dragleave",
+          "target": "this.native",
+          "capture": false,
+          "passive": false,
+          "docs": "Tracks the event of leaving the pulled files from the element."
+        }
+      ],
       "styles": [],
-      "slots": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The default slot for the content that appears in the upload area (e.g. the text 'Drag files here')."
+        },
+        {
+          "name": "item",
+          "docs": "Slot for displaying individual items of uploaded files (elements `wje-file-upload-item`)."
+        }
+      ],
       "parts": [
         {
           "name": "native",
-          "docs": "Refers to a `div` element inside an element."
+          "docs": "The main container of the element."
+        },
+        {
+          "name": "label",
+          "docs": "An area for uploading files that contains a slot and a button."
+        },
+        {
+          "name": "file-label",
+          "docs": "Alias for `label` part."
+        },
+        {
+          "name": "items",
+          "docs": "Container for the list of files to be uploaded (`item` slot)."
+        },
+        {
+          "name": "upload-button",
+          "docs": "Button to start file selection."
         }
       ],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependents": [
+        "wje-file-upload-item"
+      ],
+      "dependencies": [
+        "wje-button",
+        "wje-icon",
+        "wje-slider",
+        "wje-img"
+      ],
+      "dependencyGraph": {
+        "file-upload": [
+          "wje-button",
+          "wje-icon",
+          "wje-slider",
+          "wje-img"
+        ]
+      }
     },
     {
       "filePath": "src/components/file-upload-item/file-upload-item.tsx",
       "encapsulation": "shadow",
       "tag": "file-upload-item",
-      "docs": "",
+      "docs": "A component that displays the uploaded file entry with information about its status and upload progress.",
       "docsTags": [],
       "usage": {},
-      "props": [],
+      "props": [
+        {
+          "name": "isUploaded",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "is-uploaded",
+          "reflectToAttr": true,
+          "docs": "Indicates whether the file was successfully uploaded.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "The size of the uploaded file in bytes.",
+          "docsTags": [],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": false,
+          "docs": "The name of the file being uploaded.",
+          "docsTags": [],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "uploaded by",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "uploaded by",
+          "reflectToAttr": false,
+          "docs": "The size of the already uploaded part of the file in bytes.",
+          "docsTags": [],
+          "default": "0",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "progress",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "progress",
+          "reflectToAttr": false,
+          "docs": "Percentage of file upload progress (0-100).",
+          "docsTags": [],
+          "default": "0",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
+      "styles": [
+        {
+          "name": "--wje-file-upload-item-border-width",
+          "annotation": "prop",
+          "docs": "The margin width of the file entry."
+        },
+        {
+          "name": "--wje-file-upload-item-border-style",
+          "annotation": "prop",
+          "docs": "The border style of the file entry."
+        },
+        {
+          "name": "--wje-file-upload-item-border-color",
+          "annotation": "prop",
+          "docs": "The border color of the file item."
+        },
+        {
+          "name": "--wje-border-radius-medium",
+          "annotation": "prop",
+          "docs": "Round the edges of the file item."
+        },
+        {
+          "name": "--wje-border-color",
+          "annotation": "prop",
+          "docs": "The colour of the image preview border."
+        }
+      ],
+      "slots": [
+        {
+          "name": "img",
+          "docs": "Slot for icon or file preview."
+        },
+        {
+          "name": "action",
+          "docs": "Slot for action buttons (includes delete button as standard)."
+        }
+      ],
+      "parts": [
+        {
+          "name": "image",
+          "docs": "File preview container or file type icon."
+        }
+      ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "wje-format-digital",
+        "wje-button",
+        "wje-slider",
+        "wje-icon",
+        "wje-progress-bar"
+      ],
+      "dependencyGraph": {
+        "file-upload-item": [
+          "wje-format-digital",
+          "wje-button",
+          "wje-slider",
+          "wje-icon",
+          "wje-progress-bar"
+        ]
+      }
     },
     {
       "filePath": "src/components/footer/footer.tsx",
@@ -5973,12 +6479,12 @@
         {
           "name": "--wj-menu-background",
           "annotation": "prop",
-          "docs": "Background color of the element"
+          "docs": "Background colour of the element"
         },
         {
           "name": "--wj-menu-border-color",
           "annotation": "prop",
-          "docs": "Color of element edges"
+          "docs": "Colour of element edges"
         },
         {
           "name": "--wj-menu-border-radius",
@@ -9727,7 +10233,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": false,
-          "docs": "The color to use from your application's color palette. The default options are: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, and `\"dark\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
+          "docs": "The color to use from your application's color palette. The default options are `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, and `\"dark\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
           "docsTags": [],
           "values": [
             {

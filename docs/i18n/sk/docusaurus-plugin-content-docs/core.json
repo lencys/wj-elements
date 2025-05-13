@@ -3258,6 +3258,26 @@
           "name": "--wje-dialog-header-actions-gap",
           "annotation": "prop",
           "docs": "Medzera medzi položkami akcie v hlavičke"
+        },
+        {
+          "name": "--wje-dialog-headline-font-size",
+          "annotation": "prop",
+          "docs": "Veľkosť písma nadpisu"
+        },
+        {
+          "name": "--wje-dialog-headline-font-weight",
+          "annotation": "prop",
+          "docs": "Hrúbka písma nadpisu"
+        },
+        {
+          "name": "--wje-dialog-headline-letter-spacing",
+          "annotation": "prop",
+          "docs": "Medzera medzi písmenami nadpisu"
+        },
+        {
+          "name": "--wje-dialog-headline-text-transform",
+          "annotation": "prop",
+          "docs": "Transformácia textu nadpisu"
         }
       ],
       "slots": [
@@ -3308,6 +3328,45 @@
       "dependencyGraph": {
         "wje-dialog": ["wje-icon", "wje-button"]
       }
+    },
+    {
+      "filePath": "src/components/divider/divider.tsx",
+      "encapsulation": "shadow",
+      "tag": "divider",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [
+        {
+          "name": "--wje-divider-border-color",
+          "annotation": "prop",
+          "docs": "Definuje farbu okraja elementu."
+        },
+        {
+          "name": "--wje-divider-border-width",
+          "annotation": "prop",
+          "docs": "Definuje šírku okraja elementu."
+        },
+        {
+          "name": "--wje-divider-spacing",
+          "annotation": "prop",
+          "docs": "Definuje veľkosť medzery medzi okrajom a obsahom elementu."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Hlavný obsah elementu."
+        }
+      ],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
       "filePath": "src/components/dropdown/dropdown.tsx",
@@ -4016,12 +4075,12 @@
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-gutter-x",
+          "name": "--wje-gutter-x",
           "annotation": "prop",
           "docs": "Určuje veľkosť medzery medzi stĺpcami v horizontálnom smere"
         },
         {
-          "name": "--wj-gutter-y",
+          "name": "--wje-gutter-y",
           "annotation": "prop",
           "docs": "Určuje veľkosť vertikálnej medzery medzi stĺpcami"
         }
@@ -4036,109 +4095,544 @@
       "filePath": "src/components/file-upload/file-upload.tsx",
       "encapsulation": "shadow",
       "tag": "file-upload",
-      "docs": "",
+      "docs": "Element na nahrávanie súborov s podporou drag & drop, náhľadu a nahrávania po častiach (chunking).",
       "docsTags": [],
       "usage": {},
       "props": [
         {
-          "name": "accepted-types",
-          "type": "number",
+          "name": "acceptedTypes",
+          "type": "string",
           "complexType": {
-            "original": "number",
-            "resolved": "number",
+            "original": "string",
+            "resolved": "string",
             "references": {}
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "accepted-types",
-          "reflectToAttr": false,
-          "docs": "Nastaví akceptované typy súborov na nahratie.",
+          "reflectToAttr": true,
+          "docs": "Reťazec akceptovaných typov súborov, oddelených čiarkou (napr. 'image/*,.pdf,.doc').",
           "docsTags": [],
-          "default": "0",
+          "default": "\"\"",
           "values": [
             {
-              "type": "number"
+              "type": "string"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         },
         {
-          "name": "chunk-size",
+          "name": "chunkSize",
           "type": "number",
           "complexType": {
             "original": "number",
             "resolved": "number",
             "references": {}
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "chunk-size",
-          "reflectToAttr": false,
-          "docs": "Nastaví veľkosť fragmentu pre nahrávanie veľkých súborov v bajtoch.",
+          "reflectToAttr": true,
+          "docs": "Veľkosť časti súboru v bajtoch pre nahrávanie po častiach.",
           "docsTags": [],
-          "default": "1 MB",
+          "default": "1048576",
           "values": [
             {
               "type": "number"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         },
         {
-          "name": "max-file-size",
+          "name": "maxFileSize",
           "type": "number",
           "complexType": {
             "original": "number",
             "resolved": "number",
             "references": {}
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "max-file-size",
-          "reflectToAttr": false,
-          "docs": "Nastaví maximálnu povolenú veľkosť súboru na nahrávanie v bajtoch.",
+          "reflectToAttr": true,
+          "docs": "Maximálna povolená veľkosť súboru v MB.",
           "docsTags": [],
-          "default": "1 MB",
+          "default": "1",
           "values": [
             {
               "type": "number"
             }
           ],
-          "optional": false,
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "uploadUrl",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "upload-url",
+          "reflectToAttr": true,
+          "docs": "URL adresa servera, na ktorú sa budú súbory nahrávať.",
+          "docsTags": [],
+          "default": "\"/upload\"",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "autoProcessFiles",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "auto-process-files",
+          "reflectToAttr": true,
+          "docs": "Ak je `true`, súbory sa začnú nahrávať automaticky po pridaní.",
+          "docsTags": [],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "noUploadButton",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "no-upload-button",
+          "reflectToAttr": true,
+          "docs": "Ak je `true`, tlačidlo na spustenie nahrávania sa nezobrazí.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "toChunk",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "to-chunk",
+          "reflectToAttr": true,
+          "docs": "Ak je `true`, súbory sa budú nahrávať po častiach. Ak `false`, súbor sa nahrá naraz.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Textové označenie pre tlačidlo nahrávania. Ak nie je zadané, použije sa preklad z lokalizácie.",
+          "docsTags": [],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
           "required": false
         }
       ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
+      "methods": [
+        {
+          "name": "addFilesToQueue",
+          "returns": {
+            "type": "void",
+            "complexType": {
+              "original": "void",
+              "resolved": "void",
+              "references": {}
+            }
+          },
+          "signature": "(files: FileList) => void",
+          "parameters": [
+            {
+              "name": "files",
+              "type": "FileList",
+              "complexType": {
+                "original": "FileList",
+                "resolved": "FileList",
+                "references": {
+                  "FileList": {
+                    "location": "global"
+                  }
+                }
+              }
+            }
+          ],
+          "docs": "Pridá súbory do fronty na nahrávanie.",
+          "docsTags": []
+        },
+        {
+          "name": "uploadFiles",
+          "returns": {
+            "type": "void",
+            "complexType": {
+              "original": "void",
+              "resolved": "void",
+              "references": {}
+            }
+          },
+          "signature": "() => void",
+          "parameters": [],
+          "docs": "Spustí nahrávanie súborov z fronty.",
+          "docsTags": []
+        },
+        {
+          "name": "resetFormState",
+          "returns": {
+            "type": "void",
+            "complexType": {
+              "original": "void",
+              "resolved": "void",
+              "references": {}
+            }
+          },
+          "signature": "() => void",
+          "parameters": [],
+          "docs": "Resetuje stav formulára a odstráni zobrazené náhľady súborov.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "file-upload:upload-started",
+          "detail": "File",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Vyvolané pri začatí nahrávania súboru.",
+          "docsTags": []
+        },
+        {
+          "event": "file-upload:upladed-file-complete",
+          "detail": "{ data: any, file: File }",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Vyvolané po úspešnom nahratí jedného súboru.",
+          "docsTags": []
+        },
+        {
+          "event": "file-upload:files-added",
+          "detail": "FileList",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Vyvolané po pridaní súborov do fronty (cez input alebo drag & drop).",
+          "docsTags": []
+        },
+        {
+          "event": "file-upload:all-files-uploaded",
+          "detail": "any[]",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Vyvolané po úspešnom nahratí všetkých súborov z fronty.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "change",
+          "target": "this.fileInput",
+          "capture": false,
+          "passive": false,
+          "docs": "Sleduje zmenu na skrytom input elemente pre výber súborov."
+        },
+        {
+          "event": "drop",
+          "target": "this.native",
+          "capture": false,
+          "passive": false,
+          "docs": "Sleduje udalosť pustenia súborov (drop) na element."
+        },
+        {
+          "event": "dragenter",
+          "target": "this.native",
+          "capture": false,
+          "passive": false,
+          "docs": "Sleduje udalosť vstupu ťahaných súborov nad element."
+        },
+        {
+          "event": "dragover",
+          "target": "this.native",
+          "capture": false,
+          "passive": false,
+          "docs": "Sleduje udalosť ťahania súborov nad elementom."
+        },
+        {
+          "event": "dragleave",
+          "target": "this.native",
+          "capture": false,
+          "passive": false,
+          "docs": "Sleduje udalosť opustenia ťahaných súborov z elementu."
+        }
+      ],
       "styles": [],
-      "slots": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre obsah, ktorý sa zobrazí v oblasti pre nahrávanie (napr. text 'Potiahnite súbory sem')."
+        },
+        {
+          "name": "item",
+          "docs": "Slot pre zobrazenie jednotlivých položiek nahrávaných súborov (elementy `wje-file-upload-item`)."
+        }
+      ],
       "parts": [
         {
           "name": "native",
-          "docs": "Odkazuje na `div` element vo vnútri elementu."
+          "docs": "Hlavný kontajner elementu."
+        },
+        {
+          "name": "label",
+          "docs": "Oblasť pre nahrávanie súborov, ktorá obsahuje slot a tlačidlo."
+        },
+        {
+          "name": "file-label",
+          "docs": "Alias pre `label` part."
+        },
+        {
+          "name": "items",
+          "docs": "Kontajner pre zoznam nahrávaných súborov (slot `item`)."
+        },
+        {
+          "name": "upload-button",
+          "docs": "Tlačidlo na spustenie výberu súborov."
         }
       ],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependents": ["wje-file-upload-item"],
+      "dependencies": ["wje-button", "wje-icon", "wje-slider", "wje-img"],
+      "dependencyGraph": {
+        "file-upload": ["wje-button", "wje-icon", "wje-slider", "wje-img"]
+      }
     },
     {
       "filePath": "src/components/file-upload-item/file-upload-item.tsx",
       "encapsulation": "shadow",
       "tag": "file-upload-item",
-      "docs": "",
+      "docs": "Komponent zobrazujúci položku nahrávaného súboru s informáciami o jeho stave a priebehu nahrávania.",
       "docsTags": [],
       "usage": {},
-      "props": [],
+      "props": [
+        {
+          "name": "isUploaded",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "is-uploaded",
+          "reflectToAttr": true,
+          "docs": "Označuje, či bol súbor úspešne nahraný.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "Veľkosť nahrávaného súboru v bajtoch.",
+          "docsTags": [],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": false,
+          "docs": "Názov nahrávaného súboru.",
+          "docsTags": [],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "uploaded",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "uploaded",
+          "reflectToAttr": false,
+          "docs": "Veľkosť už nahranej časti súboru v bajtoch.",
+          "docsTags": [],
+          "default": "0",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "progress",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "progress",
+          "reflectToAttr": false,
+          "docs": "Percentuálny priebeh nahrávania súboru (0-100).",
+          "docsTags": [],
+          "default": "0",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
+      "styles": [
+        {
+          "name": "--wje-file-upload-item-border-width",
+          "annotation": "prop",
+          "docs": "Šírka okraja položky súboru."
+        },
+        {
+          "name": "--wje-file-upload-item-border-style",
+          "annotation": "prop",
+          "docs": "Štýl okraja položky súboru."
+        },
+        {
+          "name": "--wje-file-upload-item-border-color",
+          "annotation": "prop",
+          "docs": "Farba okraja položky súboru."
+        },
+        {
+          "name": "--wje-border-radius-medium",
+          "annotation": "prop",
+          "docs": "Zaoblenie okrajov položky súboru."
+        },
+        {
+          "name": "--wje-border-color",
+          "annotation": "prop",
+          "docs": "Farba okraja náhľadu obrázka."
+        }
+      ],
+      "slots": [
+        {
+          "name": "img",
+          "docs": "Slot pre ikonu alebo náhľad súboru."
+        },
+        {
+          "name": "action",
+          "docs": "Slot pre akčné tlačidlá (obsahuje štandardne tlačidlo na zmazanie)."
+        }
+      ],
+      "parts": [
+        {
+          "name": "image",
+          "docs": "Kontajner pre náhľad súboru alebo ikonu typu súboru."
+        }
+      ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "wje-format-digital",
+        "wje-button",
+        "wje-slider",
+        "wje-icon",
+        "wje-progress-bar"
+      ],
+      "dependencyGraph": {
+        "file-upload-item": [
+          "wje-format-digital",
+          "wje-button",
+          "wje-slider",
+          "wje-icon",
+          "wje-progress-bar"
+        ]
+      }
     },
     {
       "filePath": "src/components/footer/footer.tsx",
