@@ -39,6 +39,8 @@ import Icon from '@site/static/usage/v1/file-upload-item/image/index.md';
 
 ## Is uploaded
 
+The `is-uploaded` attribute displays the element in the uploaded file state.
+
 import IsUploaded from '@site/static/usage/v1/file-upload-item/isuploaded/index.md';
 
 <IsUploaded />

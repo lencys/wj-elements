@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Tento komponent poskytuje jednoduchý spôsob zobrazenia ikon zo sady SVG obrázkov, pričom umožňuje rôzne možnosti prispôsobenia. WebJET Elements využíva sadu ikon Tabler. Pre zoznam všetkých dostupných ikon navštívte [tabler-icons.io](https://tabler-icons.io/).
+Tento komponent poskytuje jednoduchý spôsob zobrazenia ikon zo sady SVG obrázkov, pričom umožňuje rôzne možnosti prispôsobenia. WebJET Elements využíva sadu ikon Tabler. Zoznam všetkých dostupných ikon nájdete na [tabler-icons.io](https://tabler-icons.io/).
 
 ## Základné použitie
 

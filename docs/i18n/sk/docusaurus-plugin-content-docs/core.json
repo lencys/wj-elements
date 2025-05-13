@@ -4656,78 +4656,81 @@
       "filePath": "src/components/format-digital/format-digital.tsx",
       "encapsulation": "shadow",
       "tag": "format-digital",
-      "docs": "",
+      "docs": "Element na formátovanie číselných hodnôt do digitálneho zobrazenia.",
       "docsTags": [],
-      "usage": {},
+      "usage": {
+        "basic": "<wje-format-digital value=\"123456\"></wje-format-digital>",
+        "formatting-bits": "<wje-format-digital value=\"99\" unit=\"bit\"></wje-format-digital>",
+        "formatting-display": "<wje-format-digital value=\"9900\" unit-display=\"short\"></wje-format-digital>"
+      },
       "props": [
         {
+          "name": "value",
+          "type": "number | string",
+          "complexType": {
+            "original": "number | string",
+            "resolved": "number | string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "Hodnota, ktorá sa má naformátovať. Určuje veľkosť v bajtoch alebo bitoch na zobrazenie.",
+          "docsTags": [],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true
+        },
+        {
           "name": "unit",
-          "type": "\"bit\" |  \"byte\" | string & Record<never, never> | undefined",
+          "type": "string",
           "complexType": {
             "original": "string",
-            "resolved": "\"bit\" |  \"byte\" | string & Record<never, never> | undefined",
+            "resolved": "string",
             "references": {}
           },
           "mutable": true,
           "attr": "unit",
           "reflectToAttr": false,
-          "docs": "Definuje jednotku pre zobrazenie hodnôt.",
+          "docs": "Jednotka formátovania. Platné hodnoty sú 'bit' alebo 'byte'.",
           "docsTags": [],
-          "default": "byte",
+          "default": "\"byte\"",
           "values": [
             {
-              "value": "bit",
               "type": "string"
-            },
-            {
-              "value": "byte",
-              "type": "string"
-            },
-            {
-              "type": "string & Record<never, never>"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         },
         {
-          "name": "unit-display",
-          "type": "\"long\" |  \"narrow\" |  \"short\" | string & Record<never, never> | undefined",
+          "name": "unitDisplay",
+          "type": "string",
           "complexType": {
             "original": "string",
-            "resolved": "\"long\" |  \"narrow\" |  \"short\" | string & Record<never, never> | undefined",
+            "resolved": "string",
             "references": {}
           },
           "mutable": true,
           "attr": "unit-display",
           "reflectToAttr": false,
-          "docs": "Nastaví veľkosť fragmentu pre nahrávanie veľkých súborov v bajtoch.",
+          "docs": "Štýl zobrazenia jednotky. Platné hodnoty sú 'short', 'long' alebo 'narrow'.",
           "docsTags": [],
-          "default": "short",
+          "default": "\"short\"",
           "values": [
             {
-              "value": "long",
               "type": "string"
-            },
-            {
-              "value": "narrow",
-              "type": "string"
-            },
-            {
-              "value": "short",
-              "type": "string"
-            },
-            {
-              "type": "string & Record<never, never>"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         }
       ],
@@ -4737,25 +4740,25 @@
       "styles": [],
       "slots": [
         {
-          "name": "",
-          "docs": "Obsah sa umiestni medzi named sloty."
+          "name": "start",
+          "docs": "Obsah umiestnený pred formátovanou hodnotou."
         },
         {
           "name": "end",
-          "docs": "Obsah sa umiestni vpravo od textu tlačidla v LTR a vľavo v RTL"
-        },
-        {
-          "name": "start",
-          "docs": "Obsah je umiestnený vľavo od textu tlačidla v LTR a vpravo v RTL."
+          "docs": "Obsah umiestnený za formátovanou hodnotou."
         }
       ],
       "parts": [
         {
           "name": "native",
-          "docs": "Odkazuje na `div` element s triedou `native-format-digital` vo vnútri elementu"
+          "docs": "Odkazuje na hlavný kontajner elementu"
+        },
+        {
+          "name": "formatted",
+          "docs": "Odkazuje na element obsahujúci formátovanú hodnotu"
         }
       ],
-      "dependents": [],
+      "dependents": ["file-upload-item"],
       "dependencies": [],
       "dependencyGraph": {}
     },
@@ -4909,27 +4912,27 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "Farba ikony z palety farieb aplikácie Predvolené možnosti sú `\"primary\"`, `\"secondary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, a `\"dark\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
+          "docs": "Farba ikony z palety farieb aplikácie Predvolené možnosti sú `\"primary\"`, `\"complete\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"info\"`, a `\"menu\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
           "docsTags": [],
           "values": [
+            {
+              "value": "complete",
+              "type": "string"
+            },
             {
               "value": "danger",
               "type": "string"
             },
             {
-              "value": "dark",
+              "value": "info",
               "type": "string"
             },
             {
-              "value": "light",
+              "value": "menu",
               "type": "string"
             },
             {
               "value": "primary",
-              "type": "string"
-            },
-            {
-              "value": "secondary",
               "type": "string"
             },
             {
@@ -5013,23 +5016,27 @@
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-icon-height",
-          "annotation": "prop",
-          "docs": "Definuje výšku ikony"
-        },
-        {
-          "name": "--wj-icon-size",
+          "name": "--wje-icon-size",
           "annotation": "prop",
           "docs": "Definuje veľkosť ikony"
         },
         {
-          "name": "--wj-icon-width",
+          "name": "--wje-icon-stroke",
           "annotation": "prop",
-          "docs": "Definuje šírku ikony"
+          "docs": "Stroke width of the icon"
         }
       ],
       "slots": [],
-      "parts": [],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "The div element inside of the wje-icon"
+        },
+        {
+          "name": "svg",
+          "docs": "The SVG element of the icon"
+        }
+      ],
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}

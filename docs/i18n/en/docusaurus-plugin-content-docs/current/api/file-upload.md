@@ -29,7 +29,7 @@ import Basic from '@site/static/usage/v1/file-upload/basic/index.md';
 
 <Basic />
 
-## Icon
+## With the icon
 
 import Icon from '@site/static/usage/v1/file-upload/icon/index.md';
 

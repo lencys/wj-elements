@@ -16,10 +16,6 @@ import styles from './styles/styles.css?inline';
  * @csspart formatted - The part representing the formatted value.
  * @csspart start - Slot for content before the formatted value.
  * @csspart end - Slot for content after the formatted value.
- * @cssproperty [--wje-format-digital-font-size=1rem] - The font size of the formatted digital value.
- * @cssproperty [--wje-format-digital-color=var(--wje-text-color)] - The color of the formatted text.
- * @cssproperty [--wje-format-digital-padding=.5rem] - The padding around the component.
- * @cssproperty [--wje-format-digital-border-radius=var(--wje-border-radius-small)] - The border radius of the component.
  * @tag wje-format-digital
  */
 

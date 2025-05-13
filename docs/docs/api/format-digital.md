@@ -29,25 +29,25 @@ import Basic from '@site/static/usage/v1/format-digital/basic/index.md';
 
 <Basic />
 
-## Formáty zobrazenia
+## Možnosti zobrazenia
 
 import FormattingDisplay from '@site/static/usage/v1/format-digital/formatting-display/index.md';
 
 <FormattingDisplay />
 
-## Formáty bajtov
+## Formátovanie bajtov
 
 import FormattingBytes from '@site/static/usage/v1/format-digital/formatting-bytes/index.md';
 
 <FormattingBytes />
 
-## Formáty bitov
+## Formátovanie bitov
 
 import FormattingBits from '@site/static/usage/v1/format-digital/formatting-bits/index.md';
 
 <FormattingBits />
 
-## Sloty
+## Použitie so slotmi
 
 import DisplaySlots from '@site/static/usage/v1/format-digital/slots/index.md';
 

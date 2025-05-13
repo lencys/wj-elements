@@ -92,7 +92,7 @@ template.innerHTML = `<h1>Icons</h1>
           }
           
           wje-icon.custom::part(svg) {
-            stroke-width: 1;
+            --wje-icon-stroke: 3;
           }
         </style>
       </div>

@@ -167,12 +167,6 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Infinite Scroll',
-      collapsed: false,
-      items: ['api/infinite-scroll'],
-    },
-    {
-      type: 'category',
       label: 'Icons',
       collapsed: false,
       items: ['api/icon'],
@@ -182,6 +176,12 @@ module.exports = {
       label: 'Icon picker',
       collapsed: false,
       items: ['api/icon-picker'],
+    },
+    {
+      type: 'category',
+      label: 'Infinite Scroll',
+      collapsed: false,
+      items: ['api/infinite-scroll'],
     },
     {
       type: 'category',

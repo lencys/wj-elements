@@ -4691,78 +4691,81 @@
       "filePath": "src/components/format-digital/format-digital.tsx",
       "encapsulation": "shadow",
       "tag": "format-digital",
-      "docs": "",
+      "docs": "Element for formatting numeric values into a digital display.",
       "docsTags": [],
-      "usage": {},
+      "usage": {
+        "basic": "<wje-format-digital value=\"123456\"></wje-format-digital>",
+        "formatting-bits": "<wje-format-digital value=\"99\" unit=\"bit\"></wje-format-digital>",
+        "formatting-display": "<wje-format-digital value=\"9900\" unit-display=\"short\"></wje-format-digital>"
+      },
       "props": [
         {
+          "name": "value",
+          "type": "number | string",
+          "complexType": {
+            "original": "number | string",
+            "resolved": "number | string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "The value to be formatted. Specifies the size in bytes or bits to display.",
+          "docsTags": [],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true
+        },
+        {
           "name": "unit",
-          "type": "\"bit\" | \"byte\" | string & Record<never, never> | undefined",
+          "type": "string",
           "complexType": {
             "original": "string",
-            "resolved": "\"bit\" | \"byte\" | string & Record<never, never> | undefined",
+            "resolved": "string",
             "references": {}
           },
           "mutable": true,
           "attr": "unit",
           "reflectToAttr": false,
-          "docs": "Defines the unit for displaying values.",
+          "docs": "Formatting unit. Valid values are 'bit' or 'byte'.",
           "docsTags": [],
-          "default": "bytes",
+          "default": "\"byte\"",
           "values": [
             {
-              "value": "bit",
               "type": "string"
-            },
-            {
-              "value": "bytes",
-              "type": "string"
-            },
-            {
-              "type": "String & Record<never, never>"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         },
         {
-          "name": "unit-display",
-          "type": "\"long\" | \"narrow\" | \"short\" | string & Record<never, never> | undefined",
+          "name": "unitDisplay",
+          "type": "string",
           "complexType": {
             "original": "string",
-            "resolved": "\"long\" | \"narrow\" | \"short\" | string & Record<never, never> | undefined",
+            "resolved": "string",
             "references": {}
           },
           "mutable": true,
           "attr": "unit-display",
           "reflectToAttr": false,
-          "docs": "Sets the fragment size for uploading large files in bytes.",
+          "docs": "Unit display style. Valid values are 'short', 'long' or 'narrow'.",
           "docsTags": [],
-          "default": "short",
+          "default": "\"short\"",
           "values": [
             {
-              "value": "long",
               "type": "string"
-            },
-            {
-              "value": "narrow",
-              "type": "string"
-            },
-            {
-              "value": "short",
-              "type": "string"
-            },
-            {
-              "type": "String & Record<never, never>"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         }
       ],
@@ -4772,25 +4775,27 @@
       "styles": [],
       "slots": [
         {
-          "name": "",
-          "docs": "The contents are placed between the named slots."
+          "name": "start",
+          "docs": "Content placed before the formatted value."
         },
         {
           "name": "end",
-          "docs": "The content is placed to the right of the button text in LTR and to the left in RTL"
-        },
-        {
-          "name": "start",
-          "docs": "The content is placed to the left of the button text in LTR and to the right in RTL."
+          "docs": "Content placed after the formatted value."
         }
       ],
       "parts": [
         {
           "name": "native",
-          "docs": "References a `div` element with the `native-format-digital` class inside the element"
+          "docs": "Refers to the main container of the element"
+        },
+        {
+          "name": "formatted",
+          "docs": "Refers to the element containing the formatted value"
         }
       ],
-      "dependents": [],
+      "dependents": [
+        "file-upload-item"
+      ],
       "dependencies": [],
       "dependencyGraph": {}
     },
@@ -4944,27 +4949,27 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "Icon color from the application color palette The default options are `\"primary\"`, `\"secondary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, and `\"dark\"`.\nFor more information, go to: [theming](/theming/basics).",
+          "docs": "Icon color from the application color palette The default options are `\"primary\"`, `\"complete\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"warning\"`, `\"danger\"`, `\"info\"`, and `\"menu\"`.\nFor more information, go to: [theming](/theming/basics).",
           "docsTags": [],
           "values": [
+            {
+              "value": "complete",
+              "type": "string"
+            },
             {
               "value": "danger",
               "type": "string"
             },
             {
-              "value": "dark",
+              "value": "info",
               "type": "string"
             },
             {
-              "value": "light",
+              "value": "menu",
               "type": "string"
             },
             {
               "value": "primary",
-              "type": "string"
-            },
-            {
-              "value": "secondary",
               "type": "string"
             },
             {
@@ -5048,23 +5053,27 @@
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-icon-height",
-          "annotation": "prop",
-          "docs": "Defines the height of the icon"
-        },
-        {
-          "name": "--wj-icon-size",
+          "name": "--wje-icon-size",
           "annotation": "prop",
           "docs": "Defines the size of the icon"
         },
         {
-          "name": "--wj-icon-width",
+          "name": "--wje-icon-stroke",
           "annotation": "prop",
-          "docs": "Defines the width of the icon"
+          "docs": "Stroke width of the icon"
         }
       ],
       "slots": [],
-      "parts": [],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "The div element inside of the wje-icon"
+        },
+        {
+          "name": "svg",
+          "docs": "The SVG element of the icon"
+        }
+      ],
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
