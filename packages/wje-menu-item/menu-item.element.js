@@ -97,6 +97,40 @@ export default class MenuItem extends WJElement {
         return false;
     }
 
+    /**
+     * Sets the value of the custom event attribute.
+     * @param {string} value The value to be assigned to the custom event attribute.
+     */
+    set customEvent(value) {
+        this.setAttribute('custom-event', value);
+    }
+
+    /**
+     * Retrieves the value of the 'custom-event' attribute from the element.
+     * @returns {string | null} The value of the 'custom-event' attribute, or null if the attribute is not set.
+     */
+    get customEvent() {
+        return this.getAttribute('custom-event');
+    }
+
+    /**
+     * Retrieves a mapped object containing custom event parameters extracted from the element's attributes.
+     * Attributes considered are those that begin with 'custom-event-'.
+     * The mapped object's keys are derived by removing the 'custom-event-' prefix from the attribute names,
+     * and the values are the corresponding attribute values.
+     * @returns {object} An object containing key-value pairs of custom event parameters.
+     */
+    get customEventParameters() {
+        const attributes = Array.from(this.attributes).filter((attr) => attr.name.startsWith('custom-event-'));
+
+        return attributes.reduce((acc, attr) => {
+            const key = attr.name.replace('custom-event-', '');
+            acc[key] = attr.value;
+
+            return acc;
+        }, {});
+    }
+
     className = 'MenuItem';
 
     /**
@@ -210,10 +244,7 @@ export default class MenuItem extends WJElement {
 
         let isAppend = false;
         // ak je variant typu CONTEXT zobrazime submenu ako popup
-        if (
-            /*(this.collapse && this.variant === "NAV" && this.hasSubmenu) || */ this.variant === 'CONTEXT' &&
-            this.hasSubmenu
-        ) {
+        if (this.variant === 'CONTEXT' && this.hasSubmenu) {
             native.setAttribute('slot', 'anchor'); // pridame slot anchor pre popup
 
             let popup = document.createElement('wje-popup');
@@ -261,6 +292,10 @@ export default class MenuItem extends WJElement {
         // Event na zrusenie zobrazenia submenu ked sa klikne mimo
         event.addListener(this, 'focusout', null, this.shouldHideSubmenu);
         event.addListener(this, 'click', null, this.clickHandler);
+
+        if (this.hasAttribute('custom-event')) {
+            event.addListener(this, 'click', null, this.#populateCustomEvent);
+        }
     }
 
     mouseenterHandler = (e) => {
@@ -468,5 +503,18 @@ export default class MenuItem extends WJElement {
             }
         }
         return text.trim();
+    }
+
+    /**
+     * Dispatches a custom event with specified parameters.
+     * This method uses the `customEvent` and `customEventParameters` properties
+     * to create and dispatch a `CustomEvent`. The event is configured to be
+     * composed and bubbles up through the DOM.
+     * @returns {void} This method does not return a value.
+     */
+    #populateCustomEvent() {
+        this.dispatchEvent(
+          new CustomEvent(this.customEvent, { detail: this.customEventParameters, composed: true, bubbles: true })
+        );
     }
 }
