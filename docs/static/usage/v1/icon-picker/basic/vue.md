@@ -1,6 +1,6 @@
 ```html
 <template>
-  <wje-icon-picker></wje-icon-picker>
+  <wje-icon-picker icon="activity-heartbeat"></wje-icon-picker>
 </template>
 
 <script lang="ts">

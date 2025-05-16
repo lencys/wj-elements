@@ -218,7 +218,12 @@ template.innerHTML = `<h1>Input</h1>
       <div class="content">
         <form name="test-form" id="test-form">
            <wje-input name="default" label="Default input"></wje-input>
-            <wje-input name="withPlaceholder" label="Input with placeholder" placeholder="Enter company name" required ><span slot="error" style="width: 500px;display: block;color: #0af4fc;"><icon></icon><span ></span></span></wje-input>
+            <wje-input name="withPlaceholder" label="Input with placeholder" placeholder="Enter company name" required >
+              <span slot="error" style="width: 500px;display: block;color: #0af4fc;">
+                  <icon></icon>
+                  <span></span>
+                </span>
+            </wje-input>
             <wje-input name="withPlaceholderErrorInline" label="Input with placeholder error inline" placeholder="Enter company name" required error-inline><span slot="error"><icon></icon><span ></span></span></wje-input>
             <wje-input name="withValue" label="Input with value" value="Mlynské Nivy 71"></wje-input>
             <wje-input name="readonly" label="Readonly input" value="Bratislava" readonly></wje-input>

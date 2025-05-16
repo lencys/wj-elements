@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-**Elements** umožňuje si jednoducho zostaviť rozvrhnutie stránok pomocou 4 základných elementov: [Container](../container), [Header](../header), [Aside](../aside) a [Footer](../footer). V prípade komplexnejších rozvrhnutí je možné použiť tiež systém [Grid](../grid).
+**WebJET Elements** umožňuje si jednoducho zostaviť rozvrhnutie stránok pomocou 5 základných elementov: [Container](../container), [Header](../header), [Main](../main), [Aside](../aside) a [Footer](../footer). V prípade komplexnejších rozvrhnutí WebJET Elements ponúka tiež systém [Grid](../grid).
 
 ## Príklady použitia
 

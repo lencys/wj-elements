@@ -21,13 +21,35 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element Image pridáva obrázkom funkciu lazyload a počas načítavania zobrazuje zástupnú ikonu (placeholder) v podobe animovaného obrázka.
+Element Image slúži na zobrazovanie obrázkov. Pridáva obrázkom funkciu lazyload a počas načítavania zobrazuje zástupnú ikonu (loader) v podobe animovaného obrázka.
+
+Využíva Intersection Observer API, vďaka čomu načítava obrázky iba vtedy, keď sú viditeľné v okne prehliadača. To znižuje sieťové zaťaženie a zlepšuje výkon stránky.
 
 ## Basic Usage
 
 import Basic from '@site/static/usage/v1/img/basic/index.md';
 
 <Basic />
+
+## Fallout
+
+Atribút `Fallout` určuje akciu, ktorá sa má vykonať v prípade chyby pri načítaní obrázka. Možné hodnoty sú `delete` (odstráni sa obrázok) alebo `log` (vypíše chybu do konzoly).
+
+### Fallout - Delete (odstrániť)
+
+Atribút `fallout` s hodnotou `"delete"` spôsobí odstránenie elementu v prípade, že prišlo k chybe pri načítaní obrázka.
+
+import FalloutDelete from '@site/static/usage/v1/img/fallout-delete/index.md';
+
+<FalloutDelete />
+
+### Fallout - Log
+
+Atribút `fallout` s hodnotou `"log"` spôsobí odstránenie elementu v prípade, že prišlo k chybe pri načítaní obrázka.
+
+import FalloutLog from '@site/static/usage/v1/img/fallout-log/index.md';
+
+<FalloutLog />
 
 ## Atribúty a Vlastnosti
 

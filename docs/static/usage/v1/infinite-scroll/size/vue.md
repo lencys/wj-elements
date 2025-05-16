@@ -1,15 +1,19 @@
 ```html
 <template>
-  <wje-infinite-scroll url="/api/users" placement="wje-list" size="20">
-    <wje-list>
-      <wje-item iterate>
-        <wje-label>
-          <h4>{{fullName}}</h4>
-          <p>{{jobTitle}}</p>
-        </wje-label>
-      </wje-item>
-    </wje-list>
-  </wje-infinite-scroll>
+    <wje-infinite-scroll url="/api/users" placement="wje-list" size="6">
+      <wje-list>
+        <template iterate>
+          <wje-tooltip content="{{fullName}}">
+            <wje-item>
+              <wje-label>
+                <h4>{{fullName}}</h4>
+                <p>{{jobTitle}}</p>
+              </wje-label>
+            </wje-item>
+          </wje-tooltip>
+        </template>
+      </wje-list>
+    </wje-infinite-scroll>
 </template>
 
 <script lang="ts">
@@ -21,7 +25,8 @@
     Avatar,
     Img,
     Label,
-    InfiniteScrollCustomEvent,
+    Tooltip,
+    
   } from '@elements/vue';
   import { defineComponent, reactive } from 'vue';
 
@@ -33,6 +38,7 @@
       Avatar,
       Img,
       Label,
+      Tooltip,
     },
     setup() {
       return { ionInfinite, items };

@@ -7,36 +7,28 @@
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
     <script type="module" src="../../../../js/demo.js"></script>
-    <script type="module" src="./../../../../wje-elementy/wje-master.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.171/dist/wje-master.min.js"></script>
     <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
     <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
     <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
   </head>
   <body>
     <div class="container">
-      <div class="content" style="max-width: 100%;margin: auto;overflow: hidden;">
-        <wje-infinite-scroll url="/api/users" placement="wje-row" size="20" class="example" height="440px">
-          <wje-grid>
-            <wje-row wrap>
-              <wje-col size="6" iterate>
-                <wje-card>
-                  <wje-img src="{{image}}"></wje-img>
-                  <wje-card-header>
-                    <wje-card-subtitle>{{jobTitle}}</wje-card-subtitle>
-                    <wje-card-title>{{fullName}}</wje-card-title>
-                  </wje-card-header>
-                  <wje-card-content>
-                    <p>{{description}}</p>
-                  </wje-card-content>
-                </wje-card>
-              </wje-col>
-            </wje-row>
-          </wje-grid>
-          <style>
-            .example {
-              padding: 0 1rem;
-            }
-          </style>
+      <div class="content" style="max-width: 100%;margin: auto;overflow: hidden;min-width: 50%;">
+        <wje-infinite-scroll url="/api/users" placement="wje-list" size="6">
+          <wje-list>
+            <template iterate>
+              <wje-tooltip content="{{fullName}}">
+                <wje-item>
+                  <wje-label>
+                    <h4>{{fullName}}</h4>
+                    <p>{{jobTitle}}</p>
+                  </wje-label>
+                </wje-item>
+              </wje-tooltip>
+            </template>
+          </wje-list>
+        </wje-infinite-scroll>
       </div>
     </div>
   </body>
