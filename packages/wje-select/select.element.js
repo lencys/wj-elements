@@ -244,11 +244,11 @@ export default class Select extends WJElement {
     /**
      * Retrieves the maximum number of options allowed.
      * Parses the value of the 'max-options' attribute from the element and converts it to a number.
-     * If the attribute is not present or cannot be converted to a valid number, defaults to 0.
+     * If the attribute is not present or cannot be converted to a valid number, defaults to 1.
      * @returns {number} The maximum number of options, or 0 if the attribute is not set or invalid.
      */
     get maxOptions() {
-        return +this.getAttribute('max-options') || 0;
+        return +this.getAttribute('max-options') || 1;
     }
 
     /**
@@ -696,6 +696,7 @@ export default class Select extends WJElement {
      * @param {number} length The length of the selected options.
      */
     selectionChanged(option = null, length = 0) {
+        console.log("TU TU TU:",option, length);
         if (this.hasAttribute('multiple')) {
             this.value = this.selectedOptions.map((el) => el.value).reverse();
 
@@ -711,6 +712,7 @@ export default class Select extends WJElement {
                 }
             }
         } else {
+            console.log("TU SOM 6");
             let value = option?.textContent.trim() || '';
             this.value = this.selectedOptions?.map((el) => el.value)?.at(0);
             this.input.value = value;
@@ -718,14 +720,16 @@ export default class Select extends WJElement {
             if (option && option instanceof HTMLElement) {
                 this.slotStart.innerHTML = '';
 
-                if (option?.querySelector('[slot=start]')) {
-                    this.slotStart.appendChild(option?.querySelector('[slot=start]').cloneNode(true));
+                let optionSlotStart = option?.querySelector('wje-option > [slot=start]');
+                if (optionSlotStart) {
+                    this.slotStart.appendChild(optionSlotStart.cloneNode(true));
                 }
 
                 this.slotEnd.innerHTML = '';
 
-                if (option?.querySelector('[slot=end]')) {
-                    this.slotEnd.appendChild(option?.querySelector('[slot=end]').cloneNode(true));
+                let optionSlotEnd = option?.querySelector('wje-option > [slot=end]');
+                if (optionSlotEnd) {
+                    this.slotEnd.appendChild(optionSlotEnd.cloneNode(true));
                 }
             }
         }
@@ -741,16 +745,21 @@ export default class Select extends WJElement {
         let chips = Array.from(this.chips.querySelectorAll('wje-chip'));
 
         if (this.selectedOptions.length > 0) {
+            console.log("SOM TU 1");
             if(this.counterEl && this.selectedOptions.length >= this.maxOptions && this.areAllElementsInOptions(chips, this.selectedOptions)) {
+                console.log("TU SOM 3");
                 this.counter();
             } else {
+                console.log("TU SOM 4");
                 this.counterEl = null;
                 this.chips.innerHTML = '';
+                console.log("TU SOM 5", this.maxOptions);
                 for(let i = 0; i < this.maxOptions; i++) {
                     this.selectionChanged(this.selectedOptions.at(i), this.selectedOptions.length);
                 }
             }
         } else {
+            console.log("SOM TU 2");
             this.selectionChanged();
         }
 
