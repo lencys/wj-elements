@@ -80,6 +80,28 @@ export default class Button extends WJElement {
     }
 
     /**
+     * Sets the 'round' attribute on the element. If the value is true, the attribute is added;
+     * otherwise, it is removed from the element.
+     * @param {boolean} value A boolean indicating whether to set or remove the 'round' attribute.
+     */
+    set round(value) {
+        if (value) {
+            this.setAttribute('round', '');
+        } else {
+            this.removeAttribute('round');
+        }
+    }
+
+    /**
+     * Retrieves the value of the 'round' attribute as a boolean.
+     * Checks if the 'round' attribute is present on the element.
+     * @returns {boolean} True if the 'round' attribute exists, otherwise false.
+     */
+    get round() {
+        return this.hasAttribute('round');
+    }
+
+    /**
      * Set variant of the Button element.
      * @param value
      */

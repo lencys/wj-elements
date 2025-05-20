@@ -36,7 +36,7 @@ template.innerHTML = `
       </div>
     </div>
 
-     <!-- CUSTOM EVENTS -->
+    <!-- CUSTOM EVENTS -->
 
     <h2>Custom events</h2>
     <div class="playground">
@@ -307,7 +307,6 @@ export default class DemoButton extends WJElement {
     this.context.querySelector('#custom-event-button').addEventListener('single-spa-route', (e) => {
       console.log('klikol som custom event', e.detail);
     });
-
 
     this.context.querySelector('#custom-event-button-2').addEventListener('single-spa-route', (e) => {
       console.log('klikol som custom event 22', e.detail);
