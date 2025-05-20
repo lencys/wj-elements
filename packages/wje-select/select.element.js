@@ -24,6 +24,7 @@ import styles from './styles/styles.css?inline';
  * @property {Array} _selected - An array to store selected items.
  * @property {HTMLElement|null} counterEl - A reference to the counter element, initially null.
  * @property {ElementInternals} internals - The internal element API for managing state and attributes.
+ * @property {number} maxOptions - The maximum number of options allowed.
  * @property {boolean} _wasOppened - Tracks whether the select element was previously opened, initially false.
  * @cssproperty [--wje-select-border-width=1px] - Specifies the width of the border around the select component. Accepts any valid CSS length unit (e.g., `px`, `rem`, `em`).
  * @cssproperty [--wje-select-border-style=solid] - Defines the style of the border for the select component. Accepts standard CSS border styles, such as `solid`, `dashed`, or `dotted`.
@@ -147,6 +148,20 @@ export default class Select extends WJElement {
         this.selectedOptions = []
     }
 
+    /**
+     * An object representing component dependencies with their respective classes.
+     * Each property in the object maps a custom component name (as a string key)
+     * to its corresponding class or constructor.
+     * @typedef {{[key: string]: Function}} Dependencies
+     * @property {Function} 'wje-button' Represents the Button component class.
+     * @property {Function} 'wje-popup' Represents the Popup component class.
+     * @property {Function} 'wje-icon' Represents the Icon component class.
+     * @property {Function} 'wje-label' Represents the Label component class.
+     * @property {Function} 'wje-chip' Represents the Chip component class.
+     * @property {Function} 'wje-input' Represents the Input component class.
+     * @property {Function} 'wje-option' Represents the Option component class.
+     * @property {Function} 'wje-options' Represents the Options component class.
+     */
     dependencies = {
         'wje-button': Button,
         'wje-popup': Popup,
@@ -213,6 +228,11 @@ export default class Select extends WJElement {
         else this.removeAttribute('invalid');
     }
 
+    /**
+     * Sets the maximum number of options allowed.
+     * @param {string | number | null} value The value to set as the maximum number of options.
+     * If null, the 'max-options' attribute will be removed.
+     */
     set maxOptions(value) {
         if (value) {
             this.setAttribute('max-options', value);
@@ -221,6 +241,12 @@ export default class Select extends WJElement {
         }
     }
 
+    /**
+     * Retrieves the maximum number of options allowed.
+     * Parses the value of the 'max-options' attribute from the element and converts it to a number.
+     * If the attribute is not present or cannot be converted to a valid number, defaults to 0.
+     * @returns {number} The maximum number of options, or 0 if the attribute is not set or invalid.
+     */
     get maxOptions() {
         return +this.getAttribute('max-options') || 0;
     }
@@ -582,7 +608,7 @@ export default class Select extends WJElement {
     optionChange = (e) => {
         e.stopPropagation()
         e.stopImmediatePropagation()
-        console.log("SELECT OPTION CHANGE", e.target, e.detail);
+
         let allOptions = this.getAllOptions();
 
         if (!this.hasAttribute('multiple')) {
@@ -602,6 +628,11 @@ export default class Select extends WJElement {
         this.selections();
     };
 
+    /**
+     * Handles the selection and deselection of an option element.
+     * @param {HTMLElement} option The option element that was clicked.
+     * @param {boolean} [multiple] Indicates whether multiple selection is allowed.
+     */
     processClickedOption = (option, multiple = false) => {
         const isSelected = option.hasAttribute("selected")
         option.selected = !isSelected;
@@ -615,6 +646,15 @@ export default class Select extends WJElement {
         }
     }
 
+    /**
+     * Filters out a specified option from the `selectedOptions` array.
+     * This function removes an option from the `selectedOptions` array if its value
+     * matches the value of the option provided as an argument. It allows for dynamically
+     * updating the selected options by excluding the specified option.
+     * @param {object} option The option to be removed from the `selectedOptions` array.
+     * Should be an object containing a `value` property that is compared to the
+     * `value` property of objects in the `selectedOptions` array.
+     */
     filterOutOption = (option) => {
         this.selectedOptions = this.selectedOptions.filter((sOption) => {
             return sOption.value !== option.value;
@@ -692,46 +732,18 @@ export default class Select extends WJElement {
     }
 
     /**
-     * Updates the selected options and their corresponding chips.
-     * @param {boolean} [silence] Determines whether to suppress the "wje-select:change" event.
-     * @returns {void}
-     * @description
-     * This method fetches the currently selected options and updates the `selectedOptions` array.
-     * It clears and rebuilds the chips representing the selected items in the UI.
-     * If the number of selected options reaches the maximum allowed (`maxOptions`), it stops updating the counter.
-     * Optionally, it dispatches a custom event when the selection changes unless `silence` is set to `true`.
-     * //@fires wje-select:change - Dispatched when the selection changes, unless `silence` is `true`.
-     * @example
-     * // Call the method and allow event dispatch
-     * selections();
-     * @example
-     * // Call the method without dispatching the event
-     * selections(true);
+     * Handles the selection of options and updates the UI chips accordingly.
+     * Also manages the max selection logic and fires an event when selections change.
+     * @param {boolean} [silence] Indicates whether to suppress the event dispatch when a change occurs.
+     * @returns {void} Does not return anything.
      */
     selections(silence = false) {
-        if (this.selectedOptions.length >= +this.maxOptions) {
-            console.log("max options reached");
-            // this.counterEl = null;
-        }
-
         let chips = Array.from(this.chips.querySelectorAll('wje-chip'));
-        let chipsCount = chips.length;
-        console.log("CHIPS COUNT:", chipsCount, this.maxOptions, this.selectedOptions.length, this.selectedOptions);
-        console.log("CHIPS:", chips);
-        // chips.forEach((chip) => {
-        //     console.log("chip", chip, chip.option);
-        //     return false; // Ensure a return value
-        // });
-
-        console.log("areAllElementsInOptions", this.areAllElementsInOptions(chips, this.selectedOptions));
-        console.log("WJE CHIPS:", this.chips, chipsCount, this.counterEl);
 
         if (this.selectedOptions.length > 0) {
             if(this.counterEl && this.selectedOptions.length >= this.maxOptions && this.areAllElementsInOptions(chips, this.selectedOptions)) {
-                console.log("SOM TU 1");
                 this.counter();
             } else {
-                console.log("SOM TU 2");
                 this.counterEl = null;
                 this.chips.innerHTML = '';
                 for(let i = 0; i < this.maxOptions; i++) {
@@ -777,7 +789,6 @@ export default class Select extends WJElement {
      * @returns {Element} The chip element.
      */
     getChip(option) {
-        console.log("GET CHIP", option);
         let chip = document.createElement('wje-chip');
         chip.size = 'small';
         chip.removable = true;
@@ -966,6 +977,12 @@ export default class Select extends WJElement {
         this.toggleAttribute('disabled', disabled);
     }
 
+    /**
+     * Checks if all elements in the `elements` array are present in the `options` array based on their `option` property.
+     * @param {Array} elements The array of elements to check. Each element should have an `option` property.
+     * @param {Array} options The array of options to verify against.
+     * @returns {boolean} Returns true if all elements in the `elements` array are found within the `options` array, otherwise returns false.
+     */
     areAllElementsInOptions(elements, options) {
         if (elements.length === 0) return false;
 
