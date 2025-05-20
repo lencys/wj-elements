@@ -4821,26 +4821,59 @@
       "filePath": "src/components/infinite-scroll/infinite-scroll.tsx",
       "encapsulation": "shadow",
       "tag": "infinite-scroll",
-      "docs": "",
+      "docs": "Komponent infinite-scroll umožňuje načítať a zobraziť ďalší obsah na základe posunu používateľa. Pri bežnom použití je potrebné nastaviť tento prvok ako posledné dieťa posúvateľného rodiča. Keď sa používateľ posunie dostatočne blízko k spodnému okraju obsahu, vyvolá sa udalosť `ionInfinite`. Pri zobrazení tejto udalosti by mal váš aplikačný kód načítať ďalšie dáta a pripojiť ich ku koncu obsahu stránky.",
       "docsTags": [],
       "usage": {},
       "props": [
         {
-          "name": "iterate",
-          "type": "string",
+          "name": "disabled",
+          "type": "boolean",
           "complexType": {
-            "original": "string",
-            "resolved": "string",
+            "original": "boolean",
+            "resolved": "boolean",
             "references": {}
           },
-          "mutable": true,
-          "attr": "iterate",
+          "mutable": false,
+          "attr": "disabled",
           "reflectToAttr": false,
-          "docs": "It is used to identify the element to be used as a template for each item during the infinite scrolling process.",
+          "docs": "Ak `true`, komponent infinite scroll nebude reagovať na posun a nevyvolá udalosť `ionInfinite`.",
           "docsTags": [],
-          "default": "undefined",
+          "default": "false",
           "values": [
             {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "position",
+          "type": "\"bottom\" | \"top\"",
+          "complexType": {
+            "original": "InfiniteScrollPosition",
+            "resolved": "\"bottom\" | \"top\"",
+            "references": {
+              "InfiniteScrollPosition": {
+                "location": "import",
+                "path": "./infinite-scroll-interface",
+                "id": "src/components/infinite-scroll/infinite-scroll-interface.ts::InfiniteScrollPosition"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "position",
+          "reflectToAttr": false,
+          "docs": "Pozícia infinite scroll komponentu. Môže byť umiestnený hore alebo dole v rodičovskom elemente.",
+          "docsTags": [],
+          "default": "'bottom'",
+          "values": [
+            {
+              "value": "bottom",
+              "type": "string"
+            },
+            {
+              "value": "top",
               "type": "string"
             }
           ],
@@ -4848,63 +4881,19 @@
           "required": false
         },
         {
-          "name": "placement",
+          "name": "threshold",
           "type": "string",
           "complexType": {
             "original": "string",
             "resolved": "string",
             "references": {}
           },
-          "mutable": true,
-          "attr": "placement",
+          "mutable": false,
+          "attr": "threshold",
           "reflectToAttr": false,
-          "docs": "It is used to specify the target element into which the loaded data is to be inserted during the infinite scroll process. Specifies where the newly loaded content is added within the DOM.",
+          "docs": "Prah vzdialenosti od spodku obsahu, pri ktorom sa vyvolá udalosť InfiniteScroll. Prah sa môže nastaviť buď v pixeloch alebo v percentách. Napríklad, `10%` znamená, že sa udalosť InfiniteScroll vyvolá, keď používateľ dôjde na vzdialenosť 10% od spodku stránky.",
           "docsTags": [],
-          "default": "undefined",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "size",
-          "type": "number",
-          "complexType": {
-            "original": "number",
-            "resolved": "number",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "size",
-          "reflectToAttr": false,
-          "docs": "Defines the number of items on each load.",
-          "docsTags": [],
-          "default": "10",
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "url",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "url",
-          "reflectToAttr": false,
-          "docs": "Defines the url of the endpoint of the data to be retrieved.",
-          "docsTags": [],
-          "default": "undefined",
+          "default": "'15%'",
           "values": [
             {
               "type": "string"
@@ -4914,10 +4903,59 @@
           "required": false
         }
       ],
-      "methods": [],
-      "events": [],
+      "methods": [
+        {
+          "name": "complete",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "complete() => Promise<void>",
+          "parameters": [],
+          "docs": "Call this method after a successful load of new content based on the ionInfinite event. Calling the complete() method hides the loading spinner and allows the next ionInfinite event to be fired.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "ionInfinite",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Called when the user scrolls close enough to the bottom (or top) edge of the content.",
+          "docsTags": []
+        }
+      ],
       "listeners": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--wj-infinite-scroll-loading-color",
+          "annotation": "prop",
+          "docs": "Colour of loading spinner indicator"
+        },
+        {
+          "name": "--wj-infinite-scroll-loading-text-color",
+          "annotation": "prop",
+          "docs": "Text colour during loading"
+        }
+      ],
       "slots": [],
       "parts": [],
       "dependents": [],
@@ -5082,62 +5120,192 @@
       "filePath": "src/components/icon-picker/icon-picker.tsx",
       "encapsulation": "shadow",
       "tag": "icon-picker",
-      "docs": "",
-      "docsTags": [],
+      "docs": "Tento element umožňuje používateľom vybrať ikonu z dostupných možností.\n`IconPicker` je vlastný webový komponent, ktorý predstavuje interaktívny výber ikon. Obsahuje\nfunkciu vyhľadávania, nekonečné skrolovanie a výber pomocou popup okna. Komponent je vysoko prispôsobiteľný\na bezproblémovo sa integruje s ostatnými `WJElement` komponentmi.",
+      "docsTags": [
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/icon-picker"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "Augment",
+          "text": "{WJElement}"
+        }
+      ],
       "usage": {},
-      "props": [],
+      "props": [
+        {
+          "name": "icon",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "icon",
+          "reflectToAttr": false,
+          "docs": "The name of the selected icon.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "size",
+          "reflectToAttr": false,
+          "docs": "The number of icons displayed per page in infinite scrolling. The default value is 60.",
+          "docsTags": [],
+          "default": "60",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
       "methods": [],
-      "events": [],
-      "listeners": [],
+      "events": [
+        {
+          "event": "wje-icon-picker:select",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "It is emitted when the icon is selected.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "wje-popup:show",
+          "method": "initial",
+          "target": "undefined",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "wje-input:clear",
+          "method": "undefined",
+          "target": "undefined",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "wje-infinite-scroll:click-item",
+          "method": "undefined",
+          "target": "undefined",
+          "capture": false,
+          "passive": false
+        }
+      ],
       "styles": [
         {
-          "name": "--wj-icon-picker-border-color`",
+          "name": "--wje-icon-picker-icon-size",
           "annotation": "prop",
-          "docs": "Defines the color of the element edges"
+          "docs": "Veľkosť ikony v ikon pickeri"
         },
         {
-          "name": "--wj-icon-picker-border-style`",
+          "name": "--wje-icon-picker-padding",
           "annotation": "prop",
-          "docs": "Defines the element's border style"
+          "docs": "Odstup ikon v icon pickeri"
         },
         {
-          "name": "--wj-icon-picker-border-width`",
+          "name": "--wje-icon-picker-border-width",
           "annotation": "prop",
-          "docs": "Defines the width of the edges of the element"
+          "docs": "Šírka okraja icon pickera"
         },
         {
-          "name": "--wj-icon-picker-icon-size",
+          "name": "--wje-icon-picker-border-style",
           "annotation": "prop",
-          "docs": "Defines the size of the element icons"
+          "docs": "Štýl okraja icon pickera"
         },
         {
-          "name": "--wj-icon-picker-padding",
+          "name": "--wje-icon-picker-border-color",
           "annotation": "prop",
-          "docs": "Defines the internal offset of the element"
+          "docs": "Farba okraja icon pickera"
         },
         {
-          "name": "--wj-icon-picker-radius",
+          "name": "--wje-icon-picker-radius",
           "annotation": "prop",
-          "docs": "Defines the size of the roundness of the element"
+          "docs": "Zaoblenie rohov icon pickera"
+        },
+        {
+          "name": "--wje-background",
+          "annotation": "prop",
+          "docs": "Icon picker background colour"
+        },
+        {
+          "name": "--wje-border-color",
+          "annotation": "prop",
+          "docs": "The colour used for the background of the icon on mouseover"
         }
       ],
       "slots": [],
-      "parts": [],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Refers to the main container of the element."
+        },
+        {
+          "name": "anchor",
+          "docs": "Refers to the element that serves as an anchor for the popup window."
+        },
+        {
+          "name": "picker",
+          "docs": "The part of the picker containing the interface for searching and selecting icons."
+        },
+        {
+          "name": "input",
+          "docs": "Icon search input section."
+        }
+      ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "wje-input",
+        "wje-infinite-scroll",
+        "wje-tooltip",
+        "wje-popup",
+        "wje-icon"
+      ],
+      "dependencyGraph": {
+        "wje-icon-picker": [
+          "wje-input",
+          "wje-infinite-scroll",
+          "wje-tooltip",
+          "wje-popup",
+          "wje-icon"
+        ]
+      }
     },
     {
       "filePath": "src/components/img/image.tsx",
       "encapsulation": "shadow",
       "tag": "image",
-      "docs": "",
+      "docs": "Komponent pre lenivé (lazy) načítavanie a zobrazovanie obrázkov s rôznymi stratégiami načítavania a záložnými možnosťami.",
       "docsTags": [],
       "usage": {},
       "props": [
         {
           "name": "alt",
-          "type": "string | undefined",
+          "type": "string",
           "complexType": {
             "original": "string",
             "resolved": "string | undefined",
@@ -5148,20 +5316,13 @@
           "reflectToAttr": false,
           "docs": "It serves as an alternative text to describe the content of the image, which will be displayed if the image is not loaded. It is also used by screen readers.",
           "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
+          "values": [],
           "optional": true,
           "required": false
         },
         {
           "name": "src",
-          "type": "string | undefined",
+          "type": "string",
           "complexType": {
             "original": "string",
             "resolved": "string | undefined",
@@ -5170,56 +5331,285 @@
           "mutable": false,
           "attr": "src",
           "reflectToAttr": false,
-          "docs": "Specifies the source URL of the image file to be displayed on the web page.",
+          "docs": "URL adresa obrázka. Tento atribút je povinný pre `<img>` element.",
           "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "loader",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "loader",
+          "reflectToAttr": false,
+          "docs": "The URL of the image that will be displayed when the main image is loaded.",
+          "docsTags": [],
+          "default": "\"./assets/img/image-loader.gif\"",
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "fallout",
+          "type": "string | boolean",
+          "complexType": {
+            "original": "string | boolean",
+            "resolved": "string | boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "fallout",
+          "reflectToAttr": false,
+          "docs": "Specifies the action to take in case of an error when loading an image. Possible values are 'delete' (deletes the image) or 'log' (logs the error to the console).",
+          "docsTags": [],
+          "default": "false",
+          "values": [],
           "optional": true,
           "required": false
         }
       ],
-      "methods": [],
+      "methods": [
+        {
+          "name": "addAction",
+          "returns": {
+            "type": "void",
+            "complex": false
+          },
+          "signature": "(name: string, func: Function) => void",
+          "parameters": [
+            {
+              "name": "name",
+              "type": "string",
+              "docs": "The name of the action to be added."
+            },
+            {
+              "name": "func",
+              "type": "Function",
+              "docs": "A function representing the logic of an action."
+            }
+          ],
+          "docs": "Adds a new action to the internal action object.",
+          "docsTags": []
+        },
+        {
+          "name": "removeAction",
+          "returns": {
+            "type": "void",
+            "complex": false
+          },
+          "signature": "(name: string) => void",
+          "parameters": [
+            {
+              "name": "name",
+              "type": "string",
+              "docs": "The name of the action to be removed."
+            }
+          ],
+          "docs": "Removes the action from the list of actions, if any.",
+          "docsTags": []
+        },
+        {
+          "name": "deleteImage",
+          "returns": {
+            "type": "void",
+            "complex": false
+          },
+          "signature": "() => void",
+          "parameters": [],
+          "docs": "Removes the current image by calling the remove method.",
+          "docsTags": []
+        }
+      ],
       "events": [],
       "listeners": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--wje-img-width",
+          "annotation": "prop",
+          "docs": "Image width"
+        },
+        {
+          "name": "--wje-img-height",
+          "annotation": "prop",
+          "docs": "Image height"
+        },
+        {
+          "name": "--wje-img-border-radius",
+          "annotation": "prop",
+          "docs": "Rounding the corners of the image"
+        }
+      ],
       "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Refers to the `img` element inside the component"
+        }
+      ],
+      "dependents": [
+        "wje-file-upload"
+      ],
+      "dependencies": [
+        "wje-element"
+      ],
+      "dependencyGraph": {
+        "wje-img": [
+          "wje-element"
+        ]
+      }
     },
     {
       "filePath": "src/components/image-comparer/image-comparer.tsx",
       "encapsulation": "shadow",
       "tag": "image-comparer",
-      "docs": "",
+      "docs": "Komponenta na porovnávanie dvoch obrázkov pomocou posuvného rozhrania.",
       "docsTags": [],
       "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [
+      "props": [
         {
-          "name": "after",
-          "docs": "It is used to insert an image in front of the slider."
+          "name": "Position",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "Position",
+          "reflectToAttr": false,
+          "docs": "Sets the initial position of the dividing line as a percentage value (0-100).",
+          "docsTags": [],
+          "default": "50",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
         },
         {
+          "name": "vertical",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "vertical",
+          "reflectToAttr": false,
+          "docs": "If `true`, the images will be compared vertically instead of horizontally.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "If `true`, interaction with the component is disabled.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "positionChange",
+          "detail": "number",
+          "bubbles": true,
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Called when the position of the dividing line is changed, returns the current percentage value.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [
+        {
+          "name": "--wje-img-compare-clip-path",
+          "annotation": "prop",
+          "docs": "Defines the crop shape of the image."
+        },
+        {
+          "name": "--wje-img-compare-divider-background",
+          "annotation": "prop",
+          "docs": "The background colour of the dividing line."
+        },
+        {
+          "name": "---wje-img-compare-divider-area",
+          "annotation": "prop",
+          "docs": "The size of the dividing line area."
+        },
+        {
+          "name": "--wje-img-compare-divider-size",
+          "annotation": "prop",
+          "docs": "The size of the dividing line."
+        },
+        {
+          "name": "--wje-img-compare-divider-left",
+          "annotation": "prop",
+          "docs": "Defines the location of the dividing line."
+        }
+      ],
+      "slots": [
+        {
           "name": "before",
-          "docs": "It is used to insert an image behind the slider."
+          "docs": "Umiestnenie pre prvý (\"pred\") obrázok."
+        },
+        {
+          "name": "after",
+          "docs": "Umiestnenie pre druhý (\"po\") obrázok."
         }
       ],
       "parts": [
         {
+          "name": "before",
+          "docs": "Odkazuje na časť prvého obrázka."
+        },
+        {
+          "name": "after",
+          "docs": "Refer to part of the second picture."
+        },
+        {
           "name": "divider",
-          "docs": "Refers to the `div` slider divider inside the element."
+          "docs": "Refers to the dividing line between images."
+        },
+        {
+          "name": "handle",
+          "docs": "Refers to the slide control on the dividing line."
         }
       ],
       "dependents": [],
@@ -5808,147 +6198,574 @@
       }
     },
     {
-      "filePath": "src/components/item/item.tsx",
+      "filePath": "packages/input-file/input-file.tsx",
       "encapsulation": "shadow",
-      "tag": "item",
-      "docs": "",
+      "tag": "input-file",
+      "docs": "Tento element predstavuje vstup pre súbory.",
       "docsTags": [
         {
-          "name": "slot",
-          "text": "start - The content is placed on the left in the LTR and on the right in the RTL."
+          "name": "summary",
+          "text": "Tento element predstavuje vstup pre súbory."
         },
         {
-          "name": "slot",
-          "text": "end - The content is placed on the right in the LTR and on the left in the RTL."
+          "name": "status",
+          "text": "stable"
         }
       ],
       "usage": {},
-      "props": [],
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "Nastaví hodnotu vstupu pre súbory.",
+          "docsTags": [
+            {
+              "name": "summary",
+              "text": "Nastaví hodnotu vstupu pre súbory."
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
       "methods": [],
+      "events": [
+        {
+          "event": "wje-input-file:change",
+          "detail": "{ files: FileList }",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Udalosť vyvolaná pri zmene súborov.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Obaľovač natívneho vstupu pre súbory."
+        },
+        {
+          "name": "input",
+          "docs": "Textový vstup."
+        },
+        {
+          "name": "file-input",
+          "docs": "Element vstupu pre súbory."
+        }
+      ],
+      "dependents": [],
+      "dependencies": ["wje-input", "wje-icon"],
+      "dependencyGraph": {
+        "wje-input-file": ["wje-input", "wje-icon"]
+      }
+    },
+    {
+      "filePath": "packages/item/item.tsx",
+      "encapsulation": "shadow",
+      "tag": "item",
+      "docs": "`Item` je vlastný webový komponent, ktorý predstavuje položku.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "Tento element predstavuje položku."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/item"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "tag",
+          "text": "wje-item"
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "button",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "button",
+          "reflectToAttr": false,
+          "docs": "Ak `true`, položka sa bude správať ako tlačidlo.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "Ak `true`, s položkou nemožno interagovať.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "counter",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "counter",
+          "reflectToAttr": false,
+          "docs": "Ak `true`, zobrazí sa počítadlo v položke.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "routerDirection",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "router-direction",
+          "reflectToAttr": false,
+          "docs": "Určuje smer navigácie pre položku.",
+          "docsTags": [],
+          "default": "'forward'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "type",
+          "reflectToAttr": false,
+          "docs": "Určuje typ položky.",
+          "docsTags": [],
+          "default": "'button'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "isClickable",
+          "returns": {
+            "type": "boolean",
+            "docs": ""
+          },
+          "signature": "isClickable() => boolean",
+          "parameters": [],
+          "complexType": {
+            "signature": "() => boolean",
+            "parameters": [],
+            "references": {},
+            "return": "boolean"
+          },
+          "docs": "Určuje, či je položka klikateľná.",
+          "docsTags": []
+        }
+      ],
       "events": [],
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-border-color",
+          "name": "--wje-item-background",
           "annotation": "prop",
-          "docs": "Colour of element edges"
+          "docs": "Nastavuje farbu pozadia položky. Akceptuje akúkoľvek platnú CSS farebnú hodnotu."
         },
         {
-          "name": "--wj-border-style",
+          "name": "--wje-item-color",
           "annotation": "prop",
-          "docs": "Element edge style"
+          "docs": "Definuje farbu textu pre položku. Akceptuje akúkoľvek platnú CSS farebnú hodnotu."
         },
         {
-          "name": "--wj-border-width",
+          "name": "--wje-item-padding-start",
           "annotation": "prop",
-          "docs": "Width of the edges of the element"
+          "docs": "Určuje ľavé odsadenie položky. Akceptuje akúkoľvek platnú CSS dĺžku."
         },
         {
-          "name": "--wj-item-background",
+          "name": "--wje-item-padding-end",
           "annotation": "prop",
-          "docs": "Background colour of the element"
+          "docs": "Určuje pravé odsadenie položky. Akceptuje akúkoľvek platnú CSS dĺžku."
         },
         {
-          "name": "--wj-item-background-hover",
+          "name": "--wje-item-padding-top",
           "annotation": "prop",
-          "docs": "Background colour of the element when pointing with the mouse"
+          "docs": "Určuje horné odsadenie položky. Akceptuje akúkoľvek platnú CSS dĺžku."
         },
         {
-          "name": "--wj-item-border-radius",
+          "name": "--wje-item-padding-bottom",
           "annotation": "prop",
-          "docs": "Size of the element roundness"
+          "docs": "Určuje dolné odsadenie položky. Akceptuje akúkoľvek platnú CSS dĺžku."
         },
         {
-          "name": "--wj-item-color",
+          "name": "--wje-item-inner-padding-start",
           "annotation": "prop",
-          "docs": "Text colour"
+          "docs": "Určuje ľavé vnútorné odsadenie položky. Akceptuje akúkoľvek platnú CSS dĺžku."
         },
         {
-          "name": "--wj-item-inner-border-width",
+          "name": "--wje-item-inner-padding-end",
           "annotation": "prop",
-          "docs": "Thickness of the edges of the inner part of the element"
+          "docs": "Určuje pravé vnútorné odsadenie položky. Akceptuje akúkoľvek platnú CSS dĺžku."
         },
         {
-          "name": "--wj-item-inner-box-shadow",
+          "name": "--wje-item-inner-padding-top",
           "annotation": "prop",
-          "docs": "Inner box-shadow of the inner part of the element"
+          "docs": "Určuje horné vnútorné odsadenie položky. Akceptuje akúkoľvek platnú CSS dĺžku."
         },
         {
-          "name": "--wj-item-inner-padding-bottom",
+          "name": "--wje-item-inner-padding-bottom",
           "annotation": "prop",
-          "docs": "Lower internal offset of the inner part of the element"
+          "docs": "Určuje dolné vnútorné odsadenie položky. Akceptuje akúkoľvek platnú CSS dĺžku."
         },
         {
-          "name": "--wj-item-inner-padding-end",
+          "name": "--wje-item-border-radius",
           "annotation": "prop",
-          "docs": "Right internal offset of the inner part of the element in LTR, and left in RTL"
+          "docs": "Definuje polomer hraníc, poskytujúci zaoblené rohy pre položku."
         },
         {
-          "name": "--wj-item-inner-padding-start",
+          "name": "--wje-item-border-width",
           "annotation": "prop",
-          "docs": "Left internal offset of the inner part of the element in LTR, and right in RTL"
+          "docs": "Nastavuje šírku okraja položky. Akceptuje akúkoľvek platnú CSS dĺžku."
         },
         {
-          "name": "--wj-item-inner-padding-top",
+          "name": "--wje-item-border-style",
           "annotation": "prop",
-          "docs": "Upper inner offset of the inner part of the element"
+          "docs": "Určuje štýl okraja, ako napríklad `solid`, `dashed` alebo `dotted`."
         },
         {
-          "name": "--wj-item-min-height",
+          "name": "--wje-item-border-color",
           "annotation": "prop",
-          "docs": "Minimum height of the element"
+          "docs": "Definuje farbu okraja položky. Akceptuje akúkoľvek platnú CSS farebnú hodnotu."
         },
         {
-          "name": "--wj-item-padding-bottom",
+          "name": "--wje-item-min-height",
           "annotation": "prop",
-          "docs": "Lower internal offset"
+          "docs": "Nastavuje minimálnu výšku položky pre konzistentné rozloženie."
         },
         {
-          "name": "--wj-item-padding-end",
+          "name": "--wje-item-transition",
           "annotation": "prop",
-          "docs": "Right internal offset in LTR, and left in RTL."
+          "docs": "Určuje prechodové efekty pre položku, napríklad pre stavy hover alebo focus."
         },
         {
-          "name": "--wj-item-padding-start",
+          "name": "--wje-item-inner-box-shadow",
           "annotation": "prop",
-          "docs": "Left internal offset in LTR, and right in RTL."
-        },
-        {
-          "name": "--wj-item-padding-top",
-          "annotation": "prop",
-          "docs": "Upper internal offset"
-        },
-        {
-          "name": "--wj-item-transition",
-          "annotation": "prop",
-          "docs": "Transition effect applied to the element"
+          "docs": "Pridáva efekt tieňa vo vnútri položky pre 3D vzhľad."
         }
       ],
       "slots": [
         {
-          "name": "end",
-          "docs": "The content is placed on the right in the LTR and on the left in the RTL."
+          "name": "",
+          "docs": "Predvolené umiestnenie obsahu položky."
         },
         {
           "name": "start",
-          "docs": "The content is placed on the left in the LTR and on the right in the RTL."
+          "docs": "Slot pre obsah, ktorý sa zobrazí na začiatku položky."
+        },
+        {
+          "name": "end",
+          "docs": "Slot pre obsah, ktorý sa zobrazí na konci položky."
+        },
+        {
+          "name": "error",
+          "docs": "Slot pre zobrazenie chybovej správy."
+        },
+        {
+          "name": "helper",
+          "docs": "Slot pre zobrazenie pomocného textu."
         }
       ],
       "parts": [
         {
           "name": "native",
-          "docs": "Refers to a `div` element inside an element."
+          "docs": "Odkazuje na natívny element položky."
+        },
+        {
+          "name": "inner",
+          "docs": "Odkazuje na vnútornú časť položky."
         }
       ],
       "dependents": [],
-      "dependencies": [
-        "Icon"
-      ],
+      "dependencies": ["WJElement"],
       "dependencyGraph": {
-        "Item": [
-          "Icon"
-        ]
+        "wje-item": ["WJElement"]
       }
+    },
+    {
+      "filePath": "packages/kanban/kanban.tsx",
+      "encapsulation": "shadow",
+      "tag": "kanban",
+      "docs": "Komponent `kanban` predstavuje Kanban tabuľu s presunuteľnými stĺpcami a kartami.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "Tento element predstavuje Kanban tabuľu."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/kanban"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "response",
+          "type": "any",
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "response",
+          "reflectToAttr": false,
+          "docs": "Nastaví alebo získa dáta odpovede z API.",
+          "docsTags": [],
+          "default": "{}",
+          "values": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "selectedItems",
+          "type": "any[]",
+          "complexType": {
+            "original": "array",
+            "resolved": "any[]",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "selected-items",
+          "reflectToAttr": false,
+          "docs": "Nastaví alebo získa zoznam vybraných položiek.",
+          "docsTags": [],
+          "default": "[]",
+          "values": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "url",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string | undefined",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "url",
+          "reflectToAttr": false,
+          "docs": "Obsahuje adresu URL alebo fragment adresy URL s dátami, ktoré sa majú získať a zobraziť.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getPages",
+          "signature": "(page?: number) => Promise<any>",
+          "parameters": [
+            {
+              "name": "page",
+              "type": "number",
+              "docs": "Číslo stránky"
+            }
+          ],
+          "returns": "Promise<any>",
+          "docs": "Načíta stránky dát z API.",
+          "docsTags": []
+        },
+        {
+          "name": "getPool",
+          "signature": "(data: any[], poolName: string) => any",
+          "parameters": [
+            {
+              "name": "data",
+              "type": "any[]",
+              "docs": "Pole dát"
+            },
+            {
+              "name": "poolName",
+              "type": "string",
+              "docs": "Názov skupiny"
+            }
+          ],
+          "returns": "any",
+          "docs": "Organizuje dáta do skupín podľa stavu.",
+          "docsTags": []
+        },
+        {
+          "name": "htmlPool",
+          "signature": "(title: string, countItems: number) => Element",
+          "parameters": [
+            {
+              "name": "title",
+              "type": "string",
+              "docs": "Nadpis skupiny"
+            },
+            {
+              "name": "countItems",
+              "type": "number",
+              "docs": "Počet položiek"
+            }
+          ],
+          "returns": "Element",
+          "docs": "Vytvorí HTML pre skupinu.",
+          "docsTags": []
+        },
+        {
+          "name": "htmlCard",
+          "signature": "(item: Object) => Element",
+          "parameters": [
+            {
+              "name": "item",
+              "type": "Object",
+              "docs": "Objekt položky"
+            }
+          ],
+          "returns": "Element",
+          "docs": "Vytvorí HTML pre kartu.",
+          "docsTags": []
+        },
+        {
+          "name": "setSelectedCards",
+          "signature": "(isChecked: boolean, card: HTMLElement) => void",
+          "parameters": [
+            {
+              "name": "isChecked",
+              "type": "boolean",
+              "docs": "Je zaškrtnuté"
+            },
+            {
+              "name": "card",
+              "type": "HTMLElement",
+              "docs": "Element karty"
+            }
+          ],
+          "returns": "void",
+          "docs": "Nastaví vybrané karty.",
+          "docsTags": []
+        }
+      ],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre obsah Kanban elementu."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native-infinite-scroll",
+          "docs": "Odkazuje na hlavný `div` kontajner Kanban elementu."
+        }
+      ],
+      "dependents": [],
+      "dependencies": ["wje-checkbox", "wje-menu-item"],
+      "dependencyGraph": {
+        "wje-kanban": ["wje-checkbox", "wje-menu-item"]
+      }
+    },
+    {
+      "filePath": "src/components/layout/layout.tsx",
+      "encapsulation": "scoped",
+      "tag": "layout",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
       "filePath": "src/components/label/label.tsx",
@@ -5961,13 +6778,7 @@
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [
-        {
-          "name": "--wj-color",
-          "annotation": "prop",
-          "docs": "Defines the color of the element."
-        }
-      ],
+      "styles": [],
       "slots": [
         {
           "name": "",
@@ -5997,6 +6808,7 @@
       "dependencies": [],
       "dependencyGraph": {}
     },
+
     {
       "filePath": "src/components/aside/aside.tsx",
       "encapsulation": "scoped",
@@ -6101,7 +6913,7 @@
           "mutable": false,
           "attr": "indent",
           "reflectToAttr": false,
-          "docs": "If `true`, the element will be indented to the left on screens larger than 768px.",
+          "docs": "Ak `true`, element dostane na obrazovkách väčších ako 768px odsadenie zľava.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -6123,7 +6935,7 @@
           "mutable": false,
           "attr": "vertical",
           "reflectToAttr": false,
-          "docs": "If `true`, the element gets `flex-direction: \"column\"`",
+          "docs": "Ak `true`, element dostane `flex-direction: \"column\"`",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -6140,9 +6952,9 @@
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-container-indent",
+          "name": "--wje-container-indent",
           "annotation": "prop",
-          "docs": "Offset element from the left ( only on screens larger than 768px)"
+          "docs": "Odsadenie elementu zľava ( iba na obrazovkách väčších ako 768px)"
         }
       ],
       "slots": [],
@@ -6150,6 +6962,207 @@
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
+    },
+    {
+      "filePath": "packages/level-indicator/level-indicator.tsx",
+      "encapsulation": "shadow",
+      "tag": "level-indicator",
+      "docs": "Komponent `LevelIndicator` je vlastný webový komponent rozširujúci WJElement, ktorý vizuálne zobrazuje úroveň pomocou stĺpcov alebo pruhov. Umožňuje nastaviť počet pruhov, aktuálnu úroveň, farebné rozlíšenie a smerovanie.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "Tento element predstavuje indikátor úrovní."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/LevelIndicator"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "level",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "level",
+          "reflectToAttr": false,
+          "docs": "Nastavuje aktuálnu úroveň indikátora. Hodnota je obmedzená na rozsah od 0 do počtu pruhov.",
+          "docsTags": [],
+          "default": "1",
+          "values": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "bars",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "bars",
+          "reflectToAttr": false,
+          "docs": "Určuje počet pruhov v indikátore. Minimálna hodnota je 1.",
+          "docsTags": [],
+          "default": "3",
+          "values": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "colorize",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "colorize",
+          "reflectToAttr": false,
+          "docs": "Ak je nastavené na `true`, pruhy budú sfarbené podľa úrovne (nízka, stredná, vysoká).",
+          "docsTags": [],
+          "default": "false",
+          "values": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "reverse",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "reverse",
+          "reflectToAttr": false,
+          "docs": "Ak je nastavené na `true`, poradie pruhov bude obrátené.",
+          "docsTags": [],
+          "default": "false",
+          "values": [],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "updateBars",
+          "returns": "void",
+          "signature": "(level: number, bars: any[]) => void",
+          "parameters": [
+            {
+              "name": "level",
+              "type": "number",
+              "docs": "Prahová úroveň určujúca, koľko pruhov by malo byť aktívnych."
+            },
+            {
+              "name": "bars",
+              "type": "any[]",
+              "docs": "Pole prvkov pruhov, ktoré sa majú aktualizovať."
+            }
+          ],
+          "docs": "Aktualizuje triedu každého prvku pruhu na základe zadanej úrovne.",
+          "docsTags": []
+        },
+        {
+          "name": "getColor",
+          "returns": "string | undefined",
+          "signature": "(level: number, bars: number) => string | undefined",
+          "parameters": [
+            {
+              "name": "level",
+              "type": "number",
+              "docs": "Aktuálna úroveň hodnoty použitá na výpočet pomeru."
+            },
+            {
+              "name": "bars",
+              "type": "number",
+              "docs": "Maximálna hodnota, ktorú môže úroveň dosiahnuť."
+            }
+          ],
+          "docs": "Určuje indikátor farby na základe danej úrovne a počtu pruhov.",
+          "docsTags": []
+        }
+      ],
+      "events": [],
+      "listeners": [],
+      "styles": [
+        {
+          "name": "--wje-level-indicator-color-low",
+          "annotation": "prop",
+          "docs": "Farba pre nízku úroveň indikátora."
+        },
+        {
+          "name": "--wje-level-indicator-color-medium",
+          "annotation": "prop",
+          "docs": "Farba pre strednú úroveň indikátora."
+        },
+        {
+          "name": "--wje-level-indicator-color-high",
+          "annotation": "prop",
+          "docs": "Farba pre vysokú úroveň indikátora."
+        },
+        {
+          "name": "--wje-level-indicator-color",
+          "annotation": "prop",
+          "docs": "Základná farba pruhov indikátora."
+        },
+        {
+          "name": "--wje-level-indicator-color-active",
+          "annotation": "prop",
+          "docs": "Farba aktívnych pruhov indikátora."
+        },
+        {
+          "name": "--wje-level-indicator-height",
+          "annotation": "prop",
+          "docs": "Výška pruhov indikátora."
+        },
+        {
+          "name": "--wje-level-indicator-width",
+          "annotation": "prop",
+          "docs": "Šírka indikátora."
+        },
+        {
+          "name": "--wje-level-indicator-border-radius",
+          "annotation": "prop",
+          "docs": "Zaoblenie rohov pruhov indikátora."
+        },
+        {
+          "name": "--wje-level-indicator-opacity",
+          "annotation": "prop",
+          "docs": "Priehľadnosť neaktívnych pruhov indikátora."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre obsah indikátora úrovní."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Odkazuje na hlavný `div` kontajner indikátora úrovne."
+        }
+      ],
+      "dependents": [],
+      "dependencies": ["WJElement"],
+      "dependencyGraph": {
+        "wje-level-indicator": ["WJElement"]
+      }
     },
     {
       "filePath": "src/components/list/list.tsx",

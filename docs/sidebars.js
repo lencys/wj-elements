@@ -179,12 +179,6 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Infinite Scroll',
-      collapsed: false,
-      items: ['api/infinite-scroll'],
-    },
-    {
-      type: 'category',
       label: 'Image',
       collapsed: false,
       items: ['api/img'],
@@ -197,15 +191,33 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Infinite Scroll',
+      collapsed: false,
+      items: ['api/infinite-scroll'],
+    },
+    {
+      type: 'category',
       label: 'Input',
       collapsed: false,
       items: ['api/input'],
     },
     {
       type: 'category',
+      label: 'Input File',
+      collapsed: false,
+      items: ['api/input-file'],
+    },
+    {
+      type: 'category',
       label: 'Item',
       collapsed: false,
       items: ['api/item'],
+    },
+    {
+      type: 'category',
+      label: 'Kanban',
+      collapsed: false,
+      items: ['api/kanban'],
     },
     {
       type: 'category',
@@ -218,6 +230,12 @@ module.exports = {
       label: 'Layout',
       collapsed: false,
       items: ['api/layout', 'api/aside', 'api/main', 'api/container', 'api/footer', 'api/header'],
+    },
+    {
+      type: 'category',
+      label: 'Level Indicator',
+      collapsed: false,
+      items: ['api/level-indicator'],
     },
     {
       type: 'category',

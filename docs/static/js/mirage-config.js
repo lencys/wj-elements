@@ -9,6 +9,7 @@ export function makeServer({ environment = 'development' } = {}) {
     models: {
       user: Model,
       option: Model,
+      applicant: Model,  // Add this line
     },
 
     factories: {
@@ -37,6 +38,38 @@ export function makeServer({ environment = 'development' } = {}) {
           return faker.location.state();
         },
       }),
+      applicant: Factory.extend({
+        user(i) {
+          return {
+            id: faker.string.uuid(),
+            fullName: faker.person.fullName(),
+            image: faker.image.avatar(),
+            title: faker.person.jobTitle(),
+            years: faker.number.int(20),
+            address: faker.location.city(),
+          };
+        },
+        status(i) {
+          return {
+            id: faker.string.uuid(),
+            name: faker.helpers.arrayElement([
+              'Nový/á',
+              'Preverený/á telefonátom',
+              'Naplánované prvé kolo pohovoru',
+              'Naplánované druhé kolo pohovoru',
+              'Ponuka',
+              'Zamietnuté',
+              'Iné',
+            ]),
+          };
+        },
+        body(i) {
+          return faker.lorem.sentence();
+        },
+        sendCV(i) {
+          return faker.date.recent();
+        },
+      }),
     },
 
     seeds(server) {
@@ -60,6 +93,16 @@ export function makeServer({ environment = 'development' } = {}) {
           totalPages: 10,
           data: users,
         };
+      });
+
+      this.get('/api/applicants', function (schema, request) {
+        server.db.applicants.remove(); // Clear existing applicants
+        server.createList('applicant', 10); // Create 10 fake applicants
+
+        let data = schema.applicants.all();
+        let applicants = this.serialize(data).applicants;
+
+        return applicants;
       });
 
       this.get('/api/options', function (schema, request) {

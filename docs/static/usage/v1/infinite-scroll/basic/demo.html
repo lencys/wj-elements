@@ -7,29 +7,28 @@
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
     <script type="module" src="../../../../js/demo.js"></script>
-    <script type="module" src="./../../../../wje-elementy/wje-master.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.171/dist/wje-master.min.js"></script>
     <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
     <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
     <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
   </head>
   <body>
     <div class="container">
-      <div class="content" style="min-width: 80%; margin: auto">
-        <wje-infinite-scroll url="/api/users" placement="wje-list">
+      <div class="content" style="min-width: 50%; margin: auto; overflow: hidden">
+        <wje-infinite-scroll url="/api/users" placement="wje-list" id="basic">
           <wje-list>
-            <wje-item iterate>
-              <wje-label>
-                <h4>{{fullName}}</h4>
-                <p>{{jobTitle}}</p>
-              </wje-label>
-            </wje-item>
+            <template iterate>
+              <wje-item>
+                <wje-label>
+                  <h4>{{fullName}}</h4>
+                  <p>{{jobTitle}}</p>
+                </wje-label>
+              </wje-item>
+            </template>
           </wje-list>
+          <wje-icon name="arrow-bar-to-down" size="large" slot="ending"></wje-icon>
+          <wje-icon name="loader" size="large" slot="loader"></wje-icon>
         </wje-infinite-scroll>
-        <style>
-          wje-infinite-scroll {
-            min-width: 250px;
-          }
-        </style>
       </div>
     </div>
   </body>

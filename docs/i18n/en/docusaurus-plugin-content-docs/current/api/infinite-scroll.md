@@ -35,23 +35,29 @@ import Size from '@site/static/usage/v1/infinite-scroll/size/index.md';
 
 <Size />
 
-## Custom content
+## Card
 
 The Infinite scroll element can be used in combination with any Elements element. For example `Card`.
+
+import Card from '@site/static/usage/v1/infinite-scroll/card/index.md';
+
+<Card />
+
+## Custom data
 
 import Custom from '@site/static/usage/v1/infinite-scroll/custom/index.md';
 
 <Custom />
 
-## Attributes and Properties
+## Atribúty a Vlastnosti
 
 <Props />
 
-## Events
+## Eventy
 
 <Events />
 
-## Methods
+## Metódy
 
 <Methods />
 
@@ -59,10 +65,10 @@ import Custom from '@site/static/usage/v1/infinite-scroll/custom/index.md';
 
 <Parts />
 
-## CSS Custom Properties
+## CSS Custom Vlastnosti
 
 <CustomProps />
 
-## Slots
+## Sloty
 
 <Slots />

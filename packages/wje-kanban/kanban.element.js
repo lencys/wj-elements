@@ -10,8 +10,7 @@ import styles from './styles/styles.css?inline';
  * @status stable
  * @augments {WJElement}
  * @slot - The default slot for the Kanban board.
- * @csspart native - Styles the native part of the Kanban board.
- * @csspart pool - Styles the pool of the Kanban board.
+ * @csspart native-infinite-scroll - Styles the native part of the Kanban board.
  * @tag wje-kanban
  */
 export default class Kanban extends WJElement {

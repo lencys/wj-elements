@@ -4,14 +4,18 @@ import { InfiniteScroll, InfiniteScrollContent, List, Item, Avatar, Label } from
 
 function Example() {
   return (
-    <wje-infinite-scroll url="/api/users" placement="wje-list" size="20">
+    <wje-infinite-scroll url="/api/users" placement="wje-list" size="6">
       <wje-list>
-        <wje-item iterate>
-          <wje-label>
-            <h4>{{ fullName }}</h4>
-            <p>{{ jobTitle }}</p>
-          </wje-label>
-        </wje-item>
+        <template iterate>
+          <wje-tooltip content="{{fullName}}">
+            <wje-item>
+              <wje-label>
+                <h4>{{fullName}}</h4>
+                <p>{{jobTitle}}</p>
+              </wje-label>
+            </wje-item>
+          </wje-tooltip>
+        </template>
       </wje-list>
     </wje-infinite-scroll>
   );

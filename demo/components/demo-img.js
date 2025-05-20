@@ -121,7 +121,7 @@ export default class DemoImg extends WJElement {
 
     if (this.querySelector('#img-example')?.actions) {
       this.querySelector('#img-example').actions['log'] = () => {
-        console.log('TADAAAAA log pre obrázok ddddddd:', this.src);
+        console.log('Log pre obrázok', this.src);
       };
     }
   }

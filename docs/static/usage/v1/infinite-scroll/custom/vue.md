@@ -1,61 +1,96 @@
 ```html
 <template>
-  <wje-infinite-scroll url="/api/users" placement="wje-row" size="20" class="example" height="440px">
-    <wje-grid>
-      <wje-row wrap>
-        <wje-col size="6" iterate>
-          <wje-card>
-            <wje-img src="{{image}}"></wje-img>
-            <wje-card-header>
-              <wje-card-subtitle>{{jobTitle}}</wje-card-subtitle>
-              <wje-card-title>{{fullName}}</wje-card-title>
-            </wje-card-header>
-            <wje-card-content>
-              <p>{{description}}</p>
-            </wje-card-content>
-          </wje-card>
-        </wje-col>
-      </wje-row>
-    </wje-grid>
-    <style>
-      .example {
-        padding: 0 1rem;
-      }
-    </style>
+  <wje-infinite-scroll placement="wje-list" id="custom-data">
+    <wje-list></wje-list>
+    <wje-icon name="arrow-bar-to-down" size="large" slot="ending"></wje-icon>
+    <wje-icon name="loader" size="large" slot="loader"></wje-icon>
   </wje-infinite-scroll>
 </template>
 
 <script lang="ts">
-  import {
-    InfiniteScroll,
-    Card,
-    CardHeader,
-    CardSubtitle,
-    CardTitle,
-    CardContent,
-    Img,
-    Grid,
-    Row,
-    Col,
-  } from '@elements/vue';
-  import { defineComponent, reactive } from 'vue';
+import {
+  InfiniteScroll,
+  List,
+  Icon
+} from '@elements/vue';
+import { defineComponent, onMounted } from 'vue';
 
-  export default defineComponent({
-    components: {
-      InfiniteScroll,
-      Card,
-      CardHeader,
-      CardSubtitle,
-      CardTitle,
-      CardContent,
-      Img,
-      Grid,
-      Row,
-      Col,
-    },
-    setup() {
-      return { ionInfinite, items };
-    },
-  });
+export default defineComponent({
+  components: {
+    InfiniteScroll,
+    List,
+    Icon
+  },
+  setup() {
+    onMounted(() => {
+      const infiniteScroll = document.querySelector('#custom-data');
+      
+      infiniteScroll.setCustomData = async () => {
+        infiniteScroll.infiniteScrollTemplate = `<wje-item">
+          <wje-label>
+            <h4>{{title}}</h4>
+            <p>{{description}}</p>
+          </wje-label>
+        </wje-item>`;
+
+        return {
+          page: 0,
+          size: 1,
+          totalPages: 1,
+          data: [
+            {
+              id: '1',
+              title: 'Lorem ipsum dolor sit amet',
+              description: 'Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.',
+              time: '2024-06-24T10:00:00Z',
+            },
+            {
+              id: '2',
+              title: 'Lorem ipsum dolor sit amet',
+              description: 'Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.',
+              time: '2024-06-23T12:00:00Z',
+            },
+            {
+              id: '3',
+              title: 'Lorem ipsum dolor sit amet',
+              description: 'Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.',
+              time: '2024-06-24T14:00:00Z',
+            },
+          ],
+        };
+      };
+
+      infiniteScroll.customForeach = (data) => {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        let addedTodayHeader = false;
+        let addedOlderHeader = false;
+
+        data.forEach((item) => {
+          let itemDate = new Date(item.time);
+          itemDate.setHours(0, 0, 0, 0);
+
+          if (itemDate.getTime() === today.getTime() && !addedTodayHeader) {
+            let todayHeader = document.createElement('h5');
+            todayHeader.textContent = 'Dnes';
+            infiniteScroll.placementObj.insertAdjacentElement('beforeend', todayHeader);
+            addedTodayHeader = true;
+          }
+
+          if (itemDate.getTime() !== today.getTime() && !addedOlderHeader) {
+            let olderHeader = document.createElement('h5');
+            olderHeader.textContent = 'Staršie';
+            infiniteScroll.placementObj.insertAdjacentElement('beforeend', olderHeader);
+            addedOlderHeader = true;
+          }
+
+          let element = infiniteScroll.dataToHtml(item);
+          infiniteScroll.placementObj.insertAdjacentElement('beforeend', element);
+        });
+      };
+    });
+  }
+});
 </script>
 ```
