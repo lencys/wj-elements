@@ -27,7 +27,7 @@ template.innerHTML = `
             Menu item
             <wje-icon slot="start" name="point"></wje-icon>
           </wje-menu-item>
-          <wje-menu-item>Menu item</wje-menu-item>
+          <wje-menu-item id="custom-event-menu-item" custom-event="single-spa-route" custom-event-userId="1" custom-event-departmentId="2">Menu item CE</wje-menu-item>
           <wje-menu-item>Menu item</wje-menu-item>
           <wje-divider style="--wje-divider-spacing: .5rem;"></wje-divider>
           <wje-menu-label>Next menu</wje-menu-label>
@@ -137,6 +137,10 @@ export default class DemoMenu extends WJElement {
       item.addEventListener('wje-menu-item:click', () => {
         console.log('click menu item');
       });
+    });
+
+    this.context.querySelector('#custom-event-menu-item').addEventListener('single-spa-route', (e) => {
+      console.log('klikol som custom event', e.detail);
     });
   }
 }

@@ -343,7 +343,7 @@ export default class MenuItem extends WJElement {
 
                 break;
         }
-    };
+    }
 
     /**
      * Checks if the submenu should be hidden based on the event.
