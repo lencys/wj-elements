@@ -2,26 +2,30 @@
 [ WJ Chip ]
 */
 
+:host {
+    display: inline-flex;
+    --wje-chip-round-border-radius: var(--wje-border-radius-large);
+    --wje-button-border-radius: var(--wje-chip-round-border-radius);
+}
+
 .native-chip {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    font-size: 14px;
+    font-size: var(--wje-font-size);
+    line-height: 1;
     letter-spacing: -0.006em;
     margin: 0;
-    padding: 0.5rem 0.75rem;
+    padding: 0 var(--wje-spacing-small);
     text-align: center;
     cursor: pointer;
     white-space: nowrap;
     text-shadow: none;
     box-shadow: none;
     border: 0 none;
-    line-height: 14px;
-    min-height: 28px;
-    height: 28px;
     width: 100%;
+    height: 28px;
     max-width: fit-content;
-    min-width: 28px;
     position: relative;
     transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: var(--wje-border-radius-pill);
@@ -42,6 +46,26 @@
 
 :host(:focus, :active:focus, .wje-active:focus) {
     outline: none !important;
+}
+
+:host([size='small']) .native-chip {
+    font-size: var(--wje-font-size-small);
+    height: 24px;
+    padding: var(--wje-spacing-3x-small)  var(--wje-spacing-x-small);
+    wje-button {
+        --wje-button-margin-inline: var(--wje-spacing-3x-small) calc(-1 * var(--wje-spacing-3x-small));
+    }
+}
+
+:host([size='large']) .native-chip {
+    font-size: var(--wje-font-size-medium);
+    height: 34px;
+    padding: var(--wje-spacing-x-small) var(--wje-spacing-small);
+
+}
+
+:host([round]) .native-chip {
+    border-radius: var(--wje-chip-round-border-radius);
 }
 
 .check {
@@ -87,7 +111,7 @@ slot[name='end'].has-content {
 }
 
 wje-button {
-    --wje-button-border-radius: 50%;
+    /*--wje-button-border-radius: 50%;*/
     --wje-button-margin-inline: 0.25rem -0.5rem;
     --wje-padding-top: 0.15rem;
     --wje-padding-start: 0.15rem;

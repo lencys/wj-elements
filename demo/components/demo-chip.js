@@ -18,6 +18,44 @@ template.innerHTML = `
       </div>
     </div>
     
+    <!-- Shape -->
+
+    <h2>Shape</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-chip round>Round</wje-chip>
+        <wje-chip>Circle</wje-chip>
+      </div>
+    </div>
+    
+    <!-- Size -->
+
+    <h2>Size</h2>
+    <div class="playground">
+      <div class="content">
+        <div>
+          <wje-chip size="small" round>Small</wje-chip>
+          <wje-chip round>Default</wje-chip>
+          <wje-chip size="large" round>Large</wje-chip>
+        </div>
+        <div>
+          <wje-chip size="small">Small</wje-chip>
+          <wje-chip>Default</wje-chip>
+          <wje-chip size="large">Large</wje-chip>
+        </div>
+        <div>
+          <wje-chip size="small" round removable>Small</wje-chip>
+          <wje-chip round removable>Default</wje-chip>
+          <wje-chip size="large" round removable>Large</wje-chip>
+        </div>
+        <div>
+          <wje-chip size="small" removable>Small</wje-chip>
+          <wje-chip removable>Default</wje-chip>
+          <wje-chip size="large" removable>Large</wje-chip>
+        </div>
+      </div>
+    </div>
+    
     <!-- BASIC -->
 
     <h2>Basic</h2>
@@ -26,27 +64,6 @@ template.innerHTML = `
         <wje-chip>
           Default
           <wje-level-indicator level="2" slot="end"></wje-level-indicator>
-<!--          <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible id="custom-dropdown-basic">-->
-<!--            <wje-icon name="dots-vertical" slot="trigger"></wje-icon>-->
-<!--            <wje-menu variant="context">-->
-<!--              <wje-menu-item>-->
-<!--                <wje-icon name="plane" slot="start"></wje-icon>-->
-<!--                <wje-label>Menu item</wje-label>-->
-<!--              </wje-menu-item>-->
-<!--              <wje-menu-item>-->
-<!--                <wje-icon name="book" slot="start"></wje-icon>-->
-<!--                <wje-label>Menu item</wje-label>-->
-<!--              </wje-menu-item>-->
-<!--              <wje-menu-item>-->
-<!--                <wje-icon name="music" slot="start"></wje-icon>-->
-<!--                <wje-label>Menu item</wje-label>-->
-<!--              </wje-menu-item>-->
-<!--              <wje-menu-item>-->
-<!--                <wje-icon name="video" slot="start"></wje-icon>-->
-<!--                <wje-label>Menu item</wje-label>-->
-<!--              </wje-menu-item>-->
-<!--            </wje-menu>-->
-<!--          </wje-dropdown>-->
         </wje-chip>
       </div>
     </div>

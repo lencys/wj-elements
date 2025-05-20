@@ -21,6 +21,66 @@ export default class Chip extends WJElement {
     }
 
     /**
+     * Sets or removes the "round" attribute on the element based on the provided value.
+     * @param {boolean} value Determines whether the "round" attribute should be set or removed.
+     * If true, the "round" attribute is added. If false, the "round"
+     * attribute is removed.
+     */
+    set round(value) {
+        if (value) {
+            this.setAttribute('round', '');
+        } else {
+            this.removeAttribute('round');
+        }
+    }
+
+    /**
+     * Checks if the 'round' attribute is present on the element.
+     * @returns {boolean} Returns true if the 'round' attribute exists, otherwise false.
+     */
+    get round() {
+        return this.hasAttribute('round');
+    }
+
+    /**
+     * Sets the size attribute of the element.
+     * @param {string} value The value to set for the size attribute.
+     */
+    set size(value) {
+        this.setAttribute('size', value);
+    }
+
+    /**
+     * Retrieves the 'size' attribute of the current element.
+     * @returns {string | null} The value of the 'size' attribute, or null if the attribute is not set.
+     */
+    get size() {
+        return this.getAttribute('size');
+    }
+
+    /**
+     * Sets or removes the "removable" attribute on the element.
+     * @param {boolean} value A boolean indicating whether the element should have the "removable" attribute.
+     * If true, the "removable" attribute is added;
+     * if false, the "removable" attribute is removed.
+     */
+    set removable(value) {
+        if (value) {
+            this.setAttribute('removable', '');
+        } else {
+            this.removeAttribute('removable');
+        }
+    }
+
+    /**
+     * Determines if the element has the 'removable' attribute.
+     * @returns {boolean} True if the element has the 'removable' attribute, otherwise false.
+     */
+    get removable() {
+        return this.hasAttribute('removable');
+    }
+
+    /**
      * Class name for the Chip element.
      * @type {string}
      */
@@ -60,7 +120,17 @@ export default class Chip extends WJElement {
         remove.setAttribute('part', 'remove');
         remove.setAttribute('fill', 'link');
         remove.setAttribute('color', this.color || 'default');
-        remove.innerHTML = `<wje-icon name="x"></wje-icon>`;
+        remove.round = !this.round;
+
+        if(this.hasAttribute('size')) {
+            if(this.size === 'small') {
+                remove.innerHTML = `<wje-icon name="x" size="small"></wje-icon>`;
+            } else if (this.size === 'large') {
+                remove.innerHTML = `<wje-icon name="x"></wje-icon>`;
+            }
+        } else {
+            remove.innerHTML = `<wje-icon name="x"></wje-icon>`;
+        }
 
         let active = document.createElement('wje-icon');
         active.setAttribute('name', 'check');
@@ -78,7 +148,7 @@ export default class Chip extends WJElement {
         native.appendChild(slotEnd);
         native.appendChild(active);
 
-        if (this.hasAttribute('removable')) native.appendChild(remove);
+        if (this.removable) native.appendChild(remove);
 
         fragment.appendChild(native);
 
