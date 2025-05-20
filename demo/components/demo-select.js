@@ -25,8 +25,8 @@ template.innerHTML = `
     <h2>Lazy options</h2>
     <div class="playground">
       <div class="content">
-        <wje-select lazy id="lazy-update" placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
-          <wje-options lazy url="/api/options" item-value="value" item-text="text"  lazy-load-size="6" option-array-path="data"></wje-options>
+        <wje-select lazy id="lazy-update" placeholder="Select options" variant="standard" max-options="2" variant="standard" max-height="200px" multiple clearable>
+          <wje-options lazy url="/api/options" item-value="value" item-text="text" lazy-load-size="6" option-array-path="data"></wje-options>
         </wje-select>
       </div>
     </div>
@@ -205,11 +205,6 @@ export default class DemoSelect extends WJElement {
 
     lazySelect.addOptions([{ text: 'aeee', value: 'aeee' }, { text: 'beee', value: 'beee' }]);
     lazySelect.selectOptions(['aeee', 'beee'], false);
-    // lazySelect.value = ['aeee','beee'];
-
-    // <wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
-    //       <wje-options url="/api/options" item-value="value"item-text="text"></wje-options>
-    //     </wje-select>
 
     const select = document.createElement('wje-select');
     select.setAttribute('placeholder', 'Select options');

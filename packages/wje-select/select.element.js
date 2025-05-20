@@ -213,6 +213,18 @@ export default class Select extends WJElement {
         else this.removeAttribute('invalid');
     }
 
+    set maxOptions(value) {
+        if (value) {
+            this.setAttribute('max-options', value);
+        } else {
+            this.removeAttribute('max-options');
+        }
+    }
+
+    get maxOptions() {
+        return +this.getAttribute('max-options') || 0;
+    }
+
     /**
      * Getter for the form attribute.
      * @returns {HTMLFormElement} The form the input is associated with.
@@ -570,14 +582,13 @@ export default class Select extends WJElement {
     optionChange = (e) => {
         e.stopPropagation()
         e.stopImmediatePropagation()
-
+        console.log("SELECT OPTION CHANGE", e.target, e.detail);
         let allOptions = this.getAllOptions();
 
         if (!this.hasAttribute('multiple')) {
             allOptions.forEach((option) => {
                 if (option.value === e.target.value) {
                     this.processClickedOption(option);
-
                 } else {
                     option.selected = false;
                     option.removeAttribute('selected');
@@ -652,8 +663,10 @@ export default class Select extends WJElement {
                 this.chips.innerHTML = this.placeholder;
                 this.input.value = '';
             } else {
-                if (option !== null) this.chips.appendChild(this.getChip(option));
-                if (this.counterEl instanceof HTMLElement || !this.maxOptions || length > +this.maxOptions) {
+                if (option !== null) {
+                    this.chips.append(this.getChip(option));
+                }
+                if (this.counterEl instanceof HTMLElement || this.counterEl || length > this.maxOptions && this.chips.querySelectorAll('wje-chip').length >= this.maxOptions) {
                     this.counter();
                 }
             }
@@ -697,16 +710,34 @@ export default class Select extends WJElement {
      */
     selections(silence = false) {
         if (this.selectedOptions.length >= +this.maxOptions) {
-            this.counterEl = null;
+            console.log("max options reached");
+            // this.counterEl = null;
         }
 
-        if (this.chips) {
-            this.chips.innerHTML = '';
-        }
+        let chips = Array.from(this.chips.querySelectorAll('wje-chip'));
+        let chipsCount = chips.length;
+        console.log("CHIPS COUNT:", chipsCount, this.maxOptions, this.selectedOptions.length, this.selectedOptions);
+        console.log("CHIPS:", chips);
+        // chips.forEach((chip) => {
+        //     console.log("chip", chip, chip.option);
+        //     return false; // Ensure a return value
+        // });
+
+        console.log("areAllElementsInOptions", this.areAllElementsInOptions(chips, this.selectedOptions));
+        console.log("WJE CHIPS:", this.chips, chipsCount, this.counterEl);
 
         if (this.selectedOptions.length > 0) {
-            this.selectionChanged(this.selectedOptions.at(0), this.selectedOptions.length);
-
+            if(this.counterEl && this.selectedOptions.length >= this.maxOptions && this.areAllElementsInOptions(chips, this.selectedOptions)) {
+                console.log("SOM TU 1");
+                this.counter();
+            } else {
+                console.log("SOM TU 2");
+                this.counterEl = null;
+                this.chips.innerHTML = '';
+                for(let i = 0; i < this.maxOptions; i++) {
+                    this.selectionChanged(this.selectedOptions.at(i), this.selectedOptions.length);
+                }
+            }
         } else {
             this.selectionChanged();
         }
@@ -746,8 +777,11 @@ export default class Select extends WJElement {
      * @returns {Element} The chip element.
      */
     getChip(option) {
+        console.log("GET CHIP", option);
         let chip = document.createElement('wje-chip');
-        chip.setAttribute('removable', '');
+        chip.size = 'small';
+        chip.removable = true;
+        chip.round = true;
         chip.addEventListener('wje:chip-remove', this.removeChip);
         chip.option = option;
 
@@ -930,5 +964,13 @@ export default class Select extends WJElement {
         console.warn('formDisabledCallback not implemented yet');
         this.native?.classList.toggle('disabled', disabled);
         this.toggleAttribute('disabled', disabled);
+    }
+
+    areAllElementsInOptions(elements, options) {
+        if (elements.length === 0) return false;
+
+        return elements.every(el =>
+          options.some(opt => JSON.stringify(opt) === JSON.stringify(el.option))
+        );
     }
 }
