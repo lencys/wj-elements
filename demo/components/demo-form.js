@@ -70,87 +70,122 @@ template.innerHTML = `<h1>form</h1>
     </div>
   </div>`;
 
+function serialize(formData) {
+	const result = {};
+
+	for (const [rawKey, value] of formData.entries()) {
+		const keys = rawKey.split('.');
+		let current = result;
+
+		keys.forEach((key, index) => {
+			const isLast = index === keys.length - 1;
+
+			if (isLast) {
+				if (current[key] !== undefined) {
+					// If key already exists, convert to array if needed and push
+					if (!Array.isArray(current[key])) {
+						current[key] = [current[key]];
+					}
+					current[key].push(value);
+				} else {
+					current[key] = value;
+				}
+			} else {
+				// If path doesn't exist, create nested object
+				if (typeof current[key] !== 'object' || current[key] === null) {
+					current[key] = {};
+				}
+				current = current[key];
+			}
+		});
+	}
+
+	return result;
+}
 export default class DemoForm extends WJElement {
-  constructor() {
-    super();
-  }
+	constructor() {
+		super();
+	}
 
-  /**
-   * Returns the template for the component.
-   * @static
-   * @returns {HTMLElement} The template element
-   */
-  static get customTemplate() {
-    return template;
-  }
+	/**
+	 * Returns the template for the component.
+	 * @static
+	 * @returns {HTMLElement} The template element
+	 */
+	static get customTemplate() {
+		return template;
+	}
 
-  afterDraw() {
-    const select = document.querySelector('#country-select');
+	afterDraw() {
+		const select = document.querySelector('#country-select');
 
-    select.addOptions([
-      { id: '1', label: 'Slovakia' },
-      { id: '2', label: 'Czech Republic' },
-      { id: '3', label: 'Hungary' },
-      { id: '4', label: 'Poland' },
-      { id: '5', label: 'Austria' },
-      { id: '6', label: 'Germany' },
-      { id: '7', label: 'Italy' },
-      { id: '8', label: 'France' },
-      { id: '9', label: 'Spain' },
-      { id: '10', label: 'Portugal' },
-      { id: '11', label: 'Belgium' },
-      { id: '12', label: 'Netherlands' },
-      { id: '13', label: 'Switzerland' },
-      { id: '14', label: 'Denmark' },
-      { id: '15', label: 'Norway' },
-      { id: '16', label: 'Finland' },
-      { id: '17', label: 'Sweden' },
-      { id: '18', label: 'Iceland' },
-    ])
+		select.addOptions([
+			{ id: '1', label: 'Slovakia' },
+			{ id: '2', label: 'Czech Republic' },
+			{ id: '3', label: 'Hungary' },
+			{ id: '4', label: 'Poland' },
+			{ id: '5', label: 'Austria' },
+			{ id: '6', label: 'Germany' },
+			{ id: '7', label: 'Italy' },
+			{ id: '8', label: 'France' },
+			{ id: '9', label: 'Spain' },
+			{ id: '10', label: 'Portugal' },
+			{ id: '11', label: 'Belgium' },
+			{ id: '12', label: 'Netherlands' },
+			{ id: '13', label: 'Switzerland' },
+			{ id: '14', label: 'Denmark' },
+			{ id: '15', label: 'Norway' },
+			{ id: '16', label: 'Finland' },
+			{ id: '17', label: 'Sweden' },
+			{ id: '18', label: 'Iceland' },
+		])
 
-    select.selectOptions([1, 2, 3]);
+		select.selectOptions([1, 2, 3]);
 
-    document.querySelector(`[name="animal"]`).value = 'rabbit';
+		document.querySelector(`[name="animal"]`).value = 'rabbit';
 
-    const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(this.context);
+		const codeSnippet = new CodeSnippet();
+		codeSnippet.generateSnippet(this.context);
 
-    this.addEventListener('wje-icon-picker:select', (e) => {
-      e.target.closest('wje-input').value = e.detail.name;
-      e.target.onClose();
-    });
+		this.addEventListener('wje-icon-picker:select', (e) => {
+			e.target.closest('wje-input').value = e.detail.name;
+			e.target.onClose();
+		});
 
-    let form = this.context.querySelector('#test-form');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
+		let form = this.context.querySelector('#test-form');
+		form.addEventListener('submit', (e) => {
+			e.preventDefault();
+			e.stopPropagation();
+			e.stopImmediatePropagation();
 
-      const formData = new FormData(form);
-      let data = {};
+			const formData = new FormData(form);
+			let data = {};
 
-      for (let [key, value] of formData.entries()) {
-        try {
-          data[key] = JSON.parse(value);
-        } catch (error) {
-          data[key] = value;
-        }
-      }
+			const newData = serialize(formData);
+			console.log(newData);
 
-      console.log(data);
-    });
+			for (let [key, value] of formData.entries()) {
+				try {
+					data[key] = JSON.parse(value);
+				} catch (error) {
+					data[key] = value;
+				}
+			}
 
-    form.addEventListener('reset', (e) => {
-      console.log('klikol som form reset', e);
-    });
+			console.log(data);
+		});
 
-    const randomInput = document.createElement('wje-input');
-    randomInput.setAttribute('name', 'random');
-    randomInput.setAttribute('label', 'Random input');
+		form.addEventListener('reset', (e) => {
+			console.log('klikol som form reset', e);
+		});
 
-    randomInput.value = 'nenene';
-    form.append(randomInput);
-  }
+		const randomInput = document.createElement('wje-input');
+		randomInput.setAttribute('name', 'random');
+		randomInput.setAttribute('label', 'Random input');
+
+		randomInput.value = 'nenene';
+		form.append(randomInput);
+	}
 }
 
 let __esModule = 'true';
