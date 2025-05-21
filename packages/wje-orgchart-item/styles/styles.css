@@ -99,10 +99,12 @@
     }
 }
 
-:host(:hover) {
-    wje-card::part(native) {
-        background: var(--wje-orgchart-item-hover-background);
-        border: var(--wje-orgchart-item-hover-border);
+:host {
+    .orgchart-item:hover {
+        wje-card::part(native) {
+            background: var(--wje-orgchart-item-hover-background);
+            border: var(--wje-orgchart-item-hover-border);
+        }
     }
 }
 
