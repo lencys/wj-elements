@@ -150,11 +150,11 @@ export default class TreeItem extends WJElement {
      */
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'selected') {
-            this.checkbox.removeAttribute('indeterminate');
+            // this.checkbox.removeAttribute('indeterminate');
             if (this.selected) {
-                this.checkbox.setAttribute('checked', '');
+                this.checkbox.checked = true;
             } else {
-                this.checkbox.removeAttribute('checked');
+                this.checkbox.checked = false;
             }
         }
 

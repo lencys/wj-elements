@@ -118,8 +118,10 @@ template.innerHTML = `
     <div class="playground" style="display: block;">
       <div class="content" style="justify-content: start; width: 240px;">
         <wje-tree>
-          <wje-icon name="plus" slot="expand"></wje-icon>
-          <wje-icon name="minus" slot="collapse"></wje-icon>
+          <template>
+            <wje-icon name="plus" slot="expand"></wje-icon>
+            <wje-icon name="minus" slot="collapse"></wje-icon>
+          </template>
           <wje-tree-item>
             Deciduous
             <wje-tree-item>Birch</wje-tree-item>

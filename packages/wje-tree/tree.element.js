@@ -106,6 +106,10 @@ export default class Tree extends WJElement {
         this.addEventListener('click', this.handleClick);
     }
 
+    beforeDisconnect() {
+        this.removeEventListener('click', this.handleClick);
+    }
+
     /**
      * Handles the click event triggered by the user interaction.
      * Identifies the closest tree item element to the event target and sets it
@@ -114,6 +118,8 @@ export default class Tree extends WJElement {
      * @param {Event} e The click event object.
      */
     handleClick = (e) => {
+        e.preventDefault();
+
         let selectedItem = e.target.closest('wje-tree-item');
         let isClickButton = e.composedPath().some((el) => el?.classList?.contains('toggle'));
         if (isClickButton) return;
@@ -147,7 +153,7 @@ export default class Tree extends WJElement {
      * @returns {void} This method does not return a value. If the icon matching the given status is not found, a warning is logged.
      */
     getExpandCollapseIcon(item, status) {
-        let icon = this.querySelector(`[slot="${status}"]`);
+        let icon = this.querySelector('template')?.content.querySelector(`[slot="${status}"]`);
         if (!icon) {
             console.warn(`Icon with slot "${status}" was not found.`);
             return;
