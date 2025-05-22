@@ -212,77 +212,91 @@ template.innerHTML = `
   </div>`;
 
 export default class DemoSelect extends WJElement {
-  constructor() {
-    super();
-  }
+	constructor() {
+		super();
+	}
 
-  /**
-   * Returns the template for the component.
-   * @static
-   * @returns {HTMLElement} The template element
-   */
-  static get customTemplate() {
-    return template;
-  }
+	/**
+	 * Returns the template for the component.
+	 * @static
+	 * @returns {HTMLElement} The template element
+	 */
+	static get customTemplate() {
+		return template;
+	}
 
-  afterDraw() {
-    const codeSnippet = new CodeSnippet();
-    codeSnippet.generateSnippet(this.context);
+	afterDraw() {
+		const codeSnippet = new CodeSnippet();
+		codeSnippet.generateSnippet(this.context);
 
-    const lazySelect = document.querySelector('#lazy-update');
+		const lazySelect = document.querySelector('#lazy-update');
 
-    lazySelect.addOptions([{ text: 'aeee', value: 'aeee' }, { text: 'beee', value: 'beee' }]);
-    lazySelect.selectOptions(['aeee', 'beee'], false);
+		lazySelect.addOptions([{ text: 'aeee', value: 'aeee' }, { text: 'beee', value: 'beee' }]);
+		lazySelect.selectOptions(['aeee', 'beee'], false);
+		lazySelect.querySelector('wje-options').htmlItem = user => {
+			debugger
+			const option = document.createElement('wje-option');
+			option.setAttribute('value', user.id);
+			option.innerHTML = user.firstName ? `${user.firstName} ${user.lastName}` : user.name;
+			return option;
+		}
 
-    const select = document.createElement('wje-select');
-    select.setAttribute('placeholder', 'Select options');
-    select.setAttribute('variant', 'standard');
-    select.setAttribute('max-height', '200px');
-    select.setAttribute('max-options', '1');
-    select.setAttribute('multiple', '');
-    select.setAttribute('clearable', '');
+		const select = document.createElement('wje-select');
+		select.setAttribute('placeholder', 'Select options');
+		select.setAttribute('variant', 'standard');
+		select.setAttribute('max-height', '200px');
+		select.setAttribute('max-options', '1');
+		select.setAttribute('multiple', '');
+		select.setAttribute('clearable', '');
 
-    const options = document.createElement('wje-options');
-    options.setAttribute('url', '/api/options');
-    options.setAttribute('item-value', 'value');
-    options.setAttribute('item-text', 'text');
-    options.setAttribute('option-array-path', 'data');
+		const options = document.createElement('wje-options');
+		options.setAttribute('url', '/api/options');
+		options.setAttribute('item-value', 'value');
+		options.setAttribute('item-text', 'text');
+		options.setAttribute('option-array-path', 'data');
 
-    select.addOptions([
-      { text: 'aaaa', value: 'aeee' },
-      { text: 'bbbb', value: 'beee' },
-      { text: 'cccc', value: 'ceee' },
-      { text: 'dddd', value: 'deee' },
-      { text: 'eeee', value: 'eeee' },
-      { text: 'ffff', value: 'feee' },
-      { text: 'gggg', value: 'geee' },
-      { text: 'hhhh', value: 'heee' },
-      { text: 'iiii', value: 'ieee' },
-      { text: 'jjjj', value: 'jeee' },
-      { text: 'kkkk', value: 'keee' },
-      { text: 'llll', value: 'leee' },
-      { text: 'mmmm', value: 'meee' },
-      { text: 'nnnn', value: 'neee' },
-      { text: 'oooo', value: 'oeee' },
-      { text: 'pppp', value: 'peee' },
-      { text: 'qqqq', value: 'qeee' },
-      { text: 'rrrr', value: 'reee' },
-      { text: 'ssss', value: 'seee' },
-      { text: 'tttt', value: 'teee' },
-      { text: 'uuuu', value: 'ueee' },
-      { text: 'vvvv', value: 'veee' },
-      { text: 'wwww', value: 'weee' },
-      { text: 'xxxx', value: 'xeee' },
-      { text: 'yyyy', value: 'yeee' },
-      { text: 'zzzz', value: 'zeee' },
-    ]);
-    select.selectOptions(['aeee', 'beee'], false);
-    select.value = ['aeee', 'beee'];
+		options.htmlItem = o => {
+			const option = document.createElement('wje-option');
+			option.setAttribute('value', o.value);
+			option.innerHTML = true ? `<div><div> ${true ? `${o.id} ${o.text}` : o.label} </div> <div class="small-text">${o.label ? o.label : "chyba popis moznosti"}</div></div>` : `${true ? `${o.id} ${o.text}` : o.label}`;
+			return option;
+		}
 
-    select.appendChild(options);
+		select.addOptions([
+			{ text: 'aaaa', value: 'aeee' },
+			{ text: 'bbbb', value: 'beee' },
+			{ text: 'cccc', value: 'ceee' },
+			{ text: 'dddd', value: 'deee' },
+			{ text: 'eeee', value: 'eeee' },
+			{ text: 'ffff', value: 'feee' },
+			{ text: 'gggg', value: 'geee' },
+			{ text: 'hhhh', value: 'heee' },
+			{ text: 'iiii', value: 'ieee' },
+			{ text: 'jjjj', value: 'jeee' },
+			{ text: 'kkkk', value: 'keee' },
+			{ text: 'llll', value: 'leee' },
+			{ text: 'mmmm', value: 'meee' },
+			{ text: 'nnnn', value: 'neee' },
+			{ text: 'oooo', value: 'oeee' },
+			{ text: 'pppp', value: 'peee' },
+			{ text: 'qqqq', value: 'qeee' },
+			{ text: 'rrrr', value: 'reee' },
+			{ text: 'ssss', value: 'seee' },
+			{ text: 'tttt', value: 'teee' },
+			{ text: 'uuuu', value: 'ueee' },
+			{ text: 'vvvv', value: 'veee' },
+			{ text: 'wwww', value: 'weee' },
+			{ text: 'xxxx', value: 'xeee' },
+			{ text: 'yyyy', value: 'yeee' },
+			{ text: 'zzzz', value: 'zeee' },
+		]);
+		select.selectOptions(['aeee', 'beee'], false);
+		select.value = ['aeee', 'beee'];
 
-    this.querySelector('#placeholder').appendChild(select);
-  }
+		select.appendChild(options);
+
+		this.querySelector('#placeholder').appendChild(select);
+	}
 }
 
 let __esModule = 'true';

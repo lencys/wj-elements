@@ -17,6 +17,7 @@
     &.default {
         .wrapper {
             display: block;
+						background-color: var(--wje-select-background);
             border-width: var(--wje-select-border-width);
             border-style: var(--wje-select-border-style);
             border-color: var(--wje-select-border-color);

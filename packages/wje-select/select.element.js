@@ -40,6 +40,8 @@ import styles from './styles/styles.css?inline';
  */
 
 export default class Select extends WJElement {
+	#addedOptions = []
+	#htmlOptions = []
 	/**
 	 * Constructor for the Select class.
 	 * @class
@@ -336,6 +338,20 @@ export default class Select extends WJElement {
 		return this.getSelected();
 	}
 
+	get options() {
+		if (this.querySelector('wje-options')) {
+			const allOptions = [...this.querySelector('wje-options').loadedOptions, ...this.#addedOptions, ...this.#htmlOptions]
+
+			return allOptions
+		} else {
+			const allOptions = [...this.#addedOptions, ...this.#htmlOptions]
+
+			return Array.from(
+				new Map(allOptions.reverse().map(obj => [obj.value, obj])).values()
+			).reverse();
+		}
+	}
+
 	/**
 	 * Sets the trigger value.
 	 * @param {string} value The trigger value to set.
@@ -538,6 +554,13 @@ export default class Select extends WJElement {
 	 * Sets up the event listeners after the component is drawn.
 	 */
 	afterDraw() {
+		this.#htmlOptions = Array.from(this.querySelectorAll(':scope > wje-option')).map((option) => {
+			return {
+				value: option.value,
+				text: option.textContent.trim(),
+			};
+		})
+
 		this.input.addEventListener('focus', (e) => {
 			this.labelElement?.classList.add('fade');
 			this.native.classList.add('focused');
@@ -685,31 +708,33 @@ export default class Select extends WJElement {
 		return this.selectedOptions.map((option) => {
 			return {
 				value: option.value,
-				text: option.textContent.trim(),
+				text: this.#htmlSelectedItem(option.value) // option.textContent.trim(),
 			};
 		});
 	}
 
 	/**
 	 * Handles the selection change.
-	 * @param {Element} option The option that changed.
+	 * @param {Element[]} options The option that changed.
 	 * @param {number} length The length of the selected options.
 	 */
-	selectionChanged(option = null, length = 0) {
+	selectionChanged(options = null, length = 0) {
 		if (this.hasAttribute('multiple')) {
+
 			this.value = this.selectedOptions.map((el) => el.value).reverse();
 
 			if (this.placeholder && length === 0) {
 				this.chips.innerHTML = this.placeholder;
 				this.input.value = '';
 			} else {
-				if (option !== null) this.chips.appendChild(this.getChip(option));
+				if (options !== null) Array.from(options).slice(0, +this.maxOptions).forEach(option => this.chips.appendChild(this.getChip(option)));
 				if (this.counterEl instanceof HTMLElement || !this.maxOptions || length > +this.maxOptions) {
 					this.counter();
 				}
 			}
 		} else {
-			let value = option?.textContent.trim() || '';
+			let option = options?.at(0);
+			let value = (option && this.#htmlSelectedItem(option.value)) ?? ""  // option?.textContent.trim() || '';
 			this.value = this.selectedOptions?.map((el) => el.value)?.at(0);
 			this.input.value = value;
 
@@ -758,7 +783,7 @@ export default class Select extends WJElement {
 		}
 
 		if (this.selectedOptions.length > 0) {
-			this.selectionChanged(this.selectedOptions.at(0), this.selectedOptions.length);
+			this.selectionChanged(this.selectedOptions, this.selectedOptions.length);
 
 		} else {
 			this.selectionChanged();
@@ -807,7 +832,7 @@ export default class Select extends WJElement {
 		chip.option = option;
 
 		let label = document.createElement('wje-label');
-		label.innerText = option.textContent.trim();
+		label.innerText = this.#htmlSelectedItem(option.value) // option.textContent.trim();
 
 		chip.appendChild(label);
 
@@ -845,6 +870,8 @@ export default class Select extends WJElement {
 
 		option.setAttribute('value', item[map.value] ?? '');
 		option.innerText = item[map.text] ?? '';
+
+		this.#addedOptions.push({ [map.value]: item[map.value], [map.text]: item[map.text] });
 		return option;
 	}
 
@@ -862,7 +889,6 @@ export default class Select extends WJElement {
 			optionsElement.addOption(optionData, silent, map);
 			return;
 		}
-
 		let option = this.htmlOption(optionData, map);
 		this.appendChild(option);
 	}
@@ -919,6 +945,20 @@ export default class Select extends WJElement {
 				this.selectOption(value, silent);
 			});
 		}
+	}
+
+	#htmlSelectedItem(item) {
+		const keyValue = this.querySelector("wje-options")?.itemValue ?? "value"
+		const textValue = this.querySelector("wje-options")?.itemText ?? "text"
+
+		const value = this.options
+			.find((option) => option[keyValue] === item)?.[textValue] ?? "";
+
+		return this.htmlSelectedItem(value);
+	}
+
+	htmlSelectedItem(item) {
+		return item;
 	}
 
 	/**
