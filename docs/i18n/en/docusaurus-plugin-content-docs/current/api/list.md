@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The **List** (List) component consists of multiple [Item](../item) elements and can contain text, buttons, toggles, icons, image thumbnails, and much more. Sheets generally contain items with the same content and group them into a larger whole.
+Komponent `List` (Zoznam) sa skladá z viacerých elementov [Item](../item) (položiek) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Sheets generally contain items with the same content and group them into a larger whole.
 
 ## Basic usage
 
@@ -39,23 +39,21 @@ import Inset from '@site/static/usage/v1/list/inset/index.md';
 
 ## Line separation
 
-The **lines** property modifies the bottom edge of items. Setting it to "full" will show full-width margins, "**inset**" will show left-padded margins, and "**none**" will show no margins.
-
-If the lines property is set on the item, this property will take precedence over the property on the sheet.
+Vlastnosť `lines` upravuje spodný okraj itemov. Nastavením tejto vlastnosti na hodnotu "`none`" sa nezobrazia žiadne okraje medzi položkami zoznamu.
 
 import Lines from '@site/static/usage/v1/list/lines/index.md';
 
 <Lines />
 
-## Attributes and Properties
+## Atribúty a Vlastnosti
 
 <Props />
 
-## Events
+## Eventy
 
 <Events />
 
-## Methods
+## Metódy
 
 <Methods />
 
@@ -63,10 +61,10 @@ import Lines from '@site/static/usage/v1/list/lines/index.md';
 
 <Parts />
 
-## CSS Custom Properties
+## CSS Custom Vlastnosti
 
 <CustomProps />
 
-## Slots
+## Sloty
 
 <Slots />

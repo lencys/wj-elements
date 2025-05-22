@@ -1,5 +1,5 @@
 ```html
-<wje-menu active style="max-width: 200px; --wje-menu-padding-inline: 1rem;">
+<wje-menu active>
   <wje-menu-item>
     Menu item
     <wje-icon slot="start" name="home"></wje-icon>

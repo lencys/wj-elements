@@ -7237,7 +7237,7 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "inset",
           "reflectToAttr": false,
           "docs": "Ak `true`, element dostane vonkajšie odsadenie a zaoblenie.",
@@ -7253,26 +7253,40 @@
         },
         {
           "name": "lines",
-          "type": "\"full\" | \"inset\" | \"none\" | undefined",
+          "type": "boolean",
           "complexType": {
-            "original": "'full' | 'inset' | 'none'",
-            "resolved": "\"full\" | \"inset\" | \"none\" | undefined",
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "lines",
+          "reflectToAttr": false,
+          "docs": "Ak `true`, element zobrazí medzi položkami list elementu horizotálne čiary.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "lines",
+          "type": "\"none\" | undefined",
+          "complexType": {
+            "original": "'none'",
+            "resolved": "\"none\" | undefined",
             "references": {}
           },
           "mutable": false,
           "attr": "lines",
           "reflectToAttr": false,
-          "docs": "Určuje štýl oddeľovacích čiar medzi elementami Item vo vnútri List elementu",
+          "docs": "Nastavením na hodnotu \"none\", skryje oddeľovacie čiary medzi elementami vo vnútri List elementu",
           "docsTags": [],
           "values": [
-            {
-              "value": "full",
-              "type": "string"
-            },
-            {
-              "value": "inset",
-              "type": "string"
-            },
             {
               "value": "none",
               "type": "string"
@@ -7302,183 +7316,195 @@
         {
           "name": "--wje-list-inset-padding",
           "annotation": "prop",
-          "docs": "Vnútorné odsadenie elementu"
+          "docs": "Vnútorné odsadenie zoznamu, keď je vo vnorenom režime (s atribútom inset). Predvolená hodnota je 1rem."
         }
       ],
       "slots": [
         {
-          "name": "end",
-          "docs": "Obsah sa umiestni vpravo v LTR a vľavo v RTL."
-        },
-        {
-          "name": "start",
-          "docs": "Obsah sa umiestni vľavo v LTR a vpravo v RTL."
+          "name": "",
+          "docs": "Predvolený slot pre obsah zoznamu."
         }
       ],
       "parts": [],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": ["WJElement"],
+      "dependencyGraph": {
+        "wje-list": ["WJElement"]
+      }
     },
     {
       "filePath": "src/components/masonry/masonry.tsx",
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "tag": "masonry",
-      "docs": "",
-      "docsTags": [],
+      "docs": "Komponent `Masonry` je vlastný webový komponent, ktorý reprezentuje layout typu masonry (murivový layout). Rozširuje `WJElement` a poskytuje flexibilné usporiadanie položiek do stĺpcov rôznych výšok, pričom optimalizuje využitie priestoru.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "Tento element predstavuje masonry layout."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/masonry"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        }
+      ],
       "usage": {},
       "props": [
         {
-          "name": "cols",
-          "type": "string | undefined",
+          "name": "maxColWidth",
+          "type": "number",
           "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
+            "original": "number",
+            "resolved": "number",
             "references": {}
           },
-          "mutable": false,
-          "attr": "cols",
+          "mutable": true,
+          "attr": "max-col-width",
           "reflectToAttr": false,
-          "docs": "Definuje počet stĺpcov. Pri hodnote `auto` zvolí počet stĺpcov podľa šírky rodiča.",
+          "docs": "Maximálna šírka stĺpca v pixeloch. Systém automaticky vypočíta počet stĺpcov na základe tejto hodnoty a celkovej šírky.",
           "docsTags": [],
-          "default": "auto",
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
+          "default": "500",
+          "values": [],
+          "optional": false,
           "required": false
         },
         {
-          "name": "debounce",
-          "type": "string | undefined",
+          "name": "cols",
+          "type": "number | string",
           "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
+            "original": "number | string",
+            "resolved": "number | string",
             "references": {}
           },
-          "mutable": false,
-          "attr": "debounce",
+          "mutable": true,
+          "attr": "cols",
           "reflectToAttr": false,
-          "docs": "Určuje čas v ms, za ktorý sa rozloženie preformátuje pri každej zmene veľkosti rozloženia masonry. Tento reflow sa oneskoruje, aby sa zabránilo príliš častému vyvolaniu algoritmu rozloženia za sebou.",
+          "docs": "Počet stĺpcov. Ak je hodnota nastavená na 'auto', počet stĺpcov sa vypočíta automaticky na základe šírky priestoru a maximálnej šírky stĺpca.",
           "docsTags": [],
-          "default": "300",
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
+          "default": "'auto'",
+          "values": [],
+          "optional": false,
           "required": false
         },
         {
           "name": "gap",
-          "type": "string | undefined",
+          "type": "number",
           "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
+            "original": "number",
+            "resolved": "number",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "gap",
           "reflectToAttr": false,
-          "docs": "Definuje šírku medzery medzi stĺpcami v pixeloch.",
+          "docs": "Medzera medzi stĺpcami a položkami v pixeloch.",
           "docsTags": [],
           "default": "24",
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
+          "values": [],
+          "optional": false,
           "required": false
         },
         {
-          "name": "max-col-width",
-          "type": "string | undefined",
+          "name": "debounce",
+          "type": "number",
           "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
+            "original": "number",
+            "resolved": "number",
             "references": {}
           },
-          "mutable": false,
-          "attr": "max-col-width",
+          "mutable": true,
+          "attr": "debounce",
           "reflectToAttr": false,
-          "docs": "Nastaví maximálnu šírku stĺpcov v pixeloch.",
+          "docs": "Čas v milisekundách, ktorý určuje oneskorenie pri prepočítavaní layoutu po zmene veľkosti okna.",
           "docsTags": [],
-          "default": "500",
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
+          "default": "300",
+          "values": [],
+          "optional": false,
           "required": false
         }
       ],
-      "methods": [],
+      "methods": [
+        {
+          "name": "scheduleLayout",
+          "returns": "void",
+          "signature": "(ms?: number) => void",
+          "parameters": [
+            {
+              "name": "ms",
+              "type": "number",
+              "docs": "Počet milisekúnd pre oneskorenie pred novým prepočítaním layoutu."
+            }
+          ],
+          "docs": "Naplánuje prepočítanie layoutu s definovaným oneskorením.",
+          "docsTags": []
+        },
+        {
+          "name": "layout",
+          "returns": "void",
+          "signature": "() => void",
+          "parameters": [],
+          "docs": "Prepočíta layout komponentu a preukladá položky do stĺpcov na základe ich výšky.",
+          "docsTags": []
+        }
+      ],
       "events": [],
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-masonry-layout-col-count",
+          "name": "--wje-masonry-gap",
           "annotation": "prop",
-          "docs": "Definuje počet stĺpov v rozložení masonry."
+          "docs": "Medzera medzi položkami v masonry layoute. Akceptuje akúkoľvek platnú CSS hodnotu dĺžky. Predvolená hodnota je 1rem."
         },
         {
-          "name": "--wj-masonry-layout-gap",
+          "name": "--wje-masonry-layout-col-count",
           "annotation": "prop",
-          "docs": "Určuje medzeru medzi položkami v rozložení masonry."
+          "docs": "Počet stĺpcov v masonry layoute. Predvolená hodnota je 1."
+        },
+        {
+          "name": "--wje-masonry-layout-gap",
+          "annotation": "prop",
+          "docs": "Medzera medzi stĺpcami a položkami v masonry layoute. Akceptuje akúkoľvek platnú CSS hodnotu dĺžky. Predvolená hodnota je 1rem."
         }
       ],
       "slots": [
         {
-          "name": "{index}",
-          "docs": "Obsah sa umiestni do stĺpca, `index` predstavuje poradie stĺpca."
+          "name": "",
+          "docs": "Predvolený slot pre položky masonry layoutu pred rozmiestnením."
+        },
+        {
+          "name": "{i}",
+          "docs": "Dynamicky vytvorené sloty pre jednotlivé stĺpce, kde 'i' je index stĺpca (0, 1, 2, ...). Počas layoutu sú položky automaticky priradené do týchto slotov."
         }
       ],
       "parts": [
         {
-          "name": "column",
-          "docs": "Odkazuje na všetky stĺpce vo vnútri elementu."
-        },
-        {
-          "name": "column-index",
-          "docs": "Odkazuje na konkrétny stĺpec element vo vnútri elementu, kde `index` predstavuje poradie stĺpca. Poradie začína nulou."
-        },
-        {
           "name": "native",
-          "docs": "Odkazuje na `div` element vo vnútri elementu."
+          "docs": "Koreňový element masonry layoutu."
+        },
+        {
+          "name": "column",
+          "docs": "Odkazuje na stĺpec v masonry layoute."
+        },
+        {
+          "name": "column-{i}",
+          "docs": "Odkazuje na konkrétny stĺpec v masonry layoute, kde 'i' je index stĺpca (0, 1, 2, ...)."
         }
       ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": ["WJElement"],
+      "dependencyGraph": {
+        "wje-masonry": ["WJElement"]
+      }
     },
     {
       "filePath": "src/components/menu/menu.tsx",
       "encapsulation": "shadow",
       "tag": "menu",
-      "docs": "",
-      "docsTags": [
-        {
-          "name": "part",
-          "text": "native - odkazuje na `div` element vo vnútri elementu."
-        }
-      ],
+      "docs": "Element reprezentujúci menu.",
+      "docsTags": [],
       "usage": {},
       "props": [
         {
@@ -7489,10 +7515,10 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "active",
           "reflectToAttr": false,
-          "docs": "Ak `true`, aktivuje menu a zviditeľní ho pridaním `display: \"flex\"`.",
+          "docs": "Ak `true`, menu je aktívne a viditeľné.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -7511,10 +7537,10 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "collapse",
           "reflectToAttr": false,
-          "docs": "Ak `true`, menu je v stave zbalené.",
+          "docs": "Ak `true`, menu sa zobrazí v zbalenom stave.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -7526,25 +7552,30 @@
           "required": false
         },
         {
-          "name": "offset",
-          "type": "string | undefined",
+          "name": "variant",
+          "type": "string",
           "complexType": {
             "original": "string",
-            "resolved": "string | undefined",
+            "resolved": "string",
             "references": {}
           },
           "mutable": false,
-          "attr": "offset",
+          "attr": "variant",
           "reflectToAttr": false,
-          "docs": "Určuje veľkosť odsadenia podmenu.",
+          "docs": "Určuje variant menu. Možné hodnoty sú 'context', 'megamenu' a 'nav'.",
           "docsTags": [],
-          "default": "0",
           "values": [
             {
+              "value": "context",
               "type": "string"
             },
             {
-              "type": "undefined"
+              "value": "megamenu",
+              "type": "string"
+            },
+            {
+              "value": "nav",
+              "type": "string"
             }
           ],
           "optional": true,
@@ -7556,52 +7587,87 @@
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-menu-background",
+          "name": "--wje-menu-background",
           "annotation": "prop",
-          "docs": "Farba pozadia elementu"
+          "docs": "Definuje farbu pozadia menu."
         },
         {
-          "name": "--wj-menu-border-color",
+          "name": "--wje-menu-border-width",
           "annotation": "prop",
-          "docs": "Farba okrajov elementu"
+          "docs": "Určuje šírku okraja menu."
         },
         {
-          "name": "--wj-menu-border-radius",
+          "name": "--wje-menu-border-style",
           "annotation": "prop",
-          "docs": "Zaoblenie okrajov elementu"
+          "docs": "Určuje štýl okraja menu."
         },
         {
-          "name": "--wj-menu-border-style",
+          "name": "--wje-menu-border-color",
           "annotation": "prop",
-          "docs": "Štýl zaoblenia elementu"
+          "docs": "Definuje farbu okraja menu."
         },
         {
-          "name": "--wj-menu-border-width",
+          "name": "--wje-menu-border-radius",
           "annotation": "prop",
-          "docs": "Šírka okrajov elementu"
+          "docs": "Určuje zaoblenie rohov menu."
         },
         {
-          "name": "--wj-menu-padding-bottom",
+          "name": "--wje-menu-padding-top",
           "annotation": "prop",
-          "docs": "Spodné vnútorné odsadenie elementu"
+          "docs": "Špecifikuje horný vnútorný okraj menu."
         },
         {
-          "name": "--wj-menu-padding-inline",
+          "name": "--wje-menu-padding-bottom",
           "annotation": "prop",
-          "docs": "Vnútorné odsadenie elementu vľavo a vpravo"
+          "docs": "Špecifikuje dolný vnútorný okraj menu."
         },
         {
-          "name": "--wj-menu-padding-top",
+          "name": "--wje-menu-padding-inline",
           "annotation": "prop",
-          "docs": "Horné vnútorné odsadenie elementu"
+          "docs": "Nastavuje horizontálne vnútorné okraje menu."
         },
         {
-          "name": "--wj-menu-z-index",
+          "name": "--wje-menu-margin-top",
           "annotation": "prop",
-          "docs": "Z-index elementu"
+          "docs": "Definuje horný vonkajší okraj menu."
+        },
+        {
+          "name": "--wje-menu-margin-bottom",
+          "annotation": "prop",
+          "docs": "Definuje dolný vonkajší okraj menu."
+        },
+        {
+          "name": "--wje-menu-margin-inline",
+          "annotation": "prop",
+          "docs": "Špecifikuje horizontálne vonkajšie okraje menu."
+        },
+        {
+          "name": "--wje-menu-collapse-width",
+          "annotation": "prop",
+          "docs": "Nastavuje šírku menu v zbalenom stave."
+        },
+        {
+          "name": "--wje-menu-shadow",
+          "annotation": "prop",
+          "docs": "Definuje tieň menu."
+        },
+        {
+          "name": "--wje-menu-z-index",
+          "annotation": "prop",
+          "docs": "Určuje z-index hodnotu menu pre vrstvenie."
+        },
+        {
+          "name": "--wje-menu-submenu-offset",
+          "annotation": "prop",
+          "docs": "Nastavuje odsadenie podmenu pre variant context."
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre obsah elementu menu."
+        }
+      ],
       "parts": [
         {
           "name": "native",
@@ -7616,19 +7682,26 @@
       "filePath": "src/components/menu-item/menu-item.tsx",
       "encapsulation": "shadow",
       "tag": "menu-item",
-      "docs": "",
-      "docsTags": [
-        {
-          "name": "part",
-          "text": "native - odkazuje na `div` element vo vnútri elementu."
-        },
-        {
-          "name": "part",
-          "text": "submenu - odkazuje na `slot` element vo vnútri elementu."
-        }
-      ],
+      "docs": "Element reprezentujúci položku menu.",
+      "docsTags": [],
       "usage": {},
       "props": [
+        {
+          "name": "customEvent",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "custom-event",
+          "reflectToAttr": false,
+          "docs": "Názov vlastnej udalosti, ktorá sa vyvolá pri kliknutí na položku.",
+          "docsTags": [],
+          "default": "null",
+          "values": []
+        },
         {
           "name": "checked",
           "type": "boolean",
@@ -7637,22 +7710,771 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "checked",
           "reflectToAttr": false,
-          "docs": "Ak `true`, zobrazí sa v MenuItem ikona check.",
+          "docs": "Určuje, či je položka menu označená.",
           "docsTags": [],
           "default": "false",
+          "values": []
+        },
+        {
+          "name": "manual",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "manual",
+          "reflectToAttr": false,
+          "docs": "Ak je nastavené, podmenu sa nezobrazí automaticky pri hover udalosti.",
+          "docsTags": [],
+          "default": "false",
+          "values": []
+        },
+        {
+          "name": "offset",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "offset",
+          "reflectToAttr": false,
+          "docs": "Odsadenie podmenu voči rodičovskej položke.",
+          "docsTags": [],
+          "default": "\"0\"",
+          "values": []
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "wje-menu-item:click",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Vyvoláva sa po kliknutí na položku menu.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "mousemove",
+          "target": "host",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "wje-popup:reposition",
+          "target": "host",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "mouseenter",
+          "target": "host",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "mouseleave",
+          "target": "host",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "focusout",
+          "target": "host",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "click",
+          "target": "host",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "click",
+          "target": "host",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [
+        {
+          "name": "--wje-menu-item-color",
+          "annotation": "prop",
+          "docs": "Nastavuje farbu textu položky menu. Predvolene používa hodnotu `var(--wje-color)`."
+        },
+        {
+          "name": "--wje-menu-item-background",
+          "annotation": "prop",
+          "docs": "Definuje farbu pozadia položky menu. Predvolene je `transparent`."
+        },
+        {
+          "name": "--wje-menu-item-color-hover",
+          "annotation": "prop",
+          "docs": "Špecifikuje farbu textu položky menu pri hover stave. Predvolene používa `var(--wje-color-contrast-8)`."
+        },
+        {
+          "name": "--wje-menu-item-background-hover",
+          "annotation": "prop",
+          "docs": "Nastavuje farbu pozadia položky menu pri hover stave. Predvolene používa `var(--wje-border-color)`."
+        },
+        {
+          "name": "--wje-menu-item-color-focus",
+          "annotation": "prop",
+          "docs": "Definuje farbu textu položky menu pri focus stave. Predvolene používa `var(--wje-color-contrast-8)`."
+        },
+        {
+          "name": "--wje-menu-item-background-focus",
+          "annotation": "prop",
+          "docs": "Špecifikuje farbu pozadia položky menu pri focus stave. Predvolene používa `var(--wje-border-color)`."
+        },
+        {
+          "name": "--wje-menu-item-color-active",
+          "annotation": "prop",
+          "docs": "Nastavuje farbu textu aktívnej položky menu. Predvolene používa `var(--wje-color-contrast-8)`."
+        },
+        {
+          "name": "--wje-menu-item-background-active",
+          "annotation": "prop",
+          "docs": "Špecifikuje farbu pozadia aktívnej položky menu. Predvolene používa `var(--wje-border-color)`."
+        },
+        {
+          "name": "--wje-menu-item-padding-top",
+          "annotation": "prop",
+          "docs": "Špecifikuje horný vnútorný okraj položky menu. Predvolene je `.5rem`."
+        },
+        {
+          "name": "--wje-menu-item-padding-bottom",
+          "annotation": "prop",
+          "docs": "Špecifikuje dolný vnútorný okraj položky menu. Predvolene je `.5rem`."
+        },
+        {
+          "name": "--wje-menu-item-line-height",
+          "annotation": "prop",
+          "docs": "Nastavuje výšku riadka pre text v položke menu. Predvolene je `1.8rem`."
+        },
+        {
+          "name": "--wje-menu-submenu-offset",
+          "annotation": "prop",
+          "docs": "Určuje horizontálne odsadenie podmenu relatívne k jeho nadradenému prvku."
+        },
+        {
+          "name": "--wje-menu-item-icon-visibility",
+          "annotation": "prop",
+          "docs": "Riadi viditeľnosť ikony v položke menu. Podporuje hodnoty `visible`, `hidden` alebo `collapse`."
+        },
+        {
+          "name": "--wje-menu-item-check-icon-display",
+          "annotation": "prop",
+          "docs": "Určuje, ako sa má zobraziť ikona zaškrtnutia položky menu. Predvolene je `flex`."
+        },
+        {
+          "name": "--wje-menu-item-check-icon-width",
+          "annotation": "prop",
+          "docs": "Nastavuje šírku ikony zaškrtnutia položky menu. Predvolene je `1.5rem`."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre textový obsah položky menu."
+        },
+        {
+          "name": "start",
+          "docs": "Slot pre obsah, ktorý sa zobrazí na začiatku položky menu (napr. ikona)."
+        },
+        {
+          "name": "end",
+          "docs": "Slot pre obsah, ktorý sa zobrazí na konci položky menu."
+        },
+        {
+          "name": "submenu",
+          "docs": "Slot pre vnorené menu, ktoré sa zobrazí ako podmenu tejto položky."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Základný element položky menu."
+        },
+        {
+          "name": "check",
+          "docs": "Časť pre ikonu zaškrtnutia položky."
+        },
+        {
+          "name": "submenu-icon",
+          "docs": "Časť pre ikonu, ktorá indikuje prítomnosť podmenu."
+        },
+        {
+          "name": "end",
+          "docs": "Časť pre umiestnenie koncového obsahu položky menu."
+        }
+      ],
+      "dependents": [],
+      "dependencies": ["wje-element", "wje-icon", "wje-tooltip", "wje-popup"],
+      "dependencyGraph": {
+        "wje-menu-item": ["wje-element", "wje-icon", "wje-tooltip", "wje-popup"]
+      }
+    },
+    {
+      "filePath": "src/components/menu-label/menu-label.tsx",
+      "encapsulation": "shadow",
+      "tag": "menu-label",
+      "docs": "Element reprezentujúci štítok menu.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "Tento element reprezentuje štítok menu."
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/menu-label"
+        }
+      ],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [
+        {
+          "name": "--wje-menu-label-font-size",
+          "annotation": "prop",
+          "docs": "Nastavuje veľkosť písma elementu. Prijíma akúkoľvek platnú CSS jednotku dĺžky (napr. `rem`, `px`, `em`). Predvolená hodnota je .75rem."
+        },
+        {
+          "name": "--wje-menu-label-weight",
+          "annotation": "prop",
+          "docs": "Určuje hrúbku písma elementu. Prijíma hodnoty ako `normal`, `bold` alebo číselné hodnoty (napr. `400`, `600`). Predvolená hodnota je 600."
+        },
+        {
+          "name": "--wje-menu-label-color",
+          "annotation": "prop",
+          "docs": "Určuje farbu textu elementu. Prijíma akúkoľvek platnú CSS hodnotu farby, vrátane premenných a pomenovaných farieb. Predvolená hodnota je var(--wje-color-contrast-6)."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre obsah elementu."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Odkazuje na základný `slot` element elementu."
+        }
+      ],
+      "dependents": [],
+      "dependencies": ["wje-element"],
+      "dependencyGraph": {
+        "wje-menu-label": ["wje-element"]
+      }
+    },
+    {
+      "filePath": "packages/orgchart/orgchart.tsx",
+      "encapsulation": "shadow",
+      "tag": "orgchart",
+      "docs": "Orgchart je vlastný webový komponent, ktorý rozširuje WJElement.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "Orgchart je vlastný webový komponent, ktorý rozširuje WJElement."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/Orgchart"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        }
+      ],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [
+        {
+          "name": "--wje-orgchart-height-line",
+          "annotation": "prop",
+          "docs": "Určuje veľkosť čiary medzi položkami organizačnej štruktúry."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre obsah organizačnej schémy."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Odkazuje na kontajner organizačnej schémy."
+        }
+      ],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "packages/orgchart-item/orgchart-item.tsx",
+      "encapsulation": "shadow",
+      "tag": "orgchart-item",
+      "docs": "OrgchartItem je vlastný webový komponent, ktorý rozširuje WJElement.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "OrgchartItem je vlastný webový komponent, ktorý rozširuje WJElement."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/OrgchartItem"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "augments",
+          "text": "WJElement"
+        },
+        {
+          "name": "attribute",
+          "text": "{boolean} boss - Nadradený prvok v organizačnej štruktúre (predvolené: false)."
+        },
+        {
+          "name": "slot",
+          "text": "- Predvolený slot pre obsah položky organizačnej štruktúry."
+        },
+        {
+          "name": "slot",
+          "text": "child - Slot pre potomkov položky organizačnej štruktúry."
+        },
+        {
+          "name": "csspart",
+          "text": "- Štýly celého elementu."
+        },
+        {
+          "name": "csspart",
+          "text": "native - Štýly natívneho elementu."
+        },
+        {
+          "name": "csspart",
+          "text": "expander - Štýly rozbaľovacieho elementu."
+        },
+        {
+          "name": "tag",
+          "text": "wje-orgchart-item"
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "boss",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "boss",
+          "reflectToAttr": false,
+          "docs": "Určuje, či je položka nadriadeným prvkom v organizačnej štruktúre.",
+          "docsTags": [],
+          "default": "false",
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "setupAttributes",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "setupAttributes() => void",
+          "parameters": [],
+          "docs": "Nastaví atribúty pre komponent.",
+          "docsTags": []
+        },
+        {
+          "name": "beforeDraw",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "beforeDraw() => void",
+          "parameters": [],
+          "docs": "Vykoná sa pred vykreslením komponentu.",
+          "docsTags": []
+        },
+        {
+          "name": "draw",
+          "returns": {
+            "type": "DocumentFragment",
+            "docs": ""
+          },
+          "signature": "draw() => DocumentFragment",
+          "parameters": [],
+          "docs": "Vykreslí komponent pre položku organizačnej štruktúry.",
+          "docsTags": []
+        },
+        {
+          "name": "afterDraw",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "afterDraw() => void",
+          "parameters": [],
+          "docs": "Vykoná sa po vykreslení komponentu.",
+          "docsTags": []
+        },
+        {
+          "name": "toggleChildren",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "toggleChildren(e: Event) => void",
+          "parameters": [
+            {
+              "name": "e",
+              "type": "Event",
+              "docs": "Objekt udalosti."
+            }
+          ],
+          "docs": "Prepne zobrazenie potomkov položky organizačnej štruktúry.",
+          "docsTags": []
+        }
+      ],
+      "events": [],
+      "listeners": [
+        {
+          "event": "click",
+          "target": "expander",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [
+        {
+          "name": "--wje-orgchart-item-width",
+          "annotation": "prop",
+          "docs": "Šírka položky organizačnej štruktúry"
+        },
+        {
+          "name": "--wje-orgchart-item-height-line",
+          "annotation": "prop",
+          "docs": "Výška čiary medzi položkami organizačnej štruktúry"
+        },
+        {
+          "name": "--wje-orgchart-item-border-radius",
+          "annotation": "prop",
+          "docs": "Zaoblenie rohov položky organizačnej štruktúry"
+        },
+        {
+          "name": "--wje-orgchart-item-background",
+          "annotation": "prop",
+          "docs": "Farba pozadia položky organizačnej štruktúry"
+        },
+        {
+          "name": "--wje-orgchart-item-boss-background",
+          "annotation": "prop",
+          "docs": "Farba pozadia nadriadenej položky organizačnej štruktúry"
+        },
+        {
+          "name": "--wje-orgchart-item-boss-border",
+          "annotation": "prop",
+          "docs": "Ohraničenie nadriadenej položky organizačnej štruktúry"
+        },
+        {
+          "name": "--wje-orgchart-item-hover-background",
+          "annotation": "prop",
+          "docs": "Farba pozadia položky organizačnej štruktúry pri prechode myšou"
+        },
+        {
+          "name": "--wje-orgchart-item-hover-border",
+          "annotation": "prop",
+          "docs": "Ohraničenie položky organizačnej štruktúry pri prechode myšou"
+        },
+        {
+          "name": "--wje-orgchart-item-highlight-background",
+          "annotation": "prop",
+          "docs": "Farba pozadia zvýraznenej položky organizačnej štruktúry"
+        },
+        {
+          "name": "--wje-orgchart-item-highlight-border",
+          "annotation": "prop",
+          "docs": "Ohraničenie zvýraznenej položky organizačnej štruktúry"
+        },
+        {
+          "name": "--wje-orgchart-item-expander-size",
+          "annotation": "prop",
+          "docs": "Veľkosť tlačidla na rozbalenie potomkov"
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre obsah položky organizačnej štruktúry."
+        },
+        {
+          "name": "child",
+          "docs": "Slot pre potomkov položky organizačnej štruktúry."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Odkazuje na hlavný kontajner položky."
+        },
+        {
+          "name": "card",
+          "docs": "Odkazuje na kartu položky."
+        },
+        {
+          "name": "expander",
+          "docs": "Odkazuje na tlačidlo pre rozbaľovanie potomkov."
+        }
+      ],
+      "dependents": [],
+      "dependencies": ["WJElement", "wje-card"],
+      "dependencyGraph": {
+        "wje-orgchart-item": ["WJElement", "wje-card"]
+      }
+    },
+    {
+      "filePath": "src/components/orgchart-group/orgchart-group.tsx",
+      "encapsulation": "shadow",
+      "tag": "orgchart-group",
+      "docs": "Orgchart-group je vlastný webový komponent, ktorý rozširuje WJElement.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "OrgchartGroup je vlastný webový komponent, ktorý rozširuje WJElement."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/OrgchartItem"
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "mutable": false,
+          "attr": "title",
+          "reflectToAttr": false,
+          "docs": "Nadpis skupiny organizačnej štruktúry.",
+          "docsTags": [],
+          "default": "null",
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "wje-orgchart-group:click",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Vyvoláva sa po kliknutí na skupinu organizačnej štruktúry.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "click",
+          "target": "card",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [
+        {
+          "name": "--wje-orgchart-group-height-line",
+          "annotation": "prop",
+          "docs": "Určuje veľkosť čiary medzi položkami v skupine organizačnej štruktúry."
+        },
+        {
+          "name": "--wje-border-color",
+          "annotation": "prop",
+          "docs": "Farba okraja skupiny organizačnej štruktúry."
+        },
+        {
+          "name": "--wje-orgchart-group-padding",
+          "annotation": "prop",
+          "docs": "Odsadenie obsahu skupiny organizačnej štruktúry."
+        },
+        {
+          "name": "--wje-orgchart-group-width",
+          "annotation": "prop",
+          "docs": "Šírka skupiny organizačnej štruktúry."
+        },
+        {
+          "name": "--wje-orgchart-group-border-radius",
+          "annotation": "prop",
+          "docs": "Polomer zaoblenia rohov skupiny organizačnej štruktúry."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre potomkov skupiny organizačnej štruktúry."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Odkazuje na hlavný kontajner skupiny."
+        },
+        {
+          "name": "title",
+          "docs": "Odkazuje na element nadpisu skupiny."
+        },
+        {
+          "name": "items",
+          "docs": "Odkazuje na kontajner položiek skupiny."
+        }
+      ],
+      "dependents": [],
+      "dependencies": ["WJElement", "wje-card"],
+      "dependencyGraph": {
+        "wje-orgchart-group": ["WJElement", "wje-card"]
+      }
+    },
+    {
+      "filePath": "src/components/pagination/pagination.tsx",
+      "encapsulation": "shadow",
+      "tag": "pagination",
+      "docs": "Táto trieda predstavuje komponent Pagination pre navigáciu cez stránkovaný obsah a dynamické aktualizovanie navigačných prvkov na základe atribútov ako počet položiek, veľkosť stránky atď.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "Táto trieda predstavuje komponent Pagination pre navigáciu cez stránkovaný obsah a dynamické aktualizovanie navigačných prvkov na základe atribútov ako počet položiek, veľkosť stránky atď."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/pagination"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "dependency",
+          "text": "wje-icon, wje-button"
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "page",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "page",
+          "reflectToAttr": true,
+          "docs": "Aktuálne číslo stránky.",
+          "docsTags": [],
+          "default": "0",
           "values": [
             {
-              "type": "boolean"
+              "type": "number"
             }
           ],
           "optional": false,
           "required": false
         },
         {
-          "name": "collapse",
+          "name": "maxPages",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "max-pages",
+          "reflectToAttr": true,
+          "docs": "Maximálny počet zobrazených stránok v navigácií.",
+          "docsTags": [],
+          "default": "3",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "pageSize",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "page-size",
+          "reflectToAttr": true,
+          "docs": "Počet položiek na stránku.",
+          "docsTags": [],
+          "default": "3",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "totalItems",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "total-items",
+          "reflectToAttr": true,
+          "docs": "Celkový počet položiek.",
+          "docsTags": [],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "showFirstButton",
           "type": "boolean",
           "complexType": {
             "original": "boolean",
@@ -7660,9 +8482,9 @@
             "references": {}
           },
           "mutable": true,
-          "attr": "collapse",
-          "reflectToAttr": false,
-          "docs": "Ak `true`, podmenu je v stave zbalené.",
+          "attr": "show-first-button",
+          "reflectToAttr": true,
+          "docs": "Ak `true`, zobrazí sa tlačidlo pre prvú stránku.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -7674,170 +8496,139 @@
           "required": false
         },
         {
-          "name": "placement",
-          "type": "\"bottom\" |  \"bottom-end\" | \"bottom-start\" | \"left-bottom\" | \"left\" | \"left-top\" | \"right-bottom\" | \"right\" | \"right-top\" | \"top\" | \"top-end\" | \"top-start\" | string & Record<never, never> | undefined",
+          "name": "showLastButton",
+          "type": "boolean",
           "complexType": {
-            "original": "string",
-            "resolved": "\"bottom\" |  \"bottom-end\" | \"bottom-start\" | \"left-bottom\" | \"left\" | \"left-top\" | \"right-bottom\" | \"right\" | \"right-top\" | \"top\" | \"top-end\" | \"top-start\" | string & Record<never, never> | undefined",
+            "original": "boolean",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": true,
-          "attr": "placement",
-          "reflectToAttr": false,
-          "docs": "Určuje umiestnenie podmenu na obrazovke.",
+          "attr": "show-last-button",
+          "reflectToAttr": true,
+          "docs": "Ak `true`, zobrazí sa tlačidlo pre poslednú stránku.",
           "docsTags": [],
-          "default": "right-start",
+          "default": "false",
           "values": [
             {
-              "value": "bottom",
-              "type": "string"
-            },
-            {
-              "value": "bottom-end",
-              "type": "string"
-            },
-            {
-              "value": "bottom-start",
-              "type": "string"
-            },
-            {
-              "value": "left-bottom",
-              "type": "string"
-            },
-            {
-              "value": "left",
-              "type": "string"
-            },
-            {
-              "value": "left-top",
-              "type": "string"
-            },
-            {
-              "value": "right-bottom",
-              "type": "string"
-            },
-            {
-              "value": "right",
-              "type": "string"
-            },
-            {
-              "value": "right-top",
-              "type": "string"
-            },
-            {
-              "value": "top",
-              "type": "string"
-            },
-            {
-              "value": "top-end",
-              "type": "string"
-            },
-            {
-              "value": "top-start",
-              "type": "string"
-            },
-            {
-              "type": "string & Record<never, never>"
-            },
-            {
-              "type": "undefined"
+              "type": "boolean"
             }
           ],
           "optional": false,
-          "required": true
+          "required": false
         },
         {
-          "name": "variant",
-          "type": "string",
+          "name": "round",
+          "type": "boolean",
           "complexType": {
-            "original": "string",
-            "resolved": "string",
+            "original": "boolean",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": true,
-          "attr": "variant",
-          "reflectToAttr": false,
-          "docs": "Určuje variantu podmenu. Medzi možné hodnoty patrí `context`, ktorý zobrazí podmenu v kontextovom okne alebo `nav`, ktorý sa podmenu zobrazí ako rozbalovacie menu.",
+          "attr": "round",
+          "reflectToAttr": true,
+          "docs": "Ak `true`, tlačidlá budú zaoblené.",
           "docsTags": [],
-          "default": "context",
+          "default": "false",
           "values": [
             {
-              "value": "context",
-              "type": "string"
-            },
-            {
-              "value": "nav",
-              "type": "string"
+              "type": "boolean"
             }
           ],
           "optional": false,
-          "required": true
+          "required": false
+        },
+        {
+          "name": "showInfo",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "show-info",
+          "reflectToAttr": true,
+          "docs": "Ak `true`, zobrazí sa informačný text o zobrazených položkách.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
         }
       ],
-      "methods": [],
-      "events": [],
+      "methods": [
+        {
+          "name": "paginate",
+          "signature": "(totalItems: number, currentPage?: number, pageSize?: number, maxPages?: number) => object",
+          "parameters": [
+            {
+              "name": "totalItems",
+              "type": "number",
+              "docs": "Celkový počet položiek na stránkovanie."
+            },
+            {
+              "name": "currentPage",
+              "type": "number",
+              "docs": "Aktuálne číslo stránky (predvolená hodnota je 1)."
+            },
+            {
+              "name": "pageSize",
+              "type": "number",
+              "docs": "Počet položiek na stránku (predvolená hodnota je 10)."
+            },
+            {
+              "name": "maxPages",
+              "type": "number",
+              "docs": "Maximálny počet stránok na zobrazenie v ovládacom prvku stránkovania (predvolená hodnota je 5)."
+            }
+          ],
+          "returns": "object",
+          "docs": "Stránkuje položky na základe celkového počtu položiek, aktuálnej stránky, veľkosti stránky a maximálneho počtu stránok na zobrazenie.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "wje-pagination:page-change",
+          "detail": "{ page: number }",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Vyvolaný pri zmene stránky.",
+          "docsTags": []
+        }
+      ],
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-menu-background",
+          "name": "--wje-font-size-small",
           "annotation": "prop",
-          "docs": "Farba pozadia elementu"
-        },
-        {
-          "name": "--wj-menu-border-color",
-          "annotation": "prop",
-          "docs": "Farba okrajov elementu"
-        },
-        {
-          "name": "--wj-menu-border-radius",
-          "annotation": "prop",
-          "docs": "Zaoblenie okrajov elementu"
-        },
-        {
-          "name": "--wj-menu-border-style",
-          "annotation": "prop",
-          "docs": "Štýl zaoblenia elementu"
-        },
-        {
-          "name": "--wj-menu-border-width",
-          "annotation": "prop",
-          "docs": "Šírka okrajov elementu"
-        },
-        {
-          "name": "--wj-menu-padding-bottom",
-          "annotation": "prop",
-          "docs": "Spodné vnútorné odsadenie elementu"
-        },
-        {
-          "name": "--wj-menu-padding-inline",
-          "annotation": "prop",
-          "docs": "Vnútorné odsadenie elementu vľavo a vpravo"
-        },
-        {
-          "name": "--wj-menu-padding-top",
-          "annotation": "prop",
-          "docs": "Horné vnútorné odsadenie elementu"
-        },
-        {
-          "name": "--wj-menu-z-index",
-          "annotation": "prop",
-          "docs": "Z-index elementu"
+          "docs": "Veľkosť písma pre informačný text"
         }
       ],
       "slots": [],
       "parts": [
         {
           "name": "native",
-          "docs": "Odkazuje na `div` element vo vnútri elementu."
-        },
-        {
-          "name": "submenu",
-          "docs": "odkazuje na `slot` element vo vnútri elementu."
+          "docs": "Obaľovací element pre komponent stránkovania."
         }
       ],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "wje-icon",
+        "wje-button"
+      ],
+      "dependencyGraph": {
+        "wje-pagination": [
+          "wje-icon",
+          "wje-button"
+        ]
+      }
     },
     {
       "filePath": "src/components/qr-code/qr-code.tsx",

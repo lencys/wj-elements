@@ -29,11 +29,12 @@ import Basic from '@site/static/usage/v1/item/basic/index.md';
 
 <Basic />
 
-## Oddeľovacie čiary
+[//]: # (## Oddeľovacie čiary)
 
-import Lines from '@site/static/usage/v1/item/lines/index.md';
+[//]: # ()
+[//]: # (import Lines from '@site/static/usage/v1/item/lines/index.md';)
 
-<Lines />
+[//]: # (<Lines />)
 
 ## Použitie s obrázkami
 

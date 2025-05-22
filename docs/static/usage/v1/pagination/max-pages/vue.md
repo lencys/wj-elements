@@ -1,0 +1,14 @@
+```html
+<template>
+    <wje-pagination total-items="30" max-pages="5"></wje-pagination>
+</template>
+
+<script lang="ts">
+  import { Pagination } from '@elements/vue';
+  import { defineComponent } from 'vue';
+
+  export default defineComponent({
+    components: { Pagination },
+  });
+</script>
+```

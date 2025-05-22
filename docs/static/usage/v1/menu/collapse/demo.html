@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.172/dist/wje-master.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.172/dist/light.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.172/dist/dark.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.172/dist/styles.css" />
+  </head>
+  <body>
+    <div class="container" style="display: block;">
+      <div class="content" style="max-width: 100%;height: 100%;">
+        <wje-button fill="link" toggle="off" id="toggle">
+          <wje-icon name="chevron-left" slot="toggle"></wje-icon>
+          <wje-icon name="chevron-right" slot="toggle"></wje-icon>
+        </wje-button>
+        <wje-menu id="custom" variant="nav" collapse active>
+          <wje-menu-item>
+            Home
+            <wje-icon slot="start" name="home"></wje-icon>
+            <span slot="tooltip-start">START</span>
+            <span slot="tooltip-end">END</span>
+          </wje-menu-item>
+          <wje-menu-item>
+            One
+            <wje-icon slot="start" name="heart"></wje-icon>
+            <wje-menu slot="submenu" variant="nav">
+              <wje-menu-item>Menu item 1</wje-menu-item>
+              <wje-menu-item>
+                Menu item 2
+                <wje-menu slot="submenu" variant="nav">
+                  <wje-menu-item>Menu item 2.1</wje-menu-item>
+                  <wje-menu-item>Menu item 2.2</wje-menu-item>
+                  <wje-menu-item>Menu item 2.3</wje-menu-item>
+                </wje-menu >
+              </wje-menu-item>
+              <wje-menu-item>Menu item 3</wje-menu-item>
+            </wje-menu>
+          </wje-menu-item>
+          <wje-menu-item>
+            Two
+            <wje-icon slot="start" name="map-pin"></wje-icon>
+          </wje-menu-item>
+          <wje-menu-item>
+            Three
+            <wje-icon slot="start" name="settings"></wje-icon>
+          </wje-menu-item>
+        </wje-menu>
+      </div>
+    </div>
+  </body>
+  <style>
+    #toggle {
+      margin-left: 1rem;
+    }
+    #custom {
+      --wje-menu-border-width: 0 1px 0 0;
+      --wje-menu-border-radius: 0 !important;
+      overflow: hidden;
+      max-width: 240px;
+      height: 100%;
+      wje-menu-item {
+        wje-menu {
+          --wje-menu-border-width: 1px;
+        }
+      }
+    }
+
+    #custom[variant=nav] {
+      --wje-menu-shadow: none;
+    }
+
+    #custom[variant=nav][collapse] {
+      --wje-menu-shadow: var(--wje-shadow-medium);
+    }
+
+    #custom wje-menu-item::part(native) {
+      --wje-menu-item-padding-top: .75rem;
+      --wje-menu-item-padding-bottom: .75rem;
+    }
+  </style>
+
+    <script>
+        const toggle = document.querySelector('#toggle');
+        const menu = document.querySelector('#custom');
+
+        toggle.addEventListener('wje-button:click', (e) => {
+          menu.toggleAttribute('collapse');
+        });
+    </script>
+</html>

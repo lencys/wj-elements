@@ -254,5 +254,25 @@
   "sidebar.api.category.Divider": {
     "message": "Divider",
     "description": "The label for category Divider in sidebar api"
+  },
+  "sidebar.api.category.Input File": {
+    "message": "Input File",
+    "description": "The label for category Input File in sidebar api"
+  },
+  "sidebar.api.category.Kanban": {
+    "message": "Kanban",
+    "description": "The label for category Kanban in sidebar api"
+  },
+  "sidebar.api.category.Level Indicator": {
+    "message": "Level Indicator",
+    "description": "The label for category Level Indicator in sidebar api"
+  },
+  "sidebar.api.category.OrgChart": {
+    "message": "OrgChart",
+    "description": "The label for category OrgChart in sidebar api"
+  },
+  "sidebar.api.category.Pagination": {
+    "message": "Pagination",
+    "description": "The label for category Pagination in sidebar api"
   }
 }

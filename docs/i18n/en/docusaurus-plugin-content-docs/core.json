@@ -2593,6 +2593,75 @@
       }
     },
     {
+      "filePath": "src/components/container/container.tsx",
+      "encapsulation": "scoped",
+      "tag": "container",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "indent",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "indent",
+          "reflectToAttr": false,
+          "docs": "If `true`, the element will be indented to the left on screens larger than 768px.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "vertical",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "vertical",
+          "reflectToAttr": false,
+          "docs": "If `true`, the element gets `flex-direction: \"column\"`",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [
+        {
+          "name": "--wje-container-indent",
+          "annotation": "prop",
+          "docs": "Offset element from the left ( only on screens larger than 768px)"
+        }
+      ],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
       "filePath": "src/components/copy-button/copy-button.tsx",
       "encapsulation": "shadow",
       "tag": "copy-button",
@@ -2979,7 +3048,7 @@
             "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
             "parameters": [
               {
-                "name": "dialog",
+                "name": "dialogue",
                 "type": "HTMLElement",
                 "docs": ""
               },
@@ -3002,7 +3071,7 @@
           "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
           "parameters": [
             {
-              "name": "dialog",
+              "name": "dialogue",
               "type": "HTMLElement",
               "docs": ""
             },
@@ -3025,7 +3094,7 @@
             "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
             "parameters": [
               {
-                "name": "dialog",
+                "name": "dialogue",
                 "type": "HTMLElement",
                 "docs": ""
               },
@@ -3048,7 +3117,7 @@
           "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
           "parameters": [
             {
-              "name": "dialog",
+              "name": "dialogue",
               "type": "HTMLElement",
               "docs": ""
             },
@@ -3071,7 +3140,7 @@
             "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
             "parameters": [
               {
-                "name": "dialog",
+                "name": "dialogue",
                 "type": "HTMLElement",
                 "docs": ""
               },
@@ -3094,7 +3163,7 @@
           "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
           "parameters": [
             {
-              "name": "dialog",
+              "name": "dialogue",
               "type": "HTMLElement",
               "docs": ""
             },
@@ -3104,7 +3173,7 @@
               "docs": ""
             }
           ],
-          "docs": "It is called before the dialog is closed. Can be overridden to trigger custom logic.",
+          "docs": "It is called before the dialogue is closed. Can be overridden to trigger custom logic.",
           "docsTags": []
         },
         {
@@ -3117,7 +3186,7 @@
             "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
             "parameters": [
               {
-                "name": "dialog",
+                "name": "dialogue",
                 "type": "HTMLElement",
                 "docs": ""
               },
@@ -3140,7 +3209,7 @@
           "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
           "parameters": [
             {
-              "name": "dialog",
+              "name": "dialogue",
               "type": "HTMLElement",
               "docs": ""
             },
@@ -4490,7 +4559,7 @@
       "filePath": "src/components/file-upload-item/file-upload-item.tsx",
       "encapsulation": "shadow",
       "tag": "file-upload-item",
-      "docs": "A component that displays the uploaded file entry with information about its status and upload progress.",
+      "docs": "Komponent zobrazujúci položku nahrávaného súboru s informáciami o jeho stave a priebehu nahrávania.",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -4691,7 +4760,7 @@
       "filePath": "src/components/format-digital/format-digital.tsx",
       "encapsulation": "shadow",
       "tag": "format-digital",
-      "docs": "Element for formatting numeric values into a digital display.",
+      "docs": "Element na formátovanie číselných hodnôt do digitálneho zobrazenia.",
       "docsTags": [],
       "usage": {
         "basic": "<wje-format-digital value=\"123456\"></wje-format-digital>",
@@ -4821,143 +4890,244 @@
       "filePath": "src/components/infinite-scroll/infinite-scroll.tsx",
       "encapsulation": "shadow",
       "tag": "infinite-scroll",
-      "docs": "Komponent infinite-scroll umožňuje načítať a zobraziť ďalší obsah na základe posunu používateľa. Pri bežnom použití je potrebné nastaviť tento prvok ako posledné dieťa posúvateľného rodiča. Keď sa používateľ posunie dostatočne blízko k spodnému okraju obsahu, vyvolá sa udalosť `ionInfinite`. Pri zobrazení tejto udalosti by mal váš aplikačný kód načítať ďalšie dáta a pripojiť ich ku koncu obsahu stránky.",
-      "docsTags": [],
+      "docs": "InfiniteScroll je vlastný webový komponent, ktorý umožnuje nekonečné posúvanie. Rozširuje WJElement.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "This element allows users to scroll through a potentially infinite amount of content."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/infinite-scroll"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "Augment",
+          "text": "WJElement"
+        },
+        {
+          "name": "tag",
+          "text": "wje-infinite-scroll"
+        }
+      ],
       "usage": {},
       "props": [
         {
-          "name": "disabled",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
+          "name": "totalPages",
+          "type": "number",
           "mutable": false,
-          "attr": "disabled",
+          "attr": "total-pages",
           "reflectToAttr": false,
-          "docs": "Ak `true`, komponent infinite scroll nebude reagovať na posun a nevyvolá udalosť `ionInfinite`.",
+          "docs": "Total number of pages available for infinite scrolling.",
           "docsTags": [],
-          "default": "false",
           "values": [
             {
-              "type": "boolean"
+              "type": "number"
             }
           ],
           "optional": false,
           "required": false
         },
         {
-          "name": "position",
-          "type": "\"bottom\" | \"top\"",
-          "complexType": {
-            "original": "InfiniteScrollPosition",
-            "resolved": "\"bottom\" | \"top\"",
-            "references": {
-              "InfiniteScrollPosition": {
-                "location": "import",
-                "path": "./infinite-scroll-interface",
-                "id": "src/components/infinite-scroll/infinite-scroll-interface.ts::InfiniteScrollPosition"
-              }
-            }
-          },
+          "name": "isLoading",
+          "type": "any[]",
           "mutable": false,
-          "attr": "position",
+          "attr": "is-loading",
           "reflectToAttr": false,
-          "docs": "Pozícia infinite scroll komponentu. Môže byť umiestnený hore alebo dole v rodičovskom elemente.",
+          "docs": "A field tracking the loading status.",
           "docsTags": [],
-          "default": "'bottom'",
-          "values": [
-            {
-              "value": "bottom",
-              "type": "string"
-            },
-            {
-              "value": "top",
-              "type": "string"
-            }
-          ],
+          "values": [],
           "optional": false,
           "required": false
         },
         {
-          "name": "threshold",
+          "name": "infiniteScrollTemplate",
+          "type": "null",
+          "mutable": true,
+          "attr": "infinite-scroll-template",
+          "reflectToAttr": false,
+          "docs": "Template for infinite scroll content.",
+          "docsTags": [],
+          "values": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "response",
+          "type": "any | {}",
+          "mutable": true,
+          "attr": "response",
+          "reflectToAttr": false,
+          "docs": "Data answers for infinite scrolling.",
+          "docsTags": [],
+          "values": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "objectName",
           "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "threshold",
+          "mutable": true,
+          "attr": "object-name",
           "reflectToAttr": false,
-          "docs": "Prah vzdialenosti od spodku obsahu, pri ktorom sa vyvolá udalosť InfiniteScroll. Prah sa môže nastaviť buď v pixeloch alebo v percentách. Napríklad, `10%` znamená, že sa udalosť InfiniteScroll vyvolá, keď používateľ dôjde na vzdialenosť 10% od spodku stránky.",
+          "docs": "The name of the object to be used in infinite scrolling.",
           "docsTags": [],
-          "default": "'15%'",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
+          "values": [],
           "optional": false,
           "required": false
         }
       ],
       "methods": [
         {
-          "name": "complete",
+          "name": "getPages",
+          "returns": {
+            "type": "Promise<object>",
+            "docs": "Answer from the server."
+          },
+          "signature": "getPages(page: number) => Promise<object>",
+          "parameters": [
+            {
+              "name": "page",
+              "type": "number",
+              "docs": "Page number."
+            }
+          ],
+          "docs": "Retrieves pages from the server.",
+          "docsTags": []
+        },
+        {
+          "name": "hideLoader",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "hideLoader() => void",
+          "parameters": [],
+          "docs": "Hides the loading indicator.",
+          "docsTags": []
+        },
+        {
+          "name": "showLoader",
+          "returns": {
+            "type": "void",
+            "docs": "No return value."
+          },
+          "signature": "showLoader() => void",
+          "parameters": [],
+          "docs": "Displays the loader element by adding the 'show' class to its class list. This method is useful for indicating the loading or processing status in the user interface.",
+          "docsTags": []
+        },
+        {
+          "name": "hasMorePages",
+          "returns": {
+            "type": "boolean",
+            "docs": "Whether there are other pages to load."
+          },
+          "signature": "hasMorePages(page: number) => boolean",
+          "parameters": [
+            {
+              "name": "page",
+              "type": "number",
+              "docs": "Page number."
+            }
+          ],
+          "docs": "Checks if there are other pages to load.",
+          "docsTags": []
+        },
+        {
+          "name": "loadPages",
           "returns": {
             "type": "Promise<void>",
             "docs": ""
           },
-          "complexType": {
-            "signature": "() => Promise<void>",
-            "parameters": [],
-            "references": {
-              "Promise": {
-                "location": "global",
-                "id": "global::Promise"
-              }
-            },
-            "return": "Promise<void>"
-          },
-          "signature": "complete() => Promise<void>",
-          "parameters": [],
-          "docs": "Call this method after a successful load of new content based on the ionInfinite event. Calling the complete() method hides the loading spinner and allows the next ionInfinite event to be fired.",
+          "signature": "loadPages(page: number) => Promise<void>",
+          "parameters": [
+            {
+              "name": "page",
+              "type": "number",
+              "docs": "Page number."
+            }
+          ],
+          "docs": "Loads pages.",
           "docsTags": []
-        }
-      ],
-      "events": [
+        },
         {
-          "event": "ionInfinite",
-          "detail": "void",
-          "bubbles": true,
-          "complexType": {
-            "original": "void",
-            "resolved": "void",
-            "references": {}
+          "name": "addItem",
+          "returns": {
+            "type": "void",
+            "docs": ""
           },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Called when the user scrolls close enough to the bottom (or top) edge of the content.",
+          "signature": "addItem(item: any, place?: string) => void",
+          "parameters": [
+            {
+              "name": "item",
+              "type": "any",
+              "docs": "Item to be added."
+            },
+            {
+              "name": "place",
+              "type": "string",
+              "docs": "The location where to add the item."
+            }
+          ],
+          "docs": "Adds an item to the infinite scroll.",
+          "docsTags": []
+        },
+        {
+          "name": "removeItem",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "removeItem(item: any) => void",
+          "parameters": [
+            {
+              "name": "item",
+              "type": "any",
+              "docs": "Item to be removed."
+            }
+          ],
+          "docs": "Removes the item from infinite scrolling.",
           "docsTags": []
         }
       ],
+      "events": [],
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-infinite-scroll-loading-color",
+          "name": "--wje-infinite-scroll-width",
           "annotation": "prop",
-          "docs": "Colour of loading spinner indicator"
+          "docs": "Adjusts the width of the infinite scroll container. This property determines how wide the infinite scroll area will be relative to its parent element. Accepts any valid CSS width value, such as percent (`%`), pixels (`px`), or display units (`vw`). The default value is `100%`, which means it takes up the entire width of its container."
         },
         {
-          "name": "--wj-infinite-scroll-loading-text-color",
+          "name": "--wje-infinite-scroll-height",
           "annotation": "prop",
-          "docs": "Text colour during loading"
+          "docs": "Defines the height of the infinite scroll container. This property determines how high the infinite scroll area should be. It accepts any valid CSS height value, such as pixels (`px`), percentages (`%`), or display units (`vh`). The default is `300px`, which provides a fixed height suitable for most use cases."
         }
       ],
-      "slots": [],
-      "parts": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Default slot for Infinite scroll."
+        },
+        {
+          "name": "ending",
+          "docs": "The content is placed behind the Infinite scroll."
+        },
+        {
+          "name": "loader",
+          "docs": "Displays the loading icon when scrolling."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native-infinite-scroll",
+          "docs": "Refers to the container of the content element."
+        }
+      ],
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
@@ -5220,32 +5390,32 @@
         {
           "name": "--wje-icon-picker-icon-size",
           "annotation": "prop",
-          "docs": "Veľkosť ikony v ikon pickeri"
+          "docs": "Icon size in icon picker"
         },
         {
           "name": "--wje-icon-picker-padding",
           "annotation": "prop",
-          "docs": "Odstup ikon v icon pickeri"
+          "docs": "Icon spacing in icon picker"
         },
         {
           "name": "--wje-icon-picker-border-width",
           "annotation": "prop",
-          "docs": "Šírka okraja icon pickera"
+          "docs": "Edge width of the icon picker"
         },
         {
           "name": "--wje-icon-picker-border-style",
           "annotation": "prop",
-          "docs": "Štýl okraja icon pickera"
+          "docs": "Edge style icon picker"
         },
         {
           "name": "--wje-icon-picker-border-color",
           "annotation": "prop",
-          "docs": "Farba okraja icon pickera"
+          "docs": "Edge colour icon picker"
         },
         {
           "name": "--wje-icon-picker-radius",
           "annotation": "prop",
-          "docs": "Zaoblenie rohov icon pickera"
+          "docs": "Rounding the corners of the icon picker"
         },
         {
           "name": "--wje-background",
@@ -5331,7 +5501,7 @@
           "mutable": false,
           "attr": "src",
           "reflectToAttr": false,
-          "docs": "URL adresa obrázka. Tento atribút je povinný pre `<img>` element.",
+          "docs": "URL of the image. This attribute is mandatory for the `<img>` element.",
           "docsTags": [],
           "values": [],
           "optional": true,
@@ -5587,17 +5757,17 @@
       "slots": [
         {
           "name": "before",
-          "docs": "Umiestnenie pre prvý (\"pred\") obrázok."
+          "docs": "Location for the first (\"before\") image."
         },
         {
           "name": "after",
-          "docs": "Umiestnenie pre druhý (\"po\") obrázok."
+          "docs": "Location for the second (\"after\") image."
         }
       ],
       "parts": [
         {
           "name": "before",
-          "docs": "Odkazuje na časť prvého obrázka."
+          "docs": "It refers to part of the first picture."
         },
         {
           "name": "after",
@@ -5618,19 +5788,10 @@
     },
     {
       "filePath": "src/components/input/input.tsx",
-      "encapsulation": "scoped",
+      "encapsulation": "shadow",
       "tag": "input",
-      "docs": "",
-      "docsTags": [
-        {
-          "name": "slot",
-          "text": "start - The content is placed to the left of the input in the LTR and to the right in the RTL in the form of a new section."
-        },
-        {
-          "name": "slot",
-          "text": "end - The content is displayed to the right of the input in the LTR and to the left in the RTL as a new section."
-        }
-      ],
+      "docs": "Komponent `wje-input` poskytuje spôsob, ako prijímať vstup od používateľa. Môže byť použitý samostatne alebo ako súčasť formulára.",
+      "docsTags": [],
       "usage": {},
       "props": [
         {
@@ -6045,167 +6206,203 @@
           ],
           "optional": true,
           "required": false
+        },
+        {
+          "name": "Option",
+          "type": "string",
+          "mutable": false,
+          "attr": "Option",
+          "reflectToAttr": false,
+          "docs": "Variant of the element appearance. Possible values: 'default', 'standard'.",
+          "docsTags": [],
+          "default": "'default'",
+          "optional": false,
+          "required": false
         }
       ],
-      "methods": [],
+      "methods": [
+        {
+          "name": "propagateValidation",
+          "returns": {
+            "type": "void",
+            "complexType": {
+              "original": "void"
+            }
+          },
+          "signature": "propagateValidation() => void",
+          "parameters": [],
+          "docs": "Propagates the validation status of the input and sets the 'invalid' attribute according to validity.",
+          "docsTags": []
+        },
+        {
+          "name": "validateInput",
+          "returns": {
+            "type": "void",
+            "complexType": {
+              "original": "void"
+            }
+          },
+          "signature": "validateInput() => void",
+          "parameters": [],
+          "docs": "Validates the input field value according to the defined rules and updates the validity status.",
+          "docsTags": []
+        }
+      ],
       "events": [
         {
-          "event": "clear",
-          "detail": "wj-input:clear",
+          "event": "wje-input:input",
+          "detail": "{ value: string }",
           "bubbles": true,
-          "complexType": {
-            "original": "wj-input:clear",
-            "resolved": "wj-input:clear",
-            "references": {
-              "wj-input:clear": {
-                "location": "global",
-                "id": "global::FocusEvent"
-              }
-            }
-          },
           "cancelable": true,
           "composed": true,
-          "docs": "The `wj-input:clear` event is fired when the `Clear` clear button is clicked.",
+          "docs": "Called whenever the input value changes.",
           "docsTags": []
         },
         {
-          "event": "input",
-          "detail": "wj-input:input",
+          "event": "wje-input:clear",
+          "detail": "void",
           "bubbles": true,
-          "complexType": {
-            "original": "wj-input:input",
-            "resolved": "wj-input:input",
-            "references": {
-              "wj-input:input": {
-                "location": "import",
-                "path": "./input-interface",
-                "id": "src/components/input/input-interface.ts::InputInputEventDetail"
-              }
-            }
-          },
           "cancelable": true,
           "composed": true,
-          "docs": "The `wj-input:input` event is fired whenever the user changes the value of the input. This usually happens every time a key is pressed while the user is typing.",
+          "docs": "Called after clearing the contents of the input field using the clear button.",
           "docsTags": []
         }
       ],
-      "listeners": [],
+      "listeners": [
+        {
+          "event": "focus",
+          "target": "host",
+          "capture": false,
+          "passive": false,
+          "docs": "Redirects the focus to the internal input element."
+        }
+      ],
       "styles": [
         {
-          "name": "--wj-input-background-color",
+          "name": "--wje-input-background-color",
           "annotation": "prop",
-          "docs": "Input background colour"
+          "docs": "Input field background colour"
         },
         {
-          "name": "--wj-input-border-color",
+          "name": "--wje-input-border-radius",
           "annotation": "prop",
-          "docs": "Input edge colour"
+          "docs": "Rounding the corners of the input field"
         },
         {
-          "name": "--wj-input-border-color-focus",
+          "name": "--wje-input-border-width",
           "annotation": "prop",
-          "docs": "Input edge colour at focuse"
+          "docs": "Width of the edge of the input field"
         },
         {
-          "name": "--wj-input-border-radius",
+          "name": "--wje-input-border-style",
           "annotation": "prop",
-          "docs": "Rounding the edges of the Input"
+          "docs": "Input field border style"
         },
         {
-          "name": "--wj-input-border-style",
+          "name": "--wje-input-border-color",
           "annotation": "prop",
-          "docs": "Input border style"
+          "docs": "Input field border colour"
         },
         {
-          "name": "--wj-input-border-width",
+          "name": "--wje-input-border-color-focus",
           "annotation": "prop",
-          "docs": "Input edge width"
+          "docs": "Colour of the input field edge when aiming"
         },
         {
-          "name": "--wj-input-color-invalid",
+          "name": "--wje-input-color",
           "annotation": "prop",
-          "docs": "Input error message colour"
+          "docs": "Input field text colour"
         },
         {
-          "name": "--wj-input-font-family",
+          "name": "--wje-input-color-invalid",
           "annotation": "prop",
-          "docs": "Font used in Input"
+          "docs": "Text colour for invalid value"
         },
         {
-          "name": "--wj-input-line-height",
+          "name": "--wje-input-font-family",
           "annotation": "prop",
-          "docs": "Input line heights"
+          "docs": "Input field font family"
         },
         {
-          "name": "--wj-input-margin-bottom",
+          "name": "--wje-input-line-height",
           "annotation": "prop",
-          "docs": "Lower Input Gap"
+          "docs": "Input field text line height"
         },
         {
-          "name": "--wj-input-slot-padding-inline",
+          "name": "--wje-input-margin-bottom",
           "annotation": "prop",
-          "docs": "Horizontal gap between Input slots"
-        },
-        {
-          "name": "--wj-padding-bottom",
-          "annotation": "prop",
-          "docs": "Lower Input Internal Offset"
-        },
-        {
-          "name": "--wj-padding-end",
-          "annotation": "prop",
-          "docs": "Right Input internal offset in LTR, and left in RTL"
-        },
-        {
-          "name": "--wj-padding-start",
-          "annotation": "prop",
-          "docs": "Left Input internal offset in LTR, and right in RTL"
-        },
-        {
-          "name": "--wj-padding-top",
-          "annotation": "prop",
-          "docs": "Upper Input internal offset"
+          "docs": "Bottom edge of the input field"
         }
       ],
       "slots": [
         {
-          "name": "end",
-          "docs": "The content is displayed to the right of the input in the LTR and to the left in the RTL as a new section."
+          "name": "start",
+          "docs": "The content that appears at the beginning of the input field."
         },
         {
-          "name": "start",
-          "docs": "The content is placed to the left of the input in the LTR and to the right in the RTL in the form of a new section."
+          "name": "end",
+          "docs": "The content that appears at the end of the input field."
+        },
+        {
+          "name": "error",
+          "docs": "Custom content to display the error message."
         }
       ],
       "parts": [
         {
+          "name": "clear",
+          "docs": "Button to clear the contents of the input field."
+        },
+        {
+          "name": "end",
+          "docs": "The content that appears at the end of the input field."
+        },
+        {
+          "name": "error",
+          "docs": "Element for displaying the error message."
+        },
+        {
           "name": "input",
-          "docs": "Refers to the `input` element inside the Input."
+          "docs": "Native HTML input element."
+        },
+        {
+          "name": "label",
+          "docs": "Element for input field label."
         },
         {
           "name": "native",
-          "docs": "Refers to the `div` element inside the Input."
+          "docs": "Container of the entire input field."
+        },
+        {
+          "name": "start",
+          "docs": "The content that appears at the beginning of the input field."
+        },
+        {
+          "name": "wrapper",
+          "docs": "Enclosing element for the input field and its accessories."
         }
       ],
       "dependents": [],
       "dependencies": [
-        "Icon"
+        "wje-button",
+        "wje-icon"
       ],
       "dependencyGraph": {
-        "ion-input": [
-          "Icon"
+        "wje-input": [
+          "wje-button",
+          "wje-icon"
         ]
       }
     },
     {
-      "filePath": "packages/input-file/input-file.tsx",
+      "filePath": "packages/input-file/input-file.js",
       "encapsulation": "shadow",
       "tag": "input-file",
       "docs": "Tento element predstavuje vstup pre súbory.",
       "docsTags": [
         {
-          "name": "summary",
-          "text": "Tento element predstavuje vstup pre súbory."
+          "name": "Summary",
+          "text": "This element represents the input for the files."
         },
         {
           "name": "status",
@@ -6225,11 +6422,11 @@
           "mutable": true,
           "attr": "value",
           "reflectToAttr": false,
-          "docs": "Nastaví hodnotu vstupu pre súbory.",
+          "docs": "Sets the input value for the files.",
           "docsTags": [
             {
-              "name": "summary",
-              "text": "Nastaví hodnotu vstupu pre súbory."
+              "name": "Summary",
+              "text": "Sets the input value for the files."
             }
           ],
           "default": "''",
@@ -6250,7 +6447,7 @@
           "bubbles": true,
           "cancelable": true,
           "composed": true,
-          "docs": "Udalosť vyvolaná pri zmene súborov.",
+          "docs": "An event triggered when files are changed.",
           "docsTags": []
         }
       ],
@@ -6260,21 +6457,27 @@
       "parts": [
         {
           "name": "native",
-          "docs": "Obaľovač natívneho vstupu pre súbory."
+          "docs": "Native input wrapper for files."
         },
         {
           "name": "input",
-          "docs": "Textový vstup."
+          "docs": "Text input."
         },
         {
           "name": "file-input",
-          "docs": "Element vstupu pre súbory."
+          "docs": "The input element for files."
         }
       ],
       "dependents": [],
-      "dependencies": ["wje-input", "wje-icon"],
+      "dependencies": [
+        "wje-input",
+        "wje-icon"
+      ],
       "dependencyGraph": {
-        "wje-input-file": ["wje-input", "wje-icon"]
+        "wje-input-file": [
+          "wje-input",
+          "wje-icon"
+        ]
       }
     },
     {
@@ -6284,8 +6487,8 @@
       "docs": "`Item` je vlastný webový komponent, ktorý predstavuje položku.",
       "docsTags": [
         {
-          "name": "summary",
-          "text": "Tento element predstavuje položku."
+          "name": "Summary",
+          "text": "This element represents an item."
         },
         {
           "name": "documentation",
@@ -6313,7 +6516,7 @@
           "mutable": false,
           "attr": "button",
           "reflectToAttr": false,
-          "docs": "Ak `true`, položka sa bude správať ako tlačidlo.",
+          "docs": "If `true`, the item will behave like a button.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -6335,7 +6538,7 @@
           "mutable": false,
           "attr": "disabled",
           "reflectToAttr": false,
-          "docs": "Ak `true`, s položkou nemožno interagovať.",
+          "docs": "If `true`, the item cannot be interacted with.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -6357,7 +6560,7 @@
           "mutable": false,
           "attr": "counter",
           "reflectToAttr": false,
-          "docs": "Ak `true`, zobrazí sa počítadlo v položke.",
+          "docs": "If `true`, the counter in the entry is displayed.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -6379,7 +6582,7 @@
           "mutable": false,
           "attr": "router-direction",
           "reflectToAttr": false,
-          "docs": "Určuje smer navigácie pre položku.",
+          "docs": "Specifies the navigation direction for the item.",
           "docsTags": [],
           "default": "'forward'",
           "values": [
@@ -6401,7 +6604,7 @@
           "mutable": false,
           "attr": "type",
           "reflectToAttr": false,
-          "docs": "Určuje typ položky.",
+          "docs": "Specifies the type of item.",
           "docsTags": [],
           "default": "'button'",
           "values": [
@@ -6428,7 +6631,7 @@
             "references": {},
             "return": "boolean"
           },
-          "docs": "Určuje, či je položka klikateľná.",
+          "docs": "Specifies whether the item is clickable.",
           "docsTags": []
         }
       ],
@@ -6438,125 +6641,129 @@
         {
           "name": "--wje-item-background",
           "annotation": "prop",
-          "docs": "Nastavuje farbu pozadia položky. Akceptuje akúkoľvek platnú CSS farebnú hodnotu."
+          "docs": "Sets the background colour of the item. Accepts any valid CSS color value."
         },
         {
           "name": "--wje-item-color",
           "annotation": "prop",
-          "docs": "Definuje farbu textu pre položku. Akceptuje akúkoľvek platnú CSS farebnú hodnotu."
+          "docs": "Defines the text color for the item. Accepts any valid CSS color value."
         },
         {
           "name": "--wje-item-padding-start",
           "annotation": "prop",
-          "docs": "Určuje ľavé odsadenie položky. Akceptuje akúkoľvek platnú CSS dĺžku."
+          "docs": "Specifies the left indentation of the item. Accepts any valid CSS length."
         },
         {
           "name": "--wje-item-padding-end",
           "annotation": "prop",
-          "docs": "Určuje pravé odsadenie položky. Akceptuje akúkoľvek platnú CSS dĺžku."
+          "docs": "Specifies the right offset of the item. Accepts any valid CSS length."
         },
         {
           "name": "--wje-item-padding-top",
           "annotation": "prop",
-          "docs": "Určuje horné odsadenie položky. Akceptuje akúkoľvek platnú CSS dĺžku."
+          "docs": "Specifies the top indent of the item. Accepts any valid CSS length."
         },
         {
           "name": "--wje-item-padding-bottom",
           "annotation": "prop",
-          "docs": "Určuje dolné odsadenie položky. Akceptuje akúkoľvek platnú CSS dĺžku."
+          "docs": "Specifies the lower indentation of the item. Accepts any valid CSS length."
         },
         {
           "name": "--wje-item-inner-padding-start",
           "annotation": "prop",
-          "docs": "Určuje ľavé vnútorné odsadenie položky. Akceptuje akúkoľvek platnú CSS dĺžku."
+          "docs": "Specifies the left internal offset of the item. Accepts any valid CSS length."
         },
         {
           "name": "--wje-item-inner-padding-end",
           "annotation": "prop",
-          "docs": "Určuje pravé vnútorné odsadenie položky. Akceptuje akúkoľvek platnú CSS dĺžku."
+          "docs": "Specifies the right internal offset of the item. Accepts any valid CSS length."
         },
         {
           "name": "--wje-item-inner-padding-top",
           "annotation": "prop",
-          "docs": "Určuje horné vnútorné odsadenie položky. Akceptuje akúkoľvek platnú CSS dĺžku."
+          "docs": "Specifies the upper internal indentation of the item. Accepts any valid CSS length."
         },
         {
           "name": "--wje-item-inner-padding-bottom",
           "annotation": "prop",
-          "docs": "Určuje dolné vnútorné odsadenie položky. Akceptuje akúkoľvek platnú CSS dĺžku."
+          "docs": "Specifies the lower internal indentation of the item. Accepts any valid CSS length."
         },
         {
           "name": "--wje-item-border-radius",
           "annotation": "prop",
-          "docs": "Definuje polomer hraníc, poskytujúci zaoblené rohy pre položku."
+          "docs": "Defines the border radius, providing rounded corners for the item."
         },
         {
           "name": "--wje-item-border-width",
           "annotation": "prop",
-          "docs": "Nastavuje šírku okraja položky. Akceptuje akúkoľvek platnú CSS dĺžku."
+          "docs": "Sets the border width of the item. Accepts any valid CSS length."
         },
         {
           "name": "--wje-item-border-style",
           "annotation": "prop",
-          "docs": "Určuje štýl okraja, ako napríklad `solid`, `dashed` alebo `dotted`."
+          "docs": "Specifies a border style, such as `solid`, `dashed`, or `dotted`."
         },
         {
           "name": "--wje-item-border-color",
           "annotation": "prop",
-          "docs": "Definuje farbu okraja položky. Akceptuje akúkoľvek platnú CSS farebnú hodnotu."
+          "docs": "Defines the border color of the item. Accepts any valid CSS color value."
         },
         {
           "name": "--wje-item-min-height",
           "annotation": "prop",
-          "docs": "Nastavuje minimálnu výšku položky pre konzistentné rozloženie."
+          "docs": "Sets the minimum height of the item for a consistent layout."
         },
         {
           "name": "--wje-item-transition",
           "annotation": "prop",
-          "docs": "Určuje prechodové efekty pre položku, napríklad pre stavy hover alebo focus."
+          "docs": "Specifies transition effects for the item, for example for hover or focus states."
         },
         {
           "name": "--wje-item-inner-box-shadow",
           "annotation": "prop",
-          "docs": "Pridáva efekt tieňa vo vnútri položky pre 3D vzhľad."
+          "docs": "Adds a shadow effect inside the item for a 3D look."
         }
       ],
       "slots": [
         {
           "name": "",
-          "docs": "Predvolené umiestnenie obsahu položky."
+          "docs": "The default location of the item content."
         },
         {
           "name": "start",
-          "docs": "Slot pre obsah, ktorý sa zobrazí na začiatku položky."
+          "docs": "The content slot that appears at the beginning of the item."
         },
         {
           "name": "end",
-          "docs": "Slot pre obsah, ktorý sa zobrazí na konci položky."
+          "docs": "The slot for the content that appears at the end of the item."
         },
         {
           "name": "error",
-          "docs": "Slot pre zobrazenie chybovej správy."
+          "docs": "Slot for displaying error message."
         },
         {
           "name": "helper",
-          "docs": "Slot pre zobrazenie pomocného textu."
+          "docs": "Slot for displaying auxiliary text."
         }
       ],
       "parts": [
         {
           "name": "native",
-          "docs": "Odkazuje na natívny element položky."
+          "docs": "Refers to the native element of the item."
         },
         {
           "name": "inner",
-          "docs": "Odkazuje na vnútornú časť položky."
+          "docs": "Refers to the inner part of the item."
         }
       ],
       "dependents": [],
-      "dependencies": ["WJElement"],
+      "dependencies": [
+        "WJElement"
+      ],
       "dependencyGraph": {
-        "wje-item": ["WJElement"]
+        "wje-item": [
+          "WJElement"
+        ]
       }
     },
     {
@@ -6566,8 +6773,8 @@
       "docs": "Komponent `kanban` predstavuje Kanban tabuľu s presunuteľnými stĺpcami a kartami.",
       "docsTags": [
         {
-          "name": "summary",
-          "text": "Tento element predstavuje Kanban tabuľu."
+          "name": "Summary",
+          "text": "This element represents the Kanban board."
         },
         {
           "name": "documentation",
@@ -6591,7 +6798,7 @@
           "mutable": true,
           "attr": "response",
           "reflectToAttr": false,
-          "docs": "Nastaví alebo získa dáta odpovede z API.",
+          "docs": "Sets or gets the response data from the API.",
           "docsTags": [],
           "default": "{}",
           "values": [],
@@ -6609,7 +6816,7 @@
           "mutable": true,
           "attr": "selected-items",
           "reflectToAttr": false,
-          "docs": "Nastaví alebo získa zoznam vybraných položiek.",
+          "docs": "Sets or gets a list of selected items.",
           "docsTags": [],
           "default": "[]",
           "values": [],
@@ -6627,7 +6834,7 @@
           "mutable": false,
           "attr": "url",
           "reflectToAttr": false,
-          "docs": "Obsahuje adresu URL alebo fragment adresy URL s dátami, ktoré sa majú získať a zobraziť.",
+          "docs": "Contains a URL or URL fragment with the data to be retrieved and displayed.",
           "docsTags": [],
           "values": [
             {
@@ -6649,11 +6856,11 @@
             {
               "name": "page",
               "type": "number",
-              "docs": "Číslo stránky"
+              "docs": "Page number"
             }
           ],
           "returns": "Promise<any>",
-          "docs": "Načíta stránky dát z API.",
+          "docs": "Retrieves pages of data from the API.",
           "docsTags": []
         },
         {
@@ -6663,16 +6870,16 @@
             {
               "name": "data",
               "type": "any[]",
-              "docs": "Pole dát"
+              "docs": "Data field"
             },
             {
               "name": "poolName",
               "type": "string",
-              "docs": "Názov skupiny"
+              "docs": "Group name"
             }
           ],
           "returns": "any",
-          "docs": "Organizuje dáta do skupín podľa stavu.",
+          "docs": "Organizes data into groups by state.",
           "docsTags": []
         },
         {
@@ -6682,16 +6889,16 @@
             {
               "name": "title",
               "type": "string",
-              "docs": "Nadpis skupiny"
+              "docs": "Group heading"
             },
             {
               "name": "countItems",
               "type": "number",
-              "docs": "Počet položiek"
+              "docs": "Number of items"
             }
           ],
           "returns": "Element",
-          "docs": "Vytvorí HTML pre skupinu.",
+          "docs": "Creates HTML for the group.",
           "docsTags": []
         },
         {
@@ -6701,11 +6908,11 @@
             {
               "name": "item",
               "type": "Object",
-              "docs": "Objekt položky"
+              "docs": "Object of the item"
             }
           ],
           "returns": "Element",
-          "docs": "Vytvorí HTML pre kartu.",
+          "docs": "Creates HTML for the tab.",
           "docsTags": []
         },
         {
@@ -6715,16 +6922,16 @@
             {
               "name": "isChecked",
               "type": "boolean",
-              "docs": "Je zaškrtnuté"
+              "docs": "It is ticked"
             },
             {
               "name": "card",
               "type": "HTMLElement",
-              "docs": "Element karty"
+              "docs": "Card element"
             }
           ],
           "returns": "void",
-          "docs": "Nastaví vybrané karty.",
+          "docs": "Sets the selected cards.",
           "docsTags": []
         }
       ],
@@ -6734,38 +6941,26 @@
       "slots": [
         {
           "name": "",
-          "docs": "Predvolený slot pre obsah Kanban elementu."
+          "docs": "The default content slot for the Kanban element."
         }
       ],
       "parts": [
         {
           "name": "native-infinite-scroll",
-          "docs": "Odkazuje na hlavný `div` kontajner Kanban elementu."
+          "docs": "Refers to the main `div` container of the Kanban element."
         }
       ],
       "dependents": [],
-      "dependencies": ["wje-checkbox", "wje-menu-item"],
+      "dependencies": [
+        "wje-checkbox",
+        "wje-menu-item"
+      ],
       "dependencyGraph": {
-        "wje-kanban": ["wje-checkbox", "wje-menu-item"]
+        "wje-kanban": [
+          "wje-checkbox",
+          "wje-menu-item"
+        ]
       }
-    },
-    {
-      "filePath": "src/components/layout/layout.tsx",
-      "encapsulation": "scoped",
-      "tag": "layout",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
     },
     {
       "filePath": "src/components/label/label.tsx",
@@ -6808,7 +7003,6 @@
       "dependencies": [],
       "dependencyGraph": {}
     },
-
     {
       "filePath": "src/components/aside/aside.tsx",
       "encapsulation": "scoped",
@@ -6845,119 +7039,37 @@
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-aside-width",
+          "name": "--wje-aside-width",
           "annotation": "prop",
           "docs": "Element width"
         },
         {
-          "name": "--wj-aside-top",
+          "name": "--wje-aside-top",
           "annotation": "prop",
           "docs": "Top offset of element when using fixed attribute"
         },
         {
-          "name": "--wj-aside-border-color",
+          "name": "--wje-aside-border-color",
           "annotation": "prop",
           "docs": "Colour of element edges"
         },
         {
-          "name": "--wj-aside-border-width",
+          "name": "--wje-aside-border-width",
           "annotation": "prop",
           "docs": "Width of the edges of the element"
         },
         {
-          "name": "--wj-aside-border-style",
+          "name": "--wje-aside-border-style",
           "annotation": "prop",
           "docs": "Element edge style"
         }
       ],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
-      "filePath": "src/components/main/main.tsx",
-      "encapsulation": "scoped",
-      "tag": "main",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
-      "filePath": "src/components/container/container.tsx",
-      "encapsulation": "scoped",
-      "tag": "container",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
+      "slots": [
         {
-          "name": "indent",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "indent",
-          "reflectToAttr": false,
-          "docs": "Ak `true`, element dostane na obrazovkách väčších ako 768px odsadenie zľava.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "vertical",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "vertical",
-          "reflectToAttr": false,
-          "docs": "Ak `true`, element dostane `flex-direction: \"column\"`",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
+          "name": "",
+          "docs": "The default slot for the element content."
         }
       ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [
-        {
-          "name": "--wje-container-indent",
-          "annotation": "prop",
-          "docs": "Odsadenie elementu zľava ( iba na obrazovkách väčších ako 768px)"
-        }
-      ],
-      "slots": [],
       "parts": [],
       "dependents": [],
       "dependencies": [],
@@ -6970,8 +7082,8 @@
       "docs": "Komponent `LevelIndicator` je vlastný webový komponent rozširujúci WJElement, ktorý vizuálne zobrazuje úroveň pomocou stĺpcov alebo pruhov. Umožňuje nastaviť počet pruhov, aktuálnu úroveň, farebné rozlíšenie a smerovanie.",
       "docsTags": [
         {
-          "name": "summary",
-          "text": "Tento element predstavuje indikátor úrovní."
+          "name": "Summary",
+          "text": "This element is a level indicator."
         },
         {
           "name": "documentation",
@@ -6995,7 +7107,7 @@
           "mutable": true,
           "attr": "level",
           "reflectToAttr": false,
-          "docs": "Nastavuje aktuálnu úroveň indikátora. Hodnota je obmedzená na rozsah od 0 do počtu pruhov.",
+          "docs": "Sets the current indicator level. The value is limited to a range from 0 to the number of bars.",
           "docsTags": [],
           "default": "1",
           "values": [],
@@ -7003,7 +7115,7 @@
           "required": false
         },
         {
-          "name": "bars",
+          "name": "swarms",
           "type": "number",
           "complexType": {
             "original": "number",
@@ -7011,9 +7123,9 @@
             "references": {}
           },
           "mutable": true,
-          "attr": "bars",
+          "attr": "swarms",
           "reflectToAttr": false,
-          "docs": "Určuje počet pruhov v indikátore. Minimálna hodnota je 1.",
+          "docs": "Specifies the number of bars in the indicator. The minimum value is 1.",
           "docsTags": [],
           "default": "3",
           "values": [],
@@ -7031,7 +7143,7 @@
           "mutable": true,
           "attr": "colorize",
           "reflectToAttr": false,
-          "docs": "Ak je nastavené na `true`, pruhy budú sfarbené podľa úrovne (nízka, stredná, vysoká).",
+          "docs": "If set to `true`, the bars will be colored according to the level (low, medium, high).",
           "docsTags": [],
           "default": "false",
           "values": [],
@@ -7049,7 +7161,7 @@
           "mutable": true,
           "attr": "reverse",
           "reflectToAttr": false,
-          "docs": "Ak je nastavené na `true`, poradie pruhov bude obrátené.",
+          "docs": "If set to `true`, the order of the bars will be reversed.",
           "docsTags": [],
           "default": "false",
           "values": [],
@@ -7066,15 +7178,15 @@
             {
               "name": "level",
               "type": "number",
-              "docs": "Prahová úroveň určujúca, koľko pruhov by malo byť aktívnych."
+              "docs": "A threshold level determining how many lanes should be active."
             },
             {
-              "name": "bars",
+              "name": "swarms",
               "type": "any[]",
-              "docs": "Pole prvkov pruhov, ktoré sa majú aktualizovať."
+              "docs": "Array of lane elements to be updated."
             }
           ],
-          "docs": "Aktualizuje triedu každého prvku pruhu na základe zadanej úrovne.",
+          "docs": "Updates the class of each lane element based on the specified level.",
           "docsTags": []
         },
         {
@@ -7085,15 +7197,15 @@
             {
               "name": "level",
               "type": "number",
-              "docs": "Aktuálna úroveň hodnoty použitá na výpočet pomeru."
+              "docs": "The current value level used to calculate the ratio."
             },
             {
-              "name": "bars",
+              "name": "swarms",
               "type": "number",
-              "docs": "Maximálna hodnota, ktorú môže úroveň dosiahnuť."
+              "docs": "The maximum value the level can reach."
             }
           ],
-          "docs": "Určuje indikátor farby na základe danej úrovne a počtu pruhov.",
+          "docs": "Determines the color indicator based on a given level and number of bars.",
           "docsTags": []
         }
       ],
@@ -7103,66 +7215,93 @@
         {
           "name": "--wje-level-indicator-color-low",
           "annotation": "prop",
-          "docs": "Farba pre nízku úroveň indikátora."
+          "docs": "Colour for low level indicator."
         },
         {
           "name": "--wje-level-indicator-color-medium",
           "annotation": "prop",
-          "docs": "Farba pre strednú úroveň indikátora."
+          "docs": "The colour for the middle level of the indicator."
         },
         {
           "name": "--wje-level-indicator-color-high",
           "annotation": "prop",
-          "docs": "Farba pre vysokú úroveň indikátora."
+          "docs": "Colour for high level indicator."
         },
         {
           "name": "--wje-level-indicator-color",
           "annotation": "prop",
-          "docs": "Základná farba pruhov indikátora."
+          "docs": "The basic colour of the indicator bars."
         },
         {
           "name": "--wje-level-indicator-color-active",
           "annotation": "prop",
-          "docs": "Farba aktívnych pruhov indikátora."
+          "docs": "The colour of the active indicator bars."
         },
         {
           "name": "--wje-level-indicator-height",
           "annotation": "prop",
-          "docs": "Výška pruhov indikátora."
+          "docs": "Height of indicator bars."
         },
         {
           "name": "--wje-level-indicator-width",
           "annotation": "prop",
-          "docs": "Šírka indikátora."
+          "docs": "Indicator width."
         },
         {
           "name": "--wje-level-indicator-border-radius",
           "annotation": "prop",
-          "docs": "Zaoblenie rohov pruhov indikátora."
+          "docs": "Rounding the corners of the indicator bars."
         },
         {
           "name": "--wje-level-indicator-opacity",
           "annotation": "prop",
-          "docs": "Priehľadnosť neaktívnych pruhov indikátora."
+          "docs": "Transparency of inactive indicator bars."
         }
       ],
       "slots": [
         {
           "name": "",
-          "docs": "Predvolený slot pre obsah indikátora úrovní."
+          "docs": "The default slot for the contents of the level indicator."
         }
       ],
       "parts": [
         {
           "name": "native",
-          "docs": "Odkazuje na hlavný `div` kontajner indikátora úrovne."
+          "docs": "Refers to the main `div` container of the level indicator."
         }
       ],
       "dependents": [],
-      "dependencies": ["WJElement"],
+      "dependencies": [
+        "WJElement"
+      ],
       "dependencyGraph": {
-        "wje-level-indicator": ["WJElement"]
+        "wje-level-indicator": [
+          "WJElement"
+        ]
       }
+    },
+    {
+      "filePath": "src/components/main/main.tsx",
+      "encapsulation": "scoped",
+      "tag": "main",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The default slot for the element content."
+        }
+      ],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
       "filePath": "src/components/list/list.tsx",
@@ -7180,7 +7319,7 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "inset",
           "reflectToAttr": false,
           "docs": "If `true`, the element gets an outer offset and rounding.",
@@ -7196,26 +7335,40 @@
         },
         {
           "name": "lines",
-          "type": "\"full\" | \"inset\" | \"none\" | undefined",
+          "type": "boolean",
           "complexType": {
-            "original": "'full' | 'inset' | 'none'",
-            "resolved": "\"full\" | \"inset\" | \"none\" | undefined",
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "lines",
+          "reflectToAttr": false,
+          "docs": "If `true`, the element displays horizontal lines between the sheet element items.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "lines",
+          "type": "\"none\" | undefined",
+          "complexType": {
+            "original": "'none'",
+            "resolved": "\"none\" | undefined",
             "references": {}
           },
           "mutable": false,
           "attr": "lines",
           "reflectToAttr": false,
-          "docs": "Specifies the style of separator lines between Item elements inside the List element",
+          "docs": "By setting to \"none\", hides the separator lines between elements inside the List element",
           "docsTags": [],
           "values": [
-            {
-              "value": "full",
-              "type": "string"
-            },
-            {
-              "value": "inset",
-              "type": "string"
-            },
             {
               "value": "none",
               "type": "string"
@@ -7233,195 +7386,215 @@
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-list-background",
+          "name": "--wje-list-background",
           "annotation": "prop",
           "docs": "Background colour of the element"
         },
         {
-          "name": "--wj-list-border-radius",
+          "name": "--wje-list-border-radius",
           "annotation": "prop",
           "docs": "Size of the element roundness"
         },
         {
-          "name": "--wj-list-inset-padding",
+          "name": "--wje-list-inset-padding",
           "annotation": "prop",
-          "docs": "Internal offset of the element"
+          "docs": "Internal indentation of the list when in nested mode (with the inset attribute). The default value is 1rem."
         }
       ],
       "slots": [
         {
-          "name": "end",
-          "docs": "The content is placed on the right in the LTR and on the left in the RTL."
-        },
-        {
-          "name": "start",
-          "docs": "The content is placed on the left in the LTR and on the right in the RTL."
+          "name": "",
+          "docs": "The default slot for the contents of the list."
         }
       ],
       "parts": [],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "WJElement"
+      ],
+      "dependencyGraph": {
+        "wje-list": [
+          "WJElement"
+        ]
+      }
     },
     {
       "filePath": "src/components/masonry/masonry.tsx",
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "tag": "masonry",
-      "docs": "",
-      "docsTags": [],
+      "docs": "Komponent `Masonry` je vlastný webový komponent, ktorý reprezentuje layout typu masonry (murivový layout). Rozširuje `WJElement` a poskytuje flexibilné usporiadanie položiek do stĺpcov rôznych výšok, pričom optimalizuje využitie priestoru.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "This element represents the masonry layout."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/masonry"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        }
+      ],
       "usage": {},
       "props": [
         {
-          "name": "inches",
-          "type": "string | undefined",
+          "name": "maxColWidth",
+          "type": "number",
           "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
+            "original": "number",
+            "resolved": "number",
             "references": {}
           },
-          "mutable": false,
-          "attr": "inches",
+          "mutable": true,
+          "attr": "max-col-width",
           "reflectToAttr": false,
-          "docs": "Defines the number of columns. For `auto`, selects the number of columns according to the width of the parent.",
+          "docs": "Maximum column width in pixels. The system automatically calculates the number of columns based on this value and the total width.",
           "docsTags": [],
-          "default": "auto",
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
+          "default": "500",
+          "values": [],
+          "optional": false,
           "required": false
         },
         {
-          "name": "debounce",
-          "type": "string | undefined",
+          "name": "inches",
+          "type": "number | string",
           "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
+            "original": "number | string",
+            "resolved": "number | string",
             "references": {}
           },
-          "mutable": false,
-          "attr": "debounce",
+          "mutable": true,
+          "attr": "inches",
           "reflectToAttr": false,
-          "docs": "Specifies the time in ms for the layout to reformat for each change in masonry layout size. This reflow is delayed to prevent the layout algorithm from being invoked too often in succession.",
+          "docs": "Number of columns. If the value is set to 'auto', the number of columns is automatically calculated based on the width of the space and the maximum column width.",
           "docsTags": [],
-          "default": "300",
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
+          "default": "'car'",
+          "values": [],
+          "optional": false,
           "required": false
         },
         {
           "name": "gap",
-          "type": "string | undefined",
+          "type": "number",
           "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
+            "original": "number",
+            "resolved": "number",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "gap",
           "reflectToAttr": false,
-          "docs": "Defines the width of the space between columns in pixels.",
+          "docs": "The space between columns and items in pixels.",
           "docsTags": [],
           "default": "24",
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
+          "values": [],
+          "optional": false,
           "required": false
         },
         {
-          "name": "max-col-width",
-          "type": "string | undefined",
+          "name": "debounce",
+          "type": "number",
           "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
+            "original": "number",
+            "resolved": "number",
             "references": {}
           },
-          "mutable": false,
-          "attr": "max-col-width",
+          "mutable": true,
+          "attr": "debounce",
           "reflectToAttr": false,
-          "docs": "Sets the maximum width of the columns in pixels.",
+          "docs": "The time in milliseconds that determines the delay in recalculating the layout after resizing the window.",
           "docsTags": [],
-          "default": "500",
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
+          "default": "300",
+          "values": [],
+          "optional": false,
           "required": false
         }
       ],
-      "methods": [],
+      "methods": [
+        {
+          "name": "scheduleLayout",
+          "returns": "void",
+          "signature": "(ms?: number) => void",
+          "parameters": [
+            {
+              "name": "ms",
+              "type": "number",
+              "docs": "Number of milliseconds for the delay before recalculating the layout."
+            }
+          ],
+          "docs": "Schedules a layout recalculation with a defined delay.",
+          "docsTags": []
+        },
+        {
+          "name": "layout",
+          "returns": "void",
+          "signature": "() => void",
+          "parameters": [],
+          "docs": "Recalculates the component layout and proves the items into columns based on their height.",
+          "docsTags": []
+        }
+      ],
       "events": [],
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-masonry-layout-col-count",
+          "name": "--wje-masonry-gap",
           "annotation": "prop",
-          "docs": "Defines the number of columns in the masonry layout."
+          "docs": "Gap between items in masonry layout. Accepts any valid CSS length value. The default value is 1rem."
         },
         {
-          "name": "--wj-masonry-layout-gap",
+          "name": "--wje-masonry-layout-col-count",
           "annotation": "prop",
-          "docs": "Specifies the gap between items in the masonry layout."
+          "docs": "Number of columns in masonry layout. The default value is 1."
+        },
+        {
+          "name": "--wje-masonry-layout-gap",
+          "annotation": "prop",
+          "docs": "Gap between columns and items in masonry layout. Accepts any valid CSS length value. The default value is 1rem."
         }
       ],
       "slots": [
         {
-          "name": "{index}",
-          "docs": "The contents are placed in a column, `index` represents the column order."
+          "name": "",
+          "docs": "Default slot for masonry layout items before deployment."
+        },
+        {
+          "name": "{i}",
+          "docs": "Dynamically created slots for individual columns, where 'i' is the column index (0, 1, 2, ...). During layout, items are automatically assigned to these slots."
         }
       ],
       "parts": [
         {
-          "name": "column",
-          "docs": "Refers to all columns inside the element."
-        },
-        {
-          "name": "column-index",
-          "docs": "Refers to a specific column element within an element, where `index` represents the column order. The order starts with zero."
-        },
-        {
           "name": "native",
-          "docs": "Refers to a `div` element inside an element."
+          "docs": "Root element of masonry layout."
+        },
+        {
+          "name": "column",
+          "docs": "Refers to the column in the masonry layout."
+        },
+        {
+          "name": "column-{i}",
+          "docs": "Refers to a specific column in the masonry layout, where 'i' is the column index (0, 1, 2, ...)."
         }
       ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "WJElement"
+      ],
+      "dependencyGraph": {
+        "wje-masonry": [
+          "WJElement"
+        ]
+      }
     },
     {
       "filePath": "src/components/menu/menu.tsx",
       "encapsulation": "shadow",
       "tag": "menu",
-      "docs": "",
-      "docsTags": [
-        {
-          "name": "part",
-          "text": "native - refers to the `div` element inside the element."
-        }
-      ],
+      "docs": "Element reprezentujúci menu.",
+      "docsTags": [],
       "usage": {},
       "props": [
         {
@@ -7432,10 +7605,10 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "active",
           "reflectToAttr": false,
-          "docs": "If `true`, activates the menu and makes it visible by adding `display: \"flex\"`.",
+          "docs": "If `true`, the menu is active and visible.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -7454,10 +7627,10 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "collapse",
           "reflectToAttr": false,
-          "docs": "If `true`, the menu is in the collapsed state.",
+          "docs": "If `true`, the menu will be displayed in the collapsed state.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -7469,25 +7642,30 @@
           "required": false
         },
         {
-          "name": "offset",
-          "type": "string | undefined",
+          "name": "Option",
+          "type": "string",
           "complexType": {
             "original": "string",
-            "resolved": "string | undefined",
+            "resolved": "string",
             "references": {}
           },
           "mutable": false,
-          "attr": "offset",
+          "attr": "Option",
           "reflectToAttr": false,
-          "docs": "Specifies the size of the submenu indentation.",
+          "docs": "Specifies a menu variant. Possible values are 'context', 'megamenu' and 'nav'.",
           "docsTags": [],
-          "default": "0",
           "values": [
             {
+              "value": "context",
               "type": "string"
             },
             {
-              "type": "undefined"
+              "value": "megamenu",
+              "type": "string"
+            },
+            {
+              "value": "No",
+              "type": "string"
             }
           ],
           "optional": true,
@@ -7499,52 +7677,87 @@
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-menu-background",
+          "name": "--wje-menu-background",
           "annotation": "prop",
-          "docs": "Background colour of the element"
+          "docs": "Defines the background color of the menu."
         },
         {
-          "name": "--wj-menu-border-color",
+          "name": "--wje-menu-border-width",
           "annotation": "prop",
-          "docs": "Colour of element edges"
+          "docs": "Specifies the width of the menu border."
         },
         {
-          "name": "--wj-menu-border-radius",
+          "name": "--wje-menu-border-style",
           "annotation": "prop",
-          "docs": "Rounding of the edges of the element"
+          "docs": "Specifies the menu border style."
         },
         {
-          "name": "--wj-menu-border-style",
+          "name": "--wje-menu-border-color",
           "annotation": "prop",
-          "docs": "Rounding style of the element"
+          "docs": "Defines the color of the menu border."
         },
         {
-          "name": "--wj-menu-border-width",
+          "name": "--wje-menu-border-radius",
           "annotation": "prop",
-          "docs": "Width of the edges of the element"
+          "docs": "Specifies the rounding of the menu corners."
         },
         {
-          "name": "--wj-menu-padding-bottom",
+          "name": "--wje-menu-padding-top",
           "annotation": "prop",
-          "docs": "Lower internal offset of the element"
+          "docs": "Specifies the top inner edge of the menu."
         },
         {
-          "name": "--wj-menu-padding-inline",
+          "name": "--wje-menu-padding-bottom",
           "annotation": "prop",
-          "docs": "Internal offset of the element left and right"
+          "docs": "Specifies the lower inner edge of the menu."
         },
         {
-          "name": "--wj-menu-padding-top",
+          "name": "--wje-menu-padding-inline",
           "annotation": "prop",
-          "docs": "Upper internal offset of the element"
+          "docs": "Adjusts the horizontal inner edges of the menu."
         },
         {
-          "name": "--wj-menu-from-index",
+          "name": "--wje-menu-margin-top",
           "annotation": "prop",
-          "docs": "Z-index of the element"
+          "docs": "Defines the top outer edge of the menu."
+        },
+        {
+          "name": "--wje-menu-margin-bottom",
+          "annotation": "prop",
+          "docs": "Defines the lower outer edge of the menu."
+        },
+        {
+          "name": "--wje-menu-margin-inline",
+          "annotation": "prop",
+          "docs": "Specifies the horizontal outer edges of the menu."
+        },
+        {
+          "name": "--wje-menu-collapse-width",
+          "annotation": "prop",
+          "docs": "Adjusts the width of the menu when collapsed."
+        },
+        {
+          "name": "--wje-menu-shadow",
+          "annotation": "prop",
+          "docs": "Defines the menu shadow."
+        },
+        {
+          "name": "--wje-menu-from-index",
+          "annotation": "prop",
+          "docs": "Specifies the z-index value of the layering menu."
+        },
+        {
+          "name": "--wje-menu-submenu-offset",
+          "annotation": "prop",
+          "docs": "Sets the submenu indentation for the context variant."
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The default slot for the content of the menu element."
+        }
+      ],
       "parts": [
         {
           "name": "native",
@@ -7559,19 +7772,26 @@
       "filePath": "src/components/menu-item/menu-item.tsx",
       "encapsulation": "shadow",
       "tag": "menu-item",
-      "docs": "",
-      "docsTags": [
-        {
-          "name": "part",
-          "text": "native - refers to the `div` element inside the element."
-        },
-        {
-          "name": "part",
-          "text": "submenu - refers to the `slot` element inside the element."
-        }
-      ],
+      "docs": "Element reprezentujúci položku menu.",
+      "docsTags": [],
       "usage": {},
       "props": [
+        {
+          "name": "customEvent",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "custom-event",
+          "reflectToAttr": false,
+          "docs": "The name of the custom event that is triggered when you click on the item.",
+          "docsTags": [],
+          "default": "null",
+          "values": []
+        },
         {
           "name": "checked",
           "type": "boolean",
@@ -7580,22 +7800,797 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "checked",
           "reflectToAttr": false,
-          "docs": "If `true`, a check icon appears in the MenuItem.",
+          "docs": "Indicates whether the menu item is marked.",
           "docsTags": [],
           "default": "false",
+          "values": []
+        },
+        {
+          "name": "manual",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "manual",
+          "reflectToAttr": false,
+          "docs": "If set, the submenu will not appear automatically on a hover event.",
+          "docsTags": [],
+          "default": "false",
+          "values": []
+        },
+        {
+          "name": "offset",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "offset",
+          "reflectToAttr": false,
+          "docs": "Offsetting the submenu against the parent item.",
+          "docsTags": [],
+          "default": "\"0\"",
+          "values": []
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "wje-menu-item:click",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "It is called when you click on a menu item.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "mousemove",
+          "target": "host",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "wje-popup:reposition",
+          "target": "host",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "mouseenter",
+          "target": "host",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "mouseleave",
+          "target": "host",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "focusout",
+          "target": "host",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "click",
+          "target": "host",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "click",
+          "target": "host",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [
+        {
+          "name": "--wje-menu-item-color",
+          "annotation": "prop",
+          "docs": "Sets the text color of the menu item. By default, it uses the value `var(--wje-color)`."
+        },
+        {
+          "name": "--wje-menu-item-background",
+          "annotation": "prop",
+          "docs": "Defines the background color of the menu item. The default is `transparent`."
+        },
+        {
+          "name": "--wje-menu-item-color-hover",
+          "annotation": "prop",
+          "docs": "Specifies the text color of the menu item in hover state. By default it uses `var(--wje-color-contrast-8)`."
+        },
+        {
+          "name": "--wje-menu-item-background-hover",
+          "annotation": "prop",
+          "docs": "Sets the background color of the menu item in hover state. By default it uses `var(--wje-border-color)`."
+        },
+        {
+          "name": "--wje-menu-item-color-focus",
+          "annotation": "prop",
+          "docs": "Defines the text color of the menu item in the focus state. By default it uses `var(--wje-color-contrast-8)`."
+        },
+        {
+          "name": "--wje-menu-item-background-focus",
+          "annotation": "prop",
+          "docs": "Specifies the background color of the menu item in the focus state. By default it uses `var(--wje-border-color)`."
+        },
+        {
+          "name": "--wje-menu-item-color-active",
+          "annotation": "prop",
+          "docs": "Sets the text color of the active menu item. By default it uses `var(--wje-color-contrast-8)`."
+        },
+        {
+          "name": "--wje-menu-item-background-active",
+          "annotation": "prop",
+          "docs": "Specifies the background color of the active menu item. By default it uses `var(--wje-border-color)`."
+        },
+        {
+          "name": "--wje-menu-item-padding-top",
+          "annotation": "prop",
+          "docs": "Specifies the top inner edge of the menu item. The default is `.5rem`."
+        },
+        {
+          "name": "--wje-menu-item-padding-bottom",
+          "annotation": "prop",
+          "docs": "Specifies the lower inner edge of the menu item. The default is `.5rem`."
+        },
+        {
+          "name": "--wje-menu-item-line-height",
+          "annotation": "prop",
+          "docs": "Sets the line height for the text in the menu item. The default is `1.8rem`."
+        },
+        {
+          "name": "--wje-menu-submenu-offset",
+          "annotation": "prop",
+          "docs": "Specifies the horizontal offset of the submenu relative to its parent element."
+        },
+        {
+          "name": "--wje-menu-item-icon-visibility",
+          "annotation": "prop",
+          "docs": "Controls the visibility of the icon in the menu item. Supports `visible`, `hidden` or `collapse` values."
+        },
+        {
+          "name": "--wje-menu-item-check-icon-display",
+          "annotation": "prop",
+          "docs": "Determines how to display the menu item check icon. The default is `flex`."
+        },
+        {
+          "name": "--wje-menu-item-check-icon-width",
+          "annotation": "prop",
+          "docs": "Sets the width of the menu item check icon. The default is `1.5rem`."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Default slot for the text content of the menu item."
+        },
+        {
+          "name": "start",
+          "docs": "A slot for content that appears at the beginning of a menu item (e.g. an icon)."
+        },
+        {
+          "name": "end",
+          "docs": "The content slot that appears at the end of the menu item."
+        },
+        {
+          "name": "submenu",
+          "docs": "A slot for a nested menu that appears as a submenu of this item."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "The basic element of a menu item."
+        },
+        {
+          "name": "check",
+          "docs": "The part for the item check icon."
+        },
+        {
+          "name": "submenu-icon",
+          "docs": "The part for the icon that indicates the presence of a submenu."
+        },
+        {
+          "name": "end",
+          "docs": "The section for the location of the end content of the menu item."
+        }
+      ],
+      "dependents": [],
+      "dependencies": [
+        "wje-element",
+        "wje-icon",
+        "wje-tooltip",
+        "wje-popup"
+      ],
+      "dependencyGraph": {
+        "wje-menu-item": [
+          "wje-element",
+          "wje-icon",
+          "wje-tooltip",
+          "wje-popup"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/menu-label/menu-label.tsx",
+      "encapsulation": "shadow",
+      "tag": "menu-label",
+      "docs": "Element reprezentujúci štítok menu.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "This element represents the menu label."
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/menu-label"
+        }
+      ],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [
+        {
+          "name": "--wje-menu-label-font-size",
+          "annotation": "prop",
+          "docs": "Sets the font size of the element. Accepts any valid CSS length unit (e.g. `rem`, `px`, `em`). The default value is .75rem."
+        },
+        {
+          "name": "--wje-menu-label-weight",
+          "annotation": "prop",
+          "docs": "Specifies the font thickness of the element. Accepts values such as `normal`, `bold` or numeric values (e.g. `400`, `600`). The default value is 600."
+        },
+        {
+          "name": "--wje-menu-label-color",
+          "annotation": "prop",
+          "docs": "Specifies the text color of the element. Accepts any valid CSS color value, including variable and named colors. The default value is var(--wje-color-contrast-6)."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The default slot for the element content."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Refers to the base `slot` element of the element."
+        }
+      ],
+      "dependents": [],
+      "dependencies": [
+        "wje-element"
+      ],
+      "dependencyGraph": {
+        "wje-menu-label": [
+          "wje-element"
+        ]
+      }
+    },
+    {
+      "filePath": "packages/orgchart/orgchart.tsx",
+      "encapsulation": "shadow",
+      "tag": "orgchart",
+      "docs": "Orgchart je vlastný webový komponent, ktorý rozširuje WJElement.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "Orgchart is a custom web component that extends WJElement."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/Orgchart"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        }
+      ],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [
+        {
+          "name": "--wje-orgchart-height-line",
+          "annotation": "prop",
+          "docs": "Určuje veľkosť čiary medzi položkami organizačnej štruktúry."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The default slot for the contents of the organizational chart."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Refers to the container of the organization chart."
+        }
+      ],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "packages/orgchart-item/orgchart-item.tsx",
+      "encapsulation": "shadow",
+      "tag": "orgchart-item",
+      "docs": "OrgchartItem je vlastný webový komponent, ktorý rozširuje WJElement.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "OrgchartItem is a custom web component that extends WJElement."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/OrgchartItem"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "Augment",
+          "text": "WJElement"
+        },
+        {
+          "name": "attribute",
+          "text": "{boolean} boss - Parent element in the organizational structure (default: false)."
+        },
+        {
+          "name": "slot",
+          "text": "- The default slot for the contents of the organizational structure item."
+        },
+        {
+          "name": "slot",
+          "text": "child - Slot for descendants of the organizational structure item."
+        },
+        {
+          "name": "csspart",
+          "text": "- Styles of the whole element."
+        },
+        {
+          "name": "csspart",
+          "text": "native - Native element styles."
+        },
+        {
+          "name": "csspart",
+          "text": "expander - Styles of drop-down element."
+        },
+        {
+          "name": "tag",
+          "text": "wje-orgchart-item"
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "boss",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "boss",
+          "reflectToAttr": false,
+          "docs": "Specifies whether the item is a parent element in the organizational structure.",
+          "docsTags": [],
+          "default": "false",
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "setupAttributes",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "setupAttributes() => void",
+          "parameters": [],
+          "docs": "Sets the attributes for the component.",
+          "docsTags": []
+        },
+        {
+          "name": "beforeDraw",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "beforeDraw() => void",
+          "parameters": [],
+          "docs": "It is executed before the component is rendered.",
+          "docsTags": []
+        },
+        {
+          "name": "draw",
+          "returns": {
+            "type": "DocumentFragment",
+            "docs": ""
+          },
+          "signature": "draw() => DocumentFragment",
+          "parameters": [],
+          "docs": "Renders a component for an organizational structure item.",
+          "docsTags": []
+        },
+        {
+          "name": "afterDraw",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "afterDraw() => void",
+          "parameters": [],
+          "docs": "It is executed after the component is rendered.",
+          "docsTags": []
+        },
+        {
+          "name": "toggleChildren",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "toggleChildren(e: Event) => void",
+          "parameters": [
+            {
+              "name": "e",
+              "type": "Event",
+              "docs": "Object of the event."
+            }
+          ],
+          "docs": "Toggles the display of the descendants of an organizational structure item.",
+          "docsTags": []
+        }
+      ],
+      "events": [],
+      "listeners": [
+        {
+          "event": "click",
+          "target": "expander",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [
+        {
+          "name": "--wje-orgchart-item-width",
+          "annotation": "prop",
+          "docs": "Width of organisational structure heading"
+        },
+        {
+          "name": "--wje-orgchart-item-height-line",
+          "annotation": "prop",
+          "docs": "Height of the line between the items of the organisational structure"
+        },
+        {
+          "name": "--wje-orgchart-item-border-radius",
+          "annotation": "prop",
+          "docs": "Rounding the corners of an organisation chart item"
+        },
+        {
+          "name": "--wje-orgchart-item-background",
+          "annotation": "prop",
+          "docs": "Background colour of the organisational structure item"
+        },
+        {
+          "name": "--wje-orgchart-item-boss-background",
+          "annotation": "prop",
+          "docs": "Background colour of the parent item of the organisational structure"
+        },
+        {
+          "name": "--wje-orgchart-item-boss-border",
+          "annotation": "prop",
+          "docs": "Boundary of the superordinate item of the organisational structure"
+        },
+        {
+          "name": "--wje-orgchart-item-hover-background",
+          "annotation": "prop",
+          "docs": "Background colour of the organisation chart item when mouse over"
+        },
+        {
+          "name": "--wje-orgchart-item-hover-border",
+          "annotation": "prop",
+          "docs": "Organizational structure item bounding box on mouseover"
+        },
+        {
+          "name": "--wje-orgchart-item-highlight-background",
+          "annotation": "prop",
+          "docs": "Background colour of the highlighted organisational structure item"
+        },
+        {
+          "name": "--wje-orgchart-item-highlight-border",
+          "annotation": "prop",
+          "docs": "Border of the highlighted item of the organisational structure"
+        },
+        {
+          "name": "--wje-orgchart-item-expander-size",
+          "annotation": "prop",
+          "docs": "Size of the button to expand the descendants"
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The default slot for the contents of the organizational structure item."
+        },
+        {
+          "name": "child",
+          "docs": "Slot for the descendants of an organizational structure item."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Refers to the item's main container."
+        },
+        {
+          "name": "card",
+          "docs": "Refers to the item tab."
+        },
+        {
+          "name": "expander",
+          "docs": "Refers to the button for expanding descendants."
+        }
+      ],
+      "dependents": [],
+      "dependencies": [
+        "WJElement",
+        "wje-card"
+      ],
+      "dependencyGraph": {
+        "wje-orgchart-item": [
+          "WJElement",
+          "wje-card"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/orgchart-group/orgchart-group.tsx",
+      "encapsulation": "shadow",
+      "tag": "orgchart-group",
+      "docs": "Orgchart-group je vlastný webový komponent, ktorý rozširuje WJElement.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "OrgchartGroup is a custom web component that extends WJElement."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/OrgchartItem"
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "mutable": false,
+          "attr": "title",
+          "reflectToAttr": false,
+          "docs": "Nadpis skupiny organizačnej štruktúry.",
+          "docsTags": [],
+          "default": "null",
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "wje-orgchart-group:click",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "It is called when you click on an organizational structure group.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "click",
+          "target": "card",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [
+        {
+          "name": "--wje-orgchart-group-height-line",
+          "annotation": "prop",
+          "docs": "Určuje veľkosť čiary medzi položkami v skupine organizačnej štruktúry."
+        },
+        {
+          "name": "--wje-border-color",
+          "annotation": "prop",
+          "docs": "Farba okraja skupiny organizačnej štruktúry."
+        },
+        {
+          "name": "--wje-orgchart-group-padding",
+          "annotation": "prop",
+          "docs": "Offsetting the content of the organizational structure group."
+        },
+        {
+          "name": "--wje-orgchart-group-width",
+          "annotation": "prop",
+          "docs": "The breadth of the group's organizational structure."
+        },
+        {
+          "name": "--wje-orgchart-group-border-radius",
+          "annotation": "prop",
+          "docs": "The radius of roundness of the corners of the group of the organizational structure."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre potomkov skupiny organizačnej štruktúry."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Refers to the main container of the group."
+        },
+        {
+          "name": "title",
+          "docs": "Refers to the group heading element."
+        },
+        {
+          "name": "items",
+          "docs": "Refers to the container of the group items."
+        }
+      ],
+      "dependents": [],
+      "dependencies": [
+        "WJElement",
+        "wje-card"
+      ],
+      "dependencyGraph": {
+        "wje-orgchart-group": [
+          "WJElement",
+          "wje-card"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/pagination/pagination.tsx",
+      "encapsulation": "shadow",
+      "tag": "pagination",
+      "docs": "Táto trieda predstavuje komponent Pagination pre navigáciu cez stránkovaný obsah a dynamické aktualizovanie navigačných prvkov na základe atribútov ako počet položiek, veľkosť stránky atď.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "This class represents a Pagination component for navigating through paginated content and dynamically updating navigation elements based on attributes such as number of items, page size, etc."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/pagination"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "dependency",
+          "text": "wje-icon, wje-button"
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "page",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "page",
+          "reflectToAttr": true,
+          "docs": "Current page number.",
+          "docsTags": [],
+          "default": "0",
           "values": [
             {
-              "type": "boolean"
+              "type": "number"
             }
           ],
           "optional": false,
           "required": false
         },
         {
-          "name": "collapse",
+          "name": "maxPages",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "max-pages",
+          "reflectToAttr": true,
+          "docs": "The maximum number of pages displayed in the navigation.",
+          "docsTags": [],
+          "default": "3",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "PageSize",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "page-size",
+          "reflectToAttr": true,
+          "docs": "Number of items per page.",
+          "docsTags": [],
+          "default": "3",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "totalItems",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "total-items",
+          "reflectToAttr": true,
+          "docs": "Total number of items.",
+          "docsTags": [],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "showFirstButton",
           "type": "boolean",
           "complexType": {
             "original": "boolean",
@@ -7603,9 +8598,9 @@
             "references": {}
           },
           "mutable": true,
-          "attr": "collapse",
-          "reflectToAttr": false,
-          "docs": "If `true`, the submenu is in the collapsed state.",
+          "attr": "show-first-button",
+          "reflectToAttr": true,
+          "docs": "If `true`, the button for the first page is displayed.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -7617,170 +8612,139 @@
           "required": false
         },
         {
-          "name": "placement",
-          "type": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left-bottom\" | \"left\" | \"left-top\" | \"right-bottom\" | \"right\" | \"right-top\" | \"top\" | \"top-end\" | \"top-start\" | string & Record<never, never> | undefined",
+          "name": "showLastButton",
+          "type": "boolean",
           "complexType": {
-            "original": "string",
-            "resolved": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left-bottom\" | \"left\" | \"left-top\" | \"right-bottom\" | \"right\" | \"right-top\" | \"top\" | \"top-end\" | \"top-start\" | string & Record<never, never> | undefined",
+            "original": "boolean",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": true,
-          "attr": "placement",
-          "reflectToAttr": false,
-          "docs": "Specifies the location of the submenu on the screen.",
+          "attr": "show-last-button",
+          "reflectToAttr": true,
+          "docs": "If `true`, the button for the last page is displayed.",
           "docsTags": [],
-          "default": "right-start",
+          "default": "false",
           "values": [
             {
-              "value": "bottom",
-              "type": "string"
-            },
-            {
-              "value": "bottom-end",
-              "type": "string"
-            },
-            {
-              "value": "bottom-start",
-              "type": "string"
-            },
-            {
-              "value": "left-bottom",
-              "type": "string"
-            },
-            {
-              "value": "left",
-              "type": "string"
-            },
-            {
-              "value": "left-top",
-              "type": "string"
-            },
-            {
-              "value": "right-bottom",
-              "type": "string"
-            },
-            {
-              "value": "right",
-              "type": "string"
-            },
-            {
-              "value": "right-top",
-              "type": "string"
-            },
-            {
-              "value": "top",
-              "type": "string"
-            },
-            {
-              "value": "top-end",
-              "type": "string"
-            },
-            {
-              "value": "top-start",
-              "type": "string"
-            },
-            {
-              "type": "String & Record<never, never>"
-            },
-            {
-              "type": "undefined"
+              "type": "boolean"
             }
           ],
           "optional": false,
-          "required": true
+          "required": false
         },
         {
-          "name": "Option",
-          "type": "string",
+          "name": "round",
+          "type": "boolean",
           "complexType": {
-            "original": "string",
-            "resolved": "string",
+            "original": "boolean",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": true,
-          "attr": "Option",
-          "reflectToAttr": false,
-          "docs": "Specifies the submenu variant. Possible values include `context`, which displays the submenu in a context window, or `nav`, which displays the submenu as a drop-down menu.",
+          "attr": "round",
+          "reflectToAttr": true,
+          "docs": "If `true`, the buttons will be rounded.",
           "docsTags": [],
-          "default": "context",
+          "default": "false",
           "values": [
             {
-              "value": "context",
-              "type": "string"
-            },
-            {
-              "value": "No",
-              "type": "string"
+              "type": "boolean"
             }
           ],
           "optional": false,
-          "required": true
+          "required": false
+        },
+        {
+          "name": "showInfo",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "show-info",
+          "reflectToAttr": true,
+          "docs": "If `true`, informational text about the displayed items is displayed.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
         }
       ],
-      "methods": [],
-      "events": [],
+      "methods": [
+        {
+          "name": "paginate",
+          "signature": "(totalItems: number, currentPage?: number, pageSize?: number, maxPages?: number) => object",
+          "parameters": [
+            {
+              "name": "totalItems",
+              "type": "number",
+              "docs": "Total number of items to paginate."
+            },
+            {
+              "name": "currentPage",
+              "type": "number",
+              "docs": "Current page number (default is 1)."
+            },
+            {
+              "name": "PageSize",
+              "type": "number",
+              "docs": "Number of items per page (default is 10)."
+            },
+            {
+              "name": "maxPages",
+              "type": "number",
+              "docs": "The maximum number of pages to display in the pagination control (default is 5)."
+            }
+          ],
+          "returns": "object",
+          "docs": "Pages items based on the total number of items, the current page, the page size, and the maximum number of pages to display.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "wje-pagination:page-change",
+          "detail": "{ page: number }",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Called when changing the page.",
+          "docsTags": []
+        }
+      ],
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-menu-background",
+          "name": "--wje-font-size-small",
           "annotation": "prop",
-          "docs": "Background colour of the element"
-        },
-        {
-          "name": "--wj-menu-border-color",
-          "annotation": "prop",
-          "docs": "Colour of element edges"
-        },
-        {
-          "name": "--wj-menu-border-radius",
-          "annotation": "prop",
-          "docs": "Rounding of the edges of the element"
-        },
-        {
-          "name": "--wj-menu-border-style",
-          "annotation": "prop",
-          "docs": "Rounding style of the element"
-        },
-        {
-          "name": "--wj-menu-border-width",
-          "annotation": "prop",
-          "docs": "Width of the edges of the element"
-        },
-        {
-          "name": "--wj-menu-padding-bottom",
-          "annotation": "prop",
-          "docs": "Lower internal offset of the element"
-        },
-        {
-          "name": "--wj-menu-padding-inline",
-          "annotation": "prop",
-          "docs": "Internal offset of the element left and right"
-        },
-        {
-          "name": "--wj-menu-padding-top",
-          "annotation": "prop",
-          "docs": "Upper internal offset of the element"
-        },
-        {
-          "name": "--wj-menu-from-index",
-          "annotation": "prop",
-          "docs": "Z-index of the element"
+          "docs": "Font size for informative text"
         }
       ],
       "slots": [],
       "parts": [
         {
           "name": "native",
-          "docs": "Refers to a `div` element inside an element."
-        },
-        {
-          "name": "submenu",
-          "docs": "refers to the `slot` element inside the element."
+          "docs": "Wrapper element for the pagination component."
         }
       ],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "wje-icon",
+        "wje-button"
+      ],
+      "dependencyGraph": {
+        "wje-pagination": [
+          "wje-icon",
+          "wje-button"
+        ]
+      }
     },
     {
       "filePath": "src/components/qr-code/qr-code.tsx",
@@ -7819,10 +8783,10 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger.\" | \"dark\" | \"primary\"  | \"success\" | \"light\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+          "type": "\"danger\" | \"dark\" |  \"primary\"  | \"success\" | \"light\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
           "complexType": {
             "original": "Color",
-            "resolved": "\"danger.\" | \"dark\" | \"primary\"  | \"success\" | \"light\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+            "resolved": "\"danger\" | \"dark\" |  \"primary\"  | \"success\" | \"light\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
             "references": {
               "Color": {
                 "location": "import",
@@ -7834,7 +8798,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "The color to use from your application's color palette. The default options are: `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"warning\"`, `\"light\"`, and `\"dark\"`.\nFor more information, go to: [theming](/theming/basics).",
+          "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, a `\"dark\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
           "docsTags": [],
           "values": [
             {
@@ -7882,7 +8846,7 @@
           "mutable": false,
           "attr": "linecap",
           "reflectToAttr": false,
-          "docs": "Defines a waveform indicator with a rounded end.",
+          "docs": "Definuje ukazovateľ priebehu so zaobleným koncom.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -7904,7 +8868,7 @@
           "mutable": false,
           "attr": "progress",
           "reflectToAttr": false,
-          "docs": "Specifies the value of the waveform in percentage.",
+          "docs": "Určuje hodnotu priebehu v percentách.",
           "docsTags": [],
           "default": "0",
           "values": [
@@ -7926,7 +8890,7 @@
           "mutable": false,
           "attr": "radius",
           "reflectToAttr": false,
-          "docs": "Specifies the value of the waveform in percentage.",
+          "docs": "Určuje hodnotu priebehu v percentách.",
           "docsTags": [],
           "default": "70",
           "values": [
@@ -7948,7 +8912,7 @@
           "mutable": false,
           "attr": "stroke",
           "reflectToAttr": false,
-          "docs": "Specifies the value of the waveform in percentage.",
+          "docs": "Určuje hodnotu priebehu v percentách.",
           "docsTags": [],
           "default": "12",
           "values": [
@@ -7970,7 +8934,7 @@
           "mutable": true,
           "attr": "type",
           "reflectToAttr": false,
-          "docs": "Add a type property with the value \"circle\" to display a progress bar with a circular design.",
+          "docs": "Pridaním vlastnosti type s hodnotou “circle” zobrazíte progress bar s okrúhlym dizajnom.",
           "docsTags": [],
           "default": "undefined",
           "values": [
@@ -7994,12 +8958,12 @@
         {
           "name": "--wj-progress-bar-color",
           "annotation": "prop",
-          "docs": "Defines the colour of the progress bar"
+          "docs": "Definuje farbu ukazovateľa priebehu"
         },
         {
           "name": "--wj-progress-bar-text-size",
           "annotation": "prop",
-          "docs": "Defines the size of the text"
+          "docs": "Definuje veľkosť textu"
         }
       ],
       "slots": [
@@ -8036,10 +9000,10 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger.\" | \"neutral\" | \"primary\" | \"success\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+          "type": "\"danger\" | \"neutral\" |  \"primary\" | \"success\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
           "complexType": {
             "original": "Color",
-            "resolved": "\"danger.\" | \"neutral\" | \"primary\" | \"success\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
+            "resolved": "\"danger\" | \"neutral\" |  \"primary\" | \"success\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
             "references": {
               "Color": {
                 "location": "import",
@@ -8051,7 +9015,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "The color to use from your application's color palette. The default options are `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"warning\"` and `\"neutral\"`.\nFor more information, go to: [theming](/theming/basics).",
+          "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"` a `\"neutral\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
           "docsTags": [],
           "values": [
             {
@@ -8099,7 +9063,7 @@
           "mutable": false,
           "attr": "checked",
           "reflectToAttr": false,
-          "docs": "If `true`, the option is selected.",
+          "docs": "Ak `true`, možnosť je zvolená.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -8252,7 +9216,7 @@
           "mutable": false,
           "attr": "inline",
           "reflectToAttr": false,
-          "docs": "If `true`, the elements are arranged in a horizontal layout.",
+          "docs": "Ak `true`, elementy sa usporiadajú v horizontálnom rozložení.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -8623,7 +9587,7 @@
           "mutable": false,
           "attr": "active-class",
           "reflectToAttr": false,
-          "docs": "Sets the `active` class of the element when it is active.",
+          "docs": "Nastaví elementu triedu `active` pri aktívnom stave.",
           "docsTags": [],
           "values": [
             {
@@ -8740,17 +9704,17 @@
         {
           "name": "--wj-select-background-color",
           "annotation": "prop",
-          "docs": "Background colour of the element"
+          "docs": "Farba pozadia elementu"
         },
         {
           "name": "--wj-select-border-color",
           "annotation": "prop",
-          "docs": "Colour of element edges"
+          "docs": "Farba okrajov elementu"
         },
         {
           "name": "--wj-select-border-radius",
           "annotation": "prop",
-          "docs": "Rounding of the edges of the element"
+          "docs": "Zaoblenie okrajov elementu"
         },
         {
           "name": "--wj-select-border-style",
@@ -8792,7 +9756,7 @@
       "parts": [
         {
           "name": "native",
-          "docs": "Refers to `div` inside an element."
+          "docs": "Odkazuje na `div` vo vnútri elementu."
         },
         {
           "name": "arrow",
@@ -8837,7 +9801,7 @@
           "mutable": false,
           "attr": "value",
           "reflectToAttr": false,
-          "docs": "Text value of the element",
+          "docs": "Textová hodnota elementu",
           "docsTags": [],
           "values": [
             {
@@ -8911,7 +9875,7 @@
           "mutable": false,
           "attr": "item-text",
           "reflectToAttr": false,
-          "docs": "Text value of the element",
+          "docs": "Textová hodnota elementu",
           "docsTags": [],
           "values": [
             {
@@ -8932,7 +9896,7 @@
           "mutable": false,
           "attr": "item-value",
           "reflectToAttr": false,
-          "docs": "Text value of the element",
+          "docs": "Textová hodnota elementu",
           "docsTags": [],
           "values": [
             {
@@ -8953,7 +9917,7 @@
           "mutable": false,
           "attr": "url",
           "reflectToAttr": false,
-          "docs": "Contains a URL or URL fragment with the data to be retrieved.",
+          "docs": "Obsahuje adresu URL alebo fragment adresy URL s dátami, ktoré sa majú získať.",
           "docsTags": [],
           "values": [
             {
@@ -8996,7 +9960,7 @@
           "mutable": false,
           "attr": "max",
           "reflectToAttr": false,
-          "docs": "Defines the maximum value of the slider.",
+          "docs": "Definuje maximálnu hodnotu posuvníka.",
           "docsTags": [],
           "values": [
             {
@@ -9020,7 +9984,7 @@
           "mutable": false,
           "attr": "min",
           "reflectToAttr": false,
-          "docs": "Defines the minimum value of the slider.",
+          "docs": "Definuje minimálnu hodnotu posuvníka.",
           "docsTags": [],
           "values": [
             {
@@ -9044,7 +10008,7 @@
           "mutable": false,
           "attr": "step",
           "reflectToAttr": false,
-          "docs": "Defines the interval between each slider value.",
+          "docs": "Definuje interval medzi jednotlivými hodnotami posuvníka.",
           "docsTags": [],
           "values": [
             {
@@ -9068,7 +10032,7 @@
           "mutable": false,
           "attr": "step",
           "reflectToAttr": false,
-          "docs": "Defines the current value of the slider.",
+          "docs": "Definuje aktuálnu hodnotu posuvníka.",
           "docsTags": [],
           "values": [
             {
@@ -9132,27 +10096,27 @@
         {
           "name": "--wj-slider-color",
           "annotation": "prop",
-          "docs": "Defines the colour of the slider."
+          "docs": "Definuje farbu slideru."
         },
         {
           "name": "--wj-slider-thumb-color",
           "annotation": "prop",
-          "docs": "Defines the color of the slider handle."
+          "docs": "Definuje farbu rukoväťe slideru."
         },
         {
           "name": "--wj-slider-thumb-shadow",
           "annotation": "prop",
-          "docs": "Defines the box-shadow handles of the slider."
+          "docs": "Definuje box-shadow rukoväťe slideru."
         },
         {
           "name": "--wj-slider-thumb-shadow-active",
           "annotation": "prop",
-          "docs": "Defines the box-shadow of the slider handle in the active state."
+          "docs": "Definuje box-shadow rukoväťe slideru v aktívnom stave."
         },
         {
           "name": "--wj-slider-track-color",
           "annotation": "prop",
-          "docs": "Defines the color of the slider's sliding path."
+          "docs": "Definuje farbu posuvnej dráhy slideru."
         },
         {
           "name": "--wj-slider-track-height",
@@ -9163,21 +10127,21 @@
       "slots": [
         {
           "name": "end",
-          "docs": "The content is placed on the right in the LTR and on the left in the RTL."
+          "docs": "Obsah sa umiestni vpravo v LTR a vľavo v RTL."
         },
         {
           "name": "label",
-          "docs": "The content is placed to the right of the slider path in LTR and to the left in RTL."
+          "docs": "Obsah sa umiestni vpravo od dráhy slideru v LTR a vľavo v RTL."
         },
         {
           "name": "start",
-          "docs": "The content is placed on the left in the LTR and on the right in the RTL."
+          "docs": "Obsah je umiestnený vľavo v LTR a vpravo v RTL."
         }
       ],
       "parts": [
         {
           "name": "slider",
-          "docs": "Refers to `input` inside the element."
+          "docs": "Odkazuje na `input` vo vnútri elementu."
         }
       ],
       "dependents": [],
@@ -9203,7 +10167,7 @@
           "mutable": false,
           "attr": "disabled",
           "reflectToAttr": false,
-          "docs": "If `true`, the option to scroll the separator is deactivated",
+          "docs": "Ak `true`, deaktivuje sa možnosť posúvania oddeľovača",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -9225,7 +10189,7 @@
           "mutable": false,
           "attr": "horizontal",
           "reflectToAttr": false,
-          "docs": "If `true`, the orientation of the separator changes to horizontal.",
+          "docs": "Ak `true`, zmení sa orientácia oddeľovača na horizontálnu.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -9382,7 +10346,7 @@
           "mutable": false,
           "attr": "active",
           "reflectToAttr": false,
-          "docs": "If `true`, the tab will be open.",
+          "docs": "Ak `true`, tab bude otvorený.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -9483,7 +10447,7 @@
           "mutable": false,
           "attr": "panel",
           "reflectToAttr": false,
-          "docs": "It serves as an identifier for the `\"name\"` attribute of the `Tab` element.",
+          "docs": "Slúži ako identifikátor pre atribút `\"name\"` elementu `Tab`.",
           "docsTags": [],
           "default": "undefined",
           "values": [
@@ -9518,13 +10482,13 @@
       "docsTags": [
         {
           "name": "slot",
-          "text": "nav - The content is placed in the `nav` element."
+          "text": "nav - Obsah sa umiestni do `nav` elementu."
         }
       ],
       "usage": {},
       "props": [
         {
-          "name": "Option",
+          "name": "variant",
           "type": "string",
           "complexType": {
             "original": "string",
@@ -9532,9 +10496,9 @@
             "references": {}
           },
           "mutable": true,
-          "attr": "Option",
+          "attr": "variant",
           "reflectToAttr": false,
-          "docs": "Defines a variant of the TabGroup layout. Possible values include `start`, `end` and `bottom`.",
+          "docs": "Definuje variantu rozloženia TabGroup. Medzi možné hodnoty patrí `start`, `end` a `bottom`.",
           "docsTags": [],
           "default": "undefined",
           "values": [
@@ -9562,47 +10526,47 @@
         {
           "name": "--wj-font-size",
           "annotation": "prop",
-          "docs": "Specifies the font size."
+          "docs": "Určuje veľkosť písma."
         },
         {
           "name": "--wj-tab-color-active",
           "annotation": "prop",
-          "docs": "Specifies the background color of the active tab element."
+          "docs": "Určuje farbu pozadia aktívneho tab elementu."
         },
         {
           "name": "--wj-tab-color-hover",
           "annotation": "prop",
-          "docs": "Determines the background color of the tab element when the mouse is pointed to it."
+          "docs": "Určuje farbu pozadia tab elementu po ukázaní myšou."
         },
         {
           "name": "--wj-tab-font-weight",
           "annotation": "prop",
-          "docs": "Sets the font weight."
+          "docs": "Nastavuje váhu písma."
         },
         {
           "name": "--wj-tab-letter-spacing",
           "annotation": "prop",
-          "docs": "Sets the distance between letters."
+          "docs": "Nastavuje vzdialenosť medzi písmenami."
         },
         {
           "name": "--wj-tab-padding-bottom",
           "annotation": "prop",
-          "docs": "Specifies the bottom tab offset."
+          "docs": "Určuje spodné odsadenie tabu."
         },
         {
           "name": "--wj-tab-padding-inline",
           "annotation": "prop",
-          "docs": "Specifies the horizontal offset of the tab."
+          "docs": "Určuje horizontálne odsadenie tabu."
         },
         {
           "name": "--wj-tab-padding-top",
           "annotation": "prop",
-          "docs": "Specifies the top tab offset."
+          "docs": "Určuje horné odsadenie tabu."
         },
         {
           "name": "--wj-tab-text-transfrom",
           "annotation": "prop",
-          "docs": "Sets the transformation of the text in the tab."
+          "docs": "Nastavuje transformáciu textu v tabe."
         }
       ],
       "slots": [
@@ -9652,7 +10616,7 @@
           "mutable": false,
           "attr": "counter",
           "reflectToAttr": false,
-          "docs": "If `true`, adds a counter below the element showing the number of characters inserted and also the maximum number allowed.",
+          "docs": "Ak `true`, pridá pod element počítadlo zobrazujúce počet vložených znakov a tiež maximálny povolený počet.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -9935,17 +10899,17 @@
         {
           "name": "--wj-textarea-background-color",
           "annotation": "prop",
-          "docs": "Sets the background color of the element."
+          "docs": "Nastaví farbu pozadia elementu."
         },
         {
           "name": "--wj-textarea-border-color",
           "annotation": "prop",
-          "docs": "Sets the color of the edges of the element."
+          "docs": "Nastaví farbu okrajov elementu."
         },
         {
           "name": "--wj-textarea-border-color-focus",
           "annotation": "prop",
-          "docs": "Sets the color of the edges when you take a photo."
+          "docs": "Nastaví farbu okrajov pri focuse."
         },
         {
           "name": "--wj-textarea-border-radius",
@@ -10023,7 +10987,7 @@
           "mutable": true,
           "attr": "circle",
           "reflectToAttr": false,
-          "docs": "Sets the element to round by adding css `\"border-radius: 50%\"`",
+          "docs": "Nastaví na element zaoblenie pridaním css `\"border-radius: 50%\"`",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -10042,7 +11006,7 @@
         {
           "name": "--wj-border-radius",
           "annotation": "prop",
-          "docs": "Defines the amount of rounding of the edges of the element."
+          "docs": "Definuje veľkosť zaoblenia okrajov elementu."
         },
         {
           "name": "--wj-thumbnail-height",
@@ -10071,10 +11035,10 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+          "type": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
           "complexType": {
             "original": "Color",
-            "resolved": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+            "resolved": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
             "references": {
               "Color": {
                 "location": "import",
@@ -10172,7 +11136,7 @@
         {
           "name": "--color",
           "annotation": "prop",
-          "docs": "Text colour of the title"
+          "docs": "Text color of the title"
         }
       ],
       "slots": [],
@@ -10274,10 +11238,10 @@
         },
         {
           "name": "color",
-          "type": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+          "type": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
           "complexType": {
             "original": "Color",
-            "resolved": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+            "resolved": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
             "references": {
               "Color": {
                 "location": "import",
@@ -11176,7 +12140,7 @@
           "docs": "Any button element that is displayed inside of the toast."
         },
         {
-          "name": "cancel button",
+          "name": "button cancel",
           "docs": "Any button element with role \"cancel\" that is displayed inside of the toast."
         },
         {
@@ -11227,7 +12191,7 @@
           "mutable": true,
           "attr": "checked",
           "reflectToAttr": false,
-          "docs": "If `true`, toggle is activated.",
+          "docs": "Ak `true`, toggle je aktivovaný.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -11255,7 +12219,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": false,
-          "docs": "The color to use from your application's color palette. The default options are `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, and `\"dark\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
+          "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, a `\"dark\"`.\nPre viac informácií o farbách navštívte [Základy prispôsobenia](/theming/basics).",
           "docsTags": [],
           "values": [
             {
@@ -11303,7 +12267,7 @@
           "mutable": false,
           "attr": "disabled",
           "reflectToAttr": false,
-          "docs": "If `true`, the toggle element cannot be interacted with.",
+          "docs": "Ak `true`, s toggle elementom nie je možné interagovať.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -11325,7 +12289,7 @@
           "mutable": false,
           "attr": "name",
           "reflectToAttr": false,
-          "docs": "Defines a `name` attribute that is important, for example, when used in forms.",
+          "docs": "Definuje `name` atribút, ktorý je dôležitý napríklad pri použití vo formulároch.",
           "docsTags": [],
           "default": "this.inputId",
           "values": [
@@ -11422,7 +12386,7 @@
       "parts": [
         {
           "name": "input",
-          "docs": "Refers to an `input` element of type checkbox"
+          "docs": "Odkazuje na `input` element typu checkbox"
         },
         {
           "name": "toggle",
@@ -11583,12 +12547,12 @@
         {
           "name": "--arrow-size",
           "annotation": "prop",
-          "docs": "Specifies the size of the tooltip arrow."
+          "docs": "Určuje veľkosť šípky tooltipu."
         },
         {
           "name": "--arrow-color",
           "annotation": "prop",
-          "docs": "Specifies the color of the tooltip arrow."
+          "docs": "Určuje farbu šípky tooltipu."
         }
       ],
       "slots": [],

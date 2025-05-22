@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-**Elements** allows you to easily build your page layout using 4 basic elements: [Container](../container), [Header](../header), [Aside](../aside) and [Footer](../footer). For more complex layouts, the [Grid](../grid) system can also be used.
+**WebJET Elements** umožňuje si jednoducho zostaviť rozvrhnutie stránok pomocou 5 základných elementov: [Container](../container), [Header](../header), [Main](../main), [Aside](../aside) a [Footer](../footer). V prípade komplexnejších rozvrhnutí WebJET Elements ponúka tiež systém [Grid](../grid).
 
 ## Examples of use
 

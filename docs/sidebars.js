@@ -253,7 +253,19 @@ module.exports = {
       type: 'category',
       label: 'Menu',
       collapsed: false,
-      items: ['api/menu', 'api/menu-item'],
+      items: ['api/menu', 'api/menu-item', 'api/menu-label'],
+    },
+    {
+      type: 'category',
+      label: 'OrgChart',
+      collapsed: false,
+      items: ['api/orgchart', 'api/orgchart-item', 'api/orgchart-group'],
+    },
+    {
+      type: 'category',
+      label: 'Pagination',
+      collapsed: false,
+      items: ['api/pagination'],
     },
     {
       type: 'category',

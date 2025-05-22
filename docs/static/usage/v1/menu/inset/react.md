@@ -4,7 +4,7 @@ import { Menu, MenuItem, Divider, Icon } from '@elements/react';
 function Example() {
   return (
     <>
-      <wje-menu active style="max-width: 200px; --wje-menu-padding-inline: 1rem;">
+      <wje-menu active>
         <wje-menu-item>
           Menu item
           <wje-icon slot="start" name="home"></wje-icon>

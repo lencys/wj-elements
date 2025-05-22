@@ -22,7 +22,7 @@ import styles from './styles/styles.css?inline';
  * @csspart native - The native part of the masonry layout.
  * @csspart column - The individual columns in the masonry layout.
  * @slot - The default slot for the masonry layout.
- * @cssproperty [--wje-masonry-gap=1rem] - The gap between items in the masonry layout. Accepts any valid CSS length. Default is 1rem.
+ * @cssproperty [--wje-masonry-layout-gap=1rem] - The gap between items in the masonry layout. Accepts any valid CSS length. Default is 1rem.
  * @cssproperty [--wje-masonry-layout-col-count=1] - The count column in the masonry layout. Accepts any valid CSS length.
  * @tag wje-masonry
  */
