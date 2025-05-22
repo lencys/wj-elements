@@ -22,12 +22,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 <EncapsulationPill type="shadow" />
 
 MenuItem je podriadený elementu [Menu.](../menu) a predstavuje navigačnú položku v jeho vnútri. Môže zobrazovať podmenu s ďalšími navigačnými položkami a tiež umožňuje zobrazenie ikon.
-
-## Základné použitie
-
-:::note
 Pre príklady použitia MenuItem prejdite na stránku dokumentácie elementu [**Menu**](../menu).
-:::
 
 ## Atribúty a Vlastnosti
 

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Code</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.172/dist/wje-master.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.172/dist/light.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.172/dist/dark.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.172/dist/styles.css" />
+  </head>
+
+  <body>
+    <div class="container">
+        <div class="content" style="width: auto;" id="json"></div>
+    </div>
+  </body>
+</html>
+
+<script>
+  const orgData = {
+    "company": {
+      "id": "9bd82468-59b5-4bee-9b67-8e546608ed4f", "name": "Acme Inc.", "companies": [], "departments": [{
+        "id": "66c482eb-179c-4d46-8ea2-cbc2200add8d",
+        "name": "Executive Management",
+        "departments": [{
+          "id": "2f89186c-0a24-4f7f-b904-fb5a0a033bea",
+          "name": "Marketing Department",
+          "departments": [],
+          "users": [{
+            "id": "15e9cacc-59fe-4562-9f33-512b3711bc6c",
+            "fullName": "Dr. Robert Mitchell",
+            "supervisor": true,
+            "position": null,
+            "type": "USER"
+          }, {
+            "id": "d65677a9-3acd-46f4-8ab4-c733846761cb",
+            "fullName": "Ms. Emily Johnson",
+            "supervisor": false,
+            "position": null,
+            "type": "USER"
+          }, {
+            "id": "b046ab0e-16e4-45e3-a44e-36a4416a1b03",
+            "fullName": "Mr. Thomas Williams",
+            "supervisor": false,
+            "position": null,
+            "type": "USER"
+          }],
+          "type": "DEPARTMENT"
+        }, {
+          "id": "9af85f54-6526-474d-94d6-6321e9025dd9",
+          "name": "Finance Department",
+          "departments": [],
+          "users": [{
+            "id": "aed5a3be-2831-4300-a486-c3fdf8945e76",
+            "fullName": "Mr. Andrew Thompson",
+            "supervisor": false,
+            "position": null,
+            "type": "USER"
+          }, {
+            "id": "4d4bcdd7-c8ea-45a3-bbba-0bfa355c9eca",
+            "fullName": "Ms. Sarah Davis",
+            "supervisor": false,
+            "position": null,
+            "type": "USER"
+          }, {
+            "id": "627b89b1-4e83-49df-a2b6-b18e372f4046",
+            "fullName": "Dr. Jennifer Wilson",
+            "supervisor": true,
+            "position": null,
+            "type": "USER"
+          }],
+          "type": "DEPARTMENT"
+        }, {
+          "id": "d2e6538d-edcf-43a0-84a1-12a4d89df0d9",
+          "name": "Technology Department",
+          "departments": [{
+            "id": "de3a6eeb-4887-47be-a07b-8a0cbf8222c5",
+            "name": "Research & Development",
+            "departments": [],
+            "users": [{
+              "id": "19cfa2e3-e38e-49e3-a03e-55effd29e4b4",
+              "fullName": "Ms. Katherine Brown",
+              "supervisor": false,
+              "position": null,
+              "type": "USER"
+            }, {
+              "id": "fd4b1d49-9a88-48c1-807d-e9ffcfac03d2",
+              "fullName": "Prof. Daniel Roberts",
+              "supervisor": true,
+              "position": null,
+              "type": "USER"
+            }, {
+              "id": "d25b66de-ba55-464a-9248-a22ab10373ff",
+              "fullName": "Ms. Elizabeth Miller",
+              "supervisor": false,
+              "position": null,
+              "type": "USER"
+            }],
+            "type": "DEPARTMENT"
+          }],
+          "users": [{
+            "id": "1140a5a5-8d8c-4a4e-9704-4d3ea981809c",
+            "fullName": "Mr. Richard Harris",
+            "supervisor": false,
+            "position": null,
+            "type": "USER"
+          }, {
+            "id": "bb4045a8-c7af-419e-9fda-9fdaa4c44169",
+            "fullName": "Mr. James Wilson",
+            "supervisor": false,
+            "position": null,
+            "type": "USER"
+          }, {
+            "id": "17bc9dd9-1c46-4cd0-ac56-c9ec2661c6c1",
+            "fullName": "Dr. Michael Turner",
+            "supervisor": true,
+            "position": null,
+            "type": "USER"
+          }],
+          "type": "DEPARTMENT"
+        }],
+        "users": [{
+          "id": "7fdef90d-e753-40af-ba70-c7befa2272ba",
+          "fullName": "CEO John Smith",
+          "supervisor": true,
+          "position": null,
+          "type": "USER"
+        }],
+        "type": "DEPARTMENT"
+      }], "type": "COMPANY"
+    }
+  }
+
+  const generateOrgChartHTML = (entity) => {
+    if (!entity) return null;
+
+    // Skontrolujeme, či oddelenie má supervisora
+    let supervisorUser = null;
+
+    if (entity.users && entity.users.length > 0) {
+      supervisorUser = entity.users.find(user => user.supervisor === true);
+    }
+
+    // Hlavný uzol - zobrazenie názvu entity alebo supervisora
+    const item = document.createElement("wje-orgchart-item");
+    item.textContent = supervisorUser ? `👔 ${supervisorUser.fullName}` : entity.name;
+
+    // Kontajner pre podriadené prvky (iba jeden slot na podriadené uzly)
+    const childSlot = document.createElement("wje-orgchart");
+    childSlot.setAttribute("slot", "child");
+
+    // Spracovanie ostatných používateľov (ak existujú a nemajú flag `supervisor`)
+    if (entity.users && entity.users.length > 0) {
+      const nonSupervisors = entity.users.filter(user => !user.supervisor);
+
+      if (nonSupervisors.length > 0) {
+        const userGroup = document.createElement("wje-orgchart-group");
+
+        nonSupervisors.forEach(user => {
+          const userItem = document.createElement("wje-orgchart-item");
+          userItem.textContent = "👤 " + user.fullName;
+          userGroup.appendChild(userItem);
+        });
+
+        childSlot.appendChild(userGroup);
+      }
+    }
+
+    // Spracovanie podriadených firiem
+    if (entity.companies && entity.companies.length > 0) {
+      entity.companies.forEach(company => {
+        const companyItem = generateOrgChartHTML(company);
+        if (companyItem) {
+          childSlot.appendChild(companyItem);
+        }
+      });
+    }
+
+    // Spracovanie oddelení
+    if (entity.departments && entity.departments.length > 0) {
+      entity.departments.forEach(department => {
+        const departmentItem = generateOrgChartHTML(department);
+        if (departmentItem) {
+          childSlot.appendChild(departmentItem);
+        }
+      });
+    }
+
+    // Pripojenie slotu pre podriadené prvky
+    if (childSlot.children.length > 0) {
+      item.appendChild(childSlot);
+    }
+
+    return item;
+  }
+
+  const orgChartHTML = generateOrgChartHTML(orgData.company);
+  if (orgChartHTML) {
+    document.querySelector('#json').innerHTML = orgChartHTML.outerHTML;
+    console.log("Organizačná štruktúra bola pridaná do DOM.");
+  } else {
+    console.error("❌ Niečo sa pokazilo, orgChartHTML je null.");
+  }
+</script>

@@ -30,6 +30,30 @@ import Basic from '@site/static/usage/v1/level-indicator/basic/index.md';
 
 <Basic />
 
+## Colorize
+
+Pridaním atribútu `colorize` sa pruhy indikátora sfarbia podľa úrovne (nízka, stredná, vysoká).
+
+import Color from '@site/static/usage/v1/level-indicator/color/index.md';
+
+<Color />
+
+## Sírka pruhov indikátora
+
+Nastavením CSS premennej `--wje-level-indicator-width` na ľubovoľnú hodnotu je možné nastaviť šírku pruhov indikátora.
+
+import Bars from '@site/static/usage/v1/level-indicator/bars/index.md';
+
+<Bars />
+
+## Reverse
+
+Pridaním atribútu `reverse` sa pruhy indikátora zobrazia v opačnom poradí.
+
+import Reverse from '@site/static/usage/v1/level-indicator/reverse/index.md';
+
+<Reverse />
+
 ## Atribúty a Vlastnosti
 
 <Props />

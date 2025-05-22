@@ -29,11 +29,10 @@ import Basic from '@site/static/usage/v1/item/basic/index.md';
 
 <Basic />
 
-## Separation lines
-
-import Lines from '@site/static/usage/v1/item/lines/index.md';
-
-<Lines />
+[//]: # "## Separation lines"
+[//]: #
+[//]: # "import Lines from '@site/static/usage/v1/item/lines/index.md';"
+[//]: # "<Lines />"
 
 ## Use with images
 

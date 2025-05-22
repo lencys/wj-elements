@@ -1,6 +1,6 @@
 ```html
 <template>
-  <wje-menu active style="max-width: 200px;">
+  <wje-menu active>
     <wje-menu-item>
       Menu item
       <wje-icon slot="start" name="home"></wje-icon>

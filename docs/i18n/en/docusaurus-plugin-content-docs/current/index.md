@@ -28,7 +28,7 @@ import DocsCards from '@components/global/DocsCards';
 [//]: # "    }"
 [//]: # "  `}</style>"
 
-<script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.165/dist/wje-master.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.171/dist/wje-master.min.js"></script>
 
 </head>
 
@@ -41,13 +41,25 @@ Start creating your application [by installing WebJET elements](intro/install.md
 
 <DocsCards>
 
-{' '} <a href="intro/install">\ <wje-card>\ <wje-card-header>\ <wje-icon name="world-download" size="large"></wje-icon>\ <wje-card-title>Installation guide</wje-card-title>\ </wje-card-header>\ <wje-card-content><p>Detailed installation guide for WebJET elements.</p></wje-card-content></wje-card></a>
+{' '} <a href="intro/install">\ <wje-card>\ <wje-card-header>\ <wje-icon name="world-download" size="large"></wje-icon>\ <wje-card-title>Installation guide</wje-card-title>\ </wje-card-header>\ <wje-card-content><p>Detailed installation guide for WebJET elements.</p>   
+</wje-card-content>   
+</wje-card>   
+</a>
 
-{' '} <a href="components"> <wje-card> <wje-card-header> <wje-icon name="layout-dashboard" size="large"></wje-icon> <wje-card-title href="intro/cli">Elements</wje-card-title> </wje-card-header> <wje-card-content><p>Take a look at the library of available WebJET elements.</p></wje-card-content></wje-card></a>
+{' '} <a href="components"> <wje-card> <wje-card-header> <wje-icon name="layout-dashboard" size="large"></wje-icon> <wje-card-title href="intro/cli">Elements</wje-card-title> </wje-card-header> <wje-card-content><p>Take a look at the library of available WebJET elements.</p>
+</wje-card-content>
+</wje-card>
+</a>
 
-{' '} <a href="api/layout"> <wje-card> <wje-card-header> <wje-icon name="layout" size="large"></wje-icon> <wje-card-title>Layout</wje-card-title> </wje-card-header> <wje-card-content><p>Find out how to create a page layout to suit your needs.</p></wje-card-content></wje-card></a>
+{' '} <a href="api/layout"> <wje-card> <wje-card-header> <wje-icon name="layout" size="large"></wje-icon> <wje-card-title>Layout</wje-card-title> </wje-card-header> <wje-card-content><p>Find out how to create a page layout to suit your needs.</p>
+</wje-card-content>
+</wje-card>
+</a>
 
-{' '} <a href="theming/basics"> <wje-card> <wje-card-header> <wje-icon name="brush" size="large"></wje-icon> <wje-card-title>Editing styles</wje-card-title> </wje-card-header> <wje-card-content><p>Learn how to easily customize your Elements visual.</p></wje-card-content></wje-card></a>
+{' '} <a href="theming/basics"> <wje-card> <wje-card-header> <wje-icon name="brush" size="large"></wje-icon> <wje-card-title>Editing styles</wje-card-title> </wje-card-header> <wje-card-content><p>Learn how to easily customize your Elements visual.</p>
+</wje-card-content>
+</wje-card>
+</a>
 
 </DocsCards>
 

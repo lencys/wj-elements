@@ -21,27 +21,39 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo. Skladá sa z elementov [MenuItem.](../menu-item).
+Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo. Špeciálne pre použitie v Menu sú navrhnuté elementy [MenuItem](../menu-item) a [MenuLabel](../menu-label).
 
 ## Základné použitie
 
-import BasicUsage from '@site/static/usage/v1/menu/basic/index.md';
+import Basic from '@site/static/usage/v1/menu/basic/index.md';
 
-<div className="xxxlarge">
-
-<BasicUsage />
-
-</div>
+<Basic />
 
 ## Inset
 
 import Inset from '@site/static/usage/v1/menu/inset/index.md';
 
-<div className="xxxlarge">
-
 <Inset />
 
-</div>
+## Variant: Megamenu
+
+import Megamenu from '@site/static/usage/v1/menu/megamenu/index.md';
+
+<Megamenu />
+
+## Variant: Nav
+
+import Nav from '@site/static/usage/v1/menu/nav/index.md';
+
+<Nav />
+
+## Collapse
+
+Atribút `collapse` zobrazí menu v zbalenomn stave. V tomto stave je menu zbalené a zobrazuje sa len ikona.
+
+import Collapse from '@site/static/usage/v1/menu/collapse/index.md';
+
+<Collapse />
 
 ## Atribúty a Vlastnosti
 

@@ -21,37 +21,49 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The menu element is used to display the navigation. It is hidden by default and is displayed by adding the `active` attribute, for example, when a button is clicked. It consists of [MenuItem.](../menu-item) elements.
+The menu element is used to display the navigation. It is hidden by default and is displayed by adding the `active` attribute, for example, when a button is clicked. Špeciálne pre použitie v Menu sú navrhnuté elementy [MenuItem](../menu-item) a [MenuLabel](../menu-label).
 
 ## Basic usage
 
-import BasicUsage from '@site/static/usage/v1/menu/basic/index.md';
+import Basic from '@site/static/usage/v1/menu/basic/index.md';
 
-<div className="xxxlarge">
-
-<BasicUsage />
-
-</div>
+<Basic />
 
 ## Inset
 
 import Inset from '@site/static/usage/v1/menu/inset/index.md';
 
-<div className="xxxlarge">
-
 <Inset />
 
-</div>
+## Variant: Megamenu
 
-## Attributes and Properties
+import Megamenu from '@site/static/usage/v1/menu/megamenu/index.md';
+
+<Megamenu />
+
+## Variant: Nav
+
+import Nav from '@site/static/usage/v1/menu/nav/index.md';
+
+<Nav />
+
+## Collapse
+
+The `collapse` attribute displays the menu in collapsed state. In this state, the menu is collapsed and only the icon is displayed.
+
+import Collapse from '@site/static/usage/v1/menu/collapse/index.md';
+
+<Collapse />
+
+## Atribúty a Vlastnosti
 
 <Props />
 
-## Events
+## Eventy
 
 <Events />
 
-## Methods
+## Metódy
 
 <Methods />
 
@@ -59,10 +71,10 @@ import Inset from '@site/static/usage/v1/menu/inset/index.md';
 
 <Parts />
 
-## CSS Custom Properties
+## CSS Custom Vlastnosti
 
 <CustomProps />
 
-## Slots
+## Sloty
 
 <Slots />

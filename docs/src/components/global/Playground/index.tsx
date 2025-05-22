@@ -726,41 +726,41 @@ export default function Playground({
               );
             })}
           </div>
-          <div className="playground__control-group">
-            <ControlButton
-              disabled={mode && mode === 'md'}
-              isSelected={isIOS}
-              handleClick={() => setAndSaveMode(Mode.iOS)}
-              title="iOS mode"
-              label="iOS"
-            />
-            <ControlButton
-              disabled={mode && mode === 'ios'}
-              isSelected={isMD}
-              handleClick={() => setAndSaveMode(Mode.MD)}
-              title="MD mode"
-              label="MD"
-            />
-          </div>
+          {/*<div className="playground__control-group">*/}
+          {/*  <ControlButton*/}
+          {/*    disabled={mode && mode === 'md'}*/}
+          {/*    isSelected={isIOS}*/}
+          {/*    handleClick={() => setAndSaveMode(Mode.iOS)}*/}
+          {/*    title="iOS mode"*/}
+          {/*    label="iOS"*/}
+          {/*  />*/}
+          {/*  <ControlButton*/}
+          {/*    disabled={mode && mode === 'ios'}*/}
+          {/*    isSelected={isMD}*/}
+          {/*    handleClick={() => setAndSaveMode(Mode.MD)}*/}
+          {/*    title="MD mode"*/}
+          {/*    label="MD"*/}
+          {/*  />*/}
+          {/*</div>*/}
           <div className="playground__control-group playground__control-group--end">
-            <Tippy theme="playground" arrow={false} placement="bottom" content="Open in StackBlitz">
-              <button className="playground__icon-button playground__icon-button--primary" onClick={openEditor}>
-                <svg
-                  aria-hidden="true"
-                  width="10"
-                  height="14"
-                  viewBox="0 0 10 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M5.53812 5.91743L7.52915 1L1 8.01835H4.42601L2.42601 13L9 5.91743H5.53812Z"
-                    stroke="#73849A"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </Tippy>
+            {/*<Tippy theme="playground" arrow={false} placement="bottom" content="Open in StackBlitz">*/}
+            {/*  <button className="playground__icon-button playground__icon-button--primary" onClick={openEditor}>*/}
+            {/*    <svg*/}
+            {/*      aria-hidden="true"*/}
+            {/*      width="10"*/}
+            {/*      height="14"*/}
+            {/*      viewBox="0 0 10 14"*/}
+            {/*      fill="none"*/}
+            {/*      xmlns="http://www.w3.org/2000/svg"*/}
+            {/*    >*/}
+            {/*      <path*/}
+            {/*        d="M5.53812 5.91743L7.52915 1L1 8.01835H4.42601L2.42601 13L9 5.91743H5.53812Z"*/}
+            {/*        stroke="#73849A"*/}
+            {/*        strokeLinejoin="round"*/}
+            {/*      />*/}
+            {/*    </svg>*/}
+            {/*  </button>*/}
+            {/*</Tippy>*/}
             <Tippy
               theme="playground"
               arrow={false}
@@ -822,7 +822,7 @@ export default function Playground({
             <Tippy theme="playground" arrow={false} placement="bottom" content="Report an issue">
               <a
                 className="playground__icon-button"
-                href="https://github.com/ionic-team/ionic-docs/issues/new/choose"
+                href="https://github.com/lencys/wj-elements/issues/new/choose"
                 aria-label="Report an issue"
                 target="_blank"
                 rel="noreferrer"

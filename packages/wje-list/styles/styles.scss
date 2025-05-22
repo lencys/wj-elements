@@ -22,4 +22,5 @@
 
 :host(.wje-lines-none) ::slotted(wje-item) {
     --wje-border-width: 0 !important;
+    --wje-item-border-width: 0!important;
 }

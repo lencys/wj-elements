@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponent **List** (Zoznam) sa skladá z viacerých elementov [Item](../item) (položiek) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Listy vo všeobecnosti obsahujú položky s rovnakým obsahom a zoskupujú ich do väčšieho celku.
+Komponent `List` (Zoznam) sa skladá z viacerých elementov [Item](../item) (položiek) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Listy vo všeobecnosti obsahujú položky s rovnakým obsahom a zoskupujú ich do väčšieho celku.
 
 ## Základné použitie
 
@@ -39,9 +39,7 @@ import Inset from '@site/static/usage/v1/list/inset/index.md';
 
 ## Oddeľovanie čiary
 
-Vlastnosť **lines** upravuje spodný okraj itemov. Nastavením na "full" sa zobrazia okraje na celú šírku, "**inset**" zobrazí okraje upravené ľavým paddingom a "**none**" nezobrazí žiadne okraje.
-
-Ak je na iteme nastavená vlastnosť lines, bude mať táto vlastnosť prednosť pred vlastnosťou na liste.
+Vlastnosť `lines` upravuje spodný okraj itemov. Nastavením tejto vlastnosti na hodnotu "`none`" sa nezobrazia žiadne okraje medzi položkami zoznamu.
 
 import Lines from '@site/static/usage/v1/list/lines/index.md';
 
