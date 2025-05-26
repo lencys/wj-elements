@@ -276,8 +276,8 @@ export default class Textarea extends WJElement {
         this.resizeObserver = new ResizeObserver(() => this.setTextareaHeight);
 
         if (!this.hasAttribute('disabled')) {
-            event.addListener(this, 'click', 'wje:textarea:change');
-            event.addListener(this, 'click', 'wje:textarea:input');
+            event.addListener(this, 'click', 'wje-textarea:change');
+            event.addListener(this, 'click', 'wje-textarea:input');
         }
 
         this.input.addEventListener('focus', (e) => {
