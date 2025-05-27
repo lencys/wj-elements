@@ -2,12 +2,12 @@
 title: 'Option'
 ---
 
-import Props from '@ionic-internal/component-api/v1/select-option/props.md';
-import Events from '@ionic-internal/component-api/v1/select-option/events.md';
-import Methods from '@ionic-internal/component-api/v1/select-option/methods.md';
-import Parts from '@ionic-internal/component-api/v1/select-option/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/select-option/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/select-option/slots.md';
+import Props from '@ionic-internal/component-api/v1/option/props.md';
+import Events from '@ionic-internal/component-api/v1/option/events.md';
+import Methods from '@ionic-internal/component-api/v1/option/methods.md';
+import Parts from '@ionic-internal/component-api/v1/option/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/option/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/option/slots.md';
 
 <head>
   <title>Option | jednotlivé voliteľné možnosti v rámci komponentu Select</title>

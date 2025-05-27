@@ -23,7 +23,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 A code consisting of an array of black and white squares that is typically used to store URLs or other information for the camera on a smartphone to read. These qr codes can be easily customised using different attributes.
 
-## Interactive demo
+## Basic use
 
 To use the QR component, include it in the HTML with the required attributes.
 

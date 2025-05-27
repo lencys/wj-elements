@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Reorder je komponent, ktorý umožňuje ťahaním položky zmeniť jej poradie v rámci skupiny položiek. Musí sa použiť v rámci skupiny na zmenu poradia, aby sa zabezpečilo vizuálne rozhranie drag and drop.
+`Reorder` je komponent, ktorý umožňuje pomocou funkcionality Drag&Drop, zmeniť poradie položky `ReorderItem` v skupine.
 
 ## Základné použitie
 
@@ -29,25 +29,33 @@ import Basic from '@site/static/usage/v1/reorder/basic/index.md';
 
 <Basic />
 
-## Disabled
+## Atribút Disabled
+
+Atribút `disabled` sa používa na zakázanie možnosti preusporiadania položiek v rámci `Reorder`. Keď je tento atribút nastavený, používateľ nebude môcť ťahať položky na zmenu ich poradia.
 
 import Disabled from '@site/static/usage/v1/reorder/disabled/index.md';
 
 <Disabled />
 
-## Handle
+## Rukoväť pre ťahanie
+
+Pridaním elementu do slotu `handle` položky [**ReorderItem**](../reorder-item), môžete definovať špecifickú oblasť, ktorá bude slúžiť ako rukoväť pre ťahanie a preusporiadanie položiek. Toto umožňuje používateľom intuitívnejšie interakcie pri zmene poradia položiek.
 
 import Handle from '@site/static/usage/v1/reorder/handle/index.md';
 
 <Handle />
 
-## Opačné poradie
+## Atribút Reverse - Opačné poradie
+
+Atribút `reverse` sa používa na zmenu smeru preusporiadania položiek v rámci `Reorder`.
 
 import Reverse from '@site/static/usage/v1/reorder/reverse/index.md';
 
 <Reverse />
 
 ## Drop Zóny
+
+DropZone je komponent, ktorý predstavuje zónu určenú pre preusporiadanie obsahu.
 
 import DropZones from '@site/static/usage/v1/reorder/drop-zones/index.md';
 

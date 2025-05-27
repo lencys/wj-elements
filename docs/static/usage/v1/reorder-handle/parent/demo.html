@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reorder</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script type="module" src="../../../../wje-elementy/wje-master.js"></script>
+    <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="content">
+        <wje-button fill="link" toggle="off" value="off" id="remove-locked">
+          <span slot="toggle">Locked</span>
+          <span slot="toggle">Unlocked</span>
+        </wje-button>
+        <wje-menu id="parent" active>
+          <wje-menu-item>
+            <div slot="start">
+              <wje-reorder-handle dropzone="wje-menu" parent="wje-menu-item">
+                <wje-icon name="arrows-move"></wje-icon>
+              </wje-reorder-handle>
+              Item 1
+            </div>
+          </wje-menu-item>
+          <wje-menu-item>
+            <div slot="start">
+              <wje-reorder-handle dropzone="wje-menu" parent="wje-menu-item">
+                <wje-icon name="arrows-move"></wje-icon>
+              </wje-reorder-handle>
+              Item 2
+            </div>
+          </wje-menu-item>
+          <wje-menu-item>
+            <div slot="start">
+              <wje-reorder-handle dropzone="wje-menu" parent="wje-menu-item">
+                <wje-icon name="arrows-move"></wje-icon>
+              </wje-reorder-handle>
+              Item 3
+            </div>
+          </wje-menu-item>
+          <wje-menu-item>
+            <div slot="start">
+              <wje-reorder-handle dropzone="wje-menu" parent="wje-menu-item">
+                <wje-icon name="arrows-move"></wje-icon>
+              </wje-reorder-handle>
+              Item 4
+            </div>
+          </wje-menu-item>
+        </wje-menu>
+      </div>
+    </div>
+  </body>
+<script>
+  document.querySelector('#remove-locked').addEventListener('wje-button:click', (e) => {
+    document.querySelectorAll('#parent wje-reorder-handle').forEach((item) => {
+      e.target.value === 'on' ? item.removeAttribute('locked') : item.setAttribute('locked', '');
+    });
+  });
+</script>
+</html>

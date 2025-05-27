@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reorder</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script type="module" src="../../../../wje-elementy/wje-master.js"></script>
+    <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
+    <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="content">
+        <wje-menu active>
+          <wje-menu-item>
+            <wje-reorder-handle dropzone="wje-menu" slot="start" locked>
+              <wje-icon name="arrows-move"></wje-icon>
+            </wje-reorder-handle>
+            Item 1 (locked)
+          </wje-menu-item>
+          <wje-menu-item>
+            <wje-reorder-handle dropzone="wje-menu" slot="start">
+              <wje-icon name="arrows-move"></wje-icon>
+            </wje-reorder-handle>
+            Item 2
+          </wje-menu-item>
+          <wje-menu-item>
+            <wje-reorder-handle dropzone="wje-menu" slot="start" disabled>
+              <wje-icon name="arrows-move"></wje-icon>
+            </wje-reorder-handle>
+            Item 3 (disabled)
+          </wje-menu-item>
+          <wje-menu-item>
+            <wje-reorder-handle dropzone="wje-menu" slot="start" locked>
+              <wje-icon name="arrows-move"></wje-icon>
+            </wje-reorder-handle>
+            Item 4
+          </wje-menu-item>
+          <wje-menu-item>
+            <wje-reorder-handle dropzone="wje-menu" slot="start">
+              <wje-icon name="arrows-move"></wje-icon>
+            </wje-reorder-handle>
+            Item 5
+          </wje-menu-item>
+          <wje-menu-item>
+            <wje-reorder-handle dropzone="wje-menu" slot="start">
+              <wje-icon name="arrows-move"></wje-icon>
+            </wje-reorder-handle>
+            Item 6
+          </wje-menu-item>
+        </wje-menu>
+      </div>
+    </div>
+  </body>
+</html>

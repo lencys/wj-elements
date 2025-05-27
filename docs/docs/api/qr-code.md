@@ -23,7 +23,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Kód pozostávajúci z poľa čiernych a bielych štvorcov, ktorý sa zvyčajne používa na ukladanie adries URL alebo iných informácií na čítanie fotoaparátom na smartfóne. Tieto qr kódy si je možné jednoducho prispôsobiť použitím rôznych atribútov.
 
-## Interaktívne demo
+## Základné použitie
 
 Ak chcete použiť komponent QR, zahrňte ho do HTML s požadovanými atribútmi.
 

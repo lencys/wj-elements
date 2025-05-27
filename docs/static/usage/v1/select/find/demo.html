@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProgressBar</title>
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="../../../common.js"></script>
+    <script type="module" src="../../../../js/demo.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.175/dist/wje-master.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.175/dist/light.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.175/dist/dark.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.175/dist/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content" style="flex-direction: column; justify-content: flex-start; margin-bottom: 20%; min-width: 60%" >
+        <wje-select placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple clearable>
+          <wje-options url="/api/options" item-value="value" item-text="label" option-array-path="data"></wje-options>
+        </wje-select>
+        <wje-select placeholder="Select options" variant="standard" max-height="200px" find clearable>
+          <wje-options url="/api/options" item-value="value" item-text="label" option-array-path="data"></wje-options>
+        </wje-select>
+        <wje-select label="Label" placeholder="Select options" max-options="1" max-height="200px" find multiple clearable>
+          <wje-options url="/api/options" item-value="value" item-text="label" option-array-path="data"></wje-options>
+        </wje-select>
+        <wje-select label="Label" placeholder="Select options" max-height="200px" find clearable>
+          <wje-options url="/api/options" item-value="value" item-text="label" option-array-path="data"></wje-options>
+        </wje-select>
+      </div>
+    </div>
+  </body>
+</html>

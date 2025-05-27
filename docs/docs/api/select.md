@@ -22,8 +22,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-**Select** element rozširuje možnosti štandardného HTML select elementu. Podporuje jeden alebo viacero výberov pridaním atribútu `multiple`.
-Okrem toho ponúka funkcie, ako sú zmazateľné výbery a vlastný zástupný text (placeholder). Vizuálne môže komponent zobrazovať vybrané možnosti ako chipy a obsahuje vstupné pole a rozbaľovací zoznam možností.
+**Select** element rozširuje možnosti štandardného HTML select elementu poskytujúc vylepšenú používateľskú skúsenosť. 
+Podporuje jednoduchý aj viacnásobný výber možností pomocou atribútu multiple. 
+Ponúka rozšírené funkcie ako vymazateľný obsah pomocou atribútu `clearable`, vyhľadávanie v možnostiach pomocou `find` a lenivé načítavanie pre optimalizáciu výkonu s atribútom `lazy`. 
+Pri viacnásobnom výbere možností sa vybrané položky zobrazujú ako chipy s konfigurovateľným maximálnym počtom zobrazených položiek. 
+Komponent tiež podporuje dynamické načítanie možností z externých zdrojov prostredníctvom elementu [**Options**](../select-options).
 
 ## Základné použitie
 
@@ -72,6 +75,30 @@ Pridaním atribútu `standard` sa zobrazí Select v štýle štandardného HTML 
 import Standard from '@site/static/usage/v1/select/standard/index.md';
 
 <Standard />
+
+## Lazy načítavanie
+
+Pridaním atribútu `lazy` sa načítajú možnosti len vtedy, keď je to potrebné. To môže byť užitočné pri veľkých množstvách možností alebo pri načítavaní z externých zdrojov.
+
+import Lazy from '@site/static/usage/v1/select/lazy/index.md';
+
+<Lazy />
+
+## Find
+
+Pridaním atribútu `find` sa zobrazí vstupné pole, ktoré umožňuje používateľovi vyhľadávať možnosti v zozname. Používateľ môže zadať text a zoznam sa automaticky filtruje podľa zadaného textu.
+
+import Find from '@site/static/usage/v1/select/find/index.md';
+
+<Find />
+
+## Lazy search
+
+Skombinovaním atribútov `lazy` a `find` sa načítajú možnosti len vtedy, keď používateľ začne písať do vstupného poľa. To môže byť užitočné pri veľkých množstvách možností alebo pri načítavaní z externých zdrojov.
+
+import Autocomplete from '@site/static/usage/v1/select/lazy-search/index.md';
+
+<Autocomplete />
 
 ## Atribúty a Vlastnosti
 

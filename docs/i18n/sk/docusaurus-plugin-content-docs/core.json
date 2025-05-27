@@ -8631,275 +8631,455 @@
       }
     },
     {
-      "filePath": "src/components/qr-code/qr-code.tsx",
-      "encapsulation": "shadow",
-      "tag": "qr-code",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
       "filePath": "src/components/progress-bar/progress-bar.tsx",
       "encapsulation": "shadow",
       "tag": "progress-bar",
-      "docs": "",
-      "docsTags": [
-        {
-          "name": "slot",
-          "docs": "end - Obsah sa umiestni vpravo v LTR a vľavo v RTL."
-        },
-        {
-          "name": "slot",
-          "docs": "start - Obsah sa umiestni vľavo v LTR a vpravo v RTL."
-        }
-      ],
+      "docs": "Komponent `ProgressBar` je vlastný webový komponent, ktorý reprezentuje indikátor priebehu.",
+      "docsTags": [],
       "usage": {},
       "props": [
         {
-          "name": "color",
-          "type": "\"danger\" | \"dark\" |  \"primary\"  | \"success\" | \"light\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
-          "complexType": {
-            "original": "Color",
-            "resolved": "\"danger\" | \"dark\" |  \"primary\"  | \"success\" | \"light\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
-            "references": {
-              "Color": {
-                "location": "import",
-                "path": "../../interface",
-                "id": "src/interface.d.ts::Color"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": true,
-          "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, a `\"dark\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "danger",
-              "type": "string"
-            },
-            {
-              "value": "dark",
-              "type": "string"
-            },
-            {
-              "value": "light",
-              "type": "string"
-            },
-            {
-              "value": "primary",
-              "type": "string"
-            },
-            {
-              "value": "success",
-              "type": "string"
-            },
-            {
-              "value": "warning",
-              "type": "string"
-            },
-            {
-              "type": "string & Record<never, never>"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "linecap",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "linecap",
-          "reflectToAttr": false,
-          "docs": "Definuje ukazovateľ priebehu so zaobleným koncom.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "progress",
-          "type": "number",
-          "complexType": {
-            "original": "number",
-            "resolved": "number",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "progress",
-          "reflectToAttr": false,
-          "docs": "Určuje hodnotu priebehu v percentách.",
-          "docsTags": [],
-          "default": "0",
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
           "name": "radius",
           "type": "number",
-          "complexType": {
-            "original": "number",
-            "resolved": "number",
-            "references": {}
-          },
-          "mutable": false,
+          "mutable": true,
           "attr": "radius",
-          "reflectToAttr": false,
-          "docs": "Určuje hodnotu priebehu v percentách.",
-          "docsTags": [],
+          "docs": "Nastavuje polomer kruhového indikátora priebehu.",
           "default": "70",
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": false,
+          "optional": true,
           "required": false
         },
         {
           "name": "stroke",
           "type": "number",
-          "complexType": {
-            "original": "number",
-            "resolved": "number",
-            "references": {}
-          },
-          "mutable": false,
+          "mutable": true,
           "attr": "stroke",
-          "reflectToAttr": false,
-          "docs": "Určuje hodnotu priebehu v percentách.",
-          "docsTags": [],
-          "default": "12",
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": false,
+          "docs": "Nastavuje hrúbku čiary indikátora priebehu.",
+          "default": "6",
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "progress",
+          "type": "number",
+          "mutable": true,
+          "attr": "progress",
+          "docs": "Nastavuje aktuálny stav priebehu v percentách.",
+          "optional": true,
           "required": false
         },
         {
           "name": "type",
+          "type": "string",
+          "mutable": false,
+          "attr": "type",
+          "docs": "Určuje typ indikátora priebehu (predvolený lineárny alebo 'circle' pre kruhový).",
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "linecap",
+          "type": "string",
+          "mutable": false,
+          "attr": "linecap",
+          "docs": "Nastavuje štýl ukončenia čiar (napríklad 'square', 'round').",
+          "default": "square",
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "mutable": false,
+          "attr": "color",
+          "docs": "Nastavuje farebnú schému indikátora priebehu (primary, complete, success, warning, danger, info).",
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getCircleDasharray",
+          "returns": "number",
+          "signature": "getCircleDasharray(radius?: number) => number",
+          "parameters": [
+            {
+              "name": "radius",
+              "type": "number",
+              "docs": "Polomer kruhu v pixeloch."
+            }
+          ],
+          "docs": "Vráti hodnotu pre dasharray kruhu s daným polomerom.",
+          "docsTags": []
+        },
+        {
+          "name": "getCircleDashoffset",
+          "returns": "number",
+          "signature": "getCircleDashoffset(progress?: number, radius?: number) => number",
+          "parameters": [
+            {
+              "name": "progress",
+              "type": "number",
+              "docs": "Stav priebehu v percentách."
+            },
+            {
+              "name": "radius",
+              "type": "number",
+              "docs": "Polomer kruhu v pixeloch."
+            }
+          ],
+          "docs": "Vráti hodnotu pre dashoffset kruhu s daným priebehom a polomerom.",
+          "docsTags": []
+        },
+        {
+          "name": "setCircleProgress",
+          "returns": "void",
+          "signature": "setCircleProgress(percent: number) => void",
+          "parameters": [
+            {
+              "name": "percent",
+              "type": "number",
+              "docs": "Percentuálny priebeh, ktorý sa má nastaviť."
+            }
+          ],
+          "docs": "Nastaví hodnotu priebehu pre kruhový indikátor.",
+          "docsTags": []
+        }
+      ],
+      "events": [],
+      "listeners": [],
+      "styles": [
+        {
+          "name": "--wje-progress-bar-background-color",
+          "annotation": "prop",
+          "docs": "Nastavuje farbu pozadia indikátora priebehu."
+        },
+        {
+          "name": "--wje-progress-bar-color",
+          "annotation": "prop",
+          "docs": "Nastavuje farbu indikátora priebehu. Táto vlastnosť ovláda farbu výplne indikátora priebehu."
+        },
+        {
+          "name": "--wje-progress-bar-text-size",
+          "annotation": "prop",
+          "docs": "Definuje veľkosť písma textu zobrazeného vo vnútri indikátora priebehu."
+        },
+        {
+          "name": "--wje-progress-bar-text-color",
+          "annotation": "prop",
+          "docs": "Určuje farbu textu zobrazeného vo vnútri indikátora priebehu."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre indikátor priebehu."
+        },
+        {
+          "name": "start",
+          "docs": "Slot na začiatku indikátora priebehu."
+        },
+        {
+          "name": "end",
+          "docs": "Slot na konci indikátora priebehu."
+        }
+      ],
+      "parts": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/qr-code/qr-code.tsx",
+      "encapsulation": "shadow",
+      "tag": "qr-code",
+      "docs": "`QrCode` je vlastný webový komponent, ktorý generuje QR kód.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "Tento prvok predstavuje generátor QR kódu."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/qr-code"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "csspart",
+          "text": "native - Natívna časť QR kódu."
+        },
+        {
+          "name": "slot",
+          "text": "top - Slot pre obsah v hornej časti QR kódu."
+        },
+        {
+          "name": "slot",
+          "text": "bottom - Slot pre obsah v dolnej časti QR kódu."
+        },
+        {
+          "name": "tag",
+          "text": "wje-qr-code"
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "value",
           "type": "string",
           "complexType": {
             "original": "string",
             "resolved": "string",
             "references": {}
           },
-          "mutable": true,
-          "attr": "type",
+          "mutable": false,
+          "attr": "value",
           "reflectToAttr": false,
-          "docs": "Pridaním vlastnosti type s hodnotou “circle” zobrazíte progress bar s okrúhlym dizajnom.",
+          "docs": "Hodnota, ktorá má byť zakódovaná do QR kódu.",
           "docsTags": [],
-          "default": "undefined",
+          "default": "\"empty value\"",
           "values": [
             {
-              "value": "circle",
-              "type": "string"
-            },
-            {
-              "value": "undefined",
               "type": "string"
             }
           ],
           "optional": false,
-          "required": true
+          "required": false
+        },
+        {
+          "name": "background",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "background",
+          "reflectToAttr": false,
+          "docs": "Farba pozadia QR kódu.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "backgroundAlpha",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "backgroundAlpha",
+          "reflectToAttr": false,
+          "docs": "Priehľadnosť pozadia QR kódu (0-1).",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "foreground",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "foreground",
+          "reflectToAttr": false,
+          "docs": "Farba popredia QR kódu.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "foregroundAlpha",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "foregroundAlpha",
+          "reflectToAttr": false,
+          "docs": "Priehľadnosť popredia QR kódu (0-1).",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "level",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "level",
+          "reflectToAttr": false,
+          "docs": "Úroveň korekcie chýb QR kódu (L, M, Q, H).",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "padding",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "padding",
+          "reflectToAttr": false,
+          "docs": "Vnútorné odsadenie QR kódu v pixeloch.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": false,
+          "docs": "Veľkosť QR kódu v pixeloch.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
         }
       ],
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [
-        {
-          "name": "--wj-progress-bar-color",
-          "annotation": "prop",
-          "docs": "Definuje farbu ukazovateľa priebehu"
-        },
-        {
-          "name": "--wj-progress-bar-text-size",
-          "annotation": "prop",
-          "docs": "Definuje veľkosť textu"
-        }
-      ],
+      "styles": [],
       "slots": [
         {
-          "name": "end",
-          "docs": "Obsah sa umiestni vpravo v LTR a vľavo v RTL."
+          "name": "top",
+          "docs": "Slot pre obsah v hornej časti QR kódu."
         },
         {
-          "name": "start",
-          "docs": "Obsah je umiestnený vľavo v LTR a vpravo v RTL."
+          "name": "bottom",
+          "docs": "Slot pre obsah v dolnej časti QR kódu."
         }
       ],
-      "parts": [],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Odkazuje na `canvas` vo vnútri elementu."
+        }
+      ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": ["WJElement"],
+      "dependencyGraph": {
+        "wje-qr-code": ["WJElement"]
+      }
     },
     {
       "filePath": "src/components/radio/radio.tsx",
       "encapsulation": "shadow",
       "tag": "radio",
-      "docs": "",
+      "docs": "Táto trieda predstavuje komponent prepínača (Radio button), rozširujúci triedu WJElement.",
       "docsTags": [
         {
-          "name": "slot",
-          "docs": "end - Obsah sa umiestni vpravo v LTR a vľavo v RTL."
+          "name": "summary",
+          "text": "Táto trieda predstavuje komponent prepínača (Radio button), rozširujúci triedu WJElement."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/radio"
+        },
+        {
+          "name": "status",
+          "text": "stable"
         },
         {
           "name": "slot",
-          "docs": "start - Obsah sa umiestni vľavo v LTR a vpravo v RTL."
+          "text": "- Predvolený slot pre obsah označenia prepínača."
+        },
+        {
+          "name": "csspart",
+          "text": "native-radio - Natívny obal pre prepínač."
         }
       ],
       "usage": {},
       "props": [
         {
+          "name": "checked",
+          "type": "boolean",
+          "mutable": true,
+          "attr": "checked",
+          "reflectToAttr": true,
+          "docs": "Určuje, či je prepínač zaškrtnutý.",
+          "docsTags": [],
+          "default": "false",
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "Určuje, či je prepínač odškrtnutý.",
+          "docsTags": [],
+          "default": "false",
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "color",
-          "type": "\"danger\" | \"neutral\" |  \"primary\" | \"success\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
-          "complexType": {
-            "original": "Color",
-            "resolved": "\"danger\" | \"neutral\" |  \"primary\" | \"success\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
-            "references": {
-              "Color": {
-                "location": "import",
-                "path": "../../interface",
-                "id": "src/interface.d.ts::Color"
-              }
-            }
-          },
+          "type": "string",
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"` a `\"neutral\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
+          "docs": "Určuje farbu prepínača.",
           "docsTags": [],
           "values": [
             {
@@ -8927,39 +9107,151 @@
               "type": "string"
             },
             {
-              "type": "string & Record<never, never>"
-            },
-            {
-              "type": "undefined"
+              "value": "info",
+              "type": "string"
             }
           ],
           "optional": true,
           "required": false
         },
         {
-          "name": "checked",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
+          "name": "value",
+          "type": "string",
           "mutable": false,
-          "attr": "checked",
-          "reflectToAttr": false,
-          "docs": "Ak `true`, možnosť je zvolená.",
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "Hodnota prepínača.",
           "docsTags": [],
-          "default": "false",
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "placement",
+          "type": "string",
+          "mutable": false,
+          "attr": "placement",
+          "reflectToAttr": true,
+          "docs": "Určuje umiestnenie označenia voči prepínaču.",
+          "docsTags": [],
           "values": [
             {
-              "type": "boolean"
+              "value": "start",
+              "type": "string"
+            },
+            {
+              "value": "end",
+              "type": "string"
+            }
+          ],
+          "default": "start",
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "wje-radio:change",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Vyvolaný pri zmene stavu prepínača.",
+          "docsTags": []
+        },
+        {
+          "event": "wje-radio:input",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Vyvolaný pri interakcii s prepínačom.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [
+        {
+          "name": "--wje-radio-margin-inline",
+          "annotation": "prop",
+          "docs": "Určuje horizontálne (ľavé a pravé) odsadenie pre prepínač. Akceptuje akúkoľvek platnú CSS jednotku dĺžky (napr. `px`, `rem`, `%`) na kontrolu rozostupu na oboch stranách komponentu."
+        },
+        {
+          "name": "--wje-radio-margin-top",
+          "annotation": "prop",
+          "docs": "Definuje horné odsadenie pre prepínač. Akceptuje akúkoľvek platnú CSS hodnotu dĺžky na nastavenie vertikálneho rozostupu nad komponentom."
+        },
+        {
+          "name": "--wje-radio-margin-bottom",
+          "annotation": "prop",
+          "docs": "Nastavuje dolné odsadenie pre prepínač. Akceptuje akúkoľvek platnú CSS hodnotu dĺžky na nastavenie vertikálneho rozostupu pod komponentom."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre obsah štítku prepínača."
+        }
+      ],
+      "parts": [],
+      "dependents": [],
+      "dependencies": ["WJElement"],
+      "dependencyGraph": {
+        "wje-radio": ["WJElement"]
+      }
+    },
+    {
+      "filePath": "src/components/radio-group/radio-group.tsx",
+      "encapsulation": "shadow",
+      "tag": "radio-group",
+      "docs": "RadioGroup je vlastný webový komponent, ktorý predstavuje skupinu rádiových tlačidiel.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "Tento element predstavuje skupinu rádiových tlačidiel."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/radio-group"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "slot",
+          "text": "Predvolené umiestnenie pre rádiové tlačidlá."
+        },
+        {
+          "name": "tag",
+          "text": "wje-radio-group"
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "Hodnota momentálne vybraného rádiového tlačidla v skupine.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
             }
           ],
           "optional": false,
           "required": false
         },
         {
-          "name": "disabled",
+          "name": "inline",
           "type": "boolean",
           "complexType": {
             "original": "boolean",
@@ -8967,31 +9259,9 @@
             "references": {}
           },
           "mutable": false,
-          "attr": "disabled",
+          "attr": "inline",
           "reflectToAttr": false,
-          "docs": "Ak `true`, možnosť nie je možné zvoliť.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "indeterminate",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "indeterminate",
-          "reflectToAttr": false,
-          "docs": "Ak `true`, nastaví predvolený stav radio elementu na neutrálny, tzn. ani `true` ani `false`.",
+          "docs": "Ak je nastavené, rádiové tlačidlá sa zobrazia v rade namiesto stĺpca.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -9013,9 +9283,8 @@
           "mutable": false,
           "attr": "name",
           "reflectToAttr": false,
-          "docs": "Určuje názov rádio elementu.",
+          "docs": "Názov skupiny rádiových tlačidiel používaný pri odosielaní formulára.",
           "docsTags": [],
-          "default": "this.inputId",
           "values": [
             {
               "type": "string"
@@ -9023,74 +9292,306 @@
           ],
           "optional": false,
           "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getAllElements",
+          "returns": {
+            "type": "HTMLElement[]",
+            "docs": "Pole elementov detí."
+          },
+          "complexType": {
+            "signature": "() => HTMLElement[]",
+            "parameters": [],
+            "references": {},
+            "return": "HTMLElement[]"
+          },
+          "signature": "getAllElements() => HTMLElement[]",
+          "parameters": [],
+          "docs": "Vráti všetky priame prvky detí aktuálneho elementu.",
+          "docsTags": []
         },
         {
-          "name": "value",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
-            "references": {}
+          "name": "checkRadio",
+          "returns": {
+            "type": "boolean",
+            "docs": "Či bolo nájdené rádiové tlačidlo s danou hodnotou."
           },
-          "mutable": false,
-          "attr": "value",
-          "reflectToAttr": false,
-          "docs": "Hodnota radio elementu.",
+          "complexType": {
+            "signature": "(value: string) => boolean",
+            "parameters": [
+              {
+                "name": "value",
+                "type": "string",
+                "docs": "Hodnota rádiového tlačidla na označenie."
+              }
+            ],
+            "references": {},
+            "return": "boolean"
+          },
+          "signature": "checkRadio(value: string) => boolean",
+          "parameters": [
+            {
+              "name": "value",
+              "type": "string",
+              "docs": "Hodnota rádiového tlačidla na označenie."
+            }
+          ],
+          "docs": "Označí rádiové tlačidlo s danou hodnotou.",
+          "docsTags": []
+        },
+        {
+          "name": "removeCheck",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => void",
+            "parameters": [],
+            "references": {},
+            "return": "void"
+          },
+          "signature": "removeCheck() => void",
+          "parameters": [],
+          "docs": "Odstráni označenie zo všetkých rádiových tlačidiel.",
+          "docsTags": []
+        },
+        {
+          "name": "getRadioByValue",
+          "returns": {
+            "type": "Radio",
+            "docs": "Rádiové tlačidlo."
+          },
+          "complexType": {
+            "signature": "(value: string) => Radio",
+            "parameters": [
+              {
+                "name": "value",
+                "type": "string",
+                "docs": "Hodnota rádiového tlačidla."
+              }
+            ],
+            "references": {
+              "Radio": {
+                "location": "import",
+                "path": "../wje-radio/radio.js",
+                "id": "packages/wje-radio/radio.js::Radio"
+              }
+            },
+            "return": "Radio"
+          },
+          "signature": "getRadioByValue(value: string) => Radio",
+          "parameters": [
+            {
+              "name": "value",
+              "type": "string",
+              "docs": "Hodnota rádiového tlačidla."
+            }
+          ],
+          "docs": "Vráti rádiové tlačidlo s danou hodnotou.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "wje-radio:change",
+          "detail": "{ context: Radio }",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitované po zmene vybraného rádiového tlačidla v skupine.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "wje-radio:input",
+          "method": "handleRadioInput",
+          "target": "undefined",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolené umiestnenie pre rádiové tlačidlá."
+        }
+      ],
+      "parts": [],
+      "dependents": [],
+      "dependencies": ["Radio"],
+      "dependencyGraph": {
+        "wje-radio-group": ["Radio"]
+      }
+    },
+    {
+      "filePath": "src/components/relative-time/relative-time.tsx",
+      "encapsulation": "shadow",
+      "tag": "relative-time",
+      "docs": "Tento element reprezentuje komponent relatívneho času.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "Tento element reprezentuje komponent relatívneho času."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/relative-time"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "date",
+          "type": "string",
+          "mutable": true,
+          "attr": "date",
+          "reflectToAttr": true,
+          "docs": "Nastaví dátum komponentu relatívneho času.",
           "docsTags": [],
-          "default": "undefined",
           "values": [
             {
               "type": "string"
-            },
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "lang",
+          "type": "string",
+          "mutable": true,
+          "attr": "lang",
+          "reflectToAttr": true,
+          "docs": "Nastaví jazyk komponentu relatívneho času.",
+          "docsTags": [],
+          "values": [
             {
-              "type": "undefined"
+              "type": "string"
             }
           ],
           "optional": true,
           "required": false
         }
       ],
+      "methods": [
+        {
+          "name": "getRelativeTimeString",
+          "returns": {
+            "type": "string",
+            "docs": "Reťazec relatívneho času"
+          },
+          "signature": "getRelativeTimeString(lang = navigator.language) => string",
+          "parameters": [
+            {
+              "name": "lang",
+              "type": "string",
+              "docs": "Kód jazyka"
+            }
+          ],
+          "docs": "Vráti reťazec relatívneho času pre zadaný dátum.",
+          "docsTags": []
+        },
+        {
+          "name": "isISODate",
+          "returns": {
+            "type": "boolean",
+            "docs": "Vráti `true`, ak je reťazec v ISO formáte dátumu, inak `false`."
+          },
+          "signature": "isISODate(str) => boolean",
+          "parameters": [
+            {
+              "name": "str",
+              "type": "string",
+              "docs": "Reťazec na kontrolu."
+            }
+          ],
+          "docs": "Skontroluje, či je daný reťazec vo formáte ISO dátumu.",
+          "docsTags": []
+        }
+      ],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Odkazuje na `div` vo vnútri elementu."
+        }
+      ],
+      "dependents": [],
+      "dependencies": ["Localizer", "WJElement"],
+      "dependencyGraph": {
+        "wje-relative-time": ["Localizer", "WJElement"]
+      }
+    },
+    {
+      "filePath": "src/components/reorder-dropzone/reorder-dropzone.tsx",
+      "encapsulation": "shadow",
+      "tag": "reorder-dropzone",
+      "docs": "`ReorderDropzone` je vlastný webový komponent, ktorý predstavuje zónu pre preusporiadanie obsahu.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "Tento element predstavuje zónu pre preusporiadanie."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/reorder-dropzone"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "augments",
+          "text": "WJElement"
+        }
+      ],
+      "usage": {},
+      "props": [],
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [
+      "styles": [],
+      "slots": [
         {
-          "name": "--wj-border-radius-circle",
-          "annotation": "prop",
-          "docs": "Definuje veľkost zaoblenia elementu."
-        },
-        {
-          "name": "--wj-radio-margin-bottom",
-          "annotation": "prop",
-          "docs": "Definuje spodné odsadenie elementu."
-        },
-        {
-          "name": "--wj-radio-margin-inline",
-          "annotation": "prop",
-          "docs": "Pravé a ľavé odsadenie radio elementu."
-        },
-        {
-          "name": "--wj-radio-margin-top",
-          "annotation": "prop",
-          "docs": "Horné odsadenie radio elementu."
+          "name": "",
+          "docs": "Predvolený slot pre obsah dropzóny."
         }
       ],
-      "slots": [],
-      "parts": [],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Natívna časť komponentu reorder-dropzone."
+        }
+      ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": ["WJElement"],
+      "dependencyGraph": {
+        "wje-reorder-dropzone": ["WJElement"]
+      }
     },
     {
-      "filePath": "src/components/radio-group/radio-group.tsx",
-      "encapsulation": "scoped",
-      "tag": "radio-group",
-      "docs": "",
+      "filePath": "src/components/reorder-handle/reorder-handle.tsx",
+      "encapsulation": "shadow",
+      "tag": "reorder-handle",
+      "encapsulation": "shadow",
+      "docs": "Element, ktorý pridáva iným elementom funkcionalitu drag-and-drop, a slúži ako rukoväť na presúvanie položiek v skupine elementov",
       "docsTags": [],
       "usage": {},
       "props": [
         {
-          "name": "inline",
+          "name": "disabled",
           "type": "boolean",
           "complexType": {
             "original": "boolean",
@@ -9098,9 +9599,9 @@
             "references": {}
           },
           "mutable": false,
-          "attr": "inline",
+          "attr": "disabled",
           "reflectToAttr": false,
-          "docs": "Ak `true`, elementy sa usporiadajú v horizontálnom rozložení.",
+          "docs": "Ak `true`, rukoväť na presúvanie je deaktivovaná a nie je možné s ňou interagovať.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -9112,7 +9613,7 @@
           "required": false
         },
         {
-          "name": "value",
+          "name": "dropzone",
           "type": "string",
           "complexType": {
             "original": "string",
@@ -9120,85 +9621,96 @@
             "references": {}
           },
           "mutable": false,
-          "attr": "value",
+          "attr": "dropzone",
           "reflectToAttr": false,
-          "docs": "Nastaví radio element so zvolenou hodnotou ako predvolene označený.",
+          "docs": "Definuje selektor pre cieľovú zónu, do ktorej je možné položky presúvať. Ak nie je definovaný, použije sa rodičovský element ako dropzone automaticky.",
           "docsTags": [],
-          "default": "undefined",
+          "default": "",
           "values": [
             {
               "type": "string"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         }
       ],
       "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
-      "filePath": "src/components/relative-time/relative-time.tsx",
-      "encapsulation": "scoped",
-      "tag": "relative-time",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
+      "events": [
         {
-          "name": "date",
-          "type": "string",
+          "event": "reorderStart",
+          "detail": "void",
+          "bubbles": true,
           "complexType": {
-            "original": "string",
-            "resolved": "string",
+            "original": "void",
+            "resolved": "void",
             "references": {}
           },
-          "mutable": false,
-          "attr": "date",
-          "reflectToAttr": false,
-          "docs": "Určuje dátum alebo timestamp vo formáte ISO alebo vo formáte timestamp Unix (v sekundách). Ak nie je zadaný žiadny atribút dátumu, komponent predvolene použije aktuálny dátum a čas.",
-          "docsTags": [],
-          "default": "Aktuálny dátum a čas",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
+          "cancelable": true,
+          "composed": true,
+          "docs": "Vyvolané keď používateľ začne presúvať položku.",
+          "docsTags": []
+        },
+        {
+          "event": "reorderEnd",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Vyvolané keď používateľ dokončí presúvanie položky.",
+          "docsTags": []
         }
       ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
-      "filePath": "src/components/reorder/reorder.tsx",
-      "encapsulation": "shadow",
-      "tag": "reorder",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
+      "listeners": [
+        {
+          "event": "mousedown",
+          "method": "onMouseDown",
+          "target": "host",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "touchstart",
+          "method": "onTouchStart",
+          "target": "host",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [
+        {
+          "name": "--wje-reorder-handle-color",
+          "annotation": "prop",
+          "docs": "Farba rukoväte na presúvanie"
+        },
+        {
+          "name": "--wje-reorder-handle-opacity",
+          "annotation": "prop",
+          "docs": "Priehľadnosť rukoväte na presúvanie"
+        },
+        {
+          "name": "--wje-reorder-handle-size",
+          "annotation": "prop",
+          "docs": "Veľkosť rukoväte na presúvanie"
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolené umiestnenie obsahu elementu."
+        }
+      ],
+      "parts": [
+        {
+          "name": "handle",
+          "docs": "Odkazuje na element rukoväte, ktorý sa používa na presúvanie."
+        }
+      ],
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
@@ -9207,19 +9719,63 @@
       "filePath": "src/components/reorder-item/reorder-item.tsx",
       "encapsulation": "shadow",
       "tag": "reorder-item",
-      "docs": "",
-      "docsTags": [],
+      "docs": "Element predstavujúci položku na preusporiadanie.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "Tento element predstavuje položku na preusporiadanie."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/reorder-item"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        }
+      ],
       "usage": {},
       "props": [],
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
+      "styles": [
+        {
+          "name": "--reorder-background-color",
+          "annotation": "prop",
+          "docs": "Farba pozadia položky na preusporiadanie"
+        },
+        {
+          "name": "--reorder-item-spacing",
+          "annotation": "prop",
+          "docs": "Odsadenie položky na preusporiadanie"
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre obsah položky na preusporiadanie."
+        },
+        {
+          "name": "handle",
+          "docs": "Slot pre úchyt, ktorý slúži na manipuláciu s položkou."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native-reorder-item",
+          "docs": "Odkazuje na `div` vo vnútri elementu."
+        },
+        {
+          "name": "handle-part",
+          "docs": "Odkazuje na `slot` vo vnútri elementu."
+        }
+      ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": ["WJElement", "WjElementUtils"],
+      "dependencyGraph": {
+        "wje-reorder-item": ["WJElement", "WjElementUtils"]
+      }
     },
     {
       "filePath": "src/components/route/route.tsx",
@@ -9545,350 +10101,648 @@
       "filePath": "src/components/select/select.tsx",
       "encapsulation": "shadow",
       "tag": "select",
-      "docs": "",
+      "docs": "**Select** element rozširuje možnosti štandardného HTML select elementu. Podporuje jeden alebo viacero výberov pridaním atribútu `multiple`. Okrem toho ponúka funkcie, ako sú zmazateľné výbery a vlastný zástupný text (placeholder). Vizuálne môže komponent zobrazovať vybrané možnosti ako chipy a obsahuje vstupné pole a rozbaľovací zoznam možností.",
       "docsTags": [
         {
-          "name": "slot",
-          "text": "label - The label text to associate with the select. Use the `labelPlacement` property to control where the label is placed relative to the select. Use this if you need to render a label with custom HTML."
+          "name": "summary",
+          "text": "Tento element predstavuje select komponent."
         },
         {
-          "name": "slot",
-          "text": "start - Content to display at the leading edge of the select."
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/select"
         },
         {
-          "name": "slot",
-          "text": "end - Content to display at the trailing edge of the select."
-        },
-        {
-          "name": "part",
-          "text": "placeholder - The text displayed in the select when there is no value."
-        },
-        {
-          "name": "part",
-          "text": "text - The displayed value of the select."
-        },
-        {
-          "name": "part",
-          "text": "icon - The select icon container."
-        },
-        {
-          "name": "part",
-          "text": "container - The container for the selected text or placeholder."
-        },
-        {
-          "name": "part",
-          "text": "label - The label text describing the select."
+          "name": "status",
+          "text": "stable"
         }
       ],
-      "usage": {},
-      "props": [],
-      "events": [],
-      "listeners": [],
-      "styles": [
-        {
-          "name": "--wj-select-background-color",
-          "annotation": "prop",
-          "docs": "Farba pozadia elementu"
-        },
-        {
-          "name": "--wj-select-border-color",
-          "annotation": "prop",
-          "docs": "Farba okrajov elementu"
-        },
-        {
-          "name": "--wj-select-border-radius",
-          "annotation": "prop",
-          "docs": "Zaoblenie okrajov elementu"
-        },
-        {
-          "name": "--wj-select-border-style",
-          "annotation": "prop",
-          "docs": "Štýl zaoblenia elementu"
-        },
-        {
-          "name": "--wj-select-border-width",
-          "annotation": "prop",
-          "docs": "Šírka okrajov elementu"
-        },
-        {
-          "name": "--wj-select-color",
-          "annotation": "prop",
-          "docs": "Farba elementu"
-        },
-        {
-          "name": "--wj-select-line-height",
-          "annotation": "prop",
-          "docs": "Výška riadka elementu"
-        },
-        {
-          "name": "--wj-select-options-border-color",
-          "annotation": "prop",
-          "docs": "Farba okrajov rozbalovacieho okna"
-        },
-        {
-          "name": "--wj-select-options-border-style",
-          "annotation": "prop",
-          "docs": "Štýl okrajov rozbalovacieho okna"
-        },
-        {
-          "name": "--wj-select-options-border-width",
-          "annotation": "prop",
-          "docs": "Šírka okrajov rozbalovacieho okna"
-        }
-      ],
-      "slots": [],
-      "parts": [
-        {
-          "name": "native",
-          "docs": "Odkazuje na `div` vo vnútri elementu."
-        },
-        {
-          "name": "arrow",
-          "docs": "Obsah sa umiestni do elementu `wj-icon`"
-        }
-      ],
-      "dependents": [],
-      "dependencies": ["popup", "option", "icon"],
-      "dependencyGraph": {
-        "select": ["popup", "icon"],
-        "popup": ["icon"],
-        "option": ["icon"]
-      }
-    },
-    {
-      "filePath": "src/components/select-option/select-option.tsx",
-      "encapsulation": "shadow",
-      "tag": "select-option",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      "usage": "<wje-select label=\"Označenie\" placeholder=\"Vyberte možnosť\"><wje-option value=\"moznost-1\">Možnosť 1</wje-option></wje-select>",
       "props": [
         {
           "name": "value",
-          "type": "any",
+          "type": "string | array",
           "complexType": {
-            "original": "any | null",
-            "resolved": "any",
+            "original": "string | array",
+            "resolved": "string | array",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "value",
           "reflectToAttr": false,
-          "docs": "Textová hodnota elementu",
+          "docs": "Hodnota alebo pole hodnôt vybraných možností.",
           "docsTags": [],
           "values": [
             {
-              "type": "any"
+              "type": "string | array"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Textové označenie pre komponent select.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "placeholder",
+          "reflectToAttr": false,
+          "docs": "Zástupný text zobrazený v komponente, keď nie je vybraná žiadna možnosť.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "multiple",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "multiple",
+          "reflectToAttr": false,
+          "docs": "Ak je nastavené, umožňuje vybrať viacero možností naraz.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "Ak je nastavené, komponent select je deaktivovaný a nie je možné s ním interagovať.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "clearable",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "clearable",
+          "reflectToAttr": false,
+          "docs": "Ak je nastavené, pridá tlačidlo na vymazanie výberu.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "maxOptions",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "max-options",
+          "reflectToAttr": true,
+          "docs": "Maximálny počet možností, ktoré je možné zobraziť v prípade viacnásobného výberu.",
+          "docsTags": [],
+          "default": "1",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "maxHeight",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "max-height",
+          "reflectToAttr": false,
+          "docs": "Maximálna výška rozbaľovacieho zoznamu možností.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "find",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "find",
+          "reflectToAttr": false,
+          "docs": "Ak je nastavené, pridá vyhľadávacie pole pre filtrovanie možností.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "lazy",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "lazy",
+          "reflectToAttr": false,
+          "docs": "Ak je nastavené, možnosti sa načítajú až po kliknutí na select.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "variant",
+          "reflectToAttr": false,
+          "docs": "Variant vzhľadu komponentu. Možnosti sú 'default' alebo 'standard'.",
+          "docsTags": [],
+          "default": "default",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "trigger",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "trigger",
+          "reflectToAttr": true,
+          "docs": "Typ spúšťača pre zobrazenie rozbaľovacieho zoznamu. Predvolene 'click'.",
+          "docsTags": [],
+          "default": "click",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "placement",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "placement",
+          "reflectToAttr": false,
+          "docs": "Umiestnenie rozbaľovacieho zoznamu relatívne k select komponentu.",
+          "docsTags": [],
+          "default": "bottom-start",
+          "values": [
+            {
+              "type": "string"
             }
           ],
           "optional": true,
           "required": false
         }
       ],
-      "methods": [],
-      "events": [],
+      "methods": [
+        {
+          "name": "addOption",
+          "signature": "(optionData: any, silent?: boolean, map?: { value: string; text: string; }) => void",
+          "parameters": [
+            {
+              "name": "optionData",
+              "type": "any",
+              "docs": "Dáta pre možnosť, ktorá má byť pridaná."
+            },
+            {
+              "name": "silent",
+              "type": "boolean",
+              "docs": "Či potlačiť akékoľvek udalosti vyvolané pridaním možnosti."
+            },
+            {
+              "name": "map",
+              "type": "object",
+              "docs": "Objekt mapovania určujúci vlastnosti údajov možnosti, ktoré sa majú použiť pre hodnotu a text možnosti."
+            }
+          ],
+          "returns": "void",
+          "docs": "Pridá možnosť do select elementu.",
+          "docsTags": []
+        },
+        {
+          "name": "addOptions",
+          "signature": "(optionsData: Array | object, silent?: boolean, map?: { value: string; text: string; }) => void",
+          "parameters": [
+            {
+              "name": "optionsData",
+              "type": "Array | object",
+              "docs": "Dáta možností, ktoré majú byť pridané. Môže byť pole objektov alebo jeden objekt."
+            },
+            {
+              "name": "silent",
+              "type": "boolean",
+              "docs": "Označuje, či sa majú pri pridávaní možností spúšťať udalosti."
+            },
+            {
+              "name": "map",
+              "type": "object",
+              "docs": "Objekt mapovania, ktorý určuje vlastnosti objektu údajov možností."
+            }
+          ],
+          "returns": "void",
+          "docs": "Pridá možnosti do select elementu.",
+          "docsTags": []
+        },
+        {
+          "name": "selectOption",
+          "signature": "(value: string, silent?: boolean) => void",
+          "parameters": [
+            {
+              "name": "value",
+              "type": "string",
+              "docs": "Hodnota možnosti, ktorá má byť vybraná."
+            },
+            {
+              "name": "silent",
+              "type": "boolean",
+              "docs": "Či potlačiť spustenie udalostí."
+            }
+          ],
+          "returns": "void",
+          "docs": "Vyberie možnosť so zadanou hodnotou.",
+          "docsTags": []
+        },
+        {
+          "name": "selectOptions",
+          "signature": "(values: Array|any, silent?: boolean) => void",
+          "parameters": [
+            {
+              "name": "values",
+              "type": "Array|any",
+              "docs": "Hodnota(y) možnosti(í), ktoré majú byť vybrané."
+            },
+            {
+              "name": "silent",
+              "type": "boolean",
+              "docs": "Či spustiť udalosť zmeny alebo nie."
+            }
+          ],
+          "returns": "void",
+          "docs": "Vyberie jednu alebo viac možností v select elemente.",
+          "docsTags": []
+        },
+        {
+          "name": "getSelected",
+          "signature": "() => Array",
+          "parameters": [],
+          "returns": "Array",
+          "docs": "Vráti vybrané možnosti.",
+          "docsTags": []
+        },
+        {
+          "name": "getAllOptions",
+          "signature": "() => NodeList",
+          "parameters": [],
+          "returns": "NodeList",
+          "docs": "Vráti všetky možnosti ako HTML.",
+          "docsTags": []
+        },
+        {
+          "name": "getSelectedOptions",
+          "signature": "() => NodeList",
+          "parameters": [],
+          "returns": "NodeList",
+          "docs": "Vráti vybrané možnosti ako HTML.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "wje-select:change",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emituje sa pri zmene výberu.",
+          "docsTags": []
+        }
+      ],
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-option-highlighted",
+          "name": "--wje-select-border-width",
           "annotation": "prop",
-          "docs": "Definuje farbu pozadia elementu pri ukazaní myšou."
+          "docs": "Určuje šírku okraja okolo komponentu select. Prijíma akúkoľvek platnú jednotku dĺžky CSS (napr. `px`, `rem`, `em`).",
+          "docsTags": []
         },
         {
-          "name": "--wj-option-padding-bottom",
+          "name": "--wje-select-border-style",
           "annotation": "prop",
-          "docs": "Definuje veľkosť spodného vnútorného odsadenia elementu."
+          "docs": "Definuje štýl okraja pre komponent select. Prijíma štandardné štýly okrajov CSS, ako sú `solid`, `dashed` alebo `dotted`.",
+          "docsTags": []
         },
         {
-          "name": "--wj-option-padding-top",
+          "name": "--wje-select-border-color",
           "annotation": "prop",
-          "docs": "Definuje veľkosť horného vnútorného odsadenia elementu."
+          "docs": "Nastavuje farbu okraja pre komponent select. Prijíma akúkoľvek platnú hodnotu farby CSS vrátane premenných farieb, pomenovaných farieb a hexadecimálnych hodnôt.",
+          "docsTags": []
+        },
+        {
+          "name": "--wje-select-options-border-width",
+          "annotation": "prop",
+          "docs": "Určuje šírku okraja pre rozbaľovací zoznam možností select. Prijíma akúkoľvek platnú jednotku dĺžky CSS.",
+          "docsTags": []
+        },
+        {
+          "name": "--wje-select-options-border-style",
+          "annotation": "prop",
+          "docs": "Definuje štýl okraja pre rozbaľovací zoznam možností select. Dedí z definovanej premennej CSS pre konzistentnosť.",
+          "docsTags": []
+        },
+        {
+          "name": "--wje-select-options-border-color",
+          "annotation": "prop",
+          "docs": "Nastavuje farbu okraja pre rozbaľovací zoznam možností select. Prijíma akúkoľvek platnú hodnotu farby CSS.",
+          "docsTags": []
+        },
+        {
+          "name": "--wje-select-background",
+          "annotation": "prop",
+          "docs": "Určuje farbu pozadia komponentu select. Prijíma akúkoľvek platnú hodnotu farby CSS.",
+          "docsTags": []
+        },
+        {
+          "name": "--wje-select-line-height",
+          "annotation": "prop",
+          "docs": "Definuje výšku riadka pre text v komponente select. Prijíma akúkoľvek platnú hodnotu dĺžky CSS, zaisťujúcu konzistentné vertikálne zarovnanie.",
+          "docsTags": []
+        },
+        {
+          "name": "--wje-select-color",
+          "annotation": "prop",
+          "docs": "Nastavuje farbu textu pre komponent select. Prijíma akúkoľvek platnú hodnotu farby CSS.",
+          "docsTags": []
+        },
+        {
+          "name": "--wje-select-border-radius",
+          "annotation": "prop",
+          "docs": "Určuje polomer okraja pre komponent select. Určuje zaoblenie rohov a prijíma akúkoľvek platnú jednotku dĺžky CSS alebo premennú.",
+          "docsTags": []
+        },
+        {
+          "name": "--wje-select-margin-bottom",
+          "annotation": "prop",
+          "docs": "Nastavuje dolný okraj pre komponent select.",
+          "docsTags": []
         }
       ],
       "slots": [
         {
           "name": "",
-          "docs": "Obsah sa umiestni medzi named sloty."
+          "docs": "Predvolený slot pre možnosti selectu."
         },
         {
-          "name": "end",
-          "docs": "Obsah sa umiestni vpravo v LTR a vľavo v RTL."
+          "name": "anchor",
+          "docs": "Slot pre kotviaci element."
+        },
+        {
+          "name": "arrow",
+          "docs": "Slot pre šípku rozbaľovacieho zoznamu."
         },
         {
           "name": "start",
-          "docs": "Obsah je umiestnený vľavo v LTR a vpravo v RTL."
+          "docs": "Slot pre umiestnenie obsahu na začiatok komponentu."
+        },
+        {
+          "name": "end",
+          "docs": "Slot pre umiestnenie obsahu na koniec komponentu."
         }
       ],
       "parts": [
         {
           "name": "native",
-          "docs": "Odkazuje na `div` vo vnútri elementu."
+          "docs": "Obaľovač natívneho selectu."
+        },
+        {
+          "name": "input",
+          "docs": "Vstupné pole."
+        },
+        {
+          "name": "clear",
+          "docs": "Tlačidlo na vymazanie."
+        },
+        {
+          "name": "label",
+          "docs": "Element označenia."
+        },
+        {
+          "name": "input-wrapper",
+          "docs": "Obaľovač vstupného poľa."
+        },
+        {
+          "name": "options-wrapper",
+          "docs": "Obaľovač možností."
+        },
+        {
+          "name": "find",
+          "docs": "Vyhľadávacie vstupné pole."
+        },
+        {
+          "name": "popup",
+          "docs": "Element vyskakovacieho okna."
         }
       ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
-      "filePath": "src/components/select-option/select-options.tsx",
-      "encapsulation": "shadow",
-      "tag": "select-options",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
+      "dependencies": [
         {
-          "name": "item-text",
-          "type": "any",
-          "complexType": {
-            "original": "any | null",
-            "resolved": "any",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "item-text",
-          "reflectToAttr": false,
-          "docs": "Textová hodnota elementu",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "any"
-            }
-          ],
-          "optional": true,
-          "required": false
+          "name": "wje-button",
+          "docs": "Komponent používaný pre tlačidlá."
         },
         {
-          "name": "item-value",
-          "type": "any",
-          "complexType": {
-            "original": "any | null",
-            "resolved": "any",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "item-value",
-          "reflectToAttr": false,
-          "docs": "Textová hodnota elementu",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "any"
-            }
-          ],
-          "optional": true,
-          "required": false
+          "name": "wje-popup",
+          "docs": "Komponent pre vyskakovacie okno."
         },
         {
-          "name": "url",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string | undefined",
-            "resolved": "string | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "url",
-          "reflectToAttr": false,
-          "docs": "Obsahuje adresu URL alebo fragment adresy URL s dátami, ktoré sa majú získať.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": false,
-          "required": false
+          "name": "wje-icon",
+          "docs": "Komponent pre ikony."
+        },
+        {
+          "name": "wje-label",
+          "docs": "Komponent pre označenia."
+        },
+        {
+          "name": "wje-chip",
+          "docs": "Komponent pre čipy použité pri viacnásobnom výbere."
+        },
+        {
+          "name": "wje-input",
+          "docs": "Komponent pre vstupné pole."
+        },
+        {
+          "name": "wje-option",
+          "docs": "Komponent pre jednotlivé možnosti výberu."
+        },
+        {
+          "name": "wje-options",
+          "docs": "Komponent pre správu zoznamu možností."
         }
       ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
       "dependencyGraph": {}
     },
     {
-      "filePath": "src/components/slider/slider.tsx",
+      "filePath": "src/components/option/option.tsx",
       "encapsulation": "shadow",
-      "tag": "slider",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      "tag": "option",
+      "docs": "Element Option predstavuje jednotlivé voliteľné možnosti v rámci komponentu Select. Je obdobný štandardnému elementu HTML select a umožňuje používateľom vykonať jeden alebo viacero výberov na základe konfigurácie komponentu Select. Tieto elementy sa môžu dynamicky napĺňať a sú navrhnuté tak, aby bezproblémovo spolupracovali s vlastnou logikou komponentu wj-select vrátane funkcií, ako je viacnásobný výber a vlastné štylizovanie.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "Tento element predstavuje možnosť v rámci komponentu select."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/option"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "csspart",
+          "text": "native - Natívna časť možnosti."
+        },
+        {
+          "name": "slot",
+          "text": "start - Slot pre obsah na začiatku možnosti."
+        },
+        {
+          "name": "slot",
+          "text": " - Predvolený slot pre obsah možnosti."
+        },
+        {
+          "name": "slot",
+          "text": "end - Slot pre obsah na konci možnosti."
+        },
+        {
+          "name": "tag",
+          "text": "wje-option"
+        }
+      ],
+      "usage": "<wje-option value=\"hodnota\">Zobrazený text</wje-option>",
       "props": [
         {
-          "name": "max",
-          "type": "number | undefined",
+          "name": "selected",
+          "type": "boolean",
           "complexType": {
-            "original": "number",
-            "resolved": "number | undefined",
+            "original": "boolean",
+            "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
-          "attr": "max",
-          "reflectToAttr": false,
-          "docs": "Definuje maximálnu hodnotu posuvníka.",
+          "mutable": true,
+          "attr": "selected",
+          "reflectToAttr": true,
+          "docs": "Určuje, či je možnosť vybraná.",
           "docsTags": [],
           "values": [
             {
-              "type": "number"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "min",
-          "type": "number | undefined",
-          "complexType": {
-            "original": "number",
-            "resolved": "number | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "min",
-          "reflectToAttr": false,
-          "docs": "Definuje minimálnu hodnotu posuvníka.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "step",
-          "type": "number | undefined",
-          "complexType": {
-            "original": "number",
-            "resolved": "number | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "step",
-          "reflectToAttr": false,
-          "docs": "Definuje interval medzi jednotlivými hodnotami posuvníka.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "undefined"
+              "type": "boolean"
             }
           ],
           "optional": true,
@@ -9896,23 +10750,60 @@
         },
         {
           "name": "value",
-          "type": "number | undefined",
+          "type": "string",
           "complexType": {
-            "original": "number",
-            "resolved": "number | undefined",
+            "original": "string",
+            "resolved": "string",
             "references": {}
           },
-          "mutable": false,
-          "attr": "step",
-          "reflectToAttr": false,
-          "docs": "Definuje aktuálnu hodnotu posuvníka.",
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "Hodnota možnosti, ktorá sa používa pri odoslaní formulára.",
           "docsTags": [],
           "values": [
             {
-              "type": "number"
-            },
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": true,
+          "docs": "Textový obsah možnosti, ktorý sa zobrazuje používateľovi.",
+          "docsTags": [],
+          "values": [
             {
-              "type": "undefined"
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "Ak je true, možnosť je deaktivovaná a nie je možné ju vybrať.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": true,
@@ -9922,99 +10813,612 @@
       "methods": [],
       "events": [
         {
-          "event": "wj:slider-change",
-          "detail": "{ tab: string; }",
-          "bubbles": false,
-          "complexType": {
-            "original": "{ tab: string }",
-            "resolved": "{ tab: string; }",
-            "references": {}
-          },
+          "event": "wje-option:change",
+          "detail": "{ value: string, text: string }",
+          "bubbles": true,
           "cancelable": true,
           "composed": true,
-          "docs": "Vyvolaný sa po zmene hodnoty slidera.",
+          "docs": "Vyvolaný keď je možnosť kliknutá.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "click",
+          "method": "optionClickCallback",
+          "target": "self",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [
+        {
+          "name": "--wje-option-padding-top",
+          "annotation": "prop",
+          "docs": "Horné odsadenie možnosti."
+        },
+        {
+          "name": "--wje-option-padding-bottom",
+          "annotation": "prop",
+          "docs": "Dolné odsadenie možnosti."
+        },
+        {
+          "name": "--wje-option-highlighted",
+          "annotation": "prop",
+          "docs": "Farba zvýraznenia možnosti pri prejdení myšou."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre obsah možnosti."
+        },
+        {
+          "name": "start",
+          "docs": "Slot pre obsah na začiatku možnosti."
+        },
+        {
+          "name": "end",
+          "docs": "Slot pre obsah na konci možnosti."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Natívna časť možnosti."
+        }
+      ],
+      "dependents": [],
+      "dependencies": ["wje-icon"],
+      "dependencyGraph": {
+        "wje-option": ["wje-icon"]
+      }
+    },
+    {
+      "filePath": "src/components/options/options.tsx",
+      "encapsulation": "shadow",
+      "tag": "options",
+      "docs": "`Options` je vlastný webový komponent, ktorý predstavuje sadu možností, z ktorých možno vyberať. Rozširuje základnú funkcionalitu WJElement a poskytuje dynamické načítavanie a správu možností s podporou pre lenivé (lazy) načítavanie a vyhľadávanie.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "Tento element predstavuje sadu možností."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/options"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "augments",
+          "text": "{WJElement}"
+        },
+        {
+          "name": "tag",
+          "text": "wje-options"
+        }
+      ],
+      "usage": "<wje-options option-array-path=\"data\" item-text=\"text\" item-value=\"value\"></wje-options>",
+      "props": [
+        {
+          "name": "optionArrayPath",
+          "type": "string",
+          "mutable": true,
+          "attr": "option-array-path",
+          "reflectToAttr": true,
+          "docs": "Cesta k poľu možností v odpovedi zo servera.",
+          "docsTags": [],
+          "default": "data",
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "dropdownHeight",
+          "type": "string",
+          "mutable": true,
+          "attr": "dropdown-height",
+          "reflectToAttr": true,
+          "docs": "Výška rozbaľovacieho zoznamu možností.",
+          "docsTags": [],
+          "default": "100%",
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "itemValue",
+          "type": "string",
+          "mutable": true,
+          "attr": "item-value",
+          "reflectToAttr": true,
+          "docs": "Názov vlastnosti, ktorá sa použije ako hodnota možnosti.",
+          "docsTags": [],
+          "default": "value",
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "itemText",
+          "type": "string",
+          "mutable": true,
+          "attr": "item-text",
+          "reflectToAttr": true,
+          "docs": "Názov vlastnosti, ktorá sa použije ako text možnosti.",
+          "docsTags": [],
+          "default": "text",
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "lazyLoadSize",
+          "type": "number",
+          "mutable": true,
+          "attr": "lazy-load-size",
+          "reflectToAttr": true,
+          "docs": "Počet položiek načítaných pri lenivom načítaní.",
+          "docsTags": [],
+          "default": "10",
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "mutable": true,
+          "attr": "search",
+          "reflectToAttr": true,
+          "docs": "Vyhľadávací reťazec pre filtrovanie možností.",
+          "docsTags": [],
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "searchToQueryParams",
+          "type": "boolean",
+          "mutable": true,
+          "attr": "search-to-query-params",
+          "reflectToAttr": true,
+          "docs": "Určuje, či sa má vyhľadávací reťazec pridať do parametrov URL.",
+          "docsTags": [],
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "searchParamName",
+          "type": "string",
+          "mutable": true,
+          "attr": "search-param-name",
+          "reflectToAttr": true,
+          "docs": "Názov parametra pre vyhľadávanie v URL.",
+          "docsTags": [],
+          "default": "search",
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "queryParams",
+          "type": "string",
+          "mutable": true,
+          "attr": "query-params",
+          "reflectToAttr": true,
+          "docs": "Dodatočné parametre pre URL dotaz.",
+          "docsTags": [],
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "lazy",
+          "type": "boolean",
+          "mutable": true,
+          "attr": "lazy",
+          "reflectToAttr": true,
+          "docs": "Určuje, či sa má použiť lenivé načítavanie možností.",
+          "docsTags": [],
+          "values": [],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "findSelectedOptionData",
+          "signature": "findSelectedOptionData(selectedOptionValues: Array) => Array",
+          "returns": "Array",
+          "parameters": [
+            {
+              "name": "selectedOptionValues",
+              "type": "Array",
+              "docs": "Pole hodnôt vybraných možností."
+            }
+          ],
+          "docs": "Vyhľadáva údaje o vybraných možnostiach na základe zadaných hodnôt možností.",
           "docsTags": []
         },
         {
-          "event": "wj:slider-init",
-          "detail": "{ tab: string; }",
-          "bubbles": false,
-          "complexType": {
-            "original": "{ tab: string }",
-            "resolved": "{ tab: string; }",
-            "references": {}
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Vyvolaný po prvotnom načítaní slidera.",
+          "name": "addOption",
+          "signature": "addOption(optionData: object) => void",
+          "returns": "void",
+          "parameters": [
+            {
+              "name": "optionData",
+              "type": "object",
+              "docs": "Údaje možnosti, ktorá má byť pridaná."
+            }
+          ],
+          "docs": "Pridáva možnosť do elementu.",
           "docsTags": []
         },
         {
-          "event": "wj:slider-move",
-          "detail": "{ tab: string; }",
-          "bubbles": false,
+          "name": "addOptions",
+          "signature": "addOptions(optionsData: Array, silent?: boolean) => void",
+          "returns": "void",
+          "parameters": [
+            {
+              "name": "optionsData",
+              "type": "Array",
+              "docs": "Pole údajov možností, ktoré majú byť pridané."
+            },
+            {
+              "name": "silent",
+              "type": "boolean",
+              "docs": "Určuje, či sa majú potlačiť udalosti vyvolané pridaním možností.",
+              "default": "false"
+            }
+          ],
+          "docs": "Pridáva viaceré možnosti do elementu.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "wje-options:load",
+          "detail": "{}",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Vyvolaný po načítaní možností.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre možnosti."
+        }
+      ],
+      "parts": [],
+      "dependents": [],
+      "dependencies": ["wje-option", "wje-infinite-scroll", "wje-list"],
+      "dependencyGraph": {
+        "wje-options": ["wje-option", "wje-infinite-scroll", "wje-list"]
+      }
+    },
+    {
+      "filePath": "src/components/slider/slider.tsx",
+      "encapsulation": "shadow",
+      "tag": "slider",
+      "docs": "Komponent posúvača (slider), ktorý umožňuje používateľom vybrať hodnotu v rámci špecifikovaného rozsahu.",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "value",
+          "type": "number",
           "complexType": {
-            "original": "{ tab: string }",
-            "resolved": "{ tab: string; }",
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "Aktuálna hodnota posúvača.",
+          "docsTags": [],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "min",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "min",
+          "reflectToAttr": false,
+          "docs": "Minimálna hodnota posúvača.",
+          "docsTags": [],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "max",
+          "reflectToAttr": false,
+          "docs": "Maximálna hodnota posúvača.",
+          "docsTags": [],
+          "default": "100",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "step",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "step",
+          "reflectToAttr": false,
+          "docs": "Hodnota kroku - určuje koľko sa zmení hodnota pri jednom posunutí.",
+          "docsTags": [],
+          "default": "1",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "bubble",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "bubble",
+          "reflectToAttr": false,
+          "docs": "Ak je definovaný, zobrazuje sa bublina s aktuálnou hodnotou nad posúvačom.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "color",
+          "type": "\"complete\" | \"danger\" | \"dark\" | \"primary\" | \"success\" | \"warning\" | string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Farba posúvača, ktorá sa má použiť. Predvolené možnosti sú: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, a `\"dark\"`.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "complete",
+              "type": "string"
+            },
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            },
+            {
+              "value": "dark",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getPercentage",
+          "returns": {
+            "type": "number",
+            "docs": "Vypočítané percentuálne hodnoty v rozmedzí od 0 do 100. Vráti 0, ak je rozsah neplatný."
+          },
+          "complexType": {
+            "signature": "(min: number, max: number, value?: number) => number",
+            "parameters": [
+              {
+                "name": "min",
+                "type": "number"
+              },
+              {
+                "name": "max",
+                "type": "number"
+              },
+              {
+                "name": "value",
+                "type": "number | undefined"
+              }
+            ],
+            "references": {},
+            "return": "number"
+          },
+          "signature": "getPercentage(min: number, max: number, value?: number) => number",
+          "parameters": [
+            {
+              "name": "min",
+              "type": "number",
+              "docs": "Minimálna hodnota rozsahu."
+            },
+            {
+              "name": "max",
+              "type": "number",
+              "docs": "Maximálna hodnota rozsahu."
+            },
+            {
+              "name": "value",
+              "type": "number | undefined",
+              "docs": "Aktuálna hodnota v rámci rozsahu. Predvolené na 0, ak nie je poskytnuté."
+            }
+          ],
+          "docs": "Vypočíta percentuálnu hodnotu v rámci daného rozsahu.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "wje-slider:init",
+          "detail": "SliderEventDetail",
+          "bubbles": true,
+          "complexType": {
+            "original": "SliderEventDetail",
+            "resolved": "{ value: string; output: HTMLOutputElement; }",
             "references": {}
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Vyvolaný po pohybe rukoväte slidera.",
+          "docs": "Vyvolaný pri inicializácii posúvača.",
+          "docsTags": []
+        },
+        {
+          "event": "wje-slider:move",
+          "detail": "SliderEventDetail",
+          "bubbles": true,
+          "complexType": {
+            "original": "SliderEventDetail",
+            "resolved": "{ value: string; output: HTMLOutputElement; }",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Vyvolaný keď sa posúvač pohybuje.",
+          "docsTags": []
+        },
+        {
+          "event": "wje-slider:change",
+          "detail": "SliderEventDetail",
+          "bubbles": true,
+          "complexType": {
+            "original": "SliderEventDetail",
+            "resolved": "{ value: string; output: HTMLOutputElement; }",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Vyvolaný keď sa zmení hodnota posúvača.",
           "docsTags": []
         }
       ],
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-slider-color",
+          "name": "--wje-slider-track-height",
           "annotation": "prop",
-          "docs": "Definuje farbu slideru."
+          "docs": "Výška dráhy posúvača"
         },
         {
-          "name": "--wj-slider-thumb-color",
+          "name": "--wje-slider-color",
           "annotation": "prop",
-          "docs": "Definuje farbu rukoväťe slideru."
+          "docs": "Farba aktívnej časti dráhy posúvača"
         },
         {
-          "name": "--wj-slider-thumb-shadow",
+          "name": "--wje-slider-thumb-color",
           "annotation": "prop",
-          "docs": "Definuje box-shadow rukoväťe slideru."
+          "docs": "Farba tlačidla posúvača"
         },
         {
-          "name": "--wj-slider-thumb-shadow-active",
+          "name": "--wje-slider-thumb-border",
           "annotation": "prop",
-          "docs": "Definuje box-shadow rukoväťe slideru v aktívnom stave."
+          "docs": "Okraj tlačidla posúvača"
         },
         {
-          "name": "--wj-slider-track-color",
+          "name": "--wje-slider-thumb-shadow",
           "annotation": "prop",
-          "docs": "Definuje farbu posuvnej dráhy slideru."
+          "docs": "Tieň tlačidla posúvača v základnom stave"
         },
         {
-          "name": "--wj-slider-track-height",
+          "name": "--wje-slider-thumb-shadow-active",
           "annotation": "prop",
-          "docs": "Definuje výšku posuvnej dráhy slideru."
+          "docs": "Tieň tlačidla posúvača v aktívnom stave"
+        },
+        {
+          "name": "--wje-slider-track-color",
+          "annotation": "prop",
+          "docs": "Farba neaktívnej časti dráhy posúvača"
         }
       ],
       "slots": [
         {
-          "name": "end",
-          "docs": "Obsah sa umiestni vpravo v LTR a vľavo v RTL."
-        },
-        {
           "name": "label",
-          "docs": "Obsah sa umiestni vpravo od dráhy slideru v LTR a vľavo v RTL."
+          "docs": "Obsah menovky posúvača."
         },
         {
           "name": "start",
-          "docs": "Obsah je umiestnený vľavo v LTR a vpravo v RTL."
+          "docs": "Obsah, ktorý sa zobrazí na začiatku posúvača."
+        },
+        {
+          "name": "end",
+          "docs": "Obsah, ktorý sa zobrazí na konci posúvača."
         }
       ],
       "parts": [
         {
+          "name": "native",
+          "docs": "Odkazuje na hlavný obaľovací div element."
+        },
+        {
           "name": "slider",
-          "docs": "Odkazuje na `input` vo vnútri elementu."
+          "docs": "Odkazuje na samotný input element typu range."
         }
       ],
       "dependents": [],

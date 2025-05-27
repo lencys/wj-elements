@@ -274,5 +274,17 @@
   "sidebar.api.category.Pagination": {
     "message": "Pagination",
     "description": "The label for category Pagination in sidebar api"
+  },
+  "sidebar.docs.category.Nástroje": {
+    "message": "Tools",
+    "description": "The label for category Nástroje in sidebar docs"
+  },
+  "sidebar.api.category.QR code": {
+    "message": "QR code",
+    "description": "The label for category QR code in sidebar api"
+  },
+  "sidebar.api.category.ReorderHandle": {
+    "message": "ReorderHandle",
+    "description": "The label for category ReorderHandle in sidebar api"
   }
 }

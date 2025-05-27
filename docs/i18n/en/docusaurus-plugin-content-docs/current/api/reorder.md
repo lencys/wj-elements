@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Reorder is a component that allows dragging an item to change its order within a group of items. It must be used within the reorder group to provide a visual drag and drop interface.
+`Reorder` is a component that allows you to use the Drag&Drop functionality to reorder the `ReorderItem` items in a group.
 
 ## Basic usage
 
@@ -29,25 +29,33 @@ import Basic from '@site/static/usage/v1/reorder/basic/index.md';
 
 <Basic />
 
-## Disabled
+## Attribute Disabled
+
+The `disabled` attribute is used to disable the ability to reorder items within a `Reorder`. When this attribute is set, the user will not be able to drag items to change their order.
 
 import Disabled from '@site/static/usage/v1/reorder/disabled/index.md';
 
 <Disabled />
 
-## Handle
+## Handle for pulling
+
+By adding an item to the `handle` slot of the [**ReorderItem**](../reorder-item) item, you can define a specific area that will serve as a handle for dragging and rearranging items. This allows users to interact more intuitively when changing the order of items.
 
 import Handle from '@site/static/usage/v1/reorder/handle/index.md';
 
 <Handle />
 
-## Reverse order
+## Attribute Reverse - Reverse order
+
+The `reverse` attribute is used to change the direction of reordering items within a `Reorder`.
 
 import Reverse from '@site/static/usage/v1/reorder/reverse/index.md';
 
 <Reverse />
 
 ## Drop Zones
+
+DropZone is a component that represents a zone intended for rearranging content.
 
 import DropZones from '@site/static/usage/v1/reorder/drop-zones/index.md';
 

@@ -23,6 +23,14 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Nástroje',
+      collapsed: false,
+      items: [
+        'utilities/permissions',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Prispôsobenie',
       collapsed: false,
       items: [
@@ -275,6 +283,12 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'QR code',
+      collapsed: false,
+      items: ['api/qr-code'],
+    },
+    {
+      type: 'category',
       label: 'Radio',
       collapsed: false,
       items: ['api/radio', 'api/radio-group'],
@@ -289,7 +303,13 @@ module.exports = {
       type: 'category',
       label: 'Reorder',
       collapsed: false,
-      items: [ 'api/reorder-item'],
+      items: [ 'api/reorder', 'api/reorder-dropzone', 'api/reorder-item'],
+    },
+    {
+      type: 'category',
+      label: 'ReorderHandle',
+      collapsed: false,
+      items: [ 'api/reorder-handle'],
     },
     {
       type: 'category',

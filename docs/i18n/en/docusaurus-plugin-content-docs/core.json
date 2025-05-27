@@ -8747,275 +8747,459 @@
       }
     },
     {
-      "filePath": "src/components/qr-code/qr-code.tsx",
-      "encapsulation": "shadow",
-      "tag": "qr-code",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
       "filePath": "src/components/progress-bar/progress-bar.tsx",
       "encapsulation": "shadow",
       "tag": "progress-bar",
-      "docs": "",
-      "docsTags": [
-        {
-          "name": "slot",
-          "docs": "end - The content is placed on the right in the LTR and on the left in the RTL."
-        },
-        {
-          "name": "slot",
-          "docs": "start - The content is placed on the left in the LTR and on the right in the RTL."
-        }
-      ],
+      "docs": "The `ProgressBar` component is a custom web component that represents a progress bar.",
+      "docsTags": [],
       "usage": {},
       "props": [
         {
-          "name": "color",
-          "type": "\"danger\" | \"dark\" |  \"primary\"  | \"success\" | \"light\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
-          "complexType": {
-            "original": "Color",
-            "resolved": "\"danger\" | \"dark\" |  \"primary\"  | \"success\" | \"light\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
-            "references": {
-              "Color": {
-                "location": "import",
-                "path": "../../interface",
-                "id": "src/interface.d.ts::Color"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": true,
-          "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, a `\"dark\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "danger",
-              "type": "string"
-            },
-            {
-              "value": "dark",
-              "type": "string"
-            },
-            {
-              "value": "light",
-              "type": "string"
-            },
-            {
-              "value": "primary",
-              "type": "string"
-            },
-            {
-              "value": "success",
-              "type": "string"
-            },
-            {
-              "value": "warning",
-              "type": "string"
-            },
-            {
-              "type": "String & Record<never, never>"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "linecap",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "linecap",
-          "reflectToAttr": false,
-          "docs": "Definuje ukazovateľ priebehu so zaobleným koncom.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "progress",
-          "type": "number",
-          "complexType": {
-            "original": "number",
-            "resolved": "number",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "progress",
-          "reflectToAttr": false,
-          "docs": "Určuje hodnotu priebehu v percentách.",
-          "docsTags": [],
-          "default": "0",
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
           "name": "radius",
           "type": "number",
-          "complexType": {
-            "original": "number",
-            "resolved": "number",
-            "references": {}
-          },
-          "mutable": false,
+          "mutable": true,
           "attr": "radius",
-          "reflectToAttr": false,
-          "docs": "Určuje hodnotu priebehu v percentách.",
-          "docsTags": [],
+          "docs": "Adjusts the radius of the circular waveform indicator.",
           "default": "70",
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": false,
+          "optional": true,
           "required": false
         },
         {
           "name": "stroke",
           "type": "number",
-          "complexType": {
-            "original": "number",
-            "resolved": "number",
-            "references": {}
-          },
-          "mutable": false,
+          "mutable": true,
           "attr": "stroke",
-          "reflectToAttr": false,
-          "docs": "Určuje hodnotu priebehu v percentách.",
-          "docsTags": [],
-          "default": "12",
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": false,
+          "docs": "Adjusts the thickness of the waveform indicator line.",
+          "default": "6",
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "progress",
+          "type": "number",
+          "mutable": true,
+          "attr": "progress",
+          "docs": "Sets the current progress status in percentage.",
+          "optional": true,
           "required": false
         },
         {
           "name": "type",
+          "type": "string",
+          "mutable": false,
+          "attr": "type",
+          "docs": "Specifies the type of waveform indicator (default linear or 'circle' for circular).",
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "linecap",
+          "type": "string",
+          "mutable": false,
+          "attr": "linecap",
+          "docs": "Sets the line ending style (e.g. 'square', 'round').",
+          "default": "square",
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "mutable": false,
+          "attr": "color",
+          "docs": "Sets the color scheme of the progress indicator (primary, complete, success, warning, danger, info).",
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getCircleDasharray",
+          "returns": "number",
+          "signature": "getCircleDasharray(radius?: number) => number",
+          "parameters": [
+            {
+              "name": "radius",
+              "type": "number",
+              "docs": "Radius of the circle in pixels."
+            }
+          ],
+          "docs": "Returns the value for the dasharray of a circle with the given radius.",
+          "docsTags": []
+        },
+        {
+          "name": "getCircleDashoffset",
+          "returns": "number",
+          "signature": "getCircleDashoffset(progress?: number, radius?: number) => number",
+          "parameters": [
+            {
+              "name": "progress",
+              "type": "number",
+              "docs": "Progress status in percentage."
+            },
+            {
+              "name": "radius",
+              "type": "number",
+              "docs": "Radius of the circle in pixels."
+            }
+          ],
+          "docs": "Returns the value for the dashoffset of a circle with the given waveform and radius.",
+          "docsTags": []
+        },
+        {
+          "name": "setCircleProgress",
+          "returns": "void",
+          "signature": "setCircleProgress(percent: number) => void",
+          "parameters": [
+            {
+              "name": "percent",
+              "type": "number",
+              "docs": "Percentage progression to be set."
+            }
+          ],
+          "docs": "Sets the waveform value for the circular indicator.",
+          "docsTags": []
+        }
+      ],
+      "events": [],
+      "listeners": [],
+      "styles": [
+        {
+          "name": "--wje-progress-bar-background-color",
+          "annotation": "prop",
+          "docs": "Sets the background color of the progress bar."
+        },
+        {
+          "name": "--wje-progress-bar-color",
+          "annotation": "prop",
+          "docs": "Sets the colour of the progress bar. This property controls the color of the waveform indicator fill."
+        },
+        {
+          "name": "--wje-progress-bar-text-size",
+          "annotation": "prop",
+          "docs": "Defines the font size of the text displayed inside the progress bar."
+        },
+        {
+          "name": "--wje-progress-bar-text-color",
+          "annotation": "prop",
+          "docs": "Specifies the color of the text displayed inside the progress bar."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Default progress bar slot."
+        },
+        {
+          "name": "start",
+          "docs": "Slot at the beginning of the progress indicator."
+        },
+        {
+          "name": "end",
+          "docs": "Slot at the end of the progress indicator."
+        }
+      ],
+      "parts": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/qr-code/qr-code.tsx",
+      "encapsulation": "shadow",
+      "tag": "qr-code",
+      "docs": "`QrCode` is a custom web component that generates a QR code.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "This element is a QR code generator."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/qr-code"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "csspart",
+          "text": "native - Native part of the QR code."
+        },
+        {
+          "name": "slot",
+          "text": "top - Slot for content at the top of the QR code."
+        },
+        {
+          "name": "slot",
+          "text": "bottom - Slot for content at the bottom of the QR code."
+        },
+        {
+          "name": "tag",
+          "text": "wje-qr-code"
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "value",
           "type": "string",
           "complexType": {
             "original": "string",
             "resolved": "string",
             "references": {}
           },
-          "mutable": true,
-          "attr": "type",
+          "mutable": false,
+          "attr": "value",
           "reflectToAttr": false,
-          "docs": "Pridaním vlastnosti type s hodnotou “circle” zobrazíte progress bar s okrúhlym dizajnom.",
+          "docs": "The value to be encoded into the QR code.",
           "docsTags": [],
-          "default": "undefined",
+          "default": "\"empty value\"",
           "values": [
             {
-              "value": "circle",
-              "type": "string"
-            },
-            {
-              "value": "undefined",
               "type": "string"
             }
           ],
           "optional": false,
-          "required": true
+          "required": false
+        },
+        {
+          "name": "background",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "background",
+          "reflectToAttr": false,
+          "docs": "QR code background colour.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "backgroundAlpha",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "backgroundAlpha",
+          "reflectToAttr": false,
+          "docs": "QR code background transparency (0-1).",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "foreground",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "foreground",
+          "reflectToAttr": false,
+          "docs": "Foreground colour of the QR code.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "foregroundAlpha",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "foregroundAlpha",
+          "reflectToAttr": false,
+          "docs": "QR code foreground transparency (0-1).",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "level",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "level",
+          "reflectToAttr": false,
+          "docs": "QR code error correction level (L, M, Q, H).",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "padding",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "padding",
+          "reflectToAttr": false,
+          "docs": "Internal QR code offset in pixels.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": false,
+          "docs": "QR code size in pixels.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
         }
       ],
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [
-        {
-          "name": "--wj-progress-bar-color",
-          "annotation": "prop",
-          "docs": "Definuje farbu ukazovateľa priebehu"
-        },
-        {
-          "name": "--wj-progress-bar-text-size",
-          "annotation": "prop",
-          "docs": "Definuje veľkosť textu"
-        }
-      ],
+      "styles": [],
       "slots": [
         {
-          "name": "end",
-          "docs": "The content is placed on the right in the LTR and on the left in the RTL."
+          "name": "top",
+          "docs": "Slot for content at the top of the QR code."
         },
         {
-          "name": "start",
-          "docs": "The content is placed on the left in the LTR and on the right in the RTL."
+          "name": "bottom",
+          "docs": "Slot for content at the bottom of the QR code."
         }
       ],
-      "parts": [],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Refers to the `canvas` inside the element."
+        }
+      ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "WJElement"
+      ],
+      "dependencyGraph": {
+        "wje-qr-code": [
+          "WJElement"
+        ]
+      }
     },
     {
       "filePath": "src/components/radio/radio.tsx",
       "encapsulation": "shadow",
       "tag": "radio",
-      "docs": "",
+      "docs": "This class represents a Radio Button component, extending the WJElement class.",
       "docsTags": [
         {
-          "name": "slot",
-          "docs": "end - The content is placed on the right in the LTR and on the left in the RTL."
+          "name": "Summary",
+          "text": "This class represents a Radio Button component, extending the WJElement class."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/radio"
+        },
+        {
+          "name": "status",
+          "text": "stable"
         },
         {
           "name": "slot",
-          "docs": "start - The content is placed on the left in the LTR and on the right in the RTL."
+          "text": "- The default slot for the contents of the switch designation."
+        },
+        {
+          "name": "csspart",
+          "text": "native-radio - Native wrapper for the switch."
         }
       ],
       "usage": {},
       "props": [
         {
+          "name": "checked",
+          "type": "boolean",
+          "mutable": true,
+          "attr": "checked",
+          "reflectToAttr": true,
+          "docs": "Indicates whether the switch is checked.",
+          "docsTags": [],
+          "default": "false",
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "Indicates whether the switch is unchecked.",
+          "docsTags": [],
+          "default": "false",
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "color",
-          "type": "\"danger\" | \"neutral\" |  \"primary\" | \"success\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
-          "complexType": {
-            "original": "Color",
-            "resolved": "\"danger\" | \"neutral\" |  \"primary\" | \"success\" | \"complete\" | \"warning\" | string & Record<never, never> | undefined",
-            "references": {
-              "Color": {
-                "location": "import",
-                "path": "../../interface",
-                "id": "src/interface.d.ts::Color"
-              }
-            }
-          },
+          "type": "string",
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"` a `\"neutral\"`.\nPre viac informácií prejdite na: [theming](/theming/basics).",
+          "docs": "Specifies the color of the switch.",
           "docsTags": [],
           "values": [
             {
@@ -9043,39 +9227,155 @@
               "type": "string"
             },
             {
-              "type": "String & Record<never, never>"
-            },
-            {
-              "type": "undefined"
+              "value": "info",
+              "type": "string"
             }
           ],
           "optional": true,
           "required": false
         },
         {
-          "name": "checked",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
+          "name": "value",
+          "type": "string",
           "mutable": false,
-          "attr": "checked",
-          "reflectToAttr": false,
-          "docs": "Ak `true`, možnosť je zvolená.",
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "Switch value.",
           "docsTags": [],
-          "default": "false",
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "placement",
+          "type": "string",
+          "mutable": false,
+          "attr": "placement",
+          "reflectToAttr": true,
+          "docs": "Specifies the location of the label relative to the switch.",
+          "docsTags": [],
           "values": [
             {
-              "type": "boolean"
+              "value": "start",
+              "type": "string"
+            },
+            {
+              "value": "end",
+              "type": "string"
+            }
+          ],
+          "default": "start",
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "wje-radio:change",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Called when the switch state changes.",
+          "docsTags": []
+        },
+        {
+          "event": "wje-radio:input",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Invoked when interacting with the switch.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [
+        {
+          "name": "--wje-radio-margin-inline",
+          "annotation": "prop",
+          "docs": "Specifies the horizontal (left and right) offset for the switch. Accepts any valid CSS length unit (e.g. `px`, `rem`, `%`) to control the spacing on either side of the component."
+        },
+        {
+          "name": "--wje-radio-margin-top",
+          "annotation": "prop",
+          "docs": "Defines the upper offset for the switch. Accepts any valid CSS length value to set the vertical spacing above the component."
+        },
+        {
+          "name": "--wje-radio-margin-bottom",
+          "annotation": "prop",
+          "docs": "Sets the lower offset for the switch. Accepts any valid CSS length value to set the vertical spacing below the component."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The default switch label content slot."
+        }
+      ],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "WJElement"
+      ],
+      "dependencyGraph": {
+        "wje-radio": [
+          "WJElement"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/radio-group/radio-group.tsx",
+      "encapsulation": "shadow",
+      "tag": "radio-group",
+      "docs": "RadioGroup is a custom web component that represents a group of radio buttons.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "This element represents a group of radio buttons."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/radio-group"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "slot",
+          "text": "Default location for radio buttons."
+        },
+        {
+          "name": "tag",
+          "text": "wje-radio-group"
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "The value of the currently selected radio button in the group.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
             }
           ],
           "optional": false,
           "required": false
         },
         {
-          "name": "disabled",
+          "name": "inline",
           "type": "boolean",
           "complexType": {
             "original": "boolean",
@@ -9083,31 +9383,9 @@
             "references": {}
           },
           "mutable": false,
-          "attr": "disabled",
+          "attr": "inline",
           "reflectToAttr": false,
-          "docs": "If `true`, the option cannot be selected.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "indeterminate",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "indeterminate",
-          "reflectToAttr": false,
-          "docs": "If `true`, it sets the default state of the radio element to neutral, i.e. neither `true` nor `false`.",
+          "docs": "If set, the radio buttons will appear in a row instead of a column.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -9129,9 +9407,8 @@
           "mutable": false,
           "attr": "name",
           "reflectToAttr": false,
-          "docs": "Specifies the name of the radio element.",
+          "docs": "The name of the radio button group used when submitting the form.",
           "docsTags": [],
-          "default": "this.inputId",
           "values": [
             {
               "type": "string"
@@ -9139,74 +9416,319 @@
           ],
           "optional": false,
           "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getAllElements",
+          "returns": {
+            "type": "HTMLElement[]",
+            "docs": "Field of elements of children."
+          },
+          "complexType": {
+            "signature": "() => HTMLElement[]",
+            "parameters": [],
+            "references": {},
+            "return": "HTMLElement[]"
+          },
+          "signature": "getAllElements() => HTMLElement[]",
+          "parameters": [],
+          "docs": "Returns all direct child elements of the current element.",
+          "docsTags": []
         },
         {
-          "name": "value",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
-            "references": {}
+          "name": "CheckRadio",
+          "returns": {
+            "type": "boolean",
+            "docs": "Whether a radio button with the given value has been found."
           },
-          "mutable": false,
-          "attr": "value",
-          "reflectToAttr": false,
-          "docs": "The value of the radio element.",
+          "complexType": {
+            "signature": "(value: string) => boolean",
+            "parameters": [
+              {
+                "name": "value",
+                "type": "string",
+                "docs": "The value of the radio button to indicate."
+              }
+            ],
+            "references": {},
+            "return": "boolean"
+          },
+          "signature": "checkRadio(value: string) => boolean",
+          "parameters": [
+            {
+              "name": "value",
+              "type": "string",
+              "docs": "The value of the radio button to indicate."
+            }
+          ],
+          "docs": "Marks the radio button with the given value.",
+          "docsTags": []
+        },
+        {
+          "name": "removeCheck",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => void",
+            "parameters": [],
+            "references": {},
+            "return": "void"
+          },
+          "signature": "removeCheck() => void",
+          "parameters": [],
+          "docs": "Removes the marking from all radio buttons.",
+          "docsTags": []
+        },
+        {
+          "name": "getRadioByValue",
+          "returns": {
+            "type": "Radio",
+            "docs": "Radio button."
+          },
+          "complexType": {
+            "signature": "(value: string) => Radio",
+            "parameters": [
+              {
+                "name": "value",
+                "type": "string",
+                "docs": "The value of the radio button."
+              }
+            ],
+            "references": {
+              "Radio": {
+                "location": "import",
+                "path": "../wje-radio/radio.js",
+                "id": "packages/wje-radio/radio.js::Radio"
+              }
+            },
+            "return": "Radio"
+          },
+          "signature": "getRadioByValue(value: string) => Radio",
+          "parameters": [
+            {
+              "name": "value",
+              "type": "string",
+              "docs": "The value of the radio button."
+            }
+          ],
+          "docs": "Returns the radio button with the given value.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "wje-radio:change",
+          "detail": "{ context: Radio }",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Issued when the selected radio button in the group is changed.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "wje-radio:input",
+          "method": "handleRadioInput",
+          "target": "undefined",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Default location for radio buttons."
+        }
+      ],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "Radio"
+      ],
+      "dependencyGraph": {
+        "wje-radio-group": [
+          "Radio"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/relative-time/relative-time.tsx",
+      "encapsulation": "shadow",
+      "tag": "relative-time",
+      "docs": "This element represents the relative time component.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "This element represents the relative time component."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/relative-time"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "date",
+          "type": "string",
+          "mutable": true,
+          "attr": "date",
+          "reflectToAttr": true,
+          "docs": "Sets the date of the relative time component.",
           "docsTags": [],
-          "default": "undefined",
           "values": [
             {
               "type": "string"
-            },
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "window",
+          "type": "string",
+          "mutable": true,
+          "attr": "window",
+          "reflectToAttr": true,
+          "docs": "Sets the language of the relative time component.",
+          "docsTags": [],
+          "values": [
             {
-              "type": "undefined"
+              "type": "string"
             }
           ],
           "optional": true,
           "required": false
         }
       ],
+      "methods": [
+        {
+          "name": "getRelativeTimeString",
+          "returns": {
+            "type": "string",
+            "docs": "Relative time chain"
+          },
+          "signature": "getRelativeTimeString(lang = navigator.language) => string",
+          "parameters": [
+            {
+              "name": "window",
+              "type": "string",
+              "docs": "Language code"
+            }
+          ],
+          "docs": "Returns the relative time string for the specified date.",
+          "docsTags": []
+        },
+        {
+          "name": "isISODate",
+          "returns": {
+            "type": "boolean",
+            "docs": "Returns `true` if the string is in ISO date format, otherwise `false`."
+          },
+          "signature": "isISODate(str) => boolean",
+          "parameters": [
+            {
+              "name": "Page",
+              "type": "string",
+              "docs": "Chain of custody."
+            }
+          ],
+          "docs": "Checks if the string is in ISO date format.",
+          "docsTags": []
+        }
+      ],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Refers to `div` inside an element."
+        }
+      ],
+      "dependents": [],
+      "dependencies": [
+        "Localizer",
+        "WJElement"
+      ],
+      "dependencyGraph": {
+        "wje-relative-time": [
+          "Localizer",
+          "WJElement"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/reorder-dropzone/reorder-dropzone.tsx",
+      "encapsulation": "shadow",
+      "tag": "reorder-dropzone",
+      "docs": "The `ReorderDropzone` is a custom web component that represents a zone for reordering content.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "This element represents the zone for realignment."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/reorder-dropzone"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "Augment",
+          "text": "WJElement"
+        }
+      ],
+      "usage": {},
+      "props": [],
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [
+      "styles": [],
+      "slots": [
         {
-          "name": "--wj-border-radius-circle",
-          "annotation": "prop",
-          "docs": "Defines the size of the roundness of the element."
-        },
-        {
-          "name": "--wj-radio-margin-bottom",
-          "annotation": "prop",
-          "docs": "Defines the bottom offset of the element."
-        },
-        {
-          "name": "--wj-radio-margin-inline",
-          "annotation": "prop",
-          "docs": "Right and left offset of the radio element."
-        },
-        {
-          "name": "--wj-radio-margin-top",
-          "annotation": "prop",
-          "docs": "Upper offset of the radio element."
+          "name": "",
+          "docs": "The default slot for dropzone content."
         }
       ],
-      "slots": [],
-      "parts": [],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Native part of the reorder-dropzone component."
+        }
+      ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "WJElement"
+      ],
+      "dependencyGraph": {
+        "wje-reorder-dropzone": [
+          "WJElement"
+        ]
+      }
     },
     {
-      "filePath": "src/components/radio-group/radio-group.tsx",
-      "encapsulation": "scoped",
-      "tag": "radio-group",
-      "docs": "",
+      "filePath": "src/components/reorder-handle/reorder-handle.tsx",
+      "encapsulation": "shadow",
+      "tag": "reorder-handle",
+      "docs": "An element that adds drag-and-drop functionality to other elements, and serves as a handle for moving items in a group of elements",
       "docsTags": [],
       "usage": {},
       "props": [
         {
-          "name": "inline",
+          "name": "disabled",
           "type": "boolean",
           "complexType": {
             "original": "boolean",
@@ -9214,9 +9736,9 @@
             "references": {}
           },
           "mutable": false,
-          "attr": "inline",
+          "attr": "disabled",
           "reflectToAttr": false,
-          "docs": "Ak `true`, elementy sa usporiadajú v horizontálnom rozložení.",
+          "docs": "If `true`, the shift handle is disabled and cannot be interacted with.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -9228,7 +9750,7 @@
           "required": false
         },
         {
-          "name": "value",
+          "name": "dropzone",
           "type": "string",
           "complexType": {
             "original": "string",
@@ -9236,85 +9758,96 @@
             "references": {}
           },
           "mutable": false,
-          "attr": "value",
+          "attr": "dropzone",
           "reflectToAttr": false,
-          "docs": "Sets the radio element with the selected value as the default selected element.",
+          "docs": "Defines a selector for the destination zone to which items can be moved. If not defined, the parent element is used as the dropzone automatically.",
           "docsTags": [],
-          "default": "undefined",
+          "default": "",
           "values": [
             {
               "type": "string"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         }
       ],
       "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
-      "filePath": "src/components/relative-time/relative-time.tsx",
-      "encapsulation": "scoped",
-      "tag": "relative-time",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
+      "events": [
         {
-          "name": "date",
-          "type": "string",
+          "event": "ReorderStart",
+          "detail": "void",
+          "bubbles": true,
           "complexType": {
-            "original": "string",
-            "resolved": "string",
+            "original": "void",
+            "resolved": "void",
             "references": {}
           },
-          "mutable": false,
-          "attr": "date",
-          "reflectToAttr": false,
-          "docs": "Specifies the date or timestamp in ISO format or Unix timestamp format (in seconds). If no date attribute is specified, the component defaults to the current date and time.",
-          "docsTags": [],
-          "default": "Current date and time",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
+          "cancelable": true,
+          "composed": true,
+          "docs": "Called when the user starts moving an item.",
+          "docsTags": []
+        },
+        {
+          "event": "reorderEnd",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Called when the user finishes moving the item.",
+          "docsTags": []
         }
       ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
-      "filePath": "src/components/reorder/reorder.tsx",
-      "encapsulation": "shadow",
-      "tag": "reorder",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
+      "listeners": [
+        {
+          "event": "mousedown",
+          "method": "onMouseDown",
+          "target": "host",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "touchstart",
+          "method": "onTouchStart",
+          "target": "host",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [
+        {
+          "name": "--wje-reorder-handle-color",
+          "annotation": "prop",
+          "docs": "Handle colour for moving"
+        },
+        {
+          "name": "--wje-reorder-handle-opacity",
+          "annotation": "prop",
+          "docs": "Handle transparency for moving"
+        },
+        {
+          "name": "--wje-reorder-handle-size",
+          "annotation": "prop",
+          "docs": "Handle size for moving"
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The default location of the element content."
+        }
+      ],
+      "parts": [
+        {
+          "name": "handle",
+          "docs": "Refers to the element of the handle that is used for moving."
+        }
+      ],
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
@@ -9323,19 +9856,69 @@
       "filePath": "src/components/reorder-item/reorder-item.tsx",
       "encapsulation": "shadow",
       "tag": "reorder-item",
-      "docs": "",
-      "docsTags": [],
+      "docs": "An element representing an item for rearrangement.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "This element represents the item to be rearranged."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/reorder-item"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        }
+      ],
       "usage": {},
       "props": [],
       "methods": [],
       "events": [],
       "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
+      "styles": [
+        {
+          "name": "--reorder-background-color",
+          "annotation": "prop",
+          "docs": "Background colour of the item to rearrange"
+        },
+        {
+          "name": "--reorder-item-spacing",
+          "annotation": "prop",
+          "docs": "Offsetting an item for rearrangement"
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The default slot for the contents of the item to be rearranged."
+        },
+        {
+          "name": "handle",
+          "docs": "Slot for grip, which is used for handling the item."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native-reorder-item",
+          "docs": "Refers to `div` inside an element."
+        },
+        {
+          "name": "handle-part",
+          "docs": "Refers to the `slot` inside the element."
+        }
+      ],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "WJElement",
+        "WjElementUtils"
+      ],
+      "dependencyGraph": {
+        "wje-reorder-item": [
+          "WJElement",
+          "WjElementUtils"
+        ]
+      }
     },
     {
       "filePath": "src/components/route/route.tsx",
@@ -9587,7 +10170,7 @@
           "mutable": false,
           "attr": "active-class",
           "reflectToAttr": false,
-          "docs": "Nastaví elementu triedu `active` pri aktívnom stave.",
+          "docs": "Sets the `active` class of the element when it is active.",
           "docsTags": [],
           "values": [
             {
@@ -9661,285 +10244,1022 @@
       "filePath": "src/components/select/select.tsx",
       "encapsulation": "shadow",
       "tag": "select",
-      "docs": "",
+      "docs": "The **Select** element extends the capabilities of the standard HTML select element. It supports single or multiple selections by adding the `multiple` attribute. In addition, it offers features such as deletable selections and custom placeholder text. Visually, the component can display selected options as chips and includes an input field and a drop-down list of options.",
       "docsTags": [
         {
-          "name": "slot",
-          "text": "label - The label text to associate with the select. Use the `labelPlacement` property to control where the label is placed relative to the select. Use this if you need to render a label with custom HTML."
+          "name": "Summary",
+          "text": "This element represents a select component."
         },
         {
-          "name": "slot",
-          "text": "start - Content to display at the leading edge of the select."
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/select"
         },
         {
-          "name": "slot",
-          "text": "end - Content to display at the trailing edge of the select."
-        },
-        {
-          "name": "part",
-          "text": "placeholder - The text displayed in the select when there is no value."
-        },
-        {
-          "name": "part",
-          "text": "text - The displayed value of the select."
-        },
-        {
-          "name": "part",
-          "text": "icon - The select icon container."
-        },
-        {
-          "name": "part",
-          "text": "container - The container for the selected text or placeholder."
-        },
-        {
-          "name": "part",
-          "text": "label - The label text describing the select."
+          "name": "status",
+          "text": "stable"
         }
       ],
-      "usage": {},
-      "props": [],
-      "events": [],
-      "listeners": [],
-      "styles": [
-        {
-          "name": "--wj-select-background-color",
-          "annotation": "prop",
-          "docs": "Farba pozadia elementu"
-        },
-        {
-          "name": "--wj-select-border-color",
-          "annotation": "prop",
-          "docs": "Farba okrajov elementu"
-        },
-        {
-          "name": "--wj-select-border-radius",
-          "annotation": "prop",
-          "docs": "Zaoblenie okrajov elementu"
-        },
-        {
-          "name": "--wj-select-border-style",
-          "annotation": "prop",
-          "docs": "Rounding style of the element"
-        },
-        {
-          "name": "--wj-select-border-width",
-          "annotation": "prop",
-          "docs": "Width of the edges of the element"
-        },
-        {
-          "name": "--wj-select-color",
-          "annotation": "prop",
-          "docs": "Element colour"
-        },
-        {
-          "name": "--wj-select-line-height",
-          "annotation": "prop",
-          "docs": "Element row height"
-        },
-        {
-          "name": "--wj-select-options-border-color",
-          "annotation": "prop",
-          "docs": "The colour of the drop-down window edges"
-        },
-        {
-          "name": "--wj-select-options-border-style",
-          "annotation": "prop",
-          "docs": "The style of the drop-down window borders"
-        },
-        {
-          "name": "--wj-select-options-border-width",
-          "annotation": "prop",
-          "docs": "Width of the drop-down window edges"
-        }
-      ],
-      "slots": [],
-      "parts": [
-        {
-          "name": "native",
-          "docs": "Odkazuje na `div` vo vnútri elementu."
-        },
-        {
-          "name": "arrow",
-          "docs": "The content is placed in the `wj-icon` element"
-        }
-      ],
-      "dependents": [],
-      "dependencies": [
-        "popup",
-        "option",
-        "icon"
-      ],
-      "dependencyGraph": {
-        "select": [
-          "popup",
-          "icon"
-        ],
-        "popup": [
-          "icon"
-        ],
-        "option": [
-          "icon"
-        ]
-      }
-    },
-    {
-      "filePath": "src/components/select-option/select-option.tsx",
-      "encapsulation": "shadow",
-      "tag": "select-option",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      "usage": "<wje-select label=\"Označenie\" placeholder=\"Vyberte možnosť\"><wje-option value=\"moznost-1\">Option 1</wje-option></wje-select>",
       "props": [
         {
           "name": "value",
-          "type": "any",
+          "type": "string | array",
           "complexType": {
-            "original": "any | null",
-            "resolved": "any",
+            "original": "string | array",
+            "resolved": "string | array",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "value",
           "reflectToAttr": false,
-          "docs": "Textová hodnota elementu",
+          "docs": "The value or array of values of the selected options.",
           "docsTags": [],
           "values": [
             {
-              "type": "any"
+              "type": "string | array"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Text label for the select component.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "placeholder",
+          "reflectToAttr": false,
+          "docs": "The placeholder text displayed in the component when no option is selected.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "multiple",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "multiple",
+          "reflectToAttr": false,
+          "docs": "If set, it allows you to select multiple options at once.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "If set, the select component is disabled and cannot be interacted with.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "clearable",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "clearable",
+          "reflectToAttr": false,
+          "docs": "If set, adds a button to clear the selection.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "maxOptions",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "max-options",
+          "reflectToAttr": true,
+          "docs": "The maximum number of options that can be displayed in case of multiple selection.",
+          "docsTags": [],
+          "default": "1",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "maxHeight",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "max-height",
+          "reflectToAttr": false,
+          "docs": "The maximum height of the drop-down list of options.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "find",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "find",
+          "reflectToAttr": false,
+          "docs": "If set, adds a search box to filter the options.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "lazy",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "lazy",
+          "reflectToAttr": false,
+          "docs": "If set, the options are only loaded when you click select.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "Option",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "Option",
+          "reflectToAttr": false,
+          "docs": "Variant of the appearance of the component. The options are 'default' or 'standard'.",
+          "docsTags": [],
+          "default": "default",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "trigger",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "trigger",
+          "reflectToAttr": true,
+          "docs": "The type of trigger to display the drop-down list. Default 'click'.",
+          "docsTags": [],
+          "default": "click",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "placement",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "placement",
+          "reflectToAttr": false,
+          "docs": "The location of the drop-down list relative to the select component.",
+          "docsTags": [],
+          "default": "bottom-start",
+          "values": [
+            {
+              "type": "string"
             }
           ],
           "optional": true,
           "required": false
         }
       ],
-      "methods": [],
-      "events": [],
+      "methods": [
+        {
+          "name": "addOption",
+          "signature": "(optionData: any, silent?: boolean, map?: { value: string; text: string; }) => void",
+          "parameters": [
+            {
+              "name": "optionData",
+              "type": "any",
+              "docs": "Data for the option to be added."
+            },
+            {
+              "name": "silent",
+              "type": "boolean",
+              "docs": "Whether to suppress any events triggered by adding an option."
+            },
+            {
+              "name": "map",
+              "type": "object",
+              "docs": "A mapping object specifying the properties of the option data to be used for the option value and text."
+            }
+          ],
+          "returns": "void",
+          "docs": "Adds an option to the select element.",
+          "docsTags": []
+        },
+        {
+          "name": "addOptions",
+          "signature": "(optionsData: Array | object, silent?: boolean, map?: { value: string; text: string; }) => void",
+          "parameters": [
+            {
+              "name": "optionsData",
+              "type": "Array | object",
+              "docs": "Data options to be added. Can be an array of objects or a single object."
+            },
+            {
+              "name": "silent",
+              "type": "boolean",
+              "docs": "Indicates whether to trigger events when adding options."
+            },
+            {
+              "name": "map",
+              "type": "object",
+              "docs": "A mapping object that specifies the properties of the options data object."
+            }
+          ],
+          "returns": "void",
+          "docs": "Adds options to the select element.",
+          "docsTags": []
+        },
+        {
+          "name": "selectOption",
+          "signature": "(value: string, silent?: boolean) => void",
+          "parameters": [
+            {
+              "name": "value",
+              "type": "string",
+              "docs": "The value of the option to be selected."
+            },
+            {
+              "name": "silent",
+              "type": "boolean",
+              "docs": "Whether to suppress triggering events."
+            }
+          ],
+          "returns": "void",
+          "docs": "Selects the option with the specified value.",
+          "docsTags": []
+        },
+        {
+          "name": "selectOptions",
+          "signature": "(values: Array|any, silent?: boolean) => void",
+          "parameters": [
+            {
+              "name": "values",
+              "type": "Array|any",
+              "docs": "The value(s) of the option(s) to be selected."
+            },
+            {
+              "name": "silent",
+              "type": "boolean",
+              "docs": "Whether to trigger a change event or not."
+            }
+          ],
+          "returns": "void",
+          "docs": "Selects one or more options in the select element.",
+          "docsTags": []
+        },
+        {
+          "name": "getSelected",
+          "signature": "() => Array",
+          "parameters": [],
+          "returns": "Array",
+          "docs": "Returns the selected options.",
+          "docsTags": []
+        },
+        {
+          "name": "getAllOptions",
+          "signature": "() => NodeList",
+          "parameters": [],
+          "returns": "NodeList",
+          "docs": "Returns all options as HTML.",
+          "docsTags": []
+        },
+        {
+          "name": "getSelectedOptions",
+          "signature": "() => NodeList",
+          "parameters": [],
+          "returns": "NodeList",
+          "docs": "Returns the selected options as HTML.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "wje-select:change",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "It is emitted when the selection is changed.",
+          "docsTags": []
+        }
+      ],
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-option-highlighted",
+          "name": "--wje-select-border-width",
           "annotation": "prop",
-          "docs": "Defines the background color of the element when shown with the mouse."
+          "docs": "Specifies the width of the border around the select component. Accepts any valid CSS length unit (e.g. `px`, `rem`, `em`).",
+          "docsTags": []
         },
         {
-          "name": "--wj-option-padding-bottom",
+          "name": "--wje-select-border-style",
           "annotation": "prop",
-          "docs": "Defines the size of the lower internal offset of the element."
+          "docs": "Defines the border style for the select component. It accepts standard CSS border styles such as `solid`, `dashed` or `dotted`.",
+          "docsTags": []
         },
         {
-          "name": "--wj-option-padding-top",
+          "name": "--wje-select-border-color",
           "annotation": "prop",
-          "docs": "Defines the size of the upper internal offset of the element."
+          "docs": "Sets the border color for the select component. Accepts any valid CSS color value, including variable colors, named colors, and hexadecimal values.",
+          "docsTags": []
+        },
+        {
+          "name": "--wje-select-options-border-width",
+          "annotation": "prop",
+          "docs": "Specifies the border width for the select drop-down list of options. Accepts any valid CSS length unit.",
+          "docsTags": []
+        },
+        {
+          "name": "--wje-select-options-border-style",
+          "annotation": "prop",
+          "docs": "Defines the border style for the select drop-down list of options. Inherits from a defined CSS variable for consistency.",
+          "docsTags": []
+        },
+        {
+          "name": "--wje-select-options-border-color",
+          "annotation": "prop",
+          "docs": "Sets the border color for the drop-down list of select options. Accepts any valid CSS color value.",
+          "docsTags": []
+        },
+        {
+          "name": "--wje-select-background",
+          "annotation": "prop",
+          "docs": "Specifies the background color of the select component. Accepts any valid CSS color value.",
+          "docsTags": []
+        },
+        {
+          "name": "--wje-select-line-height",
+          "annotation": "prop",
+          "docs": "Defines the line height for the text in the select component. Accepts any valid CSS length value, ensuring consistent vertical alignment.",
+          "docsTags": []
+        },
+        {
+          "name": "--wje-select-color",
+          "annotation": "prop",
+          "docs": "Sets the text color for the select component. Accepts any valid CSS color value.",
+          "docsTags": []
+        },
+        {
+          "name": "--wje-select-border-radius",
+          "annotation": "prop",
+          "docs": "Specifies the edge radius for the select component. Specifies corner rounding and accepts any valid CSS length unit or variable.",
+          "docsTags": []
+        },
+        {
+          "name": "--wje-select-margin-bottom",
+          "annotation": "prop",
+          "docs": "Sets the bottom margin for the select component.",
+          "docsTags": []
         }
       ],
       "slots": [
         {
           "name": "",
-          "docs": "The contents are placed between the named slots."
+          "docs": "The default slot for the selects options."
         },
         {
-          "name": "end",
-          "docs": "The content is placed on the right in the LTR and on the left in the RTL."
+          "name": "anchor",
+          "docs": "Slot for anchoring element."
+        },
+        {
+          "name": "arrow",
+          "docs": "Slot for drop-down list arrow."
         },
         {
           "name": "start",
-          "docs": "The content is placed on the left in the LTR and on the right in the RTL."
+          "docs": "Slot for placing content at the top of the component."
+        },
+        {
+          "name": "end",
+          "docs": "Slot for placing contents on the end of the component."
         }
       ],
       "parts": [
         {
           "name": "native",
-          "docs": "Refers to `div` inside an element."
+          "docs": "Native Selector Wrapper."
+        },
+        {
+          "name": "input",
+          "docs": "Input field."
+        },
+        {
+          "name": "clear",
+          "docs": "Delete button."
+        },
+        {
+          "name": "label",
+          "docs": "Marking element."
+        },
+        {
+          "name": "input-wrapper",
+          "docs": "Input field wrapper."
+        },
+        {
+          "name": "options-wrapper",
+          "docs": "A wrapper of possibilities."
+        },
+        {
+          "name": "find",
+          "docs": "Search input field."
+        },
+        {
+          "name": "popup",
+          "docs": "Popup element."
         }
       ],
       "dependents": [],
-      "dependencies": [],
+      "dependencies": [
+        {
+          "name": "wje-button",
+          "docs": "Component used for buttons."
+        },
+        {
+          "name": "wje-popup",
+          "docs": "Component for popup window."
+        },
+        {
+          "name": "wje-icon",
+          "docs": "Component for icons."
+        },
+        {
+          "name": "wje-label",
+          "docs": "Component for labels."
+        },
+        {
+          "name": "wje-chip",
+          "docs": "Component for chips used in multiple selection."
+        },
+        {
+          "name": "wje-input",
+          "docs": "Component for input field."
+        },
+        {
+          "name": "wje-option",
+          "docs": "Component for individual selection options."
+        },
+        {
+          "name": "wje-options",
+          "docs": "Component for managing the list of options."
+        }
+      ],
       "dependencyGraph": {}
     },
     {
-      "filePath": "src/components/select-option/select-options.tsx",
+      "filePath": "src/components/option/option.tsx",
       "encapsulation": "shadow",
-      "tag": "select-options",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      "tag": "option",
+      "docs": "The Option element represents the individual options within the Select component. It is similar to the standard HTML select element and allows users to make one or more selections based on the configuration of the Select component. These elements can be dynamically populated and are designed to work seamlessly with the wj-select component's custom logic, including features such as multiple selection and custom styling.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "This element represents an option within the select component."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/option"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "csspart",
+          "text": "native - Native part of the option."
+        },
+        {
+          "name": "slot",
+          "text": "start - Slot for content at the beginning of the option."
+        },
+        {
+          "name": "slot",
+          "text": " - Default slot for content options."
+        },
+        {
+          "name": "slot",
+          "text": "end - Slot for content at the end of the option."
+        },
+        {
+          "name": "tag",
+          "text": "wje-option"
+        }
+      ],
+      "usage": "<wje-option value=\"hodnota\">Displayed text</wje-option>",
       "props": [
         {
-          "name": "item-text",
-          "type": "any",
+          "name": "selected",
+          "type": "boolean",
           "complexType": {
-            "original": "any | null",
-            "resolved": "any",
+            "original": "boolean",
+            "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
-          "attr": "item-text",
-          "reflectToAttr": false,
-          "docs": "Textová hodnota elementu",
+          "mutable": true,
+          "attr": "selected",
+          "reflectToAttr": true,
+          "docs": "Indicates whether the option is selected.",
           "docsTags": [],
           "values": [
             {
-              "type": "any"
+              "type": "boolean"
             }
           ],
           "optional": true,
           "required": false
         },
         {
-          "name": "item-value",
-          "type": "any",
+          "name": "value",
+          "type": "string",
           "complexType": {
-            "original": "any | null",
-            "resolved": "any",
+            "original": "string",
+            "resolved": "string",
             "references": {}
           },
-          "mutable": false,
-          "attr": "item-value",
-          "reflectToAttr": false,
-          "docs": "Textová hodnota elementu",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "any"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "url",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string | undefined",
-            "resolved": "string | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "url",
-          "reflectToAttr": false,
-          "docs": "Obsahuje adresu URL alebo fragment adresy URL s dátami, ktoré sa majú získať.",
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "The option value that is used when the form is submitted.",
           "docsTags": [],
           "values": [
             {
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
           "optional": false,
+          "required": true
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": true,
+          "docs": "The textual content of the option that is displayed to the user.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "If true, the option is disabled and cannot be selected.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
           "required": false
         }
       ],
       "methods": [],
-      "events": [],
+      "events": [
+        {
+          "event": "wje-option:change",
+          "detail": "{ value: string, text: string }",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Called when the option is clicked.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "click",
+          "method": "optionClickCallback",
+          "target": "self",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [
+        {
+          "name": "--wje-option-padding-top",
+          "annotation": "prop",
+          "docs": "Top indentation options."
+        },
+        {
+          "name": "--wje-option-padding-bottom",
+          "annotation": "prop",
+          "docs": "Lower indentation options."
+        },
+        {
+          "name": "--wje-option-highlighted",
+          "annotation": "prop",
+          "docs": "The color of the highlighting option when the mouse is hovered over."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Default slot for content options."
+        },
+        {
+          "name": "start",
+          "docs": "Slot for content at the beginning of the option."
+        },
+        {
+          "name": "end",
+          "docs": "Slot for content at the end of the option."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Native part options."
+        }
+      ],
+      "dependents": [],
+      "dependencies": [
+        "wje-icon"
+      ],
+      "dependencyGraph": {
+        "wje-option": [
+          "wje-icon"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/options/options.tsx",
+      "encapsulation": "shadow",
+      "tag": "options",
+      "docs": "`Options` is a custom web component that presents a set of options to choose from. It extends the basic functionality of WJElement and provides dynamic loading and management of options with support for lazy loading and searching.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "This element represents a set of options."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/options"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "Augment",
+          "text": "{WJElement}"
+        },
+        {
+          "name": "tag",
+          "text": "wje-options"
+        }
+      ],
+      "usage": "<wje-options option-array-path=\"data\" item-text=\"text\" item-value=\"value\"></wje-options>",
+      "props": [
+        {
+          "name": "optionArrayPath",
+          "type": "string",
+          "mutable": true,
+          "attr": "option-array-path",
+          "reflectToAttr": true,
+          "docs": "The path to the options field in the response from the server.",
+          "docsTags": [],
+          "default": "data",
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "dropdownHeight",
+          "type": "string",
+          "mutable": true,
+          "attr": "dropdown-height",
+          "reflectToAttr": true,
+          "docs": "The amount of the drop-down list of options.",
+          "docsTags": [],
+          "default": "100%",
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "itemValue",
+          "type": "string",
+          "mutable": true,
+          "attr": "item-value",
+          "reflectToAttr": true,
+          "docs": "The name of the property to use as the option value.",
+          "docsTags": [],
+          "default": "value",
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "itemText",
+          "type": "string",
+          "mutable": true,
+          "attr": "item-text",
+          "reflectToAttr": true,
+          "docs": "The name of the property to use as the option text.",
+          "docsTags": [],
+          "default": "text",
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "lazyLoadSize",
+          "type": "number",
+          "mutable": true,
+          "attr": "lazy-load-size",
+          "reflectToAttr": true,
+          "docs": "The number of items loaded during lazy loading.",
+          "docsTags": [],
+          "default": "10",
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "mutable": true,
+          "attr": "search",
+          "reflectToAttr": true,
+          "docs": "Search string for filtering options.",
+          "docsTags": [],
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "searchToQueryParams",
+          "type": "boolean",
+          "mutable": true,
+          "attr": "search-to-query-params",
+          "reflectToAttr": true,
+          "docs": "Specifies whether to add the search string to the URL parameters.",
+          "docsTags": [],
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "searchParamName",
+          "type": "string",
+          "mutable": true,
+          "attr": "search-param-name",
+          "reflectToAttr": true,
+          "docs": "The name of the parameter to search in the URL.",
+          "docsTags": [],
+          "default": "search",
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "queryParams",
+          "type": "string",
+          "mutable": true,
+          "attr": "query-params",
+          "reflectToAttr": true,
+          "docs": "Additional parameters for URL query.",
+          "docsTags": [],
+          "values": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "lazy",
+          "type": "boolean",
+          "mutable": true,
+          "attr": "lazy",
+          "reflectToAttr": true,
+          "docs": "Specifies whether to use lazy option loading.",
+          "docsTags": [],
+          "values": [],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "findSelectedOptionData",
+          "signature": "findSelectedOptionData(selectedOptionValues: Array) => Array",
+          "returns": "Array",
+          "parameters": [
+            {
+              "name": "selectedOptionValues",
+              "type": "Array",
+              "docs": "An array of values for the selected options."
+            }
+          ],
+          "docs": "Searches for data about the selected options based on the specified option values.",
+          "docsTags": []
+        },
+        {
+          "name": "addOption",
+          "signature": "addOption(optionData: object) => void",
+          "returns": "void",
+          "parameters": [
+            {
+              "name": "optionData",
+              "type": "object",
+              "docs": "The details of the option to be added."
+            }
+          ],
+          "docs": "Adds an option to the element.",
+          "docsTags": []
+        },
+        {
+          "name": "addOptions",
+          "signature": "addOptions(optionsData: Array, silent?: boolean) => void",
+          "returns": "void",
+          "parameters": [
+            {
+              "name": "optionsData",
+              "type": "Array",
+              "docs": "The data field of the options to be added."
+            },
+            {
+              "name": "silent",
+              "type": "boolean",
+              "docs": "Specifies whether to suppress events triggered by adding options.",
+              "default": "false"
+            }
+          ],
+          "docs": "Adds more options to the element.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "wje-options:load",
+          "detail": "{}",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Called after loading the options.",
+          "docsTags": []
+        }
+      ],
       "listeners": [],
       "styles": [],
-      "slots": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Default slot options."
+        }
+      ],
       "parts": [],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "wje-option",
+        "wje-infinite-scroll",
+        "wje-list"
+      ],
+      "dependencyGraph": {
+        "wje-options": [
+          "wje-option",
+          "wje-infinite-scroll",
+          "wje-list"
+        ]
+      }
     },
     {
       "filePath": "src/components/slider/slider.tsx",
@@ -9960,7 +11280,7 @@
           "mutable": false,
           "attr": "max",
           "reflectToAttr": false,
-          "docs": "Definuje maximálnu hodnotu posuvníka.",
+          "docs": "Defines the maximum value of the slider.",
           "docsTags": [],
           "values": [
             {
@@ -9984,7 +11304,7 @@
           "mutable": false,
           "attr": "min",
           "reflectToAttr": false,
-          "docs": "Definuje minimálnu hodnotu posuvníka.",
+          "docs": "Defines the minimum value of the slider.",
           "docsTags": [],
           "values": [
             {
@@ -10008,7 +11328,7 @@
           "mutable": false,
           "attr": "step",
           "reflectToAttr": false,
-          "docs": "Definuje interval medzi jednotlivými hodnotami posuvníka.",
+          "docs": "Defines the interval between each slider value.",
           "docsTags": [],
           "values": [
             {
@@ -10032,7 +11352,7 @@
           "mutable": false,
           "attr": "step",
           "reflectToAttr": false,
-          "docs": "Definuje aktuálnu hodnotu posuvníka.",
+          "docs": "Defines the current value of the slider.",
           "docsTags": [],
           "values": [
             {
@@ -10096,27 +11416,27 @@
         {
           "name": "--wj-slider-color",
           "annotation": "prop",
-          "docs": "Definuje farbu slideru."
+          "docs": "Defines the colour of the slider."
         },
         {
           "name": "--wj-slider-thumb-color",
           "annotation": "prop",
-          "docs": "Definuje farbu rukoväťe slideru."
+          "docs": "Defines the color of the slider handle."
         },
         {
           "name": "--wj-slider-thumb-shadow",
           "annotation": "prop",
-          "docs": "Definuje box-shadow rukoväťe slideru."
+          "docs": "Defines the box-shadow handles of the slider."
         },
         {
           "name": "--wj-slider-thumb-shadow-active",
           "annotation": "prop",
-          "docs": "Definuje box-shadow rukoväťe slideru v aktívnom stave."
+          "docs": "Defines the box-shadow of the slider handle in the active state."
         },
         {
           "name": "--wj-slider-track-color",
           "annotation": "prop",
-          "docs": "Definuje farbu posuvnej dráhy slideru."
+          "docs": "Defines the color of the slider's sliding path."
         },
         {
           "name": "--wj-slider-track-height",
@@ -10127,21 +11447,21 @@
       "slots": [
         {
           "name": "end",
-          "docs": "Obsah sa umiestni vpravo v LTR a vľavo v RTL."
+          "docs": "The content is placed on the right in the LTR and on the left in the RTL."
         },
         {
           "name": "label",
-          "docs": "Obsah sa umiestni vpravo od dráhy slideru v LTR a vľavo v RTL."
+          "docs": "The content is placed to the right of the slider path in LTR and to the left in RTL."
         },
         {
           "name": "start",
-          "docs": "Obsah je umiestnený vľavo v LTR a vpravo v RTL."
+          "docs": "The content is placed on the left in the LTR and on the right in the RTL."
         }
       ],
       "parts": [
         {
           "name": "slider",
-          "docs": "Odkazuje na `input` vo vnútri elementu."
+          "docs": "Refers to `input` inside the element."
         }
       ],
       "dependents": [],
@@ -10167,7 +11487,7 @@
           "mutable": false,
           "attr": "disabled",
           "reflectToAttr": false,
-          "docs": "Ak `true`, deaktivuje sa možnosť posúvania oddeľovača",
+          "docs": "If `true`, the option to scroll the separator is deactivated",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -10189,7 +11509,7 @@
           "mutable": false,
           "attr": "horizontal",
           "reflectToAttr": false,
-          "docs": "Ak `true`, zmení sa orientácia oddeľovača na horizontálnu.",
+          "docs": "If `true`, the orientation of the separator changes to horizontal.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -10346,7 +11666,7 @@
           "mutable": false,
           "attr": "active",
           "reflectToAttr": false,
-          "docs": "Ak `true`, tab bude otvorený.",
+          "docs": "If `true`, the tab will be open.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -10447,7 +11767,7 @@
           "mutable": false,
           "attr": "panel",
           "reflectToAttr": false,
-          "docs": "Slúži ako identifikátor pre atribút `\"name\"` elementu `Tab`.",
+          "docs": "It serves as an identifier for the `\"name\"` attribute of the `Tab` element.",
           "docsTags": [],
           "default": "undefined",
           "values": [
@@ -10482,13 +11802,13 @@
       "docsTags": [
         {
           "name": "slot",
-          "text": "nav - Obsah sa umiestni do `nav` elementu."
+          "text": "nav - The content is placed in the `nav` element."
         }
       ],
       "usage": {},
       "props": [
         {
-          "name": "variant",
+          "name": "Option",
           "type": "string",
           "complexType": {
             "original": "string",
@@ -10496,9 +11816,9 @@
             "references": {}
           },
           "mutable": true,
-          "attr": "variant",
+          "attr": "Option",
           "reflectToAttr": false,
-          "docs": "Definuje variantu rozloženia TabGroup. Medzi možné hodnoty patrí `start`, `end` a `bottom`.",
+          "docs": "Defines a variant of the TabGroup layout. Possible values include `start`, `end` and `bottom`.",
           "docsTags": [],
           "default": "undefined",
           "values": [
@@ -10526,47 +11846,47 @@
         {
           "name": "--wj-font-size",
           "annotation": "prop",
-          "docs": "Určuje veľkosť písma."
+          "docs": "Specifies the font size."
         },
         {
           "name": "--wj-tab-color-active",
           "annotation": "prop",
-          "docs": "Určuje farbu pozadia aktívneho tab elementu."
+          "docs": "Specifies the background color of the active tab element."
         },
         {
           "name": "--wj-tab-color-hover",
           "annotation": "prop",
-          "docs": "Určuje farbu pozadia tab elementu po ukázaní myšou."
+          "docs": "Determines the background color of the tab element when the mouse is pointed to it."
         },
         {
           "name": "--wj-tab-font-weight",
           "annotation": "prop",
-          "docs": "Nastavuje váhu písma."
+          "docs": "Sets the font weight."
         },
         {
           "name": "--wj-tab-letter-spacing",
           "annotation": "prop",
-          "docs": "Nastavuje vzdialenosť medzi písmenami."
+          "docs": "Sets the distance between letters."
         },
         {
           "name": "--wj-tab-padding-bottom",
           "annotation": "prop",
-          "docs": "Určuje spodné odsadenie tabu."
+          "docs": "Specifies the bottom tab offset."
         },
         {
           "name": "--wj-tab-padding-inline",
           "annotation": "prop",
-          "docs": "Určuje horizontálne odsadenie tabu."
+          "docs": "Specifies the horizontal offset of the tab."
         },
         {
           "name": "--wj-tab-padding-top",
           "annotation": "prop",
-          "docs": "Určuje horné odsadenie tabu."
+          "docs": "Specifies the top tab offset."
         },
         {
           "name": "--wj-tab-text-transfrom",
           "annotation": "prop",
-          "docs": "Nastavuje transformáciu textu v tabe."
+          "docs": "Sets the transformation of the text in the tab."
         }
       ],
       "slots": [
@@ -10616,7 +11936,7 @@
           "mutable": false,
           "attr": "counter",
           "reflectToAttr": false,
-          "docs": "Ak `true`, pridá pod element počítadlo zobrazujúce počet vložených znakov a tiež maximálny povolený počet.",
+          "docs": "If `true`, adds a counter below the element showing the number of characters inserted and also the maximum number allowed.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -10899,17 +12219,17 @@
         {
           "name": "--wj-textarea-background-color",
           "annotation": "prop",
-          "docs": "Nastaví farbu pozadia elementu."
+          "docs": "Sets the background color of the element."
         },
         {
           "name": "--wj-textarea-border-color",
           "annotation": "prop",
-          "docs": "Nastaví farbu okrajov elementu."
+          "docs": "Sets the color of the edges of the element."
         },
         {
           "name": "--wj-textarea-border-color-focus",
           "annotation": "prop",
-          "docs": "Nastaví farbu okrajov pri focuse."
+          "docs": "Sets the color of the edges when the photo is taken."
         },
         {
           "name": "--wj-textarea-border-radius",
@@ -10987,7 +12307,7 @@
           "mutable": true,
           "attr": "circle",
           "reflectToAttr": false,
-          "docs": "Nastaví na element zaoblenie pridaním css `\"border-radius: 50%\"`",
+          "docs": "Sets the element to round by adding css `\"border-radius: 50%\"`",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -11006,7 +12326,7 @@
         {
           "name": "--wj-border-radius",
           "annotation": "prop",
-          "docs": "Definuje veľkosť zaoblenia okrajov elementu."
+          "docs": "Defines the amount of rounding of the edges of the element."
         },
         {
           "name": "--wj-thumbnail-height",
@@ -11035,10 +12355,10 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+          "type": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
           "complexType": {
             "original": "Color",
-            "resolved": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+            "resolved": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
             "references": {
               "Color": {
                 "location": "import",
@@ -11136,7 +12456,7 @@
         {
           "name": "--color",
           "annotation": "prop",
-          "docs": "Text color of the title"
+          "docs": "Text colour of the title"
         }
       ],
       "slots": [],
@@ -11238,10 +12558,10 @@
         },
         {
           "name": "color",
-          "type": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+          "type": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
           "complexType": {
             "original": "Color",
-            "resolved": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+            "resolved": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
             "references": {
               "Color": {
                 "location": "import",
@@ -12140,7 +13460,7 @@
           "docs": "Any button element that is displayed inside of the toast."
         },
         {
-          "name": "button cancel",
+          "name": "cancel button",
           "docs": "Any button element with role \"cancel\" that is displayed inside of the toast."
         },
         {
@@ -12191,7 +13511,7 @@
           "mutable": true,
           "attr": "checked",
           "reflectToAttr": false,
-          "docs": "Ak `true`, toggle je aktivovaný.",
+          "docs": "If `true`, toggle is activated.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -12219,7 +13539,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": false,
-          "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, a `\"dark\"`.\nPre viac informácií o farbách navštívte [Základy prispôsobenia](/theming/basics).",
+          "docs": "The color to use from your application's color palette. The default options are `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, and `\"dark\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
           "docsTags": [],
           "values": [
             {
@@ -12267,7 +13587,7 @@
           "mutable": false,
           "attr": "disabled",
           "reflectToAttr": false,
-          "docs": "Ak `true`, s toggle elementom nie je možné interagovať.",
+          "docs": "If `true`, the toggle element cannot be interacted with.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -12289,7 +13609,7 @@
           "mutable": false,
           "attr": "name",
           "reflectToAttr": false,
-          "docs": "Definuje `name` atribút, ktorý je dôležitý napríklad pri použití vo formulároch.",
+          "docs": "Defines a `name` attribute that is important, for example, when used in forms.",
           "docsTags": [],
           "default": "this.inputId",
           "values": [
@@ -12386,7 +13706,7 @@
       "parts": [
         {
           "name": "input",
-          "docs": "Odkazuje na `input` element typu checkbox"
+          "docs": "Refers to an `input` element of type checkbox"
         },
         {
           "name": "toggle",
@@ -12547,12 +13867,12 @@
         {
           "name": "--arrow-size",
           "annotation": "prop",
-          "docs": "Určuje veľkosť šípky tooltipu."
+          "docs": "Specifies the size of the tooltip arrow."
         },
         {
           "name": "--arrow-color",
           "annotation": "prop",
-          "docs": "Určuje farbu šípky tooltipu."
+          "docs": "Specifies the color of the tooltip arrow."
         }
       ],
       "slots": [],

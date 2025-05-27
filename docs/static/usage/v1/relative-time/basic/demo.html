@@ -6,22 +6,28 @@
     <title>Relative Time</title>
     <link rel="stylesheet" href="../../../common.css" />
     <script src="../../../common.js"></script>
-    <script type="module" src="../../../../wje-elementy/wje-master.js"></script>
-    <link rel="stylesheet" href="../../../../wje-elementy/light.css" />
-    <link rel="stylesheet" href="../../../../wje-elementy/dark.css" />
-    <link rel="stylesheet" href="../../../../wje-elementy/styles.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.172/dist/wje-master.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.172/dist/light.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.172/dist/dark.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.172/dist/styles.css" />
   </head>
   <body>
     <div class="container">
-      <div class="content">
+      <div class="content" style="display: flex; flex-direction: column; gap: 10px;">
         <b>No date</b>
-        <wje-relative-time></wje-relative-time><br />
+        <wje-relative-time></wje-relative-time>
 
         <b>Timestamp</b>
-        <wje-relative-time date="1704067200" lang="sk"></wje-relative-time><br />
+        <wje-relative-time date="1704067200"></wje-relative-time>
 
         <b>ISO Date</b>
-        <wje-relative-time date="2024-01-01T00:00:00+00:00"></wje-relative-time><br />
+        <wje-relative-time date="2024-01-01T00:00:00+00:00"></wje-relative-time>
+
+        <b>ISO Date - Slovak</b>
+        <wje-relative-time date="2024-01-01T00:00:00+00:00" lang="sk-sk"></wje-relative-time>
+
+        <b>Invalid Date</b>
+        <wje-relative-time date="Invalid Date"></wje-relative-time>
       </div>
     </div>
   </body>

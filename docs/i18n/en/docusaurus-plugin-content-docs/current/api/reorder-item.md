@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/reorder-item/slots.md';
   <title>Reorder Item</title>
   <meta
     name="description"
-    content="Reorder Item je komponent, ktorému je možné ťahaním zmeniť pozíciu v rámci skupiny položiek"
+    content="Reorder Item je komponent určený na použitie v elemente Reorder, a predstavuje jednu z položiek na zmenu pozície v rámci skupiny položiek."
   ></meta>
 </head>
 
@@ -21,11 +21,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Reorder Item is a component that can be dragged to change its position within a group of items
+The `Reorder Item` is a component for use in the `Reorder` element and represents one of the repositioning items within an item group.
 
-:::note Note
+:::note
 
-For more information on using Reorder Items, navigate to the [**Reorder**](../reorder) element documentation.
+For more information on using `Reorder Item`, go to the [**Reorder**] item documentation(../reorder).
 
 :::
 

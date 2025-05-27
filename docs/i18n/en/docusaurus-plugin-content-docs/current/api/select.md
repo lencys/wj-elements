@@ -22,8 +22,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The **Select** element extends the capabilities of the standard HTML select element. Supports single or multiple selections by adding the `multiple` attribute.
-In addition, it offers features such as deletable selections and custom placeholder text. Visually, the component can display the selected options as chips and includes an input field and a drop-down list of options.
+The **Select** element extends the capabilities of the standard HTML select element to provide an enhanced user experience.
+It supports both single and multiple option selection using the multiple attribute.
+It offers advanced features such as clearable content with the `clearable` attribute, searching through options with `find`, and lazy loading to optimize performance with the `lazy` attribute.
+When multiple options are selected, the selected items are displayed as chips with a configurable maximum number of items displayed.
+The component also supports dynamic loading of options from external sources via the [**Options**](../select-options) element.
 
 ## Basic usage
 
@@ -72,6 +75,30 @@ Adding the `standard` attribute will display the Select in the style of a standa
 import Standard from '@site/static/usage/v1/select/standard/index.md';
 
 <Standard />
+
+## Lazy loading
+
+Adding the `lazy` attribute will load options only when needed. This can be useful for large amounts of options or when loading from external sources.
+
+import Lazy from '@site/static/usage/v1/select/lazy/index.md';
+
+<Lazy />
+
+## Find
+
+Adding the `find` attribute displays an input field that allows the user to search for options in the list. The user can enter text and the list is automatically filtered according to the text entered.
+
+import Find from '@site/static/usage/v1/select/find/index.md';
+
+<Find />
+
+## Lazy search
+
+By combining the `lazy` and `find` attributes, options are only loaded when the user starts typing in the input field. This can be useful for large amounts of options or when loading from external sources.
+
+import Autocomplete from '@site/static/usage/v1/select/lazy-search/index.md';
+
+<Autocomplete />
 
 ## Attributes and Properties
 

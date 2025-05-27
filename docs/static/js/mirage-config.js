@@ -72,8 +72,9 @@ export function makeServer({ environment = 'development' } = {}) {
       }),
     },
 
-    seeds(server) {
-      server.createList('user', 0);
+    seeds(x) {
+      x.createList('user', 100);
+      x.createList('option', 100);
     },
 
     routes() {
@@ -106,13 +107,39 @@ export function makeServer({ environment = 'development' } = {}) {
       });
 
       this.get('/api/options', function (schema, request) {
-        server.db.users.remove(); // musime najprv precistit
-        server.createList('option', 10);
+        const page = +request.queryParams.page;
+        const size = +request.queryParams.size;
 
         let data = schema.options.all();
-        let options = this.serialize(data).options;
+        let paginatedOptions = !(isNaN(page) && isNaN(size)) ? data.slice(page * size, (page + 1) * size) : data;
+        let options = this.serialize(paginatedOptions).options;
 
-        return options;
+        let totalPages = Math.ceil(data.length / size);
+        return {
+          page: page,
+          size: size,
+          totalPages: totalPages,
+          data: options,
+        };
+      });
+
+      this.get('/api/options/:search', function (schema, request) {
+        const page = +request.queryParams.page;
+        const size = +request.queryParams.size;
+
+        let search = request.params.search;
+        let data = schema.options.where((option) => option.text.toLowerCase().includes(search.toLowerCase()) || option.label.toLowerCase().includes(search.toLowerCase()));
+
+        let paginatedOptions = data.slice(page * size, (page + 1) * size);
+        let options = this.serialize(paginatedOptions).options;
+
+        let totalPages = Math.ceil(data.length / size);
+        return {
+          page: page,
+          size: size,
+          totalPages: totalPages,
+          data: options,
+        };
       });
 
       this.post('/upload', (schema, request) => {
