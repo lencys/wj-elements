@@ -11,7 +11,6 @@ import styles from './styles/styles.css?inline';
  * @slot start - Slot for the start view.
  * @slot end - Slot for the end view.
  * @slot divider - Slot for the divider.
- * @csspart native-split-view - The native split view wrapper.
  * @csspart wje-divider - The divider of the split view.
  * @cssproperty [--wje-split-view-divider-area=12px] - Defines the interactive area (hitbox) of the divider for resizing. Accepts any valid CSS length unit (e.g., `px`, `rem`, `%`).
  * @cssproperty [--wje-split-view-divider-width=4px] - Specifies the visual width of the divider. Controls how thick the divider appears.

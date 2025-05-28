@@ -28,7 +28,11 @@ import DocsCards from '@components/global/DocsCards';
 [//]: # "    }"
 [//]: # "  `}</style>"
 
-<script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.171/dist/wje-master.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.175/dist/wje-master.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.175/dist/light.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.175/dist/dark.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.175/dist/styles.css" />
 
 </head>
 

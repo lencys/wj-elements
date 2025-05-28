@@ -197,7 +197,7 @@ iframe {
 }
 
 docs-cards {
-  wj-icon {
+  wje-icon {
     padding: 12px;
     --wj-icon-size: 32px;
     margin-bottom: 1rem;
@@ -207,26 +207,27 @@ docs-cards {
     background: linear-gradient(90deg, #3a0087ee 0%, #ae40fdee 100%);
   }
 
-  wj-icon svg {
+  wje-icon svg {
     stroke-width: 1px;
   }
-  wj-card {
+  wje-card {
     border-radius: 10px;
     --wj-color-base: var(--token-secondary-bg-c);
     box-shadow: var(--wj-box-shadow-large) 0 4px 16px;
     background-color: var(--wj-card-background);
   }
-  wj-card:hover {
+  wje-card:hover {
     filter: brightness(110%);
   }
-  wj-card-title {
-    color: var(--markdown-text-intro-c);
+  wje-card-title {
+    color: var(--markdown-text-intro-c)!important;
+    color: var(--wje-color-primary-9);
   }
-  wj-card-content p {
+  wje-card-content p {
     font-size: 0.75rem !important;
-    color: var(--markdown-text-intro-c);
+    color: var(--markdown-text-intro-c)!important;
   }
-  wj-card-content p {
+  wje-card-content p {
     font-size: 0.75rem !important;
   }
 }

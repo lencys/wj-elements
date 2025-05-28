@@ -2,12 +2,12 @@
 title: Options
 ---
 
-import Props from '@ionic-internal/component-api/v1/select-options/props.md';
-import Events from '@ionic-internal/component-api/v1/select-options/events.md';
-import Methods from '@ionic-internal/component-api/v1/select-options/methods.md';
-import Parts from '@ionic-internal/component-api/v1/select-options/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/select-options/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/select-options/slots.md';
+import Props from '@ionic-internal/component-api/v1/options/props.md';
+import Events from '@ionic-internal/component-api/v1/options/events.md';
+import Methods from '@ionic-internal/component-api/v1/options/methods.md';
+import Parts from '@ionic-internal/component-api/v1/options/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/options/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/options/slots.md';
 
 <head>
   <title>Options | individual options within the Select component</title>

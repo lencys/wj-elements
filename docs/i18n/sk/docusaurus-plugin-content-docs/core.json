@@ -11429,175 +11429,122 @@
       "filePath": "src/components/split-view/split-view.tsx",
       "encapsulation": "shadow",
       "tag": "split-view",
-      "docs": "",
+      "docs": "SplitView je vlastný webový komponent, ktorý predstavuje rozdelené zobrazenie.",
       "docsTags": [],
       "usage": {},
       "props": [
         {
-          "name": "disabled",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "disabled",
-          "reflectToAttr": false,
-          "docs": "Ak `true`, deaktivuje sa možnosť posúvania oddeľovača",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "horizontal",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "horizontal",
-          "reflectToAttr": false,
-          "docs": "Ak `true`, zmení sa orientácia oddeľovača na horizontálnu.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
           "name": "initial",
-          "type": "number | undefined",
+          "type": "number",
           "complexType": {
             "original": "number",
-            "resolved": "number | undefined",
+            "resolved": "number",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "initial",
           "reflectToAttr": false,
-          "docs": "Definuje počiatočnú pozíciu posuvníka.",
+          "docs": "Počiatočná hodnota rozdelenia v percentách.",
           "docsTags": [],
-          "values": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "max",
-          "type": "number | undefined",
-          "complexType": {
-            "original": "number",
-            "resolved": "number | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "max",
-          "reflectToAttr": false,
-          "docs": "Definuje hodnotu maximálnej možnej pozície oddeľovača.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "min",
-          "type": "number | undefined",
-          "complexType": {
-            "original": "number",
-            "resolved": "number | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "min",
-          "reflectToAttr": false,
-          "docs": "Definuje hodnotu minimálnej možnej pozície oddeľovača.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
+          "default": "50",
+          "values": [],
+          "optional": false,
           "required": false
         }
       ],
-      "methods": [],
+      "methods": [
+        {
+          "name": "pixelsToPercentage",
+          "returns": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "signature": "pixelsToPercentage(value: number) => number",
+          "parameters": [
+            {
+              "name": "value",
+              "type": "number",
+              "docs": "Hodnota v pixeloch."
+            }
+          ],
+          "docs": "Prevádza hodnotu v pixeloch na percentá.",
+          "docsTags": []
+        }
+      ],
       "events": [],
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-split-view-divider-background",
+          "name": "--wje-split-view-divider-area",
           "annotation": "prop",
-          "docs": "Definuje pozadie elementu."
+          "docs": "Definuje interaktívnu oblasť (hitbox) posuvníka pre zmenu veľkosti. Prijíma akúkoľvek platnú jednotku dĺžky CSS (napr., `px`, `rem`, `%`)."
         },
         {
-          "name": "--wj-split-view-divider-size",
+          "name": "--wje-split-view-divider-width",
           "annotation": "prop",
-          "docs": "Nastavuje šírku/výšku oddeľovača."
+          "docs": "Určuje vizuálnu šírku posuvníka. Kontroluje hrúbku zobrazenia posuvníka."
         },
         {
-          "name": "--wj-split-view-divider-width",
+          "name": "--wje-split-view-min",
           "annotation": "prop",
-          "docs": "Určuje hrúbku oddeľovača."
+          "docs": "Nastavuje minimálnu veľkosť pre rozdelené zobrazenia. Zabezpečuje, že zobrazenie nemôže byť zmenšené pod túto hodnotu."
         },
         {
-          "name": "--wj-split-view-max",
+          "name": "--wje-split-view-max",
           "annotation": "prop",
-          "docs": "Predstavuje maximálnu povolenú veľkosť (v percentách) pre panel."
+          "docs": "Nastavuje maximálnu veľkosť pre rozdelené zobrazenia. Zabezpečuje, že zobrazenie nemôže byť zväčšené nad túto hodnotu."
         },
         {
-          "name": "--wj-split-view-min",
+          "name": "--wje-split-view-calc-a",
           "annotation": "prop",
-          "docs": "Predstavuje minimálnu povolenú veľkosť (v percentách) pre panel."
+          "docs": "Predstavuje vypočítanú veľkosť prvého zobrazenia. Používa sa na dynamické nastavenie veľkosti prvého zobrazenia."
+        },
+        {
+          "name": "--wje-split-view-calc-b",
+          "annotation": "prop",
+          "docs": "Predstavuje vypočítanú veľkosť druhého zobrazenia. Používa sa na dynamické nastavenie veľkosti druhého zobrazenia."
+        },
+        {
+          "name": "--wje-split-view-clamp-a",
+          "annotation": "prop",
+          "docs": "Obmedzuje veľkosť prvého zobrazenia medzi minimálnymi a maximálnymi limitmi. Zabezpečuje, že vypočítaná veľkosť zostáva v definovanom rozsahu."
+        },
+        {
+          "name": "--wje-split-view-clamp-b",
+          "annotation": "prop",
+          "docs": "Obmedzuje veľkosť druhého zobrazenia medzi minimálnymi a maximálnymi limitmi. Zabezpečuje, že vypočítaná veľkosť zostáva v definovanom rozsahu."
+        },
+        {
+          "name": "--wje-split-view-divider-background",
+          "annotation": "prop",
+          "docs": "Nastavuje farbu pozadia posuvníka. Prijíma akúkoľvek platnú hodnotu farby CSS (napr., hex, RGB, alebo CSS premennú)."
+        },
+        {
+          "name": "--wje-split-view-divider-size",
+          "annotation": "prop",
+          "docs": "Definuje celkovú veľkosť posuvníka, ovplyvňujúcu jeho vizuálne a interaktívne rozmery. Prijíma akúkoľvek platnú jednotku dĺžky CSS."
         }
       ],
       "slots": [
         {
-          "name": "divider",
-          "docs": "Obsah sa umiestni do oddeľovača."
+          "name": "start",
+          "docs": "Slot pre počiatočné zobrazenie."
         },
         {
           "name": "end",
-          "docs": "Obsah sa umiestni vpravo od oddeľovača v LTR a vľavo v RTL."
+          "docs": "Slot pre koncové zobrazenie."
         },
         {
-          "name": "start",
-          "docs": "Obsah je umiestnený vľavo od oddeľovača v LTR a vpravo v RTL."
+          "name": "divider",
+          "docs": "Slot pre posuvník."
         }
       ],
       "parts": [
         {
           "name": "divider",
-          "docs": "Odkazuje na `div` element oddeľovača."
+          "docs": "Odkazuje na posuvník."
         }
       ],
       "dependents": [],

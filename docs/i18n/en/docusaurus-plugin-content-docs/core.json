@@ -11265,203 +11265,315 @@
       "filePath": "src/components/slider/slider.tsx",
       "encapsulation": "shadow",
       "tag": "slider",
-      "docs": "",
+      "docs": "A slider component that allows users to select a value within a specified range.",
       "docsTags": [],
       "usage": {},
       "props": [
         {
-          "name": "max",
-          "type": "number | undefined",
+          "name": "value",
+          "type": "number",
           "complexType": {
             "original": "number",
-            "resolved": "number | undefined",
+            "resolved": "number",
             "references": {}
           },
-          "mutable": false,
-          "attr": "max",
+          "mutable": true,
+          "attr": "value",
           "reflectToAttr": false,
-          "docs": "Defines the maximum value of the slider.",
+          "docs": "The current value of the slider.",
           "docsTags": [],
+          "default": "0",
           "values": [
             {
               "type": "number"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false
         },
         {
           "name": "min",
-          "type": "number | undefined",
+          "type": "number",
           "complexType": {
             "original": "number",
-            "resolved": "number | undefined",
+            "resolved": "number",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "min",
           "reflectToAttr": false,
-          "docs": "Defines the minimum value of the slider.",
+          "docs": "Minimum slider value.",
           "docsTags": [],
+          "default": "0",
           "values": [
             {
               "type": "number"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "max",
+          "reflectToAttr": false,
+          "docs": "The maximum value of the slider.",
+          "docsTags": [],
+          "default": "100",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
           "required": false
         },
         {
           "name": "step",
-          "type": "number | undefined",
+          "type": "number",
           "complexType": {
             "original": "number",
-            "resolved": "number | undefined",
+            "resolved": "number",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "step",
           "reflectToAttr": false,
-          "docs": "Defines the interval between each slider value.",
+          "docs": "Step value - determines how much the value will change in one shift.",
           "docsTags": [],
+          "default": "1",
           "values": [
             {
               "type": "number"
-            },
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "bubble",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "bubble",
+          "reflectToAttr": false,
+          "docs": "If defined, a bubble with the current value is displayed above the slider.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
             {
-              "type": "undefined"
+              "type": "boolean"
             }
           ],
           "optional": true,
           "required": false
         },
         {
-          "name": "value",
-          "type": "number | undefined",
+          "name": "color",
+          "type": "\"complete\" | \"danger\" | \"dark\" | \"primary\" | \"success\" | \"warning\" | string",
           "complexType": {
-            "original": "number",
-            "resolved": "number | undefined",
+            "original": "string",
+            "resolved": "string",
             "references": {}
           },
           "mutable": false,
-          "attr": "step",
+          "attr": "color",
           "reflectToAttr": false,
-          "docs": "Defines the current value of the slider.",
+          "docs": "The colour of the slider to be used. The default options are `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, and `\"dark\"`.",
           "docsTags": [],
           "values": [
             {
-              "type": "number"
+              "value": "primary",
+              "type": "string"
             },
             {
-              "type": "undefined"
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "complete",
+              "type": "string"
+            },
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            },
+            {
+              "value": "dark",
+              "type": "string"
             }
           ],
           "optional": true,
           "required": false
         }
       ],
-      "methods": [],
+      "methods": [
+        {
+          "name": "getPercentage",
+          "returns": {
+            "type": "number",
+            "docs": "Calculated percentage values range from 0 to 100. Returns 0 if the range is invalid."
+          },
+          "complexType": {
+            "signature": "(min: number, max: number, value?: number) => number",
+            "parameters": [
+              {
+                "name": "min",
+                "type": "number"
+              },
+              {
+                "name": "max",
+                "type": "number"
+              },
+              {
+                "name": "value",
+                "type": "number | undefined"
+              }
+            ],
+            "references": {},
+            "return": "number"
+          },
+          "signature": "getPercentage(min: number, max: number, value?: number) => number",
+          "parameters": [
+            {
+              "name": "min",
+              "type": "number",
+              "docs": "Minimum range value."
+            },
+            {
+              "name": "max",
+              "type": "number",
+              "docs": "Maximum range value."
+            },
+            {
+              "name": "value",
+              "type": "number | undefined",
+              "docs": "Current value within range. Defaults to 0 if not provided."
+            }
+          ],
+          "docs": "Calculates the percentage value within the given range.",
+          "docsTags": []
+        }
+      ],
       "events": [
         {
-          "event": "wj:slider-change",
-          "detail": "{ tab: string; }",
-          "bubbles": false,
+          "event": "wje-slider:init",
+          "detail": "SliderEventDetail",
+          "bubbles": true,
           "complexType": {
-            "original": "{ tab: string }",
-            "resolved": "{ tab: string; }",
+            "original": "SliderEventDetail",
+            "resolved": "{ value: string; output: HTMLOutputElement; }",
             "references": {}
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Called up when the slider value is changed.",
+          "docs": "Called when the slider is initialized.",
           "docsTags": []
         },
         {
-          "event": "wj:slider-init",
-          "detail": "{ tab: string; }",
-          "bubbles": false,
+          "event": "wje-slider:move",
+          "detail": "SliderEventDetail",
+          "bubbles": true,
           "complexType": {
-            "original": "{ tab: string }",
-            "resolved": "{ tab: string; }",
+            "original": "SliderEventDetail",
+            "resolved": "{ value: string; output: HTMLOutputElement; }",
             "references": {}
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Called after the initial slider load.",
+          "docs": "Called when the slider moves.",
           "docsTags": []
         },
         {
-          "event": "wj:slider-move",
-          "detail": "{ tab: string; }",
-          "bubbles": false,
+          "event": "wje-slider:change",
+          "detail": "SliderEventDetail",
+          "bubbles": true,
           "complexType": {
-            "original": "{ tab: string }",
-            "resolved": "{ tab: string; }",
+            "original": "SliderEventDetail",
+            "resolved": "{ value: string; output: HTMLOutputElement; }",
             "references": {}
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Invoked after moving the slider handle.",
+          "docs": "Called when the value of the slider changes.",
           "docsTags": []
         }
       ],
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-slider-color",
+          "name": "--wje-slider-track-height",
           "annotation": "prop",
-          "docs": "Defines the colour of the slider."
+          "docs": "Slider track height"
         },
         {
-          "name": "--wj-slider-thumb-color",
+          "name": "--wje-slider-color",
           "annotation": "prop",
-          "docs": "Defines the color of the slider handle."
+          "docs": "Colour of the active part of the slider track"
         },
         {
-          "name": "--wj-slider-thumb-shadow",
+          "name": "--wje-slider-thumb-color",
           "annotation": "prop",
-          "docs": "Defines the box-shadow handles of the slider."
+          "docs": "Slider button colour"
         },
         {
-          "name": "--wj-slider-thumb-shadow-active",
+          "name": "--wje-slider-thumb-border",
           "annotation": "prop",
-          "docs": "Defines the box-shadow of the slider handle in the active state."
+          "docs": "The edge of the slider button"
         },
         {
-          "name": "--wj-slider-track-color",
+          "name": "--wje-slider-thumb-shadow",
           "annotation": "prop",
-          "docs": "Defines the color of the slider's sliding path."
+          "docs": "Shadow of the slider button in the basic state"
         },
         {
-          "name": "--wj-slider-track-height",
+          "name": "--wje-slider-thumb-shadow-active",
           "annotation": "prop",
-          "docs": "Defines the height of the slider travel."
+          "docs": "Shadow of the slider button in active state"
+        },
+        {
+          "name": "--wje-slider-track-color",
+          "annotation": "prop",
+          "docs": "Colour of the inactive part of the slider track"
         }
       ],
       "slots": [
         {
-          "name": "end",
-          "docs": "The content is placed on the right in the LTR and on the left in the RTL."
-        },
-        {
           "name": "label",
-          "docs": "The content is placed to the right of the slider path in LTR and to the left in RTL."
+          "docs": "The contents of the slider nameplate."
         },
         {
           "name": "start",
-          "docs": "The content is placed on the left in the LTR and on the right in the RTL."
+          "docs": "The content that appears at the beginning of the slider."
+        },
+        {
+          "name": "end",
+          "docs": "The content that appears at the end of the slider."
         }
       ],
       "parts": [
         {
+          "name": "native",
+          "docs": "Refers to the main enveloping div element."
+        },
+        {
           "name": "slider",
-          "docs": "Refers to `input` inside the element."
+          "docs": "Refers to the input element of the range type."
         }
       ],
       "dependents": [],
@@ -11472,175 +11584,122 @@
       "filePath": "src/components/split-view/split-view.tsx",
       "encapsulation": "shadow",
       "tag": "split-view",
-      "docs": "",
+      "docs": "SplitView is a custom web component that represents a split view.",
       "docsTags": [],
       "usage": {},
       "props": [
         {
-          "name": "disabled",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "disabled",
-          "reflectToAttr": false,
-          "docs": "If `true`, the option to scroll the separator is deactivated",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "horizontal",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "horizontal",
-          "reflectToAttr": false,
-          "docs": "If `true`, the orientation of the separator changes to horizontal.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
           "name": "initial",
-          "type": "number | undefined",
+          "type": "number",
           "complexType": {
             "original": "number",
-            "resolved": "number | undefined",
+            "resolved": "number",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "initial",
           "reflectToAttr": false,
-          "docs": "Defines the initial position of the slider.",
+          "docs": "Initial value of the distribution in percentage.",
           "docsTags": [],
-          "values": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "max",
-          "type": "number | undefined",
-          "complexType": {
-            "original": "number",
-            "resolved": "number | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "max",
-          "reflectToAttr": false,
-          "docs": "Defines the value of the maximum possible separator position.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "min",
-          "type": "number | undefined",
-          "complexType": {
-            "original": "number",
-            "resolved": "number | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "min",
-          "reflectToAttr": false,
-          "docs": "Defines the value of the minimum possible separator position.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
+          "default": "50",
+          "values": [],
+          "optional": false,
           "required": false
         }
       ],
-      "methods": [],
+      "methods": [
+        {
+          "name": "pixelsToPercentage",
+          "returns": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "signature": "pixelsToPercentage(value: number) => number",
+          "parameters": [
+            {
+              "name": "value",
+              "type": "number",
+              "docs": "Value in pixels."
+            }
+          ],
+          "docs": "Converts the pixel value to a percentage.",
+          "docsTags": []
+        }
+      ],
       "events": [],
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-split-view-divider-background",
+          "name": "--wje-split-view-divider-area",
           "annotation": "prop",
-          "docs": "Defines the background of the element."
+          "docs": "Defines the interactive area (hitbox) of the resizable separator. Accepts any valid CSS length unit (e.g., `px`, `rem`, `%`)."
         },
         {
-          "name": "--wj-split-view-divider-size",
+          "name": "--wje-split-view-divider-width",
           "annotation": "prop",
-          "docs": "Adjusts the width/height of the separator."
+          "docs": "Specifies the visual width of the separator. Controls the visual thickness of the separator."
         },
         {
-          "name": "--wj-split-view-divider-width",
+          "name": "--wje-split-view-min",
           "annotation": "prop",
-          "docs": "Specifies the thickness of the separator."
+          "docs": "Sets the minimum size for split views. Ensures that the view cannot be scaled below this value."
         },
         {
-          "name": "--wj-split-view-max",
+          "name": "--wje-split-view-max",
           "annotation": "prop",
-          "docs": "Represents the maximum allowed size (in percent) for the panel."
+          "docs": "Sets the maximum size for split views. Ensures that the view cannot be enlarged beyond this value."
         },
         {
-          "name": "--wj-split-view-min",
+          "name": "--wje-split-view-calc-a",
           "annotation": "prop",
-          "docs": "Represents the minimum allowed size (in percent) for the panel."
+          "docs": "Represents the calculated size of the first view. It is used to dynamically adjust the size of the first view."
+        },
+        {
+          "name": "--wje-split-view-calc-b",
+          "annotation": "prop",
+          "docs": "Represents the calculated size of the second view. It is used to dynamically adjust the size of the second view."
+        },
+        {
+          "name": "--wje-split-view-clamp-a",
+          "annotation": "prop",
+          "docs": "Limits the size of the first view between the minimum and maximum limits. Ensures that the calculated size remains within the defined range."
+        },
+        {
+          "name": "--wje-split-view-clamp-b",
+          "annotation": "prop",
+          "docs": "Limits the size of the second view between the minimum and maximum limits. Ensures that the calculated size remains within the defined range."
+        },
+        {
+          "name": "--wje-split-view-divider-background",
+          "annotation": "prop",
+          "docs": "Sets the background color of the separator. Accepts any valid CSS color value (e.g., hex, RGB, or CSS variable)."
+        },
+        {
+          "name": "--wje-split-view-divider-size",
+          "annotation": "prop",
+          "docs": "Defines the overall size of the separator, affecting its visual and interactive dimensions. Accepts any valid CSS length unit."
         }
       ],
       "slots": [
         {
-          "name": "divider",
-          "docs": "The contents shall be placed in the separator."
+          "name": "start",
+          "docs": "Slot for initial display."
         },
         {
           "name": "end",
-          "docs": "The content is placed to the right of the separator in the LTR and to the left in the RTL."
+          "docs": "Slot for end display."
         },
         {
-          "name": "start",
-          "docs": "The content is placed to the left of the separator in the LTR and to the right in the RTL."
+          "name": "divider",
+          "docs": "Slot for wje-divider."
         }
       ],
       "parts": [
         {
           "name": "divider",
-          "docs": "Refers to the `div` element of the separator."
+          "docs": "Refers to the wje-divider separator element."
         }
       ],
       "dependents": [],

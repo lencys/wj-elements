@@ -173,6 +173,10 @@ module.exports = {
       indexName: 'elements-webjet',
       contextualSearch: true,
     },
+    playground: {
+      // Disable ios and md previews
+      disableDevices: ['ios', 'md']
+    }
   },
   plugins: [
     'docusaurus-plugin-sass',

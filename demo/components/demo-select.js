@@ -253,7 +253,6 @@ export default class DemoSelect extends WJElement {
 		options.setAttribute('url', '/api/options');
 		options.setAttribute('item-value', 'value');
 		options.setAttribute('item-text', 'text');
-		options.setAttribute('option-array-path', 'data');
 
 		options.htmlItem = o => {
 			const option = document.createElement('wje-option');

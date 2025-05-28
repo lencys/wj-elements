@@ -17,21 +17,23 @@ import DocsCards from '@components/global/DocsCards';
 <style>{`
     :root {
       --doc-item-container-width: 60rem;
-    }
-    wj-icon {
+    };
+    wje-icon {
       padding: 12px;
-      --wj-icon-size: 32px;
-    }
+      --wje-icon-size: 32px;
+    };
     docs-cards > a {
       display: flex;
-    }
+        color: var(--wje-color-primary-9)!important;
+    };
   `}</style>
 
 {' '}
-<script
-  type="module"
-  src="https://cdn.jsdelivr.net/gh/lencys/wj-elements@dddb1c19734498c5b2a17f2e6ed605d0cd40d02e/wj-master.js"
-></script>
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.176/dist/wje-master.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.176/dist/light.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.176/dist/dark.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.176/dist/styles.css" />
 
 </head>
 
@@ -43,442 +45,422 @@ WebJET Elements obsahuje širokú škálu komponentov, ktoré sú optimalizovan�
 
 <DocsCards>
 <a href="../api/accordion">
-    <wj-card className="Card-without-image" href="../api/accordion">
-        <wj-card-header>
-            <wj-icon name="triangle-inverted" size="large"></wj-icon>
-            <wj-card-title>Accordion</wj-card-title>
-        </wj-card-header>
-        <wj-card-content>
+    <wje-card className="Card-without-image" href="../api/accordion">
+        <wje-card-header>
+            <wje-icon name="triangle-inverted" size="large"></wje-icon>
+            <wje-card-title>Accordion</wje-card-title>
+        </wje-card-header>
+        <wje-card-content>
           <p>Jednoduchá integrácia animácií do webových aplikácií.</p>
-        </wj-card-content>
-    </wj-card>
+        </wje-card-content>
+    </wje-card>
   </a>
   <a href="../api/animation">
-    <wj-card className="Card-without-image" href="../api/animation">
-        <wj-card-header>
-            <wj-icon name="bounce-right" size="large"></wj-icon>
-            <wj-card-title>Animation</wj-card-title>
-        </wj-card-header>
-        <wj-card-content>
+    <wje-card className="Card-without-image" href="../api/animation">
+        <wje-card-header>
+            <wje-icon name="bounce-right" size="large"></wje-icon>
+            <wje-card-title>Animation</wje-card-title>
+        </wje-card-header>
+        <wje-card-content>
           <p>Jednoduchá integrácia animácií do webových aplikácií.</p>
-        </wj-card-content>
-    </wj-card>
+        </wje-card-content>
+    </wje-card>
   </a>
   <a href="../api/avatar">
-    <wj-card className="Card-without-image" href="../api/avatar">
-        <wj-card-header>
-            <wj-icon name="user" size="large"></wj-icon>
-            <wj-card-title>Avatar</wj-card-title>
-        </wj-card-header>
-        <wj-card-content>
+    <wje-card className="Card-without-image" href="../api/avatar">
+        <wje-card-header>
+            <wje-icon name="user" size="large"></wje-icon>
+            <wje-card-title>Avatar</wje-card-title>
+        </wje-card-header>
+        <wje-card-content>
           <p>Element avatar slúži na vizuálnu prezentáciu používateľa alebo subjektu.</p>
-        </wj-card-content>
-    </wj-card>
+        </wje-card-content>
+    </wje-card>
   </a>
 
 <a href="../api/badge">
-  <wj-card href="../api/badge">
-    <wj-card-header>
-      <wj-icon name="badge" size="large"></wj-icon>
-      <wj-card-title>Badge</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
-      <p>
-        Badge slúži ako upozornenie, že k elementu sú priradené ďalšie elementy a informujú používateľa o ich počte.
-      </p>
-    </wj-card-content>
-  </wj-card>
+  <wje-card href="../api/badge">
+    <wje-card-header>
+      <wje-icon name="badge" size="large"></wje-icon>
+      <wje-card-title>Badge</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>Badge slúži ako upozornenie, že k elementu sú priradené ďalšie elementy a informujú používateľa o ich počte.</p>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/breadcrumbs">
-  <wj-card href="../api/breadcrumbs">
-    <wj-card-header>
-      <wj-icon name="badges" size="large" style={{ transform: 'rotate(270deg)' }}></wj-icon>
-      <wj-card-title>Breadcrumbs</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card href="../api/breadcrumbs">
+    <wje-card-header>
+      <wje-icon name="badges" size="large" style={{ transform: 'rotate(270deg)' }}></wje-icon>
+      <wje-card-title>Breadcrumbs</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Breadcrumbs je komponent, ktorý zobrazuje cestu, po ktorej používateľ prešiel v rámci aplikácie alebo webu.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/button">
-  <wj-card href="../api/button">
-    <wj-card-header>
-      <wj-icon name="click" size="large"></wj-icon>
-      <wj-card-title>Button</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
-      <p>
-        Button (tlačidlo) je klikateľný element na vyvolávanie akcií, ktorý umožnuje zobraziť text, ikonu, prípadne
-        oboje.{' '}
-      </p>
-    </wj-card-content>
-  </wj-card>
+  <wje-card href="../api/button">
+    <wje-card-header>
+      <wje-icon name="click" size="large"></wje-icon>
+      <wje-card-title>Button</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>Button (tlačidlo) je klikateľný element na vyvolávanie akcií, ktorý umožnuje zobraziť text, ikonu, prípadne
+        oboje.{' '}</p>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/card">
-  <wj-card href="../api/card">
-    <wj-card-header>
-      <wj-icon name="credit-card" size="large"></wj-icon>
-      <wj-card-title>Card</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card href="../api/card">
+    <wje-card-header>
+      <wje-icon name="credit-card" size="large"></wje-icon>
+      <wje-card-title>Card</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Card je flexibilný a rozšíriteľný kontajner formátu karty, ktorý umožňuje zobraziť širokú škálu obsahu.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/checkbox">
-  <wj-card href="../api/checkbox">
-    <wj-card-header>
-      <wj-icon name="checkbox" size="large"></wj-icon>
-      <wj-card-title>Checkbox</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card href="../api/checkbox">
+    <wje-card-header>
+      <wje-icon name="checkbox" size="large"></wje-icon>
+      <wje-card-title>Checkbox</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Checkbox umožňuje používateľom vybrať jednu alebo viac možností z množiny.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/chip">
-  <wj-card href="../api/chip">
-    <wj-card-header>
-      <wj-icon name="capsule-horizontal" size="large"></wj-icon>
-      <wj-card-title>Chip</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
-      <p>
-        Chip je univerzálny element, ktorý predstavuje malý vizuálny blok obsahujúci rôzne ďalšie elementy, ako
-        napríklad avatary, text a ikony.
-      </p>
-    </wj-card-content>
-  </wj-card>
+  <wje-card href="../api/chip">
+    <wje-card-header>
+      <wje-icon name="capsule-horizontal" size="large"></wje-icon>
+      <wje-card-title>Chip</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>Chip je univerzálny element, ktorý predstavuje malý vizuálny blok obsahujúci rôzne ďalšie elementy, ako
+        napríklad avatary, text a ikony.</p>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/color-picker">
-  <wj-card href="../api/color-picker">
-    <wj-card-header>
-      <wj-icon name="color-picker" size="large"></wj-icon>
-      <wj-card-title>Color picker</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card href="../api/color-picker">
+    <wje-card-header>
+      <wje-icon name="color-picker" size="large"></wje-icon>
+      <wje-card-title>Color picker</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Color picker je element, ktorý zobrazuje farebnú paletu a umožňuje používateľom vybrať jednu z jej farieb.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/copy-button">
-  <wj-card href="../api/copy-button">
-    <wj-card-header>
-      <wj-icon name="copy" size="large"></wj-icon>
-      <wj-card-title>Copy button</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card href="../api/copy-button">
+    <wje-card-header>
+      <wje-icon name="copy" size="large"></wje-icon>
+      <wje-card-title>Copy button</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Copy button umožnuje jedným kliknutím skopírovať želaný obsah do clipboardu.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/dialog">
-  <wj-card href="../api/dialog">
-    <wj-card-header>
-      <wj-icon name="window-maximize" size="large"></wj-icon>
-      <wj-card-title>Dialog</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card href="../api/dialog">
+    <wje-card-header>
+      <wje-icon name="window-maximize" size="large"></wje-icon>
+      <wje-card-title>Dialog</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Dialog zobrazuje dialógové okno nachádzajúce sa nad obsahom aplikácie.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/dropdown">
-  <wj-card href="../api/dropdown">
-    <wj-card-header>
-      <wj-icon name="menu-deep" size="large" style={{ transform: 'rotate(180deg)' }}></wj-icon>
-      <wj-card-title>Dropdown</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card href="../api/dropdown">
+    <wje-card-header>
+      <wje-icon name="menu-deep" size="large" style={{ transform: 'rotate(180deg)' }}></wje-icon>
+      <wje-card-title>Dropdown</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Dropdown element slúži na zobrazenie kontextového menu po kliknutí na tlačidlo.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 <a href="../api/file-upload">
-  <wj-card className="Card-without-image" href="../api/file-upload">
-    <wj-card-header>
-      <wj-icon name="file-upload" size="large"></wj-icon>
-      <wj-card-title>File Upload</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card className="Card-without-image" href="../api/file-upload">
+    <wje-card-header>
+      <wje-icon name="file-upload" size="large"></wje-icon>
+      <wje-card-title>File Upload</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Jednoduchá integrácia animácií do webových aplikácií.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/icon">
-  <wj-card href="../api/icon">
-    <wj-card-header>
-      <wj-icon name="icons" size="large"></wj-icon>
-      <wj-card-title>Icon</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
-      <p>Icon poskytuje jednoduchý spôsob zobrazenia ikon zo vstavanej sady SVG obrázkov. </p>
-    </wj-card-content>
-  </wj-card>
+  <wje-card href="../api/icon">
+    <wje-card-header>
+      <wje-icon name="icons" size="large"></wje-icon>
+      <wje-card-title>Icon</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>Icon poskytuje jednoduchý spôsob zobrazenia ikon zo vstavanej sady SVG obrázkov.</p>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/icon-picker">
-  <wj-card href="../api/icon-picker">
-    <wj-card-header>
-      <wj-icon name="icons" size="large"></wj-icon>
-      <wj-card-title>Icon Picker</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card href="../api/icon-picker">
+    <wje-card-header>
+      <wje-icon name="icons" size="large"></wje-icon>
+      <wje-card-title>Icon Picker</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Icon picker umožňuje používateľovi nájsť a zvoliť ikonu zo sady dostupných ikon.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/img-comparer">
-  <wj-card href="../api/image-comparer">
-    <wj-card-header>
-      <wj-icon name="photo-scan" size="large"></wj-icon>
-      <wj-card-title>Image comparer</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card href="../api/image-comparer">
+    <wje-card-header>
+      <wje-icon name="photo-scan" size="large"></wje-icon>
+      <wje-card-title>Image comparer</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Image Comparer slúži na porovnanie dvoch obrázkov pomocou vstavaného posuvníka.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/grid">
-  <wj-card href="../api/grid">
-    <wj-card-header>
-      <wj-icon name="grid-4x4" size="large"></wj-icon>
-      <wj-card-title>Grid</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
-      <p>
-        Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí (layoutov) rozdelením obrazovky na mriežku.
-      </p>
-    </wj-card-content>
-  </wj-card>
+  <wje-card href="../api/grid">
+    <wje-card-header>
+      <wje-icon name="grid-4x4" size="large"></wje-icon>
+      <wje-card-title>Grid</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí (layoutov) rozdelením obrazovky na mriežku.</p>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/infinite-scroll">
-  <wj-card href="../api/infinite-scroll">
-    <wj-card-header>
-      <wj-icon name="infinity" size="large"></wj-icon>
-      <wj-card-title>Infinite Scroll</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
-      <p>
-        Infinite Scroll umožňuje implementovať dynamické načítavanie dát, keď používatelia scrollujú väčším množstvom
-        obsahu.
-      </p>
-    </wj-card-content>
-  </wj-card>
+  <wje-card href="../api/infinite-scroll">
+    <wje-card-header>
+      <wje-icon name="infinity" size="large"></wje-icon>
+      <wje-card-title>Infinite Scroll</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+        <p>Infinite Scroll umožňuje implementovať dynamické načítavanie dát, keď používatelia scrollujú väčším množstvom obsahu.</p>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/input">
-  <wj-card href="../api/input">
-    <wj-card-header>
-      <wj-icon name="input-check" size="large"></wj-icon>
-      <wj-card-title>Input</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card href="../api/input">
+    <wje-card-header>
+      <wje-icon name="input-check" size="large"></wje-icon>
+      <wje-card-title>Input</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Input element rozširuje možnosti štandardného HTML inputu pokročilými funkciami a možnosťami prispôsobenia.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/item">
-  <wj-card href="../api/item">
-    <wj-card-header>
-      <wj-icon name="list" size="large"></wj-icon>
-      <wj-card-title>Item</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
-      <p>
-        Komponenty Item sú bloky, ktoré môžu obsahovať rôzne typy obsahu vrátane textu, ikon, avatarov, obrázkov, a
-        mnoho iného.
-      </p>
-    </wj-card-content>
-  </wj-card>
+  <wje-card href="../api/item">
+    <wje-card-header>
+      <wje-icon name="list" size="large"></wje-icon>
+      <wje-card-title>Item</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>Komponenty Item sú bloky, ktoré môžu obsahovať rôzne typy obsahu vrátane textu, ikon, avatarov, obrázkov, a mnoho iného.</p>
+    </wje-card-content>
+  </wje-card>
+</a>
+
+<a href="../api/level-indicator">
+  <wje-card href="../api/level-indicator">
+    <wje-card-header>
+      <wje-icon name="menu-deep" size="large"></wje-icon>
+      <wje-card-title>Level indicator</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>Komponent Level indicator zobrazuje úroveň alebo pokrok v procese.</p>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/list">
-  <wj-card href="../api/list">
-    <wj-card-header>
-      <wj-icon name="list" size="large"></wj-icon>
-      <wj-card-title>List</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
-      <p>
-        Komponent List sa skladá z viacerých elementov Item a môže obsahovať text, tlačidlá, ikony, náhľady obrázkov, a
-        mnoho iného.
-      </p>
-    </wj-card-content>
-  </wj-card>
+  <wje-card href="../api/list">
+    <wje-card-header>
+      <wje-icon name="list" size="large"></wje-icon>
+      <wje-card-title>List</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>Komponent List sa skladá z viacerých elementov Item a môže obsahovať text, tlačidlá, ikony, náhľady obrázkov, a mnoho iného.</p>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/masonry">
-  <wj-card href="../api/masonry">
-    <wj-card-header>
-      <wj-icon name="layout-dashboard" size="large"></wj-icon>
-      <wj-card-title>Masonry</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
-      <p>
-        Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a vyvolá sa napríklad kliknutím na
-        tlačidlo.
-      </p>
-    </wj-card-content>
-  </wj-card>
+  <wje-card href="../api/masonry">
+    <wje-card-header>
+      <wje-icon name="layout-dashboard" size="large"></wje-icon>
+      <wje-card-title>Masonry</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a vyvolá sa napríklad kliknutím na tlačidlo.</p>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/menu">
-  <wj-card href="../api/menu">
-    <wj-card-header>
-      <wj-icon name="menu-2" size="large"></wj-icon>
-      <wj-card-title>Menu</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
-      <p>
-        Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a vyvolá sa napríklad kliknutím na
-        tlačidlo.
-      </p>
-    </wj-card-content>
-  </wj-card>
+  <wje-card href="../api/menu">
+    <wje-card-header>
+      <wje-icon name="menu-2" size="large"></wje-icon>
+      <wje-card-title>Menu</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a vyvolá sa napríklad kliknutím na tlačidlo.</p>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/progress-bar">
-  <wj-card href="../api/progress-bar">
-    <wj-card-header>
-      <wj-icon name="progress" size="large"></wj-icon>
-      <wj-card-title>Progress Bar</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card href="../api/progress-bar">
+    <wje-card-header>
+      <wje-icon name="progress" size="large"></wje-icon>
+      <wje-card-title>Progress Bar</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Progress Bar element je komponent navrhnutý na vizualizáciu priebehu.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/radio">
-  <wj-card href="../api/menu">
-    <wj-card-header>
-      <wj-icon name="circle-dot" size="large"></wj-icon>
-      <wj-card-title>Radio</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card href="../api/menu">
+    <wje-card-header>
+      <wje-icon name="circle-dot" size="large"></wje-icon>
+      <wje-card-title>Radio</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Radio element je rozšírená verzia štandardného HTML radio elementu.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/select">
-  <wj-card href="../api/menu">
-    <wj-card-header>
-      <wj-icon name="select" size="large"></wj-icon>
-      <wj-card-title>Select</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
-      <p>Select element rozširuje možnosti štandardného HTML select elementu. </p>
-    </wj-card-content>
-  </wj-card>
+  <wje-card href="../api/menu">
+    <wje-card-header>
+      <wje-icon name="select" size="large"></wje-icon>
+      <wje-card-title>Select</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>Select element rozširuje možnosti štandardného HTML select elementu.</p>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/slider">
-  <wj-card href="../api/menu">
-    <wj-card-header>
-      <wj-icon name="adjustments-horizontal" size="large"></wj-icon>
-      <wj-card-title>Slider</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card href="../api/menu">
+    <wje-card-header>
+      <wje-icon name="adjustments-horizontal" size="large"></wje-icon>
+      <wje-card-title>Slider</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Element Slider je umožňuje praktickým spôsobom vybrať hodnotu z rozsahu hodnôt.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/split-view">
-  <wj-card href="../api/menu">
-    <wj-card-header>
-      <wj-icon name="layout-columns" size="large"></wj-icon>
-      <wj-card-title>SplitView</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
-      <p>
-        Split view je komponent, ktorý umožňuje vytvoriť delené zobrazenie s dvoma alebo viacerými sekciami a posuvom
-        upravovať ich veľkosť.
-      </p>
-    </wj-card-content>
-  </wj-card>
+  <wje-card href="../api/menu">
+    <wje-card-header>
+      <wje-icon name="layout-columns" size="large"></wje-icon>
+      <wje-card-title>SplitView</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>Split view je komponent, ktorý umožňuje vytvoriť delené zobrazenie s dvoma alebo viacerými sekciami a posuvom upravovať ich veľkosť.</p>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/tab-group">
-  <wj-card href="../api/menu">
-    <wj-card-header>
-      <wj-icon name="rectangle-rounded-bottom" size="large"></wj-icon>
-      <wj-card-title>Tab Group</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
-      <p>
-        Tab Group zobrazuje záložkovú navigáciu, ktorá umožňuje zobrazovať rôzne časti aplikácie bez potreby prechádzať
-        na inú stránku.
-      </p>
-    </wj-card-content>
-  </wj-card>
+  <wje-card href="../api/menu">
+    <wje-card-header>
+      <wje-icon name="rectangle-rounded-bottom" size="large"></wje-icon>
+      <wje-card-title>Tab Group</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>Tab Group zobrazuje záložkovú navigáciu, ktorá umožňuje zobrazovať rôzne časti aplikácie bez potreby prechádzať na inú stránku.</p>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/toast">
-  <wj-card href="../api/menu">
-    <wj-card-header>
-      <wj-icon name="message-2-up" size="large"></wj-icon>
-      <wj-card-title>Toast</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card href="../api/menu">
+    <wje-card-header>
+      <wje-icon name="message-2-up" size="large"></wje-icon>
+      <wje-card-title>Toast</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Komponent toast poskytuje nenápadný spôsob zobrazovania krátkych oznámení používateľovi.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/toggle">
-  <wj-card href="../api/menu">
-    <wj-card-header>
-      <wj-icon name="toggle-left" size="large"></wj-icon>
-      <wj-card-title>Toggle</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card href="../api/menu">
+    <wje-card-header>
+      <wje-icon name="toggle-left" size="large"></wje-icon>
+      <wje-card-title>Toggle</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Toggle elementy sú malé interaktívne ovládacie prvky, ktoré umožňujú prepínať medzi dvoma stavmi.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/tooltip">
-  <wj-card href="../api/menu">
-    <wj-card-header>
-      <wj-icon name="tooltip" size="large"></wj-icon>
-      <wj-card-title>Tooltip</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
+  <wje-card href="../api/menu">
+    <wje-card-header>
+      <wje-icon name="tooltip" size="large"></wje-icon>
+      <wje-card-title>Tooltip</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
       <p>Element Tooltip slúži na zobrazovanie vyskakovacej nápovedy pri nájazde myšou.</p>
-    </wj-card-content>
-  </wj-card>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 <a href="../api/toolbar">
-  <wj-card href="../api/menu">
-    <wj-card-header>
-      <wj-icon name="box-align-top" size="large"></wj-icon>
-      <wj-card-title>Toolbar</wj-card-title>
-    </wj-card-header>
-    <wj-card-content>
-      <p>
-        Toolbar je určený na zobrazovanie rôzneho obsahu organizovaným spôsobom, a zvyčajne sa používa v hornej časti
-        stránok.
-      </p>
-    </wj-card-content>
-  </wj-card>
+  <wje-card href="../api/menu">
+    <wje-card-header>
+      <wje-icon name="box-align-top" size="large"></wje-icon>
+      <wje-card-title>Toolbar</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>Toolbar je určený na zobrazovanie rôzneho obsahu organizovaným spôsobom, a zvyčajne sa používa v hornej časti stránok.</p>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 </DocsCards>

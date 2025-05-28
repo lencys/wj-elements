@@ -105,7 +105,12 @@ template.innerHTML = `
         <div class="playground">
             <div class="content">
                 <wje-menu active>                   
-                    <wje-menu-item><wje-reorder-handle dropzone="wje-menu" parent="wje-menu-item" slot="start"><wje-icon name="arrows-move"></wje-icon></wje-reorder-handle>Item 1</wje-menu-item>
+                    <wje-menu-item>
+                    <wje-reorder-handle dropzone="wje-menu" parent="wje-menu-item" slot="start">
+                    <wje-icon name="arrows-move"></wje-icon>
+                    </wje-reorder-handle>
+                    Item 1
+                    </wje-menu-item>
                     <wje-menu-item><wje-reorder-handle dropzone="wje-menu" slot="start"><wje-icon name="arrows-move"></wje-icon></wje-reorder-handle>Item 2</wje-menu-item>
                     <wje-menu-item><wje-reorder-handle slot="start"><wje-icon name="arrows-move"></wje-icon></wje-reorder-handle>Item 3 (no dropzone)</wje-menu-item>
                     <wje-menu-item><wje-reorder-handle slot="start"><wje-icon name="arrows-move"></wje-icon></wje-reorder-handle>Item 4 (no dropzone)</wje-menu-item>
