@@ -62,8 +62,7 @@
     "remark-html": "^16.0.1",
     "remark-parse": "^11.0.0",
     "sass": "^1.44.0",
-    "semver": "^7.3.5",
-    "wj-elements": "^0.1.130"
+    "semver": "^7.3.5"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.0.0",

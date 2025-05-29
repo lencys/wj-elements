@@ -4,8 +4,6 @@ const fetch = require('node-fetch');
 
 const VERSIONS_JSON = [];
 
-const BASE_URL = '';
-
 module.exports = {
   title: 'Dokumentácia WJ Elements',
   tagline:
@@ -42,20 +40,20 @@ module.exports = {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: ({ versionDocsDirPath, docPath, locale }) => {
-            if (locale != 'en') {
+            if (locale !== 'en') {
               return 'https://crowdin.com/project/wje';
             }
             let match;
-            if ((match = docPath.match(/api\/(.*)\.md/)) != null) {
+            if ((match = docPath.match(/api\/(.*)\.md/)) !== null) {
               return `https://github.com/ionic-team/ionic-docs/tree/main/docs/api/${match[1]}.md`;
             }
-            if ((match = docPath.match(/cli\/commands\/(.*)\.md/)) != null) {
+            if ((match = docPath.match(/cli\/commands\/(.*)\.md/)) !== null) {
               return `https://github.com/ionic-team/ionic-cli/edit/develop/packages/@ionic/cli/src/commands/${match[1].replace(
                 '-',
                 '/'
               )}.ts`;
             }
-            if ((match = docPath.match(/native\/(.*)\.md/)) != null) {
+            if ((match = docPath.match(/native\/(.*)\.md/)) !== null) {
               return `https://github.com/ionic-team/capacitor-plugins/edit/main/${match[1]}/README.md`;
             }
             return `https://github.com/ionic-team/ionic-docs/edit/main/${versionDocsDirPath}/${docPath}`;
@@ -187,7 +185,8 @@ module.exports = {
           'styled-components': path.resolve(__dirname, './node_modules/styled-components'),
           react: path.resolve(__dirname, './node_modules/react'),
           'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
-          '@components': path.resolve(__dirname, './src/components'),
+          '@components': path.resolve(__dirname, './src/components')
+
         },
       },
     ],

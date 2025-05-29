@@ -7,7 +7,7 @@ function Example() {
     <>
       <wje-chip>
         <wje-avatar>
-          <wje-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></wje-img>
+          <wje-img src="/img/demos/avatar.svg"></wje-img>
         </wje-avatar>
         <wje-label>Avatar Chip</wje-label>
         <wje-icon name="circle-xmark"></wje-icon>

@@ -5,6 +5,9 @@
  * listener. Otherwise, it is possible that the message
  * listener will fire before the body is ready.
  */
+
+window.transitions = new Map();
+
 window.addEventListener('DOMContentLoaded', () => {
   /**
    * The parent Playground component will

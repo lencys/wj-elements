@@ -253,6 +253,12 @@ body {
 
   .content {
     max-width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
   }
 }
 

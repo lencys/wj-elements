@@ -6,7 +6,7 @@
  * - Removed the navbar. It's been moved to the top of the docs page ({@link ../../DocRoot/Layout/index.tsx}).
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import ErrorBoundary from '@docusaurus/ErrorBoundary';
 import { PageMetadata, SkipToContentFallbackId, ThemeClassNames } from '@docusaurus/theme-common';
@@ -29,6 +29,13 @@ export default function Layout(props: Props): JSX.Element {
     description,
   } = props;
   useKeyboardNavigation();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !window.translations) {
+      window.translations = new Map();
+    }
+  }, []);
+
   return (
     <LayoutProvider>
       <PageMetadata title={title} description={description} />

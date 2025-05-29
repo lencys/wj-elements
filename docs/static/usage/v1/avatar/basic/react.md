@@ -6,7 +6,7 @@ function Example() {
   return (
     <>
       <wje-avatar>
-        <wje-img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        <wje-img alt="Silhouette of a person's head" src="/img/demos/avatar.svg" />
       </wje-avatar>
     </>
   );
