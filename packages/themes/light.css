@@ -383,6 +383,11 @@
     --wje-input-margin-bottom: 0.5rem;
     --wje-input-line-height: 20px;
     --wje-input-slot-padding-inline: 0.5rem;
+    --wje-input-label-display: block;
+    --wje-input-label-margin: 0;
+    --wje-input-label-padding: 0;
+    --wje-input-label-line-height: var(--wje-line-height-normal);
+    --wje-input-label-font-size: var(--wje-font-size);
 
     /* Item */
     --wje-item-color: var(--wje-color);

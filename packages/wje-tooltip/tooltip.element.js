@@ -1,4 +1,5 @@
 import { default as WJElement, event } from '../wje-element/element.js';
+import Popup from '../wje-popup/popup.js';
 import styles from './styles/styles.css?inline';
 
 /**
@@ -21,6 +22,14 @@ export default class Tooltip extends WJElement {
     constructor() {
         super();
     }
+
+    /**
+     * Dependencies of the Button element.
+     * @type {object}
+     */
+    dependencies = {
+        'wje-popup': Popup,
+    };
 
     /**
      * Set active attribute for the tooltip element.
@@ -85,8 +94,6 @@ export default class Tooltip extends WJElement {
         // SLOT - Anchor
         let slot = document.createElement('slot');
         slot.setAttribute('slot', 'anchor');
-
-        // let slot = this.querySelector("wje-button");
 
         let arrow = document.createElement('div');
         arrow.classList.add('arrow');

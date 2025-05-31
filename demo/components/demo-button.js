@@ -98,6 +98,7 @@ template.innerHTML = `
       <div class="content">
         <wje-button>Default</wje-button>
         <wje-button fill="link">Link</wje-button>
+        <wje-button fill="link" circle size="small"><wje-icon name="x" size="small"></wje-icon></wje-button>
         <wje-button fill="outline">Outline</wje-button>
         <wje-button fill="solid">Solid</wje-button>
       </div>

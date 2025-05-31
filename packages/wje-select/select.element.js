@@ -527,8 +527,9 @@ export default class Select extends WJElement {
 		optionsWrapper.appendChild(list);
 
 		wrapper.appendChild(inputWrapper);
-		popup.appendChild(optionsWrapper);
+
 		popup.appendChild(wrapper);
+		popup.appendChild(optionsWrapper);
 
 		if (this.trigger === 'click') popup.setAttribute('manual', '');
 

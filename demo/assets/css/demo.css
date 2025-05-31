@@ -3,6 +3,7 @@
   /*background: var(--wje-background);*/
 }
 
+
 html {
   color: var(--wje-color);
 }
@@ -10,6 +11,13 @@ html {
 body {
   background: var(--wje-background);
   color: var(--wje-color);
+}
+
+body {
+  backface-visibility: hidden;
+}
+:not(:defined) {
+  visibility: hidden;
 }
 
 .container {

@@ -1,3 +1,9 @@
+import { registerIconLibrary } from "../../../dist/wje-icon-library.js";
+
+registerIconLibrary("default", {
+  resolver: (name, style) => `http://localhost:5174/dist/assets/img/icons/${style}/${name}.svg`
+});
+
 window.translations = new Map();
 
 document.querySelector('.dark-light-mode').addEventListener('wje-button:click', () => {

@@ -89,6 +89,7 @@ export default defineConfig(({ mode }) => {
           grid: './packages/wje-grid/grid.js',
           header: './packages/wje-header/header.js',
           icon: './packages/wje-icon/icon.js',
+          'icon-library': './packages/wje-icon/service/library.js',
           'icon-picker': './packages/wje-icon-picker/icon-picker.js',
           img: './packages/wje-img/img.js',
           'img-comparer': './packages/wje-img-comparer/img-comparer.js',

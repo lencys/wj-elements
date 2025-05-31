@@ -1,9 +1,8 @@
-import { default as LevelIndicator } from './wje-level-indicator/level-indicator.js';
 export { bindRouterLinks } from 'slick-router/middlewares/router-links.js';
-
 export { default as SlidingContainer } from '../experimental-packages/wje-sliding-container/sliding-container.js';
 export { fetchAndParseCSS } from './utils/animations.js';
 export { formatDate } from './utils/date.js';
+export { registerIconLibrary, unregisterIconLibrary } from './wje-icon/service/library.js';
 export { event } from './utils/event.js';
 export { Localizer } from './utils/localize.js';
 export { skSk } from './translations/sk-sk.js';

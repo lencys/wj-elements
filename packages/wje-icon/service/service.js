@@ -1,3 +1,5 @@
+import { getIconLibrary } from "./library.js";
+
 export const iconContent = new Map();
 const requests = new Map();
 
@@ -213,7 +215,7 @@ export const getUrl = (i) => {
     url = getName(i.name);
 
     if (url) {
-        return getNamedUrl(url, i.hasAttribute('filled'));
+        return getNamedUrl(url, i.library, i.hasAttribute('filled'));
     }
 
     return null;
@@ -249,22 +251,22 @@ export const getName = (iconName) => {
 /**
  * Constructs the URL for a named SVG icon.
  * @param {string} iconName The name of the icon to retrieve.
+ * @param {string} [libraryName] The name of the icon library to use. Defaults to "default".
  * @param {boolean} [filled] Whether to use the "filled" variant of the icon. Defaults to "outline" if `false`.
  * @returns {string} - The complete URL to the SVG icon.
  * @description
  * This function generates a URL for an icon based on its name and style (filled or outline).
  * It uses the base URL from the environment variable `VITE_ICON_ASSETS_URL`.
  * @example
- * const url = getNamedUrl('user-icon', true);
+ * const url = getNamedUrl('user-icon', 'default', true);
  * console.log(url); // 'https://example.com/filled/user-icon.svg'
  *
- * const outlineUrl = getNamedUrl('settings');
+ * const outlineUrl = getNamedUrl('settings', 'default');
  * console.log(outlineUrl); // 'https://example.com/outline/settings.svg'
  */
-const getNamedUrl = (iconName, filled = false) => {
-    const path = `${filled ? 'filled' : 'outline'}/${iconName}.svg`;
+const getNamedUrl = (iconName, libraryName = 'default', filled = false) => {
+    let library = getIconLibrary(libraryName);
+    let url = library.resolver(iconName, filled ? 'filled' : 'outline');
 
-    let url = new URL(process.env.VITE_ICON_ASSETS_URL + path);
-
-    return url.href;
-};
+    return url;
+}

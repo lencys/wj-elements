@@ -6,10 +6,16 @@
     width: 100%;
     margin-bottom: var(--wje-input-margin-bottom);
     display: block;
-    --wje-input-in-select-background: var(--wje-input-background-color, var(--wje-color-contrast-0));
-    --wje-input-in-select-border-width: var(--wje-input-border-width, 1px);
-    --wje-input-in-select-padding: var(--wje-input-padding, 2px 0.5rem);
-
+    label {
+        margin: var(--wje-input-label-margin);
+        padding: var(--wje-input-label-padding);
+        display: var(--wje-input-label-display);
+        opacity: 1;
+        cursor: text;
+        transition: opacity 0.2s ease;
+        line-height: var(--wje-input-label-line-height);
+        font-size: var(--wje-input-label-font-size);
+    }
     .wrapper {
         display: flex;
         width: 100%;
@@ -62,12 +68,6 @@
                 width: 100%;
             }
             label {
-                margin: 0;
-                display: block;
-                opacity: 1;
-                cursor: text;
-                transition: opacity 0.2s ease;
-                line-height: var(--wje-input-line-height);
                 &.fade {
                     opacity: 0.5;
                     font-size: 12px;
@@ -115,14 +115,6 @@
                 border-width: var(--wje-input-border-width);
                 border-style: var(--wje-input-border-style);
                 border-color: var(--wje-input-border-color);
-            }
-            label {
-                margin: 0;
-                display: inline-block;
-                opacity: 1;
-                cursor: text;
-                transition: opacity 0.2s ease;
-                line-height: var(--wje-input-line-height);
             }
             .input-wrapper {
                 flex-wrap: nowrap;
