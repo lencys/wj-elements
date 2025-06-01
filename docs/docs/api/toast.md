@@ -23,12 +23,6 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Komponent Toast poskytuje nenápadný spôsob zobrazovania krátkych oznámení používateľovi. Sú navrhnuté tak, aby sa objavovali a mizli plynulo, čím sa zabezpečí, že sa dôležité informácie dostanú k používateľom bez toho, aby boli rušivé.
 
-## Základné použitie
-
-import Basic from '@site/static/usage/v1/toast/inline/basic/index.md';
-
-<Basic />
-
 ## Atribúty a Vlastnosti
 
 <Props />
