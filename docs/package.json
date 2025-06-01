@@ -37,10 +37,10 @@
     ]
   },
   "dependencies": {
-    "@docusaurus/core": "^3.8.0",
-    "@docusaurus/mdx-loader": "^3.0.0",
-    "@docusaurus/plugin-client-redirects": "^3.0.0",
-    "@docusaurus/preset-classic": "^3.8.0",
+    "@docusaurus/core": "^3.7.0",
+    "@docusaurus/mdx-loader": "^3.7.0",
+    "@docusaurus/plugin-client-redirects": "^3.7.0",
+    "@docusaurus/preset-classic": "^3.7.0",
     "@iconify/react": "^3.0.0",
     "@ionic-internal/docusaurus-plugin-tag-manager": "^2.0.0",
     "@ionic-internal/ionic-ds": "^7.0.0",
@@ -52,8 +52,9 @@
     "clsx": "^1.1.1",
     "concurrently": "^6.2.0",
     "crowdin": "^3.5.0",
+    "docusaurus-plugin-dotenv": "^1.0.1",
     "docusaurus-plugin-module-alias": "^0.0.2",
-    "docusaurus-plugin-sass": "^0.2.1",
+    "docusaurus-plugin-sass": "^0.2.6",
     "fs-extra": "^9.1.0",
     "modern-normalize": "^1.1.0",
     "prism-react-renderer": "^2.1.0",
@@ -62,12 +63,14 @@
     "remark-html": "^16.0.1",
     "remark-parse": "^11.0.0",
     "sass": "^1.44.0",
-    "semver": "^7.3.5"
+    "semver": "^7.3.5",
+    "wj-elements": "^0.1.177"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.0.0",
-    "@docusaurus/tsconfig": "^3.0.0",
+    "@docusaurus/module-type-aliases": "^3.7.0",
+    "@docusaurus/tsconfig": "^3.7.0",
     "@ionic/prettier-config": "^3.0.0",
+    "@telus-uds/docusaurus-plugin-webpack-config": "^2.0.1",
     "@types/react": "^18.2.29",
     "cspell": "^6.31.3",
     "html-loader": "^3.1.0",

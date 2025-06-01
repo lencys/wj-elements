@@ -4,13 +4,15 @@ const fetch = require('node-fetch');
 
 const VERSIONS_JSON = [];
 
+const BASE_URL = '';
+
 module.exports = {
   title: 'Dokumentácia WJ Elements',
   tagline:
     'WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania využívajúca silu web komponentov, ktorá je určená na zjednodušenie vývoja webových aplikácií.',
   url: 'https://elements.webjet.sk',
-  baseUrl: ``,
-  trailingSlash: true,
+  baseUrl: `${BASE_URL}/`,
+  // trailingSlash: true,
   i18n: {
     defaultLocale: 'sk',
     locales: ['sk', 'en'],
@@ -185,8 +187,8 @@ module.exports = {
           'styled-components': path.resolve(__dirname, './node_modules/styled-components'),
           react: path.resolve(__dirname, './node_modules/react'),
           'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
-          '@components': path.resolve(__dirname, './src/components')
-
+          '@components': path.resolve(__dirname, './src/components'),
+          'wje-elements': path.resolve(__dirname, './node_modules/wj-elements/dist/')
         },
       },
     ],
@@ -212,8 +214,6 @@ module.exports = {
       {
         versions: VERSIONS_JSON,
       },
-    ],
-  ],
-  customFields: {},
-  themes: [],
+    ]
+  ]
 };

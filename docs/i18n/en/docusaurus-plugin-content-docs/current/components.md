@@ -18,28 +18,24 @@ import DocsCards from '@components/global/DocsCards';
 <style>{ `
     :root {
       --doc-item-container-width: 60rem;
-    }
+    };
     wje-icon {
       padding: 12px;
       --wje-icon-size: 32px;
-    }
+    };
     docs-cards > a {
       display: flex;
         color: var(--wje-color-primary-9)!important;
-
-```
-}
-```
-
-\`}</style>
+    };
+`}</style>
 
 {' '}
 
-<script type="module" src="https://cdn.jsdelivr.net/npm/wje-elements@0.1.175/dist/wje-master.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/wje-master.min.js"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wje-elements@0.1.175/dist/light.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wje-elements@0.1.175/dist/dark.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wje-elements@0.1.175/dist/styles.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/light.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/dark.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/styles.css" />
 
 </head>
 
@@ -224,7 +220,7 @@ WebJET Elements includes a wide range of components that are optimized for web i
       <wje-card-title>Icon</wje-card-title>
     </wje-card-header>
     <wje-card-content>
-      <p>Icon provides an easy way to display icons from a built-in set of SVG images. </p>
+      <p>Icon provides an easy way to display icons from a built-in set of SVG images.</p>
     </wje-card-content>
   </wje-card>
 </a>
@@ -296,8 +292,19 @@ WebJET Elements includes a wide range of components that are optimized for web i
       <wje-card-title>Item</wje-card-title>
     </wje-card-header>
     <wje-card-content>
-      <p>Item components are blocks that can contain various types of content including text, icons, avatars, images, and
-        much more.</p>
+      <p>Item components are blocks that can contain different types of content including text, icons, avatars, images, and much more.</p>
+    </wje-card-content>
+  </wje-card>
+</a>
+
+<a href="../api/level-indicator">
+  <wje-card href="../api/level-indicator">
+    <wje-card-header>
+      <wje-icon name="menu-deep" size="large"></wje-icon>
+      <wje-card-title>Level indicator</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>The Level indicator component displays the level or progress of a process.</p>
     </wje-card-content>
   </wje-card>
 </a>
@@ -369,7 +376,7 @@ WebJET Elements includes a wide range of components that are optimized for web i
       <wje-card-title>Select</wje-card-title>
     </wje-card-header>
     <wje-card-content>
-      <p>The select element extends the capabilities of the standard HTML select element. </p>
+      <p>The select element extends the capabilities of the standard HTML select element.</p>
     </wje-card-content>
   </wje-card>
 </a>
@@ -393,10 +400,7 @@ WebJET Elements includes a wide range of components that are optimized for web i
       <wje-card-title>SplitView</wje-card-title>
     </wje-card-header>
     <wje-card-content>
-      <p>
-        Split view is a component that allows you to create a split view with two or more sections and scroll
-        to adjust their size.
-      </p>
+      <p>Split view is a component that allows you to create a split view with two or more sections and scroll to adjust their size.</p>
     </wje-card-content>
   </wje-card>
 </a>
@@ -408,10 +412,7 @@ WebJET Elements includes a wide range of components that are optimized for web i
       <wje-card-title>Tab Group</wje-card-title>
     </wje-card-header>
     <wje-card-content>
-      <p>
-        Tab Group displays a tabbed navigation that allows you to view different parts of the application without having to navigate
-        to another page.
-      </p>
+      <p>Tab Group displays a tabbed navigation that allows you to view different parts of the application without having to navigate to another page.</p>
     </wje-card-content>
   </wje-card>
 </a>
@@ -459,10 +460,7 @@ WebJET Elements includes a wide range of components that are optimized for web i
       <wje-card-title>Toolbar</wje-card-title>
     </wje-card-header>
     <wje-card-content>
-      <p>
-        A toolbar is designed to display a variety of content in an organized manner, and is typically used at the top of
-        pages.
-      </p>
+      <p>A toolbar is designed to display various content in an organized manner, and is usually used at the top of a page.</p>
     </wje-card-content>
   </wje-card>
 </a>

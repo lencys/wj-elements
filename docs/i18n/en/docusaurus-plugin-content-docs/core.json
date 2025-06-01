@@ -2381,7 +2381,7 @@
     {
       "filePath": "src/components/chip/chip.tsx",
       "encapsulation": "shadow",
-      "tag": "wje-chip",
+      "tag": "chip",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -2809,7 +2809,7 @@
     {
       "filePath": "src/components/dialog/dialog.tsx",
       "encapsulation": "shadow",
-      "tag": "dialogue",
+      "tag": "dialog",
       "docs": "",
       "docsTags": [
         {
@@ -9669,6 +9669,40 @@
       }
     },
     {
+      "filePath": "src/components/reorder/reorder.tsx",
+      "encapsulation": "shadow",
+      "tag": "reorder",
+      "docs": "The `Reorder` is a custom web component that represents a zone for reordering content.",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The default slot for content."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Native part of the reorder component."
+        }
+      ],
+      "dependents": [],
+      "dependencies": [
+        "WJElement"
+      ],
+      "dependencyGraph": {
+        "wje-reorder": [
+          "WJElement"
+        ]
+      }
+    },
+    {
       "filePath": "src/components/reorder-dropzone/reorder-dropzone.tsx",
       "encapsulation": "shadow",
       "tag": "reorder-dropzone",
@@ -11634,12 +11668,12 @@
         {
           "name": "--wje-split-view-divider-area",
           "annotation": "prop",
-          "docs": "Defines the interactive area (hitbox) of the resizable separator. Accepts any valid CSS length unit (e.g., `px`, `rem`, `%`)."
+          "docs": "Defines the interactive area (hitbox) of the resizing slider. Accepts any valid CSS length unit (e.g., `px`, `rem`, `%`)."
         },
         {
           "name": "--wje-split-view-divider-width",
           "annotation": "prop",
-          "docs": "Specifies the visual width of the separator. Controls the visual thickness of the separator."
+          "docs": "Specifies the visual width of the slider. Controls the display thickness of the slider."
         },
         {
           "name": "--wje-split-view-min",
@@ -11674,12 +11708,12 @@
         {
           "name": "--wje-split-view-divider-background",
           "annotation": "prop",
-          "docs": "Sets the background color of the separator. Accepts any valid CSS color value (e.g., hex, RGB, or CSS variable)."
+          "docs": "Sets the background color of the slider. Accepts any valid CSS color value (e.g., hex, RGB, or CSS variable)."
         },
         {
           "name": "--wje-split-view-divider-size",
           "annotation": "prop",
-          "docs": "Defines the overall size of the separator, affecting its visual and interactive dimensions. Accepts any valid CSS length unit."
+          "docs": "Defines the overall size of the slider, affecting its visual and interactive dimensions. Accepts any valid CSS length unit."
         }
       ],
       "slots": [
@@ -11693,13 +11727,13 @@
         },
         {
           "name": "divider",
-          "docs": "Slot for wje-divider."
+          "docs": "Slot for slider."
         }
       ],
       "parts": [
         {
           "name": "divider",
-          "docs": "Refers to the wje-divider separator element."
+          "docs": "Refers to the slider."
         }
       ],
       "dependents": [],

@@ -4,26 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Accordion</title>
-    <link rel="stylesheet" href="../../../common.css" />
-    <script src="../../../common.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/wje-label.min.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/wje-icon.min.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/wje-button.min.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/wje-status.min.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/wje-accordion-item.min.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/wje-accordion.min.js"></script>
-/img/demos/avatar.svg
+
+    <script src="../../common.js"></script>
+    <script type="module">
+      import { registerIconLibrary, getIconLibrary } from "https://cdn.jsdelivr.net/npm/wj-elements@0/dist/wje-icon-library.js";
+
+      registerIconLibrary("default", {
+        resolver: (name, style) => `https://cdn.jsdelivr.net/npm/wj-elements@0/dist/assets/img/icons/${style}/${name}.svg`
+      });
+    </script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/wje-master.js"></script>
+
+    <link rel="stylesheet" href="../../common.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/light.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/dark.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/styles.css" />
+
+    <style>
+      [slot=headline] {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        gap: .5rem;
+      }
+      wje-dropdown {
+        margin-left: auto;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
-      <div class="content">
+      <div class="content" style="flex-direction:  column;">
         <wje-accordion>
           <wje-accordion-item class="collapsed">
             <div slot="headline">
               <wje-status color="success" size="large">
                 <wje-icon name="check" size="medium"></wje-icon>
               </wje-status>
-              Headline
+              Headline ssss
               <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible id="custom-dropdown-basic">
                 <wje-button fill="link" slot="trigger">
                   <wje-icon name="dots-vertical"></wje-icon>
