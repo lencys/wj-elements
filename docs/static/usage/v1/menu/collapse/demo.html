@@ -4,12 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menu</title>
-    <link rel="stylesheet" href="../../../common.css" />
-    <script src="../../../common.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0.1.172/dist/wje-master.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.172/dist/light.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.172/dist/dark.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0.1.172/dist/styles.css" />
+    <script src="../../common.js"></script>
+    <script type="module">
+      import { registerIconLibrary, getIconLibrary } from "https://cdn.jsdelivr.net/npm/wj-elements@0/dist/wje-icon-library.js";
+
+      registerIconLibrary("default", {
+        resolver: (name, style) => `https://cdn.jsdelivr.net/npm/wj-elements@0/dist/assets/img/icons/${style}/${name}.svg`
+      });
+    </script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/wje-master.js"></script>
+
+    <link rel="stylesheet" href="../../common.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/light.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/dark.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/styles.css" />
   </head>
   <body>
     <div class="container" style="display: block;">
