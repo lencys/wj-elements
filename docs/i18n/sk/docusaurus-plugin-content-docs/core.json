@@ -454,6 +454,49 @@
       "dependencyGraph": {}
     },
     {
+      "filePath": "src/components/animation/aside.tsx",
+      "encapsulation": "shadow",
+      "tag": "aside",
+      "docs": "",
+      "docsTags": [
+        {
+          "name": "virtualProp",
+          "text": "{\"ios\" | \"md\"} mode - The mode determines which platform styles to use."
+        },
+        {
+          "name": "slot",
+          "text": "header - Content is placed at the top and is used to\nexpand or collapse the accordion item."
+        },
+        {
+          "name": "slot",
+          "text": "content - Content is placed below the header and is\nshown or hidden based on expanded state."
+        },
+        {
+          "name": "part",
+          "text": "header - The wrapper element for the header slot."
+        },
+        {
+          "name": "part",
+          "text": "content - The wrapper element for the content slot."
+        },
+        {
+          "name": "part",
+          "text": "expanded - The expanded element. Can be used in combination\nwith the `header` and `content` parts (i.e. `::part(header expanded)`)."
+        }
+      ],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
       "filePath": "src/components/avatar/avatar.tsx",
       "encapsulation": "shadow",
       "tag": "avatar",
@@ -9585,7 +9628,6 @@
       "filePath": "src/components/reorder-handle/reorder-handle.tsx",
       "encapsulation": "shadow",
       "tag": "reorder-handle",
-      "encapsulation": "shadow",
       "docs": "Element, ktorý pridáva iným elementom funkcionalitu drag-and-drop, a slúži ako rukoväť na presúvanie položiek v skupine elementov",
       "docsTags": [],
       "usage": {},

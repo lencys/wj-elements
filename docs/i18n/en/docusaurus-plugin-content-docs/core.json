@@ -7006,7 +7006,7 @@
     {
       "filePath": "src/components/aside/aside.tsx",
       "encapsulation": "scoped",
-      "tag": "Aside",
+      "tag": "aside",
       "docs": "",
       "docsTags": [],
       "usage": {},
