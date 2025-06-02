@@ -1,6 +1,6 @@
 import { UniversalService } from './service/universal-service.js';
 import { defaultStoreActions, store } from '../wje-store/store.js';
-import { WjePermissionsApi } from '../utils/permissions-api.js';
+import { Permissions } from '../utils/permissions.js';
 import { WjElementUtils } from '../utils/element-utils.js';
 import { event } from '../utils/event.js';
 
@@ -547,7 +547,7 @@ export default class WJElement extends HTMLElement {
 
 		this.context.append(this.template.content.cloneNode(true));
 
-		if (this.noShow || (this.isPermissionCheck && !WjePermissionsApi.isPermissionFulfilled(this.permission))) {
+		if (this.noShow || (this.isPermissionCheck && !Permissions.isPermissionFulfilled(this.permission))) {
 			this.remove();
 			return Promise.resolve();
 		}
@@ -694,4 +694,4 @@ export default class WJElement extends HTMLElement {
 }
 
 let __esModule = 'true';
-export { __esModule, WjePermissionsApi, WjElementUtils, event };
+export { __esModule, Permissions, WjElementUtils, event };

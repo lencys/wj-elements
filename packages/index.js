@@ -1,13 +1,20 @@
+// Router
 export { bindRouterLinks } from 'slick-router/middlewares/router-links.js';
-export { default as SlidingContainer } from '../experimental-packages/wje-sliding-container/sliding-container.js';
+
+// Utilities
 export { fetchAndParseCSS } from './utils/animations.js';
+export { setBasePath, getBasePath } from './utils/base-path.js';
 export { formatDate } from './utils/date.js';
-export { registerIconLibrary, unregisterIconLibrary } from './wje-icon/service/library.js';
 export { event } from './utils/event.js';
+export { registerIconLibrary, unregisterIconLibrary } from './wje-icon/service/library.js';
 export { Localizer } from './utils/localize.js';
+export { Permissions } from './utils/permissions.js';
+
+// Services
 export { skSk } from './translations/sk-sk.js';
 export { enGb } from './translations/en-gb.js';
-export { WjePermissionsApi } from './utils/permissions-api.js';
+
+// Components
 export { default as Accordion } from './wje-accordion/accordion.js';
 export { default as AccordionItem } from './wje-accordion-item/accordion-item.js';
 export { default as Animation } from './wje-animation/animation.js';
@@ -104,3 +111,7 @@ export { default as Tooltip } from './wje-tooltip/tooltip.js';
 export { default as Tree } from './wje-tree/tree.js';
 export { default as TreeItem } from './wje-tree-item/tree-item.js';
 export { default as VisuallyHidden } from './wje-visually-hidden/visually-hidden.js';
+
+// experimaental components
+
+export { default as SlidingContainer } from '../experimental-packages/wje-sliding-container/sliding-container.js';

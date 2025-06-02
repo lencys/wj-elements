@@ -163,6 +163,7 @@ function makeServer() {
 
           this.passthrough();
           this.passthrough('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+          this.passthrough('https://cdn.jsdelivr.net/**');
         },
         logging: true,
       });

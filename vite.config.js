@@ -47,12 +47,12 @@ export default defineConfig(({ mode }) => {
       lib: {
         entry: {
           master: './packages/index.js',
-          styles: './packages/styles/styles.css',
-          light: './packages/themes/light.css',
-          localize: './packages/utils/localize.js',
-          dark: './packages/themes/dark.css',
+          'base-path': './packages/utils/base-path.js',
           fetchAndParseCSS: './packages/utils/animations.js',
-          store: './packages/wje-store/store.js',
+          localize: './packages/utils/localize.js',
+          light: './packages/themes/light.css',
+          dark: './packages/themes/dark.css',
+          styles: './packages/styles/styles.css',
           accordion: './packages/wje-accordion/accordion.js',
           'accordion-item': './packages/wje-accordion-item/accordion-item.js',
           animation: './packages/wje-animation/animation.js',
@@ -136,6 +136,7 @@ export default defineConfig(({ mode }) => {
           status: './packages/wje-status/status.js',
           step: './packages/wje-step/step.js',
           stepper: './packages/wje-stepper/stepper.js',
+          store: './packages/wje-store/store.js',
           tab: './packages/wje-tab/tab.js',
           'tab-group': './packages/wje-tab-group/tab-group.js',
           'tab-panel': './packages/wje-tab-panel/tab-panel.js',
@@ -152,7 +153,7 @@ export default defineConfig(({ mode }) => {
         },
         name: 'WjElements',
         fileName: (format, name) => {
-          if (name === 'localize') return name + '.js';
+          if (name === 'localize' || name === 'base-path') return name + '.js';
           return 'wje-' + name + '.js';
         },
         formats: ['es'],

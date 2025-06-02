@@ -1,10 +1,12 @@
-import { registerIconLibrary } from "../../../dist/wje-icon-library.js";
+import { setBasePath } from "/dist/base-path.js";
 
-registerIconLibrary("default", {
-  resolver: (name, style) => `http://localhost:5174/dist/assets/img/icons/${style}/${name}.svg`
-});
+// Set the base path for the application
+setBasePath("/dist/");
 
+// Set the base variable for translations
 window.translations = new Map();
+
+/*********************************/
 
 document.querySelector('.dark-light-mode').addEventListener('wje-button:click', () => {
   document.body.classList.toggle('wje-theme-dark');
@@ -13,8 +15,8 @@ document.querySelector('.dark-light-mode').addEventListener('wje-button:click', 
 loadModePreference();
 
 function saveModePreference() {
-  var body = document.body;
-  var isDarkMode = body.classList.contains('wje-theme-dark');
+  const body = document.body;
+  let isDarkMode = body.classList.contains('wje-theme-dark');
   localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
 }
 
