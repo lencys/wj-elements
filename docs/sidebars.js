@@ -43,6 +43,14 @@ module.exports = {
         'theming/animations',
       ],
     },
+    {
+      type: 'category',
+      label: 'Reference',
+      collapsed: false,
+      items: [
+        'reference/glossary'
+      ],
+    },
   ],
 
   api: [
