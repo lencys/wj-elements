@@ -5,13 +5,38 @@
 :host {
     display: block;
     wje-icon {
-        visibility: hidden;
-        margin-inline: 0.5rem;
+        /*visibility: hidden;*/
+        /*margin-inline: 0.5rem;*/
+    }
+
+    wje-icon {
+        /*visibility: hidden;*/
+    }
+
+    wje-checkbox {
+        /*visibility: hidden;*/
     }
 }
 
+::slotted(wje-icon[slot="check"]) {
+    visibility: hidden;
+    margin-inline: 0.5rem;
+}
+
+::slotted(wje-checkbox[slot="check"]) {
+    margin-inline: 0.5rem 0;
+    margin-block: 0;
+}
+
 :host([selected]) {
+    ::slotted([slot='check']) {
+        visibility: visible;
+    }
     wje-icon {
+        /*visibility: visible;*/
+    }
+
+    wje-checkbox {
         visibility: visible;
     }
 }

@@ -7,6 +7,40 @@ template.innerHTML = `
   <h1>Select</h1>
   <div class="container">
     
+    <!-- Default -->
+
+    <h2>Default</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-select label="Label" placeholder="Select option">
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2">
+            Option 2
+            <wje-icon name="heart" slot="end"></wje-icon>
+          </wje-option>
+          <wje-option value="option-3">Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+        </wje-select>
+      </div>
+    </div>
+    
+    <!-- STANDARD -->
+
+    <h2>Standard</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-select label="Label test" placeholder="Select option" variant="standard">
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2">
+            Option 2
+            <wje-icon name="heart" slot="end"></wje-icon>
+          </wje-option>
+          <wje-option value="option-3" selected>Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+        </wje-select>
+      </div>
+    </div>
+    
     <!-- OPTIONS -->
 
     <h2>Options</h2>
@@ -14,34 +48,13 @@ template.innerHTML = `
       <div class="content">
         <wje-select label="Label" variant="standard" placeholder="Select option">
           <wje-option value="option-1">Option 1</wje-option>
-          <wje-option value="option-2">
-            Option 2
-            <wje-icon name="heart" slot="end"></wje-icon>
-          </wje-option>
-          <wje-option value="option-3">
-            Option 3
-            <wje-dropdown id="custom-dropdown" placement="right-start" offset="5" collapsible>
-              <wje-avatar label="Petr Rahman" initials slot="trigger"></wje-avatar>
-              <wje-menu class="custom-menu" active>
-                <div>
-                  <wje-avatar>
-                    <wje-img src="/assets/img/avatar.svg"></wje-img>
-                  </wje-avatar>
-                  <h5>Petr Rahman</h5>
-                </div>
-                <wje-divider></wje-divider>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
-                <wje-divider></wje-divider>
-                <wje-menu-item>Link A <wje-icon name="check" slot="end"></wje-menu-item>
-                <wje-menu-item>Link B</wje-menu-item>
-              </wje-menu>
-            </wje-dropdown>
-          </wje-option>
+          <wje-option value="option-2">Option 2<wje-icon name="heart" slot="end"></wje-icon></wje-option>
+          <wje-option value="option-3">Option 3</wje-option>
           <wje-option value="option-4">Option 4</wje-option>
         </wje-select>
         
         <wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
-          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>
+          <wje-options url="/api/options" item-value="value" item-text="text" option-array-path="data"></wje-options>
         </wje-select>
 
         <div class="content" id="placeholder"></div>
@@ -65,6 +78,10 @@ template.innerHTML = `
     <div class="playground">
       <div class="content" style="gap: .5rem;">
         <wje-select placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple clearable>
+          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>
+        </wje-select>
+        
+        <wje-select placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple checkbox clearable>
           <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>
         </wje-select>
         
@@ -105,12 +122,35 @@ template.innerHTML = `
       </div>
     </div>
     
-    <!-- DEFAULT -->
+    <!-- CHECKBOX -->
 
-    <h2>Default</h2>
+    <h2>Checkbox</h2>
     <div class="playground">
       <div class="content">
-        <wje-select label="Label" placeholder="Select option">
+      	<wje-select label="Single Star" placeholder="Select option" variant="standard" clearable>
+        	<template>
+        		<wje-icon name="star" slot="check"></wje-icon>
+					</template>
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2">
+            Option 2
+            <wje-icon name="heart" slot="end"></wje-icon>
+          </wje-option>
+          <wje-option value="option-3">Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+        </wje-select>
+        
+        <wje-select label="Single" placeholder="Select option" variant="standard" clearable>
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2">
+            Option 2
+            <wje-icon name="heart" slot="end"></wje-icon>
+          </wje-option>
+          <wje-option value="option-3">Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+        </wje-select>
+        
+        <wje-select label="Multiple" placeholder="Select option" variant="standard" multiple clearable checkbox>
           <wje-option value="option-1">Option 1</wje-option>
           <wje-option value="option-2">
             Option 2
@@ -122,35 +162,21 @@ template.innerHTML = `
       </div>
     </div>
     
-    <!-- STANDARD -->
+    <!-- CUSTOM CHECKBOX HANDLING -->
 
-    <h2>Standard</h2>
+    <h2>Custom checkbox handling</h2>
     <div class="playground">
       <div class="content">
-        <wje-select label="Label test" placeholder="Select option" variant="standard">
+        <wje-select id="custom-checkbox" label="Multiple" placeholder="Select option" variant="standard" multiple clearable>
+        	<template>
+        		<wje-checkbox slot="check"></wje-checkbox>
+					</template>
           <wje-option value="option-1">Option 1</wje-option>
           <wje-option value="option-2">
             Option 2
             <wje-icon name="heart" slot="end"></wje-icon>
           </wje-option>
-          <wje-option value="option-3" selected>Option 3</wje-option>
-          <wje-option value="option-4">Option 4</wje-option>
-        </wje-select>
-      </div>
-    </div>
-    
-    <!-- STANDARD -->
-
-    <h2>Standard</h2>
-    <div class="playground" style="background: #ccc;">
-      <div class="content">
-        <wje-select label="Label test" placeholder="Select option" variant="standard">
-          <wje-option value="option-1">Option 1</wje-option>
-          <wje-option value="option-2">
-            Option 2
-            <wje-icon name="heart" slot="end"></wje-icon>
-          </wje-option>
-          <wje-option value="option-3" selected>Option 3</wje-option>
+          <wje-option value="option-3">Option 3</wje-option>
           <wje-option value="option-4">Option 4</wje-option>
         </wje-select>
       </div>
@@ -234,7 +260,6 @@ export default class DemoSelect extends WJElement {
 		lazySelect.addOptions([{ text: 'aeee', value: 'aeee' }, { text: 'beee', value: 'beee' }]);
 		lazySelect.selectOptions(['aeee', 'beee'], false);
 		lazySelect.querySelector('wje-options').htmlItem = user => {
-			debugger
 			const option = document.createElement('wje-option');
 			option.setAttribute('value', user.id);
 			option.innerHTML = user.firstName ? `${user.firstName} ${user.lastName}` : user.name;
@@ -295,6 +320,13 @@ export default class DemoSelect extends WJElement {
 		select.appendChild(options);
 
 		this.querySelector('#placeholder').appendChild(select);
+
+		// Custom checkbox handling
+		this.querySelectorAll("#custom-checkbox wje-option").forEach(option => {
+			option.addEventListener('wje-option:change', (e) => {
+				e.detail.option.querySelector('wje-checkbox').checked = !e.detail.option.selected;
+			});
+		})
 	}
 }
 

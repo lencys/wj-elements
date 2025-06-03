@@ -1,5 +1,6 @@
 import { default as WJElement, event } from '../wje-element/element.js';
 import Icon from '../wje-icon/icon.js';
+import Checkbox from '../wje-checkbox/checkbox.js';
 import styles from './styles/styles.css?inline';
 
 /**
@@ -29,6 +30,7 @@ export default class Option extends WJElement {
 	 */
 	dependencies = {
 		'wje-icon': Icon,
+		'wje-checkbox': Checkbox,
 	};
 
 	/**
@@ -36,8 +38,35 @@ export default class Option extends WJElement {
 	 * @param {boolean} value The value to set.
 	 */
 	set selected(value) {
-		if (value) this.setAttribute('selected', '');
-		else this.removeAttribute('selected');
+		if (value) {
+			this.setAttribute('selected', '');
+		} else {
+			this.removeAttribute('selected');
+		}
+	}
+
+	/**
+	 * Retrieves the 'selected' attribute status of the element.
+	 * @returns {boolean} Returns true if the 'selected' attribute is set on the element; otherwise, false.
+	 */
+	get selected() {
+		return this.hasAttribute('selected');
+	}
+
+	/**
+	 * Retrieves the value indicating whether the closest 'wje-select' element has a 'checkbox' attribute.
+	 * @returns {boolean} True if the closest 'wje-select' element has a 'checkbox' attribute; otherwise, false.
+	 */
+	get checkbox() {
+		return this.closest('wje-select').hasAttribute('checkbox');
+	}
+
+	/**
+	 * Determines whether the closest 'wje-select' element has the 'multiple' attribute.
+	 * @returns {boolean} Returns true if the 'wje-select' element has the 'multiple' attribute, otherwise false.
+	 */
+	get multiple() {
+		return this.closest('wje-select').hasAttribute('multiple');
 	}
 
 	/**
@@ -77,7 +106,24 @@ export default class Option extends WJElement {
 	 * @returns {Array<string>}
 	 */
 	static get observedAttributes() {
-		return [];
+		return ['selected'];
+	}
+
+	/**
+	 * This method is called whenever an observed attribute is added, removed, or changed.
+	 * @param {string} name The name of the attribute that was changed.
+	 * @param {*} old The previous value of the attribute before the change.
+	 * @param {*} newName The new value of the attribute after the change.
+	 * @returns {void} This method does not return a value.
+	 */
+	attributeChangedCallback(name, old, newName) {
+		if (this.checkbox) {
+			if (name === 'selected' && newName !== null) {
+				this.#setCheckbox(true);
+			} else {
+				this.#setCheckbox(false);
+			}
+		}
 	}
 
 	/**
@@ -94,12 +140,19 @@ export default class Option extends WJElement {
 	draw() {
 		let fragment = document.createDocumentFragment();
 
-		let element = document.createElement('div');
-		element.classList.add('native-option');
-		element.setAttribute('part', 'native');
+		let native = document.createElement('div');
+		native.classList.add('native-option');
+		native.setAttribute('part', 'native');
 
 		let icon = document.createElement('wje-icon');
 		icon.setAttribute('name', 'check');
+		icon.setAttribute('slot', 'check');
+
+		let checkboxEl = document.createElement('wje-checkbox');
+		checkboxEl.setAttribute('slot', 'check');
+
+		let check = document.createElement('slot');
+		check.setAttribute('name', 'check');
 
 		let start = document.createElement('slot');
 		start.setAttribute('name', 'start');
@@ -109,39 +162,82 @@ export default class Option extends WJElement {
 		let end = document.createElement('slot');
 		end.setAttribute('name', 'end');
 
-		element.appendChild(icon);
-		element.appendChild(start);
-		element.appendChild(slot);
-		element.appendChild(end);
+		const hasCheckSlot = this.querySelector('[slot="check"]') !== null;
 
-		fragment.appendChild(element);
+		if (!hasCheckSlot) {
+			if (this.checkbox && this.multiple) {
+				this.append(checkboxEl);
+			} else {
+				this.append(icon);
+			}
+		}
+
+		native.append(check);
+		native.append(start);
+		native.append(slot);
+		native.append(end);
+
+		fragment.append(native);
+
+		this.check = check;
 
 		return fragment;
 	}
 
 	/**
-	 * Adds event listeners after the component is drawn.
+	 * Method executed after the drawing process is completed.
+	 * Sets up an event listener for 'click' events, linking them to the specified callback function.
+	 * @returns {void} Does not return a value.
 	 */
 	afterDraw() {
 		event.addListener(this, 'click', null, this.optionClickCallback);
 	}
 
+	/**
+	 * Handles operations or cleanup tasks that need to occur before disconnecting.
+	 * Removes an event listener associated with the 'click' event and a specified callback function.
+	 * @returns {void} This method does not return a value.
+	 */
 	beforeDisconnect() {
 		event.removeListener(this, 'click', null, this.optionClickCallback);
 	}
 
-	optionClickCallback(e, b, c) {
+	/**
+	 * Handles the click event on an option element and dispatches a custom event when triggered.
+	 * @param {Event} e The click event object that triggered the callback.
+	 * @returns {void} No return value.
+	 */
+	optionClickCallback(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		e.stopImmediatePropagation();
+
 		if (this.hasAttribute('disabled')) return;
 
-		this.dispatchEvent(
-			new CustomEvent('wje-option:change', {
-				bubbles: true,
-				composed: true,
-				detail: {
-					value: this.value,
-					text: this.text,
-				},
-			})
-		);
+		event.dispatchCustomEvent(this, 'wje-option:change', {
+			value: this.value,
+			text: this.textContent,
+			option: this,
+		});
+	}
+
+	/**
+	 * Checks if the given DOM node represents a checkbox element.
+	 * @param {Node} node The DOM node to be checked.
+	 * @returns {boolean} Returns true if the node is an element with a class name of 'Checkbox', otherwise false.
+	 */
+	#isCheckbox(node) {
+		return node instanceof Element && node.className === 'Checkbox';
+	}
+
+	/**
+	 * Updates the checked status of the first checkbox element found within the assigned elements of the specified container.
+	 * @param {boolean} checked The desired checked state to be applied to the checkbox.
+	 * @returns {void}
+	 */
+	#setCheckbox(checked) {
+		let arr = [...this.check?.assignedElements({ flatten: true })]?.filter(item=> this.#isCheckbox(item));
+		if(arr.length > 0)
+			arr[0].checked = checked;
 	}
 }

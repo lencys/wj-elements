@@ -7,6 +7,7 @@ import Chip from '../wje-chip/chip.js';
 import Input from '../wje-input/input.js';
 import Option from '../wje-option/option.js';
 import Options from '../wje-options/options.js';
+import Checkbox from '../wje-checkbox/checkbox.js';
 import styles from './styles/styles.css?inline';
 
 /**
@@ -163,6 +164,7 @@ export default class Select extends WJElement {
 	 * @property {Function} 'wje-input' Represents the Input component class.
 	 * @property {Function} 'wje-option' Represents the Option component class.
 	 * @property {Function} 'wje-options' Represents the Options component class.
+	 * @property {Function} 'wje-checkbox' Represents the Checkbox component class.
 	 */
 	dependencies = {
 		'wje-button': Button,
@@ -173,6 +175,7 @@ export default class Select extends WJElement {
 		'wje-input': Input,
 		'wje-option': Option,
 		'wje-options': Options,
+		'wje-checkbox': Checkbox,
 	};
 
 	/**
@@ -338,6 +341,13 @@ export default class Select extends WJElement {
 		return this.getSelected();
 	}
 
+	/**
+	 * Retrieves the complete list of options available for the component.
+	 * The options are determined by combining elements from various sources, including loaded options, added options, and HTML-sourced options.
+	 * If a `wje-options` element is present within the component, its loaded options are included in the merged list.
+	 * In the absence of a `wje-options` element, duplicates among the added and HTML options are removed, retaining their order.
+	 * @returns {Array<Object>} An array containing all the available options, combining the loaded, added, and HTML-based options, with duplicates removed where applicable.
+	 */
 	get options() {
 		if (this.querySelector('wje-options')) {
 			const allOptions = [...this.querySelector('wje-options').loadedOptions, ...this.#addedOptions, ...this.#htmlOptions]
@@ -552,9 +562,16 @@ export default class Select extends WJElement {
 	}
 
 	/**
-	 * Sets up the event listeners after the component is drawn.
+	 * Performs actions and binds events after the component's markup and state are initialized.
+	 * Actions include setting up event listeners, managing option elements, handling focus and blur behaviors,
+	 * synchronizing the selected options, and managing a find functionality for filtering options.
+	 * @returns {void} Does not return a value. The method operates by updating the state and behavior of the component.
 	 */
 	afterDraw() {
+		this.getAllOptions()?.forEach((option) => {
+			this.optionCheckSlot(option);
+		});
+
 		this.#htmlOptions = Array.from(this.querySelectorAll(':scope > wje-option')).map((option) => {
 			return {
 				value: option.value,
@@ -574,6 +591,7 @@ export default class Select extends WJElement {
 
 		this.addEventListener('wje-option:change', this.optionChange);
 
+		// pridame event listener na kliknutie na button clear
 		this.clear?.addEventListener('wje-button:click', (e) => {
 			e.preventDefault();
 			e.stopPropagation();
@@ -581,7 +599,6 @@ export default class Select extends WJElement {
 
 			this.getAllOptions().forEach((option) => {
 				option.selected = false;
-				option.removeAttribute('selected');
 			});
 			this.selections();
 
@@ -597,7 +614,6 @@ export default class Select extends WJElement {
 				this.getAllOptions().forEach((el) => {
 					if (el.value === option.value) {
 						el.selected = true;
-						el.setAttribute('selected', '');
 					}
 				});
 			})
@@ -630,8 +646,9 @@ export default class Select extends WJElement {
 	 * @param {Event} e The event.
 	 */
 	optionChange = (e) => {
-		e.stopPropagation()
-		e.stopImmediatePropagation()
+		e.preventDefault();
+		e.stopPropagation();
+		e.stopImmediatePropagation();
 
 		let allOptions = this.getAllOptions();
 
@@ -641,7 +658,6 @@ export default class Select extends WJElement {
 					this.processClickedOption(option);
 				} else {
 					option.selected = false;
-					option.removeAttribute('selected');
 				}
 			});
 			this.popup.hide(false);
@@ -658,14 +674,12 @@ export default class Select extends WJElement {
 	 * @param {boolean} [multiple] Indicates whether multiple selection is allowed.
 	 */
 	processClickedOption = (option, multiple = false) => {
-		const isSelected = option.hasAttribute("selected")
+		const isSelected = option.hasAttribute('selected');
 		option.selected = !isSelected;
 
 		if (isSelected) {
-			option.removeAttribute('selected');
 			this.filterOutOption(option);
 		} else {
-			option.setAttribute('selected', '');
 			this.selectedOptions = multiple ? [...this.selectedOptions, option] : [option];
 		}
 	}
@@ -948,6 +962,13 @@ export default class Select extends WJElement {
 		}
 	}
 
+	/**
+	 * Processes the provided item to retrieve its corresponding value and text
+	 * based on the configuration of `wje-options`, then updates and returns
+	 * the selected item's HTML representation.
+	 * @param {any} item The input item for which the value and text are determined.
+	 * @returns {string} The HTML representation of the selected item's value.
+	 */
 	#htmlSelectedItem(item) {
 		const keyValue = this.querySelector("wje-options")?.itemValue ?? "value"
 		const textValue = this.querySelector("wje-options")?.itemText ?? "text"
@@ -958,6 +979,11 @@ export default class Select extends WJElement {
 		return this.htmlSelectedItem(value);
 	}
 
+	/**
+	 * Returns the provided item.
+	 * @param {any} item The item to be returned.
+	 * @returns {any} The same item that was passed as input.
+	 */
 	htmlSelectedItem(item) {
 		return item;
 	}
@@ -1040,5 +1066,21 @@ export default class Select extends WJElement {
 		return elements.every(el =>
 			options.some(opt => JSON.stringify(opt) === JSON.stringify(el.option))
 		);
+	}
+
+	/**
+	 * Clones and appends an icon from a template with slot "check" to the given option element.
+	 * @param {HTMLElement} option The target option element where the "check" icon will be added.
+	 * @returns {void}
+	 */
+	optionCheckSlot(option) {
+		let icon = this.querySelector('template')?.content.querySelector(`[slot="check"]`);
+		if (!icon) {
+			console.warn(`Icon with slot "check" was not found.`);
+			return;
+		}
+
+		let iconClone = icon.cloneNode(true);
+		option.append(iconClone);
 	}
 }
