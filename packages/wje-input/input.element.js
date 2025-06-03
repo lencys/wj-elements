@@ -169,6 +169,42 @@ export default class Input extends WJElement {
         this.setAttribute('value', value);
     }
 
+    set clearable(value) {
+        if (value) {
+            this.setAttribute('clearable', '');
+        } else {
+            this.removeAttribute('clearable');
+        }
+    }
+
+    get clearable() {
+        return this.hasAttribute('clearable');
+    }
+
+    set placeholder(value) {
+        if (value) {
+            this.setAttribute('placeholder', value);
+        } else {
+            this.removeAttribute('placeholder');
+        }
+    }
+
+    get placeholder() {
+        return this.getAttribute('placeholder') || '';
+    }
+
+    set variant(value) {
+        if (value) {
+            this.setAttribute('variant', value);
+        } else {
+            this.removeAttribute('variant');
+        }
+    }
+
+    get variant() {
+        return this.getAttribute('variant') || 'default';
+    }
+
     /**
      * The class name of the input element.
      * @type {string}
@@ -226,7 +262,7 @@ export default class Input extends WJElement {
         // Wrapper
         let native = document.createElement('div');
         native.setAttribute('part', 'native');
-        native.classList.add('native-input', this.variant || 'default');
+        native.classList.add('native-input', this.variant);
 
         if (this.hasAttribute('invalid')) native.classList.add('has-error');
 
@@ -295,7 +331,7 @@ export default class Input extends WJElement {
         }
 
         if (hasSlotStart) {
-            inputWrapper.appendChild(start);
+            wrapper.appendChild(start); // zmenene
             native.classList.add('has-start');
         }
 
@@ -310,7 +346,7 @@ export default class Input extends WJElement {
 
         native.appendChild(wrapper);
 
-        if (this.hasAttribute('clearable')) {
+        if (this.clearable) {
             this.clear = document.createElement('wje-button');
             this.clear.classList.add('clear');
             this.clear.setAttribute('fill', 'link');
@@ -323,7 +359,7 @@ export default class Input extends WJElement {
         }
 
         if (hasSlotEnd) {
-            inputWrapper.appendChild(end);
+            wrapper.appendChild(end);// zmenene
             native.classList.add('has-end');
         }
 

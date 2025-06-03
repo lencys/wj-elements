@@ -513,6 +513,7 @@ export default class Select extends WJElement {
 			find.setAttribute('variant', 'standard');
 			find.setAttribute('placeholder', 'Hľadať');
 			find.setAttribute('part', 'find');
+			find.clearable = true;
 			find.classList.add('find');
 
 			optionsWrapper.appendChild(find);

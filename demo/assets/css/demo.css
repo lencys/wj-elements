@@ -16,6 +16,11 @@ body {
 body {
   backface-visibility: hidden;
 }
+
+form {
+  width: 100%;
+}
+
 :not(:defined) {
   visibility: hidden;
 }
@@ -142,11 +147,11 @@ wje-menu-button#close {
 }
 
 wje-button {
-  margin: 0.25rem;
+  gap: .5rem;
 }
 
 wje-chip {
-  margin: 0.25rem;
+  margin: .25rem;
 }
 
 wje-header::part(native) {

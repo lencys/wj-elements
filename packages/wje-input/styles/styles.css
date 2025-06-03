@@ -17,14 +17,16 @@
         font-size: var(--wje-input-label-font-size);
     }
     .wrapper {
-        display: flex;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
         width: 100%;
-        flex-direction: column;
+        > .input-wrapper {
+            grid-column: 2;
+        }
     }
     .native-input {
         .input-wrapper {
-            flex-wrap: wrap;
-            display: flex;
+            display: block;
             width: 100%;
             position: relative;
             box-sizing: border-box;
@@ -170,16 +172,17 @@
 
 :host([required]) .input-wrapper::after {
     color: var(--wje-input-color-invalid);
-    content: '*';
+    content: var(--wje-input-required-symbol);
     font-family: var(--wje-force-mac-font-family);
-    font-size: 20px;
+    font-size: 24px;
     position: absolute;
-    right: 0;
+    right: 12px;
     top: 0;
 }
 
 :host([required]) .standard .input-wrapper::after {
-    top: 0;
+    right: 13px;
+    top: -20px;
 }
 
 :host([invalid]) {
@@ -207,9 +210,6 @@
     padding-inline: var(--wje-input-slot-padding-inline);
 }
 
-/*
-    .options-show is a class that is added to the host element when the select options are shown
- */
 :host(.options-show) ::slotted([slot='start']) {
     border-bottom-left-radius: 0 !important;
 }
@@ -226,6 +226,10 @@ slot[name='end'] {
 slot[name='error'] {
     display: none;
     margin-inline: 0.5rem;
+}
+
+:host([disabled]) input {
+    opacity: 0.5;
 }
 
 :host([invalid]) slot[name='error'] {

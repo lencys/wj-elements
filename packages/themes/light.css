@@ -372,9 +372,9 @@
 
     /* Input */
     --wje-input-font-family: var(--wje-font-family);
-    --wje-input-background-color: var(--wje-background);
+    --wje-input-background-color: var(--wje-color-contrast-0);
     --wje-input-color: var(--wje-color);
-    --wje-input-color-invalid: var(--wje-color-danger);
+    --wje-input-color-invalid: var(--wje-color-danger-9);
     --wje-input-border-color: var(--wje-border-color);
     --wje-input-border-color-focus: var(--wje-color-primary);
     --wje-input-border-width: 1px;
@@ -386,8 +386,9 @@
     --wje-input-label-display: block;
     --wje-input-label-margin: 0;
     --wje-input-label-padding: 0;
-    --wje-input-label-line-height: var(--wje-line-height-normal);
+    --wje-input-label-line-height: 21px;
     --wje-input-label-font-size: var(--wje-font-size);
+    --wje-input-required-symbol: '*';
 
     /* Item */
     --wje-item-color: var(--wje-color);
@@ -511,7 +512,10 @@
     --wje-select-line-height: 20px;
     --wje-select-color: var(--wje-color);
     --wje-select-border-radius: var(--wje-border-radius-medium);
-    --wje-select-margin-bottom: 0.5rem;
+    --wje-select-margin-bottom: var(--wje-spacing-x-small);
+    --wje-select-find-margin-inline: var(--wje-spacing-x-small);
+    --wje-select-find-margin-block: var(--wje-spacing-x-small);
+    --wje-select-find-width: calc(100% - var(--wje-select-find-margin-inline) * 2);
 
     /* Status */
     --wje-status-size: var(--wje-size-small);

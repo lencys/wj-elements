@@ -128,8 +128,9 @@ input {
 }
 
 .find {
-    --wje-input-border-radius: 0;
-    --wje-input-border-width: 0 0 1px 0;
+    margin-block: var(--wje-select-find-margin-block);
+    margin-inline: var(--wje-select-find-margin-inline);
+    width: var(--wje-select-find-width);
 }
 
 .list {
