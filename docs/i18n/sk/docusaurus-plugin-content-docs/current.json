@@ -286,5 +286,9 @@
   "sidebar.api.category.ReorderHandle": {
     "message": "ReorderHandle",
     "description": "The label for category ReorderHandle in sidebar api"
+  },
+  "sidebar.docs.category.Reference": {
+    "message": "Reference",
+    "description": "The label for category Reference in sidebar docs"
   }
 }

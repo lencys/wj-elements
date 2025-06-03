@@ -2167,8 +2167,33 @@
       "filePath": "src/components/checkbox/checkbox.tsx",
       "encapsulation": "shadow",
       "tag": "checkbox",
-      "docs": "",
-      "docsTags": [],
+      "docs": "Táto metóda vysiela vlastnú udalosť s názvom \"wje-checkbox:change\". Spustí sa, keď sa vyvolá udalosť input, čo sa stane, keď sa zmení stav zaškrtávacieho políčka.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "Táto metóda vysiela vlastnú udalosť s názvom \"wje-checkbox:change\". Spustí sa, keď sa vyvolá udalosť input, čo sa stane, keď sa zmení stav zaškrtávacieho políčka."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/checkbox"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "augments",
+          "text": "WJElement"
+        },
+        {
+          "name": "slot",
+          "text": "Hlavný obsah zaškrtávacieho políčka."
+        },
+        {
+          "name": "csspart",
+          "text": "native - Natívny obaľovací prvok komponenty."
+        }
+      ],
       "usage": {},
       "props": [
         {
@@ -2182,7 +2207,7 @@
           "mutable": true,
           "attr": "checked",
           "reflectToAttr": false,
-          "docs": "Ak `true`, checkbox je aktivovaný.",
+          "docs": "Ak `true`, zaškrtávacie políčko je označené.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -2194,60 +2219,6 @@
           "required": false
         },
         {
-          "name": "color",
-          "type": "\"complete\" | \"danger\" | \"dark\" | \"primary\" | \"success\" | \"warning\" | string & Record<never, never> | undefined",
-          "complexType": {
-            "original": "Color",
-            "resolved": "\"complete\" | \"danger\" | \"dark\" | \"primary\" | \"success\" | \"warning\" | string & Record<never, never> | undefined",
-            "references": {
-              "Color": {
-                "location": "import",
-                "path": "../../interface",
-                "id": "src/interface.d.ts::Color"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": false,
-          "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, a `\"dark\"`.\nPre viac informácií o farbách navštívte [Základy prispôsobenia](/theming/basics).",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "complete",
-              "type": "string"
-            },
-            {
-              "value": "danger",
-              "type": "string"
-            },
-            {
-              "value": "dark",
-              "type": "string"
-            },
-            {
-              "value": "primary",
-              "type": "string"
-            },
-            {
-              "value": "success",
-              "type": "string"
-            },
-            {
-              "value": "warning",
-              "type": "string"
-            },
-            {
-              "type": "string & Record<never, never>"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
           "name": "disabled",
           "type": "boolean",
           "complexType": {
@@ -2255,10 +2226,54 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "disabled",
           "reflectToAttr": false,
-          "docs": "Ak `true`, s checkbox elementom nie je možné interagovať.",
+          "docs": "Ak `true`, zaškrtávacie políčko je deaktivované.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "Hodnota zaškrtávacieho políčka.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "indeterminate",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "indeterminate",
+          "reflectToAttr": false,
+          "docs": "Ak `true`, zaškrtávacie políčko je v neurčitom stave.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -2280,9 +2295,9 @@
           "mutable": false,
           "attr": "name",
           "reflectToAttr": false,
-          "docs": "Definuje `name` atribút, ktorý je dôležitý napríklad pri použití vo formulároch.",
+          "docs": "Názov zaškrtávacieho políčka pre odoslanie formulára.",
           "docsTags": [],
-          "default": "this.inputId",
+          "default": "undefined",
           "values": [
             {
               "type": "string"
@@ -2292,128 +2307,196 @@
           "required": false
         },
         {
-          "name": "placement",
-          "type": "any",
+          "name": "color",
+          "type": "\"primary\" | \"complete\" | \"success\" | \"warning\" | \"danger\" | \"info\" | string | undefined",
           "complexType": {
-            "original": "any",
-            "resolved": "any",
+            "original": "string",
+            "resolved": "\"primary\" | \"complete\" | \"success\" | \"warning\" | \"danger\" | \"info\" | string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Farba zaškrtávacieho políčka. Môže byť `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, alebo `\"info\"`.",
+          "docsTags": [],
+          "default": "undefined",
+          "values": [
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "complete",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            },
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "info",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "placement",
+          "type": "\"end\" | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "\"end\" | undefined",
             "references": {}
           },
           "mutable": false,
           "attr": "placement",
           "reflectToAttr": false,
-          "docs": "Zobrazí checkbox za popisom.",
+          "docs": "Umiestnenie zaškrtávacieho políčka vzhľadom k textu. Môže byť `\"end\"`.",
           "docsTags": [],
-          "default": "",
+          "default": "undefined",
           "values": [
             {
               "value": "end",
               "type": "string"
             }
           ],
-          "optional": false,
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "\"circle\" | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "\"circle\" | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "variant",
+          "reflectToAttr": false,
+          "docs": "Variant zaškrtávacieho políčka. Môže byť `\"circle\"`.",
+          "docsTags": [],
+          "default": "undefined",
+          "values": [
+            {
+              "value": "circle",
+              "type": "string"
+            }
+          ],
+          "optional": true,
           "required": false
         }
       ],
       "methods": [],
       "events": [
         {
-          "event": "change",
-          "detail": "CheckboxChangeEventDetail<any>",
+          "event": "wje-toggle:input",
+          "detail": "any",
           "bubbles": true,
           "complexType": {
-            "original": "CheckboxChangeEventDetail",
-            "resolved": "CheckboxChangeEventDetail<any>",
-            "references": {
-              "CheckboxChangeEventDetail": {
-                "location": "import",
-                "path": "./checkbox-interface",
-                "id": "src/components/checkbox/checkbox-interface.ts::CheckboxChangeEventDetail"
-              }
-            }
+            "original": "any",
+            "resolved": "any",
+            "references": {}
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Vyvolaný pri zmene stavu elementu.",
+          "docs": "Vyvolané, keď sa zmení stav zaškrtávacieho políčka (udalosť input).",
+          "docsTags": []
+        },
+        {
+          "event": "wje-toggle:change",
+          "detail": "any",
+          "bubbles": true,
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Vyvolané, keď sa zmení stav zaškrtávacieho políčka (udalosť change).",
           "docsTags": []
         }
       ],
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-checkbox-border-radius",
+          "name": "--wje-checkbox-border-radius",
           "annotation": "prop",
-          "docs": "Border radius of the checkbox"
+          "docs": "Polomer zaoblenia rohov zaškrtávacieho políčka"
         },
         {
-          "name": "--wj-checkbox-color-base",
+          "name": "--wje-checkbox-border-width",
           "annotation": "prop",
-          "docs": "Background of the checkbox handle"
+          "docs": "Šírka okraja zaškrtávacieho políčka"
         },
         {
-          "name": "--wj-checkbox-handle-border-radius",
+          "name": "--wje-checkbox-border-style",
           "annotation": "prop",
-          "docs": "Background of the checkbox handle when checked"
+          "docs": "Štýl okraja zaškrtávacieho políčka"
         },
         {
-          "name": "--wj-checkbox-handle-color",
+          "name": "--wje-checkbox-border-color",
           "annotation": "prop",
-          "docs": "Border radius of the checkbox handle"
+          "docs": "Farba okraja zaškrtávacieho políčka"
         },
         {
-          "name": "--wj-checkbox-handle-height",
+          "name": "--wje-checkbox-margin-top",
           "annotation": "prop",
-          "docs": "Box shadow of the checkbox handle"
+          "docs": "Horné odsadenie zaškrtávacieho políčka"
         },
         {
-          "name": "--wj-checkbox-handle-shadow",
+          "name": "--wje-checkbox-margin-bottom",
           "annotation": "prop",
-          "docs": "Height of the checkbox handle"
+          "docs": "Dolné odsadenie zaškrtávacieho políčka"
         },
         {
-          "name": "--wj-checkbox-handle-shadow-checked",
+          "name": "--wje-checkbox-margin-inline",
           "annotation": "prop",
-          "docs": "Maximum height of the checkbox handle"
+          "docs": "Bočné odsadenie zaškrtávacieho políčka"
         },
         {
-          "name": "--wj-checkbox-handle-width",
+          "name": "--wje-checkbox-size",
           "annotation": "prop",
-          "docs": "Horizontal spacing around the checkbox handle"
+          "docs": "Veľkosť zaškrtávacieho políčka"
         },
         {
-          "name": "--wj-checkbox-height",
+          "name": "--wje-checkbox-checkmark",
           "annotation": "prop",
-          "docs": "Transition of the checkbox handle"
+          "docs": "Ikona zaškrtnutia v zaškrtávacom políčku"
         },
         {
-          "name": "--wj-checkbox-width",
+          "name": "--wje-checkbox-interminate",
           "annotation": "prop",
-          "docs": "Width of the checkbox handle"
+          "docs": "Ikona neurčitého stavu zaškrtávacieho políčka"
         }
       ],
       "slots": [
         {
           "name": "",
-          "docs": "Predvolené umiestnenie obsahu elementu."
+          "docs": "Obsah štítku zaškrtávacieho políčka."
         }
       ],
       "parts": [
         {
-          "name": "input",
-          "docs": "Odkazuje na `input` element typu checkbox"
-        },
-        {
-          "name": "checkbox",
-          "docs": "Odkazuje na vnútorný `div` obaľovací element"
+          "name": "native",
+          "docs": "Odkazuje na natívny wrapper element zaškrtávacieho políčka"
         }
       ],
       "dependents": [],
-      "dependencies": ["Icon"],
-      "dependencyGraph": {
-        "ion-checkbox": ["Icon"]
-      }
-    },
-    {
+      "dependencies": [],
+      "dependencyGraph": {}
+      },
+      {
       "filePath": "src/components/chip/chip.tsx",
       "encapsulation": "shadow",
       "tag": "wje-chip",
