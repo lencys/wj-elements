@@ -454,6 +454,49 @@
       "dependencyGraph": {}
     },
     {
+      "filePath": "src/components/animation/aside.tsx",
+      "encapsulation": "shadow",
+      "tag": "Aside",
+      "docs": "",
+      "docsTags": [
+        {
+          "name": "virtualProp",
+          "text": "{ \"ios\". | \"md\"} mode - The mode determines which platform styles to use."
+        },
+        {
+          "name": "slot",
+          "text": "header - Content is placed at the top and is used to\nexpand or collapse the accordion item."
+        },
+        {
+          "name": "slot",
+          "text": "content - Content is placed below the header and is\nshown or hidden based on expanded state."
+        },
+        {
+          "name": "part",
+          "text": "header - The wrapper element for the header slot."
+        },
+        {
+          "name": "part",
+          "text": "content - The wrapper element for the content slot."
+        },
+        {
+          "name": "part",
+          "text": "expanded - The expanded element. Can be used in combination\nwith the `header` and `content` parts (i.e. `::part(header expanded)`)."
+        }
+      ],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
       "filePath": "src/components/avatar/avatar.tsx",
       "encapsulation": "shadow",
       "tag": "avatar",
@@ -737,7 +780,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": false,
-          "docs": "The color to use from your application's color palette. The default options are: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"warning\"`, `\"complete\"`, `\"info\"`, and `\"menu\"`.\nFor more information about colors, visit [Customization Basics](/theming/basics).",
+          "docs": "The color to use from your application's color palette. The default options are: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"warning\"`, `\"complete\"`, `\"info\"`, and `\"menu\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
           "docsTags": [],
           "values": [
             {
@@ -1141,7 +1184,7 @@
           "required": false
         },
         {
-          "name": "dialog",
+          "name": "dialogue",
           "type": "string",
           "complexType": {
             "original": "string",
@@ -1149,7 +1192,7 @@
             "references": {}
           },
           "mutable": false,
-          "attr": "dialog",
+          "attr": "dialogue",
           "reflectToAttr": true,
           "docs": "Associates a button with a specific event. When the button is clicked, the named event is triggered, allowing you to implement actions such as opening a dialog box or executing a custom event. See the dialog component for more information.",
           "docsTags": [],
@@ -1578,7 +1621,7 @@
         {
           "name": "--wje-card-border-color",
           "annotation": "prop",
-          "docs": "Defines the color of the card edge."
+          "docs": "Defines the colour of the card edge."
         },
         {
           "name": "--wje-card-margin-bottom",
@@ -1599,7 +1642,7 @@
       "slots": [
         {
           "name": "",
-          "docs": "Main content of the Card element."
+          "docs": "The main content of the Card element."
         }
       ],
       "parts": [
@@ -2128,8 +2171,33 @@
       "filePath": "src/components/checkbox/checkbox.tsx",
       "encapsulation": "shadow",
       "tag": "checkbox",
-      "docs": "",
-      "docsTags": [],
+      "docs": "This method sends a custom event called \"wje-checkbox:change\". It fires when the input event is fired, which happens when the checkbox state changes.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "This method sends a custom event called \"wje-checkbox:change\". It fires when the input event is fired, which happens when the checkbox state changes."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/checkbox"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "Augment",
+          "text": "WJElement"
+        },
+        {
+          "name": "slot",
+          "text": "The main content of the checkbox."
+        },
+        {
+          "name": "csspart",
+          "text": "native - Native wrapping element component."
+        }
+      ],
       "usage": {},
       "props": [
         {
@@ -2143,7 +2211,7 @@
           "mutable": true,
           "attr": "checked",
           "reflectToAttr": false,
-          "docs": "If `true`, the checkbox is activated.",
+          "docs": "If `true`, the checkbox is marked.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -2155,60 +2223,6 @@
           "required": false
         },
         {
-          "name": "color",
-          "type": "\"complete\" | \"danger\" | \"dark\" | \"primary\" | \"success\" | \"warning\" | string & Record<never, never> | undefined",
-          "complexType": {
-            "original": "Color",
-            "resolved": "\"complete\" | \"danger\" | \"dark\" | \"primary\" | \"success\" | \"warning\" | string & Record<never, never> | undefined",
-            "references": {
-              "Color": {
-                "location": "import",
-                "path": "../../interface",
-                "id": "src/interface.d.ts::Color"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": false,
-          "docs": "The color to use from your application's color palette. The default options are `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, and `\"dark\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "complete",
-              "type": "string"
-            },
-            {
-              "value": "danger",
-              "type": "string"
-            },
-            {
-              "value": "dark",
-              "type": "string"
-            },
-            {
-              "value": "primary",
-              "type": "string"
-            },
-            {
-              "value": "success",
-              "type": "string"
-            },
-            {
-              "value": "warning",
-              "type": "string"
-            },
-            {
-              "type": "String & Record<never, never>"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
           "name": "disabled",
           "type": "boolean",
           "complexType": {
@@ -2216,10 +2230,54 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "disabled",
           "reflectToAttr": false,
-          "docs": "If `true`, the checkbox element cannot be interacted with.",
+          "docs": "If `true`, the checkbox is disabled.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "The value of the check box.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "indeterminate",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "indeterminate",
+          "reflectToAttr": false,
+          "docs": "If `true`, the checkbox is in an indeterminate state.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -2241,9 +2299,9 @@
           "mutable": false,
           "attr": "name",
           "reflectToAttr": false,
-          "docs": "Defines a `name` attribute that is important, for example, when used in forms.",
+          "docs": "The name of the checkbox to submit the form.",
           "docsTags": [],
-          "default": "this.inputId",
+          "default": "undefined",
           "values": [
             {
               "type": "string"
@@ -2253,135 +2311,199 @@
           "required": false
         },
         {
-          "name": "placement",
-          "type": "any",
+          "name": "color",
+          "type": "\"primary.\" | \"complete\" | \"success\" | \"warning\" | \"danger\" | \"info\" | string | undefined",
           "complexType": {
-            "original": "any",
-            "resolved": "any",
+            "original": "string",
+            "resolved": "\"primary.\" | \"complete\" | \"success\" | \"warning\" | \"danger\" | \"info\" | string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Checkbox colour. Can be `\"primary\"`, `\"complete\"`, `\"success\"`, `\"warning\"`, `\"warning\"`, or `\"info\"`.",
+          "docsTags": [],
+          "default": "undefined",
+          "values": [
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "complete",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            },
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "info",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "placement",
+          "type": "\"end\" | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "\"end\" | undefined",
             "references": {}
           },
           "mutable": false,
           "attr": "placement",
           "reflectToAttr": false,
-          "docs": "Displays a checkbox after the description.",
+          "docs": "The location of the checkbox relative to the text. Can be `\"end\"`.",
           "docsTags": [],
-          "default": "",
+          "default": "undefined",
           "values": [
             {
               "value": "end",
               "type": "string"
             }
           ],
-          "optional": false,
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "Option",
+          "type": "\"circle\" | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "\"circle\" | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "Option",
+          "reflectToAttr": false,
+          "docs": "Checkbox variant. Can be `\"circle\"`.",
+          "docsTags": [],
+          "default": "undefined",
+          "values": [
+            {
+              "value": "circle",
+              "type": "string"
+            }
+          ],
+          "optional": true,
           "required": false
         }
       ],
       "methods": [],
       "events": [
         {
-          "event": "change",
-          "detail": "CheckboxChangeEventDetail<any>",
+          "event": "wje-toggle:input",
+          "detail": "any",
           "bubbles": true,
           "complexType": {
-            "original": "CheckboxChangeEventDetail",
-            "resolved": "CheckboxChangeEventDetail<any>",
-            "references": {
-              "CheckboxChangeEventDetail": {
-                "location": "import",
-                "path": "./checkbox-interface",
-                "id": "src/components/checkbox/checkbox-interface.ts::CheckboxChangeEventDetail"
-              }
-            }
+            "original": "any",
+            "resolved": "any",
+            "references": {}
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Called when the element state changes.",
+          "docs": "Called when the status of the checkbox changes (input event).",
+          "docsTags": []
+        },
+        {
+          "event": "wje-toggle:change",
+          "detail": "any",
+          "bubbles": true,
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Fired when the checkbox state changes (change event).",
           "docsTags": []
         }
       ],
       "listeners": [],
       "styles": [
         {
-          "name": "--wj-checkbox-border-radius",
+          "name": "--wje-checkbox-border-radius",
           "annotation": "prop",
-          "docs": "Border radius of the checkbox"
+          "docs": "Radius of roundness of the corners of the check box"
         },
         {
-          "name": "--wj-checkbox-color-base",
+          "name": "--wje-checkbox-border-width",
           "annotation": "prop",
-          "docs": "Background of the checkbox handle"
+          "docs": "Checkbox border width"
         },
         {
-          "name": "--wj-checkbox-handle-border-radius",
+          "name": "--wje-checkbox-border-style",
           "annotation": "prop",
-          "docs": "Background of the checkbox handle when checked"
+          "docs": "Checkbox border style"
         },
         {
-          "name": "--wj-checkbox-handle-color",
+          "name": "--wje-checkbox-border-color",
           "annotation": "prop",
-          "docs": "Border radius of the checkbox handle"
+          "docs": "Checkbox border colour"
         },
         {
-          "name": "--wj-checkbox-handle-height",
+          "name": "--wje-checkbox-margin-top",
           "annotation": "prop",
-          "docs": "Box shadow of the checkbox handle"
+          "docs": "Top indentation of checkbox"
         },
         {
-          "name": "--wj-checkbox-handle-shadow",
+          "name": "--wje-checkbox-margin-bottom",
           "annotation": "prop",
-          "docs": "Height of the checkbox handle"
+          "docs": "Lower indentation of the checkbox"
         },
         {
-          "name": "--wj-checkbox-handle-shadow-checked",
+          "name": "--wje-checkbox-margin-inline",
           "annotation": "prop",
-          "docs": "Maximum height of the checkbox handle"
+          "docs": "Side offset checkbox"
         },
         {
-          "name": "--wj-checkbox-handle-width",
+          "name": "--wje-checkbox-size",
           "annotation": "prop",
-          "docs": "Horizontal spacing around the checkbox handle"
+          "docs": "Checkbox size"
         },
         {
-          "name": "--wj-checkbox-height",
+          "name": "--wje-checkbox-checkmark",
           "annotation": "prop",
-          "docs": "Transition of the checkbox handle"
+          "docs": "Check icon in the checkbox"
         },
         {
-          "name": "--wj-checkbox-width",
+          "name": "--wje-checkbox-interminate",
           "annotation": "prop",
-          "docs": "Width of the checkbox handle"
+          "docs": "Indeterminate checkbox status icon"
         }
       ],
       "slots": [
         {
           "name": "",
-          "docs": "The default location of the element content."
+          "docs": "The contents of the checkbox label."
         }
       ],
       "parts": [
         {
-          "name": "input",
-          "docs": "Refers to an `input` element of type checkbox"
-        },
-        {
-          "name": "checkbox",
-          "docs": "Refers to the inner `div` wrapping element"
+          "name": "native",
+          "docs": "Refers to the native wrapper element of the checkbox"
         }
       ],
       "dependents": [],
-      "dependencies": [
-        "Icon"
-      ],
-      "dependencyGraph": {
-        "ion-checkbox": [
-          "Icon"
-        ]
-      }
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
       "filePath": "src/components/chip/chip.tsx",
       "encapsulation": "shadow",
-      "tag": "chip",
+      "tag": "wje-chip",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -2809,7 +2931,7 @@
     {
       "filePath": "src/components/dialog/dialog.tsx",
       "encapsulation": "shadow",
-      "tag": "dialog",
+      "tag": "dialogue",
       "docs": "",
       "docsTags": [
         {
@@ -3370,7 +3492,7 @@
         },
         {
           "name": "header",
-          "docs": "Content placed in the dialogue header area."
+          "docs": "Content placed in the header area of the dialog."
         },
         {
           "name": "footer",
@@ -4559,7 +4681,7 @@
       "filePath": "src/components/file-upload-item/file-upload-item.tsx",
       "encapsulation": "shadow",
       "tag": "file-upload-item",
-      "docs": "Komponent zobrazujúci položku nahrávaného súboru s informáciami o jeho stave a priebehu nahrávania.",
+      "docs": "A component that displays the uploaded file entry with information about its status and upload progress.",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -4640,7 +4762,7 @@
           "mutable": false,
           "attr": "uploaded by",
           "reflectToAttr": false,
-          "docs": "The size of the already uploaded part of the file in bytes.",
+          "docs": "The size in bytes of the already uploaded part of the file.",
           "docsTags": [],
           "default": "0",
           "values": [
@@ -4760,7 +4882,7 @@
       "filePath": "src/components/format-digital/format-digital.tsx",
       "encapsulation": "shadow",
       "tag": "format-digital",
-      "docs": "Element na formátovanie číselných hodnôt do digitálneho zobrazenia.",
+      "docs": "Element for formatting numeric values into a digital display.",
       "docsTags": [],
       "usage": {
         "basic": "<wje-format-digital value=\"123456\"></wje-format-digital>",
@@ -4890,7 +5012,7 @@
       "filePath": "src/components/infinite-scroll/infinite-scroll.tsx",
       "encapsulation": "shadow",
       "tag": "infinite-scroll",
-      "docs": "InfiniteScroll je vlastný webový komponent, ktorý umožnuje nekonečné posúvanie. Rozširuje WJElement.",
+      "docs": "InfiniteScroll is a custom web component that enables infinite scrolling. It extends WJElement.",
       "docsTags": [
         {
           "name": "Summary",
@@ -5070,7 +5192,7 @@
             {
               "name": "place",
               "type": "string",
-              "docs": "The location where to add the item."
+              "docs": "Place where to add the item."
             }
           ],
           "docs": "Adds an item to the infinite scroll.",
@@ -5290,7 +5412,7 @@
       "filePath": "src/components/icon-picker/icon-picker.tsx",
       "encapsulation": "shadow",
       "tag": "icon-picker",
-      "docs": "Tento element umožňuje používateľom vybrať ikonu z dostupných možností.\n`IconPicker` je vlastný webový komponent, ktorý predstavuje interaktívny výber ikon. Obsahuje\nfunkciu vyhľadávania, nekonečné skrolovanie a výber pomocou popup okna. Komponent je vysoko prispôsobiteľný\na bezproblémovo sa integruje s ostatnými `WJElement` komponentmi.",
+      "docs": "This element allows users to select an icon from the available options.\nThe `IconPicker` is a custom web component that presents an interactive selection of icons. It includes\nsearch function, infinite scrolling and popup window selection. The component is highly customizable\nand integrates seamlessly with other `WJElement` components.",
       "docsTags": [
         {
           "name": "documentation",
@@ -5469,7 +5591,7 @@
       "filePath": "src/components/img/image.tsx",
       "encapsulation": "shadow",
       "tag": "image",
-      "docs": "Komponent pre lenivé (lazy) načítavanie a zobrazovanie obrázkov s rôznymi stratégiami načítavania a záložnými možnosťami.",
+      "docs": "Component for lazy (lazy) loading and displaying images with different loading strategies and backup options.",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -5638,7 +5760,7 @@
       "filePath": "src/components/image-comparer/image-comparer.tsx",
       "encapsulation": "shadow",
       "tag": "image-comparer",
-      "docs": "Komponenta na porovnávanie dvoch obrázkov pomocou posuvného rozhrania.",
+      "docs": "Component for comparing two images using a sliding interface.",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -5790,7 +5912,7 @@
       "filePath": "src/components/input/input.tsx",
       "encapsulation": "shadow",
       "tag": "input",
-      "docs": "Komponent `wje-input` poskytuje spôsob, ako prijímať vstup od používateľa. Môže byť použitý samostatne alebo ako súčasť formulára.",
+      "docs": "The `wje-input` component provides a way to receive input from the user. It can be used on its own or as part of a form.",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -6398,7 +6520,7 @@
       "filePath": "packages/input-file/input-file.js",
       "encapsulation": "shadow",
       "tag": "input-file",
-      "docs": "Tento element predstavuje vstup pre súbory.",
+      "docs": "This element represents the input for the files.",
       "docsTags": [
         {
           "name": "Summary",
@@ -6484,7 +6606,7 @@
       "filePath": "packages/item/item.tsx",
       "encapsulation": "shadow",
       "tag": "item",
-      "docs": "`Item` je vlastný webový komponent, ktorý predstavuje položku.",
+      "docs": "An `Item` is a custom web component that represents an item.",
       "docsTags": [
         {
           "name": "Summary",
@@ -6770,7 +6892,7 @@
       "filePath": "packages/kanban/kanban.tsx",
       "encapsulation": "shadow",
       "tag": "kanban",
-      "docs": "Komponent `kanban` predstavuje Kanban tabuľu s presunuteľnými stĺpcami a kartami.",
+      "docs": "The `kanban` component is a Kanban board with moveable columns and cards.",
       "docsTags": [
         {
           "name": "Summary",
@@ -7006,7 +7128,7 @@
     {
       "filePath": "src/components/aside/aside.tsx",
       "encapsulation": "scoped",
-      "tag": "aside",
+      "tag": "Aside",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -7079,7 +7201,7 @@
       "filePath": "packages/level-indicator/level-indicator.tsx",
       "encapsulation": "shadow",
       "tag": "level-indicator",
-      "docs": "Komponent `LevelIndicator` je vlastný webový komponent rozširujúci WJElement, ktorý vizuálne zobrazuje úroveň pomocou stĺpcov alebo pruhov. Umožňuje nastaviť počet pruhov, aktuálnu úroveň, farebné rozlíšenie a smerovanie.",
+      "docs": "The `LevelIndicator` component is a custom web component extending the WJElement that visually displays the level using columns or bars. It allows you to set the number of bars, the current level, color resolution and routing.",
       "docsTags": [
         {
           "name": "Summary",
@@ -7422,7 +7544,7 @@
       "filePath": "src/components/masonry/masonry.tsx",
       "encapsulation": "shadow",
       "tag": "masonry",
-      "docs": "Komponent `Masonry` je vlastný webový komponent, ktorý reprezentuje layout typu masonry (murivový layout). Rozširuje `WJElement` a poskytuje flexibilné usporiadanie položiek do stĺpcov rôznych výšok, pričom optimalizuje využitie priestoru.",
+      "docs": "The `Masonry` component is a custom web component that represents a masonry layout. It extends `WJElement` and provides flexible arrangement of items into columns of different heights, while optimizing space usage.",
       "docsTags": [
         {
           "name": "Summary",
@@ -7593,7 +7715,7 @@
       "filePath": "src/components/menu/menu.tsx",
       "encapsulation": "shadow",
       "tag": "menu",
-      "docs": "Element reprezentujúci menu.",
+      "docs": "Element representing the menu.",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -7772,7 +7894,7 @@
       "filePath": "src/components/menu-item/menu-item.tsx",
       "encapsulation": "shadow",
       "tag": "menu-item",
-      "docs": "Element reprezentujúci položku menu.",
+      "docs": "An element representing a menu item.",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -8030,7 +8152,7 @@
       "filePath": "src/components/menu-label/menu-label.tsx",
       "encapsulation": "shadow",
       "tag": "menu-label",
-      "docs": "Element reprezentujúci štítok menu.",
+      "docs": "Element representing the menu label.",
       "docsTags": [
         {
           "name": "Summary",
@@ -8093,7 +8215,7 @@
       "filePath": "packages/orgchart/orgchart.tsx",
       "encapsulation": "shadow",
       "tag": "orgchart",
-      "docs": "Orgchart je vlastný webový komponent, ktorý rozširuje WJElement.",
+      "docs": "Orgchart is a custom web component that extends WJElement.",
       "docsTags": [
         {
           "name": "Summary",
@@ -8117,7 +8239,7 @@
         {
           "name": "--wje-orgchart-height-line",
           "annotation": "prop",
-          "docs": "Určuje veľkosť čiary medzi položkami organizačnej štruktúry."
+          "docs": "Specifies the size of the line between the items of the organizational structure."
         }
       ],
       "slots": [
@@ -8129,7 +8251,7 @@
       "parts": [
         {
           "name": "native",
-          "docs": "Refers to the container of the organization chart."
+          "docs": "Refers to the organization chart container."
         }
       ],
       "dependents": [],
@@ -8140,10 +8262,10 @@
       "filePath": "packages/orgchart-item/orgchart-item.tsx",
       "encapsulation": "shadow",
       "tag": "orgchart-item",
-      "docs": "OrgchartItem je vlastný webový komponent, ktorý rozširuje WJElement.",
+      "docs": "OrgchartItem is a custom web component that extends WJElement.",
       "docsTags": [
         {
-          "name": "Summary",
+          "name": "summary",
           "text": "OrgchartItem is a custom web component that extends WJElement."
         },
         {
@@ -8371,10 +8493,10 @@
       "filePath": "src/components/orgchart-group/orgchart-group.tsx",
       "encapsulation": "shadow",
       "tag": "orgchart-group",
-      "docs": "Orgchart-group je vlastný webový komponent, ktorý rozširuje WJElement.",
+      "docs": "Orgchart-group is a custom web component that extends WJElement.",
       "docsTags": [
         {
-          "name": "summary",
+          "name": "Summary",
           "text": "OrgchartGroup is a custom web component that extends WJElement."
         },
         {
@@ -8390,7 +8512,7 @@
           "mutable": false,
           "attr": "title",
           "reflectToAttr": false,
-          "docs": "Nadpis skupiny organizačnej štruktúry.",
+          "docs": "The heading of the organisational structure group.",
           "docsTags": [],
           "default": "null",
           "optional": true,
@@ -8421,12 +8543,12 @@
         {
           "name": "--wje-orgchart-group-height-line",
           "annotation": "prop",
-          "docs": "Určuje veľkosť čiary medzi položkami v skupine organizačnej štruktúry."
+          "docs": "Specifies the size of the line between items in the organizational structure group."
         },
         {
           "name": "--wje-border-color",
           "annotation": "prop",
-          "docs": "Farba okraja skupiny organizačnej štruktúry."
+          "docs": "The color of the edge of the organizational structure group."
         },
         {
           "name": "--wje-orgchart-group-padding",
@@ -8447,7 +8569,7 @@
       "slots": [
         {
           "name": "",
-          "docs": "Predvolený slot pre potomkov skupiny organizačnej štruktúry."
+          "docs": "The default slot for descendants of the organizational structure group."
         }
       ],
       "parts": [
@@ -8480,7 +8602,7 @@
       "filePath": "src/components/pagination/pagination.tsx",
       "encapsulation": "shadow",
       "tag": "pagination",
-      "docs": "Táto trieda predstavuje komponent Pagination pre navigáciu cez stránkovaný obsah a dynamické aktualizovanie navigačných prvkov na základe atribútov ako počet položiek, veľkosť stránky atď.",
+      "docs": "This class represents a Pagination component for navigating through paginated content and dynamically updating navigation elements based on attributes such as number of items, page size, etc.",
       "docsTags": [
         {
           "name": "Summary",
@@ -9664,40 +9786,6 @@
       "dependencyGraph": {
         "wje-relative-time": [
           "Localizer",
-          "WJElement"
-        ]
-      }
-    },
-    {
-      "filePath": "src/components/reorder/reorder.tsx",
-      "encapsulation": "shadow",
-      "tag": "reorder",
-      "docs": "The `Reorder` is a custom web component that represents a zone for reordering content.",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [
-        {
-          "name": "",
-          "docs": "The default slot for content."
-        }
-      ],
-      "parts": [
-        {
-          "name": "native",
-          "docs": "Native part of the reorder component."
-        }
-      ],
-      "dependents": [],
-      "dependencies": [
-        "WJElement"
-      ],
-      "dependencyGraph": {
-        "wje-reorder": [
           "WJElement"
         ]
       }

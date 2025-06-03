@@ -79,7 +79,7 @@ const color = el.style.getPropertyValue('--charcoal');
 
 ### Customizing components using variables
 
-Elements offers component-specific variables, such as --background and --color, that allow for easy customization. For a complete list of these variables, see the CSS Custom Properties section in the [API](../api.md) reference of each component. For example, [CSS Custom Properties ](../api/button.md#css-custom-properties) of the Button component can be viewed for specific customization options.
+Elements offers component-specific variables, such as --background and --color, that allow for easy customization. For a complete list of these variables, see the CSS Custom Properties section in the [API](../api.md) reference of each component. For example, [CSS Custom Properties ](../api/button.md#css-custom-vlastnosti) of the Button component can be viewed for specific customization options.
 
 ### Customizing an application using global variables
 

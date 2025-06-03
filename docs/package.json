@@ -6,7 +6,7 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "prebuild": "npm run generate-markdown",
+    "prebuild": "npm run generate-markdown; if [ -n \\\"$CROWDIN_PERSONAL_TOKEN\\\" ]; then npm run crowdin:sync; fi",
     "build": "npm run build:${VERCEL_ENV:-preview}",
     "build:preview": "docusaurus build --locale sk",
     "build:production": "docusaurus build",

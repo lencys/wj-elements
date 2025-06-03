@@ -30,17 +30,17 @@ import Basic from '@site/static/usage/v1/accordion/basic/index.md';
 
 <Basic />
 
-[//]: # "## Colours"
-[//]: #
-[//]: # "import Colors from '@site/static/usage/v1/accordion/colors/index.md';"
-[//]: #
-[//]: # "<Colors />"
-[//]: #
-[//]: # "## Multiple"
-[//]: #
-[//]: # "import Multiple from '@site/static/usage/v1/accordion/multiple/index.md';"
-[//]: #
-[//]: # "<Multiple />"
+## Colours
+
+import Colors from '@site/static/usage/v1/accordion/colors/index.md';
+
+<Colors />
+
+## Multiple
+
+import Multiple from '@site/static/usage/v1/accordion/multiple/index.md';
+
+<Multiple />
 
 ## Attributes and Properties
 
