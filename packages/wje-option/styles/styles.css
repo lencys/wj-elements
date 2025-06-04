@@ -4,18 +4,6 @@
 
 :host {
     display: block;
-    wje-icon {
-        /*visibility: hidden;*/
-        /*margin-inline: 0.5rem;*/
-    }
-
-    wje-icon {
-        /*visibility: hidden;*/
-    }
-
-    wje-checkbox {
-        /*visibility: hidden;*/
-    }
 }
 
 ::slotted(wje-icon[slot="check"]) {
@@ -32,10 +20,6 @@
     ::slotted([slot='check']) {
         visibility: visible;
     }
-    wje-icon {
-        /*visibility: visible;*/
-    }
-
     wje-checkbox {
         visibility: visible;
     }

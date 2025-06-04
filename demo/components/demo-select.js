@@ -150,6 +150,34 @@ template.innerHTML = `
           <wje-option value="option-4">Option 4</wje-option>
         </wje-select>
         
+        <wje-select id="status" label="Single Status" placeholder="Select option" variant="standard" find clearable>
+        	<wje-option value="option-1">
+        		<wje-status color="complete" slot="check"></wje-status>
+        		Option 1
+					</wje-option>
+          <wje-option value="option-2">
+          	<wje-status color="success" slot="check"></wje-status>
+          	Option 2
+          </wje-option>
+          <wje-option value="option-3">
+          	<wje-status color="warning" slot="check"></wje-status>
+            Option 3
+            <wje-icon name="heart" slot="end"></wje-icon>
+          </wje-option>
+          <wje-option value="option-4">
+        		<wje-status color="danger" slot="check"></wje-status>
+          	Option 4
+          </wje-option>
+          <wje-option value="option-5">
+         		<wje-status color="contrast" slot="check"></wje-status>
+          	Option 5
+          </wje-option>
+          <wje-option value="option-6">
+          	<wje-status color="primary" slot="check"></wje-status>
+          	Option 6
+					</wje-option>
+        </wje-select>
+        
         <wje-select label="Multiple" placeholder="Select option" variant="standard" multiple clearable checkbox>
           <wje-option value="option-1">Option 1</wje-option>
           <wje-option value="option-2">
@@ -159,6 +187,17 @@ template.innerHTML = `
           <wje-option value="option-3">Option 3</wje-option>
           <wje-option value="option-4">Option 4</wje-option>
         </wje-select>
+        
+        <style>
+        	#status {
+        		wje-option[selected] {
+        			background: var(--wje-option-highlighted);
+        		}
+        		wje-status {
+							margin: 0 .5rem;
+						}
+        	}
+        </style>
       </div>
     </div>
     
