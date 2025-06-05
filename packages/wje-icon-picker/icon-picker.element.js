@@ -4,6 +4,7 @@ import Input from '../wje-input/input.js';
 import Popup from '../wje-popup/popup.js';
 import Tooltip from '../wje-tooltip/tooltip.js';
 import styles from './styles/styles.css?inline';
+import { getBasePath } from "../utils/base-path.js";
 
 /**
  * @summary This element allows users to pick an icon from a set of available options.
@@ -154,8 +155,7 @@ export default class IconPicker extends WJElement {
         input.addEventListener('wje-input:input', this.searchIcon);
 
         let infiniteScroll = new InfiniteScroll();
-
-        infiniteScroll.setAttribute('url', this.getTagsUrl('../../tags.json'));
+        infiniteScroll.setAttribute('url', getBasePath('assets/tags.json'));
         infiniteScroll.setAttribute('placement', '.icon-items');
         infiniteScroll.setAttribute('size', this.size);
         infiniteScroll.setAttribute('height', '223px');
@@ -353,7 +353,7 @@ export default class IconPicker extends WJElement {
      * @returns {Promise<Array>} The tags of the component.
      */
     async getTags() {
-        const response = await fetch(this.getTagsUrl('../../tags.json'));
+        const response = await fetch(getBasePath('assets/tags.json'));
         return response.json();
     }
 
@@ -389,7 +389,7 @@ export default class IconPicker extends WJElement {
 
         this.clearIconsContainer();
         this.infiniteScroll.loadPages(0);
-    };
+    }
 
     /**
      * Clears the icons container.
@@ -403,14 +403,5 @@ export default class IconPicker extends WJElement {
      */
     onClose = () => {
         this.popup.handleHide();
-    };
-
-    /**
-     * Gets the URL of the tags.
-     * @param {string} path The path to get the URL of.
-     * @returns {string} The URL of the tags path.
-     */
-    getTagsUrl = (path) => {
-        return new URL(process.env.VITE_ICON_ASSETS_URL + path).href;
-    };
+    }
 }

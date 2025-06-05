@@ -499,6 +499,7 @@ export default class Select extends WJElement {
 
 		inputWrapper.appendChild(slotStart);
 		inputWrapper.appendChild(input);
+
 		if (this.hasAttribute('multiple')) inputWrapper.appendChild(chips);
 
 		if (this.hasAttribute('clearable')) inputWrapper.appendChild(clear);

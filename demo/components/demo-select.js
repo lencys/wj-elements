@@ -188,6 +188,10 @@ template.innerHTML = `
           <wje-option value="option-4">Option 4</wje-option>
         </wje-select>
         
+        <wje-select lazy label="Label optionS" placeholder="Select options" variant="standard" max-height="200px" find clearable checkbox multiple>
+          <wje-options lazy url="/api/options" item-value="value" item-text="text"  lazy-load-size="6" option-array-path="data"></wje-options>
+        </wje-select>
+        
         <style>
         	#status {
         		wje-option[selected] {

@@ -11,6 +11,7 @@ template.innerHTML = `<h1>Icon Picker</h1>
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
+        <wje-icon-picker icon=""></wje-icon-picker>
         <wje-icon-picker icon="activity-heartbeat"></wje-icon-picker>
       </div>
     </div>
