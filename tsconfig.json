@@ -2,7 +2,7 @@
     "compilerOptions": {
         "target": "ESNext",
         "lib": ["ES2024", "DOM"],
-        "declaration": true,
+        "declaration": false,
         "emitDeclarationOnly": true,
         "allowJs": true,
         "outDir": "types",

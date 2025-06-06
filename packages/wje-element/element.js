@@ -1,8 +1,8 @@
-import { UniversalService } from './service/universal-service.js';
-import { defaultStoreActions, store } from '../wje-store/store.js';
+import { UniversalService } from '../utils/universal-service.js';
 import { Permissions } from '../utils/permissions.js';
 import { WjElementUtils } from '../utils/element-utils.js';
 import { event } from '../utils/event.js';
+import { defaultStoreActions, store } from '../wje-store/store.js';
 
 const template = document.createElement('template');
 template.innerHTML = ``;

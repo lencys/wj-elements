@@ -25,3 +25,22 @@ export function formatDate(input, format) {
 
     return format.replace(/yyyy|MM|dd|HH|mm|ss|MMMM|MMM/g, (matched) => map[matched]);
 }
+
+export function toSafeDate(iso) {
+    // Match 07:00, 07:00:00, 07:00:00.000, 07:00:00.000Z
+    const timeOnlyRegex = /^\d{2}:\d{2}(?::\d{2}(?:\.\d{3})?)?(Z)?$/;
+
+    if (timeOnlyRegex.test(iso)) {
+        let cleanTime = iso.replace(/Z$/, ''); // Remove Z if present
+        let [h, m, s = '00.000'] = cleanTime.split(':');
+
+        // Ensure seconds and milliseconds
+        if (!s.includes('.')) {
+            s = `${s}.000`;
+        }
+
+        return `1970-01-01T${h}:${m}:${s}Z`;
+    }
+
+    return iso;
+}

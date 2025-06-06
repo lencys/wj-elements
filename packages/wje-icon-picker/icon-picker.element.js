@@ -1,10 +1,10 @@
 import { default as WJElement, event } from '../wje-element/element.js';
+import { getBasePath } from "../utils/base-path.js";
 import InfiniteScroll from '../wje-infinite-scroll/infinite-scroll.js';
 import Input from '../wje-input/input.js';
 import Popup from '../wje-popup/popup.js';
 import Tooltip from '../wje-tooltip/tooltip.js';
 import styles from './styles/styles.css?inline';
-import { getBasePath } from "../utils/base-path.js";
 
 /**
  * @summary This element allows users to pick an icon from a set of available options.

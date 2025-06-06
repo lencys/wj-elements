@@ -1,4 +1,4 @@
-import { getIconLibrary } from "./library.js";
+import { getIconLibrary } from "../../utils/icon-library.js";
 
 export const iconContent = new Map();
 const requests = new Map();

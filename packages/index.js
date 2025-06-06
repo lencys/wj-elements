@@ -2,13 +2,15 @@
 export { bindRouterLinks } from 'slick-router/middlewares/router-links.js';
 
 // Utilities
-export { fetchAndParseCSS } from './utils/animations.js';
-export { setBasePath, getBasePath } from './utils/base-path.js';
-export { formatDate } from './utils/date.js';
-export { event } from './utils/event.js';
-export { registerIconLibrary, unregisterIconLibrary } from './wje-icon/service/library.js';
 export { Localizer } from './utils/localize.js';
 export { Permissions } from './utils/permissions.js';
+export { UniversalService } from './utils/universal-service.js';
+
+export { fetchAndParseCSS } from './utils/animations.js';
+export { setBasePath, getBasePath } from './utils/base-path.js';
+export { formatDate, toSafeDate } from './utils/date.js';
+export { registerIconLibrary, unregisterIconLibrary } from './utils/icon-library.js';
+export { event } from './utils/event.js';
 
 // Services
 export { skSk } from './translations/sk-sk.js';
