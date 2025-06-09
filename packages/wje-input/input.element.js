@@ -52,7 +52,7 @@ export default class Input extends WJElement {
                 console.log(`Attribute ${attributeName} changed from ${oldValue} to ${newValue}`);
             }
         });
-    };
+    }
 
     /**
      * Setter for the value attribute.
@@ -68,11 +68,29 @@ export default class Input extends WJElement {
     }
 
     /**
-     * Getter for the value attribute.
-     * @returns {string} The value of the attribute.
+     * Retrieves the value from the input element if available; otherwise,
+     * returns the internal _value property or an empty string as the default.
+     * @returns {string} The current value from the input element, the internal _value, or an empty string.
      */
     get value() {
         return this.input?.value ?? this._value ?? '';
+    }
+
+    /**
+     * Sets the label attribute of the element.
+     * @param {string} value The value to set as the label attribute.
+     */
+    set label(value) {
+        this.setAttribute('label', value);
+    }
+
+    /**
+     * Retrieves the value of the 'label' attribute if it exists.
+     * If the 'label' attribute is not set, it returns false.
+     * @returns {string|boolean} The value of the 'label' attribute as a string, or false if the attribute is not set.
+     */
+    get label() {
+        return this.getAttribute('label') || false;
     }
 
     /**
@@ -169,6 +187,11 @@ export default class Input extends WJElement {
         this.setAttribute('value', value);
     }
 
+    /**
+     * Sets or removes the 'clearable' attribute on the element.
+     * When set to a truthy value, the 'clearable' attribute is added; when falsy, the attribute is removed.
+     * @param {boolean} value Determines whether to set or remove the 'clearable' attribute. If true, the 'clearable' attribute is added. If false, it is removed.
+     */
     set clearable(value) {
         if (value) {
             this.setAttribute('clearable', '');
@@ -177,10 +200,20 @@ export default class Input extends WJElement {
         }
     }
 
+    /**
+     * Checks if the 'clearable' attribute is present on the element.
+     * @returns {boolean} True if the 'clearable' attribute is set, otherwise false.
+     */
     get clearable() {
         return this.hasAttribute('clearable');
     }
 
+    /**
+     * Sets the placeholder value for an element. If the provided value is non-empty,
+     * it assigns the value to the "placeholder" attribute. Otherwise, it removes
+     * the "placeholder" attribute from the element.
+     * @param {string} value The placeholder text to set or null/undefined to remove the attribute.
+     */
     set placeholder(value) {
         if (value) {
             this.setAttribute('placeholder', value);
@@ -189,10 +222,20 @@ export default class Input extends WJElement {
         }
     }
 
+    /**
+     * Retrieves the value of the 'placeholder' attribute from the element.
+     * If the attribute is not set, it returns an empty string.
+     * @returns {string} The value of the 'placeholder' attribute or an empty string if not set.
+     */
     get placeholder() {
         return this.getAttribute('placeholder') || '';
     }
 
+    /**
+     * Sets the `variant` attribute on the element. If a value is provided, it will set the attribute to the given value.
+     * If no value is provided, it removes the `variant` attribute from the element.
+     * @param {string} value The value to set for the `variant` attribute. If falsy, the attribute is removed.
+     */
     set variant(value) {
         if (value) {
             this.setAttribute('variant', value);
@@ -201,6 +244,11 @@ export default class Input extends WJElement {
         }
     }
 
+    /**
+     * Retrieves the value of the 'variant' attribute from the element.
+     * If the attribute is not set, it defaults to 'default'.
+     * @returns {string} The value of the 'variant' attribute or 'default' if not set.
+     */
     get variant() {
         return this.getAttribute('variant') || 'default';
     }
@@ -335,10 +383,13 @@ export default class Input extends WJElement {
             native.classList.add('has-start');
         }
 
-        if (this.variant === 'standard') {
-            if (this.label) native.appendChild(label);
-        } else {
-            inputWrapper.appendChild(label);
+        console.log(`Input variant: ${this.label}`);
+        if (this.label) {
+            if (this.variant === 'standard') {
+                native.append(label);
+            } else {
+                inputWrapper.appendChild(label);
+            }
         }
 
         inputWrapper.appendChild(input);

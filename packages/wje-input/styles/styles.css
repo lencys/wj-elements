@@ -158,6 +158,14 @@
     }
 }
 
+:host([type=hidden]) {
+    margin: 0;
+    .native-input {
+        padding: 0;
+        border-width: 0;
+    }
+}
+
 .clear {
     visibility: hidden;
     position: absolute;

@@ -17,6 +17,7 @@ template.innerHTML = `<h1>Input</h1>
         <wje-input label="Readonly input" value="Bratislava" readonly></wje-input>
         <wje-input label="Disabled input" value="84103" disabled></wje-input>
         <wje-input label="Default input" type="number" minlength="5" message="Toto je moja hlaska" required validate-on-change custom-error-display ></wje-input>
+        <wje-input type="hidden">Hidden input</wje-input>
       </div>
     </div>
     
@@ -67,6 +68,7 @@ template.innerHTML = `<h1>Input</h1>
         <wje-input variant="standard" label="Readonly input" value="Bratislava" readonly></wje-input>
         <wje-input variant="standard" label="Disabled input" value="84103" disabled></wje-input>
         <wje-input variant="standard" label="Default input" type="number" minlength="5" message="Toto je moja hlaska" required validate-on-change custom-error-display ></wje-input>
+        <wje-input variant="standard" type="hidden">Hidden input</wje-input>
       </div>
     </div>
 
