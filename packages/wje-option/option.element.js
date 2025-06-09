@@ -153,6 +153,7 @@ export default class Option extends WJElement {
 
 		let check = document.createElement('slot');
 		check.setAttribute('name', 'check');
+		check.setAttribute('part', 'check');
 
 		let start = document.createElement('slot');
 		start.setAttribute('name', 'start');

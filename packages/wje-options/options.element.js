@@ -1,6 +1,6 @@
 import { default as WJElement, event } from '../wje-element/element.js';
-import InfiniteScroll from '../wje-infinite-scroll/infinite-scroll.element.js';
-import List from '../wje-list/list.element.js';
+import InfiniteScroll from '../wje-infinite-scroll/infinite-scroll.js';
+import List from '../wje-list/list.js';
 import Option from '../wje-option/option.js';
 
 /**

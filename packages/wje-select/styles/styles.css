@@ -84,6 +84,10 @@
     font-size: 14px !important;
     font-weight: normal;
     vertical-align: middle;
+    input[readonly] {
+        pointer-events: none;
+        caret-color: transparent;
+    }
 }
 
 input {
@@ -109,7 +113,7 @@ input {
 
 :host [active] {
     .wrapper {
-        border-radius: var(--wje-select-border-radius) var(--wje-select-border-radius) 0 0;
+        border-radius: var(--wje-select-border-radius);
     }
     [slot='arrow'] {
         transform: rotate(180deg);
@@ -121,7 +125,7 @@ input {
     border-width: var(--wje-select-options-border-width);
     border-style: var(--wje-select-options-border-style);
     border-color: var(--wje-select-options-border-color);
-    border-radius: 0 0 var(--wje-select-border-radius) var(--wje-select-border-radius);
+    border-radius: var(--wje-select-options-border-radius);
     margin-top: calc(0px - var(--wje-select-border-width));
     background: var(--wje-select-background);
     overflow: hidden;

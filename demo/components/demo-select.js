@@ -41,6 +41,30 @@ template.innerHTML = `
       </div>
     </div>
     
+    <!-- OFFSET -->
+
+    <h2>Offset</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-select id="offset" placeholder="Select option" variant="standard" offset="5">
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2">
+            Option 2
+            <wje-icon name="heart" slot="end"></wje-icon>
+          </wje-option>
+          <wje-option value="option-3" selected>Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+        </wje-select>
+        
+        <style>
+        	#offset {
+        		--wje-select-border-radius: var(--wje-border-radius-large);
+        		--wje-select-options-border-radius: var(--wje-border-radius-large);
+        	}
+        </style>
+      </div>
+    </div>
+    
     <!-- OPTIONS -->
 
     <h2>Options</h2>
@@ -178,6 +202,12 @@ template.innerHTML = `
 					</wje-option>
         </wje-select>
         
+        <wje-select id="classic" label="Single Classic" placeholder="Select option" variant="standard" find clearable>
+        	<wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2">Option 2</wje-option>
+          <wje-option value="option-3">Option 3</wje-option>
+        </wje-select>
+        
         <wje-select label="Multiple" placeholder="Select option" variant="standard" multiple clearable checkbox>
           <wje-option value="option-1">Option 1</wje-option>
           <wje-option value="option-2">
@@ -198,8 +228,22 @@ template.innerHTML = `
         			background: var(--wje-option-highlighted);
         		}
         		wje-status {
-							margin: 0 .5rem;
+							margin: 0 var(--wje-spacing-x-small);
 						}
+        	}
+        	
+        	#classic {
+        		wje-option {
+        			&::part(native) {
+        				padding-inline: var(--wje-spacing-x-small);
+        			}
+        			&[selected]{
+        				background: var(--wje-option-highlighted);
+        			}
+        		}
+        		wje-option::part(check) {
+        			display: none;
+        		}
         	}
         </style>
       </div>

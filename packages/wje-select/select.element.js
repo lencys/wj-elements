@@ -378,6 +378,14 @@ export default class Select extends WJElement {
 		return this.getAttribute('trigger') || 'click';
 	}
 
+	set offset(value) {
+		this.setAttribute('offset', value);
+	}
+
+	get offset() {
+		return this.getAttribute('offset') || '0';
+	}
+
 	className = 'Select';
 
 	/**
@@ -488,6 +496,7 @@ export default class Select extends WJElement {
 		popup.setAttribute('manual', '');
 		popup.setAttribute('size', '');
 		popup.setAttribute('part', 'popup');
+		popup.setAttribute('offset', this.offset);
 
 		if (this.hasAttribute('disabled')) popup.setAttribute('disabled', '');
 
