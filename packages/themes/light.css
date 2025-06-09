@@ -254,6 +254,12 @@
     --wje-button-margin-inline: 0;
     --wje-button-outline-width: 0.5rem;
 
+    /* Button - Group */
+    --wje-button-group-border-radius: var(--wje-border-radius-medium);
+    --wje-button-group-border-width: 1px;
+    --wje-button-group-border-style: solid;
+    --wje-button-group-border-color: var(--wje-color-contrast-3);
+
     /* Card */
     --wje-card-border-radius: var(--wje-border-radius-large);
     --wje-card-border-color: transparent;

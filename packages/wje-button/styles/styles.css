@@ -388,7 +388,7 @@
 :host([circle]) .native-button {
     border-radius: var(--wje-border-radius-circle);
     aspect-ratio: 1/1;
-    width: 1.813rem;
+    width: 1.988rem;
     display: flex;
     align-items: center;
     --wje-padding-top: 0;
@@ -412,7 +412,7 @@
 }
 
 :host([size='small'][circle]) .native-button {
-    width: 1.5rem;
+    width: 1.688rem;
     --wje-padding-top: 0;
     --wje-padding-start: 0;
     --wje-padding-end: 0;
@@ -420,7 +420,7 @@
 }
 
 :host([size='large'][circle]) .native-button {
-    width: 2.188rem;
+    width: 2.388rem;
     --wje-padding-top: 0;
     --wje-padding-start: 0;
     --wje-padding-end: 0;
@@ -439,27 +439,17 @@
     padding: 0 0 0 0.3rem;
 }
 
-:host([only-caret]) slot[name='caret'] {
-    padding: 0;
-    display: block;
-}
-
-:host(.wje-button-group-first:not(.wje-button-group-last)) .native-button {
-    border-start-end-radius: 0;
-    border-end-end-radius: 0;
-}
-
-:host(.wje-button-group-inner) .native-button {
-    border-radius: 0;
-}
-
-:host(.wje-button-group-last:not(.wje-button-group-first)) .native-button {
-    border-start-start-radius: 0;
-    border-end-start-radius: 0;
-}
-
-:host(.wje-button-group-button:not(.wje-button-group-first)) {
-    margin-inline-start: calc(-1 * var(--wje-button-border-width)) !important;
+:host([only-caret]) {
+    .native-button {
+        aspect-ratio: 1/1;
+        width: 1.988rem;
+        display: flex;
+        align-items: center;
+    }
+    slot[name='caret'] {
+        padding: 0;
+        display: block;
+    }
 }
 
 ::slotted([slot='toggle']) {

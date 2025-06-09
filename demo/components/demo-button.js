@@ -2,7 +2,9 @@ import WJElement from '../../dist/wje-element.js';
 import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
-template.innerHTML = `
+template.innerHTML = `<style>
+  .content { gap: .5rem;}
+  </style>
   <h1>Button</h1>
   <div class="container">
     

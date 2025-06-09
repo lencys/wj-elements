@@ -3,15 +3,35 @@
 */
 
 :host {
+    --wje-button-outline-width: 0;
+    --wje-button-border-color: transparent;
     display: inline-block;
     .native-button-group {
+        position: relative;
+    }
+    .wje-button-group-content {
         display: flex;
         flex-wrap: nowrap;
-        line-height: 1;
+        slot {
+            display: contents;
+        }
     }
+    .wje-button-group-border {
+        top: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        border-radius: var(--wje-button-group-border-radius);
+        border-width: var(--wje-button-group-border-width);
+        border-style: var(--wje-button-group-border-style);
+        border-color: var(--wje-button-group-border-color);
+    }
+}
 
-    slot {
-        display: contents;
+:host([round]) {
+    .wje-button-group-border {
+        --wje-button-group-border-radius: var(--wje-border-radius-pill);
     }
 }
 

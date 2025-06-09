@@ -272,7 +272,7 @@ export default class Button extends WJElement {
      * @returns {Array<string>} observedAttributes - The observed attributes array for the Button element.
      */
     static get observedAttributes() {
-        return ['disabled'];
+        return ['disabled', 'color'];
     }
 
     /**

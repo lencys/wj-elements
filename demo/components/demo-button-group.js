@@ -16,7 +16,7 @@ template.innerHTML = `
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
-        <wje-button-group>
+        <wje-button-group active="2">
           <wje-button>Start</wje-button>
           <wje-button>Center</wje-button>
           <wje-button>End</wje-button>
@@ -29,10 +29,10 @@ template.innerHTML = `
     <h2>Shape</h2>
     <div class="playground">
       <div class="content">
-        <wje-button-group>
-          <wje-button round>Start</wje-button>
-          <wje-button round>Center</wje-button>
-          <wje-button round>End</wje-button>
+        <wje-button-group active="1" round>
+          <wje-button>Start</wje-button>
+          <wje-button>Center</wje-button>
+          <wje-button>End</wje-button>
         </wje-button-group>
       </div>
     </div>
@@ -42,7 +42,7 @@ template.innerHTML = `
     <h2>Dropdown</h2>
     <div class="playground">
       <div class="content">
-        <wje-button-group label="Example Button Group">
+        <wje-button-group>
           <wje-button>Button</wje-button>
           <wje-button>Button</wje-button>
           <wje-dropdown placement="bottom-end" offset="5">
@@ -63,43 +63,29 @@ template.innerHTML = `
     <div class="playground">
       <div class="content">
         <wje-button-group style="margin-right: 1rem;">
-          <wje-tooltip content="Bold">
-            <wje-button>
-              <wje-icon slot="icon-only" name="bold"></wje-icon>
-            </wje-button>
-          </wje-tooltip>
-          <wje-tooltip content="Italic">
-            <wje-button>
-              <wje-icon slot="icon-only" name="italic"></wje-icon>
-            </wje-button>
-          </wje-tooltip>
-          <wje-tooltip content="Bold">
-            <wje-button>
-              <wje-icon slot="icon-only" name="underline"></wje-icon>
-            </wje-button>
-          </wje-tooltip>
+          <wje-button tooltip="Bold">
+            <wje-icon slot="icon-only" name="bold"></wje-icon>
+          </wje-button>
+          <wje-button tooltip="Italic">
+            <wje-icon slot="icon-only" name="italic"></wje-icon>
+          </wje-button>
+          <wje-button tooltip="Underline">
+            <wje-icon slot="icon-only" name="underline"></wje-icon>
+          </wje-button>
         </wje-button-group>
         <wje-button-group>
-          <wje-tooltip content="Align left">
-            <wje-button>
-              <wje-icon slot="icon-only" name="align-left"></wje-icon>
-            </wje-button>
-            </wje-tooltip>
-          <wje-tooltip content="Align center">
-            <wje-button>
-              <wje-icon slot="icon-only" name="align-center"></wje-icon>
-            </wje-button>
-          </wje-tooltip>
-          <wje-tooltip content="Align right">
-            <wje-button>
-              <wje-icon slot="icon-only" name="align-right"></wje-icon>
-            </wje-button>
-          </wje-tooltip>
-          <wje-tooltip content="Align justify">
-            <wje-button>
-              <wje-icon slot="icon-only" name="align-justified"></wje-icon>
-            </wje-button>
-          </wje-tooltip>
+          <wje-button tooltip="Align left">
+            <wje-icon slot="icon-only" name="align-left"></wje-icon>
+          </wje-button>
+          <wje-button tooltip="Align center">
+            <wje-icon slot="icon-only" name="align-center"></wje-icon>
+          </wje-button>
+          <wje-button tooltip="Align right">
+            <wje-icon slot="icon-only" name="align-right"></wje-icon>
+          </wje-button>
+          <wje-button tooltip="Align justify">
+            <wje-icon slot="icon-only" name="align-justified"></wje-icon>
+          </wje-button>
         </wje-button-group>
       </div>
     </div>
@@ -110,9 +96,9 @@ template.innerHTML = `
     <div class="playground">
       <div class="content">
         <wje-button-group>
-          <wje-button variant="primary">Save</wje-button>
+          <wje-button>Save</wje-button>
           <wje-dropdown placement="bottom-end" offset="5">
-            <wje-button slot="trigger" variant="primary" only-caret>
+            <wje-button slot="trigger" only-caret>
               <wje-visually-hidden>More options</wje-visually-hidden>
             </wje-button>
             <wje-menu variant="context">
@@ -131,111 +117,59 @@ template.innerHTML = `
     <div class="playground">
       <div class="content" style="display: block;">
         <p>
-          <wje-button-group>
-            <wje-button>Default</wje-button>
-            <wje-button>Default</wje-button>
-            <wje-button>Default</wje-button>
+          <wje-button-group color="primary" active="1">
+            <wje-button>Primary</wje-button>
+            <wje-button>Primary</wje-button>
+            <wje-button>Primary</wje-button>
           </wje-button-group>
         </p>
         <p>
-          <wje-button-group>
-            <wje-button color="primary">Primary</wje-button>
-            <wje-button color="primary">Primary</wje-button>
-            <wje-button color="primary">Primary</wje-button>
+          <wje-button-group color="complete" active="1">
+            <wje-button>Complete</wje-button>
+            <wje-button>Complete</wje-button>
+            <wje-button>Complete</wje-button>
           </wje-button-group>
         </p>
         <p>
-          <wje-button-group>
-            <wje-button color="complete">Complete</wje-button>
-            <wje-button color="complete">Complete</wje-button>
-            <wje-button color="complete">Complete</wje-button>
+          <wje-button-group color="success" active="1">
+            <wje-button>Success</wje-button>
+            <wje-button>Success</wje-button>
+            <wje-button>Success</wje-button>
           </wje-button-group>
         </p>
         <p>
-          <wje-button-group>
-            <wje-button color="success">Success</wje-button>
-            <wje-button color="success">Success</wje-button>
-            <wje-button color="success">Success</wje-button>
+          <wje-button-group color="warning" active="1">
+            <wje-button>Warning</wje-button>
+            <wje-button>Warning</wje-button>
+            <wje-button>Warning</wje-button>
           </wje-button-group>
         </p>
         <p>
-          <wje-button-group>
-            <wje-button color="warning">Warning</wje-button>
-            <wje-button color="warning">Warning</wje-button>
-            <wje-button color="warning">Warning</wje-button>
-          </wje-button-group>
-        </p>
-        <p>
-          <wje-button-group>
-            <wje-button color="danger">Danger</wje-button>
-            <wje-button color="danger">Danger</wje-button>
-            <wje-button color="danger">Danger</wje-button>
-          </wje-button-group>
-        </p>
-        <p>
-          <wje-button-group>
-            <wje-button color="neutral">Neutral</wje-button>
-            <wje-button color="neutral">Neutral</wje-button>
-            <wje-button color="neutral">Neutral</wje-button>
+          <wje-button-group color="danger" active="1">
+            <wje-button>Danger</wje-button>
+            <wje-button>Danger</wje-button>
+            <wje-button>Danger</wje-button>
           </wje-button-group>
         </p>
       </div>
     </div>
+    
+    <!--  BASIC-->
 
-    <!-- COLORS - OUTLINE -->
-
-    <h2>Colors outline</h2>
+    <h2>Basic</h2>
     <div class="playground">
-      <div class="content" style="display: block;">
-        <p>
-          <wje-button-group>
-            <wje-button fill="outline">Default</wje-button>
-            <wje-button fill="outline">Default</wje-button>
-            <wje-button fill="outline">Default</wje-button>
-          </wje-button-group>
-        </p>
-        <p>
-          <wje-button-group>
-            <wje-button color="primary" fill="outline">Primary</wje-button>
-            <wje-button color="primary" fill="outline">Primary</wje-button>
-            <wje-button color="primary" fill="outline">Primary</wje-button>
-          </wje-button-group>
-        </p>
-        <p>
-          <wje-button-group>
-            <wje-button color="complete" fill="outline">Complete</wje-button>
-            <wje-button color="complete" fill="outline">Complete</wje-button>
-            <wje-button color="complete" fill="outline">Complete</wje-button>
-          </wje-button-group>
-        </p>
-        <p>
-          <wje-button-group>
-            <wje-button color="success" fill="outline">Success</wje-button>
-            <wje-button color="success" fill="outline">Success</wje-button>
-            <wje-button color="success" fill="outline">Success</wje-button>
-          </wje-button-group>
-        </p>
-        <p>
-          <wje-button-group>
-            <wje-button color="warning" fill="outline">Warning</wje-button>
-            <wje-button color="warning" fill="outline">Warning</wje-button>
-            <wje-button color="warning" fill="outline">Warning</wje-button>
-          </wje-button-group>
-        </p>
-        <p>
-          <wje-button-group>
-            <wje-button color="danger" fill="outline">Danger</wje-button>
-            <wje-button color="danger" fill="outline">Danger</wje-button>
-            <wje-button color="danger" fill="outline">Danger</wje-button>
-          </wje-button-group>
-        </p>
-        <p>
-          <wje-button-group>
-            <wje-button color="neutral" fill="outline">Neutral</wje-button>
-            <wje-button color="neutral" fill="outline">Neutral</wje-button>
-            <wje-button color="neutral" fill="outline">Neutral</wje-button>
-          </wje-button-group>
-        </p>
+      <div class="content">
+        <wje-button-group id="custom" active="1">
+          <wje-button>Start</wje-button>
+          <wje-button>Center</wje-button>
+          <wje-button>End</wje-button>
+        </wje-button-group>
+        <style>
+          #custom {
+            --wje-button-border-radius: var(--wje-border-radius-large);
+            --wje-button-group-border-radius: var(--wje-border-radius-large);
+          }
+        </style>
       </div>
     </div>
   </div>`;
