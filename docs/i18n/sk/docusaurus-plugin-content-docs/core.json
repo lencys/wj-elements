@@ -12445,9 +12445,9 @@
       }
     },
     {
-      "filePath": "packages/wje-textarea/textarea.element.js",
+      "filePath": "src/components/textarea/textarea.tsx",
       "encapsulation": "shadow",
-      "tag": "wje-textarea",
+      "tag": "textarea",
       "docs": "Textarea je vlastný webový komponent, ktorý reprezentuje vstupné pole textarea.",
       "docsTags": [
         { "name": "summary", "text": "Tento element predstavuje vstupné pole textarea." },
@@ -12632,12 +12632,22 @@
         {
           "name": "--wje-textarea-border-radius",
           "docs": "Polomer zaoblenia rohov textarea.",
-          "default": "4px"
+          "default": "var(--wje-border-radius-medium)"
+        },
+        {
+          "name": "--wje-textarea-color-invalid",
+          "docs": "Farba textu pri neplatnom vstupe.",
+          "default": "var(--wje-color-danger)"
+        },
+        {
+          "name": "--wje-textarea-margin-bottom",
+          "docs": "Odsadenie spodnej časti textarea.",
+          "default": "var(--wje-spacing-x-small)"
         },
         {
           "name": "--wje-textarea-padding",
           "docs": "Vnútorný odsadzovací priestor textarea.",
-          "default": "0.5rem"
+          "default": "--wje-spacing-x-small"
         },
         {
           "name": "--wje-textarea-line-height",

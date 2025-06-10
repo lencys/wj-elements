@@ -12684,9 +12684,9 @@
       }
     },
     {
-      "filePath": "packages/wje-textarea/textarea.element.js",
+      "filePath": "src/components/textarea/textarea.tsx",
       "encapsulation": "shadow",
-      "tag": "wje-textarea",
+      "tag": "textarea",
       "docs": "A textarea is a custom web component that represents the input field of a textarea.",
       "docsTags": [
         {
@@ -12892,12 +12892,22 @@
         {
           "name": "--wje-textarea-border-radius",
           "docs": "The radius of roundness of the corners of the textarea.",
-          "default": "4px"
+          "default": "var(--wje-border-radius-medium)"
+        },
+        {
+          "name": "--wje-textarea-color-invalid",
+          "docs": "Text color for invalid input.",
+          "default": "var(--wje-color-danger)"
+        },
+        {
+          "name": "--wje-textarea-margin-bottom",
+          "docs": "Offsetting the bottom of the textarea.",
+          "default": "var(--wje-spacing-x-small)"
         },
         {
           "name": "--wje-textarea-padding",
           "docs": "Inner textarea indentation space.",
-          "default": "0.5rem"
+          "default": "--wje-spacing-x-small"
         },
         {
           "name": "--wje-textarea-line-height",
