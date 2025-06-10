@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-gb">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Radio</title>
+    <script src="../../common.js"></script>
+    <script type="module">
+      import { registerIconLibrary, getIconLibrary } from "https://cdn.jsdelivr.net/npm/wj-elements@0/dist/wje-icon-library.js";
+
+      registerIconLibrary("default", {
+        resolver: (name, style) => `https://cdn.jsdelivr.net/npm/wj-elements@0/dist/assets/img/icons/${style}/${name}.svg`
+      });
+    </script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/wje-master.js"></script>
+
+    <link rel="stylesheet" href="../../common.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/light.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/dark.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <wje-stepper active="primary" done="success">
+          <wje-step active>
+            Content 1
+          </wje-step>
+          <wje-step label="Step 2">
+            Content 2
+          </wje-step>
+          <wje-step label="Step 3">
+            Content 3
+          </wje-step>
+
+          <wje-button slot="prev"  label="Prev" color="primary">
+            <wje-icon name="chevron-left"></wje-icon>Previous
+          </wje-button>
+          <wje-button slot="next" label="Next" color="primary">
+            Next<wje-icon name="chevron-right"></wje-icon>
+          </wje-button>
+          <wje-button slot="finish" label="Finish" color="primary">
+            Finish<wje-icon name="chevron-right"></wje-icon>
+          </wje-button>
+        </wje-stepper>
+      </div>
+    </div>
+  </body>
+</html>

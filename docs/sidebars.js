@@ -345,6 +345,18 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Status',
+      collapsed: false,
+      items: ['api/status'],
+    },
+    {
+      type: 'category',
+      label: 'Stepper',
+      collapsed: false,
+      items: ['api/stepper', 'api/step'],
+    },
+    {
+      type: 'category',
       label: 'Tabs',
       collapsed: false,
       items: ['api/tab-group', 'api/tab', 'api/tab-panel'],

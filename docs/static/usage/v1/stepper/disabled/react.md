@@ -1,0 +1,21 @@
+```tsx
+import React from 'react';
+import { Stepper, Step } from '@elements/react';
+
+function Example() {
+  return (
+    <wje-stepper active="primary" done="success">
+        <wje-step active>
+            Content 1
+        </wje-step>
+        <wje-step label="Step 2">
+            Content 2
+        </wje-step>
+        <wje-step label="Step 3" disabled>
+            Content 3
+        </wje-step>
+    </wje-stepper>
+  );
+}
+export default Example;
+```
