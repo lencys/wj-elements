@@ -2503,7 +2503,7 @@
     {
       "filePath": "src/components/chip/chip.tsx",
       "encapsulation": "shadow",
-      "tag": "wje-chip",
+      "tag": "chip",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -6517,7 +6517,7 @@
       }
     },
     {
-      "filePath": "packages/input-file/input-file.js",
+      "filePath": "src/components/input-file/input-file.tsx",
       "encapsulation": "shadow",
       "tag": "input-file",
       "docs": "This element represents the input for the files.",
@@ -6603,7 +6603,7 @@
       }
     },
     {
-      "filePath": "packages/item/item.tsx",
+      "filePath": "src/components/item/item.tsx",
       "encapsulation": "shadow",
       "tag": "item",
       "docs": "An `Item` is a custom web component that represents an item.",
@@ -11829,102 +11829,802 @@
       "dependencyGraph": {}
     },
     {
-      "filePath": "src/components/tab/tab.tsx",
+      "filePath": "src/components/status/status.tsx",
       "encapsulation": "shadow",
-      "tag": "tab",
-      "docs": "",
-      "docsTags": [],
+      "tag": "status",
+      "docs": "This class represents the Status element, extending the WJElement class.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "This class represents the Status element, extending the WJElement class."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/status"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "Augment",
+          "text": "WJElement"
+        },
+        {
+          "name": "slot",
+          "text": "- Main content of the status."
+        },
+        {
+          "name": "slot",
+          "text": "start - Content at the beginning of the status."
+        },
+        {
+          "name": "slot",
+          "text": "end - Content at the end of the status."
+        },
+        {
+          "name": "csspart",
+          "text": "native - Native part of the status."
+        },
+        {
+          "name": "csspart",
+          "text": "bullet - Part of the status dot."
+        }
+      ],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Main content of the status."
+        },
+        {
+          "name": "start",
+          "docs": "Content at the beginning of the status."
+        },
+        {
+          "name": "end",
+          "docs": "Content at the end of the status."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Native part of the status."
+        },
+        {
+          "name": "bullet",
+          "docs": "Part of the status dots."
+        }
+      ],
+      "dependents": [],
+      "dependencies": [
+        "WJElement"
+      ],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/stepper/stepper.tsx",
+      "encapsulation": "shadow",
+      "tag": "stepper",
+      "docs": "The `Stepper` component is a custom web component that represents a step navigator (stepper) for multi-step processes. It allows to navigate between steps, displays the status of steps (active, completed, locked) and provides navigation buttons.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "This element represents the step navigator (stepper)."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/stepper"
+        },
+        {
+          "name": "status",
+          "text": "Stable"
+        },
+        {
+          "name": "Augment",
+          "text": "WJElement"
+        },
+        {
+          "name": "attribute",
+          "text": "{string} active - Active color for stepper."
+        },
+        {
+          "name": "attribute",
+          "text": "{string} done - The color for the completed step."
+        },
+        {
+          "name": "slot",
+          "text": "Default slot for stepper steps."
+        },
+        {
+          "name": "csspart",
+          "text": "native - Native part of the stepper."
+        },
+        {
+          "name": "csspart",
+          "text": "header - Stepper header."
+        },
+        {
+          "name": "csspart",
+          "text": "content - The content of the stepper."
+        }
+      ],
       "usage": {},
       "props": [
         {
           "name": "active",
-          "type": "boolean",
+          "type": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
           "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
+            "original": "Color",
+            "resolved": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+            "references": {
+              "Color": {
+                "location": "import",
+                "path": "../../interface",
+                "id": "src/interface.d.ts::Color"
+              }
+            }
           },
           "mutable": false,
           "attr": "active",
-          "reflectToAttr": false,
-          "docs": "If `true`, the tab will be open.",
+          "reflectToAttr": true,
+          "docs": "The step color you want to use from your application's color palette.\nThe default options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nSee [theming](/theming/basics) for more information on colors.",
           "docsTags": [],
-          "default": "false",
+          "default": "primary",
           "values": [
             {
-              "type": "boolean"
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "dark",
+              "type": "string"
+            },
+            {
+              "value": "light",
+              "type": "string"
+            },
+            {
+              "value": "medium",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "secondary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "tertiary",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            },
+            {
+              "type": "String & Record<never, never>"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         },
         {
-          "name": "panel",
-          "type": "any",
+          "name": "done",
+          "type": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
           "complexType": {
-            "original": "any",
-            "resolved": "any",
-            "references": {}
+            "original": "Color",
+            "resolved": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+            "references": {
+              "Color": {
+                "location": "import",
+                "path": "../../interface",
+                "id": "src/interface.d.ts::Color"
+              }
+            }
           },
           "mutable": false,
-          "attr": "panel",
-          "reflectToAttr": false,
-          "docs": "The identifier of the panel name that appears when you click on the tab.",
+          "attr": "done",
+          "reflectToAttr": true,
+          "docs": "The color of the step after finishing that you want to use from the color palette of your application.\nThe default options are `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nSee [theming](/theming/basics) for more information on colors.",
           "docsTags": [],
-          "default": "undefined",
+          "default": "success",
           "values": [
             {
-              "type": "any"
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "dark",
+              "type": "string"
+            },
+            {
+              "value": "light",
+              "type": "string"
+            },
+            {
+              "value": "medium",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "secondary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "tertiary",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            },
+            {
+              "type": "String & Record<never, never>"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
-          "required": true
+          "optional": true,
+          "required": false
         }
       ],
       "methods": [
         {
-          "name": "setActive",
-          "returns": {
-            "type": "Promise<void>",
-            "docs": ""
-          },
+          "name": "navigate",
+          "returns": "void",
           "complexType": {
-            "signature": "() => Promise<void>",
-            "parameters": [],
-            "references": {
-              "Promise": {
-                "location": "global",
-                "id": "global::Promise"
-              }
-            },
-            "return": "Promise<void>"
+            "original": "(direction: number) => void",
+            "resolved": "(direction: number) => void",
+            "references": {}
           },
-          "signature": "setActive() => Promise<void>",
-          "parameters": [],
-          "docs": "Set the active component for the tab",
+          "signature": "navigate(direction: number): void",
+          "parameters": [
+            {
+              "name": "direction",
+              "type": "number",
+              "docs": "Navigation direction. Positive number for the next step, negative for the previous step."
+            }
+          ],
+          "docs": "Navigates to a different step in the process according to the specified direction.",
+          "docsTags": []
+        },
+        {
+          "name": "goToStep",
+          "returns": "void",
+          "complexType": {
+            "original": "(stepIndex: number) => void",
+            "resolved": "(stepIndex: number) => void",
+            "references": {}
+          },
+          "signature": "goToStep(stepIndex: number): void",
+          "parameters": [
+            {
+              "name": "stepIndex",
+              "type": "number",
+              "docs": "The index of the step to move to."
+            }
+          ],
+          "docs": "Goes to a specific step and updates the stepper UI.",
+          "docsTags": []
+        },
+        {
+          "name": "setStepDefault",
+          "returns": "void",
+          "complexType": {
+            "original": "(nav: HTMLElement, badge?: HTMLElement | null, stepIndex?: number) => void",
+            "resolved": "(nav: HTMLElement, badge?: HTMLElement | null, stepIndex?: number) => void",
+            "references": {
+              "HTMLElement": {
+                "location": "global"
+              }
+            }
+          },
+          "signature": "setStepDefault(nav: HTMLElement, badge?: HTMLElement | null, stepIndex?: number): void",
+          "parameters": [
+            {
+              "name": "No",
+              "type": "HTMLElement",
+              "docs": "A navigation element representing a step."
+            },
+            {
+              "name": "badge",
+              "type": "HTMLElement | null",
+              "docs": "Element badge in step. If it is not specified, it is selected from nav."
+            },
+            {
+              "name": "stepIndex",
+              "type": "number",
+              "docs": "Step index for display in badge."
+            }
+          ],
+          "docs": "Resets the step to the default state, removing active and completed attributes.",
+          "docsTags": []
+        },
+        {
+          "name": "setStepActive",
+          "returns": "void",
+          "complexType": {
+            "original": "(nav: HTMLElement, badge?: HTMLElement | null, stepIndex?: number | null) => void",
+            "resolved": "(nav: HTMLElement, badge?: HTMLElement | null, stepIndex?: number | null) => void",
+            "references": {
+              "HTMLElement": {
+                "location": "global"
+              }
+            }
+          },
+          "signature": "setStepActive(nav: HTMLElement, badge?: HTMLElement | null, stepIndex?: number | null): void",
+          "parameters": [
+            {
+              "name": "No",
+              "type": "HTMLElement",
+              "docs": "A navigation element representing the active step."
+            },
+            {
+              "name": "badge",
+              "type": "HTMLElement | null",
+              "docs": "Element badge in step. If it is not specified, it is selected from nav."
+            },
+            {
+              "name": "stepIndex",
+              "type": "number | null",
+              "docs": "Step index for display in badge."
+            }
+          ],
+          "docs": "Sets the step as active and updates the badge.",
+          "docsTags": []
+        },
+        {
+          "name": "setContentActive",
+          "returns": "void",
+          "complexType": {
+            "original": "(stepIndex: number) => void",
+            "resolved": "(stepIndex: number) => void",
+            "references": {}
+          },
+          "signature": "setContentActive(stepIndex: number): void",
+          "parameters": [
+            {
+              "name": "stepIndex",
+              "type": "number",
+              "docs": "The index of the step whose content is to be displayed."
+            }
+          ],
+          "docs": "Displays the contents of the selected step and hides the others.",
+          "docsTags": []
+        },
+        {
+          "name": "setStepDone",
+          "returns": "void",
+          "complexType": {
+            "original": "(nav: HTMLElement, badge?: HTMLElement | null) => void",
+            "resolved": "(nav: HTMLElement, badge?: HTMLElement | null) => void",
+            "references": {
+              "HTMLElement": {
+                "location": "global"
+              }
+            }
+          },
+          "signature": "setStepDone(nav: HTMLElement, badge?: HTMLElement | null): void",
+          "parameters": [
+            {
+              "name": "No",
+              "type": "HTMLElement",
+              "docs": "A navigation element representing a completed step."
+            },
+            {
+              "name": "badge",
+              "type": "HTMLElement | null",
+              "docs": "Element badge in step. If it is not specified, it is selected from nav."
+            }
+          ],
+          "docs": "Marks the step as complete and updates the badge with the icon.",
+          "docsTags": []
+        },
+        {
+          "name": "setStepLocked",
+          "returns": "void",
+          "complexType": {
+            "original": "(nav: HTMLElement, badge?: HTMLElement | null) => void",
+            "resolved": "(nav: HTMLElement, badge?: HTMLElement | null) => void",
+            "references": {
+              "HTMLElement": {
+                "location": "global"
+              }
+            }
+          },
+          "signature": "setStepLocked(nav: HTMLElement, badge?: HTMLElement | null): void",
+          "parameters": [
+            {
+              "name": "No",
+              "type": "HTMLElement",
+              "docs": "A navigation element representing a locked step."
+            },
+            {
+              "name": "badge",
+              "type": "HTMLElement | null",
+              "docs": "Element badge in step. If it is not specified, it is selected from nav."
+            }
+          ],
+          "docs": "Marks the step as locked and updates the badge with the lock icon.",
           "docsTags": []
         }
       ],
       "events": [
         {
-          "event": "wj:tab-change",
-          "detail": "{ tab: string; }",
-          "bubbles": false,
-          "complexType": {
-            "original": "{ tab: string }",
-            "resolved": "{ tab: string; }",
-            "references": {}
-          },
-          "cancelable": true,
+          "event": "stepper:next",
+          "bubbles": true,
+          "cancelable": false,
           "composed": true,
-          "docs": "Called up when the slider value is changed.",
-          "docsTags": []
+          "docs": "It is transmitted when moving to the next step.",
+          "detail": {
+            "stepIndex": "New Step Index."
+          }
+        },
+        {
+          "event": "stepper:prev",
+          "bubbles": true,
+          "cancelable": false,
+          "composed": true,
+          "docs": "It is transmitted when returning to the previous step.",
+          "detail": {
+            "stepIndex": "New Step Index."
+          }
+        },
+        {
+          "event": "stepper:finish",
+          "bubbles": true,
+          "cancelable": false,
+          "composed": true,
+          "docs": "It is transmitted after the last step is completed.",
+          "detail": {
+            "stepIndex": "Last Step Index."
+          }
         }
       ],
+      "listeners": [
+        {
+          "event": "click",
+          "target": "prev",
+          "capture": false,
+          "passive": false,
+          "docs": "Click on the button of the previous step."
+        },
+        {
+          "event": "click",
+          "target": "next",
+          "capture": false,
+          "passive": false,
+          "docs": "Click the next step button."
+        },
+        {
+          "event": "click",
+          "target": "finish",
+          "capture": false,
+          "passive": false,
+          "docs": "Click on the finish button."
+        }
+      ],
+      "styles": [
+        {
+          "name": "--wje-stepper-justify",
+          "annotation": "prop",
+          "docs": "Alignment of the step header (header)."
+        },
+        {
+          "name": "--wje-stepper-grow",
+          "annotation": "prop",
+          "docs": "Flex-grow for each step in the header."
+        },
+        {
+          "name": "--wje-stepper-margin",
+          "annotation": "prop",
+          "docs": "Indentation for the arrow icon between steps."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Default slot for stepper steps."
+        },
+        {
+          "name": "prev",
+          "docs": "Slot for the custom button of the previous step."
+        },
+        {
+          "name": "next",
+          "docs": "Slot for custom next step button."
+        },
+        {
+          "name": "finish",
+          "docs": "Slot for custom completion button."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Native part of the stepper."
+        },
+        {
+          "name": "header",
+          "docs": "The head of a tap dancer."
+        },
+        {
+          "name": "content",
+          "docs": "Stepper Contents."
+        }
+      ],
+      "dependents": [],
+      "dependencies": [
+        "WJElement",
+        "wje-badge",
+        "wje-icon",
+        "wje-button"
+      ],
+      "dependencyGraph": {
+        "wje-stepper": [
+          "WJElement",
+          "wje-badge",
+          "wje-icon",
+          "wje-button"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/step/step.tsx",
+      "encapsulation": "shadow",
+      "tag": "step",
+      "docs": "The wje-step element represents one step within the stepper component. It allows you to insert custom content for a specific step.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "This element represents one step in the stepper."
+        }
+      ],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
       "listeners": [],
       "styles": [],
-      "slots": [],
-      "parts": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The default slot for the step content."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Refers to the main `div` of the step element."
+        }
+      ],
+      "dependents": [],
+      "dependencies": [
+        "WJElement"
+      ],
+      "dependencyGraph": {
+        "wje-step": [
+          "WJElement"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/tab/tab.tsx",
+      "encapsulation": "shadow",
+      "tag": "tab",
+      "docs": "A custom web component representing a bookmark.",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "panel",
+          "type": "string",
+          "docs": "The name of the panel to which the tab is assigned."
+        },
+        {
+          "name": "route",
+          "type": "string",
+          "docs": "The path (route) that is navigated to when clicked."
+        },
+        {
+          "name": "last",
+          "type": "boolean",
+          "docs": "Indicates whether this is the last tab."
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "name": "wje-tab:change",
+          "docs": "Called when a tab is clicked, indicating a tab change."
+        }
+      ],
+      "listeners": [
+        {
+          "event": "click",
+          "handler": "wje-tab:change",
+          "target": "this",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [
+        {
+          "name": "--wje-tab-text-transform",
+          "default": "uppercase",
+          "docs": "The transformation of taboo text."
+        },
+        {
+          "name": "--wje-tab-font-weight",
+          "default": "500",
+          "docs": "Font thickness of the taboo text."
+        },
+        {
+          "name": "--wje-tab-letter-spacing",
+          "default": "0.06em",
+          "docs": "Spaces between characters in tab text."
+        },
+        {
+          "name": "--wje-tab-padding-inline",
+          "default": "1rem",
+          "docs": "Horizontal indentation of tab content."
+        },
+        {
+          "name": "--wje-tab-padding-top",
+          "default": ".75rem",
+          "docs": "Vertical offset at the top."
+        },
+        {
+          "name": "--wje-tab-padding-bottom",
+          "default": ".75rem",
+          "docs": "Vertical indentation down."
+        },
+        {
+          "name": "--wje-tab-color-active",
+          "default": "var(--wje-color-primary-11)",
+          "docs": "Text color of the active tab element."
+        },
+        {
+          "name": "--wje-tab-color-hover",
+          "default": "var(--wje-color-primary-1)",
+          "docs": "Text colour when mouseover."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The default tab content slot."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "It refers to `a` taboo element."
+        }
+      ],
+      "dependents": [],
+      "dependencies": [
+        "wje-element",
+        "slick-router"
+      ],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/tab-group/tab-group.tsx",
+      "encapsulation": "shadow",
+      "tag": "tab-group",
+      "docs": "A component that displays a group of tabs (bookmarks) with different placement options.",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "Option",
+          "type": "\"top\" | \"bottom\" | \"start\" | \"end\"",
+          "complexType": {
+            "original": "string",
+            "resolved": "\"top\" | \"bottom\" | \"start\" | \"end\"",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "Option",
+          "reflectToAttr": false,
+          "docs": "Bookmark location: `top`, `bottom`, `start` or `end`.",
+          "docsTags": [],
+          "default": "'top'",
+          "values": [
+            {
+              "value": "top",
+              "type": "string"
+            },
+            {
+              "value": "bottom",
+              "type": "string"
+            },
+            {
+              "value": "start",
+              "type": "string"
+            },
+            {
+              "value": "end",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [
+        {
+          "name": "--wje-tab-top",
+          "annotation": "prop",
+          "docs": "Distance of the tabs from the top edge."
+        },
+        {
+          "name": "--wje-tab-start",
+          "annotation": "prop",
+          "docs": "Distance of the tabs from the left edge."
+        },
+        {
+          "name": "--wje-tab-end",
+          "annotation": "prop",
+          "docs": "Distance of the tabs from the right edge."
+        },
+        {
+          "name": "--wje-tab-bottom",
+          "annotation": "prop",
+          "docs": "Distance of the tabs from the bottom edge."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The default content slot for the tab group."
+        },
+        {
+          "name": "No",
+          "docs": "Slot for the bookmarks navigation bar."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Refers to the main enveloping div element."
+        },
+        {
+          "name": "panels",
+          "docs": "Refers to the container containing all tab-panels in the group."
+        },
+        {
+          "name": "tabs",
+          "docs": "Refers to the container containing all the tabs in the group."
+        }
+      ],
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
@@ -11933,540 +12633,320 @@
       "filePath": "src/components/tab-panel/tab-panel.tsx",
       "encapsulation": "shadow",
       "tag": "tab-panel",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
+      "docs": "A custom web component representing a tab bar (bookmarks).",
+      "docsTags": [
         {
-          "name": "panel",
-          "type": "any",
-          "complexType": {
-            "original": "any",
-            "resolved": "any",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "panel",
-          "reflectToAttr": false,
-          "docs": "It serves as an identifier for the `\"name\"` attribute of the `Tab` element.",
-          "docsTags": [],
-          "default": "undefined",
-          "values": [
-            {
-              "type": "any"
-            }
-          ],
-          "optional": false,
-          "required": true
+          "name": "Summary",
+          "text": "This element represents the tab bar."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/tab-panel"
+        },
+        {
+          "name": "status",
+          "text": "Stable"
+        },
+        {
+          "name": "Augment",
+          "text": "WJElement"
+        },
+        {
+          "name": "slot",
+          "text": "The default slot for panel content."
+        },
+        {
+          "name": "tag",
+          "text": "wje-tab-panel"
         }
       ],
+      "usage": {},
+      "props": [],
       "methods": [],
       "events": [],
       "listeners": [],
       "styles": [],
-      "slots": [],
-      "parts": [
-        {
-          "name": "",
-          "docs": "Default location for the element content."
-        }
-      ],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
-      "filePath": "src/components/tab-group/tab-group.tsx",
-      "encapsulation": "shadow",
-      "tag": "tab-group",
-      "docs": "",
-      "docsTags": [
-        {
-          "name": "slot",
-          "text": "nav - The content is placed in the `nav` element."
-        }
-      ],
-      "usage": {},
-      "props": [
-        {
-          "name": "Option",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "Option",
-          "reflectToAttr": false,
-          "docs": "Defines a variant of the TabGroup layout. Possible values include `start`, `end` and `bottom`.",
-          "docsTags": [],
-          "default": "undefined",
-          "values": [
-            {
-              "value": "bottom",
-              "type": "string"
-            },
-            {
-              "value": "end",
-              "type": "string"
-            },
-            {
-              "value": "start",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": true
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [
-        {
-          "name": "--wj-font-size",
-          "annotation": "prop",
-          "docs": "Specifies the font size."
-        },
-        {
-          "name": "--wj-tab-color-active",
-          "annotation": "prop",
-          "docs": "Specifies the background color of the active tab element."
-        },
-        {
-          "name": "--wj-tab-color-hover",
-          "annotation": "prop",
-          "docs": "Determines the background color of the tab element when the mouse is pointed to it."
-        },
-        {
-          "name": "--wj-tab-font-weight",
-          "annotation": "prop",
-          "docs": "Sets the font weight."
-        },
-        {
-          "name": "--wj-tab-letter-spacing",
-          "annotation": "prop",
-          "docs": "Sets the distance between letters."
-        },
-        {
-          "name": "--wj-tab-padding-bottom",
-          "annotation": "prop",
-          "docs": "Specifies the bottom tab offset."
-        },
-        {
-          "name": "--wj-tab-padding-inline",
-          "annotation": "prop",
-          "docs": "Specifies the horizontal offset of the tab."
-        },
-        {
-          "name": "--wj-tab-padding-top",
-          "annotation": "prop",
-          "docs": "Specifies the top tab offset."
-        },
-        {
-          "name": "--wj-tab-text-transfrom",
-          "annotation": "prop",
-          "docs": "Sets the transformation of the text in the tab."
-        }
-      ],
       "slots": [
         {
-          "name": "No",
-          "docs": "The content is placed in the `nav` element."
+          "name": "",
+          "docs": "The default slot for panel content."
         }
       ],
       "parts": [],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "wje-element"
+      ],
+      "dependencyGraph": {
+        "wje-tab-panel": [
+          "wje-element"
+        ]
+      }
     },
     {
       "filePath": "src/components/textarea/textarea.tsx",
-      "encapsulation": "scoped",
+      "encapsulation": "shadow",
       "tag": "textarea",
-      "docs": "",
+      "docs": "A textarea is a custom web component that represents the input field of a textarea.",
       "docsTags": [
         {
-          "name": "virtualProp",
-          "text": "{ \"ios\". | \"md\"} mode - The mode determines which platform styles to use."
+          "name": "Summary",
+          "text": "This element represents the input field of the textarea."
         },
         {
-          "name": "slot",
-          "text": "label - The label text to associate with the textarea. Use the `labelPlacement` property to control where the label is placed relative to the textarea. Use this if you need to render a label with custom HTML. (EXPERIMENTAL)"
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/textarea"
         },
         {
-          "name": "slot",
-          "text": "start - Content to display at the leading edge of the textarea. (EXPERIMENTAL)"
+          "name": "status",
+          "text": "stable"
         },
         {
-          "name": "slot",
-          "text": "end - Content to display at the trailing edge of the textarea. (EXPERIMENTAL)"
+          "name": "Augment",
+          "text": "WJElement"
+        },
+        {
+          "name": "csspart",
+          "text": "native - Cover of native textarea."
+        },
+        {
+          "name": "csspart",
+          "text": "input - Input textarea element."
+        },
+        {
+          "name": "csspart",
+          "text": "wrapper - The wrapper of the input field."
         }
       ],
       "usage": {},
       "props": [
         {
-          "name": "counter",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "counter",
+          "name": "value",
+          "type": "string",
+          "mutable": true,
+          "attr": "value",
           "reflectToAttr": false,
-          "docs": "If `true`, adds a counter below the element showing the number of characters inserted and also the maximum number allowed.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
+          "docs": "Textarea value."
         },
         {
           "name": "disabled",
           "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
+          "mutable": true,
           "attr": "disabled",
-          "reflectToAttr": false,
-          "docs": "If `true`, the textarea will not be writable.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
+          "reflectToAttr": true,
+          "docs": "Indicates whether the input is invalid."
         },
         {
-          "name": "label",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "label",
-          "reflectToAttr": false,
-          "docs": "Defines the text description for the textarea element.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "maxlength",
-          "type": "number | undefined",
-          "complexType": {
-            "original": "number",
-            "resolved": "number | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "maxlength",
-          "reflectToAttr": false,
-          "docs": "Sets the maximum number of characters allowed. Used in conjunction with the `counter` attribute.",
-          "docsTags": [],
-          "default": "1000",
-          "values": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "name",
+          "name": "placeholder",
           "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
           "mutable": false,
-          "attr": "name",
+          "attr": "placeholder",
           "reflectToAttr": false,
-          "docs": "Sets the name attribute of the inner textarea of the element. This is important, for example, when used in forms.",
-          "docsTags": [],
-          "default": "this.inputId",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "resize",
-          "type": "\"car\"",
-          "complexType": {
-            "original": "\"car\"",
-            "resolved": "\"car\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "resize",
-          "reflectToAttr": false,
-          "docs": "Defines the behavior of element resizing. If it is set to `\"auto\"`, the element size is automatically adjusted to the content.",
-          "docsTags": [],
-          "default": "undefined",
-          "values": [
-            {
-              "value": "auto",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
+          "docs": "A placeholder text in textarea."
         },
         {
           "name": "rows",
-          "type": "number | undefined",
-          "complexType": {
-            "original": "number",
-            "resolved": "number | undefined",
-            "references": {}
-          },
+          "type": "number",
           "mutable": false,
           "attr": "rows",
           "reflectToAttr": false,
-          "docs": "Defines the number of visible lines of text in the element.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false
+          "docs": "Number of lines of textarea."
         },
         {
           "name": "spellcheck",
           "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
           "mutable": false,
           "attr": "spellcheck",
           "reflectToAttr": false,
-          "docs": "If `true`, spell checking will be activated in textarea.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
+          "docs": "If `true`, the spell checker will be enabled in textarea."
         },
         {
-          "name": "Option",
+          "name": "resize",
           "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "Option",
+          "mutable": false,
+          "attr": "resize",
           "reflectToAttr": false,
-          "docs": "Setting it to `\"standard\"` will display a textarea in the style of the standard HTML textarea element.",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "value": "standard",
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false
+          "docs": "Resize mode (`auto` or `none`)."
+        },
+        {
+          "name": "counter",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "counter",
+          "reflectToAttr": false,
+          "docs": "If `true`, the character counter is displayed."
+        },
+        {
+          "name": "maxLength",
+          "type": "number",
+          "mutable": false,
+          "attr": "maxLength",
+          "reflectToAttr": false,
+          "docs": "Maximum number of characters."
         }
       ],
-      "methods": [],
+      "methods": [
+        {
+          "name": "setTextareaHeight",
+          "signature": "() => void",
+          "docs": "Sets the height of the textarea when automatically resized."
+        },
+        {
+          "name": "counterFn",
+          "signature": "(e: Event) => void",
+          "docs": "Updates the character counter."
+        },
+        {
+          "name": "validateInput",
+          "signature": "() => void",
+          "docs": "Validates the input and sets errors."
+        },
+        {
+          "name": "propagateValidation",
+          "signature": "() => void",
+          "docs": "Propagates the validation state and raises the `invalid` event."
+        },
+        {
+          "name": "formAssociatedCallback",
+          "signature": "(form: HTMLFormElement) => void",
+          "docs": "Callback when connected to the form - connects submission and validation."
+        },
+        {
+          "name": "formResetCallback",
+          "signature": "() => void",
+          "docs": "Form reset callback - restores the default value."
+        },
+        {
+          "name": "formStateRestoreCallback",
+          "signature": "(state: any) => void",
+          "docs": "Callback on status restore - restores the saved value and validity."
+        },
+        {
+          "name": "formStateSaveCallback",
+          "signature": "() => any",
+          "docs": "Callback when saving state - returns the current value."
+        }
+      ],
       "events": [
         {
-          "event": "blur",
-          "detail": "FocusEvent",
-          "bubbles": true,
-          "complexType": {
-            "original": "FocusEvent",
-            "resolved": "FocusEvent",
-            "references": {
-              "FocusEvent": {
-                "location": "global",
-                "id": "global::FocusEvent"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Fired when an element loses focus.",
-          "docsTags": []
+          "name": "wje-textarea:change",
+          "docs": "The event of change (classic `change`)."
         },
         {
-          "event": "wj:textarea:change",
-          "detail": "TextareaChangeEventDetail",
-          "bubbles": true,
-          "complexType": {
-            "original": "TextareaChangeEventDetail",
-            "resolved": "TextareaChangeEventDetail",
-            "references": {
-              "TextareaChangeEventDetail": {
-                "location": "import",
-                "path": "./textarea-interface",
-                "id": "src/components/textarea/textarea-interface.ts::TextareaChangeEventDetail"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "It is invoked after a change in textarea.",
-          "docsTags": []
+          "name": "wje-textarea:input",
+          "docs": "Character input event (`input`)."
         },
         {
-          "event": "focus",
-          "detail": "FocusEvent",
-          "bubbles": true,
-          "complexType": {
-            "original": "FocusEvent",
-            "resolved": "FocusEvent",
-            "references": {
-              "FocusEvent": {
-                "location": "global",
-                "id": "global::FocusEvent"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Called when the element gets focus.",
-          "docsTags": []
-        },
-        {
-          "event": "wj:textarea:input",
-          "detail": "TextareaInputEventDetail",
-          "bubbles": true,
-          "complexType": {
-            "original": "TextareaInputEventDetail",
-            "resolved": "TextareaInputEventDetail",
-            "references": {
-              "TextareaInputEventDetail": {
-                "location": "import",
-                "path": "./textarea-interface",
-                "id": "src/components/textarea/textarea-interface.ts::TextareaInputEventDetail"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "The `ionInput` event is fired each time the user modifies the textarea's value.\nUnlike the `ionChange` event, the `ionInput` event is fired for each alteration\nto the textarea's value. This typically happens for each keystroke as the user types.\n\nWhen `clearOnEdit` is enabled, the `ionInput` event will be fired when\nthe user clears the textarea by performing a keydown event.",
-          "docsTags": []
+          "name": "disabled",
+          "docs": "Invalid entry event."
         }
       ],
-      "listeners": [],
+      "listeners": [
+        {
+          "name": "click",
+          "target": "",
+          "docs": "Sending custom events `wje-textarea:change` and `wje-textarea:input`."
+        },
+        {
+          "name": "disabled",
+          "target": "",
+          "docs": "Captures the invalid form and displays the message."
+        }
+      ],
       "styles": [
         {
-          "name": "--wj-textarea-background-color",
-          "annotation": "prop",
-          "docs": "Sets the background color of the element."
+          "name": "--wje-textarea-font-family",
+          "docs": "A family of fonts used in textarea.",
+          "default": "var(--wje-font-family)"
         },
         {
-          "name": "--wj-textarea-border-color",
-          "annotation": "prop",
-          "docs": "Sets the color of the edges of the element."
+          "name": "--wje-textarea-background-color",
+          "docs": "Background textarea.",
+          "default": "var(--wje-background)"
         },
         {
-          "name": "--wj-textarea-border-color-focus",
-          "annotation": "prop",
-          "docs": "Sets the color of the edges when the photo is taken."
+          "name": "--wje-textarea-color",
+          "docs": "Text color in textarea.",
+          "default": "var(--wje-color)"
         },
         {
-          "name": "--wj-textarea-border-radius",
-          "annotation": "prop",
-          "docs": "Adjusts the rounding of the element edges."
+          "name": "--wje-textarea-border-width",
+          "docs": "Frame width textarea.",
+          "default": "1px"
         },
         {
-          "name": "--wj-textarea-border-style",
-          "annotation": "prop",
-          "docs": "Sets the element's border style."
+          "name": "--wje-textarea-border-style",
+          "docs": "Textarea frame style.",
+          "default": "solid"
         },
         {
-          "name": "--wj-textarea-border-width",
-          "annotation": "prop",
-          "docs": "Sets the width of the element edges."
+          "name": "--wje-textarea-border-color",
+          "docs": "Frame colour textarea.",
+          "default": "var(--wje-border-color)"
         },
         {
-          "name": "--wj-textarea-color",
-          "annotation": "prop",
-          "docs": "Sets the text color of the element."
+          "name": "--wje-textarea-border-color-focus",
+          "docs": "Frame colour at focus.",
+          "default": "var(--wje-color-primary)"
         },
         {
-          "name": "--wj-textarea-color-invalid",
-          "annotation": "prop",
-          "docs": "Sets the text color on error."
+          "name": "--wje-textarea-border-radius",
+          "docs": "The radius of roundness of the corners of the textarea.",
+          "default": "var(--wje-border-radius-medium)"
         },
         {
-          "name": "--wj-textarea-font-family",
-          "annotation": "prop",
-          "docs": "Sets the font of the element."
+          "name": "--wje-textarea-color-invalid",
+          "docs": "Text color for invalid input.",
+          "default": "var(--wje-color-danger)"
         },
         {
-          "name": "--wj-textarea-line-height",
-          "annotation": "prop",
-          "docs": "Sets the height of the element row."
+          "name": "--wje-textarea-margin-bottom",
+          "docs": "Offsetting the bottom of the textarea.",
+          "default": "var(--wje-spacing-x-small)"
         },
         {
-          "name": "--wj-textarea-margin-bottom",
-          "annotation": "prop",
-          "docs": "Sets the lower outer offset of the element."
+          "name": "--wje-textarea-padding",
+          "docs": "Inner textarea indentation space.",
+          "default": "--wje-spacing-x-small"
         },
         {
-          "name": "--wj-textarea-padding",
-          "annotation": "prop",
-          "docs": "Sets the internal offset of the element."
+          "name": "--wje-textarea-line-height",
+          "docs": "The height of the line of text.",
+          "default": "20px"
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Default content slot (text)."
+        },
+        {
+          "name": "start",
+          "docs": "Slot for the first slotted element (e.g. the icon on the left)."
+        },
+        {
+          "name": "end",
+          "docs": "Slot for the second slotted element (e.g. the icon on the right)."
+        }
+      ],
       "parts": [
         {
+          "name": "native",
+          "docs": "Cover of native textarea."
+        },
+        {
+          "name": "wrapper",
+          "docs": "Input field packaging."
+        },
+        {
           "name": "input",
-          "docs": "Refers to the `textarea` element inside the element."
+          "docs": "Custom textarea element."
         }
       ],
       "dependents": [],
-      "dependencies": [],
+      "dependencies": [
+        "WJElement"
+      ],
       "dependencyGraph": {}
     },
     {

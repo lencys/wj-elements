@@ -2499,7 +2499,7 @@
       {
       "filePath": "src/components/chip/chip.tsx",
       "encapsulation": "shadow",
-      "tag": "wje-chip",
+      "tag": "chip",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -6459,7 +6459,7 @@
       }
     },
     {
-      "filePath": "packages/input-file/input-file.js",
+      "filePath": "src/components/input-file/input-file.tsx",
       "encapsulation": "shadow",
       "tag": "input-file",
       "docs": "Tento element predstavuje vstup pre súbory.",
@@ -6539,7 +6539,7 @@
       }
     },
     {
-      "filePath": "packages/item/item.tsx",
+      "filePath": "src/components/item/item.tsx",
       "encapsulation": "shadow",
       "tag": "item",
       "docs": "`Item` je vlastný webový komponent, ktorý predstavuje položku.",
@@ -11677,102 +11677,715 @@
       "dependencyGraph": {}
     },
     {
-      "filePath": "src/components/tab/tab.tsx",
+      "filePath": "src/components/status/status.tsx",
       "encapsulation": "shadow",
-      "tag": "tab",
-      "docs": "",
-      "docsTags": [],
+      "tag": "status",
+      "docs": "Táto trieda reprezentuje element Status, rozširujúci triedu WJElement.",
+      "docsTags": [
+        { "name": "summary", "text": "Táto trieda reprezentuje element Status, rozširujúci triedu WJElement." },
+        { "name": "documentation", "text": "https://elements.webjet.sk/components/status" },
+        { "name": "status", "text": "stable" },
+        { "name": "augments", "text": "WJElement" },
+        { "name": "slot", "text": "- Hlavný obsah statusu." },
+        { "name": "slot", "text": "start - Obsah na začiatku statusu." },
+        { "name": "slot", "text": "end - Obsah na konci statusu." },
+        { "name": "csspart", "text": "native - Natívna časť statusu." },
+        { "name": "csspart", "text": "bullet - Časť bodky statusu." }
+      ],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Hlavný obsah statusu."
+        },
+        { "name": "start", "docs": "Obsah na začiatku statusu." },
+        { "name": "end", "docs": "Obsah na konci statusu." }
+      ],
+      "parts": [
+        { "name": "native", "docs": "Natívna časť statusu." },
+        { "name": "bullet", "docs": "Časť bodky statusu." }
+      ],
+      "dependents": [],
+      "dependencies": ["WJElement"],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/stepper/stepper.tsx",
+      "encapsulation": "shadow",
+      "tag": "stepper",
+      "docs": "Komponent `Stepper` je vlastný webový komponent, ktorý reprezentuje krokový navigátor (stepper) pre viacstupňové procesy. Umožňuje prechádzať medzi jednotlivými krokmi, zobrazuje stav krokov (aktívny, dokončený, zamknutý) a poskytuje navigačné tlačidlá.",
+      "docsTags": [
+        { "name": "summary", "text": "Tento element reprezentuje krokový navigátor (stepper)." },
+        { "name": "documentation", "text": "https://elements.webjet.sk/components/stepper" },
+        { "name": "status", "text": "stabilný" },
+        { "name": "augments", "text": "WJElement" },
+        { "name": "attribute", "text": "{string} active - Aktívna farba pre stepper." },
+        { "name": "attribute", "text": "{string} done - Farba pre dokončený krok." },
+        { "name": "slot", "text": "Predvolený slot pre kroky steppera." },
+        { "name": "csspart", "text": "native - Natívna časť steppera." },
+        { "name": "csspart", "text": "header - Hlavička steppera." },
+        { "name": "csspart", "text": "content - Obsah steppera." }
+      ],
       "usage": {},
       "props": [
         {
           "name": "active",
-          "type": "boolean",
+          "type": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
           "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
+            "original": "Color",
+            "resolved": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+            "references": {
+              "Color": {
+                "location": "import",
+                "path": "../../interface",
+                "id": "src/interface.d.ts::Color"
+              }
+            }
           },
           "mutable": false,
           "attr": "active",
-          "reflectToAttr": false,
-          "docs": "Ak `true`, tab bude otvorený.",
+          "reflectToAttr": true,
+          "docs": "Farba kroku, ktorú chcete použiť z palety farieb vašej aplikácie.\nPredvolené možnosti sú: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nĎalšie informácie o farbách nájdete v časti [theming](/theming/basics).",
           "docsTags": [],
-          "default": "false",
+          "default": "primary",
           "values": [
             {
-              "type": "boolean"
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "dark",
+              "type": "string"
+            },
+            {
+              "value": "light",
+              "type": "string"
+            },
+            {
+              "value": "medium",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "secondary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "tertiary",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            },
+            {
+              "type": "string & Record<never, never>"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         },
         {
-          "name": "panel",
-          "type": "any",
+          "name": "done",
+          "type": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
           "complexType": {
-            "original": "any",
-            "resolved": "any",
-            "references": {}
+            "original": "Color",
+            "resolved": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+            "references": {
+              "Color": {
+                "location": "import",
+                "path": "../../interface",
+                "id": "src/interface.d.ts::Color"
+              }
+            }
           },
           "mutable": false,
-          "attr": "panel",
-          "reflectToAttr": false,
-          "docs": "Identifikátor názvu panela, ktorý sa zobrazí po kliknutí na tab.",
+          "attr": "done",
+          "reflectToAttr": true,
+          "docs": "Farba kroku po dokončení, ktorú chcete použiť z palety farieb vašej aplikácie.\nPredvolené možnosti sú: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nĎalšie informácie o farbách nájdete v časti [theming](/theming/basics).",
           "docsTags": [],
-          "default": "undefined",
+          "default": "success",
           "values": [
             {
-              "type": "any"
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "dark",
+              "type": "string"
+            },
+            {
+              "value": "light",
+              "type": "string"
+            },
+            {
+              "value": "medium",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "secondary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "tertiary",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            },
+            {
+              "type": "string & Record<never, never>"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
-          "required": true
+          "optional": true,
+          "required": false
         }
       ],
       "methods": [
         {
-          "name": "setActive",
-          "returns": {
-            "type": "Promise<void>",
-            "docs": ""
-          },
+          "name": "navigate",
+          "returns": "void",
           "complexType": {
-            "signature": "() => Promise<void>",
-            "parameters": [],
-            "references": {
-              "Promise": {
-                "location": "global",
-                "id": "global::Promise"
-              }
-            },
-            "return": "Promise<void>"
+            "original": "(direction: number) => void",
+            "resolved": "(direction: number) => void",
+            "references": {}
           },
-          "signature": "setActive() => Promise<void>",
-          "parameters": [],
-          "docs": "Set the active component for the tab",
+          "signature": "navigate(direction: number): void",
+          "parameters": [
+            {
+              "name": "direction",
+              "type": "number",
+              "docs": "Smer navigácie. Kladné číslo pre ďalší krok, záporné pre predchádzajúci."
+            }
+          ],
+          "docs": "Naviguje na iný krok v procese podľa zadaného smeru.",
+          "docsTags": []
+        },
+        {
+          "name": "goToStep",
+          "returns": "void",
+          "complexType": {
+            "original": "(stepIndex: number) => void",
+            "resolved": "(stepIndex: number) => void",
+            "references": {}
+          },
+          "signature": "goToStep(stepIndex: number): void",
+          "parameters": [
+            {
+              "name": "stepIndex",
+              "type": "number",
+              "docs": "Index kroku, na ktorý sa má prejsť."
+            }
+          ],
+          "docs": "Prejde na konkrétny krok a aktualizuje UI stepperu.",
+          "docsTags": []
+        },
+        {
+          "name": "setStepDefault",
+          "returns": "void",
+          "complexType": {
+            "original": "(nav: HTMLElement, badge?: HTMLElement | null, stepIndex?: number) => void",
+            "resolved": "(nav: HTMLElement, badge?: HTMLElement | null, stepIndex?: number) => void",
+            "references": {
+              "HTMLElement": {
+                "location": "global"
+              }
+            }
+          },
+          "signature": "setStepDefault(nav: HTMLElement, badge?: HTMLElement | null, stepIndex?: number): void",
+          "parameters": [
+            {
+              "name": "nav",
+              "type": "HTMLElement",
+              "docs": "Navigačný element reprezentujúci krok."
+            },
+            {
+              "name": "badge",
+              "type": "HTMLElement | null",
+              "docs": "Element badge v kroku. Ak nie je zadaný, vyberie sa z nav."
+            },
+            {
+              "name": "stepIndex",
+              "type": "number",
+              "docs": "Index kroku pre zobrazenie v badge."
+            }
+          ],
+          "docs": "Resetuje krok do východzieho stavu, odstráni aktívne a dokončené atribúty.",
+          "docsTags": []
+        },
+        {
+          "name": "setStepActive",
+          "returns": "void",
+          "complexType": {
+            "original": "(nav: HTMLElement, badge?: HTMLElement | null, stepIndex?: number | null) => void",
+            "resolved": "(nav: HTMLElement, badge?: HTMLElement | null, stepIndex?: number | null) => void",
+            "references": {
+              "HTMLElement": {
+                "location": "global"
+              }
+            }
+          },
+          "signature": "setStepActive(nav: HTMLElement, badge?: HTMLElement | null, stepIndex?: number | null): void",
+          "parameters": [
+            {
+              "name": "nav",
+              "type": "HTMLElement",
+              "docs": "Navigačný element reprezentujúci aktívny krok."
+            },
+            {
+              "name": "badge",
+              "type": "HTMLElement | null",
+              "docs": "Element badge v kroku. Ak nie je zadaný, vyberie sa z nav."
+            },
+            {
+              "name": "stepIndex",
+              "type": "number | null",
+              "docs": "Index kroku pre zobrazenie v badge."
+            }
+          ],
+          "docs": "Nastaví krok ako aktívny a aktualizuje badge.",
+          "docsTags": []
+        },
+        {
+          "name": "setContentActive",
+          "returns": "void",
+          "complexType": {
+            "original": "(stepIndex: number) => void",
+            "resolved": "(stepIndex: number) => void",
+            "references": {}
+          },
+          "signature": "setContentActive(stepIndex: number): void",
+          "parameters": [
+            {
+              "name": "stepIndex",
+              "type": "number",
+              "docs": "Index kroku, ktorého obsah sa má zobraziť."
+            }
+          ],
+          "docs": "Zobrazí obsah vybraného kroku a skryje ostatné.",
+          "docsTags": []
+        },
+        {
+          "name": "setStepDone",
+          "returns": "void",
+          "complexType": {
+            "original": "(nav: HTMLElement, badge?: HTMLElement | null) => void",
+            "resolved": "(nav: HTMLElement, badge?: HTMLElement | null) => void",
+            "references": {
+              "HTMLElement": {
+                "location": "global"
+              }
+            }
+          },
+          "signature": "setStepDone(nav: HTMLElement, badge?: HTMLElement | null): void",
+          "parameters": [
+            {
+              "name": "nav",
+              "type": "HTMLElement",
+              "docs": "Navigačný element reprezentujúci dokončený krok."
+            },
+            {
+              "name": "badge",
+              "type": "HTMLElement | null",
+              "docs": "Element badge v kroku. Ak nie je zadaný, vyberie sa z nav."
+            }
+          ],
+          "docs": "Označí krok ako dokončený a aktualizuje badge s ikonou.",
+          "docsTags": []
+        },
+        {
+          "name": "setStepLocked",
+          "returns": "void",
+          "complexType": {
+            "original": "(nav: HTMLElement, badge?: HTMLElement | null) => void",
+            "resolved": "(nav: HTMLElement, badge?: HTMLElement | null) => void",
+            "references": {
+              "HTMLElement": {
+                "location": "global"
+              }
+            }
+          },
+          "signature": "setStepLocked(nav: HTMLElement, badge?: HTMLElement | null): void",
+          "parameters": [
+            {
+              "name": "nav",
+              "type": "HTMLElement",
+              "docs": "Navigačný element reprezentujúci zamknutý krok."
+            },
+            {
+              "name": "badge",
+              "type": "HTMLElement | null",
+              "docs": "Element badge v kroku. Ak nie je zadaný, vyberie sa z nav."
+            }
+          ],
+          "docs": "Označí krok ako zamknutý a aktualizuje badge s ikonou zámku.",
           "docsTags": []
         }
       ],
       "events": [
         {
-          "event": "wj:tab-change",
-          "detail": "{ tab: string; }",
-          "bubbles": false,
-          "complexType": {
-            "original": "{ tab: string }",
-            "resolved": "{ tab: string; }",
-            "references": {}
-          },
-          "cancelable": true,
+          "event": "stepper:next",
+          "bubbles": true,
+          "cancelable": false,
           "composed": true,
-          "docs": "Vyvolaný sa po zmene hodnoty slidera.",
-          "docsTags": []
+          "docs": "Vysiela sa pri prechode na ďalší krok.",
+          "detail": { "stepIndex": "Index nového kroku." }
+        },
+        {
+          "event": "stepper:prev",
+          "bubbles": true,
+          "cancelable": false,
+          "composed": true,
+          "docs": "Vysiela sa pri návrate na predchádzajúci krok.",
+          "detail": { "stepIndex": "Index nového kroku." }
+        },
+        {
+          "event": "stepper:finish",
+          "bubbles": true,
+          "cancelable": false,
+          "composed": true,
+          "docs": "Vysiela sa po dokončení posledného kroku.",
+          "detail": { "stepIndex": "Index posledného kroku." }
         }
       ],
+      "listeners": [
+        {
+          "event": "click",
+          "target": "prev",
+          "capture": false,
+          "passive": false,
+          "docs": "Kliknutie na tlačidlo predchádzajúceho kroku."
+        },
+        {
+          "event": "click",
+          "target": "next",
+          "capture": false,
+          "passive": false,
+          "docs": "Kliknutie na tlačidlo ďalšieho kroku."
+        },
+        {
+          "event": "click",
+          "target": "finish",
+          "capture": false,
+          "passive": false,
+          "docs": "Kliknutie na tlačidlo dokončenia."
+        }
+      ],
+      "styles": [
+        {
+          "name": "--wje-stepper-justify",
+          "annotation": "prop",
+          "docs": "Zarovnanie hlavičky krokov (header)."
+        },
+        {
+          "name": "--wje-stepper-grow",
+          "annotation": "prop",
+          "docs": "Flex-grow pre jednotlivé kroky v hlavičke."
+        },
+        {
+          "name": "--wje-stepper-margin",
+          "annotation": "prop",
+          "docs": "Odsadenie pre ikonu šípky medzi krokmi."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre kroky steppera."
+        },
+        {
+          "name": "prev",
+          "docs": "Slot pre vlastné tlačidlo predchádzajúceho kroku."
+        },
+        {
+          "name": "next",
+          "docs": "Slot pre vlastné tlačidlo ďalšieho kroku."
+        },
+        {
+          "name": "finish",
+          "docs": "Slot pre vlastné tlačidlo dokončenia."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Natívna časť steppera."
+        },
+        {
+          "name": "header",
+          "docs": "Hlavička steppera."
+        },
+        {
+          "name": "content",
+          "docs": "Obsah steppera."
+        }
+      ],
+      "dependents": [],
+      "dependencies": ["WJElement", "wje-badge", "wje-icon", "wje-button"],
+      "dependencyGraph": {
+        "wje-stepper": ["WJElement", "wje-badge", "wje-icon", "wje-button"]
+      }
+    },
+    {
+      "filePath": "src/components/step/step.tsx",
+      "encapsulation": "shadow",
+      "tag": "step",
+      "docs": "Element wje-step reprezentuje jeden krok v rámci komponentu stepper. Umožňuje vložiť vlastný obsah pre konkrétny krok.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "Tento element reprezentuje jeden krok v stepperi."
+        }
+      ],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
       "listeners": [],
       "styles": [],
-      "slots": [],
-      "parts": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre obsah kroku."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Odkazuje na hlavný `div` elementu step."
+        }
+      ],
+      "dependents": [],
+      "dependencies": [
+        "WJElement"
+      ],
+      "dependencyGraph": {
+        "wje-step": [
+          "WJElement"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/tab/tab.tsx",
+      "encapsulation": "shadow",
+      "tag": "tab",
+      "docs": "Vlastný webový komponent predstavujúci záložku.",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "panel",
+          "type": "string",
+          "docs": "Názov panelu, ku ktorému je tab priradený."
+        },
+        {
+          "name": "route",
+          "type": "string",
+          "docs": "Cesta (route), na ktorú sa vykoná navigácia pri kliknutí."
+        },
+        {
+          "name": "last",
+          "type": "boolean",
+          "docs": "Indikuje, či ide o posledný tab."
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "name": "wje-tab:change",
+          "docs": "Vyvolané pri kliknutí na tab, indikujúce zmenu tabu."
+        }
+      ],
+      "listeners": [
+        {
+          "event": "click",
+          "handler": "wje-tab:change",
+          "target": "this",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [
+        {
+          "name": "--wje-tab-text-transform",
+          "default": "uppercase",
+          "docs": "Transformácia textu tabu."
+        },
+        {
+          "name": "--wje-tab-font-weight",
+          "default": "500",
+          "docs": "Hrúbka písma textu tabu."
+        },
+        {
+          "name": "--wje-tab-letter-spacing",
+          "default": "0.06em",
+          "docs": "Medzery medzi znakmi v texte tabu."
+        },
+        {
+          "name": "--wje-tab-padding-inline",
+          "default": "1rem",
+          "docs": "Horizontálne odsadenie obsahu tabu."
+        },
+        {
+          "name": "--wje-tab-padding-top",
+          "default": ".75rem",
+          "docs": "Vertikálne odsadenie hore."
+        },
+        {
+          "name": "--wje-tab-padding-bottom",
+          "default": ".75rem",
+          "docs": "Vertikálne odsadenie dole."
+        },
+        {
+          "name": "--wje-tab-color-active",
+          "default": "var(--wje-color-primary-11)",
+          "docs": "Farba textu aktívneho tab elementu."
+        },
+        {
+          "name": "--wje-tab-color-hover",
+          "default": "var(--wje-color-primary-1)",
+          "docs": "Farba textu pri prechode myšou."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre obsah tabu."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Odkazuje na `a` element tabu."
+        }
+      ],
+      "dependents": [],
+      "dependencies": [
+        "wje-element",
+        "slick-router"
+      ],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/tab-group/tab-group.tsx",
+      "encapsulation": "shadow",
+      "tag": "tab-group",
+      "docs": "Komponent zobrazujúci skupinu tabov (záložiek) s rôznymi možnosťami umiestnenia.",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "variant",
+          "type": "\"top\" | \"bottom\" | \"start\" | \"end\"",
+          "complexType": {
+            "original": "string",
+            "resolved": "\"top\" | \"bottom\" | \"start\" | \"end\"",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "variant",
+          "reflectToAttr": false,
+          "docs": "Umiestnenie záložiek: `top`, `bottom`, `start` alebo `end`.",
+          "docsTags": [],
+          "default": "'top'",
+          "values": [
+            {
+              "value": "top",
+              "type": "string"
+            },
+            {
+              "value": "bottom",
+              "type": "string"
+            },
+            {
+              "value": "start",
+              "type": "string"
+            },
+            {
+              "value": "end",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [
+        {
+          "name": "--wje-tab-top",
+          "annotation": "prop",
+          "docs": "Vzdialenosť tabov od horného okraja."
+        },
+        {
+          "name": "--wje-tab-start",
+          "annotation": "prop",
+          "docs": "Vzdialenosť tabov od ľavého okraja."
+        },
+        {
+          "name": "--wje-tab-end",
+          "annotation": "prop",
+          "docs": "Vzdialenosť tabov od pravého okraja."
+        },
+        {
+          "name": "--wje-tab-bottom",
+          "annotation": "prop",
+          "docs": "Vzdialenosť tabov od dolného okraja."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre obsah skupiny tabov."
+        },
+        {
+          "name": "nav",
+          "docs": "Slot pre navigačnú lištu záložiek."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Odkazuje na hlavný obaľovací div element."
+        },
+        {
+          "name": "panels",
+          "docs": "Odkazuje na kontajner obsahujúci všetky tab-panely v skupine."
+        },
+        {
+          "name": "tabs",
+          "docs": "Odkazuje na kontajner obsahujúci všetky taby v skupine."
+        }
+      ],
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
@@ -11781,540 +12394,297 @@
       "filePath": "src/components/tab-panel/tab-panel.tsx",
       "encapsulation": "shadow",
       "tag": "tab-panel",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
+      "docs": "Vlastný webový komponent predstavujúci panel tabu (záložky).",
+      "docsTags": [
         {
-          "name": "panel",
-          "type": "any",
-          "complexType": {
-            "original": "any",
-            "resolved": "any",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "panel",
-          "reflectToAttr": false,
-          "docs": "Slúži ako identifikátor pre atribút `\"name\"` elementu `Tab`.",
-          "docsTags": [],
-          "default": "undefined",
-          "values": [
-            {
-              "type": "any"
-            }
-          ],
-          "optional": false,
-          "required": true
+          "name": "summary",
+          "text": "Tento element predstavuje panel záložky."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/tab-panel"
+        },
+        {
+          "name": "status",
+          "text": "stabilný"
+        },
+        {
+          "name": "augments",
+          "text": "WJElement"
+        },
+        {
+          "name": "slot",
+          "text": "Predvolený slot pre obsah panelu."
+        },
+        {
+          "name": "tag",
+          "text": "wje-tab-panel"
         }
       ],
+      "usage": {},
+      "props": [],
       "methods": [],
       "events": [],
       "listeners": [],
       "styles": [],
-      "slots": [],
-      "parts": [
-        {
-          "name": "",
-          "docs": "Predvolené umiestnenie pre obsah elementu."
-        }
-      ],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
-      "filePath": "src/components/tab-group/tab-group.tsx",
-      "encapsulation": "shadow",
-      "tag": "tab-group",
-      "docs": "",
-      "docsTags": [
-        {
-          "name": "slot",
-          "text": "nav - Obsah sa umiestni do `nav` elementu."
-        }
-      ],
-      "usage": {},
-      "props": [
-        {
-          "name": "variant",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "variant",
-          "reflectToAttr": false,
-          "docs": "Definuje variantu rozloženia TabGroup. Medzi možné hodnoty patrí `start`, `end` a `bottom`.",
-          "docsTags": [],
-          "default": "undefined",
-          "values": [
-            {
-              "value": "bottom",
-              "type": "string"
-            },
-            {
-              "value": "end",
-              "type": "string"
-            },
-            {
-              "value": "start",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": true
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [
-        {
-          "name": "--wj-font-size",
-          "annotation": "prop",
-          "docs": "Určuje veľkosť písma."
-        },
-        {
-          "name": "--wj-tab-color-active",
-          "annotation": "prop",
-          "docs": "Určuje farbu pozadia aktívneho tab elementu."
-        },
-        {
-          "name": "--wj-tab-color-hover",
-          "annotation": "prop",
-          "docs": "Určuje farbu pozadia tab elementu po ukázaní myšou."
-        },
-        {
-          "name": "--wj-tab-font-weight",
-          "annotation": "prop",
-          "docs": "Nastavuje váhu písma."
-        },
-        {
-          "name": "--wj-tab-letter-spacing",
-          "annotation": "prop",
-          "docs": "Nastavuje vzdialenosť medzi písmenami."
-        },
-        {
-          "name": "--wj-tab-padding-bottom",
-          "annotation": "prop",
-          "docs": "Určuje spodné odsadenie tabu."
-        },
-        {
-          "name": "--wj-tab-padding-inline",
-          "annotation": "prop",
-          "docs": "Určuje horizontálne odsadenie tabu."
-        },
-        {
-          "name": "--wj-tab-padding-top",
-          "annotation": "prop",
-          "docs": "Určuje horné odsadenie tabu."
-        },
-        {
-          "name": "--wj-tab-text-transfrom",
-          "annotation": "prop",
-          "docs": "Nastavuje transformáciu textu v tabe."
-        }
-      ],
       "slots": [
         {
-          "name": "nav",
-          "docs": "Obsah sa umiestni do `nav` elementu."
+          "name": "",
+          "docs": "Predvolený slot pre obsah panelu."
         }
       ],
       "parts": [],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "wje-element"
+      ],
+      "dependencyGraph": {
+        "wje-tab-panel": [
+          "wje-element"
+        ]
+      }
     },
     {
       "filePath": "src/components/textarea/textarea.tsx",
-      "encapsulation": "scoped",
+      "encapsulation": "shadow",
       "tag": "textarea",
-      "docs": "",
+      "docs": "Textarea je vlastný webový komponent, ktorý reprezentuje vstupné pole textarea.",
       "docsTags": [
-        {
-          "name": "virtualProp",
-          "text": "{\"ios\" | \"md\"} mode - The mode determines which platform styles to use."
-        },
-        {
-          "name": "slot",
-          "text": "label - The label text to associate with the textarea. Use the `labelPlacement` property to control where the label is placed relative to the textarea. Use this if you need to render a label with custom HTML. (EXPERIMENTAL)"
-        },
-        {
-          "name": "slot",
-          "text": "start - Content to display at the leading edge of the textarea. (EXPERIMENTAL)"
-        },
-        {
-          "name": "slot",
-          "text": "end - Content to display at the trailing edge of the textarea. (EXPERIMENTAL)"
-        }
+        { "name": "summary", "text": "Tento element predstavuje vstupné pole textarea." },
+        { "name": "documentation", "text": "https://elements.webjet.sk/components/textarea" },
+        { "name": "status", "text": "stable" },
+        { "name": "augments", "text": "WJElement" },
+        { "name": "csspart", "text": "native - Obal natívneho textarea." },
+        { "name": "csspart", "text": "input - Vstupný textarea element." },
+        { "name": "csspart", "text": "wrapper - Obal vstupného políčka." }
       ],
       "usage": {},
       "props": [
         {
-          "name": "counter",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "counter",
-          "reflectToAttr": false,
-          "docs": "Ak `true`, pridá pod element počítadlo zobrazujúce počet vložených znakov a tiež maximálny povolený počet.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "disabled",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "disabled",
-          "reflectToAttr": false,
-          "docs": "Ak `true`, do textarea nebude možné písať.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "label",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "label",
-          "reflectToAttr": false,
-          "docs": "Definuje textový popis k elementu textarea.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "maxlength",
-          "type": "number | undefined",
-          "complexType": {
-            "original": "number",
-            "resolved": "number | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "maxlength",
-          "reflectToAttr": false,
-          "docs": "Nastaví maximálny povolený počet znakov. Používa sa v spojení s atribútom `counter`.",
-          "docsTags": [],
-          "default": "1000",
-          "values": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "name",
+          "name": "value",
           "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "name",
+          "mutable": true,
+          "attr": "value",
           "reflectToAttr": false,
-          "docs": "Nastaví name atribút vnútorného textarea elementu. Ten je dôležitý napríklad pri použití vo formulároch.",
-          "docsTags": [],
-          "default": "this.inputId",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
+          "docs": "Hodnota textarea."
         },
         {
-          "name": "resize",
-          "type": "\"auto\"",
-          "complexType": {
-            "original": "\"auto\"",
-            "resolved": "\"auto\"",
-            "references": {}
-          },
+          "name": "invalid",
+          "type": "boolean",
+          "mutable": true,
+          "attr": "invalid",
+          "reflectToAttr": true,
+          "docs": "Označuje, či je vstup neplatný."
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
           "mutable": false,
-          "attr": "resize",
+          "attr": "placeholder",
           "reflectToAttr": false,
-          "docs": "Definuje správanie zmeny veľkosti elementu. Ak je nastavená na hodnotu `\"auto\"`, veľkosť elementu sa automaticky prispôsobí obsahu.",
-          "docsTags": [],
-          "default": "undefined",
-          "values": [
-            {
-              "value": "auto",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
+          "docs": "Zástupný text v textarea."
         },
         {
           "name": "rows",
-          "type": "number | undefined",
-          "complexType": {
-            "original": "number",
-            "resolved": "number | undefined",
-            "references": {}
-          },
+          "type": "number",
           "mutable": false,
           "attr": "rows",
           "reflectToAttr": false,
-          "docs": "Definuje počet viditeľných riadkov textu v elementu.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false
+          "docs": "Počet riadkov textarea."
         },
         {
           "name": "spellcheck",
           "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
           "mutable": false,
           "attr": "spellcheck",
           "reflectToAttr": false,
-          "docs": "Ak `true`, v textarea bude aktivovaná kontrola pravopisu.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
+          "docs": "Ak `true`, v textarea bude zapnutá kontrola pravopisu."
         },
         {
-          "name": "variant",
+          "name": "resize",
           "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "variant",
+          "mutable": false,
+          "attr": "resize",
           "reflectToAttr": false,
-          "docs": "Nastavením na hodnotu `\"standard\"` sa zobrazí textarea v štýle štandardného HTML textarea elementu.",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "value": "standard",
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false
+          "docs": "Režim zmeny veľkosti (`auto` alebo `none`)."
+        },
+        {
+          "name": "counter",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "counter",
+          "reflectToAttr": false,
+          "docs": "Ak `true`, zobrazí sa počítadlo znakov."
+        },
+        {
+          "name": "maxLength",
+          "type": "number",
+          "mutable": false,
+          "attr": "maxLength",
+          "reflectToAttr": false,
+          "docs": "Maximálny počet znakov."
         }
       ],
-      "methods": [],
+      "methods": [
+        {
+          "name": "setTextareaHeight",
+          "signature": "() => void",
+          "docs": "Nastaví výšku textarea pri automatickej zmene veľkosti."
+        },
+        {
+          "name": "counterFn",
+          "signature": "(e: Event) => void",
+          "docs": "Aktualizuje počítadlo znakov."
+        },
+        {
+          "name": "validateInput",
+          "signature": "() => void",
+          "docs": "Overí validitu vstupu a nastaví chyby."
+        },
+        {
+          "name": "propagateValidation",
+          "signature": "() => void",
+          "docs": "Propaguje stav validácie a vyvolá udalosť `invalid`."
+        },
+        {
+          "name": "formAssociatedCallback",
+          "signature": "(form: HTMLFormElement) => void",
+          "docs": "Callback pri pripojení k formuláru – napojí odoslanie a validáciu."
+        },
+        {
+          "name": "formResetCallback",
+          "signature": "() => void",
+          "docs": "Callback pri resetovaní formuláru – obnoví predvolenú hodnotu."
+        },
+        {
+          "name": "formStateRestoreCallback",
+          "signature": "(state: any) => void",
+          "docs": "Callback pri obnove stavu – obnoví uloženú hodnotu a validitu."
+        },
+        {
+          "name": "formStateSaveCallback",
+          "signature": "() => any",
+          "docs": "Callback pri ukladaní stavu – vráti aktuálnu hodnotu."
+        }
+      ],
       "events": [
         {
-          "event": "blur",
-          "detail": "FocusEvent",
-          "bubbles": true,
-          "complexType": {
-            "original": "FocusEvent",
-            "resolved": "FocusEvent",
-            "references": {
-              "FocusEvent": {
-                "location": "global",
-                "id": "global::FocusEvent"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Vyvolaný keď element stratí focus.",
-          "docsTags": []
+          "name": "wje-textarea:change",
+          "docs": "Udalosť zmeny (klasický `change`)."
         },
         {
-          "event": "wj:textarea:change",
-          "detail": "TextareaChangeEventDetail",
-          "bubbles": true,
-          "complexType": {
-            "original": "TextareaChangeEventDetail",
-            "resolved": "TextareaChangeEventDetail",
-            "references": {
-              "TextareaChangeEventDetail": {
-                "location": "import",
-                "path": "./textarea-interface",
-                "id": "src/components/textarea/textarea-interface.ts::TextareaChangeEventDetail"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Je vyvolaný po zmene v textarea.",
-          "docsTags": []
+          "name": "wje-textarea:input",
+          "docs": "Udalosť pri zadávaní znakov (`input`)."
         },
         {
-          "event": "focus",
-          "detail": "FocusEvent",
-          "bubbles": true,
-          "complexType": {
-            "original": "FocusEvent",
-            "resolved": "FocusEvent",
-            "references": {
-              "FocusEvent": {
-                "location": "global",
-                "id": "global::FocusEvent"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Vyvolaný keď element dostane focus.",
-          "docsTags": []
-        },
-        {
-          "event": "wj:textarea:input",
-          "detail": "TextareaInputEventDetail",
-          "bubbles": true,
-          "complexType": {
-            "original": "TextareaInputEventDetail",
-            "resolved": "TextareaInputEventDetail",
-            "references": {
-              "TextareaInputEventDetail": {
-                "location": "import",
-                "path": "./textarea-interface",
-                "id": "src/components/textarea/textarea-interface.ts::TextareaInputEventDetail"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "The `ionInput` event is fired each time the user modifies the textarea's value.\nUnlike the `ionChange` event, the `ionInput` event is fired for each alteration\nto the textarea's value. This typically happens for each keystroke as the user types.\n\nWhen `clearOnEdit` is enabled, the `ionInput` event will be fired when\nthe user clears the textarea by performing a keydown event.",
-          "docsTags": []
+          "name": "invalid",
+          "docs": "Udalosť neplatného vstupu."
         }
       ],
-      "listeners": [],
+      "listeners": [
+        {
+          "name": "click",
+          "target": "",
+          "docs": "Odoslanie vlastných udalostí `wje-textarea:change` a `wje-textarea:input`."
+        },
+        {
+          "name": "invalid",
+          "target": "",
+          "docs": "Zachytáva neplatnosť formulára a zobrazuje správu."
+        }
+      ],
       "styles": [
         {
-          "name": "--wj-textarea-background-color",
-          "annotation": "prop",
-          "docs": "Nastaví farbu pozadia elementu."
+          "name": "--wje-textarea-font-family",
+          "docs": "Rodina písiem používaná v textarea.",
+          "default": "var(--wje-font-family)"
         },
         {
-          "name": "--wj-textarea-border-color",
-          "annotation": "prop",
-          "docs": "Nastaví farbu okrajov elementu."
+          "name": "--wje-textarea-background-color",
+          "docs": "Pozadie textarea.",
+          "default": "var(--wje-background)"
         },
         {
-          "name": "--wj-textarea-border-color-focus",
-          "annotation": "prop",
-          "docs": "Nastaví farbu okrajov pri focuse."
+          "name": "--wje-textarea-color",
+          "docs": "Farba textu v textarea.",
+          "default": "var(--wje-color)"
         },
         {
-          "name": "--wj-textarea-border-radius",
-          "annotation": "prop",
-          "docs": "Nastaví zaoblenie okrajov elementu."
+          "name": "--wje-textarea-border-width",
+          "docs": "Šírka rámika textarea.",
+          "default": "1px"
         },
         {
-          "name": "--wj-textarea-border-style",
-          "annotation": "prop",
-          "docs": "Nastaví štýl okrajov elementu."
+          "name": "--wje-textarea-border-style",
+          "docs": "Štýl rámika textarea.",
+          "default": "solid"
         },
         {
-          "name": "--wj-textarea-border-width",
-          "annotation": "prop",
-          "docs": "Nastaví šírku okrajov elementu."
+          "name": "--wje-textarea-border-color",
+          "docs": "Farba rámika textarea.",
+          "default": "var(--wje-border-color)"
         },
         {
-          "name": "--wj-textarea-color",
-          "annotation": "prop",
-          "docs": "Nastaví farbu textu elementu."
+          "name": "--wje-textarea-border-color-focus",
+          "docs": "Farba rámika pri focus.",
+          "default": "var(--wje-color-primary)"
         },
         {
-          "name": "--wj-textarea-color-invalid",
-          "annotation": "prop",
-          "docs": "Nastaví farbu textu pri chybe."
+          "name": "--wje-textarea-border-radius",
+          "docs": "Polomer zaoblenia rohov textarea.",
+          "default": "var(--wje-border-radius-medium)"
         },
         {
-          "name": "--wj-textarea-font-family",
-          "annotation": "prop",
-          "docs": "Nastaví písmo elementu."
+          "name": "--wje-textarea-color-invalid",
+          "docs": "Farba textu pri neplatnom vstupe.",
+          "default": "var(--wje-color-danger)"
         },
         {
-          "name": "--wj-textarea-line-height",
-          "annotation": "prop",
-          "docs": "Nastaví výšku riadka elementu."
+          "name": "--wje-textarea-margin-bottom",
+          "docs": "Odsadenie spodnej časti textarea.",
+          "default": "var(--wje-spacing-x-small)"
         },
         {
-          "name": "--wj-textarea-margin-bottom",
-          "annotation": "prop",
-          "docs": "Nastaví spodné vonkajšie odsadenie elementu."
+          "name": "--wje-textarea-padding",
+          "docs": "Vnútorný odsadzovací priestor textarea.",
+          "default": "--wje-spacing-x-small"
         },
         {
-          "name": "--wj-textarea-padding",
-          "annotation": "prop",
-          "docs": "Nastaví vnútorné odsadenie elementu."
+          "name": "--wje-textarea-line-height",
+          "docs": "Výška riadku textu.",
+          "default": "20px"
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolený slot pre obsah (text)."
+        },
+        {
+          "name": "start",
+          "docs": "Slot pre prvý slotted element (napr. ikona vľavo)."
+        },
+        {
+          "name": "end",
+          "docs": "Slot pre druhý slotted element (napr. ikona vpravo)."
+        }
+      ],
       "parts": [
         {
+          "name": "native",
+          "docs": "Obal natívneho textarea."
+        },
+        {
+          "name": "wrapper",
+          "docs": "Obal vstupného poľa."
+        },
+        {
           "name": "input",
-          "docs": "Odkazuje na element `textarea` vo vnútri elementu."
+          "docs": "Vlastný textarea element."
         }
       ],
       "dependents": [],
-      "dependencies": [],
+      "dependencies": ["WJElement"],
       "dependencyGraph": {}
     },
     {
