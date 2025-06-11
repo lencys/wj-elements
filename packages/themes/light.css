@@ -551,7 +551,7 @@
     --wje-textarea-font-family: var(--wje-font-family);
     --wje-textarea-background-color: var(--wje-background);
     --wje-textarea-color: var(--wje-color);
-    --wje-textarea-color-invalid: var(--wje-color-danger);
+    --wje-textarea-color-invalid: var(--wje-color-danger-9);
     --wje-textarea-border-width: 1px;
     --wje-textarea-border-style: solid;
     --wje-textarea-border-color: var(--wje-border-color);

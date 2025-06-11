@@ -42,18 +42,18 @@
     }
 }
 
-:host([required]) .input-wrapper::after {
+:host([required]) .wrapper::after {
     color: var(--wje-input-color-invalid);
-    content: '*';
-    font-family: var(--wje-force-mac-font-family);
-    font-size: 20px;
+    content: var(--wje-input-required-symbol);
+    font-size: 24px;
     position: absolute;
-    right: 0;
+    right: 12px;
     top: 0;
 }
 
 :host([required]) .standard .input-wrapper::after {
-    top: 0;
+    right: 13px;
+    top: -20px;
 }
 
 :host([resize='auto']) textarea,
@@ -120,7 +120,6 @@
         }
     }
     &.standard {
-        font-family: var(--wje-textarea-font-family);
         position: relative;
         border-radius: var(--wje-textarea-border-radius);
         padding: 0;
@@ -167,7 +166,7 @@
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
         }
-        .error-message {
+        slot[name='error'] {
             position: static;
             background: transparent;
             padding: 0.25rem 0;
@@ -182,6 +181,31 @@
 
 .counter {
     float: right;
+}
+
+slot[name='error'] {
+    display: none;
+}
+
+:host([invalid]) slot[name='error'] {
+    display: block;
+}
+
+slot[name='error'] {
+    display: none;
+    position: absolute;
+    max-width: 100%;
+    min-width: auto;
+    border-radius: 50px;
+    background: black;
+    padding: 0.25rem 0.5rem;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: var(--wje-font-size-small);
+    width: max-content;
+    line-height: normal;
 }
 
 @keyframes shake {

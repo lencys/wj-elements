@@ -13,6 +13,7 @@
 }
 
 .native-select {
+    position: relative;
     &.default {
         .wrapper {
             display: block;
@@ -62,6 +63,17 @@
         .input-wrapper {
             background: transparent;
             width: 100%;
+        }
+        slot[name='error'] {
+            position: static;
+
+            background: transparent;
+            padding: 0.25rem 0;
+            left: auto;
+            transform: none;
+            color: var(--wje-input-color-invalid);
+            font-size: 12px;
+            line-height: normal;
         }
     }
 }
@@ -191,4 +203,29 @@ wje-button {
     &:not(:empty) {
         margin-right: 0.5rem;
     }
+}
+
+slot[name='error'] {
+    display: none;
+}
+
+:host([invalid]) slot[name='error'] {
+    display: block;
+}
+
+slot[name='error'] {
+    display: none;
+    position: absolute;
+    max-width: 100%;
+    min-width: auto;
+    border-radius: 50px;
+    background: black;
+    padding: 0.25rem 0.5rem;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: var(--wje-font-size-small);
+    width: max-content;
+    line-height: normal;
 }

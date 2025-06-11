@@ -312,7 +312,7 @@ export default class DemoButton extends WJElement {
     });
 
     this.context.querySelector('#custom-event-button-2').addEventListener('single-spa-route', (e) => {
-      console.log('klikol som custom event 22', e.detail);
+      console.log('klikol som custom event 2', e.detail);
     });
   }
 }

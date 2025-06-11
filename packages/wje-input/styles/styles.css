@@ -143,7 +143,7 @@
                 border-top-right-radius: 0;
                 border-bottom-right-radius: 0;
             }
-            .error-message {
+            slot[name='error'] {
                 position: static;
 
                 background: transparent;
@@ -178,10 +178,9 @@
     --wje-button-margin-inline: 0 0.25rem;
 }
 
-:host([required]) .input-wrapper::after {
+:host([required]) .wrapper::after {
     color: var(--wje-input-color-invalid);
     content: var(--wje-input-required-symbol);
-    font-family: var(--wje-force-mac-font-family);
     font-size: 24px;
     position: absolute;
     right: 12px;
@@ -194,9 +193,6 @@
 }
 
 :host([invalid]) {
-    .error-message {
-        display: block;
-    }
     .default {
         label {
             opacity: 1 !important;
@@ -233,15 +229,14 @@ slot[name='end'] {
 
 slot[name='error'] {
     display: none;
-    margin-inline: 0.5rem;
-}
-
-:host([disabled]) input {
-    opacity: 0.5;
 }
 
 :host([invalid]) slot[name='error'] {
     display: block;
+}
+
+:host([disabled]) input {
+    opacity: 0.5;
 }
 
 input {
@@ -249,7 +244,6 @@ input {
     border-width: var(--wje-input-border-width);
     border-style: var(--wje-input-border-style);
     border-color: var(--wje-input-border-color);
-    font-family: var(--wje-input-font-family);
     color: var(--wje-input-color);
     appearance: none;
     outline: 0;
@@ -261,7 +255,7 @@ input {
     min-height: 32px;
 }
 
-.error-message {
+slot[name='error'] {
     display: none;
     position: absolute;
     max-width: 100%;
@@ -271,9 +265,9 @@ input {
     padding: 0.25rem 0.5rem;
     top: 0;
     left: 50%;
-    transform: translate(-50%, -75%);
+    transform: translate(-50%, -50%);
     color: white;
-    font-size: 12px;
+    font-size: var(--wje-font-size-small);
     width: max-content;
     line-height: normal;
 }

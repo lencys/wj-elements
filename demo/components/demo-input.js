@@ -4,9 +4,8 @@ import CodeSnippet from '../assets/js/code-snippet-builder.js';
 const template = document.createElement('template');
 
 template.innerHTML = `<h1>Input</h1>
-  <div class="container">
-    
-    <!-- INPUT -->
+  <div class="container">    
+    <!-- DEFAULT -->
 
     <h2>Default</h2>
     <div class="playground">
@@ -212,12 +211,54 @@ template.innerHTML = `<h1>Input</h1>
       </div>
     </div>
     
-    <!--  VALIDATION IN FORM-->
+    <!-- VALIDATION IN FORM -->
     
     <h2>Validation in form</h2>
     <div class="playground">
       <div class="content">
-        <form name="test-form" id="test-form">
+        <form name="test-form-1" id="test-form-1">
+          <!-- DEFAULT -->
+          <h2>Default</h2>
+          <wje-select label="Label" placeholder="Select option" required>
+            <wje-option value="option-1">Option 1</wje-option>
+            <wje-option value="option-2">
+              Option 2
+              <wje-icon name="heart" slot="end"></wje-icon>
+            </wje-option>
+            <wje-option value="option-3">Option 3</wje-option>
+            <wje-option value="option-4">Option 4</wje-option>
+          </wje-select>
+          <wje-input variant="default" label="Project URL" required validate-on-change><span slot="start"><wje-icon name="globe"></wje-icon></span><span slot="end">.com</span></wje-input>
+          <wje-textarea label="Label" name="dog" rows="4" max-length="24" required counter validate-on-change></wje-textarea>
+          
+          <h2>Standard</h2>
+          <!-- STANDARD -->
+          <wje-select variant="standard" label="Label" placeholder="Select option" required>
+            <wje-option value="option-1">Option 1</wje-option>
+            <wje-option value="option-2">
+              Option 2
+              <wje-icon name="heart" slot="end"></wje-icon>
+            </wje-option>
+            <wje-option value="option-3">Option 3</wje-option>
+            <wje-option value="option-4">Option 4</wje-option>
+          </wje-select>
+          <wje-input variant="standard" label="Project URL" required validate-on-change><span slot="start"><wje-icon name="globe"></wje-icon></span><span slot="end">.com</span></wje-input>
+          <wje-textarea variant="standard" label="Label" name="dog" rows="4" max-length="24" required counter validate-on-change></wje-textarea>
+          
+          <div style="display: flex; gap: .5rem;">
+            <wje-button type="reset">Reset</wje-button>
+            <wje-button type="submit" color="primary">Submit</wje-button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <!-- VALIDATION IN FORM -->
+    
+    <h2>Validation in form</h2>
+    <div class="playground">
+      <div class="content">
+        <form name="test-form-2" id="test-form-2">
          <wje-input name="default" label="Default input"></wje-input>
           <wje-input name="withPlaceholder" label="Input with placeholder" placeholder="Enter company name" required >
             <span slot="error" style="width: 500px;display: block;color: #0af4fc;">
@@ -267,12 +308,9 @@ export default class DemoInput extends WJElement {
       // e.target.onClose();
     });
 
-    this.querySelector('#nieco').addEventListener('wje-input:focus', (e) => {
-      console.log('IIIIIIIIIIIIIIIIIIIIIIIII', e);
-    });
-
-    let form = this.context.querySelector('#test-form');
-    form.addEventListener('submit', (e) => {
+    // FORM 1
+    let form1 = this.context.querySelector('#test-form-1');
+    form1.addEventListener('submit', (e) => {
       e.preventDefault();
       if (e.target.checkValidity()) {
         let formDate = new FormData(e.target);
@@ -283,7 +321,24 @@ export default class DemoInput extends WJElement {
       }
     });
 
-    this.context.querySelector('#test-form').addEventListener('reset', (e) => {
+    form1.addEventListener('reset', (e) => {
+      console.log('klikol som form reset', e);
+    });
+
+    // FORM 2
+    let form2 = this.context.querySelector('#test-form-2');
+    form2.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (e.target.checkValidity()) {
+        let formDate = new FormData(e.target);
+        for (let pair of formDate.entries()) {
+          console.log(pair[0] + ', ' + pair[1]);
+        }
+        console.log('klikol som form submit', e);
+      }
+    });
+
+    form2.addEventListener('reset', (e) => {
       console.log('klikol som form reset', e);
     });
 

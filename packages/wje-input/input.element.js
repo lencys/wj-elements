@@ -94,11 +94,39 @@ export default class Input extends WJElement {
     }
 
     /**
+     * Sets the custom error display attribute for an element.
+     * @param {boolean} value If true, adds the 'custom-error-display' attribute to the element. If false, removes the attribute from the element.
+     */
+    set customErrorDisplay(value) {
+        if (value) {
+            this.setAttribute('custom-error-display', '');
+        } else {
+            this.removeAttribute('custom-error-display');
+        }
+    }
+
+    /**
      * Getter for the customErrorDisplay attribute.
      * @returns {boolean} Whether the attribute is present.
      */
     get customErrorDisplay() {
         return this.hasAttribute('custom-error-display');
+    }
+
+    /**
+     * Sets the `validateOnChange` property. If set to a truthy value, it adds the
+     * `validate-on-change` attribute to the element. If set to a falsy value, it
+     * removes the `validate-on-change` attribute from the element.
+     * @param {boolean} value Determines whether to add or remove the
+     * `validate-on-change` attribute. A truthy value adds the attribute, whereas a
+     * falsy value removes it.
+     */
+    set validateOnChange(value) {
+        if (value) {
+            this.setAttribute('validate-on-change', '');
+        } else {
+            this.removeAttribute('validate-on-change');
+        }
     }
 
     /**
@@ -110,20 +138,24 @@ export default class Input extends WJElement {
     }
 
     /**
-     * Getter for the invalid attribute.
-     * @returns {boolean} Whether the attribute is present.
+     * Sets or removes the 'invalid' attribute on an element based on the provided value.
+     * @param {boolean} value If true, the 'invalid' attribute is set. If false, the 'invalid' attribute is removed.
      */
-    get invalid() {
-        return this.hasAttribute('invalid');
+    set invalid(value) {
+        if (value) {
+            this.setAttribute('invalid', '');
+        } else {
+            this.removeAttribute('invalid');
+        }
     }
 
     /**
-     * Setter for the invalid attribute.
-     * @param {boolean} isInvalid Whether the input is invalid.
+     * Gets the value of the 'invalid' attribute.
+     * Determines whether the 'invalid' attribute is present on the element.
+     * @returns {boolean} True if the 'invalid' attribute is present, otherwise false.
      */
-    set invalid(isInvalid) {
-        if (isInvalid) this.setAttribute('invalid', '');
-        else this.removeAttribute('invalid');
+    get invalid() {
+        return this.hasAttribute('invalid');
     }
 
     /**
@@ -344,25 +376,7 @@ export default class Input extends WJElement {
 
         // Error
         let error = document.createElement('div');
-        error.classList.add('error-message');
-        error.setAttribute('part', 'error');
-
-        let errorSlot = null;
-        if (hasSlotError) {
-            errorSlot = document.createElement('slot');
-            errorSlot.setAttribute('name', 'error');
-
-            if (this.hasAttribute('error-inline')) {
-                // inline version of error message
-                native.appendChild(errorSlot);
-            } else {
-                // tooltip version of error message
-                error.appendChild(errorSlot);
-                wrapper.appendChild(error);
-            }
-        } else {
-            wrapper.appendChild(error);
-        }
+        error.setAttribute('slot', 'error');
 
         let start = null;
         if (hasSlotStart) {
@@ -383,7 +397,6 @@ export default class Input extends WJElement {
             native.classList.add('has-start');
         }
 
-        console.log(`Input variant: ${this.label}`);
         if (this.label) {
             if (this.variant === 'standard') {
                 native.append(label);
@@ -396,6 +409,23 @@ export default class Input extends WJElement {
         wrapper.appendChild(inputWrapper);
 
         native.appendChild(wrapper);
+
+        // if (hasSlotError) {
+        let errorSlot = document.createElement('slot');
+        errorSlot.setAttribute('name', 'error');
+
+        // if (this.hasAttribute('error-inline')) {
+            // inline version of error message
+            native.append(errorSlot);
+        // } else {
+        //     tooltip version of error message
+            // error.appendChild(errorSlot);
+            // wrapper.appendChild(error);
+        // }
+
+        // if (!hasSlotError) {
+            this.append(error);
+        // }
 
         if (this.clearable) {
             this.clear = document.createElement('wje-button');
@@ -505,16 +535,16 @@ export default class Input extends WJElement {
 
         if (hasSlotError) {
             const slot = this.querySelector("[slot='error']");
-            let errorMessage = slot.querySelector('[error-message]');
+            let errorMessageEL = slot.querySelector('[error-message]');
 
-            if (!errorMessage) {
+            if (!errorMessageEL) {
                 const error = document.createElement('div');
                 error.setAttribute('error-message', '');
-                slot.appendChild(error);
-                errorMessage = error;
+                slot.append(error);
+                errorMessageEL = error;
             }
 
-            errorMessage.textContent = this.internals.validationMessage;
+            errorMessageEL.textContent = this.internals.validationMessage;
         } else {
             this.errorMessage.textContent = this.internals.validationMessage;
         }
@@ -553,15 +583,16 @@ export default class Input extends WJElement {
     }
 
     /**
-     * @summary Propagates the validation state of the input.
-     * This method sets the 'invalid' property of the input based on its 'pristine' state and its internal validity state.
-     * If the input is invalid and the 'customErrorDisplay' property is true, it dispatches an 'invalid' event.
+     * Checks and updates the validation state of the component based on its current properties.
+     * If the component is invalid and a custom error display is enabled, it dispatches an 'invalid' event.
+     * @returns {void} This method does not return a value.
      */
     propagateValidation() {
-        this.invalid = !this.pristine && !this.internals.validity.valid;
+        this.invalid = !this.pristine && !this.validity.valid;
 
-        if (this.invalid && this.customErrorDisplay) {
-            this.dispatchEvent(new Event('invalid'));
+        // if (this.invalid && this.customErrorDisplay) {
+        if (this.invalid) {
+            event.dispatchCustomEvent(this, 'invalid');
         }
     }
 

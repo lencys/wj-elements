@@ -50,7 +50,7 @@ export default class Textarea extends WJElement {
             }
         });
 
-        this.refresh();
+        // this.refresh();
     };
 
     /**
@@ -72,6 +72,30 @@ export default class Textarea extends WJElement {
      */
     get value() {
         return this.input?.value ?? this._value ?? '';
+    }
+
+    /**
+     * Sets the `validateOnChange` property. If set to a truthy value, it adds the
+     * `validate-on-change` attribute to the element. If set to a falsy value, it
+     * removes the `validate-on-change` attribute from the element.
+     * @param {boolean} value Determines whether to add or remove the
+     * `validate-on-change` attribute. A truthy value adds the attribute, whereas a
+     * falsy value removes it.
+     */
+    set validateOnChange(value) {
+        if (value) {
+            this.setAttribute('validate-on-change', '');
+        } else {
+            this.removeAttribute('validate-on-change');
+        }
+    }
+
+    /**
+     * Getter for the validateOnChange attribute.
+     * @returns {boolean} Whether the attribute is present.
+     */
+    get validateOnChange() {
+        return this.hasAttribute('validate-on-change');
     }
 
     /**
@@ -234,6 +258,12 @@ export default class Textarea extends WJElement {
             }
         });
 
+        let error = document.createElement('div');
+        error.setAttribute('slot', 'error');
+
+        let errorSlot = document.createElement('slot');
+        errorSlot.setAttribute('name', 'error');
+
         if (this.resize === 'auto') input.addEventListener('input', this.setTextareaHeight);
 
         if (this.variant === 'standard') {
@@ -247,6 +277,9 @@ export default class Textarea extends WJElement {
         wrapper.appendChild(inputWrapper);
 
         native.appendChild(wrapper);
+        native.append(errorSlot);
+
+        this.append(error);
 
         fragment.appendChild(native);
 
@@ -290,7 +323,7 @@ export default class Textarea extends WJElement {
             if (!e.target.value) this.labelElement.classList.remove('fade');
         });
 
-        this.addEventListener('invalid', (e) => {
+        this.addEventListener('wje-textarea:invalid', (e) => {
             this.invalid = true;
             this.pristine = false;
 
@@ -361,6 +394,31 @@ export default class Textarea extends WJElement {
     };
 
     /**
+     * @summary Displays the validation message for the input.
+     * If the input has a slot named 'error', it sets the text content of the element with attribute 'error-message' inside the slot to the validation message.
+     * If the input does not have an 'error' slot, it sets the text content of the errorMessage property to the validation message.
+     */
+    showInvalidMessage() {
+        let hasSlotError = true; //this.hasSlot(this, 'error');
+
+        if (hasSlotError) {
+            const slot = this.querySelector("[slot='error']");
+            let errorMessageEL = slot.querySelector('[error-message]');
+
+            if (!errorMessageEL) {
+                const error = document.createElement('div');
+                error.setAttribute('error-message', '');
+                slot.append(error);
+                errorMessageEL = error;
+            }
+
+            errorMessageEL.textContent = this.internals.validationMessage;
+        } else {
+            this.errorMessage.textContent = this.internals.validationMessage;
+        }
+    }
+
+    /**
      * @summary Validates the input.
      * This method checks the validity state of the input. If the input is not valid, it iterates over the validity state object.
      * For each invalid state, it constructs an attribute name and checks if the input has this attribute.
@@ -400,8 +458,8 @@ export default class Textarea extends WJElement {
     propagateValidation() {
         this.invalid = !this.pristine && !this.internals.validity.valid;
 
-        if (this.invalid && this.customErrorDisplay) {
-            this.dispatchEvent(new Event('invalid'));
+        if (this.invalid) {
+            this.dispatchEvent(new Event('wje-textarea:invalid'));
         }
     }
 

@@ -200,6 +200,18 @@ export default class Select extends WJElement {
 		return this.selected;
 	}
 
+	set required(value) {
+		if (value) {
+			this.setAttribute('required', '');
+		} else {
+			this.removeAttribute('required');
+		}
+	}
+
+	get required() {
+		return this.hasAttribute('required');
+	}
+
 	/**
 	 * Getter for the customErrorDisplay attribute.
 	 * @returns {boolean} Whether the attribute is present.
@@ -217,20 +229,26 @@ export default class Select extends WJElement {
 	}
 
 	/**
-	 * Getter for the invalid attribute.
-	 * @returns {boolean} Whether the attribute is present.
+	 * Retrieves the value of the 'invalid' attribute.
+	 * This method checks if the 'invalid' attribute is present on the element.
+	 * @returns {boolean} Returns true if the 'invalid' attribute is present, otherwise false.
 	 */
 	get invalid() {
 		return this.hasAttribute('invalid');
 	}
 
 	/**
-	 * Setter for the invalid attribute.
-	 * @param {boolean} isInvalid Whether the input is invalid.
+	 * Sets the 'invalid' property of the element.
+	 * When set to a truthy value, the 'invalid' attribute is added to the element.
+	 * When set to a falsy value, the 'invalid' attribute is removed from the element.
+	 * @param {boolean} value A boolean indicating whether the element is invalid.
 	 */
-	set invalid(isInvalid) {
-		if (isInvalid) this.setAttribute('invalid', '');
-		else this.removeAttribute('invalid');
+	set invalid(value) {
+		if (value) {
+			this.setAttribute('invalid', '');
+		} else {
+			this.removeAttribute('invalid');
+		}
 	}
 
 	/**
@@ -346,7 +364,7 @@ export default class Select extends WJElement {
 	 * The options are determined by combining elements from various sources, including loaded options, added options, and HTML-sourced options.
 	 * If a `wje-options` element is present within the component, its loaded options are included in the merged list.
 	 * In the absence of a `wje-options` element, duplicates among the added and HTML options are removed, retaining their order.
-	 * @returns {Array<Object>} An array containing all the available options, combining the loaded, added, and HTML-based options, with duplicates removed where applicable.
+	 * @returns {Array<object>} An array containing all the available options, combining the loaded, added, and HTML-based options, with duplicates removed where applicable.
 	 */
 	get options() {
 		if (this.querySelector('wje-options')) {
@@ -457,6 +475,8 @@ export default class Select extends WJElement {
 		input.setAttribute('autocomplete', 'off');
 		input.setAttribute('readonly', '');
 		input.setAttribute('placeholder', this.placeholder || '');
+		if(this.required)
+			input.setAttribute('required', '');
 
 		let slotEnd = document.createElement('div');
 		slotEnd.classList.add('slot-end');
@@ -488,7 +508,11 @@ export default class Select extends WJElement {
 		let clearIcon = document.createElement('wje-icon');
 		clearIcon.setAttribute('name', 'x');
 
-		clear.appendChild(clearIcon);
+		let error = document.createElement('div');
+		error.setAttribute('slot', 'error');
+
+		let errorSlot = document.createElement('slot');
+		errorSlot.setAttribute('name', 'error');
 
 		// vytvorime popup
 		let popup = document.createElement('wje-popup');
@@ -506,12 +530,14 @@ export default class Select extends WJElement {
 			wrapper.appendChild(label);
 		}
 
-		inputWrapper.appendChild(slotStart);
-		inputWrapper.appendChild(input);
+		inputWrapper.append(slotStart);
+		inputWrapper.append(input);
 
-		if (this.hasAttribute('multiple')) inputWrapper.appendChild(chips);
+		clear.append(clearIcon);
 
-		if (this.hasAttribute('clearable')) inputWrapper.appendChild(clear);
+		if (this.hasAttribute('multiple')) inputWrapper.append(chips);
+
+		if (this.hasAttribute('clearable')) inputWrapper.append(clear);
 
 		inputWrapper.appendChild(slotEnd);
 		inputWrapper.appendChild(arrow);
@@ -545,16 +571,19 @@ export default class Select extends WJElement {
 			optionsElement?.setAttribute('attached', '');
 		}
 
-		optionsWrapper.appendChild(list);
+		optionsWrapper.append(list);
 
-		wrapper.appendChild(inputWrapper);
+		wrapper.append(inputWrapper);
 
-		popup.appendChild(wrapper);
-		popup.appendChild(optionsWrapper);
+		popup.append(wrapper);
+		popup.append(optionsWrapper);
 
 		if (this.trigger === 'click') popup.setAttribute('manual', '');
 
-		native.appendChild(popup);
+		this.append(error);
+
+		native.append(popup);
+		native.append(errorSlot);
 
 		this.native = native;
 		this.popup = popup;
@@ -579,6 +608,12 @@ export default class Select extends WJElement {
 	 * @returns {void} Does not return a value. The method operates by updating the state and behavior of the component.
 	 */
 	afterDraw() {
+		this.validateSelect();
+
+		if (this.hasAttribute('invalid')) {
+			this.showInvalidMessage();
+		}
+
 		this.getAllOptions()?.forEach((option) => {
 			this.optionCheckSlot(option);
 		});
@@ -600,7 +635,22 @@ export default class Select extends WJElement {
 			if (!e.target.value) this.labelElement?.classList.remove('fade');
 		});
 
+		this.input.addEventListener('input', (e) => {
+			this.propagateValidation();
+		});
+
 		this.addEventListener('wje-option:change', this.optionChange);
+
+		this.addEventListener('wje-select:invalid', (e) => {
+			this.invalid = true;
+			this.pristine = false;
+
+			this.showInvalidMessage();
+
+			if (this.customErrorDisplay) {
+				e.preventDefault();
+			}
+		});
 
 		// pridame event listener na kliknutie na button clear
 		this.clear?.addEventListener('wje-button:click', (e) => {
@@ -677,6 +727,11 @@ export default class Select extends WJElement {
 		}
 
 		this.selections();
+
+		this.validateSelect();
+
+		this.pristine = false;
+		this.propagateValidation();
 	};
 
 	/**
@@ -1000,13 +1055,83 @@ export default class Select extends WJElement {
 	}
 
 	/**
-	 * @summary Callback function that is called when the custom element is associated with a form.
-	 * This function adds an event listener to the form's submit event, which validates the input and propagates the validation.
-	 * @param {HTMLFormElement} form The form the custom element is associated with.
+	 * Clones and appends an icon from a template with slot "check" to the given option element.
+	 * @param {HTMLElement} option The target option element where the "check" icon will be added.
+	 * @returns {void}
+	 */
+	optionCheckSlot(option) {
+		let icon = this.querySelector('template')?.content.querySelector(`[slot="check"]`);
+		if (!icon) {
+			console.warn(`Icon with slot "check" was not found.`);
+			return;
+		}
+
+		let iconClone = icon.cloneNode(true);
+		option.append(iconClone);
+	}
+
+	/**
+	 * Validates the selection of options in the select element.
+	 * Checks if the element is required and no option is selected,
+	 * in which case it sets a validation error with a custom message.
+	 * If the element passes validation, it clears any existing validation errors.
+	 *
+	 * @return {void} Does not return a value.
+	 */
+	validateSelect() {
+		if (this.required && this.selectedOptions.length === 0) {
+			const msg = this.getAttribute('message-required') || 'Zvoľte možnosť';
+			this.internals.setValidity({ valueMissing: true }, msg);
+		} else {
+			this.internals.setValidity({});
+		}
+	}
+
+	/**
+	 * Checks and updates the validation state of the component based on its current properties.
+	 * If the component is invalid and a custom error display is enabled, it dispatches an 'invalid' event.
+	 * @returns {void} This method does not return a value.
+	 */
+	propagateValidation() {
+		this.invalid = !this.pristine && !this.validity.valid;
+
+		if (this.invalid) {
+			event.dispatchCustomEvent(this, 'wje-select:invalid');
+		}
+	}
+
+	showInvalidMessage() {
+		let hasSlotError = true; //this.hasSlot(this, 'error');
+
+		if (hasSlotError) {
+			const slot = this.querySelector("[slot='error']");
+			let errorMessageEL = slot.querySelector('[error-message]');
+
+			if (!errorMessageEL) {
+				const error = document.createElement('div');
+				error.setAttribute('error-message', '');
+				slot.append(error);
+				errorMessageEL = error;
+			}
+
+			errorMessageEL.textContent = this.internals.validationMessage;
+		} else {
+			this.errorMessage.textContent = this.internals.validationMessage;
+		}
+		console.log(`Invalid input: ${this.internals.validationMessage}`);
+	}
+
+	/**
+	 * Lifecycle callback invoked when the custom element becomes associated with a form element.
+	 * @param {HTMLFormElement} form The form element the custom element is associated with.
+	 * @returns {void}
 	 */
 	formAssociatedCallback(form) {
 		if (form) {
-			this.internals.setFormValue(this.value);
+			form.addEventListener('submit', () => {
+				this.validateSelect();
+				this.propagateValidation();
+			});
 		}
 	}
 
@@ -1077,21 +1202,5 @@ export default class Select extends WJElement {
 		return elements.every(el =>
 			options.some(opt => JSON.stringify(opt) === JSON.stringify(el.option))
 		);
-	}
-
-	/**
-	 * Clones and appends an icon from a template with slot "check" to the given option element.
-	 * @param {HTMLElement} option The target option element where the "check" icon will be added.
-	 * @returns {void}
-	 */
-	optionCheckSlot(option) {
-		let icon = this.querySelector('template')?.content.querySelector(`[slot="check"]`);
-		if (!icon) {
-			console.warn(`Icon with slot "check" was not found.`);
-			return;
-		}
-
-		let iconClone = icon.cloneNode(true);
-		option.append(iconClone);
 	}
 }
