@@ -317,7 +317,7 @@ export default class IconPicker extends WJElement {
      * // The resulting structure:
      * // <div class="icon-item">
      * //   <wje-tooltip content="hourglass">
-     * //     <wje-icon name="hourglass" size="large" filled></wje-icon>
+     * //     <wje-icon name="hourglass" size="large" filled></wje-icon></wje-icon>
      * //   </wje-tooltip>
      * // </div>
      */

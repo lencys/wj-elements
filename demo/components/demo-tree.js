@@ -19,7 +19,9 @@ template.innerHTML = `
             <wje-tree-item>Birch</wje-tree-item>
             <wje-tree-item expanded>
               Maple
-              <wje-tree-item>Field maple</wje-tree-item>
+              <wje-tree-item>
+                Field maple
+              </wje-tree-item>
               <wje-tree-item>Red maple</wje-tree-item>
               <wje-tree-item>Sugar maple</wje-tree-item>
             </wje-tree-item>
@@ -36,6 +38,80 @@ template.innerHTML = `
             <wje-tree-item>Bamboo</wje-tree-item>
             <wje-tree-item>Cactus</wje-tree-item>
             <wje-tree-item>Fern</wje-tree-item>
+          </wje-tree-item>
+        </wje-tree>
+      </div>
+    </div>
+    
+    <!-- START, END SLOTS -->
+
+    <h2>Start, End slots</h2>
+    <div class="playground" style="display: block;">
+      <div class="content" style="justify-content: start; width: 240px;">
+        <wje-tree slot-hover-visible>
+          <template>
+            <wje-icon name="grip-vertical" slot="start"></wje-icon>
+            <wje-icon name="dots-vertical" slot="end"></wje-icon>
+          </template>
+          <wje-tree-item expanded>
+            <wje-icon name="folder" filled></wje-icon>
+            Deciduous
+            <wje-tree-item>
+              <wje-icon name="folder" filled></wje-icon>
+              Birch
+            </wje-tree-item>
+            <wje-tree-item expanded>
+              <wje-icon name="folder" filled></wje-icon>
+              Maple
+              <wje-tree-item>
+                <wje-icon name="folder" filled></wje-icon>
+                Field maple
+              </wje-tree-item>
+              <wje-tree-item>
+                <wje-icon name="folder" filled></wje-icon>
+                Red maple
+              </wje-tree-item>
+              <wje-tree-item>
+                <wje-icon name="folder" filled></wje-icon>
+                Sugar maple
+              </wje-tree-item>
+            </wje-tree-item>
+            <wje-tree-item>
+              <wje-icon name="folder" filled></wje-icon>
+              Oak
+            </wje-tree-item>
+          </wje-tree-item>
+          <wje-tree-item>
+            <wje-icon name="folder" filled></wje-icon>
+            Coniferous
+            <wje-tree-item>
+              <wje-icon name="folder" filled></wje-icon>
+              Cedar
+            </wje-tree-item>
+            <wje-tree-item>
+              <wje-icon name="folder" filled></wje-icon>
+              Pine
+            </wje-tree-item>
+            <wje-tree-item>
+              <wje-icon name="folder" filled></wje-icon>
+              Spruce
+            </wje-tree-item>
+          </wje-tree-item>
+          <wje-tree-item>
+            <wje-icon name="folder" filled></wje-icon>
+            Non-trees
+            <wje-tree-item>
+              <wje-icon name="folder" filled></wje-icon>
+              Bamboo
+            </wje-tree-item>
+            <wje-tree-item>
+              <wje-icon name="folder" filled></wje-icon>
+              Cactus
+            </wje-tree-item>
+            <wje-tree-item>
+              <wje-icon name="folder" filled></wje-icon>
+              Fern
+            </wje-tree-item>
           </wje-tree-item>
         </wje-tree>
       </div>

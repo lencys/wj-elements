@@ -578,7 +578,15 @@
     --wje-tooltip-border-radius: var(--wje-border-radius-medium);
 
     /* Tree - Item */
+    --wje-tree-item-padding-inline: var(--wje-spacing-3x-small);
+    --wje-tree-item-padding-block: var(--wje-spacing-3x-small);
     --wje-tree-item-indent: var(--wje-spacing-large);
     --wje-tree-item-indent-guid-width: 0px;
     --wje-tree-item-border-radius: var(--wje-border-radius-medium);
+    --wje-tree-item-background: transparent;
+    --wje-tree-item-color: var(--wje-color);
+    --wje-tree-item-background-hover: var(--wje-color-contrast-1);
+    --wje-tree-item-color-hover: var(--wje-color-contrast-8);
+    --wje-tree-item-background-selected: var(--wje-color-primary-9);
+    --wje-tree-item-color-selected: var(--wje-color-contrast-0);
 }

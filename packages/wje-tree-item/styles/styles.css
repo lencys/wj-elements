@@ -16,25 +16,17 @@
         .item {
             display: flex;
             align-items: center;
-
-            /*--toggle-width: var(--wje-tree-item-indent);*/
-            /*--spacer-col: var(--wje-tree-item-indent);*/
-
-            /*display: grid;*/
-            /*grid-template-columns: var(--spacer-col) var(--wje-tree-item-indent) 1fr;*/
-            /*grid-template-areas: "indent toggle content";*/
-
-            padding-inline: var(--wje-spacing-3x-small);
-            padding-block: var(--wje-spacing-3x-small);
+            padding-inline: var(--wje-tree-item-padding-inline);
+            padding-block: var(--wje-tree-item-padding-block);
             border-radius: var(--wje-tree-item-border-radius);
-            /*padding-left: var(--wje-tree-item-indent);*/
+            background-color: var(--wje-tree-item-background);
+            color: var(--wje-tree-item-color);
             &:hover {
-                background-color: var(--wje-color-contrast-1);
+                background-color: var(--wje-tree-item-background-hover);
+                color: var(--wje-tree-item-color-hover);
             }
             .indent {
-                /*grid-area: indent;*/
                 display: block;
-                /*width: var(--wje-tree-item-indent);*/
                 width: 1em;
             }
             .toggle {
@@ -46,7 +38,6 @@
                 width: var(--wje-tree-item-indent);
                 height: var(--wje-tree-item-indent);
                 flex-shrink: 0;
-                /*grid-area: toggle;*/
             }
             wje-checkbox {
                 font-size: var(--wje-font-size-medium);
@@ -54,7 +45,6 @@
             }
             .content {
                 font-size: var(--wje-font-size-medium);
-                grid-area: content;
             }
             slot {
                 display: flex;
@@ -62,6 +52,9 @@
             }
             slot:not([name])::slotted(wje-icon) {
                 margin-right: var(--wje-spacing-2x-small);
+            }
+            slot[name='end'] {
+                margin-inline-start: auto;
             }
         }
         .children {
@@ -91,6 +84,19 @@
 
 :host([selected]) {
     .item {
-        background-color: var(--wje-color-contrast-2);
+        background-color: var(--wje-tree-item-background-selected);
+        color: var(--wje-tree-item-color-selected);
+    }
+}
+:host([slot-hover-visible]) {
+    .item {
+        &:hover {
+            slot[name='start'], slot[name='end'] {
+                visibility: visible;
+            }
+        }
+        slot[name='start'], slot[name='end'] {
+            visibility: hidden;
+        }
     }
 }

@@ -73,6 +73,9 @@ export default class Tree extends WJElement {
 
             this.getExpandCollapseIcon(item, 'expand');
             this.getExpandCollapseIcon(item, 'collapse');
+
+            this.getSlots(item, 'start');
+            this.getSlots(item, 'end');
         });
     }
 
@@ -160,7 +163,18 @@ export default class Tree extends WJElement {
         }
 
         let iconClone = icon.cloneNode(true);
-        item.appendChild(iconClone);
+        item.append(iconClone);
+    }
+
+    getSlots(item, slotName) {
+        let slot = this.querySelector('template')?.content.querySelector(`[slot="${slotName}"]`);
+        if (!slot) {
+            console.warn(`Icon with slot "${slotName}" was not found.`);
+            return;
+        }
+
+        let slotClone = slot.cloneNode(true);
+        item.append(slotClone);
     }
 
     /**

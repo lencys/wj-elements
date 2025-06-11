@@ -173,6 +173,9 @@ export default class TreeItem extends WJElement {
      */
     beforeDraw() {
         if (this.isNestedItem()) this.slot = 'children';
+
+        if(this.closest('wje-tree')?.hasAttribute('slot-hover-visible'))
+            this.setAttribute('slot-hover-visible', '');
     }
 
     /**
@@ -190,7 +193,11 @@ export default class TreeItem extends WJElement {
         native.setAttribute('part', 'native');
         native.classList.add('native-tree-item', this.selection === 'multiple' ? 'multiple' : 'single');
 
+        let slotStart = document.createElement('slot');
+        slotStart.setAttribute('name', 'start');
+
         let item = document.createElement('div');
+        item.setAttribute('part', 'item');
         item.classList.add('item');
 
         let indent = document.createElement('div');
@@ -214,6 +221,10 @@ export default class TreeItem extends WJElement {
         slot.setAttribute('name', 'children');
         children.appendChild(slot);
 
+        let slotEnd = document.createElement('slot');
+        slotEnd.setAttribute('name', 'end');
+
+        item.appendChild(slotStart);
         item.appendChild(indent);
 
         if (this.querySelectorAll(':scope > wje-tree-item').length > 0) {
@@ -249,6 +260,7 @@ export default class TreeItem extends WJElement {
 
         label.appendChild(slotElement);
         item.appendChild(label);
+        item.appendChild(slotEnd);
 
         native.appendChild(item);
         native.appendChild(children);
