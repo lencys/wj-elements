@@ -1,4 +1,5 @@
-import { default as WJElement, event } from '../wje-element/element.js';
+import { FormAssociatedElement } from '../internals/form-associated-element.js';
+import { event } from '../utils/event.js';
 import styles from './styles/styles.css?inline';
 
 /**
@@ -7,7 +8,7 @@ import styles from './styles/styles.css?inline';
  * The event is dispatched on the current instance of the Checkbox class.
  * @documentation https://elements.webjet.sk/components/checkbox
  * @status stable
- * @augments WJElement
+ * @augments {FormAssociatedElement}
  * @slot - The checkbox main content.
  * @csspart native - The component's native wrapper.
  * @cssproperty [--wje-checkbox-border-radius=--wje-border-radius-medium] - Border radius of the component;
@@ -17,14 +18,16 @@ import styles from './styles/styles.css?inline';
  * @cssproperty [--wje-checkbox-margin-inline=0] - Margin inline of the component;
  * //@fires wje-checkbox:change - Dispatched when the checkbox state changes;
  */
-export default class Checkbox extends WJElement {
+export default class Checkbox extends FormAssociatedElement {
 	#internalValue = false;
 	/**
 	 * Checkbox constructor method.
 	 */
 	constructor() {
 		super();
-		this.internals = this.attachInternals();
+
+		this.invalid = false;
+		this.pristine = true;
 	}
 
 	/**
@@ -38,6 +41,7 @@ export default class Checkbox extends WJElement {
 		if (this.input) {
 			this.input.value = value;
 			this.input.checked = value;
+			this.pristine = false;
 		}
 	}
 
@@ -66,68 +70,13 @@ export default class Checkbox extends WJElement {
 	}
 
 	/**
-	 * Setter for the invalid attribute.
-	 * @param {boolean} isInvalid Whether the input is invalid.
+	 * Setter for the defaultValue attribute.
+	 * This method sets the 'value' attribute of the custom input element to the provided value.
+	 * The 'value' attribute represents the default value of the input element.
+	 * @param {string} value The value to set as the default value.
 	 */
-	set invalid(isInvalid) {
-		if (isInvalid) this.setAttribute('invalid', '');
-		else this.removeAttribute('invalid');
-	}
-
-	/**
-	 * Getter for the invalid attribute.
-	 * @returns {boolean} Whether the attribute is present.
-	 */
-	get invalid() {
-		return this.hasAttribute('invalid');
-	}
-
-	/**
-	 * Getter for the form attribute.
-	 * @returns {HTMLFormElement} The form the input is associated with.
-	 */
-	get form() {
-		return this.internals.form;
-	}
-
-	/**
-	 * Getter for the name attribute.
-	 * @returns {string} The name of the input.
-	 */
-	get name() {
-		return this.getAttribute('name');
-	}
-
-	/**
-	 * Getter for the type attribute.
-	 * @returns {string} The type of the input.
-	 */
-	get type() {
-		return this.localName;
-	}
-
-	/**
-	 * Getter for the validity attribute.
-	 * @returns {ValidityState} The validity state of the input.
-	 */
-	get validity() {
-		return this.internals.validity;
-	}
-
-	/**
-	 * Getter for the validationMessage attribute.
-	 * @returns {string} The validation message of the input.
-	 */
-	get validationMessage() {
-		return this.internals.validationMessage;
-	}
-
-	/**
-	 * Getter for the willValidate attribute.
-	 * @returns {boolean} Whether the input will be validated.
-	 */
-	get willValidate() {
-		return this.internals.willValidate;
+	set defaultValue(value) {
+		this.setAttribute('value', value);
 	}
 
 	/**
@@ -142,30 +91,30 @@ export default class Checkbox extends WJElement {
 	}
 
 	/**
-	 * Setter for the defaultValue attribute.
-	 * This method sets the 'value' attribute of the custom input element to the provided value.
-	 * The 'value' attribute represents the default value of the input element.
-	 * @param {string} value The value to set as the default value.
+	 * Sets or removes the 'indeterminate' attribute for the object.
+	 * This property typically reflects the visual or functional state where
+	 * the component is neither fully active nor inactive.
+	 * @param {boolean} value A boolean where `true` indicates the 'indeterminate'
+	 * state should be set, and `false` removes it.
 	 */
-	set defaultValue(value) {
-		this.setAttribute('value', value);
+	set indeterminate(value) {
+		if (value) {
+			this.setAttribute('indeterminate', '');
+		} else {
+			this.removeAttribute('indeterminate');
+		}
 	}
 
 	/**
-	 * Set checked attribute.
-	 * @param {boolean} value true if the toggle is checked, false otherwise
+	 * Retrieves the current state of the 'indeterminate' attribute.
+	 *
+	 * The 'indeterminate' attribute is typically used to signify a state
+	 * where a checkbox is neither checked nor unchecked, such as a partially
+	 * selected state.
+	 * @returns {boolean} Returns true if the 'indeterminate' attribute is present; otherwise, false.
 	 */
-	set disabled(value) {
-		if (value) this.setAttribute('disabled', '');
-		else this.removeAttribute('disabled');
-	}
-
-	/**
-	 * Get disabled attribute value.
-	 * @returns {boolean} true if the toggle is disabled, false otherwise
-	 */
-	get disabled() {
-		return this.hasAttribute('disabled');
+	get indeterminate() {
+		return this.hasAttribute('indeterminate');
 	}
 
 	/**
@@ -175,11 +124,8 @@ export default class Checkbox extends WJElement {
 	set checked(value) {
 		if (value) {
 			this.setAttribute('checked', '');
-			this.value = true;
-		}
-		else {
+		} else {
 			this.removeAttribute('checked');
-			this.value = false;
 		}
 	}
 
@@ -209,16 +155,15 @@ export default class Checkbox extends WJElement {
 	}
 
 	/**
-	 * Whether the input is associated with a form.
-	 * @type {boolean}
-	 */
-	static formAssociated = true;
-
-	/**
 	 * Sets up the attributes for the checkbox.
 	 */
 	setupAttributes() {
 		this.isShadowRoot = 'open';
+		// if some value was set via value setter then dont use default value
+		if (this.pristine) {
+			this.value = this.#internalValue;
+			this.pristine = false;
+		}
 	}
 
 	/**
@@ -236,16 +181,27 @@ export default class Checkbox extends WJElement {
 		input.type = 'checkbox';
 		input.id = 'checkbox';
 		input.name = this.name || 'checkbox';
-		input.checked = this.hasAttribute('checked');
-		input.disabled = this.hasAttribute('disabled');
-		input.indeterminate = this.hasAttribute('indeterminate');
+		input.checked = this.checked;
+		input.disabled = this.disabled;
+		input.indeterminate = this.indeterminate;
+		input.required = this.required;
 
 		let label = document.createElement('label');
 		label.htmlFor = 'checkbox';
 		label.innerHTML = '<slot></slot>';
 
-		native.appendChild(input);
-		native.appendChild(label);
+		// Error
+		let errorSlot = document.createElement('slot');
+		errorSlot.setAttribute('name', 'error');
+
+		let error = document.createElement('div');
+		error.setAttribute('slot', 'error');
+
+		native.append(input);
+		native.append(label);
+		native.append(errorSlot);
+
+		this.append(error);
 
 		this.input = input;
 
@@ -260,16 +216,32 @@ export default class Checkbox extends WJElement {
 	afterDraw() {
 		if (!this.disabled) {
 			this.input.addEventListener('input', (e) => {
+				this.validate();
+
+				this.pristine = false;
+				this.propagateValidation();
+
 				this.value = e.target.checked;
-				this.checked = e.target.checked;
+
 				event.dispatchCustomEvent(this, 'wje-toggle:input');
 			});
 
 			this.input.addEventListener('change', (e) => {
-				this.value = e.target.checked;
-				this.checked = e.target.checked;
 				event.dispatchCustomEvent(this, 'wje-toggle:change');
 			});
+
+			this.addEventListener('wje-checkbox:invalid', (e) => {
+				this.invalid = true;
+				this.pristine = false;
+
+				this.showInvalidMessage();
+			});
+
+			this.validate();
+
+			if (this.invalid) {
+				this.showInvalidMessage();
+			}
 		}
 	}
 
@@ -278,69 +250,5 @@ export default class Checkbox extends WJElement {
 	 */
 	beforeDisconnect() {
 		event.removeElement(this.input);
-	}
-
-	/**
-	 * @summary Callback function that is called when the custom element is associated with a form.
-	 * This function adds an event listener to the form's submit event, which validates the input and propagates the validation.
-	 * @param {HTMLFormElement} form The form the custom element is associated with.
-	 */
-	formAssociatedCallback(form) {
-		if (form) {
-			this.internals.setFormValue(this.value);
-		}
-	}
-
-	/**
-	 * The formResetCallback method is a built-in lifecycle callback that gets called when a form gets reset.
-	 * This method is responsible for resetting the value of the custom input element to its default value.
-	 * It also resets the form value and validity state in the form internals.
-	 * @function
-	 */
-	formResetCallback() {
-		// Set the value of the custom input element to its default value
-		this.value = this.defaultValue;
-		// Reset the form value in the form internals to the default value
-		this.internals.setFormValue(this.defaultValue);
-		// Reset the validity state in the form internals
-		this.internals.setValidity({});
-	}
-
-	/**
-	 * The formStateRestoreCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is restored.
-	 * This method is responsible for restoring the value of the custom input element to its saved state.
-	 * It also restores the form value and validity state in the form internals to their saved states.
-	 * @param {object} state The saved state of the custom input element.
-	 * @function
-	 */
-	formStateRestoreCallback(state) {
-		// Set the value of the custom input element to its saved value
-		this.value = state.value;
-		// Restore the form value in the form internals to the saved value
-		this.internals.setFormValue(state.value);
-		// Restore the validity state in the form internals to the saved state
-		this.internals.setValidity({});
-	}
-
-	/**
-	 * The formStateSaveCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is saved.
-	 * This method is responsible for saving the value of the custom input element.
-	 * @returns {object} The saved state of the custom input element.
-	 * @function
-	 */
-	formStateSaveCallback() {
-		return {
-			value: this.value,
-		};
-	}
-
-	/**
-	 * The formDisabledCallback method is a built-in lifecycle callback that gets called when the disabled state of a form-associated custom element changes.
-	 * This method is not implemented yet.
-	 * @param {boolean} disabled The new disabled state of the custom input element.
-	 * @function
-	 */
-	formDisabledCallback(disabled) {
-		console.warn('formDisabledCallback not implemented yet');
 	}
 }

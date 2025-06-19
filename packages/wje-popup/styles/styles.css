@@ -18,3 +18,18 @@
 .native-popup:not(.popup-active) {
     display: none;
 }
+
+.popup-loader.overlay {
+    position: absolute;
+    inset: 1px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+.popup-loader.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}

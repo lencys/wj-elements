@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { createServer, Model, Factory } from 'miragejs';
 
+// faker.seed(100)
 export const serverPromise = makeServer();
 
 function makeServer() {

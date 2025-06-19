@@ -1,4 +1,5 @@
-import { default as WJElement, event } from '../wje-element/element.js';
+import { FormAssociatedElement } from '../internals/form-associated-element.js';
+import { event } from '../utils/event.js';
 import Button from '../wje-button/button.js';
 import Popup from '../wje-popup/popup.js';
 import Icon from '../wje-icon/icon.js';
@@ -10,57 +11,9 @@ import Options from '../wje-options/options.js';
 import Checkbox from '../wje-checkbox/checkbox.js';
 import styles from './styles/styles.css?inline';
 
-/**
- * `Select` is a custom web component that represents a select input.
- * @summary This element represents a select input.
- * @documentation https://elements.webjet.sk/components/select
- * @status stable
- * @augments {WJElement}
- * @slot - The default slot for the select.
- * @slot anchor - The slot for the anchor.
- * @slot arrow - The slot for the arrow.
- * @csspart native - The native select wrapper.
- * @csspart input - The input field.
- * @csspart clear - The clear button.
- * @property {Array} _selected - An array to store selected items.
- * @property {HTMLElement|null} counterEl - A reference to the counter element, initially null.
- * @property {ElementInternals} internals - The internal element API for managing state and attributes.
- * @property {number} maxOptions - The maximum number of options allowed.
- * @property {boolean} _wasOppened - Tracks whether the select element was previously opened, initially false.
- * @cssproperty [--wje-select-border-width=1px] - Specifies the width of the border around the select component. Accepts any valid CSS length unit (e.g., `px`, `rem`, `em`).
- * @cssproperty [--wje-select-border-style=solid] - Defines the style of the border for the select component. Accepts standard CSS border styles, such as `solid`, `dashed`, or `dotted`.
- * @cssproperty [--wje-select-border-color=var(--wje-border-color)] - Sets the color of the border for the select component. Accepts any valid CSS color value, including color variables, named colors, and hex values.
- * @cssproperty [--wje-select-options-border-width=1px] - Specifies the width of the border for the select options dropdown. Accepts any valid CSS length unit.
- * @cssproperty [--wje-select-options-border-style=var(--wje-border-style)] - Defines the border style for the select options dropdown. Inherits from a defined CSS variable for consistency.
- * @cssproperty [--wje-select-options-border-color=var(--wje-border-color)] - Sets the border color for the select options dropdown. Accepts any valid CSS color value.
- * @cssproperty [--wje-select-background=var(--wje-background)] - Specifies the background color of the select component. Accepts any valid CSS color value.
- * @cssproperty [--wje-select-line-height=20px] - Defines the line height for the text within the select component. Accepts any valid CSS length value, ensuring consistent vertical alignment.
- * @cssproperty [--wje-select-color=var(--wje-color)] - Sets the text color for the select component. Accepts any valid CSS color value.
- * @cssproperty [--wje-select-border-radius=var(--wje-border-radius-medium)] - Specifies the border radius for the select component.Determines the roundness of the corners and accepts any valid CSS length unit or variable.
- * @tag wje-select
- */
-
-export default class Select extends WJElement {
-	#addedOptions = []
-	#htmlOptions = []
-	/**
-	 * Constructor for the Select class.
-	 * @class
-	 * @description Initializes the Select component.
-	 * This constructor sets up the initial state of the component, including selected items, counter element, and internal element API.
-	 * It also tracks whether the select element was previously opened.
-	 * @class
-	 * @augments {WJElement}
-	 * @memberof Select
-	 */
+export class Select extends FormAssociatedElement {
 	constructor() {
 		super();
-
-		/**
-		 * @type {Array}
-		 * @description An array to store selected items.
-		 */
-		this._selected = [];
 
 		/**
 		 * @type {HTMLElement|null}
@@ -68,17 +21,6 @@ export default class Select extends WJElement {
 		 * @private
 		 */
 		this.counterEl = null;
-
-		/**
-		 * @type {ElementInternals}
-		 * @description The internal element API for managing state and attributes.
-		 * @private
-		 * @readonly
-		 * @constant
-		 * @default {ElementInternals} this.attachInternals()
-		 * @description Attaches the internals to the element.
-		 */
-		this.internals = this.attachInternals();
 
 		/**
 		 * @type {boolean}
@@ -148,8 +90,15 @@ export default class Select extends WJElement {
 		 */
 		this.list = null;
 
-		this.selectedOptions = []
+		this._value = [];
+		this._selected = [];
+		this._selectedOptions = [];
+
 	}
+
+	#addedOptions = [];
+
+	#htmlOptions = [];
 
 	/**
 	 * An object representing component dependencies with their respective classes.
@@ -163,7 +112,6 @@ export default class Select extends WJElement {
 	 * @property {Function} 'wje-chip' Represents the Chip component class.
 	 * @property {Function} 'wje-input' Represents the Input component class.
 	 * @property {Function} 'wje-option' Represents the Option component class.
-	 * @property {Function} 'wje-options' Represents the Options component class.
 	 * @property {Function} 'wje-checkbox' Represents the Checkbox component class.
 	 */
 	dependencies = {
@@ -179,16 +127,30 @@ export default class Select extends WJElement {
 	};
 
 	/**
-	 * Setter for the value attribute.
-	 * @param {string} value The value to set.
+	 * Sets the value of the form element. Handles multiple values when
+	 * the element has the 'multiple' attribute by storing them in a FormData object.
+	 * @param {string | Array} value The value to be set. Can be a single value or an array of values
+	 * when 'multiple' attribute is present.
 	 */
 	set value(value) {
-		if (this.hasAttribute('multiple')) {
+		if (value) {
+			let data = value;
+
+			if (!Array.isArray(data)) {
+				data = data.split(' ');
+			}
 			const formData = new FormData();
-			value.forEach(v => formData.append(this.name, v));
-			this.internals.setFormValue(formData);
-		} else {
+			data.forEach(v => {
+				formData.append(this.name, v)
+			});
+			value = formData;
+
+			this._value = data;
+			this.selected = data;
+
 			this.internals.setFormValue(value);
+		} else {
+			this._value = [];
 		}
 	}
 
@@ -197,27 +159,19 @@ export default class Select extends WJElement {
 	 * @returns {object} The value of the attribute.
 	 */
 	get value() {
-		return this.selected;
-	}
-
-	set required(value) {
-		if (value) {
-			this.setAttribute('required', '');
-		} else {
-			this.removeAttribute('required');
-		}
-	}
-
-	get required() {
-		return this.hasAttribute('required');
+		return this._value;
 	}
 
 	/**
-	 * Getter for the customErrorDisplay attribute.
-	 * @returns {boolean} Whether the attribute is present.
+	 * Sets the `validate-on-change` attribute on the element. When the attribute is present, it typically indicates that validation should occur when the value of the input changes.
+	 * @param {boolean} value A boolean indicating whether to enable or disable the `validate-on-change` attribute.
 	 */
-	get customErrorDisplay() {
-		return this.hasAttribute('custom-error-display');
+	set validateOnChange(value) {
+		if (value) {
+			this.setAttribute('validate-on-change', '');
+		} else {
+			this.removeAttribute('validate-on-change');
+		}
 	}
 
 	/**
@@ -229,31 +183,8 @@ export default class Select extends WJElement {
 	}
 
 	/**
-	 * Retrieves the value of the 'invalid' attribute.
-	 * This method checks if the 'invalid' attribute is present on the element.
-	 * @returns {boolean} Returns true if the 'invalid' attribute is present, otherwise false.
-	 */
-	get invalid() {
-		return this.hasAttribute('invalid');
-	}
-
-	/**
-	 * Sets the 'invalid' property of the element.
-	 * When set to a truthy value, the 'invalid' attribute is added to the element.
-	 * When set to a falsy value, the 'invalid' attribute is removed from the element.
-	 * @param {boolean} value A boolean indicating whether the element is invalid.
-	 */
-	set invalid(value) {
-		if (value) {
-			this.setAttribute('invalid', '');
-		} else {
-			this.removeAttribute('invalid');
-		}
-	}
-
-	/**
 	 * Sets the maximum number of options allowed.
-	 * @param {string | number | null} value The value to set as the maximum number of options.
+	 * @param { number | object} value The value to set as the maximum number of options.
 	 * If null, the 'max-options' attribute will be removed.
 	 */
 	set maxOptions(value) {
@@ -275,51 +206,13 @@ export default class Select extends WJElement {
 	}
 
 	/**
-	 * Getter for the form attribute.
-	 * @returns {HTMLFormElement} The form the input is associated with.
+	 * @summary Setter for the defaultValue attribute.
+	 * This method sets the 'value' attribute of the custom input element to the provided value.
+	 * The 'value' attribute represents the default value of the input element.
+	 * @param {string} value The value to set as the default value.
 	 */
-	get form() {
-		return this.internals.form;
-	}
-
-	/**
-	 * Getter for the name attribute.
-	 * @returns {string} The name of the input.
-	 */
-	get name() {
-		return this.getAttribute('name');
-	}
-
-	/**
-	 * Getter for the type attribute.
-	 * @returns {string} The type of the input.
-	 */
-	get type() {
-		return this.localName;
-	}
-
-	/**
-	 * Getter for the validity attribute.
-	 * @returns {ValidityState} The validity state of the input.
-	 */
-	get validity() {
-		return this.internals.validity;
-	}
-
-	/**
-	 * Getter for the validationMessage attribute.
-	 * @returns {string} The validation message of the input.
-	 */
-	get validationMessage() {
-		return this.internals.validationMessage;
-	}
-
-	/**
-	 * Getter for the willValidate attribute.
-	 * @returns {boolean} Whether the input will be validated.
-	 */
-	get willValidate() {
-		return this.internals.willValidate;
+	set defaultValue(value) {
+		this.setAttribute('value', value);
 	}
 
 	/**
@@ -334,13 +227,36 @@ export default class Select extends WJElement {
 	}
 
 	/**
-	 * @summary Setter for the defaultValue attribute.
-	 * This method sets the 'value' attribute of the custom input element to the provided value.
-	 * The 'value' attribute represents the default value of the input element.
-	 * @param {string} value The value to set as the default value.
+	 * Sets the trigger value.
+	 * @param {string} value The trigger value to set.
 	 */
-	set defaultValue(value) {
-		this.setAttribute('value', value);
+	set trigger(value) {
+		this.setAttribute('trigger', value);
+	}
+
+	/**
+	 * Returns the trigger value.
+	 * @returns {string} The trigger value.
+	 */
+	get trigger() {
+		return this.getAttribute('trigger') || 'click';
+	}
+
+	/**
+	 * Sets the offset attribute for the element.
+	 * @param {string} value The value to assign to the offset attribute.
+	 */
+	set offset(value) {
+		this.setAttribute('offset', value);
+	}
+
+	/**
+	 * Gets the value of the offset attribute of the current element.
+	 * If the offset attribute is not present, returns a default value of '0'.
+	 * @returns {string} The value of the offset attribute or the default value '0'.
+	 */
+	get offset() {
+		return this.getAttribute('offset') || '5';
 	}
 
 	/**
@@ -356,7 +272,31 @@ export default class Select extends WJElement {
 	 * @returns {Array} The selected value.
 	 */
 	get selected() {
-		return this.getSelected();
+		return this._selected;
+	}
+
+	/**
+	 * Sets the selected options for the object.
+	 * @param {Array|object} value The new value for the selected options. It can be an array or object containing the selected options.
+	 */
+	set selectedOptions(value) {
+		this._selectedOptions = value;
+	}
+
+	/**
+	 * Retrieves the selected options.
+	 * @returns {Array} An array containing the currently selected options. If no options are selected, an empty array is returned.
+	 */
+	get selectedOptions() {
+		return this._selectedOptions || [];
+	}
+
+	/**
+	 * Getter for the customErrorDisplay attribute.
+	 * @returns {boolean} Whether the attribute is present.
+	 */
+	get customErrorDisplay() {
+		return this.hasAttribute('custom-error-display');
 	}
 
 	/**
@@ -380,30 +320,6 @@ export default class Select extends WJElement {
 		}
 	}
 
-	/**
-	 * Sets the trigger value.
-	 * @param {string} value The trigger value to set.
-	 */
-	set trigger(value) {
-		this.setAttribute('trigger', value);
-	}
-
-	/**
-	 * Returns the trigger value.
-	 * @returns {string} The trigger value.
-	 */
-	get trigger() {
-		return this.getAttribute('trigger') || 'click';
-	}
-
-	set offset(value) {
-		this.setAttribute('offset', value);
-	}
-
-	get offset() {
-		return this.getAttribute('offset') || '0';
-	}
-
 	className = 'Select';
 
 	/**
@@ -423,12 +339,6 @@ export default class Select extends WJElement {
 	static get observedAttributes() {
 		return ['active', 'value', 'disabled', 'multiple', 'label', 'placeholder', 'max-height', 'max-options', 'variant', 'placement'];
 	}
-
-	/**
-	 * Whether the input is associated with a form.
-	 * @type {boolean}
-	 */
-	static formAssociated = true;
 
 	/**
 	 * Sets up the attributes for the component.
@@ -471,12 +381,25 @@ export default class Select extends WJElement {
 
 		let input = document.createElement('input');
 		input.setAttribute('type', 'text');
-		input.setAttribute('part', 'input');
-		input.setAttribute('autocomplete', 'off');
-		input.setAttribute('readonly', '');
-		input.setAttribute('placeholder', this.placeholder || '');
-		if(this.required)
+		input.value = this.value.join(' ').trim();
+		input.classList.add('input-hidden');
+
+		let display = document.createElement('input');
+		display.setAttribute('type', 'text');
+		display.setAttribute('part', 'input');
+		display.setAttribute('autocomplete', 'off');
+		display.setAttribute('readonly', '');
+		display.setAttribute('placeholder', this.placeholder || '');
+
+		if (this.required) {
 			input.setAttribute('required', '');
+			display.setAttribute('required', '');
+		}
+
+		if (this.disabled) {
+			input.setAttribute('disabled', '');
+			display.setAttribute('disabled', '');
+		}
 
 		let slotEnd = document.createElement('div');
 		slotEnd.classList.add('slot-end');
@@ -517,12 +440,12 @@ export default class Select extends WJElement {
 		// vytvorime popup
 		let popup = document.createElement('wje-popup');
 		popup.setAttribute('placement', 'bottom-start');
-		popup.setAttribute('manual', '');
+		// popup.setAttribute('manual', '');
 		popup.setAttribute('size', '');
 		popup.setAttribute('part', 'popup');
 		popup.setAttribute('offset', this.offset);
 
-		if (this.hasAttribute('disabled')) popup.setAttribute('disabled', '');
+		if (this.disabled) popup.setAttribute('disabled', '');
 
 		if (this.variant === 'standard') {
 			if (this.hasAttribute('label')) native.appendChild(label);
@@ -531,6 +454,7 @@ export default class Select extends WJElement {
 		}
 
 		inputWrapper.append(slotStart);
+		inputWrapper.append(display);
 		inputWrapper.append(input);
 
 		clear.append(clearIcon);
@@ -591,6 +515,7 @@ export default class Select extends WJElement {
 		this.slotStart = slotStart;
 		this.slotEnd = slotEnd;
 		this.input = input;
+		this.display = display;
 		this.optionsWrapper = optionsWrapper;
 		this.chips = chips;
 		this.clear = clear;
@@ -608,7 +533,7 @@ export default class Select extends WJElement {
 	 * @returns {void} Does not return a value. The method operates by updating the state and behavior of the component.
 	 */
 	afterDraw() {
-		this.validateSelect();
+		this.validate(this.selectedOptions);
 
 		if (this.hasAttribute('invalid')) {
 			this.showInvalidMessage();
@@ -652,10 +577,11 @@ export default class Select extends WJElement {
 			}
 		});
 
-		// pridame event listener na kliknutie na button clear
 		this.clear?.addEventListener('wje-button:click', (e) => {
 			e.preventDefault();
 			e.stopPropagation();
+
+			this.selected = [];
 			this.selectedOptions = [];
 
 			this.getAllOptions().forEach((option) => {
@@ -666,11 +592,21 @@ export default class Select extends WJElement {
 			e.stopPropagation();
 		});
 
-		this.selectedOptions = this.getSelectedOptions();
+		event.addListener(this, 'wje-popup:aftershow', null, (e) => {
+			console.log('WJE-POPUP:AFTERSHOW', e);
+
+			if (!this.hasAttribute('lazy')) {
+
+			}
+		});
+
+		this.selectOptions(this.value);
+		this.selected = this.#getSelected();
+
+		this.selectedOptions = this.#getSelectedOptions();
 		this.selections(true);
 
 		this.list.addEventListener('wje-options:load', (e) => {
-			// todo select options from this.selectedOptions
 			this.selectedOptions.forEach((option) => {
 				this.getAllOptions().forEach((el) => {
 					if (el.value === option.value) {
@@ -680,6 +616,7 @@ export default class Select extends WJElement {
 			})
 
 			this.list.scrollTo(0, 0);
+			event.dispatchCustomEvent(this.popup, 'wje-popup:content-ready'); // Notify that the content is ready
 		});
 
 		// skontrolujeme ci ma select atribut find
@@ -728,11 +665,11 @@ export default class Select extends WJElement {
 
 		this.selections();
 
-		this.validateSelect();
+		this.validate(this.selectedOptions);
 
 		this.pristine = false;
 		this.propagateValidation();
-	};
+	}
 
 	/**
 	 * Handles the selection and deselection of an option element.
@@ -774,39 +711,21 @@ export default class Select extends WJElement {
 	}
 
 	/**
-	 * Returns the selected options as HTML.
-	 * @returns {NodeList} The selected options as HTML.
-	 */
-	getSelectedOptions() {
-		return Array.from(this.querySelectorAll('wje-option[selected]'));
-	}
-
-	/**
-	 * Returns the selected options.
-	 * @returns {Array} The selected options.
-	 */
-	getSelected() {
-		return this.selectedOptions.map((option) => {
-			return {
-				value: option.value,
-				text: this.#htmlSelectedItem(option.value) // option.textContent.trim(),
-			};
-		});
-	}
-
-	/**
 	 * Handles the selection change.
 	 * @param {Element[]} options The option that changed.
 	 * @param {number} length The length of the selected options.
 	 */
 	selectionChanged(options = null, length = 0) {
-		if (this.hasAttribute('multiple')) {
+		this.selected = this.#getSelected();
 
+		console.log('SELECTION CHANGED', this.selected, this.selectedOptions);
+		if (this.hasAttribute('multiple')) {
+			console.log('SELECTION CHANGED MULTIPLE', this.selectedOptions.map((el) => el.value).reverse());
 			this.value = this.selectedOptions.map((el) => el.value).reverse();
+			this.input.value = this.selected.map(a => a.value).join(" ").trim();
 
 			if (this.placeholder && length === 0) {
 				this.chips.innerHTML = this.placeholder;
-				this.input.value = '';
 			} else {
 				if (options !== null) Array.from(options).slice(0, +this.maxOptions).forEach(option => this.chips.appendChild(this.getChip(option)));
 				if (this.counterEl instanceof HTMLElement || !this.maxOptions || length > +this.maxOptions) {
@@ -814,10 +733,11 @@ export default class Select extends WJElement {
 				}
 			}
 		} else {
-			let option = options?.at(0);
-			let value = (option && this.#htmlSelectedItem(option.value)) ?? ""  // option?.textContent.trim() || '';
+			const option = options?.at(0);
+			console.log('SELECTION CHANGED MULTIPLE', this.selectedOptions?.map((el) => el.value)?.at(0));
 			this.value = this.selectedOptions?.map((el) => el.value)?.at(0);
-			this.input.value = value;
+			this.input.value = this.selected[0]?.value || '';
+			this.display.value = this.selected[0]?.text || '';
 
 			if (option && option instanceof HTMLElement) {
 				this.slotStart.innerHTML = '';
@@ -865,9 +785,8 @@ export default class Select extends WJElement {
 
 		if (this.selectedOptions.length > 0) {
 			this.selectionChanged(this.selectedOptions, this.selectedOptions.length);
-
 		} else {
-			this.selectionChanged();
+			this.selectionChanged(this.selectedOptions);
 		}
 
 		if (silence) return;
@@ -957,6 +876,15 @@ export default class Select extends WJElement {
 	}
 
 	/**
+	 * Returns the provided item.
+	 * @param {any} item The item to be returned.
+	 * @returns {any} The same item that was passed as input.
+	 */
+	htmlSelectedItem(item) {
+		return item;
+	}
+
+	/**
 	 * Adds an option to the select element.
 	 * @param {any} optionData The data for the option to be added.
 	 * @param {boolean} [silent] Whether to suppress any events triggered by the addition of the option.
@@ -984,12 +912,6 @@ export default class Select extends WJElement {
 		if (!Array.isArray(optionsData)) {
 			this.addOption(optionsData, silent, map);
 		} else {
-			const optionsElement = this.querySelector('wje-options');
-			if (optionsElement) {
-				optionsElement.addOptions(optionsData, silent, map);
-				return;
-			}
-
 			optionsData.forEach((item) => {
 				this.addOption(item, silent, map);
 			});
@@ -1029,6 +951,36 @@ export default class Select extends WJElement {
 	}
 
 	/**
+	 * Clones and appends an icon from a template with slot "check" to the given option element.
+	 * @param {HTMLElement} option The target option element where the "check" icon will be added.
+	 * @returns {void}
+	 */
+	optionCheckSlot(option) {
+		let icon = this.querySelector('template')?.content.querySelector(`[slot="check"]`);
+		if (!icon) {
+			console.warn(`Icon with slot "check" was not found.`);
+			return;
+		}
+
+		let iconClone = icon.cloneNode(true);
+		option.append(iconClone);
+	}
+
+	/**
+	 * Checks if all elements in the `elements` array are present in the `options` array based on their `option` property.
+	 * @param {Array} elements The array of elements to check. Each element should have an `option` property.
+	 * @param {Array} options The array of options to verify against.
+	 * @returns {boolean} Returns true if all elements in the `elements` array are found within the `options` array, otherwise returns false.
+	 */
+	areAllElementsInOptions(elements, options) {
+		if (elements.length === 0) return false;
+
+		return elements.every(el =>
+			options.some(opt => JSON.stringify(opt) === JSON.stringify(el.option))
+		);
+	}
+
+	/**
 	 * Processes the provided item to retrieve its corresponding value and text
 	 * based on the configuration of `wje-options`, then updates and returns
 	 * the selected item's HTML representation.
@@ -1046,161 +998,23 @@ export default class Select extends WJElement {
 	}
 
 	/**
-	 * Returns the provided item.
-	 * @param {any} item The item to be returned.
-	 * @returns {any} The same item that was passed as input.
+	 * Returns the selected options.
+	 * @returns {Array} The selected options.
 	 */
-	htmlSelectedItem(item) {
-		return item;
+	#getSelected() {
+		return this.selectedOptions.map((option) => {
+			return {
+				value: option.value,
+				text: this.#htmlSelectedItem(option.value) // option.textContent.trim(),
+			};
+		});
 	}
 
 	/**
-	 * Clones and appends an icon from a template with slot "check" to the given option element.
-	 * @param {HTMLElement} option The target option element where the "check" icon will be added.
-	 * @returns {void}
+	 * Returns the selected options as HTML.
+	 * @returns {NodeList} The selected options as HTML.
 	 */
-	optionCheckSlot(option) {
-		let icon = this.querySelector('template')?.content.querySelector(`[slot="check"]`);
-		if (!icon) {
-			console.warn(`Icon with slot "check" was not found.`);
-			return;
-		}
-
-		let iconClone = icon.cloneNode(true);
-		option.append(iconClone);
-	}
-
-	/**
-	 * Validates the selection of options in the select element.
-	 * Checks if the element is required and no option is selected,
-	 * in which case it sets a validation error with a custom message.
-	 * If the element passes validation, it clears any existing validation errors.
-	 *
-	 * @return {void} Does not return a value.
-	 */
-	validateSelect() {
-		if (this.required && this.selectedOptions.length === 0) {
-			const msg = this.getAttribute('message-required') || 'Zvoľte možnosť';
-			this.internals.setValidity({ valueMissing: true }, msg);
-		} else {
-			this.internals.setValidity({});
-		}
-	}
-
-	/**
-	 * Checks and updates the validation state of the component based on its current properties.
-	 * If the component is invalid and a custom error display is enabled, it dispatches an 'invalid' event.
-	 * @returns {void} This method does not return a value.
-	 */
-	propagateValidation() {
-		this.invalid = !this.pristine && !this.validity.valid;
-
-		if (this.invalid) {
-			event.dispatchCustomEvent(this, 'wje-select:invalid');
-		}
-	}
-
-	showInvalidMessage() {
-		let hasSlotError = true; //this.hasSlot(this, 'error');
-
-		if (hasSlotError) {
-			const slot = this.querySelector("[slot='error']");
-			let errorMessageEL = slot.querySelector('[error-message]');
-
-			if (!errorMessageEL) {
-				const error = document.createElement('div');
-				error.setAttribute('error-message', '');
-				slot.append(error);
-				errorMessageEL = error;
-			}
-
-			errorMessageEL.textContent = this.internals.validationMessage;
-		} else {
-			this.errorMessage.textContent = this.internals.validationMessage;
-		}
-		console.log(`Invalid input: ${this.internals.validationMessage}`);
-	}
-
-	/**
-	 * Lifecycle callback invoked when the custom element becomes associated with a form element.
-	 * @param {HTMLFormElement} form The form element the custom element is associated with.
-	 * @returns {void}
-	 */
-	formAssociatedCallback(form) {
-		if (form) {
-			form.addEventListener('submit', () => {
-				this.validateSelect();
-				this.propagateValidation();
-			});
-		}
-	}
-
-	/**
-	 * The formResetCallback method is a built-in lifecycle callback that gets called when a form gets reset.
-	 * This method is responsible for resetting the value of the custom input element to its default value.
-	 * It also resets the form value and validity state in the form internals.
-	 * @function
-	 */
-	formResetCallback() {
-		// Set the value of the custom input element to its default value
-		this.value = this.defaultValue;
-		// Reset the form value in the form internals to the default value
-		this.internals.setFormValue(this.defaultValue);
-		// Reset the validity state in the form internals
-		this.internals.setValidity({});
-	}
-
-	/**
-	 * The formStateRestoreCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is restored.
-	 * This method is responsible for restoring the value of the custom input element to its saved state.
-	 * It also restores the form value and validity state in the form internals to their saved states.
-	 * @param {object} state The saved state of the custom input element.
-	 * @function
-	 */
-	formStateRestoreCallback(state) {
-		// Set the value of the custom input element to its saved value
-		this.value = state.value;
-		// Restore the form value in the form internals to the saved value
-		this.internals.setFormValue(state.value);
-		// Restore the validity state in the form internals to the saved state
-		this.internals.setValidity({});
-	}
-
-	/**
-	 * The formStateSaveCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is saved.
-	 * This method is responsible for saving the value of the custom input element.
-	 * @returns {object} The saved state of the custom input element.
-	 * @function
-	 */
-	formStateSaveCallback() {
-		return {
-			value: this.value,
-		};
-	}
-
-	/**
-	 * The formDisabledCallback method is a built-in lifecycle callback that gets called when the disabled state of a form-associated custom element changes.
-	 * This method is not implemented yet.
-	 * @param {boolean} disabled The new disabled state of the custom input element.
-	 * @function
-	 */
-	formDisabledCallback(disabled) {
-		console.warn('formDisabledCallback not implemented yet');
-		this.native?.classList.toggle('disabled', disabled);
-		this.toggleAttribute('disabled', disabled);
-	}
-
-	/**
-	 * Checks if all elements in the `elements` array are present in the `options` array based on their `option` property.
-	 * @param {Array} elements The array of elements to check. Each element should have an `option` property.
-	 * @param {Array} options The array of options to verify against.
-	 * @returns {boolean} Returns true if all elements in the `elements` array are found within the `options` array, otherwise returns false.
-	 */
-	areAllElementsInOptions(elements, options) {
-		if (elements.length === 0) return false;
-
-		return elements.every(el =>
-			options.some(opt => JSON.stringify(opt) === JSON.stringify(el.option))
-		);
+	#getSelectedOptions() {
+		return Array.from(this.querySelectorAll('wje-option[selected]'));
 	}
 }

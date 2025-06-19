@@ -5,6 +5,68 @@ const template = document.createElement('template');
 
 template.innerHTML = `<h1>Input</h1>
   <div class="container">    
+    <!-- VALIDATION IN FORM -->
+    
+    <h2>Validation in form</h2>
+    <div class="playground">
+      <div class="content">
+        <form name="test-form-1" id="test-form-1">
+          <!-- DEFAULT -->
+          <h2>Default</h2>
+          <wje-select label="Label" placeholder="Select option" required>
+            <wje-option value="option-1">Option 1</wje-option>
+            <wje-option value="option-2">
+              Option 2
+              <wje-icon name="heart" slot="end"></wje-icon>
+            </wje-option>
+            <wje-option value="option-3">Option 3</wje-option>
+            <wje-option value="option-4">Option 4</wje-option>
+          </wje-select>
+          <wje-input variant="default" label="Project URL" required validate-on-change><span slot="start"><wje-icon name="globe"></wje-icon></span><span slot="end">.com</span></wje-input>
+          <wje-input variant="default" label="Number" type="number" required validate-on-change></wje-input>
+          <wje-textarea label="Label" name="dog" rows="4" max-length="24" required counter validate-on-change></wje-textarea>
+          <wje-checkbox required>Default checked</wje-checkbox>
+          
+          <!-- STANDARD -->
+          <h2>Standard</h2>
+          <wje-select variant="standard" label="Label" placeholder="Select option" required>
+            <wje-option value="option-1">Option 1</wje-option>
+            <wje-option value="option-2">
+              Option 2
+              <wje-icon name="heart" slot="end"></wje-icon>
+            </wje-option>
+            <wje-option value="option-3">Option 3</wje-option>
+            <wje-option value="option-4">Option 4</wje-option>
+          </wje-select>
+          <wje-select variant="standard" label="Label" placeholder="Select options" value="option-3 option-4" name="select-multi" required multiple>
+            <wje-option value="option-1">Option 1</wje-option>
+            <wje-option value="option-2">
+              Option 2
+              <wje-icon name="heart" slot="end"></wje-icon>
+            </wje-option>
+            <wje-option value="option-3">Option 3</wje-option>
+            <wje-option value="option-4">Option 4</wje-option>
+          </wje-select>
+          <wje-input variant="standard" label="Project URL" required validate-on-change><span slot="start"><wje-icon name="globe"></wje-icon></span><span slot="end">.com</span></wje-input>
+          <wje-input variant="standard" label="Number" type="number" required validate-on-change></wje-input>
+          <wje-textarea variant="standard" label="Label" name="dog" rows="4" max-length="24" required counter validate-on-change></wje-textarea>
+          <wje-radio-group id="radio-group-animal" name="radio">
+            <wje-radio value="cat">Cat</wje-radio>
+            <wje-radio value="elephant" disabled="">Elephant</wje-radio>
+            <wje-radio indeterminate value="rabbit" >Rabbit</wje-radio>
+            <wje-radio value="dog">Dog</wje-radio>
+          </wje-radio-group>
+          <hr>
+          <wje-checkbox name="checkbox" required>Default checked</wje-checkbox>
+          <br>
+          <div style="display: flex; gap: .5rem;">
+            <wje-button type="reset">Reset</wje-button>
+            <wje-button type="submit" color="primary">Submit</wje-button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
     <!-- DEFAULT -->
 
     <h2>Default</h2>
@@ -211,47 +273,47 @@ template.innerHTML = `<h1>Input</h1>
       </div>
     </div>
     
-    <!-- VALIDATION IN FORM -->
-    
-    <h2>Validation in form</h2>
-    <div class="playground">
-      <div class="content">
-        <form name="test-form-1" id="test-form-1">
-          <!-- DEFAULT -->
-          <h2>Default</h2>
-          <wje-select label="Label" placeholder="Select option" required>
-            <wje-option value="option-1">Option 1</wje-option>
-            <wje-option value="option-2">
-              Option 2
-              <wje-icon name="heart" slot="end"></wje-icon>
-            </wje-option>
-            <wje-option value="option-3">Option 3</wje-option>
-            <wje-option value="option-4">Option 4</wje-option>
-          </wje-select>
-          <wje-input variant="default" label="Project URL" required validate-on-change><span slot="start"><wje-icon name="globe"></wje-icon></span><span slot="end">.com</span></wje-input>
-          <wje-textarea label="Label" name="dog" rows="4" max-length="24" required counter validate-on-change></wje-textarea>
-          
-          <h2>Standard</h2>
-          <!-- STANDARD -->
-          <wje-select variant="standard" label="Label" placeholder="Select option" required>
-            <wje-option value="option-1">Option 1</wje-option>
-            <wje-option value="option-2">
-              Option 2
-              <wje-icon name="heart" slot="end"></wje-icon>
-            </wje-option>
-            <wje-option value="option-3">Option 3</wje-option>
-            <wje-option value="option-4">Option 4</wje-option>
-          </wje-select>
-          <wje-input variant="standard" label="Project URL" required validate-on-change><span slot="start"><wje-icon name="globe"></wje-icon></span><span slot="end">.com</span></wje-input>
-          <wje-textarea variant="standard" label="Label" name="dog" rows="4" max-length="24" required counter validate-on-change></wje-textarea>
-          
-          <div style="display: flex; gap: .5rem;">
-            <wje-button type="reset">Reset</wje-button>
-            <wje-button type="submit" color="primary">Submit</wje-button>
-          </div>
-        </form>
-      </div>
-    </div>
+<!--    &lt;!&ndash; VALIDATION IN FORM &ndash;&gt;-->
+<!--    -->
+<!--    <h2>Validation in form</h2>-->
+<!--    <div class="playground">-->
+<!--      <div class="content">-->
+<!--        <form name="test-form-1" id="test-form-1">-->
+<!--          &lt;!&ndash; DEFAULT &ndash;&gt;-->
+<!--          <h2>Default</h2>-->
+<!--          <wje-select label="Label" placeholder="Select option" required>-->
+<!--            <wje-option value="option-1">Option 1</wje-option>-->
+<!--            <wje-option value="option-2">-->
+<!--              Option 2-->
+<!--              <wje-icon name="heart" slot="end"></wje-icon>-->
+<!--            </wje-option>-->
+<!--            <wje-option value="option-3">Option 3</wje-option>-->
+<!--            <wje-option value="option-4">Option 4</wje-option>-->
+<!--          </wje-select>-->
+<!--          <wje-input variant="default" label="Project URL" required validate-on-change><span slot="start"><wje-icon name="globe"></wje-icon></span><span slot="end">.com</span></wje-input>-->
+<!--          <wje-textarea label="Label" name="dog" rows="4" max-length="24" required counter validate-on-change></wje-textarea>-->
+<!--          -->
+<!--          <h2>Standard</h2>-->
+<!--          &lt;!&ndash; STANDARD &ndash;&gt;-->
+<!--          <wje-select variant="standard" label="Label" placeholder="Select option" required>-->
+<!--            <wje-option value="option-1">Option 1</wje-option>-->
+<!--            <wje-option value="option-2">-->
+<!--              Option 2-->
+<!--              <wje-icon name="heart" slot="end"></wje-icon>-->
+<!--            </wje-option>-->
+<!--            <wje-option value="option-3">Option 3</wje-option>-->
+<!--            <wje-option value="option-4">Option 4</wje-option>-->
+<!--          </wje-select>-->
+<!--          <wje-input variant="standard" label="Project URL" required validate-on-change><span slot="start"><wje-icon name="globe"></wje-icon></span><span slot="end">.com</span></wje-input>-->
+<!--          <wje-textarea variant="standard" label="Label" name="dog" rows="4" max-length="24" required counter validate-on-change></wje-textarea>-->
+<!--          -->
+<!--          <div style="display: flex; gap: .5rem;">-->
+<!--            <wje-button type="reset">Reset</wje-button>-->
+<!--            <wje-button type="submit" color="primary">Submit</wje-button>-->
+<!--          </div>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
     
     <!-- VALIDATION IN FORM -->
     
@@ -311,13 +373,15 @@ export default class DemoInput extends WJElement {
     // FORM 1
     let form1 = this.context.querySelector('#test-form-1');
     form1.addEventListener('submit', (e) => {
+      console.log('SUMBIT CLICK', e.target);
       e.preventDefault();
-      if (e.target.checkValidity()) {
+      if (!e.target.checkValidity()) {
         let formDate = new FormData(e.target);
+        console.log("FORM DATA:", formDate);
         for (let pair of formDate.entries()) {
-          console.log(pair[0] + ', ' + pair[1]);
+          // console.log(pair[0] + ', ' + pair[1]);
         }
-        console.log('klikol som form submit', e);
+        // console.log('klikol som form submit', e);
       }
     });
 

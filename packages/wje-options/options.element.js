@@ -4,29 +4,19 @@ import List from '../wje-list/list.js';
 import Option from '../wje-option/option.js';
 
 /**
- * `Options` is a custom web component that represents a set of options.
- * It extends from `WJElement`.
+ * `Options` is a custom web component that represents a set of options. It extends from `WJElement`.
  * @summary This element represents a set of options.
  * @documentation https://elements.webjet.sk/components/options
  * @status stable
- * @augments {WJElement}
- * // @fires wje-options:load - Event fired when the options are loaded.
  * @tag wje-options
  */
+
 export default class Options extends WJElement {
-	/**
-	 * Stores the loaded options.
-	 * @type {Array}
-	 * @private
-	 */
+
 	#loadedOptions = [];
 
-	#drawPreloadedElements = []
+	#drawPreloadedElements = [];
 
-	/**
-	 * Creates an instance of Options.
-	 * @class
-	 */
 	constructor() {
 		super();
 	}
@@ -35,14 +25,14 @@ export default class Options extends WJElement {
 		'wje-option': Option,
 		'wje-infinite-scroll': InfiniteScroll,
 		'wje-list': List,
-	};
+	}
 
 	className = 'Options';
 
 	/**
-	 * Returns the list of attributes to observe for changes.
-	 * @static
-	 * @returns {Array<string>}
+	 * Retrieves an array of attributes that should be observed for changes.
+	 * The method returns a list of attribute names that the browser will monitor for changes.
+	 * @returns {Array<string>} An array of attribute names to observe.
 	 */
 	static get observedAttributes() {
 		return ['search', 'attached'];
@@ -267,6 +257,10 @@ export default class Options extends WJElement {
 		return this.#drawPreloadedElements;
 	}
 
+	/**
+	 * Sets the elements that are preloaded and ready to be drawn.
+	 * @param {Array|object} elements The elements to be set for preloading. This can be an array or a specific object containing drawable elements.
+	 */
 	set drawPreloadedElements(elements) {
 		this.#drawPreloadedElements = elements;
 	}
@@ -276,14 +270,6 @@ export default class Options extends WJElement {
 	 */
 	setupAttributes() {
 		this.isShadowRoot = 'open';
-	}
-
-	/**
-	 * Prepares the component before drawing.
-	 * Fetches the pages and creates the options elements.
-	 */
-	afterDraw() {
-		// event.dispatchCustomEvent(this, 'wje-options:load', {}); // nepomohlo to, v ff stale je scroll hore
 	}
 
 	/**
@@ -304,8 +290,6 @@ export default class Options extends WJElement {
 				this.infiniteScroll.placementObj.innerHTML = '';
 				this.infiniteScroll.totalPages = 0;
 				this.infiniteScroll.refresh();
-
-				return fragment;
 			}
 
 			const infiniteScroll = document.createElement('wje-infinite-scroll');
@@ -333,7 +317,12 @@ export default class Options extends WJElement {
 			};
 
 			event.addListener(infiniteScroll, 'wje-infinite-scroll:load', null, (e) => {
-				event.dispatchCustomEvent(this, 'wje-options:load', {});
+				// Wait for next paint cycle to ensure options are in DOM
+				requestAnimationFrame(() => {
+					requestAnimationFrame(() => {
+						event.dispatchCustomEvent(this, 'wje-options:load', {});
+					});
+				});
 			});
 
 			if (this.hasAttribute('attached')) {
@@ -361,9 +350,9 @@ export default class Options extends WJElement {
 	}
 
 	/**
-	 * Processes the given data and returns the options based on the option array path.
-	 * @param {any} data The data to be processed.
-	 * @returns {any} - The options based on the option array path.
+	 * Processes the provided data based on the optional array path set in the instance.
+	 * @param {object} data The input data to be processed.
+	 * @returns {Array} The resolved options array from the data or an empty array if no match is found.
 	 */
 	processData(data) {
 		const splittedOptionArrayPath = this.optionArrayPath ? this.optionArrayPath?.split('.') : null;
@@ -377,9 +366,9 @@ export default class Options extends WJElement {
 	}
 
 	/**
-	 * Filters out drawn options from the response.
-	 * @param {object | null} response The response to filter.
-	 * @returns {object} The filtered response.
+	 * Filters out options from the response object that have already been drawn, based on the specified option array path.
+	 * @param {object} response The response object containing data to process.
+	 * @returns {object} The filtered response object with drawn options removed.
 	 */
 	filterOutDrawnOptions(response) {
 		const splittedOptionArrayPath = this.optionArrayPath ? this.optionArrayPath?.split('.') : [];

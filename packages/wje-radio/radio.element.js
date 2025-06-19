@@ -22,7 +22,14 @@ export default class Radio extends WJElement {
     constructor() {
         super();
 
-        this._checked = false;
+    }
+
+    set value(value) {
+        this.setAttribute('value', value);
+    }
+
+    get value() {
+        return this.getAttribute('value');
     }
 
     /**
@@ -30,8 +37,11 @@ export default class Radio extends WJElement {
      * @param value
      */
     set checked(value) {
-        this._checked = value;
-        this.toggleAttribute('checked', value);
+        if (value) {
+            this.setAttribute('checked', '');
+        } else {
+            this.removeAttribute('checked');
+        }
     }
 
     /**
@@ -39,7 +49,27 @@ export default class Radio extends WJElement {
      * @returns {boolean}
      */
     get checked() {
-        return this._checked;
+        return this.hasAttribute('checked');
+    }
+
+    /**
+     * Set checked attribute.
+     * @param {boolean} value true if the toggle is checked, false otherwise
+     */
+    set disabled(value) {
+        if (value) {
+            this.setAttribute('disabled', '');
+        } else {
+            this.removeAttribute('disabled');
+        }
+    }
+
+    /**
+     * Get disabled attribute value.
+     * @returns {boolean} true if the toggle is disabled, false otherwise
+     */
+    get disabled() {
+        return this.hasAttribute('disabled');
     }
 
     /**
@@ -88,8 +118,8 @@ export default class Radio extends WJElement {
         this.input.type = 'radio';
         this.input.id = this.value + '-radio';
         this.input.name = this.value + '-radio';
-        this.input.checked = this.hasAttribute('checked');
-        this.input.disabled = this.hasAttribute('disabled');
+        this.input.checked = this.checked;
+        this.input.disabled = this.disabled;
 
         let label = document.createElement('label');
         label.htmlFor = this.value + '-radio';
@@ -108,8 +138,8 @@ export default class Radio extends WJElement {
      */
     afterDraw() {
         if (!this.hasAttribute('disabled')) {
-            event.addListener(this.input, 'change', 'wje-radio:change');
-            event.addListener(this, 'input', 'wje-radio:input');
+            event.addListener(this.input, 'input', 'wje-radio:change');
+            // event.addListener(this, 'click', 'wje-radio:input');
         }
     }
 
@@ -118,6 +148,9 @@ export default class Radio extends WJElement {
      * @param {object} e
      */
     inputEvent = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log("Radio input event", e.target.checked);
         this.checked = e.target.checked;
     };
 

@@ -1,4 +1,5 @@
-import { default as WJElement } from '../wje-element/element.js';
+import { FormAssociatedElement } from '../internals/form-associated-element.js';
+import { event } from '../utils/event.js';
 import Radio from '../wje-radio/radio.js';
 import styles from './styles/styles.css?inline';
 
@@ -7,12 +8,14 @@ import styles from './styles/styles.css?inline';
  * @summary This element represents a group of radio buttons.
  * @documentation https://elements.webjet.sk/components/radio-group
  * @status stable
- * @augments {WJElement}
+ * @augments {FormAssociatedElement}
  * @slot - The default slot for the radio group.
  * @tag wje-radio-group
  */
 
-export default class RadioGroup extends WJElement {
+export default class RadioGroup extends FormAssociatedElement {
+    #internalValue = '';
+
     /**
      * Creates an instance of RadioGroup.
      * @class
@@ -20,7 +23,28 @@ export default class RadioGroup extends WJElement {
     constructor() {
         super();
 
-        this.internals = this.attachInternals();
+        this.invalid = false;
+        this.pristine = true;
+    }
+
+    /**
+     * Setter for the value attribute.
+     * @param {string} value The value to set.
+     */
+    set value(value) {
+        console.log("Setting value in RadioGroup", value);
+        this.#internalValue = value;
+        this.pristine = false;
+        this.internals.setFormValue(value);
+        this.setAttribute('value', value);
+    }
+
+    /**
+     * Getter for the value attribute.
+     * @returns {string} The value of the attribute.
+     */
+    get value() {
+        return this.getAttribute('value');
     }
 
     className = 'RadioGroup';
@@ -34,98 +58,8 @@ export default class RadioGroup extends WJElement {
         return styles;
     }
 
-    /**
-     * Whether the input is associated with a form.
-     * @type {boolean}
-     */
-    static formAssociated = true;
-
-    /**
-     * Setter for the value attribute.
-     * @param {string} value The value to set.
-     */
-    set value(value) {
-        if (this.checkRadio(value)) {
-            this.setAttribute('value', value);
-            this.internals.setFormValue(value);
-        }
-    }
-
-    /**
-     * Getter for the value attribute.
-     * @returns {string} The value of the attribute.
-     */
-    get value() {
-        return this.getAttribute('value');
-    }
-
-    /**
-     * Getter for the form attribute.
-     * @returns {HTMLFormElement} The form the input is associated with.
-     */
-    get form() {
-        return this.internals.form;
-    }
-
-    /**
-     * Getter for the name attribute.
-     * @returns {string} The name of the input.
-     */
-    get name() {
-        return this.getAttribute('name');
-    }
-
-    /**
-     * Getter for the type attribute.
-     * @returns {string} The type of the input.
-     */
-    get type() {
-        return this.localName;
-    }
-
-    /**
-     * Getter for the validity attribute.
-     * @returns {ValidityState} The validity state of the input.
-     */
-    get validity() {
-        return this.internals.validity;
-    }
-
-    /**
-     * Getter for the validationMessage attribute.
-     * @returns {string} The validation message of the input.
-     */
-    get validationMessage() {
-        return this.internals.validationMessage;
-    }
-
-    /**
-     * Getter for the willValidate attribute.
-     * @returns {boolean} Whether the input will be validated.
-     */
-    get willValidate() {
-        return this.internals.willValidate;
-    }
-
-    /**
-     * @summary Getter for the defaultValue attribute.
-     * This method retrieves the 'value' attribute of the custom input element.
-     * The 'value' attribute represents the default value of the input element.
-     * If the 'value' attribute is not set, it returns an empty string.
-     * @returns {string} The default value of the input element.
-     */
-    get defaultValue() {
-        return this.getAttribute('value') ?? '';
-    }
-
-    /**
-     * @summary Setter for the defaultValue attribute.
-     * This method sets the 'value' attribute of the custom input element to the provided value.
-     * The 'value' attribute represents the default value of the input element.
-     * @param {string} value The value to set as the default value.
-     */
-    set defaultValue(value) {
-        this.setAttribute('value', value);
+    static get observedAttributes() {
+        return [];
     }
 
     /**
@@ -133,6 +67,9 @@ export default class RadioGroup extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        if (this.pristine) {
+            this.pristine = false;
+        }
     }
 
     /**
@@ -145,6 +82,14 @@ export default class RadioGroup extends WJElement {
         let native = document.createElement('div');
         native.classList.add('native-radio-group', this.hasAttribute('inline') ? 'wje-inline' : 'ddd');
 
+        let input = document.createElement('input');
+        input.type =  'text';
+        input.name = this.name;
+        input.disabled = this.disabled;
+        input.required = true;
+        input.value = this.value || '';
+        input.classList.add('input-hidden');
+
         let slot = document.createElement('slot');
 
         let label = document.createElement('label');
@@ -152,12 +97,25 @@ export default class RadioGroup extends WJElement {
         if (this.value && !this.hasAttribute('error')) label.classList.add('fade');
 
         if (this.label) {
-            native.appendChild(label);
+            native.append(label);
         }
 
-        native.appendChild(slot);
+        // Error
+        let errorSlot = document.createElement('slot');
+        errorSlot.setAttribute('name', 'error');
 
-        fragment.appendChild(native);
+        let error = document.createElement('div');
+        error.setAttribute('slot', 'error');
+
+        native.append(input);
+        native.append(slot);
+        native.append(errorSlot);
+
+        this.append(error);
+
+        fragment.append(native);
+
+        this.input = input;
 
         return fragment;
     }
@@ -166,11 +124,48 @@ export default class RadioGroup extends WJElement {
      * Adds event listeners after the component is drawn. Handles the selection of radio buttons.
      */
     afterDraw() {
-        this.checkRadio(this.value);
+        if(this.value)
+            this.checkRadio(this.getRadioByValue(this.value));
 
-        this.addEventListener('wje-radio:input', (e) => {
-            this.value = e.detail.context.value;
+        // this.addEventListener('wje-radio:input', (e) => {
+        //     this.value = e.detail.context.value;
+        // });
+
+        this.validate();
+
+        if (this.invalid) {
+            this.showInvalidMessage();
+        }
+
+        this.addEventListener('wje-radio:change', (e) => {
+            this.checkRadio(e.target);
+
+            this.validate();
+
+            this.pristine = false;
+            this.propagateValidation();
+
         });
+
+        this.input.addEventListener('input', (e) => {
+            console.log("TOTO SA NIEKDTO SPUSTI", e.target.value);
+            this.validate();
+
+            this.pristine = false;
+            this.propagateValidation();
+
+            this.value = this.checkRadio(this.value);
+
+            event.dispatchCustomEvent(this, 'wje-toggle:input');
+        });
+
+        this.addEventListener('wje-radio-group:invalid', (e) => {
+            this.invalid = true;
+            this.pristine = false;
+
+            this.showInvalidMessage();
+        });
+
     }
 
     /**
@@ -194,18 +189,18 @@ export default class RadioGroup extends WJElement {
     /**
      * Sets the given radio button to checked.
      */
-    checkRadio(value) {
-        let foundRadio = false
-        this.getAllElements().forEach((el) => {
-            if (el instanceof Radio) {
-                el.checked = el.value === value;
-                if (el.checked) {
-                    foundRadio = true
-                }
-            }
-        });
+    checkRadio(radio) {
+        this.removeCheck();
 
-        return foundRadio
+        if (radio) {
+            radio.checked = true;
+            this.value = radio.value;
+            this.input.value = radio.value;
+            return true;
+        }
+
+        console.error(`Radio with value ${radio.value} not found`);
+        return false;
     }
 
     /**
@@ -214,69 +209,5 @@ export default class RadioGroup extends WJElement {
      */
     getAllElements() {
         return Array.from(this.children);
-    }
-
-    /**
-     * @summary Callback function that is called when the custom element is associated with a form.
-     * This function adds an event listener to the form's submit event, which validates the input and propagates the validation.
-     * @param {HTMLFormElement} form The form the custom element is associated with.
-     */
-    formAssociatedCallback(form) {
-        if (form) {
-            this.internals.setFormValue(this.value);
-        }
-    }
-
-    /**
-     * The formResetCallback method is a built-in lifecycle callback that gets called when a form gets reset.
-     * This method is responsible for resetting the value of the custom input element to its default value.
-     * It also resets the form value and validity state in the form internals.
-     * @function
-     */
-    formResetCallback() {
-        // Set the value of the custom input element to its default value
-        this.value = this.defaultValue;
-        // Reset the form value in the form internals to the default value
-        this.internals.setFormValue(this.defaultValue);
-        // Reset the validity state in the form internals
-        this.internals.setValidity({});
-    }
-
-    /**
-     * The formStateRestoreCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is restored.
-     * This method is responsible for restoring the value of the custom input element to its saved state.
-     * It also restores the form value and validity state in the form internals to their saved states.
-     * @param {object} state The saved state of the custom input element.
-     * @function
-     */
-    formStateRestoreCallback(state) {
-        // Set the value of the custom input element to its saved value
-        this.value = state.value;
-        // Restore the form value in the form internals to the saved value
-        this.internals.setFormValue(state.value);
-        // Restore the validity state in the form internals to the saved state
-        this.internals.setValidity({});
-    }
-
-    /**
-     * The formStateSaveCallback method is a built-in lifecycle callback that gets called when the state of a form-associated custom element is saved.
-     * This method is responsible for saving the value of the custom input element.
-     * @returns {object} The saved state of the custom input element.
-     * @function
-     */
-    formStateSaveCallback() {
-        return {
-            value: this.value,
-        };
-    }
-
-    /**
-     * The formDisabledCallback method is a built-in lifecycle callback that gets called when the disabled state of a form-associated custom element changes.
-     * This method is not implemented yet.
-     * @param {boolean} disabled The new disabled state of the custom input element.
-     * @function
-     */
-    formDisabledCallback(disabled) {
-        console.warn('formDisabledCallback not implemented yet');
     }
 }

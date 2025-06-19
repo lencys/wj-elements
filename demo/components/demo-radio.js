@@ -17,7 +17,6 @@ template.innerHTML = `
           <wje-radio value="elephant" disabled="">Elephant</wje-radio>
           <wje-radio indeterminate value="rabbit" >Rabbit</wje-radio>
           <wje-radio value="dog">Dog</wje-radio>
-
         </wje-radio-group>
       </div>
     </div>
