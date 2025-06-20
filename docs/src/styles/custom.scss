@@ -215,6 +215,10 @@ docs-cards {
     --wj-color-base: var(--token-secondary-bg-c);
     box-shadow: var(--wj-box-shadow-large) 0 4px 16px;
     background-color: var(--wj-card-background);
+
+    &::part(native) {
+        height:100%;
+    }
   }
   wje-card:hover {
     filter: brightness(110%);
