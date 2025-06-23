@@ -120,7 +120,7 @@ export default class Popup extends WJElement {
         loader.classList.add('popup-loader', 'overlay');
         loader.setAttribute('part', 'loader');
         loader.textContent = 'Loading...';
-        console.log("LOADER", this.loader);
+
         if (this.loader) native.append(loader);
 
         native.append(slot);
@@ -144,7 +144,6 @@ export default class Popup extends WJElement {
         this.setAnchor();
 
         this.addEventListener('wje-popup:content-ready', () => {
-            console.log("READY 1", this.loader);
           this.markContentReady();
         }, { once: true });
 
@@ -280,7 +279,7 @@ export default class Popup extends WJElement {
     show(dispatchEvent = true) {
         if (this.loader) {
           this.native.classList.add('loading');
-          this.loaderEl.classList.remove('fade-out');
+          this.loaderEl?.classList?.remove('fade-out');
           this.native.prepend(this.loaderEl);
         }
 
