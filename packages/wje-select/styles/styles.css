@@ -155,7 +155,7 @@ input {
 }
 
 .options-wrapper:has(.find) .list {
-    height: calc(100% - 32px - 0.5rem);
+    height: calc(100% - 32px - 2 * var(--wje-select-find-margin-block));
 }
 
 :host([multiple]) input {

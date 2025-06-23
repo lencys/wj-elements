@@ -106,7 +106,7 @@ export default class Option extends WJElement {
 	 * @returns {Array<string>}
 	 */
 	static get observedAttributes() {
-		return [];
+		return ['selected'];
 	}
 
 	/**

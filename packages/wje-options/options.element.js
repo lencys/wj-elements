@@ -2,6 +2,7 @@ import { default as WJElement, event } from '../wje-element/element.js';
 import InfiniteScroll from '../wje-infinite-scroll/infinite-scroll.js';
 import List from '../wje-list/list.js';
 import Option from '../wje-option/option.js';
+import styles from './styles/styles.css?inline';
 
 /**
  * `Options` is a custom web component that represents a set of options. It extends from `WJElement`.
@@ -25,17 +26,6 @@ export default class Options extends WJElement {
 		'wje-option': Option,
 		'wje-infinite-scroll': InfiniteScroll,
 		'wje-list': List,
-	}
-
-	className = 'Options';
-
-	/**
-	 * Retrieves an array of attributes that should be observed for changes.
-	 * The method returns a list of attribute names that the browser will monitor for changes.
-	 * @returns {Array<string>} An array of attribute names to observe.
-	 */
-	static get observedAttributes() {
-		return ['search', 'attached'];
 	}
 
 	/**
@@ -209,19 +199,19 @@ export default class Options extends WJElement {
 	}
 
 	/**
-	 * Checks if the lazy attribute is present.
-	 * @returns {boolean} True if the lazy attribute is present, false otherwise.
-	 */
-	get lazy() {
-		return this.hasAttribute('lazy');
-	}
-
-	/**
 	 * Sets the lazy attribute.
 	 * @param {boolean} value The value to set for the lazy attribute.
 	 */
 	set lazy(value) {
 		this.setAttribute('lazy', value);
+	}
+
+	/**
+	 * Checks if the lazy attribute is present.
+	 * @returns {boolean} True if the lazy attribute is present, false otherwise.
+	 */
+	get lazy() {
+		return this.hasAttribute('lazy');
 	}
 
 	/**
@@ -265,6 +255,26 @@ export default class Options extends WJElement {
 		this.#drawPreloadedElements = elements;
 	}
 
+	className = 'Options';
+
+	/**
+	 * Returns the CSS styles for the component.
+	 * @static
+	 * @returns {CSSStyleSheet} The CSS styles for the component.
+	 */
+	static get cssStyleSheet() {
+		return styles;
+	}
+
+	/**
+	 * Retrieves an array of attributes that should be observed for changes.
+	 * The method returns a list of attribute names that the browser will monitor for changes.
+	 * @returns {Array<string>} An array of attribute names to observe.
+	 */
+	static get observedAttributes() {
+		return ['search', 'attached'];
+	}
+
 	/**
 	 * Sets up the attributes for the component.
 	 */
@@ -282,8 +292,7 @@ export default class Options extends WJElement {
 		const slot = document.createElement('slot');
 		fragment.appendChild(slot);
 
-		if (this.hasAttribute('lazy')) {
-
+		if (this.lazy) {
 			if (this.contains(this.infiniteScroll)) {
 				this.drawPreloadedElements.forEach((el) => { el.remove() });
 				this.loadedOptions = [];
@@ -292,16 +301,15 @@ export default class Options extends WJElement {
 				this.infiniteScroll.refresh();
 			}
 
+			let loader = document.createElement('div');
+			loader.setAttribute('slot', 'loader');
+			loader.append('Loading...');
+
 			const infiniteScroll = document.createElement('wje-infinite-scroll');
 			infiniteScroll.setAttribute('placement', 'wje-list');
 			infiniteScroll.setAttribute('height', this.dropdownHeight);
 			infiniteScroll.setAttribute('object-name', this.optionArrayPath);
-
-			const list = document.createElement('wje-list');
-			infiniteScroll.append(list);
-
 			infiniteScroll.dataToHtml = this.htmlItem;
-
 			infiniteScroll.setCustomData = async (page, signal) => {
 				let processedUrl = `${this.url}${this.search ? `/${this.search}` : ''}?page=${page}&size=${this.lazyLoadSize}${this.queryParams ? `&${this.queryParams}` : ''}`;
 
@@ -316,26 +324,21 @@ export default class Options extends WJElement {
 				return filteredOptions;
 			};
 
-			event.addListener(infiniteScroll, 'wje-infinite-scroll:load', null, (e) => {
-				// Wait for next paint cycle to ensure options are in DOM
-				requestAnimationFrame(() => {
-					requestAnimationFrame(() => {
-						event.dispatchCustomEvent(this, 'wje-options:load', {});
-					});
-				});
-			});
+			const list = document.createElement('wje-list');
 
-			if (this.hasAttribute('attached')) {
+			infiniteScroll.append(list);
+			infiniteScroll.append(loader);
+
+			if (this.hasAttribute('attached') && !this.hasSearch) {
 				this.appendChild(infiniteScroll);
 				this.drawPreloadedElements.forEach((el) => {
 					list.appendChild(el);
-				})
+				});
+				this.infiniteScroll = infiniteScroll;
 			}
-
-			this.infiniteScroll = infiniteScroll;
-
 		} else {
 			this.response = await this.getPages();
+
 			let optionsData = this.filterOutDrawnOptions(this.response);
 			optionsData = this.processData(optionsData);
 
@@ -347,6 +350,19 @@ export default class Options extends WJElement {
 		}
 
 		return fragment;
+	}
+
+	afterDraw() {
+		event.addListener(this.infiniteScroll, 'wje-infinite-scroll:load', null, this.dispatchOptionsLoadEvent);
+	}
+
+	dispatchOptionsLoadEvent = (e) => {
+		// Wait for next paint cycle to ensure options are in DOM
+		requestAnimationFrame(() => {
+			requestAnimationFrame(() => {
+				event.dispatchCustomEvent(this, 'wje-options:load', {});
+			});
+		});
 	}
 
 	/**
@@ -482,5 +498,9 @@ export default class Options extends WJElement {
 	addOptions(optionsData = [], silent = false) {
 		if (Array.isArray(optionsData)) optionsData?.forEach((od) => this.addOption(od, silent));
 		else this.addOption(optionsData, silent);
+	}
+
+	beforeDisconnect() {
+		event.removeListener(this.infiniteScroll, 'wje-infinite-scroll:load', null, this.dispatchOptionsLoadEvent);
 	}
 }

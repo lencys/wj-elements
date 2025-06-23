@@ -39,6 +39,7 @@ export default class InfiniteScroll extends WJElement {
         this.#signal = this.#abortController.signal;
         this.#drawnItems = [];
         this.#loadedItems = [];
+        this.placementObj = this;
     }
 
     /**
@@ -154,7 +155,7 @@ export default class InfiniteScroll extends WJElement {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement('div');
-        native.classList.add('native');
+        native.classList.add('native-infinite-scroll');
         native.setAttribute('part', 'native-infinite-scroll');
 
         let slot = document.createElement('slot');
@@ -302,6 +303,7 @@ export default class InfiniteScroll extends WJElement {
     async loadPages(page) {
         this.showLoader();
         try {
+            event.dispatchCustomEvent(this, 'wje-infinite-scroll:start');
             if (this.hasMorePages(page)) {
                 let response;
                 this.parser = new DOMParser();
@@ -331,13 +333,16 @@ export default class InfiniteScroll extends WJElement {
                 this.#drawnItems.push(...notDrawnItems);
 
                 this.isLoading.push(page);
+                event.dispatchCustomEvent(this, 'wje-infinite-scroll:finish', response);
             } else {
                 event.dispatchCustomEvent(this, 'wje-infinite-scroll:complete');
                 this.endingEl.classList.add('show');
             }
         } catch (error) {
+            console.log('ALEBO SOM V ERROR');
             console.log(error);
         } finally {
+            console.log('SOM VO FINISH');
             this.hideLoader();
         }
     }

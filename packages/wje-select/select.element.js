@@ -291,6 +291,18 @@ export class Select extends FormAssociatedElement {
 		return this._selectedOptions || [];
 	}
 
+	set lazy(value) {
+		if (value) {
+			this.setAttribute('lazy', '');
+		} else {
+			this.removeAttribute('lazy');
+		}
+	}
+
+	get lazy() {
+		return this.hasAttribute('lazy');
+	}
+
 	/**
 	 * Getter for the customErrorDisplay attribute.
 	 * @returns {boolean} Whether the attribute is present.
@@ -440,10 +452,13 @@ export class Select extends FormAssociatedElement {
 		// vytvorime popup
 		let popup = document.createElement('wje-popup');
 		popup.setAttribute('placement', 'bottom-start');
-		// popup.setAttribute('manual', '');
 		popup.setAttribute('size', '');
 		popup.setAttribute('part', 'popup');
 		popup.setAttribute('offset', this.offset);
+
+		if(this.lazy || this.querySelector('wje-options')) {
+			popup.setAttribute('loader', '');
+		}
 
 		if (this.disabled) popup.setAttribute('disabled', '');
 
@@ -481,20 +496,6 @@ export class Select extends FormAssociatedElement {
 			this.findEl = find;
 		}
 
-		if (this.hasAttribute('lazy')) {
-			event.addListener(popup, 'wje-popup:show', null, (e) => {
-				if (this._wasOppened) return;
-				this._wasOppened = true;
-
-				const optionsElement = this.querySelector('wje-options');
-				optionsElement.setAttribute('lazy', '');
-				optionsElement.setAttribute('attached', '');
-			});
-		} else {
-			const optionsElement = this.querySelector('wje-options');
-			optionsElement?.setAttribute('attached', '');
-		}
-
 		optionsWrapper.append(list);
 
 		wrapper.append(inputWrapper);
@@ -509,6 +510,8 @@ export class Select extends FormAssociatedElement {
 		native.append(popup);
 		native.append(errorSlot);
 
+		fragment.appendChild(native);
+
 		this.native = native;
 		this.popup = popup;
 		this.labelElement = label;
@@ -521,8 +524,6 @@ export class Select extends FormAssociatedElement {
 		this.clear = clear;
 		this.list = list;
 
-		fragment.appendChild(native);
-
 		return fragment;
 	}
 
@@ -533,6 +534,7 @@ export class Select extends FormAssociatedElement {
 	 * @returns {void} Does not return a value. The method operates by updating the state and behavior of the component.
 	 */
 	afterDraw() {
+
 		this.validate(this.selectedOptions);
 
 		if (this.hasAttribute('invalid')) {
@@ -542,6 +544,20 @@ export class Select extends FormAssociatedElement {
 		this.getAllOptions()?.forEach((option) => {
 			this.optionCheckSlot(option);
 		});
+
+		if (this.lazy) {
+			event.addListener(this.popup, 'wje-popup:show', null, (e) => {
+				if (this._wasOppened) return;
+				this._wasOppened = true;
+
+				const optionsElement = this.querySelector('wje-options');
+				optionsElement.setAttribute('lazy', '');
+				optionsElement.setAttribute('attached', '');
+			});
+		} else {
+			// const optionsElement = this.querySelector('wje-options');
+			// optionsElement?.setAttribute('attached', '');
+		}
 
 		this.#htmlOptions = Array.from(this.querySelectorAll(':scope > wje-option')).map((option) => {
 			return {
@@ -592,17 +608,8 @@ export class Select extends FormAssociatedElement {
 			e.stopPropagation();
 		});
 
-		event.addListener(this, 'wje-popup:aftershow', null, (e) => {
-			console.log('WJE-POPUP:AFTERSHOW', e);
-
-			if (!this.hasAttribute('lazy')) {
-
-			}
-		});
-
 		this.selectOptions(this.value);
 		this.selected = this.#getSelected();
-
 		this.selectedOptions = this.#getSelectedOptions();
 		this.selections(true);
 
@@ -621,21 +628,8 @@ export class Select extends FormAssociatedElement {
 
 		// skontrolujeme ci ma select atribut find
 		if (this.hasAttribute('find') && this.findEl instanceof HTMLElement) {
-			event.addListener(this.findEl, 'keyup', '', (e) => {
-				// contains wj-options element with options
-				const optionsElement = this.querySelector('wje-options');
-				if (optionsElement && optionsElement.hasAttribute('lazy')) {
-					// pass search value to wj-options element and infinite scroll will handle the rest
-					optionsElement.setAttribute('search', e.target.value);
-				} else {
-					let value = e.target.value.trim().toLowerCase();
-
-					this.getAllOptions().forEach((option) => {
-						if (option.textContent.trim().toLowerCase().includes(value)) option.style.display = 'block';
-						else option.style.display = 'none';
-					});
-				}
-			});
+			event.addListener(this.findEl, 'keyup', '', this.#applySearchFilter);
+			event.addListener(this.findEl, 'wje-input:clear', '', this.#applySearchFilter);
 		}
 	}
 
@@ -718,9 +712,7 @@ export class Select extends FormAssociatedElement {
 	selectionChanged(options = null, length = 0) {
 		this.selected = this.#getSelected();
 
-		console.log('SELECTION CHANGED', this.selected, this.selectedOptions);
 		if (this.hasAttribute('multiple')) {
-			console.log('SELECTION CHANGED MULTIPLE', this.selectedOptions.map((el) => el.value).reverse());
 			this.value = this.selectedOptions.map((el) => el.value).reverse();
 			this.input.value = this.selected.map(a => a.value).join(" ").trim();
 
@@ -734,10 +726,9 @@ export class Select extends FormAssociatedElement {
 			}
 		} else {
 			const option = options?.at(0);
-			console.log('SELECTION CHANGED MULTIPLE', this.selectedOptions?.map((el) => el.value)?.at(0));
 			this.value = this.selectedOptions?.map((el) => el.value)?.at(0);
 			this.input.value = this.selected[0]?.value || '';
-			this.display.value = this.selected[0]?.text || '';
+			this.display.value = this.selectedOptions[0]?.textContent?.trim() || '';
 
 			if (option && option instanceof HTMLElement) {
 				this.slotStart.innerHTML = '';
@@ -1016,5 +1007,25 @@ export class Select extends FormAssociatedElement {
 	 */
 	#getSelectedOptions() {
 		return Array.from(this.querySelectorAll('wje-option[selected]'));
+	}
+
+	#applySearchFilter = (e) => {
+		// contains wj-options element with options
+		const optionsElement = this.querySelector('wje-options');
+
+		if (optionsElement && optionsElement.hasAttribute('lazy')) {
+			// pass search value to wj-options element and infinite scroll will handle the rest
+			optionsElement.setAttribute('search', e.target.value);
+		} else {
+			let value = e.target.value.trim().toLowerCase();
+
+			this.getAllOptions().forEach((option) => {
+				if (option.textContent.trim().toLowerCase().includes(value)) {
+					option.style.display = 'block';
+				} else {
+					option.style.display = 'none';
+				}
+			});
+		}
 	}
 }

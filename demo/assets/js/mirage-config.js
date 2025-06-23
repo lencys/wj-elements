@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { createServer, Model, Factory } from 'miragejs';
 
-// faker.seed(100)
+// faker.seed(200)
 export const serverPromise = makeServer();
 
 function makeServer() {
@@ -69,7 +69,7 @@ function makeServer() {
               return faker.location.country();
             },
             label(i) {
-              return faker.location.country();
+              return this.text;
             },
           }),
         },

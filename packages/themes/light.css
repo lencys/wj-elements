@@ -366,7 +366,7 @@
     /* Infinite Scroll */
     --wje-infinite-scroll-width: 100%;
     --wje-infinite-scroll-height: 300px;
-    --wje-infinite-scroll-loading-bg: rgba(0, 0, 0, 0);
+    --wje-infinite-scroll-loading-bg: rgba(255, 255, 255, 1);
 
     /* Img - Comparer */
     --wje-img-compare-divider-area: 12px;

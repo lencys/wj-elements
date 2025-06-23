@@ -26,7 +26,18 @@ export default class Popup extends WJElement {
     constructor() {
         super();
         this._manual = false;
-        this.loader = null;
+    }
+
+    set loader(value) {
+        if(value) {
+            this.setAttribute('loader', '');
+        } else {
+            this.removeAttribute('loader');
+        }
+    }
+
+    get loader() {
+        return this.hasAttribute('loader');
     }
 
     /**
@@ -65,9 +76,9 @@ export default class Popup extends WJElement {
      * @static
      * @returns {Array<string>}
      */
-    // static get observedAttributes() {
-    //     return ['active'];
-    // }
+    static get observedAttributes() {
+        return [];
+    }
 
     /**
      * Sets up the attributes for the component.
@@ -75,20 +86,6 @@ export default class Popup extends WJElement {
     setupAttributes() {
         this.isShadowRoot = 'open';
     }
-
-    // /**
-    //  * Called when an attribute changes.
-    //  */
-    // attributeChangedCallback(name, old, newName) {
-    //     // if (name === 'active') {
-    //     //     if (this.hasAttribute(name)) {
-    //     //         this.show();
-    //     //     } else {
-    //     //         this.hide();
-    //     //     }
-    //     // }
-
-    // }
 
     afterDisconnect() {
         event.removeListener(this.anchorEl, 'click', this.manualCallback);
@@ -119,22 +116,23 @@ export default class Popup extends WJElement {
 
         let slot = document.createElement('slot');
 
-        const loader = document.createElement('div');
+        let loader = document.createElement('div');
         loader.classList.add('popup-loader', 'overlay');
         loader.setAttribute('part', 'loader');
         loader.textContent = 'Loading...';
-        this.loader = loader;
+        console.log("LOADER", this.loader);
+        if (this.loader) native.append(loader);
 
-        native.appendChild(loader);
-        native.appendChild(slot);
-        native.appendChild(slotArrow);
+        native.append(slot);
+        native.append(slotArrow);
 
-        fragment.appendChild(slotAnchor);
-        fragment.appendChild(native);
+        fragment.append(slotAnchor);
+        fragment.append(native);
 
         this.slotAnchor = slotAnchor;
         this.slotArrow = slotArrow;
         this.native = native;
+        this.loaderEl = loader;
 
         return fragment;
     }
@@ -146,6 +144,7 @@ export default class Popup extends WJElement {
         this.setAnchor();
 
         this.addEventListener('wje-popup:content-ready', () => {
+            console.log("READY 1", this.loader);
           this.markContentReady();
         }, { once: true });
 
@@ -164,7 +163,7 @@ export default class Popup extends WJElement {
         } else if (this.slotAnchor instanceof HTMLSlotElement) {
             this.anchorEl = this.slotAnchor.assignedElements({ flatten: true })[0];
         }
-        console.log("MANUAL", this.manual, this.anchorEl);
+
         if (this.manual) {
             event.addListener(this.anchorEl, 'click', null, this.manualCallback, { stopPropagation: true });
         }
@@ -281,8 +280,8 @@ export default class Popup extends WJElement {
     show(dispatchEvent = true) {
         if (this.loader) {
           this.native.classList.add('loading');
-          this.loader.classList.remove('fade-out');
-          this.native.prepend(this.loader);
+          this.loaderEl.classList.remove('fade-out');
+          this.native.prepend(this.loaderEl);
         }
 
         if (dispatchEvent) {
@@ -337,10 +336,10 @@ export default class Popup extends WJElement {
     markContentReady() {
       this.native.classList.remove('loading');
       if (this.loader) {
-        this.loader.classList.add('fade-out');
+        this.loaderEl.classList.add('fade-out');
         setTimeout(() => {
-          this.loader?.remove();
-          this.loader = null;
+          this.loaderEl?.remove();
+          this.loader = false;
         }, 300);
       }
     }
