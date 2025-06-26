@@ -2888,7 +2888,7 @@
     {
       "filePath": "src/components/dialog/dialog.tsx",
       "encapsulation": "shadow",
-      "tag": "dialogue",
+      "tag": "dialog",
       "docs": "",
       "docsTags": [
         {
@@ -7085,7 +7085,7 @@
     {
       "filePath": "src/components/aside/aside.tsx",
       "encapsulation": "scoped",
-      "tag": "Aside",
+      "tag": "aside",
       "docs": "",
       "docsTags": [],
       "usage": {},
