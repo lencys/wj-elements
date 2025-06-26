@@ -39,7 +39,7 @@ Start creating your application [by installing WebJET elements](intro/install.md
 
 <DocsCards>
 
-{' '} <a href="intro/install">\ <wje-card>\ <wje-card-header>\ <wje-icon name="world-download" size="large"></wje-icon>\ <wje-card-title>Installation guide</wje-card-title>\ </wje-card-header>\ <wje-card-content><p>Detailed installation guide for WebJET elements.</p></wje-card-content></wje-card></a>
+{' '} <a href="intro/install"> <wje-card> <wje-card-header> <wje-icon name="world-download" size="large"></wje-icon> <wje-card-title>Installation guide</wje-card-title> </wje-card-header> <wje-card-content><p>Detailed installation guide for WebJET elements.</p></wje-card-content></wje-card></a>
 
 {' '} <a href="components"> <wje-card> <wje-card-header> <wje-icon name="layout-dashboard" size="large"></wje-icon> <wje-card-title href="intro/cli">Elements</wje-card-title> </wje-card-header> <wje-card-content><p>Take a look at the library of available WebJET elements.</p></wje-card-content></wje-card></a>
 
