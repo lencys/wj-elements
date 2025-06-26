@@ -291,6 +291,10 @@ export class Select extends FormAssociatedElement {
 		return this._selectedOptions || [];
 	}
 
+	/**
+	 * Sets the `lazy` attribute on the element. If the provided value is truthy, the `lazy` attribute is added. If the value is falsy, the `lazy` attribute is removed.
+	 * @param {boolean} value A boolean value indicating whether to add or remove the `lazy` attribute. If `true`, the attribute is added; if `false`, it is removed.
+	 */
 	set lazy(value) {
 		if (value) {
 			this.setAttribute('lazy', '');
@@ -299,8 +303,32 @@ export class Select extends FormAssociatedElement {
 		}
 	}
 
+	/**
+	 * Getter for the 'lazy' property.
+	 * @returns {boolean} Returns true if the 'lazy' attribute is present on the element, otherwise false.
+	 */
 	get lazy() {
 		return this.hasAttribute('lazy');
+	}
+
+	/**
+	 * Sets or removes the 'no-size' attribute on an element.
+	 * @param {boolean} value A boolean indicating whether to add or remove the 'no-size' attribute. If true, the attribute is added; if false, the attribute is removed.
+	 */
+	set noSize(value) {
+		if (value) {
+			this.setAttribute('no-size', '');
+		} else {
+			this.removeAttribute('no-size');
+		}
+	}
+
+	/**
+	 * Gets the value of the 'no-size' attribute for the element.
+	 * @returns {boolean} True if the 'no-size' attribute is present, otherwise false.
+	 */
+	get noSize() {
+		return this.hasAttribute('no-size');
 	}
 
 	/**
@@ -452,7 +480,8 @@ export class Select extends FormAssociatedElement {
 		// vytvorime popup
 		let popup = document.createElement('wje-popup');
 		popup.setAttribute('placement', 'bottom-start');
-		popup.setAttribute('size', '');
+		if (!this.noSize)
+			popup.setAttribute('size', '');
 		popup.setAttribute('part', 'popup');
 		popup.setAttribute('offset', this.offset);
 
@@ -534,7 +563,6 @@ export class Select extends FormAssociatedElement {
 	 * @returns {void} Does not return a value. The method operates by updating the state and behavior of the component.
 	 */
 	afterDraw() {
-
 		this.validate(this.selectedOptions);
 
 		if (this.hasAttribute('invalid')) {
@@ -546,6 +574,11 @@ export class Select extends FormAssociatedElement {
 		});
 
 		if (this.lazy) {
+			this.selectOptions(this.value);
+			this.selected = this.#getSelected();
+			this.selectedOptions = this.#getSelectedOptions();
+			this.selections(true);
+
 			event.addListener(this.popup, 'wje-popup:show', null, (e) => {
 				if (this._wasOppened) return;
 				this._wasOppened = true;
@@ -555,8 +588,12 @@ export class Select extends FormAssociatedElement {
 				optionsElement.setAttribute('attached', '');
 			});
 		} else {
-			// const optionsElement = this.querySelector('wje-options');
-			// optionsElement?.setAttribute('attached', '');
+			event.addListener(this.popup, 'wje-infinity-scroll:finish', null, (e) => {
+				this.selectOptions(this.value);
+				this.selected = this.#getSelected();
+				this.selectedOptions = this.#getSelectedOptions();
+				this.selections(true);
+			})
 		}
 
 		this.#htmlOptions = Array.from(this.querySelectorAll(':scope > wje-option')).map((option) => {
@@ -608,10 +645,6 @@ export class Select extends FormAssociatedElement {
 			e.stopPropagation();
 		});
 
-		this.selectOptions(this.value);
-		this.selected = this.#getSelected();
-		this.selectedOptions = this.#getSelectedOptions();
-		this.selections(true);
 
 		this.list.addEventListener('wje-options:load', (e) => {
 			this.selectedOptions.forEach((option) => {
