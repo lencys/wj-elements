@@ -1,5 +1,5 @@
 ---
-title: SplitView
+title: 'SplitView'
 ---
 
 import Props from '@ionic-internal/component-api/v1/split-view/props.md';

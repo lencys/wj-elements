@@ -1,5 +1,5 @@
 ---
-title: Tree
+title: 'Tree'
 ---
 
 import Props from '@ionic-internal/component-api/v1/accordion/props.md';

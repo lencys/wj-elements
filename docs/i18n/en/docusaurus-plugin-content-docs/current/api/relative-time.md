@@ -1,5 +1,5 @@
 ---
-title: Relative Time
+title: 'Relative Time'
 ---
 
 import Props from '@ionic-internal/component-api/v1/relative-time/props.md';

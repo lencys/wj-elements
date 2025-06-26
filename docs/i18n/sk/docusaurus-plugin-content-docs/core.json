@@ -454,7 +454,7 @@
       "dependencyGraph": {}
     },
     {
-      "filePath": "src/components/animation/aside.tsx",
+      "filePath": "src/components/aside/aside.tsx",
       "encapsulation": "shadow",
       "tag": "aside",
       "docs": "",
@@ -9658,6 +9658,252 @@
       "dependencies": ["Localizer", "WJElement"],
       "dependencyGraph": {
         "wje-relative-time": ["Localizer", "WJElement"]
+      }
+    },
+    {
+      "filePath": "src/components/reorder/reorder.tsx",
+      "encapsulation": "shadow",
+      "tag": "reorder",
+      "docs": "`wje-reorder` je vlastný webový komponent, ktorý umožňuje preusporiadanie elementov pomocou drag and drop funkcionalít.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "Tento element predstavuje preusporiadanie."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/reorder"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "tag",
+          "text": "wje-reorder"
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "Ak `true`, preusporiadanie je deaktivované.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "reverse",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "reverse",
+          "reflectToAttr": false,
+          "docs": "Ak `true`, smer preusporiadania je reverzný (zdola nahor).",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "attachEventListeners",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "attachEventListeners(element) => void",
+          "parameters": [
+            {
+              "name": "element",
+              "type": "HTMLElement",
+              "docs": "Element na ktorý sa pripoja event listenery"
+            }
+          ],
+          "docs": "Pripája event listenery na element.",
+          "docsTags": []
+        },
+        {
+          "name": "startDragging",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "startDragging(clientX, clientY, target) => void",
+          "parameters": [
+            {
+              "name": "clientX",
+              "type": "number",
+              "docs": "X-súradnica myši pri začatí ťahania"
+            },
+            {
+              "name": "clientY",
+              "type": "number",
+              "docs": "Y-súradnica myši pri začatí ťahania"
+            },
+            {
+              "name": "target",
+              "type": "HTMLElement",
+              "docs": "Cieľový element, kde začalo ťahanie"
+            }
+          ],
+          "docs": "Inicializuje proces ťahania pre preusporiadateľný element.",
+          "docsTags": []
+        },
+        {
+          "name": "moveElement",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "moveElement(pageX, pageY) => void",
+          "parameters": [
+            {
+              "name": "pageX",
+              "type": "number",
+              "docs": "X-súradnica myši relatívna k viewport počas udalosti presunu"
+            },
+            {
+              "name": "pageY",
+              "type": "number",
+              "docs": "Y-súradnica myši relatívna k viewport počas udalosti presunu"
+            }
+          ],
+          "docs": "Aktualizuje pozíciu ťahaného elementu a spravuje logiku preusporiadania na základe pozície myši.",
+          "docsTags": []
+        },
+        {
+          "name": "stopDragging",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "stopDragging() => void",
+          "parameters": [],
+          "docs": "Zastaví ťahanie elementu.",
+          "docsTags": []
+        },
+        {
+          "name": "dispatchChange",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "dispatchChange(from, to, order) => void",
+          "parameters": [
+            {
+              "name": "from",
+              "type": "number",
+              "docs": "Pôvodný index ťahanej položky"
+            },
+            {
+              "name": "to",
+              "type": "number",
+              "docs": "Nový index ťahanej položky po preusporiadaní"
+            },
+            {
+              "name": "order",
+              "type": "Array<string>",
+              "docs": "Aktualizované poradie položiek po preusporiadaní"
+            }
+          ],
+          "docs": "Vysiela vlastnú udalosť signalizujúcu, že došlo k preusporiadaniu.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "wje-reorder:change",
+          "detail": "ReorderChangeEventDetail",
+          "bubbles": true,
+          "complexType": {
+            "original": "ReorderChangeEventDetail",
+            "resolved": "ReorderChangeEventDetail<any>",
+            "references": {
+              "ReorderChangeEventDetail": {
+                "location": "local",
+                "path": "",
+                "id": ""
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Vyvolaná pri zmene poradia elementov.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "mousedown",
+          "method": "mouseDown",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "touchstart",
+          "method": "touchStart",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "dragstart",
+          "method": "dragStart",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [
+        {
+          "name": "--flex-direction",
+          "annotation": "prop",
+          "docs": "Smer flexboxu pre kontajner"
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Predvolené umiestnenie obsahu elementu. Tu patria elementy typu wje-reorder-item."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Natívna časť komponentu reorder, obsahujúca slot."
+        }
+      ],
+      "dependents": [],
+      "dependencies": ["wje-reorder-item", "wje-reorder-dropzone"],
+      "dependencyGraph": {
+        "wje-reorder": ["wje-reorder-item", "wje-reorder-dropzone"]
       }
     },
     {

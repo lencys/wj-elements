@@ -1,5 +1,5 @@
 ---
-title: Icon Picker
+title: 'Icon Picker'
 ---
 
 import Props from '@ionic-internal/component-api/v1/icon-picker/props.md';

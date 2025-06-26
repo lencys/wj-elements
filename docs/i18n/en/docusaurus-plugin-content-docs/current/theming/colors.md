@@ -1,6 +1,6 @@
 ---
 title: Colors
-initialTab: Preview
+initialTab: 'Preview'
 inlineHtmlPreviews: true
 ---
 

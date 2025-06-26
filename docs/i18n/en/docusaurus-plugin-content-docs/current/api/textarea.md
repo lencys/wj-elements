@@ -1,5 +1,5 @@
 ---
-title: Textarea
+title: 'Textarea'
 ---
 
 import Props from '@ionic-internal/component-api/v1/textarea/props.md';

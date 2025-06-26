@@ -1,5 +1,5 @@
 ---
-title: Card Subtitle
+title: 'Card Subtitle'
 ---
 
 import Props from '@ionic-internal/component-api/v1/card-subtitle/props.md';

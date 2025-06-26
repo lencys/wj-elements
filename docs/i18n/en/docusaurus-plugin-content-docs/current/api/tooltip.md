@@ -1,5 +1,5 @@
 ---
-title: Tooltip
+title: 'Tooltip'
 ---
 
 import Props from '@ionic-internal/component-api/v1/tooltip/props.md';

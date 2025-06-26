@@ -1,5 +1,5 @@
 ---
-title: Carousel Item
+title: 'Carousel Item'
 ---
 
 import Props from '@ionic-internal/component-api/v1/card-title/props.md';

@@ -1,5 +1,5 @@
 ---
-title: Menu
+title: 'Menu'
 ---
 
 import Props from '@ionic-internal/component-api/v1/menu/props.md';

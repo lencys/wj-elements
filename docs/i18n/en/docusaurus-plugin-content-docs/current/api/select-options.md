@@ -1,5 +1,5 @@
 ---
-title: Options
+title: 'Options'
 ---
 
 import Props from '@ionic-internal/component-api/v1/options/props.md';

@@ -454,7 +454,7 @@
       "dependencyGraph": {}
     },
     {
-      "filePath": "src/components/animation/aside.tsx",
+      "filePath": "src/components/aside/aside.tsx",
       "encapsulation": "shadow",
       "tag": "Aside",
       "docs": "",
@@ -1184,7 +1184,7 @@
           "required": false
         },
         {
-          "name": "dialogue",
+          "name": "dialog",
           "type": "string",
           "complexType": {
             "original": "string",
@@ -1192,7 +1192,7 @@
             "references": {}
           },
           "mutable": false,
-          "attr": "dialogue",
+          "attr": "dialog",
           "reflectToAttr": true,
           "docs": "Associates a button with a specific event. When the button is clicked, the named event is triggered, allowing you to implement actions such as opening a dialog box or executing a custom event. See the dialog component for more information.",
           "docsTags": [],
@@ -2931,7 +2931,7 @@
     {
       "filePath": "src/components/dialog/dialog.tsx",
       "encapsulation": "shadow",
-      "tag": "dialogue",
+      "tag": "dialog",
       "docs": "",
       "docsTags": [
         {
@@ -3170,7 +3170,7 @@
             "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
             "parameters": [
               {
-                "name": "dialogue",
+                "name": "dialog",
                 "type": "HTMLElement",
                 "docs": ""
               },
@@ -3193,7 +3193,7 @@
           "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
           "parameters": [
             {
-              "name": "dialogue",
+              "name": "dialog",
               "type": "HTMLElement",
               "docs": ""
             },
@@ -3216,7 +3216,7 @@
             "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
             "parameters": [
               {
-                "name": "dialogue",
+                "name": "dialog",
                 "type": "HTMLElement",
                 "docs": ""
               },
@@ -3239,7 +3239,7 @@
           "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
           "parameters": [
             {
-              "name": "dialogue",
+              "name": "dialog",
               "type": "HTMLElement",
               "docs": ""
             },
@@ -3262,7 +3262,7 @@
             "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
             "parameters": [
               {
-                "name": "dialogue",
+                "name": "dialog",
                 "type": "HTMLElement",
                 "docs": ""
               },
@@ -3285,7 +3285,7 @@
           "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
           "parameters": [
             {
-              "name": "dialogue",
+              "name": "dialog",
               "type": "HTMLElement",
               "docs": ""
             },
@@ -3308,7 +3308,7 @@
             "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
             "parameters": [
               {
-                "name": "dialogue",
+                "name": "dialog",
                 "type": "HTMLElement",
                 "docs": ""
               },
@@ -3331,7 +3331,7 @@
           "signature": "(dialog: HTMLElement, trigger: Event) => Promise<void>",
           "parameters": [
             {
-              "name": "dialogue",
+              "name": "dialog",
               "type": "HTMLElement",
               "docs": ""
             },
@@ -9791,6 +9791,258 @@
       }
     },
     {
+      "filePath": "src/components/reorder/reorder.tsx",
+      "encapsulation": "shadow",
+      "tag": "reorder",
+      "docs": "The `wje-reorder` is a custom web component that allows rearranging elements using drag and drop functionality.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "This element represents rearrangement."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/reorder"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "tag",
+          "text": "wje-reorder"
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "If `true`, rearrangement is disabled.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "reverse",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "reverse",
+          "reflectToAttr": false,
+          "docs": "If `true`, the direction of rearrangement is reversed (bottom-up).",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "attachEventListeners",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "attachEventListeners(element) => void",
+          "parameters": [
+            {
+              "name": "element",
+              "type": "HTMLElement",
+              "docs": "Element to which event listeners will connect"
+            }
+          ],
+          "docs": "Connects event listeners to the element.",
+          "docsTags": []
+        },
+        {
+          "name": "startDragging",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "startDragging(clientX, clientY, target) => void",
+          "parameters": [
+            {
+              "name": "clientX",
+              "type": "number",
+              "docs": "X-coordinate the mouse when you start dragging"
+            },
+            {
+              "name": "clientY",
+              "type": "number",
+              "docs": "Y-coordinate mouse when starting to drag"
+            },
+            {
+              "name": "target",
+              "type": "HTMLElement",
+              "docs": "Target element where the pulling started"
+            }
+          ],
+          "docs": "Initializes the pull process for the reorderable element.",
+          "docsTags": []
+        },
+        {
+          "name": "moveElement",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "moveElement(pageX, pageY) => void",
+          "parameters": [
+            {
+              "name": "pageX",
+              "type": "number",
+              "docs": "X-mouse coordinate relative to the viewport during a move event"
+            },
+            {
+              "name": "pageY",
+              "type": "number",
+              "docs": "Y-mouse coordinate relative to the viewport during a move event"
+            }
+          ],
+          "docs": "Updates the position of the dragged element and manages the reordering logic based on the mouse position.",
+          "docsTags": []
+        },
+        {
+          "name": "StopDragging",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "stopDragging() => void",
+          "parameters": [],
+          "docs": "Stops the element from dragging.",
+          "docsTags": []
+        },
+        {
+          "name": "dispatchChange",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "dispatchChange(from, to, order) => void",
+          "parameters": [
+            {
+              "name": "from",
+              "type": "number",
+              "docs": "Original index of the item being towed"
+            },
+            {
+              "name": "to",
+              "type": "number",
+              "docs": "New index of the item being pulled after rearrangement"
+            },
+            {
+              "name": "order",
+              "type": "Array<string>",
+              "docs": "Updated order of items after rearrangement"
+            }
+          ],
+          "docs": "Transmits a custom event signaling that a rearrangement has occurred.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "wje-reorder:change",
+          "detail": "ReorderChangeEventDetail",
+          "bubbles": true,
+          "complexType": {
+            "original": "ReorderChangeEventDetail",
+            "resolved": "ReorderChangeEventDetail<any>",
+            "references": {
+              "ReorderChangeEventDetail": {
+                "location": "local",
+                "path": "",
+                "id": ""
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Invoked when changing the order of elements.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "mousedown",
+          "method": "mouseDown",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "touchstart",
+          "method": "touchStart",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "dragstart",
+          "method": "DragStart",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [
+        {
+          "name": "--flex-direction",
+          "annotation": "prop",
+          "docs": "Direction of flexbox for container"
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The default location of the element content. This includes elements of type wje-reorder-item."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "The native part of the reorder component, containing the slot."
+        }
+      ],
+      "dependents": [],
+      "dependencies": [
+        "wje-reorder-item",
+        "wje-reorder-dropzone"
+      ],
+      "dependencyGraph": {
+        "wje-reorder": [
+          "wje-reorder-item",
+          "wje-reorder-dropzone"
+        ]
+      }
+    },
+    {
       "filePath": "src/components/reorder-dropzone/reorder-dropzone.tsx",
       "encapsulation": "shadow",
       "tag": "reorder-dropzone",
@@ -12331,7 +12583,7 @@
         {
           "name": "--wje-stepper-justify",
           "annotation": "prop",
-          "docs": "Alignment of the step header (header)."
+          "docs": "Alignment of the step header."
         },
         {
           "name": "--wje-stepper-grow",

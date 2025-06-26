@@ -1,5 +1,5 @@
 ---
-title: Dialog
+title: 'Dialog'
 ---
 
 import Props from '@ionic-internal/component-api/v1/dialog/props.md';

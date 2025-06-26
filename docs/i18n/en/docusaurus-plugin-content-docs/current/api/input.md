@@ -1,5 +1,5 @@
 ---
-title: Input
+title: 'Input'
 ---
 
 import Props from '@ionic-internal/component-api/v1/input/props.md';

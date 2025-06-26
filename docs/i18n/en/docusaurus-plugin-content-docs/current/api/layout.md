@@ -1,5 +1,5 @@
 ---
-title: Layout
+title: 'Layout'
 ---
 
 import Props from '@ionic-internal/component-api/v1/layout/props.md';

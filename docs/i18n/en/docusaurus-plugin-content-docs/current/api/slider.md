@@ -1,5 +1,5 @@
 ---
-title: Slider
+title: 'Slider'
 ---
 
 import Props from '@ionic-internal/component-api/v1/slider/props.md';

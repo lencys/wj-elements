@@ -1,5 +1,5 @@
 ---
-title: Item
+title: 'Item'
 ---
 
 import Props from '@ionic-internal/component-api/v1/item/props.md';

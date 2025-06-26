@@ -1,5 +1,5 @@
 ---
-title: FileUpload
+title: 'FileUpload'
 ---
 
 import Props from '@ionic-internal/component-api/v1/file-upload/props.md';

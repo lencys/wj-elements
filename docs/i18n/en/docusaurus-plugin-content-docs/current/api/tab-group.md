@@ -1,5 +1,5 @@
 ---
-title: TabGroup
+title: 'TabGroup'
 ---
 
 import Props from '@ionic-internal/component-api/v1/tab-group/props.md';

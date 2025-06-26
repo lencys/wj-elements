@@ -1,6 +1,6 @@
 ---
 title: Dark mode
-initialTab: Preview
+initialTab: 'Preview'
 inlineHtmlPreviews: true
 ---
 

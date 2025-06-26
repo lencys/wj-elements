@@ -1,5 +1,5 @@
 ---
-title: Radio
+title: 'Radio'
 ---
 
 import Props from '@ionic-internal/component-api/v1/radio/props.md';

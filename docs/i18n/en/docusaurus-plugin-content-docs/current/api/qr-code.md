@@ -1,5 +1,5 @@
 ---
-title: QR Code
+title: 'QR Code'
 ---
 
 import Props from '@ionic-internal/component-api/v1/qr-code/props.md';

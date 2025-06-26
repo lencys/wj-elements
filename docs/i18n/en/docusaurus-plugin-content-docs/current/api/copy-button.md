@@ -1,5 +1,5 @@
 ---
-title: Copy button
+title: 'Copy button'
 ---
 
 import Props from '@ionic-internal/component-api/v1/copy-button/props.md';

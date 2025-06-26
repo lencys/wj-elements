@@ -1,5 +1,5 @@
 ---
-title: Toolbar
+title: 'Toolbar'
 ---
 
 import Props from '@ionic-internal/component-api/v1/toolbar/props.md';

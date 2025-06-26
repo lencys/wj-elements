@@ -1,5 +1,5 @@
 ---
-title: OrgChart
+title: 'OrgChart'
 ---
 
 import Props from '@ionic-internal/component-api/v1/orgchart/props.md';

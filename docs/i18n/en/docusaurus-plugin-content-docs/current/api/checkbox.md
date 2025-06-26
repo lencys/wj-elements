@@ -1,5 +1,5 @@
 ---
-title: Checkbox
+title: 'Checkbox'
 ---
 
 import Props from '@ionic-internal/component-api/v1/checkbox/props.md';

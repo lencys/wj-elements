@@ -1,5 +1,5 @@
 ---
-title: Avatar
+title: 'Avatar'
 ---
 
 import Props from '@ionic-internal/component-api/v1/avatar/props.md';

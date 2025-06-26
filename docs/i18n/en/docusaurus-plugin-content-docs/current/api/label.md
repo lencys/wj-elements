@@ -1,5 +1,5 @@
 ---
-title: Label
+title: 'Label'
 ---
 
 import Props from '@ionic-internal/component-api/v1/label/props.md';

@@ -1,5 +1,5 @@
 ---
-title: Image Comparer
+title: 'Image Comparer'
 ---
 
 import Props from '@ionic-internal/component-api/v1/image-comparer/props.md';

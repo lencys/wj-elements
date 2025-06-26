@@ -1,5 +1,5 @@
 ---
-title: TabPanel
+title: 'TabPanel'
 ---
 
 import Props from '@ionic-internal/component-api/v1/tab-panel/props.md';
