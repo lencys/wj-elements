@@ -127,10 +127,11 @@ export class Select extends FormAssociatedElement {
 	};
 
 	/**
-	 * Sets the value of the form element. Handles multiple values when
-	 * the element has the 'multiple' attribute by storing them in a FormData object.
-	 * @param {string | Array} value The value to be set. Can be a single value or an array of values
-	 * when 'multiple' attribute is present.
+	 * Sets the value for the form field. Converts the input value into a FormData object
+	 * if it is not already an array, splitting by spaces if necessary, and sets the
+	 * internal form value as well as the selected values.
+	 * @param {string|Array} value The value to be set. Can be a string (which will be
+	 * split into an array by spaces) or an array of values.
 	 */
 	set value(value) {
 		if (value) {
@@ -155,8 +156,8 @@ export class Select extends FormAssociatedElement {
 	}
 
 	/**
-	 * Getter for the value attribute.
-	 * @returns {object} The value of the attribute.
+	 * Retrieves the current value.
+	 * @returns {any} The value of the `_value` property.
 	 */
 	get value() {
 		return this._value;
@@ -387,6 +388,12 @@ export class Select extends FormAssociatedElement {
 		this.isShadowRoot = 'open';
 	}
 
+	beforeDraw() {
+		if(this.hasAttribute('value')) {
+			this.value = this.getAttribute('value');
+		}
+	}
+
 	/**
 	 * Draws the component for the select.
 	 * @returns {DocumentFragment}
@@ -563,6 +570,7 @@ export class Select extends FormAssociatedElement {
 	 * @returns {void} Does not return a value. The method operates by updating the state and behavior of the component.
 	 */
 	afterDraw() {
+
 		this.validate(this.selectedOptions);
 
 		if (this.hasAttribute('invalid')) {
@@ -573,12 +581,12 @@ export class Select extends FormAssociatedElement {
 			this.optionCheckSlot(option);
 		});
 
-		if (this.lazy) {
-			this.selectOptions(this.value);
-			this.selected = this.#getSelected();
-			this.selectedOptions = this.#getSelectedOptions();
-			this.selections(true);
+		this.selectedOptions = this.#getSelectedOptions();
+		this.selectOptions(this.value);
+		this.selected = this.#getSelected();
+		this.selections(true);
 
+		if (this.lazy) {
 			event.addListener(this.popup, 'wje-popup:show', null, (e) => {
 				if (this._wasOppened) return;
 				this._wasOppened = true;
@@ -587,13 +595,6 @@ export class Select extends FormAssociatedElement {
 				optionsElement.setAttribute('lazy', '');
 				optionsElement.setAttribute('attached', '');
 			});
-		} else {
-			event.addListener(this.popup, 'wje-infinity-scroll:finish', null, (e) => {
-				this.selectOptions(this.value);
-				this.selected = this.#getSelected();
-				this.selectedOptions = this.#getSelectedOptions();
-				this.selections(true);
-			})
 		}
 
 		this.#htmlOptions = Array.from(this.querySelectorAll(':scope > wje-option')).map((option) => {
@@ -633,18 +634,8 @@ export class Select extends FormAssociatedElement {
 		this.clear?.addEventListener('wje-button:click', (e) => {
 			e.preventDefault();
 			e.stopPropagation();
-
-			this.selected = [];
-			this.selectedOptions = [];
-
-			this.getAllOptions().forEach((option) => {
-				option.selected = false;
-			});
-			this.selections();
-
-			e.stopPropagation();
+			this.clearSelections();
 		});
-
 
 		this.list.addEventListener('wje-options:load', (e) => {
 			this.selectedOptions.forEach((option) => {
@@ -1004,6 +995,15 @@ export class Select extends FormAssociatedElement {
 		);
 	}
 
+	clearSelections() {
+		this.selected = [];
+		this.selectedOptions = [];
+
+		this.getAllOptions().forEach((option) => {
+			option.selected = false;
+		});
+		this.selections();
+	}
 	/**
 	 * Processes the provided item to retrieve its corresponding value and text
 	 * based on the configuration of `wje-options`, then updates and returns
@@ -1012,11 +1012,10 @@ export class Select extends FormAssociatedElement {
 	 * @returns {string} The HTML representation of the selected item's value.
 	 */
 	#htmlSelectedItem(item) {
-		const keyValue = this.querySelector("wje-options")?.itemValue ?? "value"
-		const textValue = this.querySelector("wje-options")?.itemText ?? "text"
+		const keyValue = "value"
+		const textValue = "textContent";
 
-		const value = this.options
-			.find((option) => option[keyValue] === item)?.[textValue] ?? "";
+		const value = this.selectedOptions.find((option) => option[keyValue] === item)?.[textValue] ?? "";
 
 		return this.htmlSelectedItem(value);
 	}

@@ -7,121 +7,114 @@ template.innerHTML = `
   <h1>Select</h1>
   <div class="container">
     
-<!--    &lt;!&ndash; Default &ndash;&gt;-->
+    <!-- Default -->
 
-<!--    <h2>Default</h2>-->
-<!--    <div class="playground">-->
-<!--      <div class="content">-->
-<!--        <wje-select label="Label" placeholder="Select option">-->
-<!--          <wje-option value="option-1">Option 1</wje-option>-->
-<!--          <wje-option value="option-2">-->
-<!--            Option 2-->
-<!--            <wje-icon name="heart" slot="end"></wje-icon>-->
-<!--          </wje-option>-->
-<!--          <wje-option value="option-3">Option 3</wje-option>-->
-<!--          <wje-option value="option-4">Option 4</wje-option>-->
-<!--        </wje-select>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    -->
-<!--    &lt;!&ndash; STANDARD &ndash;&gt; -->
+    <h2>Default</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-select label="Label" placeholder="Select option" value="option-1">
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2">
+            Option 2
+            <wje-icon name="heart" slot="end"></wje-icon>
+          </wje-option>
+          <wje-option value="option-3">Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+        </wje-select>
+      </div>
+    </div>
+    
+    <!-- STANDARD --> 
 
-<!--    <h2>Standard</h2>-->
-<!--    <div class="playground">-->
-<!--      <div class="content">-->
-<!--        <wje-select label="Label test" placeholder="Select option" variant="standard">-->
-<!--          <wje-option value="option-1">Option 1</wje-option>-->
-<!--          <wje-option value="option-2">-->
-<!--            Option 2-->
-<!--            <wje-icon name="heart" slot="end"></wje-icon>-->
-<!--          </wje-option>-->
-<!--          <wje-option value="option-3" selected>Option 3</wje-option>-->
-<!--          <wje-option value="option-4">Option 4</wje-option>-->
-<!--        </wje-select>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    -->
-<!--    &lt;!&ndash; OFFSET &ndash;&gt; -->
+    <h2>Standard</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-select label="Label test" placeholder="Select option" variant="standard">
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2">
+            Option 2
+            <wje-icon name="heart" slot="end"></wje-icon>
+          </wje-option>
+          <wje-option value="option-3" selected>Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+        </wje-select>
+      </div>
+    </div>
+    
+    <!-- OFFSET --> 
 
-<!--    <h2>Offset</h2>-->
-<!--    <div class="playground">-->
-<!--      <div class="content">-->
-<!--        <wje-select id="offset" placeholder="Select option" variant="standard" offset="5">-->
-<!--          <wje-option value="option-1">Option 1</wje-option>-->
-<!--          <wje-option value="option-2">-->
-<!--            Option 2-->
-<!--            <wje-icon name="heart" slot="end"></wje-icon>-->
-<!--          </wje-option>-->
-<!--          <wje-option value="option-3" selected>Option 3</wje-option>-->
-<!--          <wje-option value="option-4">Option 4</wje-option>-->
-<!--        </wje-select>-->
-<!--        -->
-<!--        <style>-->
-<!--        	#offset {-->
-<!--        		&#45;&#45;wje-select-border-radius: var(&#45;&#45;wje-border-radius-large);-->
-<!--        		&#45;&#45;wje-select-options-border-radius: var(&#45;&#45;wje-border-radius-large);-->
-<!--        	}-->
-<!--        </style>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    -->
-<!--    &lt;!&ndash; OPTIONS &ndash;&gt;-->
+    <h2>Offset</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-select id="offset" placeholder="Select option" variant="standard" offset="5">
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2">
+            Option 2
+            <wje-icon name="heart" slot="end"></wje-icon>
+          </wje-option>
+          <wje-option value="option-3" selected>Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+        </wje-select>
+        
+        <style>
+        	#offset {
+        		--wje-select-border-radius: var(--wje-border-radius-large);
+        		--wje-select-options-border-radius: var(--wje-border-radius-large);
+        	}
+        </style>
+      </div>
+    </div>
+    
+    <!-- OPTIONS -->
 
-<!--    <h2>Options</h2>-->
-<!--    <div class="playground">-->
-<!--      <div class="content">-->
-<!--        <wje-select label="Label" variant="standard" placeholder="Select option">-->
-<!--          <wje-option value="option-1">Option 1</wje-option>-->
-<!--          <wje-option value="option-2">Option 2<wje-icon name="heart" slot="end"></wje-icon></wje-option>-->
-<!--          <wje-option value="option-3">Option 3</wje-option>-->
-<!--          <wje-option value="option-4">Option 4</wje-option>-->
-<!--        </wje-select>-->
-<!--        -->
-<!--        <wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>-->
-<!--          <wje-options url="/api/options" item-value="value" item-text="text" option-array-path="data"></wje-options>-->
-<!--        </wje-select>-->
+    <h2>Options</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
+          <wje-options url="/api/options" item-value="value" item-text="text" option-array-path="data"></wje-options>
+        </wje-select>
 
-<!--        <div class="content" id="placeholder"></div>-->
-<!--      </div>-->
-<!--    </div>-->
+        <div class="content" id="placeholder"></div>
+      </div>
+    </div>
 
-<!--    &lt;!&ndash; LAZY OPTIONS &ndash;&gt;-->
+    <!-- LAZY OPTIONS -->
 
-<!--    <h2>Lazy options</h2>-->
-<!--    <div class="playground">-->
-<!--      <div class="content">-->
-<!--        <wje-select name="lazy-update" placeholder="Select options" variant="standard" max-options="2" variant="standard" max-height="200px" multiple clearable lazy>-->
-<!--          <wje-options url="/api/options" item-value="value" item-text="text" lazy-load-size="6" option-array-path="data" lazy></wje-options>-->
-<!--        </wje-select>-->
-<!--      </div>-->
-<!--    </div>-->
+    <h2>Lazy options</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-select name="lazy-update" placeholder="Select options" variant="standard" max-options="2" variant="standard" max-height="200px" multiple clearable lazy>
+          <wje-options url="/api/options" item-value="value" item-text="text" lazy-load-size="6" option-array-path="data" lazy></wje-options>
+        </wje-select>
+      </div>
+    </div>
 
-<!--    &lt;!&ndash; FIND &ndash;&gt;-->
+    <!-- FIND -->
 
-<!--    <h2>Find</h2>-->
-<!--    <div class="playground">-->
-<!--      <div class="content" style="gap: .5rem;">-->
-<!--        <wje-select placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple clearable>-->
-<!--          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>-->
-<!--        </wje-select>-->
-<!--        -->
-<!--        <wje-select placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple checkbox clearable>-->
-<!--          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>-->
-<!--        </wje-select>-->
-<!--        -->
-<!--        <wje-select placeholder="Select options" variant="standard" max-height="200px" find clearable>-->
-<!--          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>-->
-<!--        </wje-select>-->
-<!--        -->
-<!--        <wje-select label="Label" placeholder="Select options" max-options="1" max-height="200px" find multiple clearable>-->
-<!--          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>-->
-<!--        </wje-select>-->
-<!--        -->
-<!--        <wje-select label="Label" placeholder="Select options" max-height="200px" find clearable>-->
-<!--          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>-->
-<!--        </wje-select>-->
-<!--      </div>-->
-<!--    </div>-->
+    <h2>Find</h2>
+    <div class="playground">
+      <div class="content" style="gap: .5rem;">
+        <wje-select placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple clearable>
+          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>
+        </wje-select>
+        
+        <wje-select placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple checkbox clearable>
+          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>
+        </wje-select>
+        
+        <wje-select placeholder="Select options" variant="standard" max-height="200px" find clearable>
+          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>
+        </wje-select>
+        
+        <wje-select label="Label" placeholder="Select options" max-options="1" max-height="200px" find multiple clearable>
+          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>
+        </wje-select>
+        
+        <wje-select label="Label" placeholder="Select options" max-height="200px" find clearable>
+          <wje-options url="/api/options" item-value="value"item-text="text"  option-array-path="data"></wje-options>
+        </wje-select>
+      </div>
+    </div>
 
     <!-- AUTOCOMPLETE -->
 
@@ -309,15 +302,12 @@ template.innerHTML = `
     <h2>Multiple</h2>
     <div class="playground">
       <div class="content">
-        <wje-select placeholder="Select options" variant="standard" max-options="2" variant="standard" multiple clearable>
+        <wje-select placeholder="Select options" variant="standard" max-options="2" variant="standard" value="option-1 option-2" multiple clearable >
           <wje-option value="option-1">Option 1</wje-option>
-          <wje-option value="option-2">
-            Option 2
-            <wje-icon name="heart" slot="end"></wje-icon>
-          </wje-option>
-          <wje-option value="option-3" selected>Option 3</wje-option>
-          <wje-option value="option-4" selected>Option 4</wje-option>
-          <wje-option value="option-5" selected>Option 5</wje-option>
+          <wje-option value="option-2">Option 2<wje-icon name="heart" slot="end"></wje-icon></wje-option>
+          <wje-option value="option-3">Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+          <wje-option value="option-5">Option 5</wje-option>
           <wje-option value="option-6">Option 6</wje-option>
         </wje-select>
       </div>
@@ -342,87 +332,85 @@ export default class DemoSelect extends WJElement {
 		const codeSnippet = new CodeSnippet();
 		codeSnippet.generateSnippet(this.context);
 
-		// const lazySelect = document.querySelector('[name=lazy-update]');
-		// lazySelect.value = '5e13d6f2-698c-48de-962b-6594d7f72033 018f3e77-c18b-40a9-93d1-904616b092f3';
-		// lazySelect.addOptions([
-		// 	{ text: 'Bahrain', value: '5e13d6f2-698c-48de-962b-6594d7f72033'},
-		// 	{ text: 'Serbia', value: '018f3e77-c18b-40a9-93d1-904616b092f3'},
-		// ]);
-		// // lazySelect.selectOptions([ "06a3d2a9-ccf0-4294-bb4a-d43be4ca792f", "018f3e77-c18b-40a9-93d1-904616b092f3", "5e13d6f2-698c-48de-962b-6594d7f72033" ]);
-		//
-		// const lazySelectOptions = lazySelect.querySelector('wje-options');
-		// lazySelectOptions.htmlItem = (data) => {
-		// 	const option = document.createElement('wje-option');
-		// 	const key = lazySelectOptions.itemValue || 'ttt';
-		// 	const text = lazySelectOptions.itemText || 'ddd';
-		//
-		// 	option.setAttribute('value', data[key]);
-		// 	option.innerHTML = data[text];
-		//
-		// 	return option;
-		// }
+		const lazySelect = document.querySelector('[name=lazy-update]');
+		lazySelect.addOptions([
+			{ text: 'Bahrain', value: '5e13d6f2-698c-48de-962b-6594d7f72033'},
+			{ text: 'Serbia', value: '018f3e77-c18b-40a9-93d1-904616b092f3'},
+		]);
+		lazySelect.value = '5e13d6f2-698c-48de-962b-6594d7f72033 018f3e77-c18b-40a9-93d1-904616b092f3';
 
-		// const select = document.createElement('wje-select');
-		// select.setAttribute('placeholder', 'Select options');
-		// select.setAttribute('variant', 'standard');
-		// select.setAttribute('max-height', '200px');
-		// select.setAttribute('max-options', '1');
-		// select.setAttribute('multiple', '');
-		// select.setAttribute('clearable', '');
-		//
-		// const options = document.createElement('wje-options');
-		// options.setAttribute('url', '/api/options');
-		// options.setAttribute('item-value', 'value');
-		// options.setAttribute('item-text', 'text');
-		//
-		// options.htmlItem = o => {
-		// 	const option = document.createElement('wje-option');
-		// 	option.setAttribute('value', o.value);
-		// 	option.innerHTML = true ? `<div><div> ${true ? `${o.id} ${o.text}` : o.label} </div> <div class="small-text">${o.label ? o.label : "chyba popis moznosti"}</div></div>` : `${true ? `${o.id} ${o.text}` : o.label}`;
-		// 	return option;
-		// }
-		//
-		// select.addOptions([
-		// 	{ text: 'aaaa', value: 'aeee' },
-		// 	{ text: 'bbbb', value: 'beee' },
-		// 	{ text: 'cccc', value: 'ceee' },
-		// 	{ text: 'dddd', value: 'deee' },
-		// 	{ text: 'eeee', value: 'eeee' },
-		// 	{ text: 'ffff', value: 'feee' },
-		// 	{ text: 'gggg', value: 'geee' },
-		// 	{ text: 'hhhh', value: 'heee' },
-		// 	{ text: 'iiii', value: 'ieee' },
-		// 	{ text: 'jjjj', value: 'jeee' },
-		// 	{ text: 'kkkk', value: 'keee' },
-		// 	{ text: 'llll', value: 'leee' },
-		// 	{ text: 'mmmm', value: 'meee' },
-		// 	{ text: 'nnnn', value: 'neee' },
-		// 	{ text: 'oooo', value: 'oeee' },
-		// 	{ text: 'pppp', value: 'peee' },
-		// 	{ text: 'qqqq', value: 'qeee' },
-		// 	{ text: 'rrrr', value: 'reee' },
-		// 	{ text: 'ssss', value: 'seee' },
-		// 	{ text: 'tttt', value: 'teee' },
-		// 	{ text: 'uuuu', value: 'ueee' },
-		// 	{ text: 'vvvv', value: 'veee' },
-		// 	{ text: 'wwww', value: 'weee' },
-		// 	{ text: 'xxxx', value: 'xeee' },
-		// 	{ text: 'yyyy', value: 'yeee' },
-		// 	{ text: 'zzzz', value: 'zeee' },
-		// ]);
-		// select.selectOptions(['aeee', 'beee'], false);
-		// select.value = ['aeee', 'beee'];
-		//
-		// select.append(options);
-		//
-		// this.querySelector('#placeholder').appendChild(select);
+		const lazySelectOptions = lazySelect.querySelector('wje-options');
+		lazySelectOptions.htmlItem = (data) => {
+			const option = document.createElement('wje-option');
+			const key = lazySelectOptions.itemValue;
+			const text = lazySelectOptions.itemText;
+
+			option.setAttribute('value', data[key]);
+			option.innerHTML = data[text];
+
+			return option;
+		}
+
+		const select = document.createElement('wje-select');
+		select.setAttribute('placeholder', 'Select options');
+		select.setAttribute('variant', 'standard');
+		select.setAttribute('max-height', '200px');
+		select.setAttribute('max-options', '1');
+		select.setAttribute('multiple', '');
+		select.setAttribute('clearable', '');
+		select.setAttribute('value', 'aeee beee');
+
+		const options = document.createElement('wje-options');
+		options.setAttribute('url', '/api/options');
+		options.setAttribute('item-value', 'value');
+		options.setAttribute('item-text', 'text');
+
+		options.htmlItem = o => {
+			const option = document.createElement('wje-option');
+			option.setAttribute('value', o.value);
+			option.innerHTML = true ? `<div><div> ${true ? `${o.id} ${o.text}` : o.label} </div> <div class="small-text">${o.label ? o.label : "chyba popis moznosti"}</div></div>` : `${true ? `${o.id} ${o.text}` : o.label}`;
+			return option;
+		}
+
+		select.addOptions([
+			{ text: 'aaaa', value: 'aeee' },
+			{ text: 'bbbb', value: 'beee' },
+			{ text: 'cccc', value: 'ceee' },
+			{ text: 'dddd', value: 'deee' },
+			{ text: 'eeee', value: 'eeee' },
+			{ text: 'ffff', value: 'feee' },
+			{ text: 'gggg', value: 'geee' },
+			{ text: 'hhhh', value: 'heee' },
+			{ text: 'iiii', value: 'ieee' },
+			{ text: 'jjjj', value: 'jeee' },
+			{ text: 'kkkk', value: 'keee' },
+			{ text: 'llll', value: 'leee' },
+			{ text: 'mmmm', value: 'meee' },
+			{ text: 'nnnn', value: 'neee' },
+			{ text: 'oooo', value: 'oeee' },
+			{ text: 'pppp', value: 'peee' },
+			{ text: 'qqqq', value: 'qeee' },
+			{ text: 'rrrr', value: 'reee' },
+			{ text: 'ssss', value: 'seee' },
+			{ text: 'tttt', value: 'teee' },
+			{ text: 'uuuu', value: 'ueee' },
+			{ text: 'vvvv', value: 'veee' },
+			{ text: 'wwww', value: 'weee' },
+			{ text: 'xxxx', value: 'xeee' },
+			{ text: 'yyyy', value: 'yeee' },
+			{ text: 'zzzz', value: 'zeee' },
+		]);
+
+		select.append(options);
+
+		this.querySelector('#placeholder').appendChild(select);
 
 		// Custom checkbox handling
 		this.querySelectorAll("#custom-checkbox wje-option").forEach(option => {
 			option.addEventListener('wje-option:change', (e) => {
 				e.detail.option.querySelector('wje-checkbox').checked = !e.detail.option.selected;
 			});
-		})
+		});
 	}
 }
 
