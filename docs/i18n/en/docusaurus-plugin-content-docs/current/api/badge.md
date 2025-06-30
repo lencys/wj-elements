@@ -1,5 +1,5 @@
 ---
-title: Badge
+title: 'Badge'
 ---
 
 import Props from '@ionic-internal/component-api/v1/badge/props.md';

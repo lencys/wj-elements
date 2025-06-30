@@ -1,5 +1,5 @@
 ---
-title: Dropdown
+title: 'Dropdown'
 ---
 
 import Props from '@ionic-internal/component-api/v1/dropdown/props.md';

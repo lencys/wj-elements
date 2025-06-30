@@ -1,5 +1,5 @@
 ---
-title: Main
+title: 'Main'
 ---
 
 import Props from '@ionic-internal/component-api/v1/main/props.md';

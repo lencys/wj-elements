@@ -1,5 +1,5 @@
 ---
-title: Tree Item
+title: 'Tree Item'
 ---
 
 <!-- import Props from '@ionic-internal/component-api/v1/tree-item/props.md';

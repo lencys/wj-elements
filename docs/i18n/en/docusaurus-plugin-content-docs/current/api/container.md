@@ -1,5 +1,5 @@
 ---
-title: Container
+title: 'Container'
 ---
 
 import Props from '@ionic-internal/component-api/v1/container/props.md';

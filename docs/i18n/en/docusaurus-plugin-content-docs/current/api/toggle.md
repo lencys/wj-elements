@@ -1,5 +1,5 @@
 ---
-title: Toggle
+title: 'Toggle'
 ---
 
 import Props from '@ionic-internal/component-api/v1/toggle/props.md';

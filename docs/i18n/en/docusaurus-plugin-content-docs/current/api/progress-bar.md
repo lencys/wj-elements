@@ -1,5 +1,5 @@
 ---
-title: Progress bar
+title: 'Progress bar'
 ---
 
 import Props from '@ionic-internal/component-api/v1/progress-bar/props.md';

@@ -1,5 +1,5 @@
 ---
-title: Button
+title: 'Button'
 ---
 
 import Props from '@ionic-internal/component-api/v1/button/props.md';

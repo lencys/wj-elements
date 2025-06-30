@@ -1,5 +1,5 @@
 ---
-title: FormatDigital
+title: 'FormatDigital'
 ---
 
 import Props from '@ionic-internal/component-api/v1/format-digital/props.md';

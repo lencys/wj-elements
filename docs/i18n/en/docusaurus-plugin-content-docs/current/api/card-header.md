@@ -1,5 +1,5 @@
 ---
-title: Card Header
+title: 'Card Header'
 ---
 
 import Props from '@ionic-internal/component-api/v1/card-header/props.md';

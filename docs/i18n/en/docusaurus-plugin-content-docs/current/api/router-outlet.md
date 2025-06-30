@@ -1,5 +1,5 @@
 ---
-title: Router Outlet
+title: 'Router Outlet'
 ---
 
 import Props from '@ionic-internal/component-api/v1/router-outlet/props.md';

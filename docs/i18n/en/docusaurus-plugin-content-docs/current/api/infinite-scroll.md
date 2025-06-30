@@ -1,5 +1,5 @@
 ---
-title: Infinite-scroll
+title: 'Infinite-scroll'
 ---
 
 import Props from '@ionic-internal/component-api/v1/infinite-scroll/props.md';

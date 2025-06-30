@@ -1,5 +1,5 @@
 ---
-title: Card Content
+title: 'Card Content'
 ---
 
 import Props from '@ionic-internal/component-api/v1/card-content/props.md';

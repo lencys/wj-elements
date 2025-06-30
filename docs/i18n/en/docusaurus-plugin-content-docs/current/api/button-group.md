@@ -1,5 +1,5 @@
 ---
-title: ButtonGroup
+title: 'ButtonGroup'
 ---
 
 import Props from '@ionic-internal/component-api/v1/button-group/props.md';

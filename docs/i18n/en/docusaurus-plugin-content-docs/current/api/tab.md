@@ -1,5 +1,5 @@
 ---
-title: Tab
+title: 'Tab'
 ---
 
 import Props from '@ionic-internal/component-api/v1/tab/props.md';

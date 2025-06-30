@@ -1,5 +1,5 @@
 ---
-title: Aside
+title: 'Aside'
 ---
 
 import Props from '@ionic-internal/component-api/v1/aside/props.md';

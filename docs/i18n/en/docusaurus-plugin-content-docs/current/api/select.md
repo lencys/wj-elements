@@ -1,5 +1,5 @@
 ---
-title: Select
+title: 'Select'
 ---
 
 import Props from '@ionic-internal/component-api/v1/select/props.md';

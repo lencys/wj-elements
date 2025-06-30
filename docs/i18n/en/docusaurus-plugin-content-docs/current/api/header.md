@@ -1,5 +1,5 @@
 ---
-title: Header
+title: 'Header'
 ---
 
 import Props from '@ionic-internal/component-api/v1/header/props.md';

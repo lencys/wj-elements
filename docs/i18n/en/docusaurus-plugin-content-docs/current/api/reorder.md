@@ -1,5 +1,5 @@
 ---
-title: Reorder
+title: 'Reorder'
 ---
 
 import Props from '@ionic-internal/component-api/v1/reorder/props.md';

@@ -454,49 +454,6 @@
       "dependencyGraph": {}
     },
     {
-      "filePath": "src/components/animation/aside.tsx",
-      "encapsulation": "shadow",
-      "tag": "Aside",
-      "docs": "",
-      "docsTags": [
-        {
-          "name": "virtualProp",
-          "text": "{ \"ios\". | \"md\"} mode - The mode determines which platform styles to use."
-        },
-        {
-          "name": "slot",
-          "text": "header - Content is placed at the top and is used to\nexpand or collapse the accordion item."
-        },
-        {
-          "name": "slot",
-          "text": "content - Content is placed below the header and is\nshown or hidden based on expanded state."
-        },
-        {
-          "name": "part",
-          "text": "header - The wrapper element for the header slot."
-        },
-        {
-          "name": "part",
-          "text": "content - The wrapper element for the content slot."
-        },
-        {
-          "name": "part",
-          "text": "expanded - The expanded element. Can be used in combination\nwith the `header` and `content` parts (i.e. `::part(header expanded)`)."
-        }
-      ],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
       "filePath": "src/components/avatar/avatar.tsx",
       "encapsulation": "shadow",
       "tag": "avatar",
@@ -1140,7 +1097,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "The color to be used from the application color palette. The default options are `\"primary\"`, `\"warning\"`, `\"success\"`, `\"warning\"`, `\"warning\"`, and `\"neutral\"`.\nFor more information about colors, visit [Customization Basics](/theming/basics).",
+          "docs": "The color to be used from the application color palette. The default options are `\"primary\"`, `\"warning\"`, `\"success\"`, `\"warning\"`, `\"warning\"`, and `\"neutral\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
           "docsTags": [],
           "values": [
             {
@@ -2931,7 +2888,7 @@
     {
       "filePath": "src/components/dialog/dialog.tsx",
       "encapsulation": "shadow",
-      "tag": "dialogue",
+      "tag": "dialog",
       "docs": "",
       "docsTags": [
         {
@@ -3492,7 +3449,7 @@
         },
         {
           "name": "header",
-          "docs": "Content placed in the header area of the dialog."
+          "docs": "Content placed in the dialogue header area."
         },
         {
           "name": "footer",
@@ -6849,7 +6806,7 @@
       "slots": [
         {
           "name": "",
-          "docs": "The default location of the item content."
+          "docs": "Default location of the item content."
         },
         {
           "name": "start",
@@ -7128,7 +7085,7 @@
     {
       "filePath": "src/components/aside/aside.tsx",
       "encapsulation": "scoped",
-      "tag": "Aside",
+      "tag": "aside",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -8251,7 +8208,7 @@
       "parts": [
         {
           "name": "native",
-          "docs": "Refers to the organization chart container."
+          "docs": "Refers to the container of the organization chart."
         }
       ],
       "dependents": [],
@@ -8265,7 +8222,7 @@
       "docs": "OrgchartItem is a custom web component that extends WJElement.",
       "docsTags": [
         {
-          "name": "summary",
+          "name": "Summary",
           "text": "OrgchartItem is a custom web component that extends WJElement."
         },
         {
@@ -8496,7 +8453,7 @@
       "docs": "Orgchart-group is a custom web component that extends WJElement.",
       "docsTags": [
         {
-          "name": "Summary",
+          "name": "summary",
           "text": "OrgchartGroup is a custom web component that extends WJElement."
         },
         {
@@ -8816,7 +8773,7 @@
               "docs": "Current page number (default is 1)."
             },
             {
-              "name": "PageSize",
+              "name": "pageSize",
               "type": "number",
               "docs": "Number of items per page (default is 10)."
             },
@@ -9787,6 +9744,258 @@
         "wje-relative-time": [
           "Localizer",
           "WJElement"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/reorder/reorder.tsx",
+      "encapsulation": "shadow",
+      "tag": "reorder",
+      "docs": "The `wje-reorder` is a custom web component that allows rearranging elements using drag and drop functionality.",
+      "docsTags": [
+        {
+          "name": "Summary",
+          "text": "This element represents rearrangement."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/reorder"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "tag",
+          "text": "wje-reorder"
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "If `true`, rearrangement is disabled.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "reverse",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "reverse",
+          "reflectToAttr": false,
+          "docs": "If `true`, the direction of rearrangement is reversed (bottom-up).",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "attachEventListeners",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "attachEventListeners(element) => void",
+          "parameters": [
+            {
+              "name": "element",
+              "type": "HTMLElement",
+              "docs": "Element to which event listeners will connect"
+            }
+          ],
+          "docs": "Connects event listeners to the element.",
+          "docsTags": []
+        },
+        {
+          "name": "startDragging",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "startDragging(clientX, clientY, target) => void",
+          "parameters": [
+            {
+              "name": "clientX",
+              "type": "number",
+              "docs": "X-coordinate the mouse when you start dragging"
+            },
+            {
+              "name": "clientY",
+              "type": "number",
+              "docs": "Y-coordinate mouse when starting to drag"
+            },
+            {
+              "name": "target",
+              "type": "HTMLElement",
+              "docs": "Target element where the pulling started"
+            }
+          ],
+          "docs": "Initializes the pull process for the reorderable element.",
+          "docsTags": []
+        },
+        {
+          "name": "moveElement",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "moveElement(pageX, pageY) => void",
+          "parameters": [
+            {
+              "name": "pageX",
+              "type": "number",
+              "docs": "X-mouse coordinate relative to the viewport during a move event"
+            },
+            {
+              "name": "pageY",
+              "type": "number",
+              "docs": "Y-mouse coordinate relative to the viewport during a move event"
+            }
+          ],
+          "docs": "Updates the position of the dragged element and manages the reordering logic based on the mouse position.",
+          "docsTags": []
+        },
+        {
+          "name": "StopDragging",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "stopDragging() => void",
+          "parameters": [],
+          "docs": "Stops the element from dragging.",
+          "docsTags": []
+        },
+        {
+          "name": "dispatchChange",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "dispatchChange(from, to, order) => void",
+          "parameters": [
+            {
+              "name": "from",
+              "type": "number",
+              "docs": "Original index of the item being towed"
+            },
+            {
+              "name": "to",
+              "type": "number",
+              "docs": "New index of the item being pulled after rearrangement"
+            },
+            {
+              "name": "order",
+              "type": "Array<string>",
+              "docs": "Updated order of items after rearrangement"
+            }
+          ],
+          "docs": "Transmits a custom event signaling that a rearrangement has occurred.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "wje-reorder:change",
+          "detail": "ReorderChangeEventDetail",
+          "bubbles": true,
+          "complexType": {
+            "original": "ReorderChangeEventDetail",
+            "resolved": "ReorderChangeEventDetail<any>",
+            "references": {
+              "ReorderChangeEventDetail": {
+                "location": "local",
+                "path": "",
+                "id": ""
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Invoked when changing the order of elements.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "mousedown",
+          "method": "mouseDown",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "touchstart",
+          "method": "touchStart",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "dragstart",
+          "method": "DragStart",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [
+        {
+          "name": "--flex-direction",
+          "annotation": "prop",
+          "docs": "Direction of flexbox for container"
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The default location of the element content. This includes elements of type wje-reorder-item."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "The native part of the reorder component, containing the slot."
+        }
+      ],
+      "dependents": [],
+      "dependencies": [
+        "wje-reorder-item",
+        "wje-reorder-dropzone"
+      ],
+      "dependencyGraph": {
+        "wje-reorder": [
+          "wje-reorder-item",
+          "wje-reorder-dropzone"
         ]
       }
     },
@@ -12331,7 +12540,7 @@
         {
           "name": "--wje-stepper-justify",
           "annotation": "prop",
-          "docs": "Alignment of the step header (header)."
+          "docs": "Alignment of the step header."
         },
         {
           "name": "--wje-stepper-grow",
@@ -12355,25 +12564,25 @@
         },
         {
           "name": "next",
-          "docs": "Slot for custom next step button."
+          "docs": "Slot pre vlastné tlačidlo ďalšieho kroku."
         },
         {
           "name": "finish",
-          "docs": "Slot for custom completion button."
+          "docs": "Slot pre vlastné tlačidlo dokončenia."
         }
       ],
       "parts": [
         {
           "name": "native",
-          "docs": "Native part of the stepper."
+          "docs": "Natívna časť steppera."
         },
         {
           "name": "header",
-          "docs": "The head of a tap dancer."
+          "docs": "Hlavička steppera."
         },
         {
           "name": "content",
-          "docs": "Stepper Contents."
+          "docs": "Obsah steppera."
         }
       ],
       "dependents": [],
@@ -12396,11 +12605,11 @@
       "filePath": "src/components/step/step.tsx",
       "encapsulation": "shadow",
       "tag": "step",
-      "docs": "The wje-step element represents one step within the stepper component. It allows you to insert custom content for a specific step.",
+      "docs": "Element wje-step reprezentuje jeden krok v rámci komponentu stepper. Umožňuje vložiť vlastný obsah pre konkrétny krok.",
       "docsTags": [
         {
           "name": "Summary",
-          "text": "This element represents one step in the stepper."
+          "text": "Tento element reprezentuje jeden krok v stepperi."
         }
       ],
       "usage": {},
@@ -12412,13 +12621,13 @@
       "slots": [
         {
           "name": "",
-          "docs": "The default slot for the step content."
+          "docs": "Predvolený slot pre obsah kroku."
         }
       ],
       "parts": [
         {
           "name": "native",
-          "docs": "Refers to the main `div` of the step element."
+          "docs": "Odkazuje na hlavný `div` elementu step."
         }
       ],
       "dependents": [],
@@ -12435,31 +12644,31 @@
       "filePath": "src/components/tab/tab.tsx",
       "encapsulation": "shadow",
       "tag": "tab",
-      "docs": "A custom web component representing a bookmark.",
+      "docs": "Vlastný webový komponent predstavujúci záložku.",
       "docsTags": [],
       "usage": {},
       "props": [
         {
           "name": "panel",
           "type": "string",
-          "docs": "The name of the panel to which the tab is assigned."
+          "docs": "Názov panelu, ku ktorému je tab priradený."
         },
         {
           "name": "route",
           "type": "string",
-          "docs": "The path (route) that is navigated to when clicked."
+          "docs": "Cesta (route), na ktorú sa vykoná navigácia pri kliknutí."
         },
         {
           "name": "last",
           "type": "boolean",
-          "docs": "Indicates whether this is the last tab."
+          "docs": "Indikuje, či ide o posledný tab."
         }
       ],
       "methods": [],
       "events": [
         {
           "name": "wje-tab:change",
-          "docs": "Called when a tab is clicked, indicating a tab change."
+          "docs": "Vyvolané pri kliknutí na tab, indikujúce zmenu tabu."
         }
       ],
       "listeners": [
@@ -12475,54 +12684,54 @@
         {
           "name": "--wje-tab-text-transform",
           "default": "uppercase",
-          "docs": "The transformation of taboo text."
+          "docs": "Transformácia textu tabu."
         },
         {
           "name": "--wje-tab-font-weight",
           "default": "500",
-          "docs": "Font thickness of the taboo text."
+          "docs": "Hrúbka písma textu tabu."
         },
         {
           "name": "--wje-tab-letter-spacing",
           "default": "0.06em",
-          "docs": "Spaces between characters in tab text."
+          "docs": "Medzery medzi znakmi v texte tabu."
         },
         {
           "name": "--wje-tab-padding-inline",
           "default": "1rem",
-          "docs": "Horizontal indentation of tab content."
+          "docs": "Horizontálne odsadenie obsahu tabu."
         },
         {
           "name": "--wje-tab-padding-top",
           "default": ".75rem",
-          "docs": "Vertical offset at the top."
+          "docs": "Vertikálne odsadenie hore."
         },
         {
           "name": "--wje-tab-padding-bottom",
           "default": ".75rem",
-          "docs": "Vertical indentation down."
+          "docs": "Vertikálne odsadenie dole."
         },
         {
           "name": "--wje-tab-color-active",
           "default": "var(--wje-color-primary-11)",
-          "docs": "Text color of the active tab element."
+          "docs": "Farba textu aktívneho tab elementu."
         },
         {
           "name": "--wje-tab-color-hover",
           "default": "var(--wje-color-primary-1)",
-          "docs": "Text colour when mouseover."
+          "docs": "Farba textu pri prechode myšou."
         }
       ],
       "slots": [
         {
           "name": "",
-          "docs": "The default tab content slot."
+          "docs": "Predvolený slot pre obsah tabu."
         }
       ],
       "parts": [
         {
           "name": "native",
-          "docs": "It refers to `a` taboo element."
+          "docs": "Odkazuje na `a` element tabu."
         }
       ],
       "dependents": [],
@@ -12536,12 +12745,12 @@
       "filePath": "src/components/tab-group/tab-group.tsx",
       "encapsulation": "shadow",
       "tag": "tab-group",
-      "docs": "A component that displays a group of tabs (bookmarks) with different placement options.",
+      "docs": "Komponent zobrazujúci skupinu tabov (záložiek) s rôznymi možnosťami umiestnenia.",
       "docsTags": [],
       "usage": {},
       "props": [
         {
-          "name": "Option",
+          "name": "variant",
           "type": "\"top\" | \"bottom\" | \"start\" | \"end\"",
           "complexType": {
             "original": "string",
@@ -12549,9 +12758,9 @@
             "references": {}
           },
           "mutable": false,
-          "attr": "Option",
+          "attr": "variant",
           "reflectToAttr": false,
-          "docs": "Bookmark location: `top`, `bottom`, `start` or `end`.",
+          "docs": "Umiestnenie záložiek: `top`, `bottom`, `start` alebo `end`.",
           "docsTags": [],
           "default": "'top'",
           "values": [
@@ -12583,46 +12792,46 @@
         {
           "name": "--wje-tab-top",
           "annotation": "prop",
-          "docs": "Distance of the tabs from the top edge."
+          "docs": "Vzdialenosť tabov od horného okraja."
         },
         {
           "name": "--wje-tab-start",
           "annotation": "prop",
-          "docs": "Distance of the tabs from the left edge."
+          "docs": "Vzdialenosť tabov od ľavého okraja."
         },
         {
           "name": "--wje-tab-end",
           "annotation": "prop",
-          "docs": "Distance of the tabs from the right edge."
+          "docs": "Vzdialenosť tabov od pravého okraja."
         },
         {
           "name": "--wje-tab-bottom",
           "annotation": "prop",
-          "docs": "Distance of the tabs from the bottom edge."
+          "docs": "Vzdialenosť tabov od dolného okraja."
         }
       ],
       "slots": [
         {
           "name": "",
-          "docs": "The default content slot for the tab group."
+          "docs": "Predvolený slot pre obsah skupiny tabov."
         },
         {
-          "name": "No",
-          "docs": "Slot for the bookmarks navigation bar."
+          "name": "nav",
+          "docs": "Slot pre navigačnú lištu záložiek."
         }
       ],
       "parts": [
         {
           "name": "native",
-          "docs": "Refers to the main enveloping div element."
+          "docs": "Odkazuje na hlavný obaľovací div element."
         },
         {
           "name": "panels",
-          "docs": "Refers to the container containing all tab-panels in the group."
+          "docs": "Odkazuje na kontajner obsahujúci všetky tab-panely v skupine."
         },
         {
           "name": "tabs",
-          "docs": "Refers to the container containing all the tabs in the group."
+          "docs": "Odkazuje na kontajner obsahujúci všetky taby v skupine."
         }
       ],
       "dependents": [],
@@ -12633,11 +12842,11 @@
       "filePath": "src/components/tab-panel/tab-panel.tsx",
       "encapsulation": "shadow",
       "tag": "tab-panel",
-      "docs": "A custom web component representing a tab bar (bookmarks).",
+      "docs": "Vlastný webový komponent predstavujúci panel tabu (záložky).",
       "docsTags": [
         {
-          "name": "Summary",
-          "text": "This element represents the tab bar."
+          "name": "summary",
+          "text": "Tento element predstavuje panel záložky."
         },
         {
           "name": "documentation",
@@ -12645,15 +12854,15 @@
         },
         {
           "name": "status",
-          "text": "Stable"
+          "text": "stabilný"
         },
         {
-          "name": "Augment",
+          "name": "augments",
           "text": "WJElement"
         },
         {
           "name": "slot",
-          "text": "The default slot for panel content."
+          "text": "Predvolený slot pre obsah panelu."
         },
         {
           "name": "tag",
@@ -12669,7 +12878,7 @@
       "slots": [
         {
           "name": "",
-          "docs": "The default slot for panel content."
+          "docs": "Predvolený slot pre obsah panelu."
         }
       ],
       "parts": [],
@@ -12687,11 +12896,11 @@
       "filePath": "src/components/textarea/textarea.tsx",
       "encapsulation": "shadow",
       "tag": "textarea",
-      "docs": "A textarea is a custom web component that represents the input field of a textarea.",
+      "docs": "Textarea je vlastný webový komponent, ktorý reprezentuje vstupné pole textarea.",
       "docsTags": [
         {
           "name": "Summary",
-          "text": "This element represents the input field of the textarea."
+          "text": "Tento element predstavuje vstupné pole textarea."
         },
         {
           "name": "documentation",
@@ -12707,15 +12916,15 @@
         },
         {
           "name": "csspart",
-          "text": "native - Cover of native textarea."
+          "text": "native - Obal natívneho textarea."
         },
         {
           "name": "csspart",
-          "text": "input - Input textarea element."
+          "text": "input - Vstupný textarea element."
         },
         {
           "name": "csspart",
-          "text": "wrapper - The wrapper of the input field."
+          "text": "wrapper - Obal vstupného políčka."
         }
       ],
       "usage": {},
@@ -12726,15 +12935,15 @@
           "mutable": true,
           "attr": "value",
           "reflectToAttr": false,
-          "docs": "Textarea value."
+          "docs": "Hodnota textarea."
         },
         {
-          "name": "disabled",
+          "name": "invalid",
           "type": "boolean",
           "mutable": true,
-          "attr": "disabled",
+          "attr": "invalid",
           "reflectToAttr": true,
-          "docs": "Indicates whether the input is invalid."
+          "docs": "Označuje, či je vstup neplatný."
         },
         {
           "name": "placeholder",
@@ -12742,7 +12951,7 @@
           "mutable": false,
           "attr": "placeholder",
           "reflectToAttr": false,
-          "docs": "A placeholder text in textarea."
+          "docs": "Zástupný text v textarea."
         },
         {
           "name": "rows",
@@ -12750,7 +12959,7 @@
           "mutable": false,
           "attr": "rows",
           "reflectToAttr": false,
-          "docs": "Number of lines of textarea."
+          "docs": "Počet riadkov textarea."
         },
         {
           "name": "spellcheck",
@@ -12758,7 +12967,7 @@
           "mutable": false,
           "attr": "spellcheck",
           "reflectToAttr": false,
-          "docs": "If `true`, the spell checker will be enabled in textarea."
+          "docs": "Ak `true`, v textarea bude zapnutá kontrola pravopisu."
         },
         {
           "name": "resize",
@@ -12766,7 +12975,7 @@
           "mutable": false,
           "attr": "resize",
           "reflectToAttr": false,
-          "docs": "Resize mode (`auto` or `none`)."
+          "docs": "Režim zmeny veľkosti (`auto` alebo `none`)."
         },
         {
           "name": "counter",
@@ -12774,7 +12983,7 @@
           "mutable": false,
           "attr": "counter",
           "reflectToAttr": false,
-          "docs": "If `true`, the character counter is displayed."
+          "docs": "Ak `true`, zobrazí sa počítadlo znakov."
         },
         {
           "name": "maxLength",
@@ -12782,165 +12991,165 @@
           "mutable": false,
           "attr": "maxLength",
           "reflectToAttr": false,
-          "docs": "Maximum number of characters."
+          "docs": "Maximálny počet znakov."
         }
       ],
       "methods": [
         {
           "name": "setTextareaHeight",
           "signature": "() => void",
-          "docs": "Sets the height of the textarea when automatically resized."
+          "docs": "Nastaví výšku textarea pri automatickej zmene veľkosti."
         },
         {
           "name": "counterFn",
           "signature": "(e: Event) => void",
-          "docs": "Updates the character counter."
+          "docs": "Aktualizuje počítadlo znakov."
         },
         {
           "name": "validateInput",
           "signature": "() => void",
-          "docs": "Validates the input and sets errors."
+          "docs": "Overí validitu vstupu a nastaví chyby."
         },
         {
           "name": "propagateValidation",
           "signature": "() => void",
-          "docs": "Propagates the validation state and raises the `invalid` event."
+          "docs": "Propaguje stav validácie a vyvolá udalosť `invalid`."
         },
         {
           "name": "formAssociatedCallback",
           "signature": "(form: HTMLFormElement) => void",
-          "docs": "Callback when connected to the form - connects submission and validation."
+          "docs": "Callback pri pripojení k formuláru – napojí odoslanie a validáciu."
         },
         {
           "name": "formResetCallback",
           "signature": "() => void",
-          "docs": "Form reset callback - restores the default value."
+          "docs": "Callback pri resetovaní formuláru – obnoví predvolenú hodnotu."
         },
         {
           "name": "formStateRestoreCallback",
           "signature": "(state: any) => void",
-          "docs": "Callback on status restore - restores the saved value and validity."
+          "docs": "Callback pri obnove stavu – obnoví uloženú hodnotu a validitu."
         },
         {
           "name": "formStateSaveCallback",
           "signature": "() => any",
-          "docs": "Callback when saving state - returns the current value."
+          "docs": "Callback pri ukladaní stavu – vráti aktuálnu hodnotu."
         }
       ],
       "events": [
         {
           "name": "wje-textarea:change",
-          "docs": "The event of change (classic `change`)."
+          "docs": "Udalosť zmeny (klasický `change`)."
         },
         {
           "name": "wje-textarea:input",
-          "docs": "Character input event (`input`)."
+          "docs": "Udalosť pri zadávaní znakov (`input`)."
         },
         {
-          "name": "disabled",
-          "docs": "Invalid entry event."
+          "name": "invalid",
+          "docs": "Udalosť neplatného vstupu."
         }
       ],
       "listeners": [
         {
           "name": "click",
           "target": "",
-          "docs": "Sending custom events `wje-textarea:change` and `wje-textarea:input`."
+          "docs": "Odoslanie vlastných udalostí `wje-textarea:change` a `wje-textarea:input`."
         },
         {
-          "name": "disabled",
+          "name": "invalid",
           "target": "",
-          "docs": "Captures the invalid form and displays the message."
+          "docs": "Zachytáva neplatnosť formulára a zobrazuje správu."
         }
       ],
       "styles": [
         {
           "name": "--wje-textarea-font-family",
-          "docs": "A family of fonts used in textarea.",
+          "docs": "Rodina písiem používaná v textarea.",
           "default": "var(--wje-font-family)"
         },
         {
           "name": "--wje-textarea-background-color",
-          "docs": "Background textarea.",
+          "docs": "Pozadie textarea.",
           "default": "var(--wje-background)"
         },
         {
           "name": "--wje-textarea-color",
-          "docs": "Text color in textarea.",
+          "docs": "Farba textu v textarea.",
           "default": "var(--wje-color)"
         },
         {
           "name": "--wje-textarea-border-width",
-          "docs": "Frame width textarea.",
+          "docs": "Šírka rámika textarea.",
           "default": "1px"
         },
         {
           "name": "--wje-textarea-border-style",
-          "docs": "Textarea frame style.",
+          "docs": "Štýl rámika textarea.",
           "default": "solid"
         },
         {
           "name": "--wje-textarea-border-color",
-          "docs": "Frame colour textarea.",
+          "docs": "Farba rámika textarea.",
           "default": "var(--wje-border-color)"
         },
         {
           "name": "--wje-textarea-border-color-focus",
-          "docs": "Frame colour at focus.",
+          "docs": "Farba rámika pri focus.",
           "default": "var(--wje-color-primary)"
         },
         {
           "name": "--wje-textarea-border-radius",
-          "docs": "The radius of roundness of the corners of the textarea.",
+          "docs": "Polomer zaoblenia rohov textarea.",
           "default": "var(--wje-border-radius-medium)"
         },
         {
           "name": "--wje-textarea-color-invalid",
-          "docs": "Text color for invalid input.",
+          "docs": "Farba textu pri neplatnom vstupe.",
           "default": "var(--wje-color-danger)"
         },
         {
           "name": "--wje-textarea-margin-bottom",
-          "docs": "Offsetting the bottom of the textarea.",
+          "docs": "Odsadenie spodnej časti textarea.",
           "default": "var(--wje-spacing-x-small)"
         },
         {
           "name": "--wje-textarea-padding",
-          "docs": "Inner textarea indentation space.",
+          "docs": "Vnútorný odsadzovací priestor textarea.",
           "default": "--wje-spacing-x-small"
         },
         {
           "name": "--wje-textarea-line-height",
-          "docs": "The height of the line of text.",
+          "docs": "Výška riadku textu.",
           "default": "20px"
         }
       ],
       "slots": [
         {
           "name": "",
-          "docs": "Default content slot (text)."
+          "docs": "Predvolený slot pre obsah (text)."
         },
         {
           "name": "start",
-          "docs": "Slot for the first slotted element (e.g. the icon on the left)."
+          "docs": "Slot pre prvý slotted element (napr. ikona vľavo)."
         },
         {
           "name": "end",
-          "docs": "Slot for the second slotted element (e.g. the icon on the right)."
+          "docs": "Slot pre druhý slotted element (napr. ikona vpravo)."
         }
       ],
       "parts": [
         {
           "name": "native",
-          "docs": "Cover of native textarea."
+          "docs": "Obal natívneho textarea."
         },
         {
           "name": "wrapper",
-          "docs": "Input field packaging."
+          "docs": "Obal vstupného poľa."
         },
         {
           "name": "input",
-          "docs": "Custom textarea element."
+          "docs": "Vlastný textarea element."
         }
       ],
       "dependents": [],
@@ -12968,7 +13177,7 @@
           "mutable": true,
           "attr": "circle",
           "reflectToAttr": false,
-          "docs": "Sets the element to round by adding css `\"border-radius: 50%\"`",
+          "docs": "Nastaví na element zaoblenie pridaním css `\"border-radius: 50%\"`",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -12987,17 +13196,17 @@
         {
           "name": "--wj-border-radius",
           "annotation": "prop",
-          "docs": "Defines the amount of rounding of the edges of the element."
+          "docs": "Definuje veľkosť zaoblenia okrajov elementu."
         },
         {
           "name": "--wj-thumbnail-height",
           "annotation": "prop",
-          "docs": "Defines the height of the element."
+          "docs": "Definuje výšku elementu."
         },
         {
           "name": "--wj-thumbnail-width",
           "annotation": "prop",
-          "docs": "Defines the width of the element."
+          "docs": "Definuje šírku elementu."
         }
       ],
       "slots": [],
@@ -13016,10 +13225,10 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+          "type": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
           "complexType": {
             "original": "Color",
-            "resolved": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+            "resolved": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
             "references": {
               "Color": {
                 "location": "import",
@@ -13071,7 +13280,7 @@
               "type": "string"
             },
             {
-              "type": "String & Record<never, never>"
+              "type": "string & Record<never, never>"
             },
             {
               "type": "undefined"
@@ -13117,7 +13326,7 @@
         {
           "name": "--color",
           "annotation": "prop",
-          "docs": "Text colour of the title"
+          "docs": "Text color of the title"
         }
       ],
       "slots": [],
@@ -13134,7 +13343,7 @@
       "docsTags": [
         {
           "name": "virtualProp",
-          "text": "{ \"ios\". | \"md\"} mode - The mode determines which platform styles to use."
+          "text": "{\"ios\" | \"md\"} mode - The mode determines which platform styles to use."
         },
         {
           "name": "part",
@@ -13219,10 +13428,10 @@
         },
         {
           "name": "color",
-          "type": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+          "type": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
           "complexType": {
             "original": "Color",
-            "resolved": "\"danger.\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
+            "resolved": "\"danger\" | \"dark\" | \"light\" | \"medium\" | \"primary\" | \"secondary\" | \"success\" | \"tertiary\" | \"warning\" | string & Record<never, never> | undefined",
             "references": {
               "Color": {
                 "location": "import",
@@ -13274,7 +13483,7 @@
               "type": "string"
             },
             {
-              "type": "String & Record<never, never>"
+              "type": "string & Record<never, never>"
             },
             {
               "type": "undefined"
@@ -13510,7 +13719,7 @@
           "required": false
         },
         {
-          "name": "LeaveAnimation",
+          "name": "leaveAnimation",
           "type": "((baseEl: any, opts?: any) => Animation) | undefined",
           "complexType": {
             "original": "AnimationBuilder",
@@ -13572,10 +13781,10 @@
           "required": false
         },
         {
-          "name": "fashion",
+          "name": "mode",
           "type": "\"ios\" | \"md\"",
           "mutable": false,
-          "attr": "fashion",
+          "attr": "mode",
           "reflectToAttr": false,
           "docs": "The mode determines which platform styles to use.",
           "docsTags": [],
@@ -13593,7 +13802,7 @@
           "required": false
         },
         {
-          "name": "Position",
+          "name": "position",
           "type": "\"bottom\" | \"middle\" | \"top\"",
           "complexType": {
             "original": "ToastPosition",
@@ -13607,7 +13816,7 @@
             }
           },
           "mutable": false,
-          "attr": "Position",
+          "attr": "position",
           "reflectToAttr": false,
           "docs": "The starting position of the toast on the screen. Can be tweaked further\nusing the `positionAnchor` property.",
           "docsTags": [],
@@ -13757,7 +13966,7 @@
               {
                 "name": "role",
                 "type": "string | undefined",
-                "docs": "The role of the element that is dismissing the toast.\nThis can be useful in a button handler for determining which button was\nclicked to dismiss the toast.\nSome examples include: `\"cancel\"`, `\"destructive\"`, \"selected\"`, and `\"backdrop\"`."
+                "docs": "The role of the element that is dismissing the toast.\nThis can be useful in a button handler for determining which button was\nclicked to dismiss the toast.\nSome examples include: ``\"cancel\"`, `\"destructive\"`, \"selected\"`, and `\"backdrop\"`."
               }
             ],
             "references": {
@@ -13783,18 +13992,18 @@
             {
               "name": "role",
               "type": "string | undefined",
-              "docs": "The role of the element that is dismissing the toast.\nThis can be useful in a button handler for determining which button was\nclicked to dismiss the toast.\nSome examples include: `\"cancel\"`, `\"destructive\"`, \"selected\"`, and `\"backdrop\"`."
+              "docs": "The role of the element that is dismissing the toast.\nThis can be useful in a button handler for determining which button was\nclicked to dismiss the toast.\nSome examples include: ``\"cancel\"`, `\"destructive\"`, \"selected\"`, and `\"backdrop\"`."
             }
           ],
           "docs": "Dismiss the toast overlay after it has been presented.",
           "docsTags": [
             {
-              "name": "support",
+              "name": "param",
               "text": "data Any data to emit in the dismiss events."
             },
             {
-              "name": "support",
-              "text": "role The role of the element that is dismissing the toast.\nThis can be useful in a button handler for determining which button was\nclicked to dismiss the toast.\nSome examples include: `\"cancel\"`, `\"destructive\"`, \"selected\"`, and `\"backdrop\"`."
+              "name": "param",
+              "text": "role The role of the element that is dismissing the toast.\nThis can be useful in a button handler for determining which button was\nclicked to dismiss the toast.\nSome examples include: ``\"cancel\"`, `\"destructive\"`, \"selected\"`, and `\"backdrop\"`."
             }
           ]
         },
@@ -14121,7 +14330,7 @@
           "docs": "Any button element that is displayed inside of the toast."
         },
         {
-          "name": "cancel button",
+          "name": "button cancel",
           "docs": "Any button element with role \"cancel\" that is displayed inside of the toast."
         },
         {
@@ -14172,7 +14381,7 @@
           "mutable": true,
           "attr": "checked",
           "reflectToAttr": false,
-          "docs": "If `true`, toggle is activated.",
+          "docs": "Ak `true`, toggle je aktivovaný.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -14200,7 +14409,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": false,
-          "docs": "The color to use from your application's color palette. The default options are `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, and `\"dark\"`.\nFor more information on colors, visit [Customization Basics](/theming/basics).",
+          "docs": "Farba, ktorá sa má použiť z palety farieb vašej aplikácie. Predvolené možnosti sú: `\"primary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"complete\"`, a `\"dark\"`.\nPre viac informácií o farbách navštívte [Základy prispôsobenia](/theming/basics).",
           "docsTags": [],
           "values": [
             {
@@ -14228,7 +14437,7 @@
               "type": "string"
             },
             {
-              "type": "String & Record<never, never>"
+              "type": "string & Record<never, never>"
             },
             {
               "type": "undefined"
@@ -14248,7 +14457,7 @@
           "mutable": false,
           "attr": "disabled",
           "reflectToAttr": false,
-          "docs": "If `true`, the toggle element cannot be interacted with.",
+          "docs": "Ak `true`, s toggle elementom nie je možné interagovať.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -14270,7 +14479,7 @@
           "mutable": false,
           "attr": "name",
           "reflectToAttr": false,
-          "docs": "Defines a `name` attribute that is important, for example, when used in forms.",
+          "docs": "Definuje `name` atribút, ktorý je dôležitý napríklad pri použití vo formulároch.",
           "docsTags": [],
           "default": "this.inputId",
           "values": [
@@ -14301,7 +14510,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Called when the element state changes.",
+          "docs": "Vyvolaný pri zmene stavu elementu.",
           "docsTags": []
         }
       ],
@@ -14361,17 +14570,17 @@
       "slots": [
         {
           "name": "",
-          "docs": "The default location of the element content."
+          "docs": "Predvolené umiestnenie obsahu elementu."
         }
       ],
       "parts": [
         {
           "name": "input",
-          "docs": "Refers to an `input` element of type checkbox"
+          "docs": "Odkazuje na `input` element typu checkbox"
         },
         {
           "name": "toggle",
-          "docs": "Refers to the inner `div` wrapping element"
+          "docs": "Odkazuje na vnútorný `div` obaľovací element"
         }
       ],
       "dependents": [],
@@ -14403,7 +14612,7 @@
           "mutable": true,
           "attr": "active",
           "reflectToAttr": false,
-          "docs": "If `true`, the tooltip is activated.",
+          "docs": "Ak `true`, tooltip je aktivovaný.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -14425,7 +14634,7 @@
           "mutable": false,
           "attr": "content",
           "reflectToAttr": false,
-          "docs": "Defines the content of the tooltip.",
+          "docs": "Definuje obsah nápovedy tooltip.",
           "docsTags": [],
           "default": "undefined",
           "values": [
@@ -14453,7 +14662,7 @@
           "mutable": false,
           "attr": "placement",
           "reflectToAttr": false,
-          "docs": "Defines where to display the tooltip relative to the parent element.",
+          "docs": "Definuje kde sa má zobraziť nápoveda tooltip vzhľadom k nadradenému elementu.",
           "docsTags": [],
           "default": "'top'",
           "values": [
@@ -14488,7 +14697,7 @@
           "mutable": false,
           "attr": "offset",
           "reflectToAttr": false,
-          "docs": "Defines the distance of the tooltip from its parent element in pixels.",
+          "docs": "Definuje vzdialenosť tooltipu od jeho nadradeného elementu v pixeloch.",
           "docsTags": [],
           "default": "undefined",
           "values": [
@@ -14528,19 +14737,19 @@
         {
           "name": "--arrow-size",
           "annotation": "prop",
-          "docs": "Specifies the size of the tooltip arrow."
+          "docs": "Určuje veľkosť šípky tooltipu."
         },
         {
           "name": "--arrow-color",
           "annotation": "prop",
-          "docs": "Specifies the color of the tooltip arrow."
+          "docs": "Určuje farbu šípky tooltipu."
         }
       ],
       "slots": [],
       "parts": [
         {
           "name": "native",
-          "docs": "Refers to the `div` element inside the popup element."
+          "docs": "Odkazuje na `div` element vo vnútri elementu popup."
         }
       ],
       "dependents": [],
@@ -14555,11 +14764,11 @@
       "docsTags": [
         {
           "name": "slot",
-          "text": "start - The content is placed to the left of the button text in LTR and to the right in RTL."
+          "text": "start - Obsah je umiestnený vľavo od textu tlačidla v LTR a vpravo v RTL."
         },
         {
           "name": "slot",
-          "text": "end - The content is placed to the right of the button text in LTR and to the left in RTL."
+          "text": "end - Obsah sa umiestni vpravo od textu tlačidla v LTR a vľavo v RTL."
         }
       ],
       "usage": {},
@@ -14609,11 +14818,11 @@
       "slots": [
         {
           "name": "end",
-          "docs": "The content is placed to the right of the button text in LTR and to the left in RTL."
+          "docs": "Obsah sa umiestni vpravo od textu tlačidla v LTR a vľavo v RTL."
         },
         {
           "name": "start",
-          "docs": "The content is placed to the left of the button text in LTR and to the right in RTL."
+          "docs": "Obsah je umiestnený vľavo od textu tlačidla v LTR a vpravo v RTL."
         }
       ],
       "parts": [],

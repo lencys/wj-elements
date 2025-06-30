@@ -1,5 +1,5 @@
 ---
-title: ToolbarActions
+title: 'ToolbarActions'
 ---
 
 import Props from '@ionic-internal/component-api/v1/toolbar-actions/props.md';

@@ -1,5 +1,5 @@
 ---
-title: Grid
+title: 'Grid'
 ---
 
 import Props from '@ionic-internal/component-api/v1/grid/props.md';

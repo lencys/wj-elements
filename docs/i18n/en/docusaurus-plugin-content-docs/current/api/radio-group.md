@@ -1,5 +1,5 @@
 ---
-title: RadioGroup
+title: 'RadioGroup'
 ---
 
 import Props from '@ionic-internal/component-api/v1/radio-group/props.md';

@@ -1,5 +1,5 @@
 ---
-title: Col
+title: 'Col'
 ---
 
 import Props from '@ionic-internal/component-api/v1/col/props.md';

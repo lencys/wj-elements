@@ -1,5 +1,5 @@
 ---
-title: Animation
+title: 'Animation'
 ---
 
 import Props from '@ionic-internal/component-api/v1/animation/props.md';

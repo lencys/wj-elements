@@ -1,5 +1,5 @@
 ---
-title: Color Picker
+title: 'Color Picker'
 ---
 
 import Props from '@ionic-internal/component-api/v1/color-picker/props.md';

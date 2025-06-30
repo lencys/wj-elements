@@ -1,5 +1,5 @@
 ---
-title: Image
+title: 'Image'
 ---
 
 import Props from '@ionic-internal/component-api/v1/image/props.md';

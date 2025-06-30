@@ -1,5 +1,5 @@
 ---
-title: Row
+title: 'Row'
 ---
 
 import Props from '@ionic-internal/component-api/v1/row/props.md';

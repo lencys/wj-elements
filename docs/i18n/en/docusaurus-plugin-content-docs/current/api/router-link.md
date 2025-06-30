@@ -1,5 +1,5 @@
 ---
-title: Router Link
+title: 'Router Link'
 ---
 
 import Props from '@ionic-internal/component-api/v1/router-link/props.md';

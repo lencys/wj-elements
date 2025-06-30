@@ -48,10 +48,19 @@ template.innerHTML = `
     <h2>Start, End slots</h2>
     <div class="playground" style="display: block;">
       <div class="content" style="justify-content: start; width: 240px;">
-        <wje-tree slot-hover-visible>
+        <wje-tree>
           <template>
             <wje-icon name="grip-vertical" slot="start"></wje-icon>
-            <wje-icon name="dots-vertical" slot="end"></wje-icon>
+
+            <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible id="custom-dropdown-basic" slot="end">
+            <wje-button size="large" slot="trigger" stop-propagation="true" caret>Large</wje-button>
+            <wje-menu variant="context">
+              <wje-menu-item>
+                <wje-icon name="plane" slot="start"></wje-icon>
+                <wje-label>Menu item</wje-label>
+              </wje-menu-item>
+            </wje-menu>
+          </wje-dropdown>
           </template>
           <wje-tree-item expanded>
             <wje-icon name="folder" filled></wje-icon>
