@@ -688,7 +688,7 @@ export default class WJElement extends HTMLElement {
 
 			resolve();
 		}).catch((e) => {
-			console.log(e);
+			console.error(e);
 		});
 	}
 }

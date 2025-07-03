@@ -60,6 +60,9 @@
             border-color: var(--wje-select-border-color);
             border-radius: var(--wje-select-border-radius);
         }
+        wje-label {
+            line-height: var(--wje-line-height-normal);
+        }
         .input-wrapper {
             background: transparent;
             width: 100%;
@@ -240,4 +243,18 @@ slot[name='error'] {
     margin: 0;
     opacity: 0;
     z-index: -1;
+}
+
+:host([required]) .wrapper::after {
+    color: var(--wje-input-color-invalid);
+    content: var(--wje-input-required-symbol);
+    font-size: 24px;
+    position: absolute;
+    right: 12px;
+    top: 0;
+}
+
+:host([required]) .standard .input-wrapper::after {
+    right: 13px;
+    top: -20px;
 }

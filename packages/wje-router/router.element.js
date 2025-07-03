@@ -52,7 +52,7 @@ export default class Routerx extends WJElement {
 		const routes = this.parseElement(rootElement).root;
 
 		this.router = new Router({
-			outlet: this.outlet || 'wje-router-outlet',
+			outlet: this.outlet,
 			log: false,
 			logError: true,
 			root: this.root || '/',

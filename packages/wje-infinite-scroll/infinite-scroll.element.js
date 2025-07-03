@@ -339,7 +339,7 @@ export default class InfiniteScroll extends WJElement {
                 this.endingEl.classList.add('show');
             }
         } catch (error) {
-            console.log(error);
+            console.error(error);
         } finally {
             this.hideLoader();
         }

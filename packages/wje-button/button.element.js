@@ -453,7 +453,6 @@ export default class Button extends WJElement {
 
         if (this.type === 'submit') {
             event.addListener(this, 'click', 'wje-button:submit', () => {
-                console.log('submit', this.internals_.form);
                 event.dispatchCustomEvent(this.internals_.form, 'submit', {});
             });
         }

@@ -144,7 +144,6 @@ export function uploadFile(file, chunkSize, preview) {
 
         reader.onload = (e) => {
             const xhr = new XMLHttpRequest();
-            console.log('uploadFile function:', start, end, file.size);
             xhr.open('POST', '/upload', true);
             xhr.setRequestHeader('Content-Range', `${start}-${end}/${file.size}`);
 
@@ -236,7 +235,6 @@ export async function uploadFileInChunks(url, file, preview, chunkSize = 1024 * 
                     // Track progress
                     uploadedBytes += value.byteLength;
                     const percentComplete = ((offset + uploadedBytes) / file.size) * 100;
-                    console.log(`Upload Progress: ${percentComplete.toFixed(2)}%`);
                     preview.setAttribute('uploaded', offset + uploadedBytes);
 
                     // Enqueue chunk data into the stream
@@ -265,7 +263,6 @@ export async function uploadFileInChunks(url, file, preview, chunkSize = 1024 * 
                 throw new Error(`Failed to upload chunk ${Math.floor(offset / chunkSize) + 1}: ${response.statusText}`);
             }
 
-            console.log(`Chunk ${Math.floor(offset / chunkSize) + 1}/${totalChunks} uploaded successfully.`);
             partResponses.push(response);
         } catch (error) {
             console.error('Error uploading chunk:', error);
@@ -276,7 +273,6 @@ export async function uploadFileInChunks(url, file, preview, chunkSize = 1024 * 
         offset += chunkSize;
     }
 
-    console.log('File upload complete!');
     const response = await partResponses.at(-1).json();
 
     return {

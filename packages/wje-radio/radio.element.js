@@ -150,7 +150,6 @@ export default class Radio extends WJElement {
     inputEvent = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        console.log("Radio input event", e.target.checked);
         this.checked = e.target.checked;
     };
 

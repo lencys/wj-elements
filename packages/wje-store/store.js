@@ -235,9 +235,6 @@ class Store {
                 let oldState = state[key];
                 state[key] = value;
 
-                // Trace out to the console. This will be grouped by the related action
-                // console.log(`stateChange: ${key}: `, value);
-
                 // TODO vieme to rozšíríť a subscripe sa len na zmenu určitej časti statu
                 // Publish the change event for the components that are listening
                 if (!this._isPause) this.events.publish(key, this._state, state[key], oldState);

@@ -14,7 +14,6 @@ import styles from './styles/styles.css?inline';
 export class Select extends FormAssociatedElement {
 	constructor() {
 		super();
-
 		/**
 		 * @type {HTMLElement|null}
 		 * @description A reference to the counter element, initially null.
@@ -68,12 +67,6 @@ export class Select extends FormAssociatedElement {
 
 		/**
 		 * @type {HTMLElement|null}
-		 * @description A reference to the options wrapper element, initially null.
-		 */
-		this.optionsWrapper = null;
-
-		/**
-		 * @type {HTMLElement|null}
 		 * @description A reference to the chips element, initially null.
 		 */
 		this.chips = null;
@@ -91,9 +84,7 @@ export class Select extends FormAssociatedElement {
 		this.list = null;
 
 		this._value = [];
-		this._selected = [];
 		this._selectedOptions = [];
-
 	}
 
 	#addedOptions = [];
@@ -134,25 +125,26 @@ export class Select extends FormAssociatedElement {
 	 * split into an array by spaces) or an array of values.
 	 */
 	set value(value) {
+		const formData = new FormData();
+
 		if (value) {
 			let data = value;
 
 			if (!Array.isArray(data)) {
 				data = data.split(' ');
 			}
-			const formData = new FormData();
 			data.forEach(v => {
 				formData.append(this.name, v)
 			});
 			value = formData;
 
 			this._value = data;
-			this.selected = data;
-
-			this.internals.setFormValue(value);
 		} else {
+			formData.delete(this.name);
+			value = formData;
 			this._value = [];
 		}
+		this.internals.setFormValue(value);
 	}
 
 	/**
@@ -161,26 +153,6 @@ export class Select extends FormAssociatedElement {
 	 */
 	get value() {
 		return this._value;
-	}
-
-	/**
-	 * Sets the `validate-on-change` attribute on the element. When the attribute is present, it typically indicates that validation should occur when the value of the input changes.
-	 * @param {boolean} value A boolean indicating whether to enable or disable the `validate-on-change` attribute.
-	 */
-	set validateOnChange(value) {
-		if (value) {
-			this.setAttribute('validate-on-change', '');
-		} else {
-			this.removeAttribute('validate-on-change');
-		}
-	}
-
-	/**
-	 * Getter for the validateOnChange attribute.
-	 * @returns {boolean} Whether the attribute is present.
-	 */
-	get validateOnChange() {
-		return this.hasAttribute('validate-on-change');
 	}
 
 	/**
@@ -258,22 +230,6 @@ export class Select extends FormAssociatedElement {
 	 */
 	get offset() {
 		return this.getAttribute('offset') || '5';
-	}
-
-	/**
-	 * Sets the label value.
-	 * @param {Array} value The selected value to set.
-	 */
-	set selected(value) {
-		this._selected = value;
-	}
-
-	/**
-	 * Returns the selected value.
-	 * @returns {Array} The selected value.
-	 */
-	get selected() {
-		return this._selected;
 	}
 
 	/**
@@ -554,8 +510,7 @@ export class Select extends FormAssociatedElement {
 		this.slotStart = slotStart;
 		this.slotEnd = slotEnd;
 		this.input = input;
-		this.display = display;
-		this.optionsWrapper = optionsWrapper;
+		this.displayInput = display;
 		this.chips = chips;
 		this.clear = clear;
 		this.list = list;
@@ -564,14 +519,14 @@ export class Select extends FormAssociatedElement {
 	}
 
 	/**
-	 * Performs actions and binds events after the component's markup and state are initialized.
-	 * Actions include setting up event listeners, managing option elements, handling focus and blur behaviors,
-	 * synchronizing the selected options, and managing a find functionality for filtering options.
-	 * @returns {void} Does not return a value. The method operates by updating the state and behavior of the component.
+	 * Executes post-render logic for the custom element.
+	 * This includes validation, event listener registration, managing custom attributes, and
+	 * handling options initialization for the component.
+	 * @returns {void} This method does not return any value.
 	 */
 	afterDraw() {
 
-		this.validate(this.selectedOptions);
+		this.validate();
 
 		if (this.hasAttribute('invalid')) {
 			this.showInvalidMessage();
@@ -583,8 +538,6 @@ export class Select extends FormAssociatedElement {
 
 		this.selectedOptions = this.#getSelectedOptions();
 		this.selectOptions(this.value);
-		this.selected = this.#getSelected();
-		this.selections(true);
 
 		if (this.lazy) {
 			event.addListener(this.popup, 'wje-popup:show', null, (e) => {
@@ -658,8 +611,22 @@ export class Select extends FormAssociatedElement {
 	}
 
 	/**
-	 * Handles the option change event.
-	 * @param {Event} e The event.
+	 * Handles the change event for an option element within a select-like component.
+	 * This method processes user interactions with options and updates the state of the component,
+	 * including selection management, validation, and UI updates. Behavior differs based on
+	 * whether the component supports multiple selections.
+	 * Key functionality:
+	 * - Prevents the default behavior, event propagation, and immediate propagation of the event.
+	 * - Retrieves all options within the component.
+	 * - If the component doesn't support multiple selection:
+	 *   - Marks only the clicked option as selected and deselects others.
+	 *   - Hides the option popup.
+	 * - If the component supports multiple selection:
+	 *   - Processes the clicked option without deselecting others.
+	 * - Updates the selected options and triggers validation.
+	 * - Marks the form state as non-pristine.
+	 * - Propagates the validation state to other relevant parts of the component or system.
+	 * @param {Event} e The event object representing the option change interaction.
 	 */
 	optionChange = (e) => {
 		e.preventDefault();
@@ -690,34 +657,19 @@ export class Select extends FormAssociatedElement {
 	}
 
 	/**
-	 * Handles the selection and deselection of an option element.
-	 * @param {HTMLElement} option The option element that was clicked.
-	 * @param {boolean} [multiple] Indicates whether multiple selection is allowed.
+	 * Handles the logic for processing the selection state of a clicked option element.
+	 * @function processClickedOption
+	 * @param {Element} option The option element that is clicked.
+	 * @param {boolean} [multiple] A Boolean indicating whether multiple options can be selected. Defaults to false.
+	 * Changes the selected state of the passed option and updates the selected options list.
+	 * Checks if the option already has a "selected" attribute, toggles its state,
+	 * and updates the internal selected options.
 	 */
 	processClickedOption = (option, multiple = false) => {
 		const isSelected = option.hasAttribute('selected');
 		option.selected = !isSelected;
 
-		if (isSelected) {
-			this.filterOutOption(option);
-		} else {
-			this.selectedOptions = multiple ? [...this.selectedOptions, option] : [option];
-		}
-	}
-
-	/**
-	 * Filters out a specified option from the `selectedOptions` array.
-	 * This function removes an option from the `selectedOptions` array if its value
-	 * matches the value of the option provided as an argument. It allows for dynamically
-	 * updating the selected options by excluding the specified option.
-	 * @param {object} option The option to be removed from the `selectedOptions` array.
-	 * Should be an object containing a `value` property that is compared to the
-	 * `value` property of objects in the `selectedOptions` array.
-	 */
-	filterOutOption = (option) => {
-		this.selectedOptions = this.selectedOptions.filter((sOption) => {
-			return sOption.value !== option.value;
-		});
+		this.selectedOptions = this.#getSelectedOptions();
 	}
 
 	/**
@@ -729,16 +681,16 @@ export class Select extends FormAssociatedElement {
 	}
 
 	/**
-	 * Handles the selection change.
-	 * @param {Element[]} options The option that changed.
-	 * @param {number} length The length of the selected options.
+	 * Handles changes in the selection for a component, updating internal values, input fields,
+	 * and visual presentation (like chips or slots) as per the given selection options.
+	 * @param {Array|null} options The collection of selected option elements. If null, no options are selected.
+	 * @param {number} length The total number of selected options.
+	 * @returns {void}
 	 */
 	selectionChanged(options = null, length = 0) {
-		this.selected = this.#getSelected();
-
 		if (this.hasAttribute('multiple')) {
-			this.value = this.selectedOptions.map((el) => el.value).reverse();
-			this.input.value = this.selected.map(a => a.value).join(" ").trim();
+			this.value = options.map((el) => el.value).reverse();
+			this.input.value = this.value.map(a => a).join(" ").trim();
 
 			if (this.placeholder && length === 0) {
 				this.chips.innerHTML = this.placeholder;
@@ -750,44 +702,37 @@ export class Select extends FormAssociatedElement {
 			}
 		} else {
 			const option = options?.at(0);
-			this.value = this.selectedOptions?.map((el) => el.value)?.at(0);
-			this.input.value = this.selected[0]?.value || '';
-			this.display.value = this.selectedOptions[0]?.textContent?.trim() || '';
+
+			this.value = options?.map((el) => el.value)?.at(0) || '';
+			this.input.value = this.value[0] || '';
+			this.displayInput.value = options[0]?.textContent?.trim() || '';
+
+			this.slotStart.innerHTML = '';
+			this.slotEnd.innerHTML = '';
 
 			if (option && option instanceof HTMLElement) {
-				this.slotStart.innerHTML = '';
-
 				let optionSlotStart = option?.querySelector('wje-option > [slot=start]');
 				if (optionSlotStart) {
-					this.slotStart.appendChild(optionSlotStart.cloneNode(true));
+					setTimeout(() => {
+						this.slotStart.append(optionSlotStart.cloneNode(true));
+					},0)
 				}
-
-				this.slotEnd.innerHTML = '';
 
 				let optionSlotEnd = option?.querySelector('wje-option > [slot=end]');
 				if (optionSlotEnd) {
-					this.slotEnd.appendChild(optionSlotEnd.cloneNode(true));
+					setTimeout(() => {
+						this.slotEnd.append(optionSlotEnd.cloneNode(true));
+					},0)
 				}
 			}
 		}
 	}
 
 	/**
-	 * Updates the selected options and their corresponding chips.
-	 * @param {boolean} [silence] Determines whether to suppress the "wje-select:change" event.
-	 * @returns {void}
-	 * @description
-	 * This method fetches the currently selected options and updates the `selectedOptions` array.
-	 * It clears and rebuilds the chips representing the selected items in the UI.
-	 * If the number of selected options reaches the maximum allowed (`maxOptions`), it stops updating the counter.
-	 * Optionally, it dispatches a custom event when the selection changes unless `silence` is set to `true`.
-	 * //@fires wje-select:change - Dispatched when the selection changes, unless `silence` is `true`.
-	 * @example
-	 * // Call the method and allow event dispatch
-	 * selections();
-	 * @example
-	 * // Call the method without dispatching the event
-	 * selections(true);
+	 * Handles the logic for updating selections based on the current selected options,
+	 * updating chips content, and dispatching change events if necessary.
+	 * @param {boolean} [silence] If true, suppresses the dispatch of a custom change event.
+	 * @returns {void} This method does not return a value.
 	 */
 	selections(silence = false) {
 		if (this.selectedOptions.length >= +this.maxOptions) {
@@ -809,9 +754,9 @@ export class Select extends FormAssociatedElement {
 	}
 
 	/**
-	 * Manages the display of a counter element to indicate the number of items exceeding the maximum allowed options.
-	 * - If the number of selected items equals the maximum allowed, the counter element is removed.
-	 * - If the counter element doesn't exist and the number of items exceeds the maximum, it is created and updated.
+	 * Updates the counter element to reflect the current state of selected values relative to the maximum allowed options.
+	 * If the maximum options are selected, the counter element is removed. If it does not already exist and needs to be displayed, it is created.
+	 * @returns {void} Does not return a value.
 	 */
 	counter() {
 		// zmazanie counter (span)
@@ -834,9 +779,9 @@ export class Select extends FormAssociatedElement {
 	}
 
 	/**
-	 * Returns a chip element.
-	 * @param {Element} option The option to get the chip for.
-	 * @returns {Element} The chip element.
+	 * Creates and returns a chip element with specified properties and a label.
+	 * @param {object} option The configuration object for the chip. Typically includes properties such as value and textContent to set up the chip's label and data.
+	 * @returns {HTMLElement} The newly created chip element with a label and default properties.
 	 */
 	getChip(option) {
 		let chip = document.createElement('wje-chip');
@@ -855,8 +800,9 @@ export class Select extends FormAssociatedElement {
 	}
 
 	/**
-	 * Handles the chip remove event.
-	 * @param {Event} e The event.
+	 * Handles the removal of a chip element from the DOM and updates the related state.
+	 * @param {Event} e The event object triggered by the chip removal action.
+	 * The target of the event is expected to be the chip element itself.
 	 */
 	removeChip = (e) => {
 		e.target.parentNode.removeChild(e.target);
@@ -900,10 +846,13 @@ export class Select extends FormAssociatedElement {
 	}
 
 	/**
-	 * Adds an option to the select element.
-	 * @param {any} optionData The data for the option to be added.
-	 * @param {boolean} [silent] Whether to suppress any events triggered by the addition of the option.
-	 * @param {object} [map] The mapping object specifying the properties of the option data to be used for the value and text of the option.
+	 * Adds a new option to the component.
+	 * @param {object} optionData The data used to create the new option.
+	 * @param {boolean} [silent] Whether the addition should trigger events or not.
+	 * @param {object} [map] Mapping of keys to identify value and text in the optionData.
+	 * @param {string} [map.value] The key in optionData that represents the value of the option.
+	 * @param {string} [map.text] The key in optionData that represents the text of the option.
+	 * @returns {void}
 	 */
 	addOption(optionData, silent = false, map = { value: 'value', text: 'text' }) {
 		if (!optionData) return;
@@ -918,10 +867,14 @@ export class Select extends FormAssociatedElement {
 	}
 
 	/**
-	 * Adds options to the select element.
-	 * @param {Array | object} optionsData The options data to be added. Can be an array of objects or a single object.
-	 * @param {boolean} [silent] Indicates whether to trigger events when adding options. Default is false.
-	 * @param {object} [map] The mapping object that specifies the properties of the options data object. Default is { value: "value", text: "text" }.
+	 * Adds one or more options to a collection. If the input is an array, it adds each option within the array.
+	 * Otherwise, it adds a single option.
+	 * @param {Array | object} optionsData The data representing the options to be added. It can be a single object or an array of objects.
+	 * @param {boolean} [silent] Optional flag to determine if events or notifications should be suppressed while adding options.
+	 * @param {object} [map] An optional mapping object specifying how to map data properties to value and text for the options.
+	 * @param {string} [map.value] The property in the optionsData that represents the value of the option.
+	 * @param {string} [map.text] The property in the optionsData that represents the text of the option.
+	 * @returns {void}
 	 */
 	addOptions(optionsData, silent = false, map = { value: 'value', text: 'text' }) {
 		if (!Array.isArray(optionsData)) {
@@ -934,9 +887,10 @@ export class Select extends FormAssociatedElement {
 	}
 
 	/**
-	 * Selects an option with the specified value.
+	 * Selects an option from the available options within the component.
 	 * @param {string} value The value of the option to be selected.
-	 * @param {boolean} [silent] Whether to suppress firing events.
+	 * @param {boolean} [silent] Determines whether the selection should trigger notification or updates. Defaults to false.
+	 * @returns {void} Does not return a value.
 	 */
 	selectOption(value, silent = false) {
 		if (!value) return;
@@ -951,9 +905,11 @@ export class Select extends FormAssociatedElement {
 	}
 
 	/**
-	 * Selects one or multiple options in the select element.
-	 * @param {Array|any} values The value(s) of the option(s) to be selected.
-	 * @param {boolean} [silent] Whether to trigger the change event or not.
+	 * Selects multiple options based on the provided values. If a single value is provided, it selects that option.
+	 * If an array of values is provided, it iterates through the array and selects each option.
+	 * @param {any|any[]} values A single value or an array of values to be selected.
+	 * @param {boolean} [silent] Determines whether the selection action should occur silently without triggering other side effects or events.
+	 * @returns {void} This method does not return a value.
 	 */
 	selectOptions(values, silent = false) {
 		if (!Array.isArray(values)) {
@@ -966,9 +922,9 @@ export class Select extends FormAssociatedElement {
 	}
 
 	/**
-	 * Clones and appends an icon from a template with slot "check" to the given option element.
-	 * @param {HTMLElement} option The target option element where the "check" icon will be added.
-	 * @returns {void}
+	 * Clones and appends an icon with the "check" slot to the specified option element.
+	 * @param {HTMLElement} option The target HTML element to which the cloned "check" icon will be appended.
+	 * @returns {void} This method does not return a value, but it modifies the DOM by appending a cloned "check" icon to the provided option element.
 	 */
 	optionCheckSlot(option) {
 		let icon = this.querySelector('template')?.content.querySelector(`[slot="check"]`);
@@ -982,34 +938,31 @@ export class Select extends FormAssociatedElement {
 	}
 
 	/**
-	 * Checks if all elements in the `elements` array are present in the `options` array based on their `option` property.
-	 * @param {Array} elements The array of elements to check. Each element should have an `option` property.
-	 * @param {Array} options The array of options to verify against.
-	 * @returns {boolean} Returns true if all elements in the `elements` array are found within the `options` array, otherwise returns false.
+	 * Clears all selected options and resets selections.
+	 * The method ensures that all options are deselected, updates the internal state, validates the selections,
+	 * propagates the validation status, and indicates invalid state if necessary.
+	 * @returns {void} No value is returned by this method.
 	 */
-	areAllElementsInOptions(elements, options) {
-		if (elements.length === 0) return false;
-
-		return elements.every(el =>
-			options.some(opt => JSON.stringify(opt) === JSON.stringify(el.option))
-		);
-	}
-
 	clearSelections() {
-		this.selected = [];
 		this.selectedOptions = [];
 
 		this.getAllOptions().forEach((option) => {
 			option.selected = false;
 		});
 		this.selections();
+
+		this.validate();
+		this.propagateValidation();
+
+		if (this.hasAttribute('invalid')) {
+			this.showInvalidMessage();
+		}
 	}
+
 	/**
-	 * Processes the provided item to retrieve its corresponding value and text
-	 * based on the configuration of `wje-options`, then updates and returns
-	 * the selected item's HTML representation.
-	 * @param {any} item The input item for which the value and text are determined.
-	 * @returns {string} The HTML representation of the selected item's value.
+	 * Processes the given item and retrieves the corresponding value from the selected options.
+	 * @param {string} item The key to search for in the selected options.
+	 * @returns {string} The text content associated with the selected item, or an empty string if not found.
 	 */
 	#htmlSelectedItem(item) {
 		const keyValue = "value"
@@ -1021,26 +974,21 @@ export class Select extends FormAssociatedElement {
 	}
 
 	/**
-	 * Returns the selected options.
-	 * @returns {Array} The selected options.
-	 */
-	#getSelected() {
-		return this.selectedOptions.map((option) => {
-			return {
-				value: option.value,
-				text: this.#htmlSelectedItem(option.value) // option.textContent.trim(),
-			};
-		});
-	}
-
-	/**
-	 * Returns the selected options as HTML.
-	 * @returns {NodeList} The selected options as HTML.
+	 * Retrieves the list of selected options within the component.
+	 * @returns {Array<Element>} An array of elements representing the options that are currently selected.
 	 */
 	#getSelectedOptions() {
 		return Array.from(this.querySelectorAll('wje-option[selected]'));
 	}
 
+	/**
+	 * Filters option elements based on the search input value.
+	 * This function applies a search filter to a list of options. If a `wj-options` element exists and has
+	 * the `lazy` attribute, the search value is passed to the `wj-options` element, enabling infinite scroll
+	 * functionality to handle the filtering. If the `lazy` attribute is not present, it performs a local
+	 * search to show or hide options depending on whether their text content matches the search input.
+	 * @param {Event} e The input event containing the search input value from the user.
+	 */
 	#applySearchFilter = (e) => {
 		// contains wj-options element with options
 		const optionsElement = this.querySelector('wje-options');

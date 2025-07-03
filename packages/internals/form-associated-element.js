@@ -29,7 +29,6 @@ export class FormAssociatedElement extends WJElement {
    * @returns {string} The type of the input.
    */
   get type() {
-    console.log('LOCAL NAME', this.localName, this.getAttribute("type"));
     return this.getAttribute("type");
   }
 
@@ -195,6 +194,11 @@ export class FormAssociatedElement extends WJElement {
     errorMessageEl.textContent = internals.validationMessage;
   }
 
+  /**
+   * Checks the validity of the input by invoking custom validation logic
+   * and then verifying against internal validation rules.
+   * @returns {boolean} Returns true if the input is valid according to both custom validation and internal validation rules, otherwise false.
+   */
   checkValidity() {
     // zavolá tvoju vlastnú validáciu pred kontrolou internals
     this.validate();

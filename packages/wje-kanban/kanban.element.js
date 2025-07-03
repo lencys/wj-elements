@@ -317,7 +317,7 @@ export default class Kanban extends WJElement {
                 this.renamePool(pool);
                 break;
             default:
-                console.log(`Neznáma akcia: ${action}`);
+                console.error(`Neznáma akcia: ${action}`);
         }
     }
 

@@ -145,8 +145,8 @@ export default class DemoCheckbox extends WJElement {
 
     let test = this.context.querySelector('#test');
 
-    test.addEventListener('wje-checkbox:change', (e) => {
-      console.log('wje-checkbox:change:', e.target.checked);
+    test.addEventListener('wje-toggle:change', (e) => {
+      console.log('wje-toggle:change:', e.target, e.target.value);
     });
   }
 }

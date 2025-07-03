@@ -32,7 +32,6 @@ export default class RadioGroup extends FormAssociatedElement {
      * @param {string} value The value to set.
      */
     set value(value) {
-        console.log("Setting value in RadioGroup", value);
         this.#internalValue = value;
         this.pristine = false;
         this.internals.setFormValue(value);
@@ -148,7 +147,6 @@ export default class RadioGroup extends FormAssociatedElement {
         });
 
         this.input.addEventListener('input', (e) => {
-            console.log("TOTO SA NIEKDTO SPUSTI", e.target.value);
             this.validate();
 
             this.pristine = false;

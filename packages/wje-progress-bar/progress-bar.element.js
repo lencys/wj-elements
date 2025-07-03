@@ -143,7 +143,6 @@ export default class ProgressBar extends WJElement {
         let bar;
 
         if (this?.type === 'circle') {
-            // console.log("CIRCLE", "RADIUS:", this.radius, "DIAMETER:", this.diameter, "CONTAINER SIZE:", this.containerSize, "STROKE:", this.stroke);
             svg.setAttribute('width', this.containerSize);
             svg.setAttribute('height', this.containerSize);
             svg.setAttribute('viewBox', `0 0 ${this.containerSize} ${this.containerSize}`);
