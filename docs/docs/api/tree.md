@@ -2,12 +2,12 @@
 title: 'Tree'
 ---
 
-import Props from '@ionic-internal/component-api/v1/accordion/props.md';
-import Events from '@ionic-internal/component-api/v1/accordion/events.md';
-import Methods from '@ionic-internal/component-api/v1/accordion/methods.md';
-import Parts from '@ionic-internal/component-api/v1/accordion/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/accordion/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/accordion/slots.md';
+import Props from '@ionic-internal/component-api/v1/tree/props.md';
+import Events from '@ionic-internal/component-api/v1/tree/events.md';
+import Methods from '@ionic-internal/component-api/v1/tree/methods.md';
+import Parts from '@ionic-internal/component-api/v1/tree/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/tree/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1/tree/slots.md';
 
 <head>
   <title>Accordion: Zobrazenie obsahu v rozbaľovacích sekciách</title>
@@ -30,10 +30,18 @@ import Basic from '@site/static/usage/v1/tree/basic/index.md';
 
 <Basic />
 
+## Slots
+
+import StartEndSlots from '@site/static/usage/v1/tree/slots/index.md';
+
+<StartEndSlots />
+
 ## Multiple
+
 import Multiple from '@site/static/usage/v1/tree/multiple/index.md';
 
 <Multiple />
+
 
 ## TO DO complete tree and tree item docs
 

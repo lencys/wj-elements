@@ -14572,6 +14572,152 @@
       "dependencies": [],
       "dependencyGraph": {}
     },
+		{
+      "filePath": "src/components/tree/tree.tsx",
+      "encapsulation": "shadow",
+      "tag": "tree",
+      "docs": "Komponent stromu na vizuálne zobrazenie hierarchickej štruktúry.",
+      "docsTags": [
+        {
+          "name": "summary",
+          "text": "Tento prvok vizuálne reprezentuje stromovú štruktúru s podporou výberu a hierarchie."
+        },
+        {
+          "name": "documentation",
+          "text": "https://elements.webjet.sk/components/tree"
+        },
+        {
+          "name": "status",
+          "text": "stable"
+        },
+        {
+          "name": "augments",
+          "text": "WJElement"
+        },
+        {
+          "name": "slot",
+          "text": "Predvolený slot pre komponenty `wje-tree-item`."
+        },
+        {
+          "name": "csspart",
+          "text": "native - Natívna obalová časť komponentu."
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "selection",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "selection",
+          "reflectToAttr": false,
+          "docs": "Režim výberu - možnosť výberu jedného alebo viacerých prvkov ('single' alebo 'multiple').",
+          "docsTags": [],
+          "default": "single",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getAllItems",
+          "returns": {
+            "type": "Element[]",
+            "docs": "Vracia pole všetkých prvkov `wje-tree-item` v strome."
+          },
+          "complexType": {
+            "signature": "() => Element[]",
+            "parameters": [],
+            "references": {},
+            "return": "Element[]"
+          },
+          "signature": "() => Element[]",
+          "parameters": [],
+          "docs": "Získa všetky prvky `wje-tree-item` v rámci komponentu.",
+          "docsTags": []
+        },
+        {
+          "name": "updateCheckboxState",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(changedItem: object, isInitialSync?: boolean) => void",
+            "parameters": [
+              {
+                "name": "changedItem",
+                "type": "object",
+                "docs": "Položka stromu, ktorá bola zmenená."
+              },
+              {
+                "name": "isInitialSync",
+                "type": "boolean",
+                "docs": "Voliteľný príznak pre počiatočnú synchronizáciu."
+              }
+            ],
+            "references": {},
+            "return": "void"
+          },
+          "signature": "(changedItem: object, isInitialSync?: boolean) => void",
+          "parameters": [
+            {
+              "name": "changedItem",
+              "type": "object",
+              "docs": "Položka stromu, ktorá bola zmenená."
+            },
+            {
+              "name": "isInitialSync",
+              "type": "boolean",
+              "docs": "Voliteľný príznak pre počiatočnú synchronizáciu."
+            }
+          ],
+          "docs": "Aktualizuje stav začiarkavacieho políčka na základe zmien výberu.",
+          "docsTags": []
+        }
+      ],
+      "events": [],
+      "listeners": [
+        {
+          "event": "click",
+          "target": "this",
+          "capture": false,
+          "passive": true
+        }
+      ],
+      "styles": [
+        {
+          "name": "--none--",
+          "annotation": "prop",
+          "docs": "Základný CSS štýl komponentu `tree`."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Hlavný slot pre komponenty `wje-tree-item`."
+        }
+      ],
+      "parts": [
+        {
+          "name": "native",
+          "docs": "Odkazuje na `div` element vo vnútri komponentu stromu."
+        }
+      ],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
     {
       "filePath": "src/components/tree-item/tree-item.tsx",
       "encapsulation": "shadow",

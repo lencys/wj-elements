@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-gb">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tree: Basic</title>
+    <script src="../../common.js"></script>
+    <script type="module">
+      import { registerIconLibrary, getIconLibrary } from "https://cdn.jsdelivr.net/npm/wj-elements@0/dist/wje-icon-library.js";
+
+      registerIconLibrary("default", {
+        resolver: (name, style) => `https://cdn.jsdelivr.net/npm/wj-elements@0/dist/assets/img/icons/${style}/${name}.svg`
+      });
+    </script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/wje-master.js"></script>
+
+    <link rel="stylesheet" href="../../common.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/light.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/dark.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content" style="display: flex; gap: 1rem">
+        <wje-tree>
+          <template>
+            <wje-icon name="grip-vertical" slot="start"></wje-icon>
+
+            <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible id="custom-dropdown-basic" slot="end">
+            <wje-button size="large" slot="trigger" stop-propagation="true" caret>Large</wje-button>
+            <wje-menu variant="context">
+              <wje-menu-item>
+                <wje-icon name="plane" slot="start"></wje-icon>
+                <wje-label>Menu item</wje-label>
+              </wje-menu-item>
+            </wje-menu>
+          </wje-dropdown>
+          </template>
+          <wje-tree-item expanded>
+            <wje-icon name="folder" filled></wje-icon>
+            Deciduous
+            <wje-tree-item>
+              <wje-icon name="folder" filled></wje-icon>
+              Birch
+            </wje-tree-item>
+            <wje-tree-item expanded>
+              <wje-icon name="folder" filled></wje-icon>
+              Maple
+              <wje-tree-item>
+                <wje-icon name="folder" filled></wje-icon>
+                Field maple
+              </wje-tree-item>
+              <wje-tree-item>
+                <wje-icon name="folder" filled></wje-icon>
+                Red maple
+              </wje-tree-item>
+              <wje-tree-item>
+                <wje-icon name="folder" filled></wje-icon>
+                Sugar maple
+              </wje-tree-item>
+            </wje-tree-item>
+            <wje-tree-item>
+              <wje-icon name="folder" filled></wje-icon>
+              Oak
+            </wje-tree-item>
+          </wje-tree-item>
+          <wje-tree-item>
+            <wje-icon name="folder" filled></wje-icon>
+            Coniferous
+            <wje-tree-item>
+              <wje-icon name="folder" filled></wje-icon>
+              Cedar
+            </wje-tree-item>
+            <wje-tree-item>
+              <wje-icon name="folder" filled></wje-icon>
+              Pine
+            </wje-tree-item>
+            <wje-tree-item>
+              <wje-icon name="folder" filled></wje-icon>
+              Spruce
+            </wje-tree-item>
+          </wje-tree-item>
+          <wje-tree-item>
+            <wje-icon name="folder" filled></wje-icon>
+            Non-trees
+            <wje-tree-item>
+              <wje-icon name="folder" filled></wje-icon>
+              Bamboo
+            </wje-tree-item>
+            <wje-tree-item>
+              <wje-icon name="folder" filled></wje-icon>
+              Cactus
+            </wje-tree-item>
+            <wje-tree-item>
+              <wje-icon name="folder" filled></wje-icon>
+              Fern
+            </wje-tree-item>
+          </wje-tree-item>
+        </wje-tree>
+      </div>
+    </div>
+  </body>
+</html>
