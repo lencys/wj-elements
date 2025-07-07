@@ -6,7 +6,7 @@ const template = document.createElement('template');
 template.innerHTML = `
   <h1>Chip</h1>
   <div class="container">
-
+    
     <!-- BASIC -->
 
     <h2>Basic</h2>
@@ -55,20 +55,8 @@ template.innerHTML = `
         </div>
       </div>
     </div>
-    
-    <!-- BASIC -->
 
-    <h2>Basic</h2>
-    <div class="playground">
-      <div class="content">
-        <wje-chip>
-          Default
-          <wje-level-indicator level="2" slot="end"></wje-level-indicator>
-        </wje-chip>
-      </div>
-    </div>
-
-    <!--  SLOTTING -->
+    <!-- SLOTTING -->
 
     <h2>Slottings</h2>
     <div class="playground">
@@ -85,6 +73,86 @@ template.innerHTML = `
           <wje-icon name="location-pin" color="complete"></wje-icon>
           <wje-label>Icon Chip</wje-label>
         </wje-chip>
+      </div>
+    </div>
+    
+    <!-- LEVEL INDICATOR -->
+
+    <h2>Level Indicator</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-chip class="level-indicator">
+          Default
+          <div slot="end">
+            <wje-level-indicator level="1" colorize></wje-level-indicator>
+            <wje-dropdown placement="bottom-end" offset="5">
+              <wje-button slot="trigger" fill="link" size="small" color="primary" circle>
+                <wje-icon name="dots-vertical" size="small"></wje-icon>
+              </wje-button>
+              <wje-menu variant="context">
+                <wje-menu-item>Action 1</wje-menu-item>
+                <wje-menu-item>Action 2</wje-menu-item>
+                <wje-menu-item>Action 3</wje-menu-item>
+              </wje-menu>
+            </wje-dropdown>
+          </div>
+        </wje-chip>
+        
+        <wje-chip class="level-indicator">
+          Default
+          <div slot="end">
+            <wje-level-indicator level="2" colorize></wje-level-indicator>
+            <wje-dropdown placement="bottom-end" offset="5">
+              <wje-button slot="trigger" fill="link" size="small" color="primary" circle>
+                <wje-icon name="dots-vertical" size="small"></wje-icon>
+              </wje-button>
+              <wje-menu variant="context">
+                <wje-menu-item>Action 1</wje-menu-item>
+                <wje-menu-item>Action 2</wje-menu-item>
+                <wje-menu-item>Action 3</wje-menu-item>
+              </wje-menu>
+            </wje-dropdown>
+          </div>
+        </wje-chip>
+        
+        <wje-chip class="level-indicator">
+          Default
+          <div slot="end">
+            <wje-level-indicator level="3" colorize></wje-level-indicator>
+            <wje-dropdown placement="bottom-end" offset="5">
+              <wje-button slot="trigger" fill="link" size="small" color="primary" circle>
+                <wje-icon name="dots-vertical" size="small"></wje-icon>
+              </wje-button>
+              <wje-menu variant="context">
+                <wje-menu-item>Action 1</wje-menu-item>
+                <wje-menu-item>Action 2</wje-menu-item>
+                <wje-menu-item>Action 3</wje-menu-item>
+              </wje-menu>
+            </wje-dropdown>
+          </div>
+        </wje-chip>
+        
+        <style>
+          wje-chip.level-indicator {
+            --wje-chip-background: transparent;
+            --wje-chip-color: var(--wje-color-primary-10);
+            --wje-chip-background-hover: transparent;
+            --wje-chip-color-hover: var(--wje-color-primary-10);
+            border: 1px solid var(--wje-color-primary-3);
+            border-radius: var(--wje-border-radius-pill);
+            > div {
+              display: flex; 
+              align-items: center; 
+              gap: 2px; 
+              margin-right: -12px;
+            }
+            wje-button:hover {
+              &::part(native) {
+                background-color: transparent;
+              }
+            }
+          }
+        </style>
       </div>
     </div>
 

@@ -32,6 +32,12 @@
     overflow: hidden;
     vertical-align: middle;
     box-sizing: border-box;
+    background-color: var(--wje-chip-background);
+    color: var(--wje-chip-color);
+    &:hover {
+        background-color: var(--wje-chip-background-hover);
+        color: var(--wje-chip-color-hover);
+    }
 }
 
 :host(.focus) {
@@ -150,11 +156,6 @@ wje-button {
     color: var(--wje-color-info-9);
 }
 
-.native-chip.wje-color-default {
-    background-color: var(--wje-color-contrast-3);
-    color: var(--wje-color-contrast-11);
-}
-
 /*HOVER*/
 @media (any-hover: hover) {
     .native-chip.wje-color-primary:hover {
@@ -185,10 +186,5 @@ wje-button {
     .native-chip.wje-color-info:hover {
         background-color: var(--wje-color-info-4);
         color: var(--wje-color-info-10);
-    }
-
-    .native-chip.wje-color-default:hover {
-        background-color: var(--wje-color-contrast-4);
-        color: var(--wje-color-contrast-11);
     }
 }

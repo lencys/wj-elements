@@ -218,6 +218,10 @@
     --wje-select-background: var(--wje-color-contrast-0);
     --wje-select-color: var(--wje-color);
 
+    /* Sliding - Container */
+    --wje-sliding-container-background: transparent;
+    --wje-sliding-container-box-shadow: none;
+
     /* Tab */
     --wje-tab-color-active: var(--wje-color-primary-11);
     --wje-tab-color-hover: var(--wje-color-primary-1);

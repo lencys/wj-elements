@@ -12,6 +12,10 @@ template.innerHTML = `
     <h2>Default</h2>
     <div class="playground">
       <div class="content">
+      	<wje-select lazy label="Label optionS" placeholder="Select options" variant="standard" max-height="200px" value="eae3262d-3854-4e5b-8e21-7a0a863d0593 7e771d42-c4f9-4627-9876-f7ded0b265f4" find clearable checkbox multiple>
+          <wje-options lazy url="/api/options" item-value="value" item-text="text"  lazy-load-size="6" option-array-path="data"></wje-options>
+        </wje-select>
+        
         <wje-select label="Label" placeholder="Select option" value="option-1">
           <wje-option value="option-1">Option 1</wje-option>
           <wje-option value="option-2">

@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import dotenv from 'dotenv';
 import path from 'path';
 import dts from 'vite-plugin-dts'
-import service from "./experimental-packages/wje-sliding-container/service/service.js";
 
 /** @type {import('vite').UserConfig} */
 export default defineConfig(({ mode }) => {
@@ -138,7 +137,7 @@ export default defineConfig(({ mode }) => {
           'row': './packages/wje-row/row.js',
           'select': './packages/wje-select/select.js',
           'slider': './packages/wje-slider/slider.js',
-          'sliding-container': './experimental-packages/wje-sliding-container/sliding-container.js',
+          'sliding-container': './packages/wje-sliding-container/sliding-container.js',
           'split-view': './packages/wje-split-view/split-view.js',
           'status': './packages/wje-status/status.js',
           'step': './packages/wje-step/step.js',

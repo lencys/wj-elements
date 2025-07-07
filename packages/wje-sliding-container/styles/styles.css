@@ -1,0 +1,29 @@
+:host {
+    display: block;
+    z-index: 9999;
+    position: relative;
+    height: 100%;
+    right: unset;
+    left: unset;
+    background: var(--wje-sliding-container-background);
+    box-shadow: var(--wje-sliding-container-box-shadow);
+    border-radius: var(--wje-sliding-container-border-radius);
+}
+
+.sliding-container-wrapper {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.native-sliding-container {
+
+    position: absolute;
+    width: 0;
+    height: 100%;
+}
+
+.native-sliding-container-inner {
+    height: 100%;
+    position: absolute;
+}

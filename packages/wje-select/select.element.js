@@ -597,7 +597,20 @@ export class Select extends FormAssociatedElement {
 						el.selected = true;
 					}
 				});
-			})
+			});
+
+			// Ensure values from the value attribute are (re)selected after lazy-loaded pages
+			const attrValue = this.getAttribute('value')?.split(' ') || [];
+
+			attrValue.forEach(val => {
+				const existingOption = Array.from(this.getAllOptions()).find(el => el.value === val);
+				if (existingOption) {
+					existingOption.selected = true;
+				}
+			});
+
+			this.selectedOptions = this.#getSelectedOptions();
+			this.selections(true);
 
 			this.list.scrollTo(0, 0);
 			event.dispatchCustomEvent(this.popup, 'wje-popup:content-ready'); // Notify that the content is ready

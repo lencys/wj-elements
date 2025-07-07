@@ -77,7 +77,7 @@ template.innerHTML = /*html */ `
                                         </wje-card-content>
                                     </wje-card>
                                 </wje-sliding-container>
-                                <div style="width: 100%; height:100%;background: purple;color:white;">
+                                <div style="width: 100%; height:100%;">
                                     <wje-card>
                                         <wje-card-header>
                                             <wje-card-subtitle>Subtitle</wje-card-subtitle>
@@ -85,7 +85,7 @@ template.innerHTML = /*html */ `
                                         </wje-card-header>
                                         <wje-card-content>
                                             <wje-button dialog="test-resize-container-event-right">Open 1</wje-button>
-                                            <wje-button dialog="test-resize-container-event-right">Open 2</wje-button>
+                                            <wje-button dialog="test-resize-container-event-right">Close 1</wje-button>
                                             <wje-button dialog="test-resize-container-event-a">Open 3</wje-button>
                                         </wje-card-content>
                                     </wje-card>
@@ -126,6 +126,12 @@ template.innerHTML = /*html */ `
                     <wje-footer>Footer</wje-footer>
                 </wje-container>
             </wje-container>
+            
+            <style>
+              #left-in-place {
+                --wje-sliding-container-background: red;
+              }
+            </style>
         </div>
     </div>
 `;

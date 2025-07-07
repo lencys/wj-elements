@@ -316,6 +316,10 @@
     --wje-checkbox-border-radius: var(--wje-border-radius-medium);
 
     /* Chip */
+    --wje-chip-background: var(--wje-color-contrast-3);
+    --wje-chip-color: var(--wje-color-contrast-11);
+    --wje-chip-background-hover: var(--wje-color-contrast-4);
+    --wje-chip-color-hover: var(--wje-color-contrast-11);
     --wje-chip-border-radius: 100px;
     --wje-chip-margin: 0;
 
@@ -524,6 +528,11 @@
     --wje-select-find-margin-inline: var(--wje-spacing-x-small);
     --wje-select-find-margin-block: var(--wje-spacing-x-small);
     --wje-select-find-width: calc(100% - var(--wje-select-find-margin-inline) * 2);
+
+    /* Sliding - Container */
+    --wje-sliding-container-background: transparent;
+    --wje-sliding-container-box-shadow: none;
+    --wje-sliding-container-border-radius: var(--wje-border-radius-large);
 
     /* Status */
     --wje-status-size: var(--wje-size-small);

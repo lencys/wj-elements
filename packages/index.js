@@ -93,6 +93,7 @@ export { default as RouterOutlet } from './wje-router-outlet/router-outlet.js';
 export { default as Row } from './wje-row/row.js';
 export { default as Select } from './wje-select/select.js';
 export { default as Slider } from './wje-slider/slider.js';
+export { default as SlidingContainer } from './wje-sliding-container/sliding-container.js';
 export { default as SplitView } from './wje-split-view/split-view.js';
 export { default as Status } from './wje-status/status.js';
 export { default as Step } from './wje-step/step.js';
@@ -113,7 +114,3 @@ export { default as Tooltip } from './wje-tooltip/tooltip.js';
 export { default as Tree } from './wje-tree/tree.js';
 export { default as TreeItem } from './wje-tree-item/tree-item.js';
 export { default as VisuallyHidden } from './wje-visually-hidden/visually-hidden.js';
-
-// experimaental components
-
-export { default as SlidingContainer } from '../experimental-packages/wje-sliding-container/sliding-container.js';

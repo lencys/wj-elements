@@ -1,4 +1,4 @@
-import { default as WJElement } from '../../packages/wje-element/element.js';
+import { default as WJElement, event } from '../wje-element/element.js';
 import styles from './styles/styles.css?inline';
 
 /**
@@ -68,90 +68,189 @@ export default class SlidingContainer extends WJElement {
         this._resizeObserver.observe(document.documentElement);
     }
 
+    /**
+     * Sets the maximum width of an element by updating the 'max-width' attribute.
+     * @param {string} value The maximum width value to be set (e.g., '100px', '50%', etc.).
+     */
     set maxWidth(value) {
         this.setAttribute('max-width', value);
     }
 
+    /**
+     * Gets the maximum width value of the element.
+     * Retrieves the value of the 'max-width' attribute. If the attribute is not set, it defaults to 'auto'.
+     * @returns {string} The maximum width value of the element or 'auto' if the attribute is not defined.
+     */
     get maxWidth() {
         return this.getAttribute('max-width') ?? 'auto';
     }
 
+    /**
+     * Sets the maximum height for the element.
+     * @param {string} value The maximum height value to be applied to the element. This can include units such as "px", "em", "%", etc.
+     */
     set maxHeight(value) {
         this.setAttribute('max-height', value);
     }
 
+    /**
+     * Retrieves the maximum height value of the element, or returns 'auto' if not set.
+     * @returns {string} The maximum height value or 'auto' if the attribute is not specified.
+     */
     get maxHeight() {
         return this.getAttribute('max-height') ?? 'auto';
     }
 
+    /**
+     * Sets the 'trigger' attribute for the element.
+     * @param {string} value The value to set for the 'trigger' attribute.
+     */
     set trigger(value) {
         this.setAttribute('trigger', value);
     }
 
+    /**
+     * Retrieves the value of the 'trigger' attribute. If the attribute is not set, it defaults to 'sliding-container'.
+     * @returns {string} The value of the 'trigger' attribute or the default value 'sliding-container' if not defined.
+     */
     get trigger() {
         return this.getAttribute('trigger') ?? 'sliding-container';
     }
 
+    /**
+     * Sets the direction attribute for the element.
+     * @param {string} value The direction value to be assigned. Possible values are typically 'ltr' (left-to-right), 'rtl' (right-to-left), or 'auto'.
+     */
     set direction(value) {
         this.setAttribute('direction', value);
     }
 
+    /**
+     * Retrieves the direction attribute of the instance.
+     * If the direction attribute is not set, it defaults to 'right'.
+     * @returns {string} The value of the direction attribute or 'right' if not set.
+     */
     get direction() {
         return this.getAttribute('direction') ?? 'right';
     }
 
+    /**
+     * Sets the value of the `remove-child-after-close` attribute.
+     * This attribute determines if a child element should be removed after a close operation.
+     * @param {boolean|string} value The value to set for the `remove-child-after-close` attribute. The value can be a boolean or a string representation of a boolean.
+     */
     set removeChildAfterClose(value) {
         this.setAttribute('remove-child-after-close', value);
     }
 
+    /**
+     * Gets the value indicating whether the child element should be removed after closing.
+     *
+     * This property checks the presence of the 'remove-child-after-close' attribute on the element.
+     * Returns `false` if the attribute does not exist.
+     * @returns {boolean} True if the 'remove-child-after-close' attribute is present, otherwise false.
+     */
     get removeChildAfterClose() {
         return this.hasAttribute('remove-child-after-close') ?? false;
     }
 
+    /**
+     * Sets the 'variant' attribute to the specified value.
+     * @param {string} value The value to set for the 'variant' attribute.
+     */
     set variant(value) {
         this.setAttribute('variant', value);
     }
 
+    /**
+     * Retrieves the value of the "variant" attribute. If the attribute is not set,
+     * it returns the default value 'in-place'.
+     * @returns {string} The variant value or the default value 'in-place'.
+     */
     get variant() {
         return this.getAttribute('variant') ?? 'in-place';
     }
 
+    /**
+     * Retrieves the value of the 'screen-break-point' attribute.
+     * @returns {string} The value of the 'screen-break-point' attribute.
+     */
     get screenBreakPoint() {
         return this.getAttribute('screen-break-point');
     }
 
+    /**
+     * Sets the screen break point value to determine responsive behavior.
+     * @param {string} value The value to set as the screen break point.
+     */
     set screenBreakPoint(value) {
         this.setAttribute('screen-break-point', value);
     }
 
-    get animationDuration() {
-        return this.getAttribute('animation-duration') ?? '500';
-    }
-
+    /**
+     * Sets the duration of the animation by updating the `animation-duration` attribute.
+     * @param {string} value The duration value for the animation, specified in a format
+     * such as seconds (e.g., "2s") or milliseconds (e.g., "200ms").
+     */
     set animationDuration(value) {
         this.setAttribute('animation-duration', value);
     }
 
-    get animationEasing() {
-        return this.getAttribute('animation-easing') ?? 'linear';
+    /**
+     * Gets the animation duration for an element.
+     * It retrieves the value of the 'animation-duration' attribute if present; otherwise, it defaults to '500'.
+     * @returns {string} The value of the animation duration, either from the attribute or the default '500'.
+     */
+    get animationDuration() {
+        return this.getAttribute('animation-duration') ?? '500';
     }
 
+    /**
+     * Sets the easing function for the animation.
+     * @param {string} value The easing function to use for the animation. This can be any valid CSS timing function such as "ease", "linear", "ease-in", "ease-out", etc.
+     */
     set animationEasing(value) {
         this.setAttribute('animation-easing', value);
     }
 
+    /**
+     * Retrieves the easing function for the animation.
+     * @returns {string} The value of the 'animation-easing' attribute if set, otherwise defaults to 'linear'.
+     */
+    get animationEasing() {
+        return this.getAttribute('animation-easing') ?? 'linear';
+    }
+
+    /**
+     * Determines if the element has an 'has-opacity' attribute.
+     * @returns {boolean} True if the element has the 'has-opacity' attribute, otherwise false.
+     */
     get hasOpacity() {
         return this.hasAttribute('has-opacity') ?? false;
     }
 
-    get addToHeight() {
-        return this.getAttribute('add-to-height') ?? '0';
-    }
-
+    /**
+     * Sets the value of the 'add-to-height' attribute.
+     * This attribute is used to modify or adjust the height dynamically.
+     * @param {string} value The value to be assigned to the 'add-to-height' attribute.
+     */
     set addToHeight(value) {
         this.setAttribute('add-to-height', value);
     }
 
+    /**
+     * Retrieves the value of the 'add-to-height' attribute from the element.
+     * If the attribute is not set, it defaults to '0'.
+     * @returns {string} The value of the 'add-to-height' attribute or '0' if the attribute is not present.
+     */
+    get addToHeight() {
+        return this.getAttribute('add-to-height') ?? '0';
+    }
+
+    /**
+     * Determines whether the current state is open.
+     * @returns {boolean} True if the state is open, otherwise false.
+     */
     get isOpen() {
         return this._isOpen;
     }
@@ -163,18 +262,7 @@ export default class SlidingContainer extends WJElement {
      * @returns {string[]}
      */
     static get observedAttributes() {
-        return [
-            'max-width',
-            'max-height',
-            'trigger',
-            'direction',
-            'variant',
-            'screen-break-point',
-            'remove-child-after-close',
-            'animation-duration',
-            'animation-easing',
-            'has-opacity',
-        ];
+        return ['max-width', 'max-height', 'trigger', 'direction', 'variant', 'screen-break-point', 'remove-child-after-close', 'animation-duration', 'animation-easing', 'has-opacity'];
     }
 
     /**
@@ -194,6 +282,16 @@ export default class SlidingContainer extends WJElement {
     }
 
     /**
+     * Executes before drawing the element.
+     */
+    beforeDraw() {
+        this.animation?.cancel();
+        this.nativeAnimation?.cancel();
+
+        document.removeEventListener(this.trigger, this.triggerEvent);
+    }
+
+    /**
      * Draws the component.
      * @param {object} context The context for drawing.
      * @param {object} store The store for drawing.
@@ -203,22 +301,19 @@ export default class SlidingContainer extends WJElement {
     draw(context, store, params) {
         let fragment = document.createDocumentFragment();
 
-        this.style.position = 'relative';
-        this.style.height = '100%';
-        this.style.right = 'unset';
-        this.style.left = 'unset';
+        let wrapperDiv = document.createElement('div');
+        wrapperDiv.classList.add('sliding-container-wrapper');
 
-        this.wrapperDiv = document.createElement('div');
-        this.wrapperDiv.classList.add('sliding-container-wrapper');
+        let transparentDiv = document.createElement('div');
+        transparentDiv.classList.add('sliding-container-transparent');
 
-        this.transparentDiv = document.createElement('div');
-        this.transparentDiv.classList.add('sliding-container-transparent');
         if (this._isOpen) {
-            this.transparentDiv.style.width = this.maxWidth;
+            transparentDiv.style.width = this.maxWidth;
         }
 
         let native = document.createElement('div');
-        native.style.position = 'absolute';
+        native.setAttribute('part', 'sliding-container');
+        native.classList.add('native-sliding-container');
         native.style.width = 0;
         if (this.hasOpacity) {
             native.style.opacity = 0;
@@ -231,11 +326,6 @@ export default class SlidingContainer extends WJElement {
             }
         }
 
-        native.style.height = '100%';
-
-        native.classList.add('native-sliding-container');
-        native.setAttribute('part', 'sliding-container');
-
         if (this.direction === 'right') {
             native.style.right = 0;
         } else {
@@ -246,26 +336,47 @@ export default class SlidingContainer extends WJElement {
 
         const nativeInner = document.createElement('div');
         nativeInner.classList.add('native-sliding-container-inner');
-        nativeInner.style.height = '100%';
-        nativeInner.style.position = 'absolute';
         nativeInner.style.width = this.maxWidth;
 
-        nativeInner.appendChild(slot);
-        nativeInner.appendChild(this.getCloseButton());
+        // APPEND
+        nativeInner.append(slot);
+        nativeInner.append(this.getCloseButton());
 
-        native.appendChild(nativeInner);
-        this.wrapperDiv.appendChild(this.transparentDiv);
-        this.wrapperDiv.appendChild(native);
-        fragment.appendChild(this.wrapperDiv);
+        native.append(nativeInner);
 
+        wrapperDiv.append(transparentDiv);
+        wrapperDiv.append(native);
+
+        fragment.append(wrapperDiv);
+
+        this.transparentDiv = transparentDiv;
+        this.wrapperDiv = wrapperDiv
         this.nativeElement = native;
 
         return fragment;
     }
 
     /**
-     * Creates and returns a close button element.
-     * @returns {HTMLElement} The close button element.
+     * Performs actions after the element is drawn on the screen.
+     * Attaches an event listener to the document based on the specified trigger.
+     * Sets the variant to "over" if the document width is smaller than the screen break point.
+     * Calls the checkForVariant method with the current variant.
+     */
+    afterDraw() {
+        document.addEventListener(this.trigger, this.triggerEvent);
+
+        // if document width is on small screen set variant to over
+        if (this.screenBreakPoint && window.innerWidth <= this.screenBreakPoint) {
+            this.variant = 'over';
+        }
+
+        this.checkForVariant(this.variant);
+    }
+
+    /**
+     * Creates and returns a styled close button element with an icon,
+     * including an event listener to trigger the close method.
+     * @returns {HTMLElement} The close button element configured with styles, an icon, and event listener.
      */
     getCloseButton() {
         let closeButton = document.createElement('wje-button');
@@ -288,31 +399,10 @@ export default class SlidingContainer extends WJElement {
     }
 
     /**
-     * Executes before drawing the element.
+     * Retrieves the parent element of the current element.
+     * If the parent element is not found, it attempts to find the root host element.
+     * @returns {Element|null} The parent element or the root host element if no parent exists. Returns null if neither is found.
      */
-    beforeDraw() {
-        this.animation?.cancel();
-        this.nativeAnimation?.cancel();
-        document.removeEventListener(this.trigger, this.triggerEvent);
-    }
-
-    /**
-     * Performs actions after the element is drawn on the screen.
-     * Attaches an event listener to the document based on the specified trigger.
-     * Sets the variant to "over" if the document width is smaller than the screen break point.
-     * Calls the checkForVariant method with the current variant.
-     */
-    afterDraw() {
-        document.addEventListener(this.trigger, this.triggerEvent);
-
-        // if document width is on small screen set variant to over
-        if (this.screenBreakPoint && window.innerWidth <= this.screenBreakPoint) {
-            this.variant = 'over';
-        }
-
-        this.checkForVariant(this.variant);
-    }
-
     getParentElement() {
         let parentElement = this.parentElement;
 
@@ -324,8 +414,12 @@ export default class SlidingContainer extends WJElement {
     }
 
     /**
-     * Checks for a specific variant and applies corresponding styles.
-     * @param {string} variant The variant to check for.
+     * Adjusts the position and dimensions of the current element based on the specified variant.
+     *
+     * The method handles modifications to the element's positioning style, aligns it relative to its parent,
+     * and manages alignment to its siblings based on the specified direction.
+     * @param {string} variant The variant to determine how the element should be updated. For example, when set to 'over', specific adjustments to the position and size are performed.
+     * @returns {void} No value is returned, the method modifies the element's style properties directly.
      */
     checkForVariant(variant) {
         if (variant === 'over') {
@@ -385,34 +479,39 @@ export default class SlidingContainer extends WJElement {
     /**
      * Executes before the element is opened.
      */
-    beforeOpen(event) {
+    beforeOpen(e) {
         // Hook for extending behavior before the dialog opens
     }
 
     /**
      * Callback function called after the element is opened.
      */
-    afterOpen(event) {
+    afterOpen(e) {
         // Hook for extending behavior before the dialog opens
     }
 
     /**
      * Executes before closing the element.
      */
-    beforeClose(event) {
+    beforeClose(e) {
         // Hook for extending behavior before the dialog opens
     }
 
     /**
      * Callback function that is called after the container is closed.
      */
-    afterClose(event) {
+    afterClose(e) {
         // Hook for extending behavior before the dialog opens
     }
 
     /**
-     * Animates the transition of the element's width from 0 to the maximum width or vice versa.
-     * @returns {Promise<void>} A promise that resolves when the animation is complete.
+     * Animates the transition of elements with specified options, toggling the visibility and/or dimensions
+     * of the associated elements based on their current state.
+     *
+     * This method handles both forward and reverse animations for two elements (`transparentDiv` and `nativeElement`)
+     * with optional opacity changes. It ensures smooth transitioning by canceling any previous animations on the provided
+     * elements before initiating a new animation sequence.
+     * @returns {Promise<void>} A promise that resolves when the transition animation is completed.
      */
     doAnimateTransition() {
         const options = {
@@ -509,75 +608,57 @@ export default class SlidingContainer extends WJElement {
     }
 
     /**
-     * Opens the container with an animation.
-     * @returns {Promise<void>} A promise that resolves when the container is opened.
+     * Opens the sliding container by performing necessary preparatory and transitional operations.
+     * @param {Event} e The event that triggered the open operation.
+     * @returns {Promise<void>} A promise that resolves when the open operation, including animations and subsequent handlers, is complete.
      */
-    async open(event) {
-        await Promise.resolve(this.beforeOpen(event)).then(async () => {
+    async open(e) {
+        await Promise.resolve(this.beforeOpen(e)).then(async () => {
             if (!this._isOpen) {
-                this.dispatchEvent(
-                    new CustomEvent('wje-sliding-container:beforeOpen', {
-                        bubbles: true,
-                        composed: true,
-                    })
-                );
+                event.dispatchCustomEvent(this, 'wje-sliding-container:beforeOpen')
 
                 this.checkForVariant(this.variant);
 
                 await this.doAnimateTransition();
 
-                await Promise.resolve(this.afterOpen(event)).then(() => {
-                    this.dispatchEvent(
-                        new CustomEvent('wje-sliding-container:open', {
-                            bubbles: true,
-                            composed: true,
-                        })
-                    );
+                await Promise.resolve(this.afterOpen(e)).then(() => {
+                    event.dispatchCustomEvent(this, 'wje-sliding-container:open')
                 });
             }
         });
     }
 
     /**
-     * Closes the animation container.
-     * @returns {Promise<void>} A promise that resolves when the container is closed.
+     * Closes the sliding container and performs associated operations such as animations and event dispatches.
+     * @param {Event} e The event object associated with the close action.
+     * @returns {Promise<void>} A promise that resolves when the closing operation, including animations and child element removal, is completed.
      */
-    async close(event) {
-        await Promise.resolve(this.beforeClose(event)).then(async () => {
+    async close(e) {
+        await Promise.resolve(this.beforeClose(e)).then(async () => {
             if (this._isOpen) {
-                this.dispatchEvent(
-                    new CustomEvent('wje-sliding-container:beforeClose', {
-                        bubbles: true,
-                        composed: true,
-                    })
-                );
+                event.dispatchCustomEvent(this, 'wje-sliding-container:beforeClose');
 
                 await this.doAnimateTransition();
 
-                await Promise.resolve(this.afterClose(event)).then(() => {
+                await Promise.resolve(this.afterClose(e)).then(() => {
                     if (this.removeChildAfterClose) {
                         this.childNodes.forEach((child) => {
                             child.remove();
                         });
                     }
 
-                    this.dispatchEvent(
-                        new CustomEvent('wje-sliding-container:close', {
-                            bubbles: true,
-                            composed: true,
-                        })
-                    );
+                    event.dispatchCustomEvent(this, 'wje-sliding-container:afterClose');
                 });
             }
         });
     }
 
     /**
-     * Toggles the state of the element.
-     * If the element is open, it will be closed. If it is closed, it will be opened.
-     * @returns {Promise<void>} A promise that resolves when the toggle operation is complete.
+     * Toggles the state between open and closed.
+     * @param {Event} e The event object triggering the toggle.
+     * @returns {Promise<void>} A promise that resolves once the toggle operation (open or close) is complete.
      */
-    async toggle(event) {
+    async toggle(e) {
         if (this._isOpen) {
             await this.close(event);
         } else {
@@ -585,6 +666,11 @@ export default class SlidingContainer extends WJElement {
         }
     }
 
+    /**
+     * Cleans up resources associated with the component by disconnecting
+     * the resize observer and setting it to null.
+     * @returns {void} Does not return a value.
+     */
     componentCleanup() {
         this._resizeObserver?.disconnect();
         this._resizeObserver = null;
