@@ -340,7 +340,7 @@ export default class SlidingContainer extends WJElement {
 
         // APPEND
         nativeInner.append(slot);
-        nativeInner.append(this.getCloseButton());
+        nativeInner.append(this.htmlCloseButton());
 
         native.append(nativeInner);
 
@@ -378,7 +378,7 @@ export default class SlidingContainer extends WJElement {
      * including an event listener to trigger the close method.
      * @returns {HTMLElement} The close button element configured with styles, an icon, and event listener.
      */
-    getCloseButton() {
+    htmlCloseButton() {
         let closeButton = document.createElement('wje-button');
         closeButton.setAttribute('part', 'close-button');
         closeButton.style.position = 'absolute';
@@ -389,9 +389,10 @@ export default class SlidingContainer extends WJElement {
         let icon = document.createElement('wje-icon');
         icon.setAttribute('slot', 'icon-only');
         icon.setAttribute('name', 'x');
-        closeButton.appendChild(icon);
 
-        closeButton.addEventListener('click', () => {
+        closeButton.append(icon);
+
+        event.addListener(closeButton, 'wje-button:click', null,(e) => {
             this.close();
         });
 
@@ -615,6 +616,8 @@ export default class SlidingContainer extends WJElement {
     async open(e) {
         await Promise.resolve(this.beforeOpen(e)).then(async () => {
             if (!this._isOpen) {
+                this.classList.add('open');
+
                 event.dispatchCustomEvent(this, 'wje-sliding-container:beforeOpen')
 
                 this.checkForVariant(this.variant);
@@ -636,6 +639,8 @@ export default class SlidingContainer extends WJElement {
     async close(e) {
         await Promise.resolve(this.beforeClose(e)).then(async () => {
             if (this._isOpen) {
+                this.classList.remove('open');
+
                 event.dispatchCustomEvent(this, 'wje-sliding-container:beforeClose');
 
                 await this.doAnimateTransition();
