@@ -281,7 +281,7 @@ export default class Reorder extends WJElement {
             return clonedNode;
         });
 
-        const newOrder = orderElements.map(el => el.innerText.trim());
+        const newOrder = newOrderElements.map(el => el.innerText.trim());
 
         this.dispatchChange(this.originalIndex, newIndex, newOrder, newOrderElements);
 
