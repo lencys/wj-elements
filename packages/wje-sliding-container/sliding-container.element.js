@@ -381,10 +381,7 @@ export default class SlidingContainer extends WJElement {
     htmlCloseButton() {
         let closeButton = document.createElement('wje-button');
         closeButton.setAttribute('part', 'close-button');
-        closeButton.style.position = 'absolute';
-        closeButton.style.top = '0';
-        closeButton.style.right = '0';
-        closeButton.style.zIndex = '1000';
+        closeButton.classList.add('close-button');
 
         let icon = document.createElement('wje-icon');
         icon.setAttribute('slot', 'icon-only');

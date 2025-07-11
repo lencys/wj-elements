@@ -90,7 +90,7 @@ template.innerHTML = /*html */ `
                                         </wje-card-content>
                                     </wje-card>
                                 </div>
-                                <wje-sliding-container trigger="test-resize-container-event-right" id="left-in-place" direction="left" max-width="100px" max-height="100%">
+                                <wje-sliding-container trigger="test-resize-container-event-right" id="left-in-place" direction="left" max-width="100px" max-height="100%" hide-button>
                                     <wje-card>
                                         <wje-card-header>
                                             <wje-card-subtitle>CONTENT Subtitle</wje-card-subtitle>

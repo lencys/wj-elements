@@ -80,6 +80,13 @@ export default class DemoReorder extends WJElement {
   afterDraw() {
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(this.context);
+
+    const reorderList = this.context.querySelectorAll('wje-reorder');
+    reorderList.forEach((reorder) => {
+      reorder.addEventListener('wje-reorder:change', (e) => {
+        console.log('Reorder changed:', e.detail.order);
+      });
+    });
   }
 }
 

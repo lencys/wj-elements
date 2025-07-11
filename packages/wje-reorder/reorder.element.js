@@ -272,16 +272,19 @@ export default class Reorder extends WJElement {
         const parent = this.dragEl.parentNode;
         const newIndex = Array.from(parent.children).indexOf(this.dragEl);
 
-        const newOrder = Array.from(parent.children).map((el) => {
+        const newOrderElements = Array.from(parent.children).map((el) => {
             const clonedNode = el.cloneNode(true);
             const handle = clonedNode.querySelector('.handle');
             if (handle) {
                 handle.remove();
             }
-            return clonedNode.innerText.trim();
+            return clonedNode;
         });
 
-        this.dispatchChange(this.originalIndex, newIndex, newOrder);
+        const newOrder = orderElements.map(el => el.innerText.trim());
+
+        this.dispatchChange(this.originalIndex, newIndex, newOrder, newOrderElements);
+
         document.body.style.userSelect = '';
     }
 
@@ -326,10 +329,10 @@ export default class Reorder extends WJElement {
      * // @fires wje-reorder:change - Dispatched when the reordering is completed.
      * The event includes details about the initial position, the new position, and the new order.
      */
-    dispatchChange(from, to, order) {
+    dispatchChange(from, to, order, orderElements) {
         this.dispatchEvent(
             new CustomEvent('wje-reorder:change', {
-                detail: { from, to, order },
+                detail: { from, to, order, orderElements },
             })
         );
     }

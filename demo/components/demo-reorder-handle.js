@@ -152,6 +152,13 @@ export default class DemoReorderHandle extends WJElement {
         e.target.value === 'on' ? item.removeAttribute('locked') : item.setAttribute('locked', '');
       });
     });
+
+    const reorderList = this.context.querySelectorAll('wje-reorder');
+    reorderList.forEach((reorder) => {
+      reorder.addEventListener('wje-reorder:change', (e) => {
+        console.log('Reorder changed:', e.detail.order);
+      });
+    });
   }
 }
 

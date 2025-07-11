@@ -5,9 +5,18 @@
     height: 100%;
     right: unset;
     left: unset;
-    /*background: var(--wje-sliding-container-background);*/
-    /*box-shadow: var(--wje-sliding-container-box-shadow);*/
-    /*border-radius: var(--wje-sliding-container-border-radius);*/
+    .close-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1000;
+    }
+}
+
+:host([hide-button]) {
+    .close-button {
+        display: none;
+    }
 }
 
 .sliding-container-wrapper {
