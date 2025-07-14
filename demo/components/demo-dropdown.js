@@ -12,13 +12,44 @@ template.innerHTML = `
   <h1>Dropdown</h1>
   <div class="container">
 
-    <!--  BASIC-->
+    <!-- BASIC -->
 
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
         <p style="height: 50px;">
           <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible id="custom-dropdown-basic">
+            <wje-button size="large" slot="trigger" stop-propagation="true" caret>Large</wje-button>
+            <wje-menu variant="context">
+              <wje-menu-item>
+                <wje-icon name="plane" slot="start"></wje-icon>
+                <wje-label>Menu item</wje-label>
+              </wje-menu-item>
+              <wje-menu-item>
+                <wje-icon name="book" slot="start"></wje-icon>
+                <wje-label>Menu item</wje-label>
+              </wje-menu-item>
+              <wje-menu-item>
+                <wje-icon name="music" slot="start"></wje-icon>
+                <wje-label>Menu item</wje-label>
+              </wje-menu-item>
+              <wje-menu-item>
+                <wje-icon name="video" slot="start"></wje-icon>
+                <wje-label>Menu item</wje-label>
+              </wje-menu-item>
+            </wje-menu>
+          </wje-dropdown>
+        </p>
+      </div>
+    </div>
+    
+    <!-- CHANGE -->
+
+    <h2>Change button</h2>
+    <div class="playground">
+      <div class="content">
+        <p style="height: 50px;">
+          <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible id="example">
             <wje-button size="large" slot="trigger" stop-propagation="true" caret>Large</wje-button>
             <wje-menu variant="context">
               <wje-menu-item>
@@ -182,6 +213,12 @@ export default class DemoDropdown extends WJElement {
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(this.context);
 
+    this.querySelector('#example').afterShow = () => {
+      let button = this.querySelector('#example wje-button');
+      button.removeAttribute('fill');
+      button.setAttribute('color', 'primary');
+    }
+
     // Simulácia oneskorenia načítania dát
     this.querySelector('#custom-dropdown-basic').beforeShow = () => {
       return new Promise((resolve) => {
@@ -189,7 +226,11 @@ export default class DemoDropdown extends WJElement {
           resolve('Dáta načítané');
         }, 1000); // Simuluje 1 sekundové oneskorenie
       });
-    };
+    }
+
+    this.querySelector('#custom-dropdown-basic').beforeClose = (el) => {
+      console.log('Dropdown before close', el);
+    }
   }
 }
 

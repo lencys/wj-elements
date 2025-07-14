@@ -140,14 +140,9 @@ export default class Dropdown extends WJElement {
         event.removeListener(this, 'wje-popup:hide', null, this.popupHideCallback);
     }
 
-    popupHideCallback = () => {
+    popupHideCallback = (e) => {
         if (this.classList.contains('active')) {
-            this.classList.remove('active');
-
-            event.dispatchCustomEvent(this, 'wje-dropdown:close', {
-                bubbles: true,
-                detail: { target: this },
-            });
+            this.toggleCallback(e);
         }
     };
 
@@ -175,6 +170,22 @@ export default class Dropdown extends WJElement {
     }
 
     /**
+     * @summary Toggles the dropdown element between active and inactive states.
+     * Calls the `onOpen` method if the element is currently inactive,
+     * and calls the `onClose` method if the element is currently active.
+     * @param {Event} e The event object.
+     */
+    toggleCallback = (e) => {
+        if (this.classList.contains('active')) {
+            e.stopPropagation();
+            this.onClose();
+        } else {
+            e.stopPropagation();
+            this.onOpen(e);
+        }
+    };
+
+    /**
      * @summary Returns the content to be displayed before showing the dropdown.
      * @returns {any} The content to be displayed.
      */
@@ -190,28 +201,10 @@ export default class Dropdown extends WJElement {
     }
 
     /**
-     * @summary Toggles the dropdown element between active and inactive states.
-     * Calls the `onOpen` method if the element is currently inactive,
-     * and calls the `onClose` method if the element is currently active.
-     * @param {Event} e The event object.
-     */
-    toggleCallback = (e) => {
-        e.stopPropagation();
-
-        if (this.classList.contains('active')) {
-            this.onClose(e);
-        } else {
-            this.onOpen(e);
-        }
-    };
-
-    /**
      * Open the popup element.
      * @param {object} e
      */
     onOpen = (e) => {
-        e.stopPropagation();
-
         this.classList.add('active');
         Promise.resolve(this.beforeShow(this))
             .then((res) => {
@@ -243,9 +236,7 @@ export default class Dropdown extends WJElement {
         // Do nothing
     };
 
-    onClose = (e) => {
-        e.stopPropagation();
-
+    onClose = () => {
         this.classList.remove('active');
         Promise.resolve(this.beforeClose(this))
             .then((res) => {
