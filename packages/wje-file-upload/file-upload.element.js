@@ -216,9 +216,8 @@ export default class FileUpload extends WJElement {
         native.setAttribute('part', 'native');
 
         let label = document.createElement('div');
-        label.setAttribute('part', 'label');
-        label.classList.add('file-label');
         label.setAttribute('part', 'file-label');
+        label.classList.add('file-label');
 
         let fileList = document.createElement('slot');
         fileList.setAttribute('name', 'item');

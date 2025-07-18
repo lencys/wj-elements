@@ -19,7 +19,7 @@ template.innerHTML = `
     <div class="playground">
       <div class="content">
         <wje-button dialog="open-modal">Open</wje-button>
-        <wje-dialog trigger="open-modal" headline="Title">
+        <wje-dialog trigger="open-modal" headline="Title" class="example">
           <h4>Lorem ipsum dolor sit amet</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
           <div slot="footer">
@@ -27,6 +27,11 @@ template.innerHTML = `
             <wje-button id="save" color="primary">Potvrdiť</wje-button>
           </div>
         </wje-dialog>
+        <style>
+          .example {
+            /*--wje-dialog-width: 876px;*/
+          }
+        </style>
       </div>
     </div>
     

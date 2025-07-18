@@ -118,7 +118,7 @@ dialog:focus-visible {
         transition: all 0.2s !important;
         width: var(--wje-dialog-width);
         height: var(--wje-dialog-height);
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        box-shadow: var(--wje-shadow-large);
 
         border-radius: var(--wje-dialog-border-radius);
         border-width: var(--wje-dialog-border-width);
@@ -136,9 +136,9 @@ dialog:focus-visible {
 
 /*Top*/
 :host(.stick-up) {
-    --wje-dialog-width: 300px !important;
+    --wje-dialog-width: 300px;
     --wje-dialog-height: fit-content;
-    --wje-dialog-border-radius: 0 0 8px 8px;
+    --wje-dialog-border-radius: 0 0 var(--wje-border-radius-large) var(--wje-border-radius-large);
     --wje-dialog-border-width: 0 1px 1px 1px;
     --wje-dialog-margin-top: 0;
     --wje-dialog-translate-from: translateY(-110%);
@@ -147,9 +147,9 @@ dialog:focus-visible {
 
 /*Cenetered*/
 :host(.slide-up) {
-    --wje-dialog-width: 300px !important;
+    --wje-dialog-width: 300px;
     --wje-dialog-height: fit-content;
-    --wje-dialog-border-radius: 8px;
+    --wje-dialog-border-radius: var(--wje-border-radius-large);
     --wje-dialog-border-width: 1px;
     --wje-dialog-opacity-from: 0;
     --wje-dialog-translate-from: scale(0.9);
@@ -176,8 +176,8 @@ dialog:focus-visible {
 
 /*Slide Left*/
 :host(.slide-left) {
-    --wje-dialog-width: 300px !important;
-    --wje-dialog-height: 100% !important;
+    --wje-dialog-width: 300px;
+    --wje-dialog-height: 100%;
     --wje-dialog-border-radius: 0;
     --wje-dialog-border-width: 0 1px 0 0;
     --wje-dialog-margin-top: 0;
