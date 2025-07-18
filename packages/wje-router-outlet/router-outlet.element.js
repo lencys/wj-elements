@@ -1,5 +1,7 @@
 import { AnimatedOutlet, GenericCSS, setDefaultAnimation } from 'slick-router/components/animated-outlet.js';
 
+import styles from './styles/styles.css?inline';
+
 setDefaultAnimation(GenericCSS);
 
 /**
@@ -16,6 +18,10 @@ export default class RouterOutlet extends AnimatedOutlet {
      */
     constructor() {
         super();
+
+        const styleEl = document.createElement('style');
+        styleEl.textContent = styles;
+        this.parentNode.insertBefore(styleEl, this);
     }
 
     /**
