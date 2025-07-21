@@ -1,4 +1,4 @@
-import { default as WJElement } from '../wje-element/element.js';
+import { default as WJElement, event } from '../wje-element/element.js';
 import styles from './styles/styles.css?inline';
 
 /**
@@ -78,20 +78,21 @@ export default class ReorderHandle extends WJElement {
 
     /**
      * Handles the attribute changes.
-     * @param {DragEvent} event
+     * @param {DragEvent} e
      */
-    startDrag(event) {
+    startDrag(e) {
         if (this.hasAttribute('disabled') || this.hasAttribute('locked')) return;
-        this.startDragAction(event.clientX, event.clientY);
+        this.startDragAction(e.clientX, e.clientY);
+        event.dispatchCustomEvent(this, 'wje-reorder-handle:start', {draggable: this.getDraggable()});
     }
 
     /**
      * Handles the touch start event.
-     * @param {TouchEvent} event
+     * @param {TouchEvent} e
      */
-    startTouchDrag(event) {
+    startTouchDrag(e) {
         if (this.hasAttribute('disabled') || this.hasAttribute('locked')) return;
-        const touch = event.touches[0];
+        const touch = e.touches[0];
         this.startDragAction(touch.clientX, touch.clientY);
     }
 
@@ -101,13 +102,7 @@ export default class ReorderHandle extends WJElement {
      * @param {number} clientY The y-coordinate of the mouse pointer at the start of the drag action.
      */
     startDragAction(clientX, clientY) {
-        let draggable;
-        if (this.hasAttribute('parent')) {
-            const parentSelector = this.getAttribute('parent');
-            draggable = this.closest(parentSelector);
-        } else {
-            draggable = this.parentElement;
-        }
+        let draggable = this.getDraggable();
 
         const initialContainer = this.getDropzone(draggable);
 
@@ -137,10 +132,10 @@ export default class ReorderHandle extends WJElement {
 
         moveAt(clientX, clientY);
 
-        const onMouseMove = (event) => {
-            moveAt(event.pageX, event.pageY);
+        const onMouseMove = (e) => {
+            moveAt(e.pageX, e.pageY);
 
-            const dropzone = this.getClosestDropzone(event.clientX, event.clientY);
+            const dropzone = this.getClosestDropzone(e.clientX, e.clientY);
             if (!dropzone) return;
 
             const siblings = Array.from(dropzone.children).filter(
@@ -152,8 +147,8 @@ export default class ReorderHandle extends WJElement {
 
                 if (sibling.children[0]?.hasAttribute('locked')) continue;
 
-                if (event.clientY > siblingRect.top && event.clientY < siblingRect.bottom) {
-                    if (event.clientY < siblingRect.top + siblingRect.height / 2) {
+                if (e.clientY > siblingRect.top && e.clientY < siblingRect.bottom) {
+                    if (e.clientY < siblingRect.top + siblingRect.height / 2) {
                         dropzone.insertBefore(placeholder, sibling);
                     } else {
                         dropzone.insertBefore(placeholder, sibling.nextSibling);
@@ -161,7 +156,7 @@ export default class ReorderHandle extends WJElement {
                     break;
                 }
             }
-        };
+        }
 
         const onMouseUp = () => {
             document.removeEventListener('mousemove', onMouseMove);
@@ -180,6 +175,8 @@ export default class ReorderHandle extends WJElement {
             finalContainer.removeChild(placeholder);
 
             this.reIndexItems(finalContainer);
+
+            event.dispatchCustomEvent(this, 'wje-reorder-handle:change', {finalContainer: finalContainer, draggable: draggable});
         };
 
         document.addEventListener('mousemove', onMouseMove);
@@ -189,14 +186,29 @@ export default class ReorderHandle extends WJElement {
     }
 
     /**
-     * Retrieves the dropzone associated with the given element.
-     * @param {HTMLElement} element The element from which to search for the closest dropzone.
-     * @returns {HTMLElement|null} - The closest dropzone element matching the `dropzone` attribute, or the parent element if no dropzone is found.
+     * Retrieves the closest draggable element based on attribute conditions.
+     * If the element has a "parent" attribute, the method attempts to find the closest ancestor
+     * matching the CSS selector specified in the attribute. If no such ancestor exists,
+     * the method defaults to returning the immediate parent element.
+     * @returns {Element|null} The closest matching ancestor or the immediate parent element if no match is found, or null if the element has no parent.
+     */
+    getDraggable() {
+        if (this.hasAttribute('parent')) {
+            let parent = this.closest(this.getAttribute('parent'));
+            if(parent) return parent;
+        }
+        return this.parentElement;
+    }
+
+    /**
+     * Retrieves the nearest dropzone element based on the element's attributes or its parent element.
+     * @param {HTMLElement} element The HTML element for which the dropzone is being determined.
+     * @returns {HTMLElement|null} The nearest dropzone element if found; otherwise, the parent element or null.
      */
     getDropzone(element) {
         const dropzoneAttr = this.getAttribute('dropzone');
-        if (dropzoneAttr) {
-            let dropzone = element.closest(dropzoneAttr);
+        if (this.hasAttribute('dropzone')) {
+            let dropzone = element.closest(this.getAttribute('dropzone'));
             if (dropzone) return dropzone;
         }
         return element.parentElement;
@@ -243,8 +255,9 @@ export default class ReorderHandle extends WJElement {
     }
 
     /**
-     * Re-indexes the items in the container.
-     * @param container
+     * Re-indexes child elements of the given container by setting their dataset index.
+     * @param {HTMLElement} container The container element whose children are to be re-indexed.
+     * @returns {void}
      */
     reIndexItems(container) {
         const items = Array.from(container.children);

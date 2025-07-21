@@ -18,10 +18,6 @@ export default class RouterOutlet extends AnimatedOutlet {
      */
     constructor() {
         super();
-
-        const styleEl = document.createElement('style');
-        styleEl.textContent = styles;
-        this.parentNode.insertBefore(styleEl, this);
     }
 
     /**
@@ -29,4 +25,10 @@ export default class RouterOutlet extends AnimatedOutlet {
      * @type {string}
      */
     className = 'RouterOutlet';
+
+    connectedCallback() {
+        const styleEl = document.createElement('style');
+        styleEl.textContent = styles;
+        this.parentNode.insertBefore(styleEl, this);
+    }
 }
