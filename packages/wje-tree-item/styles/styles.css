@@ -58,9 +58,10 @@
             }
         }
         .children {
-            font-size: calc(1em + var(--wje-tree-item-indent, var(--wje-spacing-medium)));
+            font-size: calc(1rem + var(--wje-tree-item-indent, var(--wje-spacing-medium)));
             display: none;
             &.open {
+                font-size: var(--wje-font-size-medium);
                 display: block;
 
                 ::before {
