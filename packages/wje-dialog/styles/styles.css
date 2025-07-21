@@ -27,9 +27,14 @@
         padding-inline: var(--wje-dialog-padding);
         padding-top: var(--wje-dialog-padding);
         padding-bottom: var(--wje-dialog-padding);
-        display: flex;
+        /*display: flex;*/
+        /*align-items: center;*/
+        display: grid;
+        grid-template-columns: 1fr auto; /* headline vľavo, button vpravo */
+        grid-template-rows: auto auto;  /* horný riadok, potom header-actions */
         align-items: center;
-        span {
+        gap: 0.5rem;
+        > span[part="headline"] {
             font-family: var(--wje-font-family-secondary);
             font-size: var(--wje-dialog-headline-font-size);
             text-transform: var(--wje-dialog-headline-text-transform);
@@ -42,6 +47,21 @@
             overflow: hidden;
             text-overflow: ellipsis;
             filter: alpha(opacity=40);
+
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+         > wje-button[part="close"] {
+            grid-column: 2;
+            grid-row: 1;
+            justify-self: end;
+        }
+
+         > .header-actions {
+            grid-column: 1 / span 2;
+            grid-row: 2;
+            width: 100%;
         }
     }
 
@@ -133,6 +153,7 @@ dialog:focus-visible {
         padding: 0;
     }
 }
+
 
 /*Top*/
 :host(.stick-up) {
@@ -236,5 +257,15 @@ dialog[open] {
     to {
         opacity: 1;
         transform: var(--wje-dialog-translate-to);
+    }
+}
+
+:host(.scroll-body) {
+    dialog[open] {
+        display: flex;
+        flex-direction: column;
+    }
+    .dialog-content {
+        overflow: auto;
     }
 }

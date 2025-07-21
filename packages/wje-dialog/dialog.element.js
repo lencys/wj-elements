@@ -140,11 +140,13 @@ export default class Dialog extends WJElement {
         this.classList.add('fade', this.placement, params.size);
 
         let dialog = document.createElement('dialog');
+        dialog.setAttribute('part', 'dialog');
         dialog.classList.add('modal-dialog');
 
         fragment.appendChild(dialog);
 
         this.dialog = dialog;
+
         return fragment;
     }
 
@@ -164,7 +166,6 @@ export default class Dialog extends WJElement {
         close.addEventListener('click', (e) => {
             this.close(e);
         });
-        close.appendChild(icon);
 
         let header = document.createElement('div');
         header.setAttribute('part', 'header');
@@ -180,15 +181,11 @@ export default class Dialog extends WJElement {
         headerActions.setAttribute('part', 'header-actions');
         headerActions.appendChild(slotHeader);
 
-        header.appendChild(headerActions);
-        if (!this.closeHidden) header.appendChild(close);
-
         let contentSlot = document.createElement('slot');
 
         let body = document.createElement('div');
         body.setAttribute('part', 'body');
         body.classList.add('dialog-content');
-        body.appendChild(contentSlot);
 
         let footer = document.createElement('div');
         footer.setAttribute('part', 'footer');
@@ -198,6 +195,12 @@ export default class Dialog extends WJElement {
         let slotFooter = document.createElement('slot');
         slotFooter.setAttribute('name', 'footer');
 
+        close.appendChild(icon);
+
+        if (!this.closeHidden) header.appendChild(close);
+
+        header.appendChild(headerActions);
+        body.appendChild(contentSlot);
         footer.appendChild(slotFooter);
 
         dialog.appendChild(header);
@@ -275,15 +278,17 @@ export default class Dialog extends WJElement {
             this.dialog.innerHTML = '';
         }
 
-        Promise.resolve(this.beforeOpen(this, e)).then((res) => {
-            this.htmlDialogBody(this.dialog);
+        setTimeout(() => {
+            Promise.resolve(this.beforeOpen(this, e)).then((res) => {
+                this.htmlDialogBody(this.dialog);
 
-            this.dialog.showModal(); // Now open the dialog
+                this.dialog.showModal(); // Now open the dialog
 
-            if (this.dialog.open) {
-                Promise.resolve(this.afterOpen(this, e));
-            }
-        });
+                if (this.dialog.open) {
+                    Promise.resolve(this.afterOpen(this, e));
+                }
+            });
+        }, 0);
     }
 
     /**

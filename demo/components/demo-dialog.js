@@ -12,7 +12,7 @@ template.innerHTML = `
   </style>
   <h1>Dialog</h1>
   <div class="container">
-
+    
     <!-- BASIC -->
 
     <h2>Basic</h2>
@@ -32,6 +32,25 @@ template.innerHTML = `
             /*--wje-dialog-width: 876px;*/
           }
         </style>
+      </div>
+    </div>
+    
+        <!-- BODY SCROLL -->
+
+    <h2>Body scroll</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-button dialog="open-modal-body-scroll">Open</wje-button>
+        <wje-dialog trigger="open-modal-body-scroll" class="scroll-body" headline="Title">
+          <h2>Lorem ipsum dolor sit amet</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl. Pellentesque nec urna cursus, euismod nunc a, laoreet massa. Integer quis felis malesuada, faucibus mauris nec, aliquam velit. Donec iaculis nulla nunc, nec faucibus elit consectetur in. Vestibulum congue ultrices massa, eu feugiat nulla faucibus sed. Nulla eget consectetur magna. Fusce in erat eu leo mollis semper vel vitae velit. Integer maximus elementum sapien, at ultrices arcu fringilla et. Vestibulum volutpat quam id nisi faucibus lobortis.</p>
+
+          <p>Aenean imperdiet tortor ut ligula laoreet, laoreet vehicula diam molestie. Aliquam sed scelerisque ligula. Vestibulum condimentum, odio ac aliquet tempor, mauris lorem convallis tortor, sit amet rutrum orci dolor vitae orci. Etiam justo nisi, tincidunt nec lacus vel, lobortis tempor quam. Nullam accumsan, mauris et accumsan suscipit, purus enim fermentum mi, mattis dapibus augue nulla eu mi. Morbi dignissim mauris nec suscipit luctus. Donec aliquet euismod dui vitae porttitor. In dui risus, malesuada convallis accumsan quis, faucibus ac quam. Vestibulum quis interdum felis, quis bibendum odio. Vestibulum varius dui non sem ultrices, ut condimentum diam convallis. Phasellus eu nisi nec nisl euismod lobortis ut vitae nisl. Sed ut mi sed risus maximus volutpat. Maecenas ex quam, cursus vitae ex id, rutrum lobortis felis.</p>
+          <p>Aenean imperdiet tortor ut ligula laoreet, laoreet vehicula diam molestie. Aliquam sed scelerisque ligula. Vestibulum condimentum, odio ac aliquet tempor, mauris lorem convallis tortor, sit amet rutrum orci dolor vitae orci. Etiam justo nisi, tincidunt nec lacus vel, lobortis tempor quam. Nullam accumsan, mauris et accumsan suscipit, purus enim fermentum mi, mattis dapibus augue nulla eu mi. Morbi dignissim mauris nec suscipit luctus. Donec aliquet euismod dui vitae porttitor. In dui risus, malesuada convallis accumsan quis, faucibus ac quam. Vestibulum quis interdum felis, quis bibendum odio. Vestibulum varius dui non sem ultrices, ut condimentum diam convallis. Phasellus eu nisi nec nisl euismod lobortis ut vitae nisl. Sed ut mi sed risus maximus volutpat. Maecenas ex quam, cursus vitae ex id, rutrum lobortis felis.</p>
+          <p>Aenean imperdiet tortor ut ligula laoreet, laoreet vehicula diam molestie. Aliquam sed scelerisque ligula. Vestibulum condimentum, odio ac aliquet tempor, mauris lorem convallis tortor, sit amet rutrum orci dolor vitae orci. Etiam justo nisi, tincidunt nec lacus vel, lobortis tempor quam. Nullam accumsan, mauris et accumsan suscipit, purus enim fermentum mi, mattis dapibus augue nulla eu mi. Morbi dignissim mauris nec suscipit luctus. Donec aliquet euismod dui vitae porttitor. In dui risus, malesuada convallis accumsan quis, faucibus ac quam. Vestibulum quis interdum felis, quis bibendum odio. Vestibulum varius dui non sem ultrices, ut condimentum diam convallis. Phasellus eu nisi nec nisl euismod lobortis ut vitae nisl. Sed ut mi sed risus maximus volutpat. Maecenas ex quam, cursus vitae ex id, rutrum lobortis felis.</p>
+          
+          <div slot="footer"><wje-button color="primary">Send</wje-button></div>
+        </wje-dialog>
       </div>
     </div>
     
@@ -200,7 +219,7 @@ export default class DemoDialog extends WJElement {
     this.querySelector('#example-js-open').addEventListener('click', (e) => {
       let myDialog = document.createElement('wje-dialog');
       myDialog.setAttribute('headline', 'Title');
-      myDialog.innerText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl. Pellentesque nec urna cursus, euismod nunc a, laoreet massa. Integer quis felis malesuada, faucibus mauris nec, aliquam velit. Donec iaculis nulla nunc, nec faucibus elit consectetur in. Vestibulum congue ultrices massa, eu feugiat nulla faucibus sed. Nulla eget consectetur magna. Fusce in erat eu leo mollis semper vel vitae velit. Integer maximus elementum sapien, at ultrices arcu fringilla et. Vestibulum volutpat quam id nisi faucibus lobortis.';
+      myDialog.innerHTML = '<h4 slot="header">Headline</h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl. Pellentesque nec urna cursus, euismod nunc a, laoreet massa. Integer quis felis malesuada, faucibus mauris nec, aliquam velit. Donec iaculis nulla nunc, nec faucibus elit consectetur in. Vestibulum congue ultrices massa, eu feugiat nulla faucibus sed. Nulla eget consectetur magna. Fusce in erat eu leo mollis semper vel vitae velit. Integer maximus elementum sapien, at ultrices arcu fringilla et. Vestibulum volutpat quam id nisi faucibus lobortis.';
 
       this.appendChild(myDialog);
 
