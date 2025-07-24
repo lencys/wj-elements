@@ -263,6 +263,8 @@
     /* Card */
     --wje-card-border-radius: var(--wje-border-radius-large);
     --wje-card-border-color: transparent;
+    --wje-card-border-style: var(--wje-border-style);
+    --wje-card-border-width: var(--wje-border-width);
     --wje-card-shadow: var(--wje-shadow-x-large);
 
     /* Card - Header */
