@@ -221,6 +221,15 @@ export default class Pagination extends WJElement {
         return options.split(',').map((o) => +o).filter((o) => !isNaN(o));
     }
 
+    set hideEmpty(value) {
+        if (!value) return;
+        this.setAttribute('hide-empty', value);
+    }
+
+    get hideEmpty() {
+        return this.hasAttribute('hide-empty');
+    }
+
     /**
      * Dependencies of the Button element.
      * @type {object}
@@ -257,6 +266,13 @@ export default class Pagination extends WJElement {
     }
 
     async beforeDraw() {
+        if (!this.totalItems || this.totalItems === 0) {
+            this.classList.add('empty');
+            if (this.hideEmpty)
+                this.setAttribute("hidden", "");
+
+            return;
+        }
         this.paginateObj = await paginate(this.totalItems, this.page, this.pageSize, this.maxPages);
     }
 
@@ -291,15 +307,14 @@ export default class Pagination extends WJElement {
         select.setAttribute('variant', 'standard');
         select.setAttribute('value', this.pageSize);
         select.addEventListener('wje-select:change', (e) => {
-            console.log("Page size changed to: ", e.detail.context.value[0]);
             this.pageSize = e.detail.context.value[0];
+            event.dispatchCustomEvent(this, 'wje-pagination:page-change', { page: this.page, pageSize: this.pageSize });
         });
 
         let options = this.pageSizeOptions.map((o) => {
             let option = document.createElement('wje-option');
             option.value = o;
             option.textContent = o;
-            // if (o === this.pageSize) option.selected = true;
             return option;
         });
 
@@ -425,7 +440,7 @@ export default class Pagination extends WJElement {
     pageClickAction = (e, page) => {
         if (+page === this.page || this.page > this.paginateObj.totalPages) return;
         this.page = page;
-        event.dispatchCustomEvent(this, 'wje-pagination:page-change', { page: page });
+        event.dispatchCustomEvent(this, 'wje-pagination:page-change', { page: this.page, pageSize: this.pageSize });
     };
 }
 
