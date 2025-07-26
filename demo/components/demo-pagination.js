@@ -11,6 +11,15 @@ template.innerHTML = `<style>
   <h1>Pagination</h1>
   <div class="container">
     
+    <!-- SHOW INFO -->
+
+    <h2>Show Info</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-pagination total-items="30" page-size="6" page-size-options="2,4,6,8,10" show-info show-page-size-options></wje-pagination>
+      </div>
+    </div>
+    
     <!-- BASIC -->
 
     <h2>Basic</h2>

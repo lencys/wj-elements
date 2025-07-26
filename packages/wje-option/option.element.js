@@ -58,7 +58,7 @@ export default class Option extends WJElement {
 	 * @returns {boolean} True if the closest 'wje-select' element has a 'checkbox' attribute; otherwise, false.
 	 */
 	get checkbox() {
-		return this.closest('wje-select').hasAttribute('checkbox');
+		return this.closest('wje-select')?.hasAttribute('checkbox');
 	}
 
 	/**

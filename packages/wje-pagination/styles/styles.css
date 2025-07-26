@@ -2,6 +2,23 @@
     .native-pagination {
         display: flex;
         align-items: center;
+        gap: 1rem;
+
+        wje-select {
+            width: 68px;
+            margin-block: 0;
+            wje-option {
+                &::part(native) {
+                    padding-inline: var(--wje-spacing-x-small);
+                }
+                &[selected]{
+                    background: var(--wje-option-highlighted);
+                }
+            }
+            wje-option::part(check) {
+                display: none;
+            }
+        }
 
         .info {
             font-size: var(--wje-font-size-small);

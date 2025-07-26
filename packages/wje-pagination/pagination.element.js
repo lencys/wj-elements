@@ -56,7 +56,7 @@ export default class Pagination extends WJElement {
      * @returns {number} The maximum number of pages as a numeric value.
      */
     get maxPages() {
-        return +this.getAttribute('max-pages') || 3;
+        return +this.getAttribute('max-pages') || 10;
     }
 
     /**
@@ -195,6 +195,32 @@ export default class Pagination extends WJElement {
         return this.hasAttribute('show-info');
     }
 
+    set showPageSizeOptions(value) {
+        if (!value) return;
+        this.setAttribute('show-page-size-options', value);
+    }
+
+    get showPageSizeOptions() {
+        return this.hasAttribute('show-page-size-options');
+    }
+
+    set pageSizeOptions(value) {
+        if (!value) return;
+        this.setAttribute('page-size-options', value);
+    }
+
+    /**
+     * Retrieves the list of available page size options.
+     * This method is used to fetch the values representing the different page size options
+     * that can be provided or configured in a paginated component or system.
+     * @returns {Array<number>} An array of numbers representing the selectable page size options.
+     */
+    get pageSizeOptions() {
+        let options = this.getAttribute('page-size-options');
+        if (!options) return [6, 10, 50, 100, 500];
+        return options.split(',').map((o) => +o).filter((o) => !isNaN(o));
+    }
+
     /**
      * Dependencies of the Button element.
      * @type {object}
@@ -220,7 +246,7 @@ export default class Pagination extends WJElement {
      * @returns {Array} The attributes to observe for changes.
      */
     static get observedAttributes() {
-        return ['page', 'total-items'];
+        return ['page', 'total-items', 'page-size'];
     }
 
     /**
@@ -259,6 +285,23 @@ export default class Pagination extends WJElement {
      */
     htmlPagination() {
         let fragment = document.createDocumentFragment();
+
+        let select = document.createElement('wje-select');
+        select.setAttribute('size', 'small');
+        select.setAttribute('variant', 'standard');
+        select.setAttribute('value', this.pageSize);
+        select.addEventListener('wje-select:change', (e) => {
+            console.log("Page size changed to: ", e.detail.context.value[0]);
+            this.pageSize = e.detail.context.value[0];
+        });
+
+        let options = this.pageSizeOptions.map((o) => {
+            let option = document.createElement('wje-option');
+            option.value = o;
+            option.textContent = o;
+            // if (o === this.pageSize) option.selected = true;
+            return option;
+        });
 
         let info = document.createElement('div');
         info.classList.add('info');
@@ -300,12 +343,15 @@ export default class Pagination extends WJElement {
             this.pageClickAction(e, this.paginateObj.totalPages - 1)
         );
 
+        select.append(...options);
+
         if (this.showFirstButton) pagination.appendChild(firstButton);
         pagination.appendChild(prevButton);
         pagination.appendChild(this.htmlStackButtons(this.paginateObj));
         pagination.appendChild(nextButton);
         if (this.showLastButton) pagination.appendChild(lastButton);
 
+        if (this.showPageSizeOptions) fragment.append(select);
         if (this.showInfo) fragment.appendChild(info);
         fragment.appendChild(pagination);
 
