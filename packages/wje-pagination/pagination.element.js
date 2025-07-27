@@ -266,6 +266,9 @@ export default class Pagination extends WJElement {
     }
 
     async beforeDraw() {
+        this.classList.remove('empty');
+        this.removeAttribute("hidden");
+
         if (!this.totalItems || this.totalItems === 0) {
             this.classList.add('empty');
             if (this.hideEmpty)
@@ -273,6 +276,7 @@ export default class Pagination extends WJElement {
 
             return;
         }
+
         this.paginateObj = await paginate(this.totalItems, this.page, this.pageSize, this.maxPages);
     }
 
@@ -307,8 +311,12 @@ export default class Pagination extends WJElement {
         select.setAttribute('variant', 'standard');
         select.setAttribute('value', this.pageSize);
         select.addEventListener('wje-select:change', (e) => {
-            this.pageSize = e.detail.context.value[0];
-            event.dispatchCustomEvent(this, 'wje-pagination:page-change', { page: this.page, pageSize: this.pageSize });
+
+            if(+e.detail.context.value[0] !== this.pageSize) {
+                this.pageSize = +e.detail.context.value[0];
+                this.page = 0; // Reset to first page when page size changes
+                event.dispatchCustomEvent(this, 'wje-pagination:page-change', { page: this.page, pageSize: this.pageSize });
+            }
         });
 
         let options = this.pageSizeOptions.map((o) => {
