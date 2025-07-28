@@ -12,6 +12,7 @@
 
     display: block;
     .native-menu-item {
+        font-size: var(--wje-menu-item-font-size);
         background: var(--wje-menu-item-background);
         position: relative;
         display: flex;

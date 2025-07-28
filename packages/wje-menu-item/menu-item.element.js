@@ -155,7 +155,6 @@ export default class MenuItem extends WJElement {
     setupAttributes() {
         super.setupAttributes();
         this.isShadowRoot = 'open';
-        this.setAttribute('active-class', 'open');
     }
 
     /**
@@ -297,7 +296,9 @@ export default class MenuItem extends WJElement {
             event.addListener(this, 'click', null, this.#populateCustomEvent);
         }
 
-        this.addEventListener('click', this.handleActiveClick);
+        if(this.hasAttribute('active-class')) {
+            this.addEventListener('click', this.handleActiveClick);
+        }
     }
 
     mouseenterHandler = (e) => {
@@ -524,8 +525,19 @@ export default class MenuItem extends WJElement {
         const target = e.target.closest('wje-menu-item');
         if (!target) return;
 
+        let rootMenu = target.closest('wje-menu');
+        let currentMenu = rootMenu;
+
+        // Nájdite najvyšší rodičovský wje-menu, ktorý obsahuje tento menu-item
+        while (currentMenu?.parentElement) {
+            const parent = currentMenu.parentElement.closest?.('wje-menu');
+            if (!parent) break;
+            rootMenu = parent;
+            currentMenu = parent;
+        }
+
         // Odstráň všetky existujúce triedy z predchádzajúcich kliknutí
-        document.querySelectorAll('wje-menu-item').forEach(item => {
+        rootMenu.querySelectorAll('wje-menu-item').forEach(item => {
             const activeClass = item.getAttribute('active-class');
             if (activeClass) item.classList.remove(activeClass);
         });

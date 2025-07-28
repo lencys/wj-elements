@@ -30,7 +30,7 @@
                 width: 1em;
             }
             .toggle {
-                font-size: var(--wje-font-size-medium);
+                font-size: var(--wje-tree-item-font-size);
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -40,11 +40,11 @@
                 flex-shrink: 0;
             }
             wje-checkbox {
-                font-size: var(--wje-font-size-medium);
+                font-size: var(--wje-tree-item-font-size);
                 margin: 0;
             }
             .content {
-                font-size: var(--wje-font-size-medium);
+                font-size: var(--wje-tree-item-font-size);
             }
             slot {
                 display: flex;
@@ -61,7 +61,7 @@
             font-size: calc(1rem + var(--wje-tree-item-indent, var(--wje-spacing-medium)));
             display: none;
             &.open {
-                font-size: var(--wje-font-size-medium);
+                font-size: var(--wje-tree-item-font-size);
                 display: block;
 
                 ::before {

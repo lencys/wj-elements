@@ -64,6 +64,64 @@ template.innerHTML = `
         </wje-menu>    
       </div>
     </div>
+    
+    <!-- ACTIVE CLASS -->
+
+    <h2>Active Class</h2>
+    <div class="playground">
+      <div class="content" style="display: block;">
+        <wje-menu active style="max-width: 200px;">
+          <wje-menu-item active-class="open">
+            Menu item
+            <wje-icon slot="start" name="home"></wje-icon>
+          </wje-menu-item>
+          <wje-menu-item active-class="open">
+            Menu item
+            <wje-icon slot="start" name="check"></wje-icon>
+            <wje-icon slot="end" name="heart"></wje-icon>
+          </wje-menu-item>
+          <wje-divider style="--wje-divider-spacing: .5rem;"></wje-divider>
+          <wje-menu-item active-class="open">
+            Menu item
+            <wje-icon slot="start" name="point"></wje-icon>
+          </wje-menu-item>
+          <wje-menu-item id="custom-event-menu-item" custom-event="single-spa-route" custom-event-userId="1" custom-event-departmentId="2"  active-class="open">Menu item CE</wje-menu-item>
+          <wje-menu-item active-class="open">Menu item</wje-menu-item>
+          <wje-divider style="--wje-divider-spacing: .5rem;"></wje-divider>
+          <wje-menu-label>Next menu</wje-menu-label>
+          <wje-menu-item active-class="open">
+            Menu item
+            <wje-menu slot="submenu">
+              <wje-menu-item active-class="open">Menu item</wje-menu-item>
+              <wje-menu-item active-class="open">
+                Menu item
+                <wje-menu slot="submenu">
+                  <wje-menu-item active-class="open">Menu item</wje-menu-item>
+                  <wje-menu-item active-class="open">Menu item</wje-menu-item>
+                  <wje-menu-item active-class="open">Menu item</wje-menu-item>
+                </wje-menu>
+              </wje-menu-item>
+              <wje-menu-item active-class="open">Menu item</wje-menu-item>
+            </wje-menu>
+          </wje-menu-item>
+          <wje-menu-item active-class="open">
+            Menu item
+            <wje-menu slot="submenu">
+              <wje-menu-item active-class="open">Menu item</wje-menu-item>
+              <wje-menu-item active-class="open">
+                Menu item
+                <wje-menu slot="submenu">
+                  <wje-menu-item active-class="open">Menu item</wje-menu-item>
+                  <wje-menu-item active-class="open">Menu item</wje-menu-item>
+                  <wje-menu-item active-class="open">Menu item</wje-menu-item>
+                </wje-menu>
+              </wje-menu-item>
+              <wje-menu-item active-class="open">Menu item</wje-menu-item>
+            </wje-menu>
+          </wje-menu-item>
+        </wje-menu>    
+      </div>
+    </div>
 
     <!-- INSET -->
 

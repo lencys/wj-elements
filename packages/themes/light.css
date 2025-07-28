@@ -457,6 +457,7 @@
     --wje-menu-shadow: var(--wje-shadow-medium);
 
     /* Menu - Item */
+    --wje-menu-item-font-size: var(--wje-font-size);
     --wje-menu-item-color: var(--wje-color);
     --wje-menu-item-background: transparent;
     --wje-menu-item-color-hover: var(--wje-color-contrast-8);
@@ -589,6 +590,7 @@
     --wje-tooltip-border-radius: var(--wje-border-radius-medium);
 
     /* Tree - Item */
+    --wje-tree-item-font-size: var(--wje-font-size-medium);
     --wje-tree-item-padding-inline: var(--wje-spacing-3x-small);
     --wje-tree-item-padding-block: var(--wje-spacing-3x-small);
     --wje-tree-item-indent: var(--wje-spacing-large);
