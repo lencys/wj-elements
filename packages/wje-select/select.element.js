@@ -215,6 +215,38 @@ export class Select extends FormAssociatedElement {
 		return this.getAttribute('trigger') || 'click';
 	}
 
+	set disabled(value) {
+		if (value) {
+			this.setAttribute('disabled', '');
+			this.input.setAttribute('disabled', '');
+			this.displayInput.setAttribute('disabled', '');
+		} else {
+			this.removeAttribute('disabled');
+			this.input.removeAttribute('disabled');
+			this.displayInput.removeAttribute('disabled');
+		}
+	}
+
+	get disabled() {
+		return this.hasAttribute('disabled');
+	}
+
+	set readonly(value) {
+		if (value) {
+			this.setAttribute('disabled', '');
+			this.input.setAttribute('readonly', '');
+			this.displayInput.setAttribute('disabled', '');
+		} else {
+			this.removeAttribute('disabled');
+			this.input.removeAttribute('readonly');
+			this.displayInput.removeAttribute('disabled');
+		}
+	}
+
+	get readonly() {
+		return this.hasAttribute('readonly');
+	}
+
 	/**
 	 * Sets the offset attribute for the element.
 	 * @param {string} value The value to assign to the offset attribute.
@@ -334,7 +366,7 @@ export class Select extends FormAssociatedElement {
 	 * @returns {Array<string>}
 	 */
 	static get observedAttributes() {
-		return ['active', 'value', 'disabled', 'multiple', 'label', 'placeholder', 'max-height', 'max-options', 'variant', 'placement'];
+		return ['active', 'value', 'disabled', 'readonly', 'multiple', 'label', 'placeholder', 'max-height', 'max-options', 'variant', 'placement'];
 	}
 
 	/**
@@ -399,11 +431,6 @@ export class Select extends FormAssociatedElement {
 			display.setAttribute('required', '');
 		}
 
-		if (this.disabled) {
-			input.setAttribute('disabled', '');
-			display.setAttribute('disabled', '');
-		}
-
 		let slotEnd = document.createElement('div');
 		slotEnd.classList.add('slot-end');
 
@@ -452,7 +479,11 @@ export class Select extends FormAssociatedElement {
 			popup.setAttribute('loader', '');
 		}
 
-		if (this.disabled) popup.setAttribute('disabled', '');
+		if (this.disabled || this.readonly) {
+			popup.setAttribute('disabled', '');
+		} else {
+			popup.removeAttribute('loader');
+		}
 
 		if (this.variant === 'standard') {
 			if (this.hasAttribute('label')) native.appendChild(label);

@@ -12,44 +12,46 @@ template.innerHTML = `
         <h2>Basic</h2>
         <div class="playground">
             <div class="content">
-                <wje-menu active>                   
+            
+                <wje-menu id="wje-menu-1" active>                   
                     <wje-menu-item>
-                        <wje-reorder-handle dropzone="wje-menu" slot="start" locked>
+                        <wje-reorder-handle dropzone="#wje-menu-1" slot="start" locked>
                             <wje-icon name="arrows-move"></wje-icon>
                         </wje-reorder-handle>
                         Item 1 (locked)
                     </wje-menu-item>
                     <wje-menu-item>
-                        <wje-reorder-handle dropzone="wje-menu" slot="start">
+                        <wje-reorder-handle slot="start">
                             <wje-icon name="arrows-move"></wje-icon>
                         </wje-reorder-handle>
                         Item 2
                     </wje-menu-item>
                     <wje-menu-item>
-                        <wje-reorder-handle dropzone="wje-menu" slot="start" disabled>
+                        <wje-reorder-handle dropzone="#wje-menu-1" slot="start" disabled>
                             <wje-icon name="arrows-move"></wje-icon>
                         </wje-reorder-handle>
                         Item 3 (disabled)
                     </wje-menu-item>
                     <wje-menu-item>
-                        <wje-reorder-handle dropzone="wje-menu" slot="start" locked>
+                        <wje-reorder-handle dropzone="#wje-menu-1" slot="start" locked>
                             <wje-icon name="arrows-move"></wje-icon>
                         </wje-reorder-handle>
                         Item 4
                     </wje-menu-item>
                     <wje-menu-item>
-                        <wje-reorder-handle dropzone="wje-menu" slot="start">
+                        <wje-reorder-handle dropzone="#wje-menu-1" slot="start">
                             <wje-icon name="arrows-move"></wje-icon>
                         </wje-reorder-handle>
                         Item 5
                     </wje-menu-item>
                     <wje-menu-item>
-                        <wje-reorder-handle dropzone="wje-menu" slot="start">
+                        <wje-reorder-handle dropzone="#wje-menu-1" slot="start">
                             <wje-icon name="arrows-move"></wje-icon>
                         </wje-reorder-handle>
                         Item 6
                     </wje-menu-item>
                 </wje-menu>
+                
             </div>
         </div>
 

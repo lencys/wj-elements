@@ -240,7 +240,14 @@
     --wje-avatar-border-style: solid;
 
     /* Badge */
+    --wje-badge-height: 18px;
+    --wje-badge-line-height: 1;
+    --wje-badge-padding-block: 0;
+    --wje-badge-padding-inline: var(--wje-spacing-2x-small);
     --wje-badge-border-radius: var(--wje-border-radius-pill);
+    --wje-badge-border-width: 0px;
+    --wje-badge-border-style: solid;
+    --wje-badge-border-color: transparent;
 
     /* Breadcrumb */
     --wje-breadcrumb-a: var(--wje-color-contrast-8);

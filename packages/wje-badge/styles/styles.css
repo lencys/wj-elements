@@ -9,15 +9,15 @@
     text-shadow: none;
     font-family: var(--wje-font-family);
     font-size: var(--wje-font-size-x-small);
-    line-height: 1;
+    line-height: var(--wje-badge-line-height);
     padding: 0;
-    padding-block: 0;
-    padding-inline: var(--wje-spacing-2x-small);
+    padding-block: var(--wje-badge-padding-block);
+    padding-inline: var(--wje-badge-padding-inline);
     border-radius: var(--wje-badge-border-radius);
-    border-width: 1px;
-    border-style: solid;
-    border-color: transparent;
-    height: 18px;
+    border-width: var(--wje-badge-border-width);
+    border-style: var(--wje-badge-border-style);
+    border-color: var(--wje-badge-border-color);
+    height: var(--wje-badge-height);
 }
 
 .wje-color-primary {

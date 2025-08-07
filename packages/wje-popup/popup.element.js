@@ -278,9 +278,9 @@ export default class Popup extends WJElement {
      */
     show(dispatchEvent = true) {
         if (this.loader) {
-          this.native?.classList?.add('loading');
-          this.loaderEl?.classList?.remove('fade-out');
-          this.native.prepend(this.loaderEl);
+            this.native?.classList?.add('loading');
+            this.loaderEl?.classList?.remove('fade-out');
+            this.native.prepend(this.loaderEl);
         }
 
         if (dispatchEvent) {

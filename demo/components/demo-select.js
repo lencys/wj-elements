@@ -12,19 +12,22 @@ template.innerHTML = `
     <h2>Default</h2>
     <div class="playground">
       <div class="content">
-      	<wje-select lazy label="Label optionS" placeholder="Select options" variant="standard" max-height="200px" value="eae3262d-3854-4e5b-8e21-7a0a863d0593 7e771d42-c4f9-4627-9876-f7ded0b265f4" find clearable checkbox multiple>
-          <wje-options lazy url="/api/options" item-value="value" item-text="text"  lazy-load-size="6" option-array-path="data"></wje-options>
+      	<wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable readonly>
+          <wje-options url="/api/options" item-value="value" item-text="text" option-array-path="data"></wje-options>
         </wje-select>
-        
-        <wje-select label="Label" placeholder="Select option" value="option-1">
-          <wje-option value="option-1">Option 1</wje-option>
-          <wje-option value="option-2">
-            Option 2
-            <wje-icon name="heart" slot="end"></wje-icon>
-          </wje-option>
-          <wje-option value="option-3">Option 3</wje-option>
-          <wje-option value="option-4">Option 4</wje-option>
-        </wje-select>
+<!--      	<wje-select lazy label="Label optionS" placeholder="Select options" variant="standard" max-height="200px" value="eae3262d-3854-4e5b-8e21-7a0a863d0593 7e771d42-c4f9-4627-9876-f7ded0b265f4" find clearable checkbox multiple>-->
+<!--          <wje-options lazy url="/api/options" item-value="value" item-text="text"  lazy-load-size="6" option-array-path="data"></wje-options>-->
+<!--        </wje-select>-->
+<!--        -->
+<!--        <wje-select label="Label" placeholder="Select option" value="option-1">-->
+<!--          <wje-option value="option-1">Option 1</wje-option>-->
+<!--          <wje-option value="option-2">-->
+<!--            Option 2-->
+<!--            <wje-icon name="heart" slot="end"></wje-icon>-->
+<!--          </wje-option>-->
+<!--          <wje-option value="option-3">Option 3</wje-option>-->
+<!--          <wje-option value="option-4">Option 4</wje-option>-->
+<!--        </wje-select>-->
       </div>
     </div>
     
@@ -87,7 +90,7 @@ template.innerHTML = `
     <h2>Lazy options</h2>
     <div class="playground">
       <div class="content">
-        <wje-select name="lazy-update" placeholder="Select options" variant="standard" max-options="2" variant="standard" max-height="200px" multiple clearable lazy>
+        <wje-select name="lazy-update" placeholder="Select options" variant="standard" max-options="2" variant="standard" max-height="200px" multiple clearable lazy readonly>
           <wje-options url="/api/options" item-value="value" item-text="text" lazy-load-size="6" option-array-path="data" lazy></wje-options>
         </wje-select>
       </div>
