@@ -215,6 +215,11 @@ export class Select extends FormAssociatedElement {
 		return this.getAttribute('trigger') || 'click';
 	}
 
+	/**
+	 * Sets or removes the disabled state for the associated elements.
+	 * @param {boolean} value A boolean indicating whether the elements should be disabled.
+	 * If true, the disabled attribute is added to the elements. If false, the disabled attribute is removed.
+	 */
 	set disabled(value) {
 		if (value) {
 			this.setAttribute('disabled', '');
@@ -227,10 +232,22 @@ export class Select extends FormAssociatedElement {
 		}
 	}
 
+	/**
+	 * Retrieves the current state of the 'disabled' attribute.
+	 * @returns {boolean} Returns true if the 'disabled' attribute is present, otherwise false.
+	 */
 	get disabled() {
 		return this.hasAttribute('disabled');
 	}
 
+	/**
+	 * Sets the readonly state of the element. When set to true,
+	 * the element and its associated inputs are marked as readonly or disabled.
+	 * When set to false, the readonly and disabled attributes are removed,
+	 * allowing user interaction.
+	 * @param {boolean} value A boolean value indicating whether to set the
+	 * element and its associated inputs to readonly (true) or not (false).
+	 */
 	set readonly(value) {
 		if (value) {
 			this.setAttribute('disabled', '');
@@ -243,8 +260,35 @@ export class Select extends FormAssociatedElement {
 		}
 	}
 
+	/**
+	 * Checks if the 'readonly' attribute is present on the element.
+	 * @returns {boolean} Returns true if the 'readonly' attribute is set, otherwise false.
+	 */
 	get readonly() {
 		return this.hasAttribute('readonly');
+	}
+
+	/**
+	 * Sets the maximum height value for the element.
+	 * If a value is provided, it sets the 'max-height' attribute on the element.
+	 * If no value is provided, it removes the 'max-height' attribute from the element.
+	 * @param {string|null} value The maximum height to be set. If null or undefined, the attribute is removed.
+	 */
+	set maxHeight(value) {
+		if (value) {
+			this.setAttribute('max-height', value);
+		} else {
+			this.removeAttribute('max-height');
+		}
+	}
+
+	/**
+	 * Retrieves the maximum height value, which is determined by the 'max-height' attribute.
+	 * If the attribute is not set, a default value of '200px' is returned.
+	 * @returns {string} The maximum height value as a string.
+	 */
+	get maxHeight() {
+		return this.getAttribute('max-height') || '200px';
 	}
 
 	/**
