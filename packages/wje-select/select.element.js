@@ -490,7 +490,7 @@ export class Select extends FormAssociatedElement {
 		let optionsWrapper = document.createElement('div');
 		optionsWrapper.setAttribute('part', 'options-wrapper');
 		optionsWrapper.classList.add('options-wrapper');
-		optionsWrapper.style.setProperty('height', this.maxHeight || 'auto');
+		optionsWrapper.style.setProperty('max-height', this.maxHeight || 'auto');
 
 		let list = document.createElement('div');
 		list.classList.add('list');

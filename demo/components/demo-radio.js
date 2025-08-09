@@ -12,11 +12,12 @@ template.innerHTML = `
     <h2>Basic</h2>
     <div class="playground">
       <div class="content" style="display: block;">
-        <wje-radio-group value="dog" id="radio-group-animal">
-          <wje-radio value="cat">Cat</wje-radio>
-          <wje-radio value="elephant" disabled="">Elephant</wje-radio>
-          <wje-radio indeterminate value="rabbit" >Rabbit</wje-radio>
-          <wje-radio value="dog">Dog</wje-radio>
+        <wje-label>Choose an color:</wje-label>
+        <wje-radio-group value="blue" name="color" id="radio-group-animal">
+          <wje-radio value="red">Red</wje-radio>
+          <wje-radio value="yellow" disabled="">Yellow</wje-radio>
+          <wje-radio indeterminate value="green" >Green</wje-radio>
+          <wje-radio value="blue">Blue</wje-radio>
         </wje-radio-group>
       </div>
     </div>
@@ -26,7 +27,7 @@ template.innerHTML = `
     <h2>Placement</h2>
     <div class="playground">
       <div class="content" style="display: block;">
-        <wje-radio-group value="dog">
+        <wje-radio-group value="dog" name="animal">
           <wje-radio value="cat" placement="end">Cat</wje-radio>
           <wje-radio value="elephant" disabled="" placement="end">Elephant</wje-radio>
           <wje-radio indeterminate value="rabbit"  placement="end">Rabbit</wje-radio>
@@ -40,15 +41,15 @@ template.innerHTML = `
     <h2>Inline</h2>
     <div class="playground">
       <div class="content" style="display: block;">
-        <wje-radio-group inline>
-          <wje-radio value="cat">Cat</wje-radio>
-          <wje-radio value="dog">Dog</wje-radio>
-          <wje-radio value="horse">Horse</wje-radio>
-          <wje-radio value="rabbit" >Rabbit</wje-radio>
-          <wje-radio value="hen">Hen</wje-radio>
-          <wje-radio value="goose">Goose</wje-radio>
-          <wje-radio value="duck">Duck</wje-radio>
-          <wje-radio value="pig" >Pig</wje-radio>
+        <wje-radio-group name="number" inline>
+          <wje-radio value="one">One</wje-radio>
+          <wje-radio value="two">Two</wje-radio>
+          <wje-radio value="three">Three</wje-radio>
+          <wje-radio value="four">Four</wje-radio>
+          <wje-radio value="five">Five</wje-radio>
+          <wje-radio value="six">Six</wje-radio>
+          <wje-radio value="seven">Seven</wje-radio>
+          <wje-radio value="eight">Eight</wje-radio>
         </wje-radio-group>
       </div>
     </div>

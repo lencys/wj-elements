@@ -13,6 +13,7 @@
     margin-inline: var(--wje-radio-margin-inline);
     line-height: 100%;
     padding-left: 0;
+    position: relative;
 
     label {
         display: flex;
