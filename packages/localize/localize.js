@@ -4,9 +4,9 @@ export class LocalizerDefault {
     constructor(element) {
         this.element = element;
 
-        this.lang = this.element.lang || document.documentElement.lang || 'en-gb';
+        this.lang = this.element.lang || document.documentElement.lang || 'en-GB';
         this.dir = this.element.dir || document.documentElement.dir || 'ltr';
-        this.currentLang = 'en-gb';
+        this.currentLang = 'en-GB';
 
         this.setLanguage();
     }
@@ -23,6 +23,8 @@ export class LocalizerDefault {
             console.error(`Language "${this.lang}" not loaded.`);
         }
     }
+
+    convertLangCode = (lang) => lang.replace("-", "_").replace(/_([a-z]{2})$/, (_, code) => `_${code.toUpperCase()}`);
 
     /**
      * Translates a given translation key based on the currently selected language.

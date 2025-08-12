@@ -288,7 +288,7 @@ export class Select extends FormAssociatedElement {
 	 * @returns {string} The maximum height value as a string.
 	 */
 	get maxHeight() {
-		return this.getAttribute('max-height') || '200px';
+		return this.getAttribute('max-height') || 'auto';
 	}
 
 	/**

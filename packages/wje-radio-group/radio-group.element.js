@@ -45,6 +45,25 @@ export default class RadioGroup extends FormAssociatedElement {
     get value() {
         return this.getAttribute('value');
     }
+    /**
+     * Setter for the name attribute.
+     * @param {string} value The name to set.
+     */
+    set required(value) {
+        if (value === null || value === undefined) {
+            this.removeAttribute('required');
+        } else {
+            this.setAttribute('required', '');
+        }
+    }
+
+    /**
+     * Getter for the name attribute.
+     * @returns {boolean}
+     */
+    get required() {
+        return this.hasAttribute('required');
+    }
 
     className = 'RadioGroup';
 
@@ -85,7 +104,7 @@ export default class RadioGroup extends FormAssociatedElement {
         input.type =  'text';
         input.name = this.name;
         input.disabled = this.disabled;
-        input.required = true;
+        input.required = this.required;
         input.value = this.value || '';
         input.classList.add('input-hidden');
 
