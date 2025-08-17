@@ -16,10 +16,10 @@ import styles from './styles/styles.css?inline';
  * @cssproperty [--wje-checkbox-border-style=solid] - Border style of the component;
  * @cssproperty [--wje-checkbox-border-color=--wje-color-contrast-1] - Border color of the component;
  * @cssproperty [--wje-checkbox-margin-inline=0] - Margin inline of the component;
- * //@fires wje-checkbox:change - Dispatched when the checkbox state changes;
+ * @fires wje-checkbox:change - Dispatched when the checkbox state changes;
  */
 export default class Checkbox extends FormAssociatedElement {
-	#internalValue = false;
+	#internalValue;
 	/**
 	 * Checkbox constructor method.
 	 */
@@ -35,13 +35,9 @@ export default class Checkbox extends FormAssociatedElement {
 	 * @param {string} value The value to set.
 	 */
 	set value(value) {
-		this.internals.setFormValue(value);
 		this.#internalValue = value;
-
 		if (this.input) {
 			this.input.value = value;
-			this.input.checked = value;
-			this.pristine = false;
 		}
 	}
 
@@ -50,7 +46,7 @@ export default class Checkbox extends FormAssociatedElement {
 	 * @returns {string} The value of the attribute.
 	 */
 	get value() {
-		return this.#internalValue;
+		return this.#internalValue ?? this.getAttribute('value') ?? 'on';;
 	}
 
 	/**
@@ -124,8 +120,13 @@ export default class Checkbox extends FormAssociatedElement {
 	set checked(value) {
 		if (value) {
 			this.setAttribute('checked', '');
+			this.internals.setFormValue(this.value); // len ak je checked
 		} else {
 			this.removeAttribute('checked');
+			this.internals.setFormValue(null); // ak nie je checked, nič sa neposiela
+		}
+		if (this.input) {
+			this.input.checked = value;
 		}
 	}
 
@@ -152,6 +153,32 @@ export default class Checkbox extends FormAssociatedElement {
 
 	static get observedAttributes() {
 		return ['checked', 'disabled', 'value', 'indeterminate'];
+	}
+
+	attributeChangedCallback(name, oldValue, newValue) {
+		if (!this.input) return;
+		if (name === 'checked') {
+			const isChecked = this.hasAttribute('checked');
+			this.input.checked = isChecked;
+			// Reflect into form value
+			if (isChecked) {
+				this.internals.setFormValue(this.value);
+			} else {
+				this.internals.setFormValue(null);
+			}
+		} else if (name === 'disabled') {
+			this.input.disabled = this.hasAttribute('disabled');
+		} else if (name === 'indeterminate') {
+			this.input.indeterminate = this.hasAttribute('indeterminate');
+		} else if (name === 'value') {
+			// keep payload in sync; do not toggle checked here
+			this.#internalValue = newValue ?? undefined;
+			this.input.value = this.value;
+			// If currently checked, update the submitted payload
+			if (this.input.checked) {
+				this.internals.setFormValue(this.value);
+			}
+		}
 	}
 
 	/**
@@ -185,6 +212,7 @@ export default class Checkbox extends FormAssociatedElement {
 		input.disabled = this.disabled;
 		input.indeterminate = this.indeterminate;
 		input.required = this.required;
+		input.value = this.value;
 
 		let label = document.createElement('label');
 		label.htmlFor = 'checkbox';
@@ -221,13 +249,16 @@ export default class Checkbox extends FormAssociatedElement {
 				this.pristine = false;
 				this.propagateValidation();
 
-				this.value = e.target.checked;
+				// User interaction decides the checked state; value stays as payload
+				this.indeterminate = false;
+				this.checked = e.target.checked;
 
-				event.dispatchCustomEvent(this, 'wje-toggle:input');
+				// Fire checkbox-specific event name
+				event.dispatchCustomEvent(this, 'wje-checkbox:input');
 			});
 
 			this.input.addEventListener('change', (e) => {
-				event.dispatchCustomEvent(this, 'wje-toggle:change');
+				event.dispatchCustomEvent(this, 'wje-checkbox:change');
 			});
 
 			this.addEventListener('wje-checkbox:invalid', (e) => {

@@ -12,7 +12,7 @@ template.innerHTML = `
     <h2>Default</h2>
     <div class="playground">
       <div class="content">
-      	<wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable readonly>
+      	<wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
           <wje-options url="/api/options" item-value="value" item-text="text" option-array-path="data"></wje-options>
         </wje-select>
 <!--      	<wje-select lazy label="Label optionS" placeholder="Select options" variant="standard" max-height="200px" value="eae3262d-3854-4e5b-8e21-7a0a863d0593 7e771d42-c4f9-4627-9876-f7ded0b265f4" find clearable checkbox multiple>-->
@@ -90,7 +90,7 @@ template.innerHTML = `
     <h2>Lazy options</h2>
     <div class="playground">
       <div class="content">
-        <wje-select name="lazy-update" placeholder="Select options" variant="standard" max-options="2" variant="standard" max-height="200px" multiple clearable lazy readonly>
+        <wje-select name="lazy-update" placeholder="Select options" variant="standard" max-options="2" variant="standard" max-height="200px" multiple clearable lazy>
           <wje-options url="/api/options" item-value="value" item-text="text" lazy-load-size="6" option-array-path="data" lazy></wje-options>
         </wje-select>
       </div>

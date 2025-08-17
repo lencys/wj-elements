@@ -48,6 +48,8 @@ export default class Input extends FormAssociatedElement {
 
         if (this.input) this.input.value = value;
 
+        this.setAttribute('value', value);
+
         this.pristine = false;
         this._value = value;
     }
@@ -275,7 +277,7 @@ export default class Input extends FormAssociatedElement {
 
         // Input
         let input = document.createElement('input');
-        input.setAttribute('type', 'tralala');
+        input.setAttribute('type', 'text');
         input.setAttribute('part', 'input');
         input.setAttribute('value', this.value || '');
         input.classList.add('form-control');

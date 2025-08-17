@@ -11,8 +11,11 @@ template.innerHTML = `<h1>Checkbox</h1>
     <h2>Basic</h2>
     <div class="playground">
       <div class="content" style="display: block;">
-        <wje-checkbox id="test">Default</wje-checkbox>
-        <wje-checkbox checked>Default checked</wje-checkbox>
+        <form>
+          <wje-checkbox id="test">Default</wje-checkbox>
+          <wje-checkbox name="test" checked>Default checked</wje-checkbox>
+          <wje-checkbox name="indeterminate" indeterminate>Default indeterminate</wje-checkbox>
+        </form>
       </div>
     </div>
     
