@@ -12,7 +12,7 @@ template.innerHTML = `<h1>Checkbox</h1>
     <div class="playground">
       <div class="content" style="display: block;">
         <form>
-          <wje-checkbox id="test">Default</wje-checkbox>
+          <wje-checkbox name="clear" id="test">Default</wje-checkbox>
           <wje-checkbox name="test" checked>Default checked</wje-checkbox>
           <wje-checkbox name="indeterminate" indeterminate>Default indeterminate</wje-checkbox>
         </form>

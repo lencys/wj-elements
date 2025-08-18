@@ -241,6 +241,8 @@ export default class Checkbox extends FormAssociatedElement {
 	 * Adds an event listener after drawing the checkbox.
 	 */
 	afterDraw() {
+		this.internals.setFormValue(this.checked ? this.value : null); // Set initial form value based on checked state
+
 		if (!this.disabled) {
 			this.input.addEventListener('input', (e) => {
 				this.validate();
