@@ -48,8 +48,6 @@ export default class Input extends FormAssociatedElement {
 
         if (this.input) this.input.value = value;
 
-        this.setAttribute('value', value);
-
         this.pristine = false;
         this._value = value;
     }
@@ -369,6 +367,7 @@ export default class Input extends FormAssociatedElement {
         });
 
         this.input.addEventListener('blur', (e) => {
+            console.log("Input blur event", e);
             this.native.classList.remove('focused');
             if (!e.target.value) this.labelElement.classList.remove('fade');
         });
