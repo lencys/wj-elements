@@ -3,7 +3,7 @@ import { event } from '../utils/event.js';
 import styles from './styles/styles.css?inline';
 
 /**
- * @summary This method dispatches a custom event named "wje-checkbox:change".
+ * @summary This method dispatches a custom event named "wje-toggle:change".
  * It is triggered when the input event is fired, which happens when the state of the checkbox changes.
  * The event is dispatched on the current instance of the Checkbox class.
  * @documentation https://elements.webjet.sk/components/checkbox
@@ -16,7 +16,6 @@ import styles from './styles/styles.css?inline';
  * @cssproperty [--wje-checkbox-border-style=solid] - Border style of the component;
  * @cssproperty [--wje-checkbox-border-color=--wje-color-contrast-1] - Border color of the component;
  * @cssproperty [--wje-checkbox-margin-inline=0] - Margin inline of the component;
- * @fires wje-checkbox:change - Dispatched when the checkbox state changes;
  */
 export default class Checkbox extends FormAssociatedElement {
 	#internalValue;
@@ -254,14 +253,14 @@ export default class Checkbox extends FormAssociatedElement {
 				this.checked = e.target.checked;
 
 				// Fire checkbox-specific event name
-				event.dispatchCustomEvent(this, 'wje-checkbox:input');
+				event.dispatchCustomEvent(this, 'wje-toggle:input');
 			});
 
 			this.input.addEventListener('change', (e) => {
-				event.dispatchCustomEvent(this, 'wje-checkbox:change');
+				event.dispatchCustomEvent(this, 'wje-toggle:change');
 			});
 
-			this.addEventListener('wje-checkbox:invalid', (e) => {
+			this.addEventListener('wje-toggle:invalid', (e) => {
 				this.invalid = true;
 				this.pristine = false;
 
