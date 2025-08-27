@@ -330,7 +330,11 @@
     --wje-chip-background-hover: var(--wje-color-contrast-4);
     --wje-chip-color-hover: var(--wje-color-contrast-11);
     --wje-chip-border-radius: 100px;
-    --wje-chip-margin: 0;
+    --wje-chip-round-border-radius: var(--wje-border-radius-large);
+    --wje-chip-margin-block: 0;
+    --wje-chip-margin-inline: 0;
+    --wje-chip-padding-block: var(--wje-spacing-small);
+    --wje-chip-padding-inline: var(--wje-spacing-small);
 
     /* Dialog */
     --wje-dialog-width: 600px;
@@ -515,6 +519,11 @@
     --wje-orgchart-group-border-radius: var(--wje-border-radius-large);
     --wje-orgchart-group-height-line: 10px;
     --wje-orgchart-group-padding: 0.25rem 0;
+
+    /* Radio */
+    --wje-radio-margin-top: 0;
+    --wje-radio-margin-bottom: 0.5rem;
+    --wje-radio-margin-inline: 0;
 
     /* Rate */
     --wje-rate-gap: 0.25rem;

@@ -9,6 +9,12 @@
     scroll-behavior: smooth;
 }
 
+.slides-wrapper {
+    position: relative;
+    width: var(--wje-carousel-width, 100%);
+    height: var(--wje-carousel-height, 300px);
+}
+
 .carousel-slides {
     display: flex;
     transition: transform 0.5s ease;
@@ -37,21 +43,21 @@
 
 /*NAVIGATION*/
 
-wje-button {
+[name="prev"], [name="next"] {
+    display: block;
     position: absolute;
     top: 50%;
-
     border: none;
     cursor: pointer;
     z-index: 2;
 }
 
-.prev {
+[name="prev"] {
     left: -1rem;
     transform: translate(-100%, -50%);
 }
 
-.next {
+[name="next"] {
     right: -1rem;
     transform: translate(100%, -50%);
 }
@@ -60,12 +66,12 @@ wje-button {
 
 .pagination {
     position: relative;
-    bottom: -0.5rem;
     left: 50%;
-    transform: translate(-50%, 100%);
+    transform: translate(-50%, 0);
     display: flex;
     z-index: 2;
     justify-content: center;
+    padding-block: 1rem;
 }
 .pagination-item {
     cursor: pointer;

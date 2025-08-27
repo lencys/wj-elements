@@ -3,10 +3,6 @@
 */
 
 :host {
-    --wje-radio-margin-top: 0;
-    --wje-radio-margin-bottom: 0.5rem;
-    --wje-radio-margin-inline: 0;
-
     display: block;
     margin-top: var(--wje-radio-margin-top);
     margin-bottom: var(--wje-radio-margin-bottom);

@@ -4,7 +4,6 @@
 
 :host {
     display: inline-flex;
-    --wje-chip-round-border-radius: var(--wje-border-radius-large);
     --wje-button-border-radius: var(--wje-chip-round-border-radius);
 }
 
@@ -15,8 +14,10 @@
     font-size: var(--wje-font-size);
     line-height: 1;
     letter-spacing: -0.006em;
-    margin: 0;
-    padding: 0 var(--wje-spacing-small);
+    padding-block: var(--wje-chip-padding-block);
+    padding-inline: var(--wje-chip-padding-inline);
+    margin-block: var(--wje-chip-margin-block);
+    margin-inline: var(--wje-chip-margin-inline);
     text-align: center;
     cursor: pointer;
     white-space: nowrap;

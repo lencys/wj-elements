@@ -50,7 +50,7 @@
     width: 108px;
     height: 19px;
     text-align: center;
-    font-size: var(--wje-font-size-medium);
+    font-size: var(--wje-font-size);
     font-weight: 400;
     line-height: 19.36px;
     gap: 10px;

@@ -109,6 +109,7 @@ export default class Chip extends WJElement {
         let fragment = document.createDocumentFragment();
 
         let native = document.createElement('div');
+        native.setAttribute('part', 'native');
         native.classList.add('native-chip');
 
         let slot = document.createElement('slot');

@@ -127,27 +127,41 @@ export default class Carousel extends WJElement {
         let native = document.createElement('div');
         native.classList.add('native-carousel');
 
+        let wrapper = document.createElement('div');
+        wrapper.classList.add('slides-wrapper');
+
         let slides = document.createElement('div');
         slides.classList.add('carousel-slides');
 
         let slot = document.createElement('slot');
 
-        slides.appendChild(slot);
-        native.appendChild(slides);
+        let slotPrev = document.createElement('slot');
+        slotPrev.setAttribute('name', 'prev');
+
+        let slotNext = document.createElement('slot');
+        slotNext.setAttribute('name', 'next');
+
+        slides.append(slot);
+        native.append(wrapper);
 
         if (this.navigation) {
             this.prevButton = this.createPreviousButton();
             this.nextButton = this.createNextButton();
 
-            native.appendChild(this.prevButton);
-            native.appendChild(this.nextButton);
+            this.append(this.prevButton);
+            this.append(this.nextButton);
+
+            wrapper.append(slotPrev);
+            wrapper.append(slotNext);
         }
 
-        if (this.pagination) native.appendChild(this.createPagination());
+        wrapper.append(slides);
 
-        if (this.thumbnails) native.appendChild(this.createThumbnails());
+        if (this.pagination) native.append(this.createPagination());
 
-        fragment.appendChild(native);
+        if (this.thumbnails) native.append(this.createThumbnails());
+
+        fragment.append(native);
 
         this.slides = slides;
 
@@ -169,20 +183,48 @@ export default class Carousel extends WJElement {
 
         this.goToSlide(this.activeSlide, 'auto');
 
-        this.slides.addEventListener('scrollend', (e) => {
-            const slides = this.getSlides();
-            const entries = [...this.entriesMap.values()];
-            const visibleEntries = entries.find((entry) => entry.isIntersecting);
+        requestAnimationFrame(() => requestAnimationFrame(() => this.syncActiveToCenter()));
 
-            if (visibleEntries?.target.classList.contains('clone')) {
-                const cloneIndex = +visibleEntries.target.getAttribute('clone-index');
-                this.goToSlide(cloneIndex, 'auto');
-                this.activeSlide = cloneIndex;
-            } else if (visibleEntries) {
-                let slideIndex = slides.indexOf(visibleEntries.target);
-                this.activeSlide = slideIndex;
+        this.slides.addEventListener('scrollend', (e) => {
+            this.syncActiveToCenter();
+        });
+    }
+
+    /**
+     * Sync `activeSlide` to the slide whose center is closest to the container center.
+     */
+    syncActiveToCenter() {
+        const slides = this.getSlides();
+        const withClones = this.getSlidesWithClones();
+        if (!withClones.length) return;
+
+        const containerRect = this.slides.getBoundingClientRect();
+        const containerCenterX = containerRect.left + containerRect.width / 2;
+
+        let best = null;
+        let bestDist = Infinity;
+        withClones.forEach((el) => {
+            const r = el.getBoundingClientRect();
+            const center = r.left + r.width / 2;
+            const dist = Math.abs(center - containerCenterX);
+            if (dist < bestDist) {
+                bestDist = dist;
+                best = el;
             }
         });
+
+        if (!best) return;
+
+        const vIndex = withClones.indexOf(best);
+        if (vIndex === -1) return;
+
+        const logicalIndex = this.getLogicalIndexForVisual(vIndex);
+        this.activeSlide = logicalIndex;
+
+        // If we landed on a clone, silently snap to the corresponding real slide
+        if (this.loop && (vIndex === 0 || vIndex === withClones.length - 1)) {
+            this.goToSlide(logicalIndex, 'auto');
+        }
     }
 
     /**
@@ -216,31 +258,34 @@ export default class Carousel extends WJElement {
      */
     goToSlide(index, behavior = 'smooth', next = true) {
         const slides = this.getSlides();
-        const slideWithClones = this.getSlidesWithClones();
+        const withClones = this.getSlidesWithClones();
 
-        // remove active class from all slides
-        slideWithClones.forEach((slide, i) => {
-            slide.classList.remove('active');
-        });
+        // remove active class from all slides (including clones)
+        withClones.forEach(slide => slide.classList.remove('active'));
 
-        let newActiveSlide = this.loop
-            ? (index + slides.length) % slides.length
-            : Math.min(Math.max(index, 0), slides.length - 1);
-        this.activeSlide = newActiveSlide;
+        // compute logical index: wrap when loop=true, else clamp
+        const maxIndex = Math.max(slides.length - 1, 0);
+        let logical;
+        if (this.loop && slides.length > 0) {
+            logical = ((index % slides.length) + slides.length) % slides.length; // safe modulo
+        } else {
+            logical = Math.min(Math.max(index, 0), maxIndex);
+        }
+        this.activeSlide = logical;
 
-        const nextSlideIndex = Math.min(
-            Math.max(index + (this.loop ? this.slidePerPage : 0), 0),
-            slideWithClones.length - 1
-        );
-        const nextSlideEl = this.getSlidesWithClones()[nextSlideIndex];
-        nextSlideEl.classList.add('active');
+        // compute visual target considering clones when loop=true
+        const vIndex = this.getVisualIndexForLogical(logical);
+        const targetEl = withClones[vIndex];
+        if (!targetEl) return;
 
-        let nextSlideRect = nextSlideEl.getBoundingClientRect();
-        let slidesContainerRect = this.slides.getBoundingClientRect();
+        targetEl.classList.add('active');
+
+        const targetRect = targetEl.getBoundingClientRect();
+        const containerRect = this.slides.getBoundingClientRect();
 
         this.slides.scrollTo({
-            left: nextSlideRect.left - slidesContainerRect.left + this.slides.scrollLeft,
-            top: nextSlideRect.top - slidesContainerRect.top + this.slides.scrollTop,
+            left: targetRect.left - containerRect.left + this.slides.scrollLeft,
+            top: targetRect.top - containerRect.top + this.slides.scrollTop,
             behavior: behavior === 'smooth' ? 'smooth' : 'auto',
         });
 
@@ -249,7 +294,6 @@ export default class Carousel extends WJElement {
             this.prevButton.removeAttribute('disabled');
 
             if (this.activeSlide === slides.length - 1) this.nextButton.setAttribute('disabled', '');
-
             if (this.activeSlide === 0) this.prevButton.setAttribute('disabled', '');
         }
     }
@@ -261,19 +305,15 @@ export default class Carousel extends WJElement {
         const items = this.getSlides();
 
         if (items.length && this.loop) {
-            // Klonovánie prveho položky a pridanie na koniec
+            // Clone first -> append to end
             const firstItemClone = items[0].cloneNode(true);
             firstItemClone.classList.add('clone');
-            firstItemClone.setAttribute('clone-index', 0);
+            this.append(firstItemClone);
 
-            this.appendChild(firstItemClone);
-
-            // Klonovanie poslednej položky a pridanie na zaciatok
+            // Clone last -> insert before the first original item so it becomes the leading clone
             const lastItemClone = items[items.length - 1].cloneNode(true);
             lastItemClone.classList.add('clone');
-            lastItemClone.setAttribute('clone-index', items.length - 1);
-
-            this.insertBefore(lastItemClone, this.firstChild);
+            this.insertBefore(lastItemClone, items[0]);
         }
     }
 
@@ -332,10 +372,12 @@ export default class Carousel extends WJElement {
      */
     createNextButton() {
         const nextButton = document.createElement('wje-button');
-        nextButton.classList.add('next');
-        nextButton.innerHTML = '<wje-icon name="chevron-right" size="large"></wje-icon>';
+        nextButton.setAttribute('part', 'next-button');
         nextButton.setAttribute('circle', '');
         nextButton.setAttribute('fill', 'link');
+        nextButton.setAttribute('slot', 'next');
+        nextButton.innerHTML = '<wje-icon name="chevron-right" size="large"></wje-icon>';
+        nextButton.classList.add('next');
         nextButton.addEventListener('click', (e) => {
             this.nextSlide();
         });
@@ -349,10 +391,12 @@ export default class Carousel extends WJElement {
      */
     createPreviousButton() {
         const previousButton = document.createElement('wje-button');
-        previousButton.classList.add('prev');
-        previousButton.innerHTML = '<wje-icon name="chevron-left" size="large"></wje-icon>';
+        previousButton.setAttribute('part', 'previous-button');
         previousButton.setAttribute('circle', '');
         previousButton.setAttribute('fill', 'link');
+        previousButton.setAttribute('slot', 'prev');
+        previousButton.innerHTML = '<wje-icon name="chevron-left" size="large"></wje-icon>';
+        previousButton.classList.add('prev');
         previousButton.addEventListener('click', (e) => {
             this.previousSlide();
         });
@@ -366,6 +410,7 @@ export default class Carousel extends WJElement {
      */
     createPagination() {
         const pagination = document.createElement('div');
+        pagination.setAttribute('part', 'pagination');
         pagination.classList.add('pagination');
 
         const slides = this.getSlides();
@@ -377,7 +422,7 @@ export default class Carousel extends WJElement {
                 e.target.classList.add('active');
                 this.goToSlide(i);
             });
-            pagination.appendChild(paginationItem);
+            pagination.append(paginationItem);
         });
 
         return pagination;
@@ -400,7 +445,7 @@ export default class Carousel extends WJElement {
                 e.target.closest('wje-thumbnail').classList.add('active');
                 this.goToSlide(i);
             });
-            thumbnails.appendChild(thumbnail);
+            thumbnails.append(thumbnail);
         });
 
         return thumbnails;
@@ -436,12 +481,28 @@ export default class Carousel extends WJElement {
         return Array.from(this.querySelectorAll('wje-carousel-item'));
     }
 
+    /** Maps logical index -> visual index (accounts for leading clone when loop=true) */
+    getVisualIndexForLogical(index) {
+        return this.loop ? index + 1 : index;
+    }
+
+    /** Maps visual index -> logical index (handles clones at 0 and last when loop=true) */
+    getLogicalIndexForVisual(vIndex) {
+        const slides = this.getSlides();
+        const withClones = this.getSlidesWithClones();
+        if (!this.loop) return vIndex;
+        if (vIndex === 0) return slides.length - 1;           // leading clone
+        if (vIndex === withClones.length - 1) return 0;       // trailing clone
+        return vIndex - 1;
+    }
+
     /**
      * Goes to the slide.
      * @returns {boolean}
      */
     canGoNext() {
-        return this.querySelector('.native-carousel').scrollLeft < this.querySelector('.native-carousel').scrollWidth;
+        const el = this.context.querySelector('.carousel-slides');
+        return el.scrollLeft < (el.scrollWidth - el.clientWidth);
     }
 
     /**
@@ -449,6 +510,7 @@ export default class Carousel extends WJElement {
      * @returns {boolean}
      */
     canGoPrevious() {
-        return this.querySelector('.native-carousel').scrollLeft > 0;
+        const el = this.context.querySelector('.carousel-slides');
+        return el.scrollLeft > 0;
     }
 }

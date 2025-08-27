@@ -277,7 +277,7 @@ export default class Pagination extends WJElement {
             return;
         }
 
-        this.paginateObj = await paginate(this.totalItems, this.page, this.pageSize, this.maxPages);
+        this.paginateObj = await paginate(this.totalItems, this.page, this.pageSize, this.maxPages) || {};
     }
 
     /**
@@ -328,7 +328,7 @@ export default class Pagination extends WJElement {
 
         let info = document.createElement('div');
         info.classList.add('info');
-        info.innerHTML = `${this.paginateObj.startIndex + 1} - ${this.paginateObj.endIndex + 1} ${this.localizer.translate('wj.pagination.of')} ${this.totalItems}`;
+        info.innerHTML = `${this.paginateObj?.startIndex + 1} - ${this.paginateObj?.endIndex + 1} ${this.localizer.translate('wj.pagination.of')} ${this.totalItems}`;
 
         let pagination = document.createElement('div');
         pagination.classList.add('pages');
@@ -354,16 +354,16 @@ export default class Pagination extends WJElement {
         const nextButton = button.cloneNode(true);
         nextButton.title = this.localizer.translate('wj.pagination.next');
         nextButton.innerHTML = `<wje-icon name="chevron-right" slot="icon-only"></wje-icon>`;
-        if (this.page + 1 >= this.paginateObj.totalPages) nextButton.disabled = true;
+        if (this.page + 1 >= this.paginateObj?.totalPages) nextButton.disabled = true;
         nextButton.addEventListener('wje-button:click', (e) => this.pageClickAction(e, this.page + 1));
 
         // Last button
         let lastButton = button.cloneNode(true);
         lastButton.title = this.localizer.translate('wj.pagination.last');
         lastButton.innerHTML = `<wje-icon name="chevron-right-pipe" slot="icon-only"></wje-icon>`;
-        lastButton.disabled = this.paginateObj.endIndex + 1 >= this.totalItems;
+        lastButton.disabled = this.paginateObj?.endIndex + 1 >= this.totalItems;
         lastButton.addEventListener('wje-button:click', (e) =>
-            this.pageClickAction(e, this.paginateObj.totalPages - 1)
+            this.pageClickAction(e, this.paginateObj?.totalPages - 1)
         );
 
         select.append(...options);
@@ -405,15 +405,15 @@ export default class Pagination extends WJElement {
         first.addEventListener('wje-button:click', (e) => this.pageClickAction(e, 0));
 
         const last = button.cloneNode(true);
-        last.textContent = paginateObj.totalPages;
-        last.addEventListener('wje-button:click', (e) => this.pageClickAction(e, paginateObj.totalPages - 1));
+        last.textContent = paginateObj?.totalPages;
+        last.addEventListener('wje-button:click', (e) => this.pageClickAction(e, paginateObj?.totalPages - 1));
 
-        if (paginateObj.currentPage >= this.maxPages + 1 && paginateObj.boundary < paginateObj.totalPages) {
+        if (paginateObj?.currentPage >= this.maxPages + 1 && paginateObj?.boundary < paginateObj?.totalPages) {
             fragment.appendChild(first);
             fragment.appendChild(dots);
         }
 
-        paginateObj.pages.forEach((page) => {
+        paginateObj?.pages.forEach((page) => {
             let newButton = button.cloneNode(true);
             newButton.textContent = page;
 
@@ -427,8 +427,8 @@ export default class Pagination extends WJElement {
         });
 
         if (
-            (paginateObj.pages.length === this.maxPages || paginateObj.currentPage < this.maxPages + 1) &&
-            paginateObj.boundary < paginateObj.totalPages
+            (paginateObj?.pages.length === this.maxPages || paginateObj?.currentPage < this.maxPages + 1) &&
+            paginateObj.boundary < paginateObj?.totalPages
         ) {
             fragment.appendChild(dots.cloneNode(true));
             fragment.appendChild(last);
