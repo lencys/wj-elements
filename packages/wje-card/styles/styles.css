@@ -8,6 +8,7 @@
 
 .native-card {
     background: var(--wje-card-background);
+    color: var(--wje-card-color);
     margin: 0;
     box-shadow: var(--wje-card-shadow);
     border-color: var(--wje-card-border-color);

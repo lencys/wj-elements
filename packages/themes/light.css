@@ -116,9 +116,6 @@
     --wje-background: var(--wje-color-contrast-0);
     --wje-border-color: var(--wje-color-contrast-3);
 
-    --wje-card-background: var(--wje-color-contrast-0);
-    --wje-card-color: var(--wje-color);
-
     --wje-color-menu: hsl(220, 15%, 15%);
     --wje-color-contrast: hsl(0, 0%, 95%);
 
@@ -270,10 +267,11 @@
 
     /* Card */
     --wje-card-background: var(--wje-color-contrast-0);
-    --wje-card-border-radius: var(--wje-border-radius-large);
+    --wje-card-color: var(--wje-color-white);
     --wje-card-border-color: transparent;
     --wje-card-border-style: var(--wje-border-style);
     --wje-card-border-width: var(--wje-border-width);
+    --wje-card-border-radius: var(--wje-border-radius-large);
     --wje-card-shadow: var(--wje-shadow-x-large);
 
     /* Card - Header */

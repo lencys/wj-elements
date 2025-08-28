@@ -7,11 +7,13 @@ import styles from './styles/styles.css?inline';
  * @status stable
  * @augments WJElement
  * @slot - The card main content.
- * @cssproperty [--wje-card-margin-top=0] - Margin top of the component;
- * @cssproperty [--wje-card-margin-bottom=1rem] - Margin bottom of the component;
- * @cssproperty [--wje-card-margin-inline=0] - Margin inline of the component;
- * @cssproperty [--wje-card-border-color=transparent] - Border color of the component;
  * @cssproperty [--wje-card-background=#fff] - Background of the component;
+ * @cssproperty [--wje-card-color=#000] - Color of the component;
+ * @cssproperty [--wje-card-border-color=transparent] - Border color of the component;
+ * @cssproperty [--wje-card-border-style=solid] - Border style of the component;
+ * @cssproperty [--wje-card-border-width=1px] - Border width of the component;
+ * @cssproperty [--wje-card-border-radius=0.5rem] - Border radius of the component;
+ * @cssproperty [--wje-card-shadow=var(--wje-shadow-x-large)] - Shadow of the component;
  */
 export default class Card extends WJElement {
     /**

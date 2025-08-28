@@ -30,9 +30,6 @@
     --wje-background: var(--wje-color-contrast-2);
     --wje-border-color: var(--wje-color-contrast-4);
 
-    --wje-card-background: var(--wje-color-contrast-3);
-    --wje-card-color: var(--wje-color-white) !important;
-
     --wje-color-primary: var(--wje-color-primary-1);
     --wje-color-complete: var(--wje-color-complete-1);
     --wje-color-success: var(--wje-color-success-1);
@@ -151,6 +148,11 @@
 
     /* Button */
     --wje-button-border-color: var(--wje-color-contrast-1);
+
+    /* Card */
+    --wje-card-background: var(--wje-color-contrast-0);
+    --wje-card-color: var(--wje-color-white);
+    --wje-card-border-color: transparent;
 
     /* Divider */
     --wje-divider-border-color: var(--wje-border-color);
