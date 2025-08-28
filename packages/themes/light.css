@@ -64,7 +64,8 @@
     --wje-border-radius-small: 0.125rem; /* 2px */
     --wje-border-radius-medium: 0.25rem; /* 4px */
     --wje-border-radius-large: 0.5rem; /* 8px */
-    --wje-border-radius-x-large: 1rem; /* 16px */
+    --wje-border-radius-x-large: 0.75rem; /* 12px */
+    --wje-border-radius-2x-large: 1rem; /* 16px */
     --wje-border-radius-circle: 50%; /* Circle */
     --wje-border-radius-pill: 50rem; /* Pill */
 
@@ -268,6 +269,7 @@
     --wje-button-group-border-color: var(--wje-color-contrast-3);
 
     /* Card */
+    --wje-card-background: var(--wje-color-contrast-0);
     --wje-card-border-radius: var(--wje-border-radius-large);
     --wje-card-border-color: transparent;
     --wje-card-border-style: var(--wje-border-style);
