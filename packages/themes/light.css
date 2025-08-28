@@ -267,7 +267,7 @@
 
     /* Card */
     --wje-card-background: var(--wje-color-contrast-0);
-    --wje-card-color: var(--wje-color-white);
+    --wje-card-color: var(--wje-color-black);
     --wje-card-border-color: transparent;
     --wje-card-border-style: var(--wje-border-style);
     --wje-card-border-width: var(--wje-border-width);
