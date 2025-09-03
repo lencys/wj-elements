@@ -164,7 +164,6 @@ export default class Popup extends WJElement {
         this.setAnchor();
 
         this.addEventListener('wje-popup:content-ready', () => {
-            debugger
           this.markContentReady();
         }, { once: true });
 
@@ -477,7 +476,6 @@ export default class Popup extends WJElement {
      * @returns {void} Does not return any value.
      */
     show(dispatchEvent = true) {
-        debugger
         // Portal the slotted content to body via a shadow portal (keeps styles intact)
         if (this.portal) {
             this._mountContentToPortal();
