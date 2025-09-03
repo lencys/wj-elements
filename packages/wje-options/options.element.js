@@ -2,6 +2,7 @@ import { default as WJElement, event } from '../wje-element/element.js';
 import InfiniteScroll from '../wje-infinite-scroll/infinite-scroll.js';
 import List from '../wje-list/list.js';
 import Option from '../wje-option/option.js';
+
 import styles from './styles/styles.css?inline';
 
 /**
@@ -304,6 +305,7 @@ export default class Options extends WJElement {
 			let loader = document.createElement('div');
 			loader.setAttribute('slot', 'loader');
 			loader.append('Loading...');
+			loader.classList.add('loader');
 
 			const infiniteScroll = document.createElement('wje-infinite-scroll');
 			infiniteScroll.setAttribute('placement', 'wje-list');

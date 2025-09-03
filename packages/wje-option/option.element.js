@@ -160,8 +160,13 @@ export default class Option extends WJElement {
 
 		let slot = document.createElement('slot');
 
+		let endWrapper = document.createElement('span');
+		endWrapper.classList.add('end-slot');
+
 		let end = document.createElement('slot');
 		end.setAttribute('name', 'end');
+
+		endWrapper.append(end);
 
 		const hasCheckSlot = this.querySelector('[slot="check"]') !== null;
 
@@ -176,7 +181,7 @@ export default class Option extends WJElement {
 		native.append(check);
 		native.append(start);
 		native.append(slot);
-		native.append(end);
+		native.append(endWrapper);
 
 		fragment.append(native);
 

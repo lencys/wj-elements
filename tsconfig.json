@@ -5,14 +5,16 @@
         "declaration": true,
         "emitDeclarationOnly": true,
         "allowJs": true,
+        "checkJs": false,
         "outDir": "types",
-        "skipLibCheck": true
+        "skipLibCheck": true,
     },
     "include": [
         "packages/**/*",
     ],
     "exclude": [
         "node_modules",
-        "dist"
+        "dist",
+        "**/dist/**"
     ]
 }

@@ -563,7 +563,12 @@ export class Select extends FormAssociatedElement {
 			this.findEl = find;
 		}
 
+		let slotFooter = document.createElement('slot');
+		slotFooter.setAttribute('name', 'footer');
+
+		// APPEND
 		optionsWrapper.append(list);
+		optionsWrapper.append(slotFooter);
 
 		wrapper.append(inputWrapper);
 
@@ -589,6 +594,7 @@ export class Select extends FormAssociatedElement {
 		this.chips = chips;
 		this.clear = clear;
 		this.list = list;
+		this.slotFooter = slotFooter;
 
 		return fragment;
 	}
@@ -624,6 +630,17 @@ export class Select extends FormAssociatedElement {
 				optionsElement.setAttribute('attached', '');
 			});
 		}
+
+		event.addListener(this.popup, 'wje-popup:aftershow', null, () => {
+			const assignedElements = this.slotFooter.assignedElements();
+
+			if (assignedElements.length > 0) {
+				const el = assignedElements[0];
+				const rect = el.getBoundingClientRect();
+
+				this.list.style.height = `calc(100% - ${rect.height}px)`;
+			}
+		});
 
 		this.#htmlOptions = Array.from(this.querySelectorAll(':scope > wje-option')).map((option) => {
 			return {
@@ -807,7 +824,8 @@ export class Select extends FormAssociatedElement {
 				}
 
 				let optionSlotEnd = option?.querySelector('wje-option > [slot=end]');
-				if (optionSlotEnd) {
+
+				if (optionSlotEnd && optionSlotEnd instanceof HTMLElement && optionSlotEnd.tagName !== 'WJE-DROPDOWN' && optionSlotEnd.tagName !== 'WJE-BUTTON') {
 					setTimeout(() => {
 						this.slotEnd.append(optionSlotEnd.cloneNode(true));
 					},0)

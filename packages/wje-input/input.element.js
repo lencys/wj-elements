@@ -367,7 +367,6 @@ export default class Input extends FormAssociatedElement {
         });
 
         this.input.addEventListener('blur', (e) => {
-            console.log("Input blur event", e);
             this.native.classList.remove('focused');
             if (!e.target.value) this.labelElement.classList.remove('fade');
         });

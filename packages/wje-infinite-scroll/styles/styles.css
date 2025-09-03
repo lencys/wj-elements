@@ -9,20 +9,19 @@
     display: block;
     position: relative;
 
-}
-
-.loading {
-    position: sticky;
-    inset: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-    background-color: var(--wje-infinite-scroll-loading-bg);
-    width: 100%;
-    height: 100%;
-    &.show {
-        display: flex;
+    .loading {
+        position: sticky;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+        background-color: var(--wje-infinite-scroll-loading-bg);
+        width: 100%;
+        height: 100%;
+        &.show {
+            display: flex;
+        }
     }
 }
 

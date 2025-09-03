@@ -542,7 +542,7 @@
     --wje-select-background: var(--wje-color-contrast-0);
     --wje-select-line-height: 20px;
     --wje-select-color: var(--wje-color);
-
+    --wje-select-label-margin: 0 0 var(--wje-spacing-x-small) 0;
     --wje-select-margin-bottom: var(--wje-spacing-x-small);
     --wje-select-find-margin-inline: var(--wje-spacing-x-small);
     --wje-select-find-margin-block: var(--wje-spacing-x-small);

@@ -110,6 +110,7 @@ export default class Dropdown extends WJElement {
         let slot = document.createElement('slot');
 
         let popup = document.createElement('wje-popup');
+        popup.setAttribute('portal', '');
         popup.setAttribute('placement', this.placement);
         popup.setAttribute('offset', this.offset);
         popup.setAttribute('part', 'popup');

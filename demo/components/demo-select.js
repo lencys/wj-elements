@@ -15,19 +15,51 @@ template.innerHTML = `
       	<wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
           <wje-options url="/api/options" item-value="value" item-text="text" option-array-path="data"></wje-options>
         </wje-select>
-<!--      	<wje-select lazy label="Label optionS" placeholder="Select options" variant="standard" max-height="200px" value="eae3262d-3854-4e5b-8e21-7a0a863d0593 7e771d42-c4f9-4627-9876-f7ded0b265f4" find clearable checkbox multiple>-->
-<!--          <wje-options lazy url="/api/options" item-value="value" item-text="text"  lazy-load-size="6" option-array-path="data"></wje-options>-->
-<!--        </wje-select>-->
-<!--        -->
-<!--        <wje-select label="Label" placeholder="Select option" value="option-1">-->
-<!--          <wje-option value="option-1">Option 1</wje-option>-->
-<!--          <wje-option value="option-2">-->
-<!--            Option 2-->
-<!--            <wje-icon name="heart" slot="end"></wje-icon>-->
-<!--          </wje-option>-->
-<!--          <wje-option value="option-3">Option 3</wje-option>-->
-<!--          <wje-option value="option-4">Option 4</wje-option>-->
-<!--        </wje-select>-->
+        
+      	<wje-select lazy label="Label optionS" placeholder="Select options" variant="standard" max-height="200px" value="eae3262d-3854-4e5b-8e21-7a0a863d0593 7e771d42-c4f9-4627-9876-f7ded0b265f4" find clearable checkbox multiple>
+          <wje-options lazy url="/api/options" item-value="value" item-text="text"  lazy-load-size="6" option-array-path="data"></wje-options>
+        </wje-select>
+      </div>
+    </div>
+    
+    <!-- FOOTER -->
+
+    <h2>Footer</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-select variant="standard" label="Label" placeholder="Select option" value="option-1" max-height="200px" class="example-footer">
+          <wje-option value="option-1">Option 1
+          	<wje-dropdown slot="end" placement="bottom-start" offset="5" collapsible>
+							<wje-button fill="link" slot="trigger" only-icon><wje-icon name="dots-vertical"></wje-icon></wje-button>
+						</wje-dropdown>
+          </wje-option>
+          <wje-option value="option-2">Option 2
+          	<wje-dropdown slot="end" placement="bottom-start" offset="5" collapsible>
+							<wje-button fill="link" slot="trigger" only-icon><wje-icon name="dots-vertical"></wje-icon></wje-button>
+						</wje-dropdown>
+          </wje-option>
+          <wje-option value="option-3">Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+          <wje-option value="option-5">Option 5</wje-option>
+          <wje-option value="option-6">Option 6<wje-icon name="heart" slot="end"></wje-icon></wje-option>
+          <wje-option value="option-7">Option 7</wje-option>
+          <wje-option value="option-8">Option 8</wje-option>
+          <div slot="footer">
+          	Create new option <wje-button size="small" color="success">Action</wje-button>
+         	</div>
+        </wje-select>
+        <style>
+        	.example-footer {
+        		[slot="footer"] {
+        			display: flex;
+							align-items: center;
+							gap: var(--wje-spacing-x-small);
+        			padding: var(--wje-spacing-x-small);
+							border-top: 1px solid var(--wje-border-color);
+							background: var(--wje-color-contrast-2);
+        		}
+					}	
+				</style>
       </div>
     </div>
     
@@ -417,6 +449,42 @@ export default class DemoSelect extends WJElement {
 			option.addEventListener('wje-option:change', (e) => {
 				e.detail.option.querySelector('wje-checkbox').checked = !e.detail.option.selected;
 			});
+		});
+
+		// Footer action and dropdown
+		// this.querySelectorAll(".example-footer wje-button").forEach(button => {
+		// 	button.addEventListener('click', (e) => {
+		// 		e.stopPropagation();
+		// 		alert('Create new option action');
+		// 	});
+		// });
+
+		const dropdownOptions = [
+			{ value: 'sk', label: 'Slovensky' },
+			{ value: 'en', label: 'English' },
+			{ value: 'es', label: 'Español' }
+		];
+
+		this.querySelectorAll(".example-footer wje-dropdown").forEach(dropdown => {
+			dropdown.beforeShow = (el) => {
+				if (el._built) return; // už vyrobené, nerob znova
+
+				const fragment = document.createDocumentFragment();
+				const menu = document.createElement('wje-menu');
+				menu.setAttribute('variant', 'context');
+
+				dropdownOptions.forEach(opt => {
+					const item = document.createElement('wje-menu-item');
+					item.setAttribute('value', opt.value);
+					item.textContent = opt.label;
+					fragment.append(item);
+				});
+
+				menu.append(fragment);
+				el.append(menu);
+
+				el._built = true;
+			}
 		});
 	}
 }
