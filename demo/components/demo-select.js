@@ -477,6 +477,10 @@ export default class DemoSelect extends WJElement {
 					const item = document.createElement('wje-menu-item');
 					item.setAttribute('value', opt.value);
 					item.textContent = opt.label;
+					item.addEventListener('wje-menu-item:click', (e) => {
+						console.log("click on", e);
+					});
+
 					fragment.append(item);
 				});
 

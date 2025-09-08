@@ -310,7 +310,6 @@ export default class MenuItem extends WJElement {
             e.stopPropagation();
 
             this.showSubmenu();
-            // this.focus();
         }
     };
 
@@ -460,8 +459,8 @@ export default class MenuItem extends WJElement {
     deactivateSubmenu() {
         if (this.hasSubmenu) {
             let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
-            if (submenuElements.hasAttribute('active')) {
-                submenuElements.removeAttribute('active');
+            if (submenuElements?.hasAttribute('active')) {
+                submenuElements?.removeAttribute('active');
             }
         }
     }
@@ -472,8 +471,8 @@ export default class MenuItem extends WJElement {
     activateSubmenu() {
         if (this.hasSubmenu) {
             let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
-            if (!submenuElements.hasAttribute('active')) {
-                submenuElements.setAttribute('active', '');
+            if (!submenuElements?.hasAttribute('active')) {
+                submenuElements?.setAttribute('active', '');
             }
         }
     }
@@ -535,6 +534,25 @@ export default class MenuItem extends WJElement {
             rootMenu = parent;
             currentMenu = parent;
         }
+
+        // Ak je item v portálovanom submenu, pôvodný closest nemusí nájsť root menu.
+        // Skúsime ho získať z composedPath a vystúpiť na najvyšší <wje-menu>.
+        if (!rootMenu) {
+            const path = typeof e.composedPath === 'function' ? e.composedPath() : [];
+            let firstMenuInPath = path.find(n => n && n.tagName === 'WJE-MENU');
+            if (firstMenuInPath) {
+                let top = firstMenuInPath;
+                while (top && top.parentElement) {
+                    const parent = top.parentElement.closest?.('wje-menu');
+                    if (!parent) break;
+                    top = parent;
+                }
+                rootMenu = top;
+            }
+        }
+
+        // Ak stále nemáme rootMenu, nevieme kde aplikovať active-class
+        if (!rootMenu) return;
 
         // Odstráň všetky existujúce triedy z predchádzajúcich kliknutí
         rootMenu.querySelectorAll('wje-menu-item').forEach(item => {

@@ -134,24 +134,11 @@ export default class Dropdown extends WJElement {
     /**
      * Adds event listeners for the mouseenter and mouseleave events.
      */
-    afterDisconnect() {
-        event.removeListener(this, 'mouseenter', null, this.onOpen);
-        event.removeListener(this, 'mouseleave', null, this.onClose);
-        event.removeListener(this.anchorSlot, 'click', null, this.toggleCallback, { capture: true });
-        event.removeListener(this, 'wje-popup:hide', null, this.popupHideCallback);
-    }
-
-    popupHideCallback = (e) => {
-        if (this.classList.contains('active')) {
-            this.toggleCallback(e);
-        }
-    };
-
-    /**
-     * Adds event listeners for the mouseenter and mouseleave events.
-     */
     afterDraw() {
         event.addListener(this, 'wje-popup:hide', null, this.popupHideCallback);
+
+        // Close when any actionable wje-menu-item inside the popup is clicked (works across Shadow DOM via composed path)
+        event.addListener(this.popup, 'click', null, this.onMenuItemClick, { capture: true });
 
         if (this.trigger !== 'click') {
             event.addListener(this, 'mouseenter', null, this.onOpen);
@@ -162,12 +149,50 @@ export default class Dropdown extends WJElement {
 
         if (this.hasAttribute('collapsible')) {
             event.addListener(
-                Array.from(this.querySelectorAll('wje-menu-item')),
-                'click',
-                'wje-menu-item:click',
-                this.onClose
+              Array.from(this.querySelectorAll('wje-menu-item')),
+              'click',
+              'wje-menu-item:click',
+              this.onClose
             );
         }
+    }
+
+    /**
+     * Adds event listeners for the mouseenter and mouseleave events.
+     */
+    afterDisconnect() {
+        event.removeListener(this, 'mouseenter', null, this.onOpen);
+        event.removeListener(this, 'mouseleave', null, this.onClose);
+        event.removeListener(this.anchorSlot, 'click', null, this.toggleCallback, { capture: true });
+        event.removeListener(this, 'wje-popup:hide', null, this.popupHideCallback);
+        event.removeListener(this.popup, 'click', null, this.onMenuItemClick, { capture: true });
+        event.removeListener(document, 'wje-menu-item:click', null, this.#onMenuItemCustom, false);
+    }
+
+    popupHideCallback = (e) => {
+        if (this.classList.contains('active')) {
+            this.toggleCallback(e);
+        }
+    };
+
+    /**
+     * Handles delegated clicks from inside the popup and closes the dropdown when a leaf menu item is selected.
+     * This works even when the menu is portaled, because we rely on the composed path.
+     */
+    onMenuItemClick = (e) => {
+        // Find nearest wje-menu-item in the composed path
+        const path = typeof e.composedPath === 'function' ? e.composedPath() : [];
+        const item = path.find((n) => n && n.tagName === 'WJE-MENU-ITEM');
+        if (!item) return;
+
+        // Ignore disabled items
+        if (item.hasAttribute('disabled') || item.getAttribute('aria-disabled') === 'true') return;
+
+        // If this item contains a nested submenu (wje-menu), it's not a leaf -> don't close yet
+        if (typeof item.querySelector === 'function' && item.querySelector('wje-menu')) return;
+
+        // Leaf item selected -> close dropdown (which calls popup.hide(true) inside onClose)
+        this.onClose();
     }
 
     /**
@@ -215,6 +240,8 @@ export default class Dropdown extends WJElement {
 
                 this.popup.show(true); // Show tooltip
 
+                event.addListener(document, 'wje-menu-item:click', null, this.#onMenuItemCustom, false);
+
                 event.dispatchCustomEvent(this, 'wje-dropdown:open', {
                     bubbles: true,
                     detail: { target: this },
@@ -247,6 +274,8 @@ export default class Dropdown extends WJElement {
 
                 this.popup.hide(true); // Show tooltip
 
+                event.removeListener(document, 'wje-menu-item:click', null, this.#onMenuItemCustom, false);
+
                 event.dispatchCustomEvent(this, 'wje-dropdown:close', {
                     bubbles: true,
                     detail: { target: this },
@@ -258,5 +287,20 @@ export default class Dropdown extends WJElement {
                 this.classList.add('active');
                 this.popup.show(true);
             });
-    };
+    }
+
+    #onMenuItemCustom = (e) => {
+        const path = typeof e.composedPath === 'function' ? e.composedPath() : [];
+        if (!this.popup || !this.popup.floatingEl || !path.includes(this.popup.floatingEl)) return;
+
+        const item = path.find(n => n && n.tagName === 'WJE-MENU-ITEM');
+        if (!item) return;
+        if (item.hasAttribute('disabled') || item.getAttribute('aria-disabled') === 'true') return;
+        if (item.hasAttribute('has-submenu')) return; // parent; nezatváraj
+
+        // Zavri len tento dropdown. NEvolaj stopPropagation na custom evente,
+        // aby fungovali aj tvoje app-level listenery (riadok 480).
+        this.classList.remove('active');
+        this.popup.hide(true);
+    }
 }

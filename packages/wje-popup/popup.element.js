@@ -195,9 +195,21 @@ export default class Popup extends WJElement {
     };
 
     clickHandler = (e) => {
-        const path = e.composedPath();
-        const inside = path.includes(this) || (this.floatingEl && path.includes(this.floatingEl));
-        if (!inside && this.hasAttribute('active')) this.hide(true);
+	const path = typeof e.composedPath === 'function' ? e.composedPath() : [];
+
+	// If the click originated on any WJE menu/dropdown elements, treat it as an
+	// internal interaction and DO NOT trigger outside-close. This keeps <wje-select>
+	// open when a nested <wje-dropdown>/<wje-menu-item> is clicked, even if those
+	// menus are portaled into <body>.
+	const isMenuClick = path.some((n) => n && (
+		n.tagName === 'WJE-MENU-ITEM' ||
+		n.tagName === 'WJE-MENU' ||
+		n.tagName === 'WJE-DROPDOWN'
+	));
+	if (isMenuClick) return;
+
+	const inside = path.includes(this) || (this.floatingEl && path.includes(this.floatingEl));
+	if (!inside && this.hasAttribute('active')) this.hide(true);
     };
     get floatingEl() {
         return this._floatingEl || this.native;
@@ -476,21 +488,24 @@ export default class Popup extends WJElement {
      * @returns {void} Does not return any value.
      */
     show(dispatchEvent = true) {
-        // Portal the slotted content to body via a shadow portal (keeps styles intact)
+        // 1) If portal is enabled, mount lazily on open
         if (this.portal) {
             this._mountContentToPortal();
         }
 
+        // 2) Loader handling (unchanged)
         if (this.loader) {
             this.floatingEl?.classList?.add('loading');
             this.loaderEl?.classList?.remove('fade-out');
             this.floatingEl?.prepend(this.loaderEl);
         }
 
+        // 3) Fire event (unchanged)
         if (dispatchEvent) {
             event.dispatchCustomEvent(this, 'wje-popup:show');
         }
 
+        // 4) Activate and start autoUpdate
         if (this.anchorEl && this.floatingEl) {
             this.floatingEl?.classList?.add('popup-active');
 
@@ -524,8 +539,10 @@ export default class Popup extends WJElement {
 
         document.removeEventListener('click', this.clickHandler, { capture: true });
 
-        // If we portaled the content, return it now
-        this._restoreContentFromPortal();
+        // If content is in portal, restore it lazily on close back into the element
+        if (this.portal && this._portaled) {
+            this._restoreContentFromPortal();
+        }
 
         if (this.hasAttribute('active')) {
             this.removeAttribute('active');

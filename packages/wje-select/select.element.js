@@ -92,6 +92,31 @@ export class Select extends FormAssociatedElement {
 	#htmlOptions = [];
 
 	/**
+	 * Prevent closing the parent <wje-select>'s popup when a nested <wje-dropdown>
+	 * menu item is clicked. Closes only the dropdown that owns the clicked item.
+	 * This captures the event at the document level (useCapture=true) so it can
+	 * stop the global outside-click logic that would otherwise hide the select's popup.
+	 */
+	#onMenuItemClickCapture = (e) => {
+		const target = /** @type {HTMLElement} */(e.target);
+		if (!target || !target.closest) return;
+
+		// Run only for clicks inside a dropdown menu item
+		const menuItem = target.closest('wje-menu-item');
+		if (!menuItem) return;
+
+		const dropdown = target.closest('wje-dropdown');
+		if (dropdown && typeof dropdown.hide === 'function') {
+			// Close only the dropdown; keep the select's popup open
+			dropdown.hide();
+		}
+
+		// Block bubbling to document-level outside-click handlers that
+		// might close <wje-popup> used by <wje-select>
+		e.stopPropagation();
+	};
+
+	/**
 	 * An object representing component dependencies with their respective classes.
 	 * Each property in the object maps a custom component name (as a string key)
 	 * to its corresponding class or constructor.
@@ -606,6 +631,7 @@ export class Select extends FormAssociatedElement {
 	 * @returns {void} This method does not return any value.
 	 */
 	afterDraw() {
+		document.addEventListener('mousedown', this.#onMenuItemClickCapture, true);
 
 		this.validate();
 
@@ -1113,5 +1139,9 @@ export class Select extends FormAssociatedElement {
 				}
 			});
 		}
+	}
+
+	disconnectedCallback() {
+		document.removeEventListener('mousedown', this.#onMenuItemClickCapture, true);
 	}
 }
