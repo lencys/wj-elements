@@ -79,6 +79,10 @@ export default class Popup extends WJElement {
         return this.hasAttribute('portal');
     }
 
+    get floatingEl() {
+        return this._floatingEl || this.native;
+    }
+
     className = 'Popup';
 
     /**
@@ -192,27 +196,24 @@ export default class Popup extends WJElement {
         if (this.hasAttribute('disabled')) return;
 
         this.showHide();
-    };
+    }
 
     clickHandler = (e) => {
-	const path = typeof e.composedPath === 'function' ? e.composedPath() : [];
+        const path = typeof e.composedPath === 'function' ? e.composedPath() : [];
 
-	// If the click originated on any WJE menu/dropdown elements, treat it as an
-	// internal interaction and DO NOT trigger outside-close. This keeps <wje-select>
-	// open when a nested <wje-dropdown>/<wje-menu-item> is clicked, even if those
-	// menus are portaled into <body>.
-	const isMenuClick = path.some((n) => n && (
-		n.tagName === 'WJE-MENU-ITEM' ||
-		n.tagName === 'WJE-MENU' ||
-		n.tagName === 'WJE-DROPDOWN'
-	));
-	if (isMenuClick) return;
+        // If the click originated on any WJE menu/dropdown elements, treat it as an
+        // internal interaction and DO NOT trigger outside-close. This keeps <wje-select>
+        // open when a nested <wje-dropdown>/<wje-menu-item> is clicked, even if those
+        // menus are portaled into <body>.
+        const isMenuClick = path.some((n) => n && (
+            n.tagName === 'WJE-MENU-ITEM' ||
+            n.tagName === 'WJE-MENU' ||
+            n.tagName === 'WJE-DROPDOWN'
+        ));
+        if (isMenuClick) return;
 
-	const inside = path.includes(this) || (this.floatingEl && path.includes(this.floatingEl));
-	if (!inside && this.hasAttribute('active')) this.hide(true);
-    };
-    get floatingEl() {
-        return this._floatingEl || this.native;
+        const inside = path.includes(this) || (this.floatingEl && path.includes(this.floatingEl));
+	      if (!inside && this.hasAttribute('active')) this.hide(true);
     }
 
     /**
@@ -316,14 +317,20 @@ export default class Popup extends WJElement {
      */
     _mountContentToPortal() {
         if (this._portaled) return;
+
         this._ensurePortalRoot();
 
-        // Create/ensure a panel in the portal shadow that mirrors the native container
         if (!this._portalNative) {
             this._portalNative = document.createElement('div');
             this._portalNative.setAttribute('part', 'native');
             this._portalNative.classList.add('native-popup');
+
+            this._portalSlot = document.createElement('slot');
+            this._portalArrowSlot = document.createElement('slot');
+            this._portalArrowSlot.setAttribute('name', 'arrow');
+            this._portalNative.append(this._portalSlot, this._portalArrowSlot);
         }
+
         this._portalShadow.append(this._portalNative);
 
         // Mirror host classes/attributes onto the portal host so :host(...) CSS works
@@ -358,7 +365,8 @@ export default class Popup extends WJElement {
             const ph = document.createComment('wje-portal-default');
             this._defPlaceholders.push({ node: n, ph });
             n.parentNode && n.parentNode.insertBefore(ph, n.nextSibling);
-            this._portalNative.append(n);
+            // move the actual content to the portal host (light DOM)
+            this._portalContainer.append(n);
         }
 
         // Move arrow slot content if any
@@ -369,11 +377,20 @@ export default class Popup extends WJElement {
             const ph = document.createComment('wje-portal-arrow');
             this._arrowPlaceholders.push({ node: n, ph });
             n.parentNode && n.parentNode.insertBefore(ph, n.nextSibling);
-            this._portalNative.append(n);
+            // move arrow light child next to others; it will project into <slot name="arrow">
+            this._portalContainer.append(n);
         }
 
         this._floatingEl = this._portalNative;
         this._portaled = true;
+
+        // na konci _mountContentToPortal()
+        this._floatingEl = this._portalNative;
+        this._portaled = true;
+        console.log('Portal mount 1', { root: this._portalShadow, container: this._portalContainer, floating: this._portalNative });
+
+        event.dispatchCustomEvent(this, 'wje-router:rebind', { root: this._portalShadow, container: this._portalContainer, floating: this._portalNative });
+        console.log('Portal mount 2', { root: this._portalShadow, container: this._portalContainer, floating: this._portalNative });
     }
 
     /**
@@ -428,6 +445,17 @@ export default class Popup extends WJElement {
             this._portalContainer = null;
             this._portalShadow = null;
         }
+
+        // ... po vyčistení referencií
+        const detail = { root: this.shadowRoot, container: this, floating: this.native };
+        this.dispatchEvent(new CustomEvent('wje-portal:restored', { bubbles: true, composed: true, detail }));
+
+        try {
+            if (typeof window.bindRouterLinks === 'function') {
+                window.bindRouterLinks(this.shadowRoot);
+            }
+            document.dispatchEvent(new CustomEvent('wje-router:rebind', { bubbles: true, composed: true, detail }));
+        } catch {}
     }
 
     /**
@@ -491,6 +519,14 @@ export default class Popup extends WJElement {
         // 1) If portal is enabled, mount lazily on open
         if (this.portal) {
             this._mountContentToPortal();
+
+            if (this.portal && this._portalShadow) {
+                const detail = { root: this._portalShadow, container: this._portalContainer, floating: this._portalNative };
+                document.dispatchEvent(new CustomEvent('wje-router:rebind', { bubbles: true, composed: true, detail }));
+                if (typeof window.bindRouterLinks === 'function') {
+                    window.bindRouterLinks(this._portalShadow);
+                }
+            }
         }
 
         // 2) Loader handling (unchanged)

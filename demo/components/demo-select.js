@@ -29,12 +29,12 @@ template.innerHTML = `
       <div class="content">
         <wje-select variant="standard" label="Label" placeholder="Select option" value="option-1" max-height="200px" class="example-footer">
           <wje-option value="option-1">Option 1
-          	<wje-dropdown slot="end" placement="bottom-start" offset="5" collapsible>
+          	<wje-dropdown slot="end" placement="bottom-start" offset="5" collapsible portaled>
 							<wje-button fill="link" slot="trigger" only-icon><wje-icon name="dots-vertical"></wje-icon></wje-button>
 						</wje-dropdown>
           </wje-option>
           <wje-option value="option-2">Option 2
-          	<wje-dropdown slot="end" placement="bottom-start" offset="5" collapsible>
+          	<wje-dropdown slot="end" placement="bottom-start" offset="5" collapsible portaled>
 							<wje-button fill="link" slot="trigger" only-icon><wje-icon name="dots-vertical"></wje-icon></wje-button>
 						</wje-dropdown>
           </wje-option>
@@ -476,10 +476,11 @@ export default class DemoSelect extends WJElement {
 				dropdownOptions.forEach(opt => {
 					const item = document.createElement('wje-menu-item');
 					item.setAttribute('value', opt.value);
+					item.setAttribute('route', 'accordion')
 					item.textContent = opt.label;
-					item.addEventListener('wje-menu-item:click', (e) => {
-						console.log("click on", e);
-					});
+					// item.addEventListener('wje-menu-item:click', (e) => {
+					// 	console.log("click on", e);
+					// });
 
 					fragment.append(item);
 				});

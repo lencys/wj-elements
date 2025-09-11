@@ -44,7 +44,8 @@ export default class MenuItem extends WJElement {
     constructor() {
         super();
 
-        this._collapsible = false;
+        this._bind = false;
+
     }
 
     /**
@@ -279,7 +280,10 @@ export default class MenuItem extends WJElement {
      * Adds event listeners after drawing the MenuItem.
      */
     afterDraw() {
-        this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: false });
+
+        this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: '[route]' });
+
+        document.addEventListener('wje-router:rebind', this.rebindRouterLinks);
 
         this.addEventListener('mousemove', this.dispatchMove);
         this.addEventListener('wje-popup:reposition', this.dispatchReposition);
@@ -312,6 +316,10 @@ export default class MenuItem extends WJElement {
             this.showSubmenu();
         }
     };
+
+    rebindRouterLinks = (e) => {
+        this.unbindPortalRouterLinks = bindRouterLinks(e.detail.container, { selector: '[route]' });
+    }
 
     /**
      * Handles the click event on the MenuItem.
@@ -481,6 +489,8 @@ export default class MenuItem extends WJElement {
      * Gets the text from the element and returns it.
      */
     beforeDisconnect() {
+        document.removeEventListener('wje-router:rebind', this.rebindRouterLinks);
+
         this.removeEventListener('mousemove', this.dispatchMove);
         this.removeEventListener('wje-popup:reposition', this.dispatchReposition);
 
@@ -490,6 +500,7 @@ export default class MenuItem extends WJElement {
         event.removeListener(this, 'click', null, this.clickHandler);
 
         this.unbindRouterLinks?.();
+        this.unbindPortalRouterLinks?.();
     }
 
     /**

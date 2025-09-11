@@ -32,6 +32,29 @@ export default class Dropdown extends WJElement {
     };
 
     /**
+     * Sets or removes the 'portaled' attribute on the element.
+     * When the value is truthy, the attribute 'portaled' is added to the element.
+     * When the value is falsy, the attribute 'portaled' is removed from the element.
+     * @param {boolean} value - Determines whether to add or remove the 'portaled' attribute.
+     */
+    set portaled(value) {
+        if (value) {
+            this.setAttribute('portaled', '');
+        } else {
+            this.removeAttribute('portaled');
+        }
+    }
+
+    /**
+     * Getter method for the `portaled` property.
+     * Checks if the `portaled` attribute is present on the element.
+     * @returns {boolean} Returns `true` if the `portaled` attribute exists, otherwise `false`.
+     */
+    get portaled() {
+        return this.hasAttribute('portaled');
+    }
+
+    /**
      * Sets the placement of the dropdown.
      * @param value
      */
@@ -110,13 +133,14 @@ export default class Dropdown extends WJElement {
         let slot = document.createElement('slot');
 
         let popup = document.createElement('wje-popup');
-        popup.setAttribute('portal', '');
         popup.setAttribute('placement', this.placement);
         popup.setAttribute('offset', this.offset);
         popup.setAttribute('part', 'popup');
 
-        popup.appendChild(anchorSlot);
-        popup.appendChild(slot);
+        if(this.portaled)
+            popup.setAttribute('portal', '');
+
+        popup.append(anchorSlot, slot);
 
         // if(this.trigger === "click")
         popup.setAttribute('manual', '');
