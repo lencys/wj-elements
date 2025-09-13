@@ -90,11 +90,11 @@ export default class DemoRadio extends WJElement {
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(this.context);
 
-    this.context.querySelector("#radio-group-animal").addEventListener('wje-radio:change', (e) => {
+    this.context.querySelector("#radio-group-animal").addEventListener('wje-radio-group:change', (e) => {
       console.log('Radio group changed:', e.detail);
     })
 
-    this.context.querySelector("#radio-group-animal").addEventListener('wje-radio:input', (e) => {
+    this.context.querySelector("#radio-group-animal").addEventListener('wje-radio:change', (e) => {
       console.log('Radio group inputed:', e.detail);
     })
 

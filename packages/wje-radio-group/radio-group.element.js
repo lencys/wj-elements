@@ -171,9 +171,7 @@ export default class RadioGroup extends FormAssociatedElement {
             this.pristine = false;
             this.propagateValidation();
 
-            this.value = this.checkRadio(this.value);
-
-            event.dispatchCustomEvent(this, 'wje-toggle:input');
+            event.dispatchCustomEvent(this, 'wje-radio-group:change');
         });
 
         this.addEventListener('wje-radio-group:invalid', (e) => {
@@ -210,9 +208,11 @@ export default class RadioGroup extends FormAssociatedElement {
         this.removeCheck();
 
         if (radio) {
+            // debugger
             radio.checked = true;
             this.value = radio.value;
             this.input.value = radio.value;
+            this.input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
             return true;
         }
 
