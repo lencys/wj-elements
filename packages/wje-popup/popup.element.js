@@ -207,8 +207,9 @@ export default class Popup extends WJElement {
         // menus are portaled into <body>.
         const isMenuClick = path.some((n) => n && (
             n.tagName === 'WJE-MENU-ITEM' ||
-            n.tagName === 'WJE-MENU' ||
-            n.tagName === 'WJE-DROPDOWN'
+            n.tagName === 'WJE-MENU'
+            // ||
+            // n.tagName === 'WJE-DROPDOWNs'
         ));
         if (isMenuClick) return;
 
@@ -516,6 +517,9 @@ export default class Popup extends WJElement {
      * @returns {void} Does not return any value.
      */
     show(dispatchEvent = true) {
+        // Notify globally that a popup is being opened
+        event.dispatchCustomEvent(document, 'wje-popup:opened', { popup: this });
+
         // 1) If portal is enabled, mount lazily on open
         if (this.portal) {
             this._mountContentToPortal();

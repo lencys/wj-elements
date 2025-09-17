@@ -17,8 +17,30 @@ template.innerHTML = `
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
-        <p style="height: 50px;">
+        <p style="height: 50px; display: flex; gap: 1rem;">
           <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible id="custom-dropdown-basic" portaled>
+            <wje-button size="large" slot="trigger" stop-propagation="true" caret>Large</wje-button>
+            <wje-menu variant="context">
+              <wje-menu-item route="accordion">
+                <wje-icon name="plane" slot="start"></wje-icon>
+                <wje-label>Menu item accordion</wje-label>
+              </wje-menu-item>
+              <wje-menu-item>
+                <wje-icon name="book" slot="start"></wje-icon>
+                <wje-label>Menu item</wje-label>
+              </wje-menu-item>
+              <wje-menu-item>
+                <wje-icon name="music" slot="start"></wje-icon>
+                <wje-label>Menu item</wje-label>
+              </wje-menu-item>
+              <wje-menu-item>
+                <wje-icon name="video" slot="start"></wje-icon>
+                <wje-label>Menu item</wje-label>
+              </wje-menu-item>
+            </wje-menu>
+          </wje-dropdown>
+          
+          <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible portaled>
             <wje-button size="large" slot="trigger" stop-propagation="true" caret>Large</wje-button>
             <wje-menu variant="context">
               <wje-menu-item route="accordion">
