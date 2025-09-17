@@ -12,7 +12,7 @@ template.innerHTML = `
     <h2>Default</h2>
     <div class="playground">
       <div class="content">
-      	<wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
+      	<wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" find multiple clearable>
           <wje-options url="/api/options" item-value="value" item-text="text" option-array-path="data"></wje-options>
         </wje-select>
         

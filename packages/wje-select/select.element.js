@@ -663,8 +663,22 @@ export class Select extends FormAssociatedElement {
 			if (assignedElements.length > 0) {
 				const el = assignedElements[0];
 				const rect = el.getBoundingClientRect();
+				let totalHeight = 0;
 
-				this.list.style.height = `calc(100% - ${rect.height}px)`;
+				if(this.hasAttribute('find')) {
+					let style = getComputedStyle(this.findEl);
+
+					let height = this.findEl.offsetHeight;
+					let marginTop = parseFloat(style.marginTop);
+					let marginBottom = parseFloat(style.marginBottom);
+
+					totalHeight = height + marginTop + marginBottom;
+				}
+
+				let subtractHeight = rect.height + totalHeight;
+				console.log("FIND:",this.findEl, totalHeight);
+
+				this.list.style.height = `calc(100% - ${subtractHeight}px)`;
 			}
 		});
 
