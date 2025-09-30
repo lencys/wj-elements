@@ -16,7 +16,7 @@ template.innerHTML = `<h1>Input</h1>
           
           <!-- STANDARD -->
           <h2>Standard</h2>
-          <wje-select name="single-select" variant="standard" label="Label" placeholder="Select option" value="option-2" clearable required>
+          <wje-select name="single-select" variant="standard" label="Label" placeholder="Select option" value="option-2" clearable required multiple>
             <wje-option value="option-1">Option 1</wje-option>
             <wje-option value="option-2">
               Option 2

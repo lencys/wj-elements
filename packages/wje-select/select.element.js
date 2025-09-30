@@ -676,7 +676,6 @@ export class Select extends FormAssociatedElement {
 				}
 
 				let subtractHeight = rect.height + totalHeight;
-				console.log("FIND:",this.findEl, totalHeight);
 
 				this.list.style.height = `calc(100% - ${subtractHeight}px)`;
 			}

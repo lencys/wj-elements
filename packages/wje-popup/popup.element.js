@@ -388,10 +388,8 @@ export default class Popup extends WJElement {
         // na konci _mountContentToPortal()
         this._floatingEl = this._portalNative;
         this._portaled = true;
-        console.log('Portal mount 1', { root: this._portalShadow, container: this._portalContainer, floating: this._portalNative });
 
         event.dispatchCustomEvent(this, 'wje-router:rebind', { root: this._portalShadow, container: this._portalContainer, floating: this._portalNative });
-        console.log('Portal mount 2', { root: this._portalShadow, container: this._portalContainer, floating: this._portalNative });
     }
 
     /**

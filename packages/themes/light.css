@@ -407,7 +407,7 @@
     --wje-input-line-height: 20px;
     --wje-input-slot-padding-inline: 0.5rem;
     --wje-input-label-display: block;
-    --wje-input-label-margin: 0;
+    --wje-input-label-margin: 0 0 var(--wje-spacing-x-small);
     --wje-input-label-padding: 0;
     --wje-input-label-line-height: var(--wje-line-height-normal);
     --wje-input-label-font-size: var(--wje-font-size);
@@ -588,6 +588,7 @@
     --wje-textarea-margin-bottom: var(--wje-spacing-x-small);
     --wje-textarea-line-height: 20px;
     --wje-textarea-padding: var(--wje-spacing-x-small);
+    --wje-textarea-label-margin: 0 0 var(--wje-spacing-x-small);
 
     /* Thumbnail */
     --wje-thumbnail-width: 48px;
