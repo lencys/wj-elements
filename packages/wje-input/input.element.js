@@ -291,9 +291,9 @@ export default class Input extends FormAssociatedElement {
         // Error
         let errorSlot = document.createElement('slot');
         errorSlot.setAttribute('name', 'error');
+        errorSlot.setAttribute('part', 'error-slot');
 
         let error = document.createElement('div');
-        error.setAttribute('part', 'error');
         error.setAttribute('slot', 'error');
 
         let start = null;
