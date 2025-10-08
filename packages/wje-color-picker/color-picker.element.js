@@ -84,6 +84,7 @@ export default class ColorPicker extends WJElement {
      */
     set swatches(value) {
         this.setAttribute('swatches', value.split(','));
+        this._swatches = value.split(',');
     }
 
     /**
@@ -91,7 +92,7 @@ export default class ColorPicker extends WJElement {
      * @returns {Array} The current color swatches.
      */
     get swatches() {
-        return this._swatches;
+        return this.hasAttribute('swatches') ? this.getAttribute('swatches').split(',') : this._swatches;
     }
 
     className = 'ColorPicker';
@@ -202,10 +203,9 @@ export default class ColorPicker extends WJElement {
         wrapper.appendChild(alphaWrapper);
         wrapper.appendChild(inputWrapper);
 
-        picker.appendChild(colorArea);
-        picker.appendChild(wrapper);
-
-        this.createSwatches(wrapper);
+        // picker.appendChild(colorArea);
+        // picker.appendChild(wrapper);
+        picker.append(this.createSwatches());
 
         // POPUP
         let popup = document.createElement('wje-popup');
@@ -236,7 +236,7 @@ export default class ColorPicker extends WJElement {
      * Sets the hue.
      * @param node
      */
-    createSwatches(node) {
+    createSwatches() {
         if (this.swatches.length === 0) return;
 
         let swatches = document.createElement('div');
@@ -253,8 +253,6 @@ export default class ColorPicker extends WJElement {
 
             swatches.appendChild(button);
         });
-
-        node.appendChild(swatches);
     }
 
     /**

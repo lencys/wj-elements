@@ -531,6 +531,7 @@
     --wje-rate-selected-color: var(--wje-color-danger-9);
 
     /* Select */
+    --wje-select-height: 32px;
     --wje-select-border-width: 1px;
     --wje-select-border-style: solid;
     --wje-select-border-color: var(--wje-border-color);

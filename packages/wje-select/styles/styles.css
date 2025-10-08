@@ -54,7 +54,7 @@
     }
     &.standard {
         .wrapper {
-            height: 32px;
+            height: var(--wje-select-height);
             box-sizing: border-box;
             background-color: var(--wje-select-background);
             border-width: var(--wje-select-border-width);

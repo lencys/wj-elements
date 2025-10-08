@@ -14,6 +14,15 @@ template.innerHTML = `<h1>Color Picker</h1>
         <wje-color-picker></wje-color-picker>
       </div>
     </div>
+    
+    <!-- SWATCHES -->
+
+    <h2>Swatches</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-color-picker swatches="#ff0000, #000000, #333333"></wje-color-picker>
+      </div>
+    </div>
   </div>`;
 
 export default class DemoColorPicker extends WJElement {
