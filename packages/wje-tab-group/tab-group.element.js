@@ -98,6 +98,7 @@ export default class TabGroup extends WJElement {
         header.classList.add('scroll-snap-x');
 
         let nav = document.createElement('nav');
+        nav.setAttribute('part', 'nav');
 
         let section = document.createElement('section');
         section.setAttribute('part', 'panels');

@@ -45,7 +45,7 @@
         flex-direction: column;
     }
     nav {
-        border-bottom: 1px solid var(--wje-border-color);
+        border-bottom: var(--wje-tab-group-nav-border);
     }
 }
 
@@ -58,7 +58,7 @@
     }
     nav {
         flex-direction: column;
-        border-right: 1px solid var(--wje-border-color);
+        border-right: var(--wje-tab-group-nav-border);
     }
 }
 
@@ -70,7 +70,7 @@
     }
     nav {
         flex-direction: column;
-        border-left: 1px solid var(--wje-border-color);
+        border-left: var(--wje-tab-group-nav-border);
     }
 }
 
@@ -82,7 +82,7 @@
         flex-direction: column-reverse;
     }
     nav {
-        border-top: 1px solid var(--wje-border-color);
+        border-top: var(--wje-tab-group-nav-border);
     }
 }
 

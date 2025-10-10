@@ -576,6 +576,9 @@
     --wje-tab-color-hover: var(--wje-color-primary-1);
     --wje-tab-border-radius: 0;
 
+    /* Tab - Group */
+    --wje-tab-group-nav-border: 1px solid var(--wje-border-color);
+
     /* Textarea */
     --wje-textarea-font-family: var(--wje-font-family);
     --wje-textarea-background-color: var(--wje-background);
