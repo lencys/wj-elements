@@ -241,6 +241,11 @@ export default class Textarea extends FormAssociatedElement {
                 this.propagateValidation();
             }
 
+            if (this.invalid) {
+                this.invalid = false;
+                this.internals.setValidity({}, '');
+            }
+
             this.input.classList.remove('pristine');
             this.labelElement.classList.add('fade');
 
@@ -254,7 +259,7 @@ export default class Textarea extends FormAssociatedElement {
             this.value = this.input.value;
         });
 
-        this.addEventListener('wje-textarea:invalid', (e) => {
+        this.addEventListener('invalid', (e) => {
             this.invalid = true;
             this.pristine = false;
 

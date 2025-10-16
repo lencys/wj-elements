@@ -341,7 +341,7 @@ export default class WJElement extends HTMLElement {
 
 			this.setupAttributes?.();
 			if (this.hasShadowRoot) {
-				if (!this.shadowRoot) this.attachShadow({ mode: this.shadowType || 'open' });
+				if (!this.shadowRoot) this.attachShadow({ mode: this.shadowType || 'open', delegatesFocus: true });
 			}
 			this.setUpAccessors();
 

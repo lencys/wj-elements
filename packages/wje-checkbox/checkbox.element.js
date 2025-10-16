@@ -224,6 +224,7 @@ export default class Checkbox extends FormAssociatedElement {
 		let error = document.createElement('div');
 		error.setAttribute('slot', 'error');
 
+		// APPEND
 		native.append(input);
 		native.append(label);
 		native.append(errorSlot);
@@ -254,7 +255,6 @@ export default class Checkbox extends FormAssociatedElement {
 				this.indeterminate = false;
 				this.checked = e.target.checked;
 
-				// Fire checkbox-specific event name
 				event.dispatchCustomEvent(this, 'wje-toggle:input');
 			});
 
@@ -262,7 +262,7 @@ export default class Checkbox extends FormAssociatedElement {
 				event.dispatchCustomEvent(this, 'wje-toggle:change');
 			});
 
-			this.addEventListener('wje-toggle:invalid', (e) => {
+			this.addEventListener('invalid', (e) => {
 				this.invalid = true;
 				this.pristine = false;
 

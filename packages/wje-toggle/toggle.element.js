@@ -1,4 +1,6 @@
-import { default as WJElement, event } from '../wje-element/element.js';
+import { FormAssociatedElement } from '../internals/form-associated-element.js';
+import { event } from '../utils/event.js';
+
 import styles from './styles/styles.css?inline';
 
 /**
@@ -6,7 +8,7 @@ import styles from './styles/styles.css?inline';
  * @summary This element represents a toggle input.
  * @documentation https://elements.webjet.sk/components/toggle
  * @status stable
- * @augments {WJElement}
+ * @augments {FormAssociatedElement}
  * @csspart native - The native toggle wrapper.
  * @csspart input - The toggle input.
  * @csspart toggle - The toggle part.
@@ -26,140 +28,236 @@ import styles from './styles/styles.css?inline';
  * @tag wje-toggle
  */
 
-export default class Toggle extends WJElement {
-    /**
-     * Creates an instance of Toggle.
-     */
+export default class Toggle extends FormAssociatedElement {
+    #internalValue;
+
     constructor() {
         super();
+
+        this.invalid = false;
+        this.pristine = true;
     }
 
     /**
-     * Set checked attribute for the toggle element.
+     * Setter for the value attribute.
+     * @param {string} value The value to set.
      */
-    set disabled(value) {
-        if (value) this.setAttribute('disabled', '');
-        else this.removeAttribute('disabled');
+    set value(value) {
+        this.#internalValue = value;
+        if (this.input) {
+            this.input.value = value;
+        }
     }
 
     /**
-     * Get checked attribute for the toggle element.
-     * @returns {boolean} true if the toggle is disabled, false otherwise
+     * Getter for the value attribute.
+     * @returns {string} The value of the attribute.
      */
-    get disabled() {
-        return this.hasAttribute('disabled');
+    get value() {
+        return this.#internalValue ?? this.getAttribute('value') ?? 'on';
     }
 
     /**
-     * Set checked attribute for the toggle element.
+     * Getter for the customErrorDisplay attribute.
+     * @returns {boolean} Whether the attribute is present.
+     */
+    get customErrorDisplay() {
+        return this.hasAttribute('custom-error-display');
+    }
+
+    /**
+     * Getter for the validateOnChange attribute.
+     * @returns {boolean} Whether the attribute is present.
+     */
+    get validateOnChange() {
+        return this.hasAttribute('validate-on-change');
+    }
+
+    /**
+     * Setter for the defaultValue attribute.
+     * This method sets the 'value' attribute of the custom input element to the provided value.
+     * The 'value' attribute represents the default value of the input element.
+     * @param {string} value The value to set as the default value.
+     */
+    set defaultValue(value) {
+        this.setAttribute('value', value);
+    }
+
+    /**
+     * Getter for the defaultValue attribute.
+     * This method retrieves the 'value' attribute of the custom input element.
+     * The 'value' attribute represents the default value of the input element.
+     * If the 'value' attribute is not set, it returns an empty string.
+     * @returns {string} The default value of the input element.
+     */
+    get defaultValue() {
+        return this.getAttribute('value') ?? '';
+    }
+
+    /**
+     * Set checked attribute.
+     * @param {boolean} value true if the toggle is checked, false otherwise
      */
     set checked(value) {
-        if (value) this.setAttribute('checked', '');
-        else this.removeAttribute('checked');
+        if (value) {
+            this.setAttribute('checked', '');
+            this.internals.setFormValue(this.value); // len ak je checked
+        } else {
+            this.removeAttribute('checked');
+            this.internals.setFormValue(null); // ak nie je checked, nič sa neposiela
+        }
+        if (this.input) {
+            this.input.checked = value;
+        }
     }
 
     /**
-     * Get checked attribute for the toggle element.
+     * Get checked attribute.
      * @returns {boolean} true if the toggle is checked, false otherwise
      */
     get checked() {
         return this.hasAttribute('checked');
     }
 
-    /**
-     * Set color attribute for the toggle element.
-     * @type {string}
-     */
-    className = 'Toggle';
-
-    /**
-     * Get CSS stylesheet for the Button element.
-     * @static
-     * @returns {CSSStyleSheet} styles - The CSS stylesheet for the Button element.
-     */
     static get cssStyleSheet() {
         return styles;
     }
 
-    /**
-     * Get observed attributes for the toggle element.
-     * @returns {string[]}
-     */
     static get observedAttributes() {
-        return ['checked', 'disabled'];
+        return ['checked', 'disabled', 'required'];
     }
 
-    /**
-     * Set up the attributes for the toggle element.
-     */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        // if some value was set via value setter then dont use default value
+        if (this.pristine) {
+            this.value = this.#internalValue;
+            this.pristine = false;
+        }
     }
 
-    /**
-     * Draw the toggle element for the component.
-     */
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (!this.input) return;
+        if (name === 'checked') {
+            const isChecked = this.hasAttribute('checked');
+            this.input.checked = isChecked;
+            // Reflect into form value
+            if (isChecked) {
+                this.internals.setFormValue(this.value);
+            } else {
+                this.internals.setFormValue(null);
+            }
+        } else if (name === 'disabled') {
+            this.input.disabled = this.hasAttribute('disabled');
+        } else if (name === 'indeterminate') {
+            this.input.indeterminate = this.hasAttribute('indeterminate');
+        } else if (name === 'value') {
+            // keep payload in sync; do not toggle checked here
+            this.#internalValue = newValue ?? undefined;
+            this.input.value = this.value;
+            // If currently checked, update the submitted payload
+            if (this.input.checked) {
+                this.internals.setFormValue(this.value);
+            }
+        }
+    }
+
     draw() {
-        let fragment = document.createDocumentFragment();
+        const fragment = document.createDocumentFragment();
 
-        let element = document.createElement('div');
-        element.setAttribute('part', 'native');
-        element.classList.add('native-toggle');
+        const native = document.createElement('div');
+        native.setAttribute('part', 'native');
+        native.classList.add('native-toggle');
 
-        let input = document.createElement('input');
+        const input = document.createElement('input');
         input.setAttribute('part', 'input');
-        input.setAttribute('type', 'checkbox');
-        input.setAttribute('name', this.name);
-        input.setAttribute('id', 'input');
+        input.type = 'checkbox';
+        input.name = this.name;
+        input.id = 'input';
         input.checked = this.hasAttribute('checked');
         input.disabled = this.hasAttribute('disabled');
+        if (this.hasAttribute('required')) input.required = true;
 
-        let label = document.createElement('label');
+        const label = document.createElement('label');
         label.setAttribute('for', 'input');
 
-        let labelWrapper = document.createElement('div');
-        labelWrapper.setAttribute('part', 'toggle');
-        labelWrapper.classList.add('label-wrapper');
+        const toggle = document.createElement('div');
+        toggle.setAttribute('part', 'toggle');
+        toggle.classList.add('label-wrapper');
 
-        let text = document.createElement('div');
+        const text = document.createElement('div');
         text.classList.add('text');
         text.innerHTML = '<slot></slot>';
 
-        if (this.color) this.classList.add('wje-color-' + this.color, 'wje-color');
+        // Error
+        let errorSlot = document.createElement('slot');
+        errorSlot.setAttribute('name', 'error');
 
-        element.appendChild(input);
-        element.appendChild(label);
+        let error = document.createElement('div');
+        error.setAttribute('slot', 'error');
 
+        // APPEND
         if (this.placement === 'end') {
-            element.classList.add('end');
+            native.classList.add('end');
             label.appendChild(text);
-            label.appendChild(labelWrapper);
+            label.appendChild(toggle);
         } else {
-            label.appendChild(labelWrapper);
+            label.appendChild(toggle);
             label.appendChild(text);
         }
 
-        fragment.appendChild(element);
+        native.appendChild(input);
+        native.appendChild(label);
+        native.append(errorSlot);
+
+        this.append(error);
+
+        fragment.appendChild(native);
 
         this.input = input;
 
         return fragment;
     }
 
-    /**
-     * After draw method for the toggle element to add event listeners for the input element after the element is drawn.
-     */
     afterDraw() {
+        this.internals.setFormValue(this.checked ? this.value : null); // Set initial form value based on checked state
+
         if (!this.disabled) {
             this.input.addEventListener('input', (e) => {
+                this.validate();
+
+                this.pristine = false;
+                this.propagateValidation();
+
+                this.indeterminate = false;
                 this.checked = e.target.checked;
+
                 event.dispatchCustomEvent(this, 'wje-toggle:input');
             });
 
             this.input.addEventListener('change', (e) => {
-                this.checked = e.target.checked;
                 event.dispatchCustomEvent(this, 'wje-toggle:change');
             });
+
+            this.addEventListener('invalid', (e) => {
+                this.invalid = true;
+                this.pristine = false;
+
+                this.showInvalidMessage();
+            });
+
+            this.validate();
+
+            if (this.invalid) {
+                this.showInvalidMessage();
+            }
         }
+    }
+
+    /**
+     * Removes the event listener when the checkbox is disconnected.
+     */
+    beforeDisconnect() {
+        event.removeElement(this.input);
     }
 }

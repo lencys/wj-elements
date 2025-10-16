@@ -380,11 +380,14 @@ export default class Input extends FormAssociatedElement {
                 this.propagateValidation();
             }
 
+            if (this.invalid && this.checkValidity()) {
+                this.invalid = false;
+                this.errorMessage.textContent = '';
+                this.internals.setValidity({}, '');
+            }
+
             this.input.classList.remove('pristine');
             this.labelElement.classList.add('fade');
-
-            // const clone = new e.constructor(e.type, e);
-            // this.dispatchEvent(clone);
 
             event.dispatchCustomEvent(this, 'wje-input:input', {
                 value: this.input.value,
@@ -393,7 +396,7 @@ export default class Input extends FormAssociatedElement {
             this.value = this.input.value;
         });
 
-        this.addEventListener('wje-input:invalid', (e) => {
+        this.addEventListener('invalid', (e) => {
             this.invalid = true;
             this.pristine = false;
 

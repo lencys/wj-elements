@@ -163,6 +163,11 @@ export default class RadioGroup extends FormAssociatedElement {
             this.pristine = false;
             this.propagateValidation();
 
+            if (this.invalid) {
+                this.invalid = false;
+                // this.errorMessage.textContent = '';
+                this.internals.setValidity({}, '');
+            }
         });
 
         this.input.addEventListener('input', (e) => {
@@ -174,7 +179,7 @@ export default class RadioGroup extends FormAssociatedElement {
             event.dispatchCustomEvent(this, 'wje-radio-group:change');
         });
 
-        this.addEventListener('wje-radio-group:invalid', (e) => {
+        this.addEventListener('invalid', (e) => {
             this.invalid = true;
             this.pristine = false;
 

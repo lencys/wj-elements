@@ -704,7 +704,7 @@ export class Select extends FormAssociatedElement {
 
 		this.addEventListener('wje-option:change', this.optionChange);
 
-		this.addEventListener('wje-select:invalid', (e) => {
+		this.addEventListener('invalid', (e) => {
 			this.invalid = true;
 			this.pristine = false;
 

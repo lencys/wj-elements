@@ -17,7 +17,7 @@ template.innerHTML = `<h1>Input</h1>
           
           <!-- STANDARD -->
           <h2>Standard</h2>
-          <wje-select name="single-select" variant="standard" label="Label" placeholder="Select option" value="option-2" clearable required multiple>
+          <wje-select name="single-select" variant="standard" label="Label" placeholder="Select option"  clearable required multiple>
             <wje-option value="option-1">Option 1</wje-option>
             <wje-option value="option-2">
               Option 2
@@ -26,10 +26,10 @@ template.innerHTML = `<h1>Input</h1>
             <wje-option value="option-3">Option 3</wje-option>
             <wje-option value="option-4">Option 4</wje-option>
           </wje-select>
-          <wje-input variant="standard" label="Project URL" required validate-on-change><span slot="start"><wje-icon name="globe"></wje-icon></span><span slot="end">.com</span></wje-input>
-          <wje-input variant="standard" label="Number" type="number" required validate-on-change></wje-input>
-          <wje-textarea variant="standard" label="Label" name="dog" rows="4" max-length="24" required counter validate-on-change></wje-textarea>
-          <wje-radio-group id="radio-group-animal" name="radio">
+          <wje-input variant="standard" label="Project URL" required><span slot="start"><wje-icon name="globe"></wje-icon></span><span slot="end">.com</span></wje-input>
+          <wje-input variant="standard" label="Number" type="number" required></wje-input>
+          <wje-textarea variant="standard" label="Label" name="dog" rows="4" max-length="24" required counter></wje-textarea>
+          <wje-radio-group id="radio-group-animal" name="radio" required>
             <wje-radio value="cat">Cat</wje-radio>
             <wje-radio value="elephant" disabled="">Elephant</wje-radio>
             <wje-radio indeterminate value="rabbit" >Rabbit</wje-radio>
@@ -38,11 +38,14 @@ template.innerHTML = `<h1>Input</h1>
           <hr>
           <wje-checkbox name="checkbox" required>Default checked</wje-checkbox>
           <br>
-          <div style="display: flex; gap: .5rem;">
-            <wje-button type="reset">Reset</wje-button>
-            <wje-button type="submit" color="primary">Submit</wje-button>
-          </div>
+          <wje-toggle name="toggle" color="primary" required>Default toggle</wje-toggle>
+          <br>
+          <button type="submit" hidden></button>
         </form>
+        <div style="display: flex; gap: .5rem;">
+            <wje-button type="reset">Reset</wje-button>
+            <wje-button color="primary" id="submit-test-form-1">Submit</wje-button>
+          </div>
       </div>
     </div>
     
@@ -308,18 +311,19 @@ export default class DemoInput extends WJElement {
     });
 
     // FORM 1
+
     let form1 = this.context.querySelector('#test-form-1');
+
+    // Submit button outside of form
+    this.context.querySelector('#submit-test-form-1').addEventListener('wje-button:click', (e) => {
+      console.log('VALID FORM 1:', form1.checkValidity());
+      form1.checkValidity();
+    });
+
     form1.addEventListener('submit', (e) => {
       console.log('SUMBIT CLICK', e.target);
       e.preventDefault();
-      if (!e.target.checkValidity()) {
-        let formData = new FormData(e.target);
-        console.log("FORM DATA:", formData, Object.fromEntries(formData.entries()));
-        for (let pair of formData.entries()) {
-          // console.log(pair[0] + ', ' + pair[1]);
-        }
-        // console.log('klikol som form submit', e);
-      }
+      e.target.checkValidity();
     });
 
     form1.addEventListener('reset', (e) => {
