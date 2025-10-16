@@ -26,6 +26,7 @@ import styles from './styles/styles.css?inline';
  */
 
 export default class ColorPicker extends WJElement {
+    #init = false;
     /**
      * ColorPicker constructor method.
      */
@@ -63,6 +64,22 @@ export default class ColorPicker extends WJElement {
     }
 
     /**
+     * Sets the color attribute of the element.
+     * @param {string} value The color value to be set. It should be a valid color string such as a named color, HEX, RGB, or HSL format.
+     */
+    set color(value) {
+        this.setAttribute('color', value);
+    }
+
+    /**
+     * Retrieves the color attribute of the element.
+     * @returns {string | null} The current value of the 'color' attribute, or null if the attribute is not set.
+     */
+    get color() {
+        return this.getAttribute('color') || '#000000';
+    }
+
+    /**
      * Setter for the marker position.
      * @param {object} value The new marker position.
      */
@@ -91,7 +108,70 @@ export default class ColorPicker extends WJElement {
      * @returns {Array} The current color swatches.
      */
     get swatches() {
+        this._swatches = this.getAttribute('swatches') ? this.getAttribute('swatches').split(',') : this._swatches;
         return this._swatches;
+    }
+
+    /**
+     * Sets or removes the 'no-color-area' attribute based on the provided value.
+     * @param {boolean} value A boolean value indicating whether to set or remove the 'no-color-area' attribute. If true, the attribute is added; if false, the attribute is removed.
+     */
+    set noColorArea(value) {
+        if (value) {
+            this.setAttribute('no-color-area', '');
+        } else {
+            this.removeAttribute('no-color-area');
+        }
+    }
+
+    /**
+     * Getter method to check if the 'no-color-area' attribute is applied.
+     * @returns {boolean} Returns true if the 'no-color-area' attribute is present; otherwise, false.
+     */
+    get noColorArea() {
+        return this.hasAttribute('no-color-area');
+    }
+
+    /**
+     * Sets or removes the "no-controls" attribute.
+     * @param {boolean} value If true, sets the "no-controls" attribute. If false, removes the "no-controls" attribute.
+     */
+    set noControls(value) {
+        if (value) {
+            this.setAttribute('no-controls', '');
+        } else {
+            this.removeAttribute('no-controls');
+        }
+    }
+
+    /**
+     * Checks if the 'no-controls' attribute is present on the element.
+     * @returns {boolean} Returns true if the 'no-controls' attribute is present; otherwise, false.
+     */
+    get noControls() {
+        return this.hasAttribute('no-controls');
+    }
+
+    /**
+     * Sets or removes the 'no-swatches' attribute on the element.
+     * If the value is truthy, the 'no-swatches' attribute is added.
+     * If the value is falsy, the 'no-swatches' attribute is removed.
+     * @param {boolean} value Determines whether the 'no-swatches' attribute is set (true) or removed (false).
+     */
+    set noSwatches(value) {
+        if (value) {
+            this.setAttribute('no-swatches', '');
+        } else {
+            this.removeAttribute('no-swatches');
+        }
+    }
+
+    /**
+     * Checks if the 'no-swatches' attribute is present on the element.
+     * @returns {boolean} Returns true if the 'no-swatches' attribute is present; otherwise, false.
+     */
+    get noSwatches() {
+        return this.hasAttribute('no-swatches');
     }
 
     className = 'ColorPicker';
@@ -122,8 +202,10 @@ export default class ColorPicker extends WJElement {
     }
 
     /**
-     * Draws the ColorPicker element.
-     * @returns {DocumentFragment} The created document fragment.
+     * Creates and returns a document fragment containing the structure and components of a custom color picker.
+     * The method initializes DOM elements such as divs, sliders, and inputs, with specific classes and attributes,
+     * and attaches various event listeners to handle user interactions.
+     * @returns {DocumentFragment} A DocumentFragment containing the constructed and fully initialized DOM elements for the color picker.
      */
     draw() {
         let fragment = document.createDocumentFragment();
@@ -152,11 +234,13 @@ export default class ColorPicker extends WJElement {
 
         colorArea.addEventListener('mousedown', (e) => {
             e.preventDefault();
-            colorArea.addEventListener('mousemove', this.moveMarker);
-        });
-
-        colorArea.addEventListener('mouseup', () => {
-            colorArea.removeEventListener('mousemove', this.moveMarker);
+            const stopMoving = () => {
+                window.removeEventListener('mousemove', this.moveMarker);
+                window.removeEventListener('mouseup', stopMoving);
+            };
+            window.addEventListener('mousemove', this.moveMarker);
+            window.addEventListener('mouseup', stopMoving);
+            this.moveMarker(e); // inicializuj prvý pohyb
         });
 
         let wrapper = document.createElement('div');
@@ -185,41 +269,38 @@ export default class ColorPicker extends WJElement {
         colorPreview.classList.add('color-preview');
 
         let input = document.createElement('wje-input');
-        input.classList.add('input');
         input.setAttribute('variant', 'standard');
-        input.value = '#ff0000';
+        if(!this.noColorArea || !this.noControls || !this.noSwatches)
+            input.setAttribute('readonly', '');
+        input.classList.add('input');
+        input.addEventListener('wje-input:input', (e) => {
+            this.setColor(tinycolor(input.value), 'swatch');
+        });
 
         // APPEND
+        colorArea.append(marker);
 
-        colorArea.appendChild(marker);
+        alphaWrapper.append(alphaSlider);
 
-        alphaWrapper.appendChild(alphaSlider);
+        inputWrapper.append(colorPreview, input);
 
-        inputWrapper.appendChild(colorPreview);
-        inputWrapper.appendChild(input);
+        if(!this.noControls)
+            wrapper.append(hueSlider, alphaWrapper)
 
-        wrapper.appendChild(hueSlider);
-        wrapper.appendChild(alphaWrapper);
-        wrapper.appendChild(inputWrapper);
+        wrapper.append(inputWrapper);
 
-        picker.appendChild(colorArea);
-        picker.appendChild(wrapper);
+        if(!this.noColorArea)
+            picker.append(colorArea);
 
-        this.createSwatches(wrapper);
+        picker.append(wrapper);
 
-        // POPUP
-        let popup = document.createElement('wje-popup');
-        popup.setAttribute('placement', this.placement || 'bottom-start');
-        popup.setAttribute('offset', this.offset);
-        popup.setAttribute('manual', '');
-        popup.appendChild(anchor);
-        popup.appendChild(picker);
+        if(!this.noSwatches)
+            this.createSwatches(wrapper);
 
-        native.appendChild(popup);
+        native.append(picker);
 
-        fragment.appendChild(native);
+        fragment.append(native);
 
-        this.popup = popup;
         this.anchor = anchor;
         this.picker = picker;
         this.marker = marker;
@@ -230,6 +311,31 @@ export default class ColorPicker extends WJElement {
         this.input = input;
 
         return fragment;
+    }
+
+    /**
+     * Executes after the component is drawn. Initializes some configurations if not already initialized,
+     * including updating slider values, setting marker positions, and applying initial color settings.
+     * This method ensures that all necessary visual elements and configurations are properly set up.
+     * @returns {void} Does not return a value.
+     */
+    afterDraw() {
+        this.#init = false;
+
+        if (!this.#init) {
+            window.setTimeout(() => {
+                if (this.color !== '') this.alphaSlider.value = 100;
+
+                this.colorAreaDimension = this.dimension();
+                this.markerPosition = this.setMarkerPositionByColor(this.color);
+                this.setMarkerPosition(this.markerPosition.x, this.markerPosition.y);
+
+                this.setSliders(this.color);
+                this.setColor(tinycolor(this.color), 'init');
+            }, 0);
+
+            this.#init = true;
+        }
     }
 
     /**
@@ -258,29 +364,6 @@ export default class ColorPicker extends WJElement {
     }
 
     /**
-     * Sets up the event listeners for the ColorPicker.
-     */
-    afterDraw() {
-        this.init = false;
-        // ak sa otvori popup tak si odchytime event a nastavime potrebne parametre
-        this.addEventListener('wje-popup:show', (e) => {
-            if (!this.init) {
-                window.setTimeout(() => {
-                    this.colorAreaDimension = this.dimension();
-                    this.markerPosition = this.setMarkerPositionByColor(this.input.value);
-                    this.setMarkerPosition(this.markerPosition.x, this.markerPosition.y);
-
-                    if (this.input.value !== '') this.alphaSlider.value = 100;
-
-                    this.setColor();
-                }, 0);
-
-                this.init = true;
-            }
-        });
-    }
-
-    /**
      * Sets the sliders to the given color.
      * @param color
      */
@@ -291,49 +374,60 @@ export default class ColorPicker extends WJElement {
     }
 
     /**
-     * Gets the dimensions of the color area.
-     * @returns {{width: *, x: *, y: *, height: *}}
+     * Retrieves the dimensions and position of the color area element relative to the viewport.
+     * @returns {object} An object containing the following properties:
+     * width: The width of the element in pixels.
+     * height: The height of the element in pixels.
+     * x: The x-coordinate of the element's left edge relative to the viewport.
+     * y: The y-coordinate of the element's top edge relative to the viewport.
      */
     dimension() {
+        const rect = this.colorArea.getBoundingClientRect();
         return {
-            width: this.colorArea.offsetWidth,
-            height: this.colorArea.offsetHeight,
-            x: this.colorArea.offsetLeft,
-            y: this.colorArea.offsetTop,
+            width: rect.width,
+            height: rect.height,
+            x: rect.left,   // viewport-relative
+            y: rect.top,    // viewport-relative
         };
     }
 
     /**
-     * Disconnects the ColorPicker.
+     * Method executed before disconnecting. Resets the initialization state to false.
+     * @returns {void} Does not return a value.
      */
     beforeDisconnect() {
-        this.init = false;
+        this.#init = true;
     }
 
     /**
-     * Moves the marker to the given position.
-     * @param e
+     * Updates the position of the marker based on the pointer event.
+     * This function calculates the position of the marker relative to the color area
+     * dimensions based on the given event. It adjusts the marker position and updates
+     * the color associated with the new position. It is intended to handle pointer movement
+     * events such as mouse or touch interactions.
+     * @param {Event} e The event triggering the marker movement, typically a mouse or touch event.
      */
     moveMarker = (e) => {
         this.colorAreaDimension = this.dimension();
         const pointer = this.getPointerPosition(e);
 
-        let x = pointer.pageX - this.colorAreaDimension.x;
-        let y = pointer.pageY - this.colorAreaDimension.y;
+        let x = pointer.x - this.colorAreaDimension.x;
+        let y = pointer.y - this.colorAreaDimension.y;
 
         this.setColor(this.setColorAtPosition(x, y), 'marker');
         this.setMarkerPosition(x, y);
     };
 
     /**
-     * Sets the hue.
+     * Gets the pointer position in client coordinates (viewport-relative).
      * @param e
-     * @returns {{pageY: (*|number), pageX: (*|number)}}
+     * @returns {{x: number, y: number}}
      */
     getPointerPosition(e) {
+        const p = (e.touches && e.touches[0]) || (e.changedTouches && e.changedTouches[0]) || e;
         return {
-            pageX: e.changedTouches ? e.changedTouches[0].pageX : e.clientX,
-            pageY: e.changedTouches ? e.changedTouches[0].pageY : e.clientY,
+            x: p.clientX,
+            y: p.clientY,
         };
     }
 
@@ -386,7 +480,7 @@ export default class ColorPicker extends WJElement {
             x: this.colorAreaDimension.width * hsva.s,
             y: this.colorAreaDimension.height - this.colorAreaDimension.height * hsva.v,
         };
-    };
+    }
 
     /**
      * Updates the color picker's current color and its associated UI elements.
@@ -437,7 +531,7 @@ export default class ColorPicker extends WJElement {
         }
 
         // SET: swatch - HEX
-        if (type === 'swatch') {
+        if (type === 'swatch' || type === 'init') {
             this.colorPreview.style.setProperty('--wje-color-picker-value', currentColor.toHex8String());
             this.marker.style.setProperty('--wje-color-picker-value', currentColor.toHexString());
             this.alphaSlider.style.setProperty('--wje-color-picker-value', currentColor.toHexString());
@@ -447,9 +541,11 @@ export default class ColorPicker extends WJElement {
             this.setMarkerPosition(this.markerPosition.x, this.markerPosition.y);
         }
 
-        this.input.value = currentColor.toHex8String();
-        this.anchor.style.setProperty('--wje-color-picker-value', currentColor.toHexString());
+        if(!this.noColorArea || !this.noControls || !this.noSwatches) {
+            this.input.value = currentColor.toHex8String();
+        }
 
+        this.anchor.style.setProperty('--wje-color-picker-value', currentColor.toHexString());
         this.value = {
             hex8: currentColor.toHex8String(),
             hex: currentColor.toHexString(),
@@ -462,8 +558,12 @@ export default class ColorPicker extends WJElement {
             name: currentColor.toName(),
             format: currentColor.getFormat(),
         };
-        event.dispatchCustomEvent(this, 'wje-color-picker:select', this.value);
-    };
+        this.color = currentColor.toHex8String();
+
+        event.dispatchCustomEvent(this, 'wje-color-picker:change', {
+            value: this.value,
+        });
+    }
 
     /**
      * Sets the hue.
@@ -473,7 +573,7 @@ export default class ColorPicker extends WJElement {
         this.hueSlider.value = e.detail.value;
 
         this.setColor(null, 'hue');
-    };
+    }
 
     /**
      * Sets the alpha.
@@ -483,7 +583,7 @@ export default class ColorPicker extends WJElement {
         this.alphaSlider.value = e.detail.value;
 
         this.setColor(null, 'alpha');
-    };
+    }
 
     /**
      * Converts hue and alpha values into an HSVA color string.
@@ -491,8 +591,7 @@ export default class ColorPicker extends WJElement {
      * @param {number} alpha The alpha value, typically between 0 and 100, representing the opacity percentage.
      * @returns {string} - The HSVA color string in the format `hsva(h, 100%, 100%, a)`.
      */
-    getH;
     getHSVA = (hue, alpha) => {
         return `hsva(${hue}, 100%, 100%, ${alpha / 100})`;
-    };
+    }
 }

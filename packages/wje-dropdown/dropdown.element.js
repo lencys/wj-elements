@@ -35,7 +35,7 @@ export default class Dropdown extends WJElement {
      * Sets or removes the 'portaled' attribute on the element.
      * When the value is truthy, the attribute 'portaled' is added to the element.
      * When the value is falsy, the attribute 'portaled' is removed from the element.
-     * @param {boolean} value - Determines whether to add or remove the 'portaled' attribute.
+     * @param {boolean} value Determines whether to add or remove the 'portaled' attribute.
      */
     set portaled(value) {
         if (value) {

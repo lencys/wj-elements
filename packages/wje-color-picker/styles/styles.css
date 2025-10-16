@@ -10,11 +10,11 @@
 
 .picker {
     width: 200px;
-    min-height: 90px;
+    /*min-height: 90px;*/
     box-shadow:
         0 0 5px rgba(0, 0, 0, 0.05),
         0 5px 20px rgba(0, 0, 0, 0.1);
-    border-radius: var(--wje-border-radius-small);
+    border-radius: var(--wje-color-picker-radius);
     border-width: 1px;
     border-style: var(--wje-border-style);
     border-color: var(--wje-border-color);

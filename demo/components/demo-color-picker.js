@@ -11,18 +11,42 @@ template.innerHTML = `<h1>Color Picker</h1>
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
-        <wje-color-picker></wje-color-picker>
+        <wje-color-picker color="#00b4d8"></wje-color-picker>
+<!--        <wje-color-picker color="#00b4d8" swatches="#e9c46aff, #2a9d8fff, #d62828ff" no-color-area no-controls no-swatches></wje-color-picker>-->
+<!--        <wje-color-picker color="#00b4d8" swatches="#e9c46aff, #2a9d8fff, #d62828ff" no-color-area no-controls></wje-color-picker>-->
+<!--        <wje-color-picker color="#00b4d8" swatches="#e9c46aff, #2a9d8fff, #d62828ff" no-color-area></wje-color-picker>-->
+<!--        <wje-color-picker color="#00b4d8" swatches="#e9c46aff, #2a9d8fff, #d62828ff"></wje-color-picker>-->
+<!--        <wje-color-picker color="#00b4d8" swatches="#e9c46aff, #2a9d8fff, #d62828ff" no-controls></wje-color-picker>-->
+      </div>
+    </div>
+    
+    <!-- DROPDOWN -->
+
+    <h2>Dropdown</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible portaled>
+          <div class="color" slot="trigger"></div>
+          <wje-color-picker id="example" color="#00b4d8"></wje-color-picker>
+        </wje-dropdown>
+        <style>
+          .color {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: var(--wje-border-radius-circle);
+          }
+        </style>
       </div>
     </div>
     
     <!-- SWATCHES -->
 
-    <h2>Swatches</h2>
-    <div class="playground">
-      <div class="content">
-        <wje-color-picker swatches="#ff0000, #000000, #333333"></wje-color-picker>
-      </div>
-    </div>
+<!--    <h2>Swatches</h2>-->
+<!--    <div class="playground">-->
+<!--      <div class="content">-->
+<!--        <wje-color-picker color="#00b4d8" swatches="#ff0000, #000000, #333333"></wje-color-picker>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>`;
 
 export default class DemoColorPicker extends WJElement {
@@ -42,6 +66,10 @@ export default class DemoColorPicker extends WJElement {
   afterDraw() {
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(this.context);
+
+    this.querySelector('#example').addEventListener('wje-color-picker:change', (e) => {
+      this.querySelector('.color').style.backgroundColor = e.detail.value.hex;
+    });
   }
 }
 
