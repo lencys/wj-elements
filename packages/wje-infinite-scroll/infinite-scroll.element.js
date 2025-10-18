@@ -448,4 +448,14 @@ export default class InfiniteScroll extends WJElement {
             this.currentPage--;
         }
     }
+
+    reset() {
+        this.isLoading = [];
+        this.currentPage = 0;
+        this.totalPages = 0;
+        this.response = {};
+        this.#drawnItems = [];
+        this.#loadedItems = [];
+        this.placementObj.innerHTML = '';
+    }
 }

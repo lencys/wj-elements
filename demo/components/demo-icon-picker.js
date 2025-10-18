@@ -11,8 +11,30 @@ template.innerHTML = `<h1>Icon Picker</h1>
     <h2>Basic</h2>
     <div class="playground">
       <div class="content">
-        <wje-icon-picker icon=""></wje-icon-picker>
-        <wje-icon-picker icon="activity-heartbeat"></wje-icon-picker>
+        <wje-icon-picker></wje-icon-picker>
+      </div>
+    </div>
+    
+    <!-- DROPDOWN -->
+
+    <h2>Dropdown</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible portaled>
+          <div class="icon" slot="trigger"></div>
+          <wje-icon-picker id="example" icon="ad-circle" type="filled"></wje-icon-picker>
+        </wje-dropdown>
+        <style>
+          .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: var(--wje-border-radius-circle);
+            border: 1px solid var(--wje-border-color);
+          }
+        </style>
       </div>
     </div>
   </div>`;
@@ -34,6 +56,12 @@ export default class DemoIconPicker extends WJElement {
   afterDraw() {
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(this.context);
+
+    this.querySelector('#example').addEventListener('wje-icon-picker:select', (e) => {
+      let iconContainer = this.querySelector('.icon');
+      iconContainer.innerHTML = '';
+      iconContainer.append(e.detail.icon);
+    });
   }
 }
 

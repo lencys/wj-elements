@@ -2,7 +2,6 @@ import { default as WJElement, event } from '../wje-element/element.js';
 import { getBasePath } from "../utils/base-path.js";
 import InfiniteScroll from '../wje-infinite-scroll/infinite-scroll.js';
 import Input from '../wje-input/input.js';
-import Popup from '../wje-popup/popup.js';
 import Tooltip from '../wje-tooltip/tooltip.js';
 import styles from './styles/styles.css?inline';
 
@@ -44,8 +43,7 @@ export default class IconPicker extends WJElement {
     dependencies = {
         'wje-input': Input,
         'wje-infinite-scroll': InfiniteScroll,
-        'wje-tooltip': Tooltip,
-        'wje-popup': Popup,
+        'wje-tooltip': Tooltip
     };
 
     /**
@@ -80,6 +78,22 @@ export default class IconPicker extends WJElement {
         return this.getAttribute('icon');
     }
 
+    /**
+     * Setter for the value property.
+     * @param value
+     */
+    set type(value) {
+        this.setAttribute('type', value);
+    }
+
+    /**
+     * Getter for the value property.
+     * @returns {string}
+     */
+    get type() {
+        return this.getAttribute('type');
+    }
+
     className = 'IconPicker';
 
     /**
@@ -108,7 +122,8 @@ export default class IconPicker extends WJElement {
     }
 
     /**
-     * Prepares the component before drawing.
+     * Prepares data before the draw operation by fetching tags, transforming objects, and creating an index.
+     * @returns {Promise<void>} Resolves when data preparation is complete.
      */
     async beforeDraw() {
         this.tags = Object.values(await this.getTags());
@@ -122,8 +137,11 @@ export default class IconPicker extends WJElement {
     }
 
     /**
-     * Draws the component.
-     * @returns {DocumentFragment}
+     * Draws and initializes the native color picker component on the DOM.
+     * This method creates and appends the necessary elements, including input and infinite scroll components,
+     * and sets their attributes and event listeners. It also provides custom data handling for infinite scrolling
+     * and manages the way icons are displayed based on input.
+     * @returns {DocumentFragment} A document fragment containing the fully constructed color picker component.
      */
     draw() {
         let fragment = document.createDocumentFragment();
@@ -131,16 +149,14 @@ export default class IconPicker extends WJElement {
         let native = document.createElement('div');
         native.classList.add('native-color-picker');
 
-        // ANCHOR
-        let anchor = document.createElement('div');
-        anchor.setAttribute('slot', 'anchor');
-        anchor.classList.add('anchor');
-
         if (this.hasAttribute('icon') && this.icon) {
+
             let icon = document.createElement('wje-icon');
             icon.setAttribute('name', this.icon);
+            if(this.type === 'filled')
+                icon.setAttribute('filled', '');
 
-            anchor.appendChild(icon);
+            this.selectIcon(icon);
         }
 
         // PICKER
@@ -152,7 +168,8 @@ export default class IconPicker extends WJElement {
         input.setAttribute('variant', 'standard');
         input.setAttribute('placeholder', 'type to filter...');
         input.setAttribute('clearable', '');
-        input.addEventListener('wje-input:input', this.searchIcon);
+        input.addEventListener('wje-input:input', this.debounce(this.searchIcon.bind(this), 300));
+        input.addEventListener('wje-input:clear', this.searchIcon);
 
         let infiniteScroll = new InfiniteScroll();
         infiniteScroll.setAttribute('url', getBasePath('assets/tags.json'));
@@ -162,26 +179,13 @@ export default class IconPicker extends WJElement {
         infiniteScroll.innerHTML = '<div class="icon-items"></div>';
 
         // APPEND
-        picker.appendChild(input);
+        picker.append(input, infiniteScroll);
 
-        picker.appendChild(infiniteScroll);
+        native.append(picker);
 
-        // POPUP
-        let popup = document.createElement('wje-popup');
-        popup.setAttribute('placement', this.placement || 'bottom-start');
-        popup.setAttribute('offset', this.offset);
-        popup.setAttribute('manual', '');
+        fragment.append(native);
 
-        popup.appendChild(anchor);
-        popup.appendChild(picker);
-
-        native.appendChild(popup);
-
-        fragment.appendChild(native);
-
-        this.popup = popup;
         this.input = input;
-        this.anchor = anchor;
         this.picker = picker;
         this.infiniteScroll = infiniteScroll;
 
@@ -200,12 +204,11 @@ export default class IconPicker extends WJElement {
     }
 
     /**
-     * Called after the component has been drawn.
+     * Executes actions that occur after the component finishes its draw phase. Sets up event listeners for input clear
+     * and infinite scroll item clicks, resets initialization state, and rebinds scroll-related events.
+     * @returns {void} Does not return a value.
      */
     afterDraw() {
-        this.addEventListener('wje-popup:show', () => {
-            this.initial();
-        });
 
         // udalost po vymazani inputu
         this.addEventListener('wje-input:clear', () => {
@@ -215,29 +218,46 @@ export default class IconPicker extends WJElement {
         });
 
         this.addEventListener('wje-infinite-scroll:click-item', (e) => {
-            let icon = e.detail.context.querySelector('wje-icon');
-            let name = icon.getAttribute('name');
-            let stylesType = icon.hasAttribute('filled') ? 'filled' : 'outline';
-            let uniqueObject = this.transformedObjects.find(
-                (i) => i.name === name && Object.keys(i.styles)[0] === stylesType
-            );
+            e.preventDefault();
+            e.stopImmediatePropagation();
 
-            const iconElement = document.createElement('wje-icon');
-            iconElement.setAttribute('name', name);
-            if (uniqueObject.styles.hasOwnProperty('filled')) iconElement.setAttribute('filled', '');
-
-            uniqueObject.icon = iconElement;
-
-            this.value = uniqueObject;
-            this.icon = uniqueObject.name;
-
-            this.anchor.innerHTML = '';
-            this.anchor.appendChild(iconElement);
-
-            event.dispatchCustomEvent(this, 'wje-icon-picker:select', uniqueObject); // odpalenie custom eventu
+            this.selectIcon(e.detail.context.querySelector('wje-icon'));
         });
 
         this.init = false;
+    }
+
+    /**
+     * Handles the selection of an icon from a given input element and updates the relevant properties and events.
+     * @function selectIcon
+     * @param {HTMLElement} icon The icon element that was selected. It must have a 'name' attribute and may optionally have a 'filled' attribute.
+     * The function performs the following actions:
+     * - Retrieves the name of the selected icon from its 'name' attribute.
+     * - Determines the style type ('filled' or 'outline') based on the presence of the 'filled' attribute.
+     * - Searches for a matching object in the `transformedObjects` array based on name and style.
+     * - Creates a new `wje-icon` element and assigns its attributes based on the selected icon's properties.
+     * - Updates the selected object's properties and assigns it to the `value`, `icon`, and `type` properties of the class.
+     * - Dispatches a custom event (`wje-icon-picker:select`) to signal a change in the selected icon.
+     */
+    selectIcon = (icon) => {
+        let name = icon.getAttribute('name');
+        let stylesType = icon.hasAttribute('filled') ? 'filled' : 'outline';
+        let uniqueObject = this.transformedObjects.find(
+          (i) => i.name === name && Object.keys(i.styles)[0] === stylesType
+        );
+
+        const iconElement = document.createElement('wje-icon');
+        iconElement.setAttribute('name', name);
+
+        if (uniqueObject.styles?.hasOwnProperty('filled')) iconElement.setAttribute('filled', '');
+
+        uniqueObject.icon = iconElement;
+
+        this.value = uniqueObject;
+        this.icon = uniqueObject.name;
+        this.type = uniqueObject.styles?.hasOwnProperty('filled') ? 'filled' : 'outline';
+
+        event.dispatchCustomEvent(this, 'wje-icon-picker:select', uniqueObject); // odpalenie custom eventu
     }
 
     /**
@@ -340,15 +360,6 @@ export default class IconPicker extends WJElement {
     };
 
     /**
-     * Gets the category of the tags.
-     * @param {Array} tags The tags to get the category of.
-     * @returns {Array} The category of the tags.
-     */
-    getCategory(tags) {
-        return [...new Set(tags.map((obj) => obj.category))];
-    }
-
-    /**
      * Gets the tags.
      * @returns {Promise<Array>} The tags of the component.
      */
@@ -372,13 +383,26 @@ export default class IconPicker extends WJElement {
      * @param {Event} e The input event (e.g., `wje-input:input`) containing the search query details.
      */
     searchIcon = (e) => {
-        const query = e.detail.value.toLowerCase();
-
+        const query = !e.detail?.value ? "" : e.detail.value.toLowerCase();
         const results = this.index.filter((item) => item.searchText.includes(query));
+
+        if (results.length === 0) {
+            this.clearIconsContainer();
+
+            const noResultsDiv = document.createElement('div');
+            noResultsDiv.setAttribute('part', 'no-results');
+            noResultsDiv.classList.add('no-results');
+            noResultsDiv.textContent = 'No icons found';
+
+            this.infiniteScroll.querySelector('.icon-items').append(noResultsDiv);
+
+            return;
+        }
 
         this.infiniteScroll.unScrollEvent();
         this.infiniteScroll.setCustomData = (page = 0) => {
             const data = results.slice(page * this.size, page * this.size + this.size);
+
             return {
                 data: data,
                 page: page,
@@ -387,7 +411,8 @@ export default class IconPicker extends WJElement {
             };
         };
 
-        this.clearIconsContainer();
+        this.infiniteScroll.reset();
+        this.infiniteScroll.scrollEvent();
         this.infiniteScroll.loadPages(0);
     }
 
@@ -399,9 +424,17 @@ export default class IconPicker extends WJElement {
     }
 
     /**
-     * Closes the component.
+     * Creates a debounced version of the provided function that delays its execution
+     * until after the specified delay has passed since the last time it was invoked.
+     * @param {Function} fn The function to debounce.
+     * @param {number} delay The delay duration in milliseconds.
+     * @returns {Function} A new debounced function that delays the execution of the original function.
      */
-    onClose = () => {
-        this.popup.handleHide();
+    debounce(fn, delay) {
+        let timeout;
+        return (...args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => fn(...args), delay);
+        };
     }
 }
