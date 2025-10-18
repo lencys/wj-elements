@@ -67,7 +67,7 @@ export default class DemoColorPicker extends WJElement {
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(this.context);
 
-    this.querySelector('#example').addEventListener('wje-color-picker:change', (e) => {
+    this.querySelector('#example').addEventListener('wje-color-picker:select', (e) => {
       this.querySelector('.color').style.backgroundColor = e.detail.value.hex;
     });
   }

@@ -560,7 +560,7 @@ export default class ColorPicker extends WJElement {
         };
         this.color = currentColor.toHex8String();
 
-        event.dispatchCustomEvent(this, 'wje-color-picker:change', {
+        event.dispatchCustomEvent(this, 'wje-color-picker:select', {
             value: this.value,
         });
     }
