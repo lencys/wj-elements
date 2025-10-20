@@ -13,12 +13,30 @@ import { default as WJElement } from '../wje-element/element.js';
  * @tag wje-router
  */
 export default class Routerx extends WJElement {
+	#routes;
+
 	/**
 	 * Creates an instance of Routerx.
 	 * @class
 	 */
 	constructor() {
 		super();
+	}
+
+	set routes(value) {
+		this.#routes = value;
+	}
+
+	get routes() {
+		return this.parseElement(this.rootElement).root;
+	}
+
+	get rootElement() {
+		const htmlString = this.outerHTML;
+
+		const parser = new DOMParser();
+		const htmlDocument = parser.parseFromString(htmlString, 'text/html');
+		return htmlDocument.querySelector('wje-router');
 	}
 
 	className = 'Routerx';
@@ -43,23 +61,15 @@ export default class Routerx extends WJElement {
 	 * Sets up the router after the component is drawn.
 	 */
 	beforeDraw() {
-		const htmlString = this.outerHTML;
-
-		const parser = new DOMParser();
-		const htmlDocument = parser.parseFromString(htmlString, 'text/html');
-		const rootElement = htmlDocument.querySelector('wje-router');
-
-		const routes = this.parseElement(rootElement).root;
-
 		this.router = new Router({
 			outlet: this.outlet || 'wje-router-outlet',
 			log: false,
-			logError: true,
+			logError: false,
 			root: this.root || '/',
 			pushState: true,
 		});
 
-		this.router.map(routes);
+		this.router.map(this.routes);
 		this.router.use(this.setBreadcrumb);
 		this.router.use(events);
 		this.router.use(this.resetScrollPosition);
