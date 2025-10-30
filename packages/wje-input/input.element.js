@@ -228,7 +228,7 @@ export default class Input extends FormAssociatedElement {
      * @returns {Array} The attributes to observe for changes.
      */
     static get observedAttributes() {
-        return ['value', 'name', 'disabled', 'placeholder', 'label', 'message', 'error-inline'];
+        return ['type', 'value', 'name', 'disabled', 'placeholder', 'label', 'message', 'error-inline'];
     }
 
     /**
