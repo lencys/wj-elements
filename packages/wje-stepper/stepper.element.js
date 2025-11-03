@@ -27,6 +27,26 @@ export default class Stepper extends WJElement {
 
 	}
 
+	/**
+	 * Sets the start index for an operation or a process. This method assigns
+	 * the provided value to the attribute 'start-index'.
+	 * @param {number|string} value The value to set for the 'start-index' attribute.
+	 */
+	set startIndex(value) {
+		this.setAttribute('start-index', value);
+	}
+
+	/**
+	 * Retrieves the starting index value stored as an attribute.
+	 * If the attribute 'start-index' exists and is not null, it parses the value as an integer and returns it.
+	 * If the attribute does not exist, it returns the default value of 0.
+	 * @returns {number} The starting index as an integer, or 0 if the attribute is not present.
+	 */
+	get startIndex() {
+		const index = this.getAttribute('start-index');
+		return index !== null ? +index : 0;
+	}
+
 	get active() {
 		if (this.hasAttribute('active')) return this.getAttribute('active');
 
@@ -209,6 +229,10 @@ export default class Stepper extends WJElement {
 		event.addListener(this.prev, 'click', '', () => this.navigate(-1));
 		event.addListener(this.next, 'click', '', () => this.navigate(1));
 		event.addListener(this.finish, 'click', '', () => this.navigate(1));
+
+		requestAnimationFrame(() => {
+			this.goToStep(this.startIndex);
+		});
 	}
 
 	/**
@@ -221,13 +245,21 @@ export default class Stepper extends WJElement {
 	}
 
 	/**
-	 * Navigates to a specific step in a multi-step process and updates the stepper UI accordingly.
+	 * Navigates to a specific step in a workflow or process.
+	 * Executes a set of operations before and after the step transition.
 	 * @param {number} stepIndex The index of the step to navigate to.
-	 * //@fires stepper:next Dispatched when navigating to the next step.
-	 * //@fires stepper:prev Dispatched when navigating to the previous step.
-	 * //@fires stepper:finish Dispatched when the final step is completed.
+	 * @returns {void} This method does not return a value.
 	 */
 	goToStep(stepIndex) {
+		Promise.resolve(this.beforeOpen(stepIndex, this.currentStep)).then((res) => {
+			this._executeGoToStep(stepIndex);
+
+			Promise.resolve(this.afterOpen(stepIndex, this.currentStep));
+		})
+		.catch(console.error);
+	}
+
+	_executeGoToStep(stepIndex = 0) {
 		if (stepIndex >= 0 && stepIndex < this.steps.length) {
 			if (this.headerSteps[stepIndex].hasAttribute('disabled')) {
 				return;
@@ -326,6 +358,47 @@ export default class Stepper extends WJElement {
 	}
 
 	/**
+	 * Returns the DOM element of a step by index.
+	 * @param {number} stepIndex
+	 * @returns {HTMLElement}
+	 */
+	getStepElement(stepIndex) {
+		return this.steps?.[stepIndex];
+	}
+
+	/**
+	 * Appends or replaces content inside the step container.
+	 * @param {number} stepIndex
+	 * @param {Node|string|Node[]} content DOM node(s) or HTML string to insert.
+	 * @param {{ replace?: boolean }} [options]
+	 */
+	renderStepContent(stepIndex, content, options = {}) {
+		const stepEl = this.getStepElement(stepIndex);
+		if (!stepEl) return;
+
+		const { replace = false } = options;
+
+		let frag = document.createDocumentFragment();
+		if (typeof content === 'string') {
+			const tpl = document.createElement('template');
+			tpl.innerHTML = content;
+			frag.append(tpl.content);
+		} else if (Array.isArray(content)) {
+			content.forEach(node => {
+				if (node instanceof Node) frag.appendChild(node);
+			});
+		} else if (content instanceof Node) {
+			frag.append(content);
+		}
+
+		if (replace) {
+			stepEl.replaceChildren(frag);
+		} else {
+			stepEl.append(frag);
+		}
+	}
+
+	/**
 	 * Marks a step as completed by setting the `done` attribute and updating its badge with a check icon.
 	 * @param {HTMLElement} nav The navigation element representing the completed step.
 	 * @param {HTMLElement|null} [badge] The badge element within the step. If not provided, it will be selected from the `nav` element.
@@ -363,5 +436,28 @@ export default class Stepper extends WJElement {
 		badge.removeAttribute('color');
 		badge.classList.add('disabled');
 		badge.appendChild(lockIcon);
+	}
+
+	/**
+	 * A callback function that is executed before opening a step in a process.
+	 * This allows for custom behavior or logic to be applied before the step is displayed.
+	 * @callback beforeOpen
+	 * @param {number} stepIndex The index of the step that is about to be opened.
+	 * @param {object} currentStep The current step data or configuration object before opening the new step.
+	 */
+	beforeOpen = (stepIndex, currentStep) => {
+		// Override to add custom behavior before opening a step.
+	}
+
+	/**
+	 * Callback function executed after a step is opened.
+	 * This function can be overridden to implement custom behavior
+	 * that should take place immediately after a step is opened.
+	 * @function afterOpen
+	 * @param {number} stepIndex The index of the step that has been opened.
+	 * @param {object} currentStep The object representing the current step that has been opened.
+	 */
+	afterOpen = (stepIndex, currentStep) => {
+		// Override to add custom behavior after opening a step.
 	}
 }
