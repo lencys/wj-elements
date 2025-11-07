@@ -420,7 +420,7 @@
     --wje-item-border-color: var(--wje-border-color);
     --wje-item-border-radius: 0;
     --wje-item-background: transparent;
-    --wje-item-background-hover: var(--wje-color-contrast-3);
+    --wje-item-background-hover: var(--wje-color-primary-3);
     --wje-item-padding-top: 0px;
     --wje-item-padding-bottom: 0px;
     --wje-item-padding-end: 0px;

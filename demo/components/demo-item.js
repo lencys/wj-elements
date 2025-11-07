@@ -52,7 +52,65 @@ template.innerHTML = `<h1>Item</h1>
       </div>
     </div>
 
-    <!--  ICONS IN ITEM -->
+    <!-- DROPDOWN -->
+    
+    <h2>Dropdown</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-list>
+          <wje-item>
+            <wje-label>Default Icon</wje-label>
+            <wje-dropdown slot="end" label="Start" placement="bottom-end" collapsible>
+              <wje-button fill="link" slot="trigger"><wje-icon name="dots-vertical" slot="icon-only" size="small"></wje-icon></wje-button>
+              <wje-menu variant="context">
+                <wje-menu-item route="accordion">
+                  <wje-icon name="plane" slot="start"></wje-icon>
+                  <wje-label>Menu item accordion</wje-label>
+                </wje-menu-item>
+                <wje-menu-item>
+                  <wje-icon name="book" slot="start"></wje-icon>
+                  <wje-label>Menu item</wje-label>
+                </wje-menu-item>
+                <wje-menu-item>
+                  <wje-icon name="music" slot="start"></wje-icon>
+                  <wje-label>Menu item</wje-label>
+                </wje-menu-item>
+                <wje-menu-item>
+                  <wje-icon name="video" slot="start"></wje-icon>
+                  <wje-label>Menu item</wje-label>
+                </wje-menu-item>
+              </wje-menu>
+            </wje-dropdown>
+          </wje-item>
+          <wje-item>
+            <wje-label>Default Icon</wje-label>
+            <wje-dropdown slot="end" label="Start" placement="bottom-end" collapsible>
+              <wje-button fill="link" slot="trigger"><wje-icon name="dots-vertical" slot="icon-only" size="small"></wje-icon></wje-button>
+              <wje-menu variant="context">
+                <wje-menu-item route="accordion">
+                  <wje-icon name="plane" slot="start"></wje-icon>
+                  <wje-label>Menu item accordion</wje-label>
+                </wje-menu-item>
+                <wje-menu-item>
+                  <wje-icon name="book" slot="start"></wje-icon>
+                  <wje-label>Menu item</wje-label>
+                </wje-menu-item>
+                <wje-menu-item>
+                  <wje-icon name="music" slot="start"></wje-icon>
+                  <wje-label>Menu item</wje-label>
+                </wje-menu-item>
+                <wje-menu-item>
+                  <wje-icon name="video" slot="start"></wje-icon>
+                  <wje-label>Menu item</wje-label>
+                </wje-menu-item>
+              </wje-menu>
+            </wje-dropdown>
+          </wje-item>
+        </wje-list>
+      </div>
+    </div>
+    
+    <!-- ICONS IN ITEM -->
 
     <h2>Icons in items</h2>
     <div class="playground">
