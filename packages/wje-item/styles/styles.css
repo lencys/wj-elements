@@ -4,7 +4,7 @@
 
 :host {
     display: block;
-    position: relative;
+    /*position: relative;*/
     align-items: center;
     justify-content: space-between;
     outline: none;
