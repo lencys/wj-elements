@@ -51,10 +51,14 @@ export default class Dropdown extends WJElement {
      * @returns {boolean} Returns `true` if the `portaled` attribute exists, otherwise `false`.
      */
     get portaled() {
-        return this.getAttribute('portaled');
+        return this.getAttribute('portaled') || '';
     }
 
-    isPortaled() {
+    /**
+     * Checks whether the element has the 'portaled' attribute.
+     * @returns {boolean} True if the element has the 'portaled' attribute, otherwise false.
+     */
+    get isPortaled() {
         return this.hasAttribute('portaled');
     }
 
