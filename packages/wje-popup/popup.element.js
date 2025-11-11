@@ -67,7 +67,7 @@ export default class Popup extends WJElement {
      * @param {boolean} value Determines whether the 'portal' attribute should be added or removed.
      */
     set portal(value) {
-        if (value) this.setAttribute('portal', '');
+        if (value) this.setAttribute('portal', value);
         else this.removeAttribute('portal');
     }
 
@@ -503,7 +503,18 @@ export default class Popup extends WJElement {
             }
         }
 
-        document.body.appendChild(host);
+        if(this.getAttribute('portal') === 'dialog') {
+            const dialog = this.getRootNode().host?.closest('wje-dialog');
+
+            if (this.getAttribute('portal') === 'dialog' && dialog) {
+                dialog.append(host);
+            } else {
+                document.body.append(host);
+            }
+        } else {
+            document.body.append(host);
+        }
+
         this._portalContainer = host;
         this._portalShadow = shadow;
     }

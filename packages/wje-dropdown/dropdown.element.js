@@ -39,7 +39,7 @@ export default class Dropdown extends WJElement {
      */
     set portaled(value) {
         if (value) {
-            this.setAttribute('portaled', '');
+            this.setAttribute('portaled', value);
         } else {
             this.removeAttribute('portaled');
         }
@@ -51,6 +51,10 @@ export default class Dropdown extends WJElement {
      * @returns {boolean} Returns `true` if the `portaled` attribute exists, otherwise `false`.
      */
     get portaled() {
+        return this.getAttribute('portaled');
+    }
+
+    isPortaled() {
         return this.hasAttribute('portaled');
     }
 
@@ -137,8 +141,8 @@ export default class Dropdown extends WJElement {
         popup.setAttribute('offset', this.offset);
         popup.setAttribute('part', 'popup');
 
-        if(this.portaled)
-            popup.setAttribute('portal', '');
+        if(this.isPortaled)
+            popup.setAttribute('portal', this.portaled);
 
         popup.append(anchorSlot, slot);
 
