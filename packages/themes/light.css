@@ -347,10 +347,21 @@
     --wje-dialog-margin-start: auto;
     --wje-dialog-margin-end: auto;
     --wje-dialog-margin-bottom: auto;
+
     --wje-dialog-padding: var(--wje-spacing-medium);
     --wje-dialog-padding-inline: var(--wje-spacing-medium);
     --wje-dialog-padding-top: var(--wje-spacing-medium);
     --wje-dialog-padding-bottom: var(--wje-spacing-medium);
+
+    --wje-dialog-header-padding-inline: var(--wje-dialog-padding);
+    --wje-dialog-header-padding-block: var(--wje-dialog-padding);
+
+    --wje-dialog-content-padding-inline: var(--wje-dialog-padding);
+    --wje-dialog-content-padding-block: var(--wje-dialog-padding);
+
+    --wje-dialog-footer-padding-inline: var(--wje-dialog-padding);
+    --wje-dialog-footer-padding-block: var(--wje-dialog-padding);
+
     --wje-dialog-headline-font-size: 0.656rem;
     --wje-dialog-headline-letter-spacing: 0.06em;
     --wje-dialog-headline-font-weight: 500;

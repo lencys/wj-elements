@@ -20,6 +20,8 @@ template.innerHTML = `
       <div class="content">
         <wje-button dialog="open-modal">Open</wje-button>
         <wje-dialog trigger="open-modal" headline="Title" class="example">
+          <wje-button fill="link" size="small" slot="header"><wje-icon name="arrows-diagonal" slot="icon-only"></wje-icon></wje-button>
+          <wje-button fill="link" size="small" slot="header"><wje-icon name="dots" slot="icon-only"></wje-icon></wje-button>
           <h4>Lorem ipsum dolor sit amet</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
           <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible portaled="dialog">
@@ -43,21 +45,28 @@ template.innerHTML = `
               </wje-menu-item>
             </wje-menu>
           </wje-dropdown>
-          
           <div slot="footer">
             <wje-button class="close">Zatvoriť</wje-button>
             <wje-button id="save" color="primary">Potvrdiť</wje-button>
           </div>
         </wje-dialog>
-        <style>
-          .example {
-            /*--wje-dialog-width: 876px;*/
-          }
-        </style>
       </div>
     </div>
     
-        <!-- BODY SCROLL -->
+    <!-- HIDDEN HEADER, FOOTER -->
+
+    <h2>Hidden Header, Footer</h2>
+    <div class="playground">
+      <div class="content">
+        <wje-button dialog="open-modal-hidden">Open</wje-button>
+        <wje-dialog trigger="open-modal-hidden" headline="Title" hidden-header hidden-footer>
+          <h4>Lorem ipsum dolor sit amet</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
+        </wje-dialog>
+      </div>
+    </div>
+    
+    <!-- BODY SCROLL -->
 
     <h2>Body scroll</h2>
     <div class="playground">
@@ -76,9 +85,9 @@ template.innerHTML = `
       </div>
     </div>
     
-    <!-- BASIC -->
+    <!-- JS Open -->
 
-    <h2>Basic</h2>
+    <h2>JS Open</h2>
     <div class="playground">
       <div class="content">
         <wje-button id="example-js-open">JS Open</wje-button>

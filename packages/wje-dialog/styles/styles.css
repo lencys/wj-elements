@@ -24,14 +24,11 @@
     .dialog-header {
         position: relative;
         border-bottom: 0;
-        padding-inline: var(--wje-dialog-padding);
-        padding-top: var(--wje-dialog-padding);
-        padding-bottom: var(--wje-dialog-padding);
-        /*display: flex;*/
-        /*align-items: center;*/
+        padding-inline: var(--wje-dialog-header-padding-inline);
+        padding-block: var(--wje-dialog-header-padding-block);
         display: grid;
-        grid-template-columns: 1fr auto; /* headline vľavo, button vpravo */
-        grid-template-rows: auto auto;  /* horný riadok, potom header-actions */
+        grid-template-columns: 1fr auto auto; /* headline vľavo, button vpravo */
+        grid-template-rows: auto;  /* horný riadok, potom header-actions */
         align-items: center;
         gap: 0.5rem;
         > span[part="headline"] {
@@ -49,25 +46,24 @@
             filter: alpha(opacity=40);
 
             grid-column: 1;
-            grid-row: 1;
         }
 
          > wje-button[part="close"] {
-            grid-column: 2;
+            grid-column: 3;
             grid-row: 1;
             justify-self: end;
         }
 
          > .header-actions {
-            grid-column: 1 / span 2;
-            grid-row: 2;
-            width: 100%;
+            grid-column: 2;
+            grid-row: 1;
         }
     }
 
     .dialog-content {
         box-shadow: none;
-        padding-inline: var(--wje-dialog-padding);
+        padding-inline: var(--wje-dialog-content-padding-inline);
+        padding-block: var(--wje-dialog-content-padding-block);
         white-space: normal;
         z-index: 1;
     }
@@ -78,13 +74,11 @@
         border-top: none;
         box-shadow: none;
         margin-top: 0;
-        padding-inline: var(--wje-dialog-padding-inline);
-        padding-top: var(--wje-dialog-padding-top);
-        padding-bottom: var(--wje-dialog-padding-bottom);
+        padding-inline: var(--wje-dialog-footer-padding-inline);
+        padding-block: var(--wje-dialog-footer-padding-block);
     }
 }
 
-/*Blocking element styles*/
 .blocking-element {
     position: absolute;
     top: 0;

@@ -98,6 +98,22 @@ export default class Dialog extends WJElement {
         return !!this.hasAttribute('close-hidden');
     }
 
+    set hiddenHeader(value) {
+        if (value) this.setAttribute('hidden-header', '');
+    }
+
+    get hiddenHeader() {
+        return !!this.hasAttribute('hidden-header');
+    }
+
+    set hiddenFooter(value) {
+        if (value) this.setAttribute('hidden-footer', '');
+    }
+
+    get hiddenFooter() {
+        return !!this.hasAttribute('hidden-footer');
+    }
+
     /**
      * Sets the headline of the dialog.
      * @type {string}
@@ -148,6 +164,20 @@ export default class Dialog extends WJElement {
         this.dialog = dialog;
 
         return fragment;
+    }
+
+    /**
+     * Draws the component after it has been drawn.
+     * @param {object} context The context for drawing.
+     * @param {object} store The store for drawing.
+     * @param {object} params The parameters for drawing.
+     */
+    afterDraw(context, store, params) {
+        if (params.trigger) {
+            event.addListener(document, params.trigger, null, this.onOpen);
+        }
+
+        //this.dialog.addEventListener('close', this.onClose);
     }
 
     /**
@@ -203,9 +233,9 @@ export default class Dialog extends WJElement {
         body.appendChild(contentSlot);
         footer.appendChild(slotFooter);
 
-        dialog.appendChild(header);
+        if (!this.hiddenHeader) dialog.appendChild(header);
         dialog.appendChild(body);
-        dialog.appendChild(footer);
+        if (!this.hiddenFooter) dialog.appendChild(footer);
     }
 
     /**
@@ -214,20 +244,6 @@ export default class Dialog extends WJElement {
      */
     close(e) {
         this.onClose(e);
-    }
-
-    /**
-     * Draws the component after it has been drawn.
-     * @param {object} context The context for drawing.
-     * @param {object} store The store for drawing.
-     * @param {object} params The parameters for drawing.
-     */
-    afterDraw(context, store, params) {
-        if (params.trigger) {
-            event.addListener(document, params.trigger, null, this.onOpen);
-        }
-
-        //this.dialog.addEventListener('close', this.onClose);
     }
 
     /**

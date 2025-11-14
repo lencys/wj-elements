@@ -257,7 +257,7 @@ export default class InfiniteScroll extends WJElement {
      * @returns {Promise<object>} The response from the server.
      */
     async getPages(page) {
-        let hasParams = this.url.includes('?');
+        let hasParams = this.url?.includes('?');
         const response = await fetch(
             `${this.url}${hasParams ? '&' : '?'}page=${page}&size=${this.size}${this?.queryParams}`,
             {

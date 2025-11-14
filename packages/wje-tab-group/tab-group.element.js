@@ -24,6 +24,23 @@ export default class TabGroup extends WJElement {
     }
 
     /**
+     * Sets the value for the 'variant' attribute of the element.
+     * @param {string} value The value to set for the 'variant' attribute.
+     */
+    set variant(value) {
+        this.setAttribute('variant', value);
+    }
+
+    /**
+     * Gets the value of the 'variant' attribute.
+     * If the attribute is not set, it defaults to 'top'.
+     * @returns {string} The value of the 'variant' attribute or the default value 'top' if not set.
+     */
+    get variant() {
+        return this.getAttribute('variant') || 'top';
+    }
+
+    /**
      * Sets the 'type' attribute of the element to the specified value.
      * @param {string} value The value to set for the 'type' attribute.
      */
@@ -108,6 +125,7 @@ export default class TabGroup extends WJElement {
         let slotNav = document.createElement('slot');
         slotNav.setAttribute('name', 'nav');
 
+        // More dropdown
         let icon = document.createElement('wje-icon');
         icon.setAttribute('name', 'dots');
 
@@ -126,6 +144,7 @@ export default class TabGroup extends WJElement {
         moreDropdown.setAttribute('collapsible', '');
         moreDropdown.classList.add('more-tabs');
 
+        // APPEND
         button.append(icon);
 
         menu.append(slotMore);
@@ -136,7 +155,10 @@ export default class TabGroup extends WJElement {
         header.append(nav);
 
         nav.append(slotNav);
-        nav.append(moreDropdown);
+
+        if(this.variant === 'top' || this.variant === 'bottom') {
+            nav.append(moreDropdown);
+        }
 
         section.append(slot);
 
@@ -167,11 +189,13 @@ export default class TabGroup extends WJElement {
             this.setActiveTab(e.detail.context.panel);
         });
 
-        this.checkOverflow = this.checkOverflow.bind(this);
+        if(this.variant === 'top' || this.variant === 'bottom') {
+            this.checkOverflow = this.checkOverflow.bind(this);
 
-        window.addEventListener('resize', this.checkOverflow);
+            window.addEventListener('resize', this.checkOverflow);
 
-        requestAnimationFrame(() => this.checkOverflow());
+            requestAnimationFrame(() => this.checkOverflow());
+        }
     }
 
     /**

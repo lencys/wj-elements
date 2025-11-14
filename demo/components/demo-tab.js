@@ -25,12 +25,24 @@ template.innerHTML = `<style>
             <wje-tab slot="nav" panel="basic-advanced-2">Advanced 2</wje-tab>
             <wje-tab slot="nav" panel="basic-advanced-3">Advanced 3</wje-tab>
             <wje-tab slot="nav" panel="basic-advanced-4">Advanced 4</wje-tab>
+            <wje-tab slot="nav" panel="basic-advanced-5">Advanced 5</wje-tab>
+            <wje-tab slot="nav" panel="basic-advanced-6">Advanced 6</wje-tab>
+            <wje-tab slot="nav" panel="basic-advanced-7">Advanced 7</wje-tab>
+            <wje-tab slot="nav" panel="basic-advanced-8">Advanced 8</wje-tab>
+            <wje-tab slot="nav" panel="basic-advanced-9">Advanced 9</wje-tab>
+            <wje-tab slot="nav" panel="basic-advanced-10">Advanced 10</wje-tab>
             <wje-tab-panel name="basic-general">This is the <b>general</b> tab panel.</wje-tab-panel>
             <wje-tab-panel name="basic-custom">This is the <b>custom</b> tab panel.</wje-tab-panel>
             <wje-tab-panel name="basic-advanced-1">This is the <b>advanced</b> tab panel 1.</wje-tab-panel>
             <wje-tab-panel name="basic-advanced-2">This is the <b>advanced</b> tab panel 2.</wje-tab-panel>
             <wje-tab-panel name="basic-advanced-3">This is the <b>advanced</b> tab panel 3.</wje-tab-panel>
             <wje-tab-panel name="basic-advanced-4">This is the <b>advanced</b> tab panel 4.</wje-tab-panel>
+            <wje-tab-panel name="basic-advanced-5">This is the <b>advanced</b> tab panel 5.</wje-tab-panel>
+            <wje-tab-panel name="basic-advanced-6">This is the <b>advanced</b> tab panel 6.</wje-tab-panel>
+            <wje-tab-panel name="basic-advanced-7">This is the <b>advanced</b> tab panel 7.</wje-tab-panel>
+            <wje-tab-panel name="basic-advanced-8">This is the <b>advanced</b> tab panel 8.</wje-tab-panel>
+            <wje-tab-panel name="basic-advanced-9">This is the <b>advanced</b> tab panel 9.</wje-tab-panel>
+            <wje-tab-panel name="basic-advanced-10">This is the <b>advanced</b> tab panel 10.</wje-tab-panel>
           </wje-tab-group>
         </wje-card>
       </div>
@@ -92,6 +104,13 @@ template.innerHTML = `<style>
             <wje-tab-panel name="start-advanced">This is the advanced tab panel.</wje-tab-panel>
             <wje-tab-panel name="start-disabled">This is a disabled tab panel.</wje-tab-panel>
           </wje-tab-group>
+          <style>
+            wje-tab-group[variant=start] {
+              wje-tab {
+                width: 100%;
+              }
+            }
+          </style>
         </wje-card>
       </div>
     </div>
@@ -113,6 +132,13 @@ template.innerHTML = `<style>
             <wje-tab-panel name="end-advanced">This is the advanced tab panel.</wje-tab-panel>
             <wje-tab-panel name="end-disabled">This is a disabled tab panel.</wje-tab-panel>
           </wje-tab-group>
+          <style>
+            wje-tab-group[variant=end] {
+              wje-tab {
+                width: 100%;
+              }
+            }
+          </style>
         </wje-card>
       </div>
     </div>
