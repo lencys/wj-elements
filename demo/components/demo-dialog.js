@@ -1,6 +1,7 @@
 import WJElement from '../../dist/wje-element.js';
 import { event } from '../../packages/utils/event.js';
 import CodeSnippet from '../assets/js/code-snippet-builder.js';
+import '../assets/js/demo.js';
 
 const template = document.createElement('template');
 
@@ -24,31 +25,10 @@ template.innerHTML = `
           <wje-button fill="link" size="small" slot="header"><wje-icon name="dots" slot="icon-only"></wje-icon></wje-button>
           <h4>Lorem ipsum dolor sit amet</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vulputate velit, at volutpat nisl.</p>
-          <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible portaled="dialog">
-            <wje-button size="medium" slot="trigger" stop-propagation="true" caret>Large</wje-button>
-            <wje-menu variant="context">
-              <wje-menu-item route="accordion">
-                <wje-icon name="plane" slot="start"></wje-icon>
-                <wje-label>Menu item accordion</wje-label>
-              </wje-menu-item>
-              <wje-menu-item>
-                <wje-icon name="book" slot="start"></wje-icon>
-                <wje-label>Menu item</wje-label>
-              </wje-menu-item>
-              <wje-menu-item>
-                <wje-icon name="music" slot="start"></wje-icon>
-                <wje-label>Menu item</wje-label>
-              </wje-menu-item>
-              <wje-menu-item>
-                <wje-icon name="video" slot="start"></wje-icon>
-                <wje-label>Menu item</wje-label>
-              </wje-menu-item>
-            </wje-menu>
-          </wje-dropdown>
-          <div slot="footer">
-            <wje-button class="close">Zatvoriť</wje-button>
-            <wje-button id="save" color="primary">Potvrdiť</wje-button>
-          </div>
+          <wje-shadow-element>
+            <wje-shadow-element></wje-shadow-element>
+          </wje-shadow-element>
+            
         </wje-dialog>
       </div>
     </div>

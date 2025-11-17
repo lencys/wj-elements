@@ -504,7 +504,7 @@ export default class Popup extends WJElement {
         }
 
         if(this.getAttribute('portal') === 'dialog') {
-            const dialog = this.getRootNode().host?.closest('wje-dialog');
+            const dialog = this.findDialog(this);
 
             if (this.getAttribute('portal') === 'dialog' && dialog) {
                 dialog.append(host);
@@ -517,6 +517,15 @@ export default class Popup extends WJElement {
 
         this._portalContainer = host;
         this._portalShadow = shadow;
+    }
+
+    findDialog(el) {
+        while (el) {
+            const d = el.closest?.('wje-dialog');
+            if (d) return d;
+            el = el.getRootNode().host || el.parentElement;
+        }
+        return null;
     }
 
     /**
