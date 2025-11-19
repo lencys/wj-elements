@@ -202,7 +202,7 @@ export default class Dropdown extends WJElement {
     }
 
     popupHideCallback = (e) => {
-        if (this.classList.contains('active')) {
+        if (this.classList.contains('active') && e.target.tagName === "WJE-DROPDOWN") {
             this.toggleCallback(e);
         }
     };

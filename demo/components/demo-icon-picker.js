@@ -20,7 +20,7 @@ template.innerHTML = `<h1>Icon Picker</h1>
     <h2>Dropdown</h2>
     <div class="playground">
       <div class="content">
-        <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible portaled>
+        <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible>
           <div class="icon" slot="trigger"></div>
           <wje-icon-picker id="example" icon="ad-circle" type="filled"></wje-icon-picker>
         </wje-dropdown>
