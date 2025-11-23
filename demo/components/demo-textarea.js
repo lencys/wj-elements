@@ -31,6 +31,11 @@ template.innerHTML = `
     <div class="playground" style="display: block;">
       <div class="content" style="display: block;">
         <wje-textarea label="Label" name="dog"  variant="standard"></wje-textarea>
+        <style>
+          [variant=standard] {
+            --wje-textarea-label-padding: 0;
+          }
+        </style>
       </div>
     </div>
     

@@ -145,7 +145,7 @@ input {
     border-color: var(--wje-select-options-border-color);
     border-radius: var(--wje-select-options-border-radius);
     margin-top: calc(0px - var(--wje-select-border-width));
-    background: var(--wje-select-background);
+    background-color: var(--wje-select-options-background-color);
     overflow: hidden;
 }
 

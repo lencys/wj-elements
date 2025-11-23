@@ -543,15 +543,16 @@
 
     /* Select */
     --wje-select-height: 32px;
+    --wje-select-background: var(--wje-color-contrast-0);
     --wje-select-border-width: 1px;
     --wje-select-border-style: solid;
     --wje-select-border-color: var(--wje-border-color);
     --wje-select-border-radius: var(--wje-border-radius-medium) var(--wje-border-radius-medium);
+    --wje-select-options-background-color: var(--wje-color-contrast-0);
     --wje-select-options-border-width: 1px;
     --wje-select-options-border-style: var(--wje-border-style);
     --wje-select-options-border-color: var(--wje-border-color);
     --wje-select-options-border-radius: var(--wje-border-radius-medium);
-    --wje-select-background: var(--wje-color-contrast-0);
     --wje-select-line-height: 20px;
     --wje-select-color: var(--wje-color);
     --wje-select-label-margin: 0 0 var(--wje-spacing-x-small) 0;
@@ -605,6 +606,9 @@
     --wje-textarea-line-height: 20px;
     --wje-textarea-padding: var(--wje-spacing-x-small);
     --wje-textarea-label-margin: 0 0 var(--wje-spacing-x-small);
+    --wje-textarea-label-padding: var(--wje-spacing-x-small) var(--wje-spacing-x-small) 0;
+    --wje-textarea-label-display: block;
+    --wje-textarea-label-line-height: var(--wje-line-height-denser);
     --wje-textarea-label-font-size: var(--wje-font-size);
 
     /* Thumbnail */

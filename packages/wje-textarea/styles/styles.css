@@ -6,6 +6,18 @@
     width: 100%;
     margin-bottom: var(--wje-textarea-margin-bottom);
     display: block;
+
+    label {
+        margin: var(--wje-textarea-label-margin);
+        padding: var(--wje-textarea-label-padding);
+        display: var(--wje-textarea-label-display);
+        opacity: 1;
+        cursor: text;
+        transition: opacity 0.2s ease;
+        line-height: var(--wje-textarea-label-line-height);
+        font-size: var(--wje-textarea-label-font-size);
+    }
+
     .wrapper {
         display: flex;
         width: 100%;
@@ -95,19 +107,26 @@
             padding: 0 var(--wje-textarea-padding);
         }
         label {
-            padding: 0 var(--wje-textarea-padding);
-            display: block;
+            margin: var(--wje-textarea-label-margin);
+            padding: var(--wje-textarea-label-padding);
+            display: var(--wje-textarea-label-display);
             opacity: 1;
             cursor: text;
             transition: opacity 0.2s ease;
-            line-height: var(--wje-textarea-line-height);
-            padding-top: 0.25rem;
-            &.fade {
-                opacity: 0.5;
-                font-size: 12px;
-                letter-spacing: normal;
-            }
+            line-height: var(--wje-textarea-label-line-height);
+            font-size: var(--wje-textarea-label-font-size);
         }
+        /*label {*/
+        /*    padding: 0 var(--wje-textarea-padding);*/
+        /*    display: block;*/
+        /*    line-height: var(--wje-textarea-line-height);*/
+        /*    padding-top: 0.25rem;*/
+        /*    &.fade {*/
+        /*        opacity: 0.5;*/
+        /*        font-size: 12px;*/
+        /*        letter-spacing: normal;*/
+        /*    }*/
+        /*}*/
         ::slotted([slot='start']) {
             border-left: none;
             border-top: none;
@@ -140,14 +159,11 @@
             box-sizing: border-box;
             border-radius: var(--wje-textarea-border-radius);
         }
-        label {
-            margin: var(--wje-textarea-label-margin);
-            display: inline-block;
-            opacity: 1;
-            cursor: text;
-            transition: opacity 0.2s ease;
-            line-height: var(--wje-textarea-line-height);
-        }
+        /*label {*/
+        /*    margin: var(--wje-textarea-label-margin);*/
+        /*    display: inline-block;*/
+        /*    line-height: var(--wje-textarea-line-height);*/
+        /*}*/
         ::slotted([slot='start']) {
             border-right: none;
             border-radius: var(--wje-textarea-border-radius) 0 0 var(--wje-textarea-border-radius);

@@ -216,8 +216,9 @@
 
     /* Select */
     --wje-select-border-color: var(--wje-border-color);
-    --wje-select-options-border-color: var(--wje-border-color);
     --wje-select-background: var(--wje-color-contrast-0);
+    --wje-select-options-background-color: var(--wje-color-contrast-0);
+    --wje-select-options-border-color: var(--wje-border-color);
     --wje-select-color: var(--wje-color);
 
     /* Sliding - Container */
