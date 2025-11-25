@@ -10,6 +10,16 @@
         transform: rotate(0deg);
         transition: all 0.2s ease-in;
     }
+    label {
+        margin: var(--wje-select-label-margin);
+        padding: var(--wje-select-label-padding);
+        display: var(--wje-select-label-display);
+        opacity: 1;
+        cursor: text;
+        transition: opacity 0.2s ease;
+        line-height: var(--wje-select-label-line-height);
+        font-size: var(--wje-select-label-font-size);
+    }
 }
 
 .native-select {
@@ -38,13 +48,7 @@
                 letter-spacing: normal;
             }
         }
-        wje-label {
-            margin: 0;
-            display: block;
-            opacity: 1;
-            cursor: text;
-            transition: opacity 0.2s ease 0s;
-            line-height: var(--wje-select-line-height);
+        label {
             &.fade {
                 opacity: 0.5;
                 font-size: 12px;
@@ -61,10 +65,6 @@
             border-style: var(--wje-select-border-style);
             border-color: var(--wje-select-border-color);
             border-radius: var(--wje-select-border-radius);
-        }
-        > wje-label {
-            line-height: var(--wje-line-height-normal);
-            margin: var(--wje-select-label-margin);
         }
         .input-wrapper {
             background: transparent;

@@ -471,7 +471,7 @@ export class Select extends FormAssociatedElement {
 		wrapper.setAttribute('slot', 'anchor');
 
 		// label
-		let label = document.createElement('wje-label');
+		let label = document.createElement('label');
 		label.setAttribute('part', 'label');
 		label.innerText = this.label || '';
 
