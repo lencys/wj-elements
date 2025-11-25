@@ -644,7 +644,7 @@ export class Select extends FormAssociatedElement {
 		});
 
 		this.selectedOptions = this.#getSelectedOptions();
-		this.selectOptions(this.value);
+		this.selectOptions(this.value, true);
 
 		if (this.lazy) {
 			event.addListener(this.popup, 'wje-popup:show', null, (e) => {
