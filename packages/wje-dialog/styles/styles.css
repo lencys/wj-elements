@@ -258,6 +258,7 @@ dialog[open] {
     dialog[open] {
         display: flex;
         flex-direction: column;
+        overflow: hidden;
     }
     .dialog-content {
         overflow: auto;
