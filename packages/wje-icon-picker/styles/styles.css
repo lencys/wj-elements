@@ -20,16 +20,14 @@
 .picker {
     width: 320px;
     height: 271px;
-    box-shadow:
-        0 0 5px rgba(0, 0, 0, 0.05),
-        0 5px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--wje-icon-picker-shadow);
     border-radius: var(--wje-icon-picker-radius);
     border-width: var(--wje-icon-picker-border-width);
     border-style: var(--wje-icon-picker-border-style);
     border-color: var(--wje-icon-picker-border-color);
     overflow: auto;
     padding: 1rem;
-    background: var(--wje-background);
+    background: var(--wje-icon-picker-background);
 }
 
 .icon-items {

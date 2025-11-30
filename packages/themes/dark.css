@@ -138,6 +138,9 @@
    [ Elements ]
    */
 
+    /* Aside */
+    --wje-aside-border-color: var(--wje-border-color);
+
     /* Avatar */
     --wje-avatar-color: var(--wje-color-contrast-11);
     --wje-avatar-background-color: var(--wje-color-contrast-3);
@@ -161,6 +164,14 @@
     --wje-file-upload-item-border-width: 1px;
     --wje-file-upload-item-border-style: solid;
     --wje-file-upload-item-border-color: var(--wje-border-color);
+
+    /* Header */
+    --wje-header-background: var(--wje-background);
+    --wje-header-border-color: var(--wje-border-color);
+
+    /* Icon Picker */
+    --wje-icon-picker-background: var(--wje-color-contrast-0);
+    --wje-icon-picker-border-color: var(--wje-border-color);
 
     /* Input */
     --wje-input-background-color: var(--wje-color-contrast-0);
