@@ -45,6 +45,7 @@
     "lint:fix": "eslint packages experimental-packages --max-warnings 0 --fix",
     "prettier": "prettier --write ./packages ./experimental-packages",
     "test:animation": "web-test-runner --files packages/wje-animation/animation.test.js",
+    "test:avatar": "web-test-runner --files packages/wje-avatar/avatar.test.js",
     "test:badge": "web-test-runner --files packages/wje-badge/badge.test.js",
     "test:breadcrumbs": "web-test-runner --files packages/wje-breadcrumbs/breadcrumbs.test.js",
     "test:button": "web-test-runner --files packages/wje-button/button.test.js",

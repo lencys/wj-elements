@@ -1,6 +1,6 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import '../../dist/wje-avatar.js';
-import { getHsl, getInitials } from './service/service.js';
+import { getHsl, getInitials, getAvatarColors } from './service/service.js';
 
 describe('wje-avatar', () => {
     it('should be defined', async () => {
@@ -32,7 +32,7 @@ describe('wje-avatar', () => {
 
     it('should generate correct HSL color for a label', async () => {
         const hslColor = getHsl('John Doe');
-        expect(hslColor).to.match(/^hsl\(\d{1,3}, 40%, 65%\)$/);
+        expect(hslColor).to.match(/^hsl\(\d{1,3}, 40%, 75%\)$/);
     });
 
     it('should set initials attribute correctly', async () => {
@@ -46,6 +46,41 @@ describe('wje-avatar', () => {
         await el.updateComplete;
 
         expect(el.shadowRoot.textContent).to.include('JD');
+    });
+
+    it('should set text color CSS variable when initials are used', async () => {
+        const el = await fixture(html`<wje-avatar label="John Doe" initials></wje-avatar>`);
+        await el.updateComplete;
+
+        const style = el.getAttribute('style');
+        expect(style).to.include('--wje-avatar-color');
+        expect(style).to.match(/--wje-avatar-color:\s*hsl\(/);
+    });
+
+    it('should generate background and text colors using getAvatarColors', () => {
+        const { background, color } = getAvatarColors('JD');
+
+        expect(background).to.match(/^hsl\(\d{1,3},\s*\d+%,\s*\d+%\)$/);
+        expect(color).to.match(/^hsl\(\d{1,3},\s*\d+%,\s*\d+%\)$/);
+        expect(background).to.not.equal(color);
+    });
+
+    it('should apply text color that is darker than background color', async () => {
+        const el = await fixture(html`<wje-avatar label="John Doe" initials></wje-avatar>`);
+        await el.updateComplete;
+
+        const style = el.getAttribute('style');
+
+        const bgMatch = style.match(/--wje-avatar-background-color:\s*hsl\(\d+,\s*\d+%,\s*(\d+)%\)/);
+        const textMatch = style.match(/--wje-avatar-color:\s*hsl\(\d+,\s*\d+%,\s*(\d+)%\)/);
+
+        expect(bgMatch).to.exist;
+        expect(textMatch).to.exist;
+
+        const bgLightness = Number(bgMatch[1]);
+        const textLightness = Number(textMatch[1]);
+
+        expect(textLightness).to.be.lessThan(bgLightness);
     });
 
     it('should append slots for icon, status, and secondary content', async () => {
