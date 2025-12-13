@@ -21,6 +21,9 @@ export default class TabGroup extends WJElement {
      */
     constructor() {
         super();
+
+        this._lastNavWidth = null;
+        this._initialized = false;
     }
 
     /**
@@ -189,12 +192,19 @@ export default class TabGroup extends WJElement {
             this.setActiveTab(e.detail.context.panel);
         });
 
-        if(this.variant === 'top' || this.variant === 'bottom') {
-            this.checkOverflow = this.checkOverflow.bind(this);
+        if (this.variant === 'top' || this.variant === 'bottom') {
+            this.initTabMetrics();
 
-            window.addEventListener('resize', this.checkOverflow);
+            this._resizeObserver = new ResizeObserver(entries => {
+                const width = entries[0].contentRect.width;
 
-            requestAnimationFrame(() => this.checkOverflow());
+                if (width !== this._lastNavWidth) {
+                    this._lastNavWidth = width;
+                    this.checkOverflow();
+                }
+            });
+
+            this._resizeObserver.observe(this);
         }
     }
 
@@ -267,8 +277,35 @@ export default class TabGroup extends WJElement {
      * @returns {void} Does not return a value.
      */
     toggleMoreVisibility() {
-        const hasTabsInMore = this.querySelector('wje-tab[slot="more"]');
-        this.moreDropdown.hidden = !hasTabsInMore;
+        const hasTabsInMore = !!this.querySelector('wje-tab[slot="more"]');
+        const nextHidden = !hasTabsInMore;
+
+        if (this.moreDropdown.hidden !== nextHidden) {
+            this.moreDropdown.hidden = nextHidden;
+        }
+    }
+
+    /**
+     * Initializes metrics for tabs within the component. Assigns each tab to the navigation slot
+     * and calculates their dimensions for further operations.
+     * @returns {void} Does not return any value.
+     */
+    initTabMetrics() {
+        const tabs = Array.from(this.querySelectorAll('wje-tab'));
+
+        // všetko do nav – LEN RAZ
+        tabs.forEach(tab => tab.setAttribute('slot', 'nav'));
+
+        requestAnimationFrame(() => {
+            this._tabMetrics = tabs.map(tab => ({
+                el: tab,
+                width: tab.getBoundingClientRect().width
+            }));
+
+            this._initialized = true;
+            this.checkOverflow(); // prvý výpočet
+            this._lastNavWidth = this.nav.getBoundingClientRect().width;
+        });
     }
 
     /**
@@ -277,35 +314,24 @@ export default class TabGroup extends WJElement {
      * @returns {void} This method does not return a value.
      */
     checkOverflow() {
-        const nav = this.nav;
-        const moreBtn = this.moreDropdown;
-        const moreWidth = moreBtn.offsetWidth || 48; // fallback ak ešte nie je vykreslený
+        if (!this._initialized) return;
 
-        const tabs = Array.from(this.querySelectorAll('wje-tab'));
+        const navWidth = this.nav.getBoundingClientRect().width;
+        const moreWidth = this.moreDropdown.offsetWidth || 48;
 
-        // Reset: presunieme všetky taby naspäť do nav slotu
-        tabs.forEach(tab => tab.setAttribute('slot', 'nav'));
+        let used = 0;
+        let overflowStarted = false;
 
-        // Vykreslíme nanovo, aby sa more button správne umiestnil
-        requestAnimationFrame(() => {
-            const navRight = nav.getBoundingClientRect().right;
-            let overflowStarted = false;
+        for (const { el, width } of this._tabMetrics) {
+            used += width;
 
-            for (const tab of tabs) {
-                const tabRect = tab.getBoundingClientRect();
+            const shouldOverflow = used + moreWidth > navWidth;
 
-                // Ak by pretekal vrátane rezervy na more, presunieme ho
-                const fits = tabRect.right + moreWidth <= navRight;
+            el.setAttribute('slot', shouldOverflow || overflowStarted ? 'more' : 'nav');
+            overflowStarted ||= shouldOverflow;
+        }
 
-                if (!fits || overflowStarted) {
-                    tab.setAttribute('slot', 'more');
-                    this.dropdownActive(tab);
-                    overflowStarted = true;
-                }
-            }
-
-            this.toggleMoreVisibility();
-        });
+        this.toggleMoreVisibility();
     }
 
     /**
@@ -321,5 +347,10 @@ export default class TabGroup extends WJElement {
             else
                 this.moreDropdown.classList.remove('dropdown-active');
         }
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback?.();
+        this._resizeObserver?.disconnect();
     }
 }
