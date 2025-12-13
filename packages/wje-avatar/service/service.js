@@ -16,7 +16,7 @@
  * // Returns 'hsl(300, 50%, 70%)'
  * getHsl('test', 50, 70);
  */
-export function getHsl(text, s = 40, l = 65) {
+export function getHsl(text, s = 40, l = 75) {
     let str = text;
     let hash = 0;
 
@@ -27,6 +27,36 @@ export function getHsl(text, s = 40, l = 65) {
     let h = hash % 360;
 
     return `hsl(${h}, ${s}%, ${l}%)`;
+}
+
+/**
+ * Generates background and text HSL colors for avatars based on input text.
+ * The text color is a darker, more saturated variant of the background color
+ * to ensure sufficient contrast while keeping the same hue.
+ *
+ * @param {string} text The input text (e.g. initials or name).
+ * @returns {{ background: string, color: string }}
+ */
+export function getAvatarColors(text) {
+    let hash = 0;
+    for (let i = 0; i < text?.length; i++) {
+        hash = text.charCodeAt(i) + hash * 31;
+    }
+
+    const h = Math.abs(hash) % 360;
+
+    // 👇 Figma-like pastel background
+    const bgS = 30;
+    const bgL = 88;
+
+    // 👇 Softer text color (same hue)
+    const textS = 50;
+    const textL = 48;
+
+    return {
+        background: `hsl(${h}, ${bgS}%, ${bgL}%)`,
+        color: `hsl(${h}, ${textS}%, ${textL}%)`
+    };
 }
 
 /**

@@ -1,5 +1,5 @@
 import { default as WJElement } from '../wje-element/element.js';
-import { getHsl, getInitials } from './service/service.js';
+import { getHsl, getInitials, getAvatarColors } from './service/service.js';
 import styles from './styles/styles.css?inline';
 
 /**
@@ -126,8 +126,11 @@ export default class Avatar extends WJElement {
 
         if (this.initials) {
             let initials = getInitials(this.label);
+            const { background, color } = getAvatarColors(initials);
 
-            this.setAttribute('style', `--wje-avatar-background-color: ${getHsl(initials)}`);
+            this.style.setProperty('--wje-avatar-background-color', background);
+            this.style.setProperty('--wje-avatar-color', color);
+
             element.innerText = initials;
         } else {
             let slotIcon = document.createElement('slot');

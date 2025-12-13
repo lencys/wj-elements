@@ -176,8 +176,6 @@ export default class Dialog extends WJElement {
         if (params.trigger) {
             event.addListener(document, params.trigger, null, this.onOpen);
         }
-
-        //this.dialog.addEventListener('close', this.onClose);
     }
 
     /**

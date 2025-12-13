@@ -19,6 +19,17 @@ template.innerHTML = `<h1>Avatar</h1>
           <wje-img src="/assets/img/avatar.svg"></wje-img>
         </wje-avatar>
         
+        <wje-avatar label="Z M" initials></wje-avatar>
+        <wje-avatar label="L V" initials></wje-avatar>
+        <wje-avatar label="M K" initials></wje-avatar>
+        <wje-avatar label="A N" initials></wje-avatar>
+        
+        <wje-avatar label="I D" initials></wje-avatar>
+        <wje-avatar label="J S" initials></wje-avatar>
+        <wje-avatar label="K P" initials></wje-avatar>
+        <wje-avatar label="D D" initials></wje-avatar>
+        
+        
         <wje-avatar>
           <wje-icon name="check" slot="icon"></wje-icon>
         </wje-avatar>
