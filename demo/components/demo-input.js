@@ -316,6 +316,10 @@ export default class DemoInput extends WJElement {
 
     // Submit button outside of form
     this.context.querySelector('#submit-test-form-1').addEventListener('wje-button:click', (e) => {
+      let formDate = new FormData(form1);
+      for (let pair of formDate.entries()) {
+        console.log(pair[0] + ', ' + pair[1]);
+      }
       console.log('VALID FORM 1:', form1.checkValidity());
       form1.checkValidity();
     });

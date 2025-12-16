@@ -27,6 +27,7 @@ export default class Checkbox extends FormAssociatedElement {
 
 		this.invalid = false;
 		this.pristine = true;
+		this._valueOff = 'off';
 	}
 
 	/**
@@ -45,7 +46,7 @@ export default class Checkbox extends FormAssociatedElement {
 	 * @returns {string} The value of the attribute.
 	 */
 	get value() {
-		return this.#internalValue ?? this.getAttribute('value') ?? 'on';;
+		return this.#internalValue ?? this.getAttribute('value') ?? 'on';
 	}
 
 	/**
@@ -122,7 +123,7 @@ export default class Checkbox extends FormAssociatedElement {
 			this.internals.setFormValue(this.value); // len ak je checked
 		} else {
 			this.removeAttribute('checked');
-			this.internals.setFormValue(null); // ak nie je checked, nič sa neposiela
+			this.internals.setFormValue(this._valueOff); // ak nie je checked, nič sa neposiela
 		}
 		if (this.input) {
 			this.input.checked = value;
@@ -163,7 +164,7 @@ export default class Checkbox extends FormAssociatedElement {
 			if (isChecked) {
 				this.internals.setFormValue(this.value);
 			} else {
-				this.internals.setFormValue(null);
+				this.internals.setFormValue(this._valueOff);
 			}
 		} else if (name === 'disabled') {
 			this.input.disabled = this.hasAttribute('disabled');
@@ -242,7 +243,7 @@ export default class Checkbox extends FormAssociatedElement {
 	 * Adds an event listener after drawing the checkbox.
 	 */
 	afterDraw() {
-		this.internals.setFormValue(this.checked ? this.value : null); // Set initial form value based on checked state
+		this.internals.setFormValue(this.checked ? this.value : this._valueOff); // Set initial form value based on checked state
 
 		if (!this.disabled) {
 			this.input.addEventListener('input', (e) => {
