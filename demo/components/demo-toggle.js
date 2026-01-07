@@ -35,13 +35,16 @@ template.innerHTML = `<h1>Toggle</h1>
     <div class="playground">
       <div class="content">
         <wje-toggle id="placement" placement="end" color="success">
-          <wje-icon name="list"></wje-icon>Placement Toggle
+          <span><wje-icon name="list"></wje-icon>Placement Toggle</span>
         </wje-toggle>
         <style>
           #placement {
             width: 100%;
-            wje-icon {
-              margin-inline: 0 .5rem;
+            span {
+              display: flex;
+              wje-icon {
+                margin-inline: 0 .5rem;
+              }
             }
           }
         </style>
