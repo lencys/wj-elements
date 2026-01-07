@@ -78,6 +78,7 @@
 
 @media (any-hover: hover) {
     :host(:hover) .item-native {
+        position: relative;
         color: var(--wje-item-color);
 
         :after {
