@@ -10,6 +10,9 @@ template.innerHTML = `
     <!--  BASIC-->
 
     <h2>Basic</h2>
+    <p class="description">
+Základné použitie breadcrumbs bez ikon a bez špeciálnych atribútov. Ukážka sa zameriava na čistú hierarchickú navigáciu, kde sa položky renderujú v poradí, v akom sú vložené ako <code>&lt;wje-breadcrumb&gt;</code> elementy.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-breadcrumbs>
@@ -24,6 +27,9 @@ template.innerHTML = `
     <!-- ICONS -->
 
     <h2>Icons</h2>
+    <p class="description">
+Ukážka použitia ikon v breadcrumb položkách pomocou slotov <code>start</code> a <code>end</code>. Demonštruje, ako je možné kombinovať text a ikony bez potreby špeciálnych atribútov alebo JavaScriptu.
+    </p>
     <div class="playground">
       <div class="content">
         <p>Ikony na začiatku</p>
@@ -71,6 +77,9 @@ template.innerHTML = `
     <!-- CUSTOM SEPARATOR -->
 
     <h2>Custom Separator</h2>
+    <p class="description">
+Príklad vlastného oddeľovača medzi položkami breadcrumbs pomocou slotu <code>separator</code>. Umožňuje nahradiť predvolený separátor vlastnou ikonou alebo ľubovoľným obsahom bez zásahu do CSS alebo JS logiky komponentu.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-breadcrumbs>
@@ -97,6 +106,9 @@ template.innerHTML = `
     <!-- MAX ITEMS -->
 
     <h2>Max Items</h2>
+    <p class="description">
+Ukážka práce so špeciálnymi atribútmi <code>max-items</code> a <code>items-before-collapse</code>. Komponent automaticky kolabuje stredné položky, ak ich počet prekročí nastavený limit, bez potreby dodatočného JavaScriptu.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-breadcrumbs max-items="4" items-before-collapse="2">
@@ -116,9 +128,12 @@ template.innerHTML = `
     <!-- MAX ITEMS - DROPDOWN -->
 
     <h2>Max Items</h2>
+    <p class="description">
+Rozšírenie predchádzajúcej ukážky o atribút <code>variant="dropdown"</code>, kde sú skryté položky presunuté do rozbaľovacieho menu. Príklad zároveň ukazuje napojenie na JavaScript udalosti kliknutia nad jednotlivými <code>&lt;wje-breadcrumb&gt;</code> položkami.
+    </p>
     <div class="playground">
       <div class="content">
-        <wje-breadcrumbs max-items="4" items-before-collapse="2" variant="dropdown">
+        <wje-breadcrumbs max-items="3" items-before-collapse="2" variant="dropdown" id="breadcrumb-dropdown">
           <wje-breadcrumb>Home</wje-breadcrumb>
           <wje-breadcrumb>Electronics</wje-breadcrumb>
           <wje-breadcrumb>Photography</wje-breadcrumb>
@@ -150,6 +165,12 @@ export default class DemoBreadcrumb extends WJElement {
   afterDraw() {
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(this.context);
+
+    this.querySelector('#breadcrumb-dropdown').querySelectorAll('wje-breadcrumb').forEach(el => {
+      el.addEventListener('click', (e) => {
+        console.log(`You clicked on breadcrumb: ${el.textContent.trim()}`);
+      });
+    });
   }
 }
 

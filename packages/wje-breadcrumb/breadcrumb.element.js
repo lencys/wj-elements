@@ -24,7 +24,7 @@ export default class Breadcrumb extends WJElement {
         super();
 
         this._showSeparator = true;
-        this.showCollapsedIndicator = false;
+        this._showCollapsedIndicator = false;
     }
 
     /**
@@ -56,7 +56,7 @@ export default class Breadcrumb extends WJElement {
      * @returns {string} The collapsed variant value in uppercase.
      */
     get collapsedVariant() {
-        let variant = this.parentElement.variant || this._collapsedVariant;
+        let variant = this.parentElement?.variant || this._collapsedVariant;
         return variant.toUpperCase();
     }
 
@@ -85,25 +85,32 @@ export default class Breadcrumb extends WJElement {
     }
 
     /**
-     * Attribute changed callback method.
-     * @returns {boolean} false - Always returns false
+     * Handles attribute changes for the custom element and updates its behavior or appearance accordingly.
+     * @param {string} name The name of the attribute that was changed.
+     * @param {string|null} oldValue The previous value of the attribute before it was changed. Null if the attribute was not previously set.
+     * @param {string|null} newValue The new value of the attribute after it was changed. Null if the attribute was removed.
+     * @returns {boolean} Returns false to signal no default behavior is implemented.
      */
     attributeChangedCallback(name, oldValue, newValue) {
+        super.attributeChangedCallback?.(name, oldValue, newValue);
+
         if (name === 'collapsed') {
-            if (WjElementUtils.stringToBoolean(newValue) && !this.hasAttribute('show-collapsed-indicator'))
-                this.classList.add('collapsed');
+            const isCollapsed = WjElementUtils.stringToBoolean(newValue);
+
+            // toggle class podľa stavu
+            this.classList.toggle('collapsed', isCollapsed && !this.hasAttribute('show-collapsed-indicator'));
+
         } else if (name === 'show-collapsed-indicator') {
-            if (WjElementUtils.stringToBoolean(newValue)) {
-                this.showCollapsedIndicator = true;
-                this.refresh();
-            }
+            const isOn = WjElementUtils.stringToBoolean(newValue);
+            this._showCollapsedIndicator = isOn;
+            this.refresh();
+
         } else if (name === 'last') {
-            this.active = WjElementUtils.stringToBoolean(newValue);
-            this.showSeparator = !WjElementUtils.stringToBoolean(newValue);
+            const isLast = WjElementUtils.stringToBoolean(newValue);
+            this.active = isLast;
+            this.showSeparator = !isLast;
             this.refresh();
         }
-
-        return false;
     }
 
     /**
@@ -134,14 +141,14 @@ export default class Breadcrumb extends WJElement {
         let end = document.createElement('slot');
         end.setAttribute('name', 'end');
 
-        native.appendChild(start);
-        native.appendChild(slot);
-        native.appendChild(end);
+        native.append(start, slot, end);
 
-        fragment.appendChild(native);
-        if (WjElementUtils.stringToBoolean(this.showCollapsedIndicator)) {
+        // APPEND
+        fragment.append(native);
+
+        if (WjElementUtils.stringToBoolean(this._showCollapsedIndicator)) {
             // pridame button za native element
-            fragment.appendChild(this.drawCollapsedIndicator());
+            fragment.append(this.drawCollapsedIndicator());
 
             // skryjeme native element
             native.classList.add('hidden');
@@ -156,12 +163,12 @@ export default class Breadcrumb extends WJElement {
                 let slotSeparator = document.createElement('slot');
                 slotSeparator.setAttribute('name', 'separator');
 
-                separator.appendChild(slotSeparator);
+                separator.append(slotSeparator);
             } else {
                 separator.innerHTML = `<wje-icon name=${this.separator || 'chevron-right'}></wje-icon>`;
             }
 
-            fragment.appendChild(separator);
+            fragment.append(separator);
         }
 
         this.native = native;
@@ -170,8 +177,10 @@ export default class Breadcrumb extends WJElement {
     }
 
     /**
-     * Draw collapsed indicator method.
-     * @returns {object} - The collapsed indicator element.
+     * Renders the collapsed indicator based on the current collapsed variant.
+     * If the collapsed variant is 'DROPDOWN', it invokes the collapseDropdown method.
+     * Otherwise, it invokes the collapseButton method.
+     * @returns {any} The rendered collapsed indicator, either as a dropdown or a button.
      */
     drawCollapsedIndicator() {
         let collapsedIndicator = null;
@@ -186,8 +195,12 @@ export default class Breadcrumb extends WJElement {
     }
 
     /**
-     * Collapse dropdown button.
-     * @returns {object} dropdown - The dropdown button.
+     * Creates and returns a dropdown UI component for collapsed breadcrumbs.
+     * This method generates a dropdown element with a button trigger and a menu populated with items corresponding
+     * to the collapsed breadcrumbs. The dropdown is configured to handle specific interactions and ensure that
+     * events are appropriately managed to avoid propagation issues. Menu items are linked to their corresponding
+     * breadcrumbs, enabling the same functionality as clicking on the original breadcrumb.
+     * @returns {HTMLElement} A configured dropdown element containing a button as trigger and a menu with breadcrumb items.
      */
     collapseDropdown() {
         let dropdown = document.createElement('wje-dropdown');
@@ -202,24 +215,57 @@ export default class Breadcrumb extends WJElement {
         let menu = document.createElement('wje-menu');
         menu.setAttribute('variant', 'context');
 
-        dropdown.appendChild(button);
-        dropdown.appendChild(menu);
+        menu.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.stopImmediatePropagation?.();
+        });
 
-        dropdown.innerHTML = `<wje-button slot="trigger" fill="link">
-            <wje-icon name="dots"></wje-icon>
-        </wje-button>
-        <wje-menu variant="context">
-            <wje-menu-item>Test 0</wje-menu-item>
-            <wje-menu-item>Test 1</wje-menu-item>
-            <wje-menu-item>Test 2</wje-menu-item>
-        </wje-menu>`;
+        this.getBreadcrumbs().getBreadcrumbsCollapsed().forEach((b) => {
+            let menuItem = document.createElement('wje-menu-item');
+            menuItem.innerHTML = b.innerHTML;
+
+            menuItem.__breadcrumb = b;
+
+            menuItem.addEventListener('wje-menu-item:click', (e) => {
+                e.preventDefault?.();
+                e.stopPropagation();
+                e.stopImmediatePropagation?.();
+
+                const breadcrumb = e.currentTarget.__breadcrumb;
+                if (!breadcrumb) return;
+
+                // Prefer clicking the internal anchor (same behavior as real user click), fallback to host click.
+                const native = breadcrumb.native || breadcrumb.shadowRoot?.querySelector('a.native-breadcrumb');
+                if (native && typeof native.click === 'function') {
+                    native.click();
+                } else if (typeof breadcrumb.click === 'function') {
+                    breadcrumb.click();
+                } else {
+                    breadcrumb.dispatchEvent(
+                        new MouseEvent('click', {
+                            bubbles: true,
+                            composed: true,
+                            cancelable: true
+                        })
+                    );
+                }
+            });
+
+            menu.append(menuItem);
+        });
+
+        dropdown.append(button, menu);
 
         return dropdown;
     }
 
     /**
-     * Collapse button method.
-     * @returns {object} - The button element.
+     * Creates a button element that expands hidden breadcrumbs when clicked.
+     * The button is set with appropriate attributes and event listeners to handle
+     * the expanding of hidden breadcrumb elements. Clicking the button will remove
+     * the button itself, reveal hidden breadcrumbs, and stop the current event
+     * propagation.
+     * @returns {HTMLButtonElement} The created button configured to expand breadcrumbs.
      */
     collapseButton() {
         let button = document.createElement('button');
@@ -230,12 +276,20 @@ export default class Breadcrumb extends WJElement {
         event.addListener(button, 'click', null, (e) => {
             this.native.classList.remove('hidden');
             button.remove();
-            this.parentElement.querySelectorAll('wje-breadcrumb').forEach((el) => {
+            this.getBreadcrumbs().getBreadcrumbsCollapsed().forEach((el) => {
                 el.classList.remove('collapsed');
             });
             e.stopPropagation();
         });
 
         return button;
+    }
+
+    /**
+     * Retrieves the breadcrumb trail for the current element by returning its parent element.
+     * @returns {Element} The parent element representing the breadcrumb trail.
+     */
+    getBreadcrumbs() {
+        return this.parentElement;
     }
 }

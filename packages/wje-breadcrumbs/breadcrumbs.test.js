@@ -63,8 +63,14 @@ describe('<wje-breadcrumbs>', () => {
           <wje-breadcrumb>C</wje-breadcrumb>
         </wje-breadcrumbs>
       `);
+            // Wait until <wje-breadcrumbs> finishes rendering
+            await el.updateComplete;
+
             itemsBeforeCollapse = +el.getAttribute('items-before-collapse');
             indicator = el.querySelectorAll('wje-breadcrumb')[itemsBeforeCollapse];
+
+            // Wait until the indicator breadcrumb finishes rendering its shadow DOM
+            await indicator.updateComplete;
         });
 
         it('checks if the item at index specified by items-before-collapse has the "show-collapsed-indicator" attribute', async () => {
@@ -72,6 +78,11 @@ describe('<wje-breadcrumbs>', () => {
         });
 
         it('checks if the item at the index specified by items-before-collapse contains a dropdown element in shadowRoot', async () => {
+            // Ensure the indicator breadcrumb finished rendering
+            await indicator.updateComplete;
+
+            expect(indicator.shadowRoot, 'Expected indicator to have an open shadowRoot').to.exist;
+
             let button = indicator.shadowRoot.querySelector('button');
             expect(button).to.exist;
         });
@@ -100,11 +111,18 @@ describe('<wje-breadcrumbs>', () => {
           <wje-breadcrumb>C</wje-breadcrumb>
         </wje-breadcrumbs>
       `);
+            // Wait until <wje-breadcrumbs> finishes rendering
+            await el.updateComplete;
+
             itemsBeforeCollapse = +el.getAttribute('items-before-collapse');
             indicator = el.querySelectorAll('wje-breadcrumb')[itemsBeforeCollapse];
+
+            // Wait until the indicator breadcrumb finishes rendering its shadow DOM
+            await indicator.updateComplete;
         });
 
         it('checks if the item at the index specified by items-before-collapse contains a dropdown element in shadowRoot', async () => {
+            await indicator.updateComplete;
             let dropdown = indicator.shadowRoot.querySelector('wje-dropdown');
             expect(dropdown).to.exist;
         });
