@@ -314,7 +314,7 @@ export default class InfiniteScroll extends WJElement {
                     response = await this.getPages(page);
                 }
 
-                this.totalPages = response?.totalPages;
+                this.totalPages = Number(response?.totalPages ?? 0);
                 this.currentPage = page;
 
                 this.placementObj = this;
@@ -325,7 +325,22 @@ export default class InfiniteScroll extends WJElement {
                 event.dispatchCustomEvent(this, 'wje-infinite-scroll:load', response);
 
                 this.response = response;
-                this.#loadedItems = this.objectName ? response[this.objectName] : response;
+
+                // Normalize items: support array responses and common paged formats.
+                let items;
+                if (Array.isArray(response)) {
+                    items = response;
+                } else if (this.objectName && Array.isArray(response?.[this.objectName])) {
+                    items = response[this.objectName];
+                } else if (Array.isArray(response?.content)) {
+                    // common Spring pageable style
+                    items = response.content;
+                } else {
+                    items = [];
+                }
+
+                this.#loadedItems = items;
+
                 const notDrawnItems = this.#loadedItems.filter(
                     (item) => !this.#drawnItems.some(this.compareFunction.bind(this, item))
                 );
