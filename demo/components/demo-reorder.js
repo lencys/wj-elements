@@ -7,9 +7,14 @@ template.innerHTML = `
     <h1>Reorder</h1>
     <div class="container">
     
-        <!-- BASIC -->
+        <!-- DEFAULT -->
         
-        <h2>Basic</h2>
+        <h2>Default</h2>
+        <p class="description">
+          Základné použitie <span class="tok tag">&lt;wje-reorder&gt;</span> s položkami
+          <span class="tok tag">&lt;wje-reorder-item&gt;</span>. Presúvanie funguje „drag &amp; drop“
+          na celej položke bez potreby ďalších atribútov.
+        </p>
         <div class="playground">
             <div class="content">
                 <wje-reorder>
@@ -24,6 +29,11 @@ template.innerHTML = `
         <!-- ITEMS WITH HANDLE -->
         
         <h2>Items With Handle</h2>
+        <p class="description">
+          Reorder s „handle“: do každého <span class="tok tag">&lt;wje-reorder-item&gt;</span> je vložený
+          element do slotu <span class="tok attr">handle</span> (tu <span class="tok tag">&lt;wje-icon&gt;</span>).
+          Drag sa iniciuje iba chytením handle, nie klikom na celý riadok.
+        </p>
         <div class="playground">
             <div class="content">
                 <wje-reorder>
@@ -50,6 +60,10 @@ template.innerHTML = `
         <!-- DISABLED -->
         
         <h2>Disabled</h2>
+        <p class="description">
+          Vypnutie interakcie cez boolean atribút <span class="tok attr">disabled</span> na
+          <span class="tok tag">&lt;wje-reorder&gt;</span>. Položky sa dajú zobraziť, ale nedajú sa presúvať.
+        </p>
         <div class="playground">
             <div class="content">
                 <wje-reorder disabled>

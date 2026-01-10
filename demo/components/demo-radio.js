@@ -9,7 +9,15 @@ template.innerHTML = `
     
     <!-- BASIC -->
 
-    <h2>Basic</h2>
+    <h2>Default</h2>
+    <p class="description">
+      Základné použitie <span class="tok tag">&lt;wje-radio-group&gt;</span> s atribútom <span class="tok attr">value</span>
+      (predvolený výber) a identifikáciou cez <span class="tok attr">name</span>/<span class="tok attr">id</span>.
+      Jednotlivé <span class="tok tag">&lt;wje-radio&gt;</span> ukazujú stavy <span class="tok attr">disabled</span> a
+      <span class="tok attr">indeterminate</span>.
+      Zmena hodnoty emituje <span class="tok event">wje-radio-group:change</span> a
+      <span class="tok event">wje-radio:change</span>.
+    </p>
     <div class="playground">
       <div class="content" style="display: block;">
         <wje-label>Choose an color:</wje-label>
@@ -25,6 +33,11 @@ template.innerHTML = `
     <!-- PLACEMENT -->
 
     <h2>Placement</h2>
+    <p class="description">
+      Umiestnenie labelu na koniec cez atribút <span class="tok attr">placement="end"</span> na <span class="tok tag">&lt;wje-radio&gt;</span>.
+      Ukážka obsahuje aj kombinácie <span class="tok attr">checked</span>, <span class="tok attr">disabled</span> a
+      <span class="tok attr">indeterminate</span>.
+    </p>
     <div class="playground">
       <div class="content" style="display: block;">
         <wje-radio-group value="dog" name="animal">
@@ -39,6 +52,10 @@ template.innerHTML = `
     <!-- INLINE -->
 
     <h2>Inline</h2>
+    <p class="description">
+      Zobrazenie viacerých rádii v jednom riadku pomocou boolean atribútu <span class="tok attr">inline</span>
+      na <span class="tok tag">&lt;wje-radio-group&gt;</span>.
+    </p>
     <div class="playground">
       <div class="content" style="display: block;">
         <wje-radio-group name="number" inline>
@@ -57,6 +74,11 @@ template.innerHTML = `
     <!-- COLORS -->
 
     <h2>Colors</h2>
+    <p class="description">
+      Farebné varianty cez atribút <span class="tok attr">color</span> na <span class="tok tag">&lt;wje-radio&gt;</span>
+      (napr. <span class="tok attr">success</span>, <span class="tok attr">primary</span>, <span class="tok attr">complete</span>,
+      <span class="tok attr">warning</span>, <span class="tok attr">danger</span>, <span class="tok attr">neutral</span>).
+    </p>
     <div class="playground">
       <div class="content" style="display: block;">
         <wje-radio-group value="complete">

@@ -8,7 +8,12 @@ template.innerHTML = `<h1>Progress bar</h1>
 
     <!--  BASIC-->
 
-    <h2>Basic</h2>
+    <h2>Default</h2>
+    <p class="description">
+      Základné použitie komponentu <span class="tok tag">&lt;wje-progress-bar&gt;</span>
+      s hodnotou definovanou atribútom <span class="tok attr">progress</span> (0–100).
+      Bez ďalších atribútov sa vykreslí lineárny progress bar.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-progress-bar progress="60"></wje-progress-bar>
@@ -18,6 +23,11 @@ template.innerHTML = `<h1>Progress bar</h1>
     <!-- TYPE -->
 
     <h2>Type</h2>
+    <p class="description">
+      Prepnutie typu zobrazenia pomocou atribútu <span class="tok attr">type</span>.
+      Default je lineárny bar, hodnota <span class="tok attr">type="circle"</span>
+      vykreslí kruhový progress bar, ktorého veľkosť ovplyvňuje <span class="tok attr">radius</span>.
+    </p>
     <div class="playground">
       <div class="content" style="flex-direction: column;">
         <wje-progress-bar progress="60"></wje-progress-bar>
@@ -28,6 +38,10 @@ template.innerHTML = `<h1>Progress bar</h1>
     <!-- LINECAP -->
 
     <h2>Linecap</h2>
+    <p class="description">
+      Tvar zakončenia progressu pomocou atribútu <span class="tok attr">linecap</span>
+      (napr. <span class="tok attr">round</span>). Platí pre lineárny aj kruhový variant.
+    </p>
     <div class="playground">      
       <div class="content" style="flex-direction: column;">
         <wje-progress-bar progress="60" linecap="round"></wje-progress-bar>
@@ -38,6 +52,11 @@ template.innerHTML = `<h1>Progress bar</h1>
     <!-- LABEL -->
 
     <h2>Label</h2>
+    <p class="description">
+      Vlastný obsah cez sloty <span class="tok attr">start</span> a
+      <span class="tok attr">end</span>. Do progress baru je možné vložiť
+      <span class="tok tag">&lt;wje-label&gt;</span> alebo iné elementy.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-progress-bar progress="60" type="circle" radius="30">
@@ -50,6 +69,10 @@ template.innerHTML = `<h1>Progress bar</h1>
     <!-- RADIUS-->
 
     <h2>Radius</h2>
+    <p class="description">
+      Polomer kruhového progress baru cez atribút <span class="tok attr">radius</span>.
+      Používa sa iba pri <span class="tok attr">type="circle"</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-progress-bar progress="60" radius="70" type="circle"></wje-progress-bar>
@@ -59,6 +82,10 @@ template.innerHTML = `<h1>Progress bar</h1>
     <!--  STROKE-->
 
     <h2>Stroke</h2>
+    <p class="description">
+      Hrúbka čiary progressu pomocou atribútu <span class="tok attr">stroke</span>.
+      Hodnota ovplyvňuje šírku línie pri lineárnom aj kruhovom zobrazení.
+    </p>
     <div class="playground">
       <div class="content" style="flex-direction: column;">
         <wje-progress-bar progress="60" stroke="1"></wje-progress-bar>
@@ -69,6 +96,12 @@ template.innerHTML = `<h1>Progress bar</h1>
     <!--  IMAGE-->
 
     <h2>Progress bar with image</h2>
+    <p class="description">
+      Kombinácia kruhového progress baru s obsahom vnútri:
+      do komponentu je vložený <span class="tok tag">&lt;wje-thumbnail&gt;</span> s obrázkom.
+      Lokálne CSS upravuje rozmery thumbnailu a text cez CSS premenné
+      <span class="tok css">--wje-progress-bar-text-color</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-progress-bar progress="60" radius="20" stroke="3" color="danger" type="circle" class="example">
@@ -94,6 +127,12 @@ template.innerHTML = `<h1>Progress bar</h1>
     <!--  COLORS-->
 
     <h2>Colors</h2>
+    <p class="description">
+      Farebné varianty progress baru pomocou atribútu <span class="tok attr">color</span>
+      (napr. <span class="tok attr">primary</span>, <span class="tok attr">success</span>,
+      <span class="tok attr">warning</span>, <span class="tok attr">danger</span>, <span class="tok attr">info</span>).
+      Platí pre lineárny aj kruhový typ.
+    </p>
     <div class="playground">
       <div class="content" style="flex-direction: column;">
         <wje-progress-bar progress="60"></wje-progress-bar>

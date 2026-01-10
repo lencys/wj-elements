@@ -13,7 +13,13 @@ template.innerHTML = `<style>
 
     <!-- BASIC -->
 
-    <h2>Basic</h2>
+    <h2>Default</h2>
+    <p class="description">
+      Základné použitie komponentu <span class="tok tag">&lt;wje-status&gt;</span> s ikonou ako obsahom.
+      Atribúty <span class="tok attr">color</span> a <span class="tok attr">border</span> určujú farebné
+      a hranové zvýraznenie stavu (napr. <span class="tok attr">color="danger"</span>,
+      <span class="tok attr">border="contrast-reverse"</span>).
+    </p>
     <div class="playground">
       <div class="content" style="display: flex; justify-content: center;">
         <wje-status color="danger" border="contrast-reverse">
@@ -25,6 +31,10 @@ template.innerHTML = `<style>
     <!-- SLOTS -->
 
     <h2>Slots</h2>
+    <p class="description">
+      Status s textom v slotoch <span class="tok attr">start</span> a <span class="tok attr">end</span>
+      okolo ikony. Umožňuje zobraziť label pred aj za ikonou (napr. stav „Dostupnosť – K dispozícii“).
+    </p>
     <div class="playground">
       <div class="content" style="display: flex; justify-content: center;">
         <wje-status color="success">
@@ -38,6 +48,12 @@ template.innerHTML = `<style>
     <!-- SIZE -->
 
     <h2>Size</h2>
+    <p class="description">
+      Rôzne veľkosti stavu pomocou atribútu <span class="tok attr">size</span>
+      (<span class="tok attr">medium</span>, <span class="tok attr">large</span>),
+      v kombinácii s veľkosťou ikony cez <span class="tok attr">size</span> na
+      <span class="tok tag">&lt;wje-icon&gt;</span>.
+    </p>
     <div class="playground">
       <div class="content" style="display: flex; justify-content: center; gap: .5rem;">
         <wje-status color="success">
@@ -84,6 +100,12 @@ template.innerHTML = `<style>
     <!--blocked - Tento stav znamená, že objekt je blokovaný alebo nedostupný.-->
 
     <h2>Types</h2>
+    <p class="description">
+      Ukážka rôznych sémantických stavov (online, offline, busy, error, maintenance, …)
+      reprezentovaných kombináciou farby <span class="tok attr">color</span>, voliteľného
+      <span class="tok attr">border</span> a ikony vnútri <span class="tok tag">&lt;wje-status&gt;</span>.
+      Slúži ako katalóg predvolených stavov, ktoré môžeš použiť v aplikácii.
+    </p>
     <div class="playground">
       <div class="content" style="gap: 1rem; display: flex; flex-direction: column;">
         <wje-status color="success">
@@ -264,4 +286,4 @@ export default class DemoStatus extends WJElement {
 let __esModule = 'true';
 export { __esModule };
 
-customElements.get('demo-badge') || window.customElements.define('demo-badge', DemoStatus);
+customElements.get('demo-status') || window.customElements.define('demo-status', DemoStatus);

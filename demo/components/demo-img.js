@@ -7,18 +7,28 @@ template.innerHTML = `
 <h1>Image</h1>
 <div class="container">
 
-    <!-- BASIC -->
+    <!-- DEFAULT IMAGE -->
 
-    <h3>Basic</h3>
+    <h3>Default image</h3>
+    <p class="description">
+      Základné použitie komponentu <span class="tok tag">&lt;wje-img&gt;</span> s atribútmi
+      <span class="tok attr">src</span> a <span class="tok attr">alt</span>.
+      Komponent rieši lazy rendering a štandardné správanie obrázka.
+    </p>
     <div class="playground">
         <div class="content">
             <wje-img src="/demo/assets/img/img.png" alt="Niekedy máme pocit, že chodíme v kruhoch..."></wje-img>
         </div>
     </div>
     
-    <!-- INNER AVATAR -->
+    <!-- IMAGE INSIDE DROPDOWN -->
 
-    <h3>Inner avatar</h3>
+    <h3>Image inside dropdown</h3>
+    <p class="description">
+      Použitie <span class="tok tag">&lt;wje-img&gt;</span> ako vnoreného obsahu v
+      <span class="tok tag">&lt;wje-avatar&gt;</span> a <span class="tok tag">&lt;wje-dropdown&gt;</span>.
+      Obrázok slúži ako vizuálny prvok triggeru aj obsahu menu.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-dropdown id="custom-dropdown" placement="right-start" offset="5" collapsible>
@@ -48,36 +58,53 @@ template.innerHTML = `
       </div>
     </div>
     
-    <!-- BASIC -->
+    <!-- REPEATED IMAGE -->
 
-    <h3>Basic</h3>
+    <h3>Repeated image</h3>
+    <p class="description">
+      Opakovaná ukážka základného obrázka – slúži na porovnanie správania v rôznych kontextoch layoutu.
+    </p>
     <div class="playground">
         <div class="content">
             <wje-img src="/demo/assets/img/img.png" alt="Niekedy máme pocit, že chodíme v kruhoch..."></wje-img>
         </div>
     </div>
     
-    <!-- JS -->
+    <!-- JAVASCRIPT CREATION -->
 
-    <h3>Javascript</h3>
+    <h3>JavaScript creation</h3>
+    <p class="description">
+      Dynamické vytvorenie <span class="tok tag">&lt;wje-img&gt;</span> v JavaScripte v hooku
+      <span class="tok method">beforeDraw()</span>. Nastavenie <span class="tok attr">src</span>,
+      <span class="tok attr">alt</span> a <span class="tok attr">fallout</span> prebieha imperatívne.
+      Vlastná fallback logika je definovaná cez <span class="tok attr">actions</span>.
+    </p>
     <div class="playground">
         <div class="content" id="example-js">
             
         </div>
     </div>
     
-    <!-- FALLOUT -DELETE -->
+    <!-- FALLBACK: DELETE -->
 
-    <h3>Fallout - Delete</h3>
+    <h3>Fallback: delete</h3>
+    <p class="description">
+      Správanie pri chybe načítania obrázka pomocou atribútu
+      <span class="tok attr">fallout="delete"</span>. Pri zlyhaní sa element automaticky odstráni z DOM.
+    </p>
     <div class="playground">
         <div class="content">
             <wje-img src="/demo/assets/img/img-error-1.png" alt="Niekedy máme pocit, že chodíme v kruhoch..." fallout="delete"></wje-img>
         </div>
     </div>
     
-    <!-- FALLOUT - FCE -->
+    <!-- FALLBACK: CUSTOM FUNCTION -->
 
-    <h3>Fallout - Function</h3>
+    <h3>Fallback: custom function</h3>
+    <p class="description">
+      Vlastná fallback funkcia cez <span class="tok attr">fallout="log"</span>.
+      Logika je definovaná v <span class="tok attr">actions</span> a spustí sa pri chybe načítania obrázka.
+    </p>
     <div class="playground">
         <div class="content">
             <wje-img src="/demo/assets/img/img-error-2.png" alt="Niekedy máme pocit, že chodíme v kruhoch..." fallout="log" id="img-example"></wje-img>
@@ -87,6 +114,10 @@ template.innerHTML = `
     <!-- OBSERVER -->
 
     <h3>Observer</h3>
+    <p class="description">
+      Ukážka pozorovania obrázka (napr. lazy load / visibility).
+      Komponent reaguje na zmenu viditeľnosti bez potreby externého JavaScriptu.
+    </p>
     <div class="playground">
         <div class="content">
             <wje-img src="/demo/assets/img/img.png" alt="Niekedy máme pocit, že chodíme v kruhoch..." fallout="log" id="img-example"></wje-img>

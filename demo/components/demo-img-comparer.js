@@ -8,7 +8,13 @@ template.innerHTML = `<h1>Img Comparer</h1>
         
     <!-- BASIC -->
 
-    <h2>Basic</h2>
+    <h2>Before / After</h2>
+    <p class="description">
+      Porovnanie dvoch obrázkov pomocou komponentu <span class="tok tag">&lt;wje-img-comparer&gt;</span>.
+      Obrázky sa vkladajú do slotov <span class="tok attr">before</span> a <span class="tok attr">after</span>
+      ako štandardné <span class="tok tag">&lt;wje-img&gt;</span> elementy.
+      Posuvník umožňuje interaktívne porovnanie bez potreby dodatočného JavaScriptu.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-img-comparer>

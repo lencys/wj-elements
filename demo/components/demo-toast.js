@@ -38,7 +38,14 @@ template.innerHTML = `<h1>Toast</h1>
 
     <!-- BASIC -->
 
-    <h2>Basic</h2>
+    <h2>Default</h2>
+    <p class="description">
+      Základná ukážka komponentu <span class="tok tag">&lt;wje-toast&gt;</span>. Rôzne tlačidlá
+      spúšťajú metódu <span class="tok method">notify()</span> s odlišnými parametrami:
+      od jednoduchého textu až po toast s odpočtom, bez zavretia, bez avataru alebo s ikonou.
+      Vložený obsah môže obsahovať <span class="tok tag">&lt;wje-avatar&gt;</span> a
+      <span class="tok tag">&lt;wje-img&gt;</span> v slote <span class="tok attr">media</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button id="toast">Get toast</wje-button>
@@ -53,15 +60,24 @@ template.innerHTML = `<h1>Toast</h1>
     <!-- COLOR -->
 
     <h2>Color</h2>
+    <p class="description">
+      Farebné varianty toastu ovláda atribút <span class="tok attr">color</span> na
+      <span class="tok tag">&lt;wje-toast&gt;</span>. V tejto ukážke sa hodnota
+      <span class="tok attr">color</span> preberá z kliknutého
+      <span class="tok tag">&lt;wje-button&gt;</span> (napr. <span class="tok attr">primary</span>,
+      <span class="tok attr">success</span>, <span class="tok attr">warning</span>,
+      <span class="tok attr">danger</span>, <span class="tok attr">info</span>,
+      <span class="tok attr">contrast</span>).
+    </p>
     <div class="playground">
       <div class="content color">
         <wje-button color="primary">Primary</wje-button>
         <wje-button color="complete">Complete</wje-button>
-        <wje-button color="success"">Success</wje-button>
-        <wje-button color="warning"">Warning</wje-button>
-        <wje-button color="danger"">Danger</wje-button>
-        <wje-button color="info"">Info</wje-button>
-        <wje-button color="contrast"">Contrast</wje-button>
+        <wje-button color="success">Success</wje-button>
+        <wje-button color="warning">Warning</wje-button>
+        <wje-button color="danger">Danger</wje-button>
+        <wje-button color="info">Info</wje-button>
+        <wje-button color="contrast">Contrast</wje-button>
       </div>
     </div>
   </div>`;

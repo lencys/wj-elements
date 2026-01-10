@@ -8,7 +8,12 @@ template.innerHTML = `<h1>Icon Picker</h1>
     
     <!-- BASIC -->
 
-    <h2>Basic</h2>
+    <h2>Standalone</h2>
+    <p class="description">
+      Samostatné použitie <span class="tok tag">&lt;wje-icon-picker&gt;</span> bez obalu.
+      Komponent poskytuje UI na výber ikony a emituje event
+      <span class="tok event">wje-icon-picker:select</span> s detailom vybranej ikony.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-icon-picker></wje-icon-picker>
@@ -18,6 +23,16 @@ template.innerHTML = `<h1>Icon Picker</h1>
     <!-- DROPDOWN -->
 
     <h2>Dropdown</h2>
+    <p class="description">
+      Použitie <span class="tok tag">&lt;wje-icon-picker&gt;</span> v kombinácii s
+      <span class="tok tag">&lt;wje-dropdown&gt;</span>. Picker je obsah dropdownu,
+      trigger je vlastný element v slote <span class="tok attr">trigger</span>.
+      Po výbere ikony sa v <span class="tok method">afterDraw()</span> odchytí event
+      <span class="tok event">wje-icon-picker:select</span> a vybraná ikona sa
+      dynamicky vloží do trigger elementu.
+      Atribúty <span class="tok attr">icon</span> a <span class="tok attr">type="filled"</span> určujú
+      predvolenú ikonu a jej štýl (napr. <em>outlined</em> vs. <em>filled</em>) pri inicializácii pickeru.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible>

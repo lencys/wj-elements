@@ -9,19 +9,26 @@ template.innerHTML = `<h1>Checkbox</h1>
     <!-- BASIC -->
 
     <h2>Basic</h2>
+    <p class="description">
+      Základné stavy <span class="tok tag">&lt;wje-checkbox&gt;</span>: default, zaškrtnutý cez <span class="tok attr">checked</span> a tri-state cez <span class="tok attr">indeterminate</span>.
+      Príklad je vo <span class="tok tag">&lt;form&gt;</span> a prvý checkbox má <span class="tok attr">name</span>/<span class="tok attr">id</span> pre prácu v JavaScripte.
+      V <span class="tok method">afterDraw()</span> sa počúva event <span class="tok event">wje-toggle:change</span> a loguje sa <span class="tok attr">value</span>.
+    </p>
     <div class="playground">
       <div class="content" style="display: block;">
-        <form>
-          <wje-checkbox name="clear" id="test">Default</wje-checkbox>
-          <wje-checkbox name="test" checked>Default checked</wje-checkbox>
-          <wje-checkbox name="indeterminate" indeterminate>Default indeterminate</wje-checkbox>
-        </form>
+        <wje-checkbox name="clear" id="test">Default</wje-checkbox>
+        <wje-checkbox name="test" checked>Default checked</wje-checkbox>
+        <wje-checkbox name="indeterminate" indeterminate>Default indeterminate</wje-checkbox>
       </div>
     </div>
     
     <!-- End -->
 
     <h2>End</h2>
+    <p class="description">
+      Umiestnenie labelu na koniec cez atribút <span class="tok attr">placement="end"</span>.
+      Ukážka porovnáva default a <span class="tok attr">checked</span> stav pri rovnakom layoute.
+    </p>
     <div class="playground">
       <div class="content" style="display: block;">
         <wje-checkbox placement="end">Default</wje-checkbox>
@@ -32,6 +39,10 @@ template.innerHTML = `<h1>Checkbox</h1>
     <!-- COLOR -->
 
     <h2>Color</h2>
+    <p class="description">
+      Farebné varianty cez atribút <span class="tok attr">color</span> (napr. <span class="tok attr">primary</span>, <span class="tok attr">complete</span>, <span class="tok attr">success</span>, <span class="tok attr">warning</span>, <span class="tok attr">danger</span>, <span class="tok attr">info</span>).
+      Každá farba je ukázaná v stavoch <span class="tok attr">checked</span>, default a <span class="tok attr">indeterminate</span>.
+    </p>
     <div class="playground">
       <div class="content" style="display: block;">
         <h5>Default</h5>
@@ -74,6 +85,10 @@ template.innerHTML = `<h1>Checkbox</h1>
     <!-- CIRCLE -->
 
     <h2>Circle</h2>
+    <p class="description">
+      Zmena vizuálneho štýlu cez <span class="tok attr">variant="circle"</span>.
+      Kombinované s <span class="tok attr">color</span> a stavmi <span class="tok attr">checked</span> / <span class="tok attr">indeterminate</span>.
+    </p>
     <div class="playground">
       <div class="content" style="display: block;">
         <h5>Default</h5>
@@ -116,6 +131,10 @@ template.innerHTML = `<h1>Checkbox</h1>
     <!-- DISABLED -->
 
     <h2>Disabled</h2>
+    <p class="description">
+      Neaktívny stav cez boolean atribút <span class="tok attr">disabled</span> pre štandardný aj <span class="tok attr">variant="circle"</span> checkbox.
+      Ukážka obsahuje aj kombináciu <span class="tok attr">checked</span> + <span class="tok attr">disabled</span>.
+    </p>
     <div class="playground">
       <div class="content" style="display: block;">
         <wje-checkbox disabled>Default disabled</wje-checkbox>

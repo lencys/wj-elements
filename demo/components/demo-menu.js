@@ -9,7 +9,19 @@ template.innerHTML = `
 
     <!-- BASIC -->
 
-    <h2>Basic</h2>
+    <h2>Default</h2>
+    <p class="description">
+      Základné menu pomocou <span class="tok tag">&lt;wje-menu&gt;</span> a položiek
+      <span class="tok tag">&lt;wje-menu-item&gt;</span>. Ikony sú v slotoch
+      <span class="tok attr">start</span>/<span class="tok attr">end</span> cez
+      <span class="tok tag">&lt;wje-icon&gt;</span> a deliace čiary cez
+      <span class="tok tag">&lt;wje-divider&gt;</span> (tu s CSS premennou
+      <span class="tok css">--wje-divider-spacing</span>).
+      Submenu je ďalšie <span class="tok tag">&lt;wje-menu&gt;</span> vložené do slotu
+      <span class="tok attr">submenu</span> na <span class="tok tag">&lt;wje-menu-item&gt;</span>.
+      Položka môže dispatchovať vlastný event cez atribút <span class="tok attr">custom-event</span>
+      a doplnkové parametre (napr. <span class="tok attr">custom-event-userId</span>).
+    </p>
     <div class="playground">
       <div class="content" style="display: block;">
         <wje-menu active style="max-width: 200px;">
@@ -68,6 +80,11 @@ template.innerHTML = `
     <!-- ACTIVE CLASS -->
 
     <h2>Active Class</h2>
+    <p class="description">
+      Trieda aktívnej položky sa dá prispôsobiť atribútom <span class="tok attr">active-class</span>
+      (napr. <span class="tok attr">open</span>). Vhodné, keď chceš zjednotiť naming s tvojimi
+      CSS triedami alebo existujúcim router „active“ stavom.
+    </p>
     <div class="playground">
       <div class="content" style="display: block;">
         <wje-menu active style="max-width: 200px;">
@@ -126,6 +143,12 @@ template.innerHTML = `
     <!-- INSET -->
 
     <h2>Inset</h2>
+    <p class="description">
+      Prispôsobenie vnútorného odsadenia menu cez CSS custom property
+      <span class="tok css">--wje-menu-padding-inline</span> aplikovanú priamo na
+      <span class="tok tag">&lt;wje-menu&gt;</span>. Ukážka obsahuje aj stav položky
+      <span class="tok attr">checked</span> a submenu bez ďalšieho JavaScriptu.
+    </p>
     <div class="playground">
       <div class="content" style="display: block;">
         <wje-menu active style="max-width: 200px; --wje-menu-padding-inline: 1rem;">

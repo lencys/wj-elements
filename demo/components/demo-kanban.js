@@ -7,9 +7,14 @@ const template = document.createElement('template');
 template.innerHTML = `<h1>Kanban</h1>
   <div class="container">
 
-    <!-- BASIC -->
+    <!-- DEFAULT -->
 
-    <h3>Basic</h3>
+    <h3>Default (API)</h3>
+    <p class="description">
+      Základné použitie komponentu <span class="tok tag">&lt;wje-kanban&gt;</span> s načítaním dát zo servera
+      cez atribút <span class="tok attr">url</span>. Komponent si sám riadi stĺpce a karty
+      podľa odpovede z API bez potreby dodatočného JavaScriptu.
+    </p>
     <div class="playground">
       <div class="content" style="width: 100%; height: 350px; display: block;">
         <wje-kanban url="/api/applicants" id="basic"></wje-kanban>
@@ -18,7 +23,14 @@ template.innerHTML = `<h1>Kanban</h1>
     
     <!-- CUSTOM -->
 
-    <h3>Basic</h3>
+    <h3>Custom rendering</h3>
+    <p class="description">
+      Vlastné vykreslenie kariet pomocou hooku <span class="tok method">customForeach</span>.
+      V <span class="tok method">afterDraw()</span> sa prepíše spôsob renderovania a každá položka
+      sa vloží ako custom DOM štruktúra (tu <span class="tok css">.card</span> element).
+      Ukážka zároveň demonštruje <span class="tok attr">draggable</span> karty a vlastné atribúty
+      (<span class="tok attr">data-id</span>).
+    </p>
     <div class="playground">
       <div class="content" style="width: 100%; height: 350px; display: block;">
         <wje-kanban url="/api/applicants" id="custom"></wje-kanban>

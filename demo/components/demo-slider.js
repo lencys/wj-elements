@@ -16,6 +16,10 @@ template.innerHTML = `
     <!-- BASIC -->
 
     <h2>Basic</h2>
+    <p class="description">
+      Základné použitie komponentu <span class="tok tag">&lt;wje-slider&gt;</span> bez ďalších atribútov.
+      Predvolená hodnota sa mení ťahaním posuvníka.
+    </p>
     <div class="playground">
       <div class="content">
           <wje-slider></wje-slider>
@@ -25,6 +29,9 @@ template.innerHTML = `
     <!-- BUBBLE -->
 
     <h2>Bubble</h2>
+    <p class="description">
+      Atribút <span class="tok attr">bubble</span> zobrazí nad sliderom bublinu s aktuálnou hodnotou.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-slider bubble></wje-slider>
@@ -34,6 +41,11 @@ template.innerHTML = `
     <!-- MIN-MAX -->
 
     <h2>Label</h2>
+    <p class="description">
+      Ukážka s vlastným textovým labelom cez slot <span class="tok attr">label</span>.
+      Možno kombinovať s rozsahmi cez atribúty <span class="tok attr">min</span>,
+      <span class="tok attr">max</span> a <span class="tok attr">value</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-slider min="20" max="80" value="50" bubble>
@@ -45,6 +57,11 @@ template.innerHTML = `
     <!-- ICONS -->
 
     <h2>Icons</h2>
+    <p class="description">
+      Ikony sú pridané cez sloty <span class="tok attr">start</span> a <span class="tok attr">end</span>.
+      Lokálne CSS vnútri slidera upravuje veľkosť ikon cez premennú
+      <span class="tok css">--wje-icon-size</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-slider class="example" min="20" max="80" value="50" bubble>
@@ -62,6 +79,12 @@ template.innerHTML = `
     <!-- COLORS -->
 
     <h2>Colors</h2>
+    <p class="description">
+      Farebné varianty slidera pomocou atribútu <span class="tok attr">color</span>.
+      Dostupné sú napríklad <span class="tok attr">primary</span>, <span class="tok attr">complete</span>,
+      <span class="tok attr">success</span>, <span class="tok attr">warning</span>,
+      <span class="tok attr">danger</span>, <span class="tok attr">dark</span> a <span class="tok attr">light</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-grid>

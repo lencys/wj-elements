@@ -6,9 +6,15 @@ const template = document.createElement('template');
 template.innerHTML = `<h1>File upload item</h1>
   <div class="container">
     
-    <!-- BASIC -->
+    <!-- UPLOADING -->
 
-    <h2>Basic</h2>
+    <h2>Uploading</h2>
+    <p class="description">
+      Zobrazenie priebehu uploadu pomocou <span class="tok tag">&lt;wje-file-upload-item&gt;</span>.
+      Atribúty <span class="tok attr">size</span>, <span class="tok attr">uploaded</span> a <span class="tok attr">progress</span>
+      určujú celkovú veľkosť súboru, už nahraté dáta a percentuálny postup.
+      Obsah náhľadu je vložený do slotu <span class="tok attr">img</span> (ikona alebo obrázok).
+    </p>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content">
         <wje-file-upload-item name="lorem-ipsum.png" size="1000000" uploaded="500000" progress="50" lang="sk-sk">
@@ -20,6 +26,11 @@ template.innerHTML = `<h1>File upload item</h1>
     <!-- IS UPLOADED -->
 
     <h2>Is uploaded</h2>
+    <p class="description">
+      Stav dokončeného uploadu cez boolean atribút <span class="tok attr">is-uploaded</span>.
+      Komponent ignoruje <span class="tok attr">progress</span> a zobrazí výsledný stav so zvoleným náhľadom
+      (obrázok alebo ikona v slote <span class="tok attr">img</span>).
+    </p>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content" style="gap: 1rem">
         <wje-file-upload-item name="lorem-ipsum.png" size="1000000" is-uploaded >
@@ -35,6 +46,11 @@ template.innerHTML = `<h1>File upload item</h1>
     <!-- IMAGE -->
 
     <h2>Image</h2>
+    <p class="description">
+      Jednoduchý variant položky s obrázkovým náhľadom:
+      do slotu <span class="tok attr">img</span> je vložený <span class="tok tag">&lt;wje-img&gt;</span>.
+      Atribút <span class="tok attr">name</span> určuje názov súboru a <span class="tok attr">size</span> jeho veľkosť.
+    </p>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content">
         <wje-file-upload-item name="lorem-ipsum.png" size="1000000">

@@ -7,9 +7,18 @@ const template = document.createElement('template');
 template.innerHTML = `<h1>Infinite Scroll</h1>
   <div class="container">
 
-    <!-- BASIC -->
+    <!-- API (URL) -->
 
-    <h3>Basic</h3>
+    <h3>API (URL)</h3>
+    <p class="description">
+      Načítanie dát zo servera cez <span class="tok attr">url</span> na
+      <span class="tok tag">&lt;wje-infinite-scroll&gt;</span>.
+      Položky sa renderujú do <span class="tok tag">&lt;wje-list&gt;</span> podľa šablóny
+      <span class="tok attr">&lt;template iterate&gt;</span> a umiestnenie sa riadi
+      atribútom <span class="tok attr">placement="wje-list"</span>.
+      Sloty <span class="tok attr">ending</span> a <span class="tok attr">loader</span>
+      definujú ikonky pre „koniec“ a „loading“ stav.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-infinite-scroll url="/api/users" placement="wje-list" id="basic">
@@ -33,6 +42,15 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
     <!-- CUSTOM DATA - FOREACH -->
 
     <h3>Custom Data</h3>
+    <p class="description">
+      Vlastné dáta bez <span class="tok attr">url</span>:
+      v <span class="tok method">afterDraw()</span> sa nastaví
+      <span class="tok method">setCustomData()</span> (vracia stránkovanú odpoveď)
+      a šablóna položky cez <span class="tok attr">infiniteScrollTemplate</span>.
+      Ukážka zároveň používa <span class="tok method">customForeach()</span> na vlastné
+      vkladanie elementov (vrátane skupinových nadpisov „Dnes / Staršie“
+      podľa <span class="tok attr">time</span>).
+    </p>
     <div class="playground">
       <div class="content">
         <wje-infinite-scroll placement="wje-list" id="custom-data">
@@ -43,9 +61,16 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
       </div>
     </div>
 
-    <!-- SIZE -->
+    <!-- Page size -->
 
-    <h3>Size</h3>
+    <h3>Page size</h3>
+    <p class="description">
+      Počet položiek na stránku cez atribút <span class="tok attr">size</span>.
+      Ukážka kombinuje infinite scroll s tooltipom
+      (<span class="tok tag">&lt;wje-tooltip&gt;</span> s
+      <span class="tok attr">content</span>) a renderuje položky
+      do <span class="tok tag">&lt;wje-list&gt;</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-infinite-scroll url="/api/users" placement="wje-list" size="6">
@@ -66,9 +91,19 @@ template.innerHTML = `<h1>Infinite Scroll</h1>
       </div>
     </div>
 
-    <!-- CARRD -->
+    <!-- Card -->
 
     <h3>Card</h3>
+    <p class="description">
+      Grid / card layout: <span class="tok tag">&lt;wje-infinite-scroll&gt;</span>
+      vkladá položky do gridu cez
+      <span class="tok attr">placement="wje-row"</span> a
+      <span class="tok attr">size="20"</span>.
+      Výška scrolly oblasti je fixná cez
+      <span class="tok attr">height="440px"</span>.
+      Obsah položky je <span class="tok tag">&lt;wje-card&gt;</span>
+      s obrázkom (<span class="tok tag">&lt;wje-img&gt;</span>) a textom.
+    </p>
     <div class="playground" style="padding: 1rem 0;">
       <div class="content" style="width: auto;">
         <wje-infinite-scroll url="/api/users" placement="wje-row" size="20" class="example" height="440px">
@@ -116,76 +151,80 @@ export default class DemoInfinteScroll extends WJElement {
     return template;
   }
 
-  beforeDraw() {
-    const infiniteScroll = this.querySelector('#custom-data');
-
-    infiniteScroll.setCustomData = async () => {
-      infiniteScroll.infiniteScrollTemplate = `<wje-item">
-        <wje-label>
-          <h4>{{title}}</h4>
-          <p>{{description}}</p>
-        </wje-label>
-      </wje-item>`;
-
-      return {
-        page: 0,
-        size: 1,
-        totalPages: 1,
-        data: [
-          {
-            id: '1',
-            title: 'Lorem ipsum dolor sit amet',
-            description: 'Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.',
-            time: '2024-06-24T10:00:00Z',
-          },
-          {
-            id: '2',
-            title: 'Lorem ipsum dolor sit amet',
-            description: 'Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.',
-            time: '2024-06-23T12:00:00Z',
-          },
-          {
-            id: '3',
-            title: 'Lorem ipsum dolor sit amet',
-            description: 'Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.',
-            time: '2024-06-24T14:00:00Z',
-          },
-        ],
-      };
-    };
-
-    infiniteScroll.customForeach = (data) => {
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-
-      let addedTodayHeader = false;
-      let addedOlderHeader = false;
-
-      data.forEach((item) => {
-        let itemDate = new Date(item.time);
-        itemDate.setHours(0, 0, 0, 0);
-
-        if (itemDate.getTime() === today.getTime() && !addedTodayHeader) {
-          let todayHeader = document.createElement('h5');
-          todayHeader.textContent = 'Dnes';
-          infiniteScroll.placementObj.insertAdjacentElement('beforeend', todayHeader);
-          addedTodayHeader = true;
-        }
-
-        if (itemDate.getTime() !== today.getTime() && !addedOlderHeader) {
-          let olderHeader = document.createElement('h5');
-          olderHeader.textContent = 'Staršie';
-          infiniteScroll.placementObj.insertAdjacentElement('beforeend', olderHeader);
-          addedOlderHeader = true;
-        }
-
-        let element = infiniteScroll.dataToHtml(item);
-        infiniteScroll.placementObj.insertAdjacentElement('beforeend', element);
-      });
-    };
-  }
+  beforeDraw() {}
 
   afterDraw() {
+    // Components are rendered at this point; query from the render context (shadowRoot)
+    const root = this.context || this.shadowRoot || this;
+    const infiniteScroll = root.querySelector('#custom-data');
+
+    if (infiniteScroll) {
+      infiniteScroll.setCustomData = async () => {
+        infiniteScroll.infiniteScrollTemplate = `<wje-item>
+          <wje-label>
+            <h4>{{title}}</h4>
+            <p>{{description}}</p>
+          </wje-label>
+        </wje-item>`;
+
+        return {
+          page: 0,
+          size: 1,
+          totalPages: 1,
+          data: [
+            {
+              id: '1',
+              title: 'Lorem ipsum dolor sit amet',
+              description: 'Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.',
+              time: '2024-06-24T10:00:00Z',
+            },
+            {
+              id: '2',
+              title: 'Lorem ipsum dolor sit amet',
+              description: 'Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.',
+              time: '2024-06-23T12:00:00Z',
+            },
+            {
+              id: '3',
+              title: 'Lorem ipsum dolor sit amet',
+              description: 'Quasi cervus sordeo deprimo tunc curriculum verbum vox beatae turpis.',
+              time: '2024-06-24T14:00:00Z',
+            },
+          ],
+        };
+      };
+
+      infiniteScroll.customForeach = (data) => {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        let addedTodayHeader = false;
+        let addedOlderHeader = false;
+
+        data.forEach((item) => {
+          let itemDate = new Date(item.time);
+          itemDate.setHours(0, 0, 0, 0);
+
+          if (itemDate.getTime() === today.getTime() && !addedTodayHeader) {
+            let todayHeader = document.createElement('h5');
+            todayHeader.textContent = 'Dnes';
+            infiniteScroll.placementObj.insertAdjacentElement('beforeend', todayHeader);
+            addedTodayHeader = true;
+          }
+
+          if (itemDate.getTime() !== today.getTime() && !addedOlderHeader) {
+            let olderHeader = document.createElement('h5');
+            olderHeader.textContent = 'Staršie';
+            infiniteScroll.placementObj.insertAdjacentElement('beforeend', olderHeader);
+            addedOlderHeader = true;
+          }
+
+          let element = infiniteScroll.dataToHtml(item);
+          infiniteScroll.placementObj.insertAdjacentElement('beforeend', element);
+        });
+      };
+    }
+
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(this.context);
   }

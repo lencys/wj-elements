@@ -3,12 +3,22 @@ import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 
-template.innerHTML = `<h1>Avatar</h1>
+template.innerHTML = `<style>
+    .description {
+      margin: 0 0 .5rem;
+      max-width: 72ch;
+      opacity: .8;
+    }
+  </style>
+  <h1>Avatar</h1>
   <div class="container">
 
     <!-- BASIC -->
 
     <h3>Basic</h3>
+    <p class="description">
+      Základná ukážka avatara s obrázkom (<code>&lt;wje-img&gt;</code>), s iniciálami cez <code>label</code> + boolean <code>initials</code> a s ikonou cez slot <code>icon</code>.
+    </p>
     <div class="playground">
       <div class="content" style="display: flex; gap: .25rem;">
         <wje-avatar>
@@ -18,18 +28,6 @@ template.innerHTML = `<h1>Avatar</h1>
         <wje-avatar label="Petr Rahman" initials>
           <wje-img src="/assets/img/avatar.svg"></wje-img>
         </wje-avatar>
-        
-        <wje-avatar label="Z M" initials></wje-avatar>
-        <wje-avatar label="L V" initials></wje-avatar>
-        <wje-avatar label="M K" initials></wje-avatar>
-        <wje-avatar label="A N" initials></wje-avatar>
-        
-        <wje-avatar label="I D" initials></wje-avatar>
-        <wje-avatar label="J S" initials></wje-avatar>
-        <wje-avatar label="K P" initials></wje-avatar>
-        <wje-avatar label="D D" initials></wje-avatar>
-        
-        
         <wje-avatar>
           <wje-icon name="check" slot="icon"></wje-icon>
         </wje-avatar>
@@ -39,6 +37,9 @@ template.innerHTML = `<h1>Avatar</h1>
     <!-- ERROR -->
 
     <h3>Error</h3>
+    <p class="description">
+      Ukážka správania pri chybe načítania obrázka – komponent fallbackne na inicialy podľa <code>label</code> (ak je dostupné) alebo na default obsah.
+    </p>
     <div class="playground">
       <div class="content" style="display: flex; gap: .25rem;">
         <wje-avatar label="Petr Rahman">
@@ -53,6 +54,9 @@ template.innerHTML = `<h1>Avatar</h1>
     <!-- SIZE -->
 
     <h3>Size</h3>
+    <p class="description">
+      Veľkosti avatara cez atribút <code>size</code> (napr. <code>small</code>, <code>medium</code>, <code>normal</code>, <code>large</code> až <code>5x-large</code>). Ukážka používa obrázok vnútri <code>&lt;wje-img&gt;</code>.
+    </p>
     <div class="playground">
       <div class="content" style="display: flex; gap: .25rem;">
         <wje-avatar size="small"><wje-img src="/assets/img/avatar.svg"></wje-img></wje-avatar>
@@ -70,6 +74,9 @@ template.innerHTML = `<h1>Avatar</h1>
     <!-- SIZE INITIALS -->
     
     <h3>Size - Initials</h3>
+    <p class="description">
+      Rovnaké veľkosti <code>size</code>, ale render iniciál cez <code>label</code> + boolean <code>initials</code> (bez obrázka).
+    </p>
     <div class="playground">
       <div class="content" style="display: flex; gap: .25rem;">
         <wje-avatar size="small" label="Petr Rahman" initials></wje-avatar>
@@ -84,9 +91,31 @@ template.innerHTML = `<h1>Avatar</h1>
       </div>
     </div>
     
+    <!-- COLOR -->
+    
+    <h3>Color</h3>
+    <p class="description">
+      Automatické priraďovanie farby backgroundu pre initial avatar (podľa hodnoty <code>label</code>). Bez špeciálneho CSS/JS – farby určuje komponent.
+    </p>
+    <div class="playground">
+      <div class="content" style="display: flex; gap: .25rem;">
+        <wje-avatar label="Z M" initials></wje-avatar>
+        <wje-avatar label="L V" initials></wje-avatar>
+        <wje-avatar label="M K" initials></wje-avatar>
+        <wje-avatar label="A N" initials></wje-avatar>
+        <wje-avatar label="I D" initials></wje-avatar>
+        <wje-avatar label="J S" initials></wje-avatar>
+        <wje-avatar label="K P" initials></wje-avatar>
+        <wje-avatar label="D D" initials></wje-avatar>
+      </div>
+    </div>
+    
     <!-- ICON -->
 
     <h3>Icon</h3>
+    <p class="description">
+      Ikona v avatare cez slot <code>icon</code> – vhodné pre stavové/akčné avatary (napr. „verified“).
+    </p>
     <div class="playground">
       <div class="content">
         <wje-avatar>
@@ -98,6 +127,9 @@ template.innerHTML = `<h1>Avatar</h1>
     <!-- INITIALS -->
 
     <h3>Initials</h3>
+    <p class="description">
+      Zobrazenie iniciál len z <code>label</code> pomocou boolean atribútu <code>initials</code>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-avatar label="Petr Rahman" initials></wje-avatar>
@@ -107,6 +139,9 @@ template.innerHTML = `<h1>Avatar</h1>
     <!-- STATUS -->
 
     <h3>Status</h3>
+    <p class="description">
+      Status indikátor cez slot <code>status</code> s vnoreným <code>&lt;wje-status&gt;</code>. Pozíciu nastavuje atribút <code>status-placement</code> (napr. <code>top-start</code>, <code>bottom-end</code>).
+    </p>
     <div class="playground">
       <div class="content" style="display: flex; gap: 1rem; width: 100px;">
         <wje-avatar label="Petr Rahman" status-placement="top-start" initials>
@@ -138,6 +173,9 @@ template.innerHTML = `<h1>Avatar</h1>
     <!-- DROPDOWN -->
 
     <h3>Dropdown</h3>
+    <p class="description">
+      Avatar ako trigger pre <code>&lt;wje-dropdown&gt;</code> (slot <code>trigger</code>). Ukazuje atribúty dropdownu <code>placement</code>, <code>trigger="hover"</code>, <code>offset</code> a variant <code>collapsible</code>. Menu je upravené lokálnym CSS cez triedu <code>.custom-menu</code>.
+    </p>
     <div class="playground">
       <div class="content" style="display: flex; gap: .25rem;">
         <wje-dropdown id="custom-dropdown" placement="right-start" trigger="hover" offset="5">
@@ -172,6 +210,9 @@ template.innerHTML = `<h1>Avatar</h1>
     <!-- TOOLTIP -->
 
     <h3>Tooltip</h3>
+    <p class="description">
+      Tooltip cez obalový komponent <code>&lt;wje-tooltip&gt;</code> a jeho atribút <code>content</code> – bez dodatočného JavaScriptu.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-tooltip content="Petr Rahman">
@@ -183,6 +224,9 @@ template.innerHTML = `<h1>Avatar</h1>
     <!-- GROUP -->
 
     <h3>Group</h3>
+    <p class="description">
+      Skupina avatarov s prekrytím pomocou lokálneho CSS (<code>margin-left: -1rem</code>) a „ring“ efekt cez <code>::part(native)</code> (biely border).
+    </p>
     <div class="playground">
       <div class="content">
         <div class="wje-avatar-group">
@@ -211,6 +255,9 @@ template.innerHTML = `<h1>Avatar</h1>
     <!-- CUSTOM -->
 
     <h3>Custom</h3>
+    <p class="description">
+      Override vzhľadu cez CSS custom properties (napr. <code>--wje-avatar-size</code>, <code>--wje-avatar-font-size</code>, <code>--wje-avatar-color</code>, <code>--wje-avatar-background-color</code>) aplikované na konkrétny element cez <code>id="custom"</code>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-avatar id="custom" label="Petr Rahman" initials></wje-avatar>

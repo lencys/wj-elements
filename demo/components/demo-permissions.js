@@ -9,7 +9,15 @@ template.innerHTML = `
 
     <!-- BASIC -->
 
-    <h3>Basic</h3>
+    <h3>Permission checks</h3>
+    <p class="description">
+      Ukážka práce s oprávneniami pomocou atribútov <span class="tok attr">permission</span>,
+      <span class="tok attr">permission-check</span> a <span class="tok attr">no-show</span>
+      na komponentoch ako <span class="tok tag">&lt;wje-button&gt;</span>.
+      API <span class="tok tag">WjePermissionsApi</span> definuje dostupné oprávnenia
+      (tu nastavené v <span class="tok method">constructor()</span>) a komponent podľa nich
+      automaticky zobrazí, skryje alebo deaktivuje prvky bez ďalšieho JavaScriptu.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button no-show>No Show</wje-button>

@@ -8,7 +8,13 @@ template.innerHTML = `<h1>Item</h1>
 
     <!--  BASIC-->
 
-    <h2>Basic</h2>
+    <h2>Text &amp; content</h2>
+    <p class="description">
+      Základné použitie <span class="tok tag">&lt;wje-item&gt;</span> s obsahom v
+      <span class="tok tag">&lt;wje-label&gt;</span>. Ukážka porovnáva jednoradkové ellipsis vs.
+      viacriadkové zalamovanie cez triedu <span class="tok attr">.wje-text-wrap</span> a demonštruje,
+      že do labelu môžeš vložiť aj HTML (nadpisy, odstavce).
+    </p>
     <div class="playground">
       <div class="content">
         <wje-item>
@@ -55,6 +61,13 @@ template.innerHTML = `<h1>Item</h1>
     <!-- DROPDOWN -->
     
     <h2>Dropdown</h2>
+    <p class="description">
+      Akcie na konci riadku cez <span class="tok tag">&lt;wje-dropdown&gt;</span> v slote
+      <span class="tok attr">end</span>. Trigger je tlačidlo <span class="tok tag">&lt;wje-button&gt;</span>
+      s ikonou v slote <span class="tok attr">icon-only</span>. Dropdown používa
+      <span class="tok attr">placement="bottom-end"</span> a boolean <span class="tok attr">collapsible</span>,
+      obsah je <span class="tok tag">&lt;wje-menu variant="context"&gt;</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-list>
@@ -113,6 +126,11 @@ template.innerHTML = `<h1>Item</h1>
     <!-- ICONS IN ITEM -->
 
     <h2>Icons in items</h2>
+    <p class="description">
+      Ikony v slotoch <span class="tok attr">start</span> a <span class="tok attr">end</span> cez
+      <span class="tok tag">&lt;wje-icon&gt;</span>. Ukážka porovnáva veľkosti cez atribút
+      <span class="tok attr">size</span> (<span class="tok attr">small</span>/<span class="tok attr">large</span>).
+    </p>
     <div class="playground">
       <div class="content">
         <wje-item>
@@ -140,6 +158,12 @@ template.innerHTML = `<h1>Item</h1>
     <!-- ITEM LINES -->
 
     <h2>Item lines</h2>
+    <p class="description">
+      Spôsob vykreslenia deliacej čiary cez atribút <span class="tok attr">lines</span> na
+      <span class="tok tag">&lt;wje-item&gt;</span>: <span class="tok attr">inset</span>,
+      <span class="tok attr">full</span> alebo <span class="tok attr">none</span>.
+      Ukážka ukazuje správanie aj pri obsahu so slotmi <span class="tok attr">start</span>/<span class="tok attr">end</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-item>
@@ -187,6 +211,11 @@ template.innerHTML = `<h1>Item</h1>
     <!-- MEDIA -->
 
     <h2>Media Items</h2>
+    <p class="description">
+      “Media” variant: v slote <span class="tok attr">start</span> je <span class="tok tag">&lt;wje-avatar&gt;</span>
+      alebo <span class="tok tag">&lt;wje-thumbnail&gt;</span> s vnoreným <span class="tok tag">&lt;wje-img&gt;</span>.
+      Vhodné pre zoznamy kontaktov alebo položiek s náhľadom.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-item>
@@ -208,6 +237,11 @@ template.innerHTML = `<h1>Item</h1>
     <!-- BUTTONS -->
 
     <h2>Buttons in Items</h2>
+    <p class="description">
+      Akcie v slotoch <span class="tok attr">start</span>/<span class="tok attr">end</span> pomocou
+      <span class="tok tag">&lt;wje-button&gt;</span>. Ukážky obsahujú tlačidlá s ikonami (slot <span class="tok attr">icon-only</span>)
+      a porovnanie veľkostí cez <span class="tok attr">size</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-item>

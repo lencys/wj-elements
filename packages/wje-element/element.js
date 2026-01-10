@@ -3,9 +3,19 @@ import { Permissions } from '../utils/permissions.js';
 import { WjElementUtils } from '../utils/element-utils.js';
 import { event } from '../utils/event.js';
 import { defaultStoreActions, store } from '../wje-store/store.js';
+import skeletonCss from '../styles/skeleton.css?inline';
 
 const template = document.createElement('template');
 template.innerHTML = ``;
+
+// Shared skeleton helpers for Shadow DOM (global CSS doesn't cross the shadow boundary)
+const wjSkeletonSheet = new CSSStyleSheet();
+try {
+	wjSkeletonSheet.replaceSync(skeletonCss);
+} catch (e) {
+	// ignore (older browsers / non-constructable stylesheets)
+}
+
 export default class WJElement extends HTMLElement {
 	#drawingStatus;
 	#isAttached;
@@ -267,8 +277,9 @@ export default class WJElement extends HTMLElement {
 	 * Defines component dependencies by registering custom elements.
 	 */
 	defineDependencies() {
-		if (this.dependencies)
-			Object.entries(this.dependencies).forEach((name, component) => WJElement.define(name, component));
+		if (this.dependencies) {
+			Object.entries(this.dependencies).forEach(([name, component]) => WJElement.define(name, component));
+		}
 	}
 
 	/**
@@ -314,6 +325,100 @@ export default class WJElement extends HTMLElement {
 	}
 
 	/**
+	 * Optional hook: return skeleton markup used while async draw is in progress.
+	 * Prefer declarative skeleton via `<div slot="skeleton">...</div>`.
+	 * Return: string | Node | DocumentFragment | null | Promise of those.
+	 */
+	renderSkeleton(params) {
+		return null;
+	}
+
+	/**
+	 * Retrieves the delay duration for the skeleton display, determining the value based on a hierarchy of overrides and defaults.
+	 * The method prioritizes in the following order:
+	 * 1. A finite number set as the `_wjSkeletonSlotClone` property.
+	 * 2. A valid numeric value from the `skeleton-delay` attribute.
+	 * 3. The `skeletonDelayMs` property, if defined with a finite number.
+	 * 4. A default value of 150 if none of the above are set.
+	 * @returns {number} The delay in milliseconds before the skeleton is displayed.
+	 */
+	get skeletonDelay() {
+		// 1) property override
+		if (Number.isFinite(this._wjSkeletonSlotClone)) return this._wjSkeletonSlotClone;
+
+		// 2) attribute override
+		const v = this.getAttribute('skeleton-delay');
+		const n = v == null ? NaN : Number(v);
+		if (Number.isFinite(n)) return n;
+
+		// 3) backward compat (if some components still set this)
+		if (Number.isFinite(this.skeletonDelayMs)) return this.skeletonDelayMs;
+
+		// 4) default
+		return 150;
+	}
+
+	/**
+	 * Retrieves the minimum duration for the skeleton animation.
+	 * The method checks for an internally stored finite value. If unavailable,
+	 * it retrieves the value from the 'skeleton-min-duration' attribute,
+	 * converts it to a number if possible, and uses it. If neither is valid,
+	 * a default duration of 300 is returned.
+	 * @returns {number} The minimum duration for the skeleton animation in milliseconds.
+	 */
+	get skeletonMinDuration() {
+		if (Number.isFinite(this._wjSkeletonSlotClone)) return this._wjSkeletonSlotClone;
+
+		const v = this.getAttribute('skeleton-min-duration');
+		const n = v == null ? NaN : Number(v);
+		if (Number.isFinite(n)) return n;
+
+		// 3) default
+		return 300;
+	}
+
+	set skeletonMinDuration(value) {
+		// allow null/undefined to reset
+		if (value === null || value === undefined || value === '') {
+			delete this._wjSkeletonSlotClone;
+			this.removeAttribute('skeleton-min-duration');
+			return;
+		}
+		const n = Number(value);
+		if (Number.isFinite(n)) {
+			this._wjSkeletonSlotClone = n;
+			this.setAttribute('skeleton-min-duration', String(n));
+		}
+	}
+
+	// Public API: property-based control
+	set skeleton(value) {
+		if (value) this.setAttribute('skeleton', '');
+		else this.removeAttribute('skeleton');
+	}
+	get skeleton() {
+		return this.hasAttribute('skeleton');
+	}
+
+	set skeletonDelay(value) {
+		// allow null/undefined to reset
+		if (value === null || value === undefined || value === '') {
+			delete this._wjSkeletonSlotClone;
+			this.removeAttribute('skeleton-delay');
+			return;
+		}
+		const n = Number(value);
+		if (Number.isFinite(n)) {
+			this._wjSkeletonSlotClone = n;
+			this.setAttribute('skeleton-delay', String(n));
+		}
+	}
+	get skeletonDelayValue() {
+		return this.skeletonDelay;
+	}
+
+
+	/**
 	 * Lifecycle method invoked when the component is connected to the DOM.
 	 */
 	connectedCallback() {
@@ -346,12 +451,25 @@ export default class WJElement extends HTMLElement {
 			this.setUpAccessors();
 
 			this.#drawingStatus = this.drawingStatuses.START;
-			await this.display(force);
 
+			// Adopt component + skeleton styles BEFORE display, so skeleton is visible in Shadow DOM.
 			const sheet = new CSSStyleSheet();
 			sheet.replaceSync(this.constructor.cssStyleSheet);
 
-			this.context.adoptedStyleSheets = [sheet];
+			if (this.shadowRoot) {
+				const existing = this.shadowRoot.adoptedStyleSheets || [];
+				const next = [...existing];
+
+				if (!next.includes(wjSkeletonSheet) && wjSkeletonSheet.cssRules !== undefined) {
+					next.push(wjSkeletonSheet);
+				}
+
+				if (!next.includes(sheet)) next.push(sheet);
+
+				this.shadowRoot.adoptedStyleSheets = next;
+			}
+
+			await this.display(force);
 
 			resolve();
 		});
@@ -538,30 +656,200 @@ export default class WJElement extends HTMLElement {
 	 * @param [force] Whether to force a re-render.
 	 * @returns A promise that resolves when the display is complete.
 	 */
-	display(force = false) {
+		display(force = false) {
 		this.template = this.constructor.customTemplate || document.createElement('template');
 
-		if (force) {
-			[...this.context.childNodes].forEach(this.context.removeChild.bind(this.context));
-		}
+		// Build the next context offscreen
+		const nextContext = document.createDocumentFragment();
+		nextContext.append(this.template.content.cloneNode(true));
 
-		this.context.append(this.template.content.cloneNode(true));
-
+		// Check permission/noShow before DOM swap
 		if (this.noShow || (this.isPermissionCheck && !Permissions.isPermissionFulfilled(this.permission))) {
 			this.remove();
 			return Promise.resolve();
 		}
 
-		return this.#resolveRender();
+		let skeletonTimer = null;
+		let renderFinished = false;
+		let skeletonShownAt = null;
+
+		const clearSkeletonTimer = () => {
+			if (skeletonTimer) {
+				clearTimeout(skeletonTimer);
+				skeletonTimer = null;
+			}
+		};
+
+		const buildSkeletonFragment = async () => {
+			// Prefer declarative skeleton in light DOM.
+			// NOTE: after the first render we may `replaceChildren()` on the host, which removes light DOM.
+			// Persist a clone so skeleton keeps working on subsequent refreshes.
+			const slotted = this.querySelector('[slot="skeleton"]');
+			if (slotted) {
+				this._wjSkeletonSlotClone = slotted.cloneNode(true);
+				const frag = document.createDocumentFragment();
+				frag.append(this._wjSkeletonSlotClone.cloneNode(true));
+				return frag;
+			}
+
+			// If light DOM was replaced by render, use the persisted clone
+			if (this._wjSkeletonSlotClone) {
+				const frag = document.createDocumentFragment();
+				frag.append(this._wjSkeletonSlotClone.cloneNode(true));
+				return frag;
+			}
+
+			// Fallback to hook
+			const frag = document.createDocumentFragment();
+			let skel = this.renderSkeleton?.(WjElementUtils.getAttributes(this));
+			if (skel instanceof Promise || skel?.constructor?.name === 'Promise') {
+				skel = await skel;
+			}
+			if (skel == null) return null;
+
+			let node;
+			if (skel instanceof HTMLElement || skel instanceof DocumentFragment) {
+				node = skel;
+			} else {
+				const t = document.createElement('template');
+				t.innerHTML = skel;
+				node = t.content.cloneNode(true);
+			}
+			frag.append(node);
+			return frag;
+		};
+
+		const showSkeleton = async () => {
+			if (renderFinished) return;
+			if (!this.hasAttribute('skeleton')) return;
+
+			const frag = await buildSkeletonFragment();
+			if (!frag) return;
+
+			// Ensure the host has a box to render into (custom elements default to display:inline)
+			try {
+				const cs = getComputedStyle(this);
+				if (cs.display === 'inline') this.style.display = 'block';
+				if (cs.width === '0px') this.style.width = '100%';
+			} catch (e) {
+				// ignore
+			}
+
+			// REPLACE mode only
+			if (this.hasShadowRoot) {
+				// Ensure skeleton styles are present in shadowRoot
+				if (this.shadowRoot) {
+					const existing = this.shadowRoot.adoptedStyleSheets || [];
+					if (!existing.includes(wjSkeletonSheet) && wjSkeletonSheet.cssRules !== undefined) {
+						this.shadowRoot.adoptedStyleSheets = [...existing, wjSkeletonSheet];
+					}
+				}
+				this.shadowRoot.replaceChildren(frag);
+			} else {
+				this.replaceChildren(frag);
+			}
+
+			skeletonShownAt = performance.now();
+
+			this.dispatchEvent(new CustomEvent('wj:skeleton:show', {
+				detail: { delay: this.skeletonDelay },
+				bubbles: true,
+				composed: true,
+			}));
+			if (this.hasAttribute('debug-skeleton')) {
+				debugger;
+			}
+		};
+
+		// If the element is hidden during initial render, allow skeleton to be visible
+		if (this.hasAttribute('skeleton') && this.style.visibility === 'hidden') {
+			this.style.visibility = this.#originalVisibility ?? 'visible';
+		}
+
+		// Schedule skeleton only after a short delay to avoid flashing on fast renders
+		let skeletonPlannedAt;
+		if (this.hasAttribute('skeleton')) {
+			skeletonPlannedAt = performance.now();
+			skeletonTimer = setTimeout(() => {
+				showSkeleton();
+			}, this.skeletonDelay);
+		}
+
+		return this.#resolveRender(nextContext, { skipAfterDraw: true })
+			.then(async () => {
+				// Real render finished; cancel pending skeleton
+				renderFinished = true;
+				clearSkeletonTimer();
+
+				if (skeletonShownAt === null) {
+					// Skeleton never shown (render was fast)
+					const elapsed = skeletonPlannedAt ? (performance.now() - skeletonPlannedAt) : 0;
+					this.dispatchEvent(new CustomEvent('wj:skeleton:skip', {
+						detail: { reason: 'render-finished-fast', elapsedMs: elapsed, delay: this.skeletonDelay },
+						bubbles: true,
+						composed: true,
+					}));
+				} else {
+					// Skeleton was shown: enforce minimum visible duration to avoid flashing
+					const now = performance.now();
+					const visibleFor = now - skeletonShownAt;
+					const remaining = this.skeletonMinDuration - visibleFor;
+					if (remaining > 0) {
+						await new Promise((r) => setTimeout(r, remaining));
+					}
+				}
+
+				if (this.hasShadowRoot) {
+					this.shadowRoot.replaceChildren(nextContext);
+				} else {
+					this.replaceChildren(nextContext);
+				}
+
+				// If skeleton was visible, it has just been removed by the swap
+				if (skeletonShownAt !== null) {
+					this.dispatchEvent(new CustomEvent('wj:skeleton:hide', {
+						detail: {
+							reason: 'render-finished',
+							visibleMs: Math.max(this.skeletonMinDuration, performance.now() - skeletonShownAt),
+							delay: this.skeletonDelay,
+							minDuration: this.skeletonMinDuration,
+						},
+						bubbles: true,
+						composed: true,
+					}));
+				}
+
+				const liveContext = this.hasShadowRoot ? this.shadowRoot : this;
+				const _afterDraw = this.afterDraw?.(liveContext, this.store, WjElementUtils.getAttributes(this));
+				if (_afterDraw instanceof Promise || _afterDraw?.constructor.name === 'Promise') {
+					await _afterDraw;
+				}
+			})
+			.finally(() => {
+				renderFinished = true;
+				clearSkeletonTimer();
+				// If render failed, ensure skeleton timer is cleared and notify
+				if (!this.#isRendering) {
+					this.dispatchEvent(new CustomEvent('wj:skeleton:hide', {
+						detail: { reason: 'finally' },
+						bubbles: true,
+						composed: true,
+					}));
+				}
+			});
 	}
 
 	/**
-	 * Renders the component's content.
+	 * Renders the content into the provided target context.
+	 * This method handles asynchronous rendering, processes the output from the `draw` method,
+	 * and appends the resulting content to the specified target context.
+	 * @returns {Promise<void>} A promise that resolves once the render operation is complete and the content is appended to the target context.
+	 * @param targetContext
 	 */
-	async render() {
+	async render(targetContext = this.context) {
 		this.#drawingStatus = this.drawingStatuses.DRAWING;
 
-		let _draw = this.draw(this.context, this.store, WjElementUtils.getAttributes(this));
+		let _draw = this.draw(targetContext, this.store, WjElementUtils.getAttributes(this));
 
 		if (_draw instanceof Promise || _draw?.constructor.name === 'Promise') {
 			_draw = await _draw;
@@ -580,7 +868,7 @@ export default class WJElement extends HTMLElement {
 
 		let rendered = element;
 
-		this.context.appendChild(rendered);
+		targetContext.appendChild(rendered);
 	}
 
 	/**
@@ -653,26 +941,29 @@ export default class WJElement extends HTMLElement {
 	}
 
 	/**
-	 * Resolves the rendering process of the component.
+	 * Resolves the rendering process of the component, using the given target context.
+	 * @param {HTMLElement|ShadowRoot|DocumentFragment} targetContext Target for rendering (defaults to this.context)
 	 * @returns A promise that resolves when rendering is complete.
 	 * @private
 	 */
-	#resolveRender() {
+	#resolveRender(targetContext = this.context, { skipAfterDraw = false } = {}) {
 		this.params = WjElementUtils.getAttributes(this);
 
 		return new Promise(async (resolve, reject) => {
-			const __beforeDraw = this.beforeDraw(this.context, this.store, WjElementUtils.getAttributes(this));
+			const _beforeDraw = this.beforeDraw(targetContext, this.store, WjElementUtils.getAttributes(this));
 
-			if (__beforeDraw instanceof Promise || __beforeDraw?.constructor.name === 'Promise') {
-				await __beforeDraw;
+			if (_beforeDraw instanceof Promise || _beforeDraw?.constructor.name === 'Promise') {
+				await _beforeDraw;
 			}
 
-			await this.render();
+			await this.render(targetContext);
 
-			const __afterDraw = this.afterDraw?.(this.context, this.store, WjElementUtils.getAttributes(this));
+			if (!skipAfterDraw) {
+				const _afterDraw = this.afterDraw?.(targetContext, this.store, WjElementUtils.getAttributes(this));
 
-			if (__afterDraw instanceof Promise || __afterDraw?.constructor.name === 'Promise') {
-				await __afterDraw;
+				if (_afterDraw instanceof Promise || _afterDraw?.constructor.name === 'Promise') {
+					await _afterDraw;
+				}
 			}
 
 			// RHR toto je bicykel pre slickRouter  pretože routovanie nieje vykonané pokiaľ sa nezavolá updateComplete promise,

@@ -6,10 +6,31 @@ const template = document.createElement('template');
 template.innerHTML = `
     <h1>QR Code Generator</h1>
     <div class="container">
-        <h2>Basic</h2>
+        <h2>Default</h2>
+        <div class="description">
+          Základná ukážka komponentu <span class="tok tag">&lt;wje-qr-code&gt;</span>, ktorý generuje QR kód
+          podľa zadaných parametrov. Používané atribúty:
+          <ul>
+            <li><span class="tok attr">value</span> – text alebo URL, ktoré sa zakóduje do QR kódu.</li>
+            <li><span class="tok attr">size</span> – celková veľkosť QR kódu v pixeloch.</li>
+            <li><span class="tok attr">padding</span> – vnútorné odsadenie okolo QR kódu.</li>
+            <li><span class="tok attr">foreground</span> – farba „čiar“ QR kódu.</li>
+            <li><span class="tok attr">foregroundAlpha</span> – priesvitnosť popredia (0–1).</li>
+            <li><span class="tok attr">background</span> – farba pozadia QR kódu.</li>
+            <li><span class="tok attr">backgroundAlpha</span> – priesvitnosť pozadia (0–1).</li>
+            <li><span class="tok attr">level</span> – úroveň korekcie chýb (<span class="tok attr">L</span>, <span class="tok attr">M</span>, <span class="tok attr">Q</span>, <span class="tok attr">H</span>).</li>
+          </ul>
+          Nad a pod QR kód je možné vložiť vlastný obsah cez sloty
+          <span class="tok attr">top</span> a <span class="tok attr">bottom</span>.
+          Hodnoty sa v tejto ukážke menia interaktívne cez
+          <span class="tok tag">&lt;wje-input&gt;</span>,
+          <span class="tok tag">&lt;wje-color-picker&gt;</span> a
+          <span class="tok tag">&lt;wje-select&gt;</span> v metóde
+          <span class="tok method">afterDraw()</span>.
+        </div>
         <div class="playground">
             <div class="content">
-                <wje-qr-code value="https://www.mcdonalds.sk/" size="200" padding="25" foregroung="black" foregroundAlpha="1" background="white" backgroundAlpha="1" level="L">
+                <wje-qr-code value="https://www.mcdonalds.sk/" size="200" padding="25" foreground="black" foregroundAlpha="1" background="white" backgroundAlpha="1" level="L">
                     <h3 slot="top">
                         Name on top of QR code
                     </h3>

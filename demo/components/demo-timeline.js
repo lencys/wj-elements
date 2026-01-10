@@ -4,8 +4,19 @@ import CodeSnippet from '../assets/js/code-snippet-builder.js';
 const template = document.createElement('template');
 
 template.innerHTML = `
-  <h1>Timeline</h1>
-  <div class="container">
+    <h1>Timeline</h1>
+    <div class="container">
+      <h2>Default</h2>
+      <p class="description">
+        Základná ukážka komponentu <span class="tok tag">&lt;wje-timeline&gt;</span> s položkami
+        <span class="tok tag">&lt;wje-timeline-item&gt;</span>. Atribút
+        <span class="tok attr">datetime</span> určuje dátum a čas (podporuje formát s časom aj ISO),
+        <span class="tok attr">event</span> názov udalosti a boolean
+        <span class="tok attr">active</span> zvýrazní aktuálnu položku. Do slotu
+        <span class="tok attr">status</span> je možné vložiť <span class="tok tag">&lt;wje-status&gt;</span>
+        s ikonou a do tela položky ľubovoľný obsah (napr. <span class="tok tag">&lt;wje-card&gt;</span> alebo text).
+      </p>
+  
       <div class="playground">
           <div class="content">
               <wje-timeline>

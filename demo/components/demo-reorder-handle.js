@@ -9,7 +9,14 @@ template.innerHTML = `
     
         <!-- BASIC -->
         
-        <h2>Basic</h2>
+        <h2>Default</h2>
+        <p class="description">
+          Základné použitie <span class="tok tag">&lt;wje-reorder-handle&gt;</span> v rámci
+          <span class="tok tag">&lt;wje-menu&gt;</span>. Atribút <span class="tok attr">dropzone</span>
+          určuje cieľ pre presúvanie (tu konkrétny <span class="tok attr">#wje-menu-1</span>) a
+          boolean atribúty <span class="tok attr">locked</span> a <span class="tok attr">disabled</span>
+          menia správanie jednotlivých položiek (nemožno s nimi hýbať alebo sú úplne vypnuté).
+        </p>
         <div class="playground">
             <div class="content">
             
@@ -58,6 +65,12 @@ template.innerHTML = `
         <!-- PARENT -->
         
         <h2>Parent</h2>
+        <p class="description">
+          Ukážka použitia atribútu <span class="tok attr">parent</span>, ktorý určuje, ktorý
+          nadradený element sa má presúvať (tu <span class="tok attr">wje-menu-item</span>),
+          aj keď je handle vnorený hlbšie v štruktúre. Presun prebieha v rámci dropzone
+          <span class="tok attr">dropzone="wje-menu"</span>.
+        </p>
         <div class="playground">
             <div class="content" style="flex-direction: column;">
                 <wje-button fill="link" toggle="off" value="off" id="remove-locked">
@@ -104,6 +117,13 @@ template.innerHTML = `
         <!-- NO DEFINED DROPZONE -->
         
         <h2>No defined dropzone (menu usage)</h2>
+        <p class="description">
+          Príklady handle s aj bez definovaného <span class="tok attr">dropzone</span>.
+          Ak je <span class="tok attr">dropzone</span> nastavený (napr. <span class="tok attr">wje-menu</span>
+          a voliteľne <span class="tok attr">parent="wje-menu-item"</span>), položky je možné
+          presúvať v rámci daného menu. Handle bez <span class="tok attr">dropzone</span> slúži len
+          ako statická ikona bez drag behavioru.
+        </p>
         <div class="playground">
             <div class="content">
                 <wje-menu active>                   

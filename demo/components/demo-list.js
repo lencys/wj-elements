@@ -14,7 +14,12 @@ template.innerHTML = `  <style>
 
     <!--  BASIC-->
 
-    <h2>Basic</h2>
+    <h2>Default</h2>
+    <p class="description">
+      Základný zoznam pomocou <span class="tok tag">&lt;wje-list&gt;</span>, kde jednotlivé riadky sú
+      <span class="tok tag">&lt;wje-item&gt;</span> s obsahom v <span class="tok tag">&lt;wje-label&gt;</span>.
+      Bez špeciálnych atribútov – vhodné ako „plain list“.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-list>
@@ -40,6 +45,10 @@ template.innerHTML = `  <style>
     <!--  INSET -->
 
     <h2>Inset list</h2>
+    <p class="description">
+      Odsadený zoznam cez boolean atribút <span class="tok attr">inset</span> na
+      <span class="tok tag">&lt;wje-list&gt;</span>. V demách je podklad zvýraznený len kvôli kontrastu.
+    </p>
     <div class="playground" style="background-color: rgba(0,0,0,.08);">
       <div class="content">
         <wje-list inset>
@@ -65,6 +74,11 @@ template.innerHTML = `  <style>
     <!--  LINES -->
     
     <h2>Lines</h2>
+    <p class="description">
+      Štýl deliacej čiary medzi položkami cez atribút <span class="tok attr">lines</span> na
+      <span class="tok tag">&lt;wje-list&gt;</span>: <span class="tok attr">full</span>,
+      <span class="tok attr">inset</span> alebo <span class="tok attr">none</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-list lines="full">

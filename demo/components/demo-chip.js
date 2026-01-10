@@ -10,6 +10,10 @@ template.innerHTML = `
     <!-- BASIC -->
 
     <h2>Basic</h2>
+    <p class="description">
+      Základné stavy <span class="tok tag">&lt;wje-chip&gt;</span>: default, aktívny cez boolean <span class="tok attr">active</span> a neaktívny cez <span class="tok attr">disabled</span>.
+      Všetky príklady používajú len textový obsah bez slotovania.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-chip>Default</wje-chip>
@@ -17,10 +21,12 @@ template.innerHTML = `
         <wje-chip disabled>Disabled</wje-chip>
       </div>
     </div>
-    
     <!-- Shape -->
 
     <h2>Shape</h2>
+    <p class="description">
+      Tvar chipu cez boolean atribút <span class="tok attr">round</span>. Ukážka porovnáva zaoblený variant s default tvarom.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-chip round>Round</wje-chip>
@@ -31,6 +37,10 @@ template.innerHTML = `
     <!-- Size -->
 
     <h2>Size</h2>
+    <p class="description">
+      Veľkosti chipu cez atribút <span class="tok attr">size</span> (<span class="tok attr">small</span>/<span class="tok attr">large</span>).
+      Príklady ukazujú kombinácie so <span class="tok attr">round</span> a aj s boolean <span class="tok attr">removable</span> (zobrazí remove tlačidlo).
+    </p>
     <div class="playground">
       <div class="content">
         <div>
@@ -59,6 +69,10 @@ template.innerHTML = `
     <!-- SLOTTING -->
 
     <h2>Slottings</h2>
+    <p class="description">
+      Slotovanie obsahu: do chipu môžeš vložiť ľubovoľné komponenty (napr. <span class="tok tag">&lt;wje-avatar&gt;</span>, <span class="tok tag">&lt;wje-label&gt;</span>, <span class="tok tag">&lt;wje-icon&gt;</span>).
+      Druhý príklad používa <span class="tok attr">removable</span> a ukazuje kombináciu ikon + label.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-chip>
@@ -79,6 +93,11 @@ template.innerHTML = `
     <!-- LEVEL INDICATOR -->
 
     <h2>Level Indicator</h2>
+    <p class="description">
+      Pokročilý layout cez slot <span class="tok attr">slot="end"</span>: chip obsahuje <span class="tok tag">&lt;wje-level-indicator&gt;</span> s atribútmi <span class="tok attr">level</span> a <span class="tok attr">colorize</span> a akčné menu cez <span class="tok tag">&lt;wje-dropdown&gt;</span>
+      (<span class="tok attr">placement</span>, <span class="tok attr">offset</span>, <span class="tok tag">&lt;wje-menu variant="context"&gt;</span>).
+      V ukážke je aj lokálne CSS, ktoré mení vzhľad cez CSS premenné <span class="tok css">--wje-chip-*</span> a upravuje hover správanie tlačidla.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-chip class="level-indicator">
@@ -159,6 +178,9 @@ template.innerHTML = `
     <!-- COLORS -->
 
     <h2>Colors</h2>
+    <p class="description">
+      Farebné varianty cez atribút <span class="tok attr">color</span> (napr. <span class="tok attr">primary</span>, <span class="tok attr">success</span>, <span class="tok attr">danger</span>…).
+    </p>
     <div class="playground">
       <div class="content">
         <wje-chip>Default</wje-chip>
@@ -175,6 +197,9 @@ template.innerHTML = `
     <!-- COLORS WITH REMOVABLE -->
 
     <h2>Colors with remove button</h2>
+    <p class="description">
+      Kombinácia <span class="tok attr">color</span> + <span class="tok attr">removable</span> – farebný chip s integrovaným remove tlačidlom.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-chip color="primary" removable>Remove Chip</wje-chip>
@@ -190,6 +215,10 @@ template.innerHTML = `
     <!-- COLORS -->
 
     <h2>Custom</h2>
+    <p class="description">
+      Vlastný vzhľad cez CSS custom properties na konkrétnom elemente (tu <span class="tok attr">id="custom"</span>):
+      <span class="tok css">--wje-chip-background</span> a <span class="tok css">--wje-chip-color</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <style>

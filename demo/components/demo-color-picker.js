@@ -8,21 +8,92 @@ template.innerHTML = `<h1>Color Picker</h1>
     
     <!-- BASIC -->
 
-    <h2>Basic</h2>
+    <h2>Default</h2>
+    <p class="description">
+      Základné použitie <span class="tok tag">&lt;wje-color-picker&gt;</span> s predvolenou farbou cez atribút
+      <span class="tok attr">color</span>. Bez swatches a bez dodatočného JavaScriptu.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-color-picker color="#00b4d8"></wje-color-picker>
-<!--        <wje-color-picker color="#00b4d8" swatches="#e9c46aff, #2a9d8fff, #d62828ff" no-color-area no-controls no-swatches></wje-color-picker>-->
-<!--        <wje-color-picker color="#00b4d8" swatches="#e9c46aff, #2a9d8fff, #d62828ff" no-color-area no-controls></wje-color-picker>-->
-<!--        <wje-color-picker color="#00b4d8" swatches="#e9c46aff, #2a9d8fff, #d62828ff" no-color-area></wje-color-picker>-->
-<!--        <wje-color-picker color="#00b4d8" swatches="#e9c46aff, #2a9d8fff, #d62828ff"></wje-color-picker>-->
-<!--        <wje-color-picker color="#00b4d8" swatches="#e9c46aff, #2a9d8fff, #d62828ff" no-controls></wje-color-picker>-->
+      </div>
+    </div>
+    
+    <!-- MINIMAL -->
+
+    <h2>Minimal</h2>
+    <p class="description">
+      Minimalistický variant s vypnutými časťami UI pomocou atribútov
+      <span class="tok attr">no-color-area</span>, <span class="tok attr">no-controls</span> a <span class="tok attr">no-swatches</span>.
+      Hodí sa pre jednoduchý výber zo swatches.
+    </p>
+    <div class="playground">
+      <div class="content">
+        <wje-color-picker color="#00b4d8" swatches="#e9c46aff, #2a9d8fff, #d62828ff" no-color-area no-controls no-swatches></wje-color-picker>
+      </div>
+    </div>
+    
+    <!-- SWARCHES + PICKER -->
+
+    <h2>Swatches + Picker</h2>
+    <p class="description">
+      Kombinácia výberu farby a swatches cez atribút <span class="tok attr">swatches</span>,
+      pričom sú skryté ovládacie prvky (<span class="tok attr">no-controls</span>).
+    </p>
+    <div class="playground">
+      <div class="content">
+        <wje-color-picker color="#00b4d8" swatches="#e9c46aff, #2a9d8fff, #d62828ff" no-color-area no-controls></wje-color-picker>
+      </div>
+    </div>
+    
+    <!-- NO COLOR AREA -->
+
+    <h2>No Color Area</h2>
+    <p class="description">
+      Variant bez hlavnej plochy výberu farby cez atribút <span class="tok attr">no-color-area</span>,
+      so zapnutými swatches pre rýchly výber.
+    </p>
+    <div class="playground">
+      <div class="content">
+        <wje-color-picker color="#00b4d8" swatches="#e9c46aff, #2a9d8fff, #d62828ff" no-color-area></wje-color-picker>
+      </div>
+    </div>
+    
+    <!-- SWARCHES -->
+
+    <h2>With Swatches</h2>
+    <p class="description">
+      Plná verzia color pickeru so swatches (<span class="tok attr">swatches</span>) a aktívnou plochou výberu farby.
+    </p>
+    <div class="playground">
+      <div class="content">
+        <wje-color-picker color="#00b4d8" swatches="#e9c46aff, #2a9d8fff, #d62828ff"></wje-color-picker>
+      </div>
+    </div>    
+    
+    <!-- NO CONTROLS -->
+
+    <h2>No Controls</h2>
+    <p class="description">
+      Color picker bez ovládacích prvkov pomocou atribútu <span class="tok attr">no-controls</span>,
+      vhodný ako embedded výber farby.
+    </p>
+    <div class="playground">
+      <div class="content">
+        <wje-color-picker color="#00b4d8" swatches="#e9c46aff, #2a9d8fff, #d62828ff" no-controls></wje-color-picker>
       </div>
     </div>
     
     <!-- DROPDOWN -->
 
     <h2>Dropdown</h2>
+    <p class="description">
+      Použitie <span class="tok tag">&lt;wje-color-picker&gt;</span> v kombinácii s
+      <span class="tok tag">&lt;wje-dropdown&gt;</span>. Trigger je vlastný element v slote
+      <span class="tok attr">trigger</span>. Výber farby je odchytávaný cez event
+      <span class="tok event">wje-color-picker:select</span> a v JavaScripte sa aktualizuje
+      štýl elementu (<span class="tok css">background-color</span>).
+    </p>
     <div class="playground">
       <div class="content">
         <wje-dropdown label="Start" placement="bottom-start" offset="5" collapsible portaled>
@@ -38,15 +109,6 @@ template.innerHTML = `<h1>Color Picker</h1>
         </style>
       </div>
     </div>
-    
-    <!-- SWATCHES -->
-
-<!--    <h2>Swatches</h2>-->
-<!--    <div class="playground">-->
-<!--      <div class="content">-->
-<!--        <wje-color-picker color="#00b4d8" swatches="#ff0000, #000000, #333333"></wje-color-picker>-->
-<!--      </div>-->
-<!--    </div>-->
   </div>`;
 
 export default class DemoColorPicker extends WJElement {

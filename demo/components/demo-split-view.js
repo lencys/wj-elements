@@ -21,6 +21,11 @@ template.innerHTML = `
     <!-- BASIC -->
 
     <h2>Basic</h2>
+    <p class="description">
+      Základné použitie <span class="tok tag">&lt;wje-split-view&gt;</span> s horizontálnym rozdelením.
+      Atribút <span class="tok attr">initial</span> nastavuje počiatočnú veľkosť časti 
+      <span class="tok attr">slot="start"</span> v pixeloch.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-split-view initial="250">
@@ -33,6 +38,11 @@ template.innerHTML = `
     <!-- VERTICAL -->
 
     <h2>Vertical</h2>
+    <p class="description">
+      Vertikálne rozdelenie cez boolean atribút <span class="tok attr">vertical</span>.
+      Obsah sa delí na <span class="tok attr">slot="start"</span> (hore) a 
+      <span class="tok attr">slot="end"</span> (dole).
+    </p>
     <div class="playground">
       <div class="content">
         <wje-split-view vertical>
@@ -45,6 +55,11 @@ template.innerHTML = `
     <!-- MIN/MAX -->
 
     <h2>Min/Max</h2>
+    <p class="description">
+      Obmedzenie veľkosti časti pomocou atribútov 
+      <span class="tok attr">min</span> a <span class="tok attr">max</span> (percentá).
+      Počiatočná pozícia sa nastavuje cez <span class="tok attr">initial</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-split-view min="50" max="50" initial="75">
@@ -57,6 +72,10 @@ template.innerHTML = `
     <!-- DISABLED -->
 
     <h2>Disabled</h2>
+    <p class="description">
+      Vypnutie interakcie cez atribút <span class="tok attr">disabled</span>.
+      Rozdeľovač je zobrazený, ale nie je možné s ním hýbať.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-split-view disabled>
@@ -69,6 +88,11 @@ template.innerHTML = `
     <!-- SPLIT -->
 
     <h2>Split</h2>
+    <p class="description">
+      Vnorený split view: v <span class="tok attr">slot="end"</span> je ďalší 
+      <span class="tok tag">&lt;wje-split-view&gt;</span>, tentokrát vertikálny.
+      Umožňuje vytvoriť komplexné rozdelené layouty.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-split-view initial="50">
@@ -86,6 +110,12 @@ template.innerHTML = `
     <!-- CUSTOM -->
 
     <h2>Custom</h2>
+    <p class="description">
+      Ukážka vlastného rozdeľovača cez slot <span class="tok attr">divider</span>.
+      V CSS sú upravené premenné <span class="tok css">--wje-split-view-divider-background</span> 
+      a <span class="tok css">--wje-split-view-divider-size</span>, pričom 
+      <span class="tok tag">&lt;wje-icon&gt;</span> je vizuálny obsah rozdeľovača.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-split-view id="custom">

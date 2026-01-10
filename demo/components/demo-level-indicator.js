@@ -6,9 +6,14 @@ const template = document.createElement('template');
 template.innerHTML = `  <h1>Level Indicator</h1>
   <div class="container">
     
-    <!-- BASIC -->
+    <!-- DEFAULT -->
 
-    <h2>Basic</h2>
+    <h2>Default</h2>
+    <p class="description">
+      Základné zobrazenie komponentu <span class="tok tag">&lt;wje-level-indicator&gt;</span>
+      s úrovňou definovanou atribútom <span class="tok attr">level</span>.
+      Hodnota určuje počet aktívnych segmentov indikátora.
+    </p>
     <div class="playground">
       <div class="content" style="height: 240px;">
         <wje-level-indicator level="2"></wje-level-indicator>
@@ -18,6 +23,10 @@ template.innerHTML = `  <h1>Level Indicator</h1>
     <!-- COLOR -->
 
     <h2>Color</h2>
+    <p class="description">
+      Farebné rozlíšenie úrovní pomocou boolean atribútu <span class="tok attr">colorize</span>.
+      Každý level je vizuálne odlíšený farbou bez potreby vlastného CSS.
+    </p>
     <div class="playground">
       <div class="content" style="height: 240px; gap:.5rem">
         <wje-level-indicator level="1" colorize></wje-level-indicator>
@@ -29,6 +38,11 @@ template.innerHTML = `  <h1>Level Indicator</h1>
     <!-- BARS -->
 
     <h2>Bars</h2>
+    <p class="description">
+      Zmena počtu segmentov indikátora cez atribút <span class="tok attr">bars</span>.
+      Šírka komponentu je upravená pomocou CSS custom property
+      <span class="tok css">--wje-level-indicator-width</span>.
+    </p>
     <div class="playground">
       <div class="content" style="height: 240px;">
         <wje-level-indicator level="3" bars="4" class="example-bars"></wje-level-indicator>
@@ -43,6 +57,10 @@ template.innerHTML = `  <h1>Level Indicator</h1>
     <!-- REVERSE -->
 
     <h2>Reverse</h2>
+    <p class="description">
+      Otočenie smeru indikátora pomocou boolean atribútu <span class="tok attr">reverse</span>,
+      ktoré zmení orientáciu vykresľovania segmentov.
+    </p>
     <div class="playground">
       <div class="content" style="height: 240px;">
         <wje-level-indicator level="2" reverse></wje-level-indicator>
@@ -74,4 +92,3 @@ let __esModule = 'true';
 export { __esModule };
 
 customElements.get("demo-level-indicator") || window.customElements.define("demo-level-indicator", DemoLevelIndicator);
-    

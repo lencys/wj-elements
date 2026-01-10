@@ -10,6 +10,11 @@ template.innerHTML = `
     <!-- CIRCLE -->
 
     <h3>Circle</h3>
+    <p class="description">
+      Kruhový náhľad pomocou boolean atribútu <span class="tok attr">circle</span> na
+      <span class="tok tag">&lt;wje-thumbnail&gt;</span>. Obsahom je bežný
+      <span class="tok tag">&lt;img&gt;</span> element.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-thumbnail circle>
@@ -20,7 +25,12 @@ template.innerHTML = `
 
     <!-- BASIC -->
 
-    <h3>Basic</h3>
+    <h3>Default</h3>
+    <p class="description">
+      Základný obdĺžnikový náhľad bez špeciálnych atribútov. Komponent
+      <span class="tok tag">&lt;wje-thumbnail&gt;</span> obalí vnorený
+      <span class="tok tag">&lt;img&gt;</span> a aplikuje jednotné rozmery a orezanie.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-thumbnail>
@@ -32,6 +42,12 @@ template.innerHTML = `
     <!-- ITEM -->
 
     <h3>Item</h3>
+    <p class="description">
+      Použitie mini náhľadu v položke zoznamu: <span class="tok tag">&lt;wje-thumbnail&gt;</span>
+      je vložený do slotu <span class="tok attr">start</span> na
+      <span class="tok tag">&lt;wje-item&gt;</span> a text je v
+      <span class="tok tag">&lt;wje-label&gt;</span>. Vhodné pre zoznamy s ikonou/obrázkom.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-item>
@@ -46,6 +62,14 @@ template.innerHTML = `
     <!--  CUSTOM -->
 
     <h3>Custom</h3>
+    <p class="description">
+      Vlastné rozmery a zaoblenie pomocou CSS premenných na
+      <span class="tok tag">&lt;wje-thumbnail&gt;</span>.
+      Trieda <span class="tok attr">.example-thumbnail</span> mení
+      <span class="tok css">--wje-thumbnail-width</span>,
+      <span class="tok css">--wje-thumbnail-height</span> a
+      <span class="tok css">--wje-border-radius</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-thumbnail class="example-thumbnail">
@@ -56,7 +80,7 @@ template.innerHTML = `
           .example-thumbnail {
             --wje-thumbnail-width: 80px !important;
             --wje-thumbnail-height: 80px !important;
-            --wje-border-radius: 24px !important;
+            --wje-thumbnail-border-radius: 24px !important;
           }
         </style>
       </div>

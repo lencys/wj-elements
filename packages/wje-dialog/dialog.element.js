@@ -222,6 +222,8 @@ export default class Dialog extends WJElement {
 
         let slotFooter = document.createElement('slot');
         slotFooter.setAttribute('name', 'footer');
+        slotFooter.id = 'footerSlot';
+        slotFooter.addEventListener('slotchange', () => this.updateHasFooter());
 
         close.appendChild(icon);
 
@@ -234,6 +236,10 @@ export default class Dialog extends WJElement {
         if (!this.hiddenHeader) dialog.appendChild(header);
         dialog.appendChild(body);
         if (!this.hiddenFooter) dialog.appendChild(footer);
+
+        // Slot assignment may not be reflected synchronously on first render.
+        // Run in a microtask to ensure assignedNodes() sees slotted content.
+        Promise.resolve().then(() => this.updateHasFooter());
     }
 
     /**
@@ -352,5 +358,34 @@ export default class Dialog extends WJElement {
                     blockingElement.remove();
                 });
         });
+    }
+
+    updateHasFooter() {
+        // If footer is intentionally hidden, ensure it doesn't reserve space
+        if (this.hiddenFooter) {
+            const footerEl = this.shadowRoot?.querySelector('.dialog-footer');
+            if (footerEl) footerEl.setAttribute('hidden', '');
+            this.removeAttribute('has-footer');
+            return;
+        }
+        const slot = this.shadowRoot?.getElementById('footerSlot');
+        if (!slot) {
+            this.removeAttribute('has-footer');
+            return;
+        }
+
+        const assigned = slot.assignedNodes({ flatten: true });
+        const hasContent = assigned.some((n) => {
+            if (n.nodeType === Node.ELEMENT_NODE) return true;
+            if (n.nodeType === Node.TEXT_NODE) return n.textContent.trim().length > 0;
+            return false;
+        });
+
+        // Prefer toggling the actual footer element so CSS/spacing is always correct
+        const footerEl = this.shadowRoot?.querySelector('.dialog-footer');
+        if (footerEl) footerEl.toggleAttribute('hidden', !hasContent);
+
+        // Keep host attribute too (harmless, may be used elsewhere)
+        this.toggleAttribute('has-footer', hasContent);
     }
 }

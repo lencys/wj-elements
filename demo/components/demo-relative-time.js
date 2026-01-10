@@ -9,7 +9,15 @@ template.innerHTML = `
 
     <!-- BASIC -->
 
-    <h3>Basic</h3>
+    <h3>Default usage</h3>
+    <p class="description">
+      Základné použitie komponentu <span class="tok tag">&lt;wje-relative-time&gt;</span>, ktorý
+      zobrazuje čas relatívne k aktuálnemu momentu (napr. „pred 2 dňami“, „o 5 minút“).
+      Atribút <span class="tok attr">date</span> akceptuje UNIX timestamp (v sekundách)
+      alebo ISO dátum; jazyk výstupu je možné zmeniť pomocou atribútu
+      <span class="tok attr">lang</span>. Neplatná alebo chýbajúca hodnota dátumu
+      sa spracuje bezpečne bez chyby v UI.
+    </p>
     <div class="playground">
       <div class="content" style="display: block;">
         <b>No date</b>

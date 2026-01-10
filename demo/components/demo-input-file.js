@@ -9,6 +9,11 @@ template.innerHTML = `<h1>Input file</h1>
     <!-- BASIC -->
 
     <h2>Default</h2>
+    <p class="description">
+      Základné použitie komponentu <span class="tok tag">&lt;wje-input-file&gt;</span> pre výber súboru.
+      Komponent zapúzdruje natívny file input a slúži ako vizuálny aj funkčný wrapper bez potreby
+      dodatočného JavaScriptu.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-input-file></wje-input-file>

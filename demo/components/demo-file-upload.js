@@ -7,9 +7,13 @@ template.innerHTML = `
   <h1>File upload</h1>
   <div class="container">
     
-    <!-- BASIC -->
+    <!-- IMAGES -->
 
-    <h2>Basic</h2>
+    <h2>Images</h2>
+    <p class="description">
+      Základné použitie <span class="tok tag">&lt;wje-file-upload&gt;</span> pre obrázky: obmedzenie typov súborov cez
+      <span class="tok attr">accepted-types="image/*"</span>. Obsah vnútri komponentu je custom (tu len text) a slúži ako vizuálna výzva pre drag &amp; drop.
+    </p>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content">
         <wje-file-upload accepted-types="image/*">
@@ -21,6 +25,11 @@ template.innerHTML = `
     <!-- ICON -->
 
     <h2>Icon</h2>
+    <p class="description">
+      Variant s ikonou a validáciami: boolean <span class="tok attr">icon</span> prepne layout na ikonový režim,
+      <span class="tok attr">max-file-size="10000"</span> limituje veľkosť súboru a <span class="tok attr">accepted-types="mp4"</span> obmedzí povolený typ.
+      Ikona je vložená ako <span class="tok tag">&lt;wje-icon&gt;</span> a jej veľkosť je upravená cez CSS premennú <span class="tok css">--wje-icon-size</span>.
+    </p>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content">
         <wje-file-upload max-file-size="10000" accepted-types="mp4" icon>

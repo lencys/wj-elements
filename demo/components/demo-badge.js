@@ -8,6 +8,11 @@ template.innerHTML = `<style>
       flex-direction: column;
       gap: .5rem;
     }
+    .description {
+      margin: 0 0 .5rem;
+      max-width: 72ch;
+      opacity: .8;
+    }
   </style>
   <h1>Badge</h1>
   <div class="container">
@@ -15,6 +20,9 @@ template.innerHTML = `<style>
     <!--  BASIC-->
 
     <h2>Basic</h2>
+    <p class="description">
+      Základné použitie <code>&lt;wje-badge&gt;</code> bez špeciálnych atribútov – ukážka default renderu a typického číselného obsahu.
+    </p>
     <div class="playground">
       <div class="content" style="flex-direction: row;">
         <wje-badge>11</wje-badge>
@@ -25,6 +33,9 @@ template.innerHTML = `<style>
     <!-- LIST -->
 
     <h2>List</h2>
+    <p class="description">
+      Ukážka použitia badge v rámci <code>&lt;wje-list&gt;</code> a <code>&lt;wje-item&gt;</code> – badge je vložený do slotu <code>start</code> alebo <code>end</code>, aby sa zarovnal na začiatok/koniec riadku.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-list>
@@ -43,6 +54,9 @@ template.innerHTML = `<style>
     <!-- COLORS -->
 
     <h2>Colors</h2>
+    <p class="description">
+      Farebné varianty cez atribút <code>color</code> (napr. <code>primary</code>, <code>success</code>, <code>danger</code>…). Bez dodatočného CSS – mapovanie farieb rieši komponent.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-badge color="primary">22k</wje-badge>
@@ -58,6 +72,9 @@ template.innerHTML = `<style>
     <!--  BACUSTOMSIC-->
 
     <h2>Custom</h2>
+    <p class="description">
+      Prispôsobenie štýlu cez CSS custom properties (napr. <code>--wje-badge-padding-block-*</code>) a cez <code>::part(native)</code>. Ukážka mení background/text, border a padding bez zásahu do JavaScriptu.
+    </p>
     <div class="playground">
       <div class="content">
        <wje-badge id="custom-badge">1</wje-badge>

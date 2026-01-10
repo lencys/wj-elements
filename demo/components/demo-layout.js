@@ -4,12 +4,23 @@ import CodeSnippet from '../assets/js/code-snippet-builder.js';
 const template = document.createElement('template');
 
 template.innerHTML = `
-  <h1>Dropdown</h1>
+  <h1>Layout</h1>
   <div class="container">
 
-    <!--  BASIC-->
+    <!-- CONTAINER LAYOUT-->
 
-    <h2>Basic</h2>
+    <h2>Container layouts</h2>
+    <p class="description">
+      Ukážky skladania layoutu pomocou kontajnerových komponentov:
+      <span class="tok tag">&lt;wje-container&gt;</span>,
+      <span class="tok tag">&lt;wje-header&gt;</span>,
+      <span class="tok tag">&lt;wje-main&gt;</span>,
+      <span class="tok tag">&lt;wje-footer&gt;</span> a
+      <span class="tok tag">&lt;wje-aside&gt;</span>.
+      Atribút <span class="tok attr">vertical</span> prepína smer layoutu (stĺpce vs. riadky)
+      a <span class="tok attr">width</span> na <span class="tok tag">&lt;wje-aside&gt;</span>
+      definuje pevnú šírku bočných panelov.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-container vertical>

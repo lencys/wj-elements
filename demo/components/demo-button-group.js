@@ -7,6 +7,11 @@ template.innerHTML = `
     wje-button {
       margin: 0;
     }
+    .description {
+      margin: 0 0 .5rem;
+      max-width: 72ch;
+      opacity: .8;
+    }
   </style>
   <h1>Button Group</h1>
   <div class="container">
@@ -14,6 +19,10 @@ template.innerHTML = `
     <!--  BASIC-->
 
     <h2>Basic</h2>
+    <p class="description">
+      Základné použitie <code>&lt;wje-button-group&gt;</code> s predvoleným výberom cez atribút <code>active</code> (index aktívneho tlačidla).
+      Bez dodatočného JavaScriptu – komponent rieši iba vizuálne zoskupenie a aktívny stav.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button-group active="2">
@@ -27,6 +36,9 @@ template.innerHTML = `
     <!--  SHAPE -->
 
     <h2>Shape</h2>
+    <p class="description">
+      Zaoblený vzhľad skupiny cez boolean atribút <code>round</code>. Atribút <code>active</code> určuje, ktoré tlačidlo je zvýraznené.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button-group active="1" round>
@@ -40,6 +52,10 @@ template.innerHTML = `
     <!-- DROPDOWN -->
 
     <h2>Dropdown</h2>
+    <p class="description">
+      Kombinácia <code>&lt;wje-button-group&gt;</code> s <code>&lt;wje-dropdown&gt;</code>, kde je trigger v slote <code>trigger</code> a caret indikátor cez boolean <code>caret</code>.
+      Dropdown používa <code>placement</code> a <code>offset</code>; menu je <code>&lt;wje-menu variant="context"&gt;</code>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button-group>
@@ -60,6 +76,9 @@ template.innerHTML = `
     <!--  ICONS -->
 
     <h2>Icons</h2>
+    <p class="description">
+      Ikonové tlačidlá v skupine – ikona je vložená do slotu <code>icon-only</code>. Tooltip text je nastavený cez atribút <code>tooltip</code> na <code>&lt;wje-button&gt;</code>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button-group style="margin-right: 1rem;">
@@ -93,6 +112,10 @@ template.innerHTML = `
     <!-- SPLIT BUTTONS -->
 
     <h2>Split butons</h2>
+    <p class="description">
+      “Split button” vzor: hlavná akcia + dropdown s ďalšími voľbami. Trigger má atribút <code>only-caret</code> (zobrazí len caret) a obsah pre prístupnosť je cez <code>&lt;wje-visually-hidden&gt;</code>.
+      Dropdown používa <code>placement</code>/<code>offset</code> a menu je v <code>variant="context"</code>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button-group>
@@ -114,6 +137,10 @@ template.innerHTML = `
     <!-- COLORS -->
 
     <h2>Colors</h2>
+    <p class="description">
+      Farebné varianty skupiny cez atribút <code>color</code> (napr. <code>primary</code>, <code>complete</code>, <code>success</code>, <code>warning</code>, <code>danger</code>).
+      Aktívne tlačidlo je určené atribútom <code>active</code>.
+    </p>
     <div class="playground">
       <div class="content" style="display: block;">
         <p>
@@ -157,6 +184,10 @@ template.innerHTML = `
     <!--  BASIC-->
 
     <h2>Basic</h2>
+    <p class="description">
+      Príklad prispôsobenia cez CSS custom properties na konkrétnej skupine (<code>id="custom"</code>): <code>--wje-button-border-radius</code> a <code>--wje-button-group-border-radius</code>
+      menia zaoblenie bez zásahu do JavaScriptu.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button-group id="custom" active="1">

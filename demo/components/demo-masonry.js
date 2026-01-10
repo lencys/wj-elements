@@ -8,7 +8,11 @@ template.innerHTML = `<h1>Masonry</h1>
     
     <!-- BASIC -->
 
-    <h2>Basic</h2>
+    <h2>Columns</h2>
+    <p class="description">
+      Základné použitie <span class="tok tag">&lt;wje-masonry&gt;</span> s pevným počtom stĺpcov cez atribút
+      <span class="tok attr">cols="2"</span>. Položky sú bežné bloky a výška každého prvku určuje výsledné „masonry“ rozloženie.
+    </p>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content">
         <wje-masonry cols="2" class="example">
@@ -24,13 +28,17 @@ template.innerHTML = `<h1>Masonry</h1>
     <!-- MAXCOLWIDTH -->
 
     <h2>Max col width</h2>
+    <p class="description">
+      Automatický počet stĺpcov podľa dostupnej šírky cez atribút <span class="tok attr">max-col-width="150"</span>.
+      Ukážka používa <span class="tok tag">&lt;wje-img&gt;</span> ako položky (rôzne rozmery obrázkov).
+    </p>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content">
         <wje-masonry max-col-width="150">
           <wje-img src="https://picsum.photos/400/500?i=1"></wje-img>
           <wje-img src="https://picsum.photos/400/375?i=2"></wje-img>
           <wje-img src="https://picsum.photos/400/200?i=3"></wje-img>
-          <wje-img src="https://picsum.photos/400?/400i=4"></wje-img>
+          <wje-img src="https://picsum.photos/400/400?i=4"></wje-img>
           <wje-img src="https://picsum.photos/400/375?i=5"></wje-img>
           <wje-img src="https://picsum.photos/400/500?i=6"></wje-img>
           <wje-img src="https://picsum.photos/400/200?i=7"></wje-img>
@@ -41,6 +49,10 @@ template.innerHTML = `<h1>Masonry</h1>
     <!-- GAP -->
 
     <h2>Gap</h2>
+    <p class="description">
+      Medzera medzi stĺpcami/riadkami cez atribút <span class="tok attr">gap="2"</span>.
+      Lokálne CSS pre <span class="tok attr">#example-gap</span> upravuje farby položiek (background + text) pre lepšiu viditeľnosť.
+    </p>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content">
         <wje-masonry cols="2" gap="2" class="example" id="example-gap">

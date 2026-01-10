@@ -8,7 +8,12 @@ template.innerHTML = `<h1>Toggle</h1>
 
     <!--  BASIC-->
 
-    <h3>Basic</h3>
+    <h3>Default</h3>
+    <p class="description">
+      Základné použitie komponentu <span class="tok tag">&lt;wje-toggle&gt;</span> v rôznych stavoch:
+      bežný, <span class="tok attr">checked</span>, <span class="tok attr">disabled</span> a kombinácia oboch,
+      vrátane farebného variantu cez atribút <span class="tok attr">color</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-item>
@@ -32,6 +37,12 @@ template.innerHTML = `<h1>Toggle</h1>
     <!-- PLACEMENT -->
 
     <h3>Placement</h3>
+    <p class="description">
+      Umiestnenie prepínača na koniec cez atribút <span class="tok attr">placement="end"</span>.
+      Label obsahuje ikonu <span class="tok tag">&lt;wje-icon&gt;</span> a text, pričom inline
+      <span class="tok tag">&lt;style&gt;</span> upravuje šírku prepínača a rozloženie obsahu
+      (flex layout a medzera pri ikone).
+    </p>
     <div class="playground">
       <div class="content">
         <wje-toggle id="placement" placement="end" color="success">
@@ -54,6 +65,14 @@ template.innerHTML = `<h1>Toggle</h1>
     <!-- COLORS -->
 
     <h3>Colors</h3>
+    <p class="description">
+      Farebné varianty prepínača pomocou atribútu <span class="tok attr">color</span> na
+      <span class="tok tag">&lt;wje-toggle&gt;</span> (napr. <span class="tok attr">primary</span>,
+      <span class="tok attr">complete</span>, <span class="tok attr">success</span>,
+      <span class="tok attr">warning</span>, <span class="tok attr">danger</span>,
+      <span class="tok attr">info</span>). Atribút <span class="tok attr">checked</span>
+      určuje východzí stav.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-item>
@@ -83,6 +102,13 @@ template.innerHTML = `<h1>Toggle</h1>
     <!--  CUSTOM-->
 
     <h3>Custom</h3>
+    <p class="description">
+      Vlastný vzhľad prepínača pomocou CSS premenných na elemente
+      <span class="tok tag">&lt;wje-toggle&gt;</span> s ID <span class="tok attr">custom-toggle</span>.
+      Trieda mení napríklad <span class="tok css">--wje-toggle-color-base</span>,
+      <span class="tok css">--wje-toggle-width</span>, <span class="tok css">--wje-toggle-height</span>,
+      aj rozmery a tvar handle cez <span class="tok css">--wje-toggle-handle-*</span> premenné.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-toggle id="custom-toggle" checked>Default Toggle

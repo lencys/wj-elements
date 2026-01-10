@@ -8,7 +8,13 @@ template.innerHTML = `<h1>Format byte</h1>
     
     <!-- BASIC -->
 
-    <h2>Basic</h2>
+    <h2>Interactive</h2>
+    <p class="description">
+      Interaktívna ukážka komponentu <span class="tok tag">&lt;wje-format-digital&gt;</span>, kde sa hodnota
+      mení z <span class="tok tag">&lt;wje-input&gt;</span>. Atribút <span class="tok attr">value</span>
+      určuje vstupnú číselnú hodnotu, ktorá sa automaticky formátuje podľa jednotiek.
+      Príklad ukazuje prepojenie komponentov (input → formatter).
+    </p>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content" style="justify-content: start;">
         <wje-input type="number" variant="standard" placeholder="Typing number" value="1000000" id="format-digital-input"></wje-input>
@@ -26,6 +32,11 @@ template.innerHTML = `<h1>Format byte</h1>
     <!-- BYTES -->
 
     <h2>Formatting display</h2>
+    <p class="description">
+      Rôzne spôsoby zobrazenia jednotiek pomocou atribútu <span class="tok attr">unit-display</span>:
+      <span class="tok attr">short</span>, <span class="tok attr">narrow</span> a <span class="tok attr">long</span>.
+      Ukážka porovnáva rovnakú hodnotu s rôznou textovou reprezentáciou jednotiek.
+    </p>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content" style="display: block;">
         <wje-format-digital value="9900"></wje-format-digital>
@@ -41,6 +52,11 @@ template.innerHTML = `<h1>Format byte</h1>
     <!-- BYTES -->
 
     <h2>Formatting Bytes</h2>
+    <p class="description">
+      Automatické formátovanie hodnôt v bajtoch (default správanie).
+      Komponent sám zvolí vhodnú jednotku (B, KB, MB, GB…) podľa veľkosti čísla z atribútu
+      <span class="tok attr">value</span>.
+    </p>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content" style="display: block;">
         <wje-format-digital value="99"></wje-format-digital>
@@ -53,6 +69,10 @@ template.innerHTML = `<h1>Format byte</h1>
     <!-- BIT -->
 
     <h2>Formatting Bits</h2>
+    <p class="description">
+      Formátovanie v bitoch namiesto bajtov pomocou atribútu <span class="tok attr">unit="bit"</span>.
+      Logika škálovania zostáva rovnaká, mení sa len základná jednotka.
+    </p>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content" style="display: block;">
         <wje-format-digital value="99" unit="bit"></wje-format-digital>
@@ -65,6 +85,10 @@ template.innerHTML = `<h1>Format byte</h1>
     <!-- SLOTS -->
 
     <h2>Slots</h2>
+    <p class="description">
+      Rozšírenie výstupu pomocou slotov: do slotu <span class="tok attr">start</span> je možné vložiť
+      vlastný text alebo iné elementy, ktoré sa zobrazia pred formátovanou hodnotou.
+    </p>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content" style="display: flex;">
         <wje-format-digital value="900000"><span slot="start">Nahraných: </span></wje-format-digital>
@@ -88,9 +112,9 @@ export default class DemoFormatDigital extends WJElement {
   }
 
   afterDraw() {
-    // this.querySelector('#format-digital-input').addEventListener('wje-input:input', (e) => {
-    //   document.querySelector('.example').setAttribute('value', e.detail.value);
-    // });
+    this.querySelector('#format-digital-input').addEventListener('wje-input:input', (e) => {
+      document.querySelector('.example').setAttribute('value', e.detail.value);
+    });
 
     const codeSnippet = new CodeSnippet();
     codeSnippet.generateSnippet(this.context);

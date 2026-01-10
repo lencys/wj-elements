@@ -10,7 +10,13 @@ template.innerHTML = `
     
     <!-- BASIC -->
 
-    <h2>Basic</h2>
+    <h2>Default</h2>
+    <p class="description">
+      Základné použitie komponentu <span class="tok tag">&lt;wje-tree&gt;</span> s vnorenými
+      <span class="tok tag">&lt;wje-tree-item&gt;</span>. Boolean atribút
+      <span class="tok attr">expanded</span> na položke otvorí vetvu už pri načítaní
+      (napr. „Deciduous“ alebo „Maple“).
+    </p>
     <div class="playground" style="display: block;">
       <div class="content" style="justify-content: start; width: 240px;">
         <wje-tree>
@@ -46,6 +52,17 @@ template.innerHTML = `
     <!-- START, END SLOTS -->
 
     <h2>Start, End slots</h2>
+    <p class="description">
+      Ukážka použitia slotov <span class="tok attr">start</span> a
+      <span class="tok attr">end</span> na <span class="tok tag">&lt;wje-tree-item&gt;</span>.
+      Šablóna <span class="tok tag">&lt;template&gt;</span> definuje handle
+      <span class="tok tag">&lt;wje-icon name="grip-vertical" slot="start"&gt;</span>
+      a kontextové menu v slote <span class="tok attr">end</span> cez
+      <span class="tok tag">&lt;wje-dropdown&gt;</span> s
+      <span class="tok attr">stop-propagation</span> a variantom
+      <span class="tok attr">variant="context"</span> na
+      <span class="tok tag">&lt;wje-menu&gt;</span>.
+    </p>
     <div class="playground" style="display: block;">
       <div class="content" style="justify-content: start; width: 240px;">
         <wje-tree id="example">
@@ -128,6 +145,12 @@ template.innerHTML = `
     <!-- MULITIPLE -->
 
     <h2>Multiple</h2>
+    <p class="description">
+      Viacnásobný výber položiek pomocou atribútu
+      <span class="tok attr">selection="multiple"</span> na
+      <span class="tok tag">&lt;wje-tree&gt;</span>. Umožňuje označiť naraz viac
+      stromových uzlov.
+    </p>
     <div class="playground" style="display: block;">
       <div class="content" style="justify-content: start; width: 240px;">
         <wje-tree selection="multiple">
@@ -161,6 +184,12 @@ template.innerHTML = `
     <!-- INDENT -->
 
     <h2>Indent</h2>
+    <p class="description">
+      Úprava vodidiel a odsadenia stromu cez CSS triedu
+      <span class="tok attr">.example-indent</span>, ktorá nastavuje
+      <span class="tok css">--wje-tree-item-indent-guid-width</span>.
+      Tým sa mení šírka zvislých čiar medzi úrovňami.
+    </p>
     <div class="playground" style="display: block;">
       <div class="content" style="justify-content: start; width: 240px;">
         <wje-tree class="example-indent">
@@ -199,6 +228,13 @@ template.innerHTML = `
     <!-- BUTTON -->
 
     <h2>Button</h2>
+    <p class="description">
+      Vlastné ikony pre rozbalenie a zbalenie vetvy pomocou slotov
+      <span class="tok attr">expand</span> a <span class="tok attr">collapse</span>
+      na <span class="tok tag">&lt;wje-tree&gt;</span>. V šablóne sú použité ikony
+      <span class="tok tag">&lt;wje-icon name="plus"&gt;</span> a
+      <span class="tok tag">&lt;wje-icon name="minus"&gt;</span>.
+    </p>
     <div class="playground" style="display: block;">
       <div class="content" style="justify-content: start; width: 240px;">
         <wje-tree>
@@ -236,6 +272,14 @@ template.innerHTML = `
     <!-- ICONS -->
 
     <h2>Icons</h2>
+    <p class="description">
+      Stromová štruktúra súborov s ikonami. Každý
+      <span class="tok tag">&lt;wje-tree-item&gt;</span> môže obsahovať
+      <span class="tok tag">&lt;wje-icon&gt;</span> pred textom (napr.
+      <span class="tok attr">name="folder"</span>, <span class="tok attr">name="photo"</span>,
+      <span class="tok attr">name="file"</span>), čím sa vizuálne odlíšia
+      priečinky, obrázky a dokumenty.
+    </p>
     <div class="playground" style="display: block;">
       <div class="content" style="justify-content: start; width: 240px;">
         <wje-tree>

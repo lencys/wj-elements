@@ -10,6 +10,12 @@ template.innerHTML = `
     <!-- MEGAMENU -->
 
     <h2>Megamenu</h2>
+    <p class="description">
+      Navigácia ako <span class="tok tag">&lt;wje-menu&gt;</span> s <span class="tok attr">variant="megamenu"</span> a aktívnym stavom cez boolean <span class="tok attr">active</span>.
+      Submenu je ďalší <span class="tok tag">&lt;wje-menu&gt;</span> vložený do slotu <span class="tok attr">submenu</span> na <span class="tok tag">&lt;wje-menu-item&gt;</span>;
+      umiestnenie a odsadenie riešia <span class="tok attr">placement</span> a <span class="tok attr">offset</span>.
+      V ukážke sú aj položky s <span class="tok attr">variant="context"</span>, <span class="tok attr">manual</span> a lokálne CSS premenne (napr. <span class="tok css">--wje-menu-border-width</span>, <span class="tok css">--wje-menu-border-radius</span>) vrátane úprav cez <span class="tok css">::part(native)</span>.
+    </p>
     <div class="playground" style="align-items: start;">
       <div class="content" style="display: block; margin: 0; width: 100%;">
         <wje-menu id="custom-2" variant="megamenu" active>
@@ -67,6 +73,12 @@ template.innerHTML = `
     <!-- COLLAPSE -->
 
     <h2>Collapse</h2>
+    <p class="description">
+      Navigačné menu s <span class="tok attr">variant="nav"</span> a booleanským atribútom <span class="tok attr">collapse</span>, ktorý zbalí menu do úzkeho režimu.
+      Toggle tlačidlo je <span class="tok tag">&lt;wje-button&gt;</span> s atribútom <span class="tok attr">toggle="off"</span> a ikonami v slote <span class="tok attr">toggle</span>.
+      Položky používajú ikony v slote <span class="tok attr">start</span> a tooltip sloty <span class="tok attr">tooltip-start</span>/<span class="tok attr">tooltip-end</span>.
+      V JavaScripte sa na event <span class="tok event">wje-button:click</span> prepína stav cez <span class="tok method">toggleAttribute('collapse')</span>.
+    </p>
     <div class="playground" style="align-items: start;">
       <div class="content" style="display: block; margin: 0 auto;">
         <wje-button fill="link" toggle="off" id="toggle">
@@ -142,6 +154,11 @@ template.innerHTML = `
     <!-- EXPAND -->
 
     <h2>Expand</h2>
+    <p class="description">
+      Rozbalený „sidebar“ variant bez <span class="tok attr">collapse</span>: <span class="tok tag">&lt;wje-menu&gt;</span> s <span class="tok attr">variant="nav"</span> a aktívnym stavom.
+      Hierarchia je riešená vnoreným submenu cez slot <span class="tok attr">submenu</span>; odsadenie položiek je nastavené atribútom <span class="tok attr">offset</span>.
+      Lokálne CSS upravuje hranice a tieň cez premenné (napr. <span class="tok css">--wje-menu-border-width</span>, <span class="tok css">--wje-menu-shadow</span>) a padding cez <span class="tok css">::part(native)</span>.
+    </p>
     <div class="playground" style="align-items: start;">
       <div class="content" style="display: block; margin: 0 auto;">
         <wje-menu id="custom-1" variant="nav" active>

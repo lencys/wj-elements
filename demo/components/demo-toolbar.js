@@ -14,7 +14,15 @@ template.innerHTML = `<h1>Toolbar</h1>
   
   <!-- BASIC -->
 
-  <h2>Basic</h2>
+  <h2>Default</h2>
+  <p class="description">
+    Základné použitie <span class="tok tag">&lt;wje-toolbar&gt;</span> s navigáciou
+    <span class="tok tag">&lt;wje-breadcrumbs&gt;</span> v slote
+    <span class="tok attr">start</span> a akciami
+    <span class="tok tag">&lt;wje-toolbar-action&gt;</span> v slote
+    <span class="tok attr">end</span>. Vhodné pre hlavičku obrazovky s cestou a
+    najčastejšími tlačidlami (Create/Delete).
+  </p>
   <div class="playground" style="background-color: rgba(0,0,0,.08);">
     <div class="content" style="width: 100%; margin: auto 1rem;">
       <wje-toolbar>
@@ -36,8 +44,19 @@ template.innerHTML = `<h1>Toolbar</h1>
   <!--  DYNAMIC BRADCRUMB -->
 
   <h2>Dynamic Breadcrumb</h2>
+  <p class="description">
+    Dynamicky generované breadcrumb položky na základe routeru. Komponent
+    <span class="tok tag">&lt;wje-breadcrumbs&gt;</span> používa atribúty
+    <span class="tok attr">max-items</span> a
+    <span class="tok attr">items-before-collapse</span> na skrátenie cesty
+    a atribút <span class="tok attr">routerlinks</span> pre spoluprácu s routerom.
+    JavaScript v metóde <span class="tok method">afterRouteEnter()</span> a
+    <span class="tok method">afterDraw()</span> pridáva položky podľa
+    <span class="tok attr">transition.breadcrumbs</span> a dopĺňa vlastný
+    separator cez <span class="tok tag">&lt;wje-icon&gt;</span>.
+  </p>
   <p><b>TODO:</b><br/>  
-  Pridat dropdown na tri bodky</p>
+  Dokončiť automatické zbaľovanie</p>
   <div class="playground" style="background-color: rgba(0,0,0,.08);">
     <div class="content" style="width: 100%; margin: auto 1rem;">
       <wje-toolbar>
@@ -55,8 +74,17 @@ template.innerHTML = `<h1>Toolbar</h1>
   <!--  DYNAMIC ACTION -->
 
   <h2>Dynamic Action</h2>
+  <p class="description">
+    Toolbar s dynamickým skracovaním akčných tlačidiel. Atribút
+    <span class="tok attr">max-items="3"</span> na
+    <span class="tok tag">&lt;wje-toolbar-action&gt;</span> zabezpečí, že pri
+    menšej šírke sa prebytočné tlačidlá môžu zobraziť v rozšírenej akcii
+    (napr. v 3-bodkovom menu). Breadcrumbs využívajú
+    <span class="tok attr">collapsed-variant="dropdown"</span> na zbalenie
+    stredných položiek do dropdownu.
+  </p>
   <p><b>TODO:</b><br/>  
-  Action buttons zabalit do 3 bodiek</p>
+  Dokončiť automatické zbaľovanie</p>
   <div class="playground" style="background-color: rgba(0,0,0,.08);">
     <div class="content" style="width: 100%; margin: auto 1rem;">
       <wje-toolbar>

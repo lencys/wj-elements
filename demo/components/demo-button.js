@@ -3,7 +3,12 @@ import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
 template.innerHTML = `<style>
-  .content { gap: .5rem;}
+  .content { gap: .5rem; }
+  .description {
+    margin: 0 0 .5rem;
+    max-width: 72ch;
+    opacity: .8;
+  }
   </style>
   <h1>Button</h1>
   <div class="container">
@@ -11,6 +16,9 @@ template.innerHTML = `<style>
     <!-- BASIC -->
 
     <h2>Basic</h2>
+    <p class="description">
+      Základné použitie bez špeciálnych atribútov – ukážka default a <code>disabled</code> stavu.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button>Default</wje-button>
@@ -21,6 +29,9 @@ template.innerHTML = `<style>
     <!-- TOOLTIP -->
 
     <h2>Tooltip</h2>
+    <p class="description">
+      Tooltip cez atribúty <code>tooltip</code> a <code>tooltip-placement</code> (napr. <code>left</code>) bez potreby extra JavaScriptu.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button tooltip="Button tooltip" tooltip-placement="left">Default</wje-button>
@@ -30,6 +41,9 @@ template.innerHTML = `<style>
     <!-- EVENTS -->
 
     <h2>Events</h2>
+    <p class="description">
+      Ukážka správania ako link (<code>href</code>), interný link cez <code>&lt;wje-router-link&gt;</code> a formulárový submit (<code>type="submit"</code>). V <code>afterDraw()</code> sú pridané listenery na <code>click</code> a vlastný event <code>wje-button:submit</code>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button href="https://sme.sk">External link</wje-button>
@@ -41,6 +55,9 @@ template.innerHTML = `<style>
     <!-- CUSTOM EVENTS -->
 
     <h2>Custom events</h2>
+    <p class="description">
+      Trigger vlastného eventu cez atribút <code>custom-event</code> a doplnkové dáta cez prefixované atribúty (napr. <code>custom-event-userId</code>, <code>custom-event-route</code>). V <code>afterDraw()</code> je ukážka odchytu eventu <code>single-spa-route</code>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button id="custom-event-button" custom-event="single-spa-route" custom-event-userId="1" custom-event-departmentId="2">Trigger custom event</wje-button>
@@ -51,6 +68,9 @@ template.innerHTML = `<style>
     <!-- BUTTON IN FORM -->
     
     <h2>Form button</h2>
+    <p class="description">
+      Použitie v rámci <code>&lt;form&gt;</code> s <code>type="reset"</code> a <code>type="submit"</code>. JavaScript ukazuje <code>submit</code>/<code>reset</code> handlery, <code>checkValidity()</code> a výpis hodnot cez <code>FormData</code>.
+    </p>
     <div class="playground">
       <div class="content">
         <form name="test-form" id="test-form">
@@ -68,6 +88,9 @@ template.innerHTML = `<style>
     <!-- TOGGLE -->
 
     <h2>Toggle</h2>
+    <p class="description">
+      Toggle režim cez atribút <code>toggle</code> (napr. <code>off</code>) a obsah prepínania cez viacnásobný slot <code>toggle</code> (ikony alebo text). Bez custom JS – prepínanie rieši komponent.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button fill="link" toggle="off">
@@ -85,6 +108,9 @@ template.innerHTML = `<style>
     <!-- SHAPE -->
 
     <h2>Shape</h2>
+    <p class="description">
+      Tvar tlačidla cez boolean atribúty <code>round</code> a <code>circle</code>. Pre ikonové tlačidlo je použitý slot <code>icon-only</code>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button>Default</wje-button>
@@ -96,6 +122,9 @@ template.innerHTML = `<style>
     <!-- FILL -->
 
     <h2>Fill</h2>
+    <p class="description">
+      Variant výplne cez atribút <code>fill</code>: <code>link</code>, <code>outline</code>, <code>solid</code>. Ukážka kombinuje aj <code>circle</code> a <code>size</code> pre kompaktné ikonové tlačidlo.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button>Default</wje-button>
@@ -109,6 +138,9 @@ template.innerHTML = `<style>
     <!-- SIZE -->
 
     <h2>Size</h2>
+    <p class="description">
+      Veľkosť cez atribút <code>size</code> (<code>small</code>/<code>large</code>). Druhý riadok ukazuje kombináciu s ikonou cez slot <code>start</code>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button size="small">Small</wje-button>
@@ -125,6 +157,9 @@ template.innerHTML = `<style>
     <!-- SIZE - CIRCLE -->
 
     <h2>Size</h2>
+    <p class="description">
+      Veľkosť pre ikonové tlačidlo v tvare kruhu – kombinácia <code>circle</code> + <code>size</code>. Obsah je len ikona bez textu.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button circle size="small"><wje-icon name="clock"></wje-icon></wje-button>
@@ -136,6 +171,9 @@ template.innerHTML = `<style>
     <!-- CARET -->
 
     <h2>Caret</h2>
+    <p class="description">
+      Zobrazenie caret indikátora cez boolean atribút <code>caret</code>. Ukážka obsahuje aj lokálne CSS, ktoré upravuje odsadenie elementu v slote <code>caret</code> (<code>wje-button [slot=caret]</code>).
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button color="default" fill="outline" size="small" caret>Small</wje-button>
@@ -152,6 +190,9 @@ template.innerHTML = `<style>
     <!-- ICONS -->
 
     <h2>Icons</h2>
+    <p class="description">
+      Ikony cez sloty <code>start</code>, <code>end</code> a <code>icon-only</code>. Ukážka porovnáva default a <code>fill="outline"</code> variant pri rovnakom obsahu.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button>
@@ -182,6 +223,9 @@ template.innerHTML = `<style>
     <!-- LINK -->
 
     <h2>Link</h2>
+    <p class="description">
+      “Link” vzhľad cez <code>fill="link"</code> – vizuálne tlačidlo bez výplne, vhodné pre inline akcie alebo navigáciu.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button fill="link">Link</wje-button>
@@ -191,6 +235,9 @@ template.innerHTML = `<style>
     <!-- COLORS -->
 
     <h2>Colors</h2>
+    <p class="description">
+      Farebné varianty cez atribút <code>color</code> (napr. <code>primary</code>, <code>success</code>, <code>danger</code>…). Bez dodatočného CSS – mapovanie rieši komponent.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button>Default</wje-button>
@@ -206,6 +253,9 @@ template.innerHTML = `<style>
     <!-- COLORS - OUTLINE -->
 
     <h2>Colors outline</h2>
+    <p class="description">
+      Kombinácia <code>fill="outline"</code> + <code>color</code> – farba ovplyvní border a text, výplň ostáva transparentná.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button fill="outline">Default</wje-button>
@@ -221,6 +271,9 @@ template.innerHTML = `<style>
     <!-- COLORS - LINK -->
 
     <h2>Colors link</h2>
+    <p class="description">
+      Kombinácia <code>fill="link"</code> + <code>color</code> – link štýl s farebným textom podľa zvoleného variantu.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button fill="link">Default</wje-button>
@@ -236,6 +289,9 @@ template.innerHTML = `<style>
     <!-- CUSTOM CSS Attributes -->
 
     <h2>Custom CSS Vlastnosti</h2>
+    <p class="description">
+      Override štýlov cez <code>::part(native)</code> a CSS premenné (napr. <code>--wje-padding-*</code>). Ukážka mení farby, border, radius a definuje <code>:hover</code> správanie pre tlačidlo s <code>id="custom"</code>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-button id="custom" fill="link">Custom</wje-button>

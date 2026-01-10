@@ -8,7 +8,13 @@ template.innerHTML = `<h1>Orgchart</h1>
     
     <!-- BASIC -->
 
-    <h2>Basic</h2>
+    <h2>Default tree</h2>
+    <p class="description">
+      Základné skladanie organizačného stromu pomocou <span class="tok tag">&lt;wje-orgchart&gt;</span> a uzlov
+      <span class="tok tag">&lt;wje-orgchart-item&gt;</span>. Atribút <span class="tok attr">boss</span> označí nadradený uzol.
+      Podriadené uzly sa vkladajú ako ďalší <span class="tok tag">&lt;wje-orgchart&gt;</span> do slotu
+      <span class="tok attr">slot="child"</span>.
+    </p>
     <div class="playground">
       <div class="content" style="width: auto;">
         <wje-orgchart>
@@ -44,6 +50,11 @@ template.innerHTML = `<h1>Orgchart</h1>
     <!-- JSON -->
 
     <h2>JSON</h2>
+    <p class="description">
+      Generovanie stromu z dát: v <span class="tok method">afterDraw()</span> sa z JSON štruktúry vytvorí DOM
+      (<span class="tok method">generateOrgChartHTML()</span>) a výsledok sa vloží do kontajnera
+      <span class="tok attr">#json</span>. Ukážka rozlišuje „supervisor“ používateľa a zvyšných členov tímu.
+    </p>
     <div class="playground">
       <div class="content" style="width: auto;" id="json"></div>
     </div>
@@ -51,6 +62,11 @@ template.innerHTML = `<h1>Orgchart</h1>
     <!-- GROUP -->
 
     <h2>Group</h2>
+    <p class="description">
+      Zoskupenie súrodencov pomocou <span class="tok tag">&lt;wje-orgchart-group&gt;</span>, ktorý umožní vizuálne
+      spojiť viac <span class="tok tag">&lt;wje-orgchart-item&gt;</span> do jedného „bloku“.
+      Vhodné pre tímy alebo viac rovnocenných členov na rovnakej úrovni.
+    </p>
     <div class="playground">
       <div class="content" style="width: auto;">
         <wje-orgchart>
@@ -103,6 +119,11 @@ template.innerHTML = `<h1>Orgchart</h1>
     <!-- LINE -->
 
     <h2>Line</h2>
+    <p class="description">
+      „Line“ ukážka používa <span class="tok tag">&lt;wje-orgchart-group&gt;</span> s atribútom
+      <span class="tok attr">title="Team"</span>. Klik na group je odchytávaný cez event
+      <span class="tok event">wje-orgchart-group:click</span> (loguje sa <span class="tok attr">e.detail</span>).
+    </p>
     <div class="playground">
       <div class="content" style="width: auto;">
         <wje-orgchart id="line">
@@ -136,6 +157,13 @@ template.innerHTML = `<h1>Orgchart</h1>
     <!-- CONTROLS -->
 
     <h2>Controls</h2>
+    <p class="description">
+      Interaktívne ovládanie (drag, zoom, center, search) pre veľké orgcharty.
+      Kontajner <span class="tok attr">.orgchart-container</span> rieši drag cez <span class="tok event">mousedown</span>/<span class="tok event">mousemove</span>/<span class="tok event">mouseup</span>
+      a zoom cez <span class="tok event">wheel</span> (škálovanie <span class="tok css">transform: scale(...)</span>).
+      Vyhľadávanie používa <span class="tok tag">&lt;wje-input&gt;</span> a zvýrazní uzol pridaním triedy <span class="tok attr">.highlight</span>.
+      V lokálnom CSS sú upravené premenné <span class="tok css">--wje-input-slot-padding-inline</span>, <span class="tok css">--wje-button-border-width</span> a <span class="tok css">--wje-button-border-radius</span>.
+    </p>
     <div class="playground" style="padding: 0;">
       <div class="content" style="width: 100%; height: calc(100% -50px); flex-direction: column;">
           <div class="orgchart-container">

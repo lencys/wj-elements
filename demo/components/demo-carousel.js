@@ -10,6 +10,11 @@ template.innerHTML = `
     <!-- BASIC -->
 
     <h2>Basic</h2>
+    <p class="description">
+      Základná ukážka <span class="tok tag">&lt;wje-carousel&gt;</span> so zapnutou pagináciou (<span class="tok attr">pagination</span>),
+      nekonečným cyklom (<span class="tok attr">loop</span>) a navigačnými šípkami (<span class="tok attr">navigation</span>).
+      Každý slide je <span class="tok tag">&lt;wje-carousel-item&gt;</span> s obsahom (tu <span class="tok tag">&lt;wje-img&gt;</span>).
+    </p>
     <div class="playground" style="padding-inline: 2rem;">
       <div class="content">
         <wje-carousel pagination loop navigation>
@@ -32,6 +37,10 @@ template.innerHTML = `
     <!-- NO LOOP -->
 
     <h2>No Loop</h2>
+    <p class="description">
+      Rovnaká konfigurácia ako Basic, ale bez atribútu <span class="tok attr">loop</span> – carousel sa na konci nezacyklí a zastaví na poslednom slide.
+      Paginácia (<span class="tok attr">pagination</span>) a navigácia (<span class="tok attr">navigation</span>) ostávajú aktívne.
+    </p>
     <div class="playground" style="padding-inline: 2rem;">
       <div class="content">
         <wje-carousel pagination navigation>
@@ -54,6 +63,12 @@ template.innerHTML = `
     <!-- DIALOG -->
 
     <h2>Dialog</h2>
+    <p class="description">
+      Carousel vložený do <span class="tok tag">&lt;wje-dialog&gt;</span>. Otváranie dialógu je prepojené cez <span class="tok tag">&lt;wje-button&gt;</span> s atribútom
+      <span class="tok attr">dialog="open-modal"</span> a <span class="tok attr">trigger="open-modal"</span>.
+      V JavaScripte sa pri evente <span class="tok event">wje-dialog:opened</span> resetuje carousel na prvý slide cez
+      <span class="tok method">goToSlide(0, "auto")</span>, aby sa vždy otvoril v konzistentnom stave.
+    </p>
     <div class="playground" style="padding-inline: 2rem;">
       <div class="content">
         <wje-button dialog="open-modal">Open</wje-button>
@@ -79,6 +94,10 @@ template.innerHTML = `
     <!-- PAGINATION -->
     
     <h2>Pagination</h2>
+    <p class="description">
+      Ukážka samotnej paginácie cez boolean atribút <span class="tok attr">pagination</span> bez navigačných šípok a bez loopovania.
+      Vhodné, keď chceš jednoduchý „pager“ indikátor bez ďalších ovládacích prvkov.
+    </p>
     <div class="playground" style="padding-inline: 2rem;">
       <div class="content">
         <wje-carousel pagination>
@@ -101,6 +120,10 @@ template.innerHTML = `
     <!-- THUMBNAIL -->
 
     <h2>Thumbnail</h2>
+    <p class="description">
+      Náhľady (thumbnails) cez boolean atribút <span class="tok attr">thumbnails</span>, doplnené o <span class="tok attr">loop</span> a <span class="tok attr">navigation</span>.
+      Tento variant pridá sekundárnu navigáciu s náhľadmi jednotlivých slide-ov.
+    </p>
     <div class="playground" style="padding-inline: 2rem;">
       <div class="content">
         <wje-carousel thumbnails loop navigation>
@@ -123,6 +146,10 @@ template.innerHTML = `
     <!-- SPACING -->
     
     <h2>Spacing</h2>
+    <p class="description">
+      Prispôsobenie medzier medzi slide-ami cez CSS custom property <span class="tok css">--wje-spacing-inline</span> aplikovanú na carousel (<span class="tok attr">.example-spacing</span>).
+      Bez potreby JavaScriptu – ide o čistý CSS override.
+    </p>
     <div class="playground" style="padding-inline: 2rem;">
       <div class="content">
         <wje-carousel pagination loop navigation class="example-spacing">
@@ -150,6 +177,11 @@ template.innerHTML = `
     <!-- SPLIT -->
     
     <h2>Split</h2>
+    <p class="description">
+      Príklad custom obsahu v slide: namiesto obrázka obsahuje <span class="tok tag">&lt;wje-carousel-item&gt;</span> dva bloky (A/B, C/D, …).
+      Šírka carouselu je upravená cez CSS custom property <span class="tok css">--wje-carousel-width</span> a layout vnútri slide rieši lokálne CSS.
+      V JavaScripte sa navyše odchytáva klik na každý slide cez event <span class="tok event">wje-carousel-item:click</span> (logovanie do konzoly).
+    </p>
     <div class="playground" style="padding-inline: 2rem;">
       <div class="content">
         <wje-carousel pagination class="example-content">
@@ -174,13 +206,10 @@ template.innerHTML = `
           .example-content {
             --wje-carousel-width: 400px;
           }
-          
           .example-content div {
             width: 200px;
             height: 300px;
             display: flex;
-            align-items: center;
-            justify-content: center;
           }
           
           .example-content div:first-child {

@@ -8,7 +8,14 @@ template.innerHTML = `
   <div class="container">
     <!--  BASIC-->
 
-    <h2>Basic</h2>
+    <h2>Default</h2>
+    <p class="description">
+      Základná karta <span class="tok tag">&lt;wje-card&gt;</span> s hlavičkou cez
+      <span class="tok tag">&lt;wje-card-header&gt;</span> (obsahuje
+      <span class="tok tag">&lt;wje-card-subtitle&gt;</span> a
+      <span class="tok tag">&lt;wje-card-title&gt;</span>), a tela cez
+      <span class="tok tag">&lt;wje-card-content&gt;</span>. Vhodné pre bežné informačné bloky.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-card>
@@ -26,6 +33,12 @@ template.innerHTML = `
     <!-- SEPARATOR -->
 
     <h2>Separator</h2>
+    <p class="description">
+      Aktivácia separátora pod hlavičkou pomocou boolean atribútu
+      <span class="tok attr">separator</span>. Do
+      <span class="tok tag">&lt;wje-card-controls&gt;</span> je možné umiestniť akcie ako
+      <span class="tok tag">&lt;wje-tooltip&gt;</span> s ikonovým tlačidlom.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-card>
@@ -51,6 +64,15 @@ template.innerHTML = `
     <!-- SEPARATOR -->
 
     <h2>Dropdown</h2>
+    <p class="description">
+      Karta s kontextovým menu pomocou
+      <span class="tok tag">&lt;wje-dropdown&gt;</span>. Trigger je
+      <span class="tok tag">&lt;wje-button&gt;</span> so šípkou (atribút
+      <span class="tok attr">caret</span>) a jednotlivé položky sú vo
+      <span class="tok tag">&lt;wje-menu&gt;</span> a
+      <span class="tok tag">&lt;wje-menu-item&gt;</span> so slotom
+      <span class="tok attr">start</span> pre ikony.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-card>
@@ -91,6 +113,10 @@ template.innerHTML = `
     <!--  IMAGE-->
 
     <h2>Image</h2>
+    <p class="description">
+      Médium môže byť umiestnené priamo na začiatok karty ako natívny
+      <span class="tok tag">&lt;img&gt;</span> element. Ostatná štruktúra zostáva rovnaká.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-card>
@@ -112,6 +138,14 @@ template.innerHTML = `
     <!-- LIST CARD -->
 
     <h2>List card</h2>
+    <p class="description">
+      Karta s vnoreným zoznamom
+      <span class="tok tag">&lt;wje-list&gt;</span>. Položky sú
+      <span class="tok tag">&lt;wje-item&gt;</span> so slotom
+      <span class="tok attr">start</span> pre
+      <span class="tok tag">&lt;wje-thumbnail&gt;</span>. Hodí sa ako prehľad položiek,
+      nastavení alebo kontaktov.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-card>
@@ -169,6 +203,17 @@ template.innerHTML = `
     <!--COLORS-->
 
     <h2>Colors</h2>
+    <p class="description">
+      Farebné varianty karty pomocou atribútu
+      <span class="tok attr">color</span>. Podporované sú napríklad:
+      <span class="tok attr">primary</span>,
+      <span class="tok attr">complete</span>,
+      <span class="tok attr">success</span>,
+      <span class="tok attr">warning</span>,
+      <span class="tok attr">danger</span>,
+      <span class="tok attr">info</span> a
+      <span class="tok attr">menu</span>.
+    </p>
     <div class="playground">
       <div class="content d-flex col-4">
         <style>
@@ -237,6 +282,12 @@ template.innerHTML = `
     <!--  Custom CSS-->
 
     <h2>CSS Custom Vlastnosti</h2>
+    <p class="description">
+      Štýlovanie jednotlivých častí karty pomocou CSS premenných alebo priamych
+      deklarácií. Ukážka mení farby, hrúbku a farbu okraja, pozadie,
+      veľkosť fontu a zaoblenie rohov pomocou selektora
+      <span class="tok attr">#custom</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-card id="custom">

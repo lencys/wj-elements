@@ -21,9 +21,13 @@ template.innerHTML = `<h1>Grid</h1>
       }
     </style>
 
-    <!--  BASIC-->
+    <!--  COLUMNS-->
 
-    <h2>Basic</h2>
+    <h2>Columns</h2>
+    <p class="description">
+      Základná štruktúra gridu: <span class="tok tag">&lt;wje-grid&gt;</span> → <span class="tok tag">&lt;wje-row&gt;</span> → <span class="tok tag">&lt;wje-col&gt;</span>.
+      Ukážka porovnáva rovnomerné stĺpce bez atribútov vs. explicitné delenie cez <span class="tok attr">size="4"</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-grid>
@@ -67,6 +71,10 @@ template.innerHTML = `<h1>Grid</h1>
     <!-- SIZE -->
 
     <h2>Auto size</h2>
+    <p class="description">
+      Atribút <span class="tok attr">size="auto"</span> nechá stĺpec roztiahnuť podľa obsahu alebo podľa fixnej šírky vnoreného elementu.
+      Ostatné stĺpce sa rozdelia do zvyšného priestoru.
+    </p>
     <div class="playground">
       <div class="content">
         <span>Stĺpec 1 má <strong>size</strong> nastavenú na <strong>"auto"</strong></span>
@@ -102,9 +110,12 @@ template.innerHTML = `<h1>Grid</h1>
       </div>
     </div>
 
-    <!-- SIZE -->
+    <!-- FIXED SIZE -->
 
-    <h2>Size</h2>
+    <h2>Fixed size</h2>
+    <p class="description">
+      Fixná šírka stĺpca cez <span class="tok attr">size="N"</span> (1–12). Zvyšné stĺpce vyplnia zvyšok riadku.
+    </p>
     <div class="playground">
       <div class="content">
         <span>Slĺpec 2 má <strong>size</strong> <strong>"8"</strong></span>
@@ -141,6 +152,10 @@ template.innerHTML = `<h1>Grid</h1>
     <!-- RESPONSIVE SIZE -->
 
     <h2>Responsive size</h2>
+    <p class="description">
+      Responsívne šírky cez breakpoint atribúty <span class="tok attr">size-sm</span>, <span class="tok attr">size-md</span>, <span class="tok attr">size-lg</span>.
+      Kombinácia s <span class="tok attr">wrap</span> na <span class="tok tag">&lt;wje-row&gt;</span> umožní zalamovanie.
+    </p>
     <div class="playground">
       <div class="content">
         <span>Naskladané pre xs breakpoint, rovnaká šírka pre sm a vyššie</span>
@@ -179,6 +194,9 @@ template.innerHTML = `<h1>Grid</h1>
     <!-- OFFSET -->
 
     <h2>Offset</h2>
+    <p class="description">
+      Posun stĺpca cez <span class="tok attr">offset="N"</span> (1–12), ktorý pridá „prázdne“ jednotky pred stĺpcom.
+    </p>
     <div class="playground">
       <div class="content">
         <span>Stĺpec 2 má <strong>offset</strong> nastavený na <strong>"3"</strong></span>
@@ -214,6 +232,10 @@ template.innerHTML = `<h1>Grid</h1>
     <!-- RESPONSIVE OFFSET -->
 
     <h2>Responsive offset</h2>
+    <p class="description">
+      Breakpoint offsety cez <span class="tok attr">offset-sm</span>, <span class="tok attr">offset-md</span>, <span class="tok attr">offset-lg</span>.
+      Umožní meniť posun stĺpcov podľa šírky obrazovky.
+    </p>
     <div class="playground">
       <div class="content">
         <span>Žiadny offset pre breakpoint xs, posun 1. stĺpca pre sm a vyššie</span>
@@ -250,6 +272,9 @@ template.innerHTML = `<h1>Grid</h1>
     <!-- ORDER -->
 
     <h2>Order</h2>
+    <p class="description">
+      Zmena poradia stĺpcov cez <span class="tok attr">order</span>: číselné hodnoty alebo aliasy ako <span class="tok attr">first</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <span>Zmeníme poradie stĺpcov pomocou <strong>order</strong> z 3 2 1 na 1 2 3</span>
@@ -275,9 +300,13 @@ template.innerHTML = `<h1>Grid</h1>
       </div>
     </div>
 
-    <!-- ALIGNMENT -->
+    <!-- HORIZONTAL ALIGNMENT -->
     
-    <h2>Aligment</h2>
+    <h2>Horizontal alignment</h2>
+    <p class="description">
+      Zarovnanie stĺpcov v riadku horizontálne cez utility triedy na <span class="tok tag">&lt;wje-row&gt;</span>:
+      <span class="tok attr">.wje-justify-content-start</span>, <span class="tok attr">-center</span>, <span class="tok attr">-end</span>, <span class="tok attr">-around</span>, <span class="tok attr">-between</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <b>Columns aligned at the start</b>
@@ -322,9 +351,13 @@ template.innerHTML = `<h1>Grid</h1>
       </div>
     </div>
 
-    <!-- ALIGNMENT -->
+    <!-- VERTICAL ALIGNMENT -->
     
-    <h2>Aligment</h2>
+    <h2>Vertical alignment</h2>
+    <p class="description">
+      Vertikálne zarovnanie stĺpcov v riadku cez utility triedy na <span class="tok tag">&lt;wje-row&gt;</span>:
+      <span class="tok attr">.wje-align-items-start</span>, <span class="tok attr">-center</span>, <span class="tok attr">-end</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <b>Columns aligned at the top</b>

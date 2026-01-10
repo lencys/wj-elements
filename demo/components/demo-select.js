@@ -10,6 +10,23 @@ template.innerHTML = `
     <!-- Default -->
 
     <h2>Default</h2>
+    <p class="description">
+      Základné použitie <span class="tok tag">&lt;wje-select&gt;</span> s dátami z API cez
+      <span class="tok tag">&lt;wje-options&gt;</span>. Kľúčové atribúty:
+      <ul>
+        <li><span class="tok attr">url</span> – endpoint pre načítanie dát</li>
+        <li><span class="tok attr">item-value</span> – názov poľa pre hodnotu</li>
+        <li><span class="tok attr">item-text</span> – názov poľa pre text</li>
+        <li><span class="tok attr">option-array-path</span> – cesta k poľu možností v JSON</li>
+        <li><span class="tok attr">max-options</span> – limit počtu vybraných možností</li>
+        <li><span class="tok attr">multiple</span> – povolenie multi‑výberu</li>
+        <li><span class="tok attr">clearable</span> – pridá tlačidlo na vymazanie výberu</li>
+        <li><span class="tok attr">find</span> – aktivuje vyhľadávanie v možnostiach</li>
+        <li><span class="tok attr">checkbox</span> – zobrazí checkbox pri každej možnosti</li>
+        <li><span class="tok attr">lazy</span> – postupné načítavanie možností</li>
+        <li><span class="tok attr">max-height</span> – výška dropdownu</li>
+      </ul>
+    </p>
     <div class="playground">
       <div class="content">
       	<wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" find multiple clearable>
@@ -25,6 +42,11 @@ template.innerHTML = `
     <!-- FOOTER -->
 
     <h2>Footer</h2>
+    <p class="description">
+      Ukážka vlastného footeru pomocou slotu <span class="tok attr">footer</span>. 
+      Každá možnosť môže mať vlastné kontextové menu cez 
+      <span class="tok tag">&lt;wje-dropdown&gt;</span> v slote <span class="tok attr">end</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-select variant="standard" label="Label" placeholder="Select option" value="option-1" max-height="200px" class="example-footer">
@@ -66,6 +88,11 @@ template.innerHTML = `
     <!-- STANDARD --> 
 
     <h2>Standard</h2>
+    <p class="description">
+      Štandardný variant selectu cez <span class="tok attr">variant="standard"</span> 
+      s labelom, predvolenou hodnotou a ikonou v slote 
+      <span class="tok attr">end</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-select label="Label test" placeholder="Select option" variant="standard">
@@ -83,6 +110,12 @@ template.innerHTML = `
     <!-- OFFSET --> 
 
     <h2>Offset</h2>
+    <p class="description">
+      Umiestnenie dropdownu ovplyvňuje atribút <span class="tok attr">offset</span>. 
+      Ukážka tiež mení zaoblenie pomocou CSS premenných 
+      <span class="tok css">--wje-select-border-radius</span> a 
+      <span class="tok css">--wje-select-options-border-radius</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-select id="offset" placeholder="Select option" variant="standard" offset="5">
@@ -107,6 +140,12 @@ template.innerHTML = `
     <!-- OPTIONS -->
 
     <h2>Options</h2>
+    <p class="description">
+      Kombinácia deklaratívneho načítania možností cez 
+      <span class="tok tag">&lt;wje-options&gt;</span> a programatívne vytváraného 
+      selectu v <span class="tok method">afterDraw()</span> do kontajnera 
+      <span class="tok attr">#placeholder</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-select placeholder="Select options" variant="standard" max-options="1" variant="standard" max-height="200px" multiple clearable>
@@ -120,6 +159,12 @@ template.innerHTML = `
     <!-- LAZY OPTIONS -->
 
     <h2>Lazy options</h2>
+    <p class="description">
+      Lazy načítavanie možností cez atribút <span class="tok attr">lazy</span> na 
+      <span class="tok tag">&lt;wje-select&gt;</span> aj 
+      <span class="tok tag">&lt;wje-options&gt;</span>. 
+      <span class="tok attr">lazy-load-size</span> určuje, koľko možností sa načíta naraz.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-select name="lazy-update" placeholder="Select options" variant="standard" max-options="2" variant="standard" max-height="200px" multiple clearable lazy>
@@ -131,6 +176,16 @@ template.innerHTML = `
     <!-- FIND -->
 
     <h2>Find</h2>
+    <p class="description">
+      Vyhľadávanie v možnostiach. Dôležité atribúty:
+      <ul>
+        <li><span class="tok attr">find</span> – aktivuje vyhľadávanie v možnostiach</li>
+        <li><span class="tok attr">checkbox</span> – zobrazí checkbox pri každej možnosti</li>
+        <li><span class="tok attr">multiple</span> – povolí multi‑výber</li>
+        <li><span class="tok attr">label</span> – textový popis selectu</li>
+        <li><span class="tok attr">max-options</span> – limit maximálneho počtu vybraných možností</li>
+      </ul>
+    </p>
     <div class="playground">
       <div class="content" style="gap: .5rem;">
         <wje-select placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple clearable>
@@ -158,6 +213,14 @@ template.innerHTML = `
     <!-- AUTOCOMPLETE -->
 
     <h2>Autocomplete</h2>
+    <p class="description">
+      Autocomplete scenáre s lazy načítavaním a vyhľadávaním. Kľúčové atribúty:
+      <ul>
+        <li><span class="tok attr">lazy</span> – postupné načítavanie možností zo zdroja</li>
+        <li><span class="tok attr">find</span> – filtrovanie možností podľa textu</li>
+        <li><span class="tok attr">no-size</span> – odstráni šírku viazanú na počet možností, správa sa viac ako textový input so suggestions</li>
+      </ul>
+    </p>
     <div class="playground">
       <div class="content" style="gap: .5rem;">
         <wje-select placeholder="Select options" max-options="1" variant="standard" max-height="200px" find multiple clearable lazy no-size>
@@ -181,6 +244,15 @@ template.innerHTML = `
     <!-- CHECKBOX -->
 
     <h2>Checkbox</h2>
+    <p class="description">
+      Práca s vizuálnym "check" obsahom a stavom vybranej položky:
+      <ul>
+        <li><span class="tok tag">&lt;template&gt;</span> – vkladá sa do <span class="tok tag">&lt;wje-select&gt;</span> a jeho obsah ide do slotu <span class="tok attr">check</span></li>
+        <li><span class="tok attr">slot="check"</span> – vlastný obsah (ikonka, <span class="tok tag">&lt;wje-status&gt;</span>, checkbox) pre zobrazenie stavu</li>
+        <li>CSS pre <span class="tok attr">#status</span> – zvýrazňuje vybranú možnosť (background) a medzery okolo <span class="tok tag">&lt;wje-status&gt;</span></li>
+        <li>CSS pre <span class="tok attr">#classic</span> – upravuje padding možností a schováva default check ikonku cez <span class="tok css">&amp;::part(check)</span></li>
+      </ul>
+    </p>
     <div class="playground">
       <div class="content">
       	<wje-select label="Single Star" placeholder="Select option" variant="standard" clearable>
@@ -284,6 +356,13 @@ template.innerHTML = `
     <!-- CUSTOM CHECKBOX HANDLING -->
 
     <h2>Custom checkbox handling</h2>
+    <p class="description">
+      Vlastné spracovanie checkboxu: cez <span class="tok tag">&lt;template&gt;</span> 
+      sa vkladá <span class="tok tag">&lt;wje-checkbox&gt;</span> do slotu 
+      <span class="tok attr">check</span>. 
+      V <span class="tok method">afterDraw()</span> sa stav checkboxu ručne synchronizuje pomocou 
+      eventu <span class="tok event">wje-option:change</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-select id="custom-checkbox" label="Multiple" placeholder="Select option" variant="standard" multiple clearable>
@@ -304,6 +383,10 @@ template.innerHTML = `
     <!-- CLEARABLE -->
 
     <h2>Clearable</h2>
+    <p class="description">
+      Atribút <span class="tok attr">clearable</span> pridá tlačidlo na rýchle zmazanie 
+      aktuálnej hodnoty selectu.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-select label="Label" placeholder="Select option" clearable>
@@ -312,12 +395,48 @@ template.innerHTML = `
           <wje-option value="option-3">Option 3</wje-option>
           <wje-option value="option-4">Option 4</wje-option>
         </wje-select>
+        
+        <wje-select placeholder="Select option" variant="standard" clearable>
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2" selected>Option 2</wje-option>
+          <wje-option value="option-3">Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+        </wje-select>
       </div>
     </div>
     
-    <!--  DISABLED-->
+    <!-- READONLY -->
+
+    <h2>Readonly</h2>
+    <p class="description">
+      Režim len na čítanie cez <span class="tok attr">readonly</span>. 
+      Hodnota sa dá zobraziť, ale nie zmeniť.
+    </p>
+    <div class="playground">
+      <div class="content">
+        <wje-select placeholder="Select option" label="Label" readonly style="margin-bottom: 1rem;">
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2" selected>Option 2</wje-option>
+          <wje-option value="option-3">Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+        </wje-select>
+
+        <wje-select placeholder="Select option" variant="standard" readonly>
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2" selected>Option 2</wje-option>
+          <wje-option value="option-3">Option 3</wje-option>
+          <wje-option value="option-4">Option 4</wje-option>
+        </wje-select>
+      </div>
+    </div>
+    
+    <!-- DISABLED -->
 
     <h2>Disabled</h2>
+    <p class="description">
+      Vypnutý stav komponentu pomocou <span class="tok attr">disabled</span>, 
+      ktorý zablokuje interakciu a zmení vizuálny vzhľad selectu.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-select placeholder="Select option" label="Label" disabled style="margin-bottom: 1rem;">
@@ -339,6 +458,14 @@ template.innerHTML = `
     <!-- MULTIPLE -->
 
     <h2>Multiple</h2>
+    <p class="description">
+      Multi‑výber s obmedzením počtu zvolených možností:
+      <ul>
+        <li><span class="tok attr">multiple</span> – povolí výber viacerých položiek</li>
+        <li><span class="tok attr">value</span> – obsahuje hodnoty oddelené medzerou (napr. <span class="tok attr">"option-1 option-2"</span>)</li>
+        <li><span class="tok attr">max-options</span> – nastaví horný limit počtu zvolených možností</li>
+      </ul>
+    </p>
     <div class="playground">
       <div class="content">
         <wje-select placeholder="Select options" variant="standard" max-options="2" variant="standard" value="option-1 option-2" multiple clearable >

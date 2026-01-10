@@ -8,12 +8,20 @@ template.innerHTML = `<style>
       display: block;
     }
   </style>
-  <h1>Status</h1>
+  <h1>Router</h1>
   <div class="container">
 
     <!-- BASIC -->
 
-    <h2>Basic</h2>
+    <h2>Default</h2>
+    <p class="description">
+      Základná ukážka routera: <span class="tok tag">&lt;wje-router-outlet&gt;</span> s atribútom
+      <span class="tok attr">animation="fade"</span> slúži ako cieľ pre vykreslenie routed obsahu.
+      Navigácia je riešená cez <span class="tok tag">&lt;wje-menu variant="nav" active&gt;</span>, kde
+      jednotlivé <span class="tok tag">&lt;wje-menu-item&gt;</span> používajú atribút
+      <span class="tok attr">route</span> (napr. <span class="tok attr">route="example-route-1"</span>)
+      na zmenu aktuálnej trasy.
+    </p>
     <div class="playground">
       <div class="content" style="display: flex; justify-content: center;">
         <div style="width: 300px; height: 200px; position: relative; overflow: scroll">

@@ -3,12 +3,26 @@ import WJElement from '../../dist/wje-element.js';
 const template = document.createElement('template');
 
 template.innerHTML = `
+  <style>
+    .description {
+      margin: 0 0 .5rem;
+      max-width: 72ch;
+      opacity: .8;
+    }
+  </style>
   <h1>Animation</h1>
   <div class="container">
 
     <!-- BASIC -->
 
     <h3>Basic</h3>
+    <p class="description">
+      Základná ukážka komponentu <code>&lt;wje-animation&gt;</code> s riadením animácie cez atribúty
+      <code>name</code>, <code>delay</code> a <code>duration</code>. JavaScript v <code>afterDraw()</code>
+      dynamicky načítava dostupné animácie pomocou <code>getAnimationsArray()</code>, plní nimi
+      <code>&lt;wje-select&gt;</code> a umožňuje ich prepínať za behu. Tlačidlá demonštrujú
+      imperatívne ovládanie animácie cez metódy <code>play()</code> a <code>cancel()</code>.
+    </p>
     <div class="playground">
       <div class="content" style="flex-direction: column;">
       

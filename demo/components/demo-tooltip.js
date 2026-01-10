@@ -10,7 +10,16 @@ template.innerHTML = `
     
     <!-- BASIC -->
 
-    <h2>Basic</h2>
+    <h2>Default</h2>
+    <p class="description">
+      Základné použitie komponentu <span class="tok tag">&lt;wje-tooltip&gt;</span> s rôznymi
+      umiestneniami. Atribút <span class="tok attr">content</span> definuje text tooltipu,
+      <span class="tok attr">placement</span> určuje smer zobrazenia
+      (<span class="tok attr">top</span>, <span class="tok attr">bottom</span>,
+      <span class="tok attr">left</span>, <span class="tok attr">right</span>) a
+      <span class="tok attr">offset</span> nastavuje vzdialenosť od trigger elementu
+      (<span class="tok tag">&lt;wje-button&gt;</span>).
+    </p>
     <div class="playground">
       <div class="content" style="display: flex; gap: 1rem;">
         <wje-tooltip content="Som najkrajsi tooltip hore" offset="0">
@@ -34,6 +43,12 @@ template.innerHTML = `
     <!-- SLOTS -->
 
     <h2>Slots</h2>
+    <p class="description">
+      Tooltip s bohatším obsahom: ikona v slote <span class="tok attr">start</span>,
+      doplnkový text v slote <span class="tok attr">end</span> a samotný
+      <span class="tok tag">&lt;wje-button&gt;</span> ako trigger. Text tooltipu je daný
+      atribútom <span class="tok attr">content</span>.
+    </p>
     <div class="playground">
       <div class="content" style="display: flex; gap: 1rem;">
         <wje-tooltip content="Cloud" offset="0">
@@ -47,6 +62,15 @@ template.innerHTML = `
     <!-- EVENTS -->
 
     <h2>Events</h2>
+    <p class="description">
+      Dynamický obsah tooltipu. Element s ID <span class="tok attr">events</span> nemá
+      atribút <span class="tok attr">content</span>; namiesto toho sa v
+      <span class="tok method">afterDraw()</span> pripája handler
+      <span class="tok method">beforeShow</span>, ktorý pomocou
+      <span class="tok method">fetch()</span> načíta JSON zo servera a vygeneruje HTML.
+      Štýl <span class="tok css">#events::part(native)</span> zabezpečí, že tooltip
+      sa vykreslí ako block.
+    </p>
     <div class="playground">
       <div class="content" style="display: flex; gap: 1rem;">
         <wje-tooltip id="events">
@@ -65,6 +89,14 @@ template.innerHTML = `
     <!-- DIALOG -->
 
     <h2>Dialog</h2>
+    <p class="description">
+      Kombinácia tooltipu a dialógu. Tooltip s atribútom
+      <span class="tok attr">content</span> obaluje
+      <span class="tok tag">&lt;wje-button&gt;</span>, ktorý má
+      <span class="tok attr">dialog="dialog"</span>. Samotný dialóg je
+      <span class="tok tag">&lt;wje-dialog&gt;</span> s atribútom
+      <span class="tok attr">trigger="dialog"</span> a zobrazuje sa nezávisle od tooltipu.
+    </p>
     <div class="playground">
       <div class="content" style="display: flex; gap: 1rem;">
         <wje-tooltip content="Tooltip text">

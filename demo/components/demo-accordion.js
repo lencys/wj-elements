@@ -4,12 +4,26 @@ import CodeSnippet from '../assets/js/code-snippet-builder.js';
 const template = document.createElement('template');
 
 template.innerHTML = `
+  <style>
+    .description {
+      margin: 0 0 .5rem;
+      max-width: 72ch;
+      opacity: .8;
+    }
+  </style>
   <h1>Accordion</h1>
   <div class="container">
 
     <!-- BASIC -->
 
     <h3>Basic</h3>
+    <p class="description">
+      Základné použitie komponentu <code>&lt;wje-accordion&gt;</code> s jednou položkou
+      <code>&lt;wje-accordion-item&gt;</code>. Ukážka demonštruje prácu so slotmi
+      <code>headline</code>, <code>description</code> a <code>content</code>, ako aj
+      kombináciu s inými komponentmi (napr. <code>&lt;wje-status&gt;</code>,
+      <code>&lt;wje-dropdown&gt;</code>, <code>&lt;wje-menu&gt;</code>) priamo v headlineri.
+    </p>
     <div class="playground" style="background-color: rgba(0,0,0,.08);">
       <div class="content" style="flex-direction: column;">
         <wje-accordion>
@@ -53,6 +67,13 @@ template.innerHTML = `
     <!-- COLOR -->
 
     <h3>Basic</h3>
+    <p class="description">
+      Farebné varianty jednotlivých accordion položiek pomocou atribútu
+      <code>color</code> na <code>&lt;wje-accordion-item&gt;</code> (napr.
+      <code>primary</code>, <code>success</code>, <code>danger</code>, <code>warning</code>,
+      <code>info</code>). Ukážka zároveň používa lokálne CSS na zarovnanie obsahu
+      v slote <code>headline</code>.
+    </p>
     <div class="playground">
       <div class="content" style="flex-direction: column;">
         <wje-accordion>
@@ -102,9 +123,14 @@ template.innerHTML = `
     <!-- MULTIPLE -->
 
     <h3>Multiple</h3>
+    <p class="description">
+      Režim s viacerými otvorenými položkami naraz pomocou boolean atribútu
+      <code>multiple</code>. Atribút <code>index</code> určuje, ktorá položka je
+      otvorená po inicializácii (indexované od nuly).
+    </p>
     <div class="playground">
       <div class="content" style="flex-direction: column;">
-        <wje-accordion multiple index="3">
+        <wje-accordion multiple index="2">
           <wje-accordion-item  color="info">
             <span slot="headline">Headline</span>
             <div slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In bibendum urna quis velit consequat, et malesuada dolor tempus.</div>

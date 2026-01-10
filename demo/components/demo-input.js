@@ -9,14 +9,29 @@ template.innerHTML = `<h1>Input</h1>
     <!-- VALIDATION IN FORM -->
     
     <h2>Validation in form</h2>
+    <p class="description">
+      Validácia komponentov v rámci <span class="tok tag">&lt;form&gt;</span> pomocou natívneho
+      <span class="tok method">checkValidity()</span>. Ukážka kombinuje viac vstupov
+      (<span class="tok tag">&lt;wje-input&gt;</span>, <span class="tok tag">&lt;wje-select&gt;</span>,
+      <span class="tok tag">&lt;wje-textarea&gt;</span>, <span class="tok tag">&lt;wje-radio-group&gt;</span>,
+      <span class="tok tag">&lt;wje-checkbox&gt;</span>, <span class="tok tag">&lt;wje-toggle&gt;</span>)
+      s atribútom <span class="tok attr">required</span> a ukazuje submit mimo formu cez event
+      <span class="tok event">wje-button:click</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <form name="test-form-1" id="test-form-1">
           <!-- DEFAULT -->
           <h2>Default</h2>
-          
+          <p class="description">
+            Default varianta vstupov (bez <span class="tok attr">variant="standard"</span>) – slúži na porovnanie správania validácie v rovnakom formulári.
+          </p>
           <!-- STANDARD -->
           <h2>Standard</h2>
+          <p class="description">
+            Rovnaké prvky vo variante <span class="tok attr">variant="standard"</span> (napr. <span class="tok tag">&lt;wje-input&gt;</span>, <span class="tok tag">&lt;wje-select&gt;</span>, <span class="tok tag">&lt;wje-textarea&gt;</span>).
+            <span class="tok attr">required</span> a multi-select (<span class="tok attr">multiple</span>) ukazujú validáciu na reálnych kombináciách.
+          </p>
           <wje-select name="single-select" variant="standard" label="Label" placeholder="Select option"  clearable required multiple>
             <wje-option value="option-1">Option 1</wje-option>
             <wje-option value="option-2">
@@ -52,6 +67,14 @@ template.innerHTML = `<h1>Input</h1>
     <!-- DEFAULT -->
 
     <h2>Default</h2>
+    <p class="description">
+      Základné stavy <span class="tok tag">&lt;wje-input&gt;</span>: <span class="tok attr">placeholder</span>,
+      predvolená <span class="tok attr">value</span>, <span class="tok attr">readonly</span>,
+      <span class="tok attr">disabled</span> a validácia cez <span class="tok attr">required</span>,
+      <span class="tok attr">minlength</span> + vlastná hláška cez <span class="tok attr">message</span>.
+      Atribúty <span class="tok attr">validate-on-change</span> a <span class="tok attr">custom-error-display</span>
+      ukazujú okamžité hlásenie chyby.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-input label="Default input" id="nieco"></wje-input>
@@ -67,6 +90,11 @@ template.innerHTML = `<h1>Input</h1>
     <!-- INPUT -->
 
     <h2>Form</h2>
+    <p class="description">
+      Príklad formulárového layoutu cez <span class="tok tag">&lt;wje-grid&gt;</span> / <span class="tok tag">&lt;wje-row&gt;</span> / <span class="tok tag">&lt;wje-col&gt;</span>.
+      Sloty <span class="tok attr">start</span> a <span class="tok attr">end</span> v <span class="tok tag">&lt;wje-input&gt;</span>
+      ukazujú prefix/sufix (ikona, <span class="tok attr">.com</span>, <span class="tok attr">&euro;</span>).
+    </p>
     <div class="playground">
       <div class="content">
         <wje-grid>
@@ -103,6 +131,10 @@ template.innerHTML = `<h1>Input</h1>
     <!-- STANDARD -->
 
     <h2>Standard</h2>
+    <p class="description">
+      Varianta <span class="tok attr">variant="standard"</span> pre rovnaké stavy ako v Default sekcii.
+      Ukážka porovnáva vizuál a validáciu pri identickom nastavení atribútov.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-input variant="standard" label="Default input"></wje-input>
@@ -117,7 +149,11 @@ template.innerHTML = `<h1>Input</h1>
 
     <!-- INPUT -->
 
-    <h2>Form</h2>
+    <h2>Form (standard)</h2>
+    <p class="description">
+      Rovnaký grid layout ako vyššie, ale pre <span class="tok attr">variant="standard"</span>.
+      Vhodné ako referenčný „form pattern“ pre standard inputs.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-grid>
@@ -154,6 +190,12 @@ template.innerHTML = `<h1>Input</h1>
     <!-- SELECT -->
 
     <h2>Select</h2>
+    <p class="description">
+      Kombinácia <span class="tok tag">&lt;wje-select&gt;</span> vloženého do slotu <span class="tok attr">start</span> v <span class="tok tag">&lt;wje-input&gt;</span>.
+      Lokálne CSS upravuje padding a border cez premenné <span class="tok css">--wje-input-slot-padding-inline</span>,
+      <span class="tok css">--wje-select-border-width</span> a <span class="tok css">--wje-select-border-radius</span>.
+      JS počúva <span class="tok event">wje-popup:show</span>/<span class="tok event">wje-popup:hide</span> na prepínanie triedy.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-input variant="standard" label="Default input" class="example-select">
@@ -199,6 +241,10 @@ template.innerHTML = `<h1>Input</h1>
     <!-- SEARCH -->
 
     <h2>Search</h2>
+    <p class="description">
+      Search pattern: ikonové tlačidlo v slote <span class="tok attr">end</span> (tu <span class="tok tag">&lt;wje-button variant="link"&gt;</span>).
+      Lokálne CSS resetuje border a radius cez <span class="tok css">--wje-button-border-width</span> a <span class="tok css">--wje-button-border-radius</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-input variant="standard" label="Default input" class="example">
@@ -222,6 +268,11 @@ template.innerHTML = `<h1>Input</h1>
     <!-- PICKERS -->
 
     <h2>Pickers</h2>
+    <p class="description">
+      Picker inputy: <span class="tok tag">&lt;wje-icon-picker&gt;</span> a <span class="tok tag">&lt;wje-color-picker&gt;</span> v slote <span class="tok attr">start</span>.
+      Eventy <span class="tok event">wje-icon-picker:select</span> a <span class="tok event">wje-color-picker:select</span>
+      v <span class="tok method">afterDraw()</span> nastavujú hodnotu rodičovského <span class="tok tag">&lt;wje-input&gt;</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-input variant="standard" label="Default input" class="example-icon" clearable>
@@ -249,6 +300,9 @@ template.innerHTML = `<h1>Input</h1>
     <!-- CLEARABLE -->
 
     <h2>Clearable</h2>
+    <p class="description">
+      Atribút <span class="tok attr">clearable</span> pridá do <span class="tok tag">&lt;wje-input&gt;</span> reset ikonku na rýchle vymazanie hodnoty.
+    </p>
     <div class="playground">
       <div class="content">
         <wje-input variant="standard" label="Default input" class="example" clearable></wje-input>
@@ -257,7 +311,12 @@ template.innerHTML = `<h1>Input</h1>
     
     <!-- VALIDATION IN FORM -->
     
-    <h2>Validation in form</h2>
+    <h2>Validation in form (custom error slot)</h2>
+    <p class="description">
+      Druhý formulár ukazuje validáciu spolu s vlastným obsahom chyby v slote <span class="tok attr">error</span>
+      a aj inline režim cez <span class="tok attr">error-inline</span>. Submit/Reset používajú natívne
+      eventy <span class="tok event">submit</span>/<span class="tok event">reset</span> na <span class="tok tag">&lt;form&gt;</span>.
+    </p>
     <div class="playground">
       <div class="content">
         <form name="test-form-2" id="test-form-2">
