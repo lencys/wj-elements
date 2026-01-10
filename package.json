@@ -1,7 +1,7 @@
 {
   "name": "wj-elements",
   "description": "WebJET Elements is a modern set of user interface tools harnessing the power of web components designed to simplify web application development.",
-  "version": "0.1.254",
+  "version": "0.1.255",
   "homepage": "https://github.com/lencys/wj-elements",
   "author": "Lukáš Ondrejček <lukas.ondrejcek@gmail.com>",
   "license": "MIT",
@@ -52,6 +52,7 @@
     "test:color-picker": "web-test-runner --files packages/wje-color-picker/color-picker.test.js",
     "test:format-digital": "web-test-runner --files packages/wje-format-digital/format-digital.test.js",
     "test:relative-time": "web-test-runner --files packages/wje-relative-time/relative-time.test.js",
+    "test:select": "web-test-runner --files packages/wje-select/select.test.js",
     "test:toast": "web-test-runner --files packages/wje-toast/toast.test.js",
     "test:tab-group": "web-test-runner --files packages/wje-tab-group/tab-group.test.js"
   },
