@@ -66,7 +66,7 @@ export default class Option extends WJElement {
 	 * @returns {boolean} Returns true if the 'wje-select' element has the 'multiple' attribute, otherwise false.
 	 */
 	get multiple() {
-		return this.closest('wje-select').hasAttribute('multiple');
+		return this.closest('wje-select')?.hasAttribute('multiple') || false;
 	}
 
 	/**
@@ -197,6 +197,12 @@ export default class Option extends WJElement {
 	 */
 	afterDraw() {
 		event.addListener(this, 'click', null, this.optionClickCallback);
+
+		// If `selected` was set before render, attributeChangedCallback may have run
+		// before `this.check` existed. Sync the checkbox state once slots exist.
+		if (this.checkbox && this.multiple) {
+			this.#setCheckbox(this.selected);
+		}
 	}
 
 	/**
@@ -242,8 +248,8 @@ export default class Option extends WJElement {
 	 * @returns {void}
 	 */
 	#setCheckbox(checked) {
-		let arr = [...this.check?.assignedElements({ flatten: true })]?.filter(item=> this.#isCheckbox(item));
-		if(arr.length > 0)
-			arr[0].checked = checked;
+		const assigned = this.check?.assignedElements({ flatten: true }) ?? [];
+		const arr = assigned.filter((item) => this.#isCheckbox(item));
+		if (arr.length > 0) arr[0].checked = checked;
 	}
 }

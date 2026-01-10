@@ -77,6 +77,13 @@
         padding-inline: var(--wje-dialog-footer-padding-inline);
         padding-block: var(--wje-dialog-footer-padding-block);
     }
+
+    /* Footer should not take space when nothing is slotted */
+    .dialog-footer[hidden] {
+        display: none;
+        padding-inline: 0;
+        padding-block: 0;
+    }
 }
 
 .blocking-element {
@@ -262,5 +269,7 @@ dialog[open] {
     }
     .dialog-content {
         overflow: auto;
+        padding-block: 0;
+        margin-block: var(--wje-dialog-content-padding-block);
     }
 }

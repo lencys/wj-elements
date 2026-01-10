@@ -831,6 +831,7 @@ z = font size
         transparent 100%
     );
 }
+
 .text-separator::before {
     background: #fff;
     content: attr(data-text);

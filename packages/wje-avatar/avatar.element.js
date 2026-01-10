@@ -99,7 +99,7 @@ export default class Avatar extends WJElement {
      * @returns {Array<string>}
      */
     static get observedAttributes() {
-        return ['initials'];
+        return ['initials', 'label'];
     }
 
     /**
