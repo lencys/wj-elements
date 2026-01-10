@@ -49,6 +49,7 @@
     "test:badge": "web-test-runner --files packages/wje-badge/badge.test.js",
     "test:breadcrumbs": "web-test-runner --files packages/wje-breadcrumbs/breadcrumbs.test.js",
     "test:button": "web-test-runner --files packages/wje-button/button.test.js",
+    "test:chip": "web-test-runner --files packages/wje-chip/chip.test.js",
     "test:color-picker": "web-test-runner --files packages/wje-color-picker/color-picker.test.js",
     "test:format-digital": "web-test-runner --files packages/wje-format-digital/format-digital.test.js",
     "test:relative-time": "web-test-runner --files packages/wje-relative-time/relative-time.test.js",

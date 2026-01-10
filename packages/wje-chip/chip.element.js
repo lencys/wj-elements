@@ -81,6 +81,28 @@ export default class Chip extends WJElement {
     }
 
     /**
+     * Sets the disabled state of the element.
+     * If true, the 'disabled' attribute is added to the element.
+     * If false, the 'disabled' attribute is removed from the element.
+     * @param {boolean} value Specifies whether the element should be disabled.
+     */
+    set disabled(value) {
+        if (value) {
+            this.setAttribute('disabled', '');
+        } else {
+            this.removeAttribute('disabled');
+        }
+    }
+
+    /**
+     * Determines if the element has the 'disabled' attribute.
+     * @returns {boolean} True if the element has the 'disabled' attribute, otherwise false.
+     */
+    get disabled() {
+        return this.hasAttribute('disabled');
+    }
+
+    /**
      * Class name for the Chip element.
      * @type {string}
      */
