@@ -248,12 +248,18 @@ export class Select extends FormAssociatedElement {
 	set disabled(value) {
 		if (value) {
 			this.setAttribute('disabled', '');
-			this.input.setAttribute('disabled', '');
-			this.displayInput.setAttribute('disabled', '');
+
+			this.input?.setAttribute('disabled', '');
+			this.displayInput?.setAttribute('disabled', '');
+
+			this.popup?.setAttribute('disabled', '');
 		} else {
 			this.removeAttribute('disabled');
-			this.input.removeAttribute('disabled');
-			this.displayInput.removeAttribute('disabled');
+
+			this.input?.removeAttribute('disabled');
+			this.displayInput?.removeAttribute('disabled');
+
+			this.popup?.removeAttribute('disabled');
 		}
 	}
 
@@ -275,13 +281,21 @@ export class Select extends FormAssociatedElement {
 	 */
 	set readonly(value) {
 		if (value) {
-			this.setAttribute('disabled', '');
-			this.input.setAttribute('readonly', '');
-			this.displayInput.setAttribute('disabled', '');
+			this.setAttribute('readonly', '');
+
+			// inputs nemusia existovať ešte pred draw()
+			this.input?.setAttribute('readonly', '');
+			this.displayInput?.setAttribute('disabled', '');
+
+			// popup môže existovať, ak to toggle-uješ po renderi
+			this.popup?.setAttribute('disabled', '');
 		} else {
-			this.removeAttribute('disabled');
-			this.input.removeAttribute('readonly');
-			this.displayInput.removeAttribute('disabled');
+			this.removeAttribute('readonly');
+
+			this.input?.removeAttribute('readonly');
+			this.displayInput?.removeAttribute('disabled');
+
+			this.popup?.removeAttribute('disabled');
 		}
 	}
 
@@ -500,6 +514,17 @@ export class Select extends FormAssociatedElement {
 			display.setAttribute('required', '');
 		}
 
+		// Apply initial disabled/readonly state during first render
+		if (this.disabled) {
+			input.setAttribute('disabled', '');
+			display.setAttribute('disabled', '');
+		}
+
+		if (this.readonly) {
+			input.setAttribute('readonly', '');
+			display.setAttribute('readonly', '');
+		}
+
 		let slotEnd = document.createElement('div');
 		slotEnd.classList.add('slot-end');
 
@@ -544,14 +569,16 @@ export class Select extends FormAssociatedElement {
 		popup.setAttribute('part', 'popup');
 		popup.setAttribute('offset', this.offset);
 
-		if(this.lazy || this.querySelector('wje-options')) {
+		if (this.lazy || this.querySelector('wje-options')) {
 			popup.setAttribute('loader', '');
-		}
-
-		if (this.disabled || this.readonly) {
-			popup.setAttribute('disabled', '');
 		} else {
 			popup.removeAttribute('loader');
+		}
+
+		if (this.disabled) {
+			popup.setAttribute('disabled', '');
+		} else {
+			popup.removeAttribute('disabled');
 		}
 
 		if (this.variant === 'standard') {
@@ -716,6 +743,7 @@ export class Select extends FormAssociatedElement {
 		});
 
 		this.clear?.addEventListener('wje-button:click', (e) => {
+			if (this.readonly || this.disabled) return;
 			e.preventDefault();
 			e.stopPropagation();
 			this.clearSelections();
@@ -776,6 +804,8 @@ export class Select extends FormAssociatedElement {
 		e.preventDefault();
 		e.stopPropagation();
 		e.stopImmediatePropagation();
+
+		if (this.readonly || this.disabled) return;
 
 		let allOptions = this.getAllOptions();
 
