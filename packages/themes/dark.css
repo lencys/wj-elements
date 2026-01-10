@@ -173,6 +173,9 @@
     --wje-icon-picker-background: var(--wje-color-contrast-0);
     --wje-icon-picker-border-color: var(--wje-border-color);
 
+    /* Infinite Scroll */
+    --wje-infinite-scroll-loading-background: var(--wje-color-contrast-0);
+
     /* Input */
     --wje-input-background-color: var(--wje-color-contrast-0);
     --wje-input-color: var(--wje-color);
@@ -246,6 +249,11 @@
     --wje-textarea-color-invalid: var(--wje-color-danger-1);
     --wje-textarea-border-color: var(--wje-border-color);
     --wje-textarea-border-color-focus: var(--wje-color-primary-1);
+
+    /* Toolbar */
+    --wje-toolbar-background: var(--wje-background);
+    --wje-toolbar-border-color: var(--wje-border-color);
+    --wje-toolbar-shadow: var(--wje-shadow-medium);
 
     /* Tooltip */
     --wje-tooltip-arrow-color: var(--wje-color-contrast-4);
