@@ -101,29 +101,31 @@ export function getFileTypeIcon(type) {
  * console.log(isValid); // true
  */
 export function isValidFileType(file, acceptedFileTypes) {
-    // Get the base MIME type
-    const baseMimeType = file.type.split('/')[0];
-    // If acceptedFileTypes is a string, convert it to an array
-    let acceptedTypes = Array.isArray(acceptedFileTypes) ? acceptedFileTypes : acceptedFileTypes.split(',');
-    // If acceptedFileTypes is empty, throw an error
-    if (acceptedTypes.length === 0) {
+    const mime = file.type.toLowerCase();                     // full mime
+    const base = mime.split('/')[0];                          // e.g. "application"
+    const ext = file.name.split('.').pop().toLowerCase();     // e.g. "xlsx"
+
+    let accepted = Array.isArray(acceptedFileTypes)
+      ? acceptedFileTypes
+      : acceptedFileTypes.split(',').map(t => t.trim().toLowerCase());
+
+    if (accepted.length === 0) {
         throw new Error('acceptedFileTypes is empty');
     }
 
-    // Iterate over acceptedFileTypes
-    for (let type of acceptedTypes) {
-        // ak type na image/* a file je napriklad image/png tak vratime true
-        if (type.includes(baseMimeType + '/*')) {
-            return true;
-        }
+    for (let type of accepted) {
+        type = type.toLowerCase();
 
-        // Ak type suboru obsahuje konkretny typ a to bud ak je to zapisany napriklad image/png alebo len png tak vratime true
-        if (type.includes(file.type) || type.includes(file.type.split('/')[1])) {
-            return true;
-        }
+        // image/* alebo application/*
+        if (type === base + '/*') return true;
+
+        // presný MIME typ
+        if (type === mime) return true;
+
+        // extension (xlsx, png, pdf…)
+        if (type === ext) return true;
     }
 
-    // Ak sme nic nenasli tak vratime false
     return false;
 }
 
