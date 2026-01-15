@@ -33,18 +33,34 @@ export default class FileUploadItem extends WJElement {
         this.localizer = new Localizer(this);
     }
 
+    /**
+     * Sets the 'is-uploaded' attribute to indicate the uploaded status.
+     * @param {boolean} value The value to determine if the element is uploaded.
+     */
     set isUploaded(value) {
         this.setAttribute('is-uploaded', '');
     }
 
+    /**
+     * Checks if the 'is-uploaded' attribute is present on the element.
+     * @returns {boolean} True if the 'is-uploaded' attribute exists, otherwise false.
+     */
     get isUploaded() {
         return this.hasAttribute('is-uploaded');
     }
 
+    /**
+     * Sets the size attribute of the element.
+     * @param {string | number} value The value to set for the size attribute.
+     */
     set size(value) {
         this.setAttribute('size', value);
     }
 
+    /**
+     * Retrieves the value of the 'size' attribute.
+     * @returns {string|null} The value of the 'size' attribute, or null if the attribute is not present.
+     */
     get size() {
         return this.getAttribute('size');
     }
@@ -81,12 +97,12 @@ export default class FileUploadItem extends WJElement {
     }
 
     /**
-     * Handles updates to the attributes of a custom element whenever one of the observed attributes is changed.
-     * Updates the related elements based on the changed attribute and its new value.
-     * @param {string} name The name of the attribute being changed.
-     * @param {string | null} oldValue The previous value of the attribute before the change, or null if the attribute was not previously set.
-     * @param {string | null} newValue The new value of the attribute after the change, or null if the attribute is being removed.
-     * @returns {void} Does not return a value.
+     * A lifecycle method that is called when one of the observed attributes of the custom element is added, removed, or changed.
+     * This method is used to react to changes in the specified attributes.
+     * @param {string} name The name of the attribute that was changed.
+     * @param {string|null} oldValue The previous value of the attribute before the change, or null if the attribute was not previously set.
+     * @param {string|null} newValue The new value of the attribute after the change, or null if the attribute has been removed.
+     * @returns {void} This method does not return a value.
      */
     attributeChangedCallback(name, oldValue, newValue) {
         if (super.attributeChangedCallback) {
