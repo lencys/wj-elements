@@ -77,7 +77,7 @@ export default class FileUploadItem extends WJElement {
      * @returns {Array<string>}
      */
     static get observedAttributes() {
-        return ['uploaded'];
+        return ['uploaded', 'is-uploaded'];
     }
 
     /**
@@ -89,6 +89,10 @@ export default class FileUploadItem extends WJElement {
      * @returns {void} Does not return a value.
      */
     attributeChangedCallback(name, oldValue, newValue) {
+        if (super.attributeChangedCallback) {
+            super.attributeChangedCallback(name, oldValue, newValue);
+        }
+
         if (name === 'uploaded' && oldValue !== newValue && this.uploadedEl) {
             this.uploadedEl.setAttribute('value', newValue);
 

@@ -1,7 +1,7 @@
 {
   "name": "wj-elements",
   "description": "WebJET Elements is a modern set of user interface tools harnessing the power of web components designed to simplify web application development.",
-  "version": "0.2.0-alpha.2",
+  "version": "0.2.0-alpha.3",
   "homepage": "https://github.com/lencys/wj-elements",
   "author": "Lukáš Ondrejček <lukas.ondrejcek@gmail.com>",
   "license": "MIT",
@@ -75,23 +75,22 @@
     "> 0.2%"
   ],
   "dependencies": {
-    "@crowdin/cli": "^3.19.2",
-    "@docusaurus/core": "^3.8.0",
-    "@docusaurus/mdx-loader": "^3.8.0",
-    "@docusaurus/plugin-client-redirects": "^3.8.0",
-    "@faker-js/faker": "^8.0.0",
     "@floating-ui/dom": "^1.5.1",
     "animate.css": "^4.1.1",
     "morphdom": "^2.7.4",
     "qrious": "^4.0.2",
     "slick-router": "^3.0.1",
-    "tinycolor2": "^1.6.0",
-    "typescript": "^5.8.2"
+    "tinycolor2": "^1.6.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.26.5",
+    "@crowdin/cli": "^3.19.2",
     "@custom-elements-manifest/analyzer": "^0.9.3",
+    "@docusaurus/core": "^3.8.0",
+    "@docusaurus/mdx-loader": "^3.8.0",
+    "@docusaurus/plugin-client-redirects": "^3.8.0",
     "@eslint/js": "^9.13.0",
+    "@faker-js/faker": "^8.0.0",
     "@open-wc/semantic-dom-diff": "^0.20.1",
     "@open-wc/testing": "^3.2.0",
     "@web/test-runner": "^0.19.0",
@@ -114,7 +113,8 @@
     "rollup-plugin-dts": "^6.1.1",
     "sass": "^1.83.0",
     "sinon": "^19.0.2",
-    "vite": "^6.3.5",
+    "typescript": "^5.8.2",
+    "vite": "^6.4.1",
     "vite-plugin-dts": "^4.5.0",
     "vite-plugin-javascript-obfuscator": "^3.1.0"
   }
