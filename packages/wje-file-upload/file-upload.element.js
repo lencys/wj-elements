@@ -175,6 +175,24 @@ export default class FileUpload extends WJElement {
         return this.hasAttribute('to-chunk');
     }
 
+    /**
+     * Sets the maximum number of files that can be uploaded or managed.
+     * Assigns the specified value to the 'max-files' attribute.
+     * @param {number} value The maximum allowable number of files.
+     */
+    set maxFiles(value) {
+        this.setAttribute('max-files', value);
+    }
+
+    /**
+     * Retrieves the maximum number of files allowed from the `max-files` attribute.
+     * If the attribute is not set or is invalid, defaults to 0.
+     * @returns {number} The maximum number of files allowed.
+     */
+    get maxFiles() {
+        return parseInt(this.getAttribute('max-files')) || 1;
+    }
+
     className = 'FileUpload';
 
     /**
@@ -346,6 +364,21 @@ export default class FileUpload extends WJElement {
      * @param files
      */
     addFilesToQueue(files) {
+        if (this.maxFiles && files.length > this.maxFiles) {
+            this.dispatchEvent(
+              new CustomEvent('file-upload:error', {
+                  detail: {
+                      type: 'max-files-exceeded',
+                      max: this.maxFiles,
+                      received: files.length,
+                  },
+                  bubbles: true,
+                  composed: true,
+              })
+            );
+            return; // stop processing
+        }
+
         this._queuedFiles = [...files];
 
         this.dispatchEvent(
