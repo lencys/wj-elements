@@ -442,6 +442,8 @@ export default class FileUpload extends WJElement {
                 this.appendChild(preview);
 
                 this.uploadFunction(file, preview).then((res) => {
+                    res.item = preview;
+
                     this.dispatchEvent(
                         new CustomEvent('file-upload:upladed-file-complete', {
                             detail: res,
