@@ -283,7 +283,7 @@ template.innerHTML = `
         		<wje-status color="complete" slot="check"></wje-status>
         		Option 1
 					</wje-option>
-          <wje-option value="option-2">
+          <wje-option value="option-2" selected>
           	<wje-status color="success" slot="check"></wje-status>
           	Option 2
           </wje-option>

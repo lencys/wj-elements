@@ -92,6 +92,45 @@ export class Select extends FormAssociatedElement {
 	#htmlOptions = [];
 
 	/**
+	 * Handles lazy options load events coming from <wje-options>.
+	 * This is attached on the <wje-select> itself so it survives internal
+	 * re-renders and attribute-driven refreshes (e.g. toggling disabled).
+	 * @param {CustomEvent} e
+	 * @private
+	 */
+	#onOptionsLoad = (e) => {
+		const popup = this.popup || (this.shadowRoot && this.shadowRoot.querySelector('wje-popup'));
+
+		this.selectedOptions.forEach((option) => {
+			this.getAllOptions().forEach((el) => {
+				if (el.value === option.value) {
+					el.selected = true;
+				}
+			});
+		});
+
+		// Ensure values from the value attribute are (re)selected after lazy-loaded pages
+		const attrValue = this.getAttribute('value')?.split(' ') || [];
+
+		attrValue.forEach(val => {
+			const existingOption = Array.from(this.getAllOptions()).find(el => el.value === val);
+			if (existingOption) {
+				existingOption.selected = true;
+			}
+		});
+
+		this.selectedOptions = this.#getSelectedOptions();
+		this.selections(true);
+
+		this.list?.scrollTo(0, 0);
+
+		// Notify popup that its content is ready; popup will clear its own loader state.
+		if (popup) {
+			event.dispatchCustomEvent(popup, 'wje-popup:content-ready');
+		}
+	};
+
+	/**
 	 * Prevent closing the parent <wje-select>'s popup when a nested <wje-dropdown>
 	 * menu item is clicked. Closes only the dropdown that owns the clicked item.
 	 * This captures the event at the document level (useCapture=true) so it can
@@ -569,11 +608,17 @@ export class Select extends FormAssociatedElement {
 		popup.setAttribute('part', 'popup');
 		popup.setAttribute('offset', this.offset);
 
-		if (this.lazy || this.querySelector('wje-options')) {
-			popup.setAttribute('loader', '');
-		} else {
-			popup.removeAttribute('loader');
-		}
+		// const optionsElement = this.querySelector('wje-options');
+		// const hasLoadedOptions =
+		// 	optionsElement &&
+		// 	Array.isArray(optionsElement.loadedOptions) &&
+		// 	optionsElement.loadedOptions.length > 0;
+		//
+		// if ((this.lazy || optionsElement) && !hasLoadedOptions) {
+		// 	popup.setAttribute('loader', '');
+		// } else {
+		// 	popup.removeAttribute('loader');
+		// }
 
 		if (this.disabled) {
 			popup.setAttribute('disabled', '');
@@ -671,7 +716,12 @@ export class Select extends FormAssociatedElement {
 		});
 
 		this.selectedOptions = this.#getSelectedOptions();
-		this.selectOptions(this.value, true);
+
+		if (this.hasAttribute('value')) {
+			this.selectOptions(this.value, true);
+		} else if (this.selectedOptions.length) {
+			this.selections(true);
+		}
 
 		if (this.lazy) {
 			event.addListener(this.popup, 'wje-popup:show', null, (e) => {
@@ -749,31 +799,11 @@ export class Select extends FormAssociatedElement {
 			this.clearSelections();
 		});
 
-		this.list.addEventListener('wje-options:load', (e) => {
-			this.selectedOptions.forEach((option) => {
-				this.getAllOptions().forEach((el) => {
-					if (el.value === option.value) {
-						el.selected = true;
-					}
-				});
-			});
-
-			// Ensure values from the value attribute are (re)selected after lazy-loaded pages
-			const attrValue = this.getAttribute('value')?.split(' ') || [];
-
-			attrValue.forEach(val => {
-				const existingOption = Array.from(this.getAllOptions()).find(el => el.value === val);
-				if (existingOption) {
-					existingOption.selected = true;
-				}
-			});
-
-			this.selectedOptions = this.#getSelectedOptions();
-			this.selections(true);
-
-			this.list.scrollTo(0, 0);
-			event.dispatchCustomEvent(this.popup, 'wje-popup:content-ready'); // Notify that the content is ready
-		});
+		// Listen for <wje-options> lazy/non-lazy load events on the select itself.
+		// Using the host element instead of this.list ensures the handler survives
+		// internal refreshes (e.g. toggling the disabled attribute).
+		this.removeEventListener('wje-options:load', this.#onOptionsLoad);
+		this.addEventListener('wje-options:load', this.#onOptionsLoad);
 
 		// skontrolujeme ci ma select atribut find
 		if (this.hasAttribute('find') && this.findEl instanceof HTMLElement) {
@@ -1104,7 +1134,6 @@ export class Select extends FormAssociatedElement {
 	optionCheckSlot(option) {
 		let icon = this.querySelector('template')?.content.querySelector(`[slot="check"]`);
 		if (!icon) {
-			console.warn(`Icon with slot "check" was not found.`);
 			return;
 		}
 

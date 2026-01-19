@@ -20,12 +20,10 @@ export default {
   testRunnerHtml: (testFramework) => `
     <html lang="en-gb">
       <head>
-        <link rel="stylesheet" type="text/css" href="dist/light.css" />
-      
-        <link rel="stylesheet" href="dist/light.css" />
-        <link rel="stylesheet" href="dist/dark.css" />
-        <link rel="stylesheet" href="dist/styles.css" />
-        <link rel="stylesheet" href="demo/assets/css/demo.css" />
+        
+        <link type="text/css" href="dist/light.css" />
+        <link type="text/css" href="dist/dark.css" />
+        <link type="text/css" href="dist/styles.css" />
         
         <script>
           window.translations = new Map();

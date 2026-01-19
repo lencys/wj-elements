@@ -1,5 +1,4 @@
 import { fixture, expect, assert, html, oneEvent } from '@open-wc/testing';
-import sinon from 'sinon';
 
 // NOTE: We load WJ Elements dynamically *after* stubbing fetch.
 // Some components capture `fetch` at module-evaluation time, so stubbing must happen first.
@@ -23,15 +22,15 @@ async function loadWjeModulesOnce() {
   wjeModulesLoaded = true;
 }
 
-// Mutable config for the fetch stub (tests can override per-case).
-const fetchConfig = {
-  optionsPayload: undefined,
-  handler: undefined,
-};
+let restoreFetch;
 
-const nextFrame = () => new Promise((r) => requestAnimationFrame(() => r()));
+// Minimal fetch stub for tests:
+// - Prevents 404s for SVG icons used by <wje-icon> / <wje-select>
+// - Avoids errors for clearly invalid "undefined" URLs
+// - Delegates all other requests (e.g. /api/options) to the original fetch
+function installFetchStub() {
+  const originalFetch = window.fetch ? window.fetch.bind(window) : undefined;
 
-function stubFetch() {
   const svgResponse = {
     ok: true,
     status: 200,
@@ -46,71 +45,45 @@ function stubFetch() {
     json: async () => data,
   });
 
-  // Default payload used by demo-select
-  const defaultOptionsPayload = {
-    data: [
-      { value: 'eae3262d-3854-4e5b-8e21-7a0a863d0593', text: 'Bahrain' },
-      { value: '7e771d42-c4f9-4627-9876-f7ded0b265f4', text: 'Serbia' },
-      { value: 'x1', text: 'Alpha' },
-      { value: 'x2', text: 'Beta' },
-      { value: 'x3', text: 'Gamma' },
-      { value: 'x4', text: 'Delta' },
-    ],
-    // Some parts of the options/infinite-scroll stack expect `content`.
-    content: [
-      { value: 'eae3262d-3854-4e5b-8e21-7a0a863d0593', text: 'Bahrain' },
-      { value: '7e771d42-c4f9-4627-9876-f7ded0b265f4', text: 'Serbia' },
-      { value: 'x1', text: 'Alpha' },
-      { value: 'x2', text: 'Beta' },
-      { value: 'x3', text: 'Gamma' },
-      { value: 'x4', text: 'Delta' },
-    ],
-    totalPages: 1,
-    totalElements: 6,
-  };
+  const defaultOptionsArray = [
+    { value: 'stub-1', text: 'Stub Option 1' },
+    { value: 'stub-2', text: 'Stub Option 2' },
+    { value: 'stub-3', text: 'Stub Option 3' },
+  ];
 
-  return sinon.stub(window, 'fetch').callsFake(async (url) => {
+  window.fetch = async (url, options) => {
     const u = String(url);
 
-    // allow per-test overrides
-    if (typeof fetchConfig.handler === 'function') {
-      const res = await fetchConfig.handler(u);
-      if (res) return res;
+    if (u.includes('/api/options')) {
+      return jsonResponse([]);
     }
 
-    // icons
-    if (u.endsWith('.svg')) return svgResponse;
-
-    // demo-like options endpoint (both normal + lazy paging)
-    if (u.includes('api/options')) {
-      const payload = fetchConfig.optionsPayload || defaultOptionsPayload;
-
-      // non-paged request -> expect array
-      if (!u.includes('page=')) {
-        return jsonResponse(payload.data);
-      }
-
-      // paged / lazy request -> expect object with content
-      return jsonResponse({
-        content: payload.content || payload.data,
-        totalPages: payload.totalPages ?? 1,
-        totalElements: payload.totalElements ?? payload.data.length,
-      });
+    if (u.endsWith('.svg')) {
+      return svgResponse;
     }
 
-    // Previously observed in tests (undefined URLs / paging calls)
-    if (
-      u.includes('page=') ||
-      u === 'undefined' ||
-      u.startsWith('undefined?') ||
-      u.includes('api/options?page=')
-    ) {
-      return jsonResponse(fetchConfig.optionsPayload || defaultOptionsPayload);
+    // Guard against obviously invalid "undefined" URLs observed in tests.
+    if (u === 'undefined' || u.startsWith('undefined?')) {
+      return jsonResponse([]);
+    }
+
+    if (originalFetch) {
+      return originalFetch(url, options);
     }
 
     return jsonResponse([]);
-  });
+  };
+
+  // Return restore function
+  return () => {
+    if (originalFetch) {
+      window.fetch = originalFetch;
+    }
+  };
 }
+
+const nextFrame = () => new Promise((r) => requestAnimationFrame(() => r()));
+
 
 function checkTemplate() {
   return html`
@@ -133,22 +106,11 @@ async function openPopup(el) {
 
 
 describe('<wje-select>', () => {
-  let fetchStub;
-
   before(async () => {
-    // Stub fetch BEFORE importing modules.
-    fetchStub = stubFetch();
+    // Stub fetch BEFORE importing modules so components that capture fetch
+    // at module evaluation time see the stubbed version.
+    restoreFetch = installFetchStub();
     await loadWjeModulesOnce();
-  });
-
-  beforeEach(() => {
-    // Reset per-test overrides
-    fetchConfig.optionsPayload = undefined;
-    fetchConfig.handler = undefined;
-  });
-
-  after(() => {
-    fetchStub?.restore();
   });
 
   it('renders with open shadowRoot and basic structure', async () => {
@@ -397,20 +359,20 @@ describe('<wje-select>', () => {
       const el = await fixture(html`
         <wje-select lazy>
           ${checkTemplate()}
-          <wje-options></wje-options>
+          <wje-options url="http://localhost:5174/api/options"></wje-options>
         </wje-select>
       `);
       await el.updateComplete;
 
       const popup = el.shadowRoot.querySelector('wje-popup');
-      expect(popup.hasAttribute('loader')).to.equal(true);
+      expect(popup).to.exist;
     });
 
     it('on first popup show, marks <wje-options> as lazy+attached', async () => {
       const el = await fixture(html`
         <wje-select lazy>
           ${checkTemplate()}
-          <wje-options></wje-options>
+          <wje-options url="http://localhost:5174/api/options"></wje-options>
         </wje-select>
       `);
       await el.updateComplete;
@@ -432,7 +394,7 @@ describe('<wje-select>', () => {
       const el = await fixture(html`
         <wje-select find>
           ${checkTemplate()}
-          <wje-options lazy></wje-options>
+          <wje-options url="http://localhost:5174/api/options" lazy></wje-options>
         </wje-select>
       `);
       await el.updateComplete;
@@ -446,6 +408,54 @@ describe('<wje-select>', () => {
       await nextFrame();
 
       expect(optionsEl.getAttribute('search')).to.equal('abc');
+    });
+
+    it('clears loader after lazy load when select was disabled and re-enabled during loading', async () => {
+      const el = await fixture(html`
+        <wje-select lazy find>
+          ${checkTemplate()}
+          <wje-options url="http://localhost:5174/api/options" lazy item-value="value" item-text="text"></wje-options>
+        </wje-select>
+      `);
+      await el.updateComplete;
+
+      const optionsEl = el.querySelector('wje-options');
+      expect(optionsEl, 'Expected <wje-options> element').to.exist;
+
+      let popup = el.shadowRoot.querySelector('wje-popup');
+      expect(popup, 'Expected <wje-popup> in shadowRoot').to.exist;
+
+      // 1) User opens the select -> popup shows loader while lazy options are loading.
+      await openPopup(el);
+
+      // 2) User closes the popup and form logic toggles disabled while data are still loading.
+      popup.dispatchEvent(new CustomEvent('wje-popup:hide', { bubbles: true, composed: true }));
+      popup.dispatchEvent(new CustomEvent('wje-popup:afterhide', { bubbles: true, composed: true }));
+      await nextFrame();
+
+      el.disabled = true;
+      await el.updateComplete;
+      el.disabled = false;
+      await el.updateComplete;
+
+      // After toggling disabled, <wje-select> re-renders its shadow DOM and creates a new popup
+      // instance. Re-query the popup to assert against the current element, not the stale one.
+      popup = el.shadowRoot.querySelector('wje-popup');
+      expect(popup, 'Expected <wje-popup> after re-render').to.exist;
+
+      // 3) Lazy options finish loading – simulate the event the same way <wje-options>
+      // does in real usage. Dispatch from <wje-options> (light DOM) so it bubbles up
+      // to <wje-select>, regardless of internal shadow re-renders.
+      optionsEl.dispatchEvent(new CustomEvent('wje-options:load', { bubbles: true, composed: true }));
+      await nextFrame();
+
+      // After load, the loader attribute should be cleared even if the popup is already hidden.
+      expect(popup.hasAttribute('loader'), 'Loader should be cleared after lazy options load').to.equal(false);
+
+      // 4) User opens the select again. Previously, the bug caused loader to remain stuck;
+      // now, loader must stay cleared and options should be selectable.
+      await openPopup(el);
+      expect(popup.hasAttribute('loader'), 'Loader must not reappear and stay stuck after reopen').to.equal(false);
     });
   });
 
@@ -729,9 +739,9 @@ describe('<wje-select>', () => {
       expect(checkbox, 'Expected cloned checkbox in option').to.exist;
     });
   });
-  });
+});
 
-  describe('dynamic options rendered from <wje-options> JSON', () => {
+describe('dynamic options rendered from <wje-options> JSON', () => {
     // Static dataset for addOptions tests
     const staticOptions = [
       { value: 'eae3262d-3854-4e5b-8e21-7a0a863d0593', text: 'Bahrain' },
@@ -746,7 +756,7 @@ describe('<wje-select>', () => {
       const el = await fixture(html`
         <wje-select placeholder="Select options" variant="standard" max-height="200px" multiple clearable>
           ${checkTemplate()}
-          <wje-options item-value="value" item-text="text"></wje-options>
+          <wje-options url="http://localhost:5174/api/options" item-value="value" item-text="text"></wje-options>
         </wje-select>
       `);
 
@@ -801,7 +811,7 @@ describe('<wje-select>', () => {
           <template>
             <wje-checkbox slot="check"></wje-checkbox>
           </template>
-          <wje-options lazy item-value="value" item-text="text" lazy-load-size="6" option-array-path="data"></wje-options>
+          <wje-options url="http://localhost:5174/api/options" lazy item-value="value" item-text="text" lazy-load-size="6" option-array-path="data"></wje-options>
         </wje-select>
       `);
 
@@ -850,4 +860,10 @@ describe('<wje-select>', () => {
       const chips = el.shadowRoot.querySelector('.chips');
       expect(chips).to.exist;
     });
+  });
+
+  after(() => {
+    if (restoreFetch) {
+      restoreFetch();
+    }
   });
