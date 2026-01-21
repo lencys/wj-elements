@@ -12,6 +12,9 @@ import Checkbox from '../wje-checkbox/checkbox.js';
 import styles from './styles/styles.css?inline';
 
 export class Select extends FormAssociatedElement {
+	#addedOptions = [];
+	#htmlOptions = [];
+
 	constructor() {
 		super();
 		/**
@@ -87,74 +90,6 @@ export class Select extends FormAssociatedElement {
 		this._selectedOptions = [];
 	}
 
-	#addedOptions = [];
-
-	#htmlOptions = [];
-
-	/**
-	 * Handles lazy options load events coming from <wje-options>.
-	 * This is attached on the <wje-select> itself so it survives internal
-	 * re-renders and attribute-driven refreshes (e.g. toggling disabled).
-	 * @param {CustomEvent} e
-	 * @private
-	 */
-	#onOptionsLoad = (e) => {
-		const popup = this.popup || (this.shadowRoot && this.shadowRoot.querySelector('wje-popup'));
-
-		this.selectedOptions.forEach((option) => {
-			this.getAllOptions().forEach((el) => {
-				if (el.value === option.value) {
-					el.selected = true;
-				}
-			});
-		});
-
-		// Ensure values from the value attribute are (re)selected after lazy-loaded pages
-		const attrValue = this.getAttribute('value')?.split(' ') || [];
-
-		attrValue.forEach(val => {
-			const existingOption = Array.from(this.getAllOptions()).find(el => el.value === val);
-			if (existingOption) {
-				existingOption.selected = true;
-			}
-		});
-
-		this.selectedOptions = this.#getSelectedOptions();
-		this.selections(true);
-
-		this.list?.scrollTo(0, 0);
-
-		// Notify popup that its content is ready; popup will clear its own loader state.
-		if (popup) {
-			event.dispatchCustomEvent(popup, 'wje-popup:content-ready');
-		}
-	};
-
-	/**
-	 * Prevent closing the parent <wje-select>'s popup when a nested <wje-dropdown>
-	 * menu item is clicked. Closes only the dropdown that owns the clicked item.
-	 * This captures the event at the document level (useCapture=true) so it can
-	 * stop the global outside-click logic that would otherwise hide the select's popup.
-	 */
-	#onMenuItemClickCapture = (e) => {
-		const target = /** @type {HTMLElement} */(e.target);
-		if (!target || !target.closest) return;
-
-		// Run only for clicks inside a dropdown menu item
-		const menuItem = target.closest('wje-menu-item');
-		if (!menuItem) return;
-
-		const dropdown = target.closest('wje-dropdown');
-		if (dropdown && typeof dropdown.hide === 'function') {
-			// Close only the dropdown; keep the select's popup open
-			dropdown.hide();
-		}
-
-		// Block bubbling to document-level outside-click handlers that
-		// might close <wje-popup> used by <wje-select>
-		e.stopPropagation();
-	};
-
 	/**
 	 * An object representing component dependencies with their respective classes.
 	 * Each property in the object maps a custom component name (as a string key)
@@ -189,24 +124,33 @@ export class Select extends FormAssociatedElement {
 	 * split into an array by spaces) or an array of values.
 	 */
 	set value(value) {
+		const originalValue = value;
 		const formData = new FormData();
 
 		if (value) {
 			let data = value;
+			let dataString = value;
 
 			if (!Array.isArray(data)) {
 				data = data.split(' ');
+			} else {
+				dataString = data.join(' ');
 			}
+
 			data.forEach(v => {
 				formData.append(this.name, v)
 			});
+
 			value = formData;
 
 			this._value = data;
+
+			this.setAttribute('value', dataString);
 		} else {
 			formData.delete(this.name);
 			value = formData;
 			this._value = [];
+			this.removeAttribute('value');
 		}
 		this.internals.setFormValue(value);
 	}
@@ -324,7 +268,7 @@ export class Select extends FormAssociatedElement {
 
 			// inputs nemusia existovať ešte pred draw()
 			this.input?.setAttribute('readonly', '');
-			this.displayInput?.setAttribute('disabled', '');
+			this.displayInput?.setAttribute('readonly', '');
 
 			// popup môže existovať, ak to toggle-uješ po renderi
 			this.popup?.setAttribute('disabled', '');
@@ -332,7 +276,7 @@ export class Select extends FormAssociatedElement {
 			this.removeAttribute('readonly');
 
 			this.input?.removeAttribute('readonly');
-			this.displayInput?.removeAttribute('disabled');
+			this.displayInput?.removeAttribute('readonly');
 
 			this.popup?.removeAttribute('disabled');
 		}
@@ -488,7 +432,7 @@ export class Select extends FormAssociatedElement {
 	 * @returns {Array<string>}
 	 */
 	static get observedAttributes() {
-		return ['active', 'value', 'disabled', 'readonly', 'multiple', 'label', 'placeholder', 'max-height', 'max-options', 'variant', 'placement'];
+		return ['active', 'disabled', 'readonly'];
 	}
 
 	/**
@@ -499,8 +443,17 @@ export class Select extends FormAssociatedElement {
 	}
 
 	beforeDraw() {
-		if(this.hasAttribute('value')) {
+		if (this.hasAttribute('value')) {
+			// If a value attribute is explicitly provided, respect it.
 			this.value = this.getAttribute('value');
+		} else {
+			// No explicit value – derive initial value from currently selected options.
+			const selectedOptions = this.#getSelectedOptions();
+
+			if (selectedOptions.length > 0) {
+				const values = selectedOptions.map((opt) => opt.value);
+				this.value = this.hasAttribute('multiple') ? values : values[0];
+			}
 		}
 	}
 
@@ -608,17 +561,11 @@ export class Select extends FormAssociatedElement {
 		popup.setAttribute('part', 'popup');
 		popup.setAttribute('offset', this.offset);
 
-		// const optionsElement = this.querySelector('wje-options');
-		// const hasLoadedOptions =
-		// 	optionsElement &&
-		// 	Array.isArray(optionsElement.loadedOptions) &&
-		// 	optionsElement.loadedOptions.length > 0;
-		//
-		// if ((this.lazy || optionsElement) && !hasLoadedOptions) {
-		// 	popup.setAttribute('loader', '');
-		// } else {
-		// 	popup.removeAttribute('loader');
-		// }
+		if ((this.lazy || this.querySelector('wje-options')) && !this._wasOppened) {
+			popup.setAttribute('loader', '');
+		} else {
+			popup.removeAttribute('loader');
+		}
 
 		if (this.disabled) {
 			popup.setAttribute('disabled', '');
@@ -716,12 +663,7 @@ export class Select extends FormAssociatedElement {
 		});
 
 		this.selectedOptions = this.#getSelectedOptions();
-
-		if (this.hasAttribute('value')) {
-			this.selectOptions(this.value, true);
-		} else if (this.selectedOptions.length) {
-			this.selections(true);
-		}
+		this.selectOptions(this.value, true);
 
 		if (this.lazy) {
 			event.addListener(this.popup, 'wje-popup:show', null, (e) => {
@@ -799,11 +741,31 @@ export class Select extends FormAssociatedElement {
 			this.clearSelections();
 		});
 
-		// Listen for <wje-options> lazy/non-lazy load events on the select itself.
-		// Using the host element instead of this.list ensures the handler survives
-		// internal refreshes (e.g. toggling the disabled attribute).
-		this.removeEventListener('wje-options:load', this.#onOptionsLoad);
-		this.addEventListener('wje-options:load', this.#onOptionsLoad);
+		this.list.addEventListener('wje-options:load', (e) => {
+			this.selectedOptions.forEach((option) => {
+				this.getAllOptions().forEach((el) => {
+					if (el.value === option.value) {
+						el.selected = true;
+					}
+				});
+			});
+
+			// Ensure values from the value attribute are (re)selected after lazy-loaded pages
+			const attrValue = this.getAttribute('value')?.split(' ') || [];
+
+			attrValue.forEach(val => {
+				const existingOption = Array.from(this.getAllOptions()).find(el => el.value === val);
+				if (existingOption) {
+					existingOption.selected = true;
+				}
+			});
+
+			this.selectedOptions = this.#getSelectedOptions();
+			this.selections(true);
+
+			this.list.scrollTo(0, 0);
+			event.dispatchCustomEvent(this.popup, 'wje-popup:content-ready'); // Notify that the content is ready
+		});
 
 		// skontrolujeme ci ma select atribut find
 		if (this.hasAttribute('find') && this.findEl instanceof HTMLElement) {
@@ -904,6 +866,8 @@ export class Select extends FormAssociatedElement {
 					this.counter();
 				}
 			}
+
+			this.getAllOptions().forEach((o) => this.#syncOptionCheckbox(o));
 		} else {
 			const option = options?.at(0);
 
@@ -991,7 +955,7 @@ export class Select extends FormAssociatedElement {
 	getChip(option) {
 		let chip = document.createElement('wje-chip');
 		chip.size = 'small';
-		chip.removable = true;
+		chip.removable = !this.readonly;
 		chip.round = true;
 		chip.addEventListener('wje:chip-remove', this.removeChip);
 		chip.option = option;
@@ -1100,13 +1064,21 @@ export class Select extends FormAssociatedElement {
 	selectOption(value, silent = false) {
 		if (!value) return;
 
-		let option = this.querySelector(`wje-option[value="${value}"]`);
+		const option = this.querySelector(`wje-option[value="${value}"]`);
+		if (!option) return;
 
-		if (option) {
+		if (silent) {
+			if (!option.hasAttribute('selected')) {
+				option.selected = true;
+			}
+			this.selectedOptions = this.#getSelectedOptions();
+		} else {
 			this.processClickedOption(option, this.hasAttribute('multiple'));
 		}
 
-		if (this.drawingStatus > this.drawingStatuses.START) this.selections(silent);
+		if (this.drawingStatus > this.drawingStatuses.START) {
+			this.selections(silent);
+		}
 	}
 
 	/**
@@ -1128,16 +1100,40 @@ export class Select extends FormAssociatedElement {
 
 	/**
 	 * Clones and appends an icon with the "check" slot to the specified option element.
+	 * If the option already contains a custom element with slot="check" (e.g. <wje-status slot="check">),
+	 * it is left untouched and no template icon is added.
 	 * @param {HTMLElement} option The target HTML element to which the cloned "check" icon will be appended.
 	 * @returns {void} This method does not return a value, but it modifies the DOM by appending a cloned "check" icon to the provided option element.
 	 */
 	optionCheckSlot(option) {
-		let icon = this.querySelector('template')?.content.querySelector(`[slot="check"]`);
+		let existingCheckSlot = option.querySelector('[slot="check"]');
+
+		if (existingCheckSlot && existingCheckSlot.tagName !== 'WJE-CHECKBOX') {
+			return;
+		}
+
+		if (existingCheckSlot && existingCheckSlot.tagName === 'WJE-CHECKBOX') {
+			const isSelectedExisting = option.hasAttribute('selected');
+
+			// zosúladenie stavu
+			existingCheckSlot.checked = isSelectedExisting;
+			if (isSelectedExisting) {
+				existingCheckSlot.setAttribute('checked', '');
+			} else {
+				existingCheckSlot.removeAttribute('checked');
+			}
+
+			return;
+		}
+
+		let icon = this.querySelector('template')?.content.querySelector('[slot="check"]');
 		if (!icon) {
+			console.warn('Icon with slot "check" was not found.');
 			return;
 		}
 
 		let iconClone = icon.cloneNode(true);
+
 		option.append(iconClone);
 	}
 
@@ -1215,5 +1211,39 @@ export class Select extends FormAssociatedElement {
 
 	disconnectedCallback() {
 		document.removeEventListener('mousedown', this.#onMenuItemClickCapture, true);
+	}
+
+	/**
+	 * Prevent closing the parent <wje-select>'s popup when a nested <wje-dropdown>
+	 * menu item is clicked. Closes only the dropdown that owns the clicked item.
+	 * This captures the event at the document level (useCapture=true) so it can
+	 * stop the global outside-click logic that would otherwise hide the select's popup.
+	 */
+	#onMenuItemClickCapture = (e) => {
+		const target = (e.target);
+		if (!target || !target.closest) return;
+
+		const menuItem = target.closest('wje-menu-item');
+		if (!menuItem) return;
+
+		const dropdown = target.closest('wje-dropdown');
+		if (dropdown && typeof dropdown.hide === 'function') {
+			dropdown.hide();
+		}
+
+		e.stopPropagation();
+	}
+
+	#syncOptionCheckbox(option) {
+		const checkbox = option.querySelector('wje-checkbox[slot="check"]');
+		if (!checkbox) return;
+
+		const isSelected = option.hasAttribute('selected');
+		checkbox.checked = isSelected;
+		if (isSelected) {
+			checkbox.setAttribute('checked', '');
+		} else {
+			checkbox.removeAttribute('checked');
+		}
 	}
 }

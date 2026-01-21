@@ -370,7 +370,7 @@ template.innerHTML = `
         		<wje-checkbox slot="check"></wje-checkbox>
 					</template>
           <wje-option value="option-1">Option 1</wje-option>
-          <wje-option value="option-2">
+          <wje-option value="option-2" selected>
             Option 2
             <wje-icon name="heart" slot="end"></wje-icon>
           </wje-option>

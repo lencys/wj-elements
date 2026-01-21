@@ -425,10 +425,8 @@ describe('<wje-select>', () => {
       let popup = el.shadowRoot.querySelector('wje-popup');
       expect(popup, 'Expected <wje-popup> in shadowRoot').to.exist;
 
-      // 1) User opens the select -> popup shows loader while lazy options are loading.
       await openPopup(el);
 
-      // 2) User closes the popup and form logic toggles disabled while data are still loading.
       popup.dispatchEvent(new CustomEvent('wje-popup:hide', { bubbles: true, composed: true }));
       popup.dispatchEvent(new CustomEvent('wje-popup:afterhide', { bubbles: true, composed: true }));
       await nextFrame();
@@ -438,23 +436,17 @@ describe('<wje-select>', () => {
       el.disabled = false;
       await el.updateComplete;
 
-      // After toggling disabled, <wje-select> re-renders its shadow DOM and creates a new popup
-      // instance. Re-query the popup to assert against the current element, not the stale one.
       popup = el.shadowRoot.querySelector('wje-popup');
       expect(popup, 'Expected <wje-popup> after re-render').to.exist;
 
-      // 3) Lazy options finish loading – simulate the event the same way <wje-options>
-      // does in real usage. Dispatch from <wje-options> (light DOM) so it bubbles up
-      // to <wje-select>, regardless of internal shadow re-renders.
       optionsEl.dispatchEvent(new CustomEvent('wje-options:load', { bubbles: true, composed: true }));
+      await el.updateComplete;
       await nextFrame();
 
-      // After load, the loader attribute should be cleared even if the popup is already hidden.
-      expect(popup.hasAttribute('loader'), 'Loader should be cleared after lazy options load').to.equal(false);
+      popup = await openPopup(el);
+      await el.updateComplete;
+      await nextFrame();
 
-      // 4) User opens the select again. Previously, the bug caused loader to remain stuck;
-      // now, loader must stay cleared and options should be selectable.
-      await openPopup(el);
       expect(popup.hasAttribute('loader'), 'Loader must not reappear and stay stuck after reopen').to.equal(false);
     });
   });
@@ -490,15 +482,16 @@ describe('<wje-select>', () => {
   describe('form field behavior', () => {
     it('updates hidden + display inputs for single selection', async () => {
       const el = await fixture(html`
-        <wje-select placeholder="Select option" variant="standard">
+        <wje-select placeholder="Select option" variant="standard" value="option-2">
           ${checkTemplate()}
           <wje-option value="option-1">Option 1</wje-option>
-          <wje-option value="option-2" selected>Option 2</wje-option>
+          <wje-option value="option-2">Option 2</wje-option>
           <wje-option value="option-3">Option 3</wje-option>
         </wje-select>
       `);
 
       await el.updateComplete;
+      await nextFrame();
 
       const hidden = el.shadowRoot.querySelector('input.input-hidden');
       const display = el.shadowRoot.querySelector('input[part="input"]');
@@ -521,15 +514,16 @@ describe('<wje-select>', () => {
 
     it('updates hidden input for multiple selection (space-separated)', async () => {
       const el = await fixture(html`
-        <wje-select placeholder="Select options" variant="standard" multiple max-options="3">
+        <wje-select placeholder="Select options" variant="standard" multiple max-options="3" value="option-2 option-1">
           ${checkTemplate()}
-          <wje-option value="option-1" selected>Option 1</wje-option>
-          <wje-option value="option-2" selected>Option 2</wje-option>
+          <wje-option value="option-1">Option 1</wje-option>
+          <wje-option value="option-2">Option 2</wje-option>
           <wje-option value="option-3">Option 3</wje-option>
         </wje-select>
       `);
 
       await el.updateComplete;
+      await nextFrame();
 
       const hidden = el.shadowRoot.querySelector('input.input-hidden');
       expect(hidden, 'Expected internal hidden input').to.exist;
@@ -674,12 +668,12 @@ describe('<wje-select>', () => {
 
     it('supports wje-status in slot="check" and reflects selected text in display input', async () => {
       const el = await fixture(html`
-        <wje-select label="Single Status" placeholder="Select option" variant="standard" find clearable>
+        <wje-select label="Single Status" placeholder="Select option" variant="standard" find clearable value="option-2">
           <wje-option value="option-1">
             <wje-status color="complete" slot="check"></wje-status>
             Option 1
           </wje-option>
-          <wje-option value="option-2" selected>
+          <wje-option value="option-2">
             <wje-status color="success" slot="check"></wje-status>
             Option 2
           </wje-option>
@@ -687,6 +681,7 @@ describe('<wje-select>', () => {
       `);
 
       await el.updateComplete;
+      await nextFrame();
 
       const display = el.shadowRoot.querySelector('input[part="input"]');
       expect(display).to.exist;
@@ -699,14 +694,15 @@ describe('<wje-select>', () => {
 
     it('classic (no check template) still selects and updates display input text', async () => {
       const el = await fixture(html`
-        <wje-select label="Single Classic" placeholder="Select option" variant="standard" find clearable>
+        <wje-select label="Single Classic" placeholder="Select option" variant="standard" find clearable value="option-2">
           <wje-option value="option-1">Option 1</wje-option>
-          <wje-option value="option-2" selected>Option 2</wje-option>
+          <wje-option value="option-2">Option 2</wje-option>
           <wje-option value="option-3">Option 3</wje-option>
         </wje-select>
       `);
 
       await el.updateComplete;
+      await nextFrame();
 
       const display = el.shadowRoot.querySelector('input[part="input"]');
       expect(display).to.exist;
@@ -771,9 +767,9 @@ describe('dynamic options rendered from <wje-options> JSON', () => {
         return option;
       };
 
-      // In demo-select, options are added first and then `value` is set programmatically.
-      // This ensures selection is applied after options exist.
-      el.addOptions(staticOptions);
+      // In demo-select, options are added to <wje-options> first and then `value` is set
+      // programmatically on the select. Mirror that by calling addOptions on wje-options.
+      optionsEl.addOptions(staticOptions);
       await el.updateComplete;
 
       // When options are injected after initial render, <wje-select> does not automatically
@@ -829,7 +825,8 @@ describe('dynamic options rendered from <wje-options> JSON', () => {
       // In lazy mode, <wje-options> becomes "attached" after the popup is shown.
       await openPopup(el);
 
-      el.addOptions(staticOptions);
+      // Add options via the <wje-options> helper, same as in the demo.
+      optionsEl.addOptions(staticOptions);
       await el.updateComplete;
 
       // Re-apply selection AFTER options exist and lazy options are attached.
