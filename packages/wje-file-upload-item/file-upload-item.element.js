@@ -114,7 +114,7 @@ export default class FileUploadItem extends WJElement {
 
             let progress = (+newValue / +this.size) * 100 || 0;
 
-            this.sliderEl.setAttribute('progress', Math.round(progress, 0));
+            this.progress =  Math.round(progress, 0);
         }
     }
 
