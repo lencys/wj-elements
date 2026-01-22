@@ -144,22 +144,27 @@ function makeServer() {
           });
 
           this.post('/upload', (schema, request) => {
-            let headers = request.requestHeaders;
-            let contentRange = headers['Content-Range'];
-            let [chunkRange, totalSize] = contentRange.split('/');
-            let [start, end] = chunkRange.split('-').map(Number);
-            totalSize = Number(totalSize);
+            const headers = request.requestHeaders || {};
+            // Mirage môže mať hlavičky s rôznym casingom
+            const contentRange = headers['Content-Range'] || headers['content-range'];
 
-            // Tu môžete simulovať aktualizáciu stavu nahrávania na serveri
-            // Napríklad by ste mohli ukladať pokrok v nejakej internej štruktúre
-            // Ak je to posledný chunk, odošlite správu o dokončení
-            if (end >= totalSize - 1) {
-              return new Response(200, {}, { message: 'Upload complete' });
-            } else {
-              // Možno by ste chceli vrátiť percentuálny pokrok
-              const progress = (end / totalSize) * 100;
-              return new Response(200, {}, { progress: progress, message: 'Chunk received' });
+            // Ak nemáme Content-Range, berieme to ako obyčajný (nechunkovaný) upload
+            if (!contentRange) {
+              return { message: 'Upload complete' };
             }
+
+            const [chunkRange, totalSizeRaw] = contentRange.split('/');
+            const [start, end] = chunkRange.split('-').map(Number);
+            const totalSize = Number(totalSizeRaw);
+
+            // Ak je to posledný chunk, upload je dokončený
+            if (end >= totalSize - 1) {
+              return { message: 'Upload complete' };
+            }
+
+            // Inak vrátime info o priebehu nahrávania
+            const progress = (end / totalSize) * 100;
+            return { progress, message: 'Chunk received' };
           });
 
           this.passthrough();

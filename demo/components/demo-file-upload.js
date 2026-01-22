@@ -16,7 +16,7 @@ template.innerHTML = `
     </p>
     <div class="playground" style="padding-inline: 1rem;">
       <div class="content">
-        <wje-file-upload accepted-types="image/*">
+        <wje-file-upload>
           <p>Drag and drop files here</p>
         </wje-file-upload>
       </div>

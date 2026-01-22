@@ -1,7 +1,9 @@
 import { Localizer } from '../utils/localize.js';
+import { default as WJElement, event } from '../wje-element/element.js';
 import Button from '../wje-button/button.js';
-import { default as WJElement } from '../wje-element/element.js';
-import { getFileTypeIcon, isValidFileType, upload } from './service/service.js';
+import { isValidFileType } from '../utils/utils.js';
+import { getFileTypeIcon, upload } from './service/service.js';
+
 import styles from './styles/styles.css?inline';
 
 /**
@@ -58,7 +60,7 @@ export default class FileUpload extends WJElement {
      */
     get acceptedTypes() {
         const accepted = this.getAttribute('accepted-types');
-        return this.hasAttribute('accepted-types') ? accepted : '';
+        return this.hasAttribute('accepted-types') ? accepted : 'image/*';
     }
 
     /**
@@ -286,8 +288,8 @@ export default class FileUpload extends WJElement {
 
         let dragEventCounter = 0;
 
-        this.native.addEventListener('dragenter', (event) => {
-            event.preventDefault();
+        this.native.addEventListener('dragenter', (e) => {
+            e.preventDefault();
 
             if (dragEventCounter === 0) {
                 this.native.classList.add('highlight');
@@ -296,16 +298,16 @@ export default class FileUpload extends WJElement {
             dragEventCounter += 1;
         });
 
-        this.native.addEventListener('dragover', (event) => {
-            event.preventDefault();
+        this.native.addEventListener('dragover', (e) => {
+            e.preventDefault();
 
             if (dragEventCounter === 0) {
                 dragEventCounter = 1;
             }
         });
 
-        this.native.addEventListener('dragleave', (event) => {
-            event.preventDefault();
+        this.native.addEventListener('dragleave', (e) => {
+            e.preventDefault();
 
             dragEventCounter -= 1;
 
@@ -315,32 +317,47 @@ export default class FileUpload extends WJElement {
             }
         });
 
-        this.native.addEventListener('drop', (event) => {
+        this.native.addEventListener('drop', (e) => {
             event.preventDefault();
 
             dragEventCounter = 0;
             this.native.classList.remove('highlight');
         });
+
+        this.addEventListener('wje-file-upload-item:remove', (e) => {
+            const file = e.detail;
+
+            if (!(file instanceof File)) {
+                return;
+            }
+
+            let count = this.uploadedFiles.length;
+
+            this.uploadedFiles = this.uploadedFiles.filter((entry) => {
+                return entry?.file?.lastModified !== file.lastModified;
+            });
+
+            if(count !== this.uploadedFiles.length)
+                event.dispatchCustomEvent(this, 'wje-file-upload:file-removed', file);
+        });
     }
 
     /**
      * Method to handle form submission.
-     * @param {Event} event The form submission event.
+     * @param {Event} e The form submission event.
      */
-    handleSubmit(event) {
-        event.preventDefault();
-
-        // TODO: TU TREBA PRIDAT ZOBRAZENIE SUBORU A JEHO PROCESSU
+    handleSubmit(e) {
+        e.preventDefault();
 
         this.addFilesToQueue(this.fileInput.files);
     }
 
     /**
      * Method to handle file drop event.
-     * @param {Event} event The file drop event object.
+     * @param {Event} e The file drop event object.
      */
-    handleDrop = (event) => {
-        const fileList = event.dataTransfer.files;
+    handleDrop = (e) => {
+        const fileList = e.dataTransfer.files;
 
         this.resetFormState();
 
@@ -349,14 +366,16 @@ export default class FileUpload extends WJElement {
 
     /**
      * Method to handle file input change event.
-     * @param {Event} event The file input change event object.
+     * @param {Event} e The file input change event object.
      */
-    handleInputChange = (event) => {
+    handleInputChange = (e) => {
         this.resetFormState();
 
         try {
-            this.handleSubmit(event);
-        } catch (err) {}
+            this.handleSubmit(e);
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     /**
@@ -364,26 +383,28 @@ export default class FileUpload extends WJElement {
      * @param files
      */
     addFilesToQueue(files) {
-        if (this.maxFiles && files.length > this.maxFiles) {
-            this.dispatchEvent(
-              new CustomEvent('file-upload:error', {
-                  detail: {
-                      type: 'max-files-exceeded',
-                      max: this.maxFiles,
-                      received: files.length,
-                  },
-                  bubbles: true,
-                  composed: true,
-              })
-            );
-            return; // stop processing
+        const currentCount = (Array.isArray(this.uploadedFiles) ? this.uploadedFiles.length : 0) + (Array.isArray(this._queuedFiles) ? this._queuedFiles.length : 0);
+        const newTotal = currentCount + files.length;
+
+        if (this.maxFiles && newTotal > this.maxFiles) {
+            const detail = {
+                code: 'MAX-FILES-EXCEEDED',
+                files,
+                maxFiles: this.maxFiles,
+                currentCount,
+                attemptedToAdd: files.length,
+                allowedRemaining: Math.max(this.maxFiles - currentCount, 0),
+            };
+
+            event.dispatchCustomEvent(this, 'wje-file-upload:error', detail);
+
+            return;
         }
 
-        this._queuedFiles = [...files];
+        this._queuedFiles = [...(this._queuedFiles || []), ...files];
 
-        this.dispatchEvent(
-            new CustomEvent('file-upload:files-added', { detail: files, bubbles: true, composed: true })
-        );
+        event.dispatchCustomEvent(this, 'wje-file-upload:files-added', files);
+
         this.onAddedFiles?.();
 
         if (this.autoProcessFiles) {
@@ -409,15 +430,12 @@ export default class FileUpload extends WJElement {
                 });
             }, Promise.resolve())
             .then(() => {
-                this.dispatchEvent(
-                    new CustomEvent('file-upload:all-files-uploaded', {
-                        detail: this.uploadedFiles,
-                        bubbles: true,
-                        composed: true,
-                    })
-                );
+                event.dispatchCustomEvent(this, 'wje-file-upload:files-uploaded', this.uploadedFiles);
+
                 this.onAllFilesUploaded?.();
                 this._queuedFiles = [];
+            }).catch((err) => {
+                event.dispatchCustomEvent(this,'wje-file-upload:error', err);
             });
     }
 
@@ -432,10 +450,9 @@ export default class FileUpload extends WJElement {
             let preview;
 
             let reader = new FileReader();
-            reader.onload = (e) => {
-                this.dispatchEvent(
-                    new CustomEvent('file-upload:upload-started', { detail: file, bubbles: true, composed: true })
-                );
+            reader.onload = () => {
+                event.dispatchCustomEvent(this, 'wje-file-upload:started', file);
+
                 this.onUploadStarted?.(file);
 
                 preview = this.createPreview(file, reader);
@@ -444,17 +461,11 @@ export default class FileUpload extends WJElement {
                 this.uploadFunction(file, preview).then((res) => {
                     res.item = preview;
 
-                    console.log(res);
+                    event.dispatchCustomEvent(this, 'wje-file-upload:file-uploaded', res);
 
-                    this.dispatchEvent(
-                        new CustomEvent('file-upload:upladed-file-complete', {
-                            detail: res,
-                            bubbles: true,
-                            composed: true,
-                        })
-                    );
                     this.onUploadedFileComplete?.(res);
-                    this.uploadedFiles.push(res.data);
+
+                    this.uploadedFiles.push(res);
 
                     resolve(res);
                 });
@@ -476,8 +487,8 @@ export default class FileUpload extends WJElement {
         preview.setAttribute('name', file.name);
         preview.setAttribute('size', file.size);
         preview.setAttribute('uploaded', '0');
-        preview.setAttribute('progress', '0');
         preview.innerHTML = `<wje-icon slot="img" name="${getFileTypeIcon(file.type.split('/')[1])}" size="large"></wje-icon>`;
+        preview.data = file;
 
         return preview;
     }
@@ -502,14 +513,23 @@ export default class FileUpload extends WJElement {
      */
     assertFilesValid(file) {
         const { name: fileName, size: fileSize } = file;
+
         if (!isValidFileType(file, this.acceptedTypes)) {
-            throw new Error(`❌ FILE: "${fileName}" Valid file types are: "${this.acceptedTypes}"`);
+            const err = new Error('');
+            err.code = 'INVALID-FILE-TYPE';
+            err.file = file;
+            err.acceptedTypes = this.acceptedTypes;
+
+            throw err;
         }
 
         if (fileSize > this.maxFileSize) {
-            throw new Error(
-                `❌ File "${fileName}" could not be uploaded. Only images up to ${this.maxFileSize} MB are allowed. Nie je to ${fileSize}`
-            );
+            const err = new Error('');
+            err.code = 'FILE-TOO-LARGE';
+            err.file = file;
+            err.maxFileSize = this.maxFileSize;
+
+            throw err;
         }
     }
 

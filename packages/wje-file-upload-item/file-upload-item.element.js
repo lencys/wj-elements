@@ -1,6 +1,6 @@
 import { Localizer } from '../utils/localize.js';
 import Button from '../wje-button/button.js';
-import { default as WJElement } from '../wje-element/element.js';
+import { default as WJElement, event } from '../wje-element/element.js';
 import FormatDigital from '../wje-format-digital/format-digital.js';
 import Icon from '../wje-icon/icon.js';
 import Slider from '../wje-slider/slider.js';
@@ -214,6 +214,8 @@ export default class FileUploadItem extends WJElement {
      * Handles the delete action.
      */
     onDelete = () => {
+        event.dispatchCustomEvent(this, 'wje-file-upload-item:remove', this.data);
+
         this.remove();
     };
 }
