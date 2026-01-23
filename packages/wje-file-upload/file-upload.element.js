@@ -192,7 +192,7 @@ export default class FileUpload extends WJElement {
      * @returns {number} The maximum number of files allowed.
      */
     get maxFiles() {
-        return parseInt(this.getAttribute('max-files')) || 1;
+        return parseInt(this.getAttribute('max-files')) || 10;
     }
 
     className = 'FileUpload';
@@ -435,6 +435,8 @@ export default class FileUpload extends WJElement {
                 this.onAllFilesUploaded?.();
                 this._queuedFiles = [];
             }).catch((err) => {
+                this._queuedFiles = this._queuedFiles.filter((file) => file !== err.file);
+
                 event.dispatchCustomEvent(this,'wje-file-upload:error', err);
             });
     }
