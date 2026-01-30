@@ -4,7 +4,7 @@
 
 :host,
 .wje-theme-dark,
-.dark
+.dark,
 [data-theme=dark] {
     color-scheme: dark;
 
