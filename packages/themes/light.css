@@ -5,7 +5,8 @@
 :root,
 :host,
 .wje-theme-light,
-.light {
+.light
+[data-theme=light] {
     * {
         box-sizing: border-box !important;
     }
