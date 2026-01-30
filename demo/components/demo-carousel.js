@@ -34,6 +34,39 @@ template.innerHTML = `
       </div>
     </div>
 
+    <!-- CUSTOM BUTTON -->
+
+    <h2>Custom Button</h2>
+    <p class="description">
+      Rovnaká konfigurácia ako <strong>Basic</strong>, ale navigačné šípky sú definované priamo v light DOMe
+      cez sloty <span class="tok attr">slot="prev"</span> a <span class="tok attr">slot="next"</span>.
+      <span class="tok tag">&lt;wje-carousel&gt;</span> automaticky použije tieto vlastné tlačidlá namiesto
+      defaultných, pričom zachová plnú funkcionalitu navigácie
+      (<span class="tok attr">navigation</span>).
+      Tento prístup umožňuje úplnú kontrolu nad vzhľadom, ikonami a správaním navigačných prvkov bez potreby
+      zásahu do vnútornej implementácie komponentu.
+    </p>
+    <div class="playground" style="padding-inline: 2rem;">
+      <div class="content">
+        <wje-carousel pagination navigation>
+          <wje-button part="previous-button" fill="solid" slot="prev" class="prev"><wje-icon name="chevron-left" size="large"></wje-icon></wje-button>
+          <wje-button part="next-button" fill="solid" slot="next" class="next"><wje-icon name="chevron-right" size="large"></wje-icon></wje-button>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=1"></wje-img>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=2"></wje-img>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=3"></wje-img>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <wje-img src="https://picsum.photos/500/375?i=4"></wje-img>
+          </wje-carousel-item>
+        </wje-carousel>
+      </div>
+    </div>
+    
     <!-- NO LOOP -->
 
     <h2>No Loop</h2>

@@ -87,7 +87,6 @@
 
 .wje-skeleton-circle {
   display: block;
-  /* Take remaining width in flex row (e.g. 40% if sibling is w-60) */
   flex: 1 1 0;
   max-width: 100%;
   aspect-ratio: 1 / 1;
@@ -98,7 +97,7 @@
   display: block;
   width: 100%;
   height: 150px;
-  border-radius: 8px;
+  border-radius: var(--wje-skeleton-radius);
 }
 
 /* Shimmer layer */

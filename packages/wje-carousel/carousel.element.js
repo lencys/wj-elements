@@ -145,11 +145,24 @@ export default class Carousel extends WJElement {
         native.append(wrapper);
 
         if (this.navigation) {
-            this.prevButton = this.createPreviousButton();
-            this.nextButton = this.createNextButton();
+            let existingPrev = this.querySelector('[slot="prev"]');
+            let existingNext = this.querySelector('[slot="next"]');
 
-            this.append(this.prevButton);
-            this.append(this.nextButton);
+            this.prevButton = existingPrev || this.createPreviousButton();
+            this.nextButton = existingNext || this.createNextButton();
+
+            if (this.prevButton && !this.prevButton.dataset.wjeCarouselNavBound) {
+                this.prevButton.addEventListener('click', () => this.previousSlide());
+                this.prevButton.dataset.wjeCarouselNavBound = 'true';
+            }
+
+            if (this.nextButton && !this.nextButton.dataset.wjeCarouselNavBound) {
+                this.nextButton.addEventListener('click', () => this.nextSlide());
+                this.nextButton.dataset.wjeCarouselNavBound = 'true';
+            }
+
+            if (!existingPrev) this.append(this.prevButton);
+            if (!existingNext) this.append(this.nextButton);
 
             wrapper.append(slotPrev);
             wrapper.append(slotNext);

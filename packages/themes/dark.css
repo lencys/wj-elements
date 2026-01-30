@@ -136,6 +136,13 @@
     --wje-color-contrast-11: hsla(0, 0%, 100%, 1);
 
     /*
+    [ Skeleton ]
+    */
+    --wje-skeleton-bg: var(--wje-color-contrast-3);
+    --wje-skeleton-bg-strong: var(--wje-color-contrast-4);
+    --wje-skeleton-highlight: rgba(255, 255, 255, 0.45);
+
+    /*
    [ Elements ]
    */
 
