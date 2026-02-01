@@ -57,6 +57,7 @@ export default defineConfig(({ mode }) => {
           'utils': './packages/utils/utils.js',
           'light': './packages/themes/light.css',
           'dark': './packages/themes/dark.css',
+          'skeleton': './packages/styles/skeleton.css',
           'styles': './packages/styles/styles.css',
           'master': './packages/index.js',
           'accordion': './packages/wje-accordion/accordion.js',

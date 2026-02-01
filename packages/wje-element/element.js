@@ -3,18 +3,9 @@ import { Permissions } from '../utils/permissions.js';
 import { WjElementUtils } from '../utils/element-utils.js';
 import { event } from '../utils/event.js';
 import { defaultStoreActions, store } from '../wje-store/store.js';
-import skeletonCss from '../styles/skeleton.css?inline';
 
 const template = document.createElement('template');
 template.innerHTML = ``;
-
-// Shared skeleton helpers for Shadow DOM (global CSS doesn't cross the shadow boundary)
-const wjSkeletonSheet = new CSSStyleSheet();
-try {
-	wjSkeletonSheet.replaceSync(skeletonCss);
-} catch (e) {
-	// ignore (older browsers / non-constructable stylesheets)
-}
 
 export default class WJElement extends HTMLElement {
 	#drawingStatus;
@@ -336,25 +327,21 @@ export default class WJElement extends HTMLElement {
 	/**
 	 * Retrieves the delay duration for the skeleton display, determining the value based on a hierarchy of overrides and defaults.
 	 * The method prioritizes in the following order:
-	 * 1. A finite number set as the `_wjSkeletonSlotClone` property.
+	 * 1. A finite number set as the `_wjSkeletonDelayOverride` property.
 	 * 2. A valid numeric value from the `skeleton-delay` attribute.
 	 * 3. The `skeletonDelayMs` property, if defined with a finite number.
 	 * 4. A default value of 150 if none of the above are set.
 	 * @returns {number} The delay in milliseconds before the skeleton is displayed.
 	 */
 	get skeletonDelay() {
-		// 1) property override
-		if (Number.isFinite(this._wjSkeletonSlotClone)) return this._wjSkeletonSlotClone;
+		if (Number.isFinite(this._wjSkeletonDelayOverride)) return this._wjSkeletonDelayOverride;
 
-		// 2) attribute override
 		const v = this.getAttribute('skeleton-delay');
-		const n = v == null ? NaN : Number(v);
+		const n = (v === null || v === undefined) ? NaN : Number(v);
 		if (Number.isFinite(n)) return n;
 
-		// 3) backward compat (if some components still set this)
 		if (Number.isFinite(this.skeletonDelayMs)) return this.skeletonDelayMs;
 
-		// 4) default
 		return 150;
 	}
 
@@ -367,56 +354,76 @@ export default class WJElement extends HTMLElement {
 	 * @returns {number} The minimum duration for the skeleton animation in milliseconds.
 	 */
 	get skeletonMinDuration() {
-		if (Number.isFinite(this._wjSkeletonSlotClone)) return this._wjSkeletonSlotClone;
+		if (Number.isFinite(this._wjSkeletonMinDurationOverride)) return this._wjSkeletonMinDurationOverride;
 
 		const v = this.getAttribute('skeleton-min-duration');
-		const n = v == null ? NaN : Number(v);
+		const n = (v === null || v === undefined) ? NaN : Number(v);
 		if (Number.isFinite(n)) return n;
 
-		// 3) default
 		return 300;
 	}
 
+	/**
+	 * Sets the minimum duration for the skeleton state. If the provided value is null, undefined, or an empty string,
+	 * the override for the minimum duration is removed.
+	 * @param {string|number|null|undefined} value The minimum duration to be set for the skeleton state. It can be a numeric value, string representation of a number, or null/undefined to reset the value.
+	 */
 	set skeletonMinDuration(value) {
-		// allow null/undefined to reset
 		if (value === null || value === undefined || value === '') {
-			delete this._wjSkeletonSlotClone;
+			delete this._wjSkeletonMinDurationOverride;
 			this.removeAttribute('skeleton-min-duration');
 			return;
 		}
 		const n = Number(value);
 		if (Number.isFinite(n)) {
-			this._wjSkeletonSlotClone = n;
+			this._wjSkeletonMinDurationOverride = n;
 			this.setAttribute('skeleton-min-duration', String(n));
 		}
 	}
 
-	// Public API: property-based control
+	/**
+	 * Sets or removes the 'skeleton' attribute based on the provided value.
+	 * @param {boolean} value A boolean value indicating whether to set ('true') or remove ('false') the 'skeleton' attribute.
+	 */
 	set skeleton(value) {
 		if (value) this.setAttribute('skeleton', '');
 		else this.removeAttribute('skeleton');
 	}
+
+	/**
+	 * Checks if the 'skeleton' attribute is present on the element.
+	 * @returns {boolean} True if the 'skeleton' attribute exists, false otherwise.
+	 */
 	get skeleton() {
 		return this.hasAttribute('skeleton');
 	}
 
+	/**
+	 * Sets the delay for the skeleton loading indicator.
+	 * @param {string|number|null|undefined} value The delay value to be set. Accepts a numerical value,
+	 * a string that can be converted to a number, null, or undefined.
+	 * If null or undefined is provided, the skeleton delay will be cleared.
+	 */
 	set skeletonDelay(value) {
-		// allow null/undefined to reset
 		if (value === null || value === undefined || value === '') {
-			delete this._wjSkeletonSlotClone;
+			delete this._wjSkeletonDelayOverride;
 			this.removeAttribute('skeleton-delay');
 			return;
 		}
 		const n = Number(value);
 		if (Number.isFinite(n)) {
-			this._wjSkeletonSlotClone = n;
+			this._wjSkeletonDelayOverride = n;
 			this.setAttribute('skeleton-delay', String(n));
 		}
 	}
+
+	/**
+	 * Retrieves the delay value used for skeleton loading.
+	 * @returns {number} The delay value for the skeleton loader.
+	 */
 	get skeletonDelayValue() {
 		return this.skeletonDelay;
 	}
-
 
 	/**
 	 * Lifecycle method invoked when the component is connected to the DOM.
@@ -459,10 +466,6 @@ export default class WJElement extends HTMLElement {
 			if (this.shadowRoot) {
 				const existing = this.shadowRoot.adoptedStyleSheets || [];
 				const next = [...existing];
-
-				if (!next.includes(wjSkeletonSheet) && wjSkeletonSheet.cssRules !== undefined) {
-					next.push(wjSkeletonSheet);
-				}
 
 				if (!next.includes(sheet)) next.push(sheet);
 
@@ -565,6 +568,12 @@ export default class WJElement extends HTMLElement {
 		}
 	}
 
+	/**
+	 * Triggers a refresh operation by initializing the update lifecycle and setting up promises
+	 * to track its completion or failure status. Marks the instance as not pristine and queues
+	 * an update.
+	 * @returns {void} Does not return a value.
+	 */
 	refresh() {
 		this.updateComplete = new Promise((resolve, reject) => {
 			this.finisPromise = resolve;
@@ -622,6 +631,10 @@ export default class WJElement extends HTMLElement {
 		}
 	}
 
+	/**
+	 * Stops the current render loop if it is running by canceling the requestAnimationFrame.
+	 * @returns {void} This method does not return a value.
+	 */
 	stopRenderLoop() {
 		if (this.rafId) {
 			cancelAnimationFrame(this.rafId);
@@ -630,33 +643,11 @@ export default class WJElement extends HTMLElement {
 	}
 
 	/**
-	 * Renders the component within the provided context.
-	 * @param context The rendering context, usually the element's shadow root or main DOM element.
-	 * @param appStore The global application store for managing state.
-	 * @param params Additional parameters or attributes for rendering the component.
-	 * @returns This implementation does not render anything and returns `null`.
-	 * @description
-	 * The `draw` method is responsible for rendering the component's content.
-	 * Override this method in subclasses to define custom rendering logic.
-	 * @example
-	 * class MyComponent extends WJElement {
-	 *   draw(context, appStore, params) {
-	 *     const div = document.createElement('div');
-	 *     div.textContent = 'Hello, world!';
-	 *     context.appendChild(div);
-	 *   }
-	 * }
-	 */
-	draw(context, appStore, params) {
-		return null;
-	}
-
-	/**
 	 * Displays the component's content, optionally forcing a re-render.
 	 * @param [force] Whether to force a re-render.
 	 * @returns A promise that resolves when the display is complete.
 	 */
-		display(force = false) {
+	display(force = false) {
 		this.template = this.constructor.customTemplate || document.createElement('template');
 
 		// Build the next context offscreen
@@ -681,33 +672,34 @@ export default class WJElement extends HTMLElement {
 		};
 
 		const buildSkeletonFragment = async () => {
-			// Prefer declarative skeleton in light DOM.
-			// NOTE: after the first render we may `replaceChildren()` on the host, which removes light DOM.
-			// Persist a clone so skeleton keeps working on subsequent refreshes.
 			const slotted = this.querySelector('[slot="skeleton"]');
+
 			if (slotted) {
-				this._wjSkeletonSlotClone = slotted.cloneNode(true);
+				if (this.hasShadowRoot) {
+					const frag = document.createDocumentFragment();
+					const slot = document.createElement('slot');
+					slot.name = 'skeleton';
+					frag.append(slot);
+					return frag;
+				}
+
 				const frag = document.createDocumentFragment();
-				frag.append(this._wjSkeletonSlotClone.cloneNode(true));
+				frag.append(slotted.cloneNode(true));
 				return frag;
 			}
 
-			// If light DOM was replaced by render, use the persisted clone
-			if (this._wjSkeletonSlotClone) {
-				const frag = document.createDocumentFragment();
-				frag.append(this._wjSkeletonSlotClone.cloneNode(true));
-				return frag;
-			}
-
-			// Fallback to hook
 			const frag = document.createDocumentFragment();
+
 			let skel = this.renderSkeleton?.(WjElementUtils.getAttributes(this));
+
 			if (skel instanceof Promise || skel?.constructor?.name === 'Promise') {
 				skel = await skel;
 			}
-			if (skel == null) return null;
+
+			if (skel === null || skel === undefined) return null;
 
 			let node;
+
 			if (skel instanceof HTMLElement || skel instanceof DocumentFragment) {
 				node = skel;
 			} else {
@@ -726,7 +718,6 @@ export default class WJElement extends HTMLElement {
 			const frag = await buildSkeletonFragment();
 			if (!frag) return;
 
-			// Ensure the host has a box to render into (custom elements default to display:inline)
 			try {
 				const cs = getComputedStyle(this);
 				if (cs.display === 'inline') this.style.display = 'block';
@@ -737,13 +728,6 @@ export default class WJElement extends HTMLElement {
 
 			// REPLACE mode only
 			if (this.hasShadowRoot) {
-				// Ensure skeleton styles are present in shadowRoot
-				if (this.shadowRoot) {
-					const existing = this.shadowRoot.adoptedStyleSheets || [];
-					if (!existing.includes(wjSkeletonSheet) && wjSkeletonSheet.cssRules !== undefined) {
-						this.shadowRoot.adoptedStyleSheets = [...existing, wjSkeletonSheet];
-					}
-				}
 				this.shadowRoot.replaceChildren(frag);
 			} else {
 				this.replaceChildren(frag);
@@ -761,13 +745,12 @@ export default class WJElement extends HTMLElement {
 			}
 		};
 
-		// If the element is hidden during initial render, allow skeleton to be visible
 		if (this.hasAttribute('skeleton') && this.style.visibility === 'hidden') {
 			this.style.visibility = this.#originalVisibility ?? 'visible';
 		}
 
-		// Schedule skeleton only after a short delay to avoid flashing on fast renders
 		let skeletonPlannedAt;
+
 		if (this.hasAttribute('skeleton')) {
 			skeletonPlannedAt = performance.now();
 			skeletonTimer = setTimeout(() => {
@@ -777,12 +760,10 @@ export default class WJElement extends HTMLElement {
 
 		return this.#resolveRender(nextContext, { skipAfterDraw: true })
 			.then(async () => {
-				// Real render finished; cancel pending skeleton
 				renderFinished = true;
 				clearSkeletonTimer();
 
 				if (skeletonShownAt === null) {
-					// Skeleton never shown (render was fast)
 					const elapsed = skeletonPlannedAt ? (performance.now() - skeletonPlannedAt) : 0;
 					this.dispatchEvent(new CustomEvent('wj:skeleton:skip', {
 						detail: { reason: 'render-finished-fast', elapsedMs: elapsed, delay: this.skeletonDelay },
@@ -805,7 +786,6 @@ export default class WJElement extends HTMLElement {
 					this.replaceChildren(nextContext);
 				}
 
-				// If skeleton was visible, it has just been removed by the swap
 				if (skeletonShownAt !== null) {
 					this.dispatchEvent(new CustomEvent('wj:skeleton:hide', {
 						detail: {
@@ -828,7 +808,6 @@ export default class WJElement extends HTMLElement {
 			.finally(() => {
 				renderFinished = true;
 				clearSkeletonTimer();
-				// If render failed, ensure skeleton timer is cleared and notify
 				if (!this.#isRendering) {
 					this.dispatchEvent(new CustomEvent('wj:skeleton:hide', {
 						detail: { reason: 'finally' },
@@ -905,7 +884,6 @@ export default class WJElement extends HTMLElement {
 	checkGetterSetter(obj, property) {
 		let descriptor = Object.getOwnPropertyDescriptor(obj, property);
 
-		// Check if the descriptor is found on the object itself
 		if (descriptor) {
 			return {
 				hasGetter: typeof descriptor.get === 'function' ? descriptor.get : null,
@@ -913,18 +891,19 @@ export default class WJElement extends HTMLElement {
 			};
 		}
 
-		// Otherwise, check the prototype chain
 		let proto = Object.getPrototypeOf(obj);
 		if (proto) {
 			return this.checkGetterSetter(proto, property);
 		}
 
-		// If the property doesn't exist at all
 		return { hasGetter: null, hasSetter: null };
 	}
 
 	/**
-	 * Sets up property accessors for the component's attributes.
+	 * Sets up accessors (getter and setter) for all attributes of the current object.
+	 * This method retrieves the attribute names, sanitizes them, and dynamically defines
+	 * property accessors for each attribute using `Object.defineProperty`.
+	 * @returns {void} This method does not return any value.
 	 */
 	setUpAccessors() {
 		let attrs = this.getAttributeNames();
