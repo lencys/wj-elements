@@ -4,8 +4,8 @@ export class LocalizerDefault {
     constructor(element) {
         this.element = element;
 
-        this.lang = this.element.lang || document.documentElement.lang || 'en-GB';
-        this.dir = this.element.dir || document.documentElement.dir || 'ltr';
+        this.lang = this.element?.lang || document.documentElement?.lang || 'en-GB';
+        this.dir = this.element?.dir || document.documentElement?.dir || 'ltr';
         this.currentLang = 'en-GB';
 
         this.setLanguage();
