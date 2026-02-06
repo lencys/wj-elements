@@ -288,7 +288,7 @@ export default class FileUpload extends WJElement {
 
         let dragEventCounter = 0;
 
-        this.native.addEventListener('dragenter', (e) => {
+        this.native.addEventListener('dragenter', (e) => {handleInputChange
             e.preventDefault();
 
             if (dragEventCounter === 0) {
@@ -369,6 +369,10 @@ export default class FileUpload extends WJElement {
      * @param {Event} e The file input change event object.
      */
     handleInputChange = (e) => {
+        const files = Array.from(e.target.files);
+
+        event.dispatchCustomEvent(this, 'wje-file-upload:files-selected', files);
+
         this.resetFormState();
 
         try {

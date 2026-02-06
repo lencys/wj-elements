@@ -324,7 +324,38 @@ describe('<wje-file-upload>', () => {
     expect(names).to.include('a.txt');
     expect(names).to.include('b.txt');
 
+
     expect(el._queuedFiles).to.deep.equal([]);
+  });
+
+  it('pri výbere súborov cez input vyhodí wje-file-upload:files-selected', async () => {
+    const el = await fixture(html`<wje-file-upload auto-process-files="false"></wje-file-upload>`);
+
+    const native = el.shadowRoot.querySelector('.native-file-upload');
+    expect(native).to.exist;
+
+    const input = native.querySelector('input[type="file"]');
+    expect(input).to.exist;
+
+    const f1 = new File(['a'], 'a.txt', { type: 'text/plain' });
+    const f2 = new File(['b'], 'b.txt', { type: 'text/plain' });
+
+    const selectedPromise = oneEventWithTimeout(el, 'wje-file-upload:files-selected');
+
+    // Simulujeme FileList na inpute (JSDOM nedovoľuje priamo nastaviť input.files)
+    Object.defineProperty(input, 'files', {
+      value: [f1, f2],
+      configurable: true,
+    });
+
+    input.dispatchEvent(new Event('change'));
+
+    const ev = await selectedPromise;
+
+    expect(ev).to.exist;
+    expect(ev.detail).to.have.length(2);
+    expect(ev.detail[0].name).to.equal('a.txt');
+    expect(ev.detail[1].name).to.equal('b.txt');
   });
 
   it('resetFormState vyčistí fileList slot wrapper', async () => {
