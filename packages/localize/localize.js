@@ -45,11 +45,11 @@ export class LocalizerDefault {
      * @returns {string} The translated string, adapted to the pluralization rules and count.
      */
     translatePlural(key, count = 0, type = 'cardinal') {
-        const plural = new Intl.PluralRules(this.lang, { type: type });
-
-        if (count !== undefined) key += '.' + plural.select(count);
-
-        return this.translate(key);
+        const plural = new Intl.PluralRules(this.currentLang, { type });
+        const k = `${key}.${plural.select(count)}`;
+        const t = this.translate(k);
+        if (t !== k) return t;
+        return this.translate(`${key}.other`);
     }
 
     /**
