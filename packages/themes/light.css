@@ -359,6 +359,7 @@
     --wje-chip-padding-inline: var(--wje-spacing-small);
 
     /* Dialog */
+    --wje-dialog-background: var(--wje-color-contrast-1);
     --wje-dialog-width: 600px;
     --wje-dialog-height: 600px;
     --wje-dialog-border-radius: var(--wje-border-radius-medium);
@@ -562,6 +563,9 @@
     --wje-orgchart-group-border-radius: var(--wje-border-radius-large);
     --wje-orgchart-group-height-line: 10px;
     --wje-orgchart-group-padding: 0.25rem 0;
+
+    /* Popup */
+    --wje-popup-overlay-background: var(--wje-color-contrast-0);
 
     /* Radio */
     --wje-radio-margin-top: 0;

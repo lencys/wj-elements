@@ -5,6 +5,7 @@
 :host {
     --wje-popup-top: auto;
     --wje-popup-left: auto;
+
     display: flex; /* zmenene z contents na flex kvoli breadcrumbs v a jeho trom bodkam */
 }
 
@@ -22,7 +23,7 @@
 .popup-loader.overlay {
     position: absolute;
     inset: 1px;
-    background: white;
+    background: var(--wje-popup-overlay-background);
     display: flex;
     align-items: center;
     justify-content: center;

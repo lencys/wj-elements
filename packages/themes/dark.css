@@ -165,6 +165,9 @@
     --wje-card-color: var(--wje-color-white);
     --wje-card-border-color: transparent;
 
+    /* Dialog */
+    --wje-dialog-background: var(--wje-color-contrast-1);
+
     /* Divider */
     --wje-divider-border-color: var(--wje-border-color);
 
@@ -231,6 +234,9 @@
     --wje-orgchart-item-highlight-border: 1px solid var(--wje-color-complete-3);
     --wje-orgchart-item-boss-border: 1px solid var(--wje-border-color);
     --wje-orgchart-item-hover-border: 1px solid var(--wje-color-danger-3);
+
+    /* Popup */
+    --wje-popup-overlay-background: var(--wje-color-contrast-0);
 
     /* Rate */
     --wje-rate-color: var(--wje-color-contrast-11);

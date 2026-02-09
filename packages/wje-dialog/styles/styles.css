@@ -135,6 +135,7 @@ dialog:focus-visible {
 
 :host {
     dialog {
+        background: var(--wje-dialog-background);
         box-sizing: border-box;
         transition: all 0.2s !important;
         width: var(--wje-dialog-width);
