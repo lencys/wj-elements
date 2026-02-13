@@ -21,14 +21,18 @@
             border-radius: var(--wje-tree-item-border-radius);
             background-color: var(--wje-tree-item-background);
             color: var(--wje-tree-item-color);
+
             &:hover {
                 background-color: var(--wje-tree-item-background-hover);
                 color: var(--wje-tree-item-color-hover);
             }
+
             .indent {
                 display: block;
                 width: 1em;
+                flex-shrink: 0;
             }
+
             .toggle {
                 font-size: var(--wje-tree-item-font-size);
                 display: flex;
@@ -39,20 +43,25 @@
                 height: var(--wje-tree-item-indent);
                 flex-shrink: 0;
             }
+
             wje-checkbox {
                 font-size: var(--wje-tree-item-font-size);
                 margin: 0;
             }
+
             .content {
                 font-size: var(--wje-tree-item-font-size);
             }
+
             slot {
                 display: flex;
                 align-items: center;
             }
+
             slot:not([name])::slotted(wje-icon) {
                 margin-right: var(--wje-spacing-2x-small);
             }
+
             slot[name='end'] {
                 margin-inline-start: auto;
             }

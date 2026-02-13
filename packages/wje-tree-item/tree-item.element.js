@@ -210,6 +210,7 @@ export default class TreeItem extends WJElement {
         if (this.selected) checkbox.setAttribute('checked', '');
 
         let label = document.createElement('div');
+        label.setAttribute('part', 'label');
         label.classList.add('content');
 
         let slotElement = document.createElement('slot');
