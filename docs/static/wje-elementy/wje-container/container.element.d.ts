@@ -1,0 +1,31 @@
+import { default as WJElement } from '../wje-element/element.js';
+/**
+ * @summary The Container class is a custom web component that extends WJElement. It is a simple container that can hold other elements or components.
+ * It provides a slot for adding child elements or components. The Container class also supports indentation through the `indent` property.
+ * The indentation is applied as a CSS variable (`--wje-container-indent`) which can be used in the styles of child elements or components.
+ * @documentation https://elements.webjet.sk/components/card-header
+ * @status stable
+ * @augments WJElement
+ * @slot - The slot for adding child elements or components.
+ * @cssproperty [--wje-container-indent] - The indentation of the container.
+ * @tag wje-container
+ */
+export default class Container extends WJElement {
+    /**
+     * Getter for the CSS stylesheet.
+     * @returns {object} The styles object.
+     * @static
+     */
+    static get cssStyleSheet(): object;
+    /**
+     * Getter for the observed attributes.
+     * @returns {Array} An empty array.
+     * @static
+     */
+    static get observedAttributes(): any[];
+    /**
+     * Draws the Container element.
+     * @returns {DocumentFragment} The created document fragment.
+     */
+    draw(): DocumentFragment;
+}

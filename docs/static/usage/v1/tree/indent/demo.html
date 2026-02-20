@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en-gb">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tree: Indentation</title>
+    <script src="../../common.js"></script>
+    <script type="module">
+      import { registerIconLibrary, getIconLibrary } from "/wje-elementy/wje-icon-library.js";
+
+      registerIconLibrary("default", {
+        resolver: (name, style) => `/wje-elementy/assets/img/icons/${style}/${name}.svg`
+      });
+    </script>
+    <script type="module" src="/wje-elementy/wje-master.js"></script>
+
+    <link rel="stylesheet" href="../../common.css" />
+    <link rel="stylesheet" href="/wje-elementy/light.css" />
+    <link rel="stylesheet" href="/wje-elementy/dark.css" />
+    <link rel="stylesheet" href="/wje-elementy/styles.css" />
+    <style>
+      .tree-indent {
+        --wje-tree-item-indent: 1.25rem;
+        --wje-tree-item-indent-guid-width: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content" style="display: flex; gap: 1rem">
+        <wje-tree class="tree-indent">
+          <wje-tree-item expanded>
+            Deciduous
+            <wje-tree-item>Birch</wje-tree-item>
+            <wje-tree-item expanded>
+              Maple
+              <wje-tree-item>Field maple</wje-tree-item>
+              <wje-tree-item>Red maple</wje-tree-item>
+              <wje-tree-item>Sugar maple</wje-tree-item>
+            </wje-tree-item>
+            <wje-tree-item>Oak</wje-tree-item>
+          </wje-tree-item>
+          <wje-tree-item>
+            Coniferous
+            <wje-tree-item>Cedar</wje-tree-item>
+            <wje-tree-item>Pine</wje-tree-item>
+            <wje-tree-item>Spruce</wje-tree-item>
+          </wje-tree-item>
+        </wje-tree>
+      </div>
+    </div>
+  </body>
+</html>
