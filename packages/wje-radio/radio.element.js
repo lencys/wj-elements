@@ -92,7 +92,21 @@ export default class Radio extends WJElement {
      * @returns {Array<string>}
      */
     static get observedAttributes() {
-        return ['checked'];
+        return ['checked', 'disabled', 'value'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        super.attributeChangedCallback?.(name, oldValue, newValue);
+        if (oldValue === newValue) return;
+        if (this.input) {
+            if (name === 'checked') this.input.checked = this.checked;
+            if (name === 'disabled') this.input.disabled = this.disabled;
+            if (name === 'value') {
+                this.input.id = this.value + '-radio';
+                this.input.name = this.value + '-radio';
+            }
+        }
+        if (['checked', 'disabled'].includes(name)) this.syncAria();
     }
 
     /**
@@ -100,6 +114,7 @@ export default class Radio extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -141,6 +156,18 @@ export default class Radio extends WJElement {
             event.addListener(this.input, 'input', 'wje-radio:change');
             // event.addListener(this, 'click', 'wje-radio:input');
         }
+        this.syncAria();
+    }
+
+    /**
+     * Syncs ARIA attributes on the host element.
+     */
+    syncAria() {
+        this.setAriaState({
+            role: 'radio',
+            checked: this.checked,
+            disabled: this.disabled,
+        });
     }
 
     /**

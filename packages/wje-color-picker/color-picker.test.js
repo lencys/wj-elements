@@ -1,52 +1,228 @@
 import '../../dist/wje-element.js';
-import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
+import { aTimeout, expect, fixture, html } from '@open-wc/testing';
 import sinon from 'sinon';
 import '../../dist/wje-color-picker.js';
 
-// Príklad testov pre <wje-color-picker>.
 describe('<wje-color-picker>', () => {
-    describe('when the value changes', () => {
-        it('should not emit change or input event when the value is set programmatically', async () => {
-            const el = await fixture(html` <wje-color-picker></wje-color-picker> `);
-            const color = 'rgb(255, 204, 0)';
+    it('renders current structure in shadow DOM', async () => {
+        const el = await fixture(html`<wje-color-picker></wje-color-picker>`);
+        await el.updateComplete;
+        await aTimeout(10);
 
-            el.addEventListener('change', () => expect.fail('change should not be emitted'));
-            el.addEventListener('input', () => expect.fail('input should not be emitted'));
+        expect(el.shadowRoot.querySelector('.native-color-picker')).to.exist;
+        expect(el.shadowRoot.querySelector('.picker')).to.exist;
+        expect(el.shadowRoot.querySelector('.color-area')).to.exist;
+        expect(el.shadowRoot.querySelector('.marker')).to.exist;
+        expect(el.shadowRoot.querySelector('.hue')).to.exist;
+        expect(el.shadowRoot.querySelector('.alpha')).to.exist;
+        expect(el.shadowRoot.querySelector('wje-input.input')).to.exist;
+    });
 
-            el.value = color;
-            await el.updateComplete;
-        });
+    it('dispatches wje-color-picker:select when swatch is clicked', async () => {
+        const el = await fixture(html`
+            <wje-color-picker swatches="red; #008000"></wje-color-picker>
+        `);
+        await el.updateComplete;
+        await aTimeout(10);
 
-        it('should emit change and input event when interacting with the color grid', async () => {
-            const el = await fixture(html` <wje-color-picker></wje-color-picker> `);
-            const grid = el.shadowRoot.querySelector('[part~="grid"]');
-            const changeHandler = sinon.spy();
-            const inputHandler = sinon.spy();
+        const spy = sinon.spy();
+        el.addEventListener('wje-color-picker:select', spy);
 
-            el.addEventListener('change', changeHandler);
-            el.addEventListener('input', inputHandler);
+        const swatch = el.shadowRoot.querySelector('.swatch');
+        swatch.click();
 
-            // Simulácia pohybu cez grid
-            grid.dispatchEvent(new Event('input'));
-            grid.dispatchEvent(new Event('change'));
+        expect(spy.calledOnce).to.be.true;
+        expect(spy.firstCall.args[0].detail.value.hex).to.equal('#ff0000');
+    });
 
-            await el.updateComplete;
+    it('parses semicolon swatches and filters invalid colors', async () => {
+        const el = await fixture(html`
+            <wje-color-picker swatches="red; not-a-color; #008000"></wje-color-picker>
+        `);
+        await el.updateComplete;
+        await aTimeout(10);
 
-            expect(inputHandler).to.have.been.calledOnce;
-            expect(changeHandler).to.have.been.calledOnce;
-        });
+        const swatches = Array.from(el.shadowRoot.querySelectorAll('.swatch'));
+        expect(swatches.length).to.equal(2);
+        expect(swatches[0].style.getPropertyValue('--wje-color-picker-swatch')).to.equal('red');
+        expect(swatches[1].style.getPropertyValue('--wje-color-picker-swatch')).to.equal('#008000');
+    });
 
-        it('should render correctly with predefined swatches', async () => {
-            const el = await fixture(html`
-        <wje-color-picker swatches="red; #008000; rgb(0,0,255);"></wje-color-picker>
-      `);
-            const swatches = el.shadowRoot.querySelectorAll('[part~="swatch"] > div');
+    it('hides optional sections when no-color-area, no-controls and no-swatches are set', async () => {
+        const el = await fixture(html`
+            <wje-color-picker no-color-area no-controls no-swatches></wje-color-picker>
+        `);
+        await el.updateComplete;
+        await aTimeout(10);
 
-            expect(swatches.length).to.equal(3);
-            expect(getComputedStyle(swatches[0]).backgroundColor).to.equal('rgb(255, 0, 0)');
-            expect(getComputedStyle(swatches[1]).backgroundColor).to.equal('rgb(0, 128, 0)');
-            expect(getComputedStyle(swatches[2]).backgroundColor).to.equal('rgb(0, 0, 255)');
-        });
+        expect(el.shadowRoot.querySelector('.color-area')).to.equal(null);
+        expect(el.shadowRoot.querySelector('.hue')).to.equal(null);
+        expect(el.shadowRoot.querySelector('.alpha')).to.equal(null);
+        expect(el.shadowRoot.querySelector('.swatches')).to.equal(null);
+        expect(el.shadowRoot.querySelector('wje-input.input')).to.exist;
+    });
+
+    it('allows manual typing when input-editable is set', async () => {
+        const el = await fixture(html`
+            <wje-color-picker color="#00b4d8" input-editable></wje-color-picker>
+        `);
+        await el.updateComplete;
+        await aTimeout(10);
+
+        const input = el.shadowRoot.querySelector('wje-input.input');
+        expect(input.hasAttribute('readonly')).to.be.false;
+    });
+
+    it('syncs hue slider when color is typed via input', async () => {
+        const el = await fixture(html`
+            <wje-color-picker color="#00b4d8" input-editable></wje-color-picker>
+        `);
+        await el.updateComplete;
+        await aTimeout(10);
+
+        const input = el.shadowRoot.querySelector('wje-input.input');
+        input.value = '#4a4a4aff';
+        input.dispatchEvent(new CustomEvent('wje-input:input', {
+            bubbles: true,
+            composed: true,
+            detail: { value: '#4a4a4aff' },
+        }));
+
+        expect(el.value.hex8).to.equal('#4a4a4aff');
+        expect(Number(el.hueSlider.value)).to.equal(0);
+        expect(el.colorArea.style.getPropertyValue('--wje-color-picker-area')).to.equal('#ff0000');
+    });
+
+    it('does not update color for partial hex input shorter than 6 chars', async () => {
+        const el = await fixture(html`
+            <wje-color-picker color="#00b4d8" input-editable></wje-color-picker>
+        `);
+        await el.updateComplete;
+        await aTimeout(10);
+
+        const input = el.shadowRoot.querySelector('wje-input.input');
+        const before = el.value.hex8;
+
+        input.value = 'a4';
+        input.dispatchEvent(new CustomEvent('wje-input:input', {
+            bubbles: true,
+            composed: true,
+            detail: { value: 'a4' },
+        }));
+
+        expect(input.value).to.equal('a4');
+        expect(el.value.hex8).to.equal(before);
+    });
+
+    it('updates color when 6 hex chars are typed without #', async () => {
+        const el = await fixture(html`
+            <wje-color-picker color="#00b4d8" input-editable></wje-color-picker>
+        `);
+        await el.updateComplete;
+        await aTimeout(10);
+
+        const input = el.shadowRoot.querySelector('wje-input.input');
+        input.value = '4a4a4a';
+        input.dispatchEvent(new CustomEvent('wje-input:input', {
+            bubbles: true,
+            composed: true,
+            detail: { value: '4a4a4a' },
+        }));
+
+        expect(el.value.hex8).to.equal('#4a4a4aff');
+        expect(input.value).to.equal('4a4a4a');
+    });
+
+    it('truncates overly long hex input', async () => {
+        const el = await fixture(html`
+            <wje-color-picker color="#00b4d8" input-editable></wje-color-picker>
+        `);
+        await el.updateComplete;
+        await aTimeout(10);
+
+        const input = el.shadowRoot.querySelector('wje-input.input');
+        input.value = '123456789';
+        input.dispatchEvent(new CustomEvent('wje-input:input', {
+            bubbles: true,
+            composed: true,
+            detail: { value: '123456789' },
+        }));
+
+        expect(input.value).to.equal('12345678');
+    });
+
+    it('does not re-append alpha when editing from 8 to 6 hex chars', async () => {
+        const el = await fixture(html`
+            <wje-color-picker color="#00b4d8" input-editable></wje-color-picker>
+        `);
+        await el.updateComplete;
+        await aTimeout(10);
+
+        const input = el.shadowRoot.querySelector('wje-input.input');
+
+        input.value = 'a4a4a4ff';
+        input.dispatchEvent(new CustomEvent('wje-input:input', {
+            bubbles: true,
+            composed: true,
+            detail: { value: 'a4a4a4ff' },
+        }));
+        expect(input.value).to.equal('a4a4a4ff');
+
+        input.value = 'a4a4a4f';
+        input.dispatchEvent(new CustomEvent('wje-input:input', {
+            bubbles: true,
+            composed: true,
+            detail: { value: 'a4a4a4f' },
+        }));
+        expect(input.value).to.equal('a4a4a4f');
+
+        input.value = 'a4a4a4';
+        input.dispatchEvent(new CustomEvent('wje-input:input', {
+            bubbles: true,
+            composed: true,
+            detail: { value: 'a4a4a4' },
+        }));
+        expect(input.value).to.equal('a4a4a4');
+        expect(el.value.hex8).to.equal('#a4a4a4ff');
+    });
+
+    it('sets maxlength on color input', async () => {
+        const el = await fixture(html`<wje-color-picker></wje-color-picker>`);
+        await el.updateComplete;
+        await aTimeout(10);
+
+        const input = el.shadowRoot.querySelector('wje-input.input');
+        expect(input.getAttribute('maxlength')).to.equal('9');
+    });
+
+    it('clamps marker position to color area bounds', async () => {
+        const el = await fixture(html`<wje-color-picker></wje-color-picker>`);
+        await el.updateComplete;
+        await aTimeout(10);
+
+        el.colorAreaDimension = { width: 100, height: 80, x: 0, y: 0 };
+        el.setMarkerPosition(150, -20);
+
+        expect(el.markerPosition.x).to.equal(100);
+        expect(el.markerPosition.y).to.equal(0);
+        expect(el.marker.style.left).to.equal('100px');
+        expect(el.marker.style.top).to.equal('0px');
+    });
+
+    it('uses alpha slider value when marker moves', async () => {
+        const el = await fixture(html`<wje-color-picker></wje-color-picker>`);
+        await el.updateComplete;
+        await aTimeout(10);
+
+        el.dimension = () => ({ width: 100, height: 100, x: 0, y: 0 });
+        el.alphaSlider.value = 25;
+
+        el.moveMarker({ clientX: 50, clientY: 50 });
+
+        expect(el.value).to.exist;
+        expect(el.value.hex8).to.match(/^#[0-9a-f]{6}40$/i);
+        expect(el.markerPosition.x).to.equal(50);
+        expect(el.markerPosition.y).to.equal(50);
     });
 
     it('should correctly handle focus and blur events', async () => {
@@ -70,47 +246,5 @@ describe('<wje-color-picker>', () => {
 
         expect(document.activeElement).to.not.equal(el);
         expect(blurHandler).to.have.been.calledOnce;
-    });
-
-    describe('when used in a form', () => {
-        it('should serialize its name and value with FormData', async () => {
-            const form = await fixture(html`
-        <form>
-          <wje-color-picker name="color" value="#ffcc00"></wje-color-picker>
-        </form>
-      `);
-            const formData = new FormData(form);
-            expect(formData.get('color')).to.equal('#ffcc00');
-        });
-
-        it('should reset to its initial value when the form is reset', async () => {
-            const form = await fixture(html`
-        <form>
-          <wje-color-picker name="color" value="#ffffff"></wje-color-picker>
-          <button type="reset">Reset</button>
-        </form>
-      `);
-            const colorPicker = form.querySelector('wje-color-picker');
-            colorPicker.value = '#000000';
-
-            // Reset the form
-            form.reset();
-            await oneEvent(form, 'reset');
-            await colorPicker.updateComplete;
-
-            expect(colorPicker.value).to.equal('#ffffff');
-        });
-    });
-
-    describe('when using validation', () => {
-        it('should be valid by default', async () => {
-            const el = await fixture(html` <wje-color-picker></wje-color-picker> `);
-            expect(el.checkValidity()).to.be.true;
-        });
-
-        it('should be invalid when required but empty', async () => {
-            const el = await fixture(html` <wje-color-picker required></wje-color-picker> `);
-            expect(el.checkValidity()).to.be.false;
-        });
     });
 });

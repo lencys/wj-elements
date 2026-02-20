@@ -35,6 +35,7 @@ export default class Orgchart extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -57,5 +58,14 @@ export default class Orgchart extends WJElement {
         this.native = native;
 
         return fragment;
+    }
+
+    /**
+     * Sync ARIA attributes on host.
+     */
+    syncAria() {
+        if (!this.hasAttribute('role')) {
+            this.setAriaState({ role: 'tree' });
+        }
     }
 }

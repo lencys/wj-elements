@@ -114,4 +114,23 @@ describe('<wje-chip>', () => {
 
     expect(el.classList.contains('wje-disabled')).to.be.true;
   });
+
+  it('sets ARIA role on host and aria-label when label is provided', async () => {
+    const el = await fixture(html`<wje-chip label="Filter">Filter</wje-chip>`);
+    await el.updateComplete;
+
+    expect(el.getAttribute('role')).to.equal('status');
+    expect(el.getAttribute('aria-label')).to.equal('Filter');
+  });
+
+  it('sets ARIA role button and disabled state when removable', async () => {
+    const el = await fixture(html`<wje-chip removable disabled>Removable</wje-chip>`);
+    await el.updateComplete;
+
+    expect(el.getAttribute('role')).to.equal('button');
+    expect(el.getAttribute('aria-disabled')).to.equal('true');
+
+    const removeBtn = el.context.querySelector('[part="remove"]');
+    expect(removeBtn.getAttribute('aria-label')).to.equal('Remove');
+  });
 });

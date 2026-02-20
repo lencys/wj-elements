@@ -15,6 +15,8 @@ import styles from './styles/styles.css?inline';
  */
 
 export default class TabGroup extends WJElement {
+    static _instanceId = 0;
+
     /**
      * Creates an instance of TabGroup.
      * @class
@@ -22,6 +24,7 @@ export default class TabGroup extends WJElement {
     constructor() {
         super();
 
+        this._instanceId = ++TabGroup._instanceId;
         this._lastNavWidth = null;
         this._initialized = false;
     }
@@ -32,6 +35,9 @@ export default class TabGroup extends WJElement {
      */
     set variant(value) {
         this.setAttribute('variant', value);
+        this.setAriaState({
+            orientation: (value === 'start' || value === 'end') ? 'vertical' : 'horizontal',
+        });
     }
 
     /**
@@ -76,6 +82,11 @@ export default class TabGroup extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+
+        this.setAriaState({
+            role: 'tablist',
+            orientation: (this.variant === 'start' || this.variant === 'end') ? 'vertical' : 'horizontal',
+        });
     }
 
     /**
@@ -237,6 +248,8 @@ export default class TabGroup extends WJElement {
 
         if(el)
             this.dropdownActive(el);
+
+        this.syncAria();
     }
 
     /**
@@ -254,6 +267,14 @@ export default class TabGroup extends WJElement {
      */
     getTabAll() {
         return this.context.querySelector('[name="nav"]').assignedElements();
+    }
+
+    /**
+     * Returns all tabs, including those moved to "more".
+     * @returns {Array<Element>} An array of all tabs.
+     */
+    getAllTabs() {
+        return Array.from(this.querySelectorAll('wje-tab'));
     }
 
     /**
@@ -347,6 +368,52 @@ export default class TabGroup extends WJElement {
             else
                 this.moreDropdown.classList.remove('dropdown-active');
         }
+    }
+
+    /**
+     * Syncs ARIA attributes on tabs and panels.
+     */
+    syncAria() {
+        const tabs = this.getAllTabs();
+        const panels = this.getPanelAll();
+        const panelByName = new Map(panels.map((p) => [p.getAttribute('name'), p]));
+        const groupId = this.id || `wje-tab-group-${this._instanceId}`;
+
+        this.setAriaState({
+            orientation: (this.variant === 'start' || this.variant === 'end') ? 'vertical' : 'horizontal',
+        });
+
+        tabs.forEach((tab, index) => {
+            const tabName = tab.getAttribute(this.type) || tab.panel || tab.route || String(index);
+            const isActive = tab.classList.contains('active');
+            const isDisabled = tab.hasAttribute('disabled');
+
+            if (!tab.id) tab.id = `wje-tab-${tabName}`;
+
+            let controlsId = '';
+            if (this.type === 'panel') {
+                const panel = panelByName.get(tabName);
+                if (panel) {
+                    if (!panel.id) panel.id = `wje-tab-panel-${tabName}`;
+                    controlsId = panel.id;
+                    panel.setAriaState({
+                        role: 'tabpanel',
+                        labelledBy: tab.id,
+                    });
+                }
+            }
+
+            tab.setAriaState({
+                role: 'tab',
+                selected: isActive,
+                disabled: isDisabled,
+                controls: controlsId || '',
+            });
+
+            if (typeof tab.setRovingTabIndex === 'function') {
+                tab.setRovingTabIndex(isActive ? 0 : -1);
+            }
+        });
     }
 
     disconnectedCallback() {

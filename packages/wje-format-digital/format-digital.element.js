@@ -114,12 +114,20 @@ export default class FormatDigital extends WJElement {
         return ['value', 'unit-display'];
     }
 
+    attributeChangedCallback(name, oldValue, newValue) {
+        super.attributeChangedCallback?.(name, oldValue, newValue);
+        if (oldValue === newValue) return;
+        this.beforeDraw();
+        if (this.formatted) this.formatted.innerText = this.formattedValue;
+    }
+
     /**
      * Sets up the attributes for the component.
      * Initializes the shadow DOM.
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.setAriaState({ role: 'status' });
     }
 
     /**
@@ -170,6 +178,7 @@ export default class FormatDigital extends WJElement {
         element.appendChild(end);
 
         fragment.appendChild(element);
+        this.formatted = formatted;
 
         return fragment;
     }

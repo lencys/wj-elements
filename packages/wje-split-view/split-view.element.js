@@ -91,6 +91,11 @@ export default class SplitView extends WJElement {
         let dividerElement = document.createElement('div');
         dividerElement.classList.add('wje-divider');
         dividerElement.setAttribute('part', 'divider');
+        dividerElement.setAttribute('role', 'separator');
+        dividerElement.setAttribute('aria-orientation', this.hasAttribute('vertical') ? 'vertical' : 'horizontal');
+        dividerElement.setAttribute('aria-valuemin', '0');
+        dividerElement.setAttribute('aria-valuemax', '100');
+        dividerElement.setAttribute('aria-valuenow', `${this.initial}`);
         dividerElement.appendChild(divider);
         dividerElement.addEventListener('mousedown', this.handleDrag, false);
 
@@ -99,6 +104,8 @@ export default class SplitView extends WJElement {
         native.appendChild(end);
 
         fragment.appendChild(native);
+
+        this.dividerElement = dividerElement;
 
         return fragment;
     }
@@ -136,6 +143,9 @@ export default class SplitView extends WJElement {
 
                 this.style.setProperty('--wje-split-view-calc-a', sizeA + '%');
                 this.style.setProperty('--wje-split-view-calc-b', sizeB + '%');
+                if (this.dividerElement) {
+                    this.dividerElement.setAttribute('aria-valuenow', `${Math.round(sizeA)}`);
+                }
             },
             initialEvent: e,
         });

@@ -19,7 +19,7 @@
     margin-bottom: var(--wje-menu-margin-bottom);
     margin-inline: var(--wje-menu-margin-inline);
     overflow: auto;
-    overscroll-behavior: none;
+    /*overscroll-behavior: none;*/
     .native-menu {
         display: flex;
         flex-direction: column;

@@ -107,6 +107,14 @@ export default class Avatar extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        super.attributeChangedCallback?.(name, oldValue, newValue);
+        if (name === 'label' || name === 'initials') {
+            this.syncAria();
+        }
     }
 
     /**
@@ -153,6 +161,16 @@ export default class Avatar extends WJElement {
         fragment.appendChild(element);
 
         return fragment;
+    }
+
+    /**
+     * Syncs ARIA attributes on the host element.
+     */
+    syncAria() {
+        const label = this.label?.trim();
+        if (label) {
+            this.setAriaState({ label });
+        }
     }
 
     /**

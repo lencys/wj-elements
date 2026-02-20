@@ -111,6 +111,7 @@ export default class InfiniteScroll extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -191,6 +192,7 @@ export default class InfiniteScroll extends WJElement {
      * Called after the component has been drawn.
      */
     async afterDraw() {
+        this.syncAria();
         this.queryParams = this.queryParams || '';
         this.size = +this.size || 10;
         this.currentPage = 0;
@@ -198,6 +200,15 @@ export default class InfiniteScroll extends WJElement {
         this.scrollEvent();
         this.#loading = this.loadPages(this.currentPage);
         await this.#loading;
+    }
+
+    /**
+     * Sync ARIA attributes on host.
+     */
+    syncAria() {
+        if (!this.hasAttribute('role')) {
+            this.setAriaState({ role: 'list' });
+        }
     }
 
     /**

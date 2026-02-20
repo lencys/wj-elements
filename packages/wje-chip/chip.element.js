@@ -121,6 +121,18 @@ export default class Chip extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
+    }
+
+    static get observedAttributes() {
+        return ['removable', 'disabled', 'label'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        super.attributeChangedCallback?.(name, oldValue, newValue);
+        if (name === 'removable' || name === 'disabled' || name === 'label') {
+            this.syncAria();
+        }
     }
 
     /**
@@ -143,6 +155,7 @@ export default class Chip extends WJElement {
         remove.setAttribute('part', 'remove');
         remove.setAttribute('fill', 'link');
         remove.setAttribute('color', this.color || 'default');
+        remove.setAttribute('aria-label', 'Remove');
         remove.round = !this.round;
 
         if(this.hasAttribute('size')) {
@@ -179,6 +192,16 @@ export default class Chip extends WJElement {
         this.slotEnd = slotEnd;
 
         return fragment;
+    }
+
+    /**
+     * Syncs ARIA attributes on the host element.
+     */
+    syncAria() {
+        const label = this.getAttribute('label')?.trim();
+        if (label) this.setAriaState({ label });
+        if (this.removable) this.setAriaState({ role: 'button', disabled: this.disabled });
+        else this.setAriaState({ role: 'status' });
     }
 
     /**

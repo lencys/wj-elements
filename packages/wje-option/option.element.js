@@ -124,6 +124,7 @@ export default class Option extends WJElement {
 				this.#setCheckbox(false);
 			}
 		}
+		this.syncAria();
 	}
 
 	/**
@@ -131,6 +132,7 @@ export default class Option extends WJElement {
 	 */
 	setupAttributes() {
 		this.isShadowRoot = 'open';
+		this.syncAria();
 	}
 
 	/**
@@ -203,6 +205,18 @@ export default class Option extends WJElement {
 		if (this.checkbox && this.multiple) {
 			this.#setCheckbox(this.selected);
 		}
+		this.syncAria();
+	}
+
+	/**
+	 * Syncs ARIA attributes on the host element.
+	 */
+	syncAria() {
+		this.setAriaState({
+			role: 'option',
+			selected: this.selected,
+			disabled: this.hasAttribute('disabled'),
+		});
 	}
 
 	/**

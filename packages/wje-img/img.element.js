@@ -122,7 +122,17 @@ export default class Img extends WJElement {
      * @returns {Array<string>}
      */
     static get observedAttributes() {
-        return ['src'];
+        return ['src', 'alt'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        super.attributeChangedCallback?.(name, oldValue, newValue);
+        if (oldValue === newValue) return;
+        if (name === 'alt') {
+            if (this.native) this.native.setAttribute('alt', this.alt || '');
+            const label = this.alt?.trim();
+            if (label) this.setAriaState({ label });
+        }
     }
 
     /**
@@ -130,6 +140,8 @@ export default class Img extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.setAriaState({ role: 'img' });
+        if (this.alt?.trim()) this.setAriaState({ label: this.alt.trim() });
     }
 
     /**
@@ -156,6 +168,8 @@ export default class Img extends WJElement {
         fragment.appendChild(native);
 
         this.native = native;
+
+        if (this.alt?.trim()) this.setAriaState({ label: this.alt.trim() });
 
         return fragment;
     }

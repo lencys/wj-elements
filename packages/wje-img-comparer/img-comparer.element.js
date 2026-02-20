@@ -62,6 +62,7 @@ export default class ImgComparer extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.setAriaState({ role: 'group' });
     }
 
     /**
@@ -92,6 +93,9 @@ export default class ImgComparer extends WJElement {
         let dividerElement = document.createElement('div');
         dividerElement.classList.add('wje-divider');
         dividerElement.setAttribute('part', 'divider');
+        dividerElement.setAttribute('role', 'separator');
+        dividerElement.setAttribute('tabindex', '0');
+        dividerElement.setAttribute('aria-orientation', 'horizontal');
         dividerElement.addEventListener('mousedown', this.handleDrag, false);
 
         beforeElement.appendChild(before);

@@ -27,6 +27,42 @@ describe('Tree Item Component', () => {
         expect(el.indeterminate).to.be.false;
     });
 
+    it('should set ARIA selected/expanded in single selection mode', async () => {
+        const tree = await fixture(`
+          <wje-tree selection="single">
+            <wje-tree-item id="parent">
+              <wje-tree-item></wje-tree-item>
+            </wje-tree-item>
+          </wje-tree>
+        `);
+        const item = tree.querySelector('#parent');
+        await item.updateComplete;
+
+        item.selected = true;
+        item.toggleChildren();
+        item.syncAria();
+
+        expect(item.getAttribute('role')).to.equal('treeitem');
+        expect(item.getAttribute('aria-selected')).to.equal('true');
+        expect(item.getAttribute('aria-expanded')).to.equal('true');
+    });
+
+    it('should set ARIA checked in multiple selection mode', async () => {
+        const tree = await fixture(`
+          <wje-tree selection="multiple">
+            <wje-tree-item id="item"></wje-tree-item>
+          </wje-tree>
+        `);
+        const item = tree.querySelector('#item');
+        await item.updateComplete;
+
+        item.selected = true;
+        item.syncAria();
+
+        expect(item.getAttribute('role')).to.equal('treeitem');
+        expect(item.getAttribute('aria-checked')).to.equal('true');
+    });
+
     it('should toggle children visibility when toggleChildren is called', async () => {
         const el = await fixture('<wje-tree-item></wje-tree-item>');
         el.toggleChildren();

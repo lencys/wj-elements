@@ -263,6 +263,9 @@ export default class Pagination extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.setAriaState({
+            role: 'navigation',
+        });
     }
 
     async beforeDraw() {
@@ -277,7 +280,7 @@ export default class Pagination extends WJElement {
             return;
         }
 
-        this.paginateObj = await paginate(this.totalItems, this.page, this.pageSize, this.maxPages) || {};
+        this.paginateObj = await paginate(this.totalItems, this.page + 1, this.pageSize, this.maxPages) || {};
     }
 
     /**
@@ -340,29 +343,33 @@ export default class Pagination extends WJElement {
         // First button
         let firstButton = button.cloneNode(true);
         firstButton.title = this.localizer.translate('wj.pagination.first');
+        firstButton.setAttribute('aria-label', firstButton.title);
         firstButton.innerHTML = `<wje-icon name="chevron-left-pipe" slot="icon-only"></wje-icon>`;
-        firstButton.addEventListener('wje-button:click', (e) => this.pageClickAction(e, 0));
+        firstButton.addEventListener('click', (e) => this.pageClickAction(e, 0));
 
         // Previous button
         const prevButton = button.cloneNode(true);
         prevButton.title = this.localizer.translate('wj.pagination.prev');
+        prevButton.setAttribute('aria-label', prevButton.title);
         prevButton.innerHTML = `<wje-icon name="chevron-left" slot="icon-only"></wje-icon>`;
         if (this.page === 0) prevButton.disabled = true;
-        prevButton.addEventListener('wje-button:click', (e) => this.pageClickAction(e, this.page - 1));
+        prevButton.addEventListener('click', (e) => this.pageClickAction(e, this.page - 1));
 
         // Next button
         const nextButton = button.cloneNode(true);
         nextButton.title = this.localizer.translate('wj.pagination.next');
+        nextButton.setAttribute('aria-label', nextButton.title);
         nextButton.innerHTML = `<wje-icon name="chevron-right" slot="icon-only"></wje-icon>`;
         if (this.page + 1 >= this.paginateObj?.totalPages) nextButton.disabled = true;
-        nextButton.addEventListener('wje-button:click', (e) => this.pageClickAction(e, this.page + 1));
+        nextButton.addEventListener('click', (e) => this.pageClickAction(e, this.page + 1));
 
         // Last button
         let lastButton = button.cloneNode(true);
         lastButton.title = this.localizer.translate('wj.pagination.last');
+        lastButton.setAttribute('aria-label', lastButton.title);
         lastButton.innerHTML = `<wje-icon name="chevron-right-pipe" slot="icon-only"></wje-icon>`;
         lastButton.disabled = this.paginateObj?.endIndex + 1 >= this.totalItems;
-        lastButton.addEventListener('wje-button:click', (e) =>
+        lastButton.addEventListener('click', (e) =>
             this.pageClickAction(e, this.paginateObj?.totalPages - 1)
         );
 
@@ -399,14 +406,15 @@ export default class Pagination extends WJElement {
 
         let dots = document.createElement('span');
         dots.classList.add('dots');
+        dots.setAttribute('aria-hidden', 'true');
 
         const first = button.cloneNode(true);
         first.textContent = '1';
-        first.addEventListener('wje-button:click', (e) => this.pageClickAction(e, 0));
+        first.addEventListener('click', (e) => this.pageClickAction(e, 0));
 
         const last = button.cloneNode(true);
         last.textContent = paginateObj?.totalPages;
-        last.addEventListener('wje-button:click', (e) => this.pageClickAction(e, paginateObj?.totalPages - 1));
+        last.addEventListener('click', (e) => this.pageClickAction(e, paginateObj?.totalPages - 1));
 
         if (paginateObj?.currentPage >= this.maxPages + 1 && paginateObj?.boundary < paginateObj?.totalPages) {
             fragment.appendChild(first);
@@ -419,8 +427,9 @@ export default class Pagination extends WJElement {
 
             if (page - 1 === this.page) {
                 newButton.removeAttribute('fill');
+                newButton.setAttribute('aria-current', 'page');
             } else {
-                newButton.addEventListener('wje-button:click', (e) => this.pageClickAction(e, page - 1));
+                newButton.addEventListener('click', (e) => this.pageClickAction(e, page - 1));
             }
 
             fragment.appendChild(newButton);

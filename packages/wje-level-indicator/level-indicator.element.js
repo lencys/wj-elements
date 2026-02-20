@@ -106,10 +106,20 @@ export default class LevelIndicator extends WJElement {
     }
 
     /**
+     * Returns the list of attributes to observe for changes.
+     * @static
+     * @returns {Array<string>}
+     */
+    static get observedAttributes() {
+        return ['level', 'bars'];
+    }
+
+    /**
      * Sets up the attributes for the component.
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -150,6 +160,7 @@ export default class LevelIndicator extends WJElement {
      * @returns {void} This method does not return any value.
      */
     afterDraw() {
+        this.syncAria();
         this.updateBars(this.level, this.barsArray);
 
         if (this.colorize)
@@ -157,6 +168,35 @@ export default class LevelIndicator extends WJElement {
                 '--wje-level-indicator-color-active',
                 `var(${this.getColor(this.level, this.barsArray.length)})`
             );
+    }
+
+    /**
+     * Handles attribute changes for ARIA sync.
+     * @param {string} name
+     * @param {string|null} oldValue
+     * @param {string|null} newValue
+     */
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (super.attributeChangedCallback) {
+            super.attributeChangedCallback(name, oldValue, newValue);
+        }
+
+        if (oldValue !== newValue) {
+            this.syncAria();
+        }
+    }
+
+    /**
+     * Sync ARIA attributes on host.
+     */
+    syncAria() {
+        this.setAriaState({
+            role: 'meter',
+            valuemin: 0,
+            valuemax: this.bars,
+            valuenow: this.level,
+            valuetext: `${this.level} of ${this.bars}`,
+        });
     }
 
     /**

@@ -57,6 +57,7 @@ export default class Badge extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.setAriaState({ role: 'status' });
     }
 
     /**

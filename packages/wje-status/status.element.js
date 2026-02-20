@@ -41,6 +41,7 @@ export default class Status extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.setAriaState({ role: 'status' });
     }
 
     /**

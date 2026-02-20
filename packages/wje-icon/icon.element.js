@@ -43,7 +43,7 @@ export default class Icon extends WJElement {
      * @returns {Array<string>}
      */
     static get observedAttributes() {
-        return ['name', 'filled'];
+        return ['name', 'filled', 'label'];
     }
 
     /**
@@ -51,6 +51,7 @@ export default class Icon extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -82,6 +83,7 @@ export default class Icon extends WJElement {
      * Called after the component has been drawn.
      */
     afterDraw() {
+        this.syncAria();
         let lazyImageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -97,5 +99,41 @@ export default class Icon extends WJElement {
         });
 
         lazyImageObserver.observe(this.native);
+    }
+
+    /**
+     * Sync ARIA attributes on host.
+     */
+    syncAria() {
+        const ariaLabel = this.getAttribute('aria-label');
+        const label = this.getAttribute('label');
+
+        if (ariaLabel || label) {
+            if (!this.hasAttribute('role')) {
+                this.setAttribute('role', 'img');
+            }
+            if (!ariaLabel && label) {
+                this.setAriaState({ label });
+            }
+            this.removeAttribute('aria-hidden');
+        } else {
+            this.setAttribute('aria-hidden', 'true');
+        }
+    }
+
+    /**
+     * Handles attribute changes for ARIA sync.
+     * @param {string} name
+     * @param {string|null} oldValue
+     * @param {string|null} newValue
+     */
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (super.attributeChangedCallback) {
+            super.attributeChangedCallback(name, oldValue, newValue);
+        }
+
+        if (name === 'label' && oldValue !== newValue) {
+            this.syncAria();
+        }
     }
 }

@@ -208,6 +208,7 @@ export default class Animation extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.setAriaState({ role: 'presentation' });
     }
 
     /**

@@ -58,6 +58,9 @@ export default class Menu extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.setAriaState({
+            role: 'menu',
+        });
     }
 
     /**

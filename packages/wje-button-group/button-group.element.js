@@ -115,6 +115,7 @@ export default class ButtonGroup extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -152,6 +153,7 @@ export default class ButtonGroup extends WJElement {
      * After draw method for the ButtonGroup element.
      */
     afterDraw() {
+        this.syncAria();
         const slottedElements = [...this.slotElement.assignedElements({ flatten: true })];
 
         slottedElements.forEach((el) => {
@@ -172,6 +174,15 @@ export default class ButtonGroup extends WJElement {
                 }
             }
         });
+    }
+
+    /**
+     * Sync ARIA attributes on host.
+     */
+    syncAria() {
+        if (!this.hasAttribute('role')) {
+            this.setAriaState({ role: 'group' });
+        }
     }
 
     /**

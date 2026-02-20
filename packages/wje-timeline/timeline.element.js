@@ -39,6 +39,7 @@ export default class Timeline extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -64,5 +65,14 @@ export default class Timeline extends WJElement {
         fragment.appendChild(native);
 
         return fragment;
+    }
+
+    /**
+     * Sync ARIA attributes on host.
+     */
+    syncAria() {
+        if (!this.hasAttribute('role')) {
+            this.setAriaState({ role: 'list' });
+        }
     }
 }

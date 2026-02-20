@@ -11,6 +11,24 @@ describe('<wje-format-digital>', () => {
             expect(el.value).to.equal(0);
             expect(el.unitDisplay).to.equal('short');
         });
+
+        it('sets role status on host', async () => {
+            const el = await fixture(html`<wje-format-digital></wje-format-digital>`);
+            await el.updateComplete;
+            expect(el.getAttribute('role')).to.equal('status');
+        });
+
+        it('keeps formatted node and updates text on value change', async () => {
+            const el = await fixture(html`<wje-format-digital value="1000"></wje-format-digital>`);
+            await new Promise((resolve) => setTimeout(resolve, 0));
+            const formattedNode = el.formatted;
+            expect(formattedNode).to.exist;
+
+            el.value = 1200;
+            await new Promise((resolve) => setTimeout(resolve, 0));
+            expect(el.formatted).to.equal(formattedNode);
+            expect(formattedNode.textContent.trim()).to.equal('1.2 kB');
+        });
     });
 
     describe('bytes formatting', () => {

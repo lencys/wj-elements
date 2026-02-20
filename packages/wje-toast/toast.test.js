@@ -40,6 +40,15 @@ describe('<wje-toast>', () => {
         expectToastToBeVisible(toast);
     });
 
+    it('sets role status on host and aria-label on close button', async () => {
+        const toast = await fixture(html`<wje-toast open closable>Test toast</wje-toast>`);
+        await toast.updateComplete;
+
+        expect(toast.getAttribute('role')).to.equal('status');
+        const closeButton = toast.shadowRoot?.querySelector('wje-button.close');
+        expect(closeButton.getAttribute('aria-label')).to.equal('Close');
+    });
+
     it('is accessible', async () => {
         const toast = await fixture(html`<wje-toast open>Test toast</wje-toast>`);
         await expect(toast).to.be.accessible();
@@ -87,8 +96,11 @@ describe('<wje-toast>', () => {
 
     describe('timer controlled closing', () => {
         it('closes after a predefined amount of time', async () => {
+            const toast = await fixture(html`<wje-toast open duration="0">Test toast</wje-toast>`);
             clock = sinon.useFakeTimers();
-            const toast = await fixture(html`<wje-toast open duration="3000">Test toast</wje-toast>`);
+            toast.duration = 3000;
+            toast.remainingTime = toast.duration;
+            toast.startTimer();
 
             expectToastToBeVisible(toast);
 
@@ -97,8 +109,11 @@ describe('<wje-toast>', () => {
         });
 
         it('resets the closing timer after mouse-over', async () => {
+            const toast = await fixture(html`<wje-toast open duration="0">Test toast</wje-toast>`);
             clock = sinon.useFakeTimers();
-            const toast = await fixture(html`<wje-toast open duration="3000">Test toast</wje-toast>`);
+            toast.duration = 3000;
+            toast.remainingTime = toast.duration;
+            toast.startTimer();
 
             expectToastToBeVisible(toast);
 

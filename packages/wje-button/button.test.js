@@ -92,6 +92,30 @@ describe('my-first-test', () => {
         expect(el.hasToggle).to.be.false;
         expect(el.dialog).to.be.null;
     });
+
+    it('sets ARIA role and disabled state on host', async () => {
+        const el = await fixture(html`<wje-button disabled>Button Label</wje-button>`);
+        await el.updateComplete;
+
+        expect(el.getAttribute('role')).to.equal('button');
+        expect(el.getAttribute('aria-disabled')).to.equal('true');
+    });
+
+    it('sets ARIA pressed when toggle slots are used', async () => {
+        const el = await fixture(html`
+      <wje-button>
+        <span slot="toggle">On</span>
+        <span slot="toggle">Off</span>
+      </wje-button>
+    `);
+        await el.updateComplete;
+
+        expect(el.getAttribute('role')).to.equal('button');
+        expect(el.getAttribute('aria-pressed')).to.equal('true');
+
+        el.click();
+        expect(el.getAttribute('aria-pressed')).to.equal('false');
+    });
 });
 
 describe('Button events', () => {

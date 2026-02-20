@@ -187,6 +187,22 @@ export default class FileUpload extends WJElement {
     }
 
     /**
+     * Sets the label attribute for the upload button.
+     * @param {string} value
+     */
+    set label(value) {
+        this.setAttribute('label', value);
+    }
+
+    /**
+     * Gets the label attribute for the upload button.
+     * @returns {string}
+     */
+    get label() {
+        return this.getAttribute('label') || '';
+    }
+
+    /**
      * Retrieves the maximum number of files allowed from the `max-files` attribute.
      * If the attribute is not set or is invalid, defaults to 0.
      * @returns {number} The maximum number of files allowed.
@@ -210,7 +226,16 @@ export default class FileUpload extends WJElement {
      * @returns {Array} An empty array as no attributes are observed.
      */
     static get observedAttributes() {
-        return [];
+        return ['label'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        super.attributeChangedCallback?.(name, oldValue, newValue);
+        if (name === 'label' && this.button) {
+            const nextLabel = this.label || this.localizer.translate('wj.file.upload.button');
+            this.button.innerText = nextLabel;
+            this.button.setAttribute('aria-label', nextLabel);
+        }
     }
 
     /**
@@ -218,6 +243,9 @@ export default class FileUpload extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.setAriaState({
+            role: 'group',
+        });
     }
 
     beforeDraw() {
@@ -251,11 +279,13 @@ export default class FileUpload extends WJElement {
         fileInput.setAttribute('type', 'file');
         fileInput.setAttribute('multiple', '');
         fileInput.setAttribute('style', 'display:none;');
+        fileInput.setAttribute('aria-hidden', 'true');
 
         if (!this.noUploadButton) {
             let button = document.createElement('wje-button');
             button.innerText = this.label || this.localizer.translate('wj.file.upload.button');
             button.setAttribute('part', 'upload-button');
+            button.setAttribute('aria-label', button.innerText);
 
             label.appendChild(button);
 

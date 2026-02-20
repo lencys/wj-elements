@@ -35,8 +35,6 @@ export default class Button extends WJElement {
      */
     constructor() {
         super();
-
-        this.internals_ = this.attachInternals();
     }
 
     /**
@@ -272,7 +270,14 @@ export default class Button extends WJElement {
      * @returns {Array<string>} observedAttributes - The observed attributes array for the Button element.
      */
     static get observedAttributes() {
-        return ['disabled', 'color'];
+        return ['disabled', 'color', 'value', 'active', 'href'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        super.attributeChangedCallback?.(name, oldValue, newValue);
+        if (['disabled', 'value', 'active', 'href'].includes(name)) {
+            this.syncAria?.();
+        }
     }
 
     /**
@@ -309,6 +314,7 @@ export default class Button extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -453,15 +459,17 @@ export default class Button extends WJElement {
 
         if (this.type === 'submit') {
             event.addListener(this, 'click', 'wje-button:submit', () => {
-                event.dispatchCustomEvent(this.internals_.form, 'submit', {});
+                event.dispatchCustomEvent(this.internals?.form, 'submit', {});
             });
         }
 
         if (this.type === 'reset') {
             event.addListener(this, 'click', 'wje-button:reset', () => {
-                this.internals_.form.reset();
+                this.internals?.form.reset();
             });
         }
+
+        this.syncAria();
     }
 
     /**
@@ -501,6 +509,23 @@ export default class Button extends WJElement {
                 node.classList.add('show');
                 this.setAttribute('value', index === 0 ? 'on' : 'off');
             }
+        });
+
+        this.syncAria();
+    }
+
+    /**
+     * Syncs ARIA attributes on the host element.
+     */
+    syncAria() {
+        const isLink = this.hasAttribute('href');
+        const isToggle = !!this.hasToggle;
+        const pressed = isToggle && !isLink ? this.getAttribute('value') === 'on' : undefined;
+
+        this.setAriaState({
+            role: isLink ? 'link' : 'button',
+            disabled: this.disabled,
+            pressed,
         });
     }
 

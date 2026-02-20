@@ -67,6 +67,7 @@ export default class InputFile extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.setAriaState({ role: 'group' });
     }
 
     /**
@@ -86,6 +87,7 @@ export default class InputFile extends WJElement {
         fileInput.setAttribute('type', 'file');
         fileInput.setAttribute('multiple', '');
         fileInput.setAttribute('hidden', '');
+        fileInput.setAttribute('aria-hidden', 'true');
 
         // Input
         let input = document.createElement('wje-input');

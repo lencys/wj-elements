@@ -65,6 +65,26 @@ export default class RadioGroup extends FormAssociatedElement {
         return this.hasAttribute('required');
     }
 
+    /**
+     * Setter for the label attribute.
+     * @param {string} value The label to set.
+     */
+    set label(value) {
+        if (value === null || value === undefined) {
+            this.removeAttribute('label');
+        } else {
+            this.setAttribute('label', value);
+        }
+    }
+
+    /**
+     * Getter for the label attribute.
+     * @returns {string|null}
+     */
+    get label() {
+        return this.getAttribute('label');
+    }
+
     className = 'RadioGroup';
 
     /**
@@ -77,7 +97,17 @@ export default class RadioGroup extends FormAssociatedElement {
     }
 
     static get observedAttributes() {
-        return [];
+        return ['required', 'value', 'disabled', 'invalid', 'label'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        super.attributeChangedCallback?.(name, oldValue, newValue);
+        if (oldValue === newValue) return;
+        if (['required', 'disabled', 'invalid', 'label'].includes(name)) this.syncAria();
+        if (name === 'value' && this.pristine) {
+            const radio = this.getRadioByValue(this.value);
+            if (radio) this.checkRadio(radio);
+        }
     }
 
     /**
@@ -88,6 +118,7 @@ export default class RadioGroup extends FormAssociatedElement {
         if (this.pristine) {
             this.pristine = false;
         }
+        this.syncAria();
     }
 
     /**
@@ -168,6 +199,7 @@ export default class RadioGroup extends FormAssociatedElement {
                 // this.errorMessage.textContent = '';
                 this.internals.setValidity({}, '');
             }
+            this.syncAria();
         });
 
         this.input.addEventListener('input', (e) => {
@@ -186,6 +218,23 @@ export default class RadioGroup extends FormAssociatedElement {
             this.showInvalidMessage();
         });
 
+    }
+
+    /**
+     * Syncs ARIA attributes on the host element.
+     */
+    syncAria() {
+        const label = this.label?.trim();
+        const requiredInvalid = this.required && !this.value;
+        const invalid = this.invalid || requiredInvalid;
+
+        this.setAriaState({
+            role: 'radiogroup',
+            required: this.required,
+            invalid,
+            disabled: this.disabled,
+            ...(label ? { label } : {}),
+        });
     }
 
     /**
@@ -218,6 +267,7 @@ export default class RadioGroup extends FormAssociatedElement {
             this.value = radio.value;
             this.input.value = radio.value;
             this.input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+            this.syncAria();
             return true;
         }
 

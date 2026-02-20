@@ -22,6 +22,12 @@ describe('wje-avatar', () => {
         expect(el.getAttribute('label')).to.equal('Jane Smith');
     });
 
+    it('should set aria-label from label attribute', async () => {
+        const el = await fixture(html`<wje-avatar label="John Doe"></wje-avatar>`);
+        await el.updateComplete;
+        expect(el.getAttribute('aria-label')).to.equal('John Doe');
+    });
+
     it('should generate initials correctly', async () => {
         const initials = getInitials('John Doe');
         expect(initials).to.equal('JD');

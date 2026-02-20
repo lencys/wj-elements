@@ -164,6 +164,9 @@ export default class Toast extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.setAriaState({
+            role: 'status',
+        });
     }
 
     /**
@@ -200,6 +203,7 @@ export default class Toast extends WJElement {
         closeBtn.setAttribute('color', this.color);
         closeBtn.setAttribute('size', 'small');
         closeBtn.classList.add('close');
+        closeBtn.setAttribute('aria-label', 'Close');
 
         let countdownEl = document.createElement('div');
         countdownEl.classList.add('countdown');

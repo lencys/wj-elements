@@ -109,6 +109,11 @@ export default class Breadcrumb extends WJElement {
             const isLast = WjElementUtils.stringToBoolean(newValue);
             this.active = isLast;
             this.showSeparator = !isLast;
+            this.syncAria();
+            if (this.native) {
+                if (isLast) this.native.setAttribute('aria-current', 'page');
+                else this.native.removeAttribute('aria-current');
+            }
             this.refresh();
         }
     }
@@ -118,6 +123,13 @@ export default class Breadcrumb extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
+    }
+
+    syncAria() {
+        this.setAriaState({ role: 'link' });
+        if (this.active) this.setAriaState({ current: 'page' });
+        else this.removeAttribute('aria-current');
     }
 
     /**
@@ -130,6 +142,7 @@ export default class Breadcrumb extends WJElement {
         let native = document.createElement('a');
         native.classList.add('native-breadcrumb');
         native.setAttribute('part', 'native');
+        if (this.active) native.setAttribute('aria-current', 'page');
 
         if (this.active) native.classList.add('active');
 
@@ -235,7 +248,7 @@ export default class Breadcrumb extends WJElement {
                 if (!breadcrumb) return;
 
                 // Prefer clicking the internal anchor (same behavior as real user click), fallback to host click.
-                const native = breadcrumb.native || breadcrumb.shadowRoot?.querySelector('a.native-breadcrumb');
+                const native = breadcrumb.native || breadcrumb.context?.querySelector('a.native-breadcrumb');
                 if (native && typeof native.click === 'function') {
                     native.click();
                 } else if (typeof breadcrumb.click === 'function') {

@@ -10,6 +10,12 @@ describe('<wje-animation>', () => {
         expect(animationContainer.shadowRoot).to.exist;
     });
 
+    it('sets presentation role on host', async () => {
+        const animationContainer = await fixture(`<wje-animation>${boxToAnimate}</wje-animation>`);
+        await animationContainer.updateComplete;
+        expect(animationContainer.getAttribute('role')).to.equal('presentation');
+    });
+
     it('is accessible', async () => {
         const animationContainer = await fixture(`<wje-animation>${boxToAnimate}</wje-animation>`);
         await expect(animationContainer).to.be.accessible();

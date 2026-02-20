@@ -66,6 +66,26 @@ export default class Checkbox extends FormAssociatedElement {
 	}
 
 	/**
+	 * Setter for the label attribute.
+	 * @param {string} value The label to set.
+	 */
+	set label(value) {
+		if (value === null || value === undefined) {
+			this.removeAttribute('label');
+		} else {
+			this.setAttribute('label', value);
+		}
+	}
+
+	/**
+	 * Getter for the label attribute.
+	 * @returns {string|null}
+	 */
+	get label() {
+		return this.getAttribute('label');
+	}
+
+	/**
 	 * Setter for the defaultValue attribute.
 	 * This method sets the 'value' attribute of the custom input element to the provided value.
 	 * The 'value' attribute represents the default value of the input element.
@@ -152,11 +172,15 @@ export default class Checkbox extends FormAssociatedElement {
 	}
 
 	static get observedAttributes() {
-		return ['checked', 'disabled', 'value', 'indeterminate'];
+		return ['checked', 'disabled', 'value', 'indeterminate', 'required', 'invalid', 'label'];
 	}
 
 	attributeChangedCallback(name, oldValue, newValue) {
-		if (!this.input) return;
+		super.attributeChangedCallback?.(name, oldValue, newValue);
+		if (!this.input) {
+			this.syncAria();
+			return;
+		}
 		if (name === 'checked') {
 			const isChecked = this.hasAttribute('checked');
 			this.input.checked = isChecked;
@@ -179,6 +203,7 @@ export default class Checkbox extends FormAssociatedElement {
 				this.internals.setFormValue(this.value);
 			}
 		}
+		this.syncAria();
 	}
 
 	/**
@@ -191,6 +216,7 @@ export default class Checkbox extends FormAssociatedElement {
 			this.value = this.#internalValue;
 			this.pristine = false;
 		}
+		this.syncAria();
 	}
 
 	/**
@@ -244,6 +270,7 @@ export default class Checkbox extends FormAssociatedElement {
 	 */
 	afterDraw() {
 		this.internals.setFormValue(this.checked ? this.value : this._valueOff); // Set initial form value based on checked state
+		this.syncAria();
 
 		if (!this.disabled) {
 			this.input.addEventListener('input', (e) => {
@@ -255,6 +282,7 @@ export default class Checkbox extends FormAssociatedElement {
 				// User interaction decides the checked state; value stays as payload
 				this.indeterminate = false;
 				this.checked = e.target.checked;
+				this.syncAria();
 
 				event.dispatchCustomEvent(this, 'wje-toggle:input');
 			});
@@ -276,6 +304,24 @@ export default class Checkbox extends FormAssociatedElement {
 				this.showInvalidMessage();
 			}
 		}
+	}
+
+	/**
+	 * Syncs ARIA attributes on the host element.
+	 */
+	syncAria() {
+		const checked = this.indeterminate ? 'mixed' : (this.checked ? 'true' : 'false');
+		const requiredInvalid = this.required && !this.checked;
+		const invalid = this.invalid || requiredInvalid;
+		const label = this.label?.trim();
+		this.setAriaState({
+			role: 'checkbox',
+			checked,
+			disabled: this.disabled,
+			required: this.required,
+			invalid,
+			...(label ? { label } : {}),
+		});
 	}
 
 	/**

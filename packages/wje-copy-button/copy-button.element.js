@@ -70,6 +70,7 @@ export default class CopyButton extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -105,11 +106,35 @@ export default class CopyButton extends WJElement {
      * Adds event listeners for the click, focus, and blur events.
      */
     afterDraw() {
+        this.syncAria();
         event.addListener(this, 'click', null, this.clicked);
         event.addListener(this, 'focus', null, this.focused);
         event.addListener(this, 'blur', null, this.blurred);
 
         event.addListener(this, 'wje-copy-button:click', null, this.copied);
+    }
+
+    /**
+     * Sync ARIA attributes on host.
+     */
+    syncAria() {
+        if (!this.hasAttribute('role')) {
+            this.setAriaState({ role: 'button' });
+        }
+
+        if (!this.hasAttribute('tabindex')) {
+            this.setAttribute('tabindex', '0');
+        }
+
+        const ariaLabel = this.getAttribute('aria-label');
+        const label = this.getAttribute('label') || this.label || 'Copy';
+        if (!ariaLabel && label) {
+            this.setAriaState({ label });
+        }
+
+        if (this.hasAttribute('disabled')) {
+            this.setAriaState({ disabled: true });
+        }
     }
 
     /**

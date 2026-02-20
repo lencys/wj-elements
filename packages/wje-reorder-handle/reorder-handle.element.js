@@ -45,6 +45,7 @@ export default class ReorderHandle extends WJElement {
 
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -71,8 +72,32 @@ export default class ReorderHandle extends WJElement {
      * Draws the component after it is connected to the DOM.
      */
     afterDraw() {
+        this.syncAria();
         if (this.hasAttribute('disabled')) {
             this.style.opacity = '.3';
+        }
+    }
+
+    /**
+     * Sync ARIA attributes on host.
+     */
+    syncAria() {
+        if (!this.hasAttribute('role')) {
+            this.setAriaState({ role: 'button' });
+        }
+
+        if (!this.hasAttribute('tabindex')) {
+            this.setAttribute('tabindex', '0');
+        }
+
+        if (this.hasAttribute('disabled')) {
+            this.setAriaState({ disabled: true });
+        }
+
+        const ariaLabel = this.getAttribute('aria-label');
+        const label = this.getAttribute('label') || 'Reorder item';
+        if (!ariaLabel && label) {
+            this.setAriaState({ label });
         }
     }
 

@@ -18,6 +18,8 @@ window.ResizeObserver = TestResizeObserver;
 // 2\) Now import bundles (they will see the stubbed ResizeObserver)
 import '../../dist/wje-element.js';
 import '../../dist/wje-tab-group.js';
+import '../../dist/wje-tab.js';
+import '../../dist/wje-tab-panel.js';
 
 const TabGroup = customElements.get('wje-tab-group');
 
@@ -41,6 +43,10 @@ describe('Tab group', () => {
                 <wje-tab panel="b">Tab B</wje-tab>
                 <wje-tab panel="c">Tab C</wje-tab>
                 <wje-tab panel="d">Tab D</wje-tab>
+                <wje-tab-panel name="a">Panel A</wje-tab-panel>
+                <wje-tab-panel name="b">Panel B</wje-tab-panel>
+                <wje-tab-panel name="c">Panel C</wje-tab-panel>
+                <wje-tab-panel name="d">Panel D</wje-tab-panel>
             </wje-tab-group>
         `);
 
@@ -80,6 +86,19 @@ describe('Tab group', () => {
         const moreTabs = el.querySelectorAll('wje-tab[slot="more"]');
         expect(moreTabs.length).to.equal(0);
         expect(el.moreDropdown.hidden).to.equal(true);
+    });
+
+    it('sets tablist role and orientation on host', async () => {
+        const el = await fixture(html`
+            <wje-tab-group variant="start">
+                <wje-tab panel="a" active>Tab A</wje-tab>
+                <wje-tab-panel name="a">Panel A</wje-tab-panel>
+            </wje-tab-group>
+        `);
+        await el.updateComplete;
+
+        expect(el.getAttribute('role')).to.equal('tablist');
+        expect(el.getAttribute('aria-orientation')).to.equal('vertical');
     });
 
     it('moves overflowing tabs into more slot', async () => {
@@ -195,5 +214,62 @@ describe('Tab group', () => {
         await new Promise(resolve => requestAnimationFrame(resolve));
 
         expect(el._tabMetrics.length).to.equal(firstMetrics.length);
+    });
+
+    it('syncs ARIA state and roving tabindex for tabs and panels', async () => {
+        const el = await createGroup({ navWidth: 700 });
+
+        const activeTab = el.querySelector('wje-tab[panel="a"]');
+        activeTab.classList.add('active');
+
+        el.syncAria();
+
+        const inactiveTab = el.querySelector('wje-tab[panel="b"]');
+        const activePanel = el.querySelector('wje-tab-panel[name="a"]');
+
+        expect(activeTab.getAttribute('role')).to.equal('tab');
+        expect(activeTab.getAttribute('aria-selected')).to.equal('true');
+        expect(inactiveTab.getAttribute('aria-selected')).to.equal('false');
+        expect(activeTab.getAttribute('aria-controls')).to.equal(activePanel.id);
+
+        expect(activePanel.getAttribute('role')).to.equal('tabpanel');
+        expect(activePanel.getAttribute('aria-labelledby')).to.equal(activeTab.id);
+
+        const activeAnchor = activeTab.shadowRoot.querySelector('a');
+        const inactiveAnchor = inactiveTab.shadowRoot.querySelector('a');
+        expect(activeAnchor.getAttribute('tabindex')).to.equal('0');
+        expect(inactiveAnchor.getAttribute('tabindex')).to.equal('-1');
+
+        const activeAnchorCtx = activeTab.context.querySelector('a');
+        const inactiveAnchorCtx = inactiveTab.context.querySelector('a');
+        expect(activeAnchorCtx.getAttribute('tabindex')).to.equal('0');
+        expect(inactiveAnchorCtx.getAttribute('tabindex')).to.equal('-1');
+    });
+
+    it('keeps roving tabindex even when tabs move to more slot', async () => {
+        const el = await createGroup({ navWidth: 400 });
+
+        const targetTab = el.querySelector('wje-tab[panel="d"]');
+        targetTab.classList.add('active');
+
+        el.checkOverflow();
+        el.syncAria();
+
+        expect(targetTab.getAttribute('slot')).to.equal('more');
+
+        const targetAnchor = targetTab.shadowRoot.querySelector('a');
+        expect(targetAnchor.getAttribute('tabindex')).to.equal('0');
+    });
+
+    it('sets aria-label on wje-tab from slotted text when not provided', async () => {
+        const el = await fixture(html`<wje-tab panel="a">Alpha</wje-tab>`);
+        await el.updateComplete;
+        expect(el.getAttribute('aria-label')).to.equal('Alpha');
+    });
+
+    it('does not override explicit aria-label on wje-tab', async () => {
+        const el = await fixture(html`<wje-tab panel="a" aria-label="Custom">Alpha</wje-tab>`);
+        await el.updateComplete;
+        expect(el.getAttribute('aria-label')).to.equal('Custom');
     });
 });

@@ -15,12 +15,14 @@ import Popup from '../wje-popup/popup.element.js';
  * @tag wje-dropdown
  */
 export default class Dropdown extends WJElement {
+    static _instanceId = 0;
     /**
      * Creates an instance of Dropdown.
      * @class
      */
     constructor() {
         super();
+        this._instanceId = ++Dropdown._instanceId;
     }
 
     /**
@@ -187,6 +189,11 @@ export default class Dropdown extends WJElement {
               this.onClose
             );
         }
+
+        this.onSlotChange = () => this.syncAria();
+        this.anchorSlot.addEventListener('slotchange', this.onSlotChange);
+
+        this.syncAria();
     }
 
     /**
@@ -199,6 +206,7 @@ export default class Dropdown extends WJElement {
         event.removeListener(this, 'wje-popup:hide', null, this.popupHideCallback);
         event.removeListener(this.popup, 'click', null, this.onMenuItemClick, { capture: true });
         event.removeListener(document, 'wje-menu-item:click', null, this.#onMenuItemCustom, false);
+        this.anchorSlot?.removeEventListener('slotchange', this.onSlotChange);
     }
 
     popupHideCallback = (e) => {
@@ -264,6 +272,7 @@ export default class Dropdown extends WJElement {
      */
     onOpen = (e) => {
         this.classList.add('active');
+        this.syncAria();
         Promise.resolve(this.beforeShow(this))
             .then((res) => {
                 if (!this.classList.contains('active')) {
@@ -298,6 +307,7 @@ export default class Dropdown extends WJElement {
 
     onClose = () => {
         this.classList.remove('active');
+        this.syncAria();
         Promise.resolve(this.beforeClose(this))
             .then((res) => {
                 if (this.classList.contains('active')) {
@@ -319,6 +329,22 @@ export default class Dropdown extends WJElement {
                 this.classList.add('active');
                 this.popup.show(true);
             });
+    }
+
+    /**
+     * Syncs ARIA attributes for the trigger element.
+     */
+    syncAria() {
+        const triggerEl = this.anchorSlot?.assignedElements?.({ flatten: true })?.[0];
+        if (!triggerEl) return;
+
+        const popupId = this.popup?.id || `wje-dropdown-popup-${this._instanceId}`;
+        if (this.popup && !this.popup.id) this.popup.id = popupId;
+
+        const hasMenu = !!this.querySelector('wje-menu');
+        triggerEl.setAttribute('aria-haspopup', hasMenu ? 'menu' : 'dialog');
+        triggerEl.setAttribute('aria-expanded', this.classList.contains('active') ? 'true' : 'false');
+        triggerEl.setAttribute('aria-controls', popupId);
     }
 
     #onMenuItemCustom = (e) => {

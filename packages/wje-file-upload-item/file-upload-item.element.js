@@ -123,6 +123,7 @@ export default class FileUploadItem extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -199,6 +200,7 @@ export default class FileUploadItem extends WJElement {
         this.button = button;
         this.uploadedEl = uploaded;
         this.sliderEl = slider;
+        this.nameEl = name;
 
         return fragment;
     }
@@ -207,7 +209,27 @@ export default class FileUploadItem extends WJElement {
      * Called after the component has been drawn.
      */
     afterDraw() {
+        this.syncAria();
         this.button.addEventListener('wje-button:click', this.onDelete);
+    }
+
+    /**
+     * Sync ARIA attributes on host and actions.
+     */
+    syncAria() {
+        if (!this.hasAttribute('role')) {
+            this.setAriaState({ role: 'listitem' });
+        }
+
+        const nameText = (this.nameEl?.textContent || this.name || '').trim();
+        if (nameText && !this.hasAttribute('aria-label')) {
+            this.setAriaState({ label: nameText });
+        }
+
+        if (this.button && !this.button.hasAttribute('aria-label')) {
+            const label = nameText ? `Remove ${nameText}` : 'Remove file';
+            this.button.setAttribute('aria-label', label);
+        }
     }
 
     /**

@@ -21,7 +21,6 @@ template.innerHTML = `<style>
     </p>
     <div class="playground">
       <div class="content" style="flex-direction: column;">
-        <wje-pagination></wje-pagination>
         <wje-pagination total-items="30"></wje-pagination>
       </div>
     </div>    
@@ -36,7 +35,7 @@ template.innerHTML = `<style>
     </p>
     <div class="playground">
       <div class="content">
-        <wje-pagination total-items="30" max-pages="5"></wje-pagination>
+        <wje-pagination total-items="30" max-pages="3"></wje-pagination>
       </div>
     </div>
     

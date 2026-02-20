@@ -40,10 +40,53 @@ export default class Card extends WJElement {
     }
 
     /**
+     * Get observed attributes for the Card element.
+     * @static
+     * @returns {Array<string>} observedAttributes - The observed attributes array
+     */
+    static get observedAttributes() {
+        return ['label', 'aria-label', 'aria-labelledby'];
+    }
+
+    /**
      * Setup attributes for the Card element.
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
+    }
+
+    /**
+     * Handles attribute changes for ARIA sync.
+     * @param {string} name
+     * @param {string|null} oldValue
+     * @param {string|null} newValue
+     */
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (super.attributeChangedCallback) {
+            super.attributeChangedCallback(name, oldValue, newValue);
+        }
+
+        if (oldValue !== newValue) {
+            this.syncAria();
+        }
+    }
+
+    /**
+     * Sync ARIA attributes on host only when labeling is provided.
+     */
+    syncAria() {
+        const ariaLabel = this.getAttribute('aria-label');
+        const label = this.getAttribute('label');
+        const labelledBy = this.getAttribute('aria-labelledby');
+
+        if ((ariaLabel || label || labelledBy) && !this.hasAttribute('role')) {
+            this.setAriaState({ role: 'region' });
+        }
+
+        if (!ariaLabel && label) {
+            this.setAriaState({ label });
+        }
     }
 
     /**

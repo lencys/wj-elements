@@ -145,6 +145,18 @@ describe('<wje-toggle>', () => {
     expect(el.validateOnChange).to.be.true;
   });
 
+  it('nastaví ARIA atribúty na hoste', async () => {
+    const el = await fixture(
+      html`<wje-toggle checked disabled required>Label</wje-toggle>`
+    );
+    await el.updateComplete;
+
+    expect(el.getAttribute('role')).to.equal('switch');
+    expect(el.getAttribute('aria-checked')).to.equal('true');
+    expect(el.getAttribute('aria-disabled')).to.equal('true');
+    expect(el.getAttribute('aria-required')).to.equal('true');
+  });
+
   it('disabled toggle nereaguje na input event a nemení checked', async () => {
     const el = await fixture(
       html`<wje-toggle disabled checked>Label</wje-toggle>`

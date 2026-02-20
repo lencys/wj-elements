@@ -279,6 +279,7 @@ export default class SlidingContainer extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -363,6 +364,7 @@ export default class SlidingContainer extends WJElement {
      * Calls the checkForVariant method with the current variant.
      */
     afterDraw() {
+        this.syncAria();
         document.addEventListener(this.trigger, this.triggerEvent);
 
         // if document width is on small screen set variant to over
@@ -371,6 +373,23 @@ export default class SlidingContainer extends WJElement {
         }
 
         this.checkForVariant(this.variant);
+    }
+
+    /**
+     * Sync ARIA attributes on host.
+     */
+    syncAria() {
+        if (!this.hasAttribute('role')) {
+            this.setAriaState({ role: 'region' });
+        }
+
+        this.setAriaState({ hidden: !this.isOpen });
+
+        const ariaLabel = this.getAttribute('aria-label');
+        const label = this.getAttribute('label');
+        if (!ariaLabel && label) {
+            this.setAriaState({ label });
+        }
     }
 
     /**
@@ -620,6 +639,7 @@ export default class SlidingContainer extends WJElement {
                 this.checkForVariant(this.variant);
 
                 await this.doAnimateTransition();
+                this.syncAria();
 
                 await Promise.resolve(this.afterOpen(e)).then(() => {
                     event.dispatchCustomEvent(this, 'wje-sliding-container:open')
@@ -641,6 +661,7 @@ export default class SlidingContainer extends WJElement {
                 event.dispatchCustomEvent(this, 'wje-sliding-container:beforeClose');
 
                 await this.doAnimateTransition();
+                this.syncAria();
 
                 await Promise.resolve(this.afterClose(e)).then(() => {
                     if (this.removeChildAfterClose) {

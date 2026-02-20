@@ -2,6 +2,8 @@ import { Localizer } from '../utils/localize.js';
 import { default as WJElement, event } from '../wje-element/element.js';
 import styles from './styles/styles.css?inline';
 
+let stepperId = 0;
+
 /**
  * `Stepper` is a custom web component that represents a stepper.
  * @summary This element represents a stepper.
@@ -24,6 +26,7 @@ export default class Stepper extends WJElement {
 		this.localizer = new Localizer(this);
 		this.steps = [];
 		this.headerSteps = [];
+		this._stepperId = ++stepperId;
 
 	}
 
@@ -83,6 +86,7 @@ export default class Stepper extends WJElement {
 		const header = document.createElement('div');
 		header.setAttribute('part', 'header');
 		header.className = 'header';
+		header.setAttribute('role', 'tablist');
 
 		const content = document.createElement('div');
 		content.setAttribute('part', 'content');
@@ -170,6 +174,7 @@ export default class Stepper extends WJElement {
 	processStep(index, step, header, steps) {
 		const nav = document.createElement('div');
 		nav.className = 'step-header';
+		nav.setAttribute('role', 'tab');
 		nav.addEventListener('click', (e) => {
 			this.goToStep(index)
 		});
@@ -182,9 +187,20 @@ export default class Stepper extends WJElement {
 		const label = document.createElement('span');
 		label.innerText = step.getAttribute('label') || `${this.localizer.translate('wj.stepper.step')} ${index + 1}`; // default label
 
+		const panelId = step.id || `wje-stepper-${this._stepperId}-panel-${index}`;
+		const tabId = nav.id || `wje-stepper-${this._stepperId}-tab-${index}`;
+		step.id = panelId;
+		nav.id = tabId;
+		nav.setAttribute('aria-controls', panelId);
+		step.setAttribute('role', 'tabpanel');
+		step.setAttribute('aria-labelledby', tabId);
+
 		// set active step
 		if (index === this.currentStep || step.hasAttribute('active')) {
-			this.setStepActive(nav, badge);
+			this.setStepActive(nav, badge, index);
+		} else {
+			nav.setAttribute('aria-selected', 'false');
+			nav.setAttribute('tabindex', '-1');
 		}
 
 		if (step.hasAttribute('disabled')) {
@@ -211,6 +227,9 @@ export default class Stepper extends WJElement {
 		step.classList.add('step');
 		if (index !== this.currentStep) {
 			step.style.display = 'none';
+			step.setAttribute('aria-hidden', 'true');
+		} else {
+			step.setAttribute('aria-hidden', 'false');
 		}
 
 		this.steps.push(step);
@@ -319,6 +338,8 @@ export default class Stepper extends WJElement {
 	setStepDefault(nav, badge = null, stepIndex = 0) {
 		nav.removeAttribute('active');
 		nav.removeAttribute('done');
+		nav.setAttribute('aria-selected', 'false');
+		nav.setAttribute('tabindex', '-1');
 
 		if (!badge) {
 			badge = nav.querySelector('wje-badge');
@@ -335,6 +356,8 @@ export default class Stepper extends WJElement {
 	 */
 	setStepActive(nav, badge = null, stepIndex = null) {
 		nav.setAttribute('active', '');
+		nav.setAttribute('aria-selected', 'true');
+		nav.setAttribute('tabindex', '0');
 
 		if (!badge) {
 			badge = nav.querySelector('wje-badge');
@@ -351,8 +374,10 @@ export default class Stepper extends WJElement {
 		this.steps?.forEach((step, index) => {
 			if (index === stepIndex) {
 				step.style.display = 'block';
+				step.setAttribute('aria-hidden', 'false');
 			} else {
 				step.style.display = 'none';
+				step.setAttribute('aria-hidden', 'true');
 			}
 		});
 	}

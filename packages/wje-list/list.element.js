@@ -40,6 +40,7 @@ export default class List extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -59,7 +60,17 @@ export default class List extends WJElement {
      * Called after the component has been drawn.
      */
     afterDraw() {
+        this.syncAria();
         this.classList.toggle('wje-lines-' + this.lines, this.hasAttribute('lines'));
         this.classList.toggle('wje-inset', this.hasAttribute('inset'));
+    }
+
+    /**
+     * Sync ARIA attributes on host.
+     */
+    syncAria() {
+        if (!this.hasAttribute('role')) {
+            this.setAriaState({ role: 'list' });
+        }
     }
 }

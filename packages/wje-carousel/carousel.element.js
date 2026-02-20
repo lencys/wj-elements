@@ -108,6 +108,7 @@ export default class Carousel extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -201,6 +202,8 @@ export default class Carousel extends WJElement {
         this.slides.addEventListener('scrollend', (e) => {
             this.syncActiveToCenter();
         });
+
+        this.syncAria();
     }
 
     /**
@@ -309,6 +312,32 @@ export default class Carousel extends WJElement {
             if (this.activeSlide === slides.length - 1) this.nextButton.setAttribute('disabled', '');
             if (this.activeSlide === 0) this.prevButton.setAttribute('disabled', '');
         }
+
+        this.syncAria();
+    }
+
+    /**
+     * Syncs ARIA attributes on the carousel and slides.
+     */
+    syncAria() {
+        this.setAriaState({
+            role: 'region',
+            roledescription: 'carousel',
+        });
+
+        const slides = this.getSlides();
+        const total = slides.length;
+        slides.forEach((slide, index) => {
+            slide.setAttribute('role', 'group');
+            slide.setAttribute('aria-roledescription', 'slide');
+            slide.setAttribute('aria-label', `Slide ${index + 1} of ${total}`);
+            slide.setAttribute('aria-hidden', slide.classList.contains('active') ? 'false' : 'true');
+        });
+
+        const clones = this.querySelectorAll('.clone');
+        clones.forEach((slide) => {
+            slide.setAttribute('aria-hidden', 'true');
+        });
     }
 
     /**

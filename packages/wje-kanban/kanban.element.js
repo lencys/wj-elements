@@ -96,6 +96,7 @@ export default class Kanban extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -136,6 +137,21 @@ export default class Kanban extends WJElement {
         fragment.appendChild(native);
 
         return fragment;
+    }
+
+    /**
+     * Sync ARIA attributes on host.
+     */
+    syncAria() {
+        if (!this.hasAttribute('role')) {
+            this.setAriaState({ role: 'region' });
+        }
+
+        const ariaLabel = this.getAttribute('aria-label');
+        const label = this.getAttribute('label');
+        if (!ariaLabel && label) {
+            this.setAriaState({ label });
+        }
     }
 
     /**

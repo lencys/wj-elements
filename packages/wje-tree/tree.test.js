@@ -15,6 +15,14 @@ describe('Tree Component', () => {
         expect(el.selection).to.equal('single');
     });
 
+    it('should set ARIA role and multiselectable on host', async () => {
+        const el = await fixture('<wje-tree selection="multiple"></wje-tree>');
+        await el.updateComplete;
+
+        expect(el.getAttribute('role')).to.equal('tree');
+        expect(el.getAttribute('aria-multiselectable')).to.equal('true');
+    });
+
     it('should call beforeDraw method and update tree items selection state', async () => {
         const el = await fixture('<wje-tree selection="multiple"></wje-tree>');
         const item = document.createElement('wje-tree-item');

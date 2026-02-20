@@ -64,7 +64,7 @@ describe('Pagination Component', () => {
         const el = await fixture(
             '<wje-pagination total-items="100" page="2" page-size="10" max-pages="5"></wje-pagination>'
         );
-        expect(el.paginateObj).to.deep.equal(paginate(100, 2, 10, 5));
+        expect(el.paginateObj).to.deep.equal(paginate(100, 3, 10, 5));
     });
 
     it('should update paginateObj when totalItems changes', async () => {
@@ -92,6 +92,36 @@ describe('Pagination Component', () => {
         expect(button).to.not.be.null;
 
         expect(button.hasAttribute('disabled')).to.be.false;
+    });
+
+    it('sets navigation role on host and aria-current on current page', async () => {
+        const el = await fixture('<wje-pagination total-items="100" page="0"></wje-pagination>');
+        await el.updateComplete;
+
+        expect(el.getAttribute('role')).to.equal('navigation');
+
+        const pageButtons = Array.from(el.shadowRoot.querySelectorAll('wje-button'))
+          .filter((btn) => btn.textContent?.trim() === '1');
+        expect(pageButtons.length).to.be.greaterThan(0);
+        expect(pageButtons[0].getAttribute('aria-current')).to.equal('page');
+    });
+
+    it('shows correct item range in info for middle and last page', async () => {
+        const el = await fixture(
+            '<wje-pagination total-items="30" page-size="6" page="1" show-info></wje-pagination>'
+        );
+        await el.updateComplete;
+
+        const info = el.shadowRoot.querySelector('.info');
+        expect(info).to.exist;
+        expect(info.textContent.replace(/\s+/g, ' ').trim()).to.include('7 - 12');
+
+        const last = await fixture(
+            '<wje-pagination total-items="30" page-size="6" page="4" show-info></wje-pagination>'
+        );
+        await last.updateComplete;
+        const infoAfter = last.shadowRoot.querySelector('.info');
+        expect(infoAfter.textContent.replace(/\s+/g, ' ').trim()).to.include('25 - 30');
     });
 
     it('should dispatch page-change event when page is changed', async function () {

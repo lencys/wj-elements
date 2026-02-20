@@ -12,6 +12,7 @@ import Checkbox from '../wje-checkbox/checkbox.js';
 import styles from './styles/styles.css?inline';
 
 export class Select extends FormAssociatedElement {
+	static _instanceId = 0;
 	#addedOptions = [];
 	#htmlOptions = [];
 
@@ -88,6 +89,7 @@ export class Select extends FormAssociatedElement {
 
 		this._value = [];
 		this._selectedOptions = [];
+		this._instanceId = ++Select._instanceId;
 	}
 
 	/**
@@ -440,6 +442,7 @@ export class Select extends FormAssociatedElement {
 	 */
 	setupAttributes() {
 		this.isShadowRoot = 'open';
+		this.syncAria();
 	}
 
 	beforeDraw() {
@@ -536,6 +539,10 @@ export class Select extends FormAssociatedElement {
 
 		let list = document.createElement('div');
 		list.classList.add('list');
+		this._ariaListId = this.id ? `${this.id}-listbox` : `wje-select-${this._instanceId}-listbox`;
+		list.id = this._ariaListId;
+		list.setAttribute('role', 'listbox');
+		if (this.hasAttribute('multiple')) list.setAttribute('aria-multiselectable', 'true');
 
 		let slot = document.createElement('slot');
 
@@ -640,6 +647,7 @@ export class Select extends FormAssociatedElement {
 		this.list = list;
 		this.slotFooter = slotFooter;
 
+		this.syncAria();
 		return fragment;
 	}
 
@@ -657,6 +665,7 @@ export class Select extends FormAssociatedElement {
 		if (this.hasAttribute('invalid')) {
 			this.showInvalidMessage();
 		}
+		this.syncAria();
 
 		this.getAllOptions()?.forEach((option) => {
 			this.optionCheckSlot(option);
@@ -722,6 +731,8 @@ export class Select extends FormAssociatedElement {
 		});
 
 		this.addEventListener('wje-option:change', this.optionChange);
+		event.addListener(this.popup, 'wje-popup:show', null, () => this.syncAria());
+		event.addListener(this.popup, 'wje-popup:hide', null, () => this.syncAria());
 
 		this.addEventListener('invalid', (e) => {
 			this.invalid = true;
@@ -836,6 +847,7 @@ export class Select extends FormAssociatedElement {
 		option.selected = !isSelected;
 
 		this.selectedOptions = this.#getSelectedOptions();
+		this.syncAria();
 	}
 
 	/**
@@ -895,6 +907,7 @@ export class Select extends FormAssociatedElement {
 				}
 			}
 		}
+		this.syncAria();
 	}
 
 	/**
@@ -1211,6 +1224,22 @@ export class Select extends FormAssociatedElement {
 
 	disconnectedCallback() {
 		document.removeEventListener('mousedown', this.#onMenuItemClickCapture, true);
+	}
+
+	/**
+	 * Syncs ARIA attributes on the host element.
+	 */
+	syncAria() {
+		const expanded = this.popup?.hasAttribute('active') || this.classList.contains('active');
+		this.setAriaState({
+			role: 'combobox',
+			haspopup: 'listbox',
+			expanded,
+			controls: this._ariaListId,
+			disabled: this.disabled,
+			required: this.required,
+			invalid: this.invalid || this.hasAttribute('invalid'),
+		});
 	}
 
 	/**

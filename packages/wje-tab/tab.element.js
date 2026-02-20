@@ -89,7 +89,14 @@ export default class Tab extends WJElement {
     setupAttributes() {
         this.isShadowRoot = 'open';
         this.setAttribute('active-class', 'active');
+
+        this.setAriaState({
+            role: 'tab',
+            selected: false,
+            disabled: this.hasAttribute('disabled'),
+        });
     }
+
 
     /**
      * Draws the component for the tab.
@@ -110,6 +117,8 @@ export default class Tab extends WJElement {
 
         fragment.appendChild(a);
 
+        this.slotEl = slot;
+
         return fragment;
     }
 
@@ -120,6 +129,32 @@ export default class Tab extends WJElement {
     afterDraw() {
         this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: false });
         event.addListener(this, 'click', 'wje-tab:change');
+        this.syncAriaLabel();
+        this.slotEl?.addEventListener('slotchange', () => this.syncAriaLabel());
+    }
+
+    /**
+     * Sync aria-label on host based on slotted text when not provided.
+     */
+    syncAriaLabel() {
+        if (this.hasAttribute('aria-label') || this.hasAttribute('aria-labelledby')) return;
+        const text = (this.slotEl?.assignedNodes({ flatten: true }) || [])
+            .map((node) => node.textContent || '')
+            .join('')
+            .trim();
+        if (text) {
+            this.setAttribute('aria-label', text);
+        }
+    }
+
+    /**
+     * Sets the roving tabindex on the internal focusable anchor.
+     * @param {number} value
+     */
+    setRovingTabIndex(value) {
+        const anchor = this.context?.querySelector('a');
+        if (!anchor) return;
+        anchor.setAttribute('tabindex', String(value));
     }
 
     /**

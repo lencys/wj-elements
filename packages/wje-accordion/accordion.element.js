@@ -87,6 +87,7 @@ export default class Accordion extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.setAriaState({ role: 'presentation' });
     }
 
     /**

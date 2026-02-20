@@ -134,6 +134,7 @@ export default class Toggle extends FormAssociatedElement {
             this.value = this.#internalValue;
             this.pristine = false;
         }
+        this.syncAria();
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
@@ -160,6 +161,7 @@ export default class Toggle extends FormAssociatedElement {
                 this.internals.setFormValue(this.value);
             }
         }
+        this.syncAria();
     }
 
     draw() {
@@ -221,6 +223,7 @@ export default class Toggle extends FormAssociatedElement {
 
     afterDraw() {
         this.internals.setFormValue(this.checked ? this.value : null); // Set initial form value based on checked state
+        this.syncAria();
 
         if (!this.disabled) {
             this.input.addEventListener('input', (e) => {
@@ -231,6 +234,7 @@ export default class Toggle extends FormAssociatedElement {
 
                 this.indeterminate = false;
                 this.checked = e.target.checked;
+                this.syncAria();
 
                 event.dispatchCustomEvent(this, 'wje-toggle:input');
             });
@@ -252,6 +256,19 @@ export default class Toggle extends FormAssociatedElement {
                 this.showInvalidMessage();
             }
         }
+    }
+
+    /**
+     * Syncs ARIA attributes on the host element.
+     */
+    syncAria() {
+        this.setAriaState({
+            role: 'switch',
+            checked: this.checked,
+            disabled: this.disabled,
+            required: this.required,
+            invalid: this.invalid,
+        });
     }
 
     /**

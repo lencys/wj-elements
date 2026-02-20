@@ -32,6 +32,9 @@ describe('<wje-file-upload>', () => {
 
     const button = native.querySelector('wje-button');
     expect(button).to.exist;
+
+    expect(el.getAttribute('role')).to.equal('group');
+    expect(input.getAttribute('aria-hidden')).to.equal('true');
   });
 
   it('nerenderuje tlačidlo, ak je nastavený atribút no-upload-button', async () => {
@@ -41,6 +44,13 @@ describe('<wje-file-upload>', () => {
     const button = native.querySelector('wje-button');
 
     expect(button).to.not.exist;
+  });
+
+  it('sets aria-label on upload button from label attribute', async () => {
+    const el = await fixture(html`<wje-file-upload label="Upload files"></wje-file-upload>`);
+    const native = el.shadowRoot.querySelector('.native-file-upload');
+    const button = native.querySelector('wje-button');
+    expect(button.getAttribute('aria-label')).to.equal('Upload files');
   });
 
   it('klik na tlačidlo vyvolá click na input[type=file]', async () => {

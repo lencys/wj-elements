@@ -129,6 +129,12 @@ export default class TreeItem extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
+    }
+
+    connectedCallback() {
+        super.connectedCallback?.();
+        if (this.isNestedItem()) this.slot = 'children';
     }
 
     /**
@@ -149,6 +155,10 @@ export default class TreeItem extends WJElement {
      * @returns {void}
      */
     attributeChangedCallback(name, oldValue, newValue) {
+        if (!this.checkbox) {
+            this.syncAria();
+            return;
+        }
         if (name === 'selected') {
             // this.checkbox.removeAttribute('indeterminate');
             if (this.selected) {
@@ -164,6 +174,7 @@ export default class TreeItem extends WJElement {
 
             if (this.indeterminate) this.checkbox.setAttribute('indeterminate', '');
         }
+        this.syncAria();
     }
 
     /**
@@ -287,6 +298,8 @@ export default class TreeItem extends WJElement {
         if (this.expanded) this.toggleChildren();
 
         this.button.addEventListener('click', this.toggleChildren.bind(this));
+        this.setAttribute('tabindex', '0');
+        this.syncAria();
     }
 
     /**
@@ -317,6 +330,29 @@ export default class TreeItem extends WJElement {
     toggleChildren() {
         this.childrenElement.classList.toggle('open');
         this.native.classList.toggle('expanded');
+        this.syncAria();
+    }
+
+    /**
+     * Syncs ARIA attributes on the host element.
+     */
+    syncAria() {
+        const hasChildren = this.querySelectorAll(':scope > wje-tree-item').length > 0;
+        const expanded = hasChildren ? this.native?.classList?.contains('expanded') : undefined;
+        if (this.selection === 'multiple') {
+            const checked = this.indeterminate ? 'mixed' : (this.selected ? 'true' : 'false');
+            this.setAriaState({
+                role: 'treeitem',
+                checked,
+                expanded,
+            });
+        } else {
+            this.setAriaState({
+                role: 'treeitem',
+                selected: this.selected,
+                expanded,
+            });
+        }
     }
 
     /**
@@ -328,11 +364,14 @@ export default class TreeItem extends WJElement {
     getChildrenItems(options = {}) {
         const includeDisabled = options.includeDisabled ?? true; // Ak nie je zadané, predvolená hodnota je true
 
-        if (!this.childrenSlot) {
-            return []; // Ak `childrenSlot` neexistuje, vráti prázdne pole
-        }
+        const assigned = this.childrenSlot
+            ? this.childrenSlot.assignedElements({ flatten: true })
+            : [];
+        const direct = assigned.length
+            ? assigned
+            : Array.from(this.querySelectorAll(':scope > wje-tree-item'));
 
-        return [...this.childrenSlot.assignedElements({ flatten: true })].filter(
+        return direct.filter(
             (item) => this.isTreeItem(item) && (includeDisabled || !item.disabled)
         );
     }

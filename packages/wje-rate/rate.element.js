@@ -111,7 +111,7 @@ export default class Rate extends WJElement {
      * @returns {Array<string>}
      */
     static get observedAttributes() {
-        return ['is-hover'];
+        return ['is-hover', 'value', 'max', 'disabled', 'readonly'];
     }
 
     /**
@@ -121,8 +121,16 @@ export default class Rate extends WJElement {
      * @param {string} newName The new value of the attribute.
      */
     attributeChangedCallback(name, old, newName) {
+        if (super.attributeChangedCallback) {
+            super.attributeChangedCallback(name, old, newName);
+        }
+
         if (name === 'is-hover') {
             // this.draw();
+        }
+
+        if (old !== newName && name !== 'is-hover') {
+            this.syncAria();
         }
     }
 
@@ -131,6 +139,7 @@ export default class Rate extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -168,6 +177,7 @@ export default class Rate extends WJElement {
      * Adds event listeners after the component is drawn.
      */
     afterDraw() {
+        this.syncAria();
         if (this.hasAttribute('disabled') || this.hasAttribute('readonly')) {
             return;
         }
@@ -245,6 +255,22 @@ export default class Rate extends WJElement {
             icon.setAttribute('data-index', i);
             icon.setAttribute('data-rate', rateValue);
         }
+
+        this.syncAria();
+    }
+
+    /**
+     * Sync ARIA attributes on host.
+     */
+    syncAria() {
+        this.setAriaState({
+            role: 'slider',
+            valuemin: 0,
+            valuemax: this.max,
+            valuenow: this.value,
+            disabled: this.hasAttribute('disabled'),
+            readonly: this.hasAttribute('readonly'),
+        });
     }
 
     /**

@@ -119,6 +119,7 @@ export default class IconPicker extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -209,6 +210,7 @@ export default class IconPicker extends WJElement {
      * @returns {void} Does not return a value.
      */
     afterDraw() {
+        this.syncAria();
 
         // udalost po vymazani inputu
         this.addEventListener('wje-input:clear', () => {
@@ -225,6 +227,21 @@ export default class IconPicker extends WJElement {
         });
 
         this.init = false;
+    }
+
+    /**
+     * Sync ARIA attributes on host.
+     */
+    syncAria() {
+        if (!this.hasAttribute('role')) {
+            this.setAriaState({ role: 'group' });
+        }
+
+        const ariaLabel = this.getAttribute('aria-label');
+        const label = this.getAttribute('label');
+        if (!ariaLabel && label) {
+            this.setAriaState({ label });
+        }
     }
 
     /**

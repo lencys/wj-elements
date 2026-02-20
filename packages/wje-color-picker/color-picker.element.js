@@ -18,6 +18,7 @@ import styles from './styles/styles.css?inline';
  * @csspart alpha - The alpha slider part of the color picker.
  * @csspart color-preview - The color preview part of the color picker.
  * @csspart input - The input part of the color picker.
+ * @attribute {boolean} input-editable - Enables manual color typing into the input field.
  * @cssproperty [--wje-color-picker-area] - The color of the color area background.
  * @cssproperty [--wje-color-picker-value] - The value of the color picker input.
  * @cssproperty [--wje-color-picker-swatch] - The color of the color swatch button.
@@ -61,6 +62,14 @@ export default class ColorPicker extends WJElement {
             '#00b4d880',
             'rgba(0,119,182,0.8)',
         ];
+
+        /**
+         * Stores last raw value typed by user in editable input.
+         * Used to avoid aggressive normalization while typing.
+         * @type {string|null}
+         * @private
+         */
+        this._manualInputValue = null;
     }
 
     /**
@@ -100,7 +109,12 @@ export default class ColorPicker extends WJElement {
      * @param {string} value The new color swatches.
      */
     set swatches(value) {
-        this.setAttribute('swatches', value.split(','));
+        if (Array.isArray(value)) {
+            this.setAttribute('swatches', value.join(','));
+            return;
+        }
+
+        this.setAttribute('swatches', this.parseSwatches(value).join(','));
     }
 
     /**
@@ -108,8 +122,23 @@ export default class ColorPicker extends WJElement {
      * @returns {Array} The current color swatches.
      */
     get swatches() {
-        this._swatches = this.getAttribute('swatches') ? this.getAttribute('swatches').split(',') : this._swatches;
+        this._swatches = this.getAttribute('swatches') ? this.parseSwatches(this.getAttribute('swatches')) : this._swatches;
         return this._swatches;
+    }
+
+    /**
+     * Normalizes swatch colors from a string to an array.
+     * Supports comma and semicolon separators.
+     * @param {string} value
+     * @returns {string[]}
+     */
+    parseSwatches(value = '') {
+        if (typeof value !== 'string') return [];
+
+        return value
+            .split(/[;,]/)
+            .map((item) => item.trim())
+            .filter(Boolean);
     }
 
     /**
@@ -172,6 +201,26 @@ export default class ColorPicker extends WJElement {
      */
     get noSwatches() {
         return this.hasAttribute('no-swatches');
+    }
+
+    /**
+     * Enables/disables manual typing in the input.
+     * @param {boolean} value
+     */
+    set inputEditable(value) {
+        if (value) {
+            this.setAttribute('input-editable', '');
+        } else {
+            this.removeAttribute('input-editable');
+        }
+    }
+
+    /**
+     * Returns true when manual input typing is enabled.
+     * @returns {boolean}
+     */
+    get inputEditable() {
+        return this.hasAttribute('input-editable');
     }
 
     className = 'ColorPicker';
@@ -270,11 +319,37 @@ export default class ColorPicker extends WJElement {
 
         let input = document.createElement('wje-input');
         input.setAttribute('variant', 'standard');
-        if(!this.noColorArea || !this.noControls || !this.noSwatches)
+        input.setAttribute('maxlength', '9');
+        if ((!this.noColorArea || !this.noControls || !this.noSwatches) && !this.inputEditable)
             input.setAttribute('readonly', '');
         input.classList.add('input');
-        input.addEventListener('wje-input:input', (e) => {
-            this.setColor(tinycolor(input.value), 'swatch');
+        input.addEventListener('wje-input:input', () => {
+            let rawValue = (input.value || '').trim();
+
+            // Guard against excessively long manual input (with/without # prefix).
+            const hasHashPrefix = rawValue.startsWith('#');
+            const maxLength = hasHashPrefix ? 9 : 8;
+            if (rawValue.length > maxLength) {
+                rawValue = rawValue.slice(0, maxLength);
+                input.value = rawValue;
+            }
+
+            // For hex typing, update color only when user has at least 6 hex chars (RRGGBB).
+            const hexCandidate = hasHashPrefix ? rawValue.slice(1) : rawValue;
+            const isHex = /^[0-9a-fA-F]+$/.test(hexCandidate);
+            if (isHex) {
+                if (hexCandidate.length < 6) return;
+                if (![6, 8].includes(hexCandidate.length)) return;
+            }
+
+            const parsedColor = tinycolor(isHex ? `#${hexCandidate}` : rawValue);
+            if (!parsedColor.isValid()) return;
+
+            // Keep hue/alpha controls in sync when color is typed manually.
+            this._manualInputValue = rawValue;
+            this.setSliders(parsedColor.toHex8String());
+            this.setColor(parsedColor, 'input');
+            this._manualInputValue = null;
         });
 
         // APPEND
@@ -349,10 +424,13 @@ export default class ColorPicker extends WJElement {
         swatches.classList.add('swatches');
 
         this.swatches.forEach((swatch) => {
+            if (!tinycolor(swatch).isValid()) return;
+
             let button = document.createElement('button');
+            button.setAttribute('type', 'button');
             button.classList.add('swatch');
             button.style.setProperty('--wje-color-picker-swatch', swatch);
-            button.addEventListener('click', (e) => {
+            button.addEventListener('click', () => {
                 this.setSliders(swatch);
                 this.setColor(tinycolor(swatch), 'swatch');
             });
@@ -411,11 +489,13 @@ export default class ColorPicker extends WJElement {
         this.colorAreaDimension = this.dimension();
         const pointer = this.getPointerPosition(e);
 
-        let x = pointer.x - this.colorAreaDimension.x;
-        let y = pointer.y - this.colorAreaDimension.y;
+        const x = pointer.x - this.colorAreaDimension.x;
+        const y = pointer.y - this.colorAreaDimension.y;
+        const markerPosition = this.clampMarkerPosition(x, y);
+        const alpha = Number(this.alphaSlider?.value || 100);
 
-        this.setColor(this.setColorAtPosition(x, y), 'marker');
-        this.setMarkerPosition(x, y);
+        this.setColor(this.setColorAtPosition(markerPosition.x, markerPosition.y, alpha), 'marker');
+        this.setMarkerPosition(markerPosition.x, markerPosition.y);
     };
 
     /**
@@ -437,18 +517,35 @@ export default class ColorPicker extends WJElement {
      * @param y
      */
     setMarkerPosition(x, y) {
-        // Make sure the marker doesn't go out of bounds
-        x = x < 0 ? 0 : x > this.colorAreaDimension.width ? this.colorAreaDimension.width : x;
-        y = y < 0 ? 0 : y > this.colorAreaDimension.height ? this.colorAreaDimension.height : y;
+        const markerPosition = this.clampMarkerPosition(x, y);
 
         this.markerPosition = {
-            x: x,
-            y: y,
+            x: markerPosition.x,
+            y: markerPosition.y,
         };
 
         // Set the position
-        this.marker.style.left = `${x}px`;
-        this.marker.style.top = `${y}px`;
+        this.marker.style.left = `${markerPosition.x}px`;
+        this.marker.style.top = `${markerPosition.y}px`;
+    }
+
+    /**
+     * Clamps marker coordinates to the color area boundaries.
+     * @param {number} x
+     * @param {number} y
+     * @returns {{x: number, y: number}}
+     */
+    clampMarkerPosition(x, y) {
+        const width = this.colorAreaDimension?.width || 0;
+        const height = this.colorAreaDimension?.height || 0;
+
+        const safeX = Number.isFinite(x) ? x : 0;
+        const safeY = Number.isFinite(y) ? y : 0;
+
+        return {
+            x: Math.min(Math.max(safeX, 0), width),
+            y: Math.min(Math.max(safeY, 0), height),
+        };
     }
 
     /**
@@ -459,11 +556,28 @@ export default class ColorPicker extends WJElement {
      * @returns {*|tinycolor}
      */
     setColorAtPosition(x, y, alpha = 100) {
+        const markerPosition = this.clampMarkerPosition(x, y);
+        const width = this.colorAreaDimension?.width || 0;
+        const height = this.colorAreaDimension?.height || 0;
+        const safeAlpha = Number.isFinite(Number(alpha)) ? Number(alpha) : 100;
+
+        // In variants without color-area we keep current saturation/value.
+        if (width <= 0 || height <= 0) {
+            const fallbackHsv = tinycolor(this.input?.value || this.color).toHsv();
+
+            return tinycolor({
+                h: this.hueSlider.value * 1,
+                s: fallbackHsv.s,
+                v: fallbackHsv.v,
+                a: Math.max(0, Math.min(100, safeAlpha)) / 100,
+            });
+        }
+
         const hsva = {
             h: this.hueSlider.value * 1,
-            s: (x / this.colorAreaDimension.width) * 100,
-            v: 100 - (y / this.colorAreaDimension.height) * 100,
-            a: alpha / 100,
+            s: (markerPosition.x / width) * 100,
+            v: 100 - (markerPosition.y / height) * 100,
+            a: Math.max(0, Math.min(100, safeAlpha)) / 100,
         };
 
         return tinycolor(hsva);
@@ -476,16 +590,21 @@ export default class ColorPicker extends WJElement {
      */
     setMarkerPositionByColor = (color = 'red') => {
         let hsva = tinycolor(color).toHsv();
+        const width = this.colorAreaDimension?.width || 0;
+        const height = this.colorAreaDimension?.height || 0;
+        const safeS = Number.isFinite(hsva.s) ? hsva.s : 0;
+        const safeV = Number.isFinite(hsva.v) ? hsva.v : 0;
+
         return {
-            x: this.colorAreaDimension.width * hsva.s,
-            y: this.colorAreaDimension.height - this.colorAreaDimension.height * hsva.v,
+            x: width * safeS,
+            y: height - height * safeV,
         };
     }
 
     /**
      * Updates the color picker's current color and its associated UI elements.
      * @param {tinycolor.Instance|null} [color] The color value to set. If null, the current value from the input field is used.
-     * @param {string} [type] The type of action determining which UI element to update. Possible values: "marker", "hue", "alpha", "swatch".
+     * @param {string} [type] The type of action determining which UI element to update. Possible values: "marker", "hue", "alpha", "swatch", "input".
      */
     setColor = (color = null, type = '') => {
         let currentColor = color;
@@ -497,7 +616,6 @@ export default class ColorPicker extends WJElement {
 
         // SET: marker - HEX8
         if (type === 'marker') {
-            this.alphaSlider.value = 100;
             this.alphaSlider.style.setProperty('--wje-color-picker-value', currentColor.toHexString());
             this.colorPreview.style.setProperty('--wje-color-picker-value', currentColor.toHex8String());
             this.picker.style.setProperty('--wje-color-picker-value', currentColor.toHexString());
@@ -512,13 +630,14 @@ export default class ColorPicker extends WJElement {
                 this.alphaSlider.value
             );
 
-            currentColor = tinycolor(this.getHSVA(this.hueSlider.value, this.alphaSlider.value));
+            const hueColor = this.getHueAreaColor(this.getHSVA(this.hueSlider.value, 100));
 
             this.colorPreview.style.setProperty('--wje-color-picker-value', markerColorByPosition.toHex8String());
             this.marker.style.setProperty('--wje-color-picker-value', markerColorByPosition.toHexString());
-            this.alphaSlider.style.setProperty('--wje-color-picker-value', currentColor.toHexString());
-            this.colorArea.style.setProperty('--wje-color-picker-area', currentColor.toHexString());
+            this.alphaSlider.style.setProperty('--wje-color-picker-value', markerColorByPosition.toHexString());
+            this.colorArea.style.setProperty('--wje-color-picker-area', hueColor);
             this.input.value = markerColorByPosition.toHex8String();
+            currentColor = markerColorByPosition;
         }
 
         // SET: alpha - HEX8
@@ -531,18 +650,24 @@ export default class ColorPicker extends WJElement {
         }
 
         // SET: swatch - HEX
-        if (type === 'swatch' || type === 'init') {
+        if (type === 'swatch' || type === 'init' || type === 'input') {
             this.colorPreview.style.setProperty('--wje-color-picker-value', currentColor.toHex8String());
             this.marker.style.setProperty('--wje-color-picker-value', currentColor.toHexString());
             this.alphaSlider.style.setProperty('--wje-color-picker-value', currentColor.toHexString());
-            this.colorArea.style.setProperty('--wje-color-picker-area', currentColor.toHex8String());
+            this.colorArea.style.setProperty('--wje-color-picker-area', this.getHueAreaColor(currentColor.toHex8String()));
 
             this.markerPosition = this.setMarkerPositionByColor(currentColor.toHex8String());
             this.setMarkerPosition(this.markerPosition.x, this.markerPosition.y);
         }
 
+        if (!currentColor?.isValid()) return;
+
         if(!this.noColorArea || !this.noControls || !this.noSwatches) {
-            this.input.value = currentColor.toHex8String();
+            if (type === 'input' && this.inputEditable && typeof this._manualInputValue === 'string') {
+                this.input.value = this._manualInputValue;
+            } else {
+                this.input.value = currentColor.toHex8String();
+            }
         }
 
         this.anchor.style.setProperty('--wje-color-picker-value', currentColor.toHexString());
@@ -593,5 +718,23 @@ export default class ColorPicker extends WJElement {
      */
     getHSVA = (hue, alpha) => {
         return `hsva(${hue}, 100%, 100%, ${alpha / 100})`;
+    }
+
+    /**
+     * Returns fully saturated and bright color for the current hue.
+     * Used as base color for the SV area so neutral grays do not black out the palette.
+     * @param {string} color
+     * @returns {string}
+     */
+    getHueAreaColor(color = '#ff0000') {
+        const hsv = tinycolor(color).toHsv();
+        const hue = Number.isFinite(hsv.h) ? hsv.h : Number(this.hueSlider?.value || 0);
+
+        return tinycolor({
+            h: hue,
+            s: 100,
+            v: 100,
+            a: 1,
+        }).toHexString();
     }
 }

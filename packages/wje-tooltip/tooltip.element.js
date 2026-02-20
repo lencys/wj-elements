@@ -16,11 +16,13 @@ import styles from './styles/styles.css?inline';
  * @tag wje-tooltip
  */
 export default class Tooltip extends WJElement {
+    static _instanceId = 0;
     /**
      * Creates an instance of Tooltip.
      */
     constructor() {
         super();
+        this._instanceId = ++Tooltip._instanceId;
     }
 
     /**
@@ -78,6 +80,7 @@ export default class Tooltip extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.setAriaState({ role: 'tooltip' });
     }
 
     /**
@@ -93,6 +96,7 @@ export default class Tooltip extends WJElement {
 
         // SLOT - Anchor
         let slot = document.createElement('slot');
+        slot.setAttribute('name', 'anchor');
         slot.setAttribute('slot', 'anchor');
 
         let arrow = document.createElement('div');
@@ -135,10 +139,32 @@ export default class Tooltip extends WJElement {
      * Draws the component for the tooltip.
      */
     afterDraw() {
-        let anchorEl = this.mySlot.assignedElements()[0];
-        if (this.selector) {
-            anchorEl = this.checkSelector(anchorEl);
-        }
+        const resolveAnchor = () => {
+            let anchorEl = this.mySlot.assignedElements()[0];
+            if (!anchorEl) {
+                anchorEl = this.querySelector(':scope > *:not([slot])');
+                if (anchorEl) anchorEl.setAttribute('slot', 'anchor');
+            }
+            if (this.selector) {
+                anchorEl = this.checkSelector(anchorEl);
+            }
+
+            if (!anchorEl) return null;
+
+            const tooltipId = this.id || `wje-tooltip-${this._instanceId}`;
+            if (!this.id) this.id = tooltipId;
+            anchorEl.setAttribute('aria-describedby', tooltipId);
+            return anchorEl;
+        };
+
+        this.onSlotChange = () => {
+            resolveAnchor();
+        };
+
+        this.mySlot.addEventListener('slotchange', this.onSlotChange);
+        this.onSlotChange();
+
+        let anchorEl = resolveAnchor();
 
         if (!anchorEl) return;
 
@@ -153,6 +179,7 @@ export default class Tooltip extends WJElement {
         event.removeListener(this, 'wje-dropdown:close', null, this.onShow);
         event.removeListener(this, 'mouseenter', null, this.onShow);
         event.removeListener(this, 'mouseleave', null, this.onHide);
+        this.mySlot?.removeEventListener('slotchange', this.onSlotChange);
     }
 
     dispatch(customEvent) {

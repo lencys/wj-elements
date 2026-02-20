@@ -10,11 +10,13 @@ import styles from './styles/styles.css?inline';
  * @tag wje-accordion
  */
 export default class AccordionItem extends WJElement {
+    static _instanceId = 0;
     /**
      * Constructor for the AccordionItem class.
      */
     constructor() {
         super();
+        this._instanceId = ++AccordionItem._instanceId;
     }
 
     /**
@@ -60,6 +62,8 @@ export default class AccordionItem extends WJElement {
         let headline = document.createElement('div');
         headline.setAttribute('part', 'headline');
         headline.classList.add('headline');
+        const baseId = this.id || `wje-accordion-item-${this._instanceId}`;
+        headline.id = `${baseId}-header`;
 
         let headlineDescription = document.createElement('slot');
         headlineDescription.setAttribute('part', 'description');
@@ -77,7 +81,9 @@ export default class AccordionItem extends WJElement {
 
         let content = document.createElement('div');
         content.setAttribute('part', 'content');
-        content.setAttribute('id', 'content');
+        content.setAttribute('id', `${baseId}-panel`);
+        content.setAttribute('role', 'region');
+        content.setAttribute('aria-labelledby', headline.id);
 
         let slot = document.createElement('slot');
         slot.setAttribute('name', 'content');
@@ -97,6 +103,7 @@ export default class AccordionItem extends WJElement {
 
         this.headline = headline;
         this.toggle = toggle;
+        this.content = content;
 
         return fragment;
     }
@@ -106,6 +113,11 @@ export default class AccordionItem extends WJElement {
      */
     afterDraw() {
         if (!this.classList.contains('expanded')) this.classList.add('collapsed');
+
+        this.headline.setAttribute('role', 'button');
+        this.headline.setAttribute('tabindex', '0');
+        this.headline.setAttribute('aria-controls', this.content.id);
+        this.headline.setAttribute('aria-expanded', this.classList.contains('expanded') ? 'true' : 'false');
 
         this.headline.addEventListener('click', () => {
             if (this.classList.contains('collapsed')) {
@@ -118,6 +130,13 @@ export default class AccordionItem extends WJElement {
                 this.collapse();
             }
         });
+
+        this.headline.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.headline.click();
+            }
+        });
     }
 
     /**
@@ -126,6 +145,7 @@ export default class AccordionItem extends WJElement {
     collapse = () => {
         this.classList.remove('expanded');
         this.classList.add('collapsed');
+        this.headline?.setAttribute('aria-expanded', 'false');
     };
 
     /**
@@ -134,5 +154,6 @@ export default class AccordionItem extends WJElement {
     expand = () => {
         this.classList.remove('collapsed');
         this.classList.add('expanded');
+        this.headline?.setAttribute('aria-expanded', 'true');
     };
 }

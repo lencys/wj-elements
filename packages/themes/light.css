@@ -227,7 +227,7 @@
     [ Skeleton ]
     */
     --wje-skeleton-bg: var(--wje-color-contrast-3);
-    --wje-skeleton-bg-strong: var(--wje-color-contrast-4);
+    --wje-skeleton-bg-strong: var(--wje-color-contrast-5);
     --wje-skeleton-highlight: rgba(255, 255, 255, 0.45);
     --wje-skeleton-radius: var(--wje-border-radius-pill);
     --wje-skeleton-height: var(--wje-size-small);

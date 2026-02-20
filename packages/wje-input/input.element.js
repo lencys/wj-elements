@@ -29,6 +29,7 @@ import styles from './styles/styles.css?inline';
  * // @fires wje-input:clear - Dispatched when the input is cleared.
  */
 export default class Input extends FormAssociatedElement {
+    static _instanceId = 0;
     /**
      * Creates an instance of Input.
      */
@@ -37,6 +38,7 @@ export default class Input extends FormAssociatedElement {
 
         this.invalid = false;
         this.pristine = true;
+        this._instanceId = ++Input._instanceId;
     }
 
     /**
@@ -50,6 +52,7 @@ export default class Input extends FormAssociatedElement {
 
         this.pristine = false;
         this._value = value;
+        this.syncAria();
     }
 
     /**
@@ -228,7 +231,7 @@ export default class Input extends FormAssociatedElement {
      * @returns {Array} The attributes to observe for changes.
      */
     static get observedAttributes() {
-        return ['type', 'value', 'name', 'disabled', 'placeholder', 'label', 'message', 'error-inline'];
+        return ['type', 'value', 'name', 'disabled', 'placeholder', 'label', 'message', 'error-inline', 'required', 'readonly', 'invalid'];
     }
 
     /**
@@ -241,6 +244,39 @@ export default class Input extends FormAssociatedElement {
             this.value = this.defaultValue;
             this.pristine = false;
         }
+        this.syncAria();
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        super.attributeChangedCallback?.(name, oldValue, newValue);
+        if (oldValue === newValue) return;
+
+        if (!this.input) {
+            this.syncAria();
+            return;
+        }
+
+        if (name === 'value') {
+            this._value = newValue ?? '';
+            this.input.value = this.value;
+            this.internals.setFormValue(this.value);
+        } else if (name === 'type') {
+            this.input.type = this.getAttribute('type') || 'text';
+        } else if (name === 'name') {
+            this.input.name = this.name;
+        } else if (name === 'disabled') {
+            this.input.disabled = this.disabled;
+        } else if (name === 'required') {
+            this.input.required = this.required;
+        } else if (name === 'readonly') {
+            this.input.readOnly = this.hasAttribute('readonly');
+        } else if (name === 'placeholder') {
+            this.input.placeholder = this.placeholder;
+        } else if (name === 'label') {
+            if (this.labelElement) this.labelElement.innerText = this.label || '';
+        }
+
+        this.syncAria();
     }
 
     /**
@@ -292,6 +328,8 @@ export default class Input extends FormAssociatedElement {
         let errorSlot = document.createElement('slot');
         errorSlot.setAttribute('name', 'error');
         errorSlot.setAttribute('part', 'error-slot');
+        this._ariaErrorId = this.id ? `${this.id}-error` : `wje-input-${this._instanceId}-error`;
+        errorSlot.id = this._ariaErrorId;
 
         let error = document.createElement('div');
         error.setAttribute('slot', 'error');
@@ -355,6 +393,7 @@ export default class Input extends FormAssociatedElement {
         this.input = input;
         this.errorMessage = error;
 
+        this.syncAria();
         return fragment;
     }
 
@@ -422,6 +461,25 @@ export default class Input extends FormAssociatedElement {
             this.showInvalidMessage();
         }
 
+        this.syncAria();
+    }
+
+    /**
+     * Syncs ARIA attributes on the host element.
+     */
+    syncAria() {
+        const requiredInvalid = this.required && !this.value;
+        const invalid = this.invalid || requiredInvalid;
+        const label = this.label && this.label !== false ? this.label.trim() : '';
+        this.setAriaState({
+            role: 'textbox',
+            disabled: this.disabled,
+            required: this.required,
+            readonly: this.hasAttribute('readonly'),
+            invalid,
+            describedBy: this._ariaErrorId,
+            ...(label ? { label } : {}),
+        });
     }
 
     /**

@@ -21,6 +21,11 @@ export default class WJElement extends HTMLElement {
 	constructor() {
 		super();
 
+		// Initialize ElementInternals when supported.
+		if (typeof this.attachInternals === 'function') {
+			this.internals = this.attachInternals();
+		}
+
 		this.#isAttached = false;
 		this.service = new UniversalService({
 			store: store,
@@ -188,6 +193,41 @@ export default class WJElement extends HTMLElement {
 	 */
 	get store() {
 		return store;
+	}
+
+	/**
+	 * Returns ElementInternals when available.
+	 * @returns {ElementInternals|null}
+	 */
+	getInternals() {
+		return this.internals || null;
+	}
+
+	/**
+	 * Sets ARIA state via attributes.
+	 * Accepts camelCase keys without the "aria" prefix, plus "role".
+	 * Example: setAriaState({ role: 'tab', selected: true, controls: 'panel-1' })
+	 * @param {object} state
+	 */
+	setAriaState(state = {}) {
+		if (!state || typeof state !== 'object') return;
+
+		Object.entries(state).forEach(([key, value]) => {
+			if (value === undefined || value === null) return;
+
+			if (key === 'role') {
+				this.setAttribute('role', value);
+				return;
+			}
+
+			let attr;
+			if (key === 'labelledBy') attr = 'aria-labelledby';
+			else if (key === 'describedBy') attr = 'aria-describedby';
+			else attr = `aria-${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`;
+			// Convert booleans to "true"/"false" strings for aria attributes.
+			const normalized = (typeof value === 'boolean') ? (value ? 'true' : 'false') : value;
+			this.setAttribute(attr, normalized);
+		});
 	}
 
 	/**

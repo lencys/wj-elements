@@ -26,11 +26,13 @@ import styles from './styles/styles.css?inline';
  */
 
 export default class Dialog extends WJElement {
+    static _instanceId = 0;
     /**
      * @class
      */
     constructor() {
         super();
+        this._instanceId = ++Dialog._instanceId;
     }
 
     /**
@@ -183,6 +185,8 @@ export default class Dialog extends WJElement {
      * @param dialog
      */
     htmlDialogBody(dialog) {
+        const dialogId = this.id || `wje-dialog-${this._instanceId}`;
+
         let icon = document.createElement('wje-icon');
         icon.setAttribute('name', 'x');
         icon.setAttribute('slot', 'icon-only');
@@ -191,6 +195,7 @@ export default class Dialog extends WJElement {
         close.setAttribute('fill', 'link');
         close.setAttribute('size', 'small');
         close.setAttribute('part', 'close');
+        close.setAttribute('aria-label', 'Close dialog');
         close.addEventListener('click', (e) => {
             this.close(e);
         });
@@ -198,6 +203,7 @@ export default class Dialog extends WJElement {
         let header = document.createElement('div');
         header.setAttribute('part', 'header');
         header.classList.add('dialog-header');
+        header.id = `${dialogId}-header`;
         if (this.hasAttribute('headline'))
             header.innerHTML = `<span part="headline">${this.headline}</span>`;
 
@@ -214,6 +220,7 @@ export default class Dialog extends WJElement {
         let body = document.createElement('div');
         body.setAttribute('part', 'body');
         body.classList.add('dialog-content');
+        body.id = `${dialogId}-body`;
 
         let footer = document.createElement('div');
         footer.setAttribute('part', 'footer');
@@ -237,8 +244,35 @@ export default class Dialog extends WJElement {
         dialog.appendChild(body);
         if (!this.hiddenFooter) dialog.appendChild(footer);
 
-        // Slot assignment may not be reflected synchronously on first render.
-        // Run in a microtask to ensure assignedNodes() sees slotted content.
+        dialog.setAttribute('role', 'dialog');
+        dialog.setAttribute('aria-modal', 'true');
+        dialog.setAttribute('aria-describedby', body.id);
+        if (!this.hiddenHeader) {
+            dialog.setAttribute('aria-labelledby', header.id);
+        } else {
+            dialog.removeAttribute('aria-labelledby');
+        }
+
+        const ariaState = {
+            role: 'dialog',
+            modal: true,
+            describedBy: body.id,
+        };
+
+        if (!this.hiddenHeader) {
+            ariaState.labelledBy = header.id;
+            this.removeAttribute('aria-label');
+        } else {
+            this.removeAttribute('aria-labelledby');
+            if (this.headline) {
+                ariaState.label = this.headline;
+            } else {
+                this.removeAttribute('aria-label');
+            }
+        }
+
+        this.setAriaState(ariaState);
+
         Promise.resolve().then(() => this.updateHasFooter());
     }
 

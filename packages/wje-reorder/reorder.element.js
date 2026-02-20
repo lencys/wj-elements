@@ -59,6 +59,7 @@ export default class Reorder extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -88,6 +89,7 @@ export default class Reorder extends WJElement {
      * Adds event listeners after the component is drawn.
      */
     afterDraw() {
+        this.syncAria();
         const items = this.querySelectorAll('wje-reorder-item');
         const dropZones = this.querySelectorAll('wje-reorder-dropzone');
         this.container.classList.add(this.hasAttribute('reverse') ? 'reversed' : 'basic');
@@ -108,6 +110,15 @@ export default class Reorder extends WJElement {
                     this.attachEventListeners(element);
                 });
             });
+        }
+    }
+
+    /**
+     * Sync ARIA attributes on host.
+     */
+    syncAria() {
+        if (!this.hasAttribute('role')) {
+            this.setAriaState({ role: 'list' });
         }
     }
 

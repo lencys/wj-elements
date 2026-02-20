@@ -133,6 +133,7 @@ export default class Breadcrumbs extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.setAriaState({ role: 'navigation' });
     }
 
     /**

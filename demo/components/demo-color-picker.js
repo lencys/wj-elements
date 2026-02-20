@@ -19,6 +19,19 @@ template.innerHTML = `<h1>Color Picker</h1>
       </div>
     </div>
     
+    <!-- INPUT EDITABLE -->
+
+    <h2>Input Editable</h2>
+    <p class="description">
+      Variant s atribútom <span class="tok attr">input-editable</span>, ktorý umožní písať farbu
+      priamo do inputu (napr. <span class="tok attr">#4a4a4a</span> alebo <span class="tok attr">#4a4a4aff</span>).
+    </p>
+    <div class="playground">
+      <div class="content">
+        <wje-color-picker color="#00b4d8" input-editable></wje-color-picker>
+      </div>
+    </div>
+    
     <!-- MINIMAL -->
 
     <h2>Minimal</h2>

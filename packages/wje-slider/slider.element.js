@@ -27,6 +27,10 @@ export default class Slider extends WJElement {
             this.input.value = value;
             this.setHandlePosition();
         }
+        if (this.output && this.hasAttribute('bubble')) {
+            this.output.innerHTML = value;
+            setTimeout(this.setBubble, 0);
+        }
     }
 
     /**
@@ -102,7 +106,41 @@ export default class Slider extends WJElement {
      * @returns {Array<string>}
      */
     static get observedAttributes() {
-        return ['max'];
+        return ['max', 'min', 'step', 'value', 'disabled', 'bubble'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (oldValue === newValue) return;
+
+        // Avoid full re-render for slider updates; update DOM in place.
+        if (['max', 'min', 'step', 'value', 'disabled', 'bubble'].includes(name)) {
+            if (this.input) {
+                if (name === 'min') this.input.min = this.min;
+                if (name === 'max') this.input.max = this.max;
+                if (name === 'step') this.input.step = this.step;
+                if (name === 'value') this.input.value = this.value;
+                if (name === 'disabled') this.input.disabled = this.hasAttribute('disabled');
+            }
+
+            if (name === 'bubble' && this.output) {
+                if (this.hasAttribute('bubble')) {
+                    this.output.removeAttribute('hidden');
+                    this.output.innerHTML = this.input?.value ?? this.value;
+                    setTimeout(this.setBubble, 0);
+                } else {
+                    this.output.setAttribute('hidden', '');
+                }
+            }
+
+            if (['min', 'max', 'value', 'disabled'].includes(name) && this.input) {
+                this.setHandlePosition?.();
+                this.syncAria();
+            }
+
+            return;
+        }
+
+        super.attributeChangedCallback?.(name, oldValue, newValue);
     }
 
     /**
@@ -110,6 +148,7 @@ export default class Slider extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -151,6 +190,7 @@ export default class Slider extends WJElement {
         input.part = 'slider';
         input.setAttribute('autocomplete', 'off');
         input.setAttribute('color', this.color || '');
+        if (this.hasAttribute('disabled')) input.disabled = true;
 
         input.addEventListener('input', null, (e) => {
             this.setHandlePosition(e.target);
@@ -170,6 +210,7 @@ export default class Slider extends WJElement {
         this.input = input;
         this.output = output;
 
+        this.syncAria();
         return fragment;
     }
 
@@ -215,15 +256,32 @@ export default class Slider extends WJElement {
                 output: this.output,
             });
         });
+
+        this.syncAria();
     }
 
     /**
      * Sets the handle position of the slider.
      */
     setHandlePosition = () => {
+        if (!this.input) return;
         this.input.style.backgroundSize =
             this.getPercentage(this.input.min, this.input.max, this.input.value) + '% 100%';
+        this.syncAria();
     };
+
+    /**
+     * Syncs ARIA attributes on the host element.
+     */
+    syncAria() {
+        this.setAriaState({
+            role: 'slider',
+            valuemin: this.min,
+            valuemax: this.max,
+            valuenow: this.value,
+            disabled: this.hasAttribute('disabled'),
+        });
+    }
 
     /**
      * Updates the position and content of a bubble element based on the input value.

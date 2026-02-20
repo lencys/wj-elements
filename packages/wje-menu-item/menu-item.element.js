@@ -156,6 +156,7 @@ export default class MenuItem extends WJElement {
     setupAttributes() {
         super.setupAttributes();
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -273,6 +274,7 @@ export default class MenuItem extends WJElement {
         this.native = native;
         this.submenu = submenu;
 
+        this.syncAria();
         return fragment;
     }
 
@@ -305,6 +307,22 @@ export default class MenuItem extends WJElement {
         }
     }
 
+    /**
+     * Syncs ARIA attributes based on menu item state.
+     */
+    syncAria() {
+        const hasSubmenu = !!this.hasSubmenu;
+        const expanded = this.classList.contains('expanded-submenu') || this.native?.classList?.contains('expanded-submenu');
+        const disabled = this.hasAttribute('disabled');
+
+        this.setAriaState({
+            role: 'menuitem',
+            disabled,
+            haspopup: hasSubmenu ? 'menu' : undefined,
+            expanded: hasSubmenu ? expanded : undefined,
+        });
+    }
+
     mouseenterHandler = (e) => {
         if (this.collapse || (this.variant === 'CONTEXT' && this.hasSubmenu)) {
             if (this.hasAttribute('manual') || (this.variant === 'NAV' && this.collapse)) return;
@@ -326,6 +344,7 @@ export default class MenuItem extends WJElement {
      * @param {object} e
      */
     clickHandler = (e) => {
+        if (this.hasAttribute('disabled')) return;
         switch (this.variant) {
             case 'NAV':
                 if (!this.collapse && this.hasSubmenu) {
@@ -429,6 +448,7 @@ export default class MenuItem extends WJElement {
             this.popup?.show();
             this.classList.add('expanded-submenu');
             this.native.classList.add('expanded-submenu');
+            this.syncAria();
         }
     }
 
@@ -441,6 +461,7 @@ export default class MenuItem extends WJElement {
             this.popup?.hide();
             this.classList.remove('expanded-submenu');
             this.native.classList.remove('expanded-submenu');
+            this.syncAria();
         }
     }
 
@@ -455,8 +476,10 @@ export default class MenuItem extends WJElement {
             let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
             if (!submenuElements.hasAttribute('active')) {
                 submenuElements.setAttribute('active', '');
+                this.syncAria();
             } else {
                 if (this === e.target) submenuElements.removeAttribute('active');
+                this.syncAria();
             }
         }
     }
@@ -469,6 +492,7 @@ export default class MenuItem extends WJElement {
             let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
             if (submenuElements?.hasAttribute('active')) {
                 submenuElements?.removeAttribute('active');
+                this.syncAria();
             }
         }
     }
@@ -481,6 +505,7 @@ export default class MenuItem extends WJElement {
             let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
             if (!submenuElements?.hasAttribute('active')) {
                 submenuElements?.setAttribute('active', '');
+                this.syncAria();
             }
         }
     }

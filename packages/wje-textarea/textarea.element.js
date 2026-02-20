@@ -27,6 +27,7 @@ import styles from './styles/styles.css?inline';
  */
 
 export default class Textarea extends FormAssociatedElement {
+    static _instanceId = 0;
     /**
      * Creates an instance of Textarea.
      * @class
@@ -36,6 +37,7 @@ export default class Textarea extends FormAssociatedElement {
 
         this.invalid = false;
         this.pristine = true;
+        this._instanceId = ++Textarea._instanceId;
     }
 
     /**
@@ -49,6 +51,7 @@ export default class Textarea extends FormAssociatedElement {
 
         this.pristine = false;
         this._value = value;
+        this.syncAria();
     }
 
     /**
@@ -57,6 +60,27 @@ export default class Textarea extends FormAssociatedElement {
      */
     get value() {
         return this.input?.value ?? this._value ?? '';
+    }
+
+    /**
+     * Sets the label attribute of the element.
+     * @param {string} value The value to set as the label attribute.
+     */
+    set label(value) {
+        if (value === null || value === undefined) {
+            this.removeAttribute('label');
+        } else {
+            this.setAttribute('label', value);
+        }
+    }
+
+    /**
+     * Retrieves the value of the 'label' attribute if it exists.
+     * If the 'label' attribute is not set, it returns false.
+     * @returns {string|boolean} The value of the 'label' attribute as a string, or false if the attribute is not set.
+     */
+    get label() {
+        return this.getAttribute('label') || false;
     }
 
     /**
@@ -108,7 +132,7 @@ export default class Textarea extends FormAssociatedElement {
      * @returns {Array<string>}
      */
     static get observedAttributes() {
-        return [];
+        return ['value', 'name', 'disabled', 'placeholder', 'label', 'required', 'readonly', 'invalid', 'rows'];
     }
 
     /**
@@ -119,9 +143,45 @@ export default class Textarea extends FormAssociatedElement {
 
         // if some value was set via value setter then don't use default value
         if (this.pristine) {
-            this.value = this.innerHTML;
+            const attrValue = this.getAttribute('value');
+            this.value = attrValue !== null ? attrValue : this.innerHTML;
             this.pristine = false;
         }
+        this.syncAria();
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (oldValue === newValue) return;
+
+        if (name === 'label') {
+            this.refresh();
+            return;
+        }
+
+        if (!this.input) {
+            this.syncAria();
+            return;
+        }
+
+        if (name === 'value') {
+            this._value = newValue ?? '';
+            this.input.value = this.value;
+            this.internals.setFormValue(this.value);
+        } else if (name === 'name') {
+            this.input.name = this.name;
+        } else if (name === 'disabled') {
+            this.input.disabled = this.hasAttribute('disabled');
+        } else if (name === 'required') {
+            this.input.required = this.required;
+        } else if (name === 'readonly') {
+            this.input.readOnly = this.hasAttribute('readonly');
+        } else if (name === 'placeholder') {
+            this.input.placeholder = this.placeholder || '';
+        } else if (name === 'rows') {
+            this.input.rows = Number(newValue || 3);
+        }
+
+        this.syncAria();
     }
 
     /**
@@ -157,7 +217,7 @@ export default class Textarea extends FormAssociatedElement {
         input.placeholder = this.placeholder || '';
         input.classList.add('form-control');
         input.setAttribute('part', 'input');
-        input.setAttribute('rows', this.rows || 3);
+        input.rows = Number(this.getAttribute('rows') || 3);
         input.setAttribute('spellcheck', false);
 
         const attributes = Array.from(this.attributes).map((attr) => attr.name);
@@ -173,13 +233,17 @@ export default class Textarea extends FormAssociatedElement {
 
         let errorSlot = document.createElement('slot');
         errorSlot.setAttribute('name', 'error');
+        this._ariaErrorId = this.id ? `${this.id}-error` : `wje-textarea-${this._instanceId}-error`;
+        errorSlot.id = this._ariaErrorId;
 
-        if (this.resize === 'auto') input.addEventListener('input', this.setTextareaHeight);
+        if (this.getAttribute('resize') === 'auto') input.addEventListener('input', this.setTextareaHeight);
 
-        if (this.variant === 'standard') {
-            if (this.label) native.appendChild(label);
-        } else {
-            inputWrapper.appendChild(label);
+        if (this.label) {
+            if (this.variant === 'standard') {
+                native.appendChild(label);
+            } else {
+                inputWrapper.appendChild(label);
+            }
         }
 
         inputWrapper.appendChild(input);
@@ -209,6 +273,7 @@ export default class Textarea extends FormAssociatedElement {
         this.labelElement = label;
         this.input = input;
 
+        this.syncAria();
         return fragment;
     }
 
@@ -216,7 +281,10 @@ export default class Textarea extends FormAssociatedElement {
      * Sets up the event listeners after the component is drawn.
      */
     afterDraw() {
-        this.resizeObserver = new ResizeObserver(() => this.setTextareaHeight);
+        if (this.getAttribute('resize') === 'auto' && typeof ResizeObserver === 'function') {
+            this.resizeObserver = new ResizeObserver(() => this.setTextareaHeight());
+            this.resizeObserver.observe(this.input);
+        }
 
         if (!this.hasAttribute('disabled')) {
             event.addListener(this, 'click', 'wje-textarea:change');
@@ -271,10 +339,31 @@ export default class Textarea extends FormAssociatedElement {
         });
 
         this.validate();
+
+        this.syncAria();
+    }
+
+    /**
+     * Syncs ARIA attributes on the host element.
+     */
+    syncAria() {
+        const requiredInvalid = this.required && !this.value;
+        const invalid = this.invalid || requiredInvalid;
+        const label = this.label && this.label !== false ? this.label.trim() : '';
+        this.setAriaState({
+            role: 'textbox',
+            disabled: this.disabled,
+            required: this.required,
+            readonly: this.hasAttribute('readonly'),
+            invalid,
+            describedBy: this._ariaErrorId,
+            ...(label ? { label } : {}),
+        });
     }
 
     componentCleanup() {
         this.resizeObserver?.unobserve(this.input);
+        this.resizeObserver?.disconnect();
     }
 
     /**
@@ -282,6 +371,7 @@ export default class Textarea extends FormAssociatedElement {
      */
     beforeDisconnect() {
         this.resizeObserver?.unobserve(this.input);
+        this.resizeObserver?.disconnect();
     }
 
     /**

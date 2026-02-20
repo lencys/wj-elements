@@ -110,6 +110,22 @@ export default class Item extends WJElement {
     }
 
     /**
+     * Called after the component has been drawn.
+     */
+    afterDraw() {
+        this.syncAria();
+    }
+
+    /**
+     * Sync ARIA attributes on host.
+     */
+    syncAria() {
+        if (this.hostContext('wje-list', this) && !this.hasAttribute('role')) {
+            this.setAriaState({ role: 'listitem' });
+        }
+    }
+
+    /**
      * Determines if the given element or any of its ancestors matches the specified selector.
      * @param {string} selector The CSS selector to match against the element's ancestors.
      * @param {HTMLElement} el The element from which to start the search.

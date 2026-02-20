@@ -151,6 +151,31 @@ describe('<wje-select>', () => {
     });
   });
 
+  describe('aria', () => {
+    it('sets combobox role on host and listbox role on list', async () => {
+      const el = await fixture(html`
+        <wje-select id="country" label="Country">
+          ${checkTemplate()}
+          <wje-option value="sk" selected>Slovakia</wje-option>
+          <wje-option value="cz">Czechia</wje-option>
+        </wje-select>
+      `);
+      await el.updateComplete;
+
+      const list = el.shadowRoot.querySelector('.list');
+
+      expect(el.getAttribute('role')).to.equal('combobox');
+      expect(el.getAttribute('aria-haspopup')).to.equal('listbox');
+      expect(el.getAttribute('aria-controls')).to.equal(list.id);
+      expect(list.getAttribute('role')).to.equal('listbox');
+
+      const selectedOption = el.querySelector('wje-option[selected]');
+      await selectedOption.updateComplete;
+      expect(selectedOption.getAttribute('role')).to.equal('option');
+      expect(selectedOption.getAttribute('aria-selected')).to.equal('true');
+    });
+  });
+
   describe('attributes -> popup/options wiring', () => {
     it('sets popup offset from attribute', async () => {
       const el = await fixture(html`

@@ -26,6 +26,15 @@ describe('<wje-breadcrumbs>', () => {
             });
         });
 
+        it('sets navigation role on host and aria-current on last breadcrumb', async () => {
+            const lastBreadcrumb = el.querySelector('wje-breadcrumb:last-child');
+            await lastBreadcrumb.updateComplete;
+
+            expect(el.getAttribute('role')).to.equal('navigation');
+            expect(lastBreadcrumb.getAttribute('role')).to.equal('link');
+            expect(lastBreadcrumb.getAttribute('aria-current')).to.equal('page');
+        });
+
         it('checks if the last item has the "last" attribute', async () => {
             const lastBreadcrumb = el.querySelector('wje-breadcrumb:last-child');
             assert.isTrue(

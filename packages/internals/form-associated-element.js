@@ -5,7 +5,6 @@ export class FormAssociatedElement extends WJElement {
 
   constructor() {
     super();
-    this.internals = this.attachInternals();
   }
 
   /**

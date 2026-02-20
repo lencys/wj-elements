@@ -30,6 +30,12 @@ describe('Badge Component', () => {
         expect(native).to.exist;
         expect(native.querySelector('slot')).to.exist;
     });
+
+    it('sets ARIA role on host', async () => {
+        const el = await fixture(html`<wje-badge>New</wje-badge>`);
+        await el.updateComplete;
+        expect(el.getAttribute('role')).to.equal('status');
+    });
 });
 
 ['primary', 'success', 'neutral', 'warning', 'danger', 'info', 'default'].forEach((color) => {

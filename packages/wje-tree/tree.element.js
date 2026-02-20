@@ -58,6 +58,7 @@ export default class Tree extends WJElement {
      */
     setupAttributes() {
         this.isShadowRoot = 'open';
+        this.syncAria();
     }
 
     /**
@@ -107,6 +108,17 @@ export default class Tree extends WJElement {
      */
     afterDraw() {
         this.addEventListener('click', this.handleClick);
+        this.syncAria();
+    }
+
+    /**
+     * Syncs ARIA attributes on the host element.
+     */
+    syncAria() {
+        this.setAriaState({
+            role: 'tree',
+            multiselectable: this.selection === 'multiple' ? 'true' : undefined,
+        });
     }
 
     beforeDisconnect() {
@@ -121,7 +133,7 @@ export default class Tree extends WJElement {
      * @param {Event} e The click event object.
      */
     handleClick = (e) => {
-        e.preventDefault();
+        if (e?.preventDefault) e.preventDefault();
 
         let selectedItem = e.target.closest('wje-tree-item');
         let isClickButton = e.composedPath().some((el) => el?.classList?.contains('toggle'));

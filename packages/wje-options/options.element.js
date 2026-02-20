@@ -281,6 +281,7 @@ export default class Options extends WJElement {
 	 */
 	setupAttributes() {
 		this.isShadowRoot = 'open';
+		this.syncAria();
 	}
 
 	/**
@@ -292,6 +293,7 @@ export default class Options extends WJElement {
 
 		const slot = document.createElement('slot');
 		fragment.appendChild(slot);
+		this.syncAria();
 
 		if (this.lazy) {
 			if (this.contains(this.infiniteScroll)) {
@@ -352,6 +354,17 @@ export default class Options extends WJElement {
 		}
 
 		return fragment;
+	}
+
+	/**
+	 * Syncs ARIA attributes on the host element.
+	 */
+	syncAria() {
+		const isMultiple = this.closest('wje-select')?.hasAttribute('multiple');
+		this.setAriaState({
+			role: 'listbox',
+			multiselectable: isMultiple ? 'true' : undefined,
+		});
 	}
 
 	afterDraw() {

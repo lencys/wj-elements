@@ -68,6 +68,7 @@
         }
         .children {
             font-size: calc(1rem + var(--wje-tree-item-indent, var(--wje-spacing-medium)));
+            padding-inline-start: var(--wje-tree-item-indent, var(--wje-spacing-medium));
             display: none;
             &.open {
                 font-size: var(--wje-tree-item-font-size);
