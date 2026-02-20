@@ -36,7 +36,10 @@ export default defineConfig(({ mode }) => {
       },
     },
     plugins: [
-      dts()
+      dts({
+        entryRoot: '.',
+        outDir: 'dist',
+      })
     ],
     build: {
       assetsInlineLimit: 0,
