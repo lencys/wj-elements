@@ -1,34 +1,26 @@
 ---
-title: Next Steps
+title: Ďalšie kroky
 ---
 
 <head>
-  <title>Next Steps for Starting an App: Choose Your JavaScript Framework</title>
+  <title>Ďalšie kroky | Vývoj s WebJET Elements</title>
   <meta
     name="description"
-    content="In order to build an Ionic app, you first need to choose the JavaScript framework you plan to use. Learn more about next steps for starting an app with Ionic."
+    content="Pokračujte po inštalácii odporúčanými krokmi pre implementáciu WebJET Elements."
   />
 </head>
 
-import DocsCard from '@components/global/DocsCard';
-import DocsCards from '@components/global/DocsCards';
+## Ďalšie kroky pre vývojárov
 
-import DeveloperExperts from '@components/page/intro/next/DeveloperExperts';
+Po inštalácii pokračujte týmto postupom:
 
-## Build Your First App
+1. Načítajte WebJET štýly a balík komponentov v entry pointe aplikácie.
+2. Vyberte pilotnú obrazovku a nahraďte jeden existujúci UI blok WebJET komponentmi.
+3. Nastavte spoločné témy a tokeny (farby, spacing, typografia) pred širším rolloutom.
+4. Doplňte komponentové testy pre interakčné stavy a prístupnosť.
 
-Pick the JavaScript framework you plan to use while building your Ionic app:
+## Odporúčané začiatky
 
-<DocsCards>
-  <DocsCard header="Start with Angular" href="../angular/your-first-app" icon="/icons/logo-angular-icon.png">
-    <p>A complete guide to get you up to speed with the basics of building Ionic apps with Angular.</p>
-  </DocsCard>
-  <DocsCard header="Start with React" href="../react/your-first-app" icon="/icons/logo-react-icon.png">
-    <p>A complete guide to get you up to speed with the basics of building Ionic apps with React.</p>
-  </DocsCard>
-  <DocsCard header="Start with Vue" href="../vue/your-first-app" icon="/icons/logo-vue-icon.png">
-    <p>A complete guide to get you up to speed with the basics of building Ionic apps with Vue.</p>
-  </DocsCard>
-</DocsCards>
-
-<DeveloperExperts />
+- Základné nastavenie a integrácia balíka: [Inštalácia WebJET Elements](./install)
+- Príprava prostredia a toolchain: [Konfigurácia prostredia](./environment)
+- Katalóg komponentov pre plánovanie migrácie: [Komponenty](/components)

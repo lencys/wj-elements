@@ -2,12 +2,12 @@
 title: 'Status'
 ---
 
-import Props from '@ionic-internal/component-api/v1/status/props.md';
-import Events from '@ionic-internal/component-api/v1/status/events.md';
-import Methods from '@ionic-internal/component-api/v1/status/methods.md';
-import Parts from '@ionic-internal/component-api/v1/status/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/status/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/status/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/status/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/status/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/status/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/status/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/status/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/status/slots.md';
 
 <head>
   <title>Status | Zobrazenie stavu alebo indikátora</title>
@@ -49,11 +49,30 @@ import Types from '@site/static/usage/v1/status/types/index.md';
 
 <Types />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-status`, keď potrebujete používateľovi okamžite komunikovať stav, výsledok akcie alebo ďalší krok.
+
+## Kedy nepoužiť
+
+Nepoužívajte viacero konkurenčných feedback kanálov naraz pre jednu udalosť.
+
+## Prístupnosť
+
+Status správy oznamujte cez vhodné ARIA live regióny a pri modálnych prvkoch spravujte fokus (open/close).
+
+## Odporúčané postupy
+
+- Vyberte závažnosť správ (info/success/warning/error) podľa reálneho dopadu na používateľa.
+- Pri blokujúcich akciách preferujte potvrdenie iba tam, kde hrozí nevratná zmena.
+- Nastavte konzistentné timeouty, aby používateľ stihol správu prečítať.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -61,11 +80,11 @@ import Types from '@site/static/usage/v1/status/types/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

@@ -2,7 +2,6 @@ var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 import WJElement from "./wje-element.js";
-const DEFAULT_MAX_COL_WIDTH = 500;
 const DEFAULT_DEBOUNCE_MS = 300;
 const COL_COUNT_CSS_VAR_NAME = `--wje-masonry-layout-col-count`;
 const GAP_CSS_VAR_NAME = `--wje-masonry-layout-gap`;
@@ -108,7 +107,7 @@ class Masonry extends WJElement {
    * @returns {number} The maximum column width.
    */
   get maxColWidth() {
-    return this.hasAttribute("max-col-width") ? +this.getAttribute("max-col-width") : +DEFAULT_MAX_COL_WIDTH;
+    return this.hasAttribute("max-col-width") ? +this.getAttribute("max-col-width") : 500;
   }
   /**
    * Setter for the cols property.
@@ -265,3 +264,4 @@ Masonry.define("wje-masonry", Masonry);
 export {
   Masonry as default
 };
+//# sourceMappingURL=wje-masonry.js.map

@@ -49,3 +49,4 @@ Footer.define("wje-footer", Footer);
 export {
   Footer as default
 };
+//# sourceMappingURL=wje-footer.js.map

@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/menu-label/slots.md';
   <title>MenuLabel | Element for displaying descriptive text of navigation items.</title>
   <meta
     name="description"
-    content="MenuLabel element predstavuje popisný text pre navigačné položky."
+    content="API documentation for wje-menu-label, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -21,8 +21,27 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The MenuLabel is a child of the [Menu.](../menu) element and can also represent, for example, descriptive text for navigation items.
-For examples of MenuLabel usage, go to the [**Menu**] element documentation page(../menu).
+The MenuLabel is a child of the [Menu.](./menu) element and can also represent, for example, descriptive text for navigation items.
+For examples of MenuLabel usage, go to the [**Menu**] element documentation page(./menu).
+
+
+## When to use
+
+Use `wje-menu-label` when users need to understand location, move between views, or traverse hierarchy.
+
+## When not to use
+
+Do not combine multiple competing navigation patterns for the same user flow.
+
+## Accessibility
+
+Ensure visible active/selected states, predictable tab order, and clear control naming.
+
+## Best Practices
+
+- Keep URL state and UI navigation state synchronized.
+- Use consistent labels across menu, breadcrumbs, and tabs.
+- Add context for deep structures (breadcrumbs, headings, icon cues).
 
 ## Attributes and Properties
 

@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/router-link/slots.md';
   <title>Router Link | Router Navigation Component</title>
   <meta
     name="description"
-    content="Router link komponenta slúži ako prispôsobiteľný link navrhnutý na použitie v navigácii naprieč aplikáciou."
+    content="The router link component serves as a customizable link designed for use in navigation across the application."
   />
 </head>
 
@@ -24,8 +24,27 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 The router link component serves as a customizable link designed for use in navigation across the application.
 
 :::note
-For more information on using Router Link, go to the [**Router**](../router) page in the documentation.
+For more information on using Router Link, go to the [**Router**](./router) page in the documentation.
 :::
+
+
+## When to use
+
+Use `wje-router-link` when users need to understand location, move between views, or traverse hierarchy.
+
+## When not to use
+
+Do not combine multiple competing navigation patterns for the same user flow.
+
+## Accessibility
+
+Ensure visible active/selected states, predictable tab order, and clear control naming.
+
+## Best Practices
+
+- Keep URL state and UI navigation state synchronized.
+- Use consistent labels across menu, breadcrumbs, and tabs.
+- Add context for deep structures (breadcrumbs, headings, icon cues).
 
 ## Attributes and Properties
 

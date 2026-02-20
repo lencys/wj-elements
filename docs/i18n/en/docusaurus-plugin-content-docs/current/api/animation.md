@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/animation/slots.md';
   <title>Animation: integrating animations into web applications</title>
   <meta
     name="description"
-    content="Element Animation umožňuje jednoduchú integráciu animácií do webových aplikácií, čím prispieva k tvorbe pútavých a interaktívnych používateľských rozhraní. Ponúka široké možnosti prispôsobenia, vrátane nastavenia oneskorenia, trvania a počtu opakovaní animácií."
+    content="Element Animation makes it easy to integrate animations into web applications, contributing to the creation of engaging and interactive user interfaces."
   />
 </head>
 
@@ -28,6 +28,25 @@ Element Animation makes it easy to integrate animations into web applications, c
 import Basic from '@site/static/usage/v1/animation/basic/index.md';
 
 <Basic />
+
+
+## When to use
+
+Use `wje-animation` when you need a consistent WebJET-based implementation for this UI concern.
+
+## When not to use
+
+Do not stretch the component beyond its responsibility; compose smaller primitives for edge cases.
+
+## Accessibility
+
+Validate keyboard behavior, focus states, contrast, and meaningful labels for interactive elements.
+
+## Best Practices
+
+- Prefer component APIs over direct DOM manipulation.
+- Stick to design tokens and naming conventions.
+- Test components with realistic data before production rollout.
 
 ## Attributes and Properties
 

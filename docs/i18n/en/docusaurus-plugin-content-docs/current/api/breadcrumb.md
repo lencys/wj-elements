@@ -13,8 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/breadcrumb/slots.md';
   <title>Breadcrumbs | Navigation Route Segment</title>
   <meta
     name="description"
-    content="Breadcrumbs je komponent, ktorý zobrazuje cestu, po ktorej používateľ prešiel v rámci aplikácie alebo webu. Tento element zobrazuje hierarchické usporiadanie stránok, v ktorom každý segment cesty 
-  Breadcrumb je hyperlink, umožňujúci rýchly návrat na predchádzajúce úrovne. Breadcrumbs môže obsahovať ikonu."
+    content="API documentation for wje-breadcrumb, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -26,9 +25,28 @@ Breadcrumb displays one segment of the navigation path in the application and is
 
 :::note Note
 
-For more information on using Breadcrumbs, navigate to the [**Breadcrumbs**](../breadcrumbs) element documentation.
+For more information on using Breadcrumbs, navigate to the [**Breadcrumbs**](./breadcrumbs) element documentation.
 
 :::
+
+
+## When to use
+
+Use `wje-breadcrumb` when users need to understand location, move between views, or traverse hierarchy.
+
+## When not to use
+
+Do not combine multiple competing navigation patterns for the same user flow.
+
+## Accessibility
+
+Ensure visible active/selected states, predictable tab order, and clear control naming.
+
+## Best Practices
+
+- Keep URL state and UI navigation state synchronized.
+- Use consistent labels across menu, breadcrumbs, and tabs.
+- Add context for deep structures (breadcrumbs, headings, icon cues).
 
 ## Attributes and Properties
 

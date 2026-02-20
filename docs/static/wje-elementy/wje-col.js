@@ -35,3 +35,4 @@ WJElement.define("wje-col", Col);
 export {
   Col as default
 };
+//# sourceMappingURL=wje-col.js.map

@@ -1,13 +1,20 @@
 var __defProp = Object.defineProperty;
+var __typeError = (msg) => {
+  throw TypeError(msg);
+};
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+var __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot " + msg);
+var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot add the same private member more than once") : member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "access private method"), method);
+var _Button_instances, populateCustomEvent_fn;
 import { b as bindRouterLinks } from "./router-links-CJnOdbas.js";
-import WJElement, { WjElementUtils, event } from "./wje-element.js";
-import Icon from "./wje-icon.js";
-const bool = (v) => {
-  return v === "false" || v === "null" || v === "NaN" || v === "undefined" || v === "0" ? false : !!v;
-};
-const styles = "/*\n[ WJ Button ]\n*/\n\n/*PRIMARY*/\n.wje-button-solid.wje-color-primary {\n    background-color: var(--wje-color-primary-9);\n    border-color: var(--wje-color-primary-9);\n    color: var(--wje-color-contrast-0);\n}\n\n.wje-button-outline.wje-color-primary {\n    background-color: var(--wje-color-primary-1);\n    border-color: var(--wje-color-primary-9);\n    color: var(--wje-color-primary-9);\n}\n\n.wje-button-link.wje-color-primary {\n    background-color: transparent;\n    border-color: transparent;\n    color: var(--wje-color-primary-9);\n}\n\n/*COMPLETE*/\n.wje-button-solid.wje-color-complete {\n    background-color: var(--wje-color-complete-9);\n    border-color: var(--wje-color-complete-9);\n    color: var(--wje-color-contrast-0);\n}\n\n.wje-button-outline.wje-color-complete {\n    background-color: var(--wje-color-complete-1);\n    border-color: var(--wje-color-complete-9);\n    color: var(--wje-color-complete-9);\n}\n\n.wje-button-link.wje-color-complete {\n    background-color: transparent;\n    border-color: transparent;\n    color: var(--wje-color-complete-9);\n}\n\n/*SUCCESS*/\n.wje-button-solid.wje-color-success {\n    background-color: var(--wje-color-success-9);\n    border-color: var(--wje-color-success-9);\n    color: var(--wje-color-contrast-0);\n}\n\n.wje-button-outline.wje-color-success {\n    background-color: var(--wje-color-success-1);\n    border-color: var(--wje-color-success-9);\n    color: var(--wje-color-success-9);\n}\n\n.wje-button-link.wje-color-success {\n    background-color: transparent;\n    border-color: transparent;\n    color: var(--wje-color-success-9);\n}\n\n/*WARNING*/\n.wje-button-solid.wje-color-warning {\n    background-color: var(--wje-color-warning-9);\n    border-color: var(--wje-color-warning-9);\n    color: var(--wje-color-black);\n}\n\n.wje-button-outline.wje-color-warning {\n    background-color: var(--wje-color-warning-1);\n    border-color: var(--wje-color-warning-11);\n    color: var(--wje-color-warning-11);\n}\n\n.wje-button-link.wje-color-warning {\n    background-color: transparent;\n    border-color: transparent;\n    color: var(--wje-color-warning-11);\n}\n\n/*DANGER*/\n.wje-button-solid.wje-color-danger {\n    background-color: var(--wje-color-danger-9);\n    border-color: var(--wje-color-danger-9);\n    color: var(--wje-color-contrast-0);\n}\n\n.wje-button-outline.wje-color-danger {\n    background-color: var(--wje-color-danger-1);\n    border-color: var(--wje-color-danger-9);\n    color: var(--wje-color-danger-9);\n}\n\n.wje-button-link.wje-color-danger {\n    background-color: transparent;\n    border-color: transparent;\n    color: var(--wje-color-danger-9);\n}\n\n/*NEUTRAL*/\n.wje-button-solid.wje-color-info {\n    background-color: var(--wje-color-contrast-9);\n    border-color: var(--wje-color-contrast-9);\n    color: var(--wje-color-contrast-0);\n}\n\n.wje-button-outline.wje-color-info {\n    background-color: var(--wje-color-contrast-1);\n    border-color: var(--wje-color-contrast-9);\n    color: var(--wje-color-contrast-9);\n}\n\n.wje-button-link.wje-color-info {\n    background-color: transparent;\n    border-color: transparent;\n    color: var(--wje-color-contrast-9);\n}\n\n/*DEFAULT*/\n.wje-button-solid.wje-color-default {\n    background-color: var(--wje-color-contrast-0);\n    border-color: var(--wje-color-contrast-3);\n    color: var(--wje-color-contrast-11);\n}\n\n.wje-button-outline.wje-color-default {\n    background-color: var(--wje-color-contrast-1);\n    border-color: var(--wje-color-contrast-5);\n    color: var(--wje-color-contrast-11);\n}\n\n.wje-button-link.wje-color-default {\n    background-color: transparent;\n    border-color: transparent;\n    color: var(--wje-color-contrast-11);\n}\n\n:host {\n    --wje-padding-top: 0.4rem;\n    --wje-padding-start: 0.5rem;\n    --wje-padding-end: 0.5rem;\n    --wje-padding-bottom: 0.4rem;\n\n    display: inline-flex;\n    position: relative;\n    width: auto;\n    cursor: pointer;\n    margin-inline: var(--wje-button-margin-inline);\n}\n\n:host(.wje-button-group-button) {\n    display: block;\n}\n\n.native-button {\n    font-family: var(--wje-font-family);\n    font-size: var(--wje-font-size);\n    display: flex;\n    position: relative;\n    align-items: center;\n    width: 100%;\n    height: 100%;\n    min-height: inherit;\n    /*overflow: hidden;*/ /* Sposobovalo problemy s badge a tooltip */\n    border-width: var(--wje-button-border-width);\n    border-style: var(--wje-button-border-style);\n    border-color: var(--wje-button-border-color);\n    background-color: transparent;\n    /*color: var(--wje-button-color);*/\n    line-height: 1;\n    contain: layout style;\n    cursor: pointer;\n    z-index: 0;\n    box-sizing: border-box;\n    appearance: none;\n    margin: 0;\n    border-radius: var(--wje-button-border-radius);\n    padding-top: var(--wje-padding-top);\n    padding-bottom: var(--wje-padding-bottom);\n    padding-inline: var(--wje-padding-start) var(--wje-padding-end);\n    white-space: nowrap;\n}\n\n.native-button:hover {\n    outline-style: solid;\n    outline-width: var(--wje-button-outline-width);\n    transition: outline-width 0.1s linear;\n}\n\n@media (any-hover: hover) {\n    .wje-button-solid.wje-color-primary:hover {\n        background-color: var(--wje-color-primary-9);\n        border-color: var(--wje-color-primary-9);\n        color: var(--wje-color-contrast-0);\n        outline-color: var(--wje-color-primary-2);\n    }\n\n    .wje-button-outline.wje-color-primary:hover {\n        background-color: var(--wje-color-primary-1);\n        border-color: var(--wje-color-primary-9);\n        color: var(--wje-color-primary-9);\n        outline-color: var(--wje-color-primary-2);\n    }\n\n    .wje-button-link.wje-color-primary:hover {\n        background-color: var(--wje-color-primary-1);\n        border-color: transparent;\n        color: var(--wje-color-primary-9);\n        outline-color: transparent;\n        outline-width: 0;\n    }\n\n    .wje-button-solid.wje-color-complete:hover {\n        background-color: var(--wje-color-complete-9);\n        border-color: var(--wje-color-complete-9);\n        color: var(--wje-color-contrast-0);\n        outline-color: var(--wje-color-complete-2);\n    }\n\n    .wje-button-outline.wje-color-complete:hover {\n        background-color: var(--wje-color-complete-1);\n        border-color: var(--wje-color-complete-9);\n        color: var(--wje-color-complete-9);\n        outline-color: var(--wje-color-complete-2);\n    }\n\n    .wje-button-link.wje-color-complete:hover {\n        background-color: var(--wje-color-complete-1);\n        border-color: transparent;\n        color: var(--wje-color-complete-9);\n        outline-color: transparent;\n        outline-width: 0;\n    }\n\n    .wje-button-solid.wje-color-success:hover {\n        background-color: var(--wje-color-success-9);\n        border-color: var(--wje-color-success-9);\n        color: var(--wje-color-contrast-0);\n        outline-color: var(--wje-color-success-2);\n    }\n\n    .wje-button-outline.wje-color-success:hover {\n        background-color: var(--wje-color-success-1);\n        border-color: var(--wje-color-success-9);\n        color: var(--wje-color-success-9);\n        outline-color: var(--wje-color-success-2);\n    }\n\n    .wje-button-link.wje-color-success:hover {\n        background-color: var(--wje-color-success-1);\n        border-color: transparent;\n        color: var(--wje-color-success-9);\n        outline-color: transparent;\n        outline-width: 0;\n    }\n\n    .wje-button-solid.wje-color-warning:hover {\n        background-color: var(--wje-color-warning-9);\n        border-color: var(--wje-color-warning-9);\n        color: var(--wje-color-black);\n        outline-color: var(--wje-color-warning-2);\n    }\n\n    .wje-button-outline.wje-color-warning:hover {\n        background-color: var(--wje-color-warning-1);\n        border-color: var(--wje-color-warning-11);\n        color: var(--wje-color-warning-11);\n        outline-color: var(--wje-color-warning-2);\n    }\n\n    .wje-button-link.wje-color-warning:hover {\n        background-color: var(--wje-color-warning-1);\n        border-color: transparent;\n        color: var(--wje-color-warning-11);\n        outline-color: transparent;\n        outline-width: 0;\n    }\n\n    .wje-button-solid.wje-color-danger:hover {\n        background-color: var(--wje-color-danger-9);\n        border-color: var(--wje-color-danger-9);\n        color: var(--wje-color-contrast-0);\n        outline-color: var(--wje-color-danger-2);\n    }\n\n    .wje-button-outline.wje-color-danger:hover {\n        background-color: var(--wje-color-danger-1);\n        border-color: var(--wje-color-danger-9);\n        color: var(--wje-color-danger-9);\n        outline-color: var(--wje-color-danger-2);\n    }\n\n    .wje-button-link.wje-color-danger:hover {\n        background-color: var(--wje-color-danger-1);\n        border-color: transparent;\n        color: var(--wje-color-danger-9);\n        outline-color: transparent;\n        outline-width: 0;\n    }\n\n    .wje-button-solid.wje-color-info:hover {\n        background-color: var(--wje-color-contrast-9);\n        border-color: var(--wje-color-contrast-9);\n        color: var(--wje-color-contrast-0);\n        outline-color: var(--wje-color-contrast-3);\n    }\n\n    .wje-button-outline.wje-color-info:hover {\n        background-color: var(--wje-color-contrast-1);\n        border-color: var(--wje-color-contrast-9);\n        color: var(--wje-color-contrast-9);\n        outline-color: var(--wje-color-contrast-3);\n    }\n\n    .wje-button-link.wje-color-info:hover {\n        background-color: var(--wje-color-contrast-3);\n        border-color: transparent;\n        color: var(--wje-color-contrast-11);\n        outline-color: transparent;\n        outline-width: 0;\n    }\n\n    .wje-button-solid.wje-color-default:hover {\n        background-color: var(--wje-color-contrast-0);\n        border-color: var(--wje-color-contrast-3);\n        color: var(--wje-color-contrast-11);\n        outline-color: var(--wje-color-contrast-3);\n    }\n\n    .wje-button-outline.wje-color-default:hover {\n        background-color: var(--wje-color-contrast-2);\n        border-color: var(--wje-color-contrast-5);\n        color: var(--wje-color-contrast-11);\n        outline-color: var(--wje-color-contrast-3);\n    }\n\n    .wje-button-link.wje-color-default:hover {\n        background-color: var(--wje-color-contrast-3);\n        border-color: transparent;\n        color: var(--wje-color-contrast-11);\n        outline-color: transparent;\n        outline-width: 0;\n    }\n}\n\n.button-inner {\n    display: flex;\n    position: relative;\n    flex-flow: row nowrap;\n    flex-shrink: 0;\n    align-items: center;\n    justify-content: center;\n    width: 100%;\n    height: 100%;\n    z-index: 1;\n    line-height: normal;\n}\n\n/*\n[ Link ]\n*/\n\n.wje-button-link {\n    border-width: var(--wje-button-border-width);\n    border-radius: var(--wje-button-border-radius);\n    border-color: transparent;\n    background-color: transparent;\n}\n\n/*\n[ Disabled ]\n*/\n\n.wje-button-disabled {\n    cursor: default;\n    opacity: 0.5;\n    pointer-events: none;\n}\n\n/*\n[ Round ]\n*/\n\n:host([round]) .native-button {\n    border-radius: var(--wje-border-radius-pill);\n}\n\n:host([circle]) .native-button {\n    border-radius: var(--wje-border-radius-circle);\n    aspect-ratio: 1/1;\n    width: 1.813rem;\n    display: flex;\n    align-items: center;\n    --wje-padding-top: 0;\n    --wje-padding-start: 0;\n    --wje-padding-end: 0;\n    --wje-padding-bottom: 0;\n}\n\n:host([size='small']) .native-button {\n    --wje-padding-top: 0.25rem;\n    --wje-padding-start: 0.25rem;\n    --wje-padding-end: 0.25rem;\n    --wje-padding-bottom: 0.25rem;\n}\n\n:host([size='large']) .native-button {\n    --wje-padding-top: 0.6rem;\n    --wje-padding-start: 0.7rem;\n    --wje-padding-end: 0.7rem;\n    --wje-padding-bottom: 0.6rem;\n}\n\n:host([size='small'][circle]) .native-button {\n    width: 1.5rem;\n    --wje-padding-top: 0;\n    --wje-padding-start: 0;\n    --wje-padding-end: 0;\n    --wje-padding-bottom: 0;\n}\n\n:host([size='large'][circle]) .native-button {\n    width: 2.188rem;\n    --wje-padding-top: 0;\n    --wje-padding-start: 0;\n    --wje-padding-end: 0;\n    --wje-padding-bottom: 0;\n}\n\n::slotted(wje-icon[slot='start']) {\n    margin: 0 0.3rem 0 0;\n}\n\n::slotted(wje-icon[slot='end']) {\n    margin: 0 -0.2rem 0 0.3rem;\n}\n\n:host(:not([only-caret])) slot[name='caret'] {\n    padding: 0 0 0 0.3rem;\n}\n\n:host([only-caret]) slot[name='caret'] {\n    padding: 0;\n    display: block;\n}\n\n:host(.wje-button-group-first:not(.wje-button-group-last)) .native-button {\n    border-start-end-radius: 0;\n    border-end-end-radius: 0;\n}\n\n:host(.wje-button-group-inner) .native-button {\n    border-radius: 0;\n}\n\n:host(.wje-button-group-last:not(.wje-button-group-first)) .native-button {\n    border-start-start-radius: 0;\n    border-end-start-radius: 0;\n}\n\n:host(.wje-button-group-button:not(.wje-button-group-first)) {\n    margin-inline-start: calc(-1 * var(--wje-button-border-width)) !important;\n}\n\n::slotted([slot='toggle']) {\n    display: none;\n}\n\n::slotted([slot='toggle'].show) {\n    display: block;\n}\n";
+import { bool } from "./utils.js";
+import WJElement from "./wje-element.js";
+import { I as Icon } from "./icon-DVyMc4Wv.js";
+import { WjElementUtils } from "./element-utils.js";
+import { event } from "./event.js";
+const styles = "/*\n[ WJ Button ]\n*/\n\n/*PRIMARY*/\n.wje-button-solid.wje-color-primary {\n    background-color: var(--wje-color-primary-9);\n    border-color: var(--wje-color-primary-9);\n    color: var(--wje-color-contrast-0);\n}\n\n.wje-button-outline.wje-color-primary {\n    background-color: var(--wje-color-primary-1);\n    border-color: var(--wje-color-primary-9);\n    color: var(--wje-color-primary-9);\n}\n\n.wje-button-link.wje-color-primary {\n    background-color: transparent;\n    border-color: transparent;\n    color: var(--wje-color-primary-9);\n}\n\n/*COMPLETE*/\n.wje-button-solid.wje-color-complete {\n    background-color: var(--wje-color-complete-9);\n    border-color: var(--wje-color-complete-9);\n    color: var(--wje-color-contrast-0);\n}\n\n.wje-button-outline.wje-color-complete {\n    background-color: var(--wje-color-complete-1);\n    border-color: var(--wje-color-complete-9);\n    color: var(--wje-color-complete-9);\n}\n\n.wje-button-link.wje-color-complete {\n    background-color: transparent;\n    border-color: transparent;\n    color: var(--wje-color-complete-9);\n}\n\n/*SUCCESS*/\n.wje-button-solid.wje-color-success {\n    background-color: var(--wje-color-success-9);\n    border-color: var(--wje-color-success-9);\n    color: var(--wje-color-contrast-0);\n}\n\n.wje-button-outline.wje-color-success {\n    background-color: var(--wje-color-success-1);\n    border-color: var(--wje-color-success-9);\n    color: var(--wje-color-success-9);\n}\n\n.wje-button-link.wje-color-success {\n    background-color: transparent;\n    border-color: transparent;\n    color: var(--wje-color-success-9);\n}\n\n/*WARNING*/\n.wje-button-solid.wje-color-warning {\n    background-color: var(--wje-color-warning-9);\n    border-color: var(--wje-color-warning-9);\n    color: var(--wje-color-black);\n}\n\n.wje-button-outline.wje-color-warning {\n    background-color: var(--wje-color-warning-1);\n    border-color: var(--wje-color-warning-11);\n    color: var(--wje-color-warning-11);\n}\n\n.wje-button-link.wje-color-warning {\n    background-color: transparent;\n    border-color: transparent;\n    color: var(--wje-color-warning-11);\n}\n\n/*DANGER*/\n.wje-button-solid.wje-color-danger {\n    background-color: var(--wje-color-danger-9);\n    border-color: var(--wje-color-danger-9);\n    color: var(--wje-color-contrast-0);\n}\n\n.wje-button-outline.wje-color-danger {\n    background-color: var(--wje-color-danger-1);\n    border-color: var(--wje-color-danger-9);\n    color: var(--wje-color-danger-9);\n}\n\n.wje-button-link.wje-color-danger {\n    background-color: transparent;\n    border-color: transparent;\n    color: var(--wje-color-danger-9);\n}\n\n/*NEUTRAL*/\n.wje-button-solid.wje-color-info {\n    background-color: var(--wje-color-contrast-9);\n    border-color: var(--wje-color-contrast-9);\n    color: var(--wje-color-contrast-0);\n}\n\n.wje-button-outline.wje-color-info {\n    background-color: var(--wje-color-contrast-1);\n    border-color: var(--wje-color-contrast-9);\n    color: var(--wje-color-contrast-9);\n}\n\n.wje-button-link.wje-color-info {\n    background-color: transparent;\n    border-color: transparent;\n    color: var(--wje-color-contrast-9);\n}\n\n/*DEFAULT*/\n.wje-button-solid.wje-color-default {\n    background-color: var(--wje-color-contrast-0);\n    border-color: var(--wje-color-contrast-3);\n    color: var(--wje-color-contrast-11);\n}\n\n.wje-button-outline.wje-color-default {\n    background-color: var(--wje-color-contrast-1);\n    border-color: var(--wje-color-contrast-5);\n    color: var(--wje-color-contrast-11);\n}\n\n.wje-button-link.wje-color-default {\n    background-color: transparent;\n    border-color: transparent;\n    color: var(--wje-color-contrast-11);\n}\n\n:host {\n    --wje-padding-top: 0.4rem;\n    --wje-padding-start: 0.5rem;\n    --wje-padding-end: 0.5rem;\n    --wje-padding-bottom: 0.4rem;\n\n    display: inline-flex;\n    position: relative;\n    width: auto;\n    cursor: pointer;\n    margin-inline: var(--wje-button-margin-inline);\n}\n\n:host(.wje-button-group-button) {\n    display: block;\n}\n\n.native-button {\n    font-family: var(--wje-font-family);\n    font-size: var(--wje-font-size);\n    display: flex;\n    position: relative;\n    align-items: center;\n    width: 100%;\n    height: 100%;\n    min-height: inherit;\n    /*overflow: hidden;*/ /* Sposobovalo problemy s badge a tooltip */\n    border-width: var(--wje-button-border-width);\n    border-style: var(--wje-button-border-style);\n    border-color: var(--wje-button-border-color);\n    background-color: transparent;\n    /*color: var(--wje-button-color);*/\n    line-height: 1;\n    contain: layout style;\n    cursor: pointer;\n    z-index: 0;\n    box-sizing: border-box;\n    appearance: none;\n    margin: 0;\n    border-radius: var(--wje-button-border-radius);\n    padding-top: var(--wje-padding-top);\n    padding-bottom: var(--wje-padding-bottom);\n    padding-inline: var(--wje-padding-start) var(--wje-padding-end);\n    white-space: nowrap;\n}\n\n.native-button:hover {\n    outline-style: solid;\n    outline-width: var(--wje-button-outline-width);\n    transition: outline-width 0.1s linear;\n}\n\n@media (any-hover: hover) {\n    .wje-button-solid.wje-color-primary:hover {\n        background-color: var(--wje-color-primary-9);\n        border-color: var(--wje-color-primary-9);\n        color: var(--wje-color-contrast-0);\n        outline-color: var(--wje-color-primary-2);\n    }\n\n    .wje-button-outline.wje-color-primary:hover {\n        background-color: var(--wje-color-primary-1);\n        border-color: var(--wje-color-primary-9);\n        color: var(--wje-color-primary-9);\n        outline-color: var(--wje-color-primary-2);\n    }\n\n    .wje-button-link.wje-color-primary:hover {\n        background-color: var(--wje-color-primary-1);\n        border-color: transparent;\n        color: var(--wje-color-primary-9);\n        outline-color: transparent;\n        outline-width: 0;\n    }\n\n    .wje-button-solid.wje-color-complete:hover {\n        background-color: var(--wje-color-complete-9);\n        border-color: var(--wje-color-complete-9);\n        color: var(--wje-color-contrast-0);\n        outline-color: var(--wje-color-complete-2);\n    }\n\n    .wje-button-outline.wje-color-complete:hover {\n        background-color: var(--wje-color-complete-1);\n        border-color: var(--wje-color-complete-9);\n        color: var(--wje-color-complete-9);\n        outline-color: var(--wje-color-complete-2);\n    }\n\n    .wje-button-link.wje-color-complete:hover {\n        background-color: var(--wje-color-complete-1);\n        border-color: transparent;\n        color: var(--wje-color-complete-9);\n        outline-color: transparent;\n        outline-width: 0;\n    }\n\n    .wje-button-solid.wje-color-success:hover {\n        background-color: var(--wje-color-success-9);\n        border-color: var(--wje-color-success-9);\n        color: var(--wje-color-contrast-0);\n        outline-color: var(--wje-color-success-2);\n    }\n\n    .wje-button-outline.wje-color-success:hover {\n        background-color: var(--wje-color-success-1);\n        border-color: var(--wje-color-success-9);\n        color: var(--wje-color-success-9);\n        outline-color: var(--wje-color-success-2);\n    }\n\n    .wje-button-link.wje-color-success:hover {\n        background-color: var(--wje-color-success-1);\n        border-color: transparent;\n        color: var(--wje-color-success-9);\n        outline-color: transparent;\n        outline-width: 0;\n    }\n\n    .wje-button-solid.wje-color-warning:hover {\n        background-color: var(--wje-color-warning-9);\n        border-color: var(--wje-color-warning-9);\n        color: var(--wje-color-black);\n        outline-color: var(--wje-color-warning-2);\n    }\n\n    .wje-button-outline.wje-color-warning:hover {\n        background-color: var(--wje-color-warning-1);\n        border-color: var(--wje-color-warning-11);\n        color: var(--wje-color-warning-11);\n        outline-color: var(--wje-color-warning-2);\n    }\n\n    .wje-button-link.wje-color-warning:hover {\n        background-color: var(--wje-color-warning-1);\n        border-color: transparent;\n        color: var(--wje-color-warning-11);\n        outline-color: transparent;\n        outline-width: 0;\n    }\n\n    .wje-button-solid.wje-color-danger:hover {\n        background-color: var(--wje-color-danger-9);\n        border-color: var(--wje-color-danger-9);\n        color: var(--wje-color-contrast-0);\n        outline-color: var(--wje-color-danger-2);\n    }\n\n    .wje-button-outline.wje-color-danger:hover {\n        background-color: var(--wje-color-danger-1);\n        border-color: var(--wje-color-danger-9);\n        color: var(--wje-color-danger-9);\n        outline-color: var(--wje-color-danger-2);\n    }\n\n    .wje-button-link.wje-color-danger:hover {\n        background-color: var(--wje-color-danger-1);\n        border-color: transparent;\n        color: var(--wje-color-danger-9);\n        outline-color: transparent;\n        outline-width: 0;\n    }\n\n    .wje-button-solid.wje-color-info:hover {\n        background-color: var(--wje-color-contrast-9);\n        border-color: var(--wje-color-contrast-9);\n        color: var(--wje-color-contrast-0);\n        outline-color: var(--wje-color-contrast-3);\n    }\n\n    .wje-button-outline.wje-color-info:hover {\n        background-color: var(--wje-color-contrast-1);\n        border-color: var(--wje-color-contrast-9);\n        color: var(--wje-color-contrast-9);\n        outline-color: var(--wje-color-contrast-3);\n    }\n\n    .wje-button-link.wje-color-info:hover {\n        background-color: var(--wje-color-contrast-3);\n        border-color: transparent;\n        color: var(--wje-color-contrast-11);\n        outline-color: transparent;\n        outline-width: 0;\n    }\n\n    .wje-button-solid.wje-color-default:hover {\n        background-color: var(--wje-color-contrast-0);\n        border-color: var(--wje-color-contrast-3);\n        color: var(--wje-color-contrast-11);\n        outline-color: var(--wje-color-contrast-3);\n    }\n\n    .wje-button-outline.wje-color-default:hover {\n        background-color: var(--wje-color-contrast-2);\n        border-color: var(--wje-color-contrast-5);\n        color: var(--wje-color-contrast-11);\n        outline-color: var(--wje-color-contrast-3);\n    }\n\n    .wje-button-link.wje-color-default:hover {\n        background-color: var(--wje-color-contrast-3);\n        border-color: transparent;\n        color: var(--wje-color-contrast-11);\n        outline-color: transparent;\n        outline-width: 0;\n    }\n}\n\n.button-inner {\n    display: flex;\n    position: relative;\n    flex-flow: row nowrap;\n    flex-shrink: 0;\n    align-items: center;\n    justify-content: center;\n    width: 100%;\n    height: 100%;\n    z-index: 1;\n    line-height: normal;\n}\n\n/*\n[ Link ]\n*/\n\n.wje-button-link {\n    border-width: var(--wje-button-border-width);\n    border-radius: var(--wje-button-border-radius);\n    border-color: transparent;\n    background-color: transparent;\n}\n\n/*\n[ Disabled ]\n*/\n\n.wje-button-disabled {\n    cursor: default;\n    opacity: 0.5;\n    pointer-events: none;\n}\n\n/*\n[ Round ]\n*/\n\n:host([round]) .native-button {\n    border-radius: var(--wje-border-radius-pill);\n}\n\n:host([circle]) .native-button {\n    border-radius: var(--wje-border-radius-circle);\n    aspect-ratio: 1/1;\n    width: 1.988rem;\n    display: flex;\n    align-items: center;\n    --wje-padding-top: 0;\n    --wje-padding-start: 0;\n    --wje-padding-end: 0;\n    --wje-padding-bottom: 0;\n}\n\n:host([size='small']) .native-button {\n    --wje-padding-top: 0.25rem;\n    --wje-padding-start: 0.25rem;\n    --wje-padding-end: 0.25rem;\n    --wje-padding-bottom: 0.25rem;\n}\n\n:host([size='large']) .native-button {\n    --wje-padding-top: 0.6rem;\n    --wje-padding-start: 0.7rem;\n    --wje-padding-end: 0.7rem;\n    --wje-padding-bottom: 0.6rem;\n}\n\n:host([size='small'][circle]) .native-button {\n    width: 1.688rem;\n    --wje-padding-top: 0;\n    --wje-padding-start: 0;\n    --wje-padding-end: 0;\n    --wje-padding-bottom: 0;\n}\n\n:host([size='large'][circle]) .native-button {\n    width: 2.388rem;\n    --wje-padding-top: 0;\n    --wje-padding-start: 0;\n    --wje-padding-end: 0;\n    --wje-padding-bottom: 0;\n}\n\n::slotted(wje-icon[slot='start']) {\n    margin: 0 0.3rem 0 0;\n}\n\n::slotted(wje-icon[slot='end']) {\n    margin: 0 -0.2rem 0 0.3rem;\n}\n\n:host(:not([only-caret])) slot[name='caret'] {\n    padding: 0 0 0 0.3rem;\n}\n\n:host([only-caret]) {\n    .native-button {\n        aspect-ratio: 1/1;\n        width: 1.988rem;\n        display: flex;\n        align-items: center;\n    }\n    slot[name='caret'] {\n        padding: 0;\n        display: block;\n    }\n}\n\n::slotted([slot='toggle']) {\n    display: none;\n}\n\n::slotted([slot='toggle'].show) {\n    display: block;\n}\n";
 class Button extends WJElement {
   /**
    * Button constructor method.
@@ -15,6 +22,7 @@ class Button extends WJElement {
    */
   constructor() {
     super();
+    __privateAdd(this, _Button_instances);
     /**
      * Dependencies of the Button element.
      * @type {object}
@@ -47,8 +55,8 @@ class Button extends WJElement {
           this.setAttribute("value", index === 0 ? "on" : "off");
         }
       });
+      this.syncAria();
     });
-    this.internals_ = this.attachInternals();
   }
   /**
    * Properties of the element Button.
@@ -77,6 +85,26 @@ class Button extends WJElement {
    */
   get caret() {
     return this.hasAttribute("caret");
+  }
+  /**
+   * Sets the 'round' attribute on the element. If the value is true, the attribute is added;
+   * otherwise, it is removed from the element.
+   * @param {boolean} value A boolean indicating whether to set or remove the 'round' attribute.
+   */
+  set round(value) {
+    if (value) {
+      this.setAttribute("round", "");
+    } else {
+      this.removeAttribute("round");
+    }
+  }
+  /**
+   * Retrieves the value of the 'round' attribute as a boolean.
+   * Checks if the 'round' attribute is present on the element.
+   * @returns {boolean} True if the 'round' attribute exists, otherwise false.
+   */
+  get round() {
+    return this.hasAttribute("round");
   }
   /**
    * Set variant of the Button element.
@@ -125,8 +153,10 @@ class Button extends WJElement {
    * @param {boolean} value The value to set
    */
   set disabled(value) {
-    if (value) this.setAttribute("disabled", "");
-    else this.removeAttribute("disabled");
+    this.removeAttribute("disabled");
+    if (value) {
+      this.setAttribute("disabled", "");
+    }
   }
   /**
    * Get disabled state of the Button element.
@@ -178,6 +208,35 @@ class Button extends WJElement {
     return bool(this.getAttribute("stop-propagation"));
   }
   /**
+   * Sets the value of the custom event attribute.
+   * @param {string} value The value to be assigned to the custom event attribute.
+   */
+  set customEvent(value) {
+    this.setAttribute("custom-event", value);
+  }
+  /**
+   * Retrieves the value of the 'custom-event' attribute from the element.
+   * @returns {string | null} The value of the 'custom-event' attribute, or null if the attribute is not set.
+   */
+  get customEvent() {
+    return this.getAttribute("custom-event");
+  }
+  /**
+   * Retrieves a mapped object containing custom event parameters extracted from the element's attributes.
+   * Attributes considered are those that begin with 'custom-event-'.
+   * The mapped object's keys are derived by removing the 'custom-event-' prefix from the attribute names,
+   * and the values are the corresponding attribute values.
+   * @returns {object} An object containing key-value pairs of custom event parameters.
+   */
+  get customEventParameters() {
+    const attributes = Array.from(this.attributes).filter((attr) => attr.name.startsWith("custom-event-"));
+    return attributes.reduce((acc, attr) => {
+      const key = attr.name.replace("custom-event-", "");
+      acc[key] = attr.value;
+      return acc;
+    }, {});
+  }
+  /**
    * Get CSS stylesheet for the Button element.
    * @static
    * @returns {CSSStyleSheet} styles - The CSS stylesheet for the Button element.
@@ -191,7 +250,14 @@ class Button extends WJElement {
    * @returns {Array<string>} observedAttributes - The observed attributes array for the Button element.
    */
   static get observedAttributes() {
-    return ["disabled"];
+    return ["disabled", "color", "value", "active", "href"];
+  }
+  attributeChangedCallback(name, oldValue, newValue) {
+    var _a, _b;
+    (_a = super.attributeChangedCallback) == null ? void 0 : _a.call(this, name, oldValue, newValue);
+    if (["disabled", "value", "active", "href"].includes(name)) {
+      (_b = this.syncAria) == null ? void 0 : _b.call(this);
+    }
   }
   /**
    * @summary Callback function that is called when the custom element is associated with a form.
@@ -218,6 +284,7 @@ class Button extends WJElement {
    */
   setupAttributes() {
     this.isShadowRoot = "open";
+    this.syncAria();
   }
   /**
    * Draw method for the Button element.
@@ -309,6 +376,9 @@ class Button extends WJElement {
         this.setAttribute("value", "on");
       }
     }
+    if (this.hasAttribute("custom-event")) {
+      event.addListener(this, "click", null, __privateMethod(this, _Button_instances, populateCustomEvent_fn));
+    }
     if (this.hasAttribute("dialog")) {
       event.addListener(this, "click", null, this.eventDialogOpen);
     } else {
@@ -320,25 +390,59 @@ class Button extends WJElement {
       });
     if (this.type === "submit") {
       event.addListener(this, "click", "wje-button:submit", () => {
-        console.log("submit", this.internals_.form);
-        event.dispatchCustomEvent(this.internals_.form, "submit", {});
+        var _a;
+        event.dispatchCustomEvent((_a = this.internals) == null ? void 0 : _a.form, "submit", {});
       });
     }
     if (this.type === "reset") {
       event.addListener(this, "click", "wje-button:reset", () => {
-        this.internals_.form.reset();
+        var _a;
+        (_a = this.internals) == null ? void 0 : _a.form.reset();
       });
     }
+    this.syncAria();
   }
   /**
    * Before disconnect method for the Button element.
    */
   beforeDisconnect() {
     var _a;
+    event.removeListener(this, "click", null, this.eventDialogOpen);
+    event.removeListener(this, "click", "wje-button:click", null);
+    event.removeListener(this, "click", "wje-button:toggle", this.toggleStates);
+    event.removeListener(this, "click", null, __privateMethod(this, _Button_instances, populateCustomEvent_fn));
+    event.removeListener(this, "click", "wje-button:submit", null);
+    event.removeListener(this, "click", "wje-button:reset", null);
     this.removeEventListener("click", this.eventDialogOpen);
     (_a = this.unbindRouterLinks) == null ? void 0 : _a.call(this);
   }
+  /**
+   * Syncs ARIA attributes on the host element.
+   */
+  syncAria() {
+    const isLink = this.hasAttribute("href");
+    const isToggle = !!this.hasToggle;
+    const pressed = isToggle && !isLink ? this.getAttribute("value") === "on" : void 0;
+    this.setAriaState({
+      role: isLink ? "link" : "button",
+      disabled: this.disabled,
+      pressed
+    });
+  }
 }
+_Button_instances = new WeakSet();
+/**
+ * Dispatches a custom event with specified parameters.
+ * This method uses the `customEvent` and `customEventParameters` properties
+ * to create and dispatch a `CustomEvent`. The event is configured to be
+ * composed and bubbles up through the DOM.
+ * @returns {void} This method does not return a value.
+ */
+populateCustomEvent_fn = function() {
+  this.dispatchEvent(
+    new CustomEvent(this.customEvent, { detail: this.customEventParameters, composed: true, bubbles: true })
+  );
+};
 /**
  * @summary A static property that indicates whether the custom element is form-associated or not.
  * Form-associated custom elements are elements that can participate in form submission.
@@ -349,3 +453,4 @@ Button.define("wje-button", Button);
 export {
   Button as default
 };
+//# sourceMappingURL=wje-button.js.map

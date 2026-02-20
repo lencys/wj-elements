@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/step/slots.md';
   <title>Step | One step within the Stepper component</title>
   <meta
     name="description"
-    content="Komponent Step zobrazuje jeden krok v rámci komponentu [Stepper](stepper.md). Je to podriadený komponent, ktorý sa používa na definovanie jednotlivých krokov v rámci sekvencie."
+    content="API documentation for wje-step, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -26,6 +26,25 @@ The `Step` component displays a single step within the [Stepper] component(stepp
 :::note
 For examples of using the `Step` component, go to the [**Stepper**] documentation(stepper.md).
 :::
+
+
+## When to use
+
+Use `wje-step` when users need to enter values, choose options, or trigger form-related actions.
+
+## When not to use
+
+Do not use it as a decorative element without interaction. Prefer presentational components in that case.
+
+## Accessibility
+
+Always provide a label (`label`/`aria-label`), keep keyboard support, and surface clear validation feedback.
+
+## Best Practices
+
+- Keep validation rules and error behavior consistent across the entire form.
+- Show loading or disabled states during async operations.
+- Split complex forms into smaller sections with immediate feedback.
 
 ## Attributes and Properties
 

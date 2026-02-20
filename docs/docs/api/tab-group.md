@@ -2,12 +2,12 @@
 title: 'TabGroup'
 ---
 
-import Props from '@ionic-internal/component-api/v1/tab-group/props.md';
-import Events from '@ionic-internal/component-api/v1/tab-group/events.md';
-import Methods from '@ionic-internal/component-api/v1/tab-group/methods.md';
-import Parts from '@ionic-internal/component-api/v1/tab-group/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/tab-group/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/tab-group/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/tab-group/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/tab-group/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/tab-group/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/tab-group/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/tab-group/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/tab-group/slots.md';
 
 <head>
   <title>TabGroup | Navigácia založená na záložkách</title>
@@ -54,11 +54,30 @@ import Bottom from '@site/static/usage/v1/tab-group/bottom/index.md';
 
 <Bottom />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-tab-group`, keď používateľ potrebuje orientáciu v aplikácii alebo prechod medzi stavmi/obrazovkami.
+
+## Kedy nepoužiť
+
+Nepoužívajte viac paralelných navigačných vzorov, ktoré si navzájom konkurujú.
+
+## Prístupnosť
+
+Zabezpečte jasné active/selected stavy, predvídateľné poradie tabulátora a pomenovanie ovládacích prvkov.
+
+## Odporúčané postupy
+
+- Držte URL a UI stav v synchronizácii, aby bola navigácia reprodukovateľná.
+- Používajte konzistentné názvoslovie položiek naprieč menu, breadcrumbom a tabmi.
+- Pri hlbokých štruktúrach pridajte pomocný kontext (breadcrumb, nadpis, ikony).
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -66,11 +85,11 @@ import Bottom from '@site/static/usage/v1/tab-group/bottom/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

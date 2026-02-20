@@ -2,7 +2,7 @@ var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 import WJElement from "./wje-element.js";
-const styles = "/*\n[ Carousel ]\n*/\n\n.native-carousel {\n    position: relative;\n    width: var(--wje-carousel-width, 100%);\n    height: var(--wje-carousel-height, 300px);\n    scroll-behavior: smooth;\n}\n\n.carousel-slides {\n    display: flex;\n    transition: transform 0.5s ease;\n    align-items: center;\n    justify-items: center;\n    overflow: auto;\n    overscroll-behavior-x: contain;\n    scrollbar-width: none;\n    -ms-overflow-style: none;\n    aspect-ratio: var(--wje-aspect-ratio, 4 / 3);\n    scroll-snap-type: x mandatory;\n    scroll-padding-inline: 0;\n    overflow-y: hidden;\n    padding-inline: var(--wje-spacing-inline, 0);\n    gap: 0.5rem;\n}\n\n.carousel-slides::-webkit-scrollbar {\n    display: none;\n}\n\n::slotted(wje-carousel-item) {\n    flex: 0 0 var(--wje-carousel-size);\n    height: 100%;\n}\n\n/*NAVIGATION*/\n\nwje-button {\n    position: absolute;\n    top: 50%;\n\n    border: none;\n    cursor: pointer;\n    z-index: 2;\n}\n\n.prev {\n    left: -1rem;\n    transform: translate(-100%, -50%);\n}\n\n.next {\n    right: -1rem;\n    transform: translate(100%, -50%);\n}\n\n/*PAGINATION*/\n\n.pagination {\n    position: relative;\n    bottom: -0.5rem;\n    left: 50%;\n    transform: translate(-50%, 100%);\n    display: flex;\n    z-index: 2;\n    justify-content: center;\n}\n.pagination-item {\n    cursor: pointer;\n    height: 15px;\n    width: 15px;\n    margin: 0 2px;\n    background-color: var(--wje-color-contrast-4);\n    display: inline-block;\n    border-radius: 50%;\n}\n.pagination-item.active {\n    background-color: var(--wje-color);\n}\n\n/*THUMBNAILS*/\n\n.thumbnails {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    overflow-x: auto;\n    gap: 0.5rem;\n    padding: 0 0.5rem;\n    margin-top: 0.5rem;\n    margin-bottom: 0.5rem;\n    box-sizing: border-box;\n    overflow-y: hidden;\n    wje-thumbnail {\n        --wje-thumbnail-width: 48px;\n        --wje-thumbnail-height: 48px;\n        --wje-thumbnail-border-radius: 0;\n        cursor: pointer;\n        border: 1px solid transparent;\n    }\n    .active {\n        border: 1px solid var(--wje-color-primary-11);\n    }\n}\n";
+const styles = '/*\n[ Carousel ]\n*/\n\n.native-carousel {\n    position: relative;\n    width: var(--wje-carousel-width, 100%);\n    height: var(--wje-carousel-height, 300px);\n    scroll-behavior: smooth;\n}\n\n.slides-wrapper {\n    position: relative;\n    width: var(--wje-carousel-width, 100%);\n    height: var(--wje-carousel-height, 300px);\n}\n\n.carousel-slides {\n    display: flex;\n    transition: transform 0.5s ease;\n    align-items: center;\n    justify-items: center;\n    overflow: auto;\n    overscroll-behavior-x: contain;\n    scrollbar-width: none;\n    -ms-overflow-style: none;\n    aspect-ratio: var(--wje-aspect-ratio, 4 / 3);\n    scroll-snap-type: x mandatory;\n    scroll-padding-inline: 0;\n    overflow-y: hidden;\n    padding-inline: var(--wje-spacing-inline, 0);\n    gap: 0.5rem;\n}\n\n.carousel-slides::-webkit-scrollbar {\n    display: none;\n}\n\n::slotted(wje-carousel-item) {\n    flex: 0 0 var(--wje-carousel-size);\n    height: 100%;\n}\n\n/*NAVIGATION*/\n\n[name="prev"], [name="next"] {\n    display: block;\n    position: absolute;\n    top: 50%;\n    border: none;\n    cursor: pointer;\n    z-index: 2;\n}\n\n[name="prev"] {\n    left: -1rem;\n    transform: translate(-100%, -50%);\n}\n\n[name="next"] {\n    right: -1rem;\n    transform: translate(100%, -50%);\n}\n\n/*PAGINATION*/\n\n.pagination {\n    position: relative;\n    left: 50%;\n    transform: translate(-50%, 0);\n    display: flex;\n    z-index: 2;\n    justify-content: center;\n    padding-block: 1rem;\n}\n.pagination-item {\n    cursor: pointer;\n    height: 15px;\n    width: 15px;\n    margin: 0 2px;\n    background-color: var(--wje-color-contrast-4);\n    display: inline-block;\n    border-radius: 50%;\n}\n.pagination-item.active {\n    background-color: var(--wje-color);\n}\n\n/*THUMBNAILS*/\n\n.thumbnails {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    overflow-x: auto;\n    gap: 0.5rem;\n    padding: 0 0.5rem;\n    margin-top: 0.5rem;\n    margin-bottom: 0.5rem;\n    box-sizing: border-box;\n    overflow-y: hidden;\n    wje-thumbnail {\n        --wje-thumbnail-width: 48px;\n        --wje-thumbnail-height: 48px;\n        --wje-thumbnail-border-radius: 0;\n        cursor: pointer;\n        border: 1px solid transparent;\n    }\n    .active {\n        border: 1px solid var(--wje-color-primary-11);\n    }\n}\n';
 class Carousel extends WJElement {
   /**
    * Carousel constructor method.
@@ -89,6 +89,7 @@ class Carousel extends WJElement {
    */
   setupAttributes() {
     this.isShadowRoot = "open";
+    this.syncAria();
   }
   /**
    * Before draw method for the Carousel.
@@ -104,20 +105,39 @@ class Carousel extends WJElement {
     let fragment = document.createDocumentFragment();
     let native = document.createElement("div");
     native.classList.add("native-carousel");
+    let wrapper = document.createElement("div");
+    wrapper.classList.add("slides-wrapper");
     let slides = document.createElement("div");
     slides.classList.add("carousel-slides");
     let slot = document.createElement("slot");
-    slides.appendChild(slot);
-    native.appendChild(slides);
+    let slotPrev = document.createElement("slot");
+    slotPrev.setAttribute("name", "prev");
+    let slotNext = document.createElement("slot");
+    slotNext.setAttribute("name", "next");
+    slides.append(slot);
+    native.append(wrapper);
     if (this.navigation) {
-      this.prevButton = this.createPreviousButton();
-      this.nextButton = this.createNextButton();
-      native.appendChild(this.prevButton);
-      native.appendChild(this.nextButton);
+      let existingPrev = this.querySelector('[slot="prev"]');
+      let existingNext = this.querySelector('[slot="next"]');
+      this.prevButton = existingPrev || this.createPreviousButton();
+      this.nextButton = existingNext || this.createNextButton();
+      if (this.prevButton && !this.prevButton.dataset.wjeCarouselNavBound) {
+        this.prevButton.addEventListener("click", () => this.previousSlide());
+        this.prevButton.dataset.wjeCarouselNavBound = "true";
+      }
+      if (this.nextButton && !this.nextButton.dataset.wjeCarouselNavBound) {
+        this.nextButton.addEventListener("click", () => this.nextSlide());
+        this.nextButton.dataset.wjeCarouselNavBound = "true";
+      }
+      if (!existingPrev) this.append(this.prevButton);
+      if (!existingNext) this.append(this.nextButton);
+      wrapper.append(slotPrev);
+      wrapper.append(slotNext);
     }
-    if (this.pagination) native.appendChild(this.createPagination());
-    if (this.thumbnails) native.appendChild(this.createThumbnails());
-    fragment.appendChild(native);
+    wrapper.append(slides);
+    if (this.pagination) native.append(this.createPagination());
+    if (this.thumbnails) native.append(this.createThumbnails());
+    fragment.append(native);
     this.slides = slides;
     return fragment;
   }
@@ -133,19 +153,40 @@ class Carousel extends WJElement {
     let carouselSize = 100 / +this.slidePerPage;
     this.style.setProperty("--wje-carousel-size", carouselSize + "%");
     this.goToSlide(this.activeSlide, "auto");
+    requestAnimationFrame(() => requestAnimationFrame(() => this.syncActiveToCenter()));
     this.slides.addEventListener("scrollend", (e) => {
-      const slides = this.getSlides();
-      const entries = [...this.entriesMap.values()];
-      const visibleEntries = entries.find((entry) => entry.isIntersecting);
-      if (visibleEntries == null ? void 0 : visibleEntries.target.classList.contains("clone")) {
-        const cloneIndex = +visibleEntries.target.getAttribute("clone-index");
-        this.goToSlide(cloneIndex, "auto");
-        this.activeSlide = cloneIndex;
-      } else if (visibleEntries) {
-        let slideIndex = slides.indexOf(visibleEntries.target);
-        this.activeSlide = slideIndex;
+      this.syncActiveToCenter();
+    });
+    this.syncAria();
+  }
+  /**
+   * Sync `activeSlide` to the slide whose center is closest to the container center.
+   */
+  syncActiveToCenter() {
+    this.getSlides();
+    const withClones = this.getSlidesWithClones();
+    if (!withClones.length) return;
+    const containerRect = this.slides.getBoundingClientRect();
+    const containerCenterX = containerRect.left + containerRect.width / 2;
+    let best = null;
+    let bestDist = Infinity;
+    withClones.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      const center = r.left + r.width / 2;
+      const dist = Math.abs(center - containerCenterX);
+      if (dist < bestDist) {
+        bestDist = dist;
+        best = el;
       }
     });
+    if (!best) return;
+    const vIndex = withClones.indexOf(best);
+    if (vIndex === -1) return;
+    const logicalIndex = this.getLogicalIndexForVisual(vIndex);
+    this.activeSlide = logicalIndex;
+    if (this.loop && (vIndex === 0 || vIndex === withClones.length - 1)) {
+      this.goToSlide(logicalIndex, "auto");
+    }
   }
   /**
    * Sets up the IntersectionObserver for the Carousel.
@@ -176,23 +217,25 @@ class Carousel extends WJElement {
    */
   goToSlide(index, behavior = "smooth", next = true) {
     const slides = this.getSlides();
-    const slideWithClones = this.getSlidesWithClones();
-    slideWithClones.forEach((slide, i) => {
-      slide.classList.remove("active");
-    });
-    let newActiveSlide = this.loop ? (index + slides.length) % slides.length : Math.min(Math.max(index, 0), slides.length - 1);
-    this.activeSlide = newActiveSlide;
-    const nextSlideIndex = Math.min(
-      Math.max(index + (this.loop ? this.slidePerPage : 0), 0),
-      slideWithClones.length - 1
-    );
-    const nextSlideEl = this.getSlidesWithClones()[nextSlideIndex];
-    nextSlideEl.classList.add("active");
-    let nextSlideRect = nextSlideEl.getBoundingClientRect();
-    let slidesContainerRect = this.slides.getBoundingClientRect();
+    const withClones = this.getSlidesWithClones();
+    withClones.forEach((slide) => slide.classList.remove("active"));
+    const maxIndex = Math.max(slides.length - 1, 0);
+    let logical;
+    if (this.loop && slides.length > 0) {
+      logical = (index % slides.length + slides.length) % slides.length;
+    } else {
+      logical = Math.min(Math.max(index, 0), maxIndex);
+    }
+    this.activeSlide = logical;
+    const vIndex = this.getVisualIndexForLogical(logical);
+    const targetEl = withClones[vIndex];
+    if (!targetEl) return;
+    targetEl.classList.add("active");
+    const targetRect = targetEl.getBoundingClientRect();
+    const containerRect = this.slides.getBoundingClientRect();
     this.slides.scrollTo({
-      left: nextSlideRect.left - slidesContainerRect.left + this.slides.scrollLeft,
-      top: nextSlideRect.top - slidesContainerRect.top + this.slides.scrollTop,
+      left: targetRect.left - containerRect.left + this.slides.scrollLeft,
+      top: targetRect.top - containerRect.top + this.slides.scrollTop,
       behavior: behavior === "smooth" ? "smooth" : "auto"
     });
     if (this.navigation && !this.loop) {
@@ -201,6 +244,28 @@ class Carousel extends WJElement {
       if (this.activeSlide === slides.length - 1) this.nextButton.setAttribute("disabled", "");
       if (this.activeSlide === 0) this.prevButton.setAttribute("disabled", "");
     }
+    this.syncAria();
+  }
+  /**
+   * Syncs ARIA attributes on the carousel and slides.
+   */
+  syncAria() {
+    this.setAriaState({
+      role: "region",
+      roledescription: "carousel"
+    });
+    const slides = this.getSlides();
+    const total = slides.length;
+    slides.forEach((slide, index) => {
+      slide.setAttribute("role", "group");
+      slide.setAttribute("aria-roledescription", "slide");
+      slide.setAttribute("aria-label", `Slide ${index + 1} of ${total}`);
+      slide.setAttribute("aria-hidden", slide.classList.contains("active") ? "false" : "true");
+    });
+    const clones = this.querySelectorAll(".clone");
+    clones.forEach((slide) => {
+      slide.setAttribute("aria-hidden", "true");
+    });
   }
   /**
    * Clones the first and last items.
@@ -210,12 +275,10 @@ class Carousel extends WJElement {
     if (items.length && this.loop) {
       const firstItemClone = items[0].cloneNode(true);
       firstItemClone.classList.add("clone");
-      firstItemClone.setAttribute("clone-index", 0);
-      this.appendChild(firstItemClone);
+      this.append(firstItemClone);
       const lastItemClone = items[items.length - 1].cloneNode(true);
       lastItemClone.classList.add("clone");
-      lastItemClone.setAttribute("clone-index", items.length - 1);
-      this.insertBefore(lastItemClone, this.firstChild);
+      this.insertBefore(lastItemClone, items[0]);
     }
   }
   /**
@@ -268,10 +331,12 @@ class Carousel extends WJElement {
    */
   createNextButton() {
     const nextButton = document.createElement("wje-button");
-    nextButton.classList.add("next");
-    nextButton.innerHTML = '<wje-icon name="chevron-right" size="large"></wje-icon>';
+    nextButton.setAttribute("part", "next-button");
     nextButton.setAttribute("circle", "");
     nextButton.setAttribute("fill", "link");
+    nextButton.setAttribute("slot", "next");
+    nextButton.innerHTML = '<wje-icon name="chevron-right" size="large"></wje-icon>';
+    nextButton.classList.add("next");
     nextButton.addEventListener("click", (e) => {
       this.nextSlide();
     });
@@ -283,10 +348,12 @@ class Carousel extends WJElement {
    */
   createPreviousButton() {
     const previousButton = document.createElement("wje-button");
-    previousButton.classList.add("prev");
-    previousButton.innerHTML = '<wje-icon name="chevron-left" size="large"></wje-icon>';
+    previousButton.setAttribute("part", "previous-button");
     previousButton.setAttribute("circle", "");
     previousButton.setAttribute("fill", "link");
+    previousButton.setAttribute("slot", "prev");
+    previousButton.innerHTML = '<wje-icon name="chevron-left" size="large"></wje-icon>';
+    previousButton.classList.add("prev");
     previousButton.addEventListener("click", (e) => {
       this.previousSlide();
     });
@@ -298,6 +365,7 @@ class Carousel extends WJElement {
    */
   createPagination() {
     const pagination = document.createElement("div");
+    pagination.setAttribute("part", "pagination");
     pagination.classList.add("pagination");
     const slides = this.getSlides();
     slides.forEach((slide, i) => {
@@ -308,7 +376,7 @@ class Carousel extends WJElement {
         e.target.classList.add("active");
         this.goToSlide(i);
       });
-      pagination.appendChild(paginationItem);
+      pagination.append(paginationItem);
     });
     return pagination;
   }
@@ -328,7 +396,7 @@ class Carousel extends WJElement {
         e.target.closest("wje-thumbnail").classList.add("active");
         this.goToSlide(i);
       });
-      thumbnails.appendChild(thumbnail);
+      thumbnails.append(thumbnail);
     });
     return thumbnails;
   }
@@ -358,22 +426,38 @@ class Carousel extends WJElement {
   getSlidesWithClones() {
     return Array.from(this.querySelectorAll("wje-carousel-item"));
   }
+  /** Maps logical index -> visual index (accounts for leading clone when loop=true) */
+  getVisualIndexForLogical(index) {
+    return this.loop ? index + 1 : index;
+  }
+  /** Maps visual index -> logical index (handles clones at 0 and last when loop=true) */
+  getLogicalIndexForVisual(vIndex) {
+    const slides = this.getSlides();
+    const withClones = this.getSlidesWithClones();
+    if (!this.loop) return vIndex;
+    if (vIndex === 0) return slides.length - 1;
+    if (vIndex === withClones.length - 1) return 0;
+    return vIndex - 1;
+  }
   /**
    * Goes to the slide.
    * @returns {boolean}
    */
   canGoNext() {
-    return this.querySelector(".native-carousel").scrollLeft < this.querySelector(".native-carousel").scrollWidth;
+    const el = this.context.querySelector(".carousel-slides");
+    return el.scrollLeft < el.scrollWidth - el.clientWidth;
   }
   /**
    * Goes to the slide.
    * @returns {boolean}
    */
   canGoPrevious() {
-    return this.querySelector(".native-carousel").scrollLeft > 0;
+    const el = this.context.querySelector(".carousel-slides");
+    return el.scrollLeft > 0;
   }
 }
 WJElement.define("wje-carousel", Carousel);
 export {
   Carousel as default
 };
+//# sourceMappingURL=wje-carousel.js.map

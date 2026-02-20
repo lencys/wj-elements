@@ -2,7 +2,7 @@ var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 import WJElement from "./wje-element.js";
-const styles = "/*\n[ WJ Aside ]\n*/\n\n:host {\n    --wje-aside-width: '100px';\n    --wje-aside-top: 0;\n    --wje-aside-border-color: var(--wje-border-color);\n    --wje-aside-border-width: 0 1px 0 0;\n    --wje-aside-border-style: solid;\n    box-sizing: border-box;\n    flex-shrink: 0;\n    overflow: auto;\n    border-color: var(--wje-aside-border-color);\n    border-width: var(--wje-aside-border-width);\n    border-style: var(--wje-aside-border-style);\n}\n\n:host(.open) {\n    display: block !important;\n}\n\n@media (min-width: 768px) {\n    :host([fixed]) {\n        position: fixed;\n        width: var(--wje-aside-width);\n        top: var(--wje-aside-top);\n        height: calc(100% - var(--wje-aside-top));\n    }\n}\n\n@media (max-width: 768px) {\n    :host {\n        display: none;\n    }\n\n    :host([variant='top-start']) {\n        position: fixed;\n        top: 0;\n        left: 0;\n        width: 80%;\n        height: 100%;\n        z-index: 9999;\n        background-color: #fff;\n    }\n}\n";
+const styles = "/*\n[ WJ Aside ]\n*/\n\n:host {\n    box-sizing: border-box;\n    flex-shrink: 0;\n    overflow: auto;\n    border-color: var(--wje-aside-border-color);\n    border-width: var(--wje-aside-border-width);\n    border-style: var(--wje-aside-border-style);\n}\n\n:host(.open) {\n    display: block !important;\n}\n\n@media (min-width: 768px) {\n    :host([fixed]) {\n        position: fixed;\n        width: var(--wje-aside-width);\n        top: var(--wje-aside-top);\n        height: calc(100% - var(--wje-aside-top));\n    }\n}\n\n@media (max-width: 768px) {\n    :host {\n        display: none;\n    }\n\n    :host([variant='top-start']) {\n        position: fixed;\n        top: 0;\n        left: 0;\n        width: 80%;\n        height: 100%;\n        z-index: 9999;\n        background-color: #fff;\n    }\n}\n";
 class Aside extends WJElement {
   /**
    * Constructor for the Aside class.
@@ -52,3 +52,4 @@ Aside.define("wje-aside", Aside);
 export {
   Aside as default
 };
+//# sourceMappingURL=wje-aside.js.map

@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/badge/slots.md';
   <title>Badge | Badges</title>
   <meta
     name="description"
-    content="Badge sú inline-block elementy, ktoré majú informatívny charakter a zvyčajne sa zobrazujú v blízkosti iného elementu. Používajú sa ako upozornenie, že k elementu sú priradené ďalšie elementy, a informujú používateľa o ich počte."
+    content="API documentation for wje-badge, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -37,13 +37,32 @@ import List from '@site/static/usage/v1/badge/list/index.md';
 
 <List />
 
-## Editing styles
+## Styling
 
 ### Colors
 
 import Colors from '@site/static/usage/v1/badge/theming/colors/index.md';
 
 <Colors />
+
+
+## When to use
+
+Use `wje-badge` to improve readability, scannability, and contextual understanding of content.
+
+## When not to use
+
+Do not replace structured interactive data with media-only presentation when precision is needed.
+
+## Accessibility
+
+Provide alt text, maintain readable contrast, and include text equivalents for icon-only controls.
+
+## Best Practices
+
+- Compress media and use lazy loading in larger collections.
+- Keep information priority consistent across cards/lists.
+- Avoid duplicating the same meaning in icon and text without added value.
 
 ## Attributes and Properties
 

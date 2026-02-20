@@ -2,18 +2,18 @@
 title: 'Image'
 ---
 
-import Props from '@ionic-internal/component-api/v1/image/props.md';
-import Events from '@ionic-internal/component-api/v1/image/events.md';
-import Methods from '@ionic-internal/component-api/v1/image/methods.md';
-import Parts from '@ionic-internal/component-api/v1/image/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/image/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/image/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/image/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/image/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/image/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/image/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/image/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/image/slots.md';
 
 <head>
   <title>Image Element | Element pre zobrazovanie obrázkov</title>
   <meta
     name="description"
-    content="Element Image pridáva obrázkom funkciu lazyload a počas načítavania zobrazuje zástupnú ikonu (placeholder) v podobe animovaného obrázka."
+    content="Element Image slúži na zobrazovanie obrázkov. Pridáva obrázkom funkciu lazyload a počas načítavania zobrazuje zástupnú ikonu (loader) v podobe animovaného obrázka."
   />
 </head>
 
@@ -51,11 +51,30 @@ import FalloutLog from '@site/static/usage/v1/img/fallout-log/index.md';
 
 <FalloutLog />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-img` na zobrazenie obsahu, ktorý zlepšuje čitateľnosť, skenovateľnosť alebo kontext informácií.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho ako náhradu za štruktúrované dáta tam, kde je potrebná presná interakcia.
+
+## Prístupnosť
+
+Doplňte alternatívny text pre obrázky, čitateľné kontrasty a textové ekvivalenty pre ikony bez popisu.
+
+## Odporúčané postupy
+
+- Komprimujte médiá a používajte lazy loading pri veľkých zoznamoch.
+- Pri kartách a zoznamoch držte konzistentné informačné priority.
+- Neopakujte rovnakú informáciu súčasne textom aj ikonou bez pridanej hodnoty.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -63,11 +82,11 @@ import FalloutLog from '@site/static/usage/v1/img/fallout-log/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

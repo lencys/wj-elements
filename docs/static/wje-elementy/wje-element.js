@@ -5,439 +5,16 @@ var __typeError = (msg) => {
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot " + msg);
+var __privateGet = (obj, member, getter) => (__accessCheck(obj, member, "read from private field"), getter ? getter.call(obj) : member.get(obj));
 var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot add the same private member more than once") : member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+var __privateSet = (obj, member, value, setter) => (__accessCheck(obj, member, "write to private field"), setter ? setter.call(obj, value) : member.set(obj, value), value);
 var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "access private method"), method);
-var _Event_instances, dispatch_fn;
+var _drawingStatus, _isAttached, _isRendering, _originalVisibility, _pristine, _WJElement_instances, enqueueUpdate_fn, refresh_fn, resolveRender_fn;
+import { UniversalService } from "./universal-service.js";
+import { Permissions } from "./permissions.js";
+import { WjElementUtils } from "./element-utils.js";
+import { event } from "./event.js";
 import { store, defaultStoreActions } from "./wje-store.js";
-class UniversalService {
-  constructor(props = {}) {
-    __publicField(this, "findByKey", (attrName, key, keyValue) => {
-      if (this._store.getState()[attrName] instanceof Array) {
-        return this._store.getState()[attrName].find((item) => item[key] === keyValue);
-      } else {
-        console.warn(` Attribute ${attrName} is not array`);
-        return null;
-      }
-    });
-    __publicField(this, "findById", (attrName, id) => {
-      if (this._store.getState()[attrName] instanceof Array) {
-        return this._store.getState()[attrName].find((item) => item.id === id);
-      } else {
-        console.warn(` Attribute ${attrName} is not array`);
-        return null;
-      }
-    });
-    __publicField(this, "findAttributeValue", (attrName) => {
-      return this._store.getState()[attrName];
-    });
-    __publicField(this, "update", (data, action) => {
-      this._store.dispatch(action(data));
-    });
-    __publicField(this, "add", (data, action) => {
-      this._store.dispatch(action(data));
-    });
-    __publicField(this, "loadPromise", (url, action, method = "GET", data = "", permissionCallBack = () => {
-    }) => {
-      return fetch(url, {
-        method,
-        body: data,
-        headers: {
-          "Content-Type": "application/json"
-        },
-        async: true
-      }).then((response, e) => {
-        var _a;
-        let permissions = (_a = response.headers.get("permissions")) == null ? void 0 : _a.split(",");
-        permissionCallBack(permissions);
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw response.json();
-        }
-      }).then((responseData) => {
-        this._store.dispatch(action(responseData));
-        return responseData;
-      });
-    });
-    __publicField(this, "loadOnePromise", (url, action) => {
-      return fetch(url, {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }).then((response) => {
-        const responseData = response.json();
-        if (action) {
-          this._store.dispatch(action(responseData));
-        }
-        return responseData;
-      });
-    });
-    this._store = props.store;
-  }
-  _save(url, data, action, dispatchMethod, method) {
-    let promise = fetch(url, {
-      method,
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }).then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        return response.json();
-      }
-    });
-    return this.dispatch(promise, dispatchMethod, action);
-  }
-  _get(url, action, dispatchMethod, signal) {
-    let promise = fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      ...signal ? { signal } : {}
-    }).then(async (response) => {
-      let responseText;
-      try {
-        responseText = await response.text();
-        return JSON.parse(responseText);
-      } catch (err) {
-        console.error(err);
-        return responseText;
-      }
-    });
-    return this.dispatch(promise, dispatchMethod, action);
-  }
-  put(url, data, action, dispatchMethod = true) {
-    return this._save(url, data, action, dispatchMethod, "PUT");
-  }
-  post(url, data, action, dispatchMethod = true) {
-    return this._save(url, data, action, dispatchMethod, "POST");
-  }
-  delete(url, data, action, dispatchMethod = true) {
-    return this._save(url, data, action, dispatchMethod, "DELETE");
-  }
-  get(url, action, dispatchMethod = true) {
-    return this._get(url, action, dispatchMethod);
-  }
-  dispatch(promise, dispatchMethod, action) {
-    if (dispatchMethod) {
-      return promise.then((data) => {
-        this._store.dispatch(action(data.data));
-        return data;
-      }).catch((error) => {
-        console.error(error);
-      });
-    }
-    return promise;
-  }
-}
-const _WjePermissionsApi = class _WjePermissionsApi {
-  /**
-   * Sets the permission key.
-   * @param value
-   */
-  static set permissionKey(value) {
-    _WjePermissionsApi._permissionKey = value || "permissions";
-  }
-  /**
-   * Returns the permission key.
-   * @returns {*|string}
-   */
-  static get permissionKey() {
-    return _WjePermissionsApi._permissionKey;
-  }
-  /**
-   * Sets the permissions.
-   * @param value
-   */
-  static set permissions(value) {
-    window.localStorage.setItem(_WjePermissionsApi.permissionKey, JSON.stringify(value));
-  }
-  /**
-   * Returns the permissions.
-   * @returns {string[]}
-   */
-  static get permissions() {
-    return JSON.parse(window.localStorage.getItem(_WjePermissionsApi.permissionKey)) || [];
-  }
-  /**
-   * Checks if the permission is included.
-   * @param key
-   * @returns {boolean}
-   */
-  static includesKey(key) {
-    return _WjePermissionsApi.permissions.includes(key);
-  }
-  /**
-   * Checks if the permission is fulfilled.
-   * @returns {boolean}
-   */
-  static isPermissionFulfilled(permissions) {
-    return permissions.some((perm) => _WjePermissionsApi.permissions.includes(perm));
-  }
-};
-__publicField(_WjePermissionsApi, "_permissionKey", "permissions");
-let WjePermissionsApi = _WjePermissionsApi;
-class WjElementUtils {
-  /**
-   * This function creates an element.
-   * @param element : HTMLElement - The element value.
-   * @param object : Object - The object value.
-   */
-  static setAttributesToElement(element, object) {
-    Object.entries(object).forEach(([key, value]) => {
-      element.setAttribute(key, value);
-    });
-  }
-  /**
-   * This function gets the attributes from an element.
-   * @param {string|HTMLElement} el The element or selector to retrieve attributes from.
-   * @returns {object} - An object containing the element's attributes as key-value pairs.
-   */
-  static getAttributes(el) {
-    if (typeof el === "string") el = document.querySelector(el);
-    return Array.from(el.attributes).filter((a) => !a.name.startsWith("@")).map((a) => [
-      a.name.split("-").map((s, i) => {
-        if (i !== 0) {
-          return s.charAt(0).toUpperCase() + s.slice(1);
-        } else {
-          return s;
-        }
-      }).join(""),
-      a.value
-    ]).reduce((acc, attr) => {
-      acc[attr[0]] = attr[1];
-      return acc;
-    }, {});
-  }
-  /**
-   * This function gets the events from an element.
-   * @param {string|HTMLElement} el The element or selector to retrieve events from.
-   * @returns {Map<any, any>} - The map value.
-   */
-  static getEvents(el) {
-    if (typeof el === "string") el = document.querySelector(el);
-    return Array.from(el.attributes).filter((a) => a.name.startsWith("@wje")).map((a) => [a.name.substring(3).split("-").join(""), a.value]).reduce((acc, attr) => {
-      acc.set(attr[0], attr[1]);
-      return acc;
-    }, /* @__PURE__ */ new Map());
-  }
-  /**
-   * This function converts an object to a string.
-   * @param {object} object The object to convert.
-   * @returns {string} - The string value.
-   */
-  static attributesToString(object) {
-    return Object.entries(object).map(([key, value]) => {
-      return `${key}="${value}"`;
-    }).join(" ");
-  }
-  /**
-   * This function checks if the slot exists.
-   * @param {string|HTMLElement} el The element or selector to check for slots.
-   * @param slotName The slot name to check for.
-   * @returns {boolean} - The boolean value.
-   */
-  static hasSlot(el, slotName = null) {
-    let selector = slotName ? `[slot="${slotName}"]` : "[slot]";
-    return el.querySelectorAll(selector).length > 0 ? true : false;
-  }
-  /**
-   * This function checks if the slot has content.
-   * @param {string|HTMLElement} el The element or selector to check for slot content
-   * @param slotName The slot name to check for.
-   * @returns {boolean} - The boolean value.
-   */
-  static hasSlotContent(el, slotName = null) {
-    let slotElement = el.querySelector(`slot`);
-    if (slotName) {
-      slotElement = el.querySelector(`slot[name="${slotName}"]`);
-    }
-    if (slotElement) {
-      const assignedElements = slotElement.assignedElements();
-      return assignedElements.length > 0;
-    }
-    return false;
-  }
-  /**
-   * This function converts a string to a boolean.
-   * @param {string | object} value The value to convert to a boolean. If the value is a boolean, it will be returned as is.
-   * @returns {boolean} - The boolean value.
-   */
-  static stringToBoolean(value) {
-    if (typeof value === "boolean") return value;
-    return !["false", "0", 0].includes(value);
-  }
-}
-var self;
-class Event {
-  constructor() {
-    __privateAdd(this, _Event_instances);
-    this.customEventStorage = [];
-    self = this;
-  }
-  /**
-   * Dispatch custom event to the element with the specified event name and detail.
-   * @param element
-   * @param event
-   * @param detail
-   */
-  dispatchCustomEvent(element, event2, detail) {
-    element.dispatchEvent(
-      new CustomEvent(event2, {
-        detail: detail || {
-          context: element,
-          event: self
-        },
-        bubbles: true,
-        composed: true,
-        cancelable: true
-      })
-    );
-  }
-  /**
-   * Find record by element in the storage.
-   * @param element
-   * @returns {*}
-   */
-  findRecordByElement(element) {
-    for (let index = 0, length = this.customEventStorage.length; index < length; index++) {
-      let record = this.customEventStorage[index];
-      if (element === record.element) {
-        return record;
-      }
-    }
-    return false;
-  }
-  /**
-   * Add listener to the element. If the element is an array, the listener will be added to all elements in the array.
-   * @param element
-   * @param originalEvent
-   * @param event
-   * @param listener
-   * @param options
-   */
-  addListener(element, originalEvent, event2, listener, options) {
-    if (!element) return;
-    if (!Array.isArray(element)) element = [element];
-    element.forEach((el) => {
-      this.writeRecord(el, originalEvent, event2, listener, options);
-    });
-  }
-  /**
-   * Write record to the storage.
-   * @param element
-   * @param originalEvent
-   * @param event
-   * @param listener
-   * @param options
-   */
-  writeRecord(element, originalEvent, event2, listener, options) {
-    let record = this.findRecordByElement(element);
-    if (record) {
-      record.listeners[originalEvent] = record.listeners[originalEvent] || [];
-    } else {
-      record = {
-        element,
-        listeners: {}
-      };
-      record.listeners[originalEvent] = [];
-      this.customEventStorage.push(record);
-    }
-    listener = listener || __privateMethod(this, _Event_instances, dispatch_fn);
-    let obj = {
-      listener,
-      options,
-      event: event2
-    };
-    if (!this.listenerExists(element, originalEvent, obj)) {
-      record.listeners[originalEvent].push(obj);
-      element.addEventListener(originalEvent, listener, options);
-    }
-  }
-  /**
-   * Performs a deep equality check between two objects.
-   * @param x The first object to compare.
-   * @param y The second object to compare.
-   * @returns - Returns `true` if the objects are deeply equal, `false` otherwise.
-   */
-  deepEqual(x, y) {
-    return x && y && typeof x === "object" && typeof x === typeof y ? Object.keys(x).length === Object.keys(y).length && Object.keys(x).every((key) => this.deepEqual(x[key], y[key])) : x === y;
-  }
-  /**
-   * Check if the listener already exists on the element.
-   * @param element
-   * @param event
-   * @param listener
-   * @returns
-   */
-  listenerExists(element, event2, listener) {
-    let record = this.findRecordByElement(element);
-    return record.listeners[event2].some((e) => this.deepEqual(e, listener));
-  }
-  /**
-   * Remove listener from the element and delete the listener from the custom event storage.
-   * @param element
-   * @param originalEvent
-   * @param event
-   * @param listener
-   * @param options
-   */
-  removeListener(element, originalEvent, event2, listener, options) {
-    let record = this.findRecordByElement(element);
-    if (record && originalEvent in record.listeners) {
-      let index = record.listeners[originalEvent].indexOf(listener);
-      if (index !== -1) {
-        record.listeners[originalEvent].splice(index, 1);
-      }
-      if (!record.listeners[originalEvent].length) {
-        delete record.listeners[originalEvent];
-      }
-    }
-    listener = listener || __privateMethod(this, _Event_instances, dispatch_fn);
-    element.removeEventListener(originalEvent, listener, options);
-  }
-  /**
-   * Remove all event listeners from the specified element and delete the element from the custom event storage.
-   * @param {HTMLElement} element The element from which all listeners will be removed.
-   */
-  removeElement(element) {
-    this.customEventStorage = this.customEventStorage.filter((e) => {
-      return e.element !== element;
-    });
-  }
-  // TODO
-  createPromiseFromEvent(element, event2) {
-    return new Promise((resolve) => {
-      let success = () => {
-        element.removeEventListener(event2, success);
-        resolve();
-      };
-      element.addEventListener(event2, success);
-    });
-  }
-}
-_Event_instances = new WeakSet();
-/**
- * Dispatch event to the element and trigger the listener.
- * @param e
- */
-dispatch_fn = function(e) {
-  let element = this;
-  let record = self.findRecordByElement(element);
-  let listeners = record.listeners[e.type];
-  listeners.forEach((listener) => {
-    self.dispatchCustomEvent(element, listener.event, {
-      originalEvent: (e == null ? void 0 : e.type) || null,
-      context: element,
-      event: self
-    });
-    if (listener.options && listener.options.stopPropagation === true) e.stopPropagation();
-  });
-};
-let event = new Event();
 const template = document.createElement("template");
 template.innerHTML = ``;
 const _WJElement = class _WJElement extends HTMLElement {
@@ -446,6 +23,12 @@ const _WJElement = class _WJElement extends HTMLElement {
    */
   constructor() {
     super();
+    __privateAdd(this, _WJElement_instances);
+    __privateAdd(this, _drawingStatus);
+    __privateAdd(this, _isAttached);
+    __privateAdd(this, _isRendering);
+    __privateAdd(this, _originalVisibility);
+    __privateAdd(this, _pristine);
     /**
      * Initializes the component, setting up attributes and rendering.
      * @param [force] Whether to force initialization.
@@ -454,26 +37,34 @@ const _WJElement = class _WJElement extends HTMLElement {
     __publicField(this, "initWjElement", (force = false) => {
       return new Promise(async (resolve, reject) => {
         var _a;
-        this.drawingStatus = this.drawingStatuses.BEGINING;
+        __privateSet(this, _drawingStatus, this.drawingStatuses.BEGINING);
         (_a = this.setupAttributes) == null ? void 0 : _a.call(this);
-        if (this.isShadowRoot) {
-          if (!this.shadowRoot) this.attachShadow({ mode: this.shadowType || "open" });
+        if (this.hasShadowRoot) {
+          if (!this.shadowRoot) this.attachShadow({ mode: this.shadowType || "open", delegatesFocus: true });
         }
         this.setUpAccessors();
-        this.drawingStatus = this.drawingStatuses.START;
-        await this.display(force);
+        __privateSet(this, _drawingStatus, this.drawingStatuses.START);
         const sheet = new CSSStyleSheet();
         sheet.replaceSync(this.constructor.cssStyleSheet);
-        this.context.adoptedStyleSheets = [sheet];
+        if (this.shadowRoot) {
+          const existing = this.shadowRoot.adoptedStyleSheets || [];
+          const next = [...existing];
+          if (!next.includes(sheet)) next.push(sheet);
+          this.shadowRoot.adoptedStyleSheets = next;
+        }
+        await this.display(force);
         resolve();
       });
     });
-    this.isAttached = false;
+    if (typeof this.attachInternals === "function") {
+      this.internals = this.attachInternals();
+    }
+    __privateSet(this, _isAttached, false);
     this.service = new UniversalService({
       store
     });
     this.defineDependencies();
-    this.rendering = false;
+    __privateSet(this, _isRendering, false);
     this._dependencies = {};
     this.drawingStatuses = {
       CREATED: 0,
@@ -484,7 +75,19 @@ const _WJElement = class _WJElement extends HTMLElement {
       DONE: 5,
       DISCONNECTED: 6
     };
-    this.drawingStatus = this.drawingStatuses.CREATED;
+    __privateSet(this, _drawingStatus, this.drawingStatuses.CREATED);
+    __privateSet(this, _pristine, true);
+    __privateSet(this, _isRendering, false);
+    this.rafId = null;
+    __privateSet(this, _originalVisibility, null);
+    this.params = {};
+    this.updateComplete = new Promise((resolve, reject) => {
+      this.finisPromise = resolve;
+      this.rejectPromise = reject;
+    });
+  }
+  get drawingStatus() {
+    return __privateGet(this, _drawingStatus);
   }
   /**
    * Sets the value of the 'permission' attribute.
@@ -529,16 +132,19 @@ const _WJElement = class _WJElement extends HTMLElement {
   }
   /**
    * Sets the 'shadow' attribute.
-   * @param value The value to set for the 'shadow' attribute.
+   * @param {string} value The value to set for the 'shadow' attribute.
    */
   set isShadowRoot(value) {
     return this.setAttribute("shadow", value);
+  }
+  get isShadowRoot() {
+    return this.getAttribute("shadow");
   }
   /**
    * Checks if the 'shadow' attribute is present.
    * @returns {boolean} True if the 'shadow' attribute is present.
    */
-  get isShadowRoot() {
+  get hasShadowRoot() {
     return this.hasAttribute("shadow");
   }
   /**
@@ -553,7 +159,7 @@ const _WJElement = class _WJElement extends HTMLElement {
    * @returns The rendering context.
    */
   get context() {
-    if (this.isShadowRoot) {
+    if (this.hasShadowRoot) {
       return this.shadowRoot;
     } else {
       return this;
@@ -565,6 +171,35 @@ const _WJElement = class _WJElement extends HTMLElement {
    */
   get store() {
     return store;
+  }
+  /**
+   * Returns ElementInternals when available.
+   * @returns {ElementInternals|null}
+   */
+  getInternals() {
+    return this.internals || null;
+  }
+  /**
+   * Sets ARIA state via attributes.
+   * Accepts camelCase keys without the "aria" prefix, plus "role".
+   * Example: setAriaState({ role: 'tab', selected: true, controls: 'panel-1' })
+   * @param {object} state
+   */
+  setAriaState(state = {}) {
+    if (!state || typeof state !== "object") return;
+    Object.entries(state).forEach(([key, value]) => {
+      if (value === void 0 || value === null) return;
+      if (key === "role") {
+        this.setAttribute("role", value);
+        return;
+      }
+      let attr;
+      if (key === "labelledBy") attr = "aria-labelledby";
+      else if (key === "describedBy") attr = "aria-describedby";
+      else attr = `aria-${key.replace(/([A-Z])/g, "-$1").toLowerCase()}`;
+      const normalized = typeof value === "boolean" ? value ? "true" : "false" : value;
+      this.setAttribute(attr, normalized);
+    });
   }
   /**
    * @typedef {object} ArrayActions
@@ -625,8 +260,9 @@ const _WJElement = class _WJElement extends HTMLElement {
    * Defines component dependencies by registering custom elements.
    */
   defineDependencies() {
-    if (this.dependencies)
-      Object.entries(this.dependencies).forEach((name, component) => _WJElement.define(name, component));
+    if (this.dependencies) {
+      Object.entries(this.dependencies).forEach(([name, component]) => _WJElement.define(name, component));
+    }
   }
   /**
    * Hook for extending behavior before drawing the component.
@@ -666,27 +302,116 @@ const _WJElement = class _WJElement extends HTMLElement {
   afterDraw(context, appStoreObj, params) {
   }
   /**
-   * Refreshes the update promise for rendering lifecycle management.
+   * Optional hook: return skeleton markup used while async draw is in progress.
+   * Prefer declarative skeleton via `<div slot="skeleton">...</div>`.
+   * Return: string | Node | DocumentFragment | null | Promise of those.
    */
-  refreshUpdatePromise() {
-    this.updateComplete = new Promise((resolve, reject) => {
-      this.finisPromise = resolve;
-      this.rejectPromise = reject;
-    });
+  renderSkeleton(params) {
+    return null;
+  }
+  /**
+   * Retrieves the delay duration for the skeleton display, determining the value based on a hierarchy of overrides and defaults.
+   * The method prioritizes in the following order:
+   * 1. A finite number set as the `_wjSkeletonDelayOverride` property.
+   * 2. A valid numeric value from the `skeleton-delay` attribute.
+   * 3. The `skeletonDelayMs` property, if defined with a finite number.
+   * 4. A default value of 150 if none of the above are set.
+   * @returns {number} The delay in milliseconds before the skeleton is displayed.
+   */
+  get skeletonDelay() {
+    if (Number.isFinite(this._wjSkeletonDelayOverride)) return this._wjSkeletonDelayOverride;
+    const v = this.getAttribute("skeleton-delay");
+    const n = v === null || v === void 0 ? NaN : Number(v);
+    if (Number.isFinite(n)) return n;
+    if (Number.isFinite(this.skeletonDelayMs)) return this.skeletonDelayMs;
+    return 150;
+  }
+  /**
+   * Retrieves the minimum duration for the skeleton animation.
+   * The method checks for an internally stored finite value. If unavailable,
+   * it retrieves the value from the 'skeleton-min-duration' attribute,
+   * converts it to a number if possible, and uses it. If neither is valid,
+   * a default duration of 300 is returned.
+   * @returns {number} The minimum duration for the skeleton animation in milliseconds.
+   */
+  get skeletonMinDuration() {
+    if (Number.isFinite(this._wjSkeletonMinDurationOverride)) return this._wjSkeletonMinDurationOverride;
+    const v = this.getAttribute("skeleton-min-duration");
+    const n = v === null || v === void 0 ? NaN : Number(v);
+    if (Number.isFinite(n)) return n;
+    return 300;
+  }
+  /**
+   * Sets the minimum duration for the skeleton state. If the provided value is null, undefined, or an empty string,
+   * the override for the minimum duration is removed.
+   * @param {string|number|null|undefined} value The minimum duration to be set for the skeleton state. It can be a numeric value, string representation of a number, or null/undefined to reset the value.
+   */
+  set skeletonMinDuration(value) {
+    if (value === null || value === void 0 || value === "") {
+      delete this._wjSkeletonMinDurationOverride;
+      this.removeAttribute("skeleton-min-duration");
+      return;
+    }
+    const n = Number(value);
+    if (Number.isFinite(n)) {
+      this._wjSkeletonMinDurationOverride = n;
+      this.setAttribute("skeleton-min-duration", String(n));
+    }
+  }
+  /**
+   * Sets or removes the 'skeleton' attribute based on the provided value.
+   * @param {boolean} value A boolean value indicating whether to set ('true') or remove ('false') the 'skeleton' attribute.
+   */
+  set skeleton(value) {
+    if (value) this.setAttribute("skeleton", "");
+    else this.removeAttribute("skeleton");
+  }
+  /**
+   * Checks if the 'skeleton' attribute is present on the element.
+   * @returns {boolean} True if the 'skeleton' attribute exists, false otherwise.
+   */
+  get skeleton() {
+    return this.hasAttribute("skeleton");
+  }
+  /**
+   * Sets the delay for the skeleton loading indicator.
+   * @param {string|number|null|undefined} value The delay value to be set. Accepts a numerical value,
+   * a string that can be converted to a number, null, or undefined.
+   * If null or undefined is provided, the skeleton delay will be cleared.
+   */
+  set skeletonDelay(value) {
+    if (value === null || value === void 0 || value === "") {
+      delete this._wjSkeletonDelayOverride;
+      this.removeAttribute("skeleton-delay");
+      return;
+    }
+    const n = Number(value);
+    if (Number.isFinite(n)) {
+      this._wjSkeletonDelayOverride = n;
+      this.setAttribute("skeleton-delay", String(n));
+    }
+  }
+  /**
+   * Retrieves the delay value used for skeleton loading.
+   * @returns {number} The delay value for the skeleton loader.
+   */
+  get skeletonDelayValue() {
+    return this.skeletonDelay;
   }
   /**
    * Lifecycle method invoked when the component is connected to the DOM.
    */
   connectedCallback() {
-    this.drawingStatus = this.drawingStatuses.ATTACHED;
-    this.finisPromise = (resolve) => {
-      resolve();
-    };
-    this.rejectPromise = (reject) => {
-      reject();
-    };
-    this.refreshUpdatePromise();
-    this.renderPromise = this.initWjElement(true);
+    var _a;
+    if (!__privateGet(this, _isRendering)) {
+      __privateSet(this, _originalVisibility, __privateGet(this, _originalVisibility) ?? this.style.visibility);
+      this.style.visibility = "hidden";
+      (_a = this.setupAttributes) == null ? void 0 : _a.call(this);
+      this.setUpAccessors();
+      __privateSet(this, _drawingStatus, this.drawingStatuses.ATTACHED);
+      __privateSet(this, _pristine, false);
+      __privateMethod(this, _WJElement_instances, enqueueUpdate_fn).call(this);
+    }
   }
   /**
    * Sets up attributes and event listeners for the component.
@@ -728,31 +453,19 @@ const _WJElement = class _WJElement extends HTMLElement {
    */
   disconnectedCallback() {
     var _a, _b;
-    (_a = this.beforeDisconnect) == null ? void 0 : _a.call(this);
-    if (this.isAttached) this.context.innerHTML = "";
-    this.isAttached = false;
-    (_b = this.afterDisconnect) == null ? void 0 : _b.call(this);
-    this.drawingStatus = this.drawingStatuses.DISCONNECTED;
+    if (__privateGet(this, _isAttached)) {
+      (_a = this.beforeDisconnect) == null ? void 0 : _a.call(this);
+      this.context.innerHTML = "";
+      (_b = this.afterDisconnect) == null ? void 0 : _b.call(this);
+      __privateSet(this, _isAttached, false);
+      this.style.visibility = __privateGet(this, _originalVisibility);
+      __privateSet(this, _originalVisibility, null);
+    }
+    if (__privateGet(this, _isRendering)) {
+      this.stopRenderLoop();
+    }
+    __privateSet(this, _drawingStatus, this.drawingStatuses.DISCONNECTED);
     this.componentCleanup();
-  }
-  /**
-   * Enqueues an update to the component.
-   * @returns A promise that resolves when the update is complete.
-   */
-  async enqueueUpdate() {
-    try {
-      if (this.renderPromise && this.renderPromise instanceof Promise) {
-        await this.renderPromise;
-      }
-    } catch (e) {
-      console.error("An error occurred:", e);
-      Promise.reject(e);
-    }
-    const result = this.refresh();
-    if (result !== null) {
-      await result;
-    }
-    this.renderPromise = null;
   }
   /**
    * Lifecycle method invoked when an observed attribute changes.
@@ -762,52 +475,33 @@ const _WJElement = class _WJElement extends HTMLElement {
    */
   attributeChangedCallback(name, old, newName) {
     if (old !== newName) {
-      this.renderPromise = this.enqueueUpdate();
+      __privateSet(this, _pristine, false);
+      __privateMethod(this, _WJElement_instances, enqueueUpdate_fn).call(this);
     }
   }
   /**
-   * Refreshes the component by reinitializing it if it is in a drawing state.
-   * This method checks if the component's drawing status is at least in the START state.
-   * If so, it performs the following steps:
-   * 1. Calls the `beforeRedraw` hook if defined.
-   * 2. Calls the `beforeDisconnect` hook if defined.
-   * 3. Refreshes the update promise to manage the rendering lifecycle.
-   * 4. Calls the `afterDisconnect` hook if defined.
-   * 5. Reinitializes the component by calling `initWjElement` with `true` to force initialization.
-   * If the component is not in a drawing state, it simply returns a resolved promise.
-   * @returns {Promise<void>} A promise that resolves when the refresh is complete.
+   * Triggers a refresh operation by initializing the update lifecycle and setting up promises
+   * to track its completion or failure status. Marks the instance as not pristine and queues
+   * an update.
+   * @returns {void} Does not return a value.
    */
   refresh() {
-    var _a, _b, _c;
-    if (this.drawingStatus && this.drawingStatus >= this.drawingStatuses.START) {
-      (_a = this.beforeRedraw) == null ? void 0 : _a.call(this);
-      (_b = this.beforeDisconnect) == null ? void 0 : _b.call(this);
-      this.refreshUpdatePromise();
-      (_c = this.afterDisconnect) == null ? void 0 : _c.call(this);
-      return this.initWjElement(true);
-    }
-    return Promise.resolve();
+    this.updateComplete = new Promise((resolve, reject) => {
+      this.finisPromise = resolve;
+      this.rejectPromise = reject;
+    });
+    __privateSet(this, _pristine, false);
+    __privateMethod(this, _WJElement_instances, enqueueUpdate_fn).call(this);
   }
   /**
-   * Renders the component within the provided context.
-   * @param context The rendering context, usually the element's shadow root or main DOM element.
-   * @param appStore The global application store for managing state.
-   * @param params Additional parameters or attributes for rendering the component.
-   * @returns This implementation does not render anything and returns `null`.
-   * @description
-   * The `draw` method is responsible for rendering the component's content.
-   * Override this method in subclasses to define custom rendering logic.
-   * @example
-   * class MyComponent extends WJElement {
-   *   draw(context, appStore, params) {
-   *     const div = document.createElement('div');
-   *     div.textContent = 'Hello, world!';
-   *     context.appendChild(div);
-   *   }
-   * }
+   * Stops the current render loop if it is running by canceling the requestAnimationFrame.
+   * @returns {void} This method does not return a value.
    */
-  draw(context, appStore, params) {
-    return null;
+  stopRenderLoop() {
+    if (this.rafId) {
+      cancelAnimationFrame(this.rafId);
+      this.rafId = null;
+    }
   }
   /**
    * Displays the component's content, optionally forcing a re-render.
@@ -816,24 +510,153 @@ const _WJElement = class _WJElement extends HTMLElement {
    */
   display(force = false) {
     this.template = this.constructor.customTemplate || document.createElement("template");
-    if (force) {
-      [...this.context.childNodes].forEach(this.context.removeChild.bind(this.context));
-      this.isAttached = false;
-    }
-    this.context.append(this.template.content.cloneNode(true));
-    if (this.noShow || this.isPermissionCheck && !WjePermissionsApi.isPermissionFulfilled(this.permission)) {
+    const nextContext = document.createDocumentFragment();
+    nextContext.append(this.template.content.cloneNode(true));
+    if (this.noShow || this.isPermissionCheck && !Permissions.isPermissionFulfilled(this.permission)) {
       this.remove();
       return Promise.resolve();
     }
-    return this._resolveRender();
+    let skeletonTimer = null;
+    let renderFinished = false;
+    let skeletonShownAt = null;
+    const clearSkeletonTimer = () => {
+      if (skeletonTimer) {
+        clearTimeout(skeletonTimer);
+        skeletonTimer = null;
+      }
+    };
+    const buildSkeletonFragment = async () => {
+      var _a, _b;
+      const slotted = this.querySelector('[slot="skeleton"]');
+      if (slotted) {
+        if (this.hasShadowRoot) {
+          const frag3 = document.createDocumentFragment();
+          const slot = document.createElement("slot");
+          slot.name = "skeleton";
+          frag3.append(slot);
+          return frag3;
+        }
+        const frag2 = document.createDocumentFragment();
+        frag2.append(slotted.cloneNode(true));
+        return frag2;
+      }
+      const frag = document.createDocumentFragment();
+      let skel = (_a = this.renderSkeleton) == null ? void 0 : _a.call(this, WjElementUtils.getAttributes(this));
+      if (skel instanceof Promise || ((_b = skel == null ? void 0 : skel.constructor) == null ? void 0 : _b.name) === "Promise") {
+        skel = await skel;
+      }
+      if (skel === null || skel === void 0) return null;
+      let node;
+      if (skel instanceof HTMLElement || skel instanceof DocumentFragment) {
+        node = skel;
+      } else {
+        const t = document.createElement("template");
+        t.innerHTML = skel;
+        node = t.content.cloneNode(true);
+      }
+      frag.append(node);
+      return frag;
+    };
+    const showSkeleton = async () => {
+      if (renderFinished) return;
+      if (!this.hasAttribute("skeleton")) return;
+      const frag = await buildSkeletonFragment();
+      if (!frag) return;
+      try {
+        const cs = getComputedStyle(this);
+        if (cs.display === "inline") this.style.display = "block";
+        if (cs.width === "0px") this.style.width = "100%";
+      } catch (e) {
+      }
+      if (this.hasShadowRoot) {
+        this.shadowRoot.replaceChildren(frag);
+      } else {
+        this.replaceChildren(frag);
+      }
+      skeletonShownAt = performance.now();
+      this.dispatchEvent(new CustomEvent("wj:skeleton:show", {
+        detail: { delay: this.skeletonDelay },
+        bubbles: true,
+        composed: true
+      }));
+      if (this.hasAttribute("debug-skeleton")) {
+        debugger;
+      }
+    };
+    if (this.hasAttribute("skeleton") && this.style.visibility === "hidden") {
+      this.style.visibility = __privateGet(this, _originalVisibility) ?? "visible";
+    }
+    let skeletonPlannedAt;
+    if (this.hasAttribute("skeleton")) {
+      skeletonPlannedAt = performance.now();
+      skeletonTimer = setTimeout(() => {
+        showSkeleton();
+      }, this.skeletonDelay);
+    }
+    return __privateMethod(this, _WJElement_instances, resolveRender_fn).call(this, nextContext, { skipAfterDraw: true }).then(async () => {
+      var _a;
+      renderFinished = true;
+      clearSkeletonTimer();
+      if (skeletonShownAt === null) {
+        const elapsed = skeletonPlannedAt ? performance.now() - skeletonPlannedAt : 0;
+        this.dispatchEvent(new CustomEvent("wj:skeleton:skip", {
+          detail: { reason: "render-finished-fast", elapsedMs: elapsed, delay: this.skeletonDelay },
+          bubbles: true,
+          composed: true
+        }));
+      } else {
+        const now = performance.now();
+        const visibleFor = now - skeletonShownAt;
+        const remaining = this.skeletonMinDuration - visibleFor;
+        if (remaining > 0) {
+          await new Promise((r) => setTimeout(r, remaining));
+        }
+      }
+      if (this.hasShadowRoot) {
+        this.shadowRoot.replaceChildren(nextContext);
+      } else {
+        this.replaceChildren(nextContext);
+      }
+      if (skeletonShownAt !== null) {
+        this.dispatchEvent(new CustomEvent("wj:skeleton:hide", {
+          detail: {
+            reason: "render-finished",
+            visibleMs: Math.max(this.skeletonMinDuration, performance.now() - skeletonShownAt),
+            delay: this.skeletonDelay,
+            minDuration: this.skeletonMinDuration
+          },
+          bubbles: true,
+          composed: true
+        }));
+      }
+      const liveContext = this.hasShadowRoot ? this.shadowRoot : this;
+      const _afterDraw = (_a = this.afterDraw) == null ? void 0 : _a.call(this, liveContext, this.store, WjElementUtils.getAttributes(this));
+      if (_afterDraw instanceof Promise || (_afterDraw == null ? void 0 : _afterDraw.constructor.name) === "Promise") {
+        await _afterDraw;
+      }
+    }).finally(() => {
+      renderFinished = true;
+      clearSkeletonTimer();
+      if (!__privateGet(this, _isRendering)) {
+        this.dispatchEvent(new CustomEvent("wj:skeleton:hide", {
+          detail: { reason: "finally" },
+          bubbles: true,
+          composed: true
+        }));
+      }
+    });
   }
   /**
-   * Renders the component's content.
+   * Renders the content into the provided target context.
+   * This method handles asynchronous rendering, processes the output from the `draw` method,
+   * and appends the resulting content to the specified target context.
+   * @returns {Promise<void>} A promise that resolves once the render operation is complete and the content is appended to the target context.
+   * @param targetContext
    */
-  async render() {
-    this.drawingStatus = this.drawingStatuses.DRAWING;
-    let _draw = this.draw(this.context, this.store, WjElementUtils.getAttributes(this));
-    if (_draw instanceof Promise) {
+  async render(targetContext = this.context) {
+    __privateSet(this, _drawingStatus, this.drawingStatuses.DRAWING);
+    let _draw = this.draw(targetContext, this.store, WjElementUtils.getAttributes(this));
+    if (_draw instanceof Promise || (_draw == null ? void 0 : _draw.constructor.name) === "Promise") {
       _draw = await _draw;
     }
     let rend = _draw;
@@ -846,17 +669,15 @@ const _WJElement = class _WJElement extends HTMLElement {
       element = inputTemplate.content.cloneNode(true);
     }
     let rendered = element;
-    this.context.appendChild(rendered);
+    targetContext.appendChild(rendered);
   }
   /**
    * Sanitizes a given name by converting it from kebab-case to camelCase.
    * @param {string} name The name in kebab-case format (e.g., "example-name").
    * @returns {string} The sanitized name in camelCase format (e.g., "exampleName").
    * @example
-   * // Returns 'exampleName'
    * sanitizeName('example-name');
    * @example
-   * // Returns 'myCustomComponent'
    * sanitizeName('my-custom-component');
    */
   sanitizeName(name) {
@@ -875,11 +696,9 @@ const _WJElement = class _WJElement extends HTMLElement {
    *   get name() { return 'value'; },
    *   set name(val) { console.log(val); }
    * };
-   * // Returns { hasGetter: [Function: get name], hasSetter: [Function: set name] }
    * checkGetterSetter(obj, 'name');
    * @example
    * const obj = { prop: 42 };
-   * // Returns { hasGetter: null, hasSetter: null }
    * checkGetterSetter(obj, 'prop');
    */
   checkGetterSetter(obj, property) {
@@ -897,7 +716,10 @@ const _WJElement = class _WJElement extends HTMLElement {
     return { hasGetter: null, hasSetter: null };
   }
   /**
-   * Sets up property accessors for the component's attributes.
+   * Sets up accessors (getter and setter) for all attributes of the current object.
+   * This method retrieves the attribute names, sanitizes them, and dynamically defines
+   * property accessors for each attribute using `Object.defineProperty`.
+   * @returns {void} This method does not return any value.
    */
   setUpAccessors() {
     let attrs = this.getAttributeNames();
@@ -910,36 +732,85 @@ const _WJElement = class _WJElement extends HTMLElement {
       });
     });
   }
-  /**
-   * Resolves the rendering process of the component.
-   * @returns A promise that resolves when rendering is complete.
-   * @private
-   */
-  _resolveRender() {
-    this.params = WjElementUtils.getAttributes(this);
-    return new Promise(async (resolve, reject) => {
-      var _a;
-      const __beforeDraw = this.beforeDraw(this.context, this.store, WjElementUtils.getAttributes(this));
-      if (__beforeDraw instanceof Promise) {
-        await __beforeDraw;
-      }
-      await this.render();
-      const __afterDraw = (_a = this.afterDraw) == null ? void 0 : _a.call(this, this.context, this.store, WjElementUtils.getAttributes(this));
-      if (__afterDraw instanceof Promise) {
-        await __afterDraw;
-      }
-      this.finisPromise();
-      this.rendering = false;
-      this.isAttached = true;
-      if (this.removeClassAfterConnect) {
-        this.classList.remove(...this.removeClassAfterConnect);
-      }
-      this.drawingStatus = this.drawingStatuses.DONE;
-      resolve();
-    }).catch((e) => {
-      console.log(e);
-    });
+};
+_drawingStatus = new WeakMap();
+_isAttached = new WeakMap();
+_isRendering = new WeakMap();
+_originalVisibility = new WeakMap();
+_pristine = new WeakMap();
+_WJElement_instances = new WeakSet();
+/**
+ * Enqueues an update for the component.
+ * This method processes the current render promise and then refreshes the component.
+ */
+enqueueUpdate_fn = function() {
+  if (!__privateGet(this, _isRendering)) {
+    this.rafId = requestAnimationFrame(() => __privateMethod(this, _WJElement_instances, refresh_fn).call(this));
   }
+};
+refresh_fn = async function() {
+  var _a, _b, _c;
+  if (__privateGet(this, _isRendering)) {
+    this.rafId = requestAnimationFrame(() => __privateMethod(this, _WJElement_instances, refresh_fn).call(this));
+    return;
+  }
+  if (!__privateGet(this, _pristine)) {
+    __privateSet(this, _pristine, true);
+    __privateSet(this, _isRendering, true);
+    if (__privateGet(this, _isAttached)) {
+      (_a = this.beforeRedraw) == null ? void 0 : _a.call(this);
+      (_b = this.beforeDisconnect) == null ? void 0 : _b.call(this);
+      (_c = this.afterDisconnect) == null ? void 0 : _c.call(this);
+    } else {
+      this.stopRenderLoop();
+    }
+    try {
+      await this.initWjElement(true);
+    } catch (error) {
+      console.error("Render error:", error);
+    } finally {
+      __privateSet(this, _isRendering, false);
+      if (!__privateGet(this, _pristine)) {
+        __privateSet(this, _pristine, false);
+        __privateMethod(this, _WJElement_instances, enqueueUpdate_fn).call(this);
+      } else {
+        this.finisPromise();
+        this.style.visibility = __privateGet(this, _originalVisibility);
+      }
+    }
+  }
+};
+/**
+ * Resolves the rendering process of the component, using the given target context.
+ * @param {HTMLElement|ShadowRoot|DocumentFragment} targetContext Target for rendering (defaults to this.context)
+ * @returns A promise that resolves when rendering is complete.
+ * @private
+ */
+resolveRender_fn = function(targetContext = this.context, { skipAfterDraw = false } = {}) {
+  this.params = WjElementUtils.getAttributes(this);
+  return new Promise(async (resolve, reject) => {
+    var _a;
+    const _beforeDraw = this.beforeDraw(targetContext, this.store, WjElementUtils.getAttributes(this));
+    if (_beforeDraw instanceof Promise || (_beforeDraw == null ? void 0 : _beforeDraw.constructor.name) === "Promise") {
+      await _beforeDraw;
+    }
+    await this.render(targetContext);
+    if (!skipAfterDraw) {
+      const _afterDraw = (_a = this.afterDraw) == null ? void 0 : _a.call(this, targetContext, this.store, WjElementUtils.getAttributes(this));
+      if (_afterDraw instanceof Promise || (_afterDraw == null ? void 0 : _afterDraw.constructor.name) === "Promise") {
+        await _afterDraw;
+      }
+    }
+    __privateSet(this, _isRendering, false);
+    __privateSet(this, _isAttached, true);
+    if (this.removeClassAfterConnect) {
+      this.classList.remove(...this.removeClassAfterConnect);
+    }
+    __privateSet(this, _drawingStatus, this.drawingStatuses.DONE);
+    resolve();
+  }).catch((e) => {
+    console.error(e);
+  });
 };
 /**
  * Processes and combines two templates into one.
@@ -955,9 +826,10 @@ __publicField(_WJElement, "processTemplates", (pTemplate, inputTemplate) => {
 let WJElement = _WJElement;
 let __esModule = "true";
 export {
+  Permissions,
   WjElementUtils,
-  WjePermissionsApi,
   __esModule,
   WJElement as default,
   event
 };
+//# sourceMappingURL=wje-element.js.map

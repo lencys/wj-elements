@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/col/slots.md';
   <title>Col | Horizontal placement of content based on screen size.</title>
   <meta
     name="description"
-    content="Komponent Col je základným stavebným prvkom [Gridu](./grid) a umožňuje horizontálne rozmiestniť obsah a upraviť jeho usporiadanie na základe veľkosti obrazovky."
+    content="The **Col** (column) component is the basic building block of Grid and allows you to horizontally arrange content and adjust its layout based on the screen size."
   />
 </head>
 
@@ -21,13 +21,32 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The **Col** (column) component is the basic building block of [Grid](../grid) and allows you to horizontally arrange content and adjust its layout based on the screen size. It is used by adding it inside the [Row](../row) element.
+The **Col** (column) component is the basic building block of [Grid](./grid) and allows you to horizontally arrange content and adjust its layout based on the screen size. It is used by adding it inside the [Row](./row) element.
 
 :::note Note
 
-For more information on using **Col**, navigate to the system documentation [**Grid**](../grid).
+For more information on using **Col**, navigate to the system documentation [**Grid**](./grid).
 
 :::
+
+
+## When to use
+
+Use `wje-col` to compose stable page structure with clear visual and semantic hierarchy.
+
+## When not to use
+
+Do not use layout components to handle business logic or application orchestration.
+
+## Accessibility
+
+Preserve document semantics (`header`, `main`, `aside`, `footer`) and logical tab/focus order.
+
+## Best Practices
+
+- Define mobile/desktop breakpoints first, then refine visual details.
+- Prefer spacing tokens over ad-hoc margin/padding overrides.
+- Test keyboard and screen reader behavior for overflow scenarios.
 
 ## Attributes and Properties
 

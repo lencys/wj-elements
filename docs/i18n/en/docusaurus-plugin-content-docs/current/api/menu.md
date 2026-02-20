@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/menu/slots.md';
   <title>Menu | Element to display the menu</title>
   <meta
     name="description"
-    content="Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo."
+    content="API documentation for wje-menu, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The menu element is used to display the navigation. It is hidden by default and is displayed by adding the `active` attribute, for example, when a button is clicked. Špeciálne pre použitie v Menu sú navrhnuté elementy [MenuItem](../menu-item) a [MenuLabel](../menu-label).
+The menu element is used to display the navigation. It is hidden by default and is displayed by adding the `active` attribute, for example, when a button is clicked. Špeciálne pre použitie v Menu sú navrhnuté elementy [MenuItem](./menu-item) a [MenuLabel](./menu-label).
 
 ## Basic usage
 

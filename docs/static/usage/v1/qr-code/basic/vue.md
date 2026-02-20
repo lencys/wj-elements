@@ -4,10 +4,10 @@
     value="https://www.mcdonalds.sk/"
     size="200"
     padding="25"
-    foregroung="black"
-    foregroundAlpha="1"
-    background="white"
-    backgroundAlpha="1"
+    foreground="#000000"
+    foreground-alpha="1"
+    background="#ffffff"
+    background-alpha="1"
     level="L"
   >
     <h3 slot="top">Name on top of QR code</h3>

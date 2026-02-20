@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/stepper/slots.md';
   <title>Stepper | Tab navigation button</title>
   <meta
     name="description"
-    content="Komponent `Stepper` zobrazuje pokrok prostredníctvom očíslovaných krokov. Poskytuje workflow podobný sprievodcovi. Steppery zobrazujú pokrok prostredníctvom sekvencie očíslovaných krokov."
+    content="API documentation for wje-stepper, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -41,6 +41,25 @@ import Disabled from '@site/static/usage/v1/stepper/disabled/index.md';
 import Custom from '@site/static/usage/v1/stepper/custom/index.md';
 
 <Custom />
+
+
+## When to use
+
+Use `wje-stepper` when users need to enter values, choose options, or trigger form-related actions.
+
+## When not to use
+
+Do not use it as a decorative element without interaction. Prefer presentational components in that case.
+
+## Accessibility
+
+Always provide a label (`label`/`aria-label`), keep keyboard support, and surface clear validation feedback.
+
+## Best Practices
+
+- Keep validation rules and error behavior consistent across the entire form.
+- Show loading or disabled states during async operations.
+- Split complex forms into smaller sections with immediate feedback.
 
 ## Attributes and Properties
 

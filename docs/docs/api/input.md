@@ -2,18 +2,18 @@
 title: 'Input'
 ---
 
-import Props from '@ionic-internal/component-api/v1/input/props.md';
-import Events from '@ionic-internal/component-api/v1/input/events.md';
-import Methods from '@ionic-internal/component-api/v1/input/methods.md';
-import Parts from '@ionic-internal/component-api/v1/input/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/input/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/input/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/input/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/input/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/input/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/input/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/input/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/input/slots.md';
 
 <head>
   <title>Input: Rozšírenie štandardného Input elementu</title>
   <meta
     name="description"
-    content="Input element rozširuje možnosti štandardného HTML inputu pokročilými funkciami a možnosťami prispôsobenia. "
+    content="Input element rozširuje možnosti štandardného HTML inputu pokročilými funkciami a možnosťami prispôsobenia."
   />
 </head>
 
@@ -82,11 +82,30 @@ import Clearable from '@site/static/usage/v1/input/clearable/index.md';
 
 <Clearable />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-input`, keď používateľ zadáva hodnotu, vyberá možnosti alebo vykonáva akciu vo formulári.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho len ako vizuálny dekoratívny prvok bez interakcie. V takom prípade uprednostnite prezentačné komponenty.
+
+## Prístupnosť
+
+Vždy prepojte komponent s popisom (`label`/`aria-label`), zachovajte ovládanie klávesnicou a pri validačných chybách zobrazte zrozumiteľnú správu.
+
+## Odporúčané postupy
+
+- Majte jednotné validačné pravidlá a error stavy naprieč celým formulárom.
+- Pri asynchrónnych operáciách zobrazte stav načítania alebo disabled stav.
+- Pri zložitých formulároch preferujte menšie sekcie a okamžitú spätnú väzbu.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -94,11 +113,11 @@ import Clearable from '@site/static/usage/v1/input/clearable/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

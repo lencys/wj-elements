@@ -3,32 +3,24 @@ title: Next Steps
 ---
 
 <head>
-  <title>Next Steps for Starting an App: Choose Your JavaScript Framework</title>
+  <title>Next Steps | Build with WebJET Elements</title>
   <meta
     name="description"
-    content="In order to build an Ionic app, you first need to choose the JavaScript framework you plan to use. Learn more about next steps for starting an app with Ionic."
+    content="Continue after installation with recommended implementation steps for WebJET Elements."
   />
 </head>
 
-import DocsCard from '@components/global/DocsCard';
-import DocsCards from '@components/global/DocsCards';
+## Next Steps for Developers
 
-import DeveloperExperts from '@components/page/intro/next/DeveloperExperts';
+After installation, continue with this sequence:
 
-## Build Your First App
+1. Load WebJET styles and component bundle in your app entry point.
+2. Pick a pilot screen and replace one existing UI block with WebJET components.
+3. Establish shared theme tokens (colors, spacing, typography) before broader rollout.
+4. Add component tests for interaction states and accessibility behavior.
 
-Pick the JavaScript framework you plan to use while building your Ionic app:
+## Recommended Starting Points
 
-<DocsCards>
-  <DocsCard header="Start with Angular" href="../angular/your-first-app" icon="/icons/logo-angular-icon.png">
-    <p>A complete guide to get you up to speed with the basics of building Ionic apps with Angular.</p>
-  </DocsCard>
-  <DocsCard header="Start with React" href="../react/your-first-app" icon="/icons/logo-react-icon.png">
-    <p>A complete guide to get you up to speed with the basics of building Ionic apps with React.</p>
-  </DocsCard>
-  <DocsCard header="Start with Vue" href="../vue/your-first-app" icon="/icons/logo-vue-icon.png">
-    <p>A complete guide to get you up to speed with the basics of building Ionic apps with Vue.</p>
-  </DocsCard>
-</DocsCards>
-
-<DeveloperExperts />
+- Core setup and package integration: [Install WebJET Elements](./install)
+- Environment baseline and toolchain: [Environment Configuration](./environment)
+- Component catalog for planning migration: [Components](/components)

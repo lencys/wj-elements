@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/textarea/slots.md';
   <title>Textarea | Textarea element extended with new functions</title>
   <meta
     name="description"
-    content="Textarea rozširuje možnosti štandardného HTML textarea elementu. Pridáva štýly pre dosiahnutie vizuálne konzistentného používateľského rozhrania a ponúka nové funkcie."
+    content="API documentation for wje-textarea, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -68,6 +68,25 @@ When the `disabled` attribute is inserted into the textarea element, it will not
 import Disabled from '@site/static/usage/v1/textarea/disabled/index.md';
 
 <Disabled />
+
+
+## When to use
+
+Use `wje-textarea` when users need to enter values, choose options, or trigger form-related actions.
+
+## When not to use
+
+Do not use it as a decorative element without interaction. Prefer presentational components in that case.
+
+## Accessibility
+
+Always provide a label (`label`/`aria-label`), keep keyboard support, and surface clear validation feedback.
+
+## Best Practices
+
+- Keep validation rules and error behavior consistent across the entire form.
+- Show loading or disabled states during async operations.
+- Split complex forms into smaller sections with immediate feedback.
 
 ## Attributes and Properties
 

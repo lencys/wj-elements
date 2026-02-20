@@ -5,19 +5,19 @@ title: Route
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import Props from '@ionic-internal/component-api/v1/route/props.md';
-import Events from '@ionic-internal/component-api/v1/route/events.md';
-import Methods from '@ionic-internal/component-api/v1/route/methods.md';
-import Parts from '@ionic-internal/component-api/v1/route/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/route/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/route/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/route/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/route/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/route/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/route/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/route/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/route/slots.md';
 
 {' '}
 <title>Route | API Route Komponent pre WebJET Elements</title>
 <meta
-  name="description"
-  content="Komponenta Route vykreslí zvolený komponent keď sa hodnota v jeho vlastnosti `url` zhoduje s URL v prehliadači."
-/>
+    name="description"
+    content="Komponenta Route vykreslí zvolený komponent keď sa hodnota v jeho vlastnosti url zhoduje s URL v prehliadači."
+  />
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
@@ -40,11 +40,30 @@ interface NavigationHookOptions {
 }
 ```
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-route`, keď používateľ potrebuje orientáciu v aplikácii alebo prechod medzi stavmi/obrazovkami.
+
+## Kedy nepoužiť
+
+Nepoužívajte viac paralelných navigačných vzorov, ktoré si navzájom konkurujú.
+
+## Prístupnosť
+
+Zabezpečte jasné active/selected stavy, predvídateľné poradie tabulátora a pomenovanie ovládacích prvkov.
+
+## Odporúčané postupy
+
+- Držte URL a UI stav v synchronizácii, aby bola navigácia reprodukovateľná.
+- Používajte konzistentné názvoslovie položiek naprieč menu, breadcrumbom a tabmi.
+- Pri hlbokých štruktúrach pridajte pomocný kontext (breadcrumb, nadpis, ikony).
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -52,11 +71,11 @@ interface NavigationHookOptions {
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

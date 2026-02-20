@@ -2,12 +2,12 @@
 title: 'Footer'
 ---
 
-import Props from '@ionic-internal/component-api/v1/footer/props.md';
-import Events from '@ionic-internal/component-api/v1/footer/events.md';
-import Methods from '@ionic-internal/component-api/v1/footer/methods.md';
-import Parts from '@ionic-internal/component-api/v1/footer/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/footer/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/footer/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/footer/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/footer/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/footer/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/footer/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/footer/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/footer/slots.md';
 
 <head>
   <title>Footer | Element určený na tvorbu layoutov</title>
@@ -26,14 +26,33 @@ Footer je súčasťou elementov určených na tvorbu layoutov a zobrazuje sa v s
 ## Príklady použitia
 
 :::note
-Pre informácie o použití **Footer** elementu sa presuňte do dokumentácie [**Layoutu**](../layout).
+Pre informácie o použití **Footer** elementu sa presuňte do dokumentácie [**Layoutu**](./layout).
 :::
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-footer` na skladanie stabilného rozloženia stránky s jasnou hierarchiou obsahu.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho na riešenie biznis logiky ani na stavovú orchestráciu komponentov.
+
+## Prístupnosť
+
+Zachovajte semantiku dokumentu (`header`, `main`, `aside`, `footer`) a logické poradie fokusovateľných prvkov.
+
+## Odporúčané postupy
+
+- Najprv definujte desktop/mobile breakpoints a až potom dolaďujte detaily.
+- Preferujte konzistentné spacing tokeny pred ad-hoc margin/padding hodnotami.
+- Pri layoutoch s overflow vždy otestujte klávesnicovú navigáciu a čítačky.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -41,11 +60,11 @@ Pre informácie o použití **Footer** elementu sa presuňte do dokumentácie [*
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

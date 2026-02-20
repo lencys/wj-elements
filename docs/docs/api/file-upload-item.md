@@ -2,18 +2,18 @@
 title: 'FileUpload Item'
 ---
 
-import Props from '@ionic-internal/component-api/v1/file-upload-item/props.md';
-import Events from '@ionic-internal/component-api/v1/file-upload-item/events.md';
-import Methods from '@ionic-internal/component-api/v1/file-upload-item/methods.md';
-import Parts from '@ionic-internal/component-api/v1/file-upload-item/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/file-upload-item/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/file-upload-item/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/file-upload-item/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/file-upload-item/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/file-upload-item/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/file-upload-item/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/file-upload-item/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/file-upload-item/slots.md';
 
 <head>
   <title>FileUploadItem | Položka (súbor) v rámci FileUpload komponentu</title>
   <meta
     name="description"
-    content="Element FileUploadItem predstavuje individuálnu položku (súbor) v rámci FileUpload komponentu. Zobrazuje podrobnosti, ako je názov súboru, veľkosť, priebeh nahrávania, a poskytuje akcie, ako je vymazanie súboru. Tento komponent je určený na použitie v kontexte FileUpload komponentu."
+    content="Element FileUploadItem predstavuje individuálnu položku (súbor) v rámci FileUpload komponentu. Zobrazuje podrobnosti, ako je názov súboru, veľkosť, priebeh nahrávania, a poskytuje akcie,."
   />
 </head>
 
@@ -23,7 +23,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Element FileUploadItem predstavuje individuálnu položku (súbor) v rámci FileUpload komponentu. Zobrazuje podrobnosti, ako je názov súboru, veľkosť, priebeh nahrávania, a poskytuje akcie, ako je vymazanie súboru. Tento komponent je určený na použitie v kontexte FileUpload komponentu.
 
-Pre viac informácií o použití FileUploadItem sa presuňte do dokumentácie elementu [FileUpload](../file-upload)
+Pre viac informácií o použití FileUploadItem sa presuňte do dokumentácie elementu [FileUpload](./file-upload)
 
 ## Základné použitie
 
@@ -45,11 +45,30 @@ import IsUploaded from '@site/static/usage/v1/file-upload-item/isuploaded/index.
 
 <IsUploaded />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-file-upload-item`, keď používateľ zadáva hodnotu, vyberá možnosti alebo vykonáva akciu vo formulári.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho len ako vizuálny dekoratívny prvok bez interakcie. V takom prípade uprednostnite prezentačné komponenty.
+
+## Prístupnosť
+
+Vždy prepojte komponent s popisom (`label`/`aria-label`), zachovajte ovládanie klávesnicou a pri validačných chybách zobrazte zrozumiteľnú správu.
+
+## Odporúčané postupy
+
+- Majte jednotné validačné pravidlá a error stavy naprieč celým formulárom.
+- Pri asynchrónnych operáciách zobrazte stav načítania alebo disabled stav.
+- Pri zložitých formulároch preferujte menšie sekcie a okamžitú spätnú väzbu.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -57,11 +76,11 @@ import IsUploaded from '@site/static/usage/v1/file-upload-item/isuploaded/index.
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

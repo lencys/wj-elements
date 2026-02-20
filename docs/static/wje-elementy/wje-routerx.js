@@ -1,6 +1,13 @@
 var __defProp = Object.defineProperty;
+var __typeError = (msg) => {
+  throw TypeError(msg);
+};
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+var __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot " + msg);
+var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot add the same private member more than once") : member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+var __privateSet = (obj, member, value, setter) => (__accessCheck(obj, member, "write to private field"), setter ? setter.call(obj, value) : member.set(obj, value), value);
+var _routes;
 import { r as routerLinks } from "./router-links-CJnOdbas.js";
 import WJElement from "./wje-element.js";
 const assoc = (obj, attr, val) => {
@@ -1323,6 +1330,7 @@ class Routerx extends WJElement {
    */
   constructor() {
     super();
+    __privateAdd(this, _routes);
     __publicField(this, "className", "Routerx");
     /**
      * Sets the breadcrumb for the transition.
@@ -1350,6 +1358,18 @@ class Routerx extends WJElement {
       window.scrollTo(0, 0);
     });
   }
+  set routes(value) {
+    __privateSet(this, _routes, value);
+  }
+  get routes() {
+    return this.parseElement(this.rootElement).root;
+  }
+  get rootElement() {
+    const htmlString = this.outerHTML;
+    const parser = new DOMParser();
+    const htmlDocument = parser.parseFromString(htmlString, "text/html");
+    return htmlDocument.querySelector("wje-router");
+  }
   /**
    * Returns the list of attributes to observe for changes.
    * @static
@@ -1368,19 +1388,14 @@ class Routerx extends WJElement {
    * Sets up the router after the component is drawn.
    */
   beforeDraw() {
-    const htmlString = this.outerHTML;
-    const parser = new DOMParser();
-    const htmlDocument = parser.parseFromString(htmlString, "text/html");
-    const rootElement = htmlDocument.querySelector("wje-router");
-    const routes = this.parseElement(rootElement).root;
     this.router = new Router2({
       outlet: this.outlet || "wje-router-outlet",
       log: false,
-      logError: true,
+      logError: false,
       root: this.root || "/",
       pushState: true
     });
-    this.router.map(routes);
+    this.router.map(this.routes);
     this.router.use(this.setBreadcrumb);
     this.router.use(events);
     this.router.use(this.resetScrollPosition);
@@ -1430,7 +1445,9 @@ class Routerx extends WJElement {
     this.router.destroy();
   }
 }
+_routes = new WeakMap();
 Routerx.define("wje-router", Routerx);
 export {
   Routerx as default
 };
+//# sourceMappingURL=wje-routerx.js.map

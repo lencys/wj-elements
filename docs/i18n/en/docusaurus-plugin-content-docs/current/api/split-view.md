@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/split-view/slots.md';
   <title>SplitView | individual options within the Select component</title>
   <meta
     name="description"
-    content="Element Option predstavuje jednotlivé voliteľné možnosti v rámci komponentu Select. Je obdobný štandardnému elementu HTML select a umožňuje používateľom vykonať jeden alebo viacero výberov na základe konfigurácie komponentu Select."
+    content="API documentation for wje-split-view, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -61,11 +61,30 @@ import Split from '@site/static/usage/v1/split-view/split/index.md';
 
 <Split />
 
-## Editing styles
+## Styling
 
 import Custom from '@site/static/usage/v1/split-view/custom/index.md';
 
 <Custom />
+
+
+## When to use
+
+Use `wje-split-view` to compose stable page structure with clear visual and semantic hierarchy.
+
+## When not to use
+
+Do not use layout components to handle business logic or application orchestration.
+
+## Accessibility
+
+Preserve document semantics (`header`, `main`, `aside`, `footer`) and logical tab/focus order.
+
+## Best Practices
+
+- Define mobile/desktop breakpoints first, then refine visual details.
+- Prefer spacing tokens over ad-hoc margin/padding overrides.
+- Test keyboard and screen reader behavior for overflow scenarios.
 
 ## Attributes and Properties
 

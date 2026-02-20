@@ -2,18 +2,18 @@
 title: 'Textarea'
 ---
 
-import Props from '@ionic-internal/component-api/v1/textarea/props.md';
-import Events from '@ionic-internal/component-api/v1/textarea/events.md';
-import Methods from '@ionic-internal/component-api/v1/textarea/methods.md';
-import Parts from '@ionic-internal/component-api/v1/textarea/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/textarea/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/textarea/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/textarea/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/textarea/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/textarea/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/textarea/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/textarea/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/textarea/slots.md';
 
 <head>
   <title>Textarea | Element textarea rozšírený o nové funkcie</title>
   <meta
     name="description"
-    content="Textarea rozširuje možnosti štandardného HTML textarea elementu. Pridáva štýly pre dosiahnutie vizuálne konzistentného používateľského rozhrania a ponúka nové funkcie."
+    content="Textarea rozširuje možnosti štandardného HTML textarea elementu. Pridáva štýly pre dosiahnutie vizuálne konzistentného používateľského rozhrania a ponúka funkcie ako napríklad auto-height -."
   />
 </head>
 
@@ -69,11 +69,30 @@ import Disabled from '@site/static/usage/v1/textarea/disabled/index.md';
 
 <Disabled />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-textarea`, keď používateľ zadáva hodnotu, vyberá možnosti alebo vykonáva akciu vo formulári.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho len ako vizuálny dekoratívny prvok bez interakcie. V takom prípade uprednostnite prezentačné komponenty.
+
+## Prístupnosť
+
+Vždy prepojte komponent s popisom (`label`/`aria-label`), zachovajte ovládanie klávesnicou a pri validačných chybách zobrazte zrozumiteľnú správu.
+
+## Odporúčané postupy
+
+- Majte jednotné validačné pravidlá a error stavy naprieč celým formulárom.
+- Pri asynchrónnych operáciách zobrazte stav načítania alebo disabled stav.
+- Pri zložitých formulároch preferujte menšie sekcie a okamžitú spätnú väzbu.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -81,11 +100,11 @@ import Disabled from '@site/static/usage/v1/textarea/disabled/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

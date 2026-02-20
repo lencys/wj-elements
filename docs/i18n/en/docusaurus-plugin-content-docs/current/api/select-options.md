@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/options/slots.md';
   <title>Options | individual options within the Select component</title>
   <meta
     name="description"
-    content="Element Options je určený na použití vo vnútri elementu [Select](./select) a slúži na zobrazovanie dynamicky generovaného zoznamu možností, ktorý sa asynchrónne načíta zo zadanej URL adresy."
+    content="API documentation for wje-select-options, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -21,11 +21,30 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The Options element is intended for use inside the [Select](../select) element and is used to display a dynamically generated list of options that is asynchronously retrieved from the specified URL.
+The Options element is intended for use inside the [Select](./select) element and is used to display a dynamically generated list of options that is asynchronously retrieved from the specified URL.
 
 :::note
-For more information on using Options, navigate to the [**Select**](../select) element documentation
+For more information on using Options, navigate to the [**Select**](./select) element documentation
 :::
+
+
+## When to use
+
+Use `wje-select-options` when you need a consistent WebJET-based implementation for this UI concern.
+
+## When not to use
+
+Do not stretch the component beyond its responsibility; compose smaller primitives for edge cases.
+
+## Accessibility
+
+Validate keyboard behavior, focus states, contrast, and meaningful labels for interactive elements.
+
+## Best Practices
+
+- Prefer component APIs over direct DOM manipulation.
+- Stick to design tokens and naming conventions.
+- Test components with realistic data before production rollout.
 
 ## Attributes and Properties
 

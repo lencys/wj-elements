@@ -2,7 +2,7 @@ var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 import WJElement from "./wje-element.js";
-const styles = "/*\n[ WJ Toolbar Action ]\n*/\n\n:host {\n    .native-toolbar-action {\n        display: flex;\n    }\n}\n";
+const styles = "/*\n[ WJ Toolbar Action ]\n*/\n\n:host {\n    .native-toolbar-action {\n        display: flex;\n        gap: var(--wje-toolbar-action-gap);\n    }\n}\n";
 class ToolbarAction extends WJElement {
   /**
    * Creates an instance of ToolbarAction.
@@ -69,3 +69,4 @@ ToolbarAction.define("wje-toolbar-action", ToolbarAction);
 export {
   ToolbarAction as default
 };
+//# sourceMappingURL=wje-toolbar-action.js.map

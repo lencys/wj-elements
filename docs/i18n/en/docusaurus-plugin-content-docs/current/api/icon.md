@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/icon/slots.md';
   <title>Icon | WebJET Element for displaying icons</title>
   <meta
     name="description"
-    content="Tento komponent poskytuje jednoduchý spôsob zobrazenia ikon zo sady SVG obrázkov, pričom umožňuje rôzne možnosti prispôsobenia."
+    content="API documentation for wje-icon, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -40,6 +40,25 @@ import Styles from '@site/static/usage/v1/icon/style/index.md';
 import Custom from '@site/static/usage/v1/icon/custom/index.md';
 
 <Custom />
+
+
+## When to use
+
+Use `wje-icon` to improve readability, scannability, and contextual understanding of content.
+
+## When not to use
+
+Do not replace structured interactive data with media-only presentation when precision is needed.
+
+## Accessibility
+
+Provide alt text, maintain readable contrast, and include text equivalents for icon-only controls.
+
+## Best Practices
+
+- Compress media and use lazy loading in larger collections.
+- Keep information priority consistent across cards/lists.
+- Avoid duplicating the same meaning in icon and text without added value.
 
 ## Attributes and Properties
 

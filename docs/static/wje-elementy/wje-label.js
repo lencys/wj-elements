@@ -50,3 +50,4 @@ Label.define("wje-label", Label);
 export {
   Label as default
 };
+//# sourceMappingURL=wje-label.js.map

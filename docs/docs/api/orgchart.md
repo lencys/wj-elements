@@ -2,26 +2,22 @@
 title: 'OrgChart'
 ---
 
-import Props from '@ionic-internal/component-api/v1/orgchart/props.md';
-import Events from '@ionic-internal/component-api/v1/orgchart/events.md';
-import Methods from '@ionic-internal/component-api/v1/orgchart/methods.md';
-import Parts from '@ionic-internal/component-api/v1/orgchart/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/orgchart/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/orgchart/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/orgchart/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/orgchart/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/orgchart/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/orgchart/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/orgchart/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/orgchart/slots.md';
 
 <head>
   <title>OrgChart | OrgChart</title>
   <meta
     name="description"
-    content="Komponent OrgChart slúži na zobrazenie organizačnej štruktúry. Môže obsahovať rôzne typy uzlov a prepojenia medzi nimi."
-  ></meta>
+    content="API dokumentácia pre wje-orgchart vrátane odporúčaného použitia, atribútov, udalostí, metód, možností štýlovania a slotov."
+  />
 </head>
 
-import EncapsulationPill from '@components/page/api/EncapsulationPill';
-
-<EncapsulationPill type="shadow" />
-
-Komponent `OrgChart` spolu s [OrgChartItem](../orgChartItem) a [OrgChartGroup](../orgChartGroup) slúžia na zobrazenie organizačnej štruktúry.
+Komponent `OrgChart` spolu s [OrgChartItem](./orgchart-item) a [OrgChartGroup](./orgchart-group) slúžia na zobrazenie organizačnej štruktúry.
 OrgChart komponent môže byť použitý na zobrazenie hierarchických vzťahov medzi rôznymi entitami v organizácii.
 
 ## Základné použitie
@@ -40,7 +36,7 @@ import JSON from '@site/static/usage/v1/orgchart/json/index.md';
 
 ## Skupiny
 
-Použitím elementu [OrgChartGroup](../orgChartGroup) je možné zoskupiť viacero uzlov do jedného celku. Môžete ich použiť na zobrazenie tímov alebo oddelení v rámci organizačnej štruktúry.
+Použitím elementu [OrgChartGroup](./orgchart-group) je možné zoskupiť viacero uzlov do jedného celku. Môžete ich použiť na zobrazenie tímov alebo oddelení v rámci organizačnej štruktúry.
 
 import Group from '@site/static/usage/v1/orgchart/group/index.md';
 
@@ -58,11 +54,30 @@ import Controls from '@site/static/usage/v1/orgchart/controls/index.md';
 
 <Controls />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-orgchart`, keď používateľ potrebuje orientáciu v aplikácii alebo prechod medzi stavmi/obrazovkami.
+
+## Kedy nepoužiť
+
+Nepoužívajte viac paralelných navigačných vzorov, ktoré si navzájom konkurujú.
+
+## Prístupnosť
+
+Zabezpečte jasné active/selected stavy, predvídateľné poradie tabulátora a pomenovanie ovládacích prvkov.
+
+## Odporúčané postupy
+
+- Držte URL a UI stav v synchronizácii, aby bola navigácia reprodukovateľná.
+- Používajte konzistentné názvoslovie položiek naprieč menu, breadcrumbom a tabmi.
+- Pri hlbokých štruktúrach pridajte pomocný kontext (breadcrumb, nadpis, ikony).
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -70,11 +85,11 @@ import Controls from '@site/static/usage/v1/orgchart/controls/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

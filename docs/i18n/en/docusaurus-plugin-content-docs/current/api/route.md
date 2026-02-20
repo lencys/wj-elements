@@ -16,9 +16,9 @@ import Slots from '@ionic-internal/component-api/v1/route/slots.md';
 
 <title>Route | API Route Component for WebJET Elements</title>
 <meta
-  name="description"
-  content="Komponenta Route vykreslí zvolený komponent keď sa hodnota v jeho vlastnosti `url` zhoduje s URL v prehliadači."
-/>
+    name="description"
+    content="The Route component renders the selected component when the value in its url property matches the URL in the browser."
+  />
 
 import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
@@ -40,6 +40,25 @@ interface NavigationHookOptions {
   redirect: string;
 }
 ```
+
+
+## When to use
+
+Use `wje-route` when users need to understand location, move between views, or traverse hierarchy.
+
+## When not to use
+
+Do not combine multiple competing navigation patterns for the same user flow.
+
+## Accessibility
+
+Ensure visible active/selected states, predictable tab order, and clear control naming.
+
+## Best Practices
+
+- Keep URL state and UI navigation state synchronized.
+- Use consistent labels across menu, breadcrumbs, and tabs.
+- Add context for deep structures (breadcrumbs, headings, icon cues).
 
 ## Attributes and Properties
 

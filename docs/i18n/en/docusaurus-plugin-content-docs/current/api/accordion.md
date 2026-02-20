@@ -13,8 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/accordion/slots.md';
   <title>Accordion: view content in drop-down sections</title>
   <meta
     name="description"
-    content="Element Accordion umožňuje zobraziť obsah v rozbaľovacích sekciách. Každá sekcia môže byť rozbalená alebo zbalená kliknutím, čo umožňuje používateľom rýchlo nájsť a zobraziť požadované informácie. Element podporuje viacnásobný výber, čo znamená, že môže byť naraz rozbalených viacero sekcií. Okrem toho umožňuje nastaviť počiatočný index rozbalenej sekcie, čo poskytuje flexibilitu pri inicializácii komponentu s predvoleným rozbaleným obsahom.
-"
+    content="API documentation for wje-accordion, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -41,6 +40,25 @@ import Colors from '@site/static/usage/v1/accordion/colors/index.md';
 import Multiple from '@site/static/usage/v1/accordion/multiple/index.md';
 
 <Multiple />
+
+
+## When to use
+
+Use `wje-accordion` when you need a consistent WebJET-based implementation for this UI concern.
+
+## When not to use
+
+Do not stretch the component beyond its responsibility; compose smaller primitives for edge cases.
+
+## Accessibility
+
+Validate keyboard behavior, focus states, contrast, and meaningful labels for interactive elements.
+
+## Best Practices
+
+- Prefer component APIs over direct DOM manipulation.
+- Stick to design tokens and naming conventions.
+- Test components with realistic data before production rollout.
 
 ## Attributes and Properties
 

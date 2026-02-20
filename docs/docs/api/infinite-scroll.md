@@ -2,18 +2,18 @@
 title: 'Infinite-scroll'
 ---
 
-import Props from '@ionic-internal/component-api/v1/infinite-scroll/props.md';
-import Events from '@ionic-internal/component-api/v1/infinite-scroll/events.md';
-import Methods from '@ionic-internal/component-api/v1/infinite-scroll/methods.md';
-import Parts from '@ionic-internal/component-api/v1/infinite-scroll/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/infinite-scroll/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/infinite-scroll/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/infinite-scroll/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/infinite-scroll/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/infinite-scroll/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/infinite-scroll/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/infinite-scroll/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/infinite-scroll/slots.md';
 
 <head>
   <title>Infinite Scroll | Komponent Nekonečného scrollovania</title>
   <meta
     name="description"
-    content="Infinite Scroll umožňuje implementovať dynamické načítavanie dát, keď používatelia prechádzajú väčším množstvom obsahu. Element umožňuje zobraziť akýkoľvek obsah zo zvoleného koncového bodu (endpointu) bez toho, aby bola potrebná ďalšia interakcia, napríklad kliknutie na tlačidlo “Načítať viac” alebo na odkaz na ďalšiu stránku."
+    content="Infinite Scroll umožňuje implementovať dynamické načítavanie dát, keď používatelia prechádzajú väčším množstvom obsahu."
   />
 </head>
 
@@ -50,11 +50,30 @@ import Custom from '@site/static/usage/v1/infinite-scroll/custom/index.md';
 
 <Custom />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-infinite-scroll`, keď chcete riešiť daný UI problém konzistentne v rámci WebJET dizajn systému.
+
+## Kedy nepoužiť
+
+Nepoužívajte komponent mimo jeho zodpovednosti; pri netypickom prípade radšej zložte viac menších prvkov.
+
+## Prístupnosť
+
+Skontrolujte klávesnicové ovládanie, focus stavy, kontrast a zrozumiteľné pomenovanie interaktívnych prvkov.
+
+## Odporúčané postupy
+
+- Preferujte API komponentu pred ručnými DOM zásahmi.
+- Držte sa dizajnových tokenov a konzistentných konvencií pomenovania.
+- Pred nasadením otestujte komponent v reálnych dátových scenároch.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -62,11 +81,11 @@ import Custom from '@site/static/usage/v1/infinite-scroll/custom/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

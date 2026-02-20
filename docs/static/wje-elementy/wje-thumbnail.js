@@ -35,6 +35,7 @@ class Thumbnail extends WJElement {
    */
   setupAttributes() {
     this.isShadowRoot = "open";
+    this.syncAria();
   }
   /**
    * Draws the component for the thumbnail.
@@ -46,8 +47,27 @@ class Thumbnail extends WJElement {
     fragment.appendChild(element);
     return fragment;
   }
+  /**
+   * Sync ARIA attributes on host.
+   */
+  syncAria() {
+    const ariaLabel = this.getAttribute("aria-label");
+    const label = this.getAttribute("label");
+    if (ariaLabel || label) {
+      if (!this.hasAttribute("role")) {
+        this.setAttribute("role", "img");
+      }
+      if (!ariaLabel && label) {
+        this.setAriaState({ label });
+      }
+      this.removeAttribute("aria-hidden");
+    } else {
+      this.setAttribute("aria-hidden", "true");
+    }
+  }
 }
 Thumbnail.define("wje-thumbnail", Thumbnail);
 export {
   Thumbnail as default
 };
+//# sourceMappingURL=wje-thumbnail.js.map

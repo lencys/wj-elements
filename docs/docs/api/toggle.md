@@ -2,12 +2,12 @@
 title: 'Toggle'
 ---
 
-import Props from '@ionic-internal/component-api/v1/toggle/props.md';
-import Events from '@ionic-internal/component-api/v1/toggle/events.md';
-import Methods from '@ionic-internal/component-api/v1/toggle/methods.md';
-import Parts from '@ionic-internal/component-api/v1/toggle/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/toggle/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/toggle/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/toggle/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/toggle/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/toggle/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/toggle/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/toggle/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/toggle/slots.md';
 
 <head>
   <title>Toggle | Element umožňujúci prepínať medzi dvoma stavmi</title>
@@ -37,11 +37,30 @@ import Colors from '@site/static/usage/v1/toggle/colors/index.md';
   <Colors />
 </div>
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-toggle`, keď používateľ zadáva hodnotu, vyberá možnosti alebo vykonáva akciu vo formulári.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho len ako vizuálny dekoratívny prvok bez interakcie. V takom prípade uprednostnite prezentačné komponenty.
+
+## Prístupnosť
+
+Vždy prepojte komponent s popisom (`label`/`aria-label`), zachovajte ovládanie klávesnicou a pri validačných chybách zobrazte zrozumiteľnú správu.
+
+## Odporúčané postupy
+
+- Majte jednotné validačné pravidlá a error stavy naprieč celým formulárom.
+- Pri asynchrónnych operáciách zobrazte stav načítania alebo disabled stav.
+- Pri zložitých formulároch preferujte menšie sekcie a okamžitú spätnú väzbu.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -49,11 +68,11 @@ import Colors from '@site/static/usage/v1/toggle/colors/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

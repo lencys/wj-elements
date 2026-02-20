@@ -151,7 +151,7 @@ class Rate extends WJElement {
    * @returns {Array<string>}
    */
   static get observedAttributes() {
-    return ["is-hover"];
+    return ["is-hover", "value", "max", "disabled", "readonly"];
   }
   /**
    * Called when an attribute changes.
@@ -160,12 +160,19 @@ class Rate extends WJElement {
    * @param {string} newName The new value of the attribute.
    */
   attributeChangedCallback(name, old, newName) {
+    if (super.attributeChangedCallback) {
+      super.attributeChangedCallback(name, old, newName);
+    }
+    if (old !== newName && name !== "is-hover") {
+      this.syncAria();
+    }
   }
   /**
    * Sets up the attributes for the component.
    */
   setupAttributes() {
     this.isShadowRoot = "open";
+    this.syncAria();
   }
   /**
    * Draws the component for the rating component.
@@ -195,6 +202,7 @@ class Rate extends WJElement {
    * Adds event listeners after the component is drawn.
    */
   afterDraw() {
+    this.syncAria();
     if (this.hasAttribute("disabled") || this.hasAttribute("readonly")) {
       return;
     }
@@ -256,6 +264,20 @@ class Rate extends WJElement {
       icon.setAttribute("data-index", i);
       icon.setAttribute("data-rate", rateValue);
     }
+    this.syncAria();
+  }
+  /**
+   * Sync ARIA attributes on host.
+   */
+  syncAria() {
+    this.setAriaState({
+      role: "slider",
+      valuemin: 0,
+      valuemax: this.max,
+      valuenow: this.value,
+      disabled: this.hasAttribute("disabled"),
+      readonly: this.hasAttribute("readonly")
+    });
   }
   /**
    * Returns the icons for the rating component.
@@ -297,3 +319,4 @@ Rate.define("wje-rate", Rate);
 export {
   Rate as default
 };
+//# sourceMappingURL=wje-rate.js.map

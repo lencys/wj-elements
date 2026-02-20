@@ -13,17 +13,32 @@ import Slots from '@ionic-internal/component-api/v1/orgchart/slots.md';
   <title>OrgChartItem | OrgChartItem</title>
   <meta
     name="description"
-    content="Komponent OrgChartItem slúži na zobrazenie jednej položky v organizačnej štruktúre."
-  ></meta>
+    content="API documentation for wje-orgchart-group, including usage guidance, attributes, events, methods, styling options, and slots."
+  />
 </head>
 
-import EncapsulationPill from '@components/page/api/EncapsulationPill';
+The `OrgChartGroup` component is used to group [OrgChartItem](./orgchart-item) items in the [OrgChart](./orgchart) organizational structure.
 
-<EncapsulationPill type="shadow" />
+For more information on using OrgChartItem, go to the [**OrgChart**] element documentation page(./orgchart).
 
-The `OrgChartGroup` component is used to group [OrgChartItem](../orgChartItem) items in the [OrgChart](../orgChart) organizational structure.
 
-For more information on using OrgChartItem, go to the [**OrgChart**] element documentation page(../orgChart).
+## When to use
+
+Use `wje-orgchart-group` when users need to understand location, move between views, or traverse hierarchy.
+
+## When not to use
+
+Do not combine multiple competing navigation patterns for the same user flow.
+
+## Accessibility
+
+Ensure visible active/selected states, predictable tab order, and clear control naming.
+
+## Best Practices
+
+- Keep URL state and UI navigation state synchronized.
+- Use consistent labels across menu, breadcrumbs, and tabs.
+- Add context for deep structures (breadcrumbs, headings, icon cues).
 
 ## Attributes and Properties
 

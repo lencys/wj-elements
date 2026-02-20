@@ -94,6 +94,7 @@ class Breadcrumbs extends WJElement {
    */
   setupAttributes() {
     this.isShadowRoot = "open";
+    this.setAriaState({ role: "navigation" });
   }
   /**
    * Draw method for the Breadcrumbs element.
@@ -106,7 +107,10 @@ class Breadcrumbs extends WJElement {
     return fragment;
   }
   /**
-   * After draw method for the Breadcrumbs element.
+   * Updates the breadcrumb elements after they are drawn on the page.
+   * It manages attributes on breadcrumb items and handles the logic for collapsing breadcrumbs
+   * if the total exceeds the specified maximum items.
+   * @returns {void} This method does not return a value.
    */
   afterDraw() {
     let breadcrumbs = this.getBreadcrumbs();
@@ -126,14 +130,22 @@ class Breadcrumbs extends WJElement {
     }
   }
   /**
-   * Get breadcrumbs method.
-   * @returns {Array} - The breadcrumbs array
+   * Retrieves all breadcrumb elements within the current instance.
+   * @returns {Array<Element>} An array of breadcrumb elements (`wje-breadcrumb`) found within the instance. Returns an empty array if no breadcrumbs are found.
    */
   getBreadcrumbs() {
     return Array.from(this.querySelectorAll("wje-breadcrumb")) || [];
+  }
+  /**
+   * Retrieves all breadcrumb elements that have the 'collapsed' attribute.
+   * @returns {Array<Element>} An array of DOM elements representing breadcrumbs with the 'collapsed' attribute.
+   */
+  getBreadcrumbsCollapsed() {
+    return Array.from(this.querySelectorAll("wje-breadcrumb[collapsed]")) || [];
   }
 }
 Breadcrumbs.define("wje-breadcrumbs", Breadcrumbs);
 export {
   Breadcrumbs as default
 };
+//# sourceMappingURL=wje-breadcrumbs.js.map

@@ -7,31 +7,16 @@
  * - Add a random internal ad to the bottom of the TOC.
  */
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import TOC from '@theme-original/TOC';
 import type { Props } from '@theme/TOC';
-
-import EditThisPage from '@theme-original/EditThisPage';
-import { useLocation } from '@docusaurus/router';
-import { usePluginData } from '@docusaurus/useGlobalData';
-import { PrismicRichText } from '@prismicio/react';
-import {useDoc} from '@docusaurus/plugin-content-docs/client';
 
 interface TOCProps extends Props {
   editUrl: string;
 }
 
 export default function TOCWrapper(props: TOCProps): JSX.Element {
-  const { prismicAds } = usePluginData('ionic-docs-ads') as any;
-  const [activeAd, setActiveAd] = useState<typeof prismicAds.data>();
-  const location = useLocation();
-  const { metadata } = useDoc();
-
   const isEmpty = props.toc.length <= 0;
-
-  useEffect(() => {
-    setActiveAd(prismicAds[Math.floor(Math.random() * prismicAds.length)].data);
-  }, [location]);
 
   if (isEmpty) return null;
 

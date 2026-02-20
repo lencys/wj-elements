@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/color-picker/slots.md';
   <title>Color Picker | WebJET Element for selecting a color from the color palette</title>
   <meta
     name="description"
-    content="Color picker je element, ktorý zobrazuje farebnú paletu a umožňuje používateľom vybrať jednu z jej farieb."
+    content="API documentation for wje-color-picker, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -32,6 +32,25 @@ import Basic from '@site/static/usage/v1/color-picker/basic/index.md';
 <Basic />
 
 </div>
+
+
+## When to use
+
+Use `wje-color-picker` when users need to enter values, choose options, or trigger form-related actions.
+
+## When not to use
+
+Do not use it as a decorative element without interaction. Prefer presentational components in that case.
+
+## Accessibility
+
+Always provide a label (`label`/`aria-label`), keep keyboard support, and surface clear validation feedback.
+
+## Best Practices
+
+- Keep validation rules and error behavior consistent across the entire form.
+- Show loading or disabled states during async operations.
+- Split complex forms into smaller sections with immediate feedback.
 
 ## Attributes and Properties
 

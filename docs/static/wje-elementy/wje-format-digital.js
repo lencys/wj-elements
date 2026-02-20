@@ -89,12 +89,20 @@ class FormatDigital extends WJElement {
   static get observedAttributes() {
     return ["value", "unit-display"];
   }
+  attributeChangedCallback(name, oldValue, newValue) {
+    var _a;
+    (_a = super.attributeChangedCallback) == null ? void 0 : _a.call(this, name, oldValue, newValue);
+    if (oldValue === newValue) return;
+    this.beforeDraw();
+    if (this.formatted) this.formatted.innerText = this.formattedValue;
+  }
   /**
    * Sets up the attributes for the component.
    * Initializes the shadow DOM.
    */
   setupAttributes() {
     this.isShadowRoot = "open";
+    this.setAriaState({ role: "status" });
   }
   /**
    * Prepares the component before rendering.
@@ -136,6 +144,7 @@ class FormatDigital extends WJElement {
     element.appendChild(formatted);
     element.appendChild(end);
     fragment.appendChild(element);
+    this.formatted = formatted;
     return fragment;
   }
 }
@@ -143,3 +152,4 @@ FormatDigital.define("wje-format-digital", FormatDigital);
 export {
   FormatDigital as default
 };
+//# sourceMappingURL=wje-format-digital.js.map

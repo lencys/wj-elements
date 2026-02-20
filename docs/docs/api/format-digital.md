@@ -2,18 +2,18 @@
 title: 'FormatDigital'
 ---
 
-import Props from '@ionic-internal/component-api/v1/format-digital/props.md';
-import Events from '@ionic-internal/component-api/v1/format-digital/events.md';
-import Methods from '@ionic-internal/component-api/v1/format-digital/methods.md';
-import Parts from '@ionic-internal/component-api/v1/format-digital/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/format-digital/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/format-digital/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/format-digital/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/format-digital/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/format-digital/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/format-digital/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/format-digital/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/format-digital/slots.md';
 
 <head>
   <title>Format Digital | Formátovanie číselných hodnôt</title>
   <meta
     name="description"
-    content="Komponent FormatDigital je určený na formátovanie číselných hodnôt do ľudsky čitateľného digitálneho formátu s ohľadom na rôzne predpony jednotiek, ako sú kilo, mega, giga atď. Ponúka možnosti prispôsobenia jednotiek, štýlu zobrazenia jednotiek a podporuje lokalizáciu."
+    content="Komponent FormatDigital je určený na formátovanie číselných hodnôt do ľudsky čitateľného digitálneho formátu s ohľadom na rôzne predpony jednotiek, ako sú kilo, mega, giga atď."
   />
 </head>
 
@@ -53,11 +53,30 @@ import DisplaySlots from '@site/static/usage/v1/format-digital/slots/index.md';
 
 <DisplaySlots />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-format-digital`, keď chcete riešiť daný UI problém konzistentne v rámci WebJET dizajn systému.
+
+## Kedy nepoužiť
+
+Nepoužívajte komponent mimo jeho zodpovednosti; pri netypickom prípade radšej zložte viac menších prvkov.
+
+## Prístupnosť
+
+Skontrolujte klávesnicové ovládanie, focus stavy, kontrast a zrozumiteľné pomenovanie interaktívnych prvkov.
+
+## Odporúčané postupy
+
+- Preferujte API komponentu pred ručnými DOM zásahmi.
+- Držte sa dizajnových tokenov a konzistentných konvencií pomenovania.
+- Pred nasadením otestujte komponent v reálnych dátových scenároch.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -65,11 +84,11 @@ import DisplaySlots from '@site/static/usage/v1/format-digital/slots/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

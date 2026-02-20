@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/card-subtitle/slots.md';
   <title>Card Subtitle | Supplementary or secondary text Card</title>
   <meta
     name="description"
-    content="Element Card subtitle je komponent navrhnutý na použitie v rámci elementu Card Header na zobrazenie doplnkového alebo sekundárneho textu, čím používateľovi poskytuje dodatočný kontext alebo informácie súvisiace s hlavným obsahom karty."
+    content="API documentation for wje-card-subtitle, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -21,11 +21,30 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The Card subtitle element is a component designed to be used within the [Card Header](../card-header) element to display additional or secondary text, providing the user with additional context or information related to the main content of the card.
+The Card subtitle element is a component designed to be used within the [Card Header](./card-header) element to display additional or secondary text, providing the user with additional context or information related to the main content of the card.
 
 :::note Note
-For more information on using Card Subtitle, navigate to the [**Card**](../card) element documentation.
+For more information on using Card Subtitle, navigate to the [**Card**](./card) element documentation.
 :::
+
+
+## When to use
+
+Use `wje-card-subtitle` to improve readability, scannability, and contextual understanding of content.
+
+## When not to use
+
+Do not replace structured interactive data with media-only presentation when precision is needed.
+
+## Accessibility
+
+Provide alt text, maintain readable contrast, and include text equivalents for icon-only controls.
+
+## Best Practices
+
+- Compress media and use lazy loading in larger collections.
+- Keep information priority consistent across cards/lists.
+- Avoid duplicating the same meaning in icon and text without added value.
 
 ## Attributes and Properties
 

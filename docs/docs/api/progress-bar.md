@@ -2,12 +2,12 @@
 title: 'Progress bar'
 ---
 
-import Props from '@ionic-internal/component-api/v1/progress-bar/props.md';
-import Events from '@ionic-internal/component-api/v1/progress-bar/events.md';
-import Methods from '@ionic-internal/component-api/v1/progress-bar/methods.md';
-import Parts from '@ionic-internal/component-api/v1/progress-bar/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/progress-bar/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/progress-bar/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/progress-bar/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/progress-bar/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/progress-bar/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/progress-bar/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/progress-bar/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/progress-bar/slots.md';
 
 <head>
   <title>Progress Bar | Komponent na vizualizáciu priebehu</title>
@@ -87,11 +87,30 @@ import Colors from '@site/static/usage/v1/progress-bar/colors/index.md';
 
 <Colors />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-progress-bar`, keď potrebujete používateľovi okamžite komunikovať stav, výsledok akcie alebo ďalší krok.
+
+## Kedy nepoužiť
+
+Nepoužívajte viacero konkurenčných feedback kanálov naraz pre jednu udalosť.
+
+## Prístupnosť
+
+Status správy oznamujte cez vhodné ARIA live regióny a pri modálnych prvkoch spravujte fokus (open/close).
+
+## Odporúčané postupy
+
+- Vyberte závažnosť správ (info/success/warning/error) podľa reálneho dopadu na používateľa.
+- Pri blokujúcich akciách preferujte potvrdenie iba tam, kde hrozí nevratná zmena.
+- Nastavte konzistentné timeouty, aby používateľ stihol správu prečítať.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -99,11 +118,11 @@ import Colors from '@site/static/usage/v1/progress-bar/colors/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

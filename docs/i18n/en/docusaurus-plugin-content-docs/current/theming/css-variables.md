@@ -16,7 +16,7 @@ WebJET Elements takes advantage of custom CSS properties, commonly known as <a h
 
 ### Global variables
 
-CSS variables can be set globally in the `:root` selector in the application. They can also be used only for a specific mode, light or dark. For more information about global variables, see [Variables WebJET Elements](#variables-webjet-elements).
+CSS variables can be set globally in the `:root` selector in the application. They can also be used only for a specific mode, light or dark. For more information about global variables, see [WebJET Elements variables](#webjet-elements-variables).
 
 ```css
 /* Set variables for all modes */
@@ -31,7 +31,7 @@ CSS variables can be set globally in the `:root` selector in the application. Th
 
 ### Variables in components
 
-To set a CSS variable for a specific component, add the variable inside of its selector. See [Variable WebJET Elements](#variable-webjet-elements) for more information on the component-level variables Ionic provides.
+To set a CSS variable for a specific component, add the variable inside of its selector. See [WebJET Elements variables](#webjet-elements-variables) for more information on component-level variables.
 
 ```css
 /* Sets the border color of all buttons */
@@ -79,7 +79,7 @@ const color = el.style.getPropertyValue('--charcoal');
 
 ### Customizing components using variables
 
-Elements offers component-specific variables, such as --background and --color, that allow for easy customization. For a complete list of these variables, see the CSS Custom Properties section in the [API](../api.md) reference of each component. For example, [CSS Custom Properties ](../api/button.md#css-custom-vlastnosti) of the Button component can be viewed for specific customization options.
+Elements offers component-specific variables, such as `--background` and `--color`, that allow for easy customization. For a complete list of these variables, see the CSS Custom Properties section in each component [API](../api.md) reference. For example, see [Button CSS Custom Properties](../api/button.md#css-custom-properties).
 
 ### Customizing an application using global variables
 

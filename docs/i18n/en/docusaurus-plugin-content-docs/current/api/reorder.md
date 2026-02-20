@@ -13,13 +13,9 @@ import Slots from '@ionic-internal/component-api/v1/reorder/slots.md';
   <title>Reorder</title>
   <meta
     name="description"
-    content="Reorder je komponent, ktorý umožňuje ťahaním položky zmeniť jej poradie v rámci skupiny položiek. Musí sa použiť v rámci skupiny na zmenu poradia, aby sa zabezpečilo vizuálne rozhranie drag and drop."
-  ></meta>
+    content="API documentation for wje-reorder, including usage guidance, attributes, events, methods, styling options, and slots."
+  />
 </head>
-
-import EncapsulationPill from '@components/page/api/EncapsulationPill';
-
-<EncapsulationPill type="shadow" />
 
 `Reorder` is a component that allows you to use the Drag&Drop functionality to reorder the `ReorderItem` items in a group.
 
@@ -39,7 +35,7 @@ import Disabled from '@site/static/usage/v1/reorder/disabled/index.md';
 
 ## Handle for pulling
 
-By adding an item to the `handle` slot of the [**ReorderItem**](../reorder-item) item, you can define a specific area that will serve as a handle for dragging and rearranging items. This allows users to interact more intuitively when changing the order of items.
+By adding an item to the `handle` slot of the [**ReorderItem**](./reorder-item) item, you can define a specific area that will serve as a handle for dragging and rearranging items. This allows users to interact more intuitively when changing the order of items.
 
 import Handle from '@site/static/usage/v1/reorder/handle/index.md';
 
@@ -60,6 +56,25 @@ DropZone is a component that represents a zone intended for rearranging content.
 import DropZones from '@site/static/usage/v1/reorder/drop-zones/index.md';
 
 <DropZones />
+
+
+## When to use
+
+Use `wje-reorder` when you need a consistent WebJET-based implementation for this UI concern.
+
+## When not to use
+
+Do not stretch the component beyond its responsibility; compose smaller primitives for edge cases.
+
+## Accessibility
+
+Validate keyboard behavior, focus states, contrast, and meaningful labels for interactive elements.
+
+## Best Practices
+
+- Prefer component APIs over direct DOM manipulation.
+- Stick to design tokens and naming conventions.
+- Test components with realistic data before production rollout.
 
 ## Attributes and Properties
 

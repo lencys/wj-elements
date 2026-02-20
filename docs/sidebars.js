@@ -64,7 +64,7 @@ module.exports = {
       type: 'category',
       label: 'Accordion',
       collapsed: false,
-      items: ['api/accordion'],
+      items: ['api/accordion', 'api/accordion-item'],
     },
     {
       type: 'category',
@@ -183,6 +183,12 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Form',
+      collapsed: false,
+      items: ['api/form'],
+    },
+    {
+      type: 'category',
       label: 'Icons',
       collapsed: false,
       items: ['api/icon'],
@@ -269,7 +275,7 @@ module.exports = {
       type: 'category',
       label: 'Menu',
       collapsed: false,
-      items: ['api/menu', 'api/menu-item', 'api/menu-label'],
+      items: ['api/menu', 'api/menu-button', 'api/menu-item', 'api/menu-label'],
     },
     {
       type: 'category',
@@ -282,6 +288,18 @@ module.exports = {
       label: 'Pagination',
       collapsed: false,
       items: ['api/pagination'],
+    },
+    {
+      type: 'category',
+      label: 'Panel',
+      collapsed: false,
+      items: ['api/panel'],
+    },
+    {
+      type: 'category',
+      label: 'Popup',
+      collapsed: false,
+      items: ['api/popup'],
     },
     {
       type: 'category',
@@ -300,6 +318,12 @@ module.exports = {
       label: 'Radio',
       collapsed: false,
       items: ['api/radio', 'api/radio-group'],
+    },
+    {
+      type: 'category',
+      label: 'Rate',
+      collapsed: false,
+      items: ['api/rate'],
     },
     {
       type: 'category',
@@ -339,6 +363,12 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Sliding Container',
+      collapsed: false,
+      items: ['api/sliding-container'],
+    },
+    {
+      type: 'category',
       label: 'Split View',
       collapsed: false,
       items: ['api/split-view'],
@@ -360,6 +390,12 @@ module.exports = {
       label: 'Tabs',
       collapsed: false,
       items: ['api/tab-group', 'api/tab', 'api/tab-panel'],
+    },
+    {
+      type: 'category',
+      label: 'Timeline',
+      collapsed: false,
+      items: ['api/timeline', 'api/timeline-item'],
     },
     {
       type: 'category',
@@ -395,13 +431,19 @@ module.exports = {
       type: 'category',
       label: 'Toolbar',
       collapsed: false,
-      items: ['api/toolbar', 'api/toolbar-actions'],
+      items: ['api/toolbar', 'api/toolbar-action', 'api/toolbar-actions'],
     },
 	{
 		type: 'category',
 		label: 'Tree',
 		collapsed: false,
 		items: ['api/tree', 'api/tree-item'],
-	  }
+	  },
+    {
+      type: 'category',
+      label: 'Accessibility',
+      collapsed: false,
+      items: ['api/visually-hidden'],
+    }
   ],
 };

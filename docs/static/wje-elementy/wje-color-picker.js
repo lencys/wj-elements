@@ -1,7 +1,16 @@
 var __defProp = Object.defineProperty;
+var __typeError = (msg) => {
+  throw TypeError(msg);
+};
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-import WJElement, { event } from "./wje-element.js";
+var __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot " + msg);
+var __privateGet = (obj, member, getter) => (__accessCheck(obj, member, "read from private field"), getter ? getter.call(obj) : member.get(obj));
+var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot add the same private member more than once") : member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+var __privateSet = (obj, member, value, setter) => (__accessCheck(obj, member, "write to private field"), setter ? setter.call(obj, value) : member.set(obj, value), value);
+var _init;
+import WJElement from "./wje-element.js";
+import { event } from "./event.js";
 function _typeof(obj) {
   "@babel/helpers - typeof";
   return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(obj2) {
@@ -965,25 +974,33 @@ function validateWCAG2Parms(parms) {
     size
   };
 }
-const styles = "/*\n[ Wj Color Picker ]\n*/\n\n.anchor {\n    width: var(--wje-color-picker-size);\n    height: var(--wje-color-picker-size);\n    background: var(--wje-color-picker-value);\n}\n\n.picker {\n    width: 200px;\n    min-height: 90px;\n    box-shadow:\n        0 0 5px rgba(0, 0, 0, 0.05),\n        0 5px 20px rgba(0, 0, 0, 0.1);\n    border-radius: var(--wje-border-radius-small);\n    border-width: 1px;\n    border-style: var(--wje-border-style);\n    border-color: var(--wje-border-color);\n    background: var(--wje-background);\n}\n\n.color-area {\n    display: block;\n    position: relative;\n    height: 100px;\n    color: var(--wje-color-picker-area);\n    background-image: linear-gradient(rgba(0, 0, 0, 0), #000), linear-gradient(90deg, #fff, currentColor);\n    cursor: crosshair;\n    border-radius: var(--wje-color-picker-radius) var(--wje-color-picker-radius) 0 0;\n    border-bottom: 1px solid var(--wje-border-color);\n}\n\n.wrapper {\n    display: inline-table;\n    width: calc(100% - 2rem);\n    margin: 1rem;\n}\n\n.hue {\n    border-radius: 0.25rem;\n    background-image: linear-gradient(\n        to right,\n        rgb(255, 0, 0) 0%,\n        rgb(255, 255, 0) 17%,\n        rgb(0, 255, 0) 33%,\n        rgb(0, 255, 255) 50%,\n        rgb(0, 0, 255) 67%,\n        rgb(255, 0, 255) 83%,\n        rgb(255, 0, 0) 100%\n    );\n    width: 100%;\n    height: 8px;\n    margin: 0.75rem 0 1rem;\n}\n\n.hue::part(slider) {\n    --wje-slider-color: transparent;\n    --wje-slider-thumb-color: white;\n    --wje-slider-thumb-shadow: 0 0 0 1px var(--wje-border-color);\n    --wje-slider-thumb-shadow-active: var(--wje-slider-thumb-shadow);\n    --wje-slider-track-color: transparent;\n}\n\n.alpha-wrapper {\n    border-radius: 0.25rem;\n    width: 100%;\n    height: 8px;\n    margin: 0.75rem 0 1rem;\n    background-image: repeating-linear-gradient(45deg, #aaa 25%, transparent 25%, transparent 75%, #aaa 75%, #aaa),\n        repeating-linear-gradient(45deg, #aaa 25%, #fff 25%, #fff 75%, #aaa 75%, #aaa);\n    background-position:\n        0 0,\n        4px 4px;\n    background-size: 8px 8px;\n}\n\n.alpha {\n    color: var(--wje-color-picker-value);\n    display: block;\n    height: 100%;\n    width: 100%;\n    border-radius: inherit;\n    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0), currentColor);\n}\n\n.alpha::part(slider) {\n    --wje-slider-color: transparent;\n    --wje-slider-thumb-color: white;\n    --wje-slider-thumb-shadow: 0 0 0 1px var(--wje-border-color);\n    --wje-slider-thumb-shadow-active: var(--wje-slider-thumb-shadow);\n    --wje-slider-track-color: transparent;\n    --wje-slider-track-height: 8px;\n}\n\n.input-wrapper {\n    display: grid;\n    align-items: center;\n    grid-template-columns: 1fr auto;\n}\n\n.color-preview {\n    width: 30px !important;\n    height: 30px !important;\n    border-radius: 50%;\n    position: relative;\n    margin-right: 1rem;\n    &:before,\n    &:after {\n        content: '';\n        position: absolute;\n        height: 100%;\n        width: 100%;\n        left: 0;\n        top: 0;\n        border: 1px solid #fff;\n        border-radius: 50%;\n    }\n    &:before {\n        background-image: repeating-linear-gradient(45deg, #aaa 25%, transparent 25%, transparent 75%, #aaa 75%, #aaa),\n            repeating-linear-gradient(45deg, #aaa 25%, #fff 25%, #fff 75%, #aaa 75%, #aaa);\n        background-position:\n            0 0,\n            4px 4px;\n        background-size: 8px 8px;\n    }\n    &:after {\n        background: var(--wje-color-picker-value, transparent);\n    }\n}\n\nwje-input {\n    --wje-input-border-radius: 1rem;\n    --wje-input-margin-bottom: 0;\n}\n\nwje-input::part(input) {\n    text-align: center;\n}\n\n.swatches {\n    margin-top: 1rem;\n    display: flex;\n    justify-content: center;\n    flex-wrap: wrap;\n}\n\n.swatch {\n    background: var(--wje-color-picker-swatch, transparent);\n    position: relative;\n    width: 20px;\n    height: 20px;\n    margin: 0 4px 6px 4px;\n    padding: 0;\n    border: 0;\n    border-radius: 50%;\n    color: inherit;\n    white-space: nowrap;\n    overflow: hidden;\n    cursor: pointer;\n}\n\n.marker {\n    position: absolute;\n    width: 12px;\n    height: 12px;\n    margin: -6px 0 0 -6px;\n    border: 1px solid #fff;\n    border-radius: 50%;\n    background-color: var(--wje-color-picker-value, transparent);\n    cursor: pointer;\n}\n";
+const styles = "/*\n[ Wj Color Picker ]\n*/\n\n.anchor {\n    width: var(--wje-color-picker-size);\n    height: var(--wje-color-picker-size);\n    background: var(--wje-color-picker-value);\n}\n\n.picker {\n    width: 200px;\n    /*min-height: 90px;*/\n    box-shadow:\n        0 0 5px rgba(0, 0, 0, 0.05),\n        0 5px 20px rgba(0, 0, 0, 0.1);\n    border-radius: var(--wje-color-picker-radius);\n    border-width: 1px;\n    border-style: var(--wje-border-style);\n    border-color: var(--wje-border-color);\n    background: var(--wje-background);\n}\n\n.color-area {\n    display: block;\n    position: relative;\n    height: 100px;\n    color: var(--wje-color-picker-area);\n    background-image: linear-gradient(rgba(0, 0, 0, 0), #000), linear-gradient(90deg, #fff, currentColor);\n    cursor: crosshair;\n    border-radius: var(--wje-color-picker-radius) var(--wje-color-picker-radius) 0 0;\n    border-bottom: 1px solid var(--wje-border-color);\n}\n\n.wrapper {\n    display: inline-table;\n    width: calc(100% - 2rem);\n    margin: 1rem;\n}\n\n.hue {\n    border-radius: 0.25rem;\n    background-image: linear-gradient(\n        to right,\n        rgb(255, 0, 0) 0%,\n        rgb(255, 255, 0) 17%,\n        rgb(0, 255, 0) 33%,\n        rgb(0, 255, 255) 50%,\n        rgb(0, 0, 255) 67%,\n        rgb(255, 0, 255) 83%,\n        rgb(255, 0, 0) 100%\n    );\n    width: 100%;\n    height: 8px;\n    margin: 0.75rem 0 1rem;\n}\n\n.hue::part(slider) {\n    --wje-slider-color: transparent;\n    --wje-slider-thumb-color: white;\n    --wje-slider-thumb-shadow: 0 0 0 1px var(--wje-border-color);\n    --wje-slider-thumb-shadow-active: var(--wje-slider-thumb-shadow);\n    --wje-slider-track-color: transparent;\n}\n\n.alpha-wrapper {\n    border-radius: 0.25rem;\n    width: 100%;\n    height: 8px;\n    margin: 0.75rem 0 1rem;\n    background-image:\n        repeating-linear-gradient(45deg, #aaa 25%, transparent 25%, transparent 75%, #aaa 75%, #aaa),\n        repeating-linear-gradient(45deg, #aaa 25%, #fff 25%, #fff 75%, #aaa 75%, #aaa);\n    background-position:\n        0 0,\n        4px 4px;\n    background-size: 8px 8px;\n}\n\n.alpha {\n    color: var(--wje-color-picker-value);\n    display: block;\n    height: 100%;\n    width: 100%;\n    border-radius: inherit;\n    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0), currentColor);\n}\n\n.alpha::part(slider) {\n    --wje-slider-color: transparent;\n    --wje-slider-thumb-color: white;\n    --wje-slider-thumb-shadow: 0 0 0 1px var(--wje-border-color);\n    --wje-slider-thumb-shadow-active: var(--wje-slider-thumb-shadow);\n    --wje-slider-track-color: transparent;\n    --wje-slider-track-height: 8px;\n}\n\n.input-wrapper {\n    display: grid;\n    align-items: center;\n    grid-template-columns: 1fr auto;\n}\n\n.color-preview {\n    width: 30px !important;\n    height: 30px !important;\n    border-radius: 50%;\n    position: relative;\n    margin-right: 1rem;\n    &:before,\n    &:after {\n        content: '';\n        position: absolute;\n        height: 100%;\n        width: 100%;\n        left: 0;\n        top: 0;\n        border: 1px solid #fff;\n        border-radius: 50%;\n    }\n    &:before {\n        background-image:\n            repeating-linear-gradient(45deg, #aaa 25%, transparent 25%, transparent 75%, #aaa 75%, #aaa),\n            repeating-linear-gradient(45deg, #aaa 25%, #fff 25%, #fff 75%, #aaa 75%, #aaa);\n        background-position:\n            0 0,\n            4px 4px;\n        background-size: 8px 8px;\n    }\n    &:after {\n        background: var(--wje-color-picker-value, transparent);\n    }\n}\n\nwje-input {\n    --wje-input-border-radius: 1rem;\n    --wje-input-margin-bottom: 0;\n}\n\nwje-input::part(input) {\n    text-align: center;\n}\n\n.swatches {\n    margin-top: 1rem;\n    display: flex;\n    justify-content: center;\n    flex-wrap: wrap;\n}\n\n.swatch {\n    background: var(--wje-color-picker-swatch, transparent);\n    position: relative;\n    width: 20px;\n    height: 20px;\n    margin: 0 4px 6px 4px;\n    padding: 0;\n    border: 0;\n    border-radius: 50%;\n    color: inherit;\n    white-space: nowrap;\n    overflow: hidden;\n    cursor: pointer;\n}\n\n.marker {\n    position: absolute;\n    width: 12px;\n    height: 12px;\n    margin: -6px 0 0 -6px;\n    border: 1px solid #fff;\n    border-radius: 50%;\n    background-color: var(--wje-color-picker-value, transparent);\n    cursor: pointer;\n}\n";
 class ColorPicker extends WJElement {
   /**
    * ColorPicker constructor method.
    */
   constructor() {
     super();
+    __privateAdd(this, _init, false);
     __publicField(this, "className", "ColorPicker");
     /**
-     * Moves the marker to the given position.
-     * @param e
+     * Updates the position of the marker based on the pointer event.
+     * This function calculates the position of the marker relative to the color area
+     * dimensions based on the given event. It adjusts the marker position and updates
+     * the color associated with the new position. It is intended to handle pointer movement
+     * events such as mouse or touch interactions.
+     * @param {Event} e The event triggering the marker movement, typically a mouse or touch event.
      */
     __publicField(this, "moveMarker", (e) => {
+      var _a;
       this.colorAreaDimension = this.dimension();
       const pointer = this.getPointerPosition(e);
-      let x = pointer.pageX - this.colorAreaDimension.x;
-      let y = pointer.pageY - this.colorAreaDimension.y;
-      this.setColor(this.setColorAtPosition(x, y), "marker");
-      this.setMarkerPosition(x, y);
+      const x = pointer.x - this.colorAreaDimension.x;
+      const y = pointer.y - this.colorAreaDimension.y;
+      const markerPosition = this.clampMarkerPosition(x, y);
+      const alpha = Number(((_a = this.alphaSlider) == null ? void 0 : _a.value) || 100);
+      this.setColor(this.setColorAtPosition(markerPosition.x, markerPosition.y, alpha), "marker");
+      this.setMarkerPosition(markerPosition.x, markerPosition.y);
     });
     /**
      * Sets the marker position by color.
@@ -991,16 +1008,21 @@ class ColorPicker extends WJElement {
      * @returns {{x: number, y: number}}
      */
     __publicField(this, "setMarkerPositionByColor", (color = "red") => {
+      var _a, _b;
       let hsva = tinycolor(color).toHsv();
+      const width = ((_a = this.colorAreaDimension) == null ? void 0 : _a.width) || 0;
+      const height = ((_b = this.colorAreaDimension) == null ? void 0 : _b.height) || 0;
+      const safeS = Number.isFinite(hsva.s) ? hsva.s : 0;
+      const safeV = Number.isFinite(hsva.v) ? hsva.v : 0;
       return {
-        x: this.colorAreaDimension.width * hsva.s,
-        y: this.colorAreaDimension.height - this.colorAreaDimension.height * hsva.v
+        x: width * safeS,
+        y: height - height * safeV
       };
     });
     /**
      * Updates the color picker's current color and its associated UI elements.
      * @param {tinycolor.Instance|null} [color] The color value to set. If null, the current value from the input field is used.
-     * @param {string} [type] The type of action determining which UI element to update. Possible values: "marker", "hue", "alpha", "swatch".
+     * @param {string} [type] The type of action determining which UI element to update. Possible values: "marker", "hue", "alpha", "swatch", "input".
      */
     __publicField(this, "setColor", (color = null, type = "") => {
       let currentColor = color;
@@ -1009,7 +1031,6 @@ class ColorPicker extends WJElement {
         this.colorArea.style.setProperty("--wje-color-picker-area", currentColor.toHexString());
       }
       if (type === "marker") {
-        this.alphaSlider.value = 100;
         this.alphaSlider.style.setProperty("--wje-color-picker-value", currentColor.toHexString());
         this.colorPreview.style.setProperty("--wje-color-picker-value", currentColor.toHex8String());
         this.picker.style.setProperty("--wje-color-picker-value", currentColor.toHexString());
@@ -1021,12 +1042,13 @@ class ColorPicker extends WJElement {
           this.markerPosition.y,
           this.alphaSlider.value
         );
-        currentColor = tinycolor(this.getHSVA(this.hueSlider.value, this.alphaSlider.value));
+        const hueColor = this.getHueAreaColor(this.getHSVA(this.hueSlider.value, 100));
         this.colorPreview.style.setProperty("--wje-color-picker-value", markerColorByPosition.toHex8String());
         this.marker.style.setProperty("--wje-color-picker-value", markerColorByPosition.toHexString());
-        this.alphaSlider.style.setProperty("--wje-color-picker-value", currentColor.toHexString());
-        this.colorArea.style.setProperty("--wje-color-picker-area", currentColor.toHexString());
+        this.alphaSlider.style.setProperty("--wje-color-picker-value", markerColorByPosition.toHexString());
+        this.colorArea.style.setProperty("--wje-color-picker-area", hueColor);
         this.input.value = markerColorByPosition.toHex8String();
+        currentColor = markerColorByPosition;
       }
       if (type === "alpha") {
         currentColor = tinycolor(this.input.value);
@@ -1035,15 +1057,22 @@ class ColorPicker extends WJElement {
         currentColor = tinycolor(hsv);
         this.colorPreview.style.setProperty("--wje-color-picker-value", currentColor.toHex8String());
       }
-      if (type === "swatch") {
+      if (type === "swatch" || type === "init" || type === "input") {
         this.colorPreview.style.setProperty("--wje-color-picker-value", currentColor.toHex8String());
         this.marker.style.setProperty("--wje-color-picker-value", currentColor.toHexString());
         this.alphaSlider.style.setProperty("--wje-color-picker-value", currentColor.toHexString());
-        this.colorArea.style.setProperty("--wje-color-picker-area", currentColor.toHex8String());
+        this.colorArea.style.setProperty("--wje-color-picker-area", this.getHueAreaColor(currentColor.toHex8String()));
         this.markerPosition = this.setMarkerPositionByColor(currentColor.toHex8String());
         this.setMarkerPosition(this.markerPosition.x, this.markerPosition.y);
       }
-      this.input.value = currentColor.toHex8String();
+      if (!(currentColor == null ? void 0 : currentColor.isValid())) return;
+      if (!this.noColorArea || !this.noControls || !this.noSwatches) {
+        if (type === "input" && this.inputEditable && typeof this._manualInputValue === "string") {
+          this.input.value = this._manualInputValue;
+        } else {
+          this.input.value = currentColor.toHex8String();
+        }
+      }
       this.anchor.style.setProperty("--wje-color-picker-value", currentColor.toHexString());
       this.value = {
         hex8: currentColor.toHex8String(),
@@ -1057,7 +1086,10 @@ class ColorPicker extends WJElement {
         name: currentColor.toName(),
         format: currentColor.getFormat()
       };
-      event.dispatchCustomEvent(this, "wje-color-picker:select", this.value);
+      this.color = currentColor.toHex8String();
+      event.dispatchCustomEvent(this, "wje-color-picker:select", {
+        value: this.value
+      });
     });
     /**
      * Sets the hue.
@@ -1081,7 +1113,6 @@ class ColorPicker extends WJElement {
      * @param {number} alpha The alpha value, typically between 0 and 100, representing the opacity percentage.
      * @returns {string} - The HSVA color string in the format `hsva(h, 100%, 100%, a)`.
      */
-    __publicField(this, "getH");
     __publicField(this, "getHSVA", (hue, alpha) => {
       return `hsva(${hue}, 100%, 100%, ${alpha / 100})`;
     });
@@ -1102,6 +1133,21 @@ class ColorPicker extends WJElement {
       "#00b4d880",
       "rgba(0,119,182,0.8)"
     ];
+    this._manualInputValue = null;
+  }
+  /**
+   * Sets the color attribute of the element.
+   * @param {string} value The color value to be set. It should be a valid color string such as a named color, HEX, RGB, or HSL format.
+   */
+  set color(value) {
+    this.setAttribute("color", value);
+  }
+  /**
+   * Retrieves the color attribute of the element.
+   * @returns {string | null} The current value of the 'color' attribute, or null if the attribute is not set.
+   */
+  get color() {
+    return this.getAttribute("color") || "#000000";
   }
   /**
    * Setter for the marker position.
@@ -1122,14 +1168,103 @@ class ColorPicker extends WJElement {
    * @param {string} value The new color swatches.
    */
   set swatches(value) {
-    this.setAttribute("swatches", value.split(","));
+    if (Array.isArray(value)) {
+      this.setAttribute("swatches", value.join(","));
+      return;
+    }
+    this.setAttribute("swatches", this.parseSwatches(value).join(","));
   }
   /**
    * Getter for the color swatches.
    * @returns {Array} The current color swatches.
    */
   get swatches() {
+    this._swatches = this.getAttribute("swatches") ? this.parseSwatches(this.getAttribute("swatches")) : this._swatches;
     return this._swatches;
+  }
+  /**
+   * Normalizes swatch colors from a string to an array.
+   * Supports comma and semicolon separators.
+   * @param {string} value
+   * @returns {string[]}
+   */
+  parseSwatches(value = "") {
+    if (typeof value !== "string") return [];
+    return value.split(/[;,]/).map((item) => item.trim()).filter(Boolean);
+  }
+  /**
+   * Sets or removes the 'no-color-area' attribute based on the provided value.
+   * @param {boolean} value A boolean value indicating whether to set or remove the 'no-color-area' attribute. If true, the attribute is added; if false, the attribute is removed.
+   */
+  set noColorArea(value) {
+    if (value) {
+      this.setAttribute("no-color-area", "");
+    } else {
+      this.removeAttribute("no-color-area");
+    }
+  }
+  /**
+   * Getter method to check if the 'no-color-area' attribute is applied.
+   * @returns {boolean} Returns true if the 'no-color-area' attribute is present; otherwise, false.
+   */
+  get noColorArea() {
+    return this.hasAttribute("no-color-area");
+  }
+  /**
+   * Sets or removes the "no-controls" attribute.
+   * @param {boolean} value If true, sets the "no-controls" attribute. If false, removes the "no-controls" attribute.
+   */
+  set noControls(value) {
+    if (value) {
+      this.setAttribute("no-controls", "");
+    } else {
+      this.removeAttribute("no-controls");
+    }
+  }
+  /**
+   * Checks if the 'no-controls' attribute is present on the element.
+   * @returns {boolean} Returns true if the 'no-controls' attribute is present; otherwise, false.
+   */
+  get noControls() {
+    return this.hasAttribute("no-controls");
+  }
+  /**
+   * Sets or removes the 'no-swatches' attribute on the element.
+   * If the value is truthy, the 'no-swatches' attribute is added.
+   * If the value is falsy, the 'no-swatches' attribute is removed.
+   * @param {boolean} value Determines whether the 'no-swatches' attribute is set (true) or removed (false).
+   */
+  set noSwatches(value) {
+    if (value) {
+      this.setAttribute("no-swatches", "");
+    } else {
+      this.removeAttribute("no-swatches");
+    }
+  }
+  /**
+   * Checks if the 'no-swatches' attribute is present on the element.
+   * @returns {boolean} Returns true if the 'no-swatches' attribute is present; otherwise, false.
+   */
+  get noSwatches() {
+    return this.hasAttribute("no-swatches");
+  }
+  /**
+   * Enables/disables manual typing in the input.
+   * @param {boolean} value
+   */
+  set inputEditable(value) {
+    if (value) {
+      this.setAttribute("input-editable", "");
+    } else {
+      this.removeAttribute("input-editable");
+    }
+  }
+  /**
+   * Returns true when manual input typing is enabled.
+   * @returns {boolean}
+   */
+  get inputEditable() {
+    return this.hasAttribute("input-editable");
   }
   /**
    * Getter for the CSS stylesheet.
@@ -1154,8 +1289,10 @@ class ColorPicker extends WJElement {
     this.isShadowRoot = "open";
   }
   /**
-   * Draws the ColorPicker element.
-   * @returns {DocumentFragment} The created document fragment.
+   * Creates and returns a document fragment containing the structure and components of a custom color picker.
+   * The method initializes DOM elements such as divs, sliders, and inputs, with specific classes and attributes,
+   * and attaches various event listeners to handle user interactions.
+   * @returns {DocumentFragment} A DocumentFragment containing the constructed and fully initialized DOM elements for the color picker.
    */
   draw() {
     let fragment = document.createDocumentFragment();
@@ -1172,6 +1309,16 @@ class ColorPicker extends WJElement {
     let colorArea = document.createElement("div");
     colorArea.classList.add("color-area");
     colorArea.addEventListener("click", this.moveMarker);
+    colorArea.addEventListener("mousedown", (e) => {
+      e.preventDefault();
+      const stopMoving = () => {
+        window.removeEventListener("mousemove", this.moveMarker);
+        window.removeEventListener("mouseup", stopMoving);
+      };
+      window.addEventListener("mousemove", this.moveMarker);
+      window.addEventListener("mouseup", stopMoving);
+      this.moveMarker(e);
+    });
     let wrapper = document.createElement("div");
     wrapper.classList.add("wrapper");
     let hueSlider = document.createElement("wje-slider");
@@ -1192,28 +1339,45 @@ class ColorPicker extends WJElement {
     let colorPreview = document.createElement("div");
     colorPreview.classList.add("color-preview");
     let input = document.createElement("wje-input");
-    input.classList.add("input");
     input.setAttribute("variant", "standard");
-    input.value = "#ff0000";
-    colorArea.appendChild(marker);
-    alphaWrapper.appendChild(alphaSlider);
-    inputWrapper.appendChild(colorPreview);
-    inputWrapper.appendChild(input);
-    wrapper.appendChild(hueSlider);
-    wrapper.appendChild(alphaWrapper);
-    wrapper.appendChild(inputWrapper);
-    picker.appendChild(colorArea);
-    picker.appendChild(wrapper);
-    this.createSwatches(wrapper);
-    let popup = document.createElement("wje-popup");
-    popup.setAttribute("placement", this.placement || "bottom-start");
-    popup.setAttribute("offset", this.offset);
-    popup.setAttribute("manual", "");
-    popup.appendChild(anchor);
-    popup.appendChild(picker);
-    native.appendChild(popup);
-    fragment.appendChild(native);
-    this.popup = popup;
+    input.setAttribute("maxlength", "9");
+    if ((!this.noColorArea || !this.noControls || !this.noSwatches) && !this.inputEditable)
+      input.setAttribute("readonly", "");
+    input.classList.add("input");
+    input.addEventListener("wje-input:input", () => {
+      let rawValue = (input.value || "").trim();
+      const hasHashPrefix = rawValue.startsWith("#");
+      const maxLength = hasHashPrefix ? 9 : 8;
+      if (rawValue.length > maxLength) {
+        rawValue = rawValue.slice(0, maxLength);
+        input.value = rawValue;
+      }
+      const hexCandidate = hasHashPrefix ? rawValue.slice(1) : rawValue;
+      const isHex = /^[0-9a-fA-F]+$/.test(hexCandidate);
+      if (isHex) {
+        if (hexCandidate.length < 6) return;
+        if (![6, 8].includes(hexCandidate.length)) return;
+      }
+      const parsedColor = tinycolor(isHex ? `#${hexCandidate}` : rawValue);
+      if (!parsedColor.isValid()) return;
+      this._manualInputValue = rawValue;
+      this.setSliders(parsedColor.toHex8String());
+      this.setColor(parsedColor, "input");
+      this._manualInputValue = null;
+    });
+    colorArea.append(marker);
+    alphaWrapper.append(alphaSlider);
+    inputWrapper.append(colorPreview, input);
+    if (!this.noControls)
+      wrapper.append(hueSlider, alphaWrapper);
+    wrapper.append(inputWrapper);
+    if (!this.noColorArea)
+      picker.append(colorArea);
+    picker.append(wrapper);
+    if (!this.noSwatches)
+      this.createSwatches(wrapper);
+    native.append(picker);
+    fragment.append(native);
     this.anchor = anchor;
     this.picker = picker;
     this.marker = marker;
@@ -1225,6 +1389,26 @@ class ColorPicker extends WJElement {
     return fragment;
   }
   /**
+   * Executes after the component is drawn. Initializes some configurations if not already initialized,
+   * including updating slider values, setting marker positions, and applying initial color settings.
+   * This method ensures that all necessary visual elements and configurations are properly set up.
+   * @returns {void} Does not return a value.
+   */
+  afterDraw() {
+    __privateSet(this, _init, false);
+    if (!__privateGet(this, _init)) {
+      window.setTimeout(() => {
+        if (this.color !== "") this.alphaSlider.value = 100;
+        this.colorAreaDimension = this.dimension();
+        this.markerPosition = this.setMarkerPositionByColor(this.color);
+        this.setMarkerPosition(this.markerPosition.x, this.markerPosition.y);
+        this.setSliders(this.color);
+        this.setColor(tinycolor(this.color), "init");
+      }, 0);
+      __privateSet(this, _init, true);
+    }
+  }
+  /**
    * Sets the hue.
    * @param node
    */
@@ -1233,34 +1417,18 @@ class ColorPicker extends WJElement {
     let swatches = document.createElement("div");
     swatches.classList.add("swatches");
     this.swatches.forEach((swatch) => {
+      if (!tinycolor(swatch).isValid()) return;
       let button = document.createElement("button");
+      button.setAttribute("type", "button");
       button.classList.add("swatch");
       button.style.setProperty("--wje-color-picker-swatch", swatch);
-      button.addEventListener("click", (e) => {
+      button.addEventListener("click", () => {
         this.setSliders(swatch);
         this.setColor(tinycolor(swatch), "swatch");
       });
       swatches.appendChild(button);
     });
     node.appendChild(swatches);
-  }
-  /**
-   * Sets up the event listeners for the ColorPicker.
-   */
-  afterDraw() {
-    this.init = false;
-    this.addEventListener("wje-popup:show", (e) => {
-      if (!this.init) {
-        window.setTimeout(() => {
-          this.colorAreaDimension = this.dimension();
-          this.markerPosition = this.setMarkerPositionByColor(this.input.value);
-          this.setMarkerPosition(this.markerPosition.x, this.markerPosition.y);
-          if (this.input.value !== "") this.alphaSlider.value = 100;
-          this.setColor();
-        }, 0);
-        this.init = true;
-      }
-    });
   }
   /**
    * Sets the sliders to the given color.
@@ -1272,32 +1440,41 @@ class ColorPicker extends WJElement {
     this.alphaSlider.value = hsva.a * 100;
   }
   /**
-   * Gets the dimensions of the color area.
-   * @returns {{width: *, x: *, y: *, height: *}}
+   * Retrieves the dimensions and position of the color area element relative to the viewport.
+   * @returns {object} An object containing the following properties:
+   * width: The width of the element in pixels.
+   * height: The height of the element in pixels.
+   * x: The x-coordinate of the element's left edge relative to the viewport.
+   * y: The y-coordinate of the element's top edge relative to the viewport.
    */
   dimension() {
+    const rect = this.colorArea.getBoundingClientRect();
     return {
-      width: this.colorArea.offsetWidth,
-      height: this.colorArea.offsetHeight,
-      x: this.colorArea.offsetLeft,
-      y: this.colorArea.offsetTop
+      width: rect.width,
+      height: rect.height,
+      x: rect.left,
+      // viewport-relative
+      y: rect.top
+      // viewport-relative
     };
   }
   /**
-   * Disconnects the ColorPicker.
+   * Method executed before disconnecting. Resets the initialization state to false.
+   * @returns {void} Does not return a value.
    */
   beforeDisconnect() {
-    this.init = false;
+    __privateSet(this, _init, true);
   }
   /**
-   * Sets the hue.
+   * Gets the pointer position in client coordinates (viewport-relative).
    * @param e
-   * @returns {{pageY: (*|number), pageX: (*|number)}}
+   * @returns {{x: number, y: number}}
    */
   getPointerPosition(e) {
+    const p = e.touches && e.touches[0] || e.changedTouches && e.changedTouches[0] || e;
     return {
-      pageX: e.changedTouches ? e.changedTouches[0].pageX : e.clientX,
-      pageY: e.changedTouches ? e.changedTouches[0].pageY : e.clientY
+      x: p.clientX,
+      y: p.clientY
     };
   }
   /**
@@ -1306,14 +1483,30 @@ class ColorPicker extends WJElement {
    * @param y
    */
   setMarkerPosition(x, y) {
-    x = x < 0 ? 0 : x > this.colorAreaDimension.width ? this.colorAreaDimension.width : x;
-    y = y < 0 ? 0 : y > this.colorAreaDimension.height ? this.colorAreaDimension.height : y;
+    const markerPosition = this.clampMarkerPosition(x, y);
     this.markerPosition = {
-      x,
-      y
+      x: markerPosition.x,
+      y: markerPosition.y
     };
-    this.marker.style.left = `${x}px`;
-    this.marker.style.top = `${y}px`;
+    this.marker.style.left = `${markerPosition.x}px`;
+    this.marker.style.top = `${markerPosition.y}px`;
+  }
+  /**
+   * Clamps marker coordinates to the color area boundaries.
+   * @param {number} x
+   * @param {number} y
+   * @returns {{x: number, y: number}}
+   */
+  clampMarkerPosition(x, y) {
+    var _a, _b;
+    const width = ((_a = this.colorAreaDimension) == null ? void 0 : _a.width) || 0;
+    const height = ((_b = this.colorAreaDimension) == null ? void 0 : _b.height) || 0;
+    const safeX = Number.isFinite(x) ? x : 0;
+    const safeY = Number.isFinite(y) ? y : 0;
+    return {
+      x: Math.min(Math.max(safeX, 0), width),
+      y: Math.min(Math.max(safeY, 0), height)
+    };
   }
   /**
    * Sets the color at the given position.
@@ -1323,16 +1516,49 @@ class ColorPicker extends WJElement {
    * @returns {*|tinycolor}
    */
   setColorAtPosition(x, y, alpha = 100) {
+    var _a, _b, _c;
+    const markerPosition = this.clampMarkerPosition(x, y);
+    const width = ((_a = this.colorAreaDimension) == null ? void 0 : _a.width) || 0;
+    const height = ((_b = this.colorAreaDimension) == null ? void 0 : _b.height) || 0;
+    const safeAlpha = Number.isFinite(Number(alpha)) ? Number(alpha) : 100;
+    if (width <= 0 || height <= 0) {
+      const fallbackHsv = tinycolor(((_c = this.input) == null ? void 0 : _c.value) || this.color).toHsv();
+      return tinycolor({
+        h: this.hueSlider.value * 1,
+        s: fallbackHsv.s,
+        v: fallbackHsv.v,
+        a: Math.max(0, Math.min(100, safeAlpha)) / 100
+      });
+    }
     const hsva = {
       h: this.hueSlider.value * 1,
-      s: x / this.colorAreaDimension.width * 100,
-      v: 100 - y / this.colorAreaDimension.height * 100,
-      a: alpha / 100
+      s: markerPosition.x / width * 100,
+      v: 100 - markerPosition.y / height * 100,
+      a: Math.max(0, Math.min(100, safeAlpha)) / 100
     };
     return tinycolor(hsva);
   }
+  /**
+   * Returns fully saturated and bright color for the current hue.
+   * Used as base color for the SV area so neutral grays do not black out the palette.
+   * @param {string} color
+   * @returns {string}
+   */
+  getHueAreaColor(color = "#ff0000") {
+    var _a;
+    const hsv = tinycolor(color).toHsv();
+    const hue = Number.isFinite(hsv.h) ? hsv.h : Number(((_a = this.hueSlider) == null ? void 0 : _a.value) || 0);
+    return tinycolor({
+      h: hue,
+      s: 100,
+      v: 100,
+      a: 1
+    }).toHexString();
+  }
 }
+_init = new WeakMap();
 WJElement.define("wje-color-picker", ColorPicker);
 export {
   ColorPicker as default
 };
+//# sourceMappingURL=wje-color-picker.js.map

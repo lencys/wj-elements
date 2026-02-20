@@ -2,18 +2,18 @@
 title: 'Dialog'
 ---
 
-import Props from '@ionic-internal/component-api/v1/dialog/props.md';
-import Events from '@ionic-internal/component-api/v1/dialog/events.md';
-import Methods from '@ionic-internal/component-api/v1/dialog/methods.md';
-import Parts from '@ionic-internal/component-api/v1/dialog/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/dialog/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/dialog/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/dialog/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/dialog/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/dialog/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/dialog/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/dialog/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/dialog/slots.md';
 
 <head>
   <title>Dialog | Dialógové okno s prispôsobiteľným obsahom</title>
   <meta
     name="description"
-    content="Element Dialog zobrazuje dialógové okno s prispôsobiteľným obsahom. Je možné ho využiť napríklad na jednoduché zobrazenie informácie používateľovi alebo tiež vyžiadať jeho potvrdenie alebo zrušenie ním vykonanej akcie."
+    content="Element Dialog zobrazuje dialógové okno s prispôsobiteľným obsahom. Je možné ho využiť napríklad na jednoduché zobrazenie informácie používateľovi alebo tiež vyžiadať jeho potvrdenie alebo."
   />
 </head>
 
@@ -72,11 +72,30 @@ import BlockingEvent from '@site/static/usage/v1/dialog/blocking-event/index.md'
 
 <BlockingEvent />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-dialog`, keď potrebujete používateľovi okamžite komunikovať stav, výsledok akcie alebo ďalší krok.
+
+## Kedy nepoužiť
+
+Nepoužívajte viacero konkurenčných feedback kanálov naraz pre jednu udalosť.
+
+## Prístupnosť
+
+Status správy oznamujte cez vhodné ARIA live regióny a pri modálnych prvkoch spravujte fokus (open/close).
+
+## Odporúčané postupy
+
+- Vyberte závažnosť správ (info/success/warning/error) podľa reálneho dopadu na používateľa.
+- Pri blokujúcich akciách preferujte potvrdenie iba tam, kde hrozí nevratná zmena.
+- Nastavte konzistentné timeouty, aby používateľ stihol správu prečítať.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -84,11 +103,11 @@ import BlockingEvent from '@site/static/usage/v1/dialog/blocking-event/index.md'
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

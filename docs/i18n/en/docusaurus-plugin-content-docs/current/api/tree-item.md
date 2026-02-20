@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/tree-item/slots.md'; -->
   <title>Accordion: view content in drop-down sections</title>
   <meta
     name="description"
-    content="Tree Item (wje-tree-item) element predstavuje jednotlivú položku v rámci Tree komponentu. Môže obsahovať text, ikony alebo ďalšie vnorené položky, čím umožňuje vytvárať hierarchické štruktúry."
+    content="API documentation for wje-tree-item, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -25,11 +25,31 @@ The Tree Item (wje-tree-item) element represents a single item within the Tree c
 
 :::note Note
 
-For more information on using the Tree item, navigate to the [**Tree**] item documentation(../tree).
+For more information on using the Tree item, navigate to the [**Tree**] item documentation(./tree).
 
 :::
 
 ## TO DO complete tree and tree item docs
+
+
+## When to use
+
+Use `wje-tree-item` when users need to understand location, move between views, or traverse hierarchy.
+
+## When not to use
+
+Do not combine multiple competing navigation patterns for the same user flow.
+
+## Accessibility
+
+Ensure visible active/selected states, predictable tab order, and clear control naming.
+
+## Best Practices
+
+- Keep URL state and UI navigation state synchronized.
+- Use consistent labels across menu, breadcrumbs, and tabs.
+- Add context for deep structures (breadcrumbs, headings, icon cues).
+- For 3+ levels of nesting, tune indentation with `--wje-tree-item-indent` so each level stays visually distinct.
 
 ## Attributes and Properties
 

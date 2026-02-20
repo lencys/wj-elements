@@ -2,24 +2,20 @@
 title: 'Reorder'
 ---
 
-import Props from '@ionic-internal/component-api/v1/reorder/props.md';
-import Events from '@ionic-internal/component-api/v1/reorder/events.md';
-import Methods from '@ionic-internal/component-api/v1/reorder/methods.md';
-import Parts from '@ionic-internal/component-api/v1/reorder/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/reorder/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/reorder/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/reorder/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/reorder/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/reorder/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/reorder/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/reorder/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/reorder/slots.md';
 
 <head>
   <title>Reorder</title>
   <meta
     name="description"
-    content="Reorder je komponent, ktorý umožňuje ťahaním položky zmeniť jej poradie v rámci skupiny položiek. Musí sa použiť v rámci skupiny na zmenu poradia, aby sa zabezpečilo vizuálne rozhranie drag and drop."
-  ></meta>
+    content="API dokumentácia pre wje-reorder vrátane odporúčaného použitia, atribútov, udalostí, metód, možností štýlovania a slotov."
+  />
 </head>
-
-import EncapsulationPill from '@components/page/api/EncapsulationPill';
-
-<EncapsulationPill type="shadow" />
 
 `Reorder` je komponent, ktorý umožňuje pomocou funkcionality Drag&Drop, zmeniť poradie položky `ReorderItem` v skupine.
 
@@ -39,7 +35,7 @@ import Disabled from '@site/static/usage/v1/reorder/disabled/index.md';
 
 ## Rukoväť pre ťahanie
 
-Pridaním elementu do slotu `handle` položky [**ReorderItem**](../reorder-item), môžete definovať špecifickú oblasť, ktorá bude slúžiť ako rukoväť pre ťahanie a preusporiadanie položiek. Toto umožňuje používateľom intuitívnejšie interakcie pri zmene poradia položiek.
+Pridaním elementu do slotu `handle` položky [**ReorderItem**](./reorder-item), môžete definovať špecifickú oblasť, ktorá bude slúžiť ako rukoväť pre ťahanie a preusporiadanie položiek. Toto umožňuje používateľom intuitívnejšie interakcie pri zmene poradia položiek.
 
 import Handle from '@site/static/usage/v1/reorder/handle/index.md';
 
@@ -61,11 +57,30 @@ import DropZones from '@site/static/usage/v1/reorder/drop-zones/index.md';
 
 <DropZones />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-reorder`, keď chcete riešiť daný UI problém konzistentne v rámci WebJET dizajn systému.
+
+## Kedy nepoužiť
+
+Nepoužívajte komponent mimo jeho zodpovednosti; pri netypickom prípade radšej zložte viac menších prvkov.
+
+## Prístupnosť
+
+Skontrolujte klávesnicové ovládanie, focus stavy, kontrast a zrozumiteľné pomenovanie interaktívnych prvkov.
+
+## Odporúčané postupy
+
+- Preferujte API komponentu pred ručnými DOM zásahmi.
+- Držte sa dizajnových tokenov a konzistentných konvencií pomenovania.
+- Pred nasadením otestujte komponent v reálnych dátových scenároch.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -73,11 +88,11 @@ import DropZones from '@site/static/usage/v1/reorder/drop-zones/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

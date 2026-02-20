@@ -13,15 +13,11 @@ import Slots from '@ionic-internal/component-api/v1/orgchart/slots.md';
   <title>OrgChart | OrgChart</title>
   <meta
     name="description"
-    content="Komponent OrgChart slúži na zobrazenie organizačnej štruktúry. Môže obsahovať rôzne typy uzlov a prepojenia medzi nimi."
-  ></meta>
+    content="API documentation for wje-orgchart, including usage guidance, attributes, events, methods, styling options, and slots."
+  />
 </head>
 
-import EncapsulationPill from '@components/page/api/EncapsulationPill';
-
-<EncapsulationPill type="shadow" />
-
-Komponent `OrgChart` spolu s [OrgChartItem](../orgChartItem) a [OrgChartGroup](../orgChartGroup) slúžia na zobrazenie organizačnej štruktúry.
+Komponent `OrgChart` spolu s [OrgChartItem](./orgchart-item) a [OrgChartGroup](./orgchart-group) slúžia na zobrazenie organizačnej štruktúry.
 OrgChart komponent môže byť použitý na zobrazenie hierarchických vzťahov medzi rôznymi entitami v organizácii.
 
 ## Basic use
@@ -40,7 +36,7 @@ import JSON from '@site/static/usage/v1/orgchart/json/index.md';
 
 ## Groups
 
-Using the [OrgChartGroup](../orgChartGroup) element, it is possible to group multiple nodes into a single entity. You can use them to show teams or departments within an organizational structure.
+Using the [OrgChartGroup](./orgchart-group) element, it is possible to group multiple nodes into a single entity. You can use them to show teams or departments within an organizational structure.
 
 import Group from '@site/static/usage/v1/orgchart/group/index.md';
 

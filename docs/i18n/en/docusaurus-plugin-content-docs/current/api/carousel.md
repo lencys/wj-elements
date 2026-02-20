@@ -18,7 +18,7 @@ import Slots from '@ionic-internal/component-api/v1/carousel/slots.md';
   <title>Card | Card format container</title>
   <meta
     name="description"
-    content="Element Card je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky Card Header, hlavnej časti Card Content a pätičky CardFooter."
+    content="API documentation for wje-carousel, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -69,6 +69,25 @@ import Spacing from '@site/static/usage/v1/carousel/spacing/index.md';
 import Split from '@site/static/usage/v1/carousel/split/index.md';
 
 <Split />
+
+
+## When to use
+
+Use `wje-carousel` to improve readability, scannability, and contextual understanding of content.
+
+## When not to use
+
+Do not replace structured interactive data with media-only presentation when precision is needed.
+
+## Accessibility
+
+Provide alt text, maintain readable contrast, and include text equivalents for icon-only controls.
+
+## Best Practices
+
+- Compress media and use lazy loading in larger collections.
+- Keep information priority consistent across cards/lists.
+- Avoid duplicating the same meaning in icon and text without added value.
 
 ## Attributes and Properties
 

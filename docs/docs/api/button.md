@@ -2,18 +2,18 @@
 title: 'Button'
 ---
 
-import Props from '@ionic-internal/component-api/v1/button/props.md';
-import Events from '@ionic-internal/component-api/v1/button/events.md';
-import Methods from '@ionic-internal/component-api/v1/button/methods.md';
-import Parts from '@ionic-internal/component-api/v1/button/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/button/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/button/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/button/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/button/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/button/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/button/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/button/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/button/slots.md';
 
 <head>
   <title>Button | Tlačidlo</title>
   <meta
     name="description"
-    content="Tlačidlá sú klikateľný element, ktorý umožnuje zobraziť text, ikonu, prípadne oboje. Tlačidlá si je možné jednoducho prispôsobiť použitím rôznych atribútov a CSS vlastností."
+    content="Tlačidlá sú klikateľný element, ktorý umožňuje zobraziť text, ikonu, prípadne oboje. Tlačidlá si je možné jednoducho prispôsobiť použitím rôznych atribútov a CSS vlastností."
   />
 </head>
 
@@ -90,7 +90,7 @@ import Size from '@site/static/usage/v1/button/size/index.md';
 
 ## Ikony tlačidla
 
-V tlačidlách je možné zobraziť aj ikony vložením elementu `wj-icon`. Ich umiestnenie v rámci tlačidla upravíte pomocou atribútu slot a vlastnosti `start` alebo `end`. Ak tlačidlo neobsahuje žiaden text a skladá sa len z ikony, použite vlastnosť `icon-only`.
+V tlačidlách je možné zobraziť aj ikony vložením elementu `wje-icon`. Ich umiestnenie v rámci tlačidla upravíte pomocou atribútu slot a vlastnosti `start` alebo `end`. Ak tlačidlo neobsahuje žiaden text a skladá sa len z ikony, použite vlastnosť `icon-only`.
 
 Viac informácií o ikonách nájdete na stránke **[Ikony](https://www.notion.so/Icon-d49ef040cef84b13b8dd3721d84d5397?pvs=21).**
 
@@ -116,17 +116,36 @@ import Outline from '@site/static/usage/v1/button/outline/index.md';
 
 <Outline />
 
-### CSS Custom Vlastnosti
+### CSS vlastné premenné
 
 import Custom from '@site/static/usage/v1/button/theming/css-properties/index.md';
 
 <Custom />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-button`, keď chcete riešiť daný UI problém konzistentne v rámci WebJET dizajn systému.
+
+## Kedy nepoužiť
+
+Nepoužívajte komponent mimo jeho zodpovednosti; pri netypickom prípade radšej zložte viac menších prvkov.
+
+## Prístupnosť
+
+Skontrolujte klávesnicové ovládanie, focus stavy, kontrast a zrozumiteľné pomenovanie interaktívnych prvkov.
+
+## Odporúčané postupy
+
+- Preferujte API komponentu pred ručnými DOM zásahmi.
+- Držte sa dizajnových tokenov a konzistentných konvencií pomenovania.
+- Pred nasadením otestujte komponent v reálnych dátových scenároch.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -134,11 +153,11 @@ import Custom from '@site/static/usage/v1/button/theming/css-properties/index.md
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

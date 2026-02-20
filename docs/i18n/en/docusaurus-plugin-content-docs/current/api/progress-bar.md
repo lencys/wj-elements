@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/progress-bar/slots.md';
   <title>Progress Bar | Progress visualization component</title>
   <meta
     name="description"
-    content="Progress Bar element je komponent navrhnutý na vizualizáciu priebehu. Ponúka možnosť vytvárať prispôsobiteľné kruhové alebo rovné ukazovatele s rôznymi možnosťami konfigurácie."
+    content="API documentation for wje-progress-bar, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -86,6 +86,25 @@ The `color` property modifies the color of the element. By default, the element 
 import Colors from '@site/static/usage/v1/progress-bar/colors/index.md';
 
 <Colors />
+
+
+## When to use
+
+Use `wje-progress-bar` to communicate status, result of actions, or required next steps immediately.
+
+## When not to use
+
+Do not show multiple feedback channels for the same event unless there is a strong reason.
+
+## Accessibility
+
+Announce status updates with suitable ARIA live regions and manage focus for modal interactions.
+
+## Best Practices
+
+- Match message severity (info/success/warning/error) to actual user impact.
+- Use confirmations only for destructive or hard-to-reverse actions.
+- Keep timeouts consistent so users have enough time to read messages.
 
 ## Attributes and Properties
 

@@ -2,18 +2,18 @@
 title: 'Relative Time'
 ---
 
-import Props from '@ionic-internal/component-api/v1/relative-time/props.md';
-import Events from '@ionic-internal/component-api/v1/relative-time/events.md';
-import Methods from '@ionic-internal/component-api/v1/relative-time/methods.md';
-import Parts from '@ionic-internal/component-api/v1/relative-time/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/relative-time/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/relative-time/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/relative-time/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/relative-time/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/relative-time/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/relative-time/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/relative-time/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/relative-time/slots.md';
 
 <head>
   <title>Reorder | ion-reorder: Drag and Drop Icon to Reorder Items</title>
   <meta
     name="description"
-    content="Ion-reorder is the anchor used to drag and drop the items inside of the ion-reorder-group. Read to learn more about custom reorder icons and items."
+    content="Komponent RelativeTime je element slúžiaci na zobrazenie relatívneho času na základe vloženého dátumu. Vypočíta a zobrazí relatívny časový rozdiel medzi aktuálnym dátumom a zadaným dátumom."
   />
 </head>
 
@@ -29,11 +29,30 @@ import Basic from '@site/static/usage/v1/relative-time/basic/index.md';
 
 <Basic />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-relative-time` na zobrazenie obsahu, ktorý zlepšuje čitateľnosť, skenovateľnosť alebo kontext informácií.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho ako náhradu za štruktúrované dáta tam, kde je potrebná presná interakcia.
+
+## Prístupnosť
+
+Doplňte alternatívny text pre obrázky, čitateľné kontrasty a textové ekvivalenty pre ikony bez popisu.
+
+## Odporúčané postupy
+
+- Komprimujte médiá a používajte lazy loading pri veľkých zoznamoch.
+- Pri kartách a zoznamoch držte konzistentné informačné priority.
+- Neopakujte rovnakú informáciu súčasne textom aj ikonou bez pridanej hodnoty.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -41,11 +60,11 @@ import Basic from '@site/static/usage/v1/relative-time/basic/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/item/slots.md';
   <title>Item | Blocks List element with diverse content</title>
   <meta
     name="description"
-    content="Komponenty Item sú bloky, ktoré môžu obsahovať rôzne typy obsahu vrátane textu, ikon, avatarov, obrázkov, inputov a iných štandardných alebo custom elementov. Item elementy sa zvyčajne nachádzajú vo vnútri List elementov."
+    content="Item components are blocks that can contain various types of content, including text, icons, avatars, images, inputs, and other standard or custom elements."
   />
 </head>
 
@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Item components are blocks that can contain various types of content, including text, icons, avatars, images, inputs, and other standard or custom elements. Item elements are usually found inside [List](../list) elements.
+Item components are blocks that can contain various types of content, including text, icons, avatars, images, inputs, and other standard or custom elements. Item elements are usually found inside [List](./list) elements.
 
 ## Basic usage
 
@@ -51,6 +51,25 @@ import Buttons from '@site/static/usage/v1/item/buttons/index.md';
 import Icons from '@site/static/usage/v1/item/icons/index.md';
 
 <Icons />
+
+
+## When to use
+
+Use `wje-item` to improve readability, scannability, and contextual understanding of content.
+
+## When not to use
+
+Do not replace structured interactive data with media-only presentation when precision is needed.
+
+## Accessibility
+
+Provide alt text, maintain readable contrast, and include text equivalents for icon-only controls.
+
+## Best Practices
+
+- Compress media and use lazy loading in larger collections.
+- Keep information priority consistent across cards/lists.
+- Avoid duplicating the same meaning in icon and text without added value.
 
 ## Attributes and Properties
 

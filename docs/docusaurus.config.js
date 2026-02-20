@@ -1,6 +1,4 @@
 const path = require('path');
-const prismic = require('@prismicio/client');
-const fetch = require('node-fetch');
 
 const VERSIONS_JSON = [];
 
@@ -41,24 +39,12 @@ module.exports = {
         docs: {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: ({ versionDocsDirPath, docPath, locale }) => {
-            if (locale !== 'en') {
-              return 'https://crowdin.com/project/wje';
+          editUrl: ({ docPath, locale }) => {
+            const base = 'https://github.com/lencys/wj-elements/edit/main/docs';
+            if (locale === 'en') {
+              return `${base}/i18n/en/docusaurus-plugin-content-docs/current/${docPath}`;
             }
-            let match;
-            if ((match = docPath.match(/api\/(.*)\.md/)) !== null) {
-              return `https://github.com/ionic-team/ionic-docs/tree/main/docs/api/${match[1]}.md`;
-            }
-            if ((match = docPath.match(/cli\/commands\/(.*)\.md/)) !== null) {
-              return `https://github.com/ionic-team/ionic-cli/edit/develop/packages/@ionic/cli/src/commands/${match[1].replace(
-                '-',
-                '/'
-              )}.ts`;
-            }
-            if ((match = docPath.match(/native\/(.*)\.md/)) !== null) {
-              return `https://github.com/ionic-team/capacitor-plugins/edit/main/${match[1]}/README.md`;
-            }
-            return `https://github.com/ionic-team/ionic-docs/edit/main/${versionDocsDirPath}/${docPath}`;
+            return `${base}/docs/${docPath}`;
           },
           exclude: ['README.md'],
           lastVersion: 'current',
@@ -192,23 +178,6 @@ module.exports = {
         },
       },
     ],
-    function (context, options) {
-      return {
-        name: 'ionic-docs-ads',
-        async loadContent() {
-          const repoName = 'ionicframeworkcom';
-          const endpoint = prismic.getEndpoint(repoName);
-          const client = prismic.createClient(endpoint, {
-            fetch,
-          });
-
-          return await client.getByType('docs_ad');
-        },
-        async contentLoaded({ content, actions: { setGlobalData, addRoute } }) {
-          return setGlobalData({ prismicAds: content.results });
-        },
-      };
-    },
     [
       path.resolve(__dirname, 'plugins', 'docusaurus-plugin-ionic-component-api'),
       {

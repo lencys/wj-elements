@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/toolbar-actions/slots.md';
   <title>ToolbarActions | Wrapper for buttons inserted into the Toolbar element</title>
   <meta
     name="description"
-    content="Element ToolbarActions slúži ako obaľovací kontajner pre tlačidlá vložené do elementu Toolbar a zoskupuje tak rôzne akcie toolbaru do jedného celku."
+    content="API documentation for wje-toolbar-actions, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -24,8 +24,27 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 The ToolbarActions element serves as a wrapper for the buttons inserted into the Toolbar element and thus groups the different toolbar actions into a single unit.
 
 :::note
-For more information on using ToolbarActions, go to the [**Toolbar**](../toolbar) element documentation.
+For more information on using ToolbarActions, go to the [**Toolbar**](./toolbar) element documentation.
 :::
+
+
+## When to use
+
+Use `wje-toolbar-actions` to compose stable page structure with clear visual and semantic hierarchy.
+
+## When not to use
+
+Do not use layout components to handle business logic or application orchestration.
+
+## Accessibility
+
+Preserve document semantics (`header`, `main`, `aside`, `footer`) and logical tab/focus order.
+
+## Best Practices
+
+- Define mobile/desktop breakpoints first, then refine visual details.
+- Prefer spacing tokens over ad-hoc margin/padding overrides.
+- Test keyboard and screen reader behavior for overflow scenarios.
 
 ## Attributes and Properties
 

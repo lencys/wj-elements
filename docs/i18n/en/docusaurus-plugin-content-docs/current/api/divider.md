@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/divider/slots.md';
   <title>Divider | WebJET Element to display the divider</title>
   <meta
     name="description"
-    content="WebJET Element pre zobrazenie oddeľovača."
+    content="API documentation for wje-divider, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -28,6 +28,25 @@ The divider element is used to display a separator between sections. It can also
 import Basic from '@site/static/usage/v1/divider/basic/index.md';
 
 <Basic />
+
+
+## When to use
+
+Use `wje-divider` when you need a consistent WebJET-based implementation for this UI concern.
+
+## When not to use
+
+Do not stretch the component beyond its responsibility; compose smaller primitives for edge cases.
+
+## Accessibility
+
+Validate keyboard behavior, focus states, contrast, and meaningful labels for interactive elements.
+
+## Best Practices
+
+- Prefer component APIs over direct DOM manipulation.
+- Stick to design tokens and naming conventions.
+- Test components with realistic data before production rollout.
 
 ## Attributes and Properties
 

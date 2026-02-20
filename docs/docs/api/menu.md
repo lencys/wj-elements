@@ -2,18 +2,18 @@
 title: 'Menu'
 ---
 
-import Props from '@ionic-internal/component-api/v1/menu/props.md';
-import Events from '@ionic-internal/component-api/v1/menu/events.md';
-import Methods from '@ionic-internal/component-api/v1/menu/methods.md';
-import Parts from '@ionic-internal/component-api/v1/menu/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/menu/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/menu/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/menu/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/menu/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/menu/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/menu/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/menu/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/menu/slots.md';
 
 <head>
   <title>Menu | Element pre zobrazenie menu</title>
   <meta
     name="description"
-    content="Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo."
+    content="Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu active napríklad po kliknutí na tlačidlo."
   />
 </head>
 
@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo. Špeciálne pre použitie v Menu sú navrhnuté elementy [MenuItem](../menu-item) a [MenuLabel](../menu-label).
+Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný a zobrazí sa pridaním atribútu `active` napríklad po kliknutí na tlačidlo. Špeciálne pre použitie v Menu sú navrhnuté elementy [MenuItem](./menu-item) a [MenuLabel](./menu-label).
 
 ## Základné použitie
 
@@ -55,11 +55,30 @@ import Collapse from '@site/static/usage/v1/menu/collapse/index.md';
 
 <Collapse />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-menu`, keď používateľ potrebuje orientáciu v aplikácii alebo prechod medzi stavmi/obrazovkami.
+
+## Kedy nepoužiť
+
+Nepoužívajte viac paralelných navigačných vzorov, ktoré si navzájom konkurujú.
+
+## Prístupnosť
+
+Zabezpečte jasné active/selected stavy, predvídateľné poradie tabulátora a pomenovanie ovládacích prvkov.
+
+## Odporúčané postupy
+
+- Držte URL a UI stav v synchronizácii, aby bola navigácia reprodukovateľná.
+- Používajte konzistentné názvoslovie položiek naprieč menu, breadcrumbom a tabmi.
+- Pri hlbokých štruktúrach pridajte pomocný kontext (breadcrumb, nadpis, ikony).
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -67,11 +86,11 @@ import Collapse from '@site/static/usage/v1/menu/collapse/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

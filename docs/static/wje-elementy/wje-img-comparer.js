@@ -2,7 +2,7 @@ var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 import WJElement from "./wje-element.js";
-import Icon from "./wje-icon.js";
+import { I as Icon } from "./icon-DVyMc4Wv.js";
 function drag(container, options) {
   function move(pointerEvent) {
     const dims = container.getBoundingClientRect();
@@ -90,6 +90,7 @@ class ImgComparer extends WJElement {
    */
   setupAttributes() {
     this.isShadowRoot = "open";
+    this.setAriaState({ role: "group" });
   }
   /**
    * Draws the component.
@@ -112,6 +113,9 @@ class ImgComparer extends WJElement {
     let dividerElement = document.createElement("div");
     dividerElement.classList.add("wje-divider");
     dividerElement.setAttribute("part", "divider");
+    dividerElement.setAttribute("role", "separator");
+    dividerElement.setAttribute("tabindex", "0");
+    dividerElement.setAttribute("aria-orientation", "horizontal");
     dividerElement.addEventListener("mousedown", this.handleDrag, false);
     beforeElement.appendChild(before);
     afterElement.appendChild(after);
@@ -128,3 +132,4 @@ ImgComparer.define("wje-img-comparer", ImgComparer);
 export {
   ImgComparer as default
 };
+//# sourceMappingURL=wje-img-comparer.js.map

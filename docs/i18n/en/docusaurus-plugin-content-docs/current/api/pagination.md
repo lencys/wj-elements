@@ -13,13 +13,9 @@ import Slots from '@ionic-internal/component-api/v1/pagination/slots.md';
   <title>Pagination | Pagination component in applications</title>
   <meta
     name="description"
-    content="Komponent Pagination slúži na zobrazenie stránkovania v aplikáciách. Umožňuje používateľom navigovať medzi rôznymi stránkami obsahu a zlepšuje tak používateľskú skúsenosť pri prehliadaní veľkého množstva údajov."
-  ></meta>
+    content="API documentation for wje-pagination, including usage guidance, attributes, events, methods, styling options, and slots."
+  />
 </head>
-
-import EncapsulationPill from '@components/page/api/EncapsulationPill';
-
-<EncapsulationPill type="shadow" />
 
 The `Pagination` component is used to display pagination in applications. It allows users to navigate between different pages of content, improving the user experience when browsing large amounts of data.
 
@@ -52,6 +48,25 @@ import Buttons from '@site/static/usage/v1/pagination/buttons/index.md';
 import Info from '@site/static/usage/v1/pagination/info/index.md';
 
 <Info />
+
+
+## When to use
+
+Use `wje-pagination` when users need to enter values, choose options, or trigger form-related actions.
+
+## When not to use
+
+Do not use it as a decorative element without interaction. Prefer presentational components in that case.
+
+## Accessibility
+
+Always provide a label (`label`/`aria-label`), keep keyboard support, and surface clear validation feedback.
+
+## Best Practices
+
+- Keep validation rules and error behavior consistent across the entire form.
+- Show loading or disabled states during async operations.
+- Split complex forms into smaller sections with immediate feedback.
 
 ## Attributes and Properties
 

@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/button-group/slots.md';
   <title>ButtonGroup: element for grouping buttons</title>
   <meta
     name="description"
-    content="ButtonGroup slúži na zoskupovanie elementov Button, ktoré budú po vložení do vnútra elementu automaticky naštýlované a usporiadané."
+    content="ButtonGroup is used to group Button and Dropdown elements into more functional units, which will be automatically styled and arranged when inserted inside the element."
   />
 </head>
 
@@ -21,11 +21,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="scoped" />
 
-ButtonGroup is used to group [Button](../button) and [Dropdown](../dropdown) elements into more functional units, which will be automatically styled and arranged when inserted inside the element.
+ButtonGroup is used to group [Button](./button) and [Dropdown](./dropdown) elements into more functional units, which will be automatically styled and arranged when inserted inside the element.
 
 ## Basic usage
 
-Add a `wj-button-group` element to the HTML with the desired attributes and include the desired Button or Dropdown elements inside it.
+Add a `wje-button-group` element to the HTML with the desired attributes and include the desired Button or Dropdown elements inside it.
 
 import Basic from '@site/static/usage/v1/button-group/basic/index.md';
 
@@ -65,7 +65,7 @@ import SplitButtons from '@site/static/usage/v1/button-group/split-buttons/index
 
 </div>
 
-## Editing styles
+## Styling
 
 ### ButtonGroup colors
 
@@ -78,6 +78,25 @@ import Colors from '@site/static/usage/v1/button-group/colors/index.md';
 import ColorsOutline from '@site/static/usage/v1/button-group/colors-outline/index.md';
 
 <ColorsOutline />
+
+
+## When to use
+
+Use `wje-button-group` when you need a consistent WebJET-based implementation for this UI concern.
+
+## When not to use
+
+Do not stretch the component beyond its responsibility; compose smaller primitives for edge cases.
+
+## Accessibility
+
+Validate keyboard behavior, focus states, contrast, and meaningful labels for interactive elements.
+
+## Best Practices
+
+- Prefer component APIs over direct DOM manipulation.
+- Stick to design tokens and naming conventions.
+- Test components with realistic data before production rollout.
 
 ## Attributes and Properties
 

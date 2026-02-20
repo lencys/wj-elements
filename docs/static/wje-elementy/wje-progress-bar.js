@@ -82,6 +82,7 @@ class ProgressBar extends WJElement {
    */
   setupAttributes() {
     this.isShadowRoot = "open";
+    this.syncAria();
   }
   /**
    * Draws the component.
@@ -169,6 +170,31 @@ class ProgressBar extends WJElement {
     return fragment;
   }
   /**
+   * Handles attribute changes for ARIA sync.
+   * @param {string} name
+   * @param {string|null} oldValue
+   * @param {string|null} newValue
+   */
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (super.attributeChangedCallback) {
+      super.attributeChangedCallback(name, oldValue, newValue);
+    }
+    if (name === "progress" && oldValue !== newValue) {
+      this.syncAria();
+    }
+  }
+  /**
+   * Sync ARIA attributes on host.
+   */
+  syncAria() {
+    this.setAriaState({
+      role: "progressbar",
+      valuemin: 0,
+      valuemax: 100,
+      valuenow: this.progress || 0
+    });
+  }
+  /**
    * Adds event listeners after the component is drawn.
    */
   afterDraw() {
@@ -210,3 +236,4 @@ ProgressBar.define("wje-progress-bar", ProgressBar);
 export {
   ProgressBar as default
 };
+//# sourceMappingURL=wje-progress-bar.js.map

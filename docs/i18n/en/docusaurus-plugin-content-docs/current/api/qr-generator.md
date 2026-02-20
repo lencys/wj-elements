@@ -13,13 +13,9 @@ import Slots from '@ionic-internal/component-api/v1/qr-code/slots.md';
   <title>QR Code | QR Code</title>
   <meta
     name="description"
-    content="Kód pozostávajúci z poľa čiernych a bielych štvorcov, ktorý sa zvyčajne používa na ukladanie adries URL alebo iných informácií na čítanie fotoaparátom na smartfóne. Tieto qr kódy si je možné jednoducho prispôsobiť použitím rôznych atribútov."
-  ></meta>
+    content="API documentation for wje-qr-generator, including usage guidance, attributes, events, methods, styling options, and slots."
+  />
 </head>
-
-import EncapsulationPill from '@components/page/api/EncapsulationPill';
-
-<EncapsulationPill type="shadow" />
 
 A code consisting of an array of black and white squares that is typically used to store URLs or other information for the camera on a smartphone to read. These qr codes can be easily customised using different attributes.
 
@@ -30,6 +26,25 @@ To use the QR component, include it in the HTML with the required attributes.
 import Basic from '@site/static/usage/v1/qr-code/basic/index.md';
 
 <Basic />
+
+
+## When to use
+
+Use `wje-qr-code` when you need a consistent WebJET-based implementation for this UI concern.
+
+## When not to use
+
+Do not stretch the component beyond its responsibility; compose smaller primitives for edge cases.
+
+## Accessibility
+
+Validate keyboard behavior, focus states, contrast, and meaningful labels for interactive elements.
+
+## Best Practices
+
+- Prefer component APIs over direct DOM manipulation.
+- Stick to design tokens and naming conventions.
+- Test components with realistic data before production rollout.
 
 ## Attributes and Properties
 

@@ -2,24 +2,20 @@
 title: 'Pagination'
 ---
 
-import Props from '@ionic-internal/component-api/v1/pagination/props.md';
-import Events from '@ionic-internal/component-api/v1/pagination/events.md';
-import Methods from '@ionic-internal/component-api/v1/pagination/methods.md';
-import Parts from '@ionic-internal/component-api/v1/pagination/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/pagination/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/pagination/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/pagination/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/pagination/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/pagination/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/pagination/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/pagination/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/pagination/slots.md';
 
 <head>
   <title>Pagination | Komponent stránkovania v aplikáciách</title>
   <meta
     name="description"
-    content="Komponent Pagination slúži na zobrazenie stránkovania v aplikáciách. Umožňuje používateľom navigovať medzi rôznymi stránkami obsahu a zlepšuje tak používateľskú skúsenosť pri prehliadaní veľkého množstva údajov."
-  ></meta>
+    content="API dokumentácia pre wje-pagination vrátane odporúčaného použitia, atribútov, udalostí, metód, možností štýlovania a slotov."
+  />
 </head>
-
-import EncapsulationPill from '@components/page/api/EncapsulationPill';
-
-<EncapsulationPill type="shadow" />
 
 Komponent `Pagination` slúži na zobrazenie stránkovania v aplikáciách. Umožňuje používateľom navigovať medzi rôznymi stránkami obsahu a zlepšuje tak používateľskú skúsenosť pri prehliadaní veľkého množstva údajov.
 
@@ -53,11 +49,30 @@ import Info from '@site/static/usage/v1/pagination/info/index.md';
 
 <Info />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-pagination`, keď používateľ zadáva hodnotu, vyberá možnosti alebo vykonáva akciu vo formulári.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho len ako vizuálny dekoratívny prvok bez interakcie. V takom prípade uprednostnite prezentačné komponenty.
+
+## Prístupnosť
+
+Vždy prepojte komponent s popisom (`label`/`aria-label`), zachovajte ovládanie klávesnicou a pri validačných chybách zobrazte zrozumiteľnú správu.
+
+## Odporúčané postupy
+
+- Majte jednotné validačné pravidlá a error stavy naprieč celým formulárom.
+- Pri asynchrónnych operáciách zobrazte stav načítania alebo disabled stav.
+- Pri zložitých formulároch preferujte menšie sekcie a okamžitú spätnú väzbu.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -65,11 +80,11 @@ import Info from '@site/static/usage/v1/pagination/info/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

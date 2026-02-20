@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/router-outlet/slots.md';
   <title>Router | Router The navigation component within web applications</title>
   <meta
     name="description"
-    content="Komponent Router je nástroj určený na navigáciu v rámci webových aplikácií. Táto komponenta podporuje komplexné navigačné scenáre a lazy-load, čím zvyšuje výkon aplikácie a používateľský zážitok."
+    content="The Router Outlet component manages the insertion and removal of various page components based on the current routing state of the application."
   />
 </head>
 
@@ -25,7 +25,7 @@ The Router Outlet component manages the insertion and removal of various page co
 
 ## Life Cycle Hooks
 
-Routes rendered in a Router Outlet have access to specific Ionic events that are wired up to animations
+Routes rendered in a Router Outlet have access to specific WebJET events that are wired up to animations
 
 | Event Name         | Trigger                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------- |
@@ -37,6 +37,25 @@ Routes rendered in a Router Outlet have access to specific Ionic events that are
 These events tie into Ionic's animation system and can be used to coordinate parts of your app when a Components is done with its animation. These events are not a replacement for your framework's own event system, but an addition.
 
 For handling Router Guards, the older `ionViewCanEnter` and `ionViewCanLeave` have been replaced with their framework specific equivalent. For Angular, there are [Router Guards](https://angular.io/guide/router#milestone-5-route-guards).
+
+
+## When to use
+
+Use `wje-router-outlet` when users need to understand location, move between views, or traverse hierarchy.
+
+## When not to use
+
+Do not combine multiple competing navigation patterns for the same user flow.
+
+## Accessibility
+
+Ensure visible active/selected states, predictable tab order, and clear control naming.
+
+## Best Practices
+
+- Keep URL state and UI navigation state synchronized.
+- Use consistent labels across menu, breadcrumbs, and tabs.
+- Add context for deep structures (breadcrumbs, headings, icon cues).
 
 ## Attributes and Properties
 

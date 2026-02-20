@@ -2,18 +2,18 @@
 title: 'SplitView'
 ---
 
-import Props from '@ionic-internal/component-api/v1/split-view/props.md';
-import Events from '@ionic-internal/component-api/v1/split-view/events.md';
-import Methods from '@ionic-internal/component-api/v1/split-view/methods.md';
-import Parts from '@ionic-internal/component-api/v1/split-view/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/split-view/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/split-view/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/split-view/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/split-view/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/split-view/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/split-view/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/split-view/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/split-view/slots.md';
 
 <head>
   <title>SplitView | jednotlivé voliteľné možnosti v rámci komponentu Select</title>
   <meta
     name="description"
-    content="Element Option predstavuje jednotlivé voliteľné možnosti v rámci komponentu Select. Je obdobný štandardnému elementu HTML select a umožňuje používateľom vykonať jeden alebo viacero výberov na základe konfigurácie komponentu Select."
+    content="Element Split view je všestranný komponent, ktorý umožňuje vytvoriť delené zobrazenie s dvoma alebo viacerými sekciami."
   />
 </head>
 
@@ -67,11 +67,30 @@ import Custom from '@site/static/usage/v1/split-view/custom/index.md';
 
 <Custom />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-split-view` na skladanie stabilného rozloženia stránky s jasnou hierarchiou obsahu.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho na riešenie biznis logiky ani na stavovú orchestráciu komponentov.
+
+## Prístupnosť
+
+Zachovajte semantiku dokumentu (`header`, `main`, `aside`, `footer`) a logické poradie fokusovateľných prvkov.
+
+## Odporúčané postupy
+
+- Najprv definujte desktop/mobile breakpoints a až potom dolaďujte detaily.
+- Preferujte konzistentné spacing tokeny pred ad-hoc margin/padding hodnotami.
+- Pri layoutoch s overflow vždy otestujte klávesnicovú navigáciu a čítačky.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -79,11 +98,11 @@ import Custom from '@site/static/usage/v1/split-view/custom/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

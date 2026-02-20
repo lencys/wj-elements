@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/row/slots.md';
   <title>Row | Horizontal container for Grid system</title>
   <meta
     name="description"
-    content="Row (Riadok) je základným prvkom responzívneho Grid systému. Slúži ako kontajner na usporiadanie a horizontálne zarovnanie stĺpcov v rámci väčších layoutov."
+    content="API documentation for wje-row, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -21,13 +21,32 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Row is the basic element of a responsive [Grid](../grid) system and serves as a horizontal container for arranging and aligning columns ([columns](../col)).
+Row is the basic element of a responsive [Grid](./grid) system and serves as a horizontal container for arranging and aligning columns ([columns](./col)).
 
 :::note Note
 
-For more information on using **Row**, navigate to the [**Grid**](../grid) system documentation.
+For more information on using **Row**, navigate to the [**Grid**](./grid) system documentation.
 
 :::
+
+
+## When to use
+
+Use `wje-row` to compose stable page structure with clear visual and semantic hierarchy.
+
+## When not to use
+
+Do not use layout components to handle business logic or application orchestration.
+
+## Accessibility
+
+Preserve document semantics (`header`, `main`, `aside`, `footer`) and logical tab/focus order.
+
+## Best Practices
+
+- Define mobile/desktop breakpoints first, then refine visual details.
+- Prefer spacing tokens over ad-hoc margin/padding overrides.
+- Test keyboard and screen reader behavior for overflow scenarios.
 
 ## Attributes and Properties
 

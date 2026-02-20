@@ -2,18 +2,18 @@
 title: 'Card'
 ---
 
-import Props from '@ionic-internal/component-api/v1/card/props.md';
-import Events from '@ionic-internal/component-api/v1/card/events.md';
-import Methods from '@ionic-internal/component-api/v1/card/methods.md';
-import Parts from '@ionic-internal/component-api/v1/card/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/card/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/card/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/card/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/card/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/card/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/card/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/card/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/card/slots.md';
 
 <head>
   <title>Card | Kontajner formátu karty</title>
   <meta
     name="description"
-    content="Element Card je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky Card Header, hlavnej časti Card Content a pätičky CardFooter."
+    content="Element **Card** je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky CardHeader a hlavnej časti CardContent."
   />
 </head>
 
@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element **Card** je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky [CardHeader](../card-header) a hlavnej časti [CardContent](../card-content).
+Element **Card** je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky [CardHeader](./card-header) a hlavnej časti [CardContent](./card-content).
 
 ## Základné použitie
 
@@ -59,27 +59,27 @@ import Colors from '@site/static/usage/v1/card/theming/colors/index.md';
 
 <Colors />
 
-### CSS Custom Vlastnosti
+### CSS vlastné premenné
 
 import CssProperties from '@site/static/usage/v1/card/theming/css-properties/index.md';
 
 <CssProperties />
 
 ```html
-<wj-card id="custom">
-  <wj-card-header>
-    <wj-card-subtitle>Subtitle</wj-card-subtitle>
-    <wj-card-title>Title</wj-card-title>
-  </wj-card-header>
-  <wj-card-content> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </wj-card-content>
-</wj-card>
+<wje-card id="custom">
+  <wje-card-header>
+    <wje-card-subtitle>Subtitle</wje-card-subtitle>
+    <wje-card-title>Title</wje-card-title>
+  </wje-card-header>
+  <wje-card-content> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </wje-card-content>
+</wje-card>
 <style>
   #custom {
-    --wj-card-margin-top: 1rem;
-    --wj-card-margin-bottom: 1rem;
-    --wj-card-margin-inline: 1rem;
+    --wje-card-margin-top: 1rem;
+    --wje-card-margin-bottom: 1rem;
+    --wje-card-margin-inline: 1rem;
     --wj-color-contrast: #f0f;
-    --wj-card-border-color: #000;
+    --wje-card-border-color: #000;
     --wj-border-size: 2px;
     --background-color: #000 !important;
     --wj-font-size: 0.8rem;
@@ -88,11 +88,30 @@ import CssProperties from '@site/static/usage/v1/card/theming/css-properties/ind
 </style>
 ```
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-card` na zobrazenie obsahu, ktorý zlepšuje čitateľnosť, skenovateľnosť alebo kontext informácií.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho ako náhradu za štruktúrované dáta tam, kde je potrebná presná interakcia.
+
+## Prístupnosť
+
+Doplňte alternatívny text pre obrázky, čitateľné kontrasty a textové ekvivalenty pre ikony bez popisu.
+
+## Odporúčané postupy
+
+- Komprimujte médiá a používajte lazy loading pri veľkých zoznamoch.
+- Pri kartách a zoznamoch držte konzistentné informačné priority.
+- Neopakujte rovnakú informáciu súčasne textom aj ikonou bez pridanej hodnoty.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -100,11 +119,11 @@ import CssProperties from '@site/static/usage/v1/card/theming/css-properties/ind
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

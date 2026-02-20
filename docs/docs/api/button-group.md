@@ -2,18 +2,18 @@
 title: 'ButtonGroup'
 ---
 
-import Props from '@ionic-internal/component-api/v1/button-group/props.md';
-import Events from '@ionic-internal/component-api/v1/button-group/events.md';
-import Methods from '@ionic-internal/component-api/v1/button-group/methods.md';
-import Parts from '@ionic-internal/component-api/v1/button-group/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/button-group/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/button-group/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/button-group/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/button-group/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/button-group/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/button-group/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/button-group/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/button-group/slots.md';
 
 <head>
   <title>ButtonGroup: Element pre zoskupovanie tlačidiel</title>
   <meta
     name="description"
-    content="ButtonGroup slúži na zoskupovanie elementov Button, ktoré budú po vložení do vnútra elementu automaticky naštýlované a usporiadané."
+    content="ButtonGroup slúži na zoskupovanie elementov Button a Dropdown do funkčnejších celkov, ktoré budú po vložení do vnútra elementu automaticky naštýlované a usporiadané."
   />
 </head>
 
@@ -21,11 +21,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="scoped" />
 
-ButtonGroup slúži na zoskupovanie elementov [Button](../button) a [Dropdown](../dropdown) do funkčnejších celkov, ktoré budú po vložení do vnútra elementu automaticky naštýlované a usporiadané.
+ButtonGroup slúži na zoskupovanie elementov [Button](./button) a [Dropdown](./dropdown) do funkčnejších celkov, ktoré budú po vložení do vnútra elementu automaticky naštýlované a usporiadané.
 
 ## Základné použitie
 
-Pridajte element `wj-button-group` do HTML s požadovanými atribútmi a do jeho vnútra zahrniete želané Button alebo Dropdown elementy.
+Pridajte element `wje-button-group` do HTML s požadovanými atribútmi a do jeho vnútra zahrniete želané Button alebo Dropdown elementy.
 
 import Basic from '@site/static/usage/v1/button-group/basic/index.md';
 
@@ -79,11 +79,30 @@ import ColorsOutline from '@site/static/usage/v1/button-group/colors-outline/ind
 
 <ColorsOutline />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-button-group`, keď chcete riešiť daný UI problém konzistentne v rámci WebJET dizajn systému.
+
+## Kedy nepoužiť
+
+Nepoužívajte komponent mimo jeho zodpovednosti; pri netypickom prípade radšej zložte viac menších prvkov.
+
+## Prístupnosť
+
+Skontrolujte klávesnicové ovládanie, focus stavy, kontrast a zrozumiteľné pomenovanie interaktívnych prvkov.
+
+## Odporúčané postupy
+
+- Preferujte API komponentu pred ručnými DOM zásahmi.
+- Držte sa dizajnových tokenov a konzistentných konvencií pomenovania.
+- Pred nasadením otestujte komponent v reálnych dátových scenároch.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -91,11 +110,11 @@ import ColorsOutline from '@site/static/usage/v1/button-group/colors-outline/ind
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

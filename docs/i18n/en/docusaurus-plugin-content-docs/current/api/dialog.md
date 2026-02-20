@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/dialog/slots.md';
   <title>Dialog | Dialog with customizable content</title>
   <meta
     name="description"
-    content="Element Dialog zobrazuje dialógové okno s prispôsobiteľným obsahom. Je možné ho využiť napríklad na jednoduché zobrazenie informácie používateľovi alebo tiež vyžiadať jeho potvrdenie alebo zrušenie ním vykonanej akcie."
+    content="API documentation for wje-dialog, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -71,6 +71,25 @@ The content of the Dialog element can be easily changed by using a custom event 
 import BlockingEvent from '@site/static/usage/v1/dialog/blocking-event/index.md';
 
 <BlockingEvent />
+
+
+## When to use
+
+Use `wje-dialog` to communicate status, result of actions, or required next steps immediately.
+
+## When not to use
+
+Do not show multiple feedback channels for the same event unless there is a strong reason.
+
+## Accessibility
+
+Announce status updates with suitable ARIA live regions and manage focus for modal interactions.
+
+## Best Practices
+
+- Match message severity (info/success/warning/error) to actual user impact.
+- Use confirmations only for destructive or hard-to-reverse actions.
+- Keep timeouts consistent so users have enough time to read messages.
 
 ## Attributes and Properties
 

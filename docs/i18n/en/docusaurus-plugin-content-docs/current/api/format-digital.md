@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/format-digital/slots.md';
   <title>Format Digital | Formatting numeric values</title>
   <meta
     name="description"
-    content="Komponent FormatDigital je určený na formátovanie číselných hodnôt do ľudsky čitateľného digitálneho formátu s ohľadom na rôzne predpony jednotiek, ako sú kilo, mega, giga atď. Ponúka možnosti prispôsobenia jednotiek, štýlu zobrazenia jednotiek a podporuje lokalizáciu."
+    content="The FormatDigital component is designed to format numeric values into a human-readable digital format with respect to various unit prefixes such as kilo, mega, giga, etc."
   />
 </head>
 
@@ -52,6 +52,25 @@ import FormattingBits from '@site/static/usage/v1/format-digital/formatting-bits
 import DisplaySlots from '@site/static/usage/v1/format-digital/slots/index.md';
 
 <DisplaySlots />
+
+
+## When to use
+
+Use `wje-format-digital` when you need a consistent WebJET-based implementation for this UI concern.
+
+## When not to use
+
+Do not stretch the component beyond its responsibility; compose smaller primitives for edge cases.
+
+## Accessibility
+
+Validate keyboard behavior, focus states, contrast, and meaningful labels for interactive elements.
+
+## Best Practices
+
+- Prefer component APIs over direct DOM manipulation.
+- Stick to design tokens and naming conventions.
+- Test components with realistic data before production rollout.
 
 ## Attributes and Properties
 

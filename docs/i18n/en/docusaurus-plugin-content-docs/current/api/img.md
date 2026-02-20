@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/image/slots.md';
   <title>Image Element | Image Display Element</title>
   <meta
     name="description"
-    content="Element Image pridáva obrázkom funkciu lazyload a počas načítavania zobrazuje zástupnú ikonu (placeholder) v podobe animovaného obrázka."
+    content="API documentation for wje-img, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -50,6 +50,25 @@ The `fallout` attribute with value `"log"` causes the element to be removed if a
 import FalloutLog from '@site/static/usage/v1/img/fallout-log/index.md';
 
 <FalloutLog />
+
+
+## When to use
+
+Use `wje-img` to improve readability, scannability, and contextual understanding of content.
+
+## When not to use
+
+Do not replace structured interactive data with media-only presentation when precision is needed.
+
+## Accessibility
+
+Provide alt text, maintain readable contrast, and include text equivalents for icon-only controls.
+
+## Best Practices
+
+- Compress media and use lazy loading in larger collections.
+- Keep information priority consistent across cards/lists.
+- Avoid duplicating the same meaning in icon and text without added value.
 
 ## Attributes and Properties
 

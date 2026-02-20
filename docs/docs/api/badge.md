@@ -2,18 +2,18 @@
 title: 'Badge'
 ---
 
-import Props from '@ionic-internal/component-api/v1/badge/props.md';
-import Events from '@ionic-internal/component-api/v1/badge/events.md';
-import Methods from '@ionic-internal/component-api/v1/badge/methods.md';
-import Parts from '@ionic-internal/component-api/v1/badge/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/badge/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/badge/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/badge/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/badge/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/badge/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/badge/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/badge/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/badge/slots.md';
 
 <head>
   <title>Badge | Odznaky</title>
   <meta
     name="description"
-    content="Badge sú inline-block elementy, ktoré majú informatívny charakter a zvyčajne sa zobrazujú v blízkosti iného elementu. Používajú sa ako upozornenie, že k elementu sú priradené ďalšie elementy, a informujú používateľa o ich počte."
+    content="Badge sú inline-block elementy, ktoré majú informatívny charakter a zvyčajne sa zobrazujú v blízkosti iného elementu."
   />
 </head>
 
@@ -45,11 +45,30 @@ import Colors from '@site/static/usage/v1/badge/theming/colors/index.md';
 
 <Colors />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-badge` na zobrazenie obsahu, ktorý zlepšuje čitateľnosť, skenovateľnosť alebo kontext informácií.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho ako náhradu za štruktúrované dáta tam, kde je potrebná presná interakcia.
+
+## Prístupnosť
+
+Doplňte alternatívny text pre obrázky, čitateľné kontrasty a textové ekvivalenty pre ikony bez popisu.
+
+## Odporúčané postupy
+
+- Komprimujte médiá a používajte lazy loading pri veľkých zoznamoch.
+- Pri kartách a zoznamoch držte konzistentné informačné priority.
+- Neopakujte rovnakú informáciu súčasne textom aj ikonou bez pridanej hodnoty.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -57,11 +76,11 @@ import Colors from '@site/static/usage/v1/badge/theming/colors/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

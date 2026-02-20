@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/tooltip/slots.md';
   <title>Tooltip | Mouseover popup tooltip</title>
   <meta
     name="description"
-    content="Element Tooltip slúži na zobrazovanie vyskakovacej nápovedy pri nájazde myšou a je ho možné pripojiť k rôznym elementom webovej stránky. Je ľahko prispôsobiteľný pomocou atribútov pre obsah a umiestnenie."
+    content="API documentation for wje-tooltip, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -28,6 +28,25 @@ The `Tooltip` element is used to display a popup tooltip on mouseover and can be
 import Basic from '@site/static/usage/v1/tooltip/basic/index.md';
 
 <Basic />
+
+
+## When to use
+
+Use `wje-tooltip` to communicate status, result of actions, or required next steps immediately.
+
+## When not to use
+
+Do not show multiple feedback channels for the same event unless there is a strong reason.
+
+## Accessibility
+
+Announce status updates with suitable ARIA live regions and manage focus for modal interactions.
+
+## Best Practices
+
+- Match message severity (info/success/warning/error) to actual user impact.
+- Use confirmations only for destructive or hard-to-reverse actions.
+- Keep timeouts consistent so users have enough time to read messages.
 
 ## Attributes and Properties
 

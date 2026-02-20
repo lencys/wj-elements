@@ -1,5 +1,27 @@
 
 /**
+ * Configure default asset base path for wj-elements demos.
+ * This is equivalent to calling `setBasePath(...)` before components initialize.
+ */
+(() => {
+  const DEFAULT_WJE_BASE_PATH = '/wje-elementy/';
+  const existing = document.querySelector('script[data-base-path]');
+
+  if (!existing) {
+    const basePathScript = document.createElement('script');
+    basePathScript.setAttribute('data-base-path', DEFAULT_WJE_BASE_PATH);
+    document.head.prepend(basePathScript);
+  }
+
+  // Explicit equivalent of `setBasePath("/dist/")` used in demo app.
+  import(`${DEFAULT_WJE_BASE_PATH}base-path.js`)
+    .then(({ setBasePath }) => setBasePath(DEFAULT_WJE_BASE_PATH))
+    .catch(() => {
+      // If base-path module fails to load, `data-base-path` fallback is still in place.
+    });
+})();
+
+/**
  * Wait for the initial HTML document to be
  * loaded and parsed before adding the message
  * listener. Otherwise, it is possible that the message

@@ -2,18 +2,18 @@
 title: 'Slider'
 ---
 
-import Props from '@ionic-internal/component-api/v1/slider/props.md';
-import Events from '@ionic-internal/component-api/v1/slider/events.md';
-import Methods from '@ionic-internal/component-api/v1/slider/methods.md';
-import Parts from '@ionic-internal/component-api/v1/slider/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/slider/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/slider/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/slider/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/slider/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/slider/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/slider/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/slider/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/slider/slots.md';
 
 <head>
   <title>Slider | Element rozširuje možnosti štandardného HTML select elementu.</title>
   <meta
     name="description"
-    content="Slider je interaktívny komponent posuvníka, ktorý umožňuje používateľom praktickým spôsobom vybrať hodnotu z rozsahu hodnôt."
+    content="Element Slider je interaktívny komponent posuvníka, ktorý umožňuje používateľom praktickým spôsobom vybrať hodnotu z rozsahu hodnôt."
   />
 </head>
 
@@ -57,11 +57,30 @@ import Colors from '@site/static/usage/v1/slider/colors/index.md';
 
 <Colors />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-slider`, keď používateľ zadáva hodnotu, vyberá možnosti alebo vykonáva akciu vo formulári.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho len ako vizuálny dekoratívny prvok bez interakcie. V takom prípade uprednostnite prezentačné komponenty.
+
+## Prístupnosť
+
+Vždy prepojte komponent s popisom (`label`/`aria-label`), zachovajte ovládanie klávesnicou a pri validačných chybách zobrazte zrozumiteľnú správu.
+
+## Odporúčané postupy
+
+- Majte jednotné validačné pravidlá a error stavy naprieč celým formulárom.
+- Pri asynchrónnych operáciách zobrazte stav načítania alebo disabled stav.
+- Pri zložitých formulároch preferujte menšie sekcie a okamžitú spätnú väzbu.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -69,11 +88,11 @@ import Colors from '@site/static/usage/v1/slider/colors/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/layout/slots.md';
   <title>Layout | Element to easily build a page layout</title>
   <meta
     name="description"
-    content="Layout v Elements sa skladá z troch komponentov Header, Aside a Footer. Pomocou nich je možné jednoducho zostaviť základné rozvrhnutie webstránky."
+    content="API documentation for wje-layout, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-**WebJET Elements** umožňuje si jednoducho zostaviť rozvrhnutie stránok pomocou 5 základných elementov: [Container](../container), [Header](../header), [Main](../main), [Aside](../aside) a [Footer](../footer). V prípade komplexnejších rozvrhnutí WebJET Elements ponúka tiež systém [Grid](../grid).
+**WebJET Elements** umožňuje si jednoducho zostaviť rozvrhnutie stránok pomocou 5 základných elementov: [Container](./container), [Header](./header), [Main](./main), [Aside](./aside) a [Footer](./footer). V prípade komplexnejších rozvrhnutí WebJET Elements ponúka tiež systém [Grid](./grid).
 
 ## Examples of use
 
@@ -32,6 +32,25 @@ import Basic from '@site/static/usage/v1/layout/basic/index.md';
 <Basic />
 
 </div>
+
+
+## When to use
+
+Use `wje-layout` to compose stable page structure with clear visual and semantic hierarchy.
+
+## When not to use
+
+Do not use layout components to handle business logic or application orchestration.
+
+## Accessibility
+
+Preserve document semantics (`header`, `main`, `aside`, `footer`) and logical tab/focus order.
+
+## Best Practices
+
+- Define mobile/desktop breakpoints first, then refine visual details.
+- Prefer spacing tokens over ad-hoc margin/padding overrides.
+- Test keyboard and screen reader behavior for overflow scenarios.
 
 ## Attributes and Properties
 

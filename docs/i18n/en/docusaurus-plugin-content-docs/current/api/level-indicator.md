@@ -13,8 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/level-indicator/slots.md';
   <title>Level Indicator | Element showing the level or progress of the process.</title>
   <meta
     name="description"
-    content="Komponent `Level Indicator` je element umožňujúci zobraziť úroveň alebo pokrok v procese. Môže byť použitý na zobrazenie úrovne nabitia batérie, pokroku používateľa alebo iných podobných úloh.
-"
+    content="API documentation for wje-level-indicator, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -53,6 +52,25 @@ Adding the `reverse` attribute will display the indicator bars in reverse order.
 import Reverse from '@site/static/usage/v1/level-indicator/reverse/index.md';
 
 <Reverse />
+
+
+## When to use
+
+Use `wje-level-indicator` to communicate status, result of actions, or required next steps immediately.
+
+## When not to use
+
+Do not show multiple feedback channels for the same event unless there is a strong reason.
+
+## Accessibility
+
+Announce status updates with suitable ARIA live regions and manage focus for modal interactions.
+
+## Best Practices
+
+- Match message severity (info/success/warning/error) to actual user impact.
+- Use confirmations only for destructive or hard-to-reverse actions.
+- Keep timeouts consistent so users have enough time to read messages.
 
 ## Attributes and Properties
 

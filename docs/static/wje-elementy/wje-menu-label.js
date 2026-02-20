@@ -1,7 +1,8 @@
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-import WJElement, { WjElementUtils } from "./wje-element.js";
+import WJElement from "./wje-element.js";
+import { WjElementUtils } from "./element-utils.js";
 const styles = "/*\n[ Menu Label ]\n*/\n\n:host {\n    --wje-letter-spacing: 0.025rem;\n    --wje-menu-label-color: var(--wje-color-contrast-6);\n    --wje-padding-top: 0;\n    --wje-padding-bottom: 0;\n    --wje-padding-start: 1.5rem;\n    --wje-padding-end: 1.5rem;\n}\n\n.native-menu-label {\n    font-size: var(--wje-menu-label-font-size);\n    display: inline-block;\n    font-weight: var(--wje-menu-label-weight);\n    letter-spacing: var(--wje-letter-spacing);\n    color: var(--wje-menu-label-color);\n    padding: var(--wje-padding-top) var(--wje-padding-start) var(--wje-padding-bottom) var(--wje-padding-end);\n}\n";
 class MenuLabel extends WJElement {
   /**
@@ -52,3 +53,4 @@ MenuLabel.define("wje-menu-label", MenuLabel);
 export {
   MenuLabel as default
 };
+//# sourceMappingURL=wje-menu-label.js.map

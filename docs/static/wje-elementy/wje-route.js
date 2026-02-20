@@ -40,3 +40,4 @@ Route.define("wje-route", Route);
 export {
   Route as default
 };
+//# sourceMappingURL=wje-route.js.map

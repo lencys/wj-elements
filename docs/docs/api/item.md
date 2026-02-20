@@ -2,18 +2,18 @@
 title: 'Item'
 ---
 
-import Props from '@ionic-internal/component-api/v1/item/props.md';
-import Events from '@ionic-internal/component-api/v1/item/events.md';
-import Methods from '@ionic-internal/component-api/v1/item/methods.md';
-import Parts from '@ionic-internal/component-api/v1/item/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/item/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/item/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/item/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/item/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/item/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/item/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/item/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/item/slots.md';
 
 <head>
   <title>Item | Bloky List elementu s rôznorodým obsahom</title>
   <meta
     name="description"
-    content="Komponenty Item sú bloky, ktoré môžu obsahovať rôzne typy obsahu vrátane textu, ikon, avatarov, obrázkov, inputov a iných štandardných alebo custom elementov. Item elementy sa zvyčajne nachádzajú vo vnútri List elementov."
+    content="Komponenty Item sú bloky, ktoré môžu obsahovať rôzne typy obsahu vrátane textu, ikon, avatarov, obrázkov, inputov a iných štandardných alebo custom elementov."
   />
 </head>
 
@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponenty Item sú bloky, ktoré môžu obsahovať rôzne typy obsahu vrátane textu, ikon, avatarov, obrázkov, inputov a iných štandardných alebo custom elementov. Item elementy sa zvyčajne nachádzajú vo vnútri [List](../list) elementov.
+Komponenty Item sú bloky, ktoré môžu obsahovať rôzne typy obsahu vrátane textu, ikon, avatarov, obrázkov, inputov a iných štandardných alebo custom elementov. Item elementy sa zvyčajne nachádzajú vo vnútri [List](./list) elementov.
 
 ## Základné použitie
 
@@ -54,11 +54,30 @@ import Icons from '@site/static/usage/v1/item/icons/index.md';
 
 <Icons />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-item` na zobrazenie obsahu, ktorý zlepšuje čitateľnosť, skenovateľnosť alebo kontext informácií.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho ako náhradu za štruktúrované dáta tam, kde je potrebná presná interakcia.
+
+## Prístupnosť
+
+Doplňte alternatívny text pre obrázky, čitateľné kontrasty a textové ekvivalenty pre ikony bez popisu.
+
+## Odporúčané postupy
+
+- Komprimujte médiá a používajte lazy loading pri veľkých zoznamoch.
+- Pri kartách a zoznamoch držte konzistentné informačné priority.
+- Neopakujte rovnakú informáciu súčasne textom aj ikonou bez pridanej hodnoty.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -66,11 +85,11 @@ import Icons from '@site/static/usage/v1/item/icons/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

@@ -1,8 +1,17 @@
 var __defProp = Object.defineProperty;
+var __typeError = (msg) => {
+  throw TypeError(msg);
+};
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+var __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot " + msg);
+var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot add the same private member more than once") : member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "access private method"), method);
+var _MenuItem_instances, populateCustomEvent_fn;
 import { b as bindRouterLinks } from "./router-links-CJnOdbas.js";
-import WJElement, { WjElementUtils, event } from "./wje-element.js";
+import WJElement from "./wje-element.js";
+import { WjElementUtils } from "./element-utils.js";
+import { event } from "./event.js";
 const styles = `/*
 [ WJ Menu Item ]
 */
@@ -17,6 +26,7 @@ const styles = `/*
 
     display: block;
     .native-menu-item {
+        font-size: var(--wje-menu-item-font-size);
         background: var(--wje-menu-item-background);
         position: relative;
         display: flex;
@@ -188,6 +198,7 @@ class MenuItem extends WJElement {
    */
   constructor() {
     super();
+    __privateAdd(this, _MenuItem_instances);
     __publicField(this, "className", "MenuItem");
     __publicField(this, "mouseenterHandler", (e) => {
       if (this.collapse || this.variant === "CONTEXT" && this.hasSubmenu) {
@@ -197,11 +208,15 @@ class MenuItem extends WJElement {
         this.showSubmenu();
       }
     });
+    __publicField(this, "rebindRouterLinks", (e) => {
+      this.unbindPortalRouterLinks = bindRouterLinks(e.detail.container, { selector: "[route]" });
+    });
     /**
      * Handles the click event on the MenuItem.
      * @param {object} e
      */
     __publicField(this, "clickHandler", (e) => {
+      if (this.hasAttribute("disabled")) return;
       switch (this.variant) {
         case "NAV":
           if (!this.collapse && this.hasSubmenu) {
@@ -261,7 +276,48 @@ class MenuItem extends WJElement {
       this.style.setProperty("--wje-menu-item-safe-triangle-submenu-end-x", `${left}px`);
       this.style.setProperty("--wje-menu-item-safe-triangle-submenu-end-y", `${top + height}px`);
     });
-    this._collapsible = false;
+    __publicField(this, "handleActiveClick", (e) => {
+      var _a, _b, _c, _d;
+      const target = e.target.closest("wje-menu-item");
+      if (!target) return;
+      let rootMenu = target.closest("wje-menu");
+      let currentMenu = rootMenu;
+      while (currentMenu == null ? void 0 : currentMenu.parentElement) {
+        const parent = (_b = (_a = currentMenu.parentElement).closest) == null ? void 0 : _b.call(_a, "wje-menu");
+        if (!parent) break;
+        rootMenu = parent;
+        currentMenu = parent;
+      }
+      if (!rootMenu) {
+        const path = typeof e.composedPath === "function" ? e.composedPath() : [];
+        let firstMenuInPath = path.find((n) => n && n.tagName === "WJE-MENU");
+        if (firstMenuInPath) {
+          let top = firstMenuInPath;
+          while (top && top.parentElement) {
+            const parent = (_d = (_c = top.parentElement).closest) == null ? void 0 : _d.call(_c, "wje-menu");
+            if (!parent) break;
+            top = parent;
+          }
+          rootMenu = top;
+        }
+      }
+      if (!rootMenu) return;
+      rootMenu.querySelectorAll("wje-menu-item").forEach((item) => {
+        const activeClass = item.getAttribute("active-class");
+        if (activeClass) item.classList.remove(activeClass);
+      });
+      let current = target;
+      while (current && current.tagName === "WJE-MENU-ITEM") {
+        const activeClass = current.getAttribute("active-class");
+        if (activeClass) current.classList.add(activeClass);
+        const parentMenu = current.closest("wje-menu");
+        if (!parentMenu) break;
+        const candidate = parentMenu.closest("wje-menu-item");
+        if (!candidate) break;
+        current = candidate;
+      }
+    });
+    this._bind = false;
   }
   /**
    * Getter for placement attribute.
@@ -305,6 +361,35 @@ class MenuItem extends WJElement {
     return false;
   }
   /**
+   * Sets the value of the custom event attribute.
+   * @param {string} value The value to be assigned to the custom event attribute.
+   */
+  set customEvent(value) {
+    this.setAttribute("custom-event", value);
+  }
+  /**
+   * Retrieves the value of the 'custom-event' attribute from the element.
+   * @returns {string | null} The value of the 'custom-event' attribute, or null if the attribute is not set.
+   */
+  get customEvent() {
+    return this.getAttribute("custom-event");
+  }
+  /**
+   * Retrieves a mapped object containing custom event parameters extracted from the element's attributes.
+   * Attributes considered are those that begin with 'custom-event-'.
+   * The mapped object's keys are derived by removing the 'custom-event-' prefix from the attribute names,
+   * and the values are the corresponding attribute values.
+   * @returns {object} An object containing key-value pairs of custom event parameters.
+   */
+  get customEventParameters() {
+    const attributes = Array.from(this.attributes).filter((attr) => attr.name.startsWith("custom-event-"));
+    return attributes.reduce((acc, attr) => {
+      const key = attr.name.replace("custom-event-", "");
+      acc[key] = attr.value;
+      return acc;
+    }, {});
+  }
+  /**
    * Getter for cssStyleSheet.
    * @returns {string} The styles imported from styles.css.
    */
@@ -324,7 +409,7 @@ class MenuItem extends WJElement {
   setupAttributes() {
     super.setupAttributes();
     this.isShadowRoot = "open";
-    this.setAttribute("active-class", "open");
+    this.syncAria();
   }
   /**
    * Removes the active attribute from the menu before drawing the MenuItem.
@@ -387,10 +472,7 @@ class MenuItem extends WJElement {
     native.appendChild(end);
     native.appendChild(submenuIcon);
     let isAppend = false;
-    if (
-      /*(this.collapse && this.variant === "NAV" && this.hasSubmenu) || */
-      this.variant === "CONTEXT" && this.hasSubmenu
-    ) {
+    if (this.variant === "CONTEXT" && this.hasSubmenu) {
       native.setAttribute("slot", "anchor");
       let popup = document.createElement("wje-popup");
       popup.setAttribute("anchor", "anchor");
@@ -412,19 +494,42 @@ class MenuItem extends WJElement {
     }
     this.native = native;
     this.submenu = submenu;
+    this.syncAria();
     return fragment;
   }
   /**
    * Adds event listeners after drawing the MenuItem.
    */
   afterDraw() {
-    this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: false });
+    this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: "[route]" });
+    document.addEventListener("wje-router:rebind", this.rebindRouterLinks);
     this.addEventListener("mousemove", this.dispatchMove);
     this.addEventListener("wje-popup:reposition", this.dispatchReposition);
     event.addListener(this, "mouseenter", null, this.mouseenterHandler);
     event.addListener(this, "mouseleave", null, this.shouldHideSubmenu);
     event.addListener(this, "focusout", null, this.shouldHideSubmenu);
     event.addListener(this, "click", null, this.clickHandler);
+    if (this.hasAttribute("custom-event")) {
+      event.addListener(this, "click", null, __privateMethod(this, _MenuItem_instances, populateCustomEvent_fn));
+    }
+    if (this.hasAttribute("active-class")) {
+      this.addEventListener("click", this.handleActiveClick);
+    }
+  }
+  /**
+   * Syncs ARIA attributes based on menu item state.
+   */
+  syncAria() {
+    var _a, _b;
+    const hasSubmenu = !!this.hasSubmenu;
+    const expanded = this.classList.contains("expanded-submenu") || ((_b = (_a = this.native) == null ? void 0 : _a.classList) == null ? void 0 : _b.contains("expanded-submenu"));
+    const disabled = this.hasAttribute("disabled");
+    this.setAriaState({
+      role: "menuitem",
+      disabled,
+      haspopup: hasSubmenu ? "menu" : void 0,
+      expanded: hasSubmenu ? expanded : void 0
+    });
   }
   /**
    * Creates a tooltip for the MenuItem when it is collapsed.
@@ -454,9 +559,10 @@ class MenuItem extends WJElement {
     var _a;
     this.tabIndex = -1;
     if (this.hasSubmenu) {
-      (_a = this.popup) == null ? void 0 : _a.setAttribute("active", "");
+      (_a = this.popup) == null ? void 0 : _a.show();
       this.classList.add("expanded-submenu");
       this.native.classList.add("expanded-submenu");
+      this.syncAria();
     }
   }
   /**
@@ -466,9 +572,10 @@ class MenuItem extends WJElement {
     var _a;
     this.tabIndex = 0;
     if (this.hasSubmenu) {
-      (_a = this.popup) == null ? void 0 : _a.removeAttribute("active");
+      (_a = this.popup) == null ? void 0 : _a.hide();
       this.classList.remove("expanded-submenu");
       this.native.classList.remove("expanded-submenu");
+      this.syncAria();
     }
   }
   /**
@@ -482,8 +589,10 @@ class MenuItem extends WJElement {
       let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
       if (!submenuElements.hasAttribute("active")) {
         submenuElements.setAttribute("active", "");
+        this.syncAria();
       } else {
         if (this === e.target) submenuElements.removeAttribute("active");
+        this.syncAria();
       }
     }
   }
@@ -493,8 +602,9 @@ class MenuItem extends WJElement {
   deactivateSubmenu() {
     if (this.hasSubmenu) {
       let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
-      if (submenuElements.hasAttribute("active")) {
-        submenuElements.removeAttribute("active");
+      if (submenuElements == null ? void 0 : submenuElements.hasAttribute("active")) {
+        submenuElements == null ? void 0 : submenuElements.removeAttribute("active");
+        this.syncAria();
       }
     }
   }
@@ -504,8 +614,9 @@ class MenuItem extends WJElement {
   activateSubmenu() {
     if (this.hasSubmenu) {
       let submenuElements = this.submenu.assignedElements({ flatten: true })[0];
-      if (!submenuElements.hasAttribute("active")) {
-        submenuElements.setAttribute("active", "");
+      if (!(submenuElements == null ? void 0 : submenuElements.hasAttribute("active"))) {
+        submenuElements == null ? void 0 : submenuElements.setAttribute("active", "");
+        this.syncAria();
       }
     }
   }
@@ -513,15 +624,16 @@ class MenuItem extends WJElement {
    * Gets the text from the element and returns it.
    */
   beforeDisconnect() {
-    var _a;
-    event.removeListener(this, "mousemove", null, this.dispatchMove);
-    event.removeListener(this, "wje-popup:reposition", null, this.dispatchReposition);
+    var _a, _b;
+    document.removeEventListener("wje-router:rebind", this.rebindRouterLinks);
+    this.removeEventListener("mousemove", this.dispatchMove);
+    this.removeEventListener("wje-popup:reposition", this.dispatchReposition);
     event.removeListener(this, "mouseenter", null, this.mouseenterHandler);
     event.removeListener(this, "mouseleave", null, this.shouldHideSubmenu);
     event.removeListener(this, "focusout", null, this.shouldHideSubmenu);
     event.removeListener(this, "click", null, this.clickHandler);
-    this.context.innerHTML = "";
     (_a = this.unbindRouterLinks) == null ? void 0 : _a.call(this);
+    (_b = this.unbindPortalRouterLinks) == null ? void 0 : _b.call(this);
   }
   /**
    * Extracts and returns the concatenated text content from all text nodes within the specified element.
@@ -538,7 +650,21 @@ class MenuItem extends WJElement {
     return text.trim();
   }
 }
+_MenuItem_instances = new WeakSet();
+/**
+ * Dispatches a custom event with specified parameters.
+ * This method uses the `customEvent` and `customEventParameters` properties
+ * to create and dispatch a `CustomEvent`. The event is configured to be
+ * composed and bubbles up through the DOM.
+ * @returns {void} This method does not return a value.
+ */
+populateCustomEvent_fn = function() {
+  this.dispatchEvent(
+    new CustomEvent(this.customEvent, { detail: this.customEventParameters, composed: true, bubbles: true })
+  );
+};
 MenuItem.define("wje-menu-item", MenuItem);
 export {
   MenuItem as default
 };
+//# sourceMappingURL=wje-menu-item.js.map

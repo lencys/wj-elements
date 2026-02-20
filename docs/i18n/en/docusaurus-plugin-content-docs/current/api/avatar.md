@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/avatar/slots.md';
   <title>Avatar: Avatar Component</title>
   <meta
     name="description"
-    content="Element avatar slúži na vizuálnu prezentáciu používateľa alebo subjektu. Používa sa zvyčajne ako obaľovač a poskytuje praktický spôsob zobrazovania profilových obrázkov, ikon, alebo, ak tie nie sú posktytné, iniciálok.  Podporuje rôzne konfigurácie vrátane veľkosti, zoskupenia viacerých avatarov alebo zobrazenie dropdownu po kliknutí či tooltipu pri ukázaní myšou."
+    content="API documentation for wje-avatar, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -66,7 +66,7 @@ import Initials from '@site/static/usage/v1/avatar/initials/index.md';
 By nesting the `wje-status` element with the icon, the Status element will appear on the sides of the Avatar.
 By adding the `status-placement` attribute, the position of the Status element can be specified.
 
-For more information on using Status, navigate to the [Status] element documentation(/docs/api/status). // TODO: link
+For more information on using Status, navigate to the [Status] element documentation(/api/status). // TODO: link
 
 import Status from '@site/static/usage/v1/avatar/status/index.md';
 
@@ -103,6 +103,25 @@ import Group from '@site/static/usage/v1/avatar/group/index.md';
 import CSSProps from '@site/static/usage/v1/avatar/theming/css-properties/index.md';
 
 <CSSProps /> -->
+
+
+## When to use
+
+Use `wje-avatar` to improve readability, scannability, and contextual understanding of content.
+
+## When not to use
+
+Do not replace structured interactive data with media-only presentation when precision is needed.
+
+## Accessibility
+
+Provide alt text, maintain readable contrast, and include text equivalents for icon-only controls.
+
+## Best Practices
+
+- Compress media and use lazy loading in larger collections.
+- Keep information priority consistent across cards/lists.
+- Avoid duplicating the same meaning in icon and text without added value.
 
 ## Attributes and Properties
 

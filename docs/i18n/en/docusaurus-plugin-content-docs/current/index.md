@@ -14,7 +14,7 @@ import DocsCards from '@components/global/DocsCards';
 <title>A modern set of user interface tools based on web components</title>
 <meta
   name="description"
-  content="WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania založená na web komponentoch, ktorá je určená na zjednodušenie vývoja webových aplikácií."
+  content="WebJET Elements is a modern set of web component UI tools designed to simplify web application development."
 />
 
 <link rel="canonical" href="https://elements.webjet.sk/" />
@@ -22,11 +22,12 @@ import DocsCards from '@components/global/DocsCards';
 <link rel="alternate" href="https://elements.webjet.sk/" hreflang="en" />
 <meta property="og:url" content="https://elements.webjet.sk/" />
 
-<script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/wje-master.min.js"></script>
+<script data-base-path="/wje-elementy/"></script>
+<script type="module" src="/wje-elementy/wje-master.js"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/light.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/dark.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/styles.css" />
+<link rel="stylesheet" href="/wje-elementy/light.css" />
+<link rel="stylesheet" href="/wje-elementy/dark.css" />
+<link rel="stylesheet" href="/wje-elementy/styles.css" />
 
 </head>
 
@@ -39,24 +40,56 @@ Start creating your application [by installing WebJET elements](intro/install.md
 
 <DocsCards>
 
-{' '} <a href="intro/install">\ <wje-card>\ <wje-card-header>\ <wje-icon name="world-download" size="large"></wje-icon>\ <wje-card-title>Installation guide</wje-card-title>\ </wje-card-header>\ <wje-card-content><p>Detailed installation guide for WebJET elements.</p>   
-</wje-card-content>   
-</wje-card>   
+{' '}
+<a href="intro/install">
+  <wje-card>
+    <wje-card-header>
+      <wje-icon name="world-download" size="large"></wje-icon>
+      <wje-card-title>Installation Guide</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>Detailed installation walkthrough for WebJET Elements.</p>
+    </wje-card-content>
+  </wje-card>
 </a>
 
-{' '} <a href="components"> <wje-card> <wje-card-header> <wje-icon name="layout-dashboard" size="large"></wje-icon> <wje-card-title href="intro/cli">Elements</wje-card-title> </wje-card-header> <wje-card-content><p>Take a look at the library of available WebJET elements.</p>
-</wje-card-content>
-</wje-card>
+{' '}
+<a href="components">
+  <wje-card>
+    <wje-card-header>
+      <wje-icon name="layout-dashboard" size="large"></wje-icon>
+      <wje-card-title>Components</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>Browse the full catalog of available WebJET components.</p>
+    </wje-card-content>
+  </wje-card>
 </a>
 
-{' '} <a href="api/layout"> <wje-card> <wje-card-header> <wje-icon name="layout" size="large"></wje-icon> <wje-card-title>Layout</wje-card-title> </wje-card-header> <wje-card-content><p>Find out how to create a page layout to suit your needs.</p>
-</wje-card-content>
-</wje-card>
+{' '}
+<a href="api/layout">
+  <wje-card>
+    <wje-card-header>
+      <wje-icon name="layout" size="large"></wje-icon>
+      <wje-card-title>Layout</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>Learn how to build responsive page layout with WebJET Elements.</p>
+    </wje-card-content>
+  </wje-card>
 </a>
 
-{' '} <a href="theming/basics"> <wje-card> <wje-card-header> <wje-icon name="brush" size="large"></wje-icon> <wje-card-title>Editing styles</wje-card-title> </wje-card-header> <wje-card-content><p>Learn how to easily customize your Elements visual.</p>
-</wje-card-content>
-</wje-card>
+{' '}
+<a href="theming/basics">
+  <wje-card>
+    <wje-card-header>
+      <wje-icon name="brush" size="large"></wje-icon>
+      <wje-card-title>Styling</wje-card-title>
+    </wje-card-header>
+    <wje-card-content>
+      <p>Customize component visuals using design tokens and CSS variables.</p>
+    </wje-card-content>
+  </wje-card>
 </a>
 
 </DocsCards>

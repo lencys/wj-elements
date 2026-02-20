@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/toggle/slots.md';
   <title>Toggle | Element allowing to switch between two states</title>
   <meta
     name="description"
-    content="Toggle elementy sú malé interaktívne ovládacie prvky, ktoré umožňujú prepínať medzi dvoma stavmi. Môžete ich aktivovať kliknutím myši."
+    content="Toggle elements are small interactive controls that allow you to switch between two states. You can activate them with a click of the mouse."
   />
 </head>
 
@@ -36,6 +36,25 @@ import Colors from '@site/static/usage/v1/toggle/colors/index.md';
 <div className="large">
   <Colors />
 </div>
+
+
+## When to use
+
+Use `wje-toggle` when users need to enter values, choose options, or trigger form-related actions.
+
+## When not to use
+
+Do not use it as a decorative element without interaction. Prefer presentational components in that case.
+
+## Accessibility
+
+Always provide a label (`label`/`aria-label`), keep keyboard support, and surface clear validation feedback.
+
+## Best Practices
+
+- Keep validation rules and error behavior consistent across the entire form.
+- Show loading or disabled states during async operations.
+- Split complex forms into smaller sections with immediate feedback.
 
 ## Attributes and Properties
 

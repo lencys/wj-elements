@@ -61,3 +61,4 @@ RouterLink.define("wje-router-link", RouterLink);
 export {
   RouterLink as default
 };
+//# sourceMappingURL=wje-router-link.js.map

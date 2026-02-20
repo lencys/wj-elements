@@ -2,7 +2,8 @@ var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 import WJElement from "./wje-element.js";
-const styles = "/*\n[ WJ Button Group ]\n*/\n\n:host {\n    display: inline-block;\n    .native-button-group {\n        display: flex;\n        flex-wrap: nowrap;\n        line-height: 1;\n    }\n\n    slot {\n        display: contents;\n    }\n}\n\n::slotted(wje-button) {\n    margin: 0 !important;\n}\n";
+import { event } from "./event.js";
+const styles = "/*\n[ WJ Button Group ]\n*/\n\n:host {\n    --wje-button-outline-width: 0;\n    --wje-button-border-color: transparent;\n    display: inline-block;\n    .native-button-group {\n        position: relative;\n    }\n    .wje-button-group-content {\n        display: flex;\n        flex-wrap: nowrap;\n        slot {\n            display: contents;\n        }\n    }\n    .wje-button-group-border {\n        top: 0;\n        position: absolute;\n        width: 100%;\n        height: 100%;\n        box-sizing: border-box;\n        border-radius: var(--wje-button-group-border-radius);\n        border-width: var(--wje-button-group-border-width);\n        border-style: var(--wje-button-group-border-style);\n        border-color: var(--wje-button-group-border-color);\n    }\n}\n\n:host([round]) {\n    .wje-button-group-border {\n        --wje-button-group-border-radius: var(--wje-border-radius-pill);\n    }\n}\n\n::slotted(wje-button) {\n    margin: 0 !important;\n}\n";
 class ButtonGroup extends WJElement {
   /**
    * ButtonGroup constructor method.
@@ -15,6 +16,65 @@ class ButtonGroup extends WJElement {
      * @type {string}
      */
     __publicField(this, "className", "ButtonGroup");
+  }
+  /**
+   * Sets the "active" attribute to indicate the active state.
+   * @param {boolean|string|number} value The value to set for the "active" attribute, indicating the active state.
+   */
+  set active(value) {
+    this.setAttribute("active", value);
+  }
+  /**
+   * Retrieves the value of the 'active' attribute.
+   * If the attribute is not set, it returns false.
+   * @returns {string|boolean} The value of the 'active' attribute or false if it is not set.
+   */
+  get active() {
+    return +this.getAttribute("active") || false;
+  }
+  /**
+   * Sets the color attribute of the element.
+   * @param {string} value The value to set for the color attribute.
+   */
+  set color(value) {
+    this.setAttribute("color", value);
+  }
+  /**
+   * Retrieves the current value of the 'color' attribute.
+   * If the 'color' attribute is not set, it defaults to 'primary'.
+   * @returns {string} The value of the 'color' attribute or the default value 'primary'.
+   */
+  get color() {
+    return this.getAttribute("color") || "primary";
+  }
+  /**
+   * Sets the round attribute for the element.
+   * @param {string} value The value to set for the round attribute.
+   */
+  set round(value) {
+    this.setAttribute("round", value);
+  }
+  /**
+   * Returns whether the element has the 'round' attribute.
+   * @returns {boolean} True if the 'round' attribute is present, otherwise false.
+   */
+  get round() {
+    return this.hasAttribute("round");
+  }
+  /**
+   * Sets the 'fill' attribute of the element.
+   * @param {string} value The value to assign to the 'fill' attribute.
+   */
+  set fill(value) {
+    this.setAttribute("fill", value);
+  }
+  /**
+   * Retrieves the 'fill' attribute of the element. If the 'fill' attribute is not set,
+   * it returns the default value 'link'.
+   * @returns {string} The value of the 'fill' attribute, or 'link' if the attribute is not present.
+   */
+  get fill() {
+    return this.getAttribute("fill") || "link";
   }
   /**
    * Get CSS stylesheet for the ButtonGroup element.
@@ -37,6 +97,7 @@ class ButtonGroup extends WJElement {
    */
   setupAttributes() {
     this.isShadowRoot = "open";
+    this.syncAria();
   }
   /**
    * Draw method for the ButtonGroup element.
@@ -47,26 +108,48 @@ class ButtonGroup extends WJElement {
     let element = document.createElement("div");
     element.classList.add("native-button-group");
     element.setAttribute("part", "native");
-    this.slotElement = document.createElement("slot");
-    element.appendChild(this.slotElement);
-    fragment.appendChild(element);
+    let content = document.createElement("div");
+    content.classList.add("wje-button-group-content");
+    let border = document.createElement("div");
+    border.classList.add("wje-button-group-border");
+    let slot = document.createElement("slot");
+    content.append(slot);
+    element.append(border);
+    element.append(content);
+    fragment.append(element);
+    this.slotElement = slot;
     return fragment;
   }
   /**
    * After draw method for the ButtonGroup element.
    */
   afterDraw() {
+    this.syncAria();
     const slottedElements = [...this.slotElement.assignedElements({ flatten: true })];
     slottedElements.forEach((el) => {
       let index = slottedElements.indexOf(el);
       let button = this.findButton(el);
       if (button) {
-        button.classList.add("wje-button-group-button");
-        button.classList.toggle("wje-button-group-first", index === 0);
-        button.classList.toggle("wje-button-group-inner", index > 0 && index < slottedElements.length - 1);
-        button.classList.toggle("wje-button-group-last", index === slottedElements.length - 1);
+        button.setAttribute("fill", this.fill);
+        if (this.round) {
+          button.round = true;
+        }
+        event.addListener(button, "wje-button:click", null, (e) => {
+          this.toggle(e.target, slottedElements, index);
+        });
+        if (this.active && this.active === index + 1) {
+          this.updateButtonState(button, "fill");
+        }
       }
     });
+  }
+  /**
+   * Sync ARIA attributes on host.
+   */
+  syncAria() {
+    if (!this.hasAttribute("role")) {
+      this.setAriaState({ role: "group" });
+    }
   }
   /**
    * Find button method to find the button element.
@@ -77,8 +160,33 @@ class ButtonGroup extends WJElement {
     const selector = "wje-button";
     return el.closest(selector) ?? el.querySelector(selector);
   }
+  /**
+   * Toggles the state of a group of buttons based on the active button.
+   * @param {object} activeButton The button that is currently active.
+   * @param {Array<object>} buttons An array of button objects to be toggled.
+   * @returns {void} This method does not return a value.
+   */
+  toggle(activeButton, buttons, index) {
+    this.active = index + 1;
+    buttons.forEach((button) => {
+      const mode = button === activeButton ? "fill" : "color";
+      this.updateButtonState(button, mode);
+    });
+  }
+  /**
+   * Updates the state of a button by removing one mode attribute and setting another mode attribute.
+   * @param {HTMLElement} button The button element whose state is to be updated.
+   * @param {string} modeToRemove The mode attribute to be removed from the button. Expected values are 'color' or 'fill'.
+   * @returns {void}
+   */
+  updateButtonState(button, modeToRemove) {
+    button.removeAttribute(modeToRemove);
+    const modeToSet = modeToRemove === "color" ? "fill" : "color";
+    button.setAttribute(modeToSet, this[modeToSet]);
+  }
 }
 WJElement.define("wje-button-group", ButtonGroup);
 export {
   ButtonGroup as default
 };
+//# sourceMappingURL=wje-button-group.js.map

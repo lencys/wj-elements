@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/slider/slots.md';
   <title>Slider | Element extends the capabilities of the standard HTML select element.</title>
   <meta
     name="description"
-    content="Slider je interaktívny komponent posuvníka, ktorý umožňuje používateľom praktickým spôsobom vybrať hodnotu z rozsahu hodnôt."
+    content="API documentation for wje-slider, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -56,6 +56,25 @@ import Icons from '@site/static/usage/v1/slider/icons/index.md';
 import Colors from '@site/static/usage/v1/slider/colors/index.md';
 
 <Colors />
+
+
+## When to use
+
+Use `wje-slider` when users need to enter values, choose options, or trigger form-related actions.
+
+## When not to use
+
+Do not use it as a decorative element without interaction. Prefer presentational components in that case.
+
+## Accessibility
+
+Always provide a label (`label`/`aria-label`), keep keyboard support, and surface clear validation feedback.
+
+## Best Practices
+
+- Keep validation rules and error behavior consistent across the entire form.
+- Show loading or disabled states during async operations.
+- Split complex forms into smaller sections with immediate feedback.
 
 ## Attributes and Properties
 

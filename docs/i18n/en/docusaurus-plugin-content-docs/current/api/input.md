@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/input/slots.md';
   <title>Input: extension of the standard Input element</title>
   <meta
     name="description"
-    content="Input element rozširuje možnosti štandardného HTML inputu pokročilými funkciami a možnosťami prispôsobenia. "
+    content="Input element extends the capabilities of standard HTML input with advanced features and customization options."
   />
 </head>
 
@@ -80,6 +80,25 @@ In combination with the `Button` elementorm, it creates a full-featured search b
 import Clearable from '@site/static/usage/v1/input/clearable/index.md';
 
 <Clearable />
+
+
+## When to use
+
+Use `wje-input` when users need to enter values, choose options, or trigger form-related actions.
+
+## When not to use
+
+Do not use it as a decorative element without interaction. Prefer presentational components in that case.
+
+## Accessibility
+
+Always provide a label (`label`/`aria-label`), keep keyboard support, and surface clear validation feedback.
+
+## Best Practices
+
+- Keep validation rules and error behavior consistent across the entire form.
+- Show loading or disabled states during async operations.
+- Split complex forms into smaller sections with immediate feedback.
 
 ## Attributes and Properties
 

@@ -2,18 +2,18 @@
 title: 'Grid'
 ---
 
-import Props from '@ionic-internal/component-api/v1/grid/props.md';
-import Events from '@ionic-internal/component-api/v1/grid/events.md';
-import Methods from '@ionic-internal/component-api/v1/grid/methods.md';
-import Parts from '@ionic-internal/component-api/v1/grid/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/grid/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/grid/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/grid/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/grid/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/grid/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/grid/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/grid/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/grid/slots.md';
 
 <head>
   <title>Grid | Flexibilný spôsob vytvárania responzívnych layoutov</title>
   <meta
     name="description"
-    content="Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí(layoutov) rozdelením obrazovky na mriežku riadkov (rows) a stĺpcov (columns). Grid je založený na rozložení s 12 stĺpcami, podobne ako mnohé iné populárne grid systémy."
+    content="Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí(layoutov) rozdelením obrazovky na mriežku riadkov Rows a stĺpcov Cols."
   />
 </head>
 
@@ -21,13 +21,13 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí(layoutov) rozdelením obrazovky na mriežku riadkov [Rows](../row) a stĺpcov [Cols](../col). Grid je založený na flexboxe s rozložením rozdeleným na 12 stĺpcov s 5 responzívnymi breakpointami.
+Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí(layoutov) rozdelením obrazovky na mriežku riadkov [Rows](./row) a stĺpcov [Cols](./col). Grid je založený na flexboxe s rozložením rozdeleným na 12 stĺpcov s 5 responzívnymi breakpointami.
 
 ## Prehľad funkcií
 
 **Responzivita**: Grid umožňuje vytvárať responzívne rozvrhnutia (layouty), ktoré sa prispôsobujú rôznym veľkostiam a orientáciám obrazovky.
 
-**Nesting** : Vývojári môžu vkladať viacero elementov wj-grid do seba a vytvárať tak zložitejšie rozvrhnutia. To umožňuje väčšiu flexibilitu pri usporiadaní obsahu.
+**Nesting** : Vývojári môžu vkladať viacero elementov wje-grid do seba a vytvárať tak zložitejšie rozvrhnutia. To umožňuje väčšiu flexibilitu pri usporiadaní obsahu.
 
 **Breakpointy**: Systém mriežky Grid podporuje rôzne body zlomu pre rôzne veľkosti obrazoviek, ako sú telefóny, tablety a stolové počítače.
 
@@ -125,11 +125,30 @@ import HorizontalAlignment from '@site/static/usage/v1/grid/horizontal-alignment
 
 </div>
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-grid` na skladanie stabilného rozloženia stránky s jasnou hierarchiou obsahu.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho na riešenie biznis logiky ani na stavovú orchestráciu komponentov.
+
+## Prístupnosť
+
+Zachovajte semantiku dokumentu (`header`, `main`, `aside`, `footer`) a logické poradie fokusovateľných prvkov.
+
+## Odporúčané postupy
+
+- Najprv definujte desktop/mobile breakpoints a až potom dolaďujte detaily.
+- Preferujte konzistentné spacing tokeny pred ad-hoc margin/padding hodnotami.
+- Pri layoutoch s overflow vždy otestujte klávesnicovú navigáciu a čítačky.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -137,11 +156,11 @@ import HorizontalAlignment from '@site/static/usage/v1/grid/horizontal-alignment
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

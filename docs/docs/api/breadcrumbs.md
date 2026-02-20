@@ -2,19 +2,18 @@
 title: 'Breadcrumbs'
 ---
 
-import Props from '@ionic-internal/component-api/v1/breadcrumbs/props.md';
-import Events from '@ionic-internal/component-api/v1/breadcrumbs/events.md';
-import Methods from '@ionic-internal/component-api/v1/breadcrumbs/methods.md';
-import Parts from '@ionic-internal/component-api/v1/breadcrumbs/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/breadcrumbs/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/breadcrumbs/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/breadcrumbs/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/breadcrumbs/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/breadcrumbs/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/breadcrumbs/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/breadcrumbs/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/breadcrumbs/slots.md';
 
 <head>
   <title>Breadcrumbs | Navigačná cesta</title>
   <meta
     name="description"
-    content="Breadcrumbs je komponent, ktorý zobrazuje cestu, po ktorej používateľ prešiel v rámci aplikácie alebo webu. Tento element zobrazuje hierarchické usporiadanie stránok, v ktorom každý segment cesty 
-  Breadcrumb je hyperlink, umožňujúci rýchly návrat na predchádzajúce úrovne. Breadcrumbs môže obsahovať ikonu."
+    content="Breadcrumbs je komponent, ktorý zobrazuje cestu, po ktorej používateľ prešiel v rámci aplikácie alebo webu. Tento element zobrazuje hierarchické usporiadanie stránok, v ktorom každý segment."
   />
 </head>
 
@@ -22,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Breadcrumbs je komponent, ktorý zobrazuje cestu, po ktorej používateľ prešiel v rámci aplikácie alebo webu. Tento element zobrazuje hierarchické usporiadanie stránok, v ktorom každý segment cesty [**Breadcrumb**](../breadcrumb) je hyperlink, umožňujúci rýchly návrat na predchádzajúce úrovne. Breadcrumbs môže obsahovať ikonu.
+Breadcrumbs je komponent, ktorý zobrazuje cestu, po ktorej používateľ prešiel v rámci aplikácie alebo webu. Tento element zobrazuje hierarchické usporiadanie stránok, v ktorom každý segment cesty [**Breadcrumb**](./breadcrumb) je hyperlink, umožňujúci rýchly návrat na predchádzajúce úrovne. Breadcrumbs môže obsahovať ikonu.
 
 ## Základné použitie
 
@@ -68,11 +67,30 @@ import PopoverOnClick from '@site/static/usage/v1/breadcrumbs/collapsing-items/p
 
 <PopoverOnClick />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-breadcrumbs`, keď používateľ potrebuje orientáciu v aplikácii alebo prechod medzi stavmi/obrazovkami.
+
+## Kedy nepoužiť
+
+Nepoužívajte viac paralelných navigačných vzorov, ktoré si navzájom konkurujú.
+
+## Prístupnosť
+
+Zabezpečte jasné active/selected stavy, predvídateľné poradie tabulátora a pomenovanie ovládacích prvkov.
+
+## Odporúčané postupy
+
+- Držte URL a UI stav v synchronizácii, aby bola navigácia reprodukovateľná.
+- Používajte konzistentné názvoslovie položiek naprieč menu, breadcrumbom a tabmi.
+- Pri hlbokých štruktúrach pridajte pomocný kontext (breadcrumb, nadpis, ikony).
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -80,11 +98,11 @@ import PopoverOnClick from '@site/static/usage/v1/breadcrumbs/collapsing-items/p
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

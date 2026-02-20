@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/list/slots.md';
   <title>List | List of items display component</title>
   <meta
     name="description"
-    content="Komponent List (Zoznam) sa skladá z viacerých elementov [Item](item) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Listy vo všeobecnosti obsahujú položky s rovnakým obsahom a zoskupujú ich do väčšieho celku."
+    content="API documentation for wje-list, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponent `List` (Zoznam) sa skladá z viacerých elementov [Item](../item) (položiek) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Sheets generally contain items with the same content and group them into a larger whole.
+Komponent `List` (Zoznam) sa skladá z viacerých elementov [Item](./item) (položiek) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Sheets generally contain items with the same content and group them into a larger whole.
 
 ## Basic usage
 

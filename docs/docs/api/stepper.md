@@ -2,18 +2,18 @@
 title: 'Stepper'
 ---
 
-import Props from '@ionic-internal/component-api/v1/stepper/props.md';
-import Events from '@ionic-internal/component-api/v1/stepper/events.md';
-import Methods from '@ionic-internal/component-api/v1/stepper/methods.md';
-import Parts from '@ionic-internal/component-api/v1/stepper/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/stepper/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/stepper/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/stepper/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/stepper/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/stepper/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/stepper/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/stepper/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/stepper/slots.md';
 
 <head>
   <title>Stepper | Tlačidlo záložkovej navigácie</title>
   <meta
     name="description"
-    content="Komponent `Stepper` zobrazuje pokrok prostredníctvom očíslovaných krokov. Poskytuje workflow podobný sprievodcovi. Steppery zobrazujú pokrok prostredníctvom sekvencie očíslovaných krokov."
+    content="Komponent Stepper zobrazuje pokrok prostredníctvom očíslovaných krokov. Poskytuje workflow podobný sprievodcovi. Steppery zobrazujú pokrok prostredníctvom sekvencie očíslovaných krokov."
   />
 </head>
 
@@ -42,11 +42,30 @@ import Custom from '@site/static/usage/v1/stepper/custom/index.md';
 
 <Custom />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-stepper`, keď používateľ zadáva hodnotu, vyberá možnosti alebo vykonáva akciu vo formulári.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho len ako vizuálny dekoratívny prvok bez interakcie. V takom prípade uprednostnite prezentačné komponenty.
+
+## Prístupnosť
+
+Vždy prepojte komponent s popisom (`label`/`aria-label`), zachovajte ovládanie klávesnicou a pri validačných chybách zobrazte zrozumiteľnú správu.
+
+## Odporúčané postupy
+
+- Majte jednotné validačné pravidlá a error stavy naprieč celým formulárom.
+- Pri asynchrónnych operáciách zobrazte stav načítania alebo disabled stav.
+- Pri zložitých formulároch preferujte menšie sekcie a okamžitú spätnú väzbu.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -54,11 +73,11 @@ import Custom from '@site/static/usage/v1/stepper/custom/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/router/slots.md';
   <title>Router | Router The navigation component within web applications</title>
   <meta
     name="description"
-    content="Komponent Router je nástroj určený na navigáciu v rámci webových aplikácií. Táto komponenta podporuje komplexné navigačné scenáre a lazy-load, čím zvyšuje výkon aplikácie a používateľský zážitok."
+    content="The Router component is a tool for navigating within web applications. This component supports complex navigation scenarios and lazy-load, enhancing application performance and user."
   />
 </head>
 
@@ -25,13 +25,13 @@ The Router component is a tool for navigating within web applications. This comp
 
 In addition, it integrates seamlessly with WebJET Elements components, making it easy to implement navigation in your project.
 
-The `wj-router` component is tasked with managing all interactions with the browser history and grouping updates through the event system, and should only be found once in the application structure.
+The `wje-router` component is tasked with managing all interactions with the browser history and grouping updates through the event system, and should only be found once in the application structure.
 
-`wj-router` is just a URL coordinator for the navigation outlets of ionic: `wj-nav`, `wj-tabs`, and `wj-router-outlet`.
+`wje-router` is just a URL coordinator for the navigation outlets of ionic: `wj-nav`, `wj-tabs`, and `wje-router-outlet`.
 
-That means the `wj-router` never touches the DOM, it does NOT show the components or emit any kind of lifecycle events, it just tells `wj-nav`, `wj-tabs`, and `wj-router-outlet` what and when to "show" based on the browser's URL.
+That means the `wje-router` never touches the DOM, it does NOT show the components or emit any kind of lifecycle events, it just tells `wj-nav`, `wj-tabs`, and `wje-router-outlet` what and when to "show" based on the browser's URL.
 
-In order to configure this relationship between components (to load/select) and URLs, `wj-router` uses a declarative syntax using JSX/HTML to define a tree of routes.
+In order to configure this relationship between components (to load/select) and URLs, `wje-router` uses a declarative syntax using JSX/HTML to define a tree of routes.
 
 ## Basic usage
 
@@ -53,43 +53,62 @@ interface RouterEventDetail {
 
 ### RouterCustomEvent
 
-While not required, this interface can be used in place of the `CustomEvent` interface for stronger typing with Ionic events emitted from this component.
+While not required, this interface can be used in place of the `CustomEvent` interface for stronger typing with WebJET events emitted from this component.
 
 ```typescript
 interface RouterCustomEvent extends CustomEvent {
   detail: RouterEventDetail;
-  target: HTMLIonRouterElement;
+  target: HTMLElement;
 }
 ```
 
 ## Use
 
 ```html
-<wj-router>
-  <wj-route component="page-tabs">
-    <wj-route url="/schedule" component="tab-schedule">
-      <wj-route component="page-schedule"></wj-route>
-      <wj-route url="/session/:sessionId" component="page-session"></wj-route>
-    </wj-route>
+<wje-router>
+  <wje-route component="page-tabs">
+    <wje-route url="/schedule" component="tab-schedule">
+      <wje-route component="page-schedule"></wje-route>
+      <wje-route url="/session/:sessionId" component="page-session"></wje-route>
+    </wje-route>
 
-    <wj-route url="/speakers" component="tab-speaker">
-      <wj-route component="page-speaker-list"></wj-route>
-      <wj-route url="/session/:sessionId" component="page-session"></wj-route>
-      <wj-route url="/:speakerId" component="page-speaker-detail"></wj-route>
-    </wj-route>
+    <wje-route url="/speakers" component="tab-speaker">
+      <wje-route component="page-speaker-list"></wje-route>
+      <wje-route url="/session/:sessionId" component="page-session"></wje-route>
+      <wje-route url="/:speakerId" component="page-speaker-detail"></wje-route>
+    </wje-route>
 
-    <wj-route url="/map" component="page-map"></wj-route>
-    <wj-route url="/about" component="page-about"></wj-route>
-  </wj-route>
+    <wje-route url="/map" component="page-map"></wje-route>
+    <wje-route url="/about" component="page-about"></wje-route>
+  </wje-route>
 
-  <wj-route url="/tutorial" component="page-tutorial"></wj-route>
-  <wj-route url="/login" component="page-login"></wj-route>
-  <wj-route url="/account" component="page-account"></wj-route>
-  <wj-route url="/signup" component="page-signup"></wj-route>
-  <wj-route url="/support" component="page-support"></wj-route>
-</ion-router>
+  <wje-route url="/tutorial" component="page-tutorial"></wje-route>
+  <wje-route url="/login" component="page-login"></wje-route>
+  <wje-route url="/account" component="page-account"></wje-route>
+  <wje-route url="/signup" component="page-signup"></wje-route>
+  <wje-route url="/support" component="page-support"></wje-route>
+</wje-router>
 
 ```
+
+
+## When to use
+
+Use `wje-router` when users need to understand location, move between views, or traverse hierarchy.
+
+## When not to use
+
+Do not combine multiple competing navigation patterns for the same user flow.
+
+## Accessibility
+
+Ensure visible active/selected states, predictable tab order, and clear control naming.
+
+## Best Practices
+
+- Keep URL state and UI navigation state synchronized.
+- Use consistent labels across menu, breadcrumbs, and tabs.
+- Add context for deep structures (breadcrumbs, headings, icon cues).
 
 ## Attributes and Properties
 

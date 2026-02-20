@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/tab/slots.md';
   <title>Tab | Tab navigation button</title>
   <meta
     name="description"
-    content="Komponent Tab je podriadeným komponentom TabGroup a slúži ako tlačidlo navigácie založenej na záložkách. Používa sa v kombinácii s elementom TabPanel."
+    content="API documentation for wje-tab, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -26,6 +26,25 @@ The `Tab` component is a child of the [TabGroup](tab-group.md) component and ser
 :::note
 For examples of using the `Tab` component, go to the documentation [**TabGroup**](tab-group.md).
 :::
+
+
+## When to use
+
+Use `wje-tab` when users need to understand location, move between views, or traverse hierarchy.
+
+## When not to use
+
+Do not combine multiple competing navigation patterns for the same user flow.
+
+## Accessibility
+
+Ensure visible active/selected states, predictable tab order, and clear control naming.
+
+## Best Practices
+
+- Keep URL state and UI navigation state synchronized.
+- Use consistent labels across menu, breadcrumbs, and tabs.
+- Add context for deep structures (breadcrumbs, headings, icon cues).
 
 ## Attributes and Properties
 

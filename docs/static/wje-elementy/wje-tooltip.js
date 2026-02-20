@@ -1,19 +1,32 @@
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-import WJElement, { event } from "./wje-element.js";
+import WJElement from "./wje-element.js";
+import "./wje-popup.js";
+import { P as Popup } from "./popup.element-Cl6QeG8M.js";
+import { event } from "./event.js";
 const styles = "/*\n[ WJ Tooltip ]\n*/\n\n.native-tooltip {\n    display: flex;\n    align-items: center;\n    padding: var(--wje-tooltip-spacing);\n    color: var(--wje-tooltip-color);\n    background-color: var(--wje-tooltip-background);\n    font-weight: var(--wje-tooltip-font-weight);\n    font-size: var(--wje-tooltip-font-size);\n    border-radius: var(--wje-tooltip-border-radius);\n    line-height: var(--wje-tooltip-line-height);\n    box-sizing: border-box;\n    box-shadow: var(--wje-tooltip-shadow);\n}\n\n::slotted([slot='start']) {\n    margin: 0 0.3rem 0 0;\n}\n\n::slotted([slot='end']) {\n    margin: 0 0 0 0.3rem;\n}\n\n.arrow {\n    position: absolute;\n    width: 10px;\n    height: 10px;\n    background: var(--wje-tooltip-arrow-color);\n    transform: rotate(45deg);\n}\n";
-class Tooltip extends WJElement {
+const _Tooltip = class _Tooltip extends WJElement {
   /**
    * Creates an instance of Tooltip.
    */
   constructor() {
     super();
     /**
+     * Dependencies of the Button element.
+     * @type {object}
+     */
+    __publicField(this, "dependencies", {
+      "wje-popup": Popup
+    });
+    /**
      * The class name for the component.
      * @type {string}
      */
     __publicField(this, "className", "Tooltip");
+    __publicField(this, "popupHideCallback", () => {
+      this.onHide();
+    });
     /**
      * Handles the logic for showing the component's popup or tooltip.
      * Adds the `active` class, invokes lifecycle hooks, and manages the popup visibility.
@@ -21,6 +34,7 @@ class Tooltip extends WJElement {
      */
     __publicField(this, "onShow", () => {
       var _a;
+      event.addListener(this, "wje-popup:hide", null, this.popupHideCallback);
       this.classList.add("active");
       if ((_a = this.querySelector("wje-dropdown")) == null ? void 0 : _a.classList.contains("active")) {
         return;
@@ -42,9 +56,11 @@ class Tooltip extends WJElement {
      * Removes the `active` class from the component and hides the popup element.
      */
     __publicField(this, "onHide", () => {
+      event.removeListener(this, "wje-popup:hide", null, this.popupHideCallback);
       this.classList.remove("active");
       this.popup.hide();
     });
+    this._instanceId = ++_Tooltip._instanceId;
   }
   /**
    * Set active attribute for the tooltip element.
@@ -82,6 +98,7 @@ class Tooltip extends WJElement {
    */
   setupAttributes() {
     this.isShadowRoot = "open";
+    this.setAriaState({ role: "tooltip" });
   }
   /**
    * Draws the component for the tooltip.
@@ -93,6 +110,7 @@ class Tooltip extends WJElement {
     popup.setAttribute("placement", this.placement || "top");
     popup.setAttribute("offset", this.offset || "0");
     let slot = document.createElement("slot");
+    slot.setAttribute("name", "anchor");
     slot.setAttribute("slot", "anchor");
     let arrow = document.createElement("div");
     arrow.classList.add("arrow");
@@ -122,15 +140,40 @@ class Tooltip extends WJElement {
    * Draws the component for the tooltip.
    */
   afterDraw() {
-    let anchorEl = this.mySlot.assignedElements()[0];
-    if (this.selector) {
-      anchorEl = this.checkSelector(anchorEl);
-    }
+    const resolveAnchor = () => {
+      let anchorEl2 = this.mySlot.assignedElements()[0];
+      if (!anchorEl2) {
+        anchorEl2 = this.querySelector(":scope > *:not([slot])");
+        if (anchorEl2) anchorEl2.setAttribute("slot", "anchor");
+      }
+      if (this.selector) {
+        anchorEl2 = this.checkSelector(anchorEl2);
+      }
+      if (!anchorEl2) return null;
+      const tooltipId = this.id || `wje-tooltip-${this._instanceId}`;
+      if (!this.id) this.id = tooltipId;
+      anchorEl2.setAttribute("aria-describedby", tooltipId);
+      return anchorEl2;
+    };
+    this.onSlotChange = () => {
+      resolveAnchor();
+    };
+    this.mySlot.addEventListener("slotchange", this.onSlotChange);
+    this.onSlotChange();
+    let anchorEl = resolveAnchor();
     if (!anchorEl) return;
     event.addListener(anchorEl, "mouseenter", null, this.onShow);
     event.addListener(anchorEl, "mouseleave", null, this.onHide);
     event.addListener(this, "wje-dropdown:open", null, this.onHide);
     event.addListener(this, "wje-dropdown:close", null, this.onShow);
+  }
+  afterDisconnect() {
+    var _a;
+    event.removeListener(this, "wje-dropdown:open", null, this.onHide);
+    event.removeListener(this, "wje-dropdown:close", null, this.onShow);
+    event.removeListener(this, "mouseenter", null, this.onShow);
+    event.removeListener(this, "mouseleave", null, this.onHide);
+    (_a = this.mySlot) == null ? void 0 : _a.removeEventListener("slotchange", this.onSlotChange);
   }
   dispatch(customEvent) {
     return new Promise((resolve) => {
@@ -158,8 +201,11 @@ class Tooltip extends WJElement {
     }
     return newAnchorEl;
   }
-}
+};
+__publicField(_Tooltip, "_instanceId", 0);
+let Tooltip = _Tooltip;
 Tooltip.define("wje-tooltip", Tooltip);
 export {
   Tooltip as default
 };
+//# sourceMappingURL=wje-tooltip.js.map

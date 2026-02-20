@@ -79,7 +79,7 @@ const color = el.style.getPropertyValue('--charcoal');
 
 ### Prispôsobenie komponentov pomocou premenných
 
-Elements ponúka premenné špecifické pre komponenty, ako napríklad --background a --color, ktoré umožňujú jednoduché prispôsobenie. Úplný zoznam týchto premenných nájdete v časti CSS Custom Properties v referencii [API](../api.md) každej komponenty. Napríklad [CSS Custom Vlastnosti ](../api/button.md#css-custom-vlastnosti) komponentu Button si môžete pozrieť pre špecifické možnosti prispôsobenia.
+Elements ponúka premenné špecifické pre komponenty, ako napríklad --background a --color, ktoré umožňujú jednoduché prispôsobenie. Úplný zoznam týchto premenných nájdete v časti CSS vlastné premenné v referencii [API](../api.md) každej komponenty. Napríklad [CSS vlastné premenné](../api/button.md#css-vlastné-premenné-1) komponentu Button si môžete pozrieť pre špecifické možnosti prispôsobenia.
 
 ### Prispôsobenie aplikácie pomocou globálnych premenných
 

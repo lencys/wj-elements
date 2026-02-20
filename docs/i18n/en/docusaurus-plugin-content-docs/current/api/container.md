@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/container/slots.md';
   <title>Container | Key element for creating layouts</title>
   <meta
     name="description"
-    content="Container je kľúčový prvok Layoutu, ktorý sa používa na obalenie obsahu stránky. Je navrhnutý tak, aby poskytoval konzistentné rozstupy, odsadenia a zarovnania elementov, ktoré sa v ňom nachádzajú, a zabezpečoval tak správne zobrazenie a tiež prispôsobenie sa rôznym zariadeniam a veľkostiam obrazovky."
+    content="API documentation for wje-container, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -24,8 +24,27 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 Container is a key Layout element that is used to wrap the content of a page. It is designed to provide consistent spacing, offsets and alignment of the elements within it to ensure proper display and also to adapt to different devices and screen sizes.
 
 :::note
-For information on using the **Container** element, navigate to the [**Layout**](../layout) documentation.
+For information on using the **Container** element, navigate to the [**Layout**](./layout) documentation.
 :::
+
+
+## When to use
+
+Use `wje-container` to compose stable page structure with clear visual and semantic hierarchy.
+
+## When not to use
+
+Do not use layout components to handle business logic or application orchestration.
+
+## Accessibility
+
+Preserve document semantics (`header`, `main`, `aside`, `footer`) and logical tab/focus order.
+
+## Best Practices
+
+- Define mobile/desktop breakpoints first, then refine visual details.
+- Prefer spacing tokens over ad-hoc margin/padding overrides.
+- Test keyboard and screen reader behavior for overflow scenarios.
 
 ## Attributes and Properties
 

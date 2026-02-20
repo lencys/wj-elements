@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/grid/slots.md';
   <title>Grid | Flexible way to create responsive layouts</title>
   <meta
     name="description"
-    content="Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí(layoutov) rozdelením obrazovky na mriežku riadkov (rows) a stĺpcov (columns). Grid je založený na rozložení s 12 stĺpcami, podobne ako mnohé iné populárne grid systémy."
+    content="API documentation for wje-grid, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -21,13 +21,13 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The Grid system is a flexible way to create responsive layouts by dividing the screen into a grid of rows [Rows](../row) and columns [Cols](../col). Grid is based on flexbox with layout divided into 12 columns with 5 responsive breakpoints.
+The Grid system is a flexible way to create responsive layouts by dividing the screen into a grid of rows [Rows](./row) and columns [Cols](./col). Grid is based on flexbox with layout divided into 12 columns with 5 responsive breakpoints.
 
 ## Overview of functions
 
 **Responsive**: Grid allows you to create responsive layouts that adapt to different screen sizes and orientations.
 
-**Nesting** : Developers can nest multiple wj-grid elements inside each other to create more complex layouts. This allows for greater flexibility in the arrangement of content.
+**Nesting** : Developers can nest multiple wje-grid elements inside each other to create more complex layouts. This allows for greater flexibility in the arrangement of content.
 
 **Breakpoints**: The Grid Grid system supports different breakpoints for different screen sizes such as phones, tablets and desktops.
 
@@ -124,6 +124,25 @@ import HorizontalAlignment from '@site/static/usage/v1/grid/horizontal-alignment
 <HorizontalAlignment />
 
 </div>
+
+
+## When to use
+
+Use `wje-grid` to compose stable page structure with clear visual and semantic hierarchy.
+
+## When not to use
+
+Do not use layout components to handle business logic or application orchestration.
+
+## Accessibility
+
+Preserve document semantics (`header`, `main`, `aside`, `footer`) and logical tab/focus order.
+
+## Best Practices
+
+- Define mobile/desktop breakpoints first, then refine visual details.
+- Prefer spacing tokens over ad-hoc margin/padding overrides.
+- Test keyboard and screen reader behavior for overflow scenarios.
 
 ## Attributes and Properties
 

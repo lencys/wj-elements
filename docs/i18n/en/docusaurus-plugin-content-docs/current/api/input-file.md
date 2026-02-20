@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/input-file/slots.md';
   <title>Input File: Extension of the standard Input element</title>
   <meta
     name="description"
-    content="Input File element slúži na nahrávanie súborov."
+    content="API documentation for wje-input-file, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -28,6 +28,25 @@ The `Input File` element extends the `Input` element with the ability to upload 
 import Basic from '@site/static/usage/v1/input-file/basic/index.md';
 
 <Basic />
+
+
+## When to use
+
+Use `wje-input-file` when users need to enter values, choose options, or trigger form-related actions.
+
+## When not to use
+
+Do not use it as a decorative element without interaction. Prefer presentational components in that case.
+
+## Accessibility
+
+Always provide a label (`label`/`aria-label`), keep keyboard support, and surface clear validation feedback.
+
+## Best Practices
+
+- Keep validation rules and error behavior consistent across the entire form.
+- Show loading or disabled states during async operations.
+- Split complex forms into smaller sections with immediate feedback.
 
 ## Attributes and Properties
 

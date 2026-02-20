@@ -44,17 +44,14 @@ class SplitView extends WJElement {
       if (this.hasAttribute("disabled")) return;
       drag(this, {
         onMove: (x, y) => {
-          console.log("x", x);
-          console.log("y", y);
-          console.log("this.hasAttribute(vertical)", this.hasAttribute("vertical"));
           let newPositionInPixels = this.hasAttribute("vertical") ? y : x;
-          console.log("newPositionInPixels", newPositionInPixels);
           let sizeA = this.pixelsToPercentage(newPositionInPixels);
           let sizeB = 100 - this.pixelsToPercentage(newPositionInPixels);
-          console.log("sizeA", sizeA);
-          console.log("sizeB", sizeB);
           this.style.setProperty("--wje-split-view-calc-a", sizeA + "%");
           this.style.setProperty("--wje-split-view-calc-b", sizeB + "%");
+          if (this.dividerElement) {
+            this.dividerElement.setAttribute("aria-valuenow", `${Math.round(sizeA)}`);
+          }
         },
         initialEvent: e
       });
@@ -105,12 +102,18 @@ class SplitView extends WJElement {
     let dividerElement = document.createElement("div");
     dividerElement.classList.add("wje-divider");
     dividerElement.setAttribute("part", "divider");
+    dividerElement.setAttribute("role", "separator");
+    dividerElement.setAttribute("aria-orientation", this.hasAttribute("vertical") ? "vertical" : "horizontal");
+    dividerElement.setAttribute("aria-valuemin", "0");
+    dividerElement.setAttribute("aria-valuemax", "100");
+    dividerElement.setAttribute("aria-valuenow", `${this.initial}`);
     dividerElement.appendChild(divider);
     dividerElement.addEventListener("mousedown", this.handleDrag, false);
     native.appendChild(start);
     native.appendChild(dividerElement);
     native.appendChild(end);
     fragment.appendChild(native);
+    this.dividerElement = dividerElement;
     return fragment;
   }
   /**
@@ -131,9 +134,6 @@ class SplitView extends WJElement {
    */
   detectSize() {
     const { width, height } = this.getBoundingClientRect();
-    console.log("VERTICAL:", this.hasAttribute("vertical"), this.getBoundingClientRect(), this);
-    console.log("width", width);
-    console.log("height", height);
     this.size = this.hasAttribute("vertical") ? height : width;
   }
   /**
@@ -142,7 +142,6 @@ class SplitView extends WJElement {
    * @returns {number} The percentage value.
    */
   pixelsToPercentage(value) {
-    console.log("pixelsToPercentage", value, value / this.size * 100);
     return value / this.size * 100;
   }
 }
@@ -150,3 +149,4 @@ SplitView.define("wje-split-view", SplitView);
 export {
   SplitView as default
 };
+//# sourceMappingURL=wje-split-view.js.map

@@ -2,7 +2,7 @@ var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 import WJElement from "./wje-element.js";
-const styles = "/*\n[ WJ Header ]\n*/\n\n:host {\n    --wje-header-background: var(--wje-background);\n    --wje-header-border-color: var(--wje-border-color);\n    --wje-header-border-width: 0 0 1px 0;\n    --wje-header-border-style: solid;\n    --wje-header-top: 0;\n    --wje-header-height: 60px;\n    display: block;\n    height: var(--wje-header-height);\n    width: 100%;\n    background: var(--wje-header-background);\n    border-width: var(--wje-header-border-width);\n    border-style: var(--wje-header-border-style);\n    border-color: var(--wje-header-border-color);\n    .native-header {\n        display: flex;\n        padding-inline: 1rem;\n    }\n}\n\n:host([sticky]) {\n    position: sticky;\n    top: var(--wje-header-top);\n    z-index: 999;\n}\n";
+const styles = "/*\n[ WJ Header ]\n*/\n\n:host {\n    display: block;\n    height: var(--wje-header-height);\n    width: 100%;\n    background: var(--wje-header-background);\n    border-width: var(--wje-header-border-width);\n    border-style: var(--wje-header-border-style);\n    border-color: var(--wje-header-border-color);\n    .native-header {\n        display: flex;\n        padding-inline: 1rem;\n    }\n}\n\n:host([sticky]) {\n    position: sticky;\n    top: var(--wje-header-top);\n    z-index: 999;\n}\n";
 class Header extends WJElement {
   /**
    * Creates an instance of Header.
@@ -53,3 +53,4 @@ Header.define("wje-header", Header);
 export {
   Header as default
 };
+//# sourceMappingURL=wje-header.js.map

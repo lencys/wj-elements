@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/status/slots.md';
   <title>Status | Display status or indicator</title>
   <meta
     name="description"
-    content="Komponent Status slúži na zobrazenie stavu alebo indikátora, ktorý môže byť použitý na vizuálne označenie rôznych stavov v aplikácii."
+    content="The Status component is used to display a status or indicator that can be used to visually indicate different states in the application."
   />
 </head>
 
@@ -48,6 +48,25 @@ import Size from '@site/static/usage/v1/status/size/index.md';
 import Types from '@site/static/usage/v1/status/types/index.md';
 
 <Types />
+
+
+## When to use
+
+Use `wje-status` to communicate status, result of actions, or required next steps immediately.
+
+## When not to use
+
+Do not show multiple feedback channels for the same event unless there is a strong reason.
+
+## Accessibility
+
+Announce status updates with suitable ARIA live regions and manage focus for modal interactions.
+
+## Best Practices
+
+- Match message severity (info/success/warning/error) to actual user impact.
+- Use confirmations only for destructive or hard-to-reverse actions.
+- Keep timeouts consistent so users have enough time to read messages.
 
 ## Attributes and Properties
 

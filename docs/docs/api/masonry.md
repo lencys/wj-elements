@@ -2,18 +2,18 @@
 title: 'Masonry'
 ---
 
-import Props from '@ionic-internal/component-api/v1/masonry/props.md';
-import Events from '@ionic-internal/component-api/v1/masonry/events.md';
-import Methods from '@ionic-internal/component-api/v1/masonry/methods.md';
-import Parts from '@ionic-internal/component-api/v1/masonry/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/masonry/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/masonry/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/masonry/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/masonry/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/masonry/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/masonry/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/masonry/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/masonry/slots.md';
 
 <head>
   <title>Masonry | Vytvára responzívne 'Masonry' rozvrhnutie podriadených prvkov</title>
   <meta
     name="description"
-    content="Komponent Masonry vytvára responzívne 'Masonry' rozvrhnutie podriadených prvkov, ktorý ich dynamicky usporadúva do stĺpcov na základe zadaných atribútov. Podporuje prispôsobenie počtu stĺpcov, maximálnej šírky stĺpcov, medzery medzi prvkami a debouncing na optimalizáciu výkonu."
+    content="Komponent Masonry vytvára responzívne &quot;Masonry&quot; rozvrhnutie podriadených prvkov, ktoré sú dynamicky usporiadané do stĺpcov na základe zadaných atribútov."
   />
 </head>
 
@@ -45,11 +45,30 @@ import Gap from '@site/static/usage/v1/masonry/gap/index.md';
 
 <Gap />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-masonry` na skladanie stabilného rozloženia stránky s jasnou hierarchiou obsahu.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho na riešenie biznis logiky ani na stavovú orchestráciu komponentov.
+
+## Prístupnosť
+
+Zachovajte semantiku dokumentu (`header`, `main`, `aside`, `footer`) a logické poradie fokusovateľných prvkov.
+
+## Odporúčané postupy
+
+- Najprv definujte desktop/mobile breakpoints a až potom dolaďujte detaily.
+- Preferujte konzistentné spacing tokeny pred ad-hoc margin/padding hodnotami.
+- Pri layoutoch s overflow vždy otestujte klávesnicovú navigáciu a čítačky.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -57,11 +76,11 @@ import Gap from '@site/static/usage/v1/masonry/gap/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

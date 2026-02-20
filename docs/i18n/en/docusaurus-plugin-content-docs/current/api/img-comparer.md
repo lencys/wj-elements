@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/image-comparer/slots.md';
   <title>Image Comparer | Image Comparer</title>
   <meta
     name="description"
-    content="Element Image Comparer slúži na porovnanie dvoch obrázkov. Obrázky zobrazí na sebe a umožňuje odkrývať spodný obrázok pomocou vstavaného posuvníka."
+    content="The Image Comparer element is used to compare two images. It displays the images on top of each other and allows you to reveal the bottom image using the built-in slider."
   />
 </head>
 
@@ -32,6 +32,25 @@ import Basic from '@site/static/usage/v1/img-comparer/basic/index.md';
 <Basic />
 
 </div>
+
+
+## When to use
+
+Use `wje-img-comparer` to improve readability, scannability, and contextual understanding of content.
+
+## When not to use
+
+Do not replace structured interactive data with media-only presentation when precision is needed.
+
+## Accessibility
+
+Provide alt text, maintain readable contrast, and include text equivalents for icon-only controls.
+
+## Best Practices
+
+- Compress media and use lazy loading in larger collections.
+- Keep information priority consistent across cards/lists.
+- Avoid duplicating the same meaning in icon and text without added value.
 
 ## Attributes and Properties
 

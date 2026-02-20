@@ -2,14 +2,20 @@ var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 import WJElement from "./wje-element.js";
-function getHsl(text, s = 40, l = 65) {
-  let str = text;
+function getAvatarColors(text) {
   let hash = 0;
-  for (let i = 0; i < (str == null ? void 0 : str.length); i++) {
-    hash = str.charCodeAt(i) + hash * 31;
+  for (let i = 0; i < (text == null ? void 0 : text.length); i++) {
+    hash = text.charCodeAt(i) + hash * 31;
   }
-  let h = hash % 360;
-  return `hsl(${h}, ${s}%, ${l}%)`;
+  const h = Math.abs(hash) % 360;
+  const bgS = 30;
+  const bgL = 88;
+  const textS = 50;
+  const textL = 48;
+  return {
+    background: `hsl(${h}, ${bgS}%, ${bgL}%)`,
+    color: `hsl(${h}, ${textS}%, ${textL}%)`
+  };
 }
 function getInitials(string, length = 2) {
   let names = string.split(" ");
@@ -32,6 +38,51 @@ class Avatar extends WJElement {
     __publicField(this, "className", "Avatar");
   }
   /**
+   * Sets the value of the 'label' attribute for the element.
+   * @param {string} value The new value to be set for the 'label' attribute.
+   */
+  set label(value) {
+    this.setAttribute("label", value);
+  }
+  /**
+   * Retrieves the value of the 'label' attribute for the element.
+   * If the attribute is not set, it defaults to an empty string.
+   * @returns {string} The value of the 'label' attribute or an empty string if not defined.
+   */
+  get label() {
+    return this.getAttribute("label") || "";
+  }
+  /**
+   * Sets the value of initials for the element by updating
+   * the 'initials' attribute with the provided value.
+   * @param {string} value The value to be set as the initials.
+   */
+  set initials(value) {
+    this.setAttribute("initials", "");
+  }
+  /**
+   * Retrieves the value of the 'initials' attribute if it exists.
+   * @returns {boolean} Returns true if the 'initials' attribute is present, otherwise false.
+   */
+  get initials() {
+    return this.hasAttribute("initials") || false;
+  }
+  /**
+   * Sets the size attribute for the element.
+   * @param {string | number} value The value to set for the size attribute.
+   */
+  set size(value) {
+    this.setAttribute("size", value);
+  }
+  /**
+   * Retrieves the size attribute of the element. If the size attribute
+   * is not defined, it returns the default value 'medium'.
+   * @returns {string} The size value of the element or 'medium' if not specified.
+   */
+  get size() {
+    return this.getAttribute("size") || "medium";
+  }
+  /**
    * Getter for cssStyleSheet.
    * @returns {string} styles
    */
@@ -39,10 +90,26 @@ class Avatar extends WJElement {
     return styles;
   }
   /**
+   * Returns the list of attributes to observe for changes.
+   * @static
+   * @returns {Array<string>}
+   */
+  static get observedAttributes() {
+    return ["initials", "label"];
+  }
+  /**
    * Method to setup attributes.
    */
   setupAttributes() {
     this.isShadowRoot = "open";
+    this.syncAria();
+  }
+  attributeChangedCallback(name, oldValue, newValue) {
+    var _a;
+    (_a = super.attributeChangedCallback) == null ? void 0 : _a.call(this, name, oldValue, newValue);
+    if (name === "label" || name === "initials") {
+      this.syncAria();
+    }
   }
   /**
    * Method to draw the avatar element and return a document fragment.
@@ -55,9 +122,11 @@ class Avatar extends WJElement {
     element.classList.add("native-avatar");
     let slot = document.createElement("slot");
     element.appendChild(slot);
-    if (this.hasAttribute("initials")) {
+    if (this.initials) {
       let initials = getInitials(this.label);
-      this.setAttribute("style", `--wje-avatar-background-color: ${getHsl(initials)}`);
+      const { background, color } = getAvatarColors(initials);
+      this.style.setProperty("--wje-avatar-background-color", background);
+      this.style.setProperty("--wje-avatar-color", color);
       element.innerText = initials;
     } else {
       let slotIcon = document.createElement("slot");
@@ -76,6 +145,16 @@ class Avatar extends WJElement {
     return fragment;
   }
   /**
+   * Syncs ARIA attributes on the host element.
+   */
+  syncAria() {
+    var _a;
+    const label = (_a = this.label) == null ? void 0 : _a.trim();
+    if (label) {
+      this.setAriaState({ label });
+    }
+  }
+  /**
    * Method to check if the avatar is an image.
    * @returns {boolean} - True if the avatar is an image, false otherwise
    */
@@ -87,3 +166,4 @@ Avatar.define("wje-avatar", Avatar);
 export {
   Avatar as default
 };
+//# sourceMappingURL=wje-avatar.js.map

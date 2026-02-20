@@ -64,12 +64,12 @@ function whenTransitionEnds(el, cb) {
   el.addEventListener(event, onEnd);
 }
 function getTransitionInfo(el) {
-  const styles = window.getComputedStyle(el);
-  const transitionDelays = (styles[transitionProp + "Delay"] || "").split(", ");
-  const transitionDurations = (styles[transitionProp + "Duration"] || "").split(", ");
+  const styles2 = window.getComputedStyle(el);
+  const transitionDelays = (styles2[transitionProp + "Delay"] || "").split(", ");
+  const transitionDurations = (styles2[transitionProp + "Duration"] || "").split(", ");
   const transitionTimeout = getTimeout(transitionDelays, transitionDurations);
-  const animationDelays = (styles[animationProp + "Delay"] || "").split(", ");
-  const animationDurations = (styles[animationProp + "Duration"] || "").split(", ");
+  const animationDelays = (styles2[animationProp + "Delay"] || "").split(", ");
+  const animationDurations = (styles2[animationProp + "Duration"] || "").split(", ");
   const animationTimeout = getTimeout(animationDelays, animationDurations);
   const timeout = Math.max(transitionTimeout, animationTimeout);
   const type = timeout > 0 ? transitionTimeout > animationTimeout ? TRANSITION : ANIMATION : null;
@@ -171,6 +171,7 @@ class AnimatedOutlet extends HTMLElement {
     });
   }
 }
+const styles = "/*\n[ WJ Router Outlet ]\n*/\n\n.fade-enter-active,\n.fade-leave-active {\n    transition: opacity 0.5s;\n}\n.fade-enter {\n    height: 0;\n    overflow: hidden;\n}\n\n.fade-enter,\n.fade-leave-to {\n    opacity: 0;\n}\n\n.slide-fade-enter-active {\n    transition: all 0.3s ease;\n}\n\n.slide-fade-leave-active {\n    transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);\n}\n\n.slide-fade-enter,\n.slide-fade-leave-to {\n    transform: translateX(100px);\n    opacity: 0;\n}\n\n.bounce-enter {\n    opacity: 0;\n}\n\n.bounce-enter-active {\n    animation: bounce-in 0.5s;\n}\n\n.bounce-leave-active {\n    animation: bounce-in 0.5s reverse;\n}\n\n@keyframes bounce-in {\n    0% {\n        transform: scale(0);\n    }\n    50% {\n        transform: scale(1.5);\n    }\n    100% {\n        transform: scale(1);\n    }\n}\n\n\n";
 setDefaultAnimation(GenericCSS);
 class RouterOutlet extends AnimatedOutlet {
   /**
@@ -184,8 +185,14 @@ class RouterOutlet extends AnimatedOutlet {
      */
     __publicField(this, "className", "RouterOutlet");
   }
+  connectedCallback() {
+    const styleEl = document.createElement("style");
+    styleEl.textContent = styles;
+    this.parentNode.insertBefore(styleEl, this);
+  }
 }
 WJElement.define("wje-router-outlet", RouterOutlet);
 export {
   RouterOutlet as default
 };
+//# sourceMappingURL=wje-router-outlet.js.map

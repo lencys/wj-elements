@@ -52,3 +52,4 @@ WJElement.define("wje-card-subtitle", CardSubtitle);
 export {
   CardSubtitle as default
 };
+//# sourceMappingURL=wje-card-subtitle.js.map

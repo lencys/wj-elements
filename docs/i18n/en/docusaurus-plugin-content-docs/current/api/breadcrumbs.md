@@ -13,8 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/breadcrumbs/slots.md';
   <title>Breadcrumbs | Navigation</title>
   <meta
     name="description"
-    content="Breadcrumbs je komponent, ktorý zobrazuje cestu, po ktorej používateľ prešiel v rámci aplikácie alebo webu. Tento element zobrazuje hierarchické usporiadanie stránok, v ktorom každý segment cesty 
-  Breadcrumb je hyperlink, umožňujúci rýchly návrat na predchádzajúce úrovne. Breadcrumbs môže obsahovať ikonu."
+    content="API documentation for wje-breadcrumbs, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -22,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Breadcrumbs is a component that displays the path a user has taken within an application or site. This element displays a hierarchical page layout in which each segment of the [**Breadcrumb**](../breadcrumb) path is a hyperlink, allowing a quick return to previous levels. Breadcrumbs may contain an icon.
+Breadcrumbs is a component that displays the path a user has taken within an application or site. This element displays a hierarchical page layout in which each segment of the [**Breadcrumb**](./breadcrumb) path is a hyperlink, allowing a quick return to previous levels. Breadcrumbs may contain an icon.
 
 ## Basic usage
 
@@ -67,6 +66,25 @@ Collapsed items can also be displayed as a dropdown using the `collapsed-variant
 import PopoverOnClick from '@site/static/usage/v1/breadcrumbs/collapsing-items/popover-on-click/index.md';
 
 <PopoverOnClick />
+
+
+## When to use
+
+Use `wje-breadcrumbs` when users need to understand location, move between views, or traverse hierarchy.
+
+## When not to use
+
+Do not combine multiple competing navigation patterns for the same user flow.
+
+## Accessibility
+
+Ensure visible active/selected states, predictable tab order, and clear control naming.
+
+## Best Practices
+
+- Keep URL state and UI navigation state synchronized.
+- Use consistent labels across menu, breadcrumbs, and tabs.
+- Add context for deep structures (breadcrumbs, headings, icon cues).
 
 ## Attributes and Properties
 

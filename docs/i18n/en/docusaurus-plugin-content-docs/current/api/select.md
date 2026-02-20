@@ -14,7 +14,7 @@ import { Icon } from '@iconify/react';
   <title>Select | Element extends the capabilities of the standard HTML select element.</title>
   <meta
     name="description"
-    content="Select element rozširuje možnosti štandardného HTML select elementu. Podporuje jeden alebo viacero výberov pridaním atribútu `multiple`.Okrem toho ponúka funkcie, ako sú vymazateľné výbery a vlastný zastupný text (placeholder)."
+    content="API documentation for wje-select, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -26,7 +26,7 @@ The **Select** element extends the capabilities of the standard HTML select elem
 It supports both single and multiple option selection using the multiple attribute.
 It offers advanced features such as clearable content with the `clearable` attribute, searching through options with `find`, and lazy loading to optimize performance with the `lazy` attribute.
 When multiple options are selected, the selected items are displayed as chips with a configurable maximum number of items displayed.
-The component also supports dynamic loading of options from external sources via the [**Options**](../select-options) element.
+The component also supports dynamic loading of options from external sources via the [**Options**](./select-options) element.
 
 ## Basic usage
 
@@ -99,6 +99,25 @@ By combining the `lazy` and `find` attributes, options are only loaded when the 
 import Autocomplete from '@site/static/usage/v1/select/lazy-search/index.md';
 
 <Autocomplete />
+
+
+## When to use
+
+Use `wje-select` when users need to enter values, choose options, or trigger form-related actions.
+
+## When not to use
+
+Do not use it as a decorative element without interaction. Prefer presentational components in that case.
+
+## Accessibility
+
+Always provide a label (`label`/`aria-label`), keep keyboard support, and surface clear validation feedback.
+
+## Best Practices
+
+- Keep validation rules and error behavior consistent across the entire form.
+- Show loading or disabled states during async operations.
+- Split complex forms into smaller sections with immediate feedback.
 
 ## Attributes and Properties
 

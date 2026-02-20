@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/option/slots.md';
   <title>Option | individual options within the Select component</title>
   <meta
     name="description"
-    content="Element Option predstavuje jednotlivé voliteľné možnosti v rámci komponentu Select. Je obdobný štandardnému elementu HTML select a umožňuje používateľom vykonať jeden alebo viacero výberov na základe konfigurácie komponentu Select."
+    content="API documentation for wje-select-option, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -21,9 +21,28 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The Option element represents the individual options within the [Select](../select) component. It is similar to the standard HTML select element and allows users to make one or more selections based on the configuration of the `select` component. These elements can be dynamically populated and are designed to work seamlessly with the wj-select component's own logic, including features such as multiple selection and custom styling.
+The Option element represents the individual options within the [Select](./select) component. It is similar to the standard HTML select element and allows users to make one or more selections based on the configuration of the `select` component. These elements can be dynamically populated and are designed to work seamlessly with the wje-select component's own logic, including features such as multiple selection and custom styling.
 
-For information on using Option, navigate to the [Select.](../select) element documentation.
+For information on using Option, navigate to the [Select.](./select) element documentation.
+
+
+## When to use
+
+Use `wje-select-option` when you need a consistent WebJET-based implementation for this UI concern.
+
+## When not to use
+
+Do not stretch the component beyond its responsibility; compose smaller primitives for edge cases.
+
+## Accessibility
+
+Validate keyboard behavior, focus states, contrast, and meaningful labels for interactive elements.
+
+## Best Practices
+
+- Prefer component APIs over direct DOM manipulation.
+- Stick to design tokens and naming conventions.
+- Test components with realistic data before production rollout.
 
 ## Attributes and Properties
 

@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/file-upload/slots.md';
   <title>FileUpload | File Upload for Web Apps</title>
   <meta
     name="description"
-    content="Komponent FileUpload poskytuje univerzálnu funkciu nahrávania súborov pre webové aplikácie. Podporuje prispôsobiteľné atribúty, ako sú povolené typy súborov, veľkosť častí alebo tiež maximálnu veľkosť súboru, spolu s metódami drag-and-drop a tradičným výberom súborov."
+    content="The FileUpload component provides a universal file upload function for web applications. It supports customizable attributes such as allowed file types, part size or also maximum file size,."
   />
 </head>
 
@@ -34,6 +34,25 @@ import Basic from '@site/static/usage/v1/file-upload/basic/index.md';
 import Icon from '@site/static/usage/v1/file-upload/icon/index.md';
 
 <Icon />
+
+
+## When to use
+
+Use `wje-file-upload` when users need to enter values, choose options, or trigger form-related actions.
+
+## When not to use
+
+Do not use it as a decorative element without interaction. Prefer presentational components in that case.
+
+## Accessibility
+
+Always provide a label (`label`/`aria-label`), keep keyboard support, and surface clear validation feedback.
+
+## Best Practices
+
+- Keep validation rules and error behavior consistent across the entire form.
+- Show loading or disabled states during async operations.
+- Split complex forms into smaller sections with immediate feedback.
 
 ## Attributes and Properties
 

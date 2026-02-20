@@ -2,18 +2,18 @@
 title: 'Divider'
 ---
 
-import Props from '@ionic-internal/component-api/v1/divider/props.md';
-import Events from '@ionic-internal/component-api/v1/divider/events.md';
-import Methods from '@ionic-internal/component-api/v1/divider/methods.md';
-import Parts from '@ionic-internal/component-api/v1/divider/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/divider/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/divider/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/divider/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/divider/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/divider/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/divider/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/divider/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/divider/slots.md';
 
 <head>
   <title>Divider | WebJET Element pre zobrazenie oddeľovača</title>
   <meta
     name="description"
-    content="WebJET Element pre zobrazenie oddeľovača."
+    content="Divider element slúži na zobrazenie oddeľovača medzi jednotlivými sekciami. Môže byť použitý aj ako oddeľovač medzi položkami v menu."
   />
 </head>
 
@@ -29,11 +29,30 @@ import Basic from '@site/static/usage/v1/divider/basic/index.md';
 
 <Basic />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-divider`, keď chcete riešiť daný UI problém konzistentne v rámci WebJET dizajn systému.
+
+## Kedy nepoužiť
+
+Nepoužívajte komponent mimo jeho zodpovednosti; pri netypickom prípade radšej zložte viac menších prvkov.
+
+## Prístupnosť
+
+Skontrolujte klávesnicové ovládanie, focus stavy, kontrast a zrozumiteľné pomenovanie interaktívnych prvkov.
+
+## Odporúčané postupy
+
+- Preferujte API komponentu pred ručnými DOM zásahmi.
+- Držte sa dizajnových tokenov a konzistentných konvencií pomenovania.
+- Pred nasadením otestujte komponent v reálnych dátových scenároch.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -41,11 +60,11 @@ import Basic from '@site/static/usage/v1/divider/basic/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

@@ -13,13 +13,9 @@ import Slots from '@ionic-internal/component-api/v1/reorder-handle/slots.md';
   <title>Reorder Handle</title>
   <meta
     name="description"
-    content="Reorder Handle je komponent, ktorý slúži ako rukoväť na presúvanie položiek vo Reorder komponente."
-  ></meta>
+    content="API documentation for wje-reorder-handle, including usage guidance, attributes, events, methods, styling options, and slots."
+  />
 </head>
-
-import EncapsulationPill from '@components/page/api/EncapsulationPill';
-
-<EncapsulationPill type="shadow" />
 
 The `ReorderHandle` is an element that adds drag-and-drop functionality to other elements, and serves as a handle for moving items in a group of elements.
 
@@ -44,6 +40,25 @@ Elements can be moved within their parent container without the need to explicit
 import Menu from '@site/static/usage/v1/reorder-handle/menu-usage/index.md';
 
 <Menu />
+
+
+## When to use
+
+Use `wje-reorder-handle` when you need a consistent WebJET-based implementation for this UI concern.
+
+## When not to use
+
+Do not stretch the component beyond its responsibility; compose smaller primitives for edge cases.
+
+## Accessibility
+
+Validate keyboard behavior, focus states, contrast, and meaningful labels for interactive elements.
+
+## Best Practices
+
+- Prefer component APIs over direct DOM manipulation.
+- Stick to design tokens and naming conventions.
+- Test components with realistic data before production rollout.
 
 ## Attributes and Properties
 

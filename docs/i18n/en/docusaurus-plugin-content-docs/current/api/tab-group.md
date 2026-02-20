@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/tab-group/slots.md';
   <title>TabGroup | Tab-based navigation</title>
   <meta
     name="description"
-    content="TabGroup zobrazuje navigáciu založenú na záložkách, ktorá umožňuje používateľom prepínať sa a zobrazovať rôzne časti obsahu aplikácie bez potreby prechádzať na inú stránku."
+    content="TabGroup displays a tab-based navigation that allows users to switch between and view different parts of the application's content without having to navigate to another page."
   />
 </head>
 
@@ -53,6 +53,25 @@ import End from '@site/static/usage/v1/tab-group/end/index.md';
 import Bottom from '@site/static/usage/v1/tab-group/bottom/index.md';
 
 <Bottom />
+
+
+## When to use
+
+Use `wje-tab-group` when users need to understand location, move between views, or traverse hierarchy.
+
+## When not to use
+
+Do not combine multiple competing navigation patterns for the same user flow.
+
+## Accessibility
+
+Ensure visible active/selected states, predictable tab order, and clear control naming.
+
+## Best Practices
+
+- Keep URL state and UI navigation state synchronized.
+- Use consistent labels across menu, breadcrumbs, and tabs.
+- Add context for deep structures (breadcrumbs, headings, icon cues).
 
 ## Attributes and Properties
 

@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/button/slots.md';
   <title>Button | Button</title>
   <meta
     name="description"
-    content="Tlačidlá sú klikateľný element, ktorý umožnuje zobraziť text, ikonu, prípadne oboje. Tlačidlá si je možné jednoducho prispôsobiť použitím rôznych atribútov a CSS vlastností."
+    content="API documentation for wje-button, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -56,7 +56,7 @@ import Caret from '@site/static/usage/v1/button/caret/index.md';
 
 <Caret />
 
-## The shape of the button
+## Button Shape
 
 The `round` property allows you to adjust the shape of the button. By default, the buttons are rectangular with slightly rounded edges. Adding this attribute will increase the roundness of the button.
 
@@ -72,7 +72,7 @@ import FormButton from '@site/static/usage/v1/button/form-button/index.md';
 
 <FormButton />
 
-## Button filling
+## Button Fill
 
 The `Fill` property specifies the background and border fill of the button. By default, the buttons have a `solid` background. Other options are `link` and `outline`.
 
@@ -90,7 +90,7 @@ import Size from '@site/static/usage/v1/button/size/index.md';
 
 ## Button icons
 
-Icons can also be displayed in buttons by inserting the `wj-icon` element. You modify their location within the button using the slot attribute and the `start` or `end` property. If the button contains no text and consists of an icon only, use the `icon-only` property.
+Icons can also be displayed in buttons by inserting the `wje-icon` element. You modify their location within the button using the slot attribute and the `start` or `end` property. If the button contains no text and consists of an icon only, use the `icon-only` property.
 
 For more information about icons, see **[Icons](https://www.notion.so/Icon-d49ef040cef84b13b8dd3721d84d5397?pvs=21).**
 
@@ -98,7 +98,7 @@ import Icons from '@site/static/usage/v1/button/icons/index.md';
 
 <Icons />
 
-## Editing styles
+## Styling
 
 ### Button colors
 
@@ -121,6 +121,25 @@ import Outline from '@site/static/usage/v1/button/outline/index.md';
 import Custom from '@site/static/usage/v1/button/theming/css-properties/index.md';
 
 <Custom />
+
+
+## When to use
+
+Use `wje-button` when you need a consistent WebJET-based implementation for this UI concern.
+
+## When not to use
+
+Do not stretch the component beyond its responsibility; compose smaller primitives for edge cases.
+
+## Accessibility
+
+Validate keyboard behavior, focus states, contrast, and meaningful labels for interactive elements.
+
+## Best Practices
+
+- Prefer component APIs over direct DOM manipulation.
+- Stick to design tokens and naming conventions.
+- Test components with realistic data before production rollout.
 
 ## Attributes and Properties
 

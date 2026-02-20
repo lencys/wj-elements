@@ -13,8 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/tree/slots.md';
   <title>Accordion: view content in drop-down sections</title>
   <meta
     name="description"
-    content="Element Accordion umožňuje zobraziť obsah v rozbaľovacích sekciách. Každá sekcia môže byť rozbalená alebo zbalená kliknutím, čo umožňuje používateľom rýchlo nájsť a zobraziť požadované informácie. Element podporuje viacnásobný výber, čo znamená, že môže byť naraz rozbalených viacero sekcií. Okrem toho umožňuje nastaviť počiatočný index rozbalenej sekcie, čo poskytuje flexibilitu pri inicializácii komponentu s predvoleným rozbaleným obsahom.
-"
+    content="API documentation for wje-tree, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -42,7 +41,34 @@ import Multiple from '@site/static/usage/v1/tree/multiple/index.md';
 
 <Multiple />
 
+## Nested indentation
+
+For deeper nesting levels (for example `Deciduous` -> `Maple` -> `Field maple`), indentation is applied continuously to each opened branch. This keeps level 3 and deeper items visually separated from their parent level.
+
+import Indent from '@site/static/usage/v1/tree/indent/index.md';
+
+<Indent />
+
 ## TO DO complete tree and tree item docs
+
+
+## When to use
+
+Use `wje-tree` when users need to understand location, move between views, or traverse hierarchy.
+
+## When not to use
+
+Do not combine multiple competing navigation patterns for the same user flow.
+
+## Accessibility
+
+Ensure visible active/selected states, predictable tab order, and clear control naming.
+
+## Best Practices
+
+- Keep URL state and UI navigation state synchronized.
+- Use consistent labels across menu, breadcrumbs, and tabs.
+- Add context for deep structures (breadcrumbs, headings, icon cues).
 
 ## Attributes and Properties
 

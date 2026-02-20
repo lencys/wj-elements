@@ -2,23 +2,23 @@
 title: 'Carousel'
 ---
 
-import Props from '@ionic-internal/component-api/v1/carousel/props.md';
+import Props from '@ionic-internal/component-api/v1-sk/carousel/props.md';
 
-import Events from '@ionic-internal/component-api/v1/carousel/events.md';
+import Events from '@ionic-internal/component-api/v1-sk/carousel/events.md';
 
-import Methods from '@ionic-internal/component-api/v1/carousel/methods.md';
+import Methods from '@ionic-internal/component-api/v1-sk/carousel/methods.md';
 
-import Parts from '@ionic-internal/component-api/v1/carousel/parts.md';
+import Parts from '@ionic-internal/component-api/v1-sk/carousel/parts.md';
 
-<!-- import CustomProps from '@ionic-internal/component-api/v1/card/custom-props.md'; -->
+<!-- import CustomProps from '@ionic-internal/component-api/v1-sk/card/custom-props.md'; -->
 
-import Slots from '@ionic-internal/component-api/v1/carousel/slots.md';
+import Slots from '@ionic-internal/component-api/v1-sk/carousel/slots.md';
 
 <head>
   <title>Card | Kontajner formátu karty</title>
   <meta
     name="description"
-    content="Element Card je flexibilný a rozšíriteľný kontajner formátu karty. Umožňuje zobraziť širokú škálu obsahu a skladá sa z hlavičky Card Header, hlavnej časti Card Content a pätičky CardFooter."
+    content="**Carousel** je element, ktorý zobrazuje viacero položiek, ako sú obrázky alebo aktualizácie noviniek, rotujúcim spôsobom."
   />
 </head>
 
@@ -70,11 +70,30 @@ import Split from '@site/static/usage/v1/carousel/split/index.md';
 
 <Split />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-carousel` na zobrazenie obsahu, ktorý zlepšuje čitateľnosť, skenovateľnosť alebo kontext informácií.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho ako náhradu za štruktúrované dáta tam, kde je potrebná presná interakcia.
+
+## Prístupnosť
+
+Doplňte alternatívny text pre obrázky, čitateľné kontrasty a textové ekvivalenty pre ikony bez popisu.
+
+## Odporúčané postupy
+
+- Komprimujte médiá a používajte lazy loading pri veľkých zoznamoch.
+- Pri kartách a zoznamoch držte konzistentné informačné priority.
+- Neopakujte rovnakú informáciu súčasne textom aj ikonou bez pridanej hodnoty.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -82,7 +101,7 @@ import Split from '@site/static/usage/v1/carousel/split/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 

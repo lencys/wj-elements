@@ -2,18 +2,18 @@
 title: 'Avatar'
 ---
 
-import Props from '@ionic-internal/component-api/v1/avatar/props.md';
-import Events from '@ionic-internal/component-api/v1/avatar/events.md';
-import Methods from '@ionic-internal/component-api/v1/avatar/methods.md';
-import Parts from '@ionic-internal/component-api/v1/avatar/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/avatar/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/avatar/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/avatar/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/avatar/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/avatar/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/avatar/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/avatar/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/avatar/slots.md';
 
 <head>
   <title>Avatar: Avatar Component</title>
   <meta
     name="description"
-    content="Element avatar slúži na vizuálnu prezentáciu používateľa alebo subjektu. Používa sa zvyčajne ako obaľovač a poskytuje praktický spôsob zobrazovania profilových obrázkov, ikon, alebo, ak tie nie sú posktytné, iniciálok.  Podporuje rôzne konfigurácie vrátane veľkosti, zoskupenia viacerých avatarov alebo zobrazenie dropdownu po kliknutí či tooltipu pri ukázaní myšou."
+    content="Element avatar slúži na vizuálnu prezentáciu používateľa alebo subjektu. Používa sa zvyčajne ako obaľovač a poskytuje praktický spôsob zobrazovania profilových obrázkov, ikon, alebo, ak tie."
   />
 </head>
 
@@ -66,7 +66,7 @@ import Initials from '@site/static/usage/v1/avatar/initials/index.md';
 Vnorením elementu `wje-status` s ikonou, sa po stranách Avatara zobrazí element Status.
 Pridaním atribútu `status-placement` je možné určiť pozíciu elementu Status.
 
-Pre viac informácií o použítí Status sa presuňte do dokumentácie elementu [Status](/docs/api/status). // TODO: link
+Pre viac informácií o použítí Status sa presuňte do dokumentácie elementu [Status](/api/status). // TODO: link
 
 import Status from '@site/static/usage/v1/avatar/status/index.md';
 
@@ -104,11 +104,30 @@ import CSSProps from '@site/static/usage/v1/avatar/theming/css-properties/index.
 
 <CSSProps /> -->
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-avatar` na zobrazenie obsahu, ktorý zlepšuje čitateľnosť, skenovateľnosť alebo kontext informácií.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho ako náhradu za štruktúrované dáta tam, kde je potrebná presná interakcia.
+
+## Prístupnosť
+
+Doplňte alternatívny text pre obrázky, čitateľné kontrasty a textové ekvivalenty pre ikony bez popisu.
+
+## Odporúčané postupy
+
+- Komprimujte médiá a používajte lazy loading pri veľkých zoznamoch.
+- Pri kartách a zoznamoch držte konzistentné informačné priority.
+- Neopakujte rovnakú informáciu súčasne textom aj ikonou bez pridanej hodnoty.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -116,11 +135,11 @@ import CSSProps from '@site/static/usage/v1/avatar/theming/css-properties/index.
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

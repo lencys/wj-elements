@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/toolbar/slots.md';
   <title>Toolbar | Flexible container designed to display different content in an organized way</title>
   <meta
     name="description"
-    content="Element Toolbar je flexibilný kontajner určený na zobrazovanie rôzneho obsahu organizovaným spôsobom, ktorý sa zvyčajne používa v hornej časti webových aplikácií alebo stránok. Môže obsahovať tlačidlá, navigáciu, pole vyhľadávania, a iné."
+    content="API documentation for wje-toolbar, including usage guidance, attributes, events, methods, styling options, and slots."
   />
 </head>
 
@@ -23,7 +23,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The Element Toolbar is a flexible container designed to display a variety of content in an organized manner, typically used at the top of web applications or pages. It may contain buttons, navigation, search box, and more. It supports content alignment and can also be glued to the top of the screen.
 
-Part of the Toolbar is the [ToolbarActions](../toolbar-actions) element, which groups different actions in the form of buttons into a single unit.
+Part of the Toolbar is the [ToolbarActions](./toolbar-actions) element, which groups different actions in the form of buttons into a single unit.
 
 ## Basic usage
 
@@ -42,6 +42,25 @@ import DynamicBreadcrumbs from '@site/static/usage/v1/toolbar/dynamic-breadcrumb
 import DynamicAction from '@site/static/usage/v1/toolbar/dynamic-action/index.md';
 
 <DynamicAction />
+
+
+## When to use
+
+Use `wje-toolbar` to compose stable page structure with clear visual and semantic hierarchy.
+
+## When not to use
+
+Do not use layout components to handle business logic or application orchestration.
+
+## Accessibility
+
+Preserve document semantics (`header`, `main`, `aside`, `footer`) and logical tab/focus order.
+
+## Best Practices
+
+- Define mobile/desktop breakpoints first, then refine visual details.
+- Prefer spacing tokens over ad-hoc margin/padding overrides.
+- Test keyboard and screen reader behavior for overflow scenarios.
 
 ## Attributes and Properties
 

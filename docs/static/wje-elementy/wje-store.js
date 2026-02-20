@@ -5,7 +5,8 @@ const addAction = (stateValueName) => {
   return (payload2) => {
     return {
       type: `${stateValueName}/ADD`,
-      payload: payload2
+      payload: structuredClone(payload2),
+      actionType: "ADD"
     };
   };
 };
@@ -13,7 +14,8 @@ const addManyAction = (stateValueName) => {
   return (payload2) => {
     return {
       type: `${stateValueName}/ADD_MANY`,
-      payload: payload2
+      payload: structuredClone(payload2),
+      actionType: "ADD_MANY"
     };
   };
 };
@@ -21,7 +23,8 @@ const updateAction = (stateValueName) => {
   return (payload2) => {
     return {
       type: `${stateValueName}/UPDATE`,
-      payload: payload2
+      payload: structuredClone(payload2),
+      actionType: "UPDATE"
     };
   };
 };
@@ -29,7 +32,8 @@ const deleteAction = (stateValueName) => {
   return (payload2) => {
     return {
       type: `${stateValueName}/DELETE`,
-      payload: payload2
+      payload: structuredClone(payload2),
+      actionType: "DELETE"
     };
   };
 };
@@ -37,17 +41,19 @@ const loadAction = (stateValueName) => {
   return (payload2) => {
     return {
       type: `${stateValueName}/LOAD`,
-      payload: payload2
+      payload: structuredClone(payload2),
+      actionType: "LOAD"
     };
   };
 };
-const defaultStoreActions = {
+const defaultStoreActions = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
   addAction,
+  addManyAction,
   deleteAction,
   loadAction,
-  updateAction,
-  addManyAction
-};
+  updateAction
+}, Symbol.toStringTag, { value: "Module" }));
 class PubSub {
   constructor() {
     this.events = {};
@@ -75,17 +81,18 @@ class PubSub {
   /**
    * If the passed event has callbacks attached to it, loop through each one and call it.
    * @param {string} event The name of the event to publish
-   * @param {object} [newData] The data to pass to the callbacks
-   * @param {object} [oldData] The data to pass to the callbacks
-   * @returns {Array} The callbacks for this event, or an empty array if no event exits
+   * @param {any} state The current state to pass to the callbacks
+   * @param {object} [newData] The new data to pass to the callbacks
+   * @param {object} [oldData] The old data to pass to the callbacks
+   * @returns {Array} The results of the callbacks for this event, or an empty array if no event exists
    * @memberof PubSub
    */
-  publish(event, newData = {}, oldData = {}) {
+  publish(event, state, newData = {}, oldData = {}) {
     let self = this;
     if (!self.events.hasOwnProperty(event)) {
       return [];
     }
-    return self.events[event].map((callback) => callback(newData, oldData));
+    return self.events[event].map((callback) => callback(state, oldData, newData));
   }
 }
 class Store {
@@ -216,7 +223,7 @@ class Store {
   makeEveryArrayEntryAsStoreState(storeKey, array = [], identificator = "id") {
     array.forEach((entry) => {
       if (this.getState().hasOwnProperty(`${storeKey}-${entry[identificator]}`)) {
-        this.dispatch(defaultStoreActions.updateAction(`${storeKey}-${entry[identificator]}`)(entry));
+        this.dispatch(updateAction(`${storeKey}-${entry[identificator]}`)(entry));
       } else {
         this.define(
           `${storeKey}-${entry.id || entry.source || entry[identificator]}`,
@@ -275,7 +282,7 @@ class Store {
         }
         let oldState = state[key];
         state[key] = value;
-        if (!this._isPause) this.events.publish(key, this._state, oldState);
+        if (!this._isPause) this.events.publish(key, this._state, state[key], oldState);
         if (this.status !== "mutation") {
           console.warn(`You should use a mutation to set ${key}`);
         }
@@ -295,13 +302,11 @@ class Store {
    */
   createObjectReducer(stateValueName) {
     return (action, state = {}) => {
-      if (Array.isArray(action.payload)) {
-        console.error(
-          `Nemôžete pridať do objektu hodnotu, ktorá je pole. Skontrolujte si či definovanie stavu vyzerá takto: "store.define(${stateValueName}, {})"`
-        );
+      if (Array.isArray(action.payload) && (action.type === `${stateValueName}/ADD` || action.type === `${stateValueName}/UPDATE`)) {
+        console.error(`Nemôžete pridať do objektu ${stateValueName} hodnotu, ktorá je pole.`);
       }
       const actionType = action.type.split("/")[1];
-      if (["ADD", "UPDATE", "DELETE"].includes(actionType)) {
+      if (!["ADD", "UPDATE", "DELETE"].includes(actionType)) {
         console.error(
           `Nemôžete použiť akciu ${actionType} na objekt. Správne akcie pre objekt sú: ADD, UPDATE, DELETE`
         );
@@ -335,13 +340,12 @@ class Store {
    */
   createArrayReducer(stateValueName, key) {
     return (action, state = []) => {
-      if (Array.isArray(action.payload) && action.payload.length === 0) {
-        console.warn(`Nemá zmysel pridávať prázdne pole do pola`);
-      }
-      if (!Array.isArray(action.payload) && action.type !== defaultStoreActions.updateAction(stateValueName).type && action.type !== defaultStoreActions.deleteAction(stateValueName).type && action.type !== defaultStoreActions.updateAction(stateValueName).type) {
-        console.error(
-          `Nemôžete pridať do poľa hodnotu, ktorá nie je pole. Skontrolujte si či definovanie stavu vyzerá takto: "store.define(${stateValueName}, [])"`
-        );
+      var _a;
+      if (action.actionType === "LOAD" && ((_a = action.type) == null ? void 0 : _a.includes(stateValueName))) {
+        if (!Array.isArray(action.payload)) {
+          console.error(`Snažíte sa použiť "LOAD" akciu na pole, ale payload nie je pole.`);
+          return [...state];
+        }
       }
       switch (action.type) {
         case `${stateValueName}/ADD`:
@@ -366,6 +370,15 @@ class Store {
             return [...state, action.payload];
           }
         case `${stateValueName}/DELETE`:
+          if (Array.isArray(action.payload)) {
+            return [
+              ...state.filter(
+                (obj) => !action.payload.some(
+                  (item) => obj.hasOwnProperty(key) && obj[key] !== item[key] || !obj.hasOwnProperty(key) && obj !== item
+                )
+              )
+            ];
+          }
           return [
             ...state.filter(
               (obj) => obj.hasOwnProperty(key) && obj[key] !== action.payload[key] || !obj.hasOwnProperty(key) && obj !== action.payload
@@ -384,3 +397,4 @@ export {
   defaultStoreActions,
   store
 };
+//# sourceMappingURL=wje-store.js.map

@@ -57,13 +57,24 @@ class RelativeTime extends WJElement {
    * @returns {Array<string>}
    */
   static get observedAttributes() {
-    return [];
+    return ["date", "lang"];
+  }
+  attributeChangedCallback(name, oldValue, newValue) {
+    var _a;
+    (_a = super.attributeChangedCallback) == null ? void 0 : _a.call(this, name, oldValue, newValue);
+    if (oldValue === newValue) return;
+    if (this.native) {
+      this.native.innerText = this.getRelativeTimeString();
+      if (this.date) this.native.setAttribute("datetime", this.date);
+      else this.native.removeAttribute("datetime");
+    }
   }
   /**
    * Sets up the attributes for the component.
    */
   setupAttributes() {
     this.isShadowRoot = "open";
+    this.setAriaState({ role: "status" });
   }
   /**
    * Draws the component for the relative time.
@@ -75,7 +86,9 @@ class RelativeTime extends WJElement {
     element.setAttribute("part", "native");
     element.classList.add("native-relative-time");
     element.innerText = this.getRelativeTimeString();
+    if (this.date) element.setAttribute("datetime", this.date);
     fragment.appendChild(element);
+    this.native = element;
     return fragment;
   }
   /**
@@ -112,3 +125,4 @@ RelativeTime.define("wje-relative-time", RelativeTime);
 export {
   RelativeTime as default
 };
+//# sourceMappingURL=wje-relative-time.js.map

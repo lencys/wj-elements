@@ -2,19 +2,18 @@
 title: 'Level Indicator'
 ---
 
-import Props from '@ionic-internal/component-api/v1/level-indicator/props.md';
-import Events from '@ionic-internal/component-api/v1/level-indicator/events.md';
-import Methods from '@ionic-internal/component-api/v1/level-indicator/methods.md';
-import Parts from '@ionic-internal/component-api/v1/level-indicator/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/level-indicator/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/level-indicator/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/level-indicator/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/level-indicator/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/level-indicator/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/level-indicator/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/level-indicator/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/level-indicator/slots.md';
 
 <head>
   <title>Level Indicator | Element zobrazujúci úroveň alebo pokrok v procese.</title>
   <meta
     name="description"
-    content="Komponent `Level Indicator` je element umožňujúci zobraziť úroveň alebo pokrok v procese. Môže byť použitý na zobrazenie úrovne nabitia batérie, pokroku používateľa alebo iných podobných úloh.
-"
+    content="Komponent Level Indicator je element umožňujúci zobraziť úroveň alebo pokrok v procese. Môže byť použitý na zobrazenie úrovne nabitia batérie, pokroku používateľa alebo iných podobných úloh."
   />
 </head>
 
@@ -54,11 +53,30 @@ import Reverse from '@site/static/usage/v1/level-indicator/reverse/index.md';
 
 <Reverse />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-level-indicator`, keď potrebujete používateľovi okamžite komunikovať stav, výsledok akcie alebo ďalší krok.
+
+## Kedy nepoužiť
+
+Nepoužívajte viacero konkurenčných feedback kanálov naraz pre jednu udalosť.
+
+## Prístupnosť
+
+Status správy oznamujte cez vhodné ARIA live regióny a pri modálnych prvkoch spravujte fokus (open/close).
+
+## Odporúčané postupy
+
+- Vyberte závažnosť správ (info/success/warning/error) podľa reálneho dopadu na používateľa.
+- Pri blokujúcich akciách preferujte potvrdenie iba tam, kde hrozí nevratná zmena.
+- Nastavte konzistentné timeouty, aby používateľ stihol správu prečítať.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -66,11 +84,11 @@ import Reverse from '@site/static/usage/v1/level-indicator/reverse/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

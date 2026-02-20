@@ -2,7 +2,7 @@ var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 import WJElement from "./wje-element.js";
-const styles = "/*\n[ WJ Badge ]\n*/\n\n.native-badge {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    text-shadow: none;\n    font-family: var(--wje-font-family);\n    font-size: var(--wje-font-size-x-small);\n    line-height: 1;\n    padding: 0;\n    padding-block: 0;\n    padding-inline: var(--wje-spacing-2x-small);\n    border-radius: var(--wje-badge-border-radius);\n    border-width: 1px;\n    border-style: solid;\n    border-color: transparent;\n    height: 18px;\n}\n\n.wje-color-primary {\n    background-color: var(--wje-color-primary-2);\n    color: var(--wje-color-primary-9);\n}\n\n.wje-color-complete {\n    background-color: var(--wje-color-complete-2);\n    color: var(--wje-color-complete-9);\n}\n\n.wje-color-success {\n    background-color: var(--wje-color-success-2);\n    color: var(--wje-color-success-9);\n}\n\n.wje-color-warning {\n    background-color: var(--wje-color-warning-2);\n    color: var(--wje-color-warning-11);\n}\n\n.wje-color-danger {\n    background-color: var(--wje-color-danger-2);\n    color: var(--wje-color-danger-9);\n}\n\n.wje-color-info {\n    background-color: var(--wje-color-contrast-0);\n    color: var(--wje-color-info-11);\n    border-color: var(--wje-color-contrast-2);\n}\n\n.wje-color-default {\n    background-color: var(--wje-color-contrast-3);\n    color: var(--wje-color-contrast-11);\n}\n";
+const styles = "/*\n[ WJ Badge ]\n*/\n\n.native-badge {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    text-shadow: none;\n    font-family: var(--wje-font-family);\n    font-size: var(--wje-font-size-x-small);\n    line-height: var(--wje-badge-line-height);\n    padding: 0;\n    padding-block: var(--wje-badge-padding-block);\n    padding-inline: var(--wje-badge-padding-inline);\n    border-radius: var(--wje-badge-border-radius);\n    border-width: var(--wje-badge-border-width);\n    border-style: var(--wje-badge-border-style);\n    border-color: var(--wje-badge-border-color);\n    height: var(--wje-badge-height);\n}\n\n.wje-color-primary {\n    background-color: var(--wje-color-primary-2);\n    color: var(--wje-color-primary-9);\n}\n\n.wje-color-complete {\n    background-color: var(--wje-color-complete-2);\n    color: var(--wje-color-complete-9);\n}\n\n.wje-color-success {\n    background-color: var(--wje-color-success-2);\n    color: var(--wje-color-success-9);\n}\n\n.wje-color-warning {\n    background-color: var(--wje-color-warning-2);\n    color: var(--wje-color-warning-11);\n}\n\n.wje-color-danger {\n    background-color: var(--wje-color-danger-2);\n    color: var(--wje-color-danger-9);\n}\n\n.wje-color-info {\n    background-color: var(--wje-color-contrast-0);\n    color: var(--wje-color-info-11);\n    border-color: var(--wje-color-contrast-2);\n}\n\n.wje-color-default {\n    background-color: var(--wje-color-contrast-3);\n    color: var(--wje-color-contrast-11);\n}\n";
 class Badge extends WJElement {
   /**
    * Creates an instance of Badge.
@@ -43,6 +43,7 @@ class Badge extends WJElement {
    */
   setupAttributes() {
     this.isShadowRoot = "open";
+    this.setAriaState({ role: "status" });
   }
   /**
    * Creates the DOM structure for the Badge element.
@@ -68,3 +69,4 @@ Badge.define("wje-badge", Badge);
 export {
   Badge as default
 };
+//# sourceMappingURL=wje-badge.js.map

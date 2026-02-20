@@ -20,10 +20,11 @@ import DocsCards from '@components/global/DocsCards';
 <link rel="alternate" href="https://elements.webjet.sk/" hreflang="en" />
 <meta property="og:url" content="https://elements.webjet.sk/" />
 
-<script type="module" src="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/wje-master.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/light.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/dark.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wj-elements@0/dist/styles.css" />
+<script data-base-path="/wje-elementy/"></script>
+<script type="module" src="/wje-elementy/wje-master.js"></script>
+<link rel="stylesheet" href="/wje-elementy/light.css" />
+<link rel="stylesheet" href="/wje-elementy/dark.css" />
+<link rel="stylesheet" href="/wje-elementy/styles.css" />
 
 </head>
 

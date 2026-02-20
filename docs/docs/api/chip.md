@@ -2,18 +2,18 @@
 title: 'Chip'
 ---
 
-import Props from '@ionic-internal/component-api/v1/chip/props.md';
-import Events from '@ionic-internal/component-api/v1/chip/events.md';
-import Methods from '@ionic-internal/component-api/v1/chip/methods.md';
-import Parts from '@ionic-internal/component-api/v1/chip/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/chip/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/chip/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/chip/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/chip/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/chip/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/chip/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/chip/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/chip/slots.md';
 
 <head>
   <title>Chip | Malý univerzálny vizuálny blok</title>
   <meta
     name="description"
-    content="Komponent Chip je univerzálny element, ktorý predstavuje malý vizuálny blok obsahujúci rôzne ďalšie elementy, ako napríklad avatary, text a ikony. Ponúka možnosti prispôsobenia farieb, stavov a ďalšie."
+    content="Komponent Chip je univerzálny element, ktorý predstavuje malý vizuálny blok obsahujúci rôzne ďalšie elementy, ako napríklad avatary, text a ikony."
   />
 </head>
 
@@ -51,11 +51,30 @@ import CSSProps from '@site/static/usage/v1/chip/theming/css-properties/index.md
 
 <CSSProps />
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-chip` na zobrazenie obsahu, ktorý zlepšuje čitateľnosť, skenovateľnosť alebo kontext informácií.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho ako náhradu za štruktúrované dáta tam, kde je potrebná presná interakcia.
+
+## Prístupnosť
+
+Doplňte alternatívny text pre obrázky, čitateľné kontrasty a textové ekvivalenty pre ikony bez popisu.
+
+## Odporúčané postupy
+
+- Komprimujte médiá a používajte lazy loading pri veľkých zoznamoch.
+- Pri kartách a zoznamoch držte konzistentné informačné priority.
+- Neopakujte rovnakú informáciu súčasne textom aj ikonou bez pridanej hodnoty.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -63,11 +82,11 @@ import CSSProps from '@site/static/usage/v1/chip/theming/css-properties/index.md
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

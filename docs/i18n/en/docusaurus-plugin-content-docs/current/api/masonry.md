@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/masonry/slots.md';
   <title>Masonry | Creates a responsive 'Masonry' layout of child elements</title>
   <meta
     name="description"
-    content="Komponent Masonry vytvára responzívne 'Masonry' rozvrhnutie podriadených prvkov, ktorý ich dynamicky usporadúva do stĺpcov na základe zadaných atribútov. Podporuje prispôsobenie počtu stĺpcov, maximálnej šírky stĺpcov, medzery medzi prvkami a debouncing na optimalizáciu výkonu."
+    content="The Masonry component creates a responsive &quot;Masonry&quot; layout of child elements that are dynamically arranged into columns based on specified attributes."
   />
 </head>
 
@@ -44,6 +44,25 @@ Use the `gap` attribute to specify the width of the gap between columns in pixel
 import Gap from '@site/static/usage/v1/masonry/gap/index.md';
 
 <Gap />
+
+
+## When to use
+
+Use `wje-masonry` to compose stable page structure with clear visual and semantic hierarchy.
+
+## When not to use
+
+Do not use layout components to handle business logic or application orchestration.
+
+## Accessibility
+
+Preserve document semantics (`header`, `main`, `aside`, `footer`) and logical tab/focus order.
+
+## Best Practices
+
+- Define mobile/desktop breakpoints first, then refine visual details.
+- Prefer spacing tokens over ad-hoc margin/padding overrides.
+- Test keyboard and screen reader behavior for overflow scenarios.
 
 ## Attributes and Properties
 

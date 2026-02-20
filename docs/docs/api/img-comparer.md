@@ -2,12 +2,12 @@
 title: 'Image Comparer'
 ---
 
-import Props from '@ionic-internal/component-api/v1/image-comparer/props.md';
-import Events from '@ionic-internal/component-api/v1/image-comparer/events.md';
-import Methods from '@ionic-internal/component-api/v1/image-comparer/methods.md';
-import Parts from '@ionic-internal/component-api/v1/image-comparer/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/image-comparer/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/image-comparer/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/image-comparer/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/image-comparer/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/image-comparer/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/image-comparer/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/image-comparer/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/image-comparer/slots.md';
 
 <head>
   <title>Image Comparer | Porovnávač obrázkov</title>
@@ -33,11 +33,30 @@ import Basic from '@site/static/usage/v1/img-comparer/basic/index.md';
 
 </div>
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-img-comparer` na zobrazenie obsahu, ktorý zlepšuje čitateľnosť, skenovateľnosť alebo kontext informácií.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho ako náhradu za štruktúrované dáta tam, kde je potrebná presná interakcia.
+
+## Prístupnosť
+
+Doplňte alternatívny text pre obrázky, čitateľné kontrasty a textové ekvivalenty pre ikony bez popisu.
+
+## Odporúčané postupy
+
+- Komprimujte médiá a používajte lazy loading pri veľkých zoznamoch.
+- Pri kartách a zoznamoch držte konzistentné informačné priority.
+- Neopakujte rovnakú informáciu súčasne textom aj ikonou bez pridanej hodnoty.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -45,11 +64,11 @@ import Basic from '@site/static/usage/v1/img-comparer/basic/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

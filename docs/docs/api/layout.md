@@ -2,18 +2,18 @@
 title: 'Layout'
 ---
 
-import Props from '@ionic-internal/component-api/v1/layout/props.md';
-import Events from '@ionic-internal/component-api/v1/layout/events.md';
-import Methods from '@ionic-internal/component-api/v1/layout/methods.md';
-import Parts from '@ionic-internal/component-api/v1/layout/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/layout/custom-props.md';
-import Slots from '@ionic-internal/component-api/v1/layout/slots.md';
+import Props from '@ionic-internal/component-api/v1-sk/layout/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/layout/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/layout/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/layout/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/layout/custom-props.md';
+import Slots from '@ionic-internal/component-api/v1-sk/layout/slots.md';
 
 <head>
   <title>Layout | Element umožňujúci jednoducho zostaviť layout stránky</title>
   <meta
     name="description"
-    content="Layout v Elements sa skladá z troch komponentov Header, Aside a Footer. Pomocou nich je možné jednoducho zostaviť základné rozvrhnutie webstránky."
+    content="**WebJET Elements** umožňuje si jednoducho zostaviť rozvrhnutie stránok pomocou 5 základných elementov: Container, Header, Main, Aside a Footer."
   />
 </head>
 
@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-**WebJET Elements** umožňuje si jednoducho zostaviť rozvrhnutie stránok pomocou 5 základných elementov: [Container](../container), [Header](../header), [Main](../main), [Aside](../aside) a [Footer](../footer). V prípade komplexnejších rozvrhnutí WebJET Elements ponúka tiež systém [Grid](../grid).
+**WebJET Elements** umožňuje si jednoducho zostaviť rozvrhnutie stránok pomocou 5 základných elementov: [Container](./container), [Header](./header), [Main](./main), [Aside](./aside) a [Footer](./footer). V prípade komplexnejších rozvrhnutí WebJET Elements ponúka tiež systém [Grid](./grid).
 
 ## Príklady použitia
 
@@ -33,11 +33,30 @@ import Basic from '@site/static/usage/v1/layout/basic/index.md';
 
 </div>
 
-## Atribúty a Vlastnosti
+
+## Kedy použiť
+
+Použite `wje-layout` na skladanie stabilného rozloženia stránky s jasnou hierarchiou obsahu.
+
+## Kedy nepoužiť
+
+Nepoužívajte ho na riešenie biznis logiky ani na stavovú orchestráciu komponentov.
+
+## Prístupnosť
+
+Zachovajte semantiku dokumentu (`header`, `main`, `aside`, `footer`) a logické poradie fokusovateľných prvkov.
+
+## Odporúčané postupy
+
+- Najprv definujte desktop/mobile breakpoints a až potom dolaďujte detaily.
+- Preferujte konzistentné spacing tokeny pred ad-hoc margin/padding hodnotami.
+- Pri layoutoch s overflow vždy otestujte klávesnicovú navigáciu a čítačky.
+
+## Atribúty a vlastnosti
 
 <Props />
 
-## Eventy
+## Udalosti
 
 <Events />
 
@@ -45,11 +64,11 @@ import Basic from '@site/static/usage/v1/layout/basic/index.md';
 
 <Methods />
 
-## CSS Shadow Parts
+## CSS tieňové časti
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS vlastné premenné
 
 <CustomProps />
 

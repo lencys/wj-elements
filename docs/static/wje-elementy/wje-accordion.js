@@ -68,6 +68,7 @@ class Accordion extends WJElement {
    */
   setupAttributes() {
     this.isShadowRoot = "open";
+    this.setAriaState({ role: "presentation" });
   }
   /**
    * Method to run before the element is drawn.
@@ -119,3 +120,4 @@ Accordion.define("wje-accordion", Accordion);
 export {
   Accordion as default
 };
+//# sourceMappingURL=wje-accordion.js.map
