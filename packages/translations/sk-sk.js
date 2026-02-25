@@ -13,6 +13,11 @@ export const skSk = {
     'wj.stepper.button.finish': 'Dokončiť',
     'wj.stepper.button.previous': 'Späť',
     'wj.stepper.step': 'Krok',
+    'wj.pagination.of': 'z',
+    'wj.pagination.first': 'Prvá stránka',
+    'wj.pagination.prev': 'Predchádzajúca',
+    'wj.pagination.next': 'Ďalšia',
+    'wj.pagination.last': 'Posledná stránka',
 };
 
 Localizer.registerTranslation(skSk);
