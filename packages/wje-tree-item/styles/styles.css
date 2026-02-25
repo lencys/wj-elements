@@ -29,7 +29,7 @@
 
             .indent {
                 display: block;
-                width: 1em;
+                width: calc(var(--wje-tree-item-indent, var(--wje-spacing-medium)) * var(--wje-tree-item-depth, 0));
                 flex-shrink: 0;
             }
 
@@ -67,8 +67,6 @@
             }
         }
         .children {
-            font-size: calc(1rem + var(--wje-tree-item-indent, var(--wje-spacing-medium)));
-            padding-inline-start: var(--wje-tree-item-indent, var(--wje-spacing-medium));
             display: none;
             &.open {
                 font-size: var(--wje-tree-item-font-size);
@@ -79,7 +77,12 @@
                     position: absolute;
                     top: var(--wje-tree-item-indent);
                     bottom: 5px;
-                    left: calc(1em - (var(--wje-spacing-3x-small) * 2) - (var(--wje-tree-item-indent-guid-width) / 2));
+                    left: calc(
+                        (var(--wje-tree-item-indent, var(--wje-spacing-medium)) * var(--wje-tree-item-depth, 0)) +
+                        1em -
+                        (var(--wje-spacing-3x-small) * 2) -
+                        (var(--wje-tree-item-indent-guid-width) / 2)
+                    );
                     border-inline-end: var(--wje-tree-item-indent-guid-width) solid var(--wje-border-color);
                     z-index: 1;
                 }

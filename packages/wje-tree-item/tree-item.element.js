@@ -134,7 +134,7 @@ export default class TreeItem extends WJElement {
 
     connectedCallback() {
         super.connectedCallback?.();
-        if (this.isNestedItem()) this.slot = 'children';
+        this.syncNestingState();
     }
 
     /**
@@ -183,10 +183,27 @@ export default class TreeItem extends WJElement {
      * @returns {void} No return value.
      */
     beforeDraw() {
-        if (this.isNestedItem()) this.slot = 'children';
+        this.syncNestingState();
 
         if(this.closest('wje-tree')?.hasAttribute('slot-hover-visible'))
             this.setAttribute('slot-hover-visible', '');
+    }
+
+    /**
+     * Synchronizes the nesting-related state on the host element.
+     * Sets the "slot" to children for nested items and updates
+     * the nesting depth used to compute visual indentation.
+     * @returns {void}
+     */
+    syncNestingState() {
+        const depth = this.getNestingDepth();
+        this.style.setProperty('--wje-tree-item-depth', String(depth));
+
+        if (depth > 0) {
+            this.slot = 'children';
+        } else if (this.getAttribute('slot') === 'children') {
+            this.removeAttribute('slot');
+        }
     }
 
     /**
@@ -310,6 +327,23 @@ export default class TreeItem extends WJElement {
     isNestedItem() {
         const parent = this.parentElement;
         return !!parent && this.isTreeItem(parent);
+    }
+
+    /**
+     * Calculates nesting depth based on ancestor tree items.
+     * Root items have depth 0, direct children depth 1, etc.
+     * @returns {number}
+     */
+    getNestingDepth() {
+        let depth = 0;
+        let current = this.parentElement;
+
+        while (current) {
+            if (this.isTreeItem(current)) depth += 1;
+            current = current.parentElement;
+        }
+
+        return depth;
     }
 
     /**
