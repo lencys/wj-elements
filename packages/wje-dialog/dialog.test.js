@@ -1,32 +1,37 @@
 import '../../dist/wje-element.js';
-import { expect, fixture, html } from '@open-wc/testing';
+import { aTimeout, expect, fixture, html } from '@open-wc/testing';
 import '../../dist/wje-dialog.js';
 
 describe('<wje-dialog>', () => {
-  it('sets role dialog, aria-modal and aria-describedby on host', async () => {
+  it('sets role dialog and aria-describedby on native dialog only', async () => {
     const el = await fixture(html`<wje-dialog headline="Title"></wje-dialog>`);
     await el.updateComplete;
     el.htmlDialogBody(el.dialog);
-    expect(el.getAttribute('role')).to.equal('dialog');
-    expect(el.getAttribute('aria-modal')).to.equal('true');
-    const describedBy = el.getAttribute('aria-describedby');
+    expect(el.hasAttribute('role')).to.equal(false);
+    expect(el.hasAttribute('aria-describedby')).to.equal(false);
+
+    const describedBy = el.dialog.getAttribute('aria-describedby');
+    expect(el.dialog.getAttribute('role')).to.equal('dialog');
     expect(describedBy).to.match(/^wje-dialog-\d+-body$/);
   });
 
-  it('sets aria-labelledby when header is visible', async () => {
+  it('sets aria-labelledby on native dialog when header is visible', async () => {
     const el = await fixture(html`<wje-dialog headline="Title"></wje-dialog>`);
     await el.updateComplete;
     el.htmlDialogBody(el.dialog);
-    const labelledBy = el.getAttribute('aria-labelledby');
+    expect(el.hasAttribute('aria-labelledby')).to.equal(false);
+    const labelledBy = el.dialog.getAttribute('aria-labelledby');
     expect(labelledBy).to.match(/^wje-dialog-\d+-header$/);
   });
 
-  it('uses aria-label when header is hidden', async () => {
+  it('uses aria-label on native dialog when header is hidden', async () => {
     const el = await fixture(html`<wje-dialog headline="Title" hidden-header></wje-dialog>`);
     await el.updateComplete;
     el.htmlDialogBody(el.dialog);
-    expect(el.getAttribute('aria-labelledby')).to.equal(null);
-    expect(el.getAttribute('aria-label')).to.equal('Title');
+    expect(el.hasAttribute('aria-labelledby')).to.equal(false);
+    expect(el.hasAttribute('aria-label')).to.equal(false);
+    expect(el.dialog.getAttribute('aria-labelledby')).to.equal(null);
+    expect(el.dialog.getAttribute('aria-label')).to.equal('Title');
   });
 
   it('sets aria-label on close button', async () => {
@@ -70,5 +75,36 @@ describe('<wje-dialog>', () => {
     const footerEl = el.shadowRoot.querySelector('.dialog-footer');
     expect(footerEl).to.equal(null);
     expect(el.hasAttribute('has-footer')).to.equal(false);
+  });
+
+  it('mirrors dialog open state to host open attribute', async () => {
+    const el = await fixture(html`<wje-dialog headline="Title"></wje-dialog>`);
+    await el.updateComplete;
+
+    el.onOpen();
+    await aTimeout(0);
+
+    expect(el.dialog.open).to.equal(true);
+    expect(el.dialog.getAttribute('aria-modal')).to.equal('true');
+    expect(el.hasAttribute('open')).to.equal(true);
+
+    el.close();
+    await aTimeout(0);
+
+    expect(el.dialog.open).to.equal(false);
+    expect(el.dialog.hasAttribute('aria-modal')).to.equal(false);
+    expect(el.hasAttribute('open')).to.equal(false);
+  });
+
+  it('removes host open attribute when dialog close event is fired', async () => {
+    const el = await fixture(html`<wje-dialog headline="Title"></wje-dialog>`);
+    await el.updateComplete;
+
+    el.onOpen();
+    await aTimeout(0);
+
+    expect(el.hasAttribute('open')).to.equal(true);
+    el.dialog.dispatchEvent(new Event('close'));
+    expect(el.hasAttribute('open')).to.equal(false);
   });
 });

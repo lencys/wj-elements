@@ -160,10 +160,12 @@ export default class Dialog extends WJElement {
         let dialog = document.createElement('dialog');
         dialog.setAttribute('part', 'dialog');
         dialog.classList.add('modal-dialog');
+        dialog.addEventListener('close', this.onNativeDialogClose);
 
         fragment.appendChild(dialog);
 
         this.dialog = dialog;
+        this.syncHostOpenState();
 
         return fragment;
     }
@@ -245,33 +247,18 @@ export default class Dialog extends WJElement {
         if (!this.hiddenFooter) dialog.appendChild(footer);
 
         dialog.setAttribute('role', 'dialog');
-        dialog.setAttribute('aria-modal', 'true');
         dialog.setAttribute('aria-describedby', body.id);
         if (!this.hiddenHeader) {
             dialog.setAttribute('aria-labelledby', header.id);
+            dialog.removeAttribute('aria-label');
         } else {
             dialog.removeAttribute('aria-labelledby');
-        }
-
-        const ariaState = {
-            role: 'dialog',
-            modal: true,
-            describedBy: body.id,
-        };
-
-        if (!this.hiddenHeader) {
-            ariaState.labelledBy = header.id;
-            this.removeAttribute('aria-label');
-        } else {
-            this.removeAttribute('aria-labelledby');
             if (this.headline) {
-                ariaState.label = this.headline;
+                dialog.setAttribute('aria-label', this.headline);
             } else {
-                this.removeAttribute('aria-label');
+                dialog.removeAttribute('aria-label');
             }
         }
-
-        this.setAriaState(ariaState);
 
         Promise.resolve().then(() => this.updateHasFooter());
     }
@@ -292,7 +279,7 @@ export default class Dialog extends WJElement {
             event.removeListener(document, this.params?.trigger, null, this.onOpen);
         }
 
-        //this.dialog.removeEventListener('close', this.onClose);
+        this.dialog?.removeEventListener('close', this.onNativeDialogClose);
     }
 
     /**
@@ -337,6 +324,8 @@ export default class Dialog extends WJElement {
                 this.htmlDialogBody(this.dialog);
 
                 this.dialog.showModal(); // Now open the dialog
+                this.syncHostOpenState();
+                this.dialog.setAttribute('aria-modal', 'true');
 
                 if (this.dialog.open) {
                     Promise.resolve(this.afterOpen(this, e));
@@ -352,11 +341,22 @@ export default class Dialog extends WJElement {
     onClose = (e) => {
         Promise.resolve(this.beforeClose(this, e)).then((res) => {
             this.dialog.close(); // Now close the dialog
+            this.dialog.removeAttribute('aria-modal');
+            this.syncHostOpenState();
 
             if (!this.dialog.open) {
                 Promise.resolve(this.afterClose(this, e));
             }
         });
+    };
+
+    onNativeDialogClose = () => {
+        this.dialog?.removeAttribute('aria-modal');
+        this.removeAttribute('open');
+    };
+
+    syncHostOpenState = () => {
+        this.toggleAttribute('open', !!this.dialog?.open);
     };
 
     /**
