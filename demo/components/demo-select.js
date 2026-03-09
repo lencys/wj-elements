@@ -454,6 +454,47 @@ template.innerHTML = `
         </wje-select>
       </div>
     </div>
+
+    <!-- LONG OPTION NAMES -->
+
+    <h2>Long option names</h2>
+    <p class="description">
+      Playground na overenie dlhých textov v <span class="tok tag">&lt;wje-select&gt;</span> aj
+      vo vnútri <span class="tok tag">&lt;wje-option&gt;</span>.
+    </p>
+    <div class="playground">
+      <div class="content">
+        <wje-select
+          id="long-option-names-select"
+          label="Výber položky s veľmi dlhým názvom, ktorý simuluje reálny produkčný scenár v aplikácii"
+          placeholder="Vyberte možnosť s veľmi dlhým textovým popisom"
+          variant="standard"
+          max-height="220px"
+          clearable
+          find
+        >
+          <wje-option value="long-option-1">
+            Veľmi dlhý názov možnosti číslo jedna, ktorý obsahuje detailný popis funkcionality pre interný systém
+          </wje-option>
+          <wje-option value="long-option-2" selected>
+            Veľmi dlhý názov možnosti číslo dva, ktorý reprezentuje špecifickú konfiguráciu pre viacúrovňové spracovanie údajov
+          </wje-option>
+          <wje-option value="long-option-3">
+            Veľmi dlhý názov možnosti číslo tri, ktorý demonštruje správanie pri pretečení textu a zalamovaní obsahu
+          </wje-option>
+          <wje-option value="long-option-4">
+            Veľmi dlhý názov možnosti číslo štyri, určený na testovanie čitateľnosti v komponentoch s obmedzenou šírkou
+          </wje-option>
+        </wje-select>
+        <style>
+          #long-option-names-select::part(input) {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        </style>
+      </div>
+    </div>
     
     <!-- MULTIPLE -->
 

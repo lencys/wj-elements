@@ -7,6 +7,24 @@ template.innerHTML = `<style>
     .content {
       display: block;
     }
+    .router-layout {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .outlet-wrap {
+      width: 320px;
+      height: 220px;
+      position: relative;
+      overflow: auto;
+      border: 1px solid var(--wje-border-color, #d8d8d8);
+      border-radius: 8px;
+      padding: .5rem;
+    }
+    .menu-wrap {
+      width: 280px;
+    }
   </style>
   <h1>Router</h1>
   <div class="container">
@@ -23,19 +41,41 @@ template.innerHTML = `<style>
       na zmenu aktuálnej trasy.
     </p>
     <div class="playground">
-      <div class="content" style="display: flex; justify-content: center;">
-        <div style="width: 300px; height: 200px; position: relative; overflow: scroll">
+      <div class="content router-layout">
+        <div class="outlet-wrap">
           <wje-router-outlet id="my-outlet-1" animation="fade"></wje-router-outlet>
         </div>
-        <wje-menu id="navigation" variant="nav" active>
-            <wje-menu-item route="example-route-1">Route 1</wje-menu-item>
-            <wje-menu-item route="example-route-2">Route 2</wje-menu-item>
+        <wje-menu id="navigation" variant="nav" active class="menu-wrap">
+          <wje-menu-item route="example-route-1">Route 1</wje-menu-item>
+          <wje-menu-item route="example-route-2">Route 2</wje-menu-item>
         </wje-menu>
-        
       </div>
     </div>
-    </div>
 
+    <h2>Menu Item + param-*</h2>
+    <p class="description">
+      Ukážka navigácie cez <span class="tok tag">&lt;wje-menu-item&gt;</span> s parametrom
+      <span class="tok attr">param-id</span>. Klik na položku vygeneruje route
+      <span class="tok attr">absence-request.detail</span> s rôznym ID.
+    </p>
+    <div class="playground">
+      <div class="content router-layout">
+        <wje-menu variant="context" active class="menu-wrap">
+          <wje-menu-item route="absence-request.detail" param-id="9e022371-a9c9-470c-99cd-6c240fc2eed4">
+            <wje-icon name="eye" slot="start"></wje-icon>
+            <span>Detail (ID 1)</span>
+          </wje-menu-item>
+          <wje-menu-item route="absence-request.detail" param-id="241f3590-09e2-4a9d-91dc-c83cc6a8c7c5">
+            <wje-icon name="eye" slot="start"></wje-icon>
+            <span>Detail (ID 2)</span>
+          </wje-menu-item>
+          <wje-menu-item route="router">
+            <wje-icon name="arrow-left" slot="start"></wje-icon>
+            <span>Späť na demo router</span>
+          </wje-menu-item>
+        </wje-menu>
+      </div>
+    </div>
   </div>`;
 
 export default class DemoRouter extends WJElement {
@@ -58,6 +98,11 @@ export default class DemoRouter extends WJElement {
    */
   static get customTemplate() {
     return template;
+  }
+
+  afterDraw() {
+    const codeSnippet = new CodeSnippet();
+    codeSnippet.generateSnippet(this.context);
   }
 }
 

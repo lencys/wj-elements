@@ -342,7 +342,7 @@ export default class MenuItem extends WJElement {
         if (!container) return;
 
         this.unbindPortalRouterLinks?.();
-        this.unbindPortalRouterLinks = bindRouterLinks(container, { selector: '[route]' });
+        this.unbindPortalRouterLinks = bindRouterLinks(container, { selector: false });
     }
 
     bindRouterLinks() {
@@ -350,7 +350,7 @@ export default class MenuItem extends WJElement {
         if (!parent) return;
 
         this.unbindRouterLinks?.();
-        this.unbindRouterLinks = bindRouterLinks(parent, { selector: '[route]' });
+        this.unbindRouterLinks = bindRouterLinks(parent, { selector: false });
     }
 
     /**
