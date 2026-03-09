@@ -27,6 +27,17 @@
     margin-block: 0;
 }
 
+slot[name='check'] {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+}
+
+::slotted([slot='check']) {
+    flex: 0 0 auto;
+    flex-shrink: 0;
+}
+
 :host([selected]) {
     ::slotted([slot='check']) {
         visibility: visible;
