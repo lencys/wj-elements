@@ -4,6 +4,14 @@ import sinon from 'sinon';
 import '../../dist/wje-button.js';
 
 describe('my-first-test', () => {
+    it('does not throw in afterDraw when detached from DOM and route is set', () => {
+        const el = document.createElement('wje-button');
+        el.setAttribute('route', 'demo.route');
+
+        expect(() => el.afterDraw()).to.not.throw();
+        el.beforeDisconnect();
+    });
+
     // Testy pre overenie, že element bol správne vytvorený
     it('works', async () => {
         const el = await fixture(html`
@@ -80,6 +88,32 @@ describe('my-first-test', () => {
         expect(el.getAttribute('value')).to.equal('off');
         el.click();
         expect(el.getAttribute('value')).to.equal('on');
+    });
+
+    it('keeps exactly one visible toggle node across rerenders', async () => {
+        const el = await fixture(html`
+      <wje-button toggle="off">
+        <span slot="toggle">On</span>
+        <span slot="toggle">Off</span>
+      </wje-button>`);
+        await el.updateComplete;
+
+        const [onNode, offNode] = el.querySelectorAll('[slot="toggle"]');
+        expect(onNode.classList.contains('show')).to.equal(false);
+        expect(offNode.classList.contains('show')).to.equal(true);
+        expect(el.getAttribute('value')).to.equal('off');
+
+        el.click();
+        await el.updateComplete;
+        expect(onNode.classList.contains('show')).to.equal(true);
+        expect(offNode.classList.contains('show')).to.equal(false);
+        expect(el.getAttribute('value')).to.equal('on');
+
+        el.click();
+        await el.updateComplete;
+        expect(onNode.classList.contains('show')).to.equal(false);
+        expect(offNode.classList.contains('show')).to.equal(true);
+        expect(el.getAttribute('value')).to.equal('off');
     });
 
     it('should set all default properties correctly', async () => {

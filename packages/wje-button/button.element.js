@@ -1,4 +1,4 @@
-import { bindRouterLinks } from 'slick-router/middlewares/router-links.js';
+import { bindRouterLinks } from '../utils/router-links.js';
 
 import { bool } from '../utils/utils.js';
 import { default as WJElement, event, WjElementUtils } from '../wje-element/element.js';
@@ -428,18 +428,16 @@ export default class Button extends WJElement {
      */
     afterDraw() {
         if (this.hasAttribute('route')) {
-            this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: false });
+            this.bindRouterLinks();
+            if (!this.unbindRouterLinks) {
+                queueMicrotask(() => this.bindRouterLinks());
+            }
         }
 
         // nastavenie toggle podla atributu, ak nie je nastaveny, tak sa zobrazi vzdy prvy element
         if (this.hasToggle) {
-            if (this.toggle === 'off') {
-                this.slotToggle.assignedNodes()[1].classList.add('show');
-                this.setAttribute('value', 'off');
-            } else {
-                this.slotToggle.assignedNodes()[0].classList.add('show');
-                this.setAttribute('value', 'on');
-            }
+            const initialToggleValue = this.getAttribute('value') || (this.toggle === 'off' ? 'off' : 'on');
+            this.setToggleState(initialToggleValue);
         }
 
         if (this.hasAttribute('custom-event')) {
@@ -472,6 +470,14 @@ export default class Button extends WJElement {
         this.syncAria();
     }
 
+    bindRouterLinks() {
+        const parent = this.parentElement;
+        if (!parent) return;
+
+        this.unbindRouterLinks?.();
+        this.unbindRouterLinks = bindRouterLinks(parent, { selector: false });
+    }
+
     /**
      * Before disconnect method for the Button element.
      */
@@ -500,18 +506,43 @@ export default class Button extends WJElement {
      * Toggle states method for the Button element.
      */
     toggleStates = () => {
-        const nodes = this.slotToggle.assignedNodes().filter((node) => node.nodeType === Node.ELEMENT_NODE);
-
-        nodes.forEach((node, index) => {
-            if (node.classList.contains('show')) {
-                node.classList.remove('show');
-            } else {
-                node.classList.add('show');
-                this.setAttribute('value', index === 0 ? 'on' : 'off');
-            }
-        });
+        const nextValue = this.getAttribute('value') === 'off' ? 'on' : 'off';
+        this.setToggleState(nextValue);
 
         this.syncAria();
+    }
+
+    /**
+     * Returns assigned toggle elements.
+     * @returns {HTMLElement[]}
+     */
+    getToggleNodes() {
+        if (!this.slotToggle) return [];
+        if (typeof this.slotToggle.assignedElements === 'function') {
+            return this.slotToggle.assignedElements({ flatten: true });
+        }
+
+        return this.slotToggle.assignedNodes().filter((node) => node.nodeType === Node.ELEMENT_NODE);
+    }
+
+    /**
+     * Sets toggle state and updates slotted toggle visibility.
+     * @param {'on'|'off'|string} value
+     */
+    setToggleState(value) {
+        const nodes = this.getToggleNodes();
+        if (!nodes.length) return;
+
+        nodes.forEach((node) => node.classList.remove('show'));
+
+        const expectedState = value === 'off' ? 'off' : 'on';
+        const targetNode = expectedState === 'off' ? (nodes[1] ?? nodes[0]) : nodes[0];
+        targetNode?.classList.add('show');
+
+        const normalizedValue = expectedState === 'off' && nodes[1] ? 'off' : 'on';
+        if (this.getAttribute('value') !== normalizedValue) {
+            this.setAttribute('value', normalizedValue);
+        }
     }
 
     /**

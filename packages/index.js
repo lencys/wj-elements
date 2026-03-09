@@ -1,5 +1,5 @@
 // Router
-export { bindRouterLinks } from 'slick-router/middlewares/router-links.js';
+export { bindRouterLinks } from './utils/router-links.js';
 
 // Utilities
 export { Localizer } from './utils/localize.js';

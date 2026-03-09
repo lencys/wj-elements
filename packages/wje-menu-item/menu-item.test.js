@@ -6,6 +6,12 @@ import '../../dist/wje-popup.js';
 import '../../dist/wje-tooltip.js';
 
 describe('<wje-menu-item>', () => {
+  it('does not throw in afterDraw when detached from DOM', () => {
+    const el = document.createElement('wje-menu-item');
+    expect(() => el.afterDraw()).to.not.throw();
+    el.beforeDisconnect();
+  });
+
   it('sets role menuitem and aria-disabled when disabled', async () => {
     const el = await fixture(html`<wje-menu-item disabled>Item</wje-menu-item>`);
     await el.updateComplete;

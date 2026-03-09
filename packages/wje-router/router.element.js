@@ -1,6 +1,7 @@
 import { interceptLinks, Router } from 'slick-router';
 //import {Router as CoreRouter, interceptLinks} from 'slick-router/core.js';
 import { events } from 'slick-router/middlewares/events.js';
+import { routerLinks } from '../utils/router-links.js';
 
 import { default as WJElement } from '../wje-element/element.js';
 
@@ -71,6 +72,7 @@ export default class Routerx extends WJElement {
 
 		this.router.map(this.routes);
 		this.router.use(this.setBreadcrumb);
+		this.router.use(routerLinks);
 		this.router.use(events);
 		this.router.use(this.resetScrollPosition);
 		this.router.listen();

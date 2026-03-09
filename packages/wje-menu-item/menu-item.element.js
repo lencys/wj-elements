@@ -1,4 +1,4 @@
-import { bindRouterLinks } from 'slick-router/middlewares/router-links.js';
+import { bindRouterLinks } from '../utils/router-links.js';
 
 import { default as WJElement, event, WjElementUtils } from '../wje-element/element.js';
 import styles from './styles/styles.css?inline';
@@ -282,8 +282,10 @@ export default class MenuItem extends WJElement {
      * Adds event listeners after drawing the MenuItem.
      */
     afterDraw() {
-
-        this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: '[route]' });
+        this.bindRouterLinks();
+        if (!this.unbindRouterLinks) {
+            queueMicrotask(() => this.bindRouterLinks());
+        }
 
         document.addEventListener('wje-router:rebind', this.rebindRouterLinks);
 
@@ -336,7 +338,19 @@ export default class MenuItem extends WJElement {
     };
 
     rebindRouterLinks = (e) => {
-        this.unbindPortalRouterLinks = bindRouterLinks(e.detail.container, { selector: '[route]' });
+        const container = e?.detail?.container;
+        if (!container) return;
+
+        this.unbindPortalRouterLinks?.();
+        this.unbindPortalRouterLinks = bindRouterLinks(container, { selector: '[route]' });
+    }
+
+    bindRouterLinks() {
+        const parent = this.parentElement;
+        if (!parent) return;
+
+        this.unbindRouterLinks?.();
+        this.unbindRouterLinks = bindRouterLinks(parent, { selector: '[route]' });
     }
 
     /**

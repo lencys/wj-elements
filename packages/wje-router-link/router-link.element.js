@@ -1,4 +1,4 @@
-import { bindRouterLinks } from 'slick-router/middlewares/router-links.js';
+import { bindRouterLinks } from '../utils/router-links.js';
 
 import { default as WJElement } from '../wje-element/element.js';
 import styles from './styles/styles.css?inline';
@@ -64,7 +64,18 @@ export default class RouterLink extends WJElement {
     }
 
     afterDraw(context, appStore, attributes) {
-        this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: false });
+        this.bindRouterLinks();
+        if (!this.unbindRouterLinks) {
+            queueMicrotask(() => this.bindRouterLinks());
+        }
+    }
+
+    bindRouterLinks() {
+        const parent = this.parentElement;
+        if (!parent) return;
+
+        this.unbindRouterLinks?.();
+        this.unbindRouterLinks = bindRouterLinks(parent, { selector: false });
     }
 
     /**
