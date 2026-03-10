@@ -49,6 +49,14 @@ template.innerHTML = `<style>
           <wje-menu-item route="example-route-1">Route 1</wje-menu-item>
           <wje-menu-item route="example-route-2">Route 2</wje-menu-item>
         </wje-menu>
+
+        <wje-dropdown id="custom-dropdown-basic" label="Start" placement="bottom-start" offset="5" collapsible portaled>
+          <wje-button size="large" slot="trigger" caret>Large</wje-button>
+          <wje-menu id="navigation" variant="context" active class="menu-wrap">
+            <wje-menu-item route="example-route-1">Route 1</wje-menu-item>
+            <wje-menu-item route="example-route-2">Route 2</wje-menu-item>
+          </wje-menu>
+        </wje-dropdown>
       </div>
     </div>
 

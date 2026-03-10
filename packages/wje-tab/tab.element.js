@@ -1,5 +1,5 @@
 import { default as WJElement, event } from '../wje-element/element.js';
-import { bindRouterLinks } from '../utils/router-links.js';
+import { bindRouterLinks } from 'slick-router/middlewares/router-links.js';
 import styles from './styles/styles.css?inline';
 
 /**
@@ -96,6 +96,8 @@ export default class Tab extends WJElement {
             disabled: this.hasAttribute('disabled'),
         });
     }
+
+
     /**
      * Draws the component for the tab.
      * @returns {DocumentFragment}
@@ -125,21 +127,10 @@ export default class Tab extends WJElement {
      * // @fires wje-tab:change - Dispatched when the component is clicked, indicating a tab change.
      */
     afterDraw() {
-        this.bindRouterLinks();
-        if (!this.unbindRouterLinks) {
-            queueMicrotask(() => this.bindRouterLinks());
-        }
+        this.unbindRouterLinks = bindRouterLinks(this.parentElement, { selector: false });
         event.addListener(this, 'click', 'wje-tab:change');
         this.syncAriaLabel();
         this.slotEl?.addEventListener('slotchange', () => this.syncAriaLabel());
-    }
-
-    bindRouterLinks() {
-        const parent = this.parentElement;
-        if (!parent) return;
-
-        this.unbindRouterLinks?.();
-        this.unbindRouterLinks = bindRouterLinks(parent, { selector: false });
     }
 
     /**

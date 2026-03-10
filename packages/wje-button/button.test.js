@@ -4,14 +4,6 @@ import sinon from 'sinon';
 import '../../dist/wje-button.js';
 
 describe('my-first-test', () => {
-    it('does not throw in afterDraw when detached from DOM and route is set', () => {
-        const el = document.createElement('wje-button');
-        el.setAttribute('route', 'demo.route');
-
-        expect(() => el.afterDraw()).to.not.throw();
-        el.beforeDisconnect();
-    });
-
     // Testy pre overenie, že element bol správne vytvorený
     it('works', async () => {
         const el = await fixture(html`

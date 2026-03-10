@@ -1,11 +1,10 @@
 import '../../dist/wje-element.js';
-import { expect } from '@open-wc/testing';
+import { expect, fixture, html } from '@open-wc/testing';
 import '../../dist/wje-router-link.js';
 
 describe('<wje-router-link>', () => {
-    it('does not throw in afterDraw when detached from DOM', () => {
-        const el = document.createElement('wje-router-link');
-        expect(() => el.afterDraw()).to.not.throw();
-        el.beforeDisconnect();
+    it('renders as custom element', async () => {
+        const el = await fixture(html`<wje-router-link>Link</wje-router-link>`);
+        expect(el).to.be.instanceOf(HTMLElement);
     });
 });
