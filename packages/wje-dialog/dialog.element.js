@@ -315,12 +315,12 @@ export default class Dialog extends WJElement {
      * @param e
      */
     onOpen = (e) => {
-        if (this.dialog) {
-            this.dialog.innerHTML = '';
-        }
+        if (!this.dialog) return;
+        this.dialog.innerHTML = '';
 
         setTimeout(() => {
             Promise.resolve(this.beforeOpen(this, e)).then((res) => {
+                if (!this.dialog) return;
                 this.htmlDialogBody(this.dialog);
 
                 this.dialog.showModal(); // Now open the dialog
@@ -340,7 +340,11 @@ export default class Dialog extends WJElement {
      */
     onClose = (e) => {
         Promise.resolve(this.beforeClose(this, e)).then((res) => {
-            this.dialog.close(); // Now close the dialog
+            if (!this.dialog || typeof this.dialog.close !== 'function') return;
+
+            if (this.dialog.open) {
+                this.dialog.close(); // Now close the dialog
+            }
             this.dialog.removeAttribute('aria-modal');
             this.syncHostOpenState();
 

@@ -107,4 +107,22 @@ describe('<wje-dialog>', () => {
     el.dialog.dispatchEvent(new Event('close'));
     expect(el.hasAttribute('open')).to.equal(false);
   });
+
+  it('ignores close when native dialog is missing', async () => {
+    const el = await fixture(html`<wje-dialog headline="Title"></wje-dialog>`);
+    await el.updateComplete;
+
+    el.dialog = undefined;
+    expect(() => el.close()).to.not.throw();
+    await aTimeout(0);
+  });
+
+  it('ignores open when native dialog is missing', async () => {
+    const el = await fixture(html`<wje-dialog headline="Title"></wje-dialog>`);
+    await el.updateComplete;
+
+    el.dialog = undefined;
+    expect(() => el.onOpen()).to.not.throw();
+    await aTimeout(0);
+  });
 });
