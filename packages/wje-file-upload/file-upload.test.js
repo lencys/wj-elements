@@ -368,6 +368,32 @@ describe('<wje-file-upload>', () => {
     expect(ev.detail[1].name).to.equal('b.txt');
   });
 
+  [
+    ['table.xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'file-type-xls'],
+    ['document.docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'file-type-doc'],
+    ['slides.ppt', 'application/vnd.ms-powerpoint', 'file-type-ppt'],
+  ].forEach(([name, type, icon]) => {
+    it(`pri MIME type ${type} vykreslí ikonku ${icon}`, async () => {
+      const el = await fixture(html`<wje-file-upload></wje-file-upload>`);
+      const file = new File(['a'], name, { type });
+      const preview = el.createPreview(file);
+      const previewIcon = preview.querySelector('wje-icon');
+
+      expect(previewIcon).to.exist;
+      expect(previewIcon.getAttribute('name')).to.equal(icon);
+    });
+  });
+
+  it('pri prázdnom file.type fallbackne na príponu názvu súboru', async () => {
+    const el = await fixture(html`<wje-file-upload></wje-file-upload>`);
+    const file = new File(['a'], 'archive.xlsx', { type: '' });
+    const preview = el.createPreview(file);
+    const previewIcon = preview.querySelector('wje-icon');
+
+    expect(previewIcon).to.exist;
+    expect(previewIcon.getAttribute('name')).to.equal('file-type-xls');
+  });
+
   it('resetFormState vyčistí fileList slot wrapper', async () => {
     const el = await fixture(html`<wje-file-upload></wje-file-upload>`);
 

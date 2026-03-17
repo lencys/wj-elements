@@ -2,7 +2,7 @@
  * Returns a list of file type categories and their corresponding icon names.
  * @returns {Array<object>} An array of objects representing file type categories.
  * Each object contains the following properties:
- * - `type` {Array&lt;string>} A list of file extensions associated with the category.
+ * - `type` {Array&lt;string>} A list of file extensions and MIME subtypes associated with the category.
  * - `name` {string} The name of the icon representing the category.
  * @example
  * const types = fileType();
@@ -44,11 +44,31 @@ function fileType() {
             name: 'file-type-txt',
         },
         {
-            type: ['doc', 'docx'],
+            type: [
+                'doc',
+                'docx',
+                'msword',
+                'vnd.openxmlformats-officedocument.wordprocessingml.document',
+                'vnd.ms-word.document.macroenabled.12',
+                'vnd.openxmlformats-officedocument.wordprocessingml.template',
+                'vnd.ms-word.template.macroenabled.12',
+                'vnd.oasis.opendocument.text',
+            ],
             name: 'file-type-doc',
         },
         {
-            type: ['xls', 'xlsx'],
+            type: [
+                'xls',
+                'xlsx',
+                'vnd.ms-excel',
+                'vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                'vnd.ms-excel.sheet.macroenabled.12',
+                'vnd.openxmlformats-officedocument.spreadsheetml.template',
+                'vnd.ms-excel.template.macroenabled.12',
+                'vnd.ms-excel.addin.macroenabled.12',
+                'vnd.ms-excel.sheet.binary.macroenabled.12',
+                'vnd.oasis.opendocument.spreadsheet',
+            ],
             name: 'file-type-xls',
         },
         {
@@ -56,7 +76,19 @@ function fileType() {
             name: 'file-type-pdf',
         },
         {
-            type: ['ppt', 'pptx', 'odp'],
+            type: [
+                'ppt',
+                'pptx',
+                'odp',
+                'vnd.ms-powerpoint',
+                'vnd.openxmlformats-officedocument.presentationml.presentation',
+                'vnd.ms-powerpoint.presentation.macroenabled.12',
+                'vnd.openxmlformats-officedocument.presentationml.slideshow',
+                'vnd.ms-powerpoint.slideshow.macroenabled.12',
+                'vnd.openxmlformats-officedocument.presentationml.template',
+                'vnd.ms-powerpoint.template.macroenabled.12',
+                'vnd.oasis.opendocument.presentation',
+            ],
             name: 'file-type-ppt',
         },
     ];
@@ -64,7 +96,7 @@ function fileType() {
 
 /**
  * Retrieves the icon name for a given file type.
- * @param {string} type The file type or category (e.g., "pdf", "image", "folder").
+ * @param {string} type The file extension, MIME subtype or category (e.g., "pdf", "vnd.ms-excel", "folder").
  * @returns {string} The name of the icon associated with the file type.
  * @example
  * getFileTypeIcon('pdf'); // Returns the icon name for PDF files.
@@ -72,6 +104,10 @@ function fileType() {
  */
 export function getFileTypeIcon(type) {
     let searchType;
+    if (!type) {
+        return searchType;
+    }
+
     if (type.toLowerCase() !== 'folder') {
         fileType().forEach((i) => {
             if (i.type.includes(type.toLowerCase())) {
