@@ -523,7 +523,7 @@ export default class FileUpload extends WJElement {
         preview.setAttribute('name', file.name);
         preview.setAttribute('size', file.size);
         preview.setAttribute('uploaded', '0');
-        preview.innerHTML = `<wje-icon slot="img" name="${getFileTypeIcon(file.type.split('/')[1])}" size="large"></wje-icon>`;
+        preview.innerHTML = `<wje-icon slot="img" name="${getFileTypeIcon(file.name.split('/')[1])}" size="large"></wje-icon>`;
         preview.data = file;
 
         return preview;

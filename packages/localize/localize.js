@@ -38,10 +38,28 @@ export class LocalizerDefault {
     }
 
     /**
+     * Translates a key and interpolates placeholders in the format {placeholder}.
+     * Missing params are kept as-is so untranslated placeholders stay visible.
+     * @param {string} key The translation key.
+     * @param {object} [params] Key-value map used for interpolation. Defaults to an empty object.
+     * @returns {string} Localized string with interpolated params.
+     */
+    translateWithParams(key, params = {}) {
+        const translated = this.translate(key);
+
+        if (typeof translated !== 'string') return translated;
+
+        return translated.replace(/\{([^{}]+)\}/g, (match, token) => {
+            const value = params[token.trim()];
+            return value === undefined || value === null ? match : String(value);
+        });
+    }
+
+    /**
      * Translates a key into a localized string based on the provided count and pluralization type.
      * @param {string} key The base translation key to be used for fetching the localized string.
-     * @param {number} [count=0] The count value used to determine the pluralization form.
-     * @param {string} [type='cardinal'] The type of pluralization to use, such as 'cardinal' or 'ordinal'.
+     * @param {number} [count] The count value used to determine the pluralization form. Defaults to 0.
+     * @param {string} [type] The type of pluralization to use, such as 'cardinal' or 'ordinal'. Defaults to 'cardinal'.
      * @returns {string} The translated string, adapted to the pluralization rules and count.
      */
     translatePlural(key, count = 0, type = 'cardinal') {
