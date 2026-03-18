@@ -63,6 +63,15 @@ import Disabled from '@site/static/usage/v1/select/disabled/index.md';
 ## Dynamický zoznam možností
 
 Použitím komponentu Options je podporovaný aj dynamicky generovaný zoznam možností, ktorý sa asynchrónne načíta zo zadanej URL adresy.
+Ak sa nevrátia žiadne možnosti, alebo vyhľadávanie nevráti zhodu, dropdown zobrazí prázdny stav s hláškou `Žiadne dáta`.
+Text tejto hlášky sa berie z lokalizačného kľúča `wj.select.empty`. Ak ho chcete zmeniť v knižnici, upravte príslušný jazykový súbor v `packages/translations`, napríklad `packages/translations/sk-sk.js` alebo `packages/translations/en-gb.js`. Použitý preklad sa vyberá podľa hodnoty `lang` na komponente alebo nadradenom elemente.
+
+```js
+export const skSk = {
+    // ...
+    'wj.select.empty': 'Žiadne dáta',
+};
+```
 
 import Options from '@site/static/usage/v1/select/options/index.md';
 

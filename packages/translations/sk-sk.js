@@ -18,6 +18,7 @@ export const skSk = {
     'wj.pagination.prev': 'Predchádzajúca',
     'wj.pagination.next': 'Ďalšia',
     'wj.pagination.last': 'Posledná stránka',
+    'wj.select.empty': 'Žiadne dáta',
 };
 
 Localizer.registerTranslation(skSk);

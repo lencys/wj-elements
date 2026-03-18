@@ -1,5 +1,6 @@
 import { FormAssociatedElement } from '../internals/form-associated-element.js';
 import { event } from '../utils/event.js';
+import { Localizer } from '../utils/localize.js';
 import Button from '../wje-button/button.js';
 import Popup from '../wje-popup/popup.js';
 import Icon from '../wje-icon/icon.js';
@@ -18,6 +19,7 @@ export class Select extends FormAssociatedElement {
 
 	constructor() {
 		super();
+		this.localizer = new Localizer(this);
 		/**
 		 * @type {HTMLElement|null}
 		 * @description A reference to the counter element, initially null.
@@ -86,6 +88,12 @@ export class Select extends FormAssociatedElement {
 		 * @description A reference to the list element, initially null.
 		 */
 		this.list = null;
+
+		/**
+		 * @type {HTMLElement|null}
+		 * @description A reference to the empty state element, initially null.
+		 */
+		this.emptyState = null;
 
 		this._value = [];
 		this._selectedOptions = [];
@@ -546,6 +554,15 @@ export class Select extends FormAssociatedElement {
 
 		let slot = document.createElement('slot');
 
+		let emptyState = document.createElement('div');
+		emptyState.setAttribute('part', 'empty');
+		emptyState.setAttribute('role', 'option');
+		emptyState.setAttribute('aria-disabled', 'true');
+		emptyState.setAttribute('aria-selected', 'false');
+		emptyState.classList.add('empty');
+		emptyState.hidden = true;
+		emptyState.textContent = this.localizer.translate('wj.select.empty');
+
 		let clear = document.createElement('wje-button');
 		clear.setAttribute('fill', 'link');
 		clear.setAttribute('part', 'clear');
@@ -599,7 +616,7 @@ export class Select extends FormAssociatedElement {
 		inputWrapper.appendChild(slotEnd);
 		inputWrapper.appendChild(arrow);
 
-		list.appendChild(slot);
+		list.append(slot, emptyState);
 
 		if (this.hasAttribute('find')) {
 			let find = document.createElement('wje-input');
@@ -645,6 +662,7 @@ export class Select extends FormAssociatedElement {
 		this.chips = chips;
 		this.clear = clear;
 		this.list = list;
+		this.emptyState = emptyState;
 		this.slotFooter = slotFooter;
 
 		this.syncAria();
@@ -773,6 +791,7 @@ export class Select extends FormAssociatedElement {
 
 			this.selectedOptions = this.#getSelectedOptions();
 			this.selections(true);
+			this.#updateEmptyState();
 
 			this.list.scrollTo(0, 0);
 			event.dispatchCustomEvent(this.popup, 'wje-popup:content-ready'); // Notify that the content is ready
@@ -783,6 +802,8 @@ export class Select extends FormAssociatedElement {
 			event.addListener(this.findEl, 'keyup', '', this.#applySearchFilter);
 			event.addListener(this.findEl, 'wje-input:clear', '', this.#applySearchFilter);
 		}
+
+		this.#updateEmptyState();
 	}
 
 	/**
@@ -1042,10 +1063,12 @@ export class Select extends FormAssociatedElement {
 		const optionsElement = this.querySelector('wje-options');
 		if (optionsElement) {
 			optionsElement.addOption(optionData, silent, map);
+			this.#updateEmptyState();
 			return;
 		}
 		let option = this.htmlOption(optionData, map);
 		this.appendChild(option);
+		this.#updateEmptyState();
 	}
 
 	/**
@@ -1195,6 +1218,30 @@ export class Select extends FormAssociatedElement {
 	}
 
 	/**
+	 * Determines whether the select currently contains at least one visible option.
+	 * @returns {boolean} Returns true when at least one option is visible, otherwise false.
+	 */
+	#hasVisibleOptions() {
+		return Array.from(this.getAllOptions()).some((option) => {
+			if (option.hidden || option.hasAttribute('hidden')) {
+				return false;
+			}
+
+			return getComputedStyle(option).display !== 'none';
+		});
+	}
+
+	/**
+	 * Toggles the empty state message based on whether any visible options are available.
+	 * @returns {void} Does not return a value.
+	 */
+	#updateEmptyState() {
+		if (!(this.emptyState instanceof HTMLElement)) return;
+
+		this.emptyState.hidden = this.#hasVisibleOptions();
+	}
+
+	/**
 	 * Filters option elements based on the search input value.
 	 * This function applies a search filter to a list of options. If a `wj-options` element exists and has
 	 * the `lazy` attribute, the search value is passed to the `wj-options` element, enabling infinite scroll
@@ -1219,6 +1266,8 @@ export class Select extends FormAssociatedElement {
 					option.style.display = 'none';
 				}
 			});
+
+			this.#updateEmptyState();
 		}
 	}
 

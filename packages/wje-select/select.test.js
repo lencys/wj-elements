@@ -1,4 +1,6 @@
 import { fixture, expect, assert, html, oneEvent } from '@open-wc/testing';
+import '../translations/en-gb.js';
+import '../translations/sk-sk.js';
 
 // NOTE: We load WJ Elements dynamically *after* stubbing fetch.
 // Some components capture `fetch` at module-evaluation time, so stubbing must happen first.
@@ -338,7 +340,7 @@ describe('<wje-select>', () => {
   describe('find (search)', () => {
     it('renders find input when find attribute is present', async () => {
       const el = await fixture(html`
-        <wje-select find>
+        <wje-select find lang="sk-sk">
           ${checkTemplate()}
           <wje-option value="aa">Alpha</wje-option>
           <wje-option value="bb">Beta</wje-option>
@@ -376,6 +378,81 @@ describe('<wje-select>', () => {
       expect(beta.style.display).to.equal('block');
       expect(alpha.style.display).to.equal('none');
       expect(gamma.style.display).to.equal('none');
+    });
+
+    it('shows empty state when local search does not match any option', async () => {
+      const el = await fixture(html`
+        <wje-select find lang="sk-sk">
+          ${checkTemplate()}
+          <wje-option value="aa">Alpha</wje-option>
+          <wje-option value="bb">Beta</wje-option>
+        </wje-select>
+      `);
+      await el.updateComplete;
+
+      const empty = el.shadowRoot.querySelector('[part="empty"]');
+      const find = el.shadowRoot.querySelector('wje-input.find');
+      expect(empty).to.exist;
+      expect(find).to.exist;
+      expect(empty.hidden).to.equal(true);
+      expect(getComputedStyle(empty).display).to.equal('none');
+
+      find.value = 'zzz';
+      find.dispatchEvent(new KeyboardEvent('keyup', { bubbles: true, composed: true }));
+      await nextFrame();
+
+      expect(empty.hidden).to.equal(false);
+      expect(empty.textContent.trim()).to.equal('Žiadne dáta');
+      expect(getComputedStyle(empty).display).to.equal('flex');
+
+      find.value = '';
+      find.dispatchEvent(new KeyboardEvent('keyup', { bubbles: true, composed: true }));
+      await nextFrame();
+
+      expect(empty.hidden).to.equal(true);
+      expect(getComputedStyle(empty).display).to.equal('none');
+    });
+  });
+
+  describe('empty state', () => {
+    it('shows empty state when select has no options', async () => {
+      const el = await fixture(html`
+        <wje-select placeholder="Choose" lang="sk-sk"></wje-select>
+      `);
+      await el.updateComplete;
+
+      const empty = el.shadowRoot.querySelector('[part="empty"]');
+      expect(empty).to.exist;
+      expect(empty.hidden).to.equal(false);
+      expect(empty.textContent.trim()).to.equal('Žiadne dáta');
+    });
+
+    it('shows empty state when wje-options loads no data', async () => {
+      const el = await fixture(html`
+        <wje-select lang="sk-sk">
+          ${checkTemplate()}
+          <wje-options url="http://localhost:5174/api/options"></wje-options>
+        </wje-select>
+      `);
+      await el.updateComplete;
+      await nextFrame();
+      await nextFrame();
+
+      const empty = el.shadowRoot.querySelector('[part="empty"]');
+      expect(empty).to.exist;
+      expect(empty.hidden).to.equal(false);
+      expect(empty.textContent.trim()).to.equal('Žiadne dáta');
+    });
+
+    it('uses translated empty state text for the active lang', async () => {
+      const el = await fixture(html`
+        <wje-select lang="en-gb"></wje-select>
+      `);
+      await el.updateComplete;
+
+      const empty = el.shadowRoot.querySelector('[part="empty"]');
+      expect(empty).to.exist;
+      expect(empty.textContent.trim()).to.equal('No data');
     });
   });
 

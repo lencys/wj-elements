@@ -210,6 +210,24 @@ template.innerHTML = `
       </div>
     </div>
 
+    <!-- EMPTY STATE -->
+
+    <h2>Empty state</h2>
+    <p class="description">
+      Ak select nemá žiadne možnosti, alebo vyhľadávanie cez <span class="tok attr">find</span>
+      nevráti zhodu, dropdown zobrazí hlášku <code>Žiadne dáta</code>.
+    </p>
+    <div class="playground">
+      <div class="content" style="gap: .5rem;">
+        <wje-select label="No data" placeholder="Select option" variant="standard" lang="sk-sk"></wje-select>
+
+        <wje-select label="Search no match" placeholder="Select option" variant="standard" find clearable lang="sk-sk">
+          <wje-option value="alpha">Alpha</wje-option>
+          <wje-option value="beta">Beta</wje-option>
+        </wje-select>
+      </div>
+    </div>
+
     <!-- AUTOCOMPLETE -->
 
     <h2>Autocomplete</h2>

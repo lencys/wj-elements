@@ -18,6 +18,7 @@ export const enGb = {
     'wj.pagination.prev': 'Previous',
     'wj.pagination.next': 'Next',
     'wj.pagination.last': 'Last page',
+    'wj.select.empty': 'No data',
 };
 
 Localizer.registerTranslation(enGb);

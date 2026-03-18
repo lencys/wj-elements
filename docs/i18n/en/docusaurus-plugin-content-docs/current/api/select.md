@@ -63,6 +63,15 @@ import Disabled from '@site/static/usage/v1/select/disabled/index.md';
 ## Dynamic list of options
 
 Using the Options component, a dynamically generated list of options is also supported, which is asynchronously retrieved from the specified URL.
+When no options are returned, or when search produces no match, the dropdown shows an empty state message.
+This message is resolved from the `wj.select.empty` localization key. To change it in the library, update the matching language file in `packages/translations`, for example `packages/translations/sk-sk.js` or `packages/translations/en-gb.js`. The active translation is selected from `lang` on the component or one of its ancestors.
+
+```js
+export const enGb = {
+    // ...
+    'wj.select.empty': 'No data',
+};
+```
 
 import Options from '@site/static/usage/v1/select/options/index.md';
 

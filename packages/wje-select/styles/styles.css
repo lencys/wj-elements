@@ -158,6 +158,28 @@ input {
 .list {
     overflow: auto;
     height: 100%;
+    position: relative;
+}
+
+.list:has(.empty:not([hidden])) {
+    min-height: 44px;
+}
+
+.empty {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--wje-spacing-small);
+    color: var(--wje-select-color);
+    text-align: center;
+    background-color: var(--wje-select-options-background-color);
+    pointer-events: none;
+}
+
+.empty[hidden] {
+    display: none;
 }
 
 .options-wrapper:has(.find) .list {
