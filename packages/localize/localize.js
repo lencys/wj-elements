@@ -39,7 +39,7 @@ export class LocalizerDefault {
 
     /**
      * Translates a key and then interpolates placeholders in the format {placeholder}.
-     * The method first resolves the base text through {@link translate}. If the result is not a string,
+     * The method first resolves the base text through `translate()`. If the result is not a string,
      * it is returned unchanged. For string results, every placeholder wrapped in curly braces is matched,
      * the token name is trimmed, and the value is looked up in the `params` object.
      * When a matching param exists, its value is converted to a string and inserted into the translation.
