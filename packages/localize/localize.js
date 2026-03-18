@@ -38,11 +38,24 @@ export class LocalizerDefault {
     }
 
     /**
-     * Translates a key and interpolates placeholders in the format {placeholder}.
-     * Missing params are kept as-is so untranslated placeholders stay visible.
+     * Translates a key and then interpolates placeholders in the format {placeholder}.
+     * The method first resolves the base text through {@link translate}. If the result is not a string,
+     * it is returned unchanged. For string results, every placeholder wrapped in curly braces is matched,
+     * the token name is trimmed, and the value is looked up in the `params` object.
+     * When a matching param exists, its value is converted to a string and inserted into the translation.
+     * Missing or `null` params are left in their original `{placeholder}` form so unresolved tokens stay visible.
      * @param {string} key The translation key.
      * @param {object} [params] Key-value map used for interpolation. Defaults to an empty object.
      * @returns {string} Localized string with interpolated params.
+     * @example
+     * // If the translation is:
+     * // "personalSettings.settings.synchronization.checkbox.exportApprovedAbsence":
+     * //   "Exportuj schválené absencie do {calendar}"
+     * this.localizer.translateWithParams(
+     *   'personalSettings.settings.synchronization.checkbox.exportApprovedAbsence',
+     *   { calendar: 'Google kalendára' },
+     * );
+     * // Returns: 'Exportuj schválené absencie do Google kalendára'
      */
     translateWithParams(key, params = {}) {
         const translated = this.translate(key);
