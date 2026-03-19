@@ -1,1 +1,0 @@
-{"version":3,"file":"wje-popup.js","sources":["../packages/wje-popup/popup.js"],"sourcesContent":["import Popup from './popup.element.js';\n\nexport default Popup;\n\nPopup.define('wje-popup', Popup);\n"],"names":[],"mappings":";AAIA,MAAM,OAAO,aAAa,KAAK;"}
