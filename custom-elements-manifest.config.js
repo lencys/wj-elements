@@ -18,8 +18,8 @@ export default {
   globs: ['packages/**/*.element.js'],
   exclude: ['packages/scss/*', 'packages/css/*'],
   outdir: 'dist',
-  dev: true,
-  watch: true,
+  dev: false,
+  watch: false,
   dependencies: true,
   packagejson: true,
   litelement: false,
@@ -42,7 +42,6 @@ export default {
             const classDoc = moduleDoc?.declarations?.find((declaration) => declaration.name === className);
             const customTags = ['dependency', 'documentation', 'since', 'status', 'title'];
             let customComments = '/**';
-            console.log('node.jsDoc', customComments);
             node.jsDoc?.forEach((jsDoc) => {
               jsDoc?.tags?.forEach((tag) => {
                 const tagName = tag.tagName.getText();
@@ -52,12 +51,10 @@ export default {
                 }
               });
             });
-            console.log('node.jsDoc', customComments);
             // This is what allows us to map JSDOC comments to ReactWrappers.
             // classDoc['jsDoc'] = node.jsDoc?.map(jsDoc => jsDoc.getFullText()).join('\n');
 
             const parsed = parse(`${customComments}\n */`);
-            console.log('parsed', parsed[0]?.tags);
             parsed[0]?.tags?.forEach((t) => {
               switch (t.tag) {
                 case 'dependency':
