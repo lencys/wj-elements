@@ -13,7 +13,7 @@ import Slots from '@ionic-internal/component-api/v1/layout/slots.md';
   <title>Layout | Element to easily build a page layout</title>
   <meta
     name="description"
-    content="API documentation for wje-layout, including usage guidance, attributes, events, methods, styling options, and slots."
+    content="Guide to composing page layout in WebJET Elements using Container, Header, Main, Aside, Footer, and Grid primitives."
   />
 </head>
 
@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-**WebJET Elements** umožňuje si jednoducho zostaviť rozvrhnutie stránok pomocou 5 základných elementov: [Container](./container), [Header](./header), [Main](./main), [Aside](./aside) a [Footer](./footer). V prípade komplexnejších rozvrhnutí WebJET Elements ponúka tiež systém [Grid](./grid).
+**WebJET Elements** makes it easy to compose page structure using five layout primitives: [Container](./container), [Header](./header), [Main](./main), [Aside](./aside), and [Footer](./footer). For more complex screens, you can combine them with the [Grid](./grid) system.
 
 ## Examples of use
 
@@ -36,15 +36,15 @@ import Basic from '@site/static/usage/v1/layout/basic/index.md';
 
 ## When to use
 
-Use `wje-layout` to compose stable page structure with clear visual and semantic hierarchy.
+Use the layout primitives when you need a stable page structure with a clear hierarchy of header, main content, sidebar, and footer.
 
 ## When not to use
 
-Do not use layout components to handle business logic or application orchestration.
+Do not use layout components to handle business logic or application state orchestration. Their role is structure and composition.
 
 ## Accessibility
 
-Preserve document semantics (`header`, `main`, `aside`, `footer`) and logical tab/focus order.
+Preserve document semantics (`header`, `main`, `aside`, `footer`) and logical tab/focus order. A page should have only one primary `main` region.
 
 ## Best Practices
 

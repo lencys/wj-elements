@@ -4,260 +4,105 @@ initialTab: 'preview'
 inlineHtmlPreviews: true
 ---
 
-import Codepen from '@components/global/Codepen';
-
 <head>
-  <title>Tmavý režim </title>
+  <title>Tmavý režim</title>
   <meta
     name="description"
-    content="Tmavý režim v Elements je funkcia, ktorá umožňuje prepnúť farebnú schému stránok a komponentov na tmavšie odtiene, čo zlepšuje pohodlie používateľov v tmavších priestoroch a ponúka alternatívny estetický vzhľad. "
+    content="WebJET Elements obsahuje pripravený tmavý motív v súbore dark.css a podporuje prepínanie cez class alebo data atribút."
   />
 </head>
 
-Tmavý režim v Elements je funkcia, ktorá umožňuje prepnúť farebnú schému stránok a komponentov na tmavšie odtiene, čo zlepšuje pohodlie používateľov v tmavších priestoroch a ponúka alternatívny estetický vzhľad.
+WebJET Elements už obsahuje pripravený tmavý motív v súbore `dark.css`. Ak spolu načítate `light.css` aj `dark.css`, tmavý režim aktivujete iba prepnutím vhodného selektora na dokumente alebo kontajneri.
 
-## Použitím media query
+## Podporované selektory
 
-Prvým spôsobom, ako zapnúť tmavý režim, je použitie [CSS media query pre používateľom preferovanú farebnú schému](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme). Tento media query sa napojí na systémové nastavenie zariadenia používateľa a použije tému, ak je tmavý režim povolený.
+Vstavaný tmavý motív reaguje na tieto selektory:
 
-```css
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* sem vložiť premenné tmavého režimu */
-  }
-}
+- `.dark`
+- `.wje-theme-dark`
+- `[data-theme="dark"]`
+
+Svetlý motív používa paralelne:
+
+- `.light`
+- `.wje-theme-light`
+- `[data-theme="light"]`
+
+## Základné zapojenie
+
+```html
+<link rel="stylesheet" href="/wje-elementy/styles.css" />
+<link rel="stylesheet" href="/wje-elementy/light.css" />
+<link rel="stylesheet" href="/wje-elementy/dark.css" />
 ```
 
-V súčasnosti má media query `prefers-color-scheme` [podporu prehliadačov](https://caniuse.com/#feat=prefers-color-scheme).
+Potom môžete tému prepínať napríklad cez `data-theme`:
+
+```js
+document.documentElement.dataset.theme = 'dark';
+// alebo:
+document.documentElement.dataset.theme = 'light';
+```
+
+## Prepínanie podľa preferencie systému
+
+Ak chcete rešpektovať systémové nastavenie používateľa, použite `prefers-color-scheme`:
+
+```js
+const media = window.matchMedia('(prefers-color-scheme: dark)');
+
+const applyTheme = () => {
+  document.documentElement.dataset.theme = media.matches ? 'dark' : 'light';
+};
+
+applyTheme();
+media.addEventListener('change', applyTheme);
+```
 
 ## Úprava systémového UI
 
-Pri vývoji tmavej témy si môžete všimnúť, že niektoré systémové komponenty používateľského rozhrania sa neprispôsobujú tmavému režimu správne. To fix this you will need to specify the `color-scheme`. See the <a href="https://caniuse.com/#feat=mdn-html_elements_meta_name_color-scheme" target="_blank" >kompatibilita prehliadačov pre color-scheme</a> for details on cross browser support.
-
-Hoci možno používate hlavne komponenty Elements a nie iba natívne komponenty, `color-scheme` môže ovplyvniť aj také aspekty vašej aplikácie, ako je napríklad scroll bar. Aby ste mohli používať `color-scheme`, budete musieť pridať nasledujúce HTML do `head` vašej aplikácie:
+Pri tmavom režime sa oplatí nastaviť aj `color-scheme`, aby sa správne vykresľovali napríklad formulárové prvky alebo scrollbar:
 
 ```html
 <meta name="color-scheme" content="light dark" />
 ```
 
-To umožní stránke označiť, ktorá farebná schéma jej vyhovuje pri vykresľovaní. Alternatively, you can add the following CSS to do this on a per-element basis:
+Alebo priamo cez CSS:
 
 ```css
-color-scheme: light dark;
+html {
+  color-scheme: light dark;
+}
 ```
 
-| Predvolený scrollbar                                               | Scrollbar s `color-scheme`                                      |
-| ------------------------------------------------------------------ | --------------------------------------------------------------- |
-| ![Aplikácia bez color-scheme](/img/theming/color-scheme-light.png) | ![Aplikácia s color-scheme](/img/theming/color-scheme-dark.png) |
+## Vlastný dark theme override
 
-Viac informácií o `color-scheme` nájdete na adrese https://web.dev/color-scheme/.
-
-## WebJET Tmavý režim
-
-WebJET Elements má odporúčanú šablónu premenných, ktorú môžete použiť na vytvorenie tmavého režimu.
-
-Nasledujúci kód môžete skopírovať a vložiť do aplikácie, aby ste získali tmavú tému WebJET Elements. Tmavý režim nebude povolený, kým sa do body nepridá trieda `dark`.
-
-:::note Poznámka
-Viac informácií o premenných, ktoré sa menia, vrátane ďalších premenných, ktoré možno pridať na ďalšie prispôsobenie, nájdete v časti [Šablóny](themes.md).
-:::
+Ak vám vstavaný tmavý motív nestačí, pridajte vlastné prepísania nad jeho tokeny:
 
 ```css
-/*
- * Dark mode
- * -------------------------------------------
- */
+[data-theme='dark'] {
+  --wje-background: #0b1220;
+  --wje-color: #e5e7eb;
+  --wje-border-color: #334155;
 
-:host,
-.wje-theme-dark,
-.dark {
-  color-scheme: dark;
+  --wje-card-background: #111827;
+  --wje-card-color: #f8fafc;
+}
+```
 
-  --wje-font-size-x-small: 0.625rem;
-  --wje-font-size-small: 0.75rem;
-  --wje-font-size: 0.875rem;
-  --wje-font-size-medium: 1rem;
-  --wje-font-size-large:	1.25rem;
-  --wje-font-size-x-large: 1.5rem;
-  --wje-font-size-2x-large: 2.25rem;
-  --wje-font-size-3x-large: 3rem;
-  --wje-font-size-4x-large: 4.5rem;
+Takto zachováte kompatibilitu s komponentmi a zároveň si doladíte vzhľad podľa potreby.
 
-  --wje-line-height: 21px;
+## Odporúčania
 
-  --wje-border-radius-small: .25rem; // 4px
-  --wje-border-radius-medium: .5rem; // 8px
-  --wje-border-radius-large: .75rem; // 2px
-  --wje-border-radius-x-large: 1rem; // 16px
-  --wje-border-radius-circle: 50%;
-  --wje-border-radius-pill: 50rem;
+- Načítajte vždy `light.css` aj `dark.css`, ak plánujete prepínanie tém za behu.
+- Vlastné úpravy robte cez CSS tokeny, nie cez hlboké prepisovanie interných selektorov komponentov.
+- Otestujte kontrast textu, hover/focus stavy a formulárové prvky v oboch režimoch.
 
-  --wje-border-size: 0px;
-  --wje-border-style: solid;
+## Súvisiace témy
 
-  --wje-box-shadow-medium: 0 1px 8px rgba(0,0,0,0.5);
-  --wje-box-shadow-large: rgba(0, 0, 0, 0.12) 0 4px 16px;
-
-  --wje-backdrop: rgb(0, 0, 0);
-  --wje-backdrop-opacity: .3;
-
-  /*
-  * Dark Colors
-  * -------------------------------------------
-  */
-  --wje-color: var(--wje-color-contrast-11);
-  --wje-color-dark: hsl(0, 0%, 29%);
-  --wje-color-light: hsl(0 0% 95%);
-  --wje-background: hsl(218, 57%, 3%);//hsl(223, 15%, 18%);
-  --wje-border-color: var(--wje-color-contrast-4);
-
-  --wje-card-background: var(--wje-color-contrast-3);
-  --wje-card-color: var(--wje-color-white) !important;
-
-  --wje-color-primary: var(--wje-color-primary-1);
-  --wje-color-complete: var(--wje-color-complete-1);
-  --wje-color-success: var(--wje-color-success-1);
-  --wje-color-warning: var(--wje-color-warning-1);
-  --wje-color-danger: var(--wje-color-danger-1);
-  --wje-color-info: var(--wje-color-info-1);
-  --wje-color-menu: hsl(220, 15%, 15%);
-  --wje-color-contrast: hsl(210, 11%, 15%); //#2b303b;
-
-  --wje-color-white: #fff;
-  --wje-color-black: #000;
-
-  /*
-  * Dark Contrast
-  * -------------------------------------------
-  */
-  --wje-color-contrast-lowest: hsl(0, 0%, 0%); //rgba(0, 0, 0, 1); //#000000
-  --wje-color-contrast-lower: hsl(0, 0%, 13%); //rgba(33, 33, 33, 1); //#212121
-  --wje-color-contrast-low: hsl(0, 0%, 29%); //rgba(33, 33, 33, 0.81); //#4b4b4b
-  --wje-color-contrast-medium: hsl(0, 0%, 46%); //rgba(33, 33, 33, 0.62); //#757575
-  --wje-color-contrast-high: hsl(0, 0%, 88%); //rgba(33, 33, 33, 0.14); //#e0e0e0
-  --wje-color-contrast-highter: hsl(0, 0%, 96%); //rgba(33, 33, 33, 0.05); //#f4f4f4
-  --wje-color-contrast-highest: hsl(0, 0%, 100%); //rgba(255, 255, 255, 1); //#ffffff
-
-
-  --wje-color-contrast-0: hsl(0, 0%, 0%);
-  --wje-color-contrast-1: hsl(240 5.1% 15%);
-  --wje-color-contrast-2: hsl(240 5.7% 18.2%);
-  --wje-color-contrast-3: hsl(240 4.6% 22%);
-  --wje-color-contrast-4: hsl(240 5% 27.6%);
-  --wje-color-contrast-5: hsl(240 5% 35.5%);
-  --wje-color-contrast-6: hsl(240 3.7% 44%);
-  --wje-color-contrast-7: hsl(240 5.3% 58%);
-  --wje-color-contrast-8: hsl(240 5.6% 73%);
-  --wje-color-contrast-9: hsl(240 7.3% 84%);
-  --wje-color-contrast-10: hsl(240 9.1% 91.8%);
-  --wje-color-contrast-11: hsl(0 0% 95%);
-
-  //--wje-color-contrast-0: hsl(0, 0%, 0%);
-  //--wje-color-contrast-1: hsl(0, 0%, 10%);
-  //--wje-color-contrast-2: hsl(0, 0%, 17%);
-  //--wje-color-contrast-3: hsl(0, 0%, 25%);
-  //--wje-color-contrast-4: hsl(0, 0%, 33%);
-  //--wje-color-contrast-5: hsl(0, 0%, 42%);
-  //--wje-color-contrast-6: hsl(0, 0%, 50%);
-  //--wje-color-contrast-7: hsl(0, 0%, 60%);
-  //--wje-color-contrast-8: hsl(0, 0%, 69%);
-  //--wje-color-contrast-9: hsl(0, 0%, 79%);
-  //--wje-color-contrast-10: hsl(0, 0%, 89%);
-  //--wje-color-contrast-11: hsl(0, 0%, 100%);
-
-  // PRIMARY
-  --wje-color-primary-1: hsl(254, 59%, 57%);
-  --wje-color-primary-2: hsl(256, 59%, 61%);
-  --wje-color-primary-3: hsl(257, 60%, 65%);
-  --wje-color-primary-4: hsl(257, 61%, 68%);
-  --wje-color-primary-5: hsl(258, 61%, 72%);
-  --wje-color-primary-6: hsl(259, 61%, 76%);
-  --wje-color-primary-7: hsl(260, 63%, 80%);
-  --wje-color-primary-8: hsl(260, 62%, 84%);
-  --wje-color-primary-9: hsl(260, 63%, 88%);
-  --wje-color-primary-10: hsl(260, 65%, 92%);
-  --wje-color-primary-11: hsl(261, 70%, 96%);
-
-  // COMPLETE
-  --wje-color-complete-1: hsl(211, 100%, 46%);
-  --wje-color-complete-2: hsl(218, 83%, 59%);
-  --wje-color-complete-3: hsl(221, 83%, 65%);
-  --wje-color-complete-4: hsl(223, 83%, 70%);
-  --wje-color-complete-5: hsl(225, 83%, 74%);
-  --wje-color-complete-6: hsl(226, 83%, 78%);
-  --wje-color-complete-7: hsl(227, 84%, 82%);
-  --wje-color-complete-8: hsl(229, 85%, 86%);
-  --wje-color-complete-9: hsl(229, 84%, 89%);
-  --wje-color-complete-10: hsl(229, 88%, 93%);
-  --wje-color-complete-11: hsl(232, 88%, 96%);
-
-  // SUCCESS
-  --wje-color-success-1: hsl(158, 74%, 38%);
-  --wje-color-success-2: hsl(155, 48%, 47%);
-  --wje-color-success-3: hsl(153, 42%, 54%);
-  --wje-color-success-4: hsl(152, 42%, 59%);
-  --wje-color-success-5: hsl(151, 42%, 65%);
-  --wje-color-success-6: hsl(150, 41%, 70%);
-  --wje-color-success-7: hsl(149, 42%, 75%);
-  --wje-color-success-8: hsl(150, 41%, 80%);
-  --wje-color-success-9: hsl(149, 41%, 85%);
-  --wje-color-success-10: hsl(148, 42%, 90%);
-  --wje-color-success-11: hsl(147, 44%, 95%);
-
-  // WARNING
-  --wje-color-warning-1: hsl(47, 100%, 63%);
-  --wje-color-warning-2: hsl(47, 100%, 67%);
-  --wje-color-warning-3: hsl(47, 100%, 71%);
-  --wje-color-warning-4: hsl(47, 100%, 74%);
-  --wje-color-warning-5: hsl(46, 100%, 77%);
-  --wje-color-warning-6: hsl(46, 100%, 81%);
-  --wje-color-warning-7: hsl(46, 100%, 84%);
-  --wje-color-warning-8: hsl(46, 100%, 87%);
-  --wje-color-warning-9: hsl(46, 100%, 90%);
-  --wje-color-warning-10: hsl(46, 100%, 93%);
-  --wje-color-warning-11: hsl(44, 100%, 96%);
-
-  // DANGER
-  --wje-color-danger-1: hsl(3, 68%, 51%);
-  --wje-color-danger-2: hsl(6, 71%, 56%);
-  --wje-color-danger-3: hsl(7, 73%, 61%);
-  --wje-color-danger-4: hsl(8, 77%, 65%);
-  --wje-color-danger-5: hsl(8, 80%, 70%);
-  --wje-color-danger-6: hsl(10, 82%, 74%);
-  --wje-color-danger-7: hsl(9, 86%, 79%);
-  --wje-color-danger-8: hsl(10, 90%, 83%);
-  --wje-color-danger-9: hsl(11, 93%, 87%);
-  --wje-color-danger-10: hsl(11, 100%, 91%);
-  --wje-color-danger-11: hsl(9, 100%, 96%);
-
-// INFO
-  --wje-color-info-1: hsl(208, 16%, 27%);
-  --wje-color-info-2: hsl(208, 12%, 33%);
-  --wje-color-info-3: hsl(210, 9%, 39%);
-  --wje-color-info-4: hsl(210, 7%, 45%);
-  --wje-color-info-5: hsl(210, 6%, 52%);
-  --wje-color-info-6: hsl(207, 6%, 58%);
-  --wje-color-info-7: hsl(212, 6%, 65%);
-  --wje-color-info-8: hsl(206, 6%, 71%);
-  --wje-color-info-9: hsl(210, 7%, 78%);
-  --wje-color-info-10: hsl(204, 6%, 85%);
-  --wje-color-info-11: hsl(210, 5%, 92%);
-
-
-  // PRIMARY
-  --wje-color-primary-lighter: #eae0fb;
-  --wje-color-primary-light: #845ae0;
-  --wje-color-primary-dark: #4e37b6;
-  --wje-color-primary-darker: #2d218f;
-
-  // SUCCESS
-  --wje-color-success-lighter: #d6f7f0;
-  --wje-color-success-light: #26bf93;
-  --wje-color-success-dark: #0d935b;
-  --wje-color-success-darker: #04733e;
-
-  // COMPLETE
-  --wje-color-complete-lighter: #d3eeff;
+- [CSS Premenné](css-variables.md)
+- [Farby](colors.md)
+- [Šablóny](themes.md)
   --wje-color-complete-light: #0f8ff9;
   --wje-color-complete-dark: #004fbf;
   --wje-color-complete-darker: #00318e;

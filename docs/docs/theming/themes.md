@@ -9,71 +9,63 @@ import SteppedColorGenerator from '@components/page/theming/SteppedColorGenerato
   <title>WebJet Elements šablóny | Zmena predvolených tém a farieb pozadia aplikácie</title>
   <meta
     name="description"
-    content="WebJet Elements ponúka celý rad globálnych premenných, ktoré možno použiť na úpravu predvolenej témy v celej aplikácii. [Farby aplikácie](#application-colors) sú užitočné na zmenu vzhľadu mnohých WebJET komponentov."
+    content="WebJET Elements definuje globálne dizajnové tokeny pre typografiu, povrchy, tiene aj sémantické farby, ktoré môžete prepísať vo vlastnej téme."
   />
 </head>
 
-WebJet Elements ponúka celý rad globálnych premenných, ktoré možno použiť na úpravu predvolenej šablóny v celej aplikácii. Farby aplikácie sú užitočné na zmenu vzhľadu mnohých WebJET komponentov.
+WebJET Elements definuje predvolenú tému pomocou globálnych CSS tokenov. Nájdete ich najmä v súboroch `light.css` a `dark.css`. Pri tvorbe vlastnej témy odporúčame začať od týchto tokenov a nie od ručného prepisovania jednotlivých interných štýlov komponentov.
 
-## Aplikačné farby
+## Čo tvorí tému
 
-Aplikačné farby zohrávajú v aplikácii významnú úlohu a často sa používajú v rôznych kontextoch. Sú obzvlášť praktické na bezproblémové vytváranie tmavých tém alebo tém, ktoré sú v súlade s identitou značky.
+V praxi sa téma skladá z niekoľkých vrstiev:
 
-| Názov                         | Popis                                                       |
-| ----------------------------- | ----------------------------------------------------------- |
-| `--wje-border-color`          | Určuje farbu okrajov v celej aplikácii                      |
-| `--wje-border-radius`         | Určuje zaoblenie okrajov v celej aplikácii                  |
-| `--wje-border-size`           | Určuje šírku okrajov v celej aplikácii                      |
-| `--wje-border-style`          | Určuje štýl okrajov v celej aplikácii                       |
-| `--wje-color`                 | Určuje farbu textu naprieč aplikáciou                       |
-| `--wje-font-family`           | Určuje font textov v celej aplikácii                        |
-| `--wje-font-family-secondary` | Určuje sekundárny font textov v celej aplikácii             |
-| `--wje-force-mac-font-family` | Určuje font textov pre pre zariadenia Mac v celej aplikácii |
-| `--wje-font-size`             | Určuje veľkosť textu naprieč aplikáciou                     |
-| `--wje-line-height`           | Určuje výšku textov v celej aplikácii                       |
+1. **Globálne povrchy a text** – napríklad `--wje-background`, `--wje-color`, `--wje-border-color`.
+2. **Typografia a rhythmus** – napríklad `--wje-font-family`, `--wje-font-size`, `--wje-line-height-normal`.
+3. **Rohy, spacing a tiene** – napríklad `--wje-border-radius-medium`, `--wje-spacing-medium`, `--wje-shadow-medium`.
+4. **Sémantické farebné škály** – napríklad `--wje-color-primary-1` až `--wje-color-primary-11`.
+5. **Komponentové tokeny** – napríklad `--wje-card-background`, `--wje-input-border-color`, `--wje-button-border-radius`.
 
-| Názov                         | Popis                                                          |
-| ----------------------------- | -------------------------------------------------------------- |
-| `--wje-backdrop`              | Farba backdrop overlay overlays and modal backgrounds a pozadí |
-| `--wje-backdrop-opacity`      | Opacity of the backdrop                                        |
-| `--wje-border-radius-circle`  | Určuje predvolenú veľkosť zaoblenia v %                        |
-| `--wje-border-radius-large`   | Border radius for large-sized elements                         |
-| `--wje-border-radius-medium`  | Border radius for medium-sized elements                        |
-| `--wje-border-radius-pill`    | Border radius for pill-shaped elements                         |
-| `--wje-border-radius-small`   | Border radius for small-sized elements                         |
-| `--wje-border-radius-x-large` | Border radius for extra-large-sized elements                   |
-| `--wje-border-size`           | Hrúbka okrajov                                                 |
-| `--wje-border-style`          | Style of borders                                               |
-| `--wje-box-shadow-large`      | Box shadow for large-sized elements                            |
-| `--wje-box-shadow-medium`     | Box shadow for medium-sized elements                           |
-| `--wje-card-background`       | Background color for card elements                             |
-| `--wje-card-color`            | Text color for card elements                                   |
-| `--wje-color-white`           | White color                                                    |
-| `--wje-color-black`           | Black color                                                    |
-| `--wje-font-family`           | Určuje font textov v celej aplikácii                           |
-| `--wje-font-family-secondary` | Určuje sekundárny font textov v celej aplikácii                |
-| `--wje-force-mac-font-family` | Určuje font textov pre pre zariadenia Mac v celej aplikácii    |
-| `--wje-font-size`             | Base font size                                                 |
-| `--wje-font-size-2x-large`    | Font size for 2x large text                                    |
-| `--wje-font-size-3x-large`    | Font size for 3x large text                                    |
-| `--wje-font-size-4x-large`    | Font size for 4x large text                                    |
-| `--wje-font-size-large`       | Font size for large text                                       |
-| `--wje-font-size-medium`      | Font size for medium text                                      |
-| `--wje-font-size-small`       | Font size for small text                                       |
-| `--wje-font-size-x-large`     | Font size for extra-large text                                 |
-| `--wje-font-size-x-small`     | Font size for extra-small text                                 |
-| `--wje-line-height`           | Line height for text elements                                  |
+## Najdôležitejšie globálne tokeny
 
-## Odstupňované farby
+| Token | Význam |
+| --- | --- |
+| `--wje-background` | Základné pozadie aplikácie alebo sekcie |
+| `--wje-color` | Predvolená farba textu |
+| `--wje-border-color` | Predvolená farba okrajov |
+| `--wje-font-family` | Primárny font |
+| `--wje-shadow-medium` | Stredne silný tieň |
+| `--wje-color-primary-1..11` | Tónová škála primárnej farby |
+| `--wje-color-success-1..11` | Tónová škála success farby |
+| `--wje-color-danger-1..11` | Tónová škála danger farby |
 
-Zatiaľ čo aktualizácia premenných pozadia (--wje-background-color) a textu (--wje-text-color) zmení vzhľad aplikácie pre väčšinu komponentov, existujú určité komponenty Ionic, kde to môže vyzerať neštandardne alebo nefunkčne. Bude to viac viditeľné pri použití tmavšej témy.
+## Príklad vlastnej témy
 
-V niektorých komponentoch používame odtieň tmavší ako pozadie alebo svetlejší ako text. Napríklad text nadpisu položky môže potrebovať farbu #404040, ktorá je o niekoľko odtieňov svetlejšia ako naša predvolená farba textu. Medzitým je pozadie komponentu načítania o odtieň tmavšie ako biela, pričom sa používa #f2f2f2. Na definovanie týchto miernych odchýlok používame stupňovité farby. Pri aktualizácii farby pozadia alebo textu aplikácie je dôležité aktualizovať krokové farby.
+```css
+:root {
+  --wje-background: #ffffff;
+  --wje-color: #111827;
+  --wje-border-color: #d1d5db;
 
-V predvolenom nastavení začínajú krokové farby Ionic na predvolenej hodnote farby pozadia #ffffff a miešajú sa s hodnotou farby textu #000000 pomocou zvyšujúceho sa percenta. Úplný zoznam krokových farieb je uvedený v generátore nižšie.
+  --wje-font-family: Inter, system-ui, sans-serif;
+
+  --wje-color-primary-1: #eef2ff;
+  --wje-color-primary-9: #4f46e5;
+  --wje-color-primary-11: #312e81;
+
+  --wje-card-background: #ffffff;
+  --wje-card-color: #111827;
+}
+```
+
+## Odporúčaný postup pri tvorbe témy
+
+1. Začnite globálnymi tokenmi (`--wje-background`, `--wje-color`, `--wje-border-color`).
+2. Potom upravte sémantické farebné škály podľa brand manuálu.
+3. Následne dolaďte komponentové tokeny iba tam, kde nestačia globálne hodnoty.
+4. Otestujte svetlý aj tmavý režim a kontrast interaktívnych prvkov.
 
 ## Generátor odstupňovaných farieb
 
-Vytvorenie vlastnej témy pozadia a farby textu pre vašu aplikáciu. Aktualizujte hexadecimálne hodnoty farieb pozadia alebo textu nižšie a potom skopírujte a vložte vygenerovaný kód priamo do projektu WebJET Elements.
+Ak chcete experimentovať s tónmi pozadia a textu, využite generátor nižšie ako pomocný nástroj pri tvorbe vlastnej témy.
 
 <SteppedColorGenerator />

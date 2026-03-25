@@ -9,20 +9,26 @@ sidebar_label: Základy
   <title>Základy prispôsobenia | Základné definície úprav farieb a šablón</title>
   <meta
     name="description"
-    content="Elements Framework ponúka rozsiahle možnosti prispôsobenia štýlov predovšetkým prostredníctvom premenných CSS. Vďaka tomu môžete ľahko zmeniť vzhľad aplikácie podľa vašich potrieb."
+    content="WebJET Elements sa prispôsobuje najmä cez CSS premenné, vstavané svetlé/tmavé témy a CSS Shadow Parts tam, kde komponent používa Shadow DOM."
   />
 </head>
 
-Elements Framework ponúka rozsiahle možnosti prispôsobenia štýlov predovšetkým prostredníctvom premenných CSS. Vďaka tomu môžete ľahko zmeniť vzhľad aplikácie podľa vašich potrieb. Komponenty Elements používajú premenné CSS pre väčšinu štýlov, vďaka čomu je možné jednoducho upravovať ich predvolené hodnoty. Tieto premenné môžete prepísať vo svojom globálnom súbore štýlov. Okrem toho podporuje SASS, čo umožňuje pokročilejšie možnosti štylizácie a tematizácie. Pomocou premenných SASS a mixinov, ktoré poskytuje Elements, môžete vytvárať vlastné šablóny, upravovať rozloženia a definovať vlastné farebné schémy.
+WebJET Elements je navrhnutý tak, aby sa dal prispôsobovať bez zásahu do zdrojového kódu komponentov. V praxi sa najčastejšie pracuje s tromi vrstvami:
+
+1. **globálne dizajnové tokeny** – napríklad `--wje-background`, `--wje-color`, `--wje-font-family`,
+2. **premenné konkrétnych komponentov** – napríklad `--wje-button-border-color`,
+3. **CSS Shadow Parts** – ak komponent renderuje interný obsah v Shadow DOM a vystavuje `part` atribúty.
+
+Balík zároveň obsahuje pripravené súbory `light.css`, `dark.css` a `styles.css`, takže si môžete vybrať, či použijete predvolené témy, alebo na ne nadviažete vlastnými prepismi.
 
 ## Farby
 
-Farebná paleta Elements sa skladá zo 7 predvolených farieb, ktoré si je možné jednoducho upraviť. Paleta je navrhnutá tak aby spĺňala aktuálne trendy a zároveň zabezpečovala prístupnosť. Používatelia si môžu prispôsobiť jej farby pomocou CSS premenných, čo im umožňuje zmeniť predvolené farby alebo pridať vlastné.
+Komponenty používajú sadu sémantických farieb, napríklad `primary`, `complete`, `success`, `warning`, `danger` a `info`. Tieto farby sú definované cez globálne CSS tokeny a ich tónové škály.
 
 ## CSS Premenné
 
-WJ elements používa pre svoje štýly <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables" target="_blank" rel="noopener noreferrer">Premenné CSS</a>, čo umožňuje dosiahnuť centralizovanú správu štýlov, dynamické prepínanie motívov, obmedziť množstvo kódu a zlepšiť jeho udržiavateľnosť. Viac o ich použití nájdete na [CSS Premenné](css-variables.md)
+WebJET Elements používa pre väčšinu štýlov <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables" target="_blank" rel="noopener noreferrer">CSS premenné</a>. To umožňuje centrálne meniť vizuál celej aplikácie aj jednotlivých komponentov. Viac nájdete na stránke [CSS Premenné](css-variables.md).
 
 ## CSS Shadow Parts
 
-CSS shadow parts uľahčujú úpravu jednotlivých elementov v <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM" target="_blank" rel="noopener noreferrer">Shadow DOMe</a>, ktorý je za iných okolností izolovaný od zbytku aplikácie. Použitím pseudoelementu `::part` v CSS je možné pristúpiť k vybraných častiam komponentov a prispôsobiť si ich podľa svojich preferencií. Viac o tom ako na to, nájdete na strane [CSS Shadow Parts](css-shadow-parts.md).
+Ak komponent používa <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM" target="_blank" rel="noopener noreferrer">Shadow DOM</a>, vnútorné uzly nemožno štandardne štýlovať zvonka. Ak však komponent vystaví `part`, môžete využiť pseudo-element `::part()` a meniť konkrétne interné časti. Podrobnosti sú na stránke [CSS Shadow Parts](css-shadow-parts.md).

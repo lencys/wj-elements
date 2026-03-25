@@ -28,8 +28,9 @@ import DocsCards from '@components/global/DocsCards';
 
 </head>
 
-WebJET Elementy sú modernou sadou nástrojov používateľského rozhrania využívajúca silu web komponentov, ktorá je určená na zjednodušenie vývoja webových aplikácií. Poskytuje kolekciu zapúzdrených a opakovane použiteľných elementov, ktoré môžu výrazne zvýšiť efektivitu a udržiavateľnosť projektov vývoja webových stránok.
-Ponúkajú jednoduchú integráciu s React a Vue.
+WebJET Elements sú moderná sada UI komponentov postavená na webových komponentoch. Poskytujú zapuzdrené a znovu použiteľné elementy, ktoré môžete používať v čistom HTML/JavaScripte aj v aplikáciách postavených na Reacte alebo Vue.
+
+Po načítaní knižnice sa komponenty registrujú ako custom elements, takže ich môžete používať priamo v markupe, napríklad ako `<wje-button>`, `<wje-card>` alebo `<wje-dialog>`.
 
 Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/install.md).
 
@@ -93,21 +94,21 @@ Začnite tvoriť svoju aplikáciu [inštaláciou WebJET elementov](intro/install
 
 ## Prehľad
 
-WebJET Elements je pokročilá platforma na vytváranie a nasadzovanie moderných webových aplikácií a mikrofrontendových riešení. Tento framework je založený na technológii webových komponentov a využíva možnosti webových komponentov a Shadow DOM, aby ponúkol univerzálnu sadu elementov. Tieto elementy sú navrhnuté tak, aby zlepšili a zefektívnili proces vývoja a umožnili vám vytvárať a implementovať pôsobivé aplikácie s vyššou efektivitou.
+WebJET Elements je knižnica komponentov pre moderné webové aplikácie a mikrofrontendové riešenia. Je postavená na štandardoch webovej platformy, takže nie je naviazaná na jeden framework alebo runtime model.
 
-Kľúčové vlastnosti rámca WebJET Elements Framework:
+Kľúčové vlastnosti WebJET Elements:
 
 ### Komplexná sada nástrojov používateľského rozhrania
 
 WebJET Elements obsahuje širokú škálu ovládacích prvkov a komponentov používateľského rozhrania, ktoré sú optimalizované pre webové rozhrania. Tieto komponenty pokrývajú rôzne funkcie a sú navrhnuté tak, aby sa dali ľahko integrovať do akejkoľvek webovej aplikácie.
 
-### Integrácia s populárnymi frameworkami
+### Integrácia s populárnymi frameworkami aj bez frameworku
 
-Framework podporuje bezproblémovú integráciu s modernými webovými technológiami React a Vue, čím zabezpečuje kompatibilitu a flexibilitu pri vývoji.
+Komponenty viete použiť samostatne alebo ich integrovať do projektov v Reacte a Vue. To zjednodušuje adopciu v existujúcich aplikáciách aj v hybridných architektúrach.
 
-### Stabilný a nezávislý
+### Stabilný a nezávislý základ
 
-WebJET Elements je postavený na spoľahlivých štandardizovaných webových technológiách W3C a využíva moderné webové rozhrania API, ako sú Custom Elements a Shadow DOM. Vďaka tomu majú komponenty stabilné rozhranie API a nie sú závislé od rozmaru dodávateľa platformy či knižníc tretích strán.
+WebJET Elements využíva štandardy ako Custom Elements, Shadow DOM a ES moduly. Vďaka tomu majú komponenty stabilné API a dajú sa dlhodobo používať aj mimo jedného konkrétneho frameworku.
 
 ### Využívanie Shadow DOM
 
@@ -115,11 +116,11 @@ WebJET Elements využíva Shadow DOM a zabezpečuje zapuzdrenie štýlu a správ
 
 ### Prispôsobenie a flexibilita
 
-Framework ponúka rozsiahle možnosti prispôsobenia prostredníctvom vlastných vlastností CSS, slotov a shadow parts, čo umožňuje vývojárom prispôsobiť komponenty konkrétnym potrebám.
+Vzhľad komponentov sa prispôsobuje najmä cez CSS premenné, pripravené svetlé/tmavé témy a tam, kde je to vhodné, aj cez CSS Shadow Parts.
 
-### Optimalizovaný pre výkon
+### Optimalizovaný pre výkon a znovupoužitie
 
-Optimalizovaný pre výkon, framework zabezpečuje, že komponenty sú nielen funkčné, ale aj efektívne, čo prispieva k plynulejšiemu používateľskému zážitku.
+Komponenty sú navrhnuté tak, aby boli ľahko znovu použiteľné, samostatné a dobre fungovali aj vo väčších aplikáciách.
 
 **V dokumentácii WebJET Elements nájdete podrobné príklady, ktoré vám pomôžu rýchlo a efektívne vytvárať výnimočné webové aplikácie.**
 

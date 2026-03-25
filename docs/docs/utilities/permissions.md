@@ -1,68 +1,80 @@
 # Oprávnenia
 
-Webjet Elements poskytuje systém na správu oprávnení, ktorý umožňuje zobrazovať alebo skrývať komponenty na základe definovaných oprávnení používateľa.
+WebJET Elements obsahuje jednoduchý systém oprávnení, ktorý môžete použiť na podmienené zobrazenie alebo odstránenie komponentov z DOM-u podľa aktuálnych práv používateľa.
+
+## Ako to funguje
+
+Trieda `Permissions` ukladá zoznam oprávnení do `localStorage`. Základný element `WJElement` potom pri renderi vyhodnocuje atribúty `permission`, `permission-check` a `no-show`.
+
+To znamená, že kontrola prebieha priamo v komponente a nepotrebujete kvôli nej dopisovať vlastnú podmienku v každom view.
 
 ## API pre oprávnenia
 
-Trieda `Permissions` poskytuje rozhranie na správu oprávnení v aplikácii.
-
-
-## Vlastnosti
-
-
-| Názov                         | Popis                                                       |
-| ----------------------------- | ----------------------------------------------------------- |
-| `permissionKey`          | Nastavuje alebo získava kľúč používaný pre uloženie oprávnení v localStorage (predvolená hodnota: 'permissions').                    |
-| `permissions`         | Nastavuje alebo získava pole oprávnení. Oprávnenia sú uložené v localStorage.                  |
+| Názov | Typ | Popis |
+| --- | --- | --- |
+| `permissionKey` | `string` | Kľúč použitý pre ukladanie oprávnení do `localStorage`. Predvolená hodnota je `'permissions'`. |
+| `permissions` | `string[]` | Pole aktuálnych oprávnení používateľa. Pri zápise sa uloží do `localStorage`. |
 
 ## Metódy
 
+| Názov | Parametre | Návratová hodnota | Popis |
+| --- | --- | --- | --- |
+| `includesKey(key)` | `key: string` | `boolean` | Overí, či používateľ má konkrétne oprávnenie. |
+| `isPermissionFulfilled(permissions)` | `permissions: string[]` | `boolean` | Vráti `true`, ak je splnené aspoň jedno oprávnenie z odovzdaného poľa. |
 
-| Názov                                | Parametre             | Návratová hodnota        | Popis                                                                                                  |
-|--------------------------------------|--------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------|
-| `includesKey(key)`                   | key - reťazec reprezentujúci oprávnenie | boolean | Kontroluje, či je konkrétne oprávnenie zahrnuté v pole oprávnení. |
-| `isPermissionFulfilled(permissions)` | permissions - pole reťazcov reprezentujúcich oprávnenia | boolean | Kontroluje, či je splnené aspoň jedno z oprávnení v poskytnutom poli. |
-
-## Použitie
-
-### Nastavenie oprávnení
-
-Oprávnenia môžete nastaviť nasledovne:
+## Nastavenie oprávnení
 
 ```js
 import { Permissions } from 'wj-elements';
 
-// Nastaví pole oprávnení
+// Nastaví pole oprávnení aktuálneho používateľa
 Permissions.permissions = ['admin', 'editor', 'viewer'];
 
-// Zmení kľúč používaný v localStorage (voliteľné)
+// Voliteľne zmení kľúč v localStorage
 Permissions.permissionKey = 'mojeOpravnenia';
 ```
 
-### Kontrola oprávnení
+Ak potrebujete oprávnenia zmazať, jednoducho nastavte prázdne pole:
 
 ```js
-// Kontrola, či má používateľ konkrétne oprávnenie
-const maAdminOpravnenie = Permissions.includesKey('admin');
-
-// Kontrola, či má používateľ aspoň jedno z oprávnení
-const maOpravnenie = Permissions.isPermissionFulfilled(['admin', 'editor']);
+Permissions.permissions = [];
 ```
 
-### Príklad použitia v komponente
+## Kontrola oprávnení v JavaScripte
 
-Komponenty môžu využívať atribúty súvisiace s oprávneniami:
+```js
+const maAdminOpravnenie = Permissions.includesKey('admin');
+const maAspoňJednoOpravnenie = Permissions.isPermissionFulfilled(['admin', 'editor']);
+```
+
+## Kontrola oprávnení v komponente
+
+Komponenty môžu používať tri súvisiace atribúty:
+
+- `permission` – zoznam požadovaných oprávnení oddelený čiarkou,
+- `permission-check` – zapne kontrolu oprávnení pri renderi,
+- `no-show` – komponent sa pri renderi odstráni z DOM-u bez ohľadu na oprávnenia.
 
 ```html
 <!-- Štandardné tlačidlo bez obmedzení -->
 <wje-button>Štandardné tlačidlo</wje-button>
 
-<!-- Tlačidlo, ktoré vyžaduje oprávnenie "test" -->
-<wje-button permission="test" permission-check>Vyžaduje oprávnenie</wje-button>
+<!-- Bez permission-check sa atribút permission sám o sebe nevyhodnocuje -->
+<wje-button permission="admin">Len s atribútom permission</wje-button>
 
-<!-- Tlačidlo, ktoré sa nezobrazí, ak používateľ nemá oprávnenie "test" -->
-<wje-button permission="test" permission-check no-show>Skryté bez oprávnenia</wje-button>
+<!-- Zobrazí sa, ak má používateľ oprávnenie admin alebo editor -->
+<wje-button permission="admin,editor" permission-check>
+  Vyžaduje oprávnenie
+</wje-button>
 
-<!-- Vždy skryté tlačidlo -->
-<wje-button no-show>Skryté tlačidlo</wje-button>
+<!-- Ak oprávnenie chýba, prvok sa vôbec nevykreslí -->
+<wje-button permission="admin" permission-check no-show>
+  Skryté bez oprávnenia
+</wje-button>
 ```
+
+## Dôležité poznámky
+
+- Hodnota atribútu `permission` sa v komponente rozdelí podľa čiarky, preto používajte formát napríklad `permission="admin,editor"`.
+- Metóda `isPermissionFulfilled()` používa logiku „aspoň jedno oprávnenie“.
+- Ak chcete meniť správanie globálne, upravte `Permissions.permissionKey` ešte pred prvým čítaním oprávnení.

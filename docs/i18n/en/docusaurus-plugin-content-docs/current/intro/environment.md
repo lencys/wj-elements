@@ -6,31 +6,40 @@ title: Environment configuration
   <title>Environment Configuration | Node & NPM Environment for WebJET App Setup</title>
   <meta
     name="description"
-    content="To get started with Ionic Framework, the only requirement is a Node & npm environment. Learn what environment setup is required for your Ionic apps."
+    content="To work with WebJET Elements, prepare a development environment with Node.js, npm, a code editor, and a modern browser with ES module support."
   />
 </head>
 
-The basic requirement to start working with WebJET Elements is an environment with Node and NPM installed.
+To work with WebJET Elements you mainly need **Node.js** and **npm**. Because the library relies on **Custom Elements**, **Shadow DOM**, and **ES modules**, it is best to develop and test in a modern browser.
 
-In addition, a code editor is essential. The most popular are the free [Visual Studio Code](https://code.visualstudio.com/) or the paid [WebStorm](https://www.jetbrains.com/webstorm/).
+## What you need
+
+- **Node.js 18 or newer** – for installing the package and building your project locally.
+- **npm** – bundled with Node.js and used to manage dependencies.
+- **A code editor** – for example [Visual Studio Code](https://code.visualstudio.com/) or [WebStorm](https://www.jetbrains.com/webstorm/).
+- **A modern browser** – such as Chrome, Edge, Firefox, or Safari.
 
 ## Terminal
 
-It is important to note that development using WebJET Elements requires command line knowledge. For beginners, a quick introduction to the command line may be helpful.
+When working with WebJET Elements, you will use the terminal to install dependencies, run builds, and start local development servers. You do not need advanced shell knowledge, but basic command-line familiarity is very helpful.
 
-For Windows users, **Command Prompt** and **PowerShell** are supported. macOS users can rely on the built-in **Terminal** app.
+On Windows, **Command Prompt**, **PowerShell**, or **Windows Terminal** work well. On macOS and Linux, the built-in terminal is sufficient.
 
 ## Node & npm
 
-Node.js must be installed at least v18 or later. You can check the installed version using the node --version command. For details on installing node.js, see [Node.js](https://nodejs.org).
+The recommended minimum Node.js version is **18+**. You can verify your installed versions with the commands below.
 
-You can check the installed version using the commands below.
+For installation details, see [nodejs.org](https://nodejs.org).
 
 ```shell
 $ node --version
 $ npm --version
 ```
 
+If you work behind a company proxy, use a private registry, or develop in a monorepo, it is also worth checking your `.npmrc` setup before installation.
+
 ## Recommendations
 
-It is also worth considering the use of the version control system [GIT](https://git-scm.com/) when developing an application.
+- We recommend using [Git](https://git-scm.com/) for source control.
+- If your project uses Vite, webpack, or another bundler, make sure ES module loading is enabled.
+- If you plan to use bundled library assets such as icons, prepare a way to serve static files from the `wj-elements` package in your app.

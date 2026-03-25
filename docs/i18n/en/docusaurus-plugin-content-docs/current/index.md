@@ -31,8 +31,9 @@ import DocsCards from '@components/global/DocsCards';
 
 </head>
 
-WebJET Elements is a modern set of user interface tools harnessing the power of web components designed to simplify web application development. It provides a collection of encapsulated and reusable elements that can greatly increase the efficiency and maintainability of web development projects.
-They offer easy integration with React and Vue.
+WebJET Elements is a modern UI component library built on web components. It provides encapsulated, reusable elements that work in plain HTML/JavaScript as well as in applications built with React or Vue.
+
+Once the library is loaded, the components are registered as custom elements, so you can use them directly in markup such as `<wje-button>`, `<wje-card>`, or `<wje-dialog>`.
 
 Start creating your application [by installing WebJET elements](intro/install.md).
 
@@ -96,33 +97,33 @@ Start creating your application [by installing WebJET elements](intro/install.md
 
 ## Overview
 
-WebJET Elements is an advanced platform for creating and deploying modern web applications and micro-frontend solutions. This framework is based on web component technology and uses the capabilities of web components and the Shadow DOM to offer a universal set of elements. These elements are designed to improve and streamline the development process, allowing you to create and implement compelling applications with greater efficiency.
+WebJET Elements is a component library for modern web applications and micro-frontend solutions. It is built on web platform standards, which means it is not tied to a single framework or rendering runtime.
 
-Key features of the WebJET Elements Framework:
+Key features of WebJET Elements:
 
 ### Comprehensive set of user interface tools
 
 WebJET Elements includes a wide range of controls and user interface components that are optimized for web interfaces. These components cover a variety of functions and are designed to be easily integrated into any web application.
 
-### Integration with popular frameworks
+### Integration with frameworks and framework-free apps
 
-The framework supports seamless integration with modern web technologies React and Vue, ensuring compatibility and flexibility in development.
+The components can be used on their own or integrated into React and Vue applications, which makes adoption easier in both greenfield and existing projects.
 
-### Stable and independent
+### Stable and framework-independent foundation
 
-WebJET Elements is built on reliable W3C standardized web technologies and uses modern web APIs such as Custom Elements and Shadow DOM. As a result, components have a stable API and are not dependent on the whim of the platform vendor or third-party libraries.
+WebJET Elements relies on standards such as Custom Elements, Shadow DOM, and ES modules. As a result, components have a stable API and can remain useful even outside of one specific framework ecosystem.
 
 ### Using Shadow DOM
 
 WebJET Elements leverages the Shadow DOM and provides encapsulation of the style and behavior of its components, supporting a cleaner and more maintainable codebase.
 
-### Customisation and flexibility
+### Customization and flexibility
 
-The framework offers extensive customization options through custom CSS properties, slots, and shadow parts, allowing developers to tailor components to specific needs.
+Component appearance is customized primarily through CSS variables, bundled light/dark themes, and CSS Shadow Parts where appropriate.
 
-### Optimised for performance
+### Optimized for performance and reuse
 
-Optimized for performance, the framework ensures that components are not only functional but also efficient, contributing to a smoother user experience.
+The components are designed to be reusable, self-contained, and practical even in larger applications.
 
 **In the WebJET Elements documentation you will find detailed examples to help you create exceptional web applications quickly and efficiently.**
 

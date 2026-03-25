@@ -1,15 +1,14 @@
 ---
-title: Glossary
+title: Slovník pojmov
 ---
 
 <section id="scoped">
   ### Scoped
   <p>
-    A component that uses scoped encapsulation will automatically scope its CSS by appending each of the styles with a
-    data attribute at run time. Overriding scoped selectors in CSS requires a
-    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" target="_blank">higher specificity</a>
-    selector. Scoped components can also be styled using
-    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables" target="_blank">CSS Custom Properties</a>.
+    Scoped zapuzdrenie znamená, že štýly komponentu sú viazané na konkrétny komponent a neunikajú do zvyšku aplikácie.
+    Pri prepise takýchto štýlov často potrebujete vyššiu
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" target="_blank">špecificitu selektora</a>
+    alebo verejne vystavené CSS premenné.
   </p>
 </section>
 
@@ -17,9 +16,9 @@ title: Glossary
   ### Shadow
   <p>
     <a href="https://developers.google.com/web/fundamentals/web-components/shadowdom" target="_blank">Shadow DOM</a>
-    is a native browser solution for DOM and style encapsulation of a component. It shields the component from its
-    surrounding environment. To externally style internal elements of a Shadow DOM component you must use
+    je natívny mechanizmus prehliadača na zapuzdrenie DOM a štýlov komponentu. Chráni vnútornú štruktúru komponentu pred
+    okolitými štýlmi. Ak chcete zvonka upraviť interné časti shadow komponentu, použite
     <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables" target="_blank">CSS Custom Properties</a>
-    or <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank">CSS Shadow Parts</a>.
+    alebo <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank">CSS Shadow Parts</a>.
   </p>
 </section>

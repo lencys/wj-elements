@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí(layoutov) rozdelením obrazovky na mriežku riadkov [Rows](./row) a stĺpcov [Cols](./col). Grid je založený na flexboxe s rozložením rozdeleným na 12 stĺpcov s 5 responzívnymi breakpointami.
+Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí rozdelením obrazovky na mriežku riadkov [Rows](./row) a stĺpcov [Cols](./col). Grid je založený na flexboxe, používa 12 stĺpcov a podporuje 6 breakpointov: `xs`, `sm`, `md`, `lg`, `xl` a `xxl`.
 
 ## Prehľad funkcií
 
@@ -29,7 +29,7 @@ Systém Grid je flexibilný spôsob vytvárania responzívnych rozvrhnutí(layou
 
 **Nesting** : Vývojári môžu vkladať viacero elementov wje-grid do seba a vytvárať tak zložitejšie rozvrhnutia. To umožňuje väčšiu flexibilitu pri usporiadaní obsahu.
 
-**Breakpointy**: Systém mriežky Grid podporuje rôzne body zlomu pre rôzne veľkosti obrazoviek, ako sú telefóny, tablety a stolové počítače.
+**Breakpointy**: Grid podporuje breakpointy pre telefóny, tablety aj desktop vrátane väčších obrazoviek cez `xxl`.
 
 **Odsadené stĺpce (Offset)**: Vývojári môžu stĺpce odsadiť a vytvoriť tak vizuálne rozdiely v rozložení. To je užitočné pri vytváraní návrhov s rozloženým alebo asymetrickým usporiadaním.
 
@@ -41,7 +41,7 @@ V tabuľke nižšie nájdete predvolené breakpointy gridu.
 
 ## Základné použitie
 
-By default, columns will take up equal width inside of a row for all devices and screen sizes.
+Predvolene majú stĺpce v rámci jedného riadku rovnakú šírku na všetkých zariadeniach.
 
 import Basic from '@site/static/usage/v1/grid/basic/index.md';
 
@@ -103,7 +103,7 @@ import Order from '@site/static/usage/v1/grid/order/index.md';
 
 ### Vertikálne Zarovnanie
 
-Stĺpce je možné zarovnať vertikálne pomocou css tried `wj-align-items-start`, `wj-align-items-center`, `wj-align-items-end`.
+Stĺpce je možné zarovnať vertikálne pomocou CSS tried `wje-align-items-start`, `wje-align-items-center`, `wje-align-items-end`.
 
 import VerticalAlignment from '@site/static/usage/v1/grid/vertical-alignment/index.md';
 
@@ -115,7 +115,7 @@ import VerticalAlignment from '@site/static/usage/v1/grid/vertical-alignment/ind
 
 ### Horizontálne Zarovnanie
 
-Stĺpce je možné zarovnať horizontálne pomocou css tried `wj-justify-content-start`, `wj-justify-content-center`, `wj-justify-content-end`, `wj-justify-content-between`, `wj-justify-content-around`.
+Stĺpce je možné zarovnať horizontálne pomocou CSS tried `wje-justify-content-start`, `wje-justify-content-center`, `wje-justify-content-end`, `wje-justify-content-between`, `wje-justify-content-around`.
 
 import HorizontalAlignment from '@site/static/usage/v1/grid/horizontal-alignment/index.md';
 
@@ -128,15 +128,15 @@ import HorizontalAlignment from '@site/static/usage/v1/grid/horizontal-alignment
 
 ## Kedy použiť
 
-Použite `wje-grid` na skladanie stabilného rozloženia stránky s jasnou hierarchiou obsahu.
+Použite `wje-grid`, keď potrebujete responzívne rozloženie obsahu v rámci sekcie alebo stránky.
 
 ## Kedy nepoužiť
 
-Nepoužívajte ho na riešenie biznis logiky ani na stavovú orchestráciu komponentov.
+Grid nepoužívajte na riešenie biznis logiky ani na orchestráciu stavu. Slúži výhradne na layout.
 
 ## Prístupnosť
 
-Zachovajte semantiku dokumentu (`header`, `main`, `aside`, `footer`) a logické poradie fokusovateľných prvkov.
+Dbajte na to, aby vizuálne poradie stĺpcov neporušilo logické poradie obsahu pre klávesnicu a čítačky obrazovky.
 
 ## Odporúčané postupy
 

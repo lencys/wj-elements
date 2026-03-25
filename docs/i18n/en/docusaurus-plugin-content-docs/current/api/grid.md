@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The Grid system is a flexible way to create responsive layouts by dividing the screen into a grid of rows [Rows](./row) and columns [Cols](./col). Grid is based on flexbox with layout divided into 12 columns with 5 responsive breakpoints.
+The Grid system is a flexible way to create responsive layouts by dividing the screen into rows [Rows](./row) and columns [Cols](./col). It is based on flexbox, uses a 12-column layout, and supports 6 breakpoints: `xs`, `sm`, `md`, `lg`, `xl`, and `xxl`.
 
 ## Overview of functions
 
@@ -29,7 +29,7 @@ The Grid system is a flexible way to create responsive layouts by dividing the s
 
 **Nesting** : Developers can nest multiple wje-grid elements inside each other to create more complex layouts. This allows for greater flexibility in the arrangement of content.
 
-**Breakpoints**: The Grid Grid system supports different breakpoints for different screen sizes such as phones, tablets and desktops.
+**Breakpoints**: The Grid system supports breakpoints for phones, tablets, desktop screens, and larger layouts through `xxl`.
 
 **Offset columns**: Developers can offset columns to create visual differences in layout. This is useful when creating designs with staggered or asymmetrical layouts.
 
@@ -103,7 +103,7 @@ import Order from '@site/static/usage/v1/grid/order/index.md';
 
 ### Vertical Alignment
 
-Columns can be aligned vertically using css classes `wj-align-items-start`, `wj-align-items-center`, `wj-align-items-end`.
+Columns can be aligned vertically using CSS classes `wje-align-items-start`, `wje-align-items-center`, `wje-align-items-end`.
 
 import VerticalAlignment from '@site/static/usage/v1/grid/vertical-alignment/index.md';
 
@@ -115,7 +115,7 @@ import VerticalAlignment from '@site/static/usage/v1/grid/vertical-alignment/ind
 
 ### Horizontal Alignment
 
-Columns can be aligned horizontally using the css classes `wj-justify-content-start`, `wj-justify-content-center`, `wj-justify-content-end`, `wj-justify-content-between`, `wj-justify-content-around`.
+Columns can be aligned horizontally using the CSS classes `wje-justify-content-start`, `wje-justify-content-center`, `wje-justify-content-end`, `wje-justify-content-between`, `wje-justify-content-around`.
 
 import HorizontalAlignment from '@site/static/usage/v1/grid/horizontal-alignment/index.md';
 
@@ -128,15 +128,15 @@ import HorizontalAlignment from '@site/static/usage/v1/grid/horizontal-alignment
 
 ## When to use
 
-Use `wje-grid` to compose stable page structure with clear visual and semantic hierarchy.
+Use `wje-grid` when you need responsive content layout inside a section or page.
 
 ## When not to use
 
-Do not use layout components to handle business logic or application orchestration.
+Do not use the grid to handle business logic or application state orchestration. It is a layout tool only.
 
 ## Accessibility
 
-Preserve document semantics (`header`, `main`, `aside`, `footer`) and logical tab/focus order.
+Make sure visual reordering does not break the logical reading and tab order for keyboard and screen-reader users.
 
 ## Best Practices
 

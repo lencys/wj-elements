@@ -6,76 +6,71 @@ title: CSS Shadow Parts
   <title>CSS Shadow Parts - Prispôsobte si štýly elementov vo vnútri Shadow DOMu.</title>
   <meta
     name="description"
-    content="Shadow Parts poskytujú spôsob, ako vystaviť špecifické prvky v rámci Shadow DOM pre účely štylizácie, pričom sa zachovávajú jeho výhody zapuzdrenia a izolácie podľa Shadow DOM špecifikácie."
+    content="CSS Shadow Parts umožňujú bezpečne štýlovať interné časti WebJET komponentov, ktoré používajú Shadow DOM."
   />
 </head>
 
-CSS Shadow Parts je funkcia, ktorá umožňuje vývojárom štylizovať špecifické časti <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM" target="_blank" rel="noopener noreferrer">Shadow DOM</a> . Toto je užitočné v prípade WebJET Elements postavených na technológii <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank" rel="noopener noreferrer">Web komponentov</a>, kde by v opačnom prípade zapúzdrenie neumožnilo upraviť vzhľad vnútorných častí elementov.
+CSS Shadow Parts umožňujú štýlovať konkrétne časti komponentov, ktoré používajú <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM" target="_blank" rel="noopener noreferrer">Shadow DOM</a>. To je dôležité pri WebJET komponentoch, kde je interný DOM zámerne zapuzdrený a klasické selektory zvonka nevidia vnútorné uzly.
 
 ## Výhody Shadow parts
 
-Shadow Parts poskytujú spôsob, ako vystaviť špecifické prvky v rámci Shadow DOM pre účely štylizácie, pričom sa zachovávajú jeho výhody zapuzdrenia a izolácie podľa <a href="https://www.w3.org/TR/css-shadow-parts-1/" target="_blank" rel="noopener noreferrer">Shadow DOM špecifikácie</a>. Tým pádom nehrozí prenos štýlov z komponentov a ich neúmyselnému použitiu na iné elementy.
+Shadow Parts umožňujú vystaviť len tie interné časti, ktoré autor komponentu považuje za bezpečné na úpravu. Zachováva sa tak zapuzdrenie a zároveň získate kontrolu nad vzhľadom konkrétnych častí bez prepisovania celej implementácie.
 
-<!-- :::note
-Ionic Framework components are **not all** Shadow DOM components. If the component is a Shadow DOM component, there will be a badge in the top right of its [component documentation](../components.md). An example of a Shadow DOM component is the [button component](../api/button.md).
-::: -->
 
 ## Použitie Shadow parts
 
-Pri použití Web komponentov so Shadow DOM, nie je možné zacieliť vnútorné časti komponenty pomocou CSS selektora. Ako sme si vysvetlili vyššie, všetko vo vnútri Shadow DOM je izolované od zbytku aplikácie. V príklade nižšie je zobrazené to, akým spôsobom je vykreslená komponenta `wj-select`.
+Pri použití web komponentov so Shadow DOM nie je možné cieliť interné časti bežným selektorom. Napríklad `wje-button` renderuje svoj interný natívny prvok vo vnútri shadow rootu.
 
 ```html
-<wj-button>
+<wje-button>
   #shadow-root
   <button class="button-native" part="native"></button>
-</wj-button>
+</wje-button>
 ```
 
-Element button vo vnútri `#shadow-root` je zapúzdrený a preto CSS selektor nižšie nebude fungovať.
+Tento interný `<button>` je zapuzdrený, preto nasledujúci selektor nebude fungovať:
 
 ```css
 /* Nefunkčný selektor */
-wj-button .button-native {
+wje-button .button-native {
   color: blue;
 }
 ```
 
-Tento problém riešia CSS Shadow Parts. V komponente `wj-button` sa nachádza atribút `part` s hodnotou, ktorú je možné v css zacieliť pomocou css pseudo-elementu <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank" rel="noopener noreferrer">`::part()`</a>. V tomto prípade je to hodnota `native`.
-
-Funkčný css selektor by preto vyzeral nasledovne:
+Tento problém rieši `::part()`. Komponent vystavuje interný uzol s atribútom `part="native"`, takže ho viete cieliť takto:
 
 ```css
-wj-button::part(native) {
+wje-button::part(native) {
   color: blue;
 }
 ```
 
-Viac informácii o tom ako
+### Praktický príklad
+
+Niektoré komponenty vystavujú viacero parts. Napríklad `wje-select` používa okrem iného parts ako `native`, `input`, `popup` alebo `clear`.
+
+```css
+wje-select::part(input) {
+  color: #0f172a;
+  background: #fff;
+}
+```
 
 ### How ::part works
 
-The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank" rel="noopener noreferrer">`::part()`</a> pseudo-element allows developers to select elements inside of a shadow tree that have been exposed via a part attribute.
+Pseudo-element <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank" rel="noopener noreferrer">`::part()`</a> funguje len na partoch, ktoré komponent explicitne vystavil. Je to preto, aby ste mali kontrolu nad dizajnom, ale zároveň neboli naviazaní na celé interné DOM rozloženie komponentu.
 
-Since we know that `ion-select` exposes a `placeholder` part for styling the text when there is no value selected, we can customize it in the following way:
-
-```css
-wj-select::part(placeholder) {
-  color: blue;
-  opacity: 1;
-}
-```
-
-Štýlovanie pomocou `::part` umožňuje zmeniť akúkoľvek vlastnosť CSS, ktorú daný element akceptuje.
+Štýlovanie cez `::part()` vám umožní meniť tie CSS vlastnosti, ktoré daný interný element podporuje.
 
 ## WebJET Elements parts
 
-All exposed parts for an Ionic Framework component can be found under the CSS Shadow Parts heading on its API page. To view all components and their API pages, see the [Component documentation](../components.md).
+Zoznam všetkých vystavených parts nájdete na API stránke konkrétneho komponentu v sekcii **CSS Shadow Parts**.
 
 ## Limitácie
 
 ### Kompatibilita s prehliadačmi
 
-Shadow Parts CSS fungujú v najnovších verziách všetkých významných prehliadačov. Staršie verzie prehliadačov ich však nemusia podporovať. Pred použitím Shadow Parts vo svojej aplikácii skontrolujte <a href="https://caniuse.com/#feat=mdn-css_selectors_part" target="_blank" rel="noopener noreferrer">kompatibiltu s prehliadačom</a> a uistite sa, že vyhovuje vašim požiadavkám. Ak potrebujete podporovať staršie prehliadače, zvážte namiesto toho pre úpravu štýlov [CSS Premenné](../theming/css-variables.md).
+CSS Shadow Parts fungujú v aktuálnych verziách moderných prehliadačov. Ak potrebujete podporovať staršie prostredia, skontrolujte si <a href="https://caniuse.com/#feat=mdn-css_selectors_part" target="_blank" rel="noopener noreferrer">kompatibilitu</a> a zvážte, či vám postačia [CSS Premenné](../theming/css-variables.md).
 
 ### Podpora prehliadačom prefixovaných pseudoelementov
 
@@ -93,7 +88,7 @@ my-component::part(scroll)::-webkit-scrollbar {
 }
 ```
 
-See <a href="https://github.com/w3c/csswg-drafts/issues/4530" target="_blank" rel="noopener noreferrer">this issue on GitHub</a> for more information.
+Viac informácií nájdete v <a href="https://github.com/w3c/csswg-drafts/issues/4530" target="_blank" rel="noopener noreferrer">diskusii na GitHube</a>.
 
 ### Štrukturálne pseudotriedy
 
@@ -113,7 +108,7 @@ my-component::part(container):last-child {
 
 ### Reťazenie viacerých Parts
 
-Pseudoelement `::part()` nemôže reťaziť viacero selektorov `::part().` Je to preto, aby sa zabránilo exponovaniu nadbytočného obsahu komponenty. Ak potrebujete zacieliť na konkrétnu časť, použite priamo hodnotu danej part.
+Pseudo-element `::part()` nemožno reťaziť cez viacero parts. Ak potrebujete štylizovať konkrétnu časť, použite priamo part, ktorý komponent vystavuje.
 
 ```css
 /* Nie je podporovaný */

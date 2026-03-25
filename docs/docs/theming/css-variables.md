@@ -6,32 +6,31 @@ title: CSS Premenné
   <title>CSS Premenné | Custom CSS vlastnosti pre premenné a komponenty</title>
   <meta
     name="description"
-    content="Ionic components are built with CSS Variables for easy custom app properties. They allow a value to be stored in one place, then referenced in multiple places."
+    content="WebJET Elements používa CSS premenné pre globálne témy aj jemné doladenie jednotlivých komponentov."
   />
 </head>
 
-WebJET Elements využíva prednosti custom vlastností CSS, bežne známych ako <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables" target="_blank">CSS premenné</a>, aby sme zvýšili vaše možnosti štylizácie. Premenné CSS umožňujú definovať hodnoty na jednom mieste a následne ich opakovane využívať v celej aplikácii, vďaka čomu je vaše CSS efektívnejšie a ľahšie sa udržiava.
+WebJET Elements využíva <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables" target="_blank">CSS premenné</a> ako hlavný spôsob prispôsobenia vzhľadu. Vstavané súbory `light.css` a `dark.css` definujú predvolené tokeny a vaša aplikácia ich môže prepísať vlastnými hodnotami.
 
 ## Nastavenie hodnôt
 
 ### Globálne premenné
 
-Premenné CSS možno v aplikácii nastaviť globálne v selektore `:root`. Môžu sa tiež použiť len pre konkrétny režim, svetlý alebo tmavý. Viac informácií o globálnych premenných nájdete v časti [Premenné WebJET Elements](#premenné-webjet-elements).
+Globálne premenné nastavujte typicky na `:root`, prípadne na kontajner témy ako `.wje-theme-dark`, `.wje-theme-light` alebo `[data-theme="dark"]`.
 
 ```css
-/* Set variables for all modes */
+/* Premenné platné pre celú aplikáciu */
 :root {
-  /* Set the background of the entire app */
-  --wje-background-color: #ff3700;
+  --wje-background: #ffffff;
+  --wje-color: #1f2937;
 
-  /* Set the font family of the entire app */
-  --wje-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
+  --wje-font-family: Inter, system-ui, sans-serif;
 }
 ```
 
 ### Premenné v komponentoch
 
-To set a CSS variable for a specific component, add the variable inside of its selector. See [Premenné WebJET Elements](#premenné-webjet-elements) for more information on the component-level variables Ionic provides.
+Premennú môžete prepísať aj len pre konkrétny komponent. Takto upravíte vzhľad všetkých inštancií daného elementu bez zásahu do jeho implementácie.
 
 ```css
 /* Nastaví farbu okrajov všetkých tlačidiel */
@@ -47,40 +46,48 @@ wje-button {
 
 ### Premenné cez Javascript
 
-CSS premenné je možné upraviť aj pomocou Javascript metódy [setProperty()](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty):
+CSS premenné môžete meniť aj dynamicky pomocou JavaScriptu, napríklad pri prepínaní témy alebo brandingu pre tenantov.
 
 ```js
-const el = document.querySelector('#custom');
-el.style.setProperty('--wje-button-border-color', '#0af4fc');
+document.documentElement.style.setProperty('--wje-background', '#f8fafc');
+document.documentElement.style.setProperty('--wje-color', '#0f172a');
 ```
 
 ## Získanie hodnoty
 
 ### Použitím CSS
 
-Na získanie hodnoty premennej CSS použite funkciu [var() CSS function](https://developer.mozilla.org/en-US/docs/Web/CSS/var). Táto funkcia tiež umožňuje špecifikovať záložnú hodnotu. Napríklad v nasledujúcom príklade je vlastnosti `--wje-button-border-color` priradená hodnota premennej `--primary-light`. Ak premenná `--primary-light` nie je nastavená, ako náhradná hodnota sa použije `#0af4fc`.
+Na použitie hodnoty premennej v CSS slúži funkcia [var()](https://developer.mozilla.org/en-US/docs/Web/CSS/var). Môžete pri nej zadať aj fallback hodnotu.
 
 ```css
 #custom {
-  --wje-button-border-color: var(--primary-light, #0af4fc);
+  --wje-button-border-color: var(--wje-color-primary-9, #0af4fc);
 }
 ```
 
 ### Použitím JavaScript
 
-CSS premenné je možné získať pomocou Javascript metódy [getPropertyValue()](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/getPropertyValue):
+Ak chcete prečítať výslednú hodnotu, použite `getComputedStyle()`, nie iba `el.style`. Tak získate aj hodnoty, ktoré prišli z načítanej témy.
 
 ```js
-const el = document.querySelector('#custom');
-const color = el.style.getPropertyValue('--charcoal');
+const rootStyles = getComputedStyle(document.documentElement);
+const background = rootStyles.getPropertyValue('--wje-background').trim();
 ```
 
 ## Premenné WebJET Elements
 
 ### Prispôsobenie komponentov pomocou premenných
 
-Elements ponúka premenné špecifické pre komponenty, ako napríklad --background a --color, ktoré umožňujú jednoduché prispôsobenie. Úplný zoznam týchto premenných nájdete v časti CSS vlastné premenné v referencii [API](../api.md) každej komponenty. Napríklad [CSS vlastné premenné](../api/button.md#css-vlastné-premenné-1) komponentu Button si môžete pozrieť pre špecifické možnosti prispôsobenia.
+Každý komponent vystavuje vlastnú sadu CSS premenných. Úplný zoznam nájdete v sekcii **CSS vlastné premenné** na jeho API stránke. Napríklad pri tlačidle môžete upravovať hodnoty ako `--wje-button-border-color`, `--wje-button-border-radius` alebo `--wje-button-outline-width`.
 
 ### Prispôsobenie aplikácie pomocou globálnych premenných
 
-Elements poskytuje aj globálne premenné na zjednodušenie tematizácie celej aplikácie. Tieto premenné pokrývajú celý rad dizajnových vlastnosti. Podrobný návod na ich používanie na tematizáciu nájdete na stránkach [Farby](colors.md) a [Témy](themes.md).
+Pre celú aplikáciu sú dôležité hlavne globálne tokeny ako:
+
+- `--wje-background`
+- `--wje-color`
+- `--wje-border-color`
+- `--wje-font-family`
+- `--wje-color-primary-1` až `--wje-color-primary-11`
+
+Podrobnejšie informácie nájdete na stránkach [Farby](colors.md), [Šablóny](themes.md) a [Tmavý režim](dark-mode.md).

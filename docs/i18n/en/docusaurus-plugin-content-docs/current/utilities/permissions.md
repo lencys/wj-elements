@@ -1,65 +1,80 @@
 # Permissions
 
-Webjet Elements provides a permission management system that allows you to show or hide components based on user-defined permissions.
+WebJET Elements includes a lightweight permission system that lets you conditionally render or remove components from the DOM based on the current user's permissions.
 
-## API for permissions
+## How it works
 
-The `Permissions` class provides an interface for managing permissions in an application.
+The `Permissions` class stores a permission list in `localStorage`. The base `WJElement` class then evaluates the `permission`, `permission-check`, and `no-show` attributes during rendering.
 
-## Features
+This means permission checks can stay close to the component markup instead of being repeated manually in every view.
 
-| Name            | Description                                                                                                                                 |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `permissionKey` | Sets or gets the key used to store permissions in localStorage (default: 'permissions'). |
-| `permissions`   | Sets or gets an array of permissions. Permissions are stored in localStorage.                               |
+## Permissions API
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `permissionKey` | `string` | The key used to store permissions in `localStorage`. The default value is `'permissions'`. |
+| `permissions` | `string[]` | The current user's permission list. When set, it is persisted to `localStorage`. |
 
 ## Methods
 
-| Name                                 | Parameters                                                 | Return value | Description                                                                                |
-| ------------------------------------ | ---------------------------------------------------------- | ------------ | ------------------------------------------------------------------------------------------ |
-| `includesKey(key)`                   | key - string representing the permission                   | boolean      | Checks whether a specific permission is included in the permissions array. |
-| `isPermissionFulfilled(permissions)` | permissions - an array of strings representing permissions | boolean      | Checks if at least one of the permissions in the provided field is met.    |
+| Name | Parameters | Return value | Description |
+| --- | --- | --- | --- |
+| `includesKey(key)` | `key: string` | `boolean` | Checks whether the user has a specific permission. |
+| `isPermissionFulfilled(permissions)` | `permissions: string[]` | `boolean` | Returns `true` if at least one permission from the provided array is present. |
 
-## Use
-
-### Setting permissions
-
-You can set permissions as follows:
+## Setting permissions
 
 ```js
 import { Permissions } from 'wj-elements';
 
-// Sets the permissions field
+// Set the current user's permissions
 Permissions.permissions = ['admin', 'editor', 'viewer'];
 
-// Changes the key used in localStorage (optional)
+// Optionally change the localStorage key
 Permissions.permissionKey = 'myPermissions';
 ```
 
-### Checking entitlements
+To clear permissions, set an empty array:
 
 ```js
-// Check if the user has a specific permission
-const hasAdminPermission = Permissions.includesKey('admin');
-
-// Check if the user has at least one of the permissions
-const hasPermission = Permissions.isPermissionFulfilled(['admin', 'editor']);
+Permissions.permissions = [];
 ```
 
-### Example of use in a component
+## Checking permissions in JavaScript
 
-Components can use attributes related to permissions:
+```js
+const hasAdminPermission = Permissions.includesKey('admin');
+const hasAnyPermission = Permissions.isPermissionFulfilled(['admin', 'editor']);
+```
+
+## Checking permissions in a component
+
+Components can use three related attributes:
+
+- `permission` – a comma-separated list of required permissions,
+- `permission-check` – enables permission evaluation during render,
+- `no-show` – removes the component from the DOM during render regardless of permissions.
 
 ```html
-<!-- Štandardné tlačidlo bez obmedzení -->
+<!-- Standard button with no restriction -->
 <wje-button>Standard button</wje-button>
 
-<!-- Tlačidlo, ktoré vyžaduje oprávnenie "test" -->
-<wje-button permission="test" permission-check>Requires permission</wje-button>
+<!-- Without permission-check, the permission attribute alone is not evaluated -->
+<wje-button permission="admin">Permission attribute only</wje-button>
 
-<!-- Tlačidlo, ktoré sa nezobrazí, ak používateľ nemá oprávnenie "test" -->
-<wje-button permission="test" permission-check no-show>Hidden without permission</wje-button>
+<!-- Rendered if the user has admin or editor -->
+<wje-button permission="admin,editor" permission-check>
+  Requires permission
+</wje-button>
 
-<!-- Vždy skryté tlačidlo -->
-<wje-button no-show>Hidden button</wje-button>
+<!-- Removed from the DOM if the permission is missing -->
+<wje-button permission="admin" permission-check no-show>
+  Hidden without permission
+</wje-button>
 ```
+
+## Important notes
+
+- The `permission` attribute is split by commas internally, so use values such as `permission="admin,editor"`.
+- `isPermissionFulfilled()` uses an “at least one permission matches” rule.
+- If you want a custom storage key, set `Permissions.permissionKey` before the first permission read.

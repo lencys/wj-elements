@@ -3,19 +3,36 @@ title: Animation
 ---
 
 <head>
-  <title>WebJet Elements Templates | Change default themes and background colors of the application</title>
+  <title>Animations | Working with the wje-animation component</title>
   <meta
     name="description"
-    content="WebJet Elements ponúka ponúka jednoduchú integráciu animácií do webových aplikácií čím zjednodušuje vytváranie pútavých používateľských rozhraní. Poskytuje možnosti prispôsobenia v podobe oneskorenia, trvania alebo napríklad tiež počtu opakování animácií."
+    content="The wje-animation component uses Animate.css and the Web Animations API to animate slotted content with minimal setup."
   />
 </head>
 
-WebJet Elements offers easy integration of animations into web applications using the `Animation` element, simplifying the creation of engaging user interfaces. It provides customisation options in the form of delay, duration or, for example, the number of animation repeats.
+The `<wje-animation>` component makes it easy to animate content without manually assembling keyframes or working directly with the Web Animations API. Internally it loads definitions from [Animate.css](https://animate.style/) and applies them to the first slotted element.
 
-It uses an extensive CSS animation library [Animate.css](https://animate.style/), from which you choose the animation you want, for example `HeartBeat`, and define its name in the `name` attribute as shown below.
+The most useful attributes are:
+
+- `name` – the Animate.css animation name, for example `heartBeat`,
+- `duration` – duration in milliseconds,
+- `delay` – delay before the animation starts,
+- `endDelay` – delay after the animation ends,
+- `iterations` – how many times the animation should repeat,
+- `direction`, `easing`, `fill` – fine-grained playback options.
+
+:::note
+Animation names are case-sensitive. The component’s default is `heartBeat`, so use Animate.css names exactly as defined.
+:::
 
 import Basic from '@site/static/usage/v1/animation/basic/index.md';
 
 <Basic />
 
-For more information on customization options, navigate to the [animation](/api/animation) element.
+## Practical tips
+
+- Place a single main element inside `<wje-animation>` that should be animated.
+- If you need imperative control, use the `play()` and `cancel()` methods.
+- If you want to let users pick an animation, use `getAnimationsArray()` to obtain the list of available animation names.
+
+For the full list of attributes and methods, continue to the [Animation API page](../api/animation.md).

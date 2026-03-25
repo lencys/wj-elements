@@ -12,13 +12,13 @@ import CodeColor from '@components/page/theming/CodeColor';
   <title>Farby: Prispôsobte si farby palety alebo vytvorte novú</title>
   <meta
     name="description"
-    content="Farebná paleta Elements sa skladá zo 7 predvolených farieb, ktoré si je možné jednoducho upraviť. Paleta je navrhnutá tak aby spĺňala aktuálne trendy a zároveň zabezpečovala prístupnosť. Používatelia si môžu prispôsobiť jej farby pomocou CSS premenných, čo im umožňuje zmeniť predvolené farby alebo pridať vlastné."
+    content="WebJET Elements používa sémantické farby definované cez CSS tokeny a tónové škály, ktoré môžete upravovať vo vlastnej téme."
   />
 </head>
 
-Farebná paleta Elements sa skladá zo 7 predvolených farieb, ktoré si je možné jednoducho upraviť. Paleta je navrhnutá tak aby spĺňala aktuálne trendy a zároveň zabezpečovala prístupnosť. Používatelia si môžu prispôsobiť jej farby pomocou CSS premenných, čo im umožňuje zmeniť predvolené farby alebo pridať vlastné.
+WebJET Elements používa sémantické farby ako `primary`, `complete`, `success`, `warning`, `danger` a `info`. Komponenty ich používajú cez CSS tokeny definované v `light.css` a `dark.css`.
 
-Vo vačšine elementov je možné nastaviť farbu elementu pomocou atribútu `color` a ako jeho hodnotu je potrebné zvoliť názov niektorej z farieb z farebnej palety.
+Vo väčšine komponentov môžete farbu zvoliť atribútom `color`:
 
 ```html
 <wje-button>Default</wje-button>
@@ -27,51 +27,43 @@ Vo vačšine elementov je možné nastaviť farbu elementu pomocou atribútu `co
 <wje-button color="success">Success</wje-button>
 <wje-button color="warning">Warning</wje-button>
 <wje-button color="danger">Danger</wje-button>
-<wje-button color="neutral">Neutral</wje-button>
+<wje-button color="info">Info</wje-button>
 ```
 
-## Upravenie existujúcej farby
+## Ako sú farby definované
 
-Upravenie hodnoty niektorej z farieb farebnej palety dosiahnete nastavením CSS vlastnosti. Napríklad na upravenie hodnoty farby primary na <CodeColor color="#FFd945">#FFd945</CodeColor> použijete vlastnosť nižšie:
+Každá sémantická farba má viacero tónov. Napríklad primárna paleta používa tokeny `--wje-color-primary-1` až `--wje-color-primary-11`. Komponenty si z tejto škály vyberajú vhodný odtieň podľa variantu alebo stavu.
+
+Preto je pri úprave farieb najlepšie meniť celú tónovú škálu, nie iba jednu izolovanú hodnotu.
+
+## Úprava existujúcej farby
+
+Ak chcete zmeniť primárnu farbu, prepíšte relevantné tokeny vo vlastnej téme. Napríklad tlačidlá využívajú pri rôznych fill režimoch najmä tóny `1`, `9` a `11`.
 
 ```css
 :root {
-  --wje-color-primary: #ffd945;
+  --wje-color-primary-1: #fff7db;
+  --wje-color-primary-9: #ffd945;
+  --wje-color-primary-11: #7a5a00;
 }
 ```
 
-## Pridanie novej farby
+Takto dosiahnete konzistentnejší výsledok než prepísaním jednej náhodnej premennej.
 
-Farbu možno pridať na použitie v celej aplikácii nastavením vlastnosti `color` na komponente WebJET alebo štylizáciou pomocou CSS.
+## Kedy použiť `color` atribút a kedy CSS premenné
 
-Ak chcete začleniť novú farbu do farebnej palety, začnite vytvorením jej premennej CSS na root úrovni. Ak chcete napríklad pridať farbu s názvom `coral`, s hodnotou <CodeColor color="#FF7F50">#FF7F50</CodeColor> je potrebné definovať premennú nasledovne:
+- Atribút `color` použite, keď chcete využiť vstavané sémantické farby komponentu.
+- CSS premenné použite, keď chcete zmeniť firemnú identitu, farebný kontrast alebo vytvoriť vlastnú tému.
 
-```css
-:root {
-  --wje-color-coral: #ff7f50;
-}
-```
+## Odporúčaný postup
 
-Potom vytvorte novú triedu, ktorá použije túto premennú CSS. Trieda musí byť zapísaná vo formáte `.wje-color-{COLOR}`, kde `{COLOR}` je názov farby, ktorú chcete pridať:
+1. Vyberte si sémantickú farbu, ktorú chcete mapovať na vašu značku.
+2. Prepíšte jej tónovú škálu v `:root` alebo v kontajneri témy.
+3. Skontrolujte kontrast v svetlom aj tmavom režime.
+4. Otestujte hlavné komponenty ako `wje-button`, `wje-badge`, `wje-card` a formulárové prvky.
 
-```css
-.wje-color-coral {
-  --wje-color-base: var(--wje-color-coral);
-}
-```
+## Súvisiace témy
 
-Po pridaní triedy je možné farbu použiť v ľubovoľnej komponente WebJET, ktorá podporuje vlastnosť `color`. Príklad použitia farby `coral` na `wje-button` je uvedený nižšie.
-
-```html
-<wje-button color="coral">Coral</wje-button>
-```
-
-Premenné CSS definované v koreňovom adresári možno použiť aj na štylizáciu ľubovoľného elementu pomocou CSS:
-
-```css
-div {
-  background: var(--wje-color-coral);
-}
-```
-
-Pre viac informácií o použití CSS premenných prejdite na stránku [CSS Premenné](css-variables.md)
+- [CSS Premenné](css-variables.md)
+- [Šablóny](themes.md)
+- [Tmavý režim](dark-mode.md)

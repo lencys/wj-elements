@@ -6,76 +6,71 @@ title: CSS Shadow Parts
   <title>CSS Shadow Parts - Customize the styles of elements inside the Shadow DOM.</title>
   <meta
     name="description"
-    content="Shadow Parts poskytujú spôsob, ako vystaviť špecifické prvky v rámci Shadow DOM pre účely štylizácie, pričom sa zachovávajú jeho výhody zapuzdrenia a izolácie podľa Shadow DOM špecifikácie."
+    content="CSS Shadow Parts let you safely style internal pieces of WebJET components that use Shadow DOM."
   />
 </head>
 
-CSS Shadow Parts is a feature that allows developers to stylize specific parts of the <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM" target="_blank" rel="noopener noreferrer">Shadow DOM</a>. This is useful in the case of WebJET Elements built on <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank" rel="noopener noreferrer">Web Component</a> technology, where otherwise the encapsulation would not allow the appearance of the internal parts of the elements to be modified.
+CSS Shadow Parts let you style specific pieces of components that use <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM" target="_blank" rel="noopener noreferrer">Shadow DOM</a>. This matters for WebJET components because their internal DOM is intentionally encapsulated and cannot normally be targeted from outside.
 
 ## Benefits of Shadow parts
 
-Shadow Parts provide a way to expose specific elements within the Shadow DOM for styling purposes, while maintaining its benefits of encapsulation and isolation according to the <a href="https://www.w3.org/TR/css-shadow-parts-1/" target="_blank" rel="noopener noreferrer">Shadow DOM specification</a>. This avoids the risk of styles being transferred from components and inadvertently applied to other elements.
+Shadow Parts expose only the internal nodes that the component author explicitly marks as safe to style. This keeps encapsulation intact while still giving you fine control over the component’s appearance.
 
-<!-- :::note
-Ionic Framework components are **not all** Shadow DOM components. If the component is a Shadow DOM component, there will be a badge in the top right of its [component documentation](../components.md). An example of a Shadow DOM component is the [button component](../api/button.md).
-::: -->
 
 ## Using Shadow parts
 
-When using Web components with Shadow DOM, it is not possible to target the internals of the component using the CSS selector. As we explained above, everything inside the Shadow DOM is isolated from the rest of the application. The example below shows how the `wj-select` component is rendered.
+When a component uses Shadow DOM, you cannot target its internals with a normal selector. For example, `wje-button` renders its native button inside a shadow root.
 
 ```html
-<wj-button>
+<wje-button>
   #shadow-root
   <button class="button-native" part="native"></button>
-</wj-button>
+</wje-button>
 ```
 
-The element button inside `#shadow-root` is encapsulated and therefore the CSS selector below will not work.
+That internal `<button>` is encapsulated, so the following selector does not work:
 
 ```css
 /* Non-functional selector */
-wj-button .button-native {
+wje-button .button-native {
   color: blue;
 }
 ```
 
-This problem is solved by CSS Shadow Parts. The `wj-button` component contains a `part` attribute with a value that can be targeted in css using the css pseudo-element <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank" rel="noopener noreferrer">`::part()`</a>. In this case it is the value `native`.
-
-A functional css selector would therefore look like this:
+This is where `::part()` helps. The component exposes an internal node with `part="native"`, so you can target it like this:
 
 ```css
-wj-button::part(native) {
+wje-button::part(native) {
   color: blue;
 }
 ```
 
-More information on how
+### Practical example
+
+Some components expose multiple parts. For example, `wje-select` exposes parts such as `native`, `input`, `popup`, and `clear`.
+
+```css
+wje-select::part(input) {
+  color: #0f172a;
+  background: #fff;
+}
+```
 
 ### How ::part works
 
-The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank" rel="noopener noreferrer">`::part()`</a> pseudo-element allows developers to select elements inside of a shadow tree that have been exposed via a part attribute.
+The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank" rel="noopener noreferrer">`::part()`</a> pseudo-element works only for parts that a component explicitly exposes. This gives you styling hooks without coupling your app to the component’s full internal DOM structure.
 
-Since we know that `ion-select` exposes a `placeholder` part for styling the text when there is no value selected, we can customize it in the following way:
-
-```css
-wj-select::part(placeholder) {
-  color: blue;
-  opacity: 1;
-}
-```
-
-Styling with `::part` allows you to change any CSS property that the element accepts.
+Styling via `::part()` lets you change any CSS property that the targeted internal element accepts.
 
 ## WebJET Elements parts
 
-All exposed parts for an Ionic Framework component can be found under the CSS Shadow Parts heading on its API page. To view all components and their API pages, see the [Component documentation](../components.md).
+You can find the full list of exposed parts on each component’s API page under **CSS Shadow Parts**.
 
 ## Limitations
 
 ### Compatibility with browsers
 
-Shadow Parts CSS works in the latest versions of all major browsers. However, older browser versions may not support them. Before using Shadow Parts in your application, check your <a href="https://caniuse.com/#feat=mdn-css_selectors_part" target="_blank" rel="noopener noreferrer">browser compatibility</a> and make sure it meets your requirements. If you need to support older browsers, consider [CSS Variables](../theming/css-variables.md) instead for editing styles.
+CSS Shadow Parts work in current versions of major browsers. If you need to support older environments, check <a href="https://caniuse.com/#feat=mdn-css_selectors_part" target="_blank" rel="noopener noreferrer">browser compatibility</a> and consider using [CSS Variables](../theming/css-variables.md) where possible.
 
 ### Support for browser-prefixed pseudoelements
 
@@ -93,7 +88,7 @@ my-component::part(scroll)::-webkit-scrollbar {
 }
 ```
 
-See <a href="https://github.com/w3c/csswg-drafts/issues/4530" target="_blank" rel="noopener noreferrer">this issue on GitHub</a> for more information.
+See <a href="https://github.com/w3c/csswg-drafts/issues/4530" target="_blank" rel="noopener noreferrer">this GitHub issue</a> for more details.
 
 ### Structural pseudo-classes
 
@@ -113,7 +108,7 @@ my-component::part(container):last-child {
 
 ### Chaining multiple Parts
 
-The `::part()` pseudoelement cannot chain multiple `::part() selectors.` This is to avoid exposing redundant component content. If you need to target a specific part, use the value of that part directly.
+The `::part()` pseudo-element cannot chain multiple parts together. If you need to style something, target the exposed part directly.
 
 ```css
 /* Not supported */

@@ -9,20 +9,26 @@ sidebar_label: The Basics
   <title>Customization basics | Basic definitions of color and template adjustments</title>
   <meta
     name="description"
-    content="Elements Framework ponúka rozsiahle možnosti prispôsobenia štýlov predovšetkým prostredníctvom premenných CSS. Vďaka tomu môžete ľahko zmeniť vzhľad aplikácie podľa vašich potrieb."
+    content="WebJET Elements is primarily customized through CSS variables, built-in light/dark themes, and CSS Shadow Parts for components that use Shadow DOM."
   />
 </head>
 
-Elements Framework offers extensive options for customizing styles, primarily through CSS variables. This makes it easy to change the look and feel of the app to suit your needs. Elements components use CSS variables for most styles, making it easy to edit their default values. You can override these variables in your global stylesheet. In addition, it supports SASS, allowing for more advanced styling and theming options. Using the SASS variables and mixins provided by Elements, you can create custom templates, modify layouts, and define custom color schemes.
+WebJET Elements is designed so that you can customize it without changing component source code. In practice, most styling work happens in three layers:
+
+1. **global design tokens** – for example `--wje-background`, `--wje-color`, and `--wje-font-family`,
+2. **component-specific variables** – for example `--wje-button-border-color`,
+3. **CSS Shadow Parts** – when a component renders internal markup in Shadow DOM and exposes `part` attributes.
+
+The package also ships with `light.css`, `dark.css`, and `styles.css`, so you can either use the bundled themes as-is or build your own overrides on top of them.
 
 ## Colors
 
-The Elements color palette consists of 7 preset colors that can be easily customized. The palette is designed to meet current trends while ensuring accessibility. Users can customize its colors using CSS variables, allowing them to change the default colors or add their own.
+Components use a set of semantic colors such as `primary`, `complete`, `success`, `warning`, `danger`, and `info`. These colors are defined through global CSS tokens and tone scales.
 
 ## CSS Variables
 
-WJ elements uses <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables" target="_blank" rel="noopener noreferrer">CSS Variables</a> for its styles, which makes it possible to achieve centralized style management, dynamic theme switching, reduce the amount of code and improve maintainability. For more on their use, see [CSS Variables](css-variables.md)
+WebJET Elements uses <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables" target="_blank" rel="noopener noreferrer">CSS variables</a> for most of its styling. This lets you control the look of the whole application or individual components from a central place. For more details, see [CSS Variables](css-variables.md).
 
 ## CSS Shadow Parts
 
-CSS shadow parts make it easier to edit individual elements in the <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM" target="_blank" rel="noopener noreferrer">Shadow DOM</a> that are otherwise isolated from the rest of the application. By using the `::part` pseudo-element in CSS, it is possible to access selected parts of components and customize them according to your preferences. For more on how to do this, see [CSS Shadow Parts](css-shadow-parts.md).
+If a component uses <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM" target="_blank" rel="noopener noreferrer">Shadow DOM</a>, its internal nodes are normally isolated from external styles. If the component exposes a `part`, you can target that internal piece with `::part()` and customize it safely. See [CSS Shadow Parts](css-shadow-parts.md) for details.

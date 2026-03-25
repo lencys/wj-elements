@@ -6,32 +6,31 @@ title: CSS Variables
   <title>CSS Variables | Custom CSS properties for variables and components</title>
   <meta
     name="description"
-    content="Ionic components are built with CSS Variables for easy custom app properties. They allow a value to be stored in one place, then referenced in multiple places."
+    content="WebJET Elements uses CSS variables for global theming and fine-grained component customization."
   />
 </head>
 
-WebJET Elements takes advantage of custom CSS properties, commonly known as <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables" target="_blank">CSS variables</a>, to enhance your styling options. CSS variables allow you to define values in one place and then reuse them throughout your application, making your CSS more efficient and easier to maintain.
+WebJET Elements uses <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables" target="_blank">CSS variables</a> as its main customization mechanism. The bundled `light.css` and `dark.css` files define the default tokens, and your application can override them with your own values.
 
 ## Setting the values
 
 ### Global variables
 
-CSS variables can be set globally in the `:root` selector in the application. They can also be used only for a specific mode, light or dark. For more information about global variables, see [WebJET Elements variables](#webjet-elements-variables).
+Global variables are usually set on `:root`, or on a theme container such as `.wje-theme-dark`, `.wje-theme-light`, or `[data-theme="dark"]`.
 
 ```css
 /* Set variables for all modes */
 :root {
-  /* Set the background of the entire app */
-  --wje-background-color: #ff3700;
+  --wje-background: #ffffff;
+  --wje-color: #1f2937;
 
-  /* Set the font family of the entire app */
-  --wje-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
+  --wje-font-family: Inter, system-ui, sans-serif;
 }
 ```
 
 ### Variables in components
 
-To set a CSS variable for a specific component, add the variable inside of its selector. See [WebJET Elements variables](#webjet-elements-variables) for more information on component-level variables.
+You can also override a variable for a specific component only. This is useful when you want to fine-tune one UI area without affecting the whole app.
 
 ```css
 /* Sets the border color of all buttons */
@@ -47,40 +46,48 @@ wje-button {
 
 ### Variables via Javascript
 
-CSS variables can also be modified using the Javascript method [setProperty()](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty):
+You can update CSS variables dynamically with JavaScript, for example when switching themes or applying tenant-specific branding.
 
 ```js
-const el = document.querySelector('#custom');
-el.style.setProperty('--wje-button-border-color', '#0af4fc');
+document.documentElement.style.setProperty('--wje-background', '#f8fafc');
+document.documentElement.style.setProperty('--wje-color', '#0f172a');
 ```
 
 ## Getting value
 
 ### Using CSS
 
-Use the [var() CSS function](https://developer.mozilla.org/en-US/docs/Web/CSS/var) to get the value of the CSS variable. This function also allows you to specify a fallback value. For example, in the following example, the `--wje-button-border-color` property is assigned the value of the `--primary-light` variable. If the `--primary-light` variable is not set, `#0af4fc` is used as a placeholder.
+Use the [var() CSS function](https://developer.mozilla.org/en-US/docs/Web/CSS/var) to consume a CSS variable. You can also specify a fallback value.
 
 ```css
 #custom {
-  --wje-button-border-color: var(--primary-light, #0af4fc);
+  --wje-button-border-color: var(--wje-color-primary-9, #0af4fc);
 }
 ```
 
 ### Using JavaScript
 
-CSS variables can be retrieved using the JavaScript method [getPropertyValue()](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/getPropertyValue):
+To read the computed value, prefer `getComputedStyle()` over `el.style`, because it also includes values coming from the loaded theme files.
 
 ```js
-const el = document.querySelector('#custom');
-const color = el.style.getPropertyValue('--charcoal');
+const rootStyles = getComputedStyle(document.documentElement);
+const background = rootStyles.getPropertyValue('--wje-background').trim();
 ```
 
 ## WebJET Elements variables
 
 ### Customizing components using variables
 
-Elements offers component-specific variables, such as `--background` and `--color`, that allow for easy customization. For a complete list of these variables, see the CSS Custom Properties section in each component [API](../api.md) reference. For example, see [Button CSS Custom Properties](../api/button.md#css-custom-properties).
+Each component exposes its own set of CSS variables. You can find the full list in the **CSS Custom Properties** section of that component’s API page. For example, the button component exposes variables such as `--wje-button-border-color`, `--wje-button-border-radius`, and `--wje-button-outline-width`.
 
 ### Customizing an application using global variables
 
-Elements also provides global variables to simplify the theming of the entire application. These variables cover a range of design features. For detailed instructions on how to use them for theming, see [Colors](colors.md) and [Themes](themes.md).
+For app-wide theming, the most important global tokens include:
+
+- `--wje-background`
+- `--wje-color`
+- `--wje-border-color`
+- `--wje-font-family`
+- `--wje-color-primary-1` through `--wje-color-primary-11`
+
+For more guidance, continue with [Colors](colors.md), [Themes](themes.md), and [Dark mode](dark-mode.md).

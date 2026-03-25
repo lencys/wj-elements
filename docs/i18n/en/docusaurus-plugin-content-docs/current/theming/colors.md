@@ -12,13 +12,13 @@ import CodeColor from '@components/page/theming/CodeColor';
   <title>Colors: customize your palette colors or create a new one</title>
   <meta
     name="description"
-    content="Farebná paleta Elements sa skladá zo 7 predvolených farieb, ktoré si je možné jednoducho upraviť. Paleta je navrhnutá tak aby spĺňala aktuálne trendy a zároveň zabezpečovala prístupnosť. Používatelia si môžu prispôsobiť jej farby pomocou CSS premenných, čo im umožňuje zmeniť predvolené farby alebo pridať vlastné."
+    content="WebJET Elements uses semantic colors defined through CSS tokens and tone scales that you can adapt in your own theme."
   />
 </head>
 
-The Elements color palette consists of 7 preset colors that can be easily customized. The palette is designed to meet current trends while ensuring accessibility. Users can customize its colors using CSS variables, allowing them to change the default colors or add their own.
+WebJET Elements uses semantic colors such as `primary`, `complete`, `success`, `warning`, `danger`, and `info`. Components consume these colors through CSS tokens defined in `light.css` and `dark.css`.
 
-In most elements it is possible to set the color of the element using the `color` attribute and as its value it is necessary to choose the name of one of the colors from the color palette.
+In most components you can choose a semantic color via the `color` attribute:
 
 ```html
 <wje-button>Default</wje-button>
@@ -27,51 +27,43 @@ In most elements it is possible to set the color of the element using the `color
 <wje-button color="success">Success</wje-button>
 <wje-button color="warning">Warning</wje-button>
 <wje-button color="danger">Danger</wje-button>
-<wje-button color="neutral">Neutral</wje-button>
+<wje-button color="info">Info</wje-button>
 ```
 
-## Adjusting the existing color
+## How colors are defined
 
-Adjusting the value of one of the colors of the color palette is achieved by setting the CSS property. For example, you would use the property below to adjust the primary color value to <CodeColor color="#FFd945">#FFd945</CodeColor>:
+Each semantic color is represented by multiple tones. For example, the primary palette uses tokens `--wje-color-primary-1` through `--wje-color-primary-11`. Components pick different tones from that scale depending on the variant and state.
+
+Because of that, the most reliable way to customize colors is to adjust the relevant tone scale instead of changing one isolated token.
+
+## Adjusting an existing color
+
+If you want to change the primary brand color, override the relevant tokens in your theme. For example, buttons commonly use tones `1`, `9`, and `11` across different fill variants.
 
 ```css
 :root {
-  --wje-color-primary: #ffd945;
+  --wje-color-primary-1: #fff7db;
+  --wje-color-primary-9: #ffd945;
+  --wje-color-primary-11: #7a5a00;
 }
 ```
 
-## Adding a new color
+This gives you a more consistent result than overriding a single random value.
 
-Color can be added for use throughout the application by setting the `color` property on the WebJET component or by styling with CSS.
+## When to use the `color` attribute and when to use CSS variables
 
-To incorporate a new color into the color palette, start by creating its CSS variable at the root level. For example, if you want to add a color named `coral`, with value <CodeColor color="#FF7F50">#FF7F50</CodeColor>, you need to define the variable as follows:
+- Use the `color` attribute when you want to work with the built-in semantic colors.
+- Use CSS variables when you want to align the design with your brand, change contrast, or build a custom theme.
 
-```css
-:root {
-  --wje-color-coral: #ff7f50;
-}
-```
+## Recommended workflow
 
-Then create a new class that uses this CSS variable. The class must be written in the format `.wje-color-{COLOR}`, where `{COLOR}` is the name of the color you want to add:
+1. Pick the semantic color that should represent your brand.
+2. Override its tone scale in `:root` or in a theme container.
+3. Check contrast in both light and dark mode.
+4. Test key components such as `wje-button`, `wje-badge`, `wje-card`, and form controls.
 
-```css
-.wje-color-coral {
-  --wje-color-base: var(--wje-color-coral);
-}
-```
+## Related topics
 
-After adding the class, the color can be used in any WebJET component that supports the `color` property. An example of using the color `coral` on a `wje-button` is shown below.
-
-```html
-<wje-button color="coral">Coral</wje-button>
-```
-
-CSS variables defined in the root directory can also be used to style any element using CSS:
-
-```css
-div {
-  background: var(--wje-color-coral);
-}
-```
-
-For more information on using CSS variables, go to [CSS Variables](css-variables.md)
+- [CSS Variables](css-variables.md)
+- [Themes](themes.md)
+- [Dark mode](dark-mode.md)

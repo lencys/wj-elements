@@ -9,71 +9,63 @@ import SteppedColorGenerator from '@components/page/theming/SteppedColorGenerato
   <title>WebJet Elements Templates | Change default themes and background colors of the application</title>
   <meta
     name="description"
-    content="WebJet Elements ponúka celý rad globálnych premenných, ktoré možno použiť na úpravu predvolenej témy v celej aplikácii. [Farby aplikácie](#application-colors) sú užitočné na zmenu vzhľadu mnohých WebJET komponentov."
+    content="WebJET Elements defines global design tokens for typography, surfaces, shadows, and semantic colors that you can override in your own theme."
   />
 </head>
 
-WebJet Elements offers a number of global variables that can be used to modify the default template throughout the application. Application colors are useful for changing the appearance of many WebJET components.
+WebJET Elements defines its default theme through global CSS tokens. You will find them primarily in `light.css` and `dark.css`. When creating a custom theme, it is best to start from those tokens instead of overriding individual internal component styles.
 
-## Application colors
+## What makes up a theme
 
-Application colors play an important role in the application and are often used in different contexts. They are particularly handy for seamlessly creating dark themes or topics that are in line with your brand identity.
+In practice, a theme is built from several layers:
 
-| Name                          | Description                                                       |
-| ----------------------------- | ----------------------------------------------------------------- |
-| `--wje-border-color`          | Determines the color of the borders throughout the application    |
-| `--wje-border-radius`         | Determines the rounding of edges throughout the application       |
-| `--wje-border-size`           | Determines the width of the margins throughout the application    |
-| `--wje-border-style`          | Determines the style of borders throughout the application        |
-| `--wje-color`                 | Specifies the text color across the application                   |
-| `--wje-font-family`           | Specifies the font of texts throughout the application            |
-| `--wje-font-family-secondary` | Specifies the secondary font for texts throughout the application |
-| `--wje-force-mac-font-family` | Specifies the font of texts for Mac devices throughout the app    |
-| `--wje-font-size`             | Specifies the size of text across the application                 |
-| `--wje-line-height`           | Determines the height of texts throughout the application         |
+1. **Global surfaces and text** – for example `--wje-background`, `--wje-color`, and `--wje-border-color`.
+2. **Typography and rhythm** – for example `--wje-font-family`, `--wje-font-size`, and `--wje-line-height-normal`.
+3. **Radius, spacing, and shadows** – for example `--wje-border-radius-medium`, `--wje-spacing-medium`, and `--wje-shadow-medium`.
+4. **Semantic color scales** – for example `--wje-color-primary-1` through `--wje-color-primary-11`.
+5. **Component tokens** – for example `--wje-card-background`, `--wje-input-border-color`, and `--wje-button-border-radius`.
 
-| Name                          | Description                                                           |
-| ----------------------------- | --------------------------------------------------------------------- |
-| `--wje-backdrop`              | Color backdrop overlay overlays and modal backgrounds and backgrounds |
-| `--its-backdrop-opacity`      | Opacity of the backdrop                                               |
-| `--wje-border-radius-circle`  | Specifies the default roundness size in %                             |
-| `--wje-border-radius-large`   | Border radius for large-sized elements                                |
-| `--wje-border-radius-medium`  | Border radius for medium-sized elements                               |
-| `--wje-border-radius-pill`    | Border radius for pill-shaped elements                                |
-| `--wje-border-radius-small`   | Border radius for small-sized elements                                |
-| `--wje-border-radius-x-large` | Border radius for extra-large-sized elements                          |
-| `--wje-border-size`           | Edge thickness                                                        |
-| `--wje-border-style`          | Style of borders                                                      |
-| `--its-box-shadow-large`      | Box shadow for large-sized elements                                   |
-| `--its-box-shadow-medium`     | Box shadow for medium-sized elements                                  |
-| `--wje-card-background`       | Background color for card elements                                    |
-| `--wje-card-color`            | Text color for card elements                                          |
-| `--wje-color-white`           | White color                                                           |
-| `--wje-color-black`           | Black color                                                           |
-| `--wje-font-family`           | Specifies the font of texts throughout the application                |
-| `--wje-font-family-secondary` | Specifies the secondary font for texts throughout the application     |
-| `--wje-force-mac-font-family` | Specifies the font of texts for Mac devices throughout the app        |
-| `--wje-font-size`             | Base font size                                                        |
-| `--wje-font-size-2x-large`    | Font size for 2x large text                                           |
-| `--wje-font-size-3x-large`    | Font size for 3x large text                                           |
-| `--wje-font-size-4x-large`    | Font size for 4x large text                                           |
-| `--its-font-size-large`       | Font size for large text                                              |
-| `--its-font-size-medium`      | Font size for medium text                                             |
-| `--wje-font-size-small`       | Font size for small text                                              |
-| `--wje-font-size-x-large`     | Font size for extra-large text                                        |
-| `--wje-font-size-x-small`     | Font size for extra-small text                                        |
-| `--wje-line-height`           | Line height for text elements                                         |
+## The most important global tokens
 
-## Graduated colors
+| Token | Purpose |
+| --- | --- |
+| `--wje-background` | Base application or section background |
+| `--wje-color` | Default text color |
+| `--wje-border-color` | Default border color |
+| `--wje-font-family` | Primary font family |
+| `--wje-shadow-medium` | Medium-strength shadow |
+| `--wje-color-primary-1..11` | Primary color tone scale |
+| `--wje-color-success-1..11` | Success color tone scale |
+| `--wje-color-danger-1..11` | Danger color tone scale |
 
-While updating the background (--wje-background-color) and text (--wje-text-color) variables will change the appearance of the application for most components, there are certain Ionic components where this may look non-standard or non-functional. This will be more noticeable when using a darker theme.
+## Example of a custom theme
 
-In some components, we use a shade darker than the background or lighter than the text. For example, the heading text of an item may need color #404040, which is a few shades lighter than our default text color. Meanwhile, the background of the loading component is a shade darker than white, using #f2f2f2. We use graded colors to define these slight deviations. When updating the background color or text of an application, it is important to update the step colors.
+```css
+:root {
+  --wje-background: #ffffff;
+  --wje-color: #111827;
+  --wje-border-color: #d1d5db;
 
-By default, Ionic's step colors start at the default background color value of #ffffff and blend with the text color value of #000000 using an increasing percentage. The full list of step colors is given in the generator below.
+  --wje-font-family: Inter, system-ui, sans-serif;
 
-## Graduated color generator
+  --wje-color-primary-1: #eef2ff;
+  --wje-color-primary-9: #4f46e5;
+  --wje-color-primary-11: #312e81;
 
-Create a custom background theme and text color for your app. Update the hexadecimal values of the background colors or text below and then copy and paste the generated code directly into the WebJET Elements project.
+  --wje-card-background: #ffffff;
+  --wje-card-color: #111827;
+}
+```
+
+## Recommended workflow for theme creation
+
+1. Start with the global tokens (`--wje-background`, `--wje-color`, `--wje-border-color`).
+2. Then adapt the semantic color scales to your brand.
+3. Adjust component tokens only where global values are not enough.
+4. Test both light and dark mode and verify contrast on interactive states.
+
+## Tone scale generator
+
+If you want to experiment with surface and text tones, use the generator below as a helper while building your own theme.
 
 <SteppedColorGenerator />

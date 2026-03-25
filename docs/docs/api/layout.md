@@ -21,7 +21,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-**WebJET Elements** umožňuje si jednoducho zostaviť rozvrhnutie stránok pomocou 5 základných elementov: [Container](./container), [Header](./header), [Main](./main), [Aside](./aside) a [Footer](./footer). V prípade komplexnejších rozvrhnutí WebJET Elements ponúka tiež systém [Grid](./grid).
+**WebJET Elements** umožňuje jednoducho skladať rozvrhnutie stránky pomocou piatich základných stavebných blokov: [Container](./container), [Header](./header), [Main](./main), [Aside](./aside) a [Footer](./footer). Pri komplexnejších stránkach ich môžete kombinovať aj so systémom [Grid](./grid).
 
 ## Príklady použitia
 
@@ -36,15 +36,15 @@ import Basic from '@site/static/usage/v1/layout/basic/index.md';
 
 ## Kedy použiť
 
-Použite `wje-layout` na skladanie stabilného rozloženia stránky s jasnou hierarchiou obsahu.
+Použite layout primitives WebJET Elements vtedy, keď potrebujete stabilnú štruktúru stránky s jasnou hierarchiou hlavičky, hlavného obsahu, bočného panelu a päty.
 
 ## Kedy nepoužiť
 
-Nepoužívajte ho na riešenie biznis logiky ani na stavovú orchestráciu komponentov.
+Tieto elementy nepoužívajte na riešenie biznis logiky ani na orchestráciu stavu aplikácie. Ich úlohou je štruktúra a rozloženie.
 
 ## Prístupnosť
 
-Zachovajte semantiku dokumentu (`header`, `main`, `aside`, `footer`) a logické poradie fokusovateľných prvkov.
+Zachovajte semantiku dokumentu (`header`, `main`, `aside`, `footer`) a logické poradie fokusovateľných prvkov. Na stránke by mal byť vždy práve jeden hlavný obsahový región `main`.
 
 ## Odporúčané postupy
 
