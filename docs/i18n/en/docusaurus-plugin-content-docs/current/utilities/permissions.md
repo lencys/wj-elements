@@ -4,7 +4,7 @@ Webjet Elements provides a permission management system that allows you to show 
 
 ## API for permissions
 
-The WjePermissionsApi class provides an interface for managing permissions in an application.
+The `Permissions` class provides an interface for managing permissions in an application.
 
 ## Features
 
@@ -26,24 +26,24 @@ The WjePermissionsApi class provides an interface for managing permissions in an
 
 You can set permissions as follows:
 
-```html
-import { WjePermissionsApi } from 'wj-elements';
+```js
+import { Permissions } from 'wj-elements';
 
 // Sets the permissions field
-WjePermissionsApi.permissions = ['admin', 'editor', 'viewer'];
+Permissions.permissions = ['admin', 'editor', 'viewer'];
 
 // Changes the key used in localStorage (optional)
-WjePermissionsApi.permissionKey = 'myPermissions';
+Permissions.permissionKey = 'myPermissions';
 ```
 
 ### Checking entitlements
 
-```html
+```js
 // Check if the user has a specific permission
-const maAdminPermission = WjePermissionsApi.includesKey('admin');
+const hasAdminPermission = Permissions.includesKey('admin');
 
 // Check if the user has at least one of the permissions
-const maPermission = WjePermissionsApi.isPermissionFulfilled(['admin', 'editor']));
+const hasPermission = Permissions.isPermissionFulfilled(['admin', 'editor']);
 ```
 
 ### Example of use in a component

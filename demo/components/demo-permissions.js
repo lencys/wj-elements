@@ -1,4 +1,4 @@
-import { default as WJElement , WjePermissionsApi } from '../../dist/wje-element.js';
+import WJElement, { Permissions } from '../../dist/wje-element.js';
 import CodeSnippet from '../assets/js/code-snippet-builder.js';
 
 const template = document.createElement('template');
@@ -14,7 +14,7 @@ template.innerHTML = `
       Ukážka práce s oprávneniami pomocou atribútov <span class="tok attr">permission</span>,
       <span class="tok attr">permission-check</span> a <span class="tok attr">no-show</span>
       na komponentoch ako <span class="tok tag">&lt;wje-button&gt;</span>.
-      API <span class="tok tag">WjePermissionsApi</span> definuje dostupné oprávnenia
+      API <span class="tok tag">Permissions</span> definuje dostupné oprávnenia
       (tu nastavené v <span class="tok method">constructor()</span>) a komponent podľa nich
       automaticky zobrazí, skryje alebo deaktivuje prvky bez ďalšieho JavaScriptu.
     </p>
@@ -32,7 +32,7 @@ export default class DemoPermissions extends WJElement {
   constructor() {
     super();
 
-    WjePermissionsApi.permissions = ['test'];
+    Permissions.permissions = ['test'];
   }
 
   /**

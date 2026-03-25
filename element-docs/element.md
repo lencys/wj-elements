@@ -158,7 +158,7 @@ export default class Button extends WJElement {
 **Details:**
 
 - `permission`: Used in conjunction with `permission-check` to determine if the element should be shown based on user permissions.
-- `permission-check`: When present, triggers a check using `WjePermissionsApi.isPermissionFulfilled`.
+- `permission-check`: When present, triggers a check using `Permissions.isPermissionFulfilled`.
 - `no-show`: If present, the element is removed from the DOM during the display/render cycle.
 - `shadow`: If present, attaches a Shadow DOM to the element. The value determines the mode (`open` by default).
 - `remove-class-after-connect`: After the element is connected and rendered, the listed classes are removed from the element.

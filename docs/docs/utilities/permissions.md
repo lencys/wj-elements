@@ -4,7 +4,7 @@ Webjet Elements poskytuje systém na správu oprávnení, ktorý umožňuje zobr
 
 ## API pre oprávnenia
 
-Trieda WjePermissionsApi poskytuje rozhranie na správu oprávnení v aplikácii.
+Trieda `Permissions` poskytuje rozhranie na správu oprávnení v aplikácii.
 
 
 ## Vlastnosti
@@ -29,24 +29,24 @@ Trieda WjePermissionsApi poskytuje rozhranie na správu oprávnení v aplikácii
 
 Oprávnenia môžete nastaviť nasledovne:
 
-```html
-import { WjePermissionsApi } from 'wj-elements';
+```js
+import { Permissions } from 'wj-elements';
 
 // Nastaví pole oprávnení
-WjePermissionsApi.permissions = ['admin', 'editor', 'viewer'];
+Permissions.permissions = ['admin', 'editor', 'viewer'];
 
 // Zmení kľúč používaný v localStorage (voliteľné)
-WjePermissionsApi.permissionKey = 'mojeOpravnenia';
+Permissions.permissionKey = 'mojeOpravnenia';
 ```
 
 ### Kontrola oprávnení
 
-```html
+```js
 // Kontrola, či má používateľ konkrétne oprávnenie
-const maAdminOpravnenie = WjePermissionsApi.includesKey('admin');
+const maAdminOpravnenie = Permissions.includesKey('admin');
 
 // Kontrola, či má používateľ aspoň jedno z oprávnení
-const maOpravnenie = WjePermissionsApi.isPermissionFulfilled(['admin', 'editor']);
+const maOpravnenie = Permissions.isPermissionFulfilled(['admin', 'editor']);
 ```
 
 ### Príklad použitia v komponente

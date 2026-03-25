@@ -1,12 +1,12 @@
 /**
- * PermissionsApi is a utility class for managing permissions.
+ * Permissions is a utility class for managing permissions.
  * It allows setting, retrieving, and checking permissions stored in the browser's local storage.
  */
 export class Permissions {
     static _permissionKey = 'permissions';
 
     /**
-     * Sets the permission key for the PermissionsApi.
+     * Sets the permission key for the Permissions utility.
      * The key is stored internally and defaults to 'permissions' if no value is provided.
      * @param {string} value The key to set for permissions. If no value is provided, the default is 'permissions'.
      */
@@ -15,8 +15,8 @@ export class Permissions {
     }
 
     /**
-     * Retrieves the permission key used for accessing the permissions API.
-     * @returns {string} The permission key associated with the PermissionsApi.
+     * Retrieves the permission key used for accessing the permissions utility.
+     * @returns {string} The permission key associated with the Permissions utility.
      */
     static get permissionKey() {
         return Permissions._permissionKey;
@@ -24,7 +24,7 @@ export class Permissions {
 
     /**
      * Sets the permissions by storing them in the local storage.
-     * @param {object} value The permissions object to be stored.
+     * @param {Array<string>} value The permissions array to be stored.
      */
     static set permissions(value) {
         window.localStorage.setItem(Permissions.permissionKey, JSON.stringify(value));
@@ -48,9 +48,9 @@ export class Permissions {
     }
 
     /**
-     * Checks if at least one of the given permissions is fulfilled, based on the permissions available in `PermissionsApi`.
-     * @param {Array<string>} permissions The list of permissions to check against the permissions available in `PermissionsApi`.
-     * @returns {boolean} Returns `true` if any of the given permissions match the permissions available in `PermissionsApi`, otherwise returns `false`.
+     * Checks if at least one of the given permissions is fulfilled, based on the permissions available in `Permissions`.
+     * @param {Array<string>} permissions The list of permissions to check against the permissions available in `Permissions`.
+     * @returns {boolean} Returns `true` if any of the given permissions match the permissions available in `Permissions`, otherwise returns `false`.
      */
     static isPermissionFulfilled(permissions) {
         return permissions.some((perm) => Permissions.permissions.includes(perm));
