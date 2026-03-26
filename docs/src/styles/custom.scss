@@ -198,8 +198,9 @@ iframe {
 
 docs-cards {
   wje-icon {
+    box-sizing: content-box !important;
     padding: 12px;
-    --wj-icon-size: 32px;
+    --wje-icon-size: 32px;
     margin-bottom: 1rem;
     color: #fff;
     border-radius: 50%;

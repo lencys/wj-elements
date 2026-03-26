@@ -8,8 +8,16 @@ import animations from 'animate.css?inline';
  * @documentation https://elements.webjet.sk/components/animation
  * @status stable
  * @augments WJElement
+ * @attribute {string} name - The Animate.css animation name played on the slotted element.
+ * @attribute {number} duration - The animation playback duration in milliseconds.
+ * @attribute {number} delay - The delay before the animation starts.
+ * @attribute {number} endDelay - The delay applied after the animation completes.
+ * @attribute {string} fill - The fill mode used by the animation playback.
+ * @attribute {string|number} iterations - The number of animation repetitions.
+ * @attribute {number} iterationStart - The starting offset for the first animation iteration.
+ * @attribute {string} direction - The playback direction of the animation.
+ * @attribute {string} easing - The easing function used by the animation playback.
  * @slot - The animation main content.
- * @cssproperty --size - The size of the avatar.
  * @tag wje-animation
  */
 export default class Animation extends WJElement {
@@ -197,7 +205,7 @@ export default class Animation extends WJElement {
 
     /**
      * Getter for the observed attributes.
-     * @returns {Array} An array containing the name of the observed attribute.
+     * @returns {Array} An array containing the names of the observed attributes.
      */
     static get observedAttributes() {
         return [];

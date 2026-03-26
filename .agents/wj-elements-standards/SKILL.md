@@ -126,6 +126,50 @@ this.arrow.querySelector('.arrow')
 - shadow parts,
 - eventy.
 
+### 5.1 Štandard písania textov v dokumentácii
+
+- Popis komponentu nesmie byť generický. Musí jasne vysvetliť:
+  - čo komponent rieši,
+  - kde sa typicky používa,
+  - čo je jeho zodpovednosť,
+  - čo už patrí nadradenému alebo podradenému komponentu.
+- Pri každej ukážke explicitne popíš:
+  - čo presne ukazuje,
+  - ktoré atribúty, properties, sloty alebo eventy sú v nej podstatné,
+  - čo si má používateľ na ukážke všimnúť,
+  - či ide o schopnosť samotného komponentu alebo o kompozíciu s iným komponentom.
+- Texty musia sedieť s realitou v skutočnej implementácii komponentu, nie iba s tým, čo je napísané v starej dokumentácii alebo v šablóne.
+- Pred úpravou dokumentácie vždy porovnaj:
+  - implementáciu komponentu,
+  - existujúce demo ukážky,
+  - eventy,
+  - sloty,
+  - methods,
+  - CSS custom properties,
+  - shadow parts,
+  - atribúty a properties.
+- Ak komponent niečo nepodporuje, napíš to explicitne. Napríklad:
+  - komponent neemituje vlastné eventy,
+  - komponent nemá vlastné metódy,
+  - komponent nemá shadow parts,
+  - komponent používa iba default slot.
+- Vyhýbaj sa krátkym a neurčitým popisom typu:
+  - "Height of avatar"
+  - "Width of element"
+  - "Basic usage"
+  bez ďalšieho vysvetlenia.
+- Každý popis atribútu, property, CSS premennej, eventu, metódy, slotu alebo partu má vysvetliť:
+  - čo daná vec ovplyvňuje,
+  - kde sa prejaví,
+  - aké má typické použitie,
+  - prípadne dôležité obmedzenia, default správanie alebo podporované hodnoty.
+- Pri eventoch musí dokumentácia uvádzať aj praktický význam eventu, nielen jeho názov.
+- Pri slotoch musí byť jasné, aký obsah do nich patrí a ako ovplyvňuje render komponentu.
+- Pri CSS custom properties a shadow parts má byť zrejmé, čo je možné nimi reálne štylovať.
+- Ak ukážka používa iný komponent ako wrapper alebo trigger, treba to pomenovať presne. Nepíš, že funkcionalitu poskytuje dokumentovaný komponent, ak ju v skutočnosti poskytuje nadradený wrapper.
+- Ak komponent podporuje kompozíciu, ale nie vstavanú funkcionalitu, treba to povedať otvorene. Napríklad že skupina avatarov je riešená externým CSS a nie vstavaným group API.
+- Slovenská a anglická verzia dokumentácie musia byť obsahovo konzistentné; nestačí preložiť nadpisy.
+
 ⸻
 
 ## 6. Demo ukážky

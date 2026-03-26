@@ -10,10 +10,10 @@ import CustomProps from '@ionic-internal/component-api/v1/animation/custom-props
 import Slots from '@ionic-internal/component-api/v1/animation/slots.md';
 
 <head>
-  <title>Animation: integrating animations into web applications</title>
+  <title>Animation: animating the first slotted element with Animate.css</title>
   <meta
     name="description"
-    content="Element Animation makes it easy to integrate animations into web applications, contributing to the creation of engaging and interactive user interfaces."
+    content="The wje-animation component wraps one main element, loads keyframes from Animate.css, and plays them through the Web Animations API with optional imperative control."
   />
 </head>
 
@@ -21,32 +21,43 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Element Animation makes it easy to integrate animations into web applications, contributing to the creation of engaging and interactive user interfaces. It offers a wide range of customization options, including setting the delay, duration and number of animation repeats.
+`wje-animation` is a lightweight wrapper for playing Animate.css animations around slotted content. It loads keyframes, applies them to the first element in the default slot, and plays them through the Web Animations API.
 
 ## Basic usage
+
+The example below wraps a `wje-avatar` in `wje-animation` and shows both basic animation setup through the `name` attribute and imperative control through `play()` and `cancel()`.
 
 import Basic from '@site/static/usage/v1/animation/basic/index.md';
 
 <Basic />
 
+## Things to keep in mind
+
+- The animation is applied to the first assigned element from the default slot, so it works best with one main wrapper.
+- The default animation name is `heartBeat`.
+- The current implementation uses `endDelay` and `iterationStart` as camelCase attribute names.
+- The host itself is not interactive; it sets `role="presentation"`.
+- Use `getAnimationsArray()` when you need to surface the available animation names in your own UI.
 
 ## When to use
 
-Use `wje-animation` when you need a consistent WebJET-based implementation for this UI concern.
+Use `wje-animation` when you want to add focused motion to one specific element such as an avatar, badge, notification, or status indicator.
 
 ## When not to use
 
-Do not stretch the component beyond its responsibility; compose smaller primitives for edge cases.
+Do not use it for complex multi-element timelines or when motion adds no information to the UI.
 
 ## Accessibility
 
-Validate keyboard behavior, focus states, contrast, and meaningful labels for interactive elements.
+- Animation should support meaning, not replace it.
+- In important flows, consider reduced-motion behavior.
+- If the animated content is interactive, accessibility is handled by the slotted child.
 
 ## Best Practices
 
-- Prefer component APIs over direct DOM manipulation.
-- Stick to design tokens and naming conventions.
-- Test components with realistic data before production rollout.
+- Use `play()` and `cancel()` for repeated control.
+- If you change `name` at runtime, verify that the component refreshes correctly in your specific use case.
+- For long-running or infinite animations, evaluate both distraction and performance, especially inside lists.
 
 ## Attributes and Properties
 

@@ -818,6 +818,15 @@ function describePropertyEn(meta = {}) {
     'accordion.index': 'Sets the index of the currently active accordion item.',
     'accordion.disabled': 'Disables user interaction with accordion items.',
     'accordion.expanded': 'Controls whether the accordion item is expanded.',
+    'animation.name': 'Sets the Animate.css animation name played on the slotted element.',
+    'animation.duration': 'Sets the animation playback duration in milliseconds.',
+    'animation.delay': 'Sets the delay before the animation starts.',
+    'animation.enddelay': 'Sets the delay applied after the animation completes.',
+    'animation.fill': 'Sets the fill mode used by the animation playback.',
+    'animation.iterations': 'Sets how many times the animation should repeat.',
+    'animation.iterationstart': 'Sets the starting offset for the first animation iteration.',
+    'animation.direction': 'Sets the playback direction of the animation.',
+    'animation.easing': 'Sets the easing function used for animation playback.',
     'rate.value': 'Sets the current rating value.',
     'rate.max': 'Sets the maximum rating value.',
     'icon-picker.icon': 'Sets the selected icon name.',
@@ -938,6 +947,15 @@ function describePropertySk(meta = {}) {
     'accordion.index': 'Nastavuje index aktuálne aktívnej položky accordionu.',
     'accordion.disabled': 'Vypína používateľskú interakciu s accordion položkami.',
     'accordion.expanded': 'Určuje, či je accordion položka rozbalená.',
+    'animation.name': 'Určuje názov animácie z knižnice Animate.css, ktorá sa prehrá nad vloženým elementom.',
+    'animation.duration': 'Určuje trvanie prehrávania animácie v milisekundách.',
+    'animation.delay': 'Určuje oneskorenie pred spustením animácie.',
+    'animation.enddelay': 'Určuje oneskorenie po dohraní animácie.',
+    'animation.fill': 'Určuje fill mode použitý pri prehrávaní animácie.',
+    'animation.iterations': 'Určuje počet opakovaní animácie.',
+    'animation.iterationstart': 'Určuje počiatočný posun pre prvé opakovanie animácie.',
+    'animation.direction': 'Určuje smer prehrávania animácie.',
+    'animation.easing': 'Určuje easing funkciu použitú pri prehrávaní animácie.',
     'rate.value': 'Nastavuje aktuálnu hodnotu hodnotenia.',
     'rate.max': 'Nastavuje maximálnu hodnotu hodnotenia.',
     'icon-picker.icon': 'Nastavuje názov vybranej ikony.',
@@ -1163,6 +1181,10 @@ function describeMethodEn(meta = {}) {
     ) || humanizeIdentifier(methodName) || 'component state';
 
   const specific = {
+    getAnimationsArray: 'Returns the list of animation definitions parsed from Animate.css.',
+    destroyAnimation: 'Cancels the currently initialized animation before a new one is prepared.',
+    play: 'Starts or resumes playback of the current animation.',
+    cancel: 'Cancels the current animation and resets its playback state.',
     formAssociatedCallback:
       'Synchronizes the component with the form-associated custom element lifecycle when form context changes.',
     formDisabledCallback:
@@ -1238,6 +1260,10 @@ function describeMethodSk(meta = {}) {
   const tail = localizeIdentifierSk(tailRaw || 'stav komponentu');
 
   const specific = {
+    getAnimationsArray: 'Vráti zoznam animácií naparsovaných z knižnice Animate.css.',
+    destroyAnimation: 'Zruší aktuálne inicializovanú animáciu pred prípravou novej.',
+    play: 'Spustí alebo obnoví prehrávanie aktuálnej animácie.',
+    cancel: 'Zruší aktuálnu animáciu a vráti jej prehrávanie do počiatočného stavu.',
     formAssociatedCallback:
       'Synchronizuje komponent so životným cyklom formulára pri zmene kontextu formulára.',
     formDisabledCallback: 'Aktualizuje stav deaktivácie komponentu pri zmene stavu nadradeného formulára.',
@@ -1838,7 +1864,7 @@ ${methods
 | | |
 | --- | --- |
 | **${localizedCopy.labelDescription}** | ${formatMultiline(methodData.docs, locale)} |
-| **${localizedCopy.labelSignature}** | \`${sanitizeTableValue(methodData.signature || '')}\` |
+| **${localizedCopy.labelSignature}** | \`${sanitizeInlineCodeValue(methodData.signature || '')}\` |
 `
   )
   .join('\n')}
@@ -2181,6 +2207,12 @@ function sanitizeTableValue(value) {
     .replace(/>/g, '&gt;')
     .replace(/\{/g, '\\{')
     .replace(/\}/g, '\\}')
+    .replace(/\|/g, '\uff5c')
+    .trim();
+}
+
+function sanitizeInlineCodeValue(value) {
+  return String(value || '')
     .replace(/\|/g, '\uff5c')
     .trim();
 }

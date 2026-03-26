@@ -1,5 +1,17 @@
 let basePath = '';
 
+function resolveBasePathFromModuleUrl() {
+  if (typeof import.meta?.url !== 'string' || import.meta.url === '') {
+    return '';
+  }
+
+  try {
+    return new URL(/* @vite-ignore */ '.', import.meta.url).href;
+  } catch {
+    return '';
+  }
+}
+
 /**
  * Sets the base path for the application.
  * @param {string} path The base path to be set.
@@ -24,9 +36,7 @@ export function getBasePath(appendedPath = '') {
     if (basePathScript) {
       setBasePath(basePathScript.dataset.basePath  || '');
     } else {
-      const path = '';
-
-      setBasePath(path.split('/').slice(0, -1).join('/'));
+      setBasePath(resolveBasePathFromModuleUrl());
     }
   }
 

@@ -18,6 +18,7 @@
     "docusaurus": "docusaurus",
     "generate-markdown": "node scripts/native.mjs",
     "lint": "npm run prettier -- --write --cache",
+    "preserve": "npm run build:preview",
     "serve": "docusaurus serve",
     "playground:new": "hygen playground new",
     "prestart": "npm run sync:wje-assets; npm run generate-markdown; npm run audit:components",

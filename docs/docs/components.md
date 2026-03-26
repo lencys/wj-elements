@@ -30,7 +30,7 @@ import DocsCards from '@components/global/DocsCards';
 
 {' '}
 
-<script data-base-path="/wje-elementy/"></script>
+<script type="module" src="/wje-set-base-path.js"></script>
 <script type="module" src="/wje-elementy/wje-master.js"></script>
 <link rel="stylesheet" href="/wje-elementy/light.css" />
 <link rel="stylesheet" href="/wje-elementy/dark.css" />
