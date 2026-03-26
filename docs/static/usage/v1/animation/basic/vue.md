@@ -2,7 +2,7 @@
 <template>
   <wje-animation name="heartBeat">
     <wje-avatar>
-      <wje-img src="/assets/img/avatar.svg"></wje-img>
+      <wje-img alt="Silhouette of a person's head" src="/img/demos/avatar.svg"></wje-img>
     </wje-avatar>
   </wje-animation>
   <div style="margin-top: 1rem">

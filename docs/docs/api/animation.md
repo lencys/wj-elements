@@ -3,10 +3,7 @@ title: 'Animation'
 ---
 
 import Props from '@ionic-internal/component-api/v1-sk/animation/props.md';
-import Events from '@ionic-internal/component-api/v1-sk/animation/events.md';
 import Methods from '@ionic-internal/component-api/v1-sk/animation/methods.md';
-import Parts from '@ionic-internal/component-api/v1-sk/animation/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1-sk/animation/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1-sk/animation/slots.md';
 
 <head>
@@ -21,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-`wje-animation` je jednoduchý obal pre prehrávanie Animate.css animácií nad vloženým obsahom. Komponent načíta keyframy, aplikuje ich na prvý element z predvoleného slotu a prehrá ich cez Web Animations API.
+`wje-animation` je jednoduchý obal pre prehrávanie Animate.css animácií nad vloženým obsahom. Keyframy aplikuje na prvý element z predvoleného slotu a prehrá ich cez Web Animations API.
 
 ## Základné použitie
 
@@ -31,21 +28,13 @@ import Basic from '@site/static/usage/v1/animation/basic/index.md';
 
 <Basic />
 
-## Na čo si dať pozor
+## Na čo sa oplatí myslieť
 
 - Animácia sa aplikuje na prvý priradený element z predvoleného slotu, preto do komponentu vkladajte jeden hlavný wrapper.
 - Predvolený názov animácie je `heartBeat`.
 - Atribúty `endDelay` a `iterationStart` sa v aktuálnej implementácii zapisujú v camelCase.
 - Komponent sám nie je interaktívny prvok; host nastavuje `role="presentation"`.
 - Zoznam dostupných animácií získate cez `getAnimationsArray()`.
-
-## Kedy použiť
-
-Použite `wje-animation`, keď chcete rýchlo oživiť jeden konkrétny prvok, napríklad avatar, badge, notifikáciu alebo stavový indikátor.
-
-## Kedy nepoužiť
-
-Nepoužívajte ho na zložité sekvenčné animácie viacerých elementov alebo tam, kde pohyb neprináša žiadnu informačnú hodnotu.
 
 ## Prístupnosť
 
@@ -63,21 +52,9 @@ Nepoužívajte ho na zložité sekvenčné animácie viacerých elementov alebo 
 
 <Props />
 
-## Udalosti
-
-<Events />
-
 ## Metódy
 
 <Methods />
-
-## CSS tieňové časti
-
-<Parts />
-
-## CSS vlastné premenné
-
-<CustomProps />
 
 ## Sloty
 

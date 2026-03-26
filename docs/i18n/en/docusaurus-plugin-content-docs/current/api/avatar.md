@@ -3,7 +3,6 @@ title: 'Avatar'
 ---
 
 import Props from '@ionic-internal/component-api/v1/avatar/props.md';
-import Events from '@ionic-internal/component-api/v1/avatar/events.md';
 import Methods from '@ionic-internal/component-api/v1/avatar/methods.md';
 import Parts from '@ionic-internal/component-api/v1/avatar/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/avatar/custom-props.md';
@@ -21,11 +20,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-`wje-avatar` is designed for compact visual identification of a person, team, brand, or other entity. In practice it is most commonly used in user lists, profile menus, comments, cards, tables, notifications, and application headers. The component can render an image or other slotted content through the default slot, generated initials from the `label` attribute, and supporting content through dedicated icon, status, and secondary slots.
+`wje-avatar` is designed for fast visual identification of a person, team, brand, or other entity. It can render an image or other slotted content, fallback initials derived from `label`, and supporting icon, status, or secondary content.
 
 ## Basic usage
 
-This example places the three most important modes next to each other: an avatar with an image, an avatar with initials, and an avatar with an icon. It is a useful quick overview showing that `wje-avatar` is not limited to “user profile pictures”—it is a general-purpose shell for a small identity marker.
+This example places the three most important modes next to each other: an avatar with an image, initials, and an icon. It quickly shows that `wje-avatar` is not limited to profile pictures.
 
 import Basic from '@site/static/usage/v1/avatar/basic/index.md';
 
@@ -33,7 +32,7 @@ import Basic from '@site/static/usage/v1/avatar/basic/index.md';
 
 ## Avatar size
 
-This example demonstrates that the `size` attribute changes the dimensions of the avatar container itself. That means the same image or slotted content can scale with the component without changing the inner markup. The current implementation supports `small`, `medium`, `normal`, `large`, `x-large`, `2x-large`, `3x-large`, `4x-large`, and `5x-large`.
+This example demonstrates that the `size` attribute changes the dimensions of the outer avatar shell. The same image or slotted content can therefore scale without changing the inner markup.
 
 import Size from '@site/static/usage/v1/avatar/size/index.md';
 
@@ -41,7 +40,7 @@ import Size from '@site/static/usage/v1/avatar/size/index.md';
 
 ## Avatar size with initials
 
-This example uses the same size variants but lets the component render initials derived from `label` instead of an image. One important implementation detail is that when the boolean `initials` attribute is present, the component prefers rendering initials over the default slotted content.
+The same size variants also work in initials mode. When the boolean `initials` attribute is present, the component prefers generated initials over the default slotted content.
 
 import SizeInitials from '@site/static/usage/v1/avatar/size-initials/index.md';
 
@@ -49,7 +48,7 @@ import SizeInitials from '@site/static/usage/v1/avatar/size-initials/index.md';
 
 ## Avatar with icon
 
-If you want to use the avatar more like a compact status or action marker than a profile image, place an icon into the `icon` slot. This keeps the same size and shape shell while changing the inner content to `wje-icon`.
+If you want the avatar to act more like a compact status or action marker than a profile image, place an icon into the `icon` slot.
 
 import Icon from '@site/static/usage/v1/avatar/icon/index.md';
 
@@ -57,7 +56,7 @@ import Icon from '@site/static/usage/v1/avatar/icon/index.md';
 
 ## Avatar with initials
 
-This is the most common fallback scenario. The component takes text from `label`, derives initials, and automatically computes contrasting background and text colors. It is useful when no profile image is available or when you do not want to depend on image loading in long lists.
+This is the most common fallback scenario. The component takes text from `label`, derives initials, and automatically computes contrasting background and text colors.
 
 import Initials from '@site/static/usage/v1/avatar/initials/index.md';
 
@@ -65,16 +64,7 @@ import Initials from '@site/static/usage/v1/avatar/initials/index.md';
 
 ## Avatar with status
 
-In this example, `wje-status` is placed into the `status` slot so it appears on one of the four avatar corners according to the `status-placement` attribute. In real products, this works well for online/offline state, verification, sync state, or internal role markers.
-
-The current implementation supports these `status-placement` values:
-
-- `top-start`
-- `top-end`
-- `bottom-start`
-- `bottom-end`
-
-For more information about the indicator itself, see the [Status](../status) component documentation.
+In this example, `wje-status` is placed into the `status` slot so it appears on one of the four avatar corners according to `status-placement`. This works well for online state, verification, or similar compact indicators.
 
 import Status from '@site/static/usage/v1/avatar/status/index.md';
 
@@ -82,9 +72,7 @@ import Status from '@site/static/usage/v1/avatar/status/index.md';
 
 ## Avatar as a dropdown trigger
 
-There is an important composition detail here: the avatar is not wrapping the dropdown. Instead, `wje-avatar` is placed into the `trigger` slot of `wje-dropdown`. So the example demonstrates how to use an avatar as the entry point for a profile menu or contextual panel.
-
-The `placement`, `trigger`, and `offset` attributes belong to `wje-dropdown`, not to the avatar itself.
+There is an important composition detail here: `wje-avatar` is placed into the `trigger` slot of `wje-dropdown`. The `placement`, `trigger`, and `offset` attributes therefore belong to the dropdown, not the avatar.
 
 import Dropdown from '@site/static/usage/v1/avatar/dropdown/index.md';
 
@@ -93,7 +81,7 @@ import Dropdown from '@site/static/usage/v1/avatar/dropdown/index.md';
 
 ## Avatar with tooltip
 
-This example is also based on composition with another component: `wje-avatar` is wrapped by `wje-tooltip`. The tooltip is not built into the avatar; you get it by using the avatar as the tooltip target content.
+This example is also based on composition with another component. The tooltip is not built into the avatar; you get it by using the avatar as the `wje-tooltip` target content.
 
 import Tooltip from '@site/static/usage/v1/avatar/tooltip/index.md';
 
@@ -101,34 +89,19 @@ import Tooltip from '@site/static/usage/v1/avatar/tooltip/index.md';
 
 ## Group of avatars
 
-This example is useful because it shows the boundary between what the component does and what surrounding layout CSS does. `wje-avatar` does not provide a built-in group wrapper or a dedicated group API. Overlapping multiple avatars is achieved through an external container and custom CSS.
-
-In other words, the component supports grouping indirectly because it works well with external CSS and `::part(native)`, but it does not own the grouping logic itself.
+This example shows the boundary between what the component does and what surrounding layout CSS does. `wje-avatar` does not provide a built-in group wrapper or group API; overlapping avatars are achieved through an external container and custom CSS.
 
 import Group from '@site/static/usage/v1/avatar/group/index.md';
 
 <Group />
 
-## How the API works in practice
+## Things To Keep In Mind
 
-The most important public capabilities of `wje-avatar` are:
-
-- the `label`, `initials`, and `size` attributes and properties,
-- the `status-placement` attribute for positioning the `status` slot content,
-- the default slot for the main image or other content,
-- the `icon`, `status`, and `secondary` slots,
-- the `native`, `status`, and `secondary` shadow parts,
-- the public helper method `isImage()`, which checks whether the avatar contains `wje-img`.
-
-The component does not currently emit its own custom events. If you need click, hover, or menu-open behavior, that is usually handled by the parent component around the avatar, such as `wje-dropdown` or `wje-tooltip`.
-
-## When to use
-
-Use `wje-avatar` when you need fast visual identification of an entity in a small space. It is most valuable where it helps users immediately recognize who or what is associated with the current action—for example in comments, accounts, notifications, assigned tasks, or a user-menu header.
-
-## When not to use
-
-Do not use it as the only carrier of important information. If a person or object identity is critical, the avatar should complement text, not replace the name, title, or description. It is also not a good substitute for a fully-fledged button without clear surrounding interaction context.
+- `label` together with `initials` is the most practical non-image fallback.
+- `status-placement` controls where the `status` slot is rendered on the avatar edge.
+- The default slot holds the main content, while `icon`, `status`, and `secondary` cover supporting use cases.
+- The helper method `isImage()` checks whether the avatar currently contains `wje-img`.
+- Click, hover, or menu-open behavior is usually owned by a parent component such as `wje-dropdown` or `wje-tooltip`.
 
 ## Accessibility
 
@@ -147,15 +120,7 @@ Do not use it as the only carrier of important information. If a person or objec
 
 <Props />
 
-## Events
-
-The component does not emit custom events of its own.
-
-<Events />
-
 ## Methods
-
-If the autogenerated table below appears minimal, the method worth noting is `isImage()`, which returns whether a `wje-img` is present inside the avatar.
 
 <Methods />
 
@@ -164,8 +129,6 @@ If the autogenerated table below appears minimal, the method worth noting is `is
 <Parts />
 
 ## CSS Custom Properties
-
-Beyond the tables below, it is helpful to know that initials mode sets `--wje-avatar-background-color` and `--wje-avatar-color` automatically, while sizing and shape can be fine-tuned with variables such as `--wje-avatar-size`, `--wje-avatar-font-size`, and `--wje-avatar-border-radius`.
 
 <CustomProps />
 

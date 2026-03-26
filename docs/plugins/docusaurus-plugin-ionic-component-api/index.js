@@ -816,8 +816,12 @@ function describePropertyEn(meta = {}) {
   const specific = {
     'accordion.multiple': 'Allows multiple accordion items to be expanded at the same time.',
     'accordion.index': 'Sets the index of the currently active accordion item.',
+    'accordion-item.color': 'Applies a contextual color variant to the accordion item wrapper.',
     'accordion.disabled': 'Disables user interaction with accordion items.',
     'accordion.expanded': 'Controls whether the accordion item is expanded.',
+    'avatar.initials': 'Controls whether the avatar renders generated initials instead of the default slotted content.',
+    'avatar.label': 'Sets the source text used for generated initials and for the host accessible label.',
+    'avatar.status-placement': 'Positions the `status` slot on one of the avatar corners.',
     'animation.name': 'Sets the Animate.css animation name played on the slotted element.',
     'animation.duration': 'Sets the animation playback duration in milliseconds.',
     'animation.delay': 'Sets the delay before the animation starts.',
@@ -945,8 +949,12 @@ function describePropertySk(meta = {}) {
   const specific = {
     'accordion.multiple': 'Umožňuje mať rozbalených viac položiek accordionu naraz.',
     'accordion.index': 'Nastavuje index aktuálne aktívnej položky accordionu.',
+    'accordion-item.color': 'Určuje významový farebný variant obalu accordion položky.',
     'accordion.disabled': 'Vypína používateľskú interakciu s accordion položkami.',
     'accordion.expanded': 'Určuje, či je accordion položka rozbalená.',
+    'avatar.initials': 'Určuje, či avatar vykreslí generované iniciály namiesto predvoleného vloženého obsahu.',
+    'avatar.label': 'Nastavuje zdrojový text pre generovanie iniciál aj prístupný názov avatara.',
+    'avatar.status-placement': 'Určuje, do ktorého rohu avatara sa umiestni obsah slotu `status`.',
     'animation.name': 'Určuje názov animácie z knižnice Animate.css, ktorá sa prehrá nad vloženým elementom.',
     'animation.duration': 'Určuje trvanie prehrávania animácie v milisekundách.',
     'animation.delay': 'Určuje oneskorenie pred spustením animácie.',
@@ -1072,6 +1080,8 @@ function describeEventEn(meta = {}) {
     'wje-button:toggle': 'Emitted when a toggle-style button changes its active state.',
     'wje-button:submit': 'Emitted when the button triggers form submission behavior.',
     'wje-button:reset': 'Emitted when the button triggers form reset behavior.',
+    'wje-accordion-item:open': 'Emitted when the accordion item expands.',
+    'wje-accordion-item:close': 'Emitted when the accordion item collapses.',
   };
 
   const exactDescription = exact[eventName.toLowerCase()];
@@ -1124,6 +1134,8 @@ function describeEventSk(meta = {}) {
     'wje-button:toggle': 'Vyvolá sa pri prepnutí aktívneho stavu prepínacieho tlačidla.',
     'wje-button:submit': 'Vyvolá sa pri spustení odoslania formulára tlačidlom.',
     'wje-button:reset': 'Vyvolá sa pri spustení resetu formulára tlačidlom.',
+    'wje-accordion-item:open': 'Vyvolá sa pri rozbalení accordion položky.',
+    'wje-accordion-item:close': 'Vyvolá sa pri zbalení accordion položky.',
   };
 
   const exactDescription = exact[eventName.toLowerCase()];
@@ -1181,10 +1193,15 @@ function describeMethodEn(meta = {}) {
     ) || humanizeIdentifier(methodName) || 'component state';
 
   const specific = {
+    collapseAll: 'Collapses all accordion items except the optionally provided one.',
+    getAccordions: 'Returns the direct `wje-accordion-item` children managed by the accordion.',
+    collapse: 'Collapses the current accordion item and updates its ARIA expanded state.',
+    expand: 'Expands the current accordion item and updates its ARIA expanded state.',
     getAnimationsArray: 'Returns the list of animation definitions parsed from Animate.css.',
     destroyAnimation: 'Cancels the currently initialized animation before a new one is prepared.',
     play: 'Starts or resumes playback of the current animation.',
     cancel: 'Cancels the current animation and resets its playback state.',
+    isImage: 'Checks whether the avatar currently contains a `wje-img` element.',
     formAssociatedCallback:
       'Synchronizes the component with the form-associated custom element lifecycle when form context changes.',
     formDisabledCallback:
@@ -1260,10 +1277,15 @@ function describeMethodSk(meta = {}) {
   const tail = localizeIdentifierSk(tailRaw || 'stav komponentu');
 
   const specific = {
+    collapseAll: 'Zatvorí všetky accordion položky okrem voliteľne zadanej výnimky.',
+    getAccordions: 'Vráti priame deti `wje-accordion-item`, ktoré accordion spravuje.',
+    collapse: 'Zbalí aktuálnu accordion položku a aktualizuje jej ARIA expanded stav.',
+    expand: 'Rozbalí aktuálnu accordion položku a aktualizuje jej ARIA expanded stav.',
     getAnimationsArray: 'Vráti zoznam animácií naparsovaných z knižnice Animate.css.',
     destroyAnimation: 'Zruší aktuálne inicializovanú animáciu pred prípravou novej.',
     play: 'Spustí alebo obnoví prehrávanie aktuálnej animácie.',
     cancel: 'Zruší aktuálnu animáciu a vráti jej prehrávanie do počiatočného stavu.',
+    isImage: 'Overí, či avatar momentálne obsahuje element `wje-img`.',
     formAssociatedCallback:
       'Synchronizuje komponent so životným cyklom formulára pri zmene kontextu formulára.',
     formDisabledCallback: 'Aktualizuje stav deaktivácie komponentu pri zmene stavu nadradeného formulára.',
@@ -1330,6 +1352,12 @@ function describePartEn(meta = {}) {
   if (part === 'native') return 'Styles the component root shadow part.';
   if (part === 'wrapper') return 'Styles the wrapper shadow part.';
   if (part === 'container') return 'Styles the container shadow part.';
+  if (part === 'headline') return 'Styles the clickable headline area.';
+  if (part === 'description') return 'Styles the supporting description area.';
+  if (part === 'toggle') return 'Styles the toggle slot and marker area.';
+  if (part === 'content') return 'Styles the expandable content panel.';
+  if (part === 'status') return 'Styles the positioned status slot container.';
+  if (part === 'secondary') return 'Styles the secondary supporting content container.';
   return `Styles the \`${part}\` shadow part.`;
 }
 
@@ -1338,16 +1366,54 @@ function describePartSk(meta = {}) {
   if (part === 'native') return 'Štýluje koreňovú shadow časť komponentu.';
   if (part === 'wrapper') return 'Štýluje obalovú shadow časť.';
   if (part === 'container') return 'Štýluje kontajnerovú shadow časť.';
+  if (part === 'headline') return 'Štýluje klikateľnú oblasť hlavičky.';
+  if (part === 'description') return 'Štýluje oblasť doplnkového popisu.';
+  if (part === 'toggle') return 'Štýluje toggle slot a oblasť markera.';
+  if (part === 'content') return 'Štýluje rozbaľovaný obsahový panel.';
+  if (part === 'status') return 'Štýluje pozicionovaný kontajner slotu `status`.';
+  if (part === 'secondary') return 'Štýluje kontajner sekundárneho doplnkového obsahu.';
   return `Štýluje shadow časť \`${part}\`.`;
 }
 
 function describeCssPropertyEn(meta = {}) {
   const variableName = sanitizeCssVariableName(meta.name || '');
   const componentTag = String(meta.componentTag || '');
+  const componentKey = `${componentTag}.${variableName}`;
   const short = variableName
     .replace(/^--wje-/, '')
     .replace(new RegExp(`^${componentTag}-`), '');
   const subject = humanizeIdentifier(short || variableName);
+
+  const specific = {
+    'accordion-item.--wje-accordion-background': 'CSS custom property that controls the collapsed item background color.',
+    'accordion-item.--wje-accordion-border': 'CSS custom property that controls the collapsed item border color.',
+    'accordion-item.--wje-accordion-border-radius': 'CSS custom property that controls the accordion item border radius.',
+    'accordion-item.--wje-accordion-background-hover': 'CSS custom property that controls the item background color on hover.',
+    'accordion-item.--wje-accordion-border-hover': 'CSS custom property that controls the item border color on hover.',
+    'accordion-item.--wje-accordion-background-expanded': 'CSS custom property that controls the expanded item background color.',
+    'accordion-item.--wje-accordion-border-expanded': 'CSS custom property that controls the expanded item border color.',
+    'accordion-item.--wje-accordion-headline-color': 'CSS custom property that controls the headline text color.',
+    'accordion-item.--wje-accordion-content-color': 'CSS custom property that controls the expandable content text color.',
+    'accordion-item.--wje-accordion-marker-rotate': 'CSS custom property that controls the rotation of the toggle marker icon.',
+    'avatar.--wje-avatar-size': 'CSS custom property that controls the overall size of the avatar shell.',
+    'avatar.--wje-avatar-font-size': 'CSS custom property that controls initials and text sizing inside the avatar.',
+    'avatar.--wje-avatar-font-weight': 'CSS custom property that controls initials and text weight inside the avatar.',
+    'avatar.--wje-avatar-color': 'CSS custom property that controls the avatar foreground color.',
+    'avatar.--wje-avatar-background-color': 'CSS custom property that controls the avatar background color.',
+    'avatar.--wje-avatar-border-radius': 'CSS custom property that controls avatar corner rounding.',
+    'avatar.--wje-avatar-border-color': 'CSS custom property that controls the avatar border color.',
+    'avatar.--wje-avatar-border-width': 'CSS custom property that controls the avatar border width.',
+    'avatar.--wje-avatar-border-style': 'CSS custom property that controls the avatar border style.',
+    'aside.--wje-aside-width': 'CSS custom property that controls the width of the aside column.',
+    'aside.--wje-aside-top': 'CSS custom property that controls the top offset of a fixed aside.',
+    'aside.--wje-aside-border-color': 'CSS custom property that controls the aside border color.',
+    'aside.--wje-aside-border-width': 'CSS custom property that controls the aside border width.',
+    'aside.--wje-aside-border-style': 'CSS custom property that controls the aside border style.',
+  };
+
+  if (specific[componentKey]) {
+    return specific[componentKey];
+  }
 
   if (subject.includes('color')) return `CSS custom property that controls ${subject}.`;
   if (subject.includes('padding')) return `CSS custom property that controls ${subject}.`;
@@ -1369,10 +1435,42 @@ function describeCssPropertyEn(meta = {}) {
 function describeCssPropertySk(meta = {}) {
   const variableName = sanitizeCssVariableName(meta.name || '');
   const componentTag = String(meta.componentTag || '');
+  const componentKey = `${componentTag}.${variableName}`;
   const short = variableName
     .replace(/^--wje-/, '')
     .replace(new RegExp(`^${componentTag}-`), '');
   const subject = humanizeIdentifier(short || variableName);
+
+  const specific = {
+    'accordion-item.--wje-accordion-background': 'Vlastná CSS premenná, ktorá riadi farbu pozadia zbalenej accordion položky.',
+    'accordion-item.--wje-accordion-border': 'Vlastná CSS premenná, ktorá riadi farbu okraja zbalenej accordion položky.',
+    'accordion-item.--wje-accordion-border-radius': 'Vlastná CSS premenná, ktorá riadi zaoblenie rohov accordion položky.',
+    'accordion-item.--wje-accordion-background-hover': 'Vlastná CSS premenná, ktorá riadi farbu pozadia položky pri hover stave.',
+    'accordion-item.--wje-accordion-border-hover': 'Vlastná CSS premenná, ktorá riadi farbu okraja položky pri hover stave.',
+    'accordion-item.--wje-accordion-background-expanded': 'Vlastná CSS premenná, ktorá riadi farbu pozadia rozbalenej accordion položky.',
+    'accordion-item.--wje-accordion-border-expanded': 'Vlastná CSS premenná, ktorá riadi farbu okraja rozbalenej accordion položky.',
+    'accordion-item.--wje-accordion-headline-color': 'Vlastná CSS premenná, ktorá riadi farbu textu hlavičky.',
+    'accordion-item.--wje-accordion-content-color': 'Vlastná CSS premenná, ktorá riadi farbu textu rozbaľovaného obsahu.',
+    'accordion-item.--wje-accordion-marker-rotate': 'Vlastná CSS premenná, ktorá riadi rotáciu toggle markera.',
+    'avatar.--wje-avatar-size': 'Vlastná CSS premenná, ktorá riadi celkovú veľkosť avatar obalu.',
+    'avatar.--wje-avatar-font-size': 'Vlastná CSS premenná, ktorá riadi veľkosť písma iniciál a textu v avatari.',
+    'avatar.--wje-avatar-font-weight': 'Vlastná CSS premenná, ktorá riadi hrúbku písma iniciál a textu v avatari.',
+    'avatar.--wje-avatar-color': 'Vlastná CSS premenná, ktorá riadi farbu popredia avatara.',
+    'avatar.--wje-avatar-background-color': 'Vlastná CSS premenná, ktorá riadi farbu pozadia avatara.',
+    'avatar.--wje-avatar-border-radius': 'Vlastná CSS premenná, ktorá riadi zaoblenie rohov avatara.',
+    'avatar.--wje-avatar-border-color': 'Vlastná CSS premenná, ktorá riadi farbu okraja avatara.',
+    'avatar.--wje-avatar-border-width': 'Vlastná CSS premenná, ktorá riadi šírku okraja avatara.',
+    'avatar.--wje-avatar-border-style': 'Vlastná CSS premenná, ktorá riadi štýl okraja avatara.',
+    'aside.--wje-aside-width': 'Vlastná CSS premenná, ktorá riadi šírku bočného stĺpca aside.',
+    'aside.--wje-aside-top': 'Vlastná CSS premenná, ktorá riadi horný offset fixného aside.',
+    'aside.--wje-aside-border-color': 'Vlastná CSS premenná, ktorá riadi farbu okraja aside.',
+    'aside.--wje-aside-border-width': 'Vlastná CSS premenná, ktorá riadi šírku okraja aside.',
+    'aside.--wje-aside-border-style': 'Vlastná CSS premenná, ktorá riadi štýl okraja aside.',
+  };
+
+  if (specific[componentKey]) {
+    return specific[componentKey];
+  }
 
   if (subject.includes('color')) return `Vlastná CSS premenná, ktorá riadi ${subject}.`;
   if (subject.includes('padding')) return `Vlastná CSS premenná, ktorá riadi ${subject}.`;
@@ -1395,6 +1493,9 @@ function describeSlotEn(meta = {}) {
   const key = String(meta.name || 'default').toLowerCase();
   const map = {
     default: 'Default slot for the main component content.',
+    headline: 'Slot for the primary clickable headline content.',
+    description: 'Slot for supporting descriptive text.',
+    content: 'Slot for the main body or expandable content.',
     start: 'Slot for content shown before the main content.',
     end: 'Slot for content shown after the main content.',
     icon: 'Slot for icon content.',
@@ -1419,6 +1520,7 @@ function describeSlotEn(meta = {}) {
     anchor: 'Slot for an anchor or reference element.',
     arrow: 'Slot for a custom arrow indicator element.',
     status: 'Slot for status indicator content.',
+    secondary: 'Slot for secondary supporting content.',
     divider: 'Slot for divider content.',
     'thumbnail-slot': 'Slot for thumbnail preview content.',
     error: 'Slot for validation or error content.',
@@ -1430,6 +1532,9 @@ function describeSlotSk(meta = {}) {
   const key = String(meta.name || 'default').toLowerCase();
   const map = {
     default: 'Predvolený slot pre hlavný obsah komponentu.',
+    headline: 'Slot pre hlavný klikateľný obsah hlavičky.',
+    description: 'Slot pre doplnkový popisný text.',
+    content: 'Slot pre hlavný alebo rozbaľovaný obsah tela komponentu.',
     start: 'Slot pre obsah zobrazený pred hlavným obsahom.',
     end: 'Slot pre obsah zobrazený za hlavným obsahom.',
     icon: 'Slot pre obsah ikony.',
@@ -1454,6 +1559,7 @@ function describeSlotSk(meta = {}) {
     anchor: 'Slot pre kotviaci alebo referenčný prvok.',
     arrow: 'Slot pre vlastný prvok šípky.',
     status: 'Slot pre obsah indikátora stavu.',
+    secondary: 'Slot pre sekundárny doplnkový obsah.',
     divider: 'Slot pre obsah oddeľovača.',
     'thumbnail-slot': 'Slot pre obsah náhľadu miniatúry.',
     error: 'Slot pre validačný alebo chybový obsah.',

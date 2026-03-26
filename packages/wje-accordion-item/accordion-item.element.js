@@ -6,8 +6,29 @@ import styles from './styles/styles.css?inline';
  * @documentation https://elements.webjet.sk/components/accordion-item
  * @status stable
  * @augments WJElement
- * @slot - The accordion item main content.
- * @tag wje-accordion
+ * @attribute {string} color - Applies a contextual color variant such as `primary`, `success`, `danger`, `warning`, `info`, or `complete`.
+ * @slot headline - Slot for the clickable accordion headline content.
+ * @slot description - Slot for supporting text shown below the headline.
+ * @slot toggle - Slot for a custom toggle icon or toggle content.
+ * @slot content - Slot for the expandable panel body.
+ * @csspart native - The wrapper of the whole accordion item.
+ * @csspart headline - The clickable headline area.
+ * @csspart description - The description slot container inside the headline.
+ * @csspart toggle - The toggle slot container and fallback chevron area.
+ * @csspart content - The expandable content panel.
+ * @cssproperty [--wje-accordion-background=var(--wje-color-contrast-0)] - Background color of the collapsed item wrapper.
+ * @cssproperty [--wje-accordion-border=var(--wje-color-contrast-0)] - Border color of the collapsed item wrapper.
+ * @cssproperty [--wje-accordion-border-radius=var(--wje-border-radius-large)] - Border radius of the item wrapper.
+ * @cssproperty [--wje-accordion-background-hover=var(--wje-color-contrast-1)] - Background color used when the headline is hovered.
+ * @cssproperty [--wje-accordion-border-hover=var(--wje-color-contrast-2)] - Border color used when the headline is hovered.
+ * @cssproperty [--wje-accordion-background-expanded=var(--wje-color-contrast-0)] - Background color of the expanded item wrapper.
+ * @cssproperty [--wje-accordion-border-expanded=var(--wje-color-contrast-0)] - Border color of the expanded item wrapper.
+ * @cssproperty [--wje-accordion-headline-color=var(--wje-color-contrast-11)] - Text color of the headline area.
+ * @cssproperty [--wje-accordion-content-color=var(--wje-color-contrast-6)] - Text color of the expandable content area.
+ * @cssproperty [--wje-accordion-marker-rotate=0deg] - Rotation applied to the toggle marker icon.
+ * @fires wje-accordion-item:open - Dispatched when the item is expanded.
+ * @fires wje-accordion-item:close - Dispatched when the item is collapsed.
+ * @tag wje-accordion-item
  */
 export default class AccordionItem extends WJElement {
     static _instanceId = 0;
@@ -140,20 +161,20 @@ export default class AccordionItem extends WJElement {
     }
 
     /**
-     * Method to handle the attribute changes.
+     * Collapses the accordion item and updates the headline ARIA state.
      */
-    collapse = () => {
+    collapse() {
         this.classList.remove('expanded');
         this.classList.add('collapsed');
         this.headline?.setAttribute('aria-expanded', 'false');
-    };
+    }
 
     /**
-     * Method to handle the attribute changes.
+     * Expands the accordion item and updates the headline ARIA state.
      */
-    expand = () => {
+    expand() {
         this.classList.remove('collapsed');
         this.classList.add('expanded');
         this.headline?.setAttribute('aria-expanded', 'true');
-    };
+    }
 }

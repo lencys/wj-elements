@@ -3,10 +3,7 @@ title: 'Animation'
 ---
 
 import Props from '@ionic-internal/component-api/v1/animation/props.md';
-import Events from '@ionic-internal/component-api/v1/animation/events.md';
 import Methods from '@ionic-internal/component-api/v1/animation/methods.md';
-import Parts from '@ionic-internal/component-api/v1/animation/parts.md';
-import CustomProps from '@ionic-internal/component-api/v1/animation/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/animation/slots.md';
 
 <head>
@@ -21,7 +18,7 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-`wje-animation` is a lightweight wrapper for playing Animate.css animations around slotted content. It loads keyframes, applies them to the first element in the default slot, and plays them through the Web Animations API.
+`wje-animation` is a lightweight wrapper for playing Animate.css animations around slotted content. It applies keyframes to the first element in the default slot and plays them through the Web Animations API.
 
 ## Basic usage
 
@@ -31,21 +28,13 @@ import Basic from '@site/static/usage/v1/animation/basic/index.md';
 
 <Basic />
 
-## Things to keep in mind
+## Things To Keep In Mind
 
 - The animation is applied to the first assigned element from the default slot, so it works best with one main wrapper.
 - The default animation name is `heartBeat`.
 - The current implementation uses `endDelay` and `iterationStart` as camelCase attribute names.
 - The host itself is not interactive; it sets `role="presentation"`.
 - Use `getAnimationsArray()` when you need to surface the available animation names in your own UI.
-
-## When to use
-
-Use `wje-animation` when you want to add focused motion to one specific element such as an avatar, badge, notification, or status indicator.
-
-## When not to use
-
-Do not use it for complex multi-element timelines or when motion adds no information to the UI.
 
 ## Accessibility
 
@@ -63,21 +52,9 @@ Do not use it for complex multi-element timelines or when motion adds no informa
 
 <Props />
 
-## Events
-
-<Events />
-
 ## Methods
 
 <Methods />
-
-## CSS Shadow Parts
-
-<Parts />
-
-## CSS Custom Properties
-
-<CustomProps />
 
 ## Slots
 

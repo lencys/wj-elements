@@ -3,7 +3,6 @@ title: 'Avatar'
 ---
 
 import Props from '@ionic-internal/component-api/v1-sk/avatar/props.md';
-import Events from '@ionic-internal/component-api/v1-sk/avatar/events.md';
 import Methods from '@ionic-internal/component-api/v1-sk/avatar/methods.md';
 import Parts from '@ionic-internal/component-api/v1-sk/avatar/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1-sk/avatar/custom-props.md';
@@ -21,11 +20,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-`wje-avatar` slúži na stručnú vizuálnu identifikáciu osoby, tímu, značky alebo iného objektu. V praxi sa najčastejšie používa v zoznamoch používateľov, profilových menu, komentároch, kartách, tabuľkách, notifikáciách alebo v navigačnom headeri. Komponent vie zobraziť obrázok alebo iný vložený obsah cez predvolený slot, prípadne vygenerované iniciály z atribútu `label`, a dopĺňa ho o ďalšie sloty pre ikonu, status a sekundárny obsah.
+`wje-avatar` slúži na rýchlu vizuálnu identifikáciu osoby, tímu, značky alebo iného objektu. Vie zobraziť obrázok alebo iný vložený obsah, fallback iniciály z `label` aj doplnkové sloty pre ikonu, status a sekundárny obsah.
 
 ## Základné použitie
 
-V tejto ukážke sú vedľa seba tri najdôležitejšie režimy: avatar s obrázkom, avatar s iniciálami a avatar s ikonou. Je to dobrý rýchly prehľad toho, že `wje-avatar` nie je iba „obrázok používateľa“, ale všeobecný obal pre malú identifikačnú značku.
+V tejto ukážke sú vedľa seba tri najdôležitejšie režimy: avatar s obrázkom, s iniciálami a s ikonou. Je to rýchly prehľad toho, že `wje-avatar` nie je iba profilová fotka, ale všeobecný identifikačný obal.
 
 import Basic from '@site/static/usage/v1/avatar/basic/index.md';
 
@@ -33,7 +32,7 @@ import Basic from '@site/static/usage/v1/avatar/basic/index.md';
 
 ## Veľkosť avatara
 
-Ukážka demonštruje, že atribút `size` mení rozmery samotného avatar obalu. To znamená, že rovnaký obrázok alebo obsah sa prispôsobí veľkosti komponentu bez potreby meniť markup vo vnútri. Aktuálna implementácia podporuje veľkosti `small`, `medium`, `normal`, `large`, `x-large`, `2x-large`, `3x-large`, `4x-large` a `5x-large`.
+Ukážka demonštruje, že atribút `size` mení rozmery samotného obalu. Rovnaký obrázok alebo obsah sa tak prispôsobí bez zmeny vnútorného markupu.
 
 import Size from '@site/static/usage/v1/avatar/size/index.md';
 
@@ -41,7 +40,7 @@ import Size from '@site/static/usage/v1/avatar/size/index.md';
 
 ## Veľkosť avatara s iniciálami
 
-Táto ukážka používa rovnaké veľkostné varianty, ale namiesto obrázka necháva komponent vyrenderovať iniciály z `label`. Je dôležité vedieť, že ak je prítomný boolean atribút `initials`, komponent uprednostní render iniciál pred predvoleným obsahom v slote.
+Rovnaké veľkostné varianty fungujú aj v initials režime. Ak je prítomný boolean atribút `initials`, komponent uprednostní render iniciál pred predvoleným obsahom.
 
 import SizeInitials from '@site/static/usage/v1/avatar/size-initials/index.md';
 
@@ -49,7 +48,7 @@ import SizeInitials from '@site/static/usage/v1/avatar/size-initials/index.md';
 
 ## Avatar s ikonou
 
-Ak chcete použiť avatar skôr ako malé stavové alebo akčné označenie než profilovú fotografiu, vložte ikonu do slotu `icon`. Vďaka tomu zostáva rovnaká veľkostná a vizuálna obálka, ale obsah tvorí `wje-icon`.
+Ak chcete avatar použiť skôr ako malé stavové alebo akčné označenie než profilovú fotografiu, vložte ikonu do slotu `icon`.
 
 import Icon from '@site/static/usage/v1/avatar/icon/index.md';
 
@@ -57,7 +56,7 @@ import Icon from '@site/static/usage/v1/avatar/icon/index.md';
 
 ## Avatar s iniciálami
 
-Toto je najtypickejší fallback scenár. Komponent vezme text z `label`, vygeneruje z neho iniciály a automaticky dopočíta kontrastné farby pozadia a textu. Je to vhodné vtedy, keď nemáte profilovú fotografiu alebo nechcete riešiť načítanie obrázkov v dlhých zoznamoch.
+Toto je typický fallback scenár. Komponent vezme text z `label`, vygeneruje z neho iniciály a automaticky dopočíta kontrastné farby pozadia aj textu.
 
 import Initials from '@site/static/usage/v1/avatar/initials/index.md';
 
@@ -65,16 +64,7 @@ import Initials from '@site/static/usage/v1/avatar/initials/index.md';
 
 ## Avatar so statusom
 
-V tejto ukážke sa do slotu `status` vkladá `wje-status`, ktorý sa zobrazuje v jednom zo štyroch rohov avataru podľa atribútu `status-placement`. V praxi sa to hodí napríklad pre online/offline stav, verifikáciu, synchronizačný stav alebo interné označenie používateľa.
-
-Podporované hodnoty `status-placement` v aktuálnej implementácii sú:
-
-- `top-start`
-- `top-end`
-- `bottom-start`
-- `bottom-end`
-
-Pre viac detailov o samotnom indikátore sa pozrite aj na dokumentáciu komponentu [Status](../status).
+Do slotu `status` sa vkladá napríklad `wje-status`, ktorý sa zobrazuje v jednom zo štyroch rohov podľa `status-placement`. Hodí sa to pre online stav, verifikáciu alebo iné malé indikátory.
 
 import Status from '@site/static/usage/v1/avatar/status/index.md';
 
@@ -82,9 +72,7 @@ import Status from '@site/static/usage/v1/avatar/status/index.md';
 
 ## Avatar ako trigger dropdownu
 
-Tu je dôležitá jedna praktická nuansa: avatar v tejto ukážke nie je nadradeným obalom pre dropdown. Naopak, `wje-avatar` je vložený do slotu `trigger` komponentu `wje-dropdown`. Ukážka teda demonštruje, ako z avataru spraviť spúšťač profilového menu alebo kontextového panelu.
-
-Atribúty `placement`, `trigger` a `offset` patria samotnému `wje-dropdown`, nie avataru.
+Tu je dôležitá kompozičná nuansa: `wje-avatar` je vložený do slotu `trigger` komponentu `wje-dropdown`. Atribúty `placement`, `trigger` a `offset` teda patria dropdownu, nie avataru.
 
 import Dropdown from '@site/static/usage/v1/avatar/dropdown/index.md';
 
@@ -93,7 +81,7 @@ import Dropdown from '@site/static/usage/v1/avatar/dropdown/index.md';
 
 ## Avatar s tooltipom
 
-Aj táto ukážka je založená na kompozícii s iným komponentom: `wje-avatar` je obalený vo `wje-tooltip`. Tooltip teda nepridáva avatar sám od seba, ale získate ho tak, že avatar použijete ako cieľový obsah tooltipu.
+Aj táto ukážka je založená na kompozícii s iným komponentom. Tooltip nepridáva avatar sám od seba; získate ho tým, že avatar použijete ako cieľový obsah `wje-tooltip`.
 
 import Tooltip from '@site/static/usage/v1/avatar/tooltip/index.md';
 
@@ -101,34 +89,19 @@ import Tooltip from '@site/static/usage/v1/avatar/tooltip/index.md';
 
 ## Skupina avatarov
 
-Táto ukážka je užitočná hlavne preto, že ukazuje hranicu medzi schopnosťami komponentu a schopnosťami okolitého layoutu. `wje-avatar` nemá vstavaný group wrapper ani špeciálny group API. Prekrývanie viacerých avatarov sa robí cez externý kontajner a vlastné CSS.
-
-Inými slovami: avatar skupinu podporuje nepriamo tým, že sa dobre kombinuje s CSS a s `::part(native)`, ale samotnú logiku skupinovania nevlastní.
+Táto ukážka ukazuje hranicu medzi schopnosťami komponentu a schopnosťami okolitého layoutu. `wje-avatar` nemá vstavaný group wrapper ani group API; prekrývanie viacerých avatarov sa rieši cez externý kontajner a CSS.
 
 import Group from '@site/static/usage/v1/avatar/group/index.md';
 
 <Group />
 
-## API komponentu v praxi
+## Na čo sa oplatí myslieť
 
-Najdôležitejšie verejné schopnosti `wje-avatar` sú:
-
-- atribúty a properties `label`, `initials` a `size`,
-- atribút `status-placement`, ktorý riadi polohu obsahu v slote `status`,
-- predvolený slot pre obrázok alebo iný hlavný obsah,
-- sloty `icon`, `status` a `secondary`,
-- shadow parts `native`, `status` a `secondary`,
-- pomocná verejná metóda `isImage()`, ktorá vie zistiť, či avatar obsahuje `wje-img`.
-
-Komponent aktuálne neemituje vlastné custom eventy. Ak potrebujete reagovať na kliknutie, hover alebo otvorenie menu, rieši sa to cez nadradený komponent, do ktorého je avatar vložený, napríklad `wje-dropdown` alebo `wje-tooltip`.
-
-## Kedy použiť
-
-Použite `wje-avatar`, keď potrebujete rýchlu vizuálnu identifikáciu entity v malom priestore. Najväčší prínos má tam, kde pomáha používateľovi rýchlejšie rozoznať, kto alebo čo je predmetom aktuálnej akcie – napríklad pri komentároch, účtoch, notifikáciách, priradených úlohách alebo v hlavičke používateľského menu.
-
-## Kedy nepoužiť
-
-Nepoužívajte ho ako jediný nosič dôležitej informácie. Ak je identita osoby alebo objektu kritická, avatar má byť iba doplnok k textu, nie náhrada mena, názvu alebo popisu. Rovnako nie je vhodný ako náhrada za plnohodnotné tlačidlo bez jasného interakčného kontextu.
+- `label` + `initials` je najpraktickejší fallback bez obrázka.
+- `status-placement` riadi polohu slotu `status` v jednom zo štyroch rohov.
+- Predvolený slot drží hlavný obsah, ďalšie sloty slúžia pre `icon`, `status` a `secondary`.
+- Helper `isImage()` vie zistiť, či je v avatari prítomný `wje-img`.
+- Vlastné kliky, hover alebo otvorenie menu zvyčajne rieši nadradený komponent, napríklad `wje-dropdown` alebo `wje-tooltip`.
 
 ## Prístupnosť
 
@@ -147,15 +120,7 @@ Nepoužívajte ho ako jediný nosič dôležitej informácie. Ak je identita oso
 
 <Props />
 
-## Udalosti
-
-Komponent sám nevysiela vlastné custom eventy.
-
-<Events />
-
 ## Metódy
-
-Ak automatická tabuľka nižšie zobrazuje iba minimum, stojí za pozornosť najmä helper `isImage()`, ktorý vracia, či je vnútri avatara prítomný `wje-img`.
 
 <Methods />
 
@@ -164,8 +129,6 @@ Ak automatická tabuľka nižšie zobrazuje iba minimum, stojí za pozornosť na
 <Parts />
 
 ## CSS vlastné premenné
-
-Okrem tabuliek nižšie je dobré vedieť, že v initials režime si komponent sám nastavuje najmä `--wje-avatar-background-color` a `--wje-avatar-color`, zatiaľ čo veľkosť a tvar viete ladiť cez premenné ako `--wje-avatar-size`, `--wje-avatar-font-size` a `--wje-avatar-border-radius`.
 
 <CustomProps />
 

@@ -7,18 +7,26 @@ import styles from './styles/styles.css?inline';
  * @documentation https://elements.webjet.sk/components/avatar
  * @status stable
  * @augments WJElement
- * @slot - The avatar main content.
+ * @attribute {boolean} initials - Renders generated initials from `label` instead of the default slotted content.
+ * @attribute {string} label - Provides the source text for generated initials and the accessible label of the avatar.
+ * @attribute {string} size - Selects a predefined avatar size such as `small`, `medium`, `normal`, `large`, or larger variants.
+ * @attribute {string} status-placement - Positions the `status` slot on one of the avatar corners.
+ * @slot default - Slot for the main avatar content, typically an image.
+ * @slot icon - Slot for an icon rendered inside the avatar.
+ * @slot status - Slot for a status badge or indicator positioned on the avatar edge.
+ * @slot secondary - Slot for additional secondary content rendered with the avatar.
  * @csspart native - The component's native wrapper.
- * @cssproperty --wje-avatar-width;
- * @cssproperty --wje-avatar-height;
- * @cssproperty --wje-avatar-font-size;
- * @cssproperty --wje-avatar-font-weight;
- * @cssproperty --wje-avatar-color;
- * @cssproperty --wje-avatar-background-color;
- * @cssproperty --wje-avatar-border-radius;
- * @cssproperty --wje-avatar-border-color;
- * @cssproperty --wje-avatar-border-width;
- * @cssproperty --wje-avatar-border-style;
+ * @csspart status - The positioned slot container for status content.
+ * @csspart secondary - The slot container for secondary avatar content.
+ * @cssproperty [--wje-avatar-size] - Controls the overall rendered size of the avatar shell.
+ * @cssproperty [--wje-avatar-font-size] - Controls the font size used for initials and text content.
+ * @cssproperty [--wje-avatar-font-weight] - Controls the font weight used for initials and text content.
+ * @cssproperty [--wje-avatar-color] - Controls the text color inside the avatar.
+ * @cssproperty [--wje-avatar-background-color] - Controls the background color of the avatar surface.
+ * @cssproperty [--wje-avatar-border-radius] - Controls the avatar border radius.
+ * @cssproperty [--wje-avatar-border-color] - Controls the avatar border color when a border is applied.
+ * @cssproperty [--wje-avatar-border-width] - Controls the avatar border width when a border is applied.
+ * @cssproperty [--wje-avatar-border-style] - Controls the avatar border style when a border is applied.
  * @tag wje-avatar
  */
 export default class Avatar extends WJElement {
