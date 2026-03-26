@@ -41,17 +41,23 @@ import Bubble from '@site/static/usage/v1/slider/bubble/index.md';
 
 ## Label
 
+Ukážka dopĺňa slider o label, aby bolo jasné, ako používateľovi pomenovať význam hodnoty alebo rozsahu.
+
 import Label from '@site/static/usage/v1/slider/label/index.md';
 
 <Label />
 
 ## Icons
 
+Ukážka pridáva k slideru ikony, ktoré pomáhajú vizuálne označiť začiatok a koniec rozsahu.
+
 import Icons from '@site/static/usage/v1/slider/icons/index.md';
 
 <Icons />
 
 ## Color
+
+Ukážka porovnáva farebné varianty slidera a ich čitateľnosť v rôznych významových stavoch.
 
 import Colors from '@site/static/usage/v1/slider/colors/index.md';
 

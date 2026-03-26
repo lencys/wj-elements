@@ -22,6 +22,8 @@ OrgChart komponent môže byť použitý na zobrazenie hierarchických vzťahov 
 
 ## Základné použitie
 
+Ukážka predstavuje organizačný strom v jeho základnej podobe, aby bolo jasné, ako sa skladajú uzly a skupiny.
+
 import Basic from '@site/static/usage/v1/orgchart/basic/index.md';
 
 <Basic />
@@ -44,11 +46,15 @@ import Group from '@site/static/usage/v1/orgchart/group/index.md';
 
 ## Line
 
+Ukážka sa sústreďuje na spojnice medzi uzlami, takže je lepšie vidieť, ako strom komunikuje nadradenosť a vzťahy.
+
 import Line from '@site/static/usage/v1/orgchart/line/index.md';
 
 <Line />
 
 ## Controls
+
+Ukážka pridáva ovládacie prvky na prácu so stromom, napríklad pri väčšom množstve uzlov alebo širšej štruktúre.
 
 import Controls from '@site/static/usage/v1/orgchart/controls/index.md';
 

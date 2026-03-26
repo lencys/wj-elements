@@ -3,7 +3,10 @@ title: 'Accordion'
 ---
 
 import Props from '@ionic-internal/component-api/v1/accordion/props.md';
+import Events from '@ionic-internal/component-api/v1/accordion/events.md';
 import Methods from '@ionic-internal/component-api/v1/accordion/methods.md';
+import Parts from '@ionic-internal/component-api/v1/accordion/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/accordion/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/accordion/slots.md';
 
 <head>
@@ -67,9 +70,21 @@ import Multiple from '@site/static/usage/v1/accordion/multiple/index.md';
 
 <Props />
 
+## Events
+
+<Events />
+
 ## Methods
 
 <Methods />
+
+## CSS Shadow Parts
+
+<Parts />
+
+## CSS Custom Properties
+
+<CustomProps />
 
 ## Slots
 

@@ -99,6 +99,14 @@ import Order from '@site/static/usage/v1/grid/order/index.md';
 
 <Order />
 
+## Responsive order
+
+When `order` is combined with breakpoints or different column sizes, make sure the visual order still matches user expectations on each device size.
+
+import OrderResponsive from '@site/static/usage/v1/grid/order-responsive/index.md';
+
+<OrderResponsive />
+
 ## Alignment
 
 ### Vertical Alignment

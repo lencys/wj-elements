@@ -1,10 +1,6 @@
 ```html
-<ion-content class="ion-padding">
-  <h1>Content</h1>
-</ion-content>
-<ion-footer>
-  <ion-toolbar>
-    <ion-title>Footer</ion-title>
-  </ion-toolbar>
-</ion-footer>
+<wje-container vertical style="min-height: 220px;">
+  <wje-main style="padding: 1rem;">Content</wje-main>
+  <wje-footer style="padding: 1rem; background: var(--wje-color-contrast-1);">Footer</wje-footer>
+</wje-container>
 ```

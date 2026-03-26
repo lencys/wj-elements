@@ -27,11 +27,15 @@ Môže byť tiež prispôsobený nastavením rôznych veľkostí alebo typov, ab
 
 ## Základné použitie
 
+Ukážka zobrazuje status v jeho najjednoduchšej podobe, teda ako krátky stavový prvok bez doplnkového obsahu.
+
 import Basic from '@site/static/usage/v1/status/basic/index.md';
 
 <Basic />
 
 ## Sloty
+
+Ukážka ukazuje, ako cez sloty doplniť k statusu ďalší obsah, napríklad ikonu alebo sekundárny text.
 
 import Slot from '@site/static/usage/v1/status/slots/index.md';
 
@@ -39,11 +43,15 @@ import Slot from '@site/static/usage/v1/status/slots/index.md';
 
 ## Size
 
+Táto ukážka ukazuje, ako zmena veľkosti ovplyvní rozloženie a vizuálnu hierarchiu komponentu `wje-status`.
+
 import Size from '@site/static/usage/v1/status/size/index.md';
 
 <Size />
 
 ## Typy statusu
+
+Táto ukážka ukazuje, ako pri komponente `wje-status` zobraziť stavový indikátor alebo doplnkový status obsah.
 
 import Types from '@site/static/usage/v1/status/types/index.md';
 

@@ -1,26 +1,16 @@
 ```html
 <template>
-  <ion-checkbox>Themed checkbox</ion-checkbox>
+  <wje-checkbox id="custom-checkbox" checked>Themed checkbox</wje-checkbox>
 </template>
 
-<script lang="ts">
-  import { IonCheckbox } from '@ionic/vue';
-  import { defineComponent } from 'vue';
-
-  export default defineComponent({
-    components: { IonCheckbox },
-  });
-</script>
-
 <style>
-  ion-checkbox {
-    --size: 32px;
-    --checkbox-background-checked: #6815ec;
-  }
-
-  ion-checkbox::part(container) {
-    border-radius: 6px;
-    border: 2px solid #6815ec;
+  #custom-checkbox {
+    --wje-checkbox-border-radius: 6px;
+    --wje-checkbox-border-width: 2px;
+    --wje-checkbox-border-style: solid;
+    --wje-checkbox-border-color: #6815ec;
+    --wje-checkbox-margin-inline: 0.5rem;
+    color: #6815ec;
   }
 </style>
 ```

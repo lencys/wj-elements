@@ -25,11 +25,15 @@ Komponent FormatDigital je určený na formátovanie číselných hodnôt do ľu
 
 ## Základné použitie
 
+Ukážka zobrazuje základné formátovanie číselnej hodnoty bez rozšírených volieb, aby bolo jasné predvolené správanie komponentu.
+
 import Basic from '@site/static/usage/v1/format-digital/basic/index.md';
 
 <Basic />
 
 ## Možnosti zobrazenia
+
+Ukážka porovnáva rôzne režimy zobrazenia tej istej hodnoty, takže rýchlo uvidíte rozdiel medzi jednotlivými formátmi.
 
 import FormattingDisplay from '@site/static/usage/v1/format-digital/formatting-display/index.md';
 
@@ -37,17 +41,23 @@ import FormattingDisplay from '@site/static/usage/v1/format-digital/formatting-d
 
 ## Formátovanie bajtov
 
+Ukážka sa sústreďuje na prevod hodnôt do bajtových jednotiek, čo sa hodí pri zobrazení veľkostí súborov alebo úložísk.
+
 import FormattingBytes from '@site/static/usage/v1/format-digital/formatting-bytes/index.md';
 
 <FormattingBytes />
 
 ## Formátovanie bitov
 
+Ukážka sa sústreďuje na prevod hodnôt do bitových jednotiek, napríklad pre sieťové rýchlosti alebo prenosové limity.
+
 import FormattingBits from '@site/static/usage/v1/format-digital/formatting-bits/index.md';
 
 <FormattingBits />
 
 ## Použitie so slotmi
+
+Ukážka ukazuje, ako cez sloty doplniť vlastný obsah pred alebo za formátovanú hodnotu bez rušenia samotného výpočtu.
 
 import DisplaySlots from '@site/static/usage/v1/format-digital/slots/index.md';
 

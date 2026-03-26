@@ -25,6 +25,8 @@ Icon picker allows the user to find and select an icon from a set of available i
 
 ## Basic usage
 
+This example presents the basic icon selection flow without composing it with additional components.
+
 import Basic from '@site/static/usage/v1/icon-picker/basic/index.md';
 
 <Basic />

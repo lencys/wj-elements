@@ -1,20 +1,14 @@
 ```tsx
 import React from 'react';
-import { IonContent, IonFooter, IonTitle, IonToolbar } from '@ionic/react';
 
 function Example() {
   return (
-    <>
-      <IonContent className="ion-padding">
-        <h1>Content</h1>
-      </IonContent>
-      <IonFooter>
-        <IonToolbar>
-          <IonTitle>Footer</IonTitle>
-        </IonToolbar>
-      </IonFooter>
-    </>
+    <wje-container vertical style={{ minHeight: '220px' }}>
+      <wje-main style={{ padding: '1rem' }}>Content</wje-main>
+      <wje-footer style={{ padding: '1rem', background: 'var(--wje-color-contrast-1)' }}>Footer</wje-footer>
+    </wje-container>
   );
 }
+
 export default Example;
 ```

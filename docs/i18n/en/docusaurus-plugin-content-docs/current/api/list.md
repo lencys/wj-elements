@@ -21,15 +21,17 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-Komponent `List` (Zoznam) sa skladá z viacerých elementov [Item](./item) (položiek) a môže obsahovať text, tlačidlá, prepínače, ikony, náhľady obrázkov, a mnoho iného. Sheets generally contain items with the same content and group them into a larger whole.
+The `List` component is composed of multiple [Item](./item) elements and can contain text, buttons, toggles, icons, thumbnails, and other supporting UI. It works best when related content needs a shared visual structure and spacing.
 
 ## Basic usage
+
+This example presents the list as a basic container for multiple items with consistent rhythm and spacing.
 
 import Basic from '@site/static/usage/v1/list/basic/index.md';
 
 <Basic />
 
-## Nested leaf
+## Inset
 
 Setting the value of the inset property to true adds a margin to the element's surroundings to create a nested list.
 
@@ -39,21 +41,21 @@ import Inset from '@site/static/usage/v1/list/inset/index.md';
 
 ## Line separation
 
-Vlastnosť `lines` upravuje spodný okraj itemov. Nastavením tejto vlastnosti na hodnotu "`none`" sa nezobrazia žiadne okraje medzi položkami zoznamu.
+The `lines` property controls the separators between list items. Setting it to `none` removes the borders between list entries.
 
 import Lines from '@site/static/usage/v1/list/lines/index.md';
 
 <Lines />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods />
 
@@ -61,10 +63,10 @@ import Lines from '@site/static/usage/v1/list/lines/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

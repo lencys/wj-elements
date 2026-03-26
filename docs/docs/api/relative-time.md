@@ -25,6 +25,8 @@ Komponent RelativeTime je element slúžiaci na zobrazenie relatívneho času na
 
 ## Základné použitie
 
+Ukážka zobrazuje základný výstup relative time komponentu, teda prepočet dátumu na relatívny časový text.
+
 import Basic from '@site/static/usage/v1/relative-time/basic/index.md';
 
 <Basic />

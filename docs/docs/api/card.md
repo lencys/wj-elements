@@ -25,6 +25,8 @@ Element **Card** je flexibilný a rozšíriteľný kontajner formátu karty. Umo
 
 ## Základné použitie
 
+Ukážka predstavuje najbežnejšiu skladbu karty: hlavičku, obsah a prirodzené odsadenie. Je to dobrý štart pre informačné alebo prezentačné bloky.
+
 import Basic from '@site/static/usage/v1/card/basic/index.md';
 
 <Basic />
@@ -39,15 +41,27 @@ import Separator from '@site/static/usage/v1/card/separator/index.md';
 
 ## Karta s obrázkom
 
+Ukážka pridáva ku karte vizuálny obsah, takže je vidieť, ako sa správa kombinácia média a textového obsahu v jednom bloku.
+
 import Media from '@site/static/usage/v1/card/media/index.md';
 
 <Media />
 
 ## Karta so zoznamom
 
+Ukážka používa kartu ako obal pre kompaktnejší zoznamový obsah. Hodí sa pre prehľady, ktoré majú zostať vizuálne zoskupené.
+
 import List from '@site/static/usage/v1/card/list/index.md';
 
 <List />
+
+## Karta s akciami
+
+Ak potrebuje karta obsahovať primárne alebo sekundárne akcie, držte ich v jednej vizuálnej skupine priamo v obsahu karty.
+
+import Buttons from '@site/static/usage/v1/card/buttons/index.md';
+
+<Buttons />
 
 ## Úprava štýlov
 
@@ -60,6 +74,8 @@ import Colors from '@site/static/usage/v1/card/theming/colors/index.md';
 <Colors />
 
 ### CSS vlastné premenné
+
+Ukážka sa sústreďuje na vizuálne ladenie karty cez CSS premenné. Je vhodná vtedy, keď chcete meniť vzhľad bez zásahu do HTML štruktúry.
 
 import CssProperties from '@site/static/usage/v1/card/theming/css-properties/index.md';
 

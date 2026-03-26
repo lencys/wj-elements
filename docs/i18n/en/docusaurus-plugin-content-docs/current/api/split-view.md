@@ -25,6 +25,8 @@ The Split view element is a versatile component that allows you to create a spli
 
 ## Basic usage
 
+This example presents split-view in its default two-panel arrangement so the relationship between the panels is easy to read.
+
 import Basic from '@site/static/usage/v1/split-view/basic/index.md';
 
 <Basic />
@@ -62,6 +64,8 @@ import Split from '@site/static/usage/v1/split-view/split/index.md';
 <Split />
 
 ## Styling
+
+This example focuses on custom split-view styling, especially when the layout must adapt to a specific design system.
 
 import Custom from '@site/static/usage/v1/split-view/custom/index.md';
 

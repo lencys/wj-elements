@@ -3,6 +3,9 @@ title: 'Aside'
 ---
 
 import Props from '@ionic-internal/component-api/v1-sk/aside/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/aside/events.md';
+import Methods from '@ionic-internal/component-api/v1-sk/aside/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/aside/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1-sk/aside/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1-sk/aside/slots.md';
 
@@ -52,6 +55,18 @@ import LayoutBasic from '@site/static/usage/v1/layout/basic/index.md';
 ## Atribúty a vlastnosti
 
 <Props />
+
+## Udalosti
+
+<Events />
+
+## Metódy
+
+<Methods />
+
+## CSS tieňové časti
+
+<Parts />
 
 ## CSS vlastné premenné
 

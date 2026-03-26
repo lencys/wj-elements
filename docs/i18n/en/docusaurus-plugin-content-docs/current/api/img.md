@@ -27,6 +27,8 @@ It uses the Intersection Observer API, so it only loads images when they are vis
 
 ## Basic Usage
 
+This example shows an image in its simplest mode, without fallback handling or extended scenarios.
+
 import Basic from '@site/static/usage/v1/img/basic/index.md';
 
 <Basic />

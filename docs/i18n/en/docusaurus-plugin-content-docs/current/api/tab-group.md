@@ -38,17 +38,23 @@ By adding the `variant` property it is possible to change the location of the ta
 
 ### Start
 
+This example aligns tabs to the start, which is useful for shorter tab sets and conventional desktop layouts.
+
 import Start from '@site/static/usage/v1/tab-group/start/index.md';
 
 <Start />
 
 ### End
 
+This example aligns tabs to the end of the container so you can compare the visual rhythm with the default placement.
+
 import End from '@site/static/usage/v1/tab-group/end/index.md';
 
 <End />
 
 ### Bottom
+
+This example moves tab navigation to the bottom edge, which can work well in mobile or app-like patterns.
 
 import Bottom from '@site/static/usage/v1/tab-group/bottom/index.md';
 

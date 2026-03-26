@@ -24,6 +24,22 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 MenuItem is a child of the [Menu.](./menu) element and represents a navigation item within it. It can display a submenu with additional navigation items and also allows icons to be displayed.
 For examples of using MenuItem, go to the [**Menu**](./menu) element documentation page.
 
+## Basic usage
+
+This example shows `wje-menu-item` in its most common context: inside an active `wje-menu` with icons, dividers, labels, and nested submenu items.
+
+import Basic from '@site/static/usage/v1/menu-item/basic/index.md';
+
+<Basic />
+
+## Nav variant
+
+In the nav style, pay attention to nested items, checked state, and the combination of `start`, `end`, and `submenu` slots.
+
+import Nav from '@site/static/usage/v1/menu-item/nav/index.md';
+
+<Nav />
+
 
 ## When to use
 

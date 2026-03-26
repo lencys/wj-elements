@@ -25,18 +25,23 @@ Komponenty Item sú bloky, ktoré môžu obsahovať rôzne typy obsahu vrátane 
 
 ## Základné použitie
 
+Ukážka ukazuje najbežnejšiu podobu `wje-item`, teda jeden obsahový riadok s predvoleným rozložením a bez doplnkových variánt.
+
 import Basic from '@site/static/usage/v1/item/basic/index.md';
 
 <Basic />
 
-[//]: # (## Oddeľovacie čiary)
+## Oddeľovacie čiary
 
-[//]: # ()
-[//]: # (import Lines from '@site/static/usage/v1/item/lines/index.md';)
+Atribút `lines` riadi, ako sa vykreslí spodné oddelenie položky. Hodí sa to najmä v zoznamoch, kde potrebujete jemnejšie alebo naopak výraznejšie vizuálne oddelenie obsahu.
 
-[//]: # (<Lines />)
+import Lines from '@site/static/usage/v1/item/lines/index.md';
+
+<Lines />
 
 ## Použitie s obrázkami
+
+Ukážka kombinuje item s médiom, aby bolo jasné, ako vedľa seba funguje obrázok alebo náhľad a textový obsah.
 
 import Media from '@site/static/usage/v1/item/media/index.md';
 
@@ -44,11 +49,15 @@ import Media from '@site/static/usage/v1/item/media/index.md';
 
 ## Použitie s tlačidlami
 
+Ukážka pridáva do itemu akčné tlačidlá, takže je vidieť odporúčaný vzor pre riadok, ktorý má aj rýchle akcie.
+
 import Buttons from '@site/static/usage/v1/item/buttons/index.md';
 
 <Buttons />
 
 ## Použitie s ikonami
+
+Ukážka sa sústreďuje na prácu s ikonami v iteme a na ich čitateľné zarovnanie voči textu a doplnkovému obsahu.
 
 import Icons from '@site/static/usage/v1/item/icons/index.md';
 

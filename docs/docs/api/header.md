@@ -23,7 +23,13 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Header je súčasťou elementov určených na tvorbu layoutov a zobrazuje sa v hornej časti. Používa sa väčšinou na zobrazenie navigácie, loga a pod.
 
-## Príklady použitia
+## Základné použitie
+
+Samostatná ukážka nižšie zobrazuje header v najjednoduchšom vertikálnom layoute s hlavným obsahom pod ním.
+
+import Basic from '@site/static/usage/v1/header/basic/index.md';
+
+<Basic />
 
 :::note
 Pre informácie o použití **Header** elementu sa presuňte do dokumentácie [**Layoutu**](./layout).

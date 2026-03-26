@@ -25,6 +25,8 @@ Element `Tooltip` slúži na zobrazovanie vyskakovacej nápovedy pri nájazde my
 
 ## Basic Usage
 
+Ukážka zobrazuje tooltip v jeho základnom použití, teda ako krátky doplnkový kontext k cieľovému prvku.
+
 import Basic from '@site/static/usage/v1/tooltip/basic/index.md';
 
 <Basic />

@@ -25,17 +25,23 @@ This component provides a simple way to display icons from a set of SVG images, 
 
 ## Basic usage
 
+This example shows icon usage in its simplest form, as a standalone visual element with a default icon name.
+
 import Basic from '@site/static/usage/v1/icon/basic/index.md';
 
 <Basic />
 
 ## Style Outline / Filled
 
+This example demonstrates how the `lines` option changes visual separation inside the `wje-icon` component.
+
 import Styles from '@site/static/usage/v1/icon/style/index.md';
 
 <Styles />
 
 ## Custom
+
+This example focuses on using a custom icon outside the default set, which is useful for brand or project-specific iconography.
 
 import Custom from '@site/static/usage/v1/icon/custom/index.md';
 

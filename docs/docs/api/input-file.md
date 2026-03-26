@@ -25,6 +25,8 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 ## Základné použitie
 
+Ukážka zobrazuje input-file v základnom stave, teda ako najjednoduchší vstup pre výber súboru.
+
 import Basic from '@site/static/usage/v1/input-file/basic/index.md';
 
 <Basic />

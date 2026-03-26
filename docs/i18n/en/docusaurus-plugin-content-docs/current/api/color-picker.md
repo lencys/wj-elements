@@ -25,6 +25,8 @@ Color picker is an element that displays a color palette and allows users to sel
 
 ## Basic usage
 
+This example presents the basic color selection flow without extra integrations. It is the clearest starting point for understanding the component.
+
 import Basic from '@site/static/usage/v1/color-picker/basic/index.md';
 
 <div className="xxlarge">

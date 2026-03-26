@@ -24,6 +24,22 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 MenuItem je podriadený elementu [Menu.](./menu) a predstavuje navigačnú položku v jeho vnútri. Môže zobrazovať podmenu s ďalšími navigačnými položkami a tiež umožňuje zobrazenie ikon.
 Pre príklady použitia MenuItem prejdite na stránku dokumentácie elementu [**Menu**](./menu).
 
+## Základné použitie
+
+Táto ukážka zobrazuje `wje-menu-item` v jeho najbežnejšom kontexte: ako súčasť aktívneho `wje-menu` s ikonami, oddeľovačmi a vnorenými submenu položkami.
+
+import Basic from '@site/static/usage/v1/menu-item/basic/index.md';
+
+<Basic />
+
+## Nav variant
+
+Pri nav štýle je dôležité sledovať, ako sa položky správajú pri vnorení, checked stave a kombinácii slotov `start`, `end` a `submenu`.
+
+import Nav from '@site/static/usage/v1/menu-item/nav/index.md';
+
+<Nav />
+
 
 ## Kedy použiť
 

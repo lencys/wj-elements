@@ -25,17 +25,23 @@ Element `Tree` umožňuje hierarchické zobrazovanie dát v stromovej štruktúr
 
 ## Základné použitie
 
+Ukážka predstavuje základný strom s vnorenými uzlami, aby bolo jasné predvolené otváranie a hierarchia.
+
 import Basic from '@site/static/usage/v1/tree/basic/index.md';
 
 <Basic />
 
 ## Slots
 
+Ukážka používa sloty na doplnenie ikon alebo sekundárneho obsahu pri uzloch stromu.
+
 import StartEndSlots from '@site/static/usage/v1/tree/slots/index.md';
 
 <StartEndSlots />
 
 ## Multiple
+
+Ukážka povoľuje otvorenie viacerých vetiev stromu naraz, čo sa hodí pri porovnávaní vzdialenejších vetiev.
 
 import Multiple from '@site/static/usage/v1/tree/multiple/index.md';
 

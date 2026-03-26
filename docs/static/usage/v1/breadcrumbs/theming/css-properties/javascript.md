@@ -1,16 +1,15 @@
 ```html
-<ion-breadcrumbs>
-  <ion-breadcrumb href="#home">Home</ion-breadcrumb>
-  <ion-breadcrumb href="#electronics">Electronics</ion-breadcrumb>
-  <ion-breadcrumb href="#cameras">Cameras</ion-breadcrumb>
-  <ion-breadcrumb href="#film">Film</ion-breadcrumb>
-</ion-breadcrumbs>
+<wje-breadcrumbs class="breadcrumbs-custom">
+  <wje-breadcrumb href="/home">Home</wje-breadcrumb>
+  <wje-breadcrumb href="/electronics">Electronics</wje-breadcrumb>
+  <wje-breadcrumb href="/cameras">Cameras</wje-breadcrumb>
+  <wje-breadcrumb href="/film">Film</wje-breadcrumb>
+</wje-breadcrumbs>
 
 <style>
-  ion-breadcrumb {
-    --color: rgb(81, 155, 198);
-    --color-active: rgb(150, 112, 220);
-    --color-hover: rgb(103, 61, 180);
+  .breadcrumbs-custom wje-breadcrumb {
+    --wje-breadcrumb-a: rgb(81, 155, 198);
+    --wje-breadcrumb-a-hover: rgb(103, 61, 180);
   }
 </style>
 ```

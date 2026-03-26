@@ -25,6 +25,8 @@ Color picker je element, ktorý zobrazuje farebnú paletu a umožňuje používa
 
 ## Základné použitie
 
+Ukážka predstavuje základný flow výberu farby bez ďalších integrácií. Je to najlepší štart na pochopenie správania komponentu.
+
 import Basic from '@site/static/usage/v1/color-picker/basic/index.md';
 
 <div className="xxlarge">

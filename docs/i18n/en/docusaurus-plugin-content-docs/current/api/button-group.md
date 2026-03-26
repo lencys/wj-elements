@@ -33,11 +33,15 @@ import Basic from '@site/static/usage/v1/button-group/basic/index.md';
 
 ## ButtonGroup shape
 
+This example compares how grouped buttons behave with different shapes while still reading as one connected control.
+
 import Shape from '@site/static/usage/v1/button-group/shape/index.md';
 
 <Shape />
 
 ## ButtonGroup with Dropdown
+
+This example combines a standard button and a dropdown inside one group. It is a common pattern for a primary action with secondary options.
 
 import Dropdown from '@site/static/usage/v1/button-group/dropdown/index.md';
 
@@ -48,6 +52,8 @@ import Dropdown from '@site/static/usage/v1/button-group/dropdown/index.md';
 </div>
 
 ## Icons in ButtonGroup
+
+This example focuses on icon usage inside a button group so you can check height, rhythm, and alignment across grouped controls.
 
 import Icons from '@site/static/usage/v1/button-group/icons/index.md';
 
@@ -69,11 +75,15 @@ import SplitButtons from '@site/static/usage/v1/button-group/split-buttons/index
 
 ### ButtonGroup colors
 
+This example compares semantic color variants across the whole button group so it is easier to judge how grouped actions read in different states.
+
 import Colors from '@site/static/usage/v1/button-group/colors/index.md';
 
 <Colors />
 
 ### Border color in ButtonGroup
+
+This example shows outline color variants in a button group. It is useful when you want a lighter visual treatment without losing semantic meaning.
 
 import ColorsOutline from '@site/static/usage/v1/button-group/colors-outline/index.md';
 

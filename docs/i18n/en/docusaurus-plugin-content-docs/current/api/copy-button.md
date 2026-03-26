@@ -25,6 +25,8 @@ The Copy button allows you to copy the desired content to the clipboard with one
 
 ## Basic usage
 
+This example shows the copy button in its simplest form: a button that copies a prepared value without extra surrounding logic.
+
 import Basic from '@site/static/usage/v1/copy-button/basic/index.md';
 
 <Basic />
@@ -39,11 +41,15 @@ import CustomLabel from '@site/static/usage/v1/copy-button/custom-label/index.md
 
 ## Element
 
+This example copies text from a regular DOM element. It is useful when the source value is not an input but, for example, static code or an identifier.
+
 import Element from '@site/static/usage/v1/copy-button/element/index.md';
 
 <Element />
 
 ## Input
+
+This example copies the current value from a native input element, which is the most common form-related scenario.
 
 import Input from '@site/static/usage/v1/copy-button/input/index.md';
 
@@ -51,11 +57,15 @@ import Input from '@site/static/usage/v1/copy-button/input/index.md';
 
 ## WJE-Input
 
+This example does the same for `wje-input`, connecting the copy button directly to the value of the WebJET input component.
+
 import WJInput from '@site/static/usage/v1/copy-button/wj-input/index.md';
 
 <WJInput />
 
 ## Hyperlink
+
+This example copies a value from a hyperlink, which is useful for share URLs or links to external resources.
 
 import Hyperlink from '@site/static/usage/v1/copy-button/hyperlink/index.md';
 

@@ -27,6 +27,8 @@ Využíva Intersection Observer API, vďaka čomu načítava obrázky iba vtedy,
 
 ## Basic Usage
 
+Ukážka zobrazuje obrázok v najjednoduchšom režime, teda bez fallback logiky a doplnkových scenárov.
+
 import Basic from '@site/static/usage/v1/img/basic/index.md';
 
 <Basic />

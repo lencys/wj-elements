@@ -33,11 +33,15 @@ import Basic from '@site/static/usage/v1/button-group/basic/index.md';
 
 ## Tvar ButtonGroup
 
+Ukážka porovnáva, ako sa v skupine správajú tlačidlá s rôznym tvarom. Dôležité je, že group stále drží jeden súvislý vizuálny celok.
+
 import Shape from '@site/static/usage/v1/button-group/shape/index.md';
 
 <Shape />
 
 ## ButtonGroup s Dropdownom
+
+Ukážka kombinuje klasické tlačidlo a dropdown v jednej skupine. Hodí sa pre primárnu akciu s doplnkovými sekundárnymi voľbami.
 
 import Dropdown from '@site/static/usage/v1/button-group/dropdown/index.md';
 
@@ -48,6 +52,8 @@ import Dropdown from '@site/static/usage/v1/button-group/dropdown/index.md';
 </div>
 
 ## Ikony v ButtonGroup
+
+Ukážka sa sústreďuje na prácu s ikonami v skupine tlačidiel, aby bolo jasné, ako držať rovnakú výšku, rytmus a zarovnanie.
 
 import Icons from '@site/static/usage/v1/button-group/icons/index.md';
 
@@ -69,11 +75,15 @@ import SplitButtons from '@site/static/usage/v1/button-group/split-buttons/index
 
 ### Farby ButtonGroup
 
+Ukážka porovnáva farebné varianty celej skupiny tlačidiel, aby bolo jasné, ako sa group správa pri významových stavoch.
+
 import Colors from '@site/static/usage/v1/button-group/colors/index.md';
 
 <Colors />
 
 ### Farba okrajov v ButtonGroup
+
+Ukážka ukazuje outline farebné varianty v button group. Hodí sa tam, kde chcete jemnejší vizuál, ale stále zachovať významové odlíšenie.
 
 import ColorsOutline from '@site/static/usage/v1/button-group/colors-outline/index.md';
 

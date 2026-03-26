@@ -25,6 +25,8 @@ Copy button umožňuje jedným kliknutím skopírovať želaný obsah do clipboa
 
 ## Základné použitie
 
+Ukážka zobrazuje copy button v najjednoduchšej forme, teda ako tlačidlo, ktoré kopíruje pripravenú hodnotu bez ďalšej logiky okolo.
+
 import Basic from '@site/static/usage/v1/copy-button/basic/index.md';
 
 <Basic />
@@ -39,11 +41,15 @@ import CustomLabel from '@site/static/usage/v1/copy-button/custom-label/index.md
 
 ## Element
 
+Ukážka kopíruje text z bežného DOM elementu. Hodí sa vtedy, keď zdrojová hodnota nie je input, ale napríklad statický kód alebo identifikátor.
+
 import Element from '@site/static/usage/v1/copy-button/element/index.md';
 
 <Element />
 
 ## Input
+
+Ukážka kopíruje aktuálnu hodnotu z klasického inputu, takže je vidieť bežný formulárový scenár.
 
 import Input from '@site/static/usage/v1/copy-button/input/index.md';
 
@@ -51,11 +57,15 @@ import Input from '@site/static/usage/v1/copy-button/input/index.md';
 
 ## WJE-Input
 
+Ukážka robí to isté pre `wje-input`, teda prepojí copy button priamo s hodnotou WebJET input komponentu.
+
 import WJInput from '@site/static/usage/v1/copy-button/wj-input/index.md';
 
 <WJInput />
 
 ## Hyperlink
+
+Ukážka kopíruje hodnotu z odkazu, čo je užitočné napríklad pri share URL alebo pri odkazoch na externé zdroje.
 
 import Hyperlink from '@site/static/usage/v1/copy-button/hyperlink/index.md';
 

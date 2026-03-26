@@ -25,6 +25,8 @@ Radio element je upravená verzia štandardného HTML radio elementu, rozšíren
 
 ## Základné použitie
 
+Ukážka zobrazuje radio v jeho predvolenom stave bez ďalších variantov alebo skupinového správania.
+
 import Basic from '@site/static/usage/v1/radio/basic/index.md';
 
 <Basic />

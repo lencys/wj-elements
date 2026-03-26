@@ -25,6 +25,8 @@ The `Level Indicator` component is an element that allows you to view the level 
 
 ## Basic use
 
+This example shows the level indicator in its simplest form so the default level distribution is easy to read.
+
 import Basic from '@site/static/usage/v1/level-indicator/basic/index.md';
 
 <Basic />

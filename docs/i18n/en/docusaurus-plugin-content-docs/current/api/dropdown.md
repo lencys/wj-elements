@@ -25,11 +25,15 @@ Dropdown element is used to display the context menu after clicking the button. 
 
 ## Basic usage
 
+This example shows a basic dropdown with a trigger and menu content. It is a good starting point for common action or navigation menus.
+
 import Basic from '@site/static/usage/v1/dropdown/basic/index.md';
 
 <Basic />
 
 ## Dropdown with dialogue
+
+This example uses a dropdown item to trigger a follow-up action, specifically opening a dialog.
 
 import OpenDialog from '@site/static/usage/v1/dropdown/open-dialog/index.md';
 
@@ -37,17 +41,23 @@ import OpenDialog from '@site/static/usage/v1/dropdown/open-dialog/index.md';
 
 ## Display on hover
 
+This example switches the dropdown from click-based opening to hover so the behavior difference is easy to compare.
+
 import Hover from '@site/static/usage/v1/dropdown/hover/index.md';
 
 <Hover />
 
 ## Dropdown with tooltip
 
+This example shows how the `wje-dropdown` component can work together with a tooltip for additional context.
+
 import Tooltip from '@site/static/usage/v1/dropdown/tooltip/index.md';
 
 <Tooltip />
 
 ## Dropdown with avatar
+
+This example uses an avatar as the dropdown trigger, which is a common pattern for profile menus and user actions.
 
 import Avatar from '@site/static/usage/v1/dropdown/inner-avatar/index.md';
 

@@ -3,7 +3,10 @@ title: 'Accordion'
 ---
 
 import Props from '@ionic-internal/component-api/v1-sk/accordion/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/accordion/events.md';
 import Methods from '@ionic-internal/component-api/v1-sk/accordion/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/accordion/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/accordion/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1-sk/accordion/slots.md';
 
 <head>
@@ -67,9 +70,21 @@ import Multiple from '@site/static/usage/v1/accordion/multiple/index.md';
 
 <Props />
 
+## Udalosti
+
+<Events />
+
 ## Metódy
 
 <Methods />
+
+## CSS tieňové časti
+
+<Parts />
+
+## CSS vlastné premenné
+
+<CustomProps />
 
 ## Sloty
 

@@ -25,11 +25,15 @@ Komponent FileUpload poskytuje univerzálnu funkciu nahrávania súborov pre web
 
 ## Základné použitie
 
+Ukážka predstavuje základný flow nahrávania súborov bez dodatočných úprav. Je to dobrý štart pre pochopenie štruktúry aj správania komponentu.
+
 import Basic from '@site/static/usage/v1/file-upload/basic/index.md';
 
 <Basic />
 
 ## S ikonou
+
+Ukážka nahrádza náhľad ikonou, čo sa hodí najmä pre typy súborov, ktoré nemajú zmysluplný preview obrázok.
 
 import Icon from '@site/static/usage/v1/file-upload/icon/index.md';
 

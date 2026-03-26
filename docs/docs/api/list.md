@@ -25,6 +25,8 @@ Komponent `List` (Zoznam) sa skladá z viacerých elementov [Item](./item) (polo
 
 ## Základné použitie
 
+Ukážka predstavuje list ako základný kontajner pre viac itemov s jednotným rytmom a odsadením.
+
 import Basic from '@site/static/usage/v1/list/basic/index.md';
 
 <Basic />

@@ -3,6 +3,9 @@ title: 'Aside'
 ---
 
 import Props from '@ionic-internal/component-api/v1/aside/props.md';
+import Events from '@ionic-internal/component-api/v1/aside/events.md';
+import Methods from '@ionic-internal/component-api/v1/aside/methods.md';
+import Parts from '@ionic-internal/component-api/v1/aside/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/aside/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/aside/slots.md';
 
@@ -52,6 +55,18 @@ import LayoutBasic from '@site/static/usage/v1/layout/basic/index.md';
 ## Attributes and Properties
 
 <Props />
+
+## Events
+
+<Events />
+
+## Methods
+
+<Methods />
+
+## CSS Shadow Parts
+
+<Parts />
 
 ## CSS Custom Properties
 

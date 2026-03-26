@@ -21,6 +21,8 @@ import Slots from '@ionic-internal/component-api/v1/reorder/slots.md';
 
 ## Basic usage
 
+This example presents basic reordering inside a single list without extra limitations or drop zones.
+
 import Basic from '@site/static/usage/v1/reorder/basic/index.md';
 
 <Basic />

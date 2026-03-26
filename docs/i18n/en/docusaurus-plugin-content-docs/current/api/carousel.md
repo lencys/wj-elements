@@ -9,8 +9,7 @@ import Events from '@ionic-internal/component-api/v1/carousel/events.md';
 import Methods from '@ionic-internal/component-api/v1/carousel/methods.md';
 
 import Parts from '@ionic-internal/component-api/v1/carousel/parts.md';
-
-<!-- import CustomProps from '@ionic-internal/component-api/v1/card/custom-props.md'; -->
+import CustomProps from '@ionic-internal/component-api/v1/carousel/custom-props.md';
 
 import Slots from '@ionic-internal/component-api/v1/carousel/slots.md';
 
@@ -30,11 +29,15 @@ A **Carousel** is an element that displays multiple items, such as images or new
 
 ## Basic usage
 
+This example shows the simplest carousel with several slides and default controls, so the baseline slide-to-slide behavior is easy to understand.
+
 import Basic from '@site/static/usage/v1/carousel/basic/index.md';
 
 <Basic />
 
 ## Paginaton
+
+This example enables pagination controls so you can see how users can move between slides without relying on gestures or arrows.
 
 import Pagination from '@site/static/usage/v1/carousel/pagination/index.md';
 
@@ -42,11 +45,15 @@ import Pagination from '@site/static/usage/v1/carousel/pagination/index.md';
 
 ## No loop
 
+This example disables infinite looping, so the first and last slide behave like real boundaries.
+
 import NoLoop from '@site/static/usage/v1/carousel/no-loop/index.md';
 
 <NoLoop />
 
 ## Dialogue
+
+This example places the carousel inside a dialog to show how it behaves in the constrained space of an overlay.
 
 import Dialog from '@site/static/usage/v1/carousel/dialog/index.md';
 
@@ -54,17 +61,23 @@ import Dialog from '@site/static/usage/v1/carousel/dialog/index.md';
 
 ## Thumbnail image
 
+This example adds thumbnail previews that act as secondary navigation between slides.
+
 import Thumbnail from '@site/static/usage/v1/carousel/thumbnail/index.md';
 
 <Thumbnail />
 
 ## Offset
 
+This example works with spacing between slides and around the viewport so you can compare a tighter and a more airy layout rhythm.
+
 import Spacing from '@site/static/usage/v1/carousel/spacing/index.md';
 
 <Spacing />
 
 ## Distribution
+
+This example splits the available space so that multiple slides stay visible at the same time, which is useful for galleries or dense overviews.
 
 import Split from '@site/static/usage/v1/carousel/split/index.md';
 
@@ -104,6 +117,10 @@ Provide alt text, maintain readable contrast, and include text equivalents for i
 ## CSS Shadow Parts
 
 <Parts />
+
+## CSS Custom Properties
+
+<CustomProps />
 
 ## Slots
 

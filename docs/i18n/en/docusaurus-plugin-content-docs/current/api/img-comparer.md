@@ -25,6 +25,8 @@ The Image Comparer element is used to compare two images. It displays the images
 
 ## Basic Usage
 
+This example presents the basic comparison of two images so the slider and split-view behavior are easy to understand.
+
 import Basic from '@site/static/usage/v1/img-comparer/basic/index.md';
 
 <div class="large">

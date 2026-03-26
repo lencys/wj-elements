@@ -25,6 +25,8 @@ The divider element is used to display a separator between sections. It can also
 
 ## Basic use
 
+This example shows the divider in its simplest role: visually separating two blocks of content without any extra decoration.
+
 import Basic from '@site/static/usage/v1/divider/basic/index.md';
 
 <Basic />

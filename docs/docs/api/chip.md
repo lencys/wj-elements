@@ -25,6 +25,8 @@ Komponent Chip je univerzálny element, ktorý predstavuje malý vizuálny blok 
 
 ## Základné použitie
 
+Ukážka zobrazuje chip v jeho najjednoduchšej podobe ako krátky štítok alebo filter bez ďalších doplnkov.
+
 import Basic from '@site/static/usage/v1/chip/basic/index.md';
 
 <Basic />
@@ -41,11 +43,15 @@ import SlotExample from '@site/static/usage/v1/chip/slots/index.md';
 
 ### Farebné varianty
 
+Ukážka porovnáva farebné varianty chipu, aby bolo jednoduchšie vybrať vhodný štýl pre štítky, filtre alebo stavy.
+
 import Colors from '@site/static/usage/v1/chip/theming/colors/index.md';
 
 <Colors />
 
 ### Štýlovanie pomocou CSS custom vlastností
+
+Ukážka sa sústreďuje na úpravu vzhľadu chipu cez CSS premenné namiesto zmeny markupu alebo API.
 
 import CSSProps from '@site/static/usage/v1/chip/theming/css-properties/index.md';
 

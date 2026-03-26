@@ -118,6 +118,8 @@ import Outline from '@site/static/usage/v1/button/outline/index.md';
 
 ### CSS vlastné premenné
 
+Ukážka sa sústreďuje na vizuálne ladenie. Vzhľad mení cez CSS premenné alebo vlastné štýly bez potreby meniť HTML štruktúru.
+
 import Custom from '@site/static/usage/v1/button/theming/css-properties/index.md';
 
 <Custom />

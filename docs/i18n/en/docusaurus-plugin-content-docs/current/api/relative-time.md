@@ -25,6 +25,8 @@ The RelativeTime component is an element used to display the relative time based
 
 ## Basic usage
 
+This example shows the basic output of the relative-time component, converting a date into a relative time label.
+
 import Basic from '@site/static/usage/v1/relative-time/basic/index.md';
 
 <Basic />

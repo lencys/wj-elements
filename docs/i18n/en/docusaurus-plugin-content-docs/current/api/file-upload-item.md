@@ -27,11 +27,15 @@ For more information on using FileUploadItem, navigate to the documentation of t
 
 ## Basic usage
 
+This example shows a single uploaded-file row in its default state, as it would typically appear in a file list after selection.
+
 import Basic from '@site/static/usage/v1/file-upload-item/basic/index.md';
 
 <Basic />
 
 ## With picture
+
+This example uses the image variant of the file-upload item so you can compare preview-driven content with a generic file row.
 
 import Icon from '@site/static/usage/v1/file-upload-item/image/index.md';
 

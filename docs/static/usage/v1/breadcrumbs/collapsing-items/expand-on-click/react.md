@@ -1,20 +1,18 @@
 ```tsx
-import React, { useState } from 'react';
-import { IonBreadcrumb, IonBreadcrumbs } from '@ionic/react';
+import React from 'react';
 
 function Example() {
-  const [maxBreadcrumbs, setMaxBreadcrumbs] = useState<number | undefined>(4);
-
   return (
-    <IonBreadcrumbs maxItems={maxBreadcrumbs} onIonCollapsedClick={() => setMaxBreadcrumbs(undefined)}>
-      <IonBreadcrumb href="#home">Home</IonBreadcrumb>
-      <IonBreadcrumb href="#electronics">Electronics</IonBreadcrumb>
-      <IonBreadcrumb href="#photography">Photography</IonBreadcrumb>
-      <IonBreadcrumb href="#cameras">Cameras</IonBreadcrumb>
-      <IonBreadcrumb href="#film">Film</IonBreadcrumb>
-      <IonBreadcrumb href="#35mm">35 mm</IonBreadcrumb>
-    </IonBreadcrumbs>
+    <wje-breadcrumbs max-items="4" items-before-collapse="2">
+      <wje-breadcrumb href="/home">Home</wje-breadcrumb>
+      <wje-breadcrumb href="/electronics">Electronics</wje-breadcrumb>
+      <wje-breadcrumb href="/photography">Photography</wje-breadcrumb>
+      <wje-breadcrumb href="/cameras">Cameras</wje-breadcrumb>
+      <wje-breadcrumb href="/film">Film</wje-breadcrumb>
+      <wje-breadcrumb href="/35mm">35 mm</wje-breadcrumb>
+    </wje-breadcrumbs>
   );
 }
+
 export default Example;
 ```

@@ -1,21 +1,25 @@
 ```tsx
 import React from 'react';
-import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
 
 function Example() {
   return (
-    <IonCard>
-      <IonCardHeader>
-        <IonCardTitle>Card Title</IonCardTitle>
-        <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-      </IonCardHeader>
+    <wje-card label="Card with actions">
+      <wje-card-header>
+        <wje-card-title>Card Title</wje-card-title>
+        <wje-card-subtitle>Card Subtitle</wje-card-subtitle>
+      </wje-card-header>
 
-      <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
+      <wje-card-content>
+        Here's a small text description for the card content. Nothing more, nothing less.
 
-      <IonButton fill="clear">Action 1</IonButton>
-      <IonButton fill="clear">Action 2</IonButton>
-    </IonCard>
+        <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem' }}>
+          <wje-button fill="link">Action 1</wje-button>
+          <wje-button fill="link">Action 2</wje-button>
+        </div>
+      </wje-card-content>
+    </wje-card>
   );
 }
+
 export default Example;
 ```

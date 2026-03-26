@@ -3,7 +3,10 @@ title: 'Animation'
 ---
 
 import Props from '@ionic-internal/component-api/v1/animation/props.md';
+import Events from '@ionic-internal/component-api/v1/animation/events.md';
 import Methods from '@ionic-internal/component-api/v1/animation/methods.md';
+import Parts from '@ionic-internal/component-api/v1/animation/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1/animation/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1/animation/slots.md';
 
 <head>
@@ -52,9 +55,21 @@ import Basic from '@site/static/usage/v1/animation/basic/index.md';
 
 <Props />
 
+## Events
+
+<Events />
+
 ## Methods
 
 <Methods />
+
+## CSS Shadow Parts
+
+<Parts />
+
+## CSS Custom Properties
+
+<CustomProps />
 
 ## Slots
 

@@ -27,17 +27,23 @@ Súčasťou Toolbar je element [ToolbarActions](./toolbar-actions), ktorý zosku
 
 ## Základné použitie
 
+Ukážka predstavuje základný toolbar s predvolenou skladbou obsahu a ovládacích prvkov.
+
 import Basic from '@site/static/usage/v1/toolbar/basic/index.md';
 
 <Basic />
 
 ## Dynamický breadcrumbs
 
+Ukážka skladá toolbar z dynamicky generovaného breadcrumb trailu, čo sa hodí pre kontextovo závislú navigáciu.
+
 import DynamicBreadcrumbs from '@site/static/usage/v1/toolbar/dynamic-breadcrumbs/index.md';
 
 <DynamicBreadcrumbs />
 
 ## Dynamický action
+
+Ukážka mení akcie v toolbare podľa kontextu, takže je vidieť, ako reagovať na stav aktuálnej obrazovky.
 
 import DynamicAction from '@site/static/usage/v1/toolbar/dynamic-action/index.md';
 

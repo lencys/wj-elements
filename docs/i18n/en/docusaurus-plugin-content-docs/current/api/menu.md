@@ -21,9 +21,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 <EncapsulationPill type="shadow" />
 
-The menu element is used to display the navigation. It is hidden by default and is displayed by adding the `active` attribute, for example, when a button is clicked. Špeciálne pre použitie v Menu sú navrhnuté elementy [MenuItem](./menu-item) a [MenuLabel](./menu-label).
+The menu element is used to display navigation. It is hidden by default and is shown by adding the `active` attribute, for example after a trigger click. The [MenuItem](./menu-item) and [MenuLabel](./menu-label) components are designed specifically for composing menu content.
 
 ## Basic usage
+
+This example shows a basic menu with the most common item hierarchy and default spacing.
 
 import Basic from '@site/static/usage/v1/menu/basic/index.md';
 
@@ -31,17 +33,23 @@ import Basic from '@site/static/usage/v1/menu/basic/index.md';
 
 ## Inset
 
+This example adds inner padding to the menu so it does not feel attached directly to the container edges.
+
 import Inset from '@site/static/usage/v1/menu/inset/index.md';
 
 <Inset />
 
 ## Variant: Megamenu
 
+This example switches the menu to a megamenu variant suited to wider navigation structures and denser content.
+
 import Megamenu from '@site/static/usage/v1/menu/megamenu/index.md';
 
 <Megamenu />
 
 ## Variant: Nav
+
+This example uses the navigation-oriented menu variant, which is a better fit for moving between sections of an app or site.
 
 import Nav from '@site/static/usage/v1/menu/nav/index.md';
 
@@ -55,15 +63,15 @@ import Collapse from '@site/static/usage/v1/menu/collapse/index.md';
 
 <Collapse />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods />
 
@@ -71,10 +79,10 @@ import Collapse from '@site/static/usage/v1/menu/collapse/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

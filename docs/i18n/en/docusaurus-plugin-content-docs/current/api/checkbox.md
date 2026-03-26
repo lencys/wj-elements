@@ -25,17 +25,23 @@ A checkbox, or also a check box, is an element that allows users to select one o
 
 ## Basic usage
 
+This example shows the checkbox in its default state with a standard label. It is the best starting point for simple form choices.
+
 import Basic from '@site/static/usage/v1/checkbox/basic/index.md';
 
 <Basic />
 
 ## Placement End
 
+This example moves the related content to the opposite side of the checkbox, which is useful in tighter or denser form layouts.
+
 import End from '@site/static/usage/v1/checkbox/end/index.md';
 
 <End />
 
 ## Color
+
+This example compares checkbox color variants so you can see how semantic states affect the overall visual tone.
 
 import Color from '@site/static/usage/v1/checkbox/color/index.md';
 
@@ -56,6 +62,14 @@ Adding the `variant` attribute with the value `circle` will display a checkbox i
 import Variant from '@site/static/usage/v1/checkbox/variant/index.md';
 
 <Variant />
+
+## CSS custom properties
+
+When you need to adjust the checkbox outline or spacing without changing markup, use the component CSS variables.
+
+import CssProperties from '@site/static/usage/v1/checkbox/theming/css-properties/index.md';
+
+<CssProperties />
 
 
 ## When to use

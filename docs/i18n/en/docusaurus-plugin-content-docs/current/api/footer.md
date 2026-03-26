@@ -23,7 +23,13 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The footer is part of the layout elements and appears at the bottom of the screen. It is mostly used to display additional information.
 
-## Examples of use
+## Basic usage
+
+Even though `wje-footer` is usually used as part of a larger layout, the standalone example below helps show its role inside a vertical page structure.
+
+import Basic from '@site/static/usage/v1/footer/basic/index.md';
+
+<Basic />
 
 :::note
 For information on using the **Footer** element, navigate to the [**Layout**](./layout) documentation.

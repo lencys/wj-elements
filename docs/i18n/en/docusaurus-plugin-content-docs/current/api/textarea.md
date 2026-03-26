@@ -25,6 +25,8 @@ Textarea extends the capabilities of the standard HTML `textarea` element. It ad
 
 ## Basic usage
 
+This example shows the textarea in its default state without a counter, auto-height, or other enhancements.
+
 import BasicPlayground from '@site/static/usage/v1/textarea/basic/index.md';
 
 <BasicPlayground />

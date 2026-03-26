@@ -25,11 +25,15 @@ The FormatDigital component is designed to format numeric values into a human-re
 
 ## Basic usage
 
+This example shows the basic formatting of a numeric value without additional display options, making the default behavior easy to understand.
+
 import Basic from '@site/static/usage/v1/format-digital/basic/index.md';
 
 <Basic />
 
 ## Display options
+
+This example compares several display modes for the same value so the formatting differences are immediately visible.
 
 import FormattingDisplay from '@site/static/usage/v1/format-digital/formatting-display/index.md';
 
@@ -37,17 +41,23 @@ import FormattingDisplay from '@site/static/usage/v1/format-digital/formatting-d
 
 ## Byte formatting
 
+This example focuses on converting values to byte units, which is useful for file sizes or storage metrics.
+
 import FormattingBytes from '@site/static/usage/v1/format-digital/formatting-bytes/index.md';
 
 <FormattingBytes />
 
 ## Formatting bits
 
+This example focuses on converting values to bit units, for example for network speeds or transfer limits.
+
 import FormattingBits from '@site/static/usage/v1/format-digital/formatting-bits/index.md';
 
 <FormattingBits />
 
 ## Use with slots
+
+This example shows how to place custom content before or after the formatted value with slots, without changing the formatting logic itself.
 
 import DisplaySlots from '@site/static/usage/v1/format-digital/slots/index.md';
 

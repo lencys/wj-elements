@@ -27,11 +27,15 @@ It can also be customized by setting different sizes or types to suit the needs 
 
 ## Basic use
 
+This example shows the status component in its simplest form, as a short state indicator without additional supporting content.
+
 import Basic from '@site/static/usage/v1/status/basic/index.md';
 
 <Basic />
 
 ## Slots
+
+This example shows how to add extra content to status through slots, such as an icon or supporting text.
 
 import Slot from '@site/static/usage/v1/status/slots/index.md';
 
@@ -39,11 +43,15 @@ import Slot from '@site/static/usage/v1/status/slots/index.md';
 
 ## Size
 
+This example shows how changing size affects the layout and visual hierarchy of the `wje-status` component.
+
 import Size from '@site/static/usage/v1/status/size/index.md';
 
 <Size />
 
 ## Status types
+
+This example shows how to display a status indicator or supporting status content with the `wje-status` component.
 
 import Types from '@site/static/usage/v1/status/types/index.md';
 

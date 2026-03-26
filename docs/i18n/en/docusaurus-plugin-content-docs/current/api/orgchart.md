@@ -17,10 +17,11 @@ import Slots from '@ionic-internal/component-api/v1/orgchart/slots.md';
   />
 </head>
 
-Komponent `OrgChart` spolu s [OrgChartItem](./orgchart-item) a [OrgChartGroup](./orgchart-group) slúžia na zobrazenie organizačnej štruktúry.
-OrgChart komponent môže byť použitý na zobrazenie hierarchických vzťahov medzi rôznymi entitami v organizácii.
+The `OrgChart` component works together with [OrgChartItem](./orgchart-item) and [OrgChartGroup](./orgchart-group) to render organizational structures. It is suited for displaying hierarchical relationships between people, teams, or other entities.
 
 ## Basic use
+
+This example presents the organization chart in its baseline form so the relationship between nodes and groups is easy to understand.
 
 import Basic from '@site/static/usage/v1/orgchart/basic/index.md';
 
@@ -44,25 +45,29 @@ import Group from '@site/static/usage/v1/orgchart/group/index.md';
 
 ## Line
 
+This example demonstrates how the `lines` option changes visual separation inside the `wje-orgchart` component.
+
 import Line from '@site/static/usage/v1/orgchart/line/index.md';
 
 <Line />
 
 ## Controls
 
+This example adds controls for working with the chart, which becomes important once the structure grows beyond a few nodes.
+
 import Controls from '@site/static/usage/v1/orgchart/controls/index.md';
 
 <Controls />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods />
 
@@ -70,10 +75,10 @@ import Controls from '@site/static/usage/v1/orgchart/controls/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

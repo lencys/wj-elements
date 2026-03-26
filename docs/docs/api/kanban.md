@@ -28,6 +28,8 @@ Kanban tabuľa je rozdelená do stĺpcov, pričom každý stĺpec reprezentuje u
 
 ## Základné použitie
 
+Ukážka predstavuje kanban v jeho základnej štruktúre, teda so stĺpcami a kartami bez ďalších rozšírení.
+
 import Basic from '@site/static/usage/v1/kanban/basic/index.md';
 
 <Basic />

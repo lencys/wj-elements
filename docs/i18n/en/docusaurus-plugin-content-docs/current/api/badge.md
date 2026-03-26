@@ -33,6 +33,8 @@ import Basic from '@site/static/usage/v1/badge/basic/index.md';
 
 ## List
 
+This example places a badge inside a list row, where it works as a short supporting indicator rather than the main content.
+
 import List from '@site/static/usage/v1/badge/list/index.md';
 
 <List />
@@ -40,6 +42,8 @@ import List from '@site/static/usage/v1/badge/list/index.md';
 ## Styling
 
 ### Colors
+
+This example compares color variants of the component so it is easier to choose the right semantic state and visual emphasis.
 
 import Colors from '@site/static/usage/v1/badge/theming/colors/index.md';
 

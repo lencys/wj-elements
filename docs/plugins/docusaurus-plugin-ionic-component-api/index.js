@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { parse } = require('@babel/parser');
 
 const COMPATIBILITY_ALIASES = {
   image: 'img',
@@ -28,6 +29,74 @@ const LIFECYCLE_METHODS = new Set([
   'beforeDisconnect',
   'afterDisconnect',
   'syncAria',
+  'syncAriaLabel',
+  'componentCleanup',
+]);
+
+const NON_API_HOST_ATTRIBUTES = new Set(['class', 'style', 'part', 'slot', 'role', 'tabindex', 'id']);
+
+const BOOLEAN_ATTRIBUTE_NAMES = new Set([
+  'active',
+  'async',
+  'checked',
+  'close-hidden',
+  'collapse',
+  'collapsed',
+  'disabled',
+  'expanded',
+  'hidden',
+  'hidden-footer',
+  'hidden-header',
+  'initials',
+  'multiple',
+  'readonly',
+  'required',
+  'selected',
+]);
+
+const PROPERTY_TYPE_OVERRIDES = new Map([
+  ['progress-bar.progress', 'number'],
+  ['rate.disabled', 'boolean'],
+  ['rate.readonly', 'boolean'],
+]);
+
+const PROPERTY_EXCLUSIONS_BY_COMPONENT = new Map([
+  ['rate', new Set(['is-hover'])],
+  ['reorder', new Set(['drag-el', 'clone-el', 'original-index'])],
+]);
+
+const METHOD_EXCLUSIONS_BY_COMPONENT = new Map([
+  ['breadcrumb', new Set(['drawCollapsedIndicator', 'collapseDropdown', 'collapseButton'])],
+  ['button-group', new Set(['findButton', 'toggle', 'updateButtonState'])],
+  ['carousel', new Set([
+    'syncActiveToCenter',
+    'setIntersectionObserver',
+    'cloneFirstAndLastItems',
+    'removeActiveSlide',
+    'changePagination',
+    'changeThumbnails',
+    'createNextButton',
+    'createPreviousButton',
+    'createPagination',
+    'createThumbnails',
+    'getSlidesWithClones',
+    'getVisualIndexForLogical',
+    'getLogicalIndexForVisual',
+  ])],
+  ['copy-button', new Set(['copyTarget'])],
+  ['dialog', new Set(['htmlDialogBody', 'beforeOpen', 'afterOpen', 'beforeClose', 'afterClose', 'updateHasFooter'])],
+  ['dropdown', new Set(['beforeShow', 'afterShow'])],
+  ['infinite-scroll', new Set(['getPages', 'hideLoader', 'showLoader', 'hasMorePages'])],
+  ['menu-item', new Set(['collapseItem', 'showSubmenu', 'hideSubmenu', 'submenuToggle', 'deactivateSubmenu', 'activateSubmenu', 'getTextFromElement'])],
+  ['options', new Set(['processData', 'filterOutDrawnOptions', 'getPages', 'findSelectedOptionData'])],
+  ['popup', new Set(['showHide', 'reposition', '_mountContentToPortal', '_restoreContentFromPortal', '_ensurePortalRoot', 'findDialog', 'markContentReady'])],
+  ['progress-bar', new Set(['getCircleDasharray', 'getCircleDashoffset', 'setCircleProgress'])],
+  ['rate', new Set(['createIcons', 'changeRate', 'getIcons', 'getValueFromXPosition', 'roundToPrecision'])],
+  ['select', new Set(['selectionChanged', 'selections', 'counter', 'getChip', 'htmlOption', 'htmlSelectedItem', 'optionCheckSlot'])],
+  ['sliding-container', new Set(['htmlCloseButton', 'getParentElement', 'checkForVariant', 'beforeOpen', 'afterOpen', 'beforeClose', 'afterClose', 'doAnimateTransition'])],
+  ['stepper', new Set(['processStep', '_executeGoToStep', 'setStepDefault', 'setStepActive', 'setContentActive', 'getStepElement', 'renderStepContent', 'setStepDone', 'setStepLocked'])],
+  ['toast', new Set(['startTimer', 'stopTimer', 'resumeTimer', 'removeChildAndStack'])],
+  ['tooltip', new Set(['dispatch', 'beforeShow', 'afterShow', 'checkSelector'])],
 ]);
 
 const LOCALE_COPY = {
@@ -456,6 +525,7 @@ const ENGLISH_RESIDUAL_WORDS = new Set([
 ]);
 
 const EVENT_SOURCE_CACHE = new Map();
+const SOURCE_ANALYSIS_CACHE = new Map();
 
 module.exports = function (context, options) {
   return {
@@ -592,7 +662,7 @@ function getComponentDocs(manifest, { locale = 'en', siteDir = '' } = {}) {
     }
     seen.add(componentTag);
 
-    const props = getProperties(declaration, { locale, componentTag });
+    const props = getProperties(declaration, { locale, componentTag, modulePath, siteDir });
     const events = getEvents(declaration, { locale, componentTag, modulePath, siteDir });
     const methods = getMethods(declaration, { locale, componentTag });
     const parts = getParts(declaration, { locale, componentTag });
@@ -682,6 +752,14 @@ function isWeakApiDescription(text, meta = {}) {
   }
 
   if (
+    /^sets?\s+the\s+value\s+of\s+the\s+['"`][^'"`]+['"`]\s+attribute\.?$/i.test(normalized) ||
+    /retrieves?\s+the\s+value\s+of\s+the\s+['"`][^'"`]+['"`]\s+attribute\s+from\s+the\s+element/i.test(normalized) ||
+    /^if\s+the\s+['"`][^'"`]+['"`]\s+attribute\s+is\s+not\s+present,\s+returns?\s+/i.test(normalized)
+  ) {
+    return true;
+  }
+
+  if (
     /(selected name|attribute for accordion|value of rating component|multiple attribute|index attribute|disabled attribute|expanded attribute)/i.test(
       normalized
     )
@@ -702,8 +780,18 @@ function isWeakApiDescription(text, meta = {}) {
     return true;
   }
 
-  if (meta.kind === 'property' && /(attribute|atribút)\s+for/i.test(normalized)) {
-    return true;
+  if (meta.kind === 'property') {
+    if (/(attribute|atribút)\s+for/i.test(normalized)) {
+      return true;
+    }
+
+    if (
+      /^sets?\s+the\s+[\w'"`\s-]+\s+of\s+the\s+[\w'"`\s-]+\.?$/i.test(normalized) ||
+      /^gets?\s+the\s+[\w'"`\s-]+\s+of\s+the\s+[\w'"`\s-]+\.?$/i.test(normalized) ||
+      /^the\s+[\w'"`\s-]+\s+of\s+the\s+[\w'"`\s-]+\s+component\.?$/i.test(normalized)
+    ) {
+      return true;
+    }
   }
 
   return false;
@@ -831,8 +919,19 @@ function describePropertyEn(meta = {}) {
     'animation.iterationstart': 'Sets the starting offset for the first animation iteration.',
     'animation.direction': 'Sets the playback direction of the animation.',
     'animation.easing': 'Sets the easing function used for animation playback.',
+    'dialog.headline': 'Sets the dialog headline used in the built-in header and accessible labeling.',
+    'dialog.placement': 'Controls the dialog transition variant, such as `slide-up` or `slide-left`.',
+    'dialog.async': 'Enables async dialog workflows where hooks can resolve content before the dialog is shown.',
+    'dialog.close-hidden': 'Hides the built-in close button in the dialog header.',
+    'dialog.hidden-header': 'Hides the built-in dialog header wrapper.',
+    'dialog.hidden-footer': 'Hides the built-in dialog footer wrapper.',
+    'progress-bar.radius': 'Sets the radius used for circular progress-bar variants.',
+    'progress-bar.stroke': 'Sets the stroke width of the rendered progress indicator.',
+    'progress-bar.linecap': 'Sets the line ending style used by the progress indicator.',
     'rate.value': 'Sets the current rating value.',
-    'rate.max': 'Sets the maximum rating value.',
+    'rate.max': 'Sets the maximum number of rating steps rendered by the component.',
+    'rate.precision': 'Sets the step size used when selecting fractional rating values.',
+    'rate.icons': 'Overrides the icon names rendered for each rating step.',
     'icon-picker.icon': 'Sets the selected icon name.',
     'file-upload.iterate': 'Controls whether file loading continues automatically in batches.',
     'file-upload-item.uploaded': 'Indicates whether the file item is already uploaded.',
@@ -964,8 +1063,19 @@ function describePropertySk(meta = {}) {
     'animation.iterationstart': 'Určuje počiatočný posun pre prvé opakovanie animácie.',
     'animation.direction': 'Určuje smer prehrávania animácie.',
     'animation.easing': 'Určuje easing funkciu použitú pri prehrávaní animácie.',
+    'dialog.headline': 'Nastavuje nadpis dialógu použitý v zabudovanej hlavičke aj pri prístupnom pomenovaní.',
+    'dialog.placement': 'Určuje variant prechodu dialógu, napríklad `slide-up` alebo `slide-left`.',
+    'dialog.async': 'Zapína asynchrónny režim dialógu, v ktorom hooky môžu pripraviť obsah ešte pred zobrazením.',
+    'dialog.close-hidden': 'Skryje vstavané tlačidlo na zatvorenie v hlavičke dialógu.',
+    'dialog.hidden-header': 'Skryje vstavanú hlavičku dialógu.',
+    'dialog.hidden-footer': 'Skryje vstavanú pätu dialógu.',
+    'progress-bar.radius': 'Nastavuje polomer používaný pri kruhovom variante progress baru.',
+    'progress-bar.stroke': 'Nastavuje hrúbku vykresleného indikátora progresu.',
+    'progress-bar.linecap': 'Nastavuje štýl zakončenia čiary indikátora progresu.',
     'rate.value': 'Nastavuje aktuálnu hodnotu hodnotenia.',
-    'rate.max': 'Nastavuje maximálnu hodnotu hodnotenia.',
+    'rate.max': 'Nastavuje maximálny počet krokov hodnotenia vykreslených komponentom.',
+    'rate.precision': 'Nastavuje krok, po ktorom sa dá vyberať aj desatinné hodnotenie.',
+    'rate.icons': 'Prepíše názvy ikon vykreslených pre jednotlivé kroky hodnotenia.',
     'icon-picker.icon': 'Nastavuje názov vybranej ikony.',
     'file-upload.iterate': 'Určuje, či sa načítavanie súborov automaticky opakuje po dávkach.',
     'file-upload-item.uploaded': 'Určuje, či je položka súboru už nahraná.',
@@ -1567,70 +1677,230 @@ function describeSlotSk(meta = {}) {
   return map[key] || `Slot pre vlastný obsah \`${key}\` v komponente.`;
 }
 
-function getProperties(declaration, { locale = 'en', componentTag = '' } = {}) {
+function isExcludedProperty(componentTag = '', attrName = '') {
+  return PROPERTY_EXCLUSIONS_BY_COMPONENT.get(componentTag)?.has(attrName) || false;
+}
+
+function chooseBetterType(currentType = '', nextType = '') {
+  const current = normalizeType(currentType || '');
+  const next = normalizeType(nextType || '');
+
+  if (!current) {
+    return next;
+  }
+
+  if (!next) {
+    return current;
+  }
+
+  if (/^any$/i.test(current) && !/^any$/i.test(next)) {
+    return next;
+  }
+
+  return current;
+}
+
+function chooseBetterDefault(currentDefault, nextDefault) {
+  const current = currentDefault ?? '-';
+  const next = nextDefault ?? '-';
+
+  if ((current === '-' || current === '') && next !== '-' && next !== '') {
+    return next;
+  }
+
+  return current;
+}
+
+function chooseBetterDescription(currentDescription = '', nextDescription = '', meta = {}) {
+  const current = sanitizeDescriptionText(currentDescription || '');
+  const next = sanitizeDescriptionText(nextDescription || '');
+
+  if (!current) {
+    return next;
+  }
+
+  if (!next) {
+    return current;
+  }
+
+  return isWeakApiDescription(current, meta) && !isWeakApiDescription(next, meta) ? next : current;
+}
+
+function getPreferredPropertyType(currentType = '', { componentTag = '', attrName = '', propertyName = '' } = {}) {
+  const current = normalizeType(currentType || '');
+  if (current && current !== 'any') {
+    return current;
+  }
+
+  const key = `${componentTag}.${String(attrName || propertyName || '').toLowerCase()}`;
+  if (PROPERTY_TYPE_OVERRIDES.has(key)) {
+    return PROPERTY_TYPE_OVERRIDES.get(key);
+  }
+
+  const normalizedAttr = String(attrName || propertyName || '').toLowerCase();
+  if (BOOLEAN_ATTRIBUTE_NAMES.has(normalizedAttr)) {
+    return 'boolean';
+  }
+
+  return current || 'any';
+}
+
+function choosePropertyName(currentName = '', nextName = '', attrName = '') {
+  const fallback = toCamelCase(attrName);
+  const current = currentName || fallback;
+  const next = nextName || fallback;
+
+  if (current === fallback) {
+    return current;
+  }
+
+  if (next === fallback) {
+    return next;
+  }
+
+  return current;
+}
+
+function isMemberPropertyCandidate(member, sourceMeta, manifestAttrName) {
+  if (!member || member.kind !== 'field' || member.static) {
+    return false;
+  }
+
+  if (!member.name || member.name.startsWith('_') || member.name.startsWith('#')) {
+    return false;
+  }
+
+  if (['className', 'cssStyleSheet', 'dependencies', 'internals'].includes(member.name)) {
+    return false;
+  }
+
+  return Boolean(sourceMeta || manifestAttrName);
+}
+
+function getProperties(declaration, { locale = 'en', componentTag = '', modulePath = '', siteDir = '' } = {}) {
   const attributes = declaration.attributes || [];
   const members = declaration.members || [];
+  const sourceMetadata = analyzeComponentSource({ siteDir, modulePath, componentTag });
+  const candidates = new Map();
 
-  if (attributes.length > 0) {
-    return attributes.map((attribute) => {
-      const attrName = attribute.name;
-      const attrCamel = toCamelCase(attrName);
+  const mergeCandidate = (attrName, patch = {}) => {
+    if (!attrName || isExcludedProperty(componentTag, attrName)) {
+      return;
+    }
 
-      const member = members.find(
-        (candidate) =>
-          candidate.name === attrName ||
-          candidate.name === attrCamel ||
-          candidate.name?.toLowerCase() === attrName?.toLowerCase()
-      );
+    const existing = candidates.get(attrName) || {
+      attr: attrName,
+      name: toCamelCase(attrName),
+      type: '',
+      default: '-',
+      source: '',
+      deprecation: undefined,
+    };
 
-      const type =
+    const next = {
+      attr: attrName,
+      name: choosePropertyName(existing.name, patch.name, attrName),
+      type: chooseBetterType(existing.type, patch.type),
+      default: chooseBetterDefault(existing.default, patch.default),
+      source: chooseBetterDescription(existing.source, patch.source, {
+        kind: 'property',
+        componentTag,
+        name: patch.name || existing.name,
+        attr: attrName,
+      }),
+      deprecation: existing.deprecation || patch.deprecation,
+    };
+
+    candidates.set(attrName, next);
+  };
+
+  for (const attribute of attributes) {
+    const attrName = attribute.name;
+    const attrCamel = toCamelCase(attrName);
+    const member = members.find(
+      (candidate) =>
+        candidate.name === attrName ||
+        candidate.name === attrCamel ||
+        candidate.name?.toLowerCase() === attrName?.toLowerCase()
+    );
+    const sourceMeta = sourceMetadata.attributes.get(attrName) || sourceMetadata.accessorsByName.get(member?.name || '');
+
+    mergeCandidate(attrName, {
+      name: member?.name || sourceMeta?.name || attrCamel,
+      type:
         getTypeText(attribute.type) ||
+        sourceMeta?.type ||
         getTypeText(member?.type) ||
         getTypeText(member?.return?.type) ||
         getTypeText(member?.parameters?.[0]?.type) ||
-        'any';
-
-      return {
-        name: member?.name || attrCamel,
-        attr: attrName,
-        type,
-        default: member?.default ?? '-',
-        docs: resolveApiDescription({
-          kind: 'property',
-          locale,
-          componentTag,
-          name: member?.name || attrCamel,
-          attr: attrName,
-          type,
-          source: attribute.description || member?.description || '',
-        }),
-      };
+        'any',
+      default: member?.default ?? sourceMeta?.default ?? '-',
+      source: attribute.description || sourceMeta?.docs || member?.description || member?.summary || '',
     });
   }
 
-  return members
-    .filter((member) => member.kind === 'field')
-    .filter((member) => member.type)
-    .filter((member) => !member.static)
-    .filter((member) => !member.readonly)
-    .filter((member) => !member.name.startsWith('_'))
-    .filter((member) => !member.name.startsWith('#'))
-    .filter((member) => !['className', 'cssStyleSheet', 'dependencies'].includes(member.name))
-    .map((member) => ({
+  for (const [attrName, sourceMeta] of sourceMetadata.attributes.entries()) {
+    mergeCandidate(attrName, {
+      name: sourceMeta.name,
+      type: sourceMeta.type,
+      default: sourceMeta.default,
+      source: sourceMeta.docs,
+    });
+  }
+
+  for (const member of members) {
+    const manifestAttrName = attributes.find((attribute) => toCamelCase(attribute.name) === member.name)?.name;
+    const sourceMeta = sourceMetadata.accessorsByName.get(member.name);
+
+    if (!isMemberPropertyCandidate(member, sourceMeta, manifestAttrName)) {
+      continue;
+    }
+
+    const attrName = sourceMeta?.attr || manifestAttrName || toKebabCase(member.name);
+    if (member.readonly && !sourceMeta && !manifestAttrName) {
+      continue;
+    }
+
+    mergeCandidate(attrName, {
       name: member.name,
-      attr: toKebabCase(member.name),
-      type: getTypeText(member.type) || getTypeText(member.parameters?.[0]?.type) || getTypeText(member.return?.type) || 'any',
-      default: member.default ?? '-',
+      type:
+        sourceMeta?.type ||
+        getTypeText(member.type) ||
+        getTypeText(member.return?.type) ||
+        getTypeText(member.parameters?.[0]?.type) ||
+        'any',
+      default: member.default ?? sourceMeta?.default ?? '-',
+      source: sourceMeta?.docs || member.description || member.summary || '',
+      deprecation: member.deprecation,
+    });
+  }
+
+  return Array.from(candidates.values())
+    .map((candidate) => ({
+      name: candidate.name,
+      attr: candidate.attr,
+      type: getPreferredPropertyType(candidate.type, {
+        componentTag,
+        attrName: candidate.attr,
+        propertyName: candidate.name,
+      }),
+      default: candidate.default ?? '-',
+      deprecation: candidate.deprecation,
       docs: resolveApiDescription({
         kind: 'property',
         locale,
         componentTag,
-        name: member.name,
-        attr: toKebabCase(member.name),
-        type: getTypeText(member.type) || getTypeText(member.parameters?.[0]?.type) || getTypeText(member.return?.type) || 'any',
-        source: member.description || '',
+        name: candidate.name,
+        attr: candidate.attr,
+        type: getPreferredPropertyType(candidate.type, {
+          componentTag,
+          attrName: candidate.attr,
+          propertyName: candidate.name,
+        }),
+        source: candidate.source || '',
       }),
-    }));
+    }))
+    .sort((a, b) => a.attr.localeCompare(b.attr));
 }
 
 function normalizeEventName(value) {
@@ -1690,6 +1960,402 @@ function resolveComponentSourcePath({ siteDir = '', modulePath = '', componentTa
   }
 
   return '';
+}
+
+function getStaticNodeName(node) {
+  if (!node) {
+    return '';
+  }
+
+  if (node.type === 'Identifier' || node.type === 'PrivateName') {
+    return node.name || node.id?.name || '';
+  }
+
+  if (node.type === 'StringLiteral') {
+    return node.value || '';
+  }
+
+  return '';
+}
+
+function walkAst(node, visitor) {
+  if (!node || typeof node !== 'object') {
+    return;
+  }
+
+  visitor(node);
+
+  for (const value of Object.values(node)) {
+    if (Array.isArray(value)) {
+      value.forEach((child) => walkAst(child, visitor));
+      continue;
+    }
+
+    if (value && typeof value === 'object' && typeof value.type === 'string') {
+      walkAst(value, visitor);
+    }
+  }
+}
+
+function getJsDocBlock(node) {
+  const comments = node?.leadingComments || [];
+
+  for (let index = comments.length - 1; index >= 0; index -= 1) {
+    const comment = comments[index];
+    if (comment?.type === 'CommentBlock' && /^\*/.test(comment.value || '')) {
+      return comment.value || '';
+    }
+  }
+
+  return '';
+}
+
+function extractJsDocDescription(comment = '') {
+  if (!comment) {
+    return '';
+  }
+
+  const lines = String(comment)
+    .split('\n')
+    .map((line) => line.replace(/^\s*\*\s?/, '').trimRight());
+
+  const descriptionLines = [];
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) {
+      if (descriptionLines.length > 0 && descriptionLines[descriptionLines.length - 1] !== '') {
+        descriptionLines.push('');
+      }
+      continue;
+    }
+
+    if (trimmed.startsWith('@')) {
+      break;
+    }
+
+    descriptionLines.push(trimmed);
+  }
+
+  return sanitizeDescriptionText(descriptionLines.join(' ').replace(/\s+/g, ' ').trim());
+}
+
+function extractJsDocTagType(comment = '', tagName = '') {
+  if (!comment || !tagName) {
+    return '';
+  }
+
+  const match = String(comment).match(new RegExp(`@${tagName}\\s+\\{([^}]+)\\}`));
+  return normalizeType(match?.[1] || '');
+}
+
+function extractAttributeTags(comment = '') {
+  if (!comment) {
+    return [];
+  }
+
+  return Array.from(String(comment).matchAll(/@attribute(?:\s+\{([^}]+)\})?\s+([^\s-]+)(?:\s*-\s*([^\n\r*]+))?/g)).map(
+    (match) => ({
+      attr: sanitizeDescriptionText(match[2] || ''),
+      type: normalizeType(match[1] || ''),
+      docs: sanitizeDescriptionText(match[3] || ''),
+    })
+  );
+}
+
+function getStringLiteralValue(node) {
+  if (!node) {
+    return '';
+  }
+
+  if (node.type === 'StringLiteral') {
+    return node.value || '';
+  }
+
+  if (node.type === 'TemplateLiteral' && node.expressions?.length === 0) {
+    return node.quasis?.[0]?.value?.cooked || '';
+  }
+
+  return '';
+}
+
+function isThisAttributeCall(node, methodNames = []) {
+  const callee = node?.callee;
+  const methodName = callee?.property?.name;
+
+  return (
+    node?.type === 'CallExpression' &&
+    callee?.type === 'MemberExpression' &&
+    callee.object?.type === 'ThisExpression' &&
+    methodNames.includes(methodName)
+  );
+}
+
+function collectHostAttributeUsage(node) {
+  const attrs = new Set();
+  const methods = new Set();
+
+  walkAst(node, (child) => {
+    if (!isThisAttributeCall(child, ['getAttribute', 'hasAttribute', 'setAttribute', 'removeAttribute', 'toggleAttribute'])) {
+      return;
+    }
+
+    const attrName = getStringLiteralValue(child.arguments?.[0]);
+    if (!attrName || NON_API_HOST_ATTRIBUTES.has(attrName) || attrName.startsWith('aria-')) {
+      return;
+    }
+
+    attrs.add(attrName);
+    methods.add(child.callee.property.name);
+  });
+
+  return {
+    attrs: Array.from(attrs),
+    methods,
+  };
+}
+
+function expressionUsesAttr(node, attrNames = []) {
+  let found = false;
+
+  walkAst(node, (child) => {
+    if (!isThisAttributeCall(child, ['getAttribute', 'hasAttribute'])) {
+      return;
+    }
+
+    const attrName = getStringLiteralValue(child.arguments?.[0]);
+    if (attrNames.includes(attrName)) {
+      found = true;
+    }
+  });
+
+  return found;
+}
+
+function literalNodeToValue(node) {
+  if (!node) {
+    return undefined;
+  }
+
+  switch (node.type) {
+    case 'StringLiteral':
+      return node.value;
+    case 'NumericLiteral':
+    case 'BooleanLiteral':
+      return String(node.value);
+    case 'NullLiteral':
+      return 'null';
+    case 'TemplateLiteral':
+      return node.expressions?.length === 0 ? node.quasis?.[0]?.value?.cooked || '' : undefined;
+    case 'UnaryExpression':
+      if (node.operator === '-' || node.operator === '+') {
+        const inner = literalNodeToValue(node.argument);
+        return inner !== undefined ? `${node.operator}${inner}` : undefined;
+      }
+      return undefined;
+    case 'ArrayExpression': {
+      const values = node.elements.map((element) => literalNodeToValue(element));
+      return values.every((value) => value !== undefined) ? `[${values.join(', ')}]` : undefined;
+    }
+    default:
+      return undefined;
+  }
+}
+
+function inferDefaultFromExpression(node, attrNames = []) {
+  if (!node) {
+    return undefined;
+  }
+
+  if ((node.type === 'LogicalExpression' || node.type === 'BinaryExpression') && ['||', '??'].includes(node.operator)) {
+    if (expressionUsesAttr(node.left, attrNames)) {
+      return literalNodeToValue(node.right);
+    }
+  }
+
+  if (node.type === 'ConditionalExpression') {
+    if (expressionUsesAttr(node.consequent, attrNames)) {
+      return literalNodeToValue(node.alternate);
+    }
+
+    if (expressionUsesAttr(node.alternate, attrNames)) {
+      return literalNodeToValue(node.consequent);
+    }
+  }
+
+  return undefined;
+}
+
+function inferAccessorDefault(body, attrNames = [], isBooleanAccessor = false) {
+  let inferred;
+
+  walkAst(body, (child) => {
+    if (inferred !== undefined || child?.type !== 'ReturnStatement') {
+      return;
+    }
+
+    inferred = inferDefaultFromExpression(child.argument, attrNames);
+  });
+
+  if (inferred !== undefined) {
+    return inferred;
+  }
+
+  if (isBooleanAccessor) {
+    return 'false';
+  }
+
+  return undefined;
+}
+
+function getObservedAttributesFromMember(member) {
+  const returnArg = member?.body?.body?.find((statement) => statement.type === 'ReturnStatement')?.argument;
+  if (returnArg?.type !== 'ArrayExpression') {
+    return [];
+  }
+
+  return returnArg.elements.map((element) => getStringLiteralValue(element)).filter(Boolean);
+}
+
+function findComponentClass(ast) {
+  for (const node of ast.program?.body || []) {
+    if (node.type === 'ExportDefaultDeclaration' && node.declaration?.type === 'ClassDeclaration') {
+      return node.declaration;
+    }
+
+    if (node.type === 'ExportNamedDeclaration' && node.declaration?.type === 'ClassDeclaration') {
+      return node.declaration;
+    }
+
+    if (node.type === 'ClassDeclaration') {
+      return node;
+    }
+  }
+
+  return null;
+}
+
+function analyzeComponentSource({ siteDir = '', modulePath = '', componentTag = '' } = {}) {
+  const sourcePath = resolveComponentSourcePath({ siteDir, modulePath, componentTag });
+  if (!sourcePath) {
+    return { attributes: new Map(), accessorsByName: new Map() };
+  }
+
+  if (SOURCE_ANALYSIS_CACHE.has(sourcePath)) {
+    return SOURCE_ANALYSIS_CACHE.get(sourcePath);
+  }
+
+  const source = fs.readFileSync(sourcePath, 'utf8');
+  const result = {
+    attributes: new Map(),
+    accessorsByName: new Map(),
+  };
+
+  try {
+    const ast = parse(source, {
+      sourceType: 'module',
+      plugins: ['classProperties', 'classPrivateProperties', 'classPrivateMethods'],
+    });
+
+    const classNode = findComponentClass(ast);
+    if (!classNode) {
+      SOURCE_ANALYSIS_CACHE.set(sourcePath, result);
+      return result;
+    }
+
+    for (const tag of extractAttributeTags(getJsDocBlock(classNode))) {
+      if (!tag.attr || NON_API_HOST_ATTRIBUTES.has(tag.attr) || tag.attr.startsWith('aria-')) {
+        continue;
+      }
+
+      const propName = toCamelCase(tag.attr);
+      const meta = {
+        name: propName,
+        attr: tag.attr,
+        type: tag.type || '',
+        default: undefined,
+        docs: tag.docs || '',
+      };
+
+      result.attributes.set(tag.attr, meta);
+      result.accessorsByName.set(propName, meta);
+    }
+
+    for (const member of classNode.body?.body || []) {
+      const memberName = getStaticNodeName(member.key);
+      if (!memberName) {
+        continue;
+      }
+
+      if (member.static && member.kind === 'get' && memberName === 'observedAttributes') {
+        for (const attr of getObservedAttributesFromMember(member)) {
+          if (!attr || NON_API_HOST_ATTRIBUTES.has(attr) || attr.startsWith('aria-')) {
+            continue;
+          }
+
+          if (!result.attributes.has(attr)) {
+            result.attributes.set(attr, {
+              name: toCamelCase(attr),
+              attr,
+              type: '',
+              default: undefined,
+              docs: '',
+            });
+          }
+        }
+        continue;
+      }
+
+      if (member.type !== 'ClassMethod' || !['get', 'set'].includes(member.kind) || member.computed || memberName.startsWith('#')) {
+        continue;
+      }
+
+      const usage = collectHostAttributeUsage(member.body);
+      if (usage.attrs.length === 0) {
+        continue;
+      }
+
+      const attrName =
+        usage.attrs.find((attr) => toCamelCase(attr) === memberName || attr === memberName) || usage.attrs[0] || '';
+      if (!attrName) {
+        continue;
+      }
+
+      const comment = getJsDocBlock(member);
+      const sourceMeta = result.accessorsByName.get(memberName) || result.attributes.get(attrName) || {
+        name: memberName,
+        attr: attrName,
+      };
+
+      const type =
+        member.kind === 'get' ? extractJsDocTagType(comment, 'returns') || extractJsDocTagType(comment, 'return') : extractJsDocTagType(comment, 'param');
+      const docs = extractJsDocDescription(comment);
+      const isBooleanAccessor = member.kind === 'get' && usage.methods.has('hasAttribute') && !usage.methods.has('getAttribute');
+      const defaultValue = member.kind === 'get' ? inferAccessorDefault(member.body, usage.attrs, isBooleanAccessor) : undefined;
+
+      const mergedMeta = {
+        ...sourceMeta,
+        name: sourceMeta.name || memberName,
+        attr: sourceMeta.attr || attrName,
+        type: chooseBetterType(sourceMeta.type, type || (isBooleanAccessor ? 'boolean' : '')),
+        default: sourceMeta.default ?? defaultValue,
+        docs: chooseBetterDescription(sourceMeta.docs, docs, {
+          kind: 'property',
+          componentTag,
+          name: memberName,
+          attr: attrName,
+        }),
+      };
+
+      result.attributes.set(mergedMeta.attr, mergedMeta);
+      result.accessorsByName.set(memberName, mergedMeta);
+    }
+  } catch (error) {
+    // Fall back to manifest-only metadata when source parsing fails.
+  }
+
+  SOURCE_ANALYSIS_CACHE.set(sourcePath, result);
+  return result;
 }
 
 function readEventDocsFromSource({ siteDir = '', modulePath = '', componentTag = '' } = {}) {
@@ -1837,6 +2503,7 @@ function getMethods(declaration, { locale = 'en', componentTag = '' } = {}) {
     .filter((member) => !member.name.startsWith('_'))
     .filter((member) => !member.name.startsWith('#'))
     .filter((member) => !/^handle[A-Z]/.test(member.name))
+    .filter((member) => !METHOD_EXCLUSIONS_BY_COMPONENT.get(componentTag)?.has(member.name))
     .map((member) => ({
       name: member.name,
       docs: resolveApiDescription({

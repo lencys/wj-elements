@@ -26,17 +26,23 @@ Steppers show progress through a sequence of numbered steps.
 
 ## Basic use
 
+This example presents the stepper in a standard multi-step flow with the default navigation controls.
+
 import Basic from '@site/static/usage/v1/stepper/basic/index.md';
 
 <Basic />
 
 ## Disabled (Deactivated) steps
 
+This example disables selected steps so you can see how the stepper communicates unavailable navigation.
+
 import Disabled from '@site/static/usage/v1/stepper/disabled/index.md';
 
 <Disabled />
 
 ## Custom buttons
+
+This example replaces the default controls with custom buttons, which is useful in more specialized wizard flows.
 
 import Custom from '@site/static/usage/v1/stepper/custom/index.md';
 

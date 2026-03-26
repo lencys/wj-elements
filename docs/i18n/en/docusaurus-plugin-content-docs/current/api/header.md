@@ -23,7 +23,13 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 The header is part of the layout elements and is displayed at the top. It is mostly used to display navigation, logos, etc.
 
-## Examples of use
+## Basic usage
+
+The example below shows the header in the simplest vertical layout with main content rendered below it.
+
+import Basic from '@site/static/usage/v1/header/basic/index.md';
+
+<Basic />
 
 :::note
 For information on using the **Header** element, navigate to the [**Layout**](./layout) documentation.

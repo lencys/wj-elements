@@ -25,11 +25,15 @@ Dropdown element slúži na zobrazenie kontextového menu po kliknutí na tlači
 
 ## Základné použitie
 
+Ukážka zobrazuje základný dropdown so spúšťačom a obsahom menu. Je to dobrý východiskový bod pre bežné akčné alebo navigačné menu.
+
 import Basic from '@site/static/usage/v1/dropdown/basic/index.md';
 
 <Basic />
 
 ## Dropdown s dialógom
+
+Ukážka používa dropdown ako miesto, odkiaľ používateľ spustí ďalšiu akciu, konkrétne otvorenie dialógu.
 
 import OpenDialog from '@site/static/usage/v1/dropdown/open-dialog/index.md';
 
@@ -37,17 +41,23 @@ import OpenDialog from '@site/static/usage/v1/dropdown/open-dialog/index.md';
 
 ## Zobrazenie na hover
 
+Ukážka prepína dropdown z kliknutia na hover, aby bolo vidieť rozdiel v správaní aj vhodnosť tohto vzoru.
+
 import Hover from '@site/static/usage/v1/dropdown/hover/index.md';
 
 <Hover />
 
 ## Dropdown s tooltipom
 
+Táto ukážka ukazuje, ako komponent `wje-dropdown` použiť spolu s tooltipom na doplnenie krátkeho kontextu.
+
 import Tooltip from '@site/static/usage/v1/dropdown/tooltip/index.md';
 
 <Tooltip />
 
 ## Dropdown s avatarom
+
+Ukážka používa avatar ako trigger dropdownu, čo je typický vzor pre profilové menu a používateľské akcie.
 
 import Avatar from '@site/static/usage/v1/dropdown/inner-avatar/index.md';
 

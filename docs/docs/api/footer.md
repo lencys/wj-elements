@@ -23,7 +23,13 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Footer je súčasťou elementov určených na tvorbu layoutov a zobrazuje sa v spodnej časti obrazovky. Používa sa väčšinou na zobrazenie dodatočných informácií.
 
-## Príklady použitia
+## Základné použitie
+
+Aj keď sa `wje-footer` takmer vždy používa v širšom layoute, samostatná ukážka nižšie pomáha rýchlo pochopiť jeho miesto v stĺpcovom rozložení.
+
+import Basic from '@site/static/usage/v1/footer/basic/index.md';
+
+<Basic />
 
 :::note
 Pre informácie o použití **Footer** elementu sa presuňte do dokumentácie [**Layoutu**](./layout).

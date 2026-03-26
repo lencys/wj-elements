@@ -41,17 +41,23 @@ import Bubble from '@site/static/usage/v1/slider/bubble/index.md';
 
 ## Label
 
+This example adds a label to the slider so the user can better understand the meaning of the current value or range.
+
 import Label from '@site/static/usage/v1/slider/label/index.md';
 
 <Label />
 
 ## Icons
 
+This example adds icons to the slider so the start and end of the range are easier to interpret visually.
+
 import Icons from '@site/static/usage/v1/slider/icons/index.md';
 
 <Icons />
 
 ## Color
+
+This example compares slider color variants and how they affect readability and visual emphasis.
 
 import Colors from '@site/static/usage/v1/slider/colors/index.md';
 

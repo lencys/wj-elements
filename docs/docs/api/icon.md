@@ -25,17 +25,23 @@ Tento komponent poskytuje jednoduchý spôsob zobrazenia ikon zo sady SVG obráz
 
 ## Základné použitie
 
+Ukážka zobrazuje použitie ikony v najjednoduchšej podobe, teda ako samostatný vizuálny prvok s predvoleným menom.
+
 import Basic from '@site/static/usage/v1/icon/basic/index.md';
 
 <Basic />
 
 ## Štýl Outline / Filled
 
+Ukážka porovnáva outline a filled varianty tej istej ikony, aby bolo ľahšie vybrať vhodný štýl pre konkrétny kontext.
+
 import Styles from '@site/static/usage/v1/icon/style/index.md';
 
 <Styles />
 
 ## Custom
+
+Ukážka sa sústreďuje na použitie vlastnej ikony mimo predvolenej sady, čo je vhodné pri brandových alebo projektových ikonách.
 
 import Custom from '@site/static/usage/v1/icon/custom/index.md';
 

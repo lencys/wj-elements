@@ -25,6 +25,8 @@ Komponent `Level Indicator` je element umožňujúci zobraziť úroveň alebo po
 
 ## Základné použitie
 
+Ukážka zobrazuje level indicator v najjednoduchšej forme, takže je dobre vidieť predvolené rozdelenie úrovní a ich čítanie.
+
 import Basic from '@site/static/usage/v1/level-indicator/basic/index.md';
 
 <Basic />

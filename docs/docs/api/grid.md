@@ -99,6 +99,14 @@ import Order from '@site/static/usage/v1/grid/order/index.md';
 
 <Order />
 
+## Responzívne poradie
+
+Ak kombinujete `order` s breakpointmi alebo rôznymi šírkami stĺpcov, vždy si skontrolujte, či vizuálne poradie stále zodpovedá tomu, čo používateľ očakáva na konkrétnom zariadení.
+
+import OrderResponsive from '@site/static/usage/v1/grid/order-responsive/index.md';
+
+<OrderResponsive />
+
 ## Zarovnanie
 
 ### Vertikálne Zarovnanie

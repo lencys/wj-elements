@@ -25,6 +25,8 @@ Divider element slúži na zobrazenie oddeľovača medzi jednotlivými sekciami.
 
 ## Základné použitie
 
+Ukážka ukazuje divider v jeho najjednoduchšej roli, teda ako vizuálne oddelenie dvoch blokov obsahu bez ďalších úprav.
+
 import Basic from '@site/static/usage/v1/divider/basic/index.md';
 
 <Basic />

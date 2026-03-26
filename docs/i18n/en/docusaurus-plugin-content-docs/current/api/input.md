@@ -25,6 +25,8 @@ Input element extends the capabilities of standard HTML input with advanced feat
 
 ## Basic usage
 
+This example shows a plain input in its most common setup, so the default markup, spacing, and typing behavior are easy to inspect.
+
 import Basic from '@site/static/usage/v1/input/basic/index.md';
 
 <div className="xxlarge">
@@ -34,6 +36,8 @@ import Basic from '@site/static/usage/v1/input/basic/index.md';
 </div>
 
 ## Use in the form
+
+This example places the input inside a real form so you can see submission flow and standard form interaction in context.
 
 import Form from '@site/static/usage/v1/input/form/index.md';
 
@@ -48,6 +52,8 @@ import Standard from '@site/static/usage/v1/input/standard/index.md';
 <Standard />
 
 ## Standard in the form
+
+This example combines the standard input variant with a form context so it is clear how it behaves in a typical form layout.
 
 import StandardForm from '@site/static/usage/v1/input/standard-form/index.md';
 

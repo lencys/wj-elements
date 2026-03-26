@@ -21,6 +21,8 @@ import Slots from '@ionic-internal/component-api/v1-sk/reorder-handle/slots.md';
 
 ## Základné použitie
 
+Ukážka zobrazuje reorder handle v najjednoduchšej podobe, teda ako vizuálny úchop pre presúvanie položky.
+
 import Basic from '@site/static/usage/v1/reorder-handle/basic/index.md';
 
 <Basic />

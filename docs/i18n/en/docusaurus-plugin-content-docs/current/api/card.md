@@ -25,6 +25,8 @@ The **Card** element is a flexible and expandable card format container. It allo
 
 ## Basic usage
 
+This example shows the most common card composition: header, content, and default spacing. It is a good starting point for informational or presentation blocks.
+
 import Basic from '@site/static/usage/v1/card/basic/index.md';
 
 <Basic />
@@ -39,15 +41,27 @@ import Separator from '@site/static/usage/v1/card/separator/index.md';
 
 ## Card with picture
 
+This example adds visual media to the card so you can see how image-led content behaves together with text inside one block.
+
 import Media from '@site/static/usage/v1/card/media/index.md';
 
 <Media />
 
 ## Card with list
 
+This example uses a card as a wrapper for denser list content. It is useful for summaries that should still feel visually grouped.
+
 import List from '@site/static/usage/v1/card/list/index.md';
 
 <List />
+
+## Card with actions
+
+When a card needs primary or secondary actions, keep them in a single visual group directly inside the card content.
+
+import Buttons from '@site/static/usage/v1/card/buttons/index.md';
+
+<Buttons />
 
 ## Styling
 
@@ -60,6 +74,8 @@ import Colors from '@site/static/usage/v1/card/theming/colors/index.md';
 <Colors />
 
 ### CSS Custom Properties
+
+This example focuses on visual card customization through CSS variables instead of changing the HTML structure.
 
 import CssProperties from '@site/static/usage/v1/card/theming/css-properties/index.md';
 

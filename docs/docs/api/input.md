@@ -25,6 +25,8 @@ Input element rozširuje možnosti štandardného HTML inputu pokročilými funk
 
 ## Základné použitie
 
+Ukážka zobrazuje input v základnom stave bez rozšírených režimov, aby bolo jasné predvolené správanie a markup.
+
 import Basic from '@site/static/usage/v1/input/basic/index.md';
 
 <div className="xxlarge">
@@ -35,6 +37,8 @@ import Basic from '@site/static/usage/v1/input/basic/index.md';
 </div>
 
 ## Použitie vo formulári
+
+Ukážka vkladá input do skutočného formulára, takže je vidieť submit flow a väzbu na bežné formové správanie.
 
 import Form from '@site/static/usage/v1/input/form/index.md';
 
@@ -49,6 +53,8 @@ import Standard from '@site/static/usage/v1/input/standard/index.md';
 <Standard />
 
 ## Standard vo formulári
+
+Ukážka kombinuje štandardný variant inputu s formulárovým kontextom, aby bolo jasné, ako sa správa v bežnom formulárovom layoute.
 
 import StandardForm from '@site/static/usage/v1/input/standard-form/index.md';
 

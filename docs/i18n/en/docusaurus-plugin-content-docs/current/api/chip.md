@@ -25,6 +25,8 @@ The Chip component is a universal element that is a small visual block containin
 
 ## Basic use
 
+This example shows the chip in its simplest form, as a short label or filter without additional content.
+
 import Basic from '@site/static/usage/v1/chip/basic/index.md';
 
 <Basic />
@@ -41,11 +43,15 @@ import SlotExample from '@site/static/usage/v1/chip/slots/index.md';
 
 ### Color variants
 
+This example compares chip color variants to help choose an appropriate style for labels, filters, or statuses.
+
 import Colors from '@site/static/usage/v1/chip/theming/colors/index.md';
 
 <Colors />
 
 ### Styling with CSS custom properties
+
+This example focuses on chip styling through CSS variables instead of changing markup or API settings.
 
 import CSSProps from '@site/static/usage/v1/chip/theming/css-properties/index.md';
 

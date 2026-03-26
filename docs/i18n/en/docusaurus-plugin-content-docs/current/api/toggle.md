@@ -25,17 +25,29 @@ Toggle elements are small interactive controls that allow you to switch between 
 
 ## Basic Usage
 
+This example shows the toggle in its simplest form, as a switch with default appearance and behavior.
+
 import Basic from '@site/static/usage/v1/toggle/basic/index.md';
 
 <Basic />
 
 ## Colors
 
+This example compares color variants of the toggle so the effect on meaning and state readability is easy to see.
+
 import Colors from '@site/static/usage/v1/toggle/colors/index.md';
 
 <div className="large">
   <Colors />
 </div>
+
+## Custom CSS properties
+
+CSS variables let you change dimensions, radii, and track or handle colors without introducing a wrapper component just for styling.
+
+import Custom from '@site/static/usage/v1/toggle/custom/index.md';
+
+<Custom />
 
 
 ## When to use

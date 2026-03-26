@@ -25,6 +25,8 @@ Element Image Comparer slúži na porovnanie dvoch obrázkov. Obrázky zobrazí 
 
 ## Basic Usage
 
+Ukážka predstavuje základné porovnanie dvoch obrázkov, aby bolo jasné, ako funguje posuvník a rozdelenie pohľadu.
+
 import Basic from '@site/static/usage/v1/img-comparer/basic/index.md';
 
 <div class="large">

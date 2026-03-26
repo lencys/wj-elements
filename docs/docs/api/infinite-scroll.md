@@ -45,6 +45,7 @@ import Card from '@site/static/usage/v1/infinite-scroll/card/index.md';
 
 ## Vlastné dáta
 
+Ukážka pripája infinite scroll na vlastný zdroj dát namiesto predpripraveného zoznamu, takže je bližšie reálnemu použitiu v aplikácii.
 
 import Custom from '@site/static/usage/v1/infinite-scroll/custom/index.md';
 

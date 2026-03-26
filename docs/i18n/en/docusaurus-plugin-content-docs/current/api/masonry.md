@@ -25,6 +25,8 @@ The Masonry component creates a responsive "Masonry" layout of child elements th
 
 ## Basic usage
 
+This example shows the base masonry layout without additional constraints, so the natural column flow is easy to see.
+
 import Basic from '@site/static/usage/v1/masonry/basic/index.md';
 
 <Basic />

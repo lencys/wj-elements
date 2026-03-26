@@ -25,17 +25,29 @@ Toggle elementy sú malé interaktívne ovládacie prvky, ktoré umožňujú pre
 
 ## Basic Usage
 
+Ukážka zobrazuje toggle v jeho najjednoduchšej forme, teda ako prepínač s predvoleným vzhľadom a správaním.
+
 import Basic from '@site/static/usage/v1/toggle/basic/index.md';
 
 <Basic />
 
 ## Colors
 
+Ukážka porovnáva farebné varianty toggle komponentu, aby bolo jasné, ako vplývajú na význam a čitateľnosť stavu.
+
 import Colors from '@site/static/usage/v1/toggle/colors/index.md';
 
 <div className="large">
   <Colors />
 </div>
+
+## Vlastné CSS premenné
+
+Pomocou CSS premenných viete upraviť rozmery, polomer aj farby tracku a handle bez potreby vlastného wrapper komponentu.
+
+import Custom from '@site/static/usage/v1/toggle/custom/index.md';
+
+<Custom />
 
 
 ## Kedy použiť

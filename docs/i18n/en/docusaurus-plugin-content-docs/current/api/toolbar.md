@@ -27,17 +27,23 @@ Part of the Toolbar is the [ToolbarActions](./toolbar-actions) element, which gr
 
 ## Basic usage
 
+This example presents the toolbar with a standard composition of content and actions.
+
 import Basic from '@site/static/usage/v1/toolbar/basic/index.md';
 
 <Basic />
 
 ## Dynamic breadcrumbs
 
+This example builds the toolbar around dynamically generated breadcrumbs, which is useful for context-aware navigation.
+
 import DynamicBreadcrumbs from '@site/static/usage/v1/toolbar/dynamic-breadcrumbs/index.md';
 
 <DynamicBreadcrumbs />
 
 ## Dynamic action
+
+This example changes toolbar actions based on context so the control set can react to the current screen state.
 
 import DynamicAction from '@site/static/usage/v1/toolbar/dynamic-action/index.md';
 

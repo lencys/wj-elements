@@ -21,11 +21,15 @@ The `Pagination` component is used to display pagination in applications. It all
 
 ## Basic use
 
+This example presents the simplest pagination with default controls and page display.
+
 import Basic from '@site/static/usage/v1/pagination/basic/index.md';
 
 <Basic />
 
 ## Max pages
+
+This example limits how many page links stay visible at once, making it easier to see how long paginations are condensed.
 
 import MaxPages from '@site/static/usage/v1/pagination/max-pages/index.md';
 
@@ -33,17 +37,23 @@ import MaxPages from '@site/static/usage/v1/pagination/max-pages/index.md';
 
 ## Round
 
+This example changes the shape of pagination controls to a round variant, which alters the overall visual tone.
+
 import Round from '@site/static/usage/v1/pagination/round/index.md';
 
 <Round />
 
 ## First, Last Buttons
 
+This example focuses on the button-style pagination pattern where previous and next actions are visually dominant.
+
 import Buttons from '@site/static/usage/v1/pagination/buttons/index.md';
 
 <Buttons />
 
 ## Show info
+
+This example adds textual pagination state, such as the current page or result range, next to the controls.
 
 import Info from '@site/static/usage/v1/pagination/info/index.md';
 

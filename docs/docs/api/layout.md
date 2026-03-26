@@ -25,6 +25,8 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 ## Príklady použitia
 
+Ukážka skladá typické layout kombinácie z headeru, mainu, aside a footeru, aby bolo jasné, ako sa tieto stavebné bloky kombinujú.
+
 import Basic from '@site/static/usage/v1/layout/basic/index.md';
 
 <div className="xxxlarge">

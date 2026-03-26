@@ -21,6 +21,8 @@ The `ReorderHandle` is an element that adds drag-and-drop functionality to other
 
 ## Basic use
 
+This example shows the reorder handle in its simplest form, as the visual grip used to move an item.
+
 import Basic from '@site/static/usage/v1/reorder-handle/basic/index.md';
 
 <Basic />

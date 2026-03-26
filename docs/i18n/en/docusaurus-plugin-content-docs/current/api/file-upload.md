@@ -25,11 +25,15 @@ The FileUpload component provides a universal file upload function for web appli
 
 ## Basic usage
 
+This example presents the baseline file upload flow without extra customizations. It is the best starting point for understanding structure and behavior.
+
 import Basic from '@site/static/usage/v1/file-upload/basic/index.md';
 
 <Basic />
 
 ## With the icon
+
+This example replaces image preview with an icon, which is useful for file types that do not have a meaningful visual preview.
 
 import Icon from '@site/static/usage/v1/file-upload/icon/index.md';
 

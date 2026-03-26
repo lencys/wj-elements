@@ -1,8 +1,27 @@
 ```html
-<ion-breadcrumbs color="primary">
-  <ion-breadcrumb href="#home">Home</ion-breadcrumb>
-  <ion-breadcrumb href="#electronics">Electronics</ion-breadcrumb>
-  <ion-breadcrumb href="#cameras">Cameras</ion-breadcrumb>
-  <ion-breadcrumb href="#film">Film</ion-breadcrumb>
-</ion-breadcrumbs>
+<wje-breadcrumbs class="breadcrumbs-primary">
+  <wje-breadcrumb href="/home">Home</wje-breadcrumb>
+  <wje-breadcrumb href="/electronics">Electronics</wje-breadcrumb>
+  <wje-breadcrumb href="/cameras">Cameras</wje-breadcrumb>
+  <wje-breadcrumb href="/film">Film</wje-breadcrumb>
+</wje-breadcrumbs>
+
+<wje-breadcrumbs class="breadcrumbs-danger">
+  <wje-breadcrumb href="/home">Home</wje-breadcrumb>
+  <wje-breadcrumb href="/electronics">Electronics</wje-breadcrumb>
+  <wje-breadcrumb href="/cameras">Cameras</wje-breadcrumb>
+  <wje-breadcrumb href="/film">Film</wje-breadcrumb>
+</wje-breadcrumbs>
+
+<style>
+  .breadcrumbs-primary wje-breadcrumb {
+    --wje-breadcrumb-a: var(--wje-color-primary-9);
+    --wje-breadcrumb-a-hover: var(--wje-color-primary-7);
+  }
+
+  .breadcrumbs-danger wje-breadcrumb {
+    --wje-breadcrumb-a: var(--wje-color-danger-9);
+    --wje-breadcrumb-a-hover: var(--wje-color-danger-7);
+  }
+</style>
 ```

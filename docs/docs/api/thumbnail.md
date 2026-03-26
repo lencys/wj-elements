@@ -25,6 +25,8 @@ Thumbnail uľahčuje zobrazenie väčších obrázkov alebo iných médií zobra
 
 ## Základné použitie
 
+Ukážka zobrazuje thumbnail ako jednoduchý náhľadový prvok bez ďalších kompozičných vzťahov.
+
 import Basic from '@site/static/usage/v1/thumbnail/basic/index.md';
 
 <Basic />
@@ -38,6 +40,8 @@ import Item from '@site/static/usage/v1/thumbnail/item/index.md';
 <Item />
 
 ## Vlastné štýly
+
+Ukážka sa sústreďuje na vizuálne ladenie thumbnailu cez CSS premenné, nie na zmenu jeho markupu.
 
 import CSSProps from '@site/static/usage/v1/thumbnail/theming/css-properties/index.md';
 

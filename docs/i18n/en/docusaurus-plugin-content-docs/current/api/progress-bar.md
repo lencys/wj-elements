@@ -87,24 +87,32 @@ import Colors from '@site/static/usage/v1/progress-bar/colors/index.md';
 
 <Colors />
 
+## Theming colors
+
+Even the smaller circular variants can reuse the same progress value across different semantic colors depending on the process state or result.
+
+import ThemingColors from '@site/static/usage/v1/progress-bar/theming/colors/index.md';
+
+<ThemingColors />
+
 
 ## When to use
 
-Use `wje-progress-bar` to communicate status, result of actions, or required next steps immediately.
+Use `wje-progress-bar` when you need to show the current progress of loading, processing, or another task in either a linear or circular form.
 
 ## When not to use
 
-Do not show multiple feedback channels for the same event unless there is a strong reason.
+Do not rely on it alone when users need an exact textual status. In those cases, pair it with a clear label or additional text.
 
 ## Accessibility
 
-Announce status updates with suitable ARIA live regions and manage focus for modal interactions.
+The component sets the `progressbar` role, so it is important that `progress` reflects the real task state and that important steps are still explained in text when needed.
 
 ## Best Practices
 
-- Match message severity (info/success/warning/error) to actual user impact.
-- Use confirmations only for destructive or hard-to-reverse actions.
-- Keep timeouts consistent so users have enough time to read messages.
+- Keep the same indicator style within a single flow unless there is a clear reason to switch between linear and circular variants.
+- If progress meaning matters for decisions, supplement it with text or labels in the `start` and `end` slots.
+- Use color variants to reinforce meaning, not as the only source of meaning.
 
 ## Attributes and Properties
 

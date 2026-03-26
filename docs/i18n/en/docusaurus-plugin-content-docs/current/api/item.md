@@ -25,16 +25,23 @@ Item components are blocks that can contain various types of content, including 
 
 ## Basic usage
 
+This example shows the most common `wje-item` shape: a single content row with the default spacing and without extra variants.
+
 import Basic from '@site/static/usage/v1/item/basic/index.md';
 
 <Basic />
 
-[//]: # "## Separation lines"
-[//]: #
-[//]: # "import Lines from '@site/static/usage/v1/item/lines/index.md';"
-[//]: # "<Lines />"
+## Separation lines
+
+The `lines` attribute controls how the bottom separator of each item is rendered. This is useful when you need softer or stronger visual division inside a list.
+
+import Lines from '@site/static/usage/v1/item/lines/index.md';
+
+<Lines />
 
 ## Use with images
+
+This example combines the item with media so it is clear how image or preview content sits next to text.
 
 import Media from '@site/static/usage/v1/item/media/index.md';
 
@@ -42,11 +49,15 @@ import Media from '@site/static/usage/v1/item/media/index.md';
 
 ## Use with buttons
 
+This example adds actions to the item so you can see the recommended pattern for rows that also need quick controls.
+
 import Buttons from '@site/static/usage/v1/item/buttons/index.md';
 
 <Buttons />
 
 ## Use with icons
+
+This example focuses on icon placement inside an item and on keeping icons aligned with text and supporting content.
 
 import Icons from '@site/static/usage/v1/item/icons/index.md';
 

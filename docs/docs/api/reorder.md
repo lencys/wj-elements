@@ -21,6 +21,8 @@ import Slots from '@ionic-internal/component-api/v1-sk/reorder/slots.md';
 
 ## Základné použitie
 
+Ukážka predstavuje základné presúvanie položiek v jednom zozname bez ďalších obmedzení alebo drop zón.
+
 import Basic from '@site/static/usage/v1/reorder/basic/index.md';
 
 <Basic />

@@ -26,17 +26,23 @@ Steppery zobrazujú pokrok prostredníctvom sekvencie očíslovaných krokov.
 
 ## Základné použitie
 
+Ukážka predstavuje stepper v jeho základnom flow s predvolenou navigáciou medzi krokmi.
+
 import Basic from '@site/static/usage/v1/stepper/basic/index.md';
 
 <Basic />
 
 ## Disabled (Deaktivované) kroky
 
+Ukážka blokuje niektoré kroky steppera, takže je vidieť, ako komponent komunikuje nedostupnú navigáciu.
+
 import Disabled from '@site/static/usage/v1/stepper/disabled/index.md';
 
 <Disabled />
 
 ## Vlastné tlačidlá
+
+Ukážka nahrádza predvolené ovládanie vlastnými tlačidlami, čo sa hodí pri zložitejších formulároch alebo wizard flow.
 
 import Custom from '@site/static/usage/v1/stepper/custom/index.md';
 

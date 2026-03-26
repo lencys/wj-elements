@@ -45,19 +45,21 @@ import Card from '@site/static/usage/v1/infinite-scroll/card/index.md';
 
 ## Custom data
 
+This example connects infinite scroll to a custom data source instead of a prepared list, which makes it closer to real application usage.
+
 import Custom from '@site/static/usage/v1/infinite-scroll/custom/index.md';
 
 <Custom />
 
-## Atribúty a Vlastnosti
+## Attributes and Properties
 
 <Props />
 
-## Eventy
+## Events
 
 <Events />
 
-## Metódy
+## Methods
 
 <Methods />
 
@@ -65,10 +67,10 @@ import Custom from '@site/static/usage/v1/infinite-scroll/custom/index.md';
 
 <Parts />
 
-## CSS Custom Vlastnosti
+## CSS Custom Properties
 
 <CustomProps />
 
-## Sloty
+## Slots
 
 <Slots />

@@ -1,21 +1,8 @@
 ```html
 <template>
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Header</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">
-    <h1>Content</h1>
-  </ion-content>
+  <wje-container vertical style="min-height: 220px;">
+    <wje-header style="padding: 1rem; background: var(--wje-color-contrast-1);">Header</wje-header>
+    <wje-main style="padding: 1rem;">Content</wje-main>
+  </wje-container>
 </template>
-
-<script lang="ts">
-  import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/vue';
-  import { defineComponent } from 'vue';
-
-  export default defineComponent({
-    components: { IonContent, IonHeader, IonTitle, IonToolbar },
-  });
-</script>
 ```

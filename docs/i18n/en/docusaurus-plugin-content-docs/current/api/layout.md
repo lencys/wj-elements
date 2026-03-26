@@ -25,6 +25,8 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 ## Examples of use
 
+This example combines typical layout building blocks such as header, main, aside, and footer so their composition is easy to read.
+
 import Basic from '@site/static/usage/v1/layout/basic/index.md';
 
 <div className="xxxlarge">

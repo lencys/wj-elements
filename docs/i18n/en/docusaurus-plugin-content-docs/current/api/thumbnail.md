@@ -25,6 +25,8 @@ Thumbnail makes it easier to view larger images or other media by displaying a s
 
 ## Basic usage
 
+This example shows the thumbnail as a simple preview element without additional composition around it.
+
 import Basic from '@site/static/usage/v1/thumbnail/basic/index.md';
 
 <Basic />
@@ -38,6 +40,8 @@ import Item from '@site/static/usage/v1/thumbnail/item/index.md';
 <Item />
 
 ## Custom styles
+
+This example focuses on styling the thumbnail with CSS variables rather than changing its markup.
 
 import CSSProps from '@site/static/usage/v1/thumbnail/theming/css-properties/index.md';
 

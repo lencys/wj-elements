@@ -25,6 +25,8 @@ Komponent Masonry vytvára responzívne "Masonry" rozvrhnutie podriadených prvk
 
 ## Základné použitie
 
+Ukážka zobrazuje základnú masonry skladbu bez ďalších obmedzení, aby bolo jasné, ako sa prvky prirodzene ukladajú do stĺpcov.
+
 import Basic from '@site/static/usage/v1/masonry/basic/index.md';
 
 <Basic />

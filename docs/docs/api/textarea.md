@@ -25,6 +25,8 @@ Textarea rozširuje možnosti štandardného HTML `textarea` elementu. Pridáva 
 
 ## Základné použitie
 
+Ukážka zobrazuje textarea v jej predvolenom stave bez počítadla, automatickej výšky alebo ďalších úprav.
+
 import BasicPlayground from '@site/static/usage/v1/textarea/basic/index.md';
 
 <BasicPlayground />

@@ -35,6 +35,8 @@ In order to configure this relationship between components (to load/select) and 
 
 ## Basic usage
 
+This example shows the smallest working router setup, so the default view-switching flow is easy to understand.
+
 import BasicExample from '@site/static/usage/v1/router/basic/index.md';
 
 <BasicExample />

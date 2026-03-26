@@ -25,6 +25,8 @@ The radio element is a modified version of the standard HTML radio element, enha
 
 ## Basic usage
 
+This example shows the radio in its default state without extra variants or grouping behavior.
+
 import Basic from '@site/static/usage/v1/radio/basic/index.md';
 
 <Basic />

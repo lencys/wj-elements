@@ -118,6 +118,8 @@ import Outline from '@site/static/usage/v1/button/outline/index.md';
 
 ### CSS Custom Properties
 
+This example focuses on visual tuning. It changes the appearance with CSS variables or custom styles without changing the HTML structure.
+
 import Custom from '@site/static/usage/v1/button/theming/css-properties/index.md';
 
 <Custom />

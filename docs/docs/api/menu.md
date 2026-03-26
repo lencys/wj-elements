@@ -25,11 +25,15 @@ Menu element slúži na zobrazenie navigácie. V predvolenom stave je schovaný 
 
 ## Základné použitie
 
+Ukážka zobrazuje základné menu s najbežnejším rozložením položiek a hierarchie.
+
 import Basic from '@site/static/usage/v1/menu/basic/index.md';
 
 <Basic />
 
 ## Inset
+
+Ukážka pridáva menu vnútorné odsadenie, takže nepôsobí nalepené na okraje kontajnera.
 
 import Inset from '@site/static/usage/v1/menu/inset/index.md';
 
@@ -37,11 +41,15 @@ import Inset from '@site/static/usage/v1/menu/inset/index.md';
 
 ## Variant: Megamenu
 
+Ukážka prepína menu do megamenu variantu, ktorý je vhodný pre širšie navigačné štruktúry a viac obsahu naraz.
+
 import Megamenu from '@site/static/usage/v1/menu/megamenu/index.md';
 
 <Megamenu />
 
 ## Variant: Nav
+
+Ukážka používa nav variant menu, teda podobu vhodnú pre klasickú navigáciu medzi sekciami aplikácie alebo webu.
 
 import Nav from '@site/static/usage/v1/menu/nav/index.md';
 

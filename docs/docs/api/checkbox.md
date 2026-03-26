@@ -25,17 +25,23 @@ Checkbox, alebo tiež začiarkavacie políčko, je element, ktorý umožňuje po
 
 ## Základné použitie
 
+Ukážka zobrazuje checkbox v jeho predvolenom stave s bežným labelom. Je to vhodný východiskový bod pre jednoduché formulárové voľby.
+
 import Basic from '@site/static/usage/v1/checkbox/basic/index.md';
 
 <Basic />
 
 ## Placement End
 
+Ukážka presúva obsah za checkbox na opačnú stranu, čo sa hodí tam, kde potrebujete kompaktnejší alebo hustejší formulárový layout.
+
 import End from '@site/static/usage/v1/checkbox/end/index.md';
 
 <End />
 
 ## Color
+
+Ukážka porovnáva farebné varianty checkboxu, aby bolo jasné, ako sa mení vizuál pri rôznych významových stavoch.
 
 import Color from '@site/static/usage/v1/checkbox/color/index.md';
 
@@ -56,6 +62,14 @@ Pridaní atribútu `variant` s hodnotou `circle` zobrazíte checkbox v okrúhlom
 import Variant from '@site/static/usage/v1/checkbox/variant/index.md';
 
 <Variant />
+
+## CSS vlastné premenné
+
+Keď potrebujete upraviť obrys alebo rozostup checkboxu bez zásahu do markupu, využite jeho CSS premenné.
+
+import CssProperties from '@site/static/usage/v1/checkbox/theming/css-properties/index.md';
+
+<CssProperties />
 
 
 ## Kedy použiť

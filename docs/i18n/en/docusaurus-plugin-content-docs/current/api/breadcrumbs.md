@@ -25,17 +25,23 @@ Breadcrumbs is a component that displays the path a user has taken within an app
 
 ## Basic usage
 
+This example shows a simple breadcrumb trail with several levels so you can see how the navigation path is composed and where the active item sits.
+
 import Basic from '@site/static/usage/v1/breadcrumbs/basic/index.md';
 
 <Basic />
 
 ## Use with icons
 
+This example adds icons directly to breadcrumb items. It is useful when sections should be distinguishable visually as well as by text.
+
 import IconsOnItems from '@site/static/usage/v1/breadcrumbs/icons/icons-on-items/index.md';
 
 <IconsOnItems />
 
 ## Custom separator icon
+
+This example replaces the default breadcrumb separator with a custom icon to better match the visual language of the rest of the interface.
 
 import CustomSeparators from '@site/static/usage/v1/breadcrumbs/icons/custom-separators/index.md';
 
@@ -66,6 +72,32 @@ Collapsed items can also be displayed as a dropdown using the `collapsed-variant
 import PopoverOnClick from '@site/static/usage/v1/breadcrumbs/collapsing-items/popover-on-click/index.md';
 
 <PopoverOnClick />
+
+### Expand on click
+
+If you do not want a dropdown menu, the default button variant reveals the hidden items directly in the trail after clicking the collapsed indicator.
+
+import ExpandOnClick from '@site/static/usage/v1/breadcrumbs/collapsing-items/expand-on-click/index.md';
+
+<ExpandOnClick />
+
+## Styling
+
+### Color variants
+
+Breadcrumb colors are adjusted through CSS variables on `wje-breadcrumb`, so you can prepare custom semantic variants for different trails.
+
+import Colors from '@site/static/usage/v1/breadcrumbs/theming/colors/index.md';
+
+<Colors />
+
+### CSS custom properties
+
+When you need finer visual control, adjust the CSS variables that drive breadcrumb text and hover styling.
+
+import CssProperties from '@site/static/usage/v1/breadcrumbs/theming/css-properties/index.md';
+
+<CssProperties />
 
 
 ## When to use

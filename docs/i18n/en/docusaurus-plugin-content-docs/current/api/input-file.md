@@ -25,6 +25,8 @@ The `Input File` element extends the `Input` element with the ability to upload 
 
 ## Basic use
 
+This example shows the file input in its default state as the simplest possible file selection control.
+
 import Basic from '@site/static/usage/v1/input-file/basic/index.md';
 
 <Basic />

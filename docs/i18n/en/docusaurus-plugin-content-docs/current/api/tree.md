@@ -25,17 +25,23 @@ The `Tree` element allows hierarchical display of data in a tree structure. It i
 
 ## Basic use
 
+This example presents the tree with nested nodes in its baseline form so the default hierarchy and expand/collapse behavior are easy to read.
+
 import Basic from '@site/static/usage/v1/tree/basic/index.md';
 
 <Basic />
 
 ## Slots
 
+This example uses slots to add icons or supporting content to individual tree nodes.
+
 import StartEndSlots from '@site/static/usage/v1/tree/slots/index.md';
 
 <StartEndSlots />
 
 ## Multiple
+
+This example allows multiple branches of the tree to stay open at the same time, which is useful when comparing distant branches.
 
 import Multiple from '@site/static/usage/v1/tree/multiple/index.md';
 

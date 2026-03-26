@@ -33,6 +33,8 @@ import Basic from '@site/static/usage/v1/badge/basic/index.md';
 
 ## Zoznam
 
+Ukážka vkladá badge do zoznamovej položky, kde funguje ako krátky doplnkový indikátor, nie ako hlavný obsah.
+
 import List from '@site/static/usage/v1/badge/list/index.md';
 
 <List />
@@ -40,6 +42,8 @@ import List from '@site/static/usage/v1/badge/list/index.md';
 ## Úprava štýlov
 
 ### Farby
+
+Ukážka porovnáva farebné varianty komponentu, aby bolo jednoduchšie vybrať vhodný významový stav aj mieru vizuálneho dôrazu.
 
 import Colors from '@site/static/usage/v1/badge/theming/colors/index.md';
 

@@ -3,7 +3,10 @@ title: 'Animation'
 ---
 
 import Props from '@ionic-internal/component-api/v1-sk/animation/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/animation/events.md';
 import Methods from '@ionic-internal/component-api/v1-sk/animation/methods.md';
+import Parts from '@ionic-internal/component-api/v1-sk/animation/parts.md';
+import CustomProps from '@ionic-internal/component-api/v1-sk/animation/custom-props.md';
 import Slots from '@ionic-internal/component-api/v1-sk/animation/slots.md';
 
 <head>
@@ -52,9 +55,21 @@ import Basic from '@site/static/usage/v1/animation/basic/index.md';
 
 <Props />
 
+## Udalosti
+
+<Events />
+
 ## Metódy
 
 <Methods />
+
+## CSS tieňové časti
+
+<Parts />
+
+## CSS vlastné premenné
+
+<CustomProps />
 
 ## Sloty
 

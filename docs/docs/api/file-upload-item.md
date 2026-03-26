@@ -27,11 +27,15 @@ Pre viac informácií o použití FileUploadItem sa presuňte do dokumentácie e
 
 ## Základné použitie
 
+Ukážka zobrazuje jednu položku nahrávaného súboru v predvolenom stave, teda tak, ako sa bude javiť v zozname po výbere súboru.
+
 import Basic from '@site/static/usage/v1/file-upload-item/basic/index.md';
 
 <Basic />
 
 ## S obrázkom
+
+Ukážka používa image variant file-upload-item, aby bolo vidieť, ako sa líši náhľadová položka od všeobecného súboru.
 
 import Icon from '@site/static/usage/v1/file-upload-item/image/index.md';
 

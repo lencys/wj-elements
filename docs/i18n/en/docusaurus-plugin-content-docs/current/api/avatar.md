@@ -3,6 +3,7 @@ title: 'Avatar'
 ---
 
 import Props from '@ionic-internal/component-api/v1/avatar/props.md';
+import Events from '@ionic-internal/component-api/v1/avatar/events.md';
 import Methods from '@ionic-internal/component-api/v1/avatar/methods.md';
 import Parts from '@ionic-internal/component-api/v1/avatar/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1/avatar/custom-props.md';
@@ -95,6 +96,14 @@ import Group from '@site/static/usage/v1/avatar/group/index.md';
 
 <Group />
 
+## CSS custom properties
+
+When you need to change dimensions, typography, or colors without rewriting the markup, use the component CSS variables.
+
+import CssProperties from '@site/static/usage/v1/avatar/theming/css-properties/index.md';
+
+<CssProperties />
+
 ## Things To Keep In Mind
 
 - `label` together with `initials` is the most practical non-image fallback.
@@ -119,6 +128,10 @@ import Group from '@site/static/usage/v1/avatar/group/index.md';
 ## Attributes and Properties
 
 <Props />
+
+## Events
+
+<Events />
 
 ## Methods
 

@@ -35,6 +35,8 @@ In order to configure this relationship between components (to load/select) and 
 
 ## Základné použitie
 
+Ukážka ukazuje najmenšie funkčné zapojenie routera, teda prechod medzi pohľadmi cez jeho predvolenú konfiguráciu.
+
 import BasicExample from '@site/static/usage/v1/router/basic/index.md';
 
 <BasicExample />

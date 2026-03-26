@@ -25,6 +25,8 @@ The `Tooltip` element is used to display a popup tooltip on mouseover and can be
 
 ## Basic Usage
 
+This example shows the tooltip in its basic usage, as a short piece of supporting context for a target element.
+
 import Basic from '@site/static/usage/v1/tooltip/basic/index.md';
 
 <Basic />

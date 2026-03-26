@@ -3,6 +3,7 @@ title: 'Avatar'
 ---
 
 import Props from '@ionic-internal/component-api/v1-sk/avatar/props.md';
+import Events from '@ionic-internal/component-api/v1-sk/avatar/events.md';
 import Methods from '@ionic-internal/component-api/v1-sk/avatar/methods.md';
 import Parts from '@ionic-internal/component-api/v1-sk/avatar/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1-sk/avatar/custom-props.md';
@@ -95,6 +96,14 @@ import Group from '@site/static/usage/v1/avatar/group/index.md';
 
 <Group />
 
+## CSS vlastné premenné
+
+Ak potrebujete upraviť rozmery, typografiu alebo farby bez zmeny markup-u, siahnite po CSS premenných komponentu.
+
+import CssProperties from '@site/static/usage/v1/avatar/theming/css-properties/index.md';
+
+<CssProperties />
+
 ## Na čo sa oplatí myslieť
 
 - `label` + `initials` je najpraktickejší fallback bez obrázka.
@@ -119,6 +128,10 @@ import Group from '@site/static/usage/v1/avatar/group/index.md';
 ## Atribúty a vlastnosti
 
 <Props />
+
+## Udalosti
+
+<Events />
 
 ## Metódy
 

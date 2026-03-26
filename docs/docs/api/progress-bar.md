@@ -87,24 +87,32 @@ import Colors from '@site/static/usage/v1/progress-bar/colors/index.md';
 
 <Colors />
 
+## Theming farieb
+
+Aj pri menších kruhových variantoch môžete rovnaký progress prerenderovať v rôznych významových farbách podľa stavu procesu alebo výsledku.
+
+import ThemingColors from '@site/static/usage/v1/progress-bar/theming/colors/index.md';
+
+<ThemingColors />
+
 
 ## Kedy použiť
 
-Použite `wje-progress-bar`, keď potrebujete používateľovi okamžite komunikovať stav, výsledok akcie alebo ďalší krok.
+Použite `wje-progress-bar`, keď potrebujete priebežne ukazovať postup úlohy, načítania alebo iného procesu v lineárnej alebo kruhovej forme.
 
 ## Kedy nepoužiť
 
-Nepoužívajte viacero konkurenčných feedback kanálov naraz pre jednu udalosť.
+Nepoužívajte ho tam, kde používateľ potrebuje presnú textovú informáciu o stave bez vizuálneho indikátora. V takom prípade doplňte alebo uprednostnite textový status.
 
 ## Prístupnosť
 
-Status správy oznamujte cez vhodné ARIA live regióny a pri modálnych prvkoch spravujte fokus (open/close).
+Komponent nastavuje rolu `progressbar`, preto má zmysel držať `progress` v rozsahu, ktorý zodpovedá reálnemu stavu, a pri dôležitých krokoch doplniť aj textový popis.
 
 ## Odporúčané postupy
 
-- Vyberte závažnosť správ (info/success/warning/error) podľa reálneho dopadu na používateľa.
-- Pri blokujúcich akciách preferujte potvrdenie iba tam, kde hrozí nevratná zmena.
-- Nastavte konzistentné timeouty, aby používateľ stihol správu prečítať.
+- Používajte rovnaký typ indikátora v rámci jedného flowu, aby sa používateľ nemusel prelaďovať medzi lineárnym a kruhovým variantom bez dôvodu.
+- Ak je progres kľúčový pre rozhodovanie používateľa, doplňte ho textom alebo labelom v slotoch `start` a `end`.
+- Farebné varianty používajte na význam, nie ako jediný nosič informácie.
 
 ## Atribúty a vlastnosti
 

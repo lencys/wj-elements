@@ -28,6 +28,8 @@ Tasks are displayed as tabs that can be moved between columns to set and track t
 
 ## Basic use
 
+This example presents the kanban in its base structure, with columns and cards but without extra enhancements.
+
 import Basic from '@site/static/usage/v1/kanban/basic/index.md';
 
 <Basic />
