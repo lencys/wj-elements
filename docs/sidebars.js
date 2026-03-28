@@ -36,6 +36,7 @@ module.exports = {
       items: [
         'theming/basics',
         'theming/css-variables',
+        'theming/design-tokens',
         'theming/css-shadow-parts',
         'theming/colors',
         'theming/themes',

@@ -1,5 +1,5 @@
 :root {
-  --doc-item-container-width: 42rem;
+  --doc-item-container-width: 58rem;
 }
 
 //overrides
@@ -39,6 +39,8 @@
     }
 
     > .container {
+      padding-inline: 1.75rem;
+
       > .row {
         > .col {
           display: flex;
