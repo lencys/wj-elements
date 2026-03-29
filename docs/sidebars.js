@@ -27,6 +27,7 @@ module.exports = {
       collapsed: false,
       items: [
         'utilities/permissions',
+        'utilities/localization',
       ],
     },
     {
