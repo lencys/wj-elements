@@ -8,13 +8,14 @@ import { renderMarkdown } from './utils.mjs';
 
 const __dirname = new URL('.', import.meta.url).pathname;
 const OUTPUT_PATH = resolve(__dirname, '../src/components/page/reference/ReleaseNotes/release-notes.json');
+const GITHUB_REPO = 'lencys/wj-elements';
 
 // export default {
 //   title: 'Build Release Notes data',
 //   task: async () => outputJson(OUTPUT_PATH, await getReleases(), { spaces: 2 })
 // };
 
-// Get the GitHub Releases from Ionic
+// Get the GitHub Releases for WebJET Elements
 // -------------------------------------------------------------------------------
 // This requires an environment GITHUB_TOKEN otherwise it may fail
 //
@@ -24,7 +25,7 @@ const OUTPUT_PATH = resolve(__dirname, '../src/components/page/reference/Release
 // https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on
 const getReleases = async () => {
   try {
-    const request = await fetch(new URL('repos/ionic-team/ionic/releases', 'https://api.github.com'), {
+    const request = await fetch(new URL(`repos/${GITHUB_REPO}/releases`, 'https://api.github.com'), {
       headers: {
         Authorization: process.env.GITHUB_TOKEN !== undefined ? `token ${process.env.GITHUB_TOKEN}` : '',
       },
@@ -43,7 +44,8 @@ const getReleases = async () => {
           return releasePattern.test(release.tag_name);
         })
         .map((release) => {
-          const body = renderMarkdown(release.body.replace(/^#.*/, '')).contents;
+          const markdownBody = typeof release.body === 'string' ? release.body : '';
+          const body = renderMarkdown(markdownBody.replace(/^#.*/, '')).contents;
           const published_at = parseDate(release.published_at);
           const version = release.tag_name.replace('v', '');
           const type = getVersionType(version);

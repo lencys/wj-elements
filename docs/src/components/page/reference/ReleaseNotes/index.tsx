@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import releases from './release-notes.json';
 
 import styles from './styles.module.css';
@@ -14,20 +15,21 @@ interface Release {
 }
 
 export default function ReleaseNotes(props: { [key: string]: any }) {
+  const {
+    i18n: { currentLocale },
+  } = useDocusaurusContext();
+  const isEnglish = currentLocale === 'en';
+  const repoUrl = 'https://github.com/lencys/wj-elements';
+  const releasesUrl = `${repoUrl}/releases`;
+
   if (releases.length === 0) {
-    console.warn(`Could not load release notes data. Make sure that you have a valid GITHUB_TOKEN.
-
-Create a personal access token by following the below guide:
-https://docs.github.com/en/enterprise-cloud@latest/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
-
-and then authorize it to work with SSO:
-https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on`);
-
     return [
-      <p>
-        Unable to load Releases. Please see all releases{' '}
-        <a href="https://github.com/ionic-team/ionic/releases" target="_blank">
-          on GitHub
+      <p key="release-notes-empty">
+        {isEnglish
+          ? 'Release notes are not available yet. Publish a release or sync release data, then this page will show it automatically. You can follow published releases on '
+          : 'Release notes zatiaľ nie sú k dispozícii. Po publikovaní releasu alebo synchronizácii release dát sa tu zobrazia automaticky. Publikované releasy môžeš sledovať na '}
+        <a href={releasesUrl} target="_blank" rel="noopener noreferrer">
+          GitHub
         </a>
         .
       </p>,
@@ -37,23 +39,27 @@ https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating
   return (
     <article>
       <p className={styles.intro}>
-        A complete release history for Ionic Framework is available{' '}
-        <a href="https://github.com/ionic-team/ionic/releases" target="_blank">
+        {isEnglish ? 'The complete release history for WebJET Elements is available ' : 'Kompletná história vydaní WebJET Elements je dostupná '}
+        <a href={releasesUrl} target="_blank" rel="noopener noreferrer">
           on GitHub
         </a>
-        . Documentation for recent releases can also be found below.
+        {isEnglish ? '. The latest published changes are listed below.' : '. Najnovšie publikované zmeny nájdeš aj nižšie.'}
       </p>
 
       <p>
-        See versioning for information about our{' '}
-        <a href="/docs/reference/versioning">policy and commitment to stability</a>.
+        {isEnglish
+          ? 'This page is the changelog source shown in the documentation.'
+          : 'Táto stránka je changelog zobrazený priamo v dokumentácii.'}
       </p>
       <div className={styles['release-notes']}>
         {releases.map((release: Release, index) => (
-          <section className={clsx(styles['release-note'], styles[`release-note-${release.type}`])}>
+          <section
+            key={release.tag_name}
+            className={clsx(styles['release-note'], styles[`release-note-${release.type}`])}
+          >
             <div className={styles['release-info']}>
               <div className={styles['release-header']}>
-                <a href={`https://github.com/ionic-team/ionic/releases/v${release.version}`}>
+                <a href={`${releasesUrl}/tag/${release.tag_name}`} target="_blank" rel="noopener noreferrer">
                   <h2>
                     <span className={styles['release-version']}>{release.version}</span>
                   </h2>
@@ -61,7 +67,7 @@ https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating
                 <span className={styles['release-badge']}>{release.type}</span>
                 {index === 0 ? (
                   <span className={clsx(styles['release-badge'], styles['release-badge-latest'])}>
-                    Latest Production Version
+                    {isEnglish ? 'Latest Production Version' : 'Aktuálna produkčná verzia'}
                   </span>
                 ) : null}
               </div>
@@ -70,7 +76,7 @@ https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating
               </div>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: release.body,
+                  __html: release.body ?? '',
                 }}
               ></div>
             </div>
@@ -78,8 +84,8 @@ https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating
         ))}
       </div>
       <blockquote>
-        To see more releases, visit{' '}
-        <a href="https://github.com/ionic-team/ionic/releases/" target="_blank">
+        {isEnglish ? 'To see more releases, visit ' : 'Ak chceš vidieť viac releaseov, pozri '}
+        <a href={releasesUrl} target="_blank" rel="noopener noreferrer">
           GitHub
         </a>
         .

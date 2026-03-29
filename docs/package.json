@@ -25,6 +25,7 @@
     "prettier": "prettier \"./**/*.{html,ts,tsx,js,jsx,md}\"",
     "start": "docusaurus start",
     "sync:api-pages": "node scripts/sync-api-pages.mjs",
+    "sync:release-notes": "node scripts/release-notes.mjs",
     "sync:wje-assets": "node scripts/sync-wje-assets.mjs",
     "modernize:api-content": "node scripts/modernize-api-content.mjs",
     "editorial:api-content": "node scripts/editorial-pass-api-content.mjs",

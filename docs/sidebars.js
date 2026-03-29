@@ -50,7 +50,8 @@ module.exports = {
       label: 'Reference',
       collapsed: false,
       items: [
-        'reference/glossary'
+        'reference/glossary',
+        'reference/changelog',
       ],
     },
   ],
