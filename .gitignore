@@ -4,6 +4,9 @@
 /.cache/
 /.playwright-mcp/
 /types/
+/types: "dist/
+/npm run test -- --files packages/
+/web-test-runner --files packages/
 .DS_Store
 website/static/wj-elements/
 /demo/assets/js/bootstrap-5.0.2/
