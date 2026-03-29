@@ -2,6 +2,9 @@
 /node_modules/
 /.idea/
 /.cache/
+/.playwright-mcp/
+/types/
+.DS_Store
 website/static/wj-elements/
 /demo/assets/js/bootstrap-5.0.2/
 /tests/output/
