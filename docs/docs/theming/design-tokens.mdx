@@ -11,6 +11,21 @@ import DesignTokensPage from '@components/page/theming/DesignTokensPage';
     name="description"
     content="Prehľad globálnych dizajnových tokenov WebJET Elements vrátane borders, color, shadows, space, transitions a typography."
   />
+  <style>{`
+    :root {
+      --doc-item-container-width: 60rem;
+    }
+
+    docs-cards > a {
+      display: flex;
+      color: var(--wje-color-primary-9) !important;
+    }
+  `}</style>
+  <script type="module" src="/wje-set-base-path.js"></script>
+  <script type="module" src="/wje-elementy/wje-master.js"></script>
+  <link rel="stylesheet" href="/wje-elementy/light.css" />
+  <link rel="stylesheet" href="/wje-elementy/dark.css" />
+  <link rel="stylesheet" href="/wje-elementy/styles.css" />
 </head>
 
 WebJET Elements používa globálne CSS tokeny ako základ celej vizuálnej vrstvy. Namiesto izolovaného prepisovania

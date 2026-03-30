@@ -4,44 +4,25 @@
 }
 
 .sectionNav {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 0.85rem;
+  display: block;
 }
 
 .sectionNavLink {
-  display: grid;
-  gap: 0.35rem;
-  padding: 0.95rem 1rem;
-  border: 1px solid var(--ifm-table-border-color);
-  border-radius: 1rem;
-  background: var(--token-secondary-bg-c);
-  color: inherit;
-  transition:
-    border-color 0.2s ease-out,
-    background-color 0.2s ease-out,
-    transform 0.2s ease-out;
+  display: flex;
+  height: 100%;
+  color: var(--wje-color-primary-9);
 
-  strong {
-    font-size: 1rem;
-    color: var(--ifm-heading-color);
-  }
-
-  small {
-    font-size: 0.84rem;
-    line-height: 1.55;
-    color: var(--markdown-text-intro-c);
-  }
-
-  &:hover {
-    color: inherit;
+  &:hover,
+  &:focus {
+    color: var(--wje-color-primary-9);
     text-decoration: none;
-    transform: translateY(-1px);
-    border-color: var(--ifm-link-color);
   }
 }
 
-.sectionNavLink span,
+.sectionNavLink :global(wje-card) {
+  width: 100%;
+}
+
 .sectionHeader span {
   display: inline-flex;
   align-items: center;
@@ -187,6 +168,12 @@
   color: var(--ifm-heading-color);
 }
 
+.previewSlot {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
 .previewText {
   line-height: 1.2;
 }
@@ -212,14 +199,15 @@
 }
 
 .spacingPreview {
-  width: min(100%, 12rem);
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .spacingTrack {
   display: flex;
   align-items: center;
-  width: 100%;
-  min-width: 9rem;
+  width: min(100%, 7.25rem);
   height: 1rem;
   padding: 0.2rem;
   border-radius: 999px;
@@ -252,7 +240,6 @@
 .radiusPreview {
   width: 4.75rem;
   height: 2.85rem;
-  border: 1px solid var(--ifm-table-border-color);
   background: rgba(27, 109, 255, 0.08);
 }
 
@@ -260,7 +247,6 @@
   width: 4.75rem;
   height: 2.85rem;
   border-radius: 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.04);
   background: var(--ifm-background-color);
 }
 
@@ -292,13 +278,14 @@
 }
 
 .colorPreviewShell {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
   width: 4.5rem;
   height: 2.75rem;
+  padding: 0 0.35rem;
   border-radius: 0.9rem;
-  border: 1px solid var(--ifm-table-border-color);
   background: var(--token-secondary-bg-c);
 }
 
@@ -306,7 +293,6 @@
   width: 3rem;
   height: 1.75rem;
   border-radius: 0.65rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .colorPreviewBorder {
@@ -369,7 +355,6 @@
 .scaleSwatch {
   height: 4.5rem;
   border-radius: 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .scaleTokenLabel {
