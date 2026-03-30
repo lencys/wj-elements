@@ -1,0 +1,105 @@
+---
+title: Skeleton
+sidebar_label: Skeleton
+---
+
+import Basic from '@site/static/usage/v1/skeleton/basic/index.md';
+import Timing from '@site/static/usage/v1/skeleton/timing/index.md';
+import Authoring from '@site/static/usage/v1/skeleton/authoring/index.md';
+
+<head>
+  <title>Skeleton | Loading placeholder pre async obsah</title>
+  <meta
+    name="description"
+    content="Dokumentacia skeleton loading patternu vo WebJET Elements vratane atributov, eventov a odporucanych sposobov pouzitia."
+  />
+  <style>{`
+    :root {
+      --doc-item-container-width: 60rem;
+    }
+  `}</style>
+  <script type="module" src="/wje-set-base-path.js"></script>
+  <script type="module" src="/wje-elementy/wje-master.js"></script>
+  <link rel="stylesheet" href="/wje-elementy/light.css" />
+  <link rel="stylesheet" href="/wje-elementy/dark.css" />
+  <link rel="stylesheet" href="/wje-elementy/styles.css" />
+</head>
+
+Skeleton vo WebJET Elements nie je samostatný tag ako `wje-button` alebo `wje-card`. Je to loading pattern vstavaný do
+základného `WJElement`, ktorý počas asynchrónneho renderu dočasne zobrazí placeholder markup.
+
+Ak už vlastný element načítava dáta asynchrónne, stačí zapnúť atribút `skeleton` a dodať placeholder cez
+`slot="skeleton"` alebo hook `renderSkeleton()`.
+
+## Základné použitie
+
+Najbežnejší scenár je integrácia cez `slot="skeleton"`. Element si ponechá svoj štandardný async render a pri čakaní
+iba dočasne zobrazí placeholder, ktorý tvarom kopíruje finálny layout.
+
+<Basic />
+
+## Delay a minimálne trvanie
+
+Atribúty `skeleton-delay` a `skeleton-min-duration` slúžia na potlačenie bliknutia. Delay skeleton odloží a minimálne
+trvanie ho po zobrazení chvíľu podrží, aby prechod nepôsobil trhano.
+
+<Timing />
+
+## renderSkeleton() vo vlastnom elemente
+
+Ak tvoríte vlastný komponent nad `WJElement`, placeholder môžete vrátiť priamo z hooku `renderSkeleton()`. Tento
+prístup je vhodný vtedy, keď má byť skeleton súčasťou implementácie komponentu a nie externého slotovaného obsahu.
+
+<Authoring />
+
+## Kedy použiť
+
+Použite skeleton vtedy, keď komponent načítava obsah asynchrónne a chcete počas čakania zachovať stabilný layout bez
+poskakovania okolia.
+
+## Kedy nepoužiť
+
+Nepoužívajte skeleton ako náhradu za prázdny stav, chybový stav alebo spinner v miestach, kde ešte nepoznáte tvar
+výsledného obsahu.
+
+## Prístupnosť
+
+Skeleton by nemal byť jediný nositeľ informácie o stave. Pri dôležitých scenároch doplňte aj textový loading stav,
+`aria-busy`, prípadne zrozumiteľnú informáciu o tom, že obsah sa ešte načítava.
+
+## Odporúčané postupy
+
+- Placeholder držte čo najbližšie finálnemu layoutu.
+- Preferujte `slot="skeleton"` pre integráciu a `renderSkeleton()` pre autorov komponentov.
+- `skeleton-delay` zvyšujte len tam, kde reálne bojujete s bliknutím pri krátkych requestoch.
+- `skeleton-min-duration` používajte striedmo, aby loading nepôsobil umelo dlhý.
+
+## Atribúty a vlastnosti
+
+| Názov | Typ | Default | Popis |
+| --- | --- | --- | --- |
+| `skeleton` | `boolean` | `false` | Zapne skeleton režim počas async renderu. |
+| `skeleton-delay` | `number` | `150` | Oneskorenie v milisekundách, po ktorom sa skeleton môže zobraziť. |
+| `skeleton-min-duration` | `number` | `300` | Minimálna viditeľnosť skeletonu v milisekundách po tom, čo sa už raz ukázal. |
+| `skeletonDelay` | `property<number>` | `150` | Property alias k atribútu `skeleton-delay`. |
+| `skeletonMinDuration` | `property<number>` | `300` | Property alias k atribútu `skeleton-min-duration`. |
+
+## Udalosti
+
+| Názov | Detail | Popis |
+| --- | --- | --- |
+| `wj-skeleton:show` | `{ delay }` | Skeleton sa reálne zobrazil. |
+| `wj-skeleton:skip` | `{ reason: 'render-finished-fast', elapsedMs, delay }` | Render sa dokončil skôr, ako vypršal delay, takže skeleton sa neukázal. |
+| `wj-skeleton:hide` | najčastejšie `{ reason: 'render-finished', visibleMs, delay, minDuration }`, fallback `{ reason: 'finally' }` | Po štandardnom render cykle príde `render-finished`. Pri niektorých cestách, najmä pri priamom volaní `display()`, môže prísť aj dodatočný fallback `finally`, preto je dobré sa riadiť hodnotou `reason`. |
+
+## Sloty
+
+| Názov | Popis |
+| --- | --- |
+| `skeleton` | Placeholder markup zobrazený počas loading stavu. Preferovaný integračný spôsob. |
+
+## Metódy a hooky
+
+| Názov | Popis |
+| --- | --- |
+| `renderSkeleton(params)` | Voliteľný hook na vrátenie skeleton markup pri tvorbe vlastného elementu nad `WJElement`. |

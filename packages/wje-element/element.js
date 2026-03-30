@@ -775,7 +775,7 @@ export default class WJElement extends HTMLElement {
 
 			skeletonShownAt = performance.now();
 
-			this.dispatchEvent(new CustomEvent('wj:skeleton:show', {
+			this.dispatchEvent(new CustomEvent('wj-skeleton:show', {
 				detail: { delay: this.skeletonDelay },
 				bubbles: true,
 				composed: true,
@@ -805,7 +805,7 @@ export default class WJElement extends HTMLElement {
 
 				if (skeletonShownAt === null) {
 					const elapsed = skeletonPlannedAt ? (performance.now() - skeletonPlannedAt) : 0;
-					this.dispatchEvent(new CustomEvent('wj:skeleton:skip', {
+					this.dispatchEvent(new CustomEvent('wj-skeleton:skip', {
 						detail: { reason: 'render-finished-fast', elapsedMs: elapsed, delay: this.skeletonDelay },
 						bubbles: true,
 						composed: true,
@@ -827,7 +827,7 @@ export default class WJElement extends HTMLElement {
 				}
 
 				if (skeletonShownAt !== null) {
-					this.dispatchEvent(new CustomEvent('wj:skeleton:hide', {
+					this.dispatchEvent(new CustomEvent('wj-skeleton:hide', {
 						detail: {
 							reason: 'render-finished',
 							visibleMs: Math.max(this.skeletonMinDuration, performance.now() - skeletonShownAt),
@@ -849,7 +849,7 @@ export default class WJElement extends HTMLElement {
 				renderFinished = true;
 				clearSkeletonTimer();
 				if (!this.#isRendering) {
-					this.dispatchEvent(new CustomEvent('wj:skeleton:hide', {
+					this.dispatchEvent(new CustomEvent('wj-skeleton:hide', {
 						detail: { reason: 'finally' },
 						bubbles: true,
 						composed: true,

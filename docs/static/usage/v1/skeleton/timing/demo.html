@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="sk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skeleton Timing</title>
+
+    <script src="../../common.js"></script>
+    <script type="module" src="/wje-elementy/wje-master.js"></script>
+    <script type="module">
+      import WJElement from '/wje-elementy/wje-element.js';
+
+      if (!customElements.get('demo-skeleton-timing-card')) {
+        class DemoSkeletonTimingCard extends WJElement {
+          static get cssStyleSheet() {
+            return `
+              :host {
+                display: block;
+                width: min(100%, 26rem);
+              }
+
+              .copy {
+                margin: 0;
+                color: var(--wje-color);
+                line-height: 1.6;
+              }
+            `;
+          }
+
+          setupAttributes() {
+            this.isShadowRoot = 'open';
+          }
+
+          async draw() {
+            await new Promise((resolve) => setTimeout(resolve, 260));
+
+            return `
+              <wje-card>
+                <wje-card-header>
+                  <wje-card-title>Časované zobrazenie</wje-card-title>
+                </wje-card-header>
+                <wje-card-content>
+                  <p class="copy">Skeleton sa ukáže po delay a po zobrazení ostane ešte minimálny čas viditeľný.</p>
+                </wje-card-content>
+              </wje-card>
+            `;
+          }
+        }
+
+        customElements.define('demo-skeleton-timing-card', DemoSkeletonTimingCard);
+      }
+
+      window.addEventListener('DOMContentLoaded', () => {
+        const reload = document.getElementById('reload-timing');
+        const card = document.querySelector('demo-skeleton-timing-card');
+
+        reload?.addEventListener('click', () => card?.display(true));
+      });
+    </script>
+
+    <link rel="stylesheet" href="../../common.css" />
+    <link rel="stylesheet" href="/wje-elementy/light.css" />
+    <link rel="stylesheet" href="/wje-elementy/dark.css" />
+    <link rel="stylesheet" href="/wje-elementy/styles.css" />
+
+    <style>
+      .stack {
+        display: grid;
+        gap: 1rem;
+        justify-items: start;
+      }
+
+      .profile-skeleton {
+        display: grid;
+        gap: 0.75rem;
+        padding: 1rem;
+        border: 1px solid var(--wje-border-color);
+        border-radius: var(--wje-border-radius-x-large);
+        background: var(--wje-background);
+      }
+
+      .profile-skeleton__header {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.75rem;
+        align-items: center;
+      }
+
+      .profile-skeleton__content {
+        display: grid;
+        gap: 0.55rem;
+      }
+
+      .profile-skeleton__avatar,
+      .profile-skeleton__line {
+        position: relative;
+        overflow: hidden;
+        background: rgba(148, 163, 184, 0.22);
+      }
+
+      .profile-skeleton__avatar::after,
+      .profile-skeleton__line::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        transform: translateX(-100%);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+        animation: skeleton-shimmer 1.8s ease-in-out infinite;
+      }
+
+      .profile-skeleton__avatar {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 999px;
+      }
+
+      .profile-skeleton__line {
+        height: 0.75rem;
+        border-radius: 999px;
+      }
+
+      .profile-skeleton__line--title {
+        width: 68%;
+        height: 0.95rem;
+      }
+
+      @keyframes skeleton-shimmer {
+        100% {
+          transform: translateX(100%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <div class="stack">
+          <wje-button id="reload-timing" fill="outline">Znovu načítať</wje-button>
+
+          <demo-skeleton-timing-card skeleton skeleton-delay="120" skeleton-min-duration="480">
+            <div slot="skeleton" class="profile-skeleton">
+              <div class="profile-skeleton__header">
+                <div class="profile-skeleton__avatar"></div>
+                <div class="profile-skeleton__content">
+                  <div class="profile-skeleton__line profile-skeleton__line--title"></div>
+                  <div class="profile-skeleton__line"></div>
+                </div>
+              </div>
+            </div>
+          </demo-skeleton-timing-card>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
