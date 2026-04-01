@@ -67,20 +67,19 @@ The recommended setup includes:
 - and optionally `dark.css` if you want dark-mode switching.
 
 ```html
-<script data-base-path="https://cdn.jsdelivr.net/npm/wj-elements@0.3.8/dist/"></script>
+<script data-base-path="https://cdn.jsdelivr.net/npm/wj-elements@0.4.0/dist/"></script>
 <script
   type="module"
-  src="https://cdn.jsdelivr.net/npm/wj-elements@0.3.8/dist/wje-master.js"
+  src="https://cdn.jsdelivr.net/npm/wj-elements@0.4.0/dist/wje-master.js"
 ></script>
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/wj-elements@0.3.8/dist/styles.css"
+  href="https://cdn.jsdelivr.net/npm/wj-elements@0.4.0/dist/styles.css"
 />
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/wj-elements@0.3.8/dist/light.css"
+  href="https://cdn.jsdelivr.net/npm/wj-elements@0.4.0/dist/light.css"
 />
 ```
 
 The `data-base-path` attribute helps the library resolve bundled assets correctly in the CDN build.
-

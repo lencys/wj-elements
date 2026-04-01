@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "body": "<p>WebJET Elements 0.4.0 prináša väčšiu flexibilitu pri skladaní rozhraní a výrazne rozširuje dokumentáciu knižnice.</p><ul><li>Carousel teraz podporuje gap-aware multi-slide layout cez <code>slide-per-page</code>, full-width custom obsah v režime jedného slide-u a nový opt-in <code>continuous-loop</code> režim pre kontinuálny pás.</li><li>Dokumentácia rozšírila design tokens, skeleton loading scenáre, lokalizačné návody a viditeľný changelog priamo v docs.</li><li>Pribudli nové demo ukážky, regresné testy a vylepšené development aliasy, aby lokálne demo nenačítavalo zastaraný build z <code>/dist</code>.</li></ul>",
+    "name": "v0.4.0",
+    "published_at": "April 1 2026",
+    "tag_name": "v0.4.0",
+    "type": "minor",
+    "version": "0.4.0"
+  }
+]
