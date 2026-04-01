@@ -12,6 +12,17 @@ import Parts from '@ionic-internal/component-api/v1-sk/carousel/parts.md';
 import CustomProps from '@ionic-internal/component-api/v1-sk/carousel/custom-props.md';
 
 import Slots from '@ionic-internal/component-api/v1-sk/carousel/slots.md';
+import EncapsulationPill from '@components/page/api/EncapsulationPill';
+import Basic from '@site/static/usage/v1/carousel/basic/index.md';
+import Pagination from '@site/static/usage/v1/carousel/pagination/index.md';
+import NoLoop from '@site/static/usage/v1/carousel/no-loop/index.md';
+import Dialog from '@site/static/usage/v1/carousel/dialog/index.md';
+import Thumbnail from '@site/static/usage/v1/carousel/thumbnail/index.md';
+import Spacing from '@site/static/usage/v1/carousel/spacing/index.md';
+import FivePerPage from '@site/static/usage/v1/carousel/five-per-page/index.md';
+import ContinuousLoop from '@site/static/usage/v1/carousel/continuous-loop/index.md';
+import CustomLayout from '@site/static/usage/v1/carousel/custom-layout/index.md';
+import Split from '@site/static/usage/v1/carousel/split/index.md';
 
 <head>
   <title>Card | Kontajner formátu karty</title>
@@ -21,8 +32,6 @@ import Slots from '@ionic-internal/component-api/v1-sk/carousel/slots.md';
   />
 </head>
 
-import EncapsulationPill from '@components/page/api/EncapsulationPill';
-
 <EncapsulationPill type="shadow" />
 
 **Carousel** je element, ktorý zobrazuje viacero položiek, ako sú obrázky alebo aktualizácie noviniek, rotujúcim spôsobom.
@@ -31,15 +40,11 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 
 Ukážka ukazuje najjednoduchší carousel s niekoľkými slidmi a predvoleným ovládaním. Sledujte hlavne základné správanie prechodu medzi položkami.
 
-import Basic from '@site/static/usage/v1/carousel/basic/index.md';
-
 <Basic />
 
 ## Paginaton
 
 Ukážka zapína pagination prvky, aby bolo jasné, ako sa používateľ môže presúvať medzi slidmi aj bez gest alebo šípok.
-
-import Pagination from '@site/static/usage/v1/carousel/pagination/index.md';
 
 <Pagination />
 
@@ -47,15 +52,11 @@ import Pagination from '@site/static/usage/v1/carousel/pagination/index.md';
 
 Ukážka vypína nekonečné cyklenie. Vďaka tomu prvý a posledný slide fungujú ako skutočné hranice karuselu.
 
-import NoLoop from '@site/static/usage/v1/carousel/no-loop/index.md';
-
 <NoLoop />
 
 ## Dialog
 
 Ukážka vkladá carousel do dialógu, takže je dobre vidieť správanie komponentu v obmedzenom priestore overlayu.
-
-import Dialog from '@site/static/usage/v1/carousel/dialog/index.md';
 
 <Dialog />
 
@@ -63,23 +64,35 @@ import Dialog from '@site/static/usage/v1/carousel/dialog/index.md';
 
 Ukážka dopĺňa carousel o náhľadové miniatúry, ktoré fungujú ako sekundárna navigácia medzi slidmi.
 
-import Thumbnail from '@site/static/usage/v1/carousel/thumbnail/index.md';
-
 <Thumbnail />
 
 ## Odsadenie
 
 Ukážka pracuje s rozostupmi medzi slidmi a okolo viewportu, aby bolo vidieť, ako sa mení rytmus a hustota layoutu.
 
-import Spacing from '@site/static/usage/v1/carousel/spacing/index.md';
-
 <Spacing />
+
+## Päť slidov na stránku
+
+Ukážka používa `slide-per-page="5"`, takže carousel na jednom viewporte zobrazí presne päť sibling itemov. Šírka sa počíta aj s gapom medzi itemami, takže päť kariet spolu vyplní 100 % šírky bez overflowu. Pri klasickom `loop` sa po poslednom plnom view carousel vráti späť na začiatok.
+
+<FivePerPage />
+
+## Kontinuálny loop
+
+Ak pridáte `continuous-loop`, viac-itemový carousel sa na hranách správa ako nekonečný pás. Za `10` tak môžeš vidieť `1 2 3 4`, namiesto okamžitého skoku späť na prvý plný view.
+
+<ContinuousLoop />
+
+## Jeden slide s vlastným layoutom
+
+Ukážka necháva `slide-per-page="1"` a do jedného `wje-carousel-item` vkladá vlastný grid s piatimi kartami. Wrapper sa natiahne na plnú šírku slide-u bez potreby fixnej šírky carouselu alebo dodatočných width hackov v aplikácii.
+
+<CustomLayout />
 
 ## Rozdelenie
 
 Ukážka rozdeľuje priestor tak, aby bolo naraz vidieť viac slidov. Hodí sa pre galérie alebo prehľady s vyššou informačnou hustotou.
-
-import Split from '@site/static/usage/v1/carousel/split/index.md';
 
 <Split />
 

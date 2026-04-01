@@ -67,6 +67,7 @@ export default class CarouselItem extends WJElement {
         native.setAttribute('part', 'native');
 
         let slot = document.createElement('slot');
+        this.defaultSlot = slot;
 
         native.appendChild(slot);
 
@@ -80,5 +81,25 @@ export default class CarouselItem extends WJElement {
      */
     afterDraw() {
         event.addListener(this, 'click', 'wje-carousel-item:click');
+        this.syncContentLayoutMode();
+
+        if (this.defaultSlot && !this.defaultSlot.dataset.wjeCarouselItemBound) {
+            this.defaultSlot.addEventListener('slotchange', () => this.syncContentLayoutMode());
+            this.defaultSlot.dataset.wjeCarouselItemBound = 'true';
+        }
+    }
+
+    /**
+     * Keeps a simple layout hint for single-wrapper content.
+     */
+    syncContentLayoutMode() {
+        const assignedElements = this.defaultSlot?.assignedElements({ flatten: true }) || [];
+
+        if (assignedElements.length === 1) {
+            this.setAttribute('single-content', '');
+            return;
+        }
+
+        this.removeAttribute('single-content');
     }
 }

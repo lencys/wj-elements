@@ -7,6 +7,18 @@ import dts from 'vite-plugin-dts'
 export default defineConfig(({ mode }) => {
   dotenv.config({ path: path.resolve(__dirname, `.env.${mode}`) });
 
+  const devAliases = mode === 'development'
+    ? [
+        // Keep the local demo wired to source modules so a long-lived Vite server
+        // does not continue serving stale transformed files from `/dist`.
+        { find: /^\/dist\/wje-master\.js$/, replacement: path.resolve(__dirname, './packages/index.js') },
+        { find: /^\/dist\/base-path\.js$/, replacement: path.resolve(__dirname, './packages/utils/base-path.js') },
+        { find: /^\/dist\/wje-element\.js$/, replacement: path.resolve(__dirname, './packages/wje-element/element.js') },
+        { find: /^\.\.\/\.\.\/dist\/wje-element\.js$/, replacement: path.resolve(__dirname, './packages/wje-element/element.js') },
+        { find: /^\.\.\/\.\.\/\.\.\/dist\/wje-element\.js$/, replacement: path.resolve(__dirname, './packages/wje-element/element.js') },
+      ]
+    : [];
+
   return {
     server: {
       port: 5174,
@@ -176,10 +188,11 @@ export default defineConfig(({ mode }) => {
       include: ['slick-router'],
     },
     resolve: {
-      alias: {
-        'wje-master': path.resolve(__dirname, './dist/wje-master.js'),
-        './middlewares/router-links.js': 'slick-router/middlewares/router-links.js',
-      },
+      alias: [
+        ...devAliases,
+        { find: 'wje-master', replacement: path.resolve(__dirname, './dist/wje-master.js') },
+        { find: './middlewares/router-links.js', replacement: 'slick-router/middlewares/router-links.js' },
+      ],
     },
   };
 });

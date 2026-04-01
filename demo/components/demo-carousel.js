@@ -207,6 +207,133 @@ template.innerHTML = `
       </div>
     </div>
 
+    <!-- FIVE PER PAGE -->
+
+    <h2>Five Per Page</h2>
+    <p class="description">
+      Režim <span class="tok attr">slide-per-page="5"</span> zobrazuje na jednom viewporte presne päť sibling
+      <span class="tok tag">&lt;wje-carousel-item&gt;</span> elementov. Šírka itemov sa počíta aj s gapom, takže
+      päť kariet spolu vyplní celý carousel bez pretekania. Pri klasickom <span class="tok attr">loop</span> sa po
+      poslednom plnom view (<code>6 7 8 9 10</code>) carousel vráti späť na začiatok.
+    </p>
+    <div class="playground" style="padding-inline: 2rem;">
+      <div class="content">
+        <wje-carousel pagination loop navigation slide-per-page="5" class="example-five-per-page">
+          <wje-carousel-item><article class="demo-tile">1</article></wje-carousel-item>
+          <wje-carousel-item><article class="demo-tile">2</article></wje-carousel-item>
+          <wje-carousel-item><article class="demo-tile">3</article></wje-carousel-item>
+          <wje-carousel-item><article class="demo-tile">4</article></wje-carousel-item>
+          <wje-carousel-item><article class="demo-tile">5</article></wje-carousel-item>
+          <wje-carousel-item><article class="demo-tile">6</article></wje-carousel-item>
+          <wje-carousel-item><article class="demo-tile">7</article></wje-carousel-item>
+          <wje-carousel-item><article class="demo-tile">8</article></wje-carousel-item>
+          <wje-carousel-item><article class="demo-tile">9</article></wje-carousel-item>
+          <wje-carousel-item><article class="demo-tile">10</article></wje-carousel-item>
+        </wje-carousel>
+        <style>
+          .example-five-per-page {
+            --wje-carousel-height: 180px;
+            --wje-carousel-gap: 1rem;
+          }
+
+          .example-five-per-page .demo-tile {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            place-items: center;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, #1b4965, #4f86c6);
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+          }
+        </style>
+      </div>
+    </div>
+
+    <!-- CONTINUOUS LOOP -->
+
+    <h2>Continuous Loop</h2>
+    <p class="description">
+      Atribút <span class="tok attr">continuous-loop</span> rozšíri klasický <span class="tok attr">loop</span> o
+      kontinuálny pás. Na hrane carouselu tak za <code>10</code> pokračujú <code>1 2 3 4</code>, takže
+      viac-itemový carousel pôsobí ako nekonečná páska.
+    </p>
+    <div class="playground" style="padding-inline: 2rem;">
+      <div class="content">
+        <wje-carousel pagination loop continuous-loop navigation slide-per-page="5" class="example-five-per-page">
+          <wje-carousel-item><article class="demo-tile">1</article></wje-carousel-item>
+          <wje-carousel-item><article class="demo-tile">2</article></wje-carousel-item>
+          <wje-carousel-item><article class="demo-tile">3</article></wje-carousel-item>
+          <wje-carousel-item><article class="demo-tile">4</article></wje-carousel-item>
+          <wje-carousel-item><article class="demo-tile">5</article></wje-carousel-item>
+          <wje-carousel-item><article class="demo-tile">6</article></wje-carousel-item>
+          <wje-carousel-item><article class="demo-tile">7</article></wje-carousel-item>
+          <wje-carousel-item><article class="demo-tile">8</article></wje-carousel-item>
+          <wje-carousel-item><article class="demo-tile">9</article></wje-carousel-item>
+          <wje-carousel-item><article class="demo-tile">10</article></wje-carousel-item>
+        </wje-carousel>
+      </div>
+    </div>
+
+    <!-- SINGLE SLIDE LAYOUT -->
+
+    <h2>Single Slide Layout</h2>
+    <p class="description">
+      Režim <span class="tok attr">slide-per-page="1"</span> ponechá jeden slide na stránku, ale obsah slide-u môže
+      byť vlastný wrapper s viacerými kartami. Wrapper sa roztiahne na plnú šírku itemu bez potreby nastavovať
+      fixnú šírku carouselu alebo pomocné width hacky v appke.
+    </p>
+    <div class="playground" style="padding-inline: 2rem;">
+      <div class="content">
+        <wje-carousel pagination navigation slide-per-page="1" class="example-single-layout">
+          <wje-carousel-item>
+            <div class="cards-grid">
+              <article class="promo-card">1</article>
+              <article class="promo-card">2</article>
+              <article class="promo-card">3</article>
+              <article class="promo-card">4</article>
+              <article class="promo-card">5</article>
+            </div>
+          </wje-carousel-item>
+          <wje-carousel-item>
+            <div class="cards-grid">
+              <article class="promo-card">6</article>
+              <article class="promo-card">7</article>
+              <article class="promo-card">8</article>
+              <article class="promo-card">9</article>
+              <article class="promo-card">10</article>
+            </div>
+          </wje-carousel-item>
+        </wje-carousel>
+        <style>
+          .example-single-layout {
+            --wje-carousel-height: 180px;
+            --wje-carousel-gap: 1rem;
+          }
+
+          .example-single-layout .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 1rem;
+            height: 100%;
+          }
+
+          .example-single-layout .promo-card {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            place-items: center;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, #1b4965, #4f86c6);
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+          }
+        </style>
+      </div>
+    </div>
+
     <!-- SPLIT -->
     
     <h2>Split</h2>

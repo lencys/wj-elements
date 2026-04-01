@@ -7,7 +7,8 @@ import styles from './styles/styles.css?inline';
  * @status stable
  * @augments WJElement
  * @slot - The carousel main content.
- * @cssproperty [--wje-carousel-size=100%] - Size of the carousel component;
+ * @cssproperty [--wje-carousel-size=100%] - Effective size of one carousel item.
+ * @cssproperty [--wje-carousel-gap=0.5rem] - Gap between carousel items.
  */
 export default class Carousel extends WJElement {
     /**
@@ -68,6 +69,14 @@ export default class Carousel extends WJElement {
     }
 
     /**
+     * Continuous loop attribute.
+     * @returns {boolean}
+     */
+    get continuousLoop() {
+        return this.hasAttribute('continuous-loop');
+    }
+
+    /**
      * Class name for the Carousel.
      * @type {string}
      */
@@ -86,7 +95,7 @@ export default class Carousel extends WJElement {
      * @returns {string[]}
      */
     static get observedAttributes() {
-        return ['active-slide'];
+        return ['active-slide', 'slide-per-page', 'continuous-loop'];
     }
 
     /**
@@ -100,6 +109,17 @@ export default class Carousel extends WJElement {
             if (this.pagination) this.changePagination();
 
             if (this.thumbnails) this.changeThumbnails();
+        }
+
+        if (['slide-per-page', 'continuous-loop'].includes(name) && old !== newName && this.slides) {
+            this.syncSlideMetrics();
+
+            if (this.loop) {
+                this.refresh();
+                return;
+            }
+
+            this.goToSlide(this.activeSlide, 'auto');
         }
     }
 
@@ -115,6 +135,8 @@ export default class Carousel extends WJElement {
      * Before draw method for the Carousel.
      */
     beforeDraw() {
+        this.syncSlideMetrics();
+        this.removeLoopClones();
         this.cloneFirstAndLastItems();
     }
 
@@ -191,38 +213,35 @@ export default class Carousel extends WJElement {
             this.intersectionObserver.observe(slide);
         });
 
-        this.slidePerPage = this.getAttribute('slide-per-page') || 1;
-        let carouselSize = 100 / +this.slidePerPage;
-        this.style.setProperty('--wje-carousel-size', carouselSize + '%');
+        this.syncSlideMetrics();
 
         this.goToSlide(this.activeSlide, 'auto');
 
-        requestAnimationFrame(() => requestAnimationFrame(() => this.syncActiveToCenter()));
+        requestAnimationFrame(() => requestAnimationFrame(() => this.syncActiveToSnapStart()));
 
         this.slides.addEventListener('scrollend', (e) => {
-            this.syncActiveToCenter();
+            this.syncActiveToSnapStart();
         });
 
         this.syncAria();
     }
 
     /**
-     * Sync `activeSlide` to the slide whose center is closest to the container center.
+     * Sync `activeSlide` to the slide whose leading edge is closest to the snap start.
      */
-    syncActiveToCenter() {
+    syncActiveToSnapStart() {
         const slides = this.getSlides();
         const withClones = this.getSlidesWithClones();
         if (!withClones.length) return;
 
         const containerRect = this.slides.getBoundingClientRect();
-        const containerCenterX = containerRect.left + containerRect.width / 2;
+        const snapStartX = containerRect.left + this.getScrollPaddingInlineStart();
 
         let best = null;
         let bestDist = Infinity;
         withClones.forEach((el) => {
             const r = el.getBoundingClientRect();
-            const center = r.left + r.width / 2;
-            const dist = Math.abs(center - containerCenterX);
+            const dist = Math.abs(r.left - snapStartX);
             if (dist < bestDist) {
                 bestDist = dist;
                 best = el;
@@ -236,11 +255,47 @@ export default class Carousel extends WJElement {
 
         const logicalIndex = this.getLogicalIndexForVisual(vIndex);
         this.activeSlide = logicalIndex;
+        this.setActiveVisualSlide(vIndex);
 
-        // If we landed on a clone, silently snap to the corresponding real slide
-        if (this.loop && (vIndex === 0 || vIndex === withClones.length - 1)) {
+        const canonicalVisualIndex = this.getVisualIndexForLogical(logicalIndex);
+        if (canonicalVisualIndex !== vIndex) {
             this.goToSlide(logicalIndex, 'auto');
         }
+    }
+
+    /**
+     * Syncs computed CSS variables derived from `slide-per-page`.
+     */
+    syncSlideMetrics() {
+        this.slidePerPage = Math.max(parseInt(this.getAttribute('slide-per-page'), 10) || 1, 1);
+        const visibleGapCount = Math.max(this.slidePerPage - 1, 0);
+        const computedItemSize = `calc((100% - (${visibleGapCount} * var(--wje-carousel-gap, 0.5rem))) / ${this.slidePerPage})`;
+
+        this.style.setProperty('--wje-carousel-slides-per-page', `${this.slidePerPage}`);
+        this.style.setProperty('--wje-carousel-visible-gap-count', `${visibleGapCount}`);
+        this.style.setProperty('--wje-carousel-size', computedItemSize);
+        this.style.setProperty('--wje-carousel-item-basis', 'var(--wje-carousel-size)');
+    }
+
+    /**
+     * Returns the inline scroll padding used by the snap area.
+     * @returns {number}
+     */
+    getScrollPaddingInlineStart() {
+        if (!this.slides) return 0;
+
+        const styles = getComputedStyle(this.slides);
+        return parseFloat(styles.scrollPaddingInlineStart || styles.scrollPaddingLeft || '0') || 0;
+    }
+
+    /**
+     * Returns the interaction scroll behavior for UI controls.
+     * Continuous multi-slide loops use instant snapping to avoid blank edge states
+     * while the browser is still animating a previous smooth scroll.
+     * @returns {ScrollBehavior|string}
+     */
+    getControlBehavior() {
+        return this.continuousLoop && this.slidePerPage > 1 ? 'auto' : 'smooth';
     }
 
     /**
@@ -276,14 +331,11 @@ export default class Carousel extends WJElement {
         const slides = this.getSlides();
         const withClones = this.getSlidesWithClones();
 
-        // remove active class from all slides (including clones)
-        withClones.forEach(slide => slide.classList.remove('active'));
-
         // compute logical index: wrap when loop=true, else clamp
-        const maxIndex = Math.max(slides.length - 1, 0);
+        const maxIndex = this.getMaxVisibleStartIndex(slides.length);
         let logical;
         if (this.loop && slides.length > 0) {
-            logical = ((index % slides.length) + slides.length) % slides.length; // safe modulo
+            logical = this.normalizeLoopIndex(index, slides.length);
         } else {
             logical = Math.min(Math.max(index, 0), maxIndex);
         }
@@ -294,26 +346,28 @@ export default class Carousel extends WJElement {
         const targetEl = withClones[vIndex];
         if (!targetEl) return;
 
-        targetEl.classList.add('active');
-
-        const targetRect = targetEl.getBoundingClientRect();
-        const containerRect = this.slides.getBoundingClientRect();
-
-        this.slides.scrollTo({
-            left: targetRect.left - containerRect.left + this.slides.scrollLeft,
-            top: targetRect.top - containerRect.top + this.slides.scrollTop,
-            behavior: behavior === 'smooth' ? 'smooth' : 'auto',
-        });
+        this.setActiveVisualSlide(vIndex);
+        this.scrollToVisualIndex(vIndex, behavior);
 
         if (this.navigation && !this.loop) {
             this.nextButton.removeAttribute('disabled');
             this.prevButton.removeAttribute('disabled');
 
-            if (this.activeSlide === slides.length - 1) this.nextButton.setAttribute('disabled', '');
+            if (this.activeSlide === maxIndex) this.nextButton.setAttribute('disabled', '');
             if (this.activeSlide === 0) this.prevButton.setAttribute('disabled', '');
         }
 
         this.syncAria();
+    }
+
+    /**
+     * Sets the active class on the currently targeted visual slide and removes it elsewhere.
+     * @param {number} vIndex
+     */
+    setActiveVisualSlide(vIndex) {
+        this.getSlidesWithClones().forEach((slide, index) => {
+            slide.classList.toggle('active', index === vIndex);
+        });
     }
 
     /**
@@ -347,16 +401,100 @@ export default class Carousel extends WJElement {
         const items = this.getSlides();
 
         if (items.length && this.loop) {
-            // Clone first -> append to end
-            const firstItemClone = items[0].cloneNode(true);
-            firstItemClone.classList.add('clone');
-            this.append(firstItemClone);
+            const cloneCount = this.getLoopCloneCount(items.length);
+            const firstOriginal = items[0];
 
-            // Clone last -> insert before the first original item so it becomes the leading clone
-            const lastItemClone = items[items.length - 1].cloneNode(true);
-            lastItemClone.classList.add('clone');
-            this.insertBefore(lastItemClone, items[0]);
+            items.slice(items.length - cloneCount).forEach((item) => {
+                const clone = this.createLoopClone(item);
+                this.insertBefore(clone, firstOriginal);
+            });
+
+            items.slice(0, cloneCount).forEach((item) => {
+                const clone = this.createLoopClone(item);
+                this.append(clone);
+            });
         }
+    }
+
+    /**
+     * Creates a sanitized loop clone that does not inherit transient render state
+     * such as inline `visibility: hidden` from the source slide.
+     * @param {HTMLElement} item
+     * @returns {HTMLElement}
+     */
+    createLoopClone(item) {
+        const clone = item.cloneNode(true);
+        clone.classList.add('clone');
+        clone.classList.remove('active');
+        clone.style.removeProperty('visibility');
+
+        if (!clone.getAttribute('style')?.trim()) {
+            clone.removeAttribute('style');
+        }
+
+        return clone;
+    }
+
+    /**
+     * Removes loop clones so they can be rebuilt for the current configuration.
+     */
+    removeLoopClones() {
+        this.querySelectorAll('wje-carousel-item.clone').forEach((clone) => clone.remove());
+    }
+
+    /**
+     * Returns how many slides should be cloned on each side when loop is enabled.
+     * @param {number} totalSlides
+     * @returns {number}
+     */
+    getLoopCloneCount(totalSlides = this.getSlides().length) {
+        if (!this.loop || !totalSlides) return 0;
+
+        return this.continuousLoop ? Math.min(this.slidePerPage, totalSlides) : 1;
+    }
+
+    /**
+     * Scrolls the carousel to a visual slide index.
+     * @param {number} vIndex
+     * @param {ScrollBehavior|string} behavior
+     */
+    scrollToVisualIndex(vIndex, behavior = 'smooth') {
+        const withClones = this.getSlidesWithClones();
+        const firstEl = withClones[0];
+        const targetEl = withClones[vIndex];
+
+        if (!firstEl || !targetEl || !this.slides) return;
+
+        const firstRect = firstEl.getBoundingClientRect();
+        const targetRect = targetEl.getBoundingClientRect();
+        const contentOffsetLeft = targetRect.left - firstRect.left;
+        const nextLeft = contentOffsetLeft - this.getScrollPaddingInlineStart();
+        const targetLeft = Math.max(nextLeft, 0);
+
+        if (behavior === 'smooth') {
+            this.slides.scrollTo({
+                left: targetLeft,
+                top: this.slides.scrollTop,
+                behavior: 'smooth',
+            });
+            return;
+        }
+
+        if (this.snapRestoreFrame) {
+            cancelAnimationFrame(this.snapRestoreFrame);
+        }
+
+        const inlineSnapType = this.slides.style.scrollSnapType;
+        this.slides.style.scrollSnapType = 'none';
+        this.slides.scrollTo({
+            left: targetLeft,
+            top: this.slides.scrollTop,
+            behavior: 'auto',
+        });
+        this.snapRestoreFrame = requestAnimationFrame(() => {
+            this.slides.style.scrollSnapType = inlineSnapType;
+            this.snapRestoreFrame = null;
+        });
     }
 
     /**
@@ -385,11 +523,8 @@ export default class Carousel extends WJElement {
      */
     changePagination() {
         if (this.pagination) {
-            this.removeActiveSlide();
             this.context.querySelectorAll('.pagination-item').forEach((item, i) => {
-                if (i === this.activeSlide) {
-                    item.classList.add('active');
-                }
+                item.classList.toggle('active', i === this.activeSlide);
             });
         }
     }
@@ -399,11 +534,8 @@ export default class Carousel extends WJElement {
      */
     changeThumbnails() {
         if (this.thumbnails) {
-            this.removeActiveSlide();
             this.context.querySelectorAll('wje-thumbnail').forEach((item, i) => {
-                if (i === this.activeSlide) {
-                    item.classList.add('active');
-                }
+                item.classList.toggle('active', i === this.activeSlide);
             });
         }
     }
@@ -420,9 +552,6 @@ export default class Carousel extends WJElement {
         nextButton.setAttribute('slot', 'next');
         nextButton.innerHTML = '<wje-icon name="chevron-right" size="large"></wje-icon>';
         nextButton.classList.add('next');
-        nextButton.addEventListener('click', (e) => {
-            this.nextSlide();
-        });
 
         return nextButton;
     }
@@ -439,9 +568,6 @@ export default class Carousel extends WJElement {
         previousButton.setAttribute('slot', 'prev');
         previousButton.innerHTML = '<wje-icon name="chevron-left" size="large"></wje-icon>';
         previousButton.classList.add('prev');
-        previousButton.addEventListener('click', (e) => {
-            this.previousSlide();
-        });
 
         return previousButton;
     }
@@ -455,14 +581,13 @@ export default class Carousel extends WJElement {
         pagination.setAttribute('part', 'pagination');
         pagination.classList.add('pagination');
 
-        const slides = this.getSlides();
-        slides.forEach((slide, i) => {
+        this.getPaginationIndexes().forEach((i) => {
             const paginationItem = document.createElement('div');
             paginationItem.classList.add('pagination-item');
             paginationItem.addEventListener('click', (e) => {
                 this.removeActiveSlide();
                 e.target.classList.add('active');
-                this.goToSlide(i);
+                this.goToSlide(i, this.getControlBehavior());
             });
             pagination.append(paginationItem);
         });
@@ -485,7 +610,7 @@ export default class Carousel extends WJElement {
             thumbnail.addEventListener('click', (e) => {
                 this.removeActiveSlide();
                 e.target.closest('wje-thumbnail').classList.add('active');
-                this.goToSlide(i);
+                this.goToSlide(i, this.getControlBehavior());
             });
             thumbnails.append(thumbnail);
         });
@@ -497,14 +622,14 @@ export default class Carousel extends WJElement {
      * Goes to the next slide.
      */
     nextSlide() {
-        this.goToSlide(this.activeSlide + this.slidePerPage);
+        this.goToSlide(this.activeSlide + 1, this.getControlBehavior());
     }
 
     /**
      * Goes to the previous slide.
      */
     previousSlide() {
-        this.goToSlide(this.activeSlide - this.slidePerPage);
+        this.goToSlide(this.activeSlide - 1, this.getControlBehavior());
     }
 
     /**
@@ -525,17 +650,66 @@ export default class Carousel extends WJElement {
 
     /** Maps logical index -> visual index (accounts for leading clone when loop=true) */
     getVisualIndexForLogical(index) {
-        return this.loop ? index + 1 : index;
+        return this.loop ? index + this.getLoopCloneCount() : index;
     }
 
     /** Maps visual index -> logical index (handles clones at 0 and last when loop=true) */
     getLogicalIndexForVisual(vIndex) {
         const slides = this.getSlides();
-        const withClones = this.getSlidesWithClones();
-        if (!this.loop) return vIndex;
-        if (vIndex === 0) return slides.length - 1;           // leading clone
-        if (vIndex === withClones.length - 1) return 0;       // trailing clone
-        return vIndex - 1;
+        const maxIndex = this.getMaxVisibleStartIndex(slides.length);
+        const cloneCount = this.getLoopCloneCount(slides.length);
+        if (!this.loop) return Math.min(Math.max(vIndex, 0), maxIndex);
+        if (this.continuousLoop) {
+            if (vIndex < cloneCount) return slides.length - cloneCount + vIndex;
+            if (vIndex >= cloneCount + slides.length) return vIndex - (cloneCount + slides.length);
+            return vIndex - cloneCount;
+        }
+
+        if (vIndex < cloneCount) return maxIndex;
+        if (vIndex >= cloneCount + slides.length) return 0;
+        return Math.min(Math.max(vIndex - cloneCount, 0), maxIndex);
+    }
+
+    /**
+     * Returns the maximum logical slide index that can still render a full viewport.
+     * @param {number} totalSlides
+     * @returns {number}
+     */
+    getMaxVisibleStartIndex(totalSlides = this.getSlides().length) {
+        const visibleSlides = Math.min(this.slidePerPage, totalSlides);
+        return Math.max(totalSlides - visibleSlides, 0);
+    }
+
+    /**
+     * Normalizes a logical index for the active loop mode.
+     * @param {number} index
+     * @param {number} totalSlides
+     * @returns {number}
+     */
+    normalizeLoopIndex(index, totalSlides = this.getSlides().length) {
+        const logicalCount = this.getLoopLogicalCount(totalSlides);
+        if (!logicalCount) return 0;
+
+        return ((index % logicalCount) + logicalCount) % logicalCount;
+    }
+
+    /**
+     * Returns how many logical positions are reachable for the current loop mode.
+     * @param {number} totalSlides
+     * @returns {number}
+     */
+    getLoopLogicalCount(totalSlides = this.getSlides().length) {
+        if (!totalSlides) return 0;
+
+        return this.continuousLoop ? totalSlides : this.getMaxVisibleStartIndex(totalSlides) + 1;
+    }
+
+    /**
+     * Returns the pagination indexes for the current carousel mode.
+     * @returns {number[]}
+     */
+    getPaginationIndexes() {
+        return Array.from({ length: this.getLoopLogicalCount() }, (_, index) => index);
     }
 
     /**
